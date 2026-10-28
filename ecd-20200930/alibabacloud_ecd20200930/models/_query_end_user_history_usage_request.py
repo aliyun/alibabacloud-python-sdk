@@ -13,15 +13,17 @@ class QueryEndUserHistoryUsageRequest(DaraModel):
         page_size: int = None,
         start_date: str = None,
     ):
-        # The end date of the query. Format: yyyy-MM-dd. The date cannot be later than yesterday or earlier than StartDate. Default value: yesterday.
+        # The end date of the query, in yyyy-MM-dd format. The date cannot be later than yesterday or earlier than StartDate. Default value: yesterday.
         self.end_date = end_date
-        # Specifies whether to query Active Directory (AD) domain users. If this parameter is set to true, AD domain users are queried. If this parameter is set to false or not specified, convenience account users are queried.
+        # Specifies whether to query Active Directory (AD) domain users. Valid values:
+        # - true: Queries AD domain users.
+        # - false or unspecified: Queries convenience users.
         self.is_ad_user = is_ad_user
         # The page number. Minimum value: 1. Default value: 1.
         self.page_num = page_num
         # The number of entries per page. Valid values: 1 to 100. Default value: 100.
         self.page_size = page_size
-        # The start date of the query. Format: yyyy-MM-dd. The date cannot be earlier than 32 days ago. Default value: yesterday.
+        # The start date of the query, in yyyy-MM-dd format. The date cannot be earlier than 32 days ago. Default value: yesterday.
         self.start_date = start_date
 
     def validate(self):

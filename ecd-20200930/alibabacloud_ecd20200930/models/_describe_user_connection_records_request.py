@@ -21,42 +21,37 @@ class DescribeUserConnectionRecordsRequest(DaraModel):
         next_token: str = None,
         region_id: str = None,
     ):
-        # The minimum value of the connection duration used as a filter condition.
+        # The minimum connection duration used as a filter condition.
         self.connect_duration_from = connect_duration_from
-        # The maximum value of the connection duration used as a filter condition.
+        # The maximum connection duration used as a filter condition.
         self.connect_duration_to = connect_duration_to
-        # The minimum value of the connection end time used as a filter condition. The value is a UNIX timestamp. Unit: milliseconds.
+        # The minimum end time of the connection used as a filter condition. The time is formatted as a UNIX timestamp. Unit: milliseconds.
         self.connect_end_time_from = connect_end_time_from
-        # The maximum value of the connection end time used as a filter condition. The value is a UNIX timestamp. Unit: milliseconds.
+        # The maximum end time of the connection used as a filter condition. The time is formatted as a UNIX timestamp. Unit: milliseconds.
         self.connect_end_time_to = connect_end_time_to
-        # The minimum value of the connection start time used as a filter condition. The value is a UNIX timestamp. Unit: milliseconds.
+        # The minimum start time of the connection used as a filter condition. The time is formatted as a UNIX timestamp. Unit: milliseconds.
         self.connect_start_time_from = connect_start_time_from
-        # The maximum value of the connection start time used as a filter condition. The value is a UNIX timestamp. Unit: milliseconds.
+        # The maximum start time of the connection used as a filter condition. The time is formatted as a UNIX timestamp. Unit: milliseconds.
         self.connect_start_time_to = connect_start_time_to
-        # The cloud computer pool ID.
+        # The ID of the cloud computer pool.
         # 
         # This parameter is required.
         self.desktop_group_id = desktop_group_id
-        # The cloud computer ID.
+        # The ID of the cloud computer.
         self.desktop_id = desktop_id
-        # The authorized user ID.
+        # The ID of the authorized user.
         # 
         # This parameter is required.
         self.end_user_id = end_user_id
-        # The type of user account system. Valid values:
-        # 
-        # - SIMPLE: convenience account
-        # - AD_CONNECTOR: enterprise AD account
+        # The type of the user account system.
         self.end_user_type = end_user_type
-        # The number of entries per page for a paged query.
-        # 
+        # The number of entries to return per page in a paging query.
         # Maximum value: 100.
-        # 
         # Default value: 10.
         self.max_results = max_results
-        # The pagination token for the next query. An empty value indicates that there is no next page.
+        # The token used to start the next query. An empty NextToken indicates that no more results are available.
         self.next_token = next_token
-        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the list of regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id

@@ -24,37 +24,34 @@ class DescribeSnapshotsRequest(DaraModel):
     ):
         # The creator.
         self.creator = creator
-        # The cloud computer ID.
+        # The ID of the cloud desktop.
         self.desktop_id = desktop_id
-        # The cloud computer name.
+        # The name of the cloud desktop.
         self.desktop_name = desktop_name
         self.desktop_scenario = desktop_scenario
-        # The end of the time range during which the snapshots were created. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time must be in UTC.
+        # The end time of the snapshot creation. The time is displayed in UTC and follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format.
         self.end_time = end_time
-        # The number of entries per page for paging.    
-        # 
-        # - Maximum value: 100.    
-        # - Default value: 10.
+        # The number of entries to return per page in a paging query.
         self.max_results = max_results
-        # The pagination token. Set this parameter to the NextToken value returned in the previous API call.
+        # The query token. Set the value to the NextToken parameter value returned by the previous API call.
         self.next_token = next_token
         # The operating system type.
         self.os_type = os_type
-        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The snapshot ID.
+        # The ID of the snapshot.
         self.snapshot_id = snapshot_id
-        # The display name of the snapshot. The name must be 2 to 127 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter. The name cannot start with `auto` to avoid conflicts with automatic snapshot names.
+        # The display name of the snapshot. The name must be 2 to 127 characters in length. It must start with a letter or a Chinese character, and can contain digits, underscores (_), and hyphens (-). To prevent name conflicts with automatic snapshots, the name cannot start with `auto`.
         self.snapshot_name = snapshot_name
         # The snapshot type.
         self.snapshot_type = snapshot_type
-        # The type of the cloud disk from which the snapshot is created.
+        # The type of the disk for which you want to create a snapshot.
         # 
-        # > The value is case-insensitive.
+        # > The values are not case-sensitive.
         self.source_disk_type = source_disk_type
-        # The beginning of the time range during which the snapshots were created. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time must be in UTC.
+        # The start time of the snapshot creation. The time is displayed in UTC and follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format.
         self.start_time = start_time
 
     def validate(self):

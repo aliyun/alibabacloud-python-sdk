@@ -17,27 +17,26 @@ class BatchModifyEntitlementRequest(DaraModel):
         region_id: str = None,
         strategy: str = None,
     ):
-        # The IDs of the cloud computers for which you want to update authorized users.
+        # The IDs of the cloud desktops for which you want to modify the authorized users.
         # 
         # This parameter is required.
         self.desktop_id = desktop_id
-        # The user IDs (usernames).
+        # The user IDs, which are the usernames.
         self.end_user_id = end_user_id
-        # The number of cloud computers to assign to each user.
+        # The number of cloud desktops assigned to each user.
         self.max_desktop_per_user = max_desktop_per_user
-        # The number of users to assign to each cloud computer.
+        # The number of users assigned to each cloud desktop.
         self.max_user_per_desktop = max_user_per_desktop
-        # Specifies whether to preview the assignment. If you set this parameter to true, the assignment is not actually performed.
+        # Specifies whether to preview the assignment. A preview does not perform the actual assignment.
         self.preview = preview
-        # The region ID. You can call DescribeRegions to query the regions supported by Elastic Desktop Service (EDS).
+        # The region ID. You can call DescribeRegions to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The policy used when the ratio of cloud computers to users cannot be evenly matched. Valid values:
+        # The policy used when proportional matching is not possible. Valid values:
         # 
-        # - AVERAGE: Prioritizes assigning a cloud computer to each user. When the number of selected cloud computers and users cannot be evenly matched, the system prioritizes assigning a cloud computer to each user.
-        # 
-        # - CENTRAL: Prioritizes assigning the specified number of cloud computers to users. When the number of selected cloud computers and users cannot be evenly matched, the system prioritizes assigning the specified number of cloud computers to users.
+        # - AVERAGE: Prioritizes assigning cloud desktops to each user. When the number of selected cloud desktops and users cannot be matched proportionally, cloud desktops are assigned to each user first.
+        # - CENTRAL: Prioritizes assigning a specified number of cloud desktops to users. When the number of selected cloud desktops and users cannot be matched proportionally, the specified number of cloud desktops are assigned to users first.
         self.strategy = strategy
 
     def validate(self):

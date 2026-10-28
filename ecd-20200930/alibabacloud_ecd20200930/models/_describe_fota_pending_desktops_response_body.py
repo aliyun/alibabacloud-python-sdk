@@ -16,13 +16,13 @@ class DescribeFotaPendingDesktopsResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The response code.
+        # The status code.
         self.code = code
-        # The cloud computers whose images can be and are pending to be updated to the version specified in `TaskUid`.
+        # The list of cloud computers that can be upgraded to the image version corresponding to `TaskUid` but have not been upgraded.
         self.fota_pending_desktops = fota_pending_desktops
-        # The returned message.
+        # The message.
         self.message = message
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The pagination token for the next query. If NextToken is empty, no more results are available.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -90,7 +90,7 @@ class DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktops(DaraModel):
         sessions: List[main_models.DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktopsSessions] = None,
         status: int = None,
     ):
-        # The current version of the image used by the cloud computer.
+        # The current image version of the cloud computer.
         self.current_app_version = current_app_version
         # The ID of the cloud computer.
         self.desktop_id = desktop_id
@@ -100,20 +100,9 @@ class DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktops(DaraModel):
         self.fota_project = fota_project
         # The ID of the office network.
         self.office_site_id = office_site_id
-        # The connected sessions.
+        # The list of connected sessions.
         self.sessions = sessions
         # The status of the cloud computer.
-        # 
-        # Valid values:
-        # 
-        # *   0: The cloud computer is being created.
-        # *   1: The cloud computer is being started.
-        # *   2: The cloud computer is running.
-        # *   3: The cloud computer is being stopped.
-        # *   5: The cloud computer is stopped.
-        # *   6: The cloud computer expires.
-        # *   7: The cloud computer is deleted.
-        # *   9: Failed to create the cloud computer.
         self.status = status
 
     def validate(self):
@@ -185,7 +174,7 @@ class DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktopsSessions(DaraMod
         self,
         end_user_id: str = None,
     ):
-        # The ID of the end user that connects to the cloud computer.
+        # The ID of the connected user.
         self.end_user_id = end_user_id
 
     def validate(self):

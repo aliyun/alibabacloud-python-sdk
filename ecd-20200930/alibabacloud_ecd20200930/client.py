@@ -3492,6 +3492,8 @@ class Client(OpenApiClient):
             query['FileTransferSpeed'] = request.file_transfer_speed
         if not DaraCore.is_null(request.file_transfer_speed_location):
             query['FileTransferSpeedLocation'] = request.file_transfer_speed_location
+        if not DaraCore.is_null(request.folder_sync):
+            query['FolderSync'] = request.folder_sync
         if not DaraCore.is_null(request.gpu_acceleration):
             query['GpuAcceleration'] = request.gpu_acceleration
         if not DaraCore.is_null(request.hover_config_msg):
@@ -3802,6 +3804,8 @@ class Client(OpenApiClient):
             query['FileTransferSpeed'] = request.file_transfer_speed
         if not DaraCore.is_null(request.file_transfer_speed_location):
             query['FileTransferSpeedLocation'] = request.file_transfer_speed_location
+        if not DaraCore.is_null(request.folder_sync):
+            query['FolderSync'] = request.folder_sync
         if not DaraCore.is_null(request.gpu_acceleration):
             query['GpuAcceleration'] = request.gpu_acceleration
         if not DaraCore.is_null(request.hover_config_msg):
@@ -4908,6 +4912,8 @@ class Client(OpenApiClient):
             query['ExtendInfo'] = request.extend_info
         if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
+        if not DaraCore.is_null(request.host_gpu_driver_version):
+            query['HostGpuDriverVersion'] = request.host_gpu_driver_version
         if not DaraCore.is_null(request.hostname):
             query['Hostname'] = request.hostname
         if not DaraCore.is_null(request.month_desktop_setting):
@@ -5030,6 +5036,8 @@ class Client(OpenApiClient):
             query['ExtendInfo'] = request.extend_info
         if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
+        if not DaraCore.is_null(request.host_gpu_driver_version):
+            query['HostGpuDriverVersion'] = request.host_gpu_driver_version
         if not DaraCore.is_null(request.hostname):
             query['Hostname'] = request.hostname
         if not DaraCore.is_null(request.month_desktop_setting):
@@ -21456,6 +21464,8 @@ class Client(OpenApiClient):
             query['FileTransferSpeed'] = request.file_transfer_speed
         if not DaraCore.is_null(request.file_transfer_speed_location):
             query['FileTransferSpeedLocation'] = request.file_transfer_speed_location
+        if not DaraCore.is_null(request.folder_sync):
+            query['FolderSync'] = request.folder_sync
         if not DaraCore.is_null(request.gpu_acceleration):
             query['GpuAcceleration'] = request.gpu_acceleration
         if not DaraCore.is_null(request.hover_config_msg):
@@ -21770,6 +21780,8 @@ class Client(OpenApiClient):
             query['FileTransferSpeed'] = request.file_transfer_speed
         if not DaraCore.is_null(request.file_transfer_speed_location):
             query['FileTransferSpeedLocation'] = request.file_transfer_speed_location
+        if not DaraCore.is_null(request.folder_sync):
+            query['FolderSync'] = request.folder_sync
         if not DaraCore.is_null(request.gpu_acceleration):
             query['GpuAcceleration'] = request.gpu_acceleration
         if not DaraCore.is_null(request.hover_config_msg):

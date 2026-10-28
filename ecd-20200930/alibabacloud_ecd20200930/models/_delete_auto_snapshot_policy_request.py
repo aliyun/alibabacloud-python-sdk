@@ -12,11 +12,11 @@ class DeleteAutoSnapshotPolicyRequest(DaraModel):
         policy_id: List[str] = None,
         region_id: str = None,
     ):
-        # The IDs of the automatic snapshot policies that you want to delete.
+        # The IDs of the automatic snapshot policies to be deleted.
         # 
         # This parameter is required.
         self.policy_id = policy_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id

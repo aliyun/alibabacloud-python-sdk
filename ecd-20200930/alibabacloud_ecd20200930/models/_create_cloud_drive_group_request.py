@@ -15,21 +15,21 @@ class CreateCloudDriveGroupRequest(DaraModel):
         region_id: str = None,
         total_size: int = None,
     ):
-        # List of user IDs to be set as team space administrators.
+        # The list of user IDs to be set as team space administrators.
         self.admin_user_ids = admin_user_ids
-        # The ID of the cloud disk in Cloud Drive Service.
+        # The ID of the Wuying cloud disk.
         # 
         # This parameter is required.
         self.cds_id = cds_id
-        # The ID of the team.
+        # The ID of the organizational team.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The ID of the region.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The size of the cloud disk in Cloud Drive Service. Unit: bytes. The size is unlimited.
+        # The capacity of the Wuying cloud disk team space. Unit: bytes. Default value: unlimited.
         # 
         # This parameter is required.
         self.total_size = total_size

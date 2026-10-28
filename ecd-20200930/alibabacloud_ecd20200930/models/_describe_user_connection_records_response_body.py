@@ -16,9 +16,9 @@ class DescribeUserConnectionRecordsResponseBody(DaraModel):
     ):
         # The array of user connection records.
         self.connection_records = connection_records
-        # The pagination token for the next query.
+        # The token used to start the next query.
         self.next_token = next_token
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -73,11 +73,13 @@ class DescribeUserConnectionRecordsResponseBodyConnectionRecords(DaraModel):
     ):
         # The connection duration. Unit: milliseconds.
         self.connect_duration = connect_duration
-        # The connection end time.
+        # The time when the connection is disconnected.
+        # The time is in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.connect_end_time = connect_end_time
-        # The connection start time.
+        # The start time of the connection.
+        # The time is in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.connect_start_time = connect_start_time
-        # The connection record ID.
+        # The ID of the connection record.
         self.connection_record_id = connection_record_id
         # The ID of the connected cloud computer.
         self.desktop_id = desktop_id

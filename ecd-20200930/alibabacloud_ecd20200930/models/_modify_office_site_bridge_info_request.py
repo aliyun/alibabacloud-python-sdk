@@ -15,9 +15,9 @@ class ModifyOfficeSiteBridgeInfoRequest(DaraModel):
         office_site_id: str = None,
         region_id: str = None,
     ):
-        # The virtual bridge ID.
+        # The ID of the virtual bridge.
         self.bridge_id = bridge_id
-        # The virtual bridge specifications.
+        # The specifications of the virtual bridge.
         self.bridge_level = bridge_level
         # The third-party plugin type of the virtual bridge.
         self.bridge_type = bridge_type
@@ -25,9 +25,9 @@ class ModifyOfficeSiteBridgeInfoRequest(DaraModel):
         self.enable_bridge = enable_bridge
         # The activation code object.
         self.license = license
-        # The office network ID.
+        # The ID of the office network.
         self.office_site_id = office_site_id
-        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id

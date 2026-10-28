@@ -59,6 +59,7 @@ class CreateCenterPolicyRequest(DaraModel):
         file_transfer_size_limit: str = None,
         file_transfer_speed: str = None,
         file_transfer_speed_location: str = None,
+        folder_sync: str = None,
         gpu_acceleration: str = None,
         hover_config_msg: str = None,
         html_5file_transfer: str = None,
@@ -280,6 +281,7 @@ class CreateCenterPolicyRequest(DaraModel):
         self.file_transfer_speed = file_transfer_speed
         # The location where the file transfer speed configured on the client takes effect.
         self.file_transfer_speed_location = file_transfer_speed_location
+        self.folder_sync = folder_sync
         # Specifies whether to enable the image quality policy for GPU-accelerated Cloud Desktops. Enable this policy when high performance and user experience are required, such as in professional design scenarios.
         self.gpu_acceleration = gpu_acceleration
         # Specifies whether to enable the floating ball configuration message prompt. Valid values:
@@ -722,6 +724,9 @@ class CreateCenterPolicyRequest(DaraModel):
 
         if self.file_transfer_speed_location is not None:
             result['FileTransferSpeedLocation'] = self.file_transfer_speed_location
+
+        if self.folder_sync is not None:
+            result['FolderSync'] = self.folder_sync
 
         if self.gpu_acceleration is not None:
             result['GpuAcceleration'] = self.gpu_acceleration
@@ -1179,6 +1184,9 @@ class CreateCenterPolicyRequest(DaraModel):
 
         if m.get('FileTransferSpeedLocation') is not None:
             self.file_transfer_speed_location = m.get('FileTransferSpeedLocation')
+
+        if m.get('FolderSync') is not None:
+            self.folder_sync = m.get('FolderSync')
 
         if m.get('GpuAcceleration') is not None:
             self.gpu_acceleration = m.get('GpuAcceleration')

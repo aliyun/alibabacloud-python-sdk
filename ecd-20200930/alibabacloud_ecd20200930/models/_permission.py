@@ -18,15 +18,25 @@ class Permission(DaraModel):
         source_cidr_ip: str = None,
         source_port_range: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The description.
         self.description = description
+        # The destination CIDR block.
         self.dest_cidr_ip = dest_cidr_ip
+        # The protocol type.
         self.ip_protocol = ip_protocol
+        # The NIC type.
         self.nic_type = nic_type
+        # The policy.
         self.policy = policy
+        # The port range.
         self.port_range = port_range
+        # The priority.
         self.priority = priority
+        # The source CIDR block.
         self.source_cidr_ip = source_cidr_ip
+        # The source port range.
         self.source_port_range = source_port_range
 
     def validate(self):

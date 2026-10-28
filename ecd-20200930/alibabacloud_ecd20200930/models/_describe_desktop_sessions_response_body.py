@@ -18,7 +18,7 @@ class DescribeDesktopSessionsResponseBody(DaraModel):
         self.request_id = request_id
         # The session details.
         self.sessions = sessions
-        # The total number of query results.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -73,6 +73,7 @@ class DescribeDesktopSessionsResponseBodySessions(DaraModel):
         directory_type: str = None,
         end_user_apply_coordinate_time: int = None,
         end_user_id: str = None,
+        last_client_ip: str = None,
         latest_connection_time: int = None,
         office_site_id: str = None,
         office_site_name: str = None,
@@ -102,17 +103,19 @@ class DescribeDesktopSessionsResponseBodySessions(DaraModel):
         self.desktop_name = desktop_name
         # The office network type.
         self.directory_type = directory_type
-        # The duration of remote assistance for the end user. Unit: seconds.
+        # The duration of remote assistance requested by the end user. Unit: seconds.
         self.end_user_apply_coordinate_time = end_user_apply_coordinate_time
         # The end user ID.
         self.end_user_id = end_user_id
+        # The IP address of the last connected client.
+        self.last_client_ip = last_client_ip
         # The duration of the most recent connection to the cloud computer. Unit: seconds.
         self.latest_connection_time = latest_connection_time
         # The office network ID.
         self.office_site_id = office_site_id
-        # The name of the office network.
+        # The office network name.
         self.office_site_name = office_site_name
-        # Specifies whether to check the session status within the cloud computer.
+        # Specifies whether to check the session status in the cloud computer.
         self.os_session_status = os_session_status
         # The operating system type.
         self.os_type = os_type
@@ -120,17 +123,15 @@ class DescribeDesktopSessionsResponseBodySessions(DaraModel):
         self.protocol_type = protocol_type
         # The resource group information.
         self.resource_groups = resource_groups
-        # The end time of the session.
-        # The time is displayed in UTC in the yyyy-MM-ddTHH:mm:ssZ format.
+        # The end time of the session. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.session_end_time = session_end_time
-        # The session idle duration. Unit: seconds.
+        # The idle duration of the session. Unit: seconds.
         self.session_idle_time = session_idle_time
-        # The start time of the session.
-        # The time is displayed in UTC in the ISO 8601 standard format: yyyy-MM-ddTHH:mm:ssZ.
+        # The start time of the session. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.session_start_time = session_start_time
         # The session connection status.
         self.session_status = session_status
-        # The purchase method of the cloud computer.
+        # The billing method of the cloud computer.
         self.sub_pay_type = sub_pay_type
         # The terminal device information.
         self.terminal_info = terminal_info
@@ -176,6 +177,9 @@ class DescribeDesktopSessionsResponseBodySessions(DaraModel):
 
         if self.end_user_id is not None:
             result['EndUserId'] = self.end_user_id
+
+        if self.last_client_ip is not None:
+            result['LastClientIp'] = self.last_client_ip
 
         if self.latest_connection_time is not None:
             result['LatestConnectionTime'] = self.latest_connection_time
@@ -252,6 +256,9 @@ class DescribeDesktopSessionsResponseBodySessions(DaraModel):
         if m.get('EndUserId') is not None:
             self.end_user_id = m.get('EndUserId')
 
+        if m.get('LastClientIp') is not None:
+            self.last_client_ip = m.get('LastClientIp')
+
         if m.get('LatestConnectionTime') is not None:
             self.latest_connection_time = m.get('LatestConnectionTime')
 
@@ -312,7 +319,7 @@ class DescribeDesktopSessionsResponseBodySessionsTerminalInfo(DaraModel):
         self.model = model
         # The terminal device type.
         self.product_name = product_name
-        # The terminal device serial number.
+        # The serial number of the terminal device.
         self.serial_number = serial_number
         # The UUID of the logon device.
         self.uuid = uuid

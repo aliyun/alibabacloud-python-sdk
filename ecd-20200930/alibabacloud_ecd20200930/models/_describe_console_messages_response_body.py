@@ -14,9 +14,9 @@ class DescribeConsoleMessagesResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The list of console messages queried on the current page. If no messages match, an empty list is returned.
+        # The list of console messages queried for the current page. If no messages match, an empty list is returned.
         self.message_list = message_list
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the current request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
         # The total number of messages that match the query conditions, not the number of messages returned on the current page.
         self.total_count = total_count
@@ -88,7 +88,7 @@ class DescribeConsoleMessagesResponseBodyMessageList(DaraModel):
         self.client_types = client_types
         # The list of message body configurations for each language.
         self.content_configs = content_configs
-        # The time when the operational message stops taking effect.
+        # The time when the operational message stops taking effect. The time is in ISO 8601 format. A time zone offset of +00:00 indicates UTC time.
         self.end_time = end_time
         # The time when the message was created.
         self.gmt_create = gmt_create
@@ -100,7 +100,7 @@ class DescribeConsoleMessagesResponseBodyMessageList(DaraModel):
         self.image_file_path = image_file_path
         # The list of image configurations, which is mainly used for custom wallpaper messages. Each item includes the image name, image type, storage path, and temporary download URL.
         self.image_info_list = image_info_list
-        # The temporary download URL of the operational message image. The link has a limited validity period. If it expires, you can query again to obtain a new one.
+        # The temporary download URL of the operational message image. The link has a limited validity period. If the link expires, you can query again to obtain a new one.
         self.image_url = image_url
         # The message ID, which can be used to send, modify, or delete a specified message.
         self.message_id = message_id
@@ -112,11 +112,11 @@ class DescribeConsoleMessagesResponseBodyMessageList(DaraModel):
         self.meta_data = meta_data
         # The display position of the message. For wallpaper text messages, valid values are CENTER (center), TOP_RIGHT (top right), BOTTOM_RIGHT (bottom right), and BOTTOM_LEFT (bottom left). For client operational messages, valid values are CLIENT_ENTERPRISE_RESOURCE_PAGE (Enterprise Edition client cloud resource page) and CLIENT_BUSINESS_RESOURCE_PAGE (Business Edition client cloud resource page).
         self.position = position
-        # The time when the operational message starts taking effect.
+        # The time when the operational message starts taking effect. The time is in ISO 8601 format. A time zone offset of +00:00 indicates UTC time.
         self.start_time = start_time
-        # The current status of the message. Valid values: Init (initializing), Pushing (pushing), Published (published), Expired (expired), Deleting (deleting), and Failed (failed). Published indicates that the message has been published or the server has finished pushing, but it does not indicate that all target terminals have successfully received the message.
+        # The current status of the message. Valid values: Init (initializing), Pushing (pushing), Published (published), Expired (expired), Deleting (deleting), and Failed (failed). Published indicates that the message has been published or the server-side push processing has finished, but it does not indicate that all target terminals have successfully received the message.
         self.status = status
-        # The JSON string of the list of targets to which the message applies. For Organization and AdOrg, it is an array of objects containing orgId (organization ID) and orgName (organization name). The organization name may be empty, and records in the old format may not contain orgName. For Tag, it is an array of objects containing tagKey (tag key), tagValue (tag value), and regionId (region ID). For other target types, it is an array of strings. The target for all users is represented by ALL_USERS.
+        # The JSON string of the list of targets to which the message applies. For Organization and AdOrg, it is an array of objects containing orgId (organization ID) and orgName (organization name). The organization name may be empty, and records in the old format may not contain orgName. For Tag, it is an array of objects containing tagKey (tag key), tagValue (tag value), and regionId (region ID). For other target types, it is an array of strings. The all-users target is represented by ALL_USERS.
         self.target_ids = target_ids
         # The type of the target to which the message applies. Valid values: AllUsers (all convenience users), EndUser (specified convenience user), Organization (specified convenience user organization), Desktop (cloud computer), ResourceGroup (resource group), Region (region), Tag (tag), AdAllUsers (all AD users), AdUser (specified AD user), and AdOrg (specified AD organization).
         self.target_type = target_type
@@ -296,9 +296,9 @@ class DescribeConsoleMessagesResponseBodyMessageListTitleConfigs(DaraModel):
         lang_type: str = None,
         title_text: str = None,
     ):
-        # The color of the title text, which retains the color value saved when the message was created or modified.
+        # The color of the title text. The color value saved when the message is created or modified is used.
         self.color = color
-        # The title language. Valid values: CN (Chinese), EN (English), and JP (Japanese). The query returns the language value saved when the message was created or modified, retaining the original case.
+        # The title language. Valid values: CN (Chinese), EN (English), and JP (Japanese). The query returns the language value saved when the message is created or modified, retaining the original case.
         self.lang_type = lang_type
         # The message title text in the specified language.
         self.title_text = title_text
@@ -402,9 +402,9 @@ class DescribeConsoleMessagesResponseBodyMessageListImageInfoList(DaraModel):
         self.file_name = file_name
         # The storage path of the image file.
         self.image_file_path = image_file_path
-        # The image type. Configuration types defined by the backend include Operational (operational message image), WallpaperBasic (basic wallpaper image), and WallpaperAppend (appended wallpaper image). The query returns the image type value saved when the message was created or modified, retaining the original case.
+        # The image type. Configuration types defined by the backend include Operational (operational message image), WallpaperBasic (basic wallpaper image), and WallpaperAppend (appended wallpaper image). The query returns the image type value saved when the message is created or modified, retaining the original case.
         self.image_type = image_type
-        # The temporary download URL of the image file. The link has a limited validity period. If it expires, you can query again to obtain a new one.
+        # The temporary download URL of the image file. The link has a limited validity period. If the link expires, you can query again to obtain a new one.
         self.image_url = image_url
 
     def validate(self):
@@ -453,7 +453,7 @@ class DescribeConsoleMessagesResponseBodyMessageListHyperLinkConfigs(DaraModel):
     ):
         # The text displayed on the hyperlink button.
         self.title = title
-        # The URL accessed after clicking the hyperlink button.
+        # The URL accessed after the hyperlink button is clicked.
         self.url = url
 
     def validate(self):
@@ -489,11 +489,11 @@ class DescribeConsoleMessagesResponseBodyMessageListContentConfigs(DaraModel):
         content_text: str = None,
         lang_type: str = None,
     ):
-        # The color of the body text, which retains the color value saved when the message was created or modified.
+        # The color of the body text. The color value saved when the message is created or modified is used.
         self.color = color
         # The message body text in the specified language.
         self.content_text = content_text
-        # The body language. Valid values: CN (Chinese), EN (English), and JP (Japanese). The query returns the language value saved when the message was created or modified, retaining the original case.
+        # The body language. Valid values: CN (Chinese), EN (English), and JP (Japanese). The query returns the language value saved when the message is created or modified, retaining the original case.
         self.lang_type = lang_type
 
     def validate(self):

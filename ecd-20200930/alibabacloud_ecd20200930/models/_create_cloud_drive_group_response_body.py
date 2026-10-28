@@ -13,15 +13,15 @@ class CreateCloudDriveGroupResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The returned results. A value of success indicates that the operation is successful. If the operation failed, an error message is returned.
+        # The modification result. A value of success indicates that the operation is successful. Otherwise, an error message is returned.
         self.code = code
         # The data information.
         self.data = data
-        # The error message that is returned. This parameter is not returned if the value of Code is success.
+        # The error message. This parameter is not returned when Code is success.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. true: The call is successful. false: The call fails.
+        # Indicates whether the operation is successful. Valid values: true: Successful. false: Failed.
         self.success = success
 
     def validate(self):

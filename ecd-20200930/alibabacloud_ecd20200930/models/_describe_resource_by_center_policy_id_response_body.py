@@ -15,13 +15,13 @@ class DescribeResourceByCenterPolicyIdResponseBody(DaraModel):
         request_id: str = None,
         resource_model_list: List[main_models.DescribeResourceByCenterPolicyIdResponseBodyResourceModelList] = None,
     ):
-        # The total number of resources.
+        # The total count.
         self.count = count
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The token for the next query. If NextToken is empty, no more results are available.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The resources.
+        # The list of resources.
         self.resource_model_list = resource_model_list
 
     def validate(self):
@@ -92,11 +92,11 @@ class DescribeResourceByCenterPolicyIdResponseBodyResourceModelList(DaraModel):
         resource_type: str = None,
         status: str = None,
     ):
-        # The cloud applications.
+        # The list of cloud applications.
         self.app_model_list = app_model_list
         # The number of vCPUs.
         self.cpu = cpu
-        # The cloud computer type. You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) operation to query the IDs of the cloud computer types supported by Alibaba Cloud Workspace.
+        # The target cloud desktop specification. You can call [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) to query the specification IDs supported by WUYING Workspace.
         self.desktop_type = desktop_type
         # The number of GPUs.
         self.gpu_count = gpu_count
@@ -104,11 +104,11 @@ class DescribeResourceByCenterPolicyIdResponseBodyResourceModelList(DaraModel):
         self.gpu_spec = gpu_spec
         # The memory size. Unit: MiB.
         self.memory = memory
-        # The OS type.
+        # The operating system type.
         self.os_type = os_type
         # The billing method.
         self.pay_type = pay_type
-        # The service type.
+        # The product type.
         self.product_type = product_type
         # The protocol type.
         self.protocol_type = protocol_type
@@ -116,17 +116,17 @@ class DescribeResourceByCenterPolicyIdResponseBodyResourceModelList(DaraModel):
         self.resource_group_id = resource_group_id
         # The resource group name.
         self.resource_group_name = resource_group_name
-        # The number of associated resource groups
+        # The number of associated resource groups.
         self.resource_group_rel_count = resource_group_rel_count
         # The resource ID.
         self.resource_id = resource_id
         # The resource name.
         self.resource_name = resource_name
-        # The region ID of the resource.
+        # The region where the resource resides.
         self.resource_region_id = resource_region_id
         # The resource type.
         self.resource_type = resource_type
-        # The resource status.
+        # The status of the resource.
         self.status = status
 
     def validate(self):
@@ -265,7 +265,7 @@ class DescribeResourceByCenterPolicyIdResponseBodyResourceModelListAppModelList(
         app_id: str = None,
         app_name: str = None,
     ):
-        # The application ID. This parameter is only applicable to cloud applications.
+        # The application ID. This parameter is specific to resources whose resource type is App.
         self.app_id = app_id
         # The application name.
         self.app_name = app_name

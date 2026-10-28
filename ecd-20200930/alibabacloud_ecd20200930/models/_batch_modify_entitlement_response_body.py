@@ -13,7 +13,7 @@ class BatchModifyEntitlementResponseBody(DaraModel):
         entitlements: main_models.BatchModifyEntitlementResponseBodyEntitlements = None,
         request_id: str = None,
     ):
-        # The assignment results.
+        # The entitlements collection.
         self.entitlements = entitlements
         # The request ID.
         self.request_id = request_id
@@ -53,7 +53,7 @@ class BatchModifyEntitlementResponseBodyEntitlements(DaraModel):
         status: str = None,
         task_id: str = None,
     ):
-        # The assignment result details.
+        # The collection of assignment results.
         self.assign_models = assign_models
         # The overall assignment result.
         self.status = status
@@ -107,11 +107,11 @@ class BatchModifyEntitlementResponseBodyEntitlementsAssignModels(DaraModel):
         end_user_ids: List[str] = None,
         inner_status: str = None,
     ):
-        # The cloud computer ID.
+        # The cloud desktop ID.
         self.desktop_id = desktop_id
-        # The user IDs (usernames) authorized to use the cloud computer.
+        # The IDs of the users authorized to use the cloud desktop, which are the usernames.
         self.end_user_ids = end_user_ids
-        # The assignment result for a single cloud computer.
+        # The assignment result for a single cloud desktop.
         self.inner_status = inner_status
 
     def validate(self):

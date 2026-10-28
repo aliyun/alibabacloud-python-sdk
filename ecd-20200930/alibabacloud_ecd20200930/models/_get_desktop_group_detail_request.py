@@ -10,11 +10,11 @@ class GetDesktopGroupDetailRequest(DaraModel):
         desktop_group_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the shared cloud computer.
+        # The ID of the shared cloud desktop.
         # 
         # This parameter is required.
         self.desktop_group_id = desktop_group_id
-        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the list of regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id

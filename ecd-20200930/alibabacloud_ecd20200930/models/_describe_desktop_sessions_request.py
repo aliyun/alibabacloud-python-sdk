@@ -27,32 +27,31 @@ class DescribeDesktopSessionsRequest(DaraModel):
         start_time: str = None,
         sub_pay_type: str = None,
     ):
-        # Specifies whether to check the session status within the cloud computer.
+        # Specifies whether to check the session status in the cloud computer.
         self.check_os_session = check_os_session
-        # The cloud computer IDs. You can specify 1 to 100 IDs.
+        # The cloud computer ID. You can specify 1 to 100 IDs.
         self.desktop_id = desktop_id
         # The cloud computer name.
         self.desktop_name = desktop_name
-        # The end of the time range to query.
-        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The end time of the query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.end_time = end_time
         # The end user ID.
         self.end_user_id = end_user_id
-        # The end user ID. This parameter is the same as EndUserId. You only need to specify one of them.
+        # The end user ID. This parameter is the same as the EndUserId parameter. You only need to specify one of them.
         self.end_user_id_filter = end_user_id_filter
         # The list of end user IDs.
         self.end_user_ids = end_user_ids
         # Specifies whether to include terminal information in the response.
         self.fill_hardware_info = fill_hardware_info
-        # The language type of the response.
+        # The language of the response.
         self.language = language
         # The office network ID.
         self.office_site_id = office_site_id
-        # The page number of the current page in a paged query.
+        # The page number of the current page in a paging query.
         self.page_number = page_number
-        # The maximum number of rows per page in a paged query.
+        # The maximum number of entries per page in a paging query.
         self.page_size = page_size
-        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions supported by Wuying Cloud Computer.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -60,10 +59,9 @@ class DescribeDesktopSessionsRequest(DaraModel):
         self.resource_group_id = resource_group_id
         # The session connection status.
         self.session_status = session_status
-        # The beginning of the time range to query.
-        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The start time of the query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
-        # The purchase method of the cloud computer.
+        # The billing method of the cloud computer.
         self.sub_pay_type = sub_pay_type
 
     def validate(self):

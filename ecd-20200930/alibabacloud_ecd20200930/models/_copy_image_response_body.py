@@ -10,7 +10,7 @@ class CopyImageResponseBody(DaraModel):
         image_id: str = None,
         request_id: str = None,
     ):
-        # The image ID in the destination region.
+        # The ID of the image in the destination region.
         self.image_id = image_id
         # The request ID.
         self.request_id = request_id

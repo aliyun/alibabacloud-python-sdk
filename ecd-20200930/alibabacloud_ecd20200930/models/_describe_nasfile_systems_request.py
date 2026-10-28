@@ -16,20 +16,20 @@ class DescribeNASFileSystemsRequest(DaraModel):
         office_site_id: str = None,
         region_id: str = None,
     ):
-        # The list of NAS file system IDs.
+        # The IDs of the NAS file systems.
         self.file_system_id = file_system_id
         # Specifies whether to include only NAS file systems that support UPM in the query results.
         self.match_compatible_profile = match_compatible_profile
-        # The number of entries per page for a paged query.    
+        # The number of entries to return per page in a paging query.    
         # 
         # - Maximum value: 100.    
         # - Default value: 10.
         self.max_results = max_results
-        # The pagination token. Set this parameter to the NextToken value returned in the previous API call.
+        # The pagination token. Set the value to the NextToken value returned from the last API call.
         self.next_token = next_token
-        # The office network ID.
+        # The ID of the office network.
         self.office_site_id = office_site_id
-        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by WUYING Workspace.
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions supported by WUYING Workspace.
         # 
         # This parameter is required.
         self.region_id = region_id

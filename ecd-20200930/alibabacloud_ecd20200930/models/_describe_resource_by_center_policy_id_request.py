@@ -13,25 +13,18 @@ class DescribeResourceByCenterPolicyIdRequest(DaraModel):
         product_type: str = None,
         resource_id: str = None,
     ):
-        # The number of entries per page.
+        # The number of entries per page for a paged query.    
         # 
-        # *   Maximum value: 100.
-        # *   Default value: 10.
+        # - Maximum value: 100.    
+        # - Default value: 10.
         self.max_results = max_results
-        # A pagination token.
+        # The token for the next query.
         self.next_token = next_token
         # The policy ID.
         # 
         # This parameter is required.
         self.policy_group_id = policy_group_id
-        # The service type.
-        # 
-        # Valid values:
-        # 
-        # *   app: cloud applications.
-        # *   resourceGroup: resource groups.
-        # *   desktop: cloud computers.
-        # *   desktopGroup: cloud computer shares.
+        # The product type.
         self.product_type = product_type
         # The resource ID.
         self.resource_id = resource_id

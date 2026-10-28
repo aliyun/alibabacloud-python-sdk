@@ -16,15 +16,15 @@ class ModifyAutoSnapshotPolicyRequest(DaraModel):
     ):
         # The cron expression.
         self.cron_expression = cron_expression
-        # The type of cloud disk for which the automatic snapshot policy creates snapshots.
+        # The type of the cloud disk for which the automatic snapshot policy creates snapshots.
         self.disk_type = disk_type
         # The ID of the automatic snapshot policy.
         # 
         # This parameter is required.
         self.policy_id = policy_id
-        # The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain digits, colons (:), underscores (_), or hyphens (-). Default value: empty.
+        # The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), and hyphens (-). Default value: empty.
         self.policy_name = policy_name
-        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id

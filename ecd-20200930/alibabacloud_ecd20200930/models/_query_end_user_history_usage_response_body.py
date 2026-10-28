@@ -14,11 +14,11 @@ class QueryEndUserHistoryUsageResponseBody(DaraModel):
         total_count: int = None,
         user_usage_info_list: List[main_models.QueryEndUserHistoryUsageResponseBodyUserUsageInfoList] = None,
     ):
-        # The request ID.
+        # The unique identifier of the request.
         self.request_id = request_id
         # The total number of users that meet the query conditions.
         self.total_count = total_count
-        # The list of user usage duration entries on the current page.
+        # The list of user usage durations on the current page.
         self.user_usage_info_list = user_usage_info_list
 
     def validate(self):
@@ -73,21 +73,21 @@ class QueryEndUserHistoryUsageResponseBodyUserUsageInfoList(DaraModel):
         org_path_list: List[str] = None,
         user_group_list: List[main_models.QueryEndUserHistoryUsageResponseBodyUserUsageInfoListUserGroupList] = None,
     ):
-        # The remarks of the user. This parameter has a value only for convenience account users.
+        # The description of the user. This parameter has a value only for convenience users.
         self.description = description
-        # The list of usage duration details for each desktop.
+        # The list of usage duration details for each cloud desktop.
         self.desktop_usage_list = desktop_usage_list
-        # The display name of the user. For convenience account users, this is the actual nickname. For AD users, this is the display name.
+        # The display name of the user. For convenience users, this is the real nickname. For AD users, this is the display name.
         self.display_name = display_name
         # The total usage duration, in seconds.
         self.duration = duration
-        # The end user ID.
+        # The ID of the end user.
         self.end_user_id = end_user_id
-        # The username. For convenience account users, this is the nickname. For AD users, this is the UserPrincipalName.
+        # The username. For convenience users, this is the nickname. For AD users, this is the UserPrincipalName.
         self.end_user_name = end_user_name
-        # The list of organization paths. For convenience account users, this contains multiple organization paths. For AD users, this is the organizational unit (OU) path.
+        # The list of organization paths. For convenience users, this includes multiple organization paths. For AD users, this is the OU path.
         self.org_path_list = org_path_list
-        # The list of user groups. This parameter has a value only for convenience account users.
+        # The list of user groups. This parameter has a value only for convenience users.
         self.user_group_list = user_group_list
 
     def validate(self):
@@ -175,9 +175,9 @@ class QueryEndUserHistoryUsageResponseBodyUserUsageInfoListUserGroupList(DaraMod
         user_group_id: str = None,
         user_group_name: str = None,
     ):
-        # The user group ID.
+        # The ID of the user group.
         self.user_group_id = user_group_id
-        # The user group name.
+        # The name of the user group.
         self.user_group_name = user_group_name
 
     def validate(self):
@@ -213,11 +213,11 @@ class QueryEndUserHistoryUsageResponseBodyUserUsageInfoListDesktopUsageList(Dara
         desktop_name: str = None,
         duration: int = None,
     ):
-        # The desktop ID.
+        # The ID of the cloud desktop.
         self.desktop_id = desktop_id
-        # The desktop name.
+        # The name of the cloud desktop.
         self.desktop_name = desktop_name
-        # The usage duration of the user on the desktop, in seconds.
+        # The usage duration of the user on the cloud desktop, in seconds.
         self.duration = duration
 
     def validate(self):

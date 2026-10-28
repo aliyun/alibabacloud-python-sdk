@@ -17,24 +17,24 @@ class ModifyDiskSpecRequest(DaraModel):
     ):
         # Specifies whether to enable automatic payment.
         # 
-        # - If you set this parameter to `true`, make sure that your account balance is sufficient. Otherwise, abnormal orders are generated.
-        # - If you set this parameter to `false`, you can log on to the console and make the payment on the **Expenses and Costs** page based on the returned order ID.
+        # - If you set this parameter to `true`, make sure that your account balance is sufficient. Otherwise, an abnormal order is generated.
+        # - If you set this parameter to `false`, you can log on to the console and pay for the order based on the returned order ID on the **Expenses and Costs** page.
         self.auto_pay = auto_pay
-        # The cloud computer ID.
+        # The cloud desktop ID.
         # 
         # This parameter is required.
         self.desktop_id = desktop_id
-        # The promotion ID. You can obtain the list of matched promotion IDs by calling the pricing query operation.
+        # The ID of the promotion. You can call the pricing API operation to obtain the list of matched promotion IDs.
         self.promotion_id = promotion_id
-        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the list of regions supported by Elastic Desktop Service.
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions supported by cloud desktops.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The user ID of the resource ownership in reseller mode. You do not need to specify this parameter if you are not in reseller mode.
+        # The user ID of the resource owner in the reseller model. This parameter is not required in the non-reseller model.
         self.reseller_owner_uid = reseller_owner_uid
-        # The performance level (PL) of the system cloud disk. You can set the disk performance level when the cloud computer specification is Enterprise Graphics or High Frequency.
+        # The performance level of the system cloud disk. You can set the disk performance level when the cloud desktop specification is Enterprise Graphics or High-frequency.
         self.root_disk_performance_level = root_disk_performance_level
-        # The performance level (PL) of the data cloud disk. You can set the disk performance level when the cloud computer specification is Enterprise Graphics or High Frequency.
+        # The performance level of the data cloud disk. You can set the disk performance level when the cloud desktop specification is Enterprise Graphics or High-frequency.
         self.user_disk_performance_level = user_disk_performance_level
 
     def validate(self):

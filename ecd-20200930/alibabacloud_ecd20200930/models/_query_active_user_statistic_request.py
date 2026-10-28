@@ -15,32 +15,32 @@ class QueryActiveUserStatisticRequest(DaraModel):
     ):
         # The business channel type code. Valid values:
         # 
-        # - 1 (default): Enterprise Edition.
+        # - 1: Enterprise Edition. This is the default value.
         # - 3: Cloud Office.
         # - 10: Standard Edition.
         # - 20: Business Edition.
         # - 30: Education Business Edition.
-        # - 40: Cloud Phone isolated resources.
+        # - 40: Cloud phone isolated resources.
         # - 50: AgentBay.
         self.biz_type = biz_type
-        # The end time of the query. The format is the same as StartTime. If the value is later than the current time, it is automatically truncated to the current time.
+        # The end time of the query. The format is the same as that of StartTime. If the specified time is later than the current time, it is automatically truncated to the current time.
         self.end_time = end_time
-        # The workspace ID. If specified, only active users of cloud desktops in this workspace are counted.
+        # The workspace ID. If specified, only active users of desktops in this workspace are counted.
         self.office_site_id = office_site_id
-        # The aggregation interval for statistics. Valid values:
+        # The aggregation granularity of the statistics. Valid values:
         # 
         # - ONE_MINUTE: 1 minute.
         # - TWO_MINUTE: 2 minutes.
-        # - FIVE_MINUTE (default): 5 minutes.
+        # - FIVE_MINUTE: 5 minutes. This is the default value.
         # - ONE_HOUR: 1 hour.
         # - ONE_DAY: 1 day.
         self.period = period
-        # The start time of the query. The following formats are supported:
+        # The start time of the query. Two formats are supported:
         # 
         # - UTC format: yyyy-MM-ddTHH:mm:ssZ.
         # - Standard format: yyyy-MM-dd HH:mm:ss.
         # 
-        # The value cannot be earlier than 6 months before the current time or later than EndTime.
+        # The start time cannot be earlier than six months ago or later than the end time.
         self.start_time = start_time
 
     def validate(self):
