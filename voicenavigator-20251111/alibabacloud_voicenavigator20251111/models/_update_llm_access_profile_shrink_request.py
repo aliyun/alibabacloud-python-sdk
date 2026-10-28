@@ -11,8 +11,11 @@ class UpdateLlmAccessProfileShrinkRequest(DaraModel):
         instance_id: str = None,
         profile_shrink: str = None,
     ):
+        # The ID of the third-party model configuration.
         self.access_profile_id = access_profile_id
+        # The instance ID.
         self.instance_id = instance_id
+        # The parameter settings.
         self.profile_shrink = profile_shrink
 
     def validate(self):

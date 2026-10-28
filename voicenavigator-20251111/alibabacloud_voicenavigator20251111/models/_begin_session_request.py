@@ -12,9 +12,14 @@ class BeginSessionRequest(DaraModel):
         script_id: str = None,
         vendor_params: str = None,
     ):
+        # Specifies whether the draft version is used.
         self.draft_version = draft_version
+        # The instance ID.
         self.instance_id = instance_id
+        # The scenario ID.
         self.script_id = script_id
+        # The vendor parameters.
+        # >JSON format: {"key1":"value1"}
         self.vendor_params = vendor_params
 
     def validate(self):

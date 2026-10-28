@@ -10,7 +10,9 @@ class DeleteVocabularyRequest(DaraModel):
         instance_id: str = None,
         vocabulary_id: str = None,
     ):
+        # The ID of the Voice Navigator instance.
         self.instance_id = instance_id
+        # The ID of the vocabulary to delete.
         self.vocabulary_id = vocabulary_id
 
     def validate(self):

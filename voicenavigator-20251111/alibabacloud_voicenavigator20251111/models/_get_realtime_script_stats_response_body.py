@@ -17,12 +17,17 @@ class GetRealtimeScriptStatsResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The error code.
         self.code = code
+        # The real-time script statistics.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # A list of error parameters.
         self.params = params
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -84,8 +89,11 @@ class GetRealtimeScriptStatsResponseBodyData(DaraModel):
         stats_time: int = None,
         used_concurrency: int = None,
     ):
+        # The configured concurrency.
         self.configured_concurrency = configured_concurrency
+        # The time the statistics were collected, expressed as a Unix timestamp in milliseconds.
         self.stats_time = stats_time
+        # The current concurrency.
         self.used_concurrency = used_concurrency
 
     def validate(self):

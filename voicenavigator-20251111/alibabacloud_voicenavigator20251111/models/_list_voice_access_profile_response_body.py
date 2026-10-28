@@ -17,11 +17,17 @@ class ListVoiceAccessProfileResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The internal error code.
         self.code = code
+        # The paginated results of third-party voice configurations.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The list of dynamic error parameters.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListVoiceAccessProfileResponseBodyData(DaraModel):
         total_count: int = None,
         voice_access_profiles: List[main_models.ListVoiceAccessProfileResponseBodyDataVoiceAccessProfiles] = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries.
         self.total_count = total_count
+        # The list of third-party voice configurations.
         self.voice_access_profiles = voice_access_profiles
 
     def validate(self):
@@ -147,13 +157,21 @@ class ListVoiceAccessProfileResponseBodyDataVoiceAccessProfiles(DaraModel):
         profile: main_models.ListVoiceAccessProfileResponseBodyDataVoiceAccessProfilesProfile = None,
         updated_time: int = None,
     ):
+        # The configuration ID.
         self.access_profile_id = access_profile_id
+        # The list of voice engine capabilities.
         self.capabilities = capabilities
+        # The creation time.
         self.created_time = created_time
+        # The instance ID.
         self.instance_id = instance_id
+        # The voice engine.
         self.nls_engine = nls_engine
+        # The display name.
         self.nls_engine_name = nls_engine_name
+        # The parameter settings.
         self.profile = profile
+        # The update time.
         self.updated_time = updated_time
 
     def validate(self):
@@ -231,12 +249,19 @@ class ListVoiceAccessProfileResponseBodyDataVoiceAccessProfilesProfile(DaraModel
         asr_app_key: str = None,
         tts_api_key: str = None,
     ):
+        # The AccessKey for Doubao API calls.
         self.access_key = access_key
+        # The ApiKey for Alibaba Cloud Bailian and iFLYTEK API calls.
         self.api_key = api_key
+        # The ApiSecret for iFLYTEK API calls.
         self.api_secret = api_secret
+        # The AppId for iFLYTEK API calls.
         self.app_id = app_id
+        # The AppKey for Doubao API calls.
         self.app_key = app_key
+        # This parameter is not in use.
         self.asr_app_key = asr_app_key
+        # This parameter is not in use.
         self.tts_api_key = tts_api_key
 
     def validate(self):

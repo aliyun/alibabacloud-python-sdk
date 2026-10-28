@@ -17,12 +17,17 @@ class ListHistoricalScriptReportResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The error code.
         self.code = code
+        # The cloned voice ID.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # A list of invalid parameters.
         self.params = params
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -85,9 +90,13 @@ class ListHistoricalScriptReportResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # A list of script reports.
         self.list = list
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -156,21 +165,37 @@ class ListHistoricalScriptReportResponseBodyDataList(DaraModel):
         total_tokens: int = None,
         used_concurrency: int = None,
     ):
+        # The number of calls handled.
         self.calls_handled = calls_handled
+        # The number of calls offered.
         self.calls_offered = calls_offered
+        # The number of calls rejected.
         self.calls_rejected = calls_rejected
+        # The number of calls that a large language model (LLM) determined to be resolved.
         self.calls_resolved = calls_resolved
+        # The most recent concurrency setting.
         self.configured_concurrency = configured_concurrency
+        # A breakdown of call labels.
         self.label_distribution = label_distribution
+        # The maximum talk time, in milliseconds.
         self.max_talk_time = max_talk_time
+        # A breakdown of call rejection reasons.
         self.rejection_breakdown = rejection_breakdown
+        # A breakdown of disconnection reasons for answered calls.
         self.release_reason_breakdown = release_reason_breakdown
+        # The script ID.
         self.script_id = script_id
+        # A breakdown of conversation turns.
         self.talk_turns_distribution = talk_turns_distribution
+        # This parameter is reserved for future use.
         self.total_input_tokens = total_input_tokens
+        # This parameter is reserved for future use.
         self.total_output_tokens = total_output_tokens
+        # The total talk time, in milliseconds.
         self.total_talk_time = total_talk_time
+        # This parameter is reserved for future use.
         self.total_tokens = total_tokens
+        # The peak concurrency.
         self.used_concurrency = used_concurrency
 
     def validate(self):

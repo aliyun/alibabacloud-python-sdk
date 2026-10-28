@@ -12,9 +12,13 @@ class ListVocabularyRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the vocabulary.
         self.name = name
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):

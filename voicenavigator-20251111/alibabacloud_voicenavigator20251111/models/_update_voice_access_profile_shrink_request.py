@@ -12,9 +12,13 @@ class UpdateVoiceAccessProfileShrinkRequest(DaraModel):
         nls_engine: str = None,
         profile_shrink: str = None,
     ):
+        # The access profile ID.
         self.access_profile_id = access_profile_id
+        # The instance ID.
         self.instance_id = instance_id
+        # The voice engine.
         self.nls_engine = nls_engine
+        # The parameter configuration for the selected voice engine.
         self.profile_shrink = profile_shrink
 
     def validate(self):

@@ -17,11 +17,17 @@ class ListNluModelsResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The error code.
         self.code = code
+        # A list of the NLU models.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The dynamic parameters for the error.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -88,7 +94,9 @@ class ListNluModelsResponseBodyData(DaraModel):
         id: str = None,
         name: str = None,
     ):
+        # The model ID.
         self.id = id
+        # The model name.
         self.name = name
 
     def validate(self):

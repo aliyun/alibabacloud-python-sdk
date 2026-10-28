@@ -15,12 +15,19 @@ class ListScriptsShrinkRequest(DaraModel):
         script_ids_shrink: str = None,
         status: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The scenario name.
         self.name = name
+        # The number.
         self.number = number
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The list of scenario IDs.
         self.script_ids_shrink = script_ids_shrink
+        # The status.
         self.status = status
 
     def validate(self):

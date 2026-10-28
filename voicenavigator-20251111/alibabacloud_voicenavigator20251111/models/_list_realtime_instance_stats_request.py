@@ -13,8 +13,11 @@ class ListRealtimeInstanceStatsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The IDs of the instances. You can specify 1 to 100 instance IDs.
         self.instance_ids = instance_ids
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):

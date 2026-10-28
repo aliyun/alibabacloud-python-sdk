@@ -16,11 +16,17 @@ class ImportVocabularyResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The result code.
         self.code = code
+        # A list of vocabulary IDs.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # Parameters used to dynamically generate the error message.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

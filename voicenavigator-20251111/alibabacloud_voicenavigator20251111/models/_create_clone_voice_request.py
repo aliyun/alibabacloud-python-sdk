@@ -11,8 +11,11 @@ class CreateCloneVoiceRequest(DaraModel):
         instance_id: str = None,
         model: str = None,
     ):
+        # The path of the uploaded file.
         self.file_key = file_key
+        # The instance ID.
         self.instance_id = instance_id
+        # The voice cloning model.
         self.model = model
 
     def validate(self):

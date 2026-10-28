@@ -10,7 +10,9 @@ class DeleteInstructionRequest(DaraModel):
         code: str = None,
         instance_id: str = None,
     ):
+        # The instruction code.
         self.code = code
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):

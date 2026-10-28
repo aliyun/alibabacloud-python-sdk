@@ -16,12 +16,19 @@ class PreviewVoiceRequest(DaraModel):
         text: str = None,
         voice: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The TTS model.
         self.model = model
+        # The TTS invocation method.
         self.nls_access_type = nls_access_type
+        # The TTS engine.
         self.nls_engine = nls_engine
+        # The synthesis parameters.
         self.params = params
+        # The preview text.
         self.text = text
+        # The voice.
         self.voice = voice
 
     def validate(self):
@@ -89,8 +96,11 @@ class PreviewVoiceRequestParams(DaraModel):
         speech_rate: float = None,
         volume: int = None,
     ):
+        # The pitch.
         self.pitch_rate = pitch_rate
+        # The speech rate.
         self.speech_rate = speech_rate
+        # The volume.
         self.volume = volume
 
     def validate(self):

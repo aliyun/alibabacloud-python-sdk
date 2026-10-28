@@ -10,7 +10,9 @@ class DeleteLlmAccessProfileRequest(DaraModel):
         access_profile_id: str = None,
         instance_id: str = None,
     ):
+        # The ID of the third-party model configuration.
         self.access_profile_id = access_profile_id
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):

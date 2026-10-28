@@ -12,9 +12,13 @@ class ListCallCenterProvidersRequest(DaraModel):
         page_size: int = None,
         provider_id: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The ID of the call center provider.
         self.provider_id = provider_id
 
     def validate(self):

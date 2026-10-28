@@ -12,9 +12,15 @@ class ListInstructionsRequest(DaraModel):
         page_size: int = None,
         provider_id: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The ID of the call center provider.
+        # 
+        # > You can obtain this ID by calling the `ListCallCenterProviders` operation.
         self.provider_id = provider_id
 
     def validate(self):

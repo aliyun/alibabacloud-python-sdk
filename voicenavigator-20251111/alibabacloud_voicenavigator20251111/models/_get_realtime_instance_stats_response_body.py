@@ -17,12 +17,17 @@ class GetRealtimeInstanceStatsResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The real-time stats for the instance.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # A list of parameters that are related to an error, if one occurred.
         self.params = params
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -85,9 +90,13 @@ class GetRealtimeInstanceStatsResponseBodyData(DaraModel):
         stats_time: int = None,
         used_concurrency: int = None,
     ):
+        # The maximum number of concurrent tasks configured for the instance.
         self.configured_concurrency = configured_concurrency
+        # A list of real-time stats for scripts.
         self.realtime_script_stats_list = realtime_script_stats_list
+        # The time when the statistics were collected, expressed as a Unix timestamp in milliseconds.
         self.stats_time = stats_time
+        # The current number of concurrent tasks for the instance.
         self.used_concurrency = used_concurrency
 
     def validate(self):
@@ -145,10 +154,15 @@ class GetRealtimeInstanceStatsResponseBodyDataRealtimeScriptStatsList(DaraModel)
         stats_time: int = None,
         used_concurrency: int = None,
     ):
+        # The maximum number of concurrent tasks configured for this script.
         self.configured_concurrency = configured_concurrency
+        # The script ID.
         self.script_id = script_id
+        # The script name.
         self.script_name = script_name
+        # The time when the statistics were collected, expressed as a Unix timestamp in milliseconds.
         self.stats_time = stats_time
+        # The current number of concurrent tasks for this script.
         self.used_concurrency = used_concurrency
 
     def validate(self):

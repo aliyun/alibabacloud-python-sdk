@@ -17,11 +17,17 @@ class BeginSessionResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The business status code. A value of OK indicates that the request is successful.
         self.code = code
+        # The business data.
         self.data = data
+        # The HTTP status code. A value of 200 indicates that the HTTP request is successful.
         self.http_status_code = http_status_code
+        # The HTTP response message.
         self.message = message
+        # The dynamic error parameters.
         self.params = params
+        # The POP request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -87,12 +93,19 @@ class BeginSessionResponseBodyData(DaraModel):
         stream_end: bool = None,
         stream_id: str = None,
     ):
+        # The chatbot reply content.
         self.answer = answer
+        # The list of control parameters.
         self.control_params_list = control_params_list
+        # The end time.
         self.end_time = end_time
+        # The session ID.
         self.session_id = session_id
+        # The start time.
         self.start_time = start_time
+        # Specifies whether the streaming response has ended.
         self.stream_end = stream_end
+        # The turn ID of the conversation.
         self.stream_id = stream_id
 
     def validate(self):
@@ -166,6 +179,11 @@ class BeginSessionResponseBodyDataControlParamsList(DaraModel):
         self,
         type: str = None,
     ):
+        # The control parameter type. Valid values:
+        # >- HangUp: Hang up.
+        # >- Transfer: Transfer.
+        # >- GatherDtmf: Gather DTMF.
+        # >- Voice: Voice.
         self.type = type
 
     def validate(self):

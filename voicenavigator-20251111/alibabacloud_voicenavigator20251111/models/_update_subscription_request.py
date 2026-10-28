@@ -19,14 +19,23 @@ class UpdateSubscriptionRequest(DaraModel):
         topic: str = None,
         user_name: str = None,
     ):
+        # The endpoint. This parameter is required when ROCKET_MQ_4 or ROCKET_MQ_5 is used.
         self.endpoint = endpoint
+        # The list of subscribed events.
         self.event_subscriptions = event_subscriptions
+        # The instance ID.
         self.instance_id = instance_id
+        # The MQ instance ID. This parameter is required when ROCKET_MQ_5 is used.
         self.mq_instance_id = mq_instance_id
+        # The message push type.
         self.mq_type = mq_type
+        # The password. This parameter is required when ROCKET_MQ_5 is used.
         self.password = password
+        # The producer ID. This parameter is required when ROCKET_MQ_4 is used.
         self.producer_id = producer_id
+        # The queue topic. This parameter is required when ROCKET_MQ_4 or ROCKET_MQ_5 is used.
         self.topic = topic
+        # The username. This parameter is required when ROCKET_MQ_5 is used.
         self.user_name = user_name
 
     def validate(self):

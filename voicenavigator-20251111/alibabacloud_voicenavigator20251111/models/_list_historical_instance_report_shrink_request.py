@@ -13,10 +13,15 @@ class ListHistoricalInstanceReportShrinkRequest(DaraModel):
         page_size: int = None,
         start_time: int = None,
     ):
+        # The end time for the query. The server rounds this value up to the next hour.
         self.end_time = end_time
+        # A JSON array of instance IDs. The array can contain up to 100 IDs.
         self.instance_ids_shrink = instance_ids_shrink
+        # The number of the page to return. The maximum value is 100.
         self.page_number = page_number
+        # The number of entries to return on each page. The maximum value is 100.
         self.page_size = page_size
+        # The start time for the query. The server rounds this value up to the next hour.
         self.start_time = start_time
 
     def validate(self):

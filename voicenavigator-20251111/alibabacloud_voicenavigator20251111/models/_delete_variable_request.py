@@ -10,7 +10,9 @@ class DeleteVariableRequest(DaraModel):
         instance_id: str = None,
         variable_id: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The variable ID.
         self.variable_id = variable_id
 
     def validate(self):

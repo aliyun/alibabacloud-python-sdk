@@ -13,10 +13,23 @@ class DialogueRequest(DaraModel):
         session_id: str = None,
         utterance: str = None,
     ):
+        # Extras.
+        # For example, a silence timeout: [{"dataType":"Silence"}]
+        # >Notice: Valid values for `dataType`: `DTMF`, `Silence`, or `RuntimePrompts`.
+        # 
+        # > - If `dataType` is `DTMF`, use the format: `[{"dataType":"DTMF","dtmf":"xxxx"}]`
+        # >
+        # > - If `dataType` is `Silence`, use the format: `[{"dataType":"Silence"}]`
+        # >
+        # > - If `dataType` is `RuntimePrompts`, use the format: `[{"dataType":"RuntimePrompts","prompts":"xxxx","persistent":false/true}]`
         self.extras = extras
+        # The instance ID.
         self.instance_id = instance_id
+        # The script ID.
         self.script_id = script_id
+        # The session ID.
         self.session_id = session_id
+        # The user\\"s input for the conversational turn.
         self.utterance = utterance
 
     def validate(self):

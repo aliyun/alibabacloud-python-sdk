@@ -17,12 +17,17 @@ class ListCallDetailRecordsResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # An object containing the returned call records.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # A list of invalid parameters in the request.
         self.params = params
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -85,9 +90,13 @@ class ListCallDetailRecordsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # A list of call detail records.
         self.call_detail_records = call_detail_records
+        # The page number.
         self.page_number = page_number
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The total number of entries that match the query.
         self.total_count = total_count
 
     def validate(self):
@@ -155,20 +164,35 @@ class ListCallDetailRecordsResponseBodyDataCallDetailRecords(DaraModel):
         transfer_target: str = None,
         transfer_type: str = None,
     ):
+        # The callee\\"s phone number.
         self.callee = callee
+        # The caller\\"s phone number.
         self.caller = caller
+        # The disposition code.
         self.disposition_code = disposition_code
+        # The disposition reason.
         self.disposition_reason = disposition_reason
+        # The total duration of the call, in seconds.
         self.duration = duration
+        # The end time of the session, as a UNIX timestamp in milliseconds.
         self.end_time = end_time
+        # Indicates whether the customer\\"s issue was resolved.
         self.issue_resolved = issue_resolved
+        # The party who released the call.
         self.release_initiator = release_initiator
+        # The evidence for the `IssueResolved` status.
         self.resolution_evidence = resolution_evidence
+        # The session ID.
         self.session_id = session_id
+        # The start time of the session, as a UNIX timestamp in milliseconds.
         self.start_time = start_time
+        # The talk time, in seconds.
         self.talk_time = talk_time
+        # The number of talk turns.
         self.talk_turns = talk_turns
+        # The transfer target.
         self.transfer_target = transfer_target
+        # The transfer type.
         self.transfer_type = transfer_type
 
     def validate(self):

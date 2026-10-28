@@ -17,11 +17,17 @@ class GetSubscriptionResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The request status. `OK` indicates that the request was successful.
         self.code = code
+        # The subscription details.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # Dynamic parameters used in the error message.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -90,15 +96,25 @@ class GetSubscriptionResponseBodyData(DaraModel):
         topic: str = None,
         user_name: str = None,
     ):
+        # Specifies whether the subscription is disabled.
         self.disabled = disabled
+        # The message queue endpoint. This parameter is required if `MqType` is set to `ROCKET_MQ_4` or `ROCKET_MQ_5`. The example endpoint is for the China (Hangzhou) region.
         self.endpoint = endpoint
+        # A list of subscribed events.
         self.event_list = event_list
+        # The instance ID.
         self.instance_id = instance_id
+        # The RocketMQ instance ID. This parameter is required if `MqType` is set to `ROCKET_MQ_5`.
         self.mq_instance_id = mq_instance_id
+        # The message queue type.
         self.mq_type = mq_type
+        # The password for authentication. This parameter is required if `MqType` is set to `ROCKET_MQ_5`.
         self.password = password
+        # The producer ID. This parameter is required if `MqType` is set to `ROCKET_MQ_4`.
         self.producer_id = producer_id
+        # The message queue topic. This parameter is required if `MqType` is set to `ROCKET_MQ_4` or `ROCKET_MQ_5`.
         self.topic = topic
+        # The username for authentication. This parameter is required if `MqType` is set to `ROCKET_MQ_5`.
         self.user_name = user_name
 
     def validate(self):
@@ -190,8 +206,11 @@ class GetSubscriptionResponseBodyDataEventList(DaraModel):
         display_name: str = None,
         name: str = None,
     ):
+        # Specifies whether pushes for this event are disabled.
         self.disabled = disabled
+        # The event\\"s display name.
         self.display_name = display_name
+        # The event name.
         self.name = name
 
     def validate(self):

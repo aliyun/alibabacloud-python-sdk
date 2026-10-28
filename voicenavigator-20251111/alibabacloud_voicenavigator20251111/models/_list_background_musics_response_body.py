@@ -17,11 +17,17 @@ class ListBackgroundMusicsResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The internal error code.
         self.code = code
+        # The paginated result of the background music list.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The list of dynamic error parameters.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListBackgroundMusicsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The list of background music tracks.
         self.background_musics = background_musics
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -143,6 +153,7 @@ class ListBackgroundMusicsResponseBodyDataBackgroundMusics(DaraModel):
     ):
         # ID
         self.id = id
+        # The name.
         self.name = name
 
     def validate(self):

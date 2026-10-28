@@ -16,10 +16,15 @@ class ListCloneVoiceResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Internal error code
         self.code = code
+        # The paginated list of cloned voices.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,9 +81,13 @@ class ListCloneVoiceResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # A list of cloned voices for the current page.
         self.clone_voices = clone_voices
+        # The returned page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of cloned voices that match the query.
         self.total_count = total_count
 
     def validate(self):
@@ -141,15 +150,25 @@ class ListCloneVoiceResponseBodyDataCloneVoices(DaraModel):
         updated_time: int = None,
         voice: str = None,
     ):
+        # The ID of the cloned voice.
         self.clone_voice_id = clone_voice_id
+        # The creation timestamp of the cloned voice.
         self.created_time = created_time
+        # The instance ID.
         self.instance_id = instance_id
+        # The cloning model.
         self.model = model
+        # The name of the cloned voice.
         self.name = name
+        # The TTS engine.
         self.nls_engine = nls_engine
+        # The status of the cloned voice.
         self.status = status
+        # The tenant ID.
         self.tenant_id = tenant_id
+        # The last update timestamp of the cloned voice.
         self.updated_time = updated_time
+        # The base voice used for cloning.
         self.voice = voice
 
     def validate(self):

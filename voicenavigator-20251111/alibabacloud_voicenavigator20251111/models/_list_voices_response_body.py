@@ -17,11 +17,17 @@ class ListVoicesResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The internal error code.
         self.code = code
+        # A paginated list of voices.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # A list of dynamic parameters related to the error.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListVoicesResponseBodyData(DaraModel):
         total_count: int = None,
         voices: List[main_models.ListVoicesResponseBodyDataVoices] = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries on the current page.
         self.page_size = page_size
+        # The total count of voices.
         self.total_count = total_count
+        # A list of voices.
         self.voices = voices
 
     def validate(self):
@@ -147,13 +157,21 @@ class ListVoicesResponseBodyDataVoices(DaraModel):
         supported_params: List[str] = None,
         voice: str = None,
     ):
+        # The category of the voice.
         self.category = category
+        # The language supported by the voice.
         self.language = language
+        # The TTS model.
         self.model = model
+        # The name of the voice.
         self.name = name
+        # The TTS engine.
         self.nls_engine = nls_engine
+        # The style of the voice.
         self.style = style
+        # A list of supported parameters.
         self.supported_params = supported_params
+        # The identifier for the voice.
         self.voice = voice
 
     def validate(self):

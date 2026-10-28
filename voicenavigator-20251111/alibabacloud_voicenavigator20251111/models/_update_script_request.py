@@ -13,10 +13,15 @@ class UpdateScriptRequest(DaraModel):
         name: str = None,
         script_id: str = None,
     ):
+        # The concurrency.
         self.concurrency = concurrency
+        # The description.
         self.description = description
+        # The instance ID.
         self.instance_id = instance_id
+        # The scenario name.
         self.name = name
+        # The scenario ID.
         self.script_id = script_id
 
     def validate(self):

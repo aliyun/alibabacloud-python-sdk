@@ -11,8 +11,11 @@ class CreateVoiceAccessProfileShrinkRequest(DaraModel):
         nls_engine: str = None,
         profile_shrink: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The speech engine.
         self.nls_engine = nls_engine
+        # The parameter settings.
         self.profile_shrink = profile_shrink
 
     def validate(self):

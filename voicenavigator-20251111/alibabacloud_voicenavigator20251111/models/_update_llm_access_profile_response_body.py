@@ -16,11 +16,17 @@ class UpdateLlmAccessProfileResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The internal error code.
         self.code = code
+        # The ID of the third-party model configuration.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The list of dynamic error parameters.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

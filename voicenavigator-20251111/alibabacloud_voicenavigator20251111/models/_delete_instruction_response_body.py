@@ -16,10 +16,15 @@ class DeleteInstructionResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The instruction code.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The list of error parameters.
         self.params = params
         # Id of the request
         self.request_id = request_id

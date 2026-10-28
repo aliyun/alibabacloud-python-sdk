@@ -17,11 +17,17 @@ class GetDataChannelCredentialResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The data channel credential.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The dynamic error parameters.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -87,12 +93,19 @@ class GetDataChannelCredentialResponseBodyData(DaraModel):
         topic: str = None,
         user_name: str = None,
     ):
+        # The client ID.
         self.client_id = client_id
+        # The device ID.
         self.device_id = device_id
+        # The endpoint.
         self.endpoint = endpoint
+        # The expiration time of the credential.
         self.expiration_time = expiration_time
+        # The password.
         self.password = password
+        # The topic for the data channel.
         self.topic = topic
+        # The username.
         self.user_name = user_name
 
     def validate(self):

@@ -10,7 +10,9 @@ class ImportVocabularyRequest(DaraModel):
         file_key: str = None,
         instance_id: str = None,
     ):
+        # The path to the uploaded file.
         self.file_key = file_key
+        # The ID of the instance.
         self.instance_id = instance_id
 
     def validate(self):

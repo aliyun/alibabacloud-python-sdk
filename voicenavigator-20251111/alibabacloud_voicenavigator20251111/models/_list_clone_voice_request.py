@@ -12,9 +12,13 @@ class ListCloneVoiceRequest(DaraModel):
         page_size: int = None,
         status: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The page number to return. Defaults to 1.
         self.page_number = page_number
+        # The number of entries to return on each page. Defaults to 10.
         self.page_size = page_size
+        # The status of the cloned voice.
         self.status = status
 
     def validate(self):

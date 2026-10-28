@@ -17,11 +17,17 @@ class ListCallCenterProvidersResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The call center provider data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # A list of dynamic error parameters.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListCallCenterProvidersResponseBodyData(DaraModel):
         providers: List[main_models.ListCallCenterProvidersResponseBodyDataProviders] = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # A list of call center providers.
         self.providers = providers
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -149,15 +159,29 @@ class ListCallCenterProvidersResponseBodyDataProviders(DaraModel):
         refer_to: str = None,
         trunk_id: str = None,
     ):
+        # The destination of the call transfer. Required if the transfer mode is `Bridge`.
         self.destination = destination
+        # The display name of the service provider.
         self.display_name = display_name
+        # The extra data.>Notice:  Format: `k1=v1;k2=v2`
         self.extras = extras
+        # The instance ID.
         self.instance_id = instance_id
+        # The service provider name.
         self.name = name
+        # The originator of the call transfer. Required if the transfer mode is `Bridge`.
         self.originator = originator
+        # The call center provider ID.
         self.provider_id = provider_id
+        # The provider type.
+        # 
+        # > - `CCC`: Cloud Contact Center
+        # >
+        # > - `CUSTOM`: customer-owned contact center
         self.provider_type = provider_type
+        # The Refer address.>Notice:  Required if the transfer mode is `Refer`.
         self.refer_to = refer_to
+        # The trunk ID.
         self.trunk_id = trunk_id
 
     def validate(self):

@@ -17,11 +17,17 @@ class ListScriptsResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The internal error code.
         self.code = code
+        # The paginated result of the scenario list.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The list of dynamic error parameters.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListScriptsResponseBodyData(DaraModel):
         scripts: List[main_models.ListScriptsResponseBodyDataScripts] = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The list of scenarios.
         self.scripts = scripts
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -151,17 +161,29 @@ class ListScriptsResponseBodyDataScripts(DaraModel):
         status: str = None,
         updated_time: int = None,
     ):
+        # The concurrency.
         self.concurrency = concurrency
+        # The creation time.
         self.created_time = created_time
+        # The description.
         self.description = description
+        # The draft version ID.
         self.draft_version_id = draft_version_id
+        # The scenario name.
         self.name = name
+        # The NLU invocation method.
         self.nlu_access_type = nlu_access_type
+        # The NLU engine.
         self.nlu_engine = nlu_engine
+        # The number.
         self.number = number
+        # The published version ID.
         self.published_version_id = published_version_id
+        # The scenario ID.
         self.script_id = script_id
+        # The status.
         self.status = status
+        # The update time.
         self.updated_time = updated_time
 
     def validate(self):

@@ -17,11 +17,17 @@ class DialogueResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The business status code. A value of `OK` indicates that the operation was successful.
         self.code = code
+        # The business-specific data returned by the operation.
         self.data = data
+        # The HTTP status code. A value of `200` indicates a successful response.
         self.http_status_code = http_status_code
+        # The HTTP response message.
         self.message = message
+        # The parameters associated with an error.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -87,12 +93,19 @@ class DialogueResponseBodyData(DaraModel):
         stream_end: bool = None,
         stream_id: str = None,
     ):
+        # The bot\\"s reply.
         self.answer = answer
+        # A list of control parameters.
         self.control_params_list = control_params_list
+        # The Unix timestamp for when the operation ended.
         self.end_time = end_time
+        # The session ID.
         self.session_id = session_id
+        # The Unix timestamp for when the operation started.
         self.start_time = start_time
+        # A flag that indicates whether the stream has ended. A value of `true` signifies the end of the stream.
         self.stream_end = stream_end
+        # The stream ID for the conversational turn.
         self.stream_id = stream_id
 
     def validate(self):
@@ -164,6 +177,15 @@ class DialogueResponseBodyDataControlParamsList(DaraModel):
         self,
         type: str = None,
     ):
+        # The type of the control parameter.
+        # 
+        # > - `HangUp`: Hang up.
+        # >
+        # > - `Transfer`: Transfer.
+        # >
+        # > - `GatherDtmf`: Gather DTMF.
+        # >
+        # > - `Voice`: Voice.
         self.type = type
 
     def validate(self):

@@ -10,7 +10,9 @@ class ExportScriptRequest(DaraModel):
         instance_id: str = None,
         script_id: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The ID of the script.
         self.script_id = script_id
 
     def validate(self):

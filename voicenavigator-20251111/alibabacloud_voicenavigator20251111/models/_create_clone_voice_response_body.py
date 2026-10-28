@@ -17,11 +17,17 @@ class CreateCloneVoiceResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The internal error code.
         self.code = code
+        # The cloned voice object.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The list of dynamic error parameters.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -82,7 +88,9 @@ class CreateCloneVoiceResponseBodyData(DaraModel):
         clone_voice_id: str = None,
         voice: str = None,
     ):
+        # The cloned voice ID.
         self.clone_voice_id = clone_voice_id
+        # The speaker.
         self.voice = voice
 
     def validate(self):

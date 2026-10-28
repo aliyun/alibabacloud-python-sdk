@@ -13,10 +13,18 @@ class CreateScriptRequest(DaraModel):
         name: str = None,
         nlu_engine: str = None,
     ):
+        # The concurrency.
         self.concurrency = concurrency
+        # The instance description.
         self.description = description
+        # The instance ID.
         self.instance_id = instance_id
+        # The instance name.
         self.name = name
+        # The NLU engine. Valid values:
+        # - PROMPTS: Prompt mode.
+        # - FUNCTION: Function computing mode.
+        # - BEEBOT: Workflow mode.
         self.nlu_engine = nlu_engine
 
     def validate(self):

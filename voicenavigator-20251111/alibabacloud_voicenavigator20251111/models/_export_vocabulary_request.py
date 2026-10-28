@@ -12,7 +12,9 @@ class ExportVocabularyRequest(DaraModel):
         instance_id: str = None,
         vocabulary_ids: List[str] = None,
     ):
+        # The ID of the Voice Navigator instance.
         self.instance_id = instance_id
+        # The IDs of the vocabularies to export.
         self.vocabulary_ids = vocabulary_ids
 
     def validate(self):

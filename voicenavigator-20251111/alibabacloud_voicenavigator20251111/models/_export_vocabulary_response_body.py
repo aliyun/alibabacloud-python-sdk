@@ -16,11 +16,17 @@ class ExportVocabularyResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The internal error code. A value of `OK` indicates that the request was successful.
         self.code = code
+        # This parameter is reserved. You can ignore it.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # A list of dynamic error parameters.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -10,7 +10,9 @@ class GetVocabularyRequest(DaraModel):
         instance_id: str = None,
         vocabulary_id: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The vocabulary ID.
         self.vocabulary_id = vocabulary_id
 
     def validate(self):

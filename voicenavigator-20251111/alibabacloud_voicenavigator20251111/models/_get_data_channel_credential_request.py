@@ -10,7 +10,9 @@ class GetDataChannelCredentialRequest(DaraModel):
         device_id: str = None,
         instance_id: str = None,
     ):
+        # The device ID.
         self.device_id = device_id
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):

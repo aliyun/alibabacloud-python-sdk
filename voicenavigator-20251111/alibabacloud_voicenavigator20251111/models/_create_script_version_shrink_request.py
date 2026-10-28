@@ -16,13 +16,20 @@ class CreateScriptVersionShrinkRequest(DaraModel):
         synthesizer_config_shrink: str = None,
         transcriber_config_shrink: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The interaction configuration.
         self.interaction_config_shrink = interaction_config_shrink
+        # The custom label configuration.
         self.label_config_shrink = label_config_shrink
+        # The scenario ID.
         self.script_id = script_id
+        # The conversation capability configuration.
         self.script_profile_shrink = script_profile_shrink
         self.source_version_id = source_version_id
+        # The TTS configuration.
         self.synthesizer_config_shrink = synthesizer_config_shrink
+        # The ASR configuration.
         self.transcriber_config_shrink = transcriber_config_shrink
 
     def validate(self):

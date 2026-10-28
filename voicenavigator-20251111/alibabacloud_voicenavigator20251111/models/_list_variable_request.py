@@ -12,9 +12,13 @@ class ListVariableRequest(DaraModel):
         page_size: int = None,
         search_pattern: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # Performs a fuzzy search based on the variable name or display name.
         self.search_pattern = search_pattern
 
     def validate(self):

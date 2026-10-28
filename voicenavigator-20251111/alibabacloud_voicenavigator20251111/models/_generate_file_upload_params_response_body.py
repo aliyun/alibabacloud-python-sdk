@@ -17,11 +17,17 @@ class GenerateFileUploadParamsResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The parameters for uploading the file.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # A list of parameters for the error message.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -90,15 +96,25 @@ class GenerateFileUploadParamsResponseBodyData(DaraModel):
         security_token: str = None,
         signature: str = None,
     ):
+        # The AccessKey ID used to generate the signature.
         self.access_key_id = access_key_id
+        # The AccessKey Secret used to authorize the OSS file upload.
         self.access_key_secret = access_key_secret
+        # The name of the OSS bucket.
         self.bucket = bucket
+        # The expiration time of the upload credentials.
         self.expiration_time = expiration_time
+        # The object key for the uploaded file.
         self.file_key = file_key
+        # The OSS endpoint.
         self.host = host
+        # The policy used to validate the request form fields.
         self.policy = policy
+        # The region.
         self.region = region
+        # The security token.
         self.security_token = security_token
+        # The signature calculated from the **AccessKey Secret** and **policy**. OSS uses this signature to authenticate the request.
         self.signature = signature
 
     def validate(self):

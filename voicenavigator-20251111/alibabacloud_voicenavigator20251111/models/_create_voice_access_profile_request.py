@@ -12,8 +12,11 @@ class CreateVoiceAccessProfileRequest(DaraModel):
         nls_engine: str = None,
         profile: main_models.CreateVoiceAccessProfileRequestProfile = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The speech engine.
         self.nls_engine = nls_engine
+        # The parameter settings.
         self.profile = profile
 
     def validate(self):
@@ -61,12 +64,19 @@ class CreateVoiceAccessProfileRequestProfile(DaraModel):
         asr_app_key: str = None,
         tts_api_key: str = None,
     ):
+        # Required when Doubao is used.
         self.access_key = access_key
+        # Required when Model Studio or iFLYTEK is used.
         self.api_key = api_key
+        # Required when iFLYTEK is used.
         self.api_secret = api_secret
+        # Required when iFLYTEK is used.
         self.app_id = app_id
+        # Required when Doubao is used.
         self.app_key = app_key
+        # Not used.
         self.asr_app_key = asr_app_key
+        # Not used.
         self.tts_api_key = tts_api_key
 
     def validate(self):

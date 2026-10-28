@@ -15,10 +15,15 @@ class UpdateVocabularyRequest(DaraModel):
         vocabulary_id: str = None,
         words: Dict[str, str] = None,
     ):
+        # The description.
         self.description = description
+        # The instance ID.
         self.instance_id = instance_id
+        # The name of the hot word.
         self.name = name
+        # The hot word ID.
         self.vocabulary_id = vocabulary_id
+        # The list of hot words.
         self.words = words
 
     def validate(self):

@@ -13,10 +13,23 @@ class CreateInstructionRequest(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # The instruction code.
+        # >Notice: Globally unique.</notice>
         self.code = code
+        # The instruction configuration.
+        # 
+        # > - providerId: the ID of the human agent service provider. You can obtain the ID by calling ListCallCenterProviders.
+        # > - transferMethod: the transfer method. Valid values: BYE, BRIDGE, and REFER.
+        # > - transferType: the transfer target type. Valid values: External (external number), Agent (agent), and SkillGroup (skill group).
+        # > - transferTarget: the transfer target.
+        # > - transferor: the caller number. If this parameter is left empty, the mobile phone number of the calling customer is used by default.
+        # > - timeoutSeconds: the timeout period for transferring to a human agent, in seconds. Default value: 30.
         self.config = config
+        # The instance ID.
         self.instance_id = instance_id
+        # The instruction name.
         self.name = name
+        # The instruction type.
         self.type = type
 
     def validate(self):

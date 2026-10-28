@@ -17,10 +17,15 @@ class ListRealtimeInstanceStatsResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The internal error code.
         self.code = code
+        # The call records.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The list of error parameters.
         self.params = params
         # Id of the request
         self.request_id = request_id
@@ -85,9 +90,13 @@ class ListRealtimeInstanceStatsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The list of real-time statistics for instances.
         self.list = list
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -144,9 +153,13 @@ class ListRealtimeInstanceStatsResponseBodyDataList(DaraModel):
         stats_time: int = None,
         used_concurrency: int = None,
     ):
+        # The configured concurrency.
         self.configured_concurrency = configured_concurrency
+        # The instance ID.
         self.instance_id = instance_id
+        # The time of the statistics.
         self.stats_time = stats_time
+        # The used concurrency.
         self.used_concurrency = used_concurrency
 
     def validate(self):

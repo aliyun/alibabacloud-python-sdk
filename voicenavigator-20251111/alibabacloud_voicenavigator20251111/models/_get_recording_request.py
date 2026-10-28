@@ -10,7 +10,9 @@ class GetRecordingRequest(DaraModel):
         instance_id: str = None,
         session_id: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The session ID.
         self.session_id = session_id
 
     def validate(self):

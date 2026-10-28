@@ -16,11 +16,17 @@ class DeleteVocabularyResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The error code. A value of `OK` indicates the request succeeded.
         self.code = code
+        # The ID of the deleted vocabulary.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # A list of dynamic error parameters.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

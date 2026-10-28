@@ -11,7 +11,9 @@ class CreateLlmAccessProfileRequest(DaraModel):
         instance_id: str = None,
         profile: main_models.CreateLlmAccessProfileRequestProfile = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The parameter settings.
         self.profile = profile
 
     def validate(self):
@@ -49,8 +51,11 @@ class CreateLlmAccessProfileRequestProfile(DaraModel):
         endpoint: str = None,
         name: str = None,
     ):
+        # The API key of the third-party model.
         self.api_key = api_key
+        # The endpoint of the third-party model.
         self.endpoint = endpoint
+        # The name of the third-party model configuration.
         self.name = name
 
     def validate(self):

@@ -14,9 +14,13 @@ class CreateVocabularyRequest(DaraModel):
         name: str = None,
         words: Dict[str, str] = None,
     ):
+        # The description.
         self.description = description
+        # The instance ID.
         self.instance_id = instance_id
+        # The hotword name.
         self.name = name
+        # The list of hotwords.
         self.words = words
 
     def validate(self):

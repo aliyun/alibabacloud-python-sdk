@@ -17,11 +17,17 @@ class ListVariableResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The internal error code.
         self.code = code
+        # The paginated data of the variable list.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The list of dynamic error parameters.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListVariableResponseBodyData(DaraModel):
         total_count: int = None,
         variables: List[main_models.ListVariableResponseBodyDataVariables] = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries.
         self.total_count = total_count
+        # The list of variable objects.
         self.variables = variables
 
     def validate(self):
@@ -147,13 +157,21 @@ class ListVariableResponseBodyDataVariables(DaraModel):
         updated_time: int = None,
         variable_id: str = None,
     ):
+        # The creation time.
         self.created_time = created_time
+        # The description.
         self.description = description
+        # The display name.
         self.display_name = display_name
+        # The instance ID.
         self.instance_id = instance_id
+        # The variable name.
         self.name = name
+        # The tenant ID.
         self.tenant_id = tenant_id
+        # The update time.
         self.updated_time = updated_time
+        # The variable ID.
         self.variable_id = variable_id
 
     def validate(self):

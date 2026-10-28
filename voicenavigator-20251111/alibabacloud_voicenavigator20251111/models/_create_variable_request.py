@@ -12,9 +12,13 @@ class CreateVariableRequest(DaraModel):
         instance_id: str = None,
         name: str = None,
     ):
+        # The description.
         self.description = description
+        # The display name.
         self.display_name = display_name
+        # The instance ID.
         self.instance_id = instance_id
+        # The variable name.
         self.name = name
 
     def validate(self):

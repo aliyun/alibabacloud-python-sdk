@@ -17,12 +17,17 @@ class GetRecordingResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The recording object.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The error parameter list.
         self.params = params
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -84,8 +89,11 @@ class GetRecordingResponseBodyData(DaraModel):
         file_url: str = None,
         session_id: str = None,
     ):
+        # The recording file name.
         self.file_name = file_name
+        # The recording file URL.
         self.file_url = file_url
+        # The session ID.
         self.session_id = session_id
 
     def validate(self):

@@ -17,11 +17,17 @@ class BridgeWebCallResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The internal error code.
         self.code = code
+        # The call record.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The list of error parameters.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -86,10 +92,15 @@ class BridgeWebCallResponseBodyData(DaraModel):
         session_id: str = None,
         token: str = None,
     ):
+        # The channel ID.
         self.channel_id = channel_id
+        # The expiration time of the token.
         self.expiration_time = expiration_time
+        # The instance ID.
         self.instance_id = instance_id
+        # The server URL.
         self.server_url = server_url
+        # The session ID.
         self.session_id = session_id
         # token
         self.token = token

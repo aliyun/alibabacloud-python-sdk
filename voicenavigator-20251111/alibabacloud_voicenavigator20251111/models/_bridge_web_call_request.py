@@ -18,15 +18,34 @@ class BridgeWebCallRequest(DaraModel):
         tags: str = None,
         timeout_seconds: int = None,
     ):
+        # The channel ID.
+        # > This parameter is valid only when AccessChannelType is set to Web or Trial.
         self.access_channel_id = access_channel_id
+        # The channel type.
+        # 
+        # > - Text: text test window
+        # > - Test: test window
+        # > - Trial: trial link
         self.access_channel_type = access_channel_type
+        # The caller number.
         self.caller = caller
+        # The device ID.
         self.device_id = device_id
+        # Specifies whether the test environment is used.
+        # >Default value: false.
         self.draft_version = draft_version
+        # The instance ID.
         self.instance_id = instance_id
+        # The sampling rate.
         self.sample_rate = sample_rate
+        # The script ID.
         self.script_id = script_id
+        # The attached data.
         self.tags = tags
+        # The timeout period.
+        # 
+        # > 
+        # > - If the call is not connected within the time specified by this parameter, the system actively hangs up the call. Unit: seconds. Default value: 60.
         self.timeout_seconds = timeout_seconds
 
     def validate(self):

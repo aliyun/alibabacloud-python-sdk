@@ -11,8 +11,12 @@ class EndSessionRequest(DaraModel):
         script_id: str = None,
         session_id: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The ID of the script.
         self.script_id = script_id
+        # The ID of the session.
+        # 
         # This parameter is required.
         self.session_id = session_id
 

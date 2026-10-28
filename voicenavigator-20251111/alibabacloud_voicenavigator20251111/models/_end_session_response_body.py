@@ -15,10 +15,15 @@ class EndSessionResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The business status code. A value of OK indicates that the operation was successful.
         self.code = code
+        # The HTTP status code. A value of 200 indicates that the request was successful.
         self.http_status_code = http_status_code
+        # The HTTP response message.
         self.message = message
+        # The dynamic error parameters.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

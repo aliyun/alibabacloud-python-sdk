@@ -10,7 +10,9 @@ class ListCloneVoiceModelsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The page number to return.
         self.page_number = page_number
+        # The number of entries to return per page.
         self.page_size = page_size
 
     def validate(self):

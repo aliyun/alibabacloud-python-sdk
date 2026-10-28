@@ -17,12 +17,17 @@ class ListHistoricalInstanceReportResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The response data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The list of error parameters.
         self.params = params
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -85,9 +90,13 @@ class ListHistoricalInstanceReportResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # A list of historical reports for the instances.
         self.list = list
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -156,21 +165,37 @@ class ListHistoricalInstanceReportResponseBodyDataList(DaraModel):
         total_tokens: int = None,
         used_concurrency: int = None,
     ):
+        # The number of answered calls.
         self.calls_handled = calls_handled
+        # The number of offered calls.
         self.calls_offered = calls_offered
+        # The number of rejected calls.
         self.calls_rejected = calls_rejected
+        # The number of calls classified as resolved by the large language model (LLM).
         self.calls_resolved = calls_resolved
+        # The most recent concurrency configuration.
         self.configured_concurrency = configured_concurrency
+        # The instance ID.
         self.instance_id = instance_id
+        # The breakdown of labels.
         self.label_breakdown = label_breakdown
+        # The maximum talk time in milliseconds (ms).
         self.max_talk_time = max_talk_time
+        # The breakdown of rejection reasons.
         self.rejection_breakdown = rejection_breakdown
+        # A breakdown of release reasons for answered calls.
         self.release_reason_breakdown = release_reason_breakdown
+        # The distribution of conversation turns.
         self.talk_turns_distribution = talk_turns_distribution
+        # Reserved for future use.
         self.total_input_tokens = total_input_tokens
+        # Reserved for future use.
         self.total_output_tokens = total_output_tokens
+        # The total talk time in milliseconds (ms).
         self.total_talk_time = total_talk_time
+        # Reserved for future use.
         self.total_tokens = total_tokens
+        # The peak number of concurrent calls.
         self.used_concurrency = used_concurrency
 
     def validate(self):

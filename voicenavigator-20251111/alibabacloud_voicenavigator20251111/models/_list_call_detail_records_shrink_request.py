@@ -25,22 +25,41 @@ class ListCallDetailRecordsShrinkRequest(DaraModel):
         session_ids_shrink: str = None,
         start_time: str = None,
     ):
+        # The channel ID.
         self.access_channel_id = access_channel_id
+        # The channel type.
         self.access_channel_type = access_channel_type
+        # The callee\\"s number.
         self.callee = callee
+        # The caller\\"s number.
         self.caller = caller
+        # The disposition codes.
         self.disposition_codes_shrink = disposition_codes_shrink
+        # The disposition reasons.
         self.disposition_reasons_shrink = disposition_reasons_shrink
+        # Specifies whether to query a draft.
         self.draft_version = draft_version
+        # The end of the time range to query. This value is a Unix timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.end_time = end_time
+        # The instance ID.
         self.instance_id = instance_id
+        # Indicates whether the issue was resolved.
         self.issue_resolved = issue_resolved
+        # The maximum number of conversational turns.
         self.max_talk_turns = max_talk_turns
+        # The minimum number of conversational turns.
         self.min_talk_turns = min_talk_turns
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The script ID.
         self.script_id = script_id
+        # The session IDs.
+        # 
+        # > The value is a JSON array of strings. Example: `["session-id-1","session-id-2"]`.
         self.session_ids_shrink = session_ids_shrink
+        # The beginning of the time range to query. This value is a Unix timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
 
     def validate(self):

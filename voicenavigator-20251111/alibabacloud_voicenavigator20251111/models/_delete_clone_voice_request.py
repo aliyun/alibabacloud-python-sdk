@@ -10,7 +10,9 @@ class DeleteCloneVoiceRequest(DaraModel):
         clone_voice_id: str = None,
         instance_id: str = None,
     ):
+        # The cloned voice ID.
         self.clone_voice_id = clone_voice_id
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):

@@ -17,11 +17,17 @@ class ListLlmAccessProfilesResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The internal error code.
         self.code = code
+        # The paginated list of third-party model configurations.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # A list of dynamic parameters associated with the error.
         self.params = params
+        # A unique identifier for the request.
         self.request_id = request_id
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListLlmAccessProfilesResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The list of third-party model configurations.
         self.llm_access_profiles = llm_access_profiles
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -144,10 +154,15 @@ class ListLlmAccessProfilesResponseBodyDataLlmAccessProfiles(DaraModel):
         profile: main_models.ListLlmAccessProfilesResponseBodyDataLlmAccessProfilesProfile = None,
         updated_time: int = None,
     ):
+        # The configuration ID.
         self.access_profile_id = access_profile_id
+        # The creation time.
         self.created_time = created_time
+        # The instance ID.
         self.instance_id = instance_id
+        # The parameter configuration.
         self.profile = profile
+        # The update time.
         self.updated_time = updated_time
 
     def validate(self):
@@ -205,10 +220,15 @@ class ListLlmAccessProfilesResponseBodyDataLlmAccessProfilesProfile(DaraModel):
         nlu_access_type: str = None,
         nlu_engine: str = None,
     ):
+        # The API key.
         self.api_key = api_key
+        # The service endpoint.
         self.endpoint = endpoint
+        # The name of the configuration.
         self.name = name
+        # The NLU access type.
         self.nlu_access_type = nlu_access_type
+        # The NLU engine.
         self.nlu_engine = nlu_engine
 
     def validate(self):

@@ -17,11 +17,17 @@ class ListScriptProfileTemplatesResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The internal error code.
         self.code = code
+        # The list of scenario templates.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The list of error parameters.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -92,11 +98,17 @@ class ListScriptProfileTemplatesResponseBodyData(DaraModel):
         template_id: str = None,
         updated_time: int = None,
     ):
+        # The creation time.
         self.created_time = created_time
+        # The description.
         self.description = description
+        # The template name.
         self.name = name
+        # The template definition.
         self.schema = schema
+        # The template ID.
         self.template_id = template_id
+        # The update time.
         self.updated_time = updated_time
 
     def validate(self):

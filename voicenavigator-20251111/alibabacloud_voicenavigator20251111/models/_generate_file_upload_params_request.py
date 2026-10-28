@@ -11,8 +11,11 @@ class GenerateFileUploadParamsRequest(DaraModel):
         file_name: str = None,
         instance_id: str = None,
     ):
+        # The file type.
         self.business_type = business_type
+        # The file name.
         self.file_name = file_name
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):

@@ -16,11 +16,17 @@ class UpdateVoiceAccessProfileResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The status code of the operation. `OK` indicates that the request was successful.
         self.code = code
+        # The ID of the updated access profile.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message if the request fails.
         self.message = message
+        # The dynamic error parameter list.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

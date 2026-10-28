@@ -17,12 +17,17 @@ class GetCallDetailRecordResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The call detail record.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # A list of parameters related to the error.
         self.params = params
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -97,21 +102,37 @@ class GetCallDetailRecordResponseBodyData(DaraModel):
         transfer_target: str = None,
         transfer_type: str = None,
     ):
+        # The phone number of the callee.
         self.callee = callee
+        # The phone number of the caller.
         self.caller = caller
+        # The disposition code for the call.
         self.disposition_code = disposition_code
+        # The reason for the call\\"s disposition.
         self.disposition_reason = disposition_reason
+        # The session duration, in seconds.
         self.duration = duration
+        # The end time.
         self.end_time = end_time
+        # Indicates whether the user\\"s issue was resolved.
         self.issue_resolved = issue_resolved
+        # The party that ended the call.
         self.release_initiator = release_initiator
+        # The basis for the resolution judgment.
         self.resolution_evidence = resolution_evidence
+        # The session ID.
         self.session_id = session_id
+        # The start time.
         self.start_time = start_time
+        # The talk time, in seconds.
         self.talk_time = talk_time
+        # The number of conversation turns.
         self.talk_turns = talk_turns
+        # The conversation transcripts.
         self.transcripts = transcripts
+        # The transfer target.
         self.transfer_target = transfer_target
+        # The transfer type.
         self.transfer_type = transfer_type
 
     def validate(self):
@@ -244,6 +265,8 @@ class GetCallDetailRecordResponseBodyDataTranscripts(DaraModel):
         extras: str = None,
         interrupted: bool = None,
         legacy: bool = None,
+        playback_status: str = None,
+        played_answer: str = None,
         played_words: int = None,
         role: str = None,
         stream_end: bool = None,
@@ -251,20 +274,37 @@ class GetCallDetailRecordResponseBodyDataTranscripts(DaraModel):
         utterance: str = None,
         vendor_params: str = None,
     ):
+        # The bot\\"s response. This parameter is valid when `Role` is `ASSISTANT`.
         self.answer = answer
+        # Indicates whether the user\\"s utterance is a backchannel (for example, "uh-huh" or "okay"). This parameter is valid when `Role` is `USER`.
         self.backchannels = backchannels
+        # The start timestamp of the turn, in milliseconds since the Unix epoch.
         self.begin_time = begin_time
+        # A list of control parameters. This parameter is valid when `Role` is `ASSISTANT`.
         self.control_params_list = control_params_list
+        # The end timestamp of the turn, in milliseconds since the Unix epoch.
         self.end_time = end_time
+        # The event timestamp, in milliseconds since the Unix epoch.
         self.event_time = event_time
+        # Additional input from the user other than speech. This parameter is valid when `Role` is `USER`.
         self.extras = extras
+        # Indicates whether the turn was interrupted.
         self.interrupted = interrupted
+        # Indicates whether the bot\\"s response is obsolete. This parameter is valid when `Role` is `ASSISTANT`.
         self.legacy = legacy
+        self.playback_status = playback_status
+        self.played_answer = played_answer
+        # The number of words played from the bot\\"s response. This parameter is valid when `Role` is `USER`.
         self.played_words = played_words
+        # The role of the speaker.
         self.role = role
+        # Indicates if this is the final part of a streamed response.
         self.stream_end = stream_end
+        # The ID of the conversation turn.
         self.stream_id = stream_id
+        # The user\\"s utterance. This parameter is valid when `Role` is `USER`.
         self.utterance = utterance
+        # Vendor-specific data sent from the client. This parameter is valid when `Role` is `USER`.
         self.vendor_params = vendor_params
 
     def validate(self):
@@ -301,6 +341,12 @@ class GetCallDetailRecordResponseBodyDataTranscripts(DaraModel):
 
         if self.legacy is not None:
             result['Legacy'] = self.legacy
+
+        if self.playback_status is not None:
+            result['PlaybackStatus'] = self.playback_status
+
+        if self.played_answer is not None:
+            result['PlayedAnswer'] = self.played_answer
 
         if self.played_words is not None:
             result['PlayedWords'] = self.played_words
@@ -350,6 +396,12 @@ class GetCallDetailRecordResponseBodyDataTranscripts(DaraModel):
 
         if m.get('Legacy') is not None:
             self.legacy = m.get('Legacy')
+
+        if m.get('PlaybackStatus') is not None:
+            self.playback_status = m.get('PlaybackStatus')
+
+        if m.get('PlayedAnswer') is not None:
+            self.played_answer = m.get('PlayedAnswer')
 
         if m.get('PlayedWords') is not None:
             self.played_words = m.get('PlayedWords')

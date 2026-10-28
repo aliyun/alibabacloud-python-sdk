@@ -10,7 +10,9 @@ class CreateLlmAccessProfileShrinkRequest(DaraModel):
         instance_id: str = None,
         profile_shrink: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The parameter settings.
         self.profile_shrink = profile_shrink
 
     def validate(self):

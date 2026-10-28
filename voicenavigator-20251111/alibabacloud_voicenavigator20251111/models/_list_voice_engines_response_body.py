@@ -17,11 +17,17 @@ class ListVoiceEnginesResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The internal error code.
         self.code = code
+        # The paginated results of voice engines.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The list of dynamic error parameters.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListVoiceEnginesResponseBodyData(DaraModel):
         total_count: int = None,
         voice_engines: List[main_models.ListVoiceEnginesResponseBodyDataVoiceEngines] = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries.
         self.total_count = total_count
+        # The list of voice engine objects.
         self.voice_engines = voice_engines
 
     def validate(self):
@@ -142,8 +152,11 @@ class ListVoiceEnginesResponseBodyDataVoiceEngines(DaraModel):
         nls_engine: str = None,
         nls_engine_name: str = None,
     ):
+        # The engine configuration.
         self.config_schema = config_schema
+        # The voice engine.
         self.nls_engine = nls_engine
+        # The display name.
         self.nls_engine_name = nls_engine_name
 
     def validate(self):

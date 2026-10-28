@@ -17,11 +17,17 @@ class ListVocabularyResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The internal error code.
         self.code = code
+        # The paginated list of vocabularies.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The list of dynamic error parameters.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListVocabularyResponseBodyData(DaraModel):
         total_count: int = None,
         vocabularies: List[main_models.ListVocabularyResponseBodyDataVocabularies] = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries.
         self.total_count = total_count
+        # A list of vocabularies.
         self.vocabularies = vocabularies
 
     def validate(self):
@@ -147,13 +157,21 @@ class ListVocabularyResponseBodyDataVocabularies(DaraModel):
         vocabulary_id: str = None,
         word_count: int = None,
     ):
+        # The time the vocabulary was created.
         self.created_time = created_time
+        # The description of the vocabulary.
         self.description = description
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the vocabulary.
         self.name = name
+        # The ID of the tenant.
         self.tenant_id = tenant_id
+        # The time the vocabulary was last updated.
         self.updated_time = updated_time
+        # The ID of the vocabulary.
         self.vocabulary_id = vocabulary_id
+        # The number of words in the vocabulary.
         self.word_count = word_count
 
     def validate(self):

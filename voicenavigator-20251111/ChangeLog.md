@@ -1,3 +1,6 @@
+2026-10-28 Version: 1.4.1
+- Generated python 2025-11-11 for VoiceNavigator.
+
 2026-04-22 Version: 1.4.0
 - Support API GetInstanceTrendingReport.
 - Support API GetRealtimeScriptStats.

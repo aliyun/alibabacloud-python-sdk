@@ -18,15 +18,29 @@ class UpdateCallCenterProviderRequest(DaraModel):
         refer_to: str = None,
         trunk_id: str = None,
     ):
+        # The called number used during transfer when the transfer mode is set to Bridge.
         self.destination = destination
+        # The display name of the service provider.
         self.display_name = display_name
+        # The associated data.
+        # >Notice: Format: k1=v1;k2=v2.</notice>
         self.extras = extras
+        # The instance ID.
         self.instance_id = instance_id
+        # The name of the service provider.
         self.name = name
+        # The calling number used during transfer when the transfer mode is set to Bridge.
         self.originator = originator
+        # The ID of the agent service provider.
         self.provider_id = provider_id
+        # The provider type. Valid values:
+        # > 
+        # > - CCC: Cloud Call Center.
+        # > - CUSTOM: Customer-owned call center.
         self.provider_type = provider_type
+        # The Refer address.
         self.refer_to = refer_to
+        # The trunk ID.
         self.trunk_id = trunk_id
 
     def validate(self):

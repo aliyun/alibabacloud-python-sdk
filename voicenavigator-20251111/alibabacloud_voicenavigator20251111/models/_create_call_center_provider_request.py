@@ -17,14 +17,28 @@ class CreateCallCenterProviderRequest(DaraModel):
         refer_to: str = None,
         trunk_id: str = None,
     ):
+        # The callee number during the transfer. This parameter is required when the transfer method is Bridge.
         self.destination = destination
+        # The display name of the service provider.
         self.display_name = display_name
+        # The attached data.
+        # >Notice: Format: k1=v1;k2=v2.</notice>
         self.extras = extras
+        # The instance ID.
         self.instance_id = instance_id
+        # The name of the service provider.
         self.name = name
+        # The caller number during the transfer. This parameter is required when the transfer method is Bridge.
         self.originator = originator
+        # The provider type.
+        # > 
+        # > - CCC: Cloud Call Center.
+        # >- CUSTOM: Customer-owned call center.
         self.provider_type = provider_type
+        # The Refer address.<notice>This parameter is required when the transfer method is Refer.</notice>
         self.refer_to = refer_to
+        # The trunk ID.
+        # >Notice: This parameter is required when the transfer method is Bridge.</notice>
         self.trunk_id = trunk_id
 
     def validate(self):

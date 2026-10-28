@@ -13,10 +13,15 @@ class ListVoicesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The TTS access type.
         self.nls_access_type = nls_access_type
+        # The TTS engine.
         self.nls_engine = nls_engine
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):

@@ -10,7 +10,9 @@ class DeleteCallCenterProviderRequest(DaraModel):
         instance_id: str = None,
         provider_id: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The ID of the human service provider.
         self.provider_id = provider_id
 
     def validate(self):

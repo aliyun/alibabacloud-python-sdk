@@ -13,9 +13,13 @@ class UpdateVoiceAccessProfileRequest(DaraModel):
         nls_engine: str = None,
         profile: main_models.UpdateVoiceAccessProfileRequestProfile = None,
     ):
+        # The access profile ID.
         self.access_profile_id = access_profile_id
+        # The instance ID.
         self.instance_id = instance_id
+        # The voice engine.
         self.nls_engine = nls_engine
+        # The parameter configuration for the selected voice engine.
         self.profile = profile
 
     def validate(self):
@@ -69,12 +73,19 @@ class UpdateVoiceAccessProfileRequestProfile(DaraModel):
         asr_app_key: str = None,
         tts_api_key: str = None,
     ):
+        # This parameter is required when `NlsEngine` is set to `VOLC`.
         self.access_key = access_key
+        # This parameter is required when `NlsEngine` is set to `BAILIAN` or `IFLYTEK`.
         self.api_key = api_key
+        # This parameter is required when `NlsEngine` is set to `IFLYTEK`.
         self.api_secret = api_secret
+        # This parameter is required when `NlsEngine` is set to `IFLYTEK`.
         self.app_id = app_id
+        # This parameter is required when `NlsEngine` is set to `VOLC`.
         self.app_key = app_key
+        # Reserved for future use.
         self.asr_app_key = asr_app_key
+        # Reserved for future use.
         self.tts_api_key = tts_api_key
 
     def validate(self):

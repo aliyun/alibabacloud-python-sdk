@@ -10,7 +10,9 @@ class DeleteVoiceAccessProfileRequest(DaraModel):
         access_profile_id: str = None,
         instance_id: str = None,
     ):
+        # The ID of the access profile.
         self.access_profile_id = access_profile_id
+        # The ID of the instance.
         self.instance_id = instance_id
 
     def validate(self):

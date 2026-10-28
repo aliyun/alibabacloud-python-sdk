@@ -16,11 +16,17 @@ class UpdateInstructionResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The code of the instruction.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message. Returns "Success" if the request is successful, or an error message if it fails.
         self.message = message
+        # The dynamic error parameters.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

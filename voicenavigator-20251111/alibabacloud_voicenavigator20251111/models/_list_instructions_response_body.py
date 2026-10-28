@@ -17,11 +17,17 @@ class ListInstructionsResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The data returned for the list of instructions.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The result message.
         self.message = message
+        # A list of request parameters that are echoed in the response.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListInstructionsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The list of instructions.
         self.instructions = instructions
+        # The page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The total number of instructions.
         self.total_count = total_count
 
     def validate(self):
@@ -144,10 +154,27 @@ class ListInstructionsResponseBodyDataInstructions(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # The instruction code.
         self.code = code
+        # The instruction configuration, in a JSON string format.
+        # 
+        # > - `providerId`: The ID of the call center provider. You can obtain this ID by calling the `ListCallCenterProviders` operation.
+        # >
+        # > - `transferMethod`: The transfer method. Valid values: `BYE`, `BRIDGE`, and `REFER`.
+        # >
+        # > - `transferType`: The transfer target type. Valid values: `External` (external number), `Agent` (agent), and `SkillGroup` (skill group).
+        # >
+        # > - `transferTarget`: The transfer target.
+        # >
+        # > - `transferor`: The caller ID. If not specified, the caller\\"s phone number is used.
+        # >
+        # > - `timeoutSeconds`: The transfer timeout, in seconds. The default value is 30.
         self.config = config
+        # The instance ID.
         self.instance_id = instance_id
+        # The instruction name.
         self.name = name
+        # The instruction type.
         self.type = type
 
     def validate(self):

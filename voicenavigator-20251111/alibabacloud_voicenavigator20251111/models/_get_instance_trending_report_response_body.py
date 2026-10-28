@@ -17,10 +17,15 @@ class GetInstanceTrendingReportResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The internal error code.
         self.code = code
+        # The scenario ID.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The dynamic error parameters.
         self.params = params
         # Id of the request
         self.request_id = request_id
@@ -103,21 +108,37 @@ class GetInstanceTrendingReportResponseBodyData(DaraModel):
         total_tokens: int = None,
         used_concurrency: int = None,
     ):
+        # The number of answered sessions.
         self.calls_handled = calls_handled
+        # The number of incoming sessions.
         self.calls_offered = calls_offered
+        # The number of rejected sessions.
         self.calls_rejected = calls_rejected
+        # The number of resolved sessions, based on the model evaluation results.
         self.calls_resolved = calls_resolved
+        # The latest configured concurrency.
         self.configured_concurrency = configured_concurrency
+        # The distribution of labels.
         self.label_breakdown = label_breakdown
+        # The maximum talk time, in milliseconds.
         self.max_talk_time = max_talk_time
+        # The distribution of rejection reasons.
         self.rejection_breakdown = rejection_breakdown
+        # The distribution of hang-up reasons after a session is connected.
         self.release_reason_breakdown = release_reason_breakdown
+        # The statistical time. The value is a UNIX timestamp in milliseconds.
         self.stats_time = stats_time
+        # The distribution of dialog turns.
         self.talk_turns_distribution = talk_turns_distribution
+        # Reserved for future use.
         self.total_input_tokens = total_input_tokens
+        # Reserved for future use.
         self.total_output_tokens = total_output_tokens
+        # The total talk time, in milliseconds.
         self.total_talk_time = total_talk_time
+        # Reserved for future use.
         self.total_tokens = total_tokens
+        # The maximum concurrency used.
         self.used_concurrency = used_concurrency
 
     def validate(self):

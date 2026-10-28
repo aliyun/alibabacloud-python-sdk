@@ -17,12 +17,17 @@ class GetScriptTrendingReportResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The service-specific error code.
         self.code = code
+        # An array of scenario template objects.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # An array of error parameters.
         self.params = params
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -103,21 +108,37 @@ class GetScriptTrendingReportResponseBodyData(DaraModel):
         total_tokens: int = None,
         used_concurrency: int = None,
     ):
+        # The number of handled calls.
         self.calls_handled = calls_handled
+        # The number of offered calls.
         self.calls_offered = calls_offered
+        # The number of rejected calls.
         self.calls_rejected = calls_rejected
+        # The number of resolved calls, based on the large model\\"s evaluation.
         self.calls_resolved = calls_resolved
+        # The configured concurrency limit.
         self.configured_concurrency = configured_concurrency
+        # A JSON string that provides a breakdown of label distribution.
         self.label_break_down = label_break_down
+        # The maximum talk time, in milliseconds.
         self.max_talk_time = max_talk_time
+        # A JSON string that provides a breakdown of rejection reasons.
         self.rejection_breakdown = rejection_breakdown
+        # A JSON string that provides a breakdown of call disconnection reasons.
         self.release_reason_breakdown = release_reason_breakdown
+        # The start time of the interval. The value is a Unix timestamp in milliseconds.
         self.stats_time = stats_time
+        # A JSON string that provides a breakdown of conversation turn distribution.
         self.talk_turns_distribution = talk_turns_distribution
+        # This parameter is reserved for future use.
         self.total_input_tokens = total_input_tokens
+        # This parameter is reserved for future use.
         self.total_output_tokens = total_output_tokens
+        # The total talk time, in milliseconds.
         self.total_talk_time = total_talk_time
+        # This parameter is reserved for future use.
         self.total_tokens = total_tokens
+        # The peak concurrency for the interval.
         self.used_concurrency = used_concurrency
 
     def validate(self):

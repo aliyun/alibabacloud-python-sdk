@@ -12,9 +12,13 @@ class UpdateVariableRequest(DaraModel):
         instance_id: str = None,
         variable_id: str = None,
     ):
+        # The description.
         self.description = description
+        # The display name.
         self.display_name = display_name
+        # The instance ID.
         self.instance_id = instance_id
+        # The variable ID.
         self.variable_id = variable_id
 
     def validate(self):

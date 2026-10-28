@@ -10,7 +10,9 @@ class GetScriptRequest(DaraModel):
         instance_id: str = None,
         script_id: str = None,
     ):
+        # Instance ID
         self.instance_id = instance_id
+        # Scenario ID
         self.script_id = script_id
 
     def validate(self):

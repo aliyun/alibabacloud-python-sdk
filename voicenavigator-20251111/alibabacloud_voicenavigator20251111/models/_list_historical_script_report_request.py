@@ -16,11 +16,17 @@ class ListHistoricalScriptReportRequest(DaraModel):
         script_ids: List[str] = None,
         start_time: int = None,
     ):
+        # The end of the query time range, which is a UNIX timestamp in milliseconds.
         self.end_time = end_time
+        # The ID of the Voice Bot instance.
         self.instance_id = instance_id
+        # The page number to retrieve.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # A list of up to 100 script IDs.
         self.script_ids = script_ids
+        # The start of the query time range, which is a UNIX timestamp in milliseconds.
         self.start_time = start_time
 
     def validate(self):

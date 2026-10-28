@@ -17,11 +17,17 @@ class GetVocabularyResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The internal error code.
         self.code = code
+        # The vocabulary object.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # A list of dynamic error parameters.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -89,14 +95,23 @@ class GetVocabularyResponseBodyData(DaraModel):
         word_count: str = None,
         words: str = None,
     ):
+        # The creation time.
         self.created_time = created_time
+        # The vocabulary description.
         self.description = description
+        # The instance ID.
         self.instance_id = instance_id
+        # The vocabulary name.
         self.name = name
+        # The tenant ID.
         self.tenant_id = tenant_id
+        # The update time.
         self.updated_time = updated_time
+        # The vocabulary ID.
         self.vocabulary_id = vocabulary_id
+        # The word count.
         self.word_count = word_count
+        # A JSON string that contains the words and their weights.
         self.words = words
 
     def validate(self):

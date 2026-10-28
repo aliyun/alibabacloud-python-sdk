@@ -12,9 +12,13 @@ class CreateVocabularyShrinkRequest(DaraModel):
         name: str = None,
         words_shrink: str = None,
     ):
+        # The description.
         self.description = description
+        # The instance ID.
         self.instance_id = instance_id
+        # The hotword name.
         self.name = name
+        # The list of hotwords.
         self.words_shrink = words_shrink
 
     def validate(self):

@@ -17,11 +17,17 @@ class ListCloneVoiceModelsResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The status code of the request. A value of "OK" indicates success.
         self.code = code
+        # The paginated data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The detailed message returned for the request. It provides more context about the status code.
         self.message = message
+        # A list of dynamic error parameters.
         self.params = params
+        # The unique ID generated for the request.
         self.request_id = request_id
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListCloneVoiceModelsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # A list of clone voice models.
         self.clone_voice_models = clone_voice_models
+        # The page number.
         self.page_number = page_number
+        # The number of entries on the current page.
         self.page_size = page_size
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -142,8 +152,11 @@ class ListCloneVoiceModelsResponseBodyDataCloneVoiceModels(DaraModel):
         display_name: str = None,
         name: str = None,
     ):
+        # The description of the model.
         self.description = description
+        # The display name of the model.
         self.display_name = display_name
+        # The model name.
         self.name = name
 
     def validate(self):
