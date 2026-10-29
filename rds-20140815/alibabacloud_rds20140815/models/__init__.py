@@ -570,6 +570,9 @@ from ._describe_modify_pghba_config_log_response import DescribeModifyPGHbaConfi
 from ._describe_modify_parameter_log_request import DescribeModifyParameterLogRequest
 from ._describe_modify_parameter_log_response_body import DescribeModifyParameterLogResponseBody
 from ._describe_modify_parameter_log_response import DescribeModifyParameterLogResponse
+from ._describe_operator_permission_request import DescribeOperatorPermissionRequest
+from ._describe_operator_permission_response_body import DescribeOperatorPermissionResponseBody
+from ._describe_operator_permission_response import DescribeOperatorPermissionResponse
 from ._describe_oss_downloads_request import DescribeOssDownloadsRequest
 from ._describe_oss_downloads_response_body import DescribeOssDownloadsResponseBody
 from ._describe_oss_downloads_response import DescribeOssDownloadsResponse
@@ -2282,6 +2285,9 @@ __all__ = [
     DescribeModifyParameterLogRequest,
     DescribeModifyParameterLogResponseBody,
     DescribeModifyParameterLogResponse,
+    DescribeOperatorPermissionRequest,
+    DescribeOperatorPermissionResponseBody,
+    DescribeOperatorPermissionResponse,
     DescribeOssDownloadsRequest,
     DescribeOssDownloadsResponseBody,
     DescribeOssDownloadsResponse,

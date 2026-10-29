@@ -13,13 +13,13 @@ class ModifyDBInstanceReplicationSwitchRequest(DaraModel):
         resource_group_id: str = None,
         resource_owner_id: int = None,
     ):
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # Specifies whether to enable or disable native replication mode. Valid values:
-        # - **ON**: Enable native replication.
-        # - **OFF**: Disable native replication.
+        # Specifies whether to enable or disable the native replication mode. Valid values:
+        # - **ON**: enables the native replication mode.
+        # - **OFF**: disables the native replication mode.
         # 
         # This parameter is required.
         self.external_replication = external_replication
@@ -27,7 +27,7 @@ class ModifyDBInstanceReplicationSwitchRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID. This parameter can be left empty.
+        # The ID of the resource group. This parameter can be left empty.
         self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
 

@@ -31,9 +31,9 @@ class DescribePriceResponseBody(DaraModel):
         self.serverless_price = serverless_price
         # Indicates whether discounts are allowed.
         self.show_discount = show_discount
-        # The estimated hourly fee calculated based on the maximum number of RCUs selected by the user.
+        # The estimated hourly fee calculated based on the maximum number of RCUs selected.
         self.trade_max_rcuamount = trade_max_rcuamount
-        # The estimated hourly fee calculated based on the minimum number of RCUs selected by the user.
+        # The estimated hourly fee calculated based on the minimum number of RCUs selected.
         self.trade_min_rcuamount = trade_min_rcuamount
 
     def validate(self):
@@ -319,11 +319,11 @@ class DescribePriceResponseBodyPriceInfo(DaraModel):
         # The original price.
         self.original_price = original_price
         self.rule_ids = rule_ids
-        # The estimated hourly fee calculated based on the maximum number of RCUs selected by the user.
+        # The estimated hourly fee calculated based on the maximum number of RCUs selected.
         self.trade_max_rcuamount = trade_max_rcuamount
-        # The estimated hourly fee calculated based on the minimum number of RCUs selected by the user.
+        # The estimated hourly fee calculated based on the minimum number of RCUs selected.
         self.trade_min_rcuamount = trade_min_rcuamount
-        # The final price, which is the original price minus the discount amount.
+        # The final price, which is the original price minus the discount.
         self.trade_price = trade_price
 
     def validate(self):
