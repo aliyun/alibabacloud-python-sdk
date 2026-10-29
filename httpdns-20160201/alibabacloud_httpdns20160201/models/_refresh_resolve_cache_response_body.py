@@ -13,7 +13,9 @@ class RefreshResolveCacheResponseBody(DaraModel):
     ):
         # Id of the request
         self.code = code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -9,6 +9,7 @@ class RefreshResolveCacheShrinkRequest(DaraModel):
         self,
         domains_shrink: str = None,
     ):
+        # The list of domain names to refresh.
         self.domains_shrink = domains_shrink
 
     def validate(self):

@@ -17,9 +17,13 @@ class ListDomainsResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.domain_infos = domain_infos
+        # The total number of domain names in the list.
         self.page_number = page_number
+        # The number of domain names returned in this query.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of domain names in the list.
         self.total_count = total_count
 
     def validate(self):

@@ -11,6 +11,7 @@ class RefreshResolveCacheRequest(DaraModel):
         self,
         domains: List[str] = None,
     ):
+        # The list of domain names to refresh.
         self.domains = domains
 
     def validate(self):

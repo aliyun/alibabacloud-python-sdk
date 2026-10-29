@@ -10,8 +10,12 @@ class GetResolveCountSummaryRequest(DaraModel):
         granularity: str = None,
         time_span: int = None,
     ):
+        # The data granularity of the statistics. Valid values: **day** and **month**.
+        # 
         # This parameter is required.
         self.granularity = granularity
+        # The time span for the statistics.
+        # 
         # This parameter is required.
         self.time_span = time_span
 

@@ -1,3 +1,13 @@
+2026-10-29 Version: 2.2.0
+- Support API CreateSdnsRuleCategory.
+- Support API SdnsDeleteRuleCategory.
+- Support API SdnsGetRuleCategory.
+- Support API SdnsListRuleCategories.
+- Support API SdnsSwitchRuleCategory.
+- Support API SdnsVerifyRuleCategory.
+- Support API UpdateSdnsRuleCategory.
+
+
 2026-04-09 Version: 2.1.2
 - Generated python 2016-02-01 for Httpdns.
 

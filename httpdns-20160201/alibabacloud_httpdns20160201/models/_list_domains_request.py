@@ -12,7 +12,9 @@ class ListDomainsRequest(DaraModel):
         search: str = None,
         without_metering_data: bool = None,
     ):
+        # The number of the current page. Starting value: 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page for paging in a paged query. Settings: Maximum value: 100. Default value: 20.
         self.page_size = page_size
         self.search = search
         self.without_metering_data = without_metering_data

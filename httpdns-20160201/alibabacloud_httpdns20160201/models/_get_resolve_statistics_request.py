@@ -12,11 +12,18 @@ class GetResolveStatisticsRequest(DaraModel):
         protocol_name: str = None,
         time_span: int = None,
     ):
+        # The domain name for which to retrieve statistics information.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # The data granularity. Valid values: **day** and **month**.
+        # 
         # This parameter is required.
         self.granularity = granularity
+        # The protocol type for resolution. Valid values: http (default) and https.
         self.protocol_name = protocol_name
+        # The length of the time span.
+        # 
         # This parameter is required.
         self.time_span = time_span
 

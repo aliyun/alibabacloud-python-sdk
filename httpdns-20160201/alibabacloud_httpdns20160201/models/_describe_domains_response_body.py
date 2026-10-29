@@ -17,9 +17,13 @@ class DescribeDomainsResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.domains = domains
+        # The current page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -102,8 +106,6 @@ class DescribeDomainsResponseBodyDomains(DaraModel):
                 self.domain.append(temp_model.from_map(k1))
 
         return self
-
-
 
 class DescribeDomainsResponseBodyDomainsDomain(DaraModel):
     def __init__(

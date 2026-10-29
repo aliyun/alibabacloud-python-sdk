@@ -11,7 +11,9 @@ class GetAccountInfoResponseBody(DaraModel):
         account_info: main_models.GetAccountInfoResponseBodyAccountInfo = None,
         request_id: str = None,
     ):
+        # The current account information.
         self.account_info = account_info
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -61,20 +63,38 @@ class GetAccountInfoResponseBodyAccountInfo(DaraModel):
         unsigned_enabled: bool = None,
         user_status: int = None,
     ):
+        # The account ID.
         self.account_id = account_id
+        # Indicates whether the DNS over HTTPS (DoH) feature is enabled.
         self.doh_enabled = doh_enabled
+        # Indicates whether DoH is used to resolve all domain names.
         self.doh_resolve_all_enabled = doh_resolve_all_enabled
+        # The number of DoH resolutions for the current month.
         self.month_doh_resolve_count = month_doh_resolve_count
+        # The monthly free resolution quota. This is the number of times you can call the HTTPDNS service for domain name resolution free of charge each calendar month.
         self.month_free_count = month_free_count
+        # The number of HTTP AES-encrypted resolutions for the current month.
         self.month_http_aes_resolve_count = month_http_aes_resolve_count
+        # The number of HTTPS AES-encrypted resolutions for the current month.
         self.month_https_aes_resolve_count = month_https_aes_resolve_count
+        # The total number of HTTPS resolutions for the current month.
         self.month_https_resolve_count = month_https_resolve_count
+        # The total number of HTTP resolutions for the current month.
         self.month_resolve_count = month_resolve_count
+        # The number of resource plans. This is a legacy field and is always set to 0.
         self.package_count = package_count
+        # The signing secret.
         self.sign_secret = sign_secret
+        # The number of requests to authenticated API operations.
         self.signed_count = signed_count
+        # The number of requests to unauthenticated API operations.
         self.unsigned_count = unsigned_count
+        # Indicates whether unauthenticated API operations are enabled.
         self.unsigned_enabled = unsigned_enabled
+        # The HTTPDNS account status code. Valid values:
+        # - 1: The account is normal.
+        # - 2: The account has an overdue payment.
+        # - 3: The account is suspended.
         self.user_status = user_status
 
     def validate(self):

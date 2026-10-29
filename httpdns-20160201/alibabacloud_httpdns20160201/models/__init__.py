@@ -5,6 +5,10 @@ from __future__ import annotations
 from ._add_domain_request import AddDomainRequest
 from ._add_domain_response_body import AddDomainResponseBody
 from ._add_domain_response import AddDomainResponse
+from ._create_sdns_rule_category_request import CreateSdnsRuleCategoryRequest
+from ._create_sdns_rule_category_shrink_request import CreateSdnsRuleCategoryShrinkRequest
+from ._create_sdns_rule_category_response_body import CreateSdnsRuleCategoryResponseBody
+from ._create_sdns_rule_category_response import CreateSdnsRuleCategoryResponse
 from ._delete_domain_request import DeleteDomainRequest
 from ._delete_domain_response_body import DeleteDomainResponseBody
 from ._delete_domain_response import DeleteDomainResponse
@@ -26,6 +30,29 @@ from ._refresh_resolve_cache_request import RefreshResolveCacheRequest
 from ._refresh_resolve_cache_shrink_request import RefreshResolveCacheShrinkRequest
 from ._refresh_resolve_cache_response_body import RefreshResolveCacheResponseBody
 from ._refresh_resolve_cache_response import RefreshResolveCacheResponse
+from ._sdns_delete_rule_category_request import SdnsDeleteRuleCategoryRequest
+from ._sdns_delete_rule_category_response_body import SdnsDeleteRuleCategoryResponseBody
+from ._sdns_delete_rule_category_response import SdnsDeleteRuleCategoryResponse
+from ._sdns_get_rule_category_request import SdnsGetRuleCategoryRequest
+from ._sdns_get_rule_category_response_body import SdnsGetRuleCategoryResponseBody
+from ._sdns_get_rule_category_response import SdnsGetRuleCategoryResponse
+from ._sdns_list_rule_categories_request import SdnsListRuleCategoriesRequest
+from ._sdns_list_rule_categories_response_body import SdnsListRuleCategoriesResponseBody
+from ._sdns_list_rule_categories_response import SdnsListRuleCategoriesResponse
+from ._sdns_switch_rule_category_request import SdnsSwitchRuleCategoryRequest
+from ._sdns_switch_rule_category_response_body import SdnsSwitchRuleCategoryResponseBody
+from ._sdns_switch_rule_category_response import SdnsSwitchRuleCategoryResponse
+from ._sdns_verify_rule_category_request import SdnsVerifyRuleCategoryRequest
+from ._sdns_verify_rule_category_shrink_request import SdnsVerifyRuleCategoryShrinkRequest
+from ._sdns_verify_rule_category_response_body import SdnsVerifyRuleCategoryResponseBody
+from ._sdns_verify_rule_category_response import SdnsVerifyRuleCategoryResponse
+from ._update_sdns_rule_category_request import UpdateSdnsRuleCategoryRequest
+from ._update_sdns_rule_category_shrink_request import UpdateSdnsRuleCategoryShrinkRequest
+from ._update_sdns_rule_category_response_body import UpdateSdnsRuleCategoryResponseBody
+from ._update_sdns_rule_category_response import UpdateSdnsRuleCategoryResponse
+from ._create_sdns_rule_category_request import CreateSdnsRuleCategoryRequestPaths
+from ._create_sdns_rule_category_request import CreateSdnsRuleCategoryRequestRulesRecords
+from ._create_sdns_rule_category_request import CreateSdnsRuleCategoryRequestRules
 from ._describe_domains_response_body import DescribeDomainsResponseBodyDomainsDomain
 from ._describe_domains_response_body import DescribeDomainsResponseBodyDomains
 from ._get_account_info_response_body import GetAccountInfoResponseBodyAccountInfo
@@ -34,11 +61,45 @@ from ._get_resolve_statistics_response_body import GetResolveStatisticsResponseB
 from ._get_resolve_statistics_response_body import GetResolveStatisticsResponseBodyDataPoints
 from ._list_domains_response_body import ListDomainsResponseBodyDomainInfosDomainInfo
 from ._list_domains_response_body import ListDomainsResponseBodyDomainInfos
+from ._sdns_get_rule_category_response_body import SdnsGetRuleCategoryResponseBodyDataRecordLinePaths
+from ._sdns_get_rule_category_response_body import SdnsGetRuleCategoryResponseBodyDataRecordLine
+from ._sdns_get_rule_category_response_body import SdnsGetRuleCategoryResponseBodyDataRegionArea
+from ._sdns_get_rule_category_response_body import SdnsGetRuleCategoryResponseBodyDataRegionCity
+from ._sdns_get_rule_category_response_body import SdnsGetRuleCategoryResponseBodyDataRegionContinent
+from ._sdns_get_rule_category_response_body import SdnsGetRuleCategoryResponseBodyDataRegionCountry
+from ._sdns_get_rule_category_response_body import SdnsGetRuleCategoryResponseBodyDataRegionIsp
+from ._sdns_get_rule_category_response_body import SdnsGetRuleCategoryResponseBodyDataRegionProvince
+from ._sdns_get_rule_category_response_body import SdnsGetRuleCategoryResponseBodyDataRegion
+from ._sdns_get_rule_category_response_body import SdnsGetRuleCategoryResponseBodyDataRulesRecords
+from ._sdns_get_rule_category_response_body import SdnsGetRuleCategoryResponseBodyDataRules
+from ._sdns_get_rule_category_response_body import SdnsGetRuleCategoryResponseBodyData
+from ._sdns_list_rule_categories_response_body import SdnsListRuleCategoriesResponseBodyListRecordLinePaths
+from ._sdns_list_rule_categories_response_body import SdnsListRuleCategoriesResponseBodyListRecordLine
+from ._sdns_list_rule_categories_response_body import SdnsListRuleCategoriesResponseBodyListRegionArea
+from ._sdns_list_rule_categories_response_body import SdnsListRuleCategoriesResponseBodyListRegionCity
+from ._sdns_list_rule_categories_response_body import SdnsListRuleCategoriesResponseBodyListRegionContinent
+from ._sdns_list_rule_categories_response_body import SdnsListRuleCategoriesResponseBodyListRegionCountry
+from ._sdns_list_rule_categories_response_body import SdnsListRuleCategoriesResponseBodyListRegionIsp
+from ._sdns_list_rule_categories_response_body import SdnsListRuleCategoriesResponseBodyListRegionProvince
+from ._sdns_list_rule_categories_response_body import SdnsListRuleCategoriesResponseBodyListRegion
+from ._sdns_list_rule_categories_response_body import SdnsListRuleCategoriesResponseBodyListRulesRecords
+from ._sdns_list_rule_categories_response_body import SdnsListRuleCategoriesResponseBodyListRules
+from ._sdns_list_rule_categories_response_body import SdnsListRuleCategoriesResponseBodyList
+from ._sdns_verify_rule_category_request import SdnsVerifyRuleCategoryRequestRulesRecords
+from ._sdns_verify_rule_category_request import SdnsVerifyRuleCategoryRequestRules
+from ._sdns_verify_rule_category_response_body import SdnsVerifyRuleCategoryResponseBodyDataRecords
+from ._sdns_verify_rule_category_response_body import SdnsVerifyRuleCategoryResponseBodyData
+from ._update_sdns_rule_category_request import UpdateSdnsRuleCategoryRequestRulesRecords
+from ._update_sdns_rule_category_request import UpdateSdnsRuleCategoryRequestRules
 
 __all__ = [
     AddDomainRequest,
     AddDomainResponseBody,
     AddDomainResponse,
+    CreateSdnsRuleCategoryRequest,
+    CreateSdnsRuleCategoryShrinkRequest,
+    CreateSdnsRuleCategoryResponseBody,
+    CreateSdnsRuleCategoryResponse,
     DeleteDomainRequest,
     DeleteDomainResponseBody,
     DeleteDomainResponse,
@@ -60,6 +121,29 @@ __all__ = [
     RefreshResolveCacheShrinkRequest,
     RefreshResolveCacheResponseBody,
     RefreshResolveCacheResponse,
+    SdnsDeleteRuleCategoryRequest,
+    SdnsDeleteRuleCategoryResponseBody,
+    SdnsDeleteRuleCategoryResponse,
+    SdnsGetRuleCategoryRequest,
+    SdnsGetRuleCategoryResponseBody,
+    SdnsGetRuleCategoryResponse,
+    SdnsListRuleCategoriesRequest,
+    SdnsListRuleCategoriesResponseBody,
+    SdnsListRuleCategoriesResponse,
+    SdnsSwitchRuleCategoryRequest,
+    SdnsSwitchRuleCategoryResponseBody,
+    SdnsSwitchRuleCategoryResponse,
+    SdnsVerifyRuleCategoryRequest,
+    SdnsVerifyRuleCategoryShrinkRequest,
+    SdnsVerifyRuleCategoryResponseBody,
+    SdnsVerifyRuleCategoryResponse,
+    UpdateSdnsRuleCategoryRequest,
+    UpdateSdnsRuleCategoryShrinkRequest,
+    UpdateSdnsRuleCategoryResponseBody,
+    UpdateSdnsRuleCategoryResponse,
+    CreateSdnsRuleCategoryRequestPaths,
+    CreateSdnsRuleCategoryRequestRulesRecords,
+    CreateSdnsRuleCategoryRequestRules,
     DescribeDomainsResponseBodyDomainsDomain,
     DescribeDomainsResponseBodyDomains,
     GetAccountInfoResponseBodyAccountInfo,
@@ -67,5 +151,35 @@ __all__ = [
     GetResolveStatisticsResponseBodyDataPointsDataPoint,
     GetResolveStatisticsResponseBodyDataPoints,
     ListDomainsResponseBodyDomainInfosDomainInfo,
-    ListDomainsResponseBodyDomainInfos
+    ListDomainsResponseBodyDomainInfos,
+    SdnsGetRuleCategoryResponseBodyDataRecordLinePaths,
+    SdnsGetRuleCategoryResponseBodyDataRecordLine,
+    SdnsGetRuleCategoryResponseBodyDataRegionArea,
+    SdnsGetRuleCategoryResponseBodyDataRegionCity,
+    SdnsGetRuleCategoryResponseBodyDataRegionContinent,
+    SdnsGetRuleCategoryResponseBodyDataRegionCountry,
+    SdnsGetRuleCategoryResponseBodyDataRegionIsp,
+    SdnsGetRuleCategoryResponseBodyDataRegionProvince,
+    SdnsGetRuleCategoryResponseBodyDataRegion,
+    SdnsGetRuleCategoryResponseBodyDataRulesRecords,
+    SdnsGetRuleCategoryResponseBodyDataRules,
+    SdnsGetRuleCategoryResponseBodyData,
+    SdnsListRuleCategoriesResponseBodyListRecordLinePaths,
+    SdnsListRuleCategoriesResponseBodyListRecordLine,
+    SdnsListRuleCategoriesResponseBodyListRegionArea,
+    SdnsListRuleCategoriesResponseBodyListRegionCity,
+    SdnsListRuleCategoriesResponseBodyListRegionContinent,
+    SdnsListRuleCategoriesResponseBodyListRegionCountry,
+    SdnsListRuleCategoriesResponseBodyListRegionIsp,
+    SdnsListRuleCategoriesResponseBodyListRegionProvince,
+    SdnsListRuleCategoriesResponseBodyListRegion,
+    SdnsListRuleCategoriesResponseBodyListRulesRecords,
+    SdnsListRuleCategoriesResponseBodyListRules,
+    SdnsListRuleCategoriesResponseBodyList,
+    SdnsVerifyRuleCategoryRequestRulesRecords,
+    SdnsVerifyRuleCategoryRequestRules,
+    SdnsVerifyRuleCategoryResponseBodyDataRecords,
+    SdnsVerifyRuleCategoryResponseBodyData,
+    UpdateSdnsRuleCategoryRequestRulesRecords,
+    UpdateSdnsRuleCategoryRequestRules
 ]

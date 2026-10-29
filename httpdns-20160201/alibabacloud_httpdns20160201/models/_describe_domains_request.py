@@ -11,8 +11,11 @@ class DescribeDomainsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The HTTPDNS account ID.
         self.account_id = account_id
+        # The current page number. Minimum value: 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page for a paged query. Maximum value: 100. Default value: 20.
         self.page_size = page_size
 
     def validate(self):

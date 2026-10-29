@@ -11,7 +11,9 @@ class GetResolveCountSummaryResponseBody(DaraModel):
         request_id: str = None,
         resolve_summary: main_models.GetResolveCountSummaryResponseBodyResolveSummary = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The statistics result.
         self.resolve_summary = resolve_summary
 
     def validate(self):
@@ -54,10 +56,14 @@ class GetResolveCountSummaryResponseBodyResolveSummary(DaraModel):
         https_aes: str = None,
     ):
         self.doh = doh
+        # The number of IPv4 HTTP resolution requests.
         self.http = http
+        # The number of IPv6 HTTP resolution requests.
         self.http_6 = http_6
         self.http_aes = http_aes
+        # The number of IPv4 HTTPS resolution requests.
         self.https = https
+        # The number of IPv6 HTTPS resolution requests.
         self.https_6 = https_6
         self.https_aes = https_aes
 

@@ -10,7 +10,9 @@ class AddDomainResponseBody(DaraModel):
         domain_name: str = None,
         request_id: str = None,
     ):
+        # The domain name.
         self.domain_name = domain_name
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

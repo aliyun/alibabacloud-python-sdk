@@ -10,7 +10,10 @@ class AddDomainRequest(DaraModel):
         account_id: str = None,
         domain_name: str = None,
     ):
+        # The HTTPDNS account ID.
         self.account_id = account_id
+        # The domain name.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
 
