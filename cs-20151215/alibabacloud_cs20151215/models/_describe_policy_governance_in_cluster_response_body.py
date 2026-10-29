@@ -14,11 +14,11 @@ class DescribePolicyGovernanceInClusterResponseBody(DaraModel):
         admit_log: main_models.DescribePolicyGovernanceInClusterResponseBodyAdmitLog = None,
         on_state: List[main_models.DescribePolicyGovernanceInClusterResponseBodyOnState] = None,
     ):
-        # The policy violation information aggregated by severity level.
+        # The policy violation information summarized by severity level.
         self.violation = violation
-        # The policy governance audit logs of the cluster.
+        # The current policy governance audit logs of the cluster.
         self.admit_log = admit_log
-        # The counts of enabled policies at different severity levels in the current cluster.
+        # The counts of enabled policies at different severity levels in the cluster.
         self.on_state = on_state
 
     def validate(self):
@@ -124,11 +124,11 @@ class DescribePolicyGovernanceInClusterResponseBodyAdmitLog(DaraModel):
     ):
         # The total number of logs queried.
         self.count = count
-        # The Log Service project that stores the policy action information.
+        # The log project that stores the policy action information.
         self.log_project = log_project
-        # The Log Service Logstore that stores the policy action information.
+        # The Logstore that stores the policy action information.
         self.log_store = log_store
-        # The log entries for policy violations.
+        # The log information about policy violations.
         self.logs = logs
         # The status of the query result. Valid values:
         # * `Complete`: The query is complete and the returned result is complete.
@@ -209,8 +209,8 @@ class DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs(DaraModel):
         # The ID of the cluster.
         self.cluster_id = cluster_id
         # The action taken by the policy. Valid values:
-        # - warn: Alerts on policy violations but does not intercept the requests.
-        # - deny: Intercepts requests that violate the policy.
+        # - warn: Generates an alert for the policy violation but does not intercept the request.
+        # - deny: Intercepts the request that violates the policy.
         self.constraint_action = constraint_action
         # The API version of the policy.
         self.constraint_api_version = constraint_api_version
@@ -218,7 +218,7 @@ class DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs(DaraModel):
         self.constraint_category = constraint_category
         # The API group of the policy.
         self.constraint_group = constraint_group
-        # The policy kind that corresponds to the policy name in policy management.
+        # The corresponding Policy Name in policy management.
         self.constraint_kind = constraint_kind
         # The name of the policy instance.
         self.constraint_name = constraint_name
@@ -236,7 +236,7 @@ class DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs(DaraModel):
         self.resource_kind = resource_kind
         # The name of the resource that violated the policy.
         self.resource_name = resource_name
-        # The time when the policy violation occurred. The time is in ISO 8601 format and includes time zone information.
+        # The time when the policy was violated. The time is in ISO 8601 format and includes time zone information.
         self.time = time
 
     def validate(self):
@@ -349,9 +349,9 @@ class DescribePolicyGovernanceInClusterResponseBodyViolation(DaraModel):
         total_violations: main_models.DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolations = None,
         violations: main_models.DescribePolicyGovernanceInClusterResponseBodyViolationViolations = None,
     ):
-        # The aggregated information.
+        # The summary information.
         self.total_violations = total_violations
-        # The violation records aggregated by policy name.
+        # The violation records summarized by policy name.
         self.violations = violations
 
     def validate(self):
@@ -391,9 +391,9 @@ class DescribePolicyGovernanceInClusterResponseBodyViolationViolations(DaraModel
         deny: List[main_models.DescribePolicyGovernanceInClusterResponseBodyViolationViolationsDeny] = None,
         warn: List[main_models.DescribePolicyGovernanceInClusterResponseBodyViolationViolationsWarn] = None,
     ):
-        # The aggregated interception records.
+        # The summary of interception records.
         self.deny = deny
-        # The aggregated alert information.
+        # The summary of alert information.
         self.warn = warn
 
     def validate(self):
@@ -449,7 +449,7 @@ class DescribePolicyGovernanceInClusterResponseBodyViolationViolationsWarn(DaraM
     ):
         # The description of the policy.
         self.policy_description = policy_description
-        # The policy name.
+        # The Policy Name.
         self.policy_name = policy_name
         # The severity level.
         self.severity = severity
@@ -504,7 +504,7 @@ class DescribePolicyGovernanceInClusterResponseBodyViolationViolationsDeny(DaraM
     ):
         # The description of the policy.
         self.policy_description = policy_description
-        # The policy name.
+        # The Policy Name.
         self.policy_name = policy_name
         # The severity level.
         self.severity = severity
@@ -555,9 +555,9 @@ class DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolations(Dara
         deny: List[main_models.DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsDeny] = None,
         warn: List[main_models.DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsWarn] = None,
     ):
-        # The aggregated interception records.
+        # The summary of interception records.
         self.deny = deny
-        # The aggregated alert records.
+        # The summary of alert records.
         self.warn = warn
 
     def validate(self):

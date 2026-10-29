@@ -1,3 +1,9 @@
+2026-10-29 Version: 7.2.4
+- Update API CreateClusterNodePool: add request parameters body.management.auto_repair_policy.auto_repair_policy_id.
+- Update API DescribeAutoRepairPolicy: add response parameters Body.type.
+- Update API ListAutoRepairPolicies: add response parameters Body.items.$.type.
+
+
 2026-10-27 Version: 7.2.3
 - Update API CreateClusterNodePool: add request parameters body.node_config.node_os_config.
 - Update API DescribeClusterNodePoolDetail: add response parameters Body.node_config.node_os_config.sysctl.

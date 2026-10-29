@@ -16,19 +16,24 @@ class DescribeAutoRepairPolicyResponseBody(DaraModel):
         resource_sub_type: str = None,
         resource_type: str = None,
         rules: List[main_models.DescribeAutoRepairPolicyResponseBodyRules] = None,
+        type: str = None,
     ):
-        # The self-healing rule ID.
+        # The ID of the self-healing rule.
         self.id = id
         # The name of the self-healing rule.
         self.name = name
         # The list of resources bound to the self-healing rule.
         self.resource_ids = resource_ids
-        # The subtype of the resource bound to the self-healing rule.
+        # The resource subtype bound to the self-healing rule.
         self.resource_sub_type = resource_sub_type
-        # The type of resource bound to the self-healing rule.
+        # The resource type bound to the self-healing rule.
         self.resource_type = resource_type
         # The list of self-healing sub-rules.
         self.rules = rules
+        # The rule type. The value is case-sensitive. Valid values:
+        # - custom: user-defined rules that support modification and deletion
+        # - builtin: built-in system rules that are read-only and do not support creation, modification, or deletion
+        self.type = type
 
     def validate(self):
         if self.rules:
@@ -61,6 +66,9 @@ class DescribeAutoRepairPolicyResponseBody(DaraModel):
             for k1 in self.rules:
                 result['rules'].append(k1.to_map() if k1 else None)
 
+        if self.type is not None:
+            result['type'] = self.type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -86,6 +94,9 @@ class DescribeAutoRepairPolicyResponseBody(DaraModel):
                 temp_model = main_models.DescribeAutoRepairPolicyResponseBodyRules()
                 self.rules.append(temp_model.from_map(k1))
 
+        if m.get('type') is not None:
+            self.type = m.get('type')
+
         return self
 
 class DescribeAutoRepairPolicyResponseBodyRules(DaraModel):
@@ -94,7 +105,7 @@ class DescribeAutoRepairPolicyResponseBodyRules(DaraModel):
         incidents: List[main_models.DescribeAutoRepairPolicyResponseBodyRulesIncidents] = None,
         repair_procedure: List[main_models.DescribeAutoRepairPolicyResponseBodyRulesRepairProcedure] = None,
     ):
-        # The list of identified incidents.
+        # The list of identified faults.
         self.incidents = incidents
         # The repair procedure.
         self.repair_procedure = repair_procedure
@@ -151,7 +162,7 @@ class DescribeAutoRepairPolicyResponseBodyRulesRepairProcedure(DaraModel):
     ):
         # The configuration parameters of the procedure.
         self.config = config
-        # The configuration of the manual intervention procedure.
+        # The manual intervention procedure.
         self.intervention = intervention
         # The name of the procedure.
         self.name = name
@@ -198,11 +209,11 @@ class DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureIntervention(DaraM
         inquiring_label: main_models.DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureInterventionInquiringLabel = None,
         type: str = None,
     ):
-        # The label configuration for authorization confirmation. Adding the following labels to the node indicates that you authorize ACK to execute the operations in this stage. After completing the operations in this stage, ACK automatically removes the authorization inquiry and confirmation labels for this stage. If you do not add the following labels promptly, ACK will not execute the actions in this stage and subsequent stages, and the node may remain in a damaged state.
+        # The label configuration for authorization confirmation. When you add the following label to a node, you authorize ACK to perform the operations in this phase. After completing the operations in this phase, ACK automatically removes the inquiry and confirmation labels for this phase. If you do not add the following label in time, ACK will not perform the operations in this phase and subsequent phases, and the node may remain in a damaged state.
         self.approved_label = approved_label
-        # Indicates whether manual approval is enabled.
+        # Specifies whether manual approval is enabled.
         self.enable = enable
-        # The label configuration for authorization inquiry. When this stage is reached, ACK adds the following labels to your node and waits for your authorization to execute the actions in this stage.
+        # The label configuration for authorization inquiry. When this phase is entered, ACK adds the following label to your node and waits for your authorization to perform the operations in this phase.
         self.inquiring_label = inquiring_label
         # The type of manual approval.
         self.type = type
@@ -293,7 +304,7 @@ class DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureInterventionApprov
         key: str = None,
         value: str = None,
     ):
-        # The `key` of the label.
+        # The key of the label.
         self.key = key
         # The value of the label.
         self.value = value
@@ -330,9 +341,9 @@ class DescribeAutoRepairPolicyResponseBodyRulesIncidents(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # The name of the incident.
+        # The fault name.
         self.name = name
-        # The type of the incident.
+        # The fault type.
         self.type = type
 
     def validate(self):
