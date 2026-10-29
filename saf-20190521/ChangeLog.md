@@ -1,3 +1,9 @@
+2026-10-29 Version: 4.0.0
+- Delete API ExecuteExtendService.
+- Delete API GetToken.
+- Update API ExecuteRequest: add response parameters Body.AccessDeniedDetail.
+
+
 2021-12-01 Version: 3.0.0
 - Supported RequestDecision For YN.
 
