@@ -18,27 +18,25 @@ class ListCloudAppInstallationsRequest(DaraModel):
         rendering_instance_id: str = None,
         start_time: str = None,
     ):
-        # Cloud application ID. Each ID maps to a unique application package.
+        # The ID of the cloud application, which corresponds to a unique application package.
         self.app_id = app_id
-        # Application name.
+        # The name of the application.
         self.app_name = app_name
-        # Application version.
+        # The version of the application.
         self.app_version = app_version
-        # Time range filter. Use ISO 8601 format and UTC time, such as yyyy-MM-ddTHH:mm:ssZ.
+        # The start time of the time range filter. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.end_time = end_time
-        # Page number of the returned list. Minimum value: 1. Default value: 1.
+        # The page number of the list to query. Pages start from 1. Default value: 1.
         self.page_number = page_number
-        # Number of entries per page for paged queries. Valid values: 1 to 100. Default value: 10.
+        # The number of entries to return on each page for a paged query. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
-        # Patch package ID. Supported only in Windows scenarios.
-        # 
-        # 1. Set to origin to return only original versions.
+        # The ID of the patch package. This parameter is supported only in Windows scenarios. If you enter origin, only the original version is filtered.
         self.patch_id = patch_id
-        # Project ID.
+        # The ID of the project.
         self.project_id = project_id
-        # Cloud application service instance ID. Use this to list installations on a specific instance.
+        # The cloud application service instance ID, which is used to query the cloud applications installed on the specified instance.
         self.rendering_instance_id = rendering_instance_id
-        # Start time of the time range filter. Specify in ISO 8601 format using UTC time. Format: yyyy-MM-ddTHH:mm:ssZ.
+        # The start time of the time range filter. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):

@@ -15,13 +15,13 @@ class DescribeComfyUserDataDownloadUrlResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The download URL for the application package.
+        # The download URL of the application package.
         self.download_url = download_url
-        # The expiration time for the download link.
+        # The expiration time of the download URL. The value is a UNIX timestamp in milliseconds.
         self.expired_time = expired_time
-        # The result message.
+        # The message.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

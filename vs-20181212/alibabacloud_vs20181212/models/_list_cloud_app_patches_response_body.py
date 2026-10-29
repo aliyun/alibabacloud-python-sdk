@@ -16,11 +16,11 @@ class ListCloudAppPatchesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The page number of the query list.
+        # The page number of the returned list.
         self.page_number = page_number
-        # The number of entries per page for the paged query.
+        # Settings for the number of entries per page when paging in a paged query.
         self.page_size = page_size
-        # The list of patches for the cloud application.
+        # The patch list of the cloud application.
         self.patches = patches
         # Id of the request
         self.request_id = request_id
@@ -91,27 +91,27 @@ class ListCloudAppPatchesResponseBodyPatches(DaraModel):
         update_time: str = None,
         upload_time: str = None,
     ):
-        # The ID of the patch package.
+        # The ID of the patch.
         self.patch_id = patch_id
-        # The name of the patch package.
+        # The name of the patch.
         self.patch_name = patch_name
-        # The relative path of the post-command within the application package. Only Windows-type applications are supported.
+        # The relative path of the post-command in the application package. This parameter is supported only for Windows applications.
         self.post_command_path = post_command_path
-        # The timeout period for the post-command execution, in seconds. Only Windows-type applications are supported.
+        # The timeout period for executing the post-command, in seconds. This parameter is supported only for Windows applications.
         self.post_command_timeout_sec = post_command_timeout_sec
-        # The application upload status. Valid values:
-        # 1. Created
-        # 2. Doing
-        # 3. Success: desired state.
-        # 4. Failed: desired state.
-        # 5. Deleting
-        # 6. DeleteFailed: desired state.
+        # The upload status of the application. Valid values:
+        # - Created
+        # - Doing
+        # - Success: desired state
+        # - Failed: desired state
+        # - Deleting
+        # - DeleteFailed: desired state
         self.status = status
-        # The status description.
+        # The description of the status.
         self.status_description = status_description
-        # The most recent time when the status was updated.
+        # The latest time when the status was updated. The time is in the YYYY-MM-DDTHH:mm:ss format.
         self.update_time = update_time
-        # The time when the patch was uploaded.
+        # The time when the application was uploaded. The time is in the ISO 8601 standard and includes the time zone offset, in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
         self.upload_time = upload_time
 
     def validate(self):

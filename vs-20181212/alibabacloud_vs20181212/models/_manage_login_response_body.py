@@ -11,9 +11,9 @@ class ManageLoginResponseBody(DaraModel):
         login_info: main_models.ManageLoginResponseBodyLoginInfo = None,
         request_id: str = None,
     ):
-        # Connection information.
+        # The connection information.
         self.login_info = login_info
-        # ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -51,11 +51,11 @@ class ManageLoginResponseBodyLoginInfo(DaraModel):
         login_hostname: str = None,
         login_port: int = None,
     ):
-        # Port for ADB connections.
+        # The port for the ADB connection.
         self.adb_login_port = adb_login_port
-        # Host for SSH connections.
+        # The host for the SSH connection.
         self.login_hostname = login_hostname
-        # Port for SSH connections.
+        # The port for the SSH connection.
         self.login_port = login_port
 
     def validate(self):

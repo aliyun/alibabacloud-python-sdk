@@ -9,7 +9,7 @@ class RebootRenderingInstanceRequest(DaraModel):
         self,
         rendering_instance_id: str = None,
     ):
-        # ID of the cloud application service instance
+        # The cloud application service instance ID.
         # 
         # This parameter is required.
         self.rendering_instance_id = rendering_instance_id

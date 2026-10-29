@@ -9,7 +9,7 @@ class DeleteComfyProductionRequest(DaraModel):
         self,
         production_id: str = None,
     ):
-        # The ID of the production.
+        # The ID of the artifact.
         self.production_id = production_id
 
     def validate(self):

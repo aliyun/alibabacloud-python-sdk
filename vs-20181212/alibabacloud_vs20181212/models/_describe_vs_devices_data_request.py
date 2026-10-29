@@ -12,24 +12,19 @@ class DescribeVsDevicesDataRequest(DaraModel):
         owner_id: int = None,
         start_time: str = None,
     ):
-        # The end of the time range to query. The end time must be later than the start time.
+        # The end time of the data to retrieve. The end time must be later than the start time.
         # 
-        # > - The date must follow the ISO 8601 standard and be in UTC. The format is YYYY-MM-DDThh:mm:ssZ.
-        # >
+        # > - Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
         # > - The minimum data granularity is 5 minutes.
-        # >
-        # > - If you do not specify this parameter, data from the last 24 hours is retrieved by default.
+        # > - If you do not specify this parameter, the data of the last 24 hours is retrieved by default.
         self.end_time = end_time
-        # You can query by space ID.
+        # The workspace ID.
         self.group_id = group_id
         self.owner_id = owner_id
-        # The start of the time range to query.
-        # 
-        # > - The date must follow the ISO 8601 standard and be in UTC. The format is YYYY-MM-DDThh:mm:ssZ.
-        # >
+        # The start time of the data to retrieve.    
+        # > - Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
         # > - The minimum data granularity is 5 minutes.
-        # >
-        # > - If you do not specify this parameter, data from the last 24 hours is retrieved by default.
+        # > - If you do not specify this parameter, the data of the last 24 hours is retrieved by default.
         self.start_time = start_time
 
     def validate(self):

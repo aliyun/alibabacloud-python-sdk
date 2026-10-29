@@ -13,9 +13,9 @@ class DescribeRenderingInstanceConfigurationRequest(DaraModel):
         configuration: List[main_models.DescribeRenderingInstanceConfigurationRequestConfiguration] = None,
         rendering_instance_id: str = None,
     ):
-        # The configuration to query. By default, the configurations of all modules are returned.
+        # The configuration content to be queried. By default, all modules are queried.
         self.configuration = configuration
-        # The ID of the cloud application service instance.
+        # The instance ID of the cloud application service.
         # 
         # This parameter is required.
         self.rendering_instance_id = rendering_instance_id
@@ -60,7 +60,7 @@ class DescribeRenderingInstanceConfigurationRequestConfiguration(DaraModel):
         attribute_names: List[str] = None,
         module_name: str = None,
     ):
-        # The list of attribute names to query. By default, all attributes are returned.
+        # The list of attribute names to be queried. By default, all attributes are queried.
         self.attribute_names = attribute_names
         # The name of the module.
         # 

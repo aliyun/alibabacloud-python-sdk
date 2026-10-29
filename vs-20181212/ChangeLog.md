@@ -1,3 +1,16 @@
+2026-10-29 Version: 3.10.1
+- Update API DescribeRenderingInstance: add response parameters Body.ExpiredTime.
+- Update API DescribeRenderingInstance: add response parameters Body.InstanceName.
+- Update API ListRenderingInstances: add response parameters Body.RenderingInstances.$.ChargeType.
+- Update API ListRenderingInstances: add response parameters Body.RenderingInstances.$.ExpireTime.
+- Update API ListRenderingInstances: add response parameters Body.RenderingInstances.$.InstanceName.
+- Update API ListRenderingInstances: add response parameters Body.RenderingInstances.$.MaxEgressBandwidth.
+- Update API ListRenderingInstances: add response parameters Body.RenderingInstances.$.MaxIngressBandwidth.
+- Update API ListRenderingInstances: add response parameters Body.RenderingInstances.$.ServerStatus.
+- Update API ListRenderingInstances: add response parameters Body.RenderingInstances.$.Status.
+- Update API ModifyRenderingInstanceAttribute: add request parameters InstanceName.
+
+
 2026-09-17 Version: 3.10.0
 - Support API ListRenderingImages.
 - Support API UpgradeRenderingInstanceImage.

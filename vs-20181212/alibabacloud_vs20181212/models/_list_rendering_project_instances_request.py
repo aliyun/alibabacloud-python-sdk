@@ -15,27 +15,24 @@ class ListRenderingProjectInstancesRequest(DaraModel):
         start_time: str = None,
         state: str = None,
     ):
-        # End time of the time range. Use ISO 8601 format in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+        # The start time of the time range filter. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.end_time = end_time
-        # Page number. Start from 1.
+        # The page number. Pages start from 1.
         self.page_number = page_number
-        # Number of entries per page.
+        # The Settings for the number of entries per page during paging in a paged query.
         self.page_size = page_size
-        # Project ID
+        # The project ID.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # Cloud application service instance ID
+        # The cloud application service instance ID.
         self.rendering_instance_id = rendering_instance_id
-        # A parameter for filtering by a time range. The time must be in UTC and formatted according to the ISO 8601 standard as \\`yyyy-MM-ddTHH:mm:ssZ\\`.
+        # The start time of the time range filter. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
-        # Instance status. Valid values:
-        # 
-        # 1. Idle
-        # 
-        # 2. Locked
-        # 
-        # 3. InUse
+        # The project instance status. Valid values:
+        # - Idle: idle
+        # - Locked: locked
+        # - InUse: in use
         self.state = state
 
     def validate(self):

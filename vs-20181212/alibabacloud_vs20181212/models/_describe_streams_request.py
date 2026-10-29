@@ -20,48 +20,36 @@ class DescribeStreamsRequest(DaraModel):
         sort_by: str = None,
         sort_direction: str = None,
     ):
-        # Filter by application.
+        # The application.
         self.app = app
-        # Filter by device ID.
+        # The device ID.
         self.device_id = device_id
-        # Filter by domain name.
+        # The domain name.
         self.domain = domain
-        # The ID of the space to query.
+        # The space ID.
         self.group_id = group_id
-        # Stream ID.
-        # 
-        # > Enter multiple IDs separated by commas (,).
+        # The stream ID. You can specify multiple IDs separated by commas (,).
         self.id = id
-        # Filter by stream name.
-        # 
-        # > Enter multiple names separated by commas (,).
+        # The stream name. You can specify multiple names separated by commas (,).
         self.name = name
         self.owner_id = owner_id
-        # Page number. Default value: 1.
+        # The page number. Default value: 1.
         self.page_num = page_num
-        # Number of items per page. Default value: 20.
+        # The number of entries per page. Default value: 20.
         self.page_size = page_size
-        # Parent device ID of the device that hosts this stream.
+        # The parent device ID of the device to which the stream belongs.
         self.parent_id = parent_id
-        # Sort results by a field. Valid values:
-        # 
+        # The field by which to sort the results. Valid values:
         # - Id (default)
-        # 
         # - GroupId
-        # 
         # - Name
-        # 
         # - DeviceId
-        # 
         # - Protocol
-        # 
-        # > You can specify only one field.
+        # You can specify only one field.
         self.sort_by = sort_by
-        # Sort order. Valid values:
-        # 
-        # - asc (ascending, default)
-        # 
-        # - desc (descending)
+        # The sort order. Valid values:
+        # - asc: ascending order (default)
+        # - desc: descending order
         self.sort_direction = sort_direction
 
     def validate(self):

@@ -9,7 +9,7 @@ class DescribeComfyTaskWaitingQueueRequest(DaraModel):
         self,
         hive_id: str = None,
     ):
-        # The waiting queue information of a specified Hive.
+        # The ID of the specified Hive.
         self.hive_id = hive_id
 
     def validate(self):

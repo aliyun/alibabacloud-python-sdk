@@ -17,17 +17,17 @@ class DescribeStreamsResponseBody(DaraModel):
         streams: List[main_models.DescribeStreamsResponseBodyStreams] = None,
         total_count: int = None,
     ):
-        # Total number of pages.
+        # The total number of pages.
         self.page_count = page_count
-        # Page number.
+        # The page number.
         self.page_num = page_num
-        # Number of items per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # List of streams.
+        # The list of streams.
         self.streams = streams
-        # Total number of streams.
+        # The total number of streams.
         self.total_count = total_count
 
     def validate(self):
@@ -105,35 +105,33 @@ class DescribeStreamsResponseBodyStreams(DaraModel):
         status: str = None,
         width: int = None,
     ):
-        # Application that owns this stream.
+        # The application to which the stream belongs.
         self.app = app
-        # Time when the stream was created.
+        # The time when the stream was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.created_time = created_time
-        # Device ID of this stream.
+        # The ID of the device to which the stream belongs.
         self.device_id = device_id
         # Indicates whether the stream is enabled.
         self.enabled = enabled
-        # The ID of the group to which the stream belongs.
+        # The ID of the space to which the stream belongs.
         self.group_id = group_id
-        # Video stream height in pixels.
+        # The height of the video stream resolution.
         self.height = height
-        # Stream ID.
+        # The stream ID.
         self.id = id
-        # Stream name.
+        # The stream name.
         self.name = name
-        # Streaming domain for this stream.
+        # The playback domain name to which the stream belongs.
         self.play_domain = play_domain
-        # Stream protocol.
+        # The stream protocol.
         self.protocol = protocol
-        # Ingest domain for this stream.
+        # The ingest domain name to which the stream belongs.
         self.push_domain = push_domain
-        # Stream status. Valid values:
-        # 
-        # - on (online)
-        # 
-        # - off (offline)
+        # The stream status. Valid values:
+        # - on: online
+        # - off: offline
         self.status = status
-        # Video stream width in pixels.
+        # The width of the video stream resolution.
         self.width = width
 
     def validate(self):

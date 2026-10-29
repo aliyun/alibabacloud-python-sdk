@@ -18,13 +18,13 @@ class UpgradeRenderingInstanceImageResponseBody(DaraModel):
     ):
         # The number of failed instances.
         self.failed_count = failed_count
-        # The information about failed instances.
+        # The information about the failed instances.
         self.failed_items = failed_items
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The number of successful instances.
+        # The number of successfully upgraded instances.
         self.success_count = success_count
-        # The information about successful instances.
+        # The information about the successfully upgraded instances.
         self.success_items = success_items
 
     def validate(self):
@@ -123,9 +123,9 @@ class UpgradeRenderingInstanceImageResponseBodyFailedItems(DaraModel):
         err_message: str = None,
         rendering_instance_id: str = None,
     ):
-        # The error code of the failure.
+        # The error code for the failure.
         self.err_code = err_code
-        # The error message of the failure.
+        # The error message for the failure.
         self.err_message = err_message
         # The cloud application service instance ID.
         self.rendering_instance_id = rendering_instance_id

@@ -10,11 +10,11 @@ class DisassociateRenderingProjectInstancesShrinkRequest(DaraModel):
         project_id: str = None,
         rendering_instance_ids_shrink: str = None,
     ):
-        # The ID of the project.
+        # The project ID.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # A list of cloud application service instance IDs.
+        # The list of cloud application service instance IDs.
         # 
         # This parameter is required.
         self.rendering_instance_ids_shrink = rendering_instance_ids_shrink

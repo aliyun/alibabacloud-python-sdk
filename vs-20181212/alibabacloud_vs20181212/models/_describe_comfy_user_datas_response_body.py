@@ -20,16 +20,17 @@ class DescribeComfyUserDatasResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The description.
+        # The error message.
         self.message = message
-        # The page number of the returned list.
+        # The page number.
         self.page_number = page_number
-        # The number of entries per page. The default value is 20.
+        # The number of entries per page. Default value: 20.
         self.page_size = page_size
         # Id of the request
         self.request_id = request_id
         # The total number of records.
         self.total = total
+        # The list of user data.
         self.user_datas = user_datas
 
     def validate(self):
@@ -104,13 +105,13 @@ class DescribeComfyUserDatasResponseBodyUserDatas(DaraModel):
         type: str = None,
         updated_time: str = None,
     ):
-        # The name of the file or folder.
+        # The name of the file or directory.
         self.file_name = file_name
         # The file size in bytes.
         self.file_size = file_size
-        # The entry type. Valid values are \\`file\\` and \\`dir\\`.
+        # The file type. Valid values: file and dir.
         self.type = type
-        # The time the file was last modified.
+        # The last modified time. The value is a UNIX timestamp in milliseconds.
         self.updated_time = updated_time
 
     def validate(self):

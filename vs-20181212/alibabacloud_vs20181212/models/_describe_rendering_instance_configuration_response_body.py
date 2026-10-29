@@ -13,7 +13,7 @@ class DescribeRenderingInstanceConfigurationResponseBody(DaraModel):
         configuration: List[main_models.DescribeRenderingInstanceConfigurationResponseBodyConfiguration] = None,
         request_id: str = None,
     ):
-        # The configuration.
+        # The configuration content.
         self.configuration = configuration
         # The request ID.
         self.request_id = request_id
@@ -58,27 +58,18 @@ class DescribeRenderingInstanceConfigurationResponseBodyConfiguration(DaraModel)
         attributes: List[main_models.DescribeRenderingInstanceConfigurationResponseBodyConfigurationAttributes] = None,
         module_name: str = None,
     ):
-        # The list of properties for the module.
+        # The list of attributes for the module.
         self.attributes = attributes
-        # The name of the device simulation feature module. Valid values:
-        # 
-        # 1. ctl: The control module.
-        # 
-        # 2. prop: The property module.
-        # 
-        # 3. location: The location module.
-        # 
-        # 4. battery: The battery module.
-        # 
-        # 5. network: The network module.
-        # 
-        # 6. bluetooth: The Bluetooth module.
-        # 
-        # 7. sim: The SIM card module.
-        # 
-        # 8. display: The device module.
-        # 
-        # 9. system: The basic module.
+        # The name of the real-device simulation feature module. Valid values:
+        # - ctl: Control module.
+        # - prop: Attribute module.
+        # - location: Location module.
+        # - battery: Battery module.
+        # - network: Network module.
+        # - bluetooth: Bluetooth module.
+        # - sim: SIM card module.
+        # - display: Device module.
+        # - system: Basic module.
         self.module_name = module_name
 
     def validate(self):
@@ -121,9 +112,9 @@ class DescribeRenderingInstanceConfigurationResponseBodyConfigurationAttributes(
         name: str = None,
         value: Any = None,
     ):
-        # The name of the attribute.
+        # The attribute name.
         self.name = name
-        # The value of the attribute.
+        # The attribute value.
         self.value = value
 
     def validate(self):

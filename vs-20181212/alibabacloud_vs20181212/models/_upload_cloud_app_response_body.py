@@ -10,7 +10,7 @@ class UploadCloudAppResponseBody(DaraModel):
         app_id: str = None,
         request_id: str = None,
     ):
-        # The cloud application ID, which uniquely identifies the application package.
+        # The ID of the cloud application, which corresponds to a unique application package.
         self.app_id = app_id
         # The request ID.
         self.request_id = request_id

@@ -10,9 +10,9 @@ class DescribeRenderingInstanceConfigurationShrinkRequest(DaraModel):
         configuration_shrink: str = None,
         rendering_instance_id: str = None,
     ):
-        # The configuration to query. By default, the configurations of all modules are returned.
+        # The configuration content to be queried. By default, all modules are queried.
         self.configuration_shrink = configuration_shrink
-        # The ID of the cloud application service instance.
+        # The instance ID of the cloud application service.
         # 
         # This parameter is required.
         self.rendering_instance_id = rendering_instance_id

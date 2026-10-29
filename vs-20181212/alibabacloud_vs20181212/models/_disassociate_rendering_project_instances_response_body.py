@@ -16,15 +16,15 @@ class DisassociateRenderingProjectInstancesResponseBody(DaraModel):
         success_instance_count: str = None,
         success_instances: List[main_models.DisassociateRenderingProjectInstancesResponseBodySuccessInstances] = None,
     ):
-        # The number of cloud application service instances that failed to dissociate.
+        # The number of cloud application service instances that failed to be dissociated.
         self.failed_instance_count = failed_instance_count
-        # A list of instances that failed to dissociate.
+        # The list of instances that failed to be dissociated.
         self.failed_instances = failed_instances
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
-        # The number of cloud application service instances that were successfully dissociated.
+        # The number of successfully dissociated cloud application service instances.
         self.success_instance_count = success_instance_count
-        # A list of instances that were successfully dissociated.
+        # The list of successfully dissociated instances.
         self.success_instances = success_instances
 
     def validate(self):
@@ -94,9 +94,9 @@ class DisassociateRenderingProjectInstancesResponseBodySuccessInstances(DaraMode
         message: str = None,
         rendering_instance_id: str = None,
     ):
-        # The result message.
+        # The description.
         self.message = message
-        # A cloud application service instance ID.
+        # The cloud application service instance ID.
         self.rendering_instance_id = rendering_instance_id
 
     def validate(self):
@@ -131,9 +131,9 @@ class DisassociateRenderingProjectInstancesResponseBodyFailedInstances(DaraModel
         message: str = None,
         rendering_instance_id: str = None,
     ):
-        # The reason for failure.
+        # The cause of the failure.
         self.message = message
-        # A cloud application service instance ID.
+        # The cloud application service instance ID.
         self.rendering_instance_id = rendering_instance_id
 
     def validate(self):

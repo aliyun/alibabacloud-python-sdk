@@ -13,21 +13,15 @@ class UpdateRenderingProjectRequest(DaraModel):
         project_name: str = None,
         session_attribs: main_models.UpdateRenderingProjectRequestSessionAttribs = None,
     ):
-        # Project description
+        # The project description.
         self.description = description
-        # Project ID
+        # The project ID.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # Default naming rules:
-        # 
-        # 1. Length 1-128
-        # 
-        # 2. Lowercase letters, numbers, underscores (_), hyphens (-), and periods (.).
-        # 
-        # 3. The first and last characters must be letters or digits. At least one of ProjectName, SessionAttribs, or Description must be specified.
+        # The custom project name, which serves as the unique identifier of the project. Default naming conventions: 1. The length must be 1 to 128 characters. 2. The name can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). 3. The first and last characters must be letters or digits. At least one of ProjectName, SessionAttribs, or Description must be specified.
         self.project_name = project_name
-        # Session attributes
+        # The session attributes.
         self.session_attribs = session_attribs
 
     def validate(self):
@@ -75,11 +69,9 @@ class UpdateRenderingProjectRequestSessionAttribs(DaraModel):
         self,
         start_mode: str = None,
     ):
-        # The mode used to start cloud application services for the session. Valid values:
-        # 
-        # 1. Async: asynchronous
-        # 
-        # 2. Sync: synchronization
+        # The mode in which the session starts the cloud application service. Valid values:
+        # - Async: asynchronous.
+        # - Sync: synchronous.
         self.start_mode = start_mode
 
     def validate(self):

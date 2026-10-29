@@ -14,11 +14,11 @@ class ListRenderingDataPackagesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # A list of data packages for the cloud application service.
+        # The list of cloud application service data packages.
         self.data_packages = data_packages
         # Id of the request
         self.request_id = request_id
-        # The total number of Graphic Computing Service instances.
+        # The total number of cloud rendering instances.
         self.total_count = total_count
 
     def validate(self):
@@ -74,28 +74,26 @@ class ListRenderingDataPackagesResponseBodyDataPackages(DaraModel):
         update_time: str = None,
     ):
         # The category. Valid values:
-        # 
-        # - Package
-        # 
-        # - Baseline
+        # - Package: package
+        # - Baseline: baseline
         self.category = category
-        # The creation time of the Graphic Computing Service instance.
+        # The creation time of the cloud rendering instance. The time is displayed in the YYYY-MM-DDTHH:mm:ss+HH:mm format and follows the ISO 8601 standard with a time zone offset.
         self.creation_time = creation_time
-        # The ID of the data pack.
+        # The ID of the data package.
         self.data_package_id = data_package_id
-        # Remarks.
+        # The description.
         self.description = description
-        # The ID of the Graphic Computing Service instance.
+        # The ID of the cloud application service instance.
         self.rendering_instance_id = rendering_instance_id
-        # The size of the data pack.
+        # The size of the data package.
         self.size = size
-        # The status of the data pack. Valid values:
-        # available
-        # packing
-        # failed
-        # bonded
+        # The status of the data package. Valid values:
+        # available: available for binding
+        # packing: in progress
+        # failed: failed
+        # bonded: bound
         self.status = status
-        # The update time.
+        # The update time. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.update_time = update_time
 
     def validate(self):

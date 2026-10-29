@@ -12,7 +12,7 @@ class CreateComfyTaskResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # The error code returned if the call fails. For more information, see error codes.
+        # The error code returned if the call fails. For more information, see Error codes.
         self.code = code
         # The description.
         self.message = message

@@ -16,15 +16,15 @@ class AssociateRenderingProjectInstancesResponseBody(DaraModel):
         success_instance_count: str = None,
         success_instances: List[main_models.AssociateRenderingProjectInstancesResponseBodySuccessInstances] = None,
     ):
-        # Number of failed cloud application service instances
+        # The number of cloud application service instances that failed to be associated.
         self.failed_instance_count = failed_instance_count
-        # List of instances that failed to associate
+        # The list of instances that failed to be associated.
         self.failed_instances = failed_instances
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Number of successful cloud application service instances
+        # The number of successfully associated cloud application service instances.
         self.success_instance_count = success_instance_count
-        # List of successfully associated instances
+        # The list of successfully associated instances.
         self.success_instances = success_instances
 
     def validate(self):
@@ -94,9 +94,9 @@ class AssociateRenderingProjectInstancesResponseBodySuccessInstances(DaraModel):
         message: str = None,
         rendering_instance_id: str = None,
     ):
-        # Description
+        # The description.
         self.message = message
-        # Cloud application service instance ID
+        # The instance ID of the cloud application service.
         self.rendering_instance_id = rendering_instance_id
 
     def validate(self):
@@ -131,9 +131,9 @@ class AssociateRenderingProjectInstancesResponseBodyFailedInstances(DaraModel):
         message: str = None,
         rendering_instance_id: str = None,
     ):
-        # Failure reason
+        # The cause of the failure.
         self.message = message
-        # Cloud application service instance ID
+        # The instance ID of the cloud application service.
         self.rendering_instance_id = rendering_instance_id
 
     def validate(self):

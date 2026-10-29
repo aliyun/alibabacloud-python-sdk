@@ -11,11 +11,11 @@ class CancelComfyTaskResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The error code. A value of 0 indicates success.
+        # The error code.
         self.code = code
-        # The returned message. A `success` value indicates a successful request.
+        # The description.
         self.message = message
-        # The unique ID of the request.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

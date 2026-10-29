@@ -10,7 +10,7 @@ class DescribeVsPullStreamInfoConfigRequest(DaraModel):
         domain_name: str = None,
         owner_id: int = None,
     ):
-        # The stream pulling domain.
+        # The pull stream domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name

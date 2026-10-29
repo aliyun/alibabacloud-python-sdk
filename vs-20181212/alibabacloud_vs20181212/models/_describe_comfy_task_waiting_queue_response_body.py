@@ -15,11 +15,11 @@ class DescribeComfyTaskWaitingQueueResponseBody(DaraModel):
     ):
         # The status code. A value of 0 indicates success.
         self.code = code
-        # The description.
+        # The message.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The waiting queue information.
+        # The task waiting queue information.
         self.task_waiting_queue = task_waiting_queue
 
     def validate(self):

@@ -16,11 +16,11 @@ class ListEdgeWorkersResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of loads.
+        # The list of workloads.
         self.instances = instances
-        # The page number of the query list. The value starts from 1. Default value: 1.
+        # The page number of the list to query. Pages start from 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page in a paged query. Settings for paging. Maximum value: 100. Default value: 100.
+        # The Settings for the number of lines per page during paging and paged query. Maximum value: 100. Default value: 100.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -90,17 +90,17 @@ class ListEdgeWorkersResponseBodyInstances(DaraModel):
         spec: str = None,
         status: str = None,
     ):
-        # The creation time.
+        # The creation time. The time is expressed in the ISO 8601 standard and includes a time zone offset. Format: YYYY-MM-DDTHH:mm:ss+HH:mm.
         self.creation_time = creation_time
-        # The expiration time.
+        # The end time. The time is expressed in the ISO 8601 standard and includes a time zone offset. Format: YYYY-MM-DDTHH:mm:ss+HH:mm.
         self.expire_time = expire_time
         # The cluster ID.
         self.hive_id = hive_id
-        # The load ID.
+        # The workload ID.
         self.instance_id = instance_id
         # The plan ID.
         self.plan_id = plan_id
-        # The specification.
+        # The specifications.
         self.spec = spec
         # The status.
         self.status = status

@@ -19,42 +19,38 @@ class ListCloudAppsRequest(DaraModel):
         start_time: str = None,
         status: str = None,
     ):
-        # The cloud application ID, which corresponds to a unique application package.
+        # The ID of the cloud application, which corresponds to a unique application package.
         self.app_id = app_id
-        # The application name.
+        # The name of the application.
         self.app_name = app_name
-        # The application version.
+        # The version of the application.
         self.app_version = app_version
-        # The start time for time range filtering. Specify the time in the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+        # The start time of the time range filter. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.end_time = end_time
-        # Specifies whether to return only the latest submitted version of each application. Default value: false.
+        # Specifies whether to return only the latest submitted version of the application. Default value: false.
         self.latest_version_only = latest_version_only
-        # The page number of the query list. Minimum value: 1.
-        # Default value: 1.
+        # The page number of the list to query. Pages start from 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page for a paged query. Valid values: 1 to 100.
-        # Default value: 10.
+        # The number of entries to return on each page during paging for a paged query. Settings: 1 to 100. Default value: 10.
         self.page_size = page_size
-        # The cloud application label.
-        # 1. Valid values:
-        #    a. hot
-        #    b. game
-        #    c. app
-        # 2. Special case:
-        #    a. To query applications without a label, enter "NULL".
+        # The label of the cloud application. Valid values:
+        # - hot
+        # - game
+        # - app
+        # To query cloud applications without labels, set this parameter to NULL.
         self.pkg_label = pkg_label
-        # The installation package type. Valid values:
-        # 1. android
-        # 2. win
-        # 3. android_appmarket
+        # The type of the installation package. Valid values:
+        # - android
+        # - win
+        # - android_appmarket
         self.pkg_type = pkg_type
-        # The start time for time range filtering. Specify the time in the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+        # The start time of the time range filter. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
-        # The application upload status. Valid values:
-        # 1. Success: desired state, succeeded.
-        # 2. Failed: desired state, failed.
-        # 3. Created
-        # 4. Doing
+        # The upload status of the application. Valid values:
+        # - Success: The upload is successful. This is a final state.
+        # - Failed: The upload failed. This is a final state.
+        # - Created
+        # - Doing
         self.status = status
 
     def validate(self):

@@ -19,21 +19,21 @@ class StartRenderingSessionResponseBody(DaraModel):
         session_id: str = None,
         state_info: main_models.StartRenderingSessionResponseBodyStateInfo = None,
     ):
-        # Instance hostname. By default, this is the EIP used for access.
+        # The instance hostname. The default value is the access elastic IP address (EIP).
         self.hostname = hostname
-        # Is this a repeated request
+        # Indicates whether the request is a repeated request.
         self.is_repeated_request = is_repeated_request
-        # Cloud application service instance location information
+        # The location information of the cloud application service instance.
         self.location = location
-        # Port mapping information
+        # The port mapping information.
         self.port_mappings = port_mappings
-        # Cloud application service instance ID
+        # The cloud application service instance ID.
         self.rendering_instance_id = rendering_instance_id
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Session ID
+        # The session ID.
         self.session_id = session_id
-        # Session state information
+        # The session state information.
         self.state_info = state_info
 
     def validate(self):
@@ -119,11 +119,11 @@ class StartRenderingSessionResponseBodyStateInfo(DaraModel):
         state: str = None,
         update_time: str = None,
     ):
-        # State description
+        # The state description.
         self.comment = comment
-        # Session state
+        # The session state.
         self.state = state
-        # Last update time of the state
+        # The time when the state was last updated. The value is a UTC time in the YYYY-MM-DDTHH:mmZ format based on the ISO 8601 standard.
         self.update_time = update_time
 
     def validate(self):
@@ -164,9 +164,9 @@ class StartRenderingSessionResponseBodyPortMappings(DaraModel):
         external_port: str = None,
         internal_port: str = None,
     ):
-        # External port or port range, such as 22. For a port range, separate the start and end ports with a forward slash (/), for example, 10/20.
+        # The public port or port range, such as 22. For a port range, separate the start port and end port with a forward slash (/), for example, 10/20.
         self.external_port = external_port
-        # Internal port or port range. Ports correspond one-to-one with external ports. For a port range, separate the start and end ports with a forward slash (/), for example, 10/20.
+        # The internal port or port range. The internal port corresponds to the public port on a one-to-one basis. For a port range, separate the start port and end port with a forward slash (/), for example, 10/20.
         self.internal_port = internal_port
 
     def validate(self):
@@ -200,7 +200,7 @@ class StartRenderingSessionResponseBodyLocation(DaraModel):
         self,
         province_code: str = None,
     ):
-        # Province code of the cloud application service instance
+        # The province code of the cloud application service instance.
         self.province_code = province_code
 
     def validate(self):

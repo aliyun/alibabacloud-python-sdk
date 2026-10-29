@@ -10,9 +10,9 @@ class UpdateCloudAppInfoResponseBody(DaraModel):
         patch_id: str = None,
         request_id: str = None,
     ):
-        # The patch ID.
+        # The ID of the patch package.
         self.patch_id = patch_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

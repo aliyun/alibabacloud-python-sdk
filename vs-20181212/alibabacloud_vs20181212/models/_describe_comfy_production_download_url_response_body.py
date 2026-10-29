@@ -15,13 +15,13 @@ class DescribeComfyProductionDownloadUrlResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The download link for the production. Use an Alibaba Cloud Object Storage Service (OSS) SDK to download the file.
+        # The download URL of the production. Use the Alibaba Cloud OSS SDK to download the production.
         self.download_url = download_url
-        # The download link\\"s expiration time.
+        # The expiration time of the download URL. The time is in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mmZ format.
         self.expired_time = expired_time
-        # The response message.
+        # The description.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

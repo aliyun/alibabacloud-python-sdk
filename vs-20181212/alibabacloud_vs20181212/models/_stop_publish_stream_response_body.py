@@ -11,8 +11,11 @@ class StopPublishStreamResponseBody(DaraModel):
         message: int = None,
         request_id: str = None,
     ):
+        # The return code.
         self.code = code
+        # The return message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

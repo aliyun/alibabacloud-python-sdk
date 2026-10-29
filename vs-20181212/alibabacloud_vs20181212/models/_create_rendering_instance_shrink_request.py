@@ -18,75 +18,60 @@ class CreateRenderingInstanceShrinkRequest(DaraModel):
         rendering_spec: str = None,
         storage_size: str = None,
     ):
-        # > Unless you have specific requirements, keep the default values. For customers with special requirements, fill in the relevant parameters after communication and confirmation.
+        # > Unless you have special requirements, keep the default value. If you have special requirements, consult and confirm before specifying this parameter.
         # 
-        # Attribute information.
+        # The attribute information.
         self.attributes_shrink = attributes_shrink
-        # > This value is valid only when `InstanceChargeType` is `PrePaid` (subscription).
+        # > This parameter takes effect only when `InstanceChargeType` is set to `PrePaid` (subscription).
         # 
-        # Enable or disable auto-renewal. Values:
-        # 
-        # - **true**: Enable.
-        # 
-        # - **false**: Disable.
+        # Specifies whether to enable auto-renewal. Valid values:
+        # * **true**: enables auto-renewal.
+        # * **false**: disables auto-renewal.
         self.auto_renew = auto_renew
-        # Client information.
+        # The client information.
         self.client_info_shrink = client_info_shrink
-        # > This value is valid only when `InstanceChargeType` is `PostPaid` (pay-as-you-go).
+        # > This parameter takes effect only when `InstanceChargeType` is set to `PostPaid` (pay-as-you-go).
         # 
-        # Billing type. Valid values:
+        # The billing cycle. Valid values:
         # 
-        # - Hour: Hourly.
+        # - Hour: hour.
         self.instance_billing_cycle = instance_billing_cycle
-        # The billing method for the instance. Valid values:
+        # The billing method of the instance. Valid values:
         # 
-        # - PrePaid (default): Subscription.
-        # 
-        # - PostPaid: Pay-as-you-go.
+        # - PrePaid (default): subscription.
+        # - PostPaid: pay-as-you-go.
         self.instance_charge_type = instance_charge_type
-        # > Only one billing method is allowed. If a billing method already exists, the new value is invalid by default, and the existing one prevails. Note that this field is required when a user makes the first purchase.
+        # > Only one billing method is supported. If a billing method already exists, the new value is invalid by default, and the existing billing method prevails. Note that this parameter is required when you purchase the instance for the first time.
         # 
-        # Network billing type. Value:
-        # 
-        # - 95BandwidthByMonth: Monthly 95th percentile bandwidth.
+        # The network billing type. Valid values:
+        # - 95BandwidthByMonth: monthly 95th percentile bandwidth.
         self.internet_charge_type = internet_charge_type
-        # Maximum bandwidth, in Mbps. Default is 10.
+        # The maximum bandwidth. Unit: Mbit/s. Default value: 10.
         self.internet_max_bandwidth = internet_max_bandwidth
-        # > This value is valid only when `InstanceChargeType` is `PrePaid` (subscription).
+        # > This parameter takes effect only when `InstanceChargeType` is set to `PrePaid` (subscription).
         # 
-        # The subscription period. Valid values (Note: 12 is converted to one year; other values are in months):
+        # The subscription duration. Valid values (note: if you select 12, it is calculated as one year, and other values are calculated in months):
         # 
         # - 1 (default)
-        # 
         # - 2
-        # 
         # - 3
-        # 
         # - 4
-        # 
         # - 5
-        # 
         # - 6
-        # 
         # - 7
-        # 
         # - 8
-        # 
         # - 9
-        # 
         # - 12
         self.period = period
-        # Cloud application service instance specifications.
+        # The specifications of the cloud application service instance.
         # 
-        # - For crs.cp.\\* series specifications, choose between subscription or pay-as-you-go billing.
-        # 
-        # - For crs.vm.\\* series specifications, choose between subscription or pay-as-you-go billing.
-        # 
-        # - For other series, only subscription billing is supported.
+        # - For the crs.cp.* series, the billing method can be subscription or pay-as-you-go.
+        # - For the crs.vm.* series, the billing method can be subscription or pay-as-you-go.
+        # - For other series, only the subscription billing method is supported.
         # 
         # This parameter is required.
         self.rendering_spec = rendering_spec
-        # The cloud storage capacity used by the cloud application service instance (Note: not local storage).
+        # The cloud storage capacity used by the cloud application service instance. Note: This is not local storage.
         self.storage_size = storage_size
 
     def validate(self):

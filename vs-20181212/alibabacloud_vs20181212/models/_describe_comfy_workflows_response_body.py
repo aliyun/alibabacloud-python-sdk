@@ -20,17 +20,17 @@ class DescribeComfyWorkflowsResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The response message.
+        # The message.
         self.message = message
-        # The current page number.
+        # The page number.
         self.page_number = page_number
-        # The number of workflows on the current page.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of workflows that match the query.
+        # The total number of workflows.
         self.total_count = total_count
-        # A list of Comfy workflows.
+        # The list of workflows.
         self.workflows = workflows
 
     def validate(self):
@@ -106,13 +106,13 @@ class DescribeComfyWorkflowsResponseBodyWorkflows(DaraModel):
         updated_time: str = None,
         workflow_id: str = None,
     ):
-        # The time when the workflow was created.
+        # The creation time. The time follows the ISO 8601 standard and includes a time zone offset. The format is YYYY-MM-DDTHH:mm:ss+HH:mm.
         self.creation_time = creation_time
         # The workflow description.
         self.description = description
-        # The workflow name.
+        # The name of the workflow.
         self.name = name
-        # The time when the workflow was last updated.
+        # The update time. The time is a UNIX timestamp in seconds.
         self.updated_time = updated_time
         # The workflow ID.
         self.workflow_id = workflow_id

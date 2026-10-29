@@ -13,7 +13,7 @@ class DeleteComfyWorkflowResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The response message.
+        # The description.
         self.message = message
         # Id of the request
         self.request_id = request_id

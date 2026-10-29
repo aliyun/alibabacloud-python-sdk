@@ -20,16 +20,16 @@ class DescribeComfyTasksResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The description.
+        # The message.
         self.message = message
         # The page number. Default value: 1.
         self.page_number = page_number
         # The page size.
-        # > Only available for recording queries.
+        # > Only for recording queries.
         self.page_size = page_size
         # Id of the request
         self.request_id = request_id
-        # The task list.
+        # The list of tasks.
         self.tasks = tasks
         # The total number of tasks.
         self.total = total
@@ -111,23 +111,23 @@ class DescribeComfyTasksResponseBodyTasks(DaraModel):
         updated_time: str = None,
         workflow_id: str = None,
     ):
-        # The creation time.
+        # The creation time, represented as a UNIX timestamp in milliseconds.
         self.creation_time = creation_time
-        # The task end time.
+        # The end time of the task, represented as a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The resource pool ID used by the task.
+        # The ID of the resource pool used by the task.
         self.hive_id = hive_id
-        # The task status.
+        # The task error message.
         self.task_error_message = task_error_message
         # The task ID.
         self.task_id = task_id
-        # The task status.
+        # The task state.
         self.task_state = task_state
-        # The task status.
+        # The task state message.
         self.task_state_message = task_state_message
-        # The last modified time.
+        # The last modified time, represented as a UNIX timestamp in milliseconds.
         self.updated_time = updated_time
-        # The Comfy workflow ID used by the task.
+        # The ID of the Comfy workflow used by the task.
         self.workflow_id = workflow_id
 
     def validate(self):

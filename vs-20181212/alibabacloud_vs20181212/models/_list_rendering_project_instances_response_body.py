@@ -14,11 +14,11 @@ class ListRenderingProjectInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # List of cloud application service instances
+        # The list of cloud application service instances.
         self.rendering_instances = rendering_instances
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Total number of cloud application service instances
+        # The total number of cloud application service instances.
         self.total_count = total_count
 
     def validate(self):
@@ -68,11 +68,11 @@ class ListRenderingProjectInstancesResponseBodyRenderingInstances(DaraModel):
         rendering_instance_id: str = None,
         state_info: main_models.ListRenderingProjectInstancesResponseBodyRenderingInstancesStateInfo = None,
     ):
-        # Time when the instance was associated with the project
+        # The association time. The time is in the ISO 8601 standard and includes a time zone offset. The format is YYYY-MM-DDTHH:mm:ss+HH:mm.
         self.association_time = association_time
-        # Cloud application service instance
+        # The ID of the cloud application service instance.
         self.rendering_instance_id = rendering_instance_id
-        # Status information for the project instance
+        # The project instance status information.
         self.state_info = state_info
 
     def validate(self):
@@ -116,11 +116,11 @@ class ListRenderingProjectInstancesResponseBodyRenderingInstancesStateInfo(DaraM
         state: str = None,
         update_time: str = None,
     ):
-        # Description of the current status
+        # The status description.
         self.comment = comment
-        # Instance status
+        # The project instance status.
         self.state = state
-        # Time when the status was last updated
+        # The latest update time of the status. The time is in the ISO 8601 standard and includes a time zone offset. The format is YYYY-MM-DDTHH:mm:ss+HH:mm.
         self.update_time = update_time
 
     def validate(self):

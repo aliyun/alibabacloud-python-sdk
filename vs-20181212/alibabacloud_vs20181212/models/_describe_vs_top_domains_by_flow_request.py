@@ -12,12 +12,12 @@ class DescribeVsTopDomainsByFlowRequest(DaraModel):
         owner_id: int = None,
         start_time: str = None,
     ):
-        # The end of the time range to query. The end time must be later than the start time. The date format follows the ISO 8601 standard and uses UTC.<br>Format: YYYY-MM-DDThh:mm:ssZ<br>
+        # The end time of the data to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.<br>Format: yyyy-MM-ddTHH:mm:ssZ.
         self.end_time = end_time
-        # The maximum number of domain names to return. The default value is 20. Valid values: 1 to 100.
+        # The maximum number of domains to return. Default value: 20. Valid values: 1 to 100.
         self.limit = limit
         self.owner_id = owner_id
-        # The start of the time range to query. The date format follows the ISO 8601 standard and uses UTC.<br>Format: YYYY-MM-DDThh:mm:ssZ<br>The minimum data granularity is 5 minutes.<br>If you do not specify this parameter, data for the current month is queried.<br><br><br>
+        # The start time of the data to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.<br>The minimum data granularity is 5 minutes.<br>If you do not specify this parameter, data of the current month is queried by default.
         self.start_time = start_time
 
     def validate(self):

@@ -13633,6 +13633,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyRenderingInstanceAttributeResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.password):
             query['Password'] = request.password
         if not DaraCore.is_null(request.rendering_instance_id):
@@ -13663,6 +13665,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyRenderingInstanceAttributeResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.password):
             query['Password'] = request.password
         if not DaraCore.is_null(request.rendering_instance_id):

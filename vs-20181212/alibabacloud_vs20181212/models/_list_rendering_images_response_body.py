@@ -16,13 +16,13 @@ class ListRenderingImagesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The session list.
+        # The list of sessions.
         self.images = images
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries returned per page.
         self.page_size = page_size
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The total number of matched sessions.
         self.total_count = total_count
@@ -87,13 +87,13 @@ class ListRenderingImagesResponseBodyImages(DaraModel):
         name: str = None,
         publish_time: str = None,
     ):
-        # The image description.
+        # The description of the image.
         self.description = description
-        # The image ID.
+        # The ID of the image.
         self.image_id = image_id
-        # The image name.
+        # The name of the image.
         self.name = name
-        # The publish time.
+        # The time when the image was published. The time follows the ISO 8601 standard and includes a time zone offset. The format is YYYY-MM-DDTHH:mm:ss+HH:mm.
         self.publish_time = publish_time
 
     def validate(self):

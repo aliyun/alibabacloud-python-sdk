@@ -12,11 +12,11 @@ class DisassociateRenderingProjectInstancesRequest(DaraModel):
         project_id: str = None,
         rendering_instance_ids: List[str] = None,
     ):
-        # The ID of the project.
+        # The project ID.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # A list of cloud application service instance IDs.
+        # The list of cloud application service instance IDs.
         # 
         # This parameter is required.
         self.rendering_instance_ids = rendering_instance_ids

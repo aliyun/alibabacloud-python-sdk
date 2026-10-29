@@ -13,15 +13,15 @@ class CreateDeviceAlarmResponseBody(DaraModel):
         request_id: str = None,
         url: str = None,
     ):
-        # 下次相同告警的最小间隔。（单位：秒）
+        # The minimum interval before the next identical alert. Unit: seconds.
         self.alarm_delay = alarm_delay
-        # 告警ID。
+        # The alert ID.
         self.alarm_id = alarm_id
-        # URL的过期时长。（单位：秒）
+        # The expiration period of the URL. Unit: seconds.
         self.expire = expire
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
-        # 媒体上传的URL，可使用PUT上传。
+        # The media upload URL. You can use the PUT method to upload media.
         self.url = url
 
     def validate(self):

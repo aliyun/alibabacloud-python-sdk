@@ -9,7 +9,7 @@ class DeleteRenderingProjectRequest(DaraModel):
         self,
         project_id: str = None,
     ):
-        # Project ID
+        # The project ID.
         # 
         # This parameter is required.
         self.project_id = project_id

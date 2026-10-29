@@ -13,9 +13,9 @@ class GetRenderingProjectInstanceStateMetricsResponseBody(DaraModel):
         request_id: str = None,
         state_metrics: List[main_models.GetRenderingProjectInstanceStateMetricsResponseBodyStateMetrics] = None,
     ):
-        # Request ID
+        # Id of the request
         self.request_id = request_id
-        # List of project instance state statistics
+        # The list of statistics information for project instance status.
         self.state_metrics = state_metrics
 
     def validate(self):
@@ -58,9 +58,9 @@ class GetRenderingProjectInstanceStateMetricsResponseBodyStateMetrics(DaraModel)
         count: str = None,
         state: str = None,
     ):
-        # Number of instances
+        # The number of instances.
         self.count = count
-        # Project instance state
+        # The instance status of the project.
         self.state = state
 
     def validate(self):

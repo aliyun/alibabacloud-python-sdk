@@ -11,11 +11,11 @@ class ListRenderingImagesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The cloud application service instance ID.
+        # The ID of the cloud application service instance.
         self.image_id = image_id
-        # The page number. The value starts from 1.
+        # The page number. Pages start from 1.
         self.page_number = page_number
-        # The number of entries per page for a paged query.
+        # The number of entries to return on each page in a paged query.
         self.page_size = page_size
 
     def validate(self):

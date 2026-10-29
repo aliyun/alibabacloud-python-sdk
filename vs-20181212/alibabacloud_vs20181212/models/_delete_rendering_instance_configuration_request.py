@@ -13,9 +13,9 @@ class DeleteRenderingInstanceConfigurationRequest(DaraModel):
         configuration: List[main_models.DeleteRenderingInstanceConfigurationRequestConfiguration] = None,
         rendering_instance_id: str = None,
     ):
-        # Configuration content. Purge all configured modules by default.
+        # The configuration content. By default, all configured modules are cleared.
         self.configuration = configuration
-        # Cloud application service instance ID.
+        # The cloud application service instance ID.
         # 
         # This parameter is required.
         self.rendering_instance_id = rendering_instance_id
@@ -60,9 +60,9 @@ class DeleteRenderingInstanceConfigurationRequestConfiguration(DaraModel):
         attribute_names: List[str] = None,
         module_name: str = None,
     ):
-        # List attribute names to purge. Purge all configured attributes for this module by default.
+        # The list of attribute names whose configurations are to be cleared. By default, all configured attributes of the module are cleared.
         self.attribute_names = attribute_names
-        # Module name.
+        # The name of the module.
         # 
         # This parameter is required.
         self.module_name = module_name

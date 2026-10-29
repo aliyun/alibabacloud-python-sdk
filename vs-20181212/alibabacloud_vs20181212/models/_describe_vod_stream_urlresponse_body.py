@@ -12,13 +12,13 @@ class DescribeVodStreamURLResponseBody(DaraModel):
         request_id: str = None,
         url: str = None,
     ):
-        # 流播放协议
+        # The stream playback protocol.
         self.out_protocol = out_protocol
-        # 流播放端口
+        # The stream playback port.
         self.port = port
-        # 该条任务请求ID。
+        # The ID of the request.
         self.request_id = request_id
-        # 流播放URL
+        # The stream playback URL.
         self.url = url
 
     def validate(self):

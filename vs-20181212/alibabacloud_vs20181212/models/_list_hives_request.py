@@ -14,17 +14,17 @@ class ListHivesRequest(DaraModel):
         page_size: int = None,
         start_time: str = None,
     ):
-        # The time range filter parameter. Specify the time in the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+        # The end time. The time follows the ISO 8601 standard and must be in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.end_time = end_time
-        # The cloud application service group ID.
+        # The ID of the cloud application service group.
         self.hive_id = hive_id
         # The name.
         self.name = name
-        # The page number of the query list. Minimum value: 1. Default value: 1.
+        # The page number of the list to query. Pages start from 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page for a paged query. Maximum value: 100. Default value: 10.
+        # Settings for the number of entries per page during paging in a paged query. Maximum value: 100. Default value: 10.
         self.page_size = page_size
-        # The creation time.
+        # The creation time. The time follows the ISO 8601 standard and includes the time zone offset. Format: YYYY-MM-DDTHH:mm:ss+HH:mm.
         self.start_time = start_time
 
     def validate(self):

@@ -11,11 +11,11 @@ class DescribeComfyWorkflowsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The workflow name.
+        # The name of the workflow.
         self.name = name
-        # The page number.
+        # The page number of the list to query.
         self.page_number = page_number
-        # The number of Comfy workflows per page.
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):

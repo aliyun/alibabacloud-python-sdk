@@ -17,15 +17,15 @@ class DescribeVsTopDomainsByFlowResponseBody(DaraModel):
         start_time: str = None,
         top_domains: main_models.DescribeVsTopDomainsByFlowResponseBodyTopDomains = None,
     ):
-        # The total number of domain names under your account.
+        # The total number of domains under the account.
         self.domain_count = domain_count
-        # The total number of **running** domain names under your account.
+        # The total number of domains that are **running** under the account.
         self.domain_online_count = domain_online_count
-        # The end time of the query time range.
+        # The end time of the query. The time is displayed in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC.
         self.end_time = end_time
         # The ID of the request.
         self.request_id = request_id
-        # The start time of the query.
+        # The start time of the query. The time is displayed in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC.
         self.start_time = start_time
         self.top_domains = top_domains
 

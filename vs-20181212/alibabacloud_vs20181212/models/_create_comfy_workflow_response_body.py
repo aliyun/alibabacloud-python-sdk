@@ -18,9 +18,9 @@ class CreateComfyWorkflowResponseBody(DaraModel):
     ):
         # The internal error code.
         self.code = code
-        # The returned message. If `Status` is `Failed`, this parameter provides the reason for the failure.
+        # The description. If Status is Failed, it includes the cause of the failure.
         self.message = message
-        # A list of missing nodes.
+        # The list of missing nodes.
         self.missing_nodes = missing_nodes
         # The request ID.
         self.request_id = request_id

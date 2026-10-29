@@ -16,19 +16,19 @@ class ModifyComfyWorkflowResponseBody(DaraModel):
         updated_time: str = None,
         workflow_id: str = None,
     ):
-        # The error code. This parameter is returned only if the request fails.
+        # The error code. If the activity status is Fail, a specific error code is returned. If the activity status is Success, this parameter is not returned.
         self.code = code
-        # The creation time.
+        # The creation time. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.creation_time = creation_time
         # The workflow description.
         self.description = description
-        # The returned message. This parameter provides error details if the request fails.
+        # The message. If the status is Failed, this parameter contains the cause of the failure.
         self.message = message
         # The workflow name.
         self.name = name
         # The request ID.
         self.request_id = request_id
-        # The update time.
+        # The update time of the task. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.updated_time = updated_time
         # The workflow ID.
         self.workflow_id = workflow_id

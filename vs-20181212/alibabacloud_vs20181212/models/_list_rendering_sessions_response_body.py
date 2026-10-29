@@ -14,11 +14,11 @@ class ListRenderingSessionsResponseBody(DaraModel):
         sessions: List[main_models.ListRenderingSessionsResponseBodySessions] = None,
         total_count: int = None,
     ):
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Session list
+        # The session list.
         self.sessions = sessions
-        # Total number of matching sessions
+        # The total number of matched sessions.
         self.total_count = total_count
 
     def validate(self):
@@ -71,17 +71,17 @@ class ListRenderingSessionsResponseBodySessions(DaraModel):
         session_id: str = None,
         start_time: str = None,
     ):
-        # Cloud application ID
+        # The cloud application ID.
         self.app_id = app_id
-        # Client ID
+        # The ID of the end client.
         self.client_id = client_id
-        # Cloud application patch ID. An empty value indicates the original version.
+        # The ID of the cloud application patch package. A null value indicates the original version.
         self.patch_id = patch_id
-        # Cloud application service instance ID
+        # The instance ID of the cloud application service.
         self.rendering_instance_id = rendering_instance_id
-        # Session ID
+        # The session ID.
         self.session_id = session_id
-        # Start time
+        # The start time. The time is in the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format and is in UTC.
         self.start_time = start_time
 
     def validate(self):

@@ -11,9 +11,9 @@ class RefreshRenderingInstanceStreamingRequest(DaraModel):
         client_info: main_models.RefreshRenderingInstanceStreamingRequestClientInfo = None,
         rendering_instance_id: str = None,
     ):
-        # Client information.
+        # The client information.
         self.client_info = client_info
-        # Cloud application service instance ID.
+        # The instance ID of the cloud application service.
         # 
         # This parameter is required.
         self.rendering_instance_id = rendering_instance_id
@@ -52,9 +52,9 @@ class RefreshRenderingInstanceStreamingRequestClientInfo(DaraModel):
         client_ip: str = None,
         new_client: bool = None,
     ):
-        # Client IP address.
+        # The IP address of the client.
         self.client_ip = client_ip
-        # Indicates if the client is new.
+        # Specifies whether the client is a new client.
         self.new_client = new_client
 
     def validate(self):

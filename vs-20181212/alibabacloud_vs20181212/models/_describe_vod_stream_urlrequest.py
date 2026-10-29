@@ -11,7 +11,7 @@ class DescribeVodStreamURLRequest(DaraModel):
         url: str = None,
     ):
         self.owner_id = owner_id
-        # The file URL of the VOD video.
+        # The file URL of the video-on-demand video.
         # 
         # This parameter is required.
         self.url = url

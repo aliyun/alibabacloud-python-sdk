@@ -19,45 +19,36 @@ class ListRenderingSessionsRequest(DaraModel):
         start_time: str = None,
         state: str = None,
     ):
-        # Cloud application ID
+        # The cloud application ID.
         self.app_id = app_id
-        # Unique ID of the client.
+        # The unique ID of the end client.
         self.client_id = client_id
-        # Time range filter parameter. Represented in ISO8601 standard and must use UTC time, in the format yyyy-MM-ddTHH:mm:ssZ.
+        # The start time of the time range filter. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.end_time = end_time
-        # Page number, starting from 1
+        # The page number. Pages start from 1.
         self.page_number = page_number
-        # The number of rows per page set for paged queries.
+        # The number of entries to return on each page during a paging query.
         self.page_size = page_size
-        # Cloud application patch ID.
-        # 
-        # 1. When you enter origin, only sessions that started the original version of the app are filtered.
+        # The ID of the cloud application patch package. If you set this parameter to origin, only sessions that use the original version of the application are returned.
         self.patch_id = patch_id
-        # Project ID
+        # The project ID.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # Cloud application service instance ID
+        # The instance ID of the cloud application service.
         self.rendering_instance_id = rendering_instance_id
-        # Session ID
+        # The session ID.
         self.session_id = session_id
-        # Time range filter parameter. Represented in ISO8601 standard and must use UTC time, in the format yyyy-MM-ddTHH:mm:ssZ.
+        # The start time of the time range filter. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
-        # Session state. Valid values:
-        # 
-        # 1. SessionStarting: The session is starting.
-        # 
-        # 2. SessionStartSuspended: Session startup is paused. Retry by initiating start again.
-        # 
-        # 3. SessionStarted: The session has started/is in use.
-        # 
-        # 4. SessionStartFailed: Session startup failed.
-        # 
-        # 5. SessionAbnormal: The session is abnormal after successful startup.
-        # 
-        # 6. SessionStopping: The session is stopping.
-        # 
-        # 7. SessionStopFailed: Session stop failed.
+        # The session state. Valid values:
+        # - SessionStarting: The session is starting.
+        # - SessionStartSuspended: The session startup is suspended. You can retry by initiating a start request again.
+        # - SessionStarted: The session is started or in use.
+        # - SessionStartFailed: The session failed to start.
+        # - SessionAbnormal: An exception occurred after the session was successfully started.
+        # - SessionStopping: The session is stopping.
+        # - SessionStopFailed: The session failed to stop.
         self.state = state
 
     def validate(self):

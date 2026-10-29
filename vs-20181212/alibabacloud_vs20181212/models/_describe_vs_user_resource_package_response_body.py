@@ -13,6 +13,7 @@ class DescribeVsUserResourcePackageResponseBody(DaraModel):
         request_id: str = None,
         resource_package_infos: main_models.DescribeVsUserResourcePackageResponseBodyResourcePackageInfos = None,
     ):
+        # The request ID.
         self.request_id = request_id
         self.resource_package_infos = resource_package_infos
 

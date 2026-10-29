@@ -9,7 +9,7 @@ class ReleaseRenderingDataPackageRequest(DaraModel):
         self,
         data_package_id: str = None,
     ):
-        # Cloud application service data pack ID
+        # The ID of the cloud application service data package.
         # 
         # This parameter is required.
         self.data_package_id = data_package_id

@@ -12,17 +12,15 @@ class ManageLoginRequest(DaraModel):
         key_name: str = None,
         rendering_instance_id: str = None,
     ):
-        # Name of the management action. Valid values:
-        # 
-        # 1. open — Activate the public key. This is the default value.
-        # 
-        # 2. close — Deactivate the public key.
+        # The name of the management action. Valid values:
+        # 1. open - Activate the public key, default value
+        # 2. close - Deactivate the public key
         self.action_name = action_name
-        # Name of the public key group. If you do not specify KeyName, all public keys in this group are applied.
+        # The public key group. If KeyName is not specified, all public keys in KeyGroup are delivered.
         self.key_group = key_group
-        # Name of the public key. You must specify either KeyName or KeyGroup.
+        # The name of the public key. At least one of KeyName and KeyGroup must be specified.
         self.key_name = key_name
-        # ID of the Cloud Application Service instance.
+        # The instance ID of the cloud application service.
         # 
         # This parameter is required.
         self.rendering_instance_id = rendering_instance_id

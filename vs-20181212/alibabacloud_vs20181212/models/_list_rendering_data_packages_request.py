@@ -17,32 +17,26 @@ class ListRenderingDataPackagesRequest(DaraModel):
         status: str = None,
     ):
         # The category. Valid values:
-        # 
-        # - Package
-        # 
-        # - Baseline
+        # - Package: package
+        # - Baseline: baseline
         self.category = category
-        # The ID of the data pack.
+        # The ID of the data package.
         self.data_package_id = data_package_id
-        # The parameter for filtering by time range. Use UTC time in ISO8601 format: yyyy-MM-ddTHH:mm:ssZ.
+        # The start time of the time range filter. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.end_time = end_time
-        # The page number for the query list.
+        # The page number.
         self.page_number = page_number
-        # The number of entries displayed per page.
+        # The number of entries to return on each page.
         self.page_size = page_size
-        # The size of the data pack.
+        # The size of the data package.
         self.size = size
-        # The parameter for filtering by time range. Use UTC time in ISO8601 format: yyyy-MM-ddTHH:mm:ssZ.
+        # The start time of the time range filter. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.start_time = start_time
-        # The status of the data pack. Valid values:
-        # 
-        # - available
-        # 
-        # - packing
-        # 
-        # - failed
-        # 
-        # - bonded
+        # The status of the data package. Valid values:
+        # - available: available for binding
+        # - packing: in progress
+        # - failed: failed
+        # - bonded: bound
         self.status = status
 
     def validate(self):

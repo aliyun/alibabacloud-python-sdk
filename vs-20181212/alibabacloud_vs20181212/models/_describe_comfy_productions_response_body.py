@@ -20,17 +20,17 @@ class DescribeComfyProductionsResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The response message.
+        # The description.
         self.message = message
-        # The current page number.
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries on the current page.
+        # The page size.
         self.page_size = page_size
-        # A list of productions.
+        # The list of productions.
         self.productions = productions
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
-        # The total count of productions.
+        # The total number of alert rules.
         self.total = total
 
     def validate(self):
@@ -107,17 +107,17 @@ class DescribeComfyProductionsResponseBodyProductions(DaraModel):
         state: str = None,
         updated_time: str = None,
     ):
-        # The ID of the Comfy task.
+        # The ComfyTask ID.
         self.comfy_task_id = comfy_task_id
-        # The creation time of the production, in ISO 8601 format.
+        # The creation time. The time follows the ISO 8601 standard and includes a time zone offset. The format is YYYY-MM-DDTHH:mm:ss+HH:mm.
         self.creation_time = creation_time
         # The file name of the production.
         self.file_name = file_name
-        # The ID of the production.
+        # The production ID.
         self.production_id = production_id
-        # The state of the production.
+        # The production status.
         self.state = state
-        # The last modification time of the production, as a Unix timestamp.
+        # The last modified time. The time is a UNIX timestamp in seconds.
         self.updated_time = updated_time
 
     def validate(self):

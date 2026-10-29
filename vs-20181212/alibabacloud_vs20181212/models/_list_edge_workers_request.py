@@ -19,21 +19,21 @@ class ListEdgeWorkersRequest(DaraModel):
         start_time: str = None,
         statuses: List[str] = None,
     ):
-        # The expiration time.
+        # The end time. The time is expressed in the ISO 8601 standard and includes a time zone offset. Format: YYYY-MM-DDTHH:mm:ss+HH:mm.
         self.end_time = end_time
         # The list of cluster IDs.
         self.hive_ids = hive_ids
-        # The list of load IDs.
+        # The list of workload IDs.
         self.instance_ids = instance_ids
-        # The page number of the query list. The value starts from 1. Default value: 1.
+        # The page number of the list to query. Pages start from 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page in a paged query. Settings for paging. Maximum value: 100. Default value: 10.
+        # The Settings for the number of lines per page during paging and paged query. Maximum value: 100. Default value: 10.
         self.page_size = page_size
         # The list of plan IDs.
         self.plan_ids = plan_ids
-        # The specification.
+        # The specifications.
         self.spec = spec
-        # The time range filter parameter. The value is in the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+        # The start time of the time range filter. The time is expressed in the ISO 8601 standard and must be in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.start_time = start_time
         # The list of statuses.
         self.statuses = statuses

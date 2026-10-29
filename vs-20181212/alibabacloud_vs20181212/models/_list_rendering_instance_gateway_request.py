@@ -14,17 +14,17 @@ class ListRenderingInstanceGatewayRequest(DaraModel):
         rendering_instance_id: str = None,
         start_time: str = None,
     ):
-        # The time range for filtering. The time must be in ISO 8601 format and in UTC, such as \\`yyyy-MM-ddTHH:mm:ssZ\\`.
+        # The time range filter parameter. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.end_time = end_time
-        # The ID of the gateway instance.
+        # The instance ID of the gateway.
         self.gateway_instance_id = gateway_instance_id
-        # The page number of the list to query.
+        # The page number.
         self.page_number = page_number
-        # The number of entries to return on each page for a paged query.
+        # The number of entries per page in the paging Settings for a paged query.
         self.page_size = page_size
-        # The ID of the cloud application service instance.
+        # The instance ID of the cloud application service.
         self.rendering_instance_id = rendering_instance_id
-        # This parameter specifies the time range filter. The time must be in ISO 8601 format and UTC time, such as yyyy-MM-ddTHH:mm:ssZ.
+        # The time range filter parameter. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):

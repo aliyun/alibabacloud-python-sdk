@@ -27,52 +27,42 @@ class DescribeDevicesRequest(DaraModel):
     ):
         # The ID of the directory to which the device belongs.
         self.directory_id = directory_id
-        # The serial number of the device. The value must be unique.
+        # The device serial number, which uniquely identifies the device.
         self.dsn = dsn
-        # You can query by device national standard ID.
+        # The national standard ID of the device.
         self.gb_id = gb_id
-        # Query by device Space ID.
+        # The ID of the workspace to which the device belongs.
         self.group_id = group_id
-        # The device ID.
-        # 
-        # > Specify multiple IDs. Separate them with commas (,).
+        # The device ID. You can specify multiple IDs separated by commas (,).
         self.id = id
         # Specifies whether to return directory information. Default value: false.
         self.include_directory = include_directory
-        # Specifies whether to return stream statistics. Default value: false.
+        # Specifies whether to return stream statistics information. Default value: false.
         self.include_stats = include_stats
-        # The device name.
-        # 
-        # > Specify multiple names. Separate them with commas (,).
+        # The device name. You can specify multiple names separated by commas (,).
         self.name = name
         self.owner_id = owner_id
         # The page number. Default value: 1.
         self.page_num = page_num
         # The number of entries per page. Default value: 20.
         self.page_size = page_size
-        # The ID of the parent device.
+        # The ID of the parent device to which the device belongs.
         self.parent_id = parent_id
-        # The field by which to sort the results. Valid value:
-        # 
-        # > id (default)
+        # The field used for sorting. Valid value:
+        # - id: Sort by ID. This is the default value.
         self.sort_by = sort_by
         # The sort order. Valid values:
-        # 
-        # - asc (ascending) (default)
-        # 
-        # - desc (descending)
+        # - asc: Ascending order. This is the default value.
+        # - desc: Descending order.
         self.sort_direction = sort_direction
-        # Query devices by status.
+        # The device status.
         self.status = status
         # The device type. Valid values:
-        # 
-        # - ipc (camera)
-        # 
-        # - platform
-        # 
-        # - ied (intelligent edge device)
+        # - ipc: Camera.
+        # - platform: Platform.
+        # - ied: Intelligent device.
         self.type = type
-        # Query by device manufacturer.
+        # The device vendor.
         self.vendor = vendor
 
     def validate(self):

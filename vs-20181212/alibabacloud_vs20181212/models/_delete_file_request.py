@@ -9,7 +9,7 @@ class DeleteFileRequest(DaraModel):
         self,
         file_id: str = None,
     ):
-        # File ID. Each file has a unique ID.
+        # The ID of the file, which uniquely identifies the file.
         # 
         # This parameter is required.
         self.file_id = file_id

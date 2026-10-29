@@ -17,11 +17,11 @@ class BatchCaptureRenderingInstanceScreenshotResponseBody(DaraModel):
         success_count: int = None,
         success_items: List[main_models.BatchCaptureRenderingInstanceScreenshotResponseBodySuccessItems] = None,
     ):
-        # The dry run result.
+        # The data pre-check result.
         self.datatest = datatest
         # The number of failed instances.
         self.failed_count = failed_count
-        # The list of instances for which screenshots failed.
+        # The list of instances for which screenshot capture failed.
         self.failed_items = failed_items
         # Id of the request
         self.request_id = request_id
@@ -107,11 +107,11 @@ class BatchCaptureRenderingInstanceScreenshotResponseBodySuccessItems(DaraModel)
         download_url: str = None,
         rendering_instance_id: str = None,
     ):
-        # The time when the screenshot was created.
+        # The time when the screenshot was created. The time is displayed in the ISO 8601 standard with a time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
         self.creation_time = creation_time
         # The download URL of the screenshot.
         self.download_url = download_url
-        # The instance ID of the cloud application service instance.
+        # The cloud application service instance ID.
         self.rendering_instance_id = rendering_instance_id
 
     def validate(self):
@@ -153,11 +153,11 @@ class BatchCaptureRenderingInstanceScreenshotResponseBodyFailedItems(DaraModel):
         err_message: str = None,
         rendering_instance_id: str = None,
     ):
-        # The error code of the failure.
+        # The error code for the failure.
         self.err_code = err_code
-        # The error message of the failure.
+        # The reason for the failure.
         self.err_message = err_message
-        # The instance ID of the cloud application service instance.
+        # The cloud application service instance ID.
         self.rendering_instance_id = rendering_instance_id
 
     def validate(self):
@@ -197,7 +197,7 @@ class BatchCaptureRenderingInstanceScreenshotResponseBodyDatatest(DaraModel):
         self,
         result: main_models.BatchCaptureRenderingInstanceScreenshotResponseBodyDatatestResult = None,
     ):
-        # The dry run result.
+        # The pre-check result.
         self.result = result
 
     def validate(self):

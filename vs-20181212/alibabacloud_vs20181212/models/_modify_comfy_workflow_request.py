@@ -11,13 +11,13 @@ class ModifyComfyWorkflowRequest(DaraModel):
         workflow_id: str = None,
         workflow_name: str = None,
     ):
-        # The new workflow description.
+        # The description of the workflow template.
         self.description = description
-        # The ID of the workflow to modify.
+        # The workflow ID.
         # 
         # This parameter is required.
         self.workflow_id = workflow_id
-        # The new workflow name.
+        # The name of the workflow template.
         self.workflow_name = workflow_name
 
     def validate(self):

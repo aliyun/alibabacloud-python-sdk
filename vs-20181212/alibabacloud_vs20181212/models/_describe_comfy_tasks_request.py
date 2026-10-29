@@ -14,17 +14,17 @@ class DescribeComfyTasksRequest(DaraModel):
         task_state: str = None,
         workflow_id: str = None,
     ):
-        # The HiveId used as a filter condition to query tasks executed under the specified HiveId.
+        # The Hive ID, used as a filter to query tasks executed under the specified Hive.
         self.hive_id = hive_id
         # The page number.
         self.page_number = page_number
-        # The number of records per page.
+        # The number of records to display on each page.
         self.page_size = page_size
-        # The Comfy workflow ID used as a filter condition.
+        # The ID of the Comfy task, used as a filter.
         self.task_id = task_id
-        # The task status used as a filter condition.
+        # The task state, used as a filter.
         self.task_state = task_state
-        # The Comfy workflow ID used as a filter condition.
+        # The ID of the Comfy workflow, used as a filter.
         self.workflow_id = workflow_id
 
     def validate(self):

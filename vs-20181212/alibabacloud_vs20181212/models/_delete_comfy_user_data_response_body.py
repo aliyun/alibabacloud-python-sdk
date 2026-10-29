@@ -13,9 +13,9 @@ class DeleteComfyUserDataResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The response message.
+        # The description.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

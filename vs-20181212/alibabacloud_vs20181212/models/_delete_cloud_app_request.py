@@ -9,7 +9,7 @@ class DeleteCloudAppRequest(DaraModel):
         self,
         app_id: str = None,
     ):
-        # The cloud application ID, which corresponds to a unique application package.
+        # The ID of the cloud application, which corresponds to a unique application package.
         # 
         # This parameter is required.
         self.app_id = app_id

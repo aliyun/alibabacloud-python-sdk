@@ -21,43 +21,37 @@ class DescribePurchasedDeviceResponseBody(DaraModel):
         type: str = None,
         vendor: str = None,
     ):
-        # Device creation time.
+        # The time when the device was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.created_time = created_time
-        # Device description.
+        # The device description.
         self.description = description
-        # Space ID.
+        # The group ID.
         self.group_id = group_id
-        # Space name.
+        # The group name.
         self.group_name = group_name
-        # Device ID.
+        # The device ID.
         self.id = id
-        # Device name.
+        # The device name.
         self.name = name
-        # Order ID.
+        # The order ID.
         self.order_id = order_id
-        # Region where the space belongs, also known as the service center.
+        # The region to which the group belongs, which is the service center.
         self.region = region
-        # Device registration code.
+        # The device registration code.
         self.register_code = register_code
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Device child type. Valid values:
-        # 
-        # - bullet (bullet camera)
-        # 
-        # - dome (dome camera)
-        # 
-        # - ptz (PTZ)
+        # The device subtype. Valid values:
+        # - bullet: Bullet camera.
+        # - dome: Dome camera.
+        # - ptz: PTZ camera.
         self.sub_type = sub_type
-        # Device type. Valid values:
-        # 
-        # - ipc (camera)
-        # 
-        # - platform
-        # 
-        # - ied (intelligent device)
+        # The device type. Valid values:
+        # - ipc: Camera.
+        # - platform: Platform.
+        # - ied: Intelligent device.
         self.type = type
-        # Device vendor.
+        # The device vendor.
         self.vendor = vendor
 
     def validate(self):

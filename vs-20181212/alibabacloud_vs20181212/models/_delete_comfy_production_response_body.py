@@ -13,7 +13,7 @@ class DeleteComfyProductionResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The message that is returned.
+        # The description.
         self.message = message
         # Id of the request
         self.request_id = request_id

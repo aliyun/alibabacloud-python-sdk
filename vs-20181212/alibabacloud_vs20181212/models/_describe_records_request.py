@@ -18,40 +18,35 @@ class DescribeRecordsRequest(DaraModel):
         stream_id: str = None,
         type: str = None,
     ):
-        # Specify the end time for the query.
+        # The end time. Specify the time in the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time must be in UTC.
         # 
         # This parameter is required.
         self.end_time = end_time
         self.owner_id = owner_id
         # The page number. Default value: 1.
         self.page_num = page_num
-        # Page size. Default value: 20.
+        # The number of entries per page. Default value: 20.
         self.page_size = page_size
         # Specifies whether to use a private bucket.
         self.private_bucket = private_bucket
-        # The field to sort the records by. Valid value:
-        # 
-        # - Id (default)
+        # The field by which to sort. Valid values:
+        # - Id: default
         self.sort_by = sort_by
-        # The sorting method. Valid values:
-        # 
-        # - asc (ascending, default)
-        # 
-        # - desc (descending)
+        # The sort order. Valid values:
+        # - asc: ascending order (default)
+        # - desc: descending order
         self.sort_direction = sort_direction
-        # Query records by start time.
+        # The start time. Specify the time in the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time must be in UTC.
         # 
         # This parameter is required.
         self.start_time = start_time
-        # Query by stream ID.
+        # The ID of the stream.
         # 
         # This parameter is required.
         self.stream_id = stream_id
-        # The type of the recording record to query. Valid values:
-        # 
-        # - record (Recording)
-        # 
-        # - snapshot
+        # The type of the storage record. Valid values:
+        # - record: recording
+        # - snapshot: snapshot
         # 
         # This parameter is required.
         self.type = type

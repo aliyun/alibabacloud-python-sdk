@@ -17,15 +17,15 @@ class DescribeVsDomainRegionDataResponseBody(DaraModel):
         start_time: str = None,
         value: main_models.DescribeVsDomainRegionDataResponseBodyValue = None,
     ):
-        # Time interval, in seconds.
+        # The time interval.
         self.data_interval = data_interval
-        # The domain name that is accelerated by Visual Edge Computing Service.
+        # The domain name of Visual Edge Computing Service.
         self.domain_name = domain_name
-        # End time.
+        # The end time. The time is in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.end_time = end_time
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Start time.
+        # The start time in UTC. The time follows the ISO 8601 standard and is formatted as YYYY-MM-DDTHH:mm:ssZ.
         self.start_time = start_time
         self.value = value
 

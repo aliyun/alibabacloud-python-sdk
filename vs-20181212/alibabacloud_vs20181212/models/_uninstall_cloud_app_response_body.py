@@ -16,15 +16,15 @@ class UninstallCloudAppResponseBody(DaraModel):
         success_instance_count: int = None,
         success_instances: List[main_models.UninstallCloudAppResponseBodySuccessInstances] = None,
     ):
-        # The number of cloud application service instances that failed.
+        # The number of cloud application service instances on which the operation failed.
         self.failed_instance_count = failed_instance_count
-        # List of failed cloud application service instances
+        # The list of cloud application service instances on which the operation failed.
         self.failed_instances = failed_instances
-        # Request ID
+        # The ID of the request.
         self.request_id = request_id
-        # Number of successfully uninstalled cloud application instances
+        # The number of cloud application service instances on which the operation succeeded.
         self.success_instance_count = success_instance_count
-        # A list of service instances for which the cloud application was uninstalled successfully.
+        # The list of cloud application service instances on which the operation succeeded.
         self.success_instances = success_instances
 
     def validate(self):
@@ -93,7 +93,7 @@ class UninstallCloudAppResponseBodySuccessInstances(DaraModel):
         self,
         rendering_instance_id: str = None,
     ):
-        # Cloud application instance ID
+        # The cloud application service instance ID.
         self.rendering_instance_id = rendering_instance_id
 
     def validate(self):
@@ -123,11 +123,11 @@ class UninstallCloudAppResponseBodyFailedInstances(DaraModel):
         err_message: str = None,
         rendering_instance_id: str = None,
     ):
-        # Error code
+        # The error code for the failure.
         self.err_code = err_code
-        # Error message
+        # The cause of the failure.
         self.err_message = err_message
-        # Cloud application instance ID
+        # The cloud application service instance ID.
         self.rendering_instance_id = rendering_instance_id
 
     def validate(self):

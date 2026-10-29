@@ -9,7 +9,7 @@ class DescribeRenderingInstanceRequest(DaraModel):
         self,
         rendering_instance_id: str = None,
     ):
-        # The ID of the rendering instance.
+        # The instance ID of the cloud application service.
         # 
         # This parameter is required.
         self.rendering_instance_id = rendering_instance_id

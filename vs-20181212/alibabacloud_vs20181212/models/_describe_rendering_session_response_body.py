@@ -24,37 +24,34 @@ class DescribeRenderingSessionResponseBody(DaraModel):
         start_time: str = None,
         state_info: main_models.DescribeRenderingSessionResponseBodyStateInfo = None,
     ):
-        # Additional optional ingress network information
+        # The additional optional ingress network information.
         self.additional_ingresses = additional_ingresses
-        # Cloud application ID
+        # The cloud application ID.
         self.app_id = app_id
-        # End client ID
+        # The client ID.
         self.client_id = client_id
-        # Instance hostname. Defaults to the EIP address.
+        # The instance hostname. By default, the value is the elastic IP address (EIP) used for access.
         self.hostname = hostname
-        # Carrier code. Valid values:
-        # 
+        # The ISP code. Valid values:
         # 1. cmcc
-        # 
         # 2. unicom
-        # 
         # 3. telecom
         self.isp = isp
-        # Cloud application service instance location
+        # The location information of the cloud application service instance.
         self.location = location
-        # Cloud application patch package ID. An empty value means the original version.
+        # The cloud application patch package ID. An empty value indicates the original version.
         self.patch_id = patch_id
-        # Port mapping information
+        # The port mapping information.
         self.port_mappings = port_mappings
-        # Cloud application service instance ID
+        # The cloud application service instance ID.
         self.rendering_instance_id = rendering_instance_id
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Session ID
+        # The session ID.
         self.session_id = session_id
-        # Start time
+        # The start time. The time is in UTC and follows the ISO 8601 standard. The format is YYYY-MM-DDTHH:mm:ssZ.
         self.start_time = start_time
-        # Session state information
+        # The session status information.
         self.state_info = state_info
 
     def validate(self):
@@ -179,25 +176,18 @@ class DescribeRenderingSessionResponseBodyStateInfo(DaraModel):
         state: str = None,
         update_time: str = None,
     ):
-        # State description
+        # The status description.
         self.comment = comment
-        # Session state. Valid values:
-        # 
-        # 1. SessionStarting: Starting the session
-        # 
-        # 2. SessionStartSuspended: Session start is suspended. Retry by calling Start again.
-        # 
-        # 3. SessionStarted: Session started or in use
-        # 
-        # 4. SessionStartFailed: Session failed to start
-        # 
-        # 5. SessionAbnormal: Session became abnormal after starting successfully
-        # 
-        # 6. SessionStopping: Stopping the session
-        # 
-        # 7. SessionStopFailed: Session failed to stop
+        # The session status. Valid values:
+        # 1. SessionStarting: The session is starting.
+        # 2. SessionStartSuspended: The session start is suspended. You can initiate start again to retry.
+        # 3. SessionStarted: The session is started or in use.
+        # 4. SessionStartFailed: The session failed to start.
+        # 5. SessionAbnormal: The session is abnormal after a successful start.
+        # 6. SessionStopping: The session is stopping.
+        # 7. SessionStopFailed: The session failed to stop.
         self.state = state
-        # Time when the state was last updated
+        # The time when the status was last updated. The time follows the ISO 8601 standard and includes the time zone offset. The format is YYYY-MM-DDTHH:mm:ss+HH:mm.
         self.update_time = update_time
 
     def validate(self):
@@ -238,9 +228,9 @@ class DescribeRenderingSessionResponseBodyPortMappings(DaraModel):
         external_port: str = None,
         internal_port: str = None,
     ):
-        # Public port or port range, such as 22. For a port range, use a forward slash (/) to separate the start and end ports. Example: 10/20.
+        # The external port or port range, such as 22. For a port range, separate the start and end ports with a forward slash (/), for example, 10/20.
         self.external_port = external_port
-        # Private port or port range. Each private port maps one-to-one with a public port. For a port range, use a forward slash (/) to separate the start and end ports. Example: 10/20.
+        # The internal port or port range. The internal ports correspond one-to-one to the external ports. For a port range, separate the start and end ports with a forward slash (/), for example, 10/20.
         self.internal_port = internal_port
 
     def validate(self):
@@ -274,7 +264,7 @@ class DescribeRenderingSessionResponseBodyLocation(DaraModel):
         self,
         province_code: str = None,
     ):
-        # Province code of the cloud application service instance
+        # The province code of the cloud application service instance.
         self.province_code = province_code
 
     def validate(self):
@@ -304,17 +294,14 @@ class DescribeRenderingSessionResponseBodyAdditionalIngresses(DaraModel):
         isp: str = None,
         port_mappings: List[main_models.DescribeRenderingSessionResponseBodyAdditionalIngressesPortMappings] = None,
     ):
-        # Domain name or IP address of the cloud application service instance
+        # The domain name or IP address of the cloud application service instance.
         self.hostname = hostname
-        # Carrier code. Valid values:
-        # 
+        # The ISP code. Valid values:
         # 1. cmcc
-        # 
         # 2. unicom
-        # 
         # 3. telecom
         self.isp = isp
-        # List of port mappings
+        # The port mapping list.
         self.port_mappings = port_mappings
 
     def validate(self):
@@ -363,9 +350,9 @@ class DescribeRenderingSessionResponseBodyAdditionalIngressesPortMappings(DaraMo
         external_port: str = None,
         internal_port: str = None,
     ):
-        # Public port or port range, such as 22. For a port range, use a forward slash (/) to separate the start and end ports. Example: 10/20.
+        # The external port or port range, such as 22. For a port range, separate the start and end ports with a forward slash (/), for example, 10/20.
         self.external_port = external_port
-        # Private port or port range. Each private port maps one-to-one with a public port. For a port range, use a forward slash (/) to separate the start and end ports. Example: 10/20.
+        # The internal port or port range. The internal ports correspond one-to-one to the external ports. For a port range, separate the start and end ports with a forward slash (/), for example, 10/20.
         self.internal_port = internal_port
 
     def validate(self):

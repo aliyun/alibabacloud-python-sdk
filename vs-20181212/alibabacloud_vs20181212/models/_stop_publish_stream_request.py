@@ -10,6 +10,8 @@ class StopPublishStreamRequest(DaraModel):
         instance_id: str = None,
         owner_id: int = None,
     ):
+        # The ID of the cloud application service instance for which to stop desktop capture and streaming.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_id = owner_id

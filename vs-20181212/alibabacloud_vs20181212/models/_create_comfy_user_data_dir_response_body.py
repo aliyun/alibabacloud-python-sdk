@@ -13,9 +13,9 @@ class CreateComfyUserDataDirResponseBody(DaraModel):
     ):
         # The status code. A value of 0 indicates success.
         self.code = code
-        # The returned message. If the request fails, this parameter contains the failure reason.
+        # The description. If Status is Failed, this field contains the cause of the failure.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

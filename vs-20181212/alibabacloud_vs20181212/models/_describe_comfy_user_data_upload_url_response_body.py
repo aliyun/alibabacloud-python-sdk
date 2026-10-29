@@ -15,13 +15,13 @@ class DescribeComfyUserDataUploadUrlResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The expiration time of the upload URL.
+        # The expiration time of the upload URL. The time is in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mmZ format.
         self.expired_time = expired_time
-        # The description.
+        # The message.
         self.message = message
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
-        # The URL for uploading the user file.
+        # The URL for uploading user files.
         self.upload_url = upload_url
 
     def validate(self):

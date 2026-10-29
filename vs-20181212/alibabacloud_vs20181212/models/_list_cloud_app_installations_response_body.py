@@ -16,15 +16,15 @@ class ListCloudAppInstallationsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # List of installation records.
+        # The list of installation information.
         self.installation_infos = installation_infos
-        # Page number of the returned list.
+        # The page number of the returned list.
         self.page_number = page_number
-        # Number of entries per page for paged queries.
+        # The number of entries returned per page for a paged query.
         self.page_size = page_size
-        # Request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Total number of installation records.
+        # The total number of installation records.
         self.total_count = total_count
 
     def validate(self):
@@ -92,27 +92,23 @@ class ListCloudAppInstallationsResponseBodyInstallationInfos(DaraModel):
         status_description: str = None,
         update_time: str = None,
     ):
-        # Application ID.
+        # The ID of the application.
         self.app_id = app_id
-        # Application name.
+        # The name of the application.
         self.app_name = app_name
-        # Application version.
+        # The version of the application.
         self.app_version = app_version
-        # Installation time.
+        # The installation time. The time is displayed in the ISO 8601 standard with a time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
         self.installation_time = installation_time
-        # Patch package ID.
+        # The ID of the patch package.
         self.patch_id = patch_id
-        # Cloud application service instance ID.
+        # The cloud application service instance ID.
         self.rendering_instance_id = rendering_instance_id
-        # Cloud application installation status. Valid values:
-        # 
-        # 1. Intermediate states: install-init, installing
-        # 
-        # 2. Final states: installed, install-failed
+        # The installation status of the cloud application. Valid values: install-init and installing (intermediate states), and installed and install-failed (final states).
         self.status = status
-        # Status description.
+        # The description of the status.
         self.status_description = status_description
-        # Time when the status was last updated.
+        # The time when the status was last updated. The time is displayed in the ISO 8601 standard with a time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
         self.update_time = update_time
 
     def validate(self):

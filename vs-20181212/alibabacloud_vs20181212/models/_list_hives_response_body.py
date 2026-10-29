@@ -18,7 +18,7 @@ class ListHivesResponseBody(DaraModel):
         self.hives = hives
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -69,7 +69,7 @@ class ListHivesResponseBodyHives(DaraModel):
         hive_id: str = None,
         name: str = None,
     ):
-        # The creation time.
+        # The creation time. The time follows the ISO 8601 standard and includes the time zone offset. Format: YYYY-MM-DDTHH:mm:ss+HH:mm.
         self.creation_time = creation_time
         # The description.
         self.description = description

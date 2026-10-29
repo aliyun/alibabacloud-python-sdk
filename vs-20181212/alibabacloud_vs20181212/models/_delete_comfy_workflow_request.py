@@ -9,7 +9,7 @@ class DeleteComfyWorkflowRequest(DaraModel):
         self,
         workflow_id: str = None,
     ):
-        # The ID of the workflow.
+        # The workflow ID.
         # 
         # This parameter is required.
         self.workflow_id = workflow_id

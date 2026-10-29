@@ -12,19 +12,16 @@ class GetRenderingInstanceCommandsStatusResponseBody(DaraModel):
         result: str = None,
         status: str = None,
     ):
-        # Description. When Status=Failed, this field contains the failure reason.
+        # The description. When Status is Failed, this field includes the cause of the failure.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Command execution result string
+        # The execution result string of the command.
         self.result = result
-        # Command execution status. Valid values:
-        # 
-        # 1. Doing: Executing
-        # 
-        # 2. Success: Succeeded
-        # 
-        # 3. Failed: Failed. The system automatically retries within the timeout period. You can either wait or resend the request.
+        # The command execution status. Valid values:
+        # - Doing: Executing.
+        # - Success: Succeeded.
+        # - Failed: Failed. Within the timeout period, the system automatically retries the command. You can continue to wait or initiate a new request.
         self.status = status
 
     def validate(self):

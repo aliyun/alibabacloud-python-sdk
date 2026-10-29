@@ -16,15 +16,15 @@ class ListFilePushStatusesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The page number of the returned results.
+        # The page number of the returned list.
         self.page_number = page_number
-        # The number of entries per page in a paged query.
+        # The Settings for the number of entries per page during paging in a paged query.
         self.page_size = page_size
-        # The list of file push status records.
+        # The list of file push statuses.
         self.push_statuses = push_statuses
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of matching file push records.
+        # The total number of matched file push records.
         self.total_count = total_count
 
     def validate(self):
@@ -90,27 +90,23 @@ class ListFilePushStatusesResponseBodyPushStatuses(DaraModel):
         status_description: str = None,
         update_time: str = None,
     ):
-        # The file ID.
+        # The ID of the file.
         self.file_id = file_id
-        # The file name.
+        # The name of the file.
         self.file_name = file_name
-        # The scheduled push start time.
+        # The start time of the push. The time is displayed in the ISO 8601 standard with time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
         self.push_time = push_time
-        # The cloud application service instance ID.
+        # The instance ID of the cloud application service.
         self.rendering_instance_id = rendering_instance_id
-        # The file push status. Valid values:
-        # 
-        # 1. Created
-        # 
-        # 2. Doing
-        # 
-        # 3. Success: desired state
-        # 
-        # 4. Failed: desired state
+        # The push status of the file. Valid values:
+        # - Created
+        # - Doing
+        # - Success: final state.
+        # - Failed: final state.
         self.status = status
-        # The status description.
+        # The description of the status.
         self.status_description = status_description
-        # The latest update time of the status.
+        # The latest update time of the status. The time is displayed in the ISO 8601 standard with time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
         self.update_time = update_time
 
     def validate(self):

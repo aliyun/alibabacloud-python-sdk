@@ -16,15 +16,15 @@ class ListCloudAppsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of cloud application information.
+        # The list of cloud applications.
         self.cloud_apps = cloud_apps
-        # The page number of the query list.
+        # The page number of the returned list.
         self.page_number = page_number
-        # The number of entries per page for the paged query.
+        # The Settings for the number of entries returned on each page during paging for a paged query.
         self.page_size = page_size
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of matched cloud applications.
+        # The total number of cloud applications that match the query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -96,37 +96,35 @@ class ListCloudAppsResponseBodyCloudApps(DaraModel):
         update_time: str = None,
         upload_time: str = None,
     ):
-        # The application ID.
+        # The ID of the application.
         self.app_id = app_id
-        # The application name.
+        # The name of the application.
         self.app_name = app_name
-        # The application version.
+        # The version of the application.
         self.app_version = app_version
-        # The application description.
+        # The description of the application.
         self.description = description
-        # The installation package format.
+        # The format of the installation package.
         self.pkg_format = pkg_format
-        # The installation package type. Valid values: android and win.
+        # The type of the installation package, such as android or win.
         self.pkg_type = pkg_type
-        # The relative path of the post-command within the application package. Only win type applications are supported.
+        # The relative path of the post-command in the application package. This parameter is supported only for Windows applications.
         self.post_command_path = post_command_path
-        # The timeout period for post-command execution, in seconds. Only win type applications are supported.
+        # The timeout period for executing the post-command, in seconds. This parameter is supported only for Windows applications.
         self.post_command_timeout_sec = post_command_timeout_sec
-        # The ID of the stable version patch package.
+        # The ID of the stable patch package.
         self.stable_patch_id = stable_patch_id
-        # The application upload status. Valid values:
-        # 1. Created
-        # 2. Doing
-        # 3. Success: desired state.
-        # 4. Failed: desired state.
-        # 5. Deleting
-        # 6. DeleteFailed: desired state.
+        # The upload status of the application. Valid values:
+        # - Created
+        # - Doing
+        # - Success: This is a final state.
+        # - Failed: This is a final state.
         self.status = status
-        # The status description.
+        # The description of the status.
         self.status_description = status_description
-        # The latest status update time.
+        # The time when the status was last updated. The time is displayed in the ISO 8601 standard with a time zone offset, in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
         self.update_time = update_time
-        # The application upload time.
+        # The time when the application was uploaded. The time is displayed in the ISO 8601 standard with a time zone offset, in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
         self.upload_time = upload_time
 
     def validate(self):

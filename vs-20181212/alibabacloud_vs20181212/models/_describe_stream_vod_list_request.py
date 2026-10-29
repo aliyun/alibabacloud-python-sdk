@@ -12,16 +12,16 @@ class DescribeStreamVodListRequest(DaraModel):
         owner_id: int = None,
         start_time: int = None,
     ):
-        # VOD record end time (unix timestamp, unit: seconds)
+        # The end time of the video-on-demand records. The value is a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # Stream ID.
+        # The stream ID.
         # 
         # This parameter is required.
         self.id = id
         self.owner_id = owner_id
-        # VOD record start time (unix timestamp, unit: seconds)
+        # The start time of the video-on-demand records. The value is a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.start_time = start_time

@@ -11,9 +11,13 @@ class StartPublishStreamRequest(DaraModel):
         owner_id: int = None,
         publish_url: str = None,
     ):
+        # The ID of the cloud application service instance for which to start desktop capture and streaming.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_id = owner_id
+        # The streaming URL for the desktop capture content.
+        # 
         # This parameter is required.
         self.publish_url = publish_url
 

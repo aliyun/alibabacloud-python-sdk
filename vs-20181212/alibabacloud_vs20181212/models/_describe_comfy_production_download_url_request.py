@@ -9,7 +9,7 @@ class DescribeComfyProductionDownloadUrlRequest(DaraModel):
         self,
         production_id: str = None,
     ):
-        # The ID of the production.
+        # The production ID.
         # 
         # This parameter is required.
         self.production_id = production_id

@@ -10,11 +10,11 @@ class PushFileRequest(DaraModel):
         file_id: str = None,
         rendering_instance_id: str = None,
     ):
-        # File ID
+        # The file ID.
         # 
         # This parameter is required.
         self.file_id = file_id
-        # Cloud application service instance ID
+        # The instance ID of the cloud application service.
         # 
         # This parameter is required.
         self.rendering_instance_id = rendering_instance_id

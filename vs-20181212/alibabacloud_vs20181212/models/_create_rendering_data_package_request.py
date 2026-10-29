@@ -12,19 +12,17 @@ class CreateRenderingDataPackageRequest(DaraModel):
         instance_billing_cycle: str = None,
         rendering_instance_id: str = None,
     ):
-        # Data type. Valid values:
-        # 
-        # - Package (default value).
-        # 
-        # - Baseline.
+        # The data type. Valid values:
+        # - Package (default)
+        # - Baseline
         self.category = category
-        # Description.
+        # The description.
         self.description = description
-        # Billing type. Valid values:
+        # The billing type. Valid values:
         # 
-        # - Hour: Hour.
+        # - Hour: hourly.
         self.instance_billing_cycle = instance_billing_cycle
-        # Cloud application service instance ID (Note: This operation is only for crs.cp.\\* series instance types.)
+        # The instance ID of the Cloud Application Service. Note: This operation applies only to crs.cp.* series instance types.
         # 
         # This parameter is required.
         self.rendering_instance_id = rendering_instance_id

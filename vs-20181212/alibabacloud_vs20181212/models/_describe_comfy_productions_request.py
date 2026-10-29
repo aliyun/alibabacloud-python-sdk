@@ -11,11 +11,11 @@ class DescribeComfyProductionsRequest(DaraModel):
         page_size: int = None,
         task_id: str = None,
     ):
-        # The page number of the results to return. Pages are 1-indexed. Default: 1.
+        # The page number.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The page size.
         self.page_size = page_size
-        # The ID of the Comfy task whose productions you want to list.
+        # The ID of the specified ComfyTask.
         # 
         # This parameter is required.
         self.task_id = task_id

@@ -14,7 +14,7 @@ class DescribeRenderingInstanceSettingsRequest(DaraModel):
     ):
         # The list of instance configuration names.
         self.attribute_names = attribute_names
-        # The ID of the Cloud Application service instance.
+        # The cloud application service instance ID.
         self.rendering_instance_id = rendering_instance_id
 
     def validate(self):

@@ -9,7 +9,7 @@ class ReleaseRenderingInstanceRequest(DaraModel):
         self,
         rendering_instance_id: str = None,
     ):
-        # Graphic Computing Service application instance ID
+        # The cloud application service instance ID.
         # 
         # This parameter is required.
         self.rendering_instance_id = rendering_instance_id

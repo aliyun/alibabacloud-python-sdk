@@ -10,9 +10,9 @@ class CreateRenderingDataPackageResponseBody(DaraModel):
         data_package_id: str = None,
         request_id: str = None,
     ):
-        # Cloud application service data pack ID
+        # The ID of the Cloud Application Service data package.
         self.data_package_id = data_package_id
-        # Request ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -123,45 +123,35 @@ class DescribeDevicesResponseBodyDevices(DaraModel):
         username: str = None,
         vendor: str = None,
     ):
-        # The GB/T 28181 alarm subscription method. Valid values:
-        # 
-        # - 0 (all)
-        # 
-        # - 5 (video alarm)
-        # 
-        # - 7 (other alarm)
-        # 
-        # > * An empty value indicates that no alarm is subscribed.
-        # >
-        # > * Specify multiple values. Separate them with commas (,).
+        # The subscribed national standard alarm methods. Valid values:
+        # - 0: All.
+        # - 5: Video alarm.
+        # - 7: Other alarms.
+        # An empty value indicates no subscription. You can specify multiple values separated by commas (,).
         self.alarm_method = alarm_method
-        # Indicates whether directory reporting is enabled for the platform device.
+        # Specifies whether to enable directory reporting for platform devices.
         self.auto_directory = auto_directory
-        # Indicates whether to enable position subscription for the device.
+        # Specifies whether to enable device position subscription.
         self.auto_pos = auto_pos
-        # Indicates whether to automatically start the stream.
+        # Specifies whether to automatically start the stream.
         self.auto_start = auto_start
-        # The time when the channels were synchronized.
+        # The channel synchronization time. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.channel_sync_time = channel_sync_time
-        # The time when the device was created.
+        # The time when the device was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.created_time = created_time
-        # The description of the device.
+        # The device description.
         self.description = description
         # The directory information.
         self.directory = directory
         # The directory ID.
         self.directory_id = directory_id
-        # The serial number of the device.
-        # 
-        # > This parameter applies only to the AUVSP and ODCAP protocols.
+        # The device serial number. This parameter is applicable only to the AUVSP and ODCAP protocols.
         self.dsn = dsn
-        # Indicates whether the device is enabled.
+        # Specifies whether the device is enabled.
         self.enabled = enabled
-        # The GB/T 28181 ID of the device.
-        # 
-        # > This parameter applies only to the GB/T 28181 protocol.
+        # The national standard ID of the device. This parameter is applicable only to the national standard protocol.
         self.gb_id = gb_id
-        # The ID of the group to which the device belongs.
+        # The ID of the workspace to which the device belongs.
         self.group_id = group_id
         # The device ID.
         self.id = id
@@ -185,33 +175,26 @@ class DescribeDevicesResponseBodyDevices(DaraModel):
         self.pos_interval = pos_interval
         # The device protocol.
         self.protocol = protocol
-        # The time when the device was registered.
+        # The time when the device was registered. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.registered_time = registered_time
-        # The stream statistics of the device.
+        # The stream statistics information of the device.
         self.stats = stats
         # The device status. Valid values:
-        # 
-        # - on (online)
-        # 
-        # - off (offline)
-        # 
-        # - failed
-        # 
-        # - new (unregistered)
+        # - on: Online.
+        # - off: Offline.
+        # - failed: Locked.
+        # - new: Unregistered.
         self.status = status
         # The device type. Valid values:
-        # 
-        # - ipc (camera)
-        # 
-        # - platform
-        # 
-        # - ied (intelligent edge device)
+        # - ipc: Camera.
+        # - platform: Platform.
+        # - ied: Intelligent device.
         self.type = type
         # The stream URL on the device.
         self.url = url
-        # The username for the device.
+        # The device username.
         self.username = username
-        # The manufacturer of the device.
+        # The device vendor.
         self.vendor = vendor
 
     def validate(self):
@@ -493,15 +476,15 @@ class DescribeDevicesResponseBodyDevicesDirectory(DaraModel):
         name: str = None,
         parent_id: str = None,
     ):
-        # The time when the directory was created.
+        # The time when the directory was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.created_time = created_time
-        # The description of the directory.
+        # The directory description.
         self.description = description
-        # The ID of the group to which the directory belongs.
+        # The ID of the workspace to which the directory belongs.
         self.group_id = group_id
         # The directory ID.
         self.id = id
-        # The name of the directory.
+        # The directory name.
         self.name = name
         # The ID of the parent directory.
         self.parent_id = parent_id

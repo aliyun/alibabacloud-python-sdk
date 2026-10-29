@@ -10,7 +10,7 @@ class CreateRenderingInstanceResponseBody(DaraModel):
         rendering_instance_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the cloud application service instance.
+        # The instance ID of the cloud application service.
         self.rendering_instance_id = rendering_instance_id
         # Id of the request
         self.request_id = request_id

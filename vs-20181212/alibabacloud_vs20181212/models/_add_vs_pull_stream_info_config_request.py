@@ -25,20 +25,14 @@ class AddVsPullStreamInfoConfigRequest(DaraModel):
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The end time for stream pulling.
-        # 
-        # > The time must be in UTC format. The interval between StartTime and EndTime cannot exceed 7 days. EndTime must be later than the current time.
+        # The end time of stream pulling. Specify the time in UTC. The interval between StartTime and EndTime must be within 7 days, and EndTime must be later than the current time.
         self.end_time = end_time
         self.owner_id = owner_id
-        # The source URL of the live stream.
-        # 
-        # > Multiple source URLs are supported. Separate them with semicolons (;).
+        # The origin server of the live stream. Separate multiple origin servers with semicolons (;).
         # 
         # This parameter is required.
         self.source_url = source_url
-        # The start time for stream pulling.
-        # 
-        # > The time must be in UTC format. The interval between StartTime and EndTime cannot exceed 7 days.
+        # The start time of stream pulling. Specify the time in UTC. The interval between StartTime and EndTime must be within 7 days.
         self.start_time = start_time
         # The stream name.
         # 

@@ -19,44 +19,35 @@ class DescribePurchasedDevicesRequest(DaraModel):
         type: str = None,
         vendor: str = None,
     ):
-        # Queries by the ID of the group to which the device belongs.
+        # The ID of the workspace to which the device belongs.
         self.group_id = group_id
-        # Queries by device ID.
+        # The device ID.
         self.id = id
-        # Queries by device name.
+        # The device name.
         self.name = name
         self.owner_id = owner_id
-        # The page number. The default is 1.
+        # The page number. Default value: 1.
         self.page_num = page_num
-        # The number of entries per page. The default is 20.
+        # The number of entries per page. Default value: 20.
         self.page_size = page_size
-        # The field to sort by. Valid value:
-        # 
+        # The field by which to sort the results. Valid values:
         # - id (default)
         self.sort_by = sort_by
-        # The sorting order. The default is ascending. Valid values:
-        # 
-        # - asc (ascending)
-        # 
-        # - desc (descending)
+        # The sort order. Default value: asc. Valid values:
+        # - asc: Ascending order.
+        # - desc: Descending order.
         self.sort_direction = sort_direction
-        # Queries by device subtype. Valid values:
-        # 
-        # - bullet (bullet camera)
-        # 
-        # - dome (dome camera)
-        # 
-        # - ptz (PTZ camera)
+        # The device subtype. Valid values:
+        # - bullet: Bullet camera.
+        # - dome: Dome camera.
+        # - ptz: PTZ camera.
         self.sub_type = sub_type
-        # Queries by device type. Valid values:
-        # 
-        # - ipc (camera)
-        # 
-        # - platform (platform)
-        # 
-        # - ied (intelligent edge device)
+        # The device type. Valid values:
+        # - ipc: Camera.
+        # - platform: Platform.
+        # - ied: Intelligent device.
         self.type = type
-        # Queries by device vendor.
+        # The device vendor.
         self.vendor = vendor
 
     def validate(self):

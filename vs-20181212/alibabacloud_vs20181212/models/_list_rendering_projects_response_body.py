@@ -14,11 +14,11 @@ class ListRenderingProjectsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Project list
+        # The list of projects.
         self.projects = projects
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Total number of matching projects
+        # The total number of matched projects.
         self.total_count = total_count
 
     def validate(self):
@@ -71,17 +71,17 @@ class ListRenderingProjectsResponseBodyProjects(DaraModel):
         session_attribs: main_models.ListRenderingProjectsResponseBodyProjectsSessionAttribs = None,
         update_time: str = None,
     ):
-        # Project creation time
+        # The time when the project was created. The time follows the ISO 8601 standard and includes a time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
         self.creation_time = creation_time
-        # Project description
+        # The project description.
         self.description = description
-        # Project ID
+        # The project ID.
         self.project_id = project_id
-        # Project name
+        # The project name.
         self.project_name = project_name
-        # Project session attributes
+        # The session attributes of the project.
         self.session_attribs = session_attribs
-        # Last update time
+        # The time when the project was updated. The time follows the ISO 8601 standard and includes a time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
         self.update_time = update_time
 
     def validate(self):
@@ -141,7 +141,7 @@ class ListRenderingProjectsResponseBodyProjectsSessionAttribs(DaraModel):
         self,
         start_mode: str = None,
     ):
-        # Startup mode
+        # The startup mode.
         self.start_mode = start_mode
 
     def validate(self):

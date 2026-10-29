@@ -12,11 +12,11 @@ class UpgradeRenderingInstanceImageRequest(DaraModel):
         image_id: str = None,
         rendering_instance_ids: List[str] = None,
     ):
-        # The image ID.
+        # The ID of the image.
         # 
         # This parameter is required.
         self.image_id = image_id
-        # The list of cloud application service instance IDs. A maximum of 100 IDs can be specified.
+        # The IDs of the cloud application service instances. A maximum of 100 instance IDs can be specified.
         # 
         # This parameter is required.
         self.rendering_instance_ids = rendering_instance_ids

@@ -10,9 +10,9 @@ class RefreshRenderingInstanceStreamingShrinkRequest(DaraModel):
         client_info_shrink: str = None,
         rendering_instance_id: str = None,
     ):
-        # Client information.
+        # The client information.
         self.client_info_shrink = client_info_shrink
-        # Cloud application service instance ID.
+        # The instance ID of the cloud application service.
         # 
         # This parameter is required.
         self.rendering_instance_id = rendering_instance_id

@@ -16,15 +16,15 @@ class ListRenderingInstanceGatewayResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # A list of custom gateway information.
+        # The list of custom gateway information.
         self.gateway_configuration_infos = gateway_configuration_infos
-        # The page number of the query results list
+        # The page number.
         self.page_number = page_number
-        # The number of entries on the current page.
+        # The number of entries per page in the paging Settings for a paged query.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of records.
+        # The total number of installation records.
         self.total_count = total_count
 
     def validate(self):
@@ -88,19 +88,17 @@ class ListRenderingInstanceGatewayResponseBodyGatewayConfigurationInfos(DaraMode
         status: str = None,
         update_time: str = None,
     ):
-        # The time when the cloud application service instance was created.
+        # The creation time of the cloud application service instance. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.creation_time = creation_time
-        # The ID of the custom gateway instance.
+        # The instance ID of the custom gateway.
         self.gateway_instance_id = gateway_instance_id
-        # The ID of the cloud application service instance.
+        # The instance ID of the cloud application service.
         self.rendering_instance_id = rendering_instance_id
         # The status of the custom gateway. Valid values:
-        # 
-        # 1. Transitional states: creating, deleting
-        # 
-        # 2. Desired states: available, failed
+        # - Intermediate states: creating and deleting. 
+        # - Final states: available and failed.
         self.status = status
-        # The time when the information was last updated.
+        # The update time. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.update_time = update_time
 
     def validate(self):

@@ -9,7 +9,7 @@ class CancelComfyTaskRequest(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The ID of the Comfy task to cancel.
+        # The ID of the Comfy task.
         # 
         # This parameter is required.
         self.task_id = task_id

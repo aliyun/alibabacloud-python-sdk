@@ -10,7 +10,7 @@ class DescribePurchasedDeviceRequest(DaraModel):
         id: str = None,
         owner_id: int = None,
     ):
-        # Device ID.
+        # The device ID.
         # 
         # This parameter is required.
         self.id = id
