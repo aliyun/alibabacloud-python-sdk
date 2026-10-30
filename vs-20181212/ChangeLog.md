@@ -1,3 +1,7 @@
+2026-10-30 Version: 3.10.2
+- Update API CreateRenderingInstance: add response parameters Body.RenderingInstanceIds.
+
+
 2026-10-29 Version: 3.10.1
 - Update API DescribeRenderingInstance: add response parameters Body.ExpiredTime.
 - Update API DescribeRenderingInstance: add response parameters Body.InstanceName.
