@@ -14,9 +14,9 @@ class DescribeContext0InfoResponseBody(DaraModel):
         data: main_models.DescribeContext0InfoResponseBodyData = None,
         request_id: str = None,
     ):
-        # The details about the access denial.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
-        # The parameter details.
+        # The data details.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -107,21 +107,21 @@ class DescribeContext0InfoResponseBodyDataInstance(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # The instance specifications.
+        # The instance class.
         self.class_code = class_code
         # The list of endpoints.
         self.conn_addrs = conn_addrs
         # The creation time.
         self.create_time = create_time
-        # The database instance name.
+        # The name of the database instance.
         self.dbinstance_name = dbinstance_name
         # The instance ID.
         self.instance_id = instance_id
-        # Service 当前已确认的小版本完整 tag，未知时为空。
+        # The full tag of the minor version currently confirmed for the service. This parameter is empty when the version is unknown.
         self.minor_version = minor_version
         # The number of nodes.
         self.node_count = node_count
-        # The PolarDB-X Search instance name.
+        # The name of the PolarDB-X Search instance.
         self.open_search_instance_name = open_search_instance_name
         # The region ID.
         self.region_id = region_id
@@ -272,7 +272,7 @@ class DescribeContext0InfoResponseBodyDataInstanceReplicaSets(DaraModel):
         storage_type: str = None,
         zone_id: str = None,
     ):
-        # The instance specifications.
+        # The instance class.
         self.class_code = class_code
         # The vSwitch ID.
         self.conn_addrs = conn_addrs
@@ -282,17 +282,17 @@ class DescribeContext0InfoResponseBodyDataInstanceReplicaSets(DaraModel):
         self.instance_id = instance_id
         # The number of nodes.
         self.node_count = node_count
-        # The target node type: service or dashboard.
+        # The target node type. Valid values: service, dashboard.
         self.node_type = node_type
         # The node status. Valid values:
         # 
-        # - **0**: Running.
-        # - **1**: Creating.
-        # - **2**: Abnormal.
-        # - **3**: Expired.
-        # - **4**: Releasing.
-        # - **5**: Released.
-        # - **6**: Locked.
+        # - **0**: running
+        # - **1**: creating
+        # - **2**: abnormal
+        # - **3**: expired
+        # - **4**: releasing
+        # - **5**: released
+        # - **6**: locked
         self.status = status
         # The storage type.
         self.storage_type = storage_type
@@ -388,20 +388,20 @@ class DescribeContext0InfoResponseBodyDataInstanceReplicaSetsConnAddrs(DaraModel
     ):
         # The endpoint.
         self.connection_string = connection_string
-        # The target node type: service or dashboard.
+        # The target node type. Valid values: service, dashboard.
         self.node_type = node_type
         # The port.
         self.port = port
         # The instance type. Valid values:
         # 
-        # - **ReadWrite**: Primary instance.
-        # - **ReadOnly**: Read-only instance.
+        # - **ReadWrite**: primary instance
+        # - **ReadOnly**: read-only instance
         self.type = type
         # VPC ID
         self.vpcid = vpcid
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The VPC-connected instance ID.
+        # The VPC instance ID.
         self.vpc_instance_id = vpc_instance_id
 
     def validate(self):
@@ -473,7 +473,7 @@ class DescribeContext0InfoResponseBodyDataInstanceConnAddrs(DaraModel):
     ):
         # The endpoint.
         self.connection_string = connection_string
-        # The target node type: service or dashboard.
+        # The target node type. Valid values: service, dashboard.
         self.node_type = node_type
         # The port.
         self.port = port
@@ -483,7 +483,7 @@ class DescribeContext0InfoResponseBodyDataInstanceConnAddrs(DaraModel):
         self.vpcid = vpcid
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The VPC-connected instance ID.
+        # The VPC instance ID.
         self.vpc_instance_id = vpc_instance_id
 
     def validate(self):
@@ -559,11 +559,11 @@ class DescribeContext0InfoResponseBodyAccessDeniedDetail(DaraModel):
         self.auth_principal_display_name = auth_principal_display_name
         # The owner ID of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # The authentication principal type.
+        # The type of the authentication principal.
         self.auth_principal_type = auth_principal_type
         # The encoded diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of missing permission.
+        # The no-permission type.
         self.no_permission_type = no_permission_type
         # The policy type.
         self.policy_type = policy_type

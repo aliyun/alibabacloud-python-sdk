@@ -16,7 +16,7 @@ class CreatePxfsUserResponseBody(DaraModel):
         self.access_denied_detail = access_denied_detail
         # The response data.
         self.data = data
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -66,17 +66,17 @@ class CreatePxfsUserResponseBodyData(DaraModel):
         status: str = None,
         tenant_id: str = None,
     ):
-        # The identity name.
+        # The name of the identity.
         self.identity_name = identity_name
         # POSIX GID
         self.posix_gid = posix_gid
         # POSIX UID
         self.posix_uid = posix_uid
-        # The identity role.
+        # The role of the identity.
         self.role = role
         # The status.
         self.status = status
-        # The tenant ID.
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -142,13 +142,13 @@ class CreatePxfsUserResponseBodyAccessDeniedDetail(DaraModel):
     ):
         # The authentication action.
         self.auth_action = auth_action
-        # The display name of the authentication principal.
+        # The name of the authentication principal.
         self.auth_principal_display_name = auth_principal_display_name
         # The owner ID of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # The authentication principal type.
+        # The description is as above.
         self.auth_principal_type = auth_principal_type
-        # The encoded diagnostic message.
+        # The diagnostic information.
         self.encoded_diagnostic_message = encoded_diagnostic_message
         # NoPermissionType
         self.no_permission_type = no_permission_type

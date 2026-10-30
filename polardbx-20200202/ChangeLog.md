@@ -1,3 +1,8 @@
+2026-10-30 Version: 3.13.2
+- Update API DescribeDBInstanceAttribute: add response parameters Body.DBInstance.SearchEnabled.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.DBInstance.SearchInstance.
+
+
 2026-10-28 Version: 3.13.1
 - Generated python 2020-02-02 for polardbx.
 

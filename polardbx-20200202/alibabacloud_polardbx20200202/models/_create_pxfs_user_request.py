@@ -15,11 +15,11 @@ class CreatePxfsUserRequest(DaraModel):
         role: str = None,
         tenant_id: str = None,
     ):
-        # The instance ID of the PolarDB-X instance.
+        # The PolarDB-X instance ID.
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The identity name.
+        # The name of the identity.
         # 
         # This parameter is required.
         self.identity_name = identity_name
@@ -35,11 +35,11 @@ class CreatePxfsUserRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The identity role.
+        # The role of the identity.
         # 
         # This parameter is required.
         self.role = role
-        # The tenant ID.
+        # The ID of the tenant.
         # 
         # This parameter is required.
         self.tenant_id = tenant_id
