@@ -13,13 +13,13 @@ class UpdateModelLimitsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. This parameter is empty when the request is successful.
+        # The error code. This parameter is empty if the call is successful.
         self.code = code
         # The error message.
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The unique request ID.
+        # The unique ID of the request.
         self.request_id = request_id
         # Indicates whether the API call is successful.
         self.success = success

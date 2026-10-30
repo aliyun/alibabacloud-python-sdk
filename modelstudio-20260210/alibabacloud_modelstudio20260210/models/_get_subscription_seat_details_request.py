@@ -20,17 +20,21 @@ class GetSubscriptionSeatDetailsRequest(DaraModel):
         self.page_no = page_no
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # The seat assignment status filter. Set to true for assigned seats, false for unassigned seats, or null for all seats.
+        # The filter for the seat assignment status. Valid values:
+        # 
+        # - true: assigned
+        # - false: unassigned
+        # - null: all
         self.query_assigned = query_assigned
         # The seat ID.
         self.seat_id = seat_id
         # The seat type (specType). Valid values:
         # 
-        # - standard: standard seat.
-        # - pro: pro seat.
-        # - max: premium seat.
+        # - standard: standard seat
+        # - pro: advanced seat
+        # - max: premium seat
         self.seat_type = seat_type
-        # The list of seat statuses used for filtering.
+        # The list of seat statuses for filtering.
         self.status_list = status_list
 
     def validate(self):

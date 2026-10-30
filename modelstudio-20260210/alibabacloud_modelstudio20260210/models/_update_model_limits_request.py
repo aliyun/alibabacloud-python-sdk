@@ -17,7 +17,7 @@ class UpdateModelLimitsRequest(DaraModel):
         # 
         # This parameter is required.
         self.workspace_id = workspace_id
-        # The throttling values for the workspace.
+        # The throttling limits for the workspace.
         self.workspace_limits = workspace_limits
 
     def validate(self):
@@ -67,17 +67,16 @@ class UpdateModelLimitsRequestWorkspaceLimits(DaraModel):
         # The model.
         self.model = model
         # The throttling operation type. Valid values:
-        # 
         # - **OVERLAY**: Sets or overwrites the throttling configuration.
-        # - **DELETE**: Deletes the throttling configuration (restores to no throttling).
+        # - **DELETE**: Deletes the throttling configuration to restore the unlimited state.
         self.operation_type = operation_type
-        # The request throttling value.
+        # The request throttling limit.
         self.request_limit = request_limit
-        # The time period for request throttling. Unit: seconds.
+        # The time period for request throttling, in seconds.
         self.request_limit_period = request_limit_period
-        # The usage throttling value.
+        # The usage throttling limit.
         self.usage_limit = usage_limit
-        # The time period for usage throttling. Unit: seconds.
+        # The time period for usage throttling, in seconds.
         self.usage_limit_period = usage_limit_period
 
     def validate(self):

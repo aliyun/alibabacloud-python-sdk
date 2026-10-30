@@ -115,7 +115,7 @@ class ListOrganizationMembersResponseBodyData(DaraModel):
         status: str = None,
         subscription_info: main_models.ListOrganizationMembersResponseBodyDataSubscriptionInfo = None,
     ):
-        # The member business ID.
+        # The business ID of the member.
         self.account_biz_id = account_biz_id
         # The ID of the member accounts.
         self.account_id = account_id
@@ -123,26 +123,28 @@ class ListOrganizationMembersResponseBodyData(DaraModel):
         self.account_name = account_name
         # API Key ID
         self.api_key_id = api_key_id
-        # The member email address.
+        # The email address of the member.
         self.email = email
         # The time when the member joined.
         self.gmt_create = gmt_create
         # The masked API key.
         self.masked_api_key = masked_api_key
-        # The organization ID.
+        # The ID of the organization.
         self.org_id = org_id
+        # The upper limit information for the shared usage package available to the member.
         self.pack_limit_info = pack_limit_info
-        # The list of member roles.
+        # The list of roles for the member.
         self.roles = roles
-        # The seat resource allocate ID.
+        # The resource allocation ID of the seat.
         self.seat_id = seat_id
-        # The seat specification type. Valid values:
+        # The specification type of the seat. Valid values:
         # - standard: Standard seat.
         # - pro: Pro seat.
-        # - max: Max seat.
+        # - max: Premium seat.
         self.spec_type = spec_type
-        # The member status.
+        # The status of the member.
         self.status = status
+        # The subscription information of the member.
         self.subscription_info = subscription_info
 
     def validate(self):
@@ -260,13 +262,21 @@ class ListOrganizationMembersResponseBodyDataSubscriptionInfo(DaraModel):
         start_time: int = None,
         status: str = None,
     ):
+        # The end time of the subscription.
         self.end_time = end_time
+        # The list of subscription entitlements.
         self.equity_list = equity_list
+        # The code of the subscription instance.
         self.instance_code = instance_code
+        # The billing method.
         self.pay_mode = pay_mode
+        # The code of the subscription product.
         self.product_code = product_code
+        # The specification type of the subscription.
         self.spec_type = spec_type
+        # The start time of the subscription.
         self.start_time = start_time
+        # The subscription status.
         self.status = status
 
     def validate(self):
@@ -349,11 +359,17 @@ class ListOrganizationMembersResponseBodyDataSubscriptionInfoEquityList(DaraMode
         equity_type: str = None,
         equity_unit: str = None,
     ):
+        # The start time of the current cycle.
         self.cycle_end_time = cycle_end_time
+        # The start time of the current cycle.
         self.cycle_start_time = cycle_start_time
+        # The remaining entitlement quota for the current cycle.
         self.cycle_surplus_value = cycle_surplus_value
+        # The total entitlement quota for the current cycle.
         self.cycle_total_value = cycle_total_value
+        # The entitlement type.
         self.equity_type = equity_type
+        # The unit of measurement for the entitlement.
         self.equity_unit = equity_unit
 
     def validate(self):
@@ -419,14 +435,23 @@ class ListOrganizationMembersResponseBodyDataPackLimitInfo(DaraModel):
         upper_limit: float = None,
         used_credits: float = None,
     ):
+        # The currently available quota.
         self.available_limit = available_limit
+        # The end time of the current cycle.
         self.cycle_end_time = cycle_end_time
+        # The start time of the current cycle.
         self.cycle_start_time = cycle_start_time
+        # The frozen quota.
         self.frozen_credits = frozen_credits
+        # Indicates whether a quota limit exists for the shared usage package.
         self.has_share_limit = has_share_limit
+        # Indicates whether the quota is currently available.
         self.is_available = is_available
+        # The time when the quota limit configuration was last modified.
         self.last_confirmed_time = last_confirmed_time
+        # The upper limit of the quota.
         self.upper_limit = upper_limit
+        # The used quota.
         self.used_credits = used_credits
 
     def validate(self):

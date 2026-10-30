@@ -19,8 +19,7 @@ class GetTokenPlanInviteLinkResponseBody(DaraModel):
         self.data = data
         # The response message.
         self.message = message
-        # Indicates whether the call was successful. Valid values:
-        # 
+        # Indicates whether the API call is successful. Valid values:
         # - true: Successful.
         # - false: Failed.
         self.success = success

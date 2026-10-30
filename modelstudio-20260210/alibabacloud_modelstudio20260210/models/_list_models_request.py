@@ -19,14 +19,62 @@ class ListModelsRequest(DaraModel):
         next_token: str = None,
         providers: List[str] = None,
     ):
+        # The model type. Valid values:
+        # - Reasoning: Deep thinking.
+        # - VU: Visual understanding.
+        # - IG: Image generation.
+        # - VG: Video generation.
+        # - ASR: Speech recognition.
+        # - TTS: Speech synthesis.
+        # - ME: Multimodal embedding.
+        # - Realtime-Omni: Real-time omni-modal.
+        # - Multimodal-Omni: Omni-modal.
+        # - Realtime-Text-to-Speech: Real-time speech synthesis.
+        # - TG: Text generation.
+        # - TR: Text embedding.
+        # - Realtime-ASR: Real-time speech recognition.
+        # - Realtime-Audio-Translate: Real-time audio translation.
+        # - 3D-generation: 3D generation.
+        # - Realtime-Chatting: Real-time voice conversation.
         self.capabilities = capabilities
+        # The context window size used to filter models with a context window smaller than this value.
         self.context_window = context_window
+        # The model capability. Valid values:
+        # - model-experience: Playground.
+        # - function-calling: Function calling.
+        # - structured-outputs: Structured output.
+        # - web-search: Web search.
+        # - prefix-completion: Partial mode.
+        # - cache: Cache.
+        # - batch: Batch inference.
+        # - fine-tuning: Model fine-tuning.
         self.features = features
+        # The language. Valid values:
+        # - zh-CN: Chinese.
+        # - en-US: English.
         self.language = language
+        # The maximum number of results to return. Valid values: 0 to 200.
         self.max_results = max_results
+        # The model name for exact match.
         self.model = model
+        # The model name for fuzzy match.
         self.name = name
+        # The next token.
         self.next_token = next_token
+        # The provider. Valid values:
+        # - qwen: Alibaba Cloud - Qwen.
+        # - zhipu-ai: Zhipu AI.
+        # - wan: Alibaba Cloud - Wan.
+        # - qwen-domain-model: Alibaba Cloud - Domain Model.
+        # - mini-max: MiniMax.
+        # - moonshot-ai: Moonshot AI.
+        # - deepseek: DeepSeek.
+        # - happyhorse: Alibaba Cloud - HappyHorse.
+        # - kling: Kling AI.
+        # - pixverse: PixVerse.
+        # - vidu: Vidu.
+        # - tripo: Tripo.
+        # - xiaomi: Xiaomi MiMo.
         self.providers = providers
 
     def validate(self):

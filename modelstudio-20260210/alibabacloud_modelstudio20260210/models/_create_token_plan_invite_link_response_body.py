@@ -19,10 +19,10 @@ class CreateTokenPlanInviteLinkResponseBody(DaraModel):
         self.data = data
         # The response message.
         self.message = message
-        # Indicates whether the call was successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # - true: The call was successful.
-        # - false: The call failed.
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):

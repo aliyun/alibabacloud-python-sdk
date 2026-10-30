@@ -14,7 +14,7 @@ class UpdateModelLimitsShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.workspace_id = workspace_id
-        # The throttling values for the workspace.
+        # The throttling limits for the workspace.
         self.workspace_limits_shrink = workspace_limits_shrink
 
     def validate(self):

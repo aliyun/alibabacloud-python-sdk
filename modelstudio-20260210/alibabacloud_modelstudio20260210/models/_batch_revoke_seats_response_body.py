@@ -11,11 +11,11 @@ class BatchRevokeSeatsResponseBody(DaraModel):
         message: str = None,
         success: bool = None,
     ):
-        # The error code. This parameter is empty if the request was successful.
+        # The error code. This parameter is empty if the request is successful.
         self.code = code
-        # The error message. This parameter is empty if the request was successful.
+        # The error message. This parameter is empty if the request is successful.
         self.message = message
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

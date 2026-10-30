@@ -15,15 +15,14 @@ class AddOrganizationMemberRequest(DaraModel):
         # 
         # This parameter is required.
         self.account_name = account_name
-        # The organization role code. Only ORG_ADMIN or ORG_MEMBER is allowed. Default value: ORG_MEMBER.
+        # The organization role code. Valid values: ORG_ADMIN and ORG_MEMBER. Default value: ORG_MEMBER.
         # 
         # This parameter is required.
         self.org_role_code = org_role_code
         # The seat specification. Valid values:
-        # 
-        # - standard: standard seat.
-        # - pro: premium seat.
-        # - max: exclusive seat.
+        # - standard: Standard seat.
+        # - pro: Pro seat.
+        # - max: Premium seat.
         self.spec_type = spec_type
 
     def validate(self):

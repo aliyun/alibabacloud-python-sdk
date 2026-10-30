@@ -10,27 +10,30 @@ class GetBillingTrendShrinkRequest(DaraModel):
         filter_shrink: str = None,
         granularity: str = None,
         group_by_shrink: str = None,
+        include_history_period: bool = None,
         locale: str = None,
         region_id: str = None,
         time_period_shrink: str = None,
         top_num: int = None,
         zero_filter: bool = None,
     ):
-        # The dimension filter conditions.
+        # The dimension filter condition.
         self.filter_shrink = filter_shrink
         # The query granularity. This parameter is required.
         self.granularity = granularity
-        # The grouping conditions. This parameter must contain one and only one element.
+        # The grouping condition. This parameter must contain exactly one element.
         self.group_by_shrink = group_by_shrink
-        # The response language. Default value: en-US.
+        # Specifies whether to query the previous non-overlapping period of the same length. Default value: false.
+        self.include_history_period = include_history_period
+        # The language of the response. Default value: en-US.
         self.locale = locale
         # The region ID.
         self.region_id = region_id
-        # The query time range, including the start time and end time. This parameter is required.
+        # The time range to query, including the start time and end time. This parameter is required.
         self.time_period_shrink = time_period_shrink
-        # The number of groups to return. Valid values: 1 to 20. Default value: 20. The remaining groups are merged into "Others".
+        # The number of groups to return. Valid values: 1 to 20. Default value: 20. The remaining groups are merged into "Other".
         self.top_num = top_num
-        # Specifies whether to filter out groups with a zero amount. Default value: true.
+        # Specifies whether to filter out groups with an amount of 0. Default value: true.
         self.zero_filter = zero_filter
 
     def validate(self):
@@ -49,6 +52,9 @@ class GetBillingTrendShrinkRequest(DaraModel):
 
         if self.group_by_shrink is not None:
             result['groupBy'] = self.group_by_shrink
+
+        if self.include_history_period is not None:
+            result['includeHistoryPeriod'] = self.include_history_period
 
         if self.locale is not None:
             result['locale'] = self.locale
@@ -77,6 +83,9 @@ class GetBillingTrendShrinkRequest(DaraModel):
 
         if m.get('groupBy') is not None:
             self.group_by_shrink = m.get('groupBy')
+
+        if m.get('includeHistoryPeriod') is not None:
+            self.include_history_period = m.get('includeHistoryPeriod')
 
         if m.get('locale') is not None:
             self.locale = m.get('locale')

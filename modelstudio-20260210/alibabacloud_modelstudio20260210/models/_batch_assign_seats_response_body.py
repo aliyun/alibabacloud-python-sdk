@@ -15,7 +15,7 @@ class BatchAssignSeatsResponseBody(DaraModel):
         self.code = code
         # The response message.
         self.message = message
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

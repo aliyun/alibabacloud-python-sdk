@@ -15,7 +15,7 @@ class RevokeTokenPlanInviteLinkResponseBody(DaraModel):
         self.code = code
         # The response message.
         self.message = message
-        # Indicates whether the API call is successful. Valid values:
+        # Indicates whether the API call was successful. Valid values:
         # 
         # - true: Successful.
         # - false: Failed.

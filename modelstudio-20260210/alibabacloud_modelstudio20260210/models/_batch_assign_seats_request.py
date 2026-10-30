@@ -15,12 +15,12 @@ class BatchAssignSeatsRequest(DaraModel):
     ):
         # The list of target member IDs.
         self.account_ids = account_ids
-        # The language. Valid values: zh-CN and en-US.
+        # The locale. Valid values: zh-CN and en-US.
         self.locale = locale
         # The seat type. Valid values:
-        # - standard: standard seat
-        # - pro: pro seat
-        # - max: premium seat
+        # - standard: Standard seat.
+        # - pro: Pro seat.
+        # - max: Max seat.
         # 
         # This parameter is required.
         self.seat_type = seat_type

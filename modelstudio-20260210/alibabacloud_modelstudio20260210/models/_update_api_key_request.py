@@ -13,9 +13,9 @@ class UpdateApiKeyRequest(DaraModel):
         auth: main_models.UpdateApiKeyRequestAuth = None,
         description: str = None,
     ):
-        # The API Key permission settings.
+        # The API key permission settings.
         # 
-        # > Do not specify this parameter or specify it completely for each UpdateApiKey operation. Otherwise, the configuration may not match your expectations.
+        # > When calling the UpdateApiKey operation, either leave this section empty or fill it out completely. Otherwise, the configuration may not match your expectations.
         self.auth = auth
         # The description.
         self.description = description
@@ -55,16 +55,15 @@ class UpdateApiKeyRequestAuth(DaraModel):
         model_access_scope: main_models.UpdateApiKeyRequestAuthModelAccessScope = None,
         type: str = None,
     ):
-        # The IP access whitelist.
+        # The IP address whitelist.
         # 
         # > 
-        # > - When you customize the permission scope, if the IP access whitelist is not specified, the server sets it to IPv4 (0.0.0.0/0) and IPv6 (::/0) by default, which allows all traffic.
+        # > - When customizing the permission scope, if the IP address whitelist is not specified, the server sets the default values to IPv4 (0.0.0.0/0) and IPv6 (::/0), which allows all traffic.
         self.access_ips = access_ips
         # The model access scope.
         self.model_access_scope = model_access_scope
         # The permission type. Valid values:
-        # 
-        # - All: full permissions.
+        # - All: all permissions.
         # - Custom: custom permissions.
         self.type = type
 
@@ -111,7 +110,7 @@ class UpdateApiKeyRequestAuthModelAccessScope(DaraModel):
         # The list of accessible models.
         # >Notice: The specified content takes effect only when allowAllModels is set to false.
         self.accessible_models = accessible_models
-        # Specifies whether all models with inference permissions in the workspace are accessible. Valid values:
+        # Specifies whether to allow access to all models that have been granted inference permissions in the workspace. Valid values:
         # 
         # - true
         # - false

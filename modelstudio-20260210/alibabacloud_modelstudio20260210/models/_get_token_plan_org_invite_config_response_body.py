@@ -15,11 +15,11 @@ class GetTokenPlanOrgInviteConfigResponseBody(DaraModel):
     ):
         # The response status code.
         self.code = code
-        # The data result of the current category statistics.
+        # The statistical data results for the current category.
         self.data = data
         # The response message.
         self.message = message
-        # Indicates whether the API call is successful. Valid values:
+        # Indicates whether the API call was successful. Valid values:
         # 
         # - true: Successful.
         # - false: Failed.
@@ -72,14 +72,14 @@ class GetTokenPlanOrgInviteConfigResponseBodyData(DaraModel):
         org_id: str = None,
         seat_assign_strategy: str = None,
     ):
-        # The default organization role ID to assign. Valid values:
+        # The ID of the default assigned organization role. Valid values:
         # 
         # - SYSTEM_ROLE_ORG_ADMIN
         # - SYSTEM_ROLE_ORG_MEMBER
         self.default_role_id = default_role_id
         # The organization ID.
         self.org_id = org_id
-        # The default seat allocation strategy. Valid values:
+        # The default seat assignment strategy. Valid values:
         # 
         # - HIGH_TO_LOW
         # - LOW_TO_HIGH 

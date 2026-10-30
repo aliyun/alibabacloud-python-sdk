@@ -134,6 +134,7 @@ from ._get_api_key_response_body import GetApiKeyResponseBodyApiKey
 from ._get_billing_overview_request import GetBillingOverviewRequestFilterDimensions
 from ._get_billing_overview_request import GetBillingOverviewRequestFilter
 from ._get_billing_overview_request import GetBillingOverviewRequestGroupBy
+from ._get_billing_overview_request import GetBillingOverviewRequestTimePeriod
 from ._get_billing_overview_response_body import GetBillingOverviewResponseBodyDataGroups
 from ._get_billing_overview_response_body import GetBillingOverviewResponseBodyData
 from ._get_billing_trend_request import GetBillingTrendRequestFilterDimensions
@@ -142,6 +143,12 @@ from ._get_billing_trend_request import GetBillingTrendRequestGroupBy
 from ._get_billing_trend_request import GetBillingTrendRequestTimePeriod
 from ._get_billing_trend_response_body import GetBillingTrendResponseBodyDataCostTotals
 from ._get_billing_trend_response_body import GetBillingTrendResponseBodyDataGroupByTotal
+from ._get_billing_trend_response_body import GetBillingTrendResponseBodyDataHistoryPeriodCostTotals
+from ._get_billing_trend_response_body import GetBillingTrendResponseBodyDataHistoryPeriodGroupByTotal
+from ._get_billing_trend_response_body import GetBillingTrendResponseBodyDataHistoryPeriodResultByTimePeriodDetails
+from ._get_billing_trend_response_body import GetBillingTrendResponseBodyDataHistoryPeriodResultByTimeTotal
+from ._get_billing_trend_response_body import GetBillingTrendResponseBodyDataHistoryPeriodResultByTime
+from ._get_billing_trend_response_body import GetBillingTrendResponseBodyDataHistoryPeriod
 from ._get_billing_trend_response_body import GetBillingTrendResponseBodyDataResultByTimePeriodDetails
 from ._get_billing_trend_response_body import GetBillingTrendResponseBodyDataResultByTimeTotal
 from ._get_billing_trend_response_body import GetBillingTrendResponseBodyDataResultByTime
@@ -320,6 +327,7 @@ __all__ = [
     GetBillingOverviewRequestFilterDimensions,
     GetBillingOverviewRequestFilter,
     GetBillingOverviewRequestGroupBy,
+    GetBillingOverviewRequestTimePeriod,
     GetBillingOverviewResponseBodyDataGroups,
     GetBillingOverviewResponseBodyData,
     GetBillingTrendRequestFilterDimensions,
@@ -328,6 +336,12 @@ __all__ = [
     GetBillingTrendRequestTimePeriod,
     GetBillingTrendResponseBodyDataCostTotals,
     GetBillingTrendResponseBodyDataGroupByTotal,
+    GetBillingTrendResponseBodyDataHistoryPeriodCostTotals,
+    GetBillingTrendResponseBodyDataHistoryPeriodGroupByTotal,
+    GetBillingTrendResponseBodyDataHistoryPeriodResultByTimePeriodDetails,
+    GetBillingTrendResponseBodyDataHistoryPeriodResultByTimeTotal,
+    GetBillingTrendResponseBodyDataHistoryPeriodResultByTime,
+    GetBillingTrendResponseBodyDataHistoryPeriod,
     GetBillingTrendResponseBodyDataResultByTimePeriodDetails,
     GetBillingTrendResponseBodyDataResultByTimeTotal,
     GetBillingTrendResponseBodyDataResultByTime,

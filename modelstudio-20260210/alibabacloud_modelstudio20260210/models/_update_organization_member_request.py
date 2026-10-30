@@ -14,7 +14,7 @@ class UpdateOrganizationMemberRequest(DaraModel):
     ):
         # The list of account IDs for batch operations.
         self.account_ids = account_ids
-        # The code of the new role. When you perform a batch operation, all specified accounts are changed to this role.
+        # The code of the new role. In batch operations, this role is applied to all specified accounts.
         # 
         # This parameter is required.
         self.new_role_code = new_role_code

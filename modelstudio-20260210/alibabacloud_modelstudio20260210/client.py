@@ -986,17 +986,23 @@ class Client(OpenApiClient):
             request.filter_shrink = Utils.array_to_string_with_specified_style(tmp_req.filter, 'filter', 'json')
         if not DaraCore.is_null(tmp_req.group_by):
             request.group_by_shrink = Utils.array_to_string_with_specified_style(tmp_req.group_by, 'groupBy', 'json')
+        if not DaraCore.is_null(tmp_req.time_period):
+            request.time_period_shrink = Utils.array_to_string_with_specified_style(tmp_req.time_period, 'timePeriod', 'json')
         query = {}
         if not DaraCore.is_null(request.bill_month):
             query['billMonth'] = request.bill_month
         if not DaraCore.is_null(request.filter_shrink):
             query['filter'] = request.filter_shrink
+        if not DaraCore.is_null(request.granularity):
+            query['granularity'] = request.granularity
         if not DaraCore.is_null(request.group_by_shrink):
             query['groupBy'] = request.group_by_shrink
         if not DaraCore.is_null(request.locale):
             query['locale'] = request.locale
         if not DaraCore.is_null(request.region_id):
             query['regionId'] = request.region_id
+        if not DaraCore.is_null(request.time_period_shrink):
+            query['timePeriod'] = request.time_period_shrink
         if not DaraCore.is_null(request.top_num):
             query['topNum'] = request.top_num
         if not DaraCore.is_null(request.zero_filter):
@@ -1034,17 +1040,23 @@ class Client(OpenApiClient):
             request.filter_shrink = Utils.array_to_string_with_specified_style(tmp_req.filter, 'filter', 'json')
         if not DaraCore.is_null(tmp_req.group_by):
             request.group_by_shrink = Utils.array_to_string_with_specified_style(tmp_req.group_by, 'groupBy', 'json')
+        if not DaraCore.is_null(tmp_req.time_period):
+            request.time_period_shrink = Utils.array_to_string_with_specified_style(tmp_req.time_period, 'timePeriod', 'json')
         query = {}
         if not DaraCore.is_null(request.bill_month):
             query['billMonth'] = request.bill_month
         if not DaraCore.is_null(request.filter_shrink):
             query['filter'] = request.filter_shrink
+        if not DaraCore.is_null(request.granularity):
+            query['granularity'] = request.granularity
         if not DaraCore.is_null(request.group_by_shrink):
             query['groupBy'] = request.group_by_shrink
         if not DaraCore.is_null(request.locale):
             query['locale'] = request.locale
         if not DaraCore.is_null(request.region_id):
             query['regionId'] = request.region_id
+        if not DaraCore.is_null(request.time_period_shrink):
+            query['timePeriod'] = request.time_period_shrink
         if not DaraCore.is_null(request.top_num):
             query['topNum'] = request.top_num
         if not DaraCore.is_null(request.zero_filter):
@@ -1107,6 +1119,8 @@ class Client(OpenApiClient):
             query['granularity'] = request.granularity
         if not DaraCore.is_null(request.group_by_shrink):
             query['groupBy'] = request.group_by_shrink
+        if not DaraCore.is_null(request.include_history_period):
+            query['includeHistoryPeriod'] = request.include_history_period
         if not DaraCore.is_null(request.locale):
             query['locale'] = request.locale
         if not DaraCore.is_null(request.region_id):
@@ -1159,6 +1173,8 @@ class Client(OpenApiClient):
             query['granularity'] = request.granularity
         if not DaraCore.is_null(request.group_by_shrink):
             query['groupBy'] = request.group_by_shrink
+        if not DaraCore.is_null(request.include_history_period):
+            query['includeHistoryPeriod'] = request.include_history_period
         if not DaraCore.is_null(request.locale):
             query['locale'] = request.locale
         if not DaraCore.is_null(request.region_id):

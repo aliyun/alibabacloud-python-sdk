@@ -23,7 +23,7 @@ class GetOrganizationResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The response message.
         self.message = message
-        # The unique request ID.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the API call is successful. Valid values:
         # 
@@ -100,7 +100,7 @@ class GetOrganizationResponseBodyData(DaraModel):
         self.description = description
         # The creation time.
         self.gmt_create = gmt_create
-        # The modification time.
+        # The update time.
         self.gmt_modified = gmt_modified
         # The organization name.
         self.name = name
@@ -108,11 +108,11 @@ class GetOrganizationResponseBodyData(DaraModel):
         self.namespace_id = namespace_id
         # The organization ID.
         self.org_id = org_id
-        # The business account identifier of the organization owner. The value is aliyunUid for the ALIYUN type and userIdentifier for the SSO type.
+        # The business account identifier of the organization owner. For the ALIYUN type, the value is aliyunUid. For the SSO type, the value is userIdentifier.
         self.owner_biz_account_id = owner_biz_account_id
         # The UAC account ID of the organization owner.
         self.owner_id = owner_id
-        # The status. Valid values: ACTIVE and FROZEN.
+        # The status of the organization. Valid values: ACTIVE and FROZEN.
         self.status = status
 
     def validate(self):

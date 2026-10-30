@@ -24,11 +24,11 @@ class DeleteWorkspaceResponseBody(DaraModel):
         self.fail_reasons = fail_reasons
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # Indicates whether the workspace is successfully deleted. Valid values:
+        # Indicates whether the deletion is successful. Valid values:
         # 
-        # - true: Succeeded.
+        # - true: successful
         # 
-        # - false: Failed.
+        # - false: failed
         self.is_deleted = is_deleted
         # The response message.
         self.message = message
@@ -36,8 +36,8 @@ class DeleteWorkspaceResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the API call is successful. Valid values:
         # 
-        # - true: Succeeded.
-        # - false: Failed.
+        # - true: successful
+        # - false: failed
         self.success = success
 
     def validate(self):

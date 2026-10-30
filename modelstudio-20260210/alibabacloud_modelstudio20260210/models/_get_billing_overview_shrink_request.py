@@ -9,25 +9,31 @@ class GetBillingOverviewShrinkRequest(DaraModel):
         self,
         bill_month: str = None,
         filter_shrink: str = None,
+        granularity: str = None,
         group_by_shrink: str = None,
         locale: str = None,
         region_id: str = None,
+        time_period_shrink: str = None,
         top_num: int = None,
         zero_filter: bool = None,
     ):
-        # The billing month. This parameter is required.
+        # The billing month.
         self.bill_month = bill_month
-        # The filter condition.
+        # The filter conditions.
         self.filter_shrink = filter_shrink
+        # The time granularity.
+        self.granularity = granularity
         # The list of grouping conditions. Currently, you must specify exactly one grouping dimension.
         self.group_by_shrink = group_by_shrink
-        # The response language. Default value: en-US.
+        # The language of the response. Default value: en-US.
         self.locale = locale
-        # The region.
+        # The region ID.
         self.region_id = region_id
+        # The query time range, which includes the start and end times. Both the start and end times are included in the query range. The time format must be consistent with the granularity, and the start time cannot be later than the end time.
+        self.time_period_shrink = time_period_shrink
         # The number of groups to return. Valid values: 1 to 20. Default value: 20.
         self.top_num = top_num
-        # Specifies whether to filter out groups with a zero amount. Default value: true.
+        # Specifies whether to filter out groups with an amount of 0. Default value: true.
         self.zero_filter = zero_filter
 
     def validate(self):
@@ -44,6 +50,9 @@ class GetBillingOverviewShrinkRequest(DaraModel):
         if self.filter_shrink is not None:
             result['filter'] = self.filter_shrink
 
+        if self.granularity is not None:
+            result['granularity'] = self.granularity
+
         if self.group_by_shrink is not None:
             result['groupBy'] = self.group_by_shrink
 
@@ -52,6 +61,9 @@ class GetBillingOverviewShrinkRequest(DaraModel):
 
         if self.region_id is not None:
             result['regionId'] = self.region_id
+
+        if self.time_period_shrink is not None:
+            result['timePeriod'] = self.time_period_shrink
 
         if self.top_num is not None:
             result['topNum'] = self.top_num
@@ -69,6 +81,9 @@ class GetBillingOverviewShrinkRequest(DaraModel):
         if m.get('filter') is not None:
             self.filter_shrink = m.get('filter')
 
+        if m.get('granularity') is not None:
+            self.granularity = m.get('granularity')
+
         if m.get('groupBy') is not None:
             self.group_by_shrink = m.get('groupBy')
 
@@ -77,6 +92,9 @@ class GetBillingOverviewShrinkRequest(DaraModel):
 
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')
+
+        if m.get('timePeriod') is not None:
+            self.time_period_shrink = m.get('timePeriod')
 
         if m.get('topNum') is not None:
             self.top_num = m.get('topNum')

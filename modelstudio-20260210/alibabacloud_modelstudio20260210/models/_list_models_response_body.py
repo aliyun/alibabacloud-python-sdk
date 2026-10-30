@@ -20,14 +20,23 @@ class ListModelsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The error code. This field is empty when the call is successful.
         self.code = code
+        # The error message. This field is empty when the call is successful.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The maximum number of records returned per request.
         self.max_results = max_results
+        # The list of models.
         self.models = models
+        # The token for the next request.
         self.next_token = next_token
+        # The unique identifier of the request.
         self.request_id = request_id
+        # Indicates whether the API call was successful.
         self.success = success
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -120,15 +129,25 @@ class ListModelsResponseBodyModels(DaraModel):
         provider: str = None,
         published_time: int = None,
     ):
+        # The model type.
         self.capabilities = capabilities
+        # The model description.
         self.description = description
+        # The list of model capabilities.
         self.features = features
+        # The modality type.
         self.inference_metadata = inference_metadata
+        # The model name for exact match.
         self.model = model
+        # The model information, including various context lengths.
         self.model_info = model_info
+        # The model name for fuzzy match.
         self.name = name
+        # The list of model pricing.
         self.prices = prices
+        # The model provider.
         self.provider = provider
+        # The release time.
         self.published_time = published_time
 
     def validate(self):
@@ -225,7 +244,9 @@ class ListModelsResponseBodyModelsPrices(DaraModel):
         prices: List[main_models.ListModelsResponseBodyModelsPricesPrices] = None,
         range_name: str = None,
     ):
+        # The model pricing.
         self.prices = prices
+        # The tier name. If tiered pricing is not used, the value is Default.
         self.range_name = range_name
 
     def validate(self):
@@ -270,9 +291,16 @@ class ListModelsResponseBodyModelsPricesPrices(DaraModel):
         price_unit: str = None,
         time_band: str = None,
     ):
+        # The price. The currency unit depends on the account type: ￥ for accounts in the Chinese mainland and $ for international accounts.
         self.price = price
+        # The price type.
         self.price_name = price_name
+        # The billing method.
         self.price_unit = price_unit
+        # The time band. Valid values:
+        # - peak: Peak hours.
+        # - offpeak: Off-peak hours.
+        # - standard: No time-based tiering.
         self.time_band = time_band
 
     def validate(self):
@@ -323,11 +351,17 @@ class ListModelsResponseBodyModelsModelInfo(DaraModel):
         reasoning_max_input_tokens: int = None,
         reasoning_max_output_tokens: int = None,
     ):
+        # The context length.
         self.context_window = context_window
+        # The maximum input length.
         self.max_input_tokens = max_input_tokens
+        # The maximum output length.
         self.max_output_tokens = max_output_tokens
+        # The maximum chain-of-thought length.
         self.max_reasoning_tokens = max_reasoning_tokens
+        # The maximum input length in thinking mode.
         self.reasoning_max_input_tokens = reasoning_max_input_tokens
+        # The maximum output length in thinking mode.
         self.reasoning_max_output_tokens = reasoning_max_output_tokens
 
     def validate(self):
@@ -386,7 +420,9 @@ class ListModelsResponseBodyModelsInferenceMetadata(DaraModel):
         request_modality: List[str] = None,
         response_modality: List[str] = None,
     ):
+        # The input modality. Valid values: Text, Image, Audio, and Video.
         self.request_modality = request_modality
+        # The output modality. Valid values: Text, Image, Audio, and Video.
         self.response_modality = response_modality
 
     def validate(self):

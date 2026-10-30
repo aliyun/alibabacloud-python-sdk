@@ -19,7 +19,7 @@ class RotateTokenPlanKeyResponseBody(DaraModel):
         self.data = data
         # The response message.
         self.message = message
-        # Indicates whether the API call is successful. Valid values:
+        # Indicates whether the API call was successful. Valid values:
         # 
         # - true: Successful.
         # - false: Failed.
@@ -74,15 +74,15 @@ class RotateTokenPlanKeyResponseBodyData(DaraModel):
         reset_at: str = None,
         source_id: str = None,
     ):
-        # The API Key ID, which is system-generated.
+        # The system-generated API key ID.
         self.api_key_id = api_key_id
-        # The new masked_api_key returned by BaiLian, such as sk_***cdef.
+        # The new masked API key returned by Model Studio, such as sk_***cdef.
         self.masked_api_key = masked_api_key
-        # The new plaintext API Key returned by BaiLian. This value is returned only once during the reset operation.
+        # The new plaintext API key returned by Model Studio. This key is returned only once upon reset.
         self.plain_api_key = plain_api_key
-        # The time when the API key was reset.
+        # The reset time.
         self.reset_at = reset_at
-        # The source_id returned by BaiLian.
+        # The source_id returned by Model Studio.
         self.source_id = source_id
 
     def validate(self):

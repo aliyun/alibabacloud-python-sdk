@@ -20,7 +20,7 @@ class ListModelPermissionsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The error code. This value is empty when the call is successful.
+        # The error code. This parameter is empty if the call is successful.
         self.code = code
         # The error message.
         self.error_message = error_message
@@ -28,15 +28,15 @@ class ListModelPermissionsResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The list of workspace permissions.
         self.list = list
-        # The maximum number of entries returned per request.
+        # The maximum number of records returned in a single call.
         self.max_results = max_results
-        # The token for the next request.
+        # The pagination token for the next request.
         self.next_token = next_token
-        # The unique request ID.
+        # The unique identifier of the request.
         self.request_id = request_id
         # Indicates whether the API call is successful.
         self.success = success
-        # The total number of entries.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -124,7 +124,7 @@ class ListModelPermissionsResponseBodyList(DaraModel):
     ):
         # The model.
         self.model = model
-        # The model name.
+        # The name of the model.
         self.name = name
         # The authorization status.
         self.permissions = permissions
@@ -170,11 +170,11 @@ class ListModelPermissionsResponseBodyListPermissions(DaraModel):
         fine_tune: bool = None,
         inference: bool = None,
     ):
-        # The model deployment authorization. A value of true indicates that the model has been granted authorization. A value of false indicates that the model has not been granted authorization.
+        # The model deployment permission. A value of true indicates that the model is authorized for deployment. A value of false indicates that the model is not authorized.
         self.deploy = deploy
-        # The model training authorization. A value of true indicates that the model has been granted training authorization. A value of false indicates that the model has not been granted authorization.
+        # The model training permission. A value of true indicates that the model is authorized for fine-tuning. A value of false indicates that the model is not authorized.
         self.fine_tune = fine_tune
-        # Indicates whether the model has inference permission. A value of true indicates that the model is authorized. A value of false indicates that the model is not authorized.
+        # The model invocation permission. A value of true indicates that the model is authorized for inference. A value of false indicates that the model is not authorized.
         self.inference = inference
 
     def validate(self):

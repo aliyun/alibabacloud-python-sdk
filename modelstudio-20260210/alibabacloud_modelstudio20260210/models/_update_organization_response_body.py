@@ -23,12 +23,12 @@ class UpdateOrganizationResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The response message.
         self.message = message
-        # The request ID.
+        # The unique ID of the request.
         self.request_id = request_id
-        # Indicates whether the API call is successful. Valid values:
+        # Indicates whether the API call was successful. Valid values:
         # 
-        # - true: Successful.
-        # - false: Failed.
+        # - true: The call was successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):
@@ -96,23 +96,24 @@ class UpdateOrganizationResponseBodyData(DaraModel):
         owner_id: str = None,
         status: str = None,
     ):
-        # The organization description.
+        # The description of the organization.
         self.description = description
-        # The creation time.
+        # The time when the organization was created.
         self.gmt_create = gmt_create
-        # The modification time.
+        # The time when the organization was updated.
         self.gmt_modified = gmt_modified
-        # The organization name.
+        # The name of the organization.
         self.name = name
-        # The product namespace ID.
+        # The ID of the product namespace.
         self.namespace_id = namespace_id
-        # The organization ID.
+        # The ID of the organization.
         self.org_id = org_id
-        # The business account identifier of the organization owner. The value is aliyunUid for the ALIYUN type and userIdentifier for the SSO type.
+        # The business account identifier of the organization owner. For the ALIYUN type, the value is aliyunUid. For the SSO type, the value is userIdentifier.
         self.owner_biz_account_id = owner_biz_account_id
         # The UAC account ID of the organization owner.
         self.owner_id = owner_id
         # The status. Valid values:
+        # 
         # - ACTIVE
         # - FROZEN
         self.status = status

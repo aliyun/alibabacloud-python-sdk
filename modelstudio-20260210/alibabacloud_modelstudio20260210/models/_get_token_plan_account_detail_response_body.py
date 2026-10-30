@@ -25,12 +25,12 @@ class GetTokenPlanAccountDetailResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The response message.
         self.message = message
-        # The unique request ID.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the API call is successful. Valid values:
         # 
-        # - true: Successful.
-        # - false: Failed.
+        # - true: The call is successful.
+        # - false: The call fails.
         self.success = success
 
     def validate(self):
@@ -105,17 +105,20 @@ class GetTokenPlanAccountDetailResponseBodyData(DaraModel):
         # - SSO 
         # - SA
         self.account_type = account_type
-        # The Alibaba Cloud UID. This parameter applies only to accounts of the ALIYUN type.
+        # The Alibaba Cloud UID of an ALIYUN account.
         self.aliyun_uid = aliyun_uid
-        # The time when the account was created.
+        # The creation time.
         self.created_at = created_at
-        # The email address. This parameter applies only to accounts of the SSO type.
+        # The email address of an SSO account.
         self.email = email
-        # The global status of the account. A value of 0 indicates Normal. A value of 1 indicates Frozen.
+        # The global status of the account. Valid values:
+        # 
+        # - 0: Normal.
+        # - 1: Frozen.
         self.is_deleted = is_deleted
         # The display name of the account.
         self.name = name
-        # The list of organization memberships in a tree structure (organization → workspace).
+        # The list of organization memberships in a tree structure from organization to workspace.
         self.org_memberships = org_memberships
 
     def validate(self):
@@ -197,7 +200,7 @@ class GetTokenPlanAccountDetailResponseBodyDataOrgMemberships(DaraModel):
         role_id: str = None,
         workspaces: List[main_models.GetTokenPlanAccountDetailResponseBodyDataOrgMembershipsWorkspaces] = None,
     ):
-        # The organization member status. Valid values:
+        # The status of the organization member. Valid values:
         # 
         # - ACTIVE 
         # - INITIAL 
@@ -277,10 +280,12 @@ class GetTokenPlanAccountDetailResponseBodyDataOrgMembershipsWorkspaces(DaraMode
         workspace_id: str = None,
     ):
         # The member status. Valid values:
-        # - ACTIVE 
+        # 
+        # - ACTIVE
         # - FROZEN
         self.member_status = member_status
         # The workspace role code. Valid values:
+        # 
         # - WS_ADMIN
         # - WS_MEMBER
         self.role_code = role_code

@@ -13,27 +13,30 @@ class GetBillingTrendRequest(DaraModel):
         filter: main_models.GetBillingTrendRequestFilter = None,
         granularity: str = None,
         group_by: List[main_models.GetBillingTrendRequestGroupBy] = None,
+        include_history_period: bool = None,
         locale: str = None,
         region_id: str = None,
         time_period: main_models.GetBillingTrendRequestTimePeriod = None,
         top_num: int = None,
         zero_filter: bool = None,
     ):
-        # The dimension filter conditions.
+        # The dimension filter condition.
         self.filter = filter
         # The query granularity. This parameter is required.
         self.granularity = granularity
-        # The grouping conditions. This parameter must contain one and only one element.
+        # The grouping condition. This parameter must contain exactly one element.
         self.group_by = group_by
-        # The response language. Default value: en-US.
+        # Specifies whether to query the previous non-overlapping period of the same length. Default value: false.
+        self.include_history_period = include_history_period
+        # The language of the response. Default value: en-US.
         self.locale = locale
         # The region ID.
         self.region_id = region_id
-        # The query time range, including the start time and end time. This parameter is required.
+        # The time range to query, including the start time and end time. This parameter is required.
         self.time_period = time_period
-        # The number of groups to return. Valid values: 1 to 20. Default value: 20. The remaining groups are merged into "Others".
+        # The number of groups to return. Valid values: 1 to 20. Default value: 20. The remaining groups are merged into "Other".
         self.top_num = top_num
-        # Specifies whether to filter out groups with a zero amount. Default value: true.
+        # Specifies whether to filter out groups with an amount of 0. Default value: true.
         self.zero_filter = zero_filter
 
     def validate(self):
@@ -61,6 +64,9 @@ class GetBillingTrendRequest(DaraModel):
         if self.group_by is not None:
             for k1 in self.group_by:
                 result['groupBy'].append(k1.to_map() if k1 else None)
+
+        if self.include_history_period is not None:
+            result['includeHistoryPeriod'] = self.include_history_period
 
         if self.locale is not None:
             result['locale'] = self.locale
@@ -93,6 +99,9 @@ class GetBillingTrendRequest(DaraModel):
             for k1 in m.get('groupBy'):
                 temp_model = main_models.GetBillingTrendRequestGroupBy()
                 self.group_by.append(temp_model.from_map(k1))
+
+        if m.get('includeHistoryPeriod') is not None:
+            self.include_history_period = m.get('includeHistoryPeriod')
 
         if m.get('locale') is not None:
             self.locale = m.get('locale')
@@ -154,7 +163,7 @@ class GetBillingTrendRequestGroupBy(DaraModel):
         self,
         code: str = None,
     ):
-        # The grouping dimension code. For more information, see the "Additional information" section below.
+        # The grouping dimension code. For more information, see the "Additional notes" section below.
         self.code = code
 
     def validate(self):
@@ -182,7 +191,7 @@ class GetBillingTrendRequestFilter(DaraModel):
         self,
         dimensions: List[main_models.GetBillingTrendRequestFilterDimensions] = None,
     ):
-        # The dimension filter list.
+        # The list of dimension filters.
         self.dimensions = dimensions
 
     def validate(self):
@@ -220,11 +229,11 @@ class GetBillingTrendRequestFilterDimensions(DaraModel):
         select_type: str = None,
         values: List[str] = None,
     ):
-        # The filter dimension code. For more information, see the "Additional information" section below.
+        # The filter dimension code. For more information, see the "Additional notes" section below.
         self.code = code
-        # The filter method.
+        # The filtering method.
         self.select_type = select_type
-        # The filter value list.
+        # The list of filter values.
         self.values = values
 
     def validate(self):

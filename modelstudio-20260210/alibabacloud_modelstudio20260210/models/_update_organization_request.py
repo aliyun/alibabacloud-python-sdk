@@ -10,9 +10,9 @@ class UpdateOrganizationRequest(DaraModel):
         description: str = None,
         name: str = None,
     ):
-        # The organization description.
+        # The description of the organization.
         self.description = description
-        # The organization name.
+        # The name of the organization.
         self.name = name
 
     def validate(self):

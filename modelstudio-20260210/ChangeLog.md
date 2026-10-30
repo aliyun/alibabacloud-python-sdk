@@ -1,3 +1,6 @@
+2026-10-30 Version: 2.2.4
+- Generated python 2026-02-10 for ModelStudio.
+
 2026-10-19 Version: 2.2.3
 - Update API ListModelLimits: add response parameters Body.limits.$.workspaceId.
 - Update API ListModels: add response parameters Body.models.$.prices.$.prices.$.timeBand.

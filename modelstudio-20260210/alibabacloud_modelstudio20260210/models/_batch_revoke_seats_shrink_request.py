@@ -12,7 +12,7 @@ class BatchRevokeSeatsShrinkRequest(DaraModel):
     ):
         # The list of revocation items. This parameter is required.
         self.items_shrink = items_shrink
-        # The language. Valid values: zh-CN and en-US.
+        # The locale. Valid values: zh-CN and en-US.
         self.locale = locale
 
     def validate(self):

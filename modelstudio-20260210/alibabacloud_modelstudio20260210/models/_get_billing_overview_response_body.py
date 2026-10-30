@@ -16,15 +16,15 @@ class GetBillingOverviewResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The request result code.
+        # The result code of the request.
         self.code = code
-        # The bill overview data.
+        # The billing overview data.
         self.data = data
-        # The request result message.
+        # The description of the request result.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -84,7 +84,7 @@ class GetBillingOverviewResponseBodyData(DaraModel):
     ):
         # The currency of the amount.
         self.currency = currency
-        # The top N groups sorted by amount in descending order.
+        # The list of top N groups sorted by amount in descending order.
         self.groups = groups
         # The total pretax amount.
         self.pretax_amount = pretax_amount
@@ -156,13 +156,13 @@ class GetBillingOverviewResponseBodyDataGroups(DaraModel):
     ):
         # The amount of the current group.
         self.amount = amount
-        # The list of commodity codes associated with the current group.
+        # The list of commodity codes involved in the current group.
         self.article_codes = article_codes
-        # The grouping dimension value. A null value is returned as DIMENSION_FILTER_NULL_VALUE.
+        # The value of the grouping dimension. If the value is null, DIMENSION_FILTER_NULL_VALUE is returned.
         self.key = key
-        # The display name of the group, which is affected by the locale parameter. A null value is displayed as -.
+        # The display name of the group, which is affected by the locale parameter. If the value is null, a hyphen (-) is displayed.
         self.name = name
-        # The ratio of the group amount to the total amount of the top N groups.
+        # The proportion of the group amount to the total amount of the top N groups.
         self.percentage = percentage
 
     def validate(self):

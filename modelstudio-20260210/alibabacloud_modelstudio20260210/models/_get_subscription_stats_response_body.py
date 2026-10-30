@@ -21,7 +21,7 @@ class GetSubscriptionStatsResponseBody(DaraModel):
         self.data = data
         # The response message.
         self.message = message
-        # Indicates whether the API call is successful. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
         # - true: Successful.
         # - false: Failed.
@@ -74,11 +74,11 @@ class GetSubscriptionStatsResponseBodyData(DaraModel):
         subscription_end_time: int = None,
         subscription_start_time: int = None,
     ):
-        # The list of seat information, grouped by specType.
+        # The list of seat information grouped by specType.
         self.items = items
-        # The subscription end time, in milliseconds.
+        # The subscription end time in milliseconds.
         self.subscription_end_time = subscription_end_time
-        # The subscription start time, in milliseconds.
+        # The subscription start time in milliseconds.
         self.subscription_start_time = subscription_start_time
 
     def validate(self):
@@ -133,13 +133,14 @@ class GetSubscriptionStatsResponseBodyDataItems(DaraModel):
     ):
         # The number of assigned seats.
         self.assigned_seats = assigned_seats
-        # The total credits quota for the seat.
+        # The total credits quota for seats.
         self.seat_credits = seat_credits
-        # The refresh time of the current cycle, in milliseconds.
+        # The refresh time of the current cycle in milliseconds.
         self.seat_refresh_time = seat_refresh_time
         # The remaining credits for the current cycle.
         self.seat_remaining_credits = seat_remaining_credits
         # The seat type (specType). Valid values:
+        # 
         # - standard: Standard seat.
         # - pro: Pro seat.
         # - max: Premium seat.

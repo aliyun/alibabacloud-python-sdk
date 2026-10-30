@@ -13,15 +13,15 @@ class UpdateOrganizationMemberResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. This parameter is empty if the operation is successful.
+        # The error code. This parameter is empty if the request is successful.
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error message. This parameter is empty if the operation is successful.
+        # The error message. This parameter is empty if the request is successful.
         self.message = message
-        # The request ID.
+        # The unique ID of the request.
         self.request_id = request_id
-        # Indicates whether the operation was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
