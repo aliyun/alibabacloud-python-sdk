@@ -12,8 +12,11 @@ class EmbeddingTransformParameters(DaraModel):
         embedding_data: main_models.EmbeddingTransformParametersEmbeddingData = None,
         embedding_model: str = None,
     ):
+        # The API key used to call the Model Studio embedding model service.
         self.api_key = api_key
+        # The input data to be vectorized and its transformation method.
         self.embedding_data = embedding_data
+        # The name of the model used to generate embeddings.
         self.embedding_model = embedding_model
 
     def validate(self):
@@ -57,8 +60,11 @@ class EmbeddingTransformParametersEmbeddingData(DaraModel):
         template: str = None,
         value: str = None,
     ):
+        # The method used to generate the input data. JSONPATH indicates that data is extracted from the event by using JSONPath.
         self.form = form
+        # The template used to build the input data. This parameter is used only when Form is set to TEMPLATE.
         self.template = template
+        # The source content of the input data. If Form is set to JSONPATH, specify a JSONPath expression.
         self.value = value
 
     def validate(self):

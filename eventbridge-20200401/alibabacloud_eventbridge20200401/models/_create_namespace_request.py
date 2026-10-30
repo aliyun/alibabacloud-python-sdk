@@ -12,13 +12,13 @@ class CreateNamespaceRequest(DaraModel):
         comment: str = None,
         name: str = None,
     ):
-        # Data catalog
+        # The data catalog to which the namespace belongs.
         self.catalog = catalog
-        # Idempotent Token
+        # The idempotency token.
         self.client_token = client_token
-        # Remarks
+        # The comment.
         self.comment = comment
-        # Namespace name
+        # The name of the namespace.
         # 
         # This parameter is required.
         self.name = name

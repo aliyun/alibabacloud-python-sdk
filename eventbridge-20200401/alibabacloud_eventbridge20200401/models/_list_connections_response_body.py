@@ -21,7 +21,7 @@ class ListConnectionsResponseBody(DaraModel):
         self.data = data
         # The returned message.
         self.message = message
-        # The common parameter. The ID of the request. Each request has a unique ID, which is active for troubleshooting.
+        # The common parameter. The request ID. Each request has a unique ID, which is active for troubleshooting and locating issues.
         self.request_id = request_id
 
     def validate(self):
@@ -76,7 +76,7 @@ class ListConnectionsResponseBodyData(DaraModel):
         self.connections = connections
         # The page size.
         self.max_results = max_results
-        # The pagination token returned when additional results are available.
+        # If there are additional entries to return, NextToken is included in the response.
         self.next_token = next_token
         # The total number of entries.
         self.total = total
@@ -145,15 +145,15 @@ class ListConnectionsResponseBodyDataConnections(DaraModel):
         self.connection_name = connection_name
         # The description of the connection configuration.
         self.description = description
-        # The timestamp when the datasource was created.
+        # The timestamp when the data source was created.
         self.gmt_create = gmt_create
         # The ID of the connection configuration.
         self.id = id
-        # The data structure of the network configuration.
+        # The data structure of network configurations.
         self.network_parameters = network_parameters
-        # The datasource connection parameters (JSON object). This field is returned only for datasource-type connections and is empty for Http type. For field definitions, refer to the ParamsSchema returned by GetConnectionType.
+        # The data source connection parameters (JSON object). Returned only for data source type connections. This field is empty for Http type connections. For field definitions, refer to the ParamsSchema returned by GetConnectionType.
         self.parameters = parameters
-        # The connection type. Valid values: Http, MySQL, PostgreSQL, Elasticsearch, OSS_TABLES, SLS, OTS, MaxCompute, MongoDB, Redis, SQLServer, ClickHouse, Oracle, Hive, Iceberg, and lakehouse.
+        # The connection type. Valid values: Http, MySQL, PostgreSQL, Elasticsearch, OSS_TABLES, SLS, OTS, MaxCompute, MongoDB, Redis, SQLServer, ClickHouse, Oracle, Hive, Iceberg, lakehouse.
         self.type = type
 
     def validate(self):
@@ -231,13 +231,14 @@ class ListConnectionsResponseBodyDataConnectionsNetworkParameters(DaraModel):
         vpc_id: str = None,
         vswitche_id: str = None,
     ):
-        # - Public network: PublicNetwork
+        # The network type. Valid values:
         # 
-        # - Virtual private cloud: PrivateNetwork
+        # - PublicNetwork: public network.
+        # - PrivateNetwork: virtual private cloud (VPC).
         self.network_type = network_type
         # The security group ID.
         self.security_group_id = security_group_id
-        # The ID of the virtual private cloud (VPC).
+        # The VPC ID.
         self.vpc_id = vpc_id
         # The vSwitch ID.
         self.vswitche_id = vswitche_id
@@ -290,7 +291,7 @@ class ListConnectionsResponseBodyDataConnectionsAuthParameters(DaraModel):
     ):
         # The data structure of the API key.
         self.api_key_auth_parameters = api_key_auth_parameters
-        # The authorization type:
+        # The authentication type. Valid values:
         # 
         # - BASIC: BASIC_AUTH
         # 
@@ -357,17 +358,17 @@ class ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParameters(Da
         http_method: str = None,
         oauth_http_parameters: main_models.ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParametersOAuthHttpParameters = None,
     ):
-        # The endpoint URL for obtaining the OAuth token.
+        # The endpoint for obtaining the OAuth token.
         self.authorization_endpoint = authorization_endpoint
         # The data structure of client parameters.
         self.client_parameters = client_parameters
-        # The HTTP method for the probe request. Valid values:
+        # The HTTP method. Valid values:
         # 
         # - GET
         # - POST
         # - HEAD
         self.http_method = http_method
-        # The HTTP request parameters for OAuth authentication.
+        # The request parameters for OAuth authentication.
         self.oauth_http_parameters = oauth_http_parameters
 
     def validate(self):
@@ -420,7 +421,7 @@ class ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParametersOAu
         header_parameters: List[main_models.ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParametersOAuthHttpParametersHeaderParameters] = None,
         query_string_parameters: List[main_models.ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParametersOAuthHttpParametersQueryStringParameters] = None,
     ):
-        # The list of body request parameter data structures.
+        # The list of request parameter data structures for the body.
         self.body_parameters = body_parameters
         # The list of header parameter data structures.
         self.header_parameters = header_parameters

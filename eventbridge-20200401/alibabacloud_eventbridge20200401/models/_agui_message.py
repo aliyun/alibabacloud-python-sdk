@@ -22,8 +22,9 @@ class AguiMessage(DaraModel):
         self.content = content
         # The unique identifier of the message.
         self.id = id
-        # The extension metadata.
+        # The extended metadata.
         self.metadata = metadata
+        # The reasoning content.
         self.reasoning = reasoning
         # The role of the message.
         self.role = role
@@ -106,11 +107,11 @@ class AguiMessageToolCalls(DaraModel):
         id: str = None,
         type: str = None,
     ):
-        # The tool calling function.
+        # The tool invocation method.
         self.function = function
-        # The tool calling ID.
+        # The tool invocation ID.
         self.id = id
-        # The tool calling type.
+        # The tool invocation type.
         self.type = type
 
     def validate(self):
@@ -153,9 +154,9 @@ class AguiMessageToolCallsFunction(DaraModel):
         arguments: str = None,
         name: str = None,
     ):
-        # The arguments of the tool calling function.
+        # The parameters of the tool invocation method.
         self.arguments = arguments
-        # The name of the tool calling function.
+        # The name of the tool invocation method.
         self.name = name
 
     def validate(self):
@@ -189,7 +190,7 @@ class AguiMessageMetadata(DaraModel):
         self,
         attachments: main_models.AguiMessageMetadataAttachments = None,
     ):
-        # The extension data.
+        # The extended data.
         self.attachments = attachments
 
     def validate(self):
@@ -222,9 +223,9 @@ class AguiMessageMetadataAttachments(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # The name of the extension data.
+        # The name of the extended data.
         self.name = name
-        # The type of the extension data.
+        # The type of the extended data.
         self.type = type
 
     def validate(self):

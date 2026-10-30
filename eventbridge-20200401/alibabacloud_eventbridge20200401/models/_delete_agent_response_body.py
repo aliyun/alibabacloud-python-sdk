@@ -11,8 +11,7 @@ class DeleteAgentResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The API status or POP error code. Valid values:
-        # - Success: the operation is successful.
+        # The API status or POP error code. Valid values: Success: The operation is successful.
         self.code = code
         # The error message.
         self.message = message

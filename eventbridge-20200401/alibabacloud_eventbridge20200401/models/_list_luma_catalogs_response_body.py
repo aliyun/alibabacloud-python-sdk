@@ -16,15 +16,15 @@ class ListLumaCatalogsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. A value of Success indicates a successful call. A specific error code is returned when the call fails.
+        # The response code. A value of Success indicates a successful call. If the call fails, a specific error code is returned.
         self.code = code
-        # The list of data catalogs bound to the Agent. All results are returned at once without pagination.
+        # The list of data catalogs bound to the agent, including entries and pagination information.
         self.data = data
-        # The message returned by the operation. The value is Operation success when the call succeeds, or a specific error description when the call fails.
+        # The response message. A value of Operation success is returned if the call succeeds. A specific error description is returned if the call fails.
         self.message = message
-        # The unique identifier of the request, used for troubleshooting and ticket submission.
+        # The unique ID of the request. Use this ID for troubleshooting and when submitting a ticket.
         self.request_id = request_id
-        # Indicates whether the call was successful. A value of true indicates success.
+        # Indicates whether the call is successful. A value of true indicates success.
         self.success = success
 
     def validate(self):
@@ -81,13 +81,13 @@ class ListLumaCatalogsResponseBodyData(DaraModel):
         next_token: str = None,
         total_count: int = None,
     ):
-        # The list of data catalogs bound to the Agent.
+        # The list of data catalogs bound to the agent.
         self.catalogs = catalogs
-        # 本次请求实际生效的每页数量。未传 Limit 时为服务端默认值，超出上限时为收敛后的值
+        # The effective page size for this request. If the Limit parameter is not specified, the server default value is used. If the specified value exceeds the upper limit, the value is adjusted to the maximum allowed value.
         self.limit = limit
-        # 下一页起始Token，传入下次请求的 NextToken 可获取下一页；为空表示已无更多数据
+        # The token for the next page. Pass this value as the NextToken in the next request to retrieve the next page. An empty value indicates that no more data is available.
         self.next_token = next_token
-        # Agent 绑定的数据目录总数，与本页返回条数无关
+        # The total number of data catalogs bound to the agent, regardless of the number of entries returned on the current page.
         self.total_count = total_count
 
     def validate(self):

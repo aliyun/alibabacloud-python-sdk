@@ -11,9 +11,9 @@ class QueryAskLumaLogRequest(DaraModel):
         agent_name: str = None,
         limit: int = None,
     ):
-        # The cursor for pagination. Set this parameter to the messageId of the last entry on the previous page.
+        # The cursor, which is the message ID of the last record on the previous page.
         self.after = after
-        # The agent name. If this parameter is not specified, all agent call logs are queried.
+        # The name of the agent. If this parameter is not specified, all agents are queried.
         self.agent_name = agent_name
         # The number of entries to return. Default value: 20. Maximum value: 50.
         self.limit = limit

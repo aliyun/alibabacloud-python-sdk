@@ -16,7 +16,7 @@ class ListAgentsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The API status code or POP error code. Valid values: Success: The operation was successful.
+        # The API status or POP error code. Valid values: Success: The operation was successful.
         self.code = code
         # The returned data.
         self.data = data
@@ -83,15 +83,15 @@ class ListAgentsResponseBodyData(DaraModel):
     ):
         # The list of agents.
         self.agents = agents
-        # The ID of the first record.
+        # The ID of the first entry.
         self.first_id = first_id
-        # Indicates whether more pages are available. Valid values:
+        # Indicates whether there is a next page. Valid values:
         # 
-        # - true: More pages are available.
+        # - true: There is a next page.
         # 
-        # - false: No more pages are available.
+        # - false: There is no next page.
         self.has_more = has_more
-        # The ID of the last record.
+        # The ID of the last conversation record.
         self.last_id = last_id
 
     def validate(self):

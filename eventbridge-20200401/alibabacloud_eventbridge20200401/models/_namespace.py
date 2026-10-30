@@ -12,15 +12,15 @@ class Namespace(DaraModel):
         name: str = None,
         properties: str = None,
     ):
-        # The name of the data catalog to which the namespace belongs
+        # The name of the data catalog to which the namespace belongs.
         # 
         # This parameter is required.
         self.catalog = catalog
-        # The description information of the namespace
+        # The comment of the namespace.
         self.comment = comment
-        # The unique identifier name of the namespace
+        # The unique identifier name of the namespace.
         self.name = name
-        # The extended properties of the namespace
+        # The extended properties of the namespace.
         self.properties = properties
 
     def validate(self):

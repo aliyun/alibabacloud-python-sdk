@@ -9,7 +9,7 @@ class DeleteConnectionRequest(DaraModel):
         self,
         connection_name: str = None,
     ):
-        # The name of the connection that you want to delete.
+        # The name of the connection to delete.
         # 
         # This parameter is required.
         self.connection_name = connection_name

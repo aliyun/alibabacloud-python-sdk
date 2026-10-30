@@ -18,9 +18,9 @@ class EventCenterQueryEventsShrinkRequest(DaraModel):
         self.body_shrink = body_shrink
         # The name of the event bus.
         self.bus_name = bus_name
-        # The maximum number of results to return. Valid values: 0 to 10,000. The default value is 100.
+        # The maximum number of results to return. Valid values: 0 to 10000. Default value: 100.
         self.max_results = max_results
-        # The token to retrieve the next page of results.
+        # The token used to retrieve the next page of results.
         self.next_token = next_token
 
     def validate(self):

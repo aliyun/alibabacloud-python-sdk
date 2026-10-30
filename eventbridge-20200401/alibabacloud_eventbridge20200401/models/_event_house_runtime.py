@@ -16,21 +16,21 @@ class EventHouseRuntime(DaraModel):
         status: str = None,
         target_cu: int = None,
     ):
-        # The number of CUs that last took effect for the EventHouse Runtime.
+        # The number of CUs last successfully applied to the EventHouse runtime.
         self.cu = cu
-        # The stable error code returned when the creation or specification change operation fails.
+        # The standard error code returned when a creation or specification change fails.
         self.error_code = error_code
-        # The desensitized error message returned when the creation or specification change operation fails.
+        # The masked error message returned when a creation or specification change fails.
         self.error_message = error_message
-        # The name of the EventHouse Runtime. Typically set to default in the initial phase.
+        # The name of the EventHouse runtime. The initial value is typically default.
         self.name = name
         # The progress of the current creation or specification change operation. Valid values: 0 to 100.
         self.progress = progress
         # The current stage of the creation or specification change operation.
         self.stage = stage
-        # The current status of the EventHouse Runtime. RUNNING indicates that the Runtime is ready and can accept queries. Valid values: CREATING, RUNNING, UPDATING, RECOVERING, CLOSED, CREATE_FAILED, and UPDATE_FAILED.
+        # The current status of the EventHouse runtime. RUNNING indicates that the runtime is ready and can process queries. Valid values: CREATING, RUNNING, UPDATING, RECOVERING, CLOSED, CREATE_FAILED, and UPDATE_FAILED.
         self.status = status
-        # The target number of CUs during creation, specification change, or the corresponding failed state. This parameter is not returned when the Runtime is running stably.
+        # The target number of CUs during a creation, specification change, or corresponding failure state. This parameter is not returned when the runtime is stable.
         self.target_cu = target_cu
 
     def validate(self):

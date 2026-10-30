@@ -16,15 +16,15 @@ class ListNamespacesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Response code. 200 indicates success.
+        # The response code. A value of 200 indicates success.
         self.code = code
-        # Response data
+        # The response data.
         self.data = data
-        # Response message
+        # The response message.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Whether the operation succeeded
+        # Indicates whether the operation is successful.
         self.success = success
 
     def validate(self):
@@ -80,11 +80,11 @@ class ListNamespacesResponseBodyData(DaraModel):
         next_token: str = None,
         total: int = None,
     ):
-        # Namespace list
+        # The list of namespaces.
         self.namespaces = namespaces
-        # Next page token
+        # The next page token.
         self.next_token = next_token
-        # Total count
+        # The total number of items.
         self.total = total
 
     def validate(self):

@@ -864,6 +864,124 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_event_streaming_with_options_async(request, runtime)
 
+    def create_knowledge_base_with_options(
+        self,
+        tmp_req: main_models.CreateKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateKnowledgeBaseResponse:
+        tmp_req.validate()
+        request = main_models.CreateKnowledgeBaseShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.chunk_configuration):
+            request.chunk_configuration_shrink = Utils.array_to_string_with_specified_style(tmp_req.chunk_configuration, 'ChunkConfiguration', 'json')
+        if not DaraCore.is_null(tmp_req.metadata_schema):
+            request.metadata_schema_shrink = Utils.array_to_string_with_specified_style(tmp_req.metadata_schema, 'MetadataSchema', 'json')
+        if not DaraCore.is_null(tmp_req.search_configuration):
+            request.search_configuration_shrink = Utils.array_to_string_with_specified_style(tmp_req.search_configuration, 'SearchConfiguration', 'json')
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.chunk_configuration_shrink):
+            query['ChunkConfiguration'] = request.chunk_configuration_shrink
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.embedding_dimension):
+            query['EmbeddingDimension'] = request.embedding_dimension
+        if not DaraCore.is_null(request.embedding_model):
+            query['EmbeddingModel'] = request.embedding_model
+        if not DaraCore.is_null(request.knowledge_base_name):
+            query['KnowledgeBaseName'] = request.knowledge_base_name
+        if not DaraCore.is_null(request.metadata_schema_shrink):
+            query['MetadataSchema'] = request.metadata_schema_shrink
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.search_configuration_shrink):
+            query['SearchConfiguration'] = request.search_configuration_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateKnowledgeBase',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateKnowledgeBaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_knowledge_base_with_options_async(
+        self,
+        tmp_req: main_models.CreateKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateKnowledgeBaseResponse:
+        tmp_req.validate()
+        request = main_models.CreateKnowledgeBaseShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.chunk_configuration):
+            request.chunk_configuration_shrink = Utils.array_to_string_with_specified_style(tmp_req.chunk_configuration, 'ChunkConfiguration', 'json')
+        if not DaraCore.is_null(tmp_req.metadata_schema):
+            request.metadata_schema_shrink = Utils.array_to_string_with_specified_style(tmp_req.metadata_schema, 'MetadataSchema', 'json')
+        if not DaraCore.is_null(tmp_req.search_configuration):
+            request.search_configuration_shrink = Utils.array_to_string_with_specified_style(tmp_req.search_configuration, 'SearchConfiguration', 'json')
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.chunk_configuration_shrink):
+            query['ChunkConfiguration'] = request.chunk_configuration_shrink
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.embedding_dimension):
+            query['EmbeddingDimension'] = request.embedding_dimension
+        if not DaraCore.is_null(request.embedding_model):
+            query['EmbeddingModel'] = request.embedding_model
+        if not DaraCore.is_null(request.knowledge_base_name):
+            query['KnowledgeBaseName'] = request.knowledge_base_name
+        if not DaraCore.is_null(request.metadata_schema_shrink):
+            query['MetadataSchema'] = request.metadata_schema_shrink
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.search_configuration_shrink):
+            query['SearchConfiguration'] = request.search_configuration_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateKnowledgeBase',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateKnowledgeBaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_knowledge_base(
+        self,
+        request: main_models.CreateKnowledgeBaseRequest,
+    ) -> main_models.CreateKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return self.create_knowledge_base_with_options(request, runtime)
+
+    async def create_knowledge_base_async(
+        self,
+        request: main_models.CreateKnowledgeBaseRequest,
+    ) -> main_models.CreateKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return await self.create_knowledge_base_with_options_async(request, runtime)
+
     def create_namespace_with_options(
         self,
         request: main_models.CreateNamespaceRequest,
@@ -1799,6 +1917,84 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteEventStreamingResponse:
         runtime = RuntimeOptions()
         return await self.delete_event_streaming_with_options_async(request, runtime)
+
+    def delete_knowledge_base_with_options(
+        self,
+        request: main_models.DeleteKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteKnowledgeBaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.knowledge_base_name):
+            query['KnowledgeBaseName'] = request.knowledge_base_name
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteKnowledgeBase',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteKnowledgeBaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_knowledge_base_with_options_async(
+        self,
+        request: main_models.DeleteKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteKnowledgeBaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.knowledge_base_name):
+            query['KnowledgeBaseName'] = request.knowledge_base_name
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteKnowledgeBase',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteKnowledgeBaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_knowledge_base(
+        self,
+        request: main_models.DeleteKnowledgeBaseRequest,
+    ) -> main_models.DeleteKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return self.delete_knowledge_base_with_options(request, runtime)
+
+    async def delete_knowledge_base_async(
+        self,
+        request: main_models.DeleteKnowledgeBaseRequest,
+    ) -> main_models.DeleteKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_knowledge_base_with_options_async(request, runtime)
 
     def delete_namespace_with_options(
         self,
@@ -2806,6 +3002,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_catalog_with_options_async(request, runtime)
 
+    def get_chunk_with_options(
+        self,
+        request: main_models.GetChunkRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetChunkResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.chunk_seq):
+            query['ChunkSeq'] = request.chunk_seq
+        if not DaraCore.is_null(request.document_id):
+            query['DocumentId'] = request.document_id
+        if not DaraCore.is_null(request.knowledge_base_name):
+            query['KnowledgeBaseName'] = request.knowledge_base_name
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetChunk',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetChunkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_chunk_with_options_async(
+        self,
+        request: main_models.GetChunkRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetChunkResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.chunk_seq):
+            query['ChunkSeq'] = request.chunk_seq
+        if not DaraCore.is_null(request.document_id):
+            query['DocumentId'] = request.document_id
+        if not DaraCore.is_null(request.knowledge_base_name):
+            query['KnowledgeBaseName'] = request.knowledge_base_name
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetChunk',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetChunkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_chunk(
+        self,
+        request: main_models.GetChunkRequest,
+    ) -> main_models.GetChunkResponse:
+        runtime = RuntimeOptions()
+        return self.get_chunk_with_options(request, runtime)
+
+    async def get_chunk_async(
+        self,
+        request: main_models.GetChunkRequest,
+    ) -> main_models.GetChunkResponse:
+        runtime = RuntimeOptions()
+        return await self.get_chunk_with_options_async(request, runtime)
+
     def get_connection_with_options(
         self,
         request: main_models.GetConnectionRequest,
@@ -2875,6 +3157,174 @@ class Client(OpenApiClient):
     ) -> main_models.GetConnectionResponse:
         runtime = RuntimeOptions()
         return await self.get_connection_with_options_async(request, runtime)
+
+    def get_document_with_options(
+        self,
+        request: main_models.GetDocumentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDocumentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.document_id):
+            query['DocumentId'] = request.document_id
+        if not DaraCore.is_null(request.knowledge_base_name):
+            query['KnowledgeBaseName'] = request.knowledge_base_name
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDocument',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDocumentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_document_with_options_async(
+        self,
+        request: main_models.GetDocumentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDocumentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.document_id):
+            query['DocumentId'] = request.document_id
+        if not DaraCore.is_null(request.knowledge_base_name):
+            query['KnowledgeBaseName'] = request.knowledge_base_name
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDocument',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDocumentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_document(
+        self,
+        request: main_models.GetDocumentRequest,
+    ) -> main_models.GetDocumentResponse:
+        runtime = RuntimeOptions()
+        return self.get_document_with_options(request, runtime)
+
+    async def get_document_async(
+        self,
+        request: main_models.GetDocumentRequest,
+    ) -> main_models.GetDocumentResponse:
+        runtime = RuntimeOptions()
+        return await self.get_document_with_options_async(request, runtime)
+
+    def get_document_download_url_with_options(
+        self,
+        request: main_models.GetDocumentDownloadUrlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDocumentDownloadUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.document_id):
+            query['DocumentId'] = request.document_id
+        if not DaraCore.is_null(request.knowledge_base_name):
+            query['KnowledgeBaseName'] = request.knowledge_base_name
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.network_type):
+            query['NetworkType'] = request.network_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDocumentDownloadUrl',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDocumentDownloadUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_document_download_url_with_options_async(
+        self,
+        request: main_models.GetDocumentDownloadUrlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDocumentDownloadUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.document_id):
+            query['DocumentId'] = request.document_id
+        if not DaraCore.is_null(request.knowledge_base_name):
+            query['KnowledgeBaseName'] = request.knowledge_base_name
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.network_type):
+            query['NetworkType'] = request.network_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDocumentDownloadUrl',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDocumentDownloadUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_document_download_url(
+        self,
+        request: main_models.GetDocumentDownloadUrlRequest,
+    ) -> main_models.GetDocumentDownloadUrlResponse:
+        runtime = RuntimeOptions()
+        return self.get_document_download_url_with_options(request, runtime)
+
+    async def get_document_download_url_async(
+        self,
+        request: main_models.GetDocumentDownloadUrlRequest,
+    ) -> main_models.GetDocumentDownloadUrlResponse:
+        runtime = RuntimeOptions()
+        return await self.get_document_download_url_with_options_async(request, runtime)
 
     def get_event_bus_with_options(
         self,
@@ -3155,6 +3605,84 @@ class Client(OpenApiClient):
     ) -> main_models.GetGenerateAgentDataSemanticsProgressResponse:
         runtime = RuntimeOptions()
         return await self.get_generate_agent_data_semantics_progress_with_options_async(request, runtime)
+
+    def get_knowledge_base_with_options(
+        self,
+        request: main_models.GetKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetKnowledgeBaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.knowledge_base_name):
+            query['KnowledgeBaseName'] = request.knowledge_base_name
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetKnowledgeBase',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetKnowledgeBaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_knowledge_base_with_options_async(
+        self,
+        request: main_models.GetKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetKnowledgeBaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.knowledge_base_name):
+            query['KnowledgeBaseName'] = request.knowledge_base_name
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetKnowledgeBase',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetKnowledgeBaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_knowledge_base(
+        self,
+        request: main_models.GetKnowledgeBaseRequest,
+    ) -> main_models.GetKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return self.get_knowledge_base_with_options(request, runtime)
+
+    async def get_knowledge_base_async(
+        self,
+        request: main_models.GetKnowledgeBaseRequest,
+    ) -> main_models.GetKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return await self.get_knowledge_base_with_options_async(request, runtime)
 
     def get_luma_catalog_with_options(
         self,
@@ -4264,6 +4792,104 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_catalogs_with_options_async(request, runtime)
 
+    def list_chunks_with_options(
+        self,
+        request: main_models.ListChunksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListChunksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.document_id):
+            query['DocumentId'] = request.document_id
+        if not DaraCore.is_null(request.enabled):
+            query['Enabled'] = request.enabled
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.knowledge_base_name):
+            query['KnowledgeBaseName'] = request.knowledge_base_name
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListChunks',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListChunksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_chunks_with_options_async(
+        self,
+        request: main_models.ListChunksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListChunksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.document_id):
+            query['DocumentId'] = request.document_id
+        if not DaraCore.is_null(request.enabled):
+            query['Enabled'] = request.enabled
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.knowledge_base_name):
+            query['KnowledgeBaseName'] = request.knowledge_base_name
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListChunks',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListChunksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_chunks(
+        self,
+        request: main_models.ListChunksRequest,
+    ) -> main_models.ListChunksResponse:
+        runtime = RuntimeOptions()
+        return self.list_chunks_with_options(request, runtime)
+
+    async def list_chunks_async(
+        self,
+        request: main_models.ListChunksRequest,
+    ) -> main_models.ListChunksResponse:
+        runtime = RuntimeOptions()
+        return await self.list_chunks_with_options_async(request, runtime)
+
     def list_connections_with_options(
         self,
         request: main_models.ListConnectionsRequest,
@@ -4349,6 +4975,100 @@ class Client(OpenApiClient):
     ) -> main_models.ListConnectionsResponse:
         runtime = RuntimeOptions()
         return await self.list_connections_with_options_async(request, runtime)
+
+    def list_documents_with_options(
+        self,
+        request: main_models.ListDocumentsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDocumentsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.file_name_prefix):
+            query['FileNamePrefix'] = request.file_name_prefix
+        if not DaraCore.is_null(request.knowledge_base_name):
+            query['KnowledgeBaseName'] = request.knowledge_base_name
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDocuments',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDocumentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_documents_with_options_async(
+        self,
+        request: main_models.ListDocumentsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDocumentsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.file_name_prefix):
+            query['FileNamePrefix'] = request.file_name_prefix
+        if not DaraCore.is_null(request.knowledge_base_name):
+            query['KnowledgeBaseName'] = request.knowledge_base_name
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDocuments',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDocumentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_documents(
+        self,
+        request: main_models.ListDocumentsRequest,
+    ) -> main_models.ListDocumentsResponse:
+        runtime = RuntimeOptions()
+        return self.list_documents_with_options(request, runtime)
+
+    async def list_documents_async(
+        self,
+        request: main_models.ListDocumentsRequest,
+    ) -> main_models.ListDocumentsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_documents_with_options_async(request, runtime)
 
     def list_event_buses_with_options(
         self,
@@ -4591,6 +5311,88 @@ class Client(OpenApiClient):
     ) -> main_models.ListEventStreamingsResponse:
         runtime = RuntimeOptions()
         return await self.list_event_streamings_with_options_async(request, runtime)
+
+    def list_knowledge_bases_with_options(
+        self,
+        request: main_models.ListKnowledgeBasesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListKnowledgeBasesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListKnowledgeBases',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListKnowledgeBasesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_knowledge_bases_with_options_async(
+        self,
+        request: main_models.ListKnowledgeBasesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListKnowledgeBasesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListKnowledgeBases',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListKnowledgeBasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_knowledge_bases(
+        self,
+        request: main_models.ListKnowledgeBasesRequest,
+    ) -> main_models.ListKnowledgeBasesResponse:
+        runtime = RuntimeOptions()
+        return self.list_knowledge_bases_with_options(request, runtime)
+
+    async def list_knowledge_bases_async(
+        self,
+        request: main_models.ListKnowledgeBasesRequest,
+    ) -> main_models.ListKnowledgeBasesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_knowledge_bases_with_options_async(request, runtime)
 
     def list_luma_catalogs_with_options(
         self,
@@ -6490,6 +7292,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.query_traced_events_with_options_async(request, runtime)
 
+    def query_with_sqlwith_options(
+        self,
+        request: main_models.QueryWithSQLRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryWithSQLResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.limit):
+            query['Limit'] = request.limit
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryWithSQL',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryWithSQLResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_with_sqlwith_options_async(
+        self,
+        request: main_models.QueryWithSQLRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryWithSQLResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.limit):
+            query['Limit'] = request.limit
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryWithSQL',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryWithSQLResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_with_sql(
+        self,
+        request: main_models.QueryWithSQLRequest,
+    ) -> main_models.QueryWithSQLResponse:
+        runtime = RuntimeOptions()
+        return self.query_with_sqlwith_options(request, runtime)
+
+    async def query_with_sql_async(
+        self,
+        request: main_models.QueryWithSQLRequest,
+    ) -> main_models.QueryWithSQLResponse:
+        runtime = RuntimeOptions()
+        return await self.query_with_sqlwith_options_async(request, runtime)
+
     def save_agent_data_semantics_with_options(
         self,
         tmp_req: main_models.SaveAgentDataSemanticsRequest,
@@ -6595,6 +7471,120 @@ class Client(OpenApiClient):
     ) -> main_models.SaveAgentDataSemanticsResponse:
         runtime = RuntimeOptions()
         return await self.save_agent_data_semantics_with_options_async(request, runtime)
+
+    def search_knowledge_base_with_options(
+        self,
+        request: main_models.SearchKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchKnowledgeBaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.knowledge_base_name):
+            query['KnowledgeBaseName'] = request.knowledge_base_name
+        if not DaraCore.is_null(request.metadata_filter):
+            query['MetadataFilter'] = request.metadata_filter
+        if not DaraCore.is_null(request.mode):
+            query['Mode'] = request.mode
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.rank_algorithm):
+            query['RankAlgorithm'] = request.rank_algorithm
+        if not DaraCore.is_null(request.rerank):
+            query['Rerank'] = request.rerank
+        if not DaraCore.is_null(request.rerank_model):
+            query['RerankModel'] = request.rerank_model
+        if not DaraCore.is_null(request.rrf_k):
+            query['RrfK'] = request.rrf_k
+        if not DaraCore.is_null(request.top_k):
+            query['TopK'] = request.top_k
+        if not DaraCore.is_null(request.vector_weight):
+            query['VectorWeight'] = request.vector_weight
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchKnowledgeBase',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchKnowledgeBaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_knowledge_base_with_options_async(
+        self,
+        request: main_models.SearchKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchKnowledgeBaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.knowledge_base_name):
+            query['KnowledgeBaseName'] = request.knowledge_base_name
+        if not DaraCore.is_null(request.metadata_filter):
+            query['MetadataFilter'] = request.metadata_filter
+        if not DaraCore.is_null(request.mode):
+            query['Mode'] = request.mode
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.rank_algorithm):
+            query['RankAlgorithm'] = request.rank_algorithm
+        if not DaraCore.is_null(request.rerank):
+            query['Rerank'] = request.rerank
+        if not DaraCore.is_null(request.rerank_model):
+            query['RerankModel'] = request.rerank_model
+        if not DaraCore.is_null(request.rrf_k):
+            query['RrfK'] = request.rrf_k
+        if not DaraCore.is_null(request.top_k):
+            query['TopK'] = request.top_k
+        if not DaraCore.is_null(request.vector_weight):
+            query['VectorWeight'] = request.vector_weight
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchKnowledgeBase',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchKnowledgeBaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_knowledge_base(
+        self,
+        request: main_models.SearchKnowledgeBaseRequest,
+    ) -> main_models.SearchKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return self.search_knowledge_base_with_options(request, runtime)
+
+    async def search_knowledge_base_async(
+        self,
+        request: main_models.SearchKnowledgeBaseRequest,
+    ) -> main_models.SearchKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return await self.search_knowledge_base_with_options_async(request, runtime)
 
     def search_luma_knowledge_base_with_options(
         self,
@@ -7727,6 +8717,108 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateEventStreamingBusinessOptionResponse:
         runtime = RuntimeOptions()
         return await self.update_event_streaming_business_option_with_options_async(request, runtime)
+
+    def update_knowledge_base_with_options(
+        self,
+        tmp_req: main_models.UpdateKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateKnowledgeBaseResponse:
+        tmp_req.validate()
+        request = main_models.UpdateKnowledgeBaseShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.chunk_configuration):
+            request.chunk_configuration_shrink = Utils.array_to_string_with_specified_style(tmp_req.chunk_configuration, 'ChunkConfiguration', 'json')
+        if not DaraCore.is_null(tmp_req.search_configuration):
+            request.search_configuration_shrink = Utils.array_to_string_with_specified_style(tmp_req.search_configuration, 'SearchConfiguration', 'json')
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.chunk_configuration_shrink):
+            query['ChunkConfiguration'] = request.chunk_configuration_shrink
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.knowledge_base_name):
+            query['KnowledgeBaseName'] = request.knowledge_base_name
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.search_configuration_shrink):
+            query['SearchConfiguration'] = request.search_configuration_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateKnowledgeBase',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateKnowledgeBaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_knowledge_base_with_options_async(
+        self,
+        tmp_req: main_models.UpdateKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateKnowledgeBaseResponse:
+        tmp_req.validate()
+        request = main_models.UpdateKnowledgeBaseShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.chunk_configuration):
+            request.chunk_configuration_shrink = Utils.array_to_string_with_specified_style(tmp_req.chunk_configuration, 'ChunkConfiguration', 'json')
+        if not DaraCore.is_null(tmp_req.search_configuration):
+            request.search_configuration_shrink = Utils.array_to_string_with_specified_style(tmp_req.search_configuration, 'SearchConfiguration', 'json')
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.chunk_configuration_shrink):
+            query['ChunkConfiguration'] = request.chunk_configuration_shrink
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.knowledge_base_name):
+            query['KnowledgeBaseName'] = request.knowledge_base_name
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.search_configuration_shrink):
+            query['SearchConfiguration'] = request.search_configuration_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateKnowledgeBase',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateKnowledgeBaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_knowledge_base(
+        self,
+        request: main_models.UpdateKnowledgeBaseRequest,
+    ) -> main_models.UpdateKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return self.update_knowledge_base_with_options(request, runtime)
+
+    async def update_knowledge_base_async(
+        self,
+        request: main_models.UpdateKnowledgeBaseRequest,
+    ) -> main_models.UpdateKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return await self.update_knowledge_base_with_options_async(request, runtime)
 
     def update_namespace_with_options(
         self,

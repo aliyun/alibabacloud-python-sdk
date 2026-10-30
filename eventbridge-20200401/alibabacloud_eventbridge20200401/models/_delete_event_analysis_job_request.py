@@ -10,7 +10,7 @@ class DeleteEventAnalysisJobRequest(DaraModel):
         self,
         source_resource: main_models.DeleteEventAnalysisJobRequestSourceResource = None,
     ):
-        # The identifier of the source resource.
+        # The source resource identifier.
         # 
         # This parameter is required.
         self.source_resource = source_resource
@@ -87,7 +87,7 @@ class DeleteEventAnalysisJobRequestSourceResourceRocketMQ(DaraModel):
         region_id: str = None,
         topic: str = None,
     ):
-        # The instance ID of the RocketMQ instance.
+        # The RocketMQ instance ID.
         self.instance_id = instance_id
         # The type of the RocketMQ instance.
         self.instance_type = instance_type
@@ -141,7 +141,7 @@ class DeleteEventAnalysisJobRequestSourceResourceKafka(DaraModel):
         region_id: str = None,
         topic: str = None,
     ):
-        # The instance ID of the Kafka instance.
+        # The Kafka instance ID.
         self.instance_id = instance_id
         # The region of the Kafka instance.
         self.region_id = region_id

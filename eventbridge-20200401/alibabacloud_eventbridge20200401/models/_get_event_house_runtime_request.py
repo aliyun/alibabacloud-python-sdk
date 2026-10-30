@@ -9,7 +9,7 @@ class GetEventHouseRuntimeRequest(DaraModel):
         self,
         name: str = None,
     ):
-        # The name of the EventHouse Runtime. If this parameter is not specified, the default Runtime is queried.
+        # The name of the EventHouse runtime. If this parameter is not specified, the default runtime is queried.
         self.name = name
 
     def validate(self):

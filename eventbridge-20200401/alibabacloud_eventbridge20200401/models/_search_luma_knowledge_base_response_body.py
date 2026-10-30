@@ -16,15 +16,15 @@ class SearchLumaKnowledgeBaseResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. A value of Success indicates a successful call. If the call fails, a specific error code is returned.
+        # The response code. The value is Success if the call is successful, or a specific error code if the call fails.
         self.code = code
-        # The retrieval result from the knowledge base bound to the Agent.
+        # The search results from the knowledge base bound to the agent.
         self.data = data
-        # The message returned by the operation. The value is Operation success if the call succeeds, or a specific error description if the call fails.
+        # The response message. The value is Operation success if the call is successful, or a specific error description if the call fails.
         self.message = message
-        # The unique identifier of the request, used for troubleshooting and ticket feedback.
+        # The unique identifier of the request. You can use this ID for troubleshooting and submitting tickets.
         self.request_id = request_id
-        # Indicates whether the call was successful. A value of true indicates success.
+        # Indicates whether the call is successful. A value of true indicates that the call is successful.
         self.success = success
 
     def validate(self):
@@ -79,9 +79,9 @@ class SearchLumaKnowledgeBaseResponseBodyData(DaraModel):
         chunks: List[main_models.KnowledgeBaseSearchChunk] = None,
         time_spent: int = None,
     ):
-        # The list of matched text chunks, sorted by relevance.
+        # The list of text chunks matched by the search, sorted by relevance.
         self.chunks = chunks
-        # The time spent on the retrieval, in milliseconds.
+        # The duration of the search, in milliseconds.
         self.time_spent = time_spent
 
     def validate(self):

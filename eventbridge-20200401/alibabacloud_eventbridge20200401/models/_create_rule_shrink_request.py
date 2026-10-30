@@ -14,15 +14,18 @@ class CreateRuleShrinkRequest(DaraModel):
         rule_name: str = None,
         status: str = None,
     ):
-        # The description of the event rule.
+        # The description of the event bus.
         self.description = description
         # The name of the event bus.
         # 
         # This parameter is required.
         self.event_bus_name = event_bus_name
-        # A list of event targets.
+        # The list of event targets.
         self.event_targets_shrink = event_targets_shrink
-        # The event pattern, in JSON format. Supported pattern types are `stringEqual` and `stringExpression`. Each field can contain a maximum of five expressions in a map structure.
+        # The event pattern in JSON format. The following patterns are supported:
+        # - stringEqual pattern
+        # - stringExpression pattern
+        # Each field supports up to five expressions in a map structure.
         # 
         # This parameter is required.
         self.filter_pattern = filter_pattern
@@ -30,7 +33,9 @@ class CreateRuleShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.rule_name = rule_name
-        # The status of the event rule. Valid values: `ENABLE`: The rule is enabled. This is the default value. `DISABLE`: The rule is disabled.
+        # The status of the rule. Valid values:
+        # - ENABLE: The rule is enabled. This is the default status.
+        # - DISABLE: The rule is disabled.
         self.status = status
 
     def validate(self):

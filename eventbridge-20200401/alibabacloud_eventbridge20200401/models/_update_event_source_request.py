@@ -27,7 +27,7 @@ class UpdateEventSourceRequest(DaraModel):
     ):
         # The description of the event source.
         self.description = description
-        # The event bus with which the event source is associated.
+        # The name of the associated event bus.
         # 
         # This parameter is required.
         self.event_bus_name = event_bus_name
@@ -35,26 +35,27 @@ class UpdateEventSourceRequest(DaraModel):
         # 
         # This parameter is required.
         self.event_source_name = event_source_name
-        # The configurations of the external data source.
+        # The external data source configuration.
         self.external_source_config = external_source_config
         # The type of the external data source.
         self.external_source_type = external_source_type
         # Specifies whether to connect to an external data source.
         self.linked_external_source = linked_external_source
-        # The parameters that are configured if the event source is HTTP events.
+        # The SourceHttpEventParameters request parameter.
         self.source_http_event_parameters = source_http_event_parameters
-        # The parameters that are configured if the event source is Message Queue for Apache Kafka.
+        # The SourceKafkaParameters request parameter.
         self.source_kafka_parameters = source_kafka_parameters
-        # The parameters that are configured if the event source is Message Service (MNS).
+        # The parameters for a Simple Message Queue (formerly MNS) event source.
         self.source_mnsparameters = source_mnsparameters
+        # The parameters for an OSS event source.
         self.source_ossevent_parameters = source_ossevent_parameters
-        # The parameters that are configured if the event source is Message Queue for RabbitMQ.
+        # The SourceRabbitMQParameters request parameter.
         self.source_rabbit_mqparameters = source_rabbit_mqparameters
-        # The parameters that are configured if the event source is Message Queue for Apache RocketMQ.
+        # The SourceRocketMQParameters request parameter.
         self.source_rocket_mqparameters = source_rocket_mqparameters
-        # SourceSLSParameters
+        # The parameters for a Simple Log Service event source.
         self.source_slsparameters = source_slsparameters
-        # The parameters that are configured if you specify scheduled events as the event source.
+        # The SourceScheduledEventParameters request parameter.
         self.source_scheduled_event_parameters = source_scheduled_event_parameters
 
     def validate(self):
@@ -187,9 +188,9 @@ class UpdateEventSourceRequestSourceScheduledEventParameters(DaraModel):
     ):
         # The cron expression.
         self.schedule = schedule
-        # The time zone in which the cron expression is executed.
+        # The time zone for the cron expression.
         self.time_zone = time_zone
-        # The user data that is displayed in a JSON string.
+        # The JSON string.
         self.user_data = user_data
 
     def validate(self):
@@ -232,13 +233,13 @@ class UpdateEventSourceRequestSourceSLSParameters(DaraModel):
         project: str = None,
         role_name: str = None,
     ):
-        # The starting consumer offset. The value begin indicates the earliest offset, and the value end indicates the latest offset. You can also specify a time in seconds to start consumption.
+        # The start consumption offset. You can set this parameter to begin to consume from the earliest offset, end to consume from the latest offset, or a specific timestamp in seconds to consume from a specified point in time.
         self.consume_position = consume_position
-        # The Log Service Logstore.
+        # The Simple Log Service Logstore.
         self.log_store = log_store
-        # The Log Service project.
+        # The Simple Log Service project.
         self.project = project
-        # The role name. If you want to authorize EventBridge to use this role to read logs in Log Service, you must select Alibaba Cloud Service for Selected Trusted Entity and EventBridge for Select Trusted Service when you create the role in the RAM console. For information about the permission policy of this role, see Create a custom event source of the Log Service type.
+        # When authorizing EventBridge to use this role to read Simple Log Service log content, the following conditions must be met: when creating the role in the Resource Access Management (RAM) console, you must select Alibaba Cloud Service, and select EventBridge as the trusted service. For the permission policy of this role, refer to the custom event source Simple Log Service.
         self.role_name = role_name
 
     def validate(self):
@@ -299,46 +300,43 @@ class UpdateEventSourceRequestSourceRocketMQParameters(DaraModel):
         timestamp: int = None,
         topic: str = None,
     ):
-        # The authentication type. You can set this parameter to ACL or leave this parameter empty.
+        # The authentication type. Set the value to ACL or leave it empty.
         self.auth_type = auth_type
-        # The ID of the consumer group on the Message Queue for Apache RocketMQ instance.
+        # The group ID of the ApsaraMQ for RocketMQ instance.
         self.group_id = group_id
-        # The endpoint that is used to access the Message Queue for Apache RocketMQ instance.
+        # The endpoint of the instance.
         self.instance_endpoint = instance_endpoint
-        # The ID of the Message Queue for Apache RocketMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
+        # The instance ID of the ApsaraMQ for RocketMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
         self.instance_id = instance_id
-        # None.
+        # The network type.
         self.instance_network = instance_network
-        # The password that is used to access the Message Queue for Apache RocketMQ instance.
+        # The password of the instance.
         self.instance_password = instance_password
-        # The ID of the security group to which the Message Queue for Apache RocketMQ instance belongs.
+        # The ID of the security group. This parameter is required for VPCs.
         self.instance_security_group_id = instance_security_group_id
-        # The type of the Message Queue for Apache RocketMQ instance. Valid values:
-        # 
-        # *   Cloud_4: Message Queue for Apache RocketMQ 4.0 instance.
-        # *   Cloud_5: Message Queue for Apache RocketMQ 5.0 instance.
+        # The instance type. Valid values:
+        # - Cloud_4: 4.0 instance.
+        # - Cloud_5: 5.0 instance.
         self.instance_type = instance_type
-        # The username that is used to access the Message Queue for Apache RocketMQ instance.
+        # The username of the instance.
         self.instance_username = instance_username
-        # The ID of the vSwitch with which the Message Queue for Apache RocketMQ instance is associated.
+        # The ID of the vSwitch. This parameter is required for VPCs.
         self.instance_vswitch_ids = instance_vswitch_ids
-        # The ID of the virtual private cloud (VPC) in which the Message Queue for Apache RocketMQ instance resides.
+        # The ID of the VPC. This parameter is required for VPCs.
         self.instance_vpc_id = instance_vpc_id
-        # The offset from which message consumption starts. Valid values:
-        # 
-        # *   CONSUME_FROM_LAST_OFFSET: Start message consumption from the latest offset.
-        # *   CONSUME_FROM_FIRST_OFFSET: Start message consumption from the earliest offset.
-        # *   CONSUME_FROM_TIMESTAMP: Start message consumption from the offset at the specified point in time.
-        # 
+        # The consumption offset of the message. Valid values:
+        # - CONSUME_FROM_LAST_OFFSET: Consumes messages from the latest offset.
+        # - CONSUME_FROM_FIRST_OFFSET: Consumes messages from the earliest offset.
+        # - CONSUME_FROM_TIMESTAMP: Consumes messages from the offset at a specified point in time.
         # Default value: CONSUME_FROM_LAST_OFFSET.
         self.offset = offset
-        # The region where the Message Queue for Apache RocketMQ instance resides.
+        # The region where the ApsaraMQ for RocketMQ instance resides.
         self.region_id = region_id
-        # The tag that is used to filter messages.
+        # The filter tag of the message.
         self.tag = tag
-        # The timestamp that specifies the time from which messages are consumed. This parameter is valid only if you set Offset to CONSUME_FROM_TIMESTAMP.
+        # The timestamp. This parameter takes effect only when the Offset parameter is set to CONSUME_FROM_TIMESTAMP.
         self.timestamp = timestamp
-        # The name of the topic on the Message Queue for Apache RocketMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
+        # The topic name of the ApsaraMQ for RocketMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
         self.topic = topic
 
     def validate(self):
@@ -459,13 +457,13 @@ class UpdateEventSourceRequestSourceRabbitMQParameters(DaraModel):
         region_id: str = None,
         virtual_host_name: str = None,
     ):
-        # The ID of the Message Queue for RabbitMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
+        # The instance ID of the ApsaraMQ for RabbitMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
         self.instance_id = instance_id
-        # The name of the queue on the Message Queue for RabbitMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
+        # eb-connect: The name of the queue in the ApsaraMQ for RabbitMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
         self.queue_name = queue_name
-        # The ID of the region where the Message Queue for RabbitMQ instance resides.
+        # The region where the ApsaraMQ for RabbitMQ instance resides.
         self.region_id = region_id
-        # The name of the vhost of the Message Queue for RabbitMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
+        # The vhost name of the ApsaraMQ for RabbitMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
         self.virtual_host_name = virtual_host_name
 
     def validate(self):
@@ -513,8 +511,11 @@ class UpdateEventSourceRequestSourceOSSEventParameters(DaraModel):
         match_rules: List[List[main_models.UpdateEventSourceRequestSourceOSSEventParametersMatchRules]] = None,
         sts_role_arn: str = None,
     ):
+        # The list of event types.
         self.event_types = event_types
+        # The matching rules.
         self.match_rules = match_rules
+        # The ARN of the STS role.
         self.sts_role_arn = sts_role_arn
 
     def validate(self):
@@ -572,9 +573,13 @@ class UpdateEventSourceRequestSourceOSSEventParametersMatchRules(DaraModel):
         prefix: str = None,
         name: str = None,
     ):
+        # The suffix.
         self.suffix = suffix
+        # The match state.
         self.match_state = match_state
+        # The prefix.
         self.prefix = prefix
+        # The name.
         self.name = name
 
     def validate(self):
@@ -622,11 +627,11 @@ class UpdateEventSourceRequestSourceMNSParameters(DaraModel):
         queue_name: str = None,
         region_id: str = None,
     ):
-        # Indicates whether Base64 decoding is enabled. By default, Base64 decoding is enabled.
+        # Specifies whether to enable Base64 decoding. Default value: true.
         self.is_base_64decode = is_base_64decode
-        # The name of the MNS queue.
+        # The name of the Simple Message Queue (formerly MNS) queue.
         self.queue_name = queue_name
-        # The region where the MNS queue resides.
+        # The region where the Simple Message Queue (formerly MNS) queue resides.
         self.region_id = region_id
 
     def validate(self):
@@ -675,25 +680,25 @@ class UpdateEventSourceRequestSourceKafkaParameters(DaraModel):
         v_switch_ids: str = None,
         vpc_id: str = None,
     ):
-        # The ID of the consumer group that subscribes to the topic.
+        # The group ID of the consumer that subscribes to the topic.
         self.consumer_group = consumer_group
-        # The ID of the Message Queue for Apache Kafka instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The maximum number of consumers.
+        # The concurrency quota, which is the number of consumers.
         self.maximum_tasks = maximum_tasks
-        # The network. Valid values: Default and PublicNetwork. Default value: Default. The value PublicNetwork indicates a self-managed network.
+        # The network configuration. Valid values: Default and PublicNetwork.
         self.network = network
-        # The consumer offset.
+        # The consumption offset.
         self.offset_reset = offset_reset
-        # The ID of the region where the Message Queue for Apache Kafka instance resides.
+        # The region ID.
         self.region_id = region_id
-        # The ID of the security group to which the Message Queue for Apache Kafka instance belongs. This parameter is required only if you set Network to PublicNetwork.
+        # The ID of the security group. This parameter is required for self-managed networks.
         self.security_group_id = security_group_id
-        # The name of the topic on the Message Queue for Apache Kafka instance.
+        # The name of the topic.
         self.topic = topic
-        # The ID of the vSwitch with which the Message Queue for Apache Kafka instance is associated. This parameter is required only if you set Network to PublicNetwork.
+        # The ID of the vSwitch. This parameter is required for self-managed networks.
         self.v_switch_ids = v_switch_ids
-        # The ID of the VPC in which the Message Queue for Apache Kafka instance resides. This parameter is required only if you set Network to PublicNetwork.
+        # The ID of the VPC. This parameter is required for self-managed networks.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -779,33 +784,30 @@ class UpdateEventSourceRequestSourceHttpEventParameters(DaraModel):
         security_config: str = None,
         type: str = None,
     ):
-        # The CIDR block that is used for security settings. This parameter is required only if SecurityConfig is set to ip. You can enter a CIDR block or an IP address.
+        # The CIDR block for security configuration. This parameter is required only when the SecurityConfig parameter is set to ip. You can enter a CIDR block or an IP address.
         self.ip = ip
-        # The HTTP request method supported by the generated webhook URL. You can select multiple values. Valid values:
-        # 
-        # *   GET
-        # *   POST
-        # *   PUT
-        # *   PATCH
-        # *   DELETE
-        # *   HEAD
-        # *   OPTIONS
-        # *   TRACE
-        # *   CONNECT
+        # The HTTP request methods supported by the generated webhook. You can select multiple values. Valid values:
+        # - GET
+        # - POST
+        # - PUT
+        # - PATCH
+        # - DELETE
+        # - HEAD
+        # - OPTIONS
+        # - TRACE
+        # - CONNECT
         self.method = method
-        # The security domain name. This parameter is required only if SecurityConfig is set to referer. You can enter a domain name.
+        # The secure domain name for security configuration. This parameter is required only when the SecurityConfig parameter is set to referer. You can enter a domain name.
         self.referer = referer
-        # The type of security settings. Valid values:
-        # 
-        # *   none: No configuration is required.
-        # *   ip: CIDR block.
-        # *   referer: security domain name.
+        # The type of the security configuration. Valid values:
+        # - none: No configuration is required.
+        # - ip: CIDR block.
+        # - referer: Secure domain name.
         self.security_config = security_config
-        # The protocol type that is supported by the generated webhook URL. Valid values:
-        # 
-        # *   HTTP
-        # *   HTTPS
-        # *   HTTP\\&HTTPS
+        # The protocol type supported by the generated webhook. Valid values:
+        # - HTTP
+        # - HTTPS
+        # - HTTP&HTTPS
         self.type = type
 
     def validate(self):

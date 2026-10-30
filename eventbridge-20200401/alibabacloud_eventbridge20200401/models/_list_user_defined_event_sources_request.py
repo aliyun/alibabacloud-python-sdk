@@ -14,11 +14,11 @@ class ListUserDefinedEventSourcesRequest(DaraModel):
     ):
         # The name of the event bus.
         self.event_bus_name = event_bus_name
-        # The maximum number of entries to return per request. You can use this parameter with NextToken for pagination. The maximum value is 100.
+        # The maximum number of entries to return per request. You can use this parameter with NextToken to paginate results. The maximum value is 100.
         self.limit = limit
         # The prefix of the event source name.
         self.name_prefix = name_prefix
-        # The token used to retrieve the next page of results. Set this parameter to the NextToken value returned from a previous call.
+        # The token returned when Limit is specified and additional results are available.
         self.next_token = next_token
 
     def validate(self):

@@ -11,11 +11,11 @@ class ListNamespacesRequest(DaraModel):
         limit: int = None,
         next_token: str = None,
     ):
-        # Data catalog
+        # The data catalog.
         self.catalog = catalog
-        # Items per page
+        # The number of items per page.
         self.limit = limit
-        # Pagination Token
+        # The pagination token.
         self.next_token = next_token
 
     def validate(self):

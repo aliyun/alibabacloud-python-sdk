@@ -16,15 +16,15 @@ class EventCenterQueryEventsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status of the API call, which can be Success or a POP error code.
+        # The API status or POP error code. Valid values: Success: Successful.
         self.code = code
-        # The returned data.
+        # The returned result.
         self.data = data
         # The error message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the call was successful. `true` indicates success, and `false` indicates failure.
+        # Indicates whether the operation is successful. Valid values: true: Successful. false: Failed.
         self.success = success
 
     def validate(self):
@@ -82,15 +82,15 @@ class EventCenterQueryEventsResponseBodyData(DaraModel):
         time_series: List[main_models.EventCenterQueryEventsResponseBodyDataTimeSeries] = None,
         total_count: int = None,
     ):
-        # The maximum number of entries to return.
+        # The maximum number of records returned for the current request.
         self.max_results = max_results
-        # The token used to retrieve the next page of results. If this parameter is empty, all results have been returned.
+        # The token that indicates the read position returned by the current call. An empty value indicates that all data has been read.
         self.next_token = next_token
-        # The query results for the `table` query type.
+        # The query results for the table query type.
         self.table = table
-        # The query results for the `time series` query type.
+        # The query results for the timeseries query type.
         self.time_series = time_series
-        # The total number of entries that meet the filter conditions. This parameter is optional and is not returned by default.
+        # The total number of data entries that meet the request conditions. This parameter is optional and is not returned by default.
         self.total_count = total_count
 
     def validate(self):
@@ -160,9 +160,9 @@ class EventCenterQueryEventsResponseBodyDataTimeSeries(DaraModel):
         row_data: Dict[str, Any] = None,
         time: str = None,
     ):
-        # A query result entry, represented as a key-value pair.
+        # The entries in the query results, represented as key-value pairs.
         self.row_data = row_data
-        # The timestamp.
+        # The timestamp used for display.
         self.time = time
 
     def validate(self):
@@ -196,7 +196,7 @@ class EventCenterQueryEventsResponseBodyDataTable(DaraModel):
         self,
         row_data: Dict[str, Any] = None,
     ):
-        # A query result entry, represented as a key-value pair.
+        # The entries in the query results, represented as key-value pairs.
         self.row_data = row_data
 
     def validate(self):

@@ -21,17 +21,29 @@ class SinkOSSParameters(DaraModel):
         task_concurrency: str = None,
         time_zone: str = None,
     ):
+        # The name of the OSS bucket used to store event data.
         self.bucket_name = bucket_name
+        # The compression type of the delivered files.
         self.compression_type = compression_type
+        # The event content transformation configuration before delivery to OSS.
         self.content_transform = content_transform
+        # The endpoint of the destination OSS service.
         self.endpoint = endpoint
+        # The storage path for event data in the OSS bucket.
         self.path_format = path_format
+        # The region ID of the destination OSS service.
         self.region_id = region_id
+        # The ARN of the RAM role used to deliver data to OSS.
         self.role_arn = role_arn
+        # The time window for batch aggregation of event data.
         self.rotate_interval_ms = rotate_interval_ms
+        # The file size threshold for batch aggregation.
         self.rotate_size_bytes = rotate_size_bytes
+        # Specifies whether SSL is enabled.
         self.sslenabled = sslenabled
+        # The number of concurrent delivery tasks.
         self.task_concurrency = task_concurrency
+        # The time zone used for time variables in the storage path.
         self.time_zone = time_zone
 
     def validate(self):
@@ -129,8 +141,11 @@ class SinkOSSParametersContentTransform(DaraModel):
         template: str = None,
         value: str = None,
     ):
+        # The transformation method for the delivered content.
         self.form = form
+        # The template string used to format parameter values. This parameter is used only when Form is set to TEMPLATE.
         self.template = template
+        # The value expression used to generate the delivered content.
         self.value = value
 
     def validate(self):

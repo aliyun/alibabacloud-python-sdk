@@ -14,19 +14,19 @@ class QueryAskLumaLogResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. Valid values:
+        # The return code of the API operation:
         # 
-        # 200: The request was successful.    
+        # 200: The call is successful.    
         # 
-        # Other values: An error occurred. For more information, see error codes.
+        # Other values: An error code. For more information, see Error codes.
         self.code = code
         # The returned result.
         self.data = data
         # The error message.
         self.message = message
-        # The unique identifier that Alibaba Cloud generates for the request.
+        # The ID of the request.
         self.request_id = request_id
-        # Returns true if the operation is successful.
+        # Indicates whether the operation is successful.
         self.success = success
 
     def validate(self):

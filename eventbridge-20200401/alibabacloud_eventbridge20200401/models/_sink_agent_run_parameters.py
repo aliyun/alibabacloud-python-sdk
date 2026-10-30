@@ -14,10 +14,15 @@ class SinkAgentRunParameters(DaraModel):
         role_name: str = None,
         timeout: str = None,
     ):
+        # The name of the AgentRun agent runtime. You can obtain it from the Alibaba Cloud AgentRun console.
         self.agent_runtime_name = agent_runtime_name
+        # The triplet configuration for the Body parameter template. It defines the data transformation method and supports two modes: ORIGINAL (pass-through) and TEMPLATE (template replacement).
         self.body = body
+        # The endpoint name of the AgentRun agent runtime, which is used to construct the invocation URL.
         self.endpoint_name = endpoint_name
+        # The name of the AgentRun agent role.
         self.role_name = role_name
+        # The HTTP request timeout period in milliseconds. Default value: 30000.
         self.timeout = timeout
 
     def validate(self):
@@ -73,8 +78,11 @@ class SinkAgentRunParametersBody(DaraModel):
         template: str = None,
         value: str = None,
     ):
+        # The transformation format. Default value: CONSTANT. Valid values: ORIGINAL, TEMPLATE. Example: `ORIGINAL`.
         self.form = form
+        # The template pattern. This parameter is required only when Form is set to TEMPLATE. It supports ${variable} placeholder replacement. Example: `The value of ${key} is ${value}!`.
         self.template = template
+        # The parameter value. In ORIGINAL mode, the value is $. In TEMPLATE mode, the value is a key-value mapping in JSON format, where the value is a JSONPath expression or a constant. Example: `$`.
         self.value = value
 
     def validate(self):

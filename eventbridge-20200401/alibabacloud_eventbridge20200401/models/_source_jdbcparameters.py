@@ -25,33 +25,33 @@ class SourceJDBCParameters(DaraModel):
     ):
         # The maximum number of rows returned per query. Default value: 1000. Maximum value: 10000.
         self.batch_size = batch_size
-        # The custom SQL query statement (advanced mode). This parameter is mutually exclusive with TableName.
+        # The custom SQL query statement for advanced mode. This parameter is mutually exclusive with TableName.
         self.custom_query = custom_query
-        # The incrementing column name. Required when QueryMode is set to `incrementing` or `timestamp_incrementing`.
+        # The name of the auto-increment column. This parameter is required when QueryMode is set to `incrementing` or `timestamp_incrementing`.
         self.incrementing_column = incrementing_column
-        # The JDBC connection URL. ClickHouse example: `jdbc:clickhouse://host:8123/database`; MySQL example: `jdbc:mysql://host:3306/database`. The system automatically identifies the database type.
+        # The JDBC connection URL. ClickHouse example: `jdbc:clickhouse://host:8123/database`. MySQL example: `jdbc:mysql://host:3306/database`. The system automatically identifies the database type.
         self.jdbc_url = jdbc_url
-        # The network type. Valid values: `PublicNetwork` (public network); `PrivateNetwork` (VPC private network, requires VpcId, VSwitchIds, and SecurityGroupId to be configured).
+        # The network type. Valid values: `PublicNetwork` (public network) and `PrivateNetwork` (VPC private network, which requires VpcId, VSwitchIds, and SecurityGroupId to be configured).
         self.network = network
         # The database password.
         self.password = password
-        # The polling interval, in seconds. Minimum value: 10. Default value: 60.
+        # The polling interval in seconds. Minimum value: 10. Default value: 60.
         self.polling_interval = polling_interval
-        # The query mode. Valid values: `bulk` (full query); `incrementing` (incrementing column tracking); `timestamp` (timestamp tracking); `timestamp_incrementing` (timestamp and incrementing column dual tracking).
+        # The query mode. Valid values: `bulk` (full query), `incrementing` (auto-increment column tracking), `timestamp` (timestamp tracking), and `timestamp_incrementing` (dual tracking by timestamp and auto-increment column).
         self.query_mode = query_mode
-        # The SQL query timeout period, in seconds. Default value: 30. Maximum value: 300.
+        # The SQL query timeout in seconds. Default value: 30. Maximum value: 300.
         self.query_timeout = query_timeout
-        # The security group ID. Required when Network is set to PrivateNetwork.
+        # The security group ID. This parameter is required when Network is set to PrivateNetwork.
         self.security_group_id = security_group_id
-        # The target table name. This parameter is mutually exclusive with CustomQuery. Required when custom SQL is not used.
+        # The name of the target table. This parameter is mutually exclusive with CustomQuery and is required when custom SQL is not used.
         self.table_name = table_name
-        # The timestamp column name. Required when QueryMode is set to `timestamp` or `timestamp_incrementing`.
+        # The name of the timestamp column. This parameter is required when QueryMode is set to `timestamp` or `timestamp_incrementing`.
         self.timestamp_column = timestamp_column
         # The database username.
         self.username = username
-        # The vSwitch ID. Required when Network is set to PrivateNetwork.
+        # The vSwitch IDs. This parameter is required when Network is set to PrivateNetwork.
         self.v_switch_ids = v_switch_ids
-        # The VPC ID. Required when Network is set to PrivateNetwork.
+        # The VPC ID. This parameter is required when Network is set to PrivateNetwork.
         self.vpc_id = vpc_id
 
     def validate(self):

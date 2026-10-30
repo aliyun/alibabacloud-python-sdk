@@ -17,13 +17,21 @@ class SinkHttpsParameters(DaraModel):
         v_switch_ids: str = None,
         vpc_id: str = None,
     ):
+        # HTTP Body
         self.body = body
+        # The HTTP method.
         self.method = method
+        # The network type, PrivateNetwork/PublicNetwork.
         self.network_type = network_type
+        # The security group.
         self.security_group_id = security_group_id
+        # HTTP Token
         self.token = token
+        # The HTTP/HTTPS address.
         self.url = url
+        # The vSwitch IDs.
         self.v_switch_ids = v_switch_ids
+        # vpc ID
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -100,8 +108,11 @@ class SinkHttpsParametersURL(DaraModel):
         template: str = None,
         value: str = None,
     ):
+        # Form
         self.form = form
+        # Template
         self.template = template
+        # Value
         self.value = value
 
     def validate(self):
@@ -143,8 +154,11 @@ class SinkHttpsParametersBody(DaraModel):
         template: str = None,
         value: str = None,
     ):
+        # Form
         self.form = form
+        # Template
         self.template = template
+        # Value
         self.value = value
 
     def validate(self):

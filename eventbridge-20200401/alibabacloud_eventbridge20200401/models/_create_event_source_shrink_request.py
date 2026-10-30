@@ -32,27 +32,27 @@ class CreateEventSourceShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.event_source_name = event_source_name
-        # The configuration of the external data source.
+        # The external data source configuration.
         self.external_source_config_shrink = external_source_config_shrink
         # The type of the external data source.
         self.external_source_type = external_source_type
         # Specifies whether to connect to an external data source.
         self.linked_external_source = linked_external_source
-        # Parameters for an HTTP endpoint event source.
+        # The request parameter SourceHttpEventParameters.
         self.source_http_event_parameters_shrink = source_http_event_parameters_shrink
-        # Parameters for the Message Queue for Apache Kafka event source.
+        # The request parameter SourceKafkaParameters.
         self.source_kafka_parameters_shrink = source_kafka_parameters_shrink
-        # Parameters for the Message Service (MNS) event source. The `RegionId`, `IsBase64Decode`, and `QueueName` parameters are required for this type.
+        # The parameters for a Simple Message Queue (formerly MNS) event source. If you select Simple Message Queue (formerly MNS) as the event source, the RegionId, IsBase64Decode, and QueueName parameters are required.
         self.source_mnsparameters_shrink = source_mnsparameters_shrink
-        # Parameters for the Object Storage Service (OSS) event source.
+        # The parameters for an OSS event source.
         self.source_ossevent_parameters_shrink = source_ossevent_parameters_shrink
-        # Parameters for the Message Queue for RabbitMQ event source.
+        # The request parameter SourceRabbitMQParameters.
         self.source_rabbit_mqparameters_shrink = source_rabbit_mqparameters_shrink
-        # Parameters for the Message Queue for Apache RocketMQ event source.
+        # The request parameter SourceRocketMQParameters.
         self.source_rocket_mqparameters_shrink = source_rocket_mqparameters_shrink
-        # Parameters for the Simple Log Service (SLS) event source.
+        # The parameters for a Simple Log Service event source.
         self.source_slsparameters_shrink = source_slsparameters_shrink
-        # Parameters for a scheduled event source.
+        # The request parameter SourceScheduledEventParameters.
         self.source_scheduled_event_parameters_shrink = source_scheduled_event_parameters_shrink
 
     def validate(self):

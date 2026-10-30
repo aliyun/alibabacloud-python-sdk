@@ -14,15 +14,15 @@ class SinkApiDestinationParameters(DaraModel):
         query_string_parameters: main_models.SinkApiDestinationParametersQueryStringParameters = None,
         timeout: int = None,
     ):
-        # The parameters for the HTTP request body, specified as key-value pairs.
+        # The HTTP body parameters.
         self.body_parameters = body_parameters
-        # The custom HTTP header parameters to add to the request, specified as key-value pairs.
+        # The HTTP header parameters.
         self.header_parameters = header_parameters
         # The name of the API destination.
         self.name = name
-        # The query string parameters to add to the endpoint URL, specified as key-value pairs.
+        # The HTTP query parameters.
         self.query_string_parameters = query_string_parameters
-        # The timeout for the API call, in seconds. If the endpoint does not respond within this period, the call fails. The valid range is 1 to 60.
+        # The timeout period for the API call, in seconds. Valid values: 1 to 60. If the destination does not respond within this period, the call fails.
         self.timeout = timeout
 
     def validate(self):
@@ -84,11 +84,11 @@ class SinkApiDestinationParametersQueryStringParameters(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # Defines how the parameter\\"s value is created. Use `CONSTANT` to specify a static string in the `value` field. Use `JSONPATH` to extract data from the event payload with a JSONPath expression in the `value` field. Use `TEMPLATE` to build the value from the `template` field.
+        # Form
         self.form = form
-        # The template to use to build the parameter value. This field is used only when the `form` is set to `TEMPLATE`. You can use variables, such as `${event.id}`, in the template to reference event data.
+        # The template used to construct the parameter value. This parameter is used only when Form is set to TEMPLATE. You can use variables such as ${event.id} to reference event data.
         self.template = template
-        # The static value or JSONPath expression for the parameter. This field applies only when the `form` is set to `CONSTANT` or `JSONPATH`.
+        # Value
         self.value = value
 
     def validate(self):
@@ -130,11 +130,11 @@ class SinkApiDestinationParametersHeaderParameters(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # Defines how the parameter\\"s value is created. Use `CONSTANT` to specify a static string in the `value` field. Use `JSONPATH` to extract data from the event payload with a JSONPath expression in the `value` field. Use `TEMPLATE` to build the value from the `template` field.
+        # Form
         self.form = form
-        # The template to use to build the parameter value. This field is used only when the `form` is set to `TEMPLATE`. You can use variables, such as `${event.id}`, in the template to reference event data.
+        # Template
         self.template = template
-        # The static value or JSONPath expression for the parameter. This field applies only when the `form` is set to `CONSTANT` or `JSONPATH`.
+        # Value
         self.value = value
 
     def validate(self):
@@ -176,11 +176,11 @@ class SinkApiDestinationParametersBodyParameters(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # Defines how the parameter\\"s value is created. Use `CONSTANT` to specify a static string in the `value` field. Use `JSONPATH` to extract data from the event payload with a JSONPath expression in the `value` field. Use `TEMPLATE` to build the value from the `template` field.
+        # Form
         self.form = form
-        # The template to use to build the parameter value. This field is used only when the `form` is set to `TEMPLATE`. You can use variables, such as `${event.id}`, in the template to reference event data.
+        # Template
         self.template = template
-        # The static value or JSONPath expression for the parameter. This field applies only when the `form` is set to `CONSTANT` or `JSONPATH`.
+        # Value
         self.value = value
 
     def validate(self):

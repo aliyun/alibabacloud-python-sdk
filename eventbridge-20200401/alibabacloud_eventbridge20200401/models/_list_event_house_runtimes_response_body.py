@@ -16,15 +16,15 @@ class ListEventHouseRuntimesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. Success indicates that the operation was successful.
+        # The response code. A value of Success indicates that the request is successful.
         self.code = code
-        # The runtime list result.
+        # The runtime list results.
         self.data = data
-        # The message returned by the operation.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful.
+        # Indicates whether the operation is successful.
         self.success = success
 
     def validate(self):
@@ -81,10 +81,13 @@ class ListEventHouseRuntimesResponseBodyData(DaraModel):
         runtimes: List[main_models.EventHouseRuntime] = None,
         total_count: int = None,
     ):
+        # The maximum number of runtimes returned per page.
         self.max_results = max_results
+        # The token for the next page. An empty value indicates that there are no more pages.
         self.next_token = next_token
-        # The list of runtimes.
+        # The runtime list.
         self.runtimes = runtimes
+        # The total number of runtimes that meet the query conditions.
         self.total_count = total_count
 
     def validate(self):

@@ -21,9 +21,9 @@ class EventCenterQueryEventsRequest(DaraModel):
         self.body = body
         # The name of the event bus.
         self.bus_name = bus_name
-        # The maximum number of results to return. Valid values: 0 to 10,000. The default value is 100.
+        # The maximum number of results to return. Valid values: 0 to 10000. Default value: 100.
         self.max_results = max_results
-        # The token to retrieve the next page of results.
+        # The token used to retrieve the next page of results.
         self.next_token = next_token
 
     def validate(self):
@@ -79,15 +79,13 @@ class EventCenterQueryEventsRequestBody(DaraModel):
         self.parameters = parameters
         # The query type. Valid values:
         # 
-        # - **timeseries**: queries time series data.
-        # 
-        # - **table**: queries table data.
-        # 
-        # - **timeseries_and_table**: queries both time series data and table data.
+        # - **timeseries**: time series data
+        # - **table**: tabular data
+        # - **timeseries_and_table**: both time series and tabular data
         # 
         # This parameter is required.
         self.query_type = query_type
-        # The schema ID.
+        # The ID of the schema.
         # 
         # This parameter is required.
         self.schema_id = schema_id
@@ -141,27 +139,27 @@ class EventCenterQueryEventsRequestBodyParameters(DaraModel):
         start_time: int = None,
         time_range: int = None,
     ):
-        # An array of column names to use as dimensions for splitting the dataset.
+        # Further splits the dataset by specific dimensions (column names).
         self.breakdowns = breakdowns
-        # The calculations to perform on specified columns.
+        # Performs calculations on the specified columns by using operators.
         self.calculations = calculations
-        # The end timestamp for the event query. Unit: milliseconds.
+        # The end timestamp for querying events, in milliseconds.
         self.end_time = end_time
-        # The logical operator for combining filter conditions.
+        # The logic for combining filter conditions.
         self.filter_combination = filter_combination
-        # A list of filter conditions.
+        # The list of filter conditions.
         self.filters = filters
-        # The time granularity, in seconds, for querying time series data. The minimum value is 1. This is a suggested value; the actual granularity is returned in the response.
+        # The time granularity, which is the minimum time unit for querying time series data. Unit: seconds. Minimum value: 1. This parameter is a recommended value. The actual granularity is subject to the returned value.
         self.granularity = granularity
-        # The maximum number of events to query. Valid values: 1 to 10,000.
+        # The maximum number of events to query. Valid values: 1 to 10000.
         self.limit = limit
-        # The starting position of the query. The count starts from 0.
+        # The starting position of the current query. The value starts from 0.
         self.offset = offset
-        # The sort order for the query results. This parameter applies only when QueryType is set to table.
+        # Sorts the query results. This parameter is valid only for queries where QueryType is set to table.
         self.orders = orders
-        # The start timestamp for the event query. Unit: milliseconds.
+        # The start timestamp for querying events, in milliseconds.
         self.start_time = start_time
-        # The time range. Unit: milliseconds. The minimum value is 1,000.
+        # The time range. Unit: milliseconds. Minimum value: 1000.
         self.time_range = time_range
 
     def validate(self):
@@ -327,13 +325,13 @@ class EventCenterQueryEventsRequestBodyParametersFilters(DaraModel):
     ):
         # The column name.
         self.column = column
-        # The logical operator for combining nested filters.
+        # The logical combination method for nested filter conditions.
         self.nested_filter_combination = nested_filter_combination
-        # A list of nested filters.
+        # The list of nested filter conditions.
         self.nested_filters = nested_filters
         # The operator.
         self.op = op
-        # The values to use with the operator.
+        # The values used with the operator.
         self.values = values
 
     def validate(self):
@@ -399,7 +397,7 @@ class EventCenterQueryEventsRequestBodyParametersFiltersNestedFilters(DaraModel)
         self.column = column
         # The operator.
         self.op = op
-        # A list of values to use with the operator.
+        # The list of values used with the operator.
         self.values = values
 
     def validate(self):

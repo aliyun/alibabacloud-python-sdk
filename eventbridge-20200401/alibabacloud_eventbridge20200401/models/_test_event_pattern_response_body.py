@@ -14,15 +14,15 @@ class TestEventPatternResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The return code. `Success` indicates that the call was successful. For more information about other return codes, see Error codes.
+        # The return code of the API operation. A value of Success indicates that the request is successful. Other values indicate error codes. For more information, see Error codes.
         self.code = code
-        # The result of the test.
+        # The returned result.
         self.data = data
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates if the request was successful.
+        # Indicates whether the operation is successful.
         self.success = success
 
     def validate(self):
@@ -76,7 +76,7 @@ class TestEventPatternResponseBodyData(DaraModel):
         self,
         result: bool = None,
     ):
-        # Indicates if the event matches the event pattern.
+        # Indicates whether the event pattern matches the provided JSON-formatted event. A value of true indicates that the event pattern matches the event. A value of false indicates that the event pattern does not match the event.
         self.result = result
 
     def validate(self):

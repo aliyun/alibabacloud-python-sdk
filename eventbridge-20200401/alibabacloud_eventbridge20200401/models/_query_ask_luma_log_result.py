@@ -14,11 +14,13 @@ class QueryAskLumaLogResult(DaraModel):
         has_more: bool = None,
         last_key: str = None,
     ):
-        # The log entries returned by the query.
+        # The list of log records returned by the query.
         self.entries = entries
-        # Specifies whether more results are available. The value is `true` if more results can be retrieved, and `false` otherwise.
+        # Indicates whether more query results are available. Valid values:
+        # - true: More results are available.
+        # - false: No more results are available.
         self.has_more = has_more
-        # The token to use for retrieving the next page of results. If present, pass this value as the `LastKey` parameter in a subsequent request to fetch more data. This field is omitted when all results have been retrieved.
+        # The token used to retrieve the next page of query results. Pass this value as LastKey in subsequent requests to continue the query. This field is not returned when all results have been returned.
         self.last_key = last_key
 
     def validate(self):

@@ -10,11 +10,11 @@ class TestEventPatternRequest(DaraModel):
         event: str = None,
         event_pattern: str = None,
     ):
-        # The event to test, which must be a JSON string.
+        # The event.
         # 
         # This parameter is required.
         self.event = event
-        # The event pattern to test, which must be a JSON string.
+        # The event pattern.
         # 
         # This parameter is required.
         self.event_pattern = event_pattern

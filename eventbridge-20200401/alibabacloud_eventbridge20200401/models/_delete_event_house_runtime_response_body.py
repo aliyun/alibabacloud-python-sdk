@@ -14,13 +14,13 @@ class DeleteEventHouseRuntimeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. Success indicates that the operation was successful.
+        # The response code. A value of Success indicates that the operation was successful.
         self.code = code
-        # The Runtime information.
+        # The runtime information.
         self.data = data
-        # The response message.
+        # The message returned by the API operation.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # Indicates whether the operation was successful.
         self.success = success

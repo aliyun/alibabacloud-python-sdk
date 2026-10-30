@@ -15,19 +15,19 @@ class CreateTableShrinkRequest(DaraModel):
         namespace: str = None,
         retention_policy_shrink: str = None,
     ):
-        # The data catalog to which the table belongs.
+        # The data catalog.
         self.catalog = catalog
         # The idempotency token.
         self.client_token = client_token
         # The column definitions.
         self.columns_shrink = columns_shrink
-        # The description.
+        # The comment.
         self.comment = comment
-        # The name of the table.
+        # The table name.
         # 
         # This parameter is required.
         self.name = name
-        # The namespace to which the table belongs.
+        # The namespace.
         self.namespace = namespace
         # The data retention policy.
         self.retention_policy_shrink = retention_policy_shrink

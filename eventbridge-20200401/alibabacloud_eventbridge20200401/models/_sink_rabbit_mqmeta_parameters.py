@@ -18,15 +18,25 @@ class SinkRabbitMQMetaParameters(DaraModel):
         virtual_host_name: str = None,
         vpc_id: str = None,
     ):
+        # The endpoint of the ApsaraMQ for RabbitMQ cluster.
         self.endpoint = endpoint
+        # The ID of the ApsaraMQ for RabbitMQ instance.
         self.instance_id = instance_id
+        # The type of the ApsaraMQ for RabbitMQ instance.
         self.instance_type = instance_type
+        # The network type used to connect to the ApsaraMQ for RabbitMQ instance.
         self.network_type = network_type
+        # The password used to connect to the ApsaraMQ for RabbitMQ cluster.
         self.password = password
+        # The ID of the security group to which the servers of the ApsaraMQ for RabbitMQ cluster belong.
         self.security_group_id = security_group_id
+        # The username used to connect to the ApsaraMQ for RabbitMQ cluster.
         self.username = username
+        # The IDs of the vSwitches in the VPC where the ApsaraMQ for RabbitMQ cluster is deployed.
         self.v_switch_ids = v_switch_ids
+        # The name of the virtual host (vhost) in the ApsaraMQ for RabbitMQ cluster.
         self.virtual_host_name = virtual_host_name
+        # The ID of the VPC where the ApsaraMQ for RabbitMQ cluster is deployed.
         self.vpc_id = vpc_id
 
     def validate(self):

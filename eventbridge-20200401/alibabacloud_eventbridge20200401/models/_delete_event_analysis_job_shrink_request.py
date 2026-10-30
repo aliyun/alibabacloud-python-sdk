@@ -9,7 +9,7 @@ class DeleteEventAnalysisJobShrinkRequest(DaraModel):
         self,
         source_resource_shrink: str = None,
     ):
-        # The identifier of the source resource.
+        # The source resource identifier.
         # 
         # This parameter is required.
         self.source_resource_shrink = source_resource_shrink

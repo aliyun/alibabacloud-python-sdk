@@ -17,15 +17,15 @@ class CreateApiDestinationRequest(DaraModel):
         # 
         # This parameter is required.
         self.api_destination_name = api_destination_name
-        # The name of the connection. The name must be 2 to 127 characters in length.
+        # The name of the connection configuration. The name must be 2 to 127 characters in length.
         # 
-        # > Before you configure this parameter, you must call the CreateConnection operation to create a connection. Then, set this parameter to the name of the connection that you created.
+        # <notice>Before calling this operation, call the Connection operation to create a connection configuration. Set ConnectionName to the name of an existing connection.
         # 
         # This parameter is required.
         self.connection_name = connection_name
         # The description of the API destination. The description can be up to 255 characters in length.
         self.description = description
-        # The parameters that are configured for the API destination.
+        # The configuration information of the API destination.
         # 
         # This parameter is required.
         self.http_api_parameters = http_api_parameters
@@ -76,22 +76,16 @@ class CreateApiDestinationRequestHttpApiParameters(DaraModel):
         endpoint: str = None,
         method: str = None,
     ):
-        # The endpoint of the API destination. The endpoint can be up to 127 characters in length.
+        # The endpoint address of the API destination. The address can be up to 127 characters in length.
         # 
         # This parameter is required.
         self.endpoint = endpoint
         # The HTTP request method. Valid values:
-        # 
         # - GET
-        # 
         # - POST
-        # 
         # - HEAD
-        # 
         # - DELETE
-        # 
         # - PUT
-        # 
         # - PATCH
         # 
         # This parameter is required.

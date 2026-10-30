@@ -21,18 +21,31 @@ class SourcePostgreSQLParameters(DaraModel):
         v_switch_ids: str = None,
         vpc_id: str = None,
     ):
+        # The name of the PostgreSQL database to connect to.
         self.database_name = database_name
+        # The hostname or IP address of the PostgreSQL database server.
         self.host_name = host_name
+        # The network type used to connect to the PostgreSQL data source. Valid values: PublicNetwork (public network) and PrivateNetwork (VPC).
         self.network_type = network_type
+        # The password of the database connection user.
         self.password = password
+        # The connection port of the PostgreSQL database server.
         self.port = port
+        # The ID of the region where the PostgreSQL data source resides.
         self.region_id = region_id
+        # The name of the PostgreSQL schema to synchronize.
         self.schema_name = schema_name
+        # The ID of the security group used to connect to the PostgreSQL instance.
         self.security_group_id = security_group_id
+        # The snapshot mode used when PostgreSQL data synchronization is started for the first time.
         self.snapshot_mode = snapshot_mode
+        # The names of the PostgreSQL tables to synchronize. Separate multiple table names with commas. Each table name must be in the {SchemaName}.{TableName} format.
         self.table_names = table_names
+        # The username for the database connection.
         self.user = user
+        # The ID of the vSwitch in the VPC.
         self.v_switch_ids = v_switch_ids
+        # The ID of the VPC where the PostgreSQL instance resides.
         self.vpc_id = vpc_id
 
     def validate(self):

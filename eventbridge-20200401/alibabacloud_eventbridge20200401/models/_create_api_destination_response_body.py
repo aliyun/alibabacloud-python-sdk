@@ -13,9 +13,9 @@ class CreateApiDestinationResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The returned response code. The value Success indicates that the request is successful.
+        # The API status code or POP error code. Valid values: Success: The operation is successful.
         self.code = code
-        # The data returned if the API destination is created.
+        # The data structure returned upon successful creation of the API destination.
         self.date = date
         # The returned message.
         self.message = message

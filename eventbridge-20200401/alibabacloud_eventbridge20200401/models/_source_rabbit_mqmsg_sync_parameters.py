@@ -28,25 +28,45 @@ class SourceRabbitMQMsgSyncParameters(DaraModel):
         virtual_host_name: str = None,
         vpc_id: str = None,
     ):
+        # The data type of the message body.
         self.body_data_type = body_data_type
+        # The ID of the RabbitMQ cloud migration task.
         self.cloud_migration_task_id = cloud_migration_task_id
+        # The address of the destination cluster.
         self.dst_cluster_host = dst_cluster_host
+        # The type of the destination RabbitMQ cluster.
         self.dst_cluster_type = dst_cluster_type
+        # The endpoint of the RabbitMQ cluster.
         self.endpoint = endpoint
+        # The ID of the ApsaraMQ for RabbitMQ instance.
         self.instance_id = instance_id
+        # The type of the source RabbitMQ instance.
         self.instance_type = instance_type
+        # The network type used to connect to the source RabbitMQ instance.
         self.network_type = network_type
+        # Specifies whether SAC is enabled. Do not specify this parameter.
         self.order_consume = order_consume
+        # The password used to connect to the RabbitMQ cluster.
         self.password = password
+        # The prefetch count.
         self.prefetch_count = prefetch_count
+        # The regular expression for matching. Do not specify this parameter.
         self.regex = regex
+        # The ID of the security group to which the machines of the RabbitMQ cluster belong.
         self.security_group_id = security_group_id
+        # The address of the source cluster.
         self.src_cluster_host = src_cluster_host
+        # The type of the source RabbitMQ cluster.
         self.src_cluster_type = src_cluster_type
+        # The type of metadata to synchronize. Do not specify this parameter.
         self.sync_meta_type = sync_meta_type
+        # The username used to connect to the RabbitMQ cluster.
         self.username = username
+        # The IDs of the vSwitches in the VPC where the RabbitMQ cluster is deployed.
         self.v_switch_ids = v_switch_ids
+        # The name of the virtual host (vhost) in the RabbitMQ cluster.
         self.virtual_host_name = virtual_host_name
+        # The ID of the VPC where the RabbitMQ cluster is deployed.
         self.vpc_id = vpc_id
 
     def validate(self):

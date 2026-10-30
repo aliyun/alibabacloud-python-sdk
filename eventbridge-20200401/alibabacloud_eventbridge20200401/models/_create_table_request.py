@@ -18,19 +18,19 @@ class CreateTableRequest(DaraModel):
         namespace: str = None,
         retention_policy: main_models.CreateTableRequestRetentionPolicy = None,
     ):
-        # The data catalog to which the table belongs.
+        # The data catalog.
         self.catalog = catalog
         # The idempotency token.
         self.client_token = client_token
         # The column definitions.
         self.columns = columns
-        # The description.
+        # The comment.
         self.comment = comment
-        # The name of the table.
+        # The table name.
         # 
         # This parameter is required.
         self.name = name
-        # The namespace to which the table belongs.
+        # The namespace.
         self.namespace = namespace
         # The data retention policy.
         self.retention_policy = retention_policy
@@ -108,9 +108,9 @@ class CreateTableRequestRetentionPolicy(DaraModel):
         cold_ttl: int = None,
         hot_ttl: int = None,
     ):
-        # The cold storage retention time.
+        # The cold storage duration.
         self.cold_ttl = cold_ttl
-        # The hot storage retention time.
+        # The hot storage duration.
         self.hot_ttl = hot_ttl
 
     def validate(self):
@@ -146,9 +146,9 @@ class CreateTableRequestColumns(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # The description of the field.
+        # The comment of the field.
         self.comment = comment
-        # The name of the connector.
+        # The connector name.
         self.name = name
         # The type of the column.
         self.type = type

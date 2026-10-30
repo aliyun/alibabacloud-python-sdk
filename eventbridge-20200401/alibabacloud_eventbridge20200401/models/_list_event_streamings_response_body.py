@@ -17,18 +17,16 @@ class ListEventStreamingsResponseBody(DaraModel):
         success: bool = None,
     ):
         # The response code. Valid values:
-        # 
-        # Success: The request was successful.    
-        # 
-        # Other values: An error occurred. For more information about error codes, see Error codes.
+        # - Success: The request is successful.
+        # - Other values: Error codes. For more information, see Error codes.
         self.code = code
-        # The event stream list.
+        # The list of event streams.
         self.data = data
         # The error message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the operation was successful. The value true is returned if the operation was successful.
+        # Indicates whether the operation was successful.
         self.success = success
 
     def validate(self):
@@ -84,9 +82,9 @@ class ListEventStreamingsResponseBodyData(DaraModel):
         next_token: str = None,
         total: int = None,
     ):
-        # The event stream list.
+        # The list of event streams.
         self.event_streamings = event_streamings
-        # Indicates whether there is more data to return. A value of empty string indicates that all data has been returned. If the value is not empty, set this value to the NextToken request parameter in the next call.
+        # The token that indicates the position where the current call stops reading. An empty value indicates that all data has been read. Set this value to the NextToken request parameter in the next call.
         self.next_token = next_token
         # The total number of records.
         self.total = total
@@ -148,10 +146,11 @@ class ListEventStreamingsResponseBodyDataEventStreamings(DaraModel):
         self.description = description
         # The name of the event stream.
         self.event_streaming_name = event_streaming_name
-        # The event filtering rule. If not specified, all events are matched.
+        # The event filtering rule. If this parameter is not specified, all events are matched.
         self.filter_pattern = filter_pattern
+        # The common JSON Configurations of the event provider. This parameter and Source are mutually exclusive.
         self.metadata = metadata
-        # The runtime parameters.
+        # The runtime environment parameters.
         self.run_options = run_options
         # The event target.
         self.sink = sink
@@ -159,7 +158,7 @@ class ListEventStreamingsResponseBodyDataEventStreamings(DaraModel):
         self.source = source
         # The status of the event stream.
         self.status = status
-        # The event transformer configurations.
+        # The transform configurations.
         self.transforms = transforms
 
     def validate(self):
@@ -268,7 +267,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsTransforms(DaraModel):
         self.ai_chunk_transform_parameters = ai_chunk_transform_parameters
         # The AI text classification parameters.
         self.ai_classify_transform_parameters = ai_classify_transform_parameters
-        # The AI embedding parameters.
+        # The AI vectorization parameters.
         self.ai_embed_transform_parameters = ai_embed_transform_parameters
         # The AI information extraction parameters.
         self.ai_extract_transform_parameters = ai_extract_transform_parameters
@@ -284,9 +283,11 @@ class ListEventStreamingsResponseBodyDataEventStreamingsTransforms(DaraModel):
         self.ai_summarize_transform_parameters = ai_summarize_transform_parameters
         # The AI translation parameters.
         self.ai_translate_transform_parameters = ai_translate_transform_parameters
-        # The Alibaba Cloud Resource Name (ARN) of the cloud service, such as the ARN of a function in Function Compute.
+        # The ARN of the cloud service, such as the ARN of a function in Function Compute.
         self.arn = arn
+        # The Model Studio agent transform parameters.
         self.bai_lian_agent_transform_parameters = bai_lian_agent_transform_parameters
+        # The DashScope model transform parameters.
         self.dash_scope_transform_parameters = dash_scope_transform_parameters
 
     def validate(self):
@@ -441,42 +442,47 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSource(DaraModel):
         source_rocket_mqparameters: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters = None,
         source_slsparameters: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceSLSParameters = None,
     ):
-        # The Source RocketMQ checkpoint parameters.
+        # The Apache RocketMQ checkpoint source.
         self.source_apache_rocket_mqcheckpoint_parameters = source_apache_rocket_mqcheckpoint_parameters
-        # The custom connector Apache Kafka event source.
+        # The custom Apache Kafka connector event source.
         self.source_customized_kafka_connector_parameters = source_customized_kafka_connector_parameters
         # The custom Kafka event source.
         self.source_customized_kafka_parameters = source_customized_kafka_parameters
-        # The Source DTS event source.
+        # The DTS source.
         self.source_dtsparameters = source_dtsparameters
-        # The Source event bus event source.
+        # The event bus source.
         self.source_event_bus_parameters = source_event_bus_parameters
+        # The Lark document source parameters.
         self.source_fei_shu_docs_parameters = source_fei_shu_docs_parameters
+        # The JDBC data source parameters.
         self.source_jdbcparameters = source_jdbcparameters
-        # The Source Kafka event source.
+        # The Kafka source.
         self.source_kafka_parameters = source_kafka_parameters
-        # The Source Simple Message Queue (formerly MNS) message event source.
+        # The Simple Message Queue (formerly MNS) source.
         self.source_mnsparameters = source_mnsparameters
-        # The Source MQTT event source.
+        # The source MQTT event source.
         self.source_mqttparameters = source_mqttparameters
-        # The Source MySQL event source.
+        # The source MySQL event source.
         self.source_my_sqlparameters = source_my_sqlparameters
-        # The Source OSS event source.
+        # The source OSS event source.
         self.source_ossparameters = source_ossparameters
-        # The Source open source RabbitMQ event source.
+        # The source open-source RabbitMQ event source.
         self.source_open_source_rabbit_mqparameters = source_open_source_rabbit_mqparameters
+        # The source PostgreSQL parameters.
         self.source_postgre_sqlparameters = source_postgre_sqlparameters
-        # The Source Prometheus event source.
+        # The source Prometheus event source.
         self.source_prometheus_parameters = source_prometheus_parameters
+        # The metadata source parameters of Message Queue for RabbitMQ.
         self.source_rabbit_mqmeta_parameters = source_rabbit_mqmeta_parameters
+        # The message synchronization source parameters of Message Queue for RabbitMQ.
         self.source_rabbit_mqmsg_sync_parameters = source_rabbit_mqmsg_sync_parameters
-        # The Source RabbitMQ event source.
+        # The source ApsaraMQ for RabbitMQ event source.
         self.source_rabbit_mqparameters = source_rabbit_mqparameters
-        # The Source RocketMQ checkpoint parameters.
+        # The Apache RocketMQ checkpoint source.
         self.source_rocket_mqcheckpoint_parameters = source_rocket_mqcheckpoint_parameters
-        # The parameters that are returned if the event source is ApsaraMQ for RocketMQ.
+        # The source ApsaraMQ for RocketMQ event source.
         self.source_rocket_mqparameters = source_rocket_mqparameters
-        # The parameters that are returned if the event source is Simple Log Service.
+        # The source SLS event source.
         self.source_slsparameters = source_slsparameters
 
     def validate(self):
@@ -690,7 +696,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceSLSParameter
         project: str = None,
         role_name: str = None,
     ):
-        # The starting consumption offset. You can select the earliest or latest offset, which corresponds to "begin" or "end" respectively. You can also start consumption from a specified point in time, in seconds.
+        # The start consumption offset. You can set this parameter to begin for the earliest offset or end for the latest offset. You can also specify a point in time in seconds to start consumption.
         self.consume_position = consume_position
         # The group ID of the consumer that subscribes to the topic.
         self.consumer_group = consumer_group
@@ -698,7 +704,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceSLSParameter
         self.log_store = log_store
         # The project of Simple Log Service (SLS).
         self.project = project
-        # The role name for authorization of the event bus EventBridge to read Simple Log Service log content. To use this role, create a role in the Resource Access Management (RAM) console, select "Alibaba Cloud Service" as the trusted entity, and select "event bus" as the trusted service.
+        # When granting authorization to the event bus EventBridge to use this role to read Simple Log Service (SLS) logs, you must select Alibaba Cloud Service as the trusted entity and event bus as the trusted service when you create the role in the Resource Access Management (RAM) console.
         self.role_name = role_name
 
     def validate(self):
@@ -774,7 +780,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQPara
     ):
         # The authentication type.
         self.auth_type = auth_type
-        # The encoding format of the message. Valid values:
+        # The message encoding format. Valid values:
         # 
         # - JSON
         # - Text
@@ -782,54 +788,53 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQPara
         self.body_data_type = body_data_type
         # The SQL filter statement.
         self.filter_sql = filter_sql
-        # The message filter type.
+        # The message filtering type.
         self.filter_type = filter_type
-        # The group ID of the ApsaraMQ for RocketMQ instance.
+        # The group ID in Message Queue for RocketMQ.
         self.group_id = group_id
-        # The instance endpoint.
+        # The endpoint of the instance.
         self.instance_endpoint = instance_endpoint
-        # The instance ID of the ApsaraMQ for RocketMQ instance.
+        # The ID of the Message Queue for RocketMQ instance.
         self.instance_id = instance_id
-        # The instance network information. Valid values:
+        # The network information of the instance. Valid values:
         # - PublicNetwork
         # - PrivateNetwork
         self.instance_network = instance_network
-        # The instance password.
+        # The password of the instance.
         self.instance_password = instance_password
-        # The security group ID of the instance.
+        # The security group information of the instance.
         self.instance_security_group_id = instance_security_group_id
         # The instance type. Valid values:
-        # 
         # - Cloud_4: ApsaraMQ for RocketMQ 4.0 instance (default).
         # - Cloud_5: ApsaraMQ for RocketMQ 5.0 instance.
-        # - SelfBuilt: self-managed Apache RocketMQ cluster.
+        # - SelfBuilt: Self-managed Apache RocketMQ cluster.
         self.instance_type = instance_type
         # The username of the instance.
         self.instance_username = instance_username
         # The vSwitch information of the instance.
         self.instance_vswitch_ids = instance_vswitch_ids
-        # The ID of the virtual private cloud (VPC).
+        # The ID of the VPC.
         self.instance_vpc_id = instance_vpc_id
         # The network type. Valid values:           
         # - PublicNetwork
         # - PrivateNetwork
         self.network = network
         # The consumption offset of the message. Valid values:
-        # - CONSUMEFROMLASTOFFSET: Consumption starts from the latest offset.
-        # - CONSUMEFROMFIRSTOFFSET: Consumption starts from the earliest offset.
-        # - CONSUMEFROMTIMESTAMP: Consumption starts from the offset of the specified point in time.
+        # - CONSUMEFROMLASTOFFSET: Consumes messages from the latest offset.
+        # - CONSUMEFROMFIRSTOFFSET: Consumes messages from the earliest offset.
+        # - CONSUMEFROMTIMESTAMP: Consumes messages from the offset at a specified point in time.
         self.offset = offset
-        # The region ID of the ApsaraMQ for RocketMQ instance.
+        # The region ID of Message Queue for RocketMQ.
         self.region_id = region_id
         # The security group ID.
         self.security_group_id = security_group_id
         # The filter tag of the message.
         self.tag = tag
-        # The timestamp. This parameter is valid only if the Offset parameter is set to CONSUMEFROMTIMESTAMP.
+        # The timestamp. This parameter is valid only when the Offset parameter is set to CONSUMEFROMTIMESTAMP.
         self.timestamp = timestamp
         # The topic of the message.
         self.topic = topic
-        # The vSwitch ID.
+        # The vSwitch IDs.
         self.v_switch_ids = v_switch_ids
         # The VPC ID.
         self.vpc_id = vpc_id
@@ -994,13 +999,13 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQChec
         region_id: str = None,
         topics: List[str] = None,
     ):
-        # The instance ID of the ApsaraMQ for RocketMQ instance.
+        # The ID of the Message Queue for RocketMQ instance.
         self.instance_id = instance_id
-        # The type of the ApsaraMQ for RocketMQ instance.
+        # The type of the Message Queue for RocketMQ instance.
         self.instance_type = instance_type
         # The region ID.
         self.region_id = region_id
-        # The topic of the ApsaraMQ for RocketMQ instance.
+        # The topics in the Message Queue for RocketMQ instance.
         self.topics = topics
 
     def validate(self):
@@ -1049,13 +1054,13 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRabbitMQPara
         region_id: str = None,
         virtual_host_name: str = None,
     ):
-        # The instance ID of the ApsaraMQ for RabbitMQ instance.
+        # The ID of the Message Queue for RabbitMQ instance.
         self.instance_id = instance_id
-        # The queue name of the ApsaraMQ for RabbitMQ instance.
+        # The name of the queue in the Message Queue for RabbitMQ instance.
         self.queue_name = queue_name
         # The region ID.
         self.region_id = region_id
-        # The vhost name of the ApsaraMQ for RabbitMQ instance.
+        # The name of the virtual host in the Message Queue for RabbitMQ instance.
         self.virtual_host_name = virtual_host_name
 
     def validate(self):
@@ -1116,7 +1121,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSourceSourcePrometheusPa
         self.labels = labels
         # The region ID.
         self.region_id = region_id
-        # The role used to access Prometheus data.
+        # The RAM role used to access Prometheus data.
         self.role_name = role_name
 
     def validate(self):
@@ -1186,25 +1191,25 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceOpenSourceRa
     ):
         # The authentication type.
         self.auth_type = auth_type
-        # The message body data type.
+        # The data type of the message body.
         self.body_data_type = body_data_type
-        # The instance endpoint.
+        # The endpoint of the instance.
         self.endpoint = endpoint
         # The network type.
         self.network_type = network_type
-        # The password used to connect to the open source RabbitMQ instance.
+        # The password used to connect to the open-source RabbitMQ instance.
         self.password = password
-        # The queue name of the open source RabbitMQ instance.
+        # The name of the queue in the open-source RabbitMQ instance.
         self.queue_name = queue_name
         # The security group ID.
         self.security_group_id = security_group_id
-        # The username used to connect to the open source RabbitMQ instance.
+        # The username used to connect to the open-source RabbitMQ instance.
         self.username = username
         # The vSwitch ID.
         self.v_switch_ids = v_switch_ids
-        # The virtual host name of the open source RabbitMQ instance.
+        # The name of the virtual host in the open-source RabbitMQ instance.
         self.virtual_host_name = virtual_host_name
-        # VPC ID。
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -1299,16 +1304,19 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceOSSParameter
     ):
         # The name of the OSS bucket.
         self.bucket_name = bucket_name
-        # The delimiter. In chunked loading mode, this delimiter is used as the chunk identifier for the text. By default, the newline character 
-        #  is used as the delimiter.
+        # The delimiter. In chunk loading mode, this delimiter is used as the chunk identifier for text. The default value is the newline character 
+        # .
         self.delimiter = delimiter
         # The document loader.
         self.load_format = load_format
-        # The data loading mode. The value single indicates single-document loading, and the value element indicates chunked loading. Valid values: single/element. Default value: single.
+        # The data loading mode. Valid values:
+        # - single: Single document loading.
+        # - element: Chunk loading.
+        # Default value: single.
         self.load_mode = load_mode
         # The file path prefix.
         self.prefix = prefix
-        # The name of the role that provides authorization for the event bus EventBridge to read OSS files. The role must have at least read-only permissions on OSS.
+        # The name of the RAM role that grants authorization to the EventBridge event bus to read OSS files. The role must have at least read-only permissions on OSS.
         self.role_name = role_name
 
     def validate(self):
@@ -1373,7 +1381,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParamete
         v_switch_ids: str = None,
         vpc_id: str = None,
     ):
-        # The encoding format of the message. Valid values:
+        # The message encoding format. Valid values:
         # 
         # - JSON
         # - Text
@@ -1389,9 +1397,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParamete
         self.security_group_id = security_group_id
         # The topic name.
         self.topic = topic
-        # The vSwitch ID.
+        # The vSwitch IDs.
         self.v_switch_ids = v_switch_ids
-        # VPC ID。
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -1463,9 +1471,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMNSParameter
         queue_name: str = None,
         region_id: str = None,
     ):
-        # Indicates whether Base64 encoding is enabled.
+        # Specifies whether to enable Base64 encoding.
         self.is_base_64decode = is_base_64decode
-        # The name of the Simple Message Queue (formerly MNS) message queue.
+        # The name of the Simple Message Queue (formerly MNS) queue.
         self.queue_name = queue_name
         # The region ID.
         self.region_id = region_id
@@ -1520,7 +1528,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceKafkaParamet
         self.consumer_group = consumer_group
         # The instance ID.
         self.instance_id = instance_id
-        # The network configuration. Default value: Default. Set the value to PublicNetwork for VPC networks.
+        # The network configuration. Default value: Default. Set the value to PublicNetwork for a VPC.
         self.network = network
         # The offset.
         self.offset_reset = offset_reset
@@ -1621,9 +1629,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceEventBusPara
         event_bus_name: str = None,
         event_rule_name: str = None,
     ):
-        # The event bus name.
+        # The name of the event bus.
         self.event_bus_name = event_bus_name
-        # The event rule name.
+        # The name of the event rule.
         self.event_rule_name = event_rule_name
 
     def validate(self):
@@ -1665,7 +1673,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceDTSParameter
     ):
         # The network address and port number of the data subscription channel.
         self.broker_url = broker_url
-        # The consumer offset, which is the timestamp when the SDK client consumes the first data record. The value is a UNIX timestamp.
+        # The consumption checkpoint, which is the timestamp when the SDK client consumes the first data record. The value is a UNIX timestamp.
         self.init_check_point = init_check_point
         # The password of the consumer group account.
         self.password = password
@@ -1673,7 +1681,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceDTSParameter
         self.sid = sid
         # The task ID.
         self.task_id = task_id
-        # The subscribed topic of the data subscription channel.
+        # The subscription topic of the data subscription channel.
         self.topic = topic
         # The username of the consumer group account.
         self.username = username
@@ -1769,11 +1777,11 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKa
         connector_parameters: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaConnectorParametersConnectorParameters = None,
         worker_parameters: Dict[str, Any] = None,
     ):
-        # The download URL of the OSS resource ZIP package.
+        # The download URL of the OSS ZIP package.
         self.connector_package_url = connector_package_url
         # The connector parameters.
         self.connector_parameters = connector_parameters
-        # The Kafka instance configuration.
+        # The Kafka instance configurations.
         self.worker_parameters = worker_parameters
 
     def validate(self):
@@ -1876,7 +1884,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheRocket
         self.topics = topics
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # VPC ID。
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -1976,49 +1984,55 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSink(DaraModel):
         sink_rocket_mqparameters: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParameters = None,
         sink_slsparameters: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParameters = None,
     ):
+        # The delivery parameters for the agent runtime.
         self.sink_agent_run_parameters = sink_agent_run_parameters
-        # The Sink Apache RocketMQ Checkpoint parameters.
+        # The sink Apache RocketMQ checkpoint parameters.
         self.sink_apache_rocket_mqcheckpoint_parameters = sink_apache_rocket_mqcheckpoint_parameters
         # The ApiDestination target parameters.
         self.sink_api_destination_parameters = sink_api_destination_parameters
-        # The Sink BaiLian parameters.
+        # The sink BaiLian parameters.
         self.sink_bai_lian_parameters = sink_bai_lian_parameters
-        # The Sink Kafka connector parameters.
+        # The sink Kafka connector parameters.
         self.sink_customized_kafka_connector_parameters = sink_customized_kafka_connector_parameters
-        # The Sink Kafka parameters.
+        # The sink Kafka parameters.
         self.sink_customized_kafka_parameters = sink_customized_kafka_parameters
-        # The Sink DashVector parameters.
+        # The sink DashVector parameters.
         self.sink_dash_vector_parameters = sink_dash_vector_parameters
-        # The Sink DataHub parameters.
+        # The DataHub sink parameters.
         self.sink_data_hub_parameters = sink_data_hub_parameters
+        # The event source type.
         self.sink_doris_parameters = sink_doris_parameters
         # The event target name.
         self.sink_event_house_parameters = sink_event_house_parameters
         # The function target.
         self.sink_fc_parameters = sink_fc_parameters
-        # The Sink Fnf parameters.
+        # The FnF parameters for the sink.
         self.sink_fnf_parameters = sink_fnf_parameters
         # The HTTPS target parameters.
         self.sink_https_parameters = sink_https_parameters
-        # The sink Kafka parameters.
+        # The Kafka parameters for the sink.
         self.sink_kafka_parameters = sink_kafka_parameters
-        # The target parameters for delivering event streams to an EventHouse knowledge base. Specify this parameter only when the sink type is knowledge base.
+        # The knowledge base delivery parameters.
         self.sink_knowledge_base_parameters = sink_knowledge_base_parameters
-        # The Simple MSMQ (formerly MNS) event target.
+        # The event target for Simple MSMQ (formerly MNS).
         self.sink_mnsparameters = sink_mnsparameters
+        # The MQTT delivery parameters.
         self.sink_mqttparameters = sink_mqttparameters
+        # The Object Storage Service (OSS) delivery parameters.
         self.sink_ossparameters = sink_ossparameters
-        # The sink open-source RabbitMQ parameters.
+        # The open source RabbitMQ parameters for the sink.
         self.sink_open_source_rabbit_mqparameters = sink_open_source_rabbit_mqparameters
+        # The metadata delivery parameters for the MSMQ message queue RabbitMQ Edition.
         self.sink_rabbit_mqmeta_parameters = sink_rabbit_mqmeta_parameters
+        # The message synchronization delivery parameters for the MSMQ message queue RabbitMQ Edition.
         self.sink_rabbit_mqmsg_sync_parameters = sink_rabbit_mqmsg_sync_parameters
-        # The parameters for the sink RabbitMQ.
+        # The parameters for the RabbitMQ sink.
         self.sink_rabbit_mqparameters = sink_rabbit_mqparameters
-        # The parameters for the sink RocketMQ checkpoint.
+        # The parameters for the RocketMQ checkpoint sink.
         self.sink_rocket_mqcheckpoint_parameters = sink_rocket_mqcheckpoint_parameters
-        # The parameters for the sink RocketMQ source.
+        # The ApsaraMQ for RocketMQ sink parameters.
         self.sink_rocket_mqparameters = sink_rocket_mqparameters
-        # Sink SLS Parameters
+        # The Simple Log Service sink parameters.
         self.sink_slsparameters = sink_slsparameters
 
     def validate(self):
@@ -2270,11 +2284,11 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParameters(Da
         role_name: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersRoleName = None,
         topic: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersTopic = None,
     ):
-        # The content sent to Simple Log Service (SLS).
+        # The content sent to Simple Log Service.
         self.body = body
-        # The custom log key-value pairs. This parameter takes effect only when ContentType is set to KeyValue. Each key-value pair is represented by Key_n and Value_n.
+        # The key-value pairs of the custom log. This parameter takes effect only when ContentType is set to KeyValue. Each key-value pair is represented by Key_n and Value_n.
         self.content_schema = content_schema
-        # The SLS data format. You can use the default format or specify key-value pairs. Valid values:
+        # The data format of Simple Log Service (SLS). Valid values:
         # 
         # - JSON
         # - KeyValue
@@ -2283,9 +2297,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParameters(Da
         self.log_store = log_store
         # The project of Simple Log Service (SLS).
         self.project = project
-        # The role used for authorization of EventBridge to read SLS log content. To use this role, the following conditions must be met: when you create the role used by the service in the Resource Access Management (RAM) console, select Alibaba Cloud Service, and set the trusted service to EventBridge.
+        # When granting authorization to the event bus EventBridge to use this role to read SLS log content, the following conditions must be met: when creating the role used by the service in the Resource Access Management (RAM) console, you must select Alibaba Cloud Service, and select event bus as the trusted service.
         self.role_name = role_name
-        # The topic of the log, which corresponds to the SLS reserved field "topic".
+        # The topic of the log. This corresponds to the reserved field topic in SLS.
         self.topic = topic
 
     def validate(self):
@@ -2373,9 +2387,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersTop
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
-        # The topic of the log, which corresponds to the SLS reserved field "topic".
+        # The topic of the log. This corresponds to the reserved field topic in SLS.
         self.value = value
 
     def validate(self):
@@ -2419,9 +2433,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersRol
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
-        # The role used for authorization of EventBridge to read SLS log content. To use this role, the following conditions must be met: when you create the role used by the service in the Resource Access Management (RAM) console, select Alibaba Cloud Service, and set the trusted service to EventBridge.
+        # When granting authorization to the event bus EventBridge to use this role to read SLS log content, the following conditions must be met: when creating the role used by the service in the Resource Access Management (RAM) console, you must select Alibaba Cloud Service, and select event bus as the trusted service.
         self.value = value
 
     def validate(self):
@@ -2465,7 +2479,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersPro
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
         # The project of Simple Log Service (SLS).
         self.value = value
@@ -2511,7 +2525,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersLog
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
         # The Logstore of Simple Log Service (SLS).
         self.value = value
@@ -2557,9 +2571,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersCon
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
-        # The SLS data format. You can use the default format or specify key-value pairs. Valid values:
+        # The data format of Simple Log Service (SLS). Valid values:
         # 
         # - JSON
         # - KeyValue
@@ -2606,7 +2620,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersCon
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
         # The value before transformation.
         self.value = value
@@ -2709,35 +2723,35 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParamete
         v_switch_ids: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersVSwitchIds = None,
         vpc_id: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersVpcId = None,
     ):
-        # The message body.
+        # The message content.
         self.body = body
-        # The delivery order type of messages.
+        # The delivery order type of the message.
         self.delivery_order_type = delivery_order_type
-        # The instance endpoint.
+        # The endpoint of the instance.
         self.instance_endpoint = instance_endpoint
-        # The event target type is ApsaraMQ for RocketMQ.
+        # The target service type is the message queue MSMQ for RocketMQ.
         self.instance_id = instance_id
-        # The instance password.
+        # The password of the instance.
         self.instance_password = instance_password
         # The instance type.
         self.instance_type = instance_type
         # The username of the instance.
         self.instance_username = instance_username
-        # The filter properties.
+        # The filtering properties.
         self.keys = keys
         # The network type. Valid values:           
         # - PublicNetwork
         # - PrivateNetwork
         self.network = network
-        # The filter properties.
+        # The filtering properties.
         self.properties = properties
         # The security group ID.
         self.security_group_id = security_group_id
         # The sharding key of the message, which is used to control message partitioning.
         self.sharding_key = sharding_key
-        # The filter properties.
+        # The filtering properties.
         self.tags = tags
-        # The topic of the MSMQ for RocketMQ instance.
+        # The topic of the message queue MSMQ for RocketMQ instance.
         self.topic = topic
         # The vSwitch ID.
         self.v_switch_ids = v_switch_ids
@@ -2908,9 +2922,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParamete
         template: str = None,
         value: str = None,
     ):
-        # The format of the event transformation. Default value: CONSTANT.
+        # The event transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
         # The VPC ID.
         self.value = value
@@ -2956,7 +2970,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParamete
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
         # The vSwitch ID.
         self.value = value
@@ -3002,9 +3016,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParamete
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
-        # The topic of the MSMQ for RocketMQ instance.
+        # The topic of the message queue MSMQ for RocketMQ instance.
         self.value = value
 
     def validate(self):
@@ -3096,7 +3110,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParamete
         self.form = form
         # The template style.
         self.template = template
-        # The sharding key value.
+        # The value of the sharding key.
         self.value = value
 
     def validate(self):
@@ -3140,7 +3154,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParamete
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
         # The security group ID.
         self.value = value
@@ -3232,10 +3246,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParamete
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
         # The network type. Valid values:
-        # 
         # - PublicNetwork
         # - PrivateNetwork
         self.value = value
@@ -3327,7 +3340,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParamete
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
         # The username of the instance.
         self.value = value
@@ -3373,13 +3386,12 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParamete
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
         # The instance type. Valid values:
-        # 
         # - Cloud_4: ApsaraMQ for RocketMQ 4.0 instance (default).
         # - Cloud_5: ApsaraMQ for RocketMQ 5.0 instance.
-        # - SelfBuilt: self-managed Apache RocketMQ cluster.
+        # - SelfBuilt: Self-managed Apache RocketMQ cluster.
         self.value = value
 
     def validate(self):
@@ -3423,9 +3435,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParamete
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
-        # The instance password.
+        # The password of the instance.
         self.value = value
 
     def validate(self):
@@ -3469,9 +3481,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParamete
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
-        # The instance ID of ApsaraMQ for RocketMQ.
+        # The instance ID of the message queue MSMQ for RocketMQ.
         self.value = value
 
     def validate(self):
@@ -3515,9 +3527,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParamete
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
-        # The instance endpoint.
+        # The endpoint of the instance.
         self.value = value
 
     def validate(self):
@@ -3561,7 +3573,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParamete
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
         # The delivery order type.
         self.value = value
@@ -3653,15 +3665,15 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQCheckpoi
         instance_type: str = None,
         topic: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQCheckpointParametersTopic = None,
     ):
-        # The consumption checkpoint.
+        # The consumption timestamp.
         self.consume_timestamp = consume_timestamp
-        # The consumer group information of ApsaraMQ for RocketMQ.
+        # The consumer group information of the MSMQ message queue RocketMQ Edition.
         self.group = group
-        # The instance ID of ApsaraMQ for RocketMQ.
+        # The RocketMQ instance ID.
         self.instance_id = instance_id
-        # The instance type of ApsaraMQ for RocketMQ.
+        # The instance type of the MSMQ message queue RocketMQ Edition.
         self.instance_type = instance_type
-        # The topic of the ApsaraMQ for RocketMQ instance.
+        # The topic of the MSMQ message queue RocketMQ Edition instance.
         self.topic = topic
 
     def validate(self):
@@ -3773,7 +3785,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQCheckpoi
         self.form = form
         # The template style.
         self.template = template
-        # The Group ID of the consumer group.
+        # The group ID of the consumer group.
         self.value = value
 
     def validate(self):
@@ -3867,23 +3879,23 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRabbitMQParamete
         target_type: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRabbitMQParametersTargetType = None,
         virtual_host_name: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRabbitMQParametersVirtualHostName = None,
     ):
-        # The message body.
+        # The message content.
         self.body = body
-        # The Exchange mode. This parameter is required only when the TargetType parameter is set to Exchange.
+        # The exchange mode. This parameter is required only when the TargetType parameter is set to Exchange.
         self.exchange = exchange
-        # The event target type is ApsaraMQ for RabbitMQ.
+        # The target service type is MSMQ message queue RabbitMQ Edition.
         self.instance_id = instance_id
         # The message ID.
         self.message_id = message_id
-        # The filter properties.
+        # The filtering properties.
         self.properties = properties
-        # The Queue mode. This parameter is required only when the TargetType parameter is set to Queue.
+        # The queue mode. This parameter is required only when the TargetType parameter is set to Queue.
         self.queue_name = queue_name
-        # The routing rule for messages. This parameter is required only when the TargetType parameter is set to Exchange.
+        # The routing rule for the message. This parameter is required only when the TargetType parameter is set to Exchange.
         self.routing_key = routing_key
         # The target type.
         self.target_type = target_type
-        # The name of the Vhost on the ApsaraMQ for RabbitMQ instance.
+        # The name of the vhost in the MSMQ message queue RabbitMQ Edition instance.
         self.virtual_host_name = virtual_host_name
 
     def validate(self):
@@ -3989,9 +4001,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRabbitMQParamete
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
-        # The name of the Vhost on the ApsaraMQ for RabbitMQ instance.
+        # The name of the vhost in the MSMQ message queue RabbitMQ Edition instance.
         self.value = value
 
     def validate(self):
@@ -4035,7 +4047,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRabbitMQParamete
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
         # The target type. Valid values:
         # - Exchange: Exchange mode.
@@ -4083,9 +4095,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRabbitMQParamete
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
-        # The routing rule of the message.
+        # The routing rule for the message.
         self.value = value
 
     def validate(self):
@@ -4129,9 +4141,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRabbitMQParamete
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
-        # The name of the Queue on the instance.
+        # The name of the queue in the instance.
         self.value = value
 
     def validate(self):
@@ -4267,9 +4279,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRabbitMQParamete
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
-        # The instance ID of ApsaraMQ for RabbitMQ.
+        # The instance ID of the MSMQ message queue RabbitMQ Edition.
         self.value = value
 
     def validate(self):
@@ -4313,9 +4325,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRabbitMQParamete
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
-        # The name of the Exchange on the ApsaraMQ for RabbitMQ instance.
+        # The name of the exchange in the MSMQ message queue RabbitMQ Edition instance.
         self.value = value
 
     def validate(self):
@@ -4418,9 +4430,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbit
     ):
         # The authentication type.
         self.auth_type = auth_type
-        # The message body.
+        # The message content.
         self.body = body
-        # The RabbitMQ instance endpoint.
+        # The endpoint of the RabbitMQ instance.
         self.endpoint = endpoint
         # The name of the exchange used for message routing.
         self.exchange = exchange
@@ -4428,25 +4440,25 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbit
         self.message_id = message_id
         # The network type.
         self.network_type = network_type
-        # The username and password used for identity verification.
+        # The username and password used to authenticate for identity verification.
         self.password = password
-        # The filter properties.
+        # The filtering properties.
         self.properties = properties
         # The name of the queue used to store messages.
         self.queue_name = queue_name
-        # The routing rule of the message. This parameter is required only when the TargetType parameter is set to Exchange.
+        # The routing rule for the message. This parameter is required only when the TargetType parameter is set to Exchange.
         self.routing_key = routing_key
         # The security group ID.
         self.security_group_id = security_group_id
         # The target type.
         self.target_type = target_type
-        # The username used for authentication.
+        # The username used to authenticate for identity verification.
         self.username = username
         # The vSwitch ID.
         self.v_switch_ids = v_switch_ids
-        # The virtual host name of RabbitMQ.
+        # The name of the virtual host in RabbitMQ.
         self.virtual_host_name = virtual_host_name
-        # VPC ID。
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -4581,7 +4593,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbit
         self.form = form
         # The template style.
         self.template = template
-        # The routing rule of the message.
+        # The routing rule for the message.
         self.value = value
 
     def validate(self):
@@ -4761,9 +4773,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkMNSParameters(Da
         is_base_64encode: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkMNSParametersIsBase64Encode = None,
         queue_name: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkMNSParametersQueueName = None,
     ):
-        # The message body.
+        # The message content.
         self.body = body
-        # Indicates whether Base64 encoding is enabled.
+        # Specifies whether to enable Base64 encoding.
         self.is_base_64encode = is_base_64encode
         # The target service type is Simple MSMQ (formerly MNS).
         self.queue_name = queue_name
@@ -4817,9 +4829,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkMNSParametersQue
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
-        # The name of the Simple MSMQ (formerly MNS) queue.
+        # The name of the queue in Simple MSMQ (formerly MNS).
         self.value = value
 
     def validate(self):
@@ -4863,9 +4875,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkMNSParametersIsB
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
-        # Indicates whether Base64 encoding is enabled.
+        # Specifies whether Base64 encoding is enabled.
         self.value = value
 
     def validate(self):
@@ -4957,23 +4969,24 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParameters(
         topic: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersTopic = None,
         value: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersValue = None,
     ):
-        # The acknowledgment mode for writing to Kafka:
-        # - acks=0: No response is required from the server. This mode delivers high performance but has a high risk of data loss.
-        # - acks=1: A response is returned after the primary node on the server successfully writes the data. This mode delivers moderate performance and has a moderate risk of data loss. Data loss may occur if the primary node goes down.
-        # - acks=all: A response is returned only after the primary node successfully writes the data and the secondary nodes complete synchronization. This mode delivers lower performance but provides higher data safety. Data loss occurs only if both the primary and secondary nodes go down.
+        # The acknowledgment mode for writing to Kafka. Valid values:
+        # - acks=0: No response from the server is required. This mode provides high performance but has a high risk of data loss.
+        # - acks=1: A response is returned after the primary node successfully writes the data. This mode provides medium performance and has a medium risk of data loss. Data may be lost if the primary node goes down.
+        # - acks=all: A response is returned after the primary node successfully writes the data and the secondary nodes successfully synchronize the data. This mode provides low performance but ensures high data security. Data is lost only when both the primary and secondary nodes go down.
         self.acks = acks
+        # The compression type.
         self.compression_type = compression_type
-        # The target topic strategy for message routing. If both the topic parameter and the topics parameter are specified, the value of the topics parameter takes precedence. The following two configuration modes are supported:
-        #     1. **Static constant mode**: Enter a fixed topic name string (for example, "order_created"). All messages are sent to this topic.
-        #     2. **Dynamic extraction mode**: Enter a standard JSONPath expression (for example, "$.user.id" or "$.metadata.category"). The system parses the upstream message body and extracts the value of the matching field as the target topic name.
+        # The target topic routing policy for messages. If both the topic and topics parameters are specified, the value of the topics parameter prevails. The following configuration modes are supported:
+        # 1. **Static constant mode**: Enter a fixed topic name string, such as "order_created". All messages are sent to this topic.
+        # 2. **Dynamic extraction mode**: Enter a standard JSONPath expression, such as "$.user.id" or "$.metadata.category". The system parses the upstream message body and extracts the value of the matched field as the target topic name.
         self.dynamic_topic = dynamic_topic
         # The target service type is MSMQ for Apache Kafka.
         self.instance_id = instance_id
-        # The message key.
+        # The identifier of the message.
         self.key = key
-        # The topic name.
+        # The name of the topic.
         self.topic = topic
-        # The message body.
+        # The content of the message body.
         self.value = value
 
     def validate(self):
@@ -5104,9 +5117,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersT
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
-        # The topic name.
+        # The name of the topic.
         self.value = value
 
     def validate(self):
@@ -5150,9 +5163,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersK
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
-        # The message key.
+        # The identifier of the message.
         self.value = value
 
     def validate(self):
@@ -5196,7 +5209,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersI
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
         # The instance ID.
         self.value = value
@@ -5240,9 +5253,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersD
         template: str = None,
         value: str = None,
     ):
-        # The transformation type.
-        # CONSTANT: a constant.
-        # JSONPATH: extracts a value from the upstream source based on a path.
+        # The transformation type. Valid values:
+        # - CONSTANT: fixed value
+        # - JSONPATH: extracted from the upstream based on the path
         self.form = form
         # The template.
         self.template = template
@@ -5290,12 +5303,12 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersA
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
-        # The acknowledgment mode for writing to Kafka:
-        # - acks=0: No response is required from the server. This mode delivers high performance but has a high risk of data loss.
-        # - acks=1: A response is returned after the primary node on the server successfully writes the data. This mode delivers moderate performance and has a moderate risk of data loss. Data loss may occur if the primary node goes down.
-        # - acks=all: A response is returned only after the primary node successfully writes the data and the secondary nodes complete synchronization. This mode delivers lower performance but provides higher data safety. Data loss occurs only if both the primary and secondary nodes go down.
+        # The acknowledgment mode for writing to Kafka. Valid values:
+        # - acks=0: No response from the server is required. This mode provides high performance but has a high risk of data loss.
+        # - acks=1: A response is returned after the primary node successfully writes the data. This mode provides medium performance and has a medium risk of data loss. Data may be lost if the primary node goes down.
+        # - acks=all: A response is returned after the primary node successfully writes the data and the secondary nodes successfully synchronize the data. This mode provides low performance but ensures high data security. Data is lost only when both the primary and secondary nodes go down.
         self.value = value
 
     def validate(self):
@@ -5338,11 +5351,11 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFnfParameters(Da
         input: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFnfParametersInput = None,
         role_name: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFnfParametersRoleName = None,
     ):
-        # The execution name.
+        # The name of the execution.
         self.execution_name = execution_name
-        # The flow name.
+        # The name of the flow.
         self.flow_name = flow_name
-        # The execution input information.
+        # The input information for the execution.
         self.input = input
         # The role configuration.
         self.role_name = role_name
@@ -5453,7 +5466,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFnfParametersInp
         self.form = form
         # The template style.
         self.template = template
-        # The execution input information.
+        # The input information for the execution.
         self.value = value
 
     def validate(self):
@@ -5499,7 +5512,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFnfParametersFlo
         self.form = form
         # The template style.
         self.template = template
-        # The flow name.
+        # The name of the flow.
         self.value = value
 
     def validate(self):
@@ -5545,7 +5558,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFnfParametersExe
         self.form = form
         # The template style.
         self.template = template
-        # The execution name.
+        # The name of the execution.
         self.value = value
 
     def validate(self):
@@ -5591,7 +5604,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParameters(Dar
         qualifier: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersQualifier = None,
         service_name: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersServiceName = None,
     ):
-        # The content body sent to the function.
+        # The request body sent to the function.
         self.body = body
         # The delivery concurrency. The minimum value is 1.
         self.concurrency = concurrency
@@ -5600,12 +5613,12 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParameters(Dar
         # The function name.
         self.function_name = function_name
         # The invocation type. Valid values:
-        # - Sync: synchronous.
-        # - Async: asynchronous.
+        # - Sync: Synchronous.
+        # - Async: Asynchronous.
         self.invocation_type = invocation_type
         # The alias of the service to which the function belongs.
         self.qualifier = qualifier
-        # The name of the service.
+        # The service name.
         self.service_name = service_name
 
     def validate(self):
@@ -5693,9 +5706,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersServ
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
-        # The name of the service.
+        # The service name.
         self.value = value
 
     def validate(self):
@@ -5739,7 +5752,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersQual
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
         # The alias of the service to which the function belongs.
         self.value = value
@@ -5785,11 +5798,11 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersInvo
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
         # The invocation type. Valid values:
-        # - Sync: synchronous.
-        # - Async: asynchronous.
+        # - Sync: Synchronous.
+        # - Async: Asynchronous.
         self.value = value
 
     def validate(self):
@@ -5833,7 +5846,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersFunc
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
         # The function name.
         self.value = value
@@ -5925,7 +5938,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersConc
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
         # The delivery concurrency. The minimum value is 1.
         self.value = value
@@ -6181,17 +6194,29 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDorisParameters(
         v_switch_ids: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDorisParametersVSwitchIds = None,
         vpc_id: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDorisParametersVpcId = None,
     ):
+        # The public HTTP endpoint of the BE.
         self.be_http_endpoint = be_http_endpoint
+        # The message content.
         self.body = body
+        # The database.
         self.database = database
+        # The HTTP endpoint of the FE.
         self.fe_http_endpoint = fe_http_endpoint
+        # The network type.
         self.network_type = network_type
+        # The password.
         self.password = password
+        # The MySQL protocol endpoint.
         self.query_endpoint = query_endpoint
+        # The security group ID.
         self.security_group_id = security_group_id
+        # The destination table.
         self.table = table
+        # The username.
         self.user_name = user_name
+        # The vSwitch IDs.
         self.v_switch_ids = v_switch_ids
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -6322,8 +6347,11 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDorisParametersV
         template: str = None,
         value: str = None,
     ):
+        # The transformation format. Default value: CONSTANT.
         self.form = form
+        # The template style.
         self.template = template
+        # The VPC ID.
         self.value = value
 
     def validate(self):
@@ -6365,8 +6393,11 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDorisParametersV
         template: str = None,
         value: str = None,
     ):
+        # The transformation format. Default value: CONSTANT.
         self.form = form
+        # The template style.
         self.template = template
+        # The vSwitch IDs.
         self.value = value
 
     def validate(self):
@@ -6408,8 +6439,11 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDorisParametersU
         template: str = None,
         value: str = None,
     ):
+        # The transformation format. Default value: CONSTANT.
         self.form = form
+        # The template style.
         self.template = template
+        # The username.
         self.value = value
 
     def validate(self):
@@ -6451,8 +6485,11 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDorisParametersT
         template: str = None,
         value: str = None,
     ):
+        # The transformation format. Default value: CONSTANT.
         self.form = form
+        # The template style.
         self.template = template
+        # The destination table.
         self.value = value
 
     def validate(self):
@@ -6494,8 +6531,11 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDorisParametersS
         template: str = None,
         value: str = None,
     ):
+        # The transformation format. Default value: CONSTANT.
         self.form = form
+        # The template style.
         self.template = template
+        # The security group ID.
         self.value = value
 
     def validate(self):
@@ -6537,8 +6577,11 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDorisParametersQ
         template: str = None,
         value: str = None,
     ):
+        # The transformation format. Default value: CONSTANT.
         self.form = form
+        # The template style.
         self.template = template
+        # The MySQL protocol endpoint.
         self.value = value
 
     def validate(self):
@@ -6580,8 +6623,11 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDorisParametersP
         template: str = None,
         value: str = None,
     ):
+        # The transformation format. Default value: CONSTANT.
         self.form = form
+        # The template style.
         self.template = template
+        # The password.
         self.value = value
 
     def validate(self):
@@ -6623,8 +6669,11 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDorisParametersN
         template: str = None,
         value: str = None,
     ):
+        # The transformation format. Default value: CONSTANT.
         self.form = form
+        # The template style.
         self.template = template
+        # The network type.
         self.value = value
 
     def validate(self):
@@ -6666,8 +6715,11 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDorisParametersF
         template: str = None,
         value: str = None,
     ):
+        # The transformation format. Default value: CONSTANT.
         self.form = form
+        # The template style.
         self.template = template
+        # The HTTP endpoint of the FE.
         self.value = value
 
     def validate(self):
@@ -6709,8 +6761,11 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDorisParametersD
         template: str = None,
         value: str = None,
     ):
+        # The transformation format. Default value: CONSTANT.
         self.form = form
+        # The template style.
         self.template = template
+        # The database.
         self.value = value
 
     def validate(self):
@@ -6752,8 +6807,11 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDorisParametersB
         template: str = None,
         value: str = None,
     ):
+        # The transformation format. Default value: CONSTANT.
         self.form = form
+        # The template style.
         self.template = template
+        # The message content.
         self.value = value
 
     def validate(self):
@@ -6795,8 +6853,11 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDorisParametersB
         template: str = None,
         value: str = None,
     ):
+        # The transformation format. Default value: CONSTANT.
         self.form = form
+        # The template style.
         self.template = template
+        # The public HTTP endpoint of the BE.
         self.value = value
 
     def validate(self):
@@ -6841,18 +6902,17 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameter
         topic_schema: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopicSchema = None,
         topic_type: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopicType = None,
     ):
-        # The BLOB type. The record content template.
+        # The record content template for the BLOB type.
         self.body = body
         # The DataHub project name.
         self.project = project
-        # To grant authorization to the event bus EventBridge to use this role to read Simple Log Service (SLS) log content, the following conditions must be met: when you create the role used by the service in the Resource Access Management (RAM) console, set the trusted entity type to "Alibaba Cloud Service" and set the trusted service to "event bus".
+        # Requirements for the authorization of the event bus EventBridge to use this role to read Simple Log Service logs: when you create the role used by the service in the Resource Access Management (RAM) console, you must select Alibaba Cloud Service, and select the event bus as the trusted service.
         self.role_name = role_name
-        # The name of the DataHub topic.
+        # The DataHub topic name.
         self.topic = topic
-        # The content schema of the topic. This parameter applies to the TUPLE type.
+        # The topic content schema for the TUPLE type.
         self.topic_schema = topic_schema
-        # The type of the topic. Valid values:
-        # 
+        # The topic type. Valid values:
         # - TUPLE
         # - BLOB
         self.topic_type = topic_type
@@ -6933,10 +6993,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameter
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
-        # The type of the topic. Valid values:
-        # 
+        # The topic type. Valid values:
         # - TUPLE
         # - BLOB
         self.value = value
@@ -6982,9 +7041,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameter
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
-        # The content schema of the topic. This parameter applies to the TUPLE type.
+        # The topic content schema for the TUPLE type.
         self.value = value
 
     def validate(self):
@@ -7028,9 +7087,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameter
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
-        # The name of the DataHub topic.
+        # The DataHub topic name.
         self.value = value
 
     def validate(self):
@@ -7074,9 +7133,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameter
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
-        # To grant authorization to the event bus EventBridge to use this role to read Simple Log Service (SLS) log content, the following conditions must be met: when you create the role used by the service in the Resource Access Management (RAM) console, set the trusted entity type to "Alibaba Cloud Service" and set the trusted service to "event bus".
+        # Requirements for the authorization of the event bus EventBridge to use this role to read Simple Log Service logs: when you create the role used by the service in the Resource Access Management (RAM) console, you must select Alibaba Cloud Service, and select the event bus as the trusted service.
         self.value = value
 
     def validate(self):
@@ -7120,7 +7179,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameter
     ):
         # The transformation format. Default value: CONSTANT.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
         # The DataHub project name.
         self.value = value
@@ -7166,9 +7225,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameter
     ):
         # The transformation format.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
-        # The BLOB type. The record content template.
+        # The record content template for the BLOB type.
         self.value = value
 
     def validate(self):
@@ -7220,7 +7279,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParame
         self.api_key = api_key
         # The collection name.
         self.collection = collection
-        # The schema field definition for table entries when inserting into DashVector. The result after event content transformation must be in JSON format.
+        # The schema field definitions for table entries when inserting data into DashVector. The transformed event content must be in JSON format.
         self.dash_vector_schema_parameters = dash_vector_schema_parameters
         # The instance ID.
         self.instance_id = instance_id
@@ -7230,9 +7289,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParame
         self.operation = operation
         # The partition. Default value: default.
         self.partition = partition
-        # The primary key ID for inserting or deleting records. If this field is not specified, a random primary key ID is used.
+        # The primary key ID used when you insert or delete a record. If you do not specify this field, a random primary key ID is used.
         self.primary_key_id = primary_key_id
-        # The vector of the DashVector record to insert.
+        # The vector of the DashVector record to be inserted.
         self.vector = vector
 
     def validate(self):
@@ -7329,9 +7388,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParame
     ):
         # The transformation format.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
-        # The content extracted by JSONPath.
+        # The content extracted by using JSONPath.
         # 
         # Note: The Value field cannot exceed 10,240 characters.
         self.value = value
@@ -7379,8 +7438,8 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParame
         self.form = form
         # The primary key ID template. This field is required only when Form is set to TEMPLATE.
         self.template = template
-        # - If Form is set to JSONPATH: the content extracted by JSONPath.
-        # - If Form is set to TEMPLATE: the template variable.
+        # - JSONPATH: The content extracted by using JSONPath.
+        # - TEMPLATE: The template variable.
         # 
         # Note: The Value field cannot exceed 10,240 characters.
         self.value = value
@@ -7426,10 +7485,10 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParame
     ):
         # The transformation format.
         self.form = form
-        # None.
+        # The template style.
         self.template = template
-        # - If Form is set to CONSTANT: a constant value.
-        # - If Form is set to JSONPATH: the content extracted by JSONPath.
+        # - CONSTANT: The constant value.
+        # - JSONPATH: The content extracted by using JSONPath.
         # 
         # Note: The Value field cannot exceed 10,240 characters.
         self.value = value
@@ -7473,8 +7532,11 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParame
         type: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersType = None,
         value: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersValue = None,
     ):
+        # The property name.
         self.name = name
+        # The DashVector property type.
         self.type = type
+        # The property value.
         self.value = value
 
     def validate(self):
@@ -7524,8 +7586,11 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParame
         template: str = None,
         value: str = None,
     ):
+        # The transformation format. Default value: CONSTANT.
         self.form = form
+        # The template style.
         self.template = template
+        # The property value.
         self.value = value
 
     def validate(self):
@@ -7567,8 +7632,11 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParame
         template: str = None,
         value: str = None,
     ):
+        # The transformation format. Default value: CONSTANT.
         self.form = form
+        # The template style.
         self.template = template
+        # The DashVector property type.
         self.value = value
 
     def validate(self):
@@ -7610,8 +7678,11 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParame
         template: str = None,
         value: str = None,
     ):
+        # The transformation format. Default value: CONSTANT.
         self.form = form
+        # The template style.
         self.template = template
+        # The property name.
         self.value = value
 
     def validate(self):
@@ -7681,7 +7752,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaC
         connector_parameters: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaConnectorParametersConnectorParameters = None,
         worker_parameters: Dict[str, Any] = None,
     ):
-        # The OSS file download URL.
+        # The download URL of the OSS file.
         self.connector_package_url = connector_package_url
         # The properties file parsed from the current ZIP package.
         self.connector_parameters = connector_parameters
@@ -7773,7 +7844,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheRocketMQCh
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The consumption checkpoint.
+        # The consumption timestamp.
         self.consume_timestamp = consume_timestamp
         # The consumer group information of Apache RocketMQ.
         self.group = group
@@ -7791,7 +7862,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheRocketMQCh
         self.topic = topic
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # VPC ID。
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -7933,7 +8004,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheRocketMQCh
         self.form = form
         # The template style.
         self.template = template
-        # The Group ID of the consumer group.
+        # The group ID of the consumer group.
         self.value = value
 
     def validate(self):
@@ -8027,15 +8098,19 @@ class ListEventStreamingsResponseBodyDataEventStreamingsRunOptions(DaraModel):
     ):
         # The batching window.
         self.batch_window = batch_window
+        # The business options.
         self.business_option = business_option
-        # Indicates whether the dead-letter queue is enabled. By default, the dead-letter queue is disabled, and messages that exceed the retry policy are discarded.
+        # Specifies whether to enable the dead-letter queue. By default, the dead-letter queue is disabled, and messages that exceed the retry policy are discarded.
         self.dead_letter_queue = dead_letter_queue
-        # The fault tolerance policy. Valid values: NONE (no fault tolerance) and ALL (tolerate all faults).
+        # The error tolerance policy. Valid values:
+        # - NONE: No errors are tolerated.
+        # - ALL: All errors are tolerated.
         self.errors_tolerance = errors_tolerance
-        # The concurrency.
+        # The number of concurrent tasks.
         self.maximum_tasks = maximum_tasks
-        # The retry policy when event pushing fails.
+        # The retry policy used when an event push fails.
         self.retry_strategy = retry_strategy
+        # The throttling value.
         self.throttling = throttling
 
     def validate(self):
@@ -8110,7 +8185,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsRetryStrategy(
         self,
         push_retry_strategy: str = None,
     ):
-        # The retry policy. Valid values: BACKOFF_RETRY (backoff retry) and EXPONENTIAL_DECAY_RETRY (exponential decay retry).
+        # The retry policy. Valid values:
+        # - BACKOFF_RETRY: Backoff retry.
+        # - EXPONENTIAL_DECAY_RETRY: Exponential decay retry.
         self.push_retry_strategy = push_retry_strategy
 
     def validate(self):
@@ -8142,15 +8219,15 @@ class ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsDeadLetterQueu
         v_switch_ids: str = None,
         vpc_id: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the dead-letter queue.
+        # The ARN of the dead-letter queue.
         self.arn = arn
         # The network type of the dead-letter queue.
         self.network = network
-        # The security group ID of the instance where the dead-letter queue resides.
+        # The ID of the security group to which the instance of the dead-letter queue belongs.
         self.security_group_id = security_group_id
-        # The vSwitch ID of the dead-letter queue.
+        # The ID of the vSwitch to which the dead-letter queue belongs.
         self.v_switch_ids = v_switch_ids
-        # The VPC ID of the dead-letter queue.
+        # The ID of the VPC to which the dead-letter queue belongs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -8204,8 +8281,11 @@ class ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsBusinessOption
         max_capacity_unit_count: int = None,
         min_capacity_unit_count: int = None,
     ):
+        # The business mode.
         self.business_mode = business_mode
+        # The maximum number of capacity units.
         self.max_capacity_unit_count = max_capacity_unit_count
+        # The minimum number of capacity units.
         self.min_capacity_unit_count = min_capacity_unit_count
 
     def validate(self):
@@ -8246,9 +8326,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsBatchWindow(Da
         count_based_window: int = None,
         time_based_window: int = None,
     ):
-        # The maximum number of events that the window can contain. When this threshold is reached, data in the window is pushed downstream. If multiple windows exist, a push is triggered when any window meets the condition.
+        # The maximum number of events that the window can accommodate. When this threshold is reached, data in the window is pushed downstream. If multiple windows exist, the push is triggered when the condition of any window is met.
         self.count_based_window = count_based_window
-        # The maximum time range (in seconds) of events that the window can contain. When this threshold is reached, data in the window is pushed downstream. If multiple windows exist, a push is triggered when any window meets the condition.
+        # The maximum time range in seconds for events that the window can accommodate. When this threshold is reached, data in the window is pushed downstream. If multiple windows exist, the push is triggered when the condition of any window is met.
         self.time_based_window = time_based_window
 
     def validate(self):

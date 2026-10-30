@@ -14,7 +14,7 @@ class CreateTableResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code.
+        # The return code.
         self.code = code
         # The response data.
         self.data = data
@@ -22,7 +22,7 @@ class CreateTableResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -76,7 +76,7 @@ class CreateTableResponseBodyData(DaraModel):
         self,
         table_arn: str = None,
     ):
-        # The ARN of the table.
+        # The table ARN.
         self.table_arn = table_arn
 
     def validate(self):

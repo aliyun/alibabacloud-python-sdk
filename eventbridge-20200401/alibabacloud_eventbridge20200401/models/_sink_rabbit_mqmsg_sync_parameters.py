@@ -25,21 +25,37 @@ class SinkRabbitMQMsgSyncParameters(DaraModel):
         virtual_host_name: str = None,
         vpc_id: str = None,
     ):
+        # The message body.
         self.body = body
+        # The endpoint of the ApsaraMQ for RabbitMQ cluster.
         self.endpoint = endpoint
+        # The exchange. This parameter is required only when the TargetType parameter is set to Exchange.
         self.exchange = exchange
+        # The ID of the ApsaraMQ for RabbitMQ instance.
         self.instance_id = instance_id
+        # The type of the ApsaraMQ for RabbitMQ instance.
         self.instance_type = instance_type
+        # The maximum number of hops allowed for message forwarding in a federation task. Messages that exceed this limit are dropped.
         self.max_hops = max_hops
+        # The message ID.
         self.message_id = message_id
+        # The network type used to connect to the ApsaraMQ for RabbitMQ instance.
         self.network_type = network_type
+        # The password used to connect to the ApsaraMQ for RabbitMQ cluster.
         self.password = password
+        # The message properties.
         self.properties = properties
+        # The routing key of the message. This parameter is required only when the TargetType parameter is set to Exchange.
         self.routing_key = routing_key
+        # The ID of the security group to which the nodes of the ApsaraMQ for RabbitMQ cluster belong.
         self.security_group_id = security_group_id
+        # The username used to connect to the ApsaraMQ for RabbitMQ cluster.
         self.username = username
+        # The IDs of the vSwitches in the VPC where the ApsaraMQ for RabbitMQ cluster resides.
         self.v_switch_ids = v_switch_ids
+        # The name of the virtual host (vhost) in the ApsaraMQ for RabbitMQ cluster.
         self.virtual_host_name = virtual_host_name
+        # The ID of the VPC where the ApsaraMQ for RabbitMQ cluster resides.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -173,8 +189,11 @@ class SinkRabbitMQMsgSyncParametersRoutingKey(DaraModel):
         template: str = None,
         value: str = None,
     ):
+        # The method used to generate the routing key.
         self.form = form
+        # The template string used to format parameter values. This parameter is used only when Form is set to TEMPLATE.
         self.template = template
+        # The value expression of the routing key.
         self.value = value
 
     def validate(self):
@@ -216,8 +235,11 @@ class SinkRabbitMQMsgSyncParametersProperties(DaraModel):
         template: str = None,
         value: str = None,
     ):
+        # The method used to generate the message properties.
         self.form = form
+        # The template string used to format parameter values. This parameter is used only when Form is set to TEMPLATE.
         self.template = template
+        # The value expression of the message properties.
         self.value = value
 
     def validate(self):
@@ -259,8 +281,11 @@ class SinkRabbitMQMsgSyncParametersMessageId(DaraModel):
         template: str = None,
         value: str = None,
     ):
+        # The method used to generate the message ID.
         self.form = form
+        # The template string used to format parameter values. This parameter is used only when Form is set to TEMPLATE.
         self.template = template
+        # The value expression of the message ID.
         self.value = value
 
     def validate(self):
@@ -302,8 +327,11 @@ class SinkRabbitMQMsgSyncParametersExchange(DaraModel):
         template: str = None,
         value: str = None,
     ):
+        # The method used to generate the target exchange.
         self.form = form
+        # The template string used to format parameter values. This parameter is used only when Form is set to TEMPLATE.
         self.template = template
+        # The value expression of the target exchange.
         self.value = value
 
     def validate(self):
@@ -345,8 +373,11 @@ class SinkRabbitMQMsgSyncParametersBody(DaraModel):
         template: str = None,
         value: str = None,
     ):
+        # The method used to generate the message body.
         self.form = form
+        # The template string used to format parameter values. This parameter is used only when Form is set to TEMPLATE.
         self.template = template
+        # The value expression of the message body.
         self.value = value
 
     def validate(self):

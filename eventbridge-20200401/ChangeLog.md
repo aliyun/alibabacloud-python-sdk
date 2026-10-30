@@ -1,3 +1,6 @@
+2026-10-30 Version: 8.7.1
+- Generated python 2020-04-01 for eventbridge.
+
 2026-09-16 Version: 8.6.1
 - Update API CreateEventStreaming: add request parameters Transforms.$.AiChunkTransformParameters.
 - Update API CreateEventStreaming: add request parameters Transforms.$.AiClassifyTransformParameters.

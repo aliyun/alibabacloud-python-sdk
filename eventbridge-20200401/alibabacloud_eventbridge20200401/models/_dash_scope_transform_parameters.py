@@ -17,11 +17,17 @@ class DashScopeTransformParameters(DaraModel):
         structured_output_json_schema: str = None,
         token_per_minute: int = None,
     ):
+        # The API key for DashScope.
         self.api_key = api_key
+        # The prompts.
         self.messages = messages
+        # The model name.
         self.model = model
+        # The rate limit in requests per minute.
         self.request_per_minute = request_per_minute
+        # The structured output schema.
         self.structured_output_json_schema = structured_output_json_schema
+        # The rate limit in tokens per minute.
         self.token_per_minute = token_per_minute
 
     def validate(self):
@@ -90,9 +96,13 @@ class DashScopeTransformParametersMessages(DaraModel):
         template: str = None,
         value: str = None,
     ):
+        # The template form.
         self.form = form
+        # The role.
         self.role = role
+        # The template.
         self.template = template
+        # The template value.
         self.value = value
 
     def validate(self):

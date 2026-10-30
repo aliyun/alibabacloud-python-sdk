@@ -9,6 +9,7 @@ class SinkDataWorksTriggerParameters(DaraModel):
         self,
         enable: str = None,
     ):
+        # Specifies whether to enable the DataWorks trigger.
         self.enable = enable
 
     def validate(self):

@@ -14,10 +14,15 @@ class BaiLianAgentTransformParameters(DaraModel):
         request_per_minute: int = None,
         token_per_minute: int = None,
     ):
+        # The API key for Model Studio.
         self.api_key = api_key
+        # The application ID.
         self.application_id = application_id
+        # The prompt.
         self.prompt = prompt
+        # The throttling limit in requests per minute.
         self.request_per_minute = request_per_minute
+        # The throttling limit in tokens per minute.
         self.token_per_minute = token_per_minute
 
     def validate(self):
@@ -73,8 +78,11 @@ class BaiLianAgentTransformParametersPrompt(DaraModel):
         template: str = None,
         value: str = None,
     ):
+        # The template form.
         self.form = form
+        # The template.
         self.template = template
+        # The template value.
         self.value = value
 
     def validate(self):

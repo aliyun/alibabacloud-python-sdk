@@ -14,15 +14,15 @@ class UpdateEventHouseRuntimeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. Success indicates that the operation is successful.
+        # The response code. A value of Success indicates that the operation was successful.
         self.code = code
-        # The Runtime information.
+        # The runtime information.
         self.data = data
-        # The response message.
+        # The message returned by the API operation.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation is successful.
+        # Indicates whether the operation was successful.
         self.success = success
 
     def validate(self):

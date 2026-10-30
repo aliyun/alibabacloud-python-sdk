@@ -11,13 +11,13 @@ class ListLumaCatalogsRequest(DaraModel):
         limit: int = None,
         next_token: str = None,
     ):
-        # The name of the Agent.
+        # The name of the agent.
         # 
         # This parameter is required.
         self.agent_name = agent_name
-        # 每页返回的最大数据条数。取值范围 1~100，不传时默认 100。每条记录都需回源查询一次元数据，因此该值同时限制单次调用的回源次数
+        # The maximum number of entries to return per page. Valid values: 1 to 100. Default value: 100. Each entry requires a back-to-origin metadata query, so this value also limits the number of back-to-origin requests per call.
         self.limit = limit
-        # 分页查询的起始Token。首次查询不传或传 "0"；后续翻页使用上一次响应中返回的 NextToken 值
+        # The token for the paging query. Leave this parameter empty or set it to "0" for the first query. For subsequent pages, use the NextToken value returned in the previous response.
         self.next_token = next_token
 
     def validate(self):

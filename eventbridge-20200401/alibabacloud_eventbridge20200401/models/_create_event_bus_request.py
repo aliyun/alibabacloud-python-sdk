@@ -10,9 +10,9 @@ class CreateEventBusRequest(DaraModel):
         description: str = None,
         event_bus_name: str = None,
     ):
-        # The description of the event bus.
+        # The description.
         self.description = description
-        # Indicates whether the request is successful. The value true indicates that the request is successful.
+        # The name of the event bus.
         # 
         # This parameter is required.
         self.event_bus_name = event_bus_name

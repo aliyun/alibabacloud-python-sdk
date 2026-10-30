@@ -14,10 +14,15 @@ class SinkMQTTParameters(DaraModel):
         payload: main_models.SinkMQTTParametersPayload = None,
         sub_topic: main_models.SinkMQTTParametersSubTopic = None,
     ):
+        # The ID of the destination MQTT instance.
         self.instance_id = instance_id
+        # The user properties.
         self.mqtt_5user_property = mqtt_5user_property
+        # The parent topic of the destination MQTT instance.
         self.parent_topic = parent_topic
+        # The message payload.
         self.payload = payload
+        # The subtopic name.
         self.sub_topic = sub_topic
 
     def validate(self):
@@ -79,8 +84,11 @@ class SinkMQTTParametersSubTopic(DaraModel):
         template: str = None,
         value: str = None,
     ):
+        # The method used to generate the parameter value. Valid values: CONSTANT (constant), JSONPATH (extracted from event content), and TEMPLATE (template).
         self.form = form
+        # The template string used to format the parameter value. This parameter is used only when Form is set to TEMPLATE.
         self.template = template
+        # The source content of the parameter value specified by Form. When Form is set to CONSTANT, this value is the content.
         self.value = value
 
     def validate(self):
@@ -122,8 +130,11 @@ class SinkMQTTParametersPayload(DaraModel):
         template: str = None,
         value: str = None,
     ):
+        # The method used to generate the message content.
         self.form = form
+        # The template string used to format the parameter value. This parameter is used only when Form is set to TEMPLATE.
         self.template = template
+        # The source content of the parameter value specified by Form. When Form is set to CONSTANT, this value is the content.
         self.value = value
 
     def validate(self):
@@ -165,8 +176,11 @@ class SinkMQTTParametersMqtt5UserProperty(DaraModel):
         template: str = None,
         value: str = None,
     ):
+        # The method used to generate the parameter value. Valid values: CONSTANT (constant), JSONPATH (extracted from event content), and TEMPLATE (template).
         self.form = form
+        # The template string used to format the parameter value. This parameter is used only when Form is set to TEMPLATE.
         self.template = template
+        # The source content of the parameter value specified by Form. When Form is set to CONSTANT, this value is the content.
         self.value = value
 
     def validate(self):

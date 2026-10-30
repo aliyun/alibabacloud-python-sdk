@@ -26,19 +26,19 @@ class CreateEventStreamingShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.event_streaming_name = event_streaming_name
-        # The event filtering rule. If you do not specify this parameter, all events are matched.
+        # The event filtering rule. If this parameter is not specified, all events are matched.
         self.filter_pattern = filter_pattern
-        # The general JSON Configurations for the event provider. This parameter is mutually exclusive with Source. Specify one of the two parameters.
+        # The common JSON configurations for the event provider. This parameter is mutually exclusive with the Source parameter.
         self.metadata = metadata
-        # The runtime parameters.
+        # The runtime environment parameters.
         self.run_options_shrink = run_options_shrink
-        # The event target. You must select exactly one type of Sink.
+        # The event target. You must select one and only one sink.
         self.sink_shrink = sink_shrink
-        # The event provider. You must select exactly one Source type.
+        # The event provider. You must specify exactly one source.
         self.source_shrink = source_shrink
-        # The list of tags. A maximum of 20 tags can be specified.
+        # The list of tags. You can specify up to 20 tags.
         self.tags = tags
-        # The Transform-related configurations.
+        # The transform configurations.
         self.transforms_shrink = transforms_shrink
 
     def validate(self):

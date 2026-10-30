@@ -19,21 +19,21 @@ class Table(DaraModel):
         retention_policy: main_models.TableRetentionPolicy = None,
         update_time: int = None,
     ):
-        # The name of the data catalog to which the table belongs
+        # The name of the data catalog to which the table belongs.
         self.catalog = catalog
-        # The column definition list of the table. Each column contains Name (column name), Type (data type), and Comment (remarks)
+        # The column definitions of the table. Each column includes the name, data type, and comment.
         self.columns = columns
-        # Comment description of the table
+        # The comment of the table.
         self.comment = comment
-        # The creation time of the table (Unix timestamp, in milliseconds)
+        # The creation time of the table. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The unique identifier name of the event table
+        # The unique name of the event table.
         self.name = name
-        # The name of the namespace to which the table belongs
+        # The name of the namespace to which the table belongs.
         self.namespace = namespace
-        # Data retention policy. Includes the retention days for hot data and cold data
+        # The data retention policy. This includes the retention periods for hot and cold data in days.
         self.retention_policy = retention_policy
-        # The last update time of the table (Unix timestamp, in milliseconds)
+        # The last update time of the table. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -115,9 +115,9 @@ class TableRetentionPolicy(DaraModel):
         cold_ttl: int = None,
         hot_ttl: int = None,
     ):
-        # Retention days for cold data, used for low-cost archival storage
+        # The number of days to retain cold data in low-cost archive storage.
         self.cold_ttl = cold_ttl
-        # Retention days for hot data, used for high-performance query storage
+        # The number of days to retain hot data in high-performance query storage.
         self.hot_ttl = hot_ttl
 
     def validate(self):
@@ -153,8 +153,11 @@ class TableColumns(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # The comment of the column.
         self.comment = comment
+        # The name of the column.
         self.name = name
+        # The data type of the column.
         self.type = type
 
     def validate(self):

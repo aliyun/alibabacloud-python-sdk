@@ -14,15 +14,15 @@ class CreateRuleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. The value Success indicates that the request is successful. Other values indicate that the request failed. For more information about error codes, see Error codes.
+        # The response code. A value of Success indicates that the request is successful. Other values indicate error codes. For more information, see Error codes.
         self.code = code
-        # The response data.
+        # The returned data.
         self.data = data
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation is successful. A value of true indicates that the operation is successful.
+        # Indicates whether the operation is successful.
         self.success = success
 
     def validate(self):

@@ -24,15 +24,15 @@ class UpdateEventStreamingShrinkRequest(DaraModel):
         self.event_streaming_name = event_streaming_name
         # The event filtering rule. If you do not specify this parameter, all events are matched. For more information, see [https://www.alibabacloud.com/help/en/eventbridge/user-guide/event-patterns](https://www.alibabacloud.com/help/en/eventbridge/user-guide/event-patterns).
         self.filter_pattern = filter_pattern
-        # The generic JSON Configurations for the event source. This parameter is mutually exclusive with Source.
+        # The common JSON Configurations for event providers. This parameter is mutually exclusive with Source.
         self.metadata = metadata
-        # The runtime parameters.
+        # The runtime environment parameters.
         self.run_options_shrink = run_options_shrink
-        # The event target. You must select exactly one type of Sink.
+        # The event target. You must select one sink, and you can configure only one sink.
         self.sink_shrink = sink_shrink
-        # The event provider. You must select exactly one Source type.
+        # The event provider. You must select exactly one source type and configure its parameters.
         self.source_shrink = source_shrink
-        # The transform-related configurations.
+        # The transform configurations.
         self.transforms_shrink = transforms_shrink
 
     def validate(self):

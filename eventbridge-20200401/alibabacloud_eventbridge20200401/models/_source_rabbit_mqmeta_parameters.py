@@ -23,20 +23,35 @@ class SourceRabbitMQMetaParameters(DaraModel):
         virtual_host_name: str = None,
         vpc_id: str = None,
     ):
+        # The access endpoint of the RabbitMQ cluster.
         self.endpoint = endpoint
+        # The added suffix.
         self.inner_name_suffix = inner_name_suffix
+        # The ID of the ApsaraMQ for RabbitMQ (MSMQ message queue) instance.
         self.instance_id = instance_id
+        # The type of the source RabbitMQ instance.
         self.instance_type = instance_type
+        # The maximum number of hops allowed for message forwarding in a federation task. Messages that exceed this limit are dropped.
         self.max_hops = max_hops
+        # The network type.
         self.network_type = network_type
+        # Specifies whether to consume messages in order.
         self.order_consume = order_consume
+        # The password used to connect to the RabbitMQ cluster.
         self.password = password
+        # The regular expression used to filter exchanges.
         self.regex = regex
+        # The ID of the security group to which the machines of the RabbitMQ cluster belong.
         self.security_group_id = security_group_id
+        # The type of synchronized metadata.
         self.sync_meta_type = sync_meta_type
+        # The username used to connect to the RabbitMQ cluster.
         self.username = username
+        # The ID of the vSwitch in the VPC where the RabbitMQ cluster resides.
         self.v_switch_ids = v_switch_ids
+        # The name of the virtual host (vhost) in the RabbitMQ cluster.
         self.virtual_host_name = virtual_host_name
+        # The ID of the VPC where the RabbitMQ cluster resides.
         self.vpc_id = vpc_id
 
     def validate(self):

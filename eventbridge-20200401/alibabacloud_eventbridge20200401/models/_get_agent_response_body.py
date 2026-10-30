@@ -14,7 +14,7 @@ class GetAgentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The API status or POP error code. Valid values: Success: succeeded.
+        # The API status or POP error code. Valid values: Success: The operation was successful.
         self.code = code
         # The returned result.
         self.data = data

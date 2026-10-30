@@ -22,7 +22,7 @@ class PutTargetsRequest(DaraModel):
         # 
         # This parameter is required.
         self.rule_name = rule_name
-        # A list of event targets to create or update. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
+        # The list of event targets to be added or updated. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
         # 
         # This parameter is required.
         self.targets = targets
@@ -79,29 +79,29 @@ class PutTargetsRequestTargets(DaraModel):
         push_retry_strategy: str = None,
         type: str = None,
     ):
-        # The concurrency control settings.
+        # The concurrency control configuration.
         self.concurrent_config = concurrent_config
-        # The dead-letter queue (DLQ) to which events are sent after all retry attempts fail. Supported DLQ types include Message Queue for Apache RocketMQ, Message Service (MNS), Message Queue for Apache Kafka, and EventBridge.
+        # The dead-letter queue. Unprocessed events or events that exceed the retry limit are written to the dead-letter queue. The supported queue types for the dead-letter queue include ApsaraMQ for RocketMQ, Simple Message Queue (formerly MNS), Message Queue for Apache Kafka, and EventBridge event bus.
         self.dead_letter_queue = dead_letter_queue
-        # The endpoint of the event target.
+        # The delivery endpoint URL.
         self.endpoint = endpoint
-        # The fault tolerance policy. Valid values:
+        # The fault tolerance strategy. Valid values:
         # 
-        # - **ALL**: Enables fault tolerance. If an error occurs, execution continues. After the retry attempts defined by the retry strategy are exhausted, the event is sent to the configured dead-letter queue or discarded.
+        # - **ALL**: Allows fault tolerance. Exceptions are tolerated and do not block execution. If the retry strategy is exhausted, messages are delivered to the dead-letter queue or discarded based on the configuration.
         # 
-        # - **NONE**: Disables fault tolerance. If an error persists after all retry attempts fail, execution is blocked.
+        # - **NONE**: Disables fault tolerance. Exceptions are not tolerated. If an exception occurs and the retry strategy is exhausted, execution is blocked.
         self.errors_tolerance = errors_tolerance
         # The custom ID of the event target.
         # 
         # This parameter is required.
         self.id = id
-        # A list of parameters for the event target.
+        # The parameters of the event target.
         self.param_list = param_list
-        # The retry strategy for pushing events. Valid values:
+        # The push retry policy. Valid values:
         # 
-        # - **BACKOFF_RETRY**: The event is retried up to three times at random intervals between 10 and 20 seconds.
+        # - **BACKOFF_RETRY**: Backoff retry policy. The system retries three times, and the interval between each retry is a random value between 10 and 20 seconds.
         # 
-        # - **EXPONENTIAL_DECAY_RETRY**: The event is retried up to 176 times over 24 hours. The retry interval starts at 1 second, doubles with each attempt (1, 2, 4, ..., 256 seconds), and is capped at 512 seconds for all subsequent retries.
+        # - **EXPONENTIAL_DECAY_RETRY**: Exponential decay retry. The system retries 176 times, and the interval between retries increments exponentially up to 512 seconds. The total retry time is one day. The specific intervals are 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 512...512 seconds (167 intervals of 512 seconds in total).
         self.push_retry_strategy = push_retry_strategy
         # The type of the event target. For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.html).
         # 
@@ -192,13 +192,13 @@ class PutTargetsRequestTargetsParamList(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The format of the parameter value. For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.html).
+        # The format of the event target parameter. For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.html).
         self.form = form
-        # The key of the parameter. For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.html).
+        # The resource parameter of the event target. For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.html).
         self.resource_key = resource_key
-        # The template for the parameter value. This parameter applies only when `Form` is set to `TEMPLATE`.
+        # The parameter template style of the event target.
         self.template = template
-        # The value of the parameter.
+        # The value of the event target parameter.
         self.value = value
 
     def validate(self):
@@ -248,15 +248,15 @@ class PutTargetsRequestTargetsDeadLetterQueue(DaraModel):
         v_switch_ids: str = None,
         vpc_id: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the dead-letter queue.
+        # The ARN of the dead-letter queue. Unprocessed events or events that exceed the maximum number of retries are written to the dead-letter queue.
         self.arn = arn
         # The network type of the dead-letter queue.
         self.network = network
         # The security group ID.
         self.security_group_id = security_group_id
-        # The VSwitch IDs.
+        # The vSwitch ID.
         self.v_switch_ids = v_switch_ids
-        # The VPC ID.
+        # The ID of the VPC where the dead-letter queue resides.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -308,7 +308,7 @@ class PutTargetsRequestTargetsConcurrentConfig(DaraModel):
         self,
         concurrency: int = None,
     ):
-        # The maximum number of concurrent executions for the event target.
+        # The concurrency.
         self.concurrency = concurrency
 
     def validate(self):

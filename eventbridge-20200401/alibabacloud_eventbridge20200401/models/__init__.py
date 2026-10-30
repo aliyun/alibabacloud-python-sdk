@@ -94,6 +94,10 @@ from ._create_event_streaming_request import CreateEventStreamingRequest
 from ._create_event_streaming_shrink_request import CreateEventStreamingShrinkRequest
 from ._create_event_streaming_response_body import CreateEventStreamingResponseBody
 from ._create_event_streaming_response import CreateEventStreamingResponse
+from ._create_knowledge_base_request import CreateKnowledgeBaseRequest
+from ._create_knowledge_base_shrink_request import CreateKnowledgeBaseShrinkRequest
+from ._create_knowledge_base_response_body import CreateKnowledgeBaseResponseBody
+from ._create_knowledge_base_response import CreateKnowledgeBaseResponse
 from ._create_namespace_request import CreateNamespaceRequest
 from ._create_namespace_response_body import CreateNamespaceResponseBody
 from ._create_namespace_response import CreateNamespaceResponse
@@ -133,6 +137,9 @@ from ._delete_event_source_response import DeleteEventSourceResponse
 from ._delete_event_streaming_request import DeleteEventStreamingRequest
 from ._delete_event_streaming_response_body import DeleteEventStreamingResponseBody
 from ._delete_event_streaming_response import DeleteEventStreamingResponse
+from ._delete_knowledge_base_request import DeleteKnowledgeBaseRequest
+from ._delete_knowledge_base_response_body import DeleteKnowledgeBaseResponseBody
+from ._delete_knowledge_base_response import DeleteKnowledgeBaseResponse
 from ._delete_namespace_request import DeleteNamespaceRequest
 from ._delete_namespace_response_body import DeleteNamespaceResponseBody
 from ._delete_namespace_response import DeleteNamespaceResponse
@@ -175,9 +182,18 @@ from ._get_api_destination_response import GetApiDestinationResponse
 from ._get_catalog_request import GetCatalogRequest
 from ._get_catalog_response_body import GetCatalogResponseBody
 from ._get_catalog_response import GetCatalogResponse
+from ._get_chunk_request import GetChunkRequest
+from ._get_chunk_response_body import GetChunkResponseBody
+from ._get_chunk_response import GetChunkResponse
 from ._get_connection_request import GetConnectionRequest
 from ._get_connection_response_body import GetConnectionResponseBody
 from ._get_connection_response import GetConnectionResponse
+from ._get_document_request import GetDocumentRequest
+from ._get_document_response_body import GetDocumentResponseBody
+from ._get_document_response import GetDocumentResponse
+from ._get_document_download_url_request import GetDocumentDownloadUrlRequest
+from ._get_document_download_url_response_body import GetDocumentDownloadUrlResponseBody
+from ._get_document_download_url_response import GetDocumentDownloadUrlResponse
 from ._get_event_bus_request import GetEventBusRequest
 from ._get_event_bus_response_body import GetEventBusResponseBody
 from ._get_event_bus_response import GetEventBusResponse
@@ -190,6 +206,9 @@ from ._get_event_streaming_response import GetEventStreamingResponse
 from ._get_generate_agent_data_semantics_progress_request import GetGenerateAgentDataSemanticsProgressRequest
 from ._get_generate_agent_data_semantics_progress_response_body import GetGenerateAgentDataSemanticsProgressResponseBody
 from ._get_generate_agent_data_semantics_progress_response import GetGenerateAgentDataSemanticsProgressResponse
+from ._get_knowledge_base_request import GetKnowledgeBaseRequest
+from ._get_knowledge_base_response_body import GetKnowledgeBaseResponseBody
+from ._get_knowledge_base_response import GetKnowledgeBaseResponse
 from ._get_luma_catalog_request import GetLumaCatalogRequest
 from ._get_luma_catalog_response_body import GetLumaCatalogResponseBody
 from ._get_luma_catalog_response import GetLumaCatalogResponse
@@ -231,9 +250,15 @@ from ._list_api_destinations_response import ListApiDestinationsResponse
 from ._list_catalogs_request import ListCatalogsRequest
 from ._list_catalogs_response_body import ListCatalogsResponseBody
 from ._list_catalogs_response import ListCatalogsResponse
+from ._list_chunks_request import ListChunksRequest
+from ._list_chunks_response_body import ListChunksResponseBody
+from ._list_chunks_response import ListChunksResponse
 from ._list_connections_request import ListConnectionsRequest
 from ._list_connections_response_body import ListConnectionsResponseBody
 from ._list_connections_response import ListConnectionsResponse
+from ._list_documents_request import ListDocumentsRequest
+from ._list_documents_response_body import ListDocumentsResponseBody
+from ._list_documents_response import ListDocumentsResponse
 from ._list_event_buses_request import ListEventBusesRequest
 from ._list_event_buses_response_body import ListEventBusesResponseBody
 from ._list_event_buses_response import ListEventBusesResponse
@@ -243,6 +268,9 @@ from ._list_event_house_runtimes_response import ListEventHouseRuntimesResponse
 from ._list_event_streamings_request import ListEventStreamingsRequest
 from ._list_event_streamings_response_body import ListEventStreamingsResponseBody
 from ._list_event_streamings_response import ListEventStreamingsResponse
+from ._list_knowledge_bases_request import ListKnowledgeBasesRequest
+from ._list_knowledge_bases_response_body import ListKnowledgeBasesResponseBody
+from ._list_knowledge_bases_response import ListKnowledgeBasesResponse
 from ._list_luma_catalogs_request import ListLumaCatalogsRequest
 from ._list_luma_catalogs_response_body import ListLumaCatalogsResponseBody
 from ._list_luma_catalogs_response import ListLumaCatalogsResponse
@@ -314,10 +342,16 @@ from ._query_traced_event_by_event_id_response import QueryTracedEventByEventIdR
 from ._query_traced_events_request import QueryTracedEventsRequest
 from ._query_traced_events_response_body import QueryTracedEventsResponseBody
 from ._query_traced_events_response import QueryTracedEventsResponse
+from ._query_with_sqlrequest import QueryWithSQLRequest
+from ._query_with_sqlresponse_body import QueryWithSQLResponseBody
+from ._query_with_sqlresponse import QueryWithSQLResponse
 from ._save_agent_data_semantics_request import SaveAgentDataSemanticsRequest
 from ._save_agent_data_semantics_shrink_request import SaveAgentDataSemanticsShrinkRequest
 from ._save_agent_data_semantics_response_body import SaveAgentDataSemanticsResponseBody
 from ._save_agent_data_semantics_response import SaveAgentDataSemanticsResponse
+from ._search_knowledge_base_request import SearchKnowledgeBaseRequest
+from ._search_knowledge_base_response_body import SearchKnowledgeBaseResponseBody
+from ._search_knowledge_base_response import SearchKnowledgeBaseResponse
 from ._search_luma_knowledge_base_request import SearchLumaKnowledgeBaseRequest
 from ._search_luma_knowledge_base_response_body import SearchLumaKnowledgeBaseResponseBody
 from ._search_luma_knowledge_base_response import SearchLumaKnowledgeBaseResponse
@@ -360,6 +394,10 @@ from ._update_event_streaming_response import UpdateEventStreamingResponse
 from ._update_event_streaming_business_option_request import UpdateEventStreamingBusinessOptionRequest
 from ._update_event_streaming_business_option_response_body import UpdateEventStreamingBusinessOptionResponseBody
 from ._update_event_streaming_business_option_response import UpdateEventStreamingBusinessOptionResponse
+from ._update_knowledge_base_request import UpdateKnowledgeBaseRequest
+from ._update_knowledge_base_shrink_request import UpdateKnowledgeBaseShrinkRequest
+from ._update_knowledge_base_response_body import UpdateKnowledgeBaseResponseBody
+from ._update_knowledge_base_response import UpdateKnowledgeBaseResponse
 from ._update_namespace_request import UpdateNamespaceRequest
 from ._update_namespace_response_body import UpdateNamespaceResponseBody
 from ._update_namespace_response import UpdateNamespaceResponse
@@ -598,6 +636,10 @@ from ._create_event_streaming_request import CreateEventStreamingRequestTags
 from ._create_event_streaming_request import CreateEventStreamingRequestTransforms
 from ._create_event_streaming_shrink_request import CreateEventStreamingShrinkRequestTags
 from ._create_event_streaming_response_body import CreateEventStreamingResponseBodyData
+from ._create_knowledge_base_request import CreateKnowledgeBaseRequestChunkConfigurationPreprocessRules
+from ._create_knowledge_base_request import CreateKnowledgeBaseRequestChunkConfiguration
+from ._create_knowledge_base_request import CreateKnowledgeBaseRequestMetadataSchema
+from ._create_knowledge_base_request import CreateKnowledgeBaseRequestSearchConfiguration
 from ._create_namespace_response_body import CreateNamespaceResponseBodyData
 from ._create_rule_request import CreateRuleRequestEventTargetsConcurrentConfig
 from ._create_rule_request import CreateRuleRequestEventTargetsDeadLetterQueue
@@ -641,6 +683,7 @@ from ._get_connection_response_body import GetConnectionResponseBodyDataConnecti
 from ._get_connection_response_body import GetConnectionResponseBodyDataConnectionsNetworkParameters
 from ._get_connection_response_body import GetConnectionResponseBodyDataConnections
 from ._get_connection_response_body import GetConnectionResponseBodyData
+from ._get_document_download_url_response_body import GetDocumentDownloadUrlResponseBodyData
 from ._get_event_bus_response_body import GetEventBusResponseBodyData
 from ._get_event_streaming_response_body import GetEventStreamingResponseBodyDataDetailedStatus
 from ._get_event_streaming_response_body import GetEventStreamingResponseBodyDataRunOptionsBatchWindow
@@ -799,6 +842,7 @@ from ._list_api_destinations_response_body import ListApiDestinationsResponseBod
 from ._list_api_destinations_response_body import ListApiDestinationsResponseBodyDataApiDestinations
 from ._list_api_destinations_response_body import ListApiDestinationsResponseBodyData
 from ._list_catalogs_response_body import ListCatalogsResponseBodyData
+from ._list_chunks_response_body import ListChunksResponseBodyData
 from ._list_connections_response_body import ListConnectionsResponseBodyDataConnectionsAuthParametersApiKeyAuthParameters
 from ._list_connections_response_body import ListConnectionsResponseBodyDataConnectionsAuthParametersBasicAuthParameters
 from ._list_connections_response_body import ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParametersClientParameters
@@ -811,6 +855,7 @@ from ._list_connections_response_body import ListConnectionsResponseBodyDataConn
 from ._list_connections_response_body import ListConnectionsResponseBodyDataConnectionsNetworkParameters
 from ._list_connections_response_body import ListConnectionsResponseBodyDataConnections
 from ._list_connections_response_body import ListConnectionsResponseBodyData
+from ._list_documents_response_body import ListDocumentsResponseBodyData
 from ._list_event_buses_response_body import ListEventBusesResponseBodyDataEventBuses
 from ._list_event_buses_response_body import ListEventBusesResponseBodyData
 from ._list_event_house_runtimes_response_body import ListEventHouseRuntimesResponseBodyData
@@ -947,6 +992,7 @@ from ._list_event_streamings_response_body import ListEventStreamingsResponseBod
 from ._list_event_streamings_response_body import ListEventStreamingsResponseBodyDataEventStreamingsTransforms
 from ._list_event_streamings_response_body import ListEventStreamingsResponseBodyDataEventStreamings
 from ._list_event_streamings_response_body import ListEventStreamingsResponseBodyData
+from ._list_knowledge_bases_response_body import ListKnowledgeBasesResponseBodyData
 from ._list_luma_catalogs_response_body import ListLumaCatalogsResponseBodyData
 from ._list_luma_chunks_response_body import ListLumaChunksResponseBodyData
 from ._list_luma_documents_response_body import ListLumaDocumentsResponseBodyData
@@ -988,6 +1034,8 @@ from ._query_traced_event_by_event_id_response_body import QueryTracedEventByEve
 from ._query_traced_event_by_event_id_response_body import QueryTracedEventByEventIdResponseBodyData
 from ._query_traced_events_response_body import QueryTracedEventsResponseBodyDataEvents
 from ._query_traced_events_response_body import QueryTracedEventsResponseBodyData
+from ._query_with_sqlresponse_body import QueryWithSQLResponseBodyData
+from ._search_knowledge_base_response_body import SearchKnowledgeBaseResponseBodyData
 from ._search_luma_knowledge_base_response_body import SearchLumaKnowledgeBaseResponseBodyData
 from ._test_event_pattern_response_body import TestEventPatternResponseBodyData
 from ._test_event_source_config_request import TestEventSourceConfigRequestSourceMySQLParameters
@@ -1115,11 +1163,15 @@ from ._update_event_streaming_request import UpdateEventStreamingRequestSinkSink
 from ._update_event_streaming_request import UpdateEventStreamingRequestSinkSinkRabbitMQParametersExchange
 from ._update_event_streaming_request import UpdateEventStreamingRequestSinkSinkRabbitMQParametersInstanceId
 from ._update_event_streaming_request import UpdateEventStreamingRequestSinkSinkRabbitMQParametersMessageId
+from ._update_event_streaming_request import UpdateEventStreamingRequestSinkSinkRabbitMQParametersNetworkType
 from ._update_event_streaming_request import UpdateEventStreamingRequestSinkSinkRabbitMQParametersProperties
 from ._update_event_streaming_request import UpdateEventStreamingRequestSinkSinkRabbitMQParametersQueueName
 from ._update_event_streaming_request import UpdateEventStreamingRequestSinkSinkRabbitMQParametersRoutingKey
+from ._update_event_streaming_request import UpdateEventStreamingRequestSinkSinkRabbitMQParametersSecurityGroupId
 from ._update_event_streaming_request import UpdateEventStreamingRequestSinkSinkRabbitMQParametersTargetType
+from ._update_event_streaming_request import UpdateEventStreamingRequestSinkSinkRabbitMQParametersVSwitchIds
 from ._update_event_streaming_request import UpdateEventStreamingRequestSinkSinkRabbitMQParametersVirtualHostName
+from ._update_event_streaming_request import UpdateEventStreamingRequestSinkSinkRabbitMQParametersVpcId
 from ._update_event_streaming_request import UpdateEventStreamingRequestSinkSinkRabbitMQParameters
 from ._update_event_streaming_request import UpdateEventStreamingRequestSinkSinkRocketMQCheckpointParametersConsumeTimestamp
 from ._update_event_streaming_request import UpdateEventStreamingRequestSinkSinkRocketMQCheckpointParametersGroup
@@ -1171,6 +1223,9 @@ from ._update_event_streaming_request import UpdateEventStreamingRequestSourceSo
 from ._update_event_streaming_request import UpdateEventStreamingRequestSourceSourceSLSParameters
 from ._update_event_streaming_request import UpdateEventStreamingRequestSource
 from ._update_event_streaming_request import UpdateEventStreamingRequestTransforms
+from ._update_knowledge_base_request import UpdateKnowledgeBaseRequestChunkConfigurationPreprocessRules
+from ._update_knowledge_base_request import UpdateKnowledgeBaseRequestChunkConfiguration
+from ._update_knowledge_base_request import UpdateKnowledgeBaseRequestSearchConfiguration
 from ._update_namespace_response_body import UpdateNamespaceResponseBodyData
 from ._update_table_request import UpdateTableRequestAddColumn
 from ._update_table_request import UpdateTableRequestDeleteColumn
@@ -1273,6 +1328,10 @@ __all__ = [
     CreateEventStreamingShrinkRequest,
     CreateEventStreamingResponseBody,
     CreateEventStreamingResponse,
+    CreateKnowledgeBaseRequest,
+    CreateKnowledgeBaseShrinkRequest,
+    CreateKnowledgeBaseResponseBody,
+    CreateKnowledgeBaseResponse,
     CreateNamespaceRequest,
     CreateNamespaceResponseBody,
     CreateNamespaceResponse,
@@ -1312,6 +1371,9 @@ __all__ = [
     DeleteEventStreamingRequest,
     DeleteEventStreamingResponseBody,
     DeleteEventStreamingResponse,
+    DeleteKnowledgeBaseRequest,
+    DeleteKnowledgeBaseResponseBody,
+    DeleteKnowledgeBaseResponse,
     DeleteNamespaceRequest,
     DeleteNamespaceResponseBody,
     DeleteNamespaceResponse,
@@ -1354,9 +1416,18 @@ __all__ = [
     GetCatalogRequest,
     GetCatalogResponseBody,
     GetCatalogResponse,
+    GetChunkRequest,
+    GetChunkResponseBody,
+    GetChunkResponse,
     GetConnectionRequest,
     GetConnectionResponseBody,
     GetConnectionResponse,
+    GetDocumentRequest,
+    GetDocumentResponseBody,
+    GetDocumentResponse,
+    GetDocumentDownloadUrlRequest,
+    GetDocumentDownloadUrlResponseBody,
+    GetDocumentDownloadUrlResponse,
     GetEventBusRequest,
     GetEventBusResponseBody,
     GetEventBusResponse,
@@ -1369,6 +1440,9 @@ __all__ = [
     GetGenerateAgentDataSemanticsProgressRequest,
     GetGenerateAgentDataSemanticsProgressResponseBody,
     GetGenerateAgentDataSemanticsProgressResponse,
+    GetKnowledgeBaseRequest,
+    GetKnowledgeBaseResponseBody,
+    GetKnowledgeBaseResponse,
     GetLumaCatalogRequest,
     GetLumaCatalogResponseBody,
     GetLumaCatalogResponse,
@@ -1410,9 +1484,15 @@ __all__ = [
     ListCatalogsRequest,
     ListCatalogsResponseBody,
     ListCatalogsResponse,
+    ListChunksRequest,
+    ListChunksResponseBody,
+    ListChunksResponse,
     ListConnectionsRequest,
     ListConnectionsResponseBody,
     ListConnectionsResponse,
+    ListDocumentsRequest,
+    ListDocumentsResponseBody,
+    ListDocumentsResponse,
     ListEventBusesRequest,
     ListEventBusesResponseBody,
     ListEventBusesResponse,
@@ -1422,6 +1502,9 @@ __all__ = [
     ListEventStreamingsRequest,
     ListEventStreamingsResponseBody,
     ListEventStreamingsResponse,
+    ListKnowledgeBasesRequest,
+    ListKnowledgeBasesResponseBody,
+    ListKnowledgeBasesResponse,
     ListLumaCatalogsRequest,
     ListLumaCatalogsResponseBody,
     ListLumaCatalogsResponse,
@@ -1493,10 +1576,16 @@ __all__ = [
     QueryTracedEventsRequest,
     QueryTracedEventsResponseBody,
     QueryTracedEventsResponse,
+    QueryWithSQLRequest,
+    QueryWithSQLResponseBody,
+    QueryWithSQLResponse,
     SaveAgentDataSemanticsRequest,
     SaveAgentDataSemanticsShrinkRequest,
     SaveAgentDataSemanticsResponseBody,
     SaveAgentDataSemanticsResponse,
+    SearchKnowledgeBaseRequest,
+    SearchKnowledgeBaseResponseBody,
+    SearchKnowledgeBaseResponse,
     SearchLumaKnowledgeBaseRequest,
     SearchLumaKnowledgeBaseResponseBody,
     SearchLumaKnowledgeBaseResponse,
@@ -1539,6 +1628,10 @@ __all__ = [
     UpdateEventStreamingBusinessOptionRequest,
     UpdateEventStreamingBusinessOptionResponseBody,
     UpdateEventStreamingBusinessOptionResponse,
+    UpdateKnowledgeBaseRequest,
+    UpdateKnowledgeBaseShrinkRequest,
+    UpdateKnowledgeBaseResponseBody,
+    UpdateKnowledgeBaseResponse,
     UpdateNamespaceRequest,
     UpdateNamespaceResponseBody,
     UpdateNamespaceResponse,
@@ -1777,6 +1870,10 @@ __all__ = [
     CreateEventStreamingRequestTransforms,
     CreateEventStreamingShrinkRequestTags,
     CreateEventStreamingResponseBodyData,
+    CreateKnowledgeBaseRequestChunkConfigurationPreprocessRules,
+    CreateKnowledgeBaseRequestChunkConfiguration,
+    CreateKnowledgeBaseRequestMetadataSchema,
+    CreateKnowledgeBaseRequestSearchConfiguration,
     CreateNamespaceResponseBodyData,
     CreateRuleRequestEventTargetsConcurrentConfig,
     CreateRuleRequestEventTargetsDeadLetterQueue,
@@ -1820,6 +1917,7 @@ __all__ = [
     GetConnectionResponseBodyDataConnectionsNetworkParameters,
     GetConnectionResponseBodyDataConnections,
     GetConnectionResponseBodyData,
+    GetDocumentDownloadUrlResponseBodyData,
     GetEventBusResponseBodyData,
     GetEventStreamingResponseBodyDataDetailedStatus,
     GetEventStreamingResponseBodyDataRunOptionsBatchWindow,
@@ -1978,6 +2076,7 @@ __all__ = [
     ListApiDestinationsResponseBodyDataApiDestinations,
     ListApiDestinationsResponseBodyData,
     ListCatalogsResponseBodyData,
+    ListChunksResponseBodyData,
     ListConnectionsResponseBodyDataConnectionsAuthParametersApiKeyAuthParameters,
     ListConnectionsResponseBodyDataConnectionsAuthParametersBasicAuthParameters,
     ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParametersClientParameters,
@@ -1990,6 +2089,7 @@ __all__ = [
     ListConnectionsResponseBodyDataConnectionsNetworkParameters,
     ListConnectionsResponseBodyDataConnections,
     ListConnectionsResponseBodyData,
+    ListDocumentsResponseBodyData,
     ListEventBusesResponseBodyDataEventBuses,
     ListEventBusesResponseBodyData,
     ListEventHouseRuntimesResponseBodyData,
@@ -2126,6 +2226,7 @@ __all__ = [
     ListEventStreamingsResponseBodyDataEventStreamingsTransforms,
     ListEventStreamingsResponseBodyDataEventStreamings,
     ListEventStreamingsResponseBodyData,
+    ListKnowledgeBasesResponseBodyData,
     ListLumaCatalogsResponseBodyData,
     ListLumaChunksResponseBodyData,
     ListLumaDocumentsResponseBodyData,
@@ -2167,6 +2268,8 @@ __all__ = [
     QueryTracedEventByEventIdResponseBodyData,
     QueryTracedEventsResponseBodyDataEvents,
     QueryTracedEventsResponseBodyData,
+    QueryWithSQLResponseBodyData,
+    SearchKnowledgeBaseResponseBodyData,
     SearchLumaKnowledgeBaseResponseBodyData,
     TestEventPatternResponseBodyData,
     TestEventSourceConfigRequestSourceMySQLParameters,
@@ -2294,11 +2397,15 @@ __all__ = [
     UpdateEventStreamingRequestSinkSinkRabbitMQParametersExchange,
     UpdateEventStreamingRequestSinkSinkRabbitMQParametersInstanceId,
     UpdateEventStreamingRequestSinkSinkRabbitMQParametersMessageId,
+    UpdateEventStreamingRequestSinkSinkRabbitMQParametersNetworkType,
     UpdateEventStreamingRequestSinkSinkRabbitMQParametersProperties,
     UpdateEventStreamingRequestSinkSinkRabbitMQParametersQueueName,
     UpdateEventStreamingRequestSinkSinkRabbitMQParametersRoutingKey,
+    UpdateEventStreamingRequestSinkSinkRabbitMQParametersSecurityGroupId,
     UpdateEventStreamingRequestSinkSinkRabbitMQParametersTargetType,
+    UpdateEventStreamingRequestSinkSinkRabbitMQParametersVSwitchIds,
     UpdateEventStreamingRequestSinkSinkRabbitMQParametersVirtualHostName,
+    UpdateEventStreamingRequestSinkSinkRabbitMQParametersVpcId,
     UpdateEventStreamingRequestSinkSinkRabbitMQParameters,
     UpdateEventStreamingRequestSinkSinkRocketMQCheckpointParametersConsumeTimestamp,
     UpdateEventStreamingRequestSinkSinkRocketMQCheckpointParametersGroup,
@@ -2350,6 +2457,9 @@ __all__ = [
     UpdateEventStreamingRequestSourceSourceSLSParameters,
     UpdateEventStreamingRequestSource,
     UpdateEventStreamingRequestTransforms,
+    UpdateKnowledgeBaseRequestChunkConfigurationPreprocessRules,
+    UpdateKnowledgeBaseRequestChunkConfiguration,
+    UpdateKnowledgeBaseRequestSearchConfiguration,
     UpdateNamespaceResponseBodyData,
     UpdateTableRequestAddColumn,
     UpdateTableRequestDeleteColumn,

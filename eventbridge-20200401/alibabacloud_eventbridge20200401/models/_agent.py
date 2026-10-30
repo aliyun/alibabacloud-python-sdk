@@ -17,13 +17,21 @@ class Agent(DaraModel):
         prompt: str = None,
         updated_at: int = None,
     ):
+        # The creation time in UNIX milliseconds.
         self.created_at = created_at
+        # The description of the agent.
         self.description = description
+        # The ID of the MCP server associated with the agent.
         self.mcp_server_id = mcp_server_id
+        # The name of the MCP server.
         self.mcp_server_name = mcp_server_name
+        # The associated table metadata.
         self.metadata = metadata
+        # The name of the agent.
         self.name = name
+        # The custom prompt.
         self.prompt = prompt
+        # The update time in UNIX milliseconds.
         self.updated_at = updated_at
 
     def validate(self):

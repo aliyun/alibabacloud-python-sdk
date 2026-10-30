@@ -13,9 +13,13 @@ class AiTranslateTransformParameters(DaraModel):
         step_name: str = None,
         target_language: str = None,
     ):
+        # The input text field.
         self.input_field = input_field
+        # The source language. If left empty, the language is automatically detected.
         self.source_language = source_language
+        # The field name attached to the CloudEvent output. Default value: transform0.
         self.step_name = step_name
+        # The target language.
         self.target_language = target_language
 
     def validate(self):
