@@ -16,15 +16,15 @@ class DescribeLoadBalancerSpecResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The specifications. Valid values:
+        # The specifications.
         self.load_balancer_specs = load_balancer_specs
-        # The page number.
+        # The page number of the instance list.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: 100. Default value: 10.
+        # The number of entries per page for a paged query. Maximum value: 100. Default value: 10.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -85,9 +85,9 @@ class DescribeLoadBalancerSpecResponseBodyLoadBalancerSpecs(DaraModel):
         display_name: str = None,
         load_balancer_spec: str = None,
     ):
-        # The display name of the instance type.
+        # The display name of the instance specification.
         self.display_name = display_name
-        # The specifications of the ELB instance.
+        # The specification of the load balancing instance.
         self.load_balancer_spec = load_balancer_spec
 
     def validate(self):

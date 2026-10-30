@@ -10,7 +10,9 @@ class InstanceActiveOpsTask(DaraModel):
         instance_active_ops_task_id: str = None,
         instance_active_ops_task_status: str = None,
     ):
+        # instance active ops task id
         self.instance_active_ops_task_id = instance_active_ops_task_id
+        # the status of instance active ops task
         self.instance_active_ops_task_status = instance_active_ops_task_status
 
     def validate(self):

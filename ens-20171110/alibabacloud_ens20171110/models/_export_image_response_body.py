@@ -10,9 +10,9 @@ class ExportImageResponseBody(DaraModel):
         exported_image_url: str = None,
         request_id: str = None,
     ):
-        # The URL that points to the exported image.
+        # The URL of the exported image.
         self.exported_image_url = exported_image_url
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

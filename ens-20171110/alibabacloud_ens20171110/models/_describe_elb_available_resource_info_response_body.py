@@ -15,7 +15,7 @@ class DescribeElbAvailableResourceInfoResponseBody(DaraModel):
     ):
         # The collection of resource information.
         self.elb_available_resource_info = elb_available_resource_info
-        # The common parameter. The ID of the request. Each request has a unique ID, which is active for troubleshooting.
+        # The common parameter. The ID of each request is unique and active for troubleshooting and locating issues.
         self.request_id = request_id
 
     def validate(self):
@@ -67,11 +67,11 @@ class DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo(DaraM
         self.ability = ability
         # The area.
         self.area = area
-        # The quantity available for purchase.
+        # The Quantity available for purchase.
         self.can_buy_count = can_buy_count
         # The English name of the edge zone.
         self.en_name = en_name
-        # The ID of the ENS edge zone.
+        # The edge zone ID.
         self.ens_region_id = ens_region_id
         # The specification of the load balancing instance.
         self.load_balancer_spec = load_balancer_spec

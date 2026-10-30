@@ -12,7 +12,7 @@ class UnassignPrivateIpAddressesRequest(DaraModel):
         network_interface_id: str = None,
         private_ip_address: List[str] = None,
     ):
-        # The ID of the ENI.
+        # The ID of the network interface controller (NIC).
         # 
         # This parameter is required.
         self.network_interface_id = network_interface_id

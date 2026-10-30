@@ -10,7 +10,7 @@ class DescribeInstanceAutoRenewAttributeRequest(DaraModel):
         instance_ids: str = None,
         owner_id: int = None,
     ):
-        # The ID of an instance. Separate multiple IDs with semicolons (;).
+        # The instance IDs. Separate multiple IDs with semicolons (;).
         # 
         # This parameter is required.
         self.instance_ids = instance_ids

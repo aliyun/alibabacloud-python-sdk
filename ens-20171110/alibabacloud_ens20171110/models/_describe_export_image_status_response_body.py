@@ -10,17 +10,13 @@ class DescribeExportImageStatusResponseBody(DaraModel):
         image_export_status: str = None,
         request_id: str = None,
     ):
-        # The export status of the image. Valid values:
-        # 
-        # - Exporting
-        # 
-        # - Exported
-        # 
-        # - ExportError
-        # 
-        # - Unexported
+        # The image export status. Valid values:
+        # - Exporting: The image is being exported.
+        # - Exported: The image is exported.
+        # - ExportError: An error occurred during the image export.
+        # - Unexported: The image is not exported.
         self.image_export_status = image_export_status
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

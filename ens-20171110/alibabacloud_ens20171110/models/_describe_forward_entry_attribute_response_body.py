@@ -22,61 +22,51 @@ class DescribeForwardEntryAttributeResponseBody(DaraModel):
         standby_status: str = None,
         status: str = None,
     ):
-        # The creation time in UTC.
+        # The time when the DNAT entry was created. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The Elastic IP Address (EIP) that provides public network access in the DNAT entry.
+        # The elastic IP address (EIP) that provides public network access in the DNAT entry.
         self.external_ip = external_ip
-        # The external port or port range for port forwarding.
-        # 
-        # - The port range must be between 1 and 65535.
-        # 
-        # - To forward a port range, separate the start and end ports with a forward slash (/), such as 10/20.
+        # The external port or port range used for port forwarding.
+        # - The port range must be from 1 to 65535.
+        # - To forward traffic within a port range, separate the start port and the end port with a forward slash (/). Example: 10/20.
         self.external_port = external_port
         # The ID of the DNAT entry.
         self.forward_entry_id = forward_entry_id
         # The name of the DNAT entry.
         self.forward_entry_name = forward_entry_name
-        # The probe port for DNAT. It must fall within the internal port range. The default value is empty.
+        # The health check port for the DNAT entry. The port must be within the internal port range. Default value: null.
         self.health_check_port = health_check_port
-        # The private IP address of the instance that communicates over the public network through the DNAT entry.
+        # The private IP address of the instance that communicates with the Internet through the DNAT entry.
         self.internal_ip = internal_ip
-        # The internal port or port range for port forwarding.
+        # The internal port or port range used for port forwarding.
         # 
-        # - The port range must be between 1 and 65535.
-        # 
-        # - To forward a port range, separate the start and end ports with a forward slash (/), such as 10/20.
+        # - The port range must be from 1 to 65535.
+        # - To forward traffic within a port range, separate the start port and the end port with a forward slash (/). Example: 10/20.
         self.internal_port = internal_port
         # The protocol type. Valid values:
         # 
-        # - **TCP**: Forwards TCP messages.
+        # - **TCP**: Forwards TCP packets.
         # 
-        # - **UDP**: Forwards UDP messages.
+        # - **UDP**: Forwards UDP packets.
         # 
-        # - **Any**: Forwards messages of all protocols.
+        # - **Any**: Forwards packets of all protocols.
         self.ip_protocol = ip_protocol
-        # The ID of the NAT Gateway.
+        # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
         # The request ID.
         self.request_id = request_id
-        # The standby Elastic IP Address (EIP) that provides public network access. You must select a standby EIP attached to the NAT Gateway. The standby public IP becomes active after the DNAT entry is created.
+        # The standby elastic IP address (EIP) that provides public network access. You must select a standby EIP that is attached to the NAT gateway. The standby public IP address takes effect after the DNAT entry is created.
         self.standby_external_ip = standby_external_ip
-        # The status of the standby EIP.
-        # 
-        # - Running: Enabled.
-        # 
-        # - Stopping: Being disabled.
-        # 
-        # - Stopped: Disabled.
-        # 
-        # - Starting: Being enabled.
+        # The status of the standby EIP. Valid values:
+        # - Running: The standby EIP is enabled.
+        # - Stopping: The standby EIP is being disabled.
+        # - Stopped: The standby EIP is disabled.
+        # - Starting: The standby EIP is being enabled.
         self.standby_status = standby_status
-        # The status of the DNAT entry.
-        # 
-        # - Pending: The configuration is in progress, such as during creation or modification.
-        # 
-        # - Available: The entry is active.
-        # 
-        # - Deleting: The entry is being deleted.
+        # The status of the DNAT entry. Valid values:
+        # - Pending: The DNAT entry is being configured. It may be being created or modified.
+        # - Available: The DNAT entry is available.
+        # - Deleting: The DNAT entry is being deleted.
         self.status = status
 
     def validate(self):

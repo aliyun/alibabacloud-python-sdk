@@ -9,7 +9,7 @@ class StopEpnInstanceRequest(DaraModel):
         self,
         epninstance_id: str = None,
     ):
-        # The ID of the EPN instance.
+        # The edge-to-edge network instance ID.
         # 
         # This parameter is required.
         self.epninstance_id = epninstance_id

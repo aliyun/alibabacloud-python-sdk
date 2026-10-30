@@ -11,9 +11,9 @@ class DescribePriceResponseBody(DaraModel):
         price_info: main_models.DescribePriceResponseBodyPriceInfo = None,
         request_id: str = None,
     ):
-        # The price information.
+        # The price information list.
         self.price_info = price_info
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -49,7 +49,7 @@ class DescribePriceResponseBodyPriceInfo(DaraModel):
         self,
         price: main_models.DescribePriceResponseBodyPriceInfoPrice = None,
     ):
-        # The price.
+        # The price information.
         self.price = price
 
     def validate(self):
@@ -82,17 +82,17 @@ class DescribePriceResponseBodyPriceInfoPrice(DaraModel):
         original_price: float = None,
         trade_price: float = None,
     ):
-        # The type of currency.
+        # The currency. Valid values:
         # 
-        # - USD: US dollar
-        # 
-        # - JPY: Japanese Yen
+        # <props="china">- CNY: Chinese yuan.
+        # - USD: US dollar.
+        # - JPY: Japanese yen.
         self.currency = currency
         # The discount.
         self.discount_price = discount_price
         # The original price.
         self.original_price = original_price
-        # The final price.
+        # The transaction price.
         self.trade_price = trade_price
 
     def validate(self):

@@ -20,19 +20,19 @@ class RunServiceScheduleResponseBody(DaraModel):
         tcp_ports: bool = None,
     ):
         self.command_results = command_results
-        # The index number of the scheduled virtual device (pod).
+        # The index of the scheduled target virtual device (container pod).
         self.index = index
-        # The ID of the scheduled instance.
+        # The ID of the target instance.
         self.instance_id = instance_id
-        # The IP address of the scheduled instance.
+        # The IP address of the scheduled target instance.
         self.instance_ip = instance_ip
-        # The start port of the scheduled instance.
+        # The start port of the scheduled target instance.
         self.instance_port = instance_port
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is repeated. This parameter is not returned if ServcieAction is set to Console.
+        # Specifies whether the operation is repeated for ServiceAction values other than Console.
         self.request_repeated = request_repeated
-        # The TCP port range of the scheduled instance or container. The value is in the ${from}-$-{to} format. Example: 80-88.
+        # The TCP service port range of the scheduled target virtual machine instance or container. Format: ${from}-${to}. Example: 80-88.
         self.tcp_ports = tcp_ports
 
     def validate(self):

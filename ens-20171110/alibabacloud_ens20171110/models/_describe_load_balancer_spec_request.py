@@ -9,7 +9,7 @@ class DescribeLoadBalancerSpecRequest(DaraModel):
         self,
         load_balancer_spec: str = None,
     ):
-        # The specifications of the ELB instance.
+        # The specification of the load balancing instance.
         self.load_balancer_spec = load_balancer_spec
 
     def validate(self):

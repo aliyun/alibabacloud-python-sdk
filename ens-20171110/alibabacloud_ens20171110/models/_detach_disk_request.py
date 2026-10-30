@@ -10,11 +10,11 @@ class DetachDiskRequest(DaraModel):
         disk_id: str = None,
         instance_id: str = None,
     ):
-        # The ID of the disk.
+        # The disk ID.
         # 
         # This parameter is required.
         self.disk_id = disk_id
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

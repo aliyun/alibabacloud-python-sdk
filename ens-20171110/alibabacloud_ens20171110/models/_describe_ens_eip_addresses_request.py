@@ -23,43 +23,48 @@ class DescribeEnsEipAddressesRequest(DaraModel):
         standby: str = None,
         status: str = None,
     ):
-        # The ID of the EIP instance to query. You can specify up to 50 EIP instance IDs separated by commas (,).
+        # The ID of the EIP instance. You can specify up to 50 EIP instance IDs. Separate multiple instance IDs with commas (,).
         self.allocation_id = allocation_id
         # The instance ID of the cloud service.
         self.associated_instance_id = associated_instance_id
-        # The type of the cloud service instance to associate. Valid values: 
+        # The type of the cloud service instance to attach. Valid values: 
         # 
-        # - **EnsInstance**: a VPC-type ENS instance.
+        # - **EnsInstance**: ENS instance in a VPC.
         # 
-        # - **SlbInstance**: a load balancing instance.
+        # - **SlbInstance**: load balancing instance.
         self.associated_instance_type = associated_instance_type
-        # The IP address of the EIP to query. You can specify up to 50 EIP addresses separated by commas (,).
+        # The IP address of the EIP. You can specify up to 50 IP addresses. Separate multiple IP addresses with commas (,).
         self.eip_address = eip_address
         # The name of the EIP.
         self.eip_name = eip_name
-        # The ENS edge zone ID.
+        # The ID of the ENS edge zone.
         self.ens_region_id = ens_region_id
-        # The array of ENS edge zone IDs. Array length: 1 to 100.
+        # The array of ENS edge zone IDs. The array must contain 1 to 100 IDs.
         self.ens_region_ids = ens_region_ids
-        # Specifies whether ICMP echo reply is enabled. Valid values:
+        # Specifies whether to enable ICMP echo reply. Valid values:
         # 
-        # - **true** (default): enabled.
-        # - **false**: disabled.
+        # - **true**: ICMP echo reply is enabled. This is the default value.
+        # - **false**: ICMP echo reply is disabled.
         self.icmp_reply_enabled = icmp_reply_enabled
-        # The lock type.
-        # - financial: locked due to overdue payment.
+        # The lock reason. Valid values:
+        # - **financial**: The EIP is locked due to an overdue payment.
         self.lock_reason = lock_reason
-        # The page number of the list. Default value: 1.
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page for a paged query. Maximum value: 100. Default value: 10.
+        # The number of entries per page in a paging query. Maximum value: 100. Default value: 10.
         self.page_size = page_size
         # Specifies whether the EIP is a standby EIP. Valid values:
         # 
-        # - **true**: standby.
+        # - **true**: The EIP is a standby EIP.
         # 
-        # - **false**: not standby.
+        # - **false**: The EIP is not a standby EIP.
         self.standby = standby
-        # The status of the EIP. Valid values: Associating: being associated. Unassociating: being disassociated. InUse: allocated. Available: available.
+        # The status of the EIP. Valid values:
+        # 
+        # - **Associating**: The EIP is being associated.
+        # - **Unassociating**: The EIP is being disassociated.
+        # - **InUse**: The EIP is allocated.
+        # - **Available**: The EIP is available.
         self.status = status
 
     def validate(self):

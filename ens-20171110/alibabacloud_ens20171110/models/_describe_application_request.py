@@ -13,29 +13,25 @@ class DescribeApplicationRequest(DaraModel):
         out_detail_stat_params: str = None,
         resource_selector: str = None,
     ):
-        # The ID of the application. You can call the ListApplications operation to obtain the application ID.
+        # The ID of the application. You can obtain the ID by calling the ListApplications operation.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The version number of the application. Separate multiple version numbers with commas (,). If you want to query data of all versions of applications, specify All for this parameter. By default, only data of applications in the stable versions are queried.
+        # The business service version numbers of the application. Multiple values are supported and separated by commas (,). If you enter All, data of all versions is returned. By default, only data associated with the stable version number is returned.
         self.app_versions = app_versions
-        # The region level by which edge resources of the application are collected. The value is of the enumeration type. Valid values:
+        # The regional statistical level of the application edge resources. Valid values:
         # 
-        # - National: Chinese mainland
-        # 
-        # - Big: area
-        # 
+        # - National: nationwide
+        # - Big: region
         # - Middle: province
-        # 
         # - Small: city
-        # 
         # - RegionId: edge node
         # 
         # Default value: National.
         self.level = level
-        # Specifies whether to return other information about the application, such as statistics on resource instances and pods. The value must be a JSON string. By default, all information is returned.
+        # Specifies whether to return information about statistical resource instances and container pods. The value is a JSON string. By default, all information is returned.
         self.out_detail_stat_params = out_detail_stat_params
-        # The resource filtering condition.
+        # The resource filter conditions.
         self.resource_selector = resource_selector
 
     def validate(self):

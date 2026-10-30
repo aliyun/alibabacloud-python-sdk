@@ -11,19 +11,17 @@ class ModifyInstanceNetworkAttributeRequest(DaraModel):
         private_ip_address: str = None,
         v_switch_id: str = None,
     ):
-        # The ID of the ENS instance.
+        # The ENS instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The new private IP address of the ECS instance. By default, if this parameter is empty, a private IP address is randomly assigned from the CIDR block of the specified vSwitch.
+        # The new private IP address.
+        # Default value: If this parameter is not specified, an IP address is randomly assigned from the CIDR block of the vSwitch.
         self.private_ip_address = private_ip_address
-        # The vSwitch IDs.
-        # 
-        # - If you set this parameter to the ID of the current vSwitch, the vSwitch of the ECS instance remains unchanged.
-        # 
-        # - The input ID is a new vSwitch, and the new and old vSwitches must belong to the same node.
-        # 
-        # - By default, if this parameter is not specified, a private IP address is randomly assigned from within the CIDR block of the specified vSwitch.
+        # The vSwitch ID.
+        # - If the specified ID is the current vSwitch of the instance, the vSwitch of the instance remains unchanged.
+        # - If the specified ID is a new vSwitch, the new and old vSwitches must belong to the same edge zone.
+        # - If this parameter is not specified, a value is randomly assigned from the CIDR block of the original vSwitch.
         self.v_switch_id = v_switch_id
 
     def validate(self):

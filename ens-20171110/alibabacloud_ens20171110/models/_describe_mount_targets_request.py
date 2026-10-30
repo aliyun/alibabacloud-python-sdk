@@ -21,11 +21,11 @@ class DescribeMountTargetsRequest(DaraModel):
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The mount target name.
+        # The name of the mount target.
         self.mount_target_name = mount_target_name
-        # The page number, starting from 1. Default value: 1.
+        # The page number. Starting value: 1. Default value: 1.
         self.page_number = page_number
-        # The number of rows per page, with a maximum value of 100. Default value: 10.
+        # The number of entries to return on each page. Maximum value: 100. Default value: 10.
         self.page_size = page_size
 
     def validate(self):

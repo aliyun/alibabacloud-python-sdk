@@ -10,15 +10,13 @@ class SetLoadBalancerStatusRequest(DaraModel):
         load_balancer_id: str = None,
         load_balancer_status: str = None,
     ):
-        # The ID of the ELB instance.
+        # The instance ID of the load balancing instance.
         # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id
-        # The new instance status. Valid values:
-        # 
-        # - **Active**
-        # 
-        # - **InActive**
+        # The updated instance status. Valid values:
+        # - **Active**: Runs the load balancing instance. Listeners in the instance can forward accepted traffic based on rules.
+        # - **InActive**: Stops the load balancing instance. Listeners in the instance no longer forward accepted traffic.
         # 
         # This parameter is required.
         self.load_balancer_status = load_balancer_status

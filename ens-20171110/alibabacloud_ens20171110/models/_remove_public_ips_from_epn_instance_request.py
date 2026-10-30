@@ -10,11 +10,11 @@ class RemovePublicIpsFromEpnInstanceRequest(DaraModel):
         epninstance_id: str = None,
         instance_infos: str = None,
     ):
-        # The ID of the EPN instance.
+        # The edge-to-edge communication instance ID.
         # 
         # This parameter is required.
         self.epninstance_id = epninstance_id
-        # The information about the public IP addresses that you want to delete.
+        # The information about the public IP addresses to be removed.
         # 
         # This parameter is required.
         self.instance_infos = instance_infos

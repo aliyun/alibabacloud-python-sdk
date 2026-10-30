@@ -16,15 +16,15 @@ class DescribeEnsRouteEntryListResponseBody(DaraModel):
         route_entrys: List[main_models.DescribeEnsRouteEntryListResponseBodyRouteEntrys] = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page in a paging query.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The information about the routes.
+        # The route entry information.
         self.route_entrys = route_entrys
-        # The number of returned entries.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -93,25 +93,25 @@ class DescribeEnsRouteEntryListResponseBodyRouteEntrys(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The time when the IP address was created. The time is displayed in UTC.
+        # The creation time in UTC.
         self.creation_time = creation_time
-        # Enter a description for the route.
+        # The description of the route entry.
         self.description = description
-        # The destination CIDR block of the route.
+        # The destination CIDR block of the route entry.
         self.destination_cidr_block = destination_cidr_block
-        # The information about the next hop.
+        # The next hop information.
         self.next_hops = next_hops
-        # The ID of the route.
+        # The ID of the route entry.
         self.route_entry_id = route_entry_id
-        # The name of the route.
+        # The name of the route entry.
         self.route_entry_name = route_entry_name
         # The ID of the route table.
         self.route_table_id = route_table_id
-        # The source CIDR block. This field is used when you configure a route entry in the gateway route table. This field is not supported in the vSwitch route table.
+        # The source CIDR block. This parameter is used when you configure a routing entry in a gateway route table and is not supported in a vSwitch route table.
         self.source_cidr_block = source_cidr_block
-        # The status of the route entry. Valid values:
+        # The status of the route entry.
         self.status = status
-        # The type of the route entry.
+        # The type of the routing entry.
         self.type = type
 
     def validate(self):
@@ -203,11 +203,11 @@ class DescribeEnsRouteEntryListResponseBodyRouteEntrysNextHops(DaraModel):
         next_hop_name: str = None,
         next_hop_type: str = None,
     ):
-        # The ID of the next hop.
-        self.next_hop_id = next_hop_id
         # The instance ID of the next hop.
+        self.next_hop_id = next_hop_id
+        # The name of the next hop instance.
         self.next_hop_name = next_hop_name
-        # The type of the next hop. Valid values:
+        # The next hop type.
         self.next_hop_type = next_hop_type
 
     def validate(self):

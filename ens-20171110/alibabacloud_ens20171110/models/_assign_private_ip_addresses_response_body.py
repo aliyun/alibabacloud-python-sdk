@@ -13,7 +13,7 @@ class AssignPrivateIpAddressesResponseBody(DaraModel):
         assigned_private_ip_addresses_set: main_models.AssignPrivateIpAddressesResponseBodyAssignedPrivateIpAddressesSet = None,
         request_id: str = None,
     ):
-        # Details about the ENI and the secondary private IP addresses that are assigned to the ENI.
+        # The set of information about the elastic network interface controller (NIC) to which secondary private IP addresses are assigned.
         self.assigned_private_ip_addresses_set = assigned_private_ip_addresses_set
         # The ID of the request.
         self.request_id = request_id
@@ -52,7 +52,7 @@ class AssignPrivateIpAddressesResponseBodyAssignedPrivateIpAddressesSet(DaraMode
         network_interface_id: str = None,
         private_ip_set: List[str] = None,
     ):
-        # The ID of the ENI.
+        # The ID of the elastic network interface controller (NIC).
         self.network_interface_id = network_interface_id
         # The assigned private IP addresses.
         self.private_ip_set = private_ip_set

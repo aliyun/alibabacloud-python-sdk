@@ -9,7 +9,7 @@ class DescribeExportImageStatusRequest(DaraModel):
         self,
         image_id: str = None,
     ):
-        # The ID of the image.
+        # The image ID.
         # 
         # This parameter is required.
         self.image_id = image_id

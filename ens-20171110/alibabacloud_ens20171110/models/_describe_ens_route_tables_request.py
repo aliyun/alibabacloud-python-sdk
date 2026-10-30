@@ -19,29 +19,27 @@ class DescribeEnsRouteTablesRequest(DaraModel):
         route_table_name: str = None,
         type: str = None,
     ):
-        # The type of the resource with which the route table is associated. Valid values:
+        # The type of resource associated with the route table. Valid values:
         # 
-        # - **VSwitch**
-        # 
-        # - **Gateway**
+        # - **VSwitch**: vSwitch
+        # - **Gateway**: gateway
         self.associate_type = associate_type
-        # The ID of the ENS node.
+        # The ENS edge zone ID.
         self.ens_region_id = ens_region_id
-        # The IDs of edge nodes. You can specify 1 to 100 IDs.
+        # The array of ENS edge zone IDs. Array length: 1 to 100.
         self.ens_region_ids = ens_region_ids
-        # The ID of the network.
+        # The network ID.
         self.network_id = network_id
-        # The page number.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page in a paging query.
         self.page_size = page_size
         # The ID of the route table.
         self.route_table_id = route_table_id
         # The name of the route table.
         self.route_table_name = route_table_name
-        # The SNAT type.
-        # 
-        # - FullCone: full cone NAT.
+        # The SNAT type. Valid values:
+        # - FullCone: full-cone NAT
         self.type = type
 
     def validate(self):

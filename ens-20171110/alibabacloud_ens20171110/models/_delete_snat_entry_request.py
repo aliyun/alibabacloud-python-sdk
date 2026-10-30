@@ -9,7 +9,7 @@ class DeleteSnatEntryRequest(DaraModel):
         self,
         snat_entry_id: str = None,
     ):
-        # The ID of the SNAT entry that you want to delete.
+        # The ID of the SNAT entry to be deleted.
         # 
         # This parameter is required.
         self.snat_entry_id = snat_entry_id

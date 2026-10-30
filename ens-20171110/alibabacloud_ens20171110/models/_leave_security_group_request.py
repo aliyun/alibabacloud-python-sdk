@@ -13,9 +13,9 @@ class LeaveSecurityGroupRequest(DaraModel):
     ):
         # The instance ID.
         self.instance_id = instance_id
-        # The ID of the ENI.
+        # The elastic network interface (ENI) ID.
         self.network_interface_id = network_interface_id
-        # The ID of the security group.
+        # The security group ID.
         # 
         # This parameter is required.
         self.security_group_id = security_group_id

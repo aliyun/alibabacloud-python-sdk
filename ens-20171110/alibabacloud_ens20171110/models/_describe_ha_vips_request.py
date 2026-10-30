@@ -22,7 +22,7 @@ class DescribeHaVipsRequest(DaraModel):
     ):
         # The region ID.
         self.ens_region_id = ens_region_id
-        # The IDs of ENS nodes. Array length: 1 to 100.
+        # The array of ENS edge zone IDs. The array length is 1 to 100.
         self.ens_region_ids = ens_region_ids
         # The IP address of the HaVip instance.
         self.ha_vip_address = ha_vip_address
@@ -34,9 +34,9 @@ class DescribeHaVipsRequest(DaraModel):
         self.network_id = network_id
         # The current page number.
         self.page_number = page_number
-        # The number of entries per page in a paged query. Settings for paging.
+        # The number of entries per page in paging queries.
         self.page_size = page_size
-        # The HaVip status. Valid values:
+        # The status of the HaVip. Valid values:
         # - Creating: The HaVip is being created.
         # - Available: The HaVip is available.
         # - InUse: The HaVip is in use.

@@ -10,7 +10,7 @@ class CreateEnsServiceResponseBody(DaraModel):
         code: int = None,
         request_id: str = None,
     ):
-        # The service code. 0 is returned for a successful request. An error code is returned for a failed request.
+        # The business code. A value of 0 is returned for a successful call, and an error code is returned for a failed call.
         self.code = code
         # The request ID.
         self.request_id = request_id

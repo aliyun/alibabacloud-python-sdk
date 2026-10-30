@@ -17,9 +17,9 @@ class DescribeEnsEipAddressesResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.eip_addresses = eip_addresses
-        # The page number of the query list. Valid values: > 0. Default value: 1.
+        # The page number. Valid values: greater than 0. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page for paging queries. Default value: 10. Valid values: **10** to **100**.
+        # The number of entries per page in a paging query. Default value: 10. Valid values: **10** to **100**.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id

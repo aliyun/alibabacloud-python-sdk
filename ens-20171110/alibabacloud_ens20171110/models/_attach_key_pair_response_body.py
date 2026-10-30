@@ -17,17 +17,17 @@ class AttachKeyPairResponseBody(DaraModel):
         results: List[main_models.AttachKeyPairResponseBodyResults] = None,
         total_count: int = None,
     ):
-        # The number of instances where the attachment failed.
+        # The number of instances to which the key pair failed to be attached.
         self.fail_count = fail_count
-        # The key pair ID.
+        # The ID of the key pair.
         self.key_pair_id = key_pair_id
-        # The key pair name.
+        # The name of the key pair.
         self.key_pair_name = key_pair_name
         # The request ID.
         self.request_id = request_id
-        # The attachment results for each instance.
+        # The result set that indicates the success or failure of the key pair attachment for each instance.
         self.results = results
-        # The total number of instances in the request.
+        # The total number of instances to which the key pair is attached.
         self.total_count = total_count
 
     def validate(self):
@@ -96,13 +96,13 @@ class AttachKeyPairResponseBodyResults(DaraModel):
         message: str = None,
         success: bool = None,
     ):
-        # The status code for the operation. A value of `200` indicates success.
+        # The status code of the operation. A value of 200 indicates that the operation was successful.
         self.code = code
         # The instance ID.
         self.instance_id = instance_id
-        # The response message. If the `Code` is `200`, this message is `successful`.
+        # The message returned for the operation. If the code is 200, the message is successful.
         self.message = message
-        # Indicates if the operation succeeded for the instance.
+        # Indicates whether the operation was successful.
         self.success = success
 
     def validate(self):

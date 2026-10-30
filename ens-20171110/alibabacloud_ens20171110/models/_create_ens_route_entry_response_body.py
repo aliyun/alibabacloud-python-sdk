@@ -12,7 +12,7 @@ class CreateEnsRouteEntryResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The ID of the route.
+        # The route entry ID.
         self.route_entry_id = route_entry_id
 
     def validate(self):

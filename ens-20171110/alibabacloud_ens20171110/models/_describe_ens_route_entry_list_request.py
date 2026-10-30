@@ -17,33 +17,28 @@ class DescribeEnsRouteEntryListRequest(DaraModel):
         route_entry_type: str = None,
         route_table_id: str = None,
     ):
-        # The destination Classless Inter-Domain Routing (CIDR) block of the route entry.
+        # The destination CIDR block of the route entry.
         self.destination_cidr_block = destination_cidr_block
-        # The ID of the next hop.
+        # The instance ID of the next hop.
         self.next_hop_id = next_hop_id
-        # The type of next hop of the custom route entry. Valid values:
-        # 
-        # - Instance (default): an ENS instance.
-        # 
-        # - HaVip: a high-availability virtual IP address (HAVIP).
-        # 
-        # - NetworkPeer: VPC peering connection.
+        # The type of the next hop for a custom route entry. Valid values:
+        # - Instance (default): ENS instance.
+        # - HaVip: high-availability virtual IP address.
+        # - NetworkPeer: network peering connection.
         self.next_hop_type = next_hop_type
-        # The page number of the returned page. Valid values: integers that are greater than 0. Default value: 1.
+        # The page number of the list to query. Valid values: greater than 0. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 10. Valid values: 10 to 100.
+        # The number of entries per page in a paging query. Valid values: 10 to 100. Default value: 10.
         self.page_size = page_size
-        # The ID of the route that you want to query.
+        # The ID of the route entry.
         self.route_entry_id = route_entry_id
-        # The name of the route.
+        # The name of the route entry.
         self.route_entry_name = route_entry_name
-        # The route type. Valid values:
-        # 
-        # - Custom: custom route
-        # 
-        # - System: system route
+        # The type of the routing entry. Valid values:
+        # - Custom: custom route.
+        # - System: system route.
         self.route_entry_type = route_entry_type
-        # The ID of the route table that you want to query.
+        # The ID of the route table.
         self.route_table_id = route_table_id
 
     def validate(self):

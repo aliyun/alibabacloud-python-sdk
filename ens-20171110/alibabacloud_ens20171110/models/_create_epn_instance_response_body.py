@@ -10,7 +10,7 @@ class CreateEpnInstanceResponseBody(DaraModel):
         epninstance_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the EPN instance.
+        # The Edge-to-Edge network instance ID.
         self.epninstance_id = epninstance_id
         # The request ID.
         self.request_id = request_id

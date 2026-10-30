@@ -16,15 +16,15 @@ class DescribeEnsRouteTablesResponseBody(DaraModel):
         route_tables: List[main_models.DescribeEnsRouteTablesResponseBodyRouteTables] = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page in a paging query.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information about the route tables.
+        # The route table information.
         self.route_tables = route_tables
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -94,39 +94,34 @@ class DescribeEnsRouteTablesResponseBodyRouteTables(DaraModel):
         type: str = None,
         v_switch_ids: List[str] = None,
     ):
-        # The type of the resource with which the route table is associated. Valid values:
+        # The type of resource associated with the route table. Valid values:
         # 
-        # - **VSwitch**
-        # 
-        # - **Gateway**
+        # - **VSwitch**: vSwitch
+        # - **Gateway**: gateway
         self.associate_type = associate_type
-        # The time when the route table was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The creation time. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.creation_time = creation_time
         # The description.
         self.description = description
-        # The ID of the edge node.
+        # The ENS edge zone ID.
         self.ens_region_id = ens_region_id
-        # Specifies whether it is the default gateway route table.
+        # Indicates whether the route table is the default gateway route table.
         self.is_default_gateway_route_table = is_default_gateway_route_table
-        # The ID of the network.
+        # The network ID.
         self.network_id = network_id
-        # The ID of the route table.
+        # The route table ID.
         self.route_table_id = route_table_id
-        # The name of the route table that you want to query.
-        # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+        # The name of the route table.
         self.route_table_name = route_table_name
         # The status. Valid values:
         # 
-        # - Available: The route table is available.
+        # - Available: available
         self.status = status
-        # The type of the route table. Examples:
-        # 
-        # - Custom: custom route table.
-        # 
-        # - System: system route table.
+        # The type of the route table. Valid values:
+        # - Custom: custom route table
+        # - System: system route table
         self.type = type
-        # The vSwitches that are associated with the route table.
+        # The list of vSwitches associated with the route table.
         self.v_switch_ids = v_switch_ids
 
     def validate(self):

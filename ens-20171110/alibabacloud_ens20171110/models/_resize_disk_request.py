@@ -10,11 +10,11 @@ class ResizeDiskRequest(DaraModel):
         disk_id: str = None,
         new_size: str = None,
     ):
-        # The ID of the disk that you want to resize.
+        # The instance ID of the cloud disk to resize.
         # 
         # This parameter is required.
         self.disk_id = disk_id
-        # The size of the disk that you want to resize. Unit: GiB.
+        # The target size of the cloud disk, in GiB.
         # 
         # This parameter is required.
         self.new_size = new_size

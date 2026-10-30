@@ -17,9 +17,9 @@ class DescribeNetworkAclsRequest(DaraModel):
         self.network_acl_id = network_acl_id
         # The name of the network ACL.
         self.network_acl_name = network_acl_name
-        # The page number. Pages start from page **1**. Default value: **1**.
+        # The page number. Starting value: **1**. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page for a paging query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The ID of the associated instance.
         self.resource_id = resource_id

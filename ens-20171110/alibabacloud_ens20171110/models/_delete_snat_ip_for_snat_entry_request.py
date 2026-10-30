@@ -14,7 +14,7 @@ class DeleteSnatIpForSnatEntryRequest(DaraModel):
         # 
         # This parameter is required.
         self.snat_entry_id = snat_entry_id
-        # The EIP that you want to delete from the SNAT entry.
+        # The EIP in the SNAT entry.
         # 
         # This parameter is required.
         self.snat_ip = snat_ip

@@ -67,17 +67,17 @@ class DescribeEnsResourceUsageResponseBodyEnsResourceUsage(DaraModel):
         service_type: str = None,
         storage_sum: int = None,
     ):
-        # The number of edge services. This parameter is available only when you set the ServiceType parameter to 2.
+        # The number of edge services. This field returns data only when ServiceType is set to 2.
         self.compute_resource_count = compute_resource_count
         # The CPU usage. Unit: cores.
         self.cpu_sum = cpu_sum
-        # The number of data disks.
+        # The number of data cloud disks.
         self.disk_count = disk_count
-        # The number of stopped VMs.
+        # The number of stopped virtual machine instances.
         self.down_count = down_count
-        # The number of expired VM instances.
+        # The number of expired virtual machine instances.
         self.expired_count = expired_count
-        # The number of VM instances that are about to expire.
+        # The number of virtual machine instances that are about to expire.
         self.expiring_count = expiring_count
         # The number of GPUs.
         self.gpu_sum = gpu_sum
@@ -85,15 +85,12 @@ class DescribeEnsResourceUsageResponseBodyEnsResourceUsage(DaraModel):
         self.instance_count = instance_count
         # The number of running instances.
         self.running_count = running_count
-        # The type of the service. Valid values:
-        # 
-        # - 1: subscription instance.
-        # 
-        # - 2: edge service instance.
-        # 
-        # - 3: pay-as-you-go instance.
+        # The service type. Valid values:
+        # - 1: Subscription instance.
+        # - 2: Edge service instance.
+        # - 3: Pay-as-you-go instance.
         self.service_type = service_type
-        # The total disk size.
+        # The total disk storage capacity.
         self.storage_sum = storage_sum
 
     def validate(self):

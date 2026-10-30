@@ -15,13 +15,13 @@ class DescribeNASAvailableResourceInfoResponseBody(DaraModel):
         nas_available_resource_info: List[main_models.DescribeNASAvailableResourceInfoResponseBodyNasAvailableResourceInfo] = None,
         request_id: str = None,
     ):
-        # Business status code. Returns 0 on success.
+        # The business status code. A value of 0 indicates success.
         self.code = code
-        # Error message.
+        # The error message.
         self.message = message
-        # Available NAS resource information.
+        # The available NAS resource information.
         self.nas_available_resource_info = nas_available_resource_info
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -82,21 +82,21 @@ class DescribeNASAvailableResourceInfoResponseBodyNasAvailableResourceInfo(DaraM
         nas_available_storge_type: str = None,
         province: str = None,
     ):
-        # Edge zone product capabilities.
+        # The product capabilities of the edge zone.
         self.ability = ability
-        # Area to which the ENS edge zone belongs.
+        # The area to which the ENS edge zone belongs.
         self.area = area
-        # English name.
+        # The English name.
         self.en_name = en_name
-        # ENS edge zone ID.
+        # The ENS edge zone ID.
         self.ens_region_id = ens_region_id
-        # ENS edge zone name.
+        # The name of the ENS edge zone.
         self.ens_region_name = ens_region_name
-        # Available NAS resource count.
+        # The resource count of active NAS resources.
         self.nas_available_amount = nas_available_amount
-        # Available NAS resource type.
+        # The type of available NAS resources.
         self.nas_available_storge_type = nas_available_storge_type
-        # Province to which the ENS edge zone belongs.
+        # The province to which the ENS edge zone belongs.
         self.province = province
 
     def validate(self):

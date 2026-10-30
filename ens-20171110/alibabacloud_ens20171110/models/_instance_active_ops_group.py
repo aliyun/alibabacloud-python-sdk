@@ -11,6 +11,7 @@ class InstanceActiveOpsGroup(DaraModel):
         self,
         instance_ids: List[str] = None,
     ):
+        # the instance list of instance active group
         self.instance_ids = instance_ids
 
     def validate(self):

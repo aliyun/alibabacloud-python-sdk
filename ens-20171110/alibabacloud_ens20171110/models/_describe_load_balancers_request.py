@@ -33,16 +33,16 @@ class DescribeLoadBalancersRequest(DaraModel):
         # The name of the load balancing instance.
         self.load_balancer_name = load_balancer_name
         # The listener status of the load balancing instance. Valid values:
-        # - **Active**: The listeners in the instance can forward accepted traffic based on rules.
-        # - **InActive**: The listeners in the instance no longer forward accepted traffic.
+        # - **Active**: The listeners in the instance can accept and forward traffic based on rules.
+        # - **InActive**: The listeners in the instance no longer accept and forward traffic.
         self.load_balancer_status = load_balancer_status
         # The type of the load balancing instance.
         self.load_balancer_type = load_balancer_type
         # The network ID.
         self.network_id = network_id
-        # The page number of the list. Default value: 1.
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # The Settings for the number of entries per page during paging in a paged query. Default value: 10. Valid values: **10** to **100**.
+        # The Settings for the number of entries per page for paging in a paged query. Default value: 10. Valid values: **10** to **100**.
         self.page_size = page_size
         # The backend server instance ID.
         self.server_id = server_id

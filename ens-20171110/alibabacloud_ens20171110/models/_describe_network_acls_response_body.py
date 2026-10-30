@@ -16,15 +16,15 @@ class DescribeNetworkAclsResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # Details of the network ACLs.
+        # The details of the network ACLs.
         self.network_acls = network_acls
-        # The page number.
+        # The current page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -91,25 +91,24 @@ class DescribeNetworkAclsResponseBodyNetworkAcls(DaraModel):
         resources: List[main_models.DescribeNetworkAclsResponseBodyNetworkAclsResources] = None,
         status: str = None,
     ):
-        # The time when the network ACL was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+        # The time when the network ACL was created. The time is displayed in UTC in the `yyyy-MM-ddTHH:mm:ssZ` format.
         self.creation_time = creation_time
         # The description of the network ACL.
         self.description = description
-        # Details of the outbound rules.
+        # The outbound rules.
         self.egress_acl_entries = egress_acl_entries
-        # Details of the inbound rules.
+        # The inbound rules.
         self.ingress_acl_entries = ingress_acl_entries
         # The ID of the network ACL.
         self.network_acl_id = network_acl_id
         # The name of the network ACL.
         self.network_acl_name = network_acl_name
-        # Details of the associated resources.
+        # The associated resources.
         self.resources = resources
         # The status of the network ACL. Valid values:
         # 
-        # - **Available**: The network ACL is available.
-        # 
-        # - **Modifying**: The network ACL is being configured.
+        # - **Available**: Active.
+        # - **Modifying**: Configuring.
         self.status = status
 
     def validate(self):
@@ -208,19 +207,17 @@ class DescribeNetworkAclsResponseBodyNetworkAclsResources(DaraModel):
         resource_type: str = None,
         status: str = None,
     ):
-        # The ID of the edge node.
+        # The ENS edge zone ID.
         self.ens_region_id = ens_region_id
         # The ID of the associated resource.
         self.resource_id = resource_id
         # The type of the associated resource.
         self.resource_type = resource_type
-        # The association status of the resource. Valid values:
+        # The status of the associated resource. Valid values:
         # 
-        # - **BINDED**: The resource is associated with the network ACL.
-        # 
-        # - **BINDING**: The resource is being associated with the network ACL.
-        # 
-        # - **UNBINDING**: The resource is being disassociated from the network ACL.
+        # - **BINDED**: Bound.
+        # - **BINDING**: Binding.
+        # - **UNBINDING**: Unbinding.
         self.status = status
 
     def validate(self):
@@ -279,41 +276,34 @@ class DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries(DaraModel):
         self.cidr_block = cidr_block
         # The description of the inbound rule.
         self.description = description
-        # The destination network.
+        # The destination CIDR block.
         self.destination_cidr_block = destination_cidr_block
-        # The ID of the inbound rule.
+        # The ID of the inbound rule entry.
         self.network_acl_entry_id = network_acl_entry_id
-        # The name of the inbound rule.
+        # The name of the inbound rule entry.
         self.network_acl_entry_name = network_acl_entry_name
-        # The action that is performed on network traffic that matches the rule. Valid values:
+        # The authorization policy. Valid values:
         # 
-        # - **accept**: allows the network traffic.
-        # 
-        # - **drop**: blocks the network traffic.
+        # - **accept**: Allow.
+        # - **drop**: Deny.
         self.policy = policy
         # The destination port range of the inbound rule.
         # 
-        # - If **Protocol** of the inbound rule is set to **all** or **icmp**, the port range is **-1/-1**, which indicates all ports.
-        # 
-        # - If **Protocol** of the inbound rule is set to **tcp** or **udp**, the port range is in the following format: **1/200** or **80/80**. 1/200 indicates port 1 to port 200. 80/80 indicates port 80. Valid values for a port: **1 to 65535**.
+        # - If the **Protocol** (Protocol Type) of the inbound rule is **all** or **icmp**, the port range is **-1/-1**, which indicates that all ports are allowed.
+        # - If the **Protocol** (Protocol Type) of the inbound rule is **tcp** or **udp**, the port range is **1~65535**. The format is **1/200** or **80/80**, which indicates ports 1 to 200 or port 80.
         self.port_range = port_range
-        # The priority of the rule. Valid values: **1 to 100**. Default value: **1**.
+        # The priority of the rule. Valid values: **1** to **100**. Default value: **1**.
         self.priority = priority
         # The protocol type. Valid values:
         # 
-        # - **icmp**: ICMP.
-        # 
-        # - **tcp**: TCP.
-        # 
-        # - **udp**: UDP.
-        # 
-        # - **all**: all protocols.
+        # - **icmp**: Internet Control Message Protocol.
+        # - **tcp**: Transmission Control Protocol.
+        # - **udp**: User Datagram Protocol.
+        # - **all**: All protocols.
         self.protocol = protocol
-        # The type of the rule. Valid values:
-        # 
-        # - **system**: The rule is created by the system.
-        # 
-        # - **custom**: The rule is created by a user.
+        # The rule type. Valid values:
+        # - **system**: System-created.
+        # - **custom**: User-created.
         self.type = type
 
     def validate(self):
@@ -407,39 +397,32 @@ class DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries(DaraModel):
         self.cidr_block = cidr_block
         # The description of the outbound rule.
         self.description = description
-        # The ID of the outbound rule.
+        # The ID of the outbound rule entry.
         self.network_acl_entry_id = network_acl_entry_id
-        # The name of the outbound rule.
+        # The name of the outbound rule entry.
         self.network_acl_entry_name = network_acl_entry_name
-        # The action that is performed on network traffic that matches the rule. Valid values:
+        # The authorization policy. Valid values:
         # 
-        # - **accept**: allows the network traffic.
-        # 
-        # - **drop**: blocks the network traffic.
+        # - **accept**: Allow.
+        # - **drop**: Deny.
         self.policy = policy
         # The destination port range of the outbound rule.
         # 
-        # - If **Protocol** of the outbound rule is set to **all** or **icmp** the port range is **-1/-1**, which indicates all ports.
-        # 
-        # - If **Protocol** of the outbound rule is set to **tcp** or **udp**, the port range is in the following format: **1/200** or **80/80**. 1/200 indicates port 1 to port 200. 80/80 indicates port 80. Valid values for a port: **1 to 65535**.
+        # - If the **Protocol** (Protocol Type) of the outbound rule is **all** or **icmp**, the port range is **-1/-1**, which indicates that all ports are allowed.
+        # - If the **Protocol** (Protocol Type) of the outbound rule is **tcp** or **udp**, the port range is **1~65535**. The format is **1/200** or **80/80**, which indicates ports 1 to 200 or port 80.
         self.port_range = port_range
-        # The priority of the rule. Valid values: **1 to 100**. Default value: **1**.
+        # The priority of the rule. Valid values: **1** to **100**. Default value: **1**.
         self.priority = priority
         # The protocol type. Valid values:
         # 
-        # - **icmp**: ICMP.
-        # 
-        # - **tcp**: TCP.
-        # 
-        # - **udp**: UDP.
-        # 
-        # - **all**: all protocols.
+        # - **icmp**: Internet Control Message Protocol.
+        # - **tcp**: Transmission Control Protocol.
+        # - **udp**: User Datagram Protocol.
+        # - **all**: All protocols.
         self.protocol = protocol
-        # The type of the rule. Valid values:
-        # 
-        # - **system**: The rule is created by the system.
-        # 
-        # - **custom**: The rule is created by a user.
+        # The rule type. Valid values:
+        # - **system**: System-created.
+        # - **custom**: User-created.
         self.type = type
 
     def validate(self):

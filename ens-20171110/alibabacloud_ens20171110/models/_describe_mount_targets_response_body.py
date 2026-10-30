@@ -16,11 +16,10 @@ class DescribeMountTargetsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The collection of mount target information.
+        # The information about the mount targets.
         self.mount_targets = mount_targets
-        # The page number.
         self.page_number = page_number
-        # The number of rows per page.
+        # The number of entries returned per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -93,18 +92,18 @@ class DescribeMountTargetsResponseBodyMountTargets(DaraModel):
         self.ens_region_id = ens_region_id
         # The file system ID.
         self.file_system_id = file_system_id
-        # The mount target path.
+        # The path of the mount target.
         self.mount_target_domain = mount_target_domain
-        # The mount target name.
+        # The name of the mount target.
         self.mount_target_name = mount_target_name
         # The network ID.
         self.net_work_id = net_work_id
-        # The mount target status. Valid values:
+        # The status of the mount target. Valid values:
         # 
-        # - active: Active.
-        # - inactive: Inactive.
-        # - pending: Queued.
-        # - deleting: Being deleted.
+        # - active: The mount target is available.
+        # - inactive: The mount target is unavailable.
+        # - pending: The task is queued.
+        # - deleting: The mount target is being deleted.
         self.status = status
 
     def validate(self):

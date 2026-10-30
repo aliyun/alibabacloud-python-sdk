@@ -11,21 +11,21 @@ class DescribeEnsNetDistrictRequest(DaraModel):
         net_district_code_node: bool = None,
         net_level_code: str = None,
     ):
-        # The code of the region.
+        # The region code.
         # 
-        # If you do not specify this parameter, only nodes in the regions of the level that is specified by the NetLevelCode parameter are queried.
+        # If this parameter is left empty, only the edge zones under the specified NetLevelCode are queried.
         # 
-        # If you specify this parameter, only nodes in the regions of the level that is specified by this parameter are queried.
+        # If this parameter is specified, only the child edge zones under the specified NetDistrictCode are queried.
         self.net_district_code = net_district_code
-        # Region code
+        # The region code.
         self.net_district_code_node = net_district_code_node
-        # The level of the region.
+        # The region level. Valid values:
         # 
-        # - **Big**: area
+        # - **Big**: Area.
         # 
-        # - **Middle**: province
+        # - **Middle**: Province.
         # 
-        # - **Small**: city
+        # - **Small**: City.
         # 
         # This parameter is required.
         self.net_level_code = net_level_code

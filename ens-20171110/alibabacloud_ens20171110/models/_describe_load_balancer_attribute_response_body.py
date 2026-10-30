@@ -32,19 +32,19 @@ class DescribeLoadBalancerAttributeResponseBody(DaraModel):
     ):
         # The service address of the load balancing instance.
         self.address = address
-        # The IP version of the load balancing instance. Valid values: ipv4 or ipv6.
+        # The IP version of the load balancing instance. Valid values: ipv4 and ipv6.
         self.address_ipversion = address_ipversion
         # The address type of the load balancing instance.
         self.address_type = address_type
         # The list of backend servers.
         self.backend_servers = backend_servers
-        # The peak bandwidth of the load balancing instance. The default value is -1, which indicates that bandwidth is not throttled.
+        # The peak bandwidth of the load balancing instance. Default value: -1, which indicates that bandwidth is not throttled.
         self.bandwidth = bandwidth
-        # The creation time of the load balancing instance (UTC).
+        # The time when the load balancing instance was created. The time is displayed in UTC.
         self.create_time = create_time
-        # The end time of the load balancing instance in ISO 8601 UTC format (YYYY-MM-DDTHH:mm:ssZ).
+        # The expiration time of the load balancing instance. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.end_time = end_time
-        # The ENS node ID.
+        # The ID of the ENS edge zone.
         self.ens_region_id = ens_region_id
         # The frontend ports used by the load balancing instance.
         self.listener_ports = listener_ports
@@ -54,11 +54,11 @@ class DescribeLoadBalancerAttributeResponseBody(DaraModel):
         self.load_balancer_id = load_balancer_id
         # The name of the load balancing instance.
         self.load_balancer_name = load_balancer_name
-        # The specification of the load balancing instance.
+        # The specifications of the load balancing instance.
         self.load_balancer_spec = load_balancer_spec
         # The listener status of the load balancing instance. Valid values:
-        # - **Active**: The listeners of the instance can forward received traffic based on rules.
-        # - **InActive**: The listeners of the instance no longer forward received traffic.
+        # - **Active**: The listeners in the instance can forward accepted traffic based on rules.
+        # - **InActive**: The listeners in the instance no longer forward accepted traffic.
         self.load_balancer_status = load_balancer_status
         # The type of the load balancing instance.
         self.load_balancer_type = load_balancer_type
@@ -234,7 +234,7 @@ class DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocols(DaraMod
         self.description = description
         # The destination listener port to which traffic is forwarded.
         self.forward_port = forward_port
-        # Indicates whether listener forwarding is enabled.
+        # Specifies whether listener forwarding is enabled.
         self.listener_forward = listener_forward
         # The listener port.
         self.listener_port = listener_port

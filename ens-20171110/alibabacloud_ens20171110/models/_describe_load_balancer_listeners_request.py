@@ -13,17 +13,17 @@ class DescribeLoadBalancerListenersRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The description of the image.
+        # The description of the listener.
         self.description = description
-        # The listener port.
+        # The frontend port used by the load balancing instance. Valid values: **1** to **65535**.
         self.listener_port = listener_port
-        # The ID of the ELB instance.
+        # The ID of the load balancing instance.
         # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id
-        # The page number.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries to return on each page during paging in a paged query.
         self.page_size = page_size
 
     def validate(self):

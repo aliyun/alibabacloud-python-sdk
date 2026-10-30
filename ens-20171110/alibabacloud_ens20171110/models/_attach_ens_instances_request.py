@@ -10,11 +10,11 @@ class AttachEnsInstancesRequest(DaraModel):
         instance_id: str = None,
         scripts: str = None,
     ):
-        # The instance ID. Only one ID is supported.
+        # The instance ID. Only a single ID is supported.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The command to run on the instance, encoded in Base64 using UTF-8.
+        # The command to execute on the instance. The command must be encoded in Base64 and UTF-8.
         # 
         # This parameter is required.
         self.scripts = scripts

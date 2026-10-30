@@ -1,3 +1,6 @@
+2026-10-30 Version: 12.1.1
+- Generated python 2017-11-10 for Ens.
+
 2026-10-19 Version: 12.1.0
 - Support API AssociateNetworkCidrBlock.
 - Support API UnassociateNetworkCidrBlock.

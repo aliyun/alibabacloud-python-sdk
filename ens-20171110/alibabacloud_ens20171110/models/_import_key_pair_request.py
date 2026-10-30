@@ -10,19 +10,17 @@ class ImportKeyPairRequest(DaraModel):
         key_pair_name: str = None,
         public_key_body: str = None,
     ):
-        # The name of the key pair. The name must conform to the following naming conventions:
+        # The name of the key pair. The name must meet the following requirements:
         # 
         # - The name must be 2 to 128 characters in length.
+        # - The name must start with a letter or a Chinese character, and cannot start with `http://` or `https://`.
+        # - The name can contain digits, colons (:), underscores (_), and hyphens (-).
         # 
-        # - The name must start with a letter but cannot start with `http://` or `https://`.
-        # 
-        # - The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
-        # 
-        # You can specify the name of only one key pair.
+        # Only one key pair name can be specified.
         # 
         # This parameter is required.
         self.key_pair_name = key_pair_name
-        # The public key of the key pair. You can specify only one public key.
+        # The public key content of the key pair. Only one public key can be specified.
         # 
         # This parameter is required.
         self.public_key_body = public_key_body

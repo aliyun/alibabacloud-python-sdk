@@ -16,33 +16,31 @@ class EventMigrateInstanceRequest(DaraModel):
         resource_id: str = None,
     ):
         # The data migration policy. Valid values:
-        # 
-        # - `abandon`: Does not migrate data. This is the default value.
-        # 
-        # - `force_transfer`: Forces data migration.
-        # 
-        # - `try_transfer`: Attempts to migrate data.
+        # - abandon: Does not migrate data. This is the default value.
+        # - force_transfer: forcible migration of EPS resource.
+        # - try_transfer: Attempts to migrate data.
         self.data_policy = data_policy
         # The ID of the system event.
         # 
         # This parameter is required.
         self.event_id = event_id
-        # The type of the O\\&M task. Valid values:
+        # The type of the O&M task. Valid values:
         # 
-        # - `immediate`: Executes the task immediately.
-        # 
-        # - `scheduled`: Executes the task at the specified time.
+        # - immediate: Executes the task immediately.
+        # - scheduled: Executes the task at a scheduled time.
         # 
         # This parameter is required.
         self.ops_type = ops_type
-        # The instance password. This parameter is optional. If you do not specify a password, the system generates a random one.
+        # The instance password. This parameter is optional. If you do not specify this parameter, a random password is used.
         # 
-        # The password must be 8 to 30 characters long and contain uppercase letters, lowercase letters, and digits.
+        # The password must be 8 to 30 characters in length and must contain uppercase letters, lowercase letters, and digits.
         # 
-        # Note: This parameter is not supported for scheduled execution.
+        # Note: You cannot specify a password when you schedule the execution time.
         self.password = password
-        # The scheduled execution time. This must be a Unix timestamp in milliseconds. This parameter is required when `OpsType` is set to `scheduled`.
+        # The scheduled execution time. The value is a timestamp in milliseconds.
+        # This parameter is required when OpsType is set to scheduled.
         self.plan_time = plan_time
+        # The scheduled UTC time.
         self.plan_utc_time = plan_utc_time
         # The ID of the resource.
         # 

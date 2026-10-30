@@ -10,11 +10,11 @@ class UnassociateHaVipRequest(DaraModel):
         ha_vip_id: str = None,
         instance_id: str = None,
     ):
-        # The ID of the HAVIP that you want to disassociate.
+        # The ID of the HaVip to disassociate.
         # 
         # This parameter is required.
         self.ha_vip_id = ha_vip_id
-        # The ID of the ENS instance or ENI that you want to disassociate from the HAVIP.
+        # The ID of the ENS instance or network interface controller (NIC) to disassociate from the HaVip.
         # 
         # This parameter is required.
         self.instance_id = instance_id

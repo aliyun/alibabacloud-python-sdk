@@ -14,7 +14,7 @@ class DescribeEnsNetDistrictResponseBody(DaraModel):
         ens_net_districts: main_models.DescribeEnsNetDistrictResponseBodyEnsNetDistricts = None,
         request_id: str = None,
     ):
-        # The returned service code. A value of 0 indicates that the operation was successful.
+        # The business code. A value of 0 indicates success.
         self.code = code
         self.ens_net_districts = ens_net_districts
         # The request ID.

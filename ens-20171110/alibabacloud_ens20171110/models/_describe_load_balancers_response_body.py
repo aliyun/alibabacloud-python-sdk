@@ -17,13 +17,13 @@ class DescribeLoadBalancersResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.load_balancers = load_balancers
-        # The page number of the list.
+        # The page number.
         self.page_number = page_number
-        # The Settings for the number of entries per page during paging in a paged query. Default value: 10. Valid values: **10** to **100**.
+        # The Settings for the number of entries per page for paging in a paged query. Default value: 10. Valid values: **10** to **100**.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries in the list.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

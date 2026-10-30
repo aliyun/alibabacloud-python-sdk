@@ -13,13 +13,13 @@ class AttachKeyPairRequest(DaraModel):
         key_pair_id: str = None,
         key_pair_name: str = None,
     ):
-        # A list of instance IDs.
+        # The list of instance IDs.
         # 
         # This parameter is required.
         self.instance_ids = instance_ids
         # The unique ID of the key pair.
         self.key_pair_id = key_pair_id
-        # The key pair name.
+        # The name of the key pair.
         self.key_pair_name = key_pair_name
 
     def validate(self):

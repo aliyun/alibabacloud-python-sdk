@@ -13,11 +13,12 @@ class AddNetworkInterfaceToInstanceRequest(DaraModel):
     ):
         # Specifies whether to automatically restart the instance.
         self.auto_start = auto_start
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The network. The value is a JSON string. Only IPv6 is supported. Sample code of an IPv6 network: [{ "ipType": "public", "ipAddressType": "ipv6" }]
+        # The network parameters in JSON string format. Currently, only IPv6 is supported. An example of adding an IPv6 gateway is as follows:
+        # [{"ipType": "public", "ipAddressType": "ipv6"}]
         # 
         # This parameter is required.
         self.networks = networks

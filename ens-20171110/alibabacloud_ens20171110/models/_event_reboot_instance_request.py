@@ -13,23 +13,22 @@ class EventRebootInstanceRequest(DaraModel):
         plan_utc_time: str = None,
         resource_id: str = None,
     ):
-        # The ID of the system Event.
+        # The system event ID.
         # 
         # This parameter is required.
         self.event_id = event_id
-        # The type of the operation. Valid values:
+        # The O&M task type. Valid values:
         # 
-        # - immediate: Executes the operation immediately.
+        # - immediate: Executes the task immediately.
         # 
-        # - scheduled: Executes the operation at the specified time.
+        # - scheduled: Executes the task at a scheduled time.
         # 
         # This parameter is required.
         self.ops_type = ops_type
-        # The scheduled execution time, as a Timestamp in milliseconds. This parameter is required when OpsType is set to scheduled.
+        # The scheduled execution time. The value is a timestamp in milliseconds. This parameter is required when OpsType is set to scheduled.
         self.plan_time = plan_time
-        # Reserved parameter.
         self.plan_utc_time = plan_utc_time
-        # The ID of the Resource.
+        # The resource ID.
         # 
         # This parameter is required.
         self.resource_id = resource_id

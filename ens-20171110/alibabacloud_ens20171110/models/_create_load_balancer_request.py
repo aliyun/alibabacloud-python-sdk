@@ -19,40 +19,39 @@ class CreateLoadBalancerRequest(DaraModel):
     ):
         # The billing cycle of the ELB instance.
         self.billing_cycle = billing_cycle
-        # Ensures the idempotency of the request to avoid duplicate operations caused by multiple retries.
-        # - Generate a parameter value from your client and ensure that the value is unique across different requests. The ClientToken value supports only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. This prevents duplicate operations caused by multiple retries.
+        # - Generate the value from your client and ensure that it is unique among different requests. The client token can contain only ASCII characters and cannot exceed 64 characters in length.
         # 
-        # - If you use a ClientToken that has been used before and the other request parameters remain unchanged, the client receives the same result as the first submission, with no impact on your server-side state.
+        # - If you resubmit a request with a used client token and all other request parameters remain unchanged, the client receives the same response as the first request, and the server state remains unaffected.
         # 
-        # - You can retry when the API times out or returns the PROCESSING error code, and idempotency takes effect. If the return result is an HTTP 200 status code, the retry returns the same result as the previous call with no impact on your server-side state. If the return result is an HTTP 4xx status code and the error code is not PROCESSING, idempotency does not take effect.
-        # - The ClientToken is valid for 10 minutes.
+        # - You can retry the request when the operation times out or the error code is PROCESSING, and the idempotence remains valid. If the HTTP status code 200 is returned, the client receives the same response after a retry, and the server state remains unaffected. If an HTTP 4xx status code is returned and the error code is not PROCESSING, the idempotence is invalid.
+        # - The client token is valid for 10 minutes.
         self.client_token = client_token
-        # The ID of the ENS edge zone.
+        # The ENS edge zone ID. Not all ENS edge zones support creating an Edge Load Balancer (ELB) instance. Before calling this operation, verify that the target edge zone supports this feature.
         # 
         # This parameter is required.
         self.ens_region_id = ens_region_id
-        # The name of the load balancing instance. The name must be 1 to 80 characters in length and can contain letters and Chinese characters. If you do not specify this parameter, the system automatically assigns an instance name.
+        # The name of the load balancing instance. The name must be 1 to 80 characters in length, and can contain English letters and Chinese characters. If you do not specify this parameter, the system randomly allocates a name to the instance.
         # 
-        # > The name cannot start with `http://` or `https://`.
+        # > The name cannot start with http:// or https://.
         self.load_balancer_name = load_balancer_name
         # The specification of the load balancing instance.
         # 
         # This parameter is required.
         self.load_balancer_spec = load_balancer_spec
-        # The type of the Edge Load Balancing instance.
-        # 
-        # - CLB: Classic Load Balancing instance.
-        # - InternetDR: Public pattern load balancing instance.
+        # The type of the edge load balancing (ELB) instance. Valid values:
+        # - CLB: traditional load balancing instance.
+        # - InternetDR: public pattern load balancing instance.
         self.load_balancer_type = load_balancer_type
-        # The network ID of the Edge Load Balancing (ELB) instance to create.
+        # The network ID of the edge load balancing (ELB) instance to be created.
         # 
         # This parameter is required.
         self.network_id = network_id
-        # The billing type. PostPaid (currently the only supported type): pay-as-you-go.
+        # The billing method. Currently, only PostPaid (pay-as-you-go) is supported.
         # 
         # This parameter is required.
         self.pay_type = pay_type
-        # The ID of the vSwitch to which the VPC instance belongs.
+        # The ID of the vSwitch to which the VPC-connected instance belongs.
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id

@@ -10,9 +10,9 @@ class DescribeEnsResourceUsageRequest(DaraModel):
         expired_end_time: str = None,
         expired_start_time: str = None,
     ):
-        # The end of the time range to query. Format: yyyy-MM-dd or yyyy-MM-dd HH:mm:ss.
+        # The end time of the query range for the expiration time of virtual machine instances. Format: yyyy-MM-dd or yyyy-MM-dd HH:mm:ss.
         self.expired_end_time = expired_end_time
-        # The beginning of the time range to query. Format: yyyy-MM-dd or yyyy-MM-dd HH:mm:ss.
+        # The start time of the query range for the expiration time of virtual machine instances. Format: yyyy-MM-dd or yyyy-MM-dd HH:mm:ss.
         self.expired_start_time = expired_start_time
 
     def validate(self):

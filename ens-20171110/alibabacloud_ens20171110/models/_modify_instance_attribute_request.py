@@ -15,19 +15,21 @@ class ModifyInstanceAttributeRequest(DaraModel):
         user_data: str = None,
     ):
         self.deletion_protection = deletion_protection
-        # The hostname of the ECS instance. The hostname must be 2 to 64 characters in length. You can use periods (.) to separate the hostname into multiple segments. Each segment can contain letters, digits, and hyphens (-). The hostname cannot contain consecutive periods (.) or hyphens (-), and cannot start or end with a period (.) or a hyphen (-).
+        # The hostname of the ECS instance. The hostname must be 2 to 64 characters in length. You can use periods (.) to separate the hostname into multiple segments. Each segment can contain letters, digits, and hyphens (-). Consecutive periods (.) or hyphens (-) are not allowed. The hostname cannot start or end with a period (.) or a hyphen (-).
         self.host_name = host_name
-        # The ID of the instance to modify. Only a single instance is supported.
+        # The ID of the instance to modify. Only a single instance ID is supported.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The name of the instance.
         # 
-        # The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter or a Chinese character and cannot start with `http://` or `https://`.
+        # The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character, and cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), and hyphens (-).
         self.instance_name = instance_name
         # The password of the instance.
         self.password = password
-        # The instance user data, which must be Base64-encoded. The size of the raw data before encoding cannot exceed 16 KB. Do not pass in sensitive information such as passwords or private keys in plaintext. If you must pass in sensitive information, encode it before Base64-encoding it, and decode it in the same way inside the instance.
+        # The instance user data. The user data must be encoded in Base64.
+        # 
+        # Before encoding, the raw data cannot exceed 16 KB in size. Do not pass sensitive information such as passwords and private keys in plaintext. If you must pass sensitive information, encrypt the information before you encode it in Base64, and then decrypt the information in the same way within the instance.
         self.user_data = user_data
 
     def validate(self):

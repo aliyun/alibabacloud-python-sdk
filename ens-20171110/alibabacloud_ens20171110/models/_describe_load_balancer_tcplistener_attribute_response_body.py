@@ -28,115 +28,87 @@ class DescribeLoadBalancerTCPListenerAttributeResponseBody(DaraModel):
         status: str = None,
         unhealthy_threshold: int = None,
     ):
-        # The port used by the backend servers. Valid values: **1** to **65535**.
+        # The port used by the backend server of the load balancing instance. Valid values: **1** to **65535**.
         self.backend_server_port = backend_server_port
-        # The peak bandwidth of the load balancer. The default value is -1, which indicates unlimited bandwidth.
+        # The peak bandwidth of the load balancing instance. Default value: -1, which indicates that no bandwidth throttling is applied.
         self.bandwidth = bandwidth
-        # The description of the listener.
+        # The name of the listener.
         self.description = description
-        # Specifies whether EIP passthrough is enabled. Valid values:
+        # Specifies whether to enable EIP pass-through. Valid values:
         # 
-        # - **on**: enable
-        # 
-        # - **off** (Default): disable
+        # - **on**: enabled
+        # - **off** (default): disabled
         self.eip_transmit = eip_transmit
-        # The connection timeout. Valid values: **10** to **900**. Unit: seconds.
+        # The connection timeout period. Valid values: **10** to **900**. Unit: seconds.
         self.established_timeout = established_timeout
-        # Specifies whether to enable health checks. Valid values:
+        # Specifies whether to enable the health check feature. Valid values:
         # 
-        # - **on**: enable
-        # 
-        # - **off**: disable
+        # - **on**: enabled
+        # - **off**: disabled
         self.health_check = health_check
-        # The port used for health checks. Valid values: **1** to **65535**. If this parameter is not specified, the value of `BackendServerPort` is used.
-        # 
-        # > This parameter takes effect only when the HealthCheck parameter is set to `on`.
+        # The port used for health checks. Valid values: **1** to **65535**. If the Settings for this parameter are not specified, the backend service port (BackendServerPort) is used.
+        # > This parameter takes effect only when HealthCheck is set to on.
         self.health_check_connect_port = health_check_connect_port
-        # The response timeout for a health check. If a backend ENS instance does not respond within this timeout period, the health check fails.
-        # 
+        # The timeout period for receiving a health check response. If a backend ENS instance does not respond within the specified timeout period, the health check fails.
         # - Default value: 5.
-        # 
         # - Valid values: **1** to **300**.
-        # 
         # - Unit: seconds.
-        # 
-        # > * This parameter takes effect only when the HealthCheck parameter is set to `on`.
-        # >
-        # > * If this value is less than the `HealthCheckInterval` value, the `HealthCheckInterval` value is used as the timeout period instead.
+        # > - This parameter takes effect only when HealthCheck is set to on.
+        # > - If the value of HealthCheckConnectTimeout is less than the value of HealthCheckInterval, HealthCheckConnectTimeout becomes invalid and the timeout period is the value of HealthCheckInterval.
         self.health_check_connect_timeout = health_check_connect_timeout
         # The domain name used for health checks.
-        # 
-        # > This parameter takes effect only when the HealthCheck parameter is set to `on`.
+        # > This parameter takes effect only when HealthCheck is set to on.
         self.health_check_domain = health_check_domain
-        # The HTTP status codes that indicate a successful health check. Valid values:
+        # The HTTP status code that indicates a successful health check. Valid values:
         # 
-        # - **http_2xx** (Default)
-        # 
+        # - **http_2xx** (default)
         # - **http_3xx**
-        # 
         # - **http_4xx**
-        # 
         # - **http_5xx**
         # 
-        # > This parameter takes effect only when the HealthCheck parameter is set to `on`.
+        # > This parameter takes effect only when HealthCheck is set to on.
         self.health_check_http_code = health_check_http_code
-        # The interval between health checks. Valid values: **1** to **50**. Unit: seconds.
+        # The interval between two consecutive health checks. Valid values: **1** to **50**. Unit: seconds.
         self.health_check_interval = health_check_interval
         # The health check type. Valid values:
-        # 
-        # - **tcp** (Default)
-        # 
+        # - **tcp** (default)
         # - **http**
         self.health_check_type = health_check_type
-        # The URI used for health checks. Length: **1** to **80** characters.
-        # 
-        # > - The URI must start with `/` but cannot consist solely of `/`.
-        # >
-        # > - This parameter takes effect only when the HealthCheck parameter is set to `on`.
+        # The URI used for health checks. The URI must be **1** to **80** characters in length.
+        # > - The URI cannot contain only a forward slash (`/`), but it must start with a forward slash.
+        # > - This parameter takes effect only when HealthCheck is set to on.
         self.health_check_uri = health_check_uri
-        # The number of consecutive successful health checks required to change the health status of a backend server from `fail` (unhealthy) to `success` (healthy). Valid values: **2** to **10**.
-        # 
-        # > This parameter takes effect only when the HealthCheck parameter is set to `on`.
+        # The number of consecutive successful health checks required to change the health check status of a backend server from fail (unreachable) to success (reachable). Valid values: **2** to **10**.
+        # > This parameter takes effect only when HealthCheck is set to on.
         self.healthy_threshold = healthy_threshold
-        # The frontend port used by the load balancer instance.
+        # The frontend port used by the load balancing instance.
         self.listener_port = listener_port
-        # The session persistence timeout.
+        # The timeout period for session persistence.
         # 
-        # - Default value: 0. A value of 0 indicates that session persistence is disabled.
-        # 
+        # - Default value: 0, which indicates that session persistence is disabled.
         # - Valid values: **0** to **3600**.
-        # 
         # - Unit: seconds.
         self.persistence_timeout = persistence_timeout
         # The request ID.
         self.request_id = request_id
         # The scheduling algorithm. Valid values:
-        # 
-        # - **wrr**: Weighted Round Robin. Backend servers with higher weights receive more requests.
-        # 
-        # - **wlc**: Weighted Least Connections. In addition to weights, the system considers the number of active connections to each backend server. If multiple backend servers have the same weight, the system selects the backend server with the fewest active connections.
-        # 
-        # - **rr**: Round Robin. The system distributes requests sequentially to the backend servers.
-        # 
-        # - **sch**: Source IP Hash. The system routes requests from the same source IP address to the same backend server.
-        # 
-        # - **tch**: 4-Tuple Hash. The system routes requests that share the same 4-tuple (source IP address, destination IP address, source port, and destination port) to the same backend server.
+        # - **wrr**: Backend servers with higher weights are polled more frequently.
+        # - **wlc**: Backend servers are polled based on their weights and actual loads (number of connections). If weights are the same, backend servers with fewer current connections are polled more frequently.
+        # - **rr**: External requests are distributed to backend servers in sequence.
+        # - **sch**: Consistent hashing is based on source IP addresses. Requests from the same source IP address are scheduled to the same backend server.
+        # - **tch**: Consistent hashing is based on quadruples (source IP address, destination IP address, source port, and destination port). Requests from the same stream are scheduled to the same backend server.
         self.scheduler = scheduler
         # The status of the listener. Valid values:
         # 
-        # - **Running**: The listener is running.
-        # 
-        # - **Stopped**: The listener is stopped.
-        # 
-        # - **Starting**: The listener is being started.
-        # 
-        # - **Configuring**: The listener is being configured.
-        # 
-        # - **Stopping**: The listener is being stopped.
+        # - **Running**: running normally
+        # - **Stopped**: stopped
+        # - **Starting**: starting
+        # - **Configuring**: configuring
+        # - **Stopping**: stopping
         self.status = status
-        # The number of consecutive failed health checks required to change the health status of a backend server from `success` (healthy) to `fail` (unhealthy). Valid values: **2** to **10**.
+        # The number of consecutive failed health checks required to change the health check status of a backend server from success (reachable) to fail (unreachable). Valid values: **2** to **10**.
         # 
-        # > This parameter takes effect only when the HealthCheck parameter is set to `on`.
+        # > This parameter takes effect only when HealthCheck is set to on.
         self.unhealthy_threshold = unhealthy_threshold
 
     def validate(self):

@@ -10,15 +10,12 @@ class CreateApplicationRequest(DaraModel):
         template: str = None,
         timeout: int = None,
     ):
-        # The edge application template. The value must be a JSON string that contains the following information:
+        # The edge application template in JSON format. It contains the following information:
         # 
-        # - Basic information such as the name of the application
-        # 
-        # - Information such as resource specifications and network security configurations
-        # 
-        # - Service specifications
-        # 
-        # - Required resources
+        # - Basic information such as the application name.
+        # - Resource specifications and network security configurations.
+        # - Business configurations.
+        # - Resource requirements.
         # 
         # This parameter is required.
         self.template = template

@@ -10,7 +10,7 @@ class DeleteImageResponseBody(DaraModel):
         code: int = None,
         request_id: str = None,
     ):
-        # The business code. The value 0 is returned for success.
+        # The business code. A value of 0 indicates success.
         self.code = code
         # The request ID.
         self.request_id = request_id

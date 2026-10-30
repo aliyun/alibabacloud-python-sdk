@@ -13,13 +13,13 @@ class DescribeFileSystemsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The ID of the region.
+        # The edge zone ID.
         self.ens_region_id = ens_region_id
-        # The ID of the file system.
+        # The NAS file system ID.
         self.file_system_id = file_system_id
-        # The name of the file system.
+        # The NAS file system name.
         self.file_system_name = file_system_name
-        # The page number. Pages start from page **1**. Default value: **1**.
+        # The page number. Starting value: **1**. Default value: **1**.
         self.page_number = page_number
         # The number of entries per page. Maximum value: **100**. Default value: **10**.
         self.page_size = page_size

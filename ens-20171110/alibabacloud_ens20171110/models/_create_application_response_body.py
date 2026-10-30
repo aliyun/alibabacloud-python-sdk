@@ -10,9 +10,9 @@ class CreateApplicationResponseBody(DaraModel):
         app_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the application. This is the unique identifier of the edge application.
+        # The application ID generated upon successful creation. It is the unique identifier of the edge application service.
         self.app_id = app_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

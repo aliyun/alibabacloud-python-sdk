@@ -16,15 +16,15 @@ class DescribeForwardTableEntriesResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # Details of DNAT entries.
+        # The details of the queried DNAT entries.
         self.forward_table_entries = forward_table_entries
-        # The page number.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page for paging in a paged query.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -95,49 +95,42 @@ class DescribeForwardTableEntriesResponseBodyForwardTableEntries(DaraModel):
         standby_status: str = None,
         status: str = None,
     ):
-        # The EIP in the DNAT entry. The public IP address is used to access the Internet.
+        # The elastic IP address that provides public network access in the DNAT entry.
         self.external_ip = external_ip
-        # The external port or port range that is used in port forwarding.
+        # The external port or port range used for port forwarding.
         self.external_port = external_port
         # The ID of the DNAT entry.
         self.forward_entry_id = forward_entry_id
         # The name of the DNAT entry.
         self.forward_entry_name = forward_entry_name
-        # The probe port of DNAT.
+        # The health check port of the DNAT entry.
         self.health_check_port = health_check_port
-        # The private IP address of the instance that uses the DNAT entry for Internet communication.
+        # The private IP address of the instance that communicates with the Internet through the DNAT entry.
         self.internal_ip = internal_ip
-        # The internal port or port range that is used for port forwarding.
+        # The internal port or port range used for port forwarding.
         self.internal_port = internal_port
-        # The protocol. Valid values:
+        # The protocol type. Valid values:
         # 
-        # - **TCP**: forwards TCP packets.
+        # - **TCP**: Forwards TCP packets.
         # 
-        # - **UDP**: forwards UDP packets.
+        # - **UDP**: Forwards UDP packets.
         # 
-        # - **Any**: forwards all packets.
+        # - **Any**: Forwards packets of all protocols.
         self.ip_protocol = ip_protocol
         # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
-        # The secondary EIP that is used to access the Internet.
+        # The standby elastic IP address that provides public network access.
         self.standby_external_ip = standby_external_ip
-        # The status of the secondary EIP. Valid values:
-        # 
-        # - Running
-        # 
-        # - Stopping
-        # 
-        # - Stopped
-        # 
-        # - Starting
+        # The status of the standby elastic IP address. Valid values:
+        # - Running: Enabled.
+        # - Stopping: Disabling.
+        # - Stopped: Disabled.
+        # - Starting: Enabling.
         self.standby_status = standby_status
         # The status of the DNAT entry. Valid values:
-        # 
-        # - Pending: The DNAT entry is being created or modified.
-        # 
-        # - Available: The DNAT entry is available.
-        # 
-        # - Deleting: The DNAT entry is being deleted.
+        # - Pending: The entry is being configured, created, or modified.
+        # - Available: The entry is available.
+        # - Deleting: The entry is being deleted.
         self.status = status
 
     def validate(self):

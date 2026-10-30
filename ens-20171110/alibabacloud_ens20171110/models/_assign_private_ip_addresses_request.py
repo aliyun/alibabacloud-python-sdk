@@ -10,7 +10,7 @@ class AssignPrivateIpAddressesRequest(DaraModel):
         network_interface_id: str = None,
         v_switch_id: str = None,
     ):
-        # The ID of the ENI.
+        # The ID of the elastic network interface controller (NIC).
         # 
         # This parameter is required.
         self.network_interface_id = network_interface_id
