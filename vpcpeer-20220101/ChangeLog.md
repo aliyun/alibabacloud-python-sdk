@@ -1,3 +1,6 @@
+2026-10-30 Version: 2.0.6
+- Generated python 2022-01-01 for VpcPeer.
+
 2025-09-09 Version: 2.0.5
 - Update API AcceptVpcPeerConnection: add request parameters Tag.
 - Update API CreateVpcPeerConnection: add request parameters Tag.

@@ -1,24 +1,23 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
 from typing import Dict
-from Tea.core import TeaCore
 
+from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
-from alibabacloud_tea_openapi import models as open_api_models
-from alibabacloud_tea_util.client import Client as UtilClient
-from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
-from alibabacloud_vpcpeer20220101 import models as vpc_peer_20220101_models
-from alibabacloud_tea_util import models as util_models
-from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
+from alibabacloud_tea_openapi.utils import Utils
+from alibabacloud_vpcpeer20220101 import models as main_models
+from darabonba.core import DaraCore as DaraCore
+from darabonba.runtime import RuntimeOptions
 
-
+"""
+"""
 class Client(OpenApiClient):
-    """
-    *\
-    """
+
     def __init__(
-        self, 
-        config: open_api_models.Config,
+        self,
+        config: open_api_util_models.Config,
     ):
         super().__init__(config)
         self._endpoint_rule = 'central'
@@ -35,1484 +34,1030 @@ class Client(OpenApiClient):
         endpoint_map: Dict[str, str],
         endpoint: str,
     ) -> str:
-        if not UtilClient.empty(endpoint):
+        if not DaraCore.is_null(endpoint):
             return endpoint
-        if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
+        if not DaraCore.is_null(endpoint_map) and not DaraCore.is_null(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
-        return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+        return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
     def accept_vpc_peer_connection_with_options(
         self,
-        request: vpc_peer_20220101_models.AcceptVpcPeerConnectionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vpc_peer_20220101_models.AcceptVpcPeerConnectionResponse:
-        """
-        @summary Accepts a virtual private cloud (VPC) peering connection request.
-        
-        @description    For a cross-account VPC peering connection, the connection is activated only after the accepter VPC accepts the connection request.
-        **AcceptVpcPeerConnection** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the operation in the background. You can call the [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426100.html) operation to query the status of the task.
-        If a VPC peering connection is in the **Updating** state, the VPC peering connection is being activated.
-        If a VPC peering connection is in the **Activated** state, the VPC peering connection is activated.
-        You cannot repeatedly call the **AcceptVpcPeerConnection** operation within a specific period of time.
-        
-        @param request: AcceptVpcPeerConnectionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AcceptVpcPeerConnectionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.AcceptVpcPeerConnectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AcceptVpcPeerConnectionResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
         body = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             body['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.dry_run):
+        if not DaraCore.is_null(request.dry_run):
             body['DryRun'] = request.dry_run
-        if not UtilClient.is_unset(request.instance_id):
+        if not DaraCore.is_null(request.instance_id):
             body['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.resource_owner_account):
+        if not DaraCore.is_null(request.resource_owner_account):
             body['ResourceOwnerAccount'] = request.resource_owner_account
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='AcceptVpcPeerConnection',
-            version='2022-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'AcceptVpcPeerConnection',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.AcceptVpcPeerConnectionResponse(),
+        return DaraCore.from_map(
+            main_models.AcceptVpcPeerConnectionResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def accept_vpc_peer_connection_with_options_async(
         self,
-        request: vpc_peer_20220101_models.AcceptVpcPeerConnectionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vpc_peer_20220101_models.AcceptVpcPeerConnectionResponse:
-        """
-        @summary Accepts a virtual private cloud (VPC) peering connection request.
-        
-        @description    For a cross-account VPC peering connection, the connection is activated only after the accepter VPC accepts the connection request.
-        **AcceptVpcPeerConnection** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the operation in the background. You can call the [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426100.html) operation to query the status of the task.
-        If a VPC peering connection is in the **Updating** state, the VPC peering connection is being activated.
-        If a VPC peering connection is in the **Activated** state, the VPC peering connection is activated.
-        You cannot repeatedly call the **AcceptVpcPeerConnection** operation within a specific period of time.
-        
-        @param request: AcceptVpcPeerConnectionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AcceptVpcPeerConnectionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.AcceptVpcPeerConnectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AcceptVpcPeerConnectionResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
         body = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             body['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.dry_run):
+        if not DaraCore.is_null(request.dry_run):
             body['DryRun'] = request.dry_run
-        if not UtilClient.is_unset(request.instance_id):
+        if not DaraCore.is_null(request.instance_id):
             body['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.resource_owner_account):
+        if not DaraCore.is_null(request.resource_owner_account):
             body['ResourceOwnerAccount'] = request.resource_owner_account
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='AcceptVpcPeerConnection',
-            version='2022-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'AcceptVpcPeerConnection',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.AcceptVpcPeerConnectionResponse(),
+        return DaraCore.from_map(
+            main_models.AcceptVpcPeerConnectionResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def accept_vpc_peer_connection(
         self,
-        request: vpc_peer_20220101_models.AcceptVpcPeerConnectionRequest,
-    ) -> vpc_peer_20220101_models.AcceptVpcPeerConnectionResponse:
-        """
-        @summary Accepts a virtual private cloud (VPC) peering connection request.
-        
-        @description    For a cross-account VPC peering connection, the connection is activated only after the accepter VPC accepts the connection request.
-        **AcceptVpcPeerConnection** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the operation in the background. You can call the [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426100.html) operation to query the status of the task.
-        If a VPC peering connection is in the **Updating** state, the VPC peering connection is being activated.
-        If a VPC peering connection is in the **Activated** state, the VPC peering connection is activated.
-        You cannot repeatedly call the **AcceptVpcPeerConnection** operation within a specific period of time.
-        
-        @param request: AcceptVpcPeerConnectionRequest
-        @return: AcceptVpcPeerConnectionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.AcceptVpcPeerConnectionRequest,
+    ) -> main_models.AcceptVpcPeerConnectionResponse:
+        runtime = RuntimeOptions()
         return self.accept_vpc_peer_connection_with_options(request, runtime)
 
     async def accept_vpc_peer_connection_async(
         self,
-        request: vpc_peer_20220101_models.AcceptVpcPeerConnectionRequest,
-    ) -> vpc_peer_20220101_models.AcceptVpcPeerConnectionResponse:
-        """
-        @summary Accepts a virtual private cloud (VPC) peering connection request.
-        
-        @description    For a cross-account VPC peering connection, the connection is activated only after the accepter VPC accepts the connection request.
-        **AcceptVpcPeerConnection** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the operation in the background. You can call the [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426100.html) operation to query the status of the task.
-        If a VPC peering connection is in the **Updating** state, the VPC peering connection is being activated.
-        If a VPC peering connection is in the **Activated** state, the VPC peering connection is activated.
-        You cannot repeatedly call the **AcceptVpcPeerConnection** operation within a specific period of time.
-        
-        @param request: AcceptVpcPeerConnectionRequest
-        @return: AcceptVpcPeerConnectionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.AcceptVpcPeerConnectionRequest,
+    ) -> main_models.AcceptVpcPeerConnectionResponse:
+        runtime = RuntimeOptions()
         return await self.accept_vpc_peer_connection_with_options_async(request, runtime)
 
     def create_vpc_peer_connection_with_options(
         self,
-        request: vpc_peer_20220101_models.CreateVpcPeerConnectionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vpc_peer_20220101_models.CreateVpcPeerConnectionResponse:
-        """
-        @summary Creates a VPC peering connection
-        
-        @description Before you create a VPC peering connection, take note of the following items:
-        **CreateVpcPeerConnection** is an asynchronous operation. After a request is sent, the system returns an **instance ID** and runs the task in the background. You can call [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426095.html) to query the status of the task.
-        If the VPC peering connection is in the **Creating** state, the VPC peering connection is being created.
-        If the VPC peering connection is in the **Activated** state, the VPC peering connection is created.
-        If the VPC peering connection is in the **Accepting** state, it is a cross-account connection. The connection needs to be accepted on the accepter side.
-        You cannot repeatedly call **CreateVpcPeerConnection** within the specified period of time.
-        When you create a VPC peering connection, the system automatically activates Cloud Data Transfer (CDT) for you.
-        
-        @param request: CreateVpcPeerConnectionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateVpcPeerConnectionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateVpcPeerConnectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateVpcPeerConnectionResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.link_type):
+        if not DaraCore.is_null(request.link_type):
             query['LinkType'] = request.link_type
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
         body = {}
-        if not UtilClient.is_unset(request.accepting_ali_uid):
+        if not DaraCore.is_null(request.accepting_ali_uid):
             body['AcceptingAliUid'] = request.accepting_ali_uid
-        if not UtilClient.is_unset(request.accepting_region_id):
+        if not DaraCore.is_null(request.accepting_region_id):
             body['AcceptingRegionId'] = request.accepting_region_id
-        if not UtilClient.is_unset(request.accepting_vpc_id):
+        if not DaraCore.is_null(request.accepting_vpc_id):
             body['AcceptingVpcId'] = request.accepting_vpc_id
-        if not UtilClient.is_unset(request.bandwidth):
+        if not DaraCore.is_null(request.bandwidth):
             body['Bandwidth'] = request.bandwidth
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             body['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             body['Description'] = request.description
-        if not UtilClient.is_unset(request.dry_run):
+        if not DaraCore.is_null(request.dry_run):
             body['DryRun'] = request.dry_run
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.enable_jumbo_frame):
+            body['EnableJumboFrame'] = request.enable_jumbo_frame
+        if not DaraCore.is_null(request.name):
             body['Name'] = request.name
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.vpc_id):
+        if not DaraCore.is_null(request.vpc_id):
             body['VpcId'] = request.vpc_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CreateVpcPeerConnection',
-            version='2022-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateVpcPeerConnection',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.CreateVpcPeerConnectionResponse(),
+        return DaraCore.from_map(
+            main_models.CreateVpcPeerConnectionResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_vpc_peer_connection_with_options_async(
         self,
-        request: vpc_peer_20220101_models.CreateVpcPeerConnectionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vpc_peer_20220101_models.CreateVpcPeerConnectionResponse:
-        """
-        @summary Creates a VPC peering connection
-        
-        @description Before you create a VPC peering connection, take note of the following items:
-        **CreateVpcPeerConnection** is an asynchronous operation. After a request is sent, the system returns an **instance ID** and runs the task in the background. You can call [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426095.html) to query the status of the task.
-        If the VPC peering connection is in the **Creating** state, the VPC peering connection is being created.
-        If the VPC peering connection is in the **Activated** state, the VPC peering connection is created.
-        If the VPC peering connection is in the **Accepting** state, it is a cross-account connection. The connection needs to be accepted on the accepter side.
-        You cannot repeatedly call **CreateVpcPeerConnection** within the specified period of time.
-        When you create a VPC peering connection, the system automatically activates Cloud Data Transfer (CDT) for you.
-        
-        @param request: CreateVpcPeerConnectionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateVpcPeerConnectionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateVpcPeerConnectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateVpcPeerConnectionResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.link_type):
+        if not DaraCore.is_null(request.link_type):
             query['LinkType'] = request.link_type
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
         body = {}
-        if not UtilClient.is_unset(request.accepting_ali_uid):
+        if not DaraCore.is_null(request.accepting_ali_uid):
             body['AcceptingAliUid'] = request.accepting_ali_uid
-        if not UtilClient.is_unset(request.accepting_region_id):
+        if not DaraCore.is_null(request.accepting_region_id):
             body['AcceptingRegionId'] = request.accepting_region_id
-        if not UtilClient.is_unset(request.accepting_vpc_id):
+        if not DaraCore.is_null(request.accepting_vpc_id):
             body['AcceptingVpcId'] = request.accepting_vpc_id
-        if not UtilClient.is_unset(request.bandwidth):
+        if not DaraCore.is_null(request.bandwidth):
             body['Bandwidth'] = request.bandwidth
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             body['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             body['Description'] = request.description
-        if not UtilClient.is_unset(request.dry_run):
+        if not DaraCore.is_null(request.dry_run):
             body['DryRun'] = request.dry_run
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.enable_jumbo_frame):
+            body['EnableJumboFrame'] = request.enable_jumbo_frame
+        if not DaraCore.is_null(request.name):
             body['Name'] = request.name
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.vpc_id):
+        if not DaraCore.is_null(request.vpc_id):
             body['VpcId'] = request.vpc_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CreateVpcPeerConnection',
-            version='2022-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateVpcPeerConnection',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.CreateVpcPeerConnectionResponse(),
+        return DaraCore.from_map(
+            main_models.CreateVpcPeerConnectionResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_vpc_peer_connection(
         self,
-        request: vpc_peer_20220101_models.CreateVpcPeerConnectionRequest,
-    ) -> vpc_peer_20220101_models.CreateVpcPeerConnectionResponse:
-        """
-        @summary Creates a VPC peering connection
-        
-        @description Before you create a VPC peering connection, take note of the following items:
-        **CreateVpcPeerConnection** is an asynchronous operation. After a request is sent, the system returns an **instance ID** and runs the task in the background. You can call [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426095.html) to query the status of the task.
-        If the VPC peering connection is in the **Creating** state, the VPC peering connection is being created.
-        If the VPC peering connection is in the **Activated** state, the VPC peering connection is created.
-        If the VPC peering connection is in the **Accepting** state, it is a cross-account connection. The connection needs to be accepted on the accepter side.
-        You cannot repeatedly call **CreateVpcPeerConnection** within the specified period of time.
-        When you create a VPC peering connection, the system automatically activates Cloud Data Transfer (CDT) for you.
-        
-        @param request: CreateVpcPeerConnectionRequest
-        @return: CreateVpcPeerConnectionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateVpcPeerConnectionRequest,
+    ) -> main_models.CreateVpcPeerConnectionResponse:
+        runtime = RuntimeOptions()
         return self.create_vpc_peer_connection_with_options(request, runtime)
 
     async def create_vpc_peer_connection_async(
         self,
-        request: vpc_peer_20220101_models.CreateVpcPeerConnectionRequest,
-    ) -> vpc_peer_20220101_models.CreateVpcPeerConnectionResponse:
-        """
-        @summary Creates a VPC peering connection
-        
-        @description Before you create a VPC peering connection, take note of the following items:
-        **CreateVpcPeerConnection** is an asynchronous operation. After a request is sent, the system returns an **instance ID** and runs the task in the background. You can call [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426095.html) to query the status of the task.
-        If the VPC peering connection is in the **Creating** state, the VPC peering connection is being created.
-        If the VPC peering connection is in the **Activated** state, the VPC peering connection is created.
-        If the VPC peering connection is in the **Accepting** state, it is a cross-account connection. The connection needs to be accepted on the accepter side.
-        You cannot repeatedly call **CreateVpcPeerConnection** within the specified period of time.
-        When you create a VPC peering connection, the system automatically activates Cloud Data Transfer (CDT) for you.
-        
-        @param request: CreateVpcPeerConnectionRequest
-        @return: CreateVpcPeerConnectionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateVpcPeerConnectionRequest,
+    ) -> main_models.CreateVpcPeerConnectionResponse:
+        runtime = RuntimeOptions()
         return await self.create_vpc_peer_connection_with_options_async(request, runtime)
 
     def delete_vpc_peer_connection_with_options(
         self,
-        request: vpc_peer_20220101_models.DeleteVpcPeerConnectionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vpc_peer_20220101_models.DeleteVpcPeerConnectionResponse:
-        """
-        @summary 删除VPC对等连接
-        
-        @description    You can delete VPC peering connections. After you delete a VPC peering connection, your service is affected. Proceed with caution.
-        If you forcefully delete a VPC peering connection, the system deletes the routes that point to the VPC peering connection from the VPC route table.
-        If you do not forcefully delete a VPC peering connection, the system does not delete these routes. You must manually delete them.
-        The **DeleteVpcPeerConnection** operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426100.html) operation to query the status of a VPC peering connection.
-        If a VPC peering connection is in the **Deleting** state, it is being deleted.
-        If a VPC peering connection is in the **Deleted** state, it is deleted.
-        You cannot repeatedly call the **DeleteVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
-        
-        @param request: DeleteVpcPeerConnectionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteVpcPeerConnectionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteVpcPeerConnectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteVpcPeerConnectionResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             body['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.dry_run):
+        if not DaraCore.is_null(request.dry_run):
             body['DryRun'] = request.dry_run
-        if not UtilClient.is_unset(request.force):
+        if not DaraCore.is_null(request.force):
             body['Force'] = request.force
-        if not UtilClient.is_unset(request.instance_id):
+        if not DaraCore.is_null(request.instance_id):
             body['InstanceId'] = request.instance_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='DeleteVpcPeerConnection',
-            version='2022-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteVpcPeerConnection',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.DeleteVpcPeerConnectionResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteVpcPeerConnectionResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_vpc_peer_connection_with_options_async(
         self,
-        request: vpc_peer_20220101_models.DeleteVpcPeerConnectionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vpc_peer_20220101_models.DeleteVpcPeerConnectionResponse:
-        """
-        @summary 删除VPC对等连接
-        
-        @description    You can delete VPC peering connections. After you delete a VPC peering connection, your service is affected. Proceed with caution.
-        If you forcefully delete a VPC peering connection, the system deletes the routes that point to the VPC peering connection from the VPC route table.
-        If you do not forcefully delete a VPC peering connection, the system does not delete these routes. You must manually delete them.
-        The **DeleteVpcPeerConnection** operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426100.html) operation to query the status of a VPC peering connection.
-        If a VPC peering connection is in the **Deleting** state, it is being deleted.
-        If a VPC peering connection is in the **Deleted** state, it is deleted.
-        You cannot repeatedly call the **DeleteVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
-        
-        @param request: DeleteVpcPeerConnectionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteVpcPeerConnectionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteVpcPeerConnectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteVpcPeerConnectionResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             body['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.dry_run):
+        if not DaraCore.is_null(request.dry_run):
             body['DryRun'] = request.dry_run
-        if not UtilClient.is_unset(request.force):
+        if not DaraCore.is_null(request.force):
             body['Force'] = request.force
-        if not UtilClient.is_unset(request.instance_id):
+        if not DaraCore.is_null(request.instance_id):
             body['InstanceId'] = request.instance_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='DeleteVpcPeerConnection',
-            version='2022-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteVpcPeerConnection',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.DeleteVpcPeerConnectionResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteVpcPeerConnectionResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_vpc_peer_connection(
         self,
-        request: vpc_peer_20220101_models.DeleteVpcPeerConnectionRequest,
-    ) -> vpc_peer_20220101_models.DeleteVpcPeerConnectionResponse:
-        """
-        @summary 删除VPC对等连接
-        
-        @description    You can delete VPC peering connections. After you delete a VPC peering connection, your service is affected. Proceed with caution.
-        If you forcefully delete a VPC peering connection, the system deletes the routes that point to the VPC peering connection from the VPC route table.
-        If you do not forcefully delete a VPC peering connection, the system does not delete these routes. You must manually delete them.
-        The **DeleteVpcPeerConnection** operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426100.html) operation to query the status of a VPC peering connection.
-        If a VPC peering connection is in the **Deleting** state, it is being deleted.
-        If a VPC peering connection is in the **Deleted** state, it is deleted.
-        You cannot repeatedly call the **DeleteVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
-        
-        @param request: DeleteVpcPeerConnectionRequest
-        @return: DeleteVpcPeerConnectionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteVpcPeerConnectionRequest,
+    ) -> main_models.DeleteVpcPeerConnectionResponse:
+        runtime = RuntimeOptions()
         return self.delete_vpc_peer_connection_with_options(request, runtime)
 
     async def delete_vpc_peer_connection_async(
         self,
-        request: vpc_peer_20220101_models.DeleteVpcPeerConnectionRequest,
-    ) -> vpc_peer_20220101_models.DeleteVpcPeerConnectionResponse:
-        """
-        @summary 删除VPC对等连接
-        
-        @description    You can delete VPC peering connections. After you delete a VPC peering connection, your service is affected. Proceed with caution.
-        If you forcefully delete a VPC peering connection, the system deletes the routes that point to the VPC peering connection from the VPC route table.
-        If you do not forcefully delete a VPC peering connection, the system does not delete these routes. You must manually delete them.
-        The **DeleteVpcPeerConnection** operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426100.html) operation to query the status of a VPC peering connection.
-        If a VPC peering connection is in the **Deleting** state, it is being deleted.
-        If a VPC peering connection is in the **Deleted** state, it is deleted.
-        You cannot repeatedly call the **DeleteVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
-        
-        @param request: DeleteVpcPeerConnectionRequest
-        @return: DeleteVpcPeerConnectionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteVpcPeerConnectionRequest,
+    ) -> main_models.DeleteVpcPeerConnectionResponse:
+        runtime = RuntimeOptions()
         return await self.delete_vpc_peer_connection_with_options_async(request, runtime)
 
     def get_vpc_peer_connection_attribute_with_options(
         self,
-        request: vpc_peer_20220101_models.GetVpcPeerConnectionAttributeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vpc_peer_20220101_models.GetVpcPeerConnectionAttributeResponse:
-        """
-        @summary Queries the details of a virtual private cloud (VPC) peering connection.
-        
-        @param request: GetVpcPeerConnectionAttributeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetVpcPeerConnectionAttributeResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetVpcPeerConnectionAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetVpcPeerConnectionAttributeResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.instance_id):
+        if not DaraCore.is_null(request.instance_id):
             body['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.resource_owner_account):
+        if not DaraCore.is_null(request.resource_owner_account):
             body['ResourceOwnerAccount'] = request.resource_owner_account
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='GetVpcPeerConnectionAttribute',
-            version='2022-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetVpcPeerConnectionAttribute',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.GetVpcPeerConnectionAttributeResponse(),
+        return DaraCore.from_map(
+            main_models.GetVpcPeerConnectionAttributeResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_vpc_peer_connection_attribute_with_options_async(
         self,
-        request: vpc_peer_20220101_models.GetVpcPeerConnectionAttributeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vpc_peer_20220101_models.GetVpcPeerConnectionAttributeResponse:
-        """
-        @summary Queries the details of a virtual private cloud (VPC) peering connection.
-        
-        @param request: GetVpcPeerConnectionAttributeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetVpcPeerConnectionAttributeResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetVpcPeerConnectionAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetVpcPeerConnectionAttributeResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.instance_id):
+        if not DaraCore.is_null(request.instance_id):
             body['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.resource_owner_account):
+        if not DaraCore.is_null(request.resource_owner_account):
             body['ResourceOwnerAccount'] = request.resource_owner_account
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='GetVpcPeerConnectionAttribute',
-            version='2022-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetVpcPeerConnectionAttribute',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.GetVpcPeerConnectionAttributeResponse(),
+        return DaraCore.from_map(
+            main_models.GetVpcPeerConnectionAttributeResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_vpc_peer_connection_attribute(
         self,
-        request: vpc_peer_20220101_models.GetVpcPeerConnectionAttributeRequest,
-    ) -> vpc_peer_20220101_models.GetVpcPeerConnectionAttributeResponse:
-        """
-        @summary Queries the details of a virtual private cloud (VPC) peering connection.
-        
-        @param request: GetVpcPeerConnectionAttributeRequest
-        @return: GetVpcPeerConnectionAttributeResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetVpcPeerConnectionAttributeRequest,
+    ) -> main_models.GetVpcPeerConnectionAttributeResponse:
+        runtime = RuntimeOptions()
         return self.get_vpc_peer_connection_attribute_with_options(request, runtime)
 
     async def get_vpc_peer_connection_attribute_async(
         self,
-        request: vpc_peer_20220101_models.GetVpcPeerConnectionAttributeRequest,
-    ) -> vpc_peer_20220101_models.GetVpcPeerConnectionAttributeResponse:
-        """
-        @summary Queries the details of a virtual private cloud (VPC) peering connection.
-        
-        @param request: GetVpcPeerConnectionAttributeRequest
-        @return: GetVpcPeerConnectionAttributeResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetVpcPeerConnectionAttributeRequest,
+    ) -> main_models.GetVpcPeerConnectionAttributeResponse:
+        runtime = RuntimeOptions()
         return await self.get_vpc_peer_connection_attribute_with_options_async(request, runtime)
 
     def list_tag_resources_with_options(
         self,
-        request: vpc_peer_20220101_models.ListTagResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vpc_peer_20220101_models.ListTagResourcesResponse:
-        """
-        @summary Queries tags that are added to Virtual Private Cloud (VPC) peering connections.
-        
-        @description    Set **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object to be queried.
-        **Tag.N** is a resource tag that consists of a key-value pair. If you set only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you set only **Tag.N.Value**, an error message is returned.
-        If you set **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
-        If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
-        
-        @param request: ListTagResourcesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListTagResourcesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListTagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTagResourcesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.category):
+        if not DaraCore.is_null(request.category):
             query['Category'] = request.category
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListTagResources',
-            version='2022-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListTagResources',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.ListTagResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.ListTagResourcesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_tag_resources_with_options_async(
         self,
-        request: vpc_peer_20220101_models.ListTagResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vpc_peer_20220101_models.ListTagResourcesResponse:
-        """
-        @summary Queries tags that are added to Virtual Private Cloud (VPC) peering connections.
-        
-        @description    Set **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object to be queried.
-        **Tag.N** is a resource tag that consists of a key-value pair. If you set only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you set only **Tag.N.Value**, an error message is returned.
-        If you set **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
-        If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
-        
-        @param request: ListTagResourcesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListTagResourcesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListTagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTagResourcesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.category):
+        if not DaraCore.is_null(request.category):
             query['Category'] = request.category
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListTagResources',
-            version='2022-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListTagResources',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.ListTagResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.ListTagResourcesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_tag_resources(
         self,
-        request: vpc_peer_20220101_models.ListTagResourcesRequest,
-    ) -> vpc_peer_20220101_models.ListTagResourcesResponse:
-        """
-        @summary Queries tags that are added to Virtual Private Cloud (VPC) peering connections.
-        
-        @description    Set **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object to be queried.
-        **Tag.N** is a resource tag that consists of a key-value pair. If you set only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you set only **Tag.N.Value**, an error message is returned.
-        If you set **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
-        If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
-        
-        @param request: ListTagResourcesRequest
-        @return: ListTagResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListTagResourcesRequest,
+    ) -> main_models.ListTagResourcesResponse:
+        runtime = RuntimeOptions()
         return self.list_tag_resources_with_options(request, runtime)
 
     async def list_tag_resources_async(
         self,
-        request: vpc_peer_20220101_models.ListTagResourcesRequest,
-    ) -> vpc_peer_20220101_models.ListTagResourcesResponse:
-        """
-        @summary Queries tags that are added to Virtual Private Cloud (VPC) peering connections.
-        
-        @description    Set **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object to be queried.
-        **Tag.N** is a resource tag that consists of a key-value pair. If you set only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you set only **Tag.N.Value**, an error message is returned.
-        If you set **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
-        If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
-        
-        @param request: ListTagResourcesRequest
-        @return: ListTagResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListTagResourcesRequest,
+    ) -> main_models.ListTagResourcesResponse:
+        runtime = RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
     def list_vpc_peer_connections_with_options(
         self,
-        tmp_req: vpc_peer_20220101_models.ListVpcPeerConnectionsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vpc_peer_20220101_models.ListVpcPeerConnectionsResponse:
-        """
-        @summary Queries virtual private cloud (VPC) peering connections.
-        
-        @param tmp_req: ListVpcPeerConnectionsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListVpcPeerConnectionsResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = vpc_peer_20220101_models.ListVpcPeerConnectionsShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.vpc_id):
-            request.vpc_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.vpc_id, 'VpcId', 'simple')
+        tmp_req: main_models.ListVpcPeerConnectionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVpcPeerConnectionsResponse:
+        tmp_req.validate()
+        request = main_models.ListVpcPeerConnectionsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.vpc_id):
+            request.vpc_id_shrink = Utils.array_to_string_with_specified_style(tmp_req.vpc_id, 'VpcId', 'simple')
         query = {}
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.tags):
+        if not DaraCore.is_null(request.tags):
             query['Tags'] = request.tags
         body = {}
-        if not UtilClient.is_unset(request.instance_id):
+        if not DaraCore.is_null(request.instance_id):
             body['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             body['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             body['Name'] = request.name
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             body['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.vpc_id_shrink):
+        if not DaraCore.is_null(request.vpc_id_shrink):
             body['VpcId'] = request.vpc_id_shrink
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='ListVpcPeerConnections',
-            version='2022-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListVpcPeerConnections',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.ListVpcPeerConnectionsResponse(),
+        return DaraCore.from_map(
+            main_models.ListVpcPeerConnectionsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_vpc_peer_connections_with_options_async(
         self,
-        tmp_req: vpc_peer_20220101_models.ListVpcPeerConnectionsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vpc_peer_20220101_models.ListVpcPeerConnectionsResponse:
-        """
-        @summary Queries virtual private cloud (VPC) peering connections.
-        
-        @param tmp_req: ListVpcPeerConnectionsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListVpcPeerConnectionsResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = vpc_peer_20220101_models.ListVpcPeerConnectionsShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.vpc_id):
-            request.vpc_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.vpc_id, 'VpcId', 'simple')
+        tmp_req: main_models.ListVpcPeerConnectionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVpcPeerConnectionsResponse:
+        tmp_req.validate()
+        request = main_models.ListVpcPeerConnectionsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.vpc_id):
+            request.vpc_id_shrink = Utils.array_to_string_with_specified_style(tmp_req.vpc_id, 'VpcId', 'simple')
         query = {}
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.tags):
+        if not DaraCore.is_null(request.tags):
             query['Tags'] = request.tags
         body = {}
-        if not UtilClient.is_unset(request.instance_id):
+        if not DaraCore.is_null(request.instance_id):
             body['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             body['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             body['Name'] = request.name
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             body['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.vpc_id_shrink):
+        if not DaraCore.is_null(request.vpc_id_shrink):
             body['VpcId'] = request.vpc_id_shrink
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='ListVpcPeerConnections',
-            version='2022-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListVpcPeerConnections',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.ListVpcPeerConnectionsResponse(),
+        return DaraCore.from_map(
+            main_models.ListVpcPeerConnectionsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_vpc_peer_connections(
         self,
-        request: vpc_peer_20220101_models.ListVpcPeerConnectionsRequest,
-    ) -> vpc_peer_20220101_models.ListVpcPeerConnectionsResponse:
-        """
-        @summary Queries virtual private cloud (VPC) peering connections.
-        
-        @param request: ListVpcPeerConnectionsRequest
-        @return: ListVpcPeerConnectionsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListVpcPeerConnectionsRequest,
+    ) -> main_models.ListVpcPeerConnectionsResponse:
+        runtime = RuntimeOptions()
         return self.list_vpc_peer_connections_with_options(request, runtime)
 
     async def list_vpc_peer_connections_async(
         self,
-        request: vpc_peer_20220101_models.ListVpcPeerConnectionsRequest,
-    ) -> vpc_peer_20220101_models.ListVpcPeerConnectionsResponse:
-        """
-        @summary Queries virtual private cloud (VPC) peering connections.
-        
-        @param request: ListVpcPeerConnectionsRequest
-        @return: ListVpcPeerConnectionsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListVpcPeerConnectionsRequest,
+    ) -> main_models.ListVpcPeerConnectionsResponse:
+        runtime = RuntimeOptions()
         return await self.list_vpc_peer_connections_with_options_async(request, runtime)
 
     def modify_vpc_peer_connection_with_options(
         self,
-        request: vpc_peer_20220101_models.ModifyVpcPeerConnectionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vpc_peer_20220101_models.ModifyVpcPeerConnectionResponse:
-        """
-        @summary Modifies the description or name of a virtual private cloud (VPC) peering connection.
-        
-        @description    The **ModifyVpcPeerConnection** operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426100.html) operation to query the status of a VPC peering connection.
-        If a VPC peering connection is in the **Updating** state, the VPC peering connection is being modified.
-        If a VPC peering connection is in the **Activated** state, the VPC peering connection is modified.
-        You cannot repeatedly call the **ModifyVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
-        
-        @param request: ModifyVpcPeerConnectionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyVpcPeerConnectionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ModifyVpcPeerConnectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyVpcPeerConnectionResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.link_type):
+        if not DaraCore.is_null(request.link_type):
             query['LinkType'] = request.link_type
         body = {}
-        if not UtilClient.is_unset(request.bandwidth):
+        if not DaraCore.is_null(request.bandwidth):
             body['Bandwidth'] = request.bandwidth
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             body['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             body['Description'] = request.description
-        if not UtilClient.is_unset(request.dry_run):
+        if not DaraCore.is_null(request.dry_run):
             body['DryRun'] = request.dry_run
-        if not UtilClient.is_unset(request.instance_id):
+        if not DaraCore.is_null(request.enable_jumbo_frame):
+            body['EnableJumboFrame'] = request.enable_jumbo_frame
+        if not DaraCore.is_null(request.instance_id):
             body['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             body['Name'] = request.name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='ModifyVpcPeerConnection',
-            version='2022-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ModifyVpcPeerConnection',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.ModifyVpcPeerConnectionResponse(),
+        return DaraCore.from_map(
+            main_models.ModifyVpcPeerConnectionResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def modify_vpc_peer_connection_with_options_async(
         self,
-        request: vpc_peer_20220101_models.ModifyVpcPeerConnectionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vpc_peer_20220101_models.ModifyVpcPeerConnectionResponse:
-        """
-        @summary Modifies the description or name of a virtual private cloud (VPC) peering connection.
-        
-        @description    The **ModifyVpcPeerConnection** operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426100.html) operation to query the status of a VPC peering connection.
-        If a VPC peering connection is in the **Updating** state, the VPC peering connection is being modified.
-        If a VPC peering connection is in the **Activated** state, the VPC peering connection is modified.
-        You cannot repeatedly call the **ModifyVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
-        
-        @param request: ModifyVpcPeerConnectionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyVpcPeerConnectionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ModifyVpcPeerConnectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyVpcPeerConnectionResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.link_type):
+        if not DaraCore.is_null(request.link_type):
             query['LinkType'] = request.link_type
         body = {}
-        if not UtilClient.is_unset(request.bandwidth):
+        if not DaraCore.is_null(request.bandwidth):
             body['Bandwidth'] = request.bandwidth
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             body['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             body['Description'] = request.description
-        if not UtilClient.is_unset(request.dry_run):
+        if not DaraCore.is_null(request.dry_run):
             body['DryRun'] = request.dry_run
-        if not UtilClient.is_unset(request.instance_id):
+        if not DaraCore.is_null(request.enable_jumbo_frame):
+            body['EnableJumboFrame'] = request.enable_jumbo_frame
+        if not DaraCore.is_null(request.instance_id):
             body['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             body['Name'] = request.name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='ModifyVpcPeerConnection',
-            version='2022-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ModifyVpcPeerConnection',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.ModifyVpcPeerConnectionResponse(),
+        return DaraCore.from_map(
+            main_models.ModifyVpcPeerConnectionResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def modify_vpc_peer_connection(
         self,
-        request: vpc_peer_20220101_models.ModifyVpcPeerConnectionRequest,
-    ) -> vpc_peer_20220101_models.ModifyVpcPeerConnectionResponse:
-        """
-        @summary Modifies the description or name of a virtual private cloud (VPC) peering connection.
-        
-        @description    The **ModifyVpcPeerConnection** operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426100.html) operation to query the status of a VPC peering connection.
-        If a VPC peering connection is in the **Updating** state, the VPC peering connection is being modified.
-        If a VPC peering connection is in the **Activated** state, the VPC peering connection is modified.
-        You cannot repeatedly call the **ModifyVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
-        
-        @param request: ModifyVpcPeerConnectionRequest
-        @return: ModifyVpcPeerConnectionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ModifyVpcPeerConnectionRequest,
+    ) -> main_models.ModifyVpcPeerConnectionResponse:
+        runtime = RuntimeOptions()
         return self.modify_vpc_peer_connection_with_options(request, runtime)
 
     async def modify_vpc_peer_connection_async(
         self,
-        request: vpc_peer_20220101_models.ModifyVpcPeerConnectionRequest,
-    ) -> vpc_peer_20220101_models.ModifyVpcPeerConnectionResponse:
-        """
-        @summary Modifies the description or name of a virtual private cloud (VPC) peering connection.
-        
-        @description    The **ModifyVpcPeerConnection** operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426100.html) operation to query the status of a VPC peering connection.
-        If a VPC peering connection is in the **Updating** state, the VPC peering connection is being modified.
-        If a VPC peering connection is in the **Activated** state, the VPC peering connection is modified.
-        You cannot repeatedly call the **ModifyVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
-        
-        @param request: ModifyVpcPeerConnectionRequest
-        @return: ModifyVpcPeerConnectionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ModifyVpcPeerConnectionRequest,
+    ) -> main_models.ModifyVpcPeerConnectionResponse:
+        runtime = RuntimeOptions()
         return await self.modify_vpc_peer_connection_with_options_async(request, runtime)
 
     def move_resource_group_with_options(
         self,
-        request: vpc_peer_20220101_models.MoveResourceGroupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vpc_peer_20220101_models.MoveResourceGroupResponse:
-        """
-        @summary Moves a Virtual Private Cloud (VPC) peering connection from one resource group to another.
-        
-        @param request: MoveResourceGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: MoveResourceGroupResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.MoveResourceGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MoveResourceGroupResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.new_resource_group_id):
+        if not DaraCore.is_null(request.new_resource_group_id):
             query['NewResourceGroupId'] = request.new_resource_group_id
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='MoveResourceGroup',
-            version='2022-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'MoveResourceGroup',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.MoveResourceGroupResponse(),
+        return DaraCore.from_map(
+            main_models.MoveResourceGroupResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def move_resource_group_with_options_async(
         self,
-        request: vpc_peer_20220101_models.MoveResourceGroupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vpc_peer_20220101_models.MoveResourceGroupResponse:
-        """
-        @summary Moves a Virtual Private Cloud (VPC) peering connection from one resource group to another.
-        
-        @param request: MoveResourceGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: MoveResourceGroupResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.MoveResourceGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MoveResourceGroupResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.new_resource_group_id):
+        if not DaraCore.is_null(request.new_resource_group_id):
             query['NewResourceGroupId'] = request.new_resource_group_id
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='MoveResourceGroup',
-            version='2022-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'MoveResourceGroup',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.MoveResourceGroupResponse(),
+        return DaraCore.from_map(
+            main_models.MoveResourceGroupResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def move_resource_group(
         self,
-        request: vpc_peer_20220101_models.MoveResourceGroupRequest,
-    ) -> vpc_peer_20220101_models.MoveResourceGroupResponse:
-        """
-        @summary Moves a Virtual Private Cloud (VPC) peering connection from one resource group to another.
-        
-        @param request: MoveResourceGroupRequest
-        @return: MoveResourceGroupResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.MoveResourceGroupRequest,
+    ) -> main_models.MoveResourceGroupResponse:
+        runtime = RuntimeOptions()
         return self.move_resource_group_with_options(request, runtime)
 
     async def move_resource_group_async(
         self,
-        request: vpc_peer_20220101_models.MoveResourceGroupRequest,
-    ) -> vpc_peer_20220101_models.MoveResourceGroupResponse:
-        """
-        @summary Moves a Virtual Private Cloud (VPC) peering connection from one resource group to another.
-        
-        @param request: MoveResourceGroupRequest
-        @return: MoveResourceGroupResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.MoveResourceGroupRequest,
+    ) -> main_models.MoveResourceGroupResponse:
+        runtime = RuntimeOptions()
         return await self.move_resource_group_with_options_async(request, runtime)
 
     def reject_vpc_peer_connection_with_options(
         self,
-        request: vpc_peer_20220101_models.RejectVpcPeerConnectionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vpc_peer_20220101_models.RejectVpcPeerConnectionResponse:
-        """
-        @summary 拒绝VPC对等连接
-        
-        @description    An acceptor VPC can reject a connection request from the requester VPC of a cross-account VPC peering connection. After the connection request is rejected, the VPC peering connection enters the **Rejected** state.
-        You cannot repeatedly call the **RejectVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
-        
-        @param request: RejectVpcPeerConnectionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RejectVpcPeerConnectionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.RejectVpcPeerConnectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RejectVpcPeerConnectionResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             body['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.dry_run):
+        if not DaraCore.is_null(request.dry_run):
             body['DryRun'] = request.dry_run
-        if not UtilClient.is_unset(request.instance_id):
+        if not DaraCore.is_null(request.instance_id):
             body['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.resource_owner_account):
+        if not DaraCore.is_null(request.resource_owner_account):
             body['ResourceOwnerAccount'] = request.resource_owner_account
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='RejectVpcPeerConnection',
-            version='2022-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'RejectVpcPeerConnection',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.RejectVpcPeerConnectionResponse(),
+        return DaraCore.from_map(
+            main_models.RejectVpcPeerConnectionResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def reject_vpc_peer_connection_with_options_async(
         self,
-        request: vpc_peer_20220101_models.RejectVpcPeerConnectionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vpc_peer_20220101_models.RejectVpcPeerConnectionResponse:
-        """
-        @summary 拒绝VPC对等连接
-        
-        @description    An acceptor VPC can reject a connection request from the requester VPC of a cross-account VPC peering connection. After the connection request is rejected, the VPC peering connection enters the **Rejected** state.
-        You cannot repeatedly call the **RejectVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
-        
-        @param request: RejectVpcPeerConnectionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RejectVpcPeerConnectionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.RejectVpcPeerConnectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RejectVpcPeerConnectionResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             body['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.dry_run):
+        if not DaraCore.is_null(request.dry_run):
             body['DryRun'] = request.dry_run
-        if not UtilClient.is_unset(request.instance_id):
+        if not DaraCore.is_null(request.instance_id):
             body['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.resource_owner_account):
+        if not DaraCore.is_null(request.resource_owner_account):
             body['ResourceOwnerAccount'] = request.resource_owner_account
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='RejectVpcPeerConnection',
-            version='2022-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'RejectVpcPeerConnection',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.RejectVpcPeerConnectionResponse(),
+        return DaraCore.from_map(
+            main_models.RejectVpcPeerConnectionResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def reject_vpc_peer_connection(
         self,
-        request: vpc_peer_20220101_models.RejectVpcPeerConnectionRequest,
-    ) -> vpc_peer_20220101_models.RejectVpcPeerConnectionResponse:
-        """
-        @summary 拒绝VPC对等连接
-        
-        @description    An acceptor VPC can reject a connection request from the requester VPC of a cross-account VPC peering connection. After the connection request is rejected, the VPC peering connection enters the **Rejected** state.
-        You cannot repeatedly call the **RejectVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
-        
-        @param request: RejectVpcPeerConnectionRequest
-        @return: RejectVpcPeerConnectionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.RejectVpcPeerConnectionRequest,
+    ) -> main_models.RejectVpcPeerConnectionResponse:
+        runtime = RuntimeOptions()
         return self.reject_vpc_peer_connection_with_options(request, runtime)
 
     async def reject_vpc_peer_connection_async(
         self,
-        request: vpc_peer_20220101_models.RejectVpcPeerConnectionRequest,
-    ) -> vpc_peer_20220101_models.RejectVpcPeerConnectionResponse:
-        """
-        @summary 拒绝VPC对等连接
-        
-        @description    An acceptor VPC can reject a connection request from the requester VPC of a cross-account VPC peering connection. After the connection request is rejected, the VPC peering connection enters the **Rejected** state.
-        You cannot repeatedly call the **RejectVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
-        
-        @param request: RejectVpcPeerConnectionRequest
-        @return: RejectVpcPeerConnectionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.RejectVpcPeerConnectionRequest,
+    ) -> main_models.RejectVpcPeerConnectionResponse:
+        runtime = RuntimeOptions()
         return await self.reject_vpc_peer_connection_with_options_async(request, runtime)
 
     def tag_resources_with_options(
         self,
-        request: vpc_peer_20220101_models.TagResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vpc_peer_20220101_models.TagResourcesResponse:
-        """
-        @summary Creates tags and adds them to a virtual private cloud (VPC) peering connection.
-        
-        @description Tags are used to classify instances. Each tag consists of a key-value pair. Before you use tags, take note of the following limits:
-        The keys of tags that are added to the same instance must be unique.
-        You cannot create tags without adding them to instances. All tags must be added to instances.
-        Tag information is not shared across regions.
-        For example, you cannot view the tags that are created in the China (Hangzhou) region from the China (Shanghai) region.
-        For the same account and region, tags added to different VPC peering connections are shared.
-        For example, if a tag is added to a VPC peering connection, the tag can also be added to other VPC peering connections within the same account and region. You can modify the key and the value of a tag or remove a tag from an instance. After you delete an instance, all tags that are added to the instance are deleted.
-        You can add up to 20 tags to each instance. Before you add a tag to an instance, the system automatically checks the number of existing tags. An error message is returned if the maximum number of tags is reached.
-        
-        @param request: TagResourcesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: TagResourcesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.TagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TagResourcesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='TagResources',
-            version='2022-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'TagResources',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.TagResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.TagResourcesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def tag_resources_with_options_async(
         self,
-        request: vpc_peer_20220101_models.TagResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vpc_peer_20220101_models.TagResourcesResponse:
-        """
-        @summary Creates tags and adds them to a virtual private cloud (VPC) peering connection.
-        
-        @description Tags are used to classify instances. Each tag consists of a key-value pair. Before you use tags, take note of the following limits:
-        The keys of tags that are added to the same instance must be unique.
-        You cannot create tags without adding them to instances. All tags must be added to instances.
-        Tag information is not shared across regions.
-        For example, you cannot view the tags that are created in the China (Hangzhou) region from the China (Shanghai) region.
-        For the same account and region, tags added to different VPC peering connections are shared.
-        For example, if a tag is added to a VPC peering connection, the tag can also be added to other VPC peering connections within the same account and region. You can modify the key and the value of a tag or remove a tag from an instance. After you delete an instance, all tags that are added to the instance are deleted.
-        You can add up to 20 tags to each instance. Before you add a tag to an instance, the system automatically checks the number of existing tags. An error message is returned if the maximum number of tags is reached.
-        
-        @param request: TagResourcesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: TagResourcesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.TagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TagResourcesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='TagResources',
-            version='2022-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'TagResources',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.TagResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.TagResourcesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def tag_resources(
         self,
-        request: vpc_peer_20220101_models.TagResourcesRequest,
-    ) -> vpc_peer_20220101_models.TagResourcesResponse:
-        """
-        @summary Creates tags and adds them to a virtual private cloud (VPC) peering connection.
-        
-        @description Tags are used to classify instances. Each tag consists of a key-value pair. Before you use tags, take note of the following limits:
-        The keys of tags that are added to the same instance must be unique.
-        You cannot create tags without adding them to instances. All tags must be added to instances.
-        Tag information is not shared across regions.
-        For example, you cannot view the tags that are created in the China (Hangzhou) region from the China (Shanghai) region.
-        For the same account and region, tags added to different VPC peering connections are shared.
-        For example, if a tag is added to a VPC peering connection, the tag can also be added to other VPC peering connections within the same account and region. You can modify the key and the value of a tag or remove a tag from an instance. After you delete an instance, all tags that are added to the instance are deleted.
-        You can add up to 20 tags to each instance. Before you add a tag to an instance, the system automatically checks the number of existing tags. An error message is returned if the maximum number of tags is reached.
-        
-        @param request: TagResourcesRequest
-        @return: TagResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.TagResourcesRequest,
+    ) -> main_models.TagResourcesResponse:
+        runtime = RuntimeOptions()
         return self.tag_resources_with_options(request, runtime)
 
     async def tag_resources_async(
         self,
-        request: vpc_peer_20220101_models.TagResourcesRequest,
-    ) -> vpc_peer_20220101_models.TagResourcesResponse:
-        """
-        @summary Creates tags and adds them to a virtual private cloud (VPC) peering connection.
-        
-        @description Tags are used to classify instances. Each tag consists of a key-value pair. Before you use tags, take note of the following limits:
-        The keys of tags that are added to the same instance must be unique.
-        You cannot create tags without adding them to instances. All tags must be added to instances.
-        Tag information is not shared across regions.
-        For example, you cannot view the tags that are created in the China (Hangzhou) region from the China (Shanghai) region.
-        For the same account and region, tags added to different VPC peering connections are shared.
-        For example, if a tag is added to a VPC peering connection, the tag can also be added to other VPC peering connections within the same account and region. You can modify the key and the value of a tag or remove a tag from an instance. After you delete an instance, all tags that are added to the instance are deleted.
-        You can add up to 20 tags to each instance. Before you add a tag to an instance, the system automatically checks the number of existing tags. An error message is returned if the maximum number of tags is reached.
-        
-        @param request: TagResourcesRequest
-        @return: TagResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.TagResourcesRequest,
+    ) -> main_models.TagResourcesResponse:
+        runtime = RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
     def un_tag_resources_with_options(
         self,
-        request: vpc_peer_20220101_models.UnTagResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vpc_peer_20220101_models.UnTagResourcesResponse:
-        """
-        @summary Removes tags from specified Virtual Private Cloud (VPC) peering connections.
-        
-        @param request: UnTagResourcesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UnTagResourcesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UnTagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UnTagResourcesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.all):
+        if not DaraCore.is_null(request.all):
             query['All'] = request.all
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tag_key):
+        if not DaraCore.is_null(request.tag_key):
             query['TagKey'] = request.tag_key
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UnTagResources',
-            version='2022-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UnTagResources',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.UnTagResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.UnTagResourcesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def un_tag_resources_with_options_async(
         self,
-        request: vpc_peer_20220101_models.UnTagResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vpc_peer_20220101_models.UnTagResourcesResponse:
-        """
-        @summary Removes tags from specified Virtual Private Cloud (VPC) peering connections.
-        
-        @param request: UnTagResourcesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UnTagResourcesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UnTagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UnTagResourcesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.all):
+        if not DaraCore.is_null(request.all):
             query['All'] = request.all
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tag_key):
+        if not DaraCore.is_null(request.tag_key):
             query['TagKey'] = request.tag_key
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UnTagResources',
-            version='2022-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UnTagResources',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.UnTagResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.UnTagResourcesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def un_tag_resources(
         self,
-        request: vpc_peer_20220101_models.UnTagResourcesRequest,
-    ) -> vpc_peer_20220101_models.UnTagResourcesResponse:
-        """
-        @summary Removes tags from specified Virtual Private Cloud (VPC) peering connections.
-        
-        @param request: UnTagResourcesRequest
-        @return: UnTagResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UnTagResourcesRequest,
+    ) -> main_models.UnTagResourcesResponse:
+        runtime = RuntimeOptions()
         return self.un_tag_resources_with_options(request, runtime)
 
     async def un_tag_resources_async(
         self,
-        request: vpc_peer_20220101_models.UnTagResourcesRequest,
-    ) -> vpc_peer_20220101_models.UnTagResourcesResponse:
-        """
-        @summary Removes tags from specified Virtual Private Cloud (VPC) peering connections.
-        
-        @param request: UnTagResourcesRequest
-        @return: UnTagResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UnTagResourcesRequest,
+    ) -> main_models.UnTagResourcesResponse:
+        runtime = RuntimeOptions()
         return await self.un_tag_resources_with_options_async(request, runtime)

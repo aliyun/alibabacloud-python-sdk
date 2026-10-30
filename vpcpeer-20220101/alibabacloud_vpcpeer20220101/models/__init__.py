@@ -1,0 +1,103 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._accept_vpc_peer_connection_request import AcceptVpcPeerConnectionRequest
+from ._accept_vpc_peer_connection_response_body import AcceptVpcPeerConnectionResponseBody
+from ._accept_vpc_peer_connection_response import AcceptVpcPeerConnectionResponse
+from ._create_vpc_peer_connection_request import CreateVpcPeerConnectionRequest
+from ._create_vpc_peer_connection_response_body import CreateVpcPeerConnectionResponseBody
+from ._create_vpc_peer_connection_response import CreateVpcPeerConnectionResponse
+from ._delete_vpc_peer_connection_request import DeleteVpcPeerConnectionRequest
+from ._delete_vpc_peer_connection_response_body import DeleteVpcPeerConnectionResponseBody
+from ._delete_vpc_peer_connection_response import DeleteVpcPeerConnectionResponse
+from ._get_vpc_peer_connection_attribute_request import GetVpcPeerConnectionAttributeRequest
+from ._get_vpc_peer_connection_attribute_response_body import GetVpcPeerConnectionAttributeResponseBody
+from ._get_vpc_peer_connection_attribute_response import GetVpcPeerConnectionAttributeResponse
+from ._list_tag_resources_request import ListTagResourcesRequest
+from ._list_tag_resources_response_body import ListTagResourcesResponseBody
+from ._list_tag_resources_response import ListTagResourcesResponse
+from ._list_vpc_peer_connections_request import ListVpcPeerConnectionsRequest
+from ._list_vpc_peer_connections_shrink_request import ListVpcPeerConnectionsShrinkRequest
+from ._list_vpc_peer_connections_response_body import ListVpcPeerConnectionsResponseBody
+from ._list_vpc_peer_connections_response import ListVpcPeerConnectionsResponse
+from ._modify_vpc_peer_connection_request import ModifyVpcPeerConnectionRequest
+from ._modify_vpc_peer_connection_response_body import ModifyVpcPeerConnectionResponseBody
+from ._modify_vpc_peer_connection_response import ModifyVpcPeerConnectionResponse
+from ._move_resource_group_request import MoveResourceGroupRequest
+from ._move_resource_group_response_body import MoveResourceGroupResponseBody
+from ._move_resource_group_response import MoveResourceGroupResponse
+from ._reject_vpc_peer_connection_request import RejectVpcPeerConnectionRequest
+from ._reject_vpc_peer_connection_response_body import RejectVpcPeerConnectionResponseBody
+from ._reject_vpc_peer_connection_response import RejectVpcPeerConnectionResponse
+from ._tag_resources_request import TagResourcesRequest
+from ._tag_resources_response_body import TagResourcesResponseBody
+from ._tag_resources_response import TagResourcesResponse
+from ._un_tag_resources_request import UnTagResourcesRequest
+from ._un_tag_resources_response_body import UnTagResourcesResponseBody
+from ._un_tag_resources_response import UnTagResourcesResponse
+from ._accept_vpc_peer_connection_request import AcceptVpcPeerConnectionRequestTag
+from ._create_vpc_peer_connection_request import CreateVpcPeerConnectionRequestTag
+from ._get_vpc_peer_connection_attribute_response_body import GetVpcPeerConnectionAttributeResponseBodyAcceptingVpc
+from ._get_vpc_peer_connection_attribute_response_body import GetVpcPeerConnectionAttributeResponseBodyTags
+from ._get_vpc_peer_connection_attribute_response_body import GetVpcPeerConnectionAttributeResponseBodyVpc
+from ._list_tag_resources_request import ListTagResourcesRequestTag
+from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
+from ._list_vpc_peer_connections_request import ListVpcPeerConnectionsRequestTags
+from ._list_vpc_peer_connections_shrink_request import ListVpcPeerConnectionsShrinkRequestTags
+from ._list_vpc_peer_connections_response_body import ListVpcPeerConnectionsResponseBodyVpcPeerConnectsAcceptingVpc
+from ._list_vpc_peer_connections_response_body import ListVpcPeerConnectionsResponseBodyVpcPeerConnectsTags
+from ._list_vpc_peer_connections_response_body import ListVpcPeerConnectionsResponseBodyVpcPeerConnectsVpc
+from ._list_vpc_peer_connections_response_body import ListVpcPeerConnectionsResponseBodyVpcPeerConnects
+from ._tag_resources_request import TagResourcesRequestTag
+
+__all__ = [
+    AcceptVpcPeerConnectionRequest,
+    AcceptVpcPeerConnectionResponseBody,
+    AcceptVpcPeerConnectionResponse,
+    CreateVpcPeerConnectionRequest,
+    CreateVpcPeerConnectionResponseBody,
+    CreateVpcPeerConnectionResponse,
+    DeleteVpcPeerConnectionRequest,
+    DeleteVpcPeerConnectionResponseBody,
+    DeleteVpcPeerConnectionResponse,
+    GetVpcPeerConnectionAttributeRequest,
+    GetVpcPeerConnectionAttributeResponseBody,
+    GetVpcPeerConnectionAttributeResponse,
+    ListTagResourcesRequest,
+    ListTagResourcesResponseBody,
+    ListTagResourcesResponse,
+    ListVpcPeerConnectionsRequest,
+    ListVpcPeerConnectionsShrinkRequest,
+    ListVpcPeerConnectionsResponseBody,
+    ListVpcPeerConnectionsResponse,
+    ModifyVpcPeerConnectionRequest,
+    ModifyVpcPeerConnectionResponseBody,
+    ModifyVpcPeerConnectionResponse,
+    MoveResourceGroupRequest,
+    MoveResourceGroupResponseBody,
+    MoveResourceGroupResponse,
+    RejectVpcPeerConnectionRequest,
+    RejectVpcPeerConnectionResponseBody,
+    RejectVpcPeerConnectionResponse,
+    TagResourcesRequest,
+    TagResourcesResponseBody,
+    TagResourcesResponse,
+    UnTagResourcesRequest,
+    UnTagResourcesResponseBody,
+    UnTagResourcesResponse,
+    AcceptVpcPeerConnectionRequestTag,
+    CreateVpcPeerConnectionRequestTag,
+    GetVpcPeerConnectionAttributeResponseBodyAcceptingVpc,
+    GetVpcPeerConnectionAttributeResponseBodyTags,
+    GetVpcPeerConnectionAttributeResponseBodyVpc,
+    ListTagResourcesRequestTag,
+    ListTagResourcesResponseBodyTagResources,
+    ListVpcPeerConnectionsRequestTags,
+    ListVpcPeerConnectionsShrinkRequestTags,
+    ListVpcPeerConnectionsResponseBodyVpcPeerConnectsAcceptingVpc,
+    ListVpcPeerConnectionsResponseBodyVpcPeerConnectsTags,
+    ListVpcPeerConnectionsResponseBodyVpcPeerConnectsVpc,
+    ListVpcPeerConnectionsResponseBodyVpcPeerConnects,
+    TagResourcesRequestTag
+]
