@@ -16,26 +16,13 @@ class DeleteTransitRouterVpnAttachmentRequest(DaraModel):
         resource_owner_id: int = None,
         transit_router_attachment_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
-        # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
-        # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. Valid values:
-        # - **true**: performs a dry run without deleting the VPN connection. The system checks the required parameters, request syntax, and business restrictions. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
-        # - **false** (default): performs a dry run and then deletes the VPN connection after the request passes the dry run.
         self.dry_run = dry_run
-        # Specifies whether to force delete the VPN connection. Valid values:
-        # - **false** (default): checks whether related resource dependencies exist before deleting the VPN connection, such as associated forwarding and routing learning. If dependencies exist, the VPN connection is not deleted and the corresponding error is returned.
-        # - **true**: deletes the VPN connection along with all related dependencies.
         self.force = force
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the VPN connection.
-        # 
         # This parameter is required.
         self.transit_router_attachment_id = transit_router_attachment_id
 

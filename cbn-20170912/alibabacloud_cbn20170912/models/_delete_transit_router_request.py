@@ -21,10 +21,10 @@ class DeleteTransitRouterRequest(DaraModel):
         # 
         # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # Specifies whether to perform a dry run, including permission and instance status verification. Valid values:
+        # Specifies whether to perform a dry run for this deletion request, including permission and instance status checks. Valid values:
         # 
         # - **false** (default): Sends a normal request. If the request passes the check, the transit router instance is deleted.
-        # - **true**: Sends a check request. Only the check is performed. The transit router instance is not deleted. The check items include whether required parameters are specified and the request format. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
+        # - **true**: Sends a check request. Only the validation is performed, and the transit router instance is not deleted. The system checks whether the required parameters are specified and whether the request format is valid. If the check fails, the corresponding error is returned. If the check passes, the error code `DryRunOperation` is returned.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id

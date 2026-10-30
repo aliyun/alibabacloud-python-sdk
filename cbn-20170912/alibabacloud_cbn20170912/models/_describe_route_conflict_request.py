@@ -25,7 +25,7 @@ class DescribeRouteConflictRequest(DaraModel):
         self.child_instance_id = child_instance_id
         # The region ID of the network instance.
         # 
-        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to obtain region IDs.
+        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.child_instance_region_id = child_instance_region_id
@@ -35,9 +35,9 @@ class DescribeRouteConflictRequest(DaraModel):
         self.child_instance_route_table_id = child_instance_route_table_id
         # The type of the network instance. Valid values:
         # 
-        # - **VPC**: virtual private cloud.
+        # - **VPC**: VPC.
         # 
-        # - **VBR**: virtual border router.
+        # - **VBR**: VBR.
         # 
         # - **CCN**: Cloud Connect Network.
         # 
@@ -49,7 +49,7 @@ class DescribeRouteConflictRequest(DaraModel):
         self.owner_id = owner_id
         # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page during paging. Default value: **10**. Valid values: **1** to **50**.
+        # The number of entries to return per page in a paged query. This parameter is used for paging. Default value: **10**. Valid values: **1** to **50**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

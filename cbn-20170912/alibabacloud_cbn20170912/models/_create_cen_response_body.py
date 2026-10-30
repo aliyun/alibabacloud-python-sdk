@@ -12,7 +12,7 @@ class CreateCenResponseBody(DaraModel):
     ):
         # The ID of the CEN instance.
         self.cen_id = cen_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

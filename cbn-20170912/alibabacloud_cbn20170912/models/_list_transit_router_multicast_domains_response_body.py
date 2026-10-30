@@ -16,16 +16,15 @@ class ListTransitRouterMulticastDomainsResponseBody(DaraModel):
         total_count: int = None,
         transit_router_multicast_domains: List[main_models.ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains] = None,
     ):
-        # The number of entries per page.
+        # The number of entries returned on each page.
         self.max_results = max_results
-        # The token that determines the start point of the next query. Valid values:
-        # 
-        # - If **NextToken** is empty, no next query exists.
+        # The token that is used for the next query. Valid values:
+        # - If **NextToken** is empty, no next query is to be sent.
         # - If **NextToken** is returned, the value indicates the token that is used for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
         # The list of multicast domains.
         self.transit_router_multicast_domains = transit_router_multicast_domains
@@ -111,7 +110,7 @@ class ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains
         self.status = status
         # The list of tags.
         self.tags = tags
-        # The transit router instance ID.
+        # The ID of the transit router instance, which is used to forward traffic and manage routing.
         self.transit_router_id = transit_router_id
         # The description of the multicast domain.
         self.transit_router_multicast_domain_description = transit_router_multicast_domain_description
@@ -242,9 +241,9 @@ class ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains
         igmpv_2support: str = None,
         strict_source_control: str = None,
     ):
-        # Indicates whether IGMP is enabled for the multicast domain.
+        # Specifies whether the Internet Group Management Protocol (IGMP) feature is enabled for the multicast domain.
         self.igmpv_2support = igmpv_2support
-        # Indicates whether strict multicast source control is enabled for the multicast domain.
+        # Specifies whether the strict multicast source control feature is enabled for the multicast domain.
         self.strict_source_control = strict_source_control
 
     def validate(self):

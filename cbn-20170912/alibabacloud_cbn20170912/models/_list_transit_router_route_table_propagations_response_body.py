@@ -16,15 +16,15 @@ class ListTransitRouterRouteTablePropagationsResponseBody(DaraModel):
         total_count: int = None,
         transit_router_propagations: List[main_models.ListTransitRouterRouteTablePropagationsResponseBodyTransitRouterPropagations] = None,
     ):
-        # The number of entries per page for a paged query.
+        # The maximum number of entries returned per page.
         self.max_results = max_results
-        # The token for the next query in a paged query.
+        # The token used to retrieve the next page of results.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
         # The total number of entries.
         self.total_count = total_count
-        # The list of route learning relationships.
+        # The route propagations.
         self.transit_router_propagations = transit_router_propagations
 
     def validate(self):
@@ -90,22 +90,20 @@ class ListTransitRouterRouteTablePropagationsResponseBodyTransitRouterPropagatio
     ):
         # The network instance ID.
         self.resource_id = resource_id
-        # The network instance type. Valid values:
-        # 
-        # - **VPC**: virtual private cloud (VPC) instance.
-        # - **VBR**: virtual border router (VBR) instance.
-        # - **TR**: transit router instance.
+        # The type of the network instance. Valid values:
+        # - **VPC**: VPC.
+        # - **VBR**: VBR.
+        # - **TR**: transit router.
         # - **VPN**: VPN connection.
         self.resource_type = resource_type
-        # The status of the route learning relationship. Valid values:
-        # 
-        # - **Enabling**: being enabled.
-        # - **Disabling**: being disabled.
-        # - **Active**: active.
+        # The status of the route propagation. Valid values:
+        # - **Enabling**: Enabling.
+        # - **Disabling**: Disabling.
+        # - **Active**: Active.
         self.status = status
-        # The network instance connection ID.
+        # The ID of the network instance connection.
         self.transit_router_attachment_id = transit_router_attachment_id
-        # The ID of the Enterprise Edition transit router route table.
+        # The ID of the route table in the Enterprise Edition transit router.
         self.transit_router_route_table_id = transit_router_route_table_id
 
     def validate(self):

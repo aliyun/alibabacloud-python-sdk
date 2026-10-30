@@ -11,7 +11,7 @@ class CreateCenBandwidthPackageResponseBody(DaraModel):
         cen_bandwidth_package_order_id: str = None,
         request_id: str = None,
     ):
-        # The instance ID of the new bandwidth plan.
+        # The instance ID of the created bandwidth plan instance.
         self.cen_bandwidth_package_id = cen_bandwidth_package_id
         # The order ID of the bandwidth plan.
         self.cen_bandwidth_package_order_id = cen_bandwidth_package_order_id

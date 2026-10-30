@@ -50,6 +50,13 @@ from ._create_cen_route_map_response import CreateCenRouteMapResponse
 from ._create_flowlog_request import CreateFlowlogRequest
 from ._create_flowlog_response_body import CreateFlowlogResponseBody
 from ._create_flowlog_response import CreateFlowlogResponse
+from ._create_route_map_request import CreateRouteMapRequest
+from ._create_route_map_response_body import CreateRouteMapResponseBody
+from ._create_route_map_response import CreateRouteMapResponse
+from ._create_route_map_rule_request import CreateRouteMapRuleRequest
+from ._create_route_map_rule_shrink_request import CreateRouteMapRuleShrinkRequest
+from ._create_route_map_rule_response_body import CreateRouteMapRuleResponseBody
+from ._create_route_map_rule_response import CreateRouteMapRuleResponse
 from ._create_traffic_marking_policy_request import CreateTrafficMarkingPolicyRequest
 from ._create_traffic_marking_policy_response_body import CreateTrafficMarkingPolicyResponseBody
 from ._create_traffic_marking_policy_response import CreateTrafficMarkingPolicyResponse
@@ -119,6 +126,12 @@ from ._delete_cen_route_map_response import DeleteCenRouteMapResponse
 from ._delete_flowlog_request import DeleteFlowlogRequest
 from ._delete_flowlog_response_body import DeleteFlowlogResponseBody
 from ._delete_flowlog_response import DeleteFlowlogResponse
+from ._delete_route_map_request import DeleteRouteMapRequest
+from ._delete_route_map_response_body import DeleteRouteMapResponseBody
+from ._delete_route_map_response import DeleteRouteMapResponse
+from ._delete_route_map_rule_request import DeleteRouteMapRuleRequest
+from ._delete_route_map_rule_response_body import DeleteRouteMapRuleResponseBody
+from ._delete_route_map_rule_response import DeleteRouteMapRuleResponse
 from ._delete_route_service_in_cen_request import DeleteRouteServiceInCenRequest
 from ._delete_route_service_in_cen_response_body import DeleteRouteServiceInCenResponseBody
 from ._delete_route_service_in_cen_response import DeleteRouteServiceInCenResponse
@@ -233,6 +246,9 @@ from ._describe_transit_route_table_aggregation_response import DescribeTransitR
 from ._describe_transit_route_table_aggregation_detail_request import DescribeTransitRouteTableAggregationDetailRequest
 from ._describe_transit_route_table_aggregation_detail_response_body import DescribeTransitRouteTableAggregationDetailResponseBody
 from ._describe_transit_route_table_aggregation_detail_response import DescribeTransitRouteTableAggregationDetailResponse
+from ._describe_transit_router_capacity_reservations_request import DescribeTransitRouterCapacityReservationsRequest
+from ._describe_transit_router_capacity_reservations_response_body import DescribeTransitRouterCapacityReservationsResponseBody
+from ._describe_transit_router_capacity_reservations_response import DescribeTransitRouterCapacityReservationsResponse
 from ._detach_cen_child_instance_request import DetachCenChildInstanceRequest
 from ._detach_cen_child_instance_response_body import DetachCenChildInstanceResponseBody
 from ._detach_cen_child_instance_response import DetachCenChildInstanceResponse
@@ -272,6 +288,12 @@ from ._list_grant_vswitch_enis_response import ListGrantVSwitchEnisResponse
 from ._list_grant_vswitches_to_cen_request import ListGrantVSwitchesToCenRequest
 from ._list_grant_vswitches_to_cen_response_body import ListGrantVSwitchesToCenResponseBody
 from ._list_grant_vswitches_to_cen_response import ListGrantVSwitchesToCenResponse
+from ._list_route_map_rules_request import ListRouteMapRulesRequest
+from ._list_route_map_rules_response_body import ListRouteMapRulesResponseBody
+from ._list_route_map_rules_response import ListRouteMapRulesResponse
+from ._list_route_maps_request import ListRouteMapsRequest
+from ._list_route_maps_response_body import ListRouteMapsResponseBody
+from ._list_route_maps_response import ListRouteMapsResponse
 from ._list_tag_resources_request import ListTagResourcesRequest
 from ._list_tag_resources_response_body import ListTagResourcesResponseBody
 from ._list_tag_resources_response import ListTagResourcesResponse
@@ -357,6 +379,10 @@ from ._modify_transit_route_table_aggregation_request import ModifyTransitRouteT
 from ._modify_transit_route_table_aggregation_shrink_request import ModifyTransitRouteTableAggregationShrinkRequest
 from ._modify_transit_route_table_aggregation_response_body import ModifyTransitRouteTableAggregationResponseBody
 from ._modify_transit_route_table_aggregation_response import ModifyTransitRouteTableAggregationResponse
+from ._modify_transit_router_capacity_reservations_request import ModifyTransitRouterCapacityReservationsRequest
+from ._modify_transit_router_capacity_reservations_shrink_request import ModifyTransitRouterCapacityReservationsShrinkRequest
+from ._modify_transit_router_capacity_reservations_response_body import ModifyTransitRouterCapacityReservationsResponseBody
+from ._modify_transit_router_capacity_reservations_response import ModifyTransitRouterCapacityReservationsResponse
 from ._modify_transit_router_cidr_request import ModifyTransitRouterCidrRequest
 from ._modify_transit_router_cidr_response_body import ModifyTransitRouterCidrResponseBody
 from ._modify_transit_router_cidr_response import ModifyTransitRouterCidrResponse
@@ -423,6 +449,13 @@ from ._update_cen_inter_region_traffic_qos_policy_attribute_response import Upda
 from ._update_cen_inter_region_traffic_qos_queue_attribute_request import UpdateCenInterRegionTrafficQosQueueAttributeRequest
 from ._update_cen_inter_region_traffic_qos_queue_attribute_response_body import UpdateCenInterRegionTrafficQosQueueAttributeResponseBody
 from ._update_cen_inter_region_traffic_qos_queue_attribute_response import UpdateCenInterRegionTrafficQosQueueAttributeResponse
+from ._update_route_map_request import UpdateRouteMapRequest
+from ._update_route_map_response_body import UpdateRouteMapResponseBody
+from ._update_route_map_response import UpdateRouteMapResponse
+from ._update_route_map_rule_request import UpdateRouteMapRuleRequest
+from ._update_route_map_rule_shrink_request import UpdateRouteMapRuleShrinkRequest
+from ._update_route_map_rule_response_body import UpdateRouteMapRuleResponseBody
+from ._update_route_map_rule_response import UpdateRouteMapRuleResponse
 from ._update_traffic_marking_policy_attribute_request import UpdateTrafficMarkingPolicyAttributeRequest
 from ._update_traffic_marking_policy_attribute_response_body import UpdateTrafficMarkingPolicyAttributeResponseBody
 from ._update_traffic_marking_policy_attribute_response import UpdateTrafficMarkingPolicyAttributeResponse
@@ -463,6 +496,9 @@ from ._create_cen_request import CreateCenRequestTag
 from ._create_cen_bandwidth_package_request import CreateCenBandwidthPackageRequestTag
 from ._create_cen_inter_region_traffic_qos_policy_request import CreateCenInterRegionTrafficQosPolicyRequestTrafficQosQueues
 from ._create_flowlog_request import CreateFlowlogRequestTag
+from ._create_route_map_request import CreateRouteMapRequestTag
+from ._create_route_map_rule_request import CreateRouteMapRuleRequestMatchConditions
+from ._create_route_map_rule_request import CreateRouteMapRuleRequestSetActions
 from ._create_traffic_marking_policy_request import CreateTrafficMarkingPolicyRequestTrafficMatchRules
 from ._create_transit_router_request import CreateTransitRouterRequestTag
 from ._create_transit_router_request import CreateTransitRouterRequestTransitRouterCidrList
@@ -566,6 +602,10 @@ from ._describe_route_services_in_cen_response_body import DescribeRouteServices
 from ._describe_route_services_in_cen_response_body import DescribeRouteServicesInCenResponseBodyRouteServiceEntries
 from ._describe_transit_route_table_aggregation_response_body import DescribeTransitRouteTableAggregationResponseBodyData
 from ._describe_transit_route_table_aggregation_detail_response_body import DescribeTransitRouteTableAggregationDetailResponseBodyData
+from ._describe_transit_router_capacity_reservations_response_body import DescribeTransitRouterCapacityReservationsResponseBodyDeploymentSets
+from ._describe_transit_router_capacity_reservations_response_body import DescribeTransitRouterCapacityReservationsResponseBodyMinimumTransitRouterCapacitiesDataProcessGbps
+from ._describe_transit_router_capacity_reservations_response_body import DescribeTransitRouterCapacityReservationsResponseBodyMinimumTransitRouterCapacitiesState
+from ._describe_transit_router_capacity_reservations_response_body import DescribeTransitRouterCapacityReservationsResponseBodyMinimumTransitRouterCapacities
 from ._list_cen_child_instance_route_entries_to_attachment_request import ListCenChildInstanceRouteEntriesToAttachmentRequestRouteFilter
 from ._list_cen_child_instance_route_entries_to_attachment_response_body import ListCenChildInstanceRouteEntriesToAttachmentResponseBodyRouteEntry
 from ._list_cen_inter_region_traffic_qos_policies_response_body import ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPoliciesTrafficQosQueues
@@ -574,6 +614,13 @@ from ._list_cen_inter_region_traffic_qos_queues_request import ListCenInterRegio
 from ._list_cen_inter_region_traffic_qos_queues_response_body import ListCenInterRegionTrafficQosQueuesResponseBodyTrafficQosQueues
 from ._list_grant_vswitch_enis_response_body import ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis
 from ._list_grant_vswitches_to_cen_response_body import ListGrantVSwitchesToCenResponseBodyVSwitches
+from ._list_route_map_rules_request import ListRouteMapRulesRequestFilter
+from ._list_route_map_rules_response_body import ListRouteMapRulesResponseBodyRouteMapRulesMatchConditions
+from ._list_route_map_rules_response_body import ListRouteMapRulesResponseBodyRouteMapRulesSetActions
+from ._list_route_map_rules_response_body import ListRouteMapRulesResponseBodyRouteMapRules
+from ._list_route_maps_request import ListRouteMapsRequestFilter
+from ._list_route_maps_response_body import ListRouteMapsResponseBodyRouteMapsTag
+from ._list_route_maps_response_body import ListRouteMapsResponseBodyRouteMaps
 from ._list_tag_resources_request import ListTagResourcesRequestTag
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResourcesTagResource
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
@@ -621,8 +668,14 @@ from ._list_transit_routers_request import ListTransitRoutersRequestTag
 from ._list_transit_routers_response_body import ListTransitRoutersResponseBodyTransitRoutersTags
 from ._list_transit_routers_response_body import ListTransitRoutersResponseBodyTransitRoutersTransitRouterCidrList
 from ._list_transit_routers_response_body import ListTransitRoutersResponseBodyTransitRouters
+from ._modify_transit_router_capacity_reservations_request import ModifyTransitRouterCapacityReservationsRequestDeploymentSets
+from ._modify_transit_router_capacity_reservations_request import ModifyTransitRouterCapacityReservationsRequestMinimumTransitRouterCapacitiesDataProcessGbps
+from ._modify_transit_router_capacity_reservations_request import ModifyTransitRouterCapacityReservationsRequestMinimumTransitRouterCapacities
+from ._modify_transit_router_capacity_reservations_request import ModifyTransitRouterCapacityReservationsRequestResetCapacityReservations
 from ._modify_transit_router_multicast_domain_request import ModifyTransitRouterMulticastDomainRequestOptions
 from ._tag_resources_request import TagResourcesRequestTag
+from ._update_route_map_rule_request import UpdateRouteMapRuleRequestMatchConditions
+from ._update_route_map_rule_request import UpdateRouteMapRuleRequestSetActions
 from ._update_traffic_marking_policy_attribute_request import UpdateTrafficMarkingPolicyAttributeRequestAddTrafficMatchRules
 from ._update_traffic_marking_policy_attribute_request import UpdateTrafficMarkingPolicyAttributeRequestDeleteTrafficMatchRules
 from ._update_transit_router_route_table_request import UpdateTransitRouterRouteTableRequestRouteTableOptions
@@ -679,6 +732,13 @@ __all__ = [
     CreateFlowlogRequest,
     CreateFlowlogResponseBody,
     CreateFlowlogResponse,
+    CreateRouteMapRequest,
+    CreateRouteMapResponseBody,
+    CreateRouteMapResponse,
+    CreateRouteMapRuleRequest,
+    CreateRouteMapRuleShrinkRequest,
+    CreateRouteMapRuleResponseBody,
+    CreateRouteMapRuleResponse,
     CreateTrafficMarkingPolicyRequest,
     CreateTrafficMarkingPolicyResponseBody,
     CreateTrafficMarkingPolicyResponse,
@@ -748,6 +808,12 @@ __all__ = [
     DeleteFlowlogRequest,
     DeleteFlowlogResponseBody,
     DeleteFlowlogResponse,
+    DeleteRouteMapRequest,
+    DeleteRouteMapResponseBody,
+    DeleteRouteMapResponse,
+    DeleteRouteMapRuleRequest,
+    DeleteRouteMapRuleResponseBody,
+    DeleteRouteMapRuleResponse,
     DeleteRouteServiceInCenRequest,
     DeleteRouteServiceInCenResponseBody,
     DeleteRouteServiceInCenResponse,
@@ -862,6 +928,9 @@ __all__ = [
     DescribeTransitRouteTableAggregationDetailRequest,
     DescribeTransitRouteTableAggregationDetailResponseBody,
     DescribeTransitRouteTableAggregationDetailResponse,
+    DescribeTransitRouterCapacityReservationsRequest,
+    DescribeTransitRouterCapacityReservationsResponseBody,
+    DescribeTransitRouterCapacityReservationsResponse,
     DetachCenChildInstanceRequest,
     DetachCenChildInstanceResponseBody,
     DetachCenChildInstanceResponse,
@@ -901,6 +970,12 @@ __all__ = [
     ListGrantVSwitchesToCenRequest,
     ListGrantVSwitchesToCenResponseBody,
     ListGrantVSwitchesToCenResponse,
+    ListRouteMapRulesRequest,
+    ListRouteMapRulesResponseBody,
+    ListRouteMapRulesResponse,
+    ListRouteMapsRequest,
+    ListRouteMapsResponseBody,
+    ListRouteMapsResponse,
     ListTagResourcesRequest,
     ListTagResourcesResponseBody,
     ListTagResourcesResponse,
@@ -986,6 +1061,10 @@ __all__ = [
     ModifyTransitRouteTableAggregationShrinkRequest,
     ModifyTransitRouteTableAggregationResponseBody,
     ModifyTransitRouteTableAggregationResponse,
+    ModifyTransitRouterCapacityReservationsRequest,
+    ModifyTransitRouterCapacityReservationsShrinkRequest,
+    ModifyTransitRouterCapacityReservationsResponseBody,
+    ModifyTransitRouterCapacityReservationsResponse,
     ModifyTransitRouterCidrRequest,
     ModifyTransitRouterCidrResponseBody,
     ModifyTransitRouterCidrResponse,
@@ -1052,6 +1131,13 @@ __all__ = [
     UpdateCenInterRegionTrafficQosQueueAttributeRequest,
     UpdateCenInterRegionTrafficQosQueueAttributeResponseBody,
     UpdateCenInterRegionTrafficQosQueueAttributeResponse,
+    UpdateRouteMapRequest,
+    UpdateRouteMapResponseBody,
+    UpdateRouteMapResponse,
+    UpdateRouteMapRuleRequest,
+    UpdateRouteMapRuleShrinkRequest,
+    UpdateRouteMapRuleResponseBody,
+    UpdateRouteMapRuleResponse,
     UpdateTrafficMarkingPolicyAttributeRequest,
     UpdateTrafficMarkingPolicyAttributeResponseBody,
     UpdateTrafficMarkingPolicyAttributeResponse,
@@ -1092,6 +1178,9 @@ __all__ = [
     CreateCenBandwidthPackageRequestTag,
     CreateCenInterRegionTrafficQosPolicyRequestTrafficQosQueues,
     CreateFlowlogRequestTag,
+    CreateRouteMapRequestTag,
+    CreateRouteMapRuleRequestMatchConditions,
+    CreateRouteMapRuleRequestSetActions,
     CreateTrafficMarkingPolicyRequestTrafficMatchRules,
     CreateTransitRouterRequestTag,
     CreateTransitRouterRequestTransitRouterCidrList,
@@ -1195,6 +1284,10 @@ __all__ = [
     DescribeRouteServicesInCenResponseBodyRouteServiceEntries,
     DescribeTransitRouteTableAggregationResponseBodyData,
     DescribeTransitRouteTableAggregationDetailResponseBodyData,
+    DescribeTransitRouterCapacityReservationsResponseBodyDeploymentSets,
+    DescribeTransitRouterCapacityReservationsResponseBodyMinimumTransitRouterCapacitiesDataProcessGbps,
+    DescribeTransitRouterCapacityReservationsResponseBodyMinimumTransitRouterCapacitiesState,
+    DescribeTransitRouterCapacityReservationsResponseBodyMinimumTransitRouterCapacities,
     ListCenChildInstanceRouteEntriesToAttachmentRequestRouteFilter,
     ListCenChildInstanceRouteEntriesToAttachmentResponseBodyRouteEntry,
     ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPoliciesTrafficQosQueues,
@@ -1203,6 +1296,13 @@ __all__ = [
     ListCenInterRegionTrafficQosQueuesResponseBodyTrafficQosQueues,
     ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis,
     ListGrantVSwitchesToCenResponseBodyVSwitches,
+    ListRouteMapRulesRequestFilter,
+    ListRouteMapRulesResponseBodyRouteMapRulesMatchConditions,
+    ListRouteMapRulesResponseBodyRouteMapRulesSetActions,
+    ListRouteMapRulesResponseBodyRouteMapRules,
+    ListRouteMapsRequestFilter,
+    ListRouteMapsResponseBodyRouteMapsTag,
+    ListRouteMapsResponseBodyRouteMaps,
     ListTagResourcesRequestTag,
     ListTagResourcesResponseBodyTagResourcesTagResource,
     ListTagResourcesResponseBodyTagResources,
@@ -1250,8 +1350,14 @@ __all__ = [
     ListTransitRoutersResponseBodyTransitRoutersTags,
     ListTransitRoutersResponseBodyTransitRoutersTransitRouterCidrList,
     ListTransitRoutersResponseBodyTransitRouters,
+    ModifyTransitRouterCapacityReservationsRequestDeploymentSets,
+    ModifyTransitRouterCapacityReservationsRequestMinimumTransitRouterCapacitiesDataProcessGbps,
+    ModifyTransitRouterCapacityReservationsRequestMinimumTransitRouterCapacities,
+    ModifyTransitRouterCapacityReservationsRequestResetCapacityReservations,
     ModifyTransitRouterMulticastDomainRequestOptions,
     TagResourcesRequestTag,
+    UpdateRouteMapRuleRequestMatchConditions,
+    UpdateRouteMapRuleRequestSetActions,
     UpdateTrafficMarkingPolicyAttributeRequestAddTrafficMatchRules,
     UpdateTrafficMarkingPolicyAttributeRequestDeleteTrafficMatchRules,
     UpdateTransitRouterRouteTableRequestRouteTableOptions,

@@ -1828,6 +1828,214 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_flowlog_with_options_async(request, runtime)
 
+    def create_route_map_with_options(
+        self,
+        request: main_models.CreateRouteMapRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRouteMapResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.direction):
+            query['Direction'] = request.direction
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.priority):
+            query['Priority'] = request.priority
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateRouteMap',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateRouteMapResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_route_map_with_options_async(
+        self,
+        request: main_models.CreateRouteMapRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRouteMapResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.direction):
+            query['Direction'] = request.direction
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.priority):
+            query['Priority'] = request.priority
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateRouteMap',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateRouteMapResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_route_map(
+        self,
+        request: main_models.CreateRouteMapRequest,
+    ) -> main_models.CreateRouteMapResponse:
+        runtime = RuntimeOptions()
+        return self.create_route_map_with_options(request, runtime)
+
+    async def create_route_map_async(
+        self,
+        request: main_models.CreateRouteMapRequest,
+    ) -> main_models.CreateRouteMapResponse:
+        runtime = RuntimeOptions()
+        return await self.create_route_map_with_options_async(request, runtime)
+
+    def create_route_map_rule_with_options(
+        self,
+        tmp_req: main_models.CreateRouteMapRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRouteMapRuleResponse:
+        tmp_req.validate()
+        request = main_models.CreateRouteMapRuleShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.match_conditions):
+            request.match_conditions_shrink = Utils.array_to_string_with_specified_style(tmp_req.match_conditions, 'MatchConditions', 'json')
+        if not DaraCore.is_null(tmp_req.set_actions):
+            request.set_actions_shrink = Utils.array_to_string_with_specified_style(tmp_req.set_actions, 'SetActions', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.match_conditions_shrink):
+            query['MatchConditions'] = request.match_conditions_shrink
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.priority):
+            query['Priority'] = request.priority
+        if not DaraCore.is_null(request.route_map_id):
+            query['RouteMapId'] = request.route_map_id
+        if not DaraCore.is_null(request.set_actions_shrink):
+            query['SetActions'] = request.set_actions_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateRouteMapRule',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateRouteMapRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_route_map_rule_with_options_async(
+        self,
+        tmp_req: main_models.CreateRouteMapRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRouteMapRuleResponse:
+        tmp_req.validate()
+        request = main_models.CreateRouteMapRuleShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.match_conditions):
+            request.match_conditions_shrink = Utils.array_to_string_with_specified_style(tmp_req.match_conditions, 'MatchConditions', 'json')
+        if not DaraCore.is_null(tmp_req.set_actions):
+            request.set_actions_shrink = Utils.array_to_string_with_specified_style(tmp_req.set_actions, 'SetActions', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.match_conditions_shrink):
+            query['MatchConditions'] = request.match_conditions_shrink
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.priority):
+            query['Priority'] = request.priority
+        if not DaraCore.is_null(request.route_map_id):
+            query['RouteMapId'] = request.route_map_id
+        if not DaraCore.is_null(request.set_actions_shrink):
+            query['SetActions'] = request.set_actions_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateRouteMapRule',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateRouteMapRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_route_map_rule(
+        self,
+        request: main_models.CreateRouteMapRuleRequest,
+    ) -> main_models.CreateRouteMapRuleResponse:
+        runtime = RuntimeOptions()
+        return self.create_route_map_rule_with_options(request, runtime)
+
+    async def create_route_map_rule_async(
+        self,
+        request: main_models.CreateRouteMapRuleRequest,
+    ) -> main_models.CreateRouteMapRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.create_route_map_rule_with_options_async(request, runtime)
+
     def create_traffic_marking_policy_with_options(
         self,
         request: main_models.CreateTrafficMarkingPolicyRequest,
@@ -4307,6 +4515,162 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteFlowlogResponse:
         runtime = RuntimeOptions()
         return await self.delete_flowlog_with_options_async(request, runtime)
+
+    def delete_route_map_with_options(
+        self,
+        request: main_models.DeleteRouteMapRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteRouteMapResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.route_map_id):
+            query['RouteMapId'] = request.route_map_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteRouteMap',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteRouteMapResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_route_map_with_options_async(
+        self,
+        request: main_models.DeleteRouteMapRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteRouteMapResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.route_map_id):
+            query['RouteMapId'] = request.route_map_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteRouteMap',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteRouteMapResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_route_map(
+        self,
+        request: main_models.DeleteRouteMapRequest,
+    ) -> main_models.DeleteRouteMapResponse:
+        runtime = RuntimeOptions()
+        return self.delete_route_map_with_options(request, runtime)
+
+    async def delete_route_map_async(
+        self,
+        request: main_models.DeleteRouteMapRequest,
+    ) -> main_models.DeleteRouteMapResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_route_map_with_options_async(request, runtime)
+
+    def delete_route_map_rule_with_options(
+        self,
+        request: main_models.DeleteRouteMapRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteRouteMapRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.route_map_rule_id):
+            query['RouteMapRuleId'] = request.route_map_rule_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteRouteMapRule',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteRouteMapRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_route_map_rule_with_options_async(
+        self,
+        request: main_models.DeleteRouteMapRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteRouteMapRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.route_map_rule_id):
+            query['RouteMapRuleId'] = request.route_map_rule_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteRouteMapRule',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteRouteMapRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_route_map_rule(
+        self,
+        request: main_models.DeleteRouteMapRuleRequest,
+    ) -> main_models.DeleteRouteMapRuleResponse:
+        runtime = RuntimeOptions()
+        return self.delete_route_map_rule_with_options(request, runtime)
+
+    async def delete_route_map_rule_async(
+        self,
+        request: main_models.DeleteRouteMapRuleRequest,
+    ) -> main_models.DeleteRouteMapRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_route_map_rule_with_options_async(request, runtime)
 
     def delete_route_service_in_cen_with_options(
         self,
@@ -8212,6 +8576,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_transit_route_table_aggregation_detail_with_options_async(request, runtime)
 
+    def describe_transit_router_capacity_reservations_with_options(
+        self,
+        request: main_models.DescribeTransitRouterCapacityReservationsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeTransitRouterCapacityReservationsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        if not DaraCore.is_null(request.version):
+            query['Version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeTransitRouterCapacityReservations',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeTransitRouterCapacityReservationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_transit_router_capacity_reservations_with_options_async(
+        self,
+        request: main_models.DescribeTransitRouterCapacityReservationsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeTransitRouterCapacityReservationsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        if not DaraCore.is_null(request.version):
+            query['Version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeTransitRouterCapacityReservations',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeTransitRouterCapacityReservationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_transit_router_capacity_reservations(
+        self,
+        request: main_models.DescribeTransitRouterCapacityReservationsRequest,
+    ) -> main_models.DescribeTransitRouterCapacityReservationsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_transit_router_capacity_reservations_with_options(request, runtime)
+
+    async def describe_transit_router_capacity_reservations_async(
+        self,
+        request: main_models.DescribeTransitRouterCapacityReservationsRequest,
+    ) -> main_models.DescribeTransitRouterCapacityReservationsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_transit_router_capacity_reservations_with_options_async(request, runtime)
+
     def detach_cen_child_instance_with_options(
         self,
         request: main_models.DetachCenChildInstanceRequest,
@@ -9601,6 +10039,194 @@ class Client(OpenApiClient):
     ) -> main_models.ListGrantVSwitchesToCenResponse:
         runtime = RuntimeOptions()
         return await self.list_grant_vswitches_to_cen_with_options_async(request, runtime)
+
+    def list_route_map_rules_with_options(
+        self,
+        request: main_models.ListRouteMapRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListRouteMapRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.filter):
+            query['Filter'] = request.filter
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.route_map_id):
+            query['RouteMapId'] = request.route_map_id
+        if not DaraCore.is_null(request.route_map_rule_ids):
+            query['RouteMapRuleIds'] = request.route_map_rule_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListRouteMapRules',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListRouteMapRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_route_map_rules_with_options_async(
+        self,
+        request: main_models.ListRouteMapRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListRouteMapRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.filter):
+            query['Filter'] = request.filter
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.route_map_id):
+            query['RouteMapId'] = request.route_map_id
+        if not DaraCore.is_null(request.route_map_rule_ids):
+            query['RouteMapRuleIds'] = request.route_map_rule_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListRouteMapRules',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListRouteMapRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_route_map_rules(
+        self,
+        request: main_models.ListRouteMapRulesRequest,
+    ) -> main_models.ListRouteMapRulesResponse:
+        runtime = RuntimeOptions()
+        return self.list_route_map_rules_with_options(request, runtime)
+
+    async def list_route_map_rules_async(
+        self,
+        request: main_models.ListRouteMapRulesRequest,
+    ) -> main_models.ListRouteMapRulesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_route_map_rules_with_options_async(request, runtime)
+
+    def list_route_maps_with_options(
+        self,
+        request: main_models.ListRouteMapsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListRouteMapsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.filter):
+            query['Filter'] = request.filter
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.route_map_ids):
+            query['RouteMapIds'] = request.route_map_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListRouteMaps',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListRouteMapsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_route_maps_with_options_async(
+        self,
+        request: main_models.ListRouteMapsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListRouteMapsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.filter):
+            query['Filter'] = request.filter
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.route_map_ids):
+            query['RouteMapIds'] = request.route_map_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListRouteMaps',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListRouteMapsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_route_maps(
+        self,
+        request: main_models.ListRouteMapsRequest,
+    ) -> main_models.ListRouteMapsResponse:
+        runtime = RuntimeOptions()
+        return self.list_route_maps_with_options(request, runtime)
+
+    async def list_route_maps_async(
+        self,
+        request: main_models.ListRouteMapsRequest,
+    ) -> main_models.ListRouteMapsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_route_maps_with_options_async(request, runtime)
 
     def list_tag_resources_with_options(
         self,
@@ -12814,6 +13440,112 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_transit_route_table_aggregation_with_options_async(request, runtime)
 
+    def modify_transit_router_capacity_reservations_with_options(
+        self,
+        tmp_req: main_models.ModifyTransitRouterCapacityReservationsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyTransitRouterCapacityReservationsResponse:
+        tmp_req.validate()
+        request = main_models.ModifyTransitRouterCapacityReservationsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.deployment_sets):
+            request.deployment_sets_shrink = Utils.array_to_string_with_specified_style(tmp_req.deployment_sets, 'DeploymentSets', 'json')
+        if not DaraCore.is_null(tmp_req.minimum_transit_router_capacities):
+            request.minimum_transit_router_capacities_shrink = Utils.array_to_string_with_specified_style(tmp_req.minimum_transit_router_capacities, 'MinimumTransitRouterCapacities', 'json')
+        if not DaraCore.is_null(tmp_req.reset_capacity_reservations):
+            request.reset_capacity_reservations_shrink = Utils.array_to_string_with_specified_style(tmp_req.reset_capacity_reservations, 'ResetCapacityReservations', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.deployment_sets_shrink):
+            query['DeploymentSets'] = request.deployment_sets_shrink
+        if not DaraCore.is_null(request.minimum_transit_router_capacities_shrink):
+            query['MinimumTransitRouterCapacities'] = request.minimum_transit_router_capacities_shrink
+        if not DaraCore.is_null(request.reset_capacity_reservations_shrink):
+            query['ResetCapacityReservations'] = request.reset_capacity_reservations_shrink
+        if not DaraCore.is_null(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        if not DaraCore.is_null(request.version):
+            query['Version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyTransitRouterCapacityReservations',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyTransitRouterCapacityReservationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_transit_router_capacity_reservations_with_options_async(
+        self,
+        tmp_req: main_models.ModifyTransitRouterCapacityReservationsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyTransitRouterCapacityReservationsResponse:
+        tmp_req.validate()
+        request = main_models.ModifyTransitRouterCapacityReservationsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.deployment_sets):
+            request.deployment_sets_shrink = Utils.array_to_string_with_specified_style(tmp_req.deployment_sets, 'DeploymentSets', 'json')
+        if not DaraCore.is_null(tmp_req.minimum_transit_router_capacities):
+            request.minimum_transit_router_capacities_shrink = Utils.array_to_string_with_specified_style(tmp_req.minimum_transit_router_capacities, 'MinimumTransitRouterCapacities', 'json')
+        if not DaraCore.is_null(tmp_req.reset_capacity_reservations):
+            request.reset_capacity_reservations_shrink = Utils.array_to_string_with_specified_style(tmp_req.reset_capacity_reservations, 'ResetCapacityReservations', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.deployment_sets_shrink):
+            query['DeploymentSets'] = request.deployment_sets_shrink
+        if not DaraCore.is_null(request.minimum_transit_router_capacities_shrink):
+            query['MinimumTransitRouterCapacities'] = request.minimum_transit_router_capacities_shrink
+        if not DaraCore.is_null(request.reset_capacity_reservations_shrink):
+            query['ResetCapacityReservations'] = request.reset_capacity_reservations_shrink
+        if not DaraCore.is_null(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        if not DaraCore.is_null(request.version):
+            query['Version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyTransitRouterCapacityReservations',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyTransitRouterCapacityReservationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_transit_router_capacity_reservations(
+        self,
+        request: main_models.ModifyTransitRouterCapacityReservationsRequest,
+    ) -> main_models.ModifyTransitRouterCapacityReservationsResponse:
+        runtime = RuntimeOptions()
+        return self.modify_transit_router_capacity_reservations_with_options(request, runtime)
+
+    async def modify_transit_router_capacity_reservations_async(
+        self,
+        request: main_models.ModifyTransitRouterCapacityReservationsRequest,
+    ) -> main_models.ModifyTransitRouterCapacityReservationsResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_transit_router_capacity_reservations_with_options_async(request, runtime)
+
     def modify_transit_router_cidr_with_options(
         self,
         request: main_models.ModifyTransitRouterCidrRequest,
@@ -15029,6 +15761,206 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateCenInterRegionTrafficQosQueueAttributeResponse:
         runtime = RuntimeOptions()
         return await self.update_cen_inter_region_traffic_qos_queue_attribute_with_options_async(request, runtime)
+
+    def update_route_map_with_options(
+        self,
+        request: main_models.UpdateRouteMapRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateRouteMapResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.priority):
+            query['Priority'] = request.priority
+        if not DaraCore.is_null(request.route_map_id):
+            query['RouteMapId'] = request.route_map_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateRouteMap',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateRouteMapResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_route_map_with_options_async(
+        self,
+        request: main_models.UpdateRouteMapRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateRouteMapResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.priority):
+            query['Priority'] = request.priority
+        if not DaraCore.is_null(request.route_map_id):
+            query['RouteMapId'] = request.route_map_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateRouteMap',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateRouteMapResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_route_map(
+        self,
+        request: main_models.UpdateRouteMapRequest,
+    ) -> main_models.UpdateRouteMapResponse:
+        runtime = RuntimeOptions()
+        return self.update_route_map_with_options(request, runtime)
+
+    async def update_route_map_async(
+        self,
+        request: main_models.UpdateRouteMapRequest,
+    ) -> main_models.UpdateRouteMapResponse:
+        runtime = RuntimeOptions()
+        return await self.update_route_map_with_options_async(request, runtime)
+
+    def update_route_map_rule_with_options(
+        self,
+        tmp_req: main_models.UpdateRouteMapRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateRouteMapRuleResponse:
+        tmp_req.validate()
+        request = main_models.UpdateRouteMapRuleShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.match_conditions):
+            request.match_conditions_shrink = Utils.array_to_string_with_specified_style(tmp_req.match_conditions, 'MatchConditions', 'json')
+        if not DaraCore.is_null(tmp_req.set_actions):
+            request.set_actions_shrink = Utils.array_to_string_with_specified_style(tmp_req.set_actions, 'SetActions', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.match_conditions_shrink):
+            query['MatchConditions'] = request.match_conditions_shrink
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.priority):
+            query['Priority'] = request.priority
+        if not DaraCore.is_null(request.route_map_rule_id):
+            query['RouteMapRuleId'] = request.route_map_rule_id
+        if not DaraCore.is_null(request.set_actions_shrink):
+            query['SetActions'] = request.set_actions_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateRouteMapRule',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateRouteMapRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_route_map_rule_with_options_async(
+        self,
+        tmp_req: main_models.UpdateRouteMapRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateRouteMapRuleResponse:
+        tmp_req.validate()
+        request = main_models.UpdateRouteMapRuleShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.match_conditions):
+            request.match_conditions_shrink = Utils.array_to_string_with_specified_style(tmp_req.match_conditions, 'MatchConditions', 'json')
+        if not DaraCore.is_null(tmp_req.set_actions):
+            request.set_actions_shrink = Utils.array_to_string_with_specified_style(tmp_req.set_actions, 'SetActions', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.match_conditions_shrink):
+            query['MatchConditions'] = request.match_conditions_shrink
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.priority):
+            query['Priority'] = request.priority
+        if not DaraCore.is_null(request.route_map_rule_id):
+            query['RouteMapRuleId'] = request.route_map_rule_id
+        if not DaraCore.is_null(request.set_actions_shrink):
+            query['SetActions'] = request.set_actions_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateRouteMapRule',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateRouteMapRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_route_map_rule(
+        self,
+        request: main_models.UpdateRouteMapRuleRequest,
+    ) -> main_models.UpdateRouteMapRuleResponse:
+        runtime = RuntimeOptions()
+        return self.update_route_map_rule_with_options(request, runtime)
+
+    async def update_route_map_rule_async(
+        self,
+        request: main_models.UpdateRouteMapRuleRequest,
+    ) -> main_models.UpdateRouteMapRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.update_route_map_rule_with_options_async(request, runtime)
 
     def update_traffic_marking_policy_attribute_with_options(
         self,

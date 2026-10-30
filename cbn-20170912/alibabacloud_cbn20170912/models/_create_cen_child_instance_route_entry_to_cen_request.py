@@ -23,9 +23,9 @@ class CreateCenChildInstanceRouteEntryToCenRequest(DaraModel):
         # 
         # This parameter is required.
         self.cen_id = cen_id
-        # The Alibaba Cloud account ID to which the network instance belongs.
+        # The ID of the Alibaba Cloud account to which the network instance belongs.
         # 
-        # > This parameter is required if the network instance belongs to a different Alibaba Cloud account.
+        # > This parameter is required if the network instance belongs to another Alibaba Cloud account.
         self.child_instance_ali_uid = child_instance_ali_uid
         # The network instance ID.
         # 
@@ -33,14 +33,14 @@ class CreateCenChildInstanceRouteEntryToCenRequest(DaraModel):
         self.child_instance_id = child_instance_id
         # The region ID of the network instance.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.child_instance_region_id = child_instance_region_id
         # The type of the network instance. Valid values:
         # 
-        # - **VPC**: a virtual private cloud (VPC) instance.
-        # - **VBR**: a virtual border router (VBR) instance.
+        # - **VPC**: VPC.
+        # - **VBR**: VBR.
         # 
         # This parameter is required.
         self.child_instance_type = child_instance_type

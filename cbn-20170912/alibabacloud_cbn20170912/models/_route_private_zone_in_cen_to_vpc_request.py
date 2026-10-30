@@ -16,15 +16,15 @@ class RoutePrivateZoneInCenToVpcRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the region that accesses the PrivateZone service.
+        # The ID of the region where the PrivateZone service is accessed.
         # 
-        # The access region is the region from which the PrivateZone service is accessed.
+        # The access region refers to the region where the PrivateZone service is accessed.
         # 
-        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
+        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to obtain the region ID.
         # 
         # This parameter is required.
         self.access_region_id = access_region_id
-        # The CEN instance ID.
+        # The Cloud Enterprise Network (CEN) instance ID.
         # 
         # This parameter is required.
         self.cen_id = cen_id

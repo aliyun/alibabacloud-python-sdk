@@ -16,17 +16,17 @@ class DescribeTransitRouteTableAggregationResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The number of entries per page for a paged query.
+        # The number of entries returned on each page.
         self.count = count
-        # The list of aggregate route information.
+        # The list of aggregate routes.
         self.data = data
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
-        # - If **NextToken** is empty, no next query exists.
-        # - If **NextToken** is returned, the value indicates the token for the next query.
+        # The token that is used for the next query. Valid values:
+        # - If **NextToken** is empty, no next query is to be sent.
+        # - If **NextToken** is returned, the value indicates the token that is used for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -97,26 +97,26 @@ class DescribeTransitRouteTableAggregationResponseBodyData(DaraModel):
         self.description = description
         # The name of the aggregate route.
         self.name = name
-        # The routing type of the aggregation route.
+        # The route type of the aggregate route.
         # 
-        # The value is **Static** only, which indicates a static route. After the aggregation route is propagated to a VPC-connected instance, it becomes a custom route entry by default.
+        # Valid value: **Static**, which indicates a static route. After the aggregate route is propagated to a VPC-connected instance, it becomes a custom route entry by default.
         self.route_type = route_type
-        # The propagation scope of the aggregation route.
+        # The propagation scope of the aggregate route.
         # 
-        # The value is **VPC** only, which indicates that the aggregation route is propagated to all VPC-connected instances that have established associated forwarding relationships with the current Enterprise Edition transit router route table and have the route synchronization feature enabled.
+        # Valid value: **VPC**, which indicates that the aggregate route is propagated to all VPC-connected instances that are associated with the route table of the current Enterprise Edition transit router and have route synchronization enabled.
         self.scope = scope
-        # The propagation scope list of the aggregate route.
-        # >You must specify at least one of the propagation scope or the propagation scope list for the aggregate route. We recommend that you use the propagation scope list. Elements in the propagation scope list cannot duplicate the value of the propagation scope.
+        # The list of propagation scopes for the aggregate route.
+        # >You must specify at least one of the propagation scope and the propagation scope list. We recommend that you specify the propagation scope list. The elements in the propagation scope list cannot be the same as the value of the propagation scope.
         self.scope_list = scope_list
-        # The propagation status of the aggregation route.
+        # The propagation status of the aggregate route.
         # 
-        # - **AllConfigured**: The aggregation routing has been propagated to all VPC-connected instances.
-        # - **Configuring**: The aggregation routing is being propagated.
-        # - **ConfigFailed**: The aggregation routing failed to be propagated.
-        # - **PartialConfigured**: The aggregation routing failed to be propagated to some VPC-connected instances.
-        # - **Deleting**: The aggregation routing is being deleted.
+        # - **AllConfigured**: The aggregate route is delivered to all VPC-connected instances.
+        # - **Configuring**: The aggregate route is being delivered.
+        # - **ConfigFailed**: The aggregate route failed to be delivered.
+        # - **PartialConfigured**: The aggregate route is not delivered to some VPC-connected instances.
+        # - **Deleting**: The aggregate route is being deleted.
         self.status = status
-        # The ID of the Enterprise Edition transit router route table.
+        # The ID of the route table of the Enterprise Edition transit router.
         self.tr_route_table_id = tr_route_table_id
         # The destination CIDR block of the aggregate route.
         self.transit_route_table_aggregation_cidr = transit_route_table_aggregation_cidr

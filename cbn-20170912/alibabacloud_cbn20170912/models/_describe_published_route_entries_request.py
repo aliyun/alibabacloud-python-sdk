@@ -18,29 +18,29 @@ class DescribePublishedRouteEntriesRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The CEN instance ID.
+        # The instance ID of the Cloud Enterprise Network (CEN).
         # 
         # This parameter is required.
         self.cen_id = cen_id
-        # The network instance ID.
+        # The instance ID of the network instance.
         # 
         # This parameter is required.
         self.child_instance_id = child_instance_id
         # The region ID of the network instance.
         # 
-        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
+        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.child_instance_region_id = child_instance_region_id
-        # The route table ID of the network instance.
+        # The ID of the route table of the network instance.
         self.child_instance_route_table_id = child_instance_route_table_id
         # The type of the network instance. Valid values: 
         # 
-        # - **VPC**: virtual private cloud.
+        # - **VPC**: VPC
         # 
-        # - **VBR**: virtual border router.
+        # - **VBR**: VBR
         # 
-        # - **CCN**: Cloud Connect Network.
+        # - **CCN**: Cloud Connect Network
         # 
         # This parameter is required.
         self.child_instance_type = child_instance_type
@@ -48,7 +48,7 @@ class DescribePublishedRouteEntriesRequest(DaraModel):
         self.destination_cidr_block = destination_cidr_block
         # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page in a paged query. Default value: **10**. Valid values: **1** to **500**.
+        # The number of entries to return per page in a paging query. Default value: **10**. Valid values: **1** to **500**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

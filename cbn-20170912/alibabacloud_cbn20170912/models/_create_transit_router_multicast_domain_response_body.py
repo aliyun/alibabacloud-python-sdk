@@ -10,7 +10,7 @@ class CreateTransitRouterMulticastDomainResponseBody(DaraModel):
         request_id: str = None,
         transit_router_multicast_domain_id: str = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The ID of the multicast domain.
         self.transit_router_multicast_domain_id = transit_router_multicast_domain_id

@@ -27,57 +27,57 @@ class CreateFlowlogRequest(DaraModel):
         transit_router_attachment_id: str = None,
         transit_router_id: str = None,
     ):
-        # The instance ID of the Cloud Enterprise Network (CEN).
+        # The Cloud Enterprise Network (CEN) instance ID.
         # 
         # This parameter is required.
         self.cen_id = cen_id
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # You can generate a parameter value on your client to ensure that the value is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the client token. The RequestId of each API request may be different.
         self.client_token = client_token
         # The description of the flow log.
         # 
-        # The description can be empty or 1 to 256 characters in length and cannot start with http:// or https://.
+        # The description can be empty or 1 to 256 characters in length. It cannot start with http:// or https://.
         self.description = description
         # The name of the flow log.
         # 
-        # The name can be empty or 1 to 128 characters in length and cannot start with http:// or https://.
+        # The name can be empty or 1 to 128 characters in length. It cannot start with http:// or https://.
         self.flow_log_name = flow_log_name
-        # The capture window duration of the flow log. Unit: seconds. Valid values: **60** and **600**. Default value: **600**.
+        # The capture window duration for the flow log to capture traffic. Unit: seconds. Valid values: **60** and **600**. Default value: **600**.
         self.interval = interval
-        # The string that defines custom flow log record fields. 
+        # The custom string of flow log record fields. 
         # 
         # The format is defined as:
-        # `${field 1}${field 2}${field 3}...${field n}`
+        # `${Field 1}${Field 2}${Field 3}...${Field n}`
         # 
-        # - If you leave this parameter empty, all default fields are recorded.
-        # - If you specify this parameter, because `${srcaddr}${dstaddr}${bytes}` are required fields, the string must start with `${srcaddr}${dstaddr}${bytes}`. For all supported flow log fields, see [Configure a flow log](https://help.aliyun.com/document_detail/339822.html).
+        # - If you do not specify this parameter, all default fields are recorded.
+        # - If you specify this parameter, the string must start with `${srcaddr}${dstaddr}${bytes}` because `${srcaddr}${dstaddr}${bytes}` is required. For more information about all supported flow log fields, see [Configure a flow log](https://help.aliyun.com/document_detail/339822.html).
         self.log_format_string = log_format_string
-        # The Logstore that stores the caught traffic.
+        # The Logstore that is used to store the captured traffic.
         # 
-        # - If you have already created a Logstore in the current region, enter the name of the existing Logstore.
-        # - If you have not created a Logstore in the current region, specify a custom name for the Logstore. The system automatically creates the Logstore.
-        #     The naming rules for the Logstore are as follows:
+        # - If you have already created a Logstore in the current region, you can enter the name of the existing Logstore.
+        # - If you have not created a Logstore in the current region, you can specify a custom name for the Logstore, and the system automatically creates the Logstore.
+        #     The naming rules for the Logstore name are as follows:
         # 
         #     - The Logstore name must be unique within the same project.
         #     - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
-        #     - The name must start and end with a lowercase letter or digit.
+        #     - The name must start and end with a lowercase letter or a digit.
         #     - The name must be 3 to 63 characters in length.
         self.log_store_name = log_store_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The project that stores the caught traffic.
+        # The project that is used to store the captured traffic.
         # 
-        # - If you have already created a project in the current region, enter the name of the existing project.
-        # - If you have not created a project in the current region, specify a custom name for the project. The system automatically creates the project.
+        # - If you have already created a project in the current region, you can enter the name of the existing project.
+        # - If you have not created a project in the current region, you can specify a custom name for the project, and the system automatically creates the project.
         # 
-        #     The project name must be globally unique within the Alibaba Cloud region and cannot be modified after creation. The naming rules are as follows:
+        #     The project name must be globally unique within an Alibaba Cloud region and cannot be modified after creation. The naming rules are as follows:
         # 
         #     - The project name must be globally unique.
         #     - The name can contain only lowercase letters, digits, and hyphens (-).
-        #     - The name must start and end with a lowercase letter or digit.
+        #     - The name must start and end with a lowercase letter or a digit.
         #     - The name must be 3 to 63 characters in length.
         self.project_name = project_name
         # The region ID of the flow log.
@@ -90,13 +90,13 @@ class CreateFlowlogRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The tag information.
         # 
-        # You can specify up to 20 tags at a time.
+        # You can enter up to 20 tags at a time.
         self.tag = tag
         # The ID of the VPC connection, VPN connection, VBR connection, ECR connection, or inter-region connection.
         # 
         # Leave this parameter empty if you want to configure a flow log for a transit router instance.
         self.transit_router_attachment_id = transit_router_attachment_id
-        # The transit routing instance ID.
+        # The transit router instance ID.
         self.transit_router_id = transit_router_id
 
     def validate(self):
@@ -225,15 +225,15 @@ class CreateFlowlogRequestTag(DaraModel):
     ):
         # The tag key of the resource.
         # 
-        # Once specified, the tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # This parameter cannot be an empty string. The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         # 
-        # You can specify up to 20 tag keys at a time.
+        # You can enter up to 20 tag keys at a time.
         self.key = key
         # The tag value of the resource.
         # 
-        # Once specified, the tag value cannot be empty. The tag value can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
+        # This parameter cannot be empty. The tag value can be up to 128 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
         # 
-        # Each tag key corresponds to one tag value. You can specify up to 20 tag values at a time.
+        # Each tag key corresponds to a tag value. You can enter up to 20 tag values at a time.
         self.value = value
 
     def validate(self):

@@ -22,20 +22,20 @@ class ListTransitRouterPeerAttachmentsRequest(DaraModel):
         transit_router_attachment_id: str = None,
         transit_router_id: str = None,
     ):
-        # The CEN instance ID.
+        # The Cloud Enterprise Network (CEN) instance ID. If you specify this parameter, you must also specify RegionId.
         self.cen_id = cen_id
-        # The number of entries per page for a paged query. Default value: **20**. Maximum value: **100**.
+        # The number of entries to return on each page. Default value: **20**. Maximum value: **100**.
         self.max_results = max_results
-        # The token that determines the start point of the query. Valid values:
+        # The token that is used for the next query. Valid values:
         # 
-        # - If this is the first query or no subsequent query is to be sent, you do not need to specify this parameter.
-        # - If a subsequent query is to be sent, set the value to the **NextToken** value returned in the previous API call.
+        # - If this is your first query or no next query is to be sent, ignore this parameter.
+        # - If a next query is to be sent, set the value to the value of **NextToken** that is returned from the last API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the Enterprise Edition transit router instance.
+        # The region ID of the Enterprise Edition transit router. If you specify this parameter, you must also specify CenId.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -43,9 +43,9 @@ class ListTransitRouterPeerAttachmentsRequest(DaraModel):
         # 
         # You can specify up to 20 tags at a time.
         self.tag = tag
-        # The inter-region connection ID.
+        # The ID of the inter-region connection.
         self.transit_router_attachment_id = transit_router_attachment_id
-        # The Enterprise Edition transit router instance ID.
+        # The instance ID of the Enterprise Edition transit router, which is used to forward traffic and manage routing.
         self.transit_router_id = transit_router_id
 
     def validate(self):
@@ -144,15 +144,15 @@ class ListTransitRouterPeerAttachmentsRequestTag(DaraModel):
     ):
         # The tag key of the resource.
         # 
-        # Once specified, the tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag key cannot be an empty string. It can be up to 64 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         # 
         # You can specify up to 20 tag keys at a time.
         self.key = key
         # The tag value of the resource.
         # 
-        # The tag value can be an empty string or up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag value can be an empty string or a string of up to 128 characters in length. It cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         # 
-        # Each tag key corresponds to one tag value. You can specify up to 20 tag values at a time.
+        # Each tag key is paired with a tag value. You can specify up to 20 tag values at a time.
         self.value = value
 
     def validate(self):

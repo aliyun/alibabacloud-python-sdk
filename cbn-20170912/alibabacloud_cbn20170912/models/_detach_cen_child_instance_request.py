@@ -22,27 +22,25 @@ class DetachCenChildInstanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.cen_id = cen_id
-        # The ID of the Alibaba Cloud account that owns the CEN instance.
+        # The ID of the Alibaba Cloud account to which the CEN instance belongs.
         self.cen_owner_id = cen_owner_id
-        # The instance ID of the network instance to uninstall.
+        # The instance ID of the network instance to be uninstalled.
         # 
         # This parameter is required.
         self.child_instance_id = child_instance_id
-        # The ID of the Alibaba Cloud account that owns the network instance.
+        # The ID of the Alibaba Cloud account to which the network instance belongs.
         self.child_instance_owner_id = child_instance_owner_id
-        # The region ID of the network instance.
-        # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # The region ID of the network instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.child_instance_region_id = child_instance_region_id
         # The type of the network instance. Valid values:
         # 
-        # - **VPC**: virtual private cloud.
+        # - **VPC**: virtual private cloud (VPC).
         # 
-        # - **VBR**: virtual border router.
+        # - **VBR**: virtual border router (VBR).
         # 
-        # - **CCN**: Cloud Connect Network.
+        # - **CCN**: Cloud Connect Network (CCN).
         # 
         # This parameter is required.
         self.child_instance_type = child_instance_type

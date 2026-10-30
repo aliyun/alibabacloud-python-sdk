@@ -10,7 +10,7 @@ class CreateTransitRouterEcrAttachmentResponseBody(DaraModel):
         request_id: str = None,
         transit_router_attachment_id: str = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The ID of the ECR connection.
         self.transit_router_attachment_id = transit_router_attachment_id

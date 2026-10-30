@@ -30,33 +30,35 @@ class CreateCenBandwidthPackageRequest(DaraModel):
     ):
         # Specifies whether to enable automatic payment for the bill of the bandwidth plan instance. Valid values:
         # 
-        # - **true**: enables automatic payment.
+        # - **true**: yes.
         # 
-        # - **false** (default): disables automatic payment.
+        # - **false** (default): no.
         # 
-        # If you set this parameter to false, go to the Order Center in the console to complete the payment after you invoke this operation. Otherwise, the instance cannot be created.
+        # If you choose not to use automatic payment, after you invoke this operation, you must go to the Order Center in the console to complete the payment. Otherwise, the instance cannot be created.
         self.auto_pay = auto_pay
         self.auto_renew = auto_renew
         self.auto_renew_duration = auto_renew_duration
-        # The maximum bandwidth value of the bandwidth plan. Unit: Mbit/s. Valid values: **2** to **10000**.
+        # The maximum bandwidth of the bandwidth plan. Unit: Mbit/s. Valid values: **2** to **10000**.
         # 
         # This parameter is required.
         self.bandwidth = bandwidth
-        # The billing method of the bandwidth plan. Valid values: **PREPAY**, which indicates the subscription billing method.
+        # The billing method of the bandwidth plan. Valid values:
+        # 
+        # - **PREPAY**: subscription.
         self.bandwidth_package_charge_type = bandwidth_package_charge_type
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can be up to 64 ASCII characters in length.
+        # You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The description of the bandwidth plan.
         # 
-        # The description can be empty or 1 to 256 characters in length and cannot start with http:// or https://.
+        # The description must be 1 to 256 characters in length, and can be left empty. It cannot start with http:// or https://.
         self.description = description
         # The area to which the network instance belongs. Valid values:
         # 
         # - **China**: the Chinese mainland.
         # - **North-America**: North America.
-        # - **Asia-Pacific**: Asia Pacific.
+        # - **Asia-Pacific**: Asia-Pacific.
         # - **Europe**: Europe.
         # 
         # This parameter is required.
@@ -65,21 +67,21 @@ class CreateCenBandwidthPackageRequest(DaraModel):
         # 
         # - **China**: the Chinese mainland.
         # - **North-America**: North America.
-        # - **Asia-Pacific**: Asia Pacific.
+        # - **Asia-Pacific**: Asia-Pacific.
         # - **Europe**: Europe.
         # 
         # This parameter is required.
         self.geographic_region_bid = geographic_region_bid
         # The name of the bandwidth plan.
         # 
-        # The name can be empty or 1 to 128 characters in length and cannot start with http:// or https://.
+        # The name must be 1 to 128 characters in length, and can be left empty. It cannot start with http:// or https://.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The subscription duration of the bandwidth plan. Default value: 1.
         # 
-        # - If **PricingCycle** is set to **Month**, valid values for **Period** are **1** to **3** and **6**.
-        # - If **PricingCycle** is set to **Year**, valid values for **Period** are **1** to **3**.
+        # - If **PricingCycle** is set to **Month**, valid values of **Period** are **1** to **3** and **6**.
+        # - If **PricingCycle** is set to **Year**, valid values of **Period** are **1** to **3**.
         # 
         # > This parameter is required when **BandwidthPackageChargeType** is set to **PREPAY**.
         self.period = period
@@ -228,15 +230,15 @@ class CreateCenBandwidthPackageRequestTag(DaraModel):
     ):
         # The tag key of the resource.
         # 
-        # The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+        # The tag key cannot be an empty string. It can be up to 64 characters in length, and cannot start with aliyun or acs:. It cannot contain http:// or https://.
         # 
         # You can specify up to 20 tag keys at a time.
         self.key = key
         # The tag value of the resource.
         # 
-        # The tag value cannot be empty. The tag value can be up to 128 characters in length and cannot start with aliyun or acs:. The tag value cannot contain http:// or https://.
+        # The tag value cannot be empty. It can be up to 128 characters in length, and cannot start with aliyun or acs:. It cannot contain http:// or https://.
         # 
-        # Each tag key has a unique tag value. You can specify up to 20 tag values at a time.
+        # Each tag key corresponds to a tag value. You can specify up to 20 tag values at a time.
         self.value = value
 
     def validate(self):

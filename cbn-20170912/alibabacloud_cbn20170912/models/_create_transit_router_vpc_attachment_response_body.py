@@ -12,7 +12,7 @@ class CreateTransitRouterVpcAttachmentResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The ID of the VPC connection.
+        # The ID of the VPC attachment.
         self.transit_router_attachment_id = transit_router_attachment_id
 
     def validate(self):

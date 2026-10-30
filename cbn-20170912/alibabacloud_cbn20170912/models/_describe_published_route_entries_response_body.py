@@ -18,7 +18,7 @@ class DescribePublishedRouteEntriesResponseBody(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The number of entries per page in a paged query.
+        # The number of entries returned per page in a paging query.
         self.page_size = page_size
         self.published_route_entries = published_route_entries
         # The request ID.

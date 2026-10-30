@@ -16,9 +16,9 @@ class ListTransitRouterEcrAttachmentsResponseBody(DaraModel):
         total_count: int = None,
         transit_router_attachments: List[main_models.ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments] = None,
     ):
-        # The number of entries per page for a paged query.
+        # The number of entries returned per page.
         self.max_results = max_results
-        # The token for the next paged query.
+        # The token used to start the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -97,40 +97,40 @@ class ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments(DaraMo
         transit_router_id: str = None,
         transit_router_region_id: str = None,
     ):
-        # Indicates whether the Enterprise Edition transit router automatically publishes route entries to the ECR instance.
+        # Specifies whether the Enterprise Edition transit router is configured to publish route entry to the ECR instance. Valid value:
         # 
-        # The value is **true** only, which indicates that route entries are automatically published.
+        # - **true**: The transit router is configured to publish route entry.
         self.auto_publish_route_enabled = auto_publish_route_enabled
-        # The CEN instance ID.
+        # The Cloud Enterprise Network (CEN) instance ID.
         self.cen_id = cen_id
         # The time when the ECR connection was created.
         # 
-        # The time is displayed in the ISO 8601 standard in UTC. Format: YYYY-MM-DDThh:mmZ.
+        # The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format.
         self.creation_time = creation_time
-        # The instance ID of the associated Express Connect Router (ECR).
+        # The associated Express Connect Router (ECR) instance ID.
         self.ecr_id = ecr_id
         # The ID of the Alibaba Cloud account to which the ECR instance belongs.
         self.ecr_owner_id = ecr_owner_id
         # The payer of the network instance. Valid values:
         # 
-        # - **PayByCenOwner**: The connection fee and data processing fee of the ECR instance are paid by the account that owns the transit router instance.
-        # - **PayByResourceOwner**: The connection fee and data processing fee of the ECR instance are paid by the account that owns the ECR instance.
+        # - **PayByCenOwner**: The connection fee and data transfer fee of the ECR instance are paid by the account to which the transit router belongs.
+        # - **PayByResourceOwner**: The connection fee and data transfer fee of the ECR instance are paid by the account to which the ECR instance belongs.
         self.order_type = order_type
-        # The resource type of the connection.
+        # The resource type of the connection. Valid value:
         # 
-        # The value is **ECR** only, which indicates an Express Connect Router (ECR) instance.
+        # - **ECR**: Express Connect Router (ECR) instance.
         self.resource_type = resource_type
-        # The status of the ECR connection.
+        # The status of the ECR connection. Valid values:
         # 
-        # - **Attached**: attached.
-        # - **Attaching**: being attached.
-        # - **Detaching**: being detached.
+        # - **Attached**: The connection is attached.
+        # - **Attaching**: The connection is being attached.
+        # - **Detaching**: The connection is being detached.
         self.status = status
         # The list of tags.
         self.tags = tags
         # The description of the ECR connection.
         self.transit_router_attachment_description = transit_router_attachment_description
-        # The ECR connection ID.
+        # The ID of the ECR connection.
         self.transit_router_attachment_id = transit_router_attachment_id
         # The name of the ECR connection.
         self.transit_router_attachment_name = transit_router_attachment_name
@@ -138,7 +138,7 @@ class ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments(DaraMo
         self.transit_router_id = transit_router_id
         # The region ID of the transit router.
         # 
-        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the region information corresponding to the region ID.
+        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the region information represented by the region ID.
         self.transit_router_region_id = transit_router_region_id
 
     def validate(self):

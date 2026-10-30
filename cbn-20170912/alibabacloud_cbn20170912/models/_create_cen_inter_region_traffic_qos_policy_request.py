@@ -24,46 +24,44 @@ class CreateCenInterRegionTrafficQosPolicyRequest(DaraModel):
         transit_router_attachment_id: str = None,
         transit_router_id: str = None,
     ):
-        # The bandwidth guarantee mode. You can configure QoS queues based on absolute bandwidth values or bandwidth percentages. Valid values:
+        # The bandwidth guarantee mode. You can specify an absolute bandwidth value or a bandwidth percentage. Valid values:
         # 
-        # - **byBandwidth**: configures QoS queues based on absolute bandwidth values.
+        # - **byBandwidth**: configures the QoS queue based on an absolute bandwidth value.
         # 
-        # - **byBandwidthPercent** (default): configures QoS queues based on bandwidth percentages.
+        # - **byBandwidthPercent** (default): configures the QoS queue based on a bandwidth percentage.
         self.bandwidth_guarantee_mode = bandwidth_guarantee_mode
-        # The client token that is used to ensure the idempotence of the request.
-        # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to only precheck the request. Valid values:
         # 
-        # - **true**: performs a dry run. The system checks the required parameters, request syntax, and business restrictions. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # - **false** (default): performs a dry run and sends the request. If the request passes the dry run, the cross-region traffic scheduling policy is created.
+        # - **true**: prechecks the request without creating the inter-region traffic QoS policy. The system checks whether required parameters are specified, the request format, and service limits. If the request fails the precheck, the corresponding error is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+        # - **false** (default): sends the request. If the request passes the precheck, the inter-region traffic QoS policy is created.
         self.console_dry_run = console_dry_run
-        # Specifies whether to perform a dry run. Valid values:
-        # - **true**: performs a dry run. The system checks the required parameters, request syntax, and business restrictions. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # - **false** (default): performs a dry run and sends the request. If the request passes the dry run, the traffic scheduling policy is created.
+        # Specifies whether to only precheck the request. Valid values:
+        # - **true**: prechecks the request without creating the traffic QoS policy. The system checks whether required parameters are specified, the request format, and service limits. If the request fails the precheck, the corresponding error is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+        # - **false** (default): sends the request. If the request passes the precheck, the traffic QoS policy is created.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The description of the traffic scheduling policy.
+        # The description of the traffic QoS policy.
         # 
-        # The description can be empty or 1 to 256 characters in length and cannot start with http:// or https://.
+        # The description must be 1 to 256 characters in length, and can be left empty. It cannot start with http:// or https://.
         self.traffic_qos_policy_description = traffic_qos_policy_description
-        # The name of the traffic scheduling policy.
+        # The name of the traffic QoS policy.
         # 
-        # The name can be empty or 1 to 128 characters in length and cannot start with http:// or https://.
+        # The name must be 1 to 128 characters in length, and can be left empty. It cannot start with http:// or https://.
         self.traffic_qos_policy_name = traffic_qos_policy_name
-        # The queue information of the traffic scheduling policy.
+        # The information about the queues in the traffic QoS policy.
         # 
-        # You can create up to 3 queues. To create more queues, call CreateCenInterRegionTrafficQosQueue.
+        # You can create up to three queues. To create more queues, call the CreateCenInterRegionTrafficQosQueue operation.
         self.traffic_qos_queues = traffic_qos_queues
         # The ID of the inter-region connection.
         # 
         # This parameter is required.
         self.transit_router_attachment_id = transit_router_attachment_id
-        # The ID of the transit router instance.
+        # The transit router instance ID, which is used for forward and routing.
         # 
         # This parameter is required.
         self.transit_router_id = transit_router_id
@@ -177,37 +175,37 @@ class CreateCenInterRegionTrafficQosPolicyRequestTrafficQosQueues(DaraModel):
         qos_queue_name: str = None,
         remain_bandwidth_percent: str = None,
     ):
-        # The absolute bandwidth value that the queue can use for inter-region traffic, in Mbit/s.
+        # The absolute value of the inter-region bandwidth that the queue can use. Unit: Mbit/s.
         # 
-        # A traffic scheduling policy supports up to 10 queues, and each queue can be assigned an absolute bandwidth value.
+        # You can create up to 10 queues in a traffic QoS policy and specify the inter-region bandwidth that each queue can use.
         # 
-        # For example, if you enter 1, traffic that matches the queue can use up to 1 Mbit/s of inter-region bandwidth.
+        # For example, if you enter 1, packets that match the queue can use up to 1 Mbit/s of the inter-region bandwidth.
         # 
-        # > The sum of absolute bandwidth values of all allocated queues in a traffic scheduling policy cannot exceed the inter-region bandwidth value.
+        # > The sum of the absolute values of the inter-region bandwidth allocated to all queues in a traffic QoS policy cannot exceed the total inter-region bandwidth.
         self.bandwidth = bandwidth
-        # The DSCP values that the queue matches.
+        # The DSCP values that match the queue.
         # 
-        # A traffic scheduling policy supports up to 3 queues, and each queue can match up to 60 DSCP values. Separate multiple DSCP values with commas (,).
+        # You can create up to three queues in a traffic QoS policy. Each queue can match up to 60 DSCP values. Separate multiple DSCP values with commas (,).
         self.dscps = dscps
         # The description of the queue.
         # 
-        # A traffic scheduling policy supports up to 10 queues, and each queue can have a description.
+        # You can create up to 10 queues in a traffic QoS policy and add a description to each queue.
         # 
-        # The description can be empty or 1 to 256 characters in length and cannot start with http:// or https://.
+        # The description must be 1 to 256 characters in length, and can be left empty. It cannot start with http:// or https://.
         self.qos_queue_description = qos_queue_description
         # The name of the queue.
         # 
-        # A traffic scheduling policy supports up to 3 queues, and each queue can be assigned a name.
+        # You can create up to three queues in a traffic QoS policy and specify a name for each queue.
         # 
-        # The name can be empty or 1 to 128 characters in length and cannot start with http:// or https://.
+        # The name must be 1 to 128 characters in length, and can be left empty. It cannot start with http:// or https://.
         self.qos_queue_name = qos_queue_name
-        # The percentage of inter-region bandwidth that the queue can use.
+        # The percentage of the inter-region bandwidth that the queue can use.
         # 
-        # A traffic scheduling policy supports up to 10 queues, and each queue can be assigned a percentage of inter-region bandwidth.
+        # You can create up to 10 queues in a traffic QoS policy and specify the percentage of the inter-region bandwidth that each queue can use.
         # 
-        # For example, if you enter **1**, traffic that matches the queue can use up to 1% of the inter-region bandwidth.
+        # For example, if you enter **1**, packets that match the queue can use up to 1% of the inter-region bandwidth.
         # 
-        # > The sum of bandwidth percentages of all queues in a traffic scheduling policy cannot exceed 100%.
+        # > The sum of the inter-region bandwidth percentages of all queues in a traffic QoS policy cannot exceed 100%.
         self.remain_bandwidth_percent = remain_bandwidth_percent
 
     def validate(self):

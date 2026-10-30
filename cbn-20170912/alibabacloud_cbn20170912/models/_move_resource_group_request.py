@@ -17,15 +17,13 @@ class MoveResourceGroupRequest(DaraModel):
         resource_owner_id: int = None,
         resource_type: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         # 
-        # The client generates the value of this parameter. Make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
-        # 
-        # > If you do not specify this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is unique.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. Valid values:
-        # - **true**: performs a dry run without modifying the resource group of the CEN instance or bandwidth plan instance. The system checks the required parameters, request syntax, and business restrictions. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
-        # - **false** (default): performs a dry run and sends the request. If the check succeeds, an HTTP 2xx status code is returned and the operation is performed.
+        # Specifies whether to perform only a dry run. Valid values:
+        # - **true**: performs only a dry run. The system checks the request for potential issues, including missing required parameters, incorrect request formats, and service limits, but does not change the resource group of the CEN instance or bandwidth plan. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # - **false** (default): performs a dry run and then sends the actual request. If the request passes the dry run, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the new resource group.
         # 
@@ -42,7 +40,7 @@ class MoveResourceGroupRequest(DaraModel):
         # The resource type. Valid values:
         # 
         # - **cen**: CEN instance.
-        # - **bandwidthpackage**: bandwidth plan instance.
+        # - **bandwidthpackage**: bandwidth plan.
         # 
         # This parameter is required.
         self.resource_type = resource_type

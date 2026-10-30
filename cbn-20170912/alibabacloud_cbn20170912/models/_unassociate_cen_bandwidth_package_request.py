@@ -14,7 +14,7 @@ class UnassociateCenBandwidthPackageRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The bandwidth package instance ID.
+        # The bandwidth plan instance ID.
         # 
         # This parameter is required.
         self.cen_bandwidth_package_id = cen_bandwidth_package_id

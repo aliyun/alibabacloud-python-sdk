@@ -10,9 +10,9 @@ class CreateCenInterRegionTrafficQosQueueResponseBody(DaraModel):
         qos_queue_id: str = None,
         request_id: str = None,
     ):
-        # The queue ID.
+        # The ID of the queue.
         self.qos_queue_id = qos_queue_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

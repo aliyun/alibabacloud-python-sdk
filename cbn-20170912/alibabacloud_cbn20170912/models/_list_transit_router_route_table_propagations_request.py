@@ -19,31 +19,30 @@ class ListTransitRouterRouteTablePropagationsRequest(DaraModel):
         transit_router_attachment_resource_type: str = None,
         transit_router_route_table_id: str = None,
     ):
-        # The number of entries per page for a paged query. Default value: **50**.
+        # The maximum number of entries to return per page. Default value: **50**.
         self.max_results = max_results
-        # The token for the next query in a paged query.
+        # The token used to retrieve the next page of results.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The status of the route learning relationship. Valid values:
-        # - **Active**: active.
-        # - **Enabling**: being enabled.
-        # - **Disabling**: being disabled.
+        # The status of the route propagation. Valid values:
+        # - **Active**: Active.
+        # - **Enabling**: Enabling.
+        # - **Disabling**: Disabling.
         self.status = status
-        # The network instance connection ID.
+        # The ID of the network instance connection.
         self.transit_router_attachment_id = transit_router_attachment_id
         # The network instance ID.
         self.transit_router_attachment_resource_id = transit_router_attachment_resource_id
-        # The network instance type. Valid values:
-        # 
-        # - **VPC**: virtual private cloud (VPC) instance.
-        # - **VBR**: virtual border router (VBR) instance.
-        # - **TR**: transit router instance.
+        # The type of the network instance. Valid values:
+        # - **VPC**: VPC.
+        # - **VBR**: VBR.
+        # - **TR**: transit router.
         # - **VPN**: VPN connection.
         self.transit_router_attachment_resource_type = transit_router_attachment_resource_type
-        # The ID of the Enterprise Edition transit router route table.
+        # The ID of the route table in the Enterprise Edition transit router.
         # 
         # This parameter is required.
         self.transit_router_route_table_id = transit_router_route_table_id

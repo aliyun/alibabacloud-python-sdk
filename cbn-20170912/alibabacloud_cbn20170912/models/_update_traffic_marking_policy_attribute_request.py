@@ -22,21 +22,19 @@ class UpdateTrafficMarkingPolicyAttributeRequest(DaraModel):
         traffic_marking_policy_id: str = None,
         traffic_marking_policy_name: str = None,
     ):
-        # The list of traffic classification rules to add.
+        # The list of traffic classification rules to be added.
         # 
         # You can add up to 50 traffic classification rules at a time.
         self.add_traffic_match_rules = add_traffic_match_rules
-        # The client token that is used to ensure the idempotence of the request.
-        # 
-        # The client generates the value of this parameter. Ensure that the value is unique among different requests. The token can be up to 64 ASCII characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can generate the token by using the client. Make sure that the token is unique among different requests. The token can be up to 64 ASCII characters in length.
         self.client_token = client_token
-        # The list of traffic classification rules to delete.
-        # >Provide as much information as possible for the traffic classification rules, such as the source CIDR block, destination CIDR block, source port, destination port, and DSCP value. Otherwise, the system may fail to locate the target traffic classification rules and will not delete them.
+        # The list of traffic classification rules to be deleted.
+        # > Provide complete information about the traffic classification rules, such as the source CIDR block, destination CIDR block, source port, destination port, and DSCP value. Otherwise, the system may fail to locate the traffic classification rules to be deleted, and the target traffic classification rules will not be deleted.
         self.delete_traffic_match_rules = delete_traffic_match_rules
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to perform only a dry run. Valid values:
         # 
-        # - **true**: performs a dry run. The system checks the required parameters, request syntax, and business restrictions without modifying the name, description, or traffic classification rules of the traffic marking policy. If the request fails the dry run, the corresponding error message is returned. If the request passes the dry run, the error code `DryRunOperation` is returned.
-        # - **false** (default): performs a dry run and sends the request. After the request passes the dry run, the name, description, and traffic classification rules of the traffic marking policy are directly modified.
+        # - **true**: performs a dry run. The system checks the request without modifying the name, description, or traffic classification rules of the traffic marking policy. The system checks whether required parameters are specified, the request format is valid, and service limits are met. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        # - **false** (default): performs a dry run and then sends the request. If the request passes the dry run, the system modifies the name, description, and traffic classification rules of the traffic marking policy.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -44,7 +42,7 @@ class UpdateTrafficMarkingPolicyAttributeRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The new description of the traffic marking policy.
         # 
-        # The description can be empty or 1 to 256 characters in length and cannot start with http:// or https://.
+        # The description can be empty or 1 to 256 characters in length. It cannot start with http:// or https://.
         self.traffic_marking_policy_description = traffic_marking_policy_description
         # The ID of the traffic marking policy.
         # 
@@ -52,7 +50,7 @@ class UpdateTrafficMarkingPolicyAttributeRequest(DaraModel):
         self.traffic_marking_policy_id = traffic_marking_policy_id
         # The new name of the traffic marking policy.
         # 
-        # The name can be empty or 1 to 128 characters in length and cannot start with http:// or https://.
+        # The name can be empty or 1 to 128 characters in length. It cannot start with http:// or https://.
         self.traffic_marking_policy_name = traffic_marking_policy_name
 
     def validate(self):
@@ -165,9 +163,9 @@ class UpdateTrafficMarkingPolicyAttributeRequestDeleteTrafficMatchRules(DaraMode
         traffic_match_rule_description: str = None,
         traffic_match_rule_name: str = None,
     ):
-        # The address family. Valid values: IPv4, IPv6, or empty.
+        # The address family. Valid values: IPv4 and IPv6. You can also leave this parameter empty.
         self.address_family = address_family
-        # The destination CIDR block of the traffic packet. IPv4 and IPv6 addresses are supported.
+        # The destination CIDR block of the traffic packet. Both IPv4 and IPv6 addresses are supported.
         self.dst_cidr = dst_cidr
         # The destination port of the traffic packet.
         self.dst_port_range = dst_port_range
@@ -175,19 +173,19 @@ class UpdateTrafficMarkingPolicyAttributeRequestDeleteTrafficMatchRules(DaraMode
         self.match_dscp = match_dscp
         # The protocol type of the traffic packet.
         # 
-        # You can call the [ListTrafficMarkingPolicies](https://help.aliyun.com/document_detail/468322.html) operation to query the details of the traffic classification rules that you want to delete.
+        # You can call the [ListTrafficMarkingPolicies](https://help.aliyun.com/document_detail/468322.html) operation to query the details of the traffic classification rules to be deleted.
         self.protocol = protocol
-        # The source CIDR block of the traffic packet. IPv4 and IPv6 addresses are supported.
+        # The source CIDR block of the traffic packet. Both IPv4 and IPv6 addresses are supported.
         self.src_cidr = src_cidr
         # The source port of the traffic packet.
         self.src_port_range = src_port_range
         # The description of the traffic classification rule.
         # 
-        # The description can be empty or 1 to 256 characters in length and cannot start with http:// or https://.
+        # The description can be empty or 1 to 256 characters in length. It cannot start with http:// or https://.
         self.traffic_match_rule_description = traffic_match_rule_description
         # The name of the traffic classification rule.
         # 
-        # The name can be empty or 1 to 128 characters in length and cannot start with http:// or https://.
+        # The name can be empty or 1 to 128 characters in length. It cannot start with http:// or https://.
         self.traffic_match_rule_name = traffic_match_rule_name
 
     def validate(self):
@@ -271,86 +269,86 @@ class UpdateTrafficMarkingPolicyAttributeRequestAddTrafficMatchRules(DaraModel):
         traffic_match_rule_description: str = None,
         traffic_match_rule_name: str = None,
     ):
-        # The address family. Valid values: IPv4, IPv6, or empty.
+        # The address family. Valid values: IPv4 and IPv6. You can also leave this parameter empty.
         self.address_family = address_family
-        # The destination CIDR block of the traffic packet. IPv4 and IPv6 addresses are supported.
+        # The destination CIDR block of the traffic packet. Both IPv4 and IPv6 addresses are supported.
         # 
-        # The traffic classification rule matches traffic whose destination IP address falls within the destination CIDR block. If you do not set this parameter, the traffic classification rule matches traffic with any destination IP address.
+        # The traffic classification rule matches traffic whose destination IP address falls within the destination CIDR block. If you do not specify this parameter, the traffic classification rule matches traffic with any destination IP address.
         # 
-        # You can add up to 50 traffic classification rules at a time. Each traffic classification rule can specify one destination CIDR block.
+        # You can create up to 50 traffic classification rules at a time. Each traffic classification rule can specify one destination CIDR block.
         self.dst_cidr = dst_cidr
         # The destination port of the traffic packet. Valid values: **-1** and **1** to **65535**.
         # 
-        # The traffic classification rule matches traffic whose destination port falls within the destination port range. If you do not set this parameter, the traffic classification rule matches traffic with any destination port.
+        # The traffic classification rule matches traffic whose destination port number falls within the destination port range. If you do not specify this parameter, the traffic classification rule matches traffic with any destination port number.
         # 
-        # This parameter supports up to two port numbers. The input format is described as follows:
+        # You can enter up to two port numbers for this parameter. The input format is described as follows:
         # 
-        # - If you enter only one port number, such as 1, the system matches traffic whose destination port is 1 by default. If the value is -1, the system matches traffic with any destination port.
-        # - If you enter two port numbers, such as 1 and 200, the system matches traffic whose destination port is in the range of 1 to 200 by default.
-        # - If you enter two port numbers and one of them is -1, the other port number must also be -1, which indicates that traffic with any destination port is matched.
+        # - If you enter only one port number, such as 1, the system matches traffic whose destination port is 1 by default. If you enter -1, the system matches traffic with any destination port.
+        # - If you enter two port numbers, such as 1 and 200, the system matches traffic whose destination port falls within the range of 1 to 200 by default.
+        # - If you enter two port numbers and one of them is -1, the other port number must also be -1, which indicates that the system matches traffic with any destination port.
         # 
-        # You can add up to 50 traffic classification rules at a time. Each traffic classification rule can specify one destination port range.
+        # You can create up to 50 traffic classification rules at a time. Each traffic classification rule can specify one destination port range.
         self.dst_port_range = dst_port_range
         # The Differentiated Services Code Point (DSCP) value of the traffic packet. Valid values: **0** to **63**.
         # 
-        # The traffic classification rule matches traffic that contains the specified DSCP value. If you do not set this parameter, the traffic classification rule matches traffic with any DSCP value.
+        # The traffic classification rule matches traffic that contains the specified DSCP value. If you do not specify this parameter, the traffic classification rule matches traffic with any DSCP value.
         # 
-        # > The DSCP value refers to the DSCP value that the traffic packet already carries before entering the inter-region connection.
+        # > The DSCP value refers to the DSCP value carried by the traffic packet before it enters the cross-region connection.
         # 
-        # You can add up to 50 traffic classification rules at a time. Each traffic classification rule can match one DSCP value.
+        # You can create up to 50 traffic classification rules at a time. Each traffic classification rule can specify one DSCP value to match.
         self.match_dscp = match_dscp
         # The protocol type of the traffic packet.
         # 
-        # The traffic marking policy supports matching traffic of multiple protocol types, such as **HTTP**, **HTTPS**, **TCP**, **UDP**, **SSH**, and **Telnet**. For more protocol types, log on to the [Cloud Enterprise Network (CEN) console](https://cen.console.aliyun.com/cen/list).
+        # The traffic marking policy supports matching traffic of various protocol types, such as **HTTP**, **HTTPS**, **TCP**, **UDP**, **SSH**, and **Telnet**. For more protocol types, log on to the [Cloud Enterprise Network (CEN) console](https://cen.console.aliyun.com/cen/list).
         # <details>
         # <summary>Some protocols have fixed ports. Click to view port details.</summary>
         # 
-        # - If the protocol type is **ICMP**, the destination port must be set to **-1**.
-        # - If the protocol type is **GRE**, the destination port must be set to **-1**.
-        # - If the protocol type is **SSH**, the destination port must be set to **22**.
-        # - If the protocol type is **Telnet**, the destination port must be set to **23**.
-        # - If the protocol type is **HTTP**, the destination port must be set to **80**.
-        # - If the protocol type is **HTTPS**, the destination port must be set to **443**.
-        # - If the protocol type is **MS SQL**, the destination port must be set to **1443**.
-        # - If the protocol type is **Oracle**, the destination port must be set to **1521**.
-        # - If the protocol type is **Mysql**, the destination port must be set to **3306**.
-        # - If the protocol type is **RDP**, the destination port must be set to **3389**.
-        # - If the protocol type is **Postgre SQL**, the destination port must be set to **5432**.
-        # - If the protocol type is **Redis**, the destination port must be set to **6379**.
+        # - If the protocol type is **ICMP**, the destination port number must be set to **-1**.
+        # - If the protocol type is **GRE**, the destination port number must be set to **-1**.
+        # - If the protocol type is **SSH**, the destination port number must be set to **22**.
+        # - If the protocol type is **Telnet**, the destination port number must be set to **23**.
+        # - If the protocol type is **HTTP**, the destination port number must be set to **80**.
+        # - If the protocol type is **HTTPS**, the destination port number must be set to **443**.
+        # - If the protocol type is **MS SQL**, the destination port number must be set to **1443**.
+        # - If the protocol type is **Oracle**, the destination port number must be set to **1521**.
+        # - If the protocol type is **Mysql**, the destination port number must be set to **3306**.
+        # - If the protocol type is **RDP**, the destination port number must be set to **3389**.
+        # - If the protocol type is **Postgre SQL**, the destination port number must be set to **5432**.
+        # - If the protocol type is **Redis**, the destination port number must be set to **6379**.
         # 
         # </details>
         # 
-        # You can add up to 50 traffic classification rules at a time. Each traffic classification rule can match one protocol type.
+        # You can create up to 50 traffic classification rules at a time. Each traffic classification rule can specify one protocol type to match.
         self.protocol = protocol
-        # The source CIDR block of the traffic packet. IPv4 and IPv6 addresses are supported.
+        # The source CIDR block of the traffic packet. Both IPv4 and IPv6 addresses are supported.
         # 
-        # The traffic classification rule matches traffic whose source IP address falls within the source CIDR block. If you do not set this parameter, the traffic classification rule matches traffic with any source IP address.
+        # The traffic classification rule matches traffic whose source IP address falls within the source CIDR block. If you do not specify this parameter, the traffic classification rule matches traffic with any source IP address.
         # 
-        # You can add up to 50 traffic classification rules at a time. Each traffic classification rule can match one source CIDR block.
+        # You can create up to 50 traffic classification rules at a time. Each traffic classification rule can specify one source CIDR block to match.
         self.src_cidr = src_cidr
         # The source port of the traffic packet. Valid values: **-1** and **1** to **65535**.
         # 
-        # The traffic classification rule matches traffic whose source port falls within the source port range. If you do not set this parameter, the traffic classification rule matches traffic with any source port.
+        # The traffic classification rule matches traffic whose source port number falls within the source port range. If you do not specify this parameter, the traffic classification rule matches traffic with any source port.
         # 
-        # This parameter supports up to two port numbers. The input format is described as follows:
+        # You can enter up to two port numbers for this parameter. The input format is described as follows:
         # 
-        # - If you enter only one port number, such as 1, the system matches traffic whose source port is 1 by default. If the value is -1, the system matches traffic with any source port.
-        # - If you enter two port numbers, such as 1 and 200, the system matches traffic whose source port is in the range of 1 to 200 by default.
-        # - If you enter two port numbers and one of them is -1, the other port number must also be -1, which indicates that traffic with any source port is matched.
+        # - If you enter only one port number, such as 1, the system matches traffic whose source port is 1 by default. If you enter -1, the system matches traffic with any source port.
+        # - If you enter two port numbers, such as 1 and 200, the system matches traffic whose source port falls within the range of 1 to 200 by default.
+        # - If you enter two port numbers and one of them is -1, the other port number must also be -1, which indicates that the system matches traffic with any source port.
         # 
-        # You can add up to 50 traffic classification rules at a time. Each traffic classification rule can specify one source port range.
+        # You can create up to 50 traffic classification rules at a time. Each traffic classification rule can specify one source port range.
         self.src_port_range = src_port_range
         # The description of the traffic classification rule.
         # 
-        # You can add up to 50 traffic classification rules at a time. Each traffic classification rule can have one description.
+        # You can create up to 50 traffic classification rules at a time. You can add one description to each traffic classification rule.
         # 
-        # The description can be empty or 1 to 256 characters in length and cannot start with http:// or https://.
+        # The description can be empty or 1 to 256 characters in length. It cannot start with http:// or https://.
         self.traffic_match_rule_description = traffic_match_rule_description
         # The name of the traffic classification rule.
         # 
-        # You can add up to 50 traffic classification rules at a time. Each traffic classification rule can have one name.
+        # You can create up to 50 traffic classification rules at a time. You can add one name to each traffic classification rule.
         # 
-        # The name can be empty or 1 to 128 characters in length and cannot start with http:// or https://.
+        # The name can be empty or 1 to 128 characters in length. It cannot start with http:// or https://.
         self.traffic_match_rule_name = traffic_match_rule_name
 
     def validate(self):

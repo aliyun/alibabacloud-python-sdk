@@ -22,29 +22,16 @@ class ListTransitRouterVpnAttachmentsRequest(DaraModel):
         transit_router_attachment_id: str = None,
         transit_router_id: str = None,
     ):
-        # The Cloud Enterprise Network (CEN) instance ID.
         self.cen_id = cen_id
-        # The number of entries per page for a paged query. Default value: **20**.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
-        # - You do not need to specify this parameter for the first request or if no next query exists.
-        # - If a next query exists, set the value to the NextToken value returned by the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the transit router instance.
-        # 
-        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tag information of the CEN instance.
-        # 
-        # You can query up to 20 tags at a time.
         self.tag = tag
-        # The ID of the VPN connection.
         self.transit_router_attachment_id = transit_router_attachment_id
-        # The transit router instance ID.
         self.transit_router_id = transit_router_id
 
     def validate(self):
@@ -141,17 +128,7 @@ class ListTransitRouterVpnAttachmentsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the resource.
-        # 
-        # The tag key cannot be an empty string. It can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
-        # 
-        # You can specify up to 20 tag keys at a time.
         self.key = key
-        # The tag value of the resource.
-        # 
-        # The tag value can be an empty string or up to 128 characters in length. It cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
-        # 
-        # Each tag key corresponds to one tag value. You can specify up to 20 tag values at a time.
         self.value = value
 
     def validate(self):

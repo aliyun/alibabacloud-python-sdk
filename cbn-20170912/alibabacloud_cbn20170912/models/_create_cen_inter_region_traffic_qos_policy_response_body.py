@@ -12,7 +12,7 @@ class CreateCenInterRegionTrafficQosPolicyResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The ID of the traffic scheduling policy.
+        # The ID of the traffic QoS policy.
         self.traffic_qos_policy_id = traffic_qos_policy_id
 
     def validate(self):

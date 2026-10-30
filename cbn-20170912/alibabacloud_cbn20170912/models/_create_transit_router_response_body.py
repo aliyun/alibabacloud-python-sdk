@@ -12,7 +12,7 @@ class CreateTransitRouterResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The Enterprise Edition transit router instance ID. After creation, the instance is in the Creating state. Wait until the instance status changes to Active before performing subsequent operations. You can call the [ListTransitRouters](https://help.aliyun.com/document_detail/261219.html) operation to query the Enterprise Edition transit router instance status.
+        # The Enterprise Edition transit router instance ID, which is used to forward traffic and perform routing. After the instance is created, it is in the Creating state. You must wait until the instance enters the Active state before you can proceed to What to do next. You can invoke the ListTransitRouters operation to query the instance status.
         self.transit_router_id = transit_router_id
 
     def validate(self):

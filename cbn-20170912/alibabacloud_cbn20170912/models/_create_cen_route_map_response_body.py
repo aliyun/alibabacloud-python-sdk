@@ -12,7 +12,7 @@ class CreateCenRouteMapResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The ID of the routing policy.
+        # The ID of the route map.
         self.route_map_id = route_map_id
 
     def validate(self):

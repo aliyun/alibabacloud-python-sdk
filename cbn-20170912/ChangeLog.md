@@ -1,3 +1,14 @@
+2026-10-30 Version: 1.5.0
+- Support API CreateRouteMap.
+- Support API CreateRouteMapRule.
+- Support API DeleteRouteMap.
+- Support API DeleteRouteMapRule.
+- Support API ListRouteMapRules.
+- Support API ListRouteMaps.
+- Support API UpdateRouteMap.
+- Support API UpdateRouteMapRule.
+
+
 2026-09-08 Version: 1.3.11
 - Generated python 2017-09-12 for Cbn.
 
