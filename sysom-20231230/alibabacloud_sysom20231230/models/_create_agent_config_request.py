@@ -11,7 +11,7 @@ class CreateAgentConfigRequest(DaraModel):
         config_name: str = None,
         content: str = None,
     ):
-        # The ID of the component for the configuration. You can obtain the component ID from ListAgents.
+        # The ID of the agent associated with the configuration. You can obtain the agent ID from ListAgents.
         # 
         # This parameter is required.
         self.agent_id = agent_id

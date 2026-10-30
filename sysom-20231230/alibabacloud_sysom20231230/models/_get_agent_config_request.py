@@ -14,7 +14,7 @@ class GetAgentConfigRequest(DaraModel):
         page_size: str = None,
         region: str = None,
     ):
-        # The ID of the component for which you want to retrieve configurations.
+        # The ID of the component.
         # 
         # This parameter is required.
         self.agent_id = agent_id
@@ -22,7 +22,7 @@ class GetAgentConfigRequest(DaraModel):
         self.config_id = config_id
         # The name of the configuration.
         self.config_name = config_name
-        # The current page number. This field is available when page-based pagination is used.
+        # The current page number. This parameter is available only when pagination by page number is used.
         self.current = current
         # The number of entries to return on each page. Default value: 10.
         self.page_size = page_size

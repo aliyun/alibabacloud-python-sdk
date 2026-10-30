@@ -19,9 +19,13 @@ class CreateAlertDestinationRequest(DaraModel):
         source: str = None,
         target: str = None,
     ):
+        # The ID of the IM bot.
         self.app_id = app_id
+        # The secret key of the IM bot.
         self.app_secret = app_secret
+        # The ID of the group.
         self.group_id = group_id
+        # Specifies whether the IM bot is enabled.
         self.imbot = imbot
         # The name of the alert contact.
         self.name = name
@@ -29,7 +33,7 @@ class CreateAlertDestinationRequest(DaraModel):
         self.params = params
         # The configuration source.
         self.source = source
-        # The notification target. Currently, only DingTalk chatbots are supported.
+        # The push target. Currently, only DingTalk bots are supported.
         self.target = target
 
     def validate(self):
@@ -108,9 +112,9 @@ class CreateAlertDestinationRequestParams(DaraModel):
         self.email = email
         # The phone number.
         self.phone = phone
-        # The chatbot secret key.
+        # The secret key of the bot.
         self.sec = sec
-        # The webhook URL of the chatbot.
+        # The webhook URL of the bot.
         self.webhook = webhook
 
     def validate(self):

@@ -20,11 +20,15 @@ class UpdateAlertDestinationRequest(DaraModel):
         source: str = None,
         target: str = None,
     ):
+        # The app ID of the chatbot.
         self.app_id = app_id
+        # The app secret of the chatbot.
         self.app_secret = app_secret
+        # The group ID.
         self.group_id = group_id
         # The ID of the alert contact.
         self.id = id
+        # Specifies whether the contact is an IM chatbot.
         self.imbot = imbot
         # The name of the alert contact.
         self.name = name
@@ -117,9 +121,9 @@ class UpdateAlertDestinationRequestParams(DaraModel):
         self.email = email
         # The phone number.
         self.phone = phone
-        # The chatbot secret key.
+        # The secret of the chatbot.
         self.sec = sec
-        # The webhook URL.
+        # The webhook URL of the chatbot.
         self.webhook = webhook
 
     def validate(self):

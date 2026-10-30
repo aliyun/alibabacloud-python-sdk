@@ -16,8 +16,8 @@ class GetAlertStrategyResponseBody(DaraModel):
         request_id: str = None,
     ):
         # The status code.
-        # - `code == Success` indicates that the authorization is successful.
-        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault message.
+        # - If `code == Success`, the authorization is successful.
+        # - Other status codes indicate that the authorization failed. If the authorization fails, check the `message` field for the detailed fault message.
         self.code = code
         # The returned data.
         self.data = data
@@ -168,11 +168,11 @@ class GetAlertStrategyResponseBodyDataStrategy(DaraModel):
         destinations: Any = None,
         items: Any = None,
     ):
-        # The collection of clusters that receive alerts.
+        # The clusters that receive alerts.
         self.clusters = clusters
         # The alert contacts.
         self.destinations = destinations
-        # The list of exception items that receive alerts.
+        # The list of anomaly items that trigger alerts.
         self.items = items
 
     def validate(self):

@@ -19,14 +19,14 @@ class ListClusterAgentInstallRecordsResponseBody(DaraModel):
         # The request ID, which can be used for end-to-end diagnostics.
         self.request_id = request_id
         # The status code.
-        # - `code == Success` indicates that the authorization is successful.
-        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
+        # - `code == Success`: The authorization succeeded.
+        # - Other status codes: The authorization failed. If the authorization fails, check the `message` field for the detailed fault information.
         self.code = code
         # The returned result.
         self.data = data
         # The error message.
         # - If `code == Success`, this field is empty.
-        # - Otherwise, this field contains the request error information.
+        # - Otherwise, this field contains the request error message.
         self.message = message
         # The total number of query results.
         self.total = total
@@ -95,7 +95,9 @@ class ListClusterAgentInstallRecordsResponseBodyData(DaraModel):
         plugin_version: str = None,
         updated_at: str = None,
     ):
+        # The component configuration ID.
         self.agent_config_id = agent_config_id
+        # The component configuration name.
         self.agent_config_name = agent_config_name
         # The cluster ID.
         # 

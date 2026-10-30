@@ -26,6 +26,9 @@ from ._create_alert_strategy_response import CreateAlertStrategyResponse
 from ._create_cluster_vpc_endpoint_connection_request import CreateClusterVpcEndpointConnectionRequest
 from ._create_cluster_vpc_endpoint_connection_response_body import CreateClusterVpcEndpointConnectionResponseBody
 from ._create_cluster_vpc_endpoint_connection_response import CreateClusterVpcEndpointConnectionResponse
+from ._create_copilot_session_request import CreateCopilotSessionRequest
+from ._create_copilot_session_response_body import CreateCopilotSessionResponseBody
+from ._create_copilot_session_response import CreateCopilotSessionResponse
 from ._create_instance_inspection_request import CreateInstanceInspectionRequest
 from ._create_instance_inspection_response_body import CreateInstanceInspectionResponseBody
 from ._create_instance_inspection_response import CreateInstanceInspectionResponse
@@ -41,6 +44,9 @@ from ._delete_alert_destination_response import DeleteAlertDestinationResponse
 from ._delete_alert_strategy_request import DeleteAlertStrategyRequest
 from ._delete_alert_strategy_response_body import DeleteAlertStrategyResponseBody
 from ._delete_alert_strategy_response import DeleteAlertStrategyResponse
+from ._delete_copilot_session_request import DeleteCopilotSessionRequest
+from ._delete_copilot_session_response_body import DeleteCopilotSessionResponseBody
+from ._delete_copilot_session_response import DeleteCopilotSessionResponse
 from ._describe_metric_list_request import DescribeMetricListRequest
 from ._describe_metric_list_response_body import DescribeMetricListResponseBody
 from ._describe_metric_list_response import DescribeMetricListResponse
@@ -83,6 +89,9 @@ from ._get_config_by_name_response import GetConfigByNameResponse
 from ._get_copilot_history_request import GetCopilotHistoryRequest
 from ._get_copilot_history_response_body import GetCopilotHistoryResponseBody
 from ._get_copilot_history_response import GetCopilotHistoryResponse
+from ._get_copilot_session_request import GetCopilotSessionRequest
+from ._get_copilot_session_response_body import GetCopilotSessionResponseBody
+from ._get_copilot_session_response import GetCopilotSessionResponse
 from ._get_cve_hotfix_request import GetCveHotfixRequest
 from ._get_cve_hotfix_response_body import GetCveHotfixResponseBody
 from ._get_cve_hotfix_response import GetCveHotfixResponse
@@ -303,8 +312,13 @@ from ._create_alert_destination_response_body import CreateAlertDestinationRespo
 from ._create_alert_destination_response_body import CreateAlertDestinationResponseBodyData
 from ._create_alert_strategy_request import CreateAlertStrategyRequestStrategy
 from ._create_cluster_vpc_endpoint_connection_response_body import CreateClusterVpcEndpointConnectionResponseBodyData
+from ._create_copilot_session_response_body import CreateCopilotSessionResponseBodyDataActiveTurn
+from ._create_copilot_session_response_body import CreateCopilotSessionResponseBodyDataLastTurn
+from ._create_copilot_session_response_body import CreateCopilotSessionResponseBodyDataScheduledTask
+from ._create_copilot_session_response_body import CreateCopilotSessionResponseBodyData
 from ._create_vmcore_diagnosis_task_response_body import CreateVmcoreDiagnosisTaskResponseBodyData
 from ._delete_agent_config_response_body import DeleteAgentConfigResponseBodyData
+from ._delete_copilot_session_response_body import DeleteCopilotSessionResponseBodyData
 from ._describe_metric_list_response_body import DescribeMetricListResponseBodyData
 from ._get_abnormal_events_count_response_body import GetAbnormalEventsCountResponseBodyData
 from ._get_agent_response_body import GetAgentResponseBodyDataVersions
@@ -319,6 +333,10 @@ from ._get_alert_destination_response_body import GetAlertDestinationResponseBod
 from ._get_alert_strategy_response_body import GetAlertStrategyResponseBodyDataStrategy
 from ._get_alert_strategy_response_body import GetAlertStrategyResponseBodyData
 from ._get_copilot_history_response_body import GetCopilotHistoryResponseBodyData
+from ._get_copilot_session_response_body import GetCopilotSessionResponseBodyDataActiveTurn
+from ._get_copilot_session_response_body import GetCopilotSessionResponseBodyDataLastTurn
+from ._get_copilot_session_response_body import GetCopilotSessionResponseBodyDataScheduledTask
+from ._get_copilot_session_response_body import GetCopilotSessionResponseBodyData
 from ._get_cve_hotfix_response_body import GetCveHotfixResponseBodyDataHotfixPackages
 from ._get_cve_hotfix_response_body import GetCveHotfixResponseBodyDataHotfix
 from ._get_cve_hotfix_response_body import GetCveHotfixResponseBodyData
@@ -441,6 +459,9 @@ __all__ = [
     CreateClusterVpcEndpointConnectionRequest,
     CreateClusterVpcEndpointConnectionResponseBody,
     CreateClusterVpcEndpointConnectionResponse,
+    CreateCopilotSessionRequest,
+    CreateCopilotSessionResponseBody,
+    CreateCopilotSessionResponse,
     CreateInstanceInspectionRequest,
     CreateInstanceInspectionResponseBody,
     CreateInstanceInspectionResponse,
@@ -456,6 +477,9 @@ __all__ = [
     DeleteAlertStrategyRequest,
     DeleteAlertStrategyResponseBody,
     DeleteAlertStrategyResponse,
+    DeleteCopilotSessionRequest,
+    DeleteCopilotSessionResponseBody,
+    DeleteCopilotSessionResponse,
     DescribeMetricListRequest,
     DescribeMetricListResponseBody,
     DescribeMetricListResponse,
@@ -498,6 +522,9 @@ __all__ = [
     GetCopilotHistoryRequest,
     GetCopilotHistoryResponseBody,
     GetCopilotHistoryResponse,
+    GetCopilotSessionRequest,
+    GetCopilotSessionResponseBody,
+    GetCopilotSessionResponse,
     GetCveHotfixRequest,
     GetCveHotfixResponseBody,
     GetCveHotfixResponse,
@@ -718,8 +745,13 @@ __all__ = [
     CreateAlertDestinationResponseBodyData,
     CreateAlertStrategyRequestStrategy,
     CreateClusterVpcEndpointConnectionResponseBodyData,
+    CreateCopilotSessionResponseBodyDataActiveTurn,
+    CreateCopilotSessionResponseBodyDataLastTurn,
+    CreateCopilotSessionResponseBodyDataScheduledTask,
+    CreateCopilotSessionResponseBodyData,
     CreateVmcoreDiagnosisTaskResponseBodyData,
     DeleteAgentConfigResponseBodyData,
+    DeleteCopilotSessionResponseBodyData,
     DescribeMetricListResponseBodyData,
     GetAbnormalEventsCountResponseBodyData,
     GetAgentResponseBodyDataVersions,
@@ -734,6 +766,10 @@ __all__ = [
     GetAlertStrategyResponseBodyDataStrategy,
     GetAlertStrategyResponseBodyData,
     GetCopilotHistoryResponseBodyData,
+    GetCopilotSessionResponseBodyDataActiveTurn,
+    GetCopilotSessionResponseBodyDataLastTurn,
+    GetCopilotSessionResponseBodyDataScheduledTask,
+    GetCopilotSessionResponseBodyData,
     GetCveHotfixResponseBodyDataHotfixPackages,
     GetCveHotfixResponseBodyDataHotfix,
     GetCveHotfixResponseBodyData,

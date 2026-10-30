@@ -14,8 +14,8 @@ class DeleteAgentConfigResponseBody(DaraModel):
         request_id: str = None,
     ):
         # The status code.
-        # - `code == Success`: The authorization succeeded.
-        # - Other status codes indicate that the authorization failed. If the authorization failed, check the `message` field for the detailed fault message.
+        # - `code == Success`: Authorization succeeded.
+        # - Other status codes indicate that authorization failed. If authorization failed, check the `message` field for detailed error messages.
         self.code = code
         # The returned data.
         self.data = data

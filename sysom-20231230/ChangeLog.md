@@ -1,3 +1,9 @@
+2026-10-30 Version: 3.2.0
+- Support API CreateCopilotSession.
+- Support API DeleteCopilotSession.
+- Support API GetCopilotSession.
+
+
 2026-10-20 Version: 3.1.0
 - Support API GetCveHotfix.
 

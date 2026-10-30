@@ -19,9 +19,9 @@ class GetAifgResultResponseBody(DaraModel):
         self.code = code
         # The data details.
         self.data = data
-        # The message returned.
+        # The message content.
         self.message = message
-        # The unique request ID.
+        # The unique identifier of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -74,15 +74,15 @@ class GetAifgResultResponseBodyData(DaraModel):
         task_id: str = None,
         trace_task_id: str = None,
     ):
-        # The diagnostic result.
+        # The diagnostic results.
         self.result = result
         # The service name.
         self.service_name = service_name
-        # The status of the root data.
+        # The root data status.
         self.status = status
-        # The time when the data was created.
+        # The data creation time.
         self.submit_time = submit_time
-        # The unique task ID.
+        # The unique identifier of the task.
         self.task_id = task_id
         # The training task ID.
         self.trace_task_id = trace_task_id

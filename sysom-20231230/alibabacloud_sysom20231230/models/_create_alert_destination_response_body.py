@@ -19,7 +19,7 @@ class CreateAlertDestinationResponseBody(DaraModel):
         self.data = data
         # The error message.
         # - If `code == Success`, this field is empty.
-        # - Otherwise, this field contains the error message of the request.
+        # - Otherwise, this field contains the request error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -76,7 +76,7 @@ class CreateAlertDestinationResponseBodyData(DaraModel):
         uid: str = None,
         updated_at: int = None,
     ):
-        # The time when the contact was created.
+        # The creation time.
         self.created_at = created_at
         # The policy ID.
         self.id = id
@@ -86,11 +86,11 @@ class CreateAlertDestinationResponseBodyData(DaraModel):
         self.params = params
         # The configuration source.
         self.source = source
-        # The notification target. Currently, only DingTalk chatbots are supported.
+        # The push target. Currently, only DingTalk bots are supported.
         self.target = target
         # The user ID.
         self.uid = uid
-        # The time when the contact was last updated.
+        # The update time.
         self.updated_at = updated_at
 
     def validate(self):
@@ -169,9 +169,9 @@ class CreateAlertDestinationResponseBodyDataParams(DaraModel):
         self.email = email
         # The phone number.
         self.phone = phone
-        # The chatbot secret key.
+        # The secret key of the bot.
         self.sec = sec
-        # The webhook URL of the chatbot.
+        # The webhook URL of the bot.
         self.webhook = webhook
 
     def validate(self):

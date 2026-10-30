@@ -20,7 +20,7 @@ class InstallHotfixResponseBody(DaraModel):
         # The returned data.
         self.data = data
         # The error message.
-        # - If code == Success, this field is empty.
+        # - If `code == Success`, this field is empty.
         # - Otherwise, this field contains the request error message.
         self.message = message
         # The request ID, which can be used for end-to-end diagnostics.

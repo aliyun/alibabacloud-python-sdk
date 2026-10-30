@@ -16,11 +16,11 @@ class GetGpuClusterListAlarmRecordResponseBody(DaraModel):
         request_id: str = None,
         total: str = None,
     ):
-        # The value is "Success" or "Sysom.ServerError".
+        # The response code. Valid values: Success and Sysom.ServerError.
         self.code = code
         # The list of alert data.
         self.data = data
-        # When code is not "Success", message contains the error information.
+        # The error message returned when the code is not Success.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -93,23 +93,23 @@ class GetGpuClusterListAlarmRecordResponseBodyData(DaraModel):
         status: str = None,
         uid: str = None,
     ):
-        # The cluster where the alert was triggered.
+        # The cluster where the alert is triggered.
         self.alarm_cluster = alarm_cluster
-        # The additional information about the alert.
+        # The extended information of the alert.
         self.alarm_ext_info = alarm_ext_info
         # The unique ID of the alert.
         self.alarm_id = alarm_id
-        # The event log associated with the alert.
+        # The alerting event log.
         self.alarm_log = alarm_log
         # The ID of the task where the anomaly occurred.
         self.alarm_task = alarm_task
-        # The date and time when the alert was triggered.
+        # The date and time when the alert is triggered.
         self.alarm_time = alarm_time
         # The topology snapshot.
         self.alarm_topology = alarm_topology
-        # The Alarm Metric for alerting.
+        # The alerting type.
         self.alarm_type = alarm_type
-        # The task status.
+        # The status of the task.
         self.status = status
         # The UUID of the cloud account.
         self.uid = uid

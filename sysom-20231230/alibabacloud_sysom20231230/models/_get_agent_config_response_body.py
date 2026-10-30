@@ -26,7 +26,7 @@ class GetAgentConfigResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The number of returned records.
+        # The total number of returned records.
         self.total = total
 
     def validate(self):

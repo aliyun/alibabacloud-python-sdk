@@ -12,6 +12,7 @@ from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
 from darabonba.core import DaraCore as DaraCore
 from darabonba.runtime import RuntimeOptions
+from darabonba.url import Url as DaraURL
 
 """
 """
@@ -816,6 +817,82 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_cluster_vpc_endpoint_connection_with_options_async(request, headers, runtime)
 
+    def create_copilot_session_with_options(
+        self,
+        request: main_models.CreateCopilotSessionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCopilotSessionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCopilotSession',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/copilot/sessions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCopilotSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_copilot_session_with_options_async(
+        self,
+        request: main_models.CreateCopilotSessionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCopilotSessionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCopilotSession',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/copilot/sessions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCopilotSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_copilot_session(
+        self,
+        request: main_models.CreateCopilotSessionRequest,
+    ) -> main_models.CreateCopilotSessionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_copilot_session_with_options(request, headers, runtime)
+
+    async def create_copilot_session_async(
+        self,
+        request: main_models.CreateCopilotSessionRequest,
+    ) -> main_models.CreateCopilotSessionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_copilot_session_with_options_async(request, headers, runtime)
+
     def create_instance_inspection_with_options(
         self,
         request: main_models.CreateInstanceInspectionRequest,
@@ -1231,6 +1308,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_alert_strategy_with_options_async(request, headers, runtime)
+
+    def delete_copilot_session_with_options(
+        self,
+        request: main_models.DeleteCopilotSessionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCopilotSessionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['agentId'] = request.agent_id
+        if not DaraCore.is_null(request.session_id):
+            query['sessionId'] = request.session_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCopilotSession',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/copilot/delete-session',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCopilotSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_copilot_session_with_options_async(
+        self,
+        request: main_models.DeleteCopilotSessionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCopilotSessionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['agentId'] = request.agent_id
+        if not DaraCore.is_null(request.session_id):
+            query['sessionId'] = request.session_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCopilotSession',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/copilot/delete-session',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCopilotSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_copilot_session(
+        self,
+        request: main_models.DeleteCopilotSessionRequest,
+    ) -> main_models.DeleteCopilotSessionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_copilot_session_with_options(request, headers, runtime)
+
+    async def delete_copilot_session_async(
+        self,
+        request: main_models.DeleteCopilotSessionRequest,
+    ) -> main_models.DeleteCopilotSessionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_copilot_session_with_options_async(request, headers, runtime)
 
     def describe_metric_list_with_options(
         self,
@@ -2449,6 +2606,78 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_copilot_history_with_options_async(request, headers, runtime)
+
+    def get_copilot_session_with_options(
+        self,
+        session_id: str,
+        request: main_models.GetCopilotSessionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCopilotSessionResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCopilotSession',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/copilot/sessions/{DaraURL.percent_encode(session_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCopilotSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_copilot_session_with_options_async(
+        self,
+        session_id: str,
+        request: main_models.GetCopilotSessionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCopilotSessionResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCopilotSession',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/copilot/sessions/{DaraURL.percent_encode(session_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCopilotSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_copilot_session(
+        self,
+        session_id: str,
+        request: main_models.GetCopilotSessionRequest,
+    ) -> main_models.GetCopilotSessionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_copilot_session_with_options(session_id, request, headers, runtime)
+
+    async def get_copilot_session_async(
+        self,
+        session_id: str,
+        request: main_models.GetCopilotSessionRequest,
+    ) -> main_models.GetCopilotSessionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_copilot_session_with_options_async(session_id, request, headers, runtime)
 
     def get_cve_hotfix_with_options(
         self,

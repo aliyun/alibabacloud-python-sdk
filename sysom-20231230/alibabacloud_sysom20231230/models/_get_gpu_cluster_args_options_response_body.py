@@ -15,7 +15,7 @@ class GetGpuClusterArgsOptionsResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The response code. Valid values: Success and Sysom.ServerError.
+        # The response code, which is Success or Sysom.ServerError.
         self.code = code
         # The result of the parameter retrieval.
         self.data = data
@@ -23,7 +23,7 @@ class GetGpuClusterArgsOptionsResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The total number of returned entries.
+        # The total number of returned items.
         self.total = total
 
     def validate(self):

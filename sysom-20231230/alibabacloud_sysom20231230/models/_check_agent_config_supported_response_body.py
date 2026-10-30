@@ -17,14 +17,14 @@ class CheckAgentConfigSupportedResponseBody(DaraModel):
         total: int = None,
     ):
         # The status code.
-        # - If `code` is `Success`, the authorization is successful.
-        # - Other status codes indicate that the authorization failed. If the authorization failed, check the `message` field for the detailed fault information.
+        # - If the value is `Success`, the authorization is successful.
+        # - Other status codes indicate that the authorization failed. If the authorization failed, check the `message` field for the detailed fault message.
         self.code = code
         # The returned result.
         self.data = data
         # The error message.
-        # - If code is Success, this field is empty.
-        # - Otherwise, this field contains the error information of the request.
+        # - If the value of `code` is `Success`, this field is empty.
+        # - Otherwise, this field contains the error message of the request.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -94,7 +94,7 @@ class CheckAgentConfigSupportedResponseBodyData(DaraModel):
         self.cluster = cluster
         # The ECS instance ID.
         self.instance = instance
-        # The reason why the instance is not supported for management. This field is not empty when success is false.
+        # The reason why the instance is not supported for management. This field is not empty when the success field is false.
         self.reason = reason
 
     def validate(self):

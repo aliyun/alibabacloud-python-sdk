@@ -21,7 +21,7 @@ class CreateAlertStrategyRequest(DaraModel):
         self.enabled = enabled
         # The Kubernetes label.
         self.k_8s_label = k_8s_label
-        # The Policy Name of the alerting policy.
+        # The alert policy name.
         # 
         # This parameter is required.
         self.name = name
@@ -81,7 +81,7 @@ class CreateAlertStrategyRequestStrategy(DaraModel):
         self.clusters = clusters
         # The alert contacts.
         self.destinations = destinations
-        # The collection of exception items that receive alerts.
+        # The collection of anomaly items that trigger alerts.
         self.items = items
 
     def validate(self):

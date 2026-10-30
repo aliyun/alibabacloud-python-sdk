@@ -15,13 +15,13 @@ class UninstallHotfixResponseBody(DaraModel):
     ):
         # The status code.
         # - If `code == Success`, the authorization is successful.
-        # - Other status codes indicate that the authorization failed. If the authorization fails, check the `message` field for the detailed fault information.
+        # - Other status codes indicate that the authorization failed. If the authorization failed, check the `message` field to obtain the detailed fault message.
         self.code = code
         # The returned data.
         self.data = data
         # The error message.
         # - If `code == Success`, this field is empty.
-        # - Otherwise, this field contains the error message of the request.
+        # - Otherwise, this field contains the request error message.
         self.message = message
         # The request ID.
         self.request_id = request_id

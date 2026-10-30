@@ -15,9 +15,11 @@ class UpdateInstanceAgentConfigResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The returned results.
+        # The returned result.
         self.data = data
-        # The error message. If `code == Success`, this field is empty. Otherwise, this field contains the error message of the request.
+        # The error message.
+        # - If `code == Success`, this field is empty.
+        # - Otherwise, this field contains the request error message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -67,7 +69,9 @@ class UpdateInstanceAgentConfigResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The task ID. You can use this task ID to call the GetAgentTask operation to check the task execution status.
+        # The task ID.
+        # 
+        # You can use this task ID to call the GetAgentTask operation to check the task execution status.
         self.task_id = task_id
 
     def validate(self):

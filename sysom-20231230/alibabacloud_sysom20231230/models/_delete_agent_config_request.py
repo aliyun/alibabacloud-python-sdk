@@ -10,7 +10,7 @@ class DeleteAgentConfigRequest(DaraModel):
         agent_id: str = None,
         config_id: str = None,
     ):
-        # The ID of the component associated with the configuration to delete.
+        # The ID of the component associated with the configuration to be deleted.
         self.agent_id = agent_id
         # The ID of the component configuration to delete.
         self.config_id = config_id

@@ -22,19 +22,17 @@ class ListAifgJobsResponseBody(DaraModel):
         self.code = code
         # The data under the root node.
         self.data = data
-        # The maximum number of records to retrieve in a single request.
+        # The maximum number of records to retrieve at a time.
         self.max_results = max_results
-        # Indicates the position read by the current call. An empty value indicates that all data has been read.
+        # Indicates the read position returned by the current call. An empty value indicates that all data has been read.
         # 
         # This parameter is required.
         self.message = message
-        # The pagination token.
-        # 
-        # > A non-empty value indicates that more data is available.
+        # The pagination cursor. A non-empty value indicates that more data is available.
         self.next_token = next_token
         # The unique identifier of the request.
         self.request_id = request_id
-        # The total number of entries.
+        # The total count.
         self.total = total
 
     def validate(self):
@@ -127,11 +125,11 @@ class ListAifgJobsResponseBodyData(DaraModel):
         self.service_name = service_name
         # The status of the data item.
         self.status = status
-        # The sub-status of the data item.
+        # The sub-status of data item 0.
         self.sub_status = sub_status
         # The time when the data was submitted.
         self.submit_time = submit_time
-        # The task ID.
+        # The ID of the task.
         self.task_id = task_id
         # The unique identifier of the trace task.
         self.trace_task_id = trace_task_id

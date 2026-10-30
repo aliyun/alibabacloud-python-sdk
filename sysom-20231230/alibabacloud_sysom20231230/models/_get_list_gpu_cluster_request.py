@@ -14,7 +14,7 @@ class GetListGpuClusterRequest(DaraModel):
     ):
         # The ID of the region to query.
         self.region_id = region_id
-        # The query time range, in milliseconds, in the format of [start, end]. Example: [13254125000, 52451241000].
+        # The time range to query. Unit: milliseconds. Format: [start,end]. Example: [13254125000, 52451241000].
         self.time_region = time_region
 
     def validate(self):

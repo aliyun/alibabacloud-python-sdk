@@ -67,7 +67,7 @@ class StartAifgAnalysisResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The task ID.
+        # The identifier.
         self.task_id = task_id
 
     def validate(self):

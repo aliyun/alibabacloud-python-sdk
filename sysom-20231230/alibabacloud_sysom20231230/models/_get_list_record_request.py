@@ -13,7 +13,7 @@ class GetListRecordRequest(DaraModel):
         page_size: int = None,
         region: str = None,
     ):
-        # The ID of the analysis record to query the status for.
+        # The ID of the specified analysis record.
         self.analysis_id = analysis_id
         # The current page number.
         self.current = current

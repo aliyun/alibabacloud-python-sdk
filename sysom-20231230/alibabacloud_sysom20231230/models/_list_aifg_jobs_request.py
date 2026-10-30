@@ -18,11 +18,9 @@ class ListAifgJobsRequest(DaraModel):
         # 
         # This parameter is required.
         self.current = current
-        # The maximum number of records to retrieve in a single request.
+        # The maximum number of records to retrieve at a time.
         self.max_results = max_results
-        # The pagination token.
-        # 
-        # > A non-empty value indicates that more data is available.
+        # The pagination cursor. A non-empty value indicates that more data is available.
         self.next_token = next_token
         # The number of entries per page.
         # 
@@ -30,7 +28,7 @@ class ListAifgJobsRequest(DaraModel):
         self.page_size = page_size
         # The region ID.
         self.region = region
-        # The service name of the diagnostic service.
+        # The diagnostic service name.
         # 
         # This parameter is required.
         self.service_name = service_name

@@ -15,14 +15,14 @@ class UpdateAlertStrategyResponseBody(DaraModel):
         request_id: str = None,
     ):
         # The status code.
-        # - `code == Success` indicates that the authorization is successful.
-        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
+        # - If `code` is `Success`, the authorization is successful.
+        # - Other status codes indicate that the authorization failed. If the authorization fails, check the `message` field for the detailed fault information.
         self.code = code
-        # The response data.
+        # The returned result.
         self.data = data
         # The error message.
-        # - If `code == Success`, this field is empty.
-        # - Otherwise, this field contains the error message of the request.
+        # - If `code` is `Success`, this field is empty.
+        # - Otherwise, this field contains the request error message.
         self.message = message
         # Id of the request
         self.request_id = request_id

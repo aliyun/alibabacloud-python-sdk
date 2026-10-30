@@ -14,13 +14,13 @@ class QueryHotfixStatusResponseBody(DaraModel):
         request_id: str = None,
     ):
         # The status code.
-        # - `code == Success`: The authorization is successful.
-        # - Other status codes: The authorization failed. If the authorization fails, check the `message` field for the detailed fault message.
+        # - If `code == Success`, the authorization is successful.
+        # - Other status codes indicate that the authorization failed. If the authorization failed, check the `message` field for the detailed fault message.
         self.code = code
         # The returned data.
         self.data = data
         # The error message.
-        # - If `code == Success`, this field is empty.
+        # - If code is Success, this field is empty.
         # - Otherwise, this field contains the request error message.
         self.message = message
         # The request ID.

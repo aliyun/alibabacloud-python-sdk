@@ -19,16 +19,16 @@ class ListAlertStrategiesResponseBody(DaraModel):
         total: int = None,
     ):
         # The status code.
-        # - `code == Success` indicates that the authorization is successful.
-        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
+        # - If `code == Success`, the authorization is successful.
+        # - Other status codes indicate that the authorization failed. If the authorization failed, check the `message` field for the detailed error message.
         self.code = code
-        # The returned result.
+        # The returned results.
         self.data = data
-        # The maximum number of entries returned.
+        # The maximum number of returned results.
         self.max_results = max_results
         # The error message.
         # - If `code == Success`, this field is empty.
-        # - Otherwise, this field contains the request error information.
+        # - Otherwise, this field contains the request error message.
         self.message = message
         # The pagination token for the next request.
         self.next_token = next_token
@@ -119,7 +119,7 @@ class ListAlertStrategiesResponseBodyData(DaraModel):
         self.enabled = enabled
         # The policy ID.
         self.id = id
-        # Indicates whether Kubernetes labels are required.
+        # Indicates whether K8s labels are required.
         self.k_8s_label = k_8s_label
         # The policy name.
         self.name = name
@@ -205,7 +205,7 @@ class ListAlertStrategiesResponseBodyDataStrategy(DaraModel):
         self.clusters = clusters
         # The list of alert contacts and policy destinations.
         self.destinations = destinations
-        # The list of anomaly items that receive alerts.
+        # The list of exception items that receive alerts.
         self.items = items
 
     def validate(self):

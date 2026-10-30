@@ -9,7 +9,7 @@ class GetAifgResultRequest(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The task ID.
+        # The task identifier.
         # 
         # This parameter is required.
         self.task_id = task_id

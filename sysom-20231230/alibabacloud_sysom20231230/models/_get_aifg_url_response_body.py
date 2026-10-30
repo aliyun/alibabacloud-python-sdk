@@ -16,7 +16,7 @@ class GetAifgUrlResponseBody(DaraModel):
         self.code = code
         # The response data.
         self.data = data
-        # The description of the status code.
+        # The status code description.
         self.message = message
 
     def validate(self):
@@ -58,7 +58,7 @@ class GetAifgUrlResponseBodyData(DaraModel):
         self,
         url: str = None,
     ):
-        # The URL of the diagnostic details.
+        # The URL for diagnostic details.
         self.url = url
 
     def validate(self):

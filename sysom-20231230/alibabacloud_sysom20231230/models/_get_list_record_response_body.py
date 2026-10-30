@@ -18,7 +18,7 @@ class GetListRecordResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The returned data.
+        # The response data.
         self.data = data
         # The status code description.
         self.message = message
@@ -92,7 +92,7 @@ class GetListRecordResponseBodyData(DaraModel):
         self.analysis_id = analysis_id
         # The analysis time.
         self.analysis_time = analysis_time
-        # The analysis parameters of the AI job analysis.
+        # The parameters for the AI job analysis.
         self.arguments = arguments
         # The analysis failure log.
         self.failed_log = failed_log

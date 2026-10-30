@@ -11,7 +11,7 @@ class UpdateClusterAgentConfigRequest(DaraModel):
         cluster_id: str = None,
         config_id: str = None,
     ):
-        # The ID of the component whose configuration is to be updated.
+        # The ID of the component whose configuration you want to update.
         # 
         # This parameter is required.
         self.agent_id = agent_id
@@ -19,7 +19,7 @@ class UpdateClusterAgentConfigRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The ID of the component configuration to install on the cluster.
+        # The ID of the component configuration to be installed on the cluster.
         # 
         # This parameter is required.
         self.config_id = config_id

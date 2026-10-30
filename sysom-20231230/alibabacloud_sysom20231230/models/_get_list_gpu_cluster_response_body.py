@@ -15,15 +15,15 @@ class GetListGpuClusterResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The response code. Valid values: Success and Sysom.ACKClusterNotFound.
+        # The code. Valid values: Success and Sysom.ACKClusterNotFound.
         self.code = code
-        # The list of clusters returned.
+        # The list of clusters.
         self.data = data
-        # The error message returned when the code is not Success.
+        # The error message. If the code is not success, the message is the error information.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The number of clusters returned.
+        # The total number of returned entries.
         self.total = total
 
     def validate(self):

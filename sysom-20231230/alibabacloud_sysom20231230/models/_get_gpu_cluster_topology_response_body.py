@@ -15,7 +15,7 @@ class GetGpuClusterTopologyResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The result code. Valid values: Success, Sysom.ServerError, Sysom.InvalidParameter.
+        # The response code. Valid values: Success, Sysom.ServerError, and Sysom.InvalidParameter.
         self.code = code
         # The data returned by the operation.
         self.data = data
@@ -72,7 +72,7 @@ class GetGpuClusterTopologyResponseBodyData(DaraModel):
     ):
         # The cluster topology data structure.
         self.data = data
-        # The number of GPU cards returned.
+        # The total number of GPUs returned.
         self.total = total
 
     def validate(self):

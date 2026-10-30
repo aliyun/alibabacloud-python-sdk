@@ -14,13 +14,13 @@ class UpdateClusterAgentConfigResponseBody(DaraModel):
         request_id: str = None,
     ):
         # The status code.
-        # - If `code` is `Success`, the authorization is successful.
+        # - If the value is `Success`, the authorization is successful.
         # - Other status codes indicate that the authorization failed. If the authorization fails, check the `message` field for the detailed fault message.
         self.code = code
         # The returned data.
         self.data = data
         # The error message.
-        # - If `code` is `Success`, this field is empty.
+        # - If the value of `code` is `Success`, this field is empty.
         # - Otherwise, this field contains the error message of the request.
         self.message = message
         # Id of the request
@@ -73,7 +73,7 @@ class UpdateClusterAgentConfigResponseBodyData(DaraModel):
     ):
         # The task ID.
         # 
-        # You can use this task ID to call the GetAgentTask operation to view the execution status of the task.
+        # You can call the GetAgentTask operation by using this task ID to check the execution status of the task.
         self.task_id = task_id
 
     def validate(self):
