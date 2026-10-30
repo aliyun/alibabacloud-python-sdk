@@ -17,25 +17,12 @@ class AgenticTableIndex(DaraModel):
         real_column_names: List[str] = None,
         unique: bool = None,
     ):
-        # The list of fields included in the index. Fields with a specified prefix length include a length expression, such as name(10).
         self.column_names = column_names
-        # The index description.
         self.description = description
-        # The index name.
         self.index_name = index_name
-        # The index type. Valid values:
-        # 
-        # - **Primary**: primary key index
-        # - **Unique**: unique index
-        # - **Normal**: normal index
-        # - **FullText**: full-text index
-        # - **Spatial**: spatial index
         self.index_type = index_type
-        # Specifies whether the index is a primary key index.
         self.primary = primary
-        # The list of actual field names referenced by the index, with prefix length expressions removed from ColumnNames.
         self.real_column_names = real_column_names
-        # Specifies whether the index is a unique index.
         self.unique = unique
 
     def validate(self):

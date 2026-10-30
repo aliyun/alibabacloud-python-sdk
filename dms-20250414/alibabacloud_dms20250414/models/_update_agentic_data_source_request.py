@@ -28,17 +28,25 @@ class UpdateAgenticDataSourceRequest(DaraModel):
         sync_alias: int = None,
         use_ssl: int = None,
     ):
-        # The new display name of the data source. If this parameter is not specified, the value is not updated.
+        # The new display name of the data source. If you do not specify this parameter, the alias is not updated.
         self.alias = alias
-        # The new logon username. If this parameter is not specified, the value is not updated.
+        # The new logon username. If you do not specify this parameter, the authentication account is not updated.
         self.auth_account = auth_account
-        # The new logon password. If this parameter is not specified, the value is not updated. This is sensitive information. Do not record or disclose it.
+        # The new logon password. If you do not specify this parameter, the authentication password is not updated. This is sensitive information. Do not record or disclose it.
         self.auth_password = auth_password
-        # Optional. The authentication type. Valid values: -1: No authentication required. 0: Username and password. 1: Password only. 2: Password-free. If this parameter is not specified, the value is not updated.
+        # Optional. Valid values:
+        # - -1: No authentication required.
+        # - 0: Username and password.
+        # - 1: Password only.
+        # - 2: Password-free.
+        # If you do not specify this parameter, the authentication type is not updated.
         self.auth_type = auth_type
-        # The new metadata catalog name. If this parameter is not specified, the value is not updated. The name can be up to 128 characters in length. It must start with a Chinese character, a letter, or an underscore, and can contain digits and hyphens. It cannot contain only digits.
+        # The new name of the metadata catalog. If you do not specify this parameter, the catalog name is not updated. The name can be up to 128 characters in length. It must start with a Chinese character, a letter, or an underscore, and can contain digits and hyphens. It cannot contain only digits.
         self.catalog_name = catalog_name
-        # The registration method. Valid values: INSTANCE_ID: Select an existing cloud instance. HOST_PORT: Register by endpoint and port. If this parameter is not specified, the value is not updated.
+        # The registration method. Valid values:
+        # - INSTANCE_ID: Select an existing cloud instance.
+        # - HOST_PORT: Register by endpoint and port.
+        # If you do not specify this parameter, the creation mode is not updated.
         self.create_mode = create_mode
         # The UUID of the data source to be updated.
         # 
@@ -46,29 +54,36 @@ class UpdateAgenticDataSourceRequest(DaraModel):
         self.data_source_uuid = data_source_uuid
         # Modifying the data source type is not supported. Do not specify this parameter.
         self.db_type = db_type
-        # The environment type. Valid values: product, pre, dev, test, sit, uat, pet, and stag. If this parameter is not specified, the value is not updated.
+        # The environment type. Valid values: product, pre, dev, test, sit, uat, pet, and stag. If you do not specify this parameter, the environment type is not updated.
         self.env_type = env_type
-        # Optional. The new database domain name or IP address. Do not include the protocol, path, or port. If this parameter is not specified, the value is not updated.
+        # Optional. The new domain name or IP address of the database. Do not include the protocol, path, or port. If you do not specify this parameter, the host is not updated.
         self.host = host
-        # The new cloud resource instance ID. If this parameter is not specified, the value is not updated.
+        # The new ID of the cloud resource instance. If you do not specify this parameter, the instance resource ID is not updated.
         self.instance_resource_id = instance_resource_id
-        # The new KMS managed credential name. If this parameter is not specified, the value is not updated.
+        # The new name of the KMS-managed credential. If you do not specify this parameter, the KMS secret is not updated.
         self.kms_secret = kms_secret
-        # Optional. The new data access security policy ID. If this parameter is not specified, the value is not updated.
+        # Optional. The new ID of the data access security policy. If you do not specify this parameter, the policy ID is not updated.
         self.policy_id = policy_id
-        # Optional. The new database service port. If this parameter is not specified, the value is not updated.
+        # Optional. The new service port of the database. If you do not specify this parameter, the service port is not updated.
         self.port = port
-        # The new Alibaba Cloud RAM role ARN. If this parameter is not specified, the value is not updated.
+        # The new ARN of the Alibaba Cloud RAM role. If you do not specify this parameter, the role ARN is not updated.
         self.role_arn = role_arn
-        # Optional. For ADB_POSTGRESQL, DRDS, POSTGRESQL, and POLARDB_POSTGRESQL, specify the database name. For ORACLE, specify the SID or service name, and prefix the service name with a forward slash (/). For POLARDB_ORACLE, specify the SID. For MAXCOMPUTE, specify the project name. For other types, leave this parameter empty. If this parameter is not specified, the value is not updated.
+        # Optional. For ADB_POSTGRESQL, DRDS, POSTGRESQL, and POLARDB_POSTGRESQL, specify the database name. For ORACLE, specify the SID or service name, and prefix the service name with a forward slash (/). For POLARDB_ORACLE, specify the SID. For MAXCOMPUTE, specify the project name. For other types, leave this parameter empty. If you do not specify this parameter, the schema is not updated.
         self.schema = schema
         # The name of the Snowflake role. This parameter takes effect only when DbType is set to SNOWFLAKE.
         self.snowflake_role = snowflake_role
         # The name of the Snowflake compute warehouse. This parameter takes effect only when DbType is set to SNOWFLAKE.
         self.snowflake_warehouse = snowflake_warehouse
-        # Specifies whether to use the cloud instance name as the data source name. Valid values: 1: Yes. 0: No. If this parameter is not specified, the value is not updated.
+        # Specifies whether to use the cloud instance name as the data source name. Valid values:
+        # - 1: Yes.
+        # - 0: No.
+        # If you do not specify this parameter, the sync alias setting is not updated.
         self.sync_alias = sync_alias
-        # The new SSL setting. Valid values: 1: Enable. 0: Disable. -1: Use the default setting. If this parameter is not specified, the value is not updated. SSL is supported only for ADB_MYSQL, CLICKHOUSE, MARIADB, MYSQL, OCEANBASEX, POLARDB, SELECTDB, and STARROCKS.
+        # The new SSL setting. Valid values:
+        # - 1: Enable.
+        # - 0: Disable.
+        # - -1: Use default settings.
+        # If you do not specify this parameter, the SSL setting is not updated. SSL is supported only for ADB_MYSQL, CLICKHOUSE, MARIADB, MYSQL, OCEANBASEX, POLARDB, SELECTDB, and STARROCKS.
         self.use_ssl = use_ssl
 
     def validate(self):

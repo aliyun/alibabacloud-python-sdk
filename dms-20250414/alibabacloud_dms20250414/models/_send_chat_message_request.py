@@ -26,50 +26,50 @@ class SendChatMessageRequest(DaraModel):
         user_oss_bucket: str = None,
         workspace_id: str = None,
     ):
-        # **[Optimized]** This field is now automatically obtained by the backend. You do not need to specify this field.
+        # **[Optimized]** This field is now automatically retrieved in the background. You do not need to specify it.
         self.agent_id = agent_id
-        # **[Optimized]** This field is now automatically obtained by the backend. You do not need to specify this field when calling the API.
+        # **[Optimized]** This field is now automatically retrieved in the background. You do not need to specify it when calling the API.
         self.dmsunit = dmsunit
-        # The data source information. This parameter can be left empty. This parameter supports only one data source. Use the DataSources parameter instead.
+        # The data source information. This parameter can be left empty. You can specify only one data source for this parameter. Use the DataSources parameter instead.
         self.data_source = data_source
         # The detailed data source information. This parameter can be left empty.
         self.data_sources = data_sources
-        # The message content to send to the Agent.
+        # The content of the message sent to the agent.
         # 
         # This parameter is required.
         self.message = message
-        # The message type. Default value: `[primary]`.  
+        # The message type. Default value: `primary`.  
         # 
-        # - For regular interactions with the Agent, set the message type to `[primary]`.
+        # - In normal interactions with the agent, the message type is `primary`.
         # 
-        # - When the message is a response to the Agent\\"s Human-in-Loop question, set the type to `[additional]`.
+        # - When the message is a response to a human-in-the-loop question from the agent, the type must be `additional`.
         # 
-        # - When the message is intended to trigger report generation, set the type to `[report]`.
+        # - When the message is intended to trigger report generation, the type must be `report`.
         # 
-        # - When the message is intended to cancel the current session, set the type to `[cancel]`.
+        # - When the message is intended to cancel the current session, the type must be `cancel`.
         self.message_type = message_type
-        # The parent session ID.
+        # The ID of the parent session.
         self.parent_session_id = parent_session_id
-        # This field is required when the message type is `additional`. Specify the specific question that the Agent asks the user through Human-in-Loop.
+        # Required when the message type is `additional`. Specifies the specific question asked by the agent to the user through human-in-the-loop.
         self.question = question
-        # The quoted content. This is typically used during interactions with the Agent.
+        # The quoted content. This is typically used when interacting with the agent.
         self.quoted_message = quoted_message
         # **Important**
         # 
-        # When this message is a reply to an Agent message (for example, the Agent asks a clarifying question through ASK_HUMAN), set reply_to to the exact Checkpoint sequence number carried in that Agent message. If this message is not a targeted reply, such as requesting the Agent to perform further in-depth analysis after analysis is complete, you can leave reply_to empty or set it to "0".  
+        # When this message is a reply to an agent message, such as an agent asking for clarification through ASK_HUMAN, `reply_to` must exactly match the checkpoint sequence number carried by that agent message. If this message is not a targeted reply, such as requesting the agent to perform further in-depth analysis after the initial analysis is complete, you can leave `reply_to` empty or set it to "0".  
         # 
-        # This field affects how the Agent decides to process the message. Incorrect values may lead to analysis results that do not meet expectations.
+        # This field affects how the agent decides to process the message. Passing an incorrect value may lead to suboptimal analysis results.
         self.reply_to = reply_to
-        # The special configuration for the current session. For the same session, only the configuration included in the first SendMessage call takes effect.
+        # The special configurations for the current session. For the same session, only the configurations specified in the first SendMessage call take effect.
         self.session_config = session_config
-        # The session ID. This is an optional field used for multi-turn sessions.
-        # - You can start a session without specifying this field. The response includes the SessionID of the current session.
+        # The session ID. This optional field is used for multi-turn sessions.
+        # - You can start a session without specifying this field. The response will include the session ID for the current session.
         # - You can also manually create a session ID by calling the CreateDataAgentSession operation and include the ID when initiating a session.
-        # - For multi-turn conversations (such as follow-up questions or confirming execution plans), specify the SessionID returned by the previous SendChatMessage call.
+        # - If you need multi-turn conversations, such as follow-up questions or confirming execution plans, specify the session ID returned by the previous SendChatMessage operation in this operation.
         self.session_id = session_id
         # The configuration items that affect only the current task.
         self.task_config = task_config
-        # The OSS bucket of the user. If this parameter is not specified, the analysis data is securely stored in built-in storage.
+        # The Object Storage Service (OSS) bucket of the user. If this parameter is left empty, the analysis process is securely stored in the built-in storage.
         self.user_oss_bucket = user_oss_bucket
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -200,7 +200,7 @@ class SendChatMessageRequestTaskConfig(DaraModel):
         self,
         report_config: main_models.SendChatMessageRequestTaskConfigReportConfig = None,
     ):
-        # The configuration of the report rule. Only when MesageType is set to REPORT, a report task is executed based on this configuration.
+        # The configuration of the report rules. A report task is executed based on this configuration only when MessageType is set to REPORT.
         self.report_config = report_config
 
     def validate(self):
@@ -232,11 +232,11 @@ class SendChatMessageRequestTaskConfigReportConfig(DaraModel):
         report_theme: str = None,
         report_type: str = None,
     ):
-        # The prompt that the report must follow.
+        # The prompt that must be followed for the current report.
         self.report_prompt = report_prompt
         # The report theme. Valid values: default, journal, legacy, and neobrutalism.
         self.report_theme = report_theme
-        # The service type. Valid values: TextReport and WebReport, which indicate that the task generates a text report or a web report. Currently, only WebReport is supported.
+        # The service type. Valid values: TextReport and WebReport, which indicate that the current task generates a text report or a web report, respectively. Only WebReport is supported.
         self.report_type = report_type
 
     def validate(self):
@@ -290,7 +290,7 @@ class SendChatMessageRequestSessionConfig(DaraModel):
         skip_web_report_confirm: bool = None,
         user_specified_skill_list: List[str] = None,
     ):
-        # The custom agent ID. A custom agent is an entity used to customize the analysis process. You can create one in the DataAgent console or by calling the CreateCustomAgent operation. The custom agent ID is a string that starts with `ca-`.
+        # The ID of the custom agent. A custom agent is an entity used to customize the analysis process. You can create a custom agent in the DataAgent console or by calling the CreateCustomAgent operation. The ID of a custom agent must start with `ca-`.
         self.custom_agent_id = custom_agent_id
         # The stage of the custom agent.
         self.custom_agent_stage = custom_agent_stage
@@ -298,20 +298,20 @@ class SendChatMessageRequestSessionConfig(DaraModel):
         self.enable_search = enable_search
         # The list of knowledge base IDs.
         self.kb_uuid_list = kb_uuid_list
-        # Currently only Chinese and English are supported. The default value is Chinese. Only uppercase values are supported.
+        # The language. Only Chinese and English are supported. The default value is Chinese. Only uppercase letters are supported.
         self.language = language
         # The MCP server IDs in the session configuration.
         self.mcp_server_ids = mcp_server_ids
         # The mode. Valid values:
-        #  - **ASK_DATA**: data query mode.
-        #  - **ANALYSIS**: analysis mode.
-        #  - **INSIGHT**: insight mode.
+        #  - **ASK_DATA**: the data query mode.
+        #  - **ANALYSIS**: the analysis mode.
+        #  - **INSIGHT**: the insight mode.
         self.mode = mode
-        # The session level data permission settings. If this parameter is set multiple times across multiple turns within the same session, the last setting takes effect.
+        # The data permission settings at the session level. If you configure this parameter multiple times in multi-turn conversations within the same session, the last configuration prevails.
         self.permission_config = permission_config
-        # Specifies whether to enable the plan. Valid values: disable, enable, force. Default value: enable.
+        # Specifies whether to enable the plan feature. Valid values: `disable`, `enable`, and `force`. Default value: `enable`.
         self.plan_mode = plan_mode
-        # The text of up to 64 characters that is used as a watermark in the generated PDF report.
+        # The watermark text. You can enter up to 64 characters. The text is used to add a watermark to the generated PDF report.
         self.report_water_mark = report_water_mark
         # Specifies whether to disable user inquiries during the process.
         self.skip_ask_human = skip_ask_human
@@ -435,11 +435,11 @@ class SendChatMessageRequestSessionConfigPermissionConfig(DaraModel):
         self,
         default_action: str = None,
     ):
-        # The default action for table-level permissions. This parameter controls whether tables that are not configured in DataSources.[item].Permission can be queried. Valid values: allow, deny.
+        # The default behavior for table-level permissions. This parameter controls whether tables that are not configured in DataSources.[item].Permission can be queried. Valid values: `allow` and `deny`.
         # 
-        # - allow (default): works in blacklist mode. By default, all tables can be queried, and the actual permissions are subject to the permissions configured on the Data Management side. Row-level and column-level permissions are enforced only when you configure **row-level and column-level** permissions in DataSources.[item].Permission.
+        # - `allow`: the default value. This value indicates that the blacklist mode is used. By default, all tables can be queried, and the actual permissions are subject to the permissions configured in DMS. Only when you configure **row-level and column-level** permissions in DataSources.[item].Permission, the row-level and column-level permissions are used for access control.
         # 
-        # - deny (must be manually specified): works in whitelist mode. By default, no tables can be queried. A table can be queried only when you configure permissions for it in DataSources.[item].Permission. You can grant full access to a table by not configuring any row-level or column-level restrictions.
+        # - `deny`: This value indicates that the whitelist mode is used. You must manually specify this value. By default, no tables can be queried. A table can be queried only when you configure permissions for the table in DataSources.[item].Permission. You can grant full access to a table by not configuring any row-level or column-level restrictions.
         self.default_action = default_action
 
     def validate(self):
@@ -477,31 +477,34 @@ class SendChatMessageRequestDataSources(DaraModel):
         permission: main_models.SendChatMessageRequestDataSourcesPermission = None,
         region_id: str = None,
         tables: List[str] = None,
+        uri: str = None,
     ):
-        # Deprecated. You do not need to specify this field.
+        # **[Deprecated]** You do not need to specify this field.
         self.data_source_id = data_source_id
-        # The data source type. Valid values: remote_data_center, database. These values indicate that the analysis is performed on a file or a database.
+        # The data source type. Valid values: remote_data_center and database, which indicate that the analysis is based on a file or a database, respectively.
         self.data_source_type = data_source_type
-        # Deprecated. You do not need to specify this field.
+        # **[Deprecated]** You do not need to specify this field.
         self.database = database
-        # The database name.
+        # The name of the database.
         self.db_name = db_name
-        # The ID of the database in Data Management.
+        # The ID of the database in Data Management (DMS).
         self.dms_database_id = dms_database_id
-        # The ID of the instance in Data Management.
+        # The ID of the instance in DMS.
         self.dms_instance_id = dms_instance_id
         # The database engine type.
         self.engine = engine
         # The file ID.
         self.file_id = file_id
-        # Deprecated. You do not need to specify this field.
+        # **[Deprecated]** You do not need to specify this field.
         self.location = location
-        # The permission constraints for querying the current data source. The permission constraint feature is available through a canary release. This field does not take effect for users who are not included in the canary release.
+        # The permission constraints for querying the current data source. The permission constraint feature is in canary release. This field does not take effect for users outside the canary release scope.
         self.permission = permission
         # The region ID.
         self.region_id = region_id
-        # The list of table names to analyze.
+        # The list of names of the tables to be analyzed.
         self.tables = tables
+        # The data source resource identifier.
+        self.uri = uri
 
     def validate(self):
         if self.permission:
@@ -548,6 +551,9 @@ class SendChatMessageRequestDataSources(DaraModel):
         if self.tables is not None:
             result['Tables'] = self.tables
 
+        if self.uri is not None:
+            result['Uri'] = self.uri
+
         return result
 
     def from_map(self, m: dict = None):
@@ -589,6 +595,9 @@ class SendChatMessageRequestDataSources(DaraModel):
         if m.get('Tables') is not None:
             self.tables = m.get('Tables')
 
+        if m.get('Uri') is not None:
+            self.uri = m.get('Uri')
+
         return self
 
 class SendChatMessageRequestDataSourcesPermission(DaraModel):
@@ -596,7 +605,7 @@ class SendChatMessageRequestDataSourcesPermission(DaraModel):
         self,
         tables: List[main_models.SendChatMessageRequestDataSourcesPermissionTables] = None,
     ):
-        # The table-level permission constraints for querying the current data source. Each item in the list represents the permission constraints for a table.
+        # The table-level permission constraints for querying the current data source. Each item in the list represents the permission constraints for a specific table.
         self.tables = tables
 
     def validate(self):
@@ -635,17 +644,17 @@ class SendChatMessageRequestDataSourcesPermissionTables(DaraModel):
         required_row_filter: str = None,
         table_name: str = None,
     ):
-        # The list of columns that are allowed for querying in the current table. If this field is left empty, all columns can be queried. If specified, SQL statements that exceed the allowed scope are blocked. For example, syntax such as SELECT * is blocked. To ensure DataAgent analysis effectiveness, avoid specifying columns beyond the allowed scope in the DataAgent prompts, knowledge, or instructions modules. Otherwise, unauthorized SQL statements may be generated and blocked, which reduces DataAgent analysis speed and effectiveness.
+        # The list of columns that are allowed to be queried in the current table. If this parameter is left empty, all columns can be queried. If this parameter is specified, SQL statements that query columns beyond the allowed scope, such as SELECT *, are prohibited. To ensure the analysis performance of DataAgent, make sure that the prompts, knowledge, and instructions of DataAgent do not include columns beyond the allowed scope. Otherwise, unauthorized SQL statements may be generated and blocked, which degrades the analysis speed and performance of DataAgent.
         self.allowed_columns = allowed_columns
-        # The list of columns that are not allowed for querying in the current table. If this field is left empty, all columns **can be queried**. If specified, SQL statements that exceed the allowed scope are blocked. For example, syntax such as SELECT * is blocked.  
+        # The list of columns that are not allowed to be queried in the current table. If you leave this field empty, all columns **can be queried**. If you specify this field, SQL statements that query columns beyond the allowed scope, such as `SELECT *`, will be blocked.  
         # 
-        # If both the disallowed list and the allowed list are configured, the disallowed list takes higher priority. For example, if Table 1 has columns A, B, C, and D, and columns A and B are configured as not queryable while columns B and C are configured as queryable, the final result is that only column C is queryable.
+        # If both the disallowed list and the allowed list are configured, the disallowed list takes precedence. For example, if Table 1 has columns A, B, C, and D, and you configure columns A and B as not allowed, while configuring columns B and C as allowed, only column C is ultimately allowed to be queried.
         # 
-        # To ensure DataAgent analysis effectiveness, avoid specifying columns beyond the allowed scope in the DataAgent prompts, knowledge, or instructions modules. Otherwise, unauthorized SQL statements may be generated and blocked, which reduces DataAgent analysis speed and effectiveness.
+        # To ensure the analysis performance of DataAgent, make sure that the prompts, knowledge, and instructions modules of DataAgent do not include columns beyond the allowed scope. Otherwise, unauthorized SQL statements may be generated and blocked, which degrades the analysis speed and performance of DataAgent.
         self.disallowed_columns = disallowed_columns
-        # The required row filter condition for the current table. If this field is left empty, it is ignored. If specified, all SQL statements involving this table are validated to check whether they carry the filter field and whether the WHERE condition meets the constraints. SQL statements that do not meet the constraints are rejected. Ensure the validation condition format is correct.
+        # The row filter condition that must be included for the current table. If you leave this field empty, it is ignored. If you specify this field, the system checks whether all SQL statements involving this table include the filter column and whether the WHERE clause meets the constraints. SQL statements that do not meet the constraints will be rejected. Pay attention to the format of the validation condition.
         self.required_row_filter = required_row_filter
-        # The table name to which the permission constraint rule applies.
+        # The name of the table to which the permission constraint rules apply.
         self.table_name = table_name
 
     def validate(self):
@@ -701,31 +710,34 @@ class SendChatMessageRequestDataSource(DaraModel):
         permission: main_models.SendChatMessageRequestDataSourcePermission = None,
         region_id: str = None,
         tables: List[str] = None,
+        uri: str = None,
     ):
-        # Deprecated. You do not need to specify this field.
+        # **[Deprecated]** You do not need to specify this field.
         self.data_source_id = data_source_id
-        # The data source type. Valid values: `[remote_data_center, database]`, indicating that the analysis is performed on a file or a database.
+        # The data source type. Valid values: `remote_data_center` and `database`. `remote_data_center` indicates a file, and `database` indicates a database.
         self.data_source_type = data_source_type
-        # Deprecated. You do not need to specify this field.
+        # **[Deprecated]** You do not need to specify this field.
         self.database = database
-        # The database name.
+        # The name of the database.
         self.db_name = db_name
-        # The ID of the database in Data Management.
+        # The ID of the database in Data Management (DMS).
         self.dms_database_id = dms_database_id
-        # The ID of the instance in Data Management.
+        # The ID of the instance in DMS.
         self.dms_instance_id = dms_instance_id
         # The database engine type.
         self.engine = engine
-        # The file ID.
+        # The ID of the file.
         self.file_id = file_id
-        # Deprecated. You do not need to specify this field.
+        # **[Deprecated]** You do not need to specify this field.
         self.location = location
-        # The permission constraints for querying the current data source. The permission constraint feature is available through a canary release. This field does not take effect for users who are not included in the canary release.
+        # The permission constraints for querying the current data source. The permission constraint feature is in canary release. This field does not take effect for users outside the canary release scope.
         self.permission = permission
         # The region ID.
         self.region_id = region_id
-        # The list of table names to analyze.
+        # The list of names of the tables to be analyzed.
         self.tables = tables
+        # The data source resource identifier.
+        self.uri = uri
 
     def validate(self):
         if self.permission:
@@ -772,6 +784,9 @@ class SendChatMessageRequestDataSource(DaraModel):
         if self.tables is not None:
             result['Tables'] = self.tables
 
+        if self.uri is not None:
+            result['Uri'] = self.uri
+
         return result
 
     def from_map(self, m: dict = None):
@@ -813,6 +828,9 @@ class SendChatMessageRequestDataSource(DaraModel):
         if m.get('Tables') is not None:
             self.tables = m.get('Tables')
 
+        if m.get('Uri') is not None:
+            self.uri = m.get('Uri')
+
         return self
 
 class SendChatMessageRequestDataSourcePermission(DaraModel):
@@ -820,7 +838,7 @@ class SendChatMessageRequestDataSourcePermission(DaraModel):
         self,
         tables: List[main_models.SendChatMessageRequestDataSourcePermissionTables] = None,
     ):
-        # The table-level permission constraints for querying the current data source. Each item in the list represents the permission constraints for a table.
+        # The table-level permission constraints for querying the current data source. Each item in the list represents the permission constraints for a specific table.
         self.tables = tables
 
     def validate(self):
@@ -859,17 +877,17 @@ class SendChatMessageRequestDataSourcePermissionTables(DaraModel):
         required_row_filter: str = None,
         table_name: str = None,
     ):
-        # The list of columns that are allowed for querying in the current table. If this field is left empty, all columns can be queried. If specified, SQL statements that exceed the allowed scope are blocked. For example, syntax such as SELECT * is blocked. To ensure DataAgent analysis effectiveness, avoid specifying columns beyond the allowed scope in the DataAgent prompts, knowledge, or instructions modules. Otherwise, unauthorized SQL statements may be generated and blocked, which reduces DataAgent analysis speed and effectiveness.
+        # The list of columns that are allowed to be queried in the current table. If you leave this field empty, all columns can be queried. If you specify this field, SQL statements that query columns beyond the allowed scope, such as `SELECT *`, will be blocked. To ensure the analysis performance of DataAgent, make sure that the prompts, knowledge, and instructions modules of DataAgent do not include columns beyond the allowed scope. Otherwise, unauthorized SQL statements may be generated and blocked, which degrades the analysis speed and performance of DataAgent.
         self.allowed_columns = allowed_columns
-        # The list of columns that are not allowed for querying in the current table. If this field is left empty, all columns **can be queried**. If specified, SQL statements that exceed the allowed scope are blocked. For example, syntax such as SELECT * is blocked.  
+        # The list of columns that are not allowed to be queried in the current table. If you leave this field empty, all columns **can be queried**. If you specify this field, SQL statements that query columns beyond the allowed scope, such as `SELECT *`, will be blocked.  
         # 
-        # If both the disallowed list and the allowed list are configured, the disallowed list takes higher priority. For example, if Table 1 has columns A, B, C, and D, and columns A and B are configured as not queryable while columns B and C are configured as queryable, the final result is that only column C is queryable.
+        # If both the disallowed list and the allowed list are configured, the disallowed list takes precedence. For example, if Table 1 has columns A, B, C, and D, and you configure columns A and B as not allowed, while configuring columns B and C as allowed, only column C is ultimately allowed to be queried.
         # 
-        # To ensure DataAgent analysis effectiveness, avoid specifying columns beyond the allowed scope in the DataAgent prompts, knowledge, or instructions modules. Otherwise, unauthorized SQL statements may be generated and blocked, which reduces DataAgent analysis speed and effectiveness.
+        # To ensure the analysis performance of DataAgent, make sure that the prompts, knowledge, and instructions modules of DataAgent do not include columns beyond the allowed scope. Otherwise, unauthorized SQL statements may be generated and blocked, which degrades the analysis speed and performance of DataAgent.
         self.disallowed_columns = disallowed_columns
-        # The required row filter condition for the current table. If this field is left empty, it is ignored. If specified, all SQL statements involving this table are validated to check whether they carry the filter field and whether the WHERE condition meets the constraints. SQL statements that do not meet the constraints are rejected. Ensure the validation condition format is correct.
+        # The row filter condition that must be included for the current table. If you leave this field empty, it is ignored. If you specify this field, the system checks whether all SQL statements involving this table include the filter column and whether the WHERE clause meets the constraints. SQL statements that do not meet the constraints will be rejected. Pay attention to the format of the validation condition.
         self.required_row_filter = required_row_filter
-        # The table name to which the permission constraint rule applies.
+        # The name of the table to which the permission constraint rules apply.
         self.table_name = table_name
 
     def validate(self):

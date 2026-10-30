@@ -92,24 +92,21 @@ class CreateDataAgentSkillMetaResponseBodyData(DaraModel):
         skill_status: str = None,
         workspace_id: str = None,
     ):
-        # The Alibaba Cloud account ID.
+        # The ID of the parent Alibaba Cloud account.
         self.aliyun_parent_uid = aliyun_parent_uid
-        # The Alibaba Cloud user ID.
+        # The Alibaba Cloud account ID.
         self.aliyun_uid = aliyun_uid
         # The name of the creator.
         self.creator_user_name = creator_user_name
         # The skill description.
         self.description = description
-        # Indicates whether the skill is available. Valid values:
-        # - true: The skill is available.
-        # - false: The skill is not available.
+        # Indicates whether the skill is available. Valid values: true and false.
         self.enabled = enabled
         # The creation time.
         self.gmt_created = gmt_created
-        # The update time.
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # The skill parsing error message.
-        # - This message is returned when the skill status is INVALID.
+        # The error message for skill parsing. This message is returned when the skill status is INVALID.
         self.parse_error = parse_error
         # The region.
         self.region = region

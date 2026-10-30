@@ -1,3 +1,6 @@
+2026-10-30 Version: 4.3.0
+- Generated python 2025-04-14 for Dms.
+
 2026-10-21 Version: 4.2.0
 - Support API AddAgenticDataSource.
 - Support API CreateAgenticSqlExecuteCredential.

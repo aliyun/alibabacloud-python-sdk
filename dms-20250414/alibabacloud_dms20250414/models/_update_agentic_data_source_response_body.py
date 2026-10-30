@@ -20,7 +20,7 @@ class UpdateAgenticDataSourceResponseBody(DaraModel):
         self.error_code = error_code
         # The error message returned if the call fails. This parameter is empty if the call is successful.
         self.error_message = error_message
-        # The request ID, which is used to trace the call.
+        # The ID of the request.
         self.request_id = request_id
         # Indicates whether the call is successful.
         self.success = success
@@ -106,16 +106,16 @@ class UpdateAgenticDataSourceResponseBodyData(DaraModel):
         # The masked value of the password or token. The actual value is not returned.
         self.auth_password = auth_password
         # The authentication method. Valid values:
-        # - -1: No authentication required.
-        # - 0: Username and password.
-        # - 1: Password only.
-        # - 2: Password-free.
+        # - -1: no authentication required
+        # - 0: username and password
+        # - 1: password only
+        # - 2: password-free
         self.auth_type = auth_type
         # The name of the metadata catalog associated with the data source.
         self.catalog_name = catalog_name
         # The registration method of the data source. Valid values:
-        # - INSTANCE_ID: Select an existing cloud instance.
-        # - HOST_PORT: Register by endpoint and port.
+        # - INSTANCE_ID: select an existing cloud instance
+        # - HOST_PORT: register by endpoint and port
         self.create_mode = create_mode
         # The unique identifier of the data source.
         self.data_source_uuid = data_source_uuid
@@ -132,11 +132,11 @@ class UpdateAgenticDataSourceResponseBodyData(DaraModel):
         # The ID of the cloud resource instance. This parameter may be empty for data sources registered by endpoint.
         self.instance_resource_id = instance_resource_id
         # The source of the data source. Valid values:
-        # - RDS: ApsaraDB instance.
-        # - PUBLIC_OWN: Self-managed database on the Internet.
-        # - ECS_OWN: Self-managed database on an ECS instance.
-        # - GATEWAY: Connected through Database Gateway.
-        # - VPC_IDC: Connected through a VPC or IDC.
+        # - RDS: ApsaraDB instance
+        # - PUBLIC_OWN: self-managed database on the Internet
+        # - ECS_OWN: self-managed database on an ECS instance
+        # - GATEWAY: connected through Database Gateway
+        # - VPC_IDC: connected through a VPC or IDC
         self.instance_source = instance_source
         # The name of the KMS-managed credential. This parameter is empty if KMS is not used. This is sensitive information.
         self.kms_secret = kms_secret
@@ -148,23 +148,23 @@ class UpdateAgenticDataSourceResponseBodyData(DaraModel):
         self.region_id = region_id
         # The ID of the Alibaba Cloud account to which the resource belongs.
         self.resource_account_id = resource_account_id
-        # The ARN of the RAM role used to access the data source. This parameter is empty if role-based authorization is not used.
+        # The ARN of the RAM role used to access the data source. This parameter is empty if role authorization is not used.
         self.role_arn = role_arn
         # The name of the connection target. For ADB_POSTGRESQL, DRDS, POSTGRESQL, and POLARDB_POSTGRESQL, this indicates the database name. For ORACLE, this indicates the SID or service name. For POLARDB_ORACLE, this indicates the SID. For MAXCOMPUTE, this indicates the project. For other types, this parameter is usually empty.
         self.schema = schema
         # The status of the data source. Valid values:
-        # - 0: Normal.
-        # - -1: Deleted.
-        # - -2: Disabled.
+        # - 0: normal
+        # - -1: deleted
+        # - -2: disabled
         self.state = state
         # Specifies whether to use the cloud instance name as the data source name. Valid values:
-        # - 1: Yes.
-        # - 0: No.
+        # - 1: yes
+        # - 0: no
         self.sync_alias = sync_alias
         # The SSL settings. Valid values:
-        # - 1: Enabled.
-        # - 0: Disabled.
-        # - -1: Use default settings.
+        # - 1: enabled
+        # - 0: disabled
+        # - -1: default settings
         self.use_ssl = use_ssl
 
     def validate(self):

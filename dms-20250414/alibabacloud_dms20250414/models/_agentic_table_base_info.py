@@ -17,28 +17,13 @@ class AgenticTableBaseInfo(DaraModel):
         qualified_name: str = None,
         table_type: str = None,
     ):
-        # The type of the catalog to which the table belongs. Valid values:
-        # - **JDBC**: relational database catalog
-        # - **DataLake**: data lake catalog
-        # - **Dataset**: knowledge base catalog
         self.catalog_type = catalog_type
-        # The fully qualified name of the database to which the table belongs.
         self.database_qualified_name = database_qualified_name
-        # The UUID of the database to which the table belongs.
         self.database_uuid = database_uuid
-        # The description of the table.
         self.description = description
-        # The engine metadata of the table.
         self.engine_meta = engine_meta
-        # The table name.
         self.name = name
-        # The fully qualified name of the table. You can use this name as the TableQualifiedName parameter for GetAgenticTableColumn and GetAgenticTableIndex. For SQL Server, the format is schema name.table name.
         self.qualified_name = qualified_name
-        # The table type. Valid values:
-        # - **NORMAL**: regular table
-        # - **VIEW**: view
-        # - **FOREIGN**: foreign table
-        # - **SYNONYM**: synonym, supported only for Oracle data sources
         self.table_type = table_type
 
     def validate(self):

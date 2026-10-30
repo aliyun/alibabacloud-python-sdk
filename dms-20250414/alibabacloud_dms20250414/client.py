@@ -1577,6 +1577,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.skill_id):
+            query['SkillId'] = request.skill_id
         if not DaraCore.is_null(request.skill_name):
             query['SkillName'] = request.skill_name
         if not DaraCore.is_null(request.upload_location):
@@ -1611,6 +1613,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.skill_id):
+            query['SkillId'] = request.skill_id
         if not DaraCore.is_null(request.skill_name):
             query['SkillName'] = request.skill_name
         if not DaraCore.is_null(request.upload_location):
@@ -6449,6 +6453,88 @@ class Client(OpenApiClient):
     ) -> main_models.ListAgenticGlobalSqlExecutionHistoriesResponse:
         runtime = RuntimeOptions()
         return await self.list_agentic_global_sql_execution_histories_with_options_async(request, runtime)
+
+    def list_agentic_security_policies_with_options(
+        self,
+        request: main_models.ListAgenticSecurityPoliciesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgenticSecurityPoliciesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.include_archived):
+            query['IncludeArchived'] = request.include_archived
+        if not DaraCore.is_null(request.page):
+            query['Page'] = request.page
+        if not DaraCore.is_null(request.policy_status):
+            query['PolicyStatus'] = request.policy_status
+        if not DaraCore.is_null(request.size):
+            query['Size'] = request.size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAgenticSecurityPolicies',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAgenticSecurityPoliciesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_agentic_security_policies_with_options_async(
+        self,
+        request: main_models.ListAgenticSecurityPoliciesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgenticSecurityPoliciesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.include_archived):
+            query['IncludeArchived'] = request.include_archived
+        if not DaraCore.is_null(request.page):
+            query['Page'] = request.page
+        if not DaraCore.is_null(request.policy_status):
+            query['PolicyStatus'] = request.policy_status
+        if not DaraCore.is_null(request.size):
+            query['Size'] = request.size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAgenticSecurityPolicies',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAgenticSecurityPoliciesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_agentic_security_policies(
+        self,
+        request: main_models.ListAgenticSecurityPoliciesRequest,
+    ) -> main_models.ListAgenticSecurityPoliciesResponse:
+        runtime = RuntimeOptions()
+        return self.list_agentic_security_policies_with_options(request, runtime)
+
+    async def list_agentic_security_policies_async(
+        self,
+        request: main_models.ListAgenticSecurityPoliciesRequest,
+    ) -> main_models.ListAgenticSecurityPoliciesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_agentic_security_policies_with_options_async(request, runtime)
 
     def list_agentic_sql_execution_histories_with_options(
         self,

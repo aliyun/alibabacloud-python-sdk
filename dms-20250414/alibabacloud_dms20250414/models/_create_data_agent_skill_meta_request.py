@@ -8,18 +8,19 @@ class CreateDataAgentSkillMetaRequest(DaraModel):
     def __init__(
         self,
         description: str = None,
+        skill_id: str = None,
         skill_name: str = None,
         upload_location: str = None,
         workspace_id: str = None,
     ):
-        # The skill description.
-        # - Optional. If not specified, the system parses the ZIP package specified by UploadLocation to obtain the skill description.
+        # The skill description. This parameter is optional. If not specified, the backend parses the ZIP package specified by UploadLocation to obtain the skill description.
         self.description = description
-        # The skill name.
-        # - Optional. If not specified, the system parses the ZIP package specified by UploadLocation to obtain the skill name.
+        # The skill ID. If you specify this parameter, the uploaded skill overwrites the existing skill and replaces the original skill content. Note: The name of the original skill and the newly uploaded skill must be identical.
+        self.skill_id = skill_id
+        # The skill name. This parameter is optional. If not specified, the backend parses the ZIP package specified by UploadLocation to obtain the skill name.
         self.skill_name = skill_name
-        # The full path to the uploaded skill ZIP file.
-        # - Format: Concatenate the file name to the UploadDir value returned by the DescribeSkillFileUploadSignature operation.
+        # The full path for the skill ZIP file upload.
+        # - Format: The UploadDir field returned by the DescribeSkillFileUploadSignature operation concatenated with the file name.
         # - Example: ${UploadDir}/${Filename}
         self.upload_location = upload_location
         # The workspace ID.
@@ -36,6 +37,9 @@ class CreateDataAgentSkillMetaRequest(DaraModel):
         if self.description is not None:
             result['Description'] = self.description
 
+        if self.skill_id is not None:
+            result['SkillId'] = self.skill_id
+
         if self.skill_name is not None:
             result['SkillName'] = self.skill_name
 
@@ -51,6 +55,9 @@ class CreateDataAgentSkillMetaRequest(DaraModel):
         m = m or dict()
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('SkillId') is not None:
+            self.skill_id = m.get('SkillId')
 
         if m.get('SkillName') is not None:
             self.skill_name = m.get('SkillName')

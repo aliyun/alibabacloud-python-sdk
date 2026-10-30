@@ -12,13 +12,9 @@ class AgenticDatabaseEngineMeta(DaraModel):
         schema_name: str = None,
         storage_capacity: int = None,
     ):
-        # The catalog name in the database engine.
         self.catalog_name = catalog_name
-        # The character set encoding of the database.
         self.encoding = encoding
-        # The schema name.
         self.schema_name = schema_name
-        # The storage capacity of the database, in MB.
         self.storage_capacity = storage_capacity
 
     def validate(self):

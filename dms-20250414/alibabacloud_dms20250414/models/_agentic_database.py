@@ -26,42 +26,20 @@ class AgenticDatabase(DaraModel):
         state: int = None,
         storage_location: str = None,
     ):
-        # The name of the catalog.
         self.catalog_name = catalog_name
-        # The type of the catalog. Valid values:
-        # 
-        # - **JDBC**: relational database catalog
-        # - **DataLake**: data lake catalog
-        # - **Dataset**: knowledge base catalog
         self.catalog_type = catalog_type
-        # The UUID of the catalog.
         self.catalog_uuid = catalog_uuid
-        # The business attributes of the database, returned as key-value pairs. Currently, this may include **ENV_TYPE**, which indicates the environment type of the database.
         self.database_biz_attrs = database_biz_attrs
-        # The unique identifier of the database.
         self.database_uuid = database_uuid
-        # The database type inherited from the catalog. The value is the uppercase name of the database type, such as MYSQL.
         self.db_type = db_type
-        # The description of the database.
         self.description = description
-        # The metadata of the database engine. This field is returned only for databases under a JDBC catalog.
         self.engine_meta = engine_meta
-        # The name of the database. For databases that distinguish schemas, such as PostgreSQL, this is the schema name.
         self.name = name
-        # The extended properties of the database, returned as key-value pairs. This field is returned only for databases under a DataLake catalog.
         self.properties = properties
-        # The fully qualified name of the database. For databases that distinguish schemas, such as PostgreSQL, the format is database name.schema name.
         self.qualified_name = qualified_name
-        # The region ID of the database.
         self.region_id = region_id
-        # The search name of the database. SearchAgenticDatabase matches search keywords against this name.
         self.search_name = search_name
-        # The status of the database. Valid values:
-        # 
-        # - **0**: normal
-        # - **-1**: deleted
         self.state = state
-        # The storage location. This field is returned only for databases under a DataLake catalog.
         self.storage_location = storage_location
 
     def validate(self):
