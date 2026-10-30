@@ -2355,6 +2355,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.action_codes):
             request.action_codes_shrink = Utils.array_to_string_with_specified_style(tmp_req.action_codes, 'ActionCodes', 'json')
+        if not DaraCore.is_null(tmp_req.business_codes):
+            request.business_codes_shrink = Utils.array_to_string_with_specified_style(tmp_req.business_codes, 'BusinessCodes', 'json')
         if not DaraCore.is_null(tmp_req.case_codes):
             request.case_codes_shrink = Utils.array_to_string_with_specified_style(tmp_req.case_codes, 'CaseCodes', 'json')
         if not DaraCore.is_null(tmp_req.event_ids):
@@ -2366,6 +2368,8 @@ class Client(OpenApiClient):
             query['ActionCodes'] = request.action_codes_shrink
         if not DaraCore.is_null(request.aliyun_lang):
             query['AliyunLang'] = request.aliyun_lang
+        if not DaraCore.is_null(request.business_codes_shrink):
+            query['BusinessCodes'] = request.business_codes_shrink
         if not DaraCore.is_null(request.case_code):
             query['CaseCode'] = request.case_code
         if not DaraCore.is_null(request.case_codes_shrink):
@@ -2417,6 +2421,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.action_codes):
             request.action_codes_shrink = Utils.array_to_string_with_specified_style(tmp_req.action_codes, 'ActionCodes', 'json')
+        if not DaraCore.is_null(tmp_req.business_codes):
+            request.business_codes_shrink = Utils.array_to_string_with_specified_style(tmp_req.business_codes, 'BusinessCodes', 'json')
         if not DaraCore.is_null(tmp_req.case_codes):
             request.case_codes_shrink = Utils.array_to_string_with_specified_style(tmp_req.case_codes, 'CaseCodes', 'json')
         if not DaraCore.is_null(tmp_req.event_ids):
@@ -2428,6 +2434,8 @@ class Client(OpenApiClient):
             query['ActionCodes'] = request.action_codes_shrink
         if not DaraCore.is_null(request.aliyun_lang):
             query['AliyunLang'] = request.aliyun_lang
+        if not DaraCore.is_null(request.business_codes_shrink):
+            query['BusinessCodes'] = request.business_codes_shrink
         if not DaraCore.is_null(request.case_code):
             query['CaseCode'] = request.case_code
         if not DaraCore.is_null(request.case_codes_shrink):

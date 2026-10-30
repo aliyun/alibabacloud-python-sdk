@@ -14,15 +14,15 @@ class EndPenetrationTestResponseBody(DaraModel):
     ):
         # The status code.
         # 
-        # > 200: Success. Other values (such as 500 and 400): error codes.
+        # > 200: Success. Other values (such as 500 and 400): Error codes.
         self.code = code
         # The message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
-        # - **true**: The call is successful.                                
-        # - **false**: The call fails.
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.                                
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

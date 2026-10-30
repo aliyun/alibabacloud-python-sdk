@@ -11,6 +11,7 @@ class QueryAccountSafetyIncidentRequest(DaraModel):
         self,
         action_codes: List[str] = None,
         aliyun_lang: str = None,
+        business_codes: List[str] = None,
         case_code: str = None,
         case_codes: List[str] = None,
         current: str = None,
@@ -25,24 +26,25 @@ class QueryAccountSafetyIncidentRequest(DaraModel):
     ):
         # The list of control action codes.
         self.action_codes = action_codes
-        # The internationalization language. Default value: zh. Valid values:
-        # 
+        # The language. Default value: zh. Valid values:
         # - **zh**: Chinese.
         # - **en**: English.
         self.aliyun_lang = aliyun_lang
+        # The set of cloud service codes.
+        self.business_codes = business_codes
         # The event name code.
-        # > This parameter does not take effect when the CaseCodes parameter is not empty.
+        # > This parameter does not take effect if the CaseCodes parameter is not empty.
         self.case_code = case_code
         # The list of event name codes.
         self.case_codes = case_codes
         # The current page number. The value must be greater than 0.
         self.current = current
         # The event ID.
-        # > This parameter does not take effect when the EventIds parameter is not empty.
+        # > This parameter does not take effect if the EventIds parameter is not empty.
         self.event_id = event_id
         # The list of event IDs.
         self.event_ids = event_ids
-        # The number of records per page. Valid values: 1 to 100.
+        # The number of entries to return on each page. Valid values: 1 to 100.
         self.page_size = page_size
         # The end time of the control action.
         # 
@@ -55,13 +57,12 @@ class QueryAccountSafetyIncidentRequest(DaraModel):
         # The resource ID.
         self.resource_id = resource_id
         # The event status. Valid values:
+        # - **Executing**: The event is being executed.
+        # - **Removed**: The event is removed.
+        # - **Alerting**: The event is in the alerting state.
+        # - **Ended**: The event has ended.
         # 
-        # - **Executing**: In progress.
-        # - **Removed**: Removed.
-        # - **Alerting**: Alerting.
-        # - **Ended**: Ended.
-        # 
-        # > This parameter does not take effect when the Statuses parameter is not empty.
+        # > This parameter does not take effect if the Statuses parameter is not empty.
         self.status = status
         # The list of event statuses.
         self.statuses = statuses
@@ -79,6 +80,9 @@ class QueryAccountSafetyIncidentRequest(DaraModel):
 
         if self.aliyun_lang is not None:
             result['AliyunLang'] = self.aliyun_lang
+
+        if self.business_codes is not None:
+            result['BusinessCodes'] = self.business_codes
 
         if self.case_code is not None:
             result['CaseCode'] = self.case_code
@@ -122,6 +126,9 @@ class QueryAccountSafetyIncidentRequest(DaraModel):
 
         if m.get('AliyunLang') is not None:
             self.aliyun_lang = m.get('AliyunLang')
+
+        if m.get('BusinessCodes') is not None:
+            self.business_codes = m.get('BusinessCodes')
 
         if m.get('CaseCode') is not None:
             self.case_code = m.get('CaseCode')

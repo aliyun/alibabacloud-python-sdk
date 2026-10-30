@@ -16,7 +16,7 @@ class QueryPenetrationTestListRequest(DaraModel):
         self.current_page = current_page
         # The number of entries to return on each page.
         # 
-        # > Valid values: 1 to 100. Default value: 10.
+        # > Valid values: 1 to 100. Starting value: 1. Default value: 10.
         self.page_size = page_size
 
     def validate(self):

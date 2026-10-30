@@ -18,16 +18,17 @@ class SubmitPenetrationTestResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The response data.
+        # The returned data.
         self.data = data
         # The message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The call status. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # - **true**: Successful.
-        # - **false**: Failed.
+        # - **true**: The call was successful.
+        # 
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -81,7 +82,7 @@ class SubmitPenetrationTestResponseBodyData(DaraModel):
         self,
         list: List[main_models.SubmitPenetrationTestResponseBodyDataList] = None,
     ):
-        # The response data.
+        # The returned data.
         self.list = list
 
     def validate(self):
@@ -120,9 +121,9 @@ class SubmitPenetrationTestResponseBodyDataList(DaraModel):
     ):
         # The type of the asset. Valid values:
         # 
-        # - **EIP**: The public IP address of a virtual private cloud (VPC).
+        # - **EIP**: the public IP address of a VPC.
         # - **SLB**: load balancing.
-        # - **ECS**: The public IP address of an Elastic Compute Service (ECS) instance in the classic network.
+        # - **ECS**: the public IP address of an ECS instance in the classic network.
         self.asset_type = asset_type
         # The IP address of the asset.
         self.ip = ip

@@ -18,8 +18,8 @@ class QueryPenetrationTestListResponseBody(DaraModel):
     ):
         # The status code.
         # 
-        # - **200**: Successful.
-        # - **Other values (such as 400 and 500)**: Failed.
+        # - **200**: Success.
+        # - **Other values (such as 400 and 500)**: Failure.
         self.code = code
         # The query results.
         self.data = data
@@ -27,9 +27,9 @@ class QueryPenetrationTestListResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
+        # Indicates whether the call is successful. Valid values:
         # 
-        # - **true**: The call was successful.                               
+        # - **true**: The call is successful.                               
         # - **false**: The call failed.
         self.success = success
 
@@ -134,9 +134,9 @@ class QueryPenetrationTestListResponseBodyDataPageInfo(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
-        # The page number of the returned page.
+        # The page number from which the query results are displayed.
         # 
-        # > Default value: 1, which indicates the first page.
+        # > Default value: 1, which indicates that the query results are displayed starting from the first page.
         self.current_page = current_page
         # The number of entries returned per page.
         self.page_size = page_size
@@ -190,23 +190,23 @@ class QueryPenetrationTestListResponseBodyDataList(DaraModel):
         self.apply_time = apply_time
         # The type of the asset. Valid values:
         # 
-        # - **EIP**: Public IP address of a VPC.
-        # - **SLB**: Server Load Balancer (SLB) instance for load balancing.
-        # - **ECS**: Public IP address of an ECS instance in the classic network.
+        # - **EIP**: The public IP address of a VPC.
+        # - **SLB**: Server Load Balancer.
+        # - **ECS**: The public IP address of an ECS instance in the classic network.
         self.asset_type = asset_type
-        # The unique identity ID of the alerting event record.
+        # The unique identifier of the alert event record.
         # 
-        # > The data type of this field is Long. Precision loss may occur during the procedure to serialize or deserialize the numeric sequence. Make sure that the value does not exceed 9007199254740991.
+        # > The data type of this field is Long. Precision loss may occur during the serialization or deserialization process. Make sure that the value does not exceed 9007199254740991.
         self.id = id
         # The IP address of the asset.
         self.ip = ip
-        # The task status. Valid values:
+        # The status of the task. Valid values:
         # 
         # - **early_end**: The user applied for early termination.
         # - **expired**: The authorization expired.
-        # - **auditing**: Under review.
-        # - **approved**: Approved.
-        # - **rejected**: Rejected.
+        # - **auditing**: The application is being reviewed.
+        # - **approved**: The application is approved.
+        # - **rejected**: The application is rejected.
         self.status = status
         # The end time of the test.
         self.test_end_date = test_end_date

@@ -18,15 +18,15 @@ class QueryAccountSafetyIncidentResponseBody(DaraModel):
     ):
         # The status code.
         # 
-        # >  200: The request was successful. Other codes (500, 400, etc.): An error occurred.
+        # > 200: Success. Other values (such as 500 or 400): Error codes.
         self.code = code
         # The returned data.
         self.data = data
-        # The prompt message.
+        # The message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful. Valid values:
         # 
         # - **true**
         # - **false**
@@ -86,7 +86,7 @@ class QueryAccountSafetyIncidentResponseBodyData(DaraModel):
     ):
         # The event data.
         self.list = list
-        # The total number of records.
+        # The pagination information.
         self.page_info = page_info
 
     def validate(self):
@@ -135,7 +135,7 @@ class QueryAccountSafetyIncidentResponseBodyDataPageInfo(DaraModel):
     ):
         # The current page number.
         self.current = current
-        # The number of assets displayed on each page in a paged query.
+        # The number of assets displayed per page when you configure Settings for paging in a paged query.
         self.page_size = page_size
         # The total number of events.
         self.total = total
@@ -178,6 +178,7 @@ class QueryAccountSafetyIncidentResponseBodyDataList(DaraModel):
         action_code: str = None,
         action_name: str = None,
         anti_punish_time: str = None,
+        business_code: str = None,
         call_api: str = None,
         date_extras: main_models.QueryAccountSafetyIncidentResponseBodyDataListDateExtras = None,
         event_id: str = None,
@@ -196,14 +197,16 @@ class QueryAccountSafetyIncidentResponseBodyDataList(DaraModel):
         user_guide_name: str = None,
         user_guide_url: str = None,
     ):
-        # The control action code.
+        # The code of the control action name.
         self.action_code = action_code
-        # The control action name.
+        # The name of the control action.
         self.action_name = action_name
-        # The time when the control action was removed.
+        # The time when the control is revoked.
         # 
         # > Format: yyyy-MM-dd HH:mm:ss
         self.anti_punish_time = anti_punish_time
+        # The cloud service code.
+        self.business_code = business_code
         # The called API operation.
         self.call_api = call_api
         # The control time information.
@@ -212,11 +215,11 @@ class QueryAccountSafetyIncidentResponseBodyDataList(DaraModel):
         self.event_id = event_id
         # The event impact.
         self.event_impact = event_impact
-        # The control event name.
+        # The name of the control event.
         self.event_name = event_name
-        # The event reason.
+        # The cause of the event.
         self.event_reason = event_reason
-        # The event subtype name.
+        # The name of the event subtype.
         self.event_type = event_type
         # The time of the abnormal call.
         # > Format: yyyy-MM-dd HH:mm:ss
@@ -227,24 +230,23 @@ class QueryAccountSafetyIncidentResponseBodyDataList(DaraModel):
         # 
         # > Format: yyyy-MM-dd HH:mm:ss
         self.punish_time = punish_time
-        # The hardening suggestion.
+        # The hardening suggestions.
         self.reinforcement = reinforcement
-        # The cloud resource ID.
+        # The ID of the cloud resource.
         self.resource_id = resource_id
-        # The controlled object type.
+        # The control object type.
         self.resource_type = resource_type
         # The event status. Valid values:
-        # 
-        # - **Executing**: In progress.
-        # - **Removed**: Removed.
-        # - **Alerting**: Alerting.
-        # - **Ended**: Ended.
+        # - **Executing**: The event is being executed.
+        # - **Removed**: The event is removed.
+        # - **Alerting**: The event is in the alerting state.
+        # - **Ended**: The event has ended.
         self.status = status
-        # The handling suggestion.
+        # The remediation suggestions.
         self.tip = tip
-        # The help topic name.
+        # The name of the help document.
         self.user_guide_name = user_guide_name
-        # The help topic URL.
+        # The URL of the help document.
         self.user_guide_url = user_guide_url
 
     def validate(self):
@@ -264,6 +266,9 @@ class QueryAccountSafetyIncidentResponseBodyDataList(DaraModel):
 
         if self.anti_punish_time is not None:
             result['AntiPunishTime'] = self.anti_punish_time
+
+        if self.business_code is not None:
+            result['BusinessCode'] = self.business_code
 
         if self.call_api is not None:
             result['CallApi'] = self.call_api
@@ -329,6 +334,9 @@ class QueryAccountSafetyIncidentResponseBodyDataList(DaraModel):
         if m.get('AntiPunishTime') is not None:
             self.anti_punish_time = m.get('AntiPunishTime')
 
+        if m.get('BusinessCode') is not None:
+            self.business_code = m.get('BusinessCode')
+
         if m.get('CallApi') is not None:
             self.call_api = m.get('CallApi')
 
@@ -390,13 +398,13 @@ class QueryAccountSafetyIncidentResponseBodyDataListDateExtras(DaraModel):
         alert_start_time: str = None,
         last_check_time: str = None,
     ):
-        # The time when the alert ended.
+        # The end time of the alert.
         # > Format: yyyy-MM-dd HH:mm:ss
         self.alert_end_time = alert_end_time
-        # The time when the first alert was triggered.
+        # The time of the first alert.
         # > Format: yyyy-MM-dd HH:mm:ss
         self.alert_start_time = alert_start_time
-        # The time of the latest detection.
+        # The time of the latest check.
         # > Format: yyyy-MM-dd HH:mm:ss
         self.last_check_time = last_check_time
 

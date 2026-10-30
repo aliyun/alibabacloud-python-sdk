@@ -20,7 +20,7 @@ class SubmitPenetrationTestRequest(DaraModel):
     ):
         # The asset list.
         # 
-        # > The array supports a maximum of 50 IP addresses.
+        # > The array supports up to 50 IP addresses.
         self.asset_list = asset_list
         # Specifies whether the test is performed by a third-party testing service provider. Valid values:
         # 
@@ -30,25 +30,25 @@ class SubmitPenetrationTestRequest(DaraModel):
         self.is_thirdparty_test = is_thirdparty_test
         # The test content.
         # 
-        # > The content must not exceed 500 characters. Provide detailed information to facilitate the approval process.
+        # > The content must be up to 500 characters in length. Provide detailed information to facilitate the approval process.
         self.test_content = test_content
         # The end time of the test.
         self.test_end_date = test_end_date
         # The source IP addresses used for the test.
         # 
-        # > A maximum of 50 IP addresses are supported. Separate multiple IP addresses with line breaks or commas (,). 0.0.0.0 indicates that all IP addresses are allowed. CIDR blocks such as 140.168.0.0/16 are not supported.
+        # > Up to 50 IP addresses are supported. Separate multiple IP addresses with line breaks or commas (,). Enter 0.0.0.0 to allow all IP addresses. CIDR blocks such as 140.168.0.0/16 are not supported.
         self.test_source_ips = test_source_ips
         # The start date of the test.
         self.test_start_date = test_start_date
         # The test steps.
         # 
-        # > The steps must not exceed 500 characters. Provide detailed information to facilitate the approval process.
+        # > The steps must be up to 500 characters in length. Provide detailed information to facilitate the approval process.
         self.test_steps = test_steps
         # The email address of the third-party tester.
         self.thirdparty_email = thirdparty_email
         # The mobile phone number of the third-party tester.
         self.thirdparty_mobile = thirdparty_mobile
-        # The third-party tester.
+        # The name of the third-party tester.
         self.thirdparty_tester = thirdparty_tester
 
     def validate(self):
