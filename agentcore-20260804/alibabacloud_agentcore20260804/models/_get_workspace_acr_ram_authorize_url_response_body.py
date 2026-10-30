@@ -105,7 +105,7 @@ class GetWorkspaceAcrRamAuthorizeUrlResponseBodyData(DaraModel):
         # 
         # This parameter is required.
         self.acr_instance_id = acr_instance_id
-        # The RAM authorization URL used to create or append target ACR permissions for the shared role.
+        # The RAM authorization URL for creating or appending target ACR permissions for the shared role.
         # 
         # This parameter is required.
         self.authorize_url = authorize_url

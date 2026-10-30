@@ -4253,6 +4253,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.enable_connector_with_options_async(workspace_id, connector_name, request, headers, runtime)
 
+    def find_custom_agent_image_preparation_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.FindCustomAgentImagePreparationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.FindCustomAgentImagePreparationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'FindCustomAgentImagePreparation',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/custom-image-preparations',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.FindCustomAgentImagePreparationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def find_custom_agent_image_preparation_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.FindCustomAgentImagePreparationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.FindCustomAgentImagePreparationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'FindCustomAgentImagePreparation',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/custom-image-preparations',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.FindCustomAgentImagePreparationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def find_custom_agent_image_preparation(
+        self,
+        workspace_id: str,
+        request: main_models.FindCustomAgentImagePreparationRequest,
+    ) -> main_models.FindCustomAgentImagePreparationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.find_custom_agent_image_preparation_with_options(workspace_id, request, headers, runtime)
+
+    async def find_custom_agent_image_preparation_async(
+        self,
+        workspace_id: str,
+        request: main_models.FindCustomAgentImagePreparationRequest,
+    ) -> main_models.FindCustomAgentImagePreparationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.find_custom_agent_image_preparation_with_options_async(workspace_id, request, headers, runtime)
+
     def force_publish_skill_version_with_options(
         self,
         workspace_id: str,
@@ -5136,6 +5216,82 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_custom_agent_with_options_async(workspace_id, agent_id, request, headers, runtime)
+
+    def get_custom_agent_image_preparation_with_options(
+        self,
+        workspace_id: str,
+        preparation_id: str,
+        request: main_models.GetCustomAgentImagePreparationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCustomAgentImagePreparationResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCustomAgentImagePreparation',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/custom-image-preparations/{DaraURL.percent_encode(preparation_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCustomAgentImagePreparationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_custom_agent_image_preparation_with_options_async(
+        self,
+        workspace_id: str,
+        preparation_id: str,
+        request: main_models.GetCustomAgentImagePreparationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCustomAgentImagePreparationResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCustomAgentImagePreparation',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/custom-image-preparations/{DaraURL.percent_encode(preparation_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCustomAgentImagePreparationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_custom_agent_image_preparation(
+        self,
+        workspace_id: str,
+        preparation_id: str,
+        request: main_models.GetCustomAgentImagePreparationRequest,
+    ) -> main_models.GetCustomAgentImagePreparationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_custom_agent_image_preparation_with_options(workspace_id, preparation_id, request, headers, runtime)
+
+    async def get_custom_agent_image_preparation_async(
+        self,
+        workspace_id: str,
+        preparation_id: str,
+        request: main_models.GetCustomAgentImagePreparationRequest,
+    ) -> main_models.GetCustomAgentImagePreparationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_custom_agent_image_preparation_with_options_async(workspace_id, preparation_id, request, headers, runtime)
 
     def get_external_agent_with_options(
         self,

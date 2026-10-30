@@ -174,6 +174,9 @@ from ._enable_connector_request import EnableConnectorRequest
 from ._enable_connector_shrink_request import EnableConnectorShrinkRequest
 from ._enable_connector_response_body import EnableConnectorResponseBody
 from ._enable_connector_response import EnableConnectorResponse
+from ._find_custom_agent_image_preparation_request import FindCustomAgentImagePreparationRequest
+from ._find_custom_agent_image_preparation_response_body import FindCustomAgentImagePreparationResponseBody
+from ._find_custom_agent_image_preparation_response import FindCustomAgentImagePreparationResponse
 from ._force_publish_skill_version_request import ForcePublishSkillVersionRequest
 from ._force_publish_skill_version_shrink_request import ForcePublishSkillVersionShrinkRequest
 from ._force_publish_skill_version_response_body import ForcePublishSkillVersionResponseBody
@@ -209,6 +212,9 @@ from ._get_credential_response import GetCredentialResponse
 from ._get_custom_agent_request import GetCustomAgentRequest
 from ._get_custom_agent_response_body import GetCustomAgentResponseBody
 from ._get_custom_agent_response import GetCustomAgentResponse
+from ._get_custom_agent_image_preparation_request import GetCustomAgentImagePreparationRequest
+from ._get_custom_agent_image_preparation_response_body import GetCustomAgentImagePreparationResponseBody
+from ._get_custom_agent_image_preparation_response import GetCustomAgentImagePreparationResponse
 from ._get_external_agent_request import GetExternalAgentRequest
 from ._get_external_agent_response_body import GetExternalAgentResponseBody
 from ._get_external_agent_response import GetExternalAgentResponse
@@ -602,6 +608,8 @@ from ._create_custom_agent_request import CreateCustomAgentRequestBodyAgenticFsM
 from ._create_custom_agent_request import CreateCustomAgentRequestBodyArtifactCode
 from ._create_custom_agent_request import CreateCustomAgentRequestBodyArtifactContainer
 from ._create_custom_agent_request import CreateCustomAgentRequestBodyArtifact
+from ._create_custom_agent_request import CreateCustomAgentRequestBodyCustomImagePullNetwork
+from ._create_custom_agent_request import CreateCustomAgentRequestBodyCustomImage
 from ._create_custom_agent_request import CreateCustomAgentRequestBodyEnvironmentVariables
 from ._create_custom_agent_request import CreateCustomAgentRequestBodyEnvironment
 from ._create_custom_agent_request import CreateCustomAgentRequestBodyHealthCheck
@@ -624,10 +632,15 @@ from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDat
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataArtifactContainer
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataArtifact
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataCodePackageInfo
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataCurrentImagePullNetwork
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataCurrentImage
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataCustomImagePullNetwork
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataCustomImage
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataEnvironmentVariables
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataEnvironment
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataHealthCheck
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataImageCachePreparation
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataImagePreparation
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataLatestExecutionError
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataLoggingSls
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataLogging
@@ -690,6 +703,7 @@ from ._create_managed_agent_request import CreateManagedAgentRequestBodyNetworkA
 from ._create_managed_agent_request import CreateManagedAgentRequestBodyNetworkAccessVpc
 from ._create_managed_agent_request import CreateManagedAgentRequestBodyNetwork
 from ._create_managed_agent_request import CreateManagedAgentRequestBodyOssMounts
+from ._create_managed_agent_request import CreateManagedAgentRequestBodyPromptVariables
 from ._create_managed_agent_request import CreateManagedAgentRequestBodyRuntimeCompute
 from ._create_managed_agent_request import CreateManagedAgentRequestBodyRuntimeHpa
 from ._create_managed_agent_request import CreateManagedAgentRequestBodyRuntimeSessionPolicy
@@ -716,6 +730,7 @@ from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyD
 from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataNetworkAccessVpc
 from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataNetwork
 from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataOssMounts
+from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataPromptVariables
 from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataRuntimeCompute
 from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataRuntimeHpa
 from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataRuntimeSessionPolicy
@@ -817,6 +832,8 @@ from ._delete_workspace_response_body import DeleteWorkspaceResponseBodyData
 from ._disable_connector_response_body import DisableConnectorResponseBodyData
 from ._enable_connector_request import EnableConnectorRequestBody
 from ._enable_connector_response_body import EnableConnectorResponseBodyData
+from ._find_custom_agent_image_preparation_response_body import FindCustomAgentImagePreparationResponseBodyDataError
+from ._find_custom_agent_image_preparation_response_body import FindCustomAgentImagePreparationResponseBodyData
 from ._force_publish_skill_version_request import ForcePublishSkillVersionRequestBody
 from ._get_agent_code_package_download_url_response_body import GetAgentCodePackageDownloadUrlResponseBodyData
 from ._get_agent_code_package_oss_ram_authorize_url_response_body import GetAgentCodePackageOssRamAuthorizeUrlResponseBodyData
@@ -841,9 +858,14 @@ from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataArtif
 from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataArtifactContainer
 from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataArtifact
 from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataCodePackageInfo
+from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataCurrentImagePullNetwork
+from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataCurrentImage
+from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataCustomImagePullNetwork
+from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataCustomImage
 from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataEnvironmentVariables
 from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataEnvironment
 from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataHealthCheck
+from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataImagePreparation
 from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataLatestExecutionError
 from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataLoggingSls
 from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataLogging
@@ -859,6 +881,8 @@ from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataRunti
 from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataRuntimeSessionPolicy
 from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataRuntime
 from ._get_custom_agent_response_body import GetCustomAgentResponseBodyData
+from ._get_custom_agent_image_preparation_response_body import GetCustomAgentImagePreparationResponseBodyDataError
+from ._get_custom_agent_image_preparation_response_body import GetCustomAgentImagePreparationResponseBodyData
 from ._get_external_agent_response_body import GetExternalAgentResponseBodyDataConfiguredSkillsVersionSelector
 from ._get_external_agent_response_body import GetExternalAgentResponseBodyDataConfiguredSkills
 from ._get_external_agent_response_body import GetExternalAgentResponseBodyDataExternalAgentStatus
@@ -900,6 +924,7 @@ from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataNet
 from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataNetworkAccessVpc
 from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataNetwork
 from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataOssMounts
+from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataPromptVariables
 from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataRuntimeCompute
 from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataRuntimeHpa
 from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataRuntimeSessionPolicy
@@ -1149,6 +1174,8 @@ from ._update_custom_agent_request import UpdateCustomAgentRequestBodyAgenticFsM
 from ._update_custom_agent_request import UpdateCustomAgentRequestBodyArtifactCode
 from ._update_custom_agent_request import UpdateCustomAgentRequestBodyArtifactContainer
 from ._update_custom_agent_request import UpdateCustomAgentRequestBodyArtifact
+from ._update_custom_agent_request import UpdateCustomAgentRequestBodyCustomImagePullNetwork
+from ._update_custom_agent_request import UpdateCustomAgentRequestBodyCustomImage
 from ._update_custom_agent_request import UpdateCustomAgentRequestBodyEnvironmentVariables
 from ._update_custom_agent_request import UpdateCustomAgentRequestBodyEnvironment
 from ._update_custom_agent_request import UpdateCustomAgentRequestBodyHealthCheck
@@ -1171,10 +1198,15 @@ from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDat
 from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataArtifactContainer
 from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataArtifact
 from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataCodePackageInfo
+from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataCurrentImagePullNetwork
+from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataCurrentImage
+from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataCustomImagePullNetwork
+from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataCustomImage
 from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataEnvironmentVariables
 from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataEnvironment
 from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataHealthCheck
 from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataImageCachePreparation
+from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataImagePreparation
 from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataLatestExecutionError
 from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataLoggingSls
 from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataLogging
@@ -1234,6 +1266,7 @@ from ._update_managed_agent_request import UpdateManagedAgentRequestBodyNetworkA
 from ._update_managed_agent_request import UpdateManagedAgentRequestBodyNetworkAccessVpc
 from ._update_managed_agent_request import UpdateManagedAgentRequestBodyNetwork
 from ._update_managed_agent_request import UpdateManagedAgentRequestBodyOssMounts
+from ._update_managed_agent_request import UpdateManagedAgentRequestBodyPromptVariables
 from ._update_managed_agent_request import UpdateManagedAgentRequestBodyRuntimeCompute
 from ._update_managed_agent_request import UpdateManagedAgentRequestBodyRuntimeHpa
 from ._update_managed_agent_request import UpdateManagedAgentRequestBodyRuntimeSessionPolicy
@@ -1260,6 +1293,7 @@ from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyD
 from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataNetworkAccessVpc
 from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataNetwork
 from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataOssMounts
+from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataPromptVariables
 from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataRuntimeCompute
 from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataRuntimeHpa
 from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataRuntimeSessionPolicy
@@ -1548,6 +1582,9 @@ __all__ = [
     EnableConnectorShrinkRequest,
     EnableConnectorResponseBody,
     EnableConnectorResponse,
+    FindCustomAgentImagePreparationRequest,
+    FindCustomAgentImagePreparationResponseBody,
+    FindCustomAgentImagePreparationResponse,
     ForcePublishSkillVersionRequest,
     ForcePublishSkillVersionShrinkRequest,
     ForcePublishSkillVersionResponseBody,
@@ -1583,6 +1620,9 @@ __all__ = [
     GetCustomAgentRequest,
     GetCustomAgentResponseBody,
     GetCustomAgentResponse,
+    GetCustomAgentImagePreparationRequest,
+    GetCustomAgentImagePreparationResponseBody,
+    GetCustomAgentImagePreparationResponse,
     GetExternalAgentRequest,
     GetExternalAgentResponseBody,
     GetExternalAgentResponse,
@@ -1976,6 +2016,8 @@ __all__ = [
     CreateCustomAgentRequestBodyArtifactCode,
     CreateCustomAgentRequestBodyArtifactContainer,
     CreateCustomAgentRequestBodyArtifact,
+    CreateCustomAgentRequestBodyCustomImagePullNetwork,
+    CreateCustomAgentRequestBodyCustomImage,
     CreateCustomAgentRequestBodyEnvironmentVariables,
     CreateCustomAgentRequestBodyEnvironment,
     CreateCustomAgentRequestBodyHealthCheck,
@@ -1998,10 +2040,15 @@ __all__ = [
     CreateCustomAgentResponseBodyDataArtifactContainer,
     CreateCustomAgentResponseBodyDataArtifact,
     CreateCustomAgentResponseBodyDataCodePackageInfo,
+    CreateCustomAgentResponseBodyDataCurrentImagePullNetwork,
+    CreateCustomAgentResponseBodyDataCurrentImage,
+    CreateCustomAgentResponseBodyDataCustomImagePullNetwork,
+    CreateCustomAgentResponseBodyDataCustomImage,
     CreateCustomAgentResponseBodyDataEnvironmentVariables,
     CreateCustomAgentResponseBodyDataEnvironment,
     CreateCustomAgentResponseBodyDataHealthCheck,
     CreateCustomAgentResponseBodyDataImageCachePreparation,
+    CreateCustomAgentResponseBodyDataImagePreparation,
     CreateCustomAgentResponseBodyDataLatestExecutionError,
     CreateCustomAgentResponseBodyDataLoggingSls,
     CreateCustomAgentResponseBodyDataLogging,
@@ -2064,6 +2111,7 @@ __all__ = [
     CreateManagedAgentRequestBodyNetworkAccessVpc,
     CreateManagedAgentRequestBodyNetwork,
     CreateManagedAgentRequestBodyOssMounts,
+    CreateManagedAgentRequestBodyPromptVariables,
     CreateManagedAgentRequestBodyRuntimeCompute,
     CreateManagedAgentRequestBodyRuntimeHpa,
     CreateManagedAgentRequestBodyRuntimeSessionPolicy,
@@ -2090,6 +2138,7 @@ __all__ = [
     CreateManagedAgentResponseBodyDataNetworkAccessVpc,
     CreateManagedAgentResponseBodyDataNetwork,
     CreateManagedAgentResponseBodyDataOssMounts,
+    CreateManagedAgentResponseBodyDataPromptVariables,
     CreateManagedAgentResponseBodyDataRuntimeCompute,
     CreateManagedAgentResponseBodyDataRuntimeHpa,
     CreateManagedAgentResponseBodyDataRuntimeSessionPolicy,
@@ -2191,6 +2240,8 @@ __all__ = [
     DisableConnectorResponseBodyData,
     EnableConnectorRequestBody,
     EnableConnectorResponseBodyData,
+    FindCustomAgentImagePreparationResponseBodyDataError,
+    FindCustomAgentImagePreparationResponseBodyData,
     ForcePublishSkillVersionRequestBody,
     GetAgentCodePackageDownloadUrlResponseBodyData,
     GetAgentCodePackageOssRamAuthorizeUrlResponseBodyData,
@@ -2215,9 +2266,14 @@ __all__ = [
     GetCustomAgentResponseBodyDataArtifactContainer,
     GetCustomAgentResponseBodyDataArtifact,
     GetCustomAgentResponseBodyDataCodePackageInfo,
+    GetCustomAgentResponseBodyDataCurrentImagePullNetwork,
+    GetCustomAgentResponseBodyDataCurrentImage,
+    GetCustomAgentResponseBodyDataCustomImagePullNetwork,
+    GetCustomAgentResponseBodyDataCustomImage,
     GetCustomAgentResponseBodyDataEnvironmentVariables,
     GetCustomAgentResponseBodyDataEnvironment,
     GetCustomAgentResponseBodyDataHealthCheck,
+    GetCustomAgentResponseBodyDataImagePreparation,
     GetCustomAgentResponseBodyDataLatestExecutionError,
     GetCustomAgentResponseBodyDataLoggingSls,
     GetCustomAgentResponseBodyDataLogging,
@@ -2233,6 +2289,8 @@ __all__ = [
     GetCustomAgentResponseBodyDataRuntimeSessionPolicy,
     GetCustomAgentResponseBodyDataRuntime,
     GetCustomAgentResponseBodyData,
+    GetCustomAgentImagePreparationResponseBodyDataError,
+    GetCustomAgentImagePreparationResponseBodyData,
     GetExternalAgentResponseBodyDataConfiguredSkillsVersionSelector,
     GetExternalAgentResponseBodyDataConfiguredSkills,
     GetExternalAgentResponseBodyDataExternalAgentStatus,
@@ -2274,6 +2332,7 @@ __all__ = [
     GetManagedAgentResponseBodyDataNetworkAccessVpc,
     GetManagedAgentResponseBodyDataNetwork,
     GetManagedAgentResponseBodyDataOssMounts,
+    GetManagedAgentResponseBodyDataPromptVariables,
     GetManagedAgentResponseBodyDataRuntimeCompute,
     GetManagedAgentResponseBodyDataRuntimeHpa,
     GetManagedAgentResponseBodyDataRuntimeSessionPolicy,
@@ -2523,6 +2582,8 @@ __all__ = [
     UpdateCustomAgentRequestBodyArtifactCode,
     UpdateCustomAgentRequestBodyArtifactContainer,
     UpdateCustomAgentRequestBodyArtifact,
+    UpdateCustomAgentRequestBodyCustomImagePullNetwork,
+    UpdateCustomAgentRequestBodyCustomImage,
     UpdateCustomAgentRequestBodyEnvironmentVariables,
     UpdateCustomAgentRequestBodyEnvironment,
     UpdateCustomAgentRequestBodyHealthCheck,
@@ -2545,10 +2606,15 @@ __all__ = [
     UpdateCustomAgentResponseBodyDataArtifactContainer,
     UpdateCustomAgentResponseBodyDataArtifact,
     UpdateCustomAgentResponseBodyDataCodePackageInfo,
+    UpdateCustomAgentResponseBodyDataCurrentImagePullNetwork,
+    UpdateCustomAgentResponseBodyDataCurrentImage,
+    UpdateCustomAgentResponseBodyDataCustomImagePullNetwork,
+    UpdateCustomAgentResponseBodyDataCustomImage,
     UpdateCustomAgentResponseBodyDataEnvironmentVariables,
     UpdateCustomAgentResponseBodyDataEnvironment,
     UpdateCustomAgentResponseBodyDataHealthCheck,
     UpdateCustomAgentResponseBodyDataImageCachePreparation,
+    UpdateCustomAgentResponseBodyDataImagePreparation,
     UpdateCustomAgentResponseBodyDataLatestExecutionError,
     UpdateCustomAgentResponseBodyDataLoggingSls,
     UpdateCustomAgentResponseBodyDataLogging,
@@ -2608,6 +2674,7 @@ __all__ = [
     UpdateManagedAgentRequestBodyNetworkAccessVpc,
     UpdateManagedAgentRequestBodyNetwork,
     UpdateManagedAgentRequestBodyOssMounts,
+    UpdateManagedAgentRequestBodyPromptVariables,
     UpdateManagedAgentRequestBodyRuntimeCompute,
     UpdateManagedAgentRequestBodyRuntimeHpa,
     UpdateManagedAgentRequestBodyRuntimeSessionPolicy,
@@ -2634,6 +2701,7 @@ __all__ = [
     UpdateManagedAgentResponseBodyDataNetworkAccessVpc,
     UpdateManagedAgentResponseBodyDataNetwork,
     UpdateManagedAgentResponseBodyDataOssMounts,
+    UpdateManagedAgentResponseBodyDataPromptVariables,
     UpdateManagedAgentResponseBodyDataRuntimeCompute,
     UpdateManagedAgentResponseBodyDataRuntimeHpa,
     UpdateManagedAgentResponseBodyDataRuntimeSessionPolicy,

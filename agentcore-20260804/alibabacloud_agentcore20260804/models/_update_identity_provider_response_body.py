@@ -17,17 +17,17 @@ class UpdateIdentityProviderResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business status code of the API request. SUCCESS indicates that the request is successful, but does not mean that the asynchronous configuration or synchronization task is completed.
+        # The business status code for this API request. A value of SUCCESS indicates that the request succeeded, but does not indicate that the asynchronous configuration or synchronization task is complete.
         self.code = code
         # The currently saved identity provider binding information, including the expected configuration and resource status. The actual update may still be executing in the background.
         self.data = data
-        # The HTTP status code of the API request, which does not represent the execution result of the background task.
+        # The HTTP status code for this API request. This does not indicate the execution result of the background task.
         self.http_status_code = http_status_code
-        # The response message of the API request. An error description is returned if the request fails.
+        # The response message for this API request. An error description is returned if the request fails.
         self.message = message
-        # The unique identifier of the request. Provide this value when you troubleshoot issues.
+        # The unique identifier for this request. Provide this value when you troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the API request is successful. To check whether the background configuration has taken effect, query the identity provider status separately.
+        # Indicates whether this API request succeeded. To check whether the background configuration has taken effect, you must query the identity provider status separately.
         self.success = success
 
     def validate(self):
@@ -95,13 +95,13 @@ class UpdateIdentityProviderResponseBodyData(DaraModel):
         sync_scope: main_models.UpdateIdentityProviderResponseBodyDataSyncScope = None,
         workspace_id: str = None,
     ):
-        # The actual SAML configuration read back from the upstream. This update operation does not perform the read-back and usually does not return this field. Use GetIdentityProvider to obtain it.
+        # The actual SAML configuration read back from the upstream. This update API does not perform this read-back and usually does not return this field. Use GetIdentityProvider to obtain it.
         self.configuration = configuration
-        # The type of the identity provider. DingTalk: DingTalk. Feishu: Lark. CustomSSO: custom enterprise identity provider connected through SAML. The value must be the same as the type of the identity provider bound to the current workspace.
+        # The type of the identity provider. DingTalk indicates DingTalk. Feishu indicates Feishu. CustomSSO indicates a custom enterprise identity provider connected through SAML. The value must be the same as the type of the identity provider bound to the current workspace.
         self.identity_provider_type = identity_provider_type
-        # The currently saved expected value of the logon switch, which alone does not prove that the upstream logon configuration has taken effect.
+        # The currently saved expected value for the logon switch. This alone does not prove that the upstream logon configuration has taken effect.
         self.login_enabled = login_enabled
-        # The currently saved logon protocol for CustomSSO, which is SAML when configured. This field is not returned for DingTalk or Lark.
+        # The currently saved logon protocol for CustomSSO. The value is SAML when configured. This field is not returned for DingTalk or Lark.
         self.protocol = protocol
         # The saved standardized SAML configuration for CustomSSO. The original metadata XML is not echoed. This field is not returned if no valid configuration is saved or if the identity provider is DingTalk or Lark. This value is the locally saved configuration and is not equivalent to the actual upstream configuration.
         self.saml = saml
@@ -109,17 +109,17 @@ class UpdateIdentityProviderResponseBodyData(DaraModel):
         # - CONFIGURED: The configuration is accepted.
         # - UPDATING: The configuration is being updated.
         # - SYNCING: Synchronization is in progress.
-        # - SYNCED: The synchronization phase is completed.
+        # - SYNCED: The synchronization phase is complete.
         # - READY: The resource is ready.
         # - SYNC_FAILED: Synchronization failed.
         # - UPDATE_FAILED: The update failed.
         # - DISCONNECTING: Unbinding is in progress.
         # - DISCONNECT_FAILED: Unbinding failed.
-        # READY alone does not indicate that users have been imported. Query the SCIM operation results for CustomSSO separately.
+        # A value of READY does not alone indicate that users are imported. Query the SCIM operation results for CustomSSO separately.
         self.status = status
-        # The currently saved expected value of the synchronization switch. For DingTalk and Lark, it is used for subsequent address book change events. The SCIM switch for CustomSSO is managed through UpdateIdentityProviderSCIM, and the operation results are queried through GetIdentityProviderSCIM.
+        # The currently saved expected value for the synchronization switch. For DingTalk and Lark, this is used for subsequent address book change events. For CustomSSO, the SCIM switch is managed by using UpdateIdentityProviderSCIM, and the operation results are queried by using GetIdentityProviderSCIM.
         self.sync_enabled = sync_enabled
-        # The saved synchronization scope for DingTalk and Lark. The default value for valid historical configurations is AllAuthorized, and this field may not be returned for corrupted historical configurations. This field is not returned for CustomSSO.
+        # The saved synchronization scope for DingTalk and Lark. The default value for valid historical configurations is AllAuthorized. This field may not be returned for corrupted historical configurations. This field is not returned for CustomSSO.
         self.sync_scope = sync_scope
         # The ID of the workspace to which the identity provider belongs.
         self.workspace_id = workspace_id
@@ -206,9 +206,9 @@ class UpdateIdentityProviderResponseBodyDataSyncScope(DaraModel):
         department_ids: List[str] = None,
         mode: str = None,
     ):
-        # The list of department IDs in the synchronization scope, obtained from ListIdentityProviderDepartments. In SelectedDepartments mode, at least one non-empty department ID must be provided. In AllAuthorized mode, this parameter should be omitted or an empty array should be passed.
+        # The list of department IDs in the synchronization scope, which are obtained from ListIdentityProviderDepartments. In SelectedDepartments mode, you must provide at least one non-empty department ID. In AllAuthorized mode, this field should be omitted or an empty array should be passed.
         self.department_ids = department_ids
-        # The synchronization scope mode. AllAuthorized: all members within the authorization scope of the application address book. SelectedDepartments: the selected departments and all their sub-departments. A valid mode must be provided when syncScope is explicitly submitted.
+        # The synchronization scope mode. Valid values: AllAuthorized and SelectedDepartments. AllAuthorized indicates all members within the authorization scope of the application address book. SelectedDepartments indicates the selected departments and all their sub-departments. When explicitly submitting syncScope, you must provide a valid mode.
         self.mode = mode
 
     def validate(self):
@@ -300,13 +300,13 @@ class UpdateIdentityProviderResponseBodyDataConfiguration(DaraModel):
         login_url: str = None,
         sso_status: str = None,
     ):
-        # The actual SAML binding type saved in the upstream, which is HTTP-Redirect or HTTP-POST.
+        # The actual SAML binding type saved upstream, which is HTTP-Redirect or HTTP-POST.
         self.binding_type = binding_type
-        # The actual enterprise IdP entity ID saved in the upstream.
+        # The actual enterprise IdP entity ID saved upstream.
         self.entity_id = entity_id
-        # The actual enterprise IdP SSO logon URL saved in the upstream.
+        # The actual enterprise IdP SSO logon URL saved upstream.
         self.login_url = login_url
-        # The actual SSO logon status in the upstream. Enabled indicates that it is turned on, and Disabled indicates that it is turned off. This should be evaluated separately from the expected value of loginEnabled.
+        # The actual SSO logon status upstream. Enabled indicates that it is turned on, and Disabled indicates that it is turned off. This should be evaluated separately from the expected value of loginEnabled.
         self.sso_status = sso_status
 
     def validate(self):

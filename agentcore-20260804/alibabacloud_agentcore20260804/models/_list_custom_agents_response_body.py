@@ -20,21 +20,21 @@ class ListCustomAgentsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The request result code. The value is SUCCESS when the request is successful.
+        # The request result code. The value is SUCCESS if the request is successful.
         self.code = code
-        # The HTTP status code of the current request. The value is 200 when the request is successful.
+        # The HTTP status code of the request. The value is 200 if the request is successful.
         self.http_status_code = http_status_code
         # The list of custom agent summaries on the current page. To query the complete configuration and the execution result of the latest version, call the GetCustomAgent operation.
         self.items = items
         # The maximum number of results returned per page for the current query.
         self.max_results = max_results
-        # The message that describes the processing result of the request. The value is success if the request succeeds.
+        # The message that describes the result of the request. The value is success if the request is successful.
         self.message = message
-        # The opaque token used to query the next page. An empty value indicates that no more pages exist. Pass this token as is in subsequent requests.
+        # The opaque token used to query the next page. An empty value indicates that no more pages are available. Pass this token as-is in subsequent requests.
         self.next_token = next_token
-        # The unique identifier of the request, used to locate and troubleshoot issues.
+        # The unique identifier of the request. You can use this ID to locate and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was processed successfully. A value of true indicates success. A successful creation, update, or deletion does not mean that the background operation is complete.
+        # Indicates whether the request was processed successfully. A value of true indicates that the request was successful. A successful creation, update, or deletion response does not mean that the background operation is complete.
         self.success = success
         # The total number of custom agents that meet the query conditions in the specified workspace.
         self.total_count = total_count
@@ -155,7 +155,14 @@ class ListCustomAgentsResponseBodyItems(DaraModel):
         self.protocol = protocol
         # The compute specifications of the agent. Valid values: INTERACTIVE, STANDARD, and HEAVY.
         self.runtime = runtime
-        # The overall status of the agent. Valid values: Creating, Running, Failed, Updating, Deleting, and Deleted. To query the execution progress of the latest configuration, call the GetCustomAgent operation.
+        # The overall status of the agent. Valid values:
+        # - Creating: The agent is being created.
+        # - Running: The agent is running.
+        # - Failed: The agent failed.
+        # - Updating: The agent is being updated.
+        # - Deleting: The agent is being deleted.
+        # - Deleted: The agent is deleted.
+        # To query the execution progress of the latest configuration, call the GetCustomAgent operation.
         self.status = status
         # The time when the agent was last updated. The time is in ISO 8601 format. The trailing Z indicates the UTC time zone. Fractional seconds may be included.
         self.updated_at = updated_at
@@ -281,11 +288,14 @@ class ListCustomAgentsResponseBodyItemsProtocol(DaraModel):
         paths: List[main_models.ListCustomAgentsResponseBodyItemsProtocolPaths] = None,
         type: str = None,
     ):
-        # The request header configuration for the current protocol. The key is the header name and the value is a string.
+        # The request header configuration of the current protocol. The key is the header name and the value is a string.
         self.headers = headers
         # The list of API paths corresponding to the current protocol.
         self.paths = paths
-        # The invoke Protocol Type. Valid values: agui (AG-UI protocol), openai-chat-completion (OpenAI Chat Completions compatible protocol), and custom (custom protocol).
+        # The invoke Protocol Type. Valid values:
+        # - agui: AG-UI protocol.
+        # - openai-chat-completion: OpenAI Chat Completions compatible protocol.
+        # - custom: Custom protocol.
         # 
         # This parameter is required.
         self.type = type
@@ -498,21 +508,13 @@ class ListCustomAgentsResponseBodyItemsArtifactContainer(DaraModel):
     ):
         # The custom container startup command and parameters. If this parameter is not configured, the default startup method of the image is used.
         self.entrypoint = entrypoint
-        # The ID of the Container Registry Enterprise instance.
-        # 
-        # This parameter is required.
+        # The ID of the ACR Enterprise instance.
         self.instance_id = instance_id
-        # The namespace of the Container Registry instance.
-        # 
-        # This parameter is required.
+        # The ACR namespace.
         self.namespace = namespace
-        # The name of the Container Registry image repository.
-        # 
-        # This parameter is required.
+        # The name of the ACR image repository.
         self.repo = repo
-        # The tag of the image.
-        # 
-        # This parameter is required.
+        # The image tag.
         self.tag = tag
         # The source type of the container image.
         # 
@@ -580,7 +582,7 @@ class ListCustomAgentsResponseBodyItemsArtifactCode(DaraModel):
         # 
         # This parameter is required.
         self.entrypoint = entrypoint
-        # The identifier of the code runtime environment in the currently saved configuration. The runtime image uses a saved snapshot. Adding a new version to the directory does not automatically change the existing configuration.
+        # The identifier of the code runtime environment in the currently saved configuration. The runtime image uses the saved snapshot. Adding a new version to the directory does not automatically change the existing configuration.
         # 
         # This parameter is required.
         self.language_runtime = language_runtime

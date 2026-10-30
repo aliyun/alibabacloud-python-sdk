@@ -15,17 +15,17 @@ class GetIdentityProviderServiceProviderResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 失败时结合 HTTP 状态及 message 处理。
+        # If the request fails, handle the error based on the HTTP status code and the message.
         self.code = code
-        # 结果结构见本接口返回字段；异步写接口的返回表示受理，不保证后台任务已完成。
+        # For the result structure, see the response fields of this operation. The response of an asynchronous write operation indicates that the request is accepted, but does not guarantee that the background task is completed.
         self.data = data
-        # 本次请求的处理状态，不等同后台任务最终结果。
+        # The processing status of the current request. This is not equivalent to the final result of the background task.
         self.http_status_code = http_status_code
-        # 请求受理或错误消息；异步任务结果需按对应查询接口核对。
+        # The request acceptance or error message. For the result of an asynchronous task, check the corresponding query operation.
         self.message = message
-        # 用于关联本次调用与排障，失败时请保留。
+        # The ID used to associate the current call with troubleshooting. Keep this ID if the request fails.
         self.request_id = request_id
-        # true 表示本次请求处理成功；异步写入仍需继续查询任务结果。
+        # A value of true indicates that the current request is processed successfully. For asynchronous writes, you must continue to query the task result.
         self.success = success
 
     def validate(self):
@@ -88,13 +88,13 @@ class GetIdentityProviderServiceProviderResponseBodyData(DaraModel):
         metadata_xml: str = None,
         protocol: str = None,
     ):
-        # 我方 SAML 断言消费地址，配置到外部 IdP。
+        # The SAML assertion consumer service (ACS) URL of the SP. Configure this URL in the external IdP.
         self.acs_url = acs_url
-        # 我方 SP 的实体标识，配置到外部 IdP；不是外部 IdP Entity ID。
+        # The entity ID of the SP. Configure this ID in the external IdP. This is not the entity ID of the external IdP.
         self.entity_id = entity_id
-        # 我方 SP Metadata XML，供外部 IdP 导入；不能作为 IdP XML 提交 SAML 配置。
+        # The SP metadata XML for the external IdP to import. You cannot submit this XML as the IdP XML for SAML configuration.
         self.metadata_xml = metadata_xml
-        # 查询参数必填，仅支持精确值 SAML；响应返回 SAML。
+        # The query parameter is required and only supports the exact value SAML. The response returns SAML.
         self.protocol = protocol
 
     def validate(self):
