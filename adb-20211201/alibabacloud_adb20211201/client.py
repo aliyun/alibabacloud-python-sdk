@@ -14942,6 +14942,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.exist_running_sqlengine_with_options_async(request, runtime)
 
+    def fork_knowledge_file_with_options(
+        self,
+        request: main_models.ForkKnowledgeFileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ForkKnowledgeFileResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
+        if not DaraCore.is_null(request.file_location):
+            query['FileLocation'] = request.file_location
+        if not DaraCore.is_null(request.tags):
+            query['Tags'] = request.tags
+        if not DaraCore.is_null(request.upload_user):
+            query['UploadUser'] = request.upload_user
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ForkKnowledgeFile',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ForkKnowledgeFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def fork_knowledge_file_with_options_async(
+        self,
+        request: main_models.ForkKnowledgeFileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ForkKnowledgeFileResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
+        if not DaraCore.is_null(request.file_location):
+            query['FileLocation'] = request.file_location
+        if not DaraCore.is_null(request.tags):
+            query['Tags'] = request.tags
+        if not DaraCore.is_null(request.upload_user):
+            query['UploadUser'] = request.upload_user
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ForkKnowledgeFile',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ForkKnowledgeFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def fork_knowledge_file(
+        self,
+        request: main_models.ForkKnowledgeFileRequest,
+    ) -> main_models.ForkKnowledgeFileResponse:
+        runtime = RuntimeOptions()
+        return self.fork_knowledge_file_with_options(request, runtime)
+
+    async def fork_knowledge_file_async(
+        self,
+        request: main_models.ForkKnowledgeFileRequest,
+    ) -> main_models.ForkKnowledgeFileResponse:
+        runtime = RuntimeOptions()
+        return await self.fork_knowledge_file_with_options_async(request, runtime)
+
     def generate_sql_by_semantic_sql_with_options(
         self,
         request: main_models.GenerateSqlBySemanticSqlRequest,
@@ -17873,6 +17959,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.file_ids):
             query['FileIds'] = request.file_ids
+        if not DaraCore.is_null(request.file_location):
+            query['FileLocation'] = request.file_location
         if not DaraCore.is_null(request.page):
             query['Page'] = request.page
         if not DaraCore.is_null(request.page_size):
@@ -17911,6 +17999,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.file_ids):
             query['FileIds'] = request.file_ids
+        if not DaraCore.is_null(request.file_location):
+            query['FileLocation'] = request.file_location
         if not DaraCore.is_null(request.page):
             query['Page'] = request.page
         if not DaraCore.is_null(request.page_size):
@@ -23557,6 +23647,84 @@ class Client(OpenApiClient):
     ) -> main_models.SuspendApsJobResponse:
         runtime = RuntimeOptions()
         return await self.suspend_aps_job_with_options_async(request, runtime)
+
+    def trigger_knowledge_file_parse_with_options(
+        self,
+        request: main_models.TriggerKnowledgeFileParseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TriggerKnowledgeFileParseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
+        if not DaraCore.is_null(request.file_location):
+            query['FileLocation'] = request.file_location
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'TriggerKnowledgeFileParse',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TriggerKnowledgeFileParseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def trigger_knowledge_file_parse_with_options_async(
+        self,
+        request: main_models.TriggerKnowledgeFileParseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TriggerKnowledgeFileParseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
+        if not DaraCore.is_null(request.file_location):
+            query['FileLocation'] = request.file_location
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'TriggerKnowledgeFileParse',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TriggerKnowledgeFileParseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def trigger_knowledge_file_parse(
+        self,
+        request: main_models.TriggerKnowledgeFileParseRequest,
+    ) -> main_models.TriggerKnowledgeFileParseResponse:
+        runtime = RuntimeOptions()
+        return self.trigger_knowledge_file_parse_with_options(request, runtime)
+
+    async def trigger_knowledge_file_parse_async(
+        self,
+        request: main_models.TriggerKnowledgeFileParseRequest,
+    ) -> main_models.TriggerKnowledgeFileParseResponse:
+        runtime = RuntimeOptions()
+        return await self.trigger_knowledge_file_parse_with_options_async(request, runtime)
 
     def unbind_account_with_options(
         self,

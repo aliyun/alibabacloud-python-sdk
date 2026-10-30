@@ -12,10 +12,11 @@ class AddKnowledgeTagsRequest(DaraModel):
         file_location: str = None,
         tags: str = None,
     ):
-        # The database cluster ID.
+        # The ID of the database cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The ID of the file.
         self.file_id = file_id
         # The location of the knowledge base document.
         self.file_location = file_location

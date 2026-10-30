@@ -64,11 +64,11 @@ class ListKnowledgeFilesResponseBodyData(DaraModel):
         self.page = page
         # The number of entries per page.
         self.page_size = page_size
-        # Indicates whether the request was successful. Valid values:
-        # - **true**: The request was successful.
-        # - **false**: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - **true**: The request is successful.
+        # - **false**: The request fails.
         self.success = success
-        # The total number of records.
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -144,7 +144,7 @@ class ListKnowledgeFilesResponseBodyDataFiles(DaraModel):
         process_status: str = None,
         updated_at: str = None,
     ):
-        # The time when the file was added to the knowledge base. The format is yyyy-MM-dd HH:mm:ss.
+        # The time when the file was added to the knowledge base. The time is in the yyyy-MM-dd HH:mm:ss format.
         self.created_at = created_at
         # The ID of the file.
         self.file_id = file_id
@@ -156,11 +156,11 @@ class ListKnowledgeFilesResponseBodyDataFiles(DaraModel):
         self.format = format
         # Indicates whether the file is a directory.
         self.is_directory = is_directory
-        # The file_id of the content host.
+        # The `file_id` of the content host.
         self.owner_file_id = owner_file_id
         # The total number of pages in the file, such as the number of pages in a PDF file.
         self.page_count = page_count
-        # The processing information of the knowledge base file.
+        # The processing message of the knowledge base file.
         self.process_message = process_message
         # The status of the file in the knowledge base. Valid values:
         # 
@@ -168,7 +168,7 @@ class ListKnowledgeFilesResponseBodyDataFiles(DaraModel):
         # 
         # - Finished: The file has been processed.
         self.process_status = process_status
-        # The update time. The format is yyyy-MM-dd HH:mm:ss.
+        # The time when the file was updated. The time is in the yyyy-MM-dd HH:mm:ss format.
         self.updated_at = updated_at
 
     def validate(self):

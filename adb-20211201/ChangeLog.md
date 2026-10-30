@@ -1,3 +1,6 @@
+2026-10-30 Version: 4.6.0
+- Generated python 2021-12-01 for adb.
+
 2026-10-28 Version: 4.5.2
 - Update API AddKnowledgeTags: add request parameters FileId.
 - Update API AddKnowledgeUploadUser: add request parameters FileId.

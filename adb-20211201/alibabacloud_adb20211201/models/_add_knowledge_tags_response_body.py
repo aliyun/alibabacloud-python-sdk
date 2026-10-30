@@ -60,11 +60,11 @@ class AddKnowledgeTagsResponseBodyData(DaraModel):
         self.file_location = file_location
         # The message.
         self.message = message
-        # The number of tags that were successfully updated.
+        # The number of tags that were successfully modified.
         self.replaced = replaced
         # The list of skipped tags.
         self.skipped = skipped
-        # Indicates whether the request was successful. Valid values:
+        # Specifies whether the request was successful. Valid values:
         # - **true**: The request was successful.
         # - **false**: The request failed.
         self.success = success

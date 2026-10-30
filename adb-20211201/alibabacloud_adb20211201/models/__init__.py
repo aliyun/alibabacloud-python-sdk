@@ -532,6 +532,9 @@ from ._execute_spark_warehouse_batch_sqlresponse import ExecuteSparkWarehouseBat
 from ._exist_running_sqlengine_request import ExistRunningSQLEngineRequest
 from ._exist_running_sqlengine_response_body import ExistRunningSQLEngineResponseBody
 from ._exist_running_sqlengine_response import ExistRunningSQLEngineResponse
+from ._fork_knowledge_file_request import ForkKnowledgeFileRequest
+from ._fork_knowledge_file_response_body import ForkKnowledgeFileResponseBody
+from ._fork_knowledge_file_response import ForkKnowledgeFileResponse
 from ._generate_sql_by_semantic_sql_request import GenerateSqlBySemanticSqlRequest
 from ._generate_sql_by_semantic_sql_response_body import GenerateSqlBySemanticSqlResponseBody
 from ._generate_sql_by_semantic_sql_response import GenerateSqlBySemanticSqlResponse
@@ -838,6 +841,9 @@ from ._submit_spark_log_analyze_task_response import SubmitSparkLogAnalyzeTaskRe
 from ._suspend_aps_job_request import SuspendApsJobRequest
 from ._suspend_aps_job_response_body import SuspendApsJobResponseBody
 from ._suspend_aps_job_response import SuspendApsJobResponse
+from ._trigger_knowledge_file_parse_request import TriggerKnowledgeFileParseRequest
+from ._trigger_knowledge_file_parse_response_body import TriggerKnowledgeFileParseResponseBody
+from ._trigger_knowledge_file_parse_response import TriggerKnowledgeFileParseResponse
 from ._unbind_account_request import UnbindAccountRequest
 from ._unbind_account_response_body import UnbindAccountResponseBody
 from ._unbind_account_response import UnbindAccountResponse
@@ -1095,6 +1101,7 @@ from ._describe_worker_detection_response_body import DescribeWorkerDetectionRes
 from ._describe_worker_detection_response_body import DescribeWorkerDetectionResponseBodyDetectionItemsResults
 from ._describe_worker_detection_response_body import DescribeWorkerDetectionResponseBodyDetectionItems
 from ._execute_spark_repl_statement_response_body import ExecuteSparkReplStatementResponseBodyData
+from ._fork_knowledge_file_response_body import ForkKnowledgeFileResponseBodyData
 from ._generate_sql_by_semantic_sql_response_body import GenerateSqlBySemanticSqlResponseBodyData
 from ._get_adbspark_necessary_rampermissions_response_body import GetADBSparkNecessaryRAMPermissionsResponseBodyDataDeniedDetail
 from ._get_adbspark_necessary_rampermissions_response_body import GetADBSparkNecessaryRAMPermissionsResponseBodyData
@@ -1167,6 +1174,7 @@ from ._set_spark_app_log_root_path_response_body import SetSparkAppLogRootPathRe
 from ._start_spark_repl_session_response_body import StartSparkReplSessionResponseBodyData
 from ._start_spark_sqlengine_response_body import StartSparkSQLEngineResponseBodyData
 from ._submit_spark_app_response_body import SubmitSparkAppResponseBodyData
+from ._trigger_knowledge_file_parse_response_body import TriggerKnowledgeFileParseResponseBodyData
 from ._update_aps_webhook_request import UpdateApsWebhookRequestWebhook
 from ._update_lake_storage_request import UpdateLakeStorageRequestPermissions
 from ._update_lake_storage_response_body import UpdateLakeStorageResponseBodyDataPermissions
@@ -1704,6 +1712,9 @@ __all__ = [
     ExistRunningSQLEngineRequest,
     ExistRunningSQLEngineResponseBody,
     ExistRunningSQLEngineResponse,
+    ForkKnowledgeFileRequest,
+    ForkKnowledgeFileResponseBody,
+    ForkKnowledgeFileResponse,
     GenerateSqlBySemanticSqlRequest,
     GenerateSqlBySemanticSqlResponseBody,
     GenerateSqlBySemanticSqlResponse,
@@ -2010,6 +2021,9 @@ __all__ = [
     SuspendApsJobRequest,
     SuspendApsJobResponseBody,
     SuspendApsJobResponse,
+    TriggerKnowledgeFileParseRequest,
+    TriggerKnowledgeFileParseResponseBody,
+    TriggerKnowledgeFileParseResponse,
     UnbindAccountRequest,
     UnbindAccountResponseBody,
     UnbindAccountResponse,
@@ -2267,6 +2281,7 @@ __all__ = [
     DescribeWorkerDetectionResponseBodyDetectionItemsResults,
     DescribeWorkerDetectionResponseBodyDetectionItems,
     ExecuteSparkReplStatementResponseBodyData,
+    ForkKnowledgeFileResponseBodyData,
     GenerateSqlBySemanticSqlResponseBodyData,
     GetADBSparkNecessaryRAMPermissionsResponseBodyDataDeniedDetail,
     GetADBSparkNecessaryRAMPermissionsResponseBodyData,
@@ -2339,6 +2354,7 @@ __all__ = [
     StartSparkReplSessionResponseBodyData,
     StartSparkSQLEngineResponseBodyData,
     SubmitSparkAppResponseBodyData,
+    TriggerKnowledgeFileParseResponseBodyData,
     UpdateApsWebhookRequestWebhook,
     UpdateLakeStorageRequestPermissions,
     UpdateLakeStorageResponseBodyDataPermissions,
