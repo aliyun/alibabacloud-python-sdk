@@ -16,15 +16,15 @@ class ListAuthorizedAppInstanceGroupByUserResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of authorized delivery groups on the current page. This is an empty list if the user has no authorized delivery groups that match the conditions.
+        # The list of authorized delivery groups on the current page. If the user does not have any authorized delivery groups that meet the conditions, an empty list is returned.
         self.app_instance_group_models = app_instance_group_models
-        # The current page number. This value is the same as the PageNumber request parameter.
+        # The current page number. The value is the same as the PageNumber request parameter.
         self.page_number = page_number
-        # The number of delivery groups returned per page. This value is the same as the PageSize request parameter.
+        # The number of delivery groups returned per page. The value is the same as the PageSize request parameter.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of authorized delivery groups that match the filter conditions.
+        # The total number of authorized delivery groups that meet the filter conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -91,37 +91,43 @@ class ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModels(Dar
         gmt_create: str = None,
         region_id: str = None,
         status: str = None,
+        support_user_group_mixed_auth: bool = None,
+        user_group_auth_mode: str = None,
     ):
         # The ID of the application image used by the delivery group.
         self.app_center_image_id = app_center_image_id
-        # The delivery group ID. You can pass this value to the [GetConnectionTicket](~~GetConnectionTicket~~) operation to specify the delivery group to connect to.
+        # The delivery group ID. When you call the [GetConnectionTicket](~~GetConnectionTicket~~) operation, you can specify this value to indicate the delivery group to connect to.
         self.app_instance_group_id = app_instance_group_id
         # The delivery group name.
         self.app_instance_group_name = app_instance_group_name
         # The specification type of the delivery group.
         self.app_instance_type = app_instance_type
-        # The list of applications deployed in the delivery group. This list includes all deployed applications in the delivery group image and is not affected by the AppId or AppName request parameters.
+        # The list of applications deployed in the delivery group. This list includes all applications deployed in the delivery group image and is not affected by the AppId and AppName request parameters.
         self.apps = apps
-        # The expiration time of the delivery group. The value is in the ISO 8601 datetime format with milliseconds and a time zone offset. The returned time zone offset is +00:00. Format: yyyy-MM-ddTHH:mm:ss.SSS+HH:mm.
+        # The expiration time of the delivery group. The time is in ISO 8601 format with milliseconds and a time zone offset of +00:00. Format: yyyy-MM-ddTHH:mm:ss.SSS+HH:mm.
         self.expired_time = expired_time
-        # The creation time of the delivery group. The value is in the ISO 8601 datetime format with milliseconds and a time zone offset. The returned time zone offset is +00:00. Format: yyyy-MM-ddTHH:mm:ss.SSS+HH:mm.
+        # The creation time of the delivery group. The time is in ISO 8601 format with milliseconds and a time zone offset of +00:00. Format: yyyy-MM-ddTHH:mm:ss.SSS+HH:mm.
         self.gmt_create = gmt_create
         # The region ID of the delivery group. For more information about supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
         self.region_id = region_id
-        # The delivery group status. Valid values:
+        # The status of the delivery group. Valid values:
         # 
-        # - DEPLOYING: The delivery group is being created or starting resources and is not yet connectable.
-        # - DEPLOYED: The delivery group is deployed. Resources are ready but the delivery group has not been listed for service.
-        # - PUBLISHED: The delivery group is published and listed. Users can connect to and use the delivery group.
-        # - STOPPING: The delivery group is being delisted and is stopping service.
-        # - STOPPED: The delivery group is delisted and has stopped service. Users cannot connect.
-        # - MAINTAINING: The delivery group is being maintained or updated.
-        # - FAILED: The delivery group failed to publish. Resource initialization failed.
-        # - MAINTAIN_FAILED: The update failed. Maintenance or changes were not successful.
-        # - DELETING: The delivery group is being deleted.
+        # - DEPLOYING: Deploying. The delivery group is creating or starting resources and cannot be connected to.
+        # - DEPLOYED: Deployed. Resources are ready but the delivery group is not published for external services.
+        # - PUBLISHED: Published. The delivery group is published and users can connect to it.
+        # - STOPPING: Unpublishing. The delivery group is stopping services.
+        # - STOPPED: Unpublished. The delivery group has stopped services and users cannot connect to it.
+        # - MAINTAINING: Updating. The delivery group is undergoing maintenance or changes.
+        # - FAILED: Publishing failed. Resource initialization failed.
+        # - MAINTAIN_FAILED: Update failed. Maintenance or changes were not successful.
+        # - DELETING: Deleting. The delivery group is being deleted.
         # 
         # > Deleted delivery groups are not returned.
         self.status = status
+        # Specifies whether mixed authorization of users and user groups is supported.
+        self.support_user_group_mixed_auth = support_user_group_mixed_auth
+        # The authorization mode for users and user groups.
+        self.user_group_auth_mode = user_group_auth_mode
 
     def validate(self):
         if self.apps:
@@ -163,6 +169,12 @@ class ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModels(Dar
         if self.status is not None:
             result['Status'] = self.status
 
+        if self.support_user_group_mixed_auth is not None:
+            result['SupportUserGroupMixedAuth'] = self.support_user_group_mixed_auth
+
+        if self.user_group_auth_mode is not None:
+            result['UserGroupAuthMode'] = self.user_group_auth_mode
+
         return result
 
     def from_map(self, m: dict = None):
@@ -197,6 +209,12 @@ class ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModels(Dar
         if m.get('Status') is not None:
             self.status = m.get('Status')
 
+        if m.get('SupportUserGroupMixedAuth') is not None:
+            self.support_user_group_mixed_auth = m.get('SupportUserGroupMixedAuth')
+
+        if m.get('UserGroupAuthMode') is not None:
+            self.user_group_auth_mode = m.get('UserGroupAuthMode')
+
         return self
 
 class ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModelsApps(DaraModel):
@@ -210,7 +228,7 @@ class ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModelsApps
     ):
         # The URL of the application icon.
         self.app_icon = app_icon
-        # The application ID. Pass this value to the [GetConnectionTicket](~~GetConnectionTicket~~) operation to obtain a connection ticket for the application.
+        # The application ID. When you call the [GetConnectionTicket](~~GetConnectionTicket~~) operation to obtain the connection ticket for the application, specify this value.
         self.app_id = app_id
         # The application name.
         self.app_name = app_name

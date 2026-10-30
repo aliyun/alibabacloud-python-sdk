@@ -16,15 +16,15 @@ class ListPublishedAppInstanceGroupResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of published delivery groups on the current page, sorted by creation time from newest to oldest. An empty list is returned if no results match or if the requested page exceeds the result range.
+        # The list of published delivery groups on the current page, sorted in descending order of creation time. An empty list is returned if no results match or if the requested page exceeds the result range.
         self.app_instance_group_models = app_instance_group_models
-        # The page number specified in this request.
+        # The page number specified in the current request.
         self.page_number = page_number
-        # The number of delivery groups per page specified in the request. Unit: delivery groups. This value does not represent the actual number of delivery groups returned on the current page. The actual number on the current page may be less than this value.
+        # The number of delivery groups per page specified in the request. This value does not represent the actual number of entries returned on the current page. The actual number on the current page may be less than this value.
         self.page_size = page_size
-        # The request ID. You can use this ID to locate and troubleshoot issues.
+        # The unique identifier of the request, which can be used to troubleshoot request issues.
         self.request_id = request_id
-        # The total number of delivery groups that match all filter conditions. Unit: delivery groups. This value is not the number of delivery groups returned on the current page. Each delivery group is counted only once. The value is `0` if no results match.
+        # The total number of delivery groups that meet all filter conditions. This value is not the number of entries returned on the current page. Each delivery group is counted only once. If no results match, the value is `0`.
         self.total_count = total_count
 
     def validate(self):
@@ -91,27 +91,33 @@ class ListPublishedAppInstanceGroupResponseBodyAppInstanceGroupModels(DaraModel)
         gmt_create: str = None,
         region_id: str = None,
         status: str = None,
+        support_user_group_mixed_auth: bool = None,
+        user_group_auth_mode: str = None,
     ):
-        # The application image ID.
+        # The ID of the application image.
         self.app_center_image_id = app_center_image_id
-        # The delivery group ID.
+        # The ID of the delivery group.
         self.app_instance_group_id = app_instance_group_id
-        # The delivery group name.
+        # The name of the delivery group.
         self.app_instance_group_name = app_instance_group_name
-        # The delivery group specification type.
+        # The specification type of the delivery group.
         self.app_instance_type = app_instance_type
-        # The list of deployed applications in the delivery group image. The `AppId` and `AppName` parameters in the request only determine whether a delivery group is included in the results. They do not trim this list to only the matched applications.
+        # The list of deployed applications in the image of the delivery group. The `AppId` and `AppName` parameters in the request only determine whether the delivery group is selected, and do not restrict this list to the matched applications.
         self.apps = apps
-        # The expiration time of the delivery group. For delivery groups sold as resources, this is the resource expiration time. For other delivery groups, this is the delivery group expiration time. The value is in ISO 8601 format with milliseconds and a time zone offset. The returned time zone offset is +00:00. Format: yyyy-MM-ddTHH:mm:ss.SSS+HH:mm.
+        # The expiration time of the delivery group. For delivery groups purchased as resources, the expiration time of their resources is returned. For other delivery groups, the expiration time of the delivery group itself is returned. The time is in ISO 8601 date and time format, including milliseconds and time zone offset. The returned time zone offset is +00:00. Format: yyyy-MM-ddTHH:mm:ss.SSS+HH:mm.
         self.expired_time = expired_time
-        # The creation time of the delivery group. The value is in ISO 8601 format with milliseconds and a time zone offset. The returned time zone offset is +00:00. Format: yyyy-MM-ddTHH:mm:ss.SSS+HH:mm.
+        # The creation time of the delivery group. The time is in ISO 8601 date and time format, including milliseconds and time zone offset. The returned time zone offset is +00:00. Format: yyyy-MM-ddTHH:mm:ss.SSS+HH:mm.
         self.gmt_create = gmt_create
-        # The region ID of the delivery group.
+        # The ID of the region to which the delivery group belongs.
         self.region_id = region_id
-        # The delivery group status. This operation returns delivery groups only in the following status:
+        # The status of the delivery group. This operation only returns delivery groups in the following states:
         # 
-        # - `PUBLISHED`: Published and listed. The delivery group can appear in the query results of this operation. This status does not indicate that a specified user has been granted access permissions.
+        # - `PUBLISHED`: The delivery group is published and listed, and can be included in the query results of this operation. This status does not indicate that a specified user has obtained access permissions.
         self.status = status
+        # Indicates whether mixed authorization for users and user groups is supported.
+        self.support_user_group_mixed_auth = support_user_group_mixed_auth
+        # The authorization mode for users and user groups.
+        self.user_group_auth_mode = user_group_auth_mode
 
     def validate(self):
         if self.apps:
@@ -153,6 +159,12 @@ class ListPublishedAppInstanceGroupResponseBodyAppInstanceGroupModels(DaraModel)
         if self.status is not None:
             result['Status'] = self.status
 
+        if self.support_user_group_mixed_auth is not None:
+            result['SupportUserGroupMixedAuth'] = self.support_user_group_mixed_auth
+
+        if self.user_group_auth_mode is not None:
+            result['UserGroupAuthMode'] = self.user_group_auth_mode
+
         return result
 
     def from_map(self, m: dict = None):
@@ -187,6 +199,12 @@ class ListPublishedAppInstanceGroupResponseBodyAppInstanceGroupModels(DaraModel)
         if m.get('Status') is not None:
             self.status = m.get('Status')
 
+        if m.get('SupportUserGroupMixedAuth') is not None:
+            self.support_user_group_mixed_auth = m.get('SupportUserGroupMixedAuth')
+
+        if m.get('UserGroupAuthMode') is not None:
+            self.user_group_auth_mode = m.get('UserGroupAuthMode')
+
         return self
 
 class ListPublishedAppInstanceGroupResponseBodyAppInstanceGroupModelsApps(DaraModel):
@@ -198,15 +216,15 @@ class ListPublishedAppInstanceGroupResponseBodyAppInstanceGroupModelsApps(DaraMo
         app_version: str = None,
         app_version_name: str = None,
     ):
-        # The application icon.
+        # The icon of the application.
         self.app_icon = app_icon
-        # The application ID.
+        # The ID of the application.
         self.app_id = app_id
-        # The application name.
+        # The name of the application.
         self.app_name = app_name
-        # The application version.
+        # The version of the application.
         self.app_version = app_version
-        # The application version name.
+        # The version name of the application.
         self.app_version_name = app_version_name
 
     def validate(self):

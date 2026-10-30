@@ -15,10 +15,15 @@ class ModifyShareImageRequest(DaraModel):
         product_type: str = None,
         remove_account: List[int] = None,
     ):
+        # The IDs of the Alibaba Cloud accounts to share the image with.
         self.add_account = add_account
+        # The business line. Only the Enterprise Edition scenario is supported. Default value: 1.
         self.biz_type = biz_type
+        # The ID of the source image.
         self.image_id = image_id
+        # The product type, such as Cloud Desktop, cloud application, or workstation.
         self.product_type = product_type
+        # The IDs of the Alibaba Cloud accounts to remove from the image sharing list.
         self.remove_account = remove_account
 
     def validate(self):

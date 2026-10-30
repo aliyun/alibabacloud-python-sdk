@@ -3728,6 +3728,8 @@ class Client(OpenApiClient):
             query['AppName'] = request.app_name
         if not DaraCore.is_null(request.end_user_id):
             query['EndUserId'] = request.end_user_id
+        if not DaraCore.is_null(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -3770,6 +3772,8 @@ class Client(OpenApiClient):
             query['AppName'] = request.app_name
         if not DaraCore.is_null(request.end_user_id):
             query['EndUserId'] = request.end_user_id
+        if not DaraCore.is_null(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -5562,6 +5566,8 @@ class Client(OpenApiClient):
             query['AppName'] = request.app_name
         if not DaraCore.is_null(request.exclude_user_id):
             query['ExcludeUserId'] = request.exclude_user_id
+        if not DaraCore.is_null(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -5604,6 +5610,8 @@ class Client(OpenApiClient):
             query['AppName'] = request.app_name
         if not DaraCore.is_null(request.exclude_user_id):
             query['ExcludeUserId'] = request.exclude_user_id
+        if not DaraCore.is_null(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):

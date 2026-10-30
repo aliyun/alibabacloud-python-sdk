@@ -12,33 +12,36 @@ class ListAuthorizedAppInstanceGroupByUserRequest(DaraModel):
         app_instance_group_name: str = None,
         app_name: str = None,
         end_user_id: str = None,
+        office_site_id: str = None,
         page_number: int = None,
         page_size: int = None,
         product_type: str = None,
     ):
-        # The application ID. Fuzzy matching is supported: delivery groups that contain a deployed application whose ID includes the specified string are returned. You can obtain the application ID from the Apps list returned by this operation.
+        # The application ID. Fuzzy match is supported. Delivery groups in which the IDs of deployed applications contain this string are returned. You can obtain the application ID from the Apps list returned by this operation.
         # 
-        # If this parameter is not specified, no filtering by application ID is applied.
+        # If this parameter is not specified, delivery groups are not filtered by application ID.
         self.app_id = app_id
-        # The delivery group ID. Fuzzy matching is supported: delivery groups whose IDs contain the specified string are returned. You can call the [ListAppInstanceGroup](~~ListAppInstanceGroup~~) operation to obtain the delivery group ID.
+        # The delivery group ID. Fuzzy match is supported. Delivery groups whose IDs contain this string are returned. You can call the [ListAppInstanceGroup](~~ListAppInstanceGroup~~) operation to obtain the ID.
         # 
-        # If this parameter is not specified, no filtering by delivery group ID is applied.
+        # If this parameter is not specified, delivery groups are not filtered by delivery group ID.
         self.app_instance_group_id = app_instance_group_id
-        # The delivery group name. Fuzzy matching is supported. For example, if you set this parameter to `Office App`, delivery groups whose names contain `Office App` (such as `My Office App` or `Office App A`) are returned.
+        # The delivery group name. Fuzzy match is supported. For example, if you specify Office applications, delivery groups whose names contain Office applications (such as My office applications and Office applications A) are returned.
         # 
-        # If this parameter is not specified, no filtering by delivery group name is applied.
+        # If this parameter is not specified, delivery groups are not filtered by delivery group name.
         self.app_instance_group_name = app_instance_group_name
-        # The application name. Fuzzy matching is supported: delivery groups that contain a deployed application whose name includes the specified string are returned.
+        # The application name. Fuzzy match is supported. Delivery groups in which the names of deployed applications contain this string are returned.
         # 
-        # If this parameter is not specified, no filtering by application name is applied.
+        # If this parameter is not specified, delivery groups are not filtered by application name.
         self.app_name = app_name
-        # The username. An **exact match** is performed on the username to query the delivery groups for which the user has been granted delivery group-level authorization.
+        # The username. Exact match is used to query the delivery groups for which the user has been granted delivery group-level authorization.
         # 
-        # > This parameter is required. If this parameter is not specified, the error code `InvalidParameter.UserId` is returned.
+        # > This parameter is required. If this parameter is not specified, the InvalidParameter.UserId error code is returned.
         # 
         # This parameter is required.
         self.end_user_id = end_user_id
-        # The page number. Pages start from page 1.
+        # The office network ID.
+        self.office_site_id = office_site_id
+        # The page number. Pages start from 1.
         # 
         # This parameter is required.
         self.page_number = page_number
@@ -46,17 +49,17 @@ class ListAuthorizedAppInstanceGroupByUserRequest(DaraModel):
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The product type. The value must match the product type of the delivery groups to query. Only delivery groups of the specified product type are returned.
+        # The product type. The value must be the same as the product type of the delivery groups to be queried. Only delivery groups of this product type are returned.
         # 
         # Valid values:
         # 
-        # - CloudApp: WUYING Cloud Application.
-        # - CloudBrowser: cloud browser.
+        # - CloudApp: Wuying Cloud App.
+        # - CloudBrowser: Cloud Browser.
         # - WuyingServer: Enterprise Edition workstation.
-        # - WuyingWorkstation: Personal Edition Lingjun container workstation.
-        # - WuyingWorkstationTeam: Team Edition Lingjun container workstation.
-        # - WuyingWorkstationBusiness: Dedicated Edition Lingjun container workstation.
-        # - AndroidCloud: cloud phone.
+        # - WuyingWorkstation: Personal Edition Linggou container workstation.
+        # - WuyingWorkstationTeam: Team Edition Linggou container workstation.
+        # - WuyingWorkstationBusiness: Exclusive Edition Linggou container workstation.
+        # - AndroidCloud: Cloud Phone.
         # - AIAgent: AgentBay (AI agent).
         # 
         # This parameter is required.
@@ -85,6 +88,9 @@ class ListAuthorizedAppInstanceGroupByUserRequest(DaraModel):
         if self.end_user_id is not None:
             result['EndUserId'] = self.end_user_id
 
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
+
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
 
@@ -112,6 +118,9 @@ class ListAuthorizedAppInstanceGroupByUserRequest(DaraModel):
 
         if m.get('EndUserId') is not None:
             self.end_user_id = m.get('EndUserId')
+
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
 
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
