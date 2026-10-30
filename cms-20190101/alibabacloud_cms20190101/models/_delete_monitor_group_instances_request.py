@@ -8,21 +8,26 @@ class DeleteMonitorGroupInstancesRequest(DaraModel):
     def __init__(
         self,
         category: str = None,
+        dry_run: bool = None,
         group_id: int = None,
         instance_id_list: str = None,
         region_id: str = None,
     ):
         # The abbreviation of the cloud service name.
         # 
-        # > For more information about how to obtain the abbreviation of a cloud service name, see `metricCategory` in the response parameter `Labels` of the [DescribeProjectMeta](https://help.aliyun.com/document_detail/114916.html) operation.
+        # > For more information about how to obtain the abbreviation of a cloud service name, see the `metricCategory` field in the `Labels` response parameter of the [DescribeProjectMeta](https://help.aliyun.com/document_detail/114916.html) operation.
         # 
         # This parameter is required.
         self.category = category
+        # Specifies whether to perform only a dry run on the request. Valid values:
+        # - **true**: performs a dry run. The system checks the required parameters, request format, and service limits, but does not delete the instances. If the request fails the check, an error is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+        # - **false** (default): performs a normal request. If the request passes the check, the instances are deleted.
+        self.dry_run = dry_run
         # The ID of the application group.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The instances to be removed from the application group. Separate multiple instances with commas (,). You can remove a maximum of 20 instances from an application group at a time.
+        # The IDs of the instances to be deleted. Separate multiple instance IDs with commas (,). You can delete up to 20 instances at a time.
         # 
         # This parameter is required.
         self.instance_id_list = instance_id_list
@@ -39,6 +44,9 @@ class DeleteMonitorGroupInstancesRequest(DaraModel):
         if self.category is not None:
             result['Category'] = self.category
 
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
         if self.group_id is not None:
             result['GroupId'] = self.group_id
 
@@ -54,6 +62,9 @@ class DeleteMonitorGroupInstancesRequest(DaraModel):
         m = m or dict()
         if m.get('Category') is not None:
             self.category = m.get('Category')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')

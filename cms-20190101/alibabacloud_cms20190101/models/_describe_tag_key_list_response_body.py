@@ -16,14 +16,14 @@ class DescribeTagKeyListResponseBody(DaraModel):
         success: bool = None,
         tag_keys: main_models.DescribeTagKeyListResponseBodyTagKeys = None,
     ):
-        # 状态码。
-        # >200表示成功。
+        # The status code.
+        # >A value of 200 indicates success.
         self.code = code
-        # 错误信息。
+        # The error message.
         self.message = message
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
-        # 用于标识本次调用是否成功
+        # Indicates whether the call was successful.
         self.success = success
         self.tag_keys = tag_keys
 

@@ -16,20 +16,20 @@ class PutResourceMetricRulesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 状态码。
+        # The HTTP status code.
         # 
-        # >200表示成功。
+        # > A status code of 200 indicates success.
         self.code = code
         self.failed_list_result = failed_list_result
-        # 错误信息。
+        # The error message.
         self.message = message
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
-        # 操作是否成功。取值：
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # - true：成功。
+        # - true: The operation was successful.
         # 
-        # - false：失败。
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):

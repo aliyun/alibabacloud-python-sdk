@@ -14,17 +14,17 @@ class DisableEventRulesResponseBody(DaraModel):
     ):
         # The status code.
         # 
-        # > A value of 200 indicates that the request was successful.
+        # > 200 indicates success.
         self.code = code
         # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful. Valid values:
+        # Indicates whether the operation is successful. Valid values:
         # 
-        # - true: The operation was successful.
+        # - true: Successful.
         # 
-        # - false: The operation failed.
+        # - false: Failed.
         self.success = success
 
     def validate(self):

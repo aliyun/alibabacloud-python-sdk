@@ -9,32 +9,36 @@ from darabonba.model import DaraModel
 class InstallMonitoringAgentRequest(DaraModel):
     def __init__(
         self,
+        dry_run: bool = None,
         force: bool = None,
         install_command: str = None,
         instance_ids: List[str] = None,
         region_id: str = None,
     ):
+        # Specifies whether to perform a dry run on the request. The dry run includes checks on permissions and instance status. Valid values:
+        # 
+        # - **false** (default): Sends a normal request. After the request passes the check, the name and description of the route table are directly modified.
+        # - **true**: Sends a dry run request. Only checks are performed, and the name and description of the route table are not modified. Check items include whether required parameters are specified and the request format. If the check fails, an error is returned. If the check succeeds, the DryRunOperation error code is returned.
+        self.dry_run = dry_run
         # Specifies whether to forcibly install the CloudMonitor agent. Valid values:
-        # 
         # - true (default): Forcibly installs the agent.
-        # 
         # - false: Does not forcibly install the agent.
         self.force = force
-        # The installation command. This command installs the CloudMonitor agent on all Alibaba Cloud hosts that belong to your Alibaba Cloud account. Valid values:
+        # Installs the CloudMonitor agent on all Alibaba Cloud hosts within the current Alibaba Cloud account. Valid values:
         # 
-        # - `onlyInstallNotHasAgent`: Installs the latest version of the CloudMonitor agent only on Alibaba Cloud hosts where the agent is not installed.
+        # - onlyInstallNotHasAgent: Installs the latest version of the agent only on Alibaba Cloud hosts on which the CloudMonitor agent is not installed.
         # 
-        # - `onlyUpgradeAgent`: Upgrades the CloudMonitor agent only on Alibaba Cloud hosts where an earlier version of the agent is installed.
+        # - onlyUpgradeAgent: Upgrades the agent only on Alibaba Cloud hosts on which a non-latest version of the CloudMonitor agent is installed.
         # 
-        # - `installAndUpgrade`: Installs the latest version of the CloudMonitor agent on Alibaba Cloud hosts where the agent is not installed, and upgrades the agent on Alibaba Cloud hosts where an earlier version of the agent is installed.
+        # - installAndUpgrade: Installs the latest version of the agent on Alibaba Cloud hosts on which the CloudMonitor agent is not installed, and upgrades the agent on Alibaba Cloud hosts on which a non-latest version of the CloudMonitor agent is installed.
         # 
-        # > If you set this parameter, the `InstanceIds` parameter is invalid.
+        # > If you specify this parameter, the InstanceIds parameter becomes invalid.
         self.install_command = install_command
-        # The IDs of the Alibaba Cloud hosts.
+        # The ID of the Alibaba Cloud host.
         # 
-        # You can specify from 1 to 10 instance IDs.
+        # Valid values of N: 1 to 10.
         # 
-        # > You must specify either `InstallCommand` or `InstanceIds`.
+        # > You must specify either InstallCommand or InstanceIds.
         self.instance_ids = instance_ids
         self.region_id = region_id
 
@@ -46,6 +50,9 @@ class InstallMonitoringAgentRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
         if self.force is not None:
             result['Force'] = self.force
 
@@ -62,6 +69,9 @@ class InstallMonitoringAgentRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+
         if m.get('Force') is not None:
             self.force = m.get('Force')
 

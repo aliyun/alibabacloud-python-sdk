@@ -21,48 +21,47 @@ class DescribeMetricRuleBlackListRequest(DaraModel):
         region_id: str = None,
         scope_type: str = None,
     ):
-        # The category of the Alibaba Cloud service. For example, Redis has different editions, such as `kvstore_standard` (Standard Edition), `kvstore_sharding` (Cluster Edition), and `kvstore_splitrw` (Read/write Splitting Edition).
+        # The category of the Alibaba Cloud service. For example, ApsaraDB for Redis has `kvstore_standard` (Standard Edition), `kvstore_sharding` (Cluster Edition), and `kvstore_splitrw` (read/write splitting Edition).
         self.category = category
-        # The IDs of the blacklist policies.
+        # The IDs of the alert blacklist policies.
         self.ids = ids
-        # The IDs of instances in the blacklist policy.
+        # The instance ID list in the alert blacklist policy.
         # 
-        # The value of N can be an integer from 0 to 10.
+        # Valid values of N: 0 to 10.
         self.instance_ids = instance_ids
-        # The status of the blacklist policy. Valid values:
+        # The status of the alert blacklist policy. Valid values:
         # 
-        # - true: enabled.
-        # 
-        # - false: disabled.
+        # - true: Enabled.
+        # - false: Disabled.
         self.is_enable = is_enable
-        # The name of the blacklist policy.
+        # The name of the alert blacklist policy.
         # 
-        # Fuzzy queries are supported.
+        # This parameter supports fuzzy match.
         self.name = name
         # The namespace of the Alibaba Cloud service.
         # 
-        # For more information, see [Metrics](https://help.aliyun.com/document_detail/163515.html).
+        # For information about the namespaces of Alibaba Cloud services, see [Cloud service metrics](https://help.aliyun.com/document_detail/163515.html).
         self.namespace = namespace
-        # The order in which to sort the results by time. Valid values:
+        # The order in which the query results are sorted by time. Valid values:
         # 
-        # - DESC (default): descending order.
+        # 0: ascending order (ASC).
         # 
-        # - ASC: ascending order.
+        # 1: descending order (DESC). This is the default value.
         self.order = order
         # The page number.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
         # Default value: 10.
         self.page_size = page_size
         self.region_id = region_id
-        # The scope of the blacklist policy. Valid values:
+        # The effective scope of the alert blacklist policy. Valid values:
         # 
-        # - USER: The blacklist policy takes effect only for the current Alibaba Cloud account.
+        # - USER: The alert blacklist policy takes effect only within the current Alibaba Cloud account.
         # 
-        # - GROUP: The blacklist policy takes effect for the specified application groups.
+        # - GROUP: The alert blacklist policy takes effect in the specified application groups.
         self.scope_type = scope_type
 
     def validate(self):

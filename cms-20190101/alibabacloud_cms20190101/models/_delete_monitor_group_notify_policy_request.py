@@ -13,9 +13,9 @@ class DeleteMonitorGroupNotifyPolicyRequest(DaraModel):
     ):
         # The ID of the application group.
         self.group_id = group_id
-        # The type of the policy.
+        # The type of the pause notification.
         # 
-        # Valid value: PauseNotify.
+        # Currently, only PauseNotify is supported.
         # 
         # This parameter is required.
         self.policy_type = policy_type

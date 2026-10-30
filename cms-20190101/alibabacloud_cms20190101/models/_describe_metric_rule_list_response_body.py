@@ -18,9 +18,9 @@ class DescribeMetricRuleListResponseBody(DaraModel):
         total: str = None,
     ):
         self.alarms = alarms
-        # The status code.
+        # The HTTP status code.
         # 
-        # >A value of 200 indicates success.
+        # >200 indicates success.
         self.code = code
         # The error message.
         self.message = message
@@ -28,9 +28,9 @@ class DescribeMetricRuleListResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the operation was successful. Valid values:
         # 
-        # - true: The operation was successful.
+        # - true: Successful.
         # 
-        # - false: The operation failed.
+        # - false: Failed.
         self.success = success
         # The total number of records.
         self.total = total

@@ -11,9 +11,9 @@ class DescribeContactGroupListRequest(DaraModel):
         page_size: int = None,
         region_id: str = None,
     ):
-        # Page number.
+        # The page number.
         self.page_number = page_number
-        # Number of records per page.
+        # The number of records per page.
         self.page_size = page_size
         self.region_id = region_id
 

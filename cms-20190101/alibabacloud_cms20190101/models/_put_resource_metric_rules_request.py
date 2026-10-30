@@ -10,8 +10,13 @@ from darabonba.model import DaraModel
 class PutResourceMetricRulesRequest(DaraModel):
     def __init__(
         self,
+        dry_run: bool = None,
         rules: List[main_models.PutResourceMetricRulesRequestRules] = None,
     ):
+        # Specifies whether to only precheck the request. Valid values:
+        # - **true**: The system only prechecks the request and does not bind a security group to the instance. The system checks whether required parameters are specified, the request format, and service limits. If the request fails the precheck, the corresponding error is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+        # - **false** (default): The system sends a normal request. After the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
+        self.dry_run = dry_run
         # The list of threshold alert rules.
         # 
         # Valid values of N: 1 to 50.
@@ -30,6 +35,9 @@ class PutResourceMetricRulesRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
         result['Rules'] = []
         if self.rules is not None:
             for k1 in self.rules:
@@ -39,6 +47,9 @@ class PutResourceMetricRulesRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+
         self.rules = []
         if m.get('Rules') is not None:
             for k1 in m.get('Rules'):
@@ -69,107 +80,107 @@ class PutResourceMetricRulesRequestRules(DaraModel):
         webhook: str = None,
     ):
         self.escalations = escalations
-        # 报警联系组。报警通知会发送给该报警联系组中的报警联系人。
+        # The alert contact group. Alert notifications are sent to the alert contacts in this alert contact group.
         # 
-        # N的取值范围：1~50。
+        # Valid values of N: 1 to 50.
         # 
-        # > 报警联系组是一组报警联系人，可以包含一个或多个报警联系人。关于如何创建报警联系人和报警联系组，请参见[PutContact](https://help.aliyun.com/document_detail/114923.html)和[PutContactGroup](https://help.aliyun.com/document_detail/114929.html)。
+        # > An alert contact group is a group of alert contacts and can contain one or more alert contacts. For more information about how to create alert contacts and alert contact groups, see [PutContact](https://help.aliyun.com/document_detail/114923.html) and [PutContactGroup](https://help.aliyun.com/document_detail/114929.html).
         # 
         # This parameter is required.
         self.contact_groups = contact_groups
-        # 报警规则的生效时间范围。
+        # The effective period of the alert rule.
         # 
-        # N的取值范围：1~50。
+        # Valid values of N: 1 to 50.
         self.effective_interval = effective_interval
-        # 报警邮件主题。
+        # The subject of the alert email.
         # 
-        # N的取值范围：1~50。
+        # Valid values of N: 1 to 50.
         self.email_subject = email_subject
-        # 报警规则的触发周期。
+        # The trigger period of the alert rule.
         # 
-        # 单位：秒。
+        # Unit: seconds.
         # 
-        # N的取值范围：1~50。
+        # Valid values of N: 1 to 50.
         # 
-        # >关于如何查询监控项的统计周期，请参见[云产品监控项](https://help.aliyun.com/document_detail/163515.html)。
+        # > For more information about how to query the statistical period of a monitoring metric, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
         self.interval = interval
-        # 当监控项达到报警条件并进行报警时，标签同时写入监控项，在报警通知中进行展示。
+        # The labels that are written to the metric and displayed in the alert notification when the metric meets the alert condition and an alert is triggered.
         self.labels = labels
-        # 监控项名称。
+        # The monitoring metric name.
         # 
-        # N的取值范围：1~50。
+        # Valid values of N: 1 to 50.
         # 
-        # 关于如何查询监控项名称，请参见[云产品监控项](https://help.aliyun.com/document_detail/163515.html)。
+        # For more information about how to query the monitoring metric name, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
         self.metric_name = metric_name
-        # 云产品的数据命名空间。
+        # The data namespace of the Alibaba Cloud service.
         # 
-        # N的取值范围：1~50。
+        # Valid values of N: 1 to 50.
         # 
-        # 关于如何查询云产品的数据命名空间，请参见[云产品监控项](https://help.aliyun.com/document_detail/163515.html)。
+        # For more information about how to query the data namespace of an Alibaba Cloud service, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
         # 
         # This parameter is required.
         self.namespace = namespace
-        # 无监控数据时报警的处理方式。取值：
+        # The handling method for alerts when no monitoring data is available. Valid values:
         # 
-        # - KEEP_LAST_STATE（默认值）：不做任何处理。
-        # - INSUFFICIENT_DATA：报警内容为无数据。
-        # - OK：正常。
+        # - KEEP_LAST_STATE (default): No operations are performed.
+        # - INSUFFICIENT_DATA: The alert content indicates that no data is available.
+        # - OK: Normal.
         # 
-        # N的取值范围：1~50。
+        # Valid values of N: 1 to 50.
         self.no_data_policy = no_data_policy
-        # 报警规则的失效时间范围。
+        # The inactive time range of the alert rule.
         # 
-        # N的取值范围：1~50。
+        # Valid values of N: 1 to 50.
         self.no_effective_interval = no_effective_interval
-        # 监控项的统计周期。
+        # The statistical period of the monitoring metric.
         # 
-        # 单位：秒。默认为监控项的原始上报周期。
+        # Unit: seconds. Default value: the original reporting period of the monitoring metric.
         # 
-        # N的取值范围：1~50。
+        # Valid values of N: 1 to 50.
         # 
-        # >关于如何查询监控项的统计周期，请参见[云产品监控项](https://help.aliyun.com/document_detail/163515.html)。
+        # > For more information about how to query the statistical period of a monitoring metric, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
         self.period = period
-        # 资源信息，例如：`[{"instanceId":"i-uf6j91r34rnwawoo****"}]`、`[{"userId":"100931896542****"}]`。
+        # The resource information. Examples: `[{"instanceId":"i-uf6j91r34rnwawoo****"}]` and `[{"userId":"100931896542****"}]`.
         # 
-        # N的取值范围：1~50。
+        # Valid values of N: 1 to 50.
         # 
-        # 关于资源信息支持的维度Dimensions，请参见[云产品监控项](https://help.aliyun.com/document_detail/163515.html)。
+        # For more information about the dimensions supported by resource information, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
         # 
         # This parameter is required.
         self.resources = resources
-        # 报警规则ID。
+        # The ID of the alert rule.
         # 
-        # N的取值范围：1~50。
+        # Valid values of N: 1 to 50.
         # 
-        # 您可以输入新的报警规则ID，也可以使用云监控已存在的报警规则ID。关于如何查询报警规则ID，请参见[DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html)。
+        # You can enter a new alert rule ID or use an existing alert rule ID in CloudMonitor. For more information about how to query the ID of an alert rule, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
         # 
-        # > 输入新的报警规则ID，表示创建一条阈值报警规则。
+        # > If you enter a new alert rule ID, a threshold alert rule is created.
         # 
         # This parameter is required.
         self.rule_id = rule_id
-        # 报警规则名称。
+        # The name of the alert rule.
         # 
-        # N的取值范围：1~50。
+        # Valid values of N: 1 to 50.
         # 
-        # 您可以输入新的报警规则名称，也可以使用云监控已存在的报警规则名称。关于如何查询报警规则名称，请参见[DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html)。
+        # You can enter a new alert rule name or use an existing alert rule name in CloudMonitor. For more information about how to query the name of an alert rule, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
         # 
-        # > 输入新的报警规则名称，表示创建一条阈值报警规则。
+        # > If you enter a new alert rule name, a threshold alert rule is created.
         # 
         # This parameter is required.
         self.rule_name = rule_name
-        # 是否发送恢复通知
+        # Specifies whether to send a recovery notification.
         self.send_ok = send_ok
-        # 通道沉默周期。
+        # The mute epoch.
         # 
-        # 单位：秒，默认值：86400。
+        # Unit: seconds. Default value: 86400.
         # 
-        # N的取值范围：1~50。
+        # Valid values of N: 1 to 50.
         # 
-        # > 通道沉默周期是指报警发生后未恢复正常，间隔多久重新发送一次报警通知。
+        # > The mute epoch refers to the interval at which to send an alert notification again if the alert does not recover to Normal after it is triggered.
         self.silence_time = silence_time
-        # 报警发生回调时指定的URL地址，向URL发送POST请求。
+        # The webhook URL to which a POST request is sent when an alert callback is triggered.
         # 
-        # N的取值范围：1~50。
+        # Valid values of N: 1 to 50.
         self.webhook = webhook
 
     def validate(self):
@@ -305,11 +316,11 @@ class PutResourceMetricRulesRequestRulesLabels(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # 标签键。
+        # The tag key.
         self.key = key
-        # 标签值。
+        # The tag value.
         # 
-        # > 标签值支持模板参数，将模板参数替换为实际标签值。
+        # > Tag values support template parameters. The template parameters are replaced with the actual tag values.
         self.value = value
 
     def validate(self):
@@ -399,46 +410,46 @@ class PutResourceMetricRulesRequestRulesEscalationsWarn(DaraModel):
         threshold: str = None,
         times: int = None,
     ):
-        # Warn级别阈值比较符。取值：
+        # The comparison operator for the Warn-level threshold. Valid values:
         # 
-        # - GreaterThanOrEqualToThreshold：大于等于。
-        # - GreaterThanThreshold：大于。
-        # - LessThanOrEqualToThreshold：小于等于。
-        # - LessThanThreshold：小于。
-        # - NotEqualToThreshold：不等于。
-        # - EqualToThreshold：等于。
-        # - GreaterThanYesterday：同比昨天时间上涨。
-        # - LessThanYesterday：同比昨天时间下降。
-        # - GreaterThanLastWeek：同比上周同一时间上涨。
-        # - LessThanLastWeek：同比上周同一时间下降。
-        # - GreaterThanLastPeriod：环比上周期上涨。
-        # - LessThanLastPeriod：环比上周期下降。
+        # - GreaterThanOrEqualToThreshold: greater than or equal to.
+        # - GreaterThanThreshold: greater than.
+        # - LessThanOrEqualToThreshold: less than or equal to.
+        # - LessThanThreshold: less than.
+        # - NotEqualToThreshold: not equal to.
+        # - EqualToThreshold: equal to.
+        # - GreaterThanYesterday: greater than the value at the same time yesterday.
+        # - LessThanYesterday: less than the value at the same time yesterday.
+        # - GreaterThanLastWeek: greater than the value at the same time last week.
+        # - LessThanLastWeek: less than the value at the same time last week.
+        # - GreaterThanLastPeriod: greater than the value in the previous period.
+        # - LessThanLastPeriod: less than the value in the previous period.
         # 
-        # N的取值范围：1~50。
+        # Valid values of N: 1 to 50.
         # 
-        # > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+        # > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
         self.comparison_operator = comparison_operator
         self.n = n
         self.pre_condition = pre_condition
-        # Warn级别报警统计方法。
+        # The statistical method for Warn-level alerts.
         # 
-        # N的取值范围：1~50。
+        # Valid values of N: 1 to 50.
         # 
-        # 该参数的取值由指定云产品的`MetricName`对应的`Statistics`列决定，例如：Maximum、Minimum和Average。关于如何获取该参数的取值，请参见[云产品监控项](https://help.aliyun.com/document_detail/163515.html)。
+        # The value of this parameter is determined by the `Statistics` column corresponding to the `MetricName` parameter of the specified Alibaba Cloud service, such as Maximum, Minimum, and Average. For more information about how to obtain the value of this parameter, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
         # 
-        # > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+        # > You must configure the Settings for at least one of the following alert levels: Critical, Warn (warning), and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
         self.statistics = statistics
-        # Warn级别报警阈值。
+        # The threshold for Warn-level alerts.
         # 
-        # N的取值范围：1~50。
+        # Valid values of N: 1 to 50.
         # 
-        # > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+        # > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
         self.threshold = threshold
-        # Warn级别报警重试次数。
+        # The number of retries for Warn-level alerts.
         # 
-        # N的取值范围：1~50。
+        # Valid values of N: 1 to 50.
         # 
-        # > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+        # > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
         self.times = times
 
     def validate(self):
@@ -501,44 +512,44 @@ class PutResourceMetricRulesRequestRulesEscalationsInfo(DaraModel):
         threshold: str = None,
         times: int = None,
     ):
-        # Info级别阈值比较符。取值：
+        # The comparison operator for the Info-level threshold. Valid values:
         # 
-        # - GreaterThanOrEqualToThreshold：大于等于。
-        # - GreaterThanThreshold：大于。
-        # - LessThanOrEqualToThreshold：小于等于。
-        # - LessThanThreshold：小于。
-        # - NotEqualToThreshold：不等于。
-        # - EqualToThreshold：等于。
-        # - GreaterThanYesterday：同比昨天时间上涨。
-        # - LessThanYesterday：同比昨天时间下降。
-        # - GreaterThanLastWeek：同比上周同一时间上涨。
-        # - LessThanLastWeek：同比上周同一时间下降。
-        # - GreaterThanLastPeriod：环比上周期上涨。
-        # - LessThanLastPeriod：环比上周期下降。
+        # - GreaterThanOrEqualToThreshold: greater than or equal to.
+        # - GreaterThanThreshold: greater than.
+        # - LessThanOrEqualToThreshold: less than or equal to.
+        # - LessThanThreshold: less than.
+        # - NotEqualToThreshold: not equal to.
+        # - EqualToThreshold: equal to.
+        # - GreaterThanYesterday: greater than the value at the same time yesterday.
+        # - LessThanYesterday: less than the value at the same time yesterday.
+        # - GreaterThanLastWeek: greater than the value at the same time last week.
+        # - LessThanLastWeek: less than the value at the same time last week.
+        # - GreaterThanLastPeriod: greater than the value in the previous period.
+        # - LessThanLastPeriod: less than the value in the previous period.
         # 
-        # N的取值范围：1~50。
+        # Valid values of N: 1 to 50.
         # 
-        # > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+        # > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
         self.comparison_operator = comparison_operator
         self.n = n
         self.pre_condition = pre_condition
-        # Info级别报警统计方法。
+        # The statistical method for Info-level alerts.
         # 
-        # N的取值范围：1~50。
+        # Valid values of N: 1 to 50.
         # 
-        # 该参数的取值由指定云产品的`MetricName`对应的`Statistics`列决定，例如：Maximum、Minimum和Average。关于如何获取该参数的取值，请参见[云产品监控项](https://help.aliyun.com/document_detail/163515.html)。
+        # The value of this parameter is determined by the `Statistics` column corresponding to the `MetricName` parameter of the specified Alibaba Cloud service, such as Maximum, Minimum, and Average. For more information about how to obtain the value of this parameter, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
         # 
-        # > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+        # > You must configure the Settings for at least one of the following alert levels: Critical, Warn (warning), and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
         self.statistics = statistics
-        # Info级别报警阈值。
+        # The threshold for Info-level alerts.
         # 
-        # > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+        # > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
         self.threshold = threshold
-        # Info级别报警重试次数。
+        # The number of retries for Info-level alerts.
         # 
-        # N的取值范围：1~50。
+        # Valid values of N: 1 to 50.
         # 
-        # > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+        # > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
         self.times = times
 
     def validate(self):
@@ -601,47 +612,47 @@ class PutResourceMetricRulesRequestRulesEscalationsCritical(DaraModel):
         threshold: str = None,
         times: int = None,
     ):
-        # Critical级别阈值比较符。取值：
+        # The comparison operator for the Critical-level threshold. Valid values:
         # 
-        # - GreaterThanOrEqualToThreshold：大于等于。
-        # - GreaterThanThreshold：大于。
-        # - LessThanOrEqualToThreshold：小于等于。
-        # - LessThanThreshold：小于。
-        # - NotEqualToThreshold：不等于。
-        # - EqualToThreshold：等于。
-        # - GreaterThanYesterday：同比昨天时间上涨。
-        # - LessThanYesterday：同比昨天时间下降。
-        # - GreaterThanLastWeek：同比上周同一时间上涨。
-        # - LessThanLastWeek：同比上周同一时间下降。
-        # - GreaterThanLastPeriod：环比上周期上涨。
-        # - LessThanLastPeriod：环比上周期下降。
+        # - GreaterThanOrEqualToThreshold: greater than or equal to.
+        # - GreaterThanThreshold: greater than.
+        # - LessThanOrEqualToThreshold: less than or equal to.
+        # - LessThanThreshold: less than.
+        # - NotEqualToThreshold: not equal to.
+        # - EqualToThreshold: equal to.
+        # - GreaterThanYesterday: greater than the value at the same time yesterday.
+        # - LessThanYesterday: less than the value at the same time yesterday.
+        # - GreaterThanLastWeek: greater than the value at the same time last week.
+        # - LessThanLastWeek: less than the value at the same time last week.
+        # - GreaterThanLastPeriod: greater than the value in the previous period.
+        # - LessThanLastPeriod: less than the value in the previous period.
         # 
-        # N的取值范围：1~50。
+        # Valid values of N: 1 to 50.
         # 
-        # > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+        # > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
         self.comparison_operator = comparison_operator
         self.n = n
         self.pre_condition = pre_condition
-        # Critical级别报警统计方法。
+        # The statistical method for Critical-level alerts.
         # 
-        # N的取值范围：1~50。
+        # Valid values of N: 1 to 50.
         # 
-        # 该参数的取值由指定云产品的`MetricName`对应的`Statistics`列决定，例如：Maximum、Minimum和Average。关于如何获取该参数的取值，请参见[云产品监控项](https://help.aliyun.com/document_detail/163515.html)。
+        # The value of this parameter is determined by the `Statistics` column corresponding to the `MetricName` parameter of the specified Alibaba Cloud service, such as Maximum, Minimum, and Average. For more information about how to obtain the value of this parameter, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
         # 
-        # > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+        # > You must configure the Settings for at least one of the following alert levels: Critical, Warn (warning), and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
         self.statistics = statistics
-        # Critical级别报警阈值。
+        # The threshold for Critical-level alerts.
         # 
-        # N的取值范围：1~50。
+        # Valid values of N: 1 to 50.
         # 
         # 
-        # > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+        # > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
         self.threshold = threshold
-        # Critical级别报警重试次数。
+        # The number of retries for Critical-level alerts.
         # 
-        # N的取值范围：1~50。
+        # Valid values of N: 1 to 50.
         # 
-        # > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+        # > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
         self.times = times
 
     def validate(self):

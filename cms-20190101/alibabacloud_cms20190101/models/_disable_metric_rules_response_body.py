@@ -14,13 +14,15 @@ class DisableMetricRulesResponseBody(DaraModel):
     ):
         # The status code.
         # 
-        # > A value of 200 indicates that the request was successful.
+        # > 200 indicates success.
         self.code = code
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful. A value of \\`true\\` indicates success and a value of \\`false\\` indicates failure.
+        # Indicates whether the operation is successful. Valid values:
+        # - true: The operation is successful.
+        # - false: The operation fails.
         self.success = success
 
     def validate(self):

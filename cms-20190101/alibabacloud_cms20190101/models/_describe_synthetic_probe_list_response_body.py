@@ -24,7 +24,10 @@ class DescribeSyntheticProbeListResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful. Valid values: true: The operation was successful. false: The operation failed.
+        # Indicates whether the operation is successful. Valid values:
+        # 
+        # - true: The operation is successful.
+        # - false: The operation fails.
         self.success = success
 
     def validate(self):
@@ -102,43 +105,43 @@ class DescribeSyntheticProbeListResponseBodyIspCityList(DaraModel):
         region_cn: str = None,
         region_en: str = None,
     ):
-        # The name of the area in Chinese.
+        # The Chinese name of the region.
         self.area_cn = area_cn
-        # The name of the area in English.
+        # The English name of the region.
         self.area_en = area_en
         # The city ID.
         self.city = city
-        # The name of the city in Chinese.
+        # The Chinese name of the city.
         self.city_cn = city_cn
-        # The name of the city in English.
+        # The English name of the city.
         self.city_en = city_en
         # The country code.
         self.country = country
-        # The name of the country in Chinese.
+        # The Chinese name of the country.
         self.country_cn = country_cn
-        # The name of the country or region in English.
+        # The English name of the country or region.
         self.country_en = country_en
-        # The number of IPv4 detection points in data centers.
+        # The number of IPv4 nodes in the IDC.
         self.idc_v4probe_count = idc_v4probe_count
-        # The number of IDC IPv6 nodes.
+        # The number of IPv6 nodes in the IDC.
         self.idc_v6probe_count = idc_v6probe_count
         # The list of node IP addresses.
         self.ip_pool = ip_pool
         # The carrier ID.
         self.isp = isp
-        # The name of the carrier in Chinese.
+        # The Chinese name of the carrier.
         self.isp_cn = isp_cn
-        # The name of the carrier in English.
+        # The English name of the carrier.
         self.isp_en = isp_en
-        # The number of last-mile detection points.
+        # The number of Lastmile detection points.
         self.lm_probe_count = lm_probe_count
         # The number of mobile detection points.
         self.mb_probe_count = mb_probe_count
         # The province code.
         self.region = region
-        # The name of the province in Chinese.
+        # The Chinese name of the province.
         self.region_cn = region_cn
-        # The name of the province in English.
+        # The English name of the province.
         self.region_en = region_en
 
     def validate(self):

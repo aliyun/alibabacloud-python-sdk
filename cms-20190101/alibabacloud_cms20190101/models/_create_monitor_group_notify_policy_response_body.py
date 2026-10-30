@@ -13,15 +13,15 @@ class CreateMonitorGroupNotifyPolicyResponseBody(DaraModel):
         result: int = None,
         success: str = None,
     ):
-        # The HTTP status code.
+        # The status code.
         # 
-        # >The value 200 indicates success.
+        # > 200 indicates success.
         self.code = code
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The number of entries returned for the creation result.
+        # The number of affected rows.
         self.result = result
         # Indicates whether the operation was successful. Valid values:
         # 

@@ -18,19 +18,15 @@ class DescribeEventRuleListRequest(DaraModel):
         self.group_id = group_id
         # Specifies whether to enable the event-triggered alert rule. Valid values:
         # 
-        # - true (default)
+        # - true: enabled. This is the default value.
         # 
-        # - false
+        # - false: disabled.
         self.is_enable = is_enable
-        # The prefix in the name of the event-triggered alert rule.
+        # The prefix of the event-triggered alert rule.
         self.name_prefix = name_prefix
-        # The page number.
-        # 
-        # Pages start from page 1. Default value: 1.
+        # The page number. Minimum value: 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.
-        # 
-        # Pages start from page 1. Default value: 10.
+        # The number of entries to return on each page. Minimum value: 1. Default value: 10.
         self.page_size = page_size
         self.region_id = region_id
 

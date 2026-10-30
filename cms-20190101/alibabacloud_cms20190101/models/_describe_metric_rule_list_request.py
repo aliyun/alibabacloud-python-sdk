@@ -19,18 +19,18 @@ class DescribeMetricRuleListRequest(DaraModel):
         rule_ids: str = None,
         rule_name: str = None,
     ):
-        # The state of the alert rule. Valid values:
+        # The status of the alert rule. Valid values:
         # - OK: Normal.
         # - ALARM: Alert.
         # - INSUFFICIENT_DATA: No data.
         self.alert_state = alert_state
         # The monitoring dimensions of the specified resource.
         # 
-        # Format: a collection of `key:value` pairs. Example: `{"userId":"120886317861****"}` and `{"instanceId":"i-2ze2d6j5uhg20x47****"}`.
+        # Format: A collection of `key:value` pairs, for example, `{"userId":"120886317861****"}` and `{"instanceId":"i-2ze2d6j5uhg20x47****"}`.
         self.dimensions = dimensions
         # The enabled state of the alert rule. Valid values:
-        # - true: enabled.
-        # - false: disabled.
+        # - true: Enabled.
+        # - false: Disabled.
         self.enable_state = enable_state
         # The ID of the application group.
         # 
@@ -38,13 +38,13 @@ class DescribeMetricRuleListRequest(DaraModel):
         self.group_id = group_id
         # The metric name.
         # 
-        # For information about how to obtain metric names, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html) or [cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
+        # For information about how to obtain metric names, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html) or [Cloud service metrics](https://help.aliyun.com/document_detail/163515.html).
         # 
-        # Note: For composite metrics, you can retrieve results only by the first metric.
+        # Note: For composite metrics, you can only search by the first metric.
         self.metric_name = metric_name
-        # The namespace of the Alibaba Cloud service.
+        # The namespace of the cloud service.
         # 
-        # For information about how to obtain the namespace of an Alibaba Cloud service, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html) or [cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
+        # For information about how to obtain the namespace of a cloud service, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html) or [Cloud service metrics](https://help.aliyun.com/document_detail/163515.html).
         self.namespace = namespace
         # The page number.
         # 
@@ -55,11 +55,11 @@ class DescribeMetricRuleListRequest(DaraModel):
         # Minimum value: 1. Default value: 10.
         self.page_size = page_size
         self.region_id = region_id
-        # The IDs of the alert rules. Separate multiple IDs with commas (,). You can query up to 20 alert rules at a time.
+        # The IDs of alert rules. Separate multiple IDs with commas (,). You can query up to 20 alert rules at a time.
         self.rule_ids = rule_ids
         # The name of the alert rule.
         # 
-        # This parameter supports fuzzy match.
+        # This parameter supports fuzzy search.
         self.rule_name = rule_name
 
     def validate(self):

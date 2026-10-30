@@ -16,21 +16,21 @@ class DescribeAlertLogHistogramResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The number of alert logs that were generated during each interval of a time period.
+        # The histogram list of alert history.
         self.alert_log_histogram_list = alert_log_histogram_list
-        # The response code.
+        # The status code.
         # 
-        # > The status code 200 indicates that the request was successful.
+        # > The value 200 indicates success.
         self.code = code
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # - true
+        # - true: Successful.
         # 
-        # - false
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -92,13 +92,13 @@ class DescribeAlertLogHistogramResponseBodyAlertLogHistogramList(DaraModel):
         from_: int = None,
         to: int = None,
     ):
-        # The number of alert logs.
+        # The number of alert history entries.
         self.count = count
-        # The start timestamp of the queried alert logs.
+        # The start timestamp for querying alert history.
         # 
         # Unit: seconds.
         self.from_ = from_
-        # The end timestamp of the queried alert logs.
+        # The end timestamp for querying alert history.
         # 
         # Unit: seconds.
         self.to = to

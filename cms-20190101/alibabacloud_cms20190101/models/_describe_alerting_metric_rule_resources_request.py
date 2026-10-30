@@ -16,17 +16,17 @@ class DescribeAlertingMetricRuleResourcesRequest(DaraModel):
         region_id: str = None,
         rule_id: str = None,
     ):
-        # Queries the alerts that were triggered before the specified time. Timestamps in milliseconds are supported.
+        # Queries alerts that occurred before this point in time. The value is a millisecond-level timestamp.
         self.alert_before_time = alert_before_time
-        # The dimensions that specify the resources whose monitoring data you want to query.
+        # The dimension map used to query monitoring data of a specified resource.
         self.dimensions = dimensions
-        # The ID of the application group. For information about how to obtain the ID of an application group, see [DescribeMonitorGroups](https://help.aliyun.com/document_detail/115032.html).
+        # The ID of the application group. For more information about how to query application group IDs, see [DescribeMonitorGroups](https://help.aliyun.com/document_detail/115032.html).
         self.group_id = group_id
-        # The namespace of the cloud service.
+        # The data namespace of the Alibaba Cloud service.
         # 
-        # For more information about the namespaces of cloud services, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+        # For more information about how to obtain the data namespace of an Alibaba Cloud service, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
         self.namespace = namespace
-        # The page number.
+        # The page number. 
         # 
         # Default value: 1.
         self.page = page
@@ -35,7 +35,7 @@ class DescribeAlertingMetricRuleResourcesRequest(DaraModel):
         # Default value: 10.
         self.page_size = page_size
         self.region_id = region_id
-        # The ID of the alert rule. For information about how to obtain the ID of an alert rule, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+        # The ID of the alert rule. For more information about how to query alert rule IDs, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
         self.rule_id = rule_id
 
     def validate(self):

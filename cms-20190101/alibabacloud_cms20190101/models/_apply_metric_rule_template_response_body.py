@@ -16,21 +16,20 @@ class ApplyMetricRuleTemplateResponseBody(DaraModel):
         resource: main_models.ApplyMetricRuleTemplateResponseBodyResource = None,
         success: bool = None,
     ):
-        # The responses code.
-        # 
-        # > The status code 200 indicates that the request was successful.
+        # The status code.
+        # >A status code of 200 indicates success.
         self.code = code
-        # The returned message.
+        # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The resources that are affected by the alert rule.
+        # The resources affected by the alert rule.
         self.resource = resource
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the operation is successful. Valid values:
         # 
-        # - true
+        # - true: The operation is successful.
         # 
-        # - false
+        # - false: The operation fails.
         self.success = success
 
     def validate(self):
@@ -85,7 +84,7 @@ class ApplyMetricRuleTemplateResponseBodyResource(DaraModel):
         alert_results: List[main_models.ApplyMetricRuleTemplateResponseBodyResourceAlertResults] = None,
         group_id: int = None,
     ):
-        # The details of the generated alert rule.
+        # The detailed results of the generated alert rules.
         self.alert_results = alert_results
         # The ID of the application group.
         self.group_id = group_id
@@ -133,9 +132,8 @@ class ApplyMetricRuleTemplateResponseBodyResourceAlertResults(DaraModel):
         rule_name: str = None,
         success: bool = None,
     ):
-        # The responses code.
-        # 
-        # > The status code 200 indicates that the request was successful.
+        # The status code.
+        # >A status code of 200 indicates success.
         self.code = code
         # The returned message.
         self.message = message
@@ -143,11 +141,11 @@ class ApplyMetricRuleTemplateResponseBodyResourceAlertResults(DaraModel):
         self.rule_id = rule_id
         # The name of the alert rule.
         self.rule_name = rule_name
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the operation is successful. Valid values:
         # 
-        # - true
+        # - true: The operation is successful.
         # 
-        # - false
+        # - false: The operation fails.
         self.success = success
 
     def validate(self):

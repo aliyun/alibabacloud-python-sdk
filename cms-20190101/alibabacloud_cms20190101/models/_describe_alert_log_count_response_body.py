@@ -16,21 +16,21 @@ class DescribeAlertLogCountResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The statistics of alert logs.
+        # The alert history statistics.
         self.alert_log_count = alert_log_count
-        # The HTTP status code.
+        # The status code.
         # 
-        # > The status code 200 indicates that the request was successful.
+        # > The value 200 indicates success.
         self.code = code
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # - true
+        # - true: Successful.
         # 
-        # - false
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -91,9 +91,9 @@ class DescribeAlertLogCountResponseBodyAlertLogCount(DaraModel):
         count: int = None,
         logs: List[main_models.DescribeAlertLogCountResponseBodyAlertLogCountLogs] = None,
     ):
-        # The number of alert logs.
+        # The number of alert history statistics.
         self.count = count
-        # The details about alert logs.
+        # The details of the alert history statistics.
         self.logs = logs
 
     def validate(self):
@@ -136,9 +136,9 @@ class DescribeAlertLogCountResponseBodyAlertLogCountLogs(DaraModel):
         name: str = None,
         value: str = None,
     ):
-        # The name of the dimension field based on which alert logs are aggregated.
+        # The field name of the alert history statistics.
         self.name = name
-        # The value of the dimension field based on which alert logs are aggregated.
+        # The field value of the alert history statistics.
         self.value = value
 
     def validate(self):

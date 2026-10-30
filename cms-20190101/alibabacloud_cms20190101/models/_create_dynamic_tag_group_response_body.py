@@ -13,9 +13,8 @@ class CreateDynamicTagGroupResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code.
-        # 
-        # > A status code of 200 indicates that the request was successful.
+        # The HTTP status code.
+        # > A status code of 200 indicates success.
         self.code = code
         # The ID of the tag matching rule.
         self.id = id

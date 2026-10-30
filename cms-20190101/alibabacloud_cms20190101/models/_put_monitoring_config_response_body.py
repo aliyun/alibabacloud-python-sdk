@@ -12,19 +12,19 @@ class PutMonitoringConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code.
         # 
-        # > The status code 200 indicates that the request was successful.
+        # > 200 indicates success.
         self.code = code
-        # The returned message.
+        # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # - true
+        # - true: Successful.
         # 
-        # - false
+        # - false: Failed.
         self.success = success
 
     def validate(self):

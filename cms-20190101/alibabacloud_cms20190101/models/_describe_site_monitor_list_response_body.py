@@ -19,9 +19,9 @@ class DescribeSiteMonitorListResponseBody(DaraModel):
         success: str = None,
         total_count: int = None,
     ):
-        # The HTTP status code.
+        # The status code.
         # 
-        # > The value 200 indicates success.
+        # > 200 indicates success.
         self.code = code
         # The returned message.
         self.message = message

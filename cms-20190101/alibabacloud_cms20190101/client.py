@@ -22,49 +22,46 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
-            'us-west-1': 'metrics.us-west-1.aliyuncs.com',
+            'cn-beijing': 'metrics.cn-beijing.aliyuncs.com',
+            'cn-zhengzhou-jva': 'metrics.cn-zhengzhou-jva.aliyuncs.com',
+            'cn-heyuan': 'metrics.cn-heyuan.aliyuncs.com',
+            'cn-zhangjiakou': 'metrics.cn-zhangjiakou.aliyuncs.com',
+            'ap-northeast-2': 'metrics.ap-northeast-2.aliyuncs.com',
+            'ap-northeast-1': 'metrics.ap-northeast-1.aliyuncs.com',
+            'ap-southeast-1': 'metrics.ap-southeast-1.aliyuncs.com',
+            'ap-southeast-3': 'metrics.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-5': 'metrics.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-6': 'metrics.ap-southeast-6.aliyuncs.com',
+            'ap-southeast-7': 'metrics.ap-southeast-7.aliyuncs.com',
+            'ap-southeast-8': 'metrics.ap-southeast-8.aliyuncs.com',
+            'cn-zhongwei': 'metrics.cn-zhongwei.aliyuncs.com',
+            'cn-wulanchabu': 'metrics.cn-wulanchabu.aliyuncs.com',
+            'cn-qingdao': 'metrics.cn-qingdao.aliyuncs.com',
+            'cn-wuhan-lr': 'metrics.cn-wuhan-lr.aliyuncs.com',
+            'cn-shanghai': 'metrics.cn-shanghai.aliyuncs.com',
+            'cn-hongkong': 'metrics.cn-hongkong.aliyuncs.com',
+            'cn-shenzhen': 'metrics.cn-shenzhen.aliyuncs.com',
+            'cn-chengdu': 'metrics.cn-chengdu.aliyuncs.com',
+            'cn-guangzhou': 'metrics.cn-guangzhou.aliyuncs.com',
+            'cn-huhehaote': 'metrics.cn-huhehaote.aliyuncs.com',
+            'cn-hangzhou': 'metrics.cn-hangzhou.aliyuncs.com',
             'us-southeast-1': 'metrics.us-southeast-1.aliyuncs.com',
+            'eu-west-1': 'metrics.eu-west-1.aliyuncs.com',
+            'eu-west-2': 'metrics.eu-west-2.aliyuncs.com',
+            'eu-central-1': 'metrics.eu-central-1.aliyuncs.com',
             'us-east-1': 'metrics.us-east-1.aliyuncs.com',
+            'us-west-1': 'metrics.us-west-1.aliyuncs.com',
             'na-south-1': 'metrics.na-south-1.aliyuncs.com',
             'me-east-1': 'metrics.me-east-1.aliyuncs.com',
-            'me-central-1': 'metrics.me-central-1.aliyuncs.com',
-            'eu-west-2': 'metrics.eu-west-2.aliyuncs.com',
-            'eu-west-1': 'metrics.eu-west-1.aliyuncs.com',
-            'eu-central-1': 'metrics.eu-central-1.aliyuncs.com',
-            'cn-zhongwei': 'metrics.cn-zhongwei.aliyuncs.com',
-            'cn-zhengzhou-jva': 'metrics.cn-zhengzhou-jva.aliyuncs.com',
-            'cn-zhangjiakou': 'metrics.cn-zhangjiakou.aliyuncs.com',
-            'cn-wulanchabu-gic-1': 'metrics.cn-wulanchabu-gic-1.aliyuncs.com',
-            'cn-wulanchabu': 'metrics.cn-wulanchabu.aliyuncs.com',
-            'cn-wuhan-lr': 'metrics.cn-wuhan-lr.aliyuncs.com',
-            'cn-shenzhen-finance-1': 'metrics.cn-shenzhen-finance-1.aliyuncs.com',
-            'cn-shenzhen': 'metrics.cn-shenzhen.aliyuncs.com',
-            'cn-shanghai-finance-1': 'metrics.cn-shanghai-finance-1.aliyuncs.com',
-            'cn-shanghai': 'metrics.cn-shanghai.aliyuncs.com',
-            'cn-qingdao': 'metrics.cn-qingdao.aliyuncs.com',
-            'cn-north-2-gov-1': 'metrics.cn-north-2-gov-1.aliyuncs.com',
-            'cn-nanjing': 'metrics.cn-nanjing.aliyuncs.com',
-            'cn-huhehaote': 'metrics.cn-huhehaote.aliyuncs.com',
-            'cn-hongkong': 'metrics.cn-hongkong.aliyuncs.com',
-            'cn-heyuan-acdr-1': 'metrics.cn-heyuan-acdr-1.aliyuncs.com',
-            'cn-heyuan': 'metrics.cn-heyuan.aliyuncs.com',
-            'cn-hangzhou-finance': 'metrics.cn-hangzhou-finance.aliyuncs.com',
-            'cn-hangzhou': 'metrics.cn-hangzhou.aliyuncs.com',
-            'cn-guangzhou': 'metrics.cn-guangzhou.aliyuncs.com',
-            'cn-fuzhou': 'metrics.cn-fuzhou.aliyuncs.com',
-            'cn-chengdu': 'metrics.cn-chengdu.aliyuncs.com',
-            'cn-beijing-finance-1': 'metrics.cn-beijing-finance-1.aliyuncs.com',
-            'cn-beijing': 'metrics.cn-beijing.aliyuncs.com',
-            'ap-southeast-8': 'metrics.ap-southeast-8.aliyuncs.com',
-            'ap-southeast-7': 'metrics.ap-southeast-7.aliyuncs.com',
-            'ap-southeast-6': 'metrics.ap-southeast-6.aliyuncs.com',
-            'ap-southeast-5': 'metrics.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-3': 'metrics.ap-southeast-3.aliyuncs.com',
-            'ap-southeast-2': 'metrics.ap-southeast-2.aliyuncs.com',
-            'ap-southeast-1': 'metrics.ap-southeast-1.aliyuncs.com',
             'ap-south-1': 'metrics.ap-south-1.aliyuncs.com',
-            'ap-northeast-2': 'metrics.ap-northeast-2.aliyuncs.com',
-            'ap-northeast-1': 'metrics.ap-northeast-1.aliyuncs.com'
+            'me-central-1': 'metrics.me-central-1.aliyuncs.com',
+            'cn-hangzhou-finance': 'metrics.cn-hangzhou-finance.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'metrics.cn-shenzhen-finance-1.aliyuncs.com',
+            'cn-beijing-finance-1': 'metrics.cn-beijing-finance-1.aliyuncs.com',
+            'cn-shanghai-finance-1': 'metrics.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-wulanchabu-gic-1': 'metrics.cn-wulanchabu-gic-1.aliyuncs.com',
+            'cn-heyuan-acdr-1': 'metrics.cn-heyuan-acdr-1.aliyuncs.com',
+            'cn-north-2-gov-1': 'metrics.cn-north-2-gov-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('cms', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -170,6 +167,8 @@ class Client(OpenApiClient):
             query['AppendMode'] = request.append_mode
         if not DaraCore.is_null(request.apply_mode):
             query['ApplyMode'] = request.apply_mode
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.enable_end_time):
             query['EnableEndTime'] = request.enable_end_time
         if not DaraCore.is_null(request.enable_start_time):
@@ -214,6 +213,8 @@ class Client(OpenApiClient):
             query['AppendMode'] = request.append_mode
         if not DaraCore.is_null(request.apply_mode):
             query['ApplyMode'] = request.apply_mode
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.enable_end_time):
             query['EnableEndTime'] = request.enable_end_time
         if not DaraCore.is_null(request.enable_start_time):
@@ -434,6 +435,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.contact_group_list):
             query['ContactGroupList'] = request.contact_group_list
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.enable_install_agent):
             query['EnableInstallAgent'] = request.enable_install_agent
         if not DaraCore.is_null(request.enable_subscribe_event):
@@ -476,6 +479,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.contact_group_list):
             query['ContactGroupList'] = request.contact_group_list
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.enable_install_agent):
             query['EnableInstallAgent'] = request.enable_install_agent
         if not DaraCore.is_null(request.enable_subscribe_event):
@@ -1510,6 +1515,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.contact_groups):
             query['ContactGroups'] = request.contact_groups
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.group_name):
             query['GroupName'] = request.group_name
         req = open_api_util_models.OpenApiRequest(
@@ -1540,6 +1547,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.contact_groups):
             query['ContactGroups'] = request.contact_groups
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.group_name):
             query['GroupName'] = request.group_name
         req = open_api_util_models.OpenApiRequest(
@@ -1672,6 +1681,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateMonitorGroupInstancesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
         if not DaraCore.is_null(request.instances):
@@ -1702,6 +1713,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateMonitorGroupInstancesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
         if not DaraCore.is_null(request.instances):
@@ -3406,6 +3419,8 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteMetricRulesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.id):
             query['Id'] = request.id
         req = open_api_util_models.OpenApiRequest(
@@ -3434,6 +3449,8 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteMetricRulesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.id):
             query['Id'] = request.id
         req = open_api_util_models.OpenApiRequest(
@@ -3476,6 +3493,8 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteMonitorGroupResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
         req = open_api_util_models.OpenApiRequest(
@@ -3504,6 +3523,8 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteMonitorGroupResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
         req = open_api_util_models.OpenApiRequest(
@@ -3622,6 +3643,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.category):
             query['Category'] = request.category
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
         if not DaraCore.is_null(request.instance_id_list):
@@ -3654,6 +3677,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.category):
             query['Category'] = request.category
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
         if not DaraCore.is_null(request.instance_id_list):
@@ -10096,6 +10121,8 @@ class Client(OpenApiClient):
     ) -> main_models.DisableMetricRulesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.rule_id):
             query['RuleId'] = request.rule_id
         req = open_api_util_models.OpenApiRequest(
@@ -10124,6 +10151,8 @@ class Client(OpenApiClient):
     ) -> main_models.DisableMetricRulesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.rule_id):
             query['RuleId'] = request.rule_id
         req = open_api_util_models.OpenApiRequest(
@@ -10236,6 +10265,10 @@ class Client(OpenApiClient):
     ) -> main_models.EnableActiveMetricRuleResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.product):
             query['Product'] = request.product
         req = open_api_util_models.OpenApiRequest(
@@ -10264,6 +10297,10 @@ class Client(OpenApiClient):
     ) -> main_models.EnableActiveMetricRuleResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.product):
             query['Product'] = request.product
         req = open_api_util_models.OpenApiRequest(
@@ -10520,6 +10557,8 @@ class Client(OpenApiClient):
     ) -> main_models.EnableMetricRulesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.rule_id):
             query['RuleId'] = request.rule_id
         req = open_api_util_models.OpenApiRequest(
@@ -10548,6 +10587,8 @@ class Client(OpenApiClient):
     ) -> main_models.EnableMetricRulesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.rule_id):
             query['RuleId'] = request.rule_id
         req = open_api_util_models.OpenApiRequest(
@@ -10660,6 +10701,8 @@ class Client(OpenApiClient):
     ) -> main_models.InstallMonitoringAgentResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.force):
             query['Force'] = request.force
         if not DaraCore.is_null(request.install_command):
@@ -10692,6 +10735,8 @@ class Client(OpenApiClient):
     ) -> main_models.InstallMonitoringAgentResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.force):
             query['Force'] = request.force
         if not DaraCore.is_null(request.install_command):
@@ -12602,6 +12647,8 @@ class Client(OpenApiClient):
             query['ContactGroups'] = request.contact_groups
         if not DaraCore.is_null(request.dimensions):
             query['Dimensions'] = request.dimensions
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.effective_interval):
             query['EffectiveInterval'] = request.effective_interval
         if not DaraCore.is_null(request.email_subject):
@@ -12668,6 +12715,8 @@ class Client(OpenApiClient):
             query['ContactGroups'] = request.contact_groups
         if not DaraCore.is_null(request.dimensions):
             query['Dimensions'] = request.dimensions
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.effective_interval):
             query['EffectiveInterval'] = request.effective_interval
         if not DaraCore.is_null(request.email_subject):
@@ -13008,6 +13057,8 @@ class Client(OpenApiClient):
     ) -> main_models.PutMonitorGroupDynamicRuleResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
         if not DaraCore.is_null(request.group_rules):
@@ -13040,6 +13091,8 @@ class Client(OpenApiClient):
     ) -> main_models.PutMonitorGroupDynamicRuleResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
         if not DaraCore.is_null(request.group_rules):
@@ -13088,6 +13141,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.auto_install):
             query['AutoInstall'] = request.auto_install
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.enable_install_agent_new_ecs):
             query['EnableInstallAgentNewECS'] = request.enable_install_agent_new_ecs
         req = open_api_util_models.OpenApiRequest(
@@ -13118,6 +13173,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.auto_install):
             query['AutoInstall'] = request.auto_install
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.enable_install_agent_new_ecs):
             query['EnableInstallAgentNewECS'] = request.enable_install_agent_new_ecs
         req = open_api_util_models.OpenApiRequest(
@@ -13170,6 +13227,8 @@ class Client(OpenApiClient):
             query['CompositeExpression'] = request.composite_expression_shrink
         if not DaraCore.is_null(request.contact_groups):
             query['ContactGroups'] = request.contact_groups
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.effective_interval):
             query['EffectiveInterval'] = request.effective_interval
         if not DaraCore.is_null(request.email_subject):
@@ -13240,6 +13299,8 @@ class Client(OpenApiClient):
             query['CompositeExpression'] = request.composite_expression_shrink
         if not DaraCore.is_null(request.contact_groups):
             query['ContactGroups'] = request.contact_groups
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.effective_interval):
             query['EffectiveInterval'] = request.effective_interval
         if not DaraCore.is_null(request.email_subject):
@@ -13314,6 +13375,8 @@ class Client(OpenApiClient):
     ) -> main_models.PutResourceMetricRulesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.rules):
             query['Rules'] = request.rules
         req = open_api_util_models.OpenApiRequest(
@@ -13342,6 +13405,8 @@ class Client(OpenApiClient):
     ) -> main_models.PutResourceMetricRulesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.rules):
             query['Rules'] = request.rules
         req = open_api_util_models.OpenApiRequest(

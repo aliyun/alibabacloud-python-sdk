@@ -11,11 +11,9 @@ class DescribeMonitorResourceQuotaAttributeRequest(DaraModel):
         show_used: bool = None,
     ):
         self.region_id = region_id
-        # Specifies whether to return information about used quotas. Valid values:
-        # 
-        # - true (default): yes
-        # 
-        # - false: no
+        # Specifies whether the response includes used quotas. Valid values:
+        # - true (default): Included.
+        # - false: Not included.
         self.show_used = show_used
 
     def validate(self):

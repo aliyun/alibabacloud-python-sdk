@@ -16,9 +16,9 @@ class BatchCreateInstantSiteMonitorResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code.
+        # The HTTP status code.
         # 
-        # > A value of 200 indicates that the request was successful.
+        # > A value of 200 indicates that the operation is successful.
         self.code = code
         # The information about the site monitoring tasks.
         self.data = data
@@ -26,11 +26,9 @@ class BatchCreateInstantSiteMonitorResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful. Valid values:
-        # 
-        # - true: The operation was successful.
-        # 
-        # - false: The operation failed.
+        # Indicates whether the operation is successful. Valid values:
+        # * true: The operation is successful.
+        # * false: The operation fails.
         self.success = success
 
     def validate(self):

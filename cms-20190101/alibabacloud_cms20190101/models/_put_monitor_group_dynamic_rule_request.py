@@ -10,11 +10,13 @@ from darabonba.model import DaraModel
 class PutMonitorGroupDynamicRuleRequest(DaraModel):
     def __init__(
         self,
+        dry_run: bool = None,
         group_id: int = None,
         group_rules: List[main_models.PutMonitorGroupDynamicRuleRequestGroupRules] = None,
         is_async: bool = None,
         region_id: str = None,
     ):
+        self.dry_run = dry_run
         # The ID of the application group.
         # 
         # This parameter is required.
@@ -42,6 +44,9 @@ class PutMonitorGroupDynamicRuleRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
         if self.group_id is not None:
             result['GroupId'] = self.group_id
 
@@ -60,6 +65,9 @@ class PutMonitorGroupDynamicRuleRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
 

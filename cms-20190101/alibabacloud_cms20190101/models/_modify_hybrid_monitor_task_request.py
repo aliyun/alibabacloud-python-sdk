@@ -18,7 +18,7 @@ class ModifyHybridMonitorTaskRequest(DaraModel):
         task_id: str = None,
         task_name: str = None,
     ):
-        # The tags of the metric.
+        # The labels of the metric.
         self.attach_labels = attach_labels
         # The collection interval of the metric. Valid values:
         # 
@@ -119,11 +119,11 @@ class ModifyHybridMonitorTaskRequestSLSProcessConfig(DaraModel):
         group_by: List[main_models.ModifyHybridMonitorTaskRequestSLSProcessConfigGroupBy] = None,
         statistics: List[main_models.ModifyHybridMonitorTaskRequestSLSProcessConfigStatistics] = None,
     ):
-        # The arithmetic operation result of the extended field in the SLS log statistics result.
+        # The arithmetic result of the extended fields for the SLS log statistics result.
         self.express = express
         # The filter conditions for parameters in the SLS log.
         self.filter = filter
-        # Aggregates data by spatial dimension, which is equivalent to GROUP BY in SQL.
+        # The spatial dimension used to aggregate data, which is equivalent to the GROUP BY clause in SQL.
         self.group_by = group_by
         # None.
         self.statistics = statistics
@@ -207,17 +207,17 @@ class ModifyHybridMonitorTaskRequestSLSProcessConfigStatistics(DaraModel):
         # The alias of the SLS log statistics result.
         self.alias = alias
         # The statistical method used to aggregate log data within a statistical period. Valid values:
-        # - count: counts the number of occurrences.
+        # - count: counts the number of entries.
         # - sum: calculates the sum.
         # - avg: calculates the average.
         # - max: returns the maximum value.
         # - min: returns the minimum value.
         # - value: samples within the period.
-        # - countps: calculates the per-second average of the count for the specified field within the statistical period.
-        # - sumps: calculates the per-second average of the sum for the specified field within the statistical period.
+        # - countps: calculates the average count per second for the specified field within the statistical period.
+        # - sumps: calculates the average sum per second for the specified field within the statistical period.
         # - distinct: calculates the number of occurrences of the specified field after deduplication within the statistical period.
         # - distribution: calculates the number of occurrences of field values within a specified range.
-        # - percentile: calculates the distribution value of field values, such as P50.
+        # - percentile: calculates the distribution value of field values, for example, P50.
         self.function = function
         # The statistical value of the SLS log.
         # 
@@ -227,7 +227,7 @@ class ModifyHybridMonitorTaskRequestSLSProcessConfigStatistics(DaraModel):
         self.parameter_1 = parameter_1
         # The statistical value of the SLS log.
         # 
-        # > This parameter is required only when `Function` is set to `distribution`. It specifies the upper limit of the statistical range. For example, to count the number of 2XX HTTP status codes, set this parameter to 299.
+        # > This parameter is required only when `Function` is set to `distribution`. This parameter specifies the upper limit of the statistical range. For example, to count the number of 2XX HTTP status codes, set this parameter to 299.
         self.parameter_2 = parameter_2
         # The name of the parameter for SLS log statistics.
         self.slskey_name = slskey_name
@@ -323,8 +323,8 @@ class ModifyHybridMonitorTaskRequestSLSProcessConfigFilter(DaraModel):
         self.filters = filters
         # The relationship between multiple filter conditions. Valid values:
         # 
-        # - and (default): Logs are processed only when all filter conditions are met.
-        # - or: Logs are processed when any filter condition is met.
+        # - and (default): The log is processed only when all filter conditions are met.
+        # - or: The log is processed when any filter condition is met.
         self.relation = relation
 
     def validate(self):
@@ -421,9 +421,9 @@ class ModifyHybridMonitorTaskRequestSLSProcessConfigExpress(DaraModel):
         alias: str = None,
         express: str = None,
     ):
-        # The alias of the arithmetic operation result of the extended field in the SLS log statistics result.
+        # The alias of the arithmetic result of the extended fields for the SLS log statistics result.
         self.alias = alias
-        # The arithmetic operation result of the extended field in the SLS log statistics result.
+        # The arithmetic result of the extended fields for the SLS log statistics result.
         self.express = express
 
     def validate(self):
@@ -458,9 +458,9 @@ class ModifyHybridMonitorTaskRequestAttachLabels(DaraModel):
         name: str = None,
         value: str = None,
     ):
-        # The tag key of the metric.
+        # The label key of the metric.
         self.name = name
-        # The tag value of the metric.
+        # The label value of the metric.
         self.value = value
 
     def validate(self):

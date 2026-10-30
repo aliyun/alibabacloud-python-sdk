@@ -17,22 +17,22 @@ class DescribeHostAvailabilityListResponseBody(DaraModel):
         task_list: main_models.DescribeHostAvailabilityListResponseBodyTaskList = None,
         total: int = None,
     ):
-        # The HTTP status code.
+        # The status code.
         # 
-        # > The status code 200 indicates that the request was successful.
+        # >The value 200 indicates success.
         self.code = code
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # - true
+        # - true: Successful.
         # 
-        # - false
+        # - false: Failed.
         self.success = success
         self.task_list = task_list
-        # The total number of returned entries.
+        # The total number of records.
         self.total = total
 
     def validate(self):

@@ -12,18 +12,15 @@ class DeleteContactGroupResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code.
         # 
-        # > The value 200 indicates success.
+        # > A value of 200 indicates success.
         self.code = code
         # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful. Valid values:
-        # 
-        # - true: Successful.
-        # - false: Failed.
+        # Indicates whether the operation was successful. A value of true indicates success, and a value of false indicates failure.
         self.success = success
 
     def validate(self):

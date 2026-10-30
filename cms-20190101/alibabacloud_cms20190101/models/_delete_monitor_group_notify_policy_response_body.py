@@ -13,9 +13,9 @@ class DeleteMonitorGroupNotifyPolicyResponseBody(DaraModel):
         result: int = None,
         success: str = None,
     ):
-        # The status code.
+        # The HTTP status code.
         # 
-        # > The status code 200 indicates that the request was successful.
+        # > The value 200 indicates success.
         self.code = code
         # The error message.
         self.message = message
@@ -23,11 +23,11 @@ class DeleteMonitorGroupNotifyPolicyResponseBody(DaraModel):
         self.request_id = request_id
         # The number of affected rows.
         self.result = result
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # - true
+        # - true: Successful.
         # 
-        # - false
+        # - false: Failed.
         self.success = success
 
     def validate(self):

@@ -19,15 +19,15 @@ class DescribeHostAvailabilityListRequest(DaraModel):
         self.group_id = group_id
         # The ID of the availability monitoring task.
         self.id = id
-        # The IDs of the availability monitoring tasks. Separate multiple IDs with commas (,).
+        # The IDs of multiple availability monitoring tasks. Separate multiple IDs with commas (,).
         self.ids = ids
         # The page number.
         # 
-        # Pages start from page 1. Default value: 1.
+        # Minimum value: 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page.
         # 
-        # Minimum value: 1. Default value: 10
+        # Minimum value: 1. Default value: 10.
         self.page_size = page_size
         self.region_id = region_id
         # The name of the availability monitoring task.

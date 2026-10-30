@@ -44,11 +44,11 @@ class PutCustomMetricRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.contact_groups = contact_groups
-        # The effective time range of the alert rule. Valid values: 00:00-23:59.
+        # The time range during which the alert rule is effective. Valid values: 00:00-23:59.
         self.effective_interval = effective_interval
         # The subject of the alert email.
         self.email_subject = email_subject
-        # The number of alert retries.
+        # The number of retries for the alert.
         # 
         # This parameter is required.
         self.evaluation_count = evaluation_count
@@ -56,20 +56,20 @@ class PutCustomMetricRuleRequest(DaraModel):
         # 
         # > A value of 0 indicates that the reported custom monitoring data does not belong to any application group.
         self.group_id = group_id
-        # The alert level. Valid values:
+        # The severity level of the alert. Valid values:
         # - CRITICAL: critical.
         # - WARN: warning.
         # - INFO: information.
         # 
         # This parameter is required.
         self.level = level
-        # The metric name.
+        # The name of the metric.
         # 
-        # > For more information about how to obtain the metric name, see [DescribeCustomMetricList](https://help.aliyun.com/document_detail/115005.html).
+        # > For information about how to obtain the metric name, see [DescribeCustomMetricList](https://help.aliyun.com/document_detail/115005.html).
         # 
         # This parameter is required.
         self.metric_name = metric_name
-        # The aggregation period of the custom monitoring data. Unit: seconds. Set the value to 60 or a multiple of 60. Default value: the original reporting period of the custom monitoring data.
+        # The aggregation period of the custom monitoring data. Unit: seconds. The value must be 60 or a multiple of 60. Default value: the original reporting period of the custom monitoring data.
         self.period = period
         # The custom monitoring data to which the alert rule applies. The value consists of the application group ID to which the custom monitoring data belongs and the dimensions of the metric.
         # 
@@ -85,9 +85,9 @@ class PutCustomMetricRuleRequest(DaraModel):
         self.rule_name = rule_name
         # The mute for period. Unit: seconds. Default value: 86400 (1 day).
         # 
-        # > If the monitoring data continuously exceeds the alert threshold, only one alert notification is sent within each mute for period.
+        # > If monitoring data continuously exceeds the alert rule threshold, only one alert notification is sent within each mute for period.
         self.silence_time = silence_time
-        # The statistical method for alerts.
+        # The statistical method for the alert.
         # 
         # This parameter is required.
         self.statistics = statistics
@@ -95,7 +95,7 @@ class PutCustomMetricRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.threshold = threshold
-        # The alert callback URL. An HTTP POST request is sent to the specified URL when an alert is triggered.
+        # The webhook URL that is called when an alert is triggered. A POST request is sent to this URL.
         self.webhook = webhook
 
     def validate(self):

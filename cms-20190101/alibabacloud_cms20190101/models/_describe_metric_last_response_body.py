@@ -15,15 +15,14 @@ class DescribeMetricLastResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
-        # 
-        # > The status code 200 indicates that the request was successful.
+        # The status code.
+        # > A value of 200 indicates success.
         self.code = code
-        # The monitoring data.
+        # The monitoring data list.
         self.datapoints = datapoints
         # The error message.
         self.message = message
-        # The pagination token.
+        # The pagination cursor.
         self.next_token = next_token
         # The time interval.
         # 
@@ -31,11 +30,11 @@ class DescribeMetricLastResponseBody(DaraModel):
         self.period = period
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # - true
+        # - true: Successful.
         # 
-        # - false
+        # - false: Failed.
         self.success = success
 
     def validate(self):

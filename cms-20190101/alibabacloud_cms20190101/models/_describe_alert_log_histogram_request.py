@@ -29,51 +29,54 @@ class DescribeAlertLogHistogramRequest(DaraModel):
     ):
         # The alert contact group.
         self.contact_group = contact_group
-        # The end timestamp of the alert logs to be queried.
+        # The end timestamp for querying alert history.
         # 
         # Unit: milliseconds.
         # 
-        # >
-        # 
-        # - You can query only the alert logs within the last year.
-        # 
-        # - The interval between the start time (`StartTime`) and end time (`EndTime`) must be less than or equal to 15 days.
+        # > - You can query only the alert history within the last year.
+        # > - The interval between the start time (StartTime) and end time (EndTime) must be less than or equal to 15 days.
         self.end_time = end_time
-        # The type of the alert event. Valid values:
+        # The alert type. Valid values:
         # 
         # - TRIGGERED: The alert is triggered.
-        # 
-        # - RESOLVED: The alert is resolved.
+        # - RESOLVED: The alert recovers.
         self.event_type = event_type
-        # The dimensions based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. Valid values:
-        # 
-        # - `product`: aggregates data by cloud service.
-        # 
-        # - `level`: aggregates data by alert level.
-        # 
-        # - `groupId`: aggregates data by application group.
-        # 
-        # - `contactGroup`: aggregates data by alert contact group.
-        # 
-        # - `product,metricName`: aggregates data both by cloud service and by metric.
+        # Aggregates data by spatial dimension, equivalent to Group By in SQL. Valid values:
+        # - `product`: aggregates by Alibaba Cloud service.
+        # - `level`: aggregates by alert level.
+        # - `groupId`: aggregates by application group.
+        # - `contactGroup`: aggregates by alert contact group.
+        # - `product,metricName`: aggregates by Alibaba Cloud service and metric.
         self.group_by = group_by
-        # The ID of the application group.
+        # The application group ID.
         self.group_id = group_id
-        # The statistical period of alert logs. Unit: minutes.
+        # The period for obtaining logs. Unit: minutes.
         self.last_min = last_min
-        # The severity level and notification methods of the alert. Valid values:
+        # The alert level and notification method. Valid values:
         # 
-        # - P4: Alert notifications are sent by using emails and DingTalk chatbots.
+        # <props="china">- P2: phone call + text message + email + DingTalk chatbot.
         # 
-        # - OK: No alert is generated.
+        # <props="china">- P3: text message + email + DingTalk chatbot.
+        # 
+        # <props="china">- P4: email + DingTalk chatbot.
+        # 
+        # <props="china">- OK: no alert.
+        # 
+        # <props="intl">- P4: email + DingTalk chatbot.
+        # 
+        # <props="intl">- OK: no alert.
+        # 
+        # <props="partner">- P4: email + DingTalk chatbot.
+        # 
+        # <props="partner">- OK: no alert.
         self.level = level
         # The metric name.
         # 
-        # > For more information about the metrics of different cloud services, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+        # > For information about the metrics of Alibaba Cloud services, see [Metrics](https://help.aliyun.com/document_detail/163515.html).
         self.metric_name = metric_name
         # The namespace of the Alibaba Cloud service.
         # 
-        # > For more information about the namespaces of different cloud services, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+        # > For information about the namespaces of Alibaba Cloud services, see [Metrics](https://help.aliyun.com/document_detail/163515.html).
         self.namespace = namespace
         # The page number.
         # 
@@ -86,39 +89,34 @@ class DescribeAlertLogHistogramRequest(DaraModel):
         # The abbreviation of the Alibaba Cloud service name.
         self.product = product
         self.region_id = region_id
-        # The ID of the alert rule.
+        # The alert rule ID.
         # 
-        # For more information about how to obtain the ID of an alert rule, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+        # 
+        # For information about how to obtain the alert rule ID, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
         self.rule_id = rule_id
-        # The name of the alert rule.
+        # The alert rule name.
         self.rule_name = rule_name
-        # The keyword that is used to query alert logs.
+        # The keyword for searching alert history.
         self.search_key = search_key
         # The alert status. Valid values:
-        # 
-        # - 0: The alert is triggered or cleared.
-        # 
-        # - 1: The alert is ineffective.
-        # 
-        # - 2: The alert is muted and not triggered in a specified period.
-        # 
+        # - 0: An alert is triggered or the alert recovers to Normal.
+        # - 1: The alert is not in the effective period.
+        # - 2: The mute for epoch.
         # - 3: The host is restarting.
+        # - 4: Alerts are not send.
         # 
-        # - 4: No alert notification is sent.
-        # 
-        # If the value of the SendStatus parameter is 0, the value P4 of the Level parameter indicates a triggered alert and the value OK indicates a cleared alert.
+        # <props="china">When the alert status is 0, if the value of Level is P2, P3, or P4, an alert is triggered. If the value of Level is OK, the alert recovers to Normal.
+        # <props="intl">When the alert status is 0, if the value of Level is P4, an alert is triggered. If the value of Level is OK, the alert recovers to Normal.
+        # <props="partner">When the alert status is 0, if the value of Level is P4, an alert is triggered. If the value of Level is OK, the alert recovers to Normal.
         self.send_status = send_status
-        # This parameter is deprecated.
+        # **[Deprecated]** This parameter is deprecated and does not need to be specified.
         self.source_type = source_type
-        # The start timestamp of the alert logs to be queried.
+        # The start timestamp for querying alert history.
         # 
         # Unit: milliseconds.
         # 
-        # >
-        # 
-        # - You can query only the alert logs within the last year.
-        # 
-        # - The interval between the start time (`StartTime`) and end time (`EndTime`) must be less than or equal to 15 days.
+        # > - You can query only the alert history within the last year.
+        # > - The interval between the start time (StartTime) and end time (EndTime) must be less than or equal to 15 days.
         self.start_time = start_time
 
     def validate(self):

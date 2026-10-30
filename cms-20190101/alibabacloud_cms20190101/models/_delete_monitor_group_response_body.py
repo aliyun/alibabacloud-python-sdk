@@ -16,17 +16,10 @@ class DeleteMonitorGroupResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
-        # 
-        # > The status code 200 indicates that the call was successful.
         self.code = code
-        # The deleted application group.
         self.group = group
-        # The returned message.
         self.message = message
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
         self.success = success
 
     def validate(self):
@@ -82,7 +75,6 @@ class DeleteMonitorGroupResponseBodyGroup(DaraModel):
         group_name: str = None,
     ):
         self.contact_groups = contact_groups
-        # The name of the application group.
         self.group_name = group_name
 
     def validate(self):

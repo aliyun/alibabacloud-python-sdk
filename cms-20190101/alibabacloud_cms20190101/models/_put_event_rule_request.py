@@ -19,30 +19,30 @@ class PutEventRuleRequest(DaraModel):
         silence_time: int = None,
         state: str = None,
     ):
-        # The description of the Event-triggered Alert Rule.
+        # The description of the event-triggered alert rule.
         self.description = description
-        # The pattern of the Event-triggered Alert Rule.
+        # The pattern of the event-triggered alert rule.
         # 
         # This parameter is required.
         self.event_pattern = event_pattern
-        # The type of the Event-triggered Alert Rule. Valid values:
+        # The type of the event-triggered alert rule. Valid values:
         # 
         # - SYSTEM: system event.
         # - CUSTOM: custom event.
         self.event_type = event_type
-        # The ID of the application group to which the Event-triggered Alert Rule belongs.
+        # The ID of the application group to which the event-triggered alert rule belongs.
         self.group_id = group_id
         self.region_id = region_id
-        # The name of the Event-triggered Alert Rule.
+        # The name of the event-triggered alert rule.
         # 
         # This parameter is required.
         self.rule_name = rule_name
         # The mute period. Unit: seconds.
         self.silence_time = silence_time
-        # The status of the Event-triggered Alert Rule. Valid values:
+        # The status of the event-triggered alert rule. Valid values:
         # 
-        # - ENABLED: enabled.
-        # - DISABLED: disabled.
+        # - ENABLED: Enabled.
+        # - DISABLED: Disabled.
         self.state = state
 
     def validate(self):
@@ -128,7 +128,7 @@ class PutEventRuleRequestEventPattern(DaraModel):
     ):
         # The keyword for event filtering. When the event content contains this keyword, an alert is automatically triggered.
         self.custom_filters = custom_filters
-        # The type of the Event-triggered Alert Rule. Valid values of N: 1 to 50. Valid values:
+        # The type of the event-triggered alert rule. Valid values of N: 1 to 50. Valid values:
         # 
         # - StatusNotification: fault notification.
         # 
@@ -138,7 +138,7 @@ class PutEventRuleRequestEventPattern(DaraModel):
         # 
         # - \\*: unlimited.
         self.event_type_list = event_type_list
-        # The level of the Event-triggered Alert Rule. Valid values of N: 1 to 50. Valid values:
+        # The level of the event-triggered alert rule. Valid values of N: 1 to 50. Valid values:
         # 
         # - CRITICAL: critical.
         # 
@@ -148,18 +148,18 @@ class PutEventRuleRequestEventPattern(DaraModel):
         # 
         # - \\*: all levels.
         self.level_list = level_list
-        # The name of the Event-triggered Alert Rule. Valid values of N: 1 to 50.
+        # The name of the event-triggered alert rule. Valid values of N: 1 to 50.
         self.name_list = name_list
         # The Alibaba Cloud service type. Valid values of N: 1 to 50.
         # 
-        # >For information about the Alibaba Cloud services supported by Event-triggered Alert Rules, see [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html).
+        # >For information about the Alibaba Cloud services supported by event-triggered alert rules, see [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html).
         # 
         # This parameter is required.
         self.product = product
         # The SQL filter for events. When the event content meets the SQL condition, an alert is automatically triggered.
         # > The syntax of the SQL event filter is consistent with the query syntax of Simple Log Service (SLS).
         self.sqlfilter = sqlfilter
-        # The status of the Event-triggered Alert Rule. Valid values of N: 1 to 50.
+        # The status of the event-triggered alert rule. Valid values of N: 1 to 50.
         self.status_list = status_list
 
     def validate(self):

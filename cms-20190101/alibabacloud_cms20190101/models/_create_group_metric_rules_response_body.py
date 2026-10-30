@@ -24,11 +24,11 @@ class CreateGroupMetricRulesResponseBody(DaraModel):
         # The request ID.
         self.request_id = request_id
         self.resources = resources
-        # Indicates whether the operation was successful. Valid values:
+        # Indicates whether the operation is successful. Valid values:
         # 
-        # - true: Successful.
+        # - true: The operation is successful.
         # 
-        # - false: Failed.
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):

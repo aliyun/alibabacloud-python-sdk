@@ -29,11 +29,11 @@ class DescribeExporterRuleListResponseBody(DaraModel):
         self.page_number = page_number
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:  
+        # Indicates whether the request was successful. Valid values:  
         # - `true`: Successful.
         # - `false`: Failed.
         self.success = success
-        # The total number of records.
+        # The total number of entries.
         self.total = total
 
     def validate(self):

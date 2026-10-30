@@ -11,7 +11,7 @@ class DeleteEventRulesRequest(DaraModel):
         self,
         rule_names: List[str] = None,
     ):
-        # The names of the event-triggered alert rules to delete.
+        # The names of the rules to delete.
         # 
         # This parameter is required.
         self.rule_names = rule_names

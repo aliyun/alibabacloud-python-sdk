@@ -13,7 +13,7 @@ class DisableEventRulesRequest(DaraModel):
         rule_names: List[str] = None,
     ):
         self.region_id = region_id
-        # The names of the event-triggered alert rules.
+        # The names of the alert rules.
         # 
         # This parameter is required.
         self.rule_names = rule_names

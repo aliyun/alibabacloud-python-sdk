@@ -7,32 +7,30 @@ from darabonba.model import DaraModel
 class EnableActiveMetricRuleRequest(DaraModel):
     def __init__(
         self,
+        client_token: str = None,
+        dry_run: bool = None,
         product: str = None,
         region_id: str = None,
     ):
-        # The cloud service for which you want to enable initiative alert. Valid values:
+        # The client token that is used to ensure the idempotence of the request.
         # 
-        # - ECS: Elastic Compute Service (ECS)
+        # You can generate the value of this parameter on the client side. Make sure that the value is unique across different requests. The value can be up to 64 ASCII characters in length.
+        self.client_token = client_token
+        # Specifies whether to check the availability of the webhook.
+        self.dry_run = dry_run
+        # The name of the Alibaba Cloud service that supports one-click alert rules. Valid values:
         # 
-        # - rds: ApsaraDB RDS
-        # 
-        # - slb: Server Load Balancer (SLB)
-        # 
-        # - redis_standard: Redis Open-Source Edition (standard architecture)
-        # 
-        # - redis_sharding: Redis Open-Source Edition (cluster architecture)
-        # 
-        # - redis_splitrw: Redis Open-Source Edition (read/write splitting architecture)
-        # 
-        # - mongodb: ApsaraDB for MongoDB of the replica set architecture
-        # 
-        # - mongodb_sharding: ApsaraDB for MongoDB of the sharded cluster architecture
-        # 
-        # - hbase: ApsaraDB for HBase
-        # 
-        # - elasticsearch: Elasticsearch
-        # 
-        # - opensearch: OpenSearch
+        # * ecs: Elastic Compute Service (ECS).
+        # * rds: ApsaraDB RDS.
+        # * slb: Server Load Balancer (SLB).
+        # * redis_standard: Standard architecture of open-source Redis.
+        # * redis_sharding: Cluster architecture of open-source Redis.
+        # * redis_splitrw: Read/write splitting architecture of open-source Redis.
+        # * mongodb: ApsaraDB for MongoDB (replica set).
+        # * mongodb_sharding: ApsaraDB for MongoDB (sharded cluster).
+        # * hbase: ApsaraDB for HBase.
+        # * elasticsearch: Elasticsearch.
+        # * opensearch: OpenSearch.
         # 
         # This parameter is required.
         self.product = product
@@ -46,6 +44,12 @@ class EnableActiveMetricRuleRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
         if self.product is not None:
             result['Product'] = self.product
 
@@ -56,6 +60,12 @@ class EnableActiveMetricRuleRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+
         if m.get('Product') is not None:
             self.product = m.get('Product')
 

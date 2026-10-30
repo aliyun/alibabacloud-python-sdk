@@ -17,7 +17,7 @@ class PutEventRuleResponseBody(DaraModel):
         # 
         # >A value of 200 indicates success.
         self.code = code
-        # The number of rows affected when the Event-triggered Alert Rule is created or modified.
+        # The number of rows affected when the event-triggered alert rule is created or modified.
         self.data = data
         # The error message.
         self.message = message

@@ -14,7 +14,7 @@ class ModifyGroupMonitoringAgentProcessResponseBody(DaraModel):
     ):
         # The status code.
         # 
-        # > A status code of 200 indicates that the request was successful.
+        # >A value of 200 indicates success.
         self.code = code
         # The error message.
         self.message = message
@@ -22,9 +22,8 @@ class ModifyGroupMonitoringAgentProcessResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the operation was successful. Valid values:
         # 
-        # - true: The operation was successful.
-        # 
-        # - false: The operation failed.
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):

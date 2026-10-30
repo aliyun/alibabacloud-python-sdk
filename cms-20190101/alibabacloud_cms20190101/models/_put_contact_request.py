@@ -26,7 +26,7 @@ class PutContactRequest(DaraModel):
         # - zh-cn: simplified Chinese.
         # - en: English.
         # 
-        # > If this parameter is not specified, the language is automatically determined based on the region of the account.
+        # > If you do not set this parameter, the language is automatically determined based on the region of the account.
         self.lang = lang
 
     def validate(self):
@@ -77,29 +77,29 @@ class PutContactRequestChannels(DaraModel):
         mail: str = None,
         sms: str = None,
     ):
-        # 旺旺联系人。
+        # The TradeManager ID of the alert contact.
         # 
-        # <props="china">手机号码、邮箱、钉钉机器人和旺旺最少添加一种联系方式。
-        # <props="intl">邮箱和钉钉机器人最少添加一种联系方式。
-        # <props="partner">邮箱和钉钉机器人最少添加一种联系方式。
+        # <props="china">Specify at least one of the following contact methods: phone number, email address, DingTalk chatbot, or TradeManager.
+        # <props="intl">Specify at least one of the following contact methods: email address or DingTalk chatbot.
+        # <props="partner">Specify at least one of the following contact methods: email address or DingTalk chatbot..
         self.ali_im = ali_im
-        # 钉钉机器人。
+        # The webhook URL of the DingTalk chatbot.
         # 
-        # <props="china">手机号码、邮箱、钉钉机器人和旺旺最少添加一种联系方式。
-        # <props="intl">邮箱和钉钉机器人最少添加一种联系方式。
-        # <props="partner">邮箱和钉钉机器人最少添加一种联系方式。
+        # <props="china">Specify at least one of the following contact methods: phone number, email address, DingTalk chatbot, or TradeManager.
+        # <props="intl">Specify at least one of the following contact methods: email address or DingTalk chatbot.
+        # <props="partner">Specify at least one of the following contact methods: email address or DingTalk chatbot..
         self.ding_web_hook = ding_web_hook
-        # Email地址。Email会收到一个激活链接， 激活之后您才会被加入到联系人中。
+        # The email address of the alert contact. An activation link is sent to the email address. The alert contact is added only after the link is activated.
         # 
-        # <props="china">手机号码、邮箱、钉钉机器人和旺旺最少添加一种联系方式。
-        # <props="intl">邮箱和钉钉机器人最少添加一种联系方式。
-        # <props="partner">邮箱和钉钉机器人最少添加一种联系方式。
+        # <props="china">Specify at least one of the following contact methods: phone number, email address, DingTalk chatbot, or TradeManager.
+        # <props="intl">Specify at least one of the following contact methods: email address or DingTalk chatbot.
+        # <props="partner">Specify at least one of the following contact methods: email address or DingTalk chatbot..
         self.mail = mail
-        # 手机号码。手机号码会收到一个激活链接， 激活之后您才会被加入到联系人中。
+        # The phone number of the alert contact. An activation link is sent to the phone number. The alert contact is added only after the link is activated.
         # 
-        # <props="china">手机号码、邮箱、钉钉机器人和旺旺最少添加一种联系方式。
-        # <props="intl">邮箱和钉钉机器人最少添加一种联系方式。
-        # <props="partner">邮箱和钉钉机器人最少添加一种联系方式。
+        # <props="china">Specify at least one of the following contact methods: phone number, email address, DingTalk chatbot, or TradeManager.
+        # <props="intl">Specify at least one of the following contact methods: email address or DingTalk chatbot.
+        # <props="partner">Specify at least one of the following contact methods: email address or DingTalk chatbot..
         self.sms = sms
 
     def validate(self):

@@ -19,9 +19,9 @@ class DescribeMetricRuleBlackListResponseBody(DaraModel):
     ):
         # The status code.
         # 
-        # > A value of 200 indicates that the request was successful.
+        # > The value 200 indicates success.
         self.code = code
-        # The blacklist policies.
+        # The list of alert blacklist policies.
         self.describe_metric_rule_black_list = describe_metric_rule_black_list
         # The error message.
         self.message = message
@@ -29,11 +29,11 @@ class DescribeMetricRuleBlackListResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the operation was successful. Valid values:
         # 
-        # - true: The operation was successful.
+        # - true: Successful.
         # 
-        # - false: The operation failed.
+        # - false: Failed.
         self.success = success
-        # The total number of blacklist policies.
+        # The total number of alert blacklist policies.
         self.total = total
 
     def validate(self):
@@ -112,47 +112,49 @@ class DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList(DaraMod
         scope_value: List[str] = None,
         update_time: str = None,
     ):
-        # The category of the Alibaba Cloud service. For example, Redis has different editions, such as `kvstore_standard` (Standard Edition), `kvstore_sharding` (Cluster Edition), and `kvstore_splitrw` (Read/write Splitting Edition).
+        # The category of the Alibaba Cloud service. For example, ApsaraDB for Redis has `kvstore_standard` (Standard Edition), `kvstore_sharding` (Cluster Edition), and `kvstore_splitrw` (read/write splitting Edition).
         self.category = category
-        # The timestamp that indicates when the blacklist policy was created.
+        # The timestamp when the alert blacklist policy was created.
         # 
         # Unit: milliseconds.
         self.create_time = create_time
-        # The time range during which the blacklist policy is effective.
+        # The effective period of the alert blacklist policy.
+        # 
+        # The value is in the HH:mm-HH:mm format (24-hour clock). The default time zone is UTC+8. For example, "00:00-23:59" indicates that the policy takes effect all day.
         self.effective_time = effective_time
-        # The timestamp that indicates when the alert blacklist policy is no longer in effect.
+        # The start timestamp of the alert blacklist policy.
         # 
-        # The timestamp is measured in milliseconds.
+        # Unit: milliseconds.
         self.enable_end_time = enable_end_time
-        # The time when the alert blacklist policy expires.
+        # The end timestamp of the alert blacklist policy.
         # 
-        # This is a UNIX timestamp in milliseconds.
+        # Unit: milliseconds.
         self.enable_start_time = enable_start_time
-        # The ID of the blacklist policy.
+        # The ID of the alert blacklist policy.
         self.id = id
-        # The instances of the Alibaba Cloud service in the blacklist policy.
+        # The instances of the specified Alibaba Cloud service in the alert blacklist policy.
         self.instances = instances
-        # The status of the blacklist policy. Valid values:
+        # The status of the alert blacklist policy. Valid values:
         # 
-        # - true: enabled.
+        # - true: Enabled.
         # 
-        # - false: disabled.
+        # - false: Disabled.
         self.is_enable = is_enable
-        # The metrics of the instance.
+        # The monitoring metrics of the instances.
         self.metrics = metrics
-        # The name of the blacklist policy.
+        # The name of the alert blacklist policy.
         self.name = name
         # The namespace of the Alibaba Cloud service.
         self.namespace = namespace
-        # The scope of the blacklist policy. Valid values:
+        # The effective scope of the alert blacklist policy. Valid values:
         # 
-        # - USER: The blacklist policy takes effect only for the current Alibaba Cloud account.
+        # - USER: The alert blacklist policy takes effect only within the current Alibaba Cloud account.
         # 
-        # - GROUP: The blacklist policy takes effect for the specified application groups.
+        # - GROUP: The alert blacklist policy takes effect in the specified application groups.
         self.scope_type = scope_type
         # The IDs of the application groups.
         self.scope_value = scope_value
-        # The timestamp that indicates when the blacklist policy was modified.
+        # The timestamp when the alert blacklist policy was last modified.
         # 
         # Unit: milliseconds.
         self.update_time = update_time
@@ -269,9 +271,9 @@ class DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackListMetrics(
         metric_name: str = None,
         resource: str = None,
     ):
-        # The name of the metric.
+        # The name of the monitoring metrics.
         self.metric_name = metric_name
-        # The extended dimension of the instance. For example, `{"device":"C:"}` means that the blacklist policy is applied to all C drives of an Elastic Compute Service (ECS) instance.
+        # The extension dimension information of the instance. For example, `{"device":"C:"}` indicates that the blacklist policy is applied to all C drives of the ECS instance under the Alibaba Cloud service.
         self.resource = resource
 
     def validate(self):
