@@ -12,20 +12,23 @@ class RecoverAndroidInstanceRequest(DaraModel):
         android_instance_id_list: List[str] = None,
         backup_file_id: str = None,
         backup_file_path: str = None,
+        exclude_app_list: List[str] = None,
         upload_endpoint: str = None,
         upload_type: str = None,
     ):
-        # A list of instance IDs.
+        # The list of instance IDs.
         # 
         # This parameter is required.
         self.android_instance_id_list = android_instance_id_list
         # The ID of the backup file.
         self.backup_file_id = backup_file_id
-        # The OSS URL where the backup file is uploaded.
+        # The OSS address to which the backup file is uploaded.
         # 
         # This parameter is required.
         self.backup_file_path = backup_file_path
-        # The region where the backup is located.
+        # The list of app package names excluded from the full-device restore. Excluded apps are not uninstalled and their APKs are not installed, which is compatible with legacy backups that contain APKs. Only user data is replaced. Empty shells must be installed by the customer by using the pm install command. If this parameter is not specified, no apps are excluded.
+        self.exclude_app_list = exclude_app_list
+        # The backup region.
         self.upload_endpoint = upload_endpoint
         # The upload type.
         # 
@@ -49,6 +52,9 @@ class RecoverAndroidInstanceRequest(DaraModel):
         if self.backup_file_path is not None:
             result['BackupFilePath'] = self.backup_file_path
 
+        if self.exclude_app_list is not None:
+            result['ExcludeAppList'] = self.exclude_app_list
+
         if self.upload_endpoint is not None:
             result['UploadEndpoint'] = self.upload_endpoint
 
@@ -67,6 +73,9 @@ class RecoverAndroidInstanceRequest(DaraModel):
 
         if m.get('BackupFilePath') is not None:
             self.backup_file_path = m.get('BackupFilePath')
+
+        if m.get('ExcludeAppList') is not None:
+            self.exclude_app_list = m.get('ExcludeAppList')
 
         if m.get('UploadEndpoint') is not None:
             self.upload_endpoint = m.get('UploadEndpoint')

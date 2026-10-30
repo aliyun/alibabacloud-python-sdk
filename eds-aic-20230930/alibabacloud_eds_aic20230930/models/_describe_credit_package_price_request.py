@@ -13,10 +13,17 @@ class DescribeCreditPackagePriceRequest(DaraModel):
         period_unit: str = None,
         promotion_id: str = None,
     ):
+        # The number of credits.
         self.credit_amount = credit_amount
+        # The number of credit boost packages to purchase. Valid values: 1 to 99.
         self.package_amount = package_amount
+        # The subscription period of the resource. The unit is specified by PeriodUnit. Valid values: 3 months, 6 months, and 1 year.
         self.period = period
+        # The billing time unit of the subscription Billable methods. Valid values:
+        # - **Year**: year
+        # - **Month** (default): month
         self.period_unit = period_unit
+        # The ID of the promotion.
         self.promotion_id = promotion_id
 
     def validate(self):

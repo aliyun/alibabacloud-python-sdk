@@ -17,7 +17,7 @@ class RecoverAndroidInstanceResponseBody(DaraModel):
     ):
         # The number of restored instances.
         self.count = count
-        # The returned result objects.
+        # The returned result object.
         self.data = data
         # The request ID.
         self.request_id = request_id

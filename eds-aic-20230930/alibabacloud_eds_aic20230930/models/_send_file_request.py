@@ -19,44 +19,43 @@ class SendFileRequest(DaraModel):
         upload_type: str = None,
         upload_url: str = None,
     ):
-        # The IDs of one or more cloud phone instances.
+        # The list of instances.
         # 
         # This parameter is required.
         self.android_instance_id_list = android_instance_id_list
-        # Specifies whether to automatically install the application after the file is uploaded.
+        # Specifies whether to automatically install the uploaded application.
         self.auto_install = auto_install
-        # A client-generated token that ensures request idempotence and prevents duplicate submissions. The token can contain up to 100 characters.
+        # The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. The token can be up to 100 characters in length.
         self.client_token = client_token
+        # The MD5 value of the input file.
         self.file_md_5 = file_md_5
-        # The destination path on the cloud phone.
+        # The upload path inside the cloud phone to which the file is uploaded.
         # 
-        # > If `UploadType` is `OSS` or `OSS_BRIDGED`, `SourceFilePath` must specify a directory, for example, `/sdcard/Download/`. If `UploadType` is `DOWNLOAD_URL`, `SourceFilePath` must specify a full file path, for example, `/sdcard/Download/MyFile.txt`.
+        # > If UploadType is OSS or OSS_BRIDGED, the upload path SourceFilePath inside the cloud phone must be a directory, such as /sdcard/Download. If UploadType is DOWNLOAD_URL, the upload path SourceFilePath inside the cloud phone must be a file, such as /sdcard/Download/MyFile.txt.
+        # >
         # 
         # This parameter is required.
         self.source_file_path = source_file_path
-        # The name for the destination file on the cloud phone.
+        # The name of the file uploaded from OSS to the cloud phone.
         # 
-        # > This parameter is optional and takes effect only when `UploadType` is set to `OSS` or `OSS_BRIDGED`. If you specify this parameter, the file is saved with this name in the path specified by `SourceFilePath`. If you leave this parameter empty, the source file name is used. This parameter is ignored when `UploadType` is set to `DOWNLOAD_URL`.
+        # > If UploadType is OSS or OSS_BRIDGED, the TargetFileName parameter is optional. If TargetFileName is empty, the original file name is retained when the OSS file is uploaded to the cloud phone. If TargetFileName is not empty, the file name in the SourceFilePath directory on the cloud phone is set to the value of TargetFileName. If UploadType is DOWNLOAD_URL, the TargetFileName parameter does not take effect.
+        # >
         self.target_file_name = target_file_name
-        # The service endpoint of Object Storage Service (OSS). This parameter is required if `UploadType` is `OSS` or `OSS_BRIDGED`.
+        # The service domain name for uploading files to OSS. This parameter is required when UploadType is set to OSS or OSS_BRIDGED.
         # 
-        # > If the cloud phone instance and the OSS bucket are in the same region, you can specify an internal endpoint to accelerate data transfer and avoid public data transfer costs. For example, the internal endpoint for the China (Hangzhou) region is `oss-cn-hangzhou-internal.aliyuncs.com`. For a complete list of endpoints, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html).
+        # > If the cloud phone and the OSS bucket are in the same region, you can use an internal endpoint to accelerate the transmission speed and avoid Internet traffic fees. For example, the internal endpoint for the China (Hangzhou) region is `oss-cn-hangzhou-internal.aliyuncs.com`. For more information about the mapping between regions and endpoints, see [Regions and endpoints](https://help.aliyun.com/document_detail/31837.html).
         self.upload_endpoint = upload_endpoint
-        # The storage type of the source file. Valid values:
+        # The storage type of the file to be uploaded.
         # 
-        # - **OSS**: The file is stored in Object Storage Service (OSS).
-        # 
-        # - **DOWNLOAD_URL**: The file is accessible via a public download link.
-        # 
-        # - **OSS_BRIDGED**: The service first downloads the file from a public download link to an internal OSS bucket, and then distributes it to the cloud phone instances over the internal network.
+        # - OSS: The file to be uploaded is an OSS resource.
+        # - DOWNLOAD_URL: The file to be uploaded is a public download URL.
+        # - OSS_BRIDGED: The file is synchronized to OSS through a public download URL and then distributed to cloud phone instances over the OSS internal network.
         # 
         # This parameter is required.
         self.upload_type = upload_type
-        # - If `UploadType` is `OSS`, this parameter specifies the URI of the source object in Object Storage Service (OSS).
-        # 
-        # > The URI must be in the `oss://<bucket-name>/<object-key>` format. The specified OSS bucket name must have the `cloudphone-saved-bucket-` prefix, for example, `cloudphone-saved-bucket-example`.
-        # 
-        # - If `UploadType` is `DOWNLOAD_URL` or `OSS_BRIDGED`, this parameter specifies the public download link of the source file.
+        # - If UploadType is OSS, UploadUrl is the cloud address of the file uploaded to OSS.
+        # > The OSS bucket name must start with the prefix "cloudphone-saved-bucket-", such as "cloudphone-saved-bucket-example". You must create an OSS folder as the backup directory. The format of UploadUrl is "oss://" + "Bucket name" + "/" + "Folder name" + "Uploaded file name".
+        # - If UploadType is DOWNLOAD or OSS_BRIDGED, UploadUrl is the public download URL of the file.
         # 
         # This parameter is required.
         self.upload_url = upload_url

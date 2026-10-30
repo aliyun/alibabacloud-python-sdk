@@ -20,19 +20,41 @@ class DescribeCloudPhoneNodePriceRequest(DaraModel):
         server_type: str = None,
         swap_size: int = None,
     ):
+        # The region ID.
+        # 
         # This parameter is required.
         self.biz_region_id = biz_region_id
+        # The billing method.
         self.charge_type = charge_type
+        # The number of cloud phone matrices to purchase.
         self.count = count
+        # Specifies whether to use a single image disk. Default value: false. Valid values:
+        # 
+        # - true: Uses only the system disk.
+        # 
+        # - false: Uses the system disk and the shared internal storage image disk.
         self.is_single_img_disk = is_single_img_disk
+        # The subscription period of the resource. The unit is specified by PeriodUnit. Valid values: 1 month, 2 months, 3 months, 6 months, and 1 year.
         self.period = period
+        # The unit of the subscription period. Valid values:
+        # - **Month**: Month.
+        # - **Year**: Year.
         self.period_unit = period_unit
+        # The number of provisioned instances, which refers to the number of cloud phone instances in the matrix.
         self.phone_count = phone_count
+        # The size of the dedicated internal storage. Unit: GiB.
         self.phone_data_volume = phone_data_volume
+        # The promotion ID.
         self.promotion_id = promotion_id
+        # The size of the shared internal storage. Unit: GiB.
+        # 
+        # > The minimum size of the shared internal storage must be greater than the number of instances in the matrix multiplied by 10 GiB.
         self.server_share_data_volume = server_share_data_volume
+        # The specifications of the cloud phone matrix.
+        # 
         # This parameter is required.
         self.server_type = server_type
+        # The size of the swap space.
         self.swap_size = swap_size
 
     def validate(self):

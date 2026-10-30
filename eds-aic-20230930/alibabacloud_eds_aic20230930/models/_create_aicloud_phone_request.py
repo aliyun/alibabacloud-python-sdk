@@ -19,46 +19,45 @@ class CreateAICloudPhoneRequest(DaraModel):
         policy_group_id: str = None,
         promotion_id: str = None,
     ):
-        # The quantity to purchase.
+        # The quantity.
         # 
         # This parameter is required.
         self.amount = amount
         # Specifies whether to enable automatic payment.
         self.auto_pay = auto_pay
-        # The bandwidth package ID.
+        # The ID of the bandwidth plan.
         # 
         # This parameter is required.
         self.bandwidth_package_id = bandwidth_package_id
-        # The region ID for the purchase.
+        # The ID of the region for the purchase.
         # 
         # This parameter is required.
         self.biz_region_id = biz_region_id
-        # The image ID.
+        # The ID of the image.
         # 
         # This parameter is required.
         self.image_id = image_id
-        # The instance group name.
+        # The name of the instance group.
         # 
         # This parameter is required.
         self.instance_group_name = instance_group_name
-        # The instance group specification. Valid values:
-        # 
-        # - STANDARD: standard.
-        # - MEDIUM: advanced.
+        # The specification of the instance group. Valid values:
+        # - STANDARD: Standard.
+        # - MEDIUM: Advanced.
         # 
         # This parameter is required.
         self.instance_group_spec = instance_group_spec
-        # The purchase duration.
+        # The subscription duration.
         # 
         # This parameter is required.
         self.period = period
-        # The unit of the purchase duration.
+        # The unit of the subscription duration.
         # 
         # This parameter is required.
         self.period_unit = period_unit
-        # The policy group ID.
+        # The ID of the policy group.
         self.policy_group_id = policy_group_id
-        # The coupon ID.
+        # The ID of the coupon.
         self.promotion_id = promotion_id
 
     def validate(self):

@@ -9,7 +9,7 @@ class CreateKeyPairRequest(DaraModel):
         self,
         key_pair_name: str = None,
     ):
-        # The name of the key pair. The name must be 2 to 128 characters in length. The name can contain letters, Chinese characters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter or a Chinese character and cannot start with http\\:// or https\\://.
+        # The name of the key pair. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with http:// or https://. It can contain digits, colons (:), underscores (_), and hyphens (-).
         # 
         # This parameter is required.
         self.key_pair_name = key_pair_name

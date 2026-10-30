@@ -54,7 +54,7 @@ class ActivateEdgeMobileAgentResponseBodyData(DaraModel):
         idempotent: bool = None,
         instance_id: str = None,
     ):
-        # The assigned API key. The plaintext value is returned only upon the first activation.
+        # The assigned API key. The plaintext is returned only upon the first activation.
         self.auth_token = auth_token
         # The device ID.
         self.device_id = device_id

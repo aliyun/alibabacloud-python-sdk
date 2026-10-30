@@ -15,7 +15,7 @@ class CreateAICloudPhoneResponseBody(DaraModel):
     ):
         # The response data object.
         self.data = data
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -52,9 +52,9 @@ class CreateAICloudPhoneResponseBodyData(DaraModel):
         order_id: int = None,
         package_ids: List[str] = None,
     ):
-        # The order ID.
+        # The ID of the order.
         self.order_id = order_id
-        # The list of package IDs. After the payment is successful, instances are created based on these IDs through a callback.
+        # The list of package IDs. After a successful payment, a callback creates instances based on these IDs.
         self.package_ids = package_ids
 
     def validate(self):

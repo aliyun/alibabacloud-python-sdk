@@ -13,11 +13,11 @@ class AuthorizeAndroidInstanceRequest(DaraModel):
         authorize_user_id: str = None,
         un_authorize_user_id: str = None,
     ):
-        # List of instance IDs.
+        # The list of instance IDs.
         self.android_instance_ids = android_instance_ids
-        # User ID to be assigned.
+        # The ID of the user to assign.
         self.authorize_user_id = authorize_user_id
-        # User ID to be unassigned.
+        # The ID of the user to unassign.
         self.un_authorize_user_id = un_authorize_user_id
 
     def validate(self):

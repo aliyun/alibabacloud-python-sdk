@@ -12,7 +12,12 @@ class RebootCloudPhoneNodesRequest(DaraModel):
         force: bool = None,
         node_ids: List[str] = None,
     ):
+        # Specifies whether to force a restart. Valid values:
+        # - true: Forces a restart without waiting for the instances to gracefully exit.
+        # - false: Performs a graceful restart.
+        # Default value: false.
         self.force = force
+        # The IDs of the cloud phone matrices. Valid values of N: 1 to 100.
         self.node_ids = node_ids
 
     def validate(self):

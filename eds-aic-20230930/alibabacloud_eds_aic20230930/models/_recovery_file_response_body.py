@@ -17,11 +17,11 @@ class RecoveryFileResponseBody(DaraModel):
     ):
         # The number of restored instances.
         self.count = count
-        # The backup file that is restored.
+        # The returned result object.
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the batch task.
+        # The batch task ID.
         self.task_id = task_id
 
     def validate(self):

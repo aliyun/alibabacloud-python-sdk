@@ -12,17 +12,13 @@ class ActivateEdgeMobileAgentRequest(DaraModel):
         device_meta: str = None,
         license_key: str = None,
     ):
-        # The device form factor. Valid values:
-        # - BOX
-        # - PHONE
-        # - PAD
-        # - OTHER
+        # The device class. Valid values: BOX, PHONE, PAD, and OTHER.
         self.device_class = device_class
         # The unique identifier of the device.
         # 
         # This parameter is required.
         self.device_id = device_id
-        # The extended device metadata in JSON format. The string contains information such as fingerprint, deviceModel, and firmwareVersion.
+        # The extended metadata of the device. The value is a JSON string that contains information such as fingerprint, deviceModel, and firmwareVersion.
         self.device_meta = device_meta
         # The license key.
         # 

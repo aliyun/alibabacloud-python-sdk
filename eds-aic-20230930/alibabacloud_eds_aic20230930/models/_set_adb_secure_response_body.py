@@ -13,9 +13,9 @@ class SetAdbSecureResponseBody(DaraModel):
         data: main_models.SetAdbSecureResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned object.
+        # The returned result object.
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -53,11 +53,11 @@ class SetAdbSecureResponseBodyData(DaraModel):
         instance_ids: List[str] = None,
         total_count: int = None,
     ):
-        # The number of the cloud phone instances for which the ADB authentication feature failed to be enabled.
+        # The number of instances that failed to be configured.
         self.fail_count = fail_count
-        # The IDs of the cloud phone instances for which the ADB authentication feature is enabled.
+        # The list of cloud phone instance IDs that were successfully configured.
         self.instance_ids = instance_ids
-        # The total number of the cloud phone instances.
+        # The total number of instances for which the configuration was attempted.
         self.total_count = total_count
 
     def validate(self):

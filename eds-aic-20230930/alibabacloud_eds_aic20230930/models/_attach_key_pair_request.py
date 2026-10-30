@@ -12,7 +12,7 @@ class AttachKeyPairRequest(DaraModel):
         instance_ids: List[str] = None,
         key_pair_id: str = None,
     ):
-        # The IDs of the cloud phone instances. You can specify a maximum of 50 cloud phone instances.
+        # The cloud phone instance ID list. You can specify up to 50 instances.
         self.instance_ids = instance_ids
         # The ID of the ADB key pair.
         # 

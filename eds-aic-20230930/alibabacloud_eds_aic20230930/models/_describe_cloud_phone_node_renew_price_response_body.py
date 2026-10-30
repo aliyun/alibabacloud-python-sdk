@@ -14,8 +14,11 @@ class DescribeCloudPhoneNodeRenewPriceResponseBody(DaraModel):
         request_id: str = None,
         rules: List[main_models.DescribeCloudPhoneNodeRenewPriceResponseBodyRules] = None,
     ):
+        # The price.
         self.price = price
+        # Id of the request
         self.request_id = request_id
+        # The promotion rules.
         self.rules = rules
 
     def validate(self):
@@ -67,7 +70,9 @@ class DescribeCloudPhoneNodeRenewPriceResponseBodyRules(DaraModel):
         description: str = None,
         rule_id: str = None,
     ):
+        # The description of the rule.
         self.description = description
+        # The rule ID.
         self.rule_id = rule_id
 
     def validate(self):
@@ -106,11 +111,17 @@ class DescribeCloudPhoneNodeRenewPriceResponseBodyPrice(DaraModel):
         promotions: List[main_models.DescribeCloudPhoneNodeRenewPriceResponseBodyPricePromotions] = None,
         trade_price: float = None,
     ):
+        # The currency.
         self.currency = currency
+        # The discounted price.
         self.discount_price = discount_price
+        # The original price.
         self.original_price = original_price
+        # The price details.
         self.price_detail = price_detail
+        # The promotion information.
         self.promotions = promotions
+        # The transaction price.
         self.trade_price = trade_price
 
     def validate(self):
@@ -189,10 +200,15 @@ class DescribeCloudPhoneNodeRenewPriceResponseBodyPricePromotions(DaraModel):
         promotion_name: str = None,
         selected: bool = None,
     ):
+        # The promotion code.
         self.option_code = option_code
+        # The promotion description.
         self.promotion_desc = promotion_desc
+        # The promotion ID.
         self.promotion_id = promotion_id
+        # The promotion name.
         self.promotion_name = promotion_name
+        # Indicates whether the promotion is selected.
         self.selected = selected
 
     def validate(self):
@@ -249,11 +265,17 @@ class DescribeCloudPhoneNodeRenewPriceResponseBodyPricePriceDetail(DaraModel):
         resource_type: str = None,
         trade_price: float = None,
     ):
+        # The discounted price.
         self.discount_price = discount_price
+        # The matrix ID.
         self.instance_id = instance_id
+        # The price of each module.
         self.module_price = module_price
+        # The original price.
         self.original_price = original_price
+        # The resource type.
         self.resource_type = resource_type
+        # The transaction price.
         self.trade_price = trade_price
 
     def validate(self):
@@ -322,9 +344,13 @@ class DescribeCloudPhoneNodeRenewPriceResponseBodyPricePriceDetailModulePrice(Da
         original_price: str = None,
         trade_price: str = None,
     ):
+        # The discounted price.
         self.discount_price = discount_price
+        # The name of the module.
         self.module_name = module_name
+        # The original price.
         self.original_price = original_price
+        # The transaction price.
         self.trade_price = trade_price
 
     def validate(self):

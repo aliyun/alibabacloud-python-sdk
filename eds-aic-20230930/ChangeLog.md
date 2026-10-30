@@ -1,3 +1,6 @@
+2026-10-30 Version: 4.38.1
+- Generated python 2023-09-30 for eds-aic.
+
 2026-10-23 Version: 4.38.0
 - Support API DescribeBandwidthPackagePrice.
 - Support API DescribeCloudPhoneNodePrice.

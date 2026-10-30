@@ -14,8 +14,11 @@ class DescribeInstanceGroupPriceResponseBody(DaraModel):
         request_id: str = None,
         rules: List[main_models.DescribeInstanceGroupPriceResponseBodyRules] = None,
     ):
+        # The price.
         self.price = price
+        # The request ID.
         self.request_id = request_id
+        # The rule information.
         self.rules = rules
 
     def validate(self):
@@ -67,7 +70,9 @@ class DescribeInstanceGroupPriceResponseBodyRules(DaraModel):
         description: str = None,
         rule_id: str = None,
     ):
+        # The rule description.
         self.description = description
+        # The rule ID.
         self.rule_id = rule_id
 
     def validate(self):
@@ -105,10 +110,15 @@ class DescribeInstanceGroupPriceResponseBodyPrice(DaraModel):
         promotions: List[main_models.DescribeInstanceGroupPriceResponseBodyPricePromotions] = None,
         trade_price: float = None,
     ):
+        # The currency unit.
         self.currency = currency
+        # The discounted price.
         self.discount_price = discount_price
+        # The original price.
         self.original_price = original_price
+        # The promotion information.
         self.promotions = promotions
+        # The transaction price.
         self.trade_price = trade_price
 
     def validate(self):
@@ -172,10 +182,15 @@ class DescribeInstanceGroupPriceResponseBodyPricePromotions(DaraModel):
         promotion_name: str = None,
         selected: bool = None,
     ):
+        # The coupon code.
         self.option_code = option_code
+        # The coupon description.
         self.promotion_desc = promotion_desc
+        # The promotion ID.
         self.promotion_id = promotion_id
+        # The coupon name.
         self.promotion_name = promotion_name
+        # Indicates whether the promotion is selected.
         self.selected = selected
 
     def validate(self):

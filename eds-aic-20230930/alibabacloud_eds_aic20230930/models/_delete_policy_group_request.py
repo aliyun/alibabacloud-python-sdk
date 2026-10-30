@@ -11,7 +11,7 @@ class DeletePolicyGroupRequest(DaraModel):
         self,
         policy_group_ids: List[str] = None,
     ):
-        # A list of policy group IDs. If any specified policy group is associated with an existing instance group, the entire operation fails.
+        # The list of policy IDs. If any policy is associated with an undeleted instance group, the entire deletion operation fails.
         # 
         # This parameter is required.
         self.policy_group_ids = policy_group_ids

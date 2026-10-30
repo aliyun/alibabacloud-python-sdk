@@ -13,9 +13,9 @@ class AttachKeyPairResponseBody(DaraModel):
         data: main_models.AttachKeyPairResponseBodyData = None,
         request_id: str = None,
     ):
-        # The object that is returned.
+        # The result object.
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +54,13 @@ class AttachKeyPairResponseBodyData(DaraModel):
         key_pair_id: str = None,
         total_count: int = None,
     ):
-        # The IDs of the cloud phone instances to which the ADB key pair is successfully attached.
+        # The cloud phone instance ID list to which the key pair was successfully attached.
         self.attached_instance_ids = attached_instance_ids
-        # The number of the cloud phone instances to which the ADB key pair failed to be attached.
+        # The number of instances to which the attachment failed.
         self.fail_count = fail_count
         # The ID of the ADB key pair.
         self.key_pair_id = key_pair_id
-        # The total number of the cloud phone instances.
+        # The total number of instances for which the attachment was attempted.
         self.total_count = total_count
 
     def validate(self):

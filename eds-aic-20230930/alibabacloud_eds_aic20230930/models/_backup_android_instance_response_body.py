@@ -15,13 +15,13 @@ class BackupAndroidInstanceResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # The number of instances that were backed up.
+        # The number of backed-up instances.
         self.count = count
-        # The returned result objects.
+        # The returned result object.
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -80,11 +80,11 @@ class BackupAndroidInstanceResponseBodyData(DaraModel):
     ):
         # The cloud phone instance ID.
         self.android_instance_id = android_instance_id
-        # The ID of the backup file.
+        # The backup file ID.
         self.backup_file_id = backup_file_id
         # The name of the backup file.
         self.backup_file_name = backup_file_name
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

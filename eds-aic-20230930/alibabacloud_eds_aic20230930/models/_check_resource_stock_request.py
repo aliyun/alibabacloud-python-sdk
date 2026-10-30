@@ -23,7 +23,7 @@ class CheckResourceStockRequest(DaraModel):
         self.biz_region_id = biz_region_id
         # Specifies whether to enable GPU acceleration.
         self.gpu_acceleration = gpu_acceleration
-        # The zone to which the resource belongs.
+        # The zone of the resource.
         self.zone_id = zone_id
 
     def validate(self):

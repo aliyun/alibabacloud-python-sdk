@@ -12,13 +12,12 @@ class SetNetworkBlacklistRequest(DaraModel):
         domain_blacklist: List[str] = None,
         ip_blacklist: List[str] = None,
     ):
-        # Domain name blacklist.
+        # The domain name blacklist.
         # 
-        # > Supports a maximum of 200 domain names.
+        # > A maximum of 200 domain names are supported.
         self.domain_blacklist = domain_blacklist
-        # IP address blacklist.
-        # 
-        # > Supports a maximum of 200 IP addresses or IP address segments.
+        # The IP address blacklist.
+        # > A maximum of 200 IP addresses or CIDR blocks are supported.
         self.ip_blacklist = ip_blacklist
 
     def validate(self):

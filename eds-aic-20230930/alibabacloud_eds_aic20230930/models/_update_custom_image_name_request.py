@@ -10,9 +10,9 @@ class UpdateCustomImageNameRequest(DaraModel):
         image_id: str = None,
         image_name: str = None,
     ):
-        # The ID of the image.
+        # The image ID.
         self.image_id = image_id
-        # The name of the image.
+        # The image name.
         self.image_name = image_name
 
     def validate(self):

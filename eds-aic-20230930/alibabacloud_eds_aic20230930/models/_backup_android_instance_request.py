@@ -13,21 +13,24 @@ class BackupAndroidInstanceRequest(DaraModel):
         backup_file_name: str = None,
         backup_file_path: str = None,
         description: str = None,
+        exclude_app_list: List[str] = None,
         upload_endpoint: str = None,
     ):
-        # A list of instance IDs.
+        # The list of instance IDs.
         # 
         # This parameter is required.
         self.android_instance_id_list = android_instance_id_list
         # The name of the backup file.
         self.backup_file_name = backup_file_name
-        # The upload URL for the backup file.
+        # The upload URL of the backup file.
         # 
         # This parameter is required.
         self.backup_file_path = backup_file_path
-        # The description of the full instance backup.
+        # The description of the full backup.
         self.description = description
-        # The region where the backup is stored.
+        # The list of application package names to exclude from the full backup. For matched applications, only APK collection is skipped, and user data is backed up as usual. If this parameter is not specified, no applications are excluded.
+        self.exclude_app_list = exclude_app_list
+        # The backup region.
         # 
         # This parameter is required.
         self.upload_endpoint = upload_endpoint
@@ -52,6 +55,9 @@ class BackupAndroidInstanceRequest(DaraModel):
         if self.description is not None:
             result['Description'] = self.description
 
+        if self.exclude_app_list is not None:
+            result['ExcludeAppList'] = self.exclude_app_list
+
         if self.upload_endpoint is not None:
             result['UploadEndpoint'] = self.upload_endpoint
 
@@ -70,6 +76,9 @@ class BackupAndroidInstanceRequest(DaraModel):
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('ExcludeAppList') is not None:
+            self.exclude_app_list = m.get('ExcludeAppList')
 
         if m.get('UploadEndpoint') is not None:
             self.upload_endpoint = m.get('UploadEndpoint')

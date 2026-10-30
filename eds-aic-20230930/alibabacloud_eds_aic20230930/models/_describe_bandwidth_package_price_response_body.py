@@ -14,8 +14,11 @@ class DescribeBandwidthPackagePriceResponseBody(DaraModel):
         request_id: str = None,
         rules: List[main_models.DescribeBandwidthPackagePriceResponseBodyRules] = None,
     ):
+        # The price.
         self.price = price
+        # Id of the request
         self.request_id = request_id
+        # The promotion rules.
         self.rules = rules
 
     def validate(self):
@@ -67,7 +70,9 @@ class DescribeBandwidthPackagePriceResponseBodyRules(DaraModel):
         description: str = None,
         rule_id: str = None,
     ):
+        # The rule description.
         self.description = description
+        # The rule ID.
         self.rule_id = rule_id
 
     def validate(self):
@@ -105,10 +110,20 @@ class DescribeBandwidthPackagePriceResponseBodyPrice(DaraModel):
         promotions: List[main_models.DescribeBandwidthPackagePriceResponseBodyPricePromotions] = None,
         trade_price: float = None,
     ):
+        # <props="china">The currency unit (CNY).
+        # <props="intl">The currency unit (USD).
         self.currency = currency
+        # The discounted price.
         self.discount_price = discount_price
+        # The original price.
+        # 
+        # <props="china">Unit: CNY.
+        # 
+        # <props="intl">Unit: USD.
         self.original_price = original_price
+        # The promotion information.
         self.promotions = promotions
+        # The transaction price.
         self.trade_price = trade_price
 
     def validate(self):
@@ -172,10 +187,15 @@ class DescribeBandwidthPackagePriceResponseBodyPricePromotions(DaraModel):
         promotion_name: str = None,
         selected: bool = None,
     ):
+        # The promotion code.
         self.option_code = option_code
+        # The promotion description.
         self.promotion_desc = promotion_desc
+        # The ID of the promotion.
         self.promotion_id = promotion_id
+        # The name of the promotion.
         self.promotion_name = promotion_name
+        # Indicates whether the promotion is selected.
         self.selected = selected
 
     def validate(self):

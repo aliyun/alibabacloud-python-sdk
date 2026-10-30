@@ -15,13 +15,13 @@ class CancelAgentTaskResponseBody(DaraModel):
         request_id: str = None,
         tasks: List[main_models.CancelAgentTaskResponseBodyTasks] = None,
     ):
-        # The status code.
+        # The API status code.
         self.code = code
-        # The returned message.
+        # The message returned by the API.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # A list of task objects.
+        # The list of tasks.
         self.tasks = tasks
 
     def validate(self):
@@ -80,23 +80,19 @@ class CancelAgentTaskResponseBodyTasks(DaraModel):
         previous_status: str = None,
         task_id: str = None,
     ):
-        # The task\\"s cancellation time, in ISO 8601 format.
+        # The time when the task was canceled, in ISO 8601 format.
         self.cancel_at = cancel_at
-        # The task status after the cancellation request. Possible values include:
-        # 
-        # `CANCELLING` or `CANCELED`: The task is being or has been canceled.
-        # 
-        # `COMPLETED`: The task was already complete and could not be canceled.
+        # The current status of the task. Valid values:
+        # - CANCELLING: The task is being canceled.
+        # - CANCELED: The task is canceled.
         self.current_status = current_status
-        # The failure reason.
+        # The reason why the task cancellation failed.
         self.failed_reason = failed_reason
-        # The mobile node ID.
+        # The ID of the Mobile node.
         self.instance_id = instance_id
-        # The task status before cancellation. Valid values include:
-        # 
-        # PENDING: The task is being created.
-        # 
-        # RUNNING: The task is running.
+        # The status of the task before cancellation. Valid values:
+        # - PENDING: The task is being created.
+        # - RUNNING: The task is running.
         self.previous_status = previous_status
         # The globally unique task ID.
         self.task_id = task_id

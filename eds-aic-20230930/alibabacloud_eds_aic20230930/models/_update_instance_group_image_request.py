@@ -16,7 +16,7 @@ class UpdateInstanceGroupImageRequest(DaraModel):
         # 
         # This parameter is required.
         self.image_id = image_id
-        # A list of instance group IDs.
+        # The list of instance group IDs.
         # 
         # This parameter is required.
         self.instance_group_ids = instance_group_ids

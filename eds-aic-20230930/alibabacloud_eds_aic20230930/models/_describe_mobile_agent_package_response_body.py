@@ -94,11 +94,11 @@ class DescribeMobileAgentPackageResponseBodyPackageList(DaraModel):
         tags: List[main_models.DescribeMobileAgentPackageResponseBodyPackageListTags] = None,
         used_credit: str = None,
     ):
-        # The expiration time. The time format is YYYY-MM-DD HH:mm:ss.
+        # The expiration time. Format: YYYY-MM-DD HH:mm:ss.
         self.expired_at = expired_at
         # The node instance IDs.
         self.instance_ids = instance_ids
-        # The package credit quota.
+        # The credit quota of the package.
         self.package_credit = package_credit
         # The package ID.
         self.package_id = package_id

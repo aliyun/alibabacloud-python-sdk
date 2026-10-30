@@ -20,19 +20,33 @@ class DescribeInstanceGroupPriceRequest(DaraModel):
         promotion_id: str = None,
         sale_mode: str = None,
     ):
+        # The number of instance groups.
         self.amount = amount
+        # The ID of the bandwidth plan.
         self.bandwidth = bandwidth
+        # The region ID.
+        # 
         # This parameter is required.
         self.biz_region_id = biz_region_id
+        # The image ID.
         self.image_id = image_id
+        # The instance group specifications.
+        # 
         # This parameter is required.
         self.instance_group_spec = instance_group_spec
+        # The instance version. You do not need to specify this parameter. The system automatically matches the value.
         self.instance_version = instance_version
+        # The number of instances in the instance group.
         self.number_of_instances = number_of_instances
+        # The order type.
         self.order_type = order_type
+        # The subscription period. The unit is specified by PeriodUnit. Default value: 1.
         self.period = period
+        # The unit of the subscription period. Default value: Month.
         self.period_unit = period_unit
+        # The ID of the promotion.
         self.promotion_id = promotion_id
+        # The sales mode. You do not need to specify this parameter. The system automatically matches the value.
         self.sale_mode = sale_mode
 
     def validate(self):

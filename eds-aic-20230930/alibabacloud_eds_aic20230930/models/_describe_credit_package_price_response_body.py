@@ -14,8 +14,11 @@ class DescribeCreditPackagePriceResponseBody(DaraModel):
         request_id: str = None,
         rules: List[main_models.DescribeCreditPackagePriceResponseBodyRules] = None,
     ):
+        # The price.
         self.price = price
+        # Id of the request
         self.request_id = request_id
+        # The promotion rules.
         self.rules = rules
 
     def validate(self):
@@ -67,7 +70,9 @@ class DescribeCreditPackagePriceResponseBodyRules(DaraModel):
         description: str = None,
         rule_id: str = None,
     ):
+        # The promotion description.
         self.description = description
+        # The rule ID.
         self.rule_id = rule_id
 
     def validate(self):
@@ -106,11 +111,20 @@ class DescribeCreditPackagePriceResponseBodyPrice(DaraModel):
         promotions: List[main_models.DescribeCreditPackagePriceResponseBodyPricePromotions] = None,
         trade_price: float = None,
     ):
+        # The currency. Valid values:
+        # - CNY: Chinese yuan
+        # - USD: US dollar
+        # - JPY: Japanese yen
         self.currency = currency
+        # The discounted price.
         self.discount_price = discount_price
+        # The original price.
         self.original_price = original_price
+        # The price details.
         self.price_detail = price_detail
+        # The promotion information.
         self.promotions = promotions
+        # The transaction price.
         self.trade_price = trade_price
 
     def validate(self):
@@ -189,10 +203,15 @@ class DescribeCreditPackagePriceResponseBodyPricePromotions(DaraModel):
         promotion_name: str = None,
         selected: bool = None,
     ):
+        # The coupon code.
         self.option_code = option_code
+        # The coupon description.
         self.promotion_desc = promotion_desc
+        # The ID of the promotion.
         self.promotion_id = promotion_id
+        # The coupon name.
         self.promotion_name = promotion_name
+        # Indicates whether the coupon is selected.
         self.selected = selected
 
     def validate(self):
@@ -248,10 +267,15 @@ class DescribeCreditPackagePriceResponseBodyPricePriceDetail(DaraModel):
         resource_type: str = None,
         trade_price: float = None,
     ):
+        # The discounted price.
         self.discount_price = discount_price
+        # The prices of the modules.
         self.module_price = module_price
+        # The original price.
         self.original_price = original_price
+        # The resource type.
         self.resource_type = resource_type
+        # The transaction price.
         self.trade_price = trade_price
 
     def validate(self):
@@ -314,9 +338,13 @@ class DescribeCreditPackagePriceResponseBodyPricePriceDetailModulePrice(DaraMode
         original_price: str = None,
         trade_price: str = None,
     ):
+        # The discounted price.
         self.discount_price = discount_price
+        # The name of the billing module.
         self.module_name = module_name
+        # The original price.
         self.original_price = original_price
+        # The transaction price.
         self.trade_price = trade_price
 
     def validate(self):

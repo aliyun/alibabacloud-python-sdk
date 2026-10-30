@@ -11,7 +11,7 @@ class DeleteAppsRequest(DaraModel):
         self,
         app_id_list: List[str] = None,
     ):
-        # The IDs of the applications.
+        # The list of application IDs.
         self.app_id_list = app_id_list
 
     def validate(self):

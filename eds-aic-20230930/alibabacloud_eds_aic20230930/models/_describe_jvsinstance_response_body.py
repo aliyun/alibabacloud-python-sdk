@@ -19,9 +19,9 @@ class DescribeJVSInstanceResponseBody(DaraModel):
     ):
         # The returned result object.
         self.data = data
-        # The maximum number of results returned in this request.
+        # The maximum number of results returned in the current request.
         self.max_results = max_results
-        # The token that indicates the starting position of the current query. If this parameter is empty, the query starts from the beginning.
+        # The token that specifies the starting position for the query. An empty value indicates that the query starts from the beginning.
         self.next_token = next_token
         # The number of pending upgrades.
         self.pending_upgrade_count = pending_upgrade_count
@@ -104,11 +104,11 @@ class DescribeJVSInstanceResponseBodyData(DaraModel):
     ):
         # The AI Engine version and upgrade status.
         self.agent_version = agent_version
-        # The creation time. The time is in UTC and follows the ISO 8601 standard.
+        # The creation time. The time is displayed in UTC and follows the ISO 8601 standard.
         self.create_time = create_time
-        # The credit limit configuration. If multiple configurations are delivered, the subsequent configurations overwrite the previous ones.
+        # The credit limit configuration. Subsequent quota configurations overwrite previous configurations.
         self.credit_config = credit_config
-        # The expiration time. The time is in UTC and follows the ISO 8601 standard.
+        # The expiration time. The time is displayed in UTC and follows the ISO 8601 standard.
         self.expire_time = expire_time
         # The list of skills installed on the instance.
         self.installed_skills = installed_skills
@@ -116,11 +116,11 @@ class DescribeJVSInstanceResponseBodyData(DaraModel):
         self.instance_id = instance_id
         # This parameter is not supported.
         self.jvs_package_id = jvs_package_id
-        # The modification time. The time is in UTC and follows the ISO 8601 standard.
+        # The modification time. The time is displayed in UTC and follows the ISO 8601 standard.
         self.modify_time = modify_time
         # The instance status.
         self.status = status
-        # The used credits.
+        # The used credit.
         self.used_credit = used_credit
 
     def validate(self):
@@ -232,7 +232,7 @@ class DescribeJVSInstanceResponseBodyDataUsedCredit(DaraModel):
         credit: int = None,
         limit_period: str = None,
     ):
-        # The number of credits.
+        # The credit amount.
         self.credit = credit
         # The dimension of the current credit.
         self.limit_period = limit_period
@@ -344,7 +344,7 @@ class DescribeJVSInstanceResponseBodyDataCreditConfig(DaraModel):
     ):
         # The credit limit.
         self.credit_limit = credit_limit
-        # The limit period.
+        # The credit limit period.
         self.limit_period = limit_period
 
     def validate(self):

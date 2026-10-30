@@ -289,6 +289,8 @@ class Client(OpenApiClient):
             query['BackupFilePath'] = request.backup_file_path
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.exclude_app_list):
+            query['ExcludeAppList'] = request.exclude_app_list
         if not DaraCore.is_null(request.upload_endpoint):
             query['UploadEndpoint'] = request.upload_endpoint
         req = open_api_util_models.OpenApiRequest(
@@ -325,6 +327,8 @@ class Client(OpenApiClient):
             query['BackupFilePath'] = request.backup_file_path
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.exclude_app_list):
+            query['ExcludeAppList'] = request.exclude_app_list
         if not DaraCore.is_null(request.upload_endpoint):
             query['UploadEndpoint'] = request.upload_endpoint
         req = open_api_util_models.OpenApiRequest(
@@ -467,6 +471,8 @@ class Client(OpenApiClient):
             query['BackupFilePath'] = request.backup_file_path
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.exclude_app_list):
+            query['ExcludeAppList'] = request.exclude_app_list
         if not DaraCore.is_null(request.exclude_source_file_path_list):
             query['ExcludeSourceFilePathList'] = request.exclude_source_file_path_list
         if not DaraCore.is_null(request.source_app_list):
@@ -513,6 +519,8 @@ class Client(OpenApiClient):
             query['BackupFilePath'] = request.backup_file_path
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.exclude_app_list):
+            query['ExcludeAppList'] = request.exclude_app_list
         if not DaraCore.is_null(request.exclude_source_file_path_list):
             query['ExcludeSourceFilePathList'] = request.exclude_source_file_path_list
         if not DaraCore.is_null(request.source_app_list):
@@ -9687,6 +9695,8 @@ class Client(OpenApiClient):
             query['BackupFileId'] = request.backup_file_id
         if not DaraCore.is_null(request.backup_file_path):
             query['BackupFilePath'] = request.backup_file_path
+        if not DaraCore.is_null(request.exclude_app_list):
+            query['ExcludeAppList'] = request.exclude_app_list
         if not DaraCore.is_null(request.upload_endpoint):
             query['UploadEndpoint'] = request.upload_endpoint
         if not DaraCore.is_null(request.upload_type):
@@ -9723,6 +9733,8 @@ class Client(OpenApiClient):
             query['BackupFileId'] = request.backup_file_id
         if not DaraCore.is_null(request.backup_file_path):
             query['BackupFilePath'] = request.backup_file_path
+        if not DaraCore.is_null(request.exclude_app_list):
+            query['ExcludeAppList'] = request.exclude_app_list
         if not DaraCore.is_null(request.upload_endpoint):
             query['UploadEndpoint'] = request.upload_endpoint
         if not DaraCore.is_null(request.upload_type):
@@ -9861,6 +9873,8 @@ class Client(OpenApiClient):
             query['BackupFileId'] = request.backup_file_id
         if not DaraCore.is_null(request.backup_file_path):
             query['BackupFilePath'] = request.backup_file_path
+        if not DaraCore.is_null(request.exclude_app_list):
+            query['ExcludeAppList'] = request.exclude_app_list
         if not DaraCore.is_null(request.upload_endpoint):
             query['UploadEndpoint'] = request.upload_endpoint
         if not DaraCore.is_null(request.upload_type):
@@ -9899,6 +9913,8 @@ class Client(OpenApiClient):
             query['BackupFileId'] = request.backup_file_id
         if not DaraCore.is_null(request.backup_file_path):
             query['BackupFilePath'] = request.backup_file_path
+        if not DaraCore.is_null(request.exclude_app_list):
+            query['ExcludeAppList'] = request.exclude_app_list
         if not DaraCore.is_null(request.upload_endpoint):
             query['UploadEndpoint'] = request.upload_endpoint
         if not DaraCore.is_null(request.upload_type):

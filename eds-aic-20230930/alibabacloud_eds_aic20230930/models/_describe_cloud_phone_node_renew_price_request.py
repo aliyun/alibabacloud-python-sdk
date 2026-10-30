@@ -14,9 +14,15 @@ class DescribeCloudPhoneNodeRenewPriceRequest(DaraModel):
         period_unit: str = None,
         promotion_id: str = None,
     ):
+        # The list of cloud phone matrix IDs.
         self.node_ids = node_ids
+        # The subscription period. The unit is specified by PeriodUnit.
         self.period = period
+        # The unit of the subscription period. Valid values:
+        # - **Month**: Month.
+        # - **Year**: Year.
         self.period_unit = period_unit
+        # The ID of the promotion.
         self.promotion_id = promotion_id
 
     def validate(self):

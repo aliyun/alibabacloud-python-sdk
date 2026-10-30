@@ -21,25 +21,25 @@ class CreatePolicyGroupShrinkRequest(DaraModel):
     ):
         # Specifies whether to enable local camera redirection.
         self.camera_redirect = camera_redirect
-        # The clipboard permission.
+        # The clipboard permissions.
         self.clipboard = clipboard
-        # The file transfer policy for the web client.
+        # The file transfer policy for the Wuying web client.
         self.html_5file_transfer = html_5file_transfer
-        # The local disk mapping permission.
+        # The local disk mapping permissions.
         self.local_drive = local_drive
         # Specifies whether to lock the resolution.
         self.lock_resolution = lock_resolution
-        # Network redirection.
+        # The network redirection settings.
         self.net_redirect_policy_shrink = net_redirect_policy_shrink
         # The policy name.
         self.policy_group_name = policy_group_name
         # The policy type.
         self.policy_type = policy_type
-        # The resolution height, in pixels.
+        # The height of the resolution. Unit: pixels.
         self.resolution_height = resolution_height
-        # The resolution width, in pixels.
+        # The width of the resolution. Unit: pixels.
         self.resolution_width = resolution_width
-        # Screen watermark.
+        # The screen watermark settings.
         self.watermark_shrink = watermark_shrink
 
     def validate(self):

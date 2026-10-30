@@ -11,7 +11,7 @@ class DeleteKeyPairsRequest(DaraModel):
         self,
         key_pair_ids: List[str] = None,
     ):
-        # The IDs of the ADB key pairs.
+        # The list of key pair IDs.
         self.key_pair_ids = key_pair_ids
 
     def validate(self):

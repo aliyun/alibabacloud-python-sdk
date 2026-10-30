@@ -101,7 +101,7 @@ class RefreshAuthTokensResponseBodyDataTokens(DaraModel):
         issued_at: int = None,
         license_key: str = None,
     ):
-        # The authorization token value.
+        # The value of the authorization token.
         self.auth_token = auth_token
         # The expiration timestamp.
         self.expire_at = expire_at

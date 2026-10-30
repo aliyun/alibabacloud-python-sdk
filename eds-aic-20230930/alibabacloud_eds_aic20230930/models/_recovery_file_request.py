@@ -13,26 +13,26 @@ class RecoveryFileRequest(DaraModel):
         backup_all: bool = None,
         backup_file_id: str = None,
         backup_file_path: str = None,
+        exclude_app_list: List[str] = None,
         upload_endpoint: str = None,
         upload_type: str = None,
     ):
-        # The IDs of the instances.
+        # The list of instance IDs.
         # 
         # This parameter is required.
         self.android_instance_id_list = android_instance_id_list
-        # Specifies whether to back up the whole instance.
+        # Specifies whether to back up the entire device.
         self.backup_all = backup_all
         # The ID of the backup file.
         self.backup_file_id = backup_file_id
-        # The OSS path to which the backup file is uploaded.
-        # 
-        # > When calling the describeBuckets operation to retrieve a bucket name, you must also call the ossObjectList operation to obtain the object key. Combine these to form the full path: oss\\://${bucketName}/${key}.
+        # The OSS URL to which the backup file is uploaded.
+        # <notice>Call the describeBuckets operation to obtain the bucketName, and select ossObjectList to obtain the key. The key is the path of the backup file. Concatenate them into "oss://${bucketName}/${key}".</notice>
         self.backup_file_path = backup_file_path
-        # The endpoint of the OSS bucket that stores the backup file.
-        # 
-        # > : When calling the DescribeBuckets operation to query buckets, retrieve the IntranetEndpoint value if the cloud phone and the OSS bucket are in the same region. If they are in different regions, retrieve the ExtranetEndpoint value instead.
+        self.exclude_app_list = exclude_app_list
+        # The domain name of the backup address.
+        # <notice>Call the DescribeBuckets operation to obtain the bucket. If the cloud phone and the bucket are in the same region, obtain the IntranetEndpoint field. If they are in different regions, obtain the ExtranetEndpoint field.</notice>
         self.upload_endpoint = upload_endpoint
-        # The type of the backup.
+        # The backup type.
         self.upload_type = upload_type
 
     def validate(self):
@@ -55,6 +55,9 @@ class RecoveryFileRequest(DaraModel):
         if self.backup_file_path is not None:
             result['BackupFilePath'] = self.backup_file_path
 
+        if self.exclude_app_list is not None:
+            result['ExcludeAppList'] = self.exclude_app_list
+
         if self.upload_endpoint is not None:
             result['UploadEndpoint'] = self.upload_endpoint
 
@@ -76,6 +79,9 @@ class RecoveryFileRequest(DaraModel):
 
         if m.get('BackupFilePath') is not None:
             self.backup_file_path = m.get('BackupFilePath')
+
+        if m.get('ExcludeAppList') is not None:
+            self.exclude_app_list = m.get('ExcludeAppList')
 
         if m.get('UploadEndpoint') is not None:
             self.upload_endpoint = m.get('UploadEndpoint')

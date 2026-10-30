@@ -14,11 +14,11 @@ class SendFileResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # The details of the created tasks.
+        # The returned data.
         self.data = data
-        # A unique identifier for the request. If you encounter an issue, provide this request ID to technical support for troubleshooting.
+        # The unique ID of the request. If you encounter any issues, provide this request ID to the technical support team for troubleshooting.
         self.request_id = request_id
-        # The batch task ID.
+        # The ID of the batch task.
         self.task_id = task_id
 
     def validate(self):
@@ -69,7 +69,7 @@ class SendFileResponseBodyData(DaraModel):
     ):
         # The instance ID.
         self.android_instance_id = android_instance_id
-        # The ID of the individual task for a specific cloud phone.
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

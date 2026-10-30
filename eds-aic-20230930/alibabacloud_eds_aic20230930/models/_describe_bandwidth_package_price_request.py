@@ -15,14 +15,35 @@ class DescribeBandwidthPackagePriceRequest(DaraModel):
         promotion_id: str = None,
         purchase_channel_type: str = None,
     ):
+        # The peak bandwidth of the network. Unit: Mbit/s.
+        # 
         # This parameter is required.
         self.bandwidth = bandwidth
+        # The region ID.
+        # 
         # This parameter is required.
         self.biz_region_id = biz_region_id
+        # The billing method of the bandwidth plan. Valid values:
+        # 
+        # <props="china">
+        # 
+        # - **PayByBandwidth** (default): billing by bandwidth.
+        # - **PayBy95**: billing by traditional 95th percentile. IPv6 Internet bandwidth does not support billing by traditional 95th percentile by default. To use this billing method, contact your account manager.
+        # 
+        # 
+        # <props="intl">
+        # 
+        # - **PayByBandwidth** (default): billing by bandwidth.
         self.internet_charge_type = internet_charge_type
+        # The subscription duration of the resource. The unit is specified by `PeriodUnit`. Valid values: 1 month, 2 months, 3 months, 6 months, 1 year, 2 years, and 3 years.
         self.period = period
+        # The unit of the subscription duration of the resource. Valid values:
+        # - **Month**: Month.
+        # - **Year**: Year.
         self.period_unit = period_unit
+        # The ID of the promotion.
         self.promotion_id = promotion_id
+        # The payment channel.
         self.purchase_channel_type = purchase_channel_type
 
     def validate(self):

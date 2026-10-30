@@ -24,25 +24,25 @@ class CreatePolicyGroupRequest(DaraModel):
     ):
         # Specifies whether to enable local camera redirection.
         self.camera_redirect = camera_redirect
-        # The clipboard permission.
+        # The clipboard permissions.
         self.clipboard = clipboard
-        # The file transfer policy for the web client.
+        # The file transfer policy for the Wuying web client.
         self.html_5file_transfer = html_5file_transfer
-        # The local disk mapping permission.
+        # The local disk mapping permissions.
         self.local_drive = local_drive
         # Specifies whether to lock the resolution.
         self.lock_resolution = lock_resolution
-        # Network redirection.
+        # The network redirection settings.
         self.net_redirect_policy = net_redirect_policy
         # The policy name.
         self.policy_group_name = policy_group_name
         # The policy type.
         self.policy_type = policy_type
-        # The resolution height, in pixels.
+        # The height of the resolution. Unit: pixels.
         self.resolution_height = resolution_height
-        # The resolution width, in pixels.
+        # The width of the resolution. Unit: pixels.
         self.resolution_width = resolution_width
-        # Screen watermark.
+        # The screen watermark settings.
         self.watermark = watermark
 
     def validate(self):
@@ -142,11 +142,11 @@ class CreatePolicyGroupRequestWatermark(DaraModel):
     ):
         # The font color of the watermark. Valid values: 0 to 16777215.
         self.watermark_color = watermark_color
-        # The custom text for the watermark. The text can be up to 10 characters long and cannot contain emojis.
+        # The custom text for the watermark. The text must be up to 10 characters in length and cannot contain emoji.
         self.watermark_custom_text = watermark_custom_text
         # The font size of the watermark. Valid values: 10 to 20.
         self.watermark_font_size = watermark_font_size
-        # Specifies whether to enable the screen watermark.
+        # The screen watermark switch.
         self.watermark_switch = watermark_switch
         # The opacity of the watermark. A larger value indicates lower transparency. Valid values: 10 to 100.
         self.watermark_transparency_value = watermark_transparency_value
@@ -217,19 +217,19 @@ class CreatePolicyGroupRequestNetRedirectPolicy(DaraModel):
     ):
         # Specifies whether to manually configure a transparent proxy.
         self.custom_proxy = custom_proxy
-        # The IP address of the transparent proxy. The IP address must be in IPv4 format.
+        # The transparent proxy IP address. The format is an IPv4 address.
         self.host_addr = host_addr
         # Specifies whether to enable network redirection.
         self.net_redirect = net_redirect
         # The port of the transparent proxy. Valid values: 1 to 65535.
         self.port = port
-        # The proxy password. The password must be 1 to 256 characters in length. It cannot contain Chinese characters or whitespace characters.
+        # The proxy password. The password must be 1 to 256 characters in length and cannot contain Chinese characters or whitespace characters.
         self.proxy_password = proxy_password
         # The proxy protocol type.
         self.proxy_type = proxy_type
-        # The proxy username. The username must be 1 to 256 characters in length. It cannot contain Chinese characters or whitespace characters.
+        # The proxy username. The username must be 1 to 256 characters in length and cannot contain Chinese characters or whitespace characters.
         self.proxy_user_name = proxy_user_name
-        # The list of proxy rules. You can specify up to 100 rules.
+        # The list of proxy rules. A maximum of 100 rules can be configured.
         self.rules = rules
 
     def validate(self):

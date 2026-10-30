@@ -14,9 +14,15 @@ class DescribeMobileAgentPackagePriceForRenewRequest(DaraModel):
         period_unit: str = None,
         promotion_id: str = None,
     ):
+        # The IDs of the MobileAgent resource plans.
         self.mobile_agent_package_ids = mobile_agent_package_ids
+        # The subscription period of the resource. The unit is specified by PeriodUnit. Valid values: 1 month, 2 months, 3 months, 6 months, and 1 year.
         self.period = period
+        # The unit of the subscription period. Valid values:
+        # - **Month**: Month.
+        # - **Year**: Year.
         self.period_unit = period_unit
+        # The promotion ID.
         self.promotion_id = promotion_id
 
     def validate(self):

@@ -12,9 +12,9 @@ class SetAdbSecureRequest(DaraModel):
         instance_ids: List[str] = None,
         status: int = None,
     ):
-        # The IDs of the cloud phone instances. You can specify a maximum of 50 cloud phone instances.
+        # The list of cloud phone instance IDs. Up to 50 instances are supported.
         self.instance_ids = instance_ids
-        # The status of the ADB authentication feature.
+        # The ADB authentication status.
         # 
         # This parameter is required.
         self.status = status

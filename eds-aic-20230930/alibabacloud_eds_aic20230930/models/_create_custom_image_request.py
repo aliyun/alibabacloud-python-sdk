@@ -12,15 +12,15 @@ class CreateCustomImageRequest(DaraModel):
         image_name: str = None,
         instance_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. By default, this parameter is left empty. The token cannot exceed 100 characters in length. Requests with the same ClientToken triggers only one creation.
+        # The idempotency parameter. The default value is empty and the length cannot exceed 100 characters. Multiple calls with the same ClientToken perform only one creation operation.
         self.client_token = client_token
-        # The description of the custom image.
+        # The image description.
         self.description = description
-        # The name of the custom image.
+        # The image name.
         # 
         # This parameter is required.
         self.image_name = image_name
-        # The ID of the cloud phone instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

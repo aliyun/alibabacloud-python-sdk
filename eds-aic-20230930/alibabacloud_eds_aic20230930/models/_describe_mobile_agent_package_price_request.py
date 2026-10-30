@@ -15,12 +15,21 @@ class DescribeMobileAgentPackagePriceRequest(DaraModel):
         period_unit: str = None,
         promotion_id: str = None,
     ):
+        # The number of MobileAgent packages.
         self.amount = amount
+        # The region ID for the purchase.
         self.biz_region_id = biz_region_id
+        # The number of credits.
         self.credit_amount = credit_amount
+        # The specifications of the MobileAgent package.
         self.mobile_agent_package_spec = mobile_agent_package_spec
+        # The subscription duration of the purchased resource. The unit is specified by PeriodUnit. Valid value: 1 month.
         self.period = period
+        # The duration unit of the subscription billing method. Valid values:
+        # - **Year**: Year.
+        # - **Month** (default): Month.
         self.period_unit = period_unit
+        # The ID of the promotion.
         self.promotion_id = promotion_id
 
     def validate(self):

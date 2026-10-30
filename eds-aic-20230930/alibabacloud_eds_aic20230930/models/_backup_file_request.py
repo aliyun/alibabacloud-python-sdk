@@ -14,6 +14,7 @@ class BackupFileRequest(DaraModel):
         backup_file_name: str = None,
         backup_file_path: str = None,
         description: str = None,
+        exclude_app_list: List[str] = None,
         exclude_source_file_path_list: List[str] = None,
         source_app_list: List[str] = None,
         source_file_path_list: List[str] = None,
@@ -28,22 +29,24 @@ class BackupFileRequest(DaraModel):
         self.backup_all = backup_all
         # The name of the backup file.
         self.backup_file_name = backup_file_name
-        # The upload path of the backup file.
+        # The upload address of the backup file.
         # > If you upload the backup file to an OSS bucket, call the describeBuckets operation to obtain the bucketName, and select ossObjectList to obtain the key. The key is the folder path in the OSS bucket. Concatenate them into `oss://${bucketName}/${key}`.
         # 
         # This parameter is required.
         self.backup_file_path = backup_file_path
         # The description of the backup file.
         self.description = description
+        # The list of application package names excluded from full instance backup. Matched applications only skip APK collection, and user data is backed up as usual. If this parameter is not specified, no applications are excluded.
+        self.exclude_app_list = exclude_app_list
         # The list of file paths in the Android container to exclude from the backup.
         self.exclude_source_file_path_list = exclude_source_file_path_list
-        # The list of application package names to back up.
+        # The list of package names of the applications to back up.
         self.source_app_list = source_app_list
         # The list of file paths to back up.
         self.source_file_path_list = source_file_path_list
-        # The domain name of the backup endpoint.
+        # The domain name of the backup address.
         # 
-        # > If you upload the backup file to an OSS bucket, call the describeBuckets operation to obtain the bucket. If the cloud phone and the bucket are in the same region, obtain the intranetEndpoint field. If they are in different regions, obtain the extranetEndpoint field.
+        # > If you upload the backup file to an OSS bucket, call the describeBuckets operation to obtain the bucket. If the Cloud Phone instance and the bucket are in the same region, obtain the intranetEndpoint field. If they are in different regions, obtain the extranetEndpoint field.
         self.upload_endpoint = upload_endpoint
         # The backup type.
         self.upload_type = upload_type
@@ -70,6 +73,9 @@ class BackupFileRequest(DaraModel):
 
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.exclude_app_list is not None:
+            result['ExcludeAppList'] = self.exclude_app_list
 
         if self.exclude_source_file_path_list is not None:
             result['ExcludeSourceFilePathList'] = self.exclude_source_file_path_list
@@ -104,6 +110,9 @@ class BackupFileRequest(DaraModel):
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('ExcludeAppList') is not None:
+            self.exclude_app_list = m.get('ExcludeAppList')
 
         if m.get('ExcludeSourceFilePathList') is not None:
             self.exclude_source_file_path_list = m.get('ExcludeSourceFilePathList')
