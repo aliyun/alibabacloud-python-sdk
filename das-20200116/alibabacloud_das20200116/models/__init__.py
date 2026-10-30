@@ -45,6 +45,9 @@ from ._create_sql_log_task_response import CreateSqlLogTaskResponse
 from ._create_storage_analysis_task_request import CreateStorageAnalysisTaskRequest
 from ._create_storage_analysis_task_response_body import CreateStorageAnalysisTaskResponseBody
 from ._create_storage_analysis_task_response import CreateStorageAnalysisTaskResponse
+from ._create_yao_chi_agent_confirm_request import CreateYaoChiAgentConfirmRequest
+from ._create_yao_chi_agent_confirm_response_body import CreateYaoChiAgentConfirmResponseBody
+from ._create_yao_chi_agent_confirm_response import CreateYaoChiAgentConfirmResponse
 from ._delete_cloud_bench_task_request import DeleteCloudBenchTaskRequest
 from ._delete_cloud_bench_task_response_body import DeleteCloudBenchTaskResponseBody
 from ._delete_cloud_bench_task_response import DeleteCloudBenchTaskResponse
@@ -631,6 +634,9 @@ __all__ = [
     CreateStorageAnalysisTaskRequest,
     CreateStorageAnalysisTaskResponseBody,
     CreateStorageAnalysisTaskResponse,
+    CreateYaoChiAgentConfirmRequest,
+    CreateYaoChiAgentConfirmResponseBody,
+    CreateYaoChiAgentConfirmResponse,
     DeleteCloudBenchTaskRequest,
     DeleteCloudBenchTaskResponseBody,
     DeleteCloudBenchTaskResponse,

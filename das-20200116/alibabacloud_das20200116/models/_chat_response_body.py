@@ -39,6 +39,7 @@ class ChatResponseBody(DaraModel):
         self.activity_type = activity_type
         # The agent ID.
         self.agent_id = agent_id
+        # direct_skill_rejected
         self.code = code
         # The response content.
         self.content = content
@@ -46,8 +47,9 @@ class ChatResponseBody(DaraModel):
         self.delta = delta
         # The step type for STEP_STARTED, such as task.
         self.kind = kind
-        # The display name of the child agent for STEP_STARTED.
+        # The display name of the sub-agent for STEP_STARTED.
         self.label = label
+        # [HdmApiClient] instance is not managed by the agent
         self.message = message
         # The message ID.
         self.message_id = message_id
@@ -63,7 +65,7 @@ class ChatResponseBody(DaraModel):
         self.role = role
         # The run ID.
         self.run_id = run_id
-        # The execution step name.
+        # The name of the execution step.
         self.step_name = step_name
         # The step status for STEP_FINISHED, such as completed.
         self.step_status = step_status
@@ -73,9 +75,9 @@ class ChatResponseBody(DaraModel):
         self.thread_id = thread_id
         # The event timestamp.
         self.timestamp = timestamp
-        # The error that occurred when invoking the tool.
+        # The fault that occurs when you invoke tool calling.
         self.tool_call_error = tool_call_error
-        # The tool call ID.
+        # The ID of the tool calling to invoke.
         self.tool_call_id = tool_call_id
         # The tool name.
         self.tool_call_name = tool_call_name

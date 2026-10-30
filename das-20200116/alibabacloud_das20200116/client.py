@@ -1369,6 +1369,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_storage_analysis_task_with_options_async(request, runtime)
 
+    def create_yao_chi_agent_confirm_with_options(
+        self,
+        request: main_models.CreateYaoChiAgentConfirmRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateYaoChiAgentConfirmResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.approved):
+            query['Approved'] = request.approved
+        if not DaraCore.is_null(request.confirmation_id):
+            query['ConfirmationId'] = request.confirmation_id
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.tool_args):
+            query['ToolArgs'] = request.tool_args
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateYaoChiAgentConfirm',
+            version = '2020-01-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateYaoChiAgentConfirmResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_yao_chi_agent_confirm_with_options_async(
+        self,
+        request: main_models.CreateYaoChiAgentConfirmRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateYaoChiAgentConfirmResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.approved):
+            query['Approved'] = request.approved
+        if not DaraCore.is_null(request.confirmation_id):
+            query['ConfirmationId'] = request.confirmation_id
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.tool_args):
+            query['ToolArgs'] = request.tool_args
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateYaoChiAgentConfirm',
+            version = '2020-01-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateYaoChiAgentConfirmResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_yao_chi_agent_confirm(
+        self,
+        request: main_models.CreateYaoChiAgentConfirmRequest,
+    ) -> main_models.CreateYaoChiAgentConfirmResponse:
+        runtime = RuntimeOptions()
+        return self.create_yao_chi_agent_confirm_with_options(request, runtime)
+
+    async def create_yao_chi_agent_confirm_async(
+        self,
+        request: main_models.CreateYaoChiAgentConfirmRequest,
+    ) -> main_models.CreateYaoChiAgentConfirmResponse:
+        runtime = RuntimeOptions()
+        return await self.create_yao_chi_agent_confirm_with_options_async(request, runtime)
+
     def delete_cloud_bench_task_with_options(
         self,
         request: main_models.DeleteCloudBenchTaskRequest,

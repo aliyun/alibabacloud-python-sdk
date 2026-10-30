@@ -14,7 +14,7 @@ class ChatRequest(DaraModel):
         session_id: str = None,
         summary: str = None,
     ):
-        # Optional. The agent ID used for the service. You can specify the agent generated after enabling the DAS Agent or a manually created agent. If not specified, the default agent is used.
+        # Optional. The agent ID used for the service. You can specify the agent generated after enabling the DAS agent or a manually created agent. If not specified, the default agent is used.
         self.agent_id = agent_id
         # The forwarded properties.
         self.forwarded_props = forwarded_props
@@ -22,7 +22,7 @@ class ChatRequest(DaraModel):
         self.message = message
         # The user interaction feedback.
         self.resume = resume
-        # Optional. The session ID, which is a UUID string. If not specified, a new session is created by default. The same session ID must be maintained for contextual conversations.
+        # Optional. The session ID, which is a UUID string. If not specified, a new session is created by default. Keep the same session ID for contextual conversations.
         self.session_id = session_id
         # Specifies whether to output summary information.
         self.summary = summary
