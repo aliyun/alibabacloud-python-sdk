@@ -12,13 +12,14 @@ class DescribeResourceByCenterPolicyIdRequest(DaraModel):
         policy_group_id: str = None,
         product_type: str = None,
         resource_id: str = None,
+        resource_name: str = None,
     ):
         # The number of entries per page for a paged query.    
         # 
         # - Maximum value: 100.    
         # - Default value: 10.
         self.max_results = max_results
-        # The token for the next query.
+        # The token that is used to start the next query.
         self.next_token = next_token
         # The policy ID.
         # 
@@ -28,6 +29,8 @@ class DescribeResourceByCenterPolicyIdRequest(DaraModel):
         self.product_type = product_type
         # The resource ID.
         self.resource_id = resource_id
+        # The resource name.
+        self.resource_name = resource_name
 
     def validate(self):
         pass
@@ -52,6 +55,9 @@ class DescribeResourceByCenterPolicyIdRequest(DaraModel):
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
 
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
+
         return result
 
     def from_map(self, m: dict = None):
@@ -70,6 +76,9 @@ class DescribeResourceByCenterPolicyIdRequest(DaraModel):
 
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
+
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
 
         return self
 

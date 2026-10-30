@@ -20,7 +20,7 @@ class ModifyTimerGroupRequest(DaraModel):
         self.config_timers = config_timers
         # The description of the configuration group.
         self.description = description
-        # The configuration group ID.
+        # The ID of the configuration group.
         # 
         # This parameter is required.
         self.group_id = group_id
@@ -96,23 +96,23 @@ class ModifyTimerGroupRequestConfigTimers(DaraModel):
         timer_type: str = None,
         trigger_type: str = None,
     ):
-        # Specifies whether to allow end users to configure scheduled tasks on their own.
+        # Specifies whether to allow end users to configure scheduled tasks.
         self.allow_client_setting = allow_client_setting
         # The cron expression of the scheduled task.
         # 
-        # > Specify the time in UTC. For example, to schedule a task at 00:00 (UTC+8) every day, set this parameter to 0 0 16 ? * 1,2,3,4,5,6,7.
+        # > You must specify the time in UTC. For example, to specify 00:00:00 every day in UTC+8 (Beijing time), set this parameter to 0 0 16 ? * 1,2,3,4,5,6,7.
         self.cron_expression = cron_expression
-        # Specifies whether to forcefully execute the task. If this parameter is set to true, the scheduled task is forcefully executed regardless of the cloud desktop and connection status.
+        # Specifies whether to forcibly execute the scheduled task. A value of true indicates that the system ignores the desktop and connection status checks and forcibly executes the scheduled task.
         self.enforce = enforce
         # The time interval. Unit: minutes.
         self.interval = interval
         # The advance notification time before the scheduled task is executed. Unit: seconds.
         self.notification_time = notification_time
-        # The operation type of the scheduled task. Currently, only disconnect scheduled tasks support this parameter.
+        # The operation type of the scheduled task. Currently, only disconnect scheduled tasks are supported.
         self.operation_type = operation_type
-        # The process whitelist for intelligent detection of no-operation scheduled tasks. If a specified process is running, the no-operation scheduled task is not triggered.
+        # The process whitelist for intelligent judgment of no-operation scheduled tasks. If a specified process is running, the no-operation scheduled task is not executed.
         self.process_whitelist = process_whitelist
-        # The reset type, which determines whether to reset and the scope of cloud disks to reset.
+        # The reset type. This parameter specifies whether to reset the desktop and the scope of cloud disks to be reset.
         self.reset_type = reset_type
         # The list of segment timer configurations.
         self.segment_timers = segment_timers
@@ -231,33 +231,33 @@ class ModifyTimerGroupRequestConfigTimersSegmentTimers(DaraModel):
         verification_notification_time: int = None,
         verification_time: int = None,
     ):
-        # The appointment timer for executing scheduled tasks at specified time points.
+        # The appointment timer for scheduled tasks. After you specify this parameter, the scheduled task is executed at the specified time point.
         self.appointment_timer = appointment_timer
         # Specifies whether to create a snapshot.
         self.create_snapshot = create_snapshot
-        # The cron expression for the end time of the scheduled task.
+        # The cron expression for ending the execution of the scheduled task.
         self.end_cron_expression = end_cron_expression
-        # Specifies whether to forcefully execute the task. If this parameter is set to true, the scheduled task is forcefully executed regardless of the cloud desktop and connection status.
+        # Specifies whether to forcibly execute the scheduled task. A value of true indicates that the system ignores the desktop and connection status checks and forcibly executes the scheduled task.
         self.enforce = enforce
-        # The image ID.
+        # The ID of the image.
         self.image_id = image_id
         # The time interval. Unit: minutes.
         self.interval = interval
-        # The list of IP CIDR blocks that take effect.
+        # The list of effective IP CIDR blocks.
         self.ip_segments = ip_segments
-        # The duration of inactivity before the screen is locked for the no-operation lock screen feature. Unit: minutes. Only AD-joined cloud desktops are supported.
+        # The duration of inactivity before the screen is locked for the no-operation lock screen feature. Unit: minutes. Only AD cloud desktops are supported.
         self.lock_screen_time = lock_screen_time
         # The advance notification time before the scheduled task is executed. Unit: seconds.
         self.notification_time = notification_time
-        # The operation type of the scheduled task. Currently, only disconnect scheduled tasks support this parameter.
+        # The operation type of the scheduled task. Currently, only disconnect scheduled tasks are supported.
         self.operation_type = operation_type
-        # The process whitelist for intelligent detection of no-operation scheduled tasks. If a specified process is running, the no-operation scheduled task is not triggered.
+        # The process whitelist for intelligent judgment of no-operation scheduled tasks. If a specified process is running, the no-operation scheduled task is not executed.
         self.process_whitelist = process_whitelist
-        # The reset type, which determines whether to reset and the scope of cloud disks to reset.
+        # The reset type. This parameter specifies whether to reset the desktop and the scope of cloud disks to be reset.
         self.reset_type = reset_type
-        # The cron expression for the start time of the scheduled task.
+        # The cron expression for starting the execution of the scheduled task.
         self.start_cron_expression = start_cron_expression
-        # The execution order number of the timer.
+        # The execution sequence number of the timer.
         self.timer_order = timer_order
         # The time zone used by the scheduled task.
         self.timezone = timezone

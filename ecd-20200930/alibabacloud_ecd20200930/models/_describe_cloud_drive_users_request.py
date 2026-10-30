@@ -13,23 +13,20 @@ class DescribeCloudDriveUsersRequest(DaraModel):
         next_token: str = None,
         region_id: str = None,
     ):
-        # The ID of the enterprise network drive.
+        # The ID of the enterprise drive.
         # 
         # This parameter is required.
         self.cds_id = cds_id
-        # The end user ID.
-        # 
-        # If specified, the query returns only the personal drive of that user. If left empty, the query returns the personal drives of all users.
+        # The ID of the end user. If this parameter is not empty, only the personal drive of the specified user is queried. If this parameter is empty, the personal drives of all users are queried.
         self.end_user_id = end_user_id
-        # The number of entries per page.
+        # The number of entries to return per page in a paged query. This parameter is used for paging.
         # 
-        # - Maximum: 100.
-        # 
-        # - Default: 10.
+        # - Maximum value: 100.
+        # - Default value: 10.
         self.max_results = max_results
-        # The token for the next page of results. This is the `NextToken` value from the previous response. Leave this parameter empty for the first request.
+        # The pagination token. Set the value to the `NextToken` value returned in the last call to this operation. You do not need to specify this parameter for the first call.
         self.next_token = next_token
-        # The region ID. To obtain a list of supported regions, call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html).
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions supported by Wuying Workspace.
         # 
         # This parameter is required.
         self.region_id = region_id

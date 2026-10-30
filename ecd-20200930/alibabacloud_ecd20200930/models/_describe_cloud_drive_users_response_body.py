@@ -14,9 +14,9 @@ class DescribeCloudDriveUsersResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # A list of user personal drives.
+        # The list of user personal drives.
         self.cloud_drive_users = cloud_drive_users
-        # The token for the next page of results. An empty value indicates that all results have been returned.
+        # The pagination token for the next query. If `NextToken` is empty, no more results are available.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -78,9 +78,9 @@ class DescribeCloudDriveUsersResponseBodyCloudDriveUsers(DaraModel):
         self.end_user_id = end_user_id
         # The status of the user personal drive.
         self.status = status
-        # Maximum storage capacity for the user’s personal drive, in bytes.
+        # The maximum storage capacity of the user personal drive. Unit: bytes.
         self.total_size = total_size
-        # The used storage space, in bytes.
+        # The size of the used storage space. Unit: bytes.
         self.used_size = used_size
         # The internal ID of the user.
         self.user_id = user_id

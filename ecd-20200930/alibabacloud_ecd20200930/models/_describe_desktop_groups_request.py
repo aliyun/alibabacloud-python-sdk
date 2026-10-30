@@ -40,50 +40,50 @@ class DescribeDesktopGroupsRequest(DaraModel):
         self.desktop_group_ids = desktop_group_ids
         # The name of the shared cloud computer to query. Fuzzy match is supported.
         self.desktop_group_name = desktop_group_name
-        # The cloud computer specification. You can call the [DescribeDesktopTypes](~~DescribeDesktopTypes~~) operation to query the supported specification IDs.
+        # The cloud computer specification. You can call the [DescribeDesktopTypes](~~DescribeDesktopTypes~~) operation to query the supported cloud computer specifications.
         self.desktop_type = desktop_type
-        # The list of IDs of authorized users for the shared cloud computer.
+        # The IDs of the authorized users of the shared cloud computer.
         self.end_user_ids = end_user_ids
         # The list of authorized users to exclude.
         self.excluded_end_user_ids = excluded_end_user_ids
         # The list of image IDs.
         self.image_id = image_id
-        # The number of entries per page for paging in a paged query.
+        # The number of entries to return on each page in a paging query.
         # Maximum value: 100.
         # Default value: 10.
         self.max_results = max_results
-        # Specifies whether the shared cloud computer is a multi-resource shared cloud computer.
+        # Specifies whether the shared cloud computer is of the multi-resource type.
         self.multi_resource = multi_resource
-        # The pagination token for the next query. An empty value indicates that no more results are available.
+        # The token that is used to start the next query. An empty value indicates that no more results are available.
         self.next_token = next_token
         # The ID of the office network to which the shared cloud computer belongs.
         self.office_site_id = office_site_id
         # The type of the shared cloud computer.
         # 
-        # > This parameter is not yet available.
+        # > This parameter is not supported.
         self.own_type = own_type
-        # The subscription duration of the shared cloud computer. The unit is specified by PeriodUnit.
-        # - If PeriodUnit is set to Month, valid values:
+        # The subscription duration of the shared cloud computer. The unit is specified by `PeriodUnit`.
+        # - If `PeriodUnit` is set to `Month`, valid values are:
         #     - 1
         #     - 2
         #     - 3
         #     - 6
-        # - If PeriodUnit is set to Year, valid values:
+        # - If `PeriodUnit` is set to `Year`, valid values are:
         #     - 1
         #     - 2
         #     - 3
         #     - 4
         #     - 5
         self.period = period
-        # The time unit of the subscription billing Billable methods.
+        # The unit of duration for the subscription Billable methods.
         self.period_unit = period_unit
         # The ID of the policy associated with the shared cloud computer.
         self.policy_group_id = policy_group_id
         # The protocol type.
         self.protocol_type = protocol_type
-        # The ID of the bandwidth throttling rule.
+        # The ID of the QoS rule.
         self.qos_rule_id = qos_rule_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by Wuying Cloud Computer.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -246,9 +246,9 @@ class DescribeDesktopGroupsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. The value cannot be an empty string. It can be up to 128 characters in length, and cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
+        # The tag key. The tag key cannot be an empty string. It can be up to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value. The value can be an empty string. It can be up to 128 characters in length, and cannot start with `acs:`, or contain `http://` or `https://`.
+        # The tag value. The tag value can be an empty string. It can be up to 128 characters in length, and cannot start with `acs:`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

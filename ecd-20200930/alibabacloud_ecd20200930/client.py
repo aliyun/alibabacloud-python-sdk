@@ -3404,12 +3404,16 @@ class Client(OpenApiClient):
             query['AdminKeyboardOnWindows'] = request.admin_keyboard_on_windows
         if not DaraCore.is_null(request.app_content_protection):
             query['AppContentProtection'] = request.app_content_protection
+        if not DaraCore.is_null(request.app_screenshot_buckets):
+            query['AppScreenshotBuckets'] = request.app_screenshot_buckets
         if not DaraCore.is_null(request.authorize_access_policy_rule):
             query['AuthorizeAccessPolicyRule'] = request.authorize_access_policy_rule
         if not DaraCore.is_null(request.authorize_security_policy_rule):
             query['AuthorizeSecurityPolicyRule'] = request.authorize_security_policy_rule
         if not DaraCore.is_null(request.auto_reconnect):
             query['AutoReconnect'] = request.auto_reconnect
+        if not DaraCore.is_null(request.auto_save_app_screenshot):
+            query['AutoSaveAppScreenshot'] = request.auto_save_app_screenshot
         if not DaraCore.is_null(request.business_channel):
             query['BusinessChannel'] = request.business_channel
         if not DaraCore.is_null(request.business_type):
@@ -3510,6 +3514,8 @@ class Client(OpenApiClient):
             query['LocalDrive'] = request.local_drive
         if not DaraCore.is_null(request.max_reconnect_time):
             query['MaxReconnectTime'] = request.max_reconnect_time
+        if not DaraCore.is_null(request.mcp_service):
+            query['McpService'] = request.mcp_service
         if not DaraCore.is_null(request.memory_down_grade_duration):
             query['MemoryDownGradeDuration'] = request.memory_down_grade_duration
         if not DaraCore.is_null(request.memory_overload):
@@ -3716,12 +3722,16 @@ class Client(OpenApiClient):
             query['AdminKeyboardOnWindows'] = request.admin_keyboard_on_windows
         if not DaraCore.is_null(request.app_content_protection):
             query['AppContentProtection'] = request.app_content_protection
+        if not DaraCore.is_null(request.app_screenshot_buckets):
+            query['AppScreenshotBuckets'] = request.app_screenshot_buckets
         if not DaraCore.is_null(request.authorize_access_policy_rule):
             query['AuthorizeAccessPolicyRule'] = request.authorize_access_policy_rule
         if not DaraCore.is_null(request.authorize_security_policy_rule):
             query['AuthorizeSecurityPolicyRule'] = request.authorize_security_policy_rule
         if not DaraCore.is_null(request.auto_reconnect):
             query['AutoReconnect'] = request.auto_reconnect
+        if not DaraCore.is_null(request.auto_save_app_screenshot):
+            query['AutoSaveAppScreenshot'] = request.auto_save_app_screenshot
         if not DaraCore.is_null(request.business_channel):
             query['BusinessChannel'] = request.business_channel
         if not DaraCore.is_null(request.business_type):
@@ -3822,6 +3832,8 @@ class Client(OpenApiClient):
             query['LocalDrive'] = request.local_drive
         if not DaraCore.is_null(request.max_reconnect_time):
             query['MaxReconnectTime'] = request.max_reconnect_time
+        if not DaraCore.is_null(request.mcp_service):
+            query['McpService'] = request.mcp_service
         if not DaraCore.is_null(request.memory_down_grade_duration):
             query['MemoryDownGradeDuration'] = request.memory_down_grade_duration
         if not DaraCore.is_null(request.memory_overload):
@@ -16084,6 +16096,8 @@ class Client(OpenApiClient):
             query['ProductType'] = request.product_type
         if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_name):
+            query['ResourceName'] = request.resource_name
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -16120,6 +16134,8 @@ class Client(OpenApiClient):
             query['ProductType'] = request.product_type
         if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_name):
+            query['ResourceName'] = request.resource_name
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -21376,12 +21392,16 @@ class Client(OpenApiClient):
             query['AdminKeyboardOnWindows'] = request.admin_keyboard_on_windows
         if not DaraCore.is_null(request.app_content_protection):
             query['AppContentProtection'] = request.app_content_protection
+        if not DaraCore.is_null(request.app_screenshot_buckets):
+            query['AppScreenshotBuckets'] = request.app_screenshot_buckets
         if not DaraCore.is_null(request.authorize_access_policy_rule):
             query['AuthorizeAccessPolicyRule'] = request.authorize_access_policy_rule
         if not DaraCore.is_null(request.authorize_security_policy_rule):
             query['AuthorizeSecurityPolicyRule'] = request.authorize_security_policy_rule
         if not DaraCore.is_null(request.auto_reconnect):
             query['AutoReconnect'] = request.auto_reconnect
+        if not DaraCore.is_null(request.auto_save_app_screenshot):
+            query['AutoSaveAppScreenshot'] = request.auto_save_app_screenshot
         if not DaraCore.is_null(request.business_channel):
             query['BusinessChannel'] = request.business_channel
         if not DaraCore.is_null(request.business_type):
@@ -21480,6 +21500,8 @@ class Client(OpenApiClient):
             query['LocalDrive'] = request.local_drive
         if not DaraCore.is_null(request.max_reconnect_time):
             query['MaxReconnectTime'] = request.max_reconnect_time
+        if not DaraCore.is_null(request.mcp_service):
+            query['McpService'] = request.mcp_service
         if not DaraCore.is_null(request.memory_down_grade_duration):
             query['MemoryDownGradeDuration'] = request.memory_down_grade_duration
         if not DaraCore.is_null(request.memory_overload):
@@ -21692,12 +21714,16 @@ class Client(OpenApiClient):
             query['AdminKeyboardOnWindows'] = request.admin_keyboard_on_windows
         if not DaraCore.is_null(request.app_content_protection):
             query['AppContentProtection'] = request.app_content_protection
+        if not DaraCore.is_null(request.app_screenshot_buckets):
+            query['AppScreenshotBuckets'] = request.app_screenshot_buckets
         if not DaraCore.is_null(request.authorize_access_policy_rule):
             query['AuthorizeAccessPolicyRule'] = request.authorize_access_policy_rule
         if not DaraCore.is_null(request.authorize_security_policy_rule):
             query['AuthorizeSecurityPolicyRule'] = request.authorize_security_policy_rule
         if not DaraCore.is_null(request.auto_reconnect):
             query['AutoReconnect'] = request.auto_reconnect
+        if not DaraCore.is_null(request.auto_save_app_screenshot):
+            query['AutoSaveAppScreenshot'] = request.auto_save_app_screenshot
         if not DaraCore.is_null(request.business_channel):
             query['BusinessChannel'] = request.business_channel
         if not DaraCore.is_null(request.business_type):
@@ -21796,6 +21822,8 @@ class Client(OpenApiClient):
             query['LocalDrive'] = request.local_drive
         if not DaraCore.is_null(request.max_reconnect_time):
             query['MaxReconnectTime'] = request.max_reconnect_time
+        if not DaraCore.is_null(request.mcp_service):
+            query['McpService'] = request.mcp_service
         if not DaraCore.is_null(request.memory_down_grade_duration):
             query['MemoryDownGradeDuration'] = request.memory_down_grade_duration
         if not DaraCore.is_null(request.memory_overload):

@@ -15,9 +15,9 @@ class DescribeResourceByCenterPolicyIdResponseBody(DaraModel):
         request_id: str = None,
         resource_model_list: List[main_models.DescribeResourceByCenterPolicyIdResponseBodyResourceModelList] = None,
     ):
-        # The total count.
+        # The total number of entries.
         self.count = count
-        # The token for the next query. If NextToken is empty, no more results are available.
+        # The token that is used to start the next query. If NextToken is empty, no more results are available.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -96,7 +96,7 @@ class DescribeResourceByCenterPolicyIdResponseBodyResourceModelList(DaraModel):
         self.app_model_list = app_model_list
         # The number of vCPUs.
         self.cpu = cpu
-        # The target cloud desktop specification. You can call [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) to query the specification IDs supported by WUYING Workspace.
+        # The target cloud desktop type. You can call [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) to query the IDs of cloud desktop types supported by WUYING Workspace.
         self.desktop_type = desktop_type
         # The number of GPUs.
         self.gpu_count = gpu_count
@@ -126,7 +126,7 @@ class DescribeResourceByCenterPolicyIdResponseBodyResourceModelList(DaraModel):
         self.resource_region_id = resource_region_id
         # The resource type.
         self.resource_type = resource_type
-        # The status of the resource.
+        # The resource status.
         self.status = status
 
     def validate(self):

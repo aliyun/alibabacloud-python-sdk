@@ -23,27 +23,27 @@ class DescribePolicyGroupsRequest(DaraModel):
         # - Enterprise: Enterprise Edition.
         # - Business: Business Edition.
         self.business_channel = business_channel
-        # The list of cloud computer policy IDs to exclude from the query results.
+        # The IDs of the cloud desktop policies to exclude from the query results.
         self.external_policy_group_ids = external_policy_group_ids
-        # The number of entries per page for a paged query.
+        # The number of entries to return per page when paging in a paged query.
         # 
         # - Maximum value: 100.
         # - Default value: 10.
         self.max_results = max_results
-        # The pagination token. Set this parameter to the value of NextToken that was returned from the last call to this operation. You do not need to set this parameter for the first request.
+        # The query token. Set the value to the NextToken value returned from the last call to this operation. You do not need to specify this parameter for the first call.
         self.next_token = next_token
-        # The page number of the current page for a paged query.
+        # The current page number when paging in a paged query.
         self.page_number = page_number
-        # The maximum number of entries per page for a paged query.    
+        # The maximum number of entries to return per page when paging in a paged query.    
         # Default value: 20.
         self.page_size = page_size
-        # The list of cloud computer policy IDs.
+        # The IDs of the cloud desktop policies.
         self.policy_group_id = policy_group_id
-        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by WUYING Workspace.
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions supported by Wuying Workspace.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The effective scope of the cloud computer policy.
+        # The effective scope of the cloud desktop policies.
         self.scope = scope
 
     def validate(self):
