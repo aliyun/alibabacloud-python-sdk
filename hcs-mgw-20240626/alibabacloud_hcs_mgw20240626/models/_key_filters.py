@@ -11,9 +11,9 @@ class KeyFilters(DaraModel):
         excludes: main_models.KeyFilterItem = None,
         includes: main_models.KeyFilterItem = None,
     ):
-        # The excluded file name.
+        # The excluded file names.
         self.excludes = excludes
-        # The included file name.
+        # The included file names.
         self.includes = includes
 
     def validate(self):

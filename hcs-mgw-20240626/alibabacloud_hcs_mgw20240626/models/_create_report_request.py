@@ -10,7 +10,7 @@ class CreateReportRequest(DaraModel):
         self,
         create_report: main_models.CreateReportInfo = None,
     ):
-        # The details for creating the migration report.
+        # The details for creating a migration report.
         self.create_report = create_report
 
     def validate(self):

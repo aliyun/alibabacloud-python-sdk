@@ -31,6 +31,8 @@ from ._list_job_history_resp import ListJobHistoryResp
 from ._list_job_info import ListJobInfo
 from ._list_job_resp import ListJobResp
 from ._list_tunnel_resp import ListTunnelResp
+from ._prefix_filters import PrefixFilters
+from ._prefix_filters_include_item import PrefixFiltersIncludeItem
 from ._schedule_rule import ScheduleRule
 from ._time_filter import TimeFilter
 from ._tunnel_qos import TunnelQos
@@ -125,6 +127,8 @@ __all__ = [
     ListJobInfo,
     ListJobResp,
     ListTunnelResp,
+    PrefixFilters,
+    PrefixFiltersIncludeItem,
     ScheduleRule,
     TimeFilter,
     TunnelQos,

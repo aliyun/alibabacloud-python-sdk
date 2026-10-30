@@ -10,7 +10,7 @@ class GetJobResponseBody(DaraModel):
         self,
         import_job: main_models.GetJobResp = None,
     ):
-        # The details for obtaining the details of the migration task.
+        # The task details.
         self.import_job = import_job
 
     def validate(self):

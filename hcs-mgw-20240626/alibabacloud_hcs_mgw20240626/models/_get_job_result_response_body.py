@@ -10,7 +10,7 @@ class GetJobResultResponseBody(DaraModel):
         self,
         import_job_result: main_models.GetJobResultResp = None,
     ):
-        # The details for obtaining the retries of the migration task.
+        # The details of the task retry information.
         self.import_job_result = import_job_result
 
     def validate(self):

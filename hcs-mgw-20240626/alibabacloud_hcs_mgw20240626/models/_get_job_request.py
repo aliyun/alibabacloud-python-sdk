@@ -9,7 +9,7 @@ class GetJobRequest(DaraModel):
         self,
         by_version: str = None,
     ):
-        # Specifies whether to obtain the details of the migration task by using the task ID.
+        # Specifies whether to retrieve the task by task ID.
         self.by_version = by_version
 
     def validate(self):

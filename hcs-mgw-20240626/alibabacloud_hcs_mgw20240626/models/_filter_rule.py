@@ -11,13 +11,16 @@ class FilterRule(DaraModel):
         file_type_filters: main_models.FileTypeFilters = None,
         key_filters: main_models.KeyFilters = None,
         last_modified_filters: main_models.LastModifiedFilters = None,
+        prefix_filters: main_models.PrefixFilters = None,
     ):
-        # The filter based on the file type.
+        # The file type filters.
         self.file_type_filters = file_type_filters
-        # The filter based on the file name.
+        # The file name filters.
         self.key_filters = key_filters
-        # The filter based on the file modification time.
+        # The file modification time filters.
         self.last_modified_filters = last_modified_filters
+        # The object prefix filter rules. Only Includes is supported. This filter applies only to full migration tasks.
+        self.prefix_filters = prefix_filters
 
     def validate(self):
         if self.file_type_filters:
@@ -26,6 +29,8 @@ class FilterRule(DaraModel):
             self.key_filters.validate()
         if self.last_modified_filters:
             self.last_modified_filters.validate()
+        if self.prefix_filters:
+            self.prefix_filters.validate()
 
     def to_map(self):
         result = dict()
@@ -40,6 +45,9 @@ class FilterRule(DaraModel):
 
         if self.last_modified_filters is not None:
             result['LastModifiedFilters'] = self.last_modified_filters.to_map()
+
+        if self.prefix_filters is not None:
+            result['PrefixFilters'] = self.prefix_filters.to_map()
 
         return result
 
@@ -56,6 +64,10 @@ class FilterRule(DaraModel):
         if m.get('LastModifiedFilters') is not None:
             temp_model = main_models.LastModifiedFilters()
             self.last_modified_filters = temp_model.from_map(m.get('LastModifiedFilters'))
+
+        if m.get('PrefixFilters') is not None:
+            temp_model = main_models.PrefixFilters()
+            self.prefix_filters = temp_model.from_map(m.get('PrefixFilters'))
 
         return self
 

@@ -12,17 +12,17 @@ class ListJobRequest(DaraModel):
         marker: str = None,
         parent_name: str = None,
     ):
-        # Specifies whether to return subtasks.\\
-        # Valid values: true and false.
+        # Specifies whether to return subtasks.  
+        # Valid values: true, false.
         self.all = all
-        # Specifies the number of migration tasks to be returned.\\
-        # Valid values: 0 - 1000 (excluding 0).\\
+        # Specifies the number of migration tasks to return.  
+        # Valid values: 1 to 1000.  
         # Default value: 1000.
         self.count = count
-        # The marker after which the migration tasks are listed.\\
-        # By default, this parameter is left empty.
+        # Specifies the marker after which migration tasks are listed.  
+        # Default value: None.
         self.marker = marker
-        # The name of the parent task. If this parameter is specified, all subtasks of the parent task are returned.
+        # The name of the parent task. If you specify this parameter, all subtasks of the parent task are returned.
         self.parent_name = parent_name
 
     def validate(self):

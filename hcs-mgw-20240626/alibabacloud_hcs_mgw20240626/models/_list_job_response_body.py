@@ -10,7 +10,7 @@ class ListJobResponseBody(DaraModel):
         self,
         import_job_list: main_models.ListJobResp = None,
     ):
-        # The queried migration tasks.
+        # The details of the migration task list.
         self.import_job_list = import_job_list
 
     def validate(self):

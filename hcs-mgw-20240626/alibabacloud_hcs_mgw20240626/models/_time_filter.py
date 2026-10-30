@@ -10,9 +10,9 @@ class TimeFilter(DaraModel):
         end_time: str = None,
         start_time: str = None,
     ):
-        # The time when the migration task ended.
+        # The end time.
         self.end_time = end_time
-        # The time when the migration task started.
+        # The start time.
         self.start_time = start_time
 
     def validate(self):
