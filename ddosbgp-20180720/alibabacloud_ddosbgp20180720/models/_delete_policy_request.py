@@ -9,7 +9,7 @@ class DeletePolicyRequest(DaraModel):
         self,
         id: str = None,
     ):
-        # The ID of the policy.
+        # The policy ID.
         # 
         # This parameter is required.
         self.id = id

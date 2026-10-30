@@ -13,7 +13,7 @@ class DescribeInstanceSpecsResponseBody(DaraModel):
         instance_specs: List[main_models.DescribeInstanceSpecsResponseBodyInstanceSpecs] = None,
         request_id: str = None,
     ):
-        # The specifications of the Anti-DDoS Origin instance, including whether best-effort protection is enabled, the number of available best-effort protection sessions, and the number of used best-effort protection sessions.
+        # The specification information of the Anti-DDoS Origin instance, including the enabling status of best-effort protection, and the available and used best-effort protection times.
         self.instance_specs = instance_specs
         # The ID of the request.
         self.request_id = request_id
@@ -65,30 +65,30 @@ class DescribeInstanceSpecsResponseBodyInstanceSpecs(DaraModel):
         region: str = None,
         total_defense_times: int = None,
     ):
-        # The available best-effort protection sessions.
+        # The available best-effort protection times.
         self.available_defense_times = available_defense_times
-        # The number of times that blackhole filtering can be deactivated.
+        # The available quota for deactivating blackhole filtering.
         self.available_delete_blackhole_count = available_delete_blackhole_count
-        # The percentage of the used best-effort protection sessions. Unit: %.
+        # The usage percentage of best-effort protection times. Unit: %.
         self.defense_times_percent = defense_times_percent
-        # Indicates whether the instance is downgraded. Valid value:
+        # The downgrade status of the instance. Valid values:
         # 
-        # *   **8**: The instance is downgraded due to excessive bandwidth usage.
+        # - **8**: The instance is downgraded because the clean bandwidth exceeds the limit.
         self.downgrade_status = downgrade_status
         # The ID of the Anti-DDoS Origin instance.
         self.instance_id = instance_id
-        # Indicates whether best-effort protection is enabled. Valid values:
+        # Indicates whether best-effort protection mode is enabled for the instance. Valid values:
         # 
-        # *   **0**: Best-effort protection is disabled.
-        # *   **1**: Best-effort protection is enabled.
+        # - **0**: Best-effort protection mode is disabled.
+        # - **1**: Best-effort protection mode is enabled.
         self.is_full_defense_mode = is_full_defense_mode
-        # The configurations of the Anti-DDoS Origin instance, including the number of protected IP addresses and protection bandwidth.
+        # The configuration information of the Anti-DDoS Origin instance, including the number of protected IP addresses and protection bandwidth information.
         self.pack_config = pack_config
         # The region ID of the Anti-DDoS Origin instance.
         # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the name of the region.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the details of region IDs.
         self.region = region
-        # The total best-effort protection sessions.
+        # The total available best-effort protection times.
         self.total_defense_times = total_defense_times
 
     def validate(self):
@@ -177,22 +177,22 @@ class DescribeInstanceSpecsResponseBodyInstanceSpecsPackConfig(DaraModel):
     ):
         # The bandwidth. Unit: Gbit/s.
         self.bandwidth = bandwidth
-        # The number of IP addresses that are protected by the Anti-DDoS Origin Enterprise instance.
+        # The number of protected IP addresses.
         self.bind_ip_count = bind_ip_count
         # The burstable clean bandwidth. Unit: Mbit/s.
         self.elastic_bw_mbps = elastic_bw_mbps
-        # The metering method of burstable clean bandwidth. Valid values:
+        # The burstable clean bandwidth mode. Valid values:
         # 
-        # *   **month**: the monthly 95th percentile metering method.
-        # *   **day**: the daily 95th percentile metering method.
+        # - **month**: Monthly 95th percentile metering method.
+        # - **day**: Daily 95th percentile metering method.
         self.elastic_bw_mode = elastic_bw_mode
-        # The burstable protection bandwidth of each protected IP address. Unit: Gbit/s.
+        # The burstable protection threshold for the protected IP address. Unit: Gbit/s.
         self.ip_advance_thre = ip_advance_thre
-        # The basic protection bandwidth of each protected IP address. Unit: Gbit/s.
+        # The basic protection threshold for the protected IP address. Unit: Gbit/s.
         self.ip_basic_thre = ip_basic_thre
-        # The number of IP addresses that can be protected by the Anti-DDoS Origin Enterprise instance.
+        # The number of IP addresses that can be added for protection.
         self.ip_spec = ip_spec
-        # The clean bandwidth. Unit: Mbit/s.
+        # The normal clean bandwidth. Unit: Mbit/s.
         self.normal_bandwidth = normal_bandwidth
         # The burstable protection bandwidth of the Anti-DDoS Origin instance. Unit: Gbit/s.
         self.pack_adv_thre = pack_adv_thre

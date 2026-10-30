@@ -14,9 +14,9 @@ class ListTagResourcesResponseBody(DaraModel):
         request_id: str = None,
         tag_resources: main_models.ListTagResourcesResponseBodyTagResources = None,
     ):
-        # A pagination token.
+        # The query token returned for this call.
         self.next_token = next_token
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         self.tag_resources = tag_resources
 

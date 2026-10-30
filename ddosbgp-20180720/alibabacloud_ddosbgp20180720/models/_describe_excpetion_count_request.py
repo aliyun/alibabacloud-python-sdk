@@ -10,13 +10,13 @@ class DescribeExcpetionCountRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the region where the Anti-DDoS Origin instance resides.
+        # The region ID of the Anti-DDoS Origin instance.
         # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query all region IDs supported by Anti-DDoS Origin.
         self.region_id = region_id
         # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
         # 
-        # If you do not specify this parameter, the instance belongs to the default resource group.
+        # If you do not specify this parameter, the default resource group is used.
         self.resource_group_id = resource_group_id
 
     def validate(self):

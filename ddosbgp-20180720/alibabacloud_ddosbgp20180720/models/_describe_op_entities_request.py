@@ -18,58 +18,57 @@ class DescribeOpEntitiesRequest(DaraModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
-        # The page number.
+        # The paging Settings for the current page number in a paged query.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The end time. Operation logs that were generated before this time are queried.**** The value is a UNIX timestamp. Unit: milliseconds.
+        # The end of the time range to query. The value is a UNIX timestamp in milliseconds. Operation logs generated before this time are queried.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The ID of the instance to query.
+        # The ID of the Anti-DDoS Origin instance to query.
         # 
-        # > You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances.
         self.instance_id = instance_id
-        # The type of the operation. Valid values:
-        # 
-        # *   **3**: Add an IP address to the instance.
-        # *   **4**: Remove an IP address from the instance.
-        # *   **5**: Downgrade the instance.
-        # *   **6**: Deactivate blackhole filtering.
-        # *   **7**: Reset the number of times that you can deactivate blackhole filtering.
-        # *   **8**: Restore the mitigation capability.
-        # *   **9**: Add an asset group.
-        # *   **10**: Remove an asset group.
-        # *   **11**: Enable the metering method of daily 95th percentile for the burstable clean bandwidth feature.
-        # *   **12**: Enable the metering method of monthly 95th percentile for the burstable clean bandwidth feature.
-        # *   **13**: Periodically switch between the metering methods of daily 95th percentile and monthly 95th percentile for the burstable clean bandwidth feature.
-        # *   **14**: Disable the metering method of daily 95th percentile for the burstable clean bandwidth feature.
-        # *   **15**: Disable the metering method of monthly 95th percentile for the burstable clean bandwidth feature.
-        # *   **16**: Disable burstable clean bandwidth due to overdue payments.
-        # *   **17**: Disable burstable clean bandwidth due to instance expiration.
+        # The operation type. Valid values:
+        # - **3**: attach an IP address
+        # - **4**: unbind an IP address
+        # - **5**: decrease the quota
+        # - **6**: deactivate blackhole filtering
+        # - **7**: Reset quota on blackhole filtering deactivation
+        # - **8**: recover burstable protection
+        # - **9**: add an Asset group
+        # - **10**: delete an Asset group
+        # - **11**: enable daily 95th percentile bandwidth
+        # - **12**: enable monthly 95th percentile bandwidth
+        # - **13**: periodically switch between daily and monthly 95th percentile bandwidth patterns
+        # - **14**: shutdown daily 95th percentile bandwidth
+        # - **15**: shutdown monthly 95th percentile bandwidth
+        # - **16**: shutdown burstable clean bandwidth due to overdue payments
+        # - **17**: shutdown burstable clean bandwidth when they expire
         self.op_action = op_action
-        # The sorting method of operation logs. Set the value to **opdate**, which indicates sorting based on the operation time.
+        # The field by which to sort the operation logs. Set the value to **opdate**, which indicates that the operation logs are sorted by operation time.
         self.order_by = order_by
-        # The sort order of operation logs. Valid values:
+        # The sort order of the operation logs. Valid values:
         # 
-        # *   **ASC**: the ascending order.
-        # *   **DESC**: the descending order.
+        # - **ASC**: ascending order
+        # - **DESC**: descending order
         # 
         # Default value: **DESC**.
         self.order_dir = order_dir
-        # The number of entries per page. Maximum value: 50.
+        # The paging Settings for the number of Operation logs per page in a paged query. Maximum value: 50.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The ID of the region where the instance resides.
+        # The region ID of the Anti-DDoS Origin instance.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the IDs of all regions supported by Anti-DDoS Origin.
         self.region_id = region_id
-        # The ID of the resource group to which the instance belongs in Resource Management.
+        # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
         # 
-        # If you do not specify this parameter, the instance belongs to the default resource group.
+        # If you do not specify this parameter, the default resource group is used.
         self.resource_group_id = resource_group_id
-        # The start time. Operation logs that were generated after this time are queried.**** The value is a UNIX timestamp. Unit: milliseconds.
+        # The beginning of the time range to query. The value is a UNIX timestamp in milliseconds. Operation logs generated after this time are queried.
         # 
         # This parameter is required.
         self.start_time = start_time

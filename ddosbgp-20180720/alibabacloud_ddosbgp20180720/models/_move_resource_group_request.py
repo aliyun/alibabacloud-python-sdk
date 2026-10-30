@@ -12,19 +12,19 @@ class MoveResourceGroupRequest(DaraModel):
         resource_region_id: str = None,
         resource_type: str = None,
     ):
-        # The ID of the resource group to which you want to move the resource.
+        # The ID of the resource group to which you want to move the cloud resource instance.
         # 
         # This parameter is required.
         self.resource_group_id = resource_group_id
-        # The resource ID.
+        # The ID of the cloud resource instance whose resource group you want to modify.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The region ID of the resource.
+        # The region to which the resource belongs.
         # 
         # This parameter is required.
         self.resource_region_id = resource_region_id
-        # The resource type. Set the value to **instance**.
+        # The type of the cloud resource whose resource group you want to modify. Valid values: **instance**.
         # 
         # This parameter is required.
         self.resource_type = resource_type

@@ -16,35 +16,35 @@ class DescribeDdosEventRequest(DaraModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
-        # The end time of the DDoS attack events to query. This value is a UNIX timestamp. Unit: seconds.
+        # The end time of the DDoS attack events to query. The time is a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.end_time = end_time
         # The ID of the Anti-DDoS Origin instance to query.
         # 
-        # >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances.
+        # > You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The attacked IP address to query.
         self.ip = ip
-        # The page number.
+        # The Settings for the page number of the current page during paging in a paged query.
         # 
         # This parameter is required.
         self.page_no = page_no
-        # The number of entries per page.
+        # The Settings for the number of DDoS attack events to return on each page during paging in a paged query.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The ID of the region where the Anti-DDoS Origin instance resides.
+        # The region ID of the Anti-DDoS Origin instance.
         # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query all region IDs supported by Anti-DDoS Origin.
         self.region_id = region_id
         # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
         # 
-        # If you do not specify this parameter, the instance belongs to the default resource group.
+        # If you do not specify this parameter, the default resource group is used.
         self.resource_group_id = resource_group_id
-        # The start time of the DDoS attack events to query. This value is a UNIX timestamp. Unit: seconds.
+        # The start time of the DDoS attack events to query. The time is a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.start_time = start_time

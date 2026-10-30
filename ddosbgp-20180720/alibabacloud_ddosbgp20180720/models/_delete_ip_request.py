@@ -12,25 +12,25 @@ class DeleteIpRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the Anti-DDoS Origin instance.
+        # Instance ID of the Anti-DDoS Origin instance.
         # 
-        # > Call [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) to query the IDs of all Anti-DDoS Origin instances.
+        # > You can call [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) to query instance IDs of all Anti-DDoS Origin instances.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # A list of IP addresses to remove from the protected objects of the Anti-DDoS Origin instance. Specify the list as a string that is a JSON array. Each element in the array is a struct that contains the following field:
+        # The list of IP addresses to remove from the protected objects of the Anti-DDoS Origin instance. The value is a string converted from a JSON array. Each element in the JSON array is a struct that contains the following fields:
         # 
-        # - **ip**: The IP address to remove. This parameter is a string and is required.
-        # 
-        #   > The IP address must be in the protection list of the Anti-DDoS Origin instance.
+        # - **ip**: String | Required | The IP address to remove.
+        #     
+        #     > The IP address must already be in the protection list of the Anti-DDoS Origin instance.
         # 
         # This parameter is required.
         self.ip_list = ip_list
         # The region ID of the Anti-DDoS Origin instance.
         # 
-        # > Call [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) to query all regions that Anti-DDoS Origin supports.
+        # > You can call [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) to query all regions supported by Anti-DDoS Origin.
         self.region_id = region_id
-        # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management. If you leave this parameter empty, the instance belongs to the default resource group.
+        # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management. Default value: empty, which indicates the default resource group.
         # 
         # For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
         self.resource_group_id = resource_group_id

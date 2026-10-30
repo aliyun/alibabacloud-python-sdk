@@ -17,27 +17,27 @@ class ListTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of **NextToken**.
+        # The query token. The value is the **NextToken** parameter value returned from the previous call to this operation. You do not need to specify this parameter when you call this operation for the first time.
         self.next_token = next_token
-        # The ID of the region where the Anti-DDoS Origin instance resides.
+        # The region ID of the Anti-DDoS Origin instance.
         # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query all region IDs supported by Anti-DDoS Origin.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
         # 
-        # If you do not specify this parameter, the instance belongs to the default resource group.
+        # If you do not specify this parameter, the default resource group is used.
         self.resource_group_id = resource_group_id
         # The IDs of the Anti-DDoS Origin instances to query.
         # 
-        # >  The **ResourceId** parameter and the **key-value pair for the Tag parameter** cannot be left empty at the same time.
+        # > **ResourceId** and **Tag Key-Value pairs** cannot be left empty at the same time.
         self.resource_id = resource_id
-        # The type of the resource to query. Set the value to **INSTANCE**.
+        # The type of the resource to query. Set the value to **INSTANCE**, which indicates an instance.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The key-value pair of the tag to query.
+        # The tag key-value pairs to query.
         self.tag = tag
 
     def validate(self):
@@ -104,13 +104,13 @@ class ListTagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag to query.
+        # The tag key to query.
         # 
-        # >  The **ResourceId** parameter and the **key-value pair for the Tag parameter** cannot be left empty at the same time.
+        # > **ResourceId** and **Tag Key-Value pairs** cannot be left empty at the same time.
         self.key = key
-        # The value of the tag to query.
+        # The tag value to query.
         # 
-        # >  The **ResourceId** parameter and the **key-value pair for the Tag parameter** cannot be left empty at the same time.
+        # > **ResourceId** and **Tag Key-Value pairs** cannot be left empty at the same time.
         self.value = value
 
     def validate(self):

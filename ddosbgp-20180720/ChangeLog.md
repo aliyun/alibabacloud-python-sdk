@@ -1,3 +1,7 @@
+2026-10-30 Version: 3.2.0
+- Support API MoveIp.
+
+
 2026-09-20 Version: 3.1.3
 - Update API DescribeNetworkLayerIntercepts: add request parameters InterceptModule.
 - Update API ListPolicyAttachment: add response parameters Body.AttachmentList.$.Status.

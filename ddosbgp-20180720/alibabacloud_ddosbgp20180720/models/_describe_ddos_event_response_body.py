@@ -14,11 +14,11 @@ class DescribeDdosEventResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The details about the DDoS attack event.
+        # The details of the DDoS attack events.
         self.events = events
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of DDoS attack events that are returned.
+        # The total number of DDoS attack events returned.
         self.total = total
 
     def validate(self):
@@ -71,22 +71,22 @@ class DescribeDdosEventResponseBodyEvents(DaraModel):
         start_time: int = None,
         status: str = None,
     ):
-        # The time when the DDoS attack stopped. This value is a UNIX timestamp. Unit: seconds.
+        # The end time of the attack. The time is a UNIX timestamp in seconds.
         self.end_time = end_time
         # The attacked IP address.
         self.ip = ip
-        # The volume of the request traffic at the start of the DDoS attack. Unit: Mbit/s.
+        # The traffic volume at the start of the attack. Unit: Mbit/s.
         self.mbps = mbps
-        # The number of packets at the start of the DDoS attack. Unit: packets per second (PPS).
+        # The packet rate at the start of the attack. Unit: pps.
         self.pps = pps
-        # The time when the DDoS attack started. This value is a UNIX timestamp. Unit: seconds.
+        # The end time of the attack. The time is a UNIX timestamp in seconds.
         self.start_time = start_time
-        # The status of the DDoS attack event. Valid values:
+        # The current status of the attack event. Valid values:
         # 
-        # *   **hole_begin**: indicates that blackhole filtering is triggered for the attacked IP address.
-        # *   **hole_end**: indicates that blackhole filtering is deactivated for the attacked IP address.
-        # *   **defense_begin**: indicates that attack traffic is being scrubbed.
-        # *   **defense_end**: indicates that attack traffic is scrubbed.
+        # - **hole_begin**: Indicates that the attacked IP address is in the blackhole filtering status.
+        # - **hole_end**: Indicates that the attacked IP address is removed from the blackhole filtering status.
+        # - **defense_begin**: Indicates that the system scrubs traffic.
+        # - **defense_end**: Indicates that the attack ends and the system scrubs traffic no more.
         self.status = status
 
     def validate(self):

@@ -118,6 +118,9 @@ from ._modify_policy_content_response import ModifyPolicyContentResponse
 from ._modify_remark_request import ModifyRemarkRequest
 from ._modify_remark_response_body import ModifyRemarkResponseBody
 from ._modify_remark_response import ModifyRemarkResponse
+from ._move_ip_request import MoveIpRequest
+from ._move_ip_response_body import MoveIpResponseBody
+from ._move_ip_response import MoveIpResponse
 from ._move_resource_group_request import MoveResourceGroupRequest
 from ._move_resource_group_response_body import MoveResourceGroupResponseBody
 from ._move_resource_group_response import MoveResourceGroupResponse
@@ -308,6 +311,9 @@ __all__ = [
     ModifyRemarkRequest,
     ModifyRemarkResponseBody,
     ModifyRemarkResponse,
+    MoveIpRequest,
+    MoveIpResponseBody,
+    MoveIpResponse,
     MoveResourceGroupRequest,
     MoveResourceGroupResponseBody,
     MoveResourceGroupResponse,

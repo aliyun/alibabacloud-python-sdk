@@ -13,17 +13,17 @@ class ListTagKeysRequest(DaraModel):
         resource_group_id: str = None,
         resource_type: str = None,
     ):
-        # The page number. Pages start from page **1**. Default value: **1**.
+        # The page number. Pages start from **1**. Default value: **1**.
         self.current_page = current_page
-        # The number of entries per page. Valid values: 1 to **50**. Default value: **10**.
+        # The paging Settings for the number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The ID of the region that you want to query.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The resource type. Set the value to **INSTANCE**.
+        # The resource type. Valid values: **INSTANCE**.
         # 
         # This parameter is required.
         self.resource_type = resource_type

@@ -3153,6 +3153,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_remark_with_options_async(request, runtime)
 
+    def move_ip_with_options(
+        self,
+        request: main_models.MoveIpRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MoveIpResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.ip_list):
+            query['IpList'] = request.ip_list
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.source_instance_id):
+            query['SourceInstanceId'] = request.source_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MoveIp',
+            version = '2018-07-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MoveIpResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def move_ip_with_options_async(
+        self,
+        request: main_models.MoveIpRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MoveIpResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.ip_list):
+            query['IpList'] = request.ip_list
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.source_instance_id):
+            query['SourceInstanceId'] = request.source_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MoveIp',
+            version = '2018-07-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MoveIpResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def move_ip(
+        self,
+        request: main_models.MoveIpRequest,
+    ) -> main_models.MoveIpResponse:
+        runtime = RuntimeOptions()
+        return self.move_ip_with_options(request, runtime)
+
+    async def move_ip_async(
+        self,
+        request: main_models.MoveIpRequest,
+    ) -> main_models.MoveIpResponse:
+        runtime = RuntimeOptions()
+        return await self.move_ip_with_options_async(request, runtime)
+
     def move_resource_group_with_options(
         self,
         request: main_models.MoveResourceGroupRequest,
