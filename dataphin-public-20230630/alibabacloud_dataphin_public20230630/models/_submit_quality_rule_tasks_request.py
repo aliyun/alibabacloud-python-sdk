@@ -14,12 +14,13 @@ class SubmitQualityRuleTasksRequest(DaraModel):
         op_user_id: str = None,
         submit_command: main_models.SubmitQualityRuleTasksRequestSubmitCommand = None,
     ):
-        # Tenant ID
+        # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
-        # Submit command
+        # The submit command.
         # 
         # This parameter is required.
         self.submit_command = submit_command
@@ -68,19 +69,23 @@ class SubmitQualityRuleTasksRequestSubmitCommand(DaraModel):
         schedule_id: int = None,
         watch_rule_id_list: List[main_models.SubmitQualityRuleTasksRequestSubmitCommandWatchRuleIdList] = None,
     ):
-        # Business date, format: yyyy-MM-dd
+        # The business date. Format: yyyy-MM-dd.
         self.biz_date = biz_date
-        # Whether it is a test run: true for test run, false for formal run.
+        # Specifies whether to perform a test run. Valid values:
+        # - true: performs a test run.
+        # - false: performs a formal run.
         # 
         # This parameter is required.
         self.is_test_run = is_test_run
-        # Partition expression - custom expression
+        # The custom partition expression.
         self.partition_expression = partition_expression
-        # Source of the test run partition expression: SCHEDULE for existing schedule, CUSTOM for custom.
+        # The source of the partition expression for the test run. Valid values:
+        # - SCHEDULE: existing schedule.
+        # - CUSTOM: custom expression.
         self.partition_expression_from = partition_expression_from
-        # Existing schedule ID
+        # The ID of the existing schedule.
         self.schedule_id = schedule_id
-        # Monitoring object and rule IDs
+        # The monitored object and rule IDs.
         # 
         # This parameter is required.
         self.watch_rule_id_list = watch_rule_id_list
@@ -149,11 +154,11 @@ class SubmitQualityRuleTasksRequestSubmitCommandWatchRuleIdList(DaraModel):
         rule_id: int = None,
         watch_id: int = None,
     ):
-        # Rule ID
+        # The rule ID.
         # 
         # This parameter is required.
         self.rule_id = rule_id
-        # Monitoring object ID
+        # The monitored object ID.
         # 
         # This parameter is required.
         self.watch_id = watch_id

@@ -12,7 +12,7 @@ class OfflineStandardRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The offline instruction.
+        # The offline command.
         # 
         # This parameter is required.
         self.offline_command = offline_command
@@ -20,6 +20,7 @@ class OfflineStandardRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -62,7 +63,7 @@ class OfflineStandardRequestOfflineCommand(DaraModel):
         comment: str = None,
         id: int = None,
     ):
-        # The review remarks. The value can be up to 128 characters in length.
+        # The review comment. Maximum length: 128 characters.
         # 
         # This parameter is required.
         self.comment = comment

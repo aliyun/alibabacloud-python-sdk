@@ -21,13 +21,13 @@ class GetDataServiceAuthorizedProjectsResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend exception.
+        # The backend exception details.
         self.message = message
         # The list of projects.
         self.project_list = project_list
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -99,11 +99,11 @@ class GetDataServiceAuthorizedProjectsResponseBodyProjectList(DaraModel):
         self.project_id = project_id
         # The project name.
         self.project_name = project_name
-        # The role of the user. Valid values:
-        # - 1: super administrator
-        # - 2: developer
-        # - 3: application member
-        # - 4: service project administrator
+        # The user role. Valid values:
+        # - 1: Super administrator.
+        # - 2: Developer.
+        # - 3: Application member.
+        # - 4: Service project administrator.
         # - 5: O&M user.
         self.role = role
 

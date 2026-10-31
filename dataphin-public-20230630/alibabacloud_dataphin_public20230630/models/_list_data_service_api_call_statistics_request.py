@@ -13,18 +13,21 @@ class ListDataServiceApiCallStatisticsRequest(DaraModel):
         op_user_id: str = None,
         project_id: int = None,
     ):
-        # Search conditions.
+        # The search conditions.
         # 
         # This parameter is required.
         self.list_query = list_query
-        # Tenant ID.
+        # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
-        # Data service project ID.
+        # The data service project ID.
         # 
-        # This parameter is required.
+        # > If this parameter is not specified:
+        # > - Super administrators can query data of all service projects.
+        # > - Users other than super administrators can query data of service projects where they have the service project administrator or O&M user permissions.
         self.project_id = project_id
 
     def validate(self):
@@ -78,21 +81,30 @@ class ListDataServiceApiCallStatisticsRequestListQuery(DaraModel):
         page_size: int = None,
         start_time: str = None,
     ):
-        # End time. Format: yyyy-MM-dd HH:mm:ss.
+        # The end time. Format: yyyy-MM-dd HH:mm:ss.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # Search keyword.
+        # The search keyword.
         self.keyword = keyword
-        # Sort column. Valid values: CALL_COUNT (call count), ERROR_COUNT (error count), ERROR_RATE (error rate), AVG_RESPONSE_TIME (average response time), and OFFLINE_RATE (offline percentage). Default value: CALL_COUNT.
+        # The column by which to sort the results. Valid values:
+        # - CALL_COUNT: the number of calls.
+        # - ERROR_COUNT: the number of exceptions.
+        # - ERROR_RATE: the error rate.
+        # - AVG_RESPONSE_TIME: the average response time.
+        # - OFFLINE_RATE: the offline percentage.
+        # Default value: CALL_COUNT.
         self.order_column = order_column
-        # Sort order. Valid values: 1 (ascending) and 2 (descending). Default value: 1.
+        # The sort order. Valid values:
+        # - 1: ascending order.
+        # - 2: descending order.
+        # Default value: 1.
         self.order_type = order_type
-        # Page number. Default value: 1.
+        # The page number. Default value: 1.
         self.page_no = page_no
-        # Number of entries per page. Default value: 20.
+        # The number of entries per page. Default value: 20.
         self.page_size = page_size
-        # Start time. Format: yyyy-MM-dd HH:mm:ss.
+        # The start time. Format: yyyy-MM-dd HH:mm:ss.
         # 
         # This parameter is required.
         self.start_time = start_time

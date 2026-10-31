@@ -23,11 +23,11 @@ class ListDataServiceAuthorizedAppsResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The details of the backend exception.
         self.message = message
-        # The paging query result.
+        # The paging query results.
         self.page_result = page_result
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -151,39 +151,48 @@ class ListDataServiceAuthorizedAppsResponseBodyPageResultAuthorizedAppList(DaraM
     ):
         # The primary key ID of the application.
         self.app_id = app_id
-        # The application name.
+        # The name of the application.
         self.app_name = app_name
-        # The ID of the permission account, which is the applicant ID.
+        # The ID of the authorized account, which is the ID of the applicant.
         self.apply_user_id = apply_user_id
-        # The permission account, which is the applicant.
+        # The name of the authorized account, which is the name of the applicant.
         self.apply_user_name = apply_user_name
-        # The expiration date in the format of yyyy-MM-dd.
+        # The expiration date. Format: yyyy-MM-dd.
         self.expire_date = expire_date
-        # The application ID.
+        # The ID of the authorization request.
         self.id = id
-        # Indicates whether the current user is a project administrator.
+        # Indicates whether the current user is a project manager.
         self.is_project_manager = is_project_manager
         # The ID of the owner.
         self.owner = owner
         # The name of the owner.
         self.owner_user_name = owner_user_name
-        # The permission account. Valid values: 0: individual account.
+        # The authorized account type. Valid values:
+        # - 0: Individual account.
         self.privilege_account = privilege_account
-        # The permission type. Valid values: 0: usage permission. 1: development permission.
+        # The permission type. Valid values:
+        # - 0: Usage permissions.
+        # - 1: Development permissions.
         self.privilege_type = privilege_type
         # The project ID.
         self.project_id = project_id
         # The project name.
         self.project_name = project_name
-        # Indicates whether the user actually has owner permissions on this application. The user may lack permissions because of expiration or other reasons.
+        # Indicates whether the user actually has the owner permissions for the application. The user may not have the permissions due to expiration or other reasons.
         self.real_has_owner_privilege = real_has_owner_privilege
-        # Indicates whether the user actually has permissions.
+        # Indicates whether the user actually has the permissions.
         self.real_has_privilege = real_has_privilege
-        # The descriptions used for troubleshooting.
+        # The description used for troubleshooting.
         self.remark_for_debug_list = remark_for_debug_list
-        # Indicates whether the permissions can be returned or revoked.
+        # Indicates whether the permission can be returned or revoked.
         self.revocable = revocable
-        # The detailed status of the revoke button. Valid values: -1: super administrators cannot revoke. -2: owners cannot revoke. -3: project administrators without actual permissions are grayed out. -4: regular users without permissions cannot revoke. 1: project administrators with actual permissions can revoke. 2: regular users with permissions can revoke.
+        # The detailed status of the revocation button. Valid values:
+        # - -1: Super administrators cannot relinquish the permission.
+        # - -2: Owners cannot relinquish the permission.
+        # - -3: Project managers without actual permissions (grayed out).
+        # - -4: Regular users without permissions cannot relinquish the permission.
+        # - 1: Project managers with actual permissions can relinquish the permission.
+        # - 2: Regular users with permissions can relinquish the permission.
         self.revocable_detail = revocable_detail
 
     def validate(self):

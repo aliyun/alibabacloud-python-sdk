@@ -23,11 +23,11 @@ class GetOperationRecordByIdResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The backend exception details.
         self.message = message
-        # The operation log details.
+        # The execution record details.
         self.operation_log_dto = operation_log_dto
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -101,14 +101,9 @@ class GetOperationRecordByIdResponseBodyOperationLogDTO(DaraModel):
     ):
         # The start time.
         self.begin_time = begin_time
-        # The code type. Valid values:
-        # - SQL0: SQL
-        # - shell1: Shell
-        # - Python2: Python
-        # - MR3: MR
-        # - Spark4: Spark
+        # The code type. Valid values: SQL0, shell1, Python2, MR3, and Spark4.
         self.code_type = code_type
-        # The execution duration, in milliseconds.
+        # The execution duration in milliseconds.
         self.duration = duration
         # The record ID.
         self.id = id
@@ -116,20 +111,17 @@ class GetOperationRecordByIdResponseBodyOperationLogDTO(DaraModel):
         self.name = name
         # The object type.
         self.object_type = object_type
-        # The operation log ID.
+        # The operation record ID.
         self.operation_id = operation_id
         # The project ID.
         self.project_id = project_id
-        # The list of related tables.
+        # The associated tables.
         self.relation_tables = relation_tables
-        # The ID of the runner.
+        # The executor ID.
         self.runner = runner
-        # The name of the runner.
+        # The executor name.
         self.runner_name = runner_name
-        # The node status. Valid values:
-        # - 4: Running.
-        # - 5: Succeeded.
-        # - 6: Failed.
+        # The task status. Valid values: 4 (Running), 5 (Successful), and 6 (Failed).
         self.status = status
         # The tenant ID.
         self.tenant_id = tenant_id

@@ -15,17 +15,17 @@ class UpdateBizMetricResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Error code. A value of OK indicates the request was successful
+        # The error code. A value of OK indicates that the request is successful.
         self.code = code
-        # Operation result
+        # The operation result.
         self.data = data
-        # HTTP status code
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
-        # Error message
+        # The error message.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -86,9 +86,11 @@ class UpdateBizMetricResponseBodyData(DaraModel):
         message: str = None,
         success: bool = None,
     ):
-        # Exception message
+        # The exception message.
         self.message = message
-        # Indicates whether the update was successful. Valid values: true (success) and false (failure)
+        # Indicates whether the update is successful. Valid values:
+        # - true: The update is successful.
+        # - false: The update fails.
         self.success = success
 
     def validate(self):

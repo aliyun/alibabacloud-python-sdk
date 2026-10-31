@@ -13,20 +13,22 @@ class GetPhysicalInstanceRequest(DaraModel):
         op_user_id: str = None,
         project_id: int = None,
     ):
-        # Environment identifier.
-        # DEV: Development environment.
-        # PROD (default): Production environment.
+        # The environment identifier. Valid values:
+        # - DEV: Development environment.
+        # - PROD: Production environment.
+        # Default value: PROD.
         self.env = env
-        # Instance ID
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Tenant ID
+        # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
-        # Project ID
+        # The project ID.
         # 
         # This parameter is required.
         self.project_id = project_id

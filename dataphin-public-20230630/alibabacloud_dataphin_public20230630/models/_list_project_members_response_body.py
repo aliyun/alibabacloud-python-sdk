@@ -17,17 +17,17 @@ class ListProjectMembersResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. A value of OK indicates that the request was successful.
+        # The request error code. A value of OK indicates that the request is successful.
         self.code = code
         # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
-        # The error message.
+        # The request error message.
         self.message = message
         # The paging query result.
         self.page_result = page_result
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -135,20 +135,23 @@ class ListProjectMembersResponseBodyPageResultProjectMemberList(DaraModel):
         id: int = None,
         last_modifier: str = None,
         last_modifier_name: str = None,
+        role_code_list: List[str] = None,
         role_id_list: List[int] = None,
         user_id: str = None,
         user_name: str = None,
     ):
         # The creation timestamp.
         self.gmt_create = gmt_create
-        # The last modified timestamp.
+        # The update timestamp.
         self.gmt_modified = gmt_modified
         # The project ID.
         self.id = id
-        # The ID of the user who last modified the record.
+        # The ID of the editor.
         self.last_modifier = last_modifier
-        # The name of the user who last modified the record.
+        # The name of the editor.
         self.last_modifier_name = last_modifier_name
+        # The list of role codes bound to the member, including system and custom project roles. This list can be used to add or edit project members.
+        self.role_code_list = role_code_list
         # The roles.
         self.role_id_list = role_id_list
         # The user ID of the member.
@@ -179,6 +182,9 @@ class ListProjectMembersResponseBodyPageResultProjectMemberList(DaraModel):
         if self.last_modifier_name is not None:
             result['LastModifierName'] = self.last_modifier_name
 
+        if self.role_code_list is not None:
+            result['RoleCodeList'] = self.role_code_list
+
         if self.role_id_list is not None:
             result['RoleIdList'] = self.role_id_list
 
@@ -206,6 +212,9 @@ class ListProjectMembersResponseBodyPageResultProjectMemberList(DaraModel):
 
         if m.get('LastModifierName') is not None:
             self.last_modifier_name = m.get('LastModifierName')
+
+        if m.get('RoleCodeList') is not None:
+            self.role_code_list = m.get('RoleCodeList')
 
         if m.get('RoleIdList') is not None:
             self.role_id_list = m.get('RoleIdList')

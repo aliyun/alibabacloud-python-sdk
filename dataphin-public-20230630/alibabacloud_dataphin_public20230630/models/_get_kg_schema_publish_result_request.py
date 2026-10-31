@@ -16,8 +16,9 @@ class GetKgSchemaPublishResultRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
-        # The version number. If this parameter is left empty, the most recent publish record is returned.
+        # The version ID. If this parameter is left empty, the latest publish record is retrieved.
         self.version_id = version_id
         # The model ID.
         # 

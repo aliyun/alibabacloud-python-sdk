@@ -14,7 +14,7 @@ class CreateDevProdProjectRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The create command.
+        # The creation command.
         # 
         # This parameter is required.
         self.create_command = create_command
@@ -22,6 +22,7 @@ class CreateDevProdProjectRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -79,7 +80,7 @@ class CreateDevProdProjectRequestCreateCommand(DaraModel):
         self.dev_compute_source_id = dev_compute_source_id
         # The description of the development environment.
         self.dev_description = dev_description
-        # The ID of the real-time compute source in the development environment.
+        # The ID of the streaming compute source in the development environment.
         self.dev_stream_compute_source_id = dev_stream_compute_source_id
         # The display name of the project.
         self.display_name = display_name
@@ -87,13 +88,13 @@ class CreateDevProdProjectRequestCreateCommand(DaraModel):
         # 
         # This parameter is required.
         self.name = name
-        # The namespace identifier.
+        # The namespace tag.
         self.name_space_tag = name_space_tag
         # The ID of the offline compute source in the production environment.
         self.prod_compute_source_id = prod_compute_source_id
         # The description of the production environment.
         self.prod_description = prod_description
-        # The ID of the real-time compute source in the production environment.
+        # The ID of the streaming compute source in the production environment.
         self.prod_stream_compute_source_id = prod_stream_compute_source_id
         # The sandbox whitelist.
         self.white_lists = white_lists

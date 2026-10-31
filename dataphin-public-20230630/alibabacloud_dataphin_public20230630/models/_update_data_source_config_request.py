@@ -18,8 +18,9 @@ class UpdateDataSourceConfigRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
-        # The data source configuration item change.
+        # The changes to the datasource configuration items.
         # 
         # This parameter is required.
         self.update_command = update_command
@@ -68,7 +69,7 @@ class UpdateDataSourceConfigRequestUpdateCommand(DaraModel):
         # 
         # This parameter is required.
         self.config_item_list = config_item_list
-        # The data source ID.
+        # The datasource ID.
         # 
         # This parameter is required.
         self.id = id
@@ -113,7 +114,7 @@ class UpdateDataSourceConfigRequestUpdateCommandConfigItemList(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key ID of the configuration item.
+        # The configuration item key ID.
         # 
         # This parameter is required.
         self.key = key

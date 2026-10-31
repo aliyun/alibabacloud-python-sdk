@@ -14,17 +14,17 @@ class CreateStandardTemplateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Response code.
+        # The backend response code.
         self.code = code
-        # Standard template ID.
+        # The ID of the standard template.
         self.data = data
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error message.
+        # The details of the backend response exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

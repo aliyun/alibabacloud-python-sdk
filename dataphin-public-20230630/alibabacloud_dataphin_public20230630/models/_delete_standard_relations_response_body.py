@@ -23,11 +23,11 @@ class DeleteStandardRelationsResponseBody(DaraModel):
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend exception.
+        # The backend exception details.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -88,9 +88,9 @@ class DeleteStandardRelationsResponseBodyData(DaraModel):
         not_exist_standard_id_list: List[int] = None,
         success_count: int = None,
     ):
-        # The list of standard IDs that do not exist.
+        # The list of non-existent standard IDs.
         self.not_exist_standard_id_list = not_exist_standard_id_list
-        # The number of successfully deleted associations.
+        # The number of successful operations.
         self.success_count = success_count
 
     def validate(self):

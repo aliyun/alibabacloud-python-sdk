@@ -16,7 +16,7 @@ class GetBatchTaskInfoRequest(DaraModel):
     ):
         # The environment identifier. Valid values: dev and prod. Default value: dev.
         self.env = env
-        # The node ID in the task directory tree.
+        # The ID of the node in the task directory tree.
         # 
         # This parameter is required.
         self.file_id = file_id

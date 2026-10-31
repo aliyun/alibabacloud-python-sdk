@@ -18,6 +18,7 @@ class UpdateDevProdProjectRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
         # The update command.
         # 
@@ -76,13 +77,13 @@ class UpdateDevProdProjectRequestUpdateCommand(DaraModel):
     ):
         # The business unit ID.
         self.biz_unit_id = biz_unit_id
-        # The ID of the offline compute source in the development environment.
+        # The ID of the offline compute source for the development environment.
         self.dev_compute_source_id = dev_compute_source_id
         # The description of the development environment.
         self.dev_description = dev_description
-        # The ID of the real-time compute source in the development environment.
+        # The ID of the real-time compute source for the development environment.
         self.dev_stream_compute_source_id = dev_stream_compute_source_id
-        # The display name of the project.
+        # The project display name.
         self.display_name = display_name
         # The project ID.
         # 
@@ -90,15 +91,15 @@ class UpdateDevProdProjectRequestUpdateCommand(DaraModel):
         self.id = id
         # The project name.
         self.name = name
-        # The namespace identifier.
+        # The namespace tag.
         self.name_space_tag = name_space_tag
-        # The ID of the offline compute source in the production environment.
+        # The ID of the offline compute source for the production environment.
         self.prod_compute_source_id = prod_compute_source_id
         # The description of the production environment.
         self.prod_description = prod_description
-        # The ID of the real-time compute source in the production environment.
+        # The ID of the real-time compute source for the production environment.
         self.prod_stream_compute_source_id = prod_stream_compute_source_id
-        # The sandbox whitelist.
+        # The sandbox whitelists.
         self.white_lists = white_lists
 
     def validate(self):

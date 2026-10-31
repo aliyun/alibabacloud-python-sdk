@@ -17,7 +17,7 @@ class DeleteUdfRequest(DaraModel):
         # 
         # This parameter is required.
         self.comment = comment
-        # The ID of the user-defined function.
+        # The ID of the custom function.
         # 
         # This parameter is required.
         self.id = id
@@ -25,6 +25,7 @@ class DeleteUdfRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator user.
         self.op_user_id = op_user_id
         # The project ID.
         # 

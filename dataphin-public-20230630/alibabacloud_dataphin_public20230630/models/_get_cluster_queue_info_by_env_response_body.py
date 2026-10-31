@@ -17,17 +17,17 @@ class GetClusterQueueInfoByEnvResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. A value of OK indicates that the request was successful.
+        # The error code of the request. A value of OK indicates that the request is successful.
         self.code = code
-        # The returned data.
+        # The returned result.
         self.data = data
         # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
-        # The error message.
+        # The error message of the request.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -113,7 +113,7 @@ class GetClusterQueueInfoByEnvResponseBodyData(DaraModel):
         self.cluster_id = cluster_id
         # The creation time.
         self.create_at = create_at
-        # The Flink image registry address.
+        # The Flink image registry.
         self.flink_image_registry = flink_image_registry
         # The Flink image repository.
         self.flink_image_repository = flink_image_repository
@@ -123,13 +123,13 @@ class GetClusterQueueInfoByEnvResponseBodyData(DaraModel):
         self.flink_version = flink_version
         # The labels.
         self.labels = labels
-        # The maximum number of vCores provided by each queue.
+        # The maximum number of vCores provided for each queue.
         self.max_vcore = max_vcore
         # The modification time.
         self.modified_at = modified_at
         # The namespace.
         self.namespace = namespace
-        # The queue name, which serves as a unique identifier. For Kubernetes, this is the resource group name.
+        # The queue name, which is a unique identifier. In Kubernetes, it is the resource group name.
         self.queue_name = queue_name
         # The resource version.
         self.resource_version = resource_version

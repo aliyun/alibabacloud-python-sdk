@@ -78,6 +78,7 @@ class UpdateComputeClusterRequestClusterConfig(DaraModel):
         config_list: List[main_models.UpdateComputeClusterRequestClusterConfigConfigList] = None,
         des: str = None,
         name: str = None,
+        time_zone: str = None,
         type: str = None,
         type_version: str = None,
     ):
@@ -95,6 +96,8 @@ class UpdateComputeClusterRequestClusterConfig(DaraModel):
         # 
         # This parameter is required.
         self.name = name
+        # 时区名称，例如 Asia/Shanghai。更新时不传则保留原值。
+        self.time_zone = time_zone
         # The cluster type.
         # 
         # This parameter is required.
@@ -132,6 +135,9 @@ class UpdateComputeClusterRequestClusterConfig(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.time_zone is not None:
+            result['TimeZone'] = self.time_zone
+
         if self.type is not None:
             result['Type'] = self.type
 
@@ -160,6 +166,9 @@ class UpdateComputeClusterRequestClusterConfig(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('TimeZone') is not None:
+            self.time_zone = m.get('TimeZone')
 
         if m.get('Type') is not None:
             self.type = m.get('Type')

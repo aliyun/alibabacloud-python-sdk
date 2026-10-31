@@ -11,12 +11,13 @@ class ListQualityWatchesShrinkRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The paged query conditions.
+        # The paging query conditions.
         self.list_query_shrink = list_query_shrink
         # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operating user.
         self.op_user_id = op_user_id
 
     def validate(self):

@@ -13,10 +13,11 @@ class GetOperationSubmitStatusRequest(DaraModel):
         op_user_id: str = None,
     ):
         # The environment identifier. Valid values:
-        # - DEV: Development environment. 
-        # - PROD (default): Production environment.
+        # - DEV: development environment
+        # - PROD: production environment
+        # Default value: PROD.
         self.env = env
-        # The job ID returned after submission in batch mode.
+        # The job ID returned after submission in massive mode.
         # 
         # This parameter is required.
         self.job_id = job_id
@@ -24,6 +25,7 @@ class GetOperationSubmitStatusRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator ID.
         self.op_user_id = op_user_id
 
     def validate(self):

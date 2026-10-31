@@ -17,17 +17,17 @@ class GetDevObjectDependencyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Error code. OK indicates that the request was successful.
+        # The error code. A value of OK indicates that the request is normal.
         self.code = code
-        # Dependency list.
+        # The dependency list.
         self.dev_object_dependency_list = dev_object_dependency_list
-        # HTTP status code returned by the backend.
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
-        # Error message.
+        # The error message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -121,80 +121,74 @@ class GetDevObjectDependencyResponseBodyDevObjectDependencyList(DaraModel):
     ):
         # Indicates whether the task is automatically parsed.
         self.auto_parse = auto_parse
-        # Business type.
-        # - SCRIPT: Script
-        # - LOGICAL_TABLE: Logical table
+        # The business type. Valid values:
+        # - SCRIPT: Script.
+        # - LOGICAL_TABLE: Logical table.
         self.biz_type = biz_type
-        # Business unit ID.
+        # The business module ID.
         self.biz_unit_id = biz_unit_id
-        # Business unit name.
+        # The business unit name.
         self.biz_unit_name = biz_unit_name
-        # Cron expression for the scheduling node.
+        # The cron expression of the scheduling node.
         self.cron_expression = cron_expression
         # Indicates whether a custom cron expression is used for the scheduling node.
         self.custom_cron_expression = custom_cron_expression
-        # Dependency fields.
+        # The dependent fields.
         self.depend_field_list = depend_field_list
-        # Dependency period configuration.
+        # The dependency period configuration.
         self.dependency_period = dependency_period
-        # Dependency strategy.
+        # The dependency strategy. Valid values:
         # - ALL
         # - FIRST
         # - LAST
         # - NEAR
         self.dependency_strategy = dependency_strategy
-        # Indicates whether the node is a dimension table intermediate node.
+        # Indicates whether the node is an intermediate node of a dimension table.
         self.dim_mid_node = dim_mid_node
-        # Effect fields.
+        # The dependent fields.
         self.effect_field_list = effect_field_list
-        # Additional business information.
+        # The additional business information.
         self.external_biz_info = external_biz_info
         # Indicates whether the dependency is manually added.
         self.manually_add = manually_add
-        # Node ID.
+        # The node ID.
         self.node_id = node_id
-        # Node name.
+        # The node name.
         self.node_name = node_name
-        # Node output name.
+        # The node output name.
         self.node_output_name = node_output_name
-        # Output table information.
+        # The output table information.
         self.node_output_table_name = node_output_table_name
-        # Node type.
-        # - DATA_PROCESS: Code task
-        # - BBOX_LOGIC_TABLE_NODE: Black box logical table node
-        # - ONE_ID_LABEL: ID label node
-        # - ONE_ID_RULE: ID rule node
-        # - PIPELINE_NODE: Pipeline node
+        # The node type. Valid values:
+        # - DATA_PROCESS: Code task.
+        # - BBOX_LOGIC_TABLE_NODE: Black-box logical table node.
+        # - ONE_ID_LABEL: Extracted tag node.
+        # - ONE_ID_RULE: Extracted tag node.
+        # - PIPELINE_NODE: Pipeline node.
         self.node_type = node_type
-        # Cross-node output parameters.
+        # The cross-node output parameters.
         self.output_context_param_list = output_context_param_list
-        # Node owners.
+        # The node owner.
         self.owner_list = owner_list
-        # Dependency period difference.
+        # The dependency period difference.
         self.period_diff = period_diff
-        # Project ID.
+        # The project ID.
         self.project_id = project_id
-        # Project name.
+        # The project name.
         self.project_name = project_name
-        # Schedule type.
-        # - MINUTELY: Minute
-        # - HOURLY: Hour
-        # - DAILY: Day
-        # - WEEKLY: Week
-        # - MONTHLY: Month
-        # - YEARLY: Year
+        # The scheduling type. Valid values: MINUTELY (minute), HOURLY (hour), DAILY (day), WEEKLY (week), MONTHLY (month), and YEARLY (year).
         self.schedule_type = schedule_type
-        # Indicates whether the node has a self-dependency.
+        # Indicates whether self-dependency is enabled.
         self.self_depend = self_depend
-        # Sub-business type.
+        # The sub-business type. Valid values:
         # - MAX_COMPUTE_SQL
         # - HIVE_SQL
         # - SHELL
         # - PYTHON
         # - ONE_SERVICE_SQL
-        # - DATABASE_SQL, etc.
+        # - DATABASE_SQL
         self.sub_biz_type = sub_biz_type
-        # Indicates whether the configuration is valid.
+        # Indicates whether the configuration is effective.
         self.valid = valid
 
     def validate(self):
@@ -399,9 +393,9 @@ class GetDevObjectDependencyResponseBodyDevObjectDependencyListOwnerList(DaraMod
         id: str = None,
         name: str = None,
     ):
-        # Node ID.
+        # The node ID.
         self.id = id
-        # Node name.
+        # The node name.
         self.name = name
 
     def validate(self):
@@ -437,11 +431,11 @@ class GetDevObjectDependencyResponseBodyDevObjectDependencyListOutputContextPara
         description: str = None,
         key: str = None,
     ):
-        # Default value.
+        # The default value.
         self.default_value = default_value
-        # Description.
+        # The description.
         self.description = description
-        # Parameter key.
+        # The parameter.
         self.key = key
 
     def validate(self):
@@ -482,9 +476,9 @@ class GetDevObjectDependencyResponseBodyDevObjectDependencyListDependencyPeriod(
         period_offset: int = None,
         period_type: str = None,
     ):
-        # Period offset. This parameter is required when the dependency period type is LAST_N_PERIOD.
+        # The period offset. This parameter is required when the dependency period type is LAST_N_PERIOD.
         self.period_offset = period_offset
-        # Dependency period type.
+        # The dependency period type. Valid values:
         # - CURRENT_PERIOD
         # - LAST_PERIOD
         # - LAST_N_PERIOD

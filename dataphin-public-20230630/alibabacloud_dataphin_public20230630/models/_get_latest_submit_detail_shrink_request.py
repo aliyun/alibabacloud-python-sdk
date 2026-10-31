@@ -15,8 +15,9 @@ class GetLatestSubmitDetailShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
-        # The pending submit query request.
+        # The pending release query request.
         # 
         # This parameter is required.
         self.submit_detail_query_shrink = submit_detail_query_shrink

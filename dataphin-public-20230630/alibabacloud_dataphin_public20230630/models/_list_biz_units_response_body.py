@@ -17,7 +17,7 @@ class ListBizUnitsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. A value of OK indicates that the request was successful.
+        # The error code. OK indicates that the request is successful.
         self.code = code
         # The query result.
         self.data = data
@@ -27,7 +27,7 @@ class ListBizUnitsResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -87,7 +87,7 @@ class ListBizUnitsResponseBodyData(DaraModel):
         self,
         biz_unit_list: List[main_models.ListBizUnitsResponseBodyDataBizUnitList] = None,
     ):
-        # The business unit details.
+        # The details of the business units.
         self.biz_unit_list = biz_unit_list
 
     def validate(self):
@@ -142,31 +142,27 @@ class ListBizUnitsResponseBodyDataBizUnitList(DaraModel):
         self.description = description
         # The display name.
         self.display_name = display_name
-        # The environment identifier. Valid values:
-        # - DEV: development environment.
-        # - PROD: production environment.
+        # The environment identifier. Valid values: DEV (development environment) and PROD (production environment).
         self.env = env
         # The creation time.
         self.gmt_create = gmt_create
         # The update time.
         self.gmt_modified = gmt_modified
-        # The business unit icon.
+        # The icon of the business unit.
         self.icon = icon
-        # The business unit ID.
+        # The ID of the business unit.
         self.id = id
-        # The ID of the user who last modified the business unit.
+        # The ID of the last modifier.
         self.last_modifier = last_modifier
-        # The name of the user who last modified the business unit.
+        # The name of the last modifier.
         self.last_modifier_name = last_modifier_name
-        # The production mode. Valid values:
-        # - BASIC: single-environment mode.
-        # - DEV_PROD: development/production dual-environment mode.
+        # The production mode. Valid values: BASIC (single-environment mode) and DEV_PROD (development and production dual-environment mode).
         self.mode = mode
         # The name.
         self.name = name
-        # The owner of the business object.
+        # The ID of the owner of the business object.
         self.owner_name = owner_name
-        # The owner of the business object.
+        # The ID of the owner of the business object.
         self.owner_user_id = owner_user_id
 
     def validate(self):

@@ -13,7 +13,7 @@ class ImportKgSchemaRequest(DaraModel):
         op_user_id: str = None,
         workspace_id: str = None,
     ):
-        # The command for importing the knowledge graph definition.
+        # The import command for the knowledge graph definition.
         # 
         # This parameter is required.
         self.import_command = import_command
@@ -21,7 +21,7 @@ class ImportKgSchemaRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The ID of the operator user.
+        # The ID of the operator.
         self.op_user_id = op_user_id
         # The workspace ID.
         # 
@@ -75,7 +75,7 @@ class ImportKgSchemaRequestImportCommand(DaraModel):
         input_format: str = None,
         merge_strategy: str = None,
     ):
-        # The knowledge graph definition content converted based on the specified format.
+        # The knowledge graph definition content converted based on the format.
         self.content = content
         # The format of the knowledge graph definition content. Valid values: json and yaml. Default value: yaml.
         self.input_format = input_format

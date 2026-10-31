@@ -22,6 +22,7 @@ class GrantResourcePermissionRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -68,7 +69,7 @@ class GrantResourcePermissionRequestGrantCommand(DaraModel):
         resource_type: str = None,
         user_id_list: List[str] = None,
     ):
-        # The expiration timestamp, in milliseconds.
+        # The timestamp for the end of the validity period, in milliseconds.
         # 
         # This parameter is required.
         self.effective_end = effective_end
@@ -76,9 +77,9 @@ class GrantResourcePermissionRequestGrantCommand(DaraModel):
         # 
         # This parameter is required.
         self.operate_list = operate_list
-        # The reason for the authorization.
+        # The reason for authorization.
         self.reason = reason
-        # The list of resources.
+        # The resources.
         # 
         # This parameter is required.
         self.resource_list = resource_list
@@ -86,7 +87,7 @@ class GrantResourcePermissionRequestGrantCommand(DaraModel):
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The authorized users pending authorization.
+        # The users pending authorization.
         # 
         # This parameter is required.
         self.user_id_list = user_id_list

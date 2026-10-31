@@ -15,17 +15,13 @@ class ExecuteTriggerNodeRequest(DaraModel):
         op_user_id: str = None,
         project_id: int = None,
     ):
-        # The business date.
+        # The business date. The format is YYYY-MM-DD.
         # 
         # This parameter is required.
         self.biz_date = biz_date
-        # The environment. Valid values:
-        # - DEV: development environment.
-        # - PROD: production environment.
-        # 
-        # Default value: PROD.
+        # The environment. Valid values: DEV for the development environment, and PROD for the production environment. Default value: PROD.
         self.env = env
-        # If the node is an hourly or minutely node, multiple instances are generated per day. This parameter specifies the ordinal number of the instance.
+        # The instance index. If the node is scheduled by hour or minute, multiple instances are generated per day. This parameter specifies the sequence number of the instance.
         self.index = index
         # The node ID.
         # 
@@ -35,6 +31,7 @@ class ExecuteTriggerNodeRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
         # The project ID.
         # 

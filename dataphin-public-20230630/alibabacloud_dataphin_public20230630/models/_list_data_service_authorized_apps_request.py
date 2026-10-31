@@ -19,6 +19,7 @@ class ListDataServiceAuthorizedAppsRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
         # The ID of the data service project.
         # 
@@ -76,7 +77,7 @@ class ListDataServiceAuthorizedAppsRequestListQuery(DaraModel):
         self.keyword = keyword
         # The page number. Default value: 1.
         self.page_no = page_no
-        # The number of records per page. Default value: 20.
+        # The number of entries per page. Default value: 20.
         self.page_size = page_size
 
     def validate(self):

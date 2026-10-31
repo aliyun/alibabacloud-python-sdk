@@ -14,14 +14,15 @@ class ListDataSourceWithConfigRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # Paginated query
+        # The paged query parameters.
         # 
         # This parameter is required.
         self.list_query = list_query
-        # Tenant ID
+        # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -69,30 +70,30 @@ class ListDataSourceWithConfigRequestListQuery(DaraModel):
         tag: str = None,
         type_list: List[str] = None,
     ):
-        # Data source name
+        # The name of the data source.
         self.name = name
-        # Data source owner
+        # The owners of the data sources.
         self.owner_list = owner_list
-        # Page number. The value starts from 1.
+        # The page number. The starting page is 1.
         # 
         # This parameter is required.
         self.page = page
-        # Number of records per page
+        # The number of records per page.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # Data source scope. Valid values:
-        # - STREAMING: Real-time
-        # - OFFLINE: Offline
-        # - DIP_META_SYNC: Meta warehouse initialization
-        # - DATA_DISTILL: Data distillation
-        # - CUMPUTE_SOURCE_SHADOW: Shadow compute source
-        # - LABEL: Label
-        # - ALL: Offline + Real-time
+        # The usage scopes of the data sources. Valid values:
+        # - STREAMING: Real-time.
+        # - OFFLINE: Offline.
+        # - DIP_META_SYNC: Metadata warehouse initialization.
+        # - DATA_DISTILL: Data distillation.
+        # - CUMPUTE_SOURCE_SHADOW: Shadow compute source.
+        # - LABEL: Label.
+        # - ALL: Offline and real-time.
         self.scope_list = scope_list
-        # Tag marked when creating the data source
+        # The tag specified during data source creation.
         self.tag = tag
-        # Data source type
+        # The data source types.
         self.type_list = type_list
 
     def validate(self):

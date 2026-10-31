@@ -17,17 +17,17 @@ class ListTenantMembersResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. OK indicates a successful request.
+        # The error code. OK indicates that the request is successful.
         self.code = code
-        # The HTTP status code.
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
         # The error message.
         self.message = message
-        # The paginated query result.
+        # The paged query result.
         self.page_result = page_result
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -88,9 +88,9 @@ class ListTenantMembersResponseBodyPageResult(DaraModel):
         total_count: int = None,
         user_list: List[main_models.ListTenantMembersResponseBodyPageResultUserList] = None,
     ):
-        # The total number of entries.
+        # The total number of records.
         self.total_count = total_count
-        # The list of users.
+        # The user list.
         self.user_list = user_list
 
     def validate(self):
@@ -151,17 +151,17 @@ class ListTenantMembersResponseBodyPageResultUserList(DaraModel):
     ):
         # The account name.
         self.account_name = account_name
-        # The DingTalk number.
+        # The DingTalk ID.
         self.ding_number = ding_number
         # The display name of the user.
         self.display_name = display_name
-        # The display name of the user without status.
+        # The display name of the user without the status.
         self.display_name_without_status = display_name_without_status
-        # Indicates whether the IP address whitelist is enabled.
+        # Indicates whether the IP whitelist is enabled.
         self.enable_white_ip = enable_white_ip
-        # The time when the user was created.
+        # The creation time.
         self.gmt_create = gmt_create
-        # The time when the user was last modified.
+        # The modification time.
         self.gmt_modified = gmt_modified
         # The user ID.
         self.id = id
@@ -175,13 +175,13 @@ class ListTenantMembersResponseBodyPageResultUserList(DaraModel):
         self.nick_name = nick_name
         # The real name of the user.
         self.real_name = real_name
-        # The list of member roles.
+        # The member role.
         self.role_list = role_list
-        # The user source ID.
+        # The ID of the user source.
         self.source_id = source_id
-        # The user source.
+        # The source of the user.
         self.source_type = source_type
-        # The list of user groups to which the user belongs.
+        # The resource groups to which the user belongs.
         self.user_group_list = user_group_list
         # The IP address whitelist.
         self.white_ip = white_ip

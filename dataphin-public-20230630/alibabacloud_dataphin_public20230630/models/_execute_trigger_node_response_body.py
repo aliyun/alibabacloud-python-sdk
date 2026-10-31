@@ -17,11 +17,11 @@ class ExecuteTriggerNodeResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend exception.
+        # The error message returned by the backend.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

@@ -19,12 +19,13 @@ class UpdateDatasetRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
         # The project ID.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The update request struct.
+        # The update struct.
         # 
         # This parameter is required.
         self.update_command = update_command
@@ -87,30 +88,31 @@ class UpdateDatasetRequestUpdateCommand(DaraModel):
         version: str = None,
         version_config: main_models.UpdateDatasetRequestUpdateCommandVersionConfig = None,
     ):
+        # The API information for online datasets.
         self.api_info = api_info
-        # **The content type.**
+        # The **content type**.
         self.content_type = content_type
-        # The subject area ID.
+        # The subject domain ID.
         self.data_cell_id = data_cell_id
-        # **The description.**
+        # The **description**.
         self.description = description
-        # The file ID (the file ID at creation time).
+        # The file ID, which is the file ID used during creation.
         # 
         # This parameter is required.
         self.file_id = file_id
-        # The dataset ID (business primary key).
+        # The dataset ID, which is the business primary key.
         # 
         # This parameter is required.
         self.id = id
-        # **The metastore type.**
+        # The **metastore type**.
         self.metadata_storage_type = metadata_storage_type
         # The dataset name.
         self.name = name
-        # The list of owner IDs, separated by commas.
+        # The list of owner IDs. Separate multiple IDs with commas.
         self.owner = owner
-        # **Scenarios:** `OFFLINE` (offline, default) / `REALTIME` (real-time).
+        # **Dataset Scenarios:** `OFFLINE` (offline, default) / `REALTIME` (real-time).
         self.scenario = scenario
-        # **The storage type.**
+        # The **storage type**.
         self.storage_type = storage_type
         # The dataset type.
         self.type = type
@@ -234,9 +236,9 @@ class UpdateDatasetRequestUpdateCommandVersionConfig(DaraModel):
         self.file_storage_config = file_storage_config
         # The metastore configuration.
         self.metadata_storage_config = metadata_storage_config
-        # The real-time meta table configuration. Takes effect when metadataStorageType is set to STREAM_TABLE.
+        # The real-time metadata table configuration. This configuration takes effect only when the metadata storage type is STREAM_TABLE.
         self.realtime_meta_table_config = realtime_meta_table_config
-        # **Version description**
+        # **The version description.**
         self.version_description = version_description
 
     def validate(self):
@@ -293,15 +295,15 @@ class UpdateDatasetRequestUpdateCommandVersionConfigRealtimeMetaTableConfig(Dara
         project_id: int = None,
         table_schema: main_models.UpdateDatasetRequestUpdateCommandVersionConfigRealtimeMetaTableConfigTableSchema = None,
     ):
-        # The meta table data source type (only KAFKA is supported in the current release).
+        # The data source type of the metadata table. Only KAFKA is supported in the current version.
         # 
         # This parameter is required.
         self.datasource_type = datasource_type
-        # The meta table name.
+        # The name of the metadata table.
         # 
         # This parameter is required.
         self.meta_table_name = meta_table_name
-        # The project ID to which the meta table belongs (cross-project access is supported).
+        # The ID of the project to which the metadata table belongs. Cross-project access is supported.
         # 
         # This parameter is required.
         self.project_id = project_id
@@ -353,7 +355,7 @@ class UpdateDatasetRequestUpdateCommandVersionConfigRealtimeMetaTableConfigTable
         self,
         columns: List[main_models.UpdateDatasetRequestUpdateCommandVersionConfigRealtimeMetaTableConfigTableSchemaColumns] = None,
     ):
-        # **The field list.**
+        # **The list of columns.**
         self.columns = columns
 
     def validate(self):
@@ -396,25 +398,25 @@ class UpdateDatasetRequestUpdateCommandVersionConfigRealtimeMetaTableConfigTable
         url: bool = None,
         vector_index_config: main_models.UpdateDatasetRequestUpdateCommandVersionConfigRealtimeMetaTableConfigTableSchemaColumnsVectorIndexConfig = None,
     ):
-        # The field description.
+        # The column description.
         self.comment = comment
-        # **The array element subtype. Valid only when type is set to ARRAY.**
+        # **The subtype of the array element. This parameter is valid only when the column type is ARRAY.**
         self.element_type = element_type
-        # **The maximum capacity of the array. This parameter is valid only when type is set to ARRAY. Default value: 4096.**
+        # **The maximum capacity of the array. This parameter takes effect only when type is set to ARRAY. Default value: 4096.**
         self.max_capacity = max_capacity
-        # **The field name.**
+        # **The column name.**
         # 
         # This parameter is required.
         self.name = name
-        # Indicates whether the field is a primary key.
+        # Specifies whether the column is a primary key.
         self.pk = pk
-        # **The field type.**
+        # **The column type.**
         # 
         # This parameter is required.
         self.type = type
-        # Indicates whether the field is a URL.
+        # Specifies whether the column is a URL.
         self.url = url
-        # The vector index configuration. Configure this parameter when the field type is FLOAT_VECTOR, FLOAT16_VECTOR, or BFLOAT16_VECTOR. This parameter is used to specify the dimensions, index type, and similarity metric.
+        # The vector index configuration. Configure this parameter when the field type is FLOAT_VECTOR, FLOAT16_VECTOR, or BFLOAT16_VECTOR to specify the dimensions, index type, and similarity metric.
         self.vector_index_config = vector_index_config
 
     def validate(self):
@@ -498,13 +500,13 @@ class UpdateDatasetRequestUpdateCommandVersionConfigRealtimeMetaTableConfigTable
         # 
         # This parameter is required.
         self.embedding_model = embedding_model
-        # The index build parameters. Different parameters are required based on the indexType. For example, HNSW requires {M:30, efConstruction:360}, and IVF_FLAT requires {nlist:128}.
+        # The index building parameters. Specify different parameters based on the index type. For example, specify {M:30, efConstruction:360} for HNSW and {nlist:128} for IVF_FLAT.
         self.index_params = index_params
-        # The index type. PostgreSQL supports IVFFlat and HNSW. Milvus supports all types.
+        # The index type. PostgreSQL supports IVFFlat and HNSW. Milvus supports all index types.
         # 
         # This parameter is required.
         self.index_type = index_type
-        # The similarity type. Default value: COSINE. Valid values: COSINE, L2, and IP.
+        # The similarity type. Valid values: COSINE, L2, and IP. Default value: COSINE.
         # 
         # This parameter is required.
         self.similarity_type = similarity_type
@@ -571,15 +573,15 @@ class UpdateDatasetRequestUpdateCommandVersionConfigMetadataStorageConfig(DaraMo
         self.data_source_id = data_source_id
         # **The data source name.**
         self.data_source_name = data_source_name
-        # **The development database/schema.**
+        # **The development database or schema.**
         self.dev_schema = dev_schema
-        # Specifies whether to store metadata in a new table or an existing table.
+        # Specifies whether to store the metadata in a new table or an existing table.
         # 
         # This parameter is required.
         self.metadata_storage_mode = metadata_storage_mode
         # **The metastore type.**
         self.metadata_storage_type = metadata_storage_type
-        # **The production database/schema.**
+        # **The production database or schema.**
         # 
         # This parameter is required.
         self.prod_schema = prod_schema
@@ -659,7 +661,7 @@ class UpdateDatasetRequestUpdateCommandVersionConfigMetadataStorageConfigTableSc
         self,
         columns: List[main_models.UpdateDatasetRequestUpdateCommandVersionConfigMetadataStorageConfigTableSchemaColumns] = None,
     ):
-        # The field list.
+        # The list of columns.
         self.columns = columns
 
     def validate(self):
@@ -702,23 +704,23 @@ class UpdateDatasetRequestUpdateCommandVersionConfigMetadataStorageConfigTableSc
         url: bool = None,
         vector_index_config: main_models.UpdateDatasetRequestUpdateCommandVersionConfigMetadataStorageConfigTableSchemaColumnsVectorIndexConfig = None,
     ):
-        # The field description.
+        # The column description.
         self.comment = comment
-        # **The array element subtype. Valid only when type is set to ARRAY.**
+        # **The subtype of the array element. This parameter is valid only when the column type is ARRAY.**
         self.element_type = element_type
-        # The maximum capacity of the array. Valid only when type is set to ARRAY. Default value: 4096.
+        # The maximum capacity of the array. This parameter is valid only when the column type is ARRAY. Default value: 4096.
         self.max_capacity = max_capacity
-        # **The field name.**
+        # **The column name.**
         # 
         # This parameter is required.
         self.name = name
-        # Indicates whether the field is a primary key.
+        # Specifies whether the column is a primary key.
         self.pk = pk
-        # **The field type.**
+        # **The column type.**
         # 
         # This parameter is required.
         self.type = type
-        # Indicates whether the field is a URL.
+        # Specifies whether the column is a URL.
         self.url = url
         # The vector index configuration.
         self.vector_index_config = vector_index_config
@@ -804,13 +806,13 @@ class UpdateDatasetRequestUpdateCommandVersionConfigMetadataStorageConfigTableSc
         # 
         # This parameter is required.
         self.embedding_model = embedding_model
-        # The index build parameters. Different parameters are required based on the indexType. For example, HNSW requires {M:30, efConstruction:360}, and IVF_FLAT requires {nlist:128}.
+        # The index building parameters. Specify different parameters based on the index type. For example, specify {M:30, efConstruction:360} for HNSW and {nlist:128} for IVF_FLAT.
         self.index_params = index_params
-        # The index type. PostgreSQL supports IVFFlat and HNSW. Milvus supports all types.
+        # The index type. PostgreSQL supports IVFFlat and HNSW. Milvus supports all index types.
         # 
         # This parameter is required.
         self.index_type = index_type
-        # The similarity type. Default value: COSINE. Valid values: COSINE, L2, and IP.
+        # The similarity type. Valid values: COSINE, L2, and IP. Default value: COSINE.
         # 
         # This parameter is required.
         self.similarity_type = similarity_type
@@ -874,7 +876,7 @@ class UpdateDatasetRequestUpdateCommandVersionConfigFileStorageConfig(DaraModel)
         self.data_source_id = data_source_id
         # The data source name.
         self.data_source_name = data_source_name
-        # The development path (not required for basic projects).
+        # The development path. This parameter is not required for basic projects.
         self.dev_path = dev_path
         # The mount path.
         # 
@@ -942,14 +944,23 @@ class UpdateDatasetRequestUpdateCommandApiInfo(DaraModel):
         response_param_list: List[main_models.UpdateDatasetRequestUpdateCommandApiInfoResponseParamList] = None,
         timeout: int = None,
     ):
+        # The execution timeout period in seconds.
         self.exec_timeout = exec_timeout
+        # The execution mode. Valid values: 1: synchronous, 2: asynchronous.
         self.execute_mode = execute_mode
+        # The data service API group.
         self.os_api_group = os_api_group
+        # The data service project.
         self.os_project = os_project
+        # The protocol type. Valid values: 1: HTTPS, 2: HTTP, 3: HTTP and HTTPS.
         self.protocol = protocol
+        # The request method. Valid values: 1: GET, 2: LIST.
         self.request_method = request_method
+        # The list of request parameters.
         self.request_param_list = request_param_list
+        # The list of response parameters.
         self.response_param_list = response_param_list
+        # The timeout period in seconds.
         self.timeout = timeout
 
     def validate(self):
@@ -1046,10 +1057,15 @@ class UpdateDatasetRequestUpdateCommandApiInfoResponseParamList(DaraModel):
         param_type: str = None,
         sample: str = None,
     ):
+        # The description.
         self.descr = descr
+        # Specifies whether the parameter is a URL parameter.
         self.is_url = is_url
+        # The name of the parameter.
         self.param_name = param_name
+        # The type of the parameter.
         self.param_type = param_type
+        # The example value.
         self.sample = sample
 
     def validate(self):
@@ -1107,12 +1123,19 @@ class UpdateDatasetRequestUpdateCommandApiInfoRequestParamList(DaraModel):
         param_type: str = None,
         sample: str = None,
     ):
+        # The default value.
         self.default_value = default_value
+        # The description.
         self.descr = descr
+        # Specifies whether the parameter is a URL parameter.
         self.is_url = is_url
+        # Specifies whether the parameter is required.
         self.must = must
+        # The name of the parameter.
         self.param_name = param_name
+        # The type of the parameter.
         self.param_type = param_type
+        # The example value.
         self.sample = sample
 
     def validate(self):

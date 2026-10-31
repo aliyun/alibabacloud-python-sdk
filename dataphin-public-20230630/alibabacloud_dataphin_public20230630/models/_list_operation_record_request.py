@@ -22,6 +22,7 @@ class ListOperationRecordRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -75,15 +76,15 @@ class ListOperationRecordRequestListCommand(DaraModel):
         status: List[int] = None,
         user_ids: List[str] = None,
     ):
-        # The end of the start time range. Format: yyyy-MM-dd HH:mm:ss.
+        # The end time of the time range. Format: yyyy-MM-dd HH:mm:ss.
         self.begin_time_end = begin_time_end
-        # The beginning of the start time range. Format: yyyy-MM-dd HH:mm:ss.
+        # The start time of the time range. Format: yyyy-MM-dd HH:mm:ss.
         self.begin_time_start = begin_time_start
         # The keyword for code search.
         self.code_content = code_content
         # The list of code types.
         self.code_type = code_type
-        # The list of duration ranges.
+        # The list of durations.
         self.duration = duration
         # The script name.
         self.file_name = file_name
@@ -101,7 +102,7 @@ class ListOperationRecordRequestListCommand(DaraModel):
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The sort type. Valid values: 0 (start time ascending), 1 (start time descending), 2 (object name).
+        # The sort type. Valid values: 0: Ascending order by start time. 1: Descending order by start time. 2: Object name.
         self.sort_type = sort_type
         # The list of task statuses.
         self.status = status

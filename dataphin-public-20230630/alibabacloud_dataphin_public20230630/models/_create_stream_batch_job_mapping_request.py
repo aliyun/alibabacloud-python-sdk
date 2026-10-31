@@ -16,8 +16,9 @@ class CreateStreamBatchJobMappingRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
-        # The stream-batch integrated node information.
+        # The stream-batch integrated task information.
         # 
         # This parameter is required.
         self.stream_batch_job_mapping_create_command = stream_batch_job_mapping_create_command
@@ -76,11 +77,11 @@ class CreateStreamBatchJobMappingRequestStreamBatchJobMappingCreateCommand(DaraM
         self.cluster_id = cluster_id
         # The description.
         self.description = description
-        # The folder in which the node is generated.
+        # The directory where the task is generated.
         # 
         # This parameter is required.
         self.directory = directory
-        # The Flink DPI engine version.
+        # The database engine version of the Flink DPI engine.
         # 
         # This parameter is required.
         self.engine_version = engine_version
@@ -104,7 +105,7 @@ class CreateStreamBatchJobMappingRequestStreamBatchJobMappingCreateCommand(DaraM
         # 
         # This parameter is required.
         self.queue_name = queue_name
-        # The VVP cluster type. Valid values: SESSION and PREJOB. This parameter is specific to VVP. If not applicable, leave this parameter empty or do not pass it.
+        # The VVP cluster type. This parameter is specific to VVP. Valid values: SESSION and PREJOB. If it is not applicable, leave it empty or do not specify it.
         # 
         # This parameter is required.
         self.vvp_cluster_type = vvp_cluster_type

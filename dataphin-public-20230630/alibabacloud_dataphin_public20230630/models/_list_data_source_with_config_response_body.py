@@ -17,17 +17,17 @@ class ListDataSourceWithConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Error code. OK indicates that the request was successful.
+        # The error code. A value of OK indicates that the request is successful.
         self.code = code
-        # HTTP status code
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
-        # Error message
+        # The error message.
         self.message = message
-        # Query result.
+        # The query result.
         self.page_result = page_result
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Whether the request was successful
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -88,9 +88,9 @@ class ListDataSourceWithConfigResponseBodyPageResult(DaraModel):
         data_source_list: List[main_models.ListDataSourceWithConfigResponseBodyPageResultDataSourceList] = None,
         total_count: int = None,
     ):
-        # Paginated list
+        # The paginated list.
         self.data_source_list = data_source_list
-        # Total number of records
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -133,9 +133,9 @@ class ListDataSourceWithConfigResponseBodyPageResultDataSourceList(DaraModel):
         dev_data_source_info: main_models.ListDataSourceWithConfigResponseBodyPageResultDataSourceListDevDataSourceInfo = None,
         prod_data_source_info: main_models.ListDataSourceWithConfigResponseBodyPageResultDataSourceListProdDataSourceInfo = None,
     ):
-        # Development environment data source
+        # The data source in the development environment.
         self.dev_data_source_info = dev_data_source_info
-        # Production environment data source
+        # The data source in the production environment.
         self.prod_data_source_info = prod_data_source_info
 
     def validate(self):
@@ -186,31 +186,31 @@ class ListDataSourceWithConfigResponseBodyPageResultDataSourceListProdDataSource
         scope: str = None,
         type: str = None,
     ):
-        # Connection configuration items
+        # The connection configuration items.
         self.config_item_list = config_item_list
-        # Creation time
+        # The creation time.
         self.create_time = create_time
-        # Creator ID
+        # The ID of the creator.
         self.creator = creator
-        # Creator name
+        # The name of the creator.
         self.creator_name = creator_name
-        # Description
+        # The description.
         self.description = description
-        # Environment of the data source
+        # The environment to which the data source belongs.
         self.env = env
-        # Data source ID
+        # The ID of the data source.
         self.id = id
-        # Modification time
+        # The modification time.
         self.modify_time = modify_time
-        # Data source name
+        # The name of the data source.
         self.name = name
-        # Owner ID
+        # The ID of the owner.
         self.owner = owner
-        # Owner name
+        # The name of the owner.
         self.owner_name = owner_name
-        # Data source scope
+        # The usage scope of the data source.
         self.scope = scope
-        # Data source type
+        # The data source types.
         self.type = type
 
     def validate(self):
@@ -319,9 +319,9 @@ class ListDataSourceWithConfigResponseBodyPageResultDataSourceListProdDataSource
         key: str = None,
         value: str = None,
     ):
-        # Configuration item ID
+        # The ID of the configuration item.
         self.key = key
-        # Configuration item value
+        # The value of the configuration item.
         self.value = value
 
     def validate(self):
@@ -367,31 +367,31 @@ class ListDataSourceWithConfigResponseBodyPageResultDataSourceListDevDataSourceI
         scope: str = None,
         type: str = None,
     ):
-        # Connection configuration items
+        # The connection configuration items.
         self.config_item_list = config_item_list
-        # Creation time
+        # The creation time.
         self.create_time = create_time
-        # Creator ID
+        # The ID of the creator.
         self.creator = creator
-        # Creator name
+        # The name of the creator.
         self.creator_name = creator_name
-        # Description
+        # The description.
         self.description = description
-        # Environment of the data source
+        # The environment to which the data source belongs.
         self.env = env
-        # Data source ID
+        # The ID of the data source.
         self.id = id
-        # Modification time
+        # The modification time.
         self.modify_time = modify_time
-        # Data source name
+        # The name of the data source.
         self.name = name
-        # Owner ID
+        # The ID of the owner.
         self.owner = owner
-        # Owner name
+        # The name of the owner.
         self.owner_name = owner_name
-        # Data source scope
+        # The usage scope of the data source.
         self.scope = scope
-        # Data source type
+        # The data source types.
         self.type = type
 
     def validate(self):
@@ -500,9 +500,9 @@ class ListDataSourceWithConfigResponseBodyPageResultDataSourceListDevDataSourceI
         key: str = None,
         value: str = None,
     ):
-        # Configuration item ID
+        # The ID of the configuration item.
         self.key = key
-        # Configuration item value
+        # The value of the configuration item.
         self.value = value
 
     def validate(self):

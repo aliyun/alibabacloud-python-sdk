@@ -17,11 +17,17 @@ class ListBatchTasksResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. A value of OK indicates that the request is successful.
         self.code = code
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The paginated result of the task query.
         self.page_result = page_result
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListBatchTasksResponseBodyPageResult(DaraModel):
         page_size: int = None,
         result_data: List[main_models.ListBatchTasksResponseBodyPageResultResultData] = None,
     ):
+        # The total number of tasks that meet the query conditions, regardless of pagination.
         self.count = count
+        # The current page number.
         self.page = page
+        # The number of entries per page.
         self.page_size = page_size
+        # The list of tasks on the current page.
         self.result_data = result_data
 
     def validate(self):
@@ -155,21 +165,37 @@ class ListBatchTasksResponseBodyPageResultResultData(DaraModel):
         released: bool = None,
         status: str = None,
     ):
+        # The description of the task.
         self.description = description
+        # The folder where the task is located.
         self.directory = directory
+        # The ID of the task file. You can use this ID as the input parameter for the GetBatchTaskInfo operation.
         self.file_id = file_id
+        # The latest submit status. Valid values: SUBMITTING, SUCCESS, and FAILED.
         self.last_submit_status = last_submit_status
+        # The latest submitted version number.
         self.last_version = last_version
+        # The name of the task.
         self.name = name
+        # The ID of the node.
         self.node_id = node_id
+        # The name of the node.
         self.node_name = node_name
+        # The list of output table names for the node.
         self.node_output_name_list = node_output_name_list
+        # The type of the node. Valid values: 1 (periodic task) and 3 (manual task).
         self.node_type = node_type
+        # The task type code.
         self.operator_type = operator_type
+        # The name of the task owner.
         self.owner_name = owner_name
+        # The ID of the task owner.
         self.owner_user_id = owner_user_id
+        # Indicates whether the task has been published to the production environment.
         self.published = published
+        # Indicates whether the task has been submitted.
         self.released = released
+        # The status of the task. Valid values: DRAFT, DEVELOP, and SUBMITTED.
         self.status = status
 
     def validate(self):

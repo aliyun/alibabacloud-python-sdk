@@ -11,15 +11,15 @@ class GetServerVersionRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # **[Deprecated]** The environment identifier. Valid values:
-        # - DEV: Development environment. 
-        # - PROD (default): Production environment.
+        # The environment identifier. **[Deprecated]** Valid values:
+        # - DEV: development environment. 
+        # - PROD: production environment. This is the default value.
         self.env = env
         # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The ID of the operation user.
+        # The ID of the operating user.
         self.op_user_id = op_user_id
 
     def validate(self):

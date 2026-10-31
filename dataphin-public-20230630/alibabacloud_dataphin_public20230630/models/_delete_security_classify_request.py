@@ -12,7 +12,7 @@ class DeleteSecurityClassifyRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The delete instruction.
+        # The update command.
         # 
         # This parameter is required.
         self.delete_command = delete_command
@@ -20,6 +20,7 @@ class DeleteSecurityClassifyRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -63,11 +64,11 @@ class DeleteSecurityClassifyRequestDeleteCommand(DaraModel):
         name: str = None,
         parent_path: str = None,
     ):
-        # The categorization ID. If this parameter is not specified, the categorization is matched and deleted based on the categorization name and parent path.
+        # The category ID. If this parameter is not provided, the category is matched and deleted based on the category name and parent path.
         self.id = id
-        # The categorization name.
+        # The category name.
         self.name = name
-        # The categorization path. Default value: /.
+        # The category path. Default value: /.
         self.parent_path = parent_path
 
     def validate(self):

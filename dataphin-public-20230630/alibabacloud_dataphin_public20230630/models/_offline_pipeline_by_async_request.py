@@ -17,7 +17,7 @@ class OfflinePipelineByAsyncRequest(DaraModel):
         # 
         # This parameter is required.
         self.context = context
-        # The offline pipeline node command.
+        # The command to take the pipeline task offline.
         # 
         # This parameter is required.
         self.offline_command = offline_command
@@ -25,6 +25,7 @@ class OfflinePipelineByAsyncRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the user who performs the operation.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -79,17 +80,17 @@ class OfflinePipelineByAsyncRequestOfflineCommand(DaraModel):
         node_id: str = None,
         pipeline_id: int = None,
     ):
-        # The remarks.
+        # The comment.
         self.comment = comment
-        # Specifies whether to delete the node.
+        # Specifies whether to delete the task.
         # 
         # This parameter is required.
         self.delete = delete
-        # The file ID of the integration node. You can use this parameter to query the node.
+        # The ID of the integration task file.
         self.file_id = file_id
-        # The schedule node ID of the integration node. You can use this parameter to query the node.
+        # The ID of the scheduling node for the integration task.
         self.node_id = node_id
-        # The primary key ID of the integration pipeline. You can use this parameter to query the node.
+        # The primary key of the integration pipeline.
         self.pipeline_id = pipeline_id
 
     def validate(self):
@@ -142,14 +143,11 @@ class OfflinePipelineByAsyncRequestContext(DaraModel):
         env: str = None,
         project_id: int = None,
     ):
-        # The environment for the current operation. Valid values:
-        # 
-        # - DEV: the development environment.
-        # - PROD: the production environment.
+        # The current operation environment. Valid values: DEV: development environment. PROD: production environment.
         # 
         # This parameter is required.
         self.env = env
-        # The ID of the project to which the integration pipeline node belongs.
+        # The ID of the project to which the integration pipeline task belongs.
         # 
         # This parameter is required.
         self.project_id = project_id

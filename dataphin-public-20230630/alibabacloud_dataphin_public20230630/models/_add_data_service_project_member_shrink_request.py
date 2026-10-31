@@ -12,7 +12,7 @@ class AddDataServiceProjectMemberShrinkRequest(DaraModel):
         op_user_id: str = None,
         project_id: int = None,
     ):
-        # The command to add project members.
+        # The command to add a project member.
         # 
         # This parameter is required.
         self.add_command_shrink = add_command_shrink
@@ -20,8 +20,9 @@ class AddDataServiceProjectMemberShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator ID.
         self.op_user_id = op_user_id
-        # The data service project ID.
+        # The Data Service project ID.
         # 
         # This parameter is required.
         self.project_id = project_id

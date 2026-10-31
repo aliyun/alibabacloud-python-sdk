@@ -21,13 +21,13 @@ class ListProjectsResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend exception.
+        # The backend exception details.
         self.message = message
         # The paging query result.
         self.page_result = page_result
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -88,7 +88,7 @@ class ListProjectsResponseBodyPageResult(DaraModel):
         project_list: List[main_models.ListProjectsResponseBodyPageResultProjectList] = None,
         total_count: int = None,
     ):
-        # The paginated list of projects.
+        # The paginated project list.
         self.project_list = project_list
         # The total number of records.
         self.total_count = total_count
@@ -151,7 +151,7 @@ class ListProjectsResponseBodyPageResultProjectList(DaraModel):
         self.biz_unit_id = biz_unit_id
         # The compute source ID.
         self.data_source_id = data_source_id
-        # The name of the compute source.
+        # The compute source name.
         self.data_source_name = data_source_name
         # The description.
         self.description = description
@@ -159,9 +159,9 @@ class ListProjectsResponseBodyPageResultProjectList(DaraModel):
         self.display_name = display_name
         # The environment identifier.
         self.env = env
-        # The time when the project was created, in the yyyy-MM-dd HH:mm:ss format.
+        # The creation time. Format: yyyy-MM-dd HH:mm:ss.
         self.gmt_create = gmt_create
-        # The time when the project was last modified, in the yyyy-MM-dd HH:mm:ss format.
+        # The update time. Format: yyyy-MM-dd HH:mm:ss.
         self.gmt_modified = gmt_modified
         # The project ID.
         self.id = id
@@ -175,7 +175,7 @@ class ListProjectsResponseBodyPageResultProjectList(DaraModel):
         self.owner_name = owner_name
         # The real-time compute source ID.
         self.realtime_data_source_id = realtime_data_source_id
-        # The name of the real-time compute source.
+        # The real-time compute source name.
         self.realtime_data_source_name = realtime_data_source_name
         # The project type.
         self.type = type

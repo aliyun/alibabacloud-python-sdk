@@ -20,14 +20,14 @@ class CreateNodeSupplementRequest(DaraModel):
         # This parameter is required.
         self.create_command = create_command
         # The environment identifier. Valid values:
-        # - DEV: Development environment. 
-        # - PROD (default): Production environment.
+        # - DEV: development environment 
+        # - PROD: production environment (default)
         self.env = env
         # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The ID of the operator user.
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -76,6 +76,8 @@ class CreateNodeSupplementRequestCreateCommand(DaraModel):
         contain_all_down_stream: bool = None,
         down_stream_node_id_list: List[main_models.CreateNodeSupplementRequestCreateCommandDownStreamNodeIdList] = None,
         end_biz_date: str = None,
+        execute_status_of_idle_node: str = None,
+        execute_status_of_pause_node: str = None,
         filter_list: List[main_models.CreateNodeSupplementRequestCreateCommandFilterList] = None,
         global_param_list: List[main_models.CreateNodeSupplementRequestCreateCommandGlobalParamList] = None,
         max_due_time: str = None,
@@ -86,31 +88,36 @@ class CreateNodeSupplementRequestCreateCommand(DaraModel):
         parallelism: int = None,
         project_id: int = None,
         run_immediately: bool = None,
+        schedule_resource_group_id: str = None,
         start_biz_date: str = None,
     ):
-        # Specifies whether to include all downstream nodes in batch mode. Default value: false.
+        # Specifies whether to include all downstream nodes in massive mode. Default value: false.
         self.contain_all_down_stream = contain_all_down_stream
-        # The IDs of downstream nodes to run. This parameter takes effect only when ContainAllDownStream is set to false.
+        # The IDs of the downstream nodes to run. This parameter takes effect only when ContainAllDownStream is set to false.
         self.down_stream_node_id_list = down_stream_node_id_list
-        # The end business date.
+        # The end business date. Format: YYYY-MM-DD.
         # 
         # This parameter is required.
         self.end_biz_date = end_biz_date
-        # The list of filters. This parameter is used together with ContainAllDownStream to include or exclude nodes based on criteria such as project or node. Default value: empty.
+        # The execution status of idle nodes. Valid values: NORMAL, PAUSED, and IDLE.
+        self.execute_status_of_idle_node = execute_status_of_idle_node
+        # The execution status of paused nodes. Valid values: NORMAL, PAUSED, and IDLE.
+        self.execute_status_of_pause_node = execute_status_of_pause_node
+        # The filter list. This parameter is used together with ContainAllDownStream to include or exclude items such as projects and nodes. Default value: empty.
         self.filter_list = filter_list
-        # The runtime global parameters.
+        # The global parameters at runtime.
         self.global_param_list = global_param_list
-        # The latest trigger time in the HH:MM format. This parameter is applicable only to hourly nodes.
+        # The latest trigger time. Format: HH:MM. This parameter is dedicated to hourly nodes.
         self.max_due_time = max_due_time
-        # The earliest trigger time in the HH:MM format. This parameter is applicable only to hourly nodes.
+        # The earliest trigger time. Format: HH:MM. This parameter is dedicated to hourly nodes.
         self.min_due_time = min_due_time
-        # The name of the data backfill. If this parameter is not specified, the system automatically generates a name.
+        # The name of the data backfill task. If you do not specify this parameter, the system generates a name.
         self.name = name
-        # The root nodes for data backfill. Multiple root nodes are supported.
+        # The IDs of the root nodes for data backfill. Multiple root nodes are supported.
         # 
         # This parameter is required.
         self.node_id_list = node_id_list
-        # The runtime custom parameters configured by node.
+        # The custom parameters at runtime, configured by node.
         self.node_params_list = node_params_list
         # The concurrency. Default value: 1.
         self.parallelism = parallelism
@@ -118,9 +125,14 @@ class CreateNodeSupplementRequestCreateCommand(DaraModel):
         # 
         # This parameter is required.
         self.project_id = project_id
-        # Corresponds to the "Task Run Time" option in the data backfill dialog box. If this parameter is set to true, the scheduled run time of instances is ignored and all instances run immediately. If this parameter is set to false, instances wait for their scheduled run time before running. Default value: true.
+        # Corresponds to the Task Run Time option in the data backfill dialog box on the page. Valid values:
+        # - true: ignores the scheduled run time of instances and runs all instances immediately.
+        # - false: waits for the scheduled run time of instances and runs each instance only when its scheduled time is reached.
+        # Default value: true.
         self.run_immediately = run_immediately
-        # The start business date.
+        # The ID of the schedule resource group.
+        self.schedule_resource_group_id = schedule_resource_group_id
+        # The start business date. Format: YYYY-MM-DD.
         # 
         # This parameter is required.
         self.start_biz_date = start_biz_date
@@ -163,6 +175,12 @@ class CreateNodeSupplementRequestCreateCommand(DaraModel):
         if self.end_biz_date is not None:
             result['EndBizDate'] = self.end_biz_date
 
+        if self.execute_status_of_idle_node is not None:
+            result['ExecuteStatusOfIdleNode'] = self.execute_status_of_idle_node
+
+        if self.execute_status_of_pause_node is not None:
+            result['ExecuteStatusOfPauseNode'] = self.execute_status_of_pause_node
+
         result['FilterList'] = []
         if self.filter_list is not None:
             for k1 in self.filter_list:
@@ -201,6 +219,9 @@ class CreateNodeSupplementRequestCreateCommand(DaraModel):
         if self.run_immediately is not None:
             result['RunImmediately'] = self.run_immediately
 
+        if self.schedule_resource_group_id is not None:
+            result['ScheduleResourceGroupId'] = self.schedule_resource_group_id
+
         if self.start_biz_date is not None:
             result['StartBizDate'] = self.start_biz_date
 
@@ -219,6 +240,12 @@ class CreateNodeSupplementRequestCreateCommand(DaraModel):
 
         if m.get('EndBizDate') is not None:
             self.end_biz_date = m.get('EndBizDate')
+
+        if m.get('ExecuteStatusOfIdleNode') is not None:
+            self.execute_status_of_idle_node = m.get('ExecuteStatusOfIdleNode')
+
+        if m.get('ExecuteStatusOfPauseNode') is not None:
+            self.execute_status_of_pause_node = m.get('ExecuteStatusOfPauseNode')
 
         self.filter_list = []
         if m.get('FilterList') is not None:
@@ -262,6 +289,9 @@ class CreateNodeSupplementRequestCreateCommand(DaraModel):
         if m.get('RunImmediately') is not None:
             self.run_immediately = m.get('RunImmediately')
 
+        if m.get('ScheduleResourceGroupId') is not None:
+            self.schedule_resource_group_id = m.get('ScheduleResourceGroupId')
+
         if m.get('StartBizDate') is not None:
             self.start_biz_date = m.get('StartBizDate')
 
@@ -275,7 +305,7 @@ class CreateNodeSupplementRequestCreateCommandNodeParamsList(DaraModel):
     ):
         # The node ID.
         self.node_id = node_id
-        # The parameter list.
+        # The list of parameters.
         self.param_list = param_list
 
     def validate(self):
@@ -355,7 +385,7 @@ class CreateNodeSupplementRequestCreateCommandNodeIdList(DaraModel):
         field_id_list: List[str] = None,
         id: str = None,
     ):
-        # The list of field IDs. This parameter is applicable when the node ID is a logical table node ID. If this parameter is not specified, all fields in the table are used by default.
+        # The list of field IDs. This parameter can be specified when the node is a logical table node. If you do not specify this parameter, all fields in the table are used by default.
         self.field_id_list = field_id_list
         # The node ID.
         # 
@@ -439,8 +469,8 @@ class CreateNodeSupplementRequestCreateCommandFilterList(DaraModel):
         # - NODE_OUTPUT_NAME: node output name
         # - NODE_NAME: node name
         # - NODE_ID: node ID
-        # - TARGETS: specified endpoints
-        # - SOURCES: specified start points
+        # - TARGETS: specified destination
+        # - SOURCES: specified source
         self.key = key
         # The list of filter values.
         self.value_list = value_list
@@ -483,7 +513,7 @@ class CreateNodeSupplementRequestCreateCommandDownStreamNodeIdList(DaraModel):
         field_id_list: List[str] = None,
         id: str = None,
     ):
-        # The field ID.
+        # The field IDs.
         self.field_id_list = field_id_list
         # The node ID.
         self.id = id

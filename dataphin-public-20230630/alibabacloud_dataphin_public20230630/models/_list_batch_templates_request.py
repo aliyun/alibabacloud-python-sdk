@@ -16,12 +16,13 @@ class ListBatchTemplatesRequest(DaraModel):
     ):
         # The runtime environment. Default value: PROD.
         self.env = env
-        # The paged query conditions.
+        # The paging query conditions.
         self.list_query = list_query
         # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
         # The project ID.
         # 
@@ -80,13 +81,16 @@ class ListBatchTemplatesRequestListQuery(DaraModel):
         keyword: str = None,
         page_num: int = None,
         page_size: int = None,
+        template_id: int = None,
     ):
-        # The template name keyword.
+        # The keyword in the template name.
         self.keyword = keyword
         # The page number. Default value: 1.
         self.page_num = page_num
         # The number of records per page. Default value: 20.
         self.page_size = page_size
+        # The template ID. The query is based on the template ID.
+        self.template_id = template_id
 
     def validate(self):
         pass
@@ -105,6 +109,9 @@ class ListBatchTemplatesRequestListQuery(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -117,6 +124,9 @@ class ListBatchTemplatesRequestListQuery(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
 
         return self
 

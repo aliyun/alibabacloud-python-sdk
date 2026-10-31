@@ -18,6 +18,7 @@ class UpdateQualityWatchSwitchRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
         # The update instruction.
         # 
@@ -64,11 +65,11 @@ class UpdateQualityWatchSwitchRequestUpdateCommand(DaraModel):
         open: bool = None,
         watch_id_list: List[int] = None,
     ):
-        # Specifies whether to enable the monitored object.
+        # Specifies whether to enable the feature.
         # 
         # This parameter is required.
         self.open = open
-        # The list of monitoring IDs.
+        # The list of watch IDs.
         # 
         # This parameter is required.
         self.watch_id_list = watch_id_list

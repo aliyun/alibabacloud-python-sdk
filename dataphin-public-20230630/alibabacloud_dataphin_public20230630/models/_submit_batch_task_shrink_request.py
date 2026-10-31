@@ -15,8 +15,9 @@ class SubmitBatchTaskShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
-        # The submit request.
+        # The edit request.
         # 
         # This parameter is required.
         self.submit_command_shrink = submit_command_shrink

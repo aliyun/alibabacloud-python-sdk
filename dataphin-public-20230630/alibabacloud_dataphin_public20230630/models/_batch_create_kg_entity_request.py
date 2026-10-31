@@ -23,7 +23,7 @@ class BatchCreateKgEntityRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The ID of the operator user.
+        # The ID of the operator.
         self.op_user_id = op_user_id
         # The workspace ID.
         # 
@@ -118,7 +118,7 @@ class BatchCreateKgEntityRequestCreateCommandEntityList(DaraModel):
         # 
         # This parameter is required.
         self.entity_type = entity_type
-        # The list of entity record properties.
+        # The list of properties for the entity record.
         # 
         # This parameter is required.
         self.property_list = property_list

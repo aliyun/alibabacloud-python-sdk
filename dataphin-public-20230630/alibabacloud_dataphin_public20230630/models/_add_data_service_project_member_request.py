@@ -15,7 +15,7 @@ class AddDataServiceProjectMemberRequest(DaraModel):
         op_user_id: str = None,
         project_id: int = None,
     ):
-        # The command to add project members.
+        # The command to add a project member.
         # 
         # This parameter is required.
         self.add_command = add_command
@@ -23,8 +23,9 @@ class AddDataServiceProjectMemberRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator ID.
         self.op_user_id = op_user_id
-        # The data service project ID.
+        # The Data Service project ID.
         # 
         # This parameter is required.
         self.project_id = project_id
@@ -115,18 +116,18 @@ class AddDataServiceProjectMemberRequestAddCommandProjectMemberList(DaraModel):
         role: int = None,
         user_id: str = None,
     ):
-        # The username of the user.
+        # The user account.
         # 
         # This parameter is required.
         self.account_name = account_name
-        # The nickname of the user.
+        # The nickname.
         # 
         # This parameter is required.
         self.display_name = display_name
-        # The role of the user. Valid values:
-        # - 2: development user
-        # - 3: application member
-        # - 4: service project administrator
+        # The user role. Valid values:
+        # - 2: Developer.
+        # - 3: Application member.
+        # - 4: Service project administrator.
         # - 5: O&M user.
         # 
         # This parameter is required.

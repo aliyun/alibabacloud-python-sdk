@@ -15,6 +15,7 @@ class UpdateBizUnitShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the user that performs the operation.
         self.op_user_id = op_user_id
         # The update request.
         # 

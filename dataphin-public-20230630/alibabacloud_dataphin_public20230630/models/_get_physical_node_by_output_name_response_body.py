@@ -15,17 +15,17 @@ class GetPhysicalNodeByOutputNameResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Error code. OK indicates a successful request.
+        # The error code. A value of OK indicates that the request is normal.
         self.code = code
-        # HTTP status code returned by the backend
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
-        # Error message
+        # The error message.
         self.message = message
-        # Node details
+        # The node details.
         self.node_info = node_info
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -99,46 +99,46 @@ class GetPhysicalNodeByOutputNameResponseBodyNodeInfo(DaraModel):
         status: str = None,
         trigger_config: str = None,
     ):
-        # Creation time
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # Node creator
+        # The creator of the node.
         self.creator = creator
-        # Description
+        # The description.
         self.description = description
-        # Node source
-        # - DATA_PROCESS: Code development
-        # - BLACK_BOX: Black box
-        # - ONE_ID: Extraction
-        # - PIPELINE: Pipeline
+        # The node source. Valid values:
+        # - DATA_PROCESS: code development
+        # - BLACK_BOX: black box
+        # - ONE_ID: extraction
+        # - PIPELINE: pipeline
         self.from_ = from_
-        # Node ID
+        # The node ID.
         self.id = id
-        # Last modified time
+        # The update time. The value is a UNIX timestamp in milliseconds.
         self.last_modified_time = last_modified_time
-        # Node modifier
+        # The modifier of the node.
         self.modifier = modifier
-        # Name
+        # The name.
         self.name = name
-        # Node subtype
+        # The node subtype. Valid values:
         # - MAX_COMPUTE_SQL
         # - HIVE_SQL
         # - SHELL
         # - PYTHON
         # - ONE_SERVICE_SQL
-        # - DATABASE_SQL, etc.
+        # - DATABASE_SQL
         self.operator_type = operator_type
-        # Node owner
+        # The owner of the node.
         self.owner = owner
-        # Priority
+        # The priority. Valid values:
         # - HIGHEST
         # - HIGH
         # - MIDDLE
         # - LOW
         # - LOWEST
         self.priority = priority
-        # Project to which the node belongs
+        # The project to which the node belongs.
         self.project_info = project_info
-        # Scheduling period type
+        # The scheduling cycle type. Valid values:
         # - MINUTELY
         # - HOURLY
         # - DAILY
@@ -146,9 +146,9 @@ class GetPhysicalNodeByOutputNameResponseBodyNodeInfo(DaraModel):
         # - MONTHLY
         # - YEARLY
         self.schedule_type = schedule_type
-        # Node scheduling status
+        # The scheduling status of the node.
         self.status = status
-        # Trigger configuration, used to implement field dependencies on logical tables
+        # The trigger configuration, which is used to implement field dependencies for logical tables.
         self.trigger_config = trigger_config
 
     def validate(self):
@@ -272,9 +272,9 @@ class GetPhysicalNodeByOutputNameResponseBodyNodeInfoProjectInfo(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # Project ID
+        # The project ID.
         self.id = id
-        # Project name
+        # The project name.
         self.name = name
 
     def validate(self):
@@ -309,9 +309,9 @@ class GetPhysicalNodeByOutputNameResponseBodyNodeInfoOwner(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # User ID
+        # The user ID.
         self.id = id
-        # Username
+        # The username.
         self.name = name
 
     def validate(self):
@@ -346,9 +346,9 @@ class GetPhysicalNodeByOutputNameResponseBodyNodeInfoModifier(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # User ID
+        # The user ID.
         self.id = id
-        # Username
+        # The username.
         self.name = name
 
     def validate(self):
@@ -383,9 +383,9 @@ class GetPhysicalNodeByOutputNameResponseBodyNodeInfoCreator(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # User ID
+        # The user ID.
         self.id = id
-        # Username
+        # The username.
         self.name = name
 
     def validate(self):

@@ -18,6 +18,7 @@ class UpdateStandardLookupTableRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
         # The update command.
         # 
@@ -69,25 +70,25 @@ class UpdateStandardLookupTableRequestUpdateCommand(DaraModel):
         name: str = None,
         owner: str = None,
     ):
-        # The lookup table code.
+        # The code of the lookup table.
         # 
         # This parameter is required.
         self.code = code
-        # The lookup table description.
+        # The description of the lookup table.
         self.description = description
-        # The directory to which the lookup table belongs.
+        # The parent folder.
         self.directory_reference = directory_reference
-        # The lookup table ID.
+        # The ID of the lookup table.
         # 
         # This parameter is required.
         self.id = id
         # The list of lookup table values.
         self.lookup_table_value_list = lookup_table_value_list
-        # The lookup table name.
+        # The name of the lookup table.
         # 
         # This parameter is required.
         self.name = name
-        # The ID of the lookup table owner. Default value: the user ID of the caller.
+        # The ID of the lookup table owner. Default value: the ID of the caller.
         self.owner = owner
 
     def validate(self):
@@ -165,11 +166,11 @@ class UpdateStandardLookupTableRequestUpdateCommandLookupTableValueList(DaraMode
         name: str = None,
         value: str = None,
     ):
-        # The code description.
+        # The description of the code.
         self.description = description
         # The English name of the code.
         self.english_name = english_name
-        # The code name.
+        # The name of the code.
         # 
         # This parameter is required.
         self.name = name
@@ -221,7 +222,7 @@ class UpdateStandardLookupTableRequestUpdateCommandDirectoryReference(DaraModel)
         self,
         directory: str = None,
     ):
-        # The directory to which the lookup table belongs.
+        # The parent folder.
         # 
         # This parameter is required.
         self.directory = directory

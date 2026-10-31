@@ -27,7 +27,7 @@ class ListOperationRecordResponseBody(DaraModel):
         self.operation_log_list_response = operation_log_list_response
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -90,7 +90,7 @@ class ListOperationRecordResponseBodyOperationLogListResponse(DaraModel):
     ):
         # The total number of records.
         self.count = count
-        # The list of operation logs.
+        # The operation log list.
         self.result_data = result_data
 
     def validate(self):
@@ -144,11 +144,11 @@ class ListOperationRecordResponseBodyOperationLogListResponseResultData(DaraMode
         status: int = None,
         tenant_id: int = None,
     ):
-        # The start time.
+        # The start time in the YYYY-MM-DD HH:mm:ss format.
         self.begin_time = begin_time
         # The code type.
         self.code_type = code_type
-        # The execution duration, in milliseconds.
+        # The execution duration in milliseconds.
         self.duration = duration
         # The record ID.
         self.id = id
@@ -160,13 +160,13 @@ class ListOperationRecordResponseBodyOperationLogListResponseResultData(DaraMode
         self.operation_id = operation_id
         # The project ID.
         self.project_id = project_id
-        # The list of related tables.
+        # The list of associated tables.
         self.relation_tables = relation_tables
-        # The ID of the executor.
+        # The executor ID.
         self.runner = runner
-        # The name of the executor.
+        # The runner name.
         self.runner_name = runner_name
-        # The task status.
+        # The node status.
         self.status = status
         # The tenant ID.
         self.tenant_id = tenant_id

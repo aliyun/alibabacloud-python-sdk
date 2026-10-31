@@ -17,17 +17,17 @@ class ListAddableUsersResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. A value of OK indicates that the request was successful.
+        # The error code. A value of OK indicates that the request is successful.
         self.code = code
         # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
         # The error message.
         self.message = message
-        # The paging query result.
+        # The paged query result.
         self.page_result = page_result
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -90,7 +90,7 @@ class ListAddableUsersResponseBodyPageResult(DaraModel):
     ):
         # The total number of records.
         self.total_count = total_count
-        # The list of users.
+        # The user list.
         self.user_list = user_list
 
     def validate(self):
@@ -160,11 +160,11 @@ class ListAddableUsersResponseBodyPageResultUserList(DaraModel):
         self.display_name_without_status = display_name_without_status
         # Indicates whether the IP whitelist is enabled.
         self.enable_white_ip = enable_white_ip
-        # The Lark chatbot.
+        # The Lark bot.
         self.fei_shu_robot = fei_shu_robot
         # The time when the user was created.
         self.gmt_create = gmt_create
-        # The time when the user was last modified.
+        # The time when the user was modified.
         self.gmt_modified = gmt_modified
         # The user ID.
         self.id = id
@@ -180,13 +180,13 @@ class ListAddableUsersResponseBodyPageResultUserList(DaraModel):
         self.parent_id = parent_id
         # The real name of the user.
         self.real_name = real_name
-        # The source ID of the user.
+        # The ID of the user source.
         self.source_id = source_id
-        # The source type of the user.
+        # The source of the user.
         self.source_type = source_type
-        # The WeCom chatbot.
+        # The WeCom bot.
         self.we_chat_robot = we_chat_robot
-        # The IP whitelist.
+        # The IP address whitelist.
         self.white_ip = white_ip
 
     def validate(self):

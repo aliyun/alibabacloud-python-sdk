@@ -17,7 +17,7 @@ class GetMyTenantsResponseBody(DaraModel):
         success: bool = None,
         tenant_list: List[main_models.GetMyTenantsResponseBodyTenantList] = None,
     ):
-        # The error code. A value of OK indicates that the request was successful.
+        # The error code. OK indicates that the request is successful.
         self.code = code
         # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
@@ -25,7 +25,7 @@ class GetMyTenantsResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
         # The list of tenants.
         self.tenant_list = tenant_list
@@ -103,7 +103,7 @@ class GetMyTenantsResponseBodyTenantList(DaraModel):
         title_type: str = None,
         visible: bool = None,
     ):
-        # The time when the tenant was deleted.
+        # The deletion time. The value is a UNIX timestamp in milliseconds.
         self.delete_time = delete_time
         # Indicates whether the tenant is deleted.
         self.deleted = deleted
@@ -115,7 +115,7 @@ class GetMyTenantsResponseBodyTenantList(DaraModel):
         self.name = name
         # Indicates whether the tenant is an O&M tenant.
         self.ops_tenant = ops_tenant
-        # The ID of the user to whom the tenant belongs.
+        # The ID of the tenant owner.
         self.owner_id = owner_id
         # Indicates whether resource quota calculation is performed.
         self.resource_limited = resource_limited

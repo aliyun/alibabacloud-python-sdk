@@ -19,13 +19,13 @@ class GetSecurityIdentifyResultResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend exception.
+        # The backend exception details.
         self.message = message
         # Id of the request
         self.request_id = request_id
         # The identification result details.
         self.security_identify_result_info = security_identify_result_info
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -121,13 +121,13 @@ class GetSecurityIdentifyResultResponseBodySecurityIdentifyResultInfo(DaraModel)
         table_task_id: int = None,
         table_type: str = None,
     ):
-        # The business date.
+        # The business date. Format: YYYY-MM-DD.
         self.biz_date = biz_date
-        # The display name of the business unit in Chinese.
+        # The Chinese name of the business unit.
         self.biz_unit_display_name = biz_unit_display_name
-        # The business unit ID.
+        # The ID of the business unit.
         self.biz_unit_id = biz_unit_id
-        # The business unit name.
+        # The name of the business unit.
         self.biz_unit_name = biz_unit_name
         # The classification abbreviation.
         self.classify_abbreviation = classify_abbreviation
@@ -135,53 +135,51 @@ class GetSecurityIdentifyResultResponseBodySecurityIdentifyResultInfo(DaraModel)
         self.classify_id = classify_id
         # The classification name.
         self.classify_name = classify_name
-        # The creation time.
+        # The creation time. Format: YYYY-MM-DD HH:mm:ss.
         self.create_time = create_time
         # The creator.
         self.creator = creator
-        # The data source ID.
+        # The ID of the data source.
         self.datasource_id = datasource_id
-        # The data source name.
+        # The name of the data source.
         self.datasource_name = datasource_name
         # The field description.
         self.field_description = field_description
-        # The field ID.
+        # The ID of the field.
         self.field_id = field_id
-        # The field name.
+        # The name of the field.
         self.field_name = field_name
-        # Indicates whether a better matching result exists.
+        # Indicates whether a better match is available.
         self.has_better_rule = has_better_rule
-        # The identification result ID.
+        # The recognition result ID.
         self.id = id
-        # The identification record ID.
+        # The ID of the identification record.
         self.identify_record_id = identify_record_id
-        # Indicates whether a custom tagging rule is used.
+        # Indicates whether a custom identification rule is used.
         self.is_custom_identify = is_custom_identify
-        # Indicates whether the result is locked.
+        # Indicates whether the item is locked.
         self.is_locked = is_locked
-        # The sensitivity level abbreviation.
+        # The abbreviation of the classification level.
         self.level_abbreviation = level_abbreviation
-        # The sensitivity level color.
+        # The color of the classification level.
         self.level_color = level_color
-        # The sensitivity level index.
+        # The classification level.
         self.level_index = level_index
-        # The sensitivity level name.
+        # The name of the classification level.
         self.level_name = level_name
         # The modifier.
         self.modifier = modifier
-        # The modification time.
+        # The modification time in the YYYY-MM-DD HH:mm:ss format.
         self.modify_time = modify_time
-        # The display name of the project in Chinese.
+        # The Chinese name of the project.
         self.project_display_name = project_display_name
-        # The project ID.
+        # The ID of the project.
         self.project_id = project_id
-        # The project name.
+        # The name of the project.
         self.project_name = project_name
-        # The scan task ID.
+        # The ID of the scan task.
         self.scan_task_id = scan_task_id
-        # The status. Valid values:
-        # - ENABLE: enabled.
-        # - DISABLE: disabled.
+        # The status. Valid values: ENABLE (enabled) and DISABLE (disabled).
         self.status = status
         # The table catalog.
         self.table_catalog = table_catalog
@@ -189,21 +187,21 @@ class GetSecurityIdentifyResultResponseBodySecurityIdentifyResultInfo(DaraModel)
         self.table_description = table_description
         # The table environment.
         self.table_env = table_env
-        # The table ID.
+        # The ID of the table.
         self.table_id = table_id
-        # The table name.
+        # The name of the table.
         self.table_name = table_name
-        # The identification table task ID.
+        # The ID of the table identification task.
         self.table_task_id = table_task_id
         # The table type. Valid values:
-        # - LOGIC_TABLE: logical table.
-        # - LOGIC_DIM_TABLE: logical dimension table.
-        # - LOGIC_FACT_TABLE: fact logical table.
-        # - LOGIC_SUM_TABLE: aggregate logical table.
-        # - LOGIC_ODM_SOURCE: source table.
-        # - LOGIC_LABEL_TABLE: label logical table.
-        # - PHYSICAL_TABLE: physical table.
-        # - REAL_TIME_LOGIC_TABLE: real-time configured logical table.
+        # - LOGIC_TABLE: logical table
+        # - LOGIC_DIM_TABLE: logical dimension table
+        # - LOGIC_FACT_TABLE: logical fact table
+        # - LOGIC_SUM_TABLE: logical aggregate table
+        # - LOGIC_ODM_SOURCE: source table
+        # - LOGIC_LABEL_TABLE: logical label table
+        # - PHYSICAL_TABLE: physical table
+        # - REAL_TIME_LOGIC_TABLE: real-time configured logical table
         self.table_type = table_type
 
     def validate(self):

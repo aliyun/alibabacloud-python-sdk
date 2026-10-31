@@ -13,7 +13,7 @@ class DeleteBizEntityRequest(DaraModel):
         op_user_id: str = None,
         type: str = None,
     ):
-        # The ID of the business unit to which the entity belongs.
+        # The ID of the business unit.
         # 
         # This parameter is required.
         self.biz_unit_id = biz_unit_id
@@ -25,8 +25,9 @@ class DeleteBizEntityRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
-        # The type of the business entity. For more information, refer to the create business entity operation.
+        # The type of the business entity. For more information, see the Create a business entity operation.
         # 
         # This parameter is required.
         self.type = type

@@ -12,14 +12,15 @@ class GetBatchTaskUdfLineagesRequest(DaraModel):
         op_user_id: str = None,
         project_id: int = None,
     ):
-        # The node ID of the task directory tree.
+        # The ID of the node in the task directory tree.
         # 
         # This parameter is required.
         self.file_id = file_id
-        # Tenant ID
+        # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
         # The project to which the task belongs.
         # 

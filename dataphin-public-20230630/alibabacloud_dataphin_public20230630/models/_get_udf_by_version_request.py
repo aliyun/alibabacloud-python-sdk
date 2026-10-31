@@ -13,7 +13,7 @@ class GetUdfByVersionRequest(DaraModel):
         project_id: int = None,
         version_id: int = None,
     ):
-        # The ID of the user-defined function.
+        # The custom function ID.
         # 
         # This parameter is required.
         self.id = id
@@ -21,6 +21,7 @@ class GetUdfByVersionRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator ID.
         self.op_user_id = op_user_id
         # The project ID.
         # 

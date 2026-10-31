@@ -12,16 +12,17 @@ class GetStandardSetRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The standard set ID.
+        # The ID of the standard set.
         # 
         # This parameter is required.
         self.id = id
-        # Specifies whether to allow a null value to be returned when the standard set does not exist. If set to false, an exception is thrown. Default value: true.
+        # Specifies whether to return a null value if the standard set does not exist. If this parameter is set to false, an exception is thrown. Default value: true.
         self.nullable = nullable
         # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):

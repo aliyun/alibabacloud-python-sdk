@@ -19,7 +19,7 @@ class BatchCreateKgRelationResponseBody(DaraModel):
     ):
         # The backend response code.
         self.code = code
-        # The result of batch relationship record creation.
+        # The result of creating relationship records in batches.
         self.create_result = create_result
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -27,7 +27,7 @@ class BatchCreateKgRelationResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

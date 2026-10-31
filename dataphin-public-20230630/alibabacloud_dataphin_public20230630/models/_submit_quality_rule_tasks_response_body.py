@@ -17,17 +17,17 @@ class SubmitQualityRuleTasksResponseBody(DaraModel):
         submit_result: main_models.SubmitQualityRuleTasksResponseBodySubmitResult = None,
         success: bool = None,
     ):
-        # Backend response code
+        # The backend response code.
         self.code = code
-        # HTTP response code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Details of the backend response exception
+        # The backend exception details.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Execution result
+        # The execution result.
         self.submit_result = submit_result
-        # Whether the request was successful
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -88,9 +88,9 @@ class SubmitQualityRuleTasksResponseBodySubmitResult(DaraModel):
         rule_task_id_list: List[int] = None,
         watch_task_id_list: List[int] = None,
     ):
-        # Rule task IDs, returned in the test run scenario
+        # The rule task IDs. Returned in test run scenarios.
         self.rule_task_id_list = rule_task_id_list
-        # Monitoring object task IDs, returned in non-test run scenarios
+        # The monitored object task IDs. Returned in non-test run scenarios.
         self.watch_task_id_list = watch_task_id_list
 
     def validate(self):

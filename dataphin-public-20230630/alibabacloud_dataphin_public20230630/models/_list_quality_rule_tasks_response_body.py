@@ -17,17 +17,17 @@ class ListQualityRuleTasksResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code.
+        # The backend response code.
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error details.
+        # The backend exception details.
         self.message = message
         # The paged query result.
         self.page_result = page_result
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -88,7 +88,7 @@ class ListQualityRuleTasksResponseBodyPageResult(DaraModel):
         quality_rule_task_list: List[main_models.ListQualityRuleTasksResponseBodyPageResultQualityRuleTaskList] = None,
         total_count: int = None,
     ):
-        # The list of quality rule tasks.
+        # The paged quality rule task list.
         self.quality_rule_task_list = quality_rule_task_list
         # The total number of records.
         self.total_count = total_count
@@ -159,7 +159,7 @@ class ListQualityRuleTasksResponseBodyPageResultQualityRuleTaskList(DaraModel):
         self.creator = creator
         # The end time.
         self.end_time = end_time
-        # The ID of the rule task.
+        # The rule task ID.
         self.id = id
         # The ID of the user who last modified the task.
         self.modifier = modifier
@@ -175,15 +175,15 @@ class ListQualityRuleTasksResponseBodyPageResultQualityRuleTaskList(DaraModel):
         self.template_id = template_id
         # The name of the validated object.
         self.validate_object_name = validate_object_name
-        # The object type of the validated object.
+        # The validated object type.
         self.validate_object_type = validate_object_type
-        # The validation partition.
+        # The validated partition.
         self.validate_partition = validate_partition
-        # Indicates whether the validation passed.
+        # Indicates whether the validation is successful.
         self.validate_success = validate_success
-        # The ID of the associated quality watchtask.
+        # The watch ID.
         self.watch_id = watch_id
-        # The ID of the quality watchtask. This ID is empty for trial-run rule tasks.
+        # The watch task ID. This ID is empty for trial run tasks.
         self.watch_task_id = watch_task_id
 
     def validate(self):

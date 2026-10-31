@@ -17,7 +17,7 @@ class ListRowPermissionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. A value of OK indicates that the request was successful.
+        # The error code. OK indicates that the request is successful.
         self.code = code
         # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
@@ -27,7 +27,7 @@ class ListRowPermissionResponseBody(DaraModel):
         self.page_result = page_result
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -148,15 +148,15 @@ class ListRowPermissionResponseBodyPageResultData(DaraModel):
         self.gmt_create = gmt_create
         # The update time.
         self.gmt_modified = gmt_modified
-        # The mapping fields.
+        # The mapped columns.
         self.mapping_columns = mapping_columns
         # The modifier.
         self.modifier = modifier
-        # The description of the row-level permission.
+        # The row-level permission description.
         self.row_permission_desc = row_permission_desc
         # The row-level permission ID.
         self.row_permission_id = row_permission_id
-        # The name of the row-level permission.
+        # The row-level permission name.
         self.row_permission_name = row_permission_name
         # The rules.
         self.rules = rules
@@ -278,9 +278,9 @@ class ListRowPermissionResponseBodyPageResultDataTables(DaraModel):
         mapping_column_name: str = None,
         resource_id: str = None,
     ):
-        # The table field.
+        # The column of the table.
         self.column_name = column_name
-        # The name of the mapping field.
+        # The name of the mapped column.
         self.mapping_column_name = mapping_column_name
         # The GUID of the table.
         self.resource_id = resource_id
@@ -338,7 +338,7 @@ class ListRowPermissionResponseBodyPageResultDataRules(DaraModel):
         self.rule_name = rule_name
         # The scope type of the rule.
         self.scope_type = scope_type
-        # The rule status.
+        # The status of the rule.
         self.status = status
         # The accounts bound to the rule.
         self.user_mapping_list = user_mapping_list
@@ -498,15 +498,15 @@ class ListRowPermissionResponseBodyPageResultDataRulesExpressions(DaraModel):
         type: str = None,
         values: List[str] = None,
     ):
-        # The name of the mapping field.
+        # The name of the mapped column.
         self.mapping_column_name = mapping_column_name
-        # The expression operator.
+        # The operator of the expression.
         self.operator = operator
         # The sub-expressions.
         self.sub_conditions = sub_conditions
-        # The expression type.
+        # The type of the expression.
         self.type = type
-        # The operation values of the expression.
+        # The values of the expression operands.
         self.values = values
 
     def validate(self):
@@ -560,11 +560,11 @@ class ListRowPermissionResponseBodyPageResultDataMappingColumns(DaraModel):
         column_name: str = None,
         column_type: str = None,
     ):
-        # The description of the mapping field.
+        # The description of the mapped column.
         self.column_desc = column_desc
-        # The name of the mapping field.
+        # The name of the mapped column.
         self.column_name = column_name
-        # The type of the mapping field.
+        # The type of the mapped column.
         self.column_type = column_type
 
     def validate(self):

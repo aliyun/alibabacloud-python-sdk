@@ -18,6 +18,7 @@ class UpdateTenantMemberRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
         # The request object.
         # 
@@ -63,7 +64,7 @@ class UpdateTenantMemberRequestUpdateCommand(DaraModel):
         self,
         member_list: List[main_models.UpdateTenantMemberRequestUpdateCommandMemberList] = None,
     ):
-        # The list of members.
+        # The member list.
         # 
         # This parameter is required.
         self.member_list = member_list
@@ -100,18 +101,21 @@ class UpdateTenantMemberRequestUpdateCommandMemberList(DaraModel):
     def __init__(
         self,
         ding_number: str = None,
+        display_name: str = None,
         mail: str = None,
         mobile_phone: str = None,
         role_list: List[str] = None,
         user_id: str = None,
     ):
-        # The DingTalk number.
+        # The DingTalk ID.
         self.ding_number = ding_number
+        # The display name of the user.
+        self.display_name = display_name
         # The email address.
         self.mail = mail
         # The phone number.
         self.mobile_phone = mobile_phone
-        # The list of roles.
+        # The role list.
         self.role_list = role_list
         # The user ID.
         self.user_id = user_id
@@ -126,6 +130,9 @@ class UpdateTenantMemberRequestUpdateCommandMemberList(DaraModel):
             result = _map
         if self.ding_number is not None:
             result['DingNumber'] = self.ding_number
+
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
 
         if self.mail is not None:
             result['Mail'] = self.mail
@@ -145,6 +152,9 @@ class UpdateTenantMemberRequestUpdateCommandMemberList(DaraModel):
         m = m or dict()
         if m.get('DingNumber') is not None:
             self.ding_number = m.get('DingNumber')
+
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
 
         if m.get('Mail') is not None:
             self.mail = m.get('Mail')

@@ -18,6 +18,7 @@ class UpdateQualityRuleSwitchRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator user.
         self.op_user_id = op_user_id
         # The update instruction.
         # 

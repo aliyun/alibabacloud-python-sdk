@@ -12,7 +12,7 @@ class DeleteDataSourceRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The request for deleting a data source.
+        # The data source deletion request.
         # 
         # This parameter is required.
         self.delete_command = delete_command
@@ -20,6 +20,7 @@ class DeleteDataSourceRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -62,9 +63,9 @@ class DeleteDataSourceRequestDeleteCommand(DaraModel):
         mode: str = None,
         prod_data_source_id: int = None,
     ):
-        # The deletion mode selection. Valid values:
-        # - DEV: deletes the data source only in the development environment.
-        # - DEV_PROD: deletes the data source in both the development and production environments.
+        # The deletion mode. Valid values:
+        # - DEV: Deletes only the data source in the development environment.
+        # - DEV_PROD: Deletes the data sources in both the development and production environments.
         # 
         # This parameter is required.
         self.mode = mode

@@ -25,7 +25,7 @@ class ImportKgSchemaResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -86,9 +86,9 @@ class ImportKgSchemaResponseBodyImportResult(DaraModel):
         entity_type_count: int = None,
         relation_type_count: int = None,
     ):
-        # The number of entity types that were changed.
+        # The number of changed entity types.
         self.entity_type_count = entity_type_count
-        # The number of relation types that were changed.
+        # The number of changed relation types.
         self.relation_type_count = relation_type_count
 
     def validate(self):

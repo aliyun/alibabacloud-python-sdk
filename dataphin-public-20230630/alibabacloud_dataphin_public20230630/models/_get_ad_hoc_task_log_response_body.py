@@ -15,7 +15,7 @@ class GetAdHocTaskLogResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. A value of OK indicates that the request was successful.
+        # The error code. A value of OK indicates that the request is normal.
         self.code = code
         # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
@@ -25,7 +25,7 @@ class GetAdHocTaskLogResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -91,19 +91,19 @@ class GetAdHocTaskLogResponseBodyLogInfo(DaraModel):
         task_id: str = None,
         task_status: str = None,
     ):
-        # The runtime log content.
+        # The execution log.
         self.content = content
-        # Indicates whether the next log entry exists.
+        # Indicates whether more log entries exist.
         self.has_next = has_next
-        # Indicates whether the current query produces a result.
+        # Indicates whether the current query will generate results.
         self.has_result = has_result
-        # The start position of the next log entry.
+        # The starting position of the next log entry.
         self.next_offset = next_offset
         # The subtask ID.
         self.sub_task_id = sub_task_id
         # The task ID.
         self.task_id = task_id
-        # The task running status. Example: WAIT_RESOURCE indicates that the task is waiting for resources.
+        # The execution status of the task. Valid values: WAIT_RESOURCE (waiting for resources).
         self.task_status = task_status
 
     def validate(self):

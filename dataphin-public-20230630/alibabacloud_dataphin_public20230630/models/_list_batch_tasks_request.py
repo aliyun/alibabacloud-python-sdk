@@ -14,10 +14,15 @@ class ListBatchTasksRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
+        # The task query conditions.
+        # 
         # This parameter is required.
         self.batch_task_query = batch_task_query
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the user who performs the operation.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -81,29 +86,53 @@ class ListBatchTasksRequestBatchTaskQuery(DaraModel):
         task_tag_list: List[str] = None,
         task_type_list: List[int] = None,
     ):
+        # Specifies whether to enable conditional scheduling. If not specified, no filtering is applied.
         self.condition_schedule_enable = condition_schedule_enable
+        # The start time of the creation time range, in milliseconds. Must be specified together with CreateEndTime.
         self.create_begin_time = create_begin_time
+        # The end time of the creation time range, in milliseconds. Must be specified together with CreateBeginTime.
         self.create_end_time = create_end_time
+        # The list of developer IDs. If multiple IDs are specified, the union is used. If empty or not specified, no filtering is applied.
         self.develop_owner_list = develop_owner_list
+        # The list of task directories, such as ["/"]. If empty or not specified, no filtering is applied.
         self.directory_list = directory_list
+        # Specifies whether to include tasks in the subdirectories of the directories specified in DirectoryList. Default value: false.
         self.include_sub_directory = include_sub_directory
+        # The search keyword for fuzzy matching by task name or node ID. If empty or not specified, no filtering is applied.
         self.keyword = keyword
+        # The list of recent submit statuses. Valid values: SUBMITTING, SUCCESS, FAILED, and WARNING. If empty or not specified, no filtering is applied.
         self.last_submit_status_list = last_submit_status_list
+        # The list of locker IDs. If multiple IDs are specified, the union is used. If empty or not specified, no filtering by locker is applied.
         self.lock_user_list = lock_user_list
+        # The start time of the last modification time range, in milliseconds. Must be specified together with ModifiedEndTime.
         self.modified_begin_time = modified_begin_time
+        # The end time of the last modification time range, in milliseconds. Must be specified together with ModifiedBeginTime.
         self.modified_end_time = modified_end_time
+        # The list of scheduling types. Valid values: 0 (Manual), 1 (Normal), 2 (Paused), and 3 (Dry run). If empty or not specified, no filtering is applied.
         self.node_status_list = node_status_list
+        # The list of O&M owner IDs. If multiple IDs are specified, the union is used. If empty or not specified, no filtering is applied.
         self.ops_owner_list = ops_owner_list
+        # The list of output table names for exact matching. If multiple table names are specified, the OR logical operator is used. If empty or not specified, no filtering is applied.
         self.output_table_name_list = output_table_name_list
+        # The page number. Pages start from 1. Default value: 1.
         self.page = page
+        # The number of entries per page. Default value: 20. Maximum value: 100.
         self.page_size = page_size
+        # The project ID. The query scope is limited to this project.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # Specifies whether the task is published to the production environment. If not specified, no filtering is applied.
         self.published = published
+        # The ID of the referenced offline code template. If empty or not specified, no filtering is applied.
         self.ref_code_template_id = ref_code_template_id
+        # The list of scheduling intervals. Valid values: MINUTELY, HOURLY, DAILY, WEEKLY, and MONTHLY. If empty or not specified, no filtering is applied.
         self.schedule_interval_type_list = schedule_interval_type_list
+        # The list of task statuses. Valid values: 0 (Draft), 1 (Submitting), 2 (Submitted), and 100 (In development). If empty or not specified, no filtering is applied.
         self.task_status_list = task_status_list
+        # The list of task tag names. If empty or not specified, no filtering is applied.
         self.task_tag_list = task_tag_list
+        # The list of task type codes. If empty or not specified, no filtering is applied.
         self.task_type_list = task_type_list
 
     def validate(self):

@@ -16,8 +16,9 @@ class ListApiByAppRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
-        # The paged query parameters.
+        # The paging query parameters.
         # 
         # This parameter is required.
         self.page_query = page_query
@@ -66,7 +67,7 @@ class ListApiByAppRequestPageQuery(DaraModel):
         page_size: int = None,
     ):
         # The application key.
-        # >Notice: Deprecated. Use AppKeyStr instead.</notice>.
+        # >Notice: Deprecated. Use AppKeyStr.</notice>
         self.app_key = app_key
         # The application key.
         self.app_key_str = app_key_str

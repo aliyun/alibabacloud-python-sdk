@@ -18,6 +18,7 @@ class UpdateBasicProjectRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator ID.
         self.op_user_id = op_user_id
         # The update command.
         # 
@@ -73,7 +74,7 @@ class UpdateBasicProjectRequestUpdateCommand(DaraModel):
     ):
         # The business unit ID.
         self.biz_unit_id = biz_unit_id
-        # The ID of the offline compute source.
+        # The offline compute source ID.
         self.compute_source_id = compute_source_id
         # The project description.
         self.description = description
@@ -83,13 +84,13 @@ class UpdateBasicProjectRequestUpdateCommand(DaraModel):
         # 
         # This parameter is required.
         self.id = id
-        # The project name. This value cannot be modified. Pass in the current project name.
+        # The project name. This parameter cannot be modified. Specify the current project name.
         # 
         # This parameter is required.
         self.name = name
         # The namespace identifier.
         self.name_space_tag = name_space_tag
-        # The ID of the real-time compute source.
+        # The real-time compute source ID.
         self.stream_compute_source_id = stream_compute_source_id
         # The sandbox whitelist.
         self.white_lists = white_lists

@@ -14,7 +14,7 @@ class DeleteQualityRulesRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The delete instruction.
+        # The delete command.
         # 
         # This parameter is required.
         self.delete_command = delete_command
@@ -22,6 +22,7 @@ class DeleteQualityRulesRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
 
     def validate(self):

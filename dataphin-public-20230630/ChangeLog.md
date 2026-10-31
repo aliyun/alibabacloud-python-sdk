@@ -1,3 +1,121 @@
+2026-10-31 Version: 2.15.0
+- Support API ApplyResourcePermission.
+- Support API CheckComputeClusterConnectivityById.
+- Support API CreateBatchTemplate.
+- Support API CreateRectifyFlow.
+- Support API CreateScheduleMonitor.
+- Support API GetApprovalTaskDetail.
+- Support API GetGranularityBySummaryId.
+- Support API GetRectifyFlow.
+- Support API GetStreamLogContent.
+- Support API GetStreamOpsRecord.
+- Support API GetStreamTask.
+- Support API ListK8SResourceGroupIds.
+- Support API ListPythonModules.
+- Support API ListRectifyFlow.
+- Support API ListScheduleMonitor.
+- Support API ListStreamInstanceRecords.
+- Support API ListStreamJobManagerLogs.
+- Support API ListStreamOpsRecords.
+- Support API ListStreamTaskManagerLogs.
+- Support API ListStreamTaskManagers.
+- Support API ListUserProjects.
+- Support API ListUsers.
+- Support API QueryPipelineSubmitResult.
+- Support API RemoveScheduleMonitor.
+- Support API ReviewRectifyFlow.
+- Support API SubmitBatchTemplate.
+- Support API SubmitPipelineAsync.
+- Support API SubmitRectifyFlowForReview.
+- Support API UpdateBatchTemplate.
+- Support API UpdateScheduleMonitor.
+- Update API AddProjectMember: add request parameters AddCommand.UserList.$.RoleCodeList.
+- Update API CreateBatchTask: add request parameters CreateCommand.CodeTemplateId.
+- Update API CreateBatchTask: add request parameters CreateCommand.CodeTemplateVersion.
+- Update API CreateBatchTask: add request parameters CreateCommand.DatabricksPythonConnectInfo.
+- Update API CreateBatchTask: add request parameters CreateCommand.PaiConfig.
+- Update API CreateBatchTask: add request parameters CreateCommand.SparkDynamicResourceSwitch.
+- Update API CreateBatchTask: add request parameters CreateCommand.SparkResourceEffectScope.
+- Update API CreateBatchTask: add request parameters CreateCommand.SparkSqlResourceConfigMap.
+- Update API CreateBatchTask: add request parameters CreateCommand.SparkVersion.
+- Update API CreateComputeCluster: add request parameters ClusterConfig.TimeZone.
+- Update API CreateComputeSource: add request parameters CreateCommand.TimeZone.
+- Update API CreateNodeSupplement: add request parameters CreateCommand.ExecuteStatusOfIdleNode.
+- Update API CreateNodeSupplement: add request parameters CreateCommand.ExecuteStatusOfPauseNode.
+- Update API CreateNodeSupplement: add request parameters CreateCommand.ScheduleResourceGroupId.
+- Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.CodeTemplateId.
+- Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.CodeTemplateVersion.
+- Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.CpuResource.
+- Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.DatabricksPythonConnectInfo.
+- Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.ExecuteRerunConfig.
+- Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.ExecuteTimeOutConfig.
+- Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.MemoryResource.
+- Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.PaiConfig.
+- Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.RetryOnTimeoutEnable.
+- Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.SparkDynamicResourceSwitch.
+- Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.SparkResourceEffectScope.
+- Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.SparkSqlResourceConfigMap.
+- Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.SparkVersion.
+- Update API GetBatchTaskInfoByVersion: add response parameters Body.TaskInfo.CodeTemplateId.
+- Update API GetBatchTaskInfoByVersion: add response parameters Body.TaskInfo.CodeTemplateVersion.
+- Update API GetBatchTaskInfoByVersion: add response parameters Body.TaskInfo.CpuResource.
+- Update API GetBatchTaskInfoByVersion: add response parameters Body.TaskInfo.DatabricksPythonConnectInfo.
+- Update API GetBatchTaskInfoByVersion: add response parameters Body.TaskInfo.ExecuteRerunConfig.
+- Update API GetBatchTaskInfoByVersion: add response parameters Body.TaskInfo.ExecuteTimeOutConfig.
+- Update API GetBatchTaskInfoByVersion: add response parameters Body.TaskInfo.MemoryResource.
+- Update API GetBatchTaskInfoByVersion: add response parameters Body.TaskInfo.PaiConfig.
+- Update API GetBatchTaskInfoByVersion: add response parameters Body.TaskInfo.RetryOnTimeoutEnable.
+- Update API GetBatchTaskInfoByVersion: add response parameters Body.TaskInfo.SparkDynamicResourceSwitch.
+- Update API GetBatchTaskInfoByVersion: add response parameters Body.TaskInfo.SparkResourceEffectScope.
+- Update API GetBatchTaskInfoByVersion: add response parameters Body.TaskInfo.SparkSqlResourceConfigMap.
+- Update API GetBatchTaskInfoByVersion: add response parameters Body.TaskInfo.SparkVersion.
+- Update API GetBatchTemplateVersions: add response parameters Body.Data.TemplateVersionList.$.DataSourceConfig.
+- Update API GetBatchTemplateVersions: add response parameters Body.Data.TemplateVersionList.$.DevResourceGroupId.
+- Update API GetBatchTemplateVersions: add response parameters Body.Data.TemplateVersionList.$.DevResourceGroupName.
+- Update API GetBatchTemplateVersions: add response parameters Body.Data.TemplateVersionList.$.Params.
+- Update API GetBatchTemplateVersions: add response parameters Body.Data.TemplateVersionList.$.PythonModuleList.
+- Update API GetBatchTemplateVersions: add response parameters Body.Data.TemplateVersionList.$.ResourceGroupId.
+- Update API GetBatchTemplateVersions: add response parameters Body.Data.TemplateVersionList.$.ResourceGroupName.
+- Update API GetBatchTemplateVersions: add response parameters Body.Data.TemplateVersionList.$.ShareRuntimeResource.
+- Update API GetPipelineAsyncResult: add response parameters Body.Data.CheckDetail.
+- Update API GetTableColumns: add request parameters TableGuid.
+- Update API ListBatchTemplates: add request parameters ListQuery.TemplateId.
+- Update API ListBatchTemplates: add response parameters Body.PageResult.TemplateList.$.DataSourceConfig.
+- Update API ListBatchTemplates: add response parameters Body.PageResult.TemplateList.$.DevResourceGroupId.
+- Update API ListBatchTemplates: add response parameters Body.PageResult.TemplateList.$.DevResourceGroupName.
+- Update API ListBatchTemplates: add response parameters Body.PageResult.TemplateList.$.Params.
+- Update API ListBatchTemplates: add response parameters Body.PageResult.TemplateList.$.PythonModuleList.
+- Update API ListBatchTemplates: add response parameters Body.PageResult.TemplateList.$.ResourceGroupId.
+- Update API ListBatchTemplates: add response parameters Body.PageResult.TemplateList.$.ResourceGroupName.
+- Update API ListBatchTemplates: add response parameters Body.PageResult.TemplateList.$.ShareRuntimeResource.
+- Update API ListProjectMembers: add response parameters Body.PageResult.ProjectMemberList.$.RoleCodeList.
+- Update API ListQualityRules: add response parameters Body.PageResult.QualityRuleList.$.Sql.
+- Update API SubmitBatchTask: add request parameters SubmitCommand.ConditionScheduleConfig.
+- Update API SubmitBatchTask: add request parameters SubmitCommand.CpuResource.
+- Update API SubmitBatchTask: add request parameters SubmitCommand.ExecuteRerunConfig.
+- Update API SubmitBatchTask: add request parameters SubmitCommand.ExecuteTimeOutConfig.
+- Update API SubmitBatchTask: add request parameters SubmitCommand.MemoryResource.
+- Update API SubmitBatchTask: add request parameters SubmitCommand.ResourceReferenceList.
+- Update API SubmitBatchTask: add request parameters SubmitCommand.RetryOnTimeoutEnable.
+- Update API SubmitBatchTask: add request parameters SubmitCommand.ScheduleTemplate.
+- Update API SubmitBatchTask: add request parameters SubmitCommand.SparkDynamicResourceSwitch.
+- Update API SubmitBatchTask: add request parameters SubmitCommand.SparkResourceEffectScope.
+- Update API SubmitBatchTask: add request parameters SubmitCommand.SparkSqlResourceConfigMap.
+- Update API UpdateBatchTask: add request parameters UpdateCommand.CpuResource.
+- Update API UpdateBatchTask: add request parameters UpdateCommand.ExecuteRerunConfig.
+- Update API UpdateBatchTask: add request parameters UpdateCommand.ExecuteTimeOutConfig.
+- Update API UpdateBatchTask: add request parameters UpdateCommand.MemoryResource.
+- Update API UpdateBatchTask: add request parameters UpdateCommand.ResourceReferenceList.
+- Update API UpdateBatchTask: add request parameters UpdateCommand.RetryOnTimeoutEnable.
+- Update API UpdateBatchTask: add request parameters UpdateCommand.SparkDynamicResourceSwitch.
+- Update API UpdateBatchTask: add request parameters UpdateCommand.SparkResourceEffectScope.
+- Update API UpdateBatchTask: add request parameters UpdateCommand.SparkSqlResourceConfigMap.
+- Update API UpdateComputeCluster: add request parameters ClusterConfig.TimeZone.
+- Update API UpdateComputeSource: add request parameters UpdateCommand.TimeZone.
+- Update API UpdateProjectMember: add request parameters UpdateCommand.UserList.$.RoleCodeList.
+- Update API UpdateTenantMember: add request parameters UpdateCommand.MemberList.$.DisplayName.
+
+
 2026-10-14 Version: 2.14.1
 - Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.PythonModuleList.
 - Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.PythonVersion.

@@ -15,7 +15,7 @@ class ExecuteAdHocTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. A value of OK indicates that the request was successful.
+        # The error code. A value of OK indicates that the request is normal.
         self.code = code
         # The execution result.
         self.execute_result = execute_result
@@ -25,7 +25,7 @@ class ExecuteAdHocTaskResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -86,7 +86,7 @@ class ExecuteAdHocTaskResponseBodyExecuteResult(DaraModel):
         sub_task_count: int = None,
         task_id: str = None,
     ):
-        # The number of subtasks split from the parsed task.
+        # The number of subtasks generated after the task is parsed and split.
         self.sub_task_count = sub_task_count
         # The task ID.
         self.task_id = task_id

@@ -17,7 +17,7 @@ class GetSupplementDagrunInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. A value of OK indicates that the request was successful.
+        # The error code. A value of OK indicates that the request is normal.
         self.code = code
         # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
@@ -27,7 +27,7 @@ class GetSupplementDagrunInstanceResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -103,34 +103,32 @@ class GetSupplementDagrunInstanceResponseBodyInstanceList(DaraModel):
         status_list: List[str] = None,
         type: str = None,
     ):
-        # The business date.
+        # The business date. The format is YYYY-MM-DD.
         self.biz_date = biz_date
-        # The scheduled date.
+        # The scheduled date. The format is YYYY-MM-DD.
         self.due_time = due_time
         # The execution duration. Unit: seconds.
         self.duration = duration
-        # The end time of the execution.
+        # The time when the execution ended.
         self.end_execute_time = end_execute_time
-        # The extended information. This field contains information specific to instances of different business systems, such as the fileId of a pipeline, whether a logical table is a hierarchy dimension table, mid-node information, and instance output names.
+        # The extended information. This includes specific information for instances of different business systems, such as the fileId of a pipeline, whether a logical table is a hierarchy dimension table, mid node information, and the instance output name.
         self.extend_info = extend_info
         # The instance ID.
         self.id = id
-        # The sequence number of the hourly or minutely instance.
+        # The instance index for hourly or minutely instances.
         self.index = index
-        # The details of the node associated with the instance.
+        # The node details corresponding to the instance.
         self.node_info = node_info
-        # The start time of the execution.
+        # The time when the execution started.
         self.start_execute_time = start_execute_time
         # The list of instance statuses. A physical instance list contains only one status. Valid values:
-        # 
-        # - NIT: init.
-        # - WATING: waiting.
+        # - NIT: initialized.
+        # - WATING: pending.
         # - RUNNING: running.
-        # - SUCCESS: succeeded.
+        # - SUCCESS: successful.
         # - FAILED: failed.
         self.status_list = status_list
         # The instance type. Valid values:
-        # 
         # - NORMAL: periodic instance.
         # - SUPPLEMENT: data backfill instance.
         # - MANUAL: manual instance.
@@ -243,61 +241,57 @@ class GetSupplementDagrunInstanceResponseBodyInstanceListNodeInfo(DaraModel):
     ):
         # The business unit.
         self.biz_unit_name = biz_unit_name
-        # The creation time.
+        # The creation time. The format is YYYY-MM-DD HH:mm:ss.
         self.create_time = create_time
-        # The creator of the node.
+        # The node creator.
         self.creator = creator
         # The node description.
         self.description = description
-        # Indicates whether the node is a dry run.
+        # Indicates whether the node runs in dry-run mode.
         self.dry_run = dry_run
         # The source business system. Valid values:
-        # 
         # - DATA_PROCESS: code development.
         # - BLACK_BOX: black box.
         # - ONE_ID: extraction.
         # - PIPELINE: pipeline.
         self.from_ = from_
-        # Indicates whether the node exists in the development environment.
+        # Indicates whether a development environment exists.
         self.has_dev = has_dev
-        # Indicates whether the node exists in the production environment.
+        # Indicates whether a production environment exists.
         self.has_prod = has_prod
         # The node ID.
         self.id = id
-        # The last modification time.
+        # The last modified time. The format is YYYY-MM-DD HH:mm:ss.
         self.last_modified_time = last_modified_time
         # The modifier.
         self.modifier = modifier
         # The node name.
         self.name = name
-        # The owners of the node.
+        # The node owners.
         self.owner_list = owner_list
         # The priority. Valid values:
-        # 
         # - HIGHEST
         # - HIGH
         # - MIDDLE
         # - LOW
-        # - LOWEST.
+        # - LOWEST
         self.priority_list = priority_list
-        # The schedule resource groups.
+        # The list of resource groups.
         self.resource_group_list = resource_group_list
-        # Indicates whether the node is paused.
+        # Indicates whether the schedule is paused.
         self.schedule_paused = schedule_paused
-        # The scheduling period. Valid values:
-        # 
+        # The schedule cycle. Valid values:
         # - MINUTELY
         # - HOURLY
         # - DAILY
         # - WEEKLY
         # - MONTHLY
-        # - QUARTERLY.
+        # - QUARTERLY
         self.schedule_period_list = schedule_period_list
         # The node subtype.
         self.sub_detail_type = sub_detail_type
         # The node type. Valid values:
-        # 
-        # - DATA_PROCESS: code node.
+        # - DATA_PROCESS: code task.
         # - BBOX_LOGIC_TABLE_NODE: black box logical table node.
         # - ONE_ID_LABEL: extraction label node.
         # - ONE_ID_RULE: extraction label node.

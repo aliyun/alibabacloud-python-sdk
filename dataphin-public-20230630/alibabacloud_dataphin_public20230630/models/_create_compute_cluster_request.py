@@ -22,7 +22,7 @@ class CreateComputeClusterRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The ID of the operator user.
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -67,6 +67,7 @@ class CreateComputeClusterRequestClusterConfig(DaraModel):
         config_list: List[main_models.CreateComputeClusterRequestClusterConfigConfigList] = None,
         des: str = None,
         name: str = None,
+        time_zone: str = None,
         type: str = None,
         type_version: str = None,
     ):
@@ -84,6 +85,8 @@ class CreateComputeClusterRequestClusterConfig(DaraModel):
         # 
         # This parameter is required.
         self.name = name
+        # The time zone name, such as Asia/Shanghai. If this parameter is not specified during an update, the original value is retained.
+        self.time_zone = time_zone
         # The cluster type.
         # 
         # This parameter is required.
@@ -121,6 +124,9 @@ class CreateComputeClusterRequestClusterConfig(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.time_zone is not None:
+            result['TimeZone'] = self.time_zone
+
         if self.type is not None:
             result['Type'] = self.type
 
@@ -150,6 +156,9 @@ class CreateComputeClusterRequestClusterConfig(DaraModel):
         if m.get('Name') is not None:
             self.name = m.get('Name')
 
+        if m.get('TimeZone') is not None:
+            self.time_zone = m.get('TimeZone')
+
         if m.get('Type') is not None:
             self.type = m.get('Type')
 
@@ -164,11 +173,11 @@ class CreateComputeClusterRequestClusterConfigConfigList(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The configuration item.
+        # The configuration key.
         # 
         # This parameter is required.
         self.key = key
-        # The value of the configuration item.
+        # The configuration value.
         # 
         # This parameter is required.
         self.value = value
@@ -208,9 +217,9 @@ class CreateComputeClusterRequestClusterConfigClusterSafetyControl(DaraModel):
     ):
         # The control mode.
         self.cluster_safety_auth_type = cluster_safety_auth_type
-        # The list of whitelist user group IDs.
+        # The list of whitelisted user group IDs.
         self.user_group_ids = user_group_ids
-        # The list of whitelist user IDs.
+        # The list of whitelisted user IDs.
         self.user_ids = user_ids
 
     def validate(self):

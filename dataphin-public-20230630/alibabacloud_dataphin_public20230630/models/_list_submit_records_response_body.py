@@ -17,17 +17,17 @@ class ListSubmitRecordsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Error code. OK indicates a successful request.
+        # The error code. A value of OK indicates that the request is successful.
         self.code = code
-        # HTTP status code returned by the backend.
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
-        # Query result.
+        # The query result.
         self.list_result = list_result
-        # Error message.
+        # The error message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Whether the request is successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -88,9 +88,9 @@ class ListSubmitRecordsResponseBodyListResult(DaraModel):
         data: List[main_models.ListSubmitRecordsResponseBodyListResultData] = None,
         total_count: int = None,
     ):
-        # List of pending deployment records.
+        # The list of pending publish records.
         self.data = data
-        # Total count.
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -144,76 +144,79 @@ class ListSubmitRecordsResponseBodyListResultData(DaraModel):
         submitter: str = None,
         submitter_name: str = None,
     ):
-        # Change type. 0: Create / 1: Update / 2: Delete.
+        # The change type. Valid values:
+        # - 0: create
+        # - 1: update
+        # - 2: delete
         self.change_type = change_type
-        # Creation time in the yyyy-MM-dd HH:mm:ss format.
+        # The time when the record was created. Format: yyyy-MM-dd HH:mm:ss.
         self.gmt_create = gmt_create
-        # Modification time in the yyyy-MM-dd HH:mm:ss format.
+        # The time when the record was updated. Format: yyyy-MM-dd HH:mm:ss.
         self.gmt_modify = gmt_modify
-        # Pending deployment record ID.
+        # The ID of the pending publish record.
         self.id = id
-        # Node ID.
+        # The ID of the node.
         self.node_id = node_id
-        # Object ID.
+        # The ID of the object.
         self.object_id = object_id
-        # Object name.
+        # The name of the object.
         self.object_name = object_name
-        # Object type. Valid values:
-        # - MaxCompute SQL task: MAX_COMPUTE_SQL
-        # - MaxCompute MR task: MAX_COMPUTE_MR
-        # - Spark JAR on MaxCompute: SPARK_JAR_ON_MAX_COMPUTE
-        # - Shell task: SHELL
-        # - Python task: PYTHON
-        # - Perl script: PERL
-        # - Check: CHECK
-        # - Sync task: DATA_X
-        # - Virtual node: VIRTUAL
-        # - Resource: IDE_RESOURCE
-        # - Function: UDF
-        # - Hive SQL task: HIVE_SQL
-        # - Hadoop MR task: HADOOP_MR
-        # - Spark JAR on Hive task: SPARK_JAR_ON_HIVE
-        # - Flink SQL task: FLINK_SQL
-        # - Flink SQL template task: FLINK_TEMPLATE_SQL
-        # - Stream computing template: STREAM_TEMPLATE
-        # - Metatable: META_TABLE
-        # - Stream computing function: STREAM_UDF
-        # - Real-time Flink DataStream: FLINK_DATASTREAM
-        # - Real-time custom data source: STREAM_CUSTOM_DATASOURCE
-        # - AnalyticDB for PostgreSQL task: ADB_FOR_PG
-        # - TDH SQL task: INCEPTOR_SQL
-        # - Mirror table: MIRROR_TABLE
-        # - Intermediate table: MIDDLE_TABLE
-        # - Application table: APPLICATION_TABLE
-        # - Impala SQL task: IMPALA_SQL
-        # - Offline pipeline task: OFFLINE_PIPELINE
-        # - Real-time pipeline task: REAL_TIME_PIPELINE
-        # - Dimension logical table: DIM_LOGICAL_TABLE
-        # - Fact logical table: FCT_LOGICAL_TABLE
-        # - Business condition: BIZ_CONDITION
-        # - Atomic metric: ATOM_INDEX
-        # - Derived metric: DERIVED_INDEX
-        # - Calculated derived metric: CALC_DERIVED_INDEX
-        # - PAI task: PAI_DESIGNER
-        # - ArgoDB SQL task: ARGODB_SQL
-        # - Hologres SQL task: HOLOGRES_SQL
-        # - Impala SQL task: IMPALA_SQL
-        # - StarRocks SQL task: STARROCKS_SQL
-        # - Database SQL task: DATABASE_SQL
-        # - Spark SQL task: SPARK_SQL
-        # - Compute template: TASK_TEMPLATE
-        # - External trigger node: EXTERNAL_TRIGGER
-        # - Gauss SQL task: GAUSS_SQL
+        # The object type. Valid values:
+        # - MAX_COMPUTE_SQL: MaxCompute SQL node
+        # - MAX_COMPUTE_MR: MaxCompute MR node
+        # - SPARK_JAR_ON_MAX_COMPUTE: Spark JAR on MaxCompute node
+        # - SHELL: Shell node
+        # - PYTHON: Python node
+        # - PERL: Perl script
+        # - CHECK: Check node
+        # - DATA_X: Data synchronization node
+        # - VIRTUAL: Virtual node
+        # - IDE_RESOURCE: Resource
+        # - UDF: Function
+        # - HIVE_SQL: Hive SQL node
+        # - HADOOP_MR: Hadoop MR node
+        # - SPARK_JAR_ON_HIVE: Spark JAR on Hive node
+        # - FLINK_SQL: Flink SQL node
+        # - FLINK_TEMPLATE_SQL: Flink SQL template node
+        # - STREAM_TEMPLATE: Stream computing template
+        # - META_TABLE: Metatable
+        # - STREAM_UDF: Stream computing function
+        # - FLINK_DATASTREAM: Real-time Flink DataStream node
+        # - STREAM_CUSTOM_DATASOURCE: Real-time custom data source
+        # - ADB_FOR_PG: AnalyticDB for PostgreSQL node
+        # - INCEPTOR_SQL: Inceptor SQL node
+        # - MIRROR_TABLE: Mirror table
+        # - MIDDLE_TABLE: Intermediate table
+        # - APPLICATION_TABLE: Application table
+        # - IMPALA_SQL: Impala SQL node
+        # - OFFLINE_PIPELINE: Offline pipeline node
+        # - REAL_TIME_PIPELINE: Real-time pipeline node
+        # - DIM_LOGICAL_TABLE: Logical dimension table
+        # - FCT_LOGICAL_TABLE: Logical fact table
+        # - BIZ_CONDITION: Business filter
+        # - ATOM_INDEX: Atomic metric
+        # - DERIVED_INDEX: Derived metric
+        # - CALC_DERIVED_INDEX: Derivative metric
+        # - PAI_DESIGNER: PAI Designer node
+        # - ARGODB_SQL: ArgoDB SQL node
+        # - HOLOGRES_SQL: Hologres SQL node
+        # - IMPALA_SQL: Impala SQL node
+        # - STARROCKS_SQL: StarRocks SQL node
+        # - DATABASE_SQL: Database SQL node
+        # - SPARK_SQL: Spark SQL node
+        # - TASK_TEMPLATE: Task template
+        # - EXTERNAL_TRIGGER: External trigger node
+        # - GAUSS_SQL: Gauss SQL node
         self.object_type = object_type
-        # Object version.
+        # The version of the object.
         self.object_version = object_version
-        # Project ID.
+        # The project ID.
         self.project_id = project_id
-        # Submission comment.
+        # The submission comment.
         self.submit_comment = submit_comment
-        # Submitter ID.
+        # The ID of the submitter.
         self.submitter = submitter
-        # Submitter name.
+        # The name of the submitter.
         self.submitter_name = submitter_name
 
     def validate(self):

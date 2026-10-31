@@ -14,14 +14,15 @@ class CheckResourcePermissionRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # Check user resource permission
+        # The user resource permission check command.
         # 
         # This parameter is required.
         self.check_command = check_command
-        # Tenant ID
+        # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -66,41 +67,41 @@ class CheckResourcePermissionRequestCheckCommand(DaraModel):
         resource_type: str = None,
         user_id: str = None,
     ):
-        # Operation type
+        # The operation type.
         # 
         # This parameter is required.
         self.operate = operate
-        # Permission resource list
+        # The resources.
         # 
         # This parameter is required.
         self.resource_list = resource_list
-        # Resource type
-        # - PHYSICAL_TABLE: Physical table
-        # - PHYSICAL_FIELD: Physical table field
-        # - LOGICAL_TABLE: Fact logical table
-        # - LOGICAL_FIELD: Fact logical table field
-        # - LABEL_TABLE: Label logical table
-        # - LABEL_FIELD: Label logical table field
-        # - DATASOURCE: Data source
-        # - GLOBAL_PARAM: Global parameter
-        # - REALTIME_LOGICAL_TABLE: Real-time meta table
-        # - REALTIME_LOGICAL_FIELD: Real-time meta table field
-        # - REALTIME_MIRROR_TABLE: Mirror table
-        # - REALTIME_MIRROR_FIELD: Real-time mirror table field
-        # - FUNCTION: Function
-        # - FEATURE: Feature permission
-        # - PHYSICAL_VIEW: Physical view
-        # - LOGICAL_VIEW: Logical view
-        # - QD_SERVICE_FEATURE: Service tag
-        # - QD_ADVANCED_FEATURE: Advanced tag
-        # - QD_CLUSTER: Group
-        # - QD_EVENT: Event
-        # - QD_OFFLINE_SERVICE: Tag offline service task
-        # - PHYSICAL_MATERIALIZED_VIEW: Materialized view
+        # The resource type. Valid values:
+        # - PHYSICAL_TABLE: Physical table.
+        # - PHYSICAL_FIELD: Physical table field.
+        # - LOGICAL_TABLE: Logical fact table.
+        # - LOGICAL_FIELD: Logical fact table field.
+        # - LABEL_TABLE: Logical label table.
+        # - LABEL_FIELD: Logical label table field.
+        # - DATASOURCE: Data source.
+        # - GLOBAL_PARAM: Global parameter.
+        # - REALTIME_LOGICAL_TABLE: Real-time metadata table.
+        # - REALTIME_LOGICAL_FIELD: Real-time metadata table field.
+        # - REALTIME_MIRROR_TABLE: Mirror table.
+        # - REALTIME_MIRROR_FIELD: Real-time mirror table field.
+        # - FUNCTION: Function.
+        # - FEATURE: Feature permission.
+        # - PHYSICAL_VIEW: Physical view.
+        # - LOGICAL_VIEW: Logical view.
+        # - QD_SERVICE_FEATURE: Service label.
+        # - QD_ADVANCED_FEATURE: Advanced label.
+        # - QD_CLUSTER: Group.
+        # - QD_EVENT: Event.
+        # - QD_OFFLINE_SERVICE: Offline label service task.
+        # - PHYSICAL_MATERIALIZED_VIEW: Materialized view.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # User ID
+        # The user ID.
         # 
         # This parameter is required.
         self.user_id = user_id
@@ -156,7 +157,7 @@ class CheckResourcePermissionRequestCheckCommandResourceList(DaraModel):
         self,
         resource_id: str = None,
     ):
-        # Resource ID
+        # The resource ID.
         # 
         # This parameter is required.
         self.resource_id = resource_id

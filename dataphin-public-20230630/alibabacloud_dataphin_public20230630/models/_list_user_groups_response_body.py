@@ -17,17 +17,17 @@ class ListUserGroupsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. A value of OK indicates that the request was successful.
+        # The error code. A value of OK indicates that the request is successful.
         self.code = code
         # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
         # The error message.
         self.message = message
-        # The paged query result.
+        # The paging query result.
         self.page_result = page_result
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -90,7 +90,7 @@ class ListUserGroupsResponseBodyPageResult(DaraModel):
     ):
         # The total number of records.
         self.total_count = total_count
-        # The paged list.
+        # The paginated list.
         self.user_group_list = user_group_list
 
     def validate(self):
@@ -143,11 +143,11 @@ class ListUserGroupsResponseBodyPageResultUserGroupList(DaraModel):
         self.admin_list = admin_list
         # The description of the user group.
         self.description = description
-        # The user group ID.
+        # The ID of the user group.
         self.id = id
         # The role of the current user in the user group.
         self.my_role = my_role
-        # The user group name.
+        # The name of the user group.
         self.name = name
 
     def validate(self):
@@ -217,9 +217,9 @@ class ListUserGroupsResponseBodyPageResultUserGroupListAdminList(DaraModel):
     ):
         # The account name of the user.
         self.account_name = account_name
-        # The username.
+        # The display name of the user.
         self.display_name = display_name
-        # The user ID.
+        # The ID of the user.
         self.id = id
 
     def validate(self):

@@ -23,6 +23,7 @@ class UpdateProjectMemberRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
         # The update command.
         # 
@@ -79,7 +80,7 @@ class UpdateProjectMemberRequestUpdateCommand(DaraModel):
         # 
         # This parameter is required.
         self.env = env
-        # The list of user members.
+        # The user members.
         # 
         # This parameter is required.
         self.user_list = user_list
@@ -121,12 +122,13 @@ class UpdateProjectMemberRequestUpdateCommand(DaraModel):
 class UpdateProjectMemberRequestUpdateCommandUserList(DaraModel):
     def __init__(
         self,
+        role_code_list: List[str] = None,
         role_list: List[int] = None,
         user_id: str = None,
     ):
-        # The member role. Valid values: 1: project administrator. 2: developer. 3: visitor. 4: analyst. 5: O&M engineer.
-        # 
-        # This parameter is required.
+        # The list of role codes for the member. Supports system and custom project roles obtained from ListProjectRoles. Only one role is supported. If this list is not empty, it takes precedence over RoleList. You must specify at least one of RoleList and RoleCodeList.
+        self.role_code_list = role_code_list
+        # The member role. Valid values: 1: project administrator. 2: developer. 3: guest. 4: analyst. 5: O&M engineer.
         self.role_list = role_list
         # The user ID.
         # 
@@ -141,6 +143,9 @@ class UpdateProjectMemberRequestUpdateCommandUserList(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.role_code_list is not None:
+            result['RoleCodeList'] = self.role_code_list
+
         if self.role_list is not None:
             result['RoleList'] = self.role_list
 
@@ -151,6 +156,9 @@ class UpdateProjectMemberRequestUpdateCommandUserList(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RoleCodeList') is not None:
+            self.role_code_list = m.get('RoleCodeList')
+
         if m.get('RoleList') is not None:
             self.role_list = m.get('RoleList')
 

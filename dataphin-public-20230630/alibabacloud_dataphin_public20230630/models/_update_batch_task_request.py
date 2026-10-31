@@ -68,6 +68,7 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
         condition_schedule_param_list: List[main_models.UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList] = None,
         condition_schedule_template_id: int = None,
         context_param_list: List[main_models.UpdateBatchTaskRequestUpdateCommandContextParamList] = None,
+        cpu_resource: str = None,
         cron_expression: str = None,
         custom_schedule_config: main_models.UpdateBatchTaskRequestUpdateCommandCustomScheduleConfig = None,
         data_source_catalog: str = None,
@@ -77,7 +78,10 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
         dev_resource_group_id: str = None,
         develop_owner_id_list: List[str] = None,
         engine: str = None,
+        execute_rerun_config: main_models.UpdateBatchTaskRequestUpdateCommandExecuteRerunConfig = None,
+        execute_time_out_config: main_models.UpdateBatchTaskRequestUpdateCommandExecuteTimeOutConfig = None,
         file_id: int = None,
+        memory_resource: str = None,
         name: str = None,
         node_description: str = None,
         node_output_name_list: List[str] = None,
@@ -89,8 +93,13 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
         project_id: int = None,
         python_module_list: List[str] = None,
         resource_group_id: str = None,
+        resource_reference_list: List[str] = None,
+        retry_on_timeout_enable: bool = None,
         schedule_period: str = None,
         spark_client_info: main_models.UpdateBatchTaskRequestUpdateCommandSparkClientInfo = None,
+        spark_dynamic_resource_switch: bool = None,
+        spark_resource_effect_scope: str = None,
+        spark_sql_resource_config_map: str = None,
         task_tag_list: List[str] = None,
         task_type: int = None,
         up_stream_list: List[main_models.UpdateBatchTaskRequestUpdateCommandUpStreamList] = None,
@@ -111,6 +120,8 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
         self.condition_schedule_template_id = condition_schedule_template_id
         # The cross-node parameters. These are output parameters declared by the current node for downstream nodes to reference. This parameter overwrites the existing parameters. If this parameter is not specified, the original parameters are retained.
         self.context_param_list = context_param_list
+        # 不传时保留任务当前配置。
+        self.cpu_resource = cpu_resource
         # The cron expression for automatic scheduling. You can refer to Linux cron expressions.
         self.cron_expression = cron_expression
         # The custom schedule interval configuration.
@@ -132,10 +143,16 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
         # - PYTHON3_7: Python 3.7.
         # - PYTHON3_11: Python 3.11.
         self.engine = engine
+        # 失败重试配置。不传时保留任务当前配置。传入时整体替换该配置对象。
+        self.execute_rerun_config = execute_rerun_config
+        # 执行超时配置。不传时保留任务当前配置。传入时整体替换该配置对象。
+        self.execute_time_out_config = execute_time_out_config
         # The ID of the task directory tree node.
         # 
         # This parameter is required.
         self.file_id = file_id
+        # 不传时保留任务当前配置。
+        self.memory_resource = memory_resource
         # The name of the offline task.
         # 
         # This parameter is required.
@@ -165,6 +182,9 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
         self.python_module_list = python_module_list
         # The ID of the scheduling resource group for the production node.
         self.resource_group_id = resource_group_id
+        self.resource_reference_list = resource_reference_list
+        # 超时重试开关。不传时保留任务当前配置。显式传入false时关闭。
+        self.retry_on_timeout_enable = retry_on_timeout_enable
         # The scheduling cycle. Valid values:
         # - YEARLY: Yearly.
         # - MONTHLY: Monthly.
@@ -175,6 +195,12 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
         self.schedule_period = schedule_period
         # The Spark client.
         self.spark_client_info = spark_client_info
+        # 不传时保留任务当前配置。显式传入false时关闭。
+        self.spark_dynamic_resource_switch = spark_dynamic_resource_switch
+        # ONLY_PROD表示仅生产环境，PROD_AND_DEV表示生产和开发环境。不传时保留任务当前配置。
+        self.spark_resource_effect_scope = spark_resource_effect_scope
+        # Spark SQL资源配置，键为配置项名称，值为字符串。不传时保留任务当前配置；传入空JSON对象{}时清空配置。
+        self.spark_sql_resource_config_map = spark_sql_resource_config_map
         # The list of node tags. This parameter overwrites all existing tags. If you do not specify this parameter, the original tags remain unchanged.
         self.task_tag_list = task_tag_list
         # The type of the node. Valid values:
@@ -203,6 +229,10 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
                     v1.validate()
         if self.custom_schedule_config:
             self.custom_schedule_config.validate()
+        if self.execute_rerun_config:
+            self.execute_rerun_config.validate()
+        if self.execute_time_out_config:
+            self.execute_time_out_config.validate()
         if self.param_list:
             for v1 in self.param_list:
                  if v1:
@@ -241,6 +271,9 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
             for k1 in self.context_param_list:
                 result['ContextParamList'].append(k1.to_map() if k1 else None)
 
+        if self.cpu_resource is not None:
+            result['CpuResource'] = self.cpu_resource
+
         if self.cron_expression is not None:
             result['CronExpression'] = self.cron_expression
 
@@ -268,8 +301,17 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
         if self.engine is not None:
             result['Engine'] = self.engine
 
+        if self.execute_rerun_config is not None:
+            result['ExecuteRerunConfig'] = self.execute_rerun_config.to_map()
+
+        if self.execute_time_out_config is not None:
+            result['ExecuteTimeOutConfig'] = self.execute_time_out_config.to_map()
+
         if self.file_id is not None:
             result['FileId'] = self.file_id
+
+        if self.memory_resource is not None:
+            result['MemoryResource'] = self.memory_resource
 
         if self.name is not None:
             result['Name'] = self.name
@@ -306,11 +348,26 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
 
+        if self.resource_reference_list is not None:
+            result['ResourceReferenceList'] = self.resource_reference_list
+
+        if self.retry_on_timeout_enable is not None:
+            result['RetryOnTimeoutEnable'] = self.retry_on_timeout_enable
+
         if self.schedule_period is not None:
             result['SchedulePeriod'] = self.schedule_period
 
         if self.spark_client_info is not None:
             result['SparkClientInfo'] = self.spark_client_info.to_map()
+
+        if self.spark_dynamic_resource_switch is not None:
+            result['SparkDynamicResourceSwitch'] = self.spark_dynamic_resource_switch
+
+        if self.spark_resource_effect_scope is not None:
+            result['SparkResourceEffectScope'] = self.spark_resource_effect_scope
+
+        if self.spark_sql_resource_config_map is not None:
+            result['SparkSqlResourceConfigMap'] = self.spark_sql_resource_config_map
 
         if self.task_tag_list is not None:
             result['TaskTagList'] = self.task_tag_list
@@ -357,6 +414,9 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
                 temp_model = main_models.UpdateBatchTaskRequestUpdateCommandContextParamList()
                 self.context_param_list.append(temp_model.from_map(k1))
 
+        if m.get('CpuResource') is not None:
+            self.cpu_resource = m.get('CpuResource')
+
         if m.get('CronExpression') is not None:
             self.cron_expression = m.get('CronExpression')
 
@@ -385,8 +445,19 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
 
+        if m.get('ExecuteRerunConfig') is not None:
+            temp_model = main_models.UpdateBatchTaskRequestUpdateCommandExecuteRerunConfig()
+            self.execute_rerun_config = temp_model.from_map(m.get('ExecuteRerunConfig'))
+
+        if m.get('ExecuteTimeOutConfig') is not None:
+            temp_model = main_models.UpdateBatchTaskRequestUpdateCommandExecuteTimeOutConfig()
+            self.execute_time_out_config = temp_model.from_map(m.get('ExecuteTimeOutConfig'))
+
         if m.get('FileId') is not None:
             self.file_id = m.get('FileId')
+
+        if m.get('MemoryResource') is not None:
+            self.memory_resource = m.get('MemoryResource')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
@@ -424,12 +495,27 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
 
+        if m.get('ResourceReferenceList') is not None:
+            self.resource_reference_list = m.get('ResourceReferenceList')
+
+        if m.get('RetryOnTimeoutEnable') is not None:
+            self.retry_on_timeout_enable = m.get('RetryOnTimeoutEnable')
+
         if m.get('SchedulePeriod') is not None:
             self.schedule_period = m.get('SchedulePeriod')
 
         if m.get('SparkClientInfo') is not None:
             temp_model = main_models.UpdateBatchTaskRequestUpdateCommandSparkClientInfo()
             self.spark_client_info = temp_model.from_map(m.get('SparkClientInfo'))
+
+        if m.get('SparkDynamicResourceSwitch') is not None:
+            self.spark_dynamic_resource_switch = m.get('SparkDynamicResourceSwitch')
+
+        if m.get('SparkResourceEffectScope') is not None:
+            self.spark_resource_effect_scope = m.get('SparkResourceEffectScope')
+
+        if m.get('SparkSqlResourceConfigMap') is not None:
+            self.spark_sql_resource_config_map = m.get('SparkSqlResourceConfigMap')
 
         if m.get('TaskTagList') is not None:
             self.task_tag_list = m.get('TaskTagList')
@@ -674,6 +760,89 @@ class UpdateBatchTaskRequestUpdateCommandParamList(DaraModel):
 
         if m.get('Value') is not None:
             self.value = m.get('Value')
+
+        return self
+
+class UpdateBatchTaskRequestUpdateCommandExecuteTimeOutConfig(DaraModel):
+    def __init__(
+        self,
+        custom_values: str = None,
+        follow_system: bool = None,
+    ):
+        # 自定义超时时间。
+        self.custom_values = custom_values
+        # 是否跟随系统配置。
+        self.follow_system = follow_system
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.custom_values is not None:
+            result['CustomValues'] = self.custom_values
+
+        if self.follow_system is not None:
+            result['FollowSystem'] = self.follow_system
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomValues') is not None:
+            self.custom_values = m.get('CustomValues')
+
+        if m.get('FollowSystem') is not None:
+            self.follow_system = m.get('FollowSystem')
+
+        return self
+
+class UpdateBatchTaskRequestUpdateCommandExecuteRerunConfig(DaraModel):
+    def __init__(
+        self,
+        custom_rerun_interval: str = None,
+        custom_rerun_times: str = None,
+        follow_system: bool = None,
+    ):
+        # 自定义失败重试间隔。
+        self.custom_rerun_interval = custom_rerun_interval
+        # 自定义失败重试次数。
+        self.custom_rerun_times = custom_rerun_times
+        # 是否跟随系统配置。
+        self.follow_system = follow_system
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.custom_rerun_interval is not None:
+            result['CustomRerunInterval'] = self.custom_rerun_interval
+
+        if self.custom_rerun_times is not None:
+            result['CustomRerunTimes'] = self.custom_rerun_times
+
+        if self.follow_system is not None:
+            result['FollowSystem'] = self.follow_system
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomRerunInterval') is not None:
+            self.custom_rerun_interval = m.get('CustomRerunInterval')
+
+        if m.get('CustomRerunTimes') is not None:
+            self.custom_rerun_times = m.get('CustomRerunTimes')
+
+        if m.get('FollowSystem') is not None:
+            self.follow_system = m.get('FollowSystem')
 
         return self
 

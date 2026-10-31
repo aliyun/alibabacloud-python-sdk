@@ -22,6 +22,7 @@ class CheckComputeSourceConnectivityRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operating user.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -117,7 +118,7 @@ class CheckComputeSourceConnectivityRequestCheckCommandConfigList(DaraModel):
         # 
         # This parameter is required.
         self.key = key
-        # The value of the configuration item.
+        # The configuration item value.
         # 
         # This parameter is required.
         self.value = value

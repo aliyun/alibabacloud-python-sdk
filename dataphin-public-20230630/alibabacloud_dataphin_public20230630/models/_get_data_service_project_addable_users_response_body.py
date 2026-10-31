@@ -21,11 +21,11 @@ class GetDataServiceProjectAddableUsersResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend exception.
+        # The backend exception details.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
         # The list of project members.
         self.user_list = user_list
@@ -95,9 +95,9 @@ class GetDataServiceProjectAddableUsersResponseBodyUserList(DaraModel):
         display_name: str = None,
         user_id: str = None,
     ):
-        # The username of the user.
+        # The user account.
         self.account_name = account_name
-        # The nickname of the user.
+        # The user nickname.
         self.display_name = display_name
         # The user ID.
         self.user_id = user_id

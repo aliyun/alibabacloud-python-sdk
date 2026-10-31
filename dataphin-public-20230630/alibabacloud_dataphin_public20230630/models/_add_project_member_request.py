@@ -15,7 +15,7 @@ class AddProjectMemberRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The command for adding members.
+        # The command to add members.
         # 
         # This parameter is required.
         self.add_command = add_command
@@ -27,7 +27,7 @@ class AddProjectMemberRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The ID of the operator user.
+        # The operator user ID.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -76,11 +76,11 @@ class AddProjectMemberRequestAddCommand(DaraModel):
         env: str = None,
         user_list: List[main_models.AddProjectMemberRequestAddCommandUserList] = None,
     ):
-        # The environment identifier. Valid values: DEV, PROD.
+        # The environment identifier. Valid values: DEV and PROD.
         # 
         # This parameter is required.
         self.env = env
-        # The list of user members.
+        # The user members.
         # 
         # This parameter is required.
         self.user_list = user_list
@@ -122,12 +122,13 @@ class AddProjectMemberRequestAddCommand(DaraModel):
 class AddProjectMemberRequestAddCommandUserList(DaraModel):
     def __init__(
         self,
+        role_code_list: List[str] = None,
         role_list: List[int] = None,
         user_id: str = None,
     ):
-        # The member roles. Valid values: 1: project administrator. 2: developer. 3: visitor. 4: analyst. 5: O&M engineer.
-        # 
-        # This parameter is required.
+        # The list of role codes for members. System and custom project roles are supported and can be obtained from ListProjectRoles. Only one role is supported. If this parameter is not empty, it takes precedence over RoleList. You must specify at least one of RoleList and RoleCodeList.
+        self.role_code_list = role_code_list
+        # The member role. Valid values: 1 (Project administrator), 2 (Developer), 3 (Guest), 4 (Analyst), and 5 (O&M engineer).
         self.role_list = role_list
         # The user ID.
         # 
@@ -142,6 +143,9 @@ class AddProjectMemberRequestAddCommandUserList(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.role_code_list is not None:
+            result['RoleCodeList'] = self.role_code_list
+
         if self.role_list is not None:
             result['RoleList'] = self.role_list
 
@@ -152,6 +156,9 @@ class AddProjectMemberRequestAddCommandUserList(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RoleCodeList') is not None:
+            self.role_code_list = m.get('RoleCodeList')
+
         if m.get('RoleList') is not None:
             self.role_list = m.get('RoleList')
 

@@ -12,7 +12,7 @@ class CreatePipelineNodeRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The command to create a pipeline. Both offline and real-time pipelines are supported.
+        # Creates a pipeline, which supports offline and real-time pipelines.
         # 
         # This parameter is required.
         self.create_pipeline_node_command = create_pipeline_node_command
@@ -20,6 +20,7 @@ class CreatePipelineNodeRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator ID.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -69,7 +70,7 @@ class CreatePipelineNodeRequestCreatePipelineNodeCommand(DaraModel):
         # 
         # This parameter is required.
         self.file_info = file_info
-        # The node type. Valid values: NORMAL, MANUAL, and REAL_TIME.
+        # The node type.
         # 
         # This parameter is required.
         self.node_type = node_type
@@ -77,7 +78,7 @@ class CreatePipelineNodeRequestCreatePipelineNodeCommand(DaraModel):
         # 
         # This parameter is required.
         self.pipeline_name = pipeline_name
-        # The pipeline type. Valid values: OFFLINE_PIPELINE and REAL_TIME_PIPELINE.
+        # The pipeline type.
         # 
         # This parameter is required.
         self.pipeline_type = pipeline_type
@@ -141,7 +142,7 @@ class CreatePipelineNodeRequestCreatePipelineNodeCommandFileInfo(DaraModel):
     ):
         # The file description.
         self.description = description
-        # The full path of the parent directory of the file. If this parameter is left empty, the root path (/) is used.
+        # The full path of the parent directory of the file. If this parameter is left empty, the root directory \\"/\\" is used.
         self.directory = directory
         # The file name.
         # 

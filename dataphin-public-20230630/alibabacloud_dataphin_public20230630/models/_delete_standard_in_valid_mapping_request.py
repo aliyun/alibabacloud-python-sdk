@@ -14,7 +14,7 @@ class DeleteStandardInValidMappingRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The delete instruction.
+        # The delete command.
         # 
         # This parameter is required.
         self.delete_command = delete_command
@@ -22,6 +22,7 @@ class DeleteStandardInValidMappingRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -65,9 +66,9 @@ class DeleteStandardInValidMappingRequestDeleteCommand(DaraModel):
         guid_list: List[str] = None,
         standard_id: int = None,
     ):
-        # The list of parent GUIDs. A maximum of 1000 GUIDs are supported.
+        # The list of parent GUIDs. The maximum number of items is 1,000.
         self.belong_guid_list = belong_guid_list
-        # The list of GUIDs. A maximum of 1000 GUIDs are supported.
+        # The list of GUIDs. The maximum number of items is 1,000.
         self.guid_list = guid_list
         # The standard ID.
         # 

@@ -17,7 +17,7 @@ class PublishObjectListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. A value of OK indicates that the request was successful.
+        # The error code. A value of OK indicates that the request is normal.
         self.code = code
         # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
@@ -27,7 +27,7 @@ class PublishObjectListResponseBody(DaraModel):
         self.publish_result = publish_result
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -87,7 +87,7 @@ class PublishObjectListResponseBodyPublishResult(DaraModel):
         self,
         submit_id_list: List[int] = None,
     ):
-        # The list of pending publish record IDs.
+        # The list of submit record IDs.
         self.submit_id_list = submit_id_list
 
     def validate(self):

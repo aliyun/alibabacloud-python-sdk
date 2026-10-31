@@ -13,10 +13,10 @@ class ExecuteManualNodeShrinkRequest(DaraModel):
         op_user_id: str = None,
     ):
         # The environment identifier. Valid values:
-        # - DEV: development environment 
-        # - PROD (default): production environment.
+        # - DEV: Development environment. 
+        # - PROD: Production environment. This is the default value.
         self.env = env
-        # The request for running a manual task.
+        # The request to run a manual task.
         # 
         # This parameter is required.
         self.execute_command_shrink = execute_command_shrink
@@ -24,6 +24,7 @@ class ExecuteManualNodeShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator ID.
         self.op_user_id = op_user_id
 
     def validate(self):

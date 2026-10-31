@@ -14,12 +14,13 @@ class ListQualityWatchesRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The paged query conditions.
+        # The paging query conditions.
         self.list_query = list_query
         # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operating user.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -78,69 +79,41 @@ class ListQualityWatchesRequestListQuery(DaraModel):
         table_type_list: List[str] = None,
         watch_type_list: List[str] = None,
     ):
-        # The business unit names.
+        # The name of the business unit.
         self.biz_unit_name_list = biz_unit_name_list
-        # Specifies whether to query only monitored objects owned by the current user.
+        # Specifies whether the monitoring object is owned by the current user.
         self.current_user_owned = current_user_owned
-        # The data source IDs.
+        # The data source ID.
         self.data_source_id_list = data_source_id_list
-        # The data source owners.
+        # The data source owner.
         self.data_source_owner_list = data_source_owner_list
-        # The data source scope. Valid values:
-        # - STREAMING: real-time only
-        # - OFFLINE: offline only
-        # - ALL: real-time and offline.
+        # The data source scope. Valid values: STREAMING (real-time only), OFFLINE (offline only), and ALL (real-time and offline).
         self.data_source_scope_list = data_source_scope_list
         # The data source type, such as MAX_COMPUTE, HADOOP, or MYSQL.
         self.data_source_type_list = data_source_type_list
-        # The metric computation type. Valid values:
-        # - AUTO: automated coding
-        # - CUSTOM: expert coding
-        # - MOUNT: external table registration
-        # - COMBINE: derived metric specific.
+        # The metric compute type. Valid values: AUTO (automated coding), CUSTOM (expert coding), MOUNT (external table registration), and COMBINE (specific to derived metrics).
         self.index_compute_type_list = index_compute_type_list
-        # The metric owners.
+        # The metric owner.
         self.index_owner_list = index_owner_list
-        # The search keyword. This is the name of the monitored table.
+        # The search keyword, which is the name of the monitored table.
         self.keyword = keyword
-        # The task status. Valid values:
-        # - NOT_RUN: not executed
-        # - WAITING: waiting
-        # - RUNNING: executing
-        # - SUCCESS: executed successfully
-        # - FAILED: execution failed
-        # - CANCEL: canceled
-        # - TIMEOUT: timed out
-        # - OFFLINE: offline.
+        # The task status. Valid values: NOT_RUN (not run), WAITING (waiting), RUNNING (running), SUCCESS (successful), FAILED (failed), CANCEL (canceled), TIMEOUT (timed out), and OFFLINE (offline).
         self.latest_watch_task_status_list = latest_watch_task_status_list
         # The page number. Default value: 1.
         self.page_no = page_no
-        # The number of records per page. Default value: 20.
+        # The number of entries per page. Default value: 20.
         self.page_size = page_size
-        # The project names.
+        # The name of the project.
         self.project_name_list = project_name_list
-        # The quality owners.
+        # The quality owner.
         self.quality_owner_list = quality_owner_list
-        # The status of the monitored object. Valid values:
-        # - ENABLE: enabled
-        # - DISABLE: disabled.
+        # The effective status of the monitoring object. Valid values: ENABLE (enabled) and DISABLE (disabled).
         self.status_list = status_list
-        # The table owners.
+        # The table owner.
         self.table_owner_list = table_owner_list
-        # The table type. Valid values:
-        # - LOGIC_DIM_TABLE: logical dimension table
-        # - LOGIC_FACT_TABLE: logical fact table
-        # - LOGIC_SUM_TABLE: logical aggregate table
-        # - LOGIC_LABEL_TABLE: logical label table
-        # - PHYSICAL_TABLE: physical table
-        # - REALTIME_LOGICAL_TABLE: real-time meta table.
+        # The table type. Valid values: LOGIC_DIM_TABLE (logical dimension table), LOGIC_FACT_TABLE (logical fact table), LOGIC_SUM_TABLE (logical aggregate table), LOGIC_LABEL_TABLE (logical label table), PHYSICAL_TABLE (physical table), and REALTIME_LOGICAL_TABLE (real-time metadata table).
         self.table_type_list = table_type_list
-        # The monitored object type. Valid values:
-        # - TABLE: Dataphin table
-        # - DATASOURCE_TABLE: full-domain table
-        # - DATASOURCE: data source
-        # - INDEX: metric
-        # - REALTIME_LOGICAL_TABLE: real-time meta table.
+        # The monitoring object type. Valid values: TABLE (Dataphin table), DATASOURCE_TABLE (global table), DATASOURCE (data source), INDEX (metric), and REALTIME_LOGICAL_TABLE (real-time metadata table).
         self.watch_type_list = watch_type_list
 
     def validate(self):

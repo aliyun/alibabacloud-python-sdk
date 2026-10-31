@@ -12,7 +12,7 @@ class DeleteBatchTaskRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The delete request.
+        # The deletion request.
         # 
         # This parameter is required.
         self.delete_command = delete_command
@@ -20,6 +20,7 @@ class DeleteBatchTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the user who performs the operation.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -63,15 +64,15 @@ class DeleteBatchTaskRequestDeleteCommand(DaraModel):
         file_id: int = None,
         project_id: int = None,
     ):
-        # The description of the delete operation.
+        # The description of the deletion operation.
         # 
         # This parameter is required.
         self.comment = comment
-        # The ID of the node in the folder.
+        # The ID of the node in the task directory tree.
         # 
         # This parameter is required.
         self.file_id = file_id
-        # The ID of the project to which the node belongs.
+        # The ID of the project to which the task belongs.
         # 
         # This parameter is required.
         self.project_id = project_id

@@ -21,13 +21,13 @@ class GetStandardSetResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend exception.
+        # The backend exception details.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The details of the standard set.
+        # The standard set details.
         self.standard_set_info = standard_set_info
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -102,11 +102,11 @@ class GetStandardSetResponseBodyStandardSetInfo(DaraModel):
         offline_approval_config: main_models.GetStandardSetResponseBodyStandardSetInfoOfflineApprovalConfig = None,
         visibility_config: main_models.GetStandardSetResponseBodyStandardSetInfoVisibilityConfig = None,
     ):
-        # The approval configuration for going online.
+        # The online approval configuration.
         self.approval_config = approval_config
         # The code of the standard set.
         self.code = code
-        # The time when the standard set was created.
+        # The creation time.
         self.create_time = create_time
         # The creator.
         self.creator = creator
@@ -114,23 +114,23 @@ class GetStandardSetResponseBodyStandardSetInfo(DaraModel):
         self.default_standard_template_id = default_standard_template_id
         # The description of the standard set.
         self.description = description
-        # The directory to which the standard set belongs.
+        # The parent folder.
         self.directory_reference = directory_reference
-        # The standard set ID.
+        # The ID of the standard set.
         self.id = id
-        # The user who last modified the standard set.
+        # The last modifier.
         self.last_modifier = last_modifier
-        # The list of maintainers.
+        # The maintainers and owners.
         self.maintainer_list = maintainer_list
-        # The list of member groups.
+        # The member groups.
         self.member_group_list = member_group_list
-        # The list of members.
+        # The members.
         self.member_list = member_list
-        # The time when the standard set was last modified.
+        # The last modification time.
         self.modify_time = modify_time
         # The name of the standard set.
         self.name = name
-        # The approval configuration for going offline.
+        # The offline approval configuration.
         self.offline_approval_config = offline_approval_config
         # The visibility configuration.
         self.visibility_config = visibility_config
@@ -295,12 +295,9 @@ class GetStandardSetResponseBodyStandardSetInfoVisibilityConfig(DaraModel):
         specified_user_list: List[main_models.GetStandardSetResponseBodyStandardSetInfoVisibilityConfigSpecifiedUserList] = None,
         type: str = None,
     ):
-        # The list of specified users who can view the standard set. This parameter takes effect only when the visibility type is set to SPECIFIED.
+        # The list of specified users who have visibility. This parameter takes effect only when the visibility type is set to SPECIFIED.
         self.specified_user_list = specified_user_list
-        # The visibility type. Valid values:
-        # - PUBLIC: public.
-        # - PRIVATE: private. Only standard set members and administrators can view the standard set.
-        # - SPECIFIED: visible to specified users only.
+        # The visibility type. Valid values: PUBLIC (public), PRIVATE (private, visible only to standard set members and administrators), and SPECIFIED (specified users).
         self.type = type
 
     def validate(self):
@@ -343,7 +340,7 @@ class GetStandardSetResponseBodyStandardSetInfoVisibilityConfigSpecifiedUserList
         id: str = None,
         name: str = None,
     ):
-        # The user ID.
+        # The ID of the user.
         self.id = id
         # The username.
         self.name = name
@@ -382,15 +379,13 @@ class GetStandardSetResponseBodyStandardSetInfoOfflineApprovalConfig(DaraModel):
         is_submit_in_batch: bool = None,
         template_id: int = None,
     ):
-        # The approval process type. Valid values:
-        # - BY_DEFAULT: default approval type.
-        # - BY_TEMPLATE: approval based on an approval template.
+        # The approval flow type. Valid values: BY_DEFAULT (default approval type) and BY_TEMPLATE (based on an approval template).
         self.approval_type = approval_type
-        # Indicates whether approval is enabled.
+        # Specifies whether to enable approval.
         self.enable_approval = enable_approval
-        # Indicates whether batch approval submission is enabled.
+        # Specifies whether to submit approvals in batches.
         self.is_submit_in_batch = is_submit_in_batch
-        # The approval template ID. This parameter takes effect only when the approval process type is set to BY_TEMPLATE.
+        # The ID of the approval template. This parameter takes effect only when the approval flow type is set to BY_TEMPLATE.
         self.template_id = template_id
 
     def validate(self):
@@ -437,7 +432,7 @@ class GetStandardSetResponseBodyStandardSetInfoMemberList(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # The user ID.
+        # The ID of the user.
         self.id = id
         # The username.
         self.name = name
@@ -474,9 +469,9 @@ class GetStandardSetResponseBodyStandardSetInfoMemberGroupList(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # The user group ID.
+        # The ID of the user group.
         self.id = id
-        # The user group name.
+        # The name of the user group.
         self.name = name
 
     def validate(self):
@@ -511,7 +506,7 @@ class GetStandardSetResponseBodyStandardSetInfoMaintainerList(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # The user ID.
+        # The ID of the user.
         self.id = id
         # The username.
         self.name = name
@@ -548,7 +543,7 @@ class GetStandardSetResponseBodyStandardSetInfoLastModifier(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # The user ID.
+        # The ID of the user.
         self.id = id
         # The username.
         self.name = name
@@ -584,7 +579,7 @@ class GetStandardSetResponseBodyStandardSetInfoDirectoryReference(DaraModel):
         self,
         directory: str = None,
     ):
-        # The parent directory.
+        # The folder.
         self.directory = directory
 
     def validate(self):
@@ -613,7 +608,7 @@ class GetStandardSetResponseBodyStandardSetInfoCreator(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # The user ID.
+        # The ID of the user.
         self.id = id
         # The username.
         self.name = name
@@ -652,15 +647,13 @@ class GetStandardSetResponseBodyStandardSetInfoApprovalConfig(DaraModel):
         is_submit_in_batch: bool = None,
         template_id: int = None,
     ):
-        # The approval process type. Valid values:
-        # - BY_DEFAULT: default approval type.
-        # - BY_TEMPLATE: approval based on an approval template.
+        # The approval flow type. Valid values: BY_DEFAULT (default approval type) and BY_TEMPLATE (based on an approval template).
         self.approval_type = approval_type
-        # Indicates whether approval is enabled.
+        # Specifies whether to enable approval.
         self.enable_approval = enable_approval
-        # Indicates whether batch approval submission is enabled.
+        # Specifies whether to submit approvals in batches.
         self.is_submit_in_batch = is_submit_in_batch
-        # The approval template ID. This parameter takes effect only when the approval process type is set to BY_TEMPLATE.
+        # The ID of the approval template. This parameter takes effect only when the approval flow type is set to BY_TEMPLATE.
         self.template_id = template_id
 
     def validate(self):

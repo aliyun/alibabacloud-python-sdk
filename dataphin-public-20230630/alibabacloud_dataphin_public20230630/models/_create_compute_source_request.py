@@ -22,7 +22,7 @@ class CreateComputeSourceRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The ID of the operator.
+        # The ID of the operating user.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -67,19 +67,19 @@ class CreateComputeSourceRequestCreateCommand(DaraModel):
         create_type: str = None,
         description: str = None,
         name: str = None,
+        time_zone: str = None,
         type: str = None,
         type_version: str = None,
     ):
-        # The ID of the associated cluster. This parameter takes effect only when CreateType is not specified or is set to COMPUTE_SOURCE, which creates a compute source that references a cluster. This parameter is mutually exclusive with CreateType=CLUSTER.
+        # The ID of the associated cluster. This parameter takes effect only when CreateType is left empty or set to COMPUTE_SOURCE, which indicates that a compute source referencing a cluster is created. This parameter is mutually exclusive with CreateType set to CLUSTER.
         self.cluster_id = cluster_id
         # The connection configuration items.
         # 
         # This parameter is required.
         self.config_list = config_list
-        # The type of entity to create. Valid values:
-        # 
-        # - CLUSTER: Creates a cluster. ClusterId cannot be specified.
-        # - COMPUTE_SOURCE: Creates a compute source. This is the default value.
+        # The type of the entity to create. Valid values:
+        # - CLUSTER: creates a cluster. You cannot specify ClusterId.
+        # - COMPUTE_SOURCE: creates a compute source. This is the default value.
         self.create_type = create_type
         # The description.
         self.description = description
@@ -87,6 +87,8 @@ class CreateComputeSourceRequestCreateCommand(DaraModel):
         # 
         # This parameter is required.
         self.name = name
+        # The name of the time zone, such as Asia/Shanghai. If this parameter is not specified during an update, the original value is retained.
+        self.time_zone = time_zone
         # The type of the compute source.
         # 
         # This parameter is required.
@@ -122,6 +124,9 @@ class CreateComputeSourceRequestCreateCommand(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.time_zone is not None:
+            result['TimeZone'] = self.time_zone
+
         if self.type is not None:
             result['Type'] = self.type
 
@@ -149,6 +154,9 @@ class CreateComputeSourceRequestCreateCommand(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('TimeZone') is not None:
+            self.time_zone = m.get('TimeZone')
 
         if m.get('Type') is not None:
             self.type = m.get('Type')

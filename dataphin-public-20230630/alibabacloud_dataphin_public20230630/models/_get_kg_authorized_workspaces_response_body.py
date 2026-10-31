@@ -27,7 +27,7 @@ class GetKgAuthorizedWorkspacesResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -88,9 +88,9 @@ class GetKgAuthorizedWorkspacesResponseBodyData(DaraModel):
         total_count: int = None,
         workspace_list: List[main_models.GetKgAuthorizedWorkspacesResponseBodyDataWorkspaceList] = None,
     ):
-        # The total number of knowledge graph workspaces that the user has permissions on.
+        # The total number of authorized graph workspaces.
         self.total_count = total_count
-        # The list of knowledge graph workspaces that the user has permissions on.
+        # The list of authorized graph workspaces.
         self.workspace_list = workspace_list
 
     def validate(self):
@@ -138,19 +138,19 @@ class GetKgAuthorizedWorkspacesResponseBodyDataWorkspaceList(DaraModel):
         role_list: List[main_models.GetKgAuthorizedWorkspacesResponseBodyDataWorkspaceListRoleList] = None,
         workspace_id: str = None,
     ):
-        # The description of the knowledge graph workspace.
+        # The description of the graph workspace.
         self.description = description
-        # The creation time of the knowledge graph workspace.
+        # The time when the graph workspace was created.
         self.gmt_create = gmt_create
-        # The latest publish time of the knowledge graph workspace. This value is empty if the workspace has never been published successfully.
+        # The latest publish time of the graph workspace. This parameter is empty if the workspace has never been successfully published.
         self.last_publish_time = last_publish_time
-        # The latest publish version number of the knowledge graph workspace. This value is empty if the workspace has never been published successfully.
+        # The latest publish version of the graph workspace. This parameter is empty if the workspace has never been successfully published.
         self.last_publish_version = last_publish_version
-        # The name of the knowledge graph workspace.
+        # The name of the graph workspace.
         self.name = name
-        # The list of roles assigned to the specified user in the workspace. This is an empty list if the user is not a member of the workspace.
+        # The list of roles of the specified user in the workspace. This list is empty if the user is not a member of the workspace.
         self.role_list = role_list
-        # The ID of the knowledge graph workspace.
+        # The ID of the graph workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

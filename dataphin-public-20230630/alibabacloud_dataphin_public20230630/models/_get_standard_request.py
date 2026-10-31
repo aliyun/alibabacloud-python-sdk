@@ -16,6 +16,7 @@ class GetStandardRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
         # The query command.
         # 
@@ -65,21 +66,17 @@ class GetStandardRequestStandardGetQuery(DaraModel):
         standard_stage: str = None,
         version: int = None,
     ):
-        # Specifies whether to return associated standards and associated lookup tables. Default value: false.
+        # Specifies whether to return related standards and lookup tables. Default value: false.
         self.need_relation = need_relation
-        # Specifies whether to return a null value when the standard does not exist. If set to false, an exception is thrown. Default value: true.
+        # Specifies whether to allow a null value to be returned when the standard does not exist. If this parameter is set to false, an exception is thrown. Default value: true.
         self.nullable = nullable
         # The standard ID.
         # 
         # This parameter is required.
         self.standard_id = standard_id
-        # The stage to which the standard belongs. Valid values:
-        # - dev: development stage.
-        # - prod: production stage.
-        # 
-        # Default value: prod.
+        # The stage to which the standard belongs. Valid values: dev and prod. Default value: prod.
         self.standard_stage = standard_stage
-        # The version number. If left empty, the latest version is used.
+        # The version number. An empty value indicates the latest version.
         self.version = version
 
     def validate(self):

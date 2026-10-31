@@ -14,14 +14,15 @@ class ListStandardsRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # Search conditions.
+        # The search conditions.
         # 
         # This parameter is required.
         self.list_query = list_query
-        # Tenant ID.
+        # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the user who performs the operation.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -72,27 +73,27 @@ class ListStandardsRequestListQuery(DaraModel):
         standard_type_list: List[str] = None,
         user_id: str = None,
     ):
-        # Directory of the standard.
+        # The folder to which the standard belongs.
         self.directory = directory
-        # Search keyword: fuzzy search by standard name, English name, or code. Case-insensitive, sorted by relevance.
+        # The search keyword. Supports case-insensitive fuzzy search by standard name, English name, or code, and sorts results by relevance.
         self.keyword = keyword
-        # Page number. Default value: 1.
+        # The page number. Default value: 1.
         self.page_no = page_no
-        # Number of records per page. Default value: 20.
+        # The number of entries per page. Default value: 20.
         self.page_size = page_size
-        # Standard set ID list.
+        # The IDs of the standard sets to which the standards belong.
         self.standard_set_id_list = standard_set_id_list
-        # Stage of the standard: DEV or PROD.
+        # The stages of the standards. Valid values: DEV and PROD.
         # 
         # This parameter is required.
         self.standard_stage = standard_stage
-        # Standard status list. Standard statuses under DEV stage: DRAFT, UNDER_REVISION, UNDER_REVIEW, REVIEW_PASSED, IN_PUBLISH. Standard statuses under PROD stage: NOT_ACTIVATED, ACTIVE, EXPIRED.
+        # The list of standard statuses. For the DEV stage, the standard statuses are: DRAFT (Draft), UNDER_REVISION (Under Revision), UNDER_REVIEW (Under Review), REVIEW_PASSED (Approved), and IN_PUBLISH (Publishing). For the PROD stage, the standard statuses are: NOT_ACTIVATED (Not Activated), ACTIVE (Active), and EXPIRED (Expired).
         self.standard_status_list = standard_status_list
-        # Standard template ID list.
+        # The IDs of the standard templates to which the standards belong.
         self.standard_template_id_list = standard_template_id_list
-        # Standard type: Basic, EMPTY indicates the standard type is empty.
+        # The list of standard types. Valid values: Basic, and EMPTY (the standard type is empty).
         self.standard_type_list = standard_type_list
-        # User ID: only queries standards visible to this user ID. If empty, queries standards visible to the current user.
+        # The user ID. If specified, only standards visible to this user are queried. If left empty, standards visible to the current user are queried.
         self.user_id = user_id
 
     def validate(self):

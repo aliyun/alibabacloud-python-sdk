@@ -17,17 +17,17 @@ class GetQualityWatchTaskResponseBody(DaraModel):
         success: bool = None,
         watch_task_info: main_models.GetQualityWatchTaskResponseBodyWatchTaskInfo = None,
     ):
-        # The backend response code.
+        # The backend status code.
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend exception.
+        # The backend exception details.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
-        # The details of the monitoring node task object.
+        # The monitoring node object details.
         self.watch_task_info = watch_task_info
 
     def validate(self):
@@ -101,43 +101,35 @@ class GetQualityWatchTaskResponseBodyWatchTaskInfo(DaraModel):
         status: str = None,
         watch_id: int = None,
     ):
-        # The business date.
+        # The business date. Format: YYYY-MM-DD.
         self.biz_date = biz_date
-        # The business date format.
+        # The format of the business date.
         self.biz_date_format = biz_date_format
-        # The creation time.
+        # The creation time. Format: YYYY-MM-DD HH:mm:ss.
         self.create_time = create_time
         # The creator.
         self.creator = creator
-        # The end time. Time format: yyyy-MM-dd HH:mm:ss.
+        # The end time. Format: yyyy-MM-dd HH:mm:ss.
         self.end_time = end_time
-        # The quality watchtask ID.
+        # The watchtask ID.
         self.id = id
-        # The user ID of the last modifier.
+        # The ID of the last modifier.
         self.modifier = modifier
-        # The modification time.
+        # The update time. Format: YYYY-MM-DD HH:mm:ss.
         self.modify_time = modify_time
-        # The user ID of the quality owner.
+        # The ID of the quality owner.
         self.quality_owner = quality_owner
         # The name of the quality owner.
         self.quality_owner_name = quality_owner_name
-        # The quality rule count information.
+        # The quality rule counts.
         self.rule_count_info = rule_count_info
-        # The list of quality rule IDs.
+        # The IDs of the quality rules.
         self.rule_id_list = rule_id_list
-        # The start time. Time format: yyyy-MM-dd HH:mm:ss.
+        # The start time. Format: yyyy-MM-dd HH:mm:ss.
         self.start_time = start_time
-        # The task status. Valid values:
-        # - NOT_RUN: not executed.
-        # - WAITING: waiting.
-        # - RUNNING: executing.
-        # - SUCCESS: executed successfully.
-        # - FAILED: execution failed.
-        # - CANCEL: canceled.
-        # - TIMEOUT: timed out.
-        # - OFFLINE: offline.
+        # The task status. Valid values: NOT_RUN (not executed), WAITING (waiting), RUNNING (running), SUCCESS (successful), FAILED (failed), CANCEL (canceled), TIMEOUT (timed out), and OFFLINE (offline).
         self.status = status
-        # The monitored object ID.
+        # The ID of the monitored object.
         self.watch_id = watch_id
 
     def validate(self):
@@ -253,11 +245,11 @@ class GetQualityWatchTaskResponseBodyWatchTaskInfoRuleCountInfo(DaraModel):
         validate_rule_count: main_models.GetQualityWatchTaskResponseBodyWatchTaskInfoRuleCountInfoValidateRuleCount = None,
         weak_rule_count: main_models.GetQualityWatchTaskResponseBodyWatchTaskInfoRuleCountInfoWeakRuleCount = None,
     ):
-        # The strong rule count.
+        # The number of strong rules.
         self.strong_rule_count = strong_rule_count
-        # The validation rule count.
+        # The validation rule counts.
         self.validate_rule_count = validate_rule_count
-        # The weak rule count.
+        # The number of weak rules.
         self.weak_rule_count = weak_rule_count
 
     def validate(self):
@@ -308,11 +300,11 @@ class GetQualityWatchTaskResponseBodyWatchTaskInfoRuleCountInfoWeakRuleCount(Dar
         success_rule_count: int = None,
         total_rule_count: int = None,
     ):
-        # The number of rules that failed to execute.
+        # The number of failed rules.
         self.error_rule_count = error_rule_count
-        # The number of rules that have been executed.
+        # The number of completed rules.
         self.finished_rule_count = finished_rule_count
-        # The number of rules that were executed successfully.
+        # The number of successful rules.
         self.success_rule_count = success_rule_count
         # The total number of rules.
         self.total_rule_count = total_rule_count
@@ -363,11 +355,11 @@ class GetQualityWatchTaskResponseBodyWatchTaskInfoRuleCountInfoValidateRuleCount
         success_rule_count: int = None,
         total_rule_count: int = None,
     ):
-        # The number of rules that failed to execute.
+        # The number of failed rules.
         self.error_rule_count = error_rule_count
-        # The number of rules that have been executed.
+        # The number of completed rules.
         self.finished_rule_count = finished_rule_count
-        # The number of rules that were executed successfully.
+        # The number of successful rules.
         self.success_rule_count = success_rule_count
         # The total number of rules.
         self.total_rule_count = total_rule_count
@@ -418,11 +410,11 @@ class GetQualityWatchTaskResponseBodyWatchTaskInfoRuleCountInfoStrongRuleCount(D
         success_rule_count: int = None,
         total_rule_count: int = None,
     ):
-        # The number of rules that failed to execute.
+        # The number of failed rules.
         self.error_rule_count = error_rule_count
-        # The number of rules that have been executed.
+        # The number of completed rules.
         self.finished_rule_count = finished_rule_count
-        # The number of rules that were executed successfully.
+        # The number of successful rules.
         self.success_rule_count = success_rule_count
         # The total number of rules.
         self.total_rule_count = total_rule_count

@@ -27,7 +27,7 @@ class GetBatchTaskInfoResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
-        # The node details.
+        # The task details.
         self.task_info = task_info
 
     def validate(self):
@@ -88,17 +88,21 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
         base_schedule_template_id: int = None,
         base_schedule_template_name: str = None,
         code: str = None,
+        code_template_id: str = None,
+        code_template_version: int = None,
         condition_schedule_enable: bool = None,
         condition_schedule_param_list: List[main_models.GetBatchTaskInfoResponseBodyTaskInfoConditionScheduleParamList] = None,
         condition_schedule_template_id: int = None,
         condition_schedule_template_name: str = None,
         context_param_list: List[main_models.GetBatchTaskInfoResponseBodyTaskInfoContextParamList] = None,
+        cpu_resource: str = None,
         cron_expression: str = None,
         custom_schedule_config: main_models.GetBatchTaskInfoResponseBodyTaskInfoCustomScheduleConfig = None,
         dag_id: str = None,
         data_source_catalog: str = None,
         data_source_id: str = None,
         data_source_schema: str = None,
+        databricks_python_connect_info: main_models.GetBatchTaskInfoResponseBodyTaskInfoDatabricksPythonConnectInfo = None,
         dev_http_path: str = None,
         dev_resource_group_id: str = None,
         dev_resource_group_name: str = None,
@@ -106,8 +110,11 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
         develop_owner_id_list: List[str] = None,
         develop_owner_name: str = None,
         develop_owner_name_list: List[str] = None,
+        execute_rerun_config: main_models.GetBatchTaskInfoResponseBodyTaskInfoExecuteRerunConfig = None,
+        execute_time_out_config: main_models.GetBatchTaskInfoResponseBodyTaskInfoExecuteTimeOutConfig = None,
         file_id: int = None,
         has_dev_node: bool = None,
+        memory_resource: str = None,
         name: str = None,
         need_publish: bool = None,
         node_description: str = None,
@@ -123,6 +130,7 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
         ops_owner_name_list: List[str] = None,
         owner_name: str = None,
         owner_user_id: str = None,
+        pai_config: main_models.GetBatchTaskInfoResponseBodyTaskInfoPaiConfig = None,
         param_list: List[main_models.GetBatchTaskInfoResponseBodyTaskInfoParamList] = None,
         paused: bool = None,
         priority: int = None,
@@ -135,9 +143,14 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
         rerunable: bool = None,
         resource_group_id: str = None,
         resource_group_name: str = None,
+        retry_on_timeout_enable: bool = None,
         schedule_period: str = None,
         schedule_type: int = None,
         spark_client_info: main_models.GetBatchTaskInfoResponseBodyTaskInfoSparkClientInfo = None,
+        spark_dynamic_resource_switch: bool = None,
+        spark_resource_effect_scope: str = None,
+        spark_sql_resource_config_map: str = None,
+        spark_version: str = None,
         status: str = None,
         task_tag_list: List[str] = None,
         task_type: int = None,
@@ -145,13 +158,17 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
         valid_end_date: str = None,
         valid_start_date: str = None,
     ):
-        # The ID of the basic schedule template. This parameter is returned when the configuration method is set to schedule template.
+        # The ID of the base schedule template. This parameter is returned when the configuration method is set to schedule template.
         self.base_schedule_template_id = base_schedule_template_id
-        # The name of the basic schedule template.
+        # The name of the base schedule template.
         self.base_schedule_template_name = base_schedule_template_name
         # The code of the node.
         self.code = code
-        # Indicates whether conditional scheduling is enabled.
+        # The ID of the offline code template.
+        self.code_template_id = code_template_id
+        # The version of the offline code template.
+        self.code_template_version = code_template_version
+        # Specifies whether conditional scheduling is enabled.
         self.condition_schedule_enable = condition_schedule_enable
         # The details of the conditional scheduling configuration. This parameter has a value only when conditional scheduling is enabled.
         self.condition_schedule_param_list = condition_schedule_param_list
@@ -159,45 +176,55 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
         self.condition_schedule_template_id = condition_schedule_template_id
         # The name of the conditional schedule template.
         self.condition_schedule_template_name = condition_schedule_template_name
-        # The cross-node parameters, which are the output parameters declared by the current node for downstream nodes to reference in the ${#n_NodeID:ParameterName} format.
+        # The cross-node parameters. These are the output parameters declared by the current node for downstream nodes to reference in the format of ${#n_NodeID:ParameterName}.
         self.context_param_list = context_param_list
+        # The current configuration of the node. When queried by version, this parameter returns the configuration of the corresponding version.
+        self.cpu_resource = cpu_resource
         # The cron expression for automatic scheduling. You can refer to Linux cron expressions.
         self.cron_expression = cron_expression
         # The custom schedule interval configuration.
         self.custom_schedule_config = custom_schedule_config
         # The ID of the DAG to which the node belongs.
         self.dag_id = dag_id
-        # The catalog of the data source. This parameter applies only to database SQL nodes and data source types that require a catalog, such as Presto.
+        # The data source catalog for database SQL tasks. This parameter takes effect only for data source types that require a catalog, such as Presto.
         self.data_source_catalog = data_source_catalog
-        # The ID of the data source for the database SQL node.
+        # The data source ID for database SQL tasks.
         self.data_source_id = data_source_id
-        # The schema of the data source. This parameter applies only to database SQL nodes and data source types that require a schema, such as Oracle.
+        # The data source schema for database SQL tasks. This parameter takes effect only for data source types that require a schema, such as Oracle.
         self.data_source_schema = data_source_schema
-        # The HTTP path in the development environment, used for Databricks tasks.
+        # The Python connection information.
+        self.databricks_python_connect_info = databricks_python_connect_info
+        # The HTTP path for the development environment, used for Databricks tasks.
         self.dev_http_path = dev_http_path
-        # The ID of the schedule resource group for the development task.
+        # The ID of the scheduling resource group for the development task.
         self.dev_resource_group_id = dev_resource_group_id
-        # The name of the schedule resource group for the development task.
+        # The name of the scheduling resource group for the development task.
         self.dev_resource_group_name = dev_resource_group_name
         # The user ID of the development owner.
         self.develop_owner_id = develop_owner_id
-        # The list of development owner IDs.
+        # The list of user IDs of the development owners.
         self.develop_owner_id_list = develop_owner_id_list
         # The name of the development owner.
         self.develop_owner_name = develop_owner_name
-        # The list of development owner names.
+        # The list of names of the development owners.
         self.develop_owner_name_list = develop_owner_name_list
-        # The node ID in the task directory tree.
+        # The failure retry configuration. This is the current configuration of the task. If queried by version, this is the configuration of the corresponding version.
+        self.execute_rerun_config = execute_rerun_config
+        # The execution timeout configuration. This is the current configuration of the task. If queried by version, this is the configuration of the corresponding version.
+        self.execute_time_out_config = execute_time_out_config
+        # The ID of the node in the task directory tree.
         self.file_id = file_id
         # Indicates whether a development environment node exists.
         self.has_dev_node = has_dev_node
-        # The name of the node.
+        # The current configuration of the node. When queried by version, this parameter returns the configuration of the corresponding version.
+        self.memory_resource = memory_resource
+        # The name of the task.
         self.name = name
-        # Indicates whether the node needs to be published.
+        # Indicates whether the task needs to be published.
         self.need_publish = need_publish
-        # The description of the node.
+        # The description of the task.
         self.node_description = node_description
-        # The source of the node, which indicates the organization or application that created the node.
+        # The source of the node. This indicates the organization or application that created the node.
         self.node_from = node_from
         # The ID of the node.
         self.node_id = node_id
@@ -205,18 +232,15 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
         self.node_name = node_name
         # The list of node output names.
         self.node_output_name_list = node_output_name_list
-        # The status of the node. Valid values:
-        # - 1: Normal.
-        # - 2: Paused.
-        # - 3: Dry run.
+        # The status of the node. Valid values: 1 (Normal), 2 (Paused), and 3 (Dry run).
         self.node_status = node_status
         # The user ID of the current operator.
         self.operator_user_id = operator_user_id
         # The user ID of the O&M owner.
         self.ops_owner_id = ops_owner_id
-        # The list of O&M owner IDs.
+        # The list of user IDs of the O&M owners.
         self.ops_owner_id_list = ops_owner_id_list
-        # The name of the O&M owner.
+        # The O&M owner name.
         self.ops_owner_name = ops_owner_name
         # The list of O&M owner names.
         self.ops_owner_name_list = ops_owner_name_list
@@ -224,23 +248,25 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
         self.owner_name = owner_name
         # The user ID of the node owner.
         self.owner_user_id = owner_user_id
+        # The PAI configuration information.
+        self.pai_config = pai_config
         # The list of custom parameters for the node.
         self.param_list = param_list
         # Indicates whether the scheduling of the node is paused.
         self.paused = paused
-        # The scheduling priority of the node. Valid values: 1 to 9. A larger value indicates a lower priority.
+        # The scheduling priority of the task. Valid values: 1 to 9. A larger value indicates a lower priority.
         self.priority = priority
-        # The HTTP path in the production environment, used for Databricks tasks.
+        # The HTTP path in the production environment. This parameter is used for Databricks tasks.
         self.prod_http_path = prod_http_path
-        # The project ID.
+        # The ID of the project.
         self.project_id = project_id
         # Indicates whether the task is published.
         self.published = published
         # The list of third-party packages that the Python task depends on.
         self.python_module_list = python_module_list
-        # The Python version of the Python task, such as Python 3.7.
+        # The Python version for the Python task, such as Python 3.7.
         self.python_version = python_version
-        # The remarks.
+        # The remark.
         self.remark = remark
         # Indicates whether the task can be rerun.
         self.rerunable = rerunable
@@ -248,7 +274,9 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
         self.resource_group_id = resource_group_id
         # The name of the schedule resource group for the production task.
         self.resource_group_name = resource_group_name
-        # The schedule period. Valid values:
+        # Specifies whether to retry the task upon timeout. This is the current configuration of the task. If you query by version, this is the configuration of the corresponding version.
+        self.retry_on_timeout_enable = retry_on_timeout_enable
+        # The scheduling period. Valid values:
         # - YEARLY: Yearly.
         # - MONTHLY: Monthly.
         # - WEEKLY: Weekly.
@@ -256,26 +284,31 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
         # - HOURLY: Hourly.
         # - MINUTELY: Minutely.
         self.schedule_period = schedule_period
-        # The node type. Valid values: 
-        # - 1: Periodic node.
-        # - 3: Manual node.
+        # The type of the node. Valid values: 
+        # - 1: Periodic task.
+        # - 3: Manual task.
         self.schedule_type = schedule_type
         # The Spark client information.
         self.spark_client_info = spark_client_info
-        # The publish status. Valid values:
-        # - 0: Draft.
-        # - 1: Submitted.
-        # - 100: In development.
+        # The current configuration of the node. When queried by version, this parameter returns the configuration of the corresponding version.
+        self.spark_dynamic_resource_switch = spark_dynamic_resource_switch
+        # The effective scope of the Spark resource configuration. A value of ONLY_PROD indicates the production environment only, and a value of PROD_AND_DEV indicates the production and development environments. This is the current configuration of the task. If you query by version, this is the configuration of the corresponding version.
+        self.spark_resource_effect_scope = spark_resource_effect_scope
+        # The Spark SQL resource configuration. The key is the configuration item name, and the value is a string. The entire configuration is returned as a JSON string. This is the current configuration of the task. If you query by version, this is the configuration of the corresponding version.
+        self.spark_sql_resource_config_map = spark_sql_resource_config_map
+        # The MaxCompute Spark version.
+        self.spark_version = spark_version
+        # The publish status. Valid values: 0 (Draft), 1 (Submitted), and 100 (In development).
         self.status = status
-        # The list of task tag names.
+        # The list of node tag names.
         self.task_tag_list = task_tag_list
         # The node type. For more information, see the API operation for creating an offline computing node.
         self.task_type = task_type
         # The upstream dependencies.
         self.up_stream_list = up_stream_list
-        # The end date of the validity period. Format: yyyy-MM-dd.
+        # The effective end date. Format: yyyy-MM-dd.
         self.valid_end_date = valid_end_date
-        # The effective start date in the yyyy-MM-dd format.
+        # The effective start date. Format: yyyy-MM-dd.
         self.valid_start_date = valid_start_date
 
     def validate(self):
@@ -289,6 +322,14 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
                     v1.validate()
         if self.custom_schedule_config:
             self.custom_schedule_config.validate()
+        if self.databricks_python_connect_info:
+            self.databricks_python_connect_info.validate()
+        if self.execute_rerun_config:
+            self.execute_rerun_config.validate()
+        if self.execute_time_out_config:
+            self.execute_time_out_config.validate()
+        if self.pai_config:
+            self.pai_config.validate()
         if self.param_list:
             for v1 in self.param_list:
                  if v1:
@@ -318,6 +359,12 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
         if self.code is not None:
             result['Code'] = self.code
 
+        if self.code_template_id is not None:
+            result['CodeTemplateId'] = self.code_template_id
+
+        if self.code_template_version is not None:
+            result['CodeTemplateVersion'] = self.code_template_version
+
         if self.condition_schedule_enable is not None:
             result['ConditionScheduleEnable'] = self.condition_schedule_enable
 
@@ -337,6 +384,9 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
             for k1 in self.context_param_list:
                 result['ContextParamList'].append(k1.to_map() if k1 else None)
 
+        if self.cpu_resource is not None:
+            result['CpuResource'] = self.cpu_resource
+
         if self.cron_expression is not None:
             result['CronExpression'] = self.cron_expression
 
@@ -354,6 +404,9 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
 
         if self.data_source_schema is not None:
             result['DataSourceSchema'] = self.data_source_schema
+
+        if self.databricks_python_connect_info is not None:
+            result['DatabricksPythonConnectInfo'] = self.databricks_python_connect_info.to_map()
 
         if self.dev_http_path is not None:
             result['DevHttpPath'] = self.dev_http_path
@@ -376,11 +429,20 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
         if self.develop_owner_name_list is not None:
             result['DevelopOwnerNameList'] = self.develop_owner_name_list
 
+        if self.execute_rerun_config is not None:
+            result['ExecuteRerunConfig'] = self.execute_rerun_config.to_map()
+
+        if self.execute_time_out_config is not None:
+            result['ExecuteTimeOutConfig'] = self.execute_time_out_config.to_map()
+
         if self.file_id is not None:
             result['FileId'] = self.file_id
 
         if self.has_dev_node is not None:
             result['HasDevNode'] = self.has_dev_node
+
+        if self.memory_resource is not None:
+            result['MemoryResource'] = self.memory_resource
 
         if self.name is not None:
             result['Name'] = self.name
@@ -427,6 +489,9 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
         if self.owner_user_id is not None:
             result['OwnerUserId'] = self.owner_user_id
 
+        if self.pai_config is not None:
+            result['PaiConfig'] = self.pai_config.to_map()
+
         result['ParamList'] = []
         if self.param_list is not None:
             for k1 in self.param_list:
@@ -467,6 +532,9 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
         if self.resource_group_name is not None:
             result['ResourceGroupName'] = self.resource_group_name
 
+        if self.retry_on_timeout_enable is not None:
+            result['RetryOnTimeoutEnable'] = self.retry_on_timeout_enable
+
         if self.schedule_period is not None:
             result['SchedulePeriod'] = self.schedule_period
 
@@ -475,6 +543,18 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
 
         if self.spark_client_info is not None:
             result['SparkClientInfo'] = self.spark_client_info.to_map()
+
+        if self.spark_dynamic_resource_switch is not None:
+            result['SparkDynamicResourceSwitch'] = self.spark_dynamic_resource_switch
+
+        if self.spark_resource_effect_scope is not None:
+            result['SparkResourceEffectScope'] = self.spark_resource_effect_scope
+
+        if self.spark_sql_resource_config_map is not None:
+            result['SparkSqlResourceConfigMap'] = self.spark_sql_resource_config_map
+
+        if self.spark_version is not None:
+            result['SparkVersion'] = self.spark_version
 
         if self.status is not None:
             result['Status'] = self.status
@@ -509,6 +589,12 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
         if m.get('Code') is not None:
             self.code = m.get('Code')
 
+        if m.get('CodeTemplateId') is not None:
+            self.code_template_id = m.get('CodeTemplateId')
+
+        if m.get('CodeTemplateVersion') is not None:
+            self.code_template_version = m.get('CodeTemplateVersion')
+
         if m.get('ConditionScheduleEnable') is not None:
             self.condition_schedule_enable = m.get('ConditionScheduleEnable')
 
@@ -530,6 +616,9 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
                 temp_model = main_models.GetBatchTaskInfoResponseBodyTaskInfoContextParamList()
                 self.context_param_list.append(temp_model.from_map(k1))
 
+        if m.get('CpuResource') is not None:
+            self.cpu_resource = m.get('CpuResource')
+
         if m.get('CronExpression') is not None:
             self.cron_expression = m.get('CronExpression')
 
@@ -548,6 +637,10 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
 
         if m.get('DataSourceSchema') is not None:
             self.data_source_schema = m.get('DataSourceSchema')
+
+        if m.get('DatabricksPythonConnectInfo') is not None:
+            temp_model = main_models.GetBatchTaskInfoResponseBodyTaskInfoDatabricksPythonConnectInfo()
+            self.databricks_python_connect_info = temp_model.from_map(m.get('DatabricksPythonConnectInfo'))
 
         if m.get('DevHttpPath') is not None:
             self.dev_http_path = m.get('DevHttpPath')
@@ -570,11 +663,22 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
         if m.get('DevelopOwnerNameList') is not None:
             self.develop_owner_name_list = m.get('DevelopOwnerNameList')
 
+        if m.get('ExecuteRerunConfig') is not None:
+            temp_model = main_models.GetBatchTaskInfoResponseBodyTaskInfoExecuteRerunConfig()
+            self.execute_rerun_config = temp_model.from_map(m.get('ExecuteRerunConfig'))
+
+        if m.get('ExecuteTimeOutConfig') is not None:
+            temp_model = main_models.GetBatchTaskInfoResponseBodyTaskInfoExecuteTimeOutConfig()
+            self.execute_time_out_config = temp_model.from_map(m.get('ExecuteTimeOutConfig'))
+
         if m.get('FileId') is not None:
             self.file_id = m.get('FileId')
 
         if m.get('HasDevNode') is not None:
             self.has_dev_node = m.get('HasDevNode')
+
+        if m.get('MemoryResource') is not None:
+            self.memory_resource = m.get('MemoryResource')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
@@ -621,6 +725,10 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
         if m.get('OwnerUserId') is not None:
             self.owner_user_id = m.get('OwnerUserId')
 
+        if m.get('PaiConfig') is not None:
+            temp_model = main_models.GetBatchTaskInfoResponseBodyTaskInfoPaiConfig()
+            self.pai_config = temp_model.from_map(m.get('PaiConfig'))
+
         self.param_list = []
         if m.get('ParamList') is not None:
             for k1 in m.get('ParamList'):
@@ -663,6 +771,9 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
         if m.get('ResourceGroupName') is not None:
             self.resource_group_name = m.get('ResourceGroupName')
 
+        if m.get('RetryOnTimeoutEnable') is not None:
+            self.retry_on_timeout_enable = m.get('RetryOnTimeoutEnable')
+
         if m.get('SchedulePeriod') is not None:
             self.schedule_period = m.get('SchedulePeriod')
 
@@ -672,6 +783,18 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
         if m.get('SparkClientInfo') is not None:
             temp_model = main_models.GetBatchTaskInfoResponseBodyTaskInfoSparkClientInfo()
             self.spark_client_info = temp_model.from_map(m.get('SparkClientInfo'))
+
+        if m.get('SparkDynamicResourceSwitch') is not None:
+            self.spark_dynamic_resource_switch = m.get('SparkDynamicResourceSwitch')
+
+        if m.get('SparkResourceEffectScope') is not None:
+            self.spark_resource_effect_scope = m.get('SparkResourceEffectScope')
+
+        if m.get('SparkSqlResourceConfigMap') is not None:
+            self.spark_sql_resource_config_map = m.get('SparkSqlResourceConfigMap')
+
+        if m.get('SparkVersion') is not None:
+            self.spark_version = m.get('SparkVersion')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
@@ -713,19 +836,15 @@ class GetBatchTaskInfoResponseBodyTaskInfoUpStreamList(DaraModel):
     ):
         # The dependency period.
         self.depend_period = depend_period
-        # The dependency strategy. Valid values:
-        # - ALL
-        # - FIRST
-        # - LAST
-        # - NEAR
+        # The dependency strategy. Valid values: ALL, FIRST, LAST, and NEAR.
         self.depend_strategy = depend_strategy
         # The dependent logical table fields.
         self.field_list = field_list
         # The upstream dependency node type. Valid values:
-        # - PHYSICAL: Physical node.
-        # - LOGICAL: Logical table dependency.
+        # - PHYSICAL: physical node.
+        # - LOGICAL: logical table dependency.
         self.node_type = node_type
-        # The period difference. A value of 0 indicates a same-period dependency. A positive integer indicates a dependency on the previous N periods.
+        # The period difference. A value of 0 indicates a same-period dependency. A positive number indicates a dependency on the previous N periods.
         self.period_diff = period_diff
         # Indicates whether the upstream node is enabled.
         self.source_node_enabled = source_node_enabled
@@ -828,7 +947,7 @@ class GetBatchTaskInfoResponseBodyTaskInfoUpStreamListDependPeriod(DaraModel):
         period_offset: int = None,
         period_type: str = None,
     ):
-        # The period offset. This parameter is required when PeriodType is set to LAST_N_PERIOD.
+        # The period offset. This parameter is required when the period type is LAST_N_PERIOD.
         self.period_offset = period_offset
         # The dependency period type. Valid values: 
         # - CURRENT_PERIOD
@@ -983,6 +1102,181 @@ class GetBatchTaskInfoResponseBodyTaskInfoParamList(DaraModel):
 
         return self
 
+class GetBatchTaskInfoResponseBodyTaskInfoPaiConfig(DaraModel):
+    def __init__(
+        self,
+        experiment_id: str = None,
+        region: str = None,
+        work_space_id: str = None,
+    ):
+        # The ID of the PAI experiment.
+        self.experiment_id = experiment_id
+        # The PAI region.
+        self.region = region
+        # The ID of the PAI workspace.
+        self.work_space_id = work_space_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.experiment_id is not None:
+            result['ExperimentId'] = self.experiment_id
+
+        if self.region is not None:
+            result['Region'] = self.region
+
+        if self.work_space_id is not None:
+            result['WorkSpaceId'] = self.work_space_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExperimentId') is not None:
+            self.experiment_id = m.get('ExperimentId')
+
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+
+        if m.get('WorkSpaceId') is not None:
+            self.work_space_id = m.get('WorkSpaceId')
+
+        return self
+
+class GetBatchTaskInfoResponseBodyTaskInfoExecuteTimeOutConfig(DaraModel):
+    def __init__(
+        self,
+        custom_values: str = None,
+        follow_system: bool = None,
+    ):
+        # The custom timeout period.
+        self.custom_values = custom_values
+        # Specifies whether to inherit the system configuration.
+        self.follow_system = follow_system
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.custom_values is not None:
+            result['CustomValues'] = self.custom_values
+
+        if self.follow_system is not None:
+            result['FollowSystem'] = self.follow_system
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomValues') is not None:
+            self.custom_values = m.get('CustomValues')
+
+        if m.get('FollowSystem') is not None:
+            self.follow_system = m.get('FollowSystem')
+
+        return self
+
+class GetBatchTaskInfoResponseBodyTaskInfoExecuteRerunConfig(DaraModel):
+    def __init__(
+        self,
+        custom_rerun_interval: str = None,
+        custom_rerun_times: str = None,
+        follow_system: bool = None,
+    ):
+        # The custom failure retry interval.
+        self.custom_rerun_interval = custom_rerun_interval
+        # The custom number of failure retries.
+        self.custom_rerun_times = custom_rerun_times
+        # Specifies whether to inherit the system configuration.
+        self.follow_system = follow_system
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.custom_rerun_interval is not None:
+            result['CustomRerunInterval'] = self.custom_rerun_interval
+
+        if self.custom_rerun_times is not None:
+            result['CustomRerunTimes'] = self.custom_rerun_times
+
+        if self.follow_system is not None:
+            result['FollowSystem'] = self.follow_system
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomRerunInterval') is not None:
+            self.custom_rerun_interval = m.get('CustomRerunInterval')
+
+        if m.get('CustomRerunTimes') is not None:
+            self.custom_rerun_times = m.get('CustomRerunTimes')
+
+        if m.get('FollowSystem') is not None:
+            self.follow_system = m.get('FollowSystem')
+
+        return self
+
+class GetBatchTaskInfoResponseBodyTaskInfoDatabricksPythonConnectInfo(DaraModel):
+    def __init__(
+        self,
+        dev_http_path: str = None,
+        enable_databricks_python_connect: bool = None,
+        prod_http_path: str = None,
+    ):
+        # The HTTP path for the development environment.
+        self.dev_http_path = dev_http_path
+        # Specifies whether Databricks Python Connect is enabled.
+        self.enable_databricks_python_connect = enable_databricks_python_connect
+        # The HTTP path for the production environment.
+        self.prod_http_path = prod_http_path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.dev_http_path is not None:
+            result['DevHttpPath'] = self.dev_http_path
+
+        if self.enable_databricks_python_connect is not None:
+            result['EnableDatabricksPythonConnect'] = self.enable_databricks_python_connect
+
+        if self.prod_http_path is not None:
+            result['ProdHttpPath'] = self.prod_http_path
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DevHttpPath') is not None:
+            self.dev_http_path = m.get('DevHttpPath')
+
+        if m.get('EnableDatabricksPythonConnect') is not None:
+            self.enable_databricks_python_connect = m.get('EnableDatabricksPythonConnect')
+
+        if m.get('ProdHttpPath') is not None:
+            self.prod_http_path = m.get('ProdHttpPath')
+
+        return self
+
 class GetBatchTaskInfoResponseBodyTaskInfoCustomScheduleConfig(DaraModel):
     def __init__(
         self,
@@ -998,7 +1292,7 @@ class GetBatchTaskInfoResponseBodyTaskInfoCustomScheduleConfig(DaraModel):
         self.interval = interval
         # The unit of the interval. Valid values: MINUTE and HOUR.
         self.interval_unit = interval_unit
-        # The schedule cycle.
+        # The scheduling cycle.
         self.schedule_period = schedule_period
         # The start time in the HH:mm format.
         self.start_time = start_time
@@ -1118,23 +1412,26 @@ class GetBatchTaskInfoResponseBodyTaskInfoConditionScheduleParamList(DaraModel):
         # 
         # This parameter is required.
         self.cron_expression = cron_expression
-        # Specifies whether to enable the condition.
+        # Specifies whether the condition is enabled.
         # 
         # This parameter is required.
         self.enable = enable
-        # Specifies whether to follow the primary schedule parameter.
+        # Specifies whether to follow the main scheduling parameter.
         # 
         # This parameter is required.
         self.follow_schedule_param = follow_schedule_param
-        # The scheduling status of the node after the condition is met. Valid values: 1: Normal. 2: Paused. 3: Dry run.
+        # The scheduling status of the node after the condition is met. Valid values:
+        # - 1: Normal.
+        # - 2: Paused.
+        # - 3: Dry run.
         # 
         # This parameter is required.
         self.node_status = node_status
-        # The conditional expression tree in JSON string format. The keys are named in lower camel case characters and must be parsed by the invoker.
+        # The conditional expression tree in JSON string format. The key names are lower camel case characters and must be parsed by the invoker.
         # 
         # This parameter is required.
         self.schedule_condition_json = schedule_condition_json
-        # The schedule time used after the condition is met.
+        # The scheduling time used after the condition is met.
         # 
         # This parameter is required.
         self.schedule_time = schedule_time

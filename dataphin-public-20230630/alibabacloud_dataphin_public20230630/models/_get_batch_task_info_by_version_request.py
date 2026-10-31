@@ -21,13 +21,13 @@ class GetBatchTaskInfoByVersionRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The operator user ID.
+        # The operator ID.
         self.op_user_id = op_user_id
         # The project to which the task belongs.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The version number.
+        # The version ID.
         # 
         # This parameter is required.
         self.version_id = version_id

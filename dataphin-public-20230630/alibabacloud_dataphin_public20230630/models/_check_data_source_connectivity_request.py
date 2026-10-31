@@ -14,7 +14,7 @@ class CheckDataSourceConnectivityRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The object to check.
+        # The check target.
         # 
         # This parameter is required.
         self.check_command = check_command
@@ -22,6 +22,7 @@ class CheckDataSourceConnectivityRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator ID.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -68,7 +69,7 @@ class CheckDataSourceConnectivityRequestCheckCommand(DaraModel):
         # 
         # This parameter is required.
         self.config_item_list = config_item_list
-        # The data source type. For supported data source types, see the documentation for creating a data source.
+        # The datasource type. For supported datasources, see Create a datasource.
         # 
         # This parameter is required.
         self.type = type

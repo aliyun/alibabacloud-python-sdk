@@ -23,11 +23,11 @@ class ListApiByAppResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The query result.
         self.list_result = list_result
-        # The details of the backend exception.
+        # The backend exception details.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -90,7 +90,7 @@ class ListApiByAppResponseBodyListResult(DaraModel):
     ):
         # The API list.
         self.data = data
-        # The total number of records.
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -186,22 +186,22 @@ class ListApiByAppResponseBodyListResultData(DaraModel):
         self.biz_module_en_name = biz_module_en_name
         # The API cache switch.
         self.cache_switch = cache_switch
-        # The cache duration, in seconds.
+        # The cache duration in seconds.
         self.cache_time = cache_time
         # The creation type. Valid values:
-        # SQL_MODE(0, "Logical table API - SQL mode"),
-        # WIZARD_MODE(1, "Logical table API - wizard mode"),
-        # DIRECT_API_MODE(2, "Direct datasource - SQL mode"),
-        # REGISTER_API_MODE(3, "Registered API mode"),
-        # COMPOSITE_API_MODE(4, "Composite API mode").
+        # - SQL_MODE: Logical table API - SQL mode.
+        # - WIZARD_MODE: Logical table API - wizard mode.
+        # - DIRECT_API_MODE: Direct connection data source - SQL mode.
+        # - REGISTER_API_MODE: Registered API mode.
+        # - COMPOSITE_API_MODE: Composite API mode.
         self.create_type = create_type
         # The data environment.
         self.db_env = db_env
         # The description.
         self.description = description
-        # The datasource ID of the direct API.
+        # The data source ID of the direct connection API.
         self.direct_datasource_id = direct_datasource_id
-        # The datasource name of the direct API.
+        # The data source name of the direct connection API.
         self.direct_datasource_name = direct_datasource_name
         # The API group ID.
         self.group_id = group_id
@@ -209,13 +209,13 @@ class ListApiByAppResponseBodyListResultData(DaraModel):
         self.group_name = group_name
         # The API ID.
         self.id = id
-        # Indicates whether the table is a logical table.
+        # Indicates whether it is a logical table.
         self.is_logical_table = is_logical_table
-        # Indicates whether the query is a paged query.
+        # Indicates whether it is a paging query.
         self.is_paged_query = is_paged_query
         # The maximum number of returned records.
         self.max_return_num = max_return_num
-        # The model type.
+        # The mode.
         self.model_type = model_type
         # The API name.
         self.name = name
@@ -241,7 +241,7 @@ class ListApiByAppResponseBodyListResultData(DaraModel):
         self.resource_group_name = resource_group_name
         # -
         self.response_param_list = response_param_list
-        # The sample call result.
+        # The call result sample.
         self.result_sample = result_sample
         # The return type.
         self.return_type = return_type
@@ -257,7 +257,7 @@ class ListApiByAppResponseBodyListResultData(DaraModel):
         self.sql_statement = sql_statement
         # The logical table name.
         self.table_name = table_name
-        # The timeout duration, in seconds.
+        # The timeout duration in seconds.
         self.timeout = timeout
         # The update frequency.
         self.update_rate = update_rate
@@ -589,7 +589,7 @@ class ListApiByAppResponseBodyListResultDataResponseParamList(DaraModel):
     ):
         # The date format.
         self.date_format = date_format
-        # The default value for registered APIs.
+        # The default value for the registered API.
         self.default_value = default_value
         # The parameter description.
         self.description = description
@@ -613,7 +613,7 @@ class ListApiByAppResponseBodyListResultDataResponseParamList(DaraModel):
         self.param_name = param_name
         # The parameter type.
         self.param_type = param_type
-        # The request parameter location for registered APIs or the value path for response parameters.
+        # The request parameter location or response parameter value path for the registered API.
         self.parameter_location = parameter_location
         # The parameter example.
         self.sample = sample
@@ -824,7 +824,7 @@ class ListApiByAppResponseBodyListResultDataRequestParamList(DaraModel):
     ):
         # The date format.
         self.date_format = date_format
-        # The default value for registered APIs.
+        # The default value for the registered API.
         self.default_value = default_value
         # The parameter description.
         self.description = description
@@ -848,7 +848,7 @@ class ListApiByAppResponseBodyListResultDataRequestParamList(DaraModel):
         self.param_name = param_name
         # The parameter type.
         self.param_type = param_type
-        # The request parameter location for registered APIs or the value path for response parameters.
+        # The request parameter location or response parameter value path for the registered API.
         self.parameter_location = parameter_location
         # The parameter example.
         self.sample = sample
@@ -1055,27 +1055,27 @@ class ListApiByAppResponseBodyListResultDataRegisterApi(DaraModel):
     ):
         # The primary key of data_api.
         self.api_id = api_id
-        # The API datasource authentication mode.
+        # The API data source authentication method.
         self.authentication_mode = authentication_mode
-        # The API datasource ID.
+        # The API data source ID.
         self.datasource_id = datasource_id
-        # The API datasource name.
+        # The API data source name.
         self.datasource_name = datasource_name
         # The failure example.
         self.fail_example = fail_example
-        # The HTTP method of the registered API.
+        # The request method of the registered API.
         self.http_method = http_method
-        # The model type.
+        # The mode.
         self.model_type = model_type
         # The service path.
         self.path = path
-        # The API datasource request protocol.
+        # The API data source request protocol.
         self.protocol = protocol
         # The success example.
         self.success_example = success_example
         # The timeout period.
         self.timeout = timeout
-        # The API datasource URL.
+        # The URL of the API data source.
         self.url = url
 
     def validate(self):
@@ -1186,7 +1186,7 @@ class ListApiByAppResponseBodyListResultDataPublicParamList(DaraModel):
     ):
         # The date format.
         self.date_format = date_format
-        # The default value for registered APIs.
+        # The default value for the registered API.
         self.default_value = default_value
         # The parameter description.
         self.description = description
@@ -1210,7 +1210,7 @@ class ListApiByAppResponseBodyListResultDataPublicParamList(DaraModel):
         self.param_name = param_name
         # The parameter type.
         self.param_type = param_type
-        # The request parameter location for registered APIs or the value path for response parameters.
+        # The request parameter location or response parameter value path for the registered API.
         self.parameter_location = parameter_location
         # The parameter example.
         self.sample = sample

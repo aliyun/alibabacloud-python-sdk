@@ -17,7 +17,7 @@ class GetPhysicalNodeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. A value of OK indicates that the request was successful.
+        # The error code. A value of OK indicates that the request is successful.
         self.code = code
         # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
@@ -27,7 +27,7 @@ class GetPhysicalNodeResponseBody(DaraModel):
         self.node_info = node_info
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -107,26 +107,26 @@ class GetPhysicalNodeResponseBodyNodeInfo(DaraModel):
     ):
         # The creation time.
         self.create_time = create_time
-        # The node creator.
+        # The creator of the node.
         self.creator = creator
-        # The cron expression used to calculate the scheduling time.
+        # The cron expression, which is used to calculate the trigger time.
         self.cron_expression = cron_expression
         # The data source ID.
         self.data_source_id = data_source_id
-        # The data source schema. This parameter takes effect only for data source types that require a schema, such as Oracle. If set to "default", the value is null.
+        # The schema of the data source. This parameter takes effect only for data source types that require a schema, such as Oracle. If it is set to "default", the value is null.
         self.data_source_schema = data_source_schema
         # The node description.
         self.description = description
-        # The node source. Valid values:
-        # - DATA_PROCESS: code development.
-        # - BLACK_BOX: modeling development.
-        # - PIPELINE: pipeline.
+        # The source of the node. Valid values:
+        # - DATA_PROCESS: code development
+        # - BLACK_BOX: modeling development
+        # - PIPELINE: PIPELINE
         self.from_ = from_
         # The node ID.
         self.id = id
-        # The time of the last modification.
+        # The last update time.
         self.last_modified_time = last_modified_time
-        # The user who last modified the node.
+        # The user who last updated the node.
         self.modifier = modifier
         # The node name.
         self.name = name
@@ -136,19 +136,18 @@ class GetPhysicalNodeResponseBodyNodeInfo(DaraModel):
         # - SHELL
         # - PYTHON
         # - ONE_SERVICE_SQL
-        # - DATABASE_SQL and others.
+        # - DATABASE_SQL, etc.
         self.operator_type = operator_type
         # The list of output names.
         self.output_name_list = output_name_list
-        # The node owner.
+        # The owner of the node.
         self.owner = owner
         # The scheduling priority. Valid values:
-        # 
         # - HIGHEST
         # - HIGH
         # - MIDDLE
         # - LOW
-        # - LOWEST.
+        # - LOWEST
         self.priority = priority
         # The project to which the node belongs.
         self.project_info = project_info
@@ -158,11 +157,11 @@ class GetPhysicalNodeResponseBodyNodeInfo(DaraModel):
         # - DAILY
         # - WEEKLY
         # - MONTHLY
-        # - QUARTERLY.
+        # - QUARTERLY
         self.schedule_type = schedule_type
         # The scheduling status.
         self.status = status
-        # The trigger configuration, which is used to implement field-level dependencies on logical tables.
+        # The trigger configuration, which is used to implement field dependencies for logical tables.
         self.trigger_config = trigger_config
 
     def validate(self):

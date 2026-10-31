@@ -14,7 +14,7 @@ class GetKgAuthorizedWorkspacesRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The ID of the operator user.
+        # The ID of the specified operator.
         self.op_user_id = op_user_id
 
     def validate(self):

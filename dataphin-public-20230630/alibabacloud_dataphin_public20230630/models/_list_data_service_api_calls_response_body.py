@@ -17,17 +17,17 @@ class ListDataServiceApiCallsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code.
+        # The backend response code.
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error message.
+        # The backend exception details.
         self.message = message
-        # The paginated query result.
+        # The paged query results.
         self.page_result = page_result
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -88,7 +88,7 @@ class ListDataServiceApiCallsResponseBodyPageResult(DaraModel):
         call_log_list: List[main_models.ListDataServiceApiCallsResponseBodyPageResultCallLogList] = None,
         total_count: int = None,
     ):
-        # The list of API call logs.
+        # The paged list of API calls.
         self.call_log_list = call_log_list
         # The total number of records.
         self.total_count = total_count
@@ -159,12 +159,12 @@ class ListDataServiceApiCallsResponseBodyPageResultCallLogList(DaraModel):
         status: int = None,
         successful: bool = None,
     ):
-        # The ID of the API.
+        # The API ID.
         self.api_id = api_id
         # The name of the API.
         self.api_name = api_name
         # The application key.
-        # >Notice: This parameter is deprecated. Use AppKeyStr instead.
+        # >Notice: Deprecated. Use AppKeyStr instead.</notice>
         self.app_key = app_key
         # The application key.
         self.app_key_str = app_key_str
@@ -174,17 +174,17 @@ class ListDataServiceApiCallsResponseBodyPageResultCallLogList(DaraModel):
         self.biz_code = biz_code
         # The description of the business status code.
         self.biz_code_description = biz_code_description
-        # The IP address of the request.
+        # The client IP address.
         self.client_ip = client_ip
         # The duration of the request, in milliseconds.
         self.cost_time = cost_time
         # The end time of the request. Format: yyyy-MM-dd HH:mm:ss.SSS.
         self.end_time = end_time
-        # The environment. Valid values: 0 (dev) and 1 (prod).
+        # The environment. Valid values: 0: Development. 1: Production.
         self.env = env
         # The execution duration.
         self.execute_cost_time = execute_cost_time
-        # The execution mode. Valid values: 1 (synchronous) and 2 (asynchronous).
+        # The execution mode. Valid values: 1: Synchronous. 2: Asynchronous.
         self.execute_mode = execute_mode
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -206,15 +206,15 @@ class ListDataServiceApiCallsResponseBodyPageResultCallLogList(DaraModel):
         self.response_parameter = response_parameter
         # The size of the response.
         self.response_size = response_size
-        # The number of returned data records.
+        # The number of returned records.
         self.result_count = result_count
         # The SQL statement.
         self.sql = sql
-        # The start time of the request. Format: yyyy-MM-dd HH:mm:ss.SSS.
+        # The time when the request is initiated. Format: yyyy-MM-dd HH:mm:ss.SSS.
         self.start_time = start_time
-        # The call status of the job.
+        # The invocation status of the job.
         self.status = status
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.successful = successful
 
     def validate(self):

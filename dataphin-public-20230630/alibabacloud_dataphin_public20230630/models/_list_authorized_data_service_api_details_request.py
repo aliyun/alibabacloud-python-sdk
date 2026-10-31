@@ -20,6 +20,7 @@ class ListAuthorizedDataServiceApiDetailsRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator ID.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -65,6 +66,7 @@ class ListAuthorizedDataServiceApiDetailsRequestListQuery(DaraModel):
         page_size: int = None,
     ):
         # The application key.
+        # >Notice: Deprecated. Use AppKeyStr.</notice>
         self.app_key = app_key
         # The application key.
         self.app_key_str = app_key_str

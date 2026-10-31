@@ -11,7 +11,7 @@ class CheckDataSourceConnectivityShrinkRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The object to check.
+        # The check target.
         # 
         # This parameter is required.
         self.check_command_shrink = check_command_shrink
@@ -19,6 +19,7 @@ class CheckDataSourceConnectivityShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator ID.
         self.op_user_id = op_user_id
 
     def validate(self):

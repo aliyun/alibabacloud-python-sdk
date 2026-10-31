@@ -17,17 +17,17 @@ class ListAuthorizedDataServiceApiDetailsResponseBody(DaraModel):
         result: main_models.ListAuthorizedDataServiceApiDetailsResponseBodyResult = None,
         success: bool = None,
     ):
-        # The error code. A value of OK indicates that the request was successful.
+        # The error code. OK indicates that the request is successful.
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
         # The error message.
         self.message = message
-        # The request ID, which uniquely identifies the request.
+        # The unique identifier of the request.
         self.request_id = request_id
         # The query result.
         self.result = result
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -90,7 +90,7 @@ class ListAuthorizedDataServiceApiDetailsResponseBodyResult(DaraModel):
     ):
         # The list of authorized API details.
         self.data = data
-        # The total number of entries returned.
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -143,23 +143,23 @@ class ListAuthorizedDataServiceApiDetailsResponseBodyResultData(DaraModel):
     ):
         # API_ID
         self.api_id = api_id
-        # The API name.
+        # The name of the API.
         self.api_name = api_name
-        # The application ID.
+        # The ID of the application.
         self.app_id = app_id
-        # The permission type.
+        # The type of the permission.
         self.auth_type = auth_type
-        # The list of fields authorized for the API in the development environment.
+        # The list of authorized fields for the API in the development environment.
         self.authorized_dev_return_parameters = authorized_dev_return_parameters
-        # The list of fields authorized for the API in the production environment.
+        # The list of authorized fields for the API in the production environment.
         self.authorized_prod_return_parameters = authorized_prod_return_parameters
-        # The API description.
+        # The description of the API.
         self.description = description
-        # The validity period of the API permission in the development environment.
+        # The validity period of API permissions in the development environment.
         self.dev_auth_period = dev_auth_period
-        # The validity period of the API permission in the production environment.
+        # The validity period of API permissions in the production environment.
         self.prod_auth_period = prod_auth_period
-        # The data service project ID.
+        # The ID of the data service project.
         self.project_id = project_id
 
     def validate(self):
@@ -264,13 +264,13 @@ class ListAuthorizedDataServiceApiDetailsResponseBodyResultDataAuthorizedProdRet
     ):
         # The example value.
         self.example_value = example_value
-        # The field authorization status.
+        # The authorization status of the field.
         self.is_authorized = is_authorized
-        # The parameter type.
+        # The data type of the parameter.
         self.parameter_data_type = parameter_data_type
-        # The description.
+        # The description of the parameter.
         self.parameter_description = parameter_description
-        # The parameter name.
+        # The name of the parameter.
         self.parameter_name = parameter_name
 
     def validate(self):
@@ -328,13 +328,13 @@ class ListAuthorizedDataServiceApiDetailsResponseBodyResultDataAuthorizedDevRetu
     ):
         # The example value.
         self.example_value = example_value
-        # The field authorization status.
+        # The authorization status of the field.
         self.is_authorized = is_authorized
-        # The parameter type.
+        # The data type of the parameter.
         self.parameter_data_type = parameter_data_type
-        # The description.
+        # The description of the parameter.
         self.parameter_description = parameter_description
-        # The parameter name.
+        # The name of the parameter.
         self.parameter_name = parameter_name
 
     def validate(self):

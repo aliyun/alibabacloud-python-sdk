@@ -23,11 +23,11 @@ class GetDatasetResponseBody(DaraModel):
         self.dataset_dto = dataset_dto
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend exception.
+        # The backend exception details.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -111,33 +111,33 @@ class GetDatasetResponseBodyDatasetDTO(DaraModel):
     ):
         # The content type.
         self.content_type = content_type
-        # The creator ID.
+        # The ID of the creator.
         self.creator = creator
-        # The creator name.
+        # The name of the creator.
         self.creator_name = creator_name
-        # The subject area ID.
+        # The subject domain ID.
         self.data_cell_id = data_cell_id
-        # The subject area name.
+        # The name of the subject domain.
         self.data_cell_name = data_cell_name
         # The description.
         self.description = description
-        # The directory (retrieved from the file service by using the fileId).
+        # The directory, which is obtained from the file service by using the file ID.
         self.directory = directory
         # The file ID.
         self.file_id = file_id
-        # The creation time.
+        # The time when the dataset was created.
         self.gmt_create = gmt_create
-        # The modification time.
+        # The time when the dataset was updated.
         self.gmt_modified = gmt_modified
-        # The dataset ID (business primary key).
+        # The dataset ID, which serves as the business primary key.
         self.id = id
         # The ID of the development owner.
         self.lock_owner = lock_owner
-        # The display name of the development owner on the interface.
+        # The field displayed on the user interface.
         self.lock_owner_name = lock_owner_name
         # The metastore type.
         self.metadata_storage_type = metadata_storage_type
-        # The dataset name.
+        # The name of the dataset.
         self.name = name
         # The list of owners.
         self.owner_list = owner_list
@@ -145,15 +145,13 @@ class GetDatasetResponseBodyDatasetDTO(DaraModel):
         self.project_id = project_id
         # The name of the project to which the dataset belongs.
         self.project_name = project_name
-        # The dataset scenarios. Valid values:
-        # - OFFLINE: offline (default).
-        # - REALTIME: real-time.
+        # The scenarios of the dataset. Valid values: OFFLINE (offline, default) and REALTIME (real-time).
         self.scenario = scenario
         # The storage type.
         self.storage_type = storage_type
         # The tenant ID.
         self.tenant_id = tenant_id
-        # The dataset type.
+        # The type of the dataset.
         self.type = type
         # The list of versions.
         self.version_list = version_list
@@ -339,16 +337,17 @@ class GetDatasetResponseBodyDatasetDTOVersionList(DaraModel):
         id: int = None,
         version: str = None,
     ):
+        # The API information for the online dataset.
         self.api_info = api_info
-        # The creator ID.
+        # The ID of the creator.
         self.creator = creator
         # The dataset version configuration.
         self.data_version_config = data_version_config
         # The dataset ID.
         self.dataset_id = dataset_id
-        # The creation time.
+        # The time when the dataset was created.
         self.gmt_create = gmt_create
-        # The modification time.
+        # The time when the dataset was updated.
         self.gmt_modified = gmt_modified
         # The version ID.
         self.id = id
@@ -434,7 +433,7 @@ class GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfig(DaraModel):
         self.file_storage_config = file_storage_config
         # The metastore configuration.
         self.metadata_storage_config = metadata_storage_config
-        # The real-time meta table configuration. This parameter takes effect only when metadataStorageType is set to REALTIME_META_TABLE.
+        # The real-time meta table configuration. This configuration takes effect only when metadataStorageType is set to REALTIME_META_TABLE.
         self.realtime_meta_table_config = realtime_meta_table_config
         # The version description.
         self.version_description = version_description
@@ -493,7 +492,7 @@ class GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigRealtimeMetaTa
         project_id: int = None,
         table_schema: main_models.GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigRealtimeMetaTableConfigTableSchema = None,
     ):
-        # The data source type of the meta table. Only KAFKA is supported in the current release.
+        # The data source type of the meta table. Only KAFKA is supported in the current phase.
         # 
         # This parameter is required.
         self.datasource_type = datasource_type
@@ -501,11 +500,11 @@ class GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigRealtimeMetaTa
         # 
         # This parameter is required.
         self.meta_table_name = meta_table_name
-        # The project ID to which the meta table belongs. Cross-project references are supported.
+        # The ID of the project to which the meta table belongs. Cross-project access is supported.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The table schema configuration (reuses MetadataStorageConfigDTO.TableSchemaDTO).
+        # The table schema configuration. This configuration reuses MetadataStorageConfigDTO.TableSchemaDTO.
         self.table_schema = table_schema
 
     def validate(self):
@@ -553,7 +552,7 @@ class GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigRealtimeMetaTa
         self,
         columns: List[main_models.GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigRealtimeMetaTableConfigTableSchemaColumns] = None,
     ):
-        # The list of columns.
+        # The column list.
         self.columns = columns
 
     def validate(self):
@@ -596,17 +595,17 @@ class GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigRealtimeMetaTa
         url: bool = None,
         vector_index_config: main_models.GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigRealtimeMetaTableConfigTableSchemaColumnsVectorIndexConfig = None,
     ):
-        # The column comment.
+        # The column description.
         self.comment = comment
-        # The array element subtype.
+        # The subtype of the array element.
         self.element_type = element_type
-        # The maximum array capacity.
+        # The maximum capacity of the array.
         self.max_capacity = max_capacity
         # The column name.
         # 
         # This parameter is required.
         self.name = name
-        # Indicates whether the column is a primary key.
+        # Specifies whether the column is a primary key.
         # 
         # This parameter is required.
         self.pk = pk
@@ -614,7 +613,7 @@ class GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigRealtimeMetaTa
         # 
         # This parameter is required.
         self.type = type
-        # Indicates whether the column is a URL.
+        # Specifies whether the column is a URL.
         self.url = url
         # The vector index configuration.
         self.vector_index_config = vector_index_config
@@ -700,7 +699,7 @@ class GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigRealtimeMetaTa
         # 
         # This parameter is required.
         self.embedding_model = embedding_model
-        # The index build parameters.
+        # The index building parameters.
         self.index_params = index_params
         # The index type.
         # 
@@ -771,17 +770,17 @@ class GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigMetadataStorag
         # 
         # This parameter is required.
         self.data_source_id = data_source_id
-        # The data source name.
+        # The name of the data source.
         self.data_source_name = data_source_name
-        # The development database/schema.
+        # The development database or schema.
         self.dev_schema = dev_schema
-        # The storage destination (new table or existing table).
+        # The storage destination, which can be a new table or an existing table.
         # 
         # This parameter is required.
         self.metadata_storage_mode = metadata_storage_mode
         # The metastore type.
         self.metadata_storage_type = metadata_storage_type
-        # The production database/schema.
+        # The production database or schema.
         # 
         # This parameter is required.
         self.prod_schema = prod_schema
@@ -861,7 +860,7 @@ class GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigMetadataStorag
         self,
         columns: List[main_models.GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigMetadataStorageConfigTableSchemaColumns] = None,
     ):
-        # The list of columns.
+        # The column list.
         self.columns = columns
 
     def validate(self):
@@ -904,17 +903,17 @@ class GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigMetadataStorag
         url: bool = None,
         vector_index_config: main_models.GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigMetadataStorageConfigTableSchemaColumnsVectorIndexConfig = None,
     ):
-        # The column comment.
+        # The column description.
         self.comment = comment
-        # The array element subtype. This parameter is valid only when type is set to ARRAY.
+        # The subtype of the array element. This parameter is valid only when the type is ARRAY.
         self.element_type = element_type
-        # The maximum array capacity. This parameter is valid only when type is set to ARRAY. Default value: 4096.
+        # The maximum capacity of the array. This parameter is valid only when the type is ARRAY. Default value: 4096.
         self.max_capacity = max_capacity
         # The column name.
         # 
         # This parameter is required.
         self.name = name
-        # Indicates whether the column is a primary key.
+        # Specifies whether the column is a primary key.
         # 
         # This parameter is required.
         self.pk = pk
@@ -922,7 +921,7 @@ class GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigMetadataStorag
         # 
         # This parameter is required.
         self.type = type
-        # Indicates whether the column is a URL.
+        # Specifies whether the column is a URL.
         self.url = url
         # The vector index configuration.
         self.vector_index_config = vector_index_config
@@ -1008,9 +1007,9 @@ class GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigMetadataStorag
         # 
         # This parameter is required.
         self.embedding_model = embedding_model
-        # The index build parameters. Different parameters are required depending on the index type. For example, HNSW requires {M:30, efConstruction:360}, and IVF_FLAT requires {nlist:128}.
+        # The index building parameters. Specify different parameters based on the index type. For example, HNSW requires {M:30, efConstruction:360}, and IVF_FLAT requires {nlist:128}.
         self.index_params = index_params
-        # The index type. PG supports IVFFlat and HNSW. Milvus supports all types.
+        # The index type. PostgreSQL supports IVFFlat and HNSW. Milvus supports all types.
         # 
         # This parameter is required.
         self.index_type = index_type
@@ -1076,9 +1075,9 @@ class GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigFileStorageCon
         # 
         # This parameter is required.
         self.data_source_id = data_source_id
-        # The data source name.
+        # The name of the data source.
         self.data_source_name = data_source_name
-        # The development path (not required for basic projects).
+        # The development path. This parameter is not required for basic projects.
         self.dev_path = dev_path
         # The mount path.
         # 
@@ -1149,24 +1148,44 @@ class GetDatasetResponseBodyDatasetDTOVersionListApiInfo(DaraModel):
         response_param_list: List[main_models.GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList] = None,
         timeout: int = None,
     ):
+        # The business ID.
         self.api_no = api_no
+        # The execution timeout period in seconds.
+        # 
         # This parameter is required.
         self.exec_timeout = exec_timeout
+        # The execution mode. Valid values: 1: Synchronous. 2: Asynchronous.
+        # 
         # This parameter is required.
         self.execute_mode = execute_mode
+        # The data service API group.
+        # 
         # This parameter is required.
         self.os_api_group = os_api_group
+        # The name of the data service API group.
         self.os_api_group_name = os_api_group_name
+        # The data service project.
+        # 
         # This parameter is required.
         self.os_project = os_project
+        # The name of the data service project.
         self.os_project_name = os_project_name
+        # The protocol type. Valid values: 1: HTTPS. 2: HTTP. 3: HTTP and HTTPS.
+        # 
         # This parameter is required.
         self.protocol = protocol
+        # The request method. Valid values: 1: GET. 2: LIST.
+        # 
         # This parameter is required.
         self.request_method = request_method
+        # The request parameter list.
+        # 
         # This parameter is required.
         self.request_param_list = request_param_list
+        # The response parameter list.
         self.response_param_list = response_param_list
+        # The timeout period in seconds.
+        # 
         # This parameter is required.
         self.timeout = timeout
 
@@ -1286,14 +1305,23 @@ class GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList(DaraMo
         sample: str = None,
         seq_num: str = None,
     ):
+        # The date format.
         self.date_format = date_format
+        # The description.
         self.descr = descr
+        # Specifies whether the parameter is a URL parameter.
         self.is_url = is_url
+        # The mapping column.
         self.mapping_column = mapping_column
+        # The original column name.
         self.original_column = original_column
+        # The parameter name.
         self.param_name = param_name
+        # The parameter type.
         self.param_type = param_type
+        # The sample value.
         self.sample = sample
+        # The sequence number.
         self.seq_num = seq_num
 
     def validate(self):
@@ -1381,18 +1409,31 @@ class GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList(DaraMod
         sample: str = None,
         seq_num: int = None,
     ):
+        # The date format.
         self.date_format = date_format
+        # The default value.
         self.default_value = default_value
+        # The description.
         self.descr = descr
+        # Specifies whether the parameter is a URL parameter.
         self.is_url = is_url
+        # The mapping column.
         self.mapping_column = mapping_column
+        # Specifies whether the parameter is required.
         self.must = must
+        # The operator.
         self.operator = operator
+        # Specifies whether the parameter is optional.
         self.optional = optional
+        # The original column name.
         self.original_column = original_column
+        # The parameter name.
         self.param_name = param_name
+        # The parameter type.
         self.param_type = param_type
+        # The sample value.
         self.sample = sample
+        # The sequence number.
         self.seq_num = seq_num
 
     def validate(self):

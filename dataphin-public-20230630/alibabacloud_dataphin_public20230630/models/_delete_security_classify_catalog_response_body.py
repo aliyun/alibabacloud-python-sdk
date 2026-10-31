@@ -27,7 +27,7 @@ class DeleteSecurityClassifyCatalogResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -89,11 +89,11 @@ class DeleteSecurityClassifyCatalogResponseBodyData(DaraModel):
         classify_id_list: List[int] = None,
         success: bool = None,
     ):
-        # The list of full paths of child catalogs that were deleted as a result of the cascading deletion.
+        # The list of full paths of the subdirectories that are cascade-deleted.
         self.child_catalog_full_path_list = child_catalog_full_path_list
-        # The list of classification IDs that were deleted as a result of the cascading deletion.
+        # The list of IDs of the classifications that are cascade-deleted.
         self.classify_id_list = classify_id_list
-        # Indicates whether the deletion was successful.
+        # Indicates whether the deletion is successful.
         self.success = success
 
     def validate(self):

@@ -16,7 +16,7 @@ class CreateSecurityClassifyCatalogResponseBody(DaraModel):
     ):
         # The backend response code.
         self.code = code
-        # The full path of the newly created folder.
+        # The full path of the created folder.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -24,7 +24,7 @@ class CreateSecurityClassifyCatalogResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

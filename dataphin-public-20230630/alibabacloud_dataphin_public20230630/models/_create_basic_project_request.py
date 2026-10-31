@@ -14,7 +14,7 @@ class CreateBasicProjectRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The create command.
+        # The creation command.
         # 
         # This parameter is required.
         self.create_command = create_command
@@ -22,6 +22,7 @@ class CreateBasicProjectRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator ID.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -77,7 +78,7 @@ class CreateBasicProjectRequestCreateCommand(DaraModel):
         self.compute_source_id = compute_source_id
         # The project description.
         self.description = description
-        # The project display name.
+        # The display name of the project.
         self.display_name = display_name
         # The project name.
         # 
@@ -87,7 +88,7 @@ class CreateBasicProjectRequestCreateCommand(DaraModel):
         self.name_space_tag = name_space_tag
         # The real-time compute source ID.
         self.stream_compute_source_id = stream_compute_source_id
-        # The project type. If this parameter is left empty, the default value GENERAL is used.
+        # The project type. Default value: GENERAL.
         self.type = type
         # The sandbox whitelist.
         self.white_lists = white_lists

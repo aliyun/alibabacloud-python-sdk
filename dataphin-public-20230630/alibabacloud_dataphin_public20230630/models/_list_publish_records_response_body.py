@@ -17,17 +17,17 @@ class ListPublishRecordsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Error code. A value of OK indicates that the request was successful.
+        # The error code. A value of OK indicates that the request is normal.
         self.code = code
-        # Backend response HTTP status code.
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
-        # Query result.
+        # The query result.
         self.list_result = list_result
-        # Error message.
+        # The error message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -88,9 +88,9 @@ class ListPublishRecordsResponseBodyListResult(DaraModel):
         data: List[main_models.ListPublishRecordsResponseBodyListResultData] = None,
         total_count: int = None,
     ):
-        # Publish record list.
+        # The publish record list.
         self.data = data
-        # Total count.
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -147,37 +147,37 @@ class ListPublishRecordsResponseBodyListResultData(DaraModel):
         publisher: str = None,
         publisher_name: str = None,
     ):
-        # Change type. Valid values: 0: Create. 1: Update. 2: Delete.
+        # The change type. Valid values: 0: create. 1: update. 2: delete.
         self.change_type = change_type
-        # Publish error message.
+        # The publish error message.
         self.error_message = error_message
-        # Publish completion time in the yyyy-MM-dd HH:mm:ss format.
+        # The publish completion time. Format: yyyy-MM-dd HH:mm:ss.
         self.finish_time = finish_time
-        # Creation time in the yyyy-MM-dd HH:mm:ss format.
+        # The creation time. Format: yyyy-MM-dd HH:mm:ss.
         self.gmt_create = gmt_create
-        # Modification time in the yyyy-MM-dd HH:mm:ss format.
+        # The update time. Format: yyyy-MM-dd HH:mm:ss.
         self.gmt_modify = gmt_modify
-        # Publish record ID, which is not the object ID and is globally unique in the publish list.
+        # The ID of the publish record. This is not the object ID and is globally unique in the publish list.
         self.id = id
-        # Node ID.
+        # The node ID.
         self.node_id = node_id
-        # Object ID.
+        # The object ID.
         self.object_id = object_id
-        # Object name.
+        # The object name.
         self.object_name = object_name
-        # Object type.
+        # The object type.
         self.object_type = object_type
-        # Object version.
+        # The object version.
         self.object_version = object_version
-        # Project ID.
+        # The project ID.
         self.project_id = project_id
-        # Publish name.
+        # The publish name.
         self.publish_name = publish_name
-        # Publish status. Valid values: 0: Failed. 1: Succeeded. 2: Publishing.
+        # The publish status. Valid values: 0: failed. 1: successful. 2: publishing.
         self.publish_status = publish_status
-        # Publisher ID.
+        # The ID of the publisher.
         self.publisher = publisher
-        # Publisher name.
+        # The name of the publisher.
         self.publisher_name = publisher_name
 
     def validate(self):

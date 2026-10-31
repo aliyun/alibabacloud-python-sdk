@@ -20,8 +20,9 @@ class RemoveProjectMemberShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
-        # The command to remove a member.
+        # The member removal command.
         # 
         # This parameter is required.
         self.remove_command_shrink = remove_command_shrink

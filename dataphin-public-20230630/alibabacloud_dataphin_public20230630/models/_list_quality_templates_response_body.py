@@ -21,13 +21,13 @@ class ListQualityTemplatesResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend exception.
+        # The backend exception details.
         self.message = message
         # The paged query result.
         self.page_result = page_result
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -88,7 +88,7 @@ class ListQualityTemplatesResponseBodyPageResult(DaraModel):
         quality_template_list: List[main_models.ListQualityTemplatesResponseBodyPageResultQualityTemplateList] = None,
         total_count: int = None,
     ):
-        # The list of quality templates.
+        # The paged list of quality templates.
         self.quality_template_list = quality_template_list
         # The total number of records.
         self.total_count = total_count
@@ -151,14 +151,14 @@ class ListQualityTemplatesResponseBodyPageResultQualityTemplateList(DaraModel):
         type_name: str = None,
     ):
         # The template category. Valid values:
-        # - CONSISTENT: consistency
-        # - EFFECTIVE: validity
-        # - TIMELINESE: timeliness
-        # - ACCURATE: accuracy
-        # - UNIQUENESS: uniqueness
-        # - COMPLETENESS: completeness
-        # - STABILITY: stability
-        # - CUSTOM: custom.
+        # - CONSISTENT: Consistency.
+        # - EFFECTIVE: Effectiveness.
+        # - TIMELINESE: Timeliness.
+        # - ACCURATE: Accuracy.
+        # - UNIQUENESS: Uniqueness.
+        # - COMPLETENESS: Completeness.
+        # - STABILITY: Stability.
+        # - CUSTOM: Custom.
         self.catalog = catalog
         # The display name of the template category.
         self.catalog_name = catalog_name
@@ -168,21 +168,21 @@ class ListQualityTemplatesResponseBodyPageResultQualityTemplateList(DaraModel):
         self.creator = creator
         # The name of the creator.
         self.creator_name = creator_name
-        # The template description.
+        # The description of the template.
         self.description = description
-        # The rule configuration key-value pairs.
+        # The key-value pairs for rule configuration.
         self.form_property_list = form_property_list
-        # The template ID.
+        # The ID of the template.
         self.id = id
         # Indicates whether the template is a system template.
         self.is_system_template = is_system_template
-        # The user ID of the last modifier.
+        # The user ID of the last updater.
         self.modifier = modifier
-        # The name of the last modifier.
+        # The name of the last updater.
         self.modifier_name = modifier_name
-        # The modification time.
+        # The update time.
         self.modify_time = modify_time
-        # The template name.
+        # The name of the template.
         self.name = name
         # The user ID of the owner.
         self.owner = owner
@@ -190,42 +190,42 @@ class ListQualityTemplatesResponseBodyPageResultQualityTemplateList(DaraModel):
         self.owner_name = owner_name
         # Indicates whether all data source types are supported.
         self.support_all_data_source_type = support_all_data_source_type
-        # The supported data source types, such as MySQL, Oracle, Microsoft SQL Server, MaxCompute, and Hive.
+        # The specific data source types that are supported, such as MySQL, Oracle, Microsoft SQL Server, MaxCompute, and Hive.
         self.support_data_source_type_list = support_data_source_type_list
-        # The templatetype. Valid values:
-        # - FIELD_NULL_VALUE_VALIDATE: field null value check
-        # - FIELD_EMPTY_STRING_VALIDATE: field empty character string check
-        # - FIELD_UNIQUE_VALIDATE: field uniqueness check
-        # - FIELD_GROUP_COUNT_VALIDATE: field unique value count check
-        # - FIELD_DUPLICATE_VALUE_COUNT_VALIDATE: field duplicate value count check
-        # - FUNCTION_TIME_COMPARE: time function comparison
-        # - SINGLE_TABLE_TIME_COMPARE: non-partitioned table time field comparison
-        # - DOUBLE_TABLE_TIME_COMPARE: two-table time field comparison
-        # - FIELD_FORMAT_VALIDATE: field format check
-        # - FIELD_LENGTH_VALIDATE: field length check
-        # - FIELD_VALUE_RANGE_VALIDATE: field value range check
-        # - CODE_TABLE_COMPARE: lookup table reference comparison
-        # - STANDARD_CODE_TABLE_COMPARE: data standard lookup table reference comparison
-        # - SINGLE_TABLE_FIELD_VALUE_COMPARE: non-partitioned table field value consistency comparison
-        # - SINGLE_TABLE_FIELD_STATISTICAL_COMPARE: non-partitioned table field statistical value consistency comparison
-        # - SINGLE_TABLE_FIELD_EXP_COMPARE: non-partitioned table field business logic consistency comparison
-        # - DOUBLE_TABLE_FIELD_VALUE_COMPARE: two-table field value consistency comparison
-        # - DOUBLE_TABLE_FIELD_STATISTICAL_COMPARE: two-table field statistical value consistency comparison
-        # - CROSS_DOUBLE_TABLE_FIELD_STATISTICAL_COMPARE: cross-source two-table field statistical value consistency comparison
-        # - DOUBLE_TABLE_FIELD_EXP_COMPARE: two-table field business logic consistency comparison
-        # - TABLE_STABILITY_VALIDATE: table stability check
-        # - TABLE_FLUCTUATION_VALIDATE: table fluctuation check
-        # - FIELD_STABILITY_VALIDATE: field stability check
-        # - FIELD_FLUCTUATION_VALIDATE: field fluctuation check
-        # - CUSTOM_STATISTICAL_VALIDATE: custom statistical metric check
-        # - CUSTOM_DATA_DETAILS_VALIDATE: custom data details check
-        # - DATASOURCE_AVAILABLE_CHECK: data source connectivity monitoring
-        # - TABLE_SCHEMA_CHECK: table schema change monitoring
-        # - REAL_TIME_OFFLINE_COMPARE: real-time and offline comparison
-        # - REAL_TIME_STATISTICAL_VALIDATE: real-time statistical value monitoring
-        # - REAL_TIME_MULTI_CHAIN_COMPARE: real-time multi-link comparison.
+        # The template type. Valid values:
+        # - FIELD_NULL_VALUE_VALIDATE: Field null value check.
+        # - FIELD_EMPTY_STRING_VALIDATE: Field empty string check.
+        # - FIELD_UNIQUE_VALIDATE: Field uniqueness check.
+        # - FIELD_GROUP_COUNT_VALIDATE: Field unique value count check.
+        # - FIELD_DUPLICATE_VALUE_COUNT_VALIDATE: Field duplicate value count check.
+        # - FUNCTION_TIME_COMPARE: Time function comparison.
+        # - SINGLE_TABLE_TIME_COMPARE: Non-partitioned table time field comparison.
+        # - DOUBLE_TABLE_TIME_COMPARE: Two-table time field comparison.
+        # - FIELD_FORMAT_VALIDATE: Field format check.
+        # - FIELD_LENGTH_VALIDATE: Field length check.
+        # - FIELD_VALUE_RANGE_VALIDATE: Field value range check.
+        # - CODE_TABLE_COMPARE: Lookup table reference comparison.
+        # - STANDARD_CODE_TABLE_COMPARE: Data standard lookup table reference comparison.
+        # - SINGLE_TABLE_FIELD_VALUE_COMPARE: Non-partitioned table field value consistency comparison.
+        # - SINGLE_TABLE_FIELD_STATISTICAL_COMPARE: Non-partitioned table field statistical value consistency comparison.
+        # - SINGLE_TABLE_FIELD_EXP_COMPARE: Non-partitioned table field business logic consistency comparison.
+        # - DOUBLE_TABLE_FIELD_VALUE_COMPARE: Two-table field value consistency comparison.
+        # - DOUBLE_TABLE_FIELD_STATISTICAL_COMPARE: Two-table field statistical value consistency comparison.
+        # - CROSS_DOUBLE_TABLE_FIELD_STATISTICAL_COMPARE: Cross-source two-table field statistical value consistency comparison.
+        # - DOUBLE_TABLE_FIELD_EXP_COMPARE: Two-table field business logic consistency comparison.
+        # - TABLE_STABILITY_VALIDATE: Table stability check.
+        # - TABLE_FLUCTUATION_VALIDATE: Table fluctuation check.
+        # - FIELD_STABILITY_VALIDATE: Field stability check.
+        # - FIELD_FLUCTUATION_VALIDATE: Field fluctuation check.
+        # - CUSTOM_STATISTICAL_VALIDATE: Custom statistical metric check.
+        # - CUSTOM_DATA_DETAILS_VALIDATE: Custom data details check.
+        # - DATASOURCE_AVAILABLE_CHECK: Data source connectivity check.
+        # - TABLE_SCHEMA_CHECK: Table schema change check.
+        # - REAL_TIME_OFFLINE_COMPARE: Real-time and offline comparison.
+        # - REAL_TIME_STATISTICAL_VALIDATE: Real-time statistical value check.
+        # - REAL_TIME_MULTI_CHAIN_COMPARE: Real-time multi-link comparison.
         self.type = type
-        # The display name of the templatetype.
+        # The display name of the template type.
         self.type_name = type_name
 
     def validate(self):
@@ -371,11 +371,11 @@ class ListQualityTemplatesResponseBodyPageResultQualityTemplateListFormPropertyL
         name: str = None,
         value: str = None,
     ):
-        # The control type.
+        # The type of the control.
         self.component_type = component_type
-        # The property name.
+        # The name of the property.
         self.name = name
-        # The property value.
+        # The value of the property.
         self.value = value
 
     def validate(self):

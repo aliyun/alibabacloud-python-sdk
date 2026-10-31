@@ -17,7 +17,7 @@ class ListRowPermissionByUserIdResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. A value of OK indicates that the request was successful.
+        # The error code. A value of OK indicates that the request is successful.
         self.code = code
         # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
@@ -27,7 +27,7 @@ class ListRowPermissionByUserIdResponseBody(DaraModel):
         self.page_result = page_result
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -233,11 +233,11 @@ class ListRowPermissionByUserIdResponseBodyPageResultDataTables(DaraModel):
         mapping_column_name: str = None,
         resource_id: str = None,
     ):
-        # The table field.
+        # The field of the table.
         self.column_name = column_name
-        # The mapping field name.
+        # The name of the mapped field.
         self.mapping_column_name = mapping_column_name
-        # The table GUID.
+        # The GUID of the table.
         self.resource_id = resource_id
 
     def validate(self):
@@ -283,17 +283,17 @@ class ListRowPermissionByUserIdResponseBodyPageResultDataRules(DaraModel):
         status: int = None,
         user_mapping_list: List[main_models.ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingList] = None,
     ):
-        # The rule expressions.
+        # The expressions of the rule.
         self.expressions = expressions
-        # The rule ID.
+        # The ID of the rule.
         self.id = id
         # Indicates whether the rule is deleted.
         self.is_delete = is_delete
-        # The rule name.
+        # The name of the rule.
         self.rule_name = rule_name
         # The scope type of the rule.
         self.scope_type = scope_type
-        # The rule status.
+        # The status of the rule.
         self.status = status
         # The accounts bound to the rule.
         self.user_mapping_list = user_mapping_list
@@ -453,15 +453,15 @@ class ListRowPermissionByUserIdResponseBodyPageResultDataRulesExpressions(DaraMo
         type: str = None,
         values: List[str] = None,
     ):
-        # The mapping field name.
+        # The name of the mapped field.
         self.mapping_column_name = mapping_column_name
-        # The expression operator.
+        # The operator of the expression.
         self.operator = operator
         # The sub-expressions.
         self.sub_conditions = sub_conditions
-        # The expression type.
+        # The type of the expression.
         self.type = type
-        # The expression operation values.
+        # The operand values of the expression.
         self.values = values
 
     def validate(self):

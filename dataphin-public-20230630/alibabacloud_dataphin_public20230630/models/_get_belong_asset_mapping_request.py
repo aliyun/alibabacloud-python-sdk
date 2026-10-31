@@ -12,12 +12,13 @@ class GetBelongAssetMappingRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # Query command.
+        # The query command.
         self.asset_mapping_query = asset_mapping_query
-        # Tenant ID.
+        # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -60,11 +61,11 @@ class GetBelongAssetMappingRequestAssetMappingQuery(DaraModel):
         belong_guid: str = None,
         relation_type: str = None,
     ):
-        # The GUID of the belonging asset.
+        # The GUID of the owning asset.
         # 
         # This parameter is required.
         self.belong_guid = belong_guid
-        # The mapping relationship type. Valid values: VALID (mapped) and INVALID (invalid mapping).
+        # The type of the mapping relationship. Valid values: VALID (mapped) and INVALID (invalid mapping).
         self.relation_type = relation_type
 
     def validate(self):

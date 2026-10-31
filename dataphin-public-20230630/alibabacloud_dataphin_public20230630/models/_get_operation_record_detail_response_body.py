@@ -23,11 +23,11 @@ class GetOperationRecordDetailResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The backend exception details.
         self.message = message
-        # The execution record detail response.
+        # The operation record detail response.
         self.operation_record_detail_response = operation_record_detail_response
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -158,7 +158,7 @@ class GetOperationRecordDetailResponseBodyOperationRecordDetailResponseResults(D
         self.index = index
         # The result content.
         self.result = result
-        # The result SQL statement.
+        # The result SQL.
         self.sql = sql
         # The task ID.
         self.task_id = task_id

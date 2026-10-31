@@ -21,13 +21,13 @@ class GetStandardResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend exception.
+        # The backend exception details.
         self.message = message
         # Id of the request
         self.request_id = request_id
         # The standard details.
         self.standard_info = standard_info
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -106,9 +106,9 @@ class GetStandardResponseBodyStandardInfo(DaraModel):
         type: str = None,
         version: int = None,
     ):
-        # The attribute value configurations.
+        # The attribute value configuration.
         self.attribute_with_value_list = attribute_with_value_list
-        # The standard code.
+        # The code of the standard.
         self.code = code
         # The creator.
         self.creator = creator
@@ -120,13 +120,13 @@ class GetStandardResponseBodyStandardInfo(DaraModel):
         self.english_name = english_name
         # The lookup table.
         self.id = id
-        # The last modifier.
+        # The user who last updated the standard.
         self.last_modifier = last_modifier
         # The list of associated lookup tables.
         self.lookup_table_relations = lookup_table_relations
-        # The last modification time.
+        # The last modified time.
         self.modify_time = modify_time
-        # The standard name.
+        # The name of the standard.
         self.name = name
         # The owner.
         self.owner = owner
@@ -142,7 +142,7 @@ class GetStandardResponseBodyStandardInfo(DaraModel):
         self.standard_template = standard_template
         # The status of the standard.
         self.status = status
-        # The standard type.
+        # The type of the standard.
         self.type = type
         # The version number.
         self.version = version
@@ -337,15 +337,13 @@ class GetStandardResponseBodyStandardInfoStandardTemplate(DaraModel):
         template_from: str = None,
         version: int = None,
     ):
-        # The standard template code.
+        # The code of the standard template.
         self.code = code
-        # The standard template ID.
+        # The ID of the standard template.
         self.id = id
-        # The standard template name.
+        # The name of the standard template.
         self.name = name
-        # The source of the standard template. Valid values:
-        # - CUSTOM: Custom standard template.
-        # - SYSTEM: System built-in standard template.
+        # The source of the standard template. Valid values: CUSTOM: custom standard template. SYSTEM: built-in standard template.
         self.template_from = template_from
         # The version number.
         self.version = version
@@ -402,13 +400,13 @@ class GetStandardResponseBodyStandardInfoStandardSet(DaraModel):
         id: int = None,
         name: str = None,
     ):
-        # The standard set code.
+        # The code of the standard set.
         self.code = code
         # The folder to which the standard set belongs.
         self.directory = directory
-        # The standard set ID.
+        # The ID of the standard set.
         self.id = id
-        # The standard set name.
+        # The name of the standard set.
         self.name = name
 
     def validate(self):
@@ -458,8 +456,7 @@ class GetStandardResponseBodyStandardInfoStandardRelations(DaraModel):
         standard_status: str = None,
         version: int = None,
     ):
-        # The association type. Valid values:
-        # - RELATIVE.
+        # The relation type. Valid value: RELATIVE.
         self.relation_type = relation_type
         # The standard ID.
         self.standard_id = standard_id
@@ -566,7 +563,7 @@ class GetStandardResponseBodyStandardInfoStandardGeneralMonitorConfigStandardMon
         rule_validate_config_list: List[main_models.GetStandardResponseBodyStandardInfoStandardGeneralMonitorConfigStandardMonitorConfigListRuleValidateConfigList] = None,
         type: str = None,
     ):
-        # The associated attribute ID.
+        # The ID of the associated attribute.
         self.attribute_id = attribute_id
         # The monitoring configuration of the associated attribute.
         self.attribute_monitor_config = attribute_monitor_config
@@ -574,29 +571,21 @@ class GetStandardResponseBodyStandardInfoStandardGeneralMonitorConfigStandardMon
         self.attribute_name = attribute_name
         # The rule description.
         self.description = description
-        # The monitoring configuration ID. If empty, a new monitoring configuration is created. If an existing monitoring configuration ID is specified, the corresponding monitoring configuration is updated.
+        # The monitoring configuration ID. If this parameter is left empty, a new monitoring configuration is created. If an existing monitoring configuration ID is provided, the corresponding monitoring configuration is updated.
         self.id = id
-        # The method by which the monitoring configuration is added. Valid values:
-        # - BY_USER: manually added.
-        # - BY_SYSTEM_ATTRIBUTE: preset by system attribute.
+        # The addition method. Valid values: BY_USER (manual addition) and BY_SYSTEM_ATTRIBUTE (preset by system attributes).
         self.monitor_from = monitor_from
         # The rule template. This parameter is required when the monitoring type is QUALITY.
         self.quality_rule_template = quality_rule_template
-        # The rule configurations. This parameter is required when the monitoring type is QUALITY.
+        # The rule configuration. This parameter is required when the monitoring type is QUALITY.
         self.rule_config_list = rule_config_list
         # The rule name.
         self.rule_name = rule_name
-        # The rule subtype. Valid values:
-        # - BY_ATTRIBUTE: configured based on attributes.
-        # - CUSTOMIZED: custom configuration.
-        # 
-        # This parameter is required when the monitoring type is QUALITY.
+        # The rule subtype. This parameter is required when the monitoring type is QUALITY. Valid values: BY_ATTRIBUTE (configured based on attributes) and CUSTOMIZED (custom configuration).
         self.rule_sub_type = rule_sub_type
-        # The rule validation configurations. This parameter is required when the monitoring type is QUALITY.
+        # The rule validation configuration. This parameter is required when the monitoring type is QUALITY.
         self.rule_validate_config_list = rule_validate_config_list
-        # The monitoring type. Valid values:
-        # - METADATA: metadata monitoring.
-        # - QUALITY: data quality monitoring.
+        # The monitoring type. Valid values: METADATA (metadata monitoring) and QUALITY (data quality monitoring).
         self.type = type
 
     def validate(self):
@@ -719,31 +708,19 @@ class GetStandardResponseBodyStandardInfoStandardGeneralMonitorConfigStandardMon
         type: str = None,
         value: str = None,
     ):
-        # The validation configuration ID. This ID is randomly generated by the business and must be unique.
+        # The validation configuration ID. This ID is randomly generated by the business system and must be unique.
         self.id = id
         # The metric. This parameter is required when the validation type is EXPRESSION.
         self.metric = metric
         # The metric name. This parameter is required when the validation type is EXPRESSION.
         self.metric_name = metric_name
-        # The operator. If the validation type is EXPRESSION, valid values:
-        # - EQUAL: equal to.
-        # - NOT_EQUAL: not equal to.
-        # - LARGER: greater than.
-        # - LARGE_OR_EQUAL: greater than or equal to.
-        # - SMALLER: less than.
-        # - SMALLER_OR_EQUAL: less than or equal to.
-        # 
-        # If the validation type is RELATION, valid values:
-        # - AND: and.
-        # - OR: or.
+        # The operator. If the validation type is EXPRESSION, valid values are EQUAL (equal to), NOT_EQUAL (not equal to), LARGER (greater than), LARGE_OR_EQUAL (greater than or equal to), SMALLER (less than), and SMALLER_OR_EQUAL (less than or equal to). If the validation type is RELATION, valid values are AND (and) and OR (or).
         self.operator = operator
         # The parent validation configuration ID. The parent rule validation type can only be RELATION.
         self.parent_id = parent_id
-        # The rule validation type. Valid values:
-        # - RELATION: relation.
-        # - EXPRESSION: expression.
+        # The rule validation type. Valid values: RELATION (relationship) and EXPRESSION (expression).
         self.type = type
-        # The comparison value.
+        # The value to compare.
         self.value = value
 
     def validate(self):
@@ -810,7 +787,7 @@ class GetStandardResponseBodyStandardInfoStandardGeneralMonitorConfigStandardMon
     ):
         # The configuration item.
         self.key = key
-        # The configuration item value.
+        # The value of the configuration item.
         self.value = value
 
     def validate(self):
@@ -850,9 +827,7 @@ class GetStandardResponseBodyStandardInfoStandardGeneralMonitorConfigStandardMon
         self.id = id
         # The template name.
         self.name = name
-        # The template source. Valid values:
-        # - FROM_SYSTEM: system template.
-        # - CUSTOMIZED: custom template.
+        # The template source. Valid values: FROM_SYSTEM (system template) and CUSTOMIZED (custom template).
         self.type = type
 
     def validate(self):
@@ -894,13 +869,13 @@ class GetStandardResponseBodyStandardInfoStandardGeneralMonitorConfigStandardMon
         is_case_sensitive: bool = None,
         type: str = None,
     ):
-        # The field to check.
+        # The column to be checked.
         self.column_name = column_name
-        # Indicates whether the check is case-sensitive.
+        # Specifies whether the check is case-sensitive.
         self.is_case_sensitive = is_case_sensitive
         # The monitoring method. Valid values:
-        # - METADATA: metadata monitoring.
-        # - QUALITY: data quality monitoring.
+        # - METADATA: metadata monitoring
+        # - QUALITY: data quality monitoring
         self.type = type
 
     def validate(self):
@@ -941,7 +916,7 @@ class GetStandardResponseBodyStandardInfoOwner(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # The user ID.
+        # The ID of the user.
         self.id = id
         # The username.
         self.name = name
@@ -989,7 +964,7 @@ class GetStandardResponseBodyStandardInfoLookupTableRelations(DaraModel):
         self.attribute_name = attribute_name
         # The lookup table code.
         self.lookup_table_code = lookup_table_code
-        # The lookup table ID.
+        # The ID of the lookup table.
         self.lookup_table_id = lookup_table_id
 
     def validate(self):
@@ -1042,7 +1017,7 @@ class GetStandardResponseBodyStandardInfoLastModifier(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # The user ID.
+        # The ID of the user.
         self.id = id
         # The username.
         self.name = name
@@ -1084,9 +1059,7 @@ class GetStandardResponseBodyStandardInfoEffectiveTimeConfig(DaraModel):
         self.end_time = end_time
         # The start time of the effective period.
         self.start_time = start_time
-        # The effective period type. Valid values:
-        # - FOREVER: permanent.
-        # - TIME_PERIOD: time period.
+        # The effective period type. Valid values: FOREVER: permanent. TIME_PERIOD: time period.
         self.type = type
 
     def validate(self):
@@ -1127,7 +1100,7 @@ class GetStandardResponseBodyStandardInfoCreator(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # The user ID.
+        # The ID of the user.
         self.id = id
         # The username.
         self.name = name
@@ -1215,7 +1188,7 @@ class GetStandardResponseBodyStandardInfoAttributeWithValueListAttribute(DaraMod
         self.code = code
         # The description.
         self.description = description
-        # Indicates whether the monitoring configuration is enabled.
+        # Specifies whether to enable the monitoring configuration.
         self.enable_monitor_config = enable_monitor_config
         # The attribute ID.
         self.id = id
@@ -1225,16 +1198,16 @@ class GetStandardResponseBodyStandardInfoAttributeWithValueListAttribute(DaraMod
         self.name = name
         # The referenced attribute information.
         self.ref_attribute = ref_attribute
-        # Indicates whether the attribute is required.
+        # Specifies whether the attribute is required.
         self.required = required
         # The attribute type. Valid values:
-        # - BIZ_ATTRIBUTE: business attribute.
-        # - TECH_ATTRIBUTE: technical attribute.
-        # - MANAGEMENT_ATTRIBUTE: management attribute.
-        # - QUALITY_ATTRIBUTE: quality attribute.
-        # - MASTER_DATA_ATTRIBUTE: master data attribute.
-        # - LIFECYCLE_ATTRIBUTE: lifecycle attribute.
-        # - SECURITY_ATTRIBUTE: security attribute.
+        # - BIZ_ATTRIBUTE: business attribute
+        # - TECH_ATTRIBUTE: technical attribute
+        # - MANAGEMENT_ATTRIBUTE: management attribute
+        # - QUALITY_ATTRIBUTE: quality attribute
+        # - MASTER_DATA_ATTRIBUTE: master data attribute
+        # - LIFECYCLE_ATTRIBUTE: lifecycle attribute
+        # - SECURITY_ATTRIBUTE: security attribute
         self.type = type
         # The value configuration.
         self.value_config = value_config
@@ -1331,22 +1304,22 @@ class GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeValueCon
         value_range: main_models.GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeValueConfigValueRange = None,
     ):
         # The data type of the attribute value. Valid values:
-        # - STRING: string.
-        # - BIGINT: numeric type.
-        # - DOUBLE: floating-point type.
-        # - DATE: date, accurate to the day.
-        # - DATETIME: date, accurate to milliseconds.
-        # - BOOLEAN: Boolean.
+        # - STRING: string
+        # - BIGINT: numeric type
+        # - DOUBLE: floating-point type
+        # - DATE: date, accurate to the day
+        # - DATETIME: date and time, accurate to the millisecond
+        # - BOOLEAN: Boolean
         self.data_type = data_type
         # The default value.
         self.default_value = default_value
-        # The length of the attribute value. If empty or -1, the length is not limited. Typically, only string types have a length limit for attribute values.
+        # The length of the attribute value. An empty value or -1 indicates that the length is not limited. Typically, only the string type limits the length of the attribute value.
         self.length = length
         # The attribute value type. Valid values:
-        # - CUSTOMIZED: custom input.
-        # - SINGLE_ENUM: single enumeration value.
-        # - MULTIPLE_ENUMS: multiple enumeration values.
-        # - RANGE: range value.
+        # - CUSTOMIZED: custom input
+        # - SINGLE_ENUM: single enum value
+        # - MULTIPLE_ENUMS: multiple enum values
+        # - RANGE: range value
         self.type = type
         # The value range.
         self.value_range = value_range
@@ -1406,27 +1379,27 @@ class GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeValueCon
         value_constraint: str = None,
         value_list: List[str] = None,
     ):
-        # The value range. This parameter takes effect when the value source is set to DATAPHIN_ATTRIBUTE. Valid values:
-        # - BIZ_UNIT: business unit.
-        # - PROJECT: project.
-        # - USER: user.
-        # - USER_GROUP: user group.
+        # The value range. This parameter takes effect when the value constraint is set to DATAPHIN_ATTRIBUTE. Valid values:
+        # - BIZ_UNIT: business unit
+        # - PROJECT: project
+        # - USER: user
+        # - USER_GROUP: user group
         self.dataphin_attribute_type = dataphin_attribute_type
-        # The value range. This parameter takes effect when the value source is set to LOOKUP_TABLE.
+        # The value range. This parameter takes effect when the value constraint is set to LOOKUP_TABLE.
         self.lookup_table_reference = lookup_table_reference
-        # The value range. This parameter takes effect when the value source is set to MIN_MAX.
+        # The value range. This parameter takes effect when the value constraint is set to MIN_MAX.
         self.min_max_value_config = min_max_value_config
-        # The value source. Valid values:
-        # - NONE: no constraint.
-        # - LIST: obtained from a list.
-        # - LOOKUP_TABLE: lookup table.
-        # - MIN_MAX: value between the minimum and maximum.
-        # - DATAPHIN_ATTRIBUTE: Dataphin system property.
-        # - BUILT_IN_DATA_TYPES: built-in data types.
-        # - BUILT_IN_DATA_CLASSIFICATION: built-in data categorization.
-        # - BUILT_IN_DATA_LEVEL: built-in data security classification.
+        # The value constraint. Valid values:
+        # - NONE: no constraint
+        # - LIST: obtained from a list
+        # - LOOKUP_TABLE: lookup table
+        # - MIN_MAX: value between the maximum and minimum values
+        # - DATAPHIN_ATTRIBUTE: Dataphin system property
+        # - BUILT_IN_DATA_TYPES: built-in data type
+        # - BUILT_IN_DATA_CLASSIFICATION: built-in data categorization
+        # - BUILT_IN_DATA_LEVEL: built-in data security classification
         self.value_constraint = value_constraint
-        # The value range. This parameter takes effect when the value source is set to LIST.
+        # The value range. This parameter takes effect when the value constraint is set to LIST.
         self.value_list = value_list
 
     def validate(self):
@@ -1486,9 +1459,9 @@ class GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeValueCon
         max_value: str = None,
         min_value: str = None,
     ):
-        # Indicates whether the maximum value is included.
+        # Specifies whether to include the maximum value.
         self.include_max_value = include_max_value
-        # Indicates whether the minimum value is included.
+        # Specifies whether to include the minimum value.
         self.include_min_value = include_min_value
         # The maximum value.
         self.max_value = max_value
@@ -1539,9 +1512,9 @@ class GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeValueCon
         column: str = None,
         lookup_table_id: int = None,
     ):
-        # The referenced lookup table field.
+        # The referenced column in the lookup table.
         self.column = column
-        # The lookup table ID.
+        # The ID of the lookup table.
         self.lookup_table_id = lookup_table_id
 
     def validate(self):
@@ -1616,9 +1589,9 @@ class GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeRefAttri
         standard_reference: main_models.GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeRefAttributeAttributeFromInfoStandardReference = None,
     ):
         # The attribute source. Valid values:
-        # - SYSTEM: system attribute.
-        # - CUSTOM: custom attribute.
-        # - STANDARD: standard.
+        # - SYSTEM: system attribute
+        # - CUSTOM: custom attribute
+        # - STANDARD: standard
         self.attribute_from = attribute_from
         # The corresponding standard. This parameter takes effect when the attribute source is set to STANDARD.
         self.standard_reference = standard_reference
@@ -1695,13 +1668,13 @@ class GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeMonitorC
         is_case_sensitive: bool = None,
         type: str = None,
     ):
-        # The field to check.
+        # The column to be checked.
         self.column_name = column_name
-        # Indicates whether the check is case-sensitive.
+        # Specifies whether the check is case-sensitive.
         self.is_case_sensitive = is_case_sensitive
         # The monitoring method. Valid values:
-        # - METADATA: metadata monitoring.
-        # - QUALITY: data quality monitoring.
+        # - METADATA: metadata monitoring
+        # - QUALITY: data quality monitoring
         self.type = type
 
     def validate(self):

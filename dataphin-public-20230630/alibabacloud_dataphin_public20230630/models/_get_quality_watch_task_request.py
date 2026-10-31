@@ -15,8 +15,9 @@ class GetQualityWatchTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator ID.
         self.op_user_id = op_user_id
-        # The quality watchtask ID.
+        # The watchtask ID.
         # 
         # This parameter is required.
         self.watch_task_id = watch_task_id

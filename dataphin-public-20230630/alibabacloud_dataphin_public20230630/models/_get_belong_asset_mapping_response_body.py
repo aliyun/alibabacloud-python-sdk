@@ -19,15 +19,15 @@ class GetBelongAssetMappingResponseBody(DaraModel):
     ):
         # The backend response code.
         self.code = code
-        # The HTTP response code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
         # The list of mapping relationships.
         self.mapping_relation_list = mapping_relation_list
-        # The details of the backend response exception.
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -103,11 +103,11 @@ class GetBelongAssetMappingResponseBodyMappingRelationList(DaraModel):
         standard_set_name: str = None,
         standard_stage: str = None,
     ):
-        # The type of the asset. Valid values: COLUMN (field) and INDEX (metric).
+        # The asset type. Valid values: COLUMN (field) and INDEX (metric).
         self.asset_type = asset_type
         # The GUID of the asset.
         self.guid = guid
-        # The update time.
+        # The update time. The format is YYYY-MM-DD HH:mm:ss.
         self.modify_time = modify_time
         # The name of the asset.
         self.name = name
@@ -117,7 +117,7 @@ class GetBelongAssetMappingResponseBodyMappingRelationList(DaraModel):
         self.standard_id = standard_id
         # The name of the standard.
         self.standard_name = standard_name
-        # The directory where the standard set is located.
+        # The folder where the standard set is located.
         self.standard_set_directory = standard_set_directory
         # The ID of the standard set.
         self.standard_set_id = standard_set_id

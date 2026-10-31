@@ -12,7 +12,7 @@ class GetBatchTaskVersionsRequest(DaraModel):
         op_user_id: str = None,
         project_id: int = None,
     ):
-        # The node ID in the node directory tree.
+        # The node ID in the directory tree.
         # 
         # This parameter is required.
         self.file_id = file_id
@@ -20,8 +20,9 @@ class GetBatchTaskVersionsRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
-        # The ID of the project to which the node belongs.
+        # The project to which the node belongs.
         # 
         # This parameter is required.
         self.project_id = project_id

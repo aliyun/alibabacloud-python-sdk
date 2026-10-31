@@ -21,11 +21,11 @@ class GetOperationRecordRunCodeResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The backend exception details.
         self.message = message
-        # The operation log code response.
+        # The operation record code response.
         self.operation_log_code_response = operation_log_code_response
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

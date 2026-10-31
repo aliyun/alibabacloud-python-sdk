@@ -12,16 +12,17 @@ class ResumePhysicalNodeShrinkRequest(DaraModel):
         op_user_id: str = None,
         resume_command_shrink: str = None,
     ):
-        # Environment identifier.
-        # - DEV: Development environment
-        # - PROD (default): Production environment
+        # The environment identifier. Valid values:
+        # - DEV: development environment 
+        # - PROD: production environment. This is the default value.
         self.env = env
-        # Tenant ID.
+        # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
-        # Resume scheduling request.
+        # The request to resume scheduling.
         # 
         # This parameter is required.
         self.resume_command_shrink = resume_command_shrink

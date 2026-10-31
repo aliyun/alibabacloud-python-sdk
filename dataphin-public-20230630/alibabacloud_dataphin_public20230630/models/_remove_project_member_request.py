@@ -23,8 +23,9 @@ class RemoveProjectMemberRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
-        # The command to remove a member.
+        # The member removal command.
         # 
         # This parameter is required.
         self.remove_command = remove_command
@@ -79,7 +80,7 @@ class RemoveProjectMemberRequestRemoveCommand(DaraModel):
         # 
         # This parameter is required.
         self.env = env
-        # The user IDs.
+        # The list of user IDs.
         self.user_id_list = user_id_list
 
     def validate(self):

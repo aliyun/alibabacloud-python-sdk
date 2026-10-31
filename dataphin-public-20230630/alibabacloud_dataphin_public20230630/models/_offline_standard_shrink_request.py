@@ -11,7 +11,7 @@ class OfflineStandardShrinkRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The offline instruction.
+        # The offline command.
         # 
         # This parameter is required.
         self.offline_command_shrink = offline_command_shrink
@@ -19,6 +19,7 @@ class OfflineStandardShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
 
     def validate(self):

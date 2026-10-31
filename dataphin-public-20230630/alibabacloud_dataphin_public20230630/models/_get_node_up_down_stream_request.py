@@ -19,8 +19,9 @@ class GetNodeUpDownStreamRequest(DaraModel):
         # The downstream depth. Default value: 1.
         self.down_stream_depth = down_stream_depth
         # The environment identifier. Valid values:
-        # - DEV: development environment. 
-        # - PROD (default): production environment.
+        # - DEV: Development environment.
+        # - PROD: Production environment.
+        # Default value: PROD.
         self.env = env
         # The node ID.
         # 
@@ -30,6 +31,7 @@ class GetNodeUpDownStreamRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
         # The project ID.
         self.project_id = project_id
@@ -100,7 +102,7 @@ class GetNodeUpDownStreamRequestNodeId(DaraModel):
         field_id_list: str = None,
         id: str = None,
     ):
-        # This parameter can be specified when the node ID is a logical table node ID. If this parameter is not specified, the full table is used by default.
+        # The list of field IDs. This parameter is applicable when the node is a logical table node. If you do not specify this parameter, all fields in the table are queried by default.
         self.field_id_list = field_id_list
         # The node ID.
         # 

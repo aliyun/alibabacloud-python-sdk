@@ -12,7 +12,7 @@ class ApplyDataServiceApiShrinkRequest(DaraModel):
         op_user_id: str = None,
         project_id: int = None,
     ):
-        # The apply command.
+        # The application command.
         # 
         # This parameter is required.
         self.apply_command_shrink = apply_command_shrink
@@ -20,6 +20,7 @@ class ApplyDataServiceApiShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
         # The data service project ID.
         # 

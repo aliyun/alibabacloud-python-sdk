@@ -17,17 +17,17 @@ class GetInstanceUpDownStreamResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. A value of OK indicates that the request was successful.
+        # The error code. OK indicates that the request is successful.
         self.code = code
         # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
-        # The instance dag data, including the current instance and its upstream and downstream instances.
+        # The DAG of the instance, including the current instance and its upstream and downstream instances.
         self.instance_dag_info = instance_dag_info
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -91,7 +91,7 @@ class GetInstanceUpDownStreamResponseBodyInstanceDagInfo(DaraModel):
     ):
         # The downstream instances.
         self.down_instance_list = down_instance_list
-        # The center instances.
+        # The central instances.
         self.start_instance_list = start_instance_list
         # The upstream instances.
         self.up_instance_list = up_instance_list
@@ -236,9 +236,9 @@ class GetInstanceUpDownStreamResponseBodyInstanceDagInfoStartInstanceList(DaraMo
         # The node ID.
         self.node_id = node_id
         # The node type. Valid values:
-        # - DATA_PROCESS: code node.
-        # - BBOX_LOGIC_TABLE_NODE: logical table node.
-        # - PIPELINE_NODE: pipeline node.
+        # - DATA_PROCESS: Code task.
+        # - BBOX_LOGIC_TABLE_NODE: Logical table node.
+        # - PIPELINE_NODE: Pipeline node.
         self.node_type = node_type
 
     def validate(self):

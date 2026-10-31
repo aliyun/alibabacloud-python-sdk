@@ -13,15 +13,15 @@ class UpdateStandardMappingToInvalidResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Backend response code
+        # The backend response code.
         self.code = code
-        # HTTP response code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Backend response exception details
+        # The backend exception details.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Whether the request is successful
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

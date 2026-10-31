@@ -11,12 +11,13 @@ class UpdateStandardMappingToInvalidShrinkRequest(DaraModel):
         op_user_id: str = None,
         update_command_shrink: str = None,
     ):
-        # Tenant ID
+        # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
-        # Update Command
+        # The update instruction.
         # 
         # This parameter is required.
         self.update_command_shrink = update_command_shrink

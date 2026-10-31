@@ -15,7 +15,7 @@ class GetLatestSubmitDetailResponseBody(DaraModel):
         submit_detail_result: main_models.GetLatestSubmitDetailResponseBodySubmitDetailResult = None,
         success: bool = None,
     ):
-        # The error code. A value of OK indicates that the request was successful.
+        # The error code. A value of OK indicates that the request is successful.
         self.code = code
         # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
@@ -23,9 +23,9 @@ class GetLatestSubmitDetailResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The pending submit details.
+        # The details of the pending release.
         self.submit_detail_result = submit_detail_result
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -89,32 +89,29 @@ class GetLatestSubmitDetailResponseBodySubmitDetailResult(DaraModel):
         submit_status: str = None,
         tag: str = None,
     ):
-        # The submit record ID.
+        # The ID of the commit record.
         self.id = id
-        # The publish status. Valid values: 
-        # - NOT_VERIFIED: not verified.
-        # - APPROVING: approval in progress.
-        # - APPROVE_FAILED: approval failed.
-        # - APPROVE_SUCCESS: approval succeeded.
-        # - APPROVE_REVOKED: approval revoked.
-        # - CHECKING: publish verification in progress.
-        # - CHECK_FAILED: publish verification failed.
-        # - CHECK_SUCCESS: publish verification succeeded.
-        # - PUBLISHING: publishing in progress.
-        # - FAILED: publish failed.
-        # - SUCCESS: publish succeeded.
+        # The status of the publish record. Valid values: 
+        # - NOT_VERIFIED: Not verified.
+        # - APPROVING: Approving.
+        # - APPROVE_FAILED: Approval failed.
+        # - APPROVE_SUCCESS: Approval succeeded.
+        # - APPROVE_REVOKED: Approval revoked.
+        # - CHECKING: Checking.
+        # - CHECK_FAILED: Check failed.
+        # - CHECK_SUCCESS: Check succeeded.
+        # - PUBLISHING: Publishing.
+        # - FAILED: Failed.
+        # - SUCCESS: Succeeded.
         self.publish_status = publish_status
-        # The pending submit record object.
+        # The object of the pending release record.
         self.release_object = release_object
-        # The submit status. Valid values: 
-        # 
-        # - TO_BE_PUBLISHED: pending.
-        # 
-        # - PUBLISHED: published.
-        # 
-        # - PUBLISHING: publishing.
+        # The status of the pending release record. Valid values:
+        # - TO_BE_PUBLISHED: Pending release.
+        # - PUBLISHED: Published.
+        # - PUBLISHING: Publishing.
         self.submit_status = submit_status
-        # The record tag.
+        # The tag of the record.
         self.tag = tag
 
     def validate(self):
@@ -175,15 +172,15 @@ class GetLatestSubmitDetailResponseBodySubmitDetailResultReleaseObject(DaraModel
     ):
         # The change type. Valid values: CREATE, UPDATE, and DELETE.
         self.change_type = change_type
-        # The node ID.
+        # The ID of the node.
         self.node_id = node_id
-        # The object version.
+        # The version of the object.
         self.object_version = object_version
-        # The project ID.
+        # The ID of the project.
         self.project_id = project_id
-        # The submit comment.
+        # The commit description.
         self.submit_comment = submit_comment
-        # The submit object.
+        # The object to be published.
         self.submit_object = submit_object
 
     def validate(self):
@@ -247,7 +244,7 @@ class GetLatestSubmitDetailResponseBodySubmitDetailResultReleaseObjectSubmitObje
     ):
         # The object ID.
         self.object_id = object_id
-        # The object name.
+        # The name of the object.
         self.object_name = object_name
         # The object type.
         self.object_type = object_type

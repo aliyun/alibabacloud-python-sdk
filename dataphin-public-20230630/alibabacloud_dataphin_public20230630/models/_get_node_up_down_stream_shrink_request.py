@@ -18,8 +18,9 @@ class GetNodeUpDownStreamShrinkRequest(DaraModel):
         # The downstream depth. Default value: 1.
         self.down_stream_depth = down_stream_depth
         # The environment identifier. Valid values:
-        # - DEV: development environment. 
-        # - PROD (default): production environment.
+        # - DEV: Development environment.
+        # - PROD: Production environment.
+        # Default value: PROD.
         self.env = env
         # The node ID.
         # 
@@ -29,6 +30,7 @@ class GetNodeUpDownStreamShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
         # The project ID.
         self.project_id = project_id

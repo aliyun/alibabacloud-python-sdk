@@ -20,6 +20,7 @@ class GetOperationRecordRunCodeRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -62,7 +63,7 @@ class GetOperationRecordRunCodeRequestCodeCommand(DaraModel):
         operation_id: int = None,
         project_id: int = None,
     ):
-        # The operation log ID.
+        # The operation record ID.
         # 
         # This parameter is required.
         self.operation_id = operation_id

@@ -18,6 +18,7 @@ class UpdateStandardRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
         # The update command.
         # 
@@ -76,9 +77,9 @@ class UpdateStandardRequestUpdateCommand(DaraModel):
         self.description = description
         # The effective period configuration.
         self.effective_time_config = effective_time_config
-        # Specifies whether to generate a standard code based on rules. If set to true, the standard code specified in the attribute values is ignored and regenerated.
+        # Specifies whether to generate standard codes based on rules. If this parameter is set to true, invalid standard codes entered in the attribute values are regenerated.
         self.need_generate_standard_code = need_generate_standard_code
-        # The owner. If not specified, the current user is used.
+        # The owner. If this parameter is not specified, the current user is used as the owner.
         self.owner = owner
         # The standard monitoring configuration.
         self.standard_general_monitor_config = standard_general_monitor_config
@@ -86,7 +87,7 @@ class UpdateStandardRequestUpdateCommand(DaraModel):
         # 
         # This parameter is required.
         self.standard_id = standard_id
-        # The reference to the standard set that the current standard belongs to.
+        # The reference to the standard set to which the current standard belongs.
         # 
         # This parameter is required.
         self.standard_set_reference = standard_set_reference
@@ -94,7 +95,7 @@ class UpdateStandardRequestUpdateCommand(DaraModel):
         # 
         # This parameter is required.
         self.standard_status = standard_status
-        # The standard template to which the standard belongs.
+        # The reference to the standard template to which the standard belongs.
         # 
         # This parameter is required.
         self.standard_template_reference = standard_template_reference
@@ -193,13 +194,13 @@ class UpdateStandardRequestUpdateCommandStandardTemplateReference(DaraModel):
         id: int = None,
         version: int = None,
     ):
-        # The attribute values corresponding to the attributes in the referenced template. If left empty, default values are used.
+        # The attribute values for the attribute list in the referenced template. If this parameter is left empty, the default values are used.
         self.attribute_value_list = attribute_value_list
         # The standard template ID.
         # 
         # This parameter is required.
         self.id = id
-        # The version number of the standard template. The latest version is used by default.
+        # The version number of the standard template. By default, the latest version is used.
         self.version = version
 
     def validate(self):
@@ -314,7 +315,7 @@ class UpdateStandardRequestUpdateCommandStandardGeneralMonitorConfig(DaraModel):
         self,
         standard_monitor_config_list: List[main_models.UpdateStandardRequestUpdateCommandStandardGeneralMonitorConfigStandardMonitorConfigList] = None,
     ):
-        # The list of standard monitoring configurations.
+        # The standard monitoring configuration list.
         # 
         # This parameter is required.
         self.standard_monitor_config_list = standard_monitor_config_list
@@ -363,39 +364,40 @@ class UpdateStandardRequestUpdateCommandStandardGeneralMonitorConfigStandardMoni
         rule_validate_config_list: List[main_models.UpdateStandardRequestUpdateCommandStandardGeneralMonitorConfigStandardMonitorConfigListRuleValidateConfigList] = None,
         type: str = None,
     ):
-        # The associated attribute ID.
+        # The ID of the associated attribute.
         self.attribute_id = attribute_id
-        # The monitoring configuration for the associated attribute.
+        # The monitoring configuration of the associated attribute.
         self.attribute_monitor_config = attribute_monitor_config
         # The attribute name.
         self.attribute_name = attribute_name
         # The rule description.
         self.description = description
-        # The monitoring configuration ID. If left empty, a new monitoring configuration is created. If an existing monitoring configuration ID is specified, the corresponding monitoring configuration is updated.
+        # The monitoring configuration ID. If this parameter is left empty, a new monitoring configuration is created. If an existing monitoring configuration ID is specified, the corresponding monitoring configuration is updated.
         self.id = id
-        # The method used to add the monitoring configuration. Valid values:
-        # - BY_USER: manually added.
-        # - BY_SYSTEM_ATTRIBUTE: preset by system attribute.
+        # The addition method. Valid values:
+        # - BY_USER: Manual addition.
+        # - BY_SYSTEM_ATTRIBUTE: Preset by system attributes.
         # 
         # This parameter is required.
         self.monitor_from = monitor_from
         # The rule template. This parameter is required when the monitoring type is QUALITY.
         self.quality_rule_template = quality_rule_template
-        # The rule configurations. This parameter is required when the monitoring type is QUALITY.
+        # The rule configuration. This parameter is required when the monitoring type is QUALITY.
         self.rule_config_list = rule_config_list
         # The rule name.
         # 
         # This parameter is required.
         self.rule_name = rule_name
-        # The rule subtype. This parameter is required when the monitoring type is QUALITY. Valid values:
-        # - BY_ATTRIBUTE: configured based on attributes.
-        # - CUSTOMIZED: custom configuration.
+        # The rule subtype. Valid values:
+        # - BY_ATTRIBUTE: Attribute-based configuration.
+        # - CUSTOMIZED: Custom configuration.
+        # This parameter is required when the monitoring type is QUALITY.
         self.rule_sub_type = rule_sub_type
-        # The rule validation configurations. This parameter is required when the monitoring type is QUALITY.
+        # The rule validation configuration. This parameter is required when the monitoring type is QUALITY.
         self.rule_validate_config_list = rule_validate_config_list
         # The monitoring type. Valid values:
-        # - METADATA: metadata monitoring.
-        # - QUALITY: data quality monitoring.
+        # - METADATA: Metadata monitoring.
+        # - QUALITY: Data quality monitoring.
         # 
         # This parameter is required.
         self.type = type
@@ -529,28 +531,27 @@ class UpdateStandardRequestUpdateCommandStandardGeneralMonitorConfigStandardMoni
         # The metric name. This parameter is required when the validation type is EXPRESSION.
         self.metric_name = metric_name
         # The operator. If the validation type is EXPRESSION, valid values:
-        # - EQUAL: equal to.
-        # - NOT_EQUAL: not equal to.
-        # - LARGER: greater than.
-        # - LARGE_OR_EQUAL: greater than or equal to.
-        # - SMALLER: less than.
-        # - SMALLER_OR_EQUAL: less than or equal to.
-        # 
+        # - EQUAL: Equal to.
+        # - NOT_EQUAL: Not equal to.
+        # - LARGER: Greater than.
+        # - LARGE_OR_EQUAL: Greater than or equal to.
+        # - SMALLER: Less than.
+        # - SMALLER_OR_EQUAL: Less than or equal to.
         # If the validation type is RELATION, valid values:
-        # - AND: and.
-        # - OR: or.
+        # - AND: And.
+        # - OR: Or.
         # 
         # This parameter is required.
         self.operator = operator
         # The parent validation configuration ID. The parent rule validation type can only be RELATION.
         self.parent_id = parent_id
         # The rule validation type. Valid values:
-        # - RELATION: relation.
-        # - EXPRESSION: expression.
+        # - RELATION: Relationship.
+        # - EXPRESSION: Expression.
         # 
         # This parameter is required.
         self.type = type
-        # The value to compare against.
+        # The value to be compared.
         self.value = value
 
     def validate(self):
@@ -619,7 +620,7 @@ class UpdateStandardRequestUpdateCommandStandardGeneralMonitorConfigStandardMoni
         # 
         # This parameter is required.
         self.key = key
-        # The configuration item value.
+        # The value of the configuration item.
         # 
         # This parameter is required.
         self.value = value
@@ -666,8 +667,8 @@ class UpdateStandardRequestUpdateCommandStandardGeneralMonitorConfigStandardMoni
         # This parameter is required.
         self.name = name
         # The template source. Valid values:
-        # - FROM_SYSTEM: system template.
-        # - CUSTOMIZED: custom template.
+        # - FROM_SYSTEM: System template.
+        # - CUSTOMIZED: Custom template.
         # 
         # This parameter is required.
         self.type = type
@@ -711,15 +712,15 @@ class UpdateStandardRequestUpdateCommandStandardGeneralMonitorConfigStandardMoni
         is_case_sensitive: bool = None,
         type: str = None,
     ):
-        # The field to check.
+        # The field to be checked.
         self.column_name = column_name
         # Specifies whether the check is case-sensitive.
         # 
         # This parameter is required.
         self.is_case_sensitive = is_case_sensitive
         # The monitoring method. Valid values:
-        # - METADATA: metadata monitoring.
-        # - QUALITY: data quality monitoring.
+        # - METADATA: Metadata monitoring.
+        # - QUALITY: Data quality monitoring.
         # 
         # This parameter is required.
         self.type = type
@@ -767,9 +768,7 @@ class UpdateStandardRequestUpdateCommandEffectiveTimeConfig(DaraModel):
         self.end_time = end_time
         # The start time of the effective period.
         self.start_time = start_time
-        # The effective period type. Valid values:
-        # - FOREVER: permanent.
-        # - TIME_PERIOD: time period.
+        # The effective period type. Valid values: FOREVER (permanent) and TIME_PERIOD (time period).
         # 
         # This parameter is required.
         self.type = type

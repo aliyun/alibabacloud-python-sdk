@@ -11,7 +11,7 @@ class AddRegisterLineageShrinkRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The command for registering and adding data lineage.
+        # The command to register data lineage.
         # 
         # This parameter is required.
         self.add_register_lineage_command_shrink = add_register_lineage_command_shrink
@@ -19,6 +19,7 @@ class AddRegisterLineageShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator ID.
         self.op_user_id = op_user_id
 
     def validate(self):

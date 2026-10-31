@@ -25,6 +25,7 @@ class GetPipelineAsyncResultRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the user who performs the operation.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -73,9 +74,7 @@ class GetPipelineAsyncResultRequestContext(DaraModel):
         env: str = None,
         project_id: int = None,
     ):
-        # The current operation environment. Valid values:
-        # - DEV: development environment.
-        # - PROD: production environment.
+        # The current operation environment. Valid values: DEV: development environment. PROD: production environment.
         # 
         # This parameter is required.
         self.env = env

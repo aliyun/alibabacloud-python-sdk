@@ -12,7 +12,7 @@ class GetDataServiceAppsByGroupIdRequest(DaraModel):
         op_user_id: str = None,
         project_id: int = None,
     ):
-        # The application group ID.
+        # The ID of the application group.
         # 
         # This parameter is required.
         self.group_id = group_id
@@ -20,8 +20,9 @@ class GetDataServiceAppsByGroupIdRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
-        # The data service project ID.
+        # The ID of the data service project.
         # 
         # This parameter is required.
         self.project_id = project_id

@@ -12,16 +12,17 @@ class GetPhysicalNodeByOutputNameRequest(DaraModel):
         op_user_id: str = None,
         output_name: str = None,
     ):
-        # Environment identifier
-        # - DEV: Development environment
-        # - PROD (default): Production environment
+        # The environment identifier. Valid values:
+        # - DEV: development environment 
+        # - PROD: production environment. This is the default value.
         self.env = env
-        # Tenant ID
+        # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
-        # Node output name
+        # The output name of the node.
         # 
         # This parameter is required.
         self.output_name = output_name

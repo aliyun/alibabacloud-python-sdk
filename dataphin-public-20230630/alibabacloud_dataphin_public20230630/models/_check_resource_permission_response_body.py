@@ -17,17 +17,17 @@ class CheckResourcePermissionResponseBody(DaraModel):
         resource_permission_list: List[main_models.CheckResourcePermissionResponseBodyResourcePermissionList] = None,
         success: bool = None,
     ):
-        # Error code. OK indicates a successful request
+        # The error code. A value of OK indicates that the request is successful.
         self.code = code
-        # HTTP status code returned by the backend
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
-        # Error message
+        # The error message.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Resource permission list
+        # The resource permission list.
         self.resource_permission_list = resource_permission_list
-        # Indicates whether the request was successful
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -94,9 +94,9 @@ class CheckResourcePermissionResponseBodyResourcePermissionList(DaraModel):
         has_permission: bool = None,
         resource_id: str = None,
     ):
-        # Indicates whether the user has the permission on the specified resource
+        # Indicates whether the user has the specified resource permissions.
         self.has_permission = has_permission
-        # Resource ID
+        # The resource ID.
         self.resource_id = resource_id
 
     def validate(self):

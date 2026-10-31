@@ -23,9 +23,9 @@ class GetFileStorageCredentialResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The details of the temporary read/write authorization.
+        # The details of the temporary read and write authorization.
         self.storage_credential = storage_credential
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -107,9 +107,9 @@ class GetFileStorageCredentialResponseBodyStorageCredential(DaraModel):
         self.object_name = object_name
         # region
         self.region = region
-        # The temporary security token.
+        # The security token.
         self.security_token = security_token
-        # The storage cluster type. Valid values: oss and ceph.
+        # The type of the storage cluster. Valid values: oss and ceph.
         self.storage_type = storage_type
 
     def validate(self):

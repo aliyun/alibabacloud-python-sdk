@@ -11,12 +11,13 @@ class GetStandardStatisticsShrinkRequest(DaraModel):
         op_user_id: str = None,
         statistics_query_shrink: str = None,
     ):
-        # The tenant ID.
+        # The ID of the tenant.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the user who performs the operation.
         self.op_user_id = op_user_id
-        # The statistical query instruction.
+        # The statistics query instruction.
         # 
         # This parameter is required.
         self.statistics_query_shrink = statistics_query_shrink

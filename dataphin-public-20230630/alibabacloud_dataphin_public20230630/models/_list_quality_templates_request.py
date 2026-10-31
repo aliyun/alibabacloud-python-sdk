@@ -20,6 +20,7 @@ class ListQualityTemplatesRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator user.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -70,71 +71,71 @@ class ListQualityTemplatesRequestListQuery(DaraModel):
         template_type_list: List[str] = None,
         watch_type_list: List[str] = None,
     ):
-        # The rule type. Valid values:
-        # - CONSISTENT: consistency
-        # - EFFECTIVE: validity
-        # - TIMELINESE: timeliness
-        # - ACCURATE: accuracy
-        # - UNIQUENESS: uniqueness
-        # - COMPLETENESS: completeness
-        # - STABILITY: stability
-        # - CUSTOM: custom.
+        # The rule types. Valid values:
+        # - CONSISTENT: Consistency.
+        # - EFFECTIVE: Effectiveness.
+        # - TIMELINESE: Timeliness.
+        # - ACCURATE: Accuracy.
+        # - UNIQUENESS: Uniqueness.
+        # - COMPLETENESS: Completeness.
+        # - STABILITY: Stability.
+        # - CUSTOM: Custom.
         self.catalog_list = catalog_list
-        # Specifies whether to query only templates owned by the current user.
+        # Specifies whether the template is owned by the current user.
         self.current_user_owned = current_user_owned
-        # The search keyword. Template name filtering is supported.
+        # The search keyword filter, which supports template names.
         self.keyword = keyword
         # The page number. Default value: 1.
         self.page_no = page_no
-        # The number of records per page. Default value: 20.
+        # The number of entries per page. Default value: 20.
         self.page_size = page_size
         # The supported data source types, such as MAX_COMPUTE, MYSQL, and HIVE.
         self.support_data_source_type_list = support_data_source_type_list
         # The template owners.
         self.template_owner_list = template_owner_list
-        # The template source. Valid values:
-        # - SYSTEM: system template
-        # - CUSTOM: custom template.
+        # The template sources. Valid values:
+        # - SYSTEM: System template.
+        # - CUSTOM: Custom template.
         self.template_source_list = template_source_list
         # The templatetype. Valid values:
-        # - FIELD_NULL_VALUE_VALIDATE: field null value check
-        # - FIELD_EMPTY_STRING_VALIDATE: field empty character string check
-        # - FIELD_UNIQUE_VALIDATE: field uniqueness check
-        # - FIELD_GROUP_COUNT_VALIDATE: field unique value count check
-        # - FIELD_DUPLICATE_VALUE_COUNT_VALIDATE: field duplicate value count check
-        # - FUNCTION_TIME_COMPARE: time function comparison
-        # - SINGLE_TABLE_TIME_COMPARE: non-partitioned table time field comparison
-        # - DOUBLE_TABLE_TIME_COMPARE: two-table time field comparison
-        # - FIELD_FORMAT_VALIDATE: field format check
-        # - FIELD_LENGTH_VALIDATE: field length check
-        # - FIELD_VALUE_RANGE_VALIDATE: field value range check
-        # - CODE_TABLE_COMPARE: lookup table reference comparison
-        # - STANDARD_CODE_TABLE_COMPARE: data standard lookup table reference comparison
-        # - SINGLE_TABLE_FIELD_VALUE_COMPARE: non-partitioned table field value consistency comparison
-        # - SINGLE_TABLE_FIELD_STATISTICAL_COMPARE: non-partitioned table field statistical value consistency comparison
-        # - SINGLE_TABLE_FIELD_EXP_COMPARE: non-partitioned table field business logic consistency comparison
-        # - DOUBLE_TABLE_FIELD_VALUE_COMPARE: two-table field value consistency comparison
-        # - DOUBLE_TABLE_FIELD_STATISTICAL_COMPARE: two-table field statistical value consistency comparison
-        # - CROSS_DOUBLE_TABLE_FIELD_STATISTICAL_COMPARE: cross-source two-table field statistical value consistency comparison
-        # - DOUBLE_TABLE_FIELD_EXP_COMPARE: two-table field business logic consistency comparison
-        # - TABLE_STABILITY_VALIDATE: table stability check
-        # - TABLE_FLUCTUATION_VALIDATE: table fluctuation check
-        # - FIELD_STABILITY_VALIDATE: field stability check
-        # - FIELD_FLUCTUATION_VALIDATE: field fluctuation check
-        # - CUSTOM_STATISTICAL_VALIDATE: custom statistical metric check
-        # - CUSTOM_DATA_DETAILS_VALIDATE: custom data details check
-        # - DATASOURCE_AVAILABLE_CHECK: data source connectivity monitoring
-        # - TABLE_SCHEMA_CHECK: table schema change monitoring
-        # - REAL_TIME_OFFLINE_COMPARE: real-time and offline comparison
-        # - REAL_TIME_STATISTICAL_VALIDATE: real-time statistical value monitoring
-        # - REAL_TIME_MULTI_CHAIN_COMPARE: real-time multi-link comparison.
+        # - FIELD_NULL_VALUE_VALIDATE: Field null value check.
+        # - FIELD_EMPTY_STRING_VALIDATE: Field empty character check.
+        # - FIELD_UNIQUE_VALIDATE: Field uniqueness check.
+        # - FIELD_GROUP_COUNT_VALIDATE: Field unique value count check.
+        # - FIELD_DUPLICATE_VALUE_COUNT_VALIDATE: Field duplicate value count check.
+        # - FUNCTION_TIME_COMPARE: Time function comparison.
+        # - SINGLE_TABLE_TIME_COMPARE: Non-partitioned table time field comparison.
+        # - DOUBLE_TABLE_TIME_COMPARE: Two-table time field comparison.
+        # - FIELD_FORMAT_VALIDATE: Field format check.
+        # - FIELD_LENGTH_VALIDATE: Field length check.
+        # - FIELD_VALUE_RANGE_VALIDATE: Field value range check.
+        # - CODE_TABLE_COMPARE: Lookup table reference comparison.
+        # - STANDARD_CODE_TABLE_COMPARE: Data standard lookup table reference comparison.
+        # - SINGLE_TABLE_FIELD_VALUE_COMPARE: Non-partitioned table field value consistency comparison.
+        # - SINGLE_TABLE_FIELD_STATISTICAL_COMPARE: Non-partitioned table field statistical value consistency comparison.
+        # - SINGLE_TABLE_FIELD_EXP_COMPARE: Non-partitioned table field business logic consistency comparison.
+        # - DOUBLE_TABLE_FIELD_VALUE_COMPARE: Two-table field value consistency comparison.
+        # - DOUBLE_TABLE_FIELD_STATISTICAL_COMPARE: Two-table field statistical value consistency comparison.
+        # - CROSS_DOUBLE_TABLE_FIELD_STATISTICAL_COMPARE: Cross-source two-table field statistical value consistency comparison.
+        # - DOUBLE_TABLE_FIELD_EXP_COMPARE: Two-table field business logic consistency comparison.
+        # - TABLE_STABILITY_VALIDATE: Table stability check.
+        # - TABLE_FLUCTUATION_VALIDATE: Table fluctuation check.
+        # - FIELD_STABILITY_VALIDATE: Field stability check.
+        # - FIELD_FLUCTUATION_VALIDATE: Field fluctuation check.
+        # - CUSTOM_STATISTICAL_VALIDATE: Custom statistical metric check.
+        # - CUSTOM_DATA_DETAILS_VALIDATE: Custom data details check.
+        # - DATASOURCE_AVAILABLE_CHECK: Data source connectivity monitoring.
+        # - TABLE_SCHEMA_CHECK: Table schema change monitoring.
+        # - REAL_TIME_OFFLINE_COMPARE: Real-time and offline comparison.
+        # - REAL_TIME_STATISTICAL_VALIDATE: Real-time statistical value monitoring.
+        # - REAL_TIME_MULTI_CHAIN_COMPARE: Real-time multi-link comparison.
         self.template_type_list = template_type_list
-        # The monitored object type. Valid values:
-        # - TABLE: Dataphin table
-        # - DATASOURCE_TABLE: full-domain table
-        # - DATASOURCE: data source
-        # - INDEX: metric
-        # - REALTIME_LOGICAL_TABLE: real-time meta table.
+        # The monitored object types. Valid values:
+        # - TABLE: Dataphin table.
+        # - DATASOURCE_TABLE: Global table.
+        # - DATASOURCE: Data source.
+        # - INDEX: Metric.
+        # - REALTIME_LOGICAL_TABLE: Real-time metadata table.
         self.watch_type_list = watch_type_list
 
     def validate(self):

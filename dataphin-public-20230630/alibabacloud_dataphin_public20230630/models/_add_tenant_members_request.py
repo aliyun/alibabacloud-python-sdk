@@ -22,6 +22,7 @@ class AddTenantMembersRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -63,7 +64,7 @@ class AddTenantMembersRequestAddCommand(DaraModel):
         self,
         user_list: List[main_models.AddTenantMembersRequestAddCommandUserList] = None,
     ):
-        # The list of members.
+        # The member list.
         # 
         # This parameter is required.
         self.user_list = user_list
@@ -104,7 +105,7 @@ class AddTenantMembersRequestAddCommandUserList(DaraModel):
     ):
         # The user ID.
         self.id = id
-        # The list of roles. Valid values:
+        # The role list. Valid values:
         # - SYSTEM_ADMIN
         # - DATASOURCE_MANAGER
         # - SECURITY_ADMIN
@@ -112,7 +113,7 @@ class AddTenantMembersRequestAddCommandUserList(DaraModel):
         # - EXPORT_ADMIN
         # - DATA_STANDARD_MANAGER
         # - LABELS_BUSINESS_PLANNER
-        # - BUSINESS_MEMBER.
+        # - BUSINESS_MEMBER
         self.role_list = role_list
 
     def validate(self):

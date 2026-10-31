@@ -17,7 +17,7 @@ class GetPhysicalNodeOperationLogResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. A value of OK indicates that the request was successful.
+        # The error code. OK indicates that the request is successful.
         self.code = code
         # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
@@ -27,7 +27,7 @@ class GetPhysicalNodeOperationLogResponseBody(DaraModel):
         self.operation_log_list = operation_log_list
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -99,21 +99,21 @@ class GetPhysicalNodeOperationLogResponseBodyOperationLogList(DaraModel):
     ):
         # The log details.
         self.context = context
-        # The operation time.
+        # The operation time. The format is YYYY-MM-DD HH:mm:ss.
         self.operation_time = operation_time
         # The operation type. Valid values:
-        # - TASK_UPDATE_PRIORITY: updates the node priority.
-        # - PAUSE_TASK: pauses scheduling.
-        # - RESUME_TASK: resumes scheduling.
-        # - CREATE_NODE: creates a node.
-        # - FORCE_DELETE_NODE: force deletes a node.
-        # - UPDATE_NODE: updates a node.
-        # - DELETE_NODE: deletes a node.
-        # - CHANGE_NODE_OWNER: changes the node owner.
+        # - TASK_UPDATE_PRIORITY: modifies the node priority
+        # - PAUSE_TASK: pauses scheduling
+        # - RESUME_TASK: resumes scheduling
+        # - CREATE_NODE: creates a node
+        # - FORCE_DELETE_NODE: force deletes a node
+        # - UPDATE_NODE: updates a node
+        # - DELETE_NODE: deletes a node
+        # - CHANGE_NODE_OWNER: changes the node owner
         self.operation_type = operation_type
-        # The operator ID.
+        # The ID of the operator.
         self.operator = operator
-        # The operator name.
+        # The name of the operator.
         self.operator_name = operator_name
 
     def validate(self):

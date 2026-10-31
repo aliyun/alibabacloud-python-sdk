@@ -11,10 +11,15 @@ class ListBatchTasksShrinkRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
+        # The task query conditions.
+        # 
         # This parameter is required.
         self.batch_task_query_shrink = batch_task_query_shrink
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the user who performs the operation.
         self.op_user_id = op_user_id
 
     def validate(self):

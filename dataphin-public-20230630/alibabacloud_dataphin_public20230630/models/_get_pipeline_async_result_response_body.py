@@ -21,7 +21,7 @@ class GetPipelineAsyncResultResponseBody(DaraModel):
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error details returned by the backend.
+        # The details of the backend response exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -84,6 +84,7 @@ class GetPipelineAsyncResultResponseBodyData(DaraModel):
     def __init__(
         self,
         async_id: int = None,
+        check_detail: str = None,
         error_code: str = None,
         error_message: str = None,
         host_machine: str = None,
@@ -95,24 +96,23 @@ class GetPipelineAsyncResultResponseBodyData(DaraModel):
     ):
         # The asynchronous execution query ID.
         self.async_id = async_id
-        # The error code returned when the execution fails.
+        # The check result of the commit details. The value is a JSON character string and is returned only for asynchronous commit links. The structure is consistent with the commit details on the product page.
+        self.check_detail = check_detail
+        # The error code returned when an execution exception occurs.
         self.error_code = error_code
-        # The error message returned when the execution fails.
+        # The error message returned when an execution exception occurs.
         self.error_message = error_message
-        # The information about the server host that processes the execution request.
+        # The server host information for request execution.
         self.host_machine = host_machine
-        # The scheduling node ID of the pipeline task.
+        # The ID of the scheduling node for the pipeline task.
         self.node_id = node_id
         # The primary key ID of the pipeline.
         self.pipeline_id = pipeline_id
-        # The current execution status. Valid values:
-        # - SUCCESS: execution succeeded.
-        # - FAILED: execution failed.
-        # - RUNNING: execution in progress.
+        # The current execution status. Valid values: SUCCESS: The execution is successful. FAILED: The execution fails. RUNNING: The execution is in progress.
         self.status = status
         # The publish ID generated after the pipeline task is submitted. You can use this ID to publish the task through the publish domain.
         self.submit_id = submit_id
-        # The version number generated when the pipeline task is submitted.
+        # The version number generated after the pipeline task is submitted.
         self.version = version
 
     def validate(self):
@@ -125,6 +125,9 @@ class GetPipelineAsyncResultResponseBodyData(DaraModel):
             result = _map
         if self.async_id is not None:
             result['AsyncId'] = self.async_id
+
+        if self.check_detail is not None:
+            result['CheckDetail'] = self.check_detail
 
         if self.error_code is not None:
             result['ErrorCode'] = self.error_code
@@ -156,6 +159,9 @@ class GetPipelineAsyncResultResponseBodyData(DaraModel):
         m = m or dict()
         if m.get('AsyncId') is not None:
             self.async_id = m.get('AsyncId')
+
+        if m.get('CheckDetail') is not None:
+            self.check_detail = m.get('CheckDetail')
 
         if m.get('ErrorCode') is not None:
             self.error_code = m.get('ErrorCode')

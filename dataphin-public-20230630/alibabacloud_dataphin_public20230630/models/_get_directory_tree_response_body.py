@@ -17,15 +17,15 @@ class GetDirectoryTreeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Error code. OK indicates a successful request.
+        # The error code. A value of OK indicates that the request is successful.
         self.code = code
-        # Directory tree information. Returns the directory tree with all edge information, traversed level by level from the root node.
+        # The directory tree information. The directory tree and all edge information are returned through a level-order traversal starting from the root node.
         self.data = data
-        # HTTP status code.
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
-        # Error message.
+        # The error message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
@@ -94,9 +94,9 @@ class GetDirectoryTreeResponseBodyData(DaraModel):
         children: main_models.GetDirectoryTreeResponseBodyDataChildren = None,
         parent: main_models.GetDirectoryTreeResponseBodyDataParent = None,
     ):
-        # Child node.
+        # The child nodes.
         self.children = children
-        # Parent node.
+        # The parent node.
         self.parent = parent
 
     def validate(self):
@@ -148,33 +148,33 @@ class GetDirectoryTreeResponseBodyDataParent(DaraModel):
         string_id: str = None,
         type: str = None,
     ):
-        # Directory type.
+        # The directory type.
         self.category_type = category_type
-        # Creator ID.
+        # The ID of the creator.
         self.creator = creator
-        # Creator name.
+        # The name of the creator.
         self.creator_name = creator_name
-        # Data cell ID.
+        # The data cell ID.
         self.data_cell_id = data_cell_id
-        # Directory path. Valid only for file or resource nodes.
+        # The directory path. This parameter is valid only for file or resource nodes.
         self.dir_name = dir_name
-        # Creation time. Empty for non-entity object nodes.
+        # The creation time. This parameter is empty for non-entity object nodes.
         self.gmt_create = gmt_create
-        # Modification time. Empty for non-entity object nodes.
+        # The modification time. This parameter is empty for non-entity object nodes.
         self.gmt_modified = gmt_modified
-        # Directory ID.
+        # The directory ID.
         self.id = id
-        # Last modifier ID.
+        # The ID of the last modifier.
         self.last_modifier = last_modifier
-        # Last modifier name.
+        # The name of the last modifier.
         self.last_modifier_name = last_modifier_name
-        # Display name of the object.
+        # The display name of the object.
         self.name = name
-        # Project ID.
+        # The project ID.
         self.project_id = project_id
-        # Directory string ID.
+        # The string ID of the directory.
         self.string_id = string_id
-        # Object type.
+        # The object type.
         self.type = type
 
     def validate(self):
@@ -293,33 +293,33 @@ class GetDirectoryTreeResponseBodyDataChildren(DaraModel):
         string_id: str = None,
         type: str = None,
     ):
-        # Directory type.
+        # The directory type.
         self.category_type = category_type
-        # Creator ID.
+        # The ID of the creator.
         self.creator = creator
-        # Creator name.
+        # The name of the creator.
         self.creator_name = creator_name
-        # Data cell ID.
+        # The data cell ID.
         self.data_cell_id = data_cell_id
-        # Directory path. Valid only for file or resource nodes.
+        # The directory path. This parameter is valid only for file or resource nodes.
         self.dir_name = dir_name
-        # Creation time. Empty for non-entity object nodes.
+        # The creation time. This parameter is empty for non-entity object nodes.
         self.gmt_create = gmt_create
-        # Modification time. Empty for non-entity object nodes.
+        # The modification time. This parameter is empty for non-entity object nodes.
         self.gmt_modified = gmt_modified
-        # Directory ID.
+        # The directory ID.
         self.id = id
-        # Last modifier ID.
+        # The ID of the last modifier.
         self.last_modifier = last_modifier
-        # Last modifier name.
+        # The name of the last modifier.
         self.last_modifier_name = last_modifier_name
-        # Display name of the object.
+        # The display name of the object.
         self.name = name
-        # Project ID.
+        # The project ID.
         self.project_id = project_id
-        # Directory string ID.
+        # The string ID of the directory.
         self.string_id = string_id
-        # Object type.
+        # The object type.
         self.type = type
 
     def validate(self):

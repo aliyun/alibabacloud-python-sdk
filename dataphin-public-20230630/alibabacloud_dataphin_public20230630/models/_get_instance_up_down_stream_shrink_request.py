@@ -15,13 +15,14 @@ class GetInstanceUpDownStreamShrinkRequest(DaraModel):
         project_id: int = None,
         up_stream_depth: int = None,
     ):
-        # The number of downstream node levels. Default value: 1.
+        # The depth of downstream nodes. Default value: 1.
         self.down_stream_depth = down_stream_depth
         # The environment identifier. Valid values:
-        # - DEV: development environment. 
-        # - PROD (default): production environment.
+        # - DEV: development environment
+        # - PROD: production environment
+        # Default value: PROD.
         self.env = env
-        # The center node.
+        # The central node.
         # 
         # This parameter is required.
         self.instance_id_shrink = instance_id_shrink
@@ -29,12 +30,13 @@ class GetInstanceUpDownStreamShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
         # The project ID.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The number of upstream node levels. Default value: 1.
+        # The depth of upstream nodes. Default value: 1.
         self.up_stream_depth = up_stream_depth
 
     def validate(self):

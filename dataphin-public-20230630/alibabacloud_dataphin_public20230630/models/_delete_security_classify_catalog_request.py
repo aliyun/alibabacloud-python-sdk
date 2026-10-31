@@ -12,7 +12,7 @@ class DeleteSecurityClassifyCatalogRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The delete instruction.
+        # The delete command.
         # 
         # This parameter is required.
         self.delete_command = delete_command
@@ -20,6 +20,7 @@ class DeleteSecurityClassifyCatalogRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The user ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -62,11 +63,11 @@ class DeleteSecurityClassifyCatalogRequestDeleteCommand(DaraModel):
         path: str = None,
         return_removed_details: bool = None,
     ):
-        # The full path of the original catalog.
+        # The full path of the original folder.
         # 
         # This parameter is required.
         self.path = path
-        # Specifies whether to return deletion details. Default value: true.
+        # Specifies whether to return the deletion details. Default value: true.
         self.return_removed_details = return_removed_details
 
     def validate(self):

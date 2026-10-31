@@ -14,7 +14,7 @@ class DeleteStandardRelationsRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The delete instruction.
+        # The delete command.
         # 
         # This parameter is required.
         self.delete_command = delete_command
@@ -22,6 +22,7 @@ class DeleteStandardRelationsRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -65,7 +66,7 @@ class DeleteStandardRelationsRequestDeleteCommand(DaraModel):
         standard_id: int = None,
         standard_ref_list: List[main_models.DeleteStandardRelationsRequestDeleteCommandStandardRefList] = None,
     ):
-        # The standard association type: RELATIVE.
+        # The standard association type. Valid value: RELATIVE.
         # 
         # This parameter is required.
         self.relation_type = relation_type

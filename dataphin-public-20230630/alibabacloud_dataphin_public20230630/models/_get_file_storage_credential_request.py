@@ -17,18 +17,13 @@ class GetFileStorageCredentialRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the user who performs the operation.
         self.op_user_id = op_user_id
         # The project ID. This parameter is required when the temporary authorization is used to create resource files.
         self.project_id = project_id
-        # The purpose of the authorization. Valid values:
-        # 
-        # - RESOURCE: creates resource files.
-        # - COMPUTE_SOURCE_SETTING: stores compute source configurations.
-        # - NONE: no specific purpose.
-        # 
-        # Default value: NONE.
+        # The purpose of the authorization. Valid values: RESOURCE (creating resource files), COMPUTE_SOURCE_SETTING (configuring storage and compute sources), and NONE (no specific purpose). Default value: NONE.
         self.purpose = purpose
-        # Specifies whether to use an internal endpoint. Default value: false.
+        # Specifies whether to use the internal endpoint. Default value: false.
         self.use_vpc_endpoint = use_vpc_endpoint
 
     def validate(self):

@@ -17,17 +17,17 @@ class ListStandardsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Backend response code.
+        # The backend response code.
         self.code = code
-        # HTTP response code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Details of the backend response error.
+        # The backend exception details.
         self.message = message
-        # Paginated query result.
+        # The paged query result.
         self.page_result = page_result
         # Id of the request
         self.request_id = request_id
-        # Whether the request is successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -88,9 +88,9 @@ class ListStandardsResponseBodyPageResult(DaraModel):
         standard_list: List[main_models.ListStandardsResponseBodyPageResultStandardList] = None,
         total_count: int = None,
     ):
-        # Standard list.
+        # The standard list.
         self.standard_list = standard_list
-        # Total number of records.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -148,39 +148,39 @@ class ListStandardsResponseBodyPageResultStandardList(DaraModel):
         type: str = None,
         version: int = None,
     ):
-        # Attribute value configuration list.
+        # The attribute value configuration.
         self.attribute_with_value_list = attribute_with_value_list
-        # Standard code.
+        # The code of the standard.
         self.code = code
-        # Creator.
+        # The creator.
         self.creator = creator
-        # Description.
+        # The description.
         self.description = description
-        # Effective time configuration.
+        # The effective period configuration.
         self.effective_time_config = effective_time_config
-        # Standard English name.
+        # The English name of the standard.
         self.english_name = english_name
-        # Standard ID.
+        # The standard ID.
         self.id = id
-        # Last modifier.
+        # The user who last updated the standard.
         self.last_modifier = last_modifier
-        # Last modified time.
+        # The last modified time. The format is YYYY-MM-DD HH:mm:ss.
         self.modify_time = modify_time
-        # Standard name.
+        # The name of the standard.
         self.name = name
-        # Owner.
+        # The owner.
         self.owner = owner
-        # Stage of the standard.
+        # The stage of the standard.
         self.stage = stage
-        # Standard set that the current standard depends on.
+        # The standard set that the current standard depends on.
         self.standard_set = standard_set
-        # Standard template that the current standard depends on.
+        # The standard template that the current standard depends on.
         self.standard_template = standard_template
-        # Status of the standard.
+        # The status of the standard.
         self.status = status
-        # Standard type.
+        # The type of the standard.
         self.type = type
-        # Version number.
+        # The version number.
         self.version = version
 
     def validate(self):
@@ -334,15 +334,17 @@ class ListStandardsResponseBodyPageResultStandardListStandardTemplate(DaraModel)
         template_from: str = None,
         version: int = None,
     ):
-        # Standard template code.
+        # The code of the standard template.
         self.code = code
-        # Standard template ID.
+        # The ID of the standard template.
         self.id = id
-        # Standard template name.
+        # The name of the standard template.
         self.name = name
-        # Standard template source: CUSTOM for custom standard templates, SYSTEM for system built-in standard templates.
+        # The source of the standard template. Valid values:
+        # - CUSTOM: Custom standard template.
+        # - SYSTEM: Built-in standard template.
         self.template_from = template_from
-        # Version number.
+        # The version number.
         self.version = version
 
     def validate(self):
@@ -397,13 +399,13 @@ class ListStandardsResponseBodyPageResultStandardListStandardSet(DaraModel):
         id: int = None,
         name: str = None,
     ):
-        # Standard set code.
+        # The code of the standard set.
         self.code = code
-        # Directory of the standard set.
+        # The folder to which the standard set belongs.
         self.directory = directory
-        # Standard set ID.
+        # The ID of the standard set.
         self.id = id
-        # Standard set name.
+        # The name of the standard set.
         self.name = name
 
     def validate(self):
@@ -450,9 +452,9 @@ class ListStandardsResponseBodyPageResultStandardListOwner(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # User ID.
+        # The ID of the user.
         self.id = id
-        # User name.
+        # The name of the user.
         self.name = name
 
     def validate(self):
@@ -487,9 +489,9 @@ class ListStandardsResponseBodyPageResultStandardListLastModifier(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # User ID.
+        # The ID of the user.
         self.id = id
-        # User name.
+        # The name of the user.
         self.name = name
 
     def validate(self):
@@ -525,11 +527,13 @@ class ListStandardsResponseBodyPageResultStandardListEffectiveTimeConfig(DaraMod
         start_time: str = None,
         type: str = None,
     ):
-        # End time of the effective period.
+        # The end time of the effective period. The format is YYYY-MM-DD HH:mm:ss.
         self.end_time = end_time
-        # Start time of the effective period.
+        # The start time of the effective period. The format is YYYY-MM-DD HH:mm:ss.
         self.start_time = start_time
-        # Effective time type: FOREVER for permanent, TIME_PERIOD for a time period.
+        # The effective period type. Valid values:
+        # - FOREVER: Permanent.
+        # - TIME_PERIOD: Time period.
         self.type = type
 
     def validate(self):
@@ -570,9 +574,9 @@ class ListStandardsResponseBodyPageResultStandardListCreator(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # User ID.
+        # The ID of the user.
         self.id = id
-        # User name.
+        # The name of the user.
         self.name = name
 
     def validate(self):
@@ -607,9 +611,9 @@ class ListStandardsResponseBodyPageResultStandardListAttributeWithValueList(Dara
         attribute: main_models.ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAttribute = None,
         value: str = None,
     ):
-        # Attribute details.
+        # The attribute details.
         self.attribute = attribute
-        # Attribute value.
+        # The attribute value.
         self.value = value
 
     def validate(self):
@@ -654,25 +658,25 @@ class ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAttri
         type: str = None,
         value_config: main_models.ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAttributeValueConfig = None,
     ):
-        # Attribute code.
+        # The attribute code.
         self.code = code
-        # Description.
+        # The description.
         self.description = description
-        # Whether to enable monitor configuration.
+        # Specifies whether to enable the monitoring configuration.
         self.enable_monitor_config = enable_monitor_config
-        # Attribute ID.
+        # The ID of the attribute.
         self.id = id
-        # Monitor configuration.
+        # The monitoring configuration.
         self.monitor_config = monitor_config
-        # Attribute name.
+        # The attribute name.
         self.name = name
-        # Referenced attribute information.
+        # The referenced attribute information.
         self.ref_attribute = ref_attribute
-        # Whether it is required.
+        # Specifies whether the attribute is required.
         self.required = required
-        # Attribute type: BIZ_ATTRIBUTE for business attribute, TECH_ATTRIBUTE for technical attribute, MANAGEMENT_ATTRIBUTE for management attribute, QUALITY_ATTRIBUTE for quality attribute, MASTER_DATA_ATTRIBUTE for master data attribute, LIFECYCLE_ATTRIBUTE for lifecycle attribute, SECURITY_ATTRIBUTE for security attribute.
+        # The attribute type. Valid values: BIZ_ATTRIBUTE: business attribute. TECH_ATTRIBUTE: technical attribute. MANAGEMENT_ATTRIBUTE: management attribute. QUALITY_ATTRIBUTE: quality attribute. MASTER_DATA_ATTRIBUTE: master data attribute. LIFECYCLE_ATTRIBUTE: lifecycle attribute. SECURITY_ATTRIBUTE: security attribute.
         self.type = type
-        # Value configuration.
+        # The value configuration.
         self.value_config = value_config
 
     def validate(self):
@@ -766,15 +770,15 @@ class ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAttri
         type: str = None,
         value_range: main_models.ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAttributeValueConfigValueRange = None,
     ):
-        # Data type of the attribute value: STRING for string, BIGINT for numeric type, DOUBLE for floating-point type, DATE for date accurate to day, DATETIME for date accurate to milliseconds, BOOLEAN for boolean.
+        # The data type of the attribute value. Valid values: STRING: string. BIGINT: numeric type. DOUBLE: floating-point type. DATE: date accurate to day. DATETIME: date accurate to millisecond. BOOLEAN: Boolean type.
         self.data_type = data_type
-        # Default value.
+        # The default value.
         self.default_value = default_value
-        # Attribute value length. If empty or -1, the length is not limited. Typically, only string types limit the attribute value length.
+        # The length of the attribute value. An empty value or -1 indicates that the length is not limited. Typically, only the string type limits the length of the attribute value.
         self.length = length
-        # Attribute value type: CUSTOMIZED for custom input, SINGLE_ENUM for single enumeration value, MULTIPLE_ENUMS for multiple enumeration values, RANGE for range value.
+        # The attribute value type. Valid values: CUSTOMIZED: custom input. SINGLE_ENUM: single enum value. MULTIPLE_ENUMS: multiple enum values. RANGE: range value.
         self.type = type
-        # Value range.
+        # The value range.
         self.value_range = value_range
 
     def validate(self):
@@ -832,15 +836,15 @@ class ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAttri
         value_constraint: str = None,
         value_list: List[str] = None,
     ):
-        # Value range, effective when value constraint is DATAPHIN_ATTRIBUTE: BIZ_UNIT for data business unit, PROJECT for project, USER for user, USER_GROUP for user group.
+        # The value range. This parameter takes effect when the value source is set to DATAPHIN_ATTRIBUTE. Valid values: BIZ_UNIT: data block. PROJECT: project. USER: user. USER_GROUP: user group.
         self.dataphin_attribute_type = dataphin_attribute_type
-        # Value range, effective when value constraint is LOOKUP_TABLE.
+        # The value range. This parameter takes effect when the value source is set to LOOKUP_TABLE.
         self.lookup_table_reference = lookup_table_reference
-        # Value range, effective when value constraint is MIN_MAX.
+        # The value range. This parameter takes effect when the value source is set to MIN_MAX.
         self.min_max_value_config = min_max_value_config
-        # Value constraint: NONE for no constraint, LIST for obtaining from a list, LOOKUP_TABLE for lookup table, MIN_MAX for values between minimum and maximum, DATAPHIN_ATTRIBUTE for Dataphin system attribute, BUILT_IN_DATA_TYPES for built-in data types, BUILT_IN_DATA_CLASSIFICATION for built-in data classification, BUILT_IN_DATA_LEVEL for built-in data security level.
+        # The value source. Valid values: NONE: no constraint. LIST: obtained from a list. LOOKUP_TABLE: lookup table. MIN_MAX: obtained between the maximum and minimum values. DATAPHIN_ATTRIBUTE: Dataphin system property. BUILT_IN_DATA_TYPES: built-in data type. BUILT_IN_DATA_CLASSIFICATION: built-in data categorization. BUILT_IN_DATA_LEVEL: built-in data security classification.
         self.value_constraint = value_constraint
-        # Value range, effective when value constraint is LIST.
+        # The value range. This parameter takes effect when the value source is set to LIST.
         self.value_list = value_list
 
     def validate(self):
@@ -900,13 +904,13 @@ class ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAttri
         max_value: str = None,
         min_value: str = None,
     ):
-        # Whether to include the maximum value.
+        # Specifies whether to include the maximum value.
         self.include_max_value = include_max_value
-        # Whether to include the minimum value.
+        # Specifies whether to include the minimum value.
         self.include_min_value = include_min_value
-        # Maximum value.
+        # The maximum value.
         self.max_value = max_value
-        # Minimum value.
+        # The minimum value.
         self.min_value = min_value
 
     def validate(self):
@@ -953,9 +957,9 @@ class ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAttri
         column: str = None,
         lookup_table_id: int = None,
     ):
-        # Referenced lookup table column.
+        # The referenced field in the lookup table.
         self.column = column
-        # Lookup table ID.
+        # The ID of the lookup table.
         self.lookup_table_id = lookup_table_id
 
     def validate(self):
@@ -990,9 +994,9 @@ class ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAttri
         attribute_from_info: main_models.ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAttributeRefAttributeAttributeFromInfo = None,
         attribute_id: int = None,
     ):
-        # Attribute source.
+        # The source of the attribute.
         self.attribute_from_info = attribute_from_info
-        # Attribute ID.
+        # The ID of the attribute.
         self.attribute_id = attribute_id
 
     def validate(self):
@@ -1029,9 +1033,9 @@ class ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAttri
         attribute_from: str = None,
         standard_reference: main_models.ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAttributeRefAttributeAttributeFromInfoStandardReference = None,
     ):
-        # Attribute source: SYSTEM for system attribute, CUSTOM for custom attribute, STANDARD for standard.
+        # The source of the attribute. Valid values: SYSTEM: system attribute. CUSTOM: custom attribute. STANDARD: standard.
         self.attribute_from = attribute_from
-        # Corresponding standard, effective when attribute source is STANDARD.
+        # The corresponding standard. This parameter takes effect when the attribute source is set to STANDARD.
         self.standard_reference = standard_reference
 
     def validate(self):
@@ -1068,9 +1072,9 @@ class ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAttri
         standard_id: int = None,
         version: int = None,
     ):
-        # Standard ID.
+        # The ID of the standard.
         self.standard_id = standard_id
-        # Version number.
+        # The version number.
         self.version = version
 
     def validate(self):
@@ -1106,11 +1110,11 @@ class ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAttri
         is_case_sensitive: bool = None,
         type: str = None,
     ):
-        # Column to check.
+        # The field to be checked.
         self.column_name = column_name
-        # Whether case-sensitive.
+        # Specifies whether the check is case-sensitive.
         self.is_case_sensitive = is_case_sensitive
-        # Monitor type: METADATA for metadata monitoring, QUALITY for data quality monitoring.
+        # The monitoring method. Valid values: METADATA: metadata monitoring. QUALITY: data quality monitoring.
         self.type = type
 
     def validate(self):

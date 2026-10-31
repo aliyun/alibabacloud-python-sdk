@@ -15,7 +15,7 @@ class GetPhysicalNodeContentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. A value of OK indicates that the request was successful.
+        # The error code. OK indicates that the request is successful.
         self.code = code
         # The node information.
         self.data = data
@@ -25,7 +25,7 @@ class GetPhysicalNodeContentResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -87,7 +87,7 @@ class GetPhysicalNodeContentResponseBodyData(DaraModel):
         node_id: str = None,
         node_name: str = None,
     ):
-        # The node code content.
+        # The code content of the node.
         self.code_content = code_content
         # The node ID.
         self.node_id = node_id

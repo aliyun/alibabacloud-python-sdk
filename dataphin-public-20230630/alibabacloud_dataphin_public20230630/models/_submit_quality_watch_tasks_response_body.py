@@ -21,13 +21,13 @@ class SubmitQualityWatchTasksResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend exception.
+        # The backend exception details.
         self.message = message
         # Id of the request
         self.request_id = request_id
         # The execution result.
         self.submit_result = submit_result
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -87,7 +87,7 @@ class SubmitQualityWatchTasksResponseBodySubmitResult(DaraModel):
         self,
         watch_task_id_list: List[int] = None,
     ):
-        # The list of quality watchtask IDs.
+        # The IDs of the monitoring object check nodes.
         self.watch_task_id_list = watch_task_id_list
 
     def validate(self):

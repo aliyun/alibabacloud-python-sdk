@@ -16,15 +16,15 @@ class CreateDatasetResponseBody(DaraModel):
     ):
         # The backend response code.
         self.code = code
-        # The dataset ID (business primary key).
+        # The ID of the newly created dataset, which is the business primary key.
         self.dataset_id = dataset_id
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The backend exception details.
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

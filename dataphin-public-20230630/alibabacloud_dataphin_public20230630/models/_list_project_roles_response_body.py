@@ -17,11 +17,17 @@ class ListProjectRolesResponseBody(DaraModel):
         role_list: List[main_models.ListProjectRolesResponseBodyRoleList] = None,
         success: bool = None,
     ):
+        # The error code. OK indicates that the request is successful.
         self.code = code
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The list of roles.
         self.role_list = role_list
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -98,17 +104,29 @@ class ListProjectRolesResponseBodyRoleList(DaraModel):
         status: str = None,
         tenant_id: int = None,
     ):
+        # The JSON string of the permission set.
         self.auth_json = auth_json
+        # The user ID of the creator.
         self.creator = creator
+        # The creation time.
         self.gmt_create = gmt_create
+        # The update time.
         self.gmt_modified = gmt_modified
+        # The user ID of the modifier.
         self.modifier = modifier
+        # The project type.
         self.project_type = project_type
+        # The role description.
         self.role_desc = role_desc
+        # The role key.
         self.role_key = role_key
+        # The role name.
         self.role_name = role_name
+        # The role type. Valid values: BUILD_IN (built-in role) and CUSTOM (custom role).
         self.role_type = role_type
+        # The role status. Valid values: ON (enabled), OFF (disabled), and DEL (deleted).
         self.status = status
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

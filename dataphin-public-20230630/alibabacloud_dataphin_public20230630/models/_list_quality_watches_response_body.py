@@ -21,13 +21,13 @@ class ListQualityWatchesResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend exception.
+        # The backend exception details.
         self.message = message
         # The paged query result.
         self.page_result = page_result
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -88,7 +88,7 @@ class ListQualityWatchesResponseBodyPageResult(DaraModel):
         quality_watch_list: List[main_models.ListQualityWatchesResponseBodyPageResultQualityWatchList] = None,
         total_count: int = None,
     ):
-        # The paged list of quality watchtasks.
+        # The paged quality alert list.
         self.quality_watch_list = quality_watch_list
         # The total number of records.
         self.total_count = total_count
@@ -149,7 +149,7 @@ class ListQualityWatchesResponseBodyPageResultQualityWatchList(DaraModel):
         table_info: main_models.ListQualityWatchesResponseBodyPageResultQualityWatchListTableInfo = None,
         type: str = None,
     ):
-        # The creation time.
+        # The creation time. The format is YYYY-MM-DD HH:mm:ss.
         self.create_time = create_time
         # The creator.
         self.creator = creator
@@ -159,38 +159,31 @@ class ListQualityWatchesResponseBodyPageResultQualityWatchList(DaraModel):
         self.data_source_info = data_source_info
         # The number of enabled rules.
         self.enabled_rule_count = enabled_rule_count
-        # The monitored object ID.
+        # The monitor ID.
         self.id = id
         # The metric details.
         self.index_info = index_info
-        # The record ID of the latest quality watchtask for the monitored object.
+        # The ID of the latest quality watchtask.
         self.latest_watch_task_id = latest_watch_task_id
-        # The record status of the latest quality watchtask for the monitored object.
+        # The status of the latest quality watchtask.
         self.latest_watch_task_status = latest_watch_task_status
         # The user ID of the last modifier.
         self.modifier = modifier
-        # The modification time.
+        # The update time. The format is YYYY-MM-DD HH:mm:ss.
         self.modify_time = modify_time
-        # The monitored object name.
+        # The monitor name.
         self.name = name
-        # The quality owner user ID.
+        # The user ID of the quality owner.
         self.quality_owner = quality_owner
-        # The quality owner display name.
+        # The display name of the quality owner.
         self.quality_owner_name = quality_owner_name
         # The number of rules.
         self.rule_count = rule_count
-        # The status. Valid values:
-        # - ENABLE
-        # - DISABLE.
+        # The status. Valid values: ENABLE and DISABLE.
         self.status = status
         # The monitored table object.
         self.table_info = table_info
-        # The monitored object type. Valid values:
-        # - TABLE: Dataphin table
-        # - DATASOURCE_TABLE: full-domain table
-        # - DATASOURCE: data source
-        # - INDEX: metric
-        # - REALTIME_LOGICAL_TABLE: real-time meta table.
+        # The monitored object type. Valid values: TABLE (Dataphin table), DATASOURCE_TABLE (global table), DATASOURCE (data source), INDEX (metric), and REALTIME_LOGICAL_TABLE (real-time metatable).
         self.type = type
 
     def validate(self):
@@ -354,31 +347,23 @@ class ListQualityWatchesResponseBodyPageResultQualityWatchListTableInfo(DaraMode
         self.data_source_type = data_source_type
         # The description.
         self.description = description
-        # The environment identifier. Valid values:
-        # - DEV
-        # - PROD.
+        # The environment identifier. Valid values: DEV and PROD.
         self.env = env
         # The table ID.
         self.id = id
-        # Indicates whether the table is a partitioned table.
+        # Specifies whether the table is a partitioned table.
         self.is_partition_table = is_partition_table
         # The table name.
         self.name = name
-        # The owner user ID.
+        # The user ID of the owner.
         self.owner = owner
-        # The owner name.
+        # The name of the owner.
         self.owner_name = owner_name
         # The project ID.
         self.project_id = project_id
         # The project name.
         self.project_name = project_name
-        # The type. Valid values:
-        # - LOGIC_DIM_TABLE: logical dimension table
-        # - LOGIC_FACT_TABLE: logical fact table
-        # - LOGIC_SUM_TABLE: logical aggregate table
-        # - LOGIC_LABEL_TABLE: logical label table
-        # - PHYSICAL_TABLE: physical table
-        # - REALTIME_LOGICAL_TABLE: real-time meta table.
+        # The type. Valid values: LOGIC_DIM_TABLE (logical dimension table), LOGIC_FACT_TABLE (logical fact table), LOGIC_SUM_TABLE (logical aggregate table), LOGIC_LABEL_TABLE (logical tag table), PHYSICAL_TABLE (physical table), and REALTIME_LOGICAL_TABLE (real-time metatable).
         self.type = type
 
     def validate(self):
@@ -515,11 +500,7 @@ class ListQualityWatchesResponseBodyPageResultQualityWatchListIndexInfo(DaraMode
         self.catalog = catalog
         # The cell aggregate table name.
         self.cell_sum_logic_table_name = cell_sum_logic_table_name
-        # The metric computation type. Valid values:
-        # - AUTO
-        # - CUSTOM
-        # - MOUNT
-        # - COMBINE.
+        # The metric computation type. Valid values: AUTO, CUSTOM, MOUNT, and COMBINE.
         self.compute_type = compute_type
         # The metric data type.
         self.date_type = date_type
@@ -537,16 +518,15 @@ class ListQualityWatchesResponseBodyPageResultQualityWatchListIndexInfo(DaraMode
         self.id = id
         # The metric name.
         self.name = name
-        # The owner user ID.
+        # The user ID of the owner.
         self.owner = owner
-        # The owner name.
+        # The name of the owner.
         self.owner_name = owner_name
         # The project ID.
         self.project_id = project_id
         # The project name.
         self.project_name = project_name
-        # The metric type. Valid values:
-        # - INDEX.
+        # The metric type. Valid value: INDEX.
         self.type = type
 
     def validate(self):
@@ -685,27 +665,25 @@ class ListQualityWatchesResponseBodyPageResultQualityWatchListDataSourceInfo(Dar
         owner_name: str = None,
         type: str = None,
     ):
-        # The creation time.
+        # The creation time. The format is YYYY-MM-DD HH:mm:ss.
         self.create_time = create_time
         # The creator.
         self.creator = creator
         # The creator name.
         self.creator_name = creator_name
-        # The environment identifier. Valid values:
-        # - PROD
-        # - DEV.
+        # The environment identifier. Valid values: PROD and DEV.
         self.env = env
-        # The data source IDs.
+        # The data source ID.
         self.id = id
-        # The modification time.
+        # The update time. The format is YYYY-MM-DD HH:mm:ss.
         self.modify_time = modify_time
         # The data source name.
         self.name = name
-        # The owner user ID.
+        # The user ID of the owner.
         self.owner = owner
-        # The owner name.
+        # The name of the owner.
         self.owner_name = owner_name
-        # The data source type, such as MAX_COMPUTE or HADOOP.
+        # The data source type. Valid values: MAX_COMPUTE and HADOOP.
         self.type = type
 
     def validate(self):

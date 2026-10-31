@@ -22,6 +22,7 @@ class ListTenantMembersRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -71,32 +72,32 @@ class ListTenantMembersRequestListQuery(DaraModel):
         # 
         # This parameter is required.
         self.page = page
-        # The number of entries per page.
+        # The number of records per page.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The member roles:
-        # - SUPER_ADMIN: Dataphin super administrator
-        # - SYSTEM_ADMIN: system administrator
-        # - COMMON_USER: Dataphin user
-        # - DATA_ADMIN: Dataphin data administrator
-        # - EXPORT_ADMIN: export administrator
-        # - SECURITY_ADMIN: security administrator
-        # - DATASOURCE_MANAGER: data source administrator
-        # - QUALITY_MANAGER: asset quality manager
-        # - DATA_STANDARD_MANAGER: data standard administrator
-        # - LABELS_BUSINESS_PLANNER: tag business planner
-        # - BUSINESS_MEMBER: general business user
-        # - DATAPRO_OPERATE_SUPER_ADMIN: operations super administrator
-        # - DATAPRO_OPERATE_ADMIN: operations administrator
-        # - DATAPRO_OPERATE_MEMBER: operations member
-        # - DATAPRO_BUSINESS_ANALYST: business analyst
-        # - LABELS_BUSINESS_MEMBER: tag business member
-        # - DATAPRO_BUSINESS_MEMBER: DATAPRO general business user
+        # The member roles. Valid values:
+        # - SUPER_ADMIN: Dataphin super administrator.
+        # - SYSTEM_ADMIN: System administrator.
+        # - COMMON_USER: Dataphin user.
+        # - DATA_ADMIN: Dataphin data administrator.
+        # - EXPORT_ADMIN: Export administrator.
+        # - SECURITY_ADMIN: Security administrator.
+        # - DATASOURCE_MANAGER: Data source administrator.
+        # - QUALITY_MANAGER: Asset quality owner.
+        # - DATA_STANDARD_MANAGER: Data standard administrator.
+        # - LABELS_BUSINESS_PLANNER: Label business planner.
+        # - BUSINESS_MEMBER: Regular business user.
+        # - DATAPRO_OPERATE_SUPER_ADMIN: Operations super administrator.
+        # - DATAPRO_OPERATE_ADMIN: Operations administrator.
+        # - DATAPRO_OPERATE_MEMBER: Operations staff.
+        # - DATAPRO_BUSINESS_ANALYST: Business analyst.
+        # - LABELS_BUSINESS_MEMBER: Label business staff.
+        # - DATAPRO_BUSINESS_MEMBER: Datapro regular business user.
         self.role_list = role_list
         # The search keyword.
         self.search_text = search_text
-        # The IDs of the user groups to which the member belongs.
+        # The IDs of the user groups to which the members belong.
         self.user_group_id_list = user_group_id_list
 
     def validate(self):

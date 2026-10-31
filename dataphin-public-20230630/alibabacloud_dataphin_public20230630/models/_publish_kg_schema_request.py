@@ -19,8 +19,9 @@ class PublishKgSchemaRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
-        # The publish command and its details.
+        # The publish command details.
         # 
         # This parameter is required.
         self.publish_command = publish_command
@@ -124,24 +125,19 @@ class PublishKgSchemaRequestPublishCommandDataAdjustmentPolicies(DaraModel):
         type: str = None,
         type_code: str = None,
     ):
-        # The backfill property default value policy. This parameter takes effect only when PolicyType is set to BackFillDefault.
+        # The default value backfill policy for properties. This policy takes effect only when the policy type is BackFillDefault.
         # 
         # This parameter is required.
         self.back_fill_default_value_policy = back_fill_default_value_policy
-        # The policy type. Valid values:
-        # 
-        # - BackFillDefault: backfills default values when a property changes from optional to required.
+        # The policy type. Valid value: BackFillDefault (backfills default values when a property changes from optional to required).
         # 
         # This parameter is required.
         self.policy_type = policy_type
-        # The type to which the policy applies. Valid values:
-        # 
-        # - ENTITY: applies to entity types.
-        # - RELATION: applies to relation types.
+        # The policy scope. Valid values: ENTITY (applies to entity types) and RELATION (applies to relationship types).
         # 
         # This parameter is required.
         self.type = type
-        # The code of the entity type or relation type.
+        # The code of the entity type or relationship type.
         # 
         # This parameter is required.
         self.type_code = type_code
@@ -192,7 +188,7 @@ class PublishKgSchemaRequestPublishCommandDataAdjustmentPoliciesBackFillDefaultV
         default_value: str = None,
         property_code: str = None,
     ):
-        # The default value to backfill for the property.
+        # The default value to be backfilled for the property.
         # 
         # This parameter is required.
         self.default_value = default_value

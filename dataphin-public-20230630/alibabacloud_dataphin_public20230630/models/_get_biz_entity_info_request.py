@@ -20,8 +20,9 @@ class GetBizEntityInfoRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
-        # The business entity type. For more information, refer to the create business entity operation.
+        # The business entity type. For more information, see the Create business entity operation.
         # 
         # This parameter is required.
         self.type = type

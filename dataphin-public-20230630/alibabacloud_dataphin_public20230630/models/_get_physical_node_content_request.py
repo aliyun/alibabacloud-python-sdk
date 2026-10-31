@@ -13,8 +13,8 @@ class GetPhysicalNodeContentRequest(DaraModel):
         op_user_id: str = None,
     ):
         # The environment identifier. Valid values:
-        # - DEV: Development environment. 
-        # - PROD (default): Production environment.
+        # - DEV: development environment. 
+        # - PROD: production environment. This is the default value.
         self.env = env
         # The node ID.
         # 
@@ -24,6 +24,7 @@ class GetPhysicalNodeContentRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator ID.
         self.op_user_id = op_user_id
 
     def validate(self):

@@ -14,14 +14,15 @@ class ListSubmitRecordsRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # Query command.
+        # The query command.
         # 
         # This parameter is required.
         self.list_query = list_query
-        # Tenant ID.
+        # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -64,9 +65,9 @@ class ListSubmitRecordsRequestListQuery(DaraModel):
         keyword: str = None,
         search_filter: main_models.ListSubmitRecordsRequestListQuerySearchFilter = None,
     ):
-        # Search keyword.
+        # The search keyword.
         self.keyword = keyword
-        # Pending deployment record filter.
+        # The filter for pending release records.
         # 
         # This parameter is required.
         self.search_filter = search_filter
@@ -110,25 +111,25 @@ class ListSubmitRecordsRequestListQuerySearchFilter(DaraModel):
         submit_start_time: str = None,
         submitter_list: List[str] = None,
     ):
-        # List of change types (0: Create / 1: Update / 2: Delete).
+        # The list of change types (0: Create, 1: Update, 2: Delete).
         self.change_type_list = change_type_list
-        # Page number.
+        # The page number.
         # 
         # This parameter is required.
         self.page = page
-        # Page size.
+        # The number of entries per page.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # Project ID.
+        # The project IDs.
         # 
         # This parameter is required.
         self.project_id_list = project_id_list
-        # Submission end time in the yyyy-MM-dd HH:mm:ss format.
+        # The submission end time in the yyyy-MM-dd HH:mm:ss format.
         self.submit_end_time = submit_end_time
-        # Submission start time in the yyyy-MM-dd HH:mm:ss format.
+        # The submission start time in the yyyy-MM-dd HH:mm:ss format.
         self.submit_start_time = submit_start_time
-        # Submitter.
+        # The submitters.
         self.submitter_list = submitter_list
 
     def validate(self):

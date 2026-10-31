@@ -18,9 +18,9 @@ class UpdateComputeSourceRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The operator user ID.
+        # The ID of the operator.
         self.op_user_id = op_user_id
-        # The edit command.
+        # The update command.
         # 
         # This parameter is required.
         self.update_command = update_command
@@ -68,36 +68,39 @@ class UpdateComputeSourceRequestUpdateCommand(DaraModel):
         description: str = None,
         id: int = None,
         name: str = None,
+        time_zone: str = None,
         type: str = None,
         type_version: str = None,
     ):
-        # The associated cluster ID. This parameter takes effect only when CreateType is left empty or set to COMPUTE_SOURCE (to create a compute source that references a cluster). This parameter is mutually exclusive with CreateType=CLUSTER.
+        # The ID of the associated cluster. This parameter takes effect only when CreateType is left empty or set to COMPUTE_SOURCE, which means creating a compute source that references a cluster. This parameter is mutually exclusive with CreateType=CLUSTER.
         self.cluster_id = cluster_id
-        # The connection configuration items.
+        # The connection configurations.
         # 
         # This parameter is required.
         self.config_list = config_list
-        # The creation entity type. Valid values:
-        # - CLUSTER: Creates the entity as a cluster. ClusterId cannot be specified.
-        # - COMPUTE_SOURCE: Creates the entity as a compute source. This is the default value.
+        # The type of the entity to create. Valid values:
+        # - CLUSTER: creates a cluster. You cannot specify ClusterId.
+        # - COMPUTE_SOURCE: creates a compute source. This is the default value.
         self.create_type = create_type
         # The description.
         # 
         # This parameter is required.
         self.description = description
-        # The compute source ID.
+        # The ID of the compute source.
         # 
         # This parameter is required.
         self.id = id
-        # The compute source name.
+        # The name of the compute source.
         # 
         # This parameter is required.
         self.name = name
-        # The compute source type.
+        # The name of the time zone, such as Asia/Shanghai. If you do not specify this parameter when you update the compute source, the original value is retained.
+        self.time_zone = time_zone
+        # The type of the compute source.
         # 
         # This parameter is required.
         self.type = type
-        # The compute source type version.
+        # The version of the compute source type.
         self.type_version = type_version
 
     def validate(self):
@@ -131,6 +134,9 @@ class UpdateComputeSourceRequestUpdateCommand(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.time_zone is not None:
+            result['TimeZone'] = self.time_zone
+
         if self.type is not None:
             result['Type'] = self.type
 
@@ -162,6 +168,9 @@ class UpdateComputeSourceRequestUpdateCommand(DaraModel):
         if m.get('Name') is not None:
             self.name = m.get('Name')
 
+        if m.get('TimeZone') is not None:
+            self.time_zone = m.get('TimeZone')
+
         if m.get('Type') is not None:
             self.type = m.get('Type')
 
@@ -180,7 +189,7 @@ class UpdateComputeSourceRequestUpdateCommandConfigList(DaraModel):
         # 
         # This parameter is required.
         self.key = key
-        # The configuration item value.
+        # The value of the configuration item.
         # 
         # This parameter is required.
         self.value = value

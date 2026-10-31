@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
+from typing import List, Dict
 
 from alibabacloud_dataphin_public20230630 import models as main_models
 from darabonba.model import DaraModel
@@ -18,8 +18,9 @@ class SubmitBatchTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
-        # The submit request.
+        # The edit request.
         # 
         # This parameter is required.
         self.submit_command = submit_command
@@ -64,10 +65,15 @@ class SubmitBatchTaskRequestSubmitCommand(DaraModel):
         code: str = None,
         code_template_version: int = None,
         comment: str = None,
+        condition_schedule_config: main_models.SubmitBatchTaskRequestSubmitCommandConditionScheduleConfig = None,
+        cpu_resource: str = None,
         cron_expression: str = None,
         custom_schedule_config: main_models.SubmitBatchTaskRequestSubmitCommandCustomScheduleConfig = None,
         engine: str = None,
+        execute_rerun_config: main_models.SubmitBatchTaskRequestSubmitCommandExecuteRerunConfig = None,
+        execute_time_out_config: main_models.SubmitBatchTaskRequestSubmitCommandExecuteTimeOutConfig = None,
         file_id: int = None,
+        memory_resource: str = None,
         name: str = None,
         node_description: str = None,
         node_output_name_list: List[str] = None,
@@ -78,73 +84,110 @@ class SubmitBatchTaskRequestSubmitCommand(DaraModel):
         priority: int = None,
         project_id: int = None,
         python_module_list: List[str] = None,
+        resource_reference_list: List[str] = None,
+        retry_on_timeout_enable: bool = None,
         schedule_period: str = None,
+        schedule_template: main_models.SubmitBatchTaskRequestSubmitCommandScheduleTemplate = None,
         spark_client_info: main_models.SubmitBatchTaskRequestSubmitCommandSparkClientInfo = None,
+        spark_dynamic_resource_switch: bool = None,
+        spark_resource_effect_scope: str = None,
+        spark_sql_resource_config_map: Dict[str, str] = None,
         up_stream_list: List[main_models.SubmitBatchTaskRequestSubmitCommandUpStreamList] = None,
     ):
-        # The code of the node.
+        # The code of the task.
         # 
         # This parameter is required.
         self.code = code
+        # The version number of the code template.
         self.code_template_version = code_template_version
         # The comment for the submit operation.
         # 
         # This parameter is required.
         self.comment = comment
-        # The cron expression for automatic scheduling. Refer to the Linux cron expression syntax.
+        # 条件调度；不传保留，Enable=false关闭并清除原条件，仅周期任务支持
+        self.condition_schedule_config = condition_schedule_config
+        # 不传时保留任务当前配置。
+        self.cpu_resource = cpu_resource
+        # The cron expression for automatic scheduling. You can refer to Linux cron expressions.
         self.cron_expression = cron_expression
         # The custom schedule interval configuration.
         self.custom_schedule_config = custom_schedule_config
-        # The execution engine for the node, such as for Python tasks. Valid values:
+        # The execution engine of the task. Valid values for Python tasks:
         # - PYTHON2_7
         # - PYTHON3_7
         # - PYTHON3_11
         self.engine = engine
-        # The node ID in the directory tree.
+        # 失败重试配置。不传时保留任务当前配置。传入时整体替换该配置对象。
+        self.execute_rerun_config = execute_rerun_config
+        # 执行超时配置。不传时保留任务当前配置。传入时整体替换该配置对象。
+        self.execute_time_out_config = execute_time_out_config
+        # The ID of the node in the task directory tree.
         # 
         # This parameter is required.
         self.file_id = file_id
-        # The name of the batch task.
+        # 不传时保留任务当前配置。
+        self.memory_resource = memory_resource
+        # The name of the offline task.
         # 
         # This parameter is required.
         self.name = name
-        # The description of the node.
+        # The description of the task.
         self.node_description = node_description
         # The list of node output names.
         self.node_output_name_list = node_output_name_list
-        # The node status. Valid values:
+        # The status of the node. Valid values:
         # - 1: Normal.
         # - 2: Paused.
         # - 3: Dry run.
         self.node_status = node_status
+        # The ID of the offline code template.
         self.offline_code_template_id = offline_code_template_id
+        # The list of parameters for the offline code template.
         self.offline_code_template_params = offline_code_template_params
         # The list of custom parameters.
         self.param_list = param_list
-        # The scheduling priority of the node. Valid values: 1 to 9. A larger value indicates a lower priority.
+        # The scheduling priority of the task. Valid values: 1 to 9. A larger value indicates a lower priority.
         self.priority = priority
-        # The ID of the project to which the node belongs.
+        # The ID of the project to which the task belongs.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The Python third-party packages that the node depends on.
+        # The Python third-party packages required by the task.
         self.python_module_list = python_module_list
+        # 资源引用列表，元素为资源名称。不传时使用原有任务的资源引用；传入列表时整体替换，空列表表示清空引用。
+        self.resource_reference_list = resource_reference_list
+        # 超时重试开关。不传时保留任务当前配置。显式传入false时关闭。
+        self.retry_on_timeout_enable = retry_on_timeout_enable
         # The schedule period. Valid values:
-        # - YEARLY
-        # - MONTHLY
-        # - WEEKLY
-        # - DAILY
-        # - HOURLY
-        # - MINUTELY
+        # - YEARLY: Yearly.
+        # - MONTHLY: Monthly.
+        # - WEEKLY: Weekly.
+        # - DAILY: Daily.
+        # - HOURLY: Hourly.
+        # - MINUTELY: Minutely.
         self.schedule_period = schedule_period
-        # The Spark client information.
+        # 基础调度模板；不传保留，空对象解除绑定，仅周期任务支持
+        self.schedule_template = schedule_template
+        # The Spark client.
         self.spark_client_info = spark_client_info
+        # 不传时保留任务当前配置。显式传入false时关闭。
+        self.spark_dynamic_resource_switch = spark_dynamic_resource_switch
+        # ONLY_PROD表示仅生产环境，PROD_AND_DEV表示生产和开发环境。不传时保留任务当前配置。
+        self.spark_resource_effect_scope = spark_resource_effect_scope
+        # Spark SQL资源配置，键为配置项名称，值为字符串。不传时保留任务当前配置。传入空Map时清空配置。
+        self.spark_sql_resource_config_map = spark_sql_resource_config_map
         # The upstream dependencies.
         self.up_stream_list = up_stream_list
 
     def validate(self):
+        if self.condition_schedule_config:
+            self.condition_schedule_config.validate()
         if self.custom_schedule_config:
             self.custom_schedule_config.validate()
+        if self.execute_rerun_config:
+            self.execute_rerun_config.validate()
+        if self.execute_time_out_config:
+            self.execute_time_out_config.validate()
         if self.offline_code_template_params:
             for v1 in self.offline_code_template_params:
                  if v1:
@@ -153,6 +196,8 @@ class SubmitBatchTaskRequestSubmitCommand(DaraModel):
             for v1 in self.param_list:
                  if v1:
                     v1.validate()
+        if self.schedule_template:
+            self.schedule_template.validate()
         if self.spark_client_info:
             self.spark_client_info.validate()
         if self.up_stream_list:
@@ -174,6 +219,12 @@ class SubmitBatchTaskRequestSubmitCommand(DaraModel):
         if self.comment is not None:
             result['Comment'] = self.comment
 
+        if self.condition_schedule_config is not None:
+            result['ConditionScheduleConfig'] = self.condition_schedule_config.to_map()
+
+        if self.cpu_resource is not None:
+            result['CpuResource'] = self.cpu_resource
+
         if self.cron_expression is not None:
             result['CronExpression'] = self.cron_expression
 
@@ -183,8 +234,17 @@ class SubmitBatchTaskRequestSubmitCommand(DaraModel):
         if self.engine is not None:
             result['Engine'] = self.engine
 
+        if self.execute_rerun_config is not None:
+            result['ExecuteRerunConfig'] = self.execute_rerun_config.to_map()
+
+        if self.execute_time_out_config is not None:
+            result['ExecuteTimeOutConfig'] = self.execute_time_out_config.to_map()
+
         if self.file_id is not None:
             result['FileId'] = self.file_id
+
+        if self.memory_resource is not None:
+            result['MemoryResource'] = self.memory_resource
 
         if self.name is not None:
             result['Name'] = self.name
@@ -220,11 +280,29 @@ class SubmitBatchTaskRequestSubmitCommand(DaraModel):
         if self.python_module_list is not None:
             result['PythonModuleList'] = self.python_module_list
 
+        if self.resource_reference_list is not None:
+            result['ResourceReferenceList'] = self.resource_reference_list
+
+        if self.retry_on_timeout_enable is not None:
+            result['RetryOnTimeoutEnable'] = self.retry_on_timeout_enable
+
         if self.schedule_period is not None:
             result['SchedulePeriod'] = self.schedule_period
 
+        if self.schedule_template is not None:
+            result['ScheduleTemplate'] = self.schedule_template.to_map()
+
         if self.spark_client_info is not None:
             result['SparkClientInfo'] = self.spark_client_info.to_map()
+
+        if self.spark_dynamic_resource_switch is not None:
+            result['SparkDynamicResourceSwitch'] = self.spark_dynamic_resource_switch
+
+        if self.spark_resource_effect_scope is not None:
+            result['SparkResourceEffectScope'] = self.spark_resource_effect_scope
+
+        if self.spark_sql_resource_config_map is not None:
+            result['SparkSqlResourceConfigMap'] = self.spark_sql_resource_config_map
 
         result['UpStreamList'] = []
         if self.up_stream_list is not None:
@@ -244,6 +322,13 @@ class SubmitBatchTaskRequestSubmitCommand(DaraModel):
         if m.get('Comment') is not None:
             self.comment = m.get('Comment')
 
+        if m.get('ConditionScheduleConfig') is not None:
+            temp_model = main_models.SubmitBatchTaskRequestSubmitCommandConditionScheduleConfig()
+            self.condition_schedule_config = temp_model.from_map(m.get('ConditionScheduleConfig'))
+
+        if m.get('CpuResource') is not None:
+            self.cpu_resource = m.get('CpuResource')
+
         if m.get('CronExpression') is not None:
             self.cron_expression = m.get('CronExpression')
 
@@ -254,8 +339,19 @@ class SubmitBatchTaskRequestSubmitCommand(DaraModel):
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
 
+        if m.get('ExecuteRerunConfig') is not None:
+            temp_model = main_models.SubmitBatchTaskRequestSubmitCommandExecuteRerunConfig()
+            self.execute_rerun_config = temp_model.from_map(m.get('ExecuteRerunConfig'))
+
+        if m.get('ExecuteTimeOutConfig') is not None:
+            temp_model = main_models.SubmitBatchTaskRequestSubmitCommandExecuteTimeOutConfig()
+            self.execute_time_out_config = temp_model.from_map(m.get('ExecuteTimeOutConfig'))
+
         if m.get('FileId') is not None:
             self.file_id = m.get('FileId')
+
+        if m.get('MemoryResource') is not None:
+            self.memory_resource = m.get('MemoryResource')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
@@ -293,12 +389,31 @@ class SubmitBatchTaskRequestSubmitCommand(DaraModel):
         if m.get('PythonModuleList') is not None:
             self.python_module_list = m.get('PythonModuleList')
 
+        if m.get('ResourceReferenceList') is not None:
+            self.resource_reference_list = m.get('ResourceReferenceList')
+
+        if m.get('RetryOnTimeoutEnable') is not None:
+            self.retry_on_timeout_enable = m.get('RetryOnTimeoutEnable')
+
         if m.get('SchedulePeriod') is not None:
             self.schedule_period = m.get('SchedulePeriod')
+
+        if m.get('ScheduleTemplate') is not None:
+            temp_model = main_models.SubmitBatchTaskRequestSubmitCommandScheduleTemplate()
+            self.schedule_template = temp_model.from_map(m.get('ScheduleTemplate'))
 
         if m.get('SparkClientInfo') is not None:
             temp_model = main_models.SubmitBatchTaskRequestSubmitCommandSparkClientInfo()
             self.spark_client_info = temp_model.from_map(m.get('SparkClientInfo'))
+
+        if m.get('SparkDynamicResourceSwitch') is not None:
+            self.spark_dynamic_resource_switch = m.get('SparkDynamicResourceSwitch')
+
+        if m.get('SparkResourceEffectScope') is not None:
+            self.spark_resource_effect_scope = m.get('SparkResourceEffectScope')
+
+        if m.get('SparkSqlResourceConfigMap') is not None:
+            self.spark_sql_resource_config_map = m.get('SparkSqlResourceConfigMap')
 
         self.up_stream_list = []
         if m.get('UpStreamList') is not None:
@@ -324,28 +439,26 @@ class SubmitBatchTaskRequestSubmitCommandUpStreamList(DaraModel):
         # The dependency period.
         self.depend_period = depend_period
         # The dependency strategy. Valid values:
-        # - ALL: all
-        # - FIRST: first
-        # - LAST: last
-        # - NEAR: nearest
+        # - ALL: All.
+        # - FIRST: First.
+        # - LAST: Last.
+        # - NEAR: Nearest.
         self.depend_strategy = depend_strategy
         # The dependent logical table fields.
         self.field_list = field_list
-        # The type of the upstream dependency node. Valid values:
-        # - PHYSICAL: physical node
-        # - LOGICAL: logical table dependency
+        # The upstream dependency node type. Valid values:
+        # - PHYSICAL: Physical node.
+        # - LOGICAL: Logical table dependency.
         self.node_type = node_type
-        # The period difference. A value of 0 indicates a same-period dependency. A positive number indicates a dependency on the previous N periods.
+        # The period difference. A value of 0 indicates a dependency on the same period. A positive number indicates a dependency on the previous N periods.
         # 
         # This parameter is required.
         self.period_diff = period_diff
-        # Indicates whether the upstream node is enabled.
+        # Specifies whether the upstream node is enabled.
         self.source_node_enabled = source_node_enabled
         # The ID of the upstream node.
         self.source_node_id = source_node_id
         # The output name of the upstream node.
-        # 
-        # This parameter is required.
         self.source_node_output_name = source_node_output_name
         # The name of the input table.
         self.source_table_name = source_table_name
@@ -429,10 +542,10 @@ class SubmitBatchTaskRequestSubmitCommandUpStreamListDependPeriod(DaraModel):
         # The period offset. This parameter is required when dependencyPeriodType is set to LAST_N_PERIOD.
         self.period_offset = period_offset
         # The dependency period type. Valid values:
-        # - CURRENT_PERIOD: current period
-        # - LAST_PERIOD: previous period
-        # - LAST_N_PERIOD: last N days
-        # - LAST_24_HOUR: last 24 hours
+        # - CURRENT_PERIOD: Current period.
+        # - LAST_PERIOD: Last period.
+        # - LAST_N_PERIOD: Last N days.
+        # - LAST_24_HOUR: Last 24 hours.
         # 
         # This parameter is required.
         self.period_type = period_type
@@ -493,17 +606,45 @@ class SubmitBatchTaskRequestSubmitCommandSparkClientInfo(DaraModel):
 
         return self
 
+class SubmitBatchTaskRequestSubmitCommandScheduleTemplate(DaraModel):
+    def __init__(
+        self,
+        template_id: int = None,
+    ):
+        # 基础调度模板ID，必须为正数
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+
+        return self
+
 class SubmitBatchTaskRequestSubmitCommandParamList(DaraModel):
     def __init__(
         self,
         key: str = None,
         value: str = None,
     ):
-        # The parameter name.
+        # The name of the parameter.
         # 
         # This parameter is required.
         self.key = key
-        # The parameter value.
+        # The value of the parameter.
         # 
         # This parameter is required.
         self.value = value
@@ -542,9 +683,13 @@ class SubmitBatchTaskRequestSubmitCommandOfflineCodeTemplateParams(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The description of the parameter.
         self.description = description
+        # Specifies whether encryption is enabled.
         self.encrypt_enabled = encrypt_enabled
+        # The key of the parameter.
         self.key = key
+        # The value of the parameter.
         self.value = value
 
     def validate(self):
@@ -585,6 +730,89 @@ class SubmitBatchTaskRequestSubmitCommandOfflineCodeTemplateParams(DaraModel):
 
         return self
 
+class SubmitBatchTaskRequestSubmitCommandExecuteTimeOutConfig(DaraModel):
+    def __init__(
+        self,
+        custom_values: str = None,
+        follow_system: bool = None,
+    ):
+        # 自定义超时时间。
+        self.custom_values = custom_values
+        # 是否跟随系统配置。
+        self.follow_system = follow_system
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.custom_values is not None:
+            result['CustomValues'] = self.custom_values
+
+        if self.follow_system is not None:
+            result['FollowSystem'] = self.follow_system
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomValues') is not None:
+            self.custom_values = m.get('CustomValues')
+
+        if m.get('FollowSystem') is not None:
+            self.follow_system = m.get('FollowSystem')
+
+        return self
+
+class SubmitBatchTaskRequestSubmitCommandExecuteRerunConfig(DaraModel):
+    def __init__(
+        self,
+        custom_rerun_interval: str = None,
+        custom_rerun_times: str = None,
+        follow_system: bool = None,
+    ):
+        # 自定义失败重试间隔。
+        self.custom_rerun_interval = custom_rerun_interval
+        # 自定义失败重试次数。
+        self.custom_rerun_times = custom_rerun_times
+        # 是否跟随系统配置。
+        self.follow_system = follow_system
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.custom_rerun_interval is not None:
+            result['CustomRerunInterval'] = self.custom_rerun_interval
+
+        if self.custom_rerun_times is not None:
+            result['CustomRerunTimes'] = self.custom_rerun_times
+
+        if self.follow_system is not None:
+            result['FollowSystem'] = self.follow_system
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomRerunInterval') is not None:
+            self.custom_rerun_interval = m.get('CustomRerunInterval')
+
+        if m.get('CustomRerunTimes') is not None:
+            self.custom_rerun_times = m.get('CustomRerunTimes')
+
+        if m.get('FollowSystem') is not None:
+            self.follow_system = m.get('FollowSystem')
+
+        return self
+
 class SubmitBatchTaskRequestSubmitCommandCustomScheduleConfig(DaraModel):
     def __init__(
         self,
@@ -594,7 +822,7 @@ class SubmitBatchTaskRequestSubmitCommandCustomScheduleConfig(DaraModel):
         schedule_period: str = None,
         start_time: str = None,
     ):
-        # The end time in the format of HH:mm.
+        # The end time in the HH:mm format.
         # 
         # This parameter is required.
         self.end_time = end_time
@@ -603,22 +831,22 @@ class SubmitBatchTaskRequestSubmitCommandCustomScheduleConfig(DaraModel):
         # This parameter is required.
         self.interval = interval
         # The interval unit. Valid values:
-        # - MINUTE: minute
-        # - HOUR: hour
+        # - MINUTE: Minute.
+        # - HOUR: Hour.
         # 
         # This parameter is required.
         self.interval_unit = interval_unit
         # The schedule period. Valid values:
-        # - YEARLY
-        # - MONTHLY
-        # - WEEKLY
-        # - DAILY
-        # - HOURLY
-        # - MINUTELY
+        # - YEARLY: Yearly.
+        # - MONTHLY: Monthly.
+        # - WEEKLY: Weekly.
+        # - DAILY: Daily.
+        # - HOURLY: Hourly.
+        # - MINUTELY: Minutely.
         # 
         # This parameter is required.
         self.schedule_period = schedule_period
-        # The start time in the format of HH:mm.
+        # The start time in the HH:mm format.
         # 
         # This parameter is required.
         self.start_time = start_time
@@ -664,6 +892,142 @@ class SubmitBatchTaskRequestSubmitCommandCustomScheduleConfig(DaraModel):
 
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+
+        return self
+
+class SubmitBatchTaskRequestSubmitCommandConditionScheduleConfig(DaraModel):
+    def __init__(
+        self,
+        enable: bool = None,
+        param_list: List[main_models.SubmitBatchTaskRequestSubmitCommandConditionScheduleConfigParamList] = None,
+        template_id: int = None,
+    ):
+        # 是否启用条件调度。传入ConditionScheduleConfig对象时必须提供，由后端校验；false关闭并清除旧配置。
+        self.enable = enable
+        # 自定义条件列表；与TemplateId互斥，空列表清除旧条件
+        self.param_list = param_list
+        # 条件调度模板ID，与ParamList互斥
+        self.template_id = template_id
+
+    def validate(self):
+        if self.param_list:
+            for v1 in self.param_list:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.enable is not None:
+            result['Enable'] = self.enable
+
+        result['ParamList'] = []
+        if self.param_list is not None:
+            for k1 in self.param_list:
+                result['ParamList'].append(k1.to_map() if k1 else None)
+
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+
+        self.param_list = []
+        if m.get('ParamList') is not None:
+            for k1 in m.get('ParamList'):
+                temp_model = main_models.SubmitBatchTaskRequestSubmitCommandConditionScheduleConfigParamList()
+                self.param_list.append(temp_model.from_map(k1))
+
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+
+        return self
+
+class SubmitBatchTaskRequestSubmitCommandConditionScheduleConfigParamList(DaraModel):
+    def __init__(
+        self,
+        condition_name: str = None,
+        cron_expression: str = None,
+        enable: bool = None,
+        follow_schedule_param: bool = None,
+        node_status: int = None,
+        schedule_condition_json: str = None,
+        schedule_time: str = None,
+    ):
+        # 条件名称
+        self.condition_name = condition_name
+        # 命中后的cron表达式
+        self.cron_expression = cron_expression
+        # 是否启用该条件
+        self.enable = enable
+        # 是否跟随主调度参数
+        self.follow_schedule_param = follow_schedule_param
+        # 命中后的调度状态：1正常，2暂停，3空跑
+        self.node_status = node_status
+        # 条件表达式树JSON字符串，内部键名使用小驼峰
+        self.schedule_condition_json = schedule_condition_json
+        # 命中后的调度时间
+        self.schedule_time = schedule_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.condition_name is not None:
+            result['ConditionName'] = self.condition_name
+
+        if self.cron_expression is not None:
+            result['CronExpression'] = self.cron_expression
+
+        if self.enable is not None:
+            result['Enable'] = self.enable
+
+        if self.follow_schedule_param is not None:
+            result['FollowScheduleParam'] = self.follow_schedule_param
+
+        if self.node_status is not None:
+            result['NodeStatus'] = self.node_status
+
+        if self.schedule_condition_json is not None:
+            result['ScheduleConditionJson'] = self.schedule_condition_json
+
+        if self.schedule_time is not None:
+            result['ScheduleTime'] = self.schedule_time
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConditionName') is not None:
+            self.condition_name = m.get('ConditionName')
+
+        if m.get('CronExpression') is not None:
+            self.cron_expression = m.get('CronExpression')
+
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+
+        if m.get('FollowScheduleParam') is not None:
+            self.follow_schedule_param = m.get('FollowScheduleParam')
+
+        if m.get('NodeStatus') is not None:
+            self.node_status = m.get('NodeStatus')
+
+        if m.get('ScheduleConditionJson') is not None:
+            self.schedule_condition_json = m.get('ScheduleConditionJson')
+
+        if m.get('ScheduleTime') is not None:
+            self.schedule_time = m.get('ScheduleTime')
 
         return self
 

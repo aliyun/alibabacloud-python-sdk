@@ -18,6 +18,7 @@ class PublishObjectListRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator ID.
         self.op_user_id = op_user_id
         # The publish command.
         # 
@@ -65,7 +66,7 @@ class PublishObjectListRequestPublishCommand(DaraModel):
         project_id: int = None,
         submit_id_list: List[int] = None,
     ):
-        # The publish comment. The string can be up to 1024 characters in length.
+        # The publish comment. The maximum length is 1,024 characters.
         # 
         # This parameter is required.
         self.comment = comment
@@ -73,7 +74,7 @@ class PublishObjectListRequestPublishCommand(DaraModel):
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The list of pending publish record IDs to be published. A maximum of 50 submit IDs can be specified.
+        # The list of submit record IDs for the items to be published. A maximum of 50 submit IDs are supported.
         # 
         # This parameter is required.
         self.submit_id_list = submit_id_list

@@ -20,6 +20,7 @@ class ListDatasetsRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator ID.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -74,9 +75,9 @@ class ListDatasetsRequestDatasetQuery(DaraModel):
     ):
         # The content type.
         self.content_type = content_type
-        # The data domain ID.
+        # The subject domain ID.
         self.data_unit = data_unit
-        # Specifies whether to include version details. Default value: FALSE.
+        # Specifies whether to include version details. Default value: false.
         self.include_version_list = include_version_list
         # The keyword.
         self.keyword = keyword
@@ -84,21 +85,19 @@ class ListDatasetsRequestDatasetQuery(DaraModel):
         self.owner = owner
         # The page number.
         self.page = page
-        # The number of entries per page.
+        # The number of items per page.
         self.page_size = page_size
         # The project ID.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The dataset scenario. Valid values:
-        # - OFFLINE: offline.
-        # - REALTIME: real-time.
+        # The dataset scenario. Valid values: OFFLINE (offline) and REALTIME (real-time).
         self.scenario = scenario
         # The storage type.
         self.storage_type = storage_type
         # The tenant ID.
         self.tenant_id = tenant_id
-        # The dataset type. If left empty, all types are queried.
+        # The dataset types. If this parameter is left empty, all types are queried.
         self.type_list = type_list
 
     def validate(self):

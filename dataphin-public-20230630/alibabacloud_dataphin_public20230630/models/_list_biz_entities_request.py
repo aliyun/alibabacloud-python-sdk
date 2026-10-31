@@ -22,6 +22,7 @@ class ListBizEntitiesRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -127,21 +128,21 @@ class ListBizEntitiesRequestListQueryFilterCriteria(DaraModel):
         status_list: List[str] = None,
         sub_type_list: List[str] = None,
     ):
-        # The list of business unit IDs.
+        # The IDs of the business units.
         self.biz_unit_id_list = biz_unit_id_list
-        # The list of business unit IDs.
+        # The IDs of the business units.
         self.biz_unit_name_list = biz_unit_name_list
-        # The list of data domain IDs.
+        # The IDs of the data domains.
         self.data_domain_id_list = data_domain_id_list
-        # The list of data domain IDs.
+        # The IDs of the data domains.
         self.data_domain_name_list = data_domain_name_list
         # Specifies whether the business entity is associated with a logical table.
         self.has_table_ref = has_table_ref
-        # The list of owner user IDs.
+        # The IDs of the owners.
         self.owner_user_id_list = owner_user_id_list
-        # The list of business entity statuses. For more information, refer to the API operation for querying business entity details.
+        # The status of the business entity. For more information, refer to the "Get business entity details" API operation.
         self.status_list = status_list
-        # The list of business entity subtypes. For more information, refer to the API operation for querying business entity details.
+        # The subtypes of the business entity. For more information, refer to the "Get business entity details" API operation.
         self.sub_type_list = sub_type_list
 
     def validate(self):

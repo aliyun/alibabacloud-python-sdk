@@ -16,15 +16,15 @@ class UpsertQualityScheduleResponseBody(DaraModel):
     ):
         # The backend response code.
         self.code = code
-        # The schedule object ID.
+        # The ID of the schedule object.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The backend exception details.
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

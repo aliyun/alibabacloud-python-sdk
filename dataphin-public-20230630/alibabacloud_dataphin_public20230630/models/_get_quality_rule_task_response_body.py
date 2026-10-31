@@ -19,13 +19,13 @@ class GetQualityRuleTaskResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend exception.
+        # The backend exception details.
         self.message = message
         # Id of the request
         self.request_id = request_id
         # The rule task details.
         self.rule_task_info = rule_task_info
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -102,41 +102,41 @@ class GetQualityRuleTaskResponseBodyRuleTaskInfo(DaraModel):
         watch_id: int = None,
         watch_task_id: int = None,
     ):
-        # The business date.
+        # The business date. The format is YYYY-MM-DD.
         self.biz_date = biz_date
-        # The business date format.
+        # The format of the business date.
         self.biz_date_format = biz_date_format
-        # The creation time.
+        # The creation time. The format is YYYY-MM-DD HH:mm:ss.
         self.create_time = create_time
         # The creator.
         self.creator = creator
-        # The end time.
+        # The end time. The format is YYYY-MM-DD HH:mm:ss.
         self.end_time = end_time
         # The rule task ID.
         self.id = id
-        # The ID of the user who last modified the task.
+        # The ID of the user who last updated the task.
         self.modifier = modifier
-        # The modification time.
+        # The update time. The format is YYYY-MM-DD HH:mm:ss.
         self.modify_time = modify_time
         # The rule ID.
         self.rule_id = rule_id
-        # The start time.
+        # The start time. The format is YYYY-MM-DD HH:mm:ss.
         self.start_time = start_time
         # The task status.
         self.status = status
         # The template ID.
         self.template_id = template_id
-        # The validation object name.
+        # The name of the validated object.
         self.validate_object_name = validate_object_name
-        # The validation object type.
+        # The validated object type.
         self.validate_object_type = validate_object_type
-        # The validation partition.
+        # The validated partition.
         self.validate_partition = validate_partition
-        # Indicates whether the validation passed.
+        # Indicates whether the validation is successful.
         self.validate_success = validate_success
-        # The ID of the associated monitor.
+        # The watch ID.
         self.watch_id = watch_id
-        # The monitor task ID. This ID is empty for trial-run rule tasks.
+        # The watch task ID. This ID is empty for rule tasks in a trial run.
         self.watch_task_id = watch_task_id
 
     def validate(self):

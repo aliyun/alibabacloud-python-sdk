@@ -17,7 +17,7 @@ class GetSparkLocalClientInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. A value of OK indicates that the request was successful.
+        # The error code. A value of OK indicates that the request is successful.
         self.code = code
         # The response data.
         self.data = data
@@ -27,7 +27,7 @@ class GetSparkLocalClientInfoResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -102,7 +102,7 @@ class GetSparkLocalClientInfoResponseBodyData(DaraModel):
         self.client_file_resource_name = client_file_resource_name
         # The client name.
         self.client_name = client_name
-        # Indicates whether the client information is editable.
+        # Indicates whether it is editable.
         self.editable = editable
 
     def validate(self):

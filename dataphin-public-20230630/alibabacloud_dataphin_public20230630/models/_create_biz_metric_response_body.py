@@ -21,11 +21,11 @@ class CreateBizMetricResponseBody(DaraModel):
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error details from the backend.
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -86,10 +86,10 @@ class CreateBizMetricResponseBodyData(DaraModel):
         message: str = None,
         success: bool = None,
     ):
-        # The error message.
+        # The exception message.
         self.message = message
-        # Indicates whether the creation was successful. Valid values:
-        # - true: Succeeded.
+        # Indicates whether the creation is successful. Valid values:
+        # - true: Successful.
         # - false: Failed.
         self.success = success
 

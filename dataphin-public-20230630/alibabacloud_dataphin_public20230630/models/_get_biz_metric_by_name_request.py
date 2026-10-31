@@ -12,14 +12,15 @@ class GetBizMetricByNameRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # Query request.
+        # The query request.
         # 
         # This parameter is required.
         self.biz_metric_by_name_query = biz_metric_by_name_query
-        # Tenant ID.
+        # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -62,7 +63,9 @@ class GetBizMetricByNameRequestBizMetricByNameQuery(DaraModel):
         draft: bool = None,
         name: str = None,
     ):
-        # Specifies whether to query draft or published asset details. Set this parameter to True to query draft details, or False to query published details.
+        # Specifies whether to query the details of a draft or published asset. Valid values:
+        # - True: Draft.
+        # - False: Published.
         # 
         # This parameter is required.
         self.draft = draft

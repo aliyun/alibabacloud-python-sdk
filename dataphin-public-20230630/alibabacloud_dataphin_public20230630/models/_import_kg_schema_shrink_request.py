@@ -12,7 +12,7 @@ class ImportKgSchemaShrinkRequest(DaraModel):
         op_user_id: str = None,
         workspace_id: str = None,
     ):
-        # The command for importing the knowledge graph definition.
+        # The import command for the knowledge graph definition.
         # 
         # This parameter is required.
         self.import_command_shrink = import_command_shrink
@@ -20,7 +20,7 @@ class ImportKgSchemaShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The ID of the operator user.
+        # The ID of the operator.
         self.op_user_id = op_user_id
         # The workspace ID.
         # 

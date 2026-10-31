@@ -23,11 +23,11 @@ class GetKgRelationResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The backend exception details.
         self.message = message
-        # The relationship record details.
+        # The relation record details.
         self.relation_info = relation_info
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -91,11 +91,11 @@ class GetKgRelationResponseBodyRelationInfo(DaraModel):
         source_entity_id: str = None,
         target_entity_id: str = None,
     ):
-        # The list of relationship record properties.
+        # The property list of the relation record.
         self.property_list = property_list
-        # The relationship record ID.
+        # The relation record ID.
         self.relation_id = relation_id
-        # The relationship type code.
+        # The relation type code.
         self.relation_type = relation_type
         # The source entity ID.
         self.source_entity_id = source_entity_id
@@ -163,7 +163,7 @@ class GetKgRelationResponseBodyRelationInfoPropertyList(DaraModel):
     ):
         # The property code.
         self.code = code
-        # The property data type. Valid values: STRING (string), INTEGER (integer), FLOAT (floating-point number), BOOLEAN (Boolean), DATE (date), LIST (list), and others.
+        # The property data type. Valid values: STRING (string), INTEGER (integer), FLOAT (floating-point number), BOOLEAN (Boolean), DATE (date), and LIST (list).
         self.data_type = data_type
         # The property value.
         self.value = value

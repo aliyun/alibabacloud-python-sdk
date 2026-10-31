@@ -14,17 +14,17 @@ class GetServerVersionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. A value of OK indicates that the request is successful.
+        # The request error code. A value of OK indicates that the request is normal.
         self.code = code
-        # The Dataphin server version number.
+        # The version number of the Dataphin server.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error message.
+        # The error message of the request.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

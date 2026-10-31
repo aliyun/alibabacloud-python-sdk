@@ -12,7 +12,7 @@ class AddProjectMemberShrinkRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The command for adding members.
+        # The command to add members.
         # 
         # This parameter is required.
         self.add_command_shrink = add_command_shrink
@@ -24,7 +24,7 @@ class AddProjectMemberShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The ID of the operator user.
+        # The operator user ID.
         self.op_user_id = op_user_id
 
     def validate(self):

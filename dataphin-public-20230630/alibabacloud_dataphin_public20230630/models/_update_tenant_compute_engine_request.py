@@ -18,6 +18,7 @@ class UpdateTenantComputeEngineRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
         # The update command.
         # 
@@ -65,7 +66,7 @@ class UpdateTenantComputeEngineRequestUpdateCommand(DaraModel):
         type: str = None,
         version: str = None,
     ):
-        # The list of cluster node endpoints.
+        # The cluster node connection list.
         # 
         # This parameter is required.
         self.cluster_url_list = cluster_url_list

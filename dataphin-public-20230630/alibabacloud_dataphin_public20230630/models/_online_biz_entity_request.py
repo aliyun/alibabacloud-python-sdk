@@ -20,6 +20,7 @@ class OnlineBizEntityRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -68,7 +69,7 @@ class OnlineBizEntityRequestOnlineCommand(DaraModel):
         # 
         # This parameter is required.
         self.biz_unit_id = biz_unit_id
-        # The remarks for the offline operation.
+        # The offline comment.
         # 
         # This parameter is required.
         self.comment = comment
@@ -76,9 +77,7 @@ class OnlineBizEntityRequestOnlineCommand(DaraModel):
         # 
         # This parameter is required.
         self.id = id
-        # The business type. Valid values:
-        # - BIZ_OBJECT
-        # - BIZ_PROCESS.
+        # The business type. Valid values: BIZ_OBJECT and BIZ_PROCESS.
         # 
         # This parameter is required.
         self.type = type

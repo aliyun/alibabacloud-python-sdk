@@ -16,13 +16,14 @@ class OperateInstanceRequest(DaraModel):
         operate_command: main_models.OperateInstanceRequestOperateCommand = None,
     ):
         # The environment identifier. Valid values:
-        # - DEV: development environment. 
-        # - PROD (default): production environment.
+        # - DEV: Development environment. 
+        # - PROD: Production environment. This is the default value.
         self.env = env
         # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
         # The operation request.
         # 
@@ -76,16 +77,16 @@ class OperateInstanceRequestOperateCommand(DaraModel):
         operation: str = None,
         project_id: int = None,
     ):
-        # The list of instances to operate on.
+        # The O&M instance list.
         # 
         # This parameter is required.
         self.instance_id_list = instance_id_list
-        # The operation to perform. Valid values:	
-        # - RERUN: Reruns the instance.
-        # - PAUSE: Pauses the instance.
-        # - RESUME: Resumes the instance.
-        # - TERMINATE: Stops the instance.
-        # - SET_SUCCESS: Sets the instance status to successful.
+        # The operation. Valid values:	
+        # - RERUN: Rerun.
+        # - PAUSE: Pause.
+        # - RESUME: Resume.
+        # - TERMINATE: Stop.
+        # - SET_SUCCESS: Set to success.
         # 
         # This parameter is required.
         self.operation = operation

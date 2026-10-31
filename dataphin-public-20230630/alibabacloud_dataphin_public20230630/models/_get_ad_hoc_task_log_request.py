@@ -14,7 +14,7 @@ class GetAdHocTaskLogRequest(DaraModel):
         sub_task_id: int = None,
         task_id: str = None,
     ):
-        # The offset for querying logs. Increment the value based on the returned result. Set the initial value to 0.
+        # The offset for log queries. Increment this value based on the returned results. Set the initial value to 0.
         # 
         # This parameter is required.
         self.offset = offset
@@ -22,12 +22,13 @@ class GetAdHocTaskLogRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
         # The project ID.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The subtask ID. The value starts from 0.
+        # The subtask ID, starting from 0.
         # 
         # This parameter is required.
         self.sub_task_id = sub_task_id

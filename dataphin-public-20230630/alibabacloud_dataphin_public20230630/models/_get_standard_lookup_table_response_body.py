@@ -27,7 +27,7 @@ class GetStandardLookupTableResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -102,29 +102,29 @@ class GetStandardLookupTableResponseBodyLookupTableInfo(DaraModel):
     ):
         # The code of the lookup table.
         self.code = code
-        # The creation time.
+        # The creation time. The format is YYYY-MM-DD HH:mm:ss.
         self.create_time = create_time
-        # The user ID of the creator.
+        # The ID of the user who created the lookup table.
         self.creator = creator
-        # The username of the creator.
+        # The username of the user who created the lookup table.
         self.creator_name = creator_name
         # The description of the lookup table.
         self.description = description
-        # The directory to which the lookup table belongs.
+        # The parent folder.
         self.directory_reference = directory_reference
-        # The lookup table ID.
+        # The ID of the lookup table.
         self.id = id
-        # The user ID of the last modifier.
+        # The ID of the user who last modified the lookup table.
         self.last_modifier = last_modifier
-        # The username of the last modifier.
+        # The username of the user who last modified the lookup table.
         self.last_modifier_name = last_modifier_name
         # The list of lookup table values.
         self.lookup_table_value_list = lookup_table_value_list
-        # The modification time.
+        # The update time. The format is YYYY-MM-DD HH:mm:ss.
         self.modify_time = modify_time
         # The name of the lookup table.
         self.name = name
-        # The user ID of the owner.
+        # The ID of the owner.
         self.owner = owner
         # The username of the owner.
         self.owner_name = owner_name
@@ -246,7 +246,7 @@ class GetStandardLookupTableResponseBodyLookupTableInfoLookupTableValueList(Dara
         name: str = None,
         value: str = None,
     ):
-        # The code description.
+        # The description of the code.
         self.description = description
         # The English name of the code.
         self.english_name = english_name
@@ -298,7 +298,7 @@ class GetStandardLookupTableResponseBodyLookupTableInfoDirectoryReference(DaraMo
         self,
         directory: str = None,
     ):
-        # The directory to which the lookup table belongs.
+        # The parent folder.
         self.directory = directory
 
     def validate(self):

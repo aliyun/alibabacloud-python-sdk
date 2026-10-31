@@ -23,7 +23,7 @@ class BatchCreateKgEntityResponseBody(DaraModel):
         self.create_result = create_result
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The backend exception details.
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -89,9 +89,9 @@ class BatchCreateKgEntityResponseBodyCreateResult(DaraModel):
         success_count: int = None,
         success_entity_list: List[main_models.BatchCreateKgEntityResponseBodyCreateResultSuccessEntityList] = None,
     ):
-        # The number of entity records that failed to be created.
+        # The number of failed records.
         self.fail_count = fail_count
-        # The number of successfully created entity records.
+        # The number of successfully created records.
         self.success_count = success_count
         # The list of IDs of successfully created entity records.
         self.success_entity_list = success_entity_list
@@ -142,7 +142,7 @@ class BatchCreateKgEntityResponseBodyCreateResultSuccessEntityList(DaraModel):
         entity_id: str = None,
         entity_type: str = None,
     ):
-        # The entity record ID.
+        # The ID of the entity record.
         self.entity_id = entity_id
         # The entity type code.
         self.entity_type = entity_type

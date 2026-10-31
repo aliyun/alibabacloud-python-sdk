@@ -15,16 +15,17 @@ class ResumePhysicalNodeRequest(DaraModel):
         op_user_id: str = None,
         resume_command: main_models.ResumePhysicalNodeRequestResumeCommand = None,
     ):
-        # Environment identifier.
-        # - DEV: Development environment
-        # - PROD (default): Production environment
+        # The environment identifier. Valid values:
+        # - DEV: development environment 
+        # - PROD: production environment. This is the default value.
         self.env = env
-        # Tenant ID.
+        # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
-        # Resume scheduling request.
+        # The request to resume scheduling.
         # 
         # This parameter is required.
         self.resume_command = resume_command
@@ -75,11 +76,11 @@ class ResumePhysicalNodeRequestResumeCommand(DaraModel):
         node_id_list: List[str] = None,
         project_id: int = None,
     ):
-        # Node ID list.
+        # The list of node IDs.
         # 
         # This parameter is required.
         self.node_id_list = node_id_list
-        # Project ID.
+        # The project ID.
         # 
         # This parameter is required.
         self.project_id = project_id

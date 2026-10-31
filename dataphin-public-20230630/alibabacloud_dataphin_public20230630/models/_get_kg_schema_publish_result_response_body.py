@@ -25,7 +25,7 @@ class GetKgSchemaPublishResultResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -90,13 +90,13 @@ class GetKgSchemaPublishResultResponseBodyData(DaraModel):
         # The publish content.
         self.content = content
         # The publish status. Valid values:
-        # - Publishing: Publishing in progress.
-        # - Published: Published successfully.
-        # - Partial: Partially completed.
-        # - Failed: Failed.
-        # - RollbackFailed: Publish failed and rollback failed.
+        # - Publishing: The publish task is in progress.
+        # - Published: The publish task is successful.
+        # - Partial: The publish task is partially completed.
+        # - Failed: The publish task failed.
+        # - RollbackFailed: The publish task failed and the rollback failed.
         self.status = status
-        # The version number.
+        # The version ID.
         self.version_id = version_id
 
     def validate(self):

@@ -10,20 +10,20 @@ class GetTableColumnsRequest(DaraModel):
         catalog: str = None,
         op_tenant_id: int = None,
         op_user_id: str = None,
+        table_guid: str = None,
         table_name: str = None,
     ):
-        # The asset table catalog, which is the name of the business unit or workspace.
-        # 
-        # This parameter is required.
+        # The catalog of the asset table, which is the name of the business unit or project workspace.
         self.catalog = catalog
         # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
-        # The table name.
-        # 
-        # This parameter is required.
+        # The GUID of the table. If this parameter is specified, it takes precedence in the query, and the Catalog and TableName parameters are ignored even if they are provided.
+        self.table_guid = table_guid
+        # The name of the table.
         self.table_name = table_name
 
     def validate(self):
@@ -43,6 +43,9 @@ class GetTableColumnsRequest(DaraModel):
         if self.op_user_id is not None:
             result['OpUserId'] = self.op_user_id
 
+        if self.table_guid is not None:
+            result['TableGuid'] = self.table_guid
+
         if self.table_name is not None:
             result['TableName'] = self.table_name
 
@@ -58,6 +61,9 @@ class GetTableColumnsRequest(DaraModel):
 
         if m.get('OpUserId') is not None:
             self.op_user_id = m.get('OpUserId')
+
+        if m.get('TableGuid') is not None:
+            self.table_guid = m.get('TableGuid')
 
         if m.get('TableName') is not None:
             self.table_name = m.get('TableName')

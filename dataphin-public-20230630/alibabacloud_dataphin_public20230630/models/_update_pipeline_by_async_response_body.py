@@ -16,15 +16,15 @@ class UpdatePipelineByAsyncResponseBody(DaraModel):
     ):
         # The backend response code.
         self.code = code
-        # The query ID for the asynchronous execution.
+        # The query ID for asynchronous execution.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error details returned by the backend.
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

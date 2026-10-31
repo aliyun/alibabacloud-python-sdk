@@ -15,17 +15,17 @@ class GetOperationSubmitStatusResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. A value of OK indicates that the request was successful.
+        # The error code. A value of OK indicates that the request is successful.
         self.code = code
-        # The HTTP status code returned by the backend.
+        # The backend HTTP status code.
         self.http_status_code = http_status_code
         # The error message.
         self.message = message
-        # The submit status of the operation.
+        # The operation submit status.
         self.operation_submit_job = operation_submit_job
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -90,16 +90,23 @@ class GetOperationSubmitStatusResponseBodyOperationSubmitJob(DaraModel):
         operator: str = None,
         progress: str = None,
     ):
-        # The business ID. If the operation is a data backfill, this value is the data backfill workflow ID.
+        # The business ID. If the operation is data backfill, this parameter indicates the data backfill workflow.
         self.external_biz_id = external_biz_id
-        # The submit ID of the data backfill request.
+        # The submit ID of the data backfill.
         self.job_id = job_id
         # The operation type. Valid values:
-        # - SUPPLY_DATA: data backfill.
+        # - SUPPLY_DATA: data backfill
+        # - UPDATE_OWNER: update owner
+        # - UPDATE_PRIORITY: update priority
+        # - UPDATE_TASK_GROUP: update task group
+        # - UPDATE_RESOURCE_GROUP: update resource group
+        # - PAUSE: pause
+        # - RESUME: resume
+        # - TRIGGER_EXECUTE: trigger execution
         self.operation = operation
         # The status.
         self.operation_status = operation_status
-        # The user ID of the submitter.
+        # The ID of the user who submitted the request.
         self.operator = operator
         # The progress.
         self.progress = progress

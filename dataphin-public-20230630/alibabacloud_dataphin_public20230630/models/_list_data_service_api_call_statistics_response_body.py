@@ -17,17 +17,17 @@ class ListDataServiceApiCallStatisticsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Backend response code.
+        # The backend response code.
         self.code = code
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Backend error details.
+        # The backend exception details.
         self.message = message
-        # Paginated query result.
+        # The paged query result.
         self.page_result = page_result
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -88,9 +88,9 @@ class ListDataServiceApiCallStatisticsResponseBodyPageResult(DaraModel):
         call_statistics_list: List[main_models.ListDataServiceApiCallStatisticsResponseBodyPageResultCallStatisticsList] = None,
         total_count: int = None,
     ):
-        # API call statistics list.
+        # The list of API call statistics.
         self.call_statistics_list = call_statistics_list
-        # Total number of records.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -145,33 +145,33 @@ class ListDataServiceApiCallStatisticsResponseBodyPageResultCallStatisticsList(D
         project_name: str = None,
         sql_id: int = None,
     ):
-        # API ID.
+        # The API code.
         self.api_id = api_id
-        # API name.
+        # The API name.
         self.api_name = api_name
-        # Authorized application names.
+        # The names of the authorized applications.
         self.app_name_list = app_name_list
-        # Number of authorized applications.
+        # The number of authorized applications.
         self.authorized_app_count = authorized_app_count
-        # Average response time, in milliseconds.
+        # The average response time, in milliseconds.
         self.avg_response_time = avg_response_time
-        # Number of calls.
+        # The number of calls.
         self.call_count = call_count
-        # Creator.
+        # The creator.
         self.creator = creator
-        # Number of call errors.
+        # The number of call exceptions.
         self.error_count = error_count
-        # Error rate.
+        # The error rate.
         self.error_rate = error_rate
-        # Last call time. Format: yyyy-MM-dd HH:mm:ss.
+        # The time of the last call. Format: yyyy-MM-dd HH:mm:ss.
         self.last_call_time = last_call_time
-        # Offline percentage.
+        # The offline percentage.
         self.offline_rate = offline_rate
-        # Data service project ID.
+        # The data service project ID.
         self.project_id = project_id
-        # Data service project.
+        # The name of the data service project.
         self.project_name = project_name
-        # SQL table primary key.
+        # The primary key of the SQL table.
         self.sql_id = sql_id
 
     def validate(self):

@@ -18,6 +18,7 @@ class SubmitQualityWatchTasksRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
         # The submit command.
         # 
@@ -65,11 +66,11 @@ class SubmitQualityWatchTasksRequestSubmitCommand(DaraModel):
         partition_expression: str = None,
         watch_id_list: List[int] = None,
     ):
-        # The business date, in the yyyy-MM-dd format.
+        # The business date. Format: yyyy-MM-dd.
         self.biz_date = biz_date
-        # The partition expression. This is a custom expression.
+        # The custom partition expression.
         self.partition_expression = partition_expression
-        # The monitored object IDs.
+        # The IDs of the monitored objects.
         # 
         # This parameter is required.
         self.watch_id_list = watch_id_list

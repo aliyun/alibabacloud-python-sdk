@@ -19,13 +19,13 @@ class GetUdfByVersionResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend exception.
+        # The backend exception details.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
-        # The details of the user-defined function.
+        # The custom function details.
         self.udf_info = udf_info
 
     def validate(self):
@@ -96,21 +96,21 @@ class GetUdfByVersionResponseBodyUdfInfo(DaraModel):
         last_modifier: str = None,
         name: str = None,
     ):
-        # The udf type. Valid values:
-        # - 1: window function.
-        # - 2: statistical function.
-        # - 3: numerical function.
-        # - 4: string function.
-        # - 5: time function.
-        # - 6: IP address utility function.
+        # The category. Valid values:
+        # - 1: Window function.
+        # - 2: Statistical function.
+        # - 3: Numerical function.
+        # - 4: String function.
+        # - 5: Time function.
+        # - 6: IP address helper function.
         # - 7: URL-related function.
-        # - 8: encoding and decoding function.
-        # - 9: business-related function.
-        # - 10: other.
+        # - 8: Encoding and decoding function.
+        # - 9: Business-related function.
+        # - 10: Other.
         self.category = category
         # The registered class name.
         self.class_name = class_name
-        # The command help.
+        # The command help information.
         self.command_help = command_help
         # The compute engine. Valid values: HADOOP, MAX_COMPUTE, and FLINK.
         self.compute_engine_type = compute_engine_type
@@ -118,13 +118,13 @@ class GetUdfByVersionResponseBodyUdfInfo(DaraModel):
         self.creator = creator
         # The description.
         self.description = description
-        # The directory where the function is stored.
+        # The storage directory.
         self.directory = directory
-        # The creation time, in the yyyy-MM-d HH:mm:ss format.
+        # The creation time. Format: yyyy-MM-d HH:mm:ss.
         self.gmt_create = gmt_create
-        # The update time, in the yyyy-MM-d HH:mm:ss format.
+        # The update time. Format: yyyy-MM-d HH:mm:ss.
         self.gmt_modified = gmt_modified
-        # The ID of the user-defined function.
+        # The custom function ID.
         self.id = id
         # The last modifier.
         self.last_modifier = last_modifier

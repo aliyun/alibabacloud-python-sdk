@@ -14,12 +14,13 @@ class ListSecurityIdentifyResultsRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # Query conditions.
+        # The search criteria.
         self.list_query = list_query
-        # Tenant ID.
+        # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -70,25 +71,27 @@ class ListSecurityIdentifyResultsRequestListQuery(DaraModel):
         project_name_list: List[str] = None,
         status: str = None,
     ):
-        # Business unit names.
+        # The names of the business units.
         self.biz_unit_name_list = biz_unit_name_list
-        # Data classification ID.
+        # The data classification ID.
         self.classify_id = classify_id
-        # Data source names.
+        # The names of the data sources.
         self.datasource_name_list = datasource_name_list
-        # Environment identifier of the data source, project, or business unit.
+        # The environment identifier of the associated data source, project, or business unit.
         self.env = env
-        # Whether it is locked.
+        # Specifies whether the item is locked.
         self.is_locked = is_locked
-        # Keyword filter. Supports matching by table catalog, table name, table display name, and field name.
+        # The keyword filter. Supports matching by table catalog, table name, Chinese table name, or field name.
         self.keyword = keyword
-        # Page number. Default value: 1.
+        # The page number. Default value: 1.
         self.page_no = page_no
-        # Number of records per page. Default value: 20.
+        # The number of records per page. Default value: 20.
         self.page_size = page_size
-        # Project names.
+        # The names of the projects.
         self.project_name_list = project_name_list
-        # Effective status filter: ENABLE or DISABLE.
+        # The filter for the effective status. Valid values:
+        # - ENABLE: Enabled.
+        # - DISABLE: Disabled.
         self.status = status
 
     def validate(self):

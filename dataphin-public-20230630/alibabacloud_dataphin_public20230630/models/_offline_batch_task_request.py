@@ -17,7 +17,7 @@ class OfflineBatchTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.comment = comment
-        # The node ID in the node directory tree.
+        # The node ID in the task directory tree.
         # 
         # This parameter is required.
         self.file_id = file_id
@@ -25,6 +25,7 @@ class OfflineBatchTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
         # The project ID.
         # 
