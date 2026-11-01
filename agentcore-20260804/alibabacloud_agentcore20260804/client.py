@@ -1869,6 +1869,102 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_model_connection_with_options_async(workspace_id, request, headers, runtime)
 
+    def create_permission_rules_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.CreatePermissionRulesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePermissionRulesResponse:
+        tmp_req.validate()
+        request = main_models.CreatePermissionRulesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePermissionRules',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/permission-rules',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePermissionRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_permission_rules_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.CreatePermissionRulesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePermissionRulesResponse:
+        tmp_req.validate()
+        request = main_models.CreatePermissionRulesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePermissionRules',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/permission-rules',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePermissionRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_permission_rules(
+        self,
+        workspace_id: str,
+        request: main_models.CreatePermissionRulesRequest,
+    ) -> main_models.CreatePermissionRulesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_permission_rules_with_options(workspace_id, request, headers, runtime)
+
+    async def create_permission_rules_async(
+        self,
+        workspace_id: str,
+        request: main_models.CreatePermissionRulesRequest,
+    ) -> main_models.CreatePermissionRulesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_permission_rules_with_options_async(workspace_id, request, headers, runtime)
+
     def create_skill_draft_with_options(
         self,
         workspace_id: str,
@@ -2332,6 +2428,82 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.debug_model_with_options_async(workspace_id, model_id, request, headers, runtime)
+
+    def delete_access_application_with_options(
+        self,
+        workspace_id: str,
+        application_id: str,
+        request: main_models.DeleteAccessApplicationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAccessApplicationResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAccessApplication',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/access-applications/{DaraURL.percent_encode(application_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAccessApplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_access_application_with_options_async(
+        self,
+        workspace_id: str,
+        application_id: str,
+        request: main_models.DeleteAccessApplicationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAccessApplicationResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAccessApplication',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/access-applications/{DaraURL.percent_encode(application_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAccessApplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_access_application(
+        self,
+        workspace_id: str,
+        application_id: str,
+        request: main_models.DeleteAccessApplicationRequest,
+    ) -> main_models.DeleteAccessApplicationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_access_application_with_options(workspace_id, application_id, request, headers, runtime)
+
+    async def delete_access_application_async(
+        self,
+        workspace_id: str,
+        application_id: str,
+        request: main_models.DeleteAccessApplicationRequest,
+    ) -> main_models.DeleteAccessApplicationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_access_application_with_options_async(workspace_id, application_id, request, headers, runtime)
 
     def delete_agent_imchannel_with_options(
         self,
@@ -3529,6 +3701,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_model_connection_with_options_async(workspace_id, connection_id, request, headers, runtime)
 
+    def delete_permission_rule_with_options(
+        self,
+        workspace_id: str,
+        permission_rule_id: str,
+        request: main_models.DeletePermissionRuleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePermissionRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePermissionRule',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/permission-rules/{DaraURL.percent_encode(permission_rule_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePermissionRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_permission_rule_with_options_async(
+        self,
+        workspace_id: str,
+        permission_rule_id: str,
+        request: main_models.DeletePermissionRuleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePermissionRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePermissionRule',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/permission-rules/{DaraURL.percent_encode(permission_rule_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePermissionRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_permission_rule(
+        self,
+        workspace_id: str,
+        permission_rule_id: str,
+        request: main_models.DeletePermissionRuleRequest,
+    ) -> main_models.DeletePermissionRuleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_permission_rule_with_options(workspace_id, permission_rule_id, request, headers, runtime)
+
+    async def delete_permission_rule_async(
+        self,
+        workspace_id: str,
+        permission_rule_id: str,
+        request: main_models.DeletePermissionRuleRequest,
+    ) -> main_models.DeletePermissionRuleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_permission_rule_with_options_async(workspace_id, permission_rule_id, request, headers, runtime)
+
     def delete_skill_with_options(
         self,
         workspace_id: str,
@@ -4428,6 +4684,82 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.force_publish_skill_version_with_options_async(workspace_id, skill_name, skill_version, request, headers, runtime)
+
+    def get_access_application_with_options(
+        self,
+        workspace_id: str,
+        application_id: str,
+        request: main_models.GetAccessApplicationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAccessApplicationResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAccessApplication',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/access-applications/{DaraURL.percent_encode(application_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAccessApplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_access_application_with_options_async(
+        self,
+        workspace_id: str,
+        application_id: str,
+        request: main_models.GetAccessApplicationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAccessApplicationResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAccessApplication',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/access-applications/{DaraURL.percent_encode(application_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAccessApplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_access_application(
+        self,
+        workspace_id: str,
+        application_id: str,
+        request: main_models.GetAccessApplicationRequest,
+    ) -> main_models.GetAccessApplicationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_access_application_with_options(workspace_id, application_id, request, headers, runtime)
+
+    async def get_access_application_async(
+        self,
+        workspace_id: str,
+        application_id: str,
+        request: main_models.GetAccessApplicationRequest,
+    ) -> main_models.GetAccessApplicationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_access_application_with_options_async(workspace_id, application_id, request, headers, runtime)
 
     def get_agent_code_package_download_url_with_options(
         self,
@@ -9737,6 +10069,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_models_with_options_async(workspace_id, request, headers, runtime)
 
+    def list_permission_rules_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.ListPermissionRulesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPermissionRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.principal_id):
+            query['principalId'] = request.principal_id
+        if not DaraCore.is_null(request.principal_name):
+            query['principalName'] = request.principal_name
+        if not DaraCore.is_null(request.principal_type):
+            query['principalType'] = request.principal_type
+        if not DaraCore.is_null(request.resource_id):
+            query['resourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['resourceType'] = request.resource_type
+        if not DaraCore.is_null(request.source):
+            query['source'] = request.source
+        if not DaraCore.is_null(request.target):
+            query['target'] = request.target
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPermissionRules',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/permission-rules',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPermissionRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_permission_rules_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.ListPermissionRulesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPermissionRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.principal_id):
+            query['principalId'] = request.principal_id
+        if not DaraCore.is_null(request.principal_name):
+            query['principalName'] = request.principal_name
+        if not DaraCore.is_null(request.principal_type):
+            query['principalType'] = request.principal_type
+        if not DaraCore.is_null(request.resource_id):
+            query['resourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['resourceType'] = request.resource_type
+        if not DaraCore.is_null(request.source):
+            query['source'] = request.source
+        if not DaraCore.is_null(request.target):
+            query['target'] = request.target
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPermissionRules',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/permission-rules',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPermissionRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_permission_rules(
+        self,
+        workspace_id: str,
+        request: main_models.ListPermissionRulesRequest,
+    ) -> main_models.ListPermissionRulesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_permission_rules_with_options(workspace_id, request, headers, runtime)
+
+    async def list_permission_rules_async(
+        self,
+        workspace_id: str,
+        request: main_models.ListPermissionRulesRequest,
+    ) -> main_models.ListPermissionRulesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_permission_rules_with_options_async(workspace_id, request, headers, runtime)
+
     def list_predefined_model_providers_with_options(
         self,
         request: main_models.ListPredefinedModelProvidersRequest,
@@ -11660,6 +12104,98 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.submit_skill_version_with_options_async(workspace_id, skill_name, skill_version, request, headers, runtime)
+
+    def update_access_application_with_options(
+        self,
+        workspace_id: str,
+        application_id: str,
+        tmp_req: main_models.UpdateAccessApplicationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAccessApplicationResponse:
+        tmp_req.validate()
+        request = main_models.UpdateAccessApplicationShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAccessApplication',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/access-applications/{DaraURL.percent_encode(application_id)}',
+            method = 'PATCH',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAccessApplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_access_application_with_options_async(
+        self,
+        workspace_id: str,
+        application_id: str,
+        tmp_req: main_models.UpdateAccessApplicationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAccessApplicationResponse:
+        tmp_req.validate()
+        request = main_models.UpdateAccessApplicationShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAccessApplication',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/access-applications/{DaraURL.percent_encode(application_id)}',
+            method = 'PATCH',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAccessApplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_access_application(
+        self,
+        workspace_id: str,
+        application_id: str,
+        request: main_models.UpdateAccessApplicationRequest,
+    ) -> main_models.UpdateAccessApplicationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_access_application_with_options(workspace_id, application_id, request, headers, runtime)
+
+    async def update_access_application_async(
+        self,
+        workspace_id: str,
+        application_id: str,
+        request: main_models.UpdateAccessApplicationRequest,
+    ) -> main_models.UpdateAccessApplicationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_access_application_with_options_async(workspace_id, application_id, request, headers, runtime)
 
     def update_agent_imchannel_with_options(
         self,

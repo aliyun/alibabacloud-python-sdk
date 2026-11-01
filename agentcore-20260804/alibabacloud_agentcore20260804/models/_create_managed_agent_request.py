@@ -49,6 +49,8 @@ class CreateManagedAgentRequest(DaraModel):
 class CreateManagedAgentRequestBody(DaraModel):
     def __init__(
         self,
+        access_mode: str = None,
+        access_scope: str = None,
         agentic_fs_mounts: List[main_models.CreateManagedAgentRequestBodyAgenticFsMounts] = None,
         description: str = None,
         environment: main_models.CreateManagedAgentRequestBodyEnvironment = None,
@@ -65,7 +67,11 @@ class CreateManagedAgentRequestBody(DaraModel):
         template: main_models.CreateManagedAgentRequestBodyTemplate = None,
         tools: List[main_models.CreateManagedAgentRequestBodyTools] = None,
     ):
-        # The AgenticFS mounts. Omitting this parameter or passing an empty array indicates no AgenticFS mounts. Null values are rejected. The total number of AgenticFS and OSS mounts cannot exceed 10.
+        # The inbound access mode.
+        self.access_mode = access_mode
+        # The user access scope.
+        self.access_scope = access_scope
+        # The list of AgenticFS mounts. If omitted or set to an empty array during creation, no AgenticFS mounts are configured. A null value is rejected. The total number of AgenticFS and OSS mounts cannot exceed 10.
         self.agentic_fs_mounts = agentic_fs_mounts
         # The description of the managed agent.
         self.description = description
@@ -145,6 +151,12 @@ class CreateManagedAgentRequestBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.access_mode is not None:
+            result['accessMode'] = self.access_mode
+
+        if self.access_scope is not None:
+            result['accessScope'] = self.access_scope
+
         result['agenticFsMounts'] = []
         if self.agentic_fs_mounts is not None:
             for k1 in self.agentic_fs_mounts:
@@ -206,6 +218,12 @@ class CreateManagedAgentRequestBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('accessMode') is not None:
+            self.access_mode = m.get('accessMode')
+
+        if m.get('accessScope') is not None:
+            self.access_scope = m.get('accessScope')
+
         self.agentic_fs_mounts = []
         if m.get('agenticFsMounts') is not None:
             for k1 in m.get('agenticFsMounts'):
@@ -494,7 +512,9 @@ class CreateManagedAgentRequestBodySkills(DaraModel):
         # 
         # This parameter is required.
         self.name = name
-        # The skill source type. Valid values: REFERENCE: references the AI registry. STATIC: statically provided with the package.
+        # The skill source type. Valid values:
+        # - REFERENCE: references the AI Registry
+        # - STATIC: statically provided with the package
         self.source_type = source_type
         # The skill version.
         self.version = version
@@ -547,9 +567,11 @@ class CreateManagedAgentRequestBodySkillsVersionSelector(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The version selector type. Valid values: LABEL: selects by label. VERSION: selects by specific version.
+        # The version selector type. Valid values:
+        # - LABEL: selects by label
+        # - VERSION: selects by specific version
         self.type = type
-        # The selector value. When the type is LABEL, this is the label name, such as latest. When the type is VERSION, this is the specific version number.
+        # The selector value. When the type is LABEL, this value is the label name, such as latest. When the type is VERSION, this value is the specific version number.
         self.value = value
 
     def validate(self):
@@ -684,15 +706,15 @@ class CreateManagedAgentRequestBodyRuntimeHpa(DaraModel):
         min_sandbox_count: int = None,
         session_ttl_seconds: int = None,
     ):
-        # Specifies whether auto-scaling is enabled. This parameter is required and validated by the backend when HPA is present.
+        # Specifies whether to enable auto-scaling. This parameter is required and validated by the backend when HPA is specified.
         self.enabled = enabled
-        # The maximum number of active sessions per sandbox. This parameter is required and validated by the backend when HPA is present.
+        # The maximum number of active sessions per sandbox. This parameter is required and validated by the backend when HPA is specified.
         self.max_concurrent_sessions_per_sandbox = max_concurrent_sessions_per_sandbox
-        # The maximum number of sandboxes. This parameter is required and must not be less than the minimum value when HPA is enabled.
+        # The maximum number of sandboxes. This parameter is required when HPA is enabled and must not be less than the minimum value.
         self.max_sandbox_count = max_sandbox_count
         # The minimum number of sandboxes. This parameter is required when HPA is enabled.
         self.min_sandbox_count = min_sandbox_count
-        # The timeout period in seconds for reclaiming an inactive session. This parameter is required and validated by the backend when HPA is present.
+        # The idle timeout period for a session before it is reclaimed, in seconds. This parameter is required and validated by the backend when HPA is specified.
         self.session_ttl_seconds = session_ttl_seconds
 
     def validate(self):
@@ -827,9 +849,9 @@ class CreateManagedAgentRequestBodyOssMounts(DaraModel):
         self.bucket_name = bucket_name
         # The absolute mount path in the container. This parameter is required and validated by the backend for each mount item.
         self.mount_path = mount_path
-        # The relative object prefix in the bucket. If this parameter is not specified, the entire bucket is mounted.
+        # The relative object prefix in the bucket. If not specified, the entire bucket is mounted.
         self.path = path
-        # Specifies whether the mount is read-only. Default value: false.
+        # Specifies whether the mount is read-only. If not specified, the default value is false.
         self.read_only = read_only
 
     def validate(self):
@@ -917,7 +939,7 @@ class CreateManagedAgentRequestBodyNetworkAccessVpc(DaraModel):
         self,
         enabled: bool = None,
     ):
-        # Specifies whether to allow VPC access.
+        # Specifies whether to allow access to the VPC.
         self.enabled = enabled
 
     def validate(self):
@@ -945,7 +967,7 @@ class CreateManagedAgentRequestBodyNetworkAccessInternet(DaraModel):
         self,
         enabled: bool = None,
     ):
-        # Specifies whether to allow Internet access.
+        # Specifies whether to allow access to the Internet.
         self.enabled = enabled
 
     def validate(self):
@@ -979,7 +1001,7 @@ class CreateManagedAgentRequestBodyModel(DaraModel):
         # 
         # This parameter is required.
         self.model_connection_id = model_connection_id
-        # The upstream model name.
+        # The name of the upstream model.
         self.model_name = model_name
         # The model token quota configuration. If this parameter is not passed, no quota is configured.
         self.quota = quota
@@ -1026,13 +1048,13 @@ class CreateManagedAgentRequestBodyModelQuota(DaraModel):
         period_type: str = None,
         usage_limit: int = None,
     ):
-        # Specifies whether to enable the token quota. Default value: true. If you set this parameter to false, the quota is disabled and existing quota rules are deleted.
+        # Specifies whether to enable the token quota. If not specified, the default value is true. A value of false disables the quota and deletes existing quota rules.
         self.enabled = enabled
         # The quota limit type. This parameter is required and validated by the backend when the quota is enabled. Fixed value: token.
         self.limit_type = limit_type
         # The statistical period for the quota. This parameter is required and validated by the backend when the quota is enabled. Valid values: day (daily) and month (monthly).
         self.period_type = period_type
-        # The maximum number of tokens that can be consumed within a single period. This parameter is required and validated by the backend when the quota is enabled. The value must be greater than 0.
+        # The maximum number of tokens allowed to be consumed in a single period. This parameter is required and validated by the backend when the quota is enabled. The value must be greater than 0.
         self.usage_limit = usage_limit
 
     def validate(self):
@@ -1286,7 +1308,7 @@ class CreateManagedAgentRequestBodyAgenticFsMounts(DaraModel):
         self.mount_path = mount_path
         # The existing non-empty relative directory under the access point. This parameter is required and validated by the backend for each mount item. Root directories, absolute paths, and parent directory segments are not allowed.
         self.path = path
-        # Specifies whether the mount is read-only. Default value: false. This parameter does not represent a read-only policy for a RAM role.
+        # Specifies whether the mount is read-only. If omitted, the default value is false. This parameter does not represent a read-only policy for a RAM role.
         self.read_only = read_only
         # The domain name of the access point. This parameter is required and validated by the backend for each mount item. Do not include the protocol, port, or path. Use the DomainName value from the NAS ListAccessPoints response.
         self.server = server

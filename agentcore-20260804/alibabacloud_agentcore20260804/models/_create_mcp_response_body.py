@@ -97,6 +97,7 @@ class CreateMcpResponseBodyData(DaraModel):
         mcp_server_id: str = None,
         name: str = None,
         official_tag: str = None,
+        permission_mode: str = None,
         protocol: str = None,
         status: str = None,
         status_reason: str = None,
@@ -129,6 +130,8 @@ class CreateMcpResponseBodyData(DaraModel):
         self.name = name
         # The official tag managed by the server.
         self.official_tag = official_tag
+        # PUBLIC 表示公开访问；CONTROLLED 表示根据权限规则控制访问。
+        self.permission_mode = permission_mode
         # The MCP protocol.
         self.protocol = protocol
         # The status.
@@ -195,6 +198,9 @@ class CreateMcpResponseBodyData(DaraModel):
         if self.official_tag is not None:
             result['officialTag'] = self.official_tag
 
+        if self.permission_mode is not None:
+            result['permissionMode'] = self.permission_mode
+
         if self.protocol is not None:
             result['protocol'] = self.protocol
 
@@ -258,6 +264,9 @@ class CreateMcpResponseBodyData(DaraModel):
 
         if m.get('officialTag') is not None:
             self.official_tag = m.get('officialTag')
+
+        if m.get('permissionMode') is not None:
+            self.permission_mode = m.get('permissionMode')
 
         if m.get('protocol') is not None:
             self.protocol = m.get('protocol')

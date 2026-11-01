@@ -81,6 +81,10 @@ from ._create_model_connection_request import CreateModelConnectionRequest
 from ._create_model_connection_shrink_request import CreateModelConnectionShrinkRequest
 from ._create_model_connection_response_body import CreateModelConnectionResponseBody
 from ._create_model_connection_response import CreateModelConnectionResponse
+from ._create_permission_rules_request import CreatePermissionRulesRequest
+from ._create_permission_rules_shrink_request import CreatePermissionRulesShrinkRequest
+from ._create_permission_rules_response_body import CreatePermissionRulesResponseBody
+from ._create_permission_rules_response import CreatePermissionRulesResponse
 from ._create_skill_draft_request import CreateSkillDraftRequest
 from ._create_skill_draft_shrink_request import CreateSkillDraftShrinkRequest
 from ._create_skill_draft_response_body import CreateSkillDraftResponseBody
@@ -101,6 +105,9 @@ from ._debug_model_request import DebugModelRequest
 from ._debug_model_shrink_request import DebugModelShrinkRequest
 from ._debug_model_response_body import DebugModelResponseBody
 from ._debug_model_response import DebugModelResponse
+from ._delete_access_application_request import DeleteAccessApplicationRequest
+from ._delete_access_application_response_body import DeleteAccessApplicationResponseBody
+from ._delete_access_application_response import DeleteAccessApplicationResponse
 from ._delete_agent_imchannel_request import DeleteAgentIMChannelRequest
 from ._delete_agent_imchannel_response_body import DeleteAgentIMChannelResponseBody
 from ._delete_agent_imchannel_response import DeleteAgentIMChannelResponse
@@ -146,6 +153,9 @@ from ._delete_model_response import DeleteModelResponse
 from ._delete_model_connection_request import DeleteModelConnectionRequest
 from ._delete_model_connection_response_body import DeleteModelConnectionResponseBody
 from ._delete_model_connection_response import DeleteModelConnectionResponse
+from ._delete_permission_rule_request import DeletePermissionRuleRequest
+from ._delete_permission_rule_response_body import DeletePermissionRuleResponseBody
+from ._delete_permission_rule_response import DeletePermissionRuleResponse
 from ._delete_skill_request import DeleteSkillRequest
 from ._delete_skill_response_body import DeleteSkillResponseBody
 from ._delete_skill_response import DeleteSkillResponse
@@ -181,6 +191,9 @@ from ._force_publish_skill_version_request import ForcePublishSkillVersionReques
 from ._force_publish_skill_version_shrink_request import ForcePublishSkillVersionShrinkRequest
 from ._force_publish_skill_version_response_body import ForcePublishSkillVersionResponseBody
 from ._force_publish_skill_version_response import ForcePublishSkillVersionResponse
+from ._get_access_application_request import GetAccessApplicationRequest
+from ._get_access_application_response_body import GetAccessApplicationResponseBody
+from ._get_access_application_response import GetAccessApplicationResponse
 from ._get_agent_code_package_download_url_request import GetAgentCodePackageDownloadUrlRequest
 from ._get_agent_code_package_download_url_response_body import GetAgentCodePackageDownloadUrlResponseBody
 from ._get_agent_code_package_download_url_response import GetAgentCodePackageDownloadUrlResponse
@@ -374,6 +387,9 @@ from ._list_model_connections_response import ListModelConnectionsResponse
 from ._list_models_request import ListModelsRequest
 from ._list_models_response_body import ListModelsResponseBody
 from ._list_models_response import ListModelsResponse
+from ._list_permission_rules_request import ListPermissionRulesRequest
+from ._list_permission_rules_response_body import ListPermissionRulesResponseBody
+from ._list_permission_rules_response import ListPermissionRulesResponse
 from ._list_predefined_model_providers_request import ListPredefinedModelProvidersRequest
 from ._list_predefined_model_providers_response_body import ListPredefinedModelProvidersResponseBody
 from ._list_predefined_model_providers_response import ListPredefinedModelProvidersResponse
@@ -447,6 +463,10 @@ from ._submit_skill_version_request import SubmitSkillVersionRequest
 from ._submit_skill_version_shrink_request import SubmitSkillVersionShrinkRequest
 from ._submit_skill_version_response_body import SubmitSkillVersionResponseBody
 from ._submit_skill_version_response import SubmitSkillVersionResponse
+from ._update_access_application_request import UpdateAccessApplicationRequest
+from ._update_access_application_shrink_request import UpdateAccessApplicationShrinkRequest
+from ._update_access_application_response_body import UpdateAccessApplicationResponseBody
+from ._update_access_application_response import UpdateAccessApplicationResponse
 from ._update_agent_imchannel_request import UpdateAgentIMChannelRequest
 from ._update_agent_imchannel_shrink_request import UpdateAgentIMChannelShrinkRequest
 from ._update_agent_imchannel_response_body import UpdateAgentIMChannelResponseBody
@@ -797,6 +817,10 @@ from ._create_model_response_body import CreateModelResponseBodyDataCapabilities
 from ._create_model_response_body import CreateModelResponseBodyData
 from ._create_model_connection_request import CreateModelConnectionRequestBody
 from ._create_model_connection_response_body import CreateModelConnectionResponseBodyData
+from ._create_permission_rules_request import CreatePermissionRulesRequestBodyRules
+from ._create_permission_rules_request import CreatePermissionRulesRequestBody
+from ._create_permission_rules_response_body import CreatePermissionRulesResponseBodyDataRules
+from ._create_permission_rules_response_body import CreatePermissionRulesResponseBodyData
 from ._create_skill_draft_request import CreateSkillDraftRequestBody
 from ._create_team_request import CreateTeamRequestBodyAgents
 from ._create_team_request import CreateTeamRequestBodyUsers
@@ -835,6 +859,7 @@ from ._enable_connector_response_body import EnableConnectorResponseBodyData
 from ._find_custom_agent_image_preparation_response_body import FindCustomAgentImagePreparationResponseBodyDataError
 from ._find_custom_agent_image_preparation_response_body import FindCustomAgentImagePreparationResponseBodyData
 from ._force_publish_skill_version_request import ForcePublishSkillVersionRequestBody
+from ._get_access_application_response_body import GetAccessApplicationResponseBodyData
 from ._get_agent_code_package_download_url_response_body import GetAgentCodePackageDownloadUrlResponseBodyData
 from ._get_agent_code_package_oss_ram_authorize_url_response_body import GetAgentCodePackageOssRamAuthorizeUrlResponseBodyData
 from ._get_agent_code_package_upload_url_request import GetAgentCodePackageUploadUrlRequestBody
@@ -1113,6 +1138,7 @@ from ._list_model_connections_response_body import ListModelConnectionsResponseB
 from ._list_model_connections_response_body import ListModelConnectionsResponseBodyItems
 from ._list_models_response_body import ListModelsResponseBodyItemsCapabilities
 from ._list_models_response_body import ListModelsResponseBodyItems
+from ._list_permission_rules_response_body import ListPermissionRulesResponseBodyItems
 from ._list_predefined_model_providers_response_body import ListPredefinedModelProvidersResponseBodyData
 from ._list_predefined_models_response_body import ListPredefinedModelsResponseBodyDataCapabilities
 from ._list_predefined_models_response_body import ListPredefinedModelsResponseBodyData
@@ -1156,6 +1182,8 @@ from ._search_memories_response_body import SearchMemoriesResponseBodyDataMemori
 from ._search_memories_response_body import SearchMemoriesResponseBodyData
 from ._submit_agent_spec_version_request import SubmitAgentSpecVersionRequestBody
 from ._submit_skill_version_request import SubmitSkillVersionRequestBody
+from ._update_access_application_request import UpdateAccessApplicationRequestBody
+from ._update_access_application_response_body import UpdateAccessApplicationResponseBodyData
 from ._update_agent_imchannel_request import UpdateAgentIMChannelRequestBodyChannelConfig
 from ._update_agent_imchannel_request import UpdateAgentIMChannelRequestBody
 from ._update_agent_imchannel_response_body import UpdateAgentIMChannelResponseBodyDataChannelConfig
@@ -1489,6 +1517,10 @@ __all__ = [
     CreateModelConnectionShrinkRequest,
     CreateModelConnectionResponseBody,
     CreateModelConnectionResponse,
+    CreatePermissionRulesRequest,
+    CreatePermissionRulesShrinkRequest,
+    CreatePermissionRulesResponseBody,
+    CreatePermissionRulesResponse,
     CreateSkillDraftRequest,
     CreateSkillDraftShrinkRequest,
     CreateSkillDraftResponseBody,
@@ -1509,6 +1541,9 @@ __all__ = [
     DebugModelShrinkRequest,
     DebugModelResponseBody,
     DebugModelResponse,
+    DeleteAccessApplicationRequest,
+    DeleteAccessApplicationResponseBody,
+    DeleteAccessApplicationResponse,
     DeleteAgentIMChannelRequest,
     DeleteAgentIMChannelResponseBody,
     DeleteAgentIMChannelResponse,
@@ -1554,6 +1589,9 @@ __all__ = [
     DeleteModelConnectionRequest,
     DeleteModelConnectionResponseBody,
     DeleteModelConnectionResponse,
+    DeletePermissionRuleRequest,
+    DeletePermissionRuleResponseBody,
+    DeletePermissionRuleResponse,
     DeleteSkillRequest,
     DeleteSkillResponseBody,
     DeleteSkillResponse,
@@ -1589,6 +1627,9 @@ __all__ = [
     ForcePublishSkillVersionShrinkRequest,
     ForcePublishSkillVersionResponseBody,
     ForcePublishSkillVersionResponse,
+    GetAccessApplicationRequest,
+    GetAccessApplicationResponseBody,
+    GetAccessApplicationResponse,
     GetAgentCodePackageDownloadUrlRequest,
     GetAgentCodePackageDownloadUrlResponseBody,
     GetAgentCodePackageDownloadUrlResponse,
@@ -1782,6 +1823,9 @@ __all__ = [
     ListModelsRequest,
     ListModelsResponseBody,
     ListModelsResponse,
+    ListPermissionRulesRequest,
+    ListPermissionRulesResponseBody,
+    ListPermissionRulesResponse,
     ListPredefinedModelProvidersRequest,
     ListPredefinedModelProvidersResponseBody,
     ListPredefinedModelProvidersResponse,
@@ -1855,6 +1899,10 @@ __all__ = [
     SubmitSkillVersionShrinkRequest,
     SubmitSkillVersionResponseBody,
     SubmitSkillVersionResponse,
+    UpdateAccessApplicationRequest,
+    UpdateAccessApplicationShrinkRequest,
+    UpdateAccessApplicationResponseBody,
+    UpdateAccessApplicationResponse,
     UpdateAgentIMChannelRequest,
     UpdateAgentIMChannelShrinkRequest,
     UpdateAgentIMChannelResponseBody,
@@ -2205,6 +2253,10 @@ __all__ = [
     CreateModelResponseBodyData,
     CreateModelConnectionRequestBody,
     CreateModelConnectionResponseBodyData,
+    CreatePermissionRulesRequestBodyRules,
+    CreatePermissionRulesRequestBody,
+    CreatePermissionRulesResponseBodyDataRules,
+    CreatePermissionRulesResponseBodyData,
     CreateSkillDraftRequestBody,
     CreateTeamRequestBodyAgents,
     CreateTeamRequestBodyUsers,
@@ -2243,6 +2295,7 @@ __all__ = [
     FindCustomAgentImagePreparationResponseBodyDataError,
     FindCustomAgentImagePreparationResponseBodyData,
     ForcePublishSkillVersionRequestBody,
+    GetAccessApplicationResponseBodyData,
     GetAgentCodePackageDownloadUrlResponseBodyData,
     GetAgentCodePackageOssRamAuthorizeUrlResponseBodyData,
     GetAgentCodePackageUploadUrlRequestBody,
@@ -2521,6 +2574,7 @@ __all__ = [
     ListModelConnectionsResponseBodyItems,
     ListModelsResponseBodyItemsCapabilities,
     ListModelsResponseBodyItems,
+    ListPermissionRulesResponseBodyItems,
     ListPredefinedModelProvidersResponseBodyData,
     ListPredefinedModelsResponseBodyDataCapabilities,
     ListPredefinedModelsResponseBodyData,
@@ -2564,6 +2618,8 @@ __all__ = [
     SearchMemoriesResponseBodyData,
     SubmitAgentSpecVersionRequestBody,
     SubmitSkillVersionRequestBody,
+    UpdateAccessApplicationRequestBody,
+    UpdateAccessApplicationResponseBodyData,
     UpdateAgentIMChannelRequestBodyChannelConfig,
     UpdateAgentIMChannelRequestBody,
     UpdateAgentIMChannelResponseBodyDataChannelConfig,

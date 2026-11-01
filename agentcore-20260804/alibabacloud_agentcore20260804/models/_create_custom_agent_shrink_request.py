@@ -10,7 +10,7 @@ class CreateCustomAgentShrinkRequest(DaraModel):
         body_shrink: str = None,
         client_token: str = None,
     ):
-        # The JSON configuration of the custom agent. You must specify name, artifact, roleArn, and runtime.
+        # The JSON configuration of the custom agent. You must specify the name, artifact, roleArn, and runtime parameters.
         self.body_shrink = body_shrink
         # Idempotence is not currently guaranteed. Do not rely on this parameter to prevent duplicate requests.
         self.client_token = client_token

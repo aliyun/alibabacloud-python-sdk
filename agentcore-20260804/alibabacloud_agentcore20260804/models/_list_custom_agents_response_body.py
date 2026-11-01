@@ -22,19 +22,19 @@ class ListCustomAgentsResponseBody(DaraModel):
     ):
         # The request result code. The value is SUCCESS if the request is successful.
         self.code = code
-        # The HTTP status code of the request. The value is 200 if the request is successful.
+        # The HTTP status code of the current request. The value is 200 if the request is successful.
         self.http_status_code = http_status_code
         # The list of custom agent summaries on the current page. To query the complete configuration and the execution result of the latest version, call the GetCustomAgent operation.
         self.items = items
-        # The maximum number of results returned per page for the current query.
+        # The maximum number of items to return per page in this query.
         self.max_results = max_results
-        # The message that describes the result of the request. The value is success if the request is successful.
+        # The processing result message for this request. The value is success if the request succeeds.
         self.message = message
-        # The opaque token used to query the next page. An empty value indicates that no more pages are available. Pass this token as-is in subsequent requests.
+        # The opaque token used to query the next page. An empty value indicates that no more pages are available. Pass this token as is in subsequent requests.
         self.next_token = next_token
-        # The unique identifier of the request. You can use this ID to locate and troubleshoot issues.
+        # The unique identifier of the request, used to locate and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was processed successfully. A value of true indicates that the request was successful. A successful creation, update, or deletion response does not mean that the background operation is complete.
+        # Indicates whether the request was processed successfully. A value of true indicates success. A successful creation, update, or deletion does not mean that the background operation is complete.
         self.success = success
         # The total number of custom agents that meet the query conditions in the specified workspace.
         self.total_count = total_count
@@ -118,6 +118,8 @@ class ListCustomAgentsResponseBody(DaraModel):
 class ListCustomAgentsResponseBodyItems(DaraModel):
     def __init__(
         self,
+        access_mode: str = None,
+        access_scope: str = None,
         agent_id: str = None,
         artifact: main_models.ListCustomAgentsResponseBodyItemsArtifact = None,
         code_package_info: main_models.ListCustomAgentsResponseBodyItemsCodePackageInfo = None,
@@ -133,17 +135,21 @@ class ListCustomAgentsResponseBodyItems(DaraModel):
         updated_at: str = None,
         workspace_id: str = None,
     ):
+        # The inbound access mode.
+        self.access_mode = access_mode
+        # The user access scope.
+        self.access_scope = access_scope
         # The unique identifier of the custom agent. You can obtain this ID from the response of the CreateCustomAgent or ListCustomAgents operation.
         self.agent_id = agent_id
         # The agent artifact.
         self.artifact = artifact
         # The currently saved code package information.
         self.code_package_info = code_package_info
-        # The creation method of the agent. The value is CUSTOM for custom agents.
+        # The creation mode of the agent. The value is CUSTOM for custom agents.
         self.create_mode = create_mode
-        # The time when the agent was created. The time is in ISO 8601 format. The trailing Z indicates the UTC time zone. Fractional seconds may be included.
+        # The time when the agent was created. The time is in ISO 8601 format. A trailing Z indicates the UTC time zone. Fractional seconds may be included.
         self.created_at = created_at
-        # The deployment method of the agent. Custom agents are deployed and managed by the platform. The value is MANAGED for custom agents.
+        # The deployment mode of the agent. Custom agents are deployed and managed by the platform. The value is MANAGED for custom agents.
         self.deploy_type = deploy_type
         # The description of the agent\\"s purpose.
         self.description = description
@@ -164,7 +170,7 @@ class ListCustomAgentsResponseBodyItems(DaraModel):
         # - Deleted: The agent is deleted.
         # To query the execution progress of the latest configuration, call the GetCustomAgent operation.
         self.status = status
-        # The time when the agent was last updated. The time is in ISO 8601 format. The trailing Z indicates the UTC time zone. Fractional seconds may be included.
+        # The time when the agent was last updated. The time follows the ISO 8601 format. The trailing Z indicates the UTC time zone. Fractional seconds are supported.
         self.updated_at = updated_at
         # The ID of the workspace to which the custom agent belongs.
         self.workspace_id = workspace_id
@@ -184,6 +190,12 @@ class ListCustomAgentsResponseBodyItems(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.access_mode is not None:
+            result['accessMode'] = self.access_mode
+
+        if self.access_scope is not None:
+            result['accessScope'] = self.access_scope
+
         if self.agent_id is not None:
             result['agentId'] = self.agent_id
 
@@ -232,6 +244,12 @@ class ListCustomAgentsResponseBodyItems(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('accessMode') is not None:
+            self.access_mode = m.get('accessMode')
+
+        if m.get('accessScope') is not None:
+            self.access_scope = m.get('accessScope')
+
         if m.get('agentId') is not None:
             self.agent_id = m.get('agentId')
 
@@ -288,7 +306,7 @@ class ListCustomAgentsResponseBodyItemsProtocol(DaraModel):
         paths: List[main_models.ListCustomAgentsResponseBodyItemsProtocolPaths] = None,
         type: str = None,
     ):
-        # The request header configuration of the current protocol. The key is the header name and the value is a string.
+        # The request header configuration for the current protocol. The key is the header name and the value is a string.
         self.headers = headers
         # The list of API paths corresponding to the current protocol.
         self.paths = paths
@@ -346,7 +364,7 @@ class ListCustomAgentsResponseBodyItemsProtocolPaths(DaraModel):
         description: str = None,
         name: str = None,
     ):
-        # The purpose description of the current API path.
+        # The description of the purpose for the current API path.
         self.description = description
         # The API path corresponding to the current protocol.
         # 
@@ -510,9 +528,9 @@ class ListCustomAgentsResponseBodyItemsArtifactContainer(DaraModel):
         self.entrypoint = entrypoint
         # The ID of the ACR Enterprise instance.
         self.instance_id = instance_id
-        # The ACR namespace.
+        # The namespace of Container Registry.
         self.namespace = namespace
-        # The name of the ACR image repository.
+        # The name of the Container Registry image repository.
         self.repo = repo
         # The image tag.
         self.tag = tag
@@ -578,7 +596,7 @@ class ListCustomAgentsResponseBodyItemsArtifactCode(DaraModel):
         language_runtime: str = None,
         source_uri: str = None,
     ):
-        # The startup command for the code package. This parameter is required in code package mode. The working directory is the root directory of the extracted code, which is /code. Example: python main.py. Quotes and escape characters are supported. Environment variables, pipes, and logical operations are not automatically expanded. For complex commands, use a script within the package.
+        # The startup command for the code package. This parameter is required in code package mode. The working directory is the root directory of the extracted code, which is /code. Example: python main.py. Quotes and escapes are supported. Environment variables, pipes, and logical operations are not automatically expanded. For complex commands, use a script within the package.
         # 
         # This parameter is required.
         self.entrypoint = entrypoint

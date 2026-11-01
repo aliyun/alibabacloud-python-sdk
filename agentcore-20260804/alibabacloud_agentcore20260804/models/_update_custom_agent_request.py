@@ -13,9 +13,9 @@ class UpdateCustomAgentRequest(DaraModel):
         body: main_models.UpdateCustomAgentRequestBody = None,
         client_token: str = None,
     ):
-        # The update configuration for the custom agent. Specify at least one top-level field. Omitted top-level fields retain their original values. When you provide a configuration object, you must specify its required subfields and include any optional configurations that you want to retain. Arrays are replaced as a whole.
+        # The update configuration for the custom agent. Provide at least one top-level field. Omitted top-level fields retain their original values. When providing a configuration object, specify its required subfields and include any optional configurations that you want to retain. Arrays are replaced as a whole.
         self.body = body
-        # Idempotence is not currently guaranteed. Do not rely on this parameter to prevent duplicate requests.
+        # Idempotency is not currently guaranteed. Do not rely on this parameter to prevent duplicate requests.
         self.client_token = client_token
 
     def validate(self):
@@ -49,6 +49,8 @@ class UpdateCustomAgentRequest(DaraModel):
 class UpdateCustomAgentRequestBody(DaraModel):
     def __init__(
         self,
+        access_mode: str = None,
+        access_scope: str = None,
         agentic_fs_mounts: List[main_models.UpdateCustomAgentRequestBodyAgenticFsMounts] = None,
         artifact: main_models.UpdateCustomAgentRequestBodyArtifact = None,
         custom_image: main_models.UpdateCustomAgentRequestBodyCustomImage = None,
@@ -65,35 +67,39 @@ class UpdateCustomAgentRequestBody(DaraModel):
         runtime: main_models.UpdateCustomAgentRequestBodyRuntime = None,
         use_image_cache: bool = None,
     ):
-        # The list of additional AgenticFS mounts. The total number of AgenticFS mounts and OSS mounts cannot exceed 10. If you omit this field or pass an empty array [] during creation, no additional mounts are configured. During an update, omitting this field retains the original value, and passing an empty array [] clears the list. You cannot pass null.
+        # The inbound access mode.
+        self.access_mode = access_mode
+        # The user access scope.
+        self.access_scope = access_scope
+        # The list of additional AgenticFS mounts. The total number of AgenticFS and OSS mounts cannot exceed 10. During creation, omitting this field or passing an empty array [] indicates no additional mounts. During an update, omitting this field retains the original value, and passing an empty array [] clears the list. This field cannot be null.
         self.agentic_fs_mounts = agentic_fs_mounts
-        # The deployment artifact configuration. You must specify the service listening port and choose either code or container as the deployment method. During an update, you must provide the required fields for the selected method.
+        # The deployment artifact configuration. You must specify the service listening port and choose either the code or container deployment method. During an update, you must provide the required fields for the selected method.
         self.artifact = artifact
         # The custom image configuration. Omitting this field retains the original source. Submitting the complete configuration indicates an active update of the custom image. You do not need to submit this field if only the port and startup command change.
         self.custom_image = custom_image
-        # The description of the agent purpose. The description can be up to 1,024 characters in length after leading and trailing spaces are removed. If omitted, the original value is retained. Pass null to clear the description.
+        # The description of the agent purpose. The maximum length is 1,024 characters after leading and trailing whitespaces are removed. Omitting this field retains the original value. Pass null to clear the description.
         self.description = description
         # The environment variable configuration for the agent process. Omitting this top-level field retains the original value. Providing this object but omitting the variables field clears the custom environment variables. To retain the variables, provide the complete list.
         self.environment = environment
-        # The optional HTTP health check configuration. When this object is provided, the port field is required, and other unspecified fields use default values. Omitting this object during creation means no health check is configured. During an update, omitting this top-level field retains the original configuration, and passing null removes the health check.
+        # The optional HTTP health check configuration. When this object is provided, port is required, and unspecified items use default values. Omitting this object during creation means no configuration is applied. During an update, omitting this top-level field retains the original configuration, while passing null removes the health check.
         self.health_check = health_check
-        # The log delivery configuration for the agent. You can specify the Simple Log Service (SLS) project and Logstore. After a successful creation or update, verify that logs are delivered as expected.
+        # The log delivery configuration for the agent. You can specify the Simple Log Service (SLS) project and Logstore. After a successful creation or update, verify that logs are delivered properly.
         self.logging = logging
-        # The custom name of the agent. The name must be 1 to 128 characters in length after leading and trailing spaces are removed, and must be unique within the same workspace. Omitting this field retains the original value. You cannot pass null or an empty name.
+        # The custom name of the agent. The length must be 1 to 128 characters after trimming leading and trailing whitespace. The name must be unique within the same workspace. If omitted, the original value is retained. You cannot pass null or a blank name.
         self.name = name
-        # The network access configuration for the agent. When this object is provided, omitted access items are treated as allowed. The actual accessible scope is still restricted by the network configuration of the workspace. To retain the original restrictions during an update, specify both accessInternet and accessVpc.
+        # The network access configuration for the agent. When this object is provided, omitted access items are treated as allowed. The actual accessible scope is still restricted by the workspace network configuration. To retain the original restrictions during an update, provide both accessInternet and accessVpc.
         self.network = network
         # The high-code agent observability configuration.
         self.observability = observability
-        # The list of Object Storage Service (OSS) mounts. The total number of OSS mounts and agenticFsMounts cannot exceed 10. For each item, you must specify bucketName, path, and mountPath. Mount targets cannot be duplicated or overlap with each other. During an update, this list is replaced entirely. Pass an empty array to clear all mounts.
+        # The OSS mount list. The total number of items in this list and agenticFsMounts cannot exceed 10. Each item must include bucketName, path, and mountPath. Mount targets must not be duplicated or overlap with each other. During an update, this list is replaced entirely. Pass an empty array [] to clear the mounts.
         self.oss_mounts = oss_mounts
         # The list of invocation protocols supported by the agent. Each item includes the protocol type and optional paths and request headers. During an update, this list is replaced entirely.
         self.protocol = protocol
-        # The Alibaba Cloud Resource Name (ARN) of the Resource Access Management (RAM) role used by the agent to access user cloud resources. The role must have the required permissions for the accessed cloud resources.
+        # The ARN of the RAM role used when the agent accesses user cloud resources. The role must have permissions for the accessed cloud resources.
         self.role_arn = role_arn
-        # The runtime configuration. When this object is provided, both compute and sessionPolicy must be present. To retain the original elastic policy, provide the complete hpa configuration. Omitting the top-level runtime field retains the original configuration.
+        # The runtime configuration. When this object is provided, both compute and sessionPolicy must be present. To retain the original elastic policy, provide the complete hpa configuration as well. Omitting the top-level runtime field retains the original configuration.
         self.runtime = runtime
-        # If this field is not passed during an update, the original value is retained. Explicitly set this field to true or false. The system does not automatically append false. The new contract rejects null and invalid types. Existing compatibility endpoints are processed according to migration agreements.
+        # If omitted during an update, the original value is retained. Explicit true or false settings are applied, and false is not automatically appended. The new contract rejects null and invalid types. Existing compatibility endpoints are handled according to migration agreements.
         self.use_image_cache = use_image_cache
 
     def validate(self):
@@ -131,6 +137,12 @@ class UpdateCustomAgentRequestBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.access_mode is not None:
+            result['accessMode'] = self.access_mode
+
+        if self.access_scope is not None:
+            result['accessScope'] = self.access_scope
+
         result['agenticFsMounts'] = []
         if self.agentic_fs_mounts is not None:
             for k1 in self.agentic_fs_mounts:
@@ -186,6 +198,12 @@ class UpdateCustomAgentRequestBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('accessMode') is not None:
+            self.access_mode = m.get('accessMode')
+
+        if m.get('accessScope') is not None:
+            self.access_scope = m.get('accessScope')
+
         self.agentic_fs_mounts = []
         if m.get('agenticFsMounts') is not None:
             for k1 in m.get('agenticFsMounts'):
@@ -261,7 +279,7 @@ class UpdateCustomAgentRequestBodyRuntime(DaraModel):
         # 
         # This parameter is required.
         self.compute = compute
-        # The optional elastic policy. When runtime is provided, omitting hpa or its fields uses the following default values: enabled is false, the minimum number of instances is 1, the maximum number of instances is 10, the maximum number of concurrent sessions per instance is 100, and the session idle timeout is 600 seconds. To retain the original policy during an update, provide the complete hpa configuration.
+        # The optional elastic policy. When runtime is provided, omitting hpa or its fields uses the default values: enabled is false, the minimum number of instances is 1, the maximum number of instances is 10, the maximum number of concurrent sessions per instance is 100, and the session idle timeout is 600 seconds. To retain the original elastic policy during an update, provide the complete hpa configuration.
         self.hpa = hpa
         # The session policy configuration used to set the session affinity method for requests.
         # 
@@ -314,13 +332,9 @@ class UpdateCustomAgentRequestBodyRuntimeSessionPolicy(DaraModel):
         header_name: str = None,
         type: str = None,
     ):
-        # The name of the HTTP request header used by the session policy. This field is required when type is set to ISOLATED_HEADER_FIELD and must be a valid HTTP request header name. Omit this field for other policies.
+        # The name of the HTTP request header used by the session policy. This field is required when type is ISOLATED_HEADER_FIELD and must be a valid HTTP request header name. Omit this field for other policies.
         self.header_name = header_name
-        # The session policy type. Valid values:
-        # - AFFINITY: Session affinity.
-        # - ISOLATED_HEADER_FIELD: Associates sessions by using the request header specified in headerName.
-        # - ISOLATED_COOKIE: Not recommended.
-        # - DISABLED: A compatibility option. The response returns AFFINITY.
+        # The session policy type. Valid values: AFFINITY: session affinity; ISOLATED_HEADER_FIELD: uses the request header specified by headerName to associate sessions; ISOLATED_COOKIE: not recommended for use at this time; DISABLED: a compatibility option, and the response returns AFFINITY.
         # 
         # This parameter is required.
         self.type = type
@@ -360,15 +374,15 @@ class UpdateCustomAgentRequestBodyRuntimeHpa(DaraModel):
         min_sandbox_count: int = None,
         session_ttl_seconds: int = None,
     ):
-        # Specifies whether to enable elastic scaling. A value of true indicates that elastic scaling is enabled. A value of false indicates that elastic scaling is disabled. When runtime is provided, omitting this field defaults to false.
+        # Specifies whether to enable elastic scaling. A value of true indicates enabled, and false indicates disabled. When runtime is provided, omitting this field defaults to false.
         # 
         # This parameter is required.
         self.enabled = enabled
         # The maximum number of concurrent sessions for a single runtime instance. Valid values: 1 to 100. When runtime is provided, omitting this field uses the default value of 100.
         self.max_concurrent_sessions_per_sandbox = max_concurrent_sessions_per_sandbox
-        # The maximum number of runtime instances. Valid values: 1 to 100. The value cannot be less than the value of minSandboxCount. When runtime is provided, omitting this field uses the default value of 10.
+        # The maximum number of runtime instances. Valid values: 1 to 100. The value cannot be less than minSandboxCount. When runtime is provided, omitting this field uses the default value of 10.
         self.max_sandbox_count = max_sandbox_count
-        # The minimum number of runtime instances. Valid values: 1 to 100. The value cannot be greater than the value of maxSandboxCount. When runtime is provided, omitting this field uses the default value of 1.
+        # The minimum number of runtime instances. Valid values: 1 to 100. The value cannot be greater than maxSandboxCount. When runtime is provided, omitting this field uses the default value of 1.
         self.min_sandbox_count = min_sandbox_count
         # The session idle timeout limit, in seconds. Valid values: 60 to 86400. When runtime is provided, omitting this field uses the default value of 600.
         self.session_ttl_seconds = session_ttl_seconds
@@ -422,10 +436,7 @@ class UpdateCustomAgentRequestBodyRuntimeCompute(DaraModel):
         self,
         compute_class: str = None,
     ):
-        # The computing specification. Valid values:
-        # - INTERACTIVE: 1 vCPU and 2 GiB of memory.
-        # - STANDARD: 2 vCPUs and 4 GiB of memory.
-        # - HEAVY: 4 vCPUs and 8 GiB of memory.
+        # The compute specification. Valid values: INTERACTIVE: 1 vCPU and 2 GiB of memory; STANDARD: 2 vCPUs and 4 GiB of memory; HEAVY: 4 vCPUs and 8 GiB of memory.
         # 
         # This parameter is required.
         self.compute_class = compute_class
@@ -461,10 +472,7 @@ class UpdateCustomAgentRequestBodyProtocol(DaraModel):
         self.headers = headers
         # The list of API paths corresponding to the current protocol.
         self.paths = paths
-        # The invocation protocol type. Valid values:
-        # - agui: AG-UI protocol.
-        # - openai-chat-completion: OpenAI Chat Completions compatible protocol.
-        # - custom: Custom protocol.
+        # The invocation protocol type. Valid values: agui: AG-UI protocol; openai-chat-completion: OpenAI Chat Completions compatible protocol; custom: custom protocol.
         # 
         # This parameter is required.
         self.type = type
@@ -556,9 +564,9 @@ class UpdateCustomAgentRequestBodyOssMounts(DaraModel):
         path: str = None,
         read_only: bool = None,
     ):
-        # The name of the OSS bucket. This field is required for each mount item. The name must be 3 to 63 characters in length and can contain only lowercase letters, digits, and hyphens (-). It cannot start or end with a hyphen.
+        # The name of the OSS bucket. This field is required for each mount item. The length must be 3 to 63 characters. It can contain only lowercase letters, digits, and hyphens, and cannot start or end with a hyphen.
         self.bucket_name = bucket_name
-        # The subdirectory under /mnt/oss/ in the container. This field is required for each mount item. Mount targets cannot be duplicated or form parent-child overlaps.
+        # The subdirectory under /mnt/oss/ in the container. This field is required for each mount item. Mount targets must not be duplicated or form parent-child overlaps.
         self.mount_path = mount_path
         # The non-empty object directory prefix in the bucket, such as datasets/train. Leading and trailing forward slashes (/) are removed. The root directory is not supported. Do not use parent directory navigation.
         self.path = path
@@ -637,9 +645,9 @@ class UpdateCustomAgentRequestBodyNetwork(DaraModel):
         access_internet: main_models.UpdateCustomAgentRequestBodyNetworkAccessInternet = None,
         access_vpc: main_models.UpdateCustomAgentRequestBodyNetworkAccessVpc = None,
     ):
-        # The Internet access configuration. If this access item is omitted, the agent does not restrict Internet access. However, Internet access must still be allowed by the workspace.
+        # The Internet access configuration. If this access item is omitted, Internet access is not restricted on the agent side. However, the workspace must still allow Internet access.
         self.access_internet = access_internet
-        # The user VPC access configuration. If this access item is omitted, the agent does not restrict VPC access. However, the workspace must be configured to allow access to the user VPC.
+        # The user VPC access configuration. If this access item is omitted, VPC access is not restricted on the agent side. However, the workspace must still be configured to allow access to the user VPC.
         self.access_vpc = access_vpc
 
     def validate(self):
@@ -678,7 +686,7 @@ class UpdateCustomAgentRequestBodyNetworkAccessVpc(DaraModel):
         self,
         enabled: bool = None,
     ):
-        # Specifies whether to allow the agent to access the user VPC configured for the workspace. A Boolean value is required when you configure accessVpc. For this setting to take effect, VPC access must also be allowed by the workspace.
+        # Specifies whether to allow the agent to access the user VPC configured for the workspace. A Boolean value must be provided when configuring accessVpc. For this to take effect, the workspace must also allow VPC access.
         self.enabled = enabled
 
     def validate(self):
@@ -706,7 +714,7 @@ class UpdateCustomAgentRequestBodyNetworkAccessInternet(DaraModel):
         self,
         enabled: bool = None,
     ):
-        # Specifies whether to allow the agent to access the Internet. A Boolean value is required when you configure accessInternet. For this setting to take effect, Internet access must also be allowed by the workspace.
+        # Specifies whether to allow the agent to access the Internet. A Boolean value must be provided when configuring accessInternet. For this to take effect, the workspace must also allow Internet access.
         self.enabled = enabled
 
     def validate(self):
@@ -734,7 +742,7 @@ class UpdateCustomAgentRequestBodyLogging(DaraModel):
         self,
         sls: main_models.UpdateCustomAgentRequestBodyLoggingSls = None,
     ):
-        # The SLS log delivery destination. When you update this object, you must provide both the project and logstore fields, and they cannot be empty.
+        # The SLS log delivery destination. When updating this object, both project and logstore must be provided and cannot be empty.
         self.sls = sls
 
     def validate(self):
@@ -806,17 +814,17 @@ class UpdateCustomAgentRequestBodyHealthCheck(DaraModel):
         timeout_seconds: int = None,
         unhealthy_threshold: int = None,
     ):
-        # This parameter does not take effect. Omit this parameter.
+        # This parameter is currently invalid. Omit it.
         self.healthy_threshold = healthy_threshold
-        # The interval between two consecutive health checks, in seconds. The value must be a positive integer. Default value: 10.
+        # The interval between two health checks, in seconds. The value must be a positive integer. If omitted, the default value is 10.
         self.interval_seconds = interval_seconds
-        # The HTTP health check path. The path must start with a forward slash (/). Default value: /healthz.
+        # The HTTP health check path. The path must start with a forward slash (/). If omitted, the default value is /healthz.
         self.path = path
-        # The port used for health checks. This field is required when you configure a health check. Valid values: 1 to 65535.
+        # The port accessed for health checks. This field is required when configuring health checks. Valid values: 1 to 65535.
         self.port = port
-        # The timeout period for a single health check, in seconds. The value must be a positive integer and less than the value of intervalSeconds. Default value: 2.
+        # The timeout duration for a single health check, in seconds. The value must be a positive integer and less than intervalSeconds. If omitted, the default value is 2.
         self.timeout_seconds = timeout_seconds
-        # The number of consecutive health check failures required to mark the target as unhealthy. The value must be a positive integer. Default value: 3.
+        # The number of consecutive health check failures required to mark the instance as unhealthy. The value must be a positive integer. If omitted, the default value is 3.
         self.unhealthy_threshold = unhealthy_threshold
 
     def validate(self):
@@ -911,7 +919,7 @@ class UpdateCustomAgentRequestBodyEnvironmentVariables(DaraModel):
         name: str = None,
         value: str = None,
     ):
-        # The name of the environment variable. This field cannot be empty and must be unique in the current environment variable list.
+        # The name of the environment variable. This field cannot be empty and must be unique within the current environment variable list.
         # 
         # This parameter is required.
         self.name = name
@@ -955,15 +963,15 @@ class UpdateCustomAgentRequestBodyCustomImage(DaraModel):
         skip_tls_verify: bool = None,
         username: str = None,
     ):
-        # The custom image address. This field is required when you submit customImage and is validated by the backend. Specify the full registry[:port]/repository:tag or registry[:port]/repository@sha256:digest format. Multi-level paths are supported. Do not include the protocol or user information.
+        # The custom image address. This field is required when submitting customImage and is validated by the backend. Use the complete registry[:port]/repository:tag or registry[:port]/repository@sha256:digest format. Multi-level paths are supported. Do not include the protocol or user information.
         self.image = image
-        # The repository password or token for the current task. Submit a non-empty value in pairs with the username field. The value is not trimmed and cannot be null, an empty string, or a masked value. This field is used only for the current task and is not permanently saved or returned. To use anonymous access, omit both fields.
+        # The password or token for the repository.
         self.password = password
-        # The independent network configuration for pulling images. This field is required when you submit customImage and is validated by the backend. For public networks, only pass type=public.
+        # The image pull network configuration. This field is required when submitting customImage and is validated by the backend. Provide the complete independent pull network configuration. For public networks, only pass type=public.
         self.pull_network = pull_network
-        # Specifies whether to skip HTTPS certificate verification. If omitted, the default value is false. This field does not accept null. HTTP fallback semantics are still under discussion and do not affect the current field definition. The image address does not include a protocol.
+        # Specifies whether to skip HTTPS certificate verification.
         self.skip_tls_verify = skip_tls_verify
-        # The repository username for the current task. When you create or explicitly update a private source, resubmit this field in pairs with the password field. Existing copies also require verification. To use anonymous access, omit both fields. A read-only username is not automatically used as the input for the current task.
+        # The username for the repository.
         self.username = username
 
     def validate(self):
@@ -1020,13 +1028,13 @@ class UpdateCustomAgentRequestBodyCustomImagePullNetwork(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The ID of the security group. This field is required when type is set to vpc and must belong to the selected VPC.
+        # The security group ID. This field is required when type is set to vpc and must belong to the selected VPC.
         self.security_group_id = security_group_id
-        # The type of the pull network. This field is required when you submit pullNetwork and is validated by the backend. The default value for a new configuration is public network, which is independent of the agent runtime network.
+        # The pull network type. This field is required when submitting pullNetwork and is validated by the backend. The default is a public network, which is independent of the agent runtime network.
         self.type = type
-        # The ID of the security group. This field is required when type is set to vpc and must belong to the selected VPC.
+        # The security group ID. This field is required when type is set to vpc and must belong to the selected VPC.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC. This field is required when type is set to vpc. The associated account and region are validated by the backend.
+        # The VPC ID. This field is required when type is set to vpc. The associated account and region are validated by the backend.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -1076,9 +1084,9 @@ class UpdateCustomAgentRequestBodyArtifact(DaraModel):
     ):
         # The code package deployment configuration. This field is mutually exclusive with the container field. Code packages use the ZIP or TAR.GZ format. Dependencies must be packaged by the user. The platform does not install dependencies or perform online builds.
         self.code = code
-        # The ACR container image configuration. You must specify the type, instanceId, namespace, repo, and tag fields. Do not configure the code field at the same time.
+        # The Alibaba Cloud Container Registry (ACR) container image configuration. You must specify the type, instanceId, namespace, repo, and tag fields. Do not configure the code field at the same time.
         self.container = container
-        # The TCP port listened by the agent service. Valid values: 1 to 65535.
+        # The TCP port on which the agent service listens. Valid values: 1 to 65535.
         self.port = port
 
     def validate(self):
@@ -1128,7 +1136,7 @@ class UpdateCustomAgentRequestBodyArtifactContainer(DaraModel):
         tag: str = None,
         type: str = None,
     ):
-        # The optional executable program and startup parameters. If specified, this field must be a non-empty string. When you update the artifact, omitting this field uses the default startup method of the image. To retain the original custom startup command, you must provide this field.
+        # The optional executable program and startup parameters. If specified, this field must be a non-empty string. When updating the artifact, omitting this field uses the default startup method of the image. To retain the original custom startup command, provide this field together.
         self.entrypoint = entrypoint
         # The ID of the ACR instance to which the image repository belongs. This field cannot be empty.
         self.instance_id = instance_id
@@ -1136,9 +1144,9 @@ class UpdateCustomAgentRequestBodyArtifactContainer(DaraModel):
         self.namespace = namespace
         # The name of the image repository in the ACR namespace. This field cannot be empty.
         self.repo = repo
-        # The image tag used for deployment. This field cannot be empty. When you update the tag, you must also provide artifact.port and other required image fields.
+        # The image tag used for deployment. This field cannot be empty. When updating the tag, you must also provide artifact.port and other required image fields.
         self.tag = tag
-        # The image source type. Only acr is supported, which indicates Container Registry.
+        # The image source type. Currently, only acr is supported, which indicates Alibaba Cloud Container Registry (ACR).
         self.type = type
 
     def validate(self):
@@ -1200,9 +1208,9 @@ class UpdateCustomAgentRequestBodyArtifactCode(DaraModel):
     ):
         # The startup command for the code package. This field is required in code package mode. The working directory is the extracted code root directory /code, such as python main.py. Quotes and escapes are supported. Environment variables, pipes, and logical operations are not automatically expanded. Use scripts within the package for complex commands.
         self.entrypoint = entrypoint
-        # The code runtime environment identifier, such as python3.12. When you create or switch environments, use the identifier returned by ListAgentCodeRuntimes. The identifier is validated by the current version catalog and is not a fixed enumeration.
+        # The code runtime environment identifier, such as python3.12. When creating or switching environments, use the identifier returned by the ListAgentCodeRuntimes operation. The identifier is validated by the current version catalog and is not a fixed enumeration.
         self.language_runtime = language_runtime
-        # The source address of the code package. This field supports oss:// addresses or HTTPS object addresses of standard OSS public domain names, including OSS signed URLs. External sites, custom domain names, and additional authentication request headers are not supported. For local uploads, use the sourceUri returned by GetAgentCodePackageUploadUrl. The address is revalidated and transferred during creation or update. After the address is saved, a fixed oss:// address of the platform is returned. You can reuse this fixed address for regular updates.
+        # The source URI of the code package. This field supports oss:// addresses or HTTPS object addresses of standard OSS public domain names, including OSS signed URLs. Arbitrary external sites, custom domain names, and additional authentication request headers are not supported. For local uploads, use the sourceUri returned by the GetAgentCodePackageUploadUrl operation. The URI is revalidated and transferred during creation or updates. After saving, the platform returns a fixed oss:// address, which can be reused for regular updates.
         self.source_uri = source_uri
 
     def validate(self):
@@ -1245,13 +1253,13 @@ class UpdateCustomAgentRequestBodyAgenticFsMounts(DaraModel):
         read_only: bool = None,
         server: str = None,
     ):
-        # The subdirectory under /mnt/agenticfs/ in the container. This field is required for each mount item and is validated by the backend. Mount targets cannot be duplicated or overlap in a parent-child relationship.
+        # The subdirectory under /mnt/agenticfs/ in the container. This field is required for each mount item and is validated by the backend. Mount targets cannot be duplicated or form parent-child overrides.
         self.mount_path = mount_path
         # The existing non-empty relative directory under the access point. This field is required for each mount item and is validated by the backend. Root directories, absolute paths, and parent directory traversals are not allowed.
         self.path = path
         # Specifies whether the mount is read-only. A value of true indicates read-only, and a value of false indicates read and write. If omitted, the default value is false.
         self.read_only = read_only
-        # The domain name of the access point. This field is required for each mount item and is validated by the backend. Use the DomainName value from the ListAccessPoints response of NAS. Do not include the protocol, port, or path.
+        # The domain name of the access point. This field is required for each mount item and is validated by the backend. Use the DomainName value from the response of the NAS ListAccessPoints operation. Do not include the protocol, port, or path.
         self.server = server
 
     def validate(self):

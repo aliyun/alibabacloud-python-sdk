@@ -1,3 +1,48 @@
+2026-11-01 Version: 3.2.0
+- Support API CreatePermissionRules.
+- Support API DeleteAccessApplication.
+- Support API DeletePermissionRule.
+- Support API GetAccessApplication.
+- Support API ListPermissionRules.
+- Support API UpdateAccessApplication.
+- Update API CreateCustomAgent: add request parameters body.accessMode.
+- Update API CreateCustomAgent: add request parameters body.accessScope.
+- Update API CreateCustomAgent: add response parameters Body.data.accessMode.
+- Update API CreateCustomAgent: add response parameters Body.data.accessScope.
+- Update API CreateManagedAgent: add request parameters body.accessMode.
+- Update API CreateManagedAgent: add request parameters body.accessScope.
+- Update API CreateManagedAgent: add response parameters Body.data.accessMode.
+- Update API CreateManagedAgent: add response parameters Body.data.accessScope.
+- Update API CreateMcp: add request parameters body.permissionMode.
+- Update API CreateMcp: add response parameters Body.data.permissionMode.
+- Update API DeleteCustomAgent: add response parameters Body.data.accessMode.
+- Update API DeleteCustomAgent: add response parameters Body.data.accessScope.
+- Update API DeleteExternalAgent: add response parameters Body.data.accessMode.
+- Update API DeleteExternalAgent: add response parameters Body.data.accessScope.
+- Update API DeleteManagedAgent: add response parameters Body.data.accessMode.
+- Update API DeleteManagedAgent: add response parameters Body.data.accessScope.
+- Update API GetCustomAgent: add response parameters Body.data.accessMode.
+- Update API GetCustomAgent: add response parameters Body.data.accessScope.
+- Update API GetManagedAgent: add response parameters Body.data.accessMode.
+- Update API GetManagedAgent: add response parameters Body.data.accessScope.
+- Update API GetMcp: add response parameters Body.data.permissionMode.
+- Update API GetWorkspace: add response parameters Body.data.networkConfiguration.privateIngressEnabled.
+- Update API ListCustomAgents: add response parameters Body.items.$.accessMode.
+- Update API ListCustomAgents: add response parameters Body.items.$.accessScope.
+- Update API ListManagedAgents: add response parameters Body.items.$.accessMode.
+- Update API ListManagedAgents: add response parameters Body.items.$.accessScope.
+- Update API ListMcps: add response parameters Body.items.$.permissionMode.
+- Update API UpdateCustomAgent: add request parameters body.accessMode.
+- Update API UpdateCustomAgent: add request parameters body.accessScope.
+- Update API UpdateCustomAgent: add response parameters Body.data.accessMode.
+- Update API UpdateCustomAgent: add response parameters Body.data.accessScope.
+- Update API UpdateManagedAgent: add request parameters body.accessMode.
+- Update API UpdateManagedAgent: add request parameters body.accessScope.
+- Update API UpdateManagedAgent: add response parameters Body.data.accessMode.
+- Update API UpdateManagedAgent: add response parameters Body.data.accessScope.
+- Update API UpdateMcp: add request parameters body.permissionMode.
+
+
 2026-10-30 Version: 3.1.0
 - Generated python 2026-08-04 for AgentCore.
 

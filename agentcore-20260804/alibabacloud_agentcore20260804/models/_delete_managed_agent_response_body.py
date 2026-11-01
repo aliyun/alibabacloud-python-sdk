@@ -83,6 +83,8 @@ class DeleteManagedAgentResponseBody(DaraModel):
 class DeleteManagedAgentResponseBodyData(DaraModel):
     def __init__(
         self,
+        access_mode: str = None,
+        access_scope: str = None,
         agent_id: str = None,
         create_mode: str = None,
         created_at: str = None,
@@ -95,6 +97,10 @@ class DeleteManagedAgentResponseBodyData(DaraModel):
         updated_at: str = None,
         workspace_id: str = None,
     ):
+        # API_KEY 表示使用 API Key；USER 表示使用用户身份。
+        self.access_mode = access_mode
+        # 仅 accessMode 为 USER 时返回：ALL 表示全部用户，SPECIFIED 表示指定用户。
+        self.access_scope = access_scope
         # The managed agent ID.
         self.agent_id = agent_id
         # The creation mode.
@@ -126,6 +132,12 @@ class DeleteManagedAgentResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.access_mode is not None:
+            result['accessMode'] = self.access_mode
+
+        if self.access_scope is not None:
+            result['accessScope'] = self.access_scope
+
         if self.agent_id is not None:
             result['agentId'] = self.agent_id
 
@@ -163,6 +175,12 @@ class DeleteManagedAgentResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('accessMode') is not None:
+            self.access_mode = m.get('accessMode')
+
+        if m.get('accessScope') is not None:
+            self.access_scope = m.get('accessScope')
+
         if m.get('agentId') is not None:
             self.agent_id = m.get('agentId')
 

@@ -55,6 +55,7 @@ class CreateMcpRequestBody(DaraModel):
         deployment_config: main_models.CreateMcpRequestBodyDeploymentConfig = None,
         description: str = None,
         name: str = None,
+        permission_mode: str = None,
         protocol: str = None,
         swagger_config: str = None,
         type: str = None,
@@ -73,6 +74,8 @@ class CreateMcpRequestBody(DaraModel):
         # 
         # This parameter is required.
         self.name = name
+        # PUBLIC 表示公开访问；CONTROLLED 表示根据权限规则控制访问。
+        self.permission_mode = permission_mode
         # The MCP protocol.
         self.protocol = protocol
         # Required if Type is set to HTTP_TO_MCP.
@@ -111,6 +114,9 @@ class CreateMcpRequestBody(DaraModel):
         if self.name is not None:
             result['name'] = self.name
 
+        if self.permission_mode is not None:
+            result['permissionMode'] = self.permission_mode
+
         if self.protocol is not None:
             result['protocol'] = self.protocol
 
@@ -143,6 +149,9 @@ class CreateMcpRequestBody(DaraModel):
 
         if m.get('name') is not None:
             self.name = m.get('name')
+
+        if m.get('permissionMode') is not None:
+            self.permission_mode = m.get('permissionMode')
 
         if m.get('protocol') is not None:
             self.protocol = m.get('protocol')

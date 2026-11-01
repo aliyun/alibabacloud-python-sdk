@@ -19,7 +19,7 @@ class GetWorkspacePluginResponseBody(DaraModel):
     ):
         # The business status code.
         self.code = code
-        # The plug-in details.
+        # The plugin details.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -27,7 +27,7 @@ class GetWorkspacePluginResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -91,13 +91,13 @@ class GetWorkspacePluginResponseBodyData(DaraModel):
         status: str = None,
         workspace_id: str = None,
     ):
-        # The user-configurable properties currently in effect for the plug-in. This field is empty if the plug-in is not installed.
+        # The user-configurable properties that are currently in effect for the plugin. This field is empty if the plugin is not installed.
         self.config = config
-        # Indicates whether the plug-in is enabled. The value is true when the status is ENABLED.
+        # Indicates whether the plugin is enabled. The value is true if the status is ENABLED.
         self.enabled = enabled
-        # The plug-in name.
+        # The plugin name.
         self.plugin_name = plugin_name
-        # The plug-in status. Valid values: DISABLED, ENABLING, ENABLED, ENABLE_FAILED, DISABLING, DISABLE_FAILED.
+        # The plugin status. Valid values: DISABLED, ENABLING, ENABLED, ENABLE_FAILED, DISABLING, and DISABLE_FAILED.
         self.status = status
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -154,9 +154,9 @@ class GetWorkspacePluginResponseBodyDataConfig(DaraModel):
         agent_loop: main_models.GetWorkspacePluginResponseBodyDataConfigAgentLoop = None,
         network: main_models.GetWorkspacePluginResponseBodyDataConfigNetwork = None,
     ):
-        # The AgentLoop plug-in configuration.
+        # The AgentLoop plugin configuration.
         self.agent_loop = agent_loop
-        # The network configuration of the plug-in, including public network access configuration and VPC configuration.
+        # The network configuration of the plugin, including the public network access configuration and VPC configuration.
         self.network = network
 
     def validate(self):
@@ -239,11 +239,11 @@ class GetWorkspacePluginResponseBodyDataConfigNetworkVpc(DaraModel):
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
     ):
-        # Indicates whether VPC network access is enabled for the collaboration plug-in.
+        # Indicates whether VPC networking is currently enabled for the collaboration plugin.
         self.enabled = enabled
-        # The list of vSwitch IDs used for plug-in deployment.
+        # The list of vSwitch IDs used for plugin deployment.
         self.v_switch_ids = v_switch_ids
-        # The VPC ID used for plug-in deployment.
+        # The VPC ID used for plugin deployment.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -283,7 +283,7 @@ class GetWorkspacePluginResponseBodyDataConfigNetworkInternet(DaraModel):
         self,
         enabled: bool = None,
     ):
-        # Indicates whether public network access is enabled.
+        # Specifies whether public network access is enabled.
         self.enabled = enabled
 
     def validate(self):
@@ -313,11 +313,11 @@ class GetWorkspacePluginResponseBodyDataConfigAgentLoop(DaraModel):
         created_at: str = None,
         region_id: str = None,
     ):
-        # The AgentSpace name associated with the AgentLoop plug-in.
+        # The name of the AgentSpace associated with the AgentLoop plugin.
         self.agent_space_name = agent_space_name
-        # The creation time of the AgentSpace in UTC in RFC 3339 format.
+        # The creation time of the AgentSpace, in UTC format compliant with RFC 3339.
         self.created_at = created_at
-        # The region ID where the AgentSpace resides.
+        # The region ID of the AgentSpace.
         self.region_id = region_id
 
     def validate(self):

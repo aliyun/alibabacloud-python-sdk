@@ -205,16 +205,19 @@ class GetWorkspaceResponseBodyData(DaraModel):
 class GetWorkspaceResponseBodyDataNetworkConfiguration(DaraModel):
     def __init__(
         self,
+        private_ingress_enabled: bool = None,
         public_egress_enabled: bool = None,
         public_egress_ip: str = None,
         public_ingress_enabled: bool = None,
         vpc: main_models.GetWorkspaceResponseBodyDataNetworkConfigurationVpc = None,
     ):
-        # Returns the target configuration value. Updating indicates that the change is still being executed, and UpdateFailed indicates that the current change failed. This setting only controls the use of the platform public egress for the latest versions of managed and custom agents. It does not control fixed historical versions, model or MCP proxy egress, or the public egress of the user VPC.
+        # Indicates whether private network ingress access is enabled for the workspace. A value of true indicates that the feature is enabled, and a value of false indicates that the feature is disabled. This switch is independent of the enabled field in the user VPC network configuration.
+        self.private_ingress_enabled = private_ingress_enabled
+        # Returns the target configuration value. Updating indicates that the change is still being executed, and UpdateFailed indicates that the change failed in the current round. This parameter only controls the use of the platform public network egress by the latest versions of managed and custom agents. It does not control fixed historical versions, model or MCP proxy egress, or the public network egress of the user VPC.
         self.public_egress_enabled = public_egress_enabled
-        # The public egress IP address of the workspace.
+        # The public network egress IP address of the workspace.
         self.public_egress_ip = public_egress_ip
-        # Returns the target configuration value. Updating indicates that the change is in progress, and UpdateFailed indicates that the change failed. When disabled, the public ingress for all agent endpoints in the workspace is closed. When re-enabled, the original public ingress is restored. INNER_DIRECT and user VPC ingress are not affected. Collaboration and Element Web ingress are not controlled by this setting.
+        # Returns the target configuration value. Updating indicates that the change is in progress, and UpdateFailed indicates that the change failed. After this feature is disabled, the public network ingress of all agent endpoints in the workspace is disabled. After this feature is re-enabled, the original public network ingress is restored. INNER_DIRECT and user VPC ingress are not affected. Collaboration and Element Web ingress are not controlled by this feature.
         self.public_ingress_enabled = public_ingress_enabled
         # The VPC network configuration of the user.
         self.vpc = vpc
@@ -228,6 +231,9 @@ class GetWorkspaceResponseBodyDataNetworkConfiguration(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.private_ingress_enabled is not None:
+            result['privateIngressEnabled'] = self.private_ingress_enabled
+
         if self.public_egress_enabled is not None:
             result['publicEgressEnabled'] = self.public_egress_enabled
 
@@ -244,6 +250,9 @@ class GetWorkspaceResponseBodyDataNetworkConfiguration(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('privateIngressEnabled') is not None:
+            self.private_ingress_enabled = m.get('privateIngressEnabled')
+
         if m.get('publicEgressEnabled') is not None:
             self.public_egress_enabled = m.get('publicEgressEnabled')
 

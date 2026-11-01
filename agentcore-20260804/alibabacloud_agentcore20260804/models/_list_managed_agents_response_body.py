@@ -20,21 +20,21 @@ class ListManagedAgentsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The business status code. A value of SUCCESS indicates success.
+        # The business status code. The value is SUCCESS if the request is successful.
         self.code = code
-        # The HTTP status code. A value of 200 indicates success.
+        # The HTTP status code. The value is 200 if the request is successful.
         self.http_status_code = http_status_code
         # The list of managed agents.
         self.items = items
         # The maximum number of results returned for this request.
         self.max_results = max_results
-        # The result message of the request.
+        # The message about the request processing result.
         self.message = message
-        # The token for the next page. An empty value indicates the last page.
+        # The token for the next page. An empty value indicates that the last page is reached.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
         # The total number of records.
         self.total_count = total_count
@@ -118,6 +118,8 @@ class ListManagedAgentsResponseBody(DaraModel):
 class ListManagedAgentsResponseBodyItems(DaraModel):
     def __init__(
         self,
+        access_mode: str = None,
+        access_scope: str = None,
         agent_id: str = None,
         create_mode: str = None,
         created_at: str = None,
@@ -131,7 +133,11 @@ class ListManagedAgentsResponseBodyItems(DaraModel):
         updated_at: str = None,
         workspace_id: str = None,
     ):
-        # The managed agent ID.
+        # API_KEY 表示使用 API Key；USER 表示使用用户身份。
+        self.access_mode = access_mode
+        # 仅 accessMode 为 USER 时返回：ALL 表示全部用户，SPECIFIED 表示指定用户。
+        self.access_scope = access_scope
+        # The ID of the managed agent.
         self.agent_id = agent_id
         # The creation mode.
         self.create_mode = create_mode
@@ -165,6 +171,12 @@ class ListManagedAgentsResponseBodyItems(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.access_mode is not None:
+            result['accessMode'] = self.access_mode
+
+        if self.access_scope is not None:
+            result['accessScope'] = self.access_scope
+
         if self.agent_id is not None:
             result['agentId'] = self.agent_id
 
@@ -205,6 +217,12 @@ class ListManagedAgentsResponseBodyItems(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('accessMode') is not None:
+            self.access_mode = m.get('accessMode')
+
+        if m.get('accessScope') is not None:
+            self.access_scope = m.get('accessScope')
+
         if m.get('agentId') is not None:
             self.agent_id = m.get('agentId')
 
@@ -250,9 +268,9 @@ class ListManagedAgentsResponseBodyItemsHarness(DaraModel):
         configuration: main_models.ListManagedAgentsResponseBodyItemsHarnessConfiguration = None,
         type: str = None,
     ):
-        # The Connector binding configuration for the qodercli framework.
+        # The runtime framework configuration.
         self.configuration = configuration
-        # The runtime framework type. Valid values: qwenpaw and qodercli. The qodercli type binds by configuration.connectorServiceAccountKey, and the name is also populated during queries.
+        # The runtime framework type.
         self.type = type
 
     def validate(self):
@@ -289,9 +307,9 @@ class ListManagedAgentsResponseBodyItemsHarnessConfiguration(DaraModel):
         connector_service_account_key: str = None,
         connector_service_account_name: str = None,
     ):
-        # Binds a Service Account Key of the QoderCLI Connector by Key ID. This parameter can be omitted when only one key exists, but is required when multiple keys exist.
+        # Connector Service Account Key
         self.connector_service_account_key = connector_service_account_key
-        # The Connector Key name populated during queries. This value is not used as a binding reference during writes.
+        # Connector Service Account Name
         self.connector_service_account_name = connector_service_account_name
 
     def validate(self):

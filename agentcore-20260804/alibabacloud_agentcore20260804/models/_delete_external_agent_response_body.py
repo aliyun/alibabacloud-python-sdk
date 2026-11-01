@@ -15,13 +15,13 @@ class DeleteExternalAgentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business status code. The value is SUCCESS if the request is successful.
+        # The business status code. The value is SUCCESS when the request is successful.
         self.code = code
         # The summary information of the deleted external agent.
         self.data = data
-        # The HTTP status code. The value is 200 if the request is successful.
+        # The HTTP status code. The value is 200 when the request is successful.
         self.http_status_code = http_status_code
-        # The message about the request processing result.
+        # The request processing result message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -83,6 +83,8 @@ class DeleteExternalAgentResponseBody(DaraModel):
 class DeleteExternalAgentResponseBodyData(DaraModel):
     def __init__(
         self,
+        access_mode: str = None,
+        access_scope: str = None,
         agent_id: str = None,
         create_mode: str = None,
         created_at: str = None,
@@ -95,6 +97,10 @@ class DeleteExternalAgentResponseBodyData(DaraModel):
         updated_at: str = None,
         workspace_id: str = None,
     ):
+        # The inbound access mode.
+        self.access_mode = access_mode
+        # The user access scope.
+        self.access_scope = access_scope
         # The external agent ID.
         self.agent_id = agent_id
         # The creation mode.
@@ -126,6 +132,12 @@ class DeleteExternalAgentResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.access_mode is not None:
+            result['accessMode'] = self.access_mode
+
+        if self.access_scope is not None:
+            result['accessScope'] = self.access_scope
+
         if self.agent_id is not None:
             result['agentId'] = self.agent_id
 
@@ -163,6 +175,12 @@ class DeleteExternalAgentResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('accessMode') is not None:
+            self.access_mode = m.get('accessMode')
+
+        if m.get('accessScope') is not None:
+            self.access_scope = m.get('accessScope')
+
         if m.get('agentId') is not None:
             self.agent_id = m.get('agentId')
 
