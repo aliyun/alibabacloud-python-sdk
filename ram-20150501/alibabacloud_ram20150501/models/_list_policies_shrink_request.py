@@ -12,13 +12,13 @@ class ListPoliciesShrinkRequest(DaraModel):
         policy_type: str = None,
         tag_shrink: str = None,
     ):
-        # The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
+        # The marker. If the response is truncated, you can use `Marker` to obtain the content that starts from the position after the truncation point.
         self.marker = marker
-        # The number of entries to return. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` will be `true`.
+        # The number of entries to return. If the response is truncated because it reaches the `MaxItems` limit, the `IsTruncated` response parameter equals `true`.
         # 
         # Valid values: 1 to 1000. Default value: 100.
         self.max_items = max_items
-        # The type of the policies. Valid values: `System` and `Custom`. If you do not specify the parameter, all policies are returned.``
+        # The type of the access policy. Valid values: `System` and `Custom`. If this parameter is not specified, all access policies are listed.
         self.policy_type = policy_type
         # The tags.
         self.tag_shrink = tag_shrink

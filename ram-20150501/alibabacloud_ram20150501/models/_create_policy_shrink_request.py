@@ -12,19 +12,19 @@ class CreatePolicyShrinkRequest(DaraModel):
         policy_name: str = None,
         tag_shrink: str = None,
     ):
-        # The description of the policy.
+        # The description of the access policy.
         # 
         # The description must be 1 to 1,024 characters in length.
         self.description = description
-        # The document of the policy.
+        # Access policy document.
         # 
-        # The document must be 1 to 6,144 characters in length.
+        # Access policy document must be 1 to 6,144 characters in length.
         # 
-        # For more information about policy elements and sample policies, see [Policy elements](https://help.aliyun.com/document_detail/93738.html) and [Overview of sample policies](https://help.aliyun.com/document_detail/210969.html).
+        # For more information about policy document elements and examples, see [Policy document elements](https://help.aliyun.com/document_detail/93738.html) and [Policy document examples](https://help.aliyun.com/document_detail/210969.html).
         self.policy_document = policy_document
-        # The name of the policy.
+        # Policy Name of the access policy.
         # 
-        # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+        # Policy Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
         self.policy_name = policy_name
         # The tags.
         self.tag_shrink = tag_shrink

@@ -12,13 +12,13 @@ class CreateLoginProfileRequest(DaraModel):
         password_reset_required: bool = None,
         user_name: str = None,
     ):
-        # Specifies whether the RAM user must bind a multi-factor authentication (MFA) device upon the next logon. Default value: `false`.
+        # Specifies whether the user must bind a multi-factor authentication (MFA) device upon next logon. Default value: `false`.
         self.mfabind_required = mfabind_required
-        # The logon password of the RAM user. The password must meet the password strength requirements. For more information, see [GetPasswordPolicy](https://help.aliyun.com/document_detail/2337691.html).
+        # The password. The password must meet the password strength requirements. For more information about password strength requirements, see [GetPasswordPolicy](https://help.aliyun.com/document_detail/2337691.html).
         self.password = password
-        # Specifies whether the RAM user has to change the password upon logon. Default value: `false`.
+        # Specifies whether the user is required to reset the password upon logon. Default value: `false`.
         self.password_reset_required = password_reset_required
-        # The name of the RAM user.
+        # The username.
         self.user_name = user_name
 
     def validate(self):

@@ -9,7 +9,7 @@ class ListPoliciesForUserRequest(DaraModel):
         self,
         user_name: str = None,
     ):
-        # The name of the RAM user.
+        # The username of the Resource Access Management (RAM) user.
         self.user_name = user_name
 
     def validate(self):

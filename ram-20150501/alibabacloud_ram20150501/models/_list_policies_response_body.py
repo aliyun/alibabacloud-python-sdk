@@ -17,7 +17,7 @@ class ListPoliciesResponseBody(DaraModel):
     ):
         # Indicates whether the response is truncated.
         self.is_truncated = is_truncated
-        # The marker. This parameter is returned only if the value of `IsTruncated` is `true`. If the parameter is returned, you can call this operation again and set `Marker` to obtain the truncated part.``
+        # This parameter is returned only when `IsTruncated` is `true`. If `true` is returned, call this operation again and use `Marker` to obtain the truncated content.
         self.marker = marker
         self.policies = policies
         # The request ID.

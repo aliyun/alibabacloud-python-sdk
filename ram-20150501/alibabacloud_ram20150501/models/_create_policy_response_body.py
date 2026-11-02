@@ -11,7 +11,7 @@ class CreatePolicyResponseBody(DaraModel):
         policy: main_models.CreatePolicyResponseBodyPolicy = None,
         request_id: str = None,
     ):
-        # The information about the policy.
+        # The access policy information.
         self.policy = policy
         # The request ID.
         self.request_id = request_id
@@ -53,18 +53,18 @@ class CreatePolicyResponseBodyPolicy(DaraModel):
         policy_name: str = None,
         policy_type: str = None,
     ):
-        # The time when the policy was created.
+        # The time when the access policy was created. The time is displayed in UTC in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.create_date = create_date
-        # The version of the policy. Default value: v1.
+        # The version of the access policy. Default value: v1.
         self.default_version = default_version
-        # The description of the policy.
+        # The description of the access policy.
         self.description = description
-        # The name of the policy.
+        # The name of the access policy.
         self.policy_name = policy_name
-        # The type of the policy. Valid values:
+        # The type of the access policy. Valid values:
         # 
-        # *   Custom
-        # *   System
+        # - Custom: custom policy
+        # - System: system policy
         self.policy_type = policy_type
 
     def validate(self):

@@ -13,7 +13,7 @@ class GetUserResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about the RAM user.
+        # The Resource Access Management (RAM) user information.
         self.user = user
 
     def validate(self):
@@ -57,27 +57,26 @@ class GetUserResponseBodyUser(DaraModel):
         user_id: str = None,
         user_name: str = None,
     ):
-        # The description of the RAM user.
+        # The comments.
         self.comments = comments
-        # The point in time when the RAM user was created. The time is displayed in UTC.
+        # The time when the Resource Access Management (RAM) user was created (UTC).
         self.create_date = create_date
-        # The display name of the RAM user.
+        # The display name.
         self.display_name = display_name
-        # The email address of the RAM user.
-        # 
-        # >  This parameter can be returned only on the China site (aliyun.com).
+        # The electron mailbox of the Resource Access Management (RAM) user.
+        # > This parameter applies only to the China site.
         self.email = email
-        # The point in time when the RAM user last logged on to the Alibaba Cloud Management Console by using the password. The time is displayed in UTC.
+        # The time when the user last logged on with a password (UTC).
         self.last_login_date = last_login_date
-        # The mobile phone number of the RAM user.
+        # The mobile phone number of the Resource Access Management (RAM) user.
         # 
-        # >  This parameter can be returned only on the China site (aliyun.com).
+        # > This parameter applies only to the China site.
         self.mobile_phone = mobile_phone
-        # The point in time when the information about the RAM user was last modified. The time is displayed in UTC.
+        # The time when the Resource Access Management (RAM) user was updated (UTC).
         self.update_date = update_date
-        # The ID of the RAM user.
+        # The unique identity of the Resource Access Management (RAM) user.
         self.user_id = user_id
-        # The username of the RAM user.
+        # The name of the Resource Access Management (RAM) user.
         self.user_name = user_name
 
     def validate(self):

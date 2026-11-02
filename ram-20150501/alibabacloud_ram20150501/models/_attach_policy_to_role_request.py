@@ -12,12 +12,13 @@ class AttachPolicyToRoleRequest(DaraModel):
         resource_group_id: str = None,
         role_name: str = None,
     ):
-        # The name of the policy.
+        # The name of the access policy.
         self.policy_name = policy_name
-        # The type of the policy. Valid values: `System` and `Custom`.
+        # The type of the access policy. Valid values: `System` or `Custom`.
         self.policy_type = policy_type
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The name of the RAM role.
+        # The name of the role.
         self.role_name = role_name
 
     def validate(self):

@@ -1,3 +1,6 @@
+2026-11-02 Version: 1.5.0
+- Generated python 2015-05-01 for Ram.
+
 2026-03-31 Version: 1.2.1
 - Update API AttachPolicyToGroup: add request parameters ResourceGroupId.
 - Update API AttachPolicyToRole: add request parameters ResourceGroupId.

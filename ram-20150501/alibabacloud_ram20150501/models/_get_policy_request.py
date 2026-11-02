@@ -10,9 +10,9 @@ class GetPolicyRequest(DaraModel):
         policy_name: str = None,
         policy_type: str = None,
     ):
-        # The name of the policy.
+        # The name of the access policy.
         self.policy_name = policy_name
-        # The type of the policy. Valid values: `System` and `Custom`.
+        # The type of the access policy. Valid values: `System`, `Custom`.
         self.policy_type = policy_type
 
     def validate(self):

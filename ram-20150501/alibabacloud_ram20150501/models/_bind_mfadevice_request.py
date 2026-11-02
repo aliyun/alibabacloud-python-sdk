@@ -12,13 +12,13 @@ class BindMFADeviceRequest(DaraModel):
         serial_number: str = None,
         user_name: str = None,
     ):
-        # The first authentication code.
+        # The first dynamic password for authentication.
         self.authentication_code_1 = authentication_code_1
-        # The second authentication code.
+        # The second dynamic password for authentication.
         self.authentication_code_2 = authentication_code_2
-        # The serial number of the MFA device.
+        # The serial number of the multi-factor authentication device.
         self.serial_number = serial_number
-        # The name of the RAM user.
+        # The username.
         self.user_name = user_name
 
     def validate(self):

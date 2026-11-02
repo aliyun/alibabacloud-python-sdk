@@ -11,7 +11,7 @@ class GetLoginProfileResponseBody(DaraModel):
         login_profile: main_models.GetLoginProfileResponseBodyLoginProfile = None,
         request_id: str = None,
     ):
-        # The logon configurations of the RAM user.
+        # The logon configuration information.
         self.login_profile = login_profile
         # The request ID.
         self.request_id = request_id
@@ -52,13 +52,13 @@ class GetLoginProfileResponseBodyLoginProfile(DaraModel):
         password_reset_required: bool = None,
         user_name: str = None,
     ):
-        # The creation time.
+        # The creation time in UTC. Format: `YYYY-MM-DDThh:mm:ssZ`.
         self.create_date = create_date
-        # Indicates whether a multi-factor authentication (MFA) device must be bound to the RAM user.
+        # Indicates whether the user must bind a multi-factor authentication device.
         self.mfabind_required = mfabind_required
-        # Indicates whether the RAM user must change the password upon logon.
+        # Indicates whether the user must reset the password at the next logon.
         self.password_reset_required = password_reset_required
-        # The name of the RAM user.
+        # The username.
         self.user_name = user_name
 
     def validate(self):

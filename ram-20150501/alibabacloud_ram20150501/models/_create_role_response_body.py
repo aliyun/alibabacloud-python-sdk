@@ -13,7 +13,7 @@ class CreateRoleResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about the RAM role.
+        # The RAM role information.
         self.role = role
 
     def validate(self):
@@ -47,6 +47,7 @@ class CreateRoleResponseBody(DaraModel):
 class CreateRoleResponseBodyRole(DaraModel):
     def __init__(
         self,
+        allow_console_login: bool = None,
         arn: str = None,
         assume_role_policy_document: str = None,
         create_date: str = None,
@@ -55,15 +56,17 @@ class CreateRoleResponseBodyRole(DaraModel):
         role_id: str = None,
         role_name: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the RAM role.
+        # Indicates whether the RAM role is allowed to log on to the console.
+        self.allow_console_login = allow_console_login
+        # The resource descriptor of the RAM role.
         self.arn = arn
-        # The trust policy that specifies the trusted entity to assume the RAM role.
+        # The trust policy of the RAM role.
         self.assume_role_policy_document = assume_role_policy_document
-        # The time when the RAM role was created.
+        # The creation time. The time is displayed in UTC in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.create_date = create_date
         # The description of the RAM role.
         self.description = description
-        # The maximum session time of the RAM role.
+        # The maximum session duration of the RAM role.
         self.max_session_duration = max_session_duration
         # The ID of the RAM role.
         self.role_id = role_id
@@ -78,6 +81,9 @@ class CreateRoleResponseBodyRole(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.allow_console_login is not None:
+            result['AllowConsoleLogin'] = self.allow_console_login
+
         if self.arn is not None:
             result['Arn'] = self.arn
 
@@ -103,6 +109,9 @@ class CreateRoleResponseBodyRole(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AllowConsoleLogin') is not None:
+            self.allow_console_login = m.get('AllowConsoleLogin')
+
         if m.get('Arn') is not None:
             self.arn = m.get('Arn')
 

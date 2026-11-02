@@ -10,29 +10,33 @@ from darabonba.model import DaraModel
 class CreateRoleRequest(DaraModel):
     def __init__(
         self,
+        allow_console_login: bool = None,
         assume_role_policy_document: str = None,
         description: str = None,
         max_session_duration: int = None,
         role_name: str = None,
         tag: List[main_models.CreateRoleRequestTag] = None,
     ):
-        # The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
-        # 
-        # >  RAM users cannot assume the RAM roles of trusted Alibaba Cloud services.
+        # Specifies whether the RAM role is allowed to log on to the console. Valid values:
+        # - true: allowed
+        # - false: not allowed
+        self.allow_console_login = allow_console_login
+        # The trust policy. Specifies one or more principals that are allowed to assume the RAM role. The principals can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers.
+        # >Resource Access Management (RAM) users cannot assume RAM roles whose trusted entity is an Alibaba Cloud service.
         self.assume_role_policy_document = assume_role_policy_document
         # The description of the RAM role.
         # 
         # The description must be 1 to 1,024 characters in length.
         self.description = description
-        # The maximum session time of the RAM role.
+        # The maximum session duration of the RAM role.
         # 
         # Valid values: 3600 to 43200. Unit: seconds. Default value: 3600.
         # 
-        # If you do not specify this parameter, the default value is used.
+        # If this parameter is left empty, the default value is used.
         self.max_session_duration = max_session_duration
         # The name of the RAM role.
         # 
-        # The name must be 1 to 64 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
+        # The name must be 1 to 64 characters in length and can contain letters, digits, periods (.), and hyphens (-).
         self.role_name = role_name
         # The tags.
         self.tag = tag
@@ -48,6 +52,9 @@ class CreateRoleRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.allow_console_login is not None:
+            result['AllowConsoleLogin'] = self.allow_console_login
+
         if self.assume_role_policy_document is not None:
             result['AssumeRolePolicyDocument'] = self.assume_role_policy_document
 
@@ -69,6 +76,9 @@ class CreateRoleRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AllowConsoleLogin') is not None:
+            self.allow_console_login = m.get('AllowConsoleLogin')
+
         if m.get('AssumeRolePolicyDocument') is not None:
             self.assume_role_policy_document = m.get('AssumeRolePolicyDocument')
 
@@ -95,9 +105,9 @@ class CreateRoleRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):

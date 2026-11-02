@@ -12,12 +12,13 @@ class DetachPolicyFromUserRequest(DaraModel):
         resource_group_id: str = None,
         user_name: str = None,
     ):
-        # The name of the policy.
+        # The name of the access policy.
         self.policy_name = policy_name
-        # The type of the policy. Valid values: `System` and `Custom`.
+        # The type of the access policy. Valid values: `System` or `Custom`.
         self.policy_type = policy_type
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The name of the RAM user.
+        # The username.
         self.user_name = user_name
 
     def validate(self):

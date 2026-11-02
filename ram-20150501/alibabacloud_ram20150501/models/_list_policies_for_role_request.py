@@ -9,7 +9,7 @@ class ListPoliciesForRoleRequest(DaraModel):
         self,
         role_name: str = None,
     ):
-        # The name of the RAM role.
+        # The name of the role.
         self.role_name = role_name
 
     def validate(self):

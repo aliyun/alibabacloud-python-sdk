@@ -9,9 +9,9 @@ class GetRoleRequest(DaraModel):
         self,
         role_name: str = None,
     ):
-        # The name of the RAM role.
+        # The name of the role.
         # 
-        # The name must be 1 to 64 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
+        # The name must be 1 to 64 characters in length and can contain letters, digits, periods (.), and hyphens (-).
         self.role_name = role_name
 
     def validate(self):

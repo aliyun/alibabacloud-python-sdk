@@ -16,16 +16,15 @@ class ListGroupsResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.groups = groups
-        # Indicates whether the response is truncated. Valid values:
+        # Indicates whether the returned results are truncated. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # - false
         self.is_truncated = is_truncated
-        # The pagination token that is used in the next request to retrieve a new page of results.
-        # 
-        # >  This parameter is returned only when `IsTruncated` is `true`.
+        # The token for querying the next page of results.
+        # > This parameter is returned only when `IsTruncated` is `true`.
         self.marker = marker
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

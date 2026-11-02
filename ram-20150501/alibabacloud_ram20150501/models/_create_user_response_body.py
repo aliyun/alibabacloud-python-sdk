@@ -57,17 +57,17 @@ class CreateUserResponseBodyUser(DaraModel):
     ):
         # The description of the RAM user.
         self.comments = comments
-        # The point in time when the RAM user was created. The time is displayed in UTC.
+        # The point in time when the RAM user was created. It is displayed in UTC.
         self.create_date = create_date
         # The display name of the RAM user.
         self.display_name = display_name
         # The email address of the RAM user.
         # 
-        # >  This parameter applies only to the China site (aliyun.com).
+        # > This parameter applies only to the China site (aliyun.com).
         self.email = email
         # The mobile phone number of the RAM user.
         # 
-        # >  This parameter applies only to the China site (aliyun.com).
+        # > This parameter applies only to the China site (aliyun.com).
         self.mobile_phone = mobile_phone
         # The ID of the RAM user.
         self.user_id = user_id

@@ -11,7 +11,7 @@ class CreatePolicyVersionResponseBody(DaraModel):
         policy_version: main_models.CreatePolicyVersionResponseBodyPolicyVersion = None,
         request_id: str = None,
     ):
-        # The information about the policy version.
+        # The information about the newly created permission access policy version.
         self.policy_version = policy_version
         # The request ID.
         self.request_id = request_id
@@ -52,13 +52,13 @@ class CreatePolicyVersionResponseBodyPolicyVersion(DaraModel):
         policy_document: str = None,
         version_id: str = None,
     ):
-        # The time when the policy version was created.
+        # The creation time. The time is displayed in UTC in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.create_date = create_date
-        # Indicates whether the policy version is the default version.
+        # Indicates whether the version is the default version.
         self.is_default_version = is_default_version
-        # The document of the policy.
+        # The policy document of the permission access policy.
         self.policy_document = policy_document
-        # The ID of the policy version.
+        # The identity of the permission access policy.
         self.version_id = version_id
 
     def validate(self):

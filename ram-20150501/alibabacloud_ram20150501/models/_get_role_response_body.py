@@ -13,7 +13,7 @@ class GetRoleResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about the RAM role.
+        # The role information.
         self.role = role
 
     def validate(self):
@@ -47,40 +47,56 @@ class GetRoleResponseBody(DaraModel):
 class GetRoleResponseBodyRole(DaraModel):
     def __init__(
         self,
+        allow_console_login: bool = None,
         arn: str = None,
         assume_role_policy_document: str = None,
         create_date: str = None,
         description: str = None,
+        is_service_linked_role: bool = None,
+        latest_deletion_task: main_models.GetRoleResponseBodyRoleLatestDeletionTask = None,
         max_session_duration: int = None,
         role_id: str = None,
         role_name: str = None,
+        role_principal_name: str = None,
         update_date: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the RAM role.
+        # Indicates whether console logon is allowed for the RAM role.
+        self.allow_console_login = allow_console_login
+        # The resource descriptor of the role.
         self.arn = arn
-        # The policy that specifies the trusted entity to assume the RAM role.
+        # The access policy that specifies the permission to assume the role.
         self.assume_role_policy_document = assume_role_policy_document
-        # The time when the RAM role was created.
+        # The time when the role was created. The time is in UTC in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.create_date = create_date
-        # The description of the RAM role.
+        # The description of the role.
         self.description = description
-        # The maximum session duration of the RAM role.
+        # Indicates whether the role is a service-linked role.
+        self.is_service_linked_role = is_service_linked_role
+        # The information about the most recent deletion task.
+        self.latest_deletion_task = latest_deletion_task
+        # The maximum session duration of the role.
         self.max_session_duration = max_session_duration
-        # The ID of the RAM role.
+        # The ID of the role.
         self.role_id = role_id
-        # The name of the RAM role.
+        # The name of the role.
         self.role_name = role_name
-        # The time when the RAM role was modified.
+        # The name of the role with the domain name suffix.
+        self.role_principal_name = role_principal_name
+        # The time when the role was last updated. The time is in UTC in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.update_date = update_date
 
     def validate(self):
-        pass
+        if self.latest_deletion_task:
+            self.latest_deletion_task.validate()
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.allow_console_login is not None:
+            result['AllowConsoleLogin'] = self.allow_console_login
+
         if self.arn is not None:
             result['Arn'] = self.arn
 
@@ -93,6 +109,12 @@ class GetRoleResponseBodyRole(DaraModel):
         if self.description is not None:
             result['Description'] = self.description
 
+        if self.is_service_linked_role is not None:
+            result['IsServiceLinkedRole'] = self.is_service_linked_role
+
+        if self.latest_deletion_task is not None:
+            result['LatestDeletionTask'] = self.latest_deletion_task.to_map()
+
         if self.max_session_duration is not None:
             result['MaxSessionDuration'] = self.max_session_duration
 
@@ -102,6 +124,9 @@ class GetRoleResponseBodyRole(DaraModel):
         if self.role_name is not None:
             result['RoleName'] = self.role_name
 
+        if self.role_principal_name is not None:
+            result['RolePrincipalName'] = self.role_principal_name
+
         if self.update_date is not None:
             result['UpdateDate'] = self.update_date
 
@@ -109,6 +134,9 @@ class GetRoleResponseBodyRole(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AllowConsoleLogin') is not None:
+            self.allow_console_login = m.get('AllowConsoleLogin')
+
         if m.get('Arn') is not None:
             self.arn = m.get('Arn')
 
@@ -121,6 +149,13 @@ class GetRoleResponseBodyRole(DaraModel):
         if m.get('Description') is not None:
             self.description = m.get('Description')
 
+        if m.get('IsServiceLinkedRole') is not None:
+            self.is_service_linked_role = m.get('IsServiceLinkedRole')
+
+        if m.get('LatestDeletionTask') is not None:
+            temp_model = main_models.GetRoleResponseBodyRoleLatestDeletionTask()
+            self.latest_deletion_task = temp_model.from_map(m.get('LatestDeletionTask'))
+
         if m.get('MaxSessionDuration') is not None:
             self.max_session_duration = m.get('MaxSessionDuration')
 
@@ -130,8 +165,48 @@ class GetRoleResponseBodyRole(DaraModel):
         if m.get('RoleName') is not None:
             self.role_name = m.get('RoleName')
 
+        if m.get('RolePrincipalName') is not None:
+            self.role_principal_name = m.get('RolePrincipalName')
+
         if m.get('UpdateDate') is not None:
             self.update_date = m.get('UpdateDate')
+
+        return self
+
+class GetRoleResponseBodyRoleLatestDeletionTask(DaraModel):
+    def __init__(
+        self,
+        create_date: str = None,
+        deletion_task_id: str = None,
+    ):
+        # The time when the deletion task was created. The time is in UTC in the `YYYY-MM-DDThh:mm:ssZ` format.
+        self.create_date = create_date
+        # The ID of the deletion task.
+        self.deletion_task_id = deletion_task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.create_date is not None:
+            result['CreateDate'] = self.create_date
+
+        if self.deletion_task_id is not None:
+            result['DeletionTaskId'] = self.deletion_task_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateDate') is not None:
+            self.create_date = m.get('CreateDate')
+
+        if m.get('DeletionTaskId') is not None:
+            self.deletion_task_id = m.get('DeletionTaskId')
 
         return self
 

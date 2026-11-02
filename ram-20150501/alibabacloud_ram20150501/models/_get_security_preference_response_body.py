@@ -60,7 +60,7 @@ class GetSecurityPreferenceResponseBodySecurityPreference(DaraModel):
         self.mfapreference = mfapreference
         # The public key preference.
         # 
-        # >  This parameter is valid only for the Japan site.
+        # > This parameter is valid only for the Japan site.
         self.public_key_preference = public_key_preference
 
     def validate(self):
@@ -119,8 +119,9 @@ class GetSecurityPreferenceResponseBodySecurityPreferencePublicKeyPreference(Dar
     ):
         # Indicates whether RAM users can manage their public keys. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.allow_user_to_manage_public_keys = allow_user_to_manage_public_keys
 
     def validate(self):
@@ -150,8 +151,9 @@ class GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference(DaraModel
     ):
         # Indicates whether RAM users can manage their MFA devices. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.allow_user_to_manage_mfadevices = allow_user_to_manage_mfadevices
 
     def validate(self):
@@ -184,18 +186,21 @@ class GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference(
     ):
         # Indicates whether RAM users can change their passwords. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.allow_user_to_change_password = allow_user_to_change_password
         # Indicates whether RAM users can save security codes for MFA during logon. Each security code is valid for seven days. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.enable_save_mfaticket = enable_save_mfaticket
         # The subnet mask that indicates the IP addresses from which logon to the Alibaba Cloud Management Console is allowed. This parameter applies to password-based logon and single sign-on (SSO). However, this parameter does not apply to API calls that are authenticated based on AccessKey pairs.
         # 
-        # *   If you specify a subnet mask, RAM users can use only the IP addresses in the subnet mask to log on to the Alibaba Cloud Management Console.
-        # *   If you do not specify a subnet mask, RAM users can use all IP addresses to log on to the Alibaba Cloud Management Console.
+        # - If you specify a subnet mask, RAM users can use only the IP addresses in the subnet mask to log on to the Alibaba Cloud Management Console.
+        # 
+        # - If you do not specify a subnet mask, RAM users can use all IP addresses to log on to the Alibaba Cloud Management Console.
         # 
         # If you want to specify more than one subnet mask, separate the masks with semicolons (;). Example: 192.168.0.0/16;10.0.0.0/8.
         self.login_network_masks = login_network_masks
@@ -247,8 +252,9 @@ class GetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference(Dar
     ):
         # Indicates whether Resource Access Management (RAM) users can manage their AccessKey pairs. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.allow_user_to_manage_access_keys = allow_user_to_manage_access_keys
 
     def validate(self):

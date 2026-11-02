@@ -9,7 +9,7 @@ class GetLoginProfileRequest(DaraModel):
         self,
         user_name: str = None,
     ):
-        # The name of the RAM user.
+        # The username.
         self.user_name = user_name
 
     def validate(self):

@@ -11,16 +11,11 @@ class TagResourcesShrinkRequest(DaraModel):
         resource_type: str = None,
         tag_shrink: str = None,
     ):
-        # The names of the resources. You can specify up to 50 resource names.
+        # The list of resource names. You can specify up to 50 resource names at a time.
         self.resource_names_shrink = resource_names_shrink
         # The resource type.
-        # 
-        # Enumerated values:
-        # 
-        # *   role: RAM roles.
-        # *   policy: policies.
         self.resource_type = resource_type
-        # The tags. You can specify up to 20 tags.
+        # The list of tags. You can specify up to 20 tags at a time.
         self.tag_shrink = tag_shrink
 
     def validate(self):

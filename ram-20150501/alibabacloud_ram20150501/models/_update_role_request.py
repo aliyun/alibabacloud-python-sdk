@@ -7,26 +7,21 @@ from darabonba.model import DaraModel
 class UpdateRoleRequest(DaraModel):
     def __init__(
         self,
+        new_allow_console_login: bool = None,
         new_assume_role_policy_document: str = None,
         new_description: str = None,
         new_max_session_duration: int = None,
         role_name: str = None,
     ):
-        # The trust policy that specifies the trusted entity to assume the RAM role.
+        # Specifies whether to allow the RAM role to log on to the console.
+        self.new_allow_console_login = new_allow_console_login
+        # The trust policy of the RAM role.
         self.new_assume_role_policy_document = new_assume_role_policy_document
-        # The new description of the RAM role.
-        # 
-        # The description must be 1 to 1,024 characters in length.
+        # The description of the RAM role. The description must be 1 to 1,024 characters in length.
         self.new_description = new_description
-        # The maximum session time of the RAM role.
-        # 
-        # Valid values: 3600 to 43200. Unit: seconds. Default value: 3600.
-        # 
-        # If you do not specify this parameter, the default value is used.
+        # The maximum session duration of the RAM role. Valid values: 3600 to 43200. Unit: seconds. Default value: 3600.
         self.new_max_session_duration = new_max_session_duration
-        # The name of the RAM role.
-        # 
-        # The name must be 1 to 64 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
+        # The name of the RAM role. The name must be 1 to 64 characters in length and can contain letters, digits, periods (.), and hyphens (-).
         self.role_name = role_name
 
     def validate(self):
@@ -37,6 +32,9 @@ class UpdateRoleRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.new_allow_console_login is not None:
+            result['NewAllowConsoleLogin'] = self.new_allow_console_login
+
         if self.new_assume_role_policy_document is not None:
             result['NewAssumeRolePolicyDocument'] = self.new_assume_role_policy_document
 
@@ -53,6 +51,9 @@ class UpdateRoleRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('NewAllowConsoleLogin') is not None:
+            self.new_allow_console_login = m.get('NewAllowConsoleLogin')
+
         if m.get('NewAssumeRolePolicyDocument') is not None:
             self.new_assume_role_policy_document = m.get('NewAssumeRolePolicyDocument')
 

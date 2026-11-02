@@ -42,6 +42,9 @@ from ._create_role_request import CreateRoleRequest
 from ._create_role_shrink_request import CreateRoleShrinkRequest
 from ._create_role_response_body import CreateRoleResponseBody
 from ._create_role_response import CreateRoleResponse
+from ._create_service_linked_role_request import CreateServiceLinkedRoleRequest
+from ._create_service_linked_role_response_body import CreateServiceLinkedRoleResponseBody
+from ._create_service_linked_role_response import CreateServiceLinkedRoleResponse
 from ._create_user_request import CreateUserRequest
 from ._create_user_response_body import CreateUserResponseBody
 from ._create_user_response import CreateUserResponse
@@ -69,6 +72,9 @@ from ._delete_policy_version_response import DeletePolicyVersionResponse
 from ._delete_role_request import DeleteRoleRequest
 from ._delete_role_response_body import DeleteRoleResponseBody
 from ._delete_role_response import DeleteRoleResponse
+from ._delete_service_linked_role_request import DeleteServiceLinkedRoleRequest
+from ._delete_service_linked_role_response_body import DeleteServiceLinkedRoleResponseBody
+from ._delete_service_linked_role_response import DeleteServiceLinkedRoleResponse
 from ._delete_user_request import DeleteUserRequest
 from ._delete_user_response_body import DeleteUserResponseBody
 from ._delete_user_response import DeleteUserResponse
@@ -84,6 +90,9 @@ from ._detach_policy_from_role_response import DetachPolicyFromRoleResponse
 from ._detach_policy_from_user_request import DetachPolicyFromUserRequest
 from ._detach_policy_from_user_response_body import DetachPolicyFromUserResponseBody
 from ._detach_policy_from_user_response import DetachPolicyFromUserResponse
+from ._generate_service_last_accessed_details_request import GenerateServiceLastAccessedDetailsRequest
+from ._generate_service_last_accessed_details_response_body import GenerateServiceLastAccessedDetailsResponseBody
+from ._generate_service_last_accessed_details_response import GenerateServiceLastAccessedDetailsResponse
 from ._get_access_key_last_used_request import GetAccessKeyLastUsedRequest
 from ._get_access_key_last_used_response_body import GetAccessKeyLastUsedResponseBody
 from ._get_access_key_last_used_response import GetAccessKeyLastUsedResponse
@@ -108,6 +117,12 @@ from ._get_role_response_body import GetRoleResponseBody
 from ._get_role_response import GetRoleResponse
 from ._get_security_preference_response_body import GetSecurityPreferenceResponseBody
 from ._get_security_preference_response import GetSecurityPreferenceResponse
+from ._get_service_last_accessed_details_request import GetServiceLastAccessedDetailsRequest
+from ._get_service_last_accessed_details_response_body import GetServiceLastAccessedDetailsResponseBody
+from ._get_service_last_accessed_details_response import GetServiceLastAccessedDetailsResponse
+from ._get_service_linked_role_template_request import GetServiceLinkedRoleTemplateRequest
+from ._get_service_linked_role_template_response_body import GetServiceLinkedRoleTemplateResponseBody
+from ._get_service_linked_role_template_response import GetServiceLinkedRoleTemplateResponse
 from ._get_user_request import GetUserRequest
 from ._get_user_response_body import GetUserResponseBody
 from ._get_user_response import GetUserResponse
@@ -210,6 +225,7 @@ from ._create_policy_response_body import CreatePolicyResponseBodyPolicy
 from ._create_policy_version_response_body import CreatePolicyVersionResponseBodyPolicyVersion
 from ._create_role_request import CreateRoleRequestTag
 from ._create_role_response_body import CreateRoleResponseBodyRole
+from ._create_service_linked_role_response_body import CreateServiceLinkedRoleResponseBodyRole
 from ._create_user_response_body import CreateUserResponseBodyUser
 from ._create_virtual_mfadevice_response_body import CreateVirtualMFADeviceResponseBodyVirtualMFADevice
 from ._decode_diagnostic_message_response_body import DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageAuthConditions
@@ -223,12 +239,20 @@ from ._get_password_policy_response_body import GetPasswordPolicyResponseBodyPas
 from ._get_policy_response_body import GetPolicyResponseBodyDefaultPolicyVersion
 from ._get_policy_response_body import GetPolicyResponseBodyPolicy
 from ._get_policy_version_response_body import GetPolicyVersionResponseBodyPolicyVersion
+from ._get_role_response_body import GetRoleResponseBodyRoleLatestDeletionTask
 from ._get_role_response_body import GetRoleResponseBodyRole
 from ._get_security_preference_response_body import GetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference
 from ._get_security_preference_response_body import GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference
 from ._get_security_preference_response_body import GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference
 from ._get_security_preference_response_body import GetSecurityPreferenceResponseBodySecurityPreferencePublicKeyPreference
 from ._get_security_preference_response_body import GetSecurityPreferenceResponseBodySecurityPreference
+from ._get_service_last_accessed_details_response_body import GetServiceLastAccessedDetailsResponseBodyJobError
+from ._get_service_last_accessed_details_response_body import GetServiceLastAccessedDetailsResponseBodyServicesLastAccessedGrantPolicies
+from ._get_service_last_accessed_details_response_body import GetServiceLastAccessedDetailsResponseBodyServicesLastAccessedTrackedActionsLastAccessed
+from ._get_service_last_accessed_details_response_body import GetServiceLastAccessedDetailsResponseBodyServicesLastAccessed
+from ._get_service_linked_role_template_response_body import GetServiceLinkedRoleTemplateResponseBodyServiceLinkedRoleTemplateRoleDescriptionsRoleDescription
+from ._get_service_linked_role_template_response_body import GetServiceLinkedRoleTemplateResponseBodyServiceLinkedRoleTemplateRoleDescriptions
+from ._get_service_linked_role_template_response_body import GetServiceLinkedRoleTemplateResponseBodyServiceLinkedRoleTemplate
 from ._get_user_response_body import GetUserResponseBodyUser
 from ._get_user_mfainfo_response_body import GetUserMFAInfoResponseBodyMFADevice
 from ._list_access_keys_response_body import ListAccessKeysResponseBodyAccessKeysAccessKey
@@ -324,6 +348,9 @@ __all__ = [
     CreateRoleShrinkRequest,
     CreateRoleResponseBody,
     CreateRoleResponse,
+    CreateServiceLinkedRoleRequest,
+    CreateServiceLinkedRoleResponseBody,
+    CreateServiceLinkedRoleResponse,
     CreateUserRequest,
     CreateUserResponseBody,
     CreateUserResponse,
@@ -351,6 +378,9 @@ __all__ = [
     DeleteRoleRequest,
     DeleteRoleResponseBody,
     DeleteRoleResponse,
+    DeleteServiceLinkedRoleRequest,
+    DeleteServiceLinkedRoleResponseBody,
+    DeleteServiceLinkedRoleResponse,
     DeleteUserRequest,
     DeleteUserResponseBody,
     DeleteUserResponse,
@@ -366,6 +396,9 @@ __all__ = [
     DetachPolicyFromUserRequest,
     DetachPolicyFromUserResponseBody,
     DetachPolicyFromUserResponse,
+    GenerateServiceLastAccessedDetailsRequest,
+    GenerateServiceLastAccessedDetailsResponseBody,
+    GenerateServiceLastAccessedDetailsResponse,
     GetAccessKeyLastUsedRequest,
     GetAccessKeyLastUsedResponseBody,
     GetAccessKeyLastUsedResponse,
@@ -390,6 +423,12 @@ __all__ = [
     GetRoleResponse,
     GetSecurityPreferenceResponseBody,
     GetSecurityPreferenceResponse,
+    GetServiceLastAccessedDetailsRequest,
+    GetServiceLastAccessedDetailsResponseBody,
+    GetServiceLastAccessedDetailsResponse,
+    GetServiceLinkedRoleTemplateRequest,
+    GetServiceLinkedRoleTemplateResponseBody,
+    GetServiceLinkedRoleTemplateResponse,
     GetUserRequest,
     GetUserResponseBody,
     GetUserResponse,
@@ -492,6 +531,7 @@ __all__ = [
     CreatePolicyVersionResponseBodyPolicyVersion,
     CreateRoleRequestTag,
     CreateRoleResponseBodyRole,
+    CreateServiceLinkedRoleResponseBodyRole,
     CreateUserResponseBodyUser,
     CreateVirtualMFADeviceResponseBodyVirtualMFADevice,
     DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageAuthConditions,
@@ -505,12 +545,20 @@ __all__ = [
     GetPolicyResponseBodyDefaultPolicyVersion,
     GetPolicyResponseBodyPolicy,
     GetPolicyVersionResponseBodyPolicyVersion,
+    GetRoleResponseBodyRoleLatestDeletionTask,
     GetRoleResponseBodyRole,
     GetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference,
     GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference,
     GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference,
     GetSecurityPreferenceResponseBodySecurityPreferencePublicKeyPreference,
     GetSecurityPreferenceResponseBodySecurityPreference,
+    GetServiceLastAccessedDetailsResponseBodyJobError,
+    GetServiceLastAccessedDetailsResponseBodyServicesLastAccessedGrantPolicies,
+    GetServiceLastAccessedDetailsResponseBodyServicesLastAccessedTrackedActionsLastAccessed,
+    GetServiceLastAccessedDetailsResponseBodyServicesLastAccessed,
+    GetServiceLinkedRoleTemplateResponseBodyServiceLinkedRoleTemplateRoleDescriptionsRoleDescription,
+    GetServiceLinkedRoleTemplateResponseBodyServiceLinkedRoleTemplateRoleDescriptions,
+    GetServiceLinkedRoleTemplateResponseBodyServiceLinkedRoleTemplate,
     GetUserResponseBodyUser,
     GetUserMFAInfoResponseBodyMFADevice,
     ListAccessKeysResponseBodyAccessKeysAccessKey,

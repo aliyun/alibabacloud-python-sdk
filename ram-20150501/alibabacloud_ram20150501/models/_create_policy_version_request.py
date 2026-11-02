@@ -12,20 +12,18 @@ class CreatePolicyVersionRequest(DaraModel):
         rotate_strategy: str = None,
         set_as_default: bool = None,
     ):
-        # The document of the policy. The document can be up to 6,144 bytes in length.
+        # The policy document of the permission access policy. The maximum length is 6,144 bytes.
         self.policy_document = policy_document
-        # The name of the policy.
+        # The Policy Name of the permission access policy.
         self.policy_name = policy_name
-        # The rotation strategy of the policy. The rotation strategy can be used to delete an early policy version.
+        # The automatic rotation mechanism for permission access policy versions, which can delete historical permission access policy versions. Valid values:
         # 
-        # Valid values:
-        # 
-        # *   `None`: disables the rotation strategy.
-        # *   `DeleteOldestNonDefaultVersionWhenLimitExceeded`: deletes the earliest non-active version if the number of versions exceeds the limit.
+        # - `None`: Indicates the shutdown of the rotation mechanism.
+        # - `DeleteOldestNonDefaultVersionWhenLimitExceeded`: Deletes the oldest inactive version when the number of permission access policy versions exceeds the limit.
         # 
         # Default value: `None`.
         self.rotate_strategy = rotate_strategy
-        # Specifies whether to set this policy as the default policy. Default value: `false`.
+        # Specifies if it is set as the default Settings for the permission access policy. Default value: `false`.
         self.set_as_default = set_as_default
 
     def validate(self):

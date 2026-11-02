@@ -17,7 +17,7 @@ class ListRolesResponseBody(DaraModel):
     ):
         # Indicates whether the response is truncated.
         self.is_truncated = is_truncated
-        # The marker. This parameter is returned only if the value of `IsTruncated` is `true`. If the parameter is returned, you can call this operation again and set this parameter to obtain the truncated part.````
+        # This parameter is returned only when `IsTruncated` is set to `true`. If `true` is returned, you must call this operation again and use the `Marker` parameter to retrieve the remaining results.
         self.marker = marker
         # The request ID.
         self.request_id = request_id
@@ -101,6 +101,7 @@ class ListRolesResponseBodyRoles(DaraModel):
 class ListRolesResponseBodyRolesRole(DaraModel):
     def __init__(
         self,
+        allow_console_login: bool = None,
         arn: str = None,
         create_date: str = None,
         description: str = None,
@@ -110,6 +111,7 @@ class ListRolesResponseBodyRolesRole(DaraModel):
         tags: main_models.ListRolesResponseBodyRolesRoleTags = None,
         update_date: str = None,
     ):
+        self.allow_console_login = allow_console_login
         self.arn = arn
         self.create_date = create_date
         self.description = description
@@ -128,6 +130,9 @@ class ListRolesResponseBodyRolesRole(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.allow_console_login is not None:
+            result['AllowConsoleLogin'] = self.allow_console_login
+
         if self.arn is not None:
             result['Arn'] = self.arn
 
@@ -156,6 +161,9 @@ class ListRolesResponseBodyRolesRole(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AllowConsoleLogin') is not None:
+            self.allow_console_login = m.get('AllowConsoleLogin')
+
         if m.get('Arn') is not None:
             self.arn = m.get('Arn')
 

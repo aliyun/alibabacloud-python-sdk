@@ -13,7 +13,7 @@ class SetAccountAliasRequest(DaraModel):
         # 
         # The alias must be 3 to 32 characters in length, and can contain lowercase letters, digits, and hyphens (-).
         # 
-        # >  It cannot start or end with a hyphen (-), and cannot contain consecutive hyphens (-).
+        # > It cannot start or end with a hyphen (-), and cannot contain consecutive hyphens (-).
         self.account_alias = account_alias
 
     def validate(self):

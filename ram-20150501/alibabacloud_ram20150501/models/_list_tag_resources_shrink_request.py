@@ -13,20 +13,15 @@ class ListTagResourcesShrinkRequest(DaraModel):
         resource_type: str = None,
         tag_shrink: str = None,
     ):
-        # The pagination token that is used in the next request to retrieve a new page of results.
+        # The pagination token used to retrieve the next page.
         self.next_token = next_token
-        # The number of entries per page. Valid values: 1 to 100.
+        # The number of entries to return on each page. Valid values: 1 to 100.
         self.page_size = page_size
-        # The names of the resources. You can specify up to 50 resource names.
+        # The list of resource names. You can specify up to 50 resource names at a time.
         self.resource_names_shrink = resource_names_shrink
         # The resource type.
-        # 
-        # Enumerated values:
-        # 
-        # *   role: RAM roles.
-        # *   policy: policies.
         self.resource_type = resource_type
-        # The tags. You can specify up to 20 tags.
+        # The list of tags. You can specify up to 20 tags at a time.
         self.tag_shrink = tag_shrink
 
     def validate(self):

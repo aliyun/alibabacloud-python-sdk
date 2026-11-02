@@ -11,9 +11,9 @@ class CreateGroupResponseBody(DaraModel):
         group: main_models.CreateGroupResponseBodyGroup = None,
         request_id: str = None,
     ):
-        # The information about the group.
+        # The user group information.
         self.group = group
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -54,7 +54,7 @@ class CreateGroupResponseBodyGroup(DaraModel):
     ):
         # The description.
         self.comments = comments
-        # The creation time.
+        # The creation time. The time is displayed in UTC in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.create_date = create_date
         # The ID of the user group.
         self.group_id = group_id

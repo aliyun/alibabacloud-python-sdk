@@ -17,9 +17,9 @@ class ListUsersResponseBody(DaraModel):
     ):
         # Indicates whether the response is truncated.
         self.is_truncated = is_truncated
-        # The marker. This parameter is returned only if the value of `IsTruncated` is `true`. If the parameter is returned, you can call this operation again and set `Marker` to obtain the truncated part.``
+        # The marker. This parameter is returned only when IsTruncated is true. If IsTruncated is true, you must call this operation again and use the Marker value to retrieve the remaining items.
         self.marker = marker
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         self.users = users
 

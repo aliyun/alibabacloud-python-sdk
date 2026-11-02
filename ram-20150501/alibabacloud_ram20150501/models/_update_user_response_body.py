@@ -64,11 +64,11 @@ class UpdateUserResponseBodyUser(DaraModel):
         self.display_name = display_name
         # The email address of the RAM user.
         # 
-        # >  This parameter can be returned only on the China site (aliyun.com).
+        # > This parameter can be returned only on the China site (aliyun.com).
         self.email = email
         # The mobile phone number of the RAM user.
         # 
-        # >  This parameter can be returned only on the China site (aliyun.com).
+        # > This parameter can be returned only on the China site (aliyun.com).
         self.mobile_phone = mobile_phone
         # The point in time when the information about the RAM user was last modified. The time is displayed in UTC.
         self.update_date = update_date

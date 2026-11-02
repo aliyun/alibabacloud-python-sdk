@@ -12,9 +12,9 @@ class GetPolicyResponseBody(DaraModel):
         policy: main_models.GetPolicyResponseBodyPolicy = None,
         request_id: str = None,
     ):
-        # The information about the default policy version.
+        # The default version of the access policy.
         self.default_policy_version = default_policy_version
-        # The basic information about the policy.
+        # The basic information of the access policy.
         self.policy = policy
         # The request ID.
         self.request_id = request_id
@@ -68,21 +68,21 @@ class GetPolicyResponseBodyPolicy(DaraModel):
         policy_type: str = None,
         update_date: str = None,
     ):
-        # The number of references to the policy.
+        # The number of references.
         self.attachment_count = attachment_count
-        # The time when the policy was created.
+        # The time when the policy was created. The time is in UTC. Format: `YYYY-MM-DDThh:mm:ssZ`.
         self.create_date = create_date
-        # The default version of the policy.
+        # The default version.
         self.default_version = default_version
-        # The description of the policy.
+        # The description of the access policy.
         self.description = description
-        # This parameter is deprecated.
+        # Deprecated.
         self.policy_document = policy_document
-        # The name of the policy.
+        # The name of the access policy.
         self.policy_name = policy_name
-        # The type of the policy.
+        # The type of the access policy.
         self.policy_type = policy_type
-        # The time when the policy was modified.
+        # The time when the policy was last modified. The time is in UTC. Format: `YYYY-MM-DDThh:mm:ssZ`.
         self.update_date = update_date
 
     def validate(self):
@@ -155,13 +155,13 @@ class GetPolicyResponseBodyDefaultPolicyVersion(DaraModel):
         policy_document: str = None,
         version_id: str = None,
     ):
-        # The time when the default policy version was created.
+        # The time when the policy was created. The time is in UTC. Format: `YYYY-MM-DDThh:mm:ssZ`.
         self.create_date = create_date
-        # An attribute in the `DefaultPolicyVersion` parameter. The value of the `IsDefaultVersion` parameter is `true`.
+        # The data structure returned by `DefaultPolicyVersion` is always the default version. Therefore, the value of `IsDefaultVersion` is always `true`.
         self.is_default_version = is_default_version
-        # The document of the policy.
+        # The policy document of the access policy.
         self.policy_document = policy_document
-        # The ID of the default policy version.
+        # The version of the access policy.
         self.version_id = version_id
 
     def validate(self):

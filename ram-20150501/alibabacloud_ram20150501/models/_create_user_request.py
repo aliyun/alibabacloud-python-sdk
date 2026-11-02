@@ -15,25 +15,25 @@ class CreateUserRequest(DaraModel):
     ):
         # The description of the RAM user.
         # 
-        # The description must be 1 to 128 characters in length.
+        # It must be 1 to 128 characters in length.
         self.comments = comments
         # The display name of the RAM user.
         # 
-        # The name must be 1 to 128 characters in length.
+        # It must be 1 to 128 characters in length.
         self.display_name = display_name
         # The email address of the RAM user.
         # 
-        # >  This parameter applies only to the China site (aliyun.com).
+        # > This parameter applies only to the China site (aliyun.com).
         self.email = email
         # The mobile phone number of the RAM user.
         # 
-        # Format: \\<Country code>-\\<Mobile phone number>.
+        # Format: \\<Country code>-\\<Phone number>.
         # 
-        # >  This parameter applies only to the China site (aliyun.com).
+        # > This parameter applies only to the China site (aliyun.com).
         self.mobile_phone = mobile_phone
         # The name of the RAM user.
         # 
-        # The name must be 1 to 64 characters in length, and can contain letters, digits, periods (.), hyphens (-), and underscores (_).
+        # It must be 1 to 64 characters in length, and can contain letters, digits, periods (.), hyphens (-), and underscores (_).
         self.user_name = user_name
 
     def validate(self):

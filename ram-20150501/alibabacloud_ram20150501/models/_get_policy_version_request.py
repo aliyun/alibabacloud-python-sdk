@@ -11,11 +11,11 @@ class GetPolicyVersionRequest(DaraModel):
         policy_type: str = None,
         version_id: str = None,
     ):
-        # The name of the policy.
+        # The access policy name.
         self.policy_name = policy_name
-        # The type of the policy. Valid values: `System` and `Custom`.
+        # The type of the access policy. Valid values: `System`, `Custom`.
         self.policy_type = policy_type
-        # The ID of the policy version.
+        # The ID of the target version.
         self.version_id = version_id
 
     def validate(self):

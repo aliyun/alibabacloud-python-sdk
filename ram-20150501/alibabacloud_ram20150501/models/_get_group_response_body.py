@@ -11,7 +11,7 @@ class GetGroupResponseBody(DaraModel):
         group: main_models.GetGroupResponseBodyGroup = None,
         request_id: str = None,
     ):
-        # The information about the RAM user group.
+        # The user group information.
         self.group = group
         # The request ID.
         self.request_id = request_id
@@ -53,15 +53,15 @@ class GetGroupResponseBodyGroup(DaraModel):
         group_name: str = None,
         update_date: str = None,
     ):
-        # The description of the RAM user group.
+        # The remarks.
         self.comments = comments
-        # The time when the RAM user group was created.
+        # The creation time in UTC. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.create_date = create_date
-        # The ID of the RAM user group.
+        # The ID of the user group.
         self.group_id = group_id
-        # The name of the RAM user group.
+        # The name of the user group.
         self.group_name = group_name
-        # The modification time.
+        # The update time in UTC. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.update_date = update_date
 
     def validate(self):

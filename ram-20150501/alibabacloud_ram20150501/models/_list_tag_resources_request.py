@@ -16,20 +16,15 @@ class ListTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
-        # The pagination token that is used in the next request to retrieve a new page of results.
+        # The pagination token used to retrieve the next page.
         self.next_token = next_token
-        # The number of entries per page. Valid values: 1 to 100.
+        # The number of entries to return on each page. Valid values: 1 to 100.
         self.page_size = page_size
-        # The names of the resources. You can specify up to 50 resource names.
+        # The list of resource names. You can specify up to 50 resource names at a time.
         self.resource_names = resource_names
         # The resource type.
-        # 
-        # Enumerated values:
-        # 
-        # *   role: RAM roles.
-        # *   policy: policies.
         self.resource_type = resource_type
-        # The tags. You can specify up to 20 tags.
+        # The list of tags. You can specify up to 20 tags at a time.
         self.tag = tag
 
     def validate(self):
@@ -90,9 +85,9 @@ class ListTagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. The tag key can be up to 128 characters in length.
+        # The tag key. The key can be up to 128 characters in length.
         self.key = key
-        # The value of the tag. The tag value can be up to 256 characters in length.
+        # The tag value. The value can be up to 256 characters in length.
         self.value = value
 
     def validate(self):

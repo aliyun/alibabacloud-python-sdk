@@ -12,8 +12,9 @@ class DeletePolicyRequest(DaraModel):
     ):
         # Specifies whether to delete all versions of the policy. Valid values:
         # 
-        # *   true: deletes all versions of the policy.
-        # *   false: does not delete all versions of the policy. If you set the parameter to false, the non-default versions of the policy are not deleted. Before you delete the policy, you must manually delete all non-default versions of the policy.
+        # - true: deletes all versions of the policy.
+        # 
+        # - false: does not delete all versions of the policy. If you set the parameter to false, the non-default versions of the policy are not deleted. Before you delete the policy, you must manually delete all non-default versions of the policy.
         self.cascading_delete = cascading_delete
         # The name of the policy.
         self.policy_name = policy_name

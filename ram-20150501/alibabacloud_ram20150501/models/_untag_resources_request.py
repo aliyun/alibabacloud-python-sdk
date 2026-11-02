@@ -15,22 +15,12 @@ class UntagResourcesRequest(DaraModel):
         tag_keys: List[str] = None,
     ):
         # Specifies whether to remove all tags from the resources.
-        # 
-        # Enumerated values:
-        # 
-        # *   true
-        # *   false
         self.all = all
-        # The names of the resources. You can specify up to 50 resource names.
+        # The list of resource names. You can specify up to 50 resource names at a time.
         self.resource_names = resource_names
         # The resource type.
-        # 
-        # Enumerated values:
-        # 
-        # *   role: RAM roles.
-        # *   policy: policies.
         self.resource_type = resource_type
-        # The keys of the tags. You can specify up to 20 tag keys.
+        # The list of tag keys for the resources. You can specify up to 20 tag keys at a time.
         self.tag_keys = tag_keys
 
     def validate(self):

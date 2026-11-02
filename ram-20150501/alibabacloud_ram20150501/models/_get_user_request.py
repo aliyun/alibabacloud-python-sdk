@@ -9,9 +9,9 @@ class GetUserRequest(DaraModel):
         self,
         user_name: str = None,
     ):
-        # The username of the RAM user.
+        # The name of the Resource Access Management (RAM) user.
         # 
-        # The username must be 1 to 64 characters in length, and can contain letters, digits, periods (.), hyphens (-), and underscores (_).
+        # The name must be 1 to 64 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_).
         self.user_name = user_name
 
     def validate(self):

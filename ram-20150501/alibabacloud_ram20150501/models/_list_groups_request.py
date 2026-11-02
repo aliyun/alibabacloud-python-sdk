@@ -10,11 +10,11 @@ class ListGroupsRequest(DaraModel):
         marker: str = None,
         max_items: int = None,
     ):
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.``
+        # The token for querying the next page of results. You do not need to specify `Marker` for the first API call.
         # 
-        # When you call the operation for the first time, if the total number of returned entries exceeds the value of `MaxItems`, the entries are truncated. The system returns entries based on the value of `MaxItems` and does not return the excess entries. In this case, the value of the response parameter `IsTruncated` is `true`, and `Marker` is returned. In the next call, you can use the value of `Marker` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
+        # If the total number of returned entries exceeds the `MaxItems` limit during the first API call, the data is truncated and only `MaxItems` entries are returned. In this case, the `IsTruncated` response parameter is `true` and a `Marker` is returned. You can use the `Marker` returned from the previous call to continue calling the API with the other request parameters unchanged to query the truncated data. You can repeat this process until `IsTruncated` is `false`, which indicates that all data has been queried.
         self.marker = marker
-        # The number of entries per page.
+        # The maximum number of entries per page.
         # 
         # Valid values: 1 to 100.
         # 

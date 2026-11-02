@@ -10,7 +10,9 @@ class GetAccessKeyLastUsedRequest(DaraModel):
         user_access_key_id: str = None,
         user_name: str = None,
     ):
+        # The ID of the AccessKey pair.
         self.user_access_key_id = user_access_key_id
+        # The name of the RAM user.
         self.user_name = user_name
 
     def validate(self):
