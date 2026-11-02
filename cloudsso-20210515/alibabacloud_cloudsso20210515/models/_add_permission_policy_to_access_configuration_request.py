@@ -13,27 +13,24 @@ class AddPermissionPolicyToAccessConfigurationRequest(DaraModel):
         permission_policy_name: str = None,
         permission_policy_type: str = None,
     ):
-        # The ID of the access configuration.
+        # The access configuration ID.
         self.access_configuration_id = access_configuration_id
-        # The ID of the directory.
+        # The directory ID.
         self.directory_id = directory_id
-        # The configurations of the inline policy.
+        # The content of the inline policy.
         # 
-        # The value can be up to 4,096 characters in length.
+        # The maximum length is 4,096 characters.
         # 
-        # If you set `PermissionPolicyType` to `Inline`, you must specify this parameter. For more information about the syntax and structure of RAM policies, see [Policy syntax and structure](https://help.aliyun.com/document_detail/93739.html).
+        # If PermissionPolicyType is set to Inline, this parameter is required. For more information about the syntax and structure of access policies, see [Access policy syntax and structure](https://help.aliyun.com/document_detail/93739.html).
         self.inline_policy_document = inline_policy_document
-        # The name of the policy.
-        # 
-        # - If you set `PermissionPolicyType` to `System`, you must set PermissionPolicyName to the name of a system policy. You can obtain the name of the system policy from RAM.
-        # 
-        # - If you set `PermissionPolicyType` to `Inline`, you must set PermissionPolicyName to the name of an inline policy. A custom value is supported. The value can be up to 32 characters in length.
+        # The name of the access policy. 
+        # - If PermissionPolicyType is set to System, this parameter specifies the name of the system policy. Because RAM system policies are reused, you must obtain the system policy name from RAM.
+        # - If PermissionPolicyType is set to Inline, this parameter specifies the name of the inline policy. You can customize the name. The name can be up to 32 characters in length.
         self.permission_policy_name = permission_policy_name
-        # The type of the policy. Valid values:
+        # The type of the access policy. Valid values:
         # 
-        # - System: system policy. Resource Access Management (RAM) system policies are reused.
-        # 
-        # - Inline: inline policy. Inline policies are created based on the RAM policy syntax and structure.
+        # - System: system policy. Reuses the system policies of Resource Access Management (RAM).
+        # - Inline: inline policy. A custom policy written based on the syntax and structure of RAM policies.
         self.permission_policy_type = permission_policy_type
 
     def validate(self):

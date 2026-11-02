@@ -1,3 +1,6 @@
+2026-11-02 Version: 1.8.0
+- Generated python 2021-05-15 for cloudsso.
+
 2026-08-25 Version: 1.6.4
 - Update API CreateAccessAssignment: add request parameters OriginTargetId.
 - Update API CreateAccessAssignment: add response parameters Body.Task.OriginTargetId.

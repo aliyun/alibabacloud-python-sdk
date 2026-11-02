@@ -13,7 +13,7 @@ class CreateAccessAssignmentResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The queried task.
+        # The task information.
         self.task = task
 
     def validate(self):
@@ -64,42 +64,38 @@ class CreateAccessAssignmentResponseBodyTask(DaraModel):
         task_id: str = None,
         task_type: str = None,
     ):
-        # The ID of the access configuration.
+        # The access configuration ID.
         self.access_configuration_id = access_configuration_id
-        # The name of the access configuration.
+        # The access configuration name.
         self.access_configuration_name = access_configuration_name
+        # The Alibaba Cloud account ID of the authorization target.
         self.origin_target_id = origin_target_id
-        # The ID of the CloudSSO identity.
+        # The CloudSSO identity ID.
         self.principal_id = principal_id
-        # The name of the CloudSSO identity.
+        # The CloudSSO identity name.
         self.principal_name = principal_name
-        # The type of the CloudSSO identity. Valid values:
-        # 
-        # - User
-        # 
-        # - Group
+        # The CloudSSO identity type. Valid values:
+        # - User: user
+        # - Group: group
         self.principal_type = principal_type
         # The task status. Valid values:
-        # 
-        # - InProgress: The task is running.
-        # 
-        # - Success: The task is successful.
-        # 
+        # - InProgress: The task is in progress.
+        # - Success: The task succeeded.
         # - Failed: The task failed.
         self.status = status
-        # The ID of the task object.
+        # The ID of the task target.
         self.target_id = target_id
-        # The name of the task object.
+        # The name of the task target.
         self.target_name = target_name
-        # The path ID of the task object in the resource directory.
+        # The path ID of the task target in the resource directory.
         self.target_path = target_path
-        # The path name of the task object in the resource directory.
+        # The path name of the task target in the resource directory.
         self.target_path_name = target_path_name
-        # The type of the task object. The value is fixed as RD-Account, which indicates the accounts in the resource directory.
+        # The target type of the task. Valid value: RD-Account, which indicates that the task target is an account in a resource directory.
         self.target_type = target_type
-        # The ID of the job.
+        # The task ID.
         self.task_id = task_id
-        # The task type. The value is fixed as CreateAccessAssignment, which indicates that access permissions on an account in your resource directory are assigned.
+        # The task type. Valid value: CreateAccessAssignment, which indicates an authorization task for an account in a resource directory.
         self.task_type = task_type
 
     def validate(self):

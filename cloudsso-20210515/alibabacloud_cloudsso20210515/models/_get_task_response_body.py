@@ -69,48 +69,49 @@ class GetTaskResponseBodyTask(DaraModel):
         self.access_configuration_id = access_configuration_id
         # The name of the access configuration.
         self.access_configuration_name = access_configuration_name
-        # The end time of the task.
+        # The end time of the task. The time is in UTC and follows the RFC 3339 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.end_time = end_time
-        # The cause of the task failure.
+        # The reason why the task failed.
         # 
-        # >  This parameter is returned only when the value of `Status` is `Failed`.
+        # > This parameter is returned only when `Status` is `Failed`.
         self.failure_reason = failure_reason
+        # The ID of the Alibaba Cloud account to which the target belongs.
         self.origin_target_id = origin_target_id
         # The ID of the CloudSSO identity.
         self.principal_id = principal_id
         # The name of the CloudSSO identity.
         self.principal_name = principal_name
-        # The type of the CloudSSO identity. Valid values:
+        # The CloudSSO identity type. Valid values:
         # 
-        # *   User
-        # *   Group
+        # - User: user.
+        # - Group: user group.
         self.principal_type = principal_type
-        # The start time of the task.
+        # The start time of the task. The time is in UTC and follows the RFC 3339 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.start_time = start_time
         # The task status. Valid values:
         # 
-        # *   InProgress: The task is running.
-        # *   Success: The task is successful.
-        # *   Failed: The task failed.
+        # - InProgress: The task is in progress.
+        # - Success: The task succeeded.
+        # - Failed: The task failed.
         self.status = status
-        # The ID of the task object.
+        # The ID of the task target.
         self.target_id = target_id
-        # The name of the task object.
+        # The name of the task target.
         self.target_name = target_name
-        # The path ID of the task object in the resource directory.
+        # The path ID of the task target in the resource directory.
         self.target_path = target_path
-        # The path name of the task object in the resource directory.
+        # The path name of the task target in the resource directory.
         self.target_path_name = target_path_name
-        # The type of the task object. The value is fixed as RD-Account, which indicates the accounts in the resource directory.
+        # The task target type. Valid values: RD-Account, which indicates that the task target is an account in a resource directory.
         self.target_type = target_type
         # The task ID.
         self.task_id = task_id
         # The task type. Valid values:
         # 
-        # *   ProvisionAccessConfiguration: An access configuration is provisioned.
-        # *   DeprovisionAccessConfiguration: An access configuration is de-provisioned.
-        # *   CreateAccessAssignment: Access permissions on an account in the resource directory are assigned.
-        # *   DeleteAccessAssignment: Access permissions on an account in the resource directory are removed.
+        # - ProvisionAccessConfiguration: Deploys the access configuration.
+        # - DeprovisionAccessConfiguration: Removes the access configuration deployment.
+        # - CreateAccessAssignment: Grants authorization to an account in a resource directory.
+        # - DeleteAccessAssignment: Revokes authorization from an account in a resource directory.
         self.task_type = task_type
 
     def validate(self):

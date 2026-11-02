@@ -17,46 +17,46 @@ class ListAccessAssignmentsRequest(DaraModel):
         target_id: str = None,
         target_type: str = None,
     ):
-        # The ID of the access configuration. The ID can be used to filter access permissions.
+        # The ID of the access configuration. This parameter is used as a filter condition for the query.
         self.access_configuration_id = access_configuration_id
-        # The directory ID.
+        # The ID of the directory.
         self.directory_id = directory_id
-        # The maximum number of entries per page.
+        # The maximum number of entries to return on each page.
         # 
         # Valid values: 1 to 20.
         # 
         # Default value: 10.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. If this is your first time to call this operation, you do not need to specify the `NextToken` parameter.
+        # The token for the next page of query results. You do not need to specify `NextToken` when you call this operation for the first time.
         # 
-        # When you call this operation for the first time, if the total number of entries to return exceeds the value of `MaxResults`, the entries are truncated. Only the entries that match the value of `MaxResults` are returned, and the excess entries are not returned. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
+        # When you call this operation for the first time, if the total number of returned entries exceeds the value of `MaxResults`, the returned entries are truncated. Only the number of entries specified by `MaxResults` is returned, the `IsTruncated` parameter is set to `true`, and a `NextToken` value is returned. You can use the returned `NextToken` value to call this operation again to query the truncated entries while keeping other request parameters unchanged. You can repeat this process until `IsTruncated` is set to `false`, which indicates that all entries are returned.
         self.next_token = next_token
+        # The ID of the Alibaba Cloud account to which the authorization target belongs.
         self.origin_target_id = origin_target_id
-        # The ID of the CloudSSO identity. The ID can be used to filter access permissions.
+        # The ID of the CloudSSO identity, which is used as a filter condition for the query. Details:
         # 
-        # - If you set `PrincipalType` to User, set `PrincipalId` to the ID of the CloudSSO user.
+        # - If `PrincipalType` is set to User, `PrincipalId` is the ID of the CloudSSO user.
+        # - If `PrincipalType` is set to Group, `PrincipalId` is the ID of the CloudSSO group.
         # 
-        # - If you set `PrincipalType` to Group, set `PrincipalId` to the ID of the CloudSSO group.
-        # 
-        # > You can use the type to filter access permissions only if you specify both PrincipalId and `PrincipalType`.\\`\\`
+        # > You must specify both `PrincipalId` and `PrincipalType` for the filter condition to take effect.
         self.principal_id = principal_id
-        # The type of the CloudSSO identity. The type can be used to filter access permissions. Valid values:
+        # The type of the CloudSSO identity, which is used as a filter condition for the query. Valid values:
         # 
-        # - User
+        # - User: user.
+        # - Group: group.
         # 
-        # - Group
-        # 
-        # > You can use the type to filter access permissions only if you specify both PrincipalId and `PrincipalType`.\\`\\`
+        # > You must specify both `PrincipalId` and `PrincipalType` for the filter condition to take effect.
         self.principal_type = principal_type
-        # The ID of the task object. The ID can be used to filter access permissions.
+        # The ID of the task target, which is used as a filter condition for the query.
         # 
-        # > You can use the type to filter access permissions only if you specify both `TargetId` and `TargetType`.
+        # > You must specify both `TargetId` and `TargetType` for the filter condition to take effect.
         self.target_id = target_id
-        # The type of the task object. The type can be used to filter access permissions.
+        # The type of the task target, which is used as a filter condition for the query.
         # 
-        # Set the value to RD-Account, which specifies the accounts in the resource directory.
+        # Valid values:
+        # - RD-Account: The task target is an account in a resource directory.
         # 
-        # > You can use the type to filter access permissions only if you specify both `TargetId` and `TargetType`.
+        # > You must specify both `TargetId` and `TargetType` for the filter condition to take effect.
         self.target_type = target_type
 
     def validate(self):

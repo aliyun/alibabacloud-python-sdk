@@ -10,9 +10,9 @@ class DeleteUserRequest(DaraModel):
         directory_id: str = None,
         user_id: str = None,
     ):
-        # The ID of the directory.
+        # The directory ID.
         self.directory_id = directory_id
-        # The ID of the user.
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

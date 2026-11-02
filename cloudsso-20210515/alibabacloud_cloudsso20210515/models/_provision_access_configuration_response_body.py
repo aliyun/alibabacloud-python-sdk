@@ -67,32 +67,33 @@ class ProvisionAccessConfigurationResponseBodyTasks(DaraModel):
         task_id: str = None,
         task_type: str = None,
     ):
-        # The ID of the access configuration.
+        # The access configuration ID.
         self.access_configuration_id = access_configuration_id
         # The name of the access configuration.
         self.access_configuration_name = access_configuration_name
+        # The ID of the Alibaba Cloud account to which the deployment target belongs.
         self.origin_target_id = origin_target_id
-        # The task status. Valid values:
+        # The status of the task. Valid values:
         # 
-        # - InProgress: The task is running.
-        # 
-        # - Success: The task is successful.
-        # 
+        # - InProgress: The task is in progress.
+        # - Success: The task succeeded.
         # - Failed: The task failed.
         self.status = status
-        # The ID of the task object.
+        # The ID of the deployment target.
         self.target_id = target_id
-        # The name of the task object.
+        # The name of the task target.
         self.target_name = target_name
-        # The path ID of the task object in the resource directory.
+        # The path ID of the task target in the resource directory.
         self.target_path = target_path
-        # The path name of the task object in the resource directory.
+        # The path name of the task target in the resource directory.
         self.target_path_name = target_path_name
-        # The type of the task object. The value is fixed as RD-Account, which indicates the accounts in the resource directory.
+        # The target type of the task. Valid values:
+        # - RD-Account: The task target is an account in a resource directory.
         self.target_type = target_type
         # The task ID.
         self.task_id = task_id
-        # The task type. The value is fixed as ProvisionAccessConfiguration, which indicates that an access configuration is provisioned.
+        # The task type. Valid values:
+        # - ProvisionAccessConfiguration: The task provisions an access configuration.
         self.task_type = task_type
 
     def validate(self):

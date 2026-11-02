@@ -21,14 +21,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'cn-shanghai': 'cloudsso.cn-shanghai.aliyuncs.com',
-            'cn-hongkong': 'cloudsso.cn-hongkong.aliyuncs.com',
-            'ap-northeast-2': 'cloudsso.ap-northeast-2.aliyuncs.com',
-            'ap-southeast-1': 'cloudsso.ap-southeast-1.aliyuncs.com',
-            'us-west-1': 'cloudsso.us-west-1.aliyuncs.com',
-            'eu-central-1': 'cloudsso.eu-central-1.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('cloudsso', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -2063,6 +2055,76 @@ class Client(OpenApiClient):
     ) -> main_models.GetAccessConfigurationResponse:
         runtime = RuntimeOptions()
         return await self.get_access_configuration_with_options_async(request, runtime)
+
+    def get_attribute_passing_setting_with_options(
+        self,
+        request: main_models.GetAttributePassingSettingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAttributePassingSettingResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAttributePassingSetting',
+            version = '2021-05-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAttributePassingSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_attribute_passing_setting_with_options_async(
+        self,
+        request: main_models.GetAttributePassingSettingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAttributePassingSettingResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAttributePassingSetting',
+            version = '2021-05-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAttributePassingSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_attribute_passing_setting(
+        self,
+        request: main_models.GetAttributePassingSettingRequest,
+    ) -> main_models.GetAttributePassingSettingResponse:
+        runtime = RuntimeOptions()
+        return self.get_attribute_passing_setting_with_options(request, runtime)
+
+    async def get_attribute_passing_setting_async(
+        self,
+        request: main_models.GetAttributePassingSettingRequest,
+    ) -> main_models.GetAttributePassingSettingResponse:
+        runtime = RuntimeOptions()
+        return await self.get_attribute_passing_setting_with_options_async(request, runtime)
 
     def get_directory_with_options(
         self,
@@ -4514,6 +4576,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_scimserver_credentials_with_options_async(request, runtime)
 
+    def list_tag_resources_with_options(
+        self,
+        request: main_models.ListTagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTagResourcesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTagResources',
+            version = '2021-05-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tag_resources_with_options_async(
+        self,
+        request: main_models.ListTagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTagResourcesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTagResources',
+            version = '2021-05-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tag_resources(
+        self,
+        request: main_models.ListTagResourcesRequest,
+    ) -> main_models.ListTagResourcesResponse:
+        runtime = RuntimeOptions()
+        return self.list_tag_resources_with_options(request, runtime)
+
+    async def list_tag_resources_async(
+        self,
+        request: main_models.ListTagResourcesRequest,
+    ) -> main_models.ListTagResourcesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_tag_resources_with_options_async(request, runtime)
+
     def list_tasks_with_options(
         self,
         request: main_models.ListTasksRequest,
@@ -5796,6 +5944,174 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.set_scimsynchronization_status_with_options_async(request, runtime)
 
+    def tag_resources_with_options(
+        self,
+        request: main_models.TagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TagResourcesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'TagResources',
+            version = '2021-05-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def tag_resources_with_options_async(
+        self,
+        request: main_models.TagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TagResourcesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'TagResources',
+            version = '2021-05-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def tag_resources(
+        self,
+        request: main_models.TagResourcesRequest,
+    ) -> main_models.TagResourcesResponse:
+        runtime = RuntimeOptions()
+        return self.tag_resources_with_options(request, runtime)
+
+    async def tag_resources_async(
+        self,
+        request: main_models.TagResourcesRequest,
+    ) -> main_models.TagResourcesResponse:
+        runtime = RuntimeOptions()
+        return await self.tag_resources_with_options_async(request, runtime)
+
+    def untag_resources_with_options(
+        self,
+        request: main_models.UntagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UntagResourcesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.all):
+            query['All'] = request.all
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UntagResources',
+            version = '2021-05-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def untag_resources_with_options_async(
+        self,
+        request: main_models.UntagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UntagResourcesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.all):
+            query['All'] = request.all
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UntagResources',
+            version = '2021-05-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def untag_resources(
+        self,
+        request: main_models.UntagResourcesRequest,
+    ) -> main_models.UntagResourcesResponse:
+        runtime = RuntimeOptions()
+        return self.untag_resources_with_options(request, runtime)
+
+    async def untag_resources_async(
+        self,
+        request: main_models.UntagResourcesRequest,
+    ) -> main_models.UntagResourcesResponse:
+        runtime = RuntimeOptions()
+        return await self.untag_resources_with_options_async(request, runtime)
+
     def update_access_configuration_with_options(
         self,
         request: main_models.UpdateAccessConfigurationRequest,
@@ -5881,6 +6197,80 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateAccessConfigurationResponse:
         runtime = RuntimeOptions()
         return await self.update_access_configuration_with_options_async(request, runtime)
+
+    def update_attribute_passing_setting_with_options(
+        self,
+        request: main_models.UpdateAttributePassingSettingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAttributePassingSettingResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not DaraCore.is_null(request.source_identity_passing):
+            query['SourceIdentityPassing'] = request.source_identity_passing
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAttributePassingSetting',
+            version = '2021-05-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAttributePassingSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_attribute_passing_setting_with_options_async(
+        self,
+        request: main_models.UpdateAttributePassingSettingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAttributePassingSettingResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not DaraCore.is_null(request.source_identity_passing):
+            query['SourceIdentityPassing'] = request.source_identity_passing
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAttributePassingSetting',
+            version = '2021-05-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAttributePassingSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_attribute_passing_setting(
+        self,
+        request: main_models.UpdateAttributePassingSettingRequest,
+    ) -> main_models.UpdateAttributePassingSettingResponse:
+        runtime = RuntimeOptions()
+        return self.update_attribute_passing_setting_with_options(request, runtime)
+
+    async def update_attribute_passing_setting_async(
+        self,
+        request: main_models.UpdateAttributePassingSettingRequest,
+    ) -> main_models.UpdateAttributePassingSettingResponse:
+        runtime = RuntimeOptions()
+        return await self.update_attribute_passing_setting_with_options_async(request, runtime)
 
     def update_directory_with_options(
         self,

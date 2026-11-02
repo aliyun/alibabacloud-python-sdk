@@ -13,7 +13,7 @@ class UpdateSCIMServerCredentialStatusResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about the SCIM credential.
+        # The SCIM credential information.
         self.scimserver_credential = scimserver_credential
 
     def validate(self):
@@ -54,21 +54,20 @@ class UpdateSCIMServerCredentialStatusResponseBodySCIMServerCredential(DaraModel
         expire_time: str = None,
         status: str = None,
     ):
-        # The time when the SCIM credential was created.
+        # The creation time of the SCIM credential. The time is in UTC and follows the RFC 3339 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.create_time = create_time
         # The ID of the SCIM credential.
         self.credential_id = credential_id
         # The type of the SCIM credential.
         self.credential_type = credential_type
-        # The ID of the directory.
+        # The directory ID.
         self.directory_id = directory_id
-        # The time when the SCIM credential expires.
+        # The expiration time of the SCIM credential. The time is in UTC and follows the RFC 3339 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.expire_time = expire_time
         # The status of the SCIM credential. Valid values:
         # 
-        # - Enabled: The SCIM credential is enabled.
-        # 
-        # - Disabled: The SCIM credential is disabled.
+        # - Enabled: Enabled.
+        # - Disabled: Disabled.
         self.status = status
 
     def validate(self):

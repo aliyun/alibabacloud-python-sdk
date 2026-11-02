@@ -78,6 +78,9 @@ from ._enable_service_response import EnableServiceResponse
 from ._get_access_configuration_request import GetAccessConfigurationRequest
 from ._get_access_configuration_response_body import GetAccessConfigurationResponseBody
 from ._get_access_configuration_response import GetAccessConfigurationResponse
+from ._get_attribute_passing_setting_request import GetAttributePassingSettingRequest
+from ._get_attribute_passing_setting_response_body import GetAttributePassingSettingResponseBody
+from ._get_attribute_passing_setting_response import GetAttributePassingSettingResponse
 from ._get_directory_request import GetDirectoryRequest
 from ._get_directory_response_body import GetDirectoryResponseBody
 from ._get_directory_response import GetDirectoryResponse
@@ -176,6 +179,9 @@ from ._list_permission_policies_in_access_configuration_response import ListPerm
 from ._list_scimserver_credentials_request import ListSCIMServerCredentialsRequest
 from ._list_scimserver_credentials_response_body import ListSCIMServerCredentialsResponseBody
 from ._list_scimserver_credentials_response import ListSCIMServerCredentialsResponse
+from ._list_tag_resources_request import ListTagResourcesRequest
+from ._list_tag_resources_response_body import ListTagResourcesResponseBody
+from ._list_tag_resources_response import ListTagResourcesResponse
 from ._list_tasks_request import ListTasksRequest
 from ._list_tasks_response_body import ListTasksResponseBody
 from ._list_tasks_response import ListTasksResponse
@@ -221,9 +227,18 @@ from ._set_password_policy_response import SetPasswordPolicyResponse
 from ._set_scimsynchronization_status_request import SetSCIMSynchronizationStatusRequest
 from ._set_scimsynchronization_status_response_body import SetSCIMSynchronizationStatusResponseBody
 from ._set_scimsynchronization_status_response import SetSCIMSynchronizationStatusResponse
+from ._tag_resources_request import TagResourcesRequest
+from ._tag_resources_response_body import TagResourcesResponseBody
+from ._tag_resources_response import TagResourcesResponse
+from ._untag_resources_request import UntagResourcesRequest
+from ._untag_resources_response_body import UntagResourcesResponseBody
+from ._untag_resources_response import UntagResourcesResponse
 from ._update_access_configuration_request import UpdateAccessConfigurationRequest
 from ._update_access_configuration_response_body import UpdateAccessConfigurationResponseBody
 from ._update_access_configuration_response import UpdateAccessConfigurationResponse
+from ._update_attribute_passing_setting_request import UpdateAttributePassingSettingRequest
+from ._update_attribute_passing_setting_response_body import UpdateAttributePassingSettingResponseBody
+from ._update_attribute_passing_setting_response import UpdateAttributePassingSettingResponse
 from ._update_directory_request import UpdateDirectoryRequest
 from ._update_directory_response_body import UpdateDirectoryResponseBody
 from ._update_directory_response import UpdateDirectoryResponse
@@ -270,6 +285,7 @@ from ._delete_access_assignment_response_body import DeleteAccessAssignmentRespo
 from ._deprovision_access_configuration_response_body import DeprovisionAccessConfigurationResponseBodyTasks
 from ._get_access_configuration_response_body import GetAccessConfigurationResponseBodyAccessConfigurationTags
 from ._get_access_configuration_response_body import GetAccessConfigurationResponseBodyAccessConfiguration
+from ._get_attribute_passing_setting_response_body import GetAttributePassingSettingResponseBodyAttributePassingSetting
 from ._get_directory_response_body import GetDirectoryResponseBodyDirectory
 from ._get_directory_samlservice_provider_info_response_body import GetDirectorySAMLServiceProviderInfoResponseBodySAMLServiceProvider
 from ._get_directory_statistics_response_body import GetDirectoryStatisticsResponseBodyDirectoryStatistics
@@ -303,6 +319,8 @@ from ._list_joined_groups_for_user_response_body import ListJoinedGroupsForUserR
 from ._list_mfadevices_for_user_response_body import ListMFADevicesForUserResponseBodyMFADevices
 from ._list_permission_policies_in_access_configuration_response_body import ListPermissionPoliciesInAccessConfigurationResponseBodyPermissionPolicies
 from ._list_scimserver_credentials_response_body import ListSCIMServerCredentialsResponseBodySCIMServerCredentials
+from ._list_tag_resources_request import ListTagResourcesRequestTag
+from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
 from ._list_tasks_response_body import ListTasksResponseBodyTasks
 from ._list_user_provisioning_events_response_body import ListUserProvisioningEventsResponseBodyUserProvisioningEvents
 from ._list_user_provisionings_response_body import ListUserProvisioningsResponseBodyUserProvisionings
@@ -312,6 +330,7 @@ from ._list_users_response_body import ListUsersResponseBodyUsersTags
 from ._list_users_response_body import ListUsersResponseBodyUsers
 from ._provision_access_configuration_response_body import ProvisionAccessConfigurationResponseBodyTasks
 from ._set_external_samlidentity_provider_response_body import SetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfiguration
+from ._tag_resources_request import TagResourcesRequestTag
 from ._update_access_configuration_response_body import UpdateAccessConfigurationResponseBodyAccessConfiguration
 from ._update_directory_response_body import UpdateDirectoryResponseBodyDirectory
 from ._update_group_response_body import UpdateGroupResponseBodyGroup
@@ -397,6 +416,9 @@ __all__ = [
     GetAccessConfigurationRequest,
     GetAccessConfigurationResponseBody,
     GetAccessConfigurationResponse,
+    GetAttributePassingSettingRequest,
+    GetAttributePassingSettingResponseBody,
+    GetAttributePassingSettingResponse,
     GetDirectoryRequest,
     GetDirectoryResponseBody,
     GetDirectoryResponse,
@@ -495,6 +517,9 @@ __all__ = [
     ListSCIMServerCredentialsRequest,
     ListSCIMServerCredentialsResponseBody,
     ListSCIMServerCredentialsResponse,
+    ListTagResourcesRequest,
+    ListTagResourcesResponseBody,
+    ListTagResourcesResponse,
     ListTasksRequest,
     ListTasksResponseBody,
     ListTasksResponse,
@@ -540,9 +565,18 @@ __all__ = [
     SetSCIMSynchronizationStatusRequest,
     SetSCIMSynchronizationStatusResponseBody,
     SetSCIMSynchronizationStatusResponse,
+    TagResourcesRequest,
+    TagResourcesResponseBody,
+    TagResourcesResponse,
+    UntagResourcesRequest,
+    UntagResourcesResponseBody,
+    UntagResourcesResponse,
     UpdateAccessConfigurationRequest,
     UpdateAccessConfigurationResponseBody,
     UpdateAccessConfigurationResponse,
+    UpdateAttributePassingSettingRequest,
+    UpdateAttributePassingSettingResponseBody,
+    UpdateAttributePassingSettingResponse,
     UpdateDirectoryRequest,
     UpdateDirectoryResponseBody,
     UpdateDirectoryResponse,
@@ -589,6 +623,7 @@ __all__ = [
     DeprovisionAccessConfigurationResponseBodyTasks,
     GetAccessConfigurationResponseBodyAccessConfigurationTags,
     GetAccessConfigurationResponseBodyAccessConfiguration,
+    GetAttributePassingSettingResponseBodyAttributePassingSetting,
     GetDirectoryResponseBodyDirectory,
     GetDirectorySAMLServiceProviderInfoResponseBodySAMLServiceProvider,
     GetDirectoryStatisticsResponseBodyDirectoryStatistics,
@@ -622,6 +657,8 @@ __all__ = [
     ListMFADevicesForUserResponseBodyMFADevices,
     ListPermissionPoliciesInAccessConfigurationResponseBodyPermissionPolicies,
     ListSCIMServerCredentialsResponseBodySCIMServerCredentials,
+    ListTagResourcesRequestTag,
+    ListTagResourcesResponseBodyTagResources,
     ListTasksResponseBodyTasks,
     ListUserProvisioningEventsResponseBodyUserProvisioningEvents,
     ListUserProvisioningsResponseBodyUserProvisionings,
@@ -631,6 +668,7 @@ __all__ = [
     ListUsersResponseBodyUsers,
     ProvisionAccessConfigurationResponseBodyTasks,
     SetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfiguration,
+    TagResourcesRequestTag,
     UpdateAccessConfigurationResponseBodyAccessConfiguration,
     UpdateDirectoryResponseBodyDirectory,
     UpdateGroupResponseBodyGroup,

@@ -17,23 +17,22 @@ class ListAccessConfigurationProvisioningsResponseBody(DaraModel):
         request_id: str = None,
         total_counts: int = None,
     ):
-        # The accounts for which the access configuration is provisioned.
+        # The list of access configuration provisionings.
         self.access_configuration_provisionings = access_configuration_provisionings
-        # Indicates whether the queried entries are truncated. Valid values:
+        # Indicates whether the returned results are truncated. Valid values:
         # 
-        # - true
-        # 
-        # - false
+        # - true: The results are truncated.
+        # - false: The results are not truncated.
         self.is_truncated = is_truncated
-        # The maximum number of entries returned per page.
+        # The maximum number of entries returned on each page.
         self.max_results = max_results
-        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+        # The token used to return the next page of query results.
         # 
-        # > This parameter is returned only when the value of `IsTruncated` is `true`.
+        # > This parameter is returned only when IsTruncated is set to true.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries that meet the filter conditions specified in the request parameters.
         self.total_counts = total_counts
 
     def validate(self):
@@ -112,42 +111,42 @@ class ListAccessConfigurationProvisioningsResponseBodyAccessConfigurationProvisi
         target_type: str = None,
         update_time: str = None,
     ):
-        # The ID of the access configuration.
+        # The access configuration ID.
         self.access_configuration_id = access_configuration_id
         # The name of the access configuration.
         self.access_configuration_name = access_configuration_name
-        # The first time when the access configuration was provisioned.
+        # The time when the first provisioning succeeded. The time is displayed in UTC and follows the RFC 3339 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.create_time = create_time
+        # The Alibaba Cloud account ID of the provisioning target.
         self.origin_target_id = origin_target_id
-        # The name of the custom policy that is created for an account in the resource directory.
+        # The Policy Name of the custom policy created in the account in a resource directory.
         self.rampolicy_names = rampolicy_names
-        # The name of the RAM role that is created for an account in the resource directory.
+        # The name of the RAM role created in the account in a resource directory.
         self.ramrole_name = ramrole_name
-        # The name of the Security Assertion Markup Language (SAML) identity provider (IdP) that is created within an account in the resource directory.
+        # The name of the SAML IdP created in the account in a resource directory.
         self.samlprovider_name = samlprovider_name
-        # The status of the access configuration. Valid values:
+        # The provisioning status. Valid values:
         # 
-        # - Provisioned: The access configuration is provisioned.
-        # 
-        # - ReprovisionRequired: The access configuration needs to be re-provisioned.
-        # 
-        # - DeprovisionFailed: The access configuration failed to be provisioned.
+        # - Provisioned: The provisioning succeeded.
+        # - ReprovisionRequired: Reprovisioning is required.
+        # - DeprovisionFailed: The provisioning failed.
         self.status = status
-        # The ID of the task object.
+        # The target ID.
         # 
-        # If the value of TargetType is `RD-Account`, the value of this parameter is the UID of an account in the resource directory.
+        # If the target type is RD-Account, this parameter indicates the UID of the account in a resource directory.
         self.target_id = target_id
-        # The name of the task object.
+        # The name of the target.
         self.target_name = target_name
-        # The path ID of the task object in the resource directory.
+        # The path ID of the target in the resource directory.
         self.target_path = target_path
-        # The path name of the task object in the resource directory.
+        # The path name of the target in the resource directory.
         self.target_path_name = target_path_name
-        # The type of the task object.
+        # The target type.
         # 
-        # Set the value to RD-Account, which specifies the accounts in the resource directory.
+        # Valid values:
+        # - RD-Account: The target is an account in a resource directory.
         self.target_type = target_type
-        # The last time when the access configuration was provisioned.
+        # The time when the latest provisioning succeeded. The time is displayed in UTC and follows the RFC 3339 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.update_time = update_time
 
     def validate(self):

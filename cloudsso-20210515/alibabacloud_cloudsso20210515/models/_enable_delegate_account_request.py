@@ -9,7 +9,7 @@ class EnableDelegateAccountRequest(DaraModel):
         self,
         account_id: str = None,
     ):
-        # The ID of the delegated administrator account of CloudSSO.
+        # The ID of the CloudSSO delegated administrator account.
         self.account_id = account_id
 
     def validate(self):

@@ -11,17 +11,16 @@ class DeleteUserProvisioningRequest(DaraModel):
         directory_id: str = None,
         user_provisioning_id: str = None,
     ):
-        # The deletion policy. The policy is used to manage synchronized users when you delete the RAM user provisioning. Valid values:
+        # The deletion strategy. The processing strategy for synchronized RAM users when a RAM user synchronization is deleted. Valid values:
         # 
-        # - Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
+        # - Delete: Deletes the RAM users that have been synchronized from CloudSSO to Resource Access Management (RAM) user synchronization is deleted.
+        # - Keep: Retains the RAM users that have been synchronized from CloudSSO to Resource Access Management (RAM) user synchronization is deleted.
         # 
-        # - Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
-        # 
-        # > If you do not specify this parameter, the deletion policy that is configured when you create the RAM user provisioning is used.
+        # > If this parameter is left empty, the deletion strategy specified when the RAM user synchronization was created is used.
         self.deletion_strategy = deletion_strategy
-        # The ID of the resource directory.
+        # The directory ID.
         self.directory_id = directory_id
-        # The ID of the RAM user provisioning.
+        # The ID of the Resource Access Management (RAM) user synchronization.
         self.user_provisioning_id = user_provisioning_id
 
     def validate(self):

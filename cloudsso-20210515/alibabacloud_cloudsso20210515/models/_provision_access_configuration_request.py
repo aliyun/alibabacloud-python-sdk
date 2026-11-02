@@ -13,14 +13,16 @@ class ProvisionAccessConfigurationRequest(DaraModel):
         target_id: str = None,
         target_type: str = None,
     ):
-        # The ID of the access configuration.
+        # The access configuration ID.
         self.access_configuration_id = access_configuration_id
         # The directory ID.
         self.directory_id = directory_id
+        # The ID of the Alibaba Cloud account to which the deployment target belongs.
         self.origin_target_id = origin_target_id
-        # The ID of the task object.
+        # The ID of the task target.
         self.target_id = target_id
-        # The type of the task object. Set the value to RD-Account, which specifies the accounts in the resource directory.
+        # The target type of the task. Valid values:
+        # - RD-Account: The task target is an account in a resource directory.
         self.target_type = target_type
 
     def validate(self):

@@ -17,23 +17,22 @@ class ListAccessAssignmentsResponseBody(DaraModel):
         request_id: str = None,
         total_counts: int = None,
     ):
-        # The access permissions that are assigned.
+        # The list of access assignments.
         self.access_assignments = access_assignments
-        # Indicates whether the queried entries are truncated. Valid values:
+        # Indicates whether the returned result is truncated. Valid values:
         # 
-        # - true
-        # 
-        # - false
+        # - true: The result is truncated.
+        # - false: The result is not truncated.
         self.is_truncated = is_truncated
-        # The maximum number of entries returned per page.
+        # The maximum number of entries returned on each page.
         self.max_results = max_results
-        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+        # The token for the next page of query results.
         # 
-        # > This parameter is returned only when the value of IsTruncated is `true`.\\`\\`
+        # > This parameter is returned only when `IsTruncated` is set to `true`.
         self.next_token = next_token
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries that meet the filter conditions specified in the request parameters.
         self.total_counts = total_counts
 
     def validate(self):
@@ -114,8 +113,9 @@ class ListAccessAssignmentsResponseBodyAccessAssignments(DaraModel):
         self.access_configuration_id = access_configuration_id
         # The name of the access configuration.
         self.access_configuration_name = access_configuration_name
-        # The time when the access permissions were assigned.
+        # The time when the access assignment was successful. The time follows the RFC 3339 standard and is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
         self.create_time = create_time
+        # The ID of the Alibaba Cloud account to which the authorization target belongs.
         self.origin_target_id = origin_target_id
         # The ID of the CloudSSO identity.
         self.principal_id = principal_id
@@ -123,21 +123,21 @@ class ListAccessAssignmentsResponseBodyAccessAssignments(DaraModel):
         self.principal_name = principal_name
         # The type of the CloudSSO identity. Valid values:
         # 
-        # - User
-        # 
-        # - Group
+        # - User: user.
+        # - Group: group.
         self.principal_type = principal_type
-        # The ID of the task object.
+        # The ID of the task target.
         self.target_id = target_id
-        # The name of the task object.
+        # The name of the task target.
         self.target_name = target_name
-        # The path ID of the task object in the resource directory.
+        # The path ID of the task target in the resource directory.
         self.target_path = target_path
-        # The path name of the task object in the resource directory.
+        # The path name of the task target in the resource directory.
         self.target_path_name = target_path_name
-        # The type of the task object.
+        # The type of the task target.
         # 
-        # The value is fixed as RD-Account, which indicates the accounts in the resource directory.
+        # Valid values:
+        # - RD-Account: The task target is an account in a resource directory.
         self.target_type = target_type
 
     def validate(self):

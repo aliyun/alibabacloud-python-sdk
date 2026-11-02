@@ -10,11 +10,11 @@ class AddExternalSAMLIdPCertificateRequest(DaraModel):
         directory_id: str = None,
         x_509certificate: str = None,
     ):
-        # The ID of the directory.
+        # The directory ID.
         self.directory_id = directory_id
-        # The X.509 certificate in the PEM format.
+        # The X.509 certificate in PEM format.
         # 
-        # The certificate is provided by the SAML identity provider (IdP).
+        # The certificate is provided by the SAML IdP.
         self.x_509certificate = x_509certificate
 
     def validate(self):

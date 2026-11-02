@@ -10,7 +10,7 @@ class DeleteGroupRequest(DaraModel):
         directory_id: str = None,
         group_id: str = None,
     ):
-        # The ID of the directory.
+        # The directory ID.
         self.directory_id = directory_id
         # The ID of the group.
         self.group_id = group_id

@@ -9,7 +9,7 @@ class DeleteDirectoryRequest(DaraModel):
         self,
         directory_id: str = None,
     ):
-        # The ID of the directory.
+        # The directory ID.
         self.directory_id = directory_id
 
     def validate(self):

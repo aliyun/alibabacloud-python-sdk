@@ -12,7 +12,7 @@ class DeleteSCIMServerCredentialRequest(DaraModel):
     ):
         # The ID of the SCIM credential.
         self.credential_id = credential_id
-        # The ID of the directory.
+        # The directory ID.
         self.directory_id = directory_id
 
     def validate(self):

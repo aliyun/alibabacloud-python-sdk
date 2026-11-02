@@ -11,7 +11,7 @@ class GetDirectoryResponseBody(DaraModel):
         directory: main_models.GetDirectoryResponseBodyDirectory = None,
         request_id: str = None,
     ):
-        # The information about the directory.
+        # The directory information.
         self.directory = directory
         # The request ID.
         self.request_id = request_id
@@ -53,15 +53,15 @@ class GetDirectoryResponseBodyDirectory(DaraModel):
         region: str = None,
         update_time: str = None,
     ):
-        # The time when the directory was created.
+        # The time when the directory was created. The time is in UTC and follows the RFC 3339 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.create_time = create_time
-        # The ID of the directory.
+        # The directory ID.
         self.directory_id = directory_id
         # The name of the directory.
         self.directory_name = directory_name
-        # The region ID of the directory.
+        # The ID of the region where the directory is located.
         self.region = region
-        # The time when the directory was modified.
+        # The time when the directory was updated. The time is in UTC and follows the RFC 3339 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.update_time = update_time
 
     def validate(self):

@@ -11,13 +11,13 @@ class DeleteUserProvisioningEventRequest(DaraModel):
         event_id: str = None,
         user_provisioning_id: str = None,
     ):
-        # The ID of the resource directory.
+        # The directory ID.
         self.directory_id = directory_id
-        # The ID of the RAM user provisioning event.
+        # The ID of the Resource Access Management (RAM) user synchronization event.
         # 
-        # You can call the [ListUserProvisioningEvents](https://help.aliyun.com/document_detail/2636305.html) operation to query the value of `EventId`.
+        # You can invoke [ListUserProvisioningEvents](https://help.aliyun.com/document_detail/2636305.html) to retrieve the `EventId`.
         self.event_id = event_id
-        # The ID of the RAM user provisioning.
+        # The ID of the Resource Access Management (RAM) user synchronization.
         self.user_provisioning_id = user_provisioning_id
 
     def validate(self):

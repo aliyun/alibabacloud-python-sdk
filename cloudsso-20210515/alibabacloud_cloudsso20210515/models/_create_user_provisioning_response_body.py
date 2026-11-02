@@ -13,7 +13,7 @@ class CreateUserProvisioningResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about the RAM user provisioning.
+        # The Resource Access Management (RAM) user synchronization information.
         self.user_provisioning = user_provisioning
 
     def validate(self):
@@ -66,59 +66,51 @@ class CreateUserProvisioningResponseBodyUserProvisioning(DaraModel):
     ):
         # The creation time. The time is displayed in UTC.
         self.create_time = create_time
-        # The deletion policy. The policy is used to manage synchronized users when you delete the RAM user provisioning. Valid values:
+        # The deletion policy. Specifies the action to take for synchronized Resource Access Management (RAM) users when a Resource Access Management (RAM) user synchronization is deleted. Valid values:
         # 
-        # - Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
-        # 
-        # - Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
+        # - Delete: Delete. When a Resource Access Management (RAM) user synchronization is deleted, the system deletes the Resource Access Management (RAM) users that have been synchronized from CloudSSO to RAM.
+        # - Keep: Keep. When a Resource Access Management (RAM) user synchronization is deleted, the system retains the Resource Access Management (RAM) users that have been synchronized from CloudSSO to RAM.
         self.deletion_strategy = deletion_strategy
         # The description.
         self.description = description
-        # The ID of the resource directory.
+        # The ID of the directory.
         self.directory_id = directory_id
-        # The conflict handling policy. The policy is used when a RAM user has the same username as the CloudSSO user who is synchronized to RAM. Valid values:
+        # The conflict resolution policy. Specifies the action to take when a CloudSSO user is synchronized to Resource Access Management (RAM) user with the same name already exists. Valid values:
         # 
-        # - KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
-        # 
-        # - TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
+        # - KeepBoth: Keep both. When a CloudSSO user is synchronized to Resource Access Management (RAM) user with the same name already exists, the system adds the `_sso` suffix to the username of the CloudSSO user and attempts to create a RAM user with the suffixed username.
+        # - TakeOver: Take over. When a CloudSSO user is synchronized to Resource Access Management (RAM) user with the same name already exists, the system replaces the existing RAM user with the synchronized CloudSSO user.
         self.duplication_strategy = duplication_strategy
-        # The ID of the Alibaba Cloud account to which the resource directory belongs.
+        # The ID of the Alibaba Cloud account to which the directory belongs.
         self.owner_pk = owner_pk
-        # The identity ID of the RAM user provisioning. Valid values:
+        # The ID of the identity for the Resource Access Management (RAM) user synchronization. Valid values:
         # 
-        # - If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\\*\\*\\*\\*\\*\\*\\*\\*).
-        # 
-        # - If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\\*\\*\\*\\*\\*\\*\\*\\*).
+        # - When `PrincipalType` is set to `Group`, the value is the ID of the CloudSSO group (g-********).
+        # - When `PrincipalType` is set to `User`, the value is the ID of the CloudSSO user (u-********).
         self.principal_id = principal_id
-        # The identity name of the RAM user provisioning. Valid values:
+        # The name of the identity for the Resource Access Management (RAM) user synchronization. Valid values:
         # 
-        # - If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user group.
-        # 
-        # - If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user.
+        # - When `PrincipalType` is set to `Group`, the value is the name of the CloudSSO group.
+        # - When `PrincipalType` is set to `User`, the value is the CloudSSO username.
         self.principal_name = principal_name
-        # The identity type of the RAM user provisioning. Valid values:
-        # 
-        # - User: The identity of the RAM user provisioning is a CloudSSO user.
-        # 
-        # - Group: The identity of the RAM user provisioning is a CloudSSO user group.
+        # The type of the Resource Access Management (RAM) user synchronization. Valid values:
+        # - User: The Resource Access Management (RAM) user synchronization is a CloudSSO user.
+        # - Group: The Resource Access Management (RAM) user synchronization is a CloudSSO group.
         self.principal_type = principal_type
-        # The status of the RAM user provisioning. Valid values:
-        # 
-        # - Enabled
-        # 
-        # - Disabled
+        # The status of the Resource Access Management (RAM) user synchronization. Valid values:
+        # - Enabled: The Resource Access Management (RAM) user synchronization is enabled.
+        # - Disabled: The Resource Access Management (RAM) user synchronization is disabled.
         self.status = status
-        # The ID of the object for which you create the RAM user provisioning. The value is fixed as the ID of the member in the resource directory.
+        # The ID of the destination for the Resource Access Management (RAM) user synchronization. Currently, the value is the ID of the account in a resource directory.
         self.target_id = target_id
-        # The name of the object for which you create the RAM user provisioning. The value is fixed as the name of the member in the resource directory.
+        # The name of the destination for the Resource Access Management (RAM) user synchronization. Currently, the value is the name of the account in a resource directory.
         self.target_name = target_name
-        # The path of the resource directory in which you create the RAM user provisioning for the member.
+        # The path of the destination account in a resource directory for the Resource Access Management (RAM) user synchronization.
         self.target_path = target_path
-        # The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
+        # The type of the destination for the Resource Access Management (RAM) user synchronization. Currently, the only valid value is `RD-Account`.
         self.target_type = target_type
-        # The modification time. The time is displayed in UTC.
+        # The update time. The time is displayed in UTC.
         self.update_time = update_time
-        # The ID of the RAM user provisioning.
+        # The ID of the Resource Access Management (RAM) user synchronization.
         self.user_provisioning_id = user_provisioning_id
 
     def validate(self):

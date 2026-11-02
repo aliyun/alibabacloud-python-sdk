@@ -17,23 +17,22 @@ class ListTasksResponseBody(DaraModel):
         tasks: List[main_models.ListTasksResponseBodyTasks] = None,
         total_counts: int = None,
     ):
-        # Indicates whether the queried entries are truncated. Valid values:
+        # Indicates whether the returned results are truncated. Valid values:
         # 
-        # - true
-        # 
-        # - false
+        # - true: The returned results are truncated.
+        # - false: The returned results are not truncated.
         self.is_truncated = is_truncated
-        # The maximum number of entries returned per page.
+        # The maximum number of entries returned on each page.
         self.max_results = max_results
-        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+        # The token used to return the next page of the query results.
         # 
-        # > This parameter is returned only when the value of `IsTruncated` is `true`.
+        # > This parameter is returned only if IsTruncated is set to true.
         self.next_token = next_token
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The tasks.
+        # The list of tasks.
         self.tasks = tasks
-        # The total number of entries returned.
+        # The total number of entries that meet the conditional request parameter.
         self.total_counts = total_counts
 
     def validate(self):
@@ -119,12 +118,13 @@ class ListTasksResponseBodyTasks(DaraModel):
         self.access_configuration_id = access_configuration_id
         # The name of the access configuration.
         self.access_configuration_name = access_configuration_name
-        # The end time of the task.
+        # The end time of the task. The time is displayed in UTC and follows the RFC 3339 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.end_time = end_time
-        # The cause of the task failure.
+        # The reason why the task failed.
         # 
-        # > This parameter is returned only when the value of `Status` is `Failed`.
+        # > This parameter is returned only if Status is set to Failed.
         self.failure_reason = failure_reason
+        # The ID of the Alibaba Cloud account to which the authorization target belongs.
         self.origin_target_id = origin_target_id
         # The ID of the CloudSSO identity.
         self.principal_id = principal_id
@@ -132,43 +132,39 @@ class ListTasksResponseBodyTasks(DaraModel):
         self.principal_name = principal_name
         # The type of the CloudSSO identity. Valid values:
         # 
-        # - User
-        # 
-        # - Group
+        # - User: The CloudSSO user.
+        # - Group: The CloudSSO group.
         self.principal_type = principal_type
-        # The start time of the task.
+        # The start time of the task. The time is displayed in UTC and follows the RFC 3339 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.start_time = start_time
-        # The task status. Valid values:
+        # The status of the task. Valid values:
         # 
         # - InProgress: The task is running.
-        # 
-        # - Success: The task is successful.
-        # 
+        # - Success: The task succeeded.
         # - Failed: The task failed.
         self.status = status
-        # The ID of the task object.
+        # The ID of the task target.
         self.target_id = target_id
-        # The name of the task object.
+        # The name of the task target.
         self.target_name = target_name
-        # The path ID of the task object in the resource directory.
+        # The path ID of the task target in the resource directory.
         self.target_path = target_path
-        # The path name of the task object in the resource directory.
+        # The path name of the task target in the resource directory.
         self.target_path_name = target_path_name
-        # The type of the task object.
+        # The type of the task target.
         # 
-        # The value is fixed as RD-Account, which indicates the accounts in the resource directory.
+        # Valid values:
+        # 
+        # - RD-Account: The task target is an account in a resource directory.
         self.target_type = target_type
-        # The ID of the job.
+        # The ID of the task.
         self.task_id = task_id
-        # The task type. Valid values:
+        # The type of the node. Valid values:
         # 
-        # - ProvisionAccessConfiguration: An access configuration is provisioned.
-        # 
-        # - DeprovisionAccessConfiguration: An access configuration is de-provisioned.
-        # 
-        # - CreateAccessAssignment: Access permissions on an account in the resource directory are assigned.
-        # 
-        # - DeleteAccessAssignment: Access permissions on an account in the resource directory are removed.
+        # - ProvisionAccessConfiguration: Access configuration deployment.
+        # - DeprovisionAccessConfiguration: Removes access configuration provisioning.
+        # - CreateAccessAssignment: Grants authorization to an account in a resource directory.
+        # - DeleteAccessAssignment: Removes authorization from an account in a resource directory.
         self.task_type = task_type
 
     def validate(self):

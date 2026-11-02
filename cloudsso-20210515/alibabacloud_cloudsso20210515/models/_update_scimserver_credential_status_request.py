@@ -13,13 +13,12 @@ class UpdateSCIMServerCredentialStatusRequest(DaraModel):
     ):
         # The ID of the SCIM credential.
         self.credential_id = credential_id
-        # The ID of the directory.
+        # The directory ID.
         self.directory_id = directory_id
-        # The new status of the SCIM credential. Valid values:
+        # The status of the SCIM credential. Valid values:
         # 
-        # - Enabled: The SCIM credential is enabled.
-        # 
-        # - Disabled: The SCIM credential is disabled.
+        # - Enabled: Enabled.
+        # - Disabled: Disabled.
         self.new_status = new_status
 
     def validate(self):

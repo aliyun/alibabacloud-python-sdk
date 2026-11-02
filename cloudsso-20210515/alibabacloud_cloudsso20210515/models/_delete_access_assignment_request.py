@@ -16,32 +16,31 @@ class DeleteAccessAssignmentRequest(DaraModel):
         target_id: str = None,
         target_type: str = None,
     ):
-        # The ID of the access configuration.
+        # The access configuration ID.
         self.access_configuration_id = access_configuration_id
-        # Specifies whether to de-provision the access configuration when you remove the access permissions from the CloudSSO identity. The access configuration is used to assign the access permissions, and the identity is the only one that uses the access configuration and is associated with the account. Valid values:
+        # Specifies whether to remove the access configuration deployment when you remove the last authorization that uses the access configuration on an account in a resource directory. Valid values:
         # 
-        # - DeprovisionForLastAccessAssignmentOnAccount: de-provisions the access configuration.
-        # 
-        # - None: does not de-provision the access configuration. This is the default value.
+        # - DeprovisionForLastAccessAssignmentOnAccount: Removes the access configuration deployment.
+        # - None: Does not remove the access configuration deployment. This is the default value.
         self.deprovision_strategy = deprovision_strategy
-        # The ID of the directory.
+        # The directory ID.
         self.directory_id = directory_id
+        # The Alibaba Cloud account ID of the authorization target.
         self.origin_target_id = origin_target_id
-        # The ID of the CloudSSO identity.
+        # The CloudSSO identity ID. The value varies based on the principal type:
         # 
-        # - If you set `PrincipalType` to `User`, set `PrincipalId` to the ID of the CloudSSO user.
-        # 
-        # - If you set `PrincipalType` to `Group`, set `PrincipalId` to the ID of the CloudSSO group.
+        # - If `PrincipalType` is `User`, `PrincipalId` is the CloudSSO user ID.
+        # - If `PrincipalType` is `Group`, `PrincipalId` is the CloudSSO group ID.
         self.principal_id = principal_id
-        # The type of the CloudSSO identity. Valid values:
+        # The CloudSSO identity type. Valid values:
         # 
-        # - User
-        # 
-        # - Group
+        # - User: user
+        # - Group: group
         self.principal_type = principal_type
-        # The ID of the task object.
+        # The target ID of the task.
         self.target_id = target_id
-        # The type of the task object. Set the value to RD-Account, which specifies the accounts in the resource directory.
+        # The target type of the task. Valid values:
+        # - RD-Account: The task target is an account in a resource directory.
         self.target_type = target_type
 
     def validate(self):
