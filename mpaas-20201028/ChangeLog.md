@@ -1,3 +1,20 @@
+2026-11-02 Version: 3.5.0
+- Support API CreateGatewayApi.
+- Support API CreateGatewayApiGroup.
+- Support API DeleteGatewayApi.
+- Support API DeleteGatewayApiGroup.
+- Support API ExportGatewayApis.
+- Support API GetGatewayApi.
+- Support API GetGatewayApiGroup.
+- Support API ImportGatewayApis.
+- Support API ListGatewayApiGroups.
+- Support API ListGatewayApis.
+- Support API QueryMiniGameQualificationByApp.
+- Support API UpdateGatewayApi.
+- Support API UpdateGatewayApiGroup.
+- Update API QueryMiniGameInfoByApp: add response parameters Body.Content.$.UserProfileData.
+
+
 2026-07-28 Version: 3.4.1
 - Update API CreateMdsCubeResource: add request parameters HarmonyMaxVersion.
 - Update API CreateMdsCubeResource: add request parameters HarmonyMinVersion.

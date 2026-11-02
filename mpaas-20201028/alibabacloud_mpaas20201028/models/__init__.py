@@ -26,6 +26,14 @@ from ._check_user_auth_to_mscene_response import CheckUserAuthToMsceneResponse
 from ._copy_mcdp_group_request import CopyMcdpGroupRequest
 from ._copy_mcdp_group_response_body import CopyMcdpGroupResponseBody
 from ._copy_mcdp_group_response import CopyMcdpGroupResponse
+from ._create_gateway_api_request import CreateGatewayApiRequest
+from ._create_gateway_api_shrink_request import CreateGatewayApiShrinkRequest
+from ._create_gateway_api_response_body import CreateGatewayApiResponseBody
+from ._create_gateway_api_response import CreateGatewayApiResponse
+from ._create_gateway_api_group_request import CreateGatewayApiGroupRequest
+from ._create_gateway_api_group_shrink_request import CreateGatewayApiGroupShrinkRequest
+from ._create_gateway_api_group_response_body import CreateGatewayApiGroupResponseBody
+from ._create_gateway_api_group_response import CreateGatewayApiGroupResponse
 from ._create_link_request import CreateLinkRequest
 from ._create_link_response_body import CreateLinkResponseBody
 from ._create_link_response import CreateLinkResponse
@@ -105,6 +113,12 @@ from ._create_template_response import CreateTemplateResponse
 from ._delete_cubecard_whitelist_content_request import DeleteCubecardWhitelistContentRequest
 from ._delete_cubecard_whitelist_content_response_body import DeleteCubecardWhitelistContentResponseBody
 from ._delete_cubecard_whitelist_content_response import DeleteCubecardWhitelistContentResponse
+from ._delete_gateway_api_request import DeleteGatewayApiRequest
+from ._delete_gateway_api_response_body import DeleteGatewayApiResponseBody
+from ._delete_gateway_api_response import DeleteGatewayApiResponse
+from ._delete_gateway_api_group_request import DeleteGatewayApiGroupRequest
+from ._delete_gateway_api_group_response_body import DeleteGatewayApiGroupResponseBody
+from ._delete_gateway_api_group_response import DeleteGatewayApiGroupResponse
 from ._delete_mcdp_aim_request import DeleteMcdpAimRequest
 from ._delete_mcdp_aim_response_body import DeleteMcdpAimResponseBody
 from ._delete_mcdp_aim_response import DeleteMcdpAimResponse
@@ -141,6 +155,10 @@ from ._delete_template_response import DeleteTemplateResponse
 from ._exist_mcube_rsa_key_request import ExistMcubeRsaKeyRequest
 from ._exist_mcube_rsa_key_response_body import ExistMcubeRsaKeyResponseBody
 from ._exist_mcube_rsa_key_response import ExistMcubeRsaKeyResponse
+from ._export_gateway_apis_request import ExportGatewayApisRequest
+from ._export_gateway_apis_shrink_request import ExportGatewayApisShrinkRequest
+from ._export_gateway_apis_response_body import ExportGatewayApisResponseBody
+from ._export_gateway_apis_response import ExportGatewayApisResponse
 from ._export_mapp_center_app_config_request import ExportMappCenterAppConfigRequest
 from ._export_mapp_center_app_config_response_body import ExportMappCenterAppConfigResponseBody
 from ._export_mapp_center_app_config_response import ExportMappCenterAppConfigResponse
@@ -153,6 +171,12 @@ from ._get_file_token_for_upload_to_msa_response import GetFileTokenForUploadToM
 from ._get_game_review_by_status_request import GetGameReviewByStatusRequest
 from ._get_game_review_by_status_response_body import GetGameReviewByStatusResponseBody
 from ._get_game_review_by_status_response import GetGameReviewByStatusResponse
+from ._get_gateway_api_request import GetGatewayApiRequest
+from ._get_gateway_api_response_body import GetGatewayApiResponseBody
+from ._get_gateway_api_response import GetGatewayApiResponse
+from ._get_gateway_api_group_request import GetGatewayApiGroupRequest
+from ._get_gateway_api_group_response_body import GetGatewayApiGroupResponseBody
+from ._get_gateway_api_group_response import GetGatewayApiGroupResponse
 from ._get_log_url_in_msa_request import GetLogUrlInMsaRequest
 from ._get_log_url_in_msa_response_body import GetLogUrlInMsaResponseBody
 from ._get_log_url_in_msa_response import GetLogUrlInMsaResponse
@@ -186,12 +210,21 @@ from ._get_user_app_enhance_process_in_msa_response import GetUserAppEnhanceProc
 from ._get_user_app_upload_process_in_msa_request import GetUserAppUploadProcessInMsaRequest
 from ._get_user_app_upload_process_in_msa_response_body import GetUserAppUploadProcessInMsaResponseBody
 from ._get_user_app_upload_process_in_msa_response import GetUserAppUploadProcessInMsaResponse
+from ._import_gateway_apis_request import ImportGatewayApisRequest
+from ._import_gateway_apis_response_body import ImportGatewayApisResponseBody
+from ._import_gateway_apis_response import ImportGatewayApisResponse
 from ._list_analysis_core_index_request import ListAnalysisCoreIndexRequest
 from ._list_analysis_core_index_response_body import ListAnalysisCoreIndexResponseBody
 from ._list_analysis_core_index_response import ListAnalysisCoreIndexResponse
 from ._list_cubecard_apps_request import ListCubecardAppsRequest
 from ._list_cubecard_apps_response_body import ListCubecardAppsResponseBody
 from ._list_cubecard_apps_response import ListCubecardAppsResponse
+from ._list_gateway_api_groups_request import ListGatewayApiGroupsRequest
+from ._list_gateway_api_groups_response_body import ListGatewayApiGroupsResponseBody
+from ._list_gateway_api_groups_response import ListGatewayApiGroupsResponse
+from ._list_gateway_apis_request import ListGatewayApisRequest
+from ._list_gateway_apis_response_body import ListGatewayApisResponseBody
+from ._list_gateway_apis_response import ListGatewayApisResponse
 from ._list_mapp_center_apps_response_body import ListMappCenterAppsResponseBody
 from ._list_mapp_center_apps_response import ListMappCenterAppsResponse
 from ._list_mapp_center_workspaces_response_body import ListMappCenterWorkspacesResponseBody
@@ -323,6 +356,9 @@ from ._query_mgs_testreqbodyautogen_response import QueryMgsTestreqbodyautogenRe
 from ._query_mini_game_info_by_app_request import QueryMiniGameInfoByAppRequest
 from ._query_mini_game_info_by_app_response_body import QueryMiniGameInfoByAppResponseBody
 from ._query_mini_game_info_by_app_response import QueryMiniGameInfoByAppResponse
+from ._query_mini_game_qualification_by_app_request import QueryMiniGameQualificationByAppRequest
+from ._query_mini_game_qualification_by_app_response_body import QueryMiniGameQualificationByAppResponseBody
+from ._query_mini_game_qualification_by_app_response import QueryMiniGameQualificationByAppResponse
 from ._query_mps_scheduler_list_request import QueryMpsSchedulerListRequest
 from ._query_mps_scheduler_list_response_body import QueryMpsSchedulerListResponseBody
 from ._query_mps_scheduler_list_response import QueryMpsSchedulerListResponse
@@ -365,6 +401,14 @@ from ._save_order_relation_info_to_msence_response import SaveOrderRelationInfoT
 from ._start_user_app_async_enhance_in_msa_request import StartUserAppAsyncEnhanceInMsaRequest
 from ._start_user_app_async_enhance_in_msa_response_body import StartUserAppAsyncEnhanceInMsaResponseBody
 from ._start_user_app_async_enhance_in_msa_response import StartUserAppAsyncEnhanceInMsaResponse
+from ._update_gateway_api_request import UpdateGatewayApiRequest
+from ._update_gateway_api_shrink_request import UpdateGatewayApiShrinkRequest
+from ._update_gateway_api_response_body import UpdateGatewayApiResponseBody
+from ._update_gateway_api_response import UpdateGatewayApiResponse
+from ._update_gateway_api_group_request import UpdateGatewayApiGroupRequest
+from ._update_gateway_api_group_shrink_request import UpdateGatewayApiGroupShrinkRequest
+from ._update_gateway_api_group_response_body import UpdateGatewayApiGroupResponseBody
+from ._update_gateway_api_group_response import UpdateGatewayApiGroupResponse
 from ._update_link_request import UpdateLinkRequest
 from ._update_link_response_body import UpdateLinkResponseBody
 from ._update_link_response import UpdateLinkResponse
@@ -404,6 +448,22 @@ from ._change_mds_cube_task_status_response_body import ChangeMdsCubeTaskStatusR
 from ._change_mds_cube_task_status_response_body import ChangeMdsCubeTaskStatusResponseBodyResultContent
 from ._check_user_auth_to_mscene_response_body import CheckUserAuthToMsceneResponseBodyMpaasUserAuthCheckResponse
 from ._copy_mcdp_group_response_body import CopyMcdpGroupResponseBodyResultContent
+from ._create_gateway_api_request import CreateGatewayApiRequestCacheRule
+from ._create_gateway_api_request import CreateGatewayApiRequestDefaultLimitRule
+from ._create_gateway_api_request import CreateGatewayApiRequestHeaderRules
+from ._create_gateway_api_request import CreateGatewayApiRequestLimitRule
+from ._create_gateway_api_request import CreateGatewayApiRequestMigrateRule
+from ._create_gateway_api_request import CreateGatewayApiRequestMockRule
+from ._create_gateway_api_request import CreateGatewayApiRequestRequestParams
+from ._create_gateway_api_response_body import CreateGatewayApiResponseBodyApiCacheRule
+from ._create_gateway_api_response_body import CreateGatewayApiResponseBodyApiDefaultLimitRule
+from ._create_gateway_api_response_body import CreateGatewayApiResponseBodyApiHeaderRules
+from ._create_gateway_api_response_body import CreateGatewayApiResponseBodyApiLimitRule
+from ._create_gateway_api_response_body import CreateGatewayApiResponseBodyApiMigrateRule
+from ._create_gateway_api_response_body import CreateGatewayApiResponseBodyApiMockRule
+from ._create_gateway_api_response_body import CreateGatewayApiResponseBodyApiRequestParams
+from ._create_gateway_api_response_body import CreateGatewayApiResponseBodyApi
+from ._create_gateway_api_group_response_body import CreateGatewayApiGroupResponseBodyApiGroup
 from ._create_link_response_body import CreateLinkResponseBodyResultContent
 from ._create_mcdp_group_response_body import CreateMcdpGroupResponseBodyResultContent
 from ._create_mcdp_material_response_body import CreateMcdpMaterialResponseBodyResultContent
@@ -453,6 +513,15 @@ from ._get_game_review_by_status_response_body import GetGameReviewByStatusRespo
 from ._get_game_review_by_status_response_body import GetGameReviewByStatusResponseBodyResultContentContentTargetDetail
 from ._get_game_review_by_status_response_body import GetGameReviewByStatusResponseBodyResultContentContent
 from ._get_game_review_by_status_response_body import GetGameReviewByStatusResponseBodyResultContent
+from ._get_gateway_api_response_body import GetGatewayApiResponseBodyApiCacheRule
+from ._get_gateway_api_response_body import GetGatewayApiResponseBodyApiDefaultLimitRule
+from ._get_gateway_api_response_body import GetGatewayApiResponseBodyApiHeaderRules
+from ._get_gateway_api_response_body import GetGatewayApiResponseBodyApiLimitRule
+from ._get_gateway_api_response_body import GetGatewayApiResponseBodyApiMigrateRule
+from ._get_gateway_api_response_body import GetGatewayApiResponseBodyApiMockRule
+from ._get_gateway_api_response_body import GetGatewayApiResponseBodyApiRequestParams
+from ._get_gateway_api_response_body import GetGatewayApiResponseBodyApi
+from ._get_gateway_api_group_response_body import GetGatewayApiGroupResponseBodyApiGroup
 from ._get_log_url_in_msa_response_body import GetLogUrlInMsaResponseBodyResultContent
 from ._get_mcube_file_token_response_body import GetMcubeFileTokenResponseBodyGetFileTokenResultFileToken
 from ._get_mcube_file_token_response_body import GetMcubeFileTokenResponseBodyGetFileTokenResult
@@ -491,6 +560,15 @@ from ._list_analysis_core_index_response_body import ListAnalysisCoreIndexRespon
 from ._list_cubecard_apps_response_body import ListCubecardAppsResponseBodyResultContentDataContent
 from ._list_cubecard_apps_response_body import ListCubecardAppsResponseBodyResultContentData
 from ._list_cubecard_apps_response_body import ListCubecardAppsResponseBodyResultContent
+from ._list_gateway_api_groups_response_body import ListGatewayApiGroupsResponseBodyApiGroups
+from ._list_gateway_apis_response_body import ListGatewayApisResponseBodyApisCacheRule
+from ._list_gateway_apis_response_body import ListGatewayApisResponseBodyApisDefaultLimitRule
+from ._list_gateway_apis_response_body import ListGatewayApisResponseBodyApisHeaderRules
+from ._list_gateway_apis_response_body import ListGatewayApisResponseBodyApisLimitRule
+from ._list_gateway_apis_response_body import ListGatewayApisResponseBodyApisMigrateRule
+from ._list_gateway_apis_response_body import ListGatewayApisResponseBodyApisMockRule
+from ._list_gateway_apis_response_body import ListGatewayApisResponseBodyApisRequestParams
+from ._list_gateway_apis_response_body import ListGatewayApisResponseBodyApis
 from ._list_mapp_center_apps_response_body import ListMappCenterAppsResponseBodyListMappCenterAppResultMappCenterAppListAndroidConfig
 from ._list_mapp_center_apps_response_body import ListMappCenterAppsResponseBodyListMappCenterAppResultMappCenterAppListIosConfig
 from ._list_mapp_center_apps_response_body import ListMappCenterAppsResponseBodyListMappCenterAppResultMappCenterAppList
@@ -603,7 +681,11 @@ from ._query_mgs_apirest_response_body import QueryMgsApirestResponseBodyResultC
 from ._query_mgs_apirest_response_body import QueryMgsApirestResponseBodyResultContentValueRequestParams
 from ._query_mgs_apirest_response_body import QueryMgsApirestResponseBodyResultContentValue
 from ._query_mgs_apirest_response_body import QueryMgsApirestResponseBodyResultContent
+from ._query_mini_game_info_by_app_response_body import QueryMiniGameInfoByAppResponseBodyContentUserProfileData
 from ._query_mini_game_info_by_app_response_body import QueryMiniGameInfoByAppResponseBodyContent
+from ._query_mini_game_qualification_by_app_response_body import QueryMiniGameQualificationByAppResponseBodyContentCopyrightAuthorizationFiles
+from ._query_mini_game_qualification_by_app_response_body import QueryMiniGameQualificationByAppResponseBodyContentIpAuthorizationFiles
+from ._query_mini_game_qualification_by_app_response_body import QueryMiniGameQualificationByAppResponseBodyContent
 from ._query_mps_scheduler_list_response_body import QueryMpsSchedulerListResponseBodyResultContentDataList
 from ._query_mps_scheduler_list_response_body import QueryMpsSchedulerListResponseBodyResultContentData
 from ._query_mps_scheduler_list_response_body import QueryMpsSchedulerListResponseBodyResultContent
@@ -627,6 +709,14 @@ from ._save_order_relation_info_to_msence_response_body import SaveOrderRelation
 from ._start_user_app_async_enhance_in_msa_response_body import StartUserAppAsyncEnhanceInMsaResponseBodyResultContentDataEnhanceMapping
 from ._start_user_app_async_enhance_in_msa_response_body import StartUserAppAsyncEnhanceInMsaResponseBodyResultContentData
 from ._start_user_app_async_enhance_in_msa_response_body import StartUserAppAsyncEnhanceInMsaResponseBodyResultContent
+from ._update_gateway_api_request import UpdateGatewayApiRequestCacheRule
+from ._update_gateway_api_request import UpdateGatewayApiRequestDefaultLimitRule
+from ._update_gateway_api_request import UpdateGatewayApiRequestHeaderRules
+from ._update_gateway_api_request import UpdateGatewayApiRequestLimitRule
+from ._update_gateway_api_request import UpdateGatewayApiRequestMigrateRule
+from ._update_gateway_api_request import UpdateGatewayApiRequestMockRule
+from ._update_gateway_api_request import UpdateGatewayApiRequestRequestParams
+from ._update_gateway_api_group_response_body import UpdateGatewayApiGroupResponseBodyApiGroup
 from ._update_link_response_body import UpdateLinkResponseBodyResultContent
 from ._update_mcube_hotpatch_task_status_response_body import UpdateMcubeHotpatchTaskStatusResponseBodyUpdateHotpatchTaskStatusResult
 from ._update_mcube_whitelist_response_body import UpdateMcubeWhitelistResponseBodyAddWhitelistResultAddWhitelistInfo
@@ -670,6 +760,14 @@ __all__ = [
     CopyMcdpGroupRequest,
     CopyMcdpGroupResponseBody,
     CopyMcdpGroupResponse,
+    CreateGatewayApiRequest,
+    CreateGatewayApiShrinkRequest,
+    CreateGatewayApiResponseBody,
+    CreateGatewayApiResponse,
+    CreateGatewayApiGroupRequest,
+    CreateGatewayApiGroupShrinkRequest,
+    CreateGatewayApiGroupResponseBody,
+    CreateGatewayApiGroupResponse,
     CreateLinkRequest,
     CreateLinkResponseBody,
     CreateLinkResponse,
@@ -749,6 +847,12 @@ __all__ = [
     DeleteCubecardWhitelistContentRequest,
     DeleteCubecardWhitelistContentResponseBody,
     DeleteCubecardWhitelistContentResponse,
+    DeleteGatewayApiRequest,
+    DeleteGatewayApiResponseBody,
+    DeleteGatewayApiResponse,
+    DeleteGatewayApiGroupRequest,
+    DeleteGatewayApiGroupResponseBody,
+    DeleteGatewayApiGroupResponse,
     DeleteMcdpAimRequest,
     DeleteMcdpAimResponseBody,
     DeleteMcdpAimResponse,
@@ -785,6 +889,10 @@ __all__ = [
     ExistMcubeRsaKeyRequest,
     ExistMcubeRsaKeyResponseBody,
     ExistMcubeRsaKeyResponse,
+    ExportGatewayApisRequest,
+    ExportGatewayApisShrinkRequest,
+    ExportGatewayApisResponseBody,
+    ExportGatewayApisResponse,
     ExportMappCenterAppConfigRequest,
     ExportMappCenterAppConfigResponseBody,
     ExportMappCenterAppConfigResponse,
@@ -797,6 +905,12 @@ __all__ = [
     GetGameReviewByStatusRequest,
     GetGameReviewByStatusResponseBody,
     GetGameReviewByStatusResponse,
+    GetGatewayApiRequest,
+    GetGatewayApiResponseBody,
+    GetGatewayApiResponse,
+    GetGatewayApiGroupRequest,
+    GetGatewayApiGroupResponseBody,
+    GetGatewayApiGroupResponse,
     GetLogUrlInMsaRequest,
     GetLogUrlInMsaResponseBody,
     GetLogUrlInMsaResponse,
@@ -830,12 +944,21 @@ __all__ = [
     GetUserAppUploadProcessInMsaRequest,
     GetUserAppUploadProcessInMsaResponseBody,
     GetUserAppUploadProcessInMsaResponse,
+    ImportGatewayApisRequest,
+    ImportGatewayApisResponseBody,
+    ImportGatewayApisResponse,
     ListAnalysisCoreIndexRequest,
     ListAnalysisCoreIndexResponseBody,
     ListAnalysisCoreIndexResponse,
     ListCubecardAppsRequest,
     ListCubecardAppsResponseBody,
     ListCubecardAppsResponse,
+    ListGatewayApiGroupsRequest,
+    ListGatewayApiGroupsResponseBody,
+    ListGatewayApiGroupsResponse,
+    ListGatewayApisRequest,
+    ListGatewayApisResponseBody,
+    ListGatewayApisResponse,
     ListMappCenterAppsResponseBody,
     ListMappCenterAppsResponse,
     ListMappCenterWorkspacesResponseBody,
@@ -967,6 +1090,9 @@ __all__ = [
     QueryMiniGameInfoByAppRequest,
     QueryMiniGameInfoByAppResponseBody,
     QueryMiniGameInfoByAppResponse,
+    QueryMiniGameQualificationByAppRequest,
+    QueryMiniGameQualificationByAppResponseBody,
+    QueryMiniGameQualificationByAppResponse,
     QueryMpsSchedulerListRequest,
     QueryMpsSchedulerListResponseBody,
     QueryMpsSchedulerListResponse,
@@ -1009,6 +1135,14 @@ __all__ = [
     StartUserAppAsyncEnhanceInMsaRequest,
     StartUserAppAsyncEnhanceInMsaResponseBody,
     StartUserAppAsyncEnhanceInMsaResponse,
+    UpdateGatewayApiRequest,
+    UpdateGatewayApiShrinkRequest,
+    UpdateGatewayApiResponseBody,
+    UpdateGatewayApiResponse,
+    UpdateGatewayApiGroupRequest,
+    UpdateGatewayApiGroupShrinkRequest,
+    UpdateGatewayApiGroupResponseBody,
+    UpdateGatewayApiGroupResponse,
     UpdateLinkRequest,
     UpdateLinkResponseBody,
     UpdateLinkResponse,
@@ -1048,6 +1182,22 @@ __all__ = [
     ChangeMdsCubeTaskStatusResponseBodyResultContent,
     CheckUserAuthToMsceneResponseBodyMpaasUserAuthCheckResponse,
     CopyMcdpGroupResponseBodyResultContent,
+    CreateGatewayApiRequestCacheRule,
+    CreateGatewayApiRequestDefaultLimitRule,
+    CreateGatewayApiRequestHeaderRules,
+    CreateGatewayApiRequestLimitRule,
+    CreateGatewayApiRequestMigrateRule,
+    CreateGatewayApiRequestMockRule,
+    CreateGatewayApiRequestRequestParams,
+    CreateGatewayApiResponseBodyApiCacheRule,
+    CreateGatewayApiResponseBodyApiDefaultLimitRule,
+    CreateGatewayApiResponseBodyApiHeaderRules,
+    CreateGatewayApiResponseBodyApiLimitRule,
+    CreateGatewayApiResponseBodyApiMigrateRule,
+    CreateGatewayApiResponseBodyApiMockRule,
+    CreateGatewayApiResponseBodyApiRequestParams,
+    CreateGatewayApiResponseBodyApi,
+    CreateGatewayApiGroupResponseBodyApiGroup,
     CreateLinkResponseBodyResultContent,
     CreateMcdpGroupResponseBodyResultContent,
     CreateMcdpMaterialResponseBodyResultContent,
@@ -1097,6 +1247,15 @@ __all__ = [
     GetGameReviewByStatusResponseBodyResultContentContentTargetDetail,
     GetGameReviewByStatusResponseBodyResultContentContent,
     GetGameReviewByStatusResponseBodyResultContent,
+    GetGatewayApiResponseBodyApiCacheRule,
+    GetGatewayApiResponseBodyApiDefaultLimitRule,
+    GetGatewayApiResponseBodyApiHeaderRules,
+    GetGatewayApiResponseBodyApiLimitRule,
+    GetGatewayApiResponseBodyApiMigrateRule,
+    GetGatewayApiResponseBodyApiMockRule,
+    GetGatewayApiResponseBodyApiRequestParams,
+    GetGatewayApiResponseBodyApi,
+    GetGatewayApiGroupResponseBodyApiGroup,
     GetLogUrlInMsaResponseBodyResultContent,
     GetMcubeFileTokenResponseBodyGetFileTokenResultFileToken,
     GetMcubeFileTokenResponseBodyGetFileTokenResult,
@@ -1135,6 +1294,15 @@ __all__ = [
     ListCubecardAppsResponseBodyResultContentDataContent,
     ListCubecardAppsResponseBodyResultContentData,
     ListCubecardAppsResponseBodyResultContent,
+    ListGatewayApiGroupsResponseBodyApiGroups,
+    ListGatewayApisResponseBodyApisCacheRule,
+    ListGatewayApisResponseBodyApisDefaultLimitRule,
+    ListGatewayApisResponseBodyApisHeaderRules,
+    ListGatewayApisResponseBodyApisLimitRule,
+    ListGatewayApisResponseBodyApisMigrateRule,
+    ListGatewayApisResponseBodyApisMockRule,
+    ListGatewayApisResponseBodyApisRequestParams,
+    ListGatewayApisResponseBodyApis,
     ListMappCenterAppsResponseBodyListMappCenterAppResultMappCenterAppListAndroidConfig,
     ListMappCenterAppsResponseBodyListMappCenterAppResultMappCenterAppListIosConfig,
     ListMappCenterAppsResponseBodyListMappCenterAppResultMappCenterAppList,
@@ -1247,7 +1415,11 @@ __all__ = [
     QueryMgsApirestResponseBodyResultContentValueRequestParams,
     QueryMgsApirestResponseBodyResultContentValue,
     QueryMgsApirestResponseBodyResultContent,
+    QueryMiniGameInfoByAppResponseBodyContentUserProfileData,
     QueryMiniGameInfoByAppResponseBodyContent,
+    QueryMiniGameQualificationByAppResponseBodyContentCopyrightAuthorizationFiles,
+    QueryMiniGameQualificationByAppResponseBodyContentIpAuthorizationFiles,
+    QueryMiniGameQualificationByAppResponseBodyContent,
     QueryMpsSchedulerListResponseBodyResultContentDataList,
     QueryMpsSchedulerListResponseBodyResultContentData,
     QueryMpsSchedulerListResponseBodyResultContent,
@@ -1271,6 +1443,14 @@ __all__ = [
     StartUserAppAsyncEnhanceInMsaResponseBodyResultContentDataEnhanceMapping,
     StartUserAppAsyncEnhanceInMsaResponseBodyResultContentData,
     StartUserAppAsyncEnhanceInMsaResponseBodyResultContent,
+    UpdateGatewayApiRequestCacheRule,
+    UpdateGatewayApiRequestDefaultLimitRule,
+    UpdateGatewayApiRequestHeaderRules,
+    UpdateGatewayApiRequestLimitRule,
+    UpdateGatewayApiRequestMigrateRule,
+    UpdateGatewayApiRequestMockRule,
+    UpdateGatewayApiRequestRequestParams,
+    UpdateGatewayApiGroupResponseBodyApiGroup,
     UpdateLinkResponseBodyResultContent,
     UpdateMcubeHotpatchTaskStatusResponseBodyUpdateHotpatchTaskStatusResult,
     UpdateMcubeWhitelistResponseBodyAddWhitelistResultAddWhitelistInfo,

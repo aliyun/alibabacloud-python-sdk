@@ -804,6 +804,374 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.copy_mcdp_group_with_options_async(request, runtime)
 
+    def create_gateway_api_with_options(
+        self,
+        tmp_req: main_models.CreateGatewayApiRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGatewayApiResponse:
+        tmp_req.validate()
+        request = main_models.CreateGatewayApiShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.cache_rule):
+            request.cache_rule_shrink = Utils.array_to_string_with_specified_style(tmp_req.cache_rule, 'CacheRule', 'json')
+        if not DaraCore.is_null(tmp_req.default_limit_rule):
+            request.default_limit_rule_shrink = Utils.array_to_string_with_specified_style(tmp_req.default_limit_rule, 'DefaultLimitRule', 'json')
+        if not DaraCore.is_null(tmp_req.header_rules):
+            request.header_rules_shrink = Utils.array_to_string_with_specified_style(tmp_req.header_rules, 'HeaderRules', 'json')
+        if not DaraCore.is_null(tmp_req.limit_rule):
+            request.limit_rule_shrink = Utils.array_to_string_with_specified_style(tmp_req.limit_rule, 'LimitRule', 'json')
+        if not DaraCore.is_null(tmp_req.migrate_rule):
+            request.migrate_rule_shrink = Utils.array_to_string_with_specified_style(tmp_req.migrate_rule, 'MigrateRule', 'json')
+        if not DaraCore.is_null(tmp_req.mock_rule):
+            request.mock_rule_shrink = Utils.array_to_string_with_specified_style(tmp_req.mock_rule, 'MockRule', 'json')
+        if not DaraCore.is_null(tmp_req.request_params):
+            request.request_params_shrink = Utils.array_to_string_with_specified_style(tmp_req.request_params, 'RequestParams', 'json')
+        if not DaraCore.is_null(tmp_req.rpc_parameter_types):
+            request.rpc_parameter_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.rpc_parameter_types, 'RpcParameterTypes', 'json')
+        body = {}
+        if not DaraCore.is_null(request.api_name):
+            body['ApiName'] = request.api_name
+        if not DaraCore.is_null(request.api_status):
+            body['ApiStatus'] = request.api_status
+        if not DaraCore.is_null(request.api_type):
+            body['ApiType'] = request.api_type
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.auth_rule_name):
+            body['AuthRuleName'] = request.auth_rule_name
+        if not DaraCore.is_null(request.cache_rule_shrink):
+            body['CacheRule'] = request.cache_rule_shrink
+        if not DaraCore.is_null(request.charset):
+            body['Charset'] = request.charset
+        if not DaraCore.is_null(request.content_type):
+            body['ContentType'] = request.content_type
+        if not DaraCore.is_null(request.default_limit_rule_shrink):
+            body['DefaultLimitRule'] = request.default_limit_rule_shrink
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.group_id):
+            body['GroupId'] = request.group_id
+        if not DaraCore.is_null(request.header_rules_shrink):
+            body['HeaderRules'] = request.header_rules_shrink
+        if not DaraCore.is_null(request.interface_type):
+            body['InterfaceType'] = request.interface_type
+        if not DaraCore.is_null(request.limit_rule_shrink):
+            body['LimitRule'] = request.limit_rule_shrink
+        if not DaraCore.is_null(request.method):
+            body['Method'] = request.method
+        if not DaraCore.is_null(request.method_name):
+            body['MethodName'] = request.method_name
+        if not DaraCore.is_null(request.migrate_rule_shrink):
+            body['MigrateRule'] = request.migrate_rule_shrink
+        if not DaraCore.is_null(request.mock_rule_shrink):
+            body['MockRule'] = request.mock_rule_shrink
+        if not DaraCore.is_null(request.need_encrypt):
+            body['NeedEncrypt'] = request.need_encrypt
+        if not DaraCore.is_null(request.need_jsonp):
+            body['NeedJsonp'] = request.need_jsonp
+        if not DaraCore.is_null(request.need_sign):
+            body['NeedSign'] = request.need_sign
+        if not DaraCore.is_null(request.operation_type):
+            body['OperationType'] = request.operation_type
+        if not DaraCore.is_null(request.path):
+            body['Path'] = request.path
+        if not DaraCore.is_null(request.request_body_model):
+            body['RequestBodyModel'] = request.request_body_model
+        if not DaraCore.is_null(request.request_params_shrink):
+            body['RequestParams'] = request.request_params_shrink
+        if not DaraCore.is_null(request.response_body_model):
+            body['ResponseBodyModel'] = request.response_body_model
+        if not DaraCore.is_null(request.rpc_parameter_types_shrink):
+            body['RpcParameterTypes'] = request.rpc_parameter_types_shrink
+        if not DaraCore.is_null(request.serialization):
+            body['Serialization'] = request.serialization
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.timeout):
+            body['Timeout'] = request.timeout
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGatewayApi',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGatewayApiResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_gateway_api_with_options_async(
+        self,
+        tmp_req: main_models.CreateGatewayApiRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGatewayApiResponse:
+        tmp_req.validate()
+        request = main_models.CreateGatewayApiShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.cache_rule):
+            request.cache_rule_shrink = Utils.array_to_string_with_specified_style(tmp_req.cache_rule, 'CacheRule', 'json')
+        if not DaraCore.is_null(tmp_req.default_limit_rule):
+            request.default_limit_rule_shrink = Utils.array_to_string_with_specified_style(tmp_req.default_limit_rule, 'DefaultLimitRule', 'json')
+        if not DaraCore.is_null(tmp_req.header_rules):
+            request.header_rules_shrink = Utils.array_to_string_with_specified_style(tmp_req.header_rules, 'HeaderRules', 'json')
+        if not DaraCore.is_null(tmp_req.limit_rule):
+            request.limit_rule_shrink = Utils.array_to_string_with_specified_style(tmp_req.limit_rule, 'LimitRule', 'json')
+        if not DaraCore.is_null(tmp_req.migrate_rule):
+            request.migrate_rule_shrink = Utils.array_to_string_with_specified_style(tmp_req.migrate_rule, 'MigrateRule', 'json')
+        if not DaraCore.is_null(tmp_req.mock_rule):
+            request.mock_rule_shrink = Utils.array_to_string_with_specified_style(tmp_req.mock_rule, 'MockRule', 'json')
+        if not DaraCore.is_null(tmp_req.request_params):
+            request.request_params_shrink = Utils.array_to_string_with_specified_style(tmp_req.request_params, 'RequestParams', 'json')
+        if not DaraCore.is_null(tmp_req.rpc_parameter_types):
+            request.rpc_parameter_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.rpc_parameter_types, 'RpcParameterTypes', 'json')
+        body = {}
+        if not DaraCore.is_null(request.api_name):
+            body['ApiName'] = request.api_name
+        if not DaraCore.is_null(request.api_status):
+            body['ApiStatus'] = request.api_status
+        if not DaraCore.is_null(request.api_type):
+            body['ApiType'] = request.api_type
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.auth_rule_name):
+            body['AuthRuleName'] = request.auth_rule_name
+        if not DaraCore.is_null(request.cache_rule_shrink):
+            body['CacheRule'] = request.cache_rule_shrink
+        if not DaraCore.is_null(request.charset):
+            body['Charset'] = request.charset
+        if not DaraCore.is_null(request.content_type):
+            body['ContentType'] = request.content_type
+        if not DaraCore.is_null(request.default_limit_rule_shrink):
+            body['DefaultLimitRule'] = request.default_limit_rule_shrink
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.group_id):
+            body['GroupId'] = request.group_id
+        if not DaraCore.is_null(request.header_rules_shrink):
+            body['HeaderRules'] = request.header_rules_shrink
+        if not DaraCore.is_null(request.interface_type):
+            body['InterfaceType'] = request.interface_type
+        if not DaraCore.is_null(request.limit_rule_shrink):
+            body['LimitRule'] = request.limit_rule_shrink
+        if not DaraCore.is_null(request.method):
+            body['Method'] = request.method
+        if not DaraCore.is_null(request.method_name):
+            body['MethodName'] = request.method_name
+        if not DaraCore.is_null(request.migrate_rule_shrink):
+            body['MigrateRule'] = request.migrate_rule_shrink
+        if not DaraCore.is_null(request.mock_rule_shrink):
+            body['MockRule'] = request.mock_rule_shrink
+        if not DaraCore.is_null(request.need_encrypt):
+            body['NeedEncrypt'] = request.need_encrypt
+        if not DaraCore.is_null(request.need_jsonp):
+            body['NeedJsonp'] = request.need_jsonp
+        if not DaraCore.is_null(request.need_sign):
+            body['NeedSign'] = request.need_sign
+        if not DaraCore.is_null(request.operation_type):
+            body['OperationType'] = request.operation_type
+        if not DaraCore.is_null(request.path):
+            body['Path'] = request.path
+        if not DaraCore.is_null(request.request_body_model):
+            body['RequestBodyModel'] = request.request_body_model
+        if not DaraCore.is_null(request.request_params_shrink):
+            body['RequestParams'] = request.request_params_shrink
+        if not DaraCore.is_null(request.response_body_model):
+            body['ResponseBodyModel'] = request.response_body_model
+        if not DaraCore.is_null(request.rpc_parameter_types_shrink):
+            body['RpcParameterTypes'] = request.rpc_parameter_types_shrink
+        if not DaraCore.is_null(request.serialization):
+            body['Serialization'] = request.serialization
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.timeout):
+            body['Timeout'] = request.timeout
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGatewayApi',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGatewayApiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_gateway_api(
+        self,
+        request: main_models.CreateGatewayApiRequest,
+    ) -> main_models.CreateGatewayApiResponse:
+        runtime = RuntimeOptions()
+        return self.create_gateway_api_with_options(request, runtime)
+
+    async def create_gateway_api_async(
+        self,
+        request: main_models.CreateGatewayApiRequest,
+    ) -> main_models.CreateGatewayApiResponse:
+        runtime = RuntimeOptions()
+        return await self.create_gateway_api_with_options_async(request, runtime)
+
+    def create_gateway_api_group_with_options(
+        self,
+        tmp_req: main_models.CreateGatewayApiGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGatewayApiGroupResponse:
+        tmp_req.validate()
+        request = main_models.CreateGatewayApiGroupShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.centers):
+            request.centers_shrink = Utils.array_to_string_with_specified_style(tmp_req.centers, 'Centers', 'json')
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.centers_shrink):
+            body['Centers'] = request.centers_shrink
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.domain_name):
+            body['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.enable_mtls):
+            body['EnableMTLS'] = request.enable_mtls
+        if not DaraCore.is_null(request.group_name):
+            body['GroupName'] = request.group_name
+        if not DaraCore.is_null(request.host):
+            body['Host'] = request.host
+        if not DaraCore.is_null(request.https_model):
+            body['HttpsModel'] = request.https_model
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.instance_port):
+            body['InstancePort'] = request.instance_port
+        if not DaraCore.is_null(request.region_mode):
+            body['RegionMode'] = request.region_mode
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.timeout):
+            body['Timeout'] = request.timeout
+        if not DaraCore.is_null(request.upstream_type):
+            body['UpstreamType'] = request.upstream_type
+        if not DaraCore.is_null(request.vpc_id):
+            body['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.vpc_model):
+            body['VpcModel'] = request.vpc_model
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGatewayApiGroup',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGatewayApiGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_gateway_api_group_with_options_async(
+        self,
+        tmp_req: main_models.CreateGatewayApiGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGatewayApiGroupResponse:
+        tmp_req.validate()
+        request = main_models.CreateGatewayApiGroupShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.centers):
+            request.centers_shrink = Utils.array_to_string_with_specified_style(tmp_req.centers, 'Centers', 'json')
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.centers_shrink):
+            body['Centers'] = request.centers_shrink
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.domain_name):
+            body['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.enable_mtls):
+            body['EnableMTLS'] = request.enable_mtls
+        if not DaraCore.is_null(request.group_name):
+            body['GroupName'] = request.group_name
+        if not DaraCore.is_null(request.host):
+            body['Host'] = request.host
+        if not DaraCore.is_null(request.https_model):
+            body['HttpsModel'] = request.https_model
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.instance_port):
+            body['InstancePort'] = request.instance_port
+        if not DaraCore.is_null(request.region_mode):
+            body['RegionMode'] = request.region_mode
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.timeout):
+            body['Timeout'] = request.timeout
+        if not DaraCore.is_null(request.upstream_type):
+            body['UpstreamType'] = request.upstream_type
+        if not DaraCore.is_null(request.vpc_id):
+            body['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.vpc_model):
+            body['VpcModel'] = request.vpc_model
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGatewayApiGroup',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGatewayApiGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_gateway_api_group(
+        self,
+        request: main_models.CreateGatewayApiGroupRequest,
+    ) -> main_models.CreateGatewayApiGroupResponse:
+        runtime = RuntimeOptions()
+        return self.create_gateway_api_group_with_options(request, runtime)
+
+    async def create_gateway_api_group_async(
+        self,
+        request: main_models.CreateGatewayApiGroupRequest,
+    ) -> main_models.CreateGatewayApiGroupResponse:
+        runtime = RuntimeOptions()
+        return await self.create_gateway_api_group_with_options_async(request, runtime)
+
     def create_link_with_options(
         self,
         request: main_models.CreateLinkRequest,
@@ -3640,6 +4008,170 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_cubecard_whitelist_content_with_options_async(request, runtime)
 
+    def delete_gateway_api_with_options(
+        self,
+        request: main_models.DeleteGatewayApiRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteGatewayApiResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.api_id):
+            body['ApiId'] = request.api_id
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteGatewayApi',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteGatewayApiResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_gateway_api_with_options_async(
+        self,
+        request: main_models.DeleteGatewayApiRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteGatewayApiResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.api_id):
+            body['ApiId'] = request.api_id
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteGatewayApi',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteGatewayApiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_gateway_api(
+        self,
+        request: main_models.DeleteGatewayApiRequest,
+    ) -> main_models.DeleteGatewayApiResponse:
+        runtime = RuntimeOptions()
+        return self.delete_gateway_api_with_options(request, runtime)
+
+    async def delete_gateway_api_async(
+        self,
+        request: main_models.DeleteGatewayApiRequest,
+    ) -> main_models.DeleteGatewayApiResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_gateway_api_with_options_async(request, runtime)
+
+    def delete_gateway_api_group_with_options(
+        self,
+        request: main_models.DeleteGatewayApiGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteGatewayApiGroupResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.group_id):
+            body['GroupId'] = request.group_id
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteGatewayApiGroup',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteGatewayApiGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_gateway_api_group_with_options_async(
+        self,
+        request: main_models.DeleteGatewayApiGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteGatewayApiGroupResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.group_id):
+            body['GroupId'] = request.group_id
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteGatewayApiGroup',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteGatewayApiGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_gateway_api_group(
+        self,
+        request: main_models.DeleteGatewayApiGroupRequest,
+    ) -> main_models.DeleteGatewayApiGroupResponse:
+        runtime = RuntimeOptions()
+        return self.delete_gateway_api_group_with_options(request, runtime)
+
+    async def delete_gateway_api_group_async(
+        self,
+        request: main_models.DeleteGatewayApiGroupRequest,
+    ) -> main_models.DeleteGatewayApiGroupResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_gateway_api_group_with_options_async(request, runtime)
+
     def delete_mcdp_aim_with_options(
         self,
         request: main_models.DeleteMcdpAimRequest,
@@ -4636,6 +5168,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.exist_mcube_rsa_key_with_options_async(request, runtime)
 
+    def export_gateway_apis_with_options(
+        self,
+        tmp_req: main_models.ExportGatewayApisRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExportGatewayApisResponse:
+        tmp_req.validate()
+        request = main_models.ExportGatewayApisShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.api_ids):
+            request.api_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.api_ids, 'ApiIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.api_ids_shrink):
+            body['ApiIds'] = request.api_ids_shrink
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExportGatewayApis',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExportGatewayApisResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def export_gateway_apis_with_options_async(
+        self,
+        tmp_req: main_models.ExportGatewayApisRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExportGatewayApisResponse:
+        tmp_req.validate()
+        request = main_models.ExportGatewayApisShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.api_ids):
+            request.api_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.api_ids, 'ApiIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.api_ids_shrink):
+            body['ApiIds'] = request.api_ids_shrink
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExportGatewayApis',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExportGatewayApisResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def export_gateway_apis(
+        self,
+        request: main_models.ExportGatewayApisRequest,
+    ) -> main_models.ExportGatewayApisResponse:
+        runtime = RuntimeOptions()
+        return self.export_gateway_apis_with_options(request, runtime)
+
+    async def export_gateway_apis_async(
+        self,
+        request: main_models.ExportGatewayApisRequest,
+    ) -> main_models.ExportGatewayApisResponse:
+        runtime = RuntimeOptions()
+        return await self.export_gateway_apis_with_options_async(request, runtime)
+
     def export_mapp_center_app_config_with_options(
         self,
         request: main_models.ExportMappCenterAppConfigRequest,
@@ -4999,6 +5621,170 @@ class Client(OpenApiClient):
     ) -> main_models.GetGameReviewByStatusResponse:
         runtime = RuntimeOptions()
         return await self.get_game_review_by_status_with_options_async(request, runtime)
+
+    def get_gateway_api_with_options(
+        self,
+        request: main_models.GetGatewayApiRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGatewayApiResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.api_id):
+            body['ApiId'] = request.api_id
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetGatewayApi',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGatewayApiResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_gateway_api_with_options_async(
+        self,
+        request: main_models.GetGatewayApiRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGatewayApiResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.api_id):
+            body['ApiId'] = request.api_id
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetGatewayApi',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGatewayApiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_gateway_api(
+        self,
+        request: main_models.GetGatewayApiRequest,
+    ) -> main_models.GetGatewayApiResponse:
+        runtime = RuntimeOptions()
+        return self.get_gateway_api_with_options(request, runtime)
+
+    async def get_gateway_api_async(
+        self,
+        request: main_models.GetGatewayApiRequest,
+    ) -> main_models.GetGatewayApiResponse:
+        runtime = RuntimeOptions()
+        return await self.get_gateway_api_with_options_async(request, runtime)
+
+    def get_gateway_api_group_with_options(
+        self,
+        request: main_models.GetGatewayApiGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGatewayApiGroupResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.group_id):
+            body['GroupId'] = request.group_id
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetGatewayApiGroup',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGatewayApiGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_gateway_api_group_with_options_async(
+        self,
+        request: main_models.GetGatewayApiGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGatewayApiGroupResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.group_id):
+            body['GroupId'] = request.group_id
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetGatewayApiGroup',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGatewayApiGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_gateway_api_group(
+        self,
+        request: main_models.GetGatewayApiGroupRequest,
+    ) -> main_models.GetGatewayApiGroupResponse:
+        runtime = RuntimeOptions()
+        return self.get_gateway_api_group_with_options(request, runtime)
+
+    async def get_gateway_api_group_async(
+        self,
+        request: main_models.GetGatewayApiGroupRequest,
+    ) -> main_models.GetGatewayApiGroupResponse:
+        runtime = RuntimeOptions()
+        return await self.get_gateway_api_group_with_options_async(request, runtime)
 
     def get_log_url_in_msa_with_options(
         self,
@@ -5906,6 +6692,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_user_app_upload_process_in_msa_with_options_async(request, runtime)
 
+    def import_gateway_apis_with_options(
+        self,
+        request: main_models.ImportGatewayApisRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImportGatewayApisResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.file_url):
+            body['FileUrl'] = request.file_url
+        if not DaraCore.is_null(request.import_mode):
+            body['ImportMode'] = request.import_mode
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImportGatewayApis',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImportGatewayApisResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def import_gateway_apis_with_options_async(
+        self,
+        request: main_models.ImportGatewayApisRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImportGatewayApisResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.file_url):
+            body['FileUrl'] = request.file_url
+        if not DaraCore.is_null(request.import_mode):
+            body['ImportMode'] = request.import_mode
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImportGatewayApis',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImportGatewayApisResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def import_gateway_apis(
+        self,
+        request: main_models.ImportGatewayApisRequest,
+    ) -> main_models.ImportGatewayApisResponse:
+        runtime = RuntimeOptions()
+        return self.import_gateway_apis_with_options(request, runtime)
+
+    async def import_gateway_apis_async(
+        self,
+        request: main_models.ImportGatewayApisRequest,
+    ) -> main_models.ImportGatewayApisResponse:
+        runtime = RuntimeOptions()
+        return await self.import_gateway_apis_with_options_async(request, runtime)
+
     def list_analysis_core_index_with_options(
         self,
         request: main_models.ListAnalysisCoreIndexRequest,
@@ -6067,6 +6939,206 @@ class Client(OpenApiClient):
     ) -> main_models.ListCubecardAppsResponse:
         runtime = RuntimeOptions()
         return await self.list_cubecard_apps_with_options_async(request, runtime)
+
+    def list_gateway_api_groups_with_options(
+        self,
+        request: main_models.ListGatewayApiGroupsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListGatewayApiGroupsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.keyword):
+            body['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.upstream_type):
+            body['UpstreamType'] = request.upstream_type
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListGatewayApiGroups',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListGatewayApiGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_gateway_api_groups_with_options_async(
+        self,
+        request: main_models.ListGatewayApiGroupsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListGatewayApiGroupsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.keyword):
+            body['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.upstream_type):
+            body['UpstreamType'] = request.upstream_type
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListGatewayApiGroups',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListGatewayApiGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_gateway_api_groups(
+        self,
+        request: main_models.ListGatewayApiGroupsRequest,
+    ) -> main_models.ListGatewayApiGroupsResponse:
+        runtime = RuntimeOptions()
+        return self.list_gateway_api_groups_with_options(request, runtime)
+
+    async def list_gateway_api_groups_async(
+        self,
+        request: main_models.ListGatewayApiGroupsRequest,
+    ) -> main_models.ListGatewayApiGroupsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_gateway_api_groups_with_options_async(request, runtime)
+
+    def list_gateway_apis_with_options(
+        self,
+        request: main_models.ListGatewayApisRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListGatewayApisResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.api_status):
+            body['ApiStatus'] = request.api_status
+        if not DaraCore.is_null(request.api_type):
+            body['ApiType'] = request.api_type
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.group_id):
+            body['GroupId'] = request.group_id
+        if not DaraCore.is_null(request.keyword):
+            body['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.sys_name):
+            body['SysName'] = request.sys_name
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListGatewayApis',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListGatewayApisResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_gateway_apis_with_options_async(
+        self,
+        request: main_models.ListGatewayApisRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListGatewayApisResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.api_status):
+            body['ApiStatus'] = request.api_status
+        if not DaraCore.is_null(request.api_type):
+            body['ApiType'] = request.api_type
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.group_id):
+            body['GroupId'] = request.group_id
+        if not DaraCore.is_null(request.keyword):
+            body['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.sys_name):
+            body['SysName'] = request.sys_name
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListGatewayApis',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListGatewayApisResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_gateway_apis(
+        self,
+        request: main_models.ListGatewayApisRequest,
+    ) -> main_models.ListGatewayApisResponse:
+        runtime = RuntimeOptions()
+        return self.list_gateway_apis_with_options(request, runtime)
+
+    async def list_gateway_apis_async(
+        self,
+        request: main_models.ListGatewayApisRequest,
+    ) -> main_models.ListGatewayApisResponse:
+        runtime = RuntimeOptions()
+        return await self.list_gateway_apis_with_options_async(request, runtime)
 
     def list_mapp_center_apps_with_options(
         self,
@@ -10286,6 +11358,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.query_mini_game_info_by_app_with_options_async(request, runtime)
 
+    def query_mini_game_qualification_by_app_with_options(
+        self,
+        request: main_models.QueryMiniGameQualificationByAppRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryMiniGameQualificationByAppResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.mini_program_code):
+            body['MiniProgramCode'] = request.mini_program_code
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryMiniGameQualificationByApp',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryMiniGameQualificationByAppResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_mini_game_qualification_by_app_with_options_async(
+        self,
+        request: main_models.QueryMiniGameQualificationByAppRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryMiniGameQualificationByAppResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.mini_program_code):
+            body['MiniProgramCode'] = request.mini_program_code
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryMiniGameQualificationByApp',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryMiniGameQualificationByAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_mini_game_qualification_by_app(
+        self,
+        request: main_models.QueryMiniGameQualificationByAppRequest,
+    ) -> main_models.QueryMiniGameQualificationByAppResponse:
+        runtime = RuntimeOptions()
+        return self.query_mini_game_qualification_by_app_with_options(request, runtime)
+
+    async def query_mini_game_qualification_by_app_async(
+        self,
+        request: main_models.QueryMiniGameQualificationByAppRequest,
+    ) -> main_models.QueryMiniGameQualificationByAppResponse:
+        runtime = RuntimeOptions()
+        return await self.query_mini_game_qualification_by_app_with_options_async(request, runtime)
+
     def query_mps_scheduler_list_with_options(
         self,
         request: main_models.QueryMpsSchedulerListRequest,
@@ -11645,6 +12799,382 @@ class Client(OpenApiClient):
     ) -> main_models.StartUserAppAsyncEnhanceInMsaResponse:
         runtime = RuntimeOptions()
         return await self.start_user_app_async_enhance_in_msa_with_options_async(request, runtime)
+
+    def update_gateway_api_with_options(
+        self,
+        tmp_req: main_models.UpdateGatewayApiRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateGatewayApiResponse:
+        tmp_req.validate()
+        request = main_models.UpdateGatewayApiShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.cache_rule):
+            request.cache_rule_shrink = Utils.array_to_string_with_specified_style(tmp_req.cache_rule, 'CacheRule', 'json')
+        if not DaraCore.is_null(tmp_req.default_limit_rule):
+            request.default_limit_rule_shrink = Utils.array_to_string_with_specified_style(tmp_req.default_limit_rule, 'DefaultLimitRule', 'json')
+        if not DaraCore.is_null(tmp_req.header_rules):
+            request.header_rules_shrink = Utils.array_to_string_with_specified_style(tmp_req.header_rules, 'HeaderRules', 'json')
+        if not DaraCore.is_null(tmp_req.limit_rule):
+            request.limit_rule_shrink = Utils.array_to_string_with_specified_style(tmp_req.limit_rule, 'LimitRule', 'json')
+        if not DaraCore.is_null(tmp_req.migrate_rule):
+            request.migrate_rule_shrink = Utils.array_to_string_with_specified_style(tmp_req.migrate_rule, 'MigrateRule', 'json')
+        if not DaraCore.is_null(tmp_req.mock_rule):
+            request.mock_rule_shrink = Utils.array_to_string_with_specified_style(tmp_req.mock_rule, 'MockRule', 'json')
+        if not DaraCore.is_null(tmp_req.request_params):
+            request.request_params_shrink = Utils.array_to_string_with_specified_style(tmp_req.request_params, 'RequestParams', 'json')
+        if not DaraCore.is_null(tmp_req.rpc_parameter_types):
+            request.rpc_parameter_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.rpc_parameter_types, 'RpcParameterTypes', 'json')
+        body = {}
+        if not DaraCore.is_null(request.api_id):
+            body['ApiId'] = request.api_id
+        if not DaraCore.is_null(request.api_name):
+            body['ApiName'] = request.api_name
+        if not DaraCore.is_null(request.api_status):
+            body['ApiStatus'] = request.api_status
+        if not DaraCore.is_null(request.api_type):
+            body['ApiType'] = request.api_type
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.auth_rule_name):
+            body['AuthRuleName'] = request.auth_rule_name
+        if not DaraCore.is_null(request.cache_rule_shrink):
+            body['CacheRule'] = request.cache_rule_shrink
+        if not DaraCore.is_null(request.charset):
+            body['Charset'] = request.charset
+        if not DaraCore.is_null(request.content_type):
+            body['ContentType'] = request.content_type
+        if not DaraCore.is_null(request.default_limit_rule_shrink):
+            body['DefaultLimitRule'] = request.default_limit_rule_shrink
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.group_id):
+            body['GroupId'] = request.group_id
+        if not DaraCore.is_null(request.header_rules_shrink):
+            body['HeaderRules'] = request.header_rules_shrink
+        if not DaraCore.is_null(request.interface_type):
+            body['InterfaceType'] = request.interface_type
+        if not DaraCore.is_null(request.limit_rule_shrink):
+            body['LimitRule'] = request.limit_rule_shrink
+        if not DaraCore.is_null(request.method):
+            body['Method'] = request.method
+        if not DaraCore.is_null(request.method_name):
+            body['MethodName'] = request.method_name
+        if not DaraCore.is_null(request.migrate_rule_shrink):
+            body['MigrateRule'] = request.migrate_rule_shrink
+        if not DaraCore.is_null(request.mock_rule_shrink):
+            body['MockRule'] = request.mock_rule_shrink
+        if not DaraCore.is_null(request.need_encrypt):
+            body['NeedEncrypt'] = request.need_encrypt
+        if not DaraCore.is_null(request.need_jsonp):
+            body['NeedJsonp'] = request.need_jsonp
+        if not DaraCore.is_null(request.need_sign):
+            body['NeedSign'] = request.need_sign
+        if not DaraCore.is_null(request.operation_type):
+            body['OperationType'] = request.operation_type
+        if not DaraCore.is_null(request.path):
+            body['Path'] = request.path
+        if not DaraCore.is_null(request.request_body_model):
+            body['RequestBodyModel'] = request.request_body_model
+        if not DaraCore.is_null(request.request_params_shrink):
+            body['RequestParams'] = request.request_params_shrink
+        if not DaraCore.is_null(request.response_body_model):
+            body['ResponseBodyModel'] = request.response_body_model
+        if not DaraCore.is_null(request.rpc_parameter_types_shrink):
+            body['RpcParameterTypes'] = request.rpc_parameter_types_shrink
+        if not DaraCore.is_null(request.serialization):
+            body['Serialization'] = request.serialization
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.timeout):
+            body['Timeout'] = request.timeout
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateGatewayApi',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateGatewayApiResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_gateway_api_with_options_async(
+        self,
+        tmp_req: main_models.UpdateGatewayApiRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateGatewayApiResponse:
+        tmp_req.validate()
+        request = main_models.UpdateGatewayApiShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.cache_rule):
+            request.cache_rule_shrink = Utils.array_to_string_with_specified_style(tmp_req.cache_rule, 'CacheRule', 'json')
+        if not DaraCore.is_null(tmp_req.default_limit_rule):
+            request.default_limit_rule_shrink = Utils.array_to_string_with_specified_style(tmp_req.default_limit_rule, 'DefaultLimitRule', 'json')
+        if not DaraCore.is_null(tmp_req.header_rules):
+            request.header_rules_shrink = Utils.array_to_string_with_specified_style(tmp_req.header_rules, 'HeaderRules', 'json')
+        if not DaraCore.is_null(tmp_req.limit_rule):
+            request.limit_rule_shrink = Utils.array_to_string_with_specified_style(tmp_req.limit_rule, 'LimitRule', 'json')
+        if not DaraCore.is_null(tmp_req.migrate_rule):
+            request.migrate_rule_shrink = Utils.array_to_string_with_specified_style(tmp_req.migrate_rule, 'MigrateRule', 'json')
+        if not DaraCore.is_null(tmp_req.mock_rule):
+            request.mock_rule_shrink = Utils.array_to_string_with_specified_style(tmp_req.mock_rule, 'MockRule', 'json')
+        if not DaraCore.is_null(tmp_req.request_params):
+            request.request_params_shrink = Utils.array_to_string_with_specified_style(tmp_req.request_params, 'RequestParams', 'json')
+        if not DaraCore.is_null(tmp_req.rpc_parameter_types):
+            request.rpc_parameter_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.rpc_parameter_types, 'RpcParameterTypes', 'json')
+        body = {}
+        if not DaraCore.is_null(request.api_id):
+            body['ApiId'] = request.api_id
+        if not DaraCore.is_null(request.api_name):
+            body['ApiName'] = request.api_name
+        if not DaraCore.is_null(request.api_status):
+            body['ApiStatus'] = request.api_status
+        if not DaraCore.is_null(request.api_type):
+            body['ApiType'] = request.api_type
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.auth_rule_name):
+            body['AuthRuleName'] = request.auth_rule_name
+        if not DaraCore.is_null(request.cache_rule_shrink):
+            body['CacheRule'] = request.cache_rule_shrink
+        if not DaraCore.is_null(request.charset):
+            body['Charset'] = request.charset
+        if not DaraCore.is_null(request.content_type):
+            body['ContentType'] = request.content_type
+        if not DaraCore.is_null(request.default_limit_rule_shrink):
+            body['DefaultLimitRule'] = request.default_limit_rule_shrink
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.group_id):
+            body['GroupId'] = request.group_id
+        if not DaraCore.is_null(request.header_rules_shrink):
+            body['HeaderRules'] = request.header_rules_shrink
+        if not DaraCore.is_null(request.interface_type):
+            body['InterfaceType'] = request.interface_type
+        if not DaraCore.is_null(request.limit_rule_shrink):
+            body['LimitRule'] = request.limit_rule_shrink
+        if not DaraCore.is_null(request.method):
+            body['Method'] = request.method
+        if not DaraCore.is_null(request.method_name):
+            body['MethodName'] = request.method_name
+        if not DaraCore.is_null(request.migrate_rule_shrink):
+            body['MigrateRule'] = request.migrate_rule_shrink
+        if not DaraCore.is_null(request.mock_rule_shrink):
+            body['MockRule'] = request.mock_rule_shrink
+        if not DaraCore.is_null(request.need_encrypt):
+            body['NeedEncrypt'] = request.need_encrypt
+        if not DaraCore.is_null(request.need_jsonp):
+            body['NeedJsonp'] = request.need_jsonp
+        if not DaraCore.is_null(request.need_sign):
+            body['NeedSign'] = request.need_sign
+        if not DaraCore.is_null(request.operation_type):
+            body['OperationType'] = request.operation_type
+        if not DaraCore.is_null(request.path):
+            body['Path'] = request.path
+        if not DaraCore.is_null(request.request_body_model):
+            body['RequestBodyModel'] = request.request_body_model
+        if not DaraCore.is_null(request.request_params_shrink):
+            body['RequestParams'] = request.request_params_shrink
+        if not DaraCore.is_null(request.response_body_model):
+            body['ResponseBodyModel'] = request.response_body_model
+        if not DaraCore.is_null(request.rpc_parameter_types_shrink):
+            body['RpcParameterTypes'] = request.rpc_parameter_types_shrink
+        if not DaraCore.is_null(request.serialization):
+            body['Serialization'] = request.serialization
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.timeout):
+            body['Timeout'] = request.timeout
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateGatewayApi',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateGatewayApiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_gateway_api(
+        self,
+        request: main_models.UpdateGatewayApiRequest,
+    ) -> main_models.UpdateGatewayApiResponse:
+        runtime = RuntimeOptions()
+        return self.update_gateway_api_with_options(request, runtime)
+
+    async def update_gateway_api_async(
+        self,
+        request: main_models.UpdateGatewayApiRequest,
+    ) -> main_models.UpdateGatewayApiResponse:
+        runtime = RuntimeOptions()
+        return await self.update_gateway_api_with_options_async(request, runtime)
+
+    def update_gateway_api_group_with_options(
+        self,
+        tmp_req: main_models.UpdateGatewayApiGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateGatewayApiGroupResponse:
+        tmp_req.validate()
+        request = main_models.UpdateGatewayApiGroupShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.centers):
+            request.centers_shrink = Utils.array_to_string_with_specified_style(tmp_req.centers, 'Centers', 'json')
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.centers_shrink):
+            body['Centers'] = request.centers_shrink
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.domain_name):
+            body['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.enable_mtls):
+            body['EnableMTLS'] = request.enable_mtls
+        if not DaraCore.is_null(request.group_id):
+            body['GroupId'] = request.group_id
+        if not DaraCore.is_null(request.group_name):
+            body['GroupName'] = request.group_name
+        if not DaraCore.is_null(request.host):
+            body['Host'] = request.host
+        if not DaraCore.is_null(request.https_model):
+            body['HttpsModel'] = request.https_model
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.instance_port):
+            body['InstancePort'] = request.instance_port
+        if not DaraCore.is_null(request.region_mode):
+            body['RegionMode'] = request.region_mode
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.timeout):
+            body['Timeout'] = request.timeout
+        if not DaraCore.is_null(request.upstream_type):
+            body['UpstreamType'] = request.upstream_type
+        if not DaraCore.is_null(request.vpc_id):
+            body['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.vpc_model):
+            body['VpcModel'] = request.vpc_model
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateGatewayApiGroup',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateGatewayApiGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_gateway_api_group_with_options_async(
+        self,
+        tmp_req: main_models.UpdateGatewayApiGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateGatewayApiGroupResponse:
+        tmp_req.validate()
+        request = main_models.UpdateGatewayApiGroupShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.centers):
+            request.centers_shrink = Utils.array_to_string_with_specified_style(tmp_req.centers, 'Centers', 'json')
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.centers_shrink):
+            body['Centers'] = request.centers_shrink
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.domain_name):
+            body['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.enable_mtls):
+            body['EnableMTLS'] = request.enable_mtls
+        if not DaraCore.is_null(request.group_id):
+            body['GroupId'] = request.group_id
+        if not DaraCore.is_null(request.group_name):
+            body['GroupName'] = request.group_name
+        if not DaraCore.is_null(request.host):
+            body['Host'] = request.host
+        if not DaraCore.is_null(request.https_model):
+            body['HttpsModel'] = request.https_model
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.instance_port):
+            body['InstancePort'] = request.instance_port
+        if not DaraCore.is_null(request.region_mode):
+            body['RegionMode'] = request.region_mode
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.timeout):
+            body['Timeout'] = request.timeout
+        if not DaraCore.is_null(request.upstream_type):
+            body['UpstreamType'] = request.upstream_type
+        if not DaraCore.is_null(request.vpc_id):
+            body['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.vpc_model):
+            body['VpcModel'] = request.vpc_model
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateGatewayApiGroup',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateGatewayApiGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_gateway_api_group(
+        self,
+        request: main_models.UpdateGatewayApiGroupRequest,
+    ) -> main_models.UpdateGatewayApiGroupResponse:
+        runtime = RuntimeOptions()
+        return self.update_gateway_api_group_with_options(request, runtime)
+
+    async def update_gateway_api_group_async(
+        self,
+        request: main_models.UpdateGatewayApiGroupRequest,
+    ) -> main_models.UpdateGatewayApiGroupResponse:
+        runtime = RuntimeOptions()
+        return await self.update_gateway_api_group_with_options_async(request, runtime)
 
     def update_link_with_options(
         self,

@@ -98,6 +98,7 @@ class QueryMiniGameInfoByAppResponseBodyContent(DaraModel):
         mini_program_id: int = None,
         mini_program_name: str = None,
         slogan: str = None,
+        user_profile_data: main_models.QueryMiniGameInfoByAppResponseBodyContentUserProfileData = None,
         version: str = None,
     ):
         self.game_engine = game_engine
@@ -113,10 +114,12 @@ class QueryMiniGameInfoByAppResponseBodyContent(DaraModel):
         self.mini_program_id = mini_program_id
         self.mini_program_name = mini_program_name
         self.slogan = slogan
+        self.user_profile_data = user_profile_data
         self.version = version
 
     def validate(self):
-        pass
+        if self.user_profile_data:
+            self.user_profile_data.validate()
 
     def to_map(self):
         result = dict()
@@ -161,6 +164,9 @@ class QueryMiniGameInfoByAppResponseBodyContent(DaraModel):
 
         if self.slogan is not None:
             result['Slogan'] = self.slogan
+
+        if self.user_profile_data is not None:
+            result['UserProfileData'] = self.user_profile_data.to_map()
 
         if self.version is not None:
             result['Version'] = self.version
@@ -208,8 +214,119 @@ class QueryMiniGameInfoByAppResponseBodyContent(DaraModel):
         if m.get('Slogan') is not None:
             self.slogan = m.get('Slogan')
 
+        if m.get('UserProfileData') is not None:
+            temp_model = main_models.QueryMiniGameInfoByAppResponseBodyContentUserProfileData()
+            self.user_profile_data = temp_model.from_map(m.get('UserProfileData'))
+
         if m.get('Version') is not None:
             self.version = m.get('Version')
+
+        return self
+
+class QueryMiniGameInfoByAppResponseBodyContentUserProfileData(DaraModel):
+    def __init__(
+        self,
+        active_region_codes: str = None,
+        active_regions: str = None,
+        age_segment: str = None,
+        android_active_models: str = None,
+        android_ratio: int = None,
+        female_ratio: int = None,
+        harmony_ratio: int = None,
+        ios_active_models: str = None,
+        ios_ratio: int = None,
+        male_ratio: int = None,
+        profile_remark: str = None,
+    ):
+        self.active_region_codes = active_region_codes
+        self.active_regions = active_regions
+        self.age_segment = age_segment
+        self.android_active_models = android_active_models
+        self.android_ratio = android_ratio
+        self.female_ratio = female_ratio
+        self.harmony_ratio = harmony_ratio
+        self.ios_active_models = ios_active_models
+        self.ios_ratio = ios_ratio
+        self.male_ratio = male_ratio
+        self.profile_remark = profile_remark
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.active_region_codes is not None:
+            result['ActiveRegionCodes'] = self.active_region_codes
+
+        if self.active_regions is not None:
+            result['ActiveRegions'] = self.active_regions
+
+        if self.age_segment is not None:
+            result['AgeSegment'] = self.age_segment
+
+        if self.android_active_models is not None:
+            result['AndroidActiveModels'] = self.android_active_models
+
+        if self.android_ratio is not None:
+            result['AndroidRatio'] = self.android_ratio
+
+        if self.female_ratio is not None:
+            result['FemaleRatio'] = self.female_ratio
+
+        if self.harmony_ratio is not None:
+            result['HarmonyRatio'] = self.harmony_ratio
+
+        if self.ios_active_models is not None:
+            result['IosActiveModels'] = self.ios_active_models
+
+        if self.ios_ratio is not None:
+            result['IosRatio'] = self.ios_ratio
+
+        if self.male_ratio is not None:
+            result['MaleRatio'] = self.male_ratio
+
+        if self.profile_remark is not None:
+            result['ProfileRemark'] = self.profile_remark
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActiveRegionCodes') is not None:
+            self.active_region_codes = m.get('ActiveRegionCodes')
+
+        if m.get('ActiveRegions') is not None:
+            self.active_regions = m.get('ActiveRegions')
+
+        if m.get('AgeSegment') is not None:
+            self.age_segment = m.get('AgeSegment')
+
+        if m.get('AndroidActiveModels') is not None:
+            self.android_active_models = m.get('AndroidActiveModels')
+
+        if m.get('AndroidRatio') is not None:
+            self.android_ratio = m.get('AndroidRatio')
+
+        if m.get('FemaleRatio') is not None:
+            self.female_ratio = m.get('FemaleRatio')
+
+        if m.get('HarmonyRatio') is not None:
+            self.harmony_ratio = m.get('HarmonyRatio')
+
+        if m.get('IosActiveModels') is not None:
+            self.ios_active_models = m.get('IosActiveModels')
+
+        if m.get('IosRatio') is not None:
+            self.ios_ratio = m.get('IosRatio')
+
+        if m.get('MaleRatio') is not None:
+            self.male_ratio = m.get('MaleRatio')
+
+        if m.get('ProfileRemark') is not None:
+            self.profile_remark = m.get('ProfileRemark')
 
         return self
 
