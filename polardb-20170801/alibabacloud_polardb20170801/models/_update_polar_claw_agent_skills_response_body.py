@@ -21,11 +21,11 @@ class UpdatePolarClawAgentSkillsResponseBody(DaraModel):
         self.agent_id = agent_id
         # The application ID.
         self.application_id = application_id
-        # The response status code.
+        # The returned status code.
         self.code = code
-        # The response message.
+        # The returned message.
         self.message = message
-        # Indicates whether the operation was successful.
+        # Indicates whether the operation is successful.
         self.ok = ok
         # Id of the request
         self.request_id = request_id

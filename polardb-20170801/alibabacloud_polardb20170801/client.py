@@ -4078,6 +4078,8 @@ class Client(OpenApiClient):
             query['ExpireTime'] = request.expire_time
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_id):
+            query['TenantId'] = request.tenant_id
         if not DaraCore.is_null(request.tenant_name):
             query['TenantName'] = request.tenant_name
         req = open_api_util_models.OpenApiRequest(
@@ -4114,6 +4116,8 @@ class Client(OpenApiClient):
             query['ExpireTime'] = request.expire_time
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_id):
+            query['TenantId'] = request.tenant_id
         if not DaraCore.is_null(request.tenant_name):
             query['TenantName'] = request.tenant_name
         req = open_api_util_models.OpenApiRequest(
@@ -4872,6 +4876,8 @@ class Client(OpenApiClient):
             query['ApplicationType'] = request.application_type
         if not DaraCore.is_null(request.instance_ids_shrink):
             query['InstanceIds'] = request.instance_ids_shrink
+        if not DaraCore.is_null(request.instance_params):
+            query['InstanceParams'] = request.instance_params
         if not DaraCore.is_null(request.param):
             query['Param'] = request.param
         if not DaraCore.is_null(request.region_id):
@@ -4914,6 +4920,8 @@ class Client(OpenApiClient):
             query['ApplicationType'] = request.application_type
         if not DaraCore.is_null(request.instance_ids_shrink):
             query['InstanceIds'] = request.instance_ids_shrink
+        if not DaraCore.is_null(request.instance_params):
+            query['InstanceParams'] = request.instance_params
         if not DaraCore.is_null(request.param):
             query['Param'] = request.param
         if not DaraCore.is_null(request.region_id):
@@ -8794,6 +8802,8 @@ class Client(OpenApiClient):
             query['PromotionCode'] = request.promotion_code
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.storage_space):
             query['StorageSpace'] = request.storage_space
         if not DaraCore.is_null(request.storage_type):
@@ -8868,6 +8878,8 @@ class Client(OpenApiClient):
             query['PromotionCode'] = request.promotion_code
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.storage_space):
             query['StorageSpace'] = request.storage_space
         if not DaraCore.is_null(request.storage_type):
@@ -27926,6 +27938,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.relative_db_cluster_id):
             query['RelativeDbClusterId'] = request.relative_db_cluster_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
         req = open_api_util_models.OpenApiRequest(
@@ -27970,6 +27984,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.relative_db_cluster_id):
             query['RelativeDbClusterId'] = request.relative_db_cluster_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
         req = open_api_util_models.OpenApiRequest(
@@ -32534,10 +32550,14 @@ class Client(OpenApiClient):
     ) -> main_models.InstallPolarClawSkillResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
         if not DaraCore.is_null(request.application_id):
             query['ApplicationId'] = request.application_id
         if not DaraCore.is_null(request.force):
             query['Force'] = request.force
+        if not DaraCore.is_null(request.scope):
+            query['Scope'] = request.scope
         if not DaraCore.is_null(request.skill_version):
             query['SkillVersion'] = request.skill_version
         if not DaraCore.is_null(request.slug):
@@ -32572,10 +32592,14 @@ class Client(OpenApiClient):
     ) -> main_models.InstallPolarClawSkillResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
         if not DaraCore.is_null(request.application_id):
             query['ApplicationId'] = request.application_id
         if not DaraCore.is_null(request.force):
             query['Force'] = request.force
+        if not DaraCore.is_null(request.scope):
+            query['Scope'] = request.scope
         if not DaraCore.is_null(request.skill_version):
             query['SkillVersion'] = request.skill_version
         if not DaraCore.is_null(request.slug):
@@ -43686,10 +43710,14 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.application_id):
             query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.exact):
+            query['Exact'] = request.exact
         if not DaraCore.is_null(request.limit):
             query['Limit'] = request.limit
         if not DaraCore.is_null(request.query):
             query['Query'] = request.query
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -43718,10 +43746,14 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.application_id):
             query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.exact):
+            query['Exact'] = request.exact
         if not DaraCore.is_null(request.limit):
             query['Limit'] = request.limit
         if not DaraCore.is_null(request.query):
             query['Query'] = request.query
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

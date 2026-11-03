@@ -15,7 +15,7 @@ class DescribeBackupLogDownloadLinksRequest(DaraModel):
         self.backup_log_ids = backup_log_ids
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The validity period of the download links in hours. Valid values: 1 to 596523.
+        # The validity period of the download URL in hours. Valid values: 1 to 596523.
         self.expire_hours = expire_hours
 
     def validate(self):

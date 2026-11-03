@@ -15,7 +15,7 @@ class DescribeAgenticDBBranchRestoreWindowResponseBody(DaraModel):
         request_id: str = None,
         tenant_id: str = None,
     ):
-        # The ID of the source branch.
+        # The source branch ID.
         self.branch_id = branch_id
         # DBClusterId
         self.dbcluster_id = dbcluster_id
@@ -23,7 +23,7 @@ class DescribeAgenticDBBranchRestoreWindowResponseBody(DaraModel):
         self.earliest_restorable_time = earliest_restorable_time
         # ProjectId
         self.project_id = project_id
-        # The time when the query was completed, in UTC RFC3339 format. This does not represent the latest restorable time.
+        # The time when this query was completed, in UTC RFC3339 format. This does not represent the latest restorable time.
         self.queried_at = queried_at
         # The request ID.
         self.request_id = request_id

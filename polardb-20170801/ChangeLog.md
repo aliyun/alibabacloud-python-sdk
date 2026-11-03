@@ -1,3 +1,16 @@
+2026-11-03 Version: 9.2.3
+- Update API CreateAgenticDBTenantApiKey: add request parameters TenantId.
+- Update API CreateBatchTask: add request parameters InstanceParams.
+- Update API DescribeAgenticDBProjects: add response parameters Body.Items.$.BranchCount.
+- Update API InstallPolarClawSkill: add request parameters AgentId.
+- Update API InstallPolarClawSkill: add request parameters Scope.
+- Update API InstallPolarClawSkill: add response parameters Body.Operation.
+- Update API InstallPolarClawSkill: add response parameters Body.State.
+- Update API InstallPolarClawSkill: add response parameters Body.TaskId.
+- Update API SearchPolarClawSkills: add request parameters Exact.
+- Update API SearchPolarClawSkills: add request parameters Source.
+
+
 2026-10-26 Version: 9.2.1
 - Update API CreateApplication: add request parameters KnowledgeApplicationSpec.PolarAIEmbedderInstanceId.
 - Update API CreateApplication: add request parameters KnowledgeApplicationSpec.PolarAILlmInstanceId.

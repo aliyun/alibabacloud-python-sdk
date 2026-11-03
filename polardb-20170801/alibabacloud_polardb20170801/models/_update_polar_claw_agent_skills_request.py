@@ -13,7 +13,7 @@ class UpdatePolarClawAgentSkillsRequest(DaraModel):
         application_id: str = None,
         skills: List[str] = None,
     ):
-        # PolarClaw Agent ID。
+        # The PolarClaw Agent ID.
         # 
         # This parameter is required.
         self.agent_id = agent_id

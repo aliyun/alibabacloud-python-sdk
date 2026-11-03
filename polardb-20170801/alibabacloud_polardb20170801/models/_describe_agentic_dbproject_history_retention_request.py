@@ -12,11 +12,11 @@ class DescribeAgenticDBProjectHistoryRetentionRequest(DaraModel):
         region_id: str = None,
         tenant_id: str = None,
     ):
-        # The AgenticDB cluster ID.
+        # The ID of the AgenticDB cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The target project ID.
+        # The ID of the target project.
         # 
         # This parameter is required.
         self.project_id = project_id

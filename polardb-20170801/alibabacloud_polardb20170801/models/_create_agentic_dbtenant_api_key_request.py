@@ -11,13 +11,14 @@ class CreateAgenticDBTenantApiKeyRequest(DaraModel):
         description: str = None,
         expire_time: str = None,
         region_id: str = None,
+        tenant_id: str = None,
         tenant_name: str = None,
     ):
         # The AgenticDB cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The description of the purpose.
+        # The usage description.
         self.description = description
         # The expiration time in ISO 8601 format. If this parameter is not specified, the API key never expires.
         self.expire_time = expire_time
@@ -25,9 +26,9 @@ class CreateAgenticDBTenantApiKeyRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The name of the tenant. The name must be unique within the same cluster and be 2 to 64 characters in length.
-        # 
-        # This parameter is required.
+        # Specifies the ID of an existing tenant. If you specify this parameter, an API key is created only for the existing tenant in the current cluster. If the tenant does not exist, an error is returned and no tenant is created. If TenantName is also specified, the name must match the name of the tenant.
+        self.tenant_id = tenant_id
+        # The name of the tenant. The name must be unique within the cluster and must be 2 to 64 characters in length.
         self.tenant_name = tenant_name
 
     def validate(self):
@@ -50,6 +51,9 @@ class CreateAgenticDBTenantApiKeyRequest(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+
         if self.tenant_name is not None:
             result['TenantName'] = self.tenant_name
 
@@ -68,6 +72,9 @@ class CreateAgenticDBTenantApiKeyRequest(DaraModel):
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
 
         if m.get('TenantName') is not None:
             self.tenant_name = m.get('TenantName')

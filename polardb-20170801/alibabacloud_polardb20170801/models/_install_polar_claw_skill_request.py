@@ -7,24 +7,30 @@ from darabonba.model import DaraModel
 class InstallPolarClawSkillRequest(DaraModel):
     def __init__(
         self,
+        agent_id: str = None,
         application_id: str = None,
         force: bool = None,
+        scope: str = None,
         skill_version: str = None,
         slug: str = None,
         source: str = None,
         url: str = None,
     ):
+        # The target agent in the workspace. If not specified, the default agent is used.
+        self.agent_id = agent_id
         # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # Specifies whether to force a reinstallation.
+        # Specifies whether to force reinstallation.
         self.force = force
+        # The scope. Valid values: workspace (default) and global (shared directory). This parameter is mutually exclusive with AgentId.
+        self.scope = scope
         # The version number.
         self.skill_version = skill_version
-        # The Skill identifier.
+        # The skill identifier.
         self.slug = slug
-        # The source.
+        # The source. Default value: polarhub.
         self.source = source
         # URL
         self.url = url
@@ -37,11 +43,17 @@ class InstallPolarClawSkillRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.agent_id is not None:
+            result['AgentId'] = self.agent_id
+
         if self.application_id is not None:
             result['ApplicationId'] = self.application_id
 
         if self.force is not None:
             result['Force'] = self.force
+
+        if self.scope is not None:
+            result['Scope'] = self.scope
 
         if self.skill_version is not None:
             result['SkillVersion'] = self.skill_version
@@ -59,11 +71,17 @@ class InstallPolarClawSkillRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentId') is not None:
+            self.agent_id = m.get('AgentId')
+
         if m.get('ApplicationId') is not None:
             self.application_id = m.get('ApplicationId')
 
         if m.get('Force') is not None:
             self.force = m.get('Force')
+
+        if m.get('Scope') is not None:
+            self.scope = m.get('Scope')
 
         if m.get('SkillVersion') is not None:
             self.skill_version = m.get('SkillVersion')

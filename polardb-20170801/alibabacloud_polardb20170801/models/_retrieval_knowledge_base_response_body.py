@@ -79,6 +79,7 @@ class RetrievalKnowledgeBaseResponseBodyResults(DaraModel):
         file_name: str = None,
         headings: List[str] = None,
         image_resources: List[main_models.RetrievalKnowledgeBaseResponseBodyResultsImageResources] = None,
+        knowledge_base_id: str = None,
         metadata: str = None,
         page_numbers: List[int] = None,
         shard_content: str = None,
@@ -86,9 +87,9 @@ class RetrievalKnowledgeBaseResponseBodyResults(DaraModel):
         similarity_score: float = None,
         source_uri: str = None,
     ):
-        # The list of captions for the figures or tables associated with the chunk.
+        # The list of figure or table captions associated with the chunk.
         self.captions = captions
-        # The list of structured element references in the source document associated with the chunk. You can use these references to precisely locate the original elements.
+        # The list of structured element references from the source document associated with the chunk. This can be used to precisely locate the original elements.
         self.doc_items = doc_items
         # The unique identifier of the file.
         self.file_id = file_id
@@ -98,6 +99,8 @@ class RetrievalKnowledgeBaseResponseBodyResults(DaraModel):
         self.headings = headings
         # The list of image resources referenced by the chunk.
         self.image_resources = image_resources
+        # The ID of the knowledge base to which the retrieved chunk belongs. This is used to distinguish the source of results when searching multiple knowledge bases.
+        self.knowledge_base_id = knowledge_base_id
         # The metadata.
         self.metadata = metadata
         # The list of page numbers to which the chunk belongs.
@@ -142,6 +145,9 @@ class RetrievalKnowledgeBaseResponseBodyResults(DaraModel):
             for k1 in self.image_resources:
                 result['ImageResources'].append(k1.to_map() if k1 else None)
 
+        if self.knowledge_base_id is not None:
+            result['KnowledgeBaseId'] = self.knowledge_base_id
+
         if self.metadata is not None:
             result['Metadata'] = self.metadata
 
@@ -184,6 +190,9 @@ class RetrievalKnowledgeBaseResponseBodyResults(DaraModel):
             for k1 in m.get('ImageResources'):
                 temp_model = main_models.RetrievalKnowledgeBaseResponseBodyResultsImageResources()
                 self.image_resources.append(temp_model.from_map(k1))
+
+        if m.get('KnowledgeBaseId') is not None:
+            self.knowledge_base_id = m.get('KnowledgeBaseId')
 
         if m.get('Metadata') is not None:
             self.metadata = m.get('Metadata')

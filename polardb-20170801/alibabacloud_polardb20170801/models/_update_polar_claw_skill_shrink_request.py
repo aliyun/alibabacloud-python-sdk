@@ -21,7 +21,7 @@ class UpdatePolarClawSkillShrinkRequest(DaraModel):
         self.application_id = application_id
         # Specifies whether the skill is enabled.
         self.enabled = enabled
-        # The environment variables as a key-value map. An empty value indicates that the variable is deleted.
+        # The environment variables. This is a map of key-value pairs. An empty value indicates that the variable is deleted.
         self.env_shrink = env_shrink
         # The skill identifier key.
         # 

@@ -16,7 +16,7 @@ class DescribeAgenticDBProjectHistoryRetentionResponseBody(DaraModel):
     ):
         # DBClusterId
         self.dbcluster_id = dbcluster_id
-        # The effective history data retention period for the project. For the actual recoverable range, query the branch recovery window.
+        # The effective history data retention period of the project. To check the actual recoverable range, query the branch recovery window.
         self.history_retention_seconds = history_retention_seconds
         # ProjectId
         self.project_id = project_id

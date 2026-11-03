@@ -16,25 +16,25 @@ class DescribeBatchTasksRequest(DaraModel):
         status: List[str] = None,
         task_type: str = None,
     ):
-        # The end of the creation time range.
+        # The end time of creation.
         # 
-        # The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+        # The time is in ISO 8601 format and the UTC time zone. The format is YYYY-MM-DDTHH:mm:ssZ.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.end_time = end_time
-        # The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: 1.
+        # The page number. The value must be greater than 0 and less than or equal to the maximum value of the Integer data type. Default value: 1.
         self.page_number = page_number
-        # The number of records per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The start of the creation time range.
+        # The start time of creation.
         # 
-        # The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+        # The time is in ISO 8601 format and the UTC time zone. The format is YYYY-MM-DDTHH:mm:ssZ.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.start_time = start_time
         # The list of task statuses.
         # 
-        # > If this parameter is left empty, scheduled tasks in all statuses are queried by default.
+        # > If this parameter is left empty, tasks in all statuses are queried by default.
         self.status = status
         # The batch task type.
         self.task_type = task_type

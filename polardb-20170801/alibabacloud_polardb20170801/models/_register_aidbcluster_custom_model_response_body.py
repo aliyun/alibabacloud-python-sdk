@@ -20,13 +20,13 @@ class RegisterAIDBClusterCustomModelResponseBody(DaraModel):
         self.created = created
         # The display name and the initial invocation name for clients.
         self.display_model_name = display_model_name
-        # The image import status. The initial value is Importing after an image is registered.
+        # The import status of the image. The initial value is Importing after the image is registered.
         self.image_import_status = image_import_status
-        # The model registration ID.
+        # The registration ID of the model.
         self.model_id = model_id
-        # The custom model registration key.
+        # The registration key of the custom model.
         self.model_name = model_name
-        # The model type.
+        # The type of the model.
         self.model_type = model_type
         # The normalized OSS path.
         self.oss_path = oss_path

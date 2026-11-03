@@ -82,6 +82,7 @@ class DescribeAgenticDBProjectsResponseBody(DaraModel):
 class DescribeAgenticDBProjectsResponseBodyItems(DaraModel):
     def __init__(
         self,
+        branch_count: int = None,
         create_time: str = None,
         dbcluster_id: str = None,
         default_branch_id: str = None,
@@ -93,7 +94,11 @@ class DescribeAgenticDBProjectsResponseBodyItems(DaraModel):
         status: str = None,
         tenant_id: str = None,
     ):
-        # The creation time. The time is in ISO 8601 format and the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
+        # The number of all undeleted branches in the project, including hibernated branches and branches not bound to compute nodes. This parameter is empty if not provided by earlier backend versions, which does not indicate zero branches.
+        self.branch_count = branch_count
+        # The creation time.
+        # 
+        # The time follows the ISO 8601 standard in the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
         self.create_time = create_time
         # The ID of the associated AgenticDB cluster.
         self.dbcluster_id = dbcluster_id
@@ -103,18 +108,15 @@ class DescribeAgenticDBProjectsResponseBodyItems(DaraModel):
         self.default_branch_name = default_branch_name
         # The description.
         self.description = description
-        # The retention period for recent records of the project. This field may be empty for older projects. To query the current effective value, call DescribeAgenticDBProjectHistoryRetention.
+        # The retention period of recent records for the project. This parameter may be empty for earlier projects. To query the current effective value, call DescribeAgenticDBProjectHistoryRetention.
         self.history_retention_seconds = history_retention_seconds
         # Project ID
         self.project_id = project_id
         # The name of the project.
         self.project_name = project_name
-        # The project status. Valid values:
-        # - Active: Normal.
-        # - Destroying: Being destroyed.
-        # - Destroyed: Destroyed.
+        # The status of the project. Valid values: Active (normal), Destroying (being destroyed), and Destroyed (destroyed).
         self.status = status
-        # The tenant ID.
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -125,6 +127,9 @@ class DescribeAgenticDBProjectsResponseBodyItems(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.branch_count is not None:
+            result['BranchCount'] = self.branch_count
+
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
 
@@ -159,6 +164,9 @@ class DescribeAgenticDBProjectsResponseBodyItems(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BranchCount') is not None:
+            self.branch_count = m.get('BranchCount')
+
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
 

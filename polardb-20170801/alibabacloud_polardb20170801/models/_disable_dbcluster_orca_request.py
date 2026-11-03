@@ -15,11 +15,11 @@ class DisableDBClusterOrcaRequest(DaraModel):
         resource_owner_id: int = None,
     ):
         # Specifies whether to clean up data. Valid values:
-        # - **Enable**: Enable data cleanup.
-        # - **Disable**: Disable data cleanup.
+        # - **Enable**: Enables data cleanup.
+        # - **Disable**: Disables data cleanup.
         self.clean_data = clean_data
         # The cluster ID.
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters in the specified region, including the cluster ID.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query all clusters in the specified region, including the cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id

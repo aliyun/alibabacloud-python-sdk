@@ -16,15 +16,13 @@ class DescribeVSwitchListResponseBody(DaraModel):
         total_count: int = None,
         v_switchs: List[main_models.DescribeVSwitchListResponseBodyVSwitchs] = None,
     ):
-        # The page number.
+        # The page number of the returned results.
         self.page_number = page_number
         # The number of entries per page. Valid values:
         # 
-        # - **30**
-        # 
-        # - **50**
-        # 
-        # - **100**
+        # * **30**
+        # * **50**
+        # * **100**
         # 
         # Default value: 30.
         self.page_size = page_size
@@ -32,7 +30,7 @@ class DescribeVSwitchListResponseBody(DaraModel):
         self.request_id = request_id
         # The total number of entries.
         self.total_count = total_count
-        # A list of vSwitches.
+        # The list of vSwitches.
         self.v_switchs = v_switchs
 
     def validate(self):
@@ -112,12 +110,11 @@ class DescribeVSwitchListResponseBodyVSwitchs(DaraModel):
         # Indicates whether the vSwitch is the default vSwitch. Valid values:
         # 
         # - **true**: The vSwitch is the default vSwitch.
-        # 
         # - **false**: The vSwitch is not the default vSwitch.
         self.is_default = is_default
-        # The ID of the zone where the vSwitch resides.
+        # The zone ID of the vSwitch.
         self.iz_no = iz_no
-        # The ID of the Alibaba Cloud account that owns the resource.
+        # The ID of the owner account.
         self.owner_id = owner_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -126,14 +123,13 @@ class DescribeVSwitchListResponseBodyVSwitchs(DaraModel):
         # The status of the vSwitch. Valid values:
         # 
         # - **Pending**: The vSwitch is being configured.
-        # 
         # - **Available**: The vSwitch is available.
         self.status = status
         # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
         # The name of the vSwitch.
         self.v_switch_name = v_switch_name
-        # The ID of the VPC.
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):

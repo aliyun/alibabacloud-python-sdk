@@ -20,11 +20,11 @@ class UpdatePolarClawSkillResponseBody(DaraModel):
     ):
         # The application ID.
         self.application_id = application_id
-        # The returned status code.
+        # The status code.
         self.code = code
         # The updated skill configuration. Sensitive values are masked.
         self.config = config
-        # The returned message.
+        # The message.
         self.message = message
         # Indicates whether the operation is successful.
         self.ok = ok

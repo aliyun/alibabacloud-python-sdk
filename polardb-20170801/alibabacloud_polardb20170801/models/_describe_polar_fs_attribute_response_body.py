@@ -47,6 +47,7 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         relative_db_cluster_id: str = None,
         relative_pfs_cluster_id: str = None,
         request_id: str = None,
+        resource_group_id: str = None,
         security_group_id: str = None,
         storage_space: float = None,
         storage_type: str = None,
@@ -59,7 +60,7 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
     ):
         # The acceleration type.
         self.accelerate_type = accelerate_type
-        # The acceleration storage space. Unit: GB.
+        # The accelerated storage space. Unit: GB.
         self.accelerated_storage_space = accelerated_storage_space
         # Indicates whether the acceleration cache is enabled. Valid values:
         # - **ON**: Enabled.
@@ -87,7 +88,7 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         self.client_download_path = client_download_path
         # The creation time.
         # 
-        # The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
         # The custom bucket path.
         self.custom_bucket_path = custom_bucket_path
@@ -99,13 +100,13 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         # * **MySQL**
         # * **PostgreSQL**
         self.dbtype = dbtype
-        # The list of endpoints, including endpoint information for types such as NAS and S3Gateway.
+        # The list of endpoints, including endpoint information for types such as NAS and S3 Gateway.
         self.endpoint_items = endpoint_items
         # The expiration time of the cluster.
         # 
-        # > This parameter is returned only for clusters whose billing method is **Prepaid** (subscription). An empty value is returned for **Postpaid** (pay-as-you-go) clusters.
+        # > This parameter is returned only for clusters whose billing method is **Prepaid** (subscription). For clusters whose billing method is **Postpaid** (pay-as-you-go), an empty value is returned.
         # 
-        # The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.expire_time = expire_time
         # Indicates whether the cluster has expired.
         # > This parameter is returned only for clusters whose billing method is **Prepaid** (subscription).
@@ -114,30 +115,30 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         self.file_system_id = file_system_id
         # The lock mode. Valid values: 
         # 
-        # - **Unlock**: Not locked.
+        # - **Unlock**: Unlocked.
         # - **ManualLock**: Manually locked. 
         # - **LockByExpiration**: Automatically locked due to cluster expiration.
         self.lock_mode = lock_mode
         # The proxy endpoint ID.
         self.maxscale_endpoint_id = maxscale_endpoint_id
-        # The cluster endpoint of the metadata service.
+        # The metadata service cluster endpoint.
         self.meta_conn_string = meta_conn_string
         # The metadata instance name.
         self.meta_instance_name = meta_instance_name
-        # The cluster endpoint of the metadata proxy service.
+        # The metadata proxy service cluster endpoint.
         self.meta_mxs_conn_string = meta_mxs_conn_string
-        # The metadata address for Fuse mounting (encrypted).
+        # The metadata address for FUSE mounting (encrypted).
         self.meta_url = meta_url
-        # The minor version of the instance.
+        # The minor version number of the instance.
         self.minor_version = minor_version
         # The mount configuration.
         self.mount_info = mount_info
         # The billing method. Valid values:
         # 
-        # - **Postpaid**: pay-as-you-go.
-        # - **Prepaid**: subscription.
+        # - **Postpaid**: Pay-as-you-go.
+        # - **Prepaid**: Subscription.
         self.pay_type = pay_type
-        # The description of the Polarlakebase instance.
+        # The Polarlakebase instance description.
         self.polar_fs_instance_description = polar_fs_instance_description
         # The Polarlakebase instance ID.
         self.polar_fs_instance_id = polar_fs_instance_id
@@ -153,26 +154,29 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         self.region_id = region_id
         # The ID of the associated PolarDB cluster.
         self.relative_db_cluster_id = relative_db_cluster_id
-        # The instance ID of the associated Polarlakebase instance.
+        # The associated Polarlakebase instance ID.
         self.relative_pfs_cluster_id = relative_pfs_cluster_id
         # Id of the request
         self.request_id = request_id
+        # The resource group ID.
+        self.resource_group_id = resource_group_id
         # The managed security group ID.
         self.security_group_id = security_group_id
         # The storage space. Unit: GB.
         self.storage_space = storage_space
-        # Storage types for the High-performance Edition. Valid values:
+        # The storage type. 
+        # For High-performance Edition, valid values are:
         # * **ESSDPL1**
         # * **ESSDPL0**
         # 
-        # Storage types for the Basic Edition. Valid values:
-        # * **city_redundancy**: zone-redundant storage.
+        # For Basic Edition, valid values are:
+        # * **city_redundancy**: Zone-redundant storage.
         self.storage_type = storage_type
         # The used storage space. Unit: bytes.
         self.storage_used = storage_used
         # The default user account name for S3 Gateway.
         self.user_default_acc_name = user_default_acc_name
-        # The default user account key for S3 Gateway (encrypted ciphertext).
+        # The default user account secret key for S3 Gateway (encrypted ciphertext).
         self.user_default_acc_sk = user_default_acc_sk
         # The VPC ID.
         self.vpcid = vpcid
@@ -312,6 +316,9 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
 
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
@@ -462,6 +469,9 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
 
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
 
@@ -548,7 +558,7 @@ class DescribePolarFsAttributeResponseBodyEndpointItems(DaraModel):
         self.address_items = address_items
         # The endpoint ID.
         self.dbendpoint_id = dbendpoint_id
-        # The endpoint type. Valid values: Nas, S3Gateway, and others.
+        # The endpoint type, such as NAS or S3 Gateway.
         self.endpoint_type = endpoint_type
 
     def validate(self):
@@ -606,9 +616,9 @@ class DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems(DaraModel):
         # The IP address.
         self.ipaddress = ipaddress
         # The network type of the connection string. Valid values:
-        # * **Public**: public endpoint.
-        # * **Private**: private endpoint.
-        # * **Inner**: private endpoint (classic network).
+        # * **Public**: Public network address.
+        # * **Private**: Private network address.
+        # * **Inner**: Private network address (classic network).
         self.net_type = net_type
         # The port number.
         self.port = port

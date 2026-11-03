@@ -13,15 +13,15 @@ class DescribeAgenticDBBranchRestoreWindowRequest(DaraModel):
         region_id: str = None,
         tenant_id: str = None,
     ):
-        # The ID of the source branch.
+        # The source branch ID.
         # 
         # This parameter is required.
         self.branch_id = branch_id
-        # The ID of the AgenticDB cluster.
+        # The AgenticDB cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The ID of the target project.
+        # The target project ID.
         # 
         # This parameter is required.
         self.project_id = project_id

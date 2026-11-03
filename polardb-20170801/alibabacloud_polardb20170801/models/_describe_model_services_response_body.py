@@ -17,25 +17,22 @@ class DescribeModelServicesResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The details of the model services.
+        # The list of model services.
         self.items = items
-        # The page number.
+        # The current page number.
         self.page_number = page_number
-        # The number of records on the current page.
+        # The number of entries on the current page.
         self.page_record_count = page_record_count
-        # The number of records to return on each page. Valid values:
-        # 
-        # - **30**
-        # 
-        # - **50**
-        # 
-        # - **100**
+        # The number of entries per page. Valid values: 
+        # * **30**
+        # * **50**
+        # * **100**
         # 
         # Default value: **30**.
         self.page_size = page_size
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # The total number of records.
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -112,37 +109,33 @@ class DescribeModelServicesResponseBodyItems(DaraModel):
         status: str = None,
         vendor: str = None,
     ):
-        # The API key for the model service.
+        # The API key of the model service.
         self.api_key = api_key
-        # The base URL of the upstream service.
+        # The upstream service endpoint.
         self.base_url = base_url
-        # The time when the model service was created.
+        # The creation date of the model.
         self.gmt_created = gmt_created
-        # The cost in points per million input tokens.
+        # The input points.
         self.input_cost_points_per_million = input_cost_points_per_million
-        # The model category.
+        # The category.
         self.model_category = model_category
-        # The model service ID.
+        # The model service IDs.
         self.model_service_id = model_service_id
         # The model service name.
         self.name = name
-        # The cost in points per million output tokens.
+        # The output points.
         self.output_cost_points_per_million = output_cost_points_per_million
-        # The protocol. Valid values:
-        # 
-        # - **OpenAI**
-        # 
-        # - **Anthropic**
-        # 
-        # - **bailian**: Alibaba Cloud Model Studio.
-        # 
-        # - **vLLM**
+        # The protocol type. Valid values:
+        # * **openai**
+        # * **anthropic**
+        # * **bailian**
+        # * **vllm**
         self.protocol = protocol
-        # The cost in points per request.
+        # The number of requests.
         self.request_cost_points = request_cost_points
-        # The status of the model service.
+        # The status.
         self.status = status
-        # The vendor of the model service.
+        # The model service provider.
         self.vendor = vendor
 
     def validate(self):

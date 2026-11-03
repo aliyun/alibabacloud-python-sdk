@@ -11,26 +11,35 @@ class InstallPolarClawSkillResponseBody(DaraModel):
         code: int = None,
         message: str = None,
         ok: bool = None,
+        operation: str = None,
         request_id: str = None,
         slug: str = None,
+        state: str = None,
         target_dir: str = None,
+        task_id: str = None,
         version: str = None,
     ):
         # The application ID.
         self.application_id = application_id
-        # The response status code.
+        # The returned status code.
         self.code = code
-        # The response message.
+        # The returned message.
         self.message = message
-        # Indicates whether the operation was successful.
+        # Indicates whether the operation is successful. This parameter is returned when Async is set to false.
         self.ok = ok
+        # The operation name. This parameter is returned when Async is set to true.
+        self.operation = operation
         # Id of the request
         self.request_id = request_id
-        # The identifier of the installed Skill.
+        # The identifier of the installed skill. This parameter is returned during synchronous execution.
         self.slug = slug
-        # The installation directory.
+        # The initial state of the task. This parameter is returned when Async is set to true.
+        self.state = state
+        # The installation directory. This parameter is returned during synchronous execution.
         self.target_dir = target_dir
-        # The version number of the installed Skill.
+        # The ID of the asynchronous task. This parameter is returned when Async is set to true.
+        self.task_id = task_id
+        # The installed version number. This parameter is returned during synchronous execution.
         self.version = version
 
     def validate(self):
@@ -53,14 +62,23 @@ class InstallPolarClawSkillResponseBody(DaraModel):
         if self.ok is not None:
             result['Ok'] = self.ok
 
+        if self.operation is not None:
+            result['Operation'] = self.operation
+
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
         if self.slug is not None:
             result['Slug'] = self.slug
 
+        if self.state is not None:
+            result['State'] = self.state
+
         if self.target_dir is not None:
             result['TargetDir'] = self.target_dir
+
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
 
         if self.version is not None:
             result['Version'] = self.version
@@ -81,14 +99,23 @@ class InstallPolarClawSkillResponseBody(DaraModel):
         if m.get('Ok') is not None:
             self.ok = m.get('Ok')
 
+        if m.get('Operation') is not None:
+            self.operation = m.get('Operation')
+
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
 
         if m.get('Slug') is not None:
             self.slug = m.get('Slug')
 
+        if m.get('State') is not None:
+            self.state = m.get('State')
+
         if m.get('TargetDir') is not None:
             self.target_dir = m.get('TargetDir')
+
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
 
         if m.get('Version') is not None:
             self.version = m.get('Version')

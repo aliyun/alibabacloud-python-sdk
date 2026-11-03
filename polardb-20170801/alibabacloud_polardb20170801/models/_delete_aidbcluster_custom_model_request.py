@@ -10,7 +10,7 @@ class DeleteAIDBClusterCustomModelRequest(DaraModel):
         model_name: str = None,
         region_id: str = None,
     ):
-        # The custom model registration key to delete.
+        # The key of the custom model registration to delete.
         # 
         # This parameter is required.
         self.model_name = model_name

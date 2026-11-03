@@ -33,13 +33,11 @@ class DescribeAIDBClusterTaskAttributeResponseBody(DaraModel):
         vpcid: str = None,
         v_switch_id: str = None,
     ):
-        # The access information of the model in test deployment scenarios.
+        # The access information of the model in the test deployment scenario.
         self.access_info = access_info
         # The network type of the cluster.
         self.cluster_network_type = cluster_network_type
-        # The creation time.
-        # 
-        # The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
+        # The creation time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
         # The custom OSS bucket information.
         self.custom_bucket_info = custom_bucket_info
@@ -48,40 +46,36 @@ class DescribeAIDBClusterTaskAttributeResponseBody(DaraModel):
         # The task ID.
         self.dbcluster_id = dbcluster_id
         # The training status. Valid values:
-        # * **ACTIVATION**: training in progress
-        # * **COMPLETED**: training succeeded
-        # * **FAILED**: training failed
+        # * **ACTIVATION**: Training.
+        # * **COMPLETED**: Training succeeded.
+        # * **FAILED**: Training failed.
         self.dbcluster_status = dbcluster_status
         # The training status. Valid values:
-        # * **ACTIVATION**: training in progress
-        # * **COMPLETED**: training succeeded
-        # * **FAILED**: training failed
+        # * **ACTIVATION**: Training.
+        # * **COMPLETED**: Training succeeded.
+        # * **FAILED**: Training failed.
         self.dbcluster_status_desc = dbcluster_status_desc
         # The engine type.
         self.dbtype = dbtype
         # The version. Valid values:
-        # * **3.1**: model operator tuning
+        # * **3.1**: Model operator tuning.
         self.dbversion = dbversion
         # The datasets.
         self.data_sets = data_sets
         # The extra information, including runtime parameters.
         self.extra_info = extra_info
         # The instance type. Valid values:
-        # - **18**
+        # - **18**.
         self.kind_code = kind_code
         # The lock mode. Valid values:
-        # * **0**: locked
-        # * **1**: unlocked
+        # * **0**: Locked.
+        # * **1**: Unlocked.
         self.lock_mode = lock_mode
-        # The end time of the maintenance window.
-        # 
-        # The time is displayed in UTC in the HH:mmZ format.
+        # The end time of the maintenance window. The time is displayed in UTC in the HH:mmZ format.
         self.maintain_end_time = maintain_end_time
-        # The start time of the maintenance window.
-        # 
-        # The time is displayed in UTC. Example: 8:00Z.
+        # The start time of the maintenance window. The time is displayed in UTC, for example, 08:00Z.
         self.maintain_start_time = maintain_start_time
-        # The list of output model paths in model fine-tuning scenarios.
+        # The list of output model paths in the model fine-tuning scenario.
         self.model_path = model_path
         # Id of the request
         self.request_id = request_id
@@ -272,31 +266,27 @@ class DescribeAIDBClusterTaskAttributeResponseBodyTaskInfo(DaraModel):
         train_mode: str = None,
         train_type: str = None,
     ):
-        # The completion time of the task.
-        # 
-        # The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
+        # The completion time of the task. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.completed_time = completed_time
         # The foundation model.
         self.model_name = model_name
         # The path of the custom model.
         self.model_path = model_path
         # The model source. Valid values:
-        # * **public**: preset model
-        # * **custom**: custom model
+        # * **public**: Preset model.
+        # * **custom**: Custom model.
         self.model_source = model_source
         # The runtime parameters.
         self.running_times = running_times
-        # The start time of the task.
-        # 
-        # The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
+        # The start time of the task. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.start_time = start_time
         # The task type. Valid values:
-        # * **sft**: SFT - efficient training
-        # * **grpo**: GRPO - reinforcement learning
+        # * **sft**: SFT-efficient training.
+        # * **grpo**: GRPO-reinforcement learning.
         self.train_mode = train_mode
         # The training method. Valid values:
-        # * **lora**
-        # * **full**: full-parameter training
+        # * **lora**: LoRA.
+        # * **full**: Full training.
         self.train_type = train_type
 
     def validate(self):
@@ -376,8 +366,8 @@ class DescribeAIDBClusterTaskAttributeResponseBodyDataSets(DaraModel):
         # The split ratio from the training set.
         self.split_dataset_ratio = split_dataset_ratio
         # The type. Valid values:
-        # * **train**: training set
-        # * **eval**: validation set
+        # * **train**: Training set.
+        # * **eval**: Validation set.
         self.type = type
 
     def validate(self):

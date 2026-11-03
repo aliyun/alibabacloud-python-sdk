@@ -14,7 +14,7 @@ class RetrievalKnowledgeBaseRequest(DaraModel):
         score_threshold: float = None,
         top_k: int = None,
     ):
-        # The unique identifier of the knowledge base. You can specify multiple knowledge base IDs separated by commas. A maximum of 50 knowledge bases are supported.
+        # The unique identifier of the knowledge base. You can specify up to 50 knowledge base IDs separated by commas.
         # 
         # This parameter is required.
         self.knowledge_base_id = knowledge_base_id
@@ -26,7 +26,7 @@ class RetrievalKnowledgeBaseRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # Specifies whether to enable reranking. Default value: true.
+        # Specifies whether reranking is enabled. Default value: true.
         self.rerank_enabled = rerank_enabled
         # The similarity score threshold.
         self.score_threshold = score_threshold

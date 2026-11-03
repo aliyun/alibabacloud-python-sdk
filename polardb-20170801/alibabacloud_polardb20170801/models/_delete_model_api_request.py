@@ -15,7 +15,7 @@ class DeleteModelApiRequest(DaraModel):
         # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
-        # The model API ID.
+        # The ID of the model API.
         # 
         # This parameter is required.
         self.model_api_id = model_api_id

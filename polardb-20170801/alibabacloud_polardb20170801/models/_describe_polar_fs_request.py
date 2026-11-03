@@ -18,11 +18,12 @@ class DescribePolarFsRequest(DaraModel):
         polar_fs_type: str = None,
         region_id: str = None,
         relative_db_cluster_id: str = None,
+        resource_group_id: str = None,
         tag: List[main_models.DescribePolarFsRequestTag] = None,
     ):
-        # The instance ID of the PolarDB instance on which the application depends.
+        # The PolarDB instance ID that the application depends on.
         self.dbcluster_id = dbcluster_id
-        # The page number. The value must be an integer greater than 0 and not exceeding the maximum value of Integer.
+        # The page number. The value must be a positive integer that does not exceed the maximum integer value.
         self.page_number = page_number
         # The number of entries per page. Valid values:
         # 
@@ -34,7 +35,7 @@ class DescribePolarFsRequest(DaraModel):
         self.page_size = page_size
         # The description of the PolarFS instance.
         self.polar_fs_instance_description = polar_fs_instance_description
-        # The list of PolarFS instance IDs, separated by commas (,).
+        # The PolarFS instance IDs. Separate multiple instance IDs with commas (,).
         self.polar_fs_instance_ids = polar_fs_instance_ids
         # The PolarFS type.
         self.polar_fs_type = polar_fs_type
@@ -44,6 +45,8 @@ class DescribePolarFsRequest(DaraModel):
         self.region_id = region_id
         # The ID of the associated PolarDB cluster.
         self.relative_db_cluster_id = relative_db_cluster_id
+        # The resource group ID.
+        self.resource_group_id = resource_group_id
         # The tags.
         self.tag = tag
 
@@ -82,6 +85,9 @@ class DescribePolarFsRequest(DaraModel):
         if self.relative_db_cluster_id is not None:
             result['RelativeDbClusterId'] = self.relative_db_cluster_id
 
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+
         result['Tag'] = []
         if self.tag is not None:
             for k1 in self.tag:
@@ -114,6 +120,9 @@ class DescribePolarFsRequest(DaraModel):
 
         if m.get('RelativeDbClusterId') is not None:
             self.relative_db_cluster_id = m.get('RelativeDbClusterId')
+
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
 
         self.tag = []
         if m.get('Tag') is not None:

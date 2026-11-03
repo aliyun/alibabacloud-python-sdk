@@ -30,11 +30,9 @@ class DescribeGatewayAttributeResponseBody(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The instance type code.
+        # The specification code.
         self.class_code = class_code
-        # The creation time.
-        # 
-        # The time is displayed in ISO 8601 format in UTC (YYYY-MM-DDTHH:mm:ssZ).
+        # The creation time. The time is in ISO 8601 format and the UTC time zone (YYYY-MM-DDTHH:mm:ssZ).
         self.create_time = create_time
         # The current version number.
         self.current_version = current_version
@@ -42,11 +40,7 @@ class DescribeGatewayAttributeResponseBody(DaraModel):
         self.db_type = db_type
         # The list of endpoints.
         self.endpoints = endpoints
-        # The expiration time.
-        # 
-        # This parameter is empty when the billing method is Postpaid.
-        # 
-        # The time is displayed in ISO 8601 format in UTC (YYYY-MM-DDTHH:mm:ssZ).
+        # The expiration time. This parameter is empty when the billing method is pay-as-you-go. The time is in ISO 8601 format and the UTC time zone (YYYY-MM-DDTHH:mm:ssZ).
         self.expire_time = expire_time
         # Indicates whether the cluster has expired. Valid values:
         # 
@@ -60,9 +54,7 @@ class DescribeGatewayAttributeResponseBody(DaraModel):
         self.gw_description = gw_description
         # The latest version number.
         self.latest_version = latest_version
-        # The last modification time.
-        # 
-        # The time is displayed in ISO 8601 format in UTC (YYYY-MM-DDTHH:mm:ssZ).
+        # The last modification time. The time is in ISO 8601 format and the UTC time zone (YYYY-MM-DDTHH:mm:ssZ).
         self.modify_time = modify_time
         # The billing method. Valid values:
         # 
@@ -75,14 +67,14 @@ class DescribeGatewayAttributeResponseBody(DaraModel):
         self.request_id = request_id
         # The running version number.
         self.running_version = running_version
-        # The application-level IP whitelist.
+        # The application-level whitelist.
         self.security_iparrays = security_iparrays
         # The application status. Valid values:
         # 
-        # - CREATE: creating
-        # - ACTIVATION: running
+        # - CREATE: Creating.
+        # - ACTIVATION: Running.
         self.status = status
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
         # The ID of the VPC to which the vSwitch belongs.
         self.vpc_id = vpc_id
@@ -239,9 +231,9 @@ class DescribeGatewayAttributeResponseBodySecurityIPArrays(DaraModel):
         security_iparray_tag: str = None,
         security_iplist: str = None,
     ):
-        # The name of the IP whitelist. Default value: `default`.
+        # The name of the IP address whitelist. Default value: `default`.
         self.security_iparray_name = security_iparray_name
-        # The tag of the IP whitelist.
+        # The tag of the IP address whitelist.
         self.security_iparray_tag = security_iparray_tag
         # The IP addresses in the whitelist, separated by commas.
         self.security_iplist = security_iplist
@@ -295,10 +287,9 @@ class DescribeGatewayAttributeResponseBodyEndpoints(DaraModel):
         self.endpoint_id = endpoint_id
         # The gateway instance ID.
         self.gw_cluster_id = gw_cluster_id
-        # The network type of the endpoint. Valid values:
-        # 
-        # - Private: VPC
-        # - Public: Internet
+        # The endpoint type. Valid values:
+        # - Private: VPC address.
+        # - Public: Internet address.
         self.net_type = net_type
         # The port.
         self.port = port

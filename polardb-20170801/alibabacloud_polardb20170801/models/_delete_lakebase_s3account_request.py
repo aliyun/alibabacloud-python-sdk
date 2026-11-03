@@ -16,13 +16,13 @@ class DeleteLakebaseS3AccountRequest(DaraModel):
         # This parameter is required.
         self.pfs_instance_id = pfs_instance_id
         # The region ID.
-        # >You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available region IDs.
+        # >You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The access key of the S3 account to delete.
+        # The AccessKey of the S3 account that you want to delete.
         # 
-        # > The default account cannot be deleted.
+        # > You cannot delete the default account.
         # 
         # This parameter is required.
         self.user_acc_ak = user_acc_ak

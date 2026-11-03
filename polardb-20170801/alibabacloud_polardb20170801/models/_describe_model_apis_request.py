@@ -22,7 +22,7 @@ class DescribeModelApisRequest(DaraModel):
         # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
-        # The IDs of the model APIs.
+        # The model API IDs.
         self.model_api_ids = model_api_ids
         # The category. Valid values:
         # * **text**
@@ -42,7 +42,6 @@ class DescribeModelApisRequest(DaraModel):
         # The API path prefix.
         self.path_prefix = path_prefix
         # The protocol. Valid values:
-        # 
         # * **openai**
         # * **anthropic**
         # * **bailian**

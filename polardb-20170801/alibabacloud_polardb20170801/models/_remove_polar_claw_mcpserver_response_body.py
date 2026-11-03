@@ -20,7 +20,7 @@ class RemovePolarClawMCPServerResponseBody(DaraModel):
         self.code = code
         # The response message.
         self.message = message
-        # Indicates whether the operation was successful.
+        # Indicates whether the operation is successful.
         self.ok = ok
         # Id of the request
         self.request_id = request_id

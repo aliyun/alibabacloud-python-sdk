@@ -23,17 +23,17 @@ class RegisterAIDBClusterCustomModelRequest(DaraModel):
         registry_password: str = None,
         registry_username: str = None,
     ):
-        # The container startup environment variables. Variable names cannot be empty or contain whitespace. Variable values can be empty strings.
+        # The startup environment variables of the container. The variable name cannot be empty or contain whitespace, and the variable value can be an empty string.
         self.container_env = container_env
         # The name of the OSS bucket.
         # 
         # This parameter is required.
         self.custom_oss_bucket_name = custom_oss_bucket_name
-        # The model path in the OSS bucket.
+        # The path of the model in the OSS bucket.
         # 
         # This parameter is required.
         self.custom_oss_bucket_path = custom_oss_bucket_path
-        # The GPU instance type used for model deployment. Required when configuring deployment parameters.
+        # The GPU instance type used for model deployment. This parameter is required when configuring deployment parameters.
         self.dbinstance_class = dbinstance_class
         # The direct startup command for the model container.
         self.direct_command = direct_command
@@ -41,21 +41,21 @@ class RegisterAIDBClusterCustomModelRequest(DaraModel):
         self.display_model_name = display_model_name
         # The full reference of the customer-owned inference image, in the format of registry/repository:tag.
         self.image_name = image_name
-        # The inference engine. Required when configuring deployment parameters. Valid values: vllm and sglang.
+        # The inference engine. This parameter is required when configuring deployment parameters. Valid values: vllm and sglang.
         self.inference_engine = inference_engine
-        # The custom model registration key and model directory name.
+        # The registration key and directory name of the custom model.
         # 
         # This parameter is required.
         self.model_name = model_name
-        # The model startup parameters. Parameter keys must start with --.
+        # The startup parameters of the model. The parameter key must start with --.
         self.model_params = model_params
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The password or temporary token for the customer image repository. Required when ImageName is specified.
+        # The password or temporary token for the customer\\"s image repository. This parameter is required when ImageName is specified.
         self.registry_password = registry_password
-        # The username for the customer image repository. Required when ImageName is specified.
+        # The username for the customer\\"s image repository. This parameter is required when ImageName is specified.
         self.registry_username = registry_username
 
     def validate(self):

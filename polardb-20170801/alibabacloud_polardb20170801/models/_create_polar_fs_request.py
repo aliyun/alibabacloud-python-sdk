@@ -28,6 +28,7 @@ class CreatePolarFsRequest(DaraModel):
         period: str = None,
         promotion_code: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         storage_space: int = None,
         storage_type: str = None,
         used_time: str = None,
@@ -35,38 +36,38 @@ class CreatePolarFsRequest(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # The acceleration storage space for the Basic Edition with acceleration enabled. Unit: GB.
+        # The acceleration space for the Basic Edition. Unit: GB.
         self.accelerate_storage_size = accelerate_storage_size
-        # The acceleration mode. Valid values:
+        # Specifies whether to enable acceleration. Valid values:
         # 
         # - **ONLY**: enables acceleration only.
-        # - **ON**: enables cold data storage and acceleration.
+        # - **ON**: enables cold data and acceleration.
         self.accelerate_switch = accelerate_switch
         # The acceleration type. Valid values: 
         # 
         # - **juice**: file system acceleration.
         # - **alluxio**: transparent acceleration.
         self.accelerate_type = accelerate_type
-        # The list of authorized account IDs for the Cold Storage Edition instance, separated by commas (,).
+        # The list of authorized accounts for the cold storage instance. Separate multiple accounts with commas (`,`).
         self.authorized_user_ids = authorized_user_ids
         # Specifies whether to enable auto-renewal. Valid values:
         # 
-        # - **true**: Auto-renewal is enabled.
-        # - **false**: Auto-renewal is disabled.
+        # - **true**: enables auto-renewal.
+        # - **false**: disables auto-renewal.
         # 
         # Default value: **false**.
         # 
         # > This parameter takes effect only when **PayType** is set to **Prepaid**.
         self.auto_renew = auto_renew
         # Specifies whether to automatically use coupons. Valid values:
-        # - **true**: Coupons are automatically used (default).
-        # - **false**: Coupons are not used.
+        # - **true**: uses coupons (default).
+        # - **false**: does not use coupons.
         self.auto_use_coupon = auto_use_coupon
         # The edition. Valid values:
         # 
         # - **basic**: Basic Edition (default).
-        # - **cold**: Cold Storage Edition.
-        # - **high_performance**: High-performance Edition.
+        # - **cold**: cold storage edition.
+        # - **high_performance**: high-performance edition.
         self.creation_category = creation_category
         # The number of buckets.
         # 
@@ -76,9 +77,9 @@ class CreatePolarFsRequest(DaraModel):
         # 
         # > This parameter is required only when acceleration (file system acceleration) is enabled.
         self.custom_bucket_path = custom_bucket_path
-        # The bucket and path information.
+        # The bucket and corresponding path information.
         # 
-        # > This parameter is required for the transparent acceleration scenario.
+        # > This parameter is required for transparent acceleration.
         self.custom_bucket_path_list = custom_bucket_path_list
         # The custom AccessKey ID.
         self.custom_oss_ak = custom_oss_ak
@@ -86,7 +87,7 @@ class CreatePolarFsRequest(DaraModel):
         self.custom_oss_sk = custom_oss_sk
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The database engine. Valid values:
+        # The database ecosystem. Valid values:
         # - **MySQL**
         # - **PostgreSQL**
         self.dbtype = dbtype
@@ -95,36 +96,38 @@ class CreatePolarFsRequest(DaraModel):
         # - **Postpaid**: pay-as-you-go.
         # - **Prepaid**: subscription.
         self.pay_type = pay_type
-        # The unit of the subscription duration. This parameter is required if PayType is set to **Prepaid**. Specifies whether the subscription cluster uses a yearly or monthly billing cycle. Valid values: 
+        # If **PayType** is set to **Prepaid**, you must pass parameter. Specifies the upfront cluster as yearly or monthly. Valid values: 
         # 
-        # - **Year**: The subscription duration is measured in years.
-        # - **Month**: The subscription duration is measured in months.
+        # - **Year**: yearly. When you select subscription, the unit is year.
+        # - **Month**: monthly. When you select subscription, the unit is month.
         self.period = period
-        # The coupon code. If this parameter is not specified, the default coupon is used.
+        # The coupon code. If not specified, the default coupon is used.
         self.promotion_code = promotion_code
         # The region ID.
-        # >You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the region ID.
+        # >You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource group ID.
+        self.resource_group_id = resource_group_id
         # The storage space. Unit: GB.
         self.storage_space = storage_space
-        # Valid values for the high-performance storage type:
+        # The storage type. Valid values for high-performance clusters:
         # - **ESSDPL0**
         # - **ESSDPL1**
         # 
-        # Valid values for the Basic Edition storage type:
-        # - **city_redundancy (zone-redundant)**
+        # Valid values for Basic Edition clusters:
+        # - **city_redundancy** (zone redundancy)
         # 
-        # Valid values for the Cold Storage Edition storage type:
-        # - **city_redundancy (zone-redundant)**
-        # - **local_redundancy (locally redundant)**
+        # Valid values for cold storage clusters:
+        # - **city_redundancy** (zone redundancy)
+        # - **local_redundancy** (local redundancy)
         self.storage_type = storage_type
-        # The subscription duration. This parameter is required when PayType is set to **Prepaid**.
-        # - If **Period** is set to **Month**, valid values of **UsedTime** are integers in the range of `[1-9]`.
-        # - If **Period** is set to **Year**, valid values of **UsedTime** are integers in the range of `[1-3]`.
+        # The subscription duration. This parameter is required when **PayType** is set to **Prepaid**.
+        # - When **Period** is set to **Month**, the value of **UsedTime** is an integer ranging from `1` to `9`.
+        # - When **Period** is set to **Year**, the value of **UsedTime** is an integer ranging from `1` to `3`.
         self.used_time = used_time
-        # The virtual private cloud (VPC) ID.
+        # The VPC ID.
         self.vpcid = vpcid
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
@@ -197,6 +200,9 @@ class CreatePolarFsRequest(DaraModel):
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
 
         if self.storage_space is not None:
             result['StorageSpace'] = self.storage_space
@@ -276,6 +282,9 @@ class CreatePolarFsRequest(DaraModel):
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
 
         if m.get('StorageSpace') is not None:
             self.storage_space = m.get('StorageSpace')

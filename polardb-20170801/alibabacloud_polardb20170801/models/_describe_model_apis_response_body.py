@@ -114,24 +114,23 @@ class DescribeModelApisResponseBodyItems(DaraModel):
         self.config = config
         # The creation time.
         self.gmt_created = gmt_created
-        # The IDs of the model APIs.
+        # The model API IDs.
         self.model_api_id = model_api_id
         # The name of the model API.
         self.name = name
         # The API path prefix.
         self.path_prefix = path_prefix
         # The protocol. Valid values:
-        # 
         # * **openai**
         # * **anthropic**
         # * **bailian**
         # * **vllm**
         self.protocol = protocol
-        # The number of input points.
+        # The number of input tokens.
         self.record_input = record_input
-        # The number of output points.
+        # The number of output tokens.
         self.record_output = record_output
-        # The list of routing rules, formatted as a JSON array string.
+        # The list of routing rules, which is a JSON array string.
         self.route_rules = route_rules
         # The status of the model API.
         self.status = status

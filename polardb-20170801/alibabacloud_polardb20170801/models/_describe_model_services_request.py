@@ -17,33 +17,29 @@ class DescribeModelServicesRequest(DaraModel):
         region_id: str = None,
         status: str = None,
     ):
-        # The ID of the gateway instance.
+        # The gateway instance ID.
         # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
         # The model category.
         self.model_category = model_category
-        # The IDs of the model services. Separate multiple IDs with a comma (,).
+        # The model service IDs.
         self.model_service_ids = model_service_ids
-        # The name of the model service.
+        # The model service name.
         self.name = name
         # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
         # The protocol type. Valid values:
-        # 
-        # - **openai**
-        # 
-        # - **anthropic**
-        # 
-        # - **bailian**: Models from Model Studio.
-        # 
-        # - **vllm**
+        # * **openai**
+        # * **anthropic**
+        # * **bailian**
+        # * **vllm**
         self.protocol = protocol
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
-        # The status of the model service.
+        # The status.
         self.status = status
 
     def validate(self):

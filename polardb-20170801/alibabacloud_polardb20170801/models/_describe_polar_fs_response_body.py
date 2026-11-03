@@ -19,11 +19,11 @@ class DescribePolarFsResponseBody(DaraModel):
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The number of records on the current page.
+        # The number of entries on the current page.
         self.page_record_count = page_record_count
         # Id of the request
         self.request_id = request_id
-        # The total number of records.
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -128,6 +128,7 @@ class DescribePolarFsResponseBodyItemsPolarFsPaths(DaraModel):
         polar_fs_type: str = None,
         region_id: str = None,
         relative_db_cluster_id: str = None,
+        resource_group_id: str = None,
         security_group_id: str = None,
         storage_space: int = None,
         storage_type: str = None,
@@ -154,6 +155,7 @@ class DescribePolarFsResponseBodyItemsPolarFsPaths(DaraModel):
         self.polar_fs_type = polar_fs_type
         self.region_id = region_id
         self.relative_db_cluster_id = relative_db_cluster_id
+        self.resource_group_id = resource_group_id
         self.security_group_id = security_group_id
         self.storage_space = storage_space
         self.storage_type = storage_type
@@ -228,6 +230,9 @@ class DescribePolarFsResponseBodyItemsPolarFsPaths(DaraModel):
 
         if self.relative_db_cluster_id is not None:
             result['RelativeDbClusterId'] = self.relative_db_cluster_id
+
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
 
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
@@ -309,6 +314,9 @@ class DescribePolarFsResponseBodyItemsPolarFsPaths(DaraModel):
 
         if m.get('RelativeDbClusterId') is not None:
             self.relative_db_cluster_id = m.get('RelativeDbClusterId')
+
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
 
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')

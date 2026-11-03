@@ -12,7 +12,7 @@ class EnableDBClusterOrcaResponseBody(DaraModel):
     ):
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

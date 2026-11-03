@@ -62,17 +62,17 @@ class DescribeBackupLogDownloadLinksResponseBodyBackupLogDownloadLinkItem(DaraMo
         link_expired_time: str = None,
         message: str = None,
     ):
-        # The ID of the redo log backup.
+        # The ID of the physical backup log.
         self.backup_log_id = backup_log_id
-        # The public download link for the redo log backup.
+        # The public download URL of the physical backup log.
         self.download_link = download_link
-        # The error code for the individual record. Empty if the request is successful.
+        # The error code for a single item. This parameter is empty if the request is successful.
         self.error_code = error_code
-        # The internal network download link for the redo log backup.
+        # The internal network download URL of the physical backup log.
         self.intranet_download_link = intranet_download_link
-        # The expiration time of the download link in UTC.
+        # The expiration time of the download URL. The time is displayed in UTC.
         self.link_expired_time = link_expired_time
-        # The error message for the individual record. Empty if the request is successful.
+        # The error message for a single item. This parameter is empty if the request is successful.
         self.message = message
 
     def validate(self):

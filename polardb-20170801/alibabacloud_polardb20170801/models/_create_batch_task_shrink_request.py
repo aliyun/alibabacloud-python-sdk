@@ -9,6 +9,7 @@ class CreateBatchTaskShrinkRequest(DaraModel):
         self,
         application_type: str = None,
         instance_ids_shrink: str = None,
+        instance_params: str = None,
         param: str = None,
         region_id: str = None,
         task_name: str = None,
@@ -16,14 +17,15 @@ class CreateBatchTaskShrinkRequest(DaraModel):
     ):
         # The target application type of the batch task.
         self.application_type = application_type
-        # The instance IDs.
+        # The machine instance IDs.
         # 
         # This parameter is required.
         self.instance_ids_shrink = instance_ids_shrink
+        # The per-instance parameter overrides (JSON object: instanceId -> param). This parameter is used in scenarios where multiple instances have different targets, such as different agent workspaces.
+        self.instance_params = instance_params
         # The archive parameters.
         self.param = param
-        # The region ID.
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to view the region information of all clusters under the target account.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to view the regions of all clusters under the target account.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -50,6 +52,9 @@ class CreateBatchTaskShrinkRequest(DaraModel):
         if self.instance_ids_shrink is not None:
             result['InstanceIds'] = self.instance_ids_shrink
 
+        if self.instance_params is not None:
+            result['InstanceParams'] = self.instance_params
+
         if self.param is not None:
             result['Param'] = self.param
 
@@ -71,6 +76,9 @@ class CreateBatchTaskShrinkRequest(DaraModel):
 
         if m.get('InstanceIds') is not None:
             self.instance_ids_shrink = m.get('InstanceIds')
+
+        if m.get('InstanceParams') is not None:
+            self.instance_params = m.get('InstanceParams')
 
         if m.get('Param') is not None:
             self.param = m.get('Param')

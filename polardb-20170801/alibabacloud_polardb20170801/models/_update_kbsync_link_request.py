@@ -25,7 +25,7 @@ class UpdateKBSyncLinkRequest(DaraModel):
         self.client_id = client_id
         # The client secret.
         self.client_secret = client_secret
-        # The validity period of a successful Lark group member snapshot used for fallback reuse, in seconds. This parameter can be explicitly set only for FEISHU synchronization links. A value of -1 indicates that the snapshot never expires. A value of 0 disables snapshot fallback reuse. A positive integer indicates the maximum age of a snapshot allowed for reuse. If this parameter is omitted, the original value is retained. Explicitly passing -1 restores the default behavior.
+        # The validity period of the successful Lark group member snapshot for fallback reuse, in seconds. This parameter can only be explicitly set for FEISHU synchronization links. A value of -1 indicates that the snapshot never expires. A value of 0 disables snapshot fallback reuse. A positive integer indicates the maximum age of the snapshot allowed for reuse. If this parameter is omitted, the original value is retained. Explicitly passing -1 restores the default behavior.
         self.feishu_chat_member_stale_ttl_seconds = feishu_chat_member_stale_ttl_seconds
         # The unique identifier of the knowledge base.
         # 
@@ -35,23 +35,23 @@ class UpdateKBSyncLinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.link_id = link_id
-        # The endpoint of the DingTalk Docs MCP server.
+        # The endpoint of the DingTalk document MCP server.
         self.mcp_endpoint = mcp_endpoint
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The endpoint of the DingTalk Sheets MCP server.
+        # The endpoint of the DingTalk sheet MCP server.
         self.sheet_mcp_endpoint = sheet_mcp_endpoint
-        # Specifies whether to enable automatic synchronization. This parameter must be modified individually and cannot be changed along with other configurations.
+        # Specifies whether to enable automatic synchronization. This parameter can only be modified individually and cannot be changed together with other configurations.
         self.sync_enabled = sync_enabled
         # 20
         self.sync_interval_minutes = sync_interval_minutes
         # The new Lark user access token.
         self.user_access_token = user_access_token
-        # The ID of the DingTalk user that performs the operation.
+        # The ID of the DingTalk user who performs the operation.
         self.user_id = user_id
-        # The new Lark user refresh token. Pass this parameter together with UserAccessToken. Passing empty strings for both parameters indicates deletion.
+        # The new Lark user refresh token. This parameter must be passed together with UserAccessToken. Passing empty strings for both parameters deletes the tokens.
         self.user_refresh_token = user_refresh_token
 
     def validate(self):

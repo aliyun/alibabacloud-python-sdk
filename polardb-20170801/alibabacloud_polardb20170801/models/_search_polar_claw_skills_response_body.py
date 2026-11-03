@@ -18,9 +18,9 @@ class SearchPolarClawSkillsResponseBody(DaraModel):
     ):
         # The application ID.
         self.application_id = application_id
-        # The response status code.
+        # The returned status code.
         self.code = code
-        # The response message.
+        # The returned message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -97,7 +97,7 @@ class SearchPolarClawSkillsResponseBodyResults(DaraModel):
         self.slug = slug
         # The brief description.
         self.summary = summary
-        # The UNIX timestamp of the last update, in seconds.
+        # The last update timestamp in UNIX seconds.
         self.updated_at = updated_at
         # The latest version.
         self.version = version
