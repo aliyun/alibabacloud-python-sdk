@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
+from typing import Any, Dict
 
 from alibabacloud_aidge20260428 import models as main_models
 from darabonba.model import DaraModel
@@ -18,15 +18,15 @@ class ImageMattingResponseBody(DaraModel):
     ):
         # The response code.
         self.code = code
-        # The matting result.
+        # The image matting result.
         self.data = data
         # The error message.
         self.message = message
         # Id of the request
         self.request_id = request_id
         # Indicates whether the call is successful. Valid values:
-        # - true: Successful.
-        # - false: Failed.
+        # - true: The call is successful.
+        # - false: The call fails.
         self.success = success
 
     def validate(self):
@@ -81,18 +81,21 @@ class ImageMattingResponseBodyData(DaraModel):
         height: int = None,
         image_url: str = None,
         score: float = None,
+        struct_data: Any = None,
         usage_map: Dict[str, int] = None,
         width: int = None,
     ):
-        # The height of the result image in pixels.
+        # The height of the result image. Unit: pixels.
         self.height = height
-        # The URL of the image matting result.
+        # The URL of the result image.
         self.image_url = image_url
-        # The quality score of the image matting result.
+        # The matting quality score.
         self.score = score
+        # The returned layer information. This includes the URL of the original image, the URL of the matting result, and the matting area information.
+        self.struct_data = struct_data
         # The usage information.
         self.usage_map = usage_map
-        # The width of the result image in pixels.
+        # The width of the result image. Unit: pixels.
         self.width = width
 
     def validate(self):
@@ -112,6 +115,9 @@ class ImageMattingResponseBodyData(DaraModel):
         if self.score is not None:
             result['Score'] = self.score
 
+        if self.struct_data is not None:
+            result['StructData'] = self.struct_data
+
         if self.usage_map is not None:
             result['UsageMap'] = self.usage_map
 
@@ -130,6 +136,9 @@ class ImageMattingResponseBodyData(DaraModel):
 
         if m.get('Score') is not None:
             self.score = m.get('Score')
+
+        if m.get('StructData') is not None:
+            self.struct_data = m.get('StructData')
 
         if m.get('UsageMap') is not None:
             self.usage_map = m.get('UsageMap')

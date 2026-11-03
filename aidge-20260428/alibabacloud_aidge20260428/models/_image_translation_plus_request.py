@@ -21,7 +21,7 @@ class ImageTranslationPlusRequest(DaraModel):
         # 
         # This parameter is required.
         self.image_url = image_url
-        # Specifies whether to translate text on the product body. This parameter is optional. Default value: false.
+        # Specifies whether to translate the text on the product subject. This parameter is optional. Default value: false.
         self.including_product_area = including_product_area
         # The source language. This parameter is required.
         # 
@@ -31,7 +31,7 @@ class ImageTranslationPlusRequest(DaraModel):
         # 
         # This parameter is required.
         self.target_language = target_language
-        # Specifies whether to translate brand text on the product. This parameter is optional. Default value: false.
+        # Specifies whether to translate the text on the brand. This parameter is optional. Default value: false.
         self.translating_brand_in_the_product = translating_brand_in_the_product
         # Specifies whether to use the image translation editor protocol. This parameter is optional.
         self.use_image_editor = use_image_editor

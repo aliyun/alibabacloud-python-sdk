@@ -16,17 +16,17 @@ class ImageRemovalProResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. This parameter is not returned if the call is successful.
+        # The error code. This parameter is not returned when the call is successful.
         self.code = code
-        # The Intelligent Eraser Pro result.
+        # The result of the intelligent object removal Pro operation.
         self.data = data
-        # The error message. This parameter is not returned if the call is successful.
+        # The error message. This parameter is not returned when the call is successful.
         self.message = message
         # Id of the request
         self.request_id = request_id
         # Indicates whether the call is successful. Valid values:
         # - true: The call is successful.
-        # - false: The call failed.
+        # - false: The call fails.
         self.success = success
 
     def validate(self):
@@ -82,9 +82,9 @@ class ImageRemovalProResponseBodyData(DaraModel):
         task_id: str = None,
         usage_map: Dict[str, int] = None,
     ):
-        # The URL of the erasure result image. This parameter is returned in synchronous mode.
+        # The URL of the result image. This parameter is returned in synchronous mode.
         self.image_url = image_url
-        # The asynchronous task ID. This parameter is returned in asynchronous mode and is used to query task results.
+        # The ID of the asynchronous task. This parameter is returned in asynchronous mode and is used to query the task result.
         self.task_id = task_id
         # The usage details. This parameter is returned in synchronous mode.
         self.usage_map = usage_map

@@ -18,13 +18,13 @@ class ImageTranslationStandardResponseBody(DaraModel):
     ):
         # The response code. A value of 200 indicates a successful call. For other response codes, refer to the error code information.
         self.code = code
-        # The translation result data, including the translated image URL and usage information.
+        # The translation result data, including the URL of the translated image and usage information.
         self.data = data
-        # The error message. "Success" is returned for a successful call. A specific error message is returned for a failed call.
+        # The error message. This parameter returns Success for successful calls and specific error messages for exceptions.
         self.message = message
-        # The request ID, which uniquely identifies the request.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure.
+        # Indicates whether the call was successful. A value of true indicates success, and a value of false indicates failure.
         self.success = success
 
     def validate(self):
@@ -82,9 +82,9 @@ class ImageTranslationStandardResponseBodyData(DaraModel):
     ):
         # The edit information.
         self.edit_info = edit_info
-        # The URL of the image generated after image translation.
+        # The URL of the image generated after the image translation.
         self.image_url = image_url
-        # The usage information, including the number of processed images.
+        # The usage information, such as the number of processed images.
         self.usage_map = usage_map
 
     def validate(self):
@@ -260,7 +260,7 @@ class ImageTranslationStandardResponseBodyDataEditInfoTextAreas(DaraModel):
         self.fontsize = fontsize
         # The horizontal layout.
         self.horizontal_layout = horizontal_layout
-        # The line count.
+        # The number of lines.
         self.line_count = line_count
         # The list of texts.
         self.texts = texts
@@ -355,7 +355,7 @@ class ImageTranslationStandardResponseBodyDataEditInfoTextAreasTexts(DaraModel):
         self.image_rect = image_rect
         # The language.
         self.language = language
-        # The line count.
+        # The number of lines.
         self.line_count = line_count
         # The text area.
         self.text_rect = text_rect

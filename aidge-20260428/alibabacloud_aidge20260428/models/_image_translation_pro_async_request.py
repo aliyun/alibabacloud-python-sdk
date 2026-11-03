@@ -16,14 +16,14 @@ class ImageTranslationProAsyncRequest(DaraModel):
         translating_brand_in_the_product: bool = None,
         use_image_editor: bool = None,
     ):
-        # The business ID of the caller. This ID is recorded when the request is accepted and returned as-is when you query the asynchronous task result.
+        # The business order ID of the caller. This ID is recorded when the request is accepted and returned as-is when you query the asynchronous task result.
         self.biz_id = biz_id
         # The ID of the intervention glossary. You must create the glossary in the console and provide its ID. If this parameter is left empty, the translation results are not modified.
         self.glossary = glossary
-        # • Image URL: The URL must be publicly accessible over the Internet.   
-        # • Formats: PNG, JPEG, JPG, BMP, and WEBP.   
-        # • Pixels: The width and height cannot exceed 4,000 pixels.  
-        # • File size: The original file size cannot exceed 10 MB.
+        # * Image URL: Must be accessible over the Internet.   
+        # * Format: PNG, JPEG, JPG, BMP, and WebP.   
+        # * Pixels: The width and height must not exceed 4,000.  
+        # * File size: The original file must be less than or equal to 10 MB.
         # 
         # This parameter is required.
         self.image_url = image_url
@@ -39,7 +39,7 @@ class ImageTranslationProAsyncRequest(DaraModel):
         self.target_language = target_language
         # Specifies whether to translate brand names in the image. Default value: false, which indicates that brand names are not translated.
         self.translating_brand_in_the_product = translating_brand_in_the_product
-        # Specifies whether to return layout information such as the position, font, and color of the text. If you set this parameter to true, layer information is returned, which can be used for secondary editing when you integrate an image editor. Default value: false.
+        # Specifies whether to return layout information such as the position, font, and color of the text. When this parameter is set to true, layer information is returned, which can be used for secondary editing in an image editor. Default value: false.
         self.use_image_editor = use_image_editor
 
     def validate(self):

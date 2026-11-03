@@ -16,15 +16,15 @@ class CategoryMatchResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code. The value "success" is returned for successful calls.
+        # The status code. "success" is returned for successful calls.
         self.code = code
         # The product category matching result.
         self.data = data
-        # The error message. The value "Success" is returned for successful calls.
+        # The error message. "Success" is returned for successful calls.
         self.message = message
-        # The request ID, which uniquely identifies the request.
+        # The request ID, which is used to identify a unique request call.
         self.request_id = request_id
-        # Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure.
+        # Indicates whether the call is successful. A value of true indicates success, and a value of false indicates failure.
         self.success = success
 
     def validate(self):
@@ -84,17 +84,17 @@ class CategoryMatchResponseBodyData(DaraModel):
         reason: str = None,
         usage_map: Dict[str, int] = None,
     ):
-        # The ID of the matched category.
+        # The matched category ID.
         self.category_id = category_id
-        # The name of the matched category.
+        # The matched category name.
         self.category_name = category_name
         # The full path of the category, separated by forward slashes (/).
         self.category_path = category_path
-        # The match confidence score. Valid values: 0 to 100.
+        # The matching confidence score, ranging from 0 to 100.
         self.confidence = confidence
-        # Indicates whether the category matching is successful.
+        # Indicates whether the match is successful.
         self.match_successful = match_successful
-        # The reason for the category match.
+        # The matching rationale.
         self.reason = reason
         # The usage information.
         self.usage_map = usage_map

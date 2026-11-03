@@ -12,13 +12,13 @@ class AiTryOnRequest(DaraModel):
         model_image_url: str = None,
         resolution: str = None,
     ):
-        # The URL of the garment image. Only one image is supported. The URL must be a publicly accessible `http` or `https` address. The image must be in JPG, JPEG, PNG, BMP, or WEBP format, with a resolution between 256×256 and 2049×2049 pixels, and a file size not exceeding 10 MB.<br>
+        # The URL of the clothing image. Only one image is supported. The URL must be a publicly accessible `http` or `https` address. The image must be in JPG, JPEG, PNG, BMP, or WEBP format. The resolution must be between 256 × 256 and 2049 × 2049 pixels, and the file size cannot exceed 10 MB.<br>
         # 
         # This parameter is required.
         self.cloth_image_url = cloth_image_url
-        # The type of the garment. Valid values: tops, bottoms, dresses, tops_and_bottoms, shoes, and hats. If this parameter is not specified, the system automatically recognizes the garment type.
+        # The type of the clothing. If you specify this parameter, set it to tops, bottoms, dresses, tops_and_bottoms, shoes, or hats. If you do not specify this parameter, the system automatically recognizes the clothing type.
         self.cloth_type = cloth_type
-        # The URL of the model image. Only one image is supported. The URL must be a publicly accessible `http` or `https` address. The image must be in JPG, JPEG, PNG, BMP, or WEBP format, with a resolution between 256×256 and 2049×2049 pixels, and a file size not exceeding 10 MB.<br>
+        # The URL of the model image. Only one image is supported. The URL must be a publicly accessible `http` or `https` address. The image must be in JPG, JPEG, PNG, BMP, or WEBP format. The resolution must be between 256 × 256 and 2049 × 2049 pixels, and the file size cannot exceed 10 MB.<br>
         # 
         # This parameter is required.
         self.model_image_url = model_image_url

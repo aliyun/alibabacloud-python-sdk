@@ -14,15 +14,15 @@ class TextTranslateAsyncResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code of the submission call. Example: success.
+        # The response code for the submission call. A success example is success.
         self.code = code
         # The submission result of the text translation asynchronous node.
         self.data = data
-        # The invocation message. Example of a successful call: Success. If the call fails, check the actual error message.
+        # The call description. A success example is Success. If the call fails, read the actual error message.
         self.message = message
         # The ID of the submission request. It is used for troubleshooting.
         self.request_id = request_id
-        # Indicates whether the submission call is successful. A successful call does not mean that the translation is complete.
+        # Indicates whether the submission call is successful. It does not indicate that the translation is complete.
         self.success = success
 
     def validate(self):

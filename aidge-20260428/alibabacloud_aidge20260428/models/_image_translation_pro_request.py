@@ -16,37 +16,36 @@ class ImageTranslationProRequest(DaraModel):
         translating_brand_in_the_product: bool = None,
         use_image_editor: bool = None,
     ):
-        # Specifies whether to use asynchronous mode. Default value: false (synchronous mode). When set to true, the API immediately returns a TaskId. Use the query translation result API to retrieve the final result.
+        # Specifies whether to use the asynchronous mode. Default value: false, which indicates the synchronous mode. If set to true, the API immediately returns a TaskId, and you must call the query translation results API to obtain the final results.
         self.async_ = async_
-        # The ID of the intervention glossary. This parameter is optional. Create the glossary separately in the console and provide its ID. If the glossary ID is empty, the translation results are not modified.
+        # The ID of the intervention glossary. Optional. You must create the glossary in the console and provide its ID. If the intervention glossary ID is empty, the translation results are not modified.
         self.glossary = glossary
-        # The URL of the original image. This parameter is required.
-        # 
-        # Image requirements:
-        # - Image URL: The URL must be publicly accessible.
-        # - Format: png, jpeg, jpg, bmp, or webp.
-        # - Pixels: The width and height must not exceed 4000 pixels each.
-        # - File size: The original file must be 10 MB or smaller.
+        # The URL of the source image. Required.  
+        # Image requirements:  
+        # • Image URL: Must be publicly accessible.   
+        # • Format: PNG, JPEG, JPG, BMP, or WEBP.   
+        # • Pixels: The width and height must not exceed 4,000 pixels.  
+        # • File size: The original file must be 10 MB or smaller.
         # 
         # This parameter is required.
         self.image_url = image_url
-        # Specifies whether to translate text on the image subject. This parameter is optional. Default value: false. Setting this parameter to false helps protect information such as embedded product names from being translated.
+        # Specifies whether to translate text on the product subject in the image. Optional. Default value: false. This helps you protect information and prevents embedded information such as product names from being translated.
         self.including_product_area = including_product_area
-        # The source language code. This parameter is required.   
-        # <props="china">For supported language directions, see [Language direction mapping](https://www.alibabacloud.com/help/en/document_detail/3041883.html).   
-        # <props="intl">For supported language directions, see [Language direction mapping](https://www.alibabacloud.com/help/zh/aidge/language-direction-mapping).
+        # The source language code. Required.   
+        # <props="china">For supported language pairs, see [Language pair mapping table](https://www.alibabacloud.com/help/en/document_detail/3041883.html).   
+        # <props="intl">For supported language pairs, see [Language pair mapping table](https://www.alibabacloud.com/help/zh/aidge/language-direction-mapping).
         # 
         # This parameter is required.
         self.source_language = source_language
-        # The target language code. This parameter is required.   
-        # <props="china">For supported language directions, see [Language direction mapping](https://www.alibabacloud.com/help/en/document_detail/3041883.html).   
-        # <props="intl">For supported language directions, see [Language direction mapping](https://www.alibabacloud.com/help/zh/aidge/language-direction-mapping).
+        # The target language code. Required.   
+        # <props="china">For supported language pairs, see [Language pair mapping table](https://www.alibabacloud.com/help/en/document_detail/3041883.html).   
+        # <props="intl">For supported language pairs, see [Language pair mapping table](https://www.alibabacloud.com/help/zh/aidge/language-direction-mapping).
         # 
         # This parameter is required.
         self.target_language = target_language
-        # Specifies whether to translate brand names on images. This parameter is optional. Default value: false. Setting this parameter to false helps protect brand name information from being translated.
+        # Specifies whether to translate brand names in the image. Optional. Default value: false. This helps you protect brand name information from being translated.
         self.translating_brand_in_the_product = translating_brand_in_the_product
-        # Specifies whether to return layout information such as text position, font, and color. When set to true, layer information is returned, which can be used with an image editor for secondary editing. Default value: false.
+        # Specifies whether to return layout information such as text position, font, and color. If set to true, layer information is returned, which can be used for secondary editing in an image editor. Default value: false.
         self.use_image_editor = use_image_editor
 
     def validate(self):

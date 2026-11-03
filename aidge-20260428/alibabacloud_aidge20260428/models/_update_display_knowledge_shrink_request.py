@@ -14,7 +14,7 @@ class UpdateDisplayKnowledgeShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.rag_id = rag_id
-        # The records to update. A maximum of 500 records can be specified.
+        # The records to be modified. A maximum of 500 records can be specified.
         # 
         # This parameter is required.
         self.records_shrink = records_shrink

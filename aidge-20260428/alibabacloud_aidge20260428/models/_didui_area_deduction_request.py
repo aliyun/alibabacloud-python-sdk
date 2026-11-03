@@ -15,13 +15,13 @@ class DiduiAreaDeductionRequest(DaraModel):
         req_id: str = None,
         target_image_url: str = None,
     ):
-        # The list of products and their detection boxes.
+        # The list of products and bounding boxes.
         # 
         # This parameter is required.
         self.products = products
-        # The ID of the customer-specific SKU vector database that determines which database is used for recall. The database must be created in advance through the database creation process.
+        # The ID of the customer\\"s dedicated SKU vector database, which determines the database used for retrieval. The database must be created through the database creation process in advance.
         self.rag_id = rag_id
-        # The optional business request ID used for Tracing Analysis.
+        # The optional business request ID, used for end-to-end Tracing Analysis.
         self.req_id = req_id
         # The HTTPS URL of the overall floor display image.
         # 
@@ -80,7 +80,7 @@ class DiduiAreaDeductionRequestProducts(DaraModel):
         boxes: List[main_models.DiduiAreaDeductionRequestProductsBoxes] = None,
         sku_id: str = None,
     ):
-        # The instance boxes for the current SKU. The coordinate range is 0 to 1000.
+        # The bounding boxes of the current SKU, with coordinate values ranging from 0 to 1000.
         # 
         # This parameter is required.
         self.boxes = boxes
@@ -131,19 +131,19 @@ class DiduiAreaDeductionRequestProductsBoxes(DaraModel):
         right: float = None,
         top: float = None,
     ):
-        # The bottom boundary of the detection box.
+        # The bottom boundary of the bounding box.
         # 
         # This parameter is required.
         self.bottom = bottom
-        # The left boundary of the detection box.
+        # The left boundary of the bounding box.
         # 
         # This parameter is required.
         self.left = left
-        # The right boundary of the detection box.
+        # The right boundary of the bounding box.
         # 
         # This parameter is required.
         self.right = right
-        # The top boundary of the detection box.
+        # The top boundary of the bounding box.
         # 
         # This parameter is required.
         self.top = top

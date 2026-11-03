@@ -17,7 +17,7 @@ class AssetOptimizeLiteRequest(DaraModel):
         target_platform: str = None,
         translating_brand_in_the_product: bool = None,
     ):
-        # The custom glossary for term intervention.
+        # The intervention glossary.
         self.glossary = glossary
         # Specifies whether product area translation is included.
         self.including_product_area = including_product_area

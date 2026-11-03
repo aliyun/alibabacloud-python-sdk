@@ -1112,6 +1112,120 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.general_rephotography_detection_with_options_async(request, runtime)
 
+    def generate_product_content_with_options(
+        self,
+        request: main_models.GenerateProductContentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GenerateProductContentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bullet_point_count):
+            query['BulletPointCount'] = request.bullet_point_count
+        if not DaraCore.is_null(request.content_type):
+            query['ContentType'] = request.content_type
+        if not DaraCore.is_null(request.enable_translation):
+            query['EnableTranslation'] = request.enable_translation
+        if not DaraCore.is_null(request.max_length):
+            query['MaxLength'] = request.max_length
+        if not DaraCore.is_null(request.min_length):
+            query['MinLength'] = request.min_length
+        if not DaraCore.is_null(request.operation):
+            query['Operation'] = request.operation
+        if not DaraCore.is_null(request.platform):
+            query['Platform'] = request.platform
+        if not DaraCore.is_null(request.product_attributes):
+            query['ProductAttributes'] = request.product_attributes
+        if not DaraCore.is_null(request.product_category):
+            query['ProductCategory'] = request.product_category
+        if not DaraCore.is_null(request.source_language):
+            query['SourceLanguage'] = request.source_language
+        if not DaraCore.is_null(request.source_text):
+            query['SourceText'] = request.source_text
+        if not DaraCore.is_null(request.target_language):
+            query['TargetLanguage'] = request.target_language
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GenerateProductContent',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GenerateProductContentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def generate_product_content_with_options_async(
+        self,
+        request: main_models.GenerateProductContentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GenerateProductContentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bullet_point_count):
+            query['BulletPointCount'] = request.bullet_point_count
+        if not DaraCore.is_null(request.content_type):
+            query['ContentType'] = request.content_type
+        if not DaraCore.is_null(request.enable_translation):
+            query['EnableTranslation'] = request.enable_translation
+        if not DaraCore.is_null(request.max_length):
+            query['MaxLength'] = request.max_length
+        if not DaraCore.is_null(request.min_length):
+            query['MinLength'] = request.min_length
+        if not DaraCore.is_null(request.operation):
+            query['Operation'] = request.operation
+        if not DaraCore.is_null(request.platform):
+            query['Platform'] = request.platform
+        if not DaraCore.is_null(request.product_attributes):
+            query['ProductAttributes'] = request.product_attributes
+        if not DaraCore.is_null(request.product_category):
+            query['ProductCategory'] = request.product_category
+        if not DaraCore.is_null(request.source_language):
+            query['SourceLanguage'] = request.source_language
+        if not DaraCore.is_null(request.source_text):
+            query['SourceText'] = request.source_text
+        if not DaraCore.is_null(request.target_language):
+            query['TargetLanguage'] = request.target_language
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GenerateProductContent',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GenerateProductContentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def generate_product_content(
+        self,
+        request: main_models.GenerateProductContentRequest,
+    ) -> main_models.GenerateProductContentResponse:
+        runtime = RuntimeOptions()
+        return self.generate_product_content_with_options(request, runtime)
+
+    async def generate_product_content_async(
+        self,
+        request: main_models.GenerateProductContentRequest,
+    ) -> main_models.GenerateProductContentResponse:
+        runtime = RuntimeOptions()
+        return await self.generate_product_content_with_options_async(request, runtime)
+
     def image_cropping_with_options(
         self,
         request: main_models.ImageCroppingRequest,
@@ -2549,6 +2663,80 @@ class Client(OpenApiClient):
     ) -> main_models.ImageTranslationStandardAsyncResponse:
         runtime = RuntimeOptions()
         return await self.image_translation_standard_async_with_options_async(request, runtime)
+
+    def image_upscale_with_options(
+        self,
+        request: main_models.ImageUpscaleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImageUpscaleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.upscale_factor):
+            query['UpscaleFactor'] = request.upscale_factor
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImageUpscale',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImageUpscaleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def image_upscale_with_options_async(
+        self,
+        request: main_models.ImageUpscaleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImageUpscaleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.upscale_factor):
+            query['UpscaleFactor'] = request.upscale_factor
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImageUpscale',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImageUpscaleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def image_upscale(
+        self,
+        request: main_models.ImageUpscaleRequest,
+    ) -> main_models.ImageUpscaleResponse:
+        runtime = RuntimeOptions()
+        return self.image_upscale_with_options(request, runtime)
+
+    async def image_upscale_async(
+        self,
+        request: main_models.ImageUpscaleRequest,
+    ) -> main_models.ImageUpscaleResponse:
+        runtime = RuntimeOptions()
+        return await self.image_upscale_with_options_async(request, runtime)
 
     def language_detect_with_options(
         self,

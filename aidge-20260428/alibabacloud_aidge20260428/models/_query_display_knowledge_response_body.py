@@ -22,7 +22,7 @@ class QueryDisplayKnowledgeResponseBody(DaraModel):
         self.data = data
         # The returned message or failure description.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # Indicates whether the call is successful.
         self.success = success
@@ -93,19 +93,19 @@ class QueryDisplayKnowledgeResponseBodyData(DaraModel):
         self.error_code = error_code
         # The business error message.
         self.error_message = error_message
-        # The knowledge base status.
+        # The status of the knowledge base.
         self.knowledge_base_status = knowledge_base_status
         # The page number.
         self.page_num = page_num
         # The number of entries per page.
         self.page_size = page_size
-        # The knowledge base ID.
+        # The ID of the knowledge base.
         self.rag_id = rag_id
         # The records on the current page.
         self.records = records
         # Indicates whether the business processing is successful.
         self.success = success
-        # The asynchronous task ID. This parameter is empty for synchronous API operations.
+        # The ID of the asynchronous task. This parameter is empty for synchronous API operations.
         self.task_id = task_id
         # The total number of records.
         self.total = total
@@ -221,9 +221,9 @@ class QueryDisplayKnowledgeResponseBodyDataRecords(DaraModel):
         sku_name: str = None,
         status: str = None,
     ):
-        # The description of the failure cause. This parameter is returned only when the status is FAILED.
+        # The description of the failure reason. This parameter is returned only when the status is FAILED.
         self.failure_message = failure_message
-        # The code of the failure cause. This parameter is returned only when the status is FAILED.
+        # The code of the failure reason. This parameter is returned only when the status is FAILED.
         self.failure_reason = failure_reason
         # The last modified time.
         self.gmt_modified = gmt_modified
@@ -231,13 +231,13 @@ class QueryDisplayKnowledgeResponseBodyDataRecords(DaraModel):
         self.image_url = image_url
         # The expiration time of the signed URL.
         self.image_url_expire_time = image_url_expire_time
-        # The record ID.
+        # The ID of the record.
         self.record_id = record_id
         # SKU ID
         self.sku_id = sku_id
-        # The SKU name.
+        # The name of the SKU.
         self.sku_name = sku_name
-        # The record status.
+        # The status of the record.
         self.status = status
 
     def validate(self):

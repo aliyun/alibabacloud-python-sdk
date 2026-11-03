@@ -20,37 +20,37 @@ class AssetOptimizeProShrinkRequest(DaraModel):
         threshold: float = None,
         translating_brand_in_the_product: bool = None,
     ):
-        # The list of column names to recognize in size chart images. Optional.
+        # The list of column names to be recognized in the size chart. This parameter is optional.
         self.column_name_list_shrink = column_name_list_shrink
-        # The glossary ID. Optional. Create a glossary in the console and provide its ID. If left empty, translation results are not modified by any glossary.
+        # The ID of the intervention glossary. This parameter is optional. You must create the glossary in the console and provide its ID. If this parameter is left empty, the translation results are not modified.
         self.glossary = glossary
-        # Specifies whether to translate text on the product subject area of images. Setting this to false helps protect embedded information such as product names from being translated. Default value: false.
+        # Specifies whether to translate the text on the main subject of the image. This helps protect embedded information such as product names from being translated. Default value: false.
         self.including_product_area = including_product_area
-        # The output language format for size chart images. If not specified, the original format is used. Set to en for English output or cn for Chinese output.
+        # The output language format for the size chart. If this parameter is left empty, the original language is used. Valid values: en for English, cn for Chinese.
         self.language_model = language_model
-        # Specifies whether translation is required (true/false). If set to true, SourceLanguage and TargetLanguage are required.
+        # Specifies whether translation is required. Valid values: true and false. If this parameter is set to true, SourceLanguage and TargetLanguage are required.
         # 
         # This parameter is required.
         self.need_trans = need_trans
-        # The product URL. This parameter is required. Only 1688 product links are supported.
+        # The product URL. This parameter is required. Currently, only 1688 product links are supported.
         # 
         # This parameter is required.
         self.product_url = product_url
-        # The source language code. Optional. For supported language pairs, refer to the supported translation language list. This parameter is required if NeedTrans is set to true.
+        # The source language code. This parameter is optional. For supported language pairs, see the list of supported translation languages. This parameter is required if NeedTrans is set to true.
         self.source_language = source_language
-        # The source platform. Only 1688 is supported.
+        # The source platform. Currently, only 1688 is supported.
         # 
         # This parameter is required.
         self.source_platform = source_platform
-        # The target language code. Optional. For supported language pairs, refer to the supported translation language list. This parameter is required if NeedTrans is set to true.
+        # The target language code. This parameter is optional. For supported language pairs, see the list of supported translation languages. This parameter is required if NeedTrans is set to true.
         self.target_language = target_language
-        # The target listing platform. Only temu is supported.
+        # The target platform for product listing. Currently, only TEMU is supported.
         # 
         # This parameter is required.
         self.target_platform = target_platform
-        # The confidence threshold for size chart detection. Default value: 0.4. A value of 0 treats all images as size charts. A value of 1 treats no images as size charts.
+        # The confidence threshold for size chart detection. Default value: 0.4. If this parameter is set to 0, all images are considered size charts. If this parameter is set to 1, no images are considered size charts.
         self.threshold = threshold
-        # Specifies whether to translate brand names on images. Optional. Default value: false. Setting this to false helps protect brand name information from being translated.
+        # Specifies whether to translate brand names in images. This parameter is optional. Default value: false. This helps protect brand names from being translated.
         self.translating_brand_in_the_product = translating_brand_in_the_product
 
     def validate(self):

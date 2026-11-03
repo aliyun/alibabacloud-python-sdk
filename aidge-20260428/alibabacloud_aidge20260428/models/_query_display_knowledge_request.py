@@ -20,7 +20,7 @@ class QueryDisplayKnowledgeRequest(DaraModel):
         self.page_num = page_num
         # The number of entries per page. Default value: 20. Maximum value: 100.
         self.page_size = page_size
-        # The knowledge base ID.
+        # The ID of the knowledge base.
         # 
         # This parameter is required.
         self.rag_id = rag_id

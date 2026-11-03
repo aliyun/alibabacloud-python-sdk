@@ -16,13 +16,13 @@ class SizeChartExtractAsyncRequest(DaraModel):
     ):
         # The business order number of the caller. It is recorded when the request is accepted and returned as is when you query the asynchronous task result.
         self.biz_id = biz_id
-        # The list of column names to extract, such as Size, Bust, and Length.
+        # The list of column names to be extracted, such as Size, Bust, and Length.
         self.column_name_list = column_name_list
-        # The image URL. The image must be in the JPG, JPEG, PNG, BMP, or WEBP format. The resolution must be between 256 × 256 pixels and 3000 × 3000 pixels, and the file size cannot exceed 10 MB.
+        # The image URL. The image must be in JPG, JPEG, PNG, BMP, or WEBP format. The resolution must be between 256 × 256 and 3000 × 3000 pixels, and the file size cannot exceed 10 MB.
         # 
         # This parameter is required.
         self.image_url = image_url
-        # The output language format. If you do not specify this parameter, the original language is used. If the original image language is Chinese or English, specifying en outputs English, and specifying cn outputs Chinese.
+        # The output language. If you do not specify this parameter, the original language is used. If the original image language is Chinese or English, entering en outputs English, and entering cn outputs Chinese.
         self.language_model = language_model
 
     def validate(self):

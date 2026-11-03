@@ -22,7 +22,7 @@ class EcomVideoRecreationResponseBody(DaraModel):
         self.message = message
         # The request ID, which is used to identify a unique call.
         self.request_id = request_id
-        # Indicates whether the submission is successful.
+        # Indicates whether the submission was successful.
         self.success = success
 
     def validate(self):

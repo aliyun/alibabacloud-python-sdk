@@ -14,7 +14,7 @@ class DeleteDisplayKnowledgeShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.rag_id = rag_id
-        # The IDs of the records to delete. You can specify up to 500 record IDs.
+        # The IDs of the records to be deleted. A maximum of 500 records can be specified.
         # 
         # This parameter is required.
         self.record_ids_shrink = record_ids_shrink

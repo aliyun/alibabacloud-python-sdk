@@ -18,13 +18,13 @@ class DeleteDisplayKnowledgeResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The deletion results for the display knowledge base content.
+        # The result of deleting content from the display knowledge base.
         self.data = data
-        # The response message or failure description.
+        # The returned message or failure description.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -100,11 +100,11 @@ class DeleteDisplayKnowledgeResponseBodyData(DaraModel):
         self.knowledge_base_status = knowledge_base_status
         # The knowledge base ID.
         self.rag_id = rag_id
-        # The number of visible records after the deletion.
+        # The number of visible records after deletion.
         self.remaining_count = remaining_count
         # The processing results for each record.
         self.results = results
-        # Indicates whether the business processing is successful.
+        # Indicates whether the business processing was successful.
         self.success = success
         # The asynchronous task ID. This field is empty for synchronous API operations.
         self.task_id = task_id
@@ -212,7 +212,7 @@ class DeleteDisplayKnowledgeResponseBodyDataResults(DaraModel):
     ):
         # The error code for the failure.
         self.error_code = error_code
-        # The cause of the failure.
+        # The reason for the failure.
         self.error_message = error_message
         # The index in the original request array.
         self.index = index
@@ -222,7 +222,7 @@ class DeleteDisplayKnowledgeResponseBodyDataResults(DaraModel):
         self.sku_id = sku_id
         # The record status. This field is empty for deletion results.
         self.status = status
-        # Indicates whether the deletion is successful.
+        # Indicates whether the deletion was successful.
         self.success = success
 
     def validate(self):

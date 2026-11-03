@@ -65,9 +65,9 @@ class AddDisplayKnowledgeRequestRecords(DaraModel):
         sku_id: str = None,
         sku_name: str = None,
     ):
-        # The HTTP(S) URL of the product image.
+        # The HTTP or HTTPS URL of the product image.
         self.image_url = image_url
-        # The SKU ID. If this parameter is left empty, the platform generates the ID.
+        # The SKU ID. If this parameter is left empty, the platform generates an ID.
         self.sku_id = sku_id
         # The SKU name.
         self.sku_name = sku_name

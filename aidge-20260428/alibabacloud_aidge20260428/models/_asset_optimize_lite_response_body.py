@@ -16,13 +16,13 @@ class AssetOptimizeLiteResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The submit result of the asynchronous task.
+        # The asynchronous task submission result.
         self.data = data
         # The error message.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the call is successful.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):

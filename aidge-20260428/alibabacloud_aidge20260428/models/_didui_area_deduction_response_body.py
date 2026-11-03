@@ -18,7 +18,7 @@ class DiduiAreaDeductionResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The floor display area inference result.
+        # The inference result of the floor display area.
         self.data = data
         # The error message.
         self.message = message
@@ -94,7 +94,7 @@ class DiduiAreaDeductionResponseBodyData(DaraModel):
         self.code = code
         # The downstream HTTP status code.
         self.http_status = http_status
-        # The downstream call latency, in milliseconds.
+        # The duration of the downstream call, in milliseconds.
         self.latency_ms = latency_ms
         # The workflow description.
         self.message = message
@@ -106,7 +106,7 @@ class DiduiAreaDeductionResponseBodyData(DaraModel):
         self.result = result
         # The workflow status.
         self.status = status
-        # Indicates whether the workflow execution is successful.
+        # The business status of the workflow.
         self.success = success
         # The usage information.
         self.usage_map = usage_map
@@ -198,7 +198,7 @@ class DiduiAreaDeductionResponseBodyDataResult(DaraModel):
         self,
         stage_4area_label: main_models.DiduiAreaDeductionResponseBodyDataResultStage4AreaLabel = None,
     ):
-        # The stage 4 area label.
+        # The Stage 4 area label.
         self.stage_4area_label = stage_4area_label
 
     def validate(self):
@@ -232,9 +232,9 @@ class DiduiAreaDeductionResponseBodyDataResultStage4AreaLabel(DaraModel):
     ):
         # The floor display area, in square meters.
         self.area_m2 = area_m2
-        # The left edge length, in meters.
+        # The length of the left boundary, in meters.
         self.left_edge_m = left_edge_m
-        # The right edge length, in meters.
+        # The length of the right boundary, in meters.
         self.right_edge_m = right_edge_m
 
     def validate(self):

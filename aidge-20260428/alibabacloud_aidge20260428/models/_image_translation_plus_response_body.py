@@ -14,17 +14,17 @@ class ImageTranslationPlusResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. This parameter is not returned if the call is successful.
+        # The error code. This parameter is not returned when the call is successful.
         self.code = code
-        # The asynchronous task submit status.
+        # The submission result of the asynchronous task.
         self.data = data
-        # The error message. This parameter is not returned if the call is successful.
+        # The error message. This parameter is not returned when the call is successful.
         self.message = message
         # Id of the request
         self.request_id = request_id
         # Indicates whether the call is successful. Valid values:
         # - true: The call is successful.
-        # - false: The call failed.
+        # - false: The call fails.
         self.success = success
 
     def validate(self):
@@ -78,7 +78,7 @@ class ImageTranslationPlusResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The asynchronous task ID. Use this ID to poll for results through the queryTaskResult operation.
+        # The ID of the asynchronous task. You can use this ID to poll the result by calling the queryTaskResult operation.
         self.task_id = task_id
 
     def validate(self):

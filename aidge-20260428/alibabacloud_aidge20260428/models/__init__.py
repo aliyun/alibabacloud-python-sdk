@@ -44,6 +44,9 @@ from ._ecom_video_recreation_response import EcomVideoRecreationResponse
 from ._general_rephotography_detection_request import GeneralRephotographyDetectionRequest
 from ._general_rephotography_detection_response_body import GeneralRephotographyDetectionResponseBody
 from ._general_rephotography_detection_response import GeneralRephotographyDetectionResponse
+from ._generate_product_content_request import GenerateProductContentRequest
+from ._generate_product_content_response_body import GenerateProductContentResponseBody
+from ._generate_product_content_response import GenerateProductContentResponse
 from ._image_cropping_request import ImageCroppingRequest
 from ._image_cropping_response_body import ImageCroppingResponseBody
 from ._image_cropping_response import ImageCroppingResponse
@@ -93,6 +96,9 @@ from ._image_translation_standard_response import ImageTranslationStandardRespon
 from ._image_translation_standard_async_request import ImageTranslationStandardAsyncRequest
 from ._image_translation_standard_async_response_body import ImageTranslationStandardAsyncResponseBody
 from ._image_translation_standard_async_response import ImageTranslationStandardAsyncResponse
+from ._image_upscale_request import ImageUpscaleRequest
+from ._image_upscale_response_body import ImageUpscaleResponseBody
+from ._image_upscale_response import ImageUpscaleResponse
 from ._language_detect_request import LanguageDetectRequest
 from ._language_detect_response_body import LanguageDetectResponseBody
 from ._language_detect_response import LanguageDetectResponse
@@ -217,6 +223,7 @@ from ._general_rephotography_detection_response_body import GeneralRephotography
 from ._general_rephotography_detection_response_body import GeneralRephotographyDetectionResponseBodyDataResultGrounding
 from ._general_rephotography_detection_response_body import GeneralRephotographyDetectionResponseBodyDataResult
 from ._general_rephotography_detection_response_body import GeneralRephotographyDetectionResponseBodyData
+from ._generate_product_content_response_body import GenerateProductContentResponseBodyData
 from ._image_cropping_response_body import ImageCroppingResponseBodyData
 from ._image_matting_response_body import ImageMattingResponseBodyData
 from ._image_matting_async_response_body import ImageMattingAsyncResponseBodyData
@@ -247,6 +254,9 @@ from ._image_translation_standard_response_body import ImageTranslationStandardR
 from ._image_translation_standard_response_body import ImageTranslationStandardResponseBodyDataEditInfo
 from ._image_translation_standard_response_body import ImageTranslationStandardResponseBodyData
 from ._image_translation_standard_async_response_body import ImageTranslationStandardAsyncResponseBodyData
+from ._image_upscale_response_body import ImageUpscaleResponseBodyDataData
+from ._image_upscale_response_body import ImageUpscaleResponseBodyDataUsageMap
+from ._image_upscale_response_body import ImageUpscaleResponseBodyData
 from ._language_detect_response_body import LanguageDetectResponseBodyData
 from ._material_inspection_response_body import MaterialInspectionResponseBodyDataResultSteps
 from ._material_inspection_response_body import MaterialInspectionResponseBodyDataResult
@@ -361,6 +371,9 @@ __all__ = [
     GeneralRephotographyDetectionRequest,
     GeneralRephotographyDetectionResponseBody,
     GeneralRephotographyDetectionResponse,
+    GenerateProductContentRequest,
+    GenerateProductContentResponseBody,
+    GenerateProductContentResponse,
     ImageCroppingRequest,
     ImageCroppingResponseBody,
     ImageCroppingResponse,
@@ -410,6 +423,9 @@ __all__ = [
     ImageTranslationStandardAsyncRequest,
     ImageTranslationStandardAsyncResponseBody,
     ImageTranslationStandardAsyncResponse,
+    ImageUpscaleRequest,
+    ImageUpscaleResponseBody,
+    ImageUpscaleResponse,
     LanguageDetectRequest,
     LanguageDetectResponseBody,
     LanguageDetectResponse,
@@ -534,6 +550,7 @@ __all__ = [
     GeneralRephotographyDetectionResponseBodyDataResultGrounding,
     GeneralRephotographyDetectionResponseBodyDataResult,
     GeneralRephotographyDetectionResponseBodyData,
+    GenerateProductContentResponseBodyData,
     ImageCroppingResponseBodyData,
     ImageMattingResponseBodyData,
     ImageMattingAsyncResponseBodyData,
@@ -564,6 +581,9 @@ __all__ = [
     ImageTranslationStandardResponseBodyDataEditInfo,
     ImageTranslationStandardResponseBodyData,
     ImageTranslationStandardAsyncResponseBodyData,
+    ImageUpscaleResponseBodyDataData,
+    ImageUpscaleResponseBodyDataUsageMap,
+    ImageUpscaleResponseBodyData,
     LanguageDetectResponseBodyData,
     MaterialInspectionResponseBodyDataResultSteps,
     MaterialInspectionResponseBodyDataResult,

@@ -20,7 +20,7 @@ class GeneralRephotographyDetectionResponseBody(DaraModel):
         self.code = code
         # The recapture detection result.
         self.data = data
-        # The response message or failure description.
+        # The return message or failure description.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -79,9 +79,9 @@ class GeneralRephotographyDetectionResponseBodyData(DaraModel):
         result: main_models.GeneralRephotographyDetectionResponseBodyDataResult = None,
         usage_map: Dict[str, int] = None,
     ):
-        # The business result. This value is an empty object if the request fails.
+        # The business result. This is an empty object if the call fails.
         self.result = result
-        # The usage information. The value is `{"ProcessingCount":1}` on success, or an empty object on failure.
+        # The usage information. The value is `{"ProcessingCount":1}` if the call is successful, or an empty object if the call fails.
         self.usage_map = usage_map
 
     def validate(self):
@@ -121,9 +121,9 @@ class GeneralRephotographyDetectionResponseBodyDataResult(DaraModel):
     ):
         # The supplementary element localization result.
         self.grounding = grounding
-        # Indicates whether the image is a recaptured photo.
+        # Indicates whether the image is recaptured.
         self.is_fake = is_fake
-        # The detection type. The value is fixed as general.
+        # The detection type. The value is fixed to general.
         self.type = type
 
     def validate(self):
@@ -166,11 +166,11 @@ class GeneralRephotographyDetectionResponseBodyDataResultGrounding(DaraModel):
         coverage: str = None,
         regions: List[main_models.GeneralRephotographyDetectionResponseBodyDataResultGroundingRegions] = None,
     ):
-        # The coverage of the localization. Valid values:
-        # - complete: All relevant visible targets are fully covered.
-        # - partial: Only some targets are valid or recognizable.
+        # The coverage. Valid values:
+        # - `complete`: The relevant visible targets are complete.
+        # - `partial`: Only some targets are valid or recognizable.
         self.coverage = coverage
-        # The array of targets. A maximum of 12 items are returned. This value can be empty if no relevant targets exist.
+        # The target array. It contains up to 12 items and can be empty if no relevant targets are found.
         self.regions = regions
 
     def validate(self):
@@ -216,9 +216,9 @@ class GeneralRephotographyDetectionResponseBodyDataResultGroundingRegions(DaraMo
     ):
         # The bounding box coordinates.
         self.bbox_2d = bbox_2d
-        # The target category. For valid values, see the table below.
+        # The target category. For enumerations, see the following table.
         self.label = label
-        # The confirmed short name or text of up to 24 characters. This value is an empty string if the text is unreadable.
+        # The confirmed short name or text of up to 24 characters. This is an empty string if the text is unclear.
         self.text = text
 
     def validate(self):

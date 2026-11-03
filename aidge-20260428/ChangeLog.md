@@ -1,3 +1,8 @@
+2026-11-03 Version: 5.13.0
+- Support API ImageUpscale.
+- Update API ImageMatting: add response parameters Body.Data.StructData.
+
+
 2026-10-21 Version: 5.11.1
 - Update API ImageMattingAsync: add request parameters BizId.
 - Update API ImageRecognitionAsync: add request parameters BizId.

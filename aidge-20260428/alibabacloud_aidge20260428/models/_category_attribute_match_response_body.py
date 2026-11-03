@@ -16,11 +16,11 @@ class CategoryAttributeMatchResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. This parameter is not returned for successful calls.
+        # The error code. This parameter is not returned when the call is successful.
         self.code = code
         # The returned result.
         self.data = data
-        # The error message. This parameter is not returned for successful calls.
+        # The error message. This parameter is not returned when the call is successful.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -91,11 +91,11 @@ class CategoryAttributeMatchResponseBodyData(DaraModel):
         self.category_id = category_id
         # The category name.
         self.category_name = category_name
-        # The full path of the category, separated by "/".
+        # The full path of the category, separated by forward slashes (/).
         self.category_path = category_path
-        # The number of attributes that are successfully filled.
+        # The number of successfully filled attributes.
         self.filled_count = filled_count
-        # Indicates whether the attribute is successfully matched. Valid values: true and false.
+        # Indicates whether the attribute is matched successfully. Valid values: true and false.
         self.matched = matched
         # The total number of attributes under the category.
         self.total_attributes = total_attributes
@@ -180,7 +180,7 @@ class CategoryAttributeMatchResponseBodyDataUsageMap(DaraModel):
         self,
         processing_count: int = None,
     ):
-        # The number of processing times.
+        # The processing count.
         self.processing_count = processing_count
 
     def validate(self):
@@ -218,21 +218,21 @@ class CategoryAttributeMatchResponseBodyDataAttributes(DaraModel):
     ):
         # The attribute ID.
         self.attr_id = attr_id
-        # The matching confidence score, ranging from 0 to 100.
+        # The matching confidence level. Valid values: 0 to 100.
         self.confidence = confidence
         # The attribute input type.
         self.input_type = input_type
-        # Indicates whether the attribute is successfully matched. Valid values: true and false.
+        # Indicates whether the attribute is matched successfully. Valid values: true and false.
         self.matched = matched
         # The Chinese name of the attribute.
         self.name = name
         # The English name of the attribute.
         self.name_en = name_en
-        # The explanation for the matching result.
+        # The description of the matching reason.
         self.reason = reason
-        # The list of selected attribute value texts, such as ["iOS","Android"\\].
+        # The list of selected attribute value texts, such as ["iOS","Android"].
         self.selected_values = selected_values
-        # The list of selected attribute value IDs, such as [30127,30128\\].
+        # The list of selected attribute value IDs, such as [30127,30128].
         self.selected_vids = selected_vids
 
     def validate(self):

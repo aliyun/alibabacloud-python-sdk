@@ -16,13 +16,13 @@ class DiduiAreaDeductionProResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The submit status of the asynchronous task.
+        # The submission result of the asynchronous task.
         self.data = data
-        # The response message or failure description.
+        # The returned message or failure description.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the call is successful.
         self.success = success
 
     def validate(self):
@@ -76,7 +76,7 @@ class DiduiAreaDeductionProResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The ID of the asynchronous task, which is used to call QueryAsyncTaskResult to query the task result.
+        # The ID of the asynchronous task used to query the result by calling QueryAsyncTaskResult.
         self.task_id = task_id
 
     def validate(self):
