@@ -10,7 +10,7 @@ class QueryControlStrategyRequest(DaraModel):
         product_type: str = None,
         region_id: str = None,
     ):
-        # The product type. Currently, only ANT_CLOUD_AUTH (financial-grade ID Verification) is supported. All other product types have been discontinued.
+        # The product type. Only ANT_CLOUD_AUTH (Financial-grade ID Verification) is supported. All other product types are retired.
         self.product_type = product_type
         # The region ID.
         self.region_id = region_id

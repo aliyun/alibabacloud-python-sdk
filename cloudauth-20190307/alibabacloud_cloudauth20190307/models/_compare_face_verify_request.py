@@ -22,58 +22,57 @@ class CompareFaceVerifyRequest(DaraModel):
         target_oss_bucket_name: str = None,
         target_oss_object_name: str = None,
     ):
-        # Specifies whether cropping is allowed. Default value: F.
-        # 
-        # - T: detection is required.
-        # - F: detection is required. (Default: F).
+        # Specifies whether to allow cropping. Default value: F. Valid values:
+        # - T: Allowed.
+        # - F: Not allowed.
         self.crop = crop
         # The unique identifier of the merchant request.
         # 
-        # The value is a 32-character alphanumeric string. The first few characters are a custom abbreviation defined by the merchant, the middle part can be a time segment, and the last part can be a random or incremental sequence.
+        # The value is a 32-character alphanumeric string. The first few characters are a custom abbreviation of the merchant, the middle part can be a period of time, and the last part can be a random or incremental sequence.
         self.outer_order_no = outer_order_no
-        # Fixed value: PV_FC.
+        # The product code. Fixed value: PV_FC.
         self.product_code = product_code
-        # The verification scenario ID.
+        # The ID of the verification scenario.
         self.scene_id = scene_id
-        # The CertifyId from a previous successful ID Verification. The photo captured during that verification is used as the face comparison photo.
+        # The CertifyId of a previous successful ID Verification. The photo used during the verification is used as the face comparison photo.
         # 
-        # > You can use one of the following four methods to submit a face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, or OSS. Select one method.
+        # > You can use one of the following four methods to upload the face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS.
         self.source_certify_id = source_certify_id
-        # The Base64-encoded photo.
+        # The Base64-encoded string of the photo.
         # 
-        # > You can use one of the following four methods to submit a face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, or OSS. Select one method.
+        # > You can use one of the following four methods to upload the face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS.
         self.source_face_contrast_picture = source_face_contrast_picture
-        # The OSS photo URL. Only authorized OSS photo URLs are supported.
+        # The URL of the photo in OSS. Only authorized OSS photo URLs are supported.
         # 
-        # > You can use one of the following four methods to submit a face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, or OSS. Select one method.
+        # > You can use one of the following four methods to upload the face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS.
         self.source_face_contrast_picture_url = source_face_contrast_picture_url
-        # The bucket name of the authorized OSS space.
+        # The name of the authorized OSS bucket.
         # 
-        # > You can use one of the following four methods to submit a face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, or OSS. Select one method.
+        # > You can use one of the following four methods to upload the face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS.
         self.source_oss_bucket_name = source_oss_bucket_name
-        # The file name in the authorized OSS space.
+        # The name of the object in the authorized OSS bucket.
         # 
-        # > You can use one of the following four methods to submit a face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, or OSS. Select one method.
+        # > You can use one of the following four methods to upload the face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS.
         self.source_oss_object_name = source_oss_object_name
-        # The CertifyId from a previous successful ID Verification. The photo captured during that verification is used as the face comparison photo.
+        # The CertifyId of a previous successful ID Verification. The photo used during the verification is used as the base library face comparison photo.
         # 
-        # > You can use one of the following four methods to submit a reference face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, or OSS. Select one method.
+        # > You can use one of the following four methods to upload the base library face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS.
         self.target_certify_id = target_certify_id
-        # The Base64-encoded reference photo.
+        # The Base64-encoded string of the base library photo.
         # 
-        # > You can use one of the following four methods to submit a reference face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, or OSS. Select one method.
+        # > You can use one of the following four methods to upload the base library face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS.
         self.target_face_contrast_picture = target_face_contrast_picture
-        # The OSS URL of the reference photo. Only authorized OSS photo URLs are supported.
+        # The URL of the base library photo in OSS. Only authorized OSS photo URLs are supported.
         # 
-        # > You can use one of the following four methods to submit a reference face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, or OSS. Select one method.
+        # > You can use one of the following four methods to upload the base library face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS.
         self.target_face_contrast_picture_url = target_face_contrast_picture_url
-        # The bucket name of the authorized OSS space.
+        # The name of the authorized OSS bucket.
         # 
-        # > You can use one of the following four methods to submit a reference face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, or OSS. Select one method.
+        # > You can use one of the following four methods to upload the base library face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS.
         self.target_oss_bucket_name = target_oss_bucket_name
-        # The file name in the authorized OSS space.
+        # The name of the object in the authorized OSS bucket.
         # 
-        # > You can use one of the following four methods to submit a reference face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, or OSS. Select one method.
+        # > You can use one of the following four methods to upload the base library face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS.
         self.target_oss_object_name = target_oss_object_name
 
     def validate(self):

@@ -13,7 +13,7 @@ class ModifyControlStrategyShrinkRequest(DaraModel):
     ):
         # The list of security alert rules.
         self.control_strategy_list_shrink = control_strategy_list_shrink
-        # The product type. Currently, only **ANT_CLOUD_AUTH** (financial-grade ID Verification) is supported. All other types have been discontinued.
+        # The product type. Currently, only **ANT_CLOUD_AUTH** (Financial-grade ID Verification) is supported. All other types are retired.
         self.product_type = product_type
         # The region ID of the Smart Access Gateway instance.
         self.region_id = region_id

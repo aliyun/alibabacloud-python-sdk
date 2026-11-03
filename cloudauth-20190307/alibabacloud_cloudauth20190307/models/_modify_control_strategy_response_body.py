@@ -14,7 +14,7 @@ class ModifyControlStrategyResponseBody(DaraModel):
     ):
         # The return code.
         self.code = code
-        # The response message returned by the operation.
+        # The message returned by the API.
         self.message = message
         # Id of the request
         self.request_id = request_id

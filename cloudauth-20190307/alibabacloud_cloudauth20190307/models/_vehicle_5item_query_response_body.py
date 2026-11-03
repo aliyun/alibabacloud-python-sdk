@@ -15,11 +15,11 @@ class Vehicle5ItemQueryResponseBody(DaraModel):
     ):
         # The return code.
         self.code = code
-        # The response message.
+        # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The result information.
+        # The returned result information.
         self.result_object = result_object
 
     def validate(self):
@@ -69,8 +69,9 @@ class Vehicle5ItemQueryResponseBodyResultObject(DaraModel):
         vehicle_info: str = None,
     ):
         # The verification result code. Valid values:
-        # - **1**: Match found (billable).
-        # - **3**: No record found (not billable).
+        # 
+        # - **1**: found (billed)
+        # - **3**: no record found (not billed)
         self.biz_code = biz_code
         # The vehicle information.
         self.vehicle_info = vehicle_info

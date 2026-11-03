@@ -17,11 +17,11 @@ class DeleteBlackListStrategyResponseBody(DaraModel):
         self.code = code
         # The returned data.
         self.data = data
-        # The response message.
+        # The returned message.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

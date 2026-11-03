@@ -13,7 +13,7 @@ class MobileDetectRequest(DaraModel):
         # The list of phone numbers.
         self.mobiles = mobiles
         # The encryption method. Valid values:
-        # - normal: plaintext without encryption
+        # - normal: Plaintext without encryption.
         # - md5: MD5 encryption.
         self.param_type = param_type
 

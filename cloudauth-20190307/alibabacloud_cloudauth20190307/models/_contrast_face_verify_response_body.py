@@ -13,7 +13,7 @@ class ContrastFaceVerifyResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.ContrastFaceVerifyResponseBodyResultObject = None,
     ):
-        # The return code. A value of 200 indicates success. Other values indicate failure.
+        # The return code. A value of 200 indicates success, and other values indicate failure.
         self.code = code
         # The error message.
         self.message = message
@@ -73,13 +73,13 @@ class ContrastFaceVerifyResponseBodyResultObject(DaraModel):
     ):
         # The unique identifier of the ID Verification request.
         self.certify_id = certify_id
-        # The subject information of the verification. This is returned as empty in common verification scenarios.
+        # The information of the authenticated subject. This parameter is empty in common authentication scenarios.
         self.identity_info = identity_info
-        # The supplementary material information of the verification subject, primarily image-based materials, in JSON format as follows.
+        # The attachment information of the authenticated subject, which mainly includes image materials. The value is in JSON format as follows.
         self.material_info = material_info
-        # Indicates whether the verification is passed. A value of T indicates passed. A value of F indicates not passed.
+        # Indicates whether the verification is passed. A value of T indicates that the verification is passed, and a value of F indicates that the verification fails.
         self.passed = passed
-        # The verification result description. For more information, see the SubCode description below.
+        # The description of the authentication result. For more information, see the SubCode description below.
         self.sub_code = sub_code
 
     def validate(self):

@@ -12,11 +12,11 @@ class DeleteControlStrategyRequest(DaraModel):
         product_type: str = None,
         region_id: str = None,
     ):
-        # The API name, same as **ProductCode**.
+        # The API name, which is the same as **ProductCode**.
         self.api_name = api_name
-        # The security rule ID.
+        # The ID of the security rule.
         self.id = id
-        # The product type. Currently, only **ANT_CLOUD_AUTH** (financial-grade real-person authentication) is supported. All other types have been discontinued.
+        # The product type. Currently, only **ANT_CLOUD_AUTH** (financial-grade ID Verification) is supported. All other types are discontinued.
         self.product_type = product_type
         # The region ID.
         self.region_id = region_id

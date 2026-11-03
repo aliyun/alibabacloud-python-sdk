@@ -15,11 +15,11 @@ class DescribeVerifyTokenResponseBody(DaraModel):
     ):
         # The OSS upload token information.
         self.oss_upload_token = oss_upload_token
-        # The ID of this request.
+        # The ID of the request.
         self.request_id = request_id
-        # The entry URL for the legacy H5 authentication scheme. This scheme has been discontinued and no longer accepts new integrations. If you need H5 authentication, use the [PC or mobile H5 web integration scheme](https://help.aliyun.com/document_detail/173779.html) of financial-grade ID Verification.
+        # The entry URL of the legacy H5 authentication solution. This solution has been retired and no longer supports new integrations. If you need to integrate an H5 authentication solution, we recommend that you use the [PC or mobile H5 web integration solution](https://help.aliyun.com/document_detail/173779.html) of Financial-grade ID Verification.
         self.verify_page_url = verify_page_url
-        # The token for this authentication, which is used to connect the various operations in the authentication request. The token is valid for 30 minutes.
+        # The token for the authentication. The token is used to link all operations in the authentication request and is valid for 30 minutes.
         self.verify_token = verify_token
 
     def validate(self):
@@ -77,11 +77,11 @@ class DescribeVerifyTokenResponseBodyOssUploadToken(DaraModel):
         self.bucket = bucket
         # The endpoint.
         self.end_point = end_point
-        # The expiration time. The value is in UNIX timestamp format. Unit: milliseconds.
+        # The expiration time. The value is a timestamp in milliseconds.
         self.expired = expired
         # The key required for file upload.
         self.key = key
-        # The file storage path.
+        # The storage path of the file.
         self.path = path
         # The secret required for file upload.
         self.secret = secret

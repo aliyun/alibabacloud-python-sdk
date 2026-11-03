@@ -13,24 +13,23 @@ class Id2MetaVerifyRequest(DaraModel):
     ):
         # The ID card number.
         # 
-        # Note
-        # Only second-generation resident ID card numbers and Hong Kong, Macao, and Taiwan residence permit numbers are supported.
+        # Note: Only the numbers of second-generation resident identity cards and residence permits for Hong Kong, Macao, and Taiwan residents are supported.
         # 
-        # - If ParamType is set to normal, enter the ID card number in plaintext.
+        # - If you set paramType to normal, enter the ID card number in plaintext.
         # 
-        # - If ParamType is set to md5, the format is: first 6 digits of the ID card number (plaintext) + date of birth (ciphertext) + last 4 digits of the ID card number (plaintext).
+        # - If you set paramType to md5, enter the first 6 digits of the ID card number in plaintext, the date of birth in ciphertext, and the last 4 digits of the ID card number in plaintext.
         self.identify_num = identify_num
         # The encryption method. Valid values:
         # 
         # - normal: plaintext without encryption
         # 
-        # - md5: MD5 encryption.
+        # - md5: MD5 encryption
         self.param_type = param_type
         # The name.
         # 
-        # - If ParamType is set to normal, enter the name in plaintext.
+        # - If you set paramType to normal, enter the name in plaintext.
         # 
-        # - If ParamType is set to md5, the format is: first character of the name (ciphertext) + remaining characters of the name (plaintext).
+        # - If you set paramType to md5, enter the first character of the name in ciphertext and the rest of the name in plaintext.
         self.user_name = user_name
 
     def validate(self):

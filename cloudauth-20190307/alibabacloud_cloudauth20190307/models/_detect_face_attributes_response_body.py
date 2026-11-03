@@ -22,9 +22,9 @@ class DetectFaceAttributesResponseBody(DaraModel):
         self.data = data
         # The error code.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the response is successful.
         self.success = success
 
     def validate(self):

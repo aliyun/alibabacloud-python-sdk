@@ -13,9 +13,9 @@ class ModifyCustomizeFlowStrategyListRequest(DaraModel):
         product_type: str = None,
         strategy_object: List[main_models.ModifyCustomizeFlowStrategyListRequestStrategyObject] = None,
     ):
-        # The product type. Currently, only **ANT_CLOUD_AUTH** (financial-grade ID Verification) is supported. All other types have been discontinued.
+        # The product type. Currently, only **ANT_CLOUD_AUTH** (Financial-grade ID Verification) is supported. All other product types are retired.
         self.product_type = product_type
-        # The policy list.
+        # The list of policies.
         self.strategy_object = strategy_object
 
     def validate(self):
@@ -69,23 +69,23 @@ class ModifyCustomizeFlowStrategyListRequestStrategyObject(DaraModel):
         self.accumulate_key = accumulate_key
         # The size of the rate limiting statistical window, in minutes.
         self.accumulate_window = accumulate_window
-        # The API name, which is the same as **ProductCode**.
+        # The API name. This parameter is the same as **ProductCode**.
         # 
         # This parameter is required.
         self.api_name = api_name
         # The flow type. Valid values:
-        # - **ACCUMULATE**: repeated occurrence of an ID card.
-        # - **PASSED_RATE**: pass rate is less than.
-        # - **SUB_CODE_205**: authentication failed and the proportion of liveness attack 205 is greater than.
-        # - **SUB_CODE_206**: authentication failed and the proportion of liveness attack 206 is greater than.
+        # - **ACCUMULATE**: Duplicate ID cards.
+        # - **PASSED_RATE**: The pass rate is less than the specified value.
+        # - **SUB_CODE_205**: Authentication fails and the proportion of liveness attack 205 is greater than the specified value.
+        # - **SUB_CODE_206**: Authentication fails and the proportion of liveness attack 206 is greater than the specified value.
         self.flow_type = flow_type
-        # The rule ID.
+        # The ID of the rule.
         self.id = id
         # The operation.
         self.operation = operation
         # The status. Valid values:
-        # - **disabled**: disabled.
-        # - **normal**: enabled.
+        # - **disabled**: Disabled.
+        # - **normal**: Enabled.
         # 
         # This parameter is required.
         self.status = status
@@ -93,7 +93,7 @@ class ModifyCustomizeFlowStrategyListRequestStrategyObject(DaraModel):
         # 
         # This parameter is required.
         self.threshold = threshold
-        # The user ID.
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):

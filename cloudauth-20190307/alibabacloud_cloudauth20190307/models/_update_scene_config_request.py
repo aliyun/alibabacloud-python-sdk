@@ -11,15 +11,15 @@ class UpdateSceneConfigRequest(DaraModel):
         id: int = None,
         scene_id: int = None,
     ):
-        # The scenario configuration in JSON format. For the specific structure definition, refer to the additional information about configurations.
+        # The scenario configuration information in JSON format. For more information about the specific structure, see the configuration documentation.
         # 
         # This parameter is required.
         self.config = config
-        # The ID of the intent configuration.
+        # The ID of the willingness configuration.
         # 
         # This parameter is required.
         self.id = id
-        # The selected verification scenario.
+        # The selected authentication scenario.
         # 
         # This parameter is required.
         self.scene_id = scene_id

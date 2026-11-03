@@ -13,13 +13,13 @@ class DeleteFaceVerifyResultResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DeleteFaceVerifyResultResponseBodyResultObject = None,
     ):
-        # Return code. A value of 200 indicates success. Other values indicate failure.
+        # The return code. A value of 200 indicates success, and other values indicate failure.
         self.code = code
-        # Return message.
+        # The returned message.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The returned result.
+        # The returned result information.
         self.result_object = result_object
 
     def validate(self):
@@ -69,17 +69,15 @@ class DeleteFaceVerifyResultResponseBodyResultObject(DaraModel):
         delete_result: str = None,
         fail_reason: str = None,
     ):
-        # The unique identifier for real-person authentication.
+        # The unique identifier for ID Verification.
         self.certify_id = certify_id
         # The deletion result. Valid values:
-        # 
-        # - Y: Deletion successful.
-        # - N: Deletion failed.
+        # - Y: The deletion succeeded.
+        # - N: The deletion failed.
         self.delete_result = delete_result
-        # The reason for deletion failure.
-        # 
-        # - NOT_DELETE_REPEATEDLY: The data cannot be deleted repeatedly.
-        # - NEED_QUERY_VERIFY_RESULT: You must query the authentication result before deleting.
+        # The reason for the deletion failure. Valid values:
+        # - NOT_DELETE_REPEATEDLY: The data cannot be repeatedly deleted.
+        # - NEED_QUERY_VERIFY_RESULT: You must query the verification result before you delete the data.
         self.fail_reason = fail_reason
 
     def validate(self):

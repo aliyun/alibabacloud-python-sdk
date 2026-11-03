@@ -55,19 +55,19 @@ class DescribeOssUploadTokenResponseBodyOssUploadToken(DaraModel):
         secret: str = None,
         token: str = None,
     ):
-        # The OSS bucket for file storage.
+        # The OSS bucket.
         self.bucket = bucket
         # The endpoint.
         self.end_point = end_point
         # The expiration time.
         self.expired = expired
-        # The key required for file upload.
+        # The key required to upload files.
         self.key = key
         # The file storage path.
         self.path = path
-        # The secret required for file upload.
+        # The secret required to upload files.
         self.secret = secret
-        # The token required for file upload.
+        # The token required to upload files.
         self.token = token
 
     def validate(self):

@@ -53,22 +53,22 @@ class ModifyBlackListStrategyRequestBlackListStrategy(DaraModel):
         product_name: str = None,
         status: str = None,
     ):
-        # The blacklist string. Separate multiple entries with commas (,).
+        # The blacklist string. Multiple entries are separated by commas.
         self.biz_content = biz_content
         # The blacklist type. Valid values:
-        # - **mobile**: mobile number blacklist.
-        # - **ip**: IP blacklist.
-        # - **identifyNum**: ID card blacklist.
-        # - **bankCard**: bank card blacklist.
+        # - **mobile**: Mobile phone number blacklist.
+        # - **ip**: IP address blacklist.
+        # - **identifyNum**: ID IP blacklist.
+        # - **bankCard**: Bank IP blacklist.
         self.biz_key = biz_key
-        # The rule ID. Valid values:
-        # - **Empty**: creates a rule.
-        # - **Not empty**: modifies a rule.
+        # The rule ID:
+        # - **Empty**: Creates a rule.
+        # - **Not empty**: Modifies a rule.
         self.id = id
         # The product name. Valid values:
         # - **id2meta**: ID card two-element verification.
-        # - **mobile3Meta**: mobile number element verification.
-        # - **bankcardMeta**: bank card element verification.
+        # - **mobile3Meta**: Mobile phone number element verification.
+        # - **bankcardMeta**: Bank card element verification.
         self.product_name = product_name
         # The authentication status. Valid values:
         # - **1**: Authentication passed.

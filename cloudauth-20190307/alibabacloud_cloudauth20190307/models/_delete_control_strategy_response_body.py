@@ -13,11 +13,11 @@ class DeleteControlStrategyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. **200** indicates a successful API response.
+        # The return code. A value of **200** indicates that the request is successful.
         self.code = code
         # The returned data.
         self.data = data
-        # The response message.
+        # The returned message.
         self.message = message
         # Id of the request
         self.request_id = request_id

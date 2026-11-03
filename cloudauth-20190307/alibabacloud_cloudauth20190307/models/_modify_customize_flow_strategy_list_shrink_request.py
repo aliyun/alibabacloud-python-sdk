@@ -10,9 +10,9 @@ class ModifyCustomizeFlowStrategyListShrinkRequest(DaraModel):
         product_type: str = None,
         strategy_object_shrink: str = None,
     ):
-        # The product type. Currently, only **ANT_CLOUD_AUTH** (financial-grade ID Verification) is supported. All other types have been discontinued.
+        # The product type. Currently, only **ANT_CLOUD_AUTH** (Financial-grade ID Verification) is supported. All other product types are retired.
         self.product_type = product_type
-        # The policy list.
+        # The list of policies.
         self.strategy_object_shrink = strategy_object_shrink
 
     def validate(self):

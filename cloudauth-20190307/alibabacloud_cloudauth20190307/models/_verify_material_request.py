@@ -16,23 +16,23 @@ class VerifyMaterialRequest(DaraModel):
         name: str = None,
         user_id: str = None,
     ):
-        # The unique ID that identifies a verification task. The value can be up to 64 characters in length. For a single verification task, the system supports unlimited submissions until the verification is passed and the task is completed.
+        # The unique ID that identifies an authentication task. The ID cannot exceed 64 characters. For a single authentication task, the system supports unlimited submissions until the authentication is passed and the task is completed.
         # 
-        # > Use a different BizId for each new verification task.
+        # > You must use a different BizId when initiating different authentication tasks.
         # 
         # This parameter is required.
         self.biz_id = biz_id
-        # The business scenario identifier for the ID Verification service. Create one in the console first. For more information, see [Business settings](https://help.aliyun.com/document_detail/127885.html).
+        # The business scenario identifier for using the ID Verification service. Create it in the console first. For more information, see [Business settings](https://help.aliyun.com/document_detail/127885.html).
         # 
         # This parameter is required.
         self.biz_type = biz_type
-        # The HTTP or HTTPS URL of the front-facing facial photo.
+        # The HTTP or HTTPS URL of the front-facing portrait photo.
         # 
         # This parameter is required.
         self.face_image_url = face_image_url
-        # The HTTP or HTTPS URL of the national emblem side of the ID card.
+        # The HTTP or HTTPS URL of the image for the back side of the ID card.
         self.id_card_back_image_url = id_card_back_image_url
-        # The HTTP or HTTPS URL of the portrait side of the ID card.
+        # The HTTP or HTTPS URL of the image for the front side of the ID card.
         self.id_card_front_image_url = id_card_front_image_url
         # The ID card number.
         # 

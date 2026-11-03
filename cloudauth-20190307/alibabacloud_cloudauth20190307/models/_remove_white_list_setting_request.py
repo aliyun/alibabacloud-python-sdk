@@ -12,9 +12,9 @@ class RemoveWhiteListSettingRequest(DaraModel):
         ids: List[int] = None,
         service_code: str = None,
     ):
-        # The IDs of the whitelists to delete in batch.
+        # The IDs of the whitelists to delete in batches.
         self.ids = ids
-        # The ServiceCode of the ID Verification service. Set this parameter to **antcloudauth**.
+        # The service code of the ID Verification service. Valid values: **antcloudauth**.
         self.service_code = service_code
 
     def validate(self):

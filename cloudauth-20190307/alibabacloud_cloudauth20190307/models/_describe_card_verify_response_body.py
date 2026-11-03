@@ -13,14 +13,14 @@ class DescribeCardVerifyResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeCardVerifyResponseBodyResultObject = None,
     ):
-        # The response code. 200 indicates success. Other values indicate failure.
-        # > **Important**
-        # > - This parameter indicates whether the operation is called correctly. For more information about return codes, refer to error codes.
-        # > - Check the business verification result by viewing the fields in ResultObject.
+        # The return code. A value of 200 indicates success, and other values indicate failure.
+        # Important
+        # - This parameter indicates whether the operation is called correctly. For more information about return codes, see Error codes.
+        # - To view the business verification result, check the fields in ResultObject.
         self.code = code
-        # The response message of the operation.
-        # > **Important**
-        # > - This parameter only indicates whether the operation is abnormal.
+        # The message returned for the operation call.
+        # Important
+        # - This parameter only indicates whether an exception occurs during the operation call.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -77,9 +77,9 @@ class DescribeCardVerifyResponseBodyResultObject(DaraModel):
         picture_info: str = None,
     ):
         # The identity verification result. Valid values:
-        # - 1: consistent
-        # - 2: inconsistent
-        # - 3: no record found.
+        # - 1: Consistent.
+        # - 2: Inconsistent.
+        # - 3: No record found.
         self.biz_code = biz_code
         # The ID card information submitted for verification.
         self.card_info = card_info
@@ -87,9 +87,9 @@ class DescribeCardVerifyResponseBodyResultObject(DaraModel):
         self.face_detail = face_detail
         # The ID card information read by OCR.
         self.ocr_card_info = ocr_card_info
-        # The returned photo URLs.
-        # - certUrl: front side
-        # - certNationalUrl: national emblem side.
+        # The URLs of the returned photos.
+        # - certUrl: Front side.
+        # - certNationalUrl: National emblem side.
         self.picture_info = picture_info
 
     def validate(self):

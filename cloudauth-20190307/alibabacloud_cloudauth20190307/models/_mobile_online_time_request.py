@@ -10,14 +10,13 @@ class MobileOnlineTimeRequest(DaraModel):
         mobile: str = None,
         param_type: str = None,
     ):
-        # The phone number. Valid values:
-        # - If paramType is set to normal, pass in the phone number in plaintext.
-        # - If paramType is set to md5, pass in the phone number in ciphertext.
+        # The mobile phone number.
+        # - If paramType is set to normal, enter the mobile phone number in plaintext.
+        # - If paramType is set to md5, enter the mobile phone number in ciphertext.
         self.mobile = mobile
         # The parameter type. Valid values:
-        # 
-        # - normal: not encrypted.
-        # - md5: MD5-encrypted.
+        # - normal: Not encrypted.
+        # - md5: MD5 encrypted.
         self.param_type = param_type
 
     def validate(self):

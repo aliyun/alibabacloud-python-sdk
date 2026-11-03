@@ -9,7 +9,7 @@ class QuerySceneConfigsRequest(DaraModel):
         self,
         type: str = None,
     ):
-        # The scenario type.
+        # The scene type.
         # 
         # This parameter is required.
         self.type = type

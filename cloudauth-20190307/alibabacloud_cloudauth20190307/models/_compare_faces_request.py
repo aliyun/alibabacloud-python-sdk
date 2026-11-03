@@ -12,19 +12,19 @@ class CompareFacesRequest(DaraModel):
         target_image_type: str = None,
         target_image_value: str = None,
     ):
-        # The type of image 1. Valid values:
+        # The type of the first image. Valid values:
         # 
         # - **FacePic**: A face photo of the user.
-        # - **IDPic**: A headshot photo from the chip of the user\\"s second-generation ID card (typically read and decoded by a second-generation ID card reader device).
+        # - **IDPic**: A portrait photo from the chip of a second-generation Chinese ID card. This photo is typically read and decoded by a second-generation ID card reader.
         self.source_image_type = source_image_type
-        # The URL of image 1. For more information, see the description of image URL upload.
+        # The URL of the first image. For more information, see the instructions on uploading image URLs.
         self.source_image_value = source_image_value
-        # The type of image 2. Valid values:
+        # The type of the second image. Valid values:
         # 
         # - **FacePic**: A face photo of the user.
-        # - **IDPic**: A headshot photo from the chip of the user\\"s second-generation ID card (typically read and decoded by a second-generation ID card reader device).
+        # - **IDPic**: A portrait photo from the chip of a second-generation Chinese ID card. This photo is typically read and decoded by a second-generation ID card reader.
         self.target_image_type = target_image_type
-        # The URL of image 2. For more information, see the description of image URL upload.
+        # The URL of the second image. For more information, see the instructions on uploading image URLs.
         self.target_image_value = target_image_value
 
     def validate(self):

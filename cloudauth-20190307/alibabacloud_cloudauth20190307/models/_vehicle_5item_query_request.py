@@ -13,20 +13,18 @@ class Vehicle5ItemQueryRequest(DaraModel):
     ):
         # The parameter type. Valid values:
         # 
-        # - **normal**: Not encrypted.
-        # - **md5**: MD5-encrypted.
+        # - **normal**: no encryption
+        # - **md5**: MD5 encryption
         self.param_type = param_type
         # The license plate number.
         # 
-        # > 
-        # > - If ParamType is set to normal, enter the plaintext value.
-        # > - If ParamType is set to md5, enter the plaintext of the license plate number excluding the last two characters, concatenated with the MD5-encrypted last two characters (32-bit lowercase MD5).
+        # - When paramType is set to normal, enter the plaintext.
+        # - When paramType is set to md5, enter the plaintext of the license plate number excluding the last two characters, followed by the 32-bit lowercase MD5 hash of the last two characters.
         self.vehicle_num = vehicle_num
-        # The vehicle type.
+        # The vehicle type. Valid values:
         # 
-        # > 
-        # > - 02: standard passenger car
-        # > - 52: new energy passenger car.
+        # - 02: regular small passenger vehicle
+        # - 52: new energy small passenger vehicle
         self.vehicle_type = vehicle_type
 
     def validate(self):

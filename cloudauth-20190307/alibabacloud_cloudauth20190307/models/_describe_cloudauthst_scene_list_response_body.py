@@ -67,7 +67,7 @@ class DescribeCloudauthstSceneListResponseBodyItems(DaraModel):
         self.gmt_create = gmt_create
         # The modification time.
         self.gmt_modified = gmt_modified
-        # The Alibaba Cloud Marketplace commodity code.
+        # The commodity code in Alibaba Cloud Marketplace.
         self.product_code = product_code
         # The product name.
         self.product_name = product_name
@@ -75,7 +75,7 @@ class DescribeCloudauthstSceneListResponseBodyItems(DaraModel):
         self.scene_id = scene_id
         # The scenario name.
         self.scene_name = scene_name
-        # Specifies whether to deliver files generated during authentication to the customer\\"s OSS. Valid values:
+        # Specifies whether to deliver the files generated during verification to the customer\\"s OSS. Valid values:
         # - **Y**: Enabled.
         # - **N**: Disabled.
         self.store_image = store_image

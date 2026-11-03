@@ -14,7 +14,7 @@ class DeleteAllCustomizeFlowStrategyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The return code. A value of 200 indicates success. Other values indicate failure.
+        # The return code. A value of 200 indicates success, and other values indicate failure.
         self.code = code
         # The returned data.
         self.data = data
@@ -22,9 +22,9 @@ class DeleteAllCustomizeFlowStrategyResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The returned message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the response is successful.
         self.success = success
 
     def validate(self):

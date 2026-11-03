@@ -13,13 +13,13 @@ class Id2MetaStandardVerifyResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.Id2MetaStandardVerifyResponseBodyResultObject = None,
     ):
-        # The return code. A value of 200 indicates success. Other values indicate failure.
+        # The return code. A value of 200 indicates success, and other values indicate failure.
         self.code = code
-        # The response message.
+        # The returned message.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The result information.
+        # The returned result.
         self.result_object = result_object
 
     def validate(self):
@@ -68,9 +68,9 @@ class Id2MetaStandardVerifyResponseBodyResultObject(DaraModel):
         biz_code: str = None,
     ):
         # The verification result code. Valid values:
-        # - **1**: Consistent.
-        # - **2**: Inconsistent.
-        # - **3**: No record found.
+        # - **1**: The verification is consistent.
+        # - **2**: The verification is inconsistent.
+        # - **3**: No record is found.
         self.biz_code = biz_code
 
     def validate(self):

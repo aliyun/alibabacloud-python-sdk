@@ -10,11 +10,11 @@ class DescribeOssStatusV2Request(DaraModel):
         service_code: str = None,
         source_ip: str = None,
     ):
-        # The ServiceCode of the ID Verification product. Valid values:
-        # - **antcloudauth**: financial-grade ID Verification.
-        # - **cloudauthst (discontinued)**: enhanced ID Verification.
+        # The ServiceCode of the ID Verification cloud service. Valid values:
+        # - **antcloudauth**: Financial-grade ID Verification.
+        # - **cloudauthst** (retired): ID Verification Enhanced Edition.
         self.service_code = service_code
-        # The source IP address of the visitor.
+        # The source IP address of the requester.
         self.source_ip = source_ip
 
     def validate(self):

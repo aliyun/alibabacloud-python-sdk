@@ -31,55 +31,51 @@ class ContrastFaceVerifyAdvanceRequest(DaraModel):
     ):
         # The real name.
         self.cert_name = cert_name
-        # The certificate number.
+        # The ID document number.
         self.cert_no = cert_no
-        # The certificate type.
-        # Currently only ID cards are supported. You must set this parameter to IDENTITY_CARD.
+        # The type of the ID document. Only ID cards are supported. Set the value to IDENTITY_CARD.
         self.cert_type = cert_type
-        # The CertifyId from a previous successful ID Verification. The photo from that verification is used as the comparison photo.
+        # The CertifyId of a previous successful ID Verification. The photo used in the previous verification is used as the comparison photo.
         # 
-        # > Among the four methods of passing in images (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS), select only one.
+        # > You can use only one of the following methods to upload the image: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS.
         self.certify_id = certify_id
         # Specifies whether to allow cropping of the face image. Valid values:
-        # 
-        # - T: Allowed.
-        # 
-        # - F (default): Not allowed.
+        # - T: Cropping is allowed.
+        # - F: Cropping is not allowed. This is the default value.
         self.crop = crop
         # The device token for risk identification.
         self.device_token = device_token
-        # The encryption type. An empty value indicates no encryption.
+        # The encryption type. An empty value indicates that encryption is not used.
         self.encrypt_type = encrypt_type
         # The local video file.
         self.face_contrast_file_object = face_contrast_file_object
         # The Base64-encoded photo.
         self.face_contrast_picture = face_contrast_picture
-        # The OSS photo URL. Currently only authorized OSS photo URLs are supported.
+        # The URL of the photo in OSS. Only authorized OSS photo URLs are supported.
         # 
-        # > Among the four methods of passing in images (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS), select only one.
+        # > You can use only one of the following methods to upload the image: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS.
         self.face_contrast_picture_url = face_contrast_picture_url
         # The IP address of the user.
         self.ip = ip
         # The mobile phone number of the user.
         self.mobile = mobile
-        # The liveness detection type.
+        # The type of liveness detection.
         self.model = model
-        # The bucket name of the authorized OSS space.
+        # The name of the authorized OSS bucket.
         # 
-        # > Among the four methods of passing in images (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS), select only one.
+        # > You can use only one of the following methods to upload the image: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS.
         self.oss_bucket_name = oss_bucket_name
-        # The file name in the authorized OSS space.
+        # The name of the object in the authorized OSS bucket.
         # 
-        # > Among the four methods of passing in images (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS), select only one.
+        # > You can use only one of the following methods to upload the image: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS.
         self.oss_object_name = oss_object_name
-        # The unique identifier of the merchant request.
-        # The value is a 32-character alphanumeric string. The first few characters are a custom abbreviation defined by the merchant, the middle part can be a time segment, and the last part can be a random or incremental sequence.
+        # The unique identifier of the merchant request. The value is a 32-character alphanumeric string. The first few characters are a custom abbreviation of the merchant, the middle part can be a period of time, and the last part can be a random or incremental sequence.
         self.outer_order_no = outer_order_no
-        # Fixed value: ID_MIN.
+        # The product code. Set the value to ID_MIN.
         self.product_code = product_code
-        # The verification scenario ID.
+        # The ID of the authentication scenario.
         self.scene_id = scene_id
-        # The custom user ID defined by the business.
+        # The custom user ID in the customer\\"s business system.
         self.user_id = user_id
 
     def validate(self):

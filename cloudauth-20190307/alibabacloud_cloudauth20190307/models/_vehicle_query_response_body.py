@@ -13,9 +13,9 @@ class VehicleQueryResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.VehicleQueryResponseBodyResultObject = None,
     ):
-        # The return code. A value of 200 indicates success. Other values indicate failure.
+        # The return code. A value of 200 indicates success, and other values indicate failure.
         self.code = code
-        # The response message.
+        # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -71,8 +71,8 @@ class VehicleQueryResponseBodyResultObject(DaraModel):
         # The verification result code. Valid values:
         # 
         # > 
-        # > - 1: match found (billable).
-        # > - 3: no record found (not billable).
+        # > - 1: Found (billable).
+        # > - 3: No record found (not billable).
         self.biz_code = biz_code
         # The vehicle information.
         self.vehicle_info = vehicle_info

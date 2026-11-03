@@ -12,18 +12,17 @@ class Id2MetaVerifyWithOCRRequest(DaraModel):
         cert_national_url: str = None,
         cert_url: str = None,
     ):
-        # The input stream of the portrait side image of the ID card.
+        # The input stream of the image for the portrait side of the ID card.
         # Specify either CertUrl or CertFile.
         self.cert_file = cert_file
-        # The image of the national emblem side of the ID card.
-        # Specify either CertNationalUrl or CertNationalFile. You can also leave both empty.
+        # The URL of the image of the national emblem side of the ID card. You can specify either CertNationalUrl or CertNationalFile. You can also specify neither.
         self.cert_national_file = cert_national_file
-        # The URL of the national emblem side image of the ID card.
-        # A publicly accessible HTTP or HTTPS URL.
-        # Specify either CertNationalUrl or CertNationalFile. You can also leave both empty.
+        # The URL of the image for the national emblem side of the ID card.
+        # The URL must be a publicly accessible HTTP or HTTPS link.
+        # Specify either CertNationalUrl or CertNationalFile, or leave both empty.
         self.cert_national_url = cert_national_url
-        # The image of the portrait side of the ID card.
-        # A publicly accessible HTTP or HTTPS URL.
+        # The URL of the image for the portrait side of the ID card.
+        # The URL must be a publicly accessible HTTP or HTTPS link.
         # Specify either CertUrl or CertFile.
         self.cert_url = cert_url
 

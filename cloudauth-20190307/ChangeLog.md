@@ -1,3 +1,10 @@
+2026-11-03 Version: 3.14.1
+- Update API DeepfakeDetect: add request parameters FaceAttributeCheck.
+- Update API DeepfakeDetect: add response parameters Body.ResultObject.FaceAttributeInfo.
+- Update API InitFaceVerify: add request parameters EnableAlbumUpload.
+- Update API InitFaceVerify: add request parameters EnableTts.
+
+
 2026-09-16 Version: 3.14.0
 - Support API Id3MetaVerifyPRO.
 - Update API CreateAntCloudAuthScene: add request parameters DegradeAppScheme.

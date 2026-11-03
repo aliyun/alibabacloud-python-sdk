@@ -13,13 +13,13 @@ class VehicleInsureQueryResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.VehicleInsureQueryResponseBodyResultObject = None,
     ):
-        # The return code. A value of 200 indicates success. Other values indicate failure.
+        # The return code. A value of 200 indicates success, and other values indicate failure.
         self.code = code
-        # The response message of the request.
+        # The response message for the request.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The result information.
+        # The returned result.
         self.result_object = result_object
 
     def validate(self):
@@ -69,10 +69,9 @@ class VehicleInsureQueryResponseBodyResultObject(DaraModel):
         vehicle_info: str = None,
     ):
         # The verification result code. Valid values:
-        # 
         # > 
-        # > - 1: record found (billable).
-        # > - 3: no record found (not billable).
+        # > - 1: Found (billable).
+        # > - 3: No record found (not billable).
         self.biz_code = biz_code
         # The insurance date information.
         self.vehicle_info = vehicle_info

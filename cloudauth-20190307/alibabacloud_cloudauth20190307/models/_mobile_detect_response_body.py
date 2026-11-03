@@ -15,9 +15,9 @@ class MobileDetectResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.MobileDetectResponseBodyResultObject = None,
     ):
-        # The return code. A value of 200 indicates success. Other values indicate failure.
+        # The return code. A value of 200 indicates success, and other values indicate failure.
         self.code = code
-        # The response message.
+        # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -70,7 +70,7 @@ class MobileDetectResponseBodyResultObject(DaraModel):
         charge_count: str = None,
         items: List[main_models.MobileDetectResponseBodyResultObjectItems] = None,
     ):
-        # The total number of billing counts in a single request.
+        # The total number of billable calls in a single request.
         self.charge_count = charge_count
         # The verification result set.
         self.items = items
@@ -118,18 +118,18 @@ class MobileDetectResponseBodyResultObjectItems(DaraModel):
         mobile: str = None,
         sub_code: str = None,
     ):
-        # The location to which the phone number belongs. This field is available only for plaintext phone numbers.
+        # The phone number location. This field is available only for plaintext phone numbers.
         self.area = area
         # The verification result. Valid values:
         # 
         # - 1: Active and available. 
-        # - 2: Not in active and available status.
+        # - 2: Inactive or unavailable.
         # - 3: No query results.
         self.biz_code = biz_code
-        # The carrier name. Valid values:
+        # The name of the carrier. Valid values:
         # 
-        # - CMCC: China Mobile 
-        # - CUCC: China Unicom 
+        # - CMCC: China Mobile. 
+        # - CUCC: China Unicom. 
         # - CTCC: China Telecom.
         self.isp_name = isp_name
         # The phone number.
@@ -137,10 +137,10 @@ class MobileDetectResponseBodyResultObjectItems(DaraModel):
         # The verification details. Valid values:
         # 
         # - 101: Available number.
-        # - 102: Empty number.
-        # - 103: Suspended. 
-        # - 104: Silent number (inactive secondary number in the past six months, new number, or non-smartphone user). 
-        # - 105: Risky number (user with prolonged shutdown, voice service not activated, or prone to complaints).
+        # - 102: Non-existent number.
+        # - 103: Service suspended. 
+        # - 104: Silent number (inactive secondary numbers, new numbers, or non-smartphone users within the last six months). 
+        # - 105: Risky number (powered off for a long time, voice service not activated, or users prone to complaints).
         # - 301: No record found.
         self.sub_code = sub_code
 

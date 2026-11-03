@@ -13,13 +13,13 @@ class MobileOnlineTimeResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.MobileOnlineTimeResponseBodyResultObject = None,
     ):
-        # The return code. A value of 200 indicates success. Other values indicate failure.
+        # The return code. A value of 200 indicates success, and other values indicate failure.
         self.code = code
-        # The response message.
+        # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The result information.
+        # The returned result.
         self.result_object = result_object
 
     def validate(self):
@@ -74,18 +74,17 @@ class MobileOnlineTimeResponseBodyResultObject(DaraModel):
         # - 2: Inconsistent.
         # - 3: No record found.
         self.biz_code = biz_code
-        # The name of the telecommunications service provider. Valid values:
-        # 
-        # - CMCC: China Mobile. 
-        # - CUCC: China Unicom. 
+        # The name of the Internet service provider (ISP). Valid values:
+        # - CMCC: China Mobile.
+        # - CUCC: China Unicom.
         # - CTCC: China Telecom.
         self.isp_name = isp_name
-        # The network duration code. Valid values:
-        # - 1: [0,3) indicates a network duration of 0 to 3 months.
-        # - 2: [3,6) indicates a network duration of 3 to 6 months.
-        # - 3: [6,12) indicates a network duration of 6 to 12 months.
-        # - 4: [12,24) indicates a network duration of 12 to 24 months.
-        # - 5: [24,+) indicates a network duration of more than 24 months.
+        # The time code. Valid values:
+        # - 1: [0,3), indicating a network tenure of 0 to 3 months.
+        # - 2: [3,6), indicating a network tenure of 3 to 6 months.
+        # - 3: [6,12), indicating a network tenure of 6 to 12 months.
+        # - 4: [12,24), indicating a network tenure of 12 to 24 months.
+        # - 5: [24,+), indicating a network tenure of more than 24 months.
         self.time_code = time_code
 
     def validate(self):

@@ -12,7 +12,7 @@ class DownloadVerifyRecordsResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
-        # The OSS download link for the file.
+        # The OSS link for downloading the file.
         self.result_object = result_object
 
     def validate(self):

@@ -15,13 +15,13 @@ class CredentialVerifyResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.CredentialVerifyResponseBodyResultObject = None,
     ):
-        # The response code. A value of 200 indicates success. Other values indicate failure.
+        # The return code. A value of 200 indicates success, and other values indicate failure.
         self.code = code
-        # The response message.
+        # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The result information.
+        # The returned result.
         self.result_object = result_object
 
     def validate(self):
@@ -76,34 +76,34 @@ class CredentialVerifyResponseBodyResultObject(DaraModel):
         verify_result: str = None,
         vl_result: main_models.CredentialVerifyResponseBodyResultObjectVlResult = None,
     ):
-        # The additional information in JSON format.
+        # The other information in JSON format.
         self.material_info = material_info
-        # The OCR recognition result.
+        # The OCR result.
         self.ocr_info = ocr_info
         # The risk result. Valid values:
         # 
         # - **0**: Low risk.
         # - **1**: High risk.
-        # - **2**: Suspicious.
+        # - ****2****: Suspicious.
         self.result = result
-        # The risk score map.
+        # The map of risk scores.
         self.risk_score = risk_score
-        # The risk tags, separated by commas (,). Valid values:
+        # The risk tags. Multiple tags are separated by commas (,). Valid values:
         # 
-        # - PS: image manipulation.
-        # - SCREEN_PHOTO: screen recapture.
-        # - SCREENSHOT: screenshot.
-        # - WATERMARK: watermark.
-        # - COLOR_PRINT: color print copy.
-        # - WEB_IMAGE: web image.
-        # - SAME_FACE: similar face.
-        # - SAME_BACKGROUND: similar background.
+        # - PS: The image is photoshopped.
+        # - SCREEN_PHOTO: The image is a photo of a screen.
+        # - SCREENSHOT: The image is a screenshot.
+        # - WATERMARK: The image contains a watermark.
+        # - COLOR_PRINT: The image is a color print or copy.
+        # - WEB_IMAGE: The image is a web image.
+        # - SAME_FACE: The face is similar to another face.
+        # - SAME_BACKGROUND: The background is similar to another background.
         self.risk_tag = risk_tag
         # The authoritative verification details.
         self.verify_detail = verify_detail
         # The authoritative verification result.
         self.verify_result = verify_result
-        # The Qwen interpretation.
+        # The Qwen explanation.
         self.vl_result = vl_result
 
     def validate(self):
@@ -176,12 +176,12 @@ class CredentialVerifyResponseBodyResultObjectVlResult(DaraModel):
         success: bool = None,
         vl_content: str = None,
     ):
-        # Indicates whether the Qwen interpretation is successful. Valid values:
+        # Indicates whether the Qwen explanation is successful. Valid values:
         # 
         # - true: Successful.
         # - false: Failed.
         self.success = success
-        # The Qwen interpretation content.
+        # The content of the Qwen explanation.
         self.vl_content = vl_content
 
     def validate(self):

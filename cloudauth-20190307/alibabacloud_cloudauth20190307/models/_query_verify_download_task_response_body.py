@@ -15,16 +15,16 @@ class QueryVerifyDownloadTaskResponseBody(DaraModel):
     ):
         # The error code.
         self.error_code = error_code
-        # Indicates whether the download task is complete. Valid values:
-        # - **true**: Complete.
-        # - **false**: Not complete.
+        # Indicates whether the download task is completed. Valid values:
+        # - **true**: Completed.
+        # - **false**: Not completed.
         self.finish = finish
         # Id of the request
         self.request_id = request_id
-        # The task status. Valid values:
-        # - **1**: The file is being generated.
-        # - **2**: The file is generated.
-        # - **3**: The file failed to be generated.
+        # The status of the task. Valid values:
+        # - **1**: File generation is in progress.
+        # - **2**: File generation is complete.
+        # - **3**: File generation failed.
         self.status = status
         # The download URL.
         self.url = url

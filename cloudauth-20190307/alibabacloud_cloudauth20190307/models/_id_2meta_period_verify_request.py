@@ -15,18 +15,19 @@ class Id2MetaPeriodVerifyRequest(DaraModel):
     ):
         # The ID card number.
         # 
-        # - If paramType is set to normal, enter the ID card number in plaintext.
-        # - If paramType is set to md5, the value is in the following format: first 6 digits of the ID card number (plaintext) + date of birth (ciphertext) + last 4 digits of the ID card number (plaintext).
+        # - If paramType is set to normal: Enter the plaintext ID card number.
+        # - If paramType is set to md5:
+        # Enter the first 6 digits of the ID card number (plaintext) + the date of birth (ciphertext) + the last 4 digits of the ID card number (plaintext).
         self.identify_num = identify_num
         # The parameter type. Valid values:
         # 
-        # - normal: not encrypted.
-        # - md5: MD5-encrypted.
+        # - normal: Not encrypted.
+        # - md5: MD5 encryption.
         self.param_type = param_type
         # The name.
         # 
-        # - paramType = normal: enter the name in plaintext.
-        # - paramType = md5: the first character of the name is MD5-encrypted (32-bit lowercase MD5) + the remaining characters of the name in plaintext.
+        # - If paramType is set to normal: Enter the plaintext name.
+        # - If paramType is set to md5: Enter the MD5 hash (32-character lowercase) of the first character of the name + the rest of the name in plaintext.
         self.user_name = user_name
         # The expiration date of the ID card validity period. Format: YYYYMMDD.
         self.validity_end_date = validity_end_date

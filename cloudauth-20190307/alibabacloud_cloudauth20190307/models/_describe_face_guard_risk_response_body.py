@@ -13,13 +13,13 @@ class DescribeFaceGuardRiskResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeFaceGuardRiskResponseBodyResultObject = None,
     ):
-        # The response code. **200** indicates that the request was successful.
+        # The return code. A value of **200** indicates that the request was successful.
         self.code = code
-        # The response message.
+        # The returned message.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The result information.
+        # The returned result.
         self.result_object = result_object
 
     def validate(self):
@@ -72,17 +72,17 @@ class DescribeFaceGuardRiskResponseBodyResultObject(DaraModel):
     ):
         # The unique identifier for ID Verification.
         self.certify_id = certify_id
-        # The device risk probability predicted by the device assistant algorithm. A higher score indicates a higher device risk.
+        # The device risk probability predicted by the Device Assistant algorithm. A higher score indicates a higher device risk.
         # 
-        # Value range: 0 to 100.
+        # Valid values: 0 to 100.
         self.guard_risk_score = guard_risk_score
-        # The extended information in JSON format. The returned content is customized based on tenant requirements.
+        # The extended information in JSON format. This information is customized and returned based on tenant requirements.
         self.risk_extends = risk_extends
-        # The device risk labels.
+        # The device risk tags.
         # 
-        # - Multiple device risk labels are separated by commas (,), such as "ROOT,VPN,HOOK".
+        # - Multiple device risk tags are separated by commas (,), such as ROOT,VPN,HOOK.
         # 
-        # - For more information about device risk labels and their descriptions, see the Face Guard label description in the official documentation.
+        # - For more information about device risk tags and their meanings, refer to the Face Guard tag description in the official documentation.
         self.risk_tags = risk_tags
 
     def validate(self):

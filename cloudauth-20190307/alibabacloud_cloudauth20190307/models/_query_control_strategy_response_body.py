@@ -15,9 +15,9 @@ class QueryControlStrategyResponseBody(DaraModel):
         request_id: str = None,
         result_object: List[main_models.QueryControlStrategyResponseBodyResultObject] = None,
     ):
-        # The response code. A value of 200 indicates success. Other values indicate failure.
+        # The return code. A value of 200 indicates success, and other values indicate failure.
         self.code = code
-        # The response message.
+        # The returned message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -80,26 +80,24 @@ class QueryControlStrategyResponseBodyResultObject(DaraModel):
         threshold: float = None,
         user_id: int = None,
     ):
-        # The API name, which is the same as the ProductCode of the verification operation.
+        # The API name, which is the same as the **ProductCode** of the authentication operation.
         self.api_name = api_name
         # The rule configuration type. Valid values:
-        # 
-        # - **QPS**: QPS greater than
-        # - **SUCCESS_RATE_5_MIN**: success rate in the last 5 minutes less than
-        # - **RESP_TIME_5_MIN**: average response time in the last 5 minutes greater than
-        # - **AMOUNT_RISE**: call volume increase compared to the previous period greater than
-        # - **AMOUNT_FALL**: call volume decrease compared to the previous period less than
-        # - **PASSED_RATE_1_HOUR**: verification consistency rate in the last hour less than
-        # - **PARAM_ERROR_RATE_1_HOUR**: parameter error rate in the last hour greater than.
+        # - **QPS**: The QPS is greater than the threshold.
+        # - **SUCCESS_RATE_5_MIN**: The success rate in the last 5 minutes is less than the threshold.
+        # - **RESP_TIME_5_MIN**: The average response time in the last 5 minutes is greater than the threshold.
+        # - **AMOUNT_RISE**: The period-over-period growth in call volume is greater than the threshold.
+        # - **AMOUNT_FALL**: The period-over-period decline in call volume is less than the threshold.
+        # - **PASSED_RATE_1_HOUR**: The verification consistency rate in the last 1 hour is less than the threshold.
+        # - **PARAM_ERROR_RATE_1_HOUR**: The parameter error rate in the last 1 hour is greater than the threshold.
         self.biz_type = biz_type
         # The rule ID.
         self.id = id
         # The status. Valid values:
-        # 
         # - **disabled**: Disabled.
         # - **normal**: Enabled.
         self.status = status
-        # The alert threshold for configure alerting of the rule.
+        # The alert threshold configured for the rule.
         self.threshold = threshold
         # The user ID.
         self.user_id = user_id

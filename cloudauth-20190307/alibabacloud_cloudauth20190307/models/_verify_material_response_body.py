@@ -15,34 +15,34 @@ class VerifyMaterialResponseBody(DaraModel):
         verify_status: int = None,
         verify_token: str = None,
     ):
-        # The comparison score between the facial photo submitted during verification and the authoritative data. Value range: **0** to **100**.
+        # The comparison score between the submitted face photo and the authoritative data during the authentication process. Valid values: **0** to **100**.
         # 
-        # Confidence thresholds for reference:
-        # - At a false acceptance rate of 0.001%, the corresponding threshold is 95.
-        # - At a false acceptance rate of 0.01%, the corresponding threshold is 90.
-        # - At a false acceptance rate of 0.1%, the corresponding threshold is 80.
-        # - At a false acceptance rate of 1%, the corresponding threshold is 60.
+        # Refer to the following confidence thresholds:
+        # - When the false acceptance rate (FAR) is 0.001%, the corresponding threshold is 95.
+        # - When the FAR is 0.01%, the corresponding threshold is 90.
+        # - When the FAR is 0.1%, the corresponding threshold is 80.
+        # - When the FAR is 1%, the corresponding threshold is 60.
         # 
-        # > This field only represents the comparison result between the face and the authoritative data and serves as a reference score. We do not recommend using this score alone as the pass/fail criterion. For the comprehensive verification result, refer to the **VerifyStatus** field. The **VerifyStatus** result combines the face-to-authoritative-data comparison with multiple other strategies to improve the security level.
+        # > This field only indicates the comparison result between the face and the authoritative data and serves as a reference score. Do not use this score alone as the pass or fail criterion. For the comprehensive authentication result, refer to the **VerifyStatus** field. The **VerifyStatus** result combines the face and authoritative data comparison with various other strategies to improve the security level.
         self.authority_comparision_score = authority_comparision_score
-        # The comparison score between the facial photo submitted during verification and the face on the portrait side of the ID card. Value range: **0** to **100**.
+        # The comparison score between the submitted face photo and the face on the front side of the ID card during the authentication process. Valid values: **0** to **100**.
         # 
-        # Confidence thresholds for reference:
-        # - At a false acceptance rate of 0.001%, the corresponding threshold is 95.
-        # - At a false acceptance rate of 0.01%, the corresponding threshold is 90.
-        # - At a false acceptance rate of 0.1%, the corresponding threshold is 80.
-        # - At a false acceptance rate of 1%, the corresponding threshold is 60.
+        # Refer to the following confidence thresholds:
+        # - When the false acceptance rate (FAR) is 0.001%, the corresponding threshold is 95.
+        # - When the FAR is 0.01%, the corresponding threshold is 90.
+        # - When the FAR is 0.1%, the corresponding threshold is 80.
+        # - When the FAR is 1%, the corresponding threshold is 60.
         self.id_card_face_comparison_score = id_card_face_comparison_score
-        # The verification materials.
+        # The authentication materials.
         self.material = material
         # The request ID.
         self.request_id = request_id
-        # The verification status. Valid values:
+        # The authentication status. Valid values:
         # 
-        # - **1**: Verification passed.
-        # - **2** to **n**: Verification failed due to various reasons. For detailed descriptions, see **Verification status description** below.
+        # - **1**: The authentication is passed.
+        # - **2** to **n**: The authentication fails due to various reasons. For detailed descriptions, see **Authentication status description** below.
         self.verify_status = verify_status
-        # The token for this verification, used to correlate the various operations within a verification request. The token is valid for 30 minutes.
+        # The token for this authentication. It is used to link various APIs in the authentication request and is valid for 30 minutes.
         self.verify_token = verify_token
 
     def validate(self):
@@ -108,29 +108,29 @@ class VerifyMaterialResponseBodyMaterial(DaraModel):
         id_card_name: str = None,
         id_card_number: str = None,
     ):
-        # The global camera image captured by the ID Verification SDK.
+        # The global image captured by the camera and collected by the ID Verification SDK.
         # 
-        # > This parameter takes effect only after configuration. If you need to use this parameter, [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/cloudauth/today) to contact us.
+        # > This parameter takes effect only after it is configured. If you need to use this parameter, submit a [ticket](https://selfservice.console.aliyun.com/ticket/category/cloudauth/today) to contact us.
         self.face_global_url = face_global_url
-        # The HTTP or HTTPS URL of the front-facing facial photo, corresponding to the request parameter **FaceImageUrl**. The URL is valid for 5 minutes. Save the image to your own storage to avoid access issues.
+        # The HTTP or HTTPS URL of the front-facing portrait photo, which corresponds to the **FaceImageUrl** request parameter. The URL is valid for 5 minutes. Store the image in your own storage to prevent usage issues.
         self.face_image_url = face_image_url
-        # Indicates whether the face is wearing a mask. Valid values:
-        # - **true**: A mask is detected.
-        # - **false**: No mask is detected.
+        # Specifies whether the face is wearing a mask. Valid values:
+        # - **true**: A mask is worn.
+        # - **false**: No mask is worn.
         self.face_mask = face_mask
-        # The quality of the front-facing facial photo. Valid values:
-        # - **UNQUALIFIED**: poor quality
-        # - **LOW**: low quality
-        # - **NORMAL**: moderate quality
-        # - **HIGH**: high quality.
+        # The quality of the front-facing portrait photo. Valid values:
+        # - **UNQUALIFIED**: Poor photo quality.
+        # - **LOW**: Low.
+        # - **NORMAL**: Normal.
+        # - **HIGH**: High.
         self.face_quality = face_quality
         # The OCR result of the ID card information.
         # 
-        # > If the front and back photos of the ID card are not provided during verification, the OCR result of the ID card information is not returned. Even if both photos are provided, not all information on the ID card is guaranteed to be returned. OCR may fail to recognize certain information due to issues such as poor photo quality. We recommend that your business logic does not strictly depend on the ID card OCR information.
+        # > If the front and back sides of the ID card are not provided during the authentication process, the OCR result of the ID card information is not returned. Even if the front and back sides of the ID card are provided, the system does not guarantee that all information on the ID card is returned. If OCR fails to recognize certain information due to photo quality issues, the OCR information may be incomplete. Do not strongly rely on the ID card OCR information in your business.
         self.id_card_info = id_card_info
-        # The name, corresponding to the request parameter **Name**.
+        # The name, which corresponds to the **Name** request parameter.
         self.id_card_name = id_card_name
-        # The ID card number, corresponding to the request parameter **IdCardNumber**.
+        # The ID card number, which corresponds to the **IdCardNumber** request parameter.
         self.id_card_number = id_card_number
 
     def validate(self):
@@ -209,13 +209,13 @@ class VerifyMaterialResponseBodyMaterialIdCardInfo(DaraModel):
         self.address = address
         # The issuing authority.
         self.authority = authority
-        # The HTTP or HTTPS URL of the national emblem side of the ID card. The URL is valid for 5 minutes. Save the image to your own storage to avoid access issues.
+        # The HTTP or HTTPS URL of the image for the back side of the ID card. The URL is valid for 5 minutes. Store the image in your own storage to prevent usage issues.
         self.back_image_url = back_image_url
         # The date of birth.
         self.birth = birth
-        # The expiration date of the ID card. Format: yyyymmdd.
+        # The end date of the ID card validity period. Format: yyyymmdd.
         self.end_date = end_date
-        # The HTTP or HTTPS URL of the portrait side of the ID card. The URL is valid for 5 minutes. Save the image to your own storage to avoid access issues.
+        # The HTTP or HTTPS URL of the image for the front side of the ID card. The URL is valid for 5 minutes. Store the image in your own storage to prevent usage issues.
         self.front_image_url = front_image_url
         # The name.
         self.name = name

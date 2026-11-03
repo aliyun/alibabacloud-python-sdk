@@ -10,7 +10,7 @@ class DeleteAllCustomizeFlowStrategyRequest(DaraModel):
         region_id: str = None,
         user_id: int = None,
     ):
-        # The region ID.
+        # regionId
         self.region_id = region_id
         # The user ID.
         # 

@@ -13,14 +13,14 @@ class VehicleQueryRequest(DaraModel):
     ):
         # The parameter type. Valid values:
         # 
-        # - **normal**: not encrypted.
-        # - **md5**: MD5-encrypted.
+        # - **normal**: Unencrypted.
+        # - **md5**: MD5 encrypted.
         self.param_type = param_type
         # The license plate number.
         # 
         # > 
-        # > - If ParamType is set to normal, enter the plaintext license plate number.
-        # > - If ParamType is set to md5, enter the plaintext of the license plate number excluding the last two characters, concatenated with the MD5-encrypted value of the last two characters (32-bit lowercase MD5).
+        # > - If paramType is set to normal, enter the plaintext.
+        # > - If paramType is set to md5, enter the plaintext of the license plate number excluding the last two characters, followed by the MD5 hash of the last two characters (32-character lowercase MD5).
         self.vehicle_num = vehicle_num
         # The vehicle type.
         self.vehicle_type = vehicle_type

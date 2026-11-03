@@ -15,7 +15,7 @@ class QueryBlackListStrategyResponseBody(DaraModel):
         request_id: str = None,
         result_object: List[main_models.QueryBlackListStrategyResponseBodyResultObject] = None,
     ):
-        # The return code. **200** indicates that the request was successful.
+        # The return code. **200** indicates that the request is successful.
         self.code = code
         # The error message.
         self.message = message
@@ -81,26 +81,26 @@ class QueryBlackListStrategyResponseBodyResultObject(DaraModel):
         status: str = None,
         user_id: int = None,
     ):
-        # The blacklist string. Multiple blacklist entries are separated by **commas**.
+        # The blacklist string. Items in the blacklist are separated by **commas**.
         self.biz_content = biz_content
-        # The blacklist type. Valid values:
-        # - mobile: phone number blacklist
-        # - ip: IP blacklist
-        # - identifyNum: ID card blacklist
-        # - bankCard: bank card blacklist.
+        # The list type. Valid values:
+        # - mobile: The mobile phone number blocklist.
+        # - ip: The IP address blocklist.
+        # - identifyNum: The ID card blocklist.
+        # - bankCard: The bank card blocklist.
         self.biz_key = biz_key
         # The modification time.
         self.gmt_modified = gmt_modified
         # The rule ID.
         self.id = id
         # The product name. Valid values:
-        # - id2meta: ID card two-factor verification.
-        # - mobile3Meta: Phone number factor verification.
-        # - bankcardMeta: Bank card factor verification.
+        # - id2meta: ID card two-element verification
+        # - mobile3Meta: mobile phone number element verification
+        # - bankcardMeta: bank card element verification
         self.product_name = product_name
         # The status. Valid values:
-        # - **disabled**: Disabled.
-        # - **normal**: Enabled.
+        # - **disabled**: disabled
+        # - **normal**: enabled
         self.status = status
         # The user ID.
         self.user_id = user_id

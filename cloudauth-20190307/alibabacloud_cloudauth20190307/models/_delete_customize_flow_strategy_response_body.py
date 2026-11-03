@@ -22,7 +22,7 @@ class DeleteCustomizeFlowStrategyResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The returned message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # Indicates whether the response is successful.
         self.success = success

@@ -13,13 +13,13 @@ class LivenessFaceVerifyResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.LivenessFaceVerifyResponseBodyResultObject = None,
     ):
-        # The return code. **200** indicates that the API operation is successful.
+        # The response code. **200** indicates that the request is successful.
         self.code = code
         # The response message.
         self.message = message
-        # The ID of this request.
+        # The ID of the request.
         self.request_id = request_id
-        # The returned result.
+        # The response result.
         self.result_object = result_object
 
     def validate(self):
@@ -70,9 +70,9 @@ class LivenessFaceVerifyResponseBodyResultObject(DaraModel):
         passed: str = None,
         sub_code: str = None,
     ):
-        # The unique identity of the ID Verification request.
+        # The unique identifier of the ID Verification request.
         self.certify_id = certify_id
-        # The attachment information of the facial verification subject, including face quality, face attack detection, face or OCR images, and intent verification data.
+        # The supplementary information about the face verification subject, including face quality, face attack data, face or OCR images, and willingness verification data.
         self.material_info = material_info
         # The verification result. Valid values:
         # 
@@ -80,7 +80,7 @@ class LivenessFaceVerifyResponseBodyResultObject(DaraModel):
         # 
         # - F: Failed.
         self.passed = passed
-        # The verification result code.
+        # The authentication result code.
         self.sub_code = sub_code
 
     def validate(self):

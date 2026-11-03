@@ -13,9 +13,9 @@ class ModifyBlackListStrategyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The return code. A value of 200 indicates success. Other values indicate failure.
+        # The return code. A value of 200 indicates success, and other values indicate failure.
         self.code = code
-        # The returned data.
+        # The response data.
         self.data = data
         # The response message.
         self.message = message

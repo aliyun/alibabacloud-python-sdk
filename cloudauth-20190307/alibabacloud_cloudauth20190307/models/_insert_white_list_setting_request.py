@@ -14,17 +14,17 @@ class InsertWhiteListSettingRequest(DaraModel):
         service_code: str = None,
         valid_day: int = None,
     ):
-        # The certificate number.
+        # The ID number.
         self.cert_no = cert_no
-        # The unique identifier of the ID Verification request.
+        # The unique identifier for ID Verification.
         self.certify_id = certify_id
-        # The remarks. The maximum length is 32 characters.
+        # The remark. The value must be less than 32 characters in length.
         self.remark = remark
-        # The verification scenario ID. This ID is automatically generated after you create a verification scenario in the console. For information about how to create a verification scenario, see Add a verification scenario.
+        # The ID of the verification scenario. This ID is automatically generated after you create a verification scenario in the console. For more information about how to create a verification scenario, see Add a verification scenario.
         self.scene_id = scene_id
-        # The ServiceCode of the ID Verification cloud service. Set this parameter to **antcloudauth**.
+        # The service code of the ID Verification cloud service. Valid values: **antcloudauth**.
         self.service_code = service_code
-        # The number of days the whitelist entry is valid. Valid values: 3, 7, and 30.
+        # The number of days that the whitelist remains valid. Valid values: 3, 7, and 30.
         self.valid_day = valid_day
 
     def validate(self):

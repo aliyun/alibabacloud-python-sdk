@@ -13,14 +13,14 @@ class Id2MetaVerifyWithOCRResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.Id2MetaVerifyWithOCRResponseBodyResultObject = None,
     ):
-        # The response code. A value of 200 indicates success. Any other value indicates failure.
+        # The return code. A value of 200 indicates success, and other values indicate failure.
         # **Important**
-        # - This parameter indicates only whether the API call was made correctly. For detailed response codes, see error codes.
-        # - Check the fields in ResultObject for the business verification result.
+        # - This parameter indicates whether the API operation is called successfully. For detailed return code descriptions, see Error codes.
+        # - To view the business verification results, check the fields in ResultObject.
         self.code = code
-        # The response message of the API call.
+        # The message returned for the API call.
         # **Important**
-        # This parameter indicates only whether the API call is abnormal.
+        # This parameter only indicates whether an exception occurs during the API call.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -74,11 +74,11 @@ class Id2MetaVerifyWithOCRResponseBodyResultObject(DaraModel):
         card_info: str = None,
     ):
         # The identity verification result. Valid values:
-        # - 1: consistent.
-        # - 2: inconsistent.
-        # - 3: no record found.
+        # - 1: Consistent.
+        # - 2: Inconsistent.
+        # - 3: No record found.
         self.biz_code = biz_code
-        # {"address":"浙江省杭州市余*****","birthDate":"19901226","certName":"张三","certNo":"1234561990122*****","nationality":"汉","authority":"xxx公安局","startDate":"20201130","endDate":"20301130"}.
+        # {"address":"Yu*****, Hangzhou, Zhejiang","birthDate":"19901226","certName":"Zhang San","certNo":"1234561990122*****","nationality":"Han","authority":"xxx Public Security Bureau","startDate":"20201130","endDate":"20301130"}
         self.card_info = card_info
 
     def validate(self):

@@ -13,15 +13,15 @@ class RemoveWhiteListSettingResponseBody(DaraModel):
         result_object: bool = None,
         success: bool = None,
     ):
-        # The return code. A value of 200 indicates success. Other values indicate failure.
+        # The return code. A value of 200 indicates success, and other values indicate failure.
         self.code = code
-        # The response message.
+        # The returned message.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The result information.
+        # The returned result information.
         self.result_object = result_object
-        # Indicates whether the request was successful.
+        # Indicates whether the response is successful.
         self.success = success
 
     def validate(self):

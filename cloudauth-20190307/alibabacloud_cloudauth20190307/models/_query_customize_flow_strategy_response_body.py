@@ -17,17 +17,17 @@ class QueryCustomizeFlowStrategyResponseBody(DaraModel):
         result_object: List[main_models.QueryCustomizeFlowStrategyResponseBodyResultObject] = None,
         success: bool = None,
     ):
-        # The return code. A value of 200 indicates success. Other values indicate failure.
+        # The return code. 200 indicates success, and other values indicate failure.
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
         # The error message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The processing result.
         self.result_object = result_object
-        # Indicates whether the response is successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -103,15 +103,15 @@ class QueryCustomizeFlowStrategyResponseBodyResultObject(DaraModel):
     ):
         # AccumulateKey
         self.accumulate_key = accumulate_key
-        # The rate limiting statistical window. Unit: **minutes**.
+        # The throttling statistics window, in **minutes**.
         self.accumulate_window = accumulate_window
         # The API name, which is the same as **ProductCode**.
         self.api_name = api_name
         # The flow type. Valid values:
-        # - **ACCUMULATE**: repeated occurrence of an ID card number.
-        # - **PASSED_RATE**: pass rate less than the threshold.
-        # - **SUB_CODE_205**: authentication failed and the proportion of liveness attack 205 is greater than the threshold.
-        # - **SUB_CODE_206**: authentication failed and the proportion of liveness attack 206 is greater than the threshold.
+        # - **ACCUMULATE**: Repeated occurrence of ID cards.
+        # - **PASSED_RATE**: Pass rate is less than.
+        # - **SUB_CODE_205**: Authentication fails and the proportion of liveness attack 205 is greater than.
+        # - **SUB_CODE_206**: Authentication fails and the proportion of liveness attack 206 is greater than.
         self.flow_type = flow_type
         # The rule ID.
         self.id = id

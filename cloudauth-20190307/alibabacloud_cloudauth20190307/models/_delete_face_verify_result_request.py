@@ -10,12 +10,11 @@ class DeleteFaceVerifyResultRequest(DaraModel):
         certify_id: str = None,
         delete_after_query: str = None,
     ):
-        # The unique identifier for real-person authentication.
+        # The unique identifier for ID Verification.
         self.certify_id = certify_id
-        # Specifies whether deletion depends on having retrieved the relevant data from the corresponding authentication process.
-        # 
-        # - Y: Required. To successfully delete the relevant data, you must have already obtained the processing result through the DescribeFaceVerify API.
-        # - N: Not required (default). You can directly pass N when integrating through the pure server-side API mode.
+        # Specifies whether the deletion relies on the data retrieved from the corresponding verification process. Valid values:
+        # - Y: Yes. To successfully delete the related data, you must have obtained the processing result by calling the DescribeFaceVerify operation.
+        # - N: No. This is the default value. You can directly set this parameter to N when you use the server-only API integration mode.
         self.delete_after_query = delete_after_query
 
     def validate(self):

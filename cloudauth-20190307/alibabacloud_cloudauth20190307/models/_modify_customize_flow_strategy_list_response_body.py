@@ -14,17 +14,17 @@ class ModifyCustomizeFlowStrategyListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The return code. **200** indicates that the request is successful.
+        # The return code. A value of **200** indicates that the API request is successful.
         self.code = code
         # The result data.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The response message.
+        # The returned message.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the response is successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

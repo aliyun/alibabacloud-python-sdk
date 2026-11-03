@@ -16,11 +16,11 @@ class CredentialProductVerifyV2AdvanceRequest(DaraModel):
         merchant_id: str = None,
         product_code: str = None,
     ):
-        # The credential name. Only the following value is supported: 0501 (product image).
+        # The credential name. Valid values: 0501 (product image).
         # 
         # This parameter is required.
         self.cred_name = cred_name
-        # The credential type. Only the following value is supported: 05 (product image).
+        # The credential type. Valid values: 05 (product image).
         # 
         # This parameter is required.
         self.cred_type = cred_type
@@ -30,7 +30,7 @@ class CredentialProductVerifyV2AdvanceRequest(DaraModel):
         self.image_url = image_url
         # The merchant ID.
         self.merchant_id = merchant_id
-        # The call mode. Only the following value is supported: ANTI_FAKE_CHECK.
+        # The call mode. Valid values: ANTI_FAKE_CHECK.
         # 
         # This parameter is required.
         self.product_code = product_code

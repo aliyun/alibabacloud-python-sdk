@@ -2165,6 +2165,8 @@ class Client(OpenApiClient):
     ) -> main_models.DeepfakeDetectResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.face_attribute_check):
+            query['FaceAttributeCheck'] = request.face_attribute_check
         if not DaraCore.is_null(request.face_input_type):
             query['FaceInputType'] = request.face_input_type
         if not DaraCore.is_null(request.face_url):
@@ -2201,6 +2203,8 @@ class Client(OpenApiClient):
     ) -> main_models.DeepfakeDetectResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.face_attribute_check):
+            query['FaceAttributeCheck'] = request.face_attribute_check
         if not DaraCore.is_null(request.face_input_type):
             query['FaceInputType'] = request.face_input_type
         if not DaraCore.is_null(request.face_url):
@@ -7399,8 +7403,12 @@ class Client(OpenApiClient):
             query['CertifyUrlStyle'] = request.certify_url_style
         if not DaraCore.is_null(request.certify_url_type):
             query['CertifyUrlType'] = request.certify_url_type
+        if not DaraCore.is_null(request.enable_album_upload):
+            query['EnableAlbumUpload'] = request.enable_album_upload
         if not DaraCore.is_null(request.enable_beauty):
             query['EnableBeauty'] = request.enable_beauty
+        if not DaraCore.is_null(request.enable_tts):
+            query['EnableTts'] = request.enable_tts
         if not DaraCore.is_null(request.encrypt_type):
             query['EncryptType'] = request.encrypt_type
         if not DaraCore.is_null(request.face_contrast_picture_url):
@@ -7507,8 +7515,12 @@ class Client(OpenApiClient):
             query['CertifyUrlStyle'] = request.certify_url_style
         if not DaraCore.is_null(request.certify_url_type):
             query['CertifyUrlType'] = request.certify_url_type
+        if not DaraCore.is_null(request.enable_album_upload):
+            query['EnableAlbumUpload'] = request.enable_album_upload
         if not DaraCore.is_null(request.enable_beauty):
             query['EnableBeauty'] = request.enable_beauty
+        if not DaraCore.is_null(request.enable_tts):
+            query['EnableTts'] = request.enable_tts
         if not DaraCore.is_null(request.encrypt_type):
             query['EncryptType'] = request.encrypt_type
         if not DaraCore.is_null(request.face_contrast_picture_url):

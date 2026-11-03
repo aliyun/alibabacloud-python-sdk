@@ -15,13 +15,13 @@ class DeepfakeDetectResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DeepfakeDetectResponseBodyResultObject = None,
     ):
-        # The return code. A value of 200 indicates success. Other values indicate failure.
+        # The return code. A value of 200 indicates success, and other values indicate failure.
         self.code = code
-        # The response message.
+        # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The result information.
+        # The returned result.
         self.result_object = result_object
 
     def validate(self):
@@ -67,23 +67,26 @@ class DeepfakeDetectResponseBody(DaraModel):
 class DeepfakeDetectResponseBodyResultObject(DaraModel):
     def __init__(
         self,
+        face_attribute_info: str = None,
         result: str = None,
         risk_score: Dict[str, str] = None,
         risk_tag: str = None,
     ):
+        # The facial attribute output fields.
+        self.face_attribute_info = face_attribute_info
         # The risk result. Valid values:
         # 
-        # - **0**: Low risk.
-        # - **1**: High risk.
-        # - **2**: Suspicious.
+        # - **0**: low risk.
+        # - **1**: high risk.
+        # - **2**: suspicious.
         self.result = result
-        # The risk score map.
+        # The map of risk scores.
         self.risk_score = risk_score
-        # The risk labels. Multiple labels are separated by commas (,). Valid values:
+        # The risk tags. Multiple tags are separated by commas (,). Valid values:
         # 
-        # - SuspectDeepForgery: suspected deepfake
-        # - SuspectPSFace: suspected synthetic attack
-        # - SuspectTemple: suspected fraudulent attack
+        # - SuspectDeepForgery: suspected deepfake.
+        # - SuspectPSFace: suspected synthetic attack.
+        # - SuspectTemple: suspected black market attack.
         # - SuspectRemake: suspected recaptured face.
         self.risk_tag = risk_tag
 
@@ -95,6 +98,9 @@ class DeepfakeDetectResponseBodyResultObject(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.face_attribute_info is not None:
+            result['FaceAttributeInfo'] = self.face_attribute_info
+
         if self.result is not None:
             result['Result'] = self.result
 
@@ -108,6 +114,9 @@ class DeepfakeDetectResponseBodyResultObject(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FaceAttributeInfo') is not None:
+            self.face_attribute_info = m.get('FaceAttributeInfo')
+
         if m.get('Result') is not None:
             self.result = m.get('Result')
 

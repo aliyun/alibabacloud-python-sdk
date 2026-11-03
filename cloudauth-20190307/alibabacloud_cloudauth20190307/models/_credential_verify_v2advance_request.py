@@ -26,56 +26,56 @@ class CredentialVerifyV2AdvanceRequest(DaraModel):
         prompt_model: str = None,
         user_name: str = None,
     ):
-        # The certificate number.
+        # The relevant certificate number.
         self.cert_num = cert_num
         # The credential name. Valid values:
         # 
-        # - 01: personal card or certificate
+        # - 01: personal cards and certificates
         #   - 0101: ID card
         #   - 0102: bank card
         #   - 0104: teacher qualification certificate
         #   - 0107: student ID card
-        # - 02: business scenario
+        # - 02: business scenarios
         #   - 0201: storefront photo
         #   - 0202: counter photo
-        #   - 0203: scene photo
-        # - 03: enterprise qualification
-        #   - 0301: business license.
+        #   - 0203: scenario photo
+        # - 03: enterprise qualifications
+        #   - 0301: business license
         self.cred_name = cred_name
         # The credential type. Valid values:
         # 
-        # - 01: personal card or certificate
-        # - 02: business scenario
-        # - 03: enterprise qualification.
+        # - 01: personal cards and certificates
+        # - 02: business scenarios
+        # - 03: enterprise qualifications
         self.cred_type = cred_type
         # The ID card number.
         self.identify_num = identify_num
-        # The Base64-encoded image. Specify one of imageUrl, imageFile, or imageContext.
+        # The Base64-encoded image. Specify one of imageUrl, imageFile, and imageContext.
         self.image_context = image_context
-        # The input stream of the image. Specify one of imageUrl, imageFile, or imageContext.
+        # The image input stream. Specify one of imageUrl, imageFile, and imageContext.
         self.image_file_object = image_file_object
-        # The URL of the image. Specify one of imageUrl, imageFile, or imageContext.
+        # The image URL. Specify one of imageUrl, imageFile, and imageContext.
         self.image_url = image_url
         # Specifies whether to enable authoritative verification. Valid values:
         # 
-        # - **0**: Disabled.
-        # - **1**: Enabled.
-        # >Danger: Deprecated.
+        # - ****0****: no
+        # - **1**: yes
+        # >Danger: **[Deprecated]**</danger>
         self.is_check = is_check
-        # Specifies whether to enable OCR.
-        # >Danger: Deprecated.
+        # Specifies whether to perform OCR.
+        # >Danger: **[Deprecated]**</danger>
         self.is_ocr = is_ocr
-        # This feature is offline. This parameter no longer takes effect.
+        # This feature has been retired and the parameter no longer takes effect.
         self.merchant_detail = merchant_detail
-        # The merchant ID. This parameter is required when CredName is set to 02.
+        # The merchant ID. This field is required when ****CredName**** is set to **02**.
         self.merchant_id = merchant_id
         # The call mode. Valid values:
         # 
-        # - ANTI_FAKE_CHECK (default): image anti-forgery detection.
+        # - ANTI_FAKE_CHECK (default): image anti-counterfeiting detection
         self.product_code = product_code
-        # This feature is offline. This parameter no longer takes effect.
+        # This feature has been retired and the parameter no longer takes effect.
         self.prompt = prompt
-        # This feature is offline. This parameter no longer takes effect.
+        # This feature has been retired and the parameter no longer takes effect.
         self.prompt_model = prompt_model
         # The name.
         self.user_name = user_name
@@ -198,9 +198,9 @@ class CredentialVerifyV2AdvanceRequestMerchantDetail(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # This feature is offline. This parameter no longer takes effect.
+        # This feature has been retired and the parameter no longer takes effect.
         self.key = key
-        # This feature is offline. This parameter no longer takes effect.
+        # This feature has been retired and the parameter no longer takes effect.
         self.value = value
 
     def validate(self):

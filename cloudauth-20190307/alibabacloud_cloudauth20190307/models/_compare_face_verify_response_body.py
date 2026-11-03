@@ -13,7 +13,7 @@ class CompareFaceVerifyResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.CompareFaceVerifyResponseBodyResultObject = None,
     ):
-        # The return code. A value of 200 indicates success. Other values indicate failure.
+        # The return code. A value of 200 indicates success, and other values indicate failure.
         self.code = code
         # The error message.
         self.message = message
@@ -71,7 +71,9 @@ class CompareFaceVerifyResponseBodyResultObject(DaraModel):
     ):
         # The unique identifier of the ID Verification request.
         self.certify_id = certify_id
-        # Indicates whether the verification passed. A value of T indicates passed. A value of F indicates not passed.
+        # Indicates whether the verification is passed. Valid values:
+        # - T: Passed.
+        # - F: Failed.
         self.passed = passed
         # The face comparison score.
         self.verify_score = verify_score
