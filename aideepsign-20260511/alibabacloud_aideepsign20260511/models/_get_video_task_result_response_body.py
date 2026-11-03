@@ -23,11 +23,11 @@ class GetVideoTaskResultResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The cause of the failure. This field is returned only when the task status is failed.
+        # The cause of the failure. This parameter is returned only when the task status is failed.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The task status. Valid values: running, succeeded, and failed. Set the polling interval to at least 5 seconds.
+        # The task status. Valid values: `running`, `succeeded`, and `failed`. Set the polling interval to at least 5 seconds.
         self.status = status
         # Indicates whether the request is successful.
         self.success = success
@@ -114,7 +114,7 @@ class GetVideoTaskResultResponseBodyVideos(DaraModel):
     ):
         # The OSS key of the output object.
         self.object_key = object_key
-        # The presigned download URL of the video stored in OSS after C2PA signing.
+        # The presigned download URL of the C2PA-signed object stored in OSS.
         self.url = url
 
     def validate(self):

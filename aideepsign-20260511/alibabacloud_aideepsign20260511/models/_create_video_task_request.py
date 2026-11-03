@@ -27,11 +27,11 @@ class CreateVideoTaskRequest(DaraModel):
         self.audio = audio
         # The idempotency parameter.
         self.client_token = client_token
-        # The video duration in seconds. Valid values: an integer from 2 to 30, -1 (intelligent duration), and 0 (server default of 5 seconds).
+        # The video duration in seconds. Valid values: an integer in the range of [2, 30], -1 (intelligent duration), and 0 (the server uses the default value of 5 seconds).
         self.duration = duration
         # The model name. Valid values: wan3.0-video (default) and wan3.0-video-prime (high-speed version).
         self.model = model
-        # The video description prompt. You must specify either this parameter or Media. For text-to-video generation, only Prompt is required.
+        # The video description prompt. Either this parameter or Media is required. For pure text-to-video generation, only Prompt is required.
         self.prompt = prompt
         # Specifies whether to enable intelligent rewriting (prompt_extend). Default value: true.
         self.prompt_extend = prompt_extend
@@ -39,7 +39,7 @@ class CreateVideoTaskRequest(DaraModel):
         self.ratio = ratio
         # The resolution. Valid values: 1080P (default), 720P, and 480P.
         self.resolution = resolution
-        # The random seed. Valid values: -1 (random), an integer from 0 to 2147483647, and 0 (server default of random).
+        # The random seed. Valid values: -1 (random), an integer in the range of [0, 2147483647], and 0 (the server uses a random seed by default).
         self.seed = seed
         # Specifies whether to add a Model Studio watermark. Default value: false.
         self.watermark = watermark
