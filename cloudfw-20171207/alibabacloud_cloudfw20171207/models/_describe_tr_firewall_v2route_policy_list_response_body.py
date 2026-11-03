@@ -14,11 +14,11 @@ class DescribeTrFirewallV2RoutePolicyListResponseBody(DaraModel):
         total_count: str = None,
         tr_firewall_route_policies: List[main_models.DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies] = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
-        # The list of firewall routing policies.
+        # The list of firewall route policies.
         self.tr_firewall_route_policies = tr_firewall_route_policies
 
     def validate(self):
@@ -74,35 +74,35 @@ class DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies(Dar
     ):
         # The list of secondary traffic redirection instances.
         self.dest_candidate_list = dest_candidate_list
-        # The policy description.
+        # The description of the policy.
         self.policy_description = policy_description
         # The policy name.
         self.policy_name = policy_name
-        # The policy status. Valid values:
+        # The status of the policy. Valid values:
         # 
-        # - creating: being created
+        # - creating: The policy is being created.
         # 
-        # - deleting: being deleted
+        # - deleting: The policy is being deleted.
         # 
-        # - opening: being enabled
+        # - opening: The policy is being enabled.
         # 
-        # - opened: enabled
+        # - opened: The policy is enabled.
         # 
-        # - closing: being disabled
+        # - closing: The policy is being disabled.
         # 
-        # - closed: disabled
+        # - closed: The policy is disabled.
         self.policy_status = policy_status
-        # The traffic redirection scenario type for the virtual private cloud (VPC) firewall on CEN Enterprise Edition. Valid values:
+        # The traffic redirection scenario type for virtual private cloud (VPC) firewalls in Cloud Enterprise Network (CEN) Enterprise Edition. Valid values:
         # 
-        # - **fullmesh**: multi-point interconnection
+        # - **fullmesh**: full mesh interconnection.
         # 
-        # - **one_to_one**: point-to-point
+        # - **one_to_one**: point-to-point.
         # 
-        # - **end_to_end**: point-to-multipoint
+        # - **end_to_end**: point-to-multipoint.
         self.policy_type = policy_type
         # The list of primary traffic redirection instances.
         self.src_candidate_list = src_candidate_list
-        # The ID of the firewall routing policy.
+        # The ID of the firewall route policy.
         self.tr_firewall_route_policy_id = tr_firewall_route_policy_id
 
     def validate(self):

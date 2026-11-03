@@ -15,7 +15,7 @@ class DescribeAttackAppCategoryResponseBody(DaraModel):
     ):
         # The list of attack application categories.
         self.app_categories = app_categories
-        # The request ID of the returned result.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

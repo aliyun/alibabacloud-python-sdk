@@ -14,7 +14,7 @@ class DescribeOutgoingAssetListResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of assets.
+        # The asset list.
         self.asset_list = asset_list
         # The request ID.
         self.request_id = request_id
@@ -87,7 +87,7 @@ class DescribeOutgoingAssetListResponseBodyAssetList(DaraModel):
         self.asset_instance_id = asset_instance_id
         # The name of the asset instance.
         self.asset_instance_name = asset_instance_name
-        # The region ID.
+        # The region.
         self.assets_region = assets_region
         # The follow status.
         self.group_name = group_name
@@ -95,19 +95,19 @@ class DescribeOutgoingAssetListResponseBodyAssetList(DaraModel):
         self.in_bytes = in_bytes
         # The number of IPS hits.
         self.ips_hit_cnt = ips_hit_cnt
-        # The ID of the NAT Gateway.
+        # The NAT gateway ID.
         self.nat_gateway_id = nat_gateway_id
-        # The name of the NAT Gateway.
+        # The name of the NAT gateway.
         self.nat_gateway_name = nat_gateway_name
         # The outbound traffic, which is the request traffic. Unit: bytes.
         self.out_bytes = out_bytes
-        # The number of outbound domains.
+        # The number of outbound domain names.
         self.outgoing_domain_cnt = outgoing_domain_cnt
-        # The number of outbound destination IP addresses.
+        # The number of outbound IP addresses.
         self.outgoing_dst_ipcnt = outgoing_dst_ipcnt
         # The private IP address.
         self.private_ip = private_ip
-        # The list of private IP addresses.
+        # The private IP address list.
         self.private_iplist = private_iplist
         # The public IP address.
         self.public_ip = public_ip
@@ -115,7 +115,7 @@ class DescribeOutgoingAssetListResponseBodyAssetList(DaraModel):
         self.resource_type = resource_type
         # The security risk.
         self.security_risk = security_risk
-        # The number of sessions.
+        # The number of accesses.
         self.session_count = session_count
         # The total traffic.
         self.total_bytes = total_bytes

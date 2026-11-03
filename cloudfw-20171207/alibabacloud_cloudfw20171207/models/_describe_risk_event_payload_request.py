@@ -17,30 +17,29 @@ class DescribeRiskEventPayloadRequest(DaraModel):
         start_time: str = None,
         uuid: str = None,
     ):
-        # The destination IP address to query. If you specify this parameter, all intrusion events with the specified destination IP address are queried.
+        # The destination IP address to query. If you specify this parameter, the query returns intrusion prevention events that involve this destination IP address.
         self.dst_ip = dst_ip
-        # The ID of the destination VPC to query. If you specify this parameter, all intrusion events that contain the specified ID of the destination VPC are queried.
+        # The destination VPC ID to query. If you specify this parameter, the query returns intrusion prevention events that involve this destination VPC ID.
         self.dst_vpc_id = dst_vpc_id
-        # The end of the time range to query. The value is a timestamp. Unit: seconds.
+        # Specifies the end time of the query. The value is a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The type of the firewall. Valid values:
-        # 
-        # *   **VpcFirewall**: virtual private cloud (VPC) firewall
-        # *   **InternetFirewall** (default): Internet firewall
+        # The type of Cloud Firewall. Valid values:
+        # - **VpcFirewall**: virtual private cloud (VPC) firewalls.
+        # - **InternetFirewall** (default): the Internet Border firewall.
         self.firewall_type = firewall_type
-        # The public IP address. If you specify this parameter, all intrusion events that contain the specified public IP address are queried.
+        # The IP address of the public asset to query. If you specify this parameter, the query returns compromise detection events that involve this asset IP address.
         self.public_ip = public_ip
-        # The source IP address to query. If you specify this parameter, all intrusion events from the specified source IP address are queried.
+        # The source IP address to query. If you specify this parameter, the query returns intrusion prevention events that involve this source IP address.
         self.src_ip = src_ip
-        # The ID of the source VPC to query. If you specify this parameter, all intrusion events that contain the specified ID of the source VPC are queried.
+        # The source VPC ID to query. If you specify this parameter, the query returns intrusion prevention events that involve this source VPC ID.
         self.src_vpc_id = src_vpc_id
-        # The beginning of the time range to query. The value is a timestamp. Unit: seconds.
+        # Specifies the start time of the query. The value is a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The UUID of the intrusion event.
+        # The UUID of the intrusion prevention event.
         # 
         # This parameter is required.
         self.uuid = uuid

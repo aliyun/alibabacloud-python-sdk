@@ -19,17 +19,17 @@ class DescribePostpayBillResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The aggregated Internet traffic, in GB.
+        # The aggregated Internet traffic. Unit: GB.
         self.aggregate_internet_traffic = aggregate_internet_traffic
-        # The aggregated NAT traffic, in GB.
+        # The aggregated NAT traffic. Unit: GB.
         self.aggregate_nat_traffic = aggregate_nat_traffic
-        # The aggregated sensitive data detection traffic, in GB.
+        # The aggregated sensitive data detection traffic. Unit: GB.
         self.aggregate_sdl_traffic = aggregate_sdl_traffic
-        # The aggregated total traffic, in GB.
+        # The aggregated total traffic. Unit: GB.
         self.aggregate_total_traffic = aggregate_total_traffic
-        # The aggregated VPC traffic, in GB.
+        # The aggregated VPC traffic. Unit: GB.
         self.aggregate_vpc_traffic = aggregate_vpc_traffic
-        # The bill list.
+        # The list of bills.
         self.bill_list = bill_list
         # The ID of the request.
         self.request_id = request_id
@@ -123,32 +123,32 @@ class DescribePostpayBillResponseBodyBillList(DaraModel):
         vpc_instance_cnt: int = None,
         vpc_traffic: float = None,
     ):
-        # The end time, expressed as a second-level UNIX timestamp. The value is on the hour or on the day.
+        # The end time. The time is a UNIX timestamp accurate to seconds, representing a full hour or a full day.
         self.end_time = end_time
         # The number of Internet instances.
         self.internet_instance_cnt = internet_instance_cnt
-        # The Internet traffic, in GB.
+        # The Internet traffic. Unit: GB.
         self.internet_traffic = internet_traffic
-        # Indicates whether the bill is deducted. A value of 0 indicates that the bill is not deducted. Any value greater than 0 indicates that the bill is deducted. If the bill is deducted, it is not charged.
-        # > This field is meaningful only when you query hourly data.
+        # Indicates whether the fee is reduced. A value of 0 indicates that the fee is not reduced. A value greater than 0 indicates that the fee is reduced. If the fee is reduced, no bill is generated.
+        # > This parameter is valid only when you query hourly data.
         self.is_derated = is_derated
-        # The log service usage duration, in T × h.
+        # The usage duration of Simple Log Service. Unit: TB × h.
         self.log_storage = log_storage
         # The number of NAT instances.
         self.nat_instance_cnt = nat_instance_cnt
-        # The NAT traffic, in GB.
+        # The NAT traffic. Unit: GB.
         self.nat_traffic = nat_traffic
-        # The data leak detection usage duration, in hours.
+        # The usage duration of sensitive data leak detection. Unit: h.
         self.sdl = sdl
-        # The sensitive data detection traffic, in GB.
+        # The sensitive data detection traffic. Unit: GB.
         self.sdl_traffic = sdl_traffic
-        # The start time, expressed as a second-level UNIX timestamp. The value is on the hour or on the day.
+        # The start time. The time is a UNIX timestamp accurate to seconds, representing a full hour or a full day.
         self.start_time = start_time
-        # The threat intelligence usage duration, in hours.
+        # The usage duration of threat intelligence. Unit: h.
         self.threat_intelligence = threat_intelligence
         # The number of VPC instances.
         self.vpc_instance_cnt = vpc_instance_cnt
-        # The VPC traffic, in GB.
+        # The VPC traffic. Unit: GB.
         self.vpc_traffic = vpc_traffic
 
     def validate(self):

@@ -9,7 +9,7 @@ class DescribeTaskDispatchStatusRequest(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The task ID, which is the unique identifier of the log configuration modification task. Obtain this value from the TaskId response parameter of the ModifySlsDispatchConfig operation.
+        # The task ID, which is the unique identifier of the log configuration update task. You can obtain it from the TaskId parameter in the response of the ModifySlsDispatchConfig operation.
         self.task_id = task_id
 
     def validate(self):

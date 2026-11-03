@@ -10,7 +10,7 @@ class ModifyAddressBookResponseBody(DaraModel):
         dry_run: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether the request is a successful dry run. A value of true indicates that only the dry run is performed and no actual modifications are made.
+        # Indicates whether the response is a successful dry run. A value of true indicates that only the dry run was completed and no actual modifications were made.
         self.dry_run = dry_run
         # The ID of the request.
         self.request_id = request_id

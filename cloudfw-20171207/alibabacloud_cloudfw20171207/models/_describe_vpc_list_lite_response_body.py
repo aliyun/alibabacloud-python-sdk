@@ -59,11 +59,11 @@ class DescribeVpcListLiteResponseBodyVpcList(DaraModel):
         vpc_id: str = None,
         vpc_name: str = None,
     ):
-        # The ID of the region to which the VPC belongs.
+        # The region ID of the VPC.
         self.region_no = region_no
-        # The instance ID of the VPC.
+        # The instance ID of the VPC-connected instance.
         self.vpc_id = vpc_id
-        # The instance name of the VPC.
+        # The name of the VPC.
         self.vpc_name = vpc_name
 
     def validate(self):

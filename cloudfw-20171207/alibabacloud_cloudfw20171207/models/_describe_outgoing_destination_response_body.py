@@ -80,11 +80,11 @@ class DescribeOutgoingDestinationResponseBodyDstList(DaraModel):
         session_count: int = None,
         tag_list: List[main_models.DescribeOutgoingDestinationResponseBodyDstListTagList] = None,
     ):
-        # The recommended ACL content.
+        # The ACL recommendation details.
         self.acl_recommend_detail = acl_recommend_detail
         # The policy status.
         self.acl_status = acl_status
-        # The domain name business.
+        # The business of the domain name.
         self.business = business
         # The category ID.
         self.category_id = category_id
@@ -98,11 +98,11 @@ class DescribeOutgoingDestinationResponseBodyDstList(DaraModel):
         self.dst_type = dst_type
         # The group name.
         self.group_name = group_name
-        # Indicates whether a recommended ACL exists.
+        # Indicates whether an ACL is recommended.
         self.has_acl_recommend = has_acl_recommend
         # The inbound traffic. Unit: bytes.
         self.in_bytes = in_bytes
-        # Indicates whether the entry is manually marked as normal by the user.
+        # Indicates whether the destination is manually marked as normal by the user.
         self.is_mark_normal = is_mark_normal
         # The outbound traffic. Unit: bytes.
         self.out_bytes = out_bytes

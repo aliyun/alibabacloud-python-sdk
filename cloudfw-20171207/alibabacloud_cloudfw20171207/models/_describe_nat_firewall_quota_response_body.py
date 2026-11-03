@@ -13,13 +13,13 @@ class DescribeNatFirewallQuotaResponseBody(DaraModel):
         unprotected_count: int = None,
         used_count: int = None,
     ):
-        # The number of nodes that are in an abnormal state.
+        # The number of abnormal nodes.
         self.exception_count = exception_count
         # The request ID.
         self.request_id = request_id
-        # The total number of quotas.
+        # The total count.
         self.total_count = total_count
-        # The number of unprotected assets.
+        # The number of unprotected items.
         self.unprotected_count = unprotected_count
         # The number of used quotas.
         self.used_count = used_count

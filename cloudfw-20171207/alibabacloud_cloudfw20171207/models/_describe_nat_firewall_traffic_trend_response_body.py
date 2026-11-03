@@ -16,15 +16,15 @@ class DescribeNatFirewallTrafficTrendResponseBody(DaraModel):
         max_total_bps: int = None,
         request_id: str = None,
     ):
-        # A list of traffic statistics.
+        # The list of traffic statistics information.
         self.data_list = data_list
-        # The peak inbound network throughput. Unit: bps.
+        # The peak network throughput in the inbound direction. Unit: bit/s.
         self.max_in_bps = max_in_bps
-        # The peak outbound network throughput. Unit: bps.
+        # The peak network throughput in the outbound direction. Unit: bit/s.
         self.max_out_bps = max_out_bps
-        # The peak total network throughput for inbound and outbound traffic. Unit: bps.
+        # The peak network throughput in both the outbound and inbound directions. Unit: bit/s.
         self.max_total_bps = max_total_bps
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -87,13 +87,13 @@ class DescribeNatFirewallTrafficTrendResponseBodyDataList(DaraModel):
         max_total_bps: int = None,
         traffic_time: int = None,
     ):
-        # The peak inbound network throughput. Unit: bps.
+        # The peak network throughput in the inbound direction. Unit: bit/s.
         self.max_in_bps = max_in_bps
-        # The peak outbound network throughput. Unit: bps.
+        # The peak network throughput in the outbound direction. Unit: bit/s.
         self.max_out_bps = max_out_bps
-        # The peak total network throughput for inbound and outbound traffic. Unit: bps.
+        # The peak network throughput in both the outbound and inbound directions. Unit: bit/s.
         self.max_total_bps = max_total_bps
-        # The time of the query. This value is a UNIX timestamp. Unit: seconds.
+        # The query time. The value is a UNIX timestamp in seconds.
         self.traffic_time = traffic_time
 
     def validate(self):

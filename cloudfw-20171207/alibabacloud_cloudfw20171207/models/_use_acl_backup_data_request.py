@@ -11,11 +11,11 @@ class UseAclBackupDataRequest(DaraModel):
         lang: str = None,
         source_ip: str = None,
     ):
-        # The backup time. This value is a Unix timestamp in seconds. For example: 1672502400.
+        # The backup time. The value is a UNIX timestamp accurate to seconds, such as 1672502400.
         # 
         # This parameter is required.
         self.back_up_time = back_up_time
-        # The language of the response.
+        # The language in which you want to receive messages.
         self.lang = lang
         # The source IP address.
         self.source_ip = source_ip

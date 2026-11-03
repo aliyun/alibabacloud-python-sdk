@@ -16,9 +16,9 @@ class DescribeVpcFirewallPrecheckDetailResponseBody(DaraModel):
     ):
         # Indicates whether the task exists.
         self.is_found = is_found
-        # The precheck details.
+        # The details of the precheck.
         self.precheck_detail = precheck_detail
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -75,13 +75,13 @@ class DescribeVpcFirewallPrecheckDetailResponseBodyPrecheckDetail(DaraModel):
         # 
         # - **running**: The precheck is in progress.
         # 
-        # - **passed**: The precheck passed.
+        # - **passed**: The precheck is passed.
         # 
         # - **failed**: The precheck failed.
         self.precheck_status = precheck_status
-        # The precheck timestamp.
+        # The timestamp of the precheck.
         self.precheck_timestamp = precheck_timestamp
-        # The region ID.
+        # The ID of the region.
         self.region_no = region_no
 
     def validate(self):
@@ -150,13 +150,13 @@ class DescribeVpcFirewallPrecheckDetailResponseBodyPrecheckDetailPrecheckEntityG
         precheck_entities: List[main_models.DescribeVpcFirewallPrecheckDetailResponseBodyPrecheckDetailPrecheckEntityGroupsPrecheckEntities] = None,
         precheck_entity_group_status: str = None,
     ):
-        # The number of precheck rules that failed.
+        # The number of rules that failed the precheck.
         self.failed_count = failed_count
-        # The precheck instance name.
+        # The name of the precheck instance.
         self.name = name
-        # The execution details of each precheck item.
+        # The execution status of each precheck item.
         self.precheck_entities = precheck_entities
-        # The precheck status. Valid values:
+        # The status of the precheck. Valid values:
         # 
         # - **running**
         # 
@@ -219,19 +219,19 @@ class DescribeVpcFirewallPrecheckDetailResponseBodyPrecheckDetailPrecheckEntityG
         status: str = None,
         suggestion: str = None,
     ):
-        # The information about the precheck failure.
+        # The information about the failed check.
         self.info = info
-        # The precheck item name.
+        # The name of the precheck item.
         self.name = name
-        # The status of each precheck item. Valid values:
+        # The status of the precheck item. Valid values:
         # 
         # - **running**: The precheck is in progress.
         # 
-        # - **passed**: The precheck passed.
+        # - **passed**: The precheck is passed.
         # 
         # - **failed**: The precheck failed.
         self.status = status
-        # The suggested action.
+        # The troubleshooting suggestion.
         self.suggestion = suggestion
 
     def validate(self):

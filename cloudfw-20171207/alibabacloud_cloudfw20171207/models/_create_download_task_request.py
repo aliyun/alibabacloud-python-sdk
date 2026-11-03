@@ -12,18 +12,16 @@ class CreateDownloadTaskRequest(DaraModel):
         task_type: str = None,
         time_zone: str = None,
     ):
-        # The language of the received messages.
+        # The language in which messages are received. Valid values:
         # 
-        # Valid values:
-        # 
-        # - **zh**: (default) Chinese.
+        # - **zh**: Chinese. This is the default value.
         # - **en**: English.
         self.lang = lang
-        # The request query conditions for the download task. This parameter is required. If this parameter is not specified, the API returns error code -340408 (download task TaskData invalid).
+        # The query conditions for the download task. This parameter is required. If you do not specify this parameter, the API returns error code -340408 (download task TaskData invalid).
         self.task_data = task_data
-        # The task type. For valid values, call the operation that queries file download task types.
+        # The task type. For valid values, refer to the API operation that queries file download task types.
         self.task_type = task_type
-        # The time zone for time information in the downloaded file. Specify the value in IANA time zone identity format. Default value: Asia/Shanghai (UTC+8).
+        # The time zone of the time information in the downloaded file, specified by using an IANA time zone identity. The default value is UTC+8, which is Asia/Shanghai.
         self.time_zone = time_zone
 
     def validate(self):

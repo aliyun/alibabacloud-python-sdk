@@ -20,35 +20,35 @@ class DescribeInternetTrafficTopRequest(DaraModel):
         source_ip: str = None,
         start_time: str = None,
     ):
-        # The type of traffic data.
+        # The traffic data type.
         # 
         # This parameter is required.
         self.data_type = data_type
         # The traffic direction.
         self.direction = direction
-        # The end time. The value is a UNIX timestamp. Unit: seconds.
+        # The end time. Specify a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The language of the response.
+        # The language type.
         self.lang = lang
-        # The maximum number of top entries to return. The default value is 50. Valid values: 1 to 50.
+        # The maximum number of top entries. Default value: 50. Valid values: 1 to 50.
         self.limit = limit
-        # The action of the rule.
+        # The rule protection result.
         self.rule_result = rule_result
-        # The source of the rule.
+        # The rule source.
         self.rule_source = rule_source
-        # The name of the country to display.
+        # Specifies whether to display country names.
         self.show_country_name = show_country_name
-        # The sorting method.
+        # The sort method.
         self.sort = sort
-        # The tracing code for the source.
+        # The tracing code.
         # 
         # This parameter is required.
         self.source_code = source_code
         # The source IP address.
         self.source_ip = source_ip
-        # The start time. The value is a UNIX timestamp. Unit: seconds.
+        # The start time. Specify a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.start_time = start_time

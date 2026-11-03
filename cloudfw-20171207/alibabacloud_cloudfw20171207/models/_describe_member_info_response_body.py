@@ -13,15 +13,15 @@ class DescribeMemberInfoResponseBody(DaraModel):
         member_uid: str = None,
         request_id: str = None,
     ):
-        # The name of the Alibaba Cloud account.
+        # The name of the main account.
         self.admin_name = admin_name
-        # The UID of the Alibaba Cloud account.
+        # The UID of the main account.
         self.admin_uid = admin_uid
-        # Indicates whether the account is a member account.
+        # Indicates whether the account is one of the member accounts.
         self.is_member = is_member
-        # The UID of the member account.
+        # The UID of the member accounts.
         self.member_uid = member_uid
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

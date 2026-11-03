@@ -18,7 +18,7 @@ class DescribeDownloadTaskTypeResponseBody(DaraModel):
         self.request_id = request_id
         # The list of task types.
         self.task_type_array = task_type_array
-        # The total number of entries.
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -69,7 +69,7 @@ class DescribeDownloadTaskTypeResponseBodyTaskTypeArray(DaraModel):
     ):
         # The name of the task type.
         self.task_name = task_name
-        # The type of the task.
+        # The task type.
         self.task_type = task_type
 
     def validate(self):

@@ -9,7 +9,7 @@ class DescribeSlsAnalyzeOpenStatusRequest(DaraModel):
         self,
         lang: str = None,
     ):
-        # The language of the response messages. Valid values:
+        # The language type for receiving messages. Valid values:
         # 
         # - **zh** (default): Chinese.
         # 

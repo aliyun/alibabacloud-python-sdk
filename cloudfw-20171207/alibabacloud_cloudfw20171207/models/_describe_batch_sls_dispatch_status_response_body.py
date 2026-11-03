@@ -17,17 +17,17 @@ class DescribeBatchSlsDispatchStatusResponseBody(DaraModel):
         project_name: str = None,
         request_id: str = None,
     ):
-        # A list of detailed information about the Logstores.
+        # The detailed information list of Logstores.
         self.info_list = info_list
-        # A list of Simple Log Service projects.
+        # The list of log services.
         self.item_list = item_list
-        # The log version. A value of 1 indicates that there is one Logstore. A value of 2 indicates that there are two Logstores.
+        # The log version. A value of 1 indicates only one Logstore, and a value of 2 indicates two Logstores.
         self.log_version = log_version
         # The name of the Logstore in Simple Log Service.
         self.logstore_name = logstore_name
         # The name of the project in Simple Log Service.
         self.project_name = project_name
-        # The ID of the request.
+        # The request ID of the returned result.
         self.request_id = request_id
 
     def validate(self):
@@ -107,11 +107,11 @@ class DescribeBatchSlsDispatchStatusResponseBodyItemList(DaraModel):
         filter_keys: List[str] = None,
         search_name: str = None,
     ):
-        # The status of the delivery configuration.
+        # The delivery configuration status.
         self.config_status = config_status
-        # The name of the log delivery.
+        # The delivery name.
         self.dispatch_name = dispatch_name
-        # The value of the log to be delivered.
+        # The value of the delivery log.
         self.dispatch_value = dispatch_value
         # The delivery status.
         self.enable = enable
@@ -178,13 +178,13 @@ class DescribeBatchSlsDispatchStatusResponseBodyInfoList(DaraModel):
         project_name: str = None,
         site: str = None,
     ):
-        # The details of the log delivery configuration.
+        # The log delivery configuration details.
         self.item_list = item_list
         # The name of the Logstore in Simple Log Service.
         self.logstore_name = logstore_name
         # The name of the project in Simple Log Service.
         self.project_name = project_name
-        # \\`cn\\` indicates the Chinese mainland. \\`intl\\` indicates regions outside the Chinese mainland. \\`global\\` indicates global.
+        # The site. A value of cn represents the Chinese mainland, intl represents regions outside the Chinese mainland, and global represents global.
         self.site = site
 
     def validate(self):
@@ -245,9 +245,9 @@ class DescribeBatchSlsDispatchStatusResponseBodyInfoListItemList(DaraModel):
     ):
         # The configuration status.
         self.config_status = config_status
-        # The name of the delivery type.
+        # The Chinese name of the delivery type.
         self.dispatch_name = dispatch_name
-        # The key for the log categorization. Valid values:
+        # The key for classified logs. Valid values:
         # 
         # **internet_log**
         # 
@@ -259,11 +259,11 @@ class DescribeBatchSlsDispatchStatusResponseBodyInfoListItemList(DaraModel):
         # 
         # **dns_firewall_log**
         self.dispatch_value = dispatch_value
-        # Indicates whether this delivery type is enabled.
+        # The switch status of the delivery type.
         self.enable = enable
-        # The detailed delivery configurations for the Internet and VPCs.
+        # The detailed delivery configurations for the Internet and VPC.
         self.filter_keys = filter_keys
-        # The value is fixed to log_type. You can ignore this parameter.
+        # The value is fixed as log_type and can be ignored.
         self.search_name = search_name
 
     def validate(self):

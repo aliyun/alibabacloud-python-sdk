@@ -12,7 +12,7 @@ class EnableSdlProtectedAssetRequest(DaraModel):
         ip_list: List[str] = None,
         lang: str = None,
     ):
-        # The list of IP assets. At least one IP address is required to enable protection.
+        # The list of IP addresses of the assets. At least one IP address is required to enable protection.
         self.ip_list = ip_list
         # The language of the request and response. Valid values:
         # - **zh** (default): Chinese

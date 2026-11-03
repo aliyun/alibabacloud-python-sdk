@@ -14,11 +14,11 @@ class DescribeVpcFirewallAclGroupListResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The access control policy groups.
+        # The information about the access control policy groups of the VPC firewall.
         self.acl_group_list = acl_group_list
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of access control policy groups.
+        # The total number of access control policy groups of the VPC firewall.
         self.total_count = total_count
 
     def validate(self):
@@ -71,35 +71,30 @@ class DescribeVpcFirewallAclGroupListResponseBodyAclGroupList(DaraModel):
         is_default: bool = None,
         member_uid: str = None,
     ):
-        # The ACL engine mode.
+        # The mode of the access control engine.
         self.acl_config = acl_config
-        # The ID of the access control policy group for the VPC boundary firewall.
+        # The access control policy group ID of the virtual private cloud (VPC) firewalls at the border. Valid values:
         # 
-        # Valid values:
+        # - If the virtual private cloud (VPC) firewalls at the border protect a Cloud Enterprise Network (CEN) instance, the policy group ID is the instance ID of the CEN instance.
         # 
-        # - If the VPC boundary firewall protects a Cloud Enterprise Network (CEN) instance, the policy group ID is the ID of the CEN instance.
+        #   Example: cen-ervw0g12b5jbw*\\*\\*\\*
         # 
-        #   Example: cen-ervw0g12b5jbw\\*\\*\\*\\*
+        # - If the virtual private cloud (VPC) firewalls at the border protect an Express Connect circuit, the policy group ID is the instance ID of the virtual private cloud (VPC) firewalls at the border.
         # 
-        # - If the VPC boundary firewall protects an Express Connect circuit, the policy group ID is the ID of the VPC boundary firewall instance.
-        # 
-        #   Example: vfw-a42bbb7b887148c9\\*\\*\\*\\*
+        #   Example: vfw-a42bbb7b887148c9*\\*\\*\\*
         self.acl_group_id = acl_group_id
-        # The name of the access control policy group for the VPC boundary firewall.
+        # The access control policy group name of the virtual private cloud (VPC) firewalls at the border.
         # 
-        # - If the VPC boundary firewall protects a Cloud Enterprise Network instance, the group name is the name of the CEN instance.
-        # 
-        # - If the VPC boundary firewall protects an Express Connect circuit, the group name is the name of the VPC boundary firewall instance.
+        # - If the virtual private cloud (VPC) firewalls at the border protect a CEN instance, the policy group name is the name of the CEN instance.
+        # - If the virtual private cloud (VPC) firewalls at the border protect an Express Connect circuit, the policy group name is the name of the virtual private cloud (VPC) firewalls at the border.
         self.acl_group_name = acl_group_name
-        # The number of policies in the access control policy group.
+        # The number of policies in the access control policy group of the virtual private cloud (VPC) firewalls at the border.
         self.acl_rule_count = acl_rule_count
-        # Indicates whether the policy group is a default group. Valid values:
-        # 
-        # - **true**: The policy group is a default group.
-        # 
-        # - **false**: The policy group is not a default group.
+        # Specifies whether the firewall is the default firewall. Valid values:
+        # - **true**: The firewall is the default firewall.
+        # - **false**: The firewall is not the default firewall.
         self.is_default = is_default
-        # The ID of the member account.
+        # The ID of the member accounts of the current Alibaba Cloud account.
         self.member_uid = member_uid
 
     def validate(self):
@@ -159,10 +154,8 @@ class DescribeVpcFirewallAclGroupListResponseBodyAclGroupListAclConfig(DaraModel
         self,
         strict_mode: int = None,
     ):
-        # Indicates whether strict mode is enabled. Valid values:
-        # 
+        # Specifies whether strict mode is enabled. Valid values:
         # - 1: Strict mode is enabled.
-        # 
         # - 0: Strict mode is disabled.
         self.strict_mode = strict_mode
 

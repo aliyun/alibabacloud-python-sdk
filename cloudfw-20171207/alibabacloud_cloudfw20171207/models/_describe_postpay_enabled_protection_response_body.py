@@ -15,11 +15,11 @@ class DescribePostpayEnabledProtectionResponseBody(DaraModel):
     ):
         # The number of days that protection has been disabled.
         self.disabled_days = disabled_days
-        # The type of asset for which protection is disabled.
+        # The type of protection that is disabled.
         self.disabled_type = disabled_type
         # Indicates whether the protection feature is enabled.
         self.is_enabled_protection = is_enabled_protection
-        # Indicates whether the protection feature is activated but currently disabled.
+        # Indicates whether the protection feature is activated but disabled.
         self.is_open_but_disabled = is_open_but_disabled
         # The ID of the request.
         self.request_id = request_id

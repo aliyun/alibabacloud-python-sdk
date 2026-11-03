@@ -15,7 +15,7 @@ class DescribeCfwRiskLevelSummaryResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The list of threats.
+        # The risk list.
         self.risk_list = risk_list
 
     def validate(self):
@@ -59,11 +59,10 @@ class DescribeCfwRiskLevelSummaryResponseBodyRiskList(DaraModel):
         num: str = None,
         type: str = None,
     ):
-        # The threat level. Valid value:
-        # 
-        # - **medium**: medium
+        # The risk level. Valid values:
+        # - **medium**: Medium
         self.level = level
-        # The number of ECS instances at risk.
+        # The number of at-risk ECS instances.
         self.num = num
         # The type.
         self.type = type

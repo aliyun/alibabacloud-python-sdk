@@ -14,24 +14,24 @@ class DescribePostpayBillRequest(DaraModel):
         page_size: int = None,
         start_time: str = None,
     ):
-        # The page number of the current page in a paged query.
+        # The Settings for the page number of the current page during paging in a paged query.
         self.current_page = current_page
-        # The end time of the bill query, expressed as a second-level UNIX timestamp. The value must be later than StartTime.
+        # The end time of the bill query. The time is a UNIX timestamp accurate to seconds and must be later than StartTime.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # Specifies the time interval for querying data. This is an enumeration value. This parameter is required. If this parameter is not specified, ERR_PARAMS_INVALID is returned. Valid values:
-        # 
-        # - 3600: queries hourly data.
-        # - 86400: queries daily data.
+        # The time interval for querying data. This parameter is required. If this parameter is not specified, ERR_PARAMS_INVALID is returned. Valid values:
+        # - 3600: hourly data.
+        # - 86400: daily data.
         self.interval = interval
-        # The language. This is an enumeration value.
+        # The language. Valid values:
+        # - en: English.
+        # - zh: Chinese.
         # Default value: zh.
-        # Valid value: en.
         self.lang = lang
-        # The maximum number of entries per page in a paged query. Default value: 10.
+        # The maximum number of entries to return per page during paging in a paged query. Default value: 10.
         self.page_size = page_size
-        # The start time of the bill query, expressed as a second-level UNIX timestamp.
+        # The start time of the bill query. The time is a UNIX timestamp accurate to seconds.
         # 
         # This parameter is required.
         self.start_time = start_time

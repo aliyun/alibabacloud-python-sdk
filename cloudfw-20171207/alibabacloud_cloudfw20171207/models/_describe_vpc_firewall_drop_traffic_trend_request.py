@@ -14,21 +14,20 @@ class DescribeVpcFirewallDropTrafficTrendRequest(DaraModel):
         start_time: int = None,
         traffic_time: int = None,
     ):
-        # The end of the time range to query. This value is a UNIX timestamp. Unit: seconds.
+        # The end time of the query. The value is a UNIX timestamp in seconds.
         self.end_time = end_time
         # The sort order. Valid values:
         # 
-        # - **asc**: ascending order.
-        # 
-        # - **desc**: descending order. This is the default value.
+        # - **asc**: ascending order
+        # - **desc** (default): descending order
         self.order = order
         # The sorting criterion.
         self.sort = sort
         # The source IP address of the visitor.
         self.source_ip = source_ip
-        # The start of the time range to query. This value is a UNIX timestamp. Unit: seconds.
+        # The start time of the query. The value is a UNIX timestamp in seconds.
         self.start_time = start_time
-        # The time point of the traffic. This value is a UNIX timestamp. Unit: seconds.
+        # The traffic time point. The value is a UNIX timestamp in seconds.
         self.traffic_time = traffic_time
 
     def validate(self):

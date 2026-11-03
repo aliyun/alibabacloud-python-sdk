@@ -16,7 +16,7 @@ class ListTlsInspectCACertificatesResponseBody(DaraModel):
     ):
         # The list of certificates.
         self.certificates = certificates
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The total number of entries.
         self.total_count = total_count
@@ -78,28 +78,28 @@ class ListTlsInspectCACertificatesResponseBodyCertificates(DaraModel):
         # The encryption algorithm type of the CA certificate. Valid values:
         # - **RSA**: RSA algorithm.
         # - **ECC**: ECC algorithm.
-        # - **SM2**: SM2 (Chinese national cryptographic) algorithm.
+        # - **SM2**: SM2 algorithm.
         self.algorithm = algorithm
-        # The certificate alias.
+        # The alias of the certificate.
         self.alias_name = alias_name
-        # The CA certificate ID.
+        # The ID of the CA certificate.
         self.ca_cert_id = ca_cert_id
         # The type of the CA certificate. Valid values:
         # 
         # - **ROOT**: Root CA certificate.
         # - **SUB_ROOT**: Subordinate CA certificate.
         self.ca_cert_type = ca_cert_type
-        # The certificate chain expiration timestamp.
+        # The expiration timestamp of the certificate chain.
         self.cert_chain_expiration_time = cert_chain_expiration_time
         # The expiration timestamp.
         self.expiration_time = expiration_time
         # The key length of the CA certificate.
         self.key_size = key_size
-        # The parent CA certificate ID.
+        # The ID of the parent CA certificate.
         self.parent_ca_cert_id = parent_ca_cert_id
         # The signature algorithm of the CA certificate.
         self.sign_algorithm = sign_algorithm
-        # The certificate status. Valid values:
+        # The status of the certificate. Valid values:
         # - **ISSUE**: Enabled.
         # - **REVOKE**: Revoked.
         self.status = status

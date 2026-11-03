@@ -23,31 +23,32 @@ class DescribeVpcFirewallTrafficAssetListRequest(DaraModel):
         self.current_page = current_page
         # The domain name.
         self.domain = domain
-        # The end time. This value is a UNIX timestamp in seconds.
+        # The end time. The value is a UNIX timestamp accurate to seconds.
         # 
         # This parameter is required.
         self.end_time = end_time
         # The IP address of the asset.
         self.ip = ip
-        # Specifies whether to collect only the traffic that accesses AI services. This parameter is required. Set this parameter to "true". Otherwise, a parameter error is returned.
+        # Specifies whether to query only the traffic that accesses AI services. This parameter is required. You must set this parameter to "true". Otherwise, a parameter error is returned.
         self.is_aitraffic = is_aitraffic
-        # The language of the response. Valid values:
+        # The language of the response message. Valid values:
         # 
-        # - **zh** (default): Chinese
-        # - **en**: English
+        # - **zh** (default): Chinese.
+        # - **en**: English.
         self.lang = lang
-        # The sort field. Valid values:
+        # The field by which to sort the results. Default value: TotalBytes. Valid values:
         # 
-        # - TotalBytes: sorts by total traffic.
-        # - SessionCount: sorts by session count.
-        # 
-        # Default value: TotalBytes.
+        # - **TotalBytes**: sorts the results by total traffic.
+        # - **SessionCount**: sorts the results by the number of sessions.
         self.order = order
-        # The number of entries per page.
+        # The number of entries to return on each page.
         self.page_size = page_size
-        # The sort order. Valid values: asc, desc.
+        # The sort order. Valid values:
+        # 
+        # - **asc**: ascending order.
+        # - **desc**: descending order.
         self.sort = sort
-        # The start time. This value is a UNIX timestamp in seconds.
+        # The start time. The value is a UNIX timestamp accurate to seconds.
         # 
         # This parameter is required.
         self.start_time = start_time

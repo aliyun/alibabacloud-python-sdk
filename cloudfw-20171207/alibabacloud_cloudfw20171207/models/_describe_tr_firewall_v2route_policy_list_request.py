@@ -13,20 +13,18 @@ class DescribeTrFirewallV2RoutePolicyListRequest(DaraModel):
         page_size: int = None,
         policy_id: str = None,
     ):
-        # The page number in a paged query. Default value: 1. For more information about paging, see the corresponding parameter descriptions.
+        # The page number for a paged query. Default value: 1.
         self.current_page = current_page
-        # The instance ID of the virtual private cloud (VPC) firewall.
-        # 
-        # > FirewallId is required. If this parameter is not specified, the ErrorParameters (400) error is returned. You can call DescribeTrFirewallsV2List to obtain the FirewallId. Prerequisites: CEN Enterprise Edition with a transit router and VPC mount are configured, and the FirewallId is obtained by calling DescribeTrFirewallsV2List.
+        # The ID of the virtual private cloud (VPC) firewall instance. This parameter is required. If this parameter is not specified, an ErrorParameters (400) error is returned. You can call the DescribeTrFirewallsV2List operation to obtain the ID.
         self.firewall_id = firewall_id
-        # The language of the response. Valid values:
+        # The language of the response message. Valid values:
         # 
-        # - **zh** (default): Chinese
-        # - **en**: English
+        # - **zh** (default): Chinese.
+        # - **en**: English.
         self.lang = lang
-        # The maximum number of entries per page in a paged query. Default value: 10. For more information about paging, see the corresponding parameter descriptions.
+        # The maximum number of entries to return per page for a paged query. Default value: 10.
         self.page_size = page_size
-        # The ID of the firewall routing policy.
+        # The ID of the firewall route policy.
         self.policy_id = policy_id
 
     def validate(self):

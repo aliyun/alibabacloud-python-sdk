@@ -9,7 +9,7 @@ class DescribeBatchSlsDispatchStatusRequest(DaraModel):
         self,
         lang: str = None,
     ):
-        # The language of the response message.
+        # The language type for receiving messages.
         self.lang = lang
 
     def validate(self):

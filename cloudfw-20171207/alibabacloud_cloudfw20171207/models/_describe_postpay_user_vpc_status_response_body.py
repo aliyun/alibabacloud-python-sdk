@@ -13,13 +13,13 @@ class DescribePostpayUserVpcStatusResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
-        # The status of the Cloud Firewall VPC firewall switch module. Valid values:
+        # The status of the VPC firewall switch module in Cloud Firewall. Valid values:
         # 
         # - **open**: The module is enabled.
         # - **init**: The module is being enabled.
-        # - **closed**: The module is not enabled.
+        # - **closed**: The module is disabled.
         self.status = status
-        # The number of days during which protection is not enabled. This parameter is valid only when the module is enabled.
+        # The number of days that protection is disabled. This parameter is valid only when the module is enabled.
         self.unprotected_date = unprotected_date
 
     def validate(self):

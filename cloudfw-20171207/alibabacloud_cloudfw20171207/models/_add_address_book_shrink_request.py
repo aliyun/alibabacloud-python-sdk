@@ -25,8 +25,8 @@ class AddAddressBookShrinkRequest(DaraModel):
         tag_list: List[main_models.AddAddressBookShrinkRequestTagList] = None,
         tag_relation: str = None,
     ):
-        # The ACK cluster connector ID. You can obtain the value from the following operation:
-        # - [DescribeAckClusterConnectors](~~DescribeAckClusterConnectors~~): Lists ACK cluster connectors.
+        # The ID of the ACK cluster connector. You can obtain the value from the following operation:
+        # - [DescribeAckClusterConnectors](~~DescribeAckClusterConnectors~~): Queries the list of ACK cluster connectors.
         self.ack_cluster_connector_id = ack_cluster_connector_id
         # The list of ACK cluster pod labels.
         # 
@@ -35,7 +35,7 @@ class AddAddressBookShrinkRequest(DaraModel):
         # The list of ACK cluster pod namespaces.
         # > A maximum of 10 namespaces are supported.
         self.ack_namespaces = ack_namespaces
-        # The addresses in the address book. Separate multiple addresses with commas (,). Use a space to separate an address from its description within a single address element.
+        # The list of addresses in the address book. Separate multiple addresses with commas (,). For each address element, separate the address and the description with a space.
         # 
         # > This parameter is required when GroupType is set to `ip`, `port`, or `domain`.
         # 
@@ -47,9 +47,9 @@ class AddAddressBookShrinkRequest(DaraModel):
         self.address_list = address_list
         # The list of member accounts for the asset address book.
         self.asset_member_uids_shrink = asset_member_uids_shrink
-        # The list of regions and resource types for the asset address book.
+        # The asset address book, region, and resource type list.
         self.asset_region_resource_types_shrink = asset_region_resource_types_shrink
-        # Indicates whether to automatically add the public IP addresses of Elastic Compute Service (ECS) instances that match the specified tags to the address book.
+        # Specifies whether the address book is automatically updated to include the public IP addresses of Elastic Compute Service (ECS) instances that match new labels.
         self.auto_add_tag_ecs = auto_add_tag_ecs
         # The description of the address book.
         # 
@@ -63,13 +63,13 @@ class AddAddressBookShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.group_type = group_type
-        # The language type of the address book description.
+        # The language of the address book description.
         self.lang = lang
-        # The source IP address of the request.
+        # The source IP address of the requester.
         self.source_ip = source_ip
-        # The ECS tag list.
+        # The list of ECS tags.
         self.tag_list = tag_list
-        # The logical relationship among multiple ECS tags to match.
+        # The relationship between multiple ECS tags to be matched.
         self.tag_relation = tag_relation
 
     def validate(self):

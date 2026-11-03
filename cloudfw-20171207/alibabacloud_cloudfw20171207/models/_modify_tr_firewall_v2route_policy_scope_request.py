@@ -30,9 +30,8 @@ class ModifyTrFirewallV2RoutePolicyScopeRequest(DaraModel):
         self.lang = lang
         # Specifies whether to restore the traffic redirection configuration. Valid values:
         # 
-        # - true: Route rollback.
-        # 
-        # - false: Route withdrawal.
+        # - true: Rolls back the route.
+        # - false: Revokes the route.
         self.should_recover = should_recover
         # The list of primary traffic redirection instances.
         self.src_candidate_list = src_candidate_list

@@ -29,11 +29,11 @@ class CreateTrFirewallV2Request(DaraModel):
         tr_attachment_zones: List[str] = None,
         transit_router_id: str = None,
     ):
-        # The ID of the CEN instance. Create a CEN instance in the CEN console first and make sure that an Enterprise Edition transit router has been created.
+        # The ID of the CEN instance. Create a CEN instance in the CEN console and make sure that an Enterprise Edition transit router is created.
         # 
-        # > Note: Although this parameter is marked as not required in the schema, it is actually required. If this parameter is not specified, the ErrorParameters (400) error is returned.
+        # > Note: Although the required field in the schema is set to false, this parameter is actually required. If this parameter is not specified, the API returns ErrorParameters(400).
         self.cen_id = cen_id
-        # The zone ID used by the firewall connection.
+        # The zone ID used for the firewall connection.
         self.firewall_attachment_zone = firewall_attachment_zone
         # The description of the firewall.
         self.firewall_description = firewall_description
@@ -41,47 +41,53 @@ class CreateTrFirewallV2Request(DaraModel):
         self.firewall_name = firewall_name
         # The deployment mode of the firewall service. Valid values:
         # 
-        # - **PrimaryStandby**: Primary/standby mode.
-        # - **MultiPrimary**: Active-active mode.
+        # - **PrimaryStandby**: primary/secondary mode
+        # - **MultiPrimary**: active-active mode
         # 
-        # > If this parameter is not specified, the system automatically selects a deployment mode based on the capabilities of the transit router. If an invalid value is specified, the ErrorFwServiceMode (-360437) error is returned. The MultiPrimary mode does not support specifying zones.
+        # > If this parameter is not specified, the system automatically selects the deployment mode based on the capabilities of the transit router. If the value is invalid, ErrorFwServiceMode (-360437) is returned. The MultiPrimary mode does not support specifying zones.
         self.firewall_service_mode = firewall_service_mode
         # The list of zone IDs used by the firewall service.
         self.firewall_service_zones = firewall_service_zones
-        # The subnet CIDR block used to store the firewall elastic network interface (ENI) in the firewall VPC in automatic mode.
+        # The CIDR block of the subnet that stores the firewall elastic network interface (ENI) in the firewall VPC in automatic mode.
         self.firewall_subnet_cidr = firewall_subnet_cidr
         # The CIDR block of the firewall VPC in automatic mode.
         self.firewall_vpc_cidr = firewall_vpc_cidr
-        # The ID of the VPC in which the firewall ENI is created in manual mode.
+        # The ID of the VPC where the firewall ENI is created in manual mode.
         self.firewall_vpc_id = firewall_vpc_id
-        # The ID of the vSwitch in which the firewall ENI is created in manual mode.
+        # The ID of the vSwitch where the firewall ENI is created in manual mode.
         self.firewall_vswitch_id = firewall_vswitch_id
-        # The language of the response. Valid values:
+        # The language of the response message. Valid values:
         # 
         # - **zh** (default): Chinese
         # - **en**: English
         self.lang = lang
         # The region ID of the Enterprise Edition transit router.
         # 
-        # > Note: Although this parameter is marked as not required in the schema, it is actually required. If this parameter is not specified, the ErrorParameters (400) error is returned.
+        # > Note: Although the required field in the schema is set to false, this parameter is actually required. If this parameter is not specified, the API returns ErrorParameters(400).
         self.region_no = region_no
-        # The routing mode. Valid values: managed (automatic mode) and manual (manual mode). In managed mode, only FirewallVpcCidr is required. The FirewallSubnetCidr, TrAttachmentSlaveCidr, and TrAttachmentMasterCidr parameters are deprecated and do not need to be specified. In manual mode, specify FirewallVpcId, FirewallVswitchId, TrAttachmentSlaveZone, and TrAttachmentMasterZone.
+        # The routing mode. Valid values: managed (automatic mode), manual (manual mode for custom VPCs), and semi-managed (manual mode for managed VPCs).
         # 
-        # > Note: Although this parameter is marked as not required in the schema, it is actually required. If this parameter is not specified, the ErrorParameters (400) error is returned.
+        # - In managed mode, you only need to specify FirewallVpcCidr. The FirewallSubnetCidr, TrAttachmentSlaveCidr, and TrAttachmentMasterCidr parameters are deprecated (deprecated:true) and do not need to be specified.
+        # 
+        # - In manual mode, you must specify FirewallVpcId, FirewallVswitchId, TrAttachmentSlaveZone, and TrAttachmentMasterZone.
+        # 
+        # - In semi-managed mode, you only need to specify FirewallVpcCidr.
+        # 
+        # > Note: Although the required field in the schema is set to false, this parameter is actually required. If this parameter is not specified, the API returns ErrorParameters(400).
         self.route_mode = route_mode
-        # The primary subnet CIDR block used to connect to the TR in the firewall VPC in automatic mode.
+        # The primary CIDR block of the subnet used to connect to the transit router in the firewall VPC in automatic mode.
         self.tr_attachment_master_cidr = tr_attachment_master_cidr
         # The primary zone of the vSwitch.
         self.tr_attachment_master_zone = tr_attachment_master_zone
-        # The secondary subnet CIDR block used to connect to the TR in the firewall VPC in automatic mode.
+        # The secondary CIDR block of the subnet used to connect to the transit router in the firewall VPC in automatic mode.
         self.tr_attachment_slave_cidr = tr_attachment_slave_cidr
         # The secondary zone of the vSwitch.
         self.tr_attachment_slave_zone = tr_attachment_slave_zone
-        # The list of zone IDs used by the TR connection.
+        # The list of zone IDs used for the transit router connection.
         self.tr_attachment_zones = tr_attachment_zones
         # The ID of the Enterprise Edition transit router instance. The transit router must belong to the CEN instance specified by CenId.
         # 
-        # > Note: Although this parameter is marked as not required in the schema, it is actually required. If this parameter is not specified, the ErrorParameters (400) error is returned.
+        # > Note: Although the required field in the schema is set to false, this parameter is actually required. If this parameter is not specified, the API returns ErrorParameters(400).
         self.transit_router_id = transit_router_id
 
     def validate(self):

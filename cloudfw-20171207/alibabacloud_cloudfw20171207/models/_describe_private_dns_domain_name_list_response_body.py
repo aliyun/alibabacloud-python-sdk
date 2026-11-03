@@ -21,7 +21,7 @@ class DescribePrivateDnsDomainNameListResponseBody(DaraModel):
         self.page_no = page_no
         # The number of entries per page.
         self.page_size = page_size
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The total number of private DNS domain names.
         self.total_count = total_count

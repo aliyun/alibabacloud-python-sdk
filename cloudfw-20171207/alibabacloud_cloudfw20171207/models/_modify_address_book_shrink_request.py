@@ -34,19 +34,19 @@ class ModifyAddressBookShrinkRequest(DaraModel):
         # The list of pod namespaces in the ACK cluster.
         # > A maximum of 10 namespaces are supported.
         self.ack_namespaces = ack_namespaces
-        # The list of addresses in the address book. Separate multiple addresses with commas (,). For each address element, separate the address and the description with a space. You must specify this parameter when GroupType is set to **ip**, **port**, or **domain**.
+        # The list of addresses in the address book. Separate multiple addresses with commas (,). Separate the address and description of an address element with a space. You must configure this parameter when GroupType is set to **ip**, **port**, or **domain**.
         # 
-        # - If GroupType is set to **ip**, enter IP addresses in the address list. Example: 1.2.XX.XX/32 Development CIDR block,10.0.0.X/24,1.2.XX.XX/24 Test CIDR block.
+        # - When GroupType is set to **ip**, enter IP addresses in the address list. Example: 1.2.XX.XX/32 Development CIDR block,10.0.0.X/24,1.2.XX.XX/24 Test CIDR block.
         # 
-        # - If GroupType is set to **port**, enter ports or port ranges in the address list. Example: 80/80 HTTP port,100/200,3306 Database port.
+        # - When GroupType is set to **port**, enter ports or port ranges in the address list. Example: 80/80 HTTP port,100/200,3306 Database port.
         # 
-        # - If GroupType is set to **domain**, enter domain names in the address list. Example: demo1.aliyun.com Test domain name,demo2.aliyun.com,www.aliyun.com Alibaba Cloud official website.
+        # - When GroupType is set to **domain**, enter domain names in the address list. Example: demo1.aliyun.com Test domain name,demo2.aliyun.com,www.aliyun.com Alibaba Cloud official website.
         self.address_list = address_list
         # The list of member accounts in the asset address book.
         self.asset_member_uids_shrink = asset_member_uids_shrink
-        # The asset address book, region, and resource type list.
+        # The asset address book, regions, and resource types.
         self.asset_region_resource_types_shrink = asset_region_resource_types_shrink
-        # Specifies if the automatic addition of the public IP addresses of Elastic Compute Service (ECS) instances that match the new labels to the address book is enabled.
+        # Specifies whether the public IP addresses of Elastic Compute Service (ECS) instances that match a new tag are automatically added to the address book.
         self.auto_add_tag_ecs = auto_add_tag_ecs
         # The idempotency token.
         self.client_token = client_token
@@ -60,9 +60,9 @@ class ModifyAddressBookShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.group_name = group_name
-        # The UUID of the address book.
+        # The unique ID of the address book.
         # 
-        # > To obtain the value, call the [DescribeAddressBook](~~DescribeAddressBook~~) operation.
+        # > Value source: [List address books](~~DescribeAddressBook~~).
         # 
         # This parameter is required.
         self.group_uuid = group_uuid
@@ -70,8 +70,8 @@ class ModifyAddressBookShrinkRequest(DaraModel):
         self.lang = lang
         # The modification mode.
         # 
-        # > If GroupType is set to **ip**, **ipv6**, **port**, or **domain** and this parameter is not specified, the **Cover** mode is used by default to modify the address book.
-        # >Notice: If GroupType is set to **tag**, this parameter must be left empty.</notice>
+        # > When GroupType is set to **ip**, **ipv6**, **port**, or **domain**, if you do not configure this parameter, the **Cover** mode is used by default to modify the address book.
+        # > <notice>When GroupType is set to **tag**, this parameter must be left empty.</notice>
         self.modify_mode = modify_mode
         # The source IP address of the requester.
         self.source_ip = source_ip

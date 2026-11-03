@@ -11,17 +11,15 @@ class DescribePostpayUserInternetStatusResponseBody(DaraModel):
         status: str = None,
         unprotected_date: int = None,
     ):
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
-        # The status of the Internet Border firewall. Valid values:
+        # The status of the Internet Border switch module in Cloud Firewall. Valid values:
         # 
-        # - **open**: The firewall is enabled.
-        # 
-        # - **init**: The firewall is being enabled.
-        # 
-        # - **closed**: The firewall is disabled.
+        # - **open**: The module is enabled.
+        # - **init**: The module is being enabled.
+        # - **closed**: The module is disabled.
         self.status = status
-        # The number of days that the firewall was disabled. This parameter is returned only if the value of the Status parameter is open.
+        # The number of days that protection is not enabled. This parameter is valid only when the module is enabled.
         self.unprotected_date = unprotected_date
 
     def validate(self):

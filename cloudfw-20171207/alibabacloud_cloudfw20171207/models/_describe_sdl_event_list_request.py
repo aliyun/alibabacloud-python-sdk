@@ -21,31 +21,31 @@ class DescribeSdlEventListRequest(DaraModel):
         start_time: int = None,
         uuid: str = None,
     ):
-        # The page number of the returned page.
+        # The current page number.
         self.current_page = current_page
         # The destination IP address.
         self.dst_ip = dst_ip
-        # The end of the time range to query. This value is a UNIX timestamp representing seconds.
+        # The end time. Specify a UNIX timestamp in seconds.
         self.end_time = end_time
-        # The language of the response.
+        # The language in which messages are received.
         self.lang = lang
         # The region.
         self.location = location
-        # Specifies whether to return only events detected by AI.
+        # Specifies whether to query only AI events.
         self.only_ai_evt = only_ai_evt
-        # The sort order. Valid values: `asc` (ascending) and `desc` (descending).
+        # The sort order.
         self.order = order
         # The number of entries per page.
         self.page_size = page_size
-        # The sensitivity level of the data in the event.
+        # The sensitive data level.
         self.sensitive_level = sensitive_level
-        # The field to sort by.
+        # The sort field.
         self.sort = sort
         # The source IP address.
         self.src_ip = src_ip
-        # The start of the time range to query. This value is a UNIX timestamp representing seconds.
+        # The start time. Specify a UNIX timestamp in seconds.
         self.start_time = start_time
-        # The unique ID of the event.
+        # The unique identifier.
         self.uuid = uuid
 
     def validate(self):

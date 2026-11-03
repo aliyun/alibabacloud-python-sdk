@@ -22,17 +22,17 @@ class DescribeFirewallTaskResponseBody(DaraModel):
     ):
         # Indicates whether the task exists.
         self.is_found = is_found
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The time when the task was completed.
         self.task_finish_timestamp = task_finish_timestamp
-        # The task ID.
+        # The ID of the task.
         self.task_id = task_id
-        # The task name.
+        # The name of the task.
         self.task_name = task_name
         # The time when the task was created.
         self.task_start_timestamp = task_start_timestamp
-        # The task status. Valid values:
+        # The status of the task. Valid values:
         # 
         # - **init**
         # 
@@ -46,7 +46,7 @@ class DescribeFirewallTaskResponseBody(DaraModel):
         self.task_status = task_status
         # The task steps.
         self.task_steps = task_steps
-        # The waiting time, in minutes.
+        # The waiting time. Unit: minutes.
         self.task_waiting_time = task_waiting_time
 
     def validate(self):
@@ -135,11 +135,11 @@ class DescribeFirewallTaskResponseBodyTaskSteps(DaraModel):
     ):
         # The task information.
         self.step_info = step_info
-        # The name of the Cloud Firewall security step.
+        # Creating Cloud Firewall security.
         self.step_name = step_name
         # The progress of the task step.
         self.step_progress = step_progress
-        # The task step status. Valid values:
+        # The status of the task step. Valid values:
         # 
         # - **init** 
         # 

@@ -14,21 +14,19 @@ class DescribeNatFirewallTrafficTrendRequest(DaraModel):
         src_public_ip: str = None,
         start_time: int = None,
     ):
-        # The end of the time range to query. This value is a UNIX timestamp. Unit: seconds.
+        # The end time of the query. The value is a UNIX timestamp in seconds.
         self.end_time = end_time
-        # The time granularity for the query. Unit: seconds. Valid values:
-        # 
+        # Specifies the time granularity of the queried data. Unit: seconds. Valid values:
         # - **60**: 1 minute.
-        # 
         # - **1800**: 30 minutes.
         self.interval = interval
-        # The ID of the NAT Gateway.
+        # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
-        # The private source IP address.
+        # The source private IP address.
         self.src_private_ip = src_private_ip
-        # The source IP address on the Internet.
+        # The source public IP address.
         self.src_public_ip = src_public_ip
-        # The start of the time range to query. This value is a UNIX timestamp. Unit: seconds.
+        # The start time of the query. The value is a UNIX timestamp in seconds.
         self.start_time = start_time
 
     def validate(self):

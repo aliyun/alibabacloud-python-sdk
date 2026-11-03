@@ -15,11 +15,11 @@ class ModifySensitiveSwitchRequest(DaraModel):
         # - **zh** (default): Chinese.
         # - **en**: English.
         self.lang = lang
-        # The type.
+        # The category.
         self.sensitive_category = sensitive_category
         # The status. Valid values:
-        # - **1**: enabled.
-        # - **0**: disabled.
+        # - **1**: Enabled.
+        # - **0**: Disabled.
         self.switch_status = switch_status
 
     def validate(self):

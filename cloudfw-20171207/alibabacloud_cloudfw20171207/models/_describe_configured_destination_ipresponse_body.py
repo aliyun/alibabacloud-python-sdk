@@ -16,13 +16,13 @@ class DescribeConfiguredDestinationIPResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of destinations.
+        # The list of destinations returned.
         self.destinations = destinations
-        # The page number.
+        # The page number of the current page.
         self.page_no = page_no
         # The number of entries per page.
         self.page_size = page_size
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The total number of entries.
         self.total_count = total_count
@@ -88,15 +88,15 @@ class DescribeConfiguredDestinationIPResponseBodyDestinations(DaraModel):
         destination_region: str = None,
         operation_time: int = None,
     ):
-        # The remarks.
+        # The comment.
         self.comment = comment
         # The destination IP address.
         self.destination_ip = destination_ip
-        # The ISP of the destination.
+        # The destination ISP.
         self.destination_isp = destination_isp
         # The destination region.
         self.destination_region = destination_region
-        # The time of the operation. The value is a UNIX timestamp. Unit: seconds.
+        # The operation time. The value is a UNIX timestamp accurate to seconds, such as 1672502400.
         self.operation_time = operation_time
 
     def validate(self):

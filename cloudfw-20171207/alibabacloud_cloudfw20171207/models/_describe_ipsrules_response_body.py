@@ -20,7 +20,7 @@ class DescribeIPSRulesResponseBody(DaraModel):
         total_count: int = None,
         user_define_count: int = None,
     ):
-        # The number of rules that have the `drop` action.
+        # The total number of rules with the block action.
         self.drop_count = drop_count
         # The number of high-risk rules.
         self.high_risk_count = high_risk_count
@@ -28,7 +28,7 @@ class DescribeIPSRulesResponseBody(DaraModel):
         self.open_count = open_count
         # The page number.
         self.page_no = page_no
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -36,7 +36,7 @@ class DescribeIPSRulesResponseBody(DaraModel):
         self.rules = rules
         # The total number of entries.
         self.total_count = total_count
-        # The total number of user-defined rules.
+        # The total number of rules with custom actions.
         self.user_define_count = user_define_count
 
     def validate(self):
@@ -133,7 +133,7 @@ class DescribeIPSRulesResponseBodyRules(DaraModel):
         user_defined: str = None,
         user_status: int = None,
     ):
-        # The target application.
+        # The attacked application.
         self.attack_app = attack_app
         # The attack type.
         self.attack_type = attack_type
@@ -143,11 +143,11 @@ class DescribeIPSRulesResponseBodyRules(DaraModel):
         self.cve = cve
         # The default action.
         self.default_mode = default_mode
-        # A description of the rule.
+        # The rule description.
         self.description = description
-        # The engine mode.
+        # The supported engine mode.
         # 
-        # This parameter takes effect only when `DefaultMode` is set to `drop`.
+        # This value is valid only when DefaultMode is set to drop (Block). In other modes, this value is meaningless.
         self.rule_class = rule_class
         # The rule ID.
         self.rule_id = rule_id
@@ -155,13 +155,13 @@ class DescribeIPSRulesResponseBodyRules(DaraModel):
         self.rule_level = rule_level
         # The rule name.
         self.rule_name = rule_name
-        # The rule UUID.
+        # The UUID of the rule.
         self.rule_uuid = rule_uuid
-        # The UNIX timestamp for when the rule was last updated.
+        # The timestamp when the rule was modified.
         self.update_time = update_time
-        # Specifies whether the rule is user-defined.
+        # Specifies whether the rule is a custom rule.
         self.user_defined = user_defined
-        # The user-defined status of the rule.
+        # The user status.
         self.user_status = user_status
 
     def validate(self):

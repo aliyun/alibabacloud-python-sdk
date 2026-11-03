@@ -11,11 +11,11 @@ class DescribeNatFirewallPolicyPriorUsedResponseBody(DaraModel):
         request_id: str = None,
         start: int = None,
     ):
-        # The lowest priority of the access control policy.
+        # The minimum valid priority value for the access control policy.
         self.end = end
         # The ID of the request.
         self.request_id = request_id
-        # The highest priority of the access control policy.
+        # The maximum valid priority value for the access control policy.
         self.start = start
 
     def validate(self):

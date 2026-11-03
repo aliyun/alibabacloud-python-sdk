@@ -15,13 +15,13 @@ class DescribeInternetTrafficTopResponseBody(DaraModel):
         data_type: str = None,
         request_id: str = None,
     ):
-        # The number of traffic data entries.
+        # The number of traffic data records.
         self.data_count = data_count
-        # The list of traffic data.
+        # The traffic data list.
         self.data_list = data_list
-        # The type of traffic data.
+        # The traffic data type.
         self.data_type = data_type
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -80,13 +80,13 @@ class DescribeInternetTrafficTopResponseBodyDataList(DaraModel):
         session_count: int = None,
         total_bytes: int = None,
     ):
-        # The name of the country.
+        # The country name.
         self.data_name = data_name
-        # The inbound traffic percentage.
+        # The inbound percentage.
         self.data_value = data_value
-        # Indicates whether the data is subscribed.
+        # Indicates whether the item is subscribed.
         self.is_subscribed = is_subscribed
-        # The list of labels.
+        # The label list.
         self.label_list = label_list
         # The number of sessions.
         self.session_count = session_count

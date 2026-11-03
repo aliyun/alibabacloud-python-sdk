@@ -50,7 +50,7 @@ class DescribeTrafficLogRequest(DaraModel):
         vpc_firewall_id: str = None,
         vul_level: str = None,
     ):
-        # The ACL pre-match rule ID.
+        # The ID of the ACL pre-match rule.
         self.acl_pre_rule_id = acl_pre_rule_id
         # The ACL pre-match status.
         self.acl_pre_state = acl_pre_state
@@ -64,7 +64,7 @@ class DescribeTrafficLogRequest(DaraModel):
         self.attack_type = attack_type
         # The page number.
         self.current_page = current_page
-        # The traffic direction.
+        # The direction.
         self.direction = direction
         # The domain name.
         self.domain_name = domain_name
@@ -78,7 +78,7 @@ class DescribeTrafficLogRequest(DaraModel):
         self.dst_vpc_id = dst_vpc_id
         # The region of the destination VPC asset.
         self.dst_vpc_region_no = dst_vpc_region_no
-        # The end time. Specify a UNIX timestamp in seconds.
+        # The end time. Specify the time in the UNIX timestamp format in seconds.
         # 
         # This parameter is required.
         self.end_time = end_time
@@ -90,55 +90,56 @@ class DescribeTrafficLogRequest(DaraModel):
         self.ip_protocol = ip_protocol
         # The IP version.
         self.ip_version = ip_version
-        # The Internet service provider (ISP).
+        # The ISP.
         self.isp = isp
-        # The language of the response message. Valid values:
+        # The language of the received messages. Valid values:
         # - **zh** (default): Chinese
         # - **en**: English
         self.lang = lang
         # The region of the source or destination IP address.
         self.location = location
-        # The UID of one of the member accounts.
+        # The UID of the member accounts.
         self.member_uid = member_uid
         # The NAT firewall ID.
         self.nat_firewall_id = nat_firewall_id
         # The NAT gateway ID.
         self.nat_gateway_id = nat_gateway_id
-        # The number of entries per page. Maximum value: 20.
+        # The number of entries per page. The value cannot exceed 20.
         self.page_size = page_size
-        # The query ID. If the query is too large, a query ID is returned. Use this query ID to retrieve results in subsequent requests.
+        # The query ID.
+        # If the query scope is too large, a query ID is returned. You can use the query ID for subsequent queries.
         self.query_id = query_id
         # The rule ID.
         self.rule_id = rule_id
-        # The rule action result. Valid values:
+        # The rule action.
         self.rule_result = rule_result
         # The rule source.
         self.rule_source = rule_source
-        # The final effective module.
+        # The module that ultimately takes effect.
         self.rule_source_final = rule_source_final
-        # The tracing watermark.
+        # The tracing code.
         # 
         # This parameter is required.
         self.source_code = source_code
-        # The IP address of the access source.
+        # The source IP address.
         self.source_ip = source_ip
         # The source IP address.
         self.src_ip = src_ip
         # The source port.
         self.src_port = src_port
-        # The private source IP address.
+        # The source private IP address.
         self.src_private_ip = src_private_ip
         # The source VPC ID.
         self.src_vpc_id = src_vpc_id
         # The region of the source VPC asset.
         self.src_vpc_region_no = src_vpc_region_no
-        # The start time. Specify a UNIX timestamp in seconds. Only data within the last 7 days can be queried. We recommend that a single query span no more than one day.
+        # The start time. Specify the time in the UNIX timestamp format in seconds. Only data within the last 7 days can be queried. A single query covers a maximum of one day.
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The TLS inspection scope ID.
+        # The ID of the TLS inspection scope.
         self.tls_scope_id = tls_scope_id
-        # The instance ID of the virtual private cloud (VPC) firewall.
+        # The instance ID of the virtual private cloud (VPC) border firewall.
         self.vpc_firewall_id = vpc_firewall_id
         # The vulnerability level.
         self.vul_level = vul_level

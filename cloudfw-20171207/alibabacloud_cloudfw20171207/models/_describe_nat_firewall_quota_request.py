@@ -10,9 +10,9 @@ class DescribeNatFirewallQuotaRequest(DaraModel):
         lang: str = None,
         source_ip: str = None,
     ):
-        # The language of the response.
+        # The language type.
         self.lang = lang
-        # The source IP address of the request.
+        # The source IP address.
         self.source_ip = source_ip
 
     def validate(self):

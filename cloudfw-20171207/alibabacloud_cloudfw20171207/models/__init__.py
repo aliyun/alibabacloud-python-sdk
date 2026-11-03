@@ -263,6 +263,9 @@ from ._describe_download_task_response import DescribeDownloadTaskResponse
 from ._describe_download_task_type_request import DescribeDownloadTaskTypeRequest
 from ._describe_download_task_type_response_body import DescribeDownloadTaskTypeResponseBody
 from ._describe_download_task_type_response import DescribeDownloadTaskTypeResponse
+from ._describe_event_log_request import DescribeEventLogRequest
+from ._describe_event_log_response_body import DescribeEventLogResponseBody
+from ._describe_event_log_response import DescribeEventLogResponse
 from ._describe_firewall_drop_statistics_response_body import DescribeFirewallDropStatisticsResponseBody
 from ._describe_firewall_drop_statistics_response import DescribeFirewallDropStatisticsResponse
 from ._describe_firewall_drop_trend_request import DescribeFirewallDropTrendRequest
@@ -906,6 +909,7 @@ from ._describe_dns_firewall_policy_response_body import DescribeDnsFirewallPoli
 from ._describe_domain_resolve_response_body import DescribeDomainResolveResponseBodyResolveResult
 from ._describe_download_task_response_body import DescribeDownloadTaskResponseBodyTasks
 from ._describe_download_task_type_response_body import DescribeDownloadTaskTypeResponseBodyTaskTypeArray
+from ._describe_event_log_response_body import DescribeEventLogResponseBodyDataList
 from ._describe_firewall_drop_trend_response_body import DescribeFirewallDropTrendResponseBodyDataList
 from ._describe_firewall_task_response_body import DescribeFirewallTaskResponseBodyTaskSteps
 from ._describe_firewall_traffic_trend_response_body import DescribeFirewallTrafficTrendResponseBodyDataList
@@ -1379,6 +1383,9 @@ __all__ = [
     DescribeDownloadTaskTypeRequest,
     DescribeDownloadTaskTypeResponseBody,
     DescribeDownloadTaskTypeResponse,
+    DescribeEventLogRequest,
+    DescribeEventLogResponseBody,
+    DescribeEventLogResponse,
     DescribeFirewallDropStatisticsResponseBody,
     DescribeFirewallDropStatisticsResponse,
     DescribeFirewallDropTrendRequest,
@@ -2022,6 +2029,7 @@ __all__ = [
     DescribeDomainResolveResponseBodyResolveResult,
     DescribeDownloadTaskResponseBodyTasks,
     DescribeDownloadTaskTypeResponseBodyTaskTypeArray,
+    DescribeEventLogResponseBodyDataList,
     DescribeFirewallDropTrendResponseBodyDataList,
     DescribeFirewallTaskResponseBodyTaskSteps,
     DescribeFirewallTrafficTrendResponseBodyDataList,

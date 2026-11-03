@@ -12,7 +12,7 @@ class DescribeSlrGrantRequest(DaraModel):
     ):
         # The language of the request and response.
         self.lang = lang
-        # The source IP address of the request.
+        # The source IP address of the caller.
         self.source_ip = source_ip
 
     def validate(self):

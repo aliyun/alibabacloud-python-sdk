@@ -11,9 +11,9 @@ class DescribeClearAuthInfoResponseBody(DaraModel):
         left_times: int = None,
         request_id: str = None,
     ):
-        # The UNIX timestamp when the authorization expires.
+        # The expiration timestamp.
         self.end_time = end_time
-        # The number of remaining clears.
+        # The number of remaining clearances.
         self.left_times = left_times
         # The ID of the request.
         self.request_id = request_id

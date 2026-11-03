@@ -12,9 +12,9 @@ class DescribeRegionResourceTypeAutoEnableResponseBody(DaraModel):
         region_resource_auto_enable: Dict[str, dict] = None,
         request_id: str = None,
     ):
-        # The traffic redirection settings for asset types in each region.
+        # The traffic redirection switch for asset types in a region.
         self.region_resource_auto_enable = region_resource_auto_enable
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

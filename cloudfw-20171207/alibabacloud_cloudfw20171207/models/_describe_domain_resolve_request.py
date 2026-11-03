@@ -12,25 +12,23 @@ class DescribeDomainResolveRequest(DaraModel):
         lang: str = None,
         source_ip: str = None,
     ):
-        # The domain name to resolve.
+        # The domain name to be resolved.
         # 
         # This parameter is required.
         self.domain = domain
-        # The IP version of the asset that is protected by Cloud Firewall. Valid values:
+        # The IP version of the asset protected by Cloud Firewall. Valid values:
         # 
         # - **4** (default): IPv4
-        # 
         # - **6**: IPv6
         self.ip_version = ip_version
-        # The language of the response message.
+        # The language for receiving messages.
         # 
         # Valid values:
         # 
         # - **zh** (default): Chinese
-        # 
         # - **en**: English
         self.lang = lang
-        # The source IP address of the visitor.
+        # The source IP address of the requester.
         self.source_ip = source_ip
 
     def validate(self):

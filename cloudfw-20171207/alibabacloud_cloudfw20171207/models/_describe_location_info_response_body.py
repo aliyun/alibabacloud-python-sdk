@@ -17,15 +17,15 @@ class DescribeLocationInfoResponseBody(DaraModel):
         overseas_list: List[main_models.DescribeLocationInfoResponseBodyOverseasList] = None,
         request_id: str = None,
     ):
-        # The number of regions in China.
+        # The number of regions in the Chinese mainland.
         self.cn_count = cn_count
-        # The list of regions in China.
+        # The list of regions in the Chinese mainland.
         self.cn_list = cn_list
-        # The information about provinces and cities in China.
+        # The province and city information in the Chinese mainland.
         self.cn_province_list = cn_province_list
-        # The number of regions outside China.
+        # The number of regions outside the Chinese mainland.
         self.overseas_count = overseas_count
-        # The list of regions outside China.
+        # The list of regions outside the Chinese mainland.
         self.overseas_list = overseas_list
         # The ID of the request.
         self.request_id = request_id
@@ -112,9 +112,9 @@ class DescribeLocationInfoResponseBodyOverseasList(DaraModel):
         loc_id: str = None,
         loc_name: str = None,
     ):
-        # The ID of the region.
+        # The region ID.
         self.loc_id = loc_id
-        # The name of the region.
+        # The region name.
         self.loc_name = loc_name
 
     def validate(self):
@@ -151,7 +151,7 @@ class DescribeLocationInfoResponseBodyCnProvinceList(DaraModel):
     ):
         # The list of city codes.
         self.cities = cities
-        # The name of the province.
+        # The province name.
         self.province_name = province_name
 
     def validate(self):
@@ -194,9 +194,9 @@ class DescribeLocationInfoResponseBodyCnProvinceListCities(DaraModel):
         loc_id: str = None,
         loc_name: str = None,
     ):
-        # The ID of the region.
+        # The region ID.
         self.loc_id = loc_id
-        # The name of the region.
+        # The region name.
         self.loc_name = loc_name
 
     def validate(self):
@@ -231,9 +231,9 @@ class DescribeLocationInfoResponseBodyCnList(DaraModel):
         loc_id: str = None,
         loc_name: str = None,
     ):
-        # The ID of the region.
+        # The region ID.
         self.loc_id = loc_id
-        # The name of the region.
+        # The region name.
         self.loc_name = loc_name
 
     def validate(self):

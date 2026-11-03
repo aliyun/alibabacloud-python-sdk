@@ -11,9 +11,9 @@ class DescribeNatAclPageStatusResponseBody(DaraModel):
         nat_acl_page_enable: bool = None,
         request_id: str = None,
     ):
-        # The details of the exception.
+        # The error details.
         self.detail = detail
-        # Indicates whether a separate page is supported for NAT ACL.
+        # Indicates whether the dedicated page for NAT ACLs is supported.
         self.nat_acl_page_enable = nat_acl_page_enable
         # The ID of the request.
         self.request_id = request_id

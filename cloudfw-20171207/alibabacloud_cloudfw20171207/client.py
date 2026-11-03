@@ -7483,6 +7483,128 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_download_task_type_with_options_async(request, runtime)
 
+    def describe_event_log_with_options(
+        self,
+        request: main_models.DescribeEventLogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeEventLogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.attack_type):
+            query['AttackType'] = request.attack_type
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.dst_ip):
+            query['DstIP'] = request.dst_ip
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.firewall_type):
+            query['FirewallType'] = request.firewall_type
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.log_type):
+            query['LogType'] = request.log_type
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.rule_result):
+            query['RuleResult'] = request.rule_result
+        if not DaraCore.is_null(request.source_code):
+            query['SourceCode'] = request.source_code
+        if not DaraCore.is_null(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not DaraCore.is_null(request.src_ip):
+            query['SrcIP'] = request.src_ip
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeEventLog',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeEventLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_event_log_with_options_async(
+        self,
+        request: main_models.DescribeEventLogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeEventLogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.attack_type):
+            query['AttackType'] = request.attack_type
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.dst_ip):
+            query['DstIP'] = request.dst_ip
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.firewall_type):
+            query['FirewallType'] = request.firewall_type
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.log_type):
+            query['LogType'] = request.log_type
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.rule_result):
+            query['RuleResult'] = request.rule_result
+        if not DaraCore.is_null(request.source_code):
+            query['SourceCode'] = request.source_code
+        if not DaraCore.is_null(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not DaraCore.is_null(request.src_ip):
+            query['SrcIP'] = request.src_ip
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeEventLog',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeEventLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_event_log(
+        self,
+        request: main_models.DescribeEventLogRequest,
+    ) -> main_models.DescribeEventLogResponse:
+        runtime = RuntimeOptions()
+        return self.describe_event_log_with_options(request, runtime)
+
+    async def describe_event_log_async(
+        self,
+        request: main_models.DescribeEventLogRequest,
+    ) -> main_models.DescribeEventLogResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_event_log_with_options_async(request, runtime)
+
     def describe_firewall_drop_statistics_with_options(
         self,
         runtime: RuntimeOptions,

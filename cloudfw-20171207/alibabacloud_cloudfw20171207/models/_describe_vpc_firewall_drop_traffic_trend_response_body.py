@@ -71,15 +71,15 @@ class DescribeVpcFirewallDropTrafficTrendResponseBodyDataList(DaraModel):
         time: int = None,
         total_session: int = None,
     ):
-        # The number of sessions blocked by the access control list (ACL).
+        # The number of ACL blocks.
         self.acl_drop = acl_drop
-        # The data timestamp. The value is a string in the YYYY-MM-DD HH:mm:ss format.
+        # The data timestamp. The value is a character string in the YYYY-MM-DD HH:mm:ss format.
         self.data_time = data_time
-        # The number of blocked sessions.
+        # The number of blocks.
         self.drop_session = drop_session
-        # The number of sessions blocked by the intrusion prevention system (IPS).
+        # The number of IPS blocks.
         self.ips_drop = ips_drop
-        # The data timestamp. This value is a UNIX timestamp. Unit: seconds.
+        # The data timestamp. The value is a UNIX timestamp in seconds.
         self.time = time
         # The total number of sessions.
         self.total_session = total_session

@@ -14,19 +14,19 @@ class DescribeVpcFirewallTrafficTrendRequest(DaraModel):
         start_time: str = None,
         vpc_id: str = None,
     ):
-        # The end time. The value is a UNIX timestamp. Unit: seconds.
+        # The end time. The value is a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.end_time = end_time
         # The language of the request and response. Valid values:
-        # - **zh** (default): Chinese
-        # - **en**: English
+        # - **zh** (default): Chinese.
+        # - **en**: English.
         self.lang = lang
-        # The instance ID of the peer VPC instance.
+        # The instance ID of the peer VPC.
         self.peer_vpc_id = peer_vpc_id
         # The private IP address.
         self.private_ip = private_ip
-        # The start time. The value is a UNIX timestamp. Unit: seconds.
+        # The start time. The value is a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.start_time = start_time

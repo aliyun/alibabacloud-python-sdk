@@ -18,13 +18,13 @@ class DescribeOutgoingDestinationIPDetailResponseBody(DaraModel):
     ):
         # The list of assets.
         self.asset_list = asset_list
-        # The ISP of the destination IP address.
+        # The ISP to which the destination IP address belongs.
         self.isp_name = isp_name
-        # The name of the region.
+        # The region name.
         self.location_name = location_name
         # The ID of the request.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -104,21 +104,21 @@ class DescribeOutgoingDestinationIPDetailResponseBodyAssetList(DaraModel):
         total_bytes: str = None,
         vpc_id: str = None,
     ):
-        # The status of the access control policy.
+        # The policy coverage status.
         self.acl_coverage = acl_coverage
-        # The time of the first access. This is a UNIX timestamp. Unit: seconds.
+        # The time of the first visit. The value is a UNIX timestamp in seconds.
         self.first_time = first_time
         # The inbound traffic. Unit: bytes.
         self.in_bytes = in_bytes
-        # The ISP of the destination IP address.
+        # The ISP to which the destination IP address belongs.
         self.isp_name = isp_name
-        # The time of the last access. This is a UNIX timestamp. Unit: seconds.
+        # The time of the last visit. The value is a UNIX timestamp in seconds.
         self.last_time = last_time
-        # The name of the region where the destination IP address is located.
+        # The name of the region to which the destination IP address belongs.
         self.location_name = location_name
-        # The ID of the NAT Gateway.
+        # The NAT gateway ID.
         self.nat_gateway_id = nat_gateway_id
-        # The name of the NAT Gateway.
+        # The name of the NAT gateway.
         self.nat_gateway_name = nat_gateway_name
         # The outbound traffic. Unit: bytes.
         self.out_bytes = out_bytes
@@ -128,11 +128,11 @@ class DescribeOutgoingDestinationIPDetailResponseBodyAssetList(DaraModel):
         self.public_ip = public_ip
         # The region ID.
         self.region_no = region_no
-        # The instance ID of the cloud product.
+        # The instance ID of the cloud service.
         self.resource_instance_id = resource_instance_id
         # The name of the asset instance.
         self.resource_instance_name = resource_instance_name
-        # The type of the public IP address of the asset.
+        # The public IP address type of the asset.
         self.resource_type = resource_type
         # The rule ID.
         self.rule_id = rule_id
@@ -144,7 +144,7 @@ class DescribeOutgoingDestinationIPDetailResponseBodyAssetList(DaraModel):
         self.tag_list = tag_list
         # The total traffic.
         self.total_bytes = total_bytes
-        # The ID of the VPC instance.
+        # The VPC instance ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -304,15 +304,15 @@ class DescribeOutgoingDestinationIPDetailResponseBodyAssetListTagList(DaraModel)
         tag_id: str = None,
         tag_name: str = None,
     ):
-        # The classification ID.
+        # The category ID.
         self.class_id = class_id
         # The risk level.
         self.risk_level = risk_level
-        # The description of the tag.
+        # The tag description.
         self.tag_describe = tag_describe
-        # The ID of the tag.
+        # The tag ID.
         self.tag_id = tag_id
-        # The name of the tag.
+        # The tag name.
         self.tag_name = tag_name
 
     def validate(self):

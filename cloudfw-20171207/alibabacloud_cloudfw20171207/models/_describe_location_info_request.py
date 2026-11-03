@@ -11,9 +11,9 @@ class DescribeLocationInfoRequest(DaraModel):
         source_code: str = None,
         source_ip: str = None,
     ):
-        # The language of the response.
+        # The language type.
         self.lang = lang
-        # The source tracking code.
+        # The tracing code.
         # 
         # This parameter is required.
         self.source_code = source_code

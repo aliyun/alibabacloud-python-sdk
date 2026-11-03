@@ -67,9 +67,9 @@ class DescribeIspInfoResponseBodyDataList(DaraModel):
         isp_id: int = None,
         isp_name: str = None,
     ):
-        # The ID of the ISP.
+        # The ISP ID.
         self.isp_id = isp_id
-        # The name of the ISP.
+        # The ISP name.
         self.isp_name = isp_name
 
     def validate(self):

@@ -9,7 +9,7 @@ class DescribeMemberInfoRequest(DaraModel):
         self,
         member_uid: str = None,
     ):
-        # The UID of the member account.
+        # The UID of the member accounts.
         self.member_uid = member_uid
 
     def validate(self):

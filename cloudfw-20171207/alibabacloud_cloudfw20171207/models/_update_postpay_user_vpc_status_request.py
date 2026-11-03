@@ -11,15 +11,14 @@ class UpdatePostpayUserVpcStatusRequest(DaraModel):
         lang: str = None,
         operate: str = None,
     ):
-        # The ID of the Cloud Firewall instance.
+        # The ID of the Cloud Firewall instance. This parameter is required. If you do not specify this parameter, the API returns a 400 error. You can call the DescribeUserBuyVersion operation to obtain the Cloud Firewall instance ID of the current account.
         self.instance_id = instance_id
         # The language of the request and response. Valid values:
-        # 
         # - **zh** (default): Chinese
         # - **en**: English
         self.lang = lang
-        # The operation type. Currently, only the activation operation is supported. Valid values:
-        # - open: activation
+        # The operation type. Only the enable operation is supported. Valid values:
+        # - open: Enables the module.
         self.operate = operate
 
     def validate(self):

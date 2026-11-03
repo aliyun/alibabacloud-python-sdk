@@ -13,23 +13,23 @@ class DescribeVpcFirewallCenSummaryListRequest(DaraModel):
         page_size: str = None,
         transit_router_type: str = None,
     ):
-        # The page number for a paged query. The default value is 1.
+        # The page number of the current page in a paging query. Default value: 1.
         self.current_page = current_page
-        # The language of the content. Valid values:
+        # The language. Valid values:
         # 
         # - **zh** (default): Chinese.
         # 
         # - **en**: English.
         self.lang = lang
-        # The UID of the member account.
+        # The UID of the member account of the current Alibaba Cloud account.
         self.member_uid = member_uid
-        # The number of entries to return on each page.
+        # The number of entries per page.
         self.page_size = page_size
         # The type of the CEN transit router. Valid values:
         # 
-        # **Basic**: Basic Edition
+        # **Basic**: Basic Edition.
         # 
-        # **Enterprise**: Enterprise Edition
+        # **Enterprise**: Enterprise Edition.
         self.transit_router_type = transit_router_type
 
     def validate(self):

@@ -12,13 +12,13 @@ class DescribeOutgoingRiskTrendRequest(DaraModel):
         source_ip: str = None,
         start_time: str = None,
     ):
-        # The end of the time range to query. Use a UNIX timestamp in seconds.
+        # The end time of the query. The value is a UNIX timestamp in seconds.
         self.end_time = end_time
-        # The language of the response message.
+        # The language type for receiving messages.
         self.lang = lang
-        # The source IP address.
+        # The source IP address of the visitor.
         self.source_ip = source_ip
-        # The start of the time range to query. Use a UNIX timestamp in seconds.
+        # The start time of the query. The value is a UNIX timestamp in seconds.
         self.start_time = start_time
 
     def validate(self):

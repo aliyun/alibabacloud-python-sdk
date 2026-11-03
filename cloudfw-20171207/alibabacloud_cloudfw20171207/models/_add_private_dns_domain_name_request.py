@@ -13,7 +13,7 @@ class AddPrivateDnsDomainNameRequest(DaraModel):
         domain_name_list: List[str] = None,
         region_no: str = None,
     ):
-        # The ID of the private DNS resolution instance.
+        # The ID of the Private DNS resolution instance.
         # 
         # This parameter is required.
         self.access_instance_id = access_instance_id
@@ -21,7 +21,7 @@ class AddPrivateDnsDomainNameRequest(DaraModel):
         # 
         # This parameter is required.
         self.domain_name_list = domain_name_list
-        # The region ID of the instance.
+        # The ID of the region where the instance resides.
         # 
         # > For more information about the regions supported by Cloud Firewall, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
         # 

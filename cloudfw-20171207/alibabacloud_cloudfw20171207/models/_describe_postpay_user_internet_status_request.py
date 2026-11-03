@@ -15,7 +15,6 @@ class DescribePostpayUserInternetStatusRequest(DaraModel):
         # The language of the response message. Valid values:
         # 
         # - **zh** (default): Chinese
-        # 
         # - **en**: English
         self.lang = lang
 

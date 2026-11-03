@@ -14,27 +14,25 @@ class CreateVpcFirewallCenManualConfigureRequest(DaraModel):
         vpc_firewall_name: str = None,
         vpc_id: str = None,
     ):
-        # The ID of the CEN instance.
+        # The ID of the Cloud Enterprise Network (CEN) instance.
         # 
         # This parameter is required.
         self.cen_id = cen_id
-        # The language of the content within the request and response. Valid values:
-        # 
+        # The language of the request and response. Valid values:
         # - **zh** (default): Chinese
-        # 
         # - **en**: English
         self.lang = lang
-        # The UID of the member account of Cloud Firewall.
+        # The UID of the Cloud Firewall member accounts.
         self.member_uid = member_uid
-        # The ID of the vSwitch that is used to create the elastic network interface (ENI) of the Cloud Firewall.
+        # The ID of the vSwitch to which the Cloud Firewall interface belongs.
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
-        # The name of the VPC border firewall.
+        # The border instance name of the virtual private cloud (VPC) firewalls.
         # 
         # This parameter is required.
         self.vpc_firewall_name = vpc_firewall_name
-        # The ID of the VPC.
+        # The VPC-connected instance ID.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id

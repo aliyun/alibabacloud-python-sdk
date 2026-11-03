@@ -26,21 +26,21 @@ class DescribeVpcFirewallTrafficTrendResponseBody(DaraModel):
         total_out_bytes: int = None,
         total_session: int = None,
     ):
-        # The average inbound network throughput. Unit: bit/s.
+        # The average network throughput in the inbound direction. Unit: bit/s.
         self.avg_in_bps = avg_in_bps
-        # The average outbound network throughput. Unit: bit/s.
+        # The average network throughput in the outbound direction. Unit: bit/s.
         self.avg_out_bps = avg_out_bps
         # The average number of requests.
         self.avg_session = avg_session
         # The average total network throughput in both the outbound and inbound directions. Unit: bit/s.
         self.avg_total_bps = avg_total_bps
-        # The data list.
+        # The list of returned data.
         self.data_list = data_list
-        # The timestamp when the peak bandwidth occurred. The value is a UNIX timestamp. Unit: seconds.
+        # The timestamp when the peak bandwidth was reached. The value is a UNIX timestamp in seconds.
         self.max_bandwidth_time = max_bandwidth_time
-        # The peak inbound network throughput. Unit: bit/s.
+        # The peak network throughput in the inbound direction. Unit: bit/s.
         self.max_in_bps = max_in_bps
-        # The peak outbound network throughput. Unit: bit/s.
+        # The peak network throughput in the outbound direction. Unit: bit/s.
         self.max_out_bps = max_out_bps
         # The peak number of requests.
         self.max_session = max_session
@@ -50,9 +50,9 @@ class DescribeVpcFirewallTrafficTrendResponseBody(DaraModel):
         self.request_id = request_id
         # The total traffic. Unit: bytes.
         self.total_bytes = total_bytes
-        # The total inbound network throughput. Unit: bytes.
+        # The total network traffic in the inbound direction. Unit: bytes.
         self.total_in_bytes = total_in_bytes
-        # The total outbound network throughput. Unit: bytes.
+        # The total network traffic in the outbound direction. Unit: bytes.
         self.total_out_bytes = total_out_bytes
         # The total number of requests.
         self.total_session = total_session
@@ -192,13 +192,13 @@ class DescribeVpcFirewallTrafficTrendResponseBodyDataList(DaraModel):
         self.new_conn = new_conn
         # The outbound traffic. Unit: bytes.
         self.out_bps = out_bps
-        # The total outbound network throughput. Unit: bytes.
+        # The total network traffic in the outbound direction. Unit: bytes.
         self.out_bytes = out_bytes
         # The outbound packet forwarding rate. Unit: pps.
         self.out_pps = out_pps
         # The number of sessions.
         self.session_count = session_count
-        # The time when the traffic occurred. The value is a UNIX timestamp. Unit: seconds.
+        # The time when the traffic was generated. The value is a UNIX timestamp in seconds.
         self.time = time
 
     def validate(self):

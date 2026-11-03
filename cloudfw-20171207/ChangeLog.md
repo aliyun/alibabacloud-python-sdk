@@ -1,3 +1,7 @@
+2026-11-03 Version: 9.5.0
+- Support API DescribeEventLog.
+
+
 2026-10-09 Version: 9.4.4
 - Update API DeleteControlPolicy: add request parameters ClientToken.
 - Update API DeleteControlPolicy: add request parameters DryRun.

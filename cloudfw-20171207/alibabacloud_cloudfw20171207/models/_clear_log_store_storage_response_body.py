@@ -13,9 +13,11 @@ class ClearLogStoreStorageResponseBody(DaraModel):
     ):
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful. Valid values:
+        # - true: The request is successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):

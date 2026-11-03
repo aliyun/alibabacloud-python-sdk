@@ -25,29 +25,29 @@ class DescribeLogStoreInfoResponseBody(DaraModel):
     ):
         # The information list.
         self.info_list = info_list
-        # The number of times the log storage mode can be changed.
+        # The number of times the user can switch the log mode.
         self.log_modify_quota = log_modify_quota
-        # The name of the SLS Logstore.
+        # The name of the Simple Log Service Logstore.
         self.log_store_name = log_store_name
-        # The log version. 1: indicates one Logstore. 2: indicates two Logstores.
+        # The log version. Valid values: 1: one Logstore. 2: two Logstores.
         self.log_version = log_version
         # The name of the Simple Log Service project.
         self.project_name = project_name
-        # The available log storage capacity, in bytes.
+        # The available log storage capacity. Unit: bytes.
         self.quota = quota
-        # The ID of the region where logs are delivered.
+        # The region ID for log delivery.
         self.region_id = region_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The task ID.
         self.task_id = task_id
-        # The total purchased log storage capacity, in bytes.
+        # The total log storage capacity purchased by the user.
         self.total_quota = total_quota
-        # The storage duration of logs, in days.
+        # The storage duration of logs. Unit: days.
         self.ttl = ttl
-        # The used storage capacity, in bytes.
+        # The used storage capacity. Unit: bytes.
         # 
-        # > Statistics from Simple Log Service may be delayed by up to two hours.
+        # > The statistics of Simple Log Service have a delay of about two hours.
         self.used = used
 
     def validate(self):
@@ -157,23 +157,23 @@ class DescribeLogStoreInfoResponseBodyInfoList(DaraModel):
         ttl: int = None,
         used: int = None,
     ):
-        # The name of the SLS Logstore.
+        # The name of the Logstore.
         self.log_store_name = log_store_name
-        # The maximum number of shards supported for scaling.
+        # The maximum number of shards supported for elastic scaling.
         self.max_split_shard = max_split_shard
         # The name of the Simple Log Service project.
         self.project_name = project_name
-        # The storage capacity threshold, in bytes.
+        # The storage capacity threshold. Unit: bytes.
         self.quota = quota
         # The region ID.
         self.region_id = region_id
-        # The number of shards in use.
+        # The number of shards currently in use.
         self.shard = shard
-        # The location of the Logstore. Valid values: \\`cn\\` for the Chinese mainland and \\`intl\\` for regions outside the Chinese mainland.
+        # The site to which the Logstore belongs. Valid values: cn: the Chinese mainland. intl: outside the Chinese mainland.
         self.site = site
-        # The storage duration of logs, in days.
+        # The storage duration of logs. Unit: days.
         self.ttl = ttl
-        # The amount of stored logs, in bytes.
+        # The volume of stored logs. Unit: bytes.
         self.used = used
 
     def validate(self):

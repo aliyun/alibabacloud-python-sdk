@@ -24,27 +24,27 @@ class DescribeOutgoingAssetListRequest(DaraModel):
         sort: str = None,
         start_time: str = None,
     ):
-        # The region ID of the asset.
+        # The region to which the asset belongs.
         self.assets_region = assets_region
         # The page number.
         self.current_page = current_page
-        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The end time of the query. The value is a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.end_time = end_time
         # The follow status.
         self.group_name = group_name
-        # Queries outbound connections routed from a private network through a NAT gateway.
+        # Specifies whether to query outbound connections over the NAT private network.
         self.iptype = iptype
-        # The language of the content.
+        # The language type.
         self.lang = lang
-        # The ID of the NAT Gateway.
+        # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
-        # The name of the NAT Gateway.
+        # The name of the NAT gateway.
         self.nat_gateway_name = nat_gateway_name
-        # The sorting order.
+        # The sort order.
         self.order = order
-        # The number of entries to return on each page.
+        # The number of entries per page.
         self.page_size = page_size
         # The private IP address.
         self.private_ip = private_ip
@@ -54,9 +54,9 @@ class DescribeOutgoingAssetListRequest(DaraModel):
         self.resource_type = resource_type
         # The security risk.
         self.security_risk = security_risk
-        # The sorting basis.
+        # The sort field.
         self.sort = sort
-        # The start of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The start time of the query. The value is a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.start_time = start_time

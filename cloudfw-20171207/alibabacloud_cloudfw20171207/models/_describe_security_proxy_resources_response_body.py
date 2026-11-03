@@ -108,13 +108,13 @@ class DescribeSecurityProxyResourcesResponseBodyResourceListVpcList(DaraModel):
     ):
         # The IPv4 CIDR block of the VPC.
         self.cidr_block = cidr_block
-        # The UID of the member account.
+        # The UID of the member accounts.
         self.member_uid = member_uid
         # The list of NAT gateways.
         self.nat_gateways = nat_gateways
-        # The ID of the VPC.
+        # The VPC-connected instance ID.
         self.vpc_id = vpc_id
-        # The name of the VPC.
+        # The name of the VPC-connected instance.
         self.vpc_name = vpc_name
 
     def validate(self):
@@ -178,15 +178,15 @@ class DescribeSecurityProxyResourcesResponseBodyResourceListVpcListNatGateways(D
         nat_route_entry_list: List[main_models.DescribeSecurityProxyResourcesResponseBodyResourceListVpcListNatGatewaysNatRouteEntryList] = None,
         status: str = None,
     ):
-        # The status of the NAT Gateway.
+        # The status of the NAT gateway.
         self.detail = detail
-        # The ID of the NAT Gateway.
+        # The NAT gateway ID.
         self.nat_gateway_id = nat_gateway_id
-        # The name of the NAT Gateway.
+        # The name of the NAT gateway.
         self.nat_gateway_name = nat_gateway_name
         # The list of NAT route tables.
         self.nat_route_entry_list = nat_route_entry_list
-        # The status of the NAT Gateway.
+        # The status of the NAT gateway.
         self.status = status
 
     def validate(self):
@@ -251,7 +251,7 @@ class DescribeSecurityProxyResourcesResponseBodyResourceListVpcListNatGatewaysNa
     ):
         # The destination CIDR block.
         self.destination_cidr = destination_cidr
-        # The ID of the next hop.
+        # The next hop instance ID.
         self.next_hop_id = next_hop_id
         # The network type of the next hop.
         self.next_hop_type = next_hop_type

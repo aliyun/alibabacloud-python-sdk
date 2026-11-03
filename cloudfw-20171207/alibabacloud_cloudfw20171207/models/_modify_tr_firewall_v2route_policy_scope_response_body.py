@@ -10,7 +10,7 @@ class ModifyTrFirewallV2RoutePolicyScopeResponseBody(DaraModel):
         request_id: str = None,
         tr_firewall_route_policy_id: str = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The ID of the firewall route policy.
         self.tr_firewall_route_policy_id = tr_firewall_route_policy_id

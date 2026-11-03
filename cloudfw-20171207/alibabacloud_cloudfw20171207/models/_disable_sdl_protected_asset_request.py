@@ -14,7 +14,7 @@ class DisableSdlProtectedAssetRequest(DaraModel):
     ):
         # The list of IP assets.
         self.ip_list = ip_list
-        # The language of the response message.
+        # The language type for receiving messages.
         self.lang = lang
 
     def validate(self):

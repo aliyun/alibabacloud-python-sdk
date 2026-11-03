@@ -23,41 +23,41 @@ class DescribeOutgoingDestinationIPDetailRequest(DaraModel):
         start_time: str = None,
         tag_id: str = None,
     ):
-        # The status of the access control policy.
+        # The policy coverage status.
         self.acl_coverage = acl_coverage
-        # The number of the page to return.
+        # The current page number.
         self.current_page = current_page
         # The destination IP address.
         # 
         # This parameter is required.
         self.dst_ip = dst_ip
-        # The end of the time range to query. This is a UNIX timestamp. Unit: seconds.
+        # The end time of the query. The value is a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # Describes the outbound connections from a private network through a NAT gateway.
+        # Specifies whether to query outbound connections from the private network of a NAT gateway.
         self.iptype = iptype
-        # The language of the response message.
+        # The language type for receiving messages.
         self.lang = lang
-        # The ID of the NAT Gateway.
+        # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
         # The sort order.
         self.order = order
-        # The number of the page to return.
+        # The number of entries per page.
         self.page_size = page_size
         # The private IP address.
         self.private_ip = private_ip
         # The public IP address.
         self.public_ip = public_ip
-        # The field to use for sorting.
+        # The field by which to sort the results.
         self.sort = sort
         # The source IP address of the visitor.
         self.source_ip = source_ip
-        # The start of the time range to query. This is a UNIX timestamp. Unit: seconds.
+        # The start time of the query. The value is a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The ID of the tag.
+        # The tag ID.
         self.tag_id = tag_id
 
     def validate(self):

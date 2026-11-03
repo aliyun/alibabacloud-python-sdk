@@ -15,41 +15,40 @@ class DescribeDefaultIPSConfigResponseBody(DaraModel):
         rule_class: int = None,
         run_mode: int = None,
     ):
-        # The status of the basic policies feature. Valid values:
+        # Indicates whether Basic Policies are enabled. Valid values:
         # 
-        # - **1**: enabled
+        # - **1**: Enabled.
         # 
-        # - **0**: disabled
+        # - **0**: shutdown.
         self.basic_rules = basic_rules
-        # The status of the threat intelligence feature. Valid values:
+        # Indicates whether threat intelligence is enabled. Valid values:
         # 
-        # - **1**: enabled
+        # - **1**: Enabled.
         # 
-        # - **0**: disabled
+        # - **0**: Disabled.
         self.cti_rules = cti_rules
-        # The maximum daily traffic that can be scanned for sensitive data.
+        # The daily traffic limit for sensitive data detection.
         self.max_sdl = max_sdl
-        # The status of the virtual patching feature. Valid values:
+        # Indicates whether virtual patches are enabled. Valid values:
+        # - **1**: Enabled.
         # 
-        # - **1**: enabled
-        # 
-        # - **0**: disabled
+        # - **0**: Disabled.
         self.patch_rules = patch_rules
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The strictness level of the intrusion prevention system (IPS) rules. Valid values:
+        # The IPS rules group. Valid values:
         # 
-        # - **1**: Loose
+        # - **1**: Loose rule group.
         # 
-        # - **2**: Medium
+        # - **2**: Medium rule group.
         # 
-        # - **3**: Strict
+        # - **3**: Strict rule group.
         self.rule_class = rule_class
-        # The mode of the IPS. Valid values:
+        # The IPS defense mode. Valid values:
         # 
-        # - **1**: Block Mode
+        # - **1**: Block mode.
         # 
-        # - **0**: Monitor Mode
+        # - **0**: Monitor mode.
         self.run_mode = run_mode
 
     def validate(self):

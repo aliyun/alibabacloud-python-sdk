@@ -34,19 +34,19 @@ class ModifyAddressBookRequest(DaraModel):
         # The list of pod namespaces in the ACK cluster.
         # > A maximum of 10 namespaces are supported.
         self.ack_namespaces = ack_namespaces
-        # The list of addresses in the address book. Separate multiple addresses with commas (,). For each address element, separate the address and the description with a space. You must specify this parameter when GroupType is set to **ip**, **port**, or **domain**.
+        # The list of addresses in the address book. Separate multiple addresses with commas (,). Separate the address and description of an address element with a space. You must configure this parameter when GroupType is set to **ip**, **port**, or **domain**.
         # 
-        # - If GroupType is set to **ip**, enter IP addresses in the address list. Example: 1.2.XX.XX/32 Development CIDR block,10.0.0.X/24,1.2.XX.XX/24 Test CIDR block.
+        # - When GroupType is set to **ip**, enter IP addresses in the address list. Example: 1.2.XX.XX/32 Development CIDR block,10.0.0.X/24,1.2.XX.XX/24 Test CIDR block.
         # 
-        # - If GroupType is set to **port**, enter ports or port ranges in the address list. Example: 80/80 HTTP port,100/200,3306 Database port.
+        # - When GroupType is set to **port**, enter ports or port ranges in the address list. Example: 80/80 HTTP port,100/200,3306 Database port.
         # 
-        # - If GroupType is set to **domain**, enter domain names in the address list. Example: demo1.aliyun.com Test domain name,demo2.aliyun.com,www.aliyun.com Alibaba Cloud official website.
+        # - When GroupType is set to **domain**, enter domain names in the address list. Example: demo1.aliyun.com Test domain name,demo2.aliyun.com,www.aliyun.com Alibaba Cloud official website.
         self.address_list = address_list
         # The list of member accounts in the asset address book.
         self.asset_member_uids = asset_member_uids
-        # The asset address book, region, and resource type list.
+        # The asset address book, regions, and resource types.
         self.asset_region_resource_types = asset_region_resource_types
-        # Specifies if the automatic addition of the public IP addresses of Elastic Compute Service (ECS) instances that match the new labels to the address book is enabled.
+        # Specifies whether the public IP addresses of Elastic Compute Service (ECS) instances that match a new tag are automatically added to the address book.
         self.auto_add_tag_ecs = auto_add_tag_ecs
         # The idempotency token.
         self.client_token = client_token
@@ -60,9 +60,9 @@ class ModifyAddressBookRequest(DaraModel):
         # 
         # This parameter is required.
         self.group_name = group_name
-        # The UUID of the address book.
+        # The unique ID of the address book.
         # 
-        # > To obtain the value, call the [DescribeAddressBook](~~DescribeAddressBook~~) operation.
+        # > Value source: [List address books](~~DescribeAddressBook~~).
         # 
         # This parameter is required.
         self.group_uuid = group_uuid
@@ -70,8 +70,8 @@ class ModifyAddressBookRequest(DaraModel):
         self.lang = lang
         # The modification mode.
         # 
-        # > If GroupType is set to **ip**, **ipv6**, **port**, or **domain** and this parameter is not specified, the **Cover** mode is used by default to modify the address book.
-        # >Notice: If GroupType is set to **tag**, this parameter must be left empty.</notice>
+        # > When GroupType is set to **ip**, **ipv6**, **port**, or **domain**, if you do not configure this parameter, the **Cover** mode is used by default to modify the address book.
+        # > <notice>When GroupType is set to **tag**, this parameter must be left empty.</notice>
         self.modify_mode = modify_mode
         # The source IP address of the requester.
         self.source_ip = source_ip
@@ -259,7 +259,7 @@ class ModifyAddressBookRequestAssetRegionResourceTypes(DaraModel):
         asset_region_id: str = None,
         resource_type: main_models.ModifyAddressBookRequestAssetRegionResourceTypesResourceType = None,
     ):
-        # The asset region ID.
+        # The ID of the asset region.
         self.asset_region_id = asset_region_id
         # The asset type.
         self.resource_type = resource_type
@@ -346,21 +346,21 @@ class ModifyAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6(DaraModel
         nlb_ipv_6: bool = None,
         slb_ipv_6: bool = None,
     ):
-        # The asset type: AIGatewayEIPv6.
+        # The AIGatewayEIPv6 asset type.
         self.ai_gateway_eipv_6 = ai_gateway_eipv_6
-        # The asset type: AlbIPv6.
+        # The AlbIPv6 asset type.
         self.alb_ipv_6 = alb_ipv_6
-        # The asset type: ApigEIPv6.
+        # The ApigEIPv6 asset type.
         self.api_gateway_eipv_6 = api_gateway_eipv_6
-        # The asset type: EcsIPv6.
+        # The EcsIPv6 asset type.
         self.ecs_ipv_6 = ecs_ipv_6
-        # The asset type: EniEIPv6.
+        # The EniEIPv6 asset type.
         self.eni_eipv_6 = eni_eipv_6
-        # The asset type: GaEIPv6.
+        # The GaEIPv6 asset type.
         self.ga_eipv_6 = ga_eipv_6
-        # The asset type: NlbIPv6.
+        # The NlbIPv6 asset type.
         self.nlb_ipv_6 = nlb_ipv_6
-        # The asset type: SlbIPv6.
+        # The SlbIPv6 asset type.
         self.slb_ipv_6 = slb_ipv_6
 
     def validate(self):
@@ -446,39 +446,39 @@ class ModifyAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4(DaraModel
         slb_eip: bool = None,
         slb_public_ip: bool = None,
     ):
-        # The asset type: AIGatewayEIP.
+        # The AIGatewayEIP asset type.
         self.ai_gateway_eip = ai_gateway_eip
-        # The asset type: AlbEIP.
+        # The AlbEIP asset type.
         self.alb_eip = alb_eip
-        # The asset type: ApigEIP.
+        # The ApigEIP asset type.
         self.api_gateway_eip = api_gateway_eip
-        # The asset type: BastionHostEgressIP.
+        # The BastionHostEgressIP asset type.
         self.bastion_host_egress_ip = bastion_host_egress_ip
-        # The asset type: BastionHostIP.
+        # The BastionHostIP asset type.
         self.bastion_host_ip = bastion_host_ip
-        # The asset type: BastionHostIngressIP.
+        # The BastionHostIngressIP asset type.
         self.bastion_host_ingress_ip = bastion_host_ingress_ip
-        # The asset type: EIP.
+        # The EIP asset type.
         self.eip = eip
-        # The asset type: EcsEIP.
+        # The EcsEIP asset type.
         self.ecs_eip = ecs_eip
-        # The asset type: EcsPublicIP.
+        # The EcsPublicIP asset type.
         self.ecs_public_ip = ecs_public_ip
-        # The asset type: EniEIP.
+        # The EniEIP asset type.
         self.eni_eip = eni_eip
-        # The asset type: GaEIP.
+        # The GaEIP asset type.
         self.ga_eip = ga_eip
-        # The asset type: HAVIP.
+        # The HAVIP asset type.
         self.havip = havip
-        # The asset type: NatEIP.
+        # The NatEIP asset type.
         self.nat_eip = nat_eip
-        # The asset type: NatPublicIP.
+        # The NatPublicIP asset type.
         self.nat_public_ip = nat_public_ip
-        # The asset type: NlbEIP.
+        # The NlbEIP asset type.
         self.nlb_eip = nlb_eip
-        # The asset type: SlbEIP.
+        # The SlbEIP asset type.
         self.slb_eip = slb_eip
-        # The asset type: SlbPublicIP.
+        # The SlbPublicIP asset type.
         self.slb_public_ip = slb_public_ip
 
     def validate(self):

@@ -14,9 +14,9 @@ class PutEnableFwSwitchResponseBody(DaraModel):
         dry_run: bool = None,
         request_id: str = None,
     ):
-        # The status information list for assets that are not synchronized.
+        # The list of status information when assets are not synchronized.
         self.abnormal_resource_status_list = abnormal_resource_status_list
-        # Indicates whether this response is a dry run success response. A value of true indicates that only the dry run was completed and no actual changes were made. This field is not returned or is set to false for actual calls.
+        # Indicates whether the response is a successful dry run precheck. A value of true indicates that only the precheck is completed and no actual changes are made. This field is not returned or is set to false for actual calls.
         self.dry_run = dry_run
         # The request ID.
         self.request_id = request_id
@@ -69,12 +69,12 @@ class PutEnableFwSwitchResponseBodyAbnormalResourceStatusList(DaraModel):
         status: str = None,
     ):
         # The message when the asset is not synchronized. Valid values:
-        # - cloudfirewall do not sync this ip address: Cloud Firewall did not synchronize this asset IP address.
+        # - cloudfirewall do not sync this ip address: Cloud Firewall does not synchronize this asset IP address.
         self.msg = msg
-        # The asset IP address.
+        # The IP address of the asset.
         self.resource = resource
         # The status when the asset is not synchronized. Valid values:
-        # - ip_not_sync: the asset is not synchronized.
+        # - ip_not_sync: The asset is not synchronized.
         self.status = status
 
     def validate(self):

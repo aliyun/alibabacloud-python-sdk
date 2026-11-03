@@ -23,36 +23,36 @@ class DescribeRiskEventPayloadResponseBody(DaraModel):
         src_vpc_id: str = None,
         xforward_for: str = None,
     ):
-        # The destination IP address of the intrusion event.
+        # The destination IP address of the intrusion prevention event.
         self.dst_ip = dst_ip
-        # The destination port of the intrusion event.
+        # The destination port of the intrusion prevention event.
         self.dst_port = dst_port
-        # The destination VPC ID of the intrusion event.
+        # The destination VPC ID of the intrusion prevention event.
         self.dst_vpc_id = dst_vpc_id
-        # Type of the hit.
+        # The type of the hit content.
         self.hit_content_type = hit_content_type
-        # The position where the hit ends.
+        # The end position of the hit content.
         self.hit_to = hit_to
-        # Hit payload.
+        # The parsed payload of the hit content.
         self.parsed_content = parsed_content
-        # The attack payload of the intrusion event.
+        # The attack payload of the intrusion prevention event.
         self.payload = payload
-        # The length of the attack payload of the intrusion event.
+        # The length of the attack payload in the intrusion prevention event.
         self.payload_len = payload_len
-        # The protocol type of intrusion event. Valid values:
+        # The protocol type of the intrusion prevention attack event. Valid values:
         # 
-        # *   **TCP**
-        # *   **UDP**
+        # - **TCP**
+        # - **UDP**
         self.proto = proto
         # The HTTP X-Real-IP field.
         self.real_ip = real_ip
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The source IP address of the intrusion event.
+        # The source IP address of the intrusion prevention event.
         self.src_ip = src_ip
-        # The source port of the intrusion event.
+        # The source port of the intrusion prevention event.
         self.src_port = src_port
-        # The source VPC ID of the intrusion event.
+        # The source VPC ID of the intrusion prevention event.
         self.src_vpc_id = src_vpc_id
         # The HTTP X-Forwarded-For field.
         self.xforward_for = xforward_for

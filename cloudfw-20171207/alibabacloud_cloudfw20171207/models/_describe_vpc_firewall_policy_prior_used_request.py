@@ -17,16 +17,17 @@ class DescribeVpcFirewallPolicyPriorUsedRequest(DaraModel):
         # - **zh** (default): Chinese
         # - **en**: English
         self.lang = lang
-        # The ID of the policy group for the VPC firewall. Call the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) operation to query the ID.
+        # The ID of the access control policy group for the VPC border firewall. You can call the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) operation to obtain the ID.
         # 
         # Valid values:
         # 
-        # - If the VPC firewall protects a Cloud Enterprise Network (CEN) instance, set this parameter to the ID of the CEN instance.
+        # - When a VPC border firewall protects a Cloud Enterprise Network (CEN) instance, the policy group ID is the instance ID of the CEN instance.
         # 
-        #   Example: cen-ervw0g12b5jbw\\*\\*\\*\\*
-        # - If the VPC firewall protects an Express Connect circuit, set this parameter to the ID of the VPC firewall instance.
+        #   Example: cen-ervw0g12b5jbw*\\*\\*\\*
         # 
-        #   Example: vfw-a42bbb7b887148c9\\*\\*\\*\\*
+        # - When a VPC border firewall protects an Express Connect circuit, the policy group ID is the instance ID of the VPC border firewall.
+        # 
+        #   Example: vfw-a42bbb7b887148c9*\\*\\*\\*
         # 
         # This parameter is required.
         self.vpc_firewall_id = vpc_firewall_id

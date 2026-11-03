@@ -10,11 +10,11 @@ class DescribeSlsAnalyzeOpenStatusResponseBody(DaraModel):
         open_status: str = None,
         request_id: str = None,
     ):
-        # The enabled status of SLS. Valid values:
+        # The enabling status of SLS. Valid values:
         # 
-        # **true**: enabled.
+        # **true**: Enabled.
         # 
-        # **false**: disabled.
+        # **false**: Disabled.
         self.open_status = open_status
         # The request ID.
         self.request_id = request_id

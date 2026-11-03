@@ -31,25 +31,25 @@ class DescribeIPSRulesRequest(DaraModel):
         source_ip: str = None,
         vpc_firewall_id: str = None,
     ):
-        # The application targeted by the attack.
+        # The attacked application.
         self.attack_app = attack_app
-        # The categories of applications targeted by attacks.
+        # The list of categories of the attacked applications. Specify the value in the ["AttackAppCategory1","AttackAppCategory2"] format.
         self.attack_app_category = attack_app_category
-        # The applications targeted by attacks.
+        # The list of attacked applications.
         self.attack_apps = attack_apps
-        # The attack type.
+        # The attack application type.
         self.attack_type = attack_type
         # The CVE ID.
         self.cve = cve
-        # The status of the rule.
+        # The enabling status.
         self.default_action = default_action
-        # The type of firewall.
+        # The Cloud Firewall type.
         self.firewall_type = firewall_type
-        # The language of the request and response.
+        # The language of the request message.
         self.lang = lang
-        # The sort order.
+        # The sorting order.
         self.order = order
-        # The page number.
+        # The current page number.
         # 
         # This parameter is required.
         self.page_no = page_no
@@ -57,11 +57,11 @@ class DescribeIPSRulesRequest(DaraModel):
         # 
         # This parameter is required.
         self.page_size = page_size
-        # Indicates whether to retrieve only modified rules.
+        # Specifies whether the rule has been modified.
         self.query_modify = query_modify
         # The rule action.
         self.rule_action = rule_action
-        # The inspection mode.
+        # The supported engine mode.
         self.rule_class = rule_class
         # The rule ID.
         self.rule_id = rule_id
@@ -73,11 +73,11 @@ class DescribeIPSRulesRequest(DaraModel):
         # 
         # This parameter is required.
         self.rule_type = rule_type
-        # The field to sort by.
+        # The sorting method.
         self.sort = sort
-        # The source IP address of the request.
+        # The source IP address of the requester.
         self.source_ip = source_ip
-        # The instance ID of the VPC firewall.
+        # The instance ID of the virtual private cloud (VPC) firewalls.
         self.vpc_firewall_id = vpc_firewall_id
 
     def validate(self):

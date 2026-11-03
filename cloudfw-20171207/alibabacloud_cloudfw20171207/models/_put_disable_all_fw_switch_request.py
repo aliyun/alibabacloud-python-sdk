@@ -16,10 +16,9 @@ class PutDisableAllFwSwitchRequest(DaraModel):
         # The language of the request and response. Valid values:
         # 
         # - **zh** (default): Chinese
-        # 
         # - **en**: English
         self.lang = lang
-        # The source IP address of the visitor.
+        # The source IP address of the requester.
         self.source_ip = source_ip
 
     def validate(self):

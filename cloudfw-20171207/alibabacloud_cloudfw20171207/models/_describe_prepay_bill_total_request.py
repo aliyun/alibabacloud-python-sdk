@@ -14,26 +14,27 @@ class DescribePrepayBillTotalRequest(DaraModel):
         page_size: int = None,
         start_time: str = None,
     ):
-        # The bill type of the user. This parameter is required in practice. An error is returned if this parameter is not specified. Valid values:
-        # - elastic_traffic: elastic traffic
-        # - sdl: sensitive data leak detection traffic
+        # The bill type. This parameter is required. If it is not specified, an error is returned. Valid values:
+        # - elastic_traffic: elastic traffic.
+        # - sdl: sensitive data leak detection traffic.
         self.bill_type = bill_type
-        # The page number in a paged query. Default value: 1.
+        # The page number for paging. Default value: 1.
         self.current_page = current_page
-        # The end time. Specify a UNIX timestamp in seconds.
-        # > Because billing data is aggregated at the daily granularity, the timestamp must correspond to 00:00:00 of the day in CST (UTC+8). If the timestamp is not aligned to the start of the day, no data may be returned.
+        # The end time. Use a UNIX timestamp accurate to seconds.
+        # > Because billing data is aggregated on a daily basis, this timestamp must correspond to 00:00:00 of the day in the CST (UTC+8) time zone. If the time is not aligned with midnight, no data may be returned.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The language. Enumerated value.
+        # The language. Valid values:
+        # - zh
+        # - en
         # Default value: zh.
-        # Valid value: en.
         self.lang = lang
-        # The number of entries per page. Default value: 10.
+        # The number of entries to return on each page. Default value: 10.
         self.page_size = page_size
-        # The start time of the query. Specify a UNIX timestamp in seconds.
+        # The start time of the query. Use a UNIX timestamp accurate to seconds.
         # 
-        # > Because billing data is aggregated at the daily granularity, the timestamp must correspond to 00:00:00 of the day in CST (UTC+8). If the timestamp is not aligned to the start of the day, no data may be returned.
+        # > Because billing data is aggregated on a daily basis, this timestamp must correspond to 00:00:00 of the day in the CST (UTC+8) time zone. If the time is not aligned with midnight, no data may be returned.
         # 
         # This parameter is required.
         self.start_time = start_time

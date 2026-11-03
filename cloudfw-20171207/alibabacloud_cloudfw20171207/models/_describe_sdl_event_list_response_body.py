@@ -16,7 +16,7 @@ class DescribeSdlEventListResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # An array of data leakage events.
+        # The list of data leak events.
         self.sdl_event_detail_list = sdl_event_detail_list
         # The total number of entries.
         self.total_count = total_count
@@ -93,45 +93,43 @@ class DescribeSdlEventListResponseBodySdlEventDetailList(DaraModel):
         traffic_bytes: int = None,
         uuid: str = None,
     ):
-        # The asset name.
+        # The name of the asset.
         self.asset_name = asset_name
         # The private IP address of the asset.
         self.asset_private_ip = asset_private_ip
         # The asset type.
         self.asset_type = asset_type
-        # The intelligence tag category. Valid values:
+        # The categorization of intelligence labels. Valid values:
         # 
-        # - **Suspicious**: suspicious
-        # 
-        # - **Malicious**: malicious
-        # 
-        # - **Trusted**: trusted
+        # - **Suspicious**: Suspicious.
+        # - **Malicious**: Malicious.
+        # - **Trusted**: Trusted.
         self.category_class_id = category_class_id
-        # The category name.
+        # The name of the category.
         self.category_name = category_name
-        # The city ID.
+        # The ID of the city.
         self.city_id = city_id
-        # The country ID.
+        # The ID of the country.
         self.country_id = country_id
         # The destination IP address.
         self.dst_ip = dst_ip
-        # The destination port.
+        # The destination ports.
         self.dst_port_list = dst_port_list
         # The number of events.
         self.event_cnt = event_cnt
-        # The event\\"s risk level.
+        # The risk level of the event.
         self.event_level = event_level
-        # The event name.
+        # The name of the event.
         self.event_name = event_name
-        # The first time the event occurred, as a Unix timestamp in seconds.
+        # The time when the event first occurred. The value is a UNIX timestamp in seconds.
         self.first_time = first_time
-        # The last time the event occurred, as a Unix timestamp in seconds.
+        # The time when the event last occurred. The value is a UNIX timestamp in seconds.
         self.last_time = last_time
-        # The location of the destination IP address.
+        # The name of the region to which the destination IP address belongs.
         self.location_name = location_name
-        # The payload of the intrusion prevention event.
+        # The attack payload of the intrusion prevention event.
         self.payload = payload
-        # The protocol.
+        # The protocols.
         self.proto_list = proto_list
         # The region ID.
         self.region_id = region_id
@@ -139,21 +137,21 @@ class DescribeSdlEventListResponseBodySdlEventDetailList(DaraModel):
         self.resource_id = resource_id
         # The resource type.
         self.resource_id_type = resource_id_type
-        # The number of sensitive data items.
+        # The amount of sensitive data.
         self.sensitive_data_cnt = sensitive_data_cnt
-        # An array of sensitive data.
+        # The list of sensitive data.
         self.sensitive_data_list = sensitive_data_list
         # The sensitive data level.
         self.sensitive_level = sensitive_level
-        # The sensitive data type.
+        # The type of sensitive data.
         self.sensitive_type = sensitive_type
         # The source IP address.
         self.src_ip = src_ip
-        # The source port.
+        # The source ports.
         self.src_port_list = src_port_list
-        # The traffic volume in bytes.
+        # The traffic volume.
         self.traffic_bytes = traffic_bytes
-        # The unique identifier for the event.
+        # The UUID.
         self.uuid = uuid
 
     def validate(self):
