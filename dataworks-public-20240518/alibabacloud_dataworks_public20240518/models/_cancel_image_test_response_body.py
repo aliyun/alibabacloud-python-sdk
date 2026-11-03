@@ -12,7 +12,7 @@ class CancelImageTestResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The result of the API request.
+        # The API request result.
         self.data = data
         # The request ID, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
@@ -59,9 +59,9 @@ class CancelImageTestResponseBodyData(DaraModel):
         process_id: str = None,
         success: bool = None,
     ):
-        # The ID of the canceled image test execution.
+        # The execution ID of the canceled image test.
         self.process_id = process_id
-        # Indicates whether the cancellation was triggered successfully.
+        # Indicates whether the trigger was successful.
         self.success = success
 
     def validate(self):

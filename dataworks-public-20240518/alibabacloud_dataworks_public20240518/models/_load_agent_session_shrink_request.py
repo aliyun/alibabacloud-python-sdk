@@ -11,11 +11,11 @@ class LoadAgentSessionShrinkRequest(DaraModel):
         jsonrpc: str = None,
         params_shrink: str = None,
     ):
-        # The client-generated request ID, which is returned in the response.
+        # The ID provided by the requester. This ID is echoed back as is.
         self.id = id
-        # The JSON-RPC version. The value must be `2.0`.
+        # The JSON-RPC version. Fixed to 2.0.
         self.jsonrpc = jsonrpc
-        # Business parameters.
+        # The business parameters.
         self.params_shrink = params_shrink
 
     def validate(self):

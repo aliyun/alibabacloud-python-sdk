@@ -12,8 +12,11 @@ class UpdateAgentSessionTitleRequest(DaraModel):
         jsonrpc: str = None,
         params: main_models.UpdateAgentSessionTitleRequestParams = None,
     ):
+        # The JSON-RPC correlation ID for the current request. It is specified by the caller and used to correlate the request and response.
         self.id = id
+        # The JSON-RPC protocol version. Set the value to 2.0.
         self.jsonrpc = jsonrpc
+        # The request parameters for modifying the session title, including the target session ID and the new title.
         self.params = params
 
     def validate(self):
@@ -56,8 +59,12 @@ class UpdateAgentSessionTitleRequestParams(DaraModel):
         session_id: str = None,
         title: str = None,
     ):
+        # The ID of the agent session that belongs to the current account.
+        # 
         # This parameter is required.
         self.session_id = session_id
+        # The new title. The length must be 1 to 512 characters after leading and trailing whitespaces are removed.
+        # 
         # This parameter is required.
         self.title = title
 

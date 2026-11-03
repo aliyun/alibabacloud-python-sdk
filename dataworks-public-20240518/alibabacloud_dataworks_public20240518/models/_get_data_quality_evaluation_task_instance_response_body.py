@@ -13,9 +13,9 @@ class GetDataQualityEvaluationTaskInstanceResponseBody(DaraModel):
         data_quality_evaluation_task_instance: main_models.GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstance = None,
         request_id: str = None,
     ):
-        # The details of the data quality monitoring instance.
+        # The details of the data quality evaluation task instance.
         self.data_quality_evaluation_task_instance = data_quality_evaluation_task_instance
-        # The request ID. Used to locate logs and troubleshoot issues.
+        # The request ID. You can use this ID to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -60,29 +60,34 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
         trigger_context: str = None,
     ):
         # The creation time.
+        # 
+        # The value is a 13-digit number, such as `1716344665000`.
         self.create_time = create_time
-        # The end time of the instance execution.
+        # The end time of the instance run.
+        # 
+        # The value is a 13-digit number, such as `1716344665000`.
         self.finish_time = finish_time
-        # The data quality monitoring instance ID.
+        # The instance ID of the data quality monitoring.
         self.id = id
-        # The execution parameters for the data quality check, in JSON format. The following keys are available:
-        # - triggerTime: the millisecond-level timestamp of the trigger time. This is the base time for the $[yyyymmdd] expression in the data range of the data quality monitoring task. This key is required.
+        # The execution parameters of the data quality evaluation task in JSON format. Available keys:
+        # - triggerTime: The millisecond timestamp of the trigger time. This is the base time for the `$[yyyymmdd]` expression in the data range of the data quality evaluation task. This parameter is required.
         self.parameters = parameters
-        # The workspace ID.
+        # The ID of the workspace.
         self.project_id = project_id
+        # The list of data quality evaluation results.
         self.results = results
-        # The instance status of the data quality monitoring task. Valid values:
+        # The status of the data quality monitoring instance. Valid values:
         # - Running: The check is in progress.
-        # - Error: A rule check encountered an error.
+        # - Error: An error occurred while checking a rule.
         # - Passed: All rule checks passed.
-        # - Warned: A rule triggered a normal alert threshold.
-        # - Critical: A rule triggered a critical alert threshold.
+        # - Warned: A rule triggered the warning alert threshold.
+        # - Critical: A rule triggered the critical alert threshold.
         self.status = status
-        # The data quality monitoring task.
+        # The data quality evaluation task.
         self.task = task
-        # The context information when the instance is triggered, in JSON format. The following keys may be included:
-        # - TriggerClient: the trigger source of the data quality monitoring instance, such as CWF2 (scheduling system). More values may be added in the future.
-        # - TriggerClientId: the ID of a specific business resource in the source system. For example, when TriggerClient is CWF2, this field records the scheduling task ID.
+        # The context information when the instance is triggered, in JSON format. Possible keys:
+        # - TriggerClient: The trigger source of the data quality evaluation task instance, such as CWF2 (scheduling system). More sources may be added in the future.
+        # - TriggerClientId: The specific business resource in the source system. For example, if TriggerClient is CWF2, this parameter records the scheduling task ID.
         self.trigger_context = trigger_context
 
     def validate(self):
@@ -177,28 +182,28 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
         target: main_models.GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskTarget = None,
         trigger: main_models.GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskTrigger = None,
     ):
-        # The description of the data quality monitoring task.
+        # The description of the data quality evaluation task.
         self.description = description
-        # The callback settings.
+        # The hook settings.
         self.hooks = hooks
-        # The ID of the data quality monitoring task.
+        # The ID of the data quality evaluation task.
         self.id = id
-        # The name of the data quality monitoring task.
+        # The name of the data quality evaluation task.
         self.name = name
         # The notification settings.
         self.notifications = notifications
-        # The workspace ID.
+        # The ID of the workspace.
         self.project_id = project_id
-        # The extension configuration, a JSON-formatted character string. This parameter takes effect only for EMR-type data quality monitoring tasks.
+        # The extension configuration, a JSON-formatted character string, takes effect only for EMR data quality monitoring.
         # 
-        # - queue: The YARN queue used to execute EMR data validation. The default value is the queue configured for the current project.
-        # - sqlEngine: The SQL engine used to execute EMR data validation. Valid values:
+        # - queue: The YARN queue used when you execute EMR data validation. The default value is the queue configured for the current project.
+        # - sqlEngine: The SQL engine used when you execute EMR data validation. Valid values:
         #   - HIVE_SQL
-        #   - SPARK_SQL.
+        #   - SPARK_SQL
         self.runtime_conf = runtime_conf
-        # The monitored object of the data quality check task. Refer to the DataQualityTarget example.
+        # The monitored object of the data quality evaluation task. For more information, see the DataQualityTarget example and DataQualityTarget.
         self.target = target
-        # The trigger configuration of the data quality check task.
+        # The trigger configurations of the data quality evaluation task.
         self.trigger = trigger
 
     def validate(self):
@@ -292,11 +297,11 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
         task_ids: List[int] = None,
         type: str = None,
     ):
-        # The list of scheduling node IDs. This parameter is valid only when Type is set to ByScheduledTaskInstance.
+        # The list of scheduling task IDs. This parameter takes effect only when Type is set to ByScheduledTaskInstance.
         self.task_ids = task_ids
-        # The trigger type of the quality monitoring task. Valid values:
+        # The trigger type of the data quality evaluation task. Valid values:
         # - ByManual: Manual trigger. This is the default value.
-        # - ByScheduledTaskInstance: Triggered by an associated scheduling node.
+        # - ByScheduledTaskInstance: Triggered by an associated scheduling task.
         self.type = type
 
     def validate(self):
@@ -333,14 +338,14 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
         table_guid: str = None,
         type: str = None,
     ):
-        # The type of the database to which the table belongs.
+        # The database type to which the table belongs.
         self.database_type = database_type
-        # The partition range to monitor.
+        # The partition range to be monitored.
         self.partition_spec = partition_spec
         # The unique ID of the table in DataWorks Data Map.
         self.table_guid = table_guid
         # The monitored object type. Valid values:
-        # - Table: table.
+        # - Table: Table.
         self.type = type
 
     def validate(self):
@@ -387,12 +392,12 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
         condition: str = None,
         notifications: List[main_models.GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotifications] = None,
     ):
-        # The cause that triggers a notification. When this condition is met, a message notification is sent. Only two types of conditional expressions are supported:
+        # The condition for triggering a notification. When this condition is met, a message notification is triggered. Currently, only two types of conditional expressions are supported:
         # 
-        # - Specify a single combination of rule severity and rule check status. For example, `${severity} == "High" AND ${status} == "Critical"` means that the condition is met if any rule with a severity of High has a check result of Critical. 
-        # - Specify multiple combinations of rule severity and rule check status. For example, `(${severity} == "High"AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")` means that the condition is met if any rule with a severity of High has a check result of Critical, or any rule with a severity of Normal has a check result of Critical, or any rule with a severity of Normal has a check result of Error. The severity enumeration values in the conditional expression are consistent with the severity enumeration values in DataQualityRule, and the status enumeration values are consistent with the status values in DataQualityResult.
+        # - Specify only one set of rule severity and rule check status, such as `${severity} == "High" AND ${status} == "Critical"`. This means that among the rules that you execute, if a rule with the severity of High has a check result of Critical, the condition is met. 
+        # - Specify multiple sets of rule severity and rule check status, such as `(${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`. This means that among the rules that you execute, if a rule with the severity of High has a check result of Critical, or a rule with the severity of Normal has a check result of Critical, or a rule with the severity of Normal has a check result of Error, the condition is met. The valid values for severity in the conditional expression are the same as those in DataQualityRule, and the valid values for status are the same as those in DataQualityResult.
         self.condition = condition
-        # The alert methods.
+        # The notification methods.
         self.notifications = notifications
 
     def validate(self):
@@ -437,7 +442,7 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
     ):
         # The notification channels.
         self.notification_channels = notification_channels
-        # The notification recipients.
+        # The values of the notification recipients.
         self.notification_receivers = notification_receivers
 
     def validate(self):
@@ -490,9 +495,9 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
         receiver_type: str = None,
         receiver_values: List[str] = None,
     ):
-        # The additional parameter settings for sending alerts, in JSON format. The following keys are supported:
+        # The additional parameter settings in JSON format when an alert is sent. Supported keys:
         # 
-        # - atAll: Specifies whether to @everyone in the group when sending a DingTalk alert. This parameter takes effect only when ReceiverType is set to DingdingUrl.
+        # - atAll: Specifies whether to @all in the DingTalk group when a DingTalk alert is sent. This parameter takes effect only when ReceiverType is set to DingdingUrl.
         self.extension = extension
         # The type of the alert recipient.
         self.receiver_type = receiver_type
@@ -565,14 +570,14 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
         condition: str = None,
         type: str = None,
     ):
-        # The cause that triggers the hook action. When this condition is met, the hook action is triggered. Only two types of conditional expressions are supported:
+        # The condition for triggering the hook. When this condition is met, the hook action is triggered. Currently, only two types of conditional expressions are supported:
         # 
-        # - Specify a single combination of rule severity and rule check status. For example, `${severity} == "High" AND ${status} == "Critical"` means that the condition is met if any rule with a severity of High has a check result of Critical.
-        # - Specify multiple combinations of rule severity and rule check status. For example, `(${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")` means that the condition is met if any rule with a severity of High has a check result of Critical, or any rule with a severity of Normal has a check result of Critical, or any rule with a severity of Normal has a check result of Error. The severity enumeration values in the conditional expression are consistent with the severity enumeration values in DataQualityRule, and the status enumeration values are consistent with the status values in DataQualityResult.
+        # - Specify only one set of rule severity and rule check status, such as `${severity} == "High" AND ${status} == "Critical"`. This means that among the rules that you execute, if a rule with the severity of High has a check result of Critical, the condition is met.
+        # - Specify multiple sets of rule severity and rule check status, such as `(${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`. This means that among the rules that you execute, if a rule with the severity of High has a check result of Critical, or a rule with the severity of Normal has a check result of Critical, or a rule with the severity of Normal has a check result of Error, the condition is met. The valid values for severity in the conditional expression are the same as those in DataQualityRule, and the valid values for status are the same as those in DataQualityResult.
         self.condition = condition
-        # The hook type. Only one type is supported:
+        # The hook type. Currently, only one type is supported:
         # 
-        # - BlockTaskInstance: Blocks the scheduling node from continuing to run. If the data quality monitoring task is triggered by a scheduling node, after the data quality monitoring task is completed, the system determines whether to block the scheduling node from continuing to run based on Hook.Condition.
+        # - BlockTaskInstance: Blocks the scheduling task from continuing to run. If the data quality evaluation task is triggered by a scheduling task, the system determines whether to block the scheduling task based on Hook.Condition after the data quality evaluation task is completed.
         self.type = type
 
     def validate(self):
@@ -612,12 +617,21 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
         status: str = None,
         task_instance_id: int = None,
     ):
+        # The generation time of the evaluation result.
+        # 
+        # The value is a 13-digit number, such as `1708284916414`.
         self.create_time = create_time
+        # The details of this evaluation.
         self.details = details
+        # The ID of the evaluation result.
         self.id = id
+        # The snapshot of the rule configuration at the start of the evaluation.
         self.rule = rule
+        # The sample value used for this evaluation.
         self.sample = sample
+        # The status of the evaluation result.
         self.status = status
+        # The instance ID of the data quality check task.
         self.task_instance_id = task_instance_id
 
     def validate(self):
@@ -702,16 +716,27 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
         target: main_models.GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleTarget = None,
         template_code: str = None,
     ):
+        # The sample check settings.
         self.checking_config = checking_config
+        # The description of the rule. It can be up to 500 characters in length.
         self.description = description
+        # Specifies whether the rule is enabled.
         self.enabled = enabled
+        # The error handlers for quality rule check issues.
         self.error_handlers = error_handlers
+        # The globally unique ID of the rule.
         self.id = id
+        # The name of the rule. The name can contain digits, letters, Chinese characters, and half-width or full-width punctuation marks. It can be up to 255 characters in length.
         self.name = name
+        # The ID of the DataWorks workspace.
         self.project_id = project_id
+        # The settings required for sample collection.
         self.sampling_config = sampling_config
+        # The severity level of the rule for the business, which corresponds to the strong and weak rules on the page.
         self.severity = severity
+        # The object monitored by the rule.
         self.target = target
+        # The rule template referenced when the rule is created.
         self.template_code = template_code
 
     def validate(self):
@@ -818,8 +843,19 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
         table_guid: str = None,
         type: str = None,
     ):
+        # The database type to which the table dataset belongs. Valid values:
+        # - maxcompute
+        # - emr
+        # - cdh
+        # - hologres
+        # - analyticdb_for_postgresql
+        # - analyticdb_for_mysql
+        # - starrocks
         self.database_type = database_type
+        # The unique ID of the table in DataWorks Data Map.
         self.table_guid = table_guid
+        # The monitored object type. Valid values:
+        # - Table
         self.type = type
 
     def validate(self):
@@ -862,9 +898,28 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
         sampling_filter: str = None,
         setting_config: str = None,
     ):
+        # The name of the sampling metric. Valid values:
+        # - Count: The number of rows in the table.
+        # - Min: The minimum value of the column.
+        # - Max: The maximum value of the column.
+        # - Avg: The average value of the column.
+        # - DistinctCount: The number of unique values in the column.
+        # - DistinctPercent: The ratio of the number of unique values in the column to the number of data rows.
+        # - DuplicatedCount: The number of duplicate values in the column.
+        # - DuplicatedPercent: The ratio of the number of duplicate values in the column to the number of data rows.
+        # - TableSize: The size of the table.
+        # - NullValueCount: The number of rows where the column is null.
+        # - NullValuePercent: The ratio of rows where the column is null.
+        # - GroupCount: The number of data rows corresponding to each value after aggregation by column value.
+        # - CountNotIn: The number of rows that do not match the enumerated values.
+        # - CountDistinctNotIn: The number of unique values that do not match the enumerated values.
+        # - UserDefinedSql: Sample collection by using custom SQL statements.
         self.metric = metric
+        # The parameters required for sample collection.
         self.metric_parameters = metric_parameters
+        # The condition for secondary filtering of uninterested data during sampling. It can be up to 16,777,215 characters in length.
         self.sampling_filter = sampling_filter
+        # The runtime parameter setting statements inserted before the sampling statements are executed. It can be up to 1,000 characters in length. Currently, only MaxCompute is supported.
         self.setting_config = setting_config
 
     def validate(self):
@@ -911,7 +966,9 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
         error_data_filter: str = None,
         type: str = None,
     ):
+        # The SQL statement used to filter problematic data for custom SQL rules.
         self.error_data_filter = error_data_filter
+        # The handler type.
         self.type = type
 
     def validate(self):
@@ -947,8 +1004,17 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
         thresholds: main_models.GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholds = None,
         type: str = None,
     ):
+        # The expression that represents the query method for reference samples. Some types of thresholds require querying reference samples and aggregating their values to obtain the threshold for comparison.
         self.referenced_samples_filter = referenced_samples_filter
+        # The threshold settings.
         self.thresholds = thresholds
+        # The threshold calculation method. Valid values:
+        # - Fixed
+        # - Fluctation
+        # - FluctationDiscreate
+        # - Auto
+        # - Average
+        # - Variance
         self.type = type
 
     def validate(self):
@@ -992,8 +1058,11 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
         expected: main_models.GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsExpected = None,
         warned: main_models.GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsWarned = None,
     ):
+        # The threshold settings for critical alerts.
         self.critical = critical
+        # The expected threshold settings.
         self.expected = expected
+        # The threshold settings for warning alerts.
         self.warned = warned
 
     def validate(self):
@@ -1043,8 +1112,17 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
         operator: str = None,
         value: str = None,
     ):
+        # The threshold expression.
         self.expression = expression
+        # The comparison operator. Valid values:
+        # - \\>
+        # - \\>=
+        # - <
+        # - <=
+        # - !=
+        # - =
         self.operator = operator
+        # The threshold value.
         self.value = value
 
     def validate(self):
@@ -1086,8 +1164,17 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
         operator: str = None,
         value: str = None,
     ):
+        # The threshold expression.
         self.expression = expression
+        # The comparison operator. Valid values:
+        # - \\>
+        # - \\>=
+        # - <
+        # - <=
+        # - !=
+        # - =
         self.operator = operator
+        # The threshold value.
         self.value = value
 
     def validate(self):
@@ -1129,8 +1216,17 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
         operator: str = None,
         value: str = None,
     ):
+        # The check expression.
         self.expression = expression
+        # The comparison operator. Valid values:
+        # - \\>
+        # - \\>=
+        # - <
+        # - <=
+        # - !=
+        # - =
         self.operator = operator
+        # The threshold value.
         self.value = value
 
     def validate(self):
@@ -1172,8 +1268,11 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
         referenced_value: str = None,
         status: str = None,
     ):
+        # The final value used to compare with the threshold.
         self.checked_value = checked_value
+        # The referenced sample value used as the baseline for calculating the CheckedValue.
         self.referenced_value = referenced_value
+        # The status of the final comparison result.
         self.status = status
 
     def validate(self):

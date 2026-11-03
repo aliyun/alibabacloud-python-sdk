@@ -14,7 +14,7 @@ class GetComputeResourceAuthUserMappingsRequest(DaraModel):
         # 
         # This parameter is required.
         self.compute_resource_id = compute_resource_id
-        # The DataWorks workspace to which the data source belongs.
+        # The ID of the DataWorks workspace to which the data source belongs.
         # 
         # This parameter is required.
         self.project_id = project_id

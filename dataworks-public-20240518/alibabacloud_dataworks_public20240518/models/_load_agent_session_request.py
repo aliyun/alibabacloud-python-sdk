@@ -12,11 +12,11 @@ class LoadAgentSessionRequest(DaraModel):
         jsonrpc: str = None,
         params: main_models.LoadAgentSessionRequestParams = None,
     ):
-        # The client-generated request ID, which is returned in the response.
+        # The ID provided by the requester. This ID is echoed back as is.
         self.id = id
-        # The JSON-RPC version. The value must be `2.0`.
+        # The JSON-RPC version. Fixed to 2.0.
         self.jsonrpc = jsonrpc
-        # Business parameters.
+        # The business parameters.
         self.params = params
 
     def validate(self):
@@ -59,7 +59,7 @@ class LoadAgentSessionRequestParams(DaraModel):
         meta: main_models.LoadAgentSessionRequestParamsMeta = None,
         session_id: str = None,
     ):
-        # DataWorks-specific extended parameters for ACP.
+        # The ACP extension parameters for DataWorks.
         self.meta = meta
         # The ID of the target session. If the session does not exist, an SSE error frame is returned.
         self.session_id = session_id
@@ -98,9 +98,9 @@ class LoadAgentSessionRequestParamsMeta(DaraModel):
         begin_log_offset: int = None,
         is_reload: bool = None,
     ):
-        # In a resumable transfer scenario, this specifies the offset from which to resume fetching the SSE output.
+        # The offset from which to pull subsequent SSE outputs in a resumable transmission scenario.
         self.begin_log_offset = begin_log_offset
-        # Specifies whether to use resumable transfer. If the SSE stream is interrupted due to issues like an unstable network connection, you can set this parameter to `true` to re-fetch the stream data from the point of failure.
+        # Specifies whether this is a resumable transmission scenario. If the SSE stream is interrupted due to network instability, you can set this flag to repull the SSE response data from the breakpoint.
         self.is_reload = is_reload
 
     def validate(self):

@@ -13,7 +13,9 @@ class UpdateAgentSessionTitleResponseBody(DaraModel):
         json_rpc_response: main_models.UpdateAgentSessionTitleResponseBodyJsonRpcResponse = None,
         request_id: str = None,
     ):
+        # The JSON-RPC response. Result is returned upon success, and Error is returned upon a protocol error.
         self.json_rpc_response = json_rpc_response
+        # The unique ID of the current OpenAPI request. You can use it to troubleshoot request issues.
         self.request_id = request_id
 
     def validate(self):
@@ -53,10 +55,15 @@ class UpdateAgentSessionTitleResponseBodyJsonRpcResponse(DaraModel):
         result: main_models.UpdateAgentSessionTitleResponseBodyJsonRpcResponseResult = None,
         timestamp: int = None,
     ):
+        # The JSON-RPC error message. This field is not returned upon success.
         self.error = error
+        # The JSON-RPC correlation ID for the current request. It is passed by the caller and returned as is.
         self.id = id
+        # The JSON-RPC protocol version.
         self.jsonrpc = jsonrpc
+        # The operation result.
         self.result = result
+        # The response time. It is a UNIX timestamp in milliseconds.
         self.timestamp = timestamp
 
     def validate(self):
@@ -114,7 +121,9 @@ class UpdateAgentSessionTitleResponseBodyJsonRpcResponseResult(DaraModel):
         session_id: str = None,
         title: str = None,
     ):
+        # The ID of the agent session whose title is modified. It corresponds to the SessionId in the request.
         self.session_id = session_id
+        # The saved session title after modification. Leading and trailing whitespace characters are removed.
         self.title = title
 
     def validate(self):
@@ -151,9 +160,13 @@ class UpdateAgentSessionTitleResponseBodyJsonRpcResponseError(DaraModel):
         error_code: str = None,
         message: str = None,
     ):
+        # The JSON-RPC error code.
         self.code = code
+        # The optional additional error information. The content depends on the error type.
         self.data = data
+        # The business error code.
         self.error_code = error_code
+        # The error message.
         self.message = message
 
     def validate(self):

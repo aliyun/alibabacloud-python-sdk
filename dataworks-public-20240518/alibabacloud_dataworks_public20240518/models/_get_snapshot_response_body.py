@@ -58,13 +58,13 @@ class GetSnapshotResponseBodySnapshot(DaraModel):
         type: str = None,
         version: int = None,
     ):
-        # The submit comment.
+        # The submission comment.
         self.comment = comment
         # The structured snapshot content. This parameter is mutually exclusive with ContentUrl.
         self.content = content
-        # The OSS pre-signed download URL. This parameter is mutually exclusive with Content.
+        # The pre-signed OSS download URL. This parameter is mutually exclusive with Content.
         self.content_url = content_url
-        # The snapshot creation time in millisecond timestamp.
+        # The timestamp when the snapshot was generated, in milliseconds.
         self.create_time = create_time
         # The employee ID of the submitter.
         self.creator = creator
@@ -72,7 +72,7 @@ class GetSnapshotResponseBodySnapshot(DaraModel):
         self.id = id
         # The namespace.
         self.namespace = namespace
-        # The unique ID of the object to which the snapshot belongs.
+        # The unique ID of the parent object.
         self.object_id = object_id
         # The snapshot type.
         self.type = type

@@ -54,10 +54,11 @@ class ListAgentSessionsResponseBodyJsonRpcResponse(DaraModel):
         jsonrpc: str = None,
         result: main_models.ListAgentSessionsResponseBodyJsonRpcResponseResult = None,
     ):
+        # The JSON-RPC error message. This parameter is returned when the call fails and is not returned when the call succeeds.
         self.error = error
-        # The ID passed in by the requester. The value is returned as-is.
+        # The ID passed by the requester, which is returned as is.
         self.id = id
-        # The JSON-RPC version. Fixed value: 2.0.
+        # The JSON-RPC version. Fixed to 2.0.
         self.jsonrpc = jsonrpc
         # The paginated result set of the session query.
         self.result = result
@@ -178,9 +179,9 @@ class ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessions(DaraModel)
         session_title: str = None,
         session_updated_at: int = None,
     ):
-        # The extended session information from DataWorks, which is not part of the ACP standard protocol.
+        # The session information extended by DataWorks, which is not part of the standard ACP protocol.
         self.meta = meta
-        # The time when the session was created.
+        # The session creation time.
         self.session_created_at = session_created_at
         # The session description.
         self.session_description = session_description
@@ -188,7 +189,7 @@ class ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessions(DaraModel)
         self.session_id = session_id
         # The session title.
         self.session_title = session_title
-        # The time when the session was last modified.
+        # The session update time.
         self.session_updated_at = session_updated_at
 
     def validate(self):
@@ -251,12 +252,13 @@ class ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMeta(DaraMo
         session_status: str = None,
         session_tag_list: List[main_models.ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMetaSessionTagList] = None,
     ):
+        # Indicates whether the session is archived.
         self.archived = archived
         # The session source.
         self.session_source = session_source
         # The session connection status.
         self.session_status = session_status
-        # The list of session tags.
+        # The session tag list.
         self.session_tag_list = session_tag_list
 
     def validate(self):
@@ -310,7 +312,7 @@ class ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMetaSession
         self,
         session_tag_code: str = None,
     ):
-        # The session tag. You can filter sessions based on session tags. For example, if you use a fixed RAM user to call OpenAPI but the calling system has its own account system, you can filter the session list based on an account ID. In this case, set this parameter to the account ID of the calling system.
+        # The session tag. You can filter sessions based on session tags. For example, if you use a fixed RAM user to call OpenAPI operations but the calling system has its own account system, you need to filter the session list based on the account ID. In this case, you can pass the account ID of the calling system as this tag.
         self.session_tag_code = session_tag_code
 
     def validate(self):
@@ -341,9 +343,13 @@ class ListAgentSessionsResponseBodyJsonRpcResponseError(DaraModel):
         error_code: str = None,
         message: str = None,
     ):
+        # The JSON-RPC error code.
         self.code = code
+        # The optional additional error information. The content depends on the error type.
         self.data = data
+        # The business error code.
         self.error_code = error_code
+        # The error message.
         self.message = message
 
     def validate(self):

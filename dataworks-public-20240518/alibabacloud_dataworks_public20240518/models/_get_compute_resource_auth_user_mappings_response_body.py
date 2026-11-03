@@ -18,7 +18,7 @@ class GetComputeResourceAuthUserMappingsResponseBody(DaraModel):
         self.data = data
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -106,9 +106,9 @@ class GetComputeResourceAuthUserMappingsResponseBodyDataAccounts(DaraModel):
         user_id: str = None,
         username: str = None,
     ):
-        # The Alibaba Cloud UID.
+        # The Alibaba Cloud user ID.
         self.user_id = user_id
-        # The username in the target system, such as an LDAP account.
+        # The username in the destination system, such as an LDAP account.
         self.username = username
 
     def validate(self):

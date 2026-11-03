@@ -2216,6 +2216,8 @@ from ._prompt_agent_session_request import PromptAgentSessionRequestParamsMeta
 from ._prompt_agent_session_request import PromptAgentSessionRequestParamsPromptMeta
 from ._prompt_agent_session_request import PromptAgentSessionRequestParamsPrompt
 from ._prompt_agent_session_request import PromptAgentSessionRequestParams
+from ._prompt_agent_session_response_body import PromptAgentSessionResponseBodyMetaEventCursor
+from ._prompt_agent_session_response_body import PromptAgentSessionResponseBodyMeta
 from ._publish_image_response_body import PublishImageResponseBodyData
 from ._reply_agent_session_request import ReplyAgentSessionRequestParamsOutcome
 from ._reply_agent_session_request import ReplyAgentSessionRequestParams
@@ -4585,6 +4587,8 @@ __all__ = [
     PromptAgentSessionRequestParamsPromptMeta,
     PromptAgentSessionRequestParamsPrompt,
     PromptAgentSessionRequestParams,
+    PromptAgentSessionResponseBodyMetaEventCursor,
+    PromptAgentSessionResponseBodyMeta,
     PublishImageResponseBodyData,
     ReplyAgentSessionRequestParamsOutcome,
     ReplyAgentSessionRequestParams,

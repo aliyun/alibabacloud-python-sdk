@@ -10,17 +10,11 @@ class DeleteTaskRequest(DaraModel):
         id: int = None,
         project_env: str = None,
     ):
-        # The task ID.
+        # The ID of the task.
         # 
         # This parameter is required.
         self.id = id
-        # The environment of the workspace.
-        # 
-        # Valid values:
-        # 
-        # - Prod: production environment
-        # 
-        # - Dev: development environment
+        # The project environment.
         self.project_env = project_env
 
     def validate(self):

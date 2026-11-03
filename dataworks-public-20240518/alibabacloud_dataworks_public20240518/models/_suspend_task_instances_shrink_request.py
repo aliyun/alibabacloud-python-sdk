@@ -10,9 +10,9 @@ class SuspendTaskInstancesShrinkRequest(DaraModel):
         comment: str = None,
         ids_shrink: str = None,
     ):
-        # Remarks.
+        # The comment.
         self.comment = comment
-        # The ID list of the task instance.
+        # The list of task instance IDs.
         self.ids_shrink = ids_shrink
 
     def validate(self):

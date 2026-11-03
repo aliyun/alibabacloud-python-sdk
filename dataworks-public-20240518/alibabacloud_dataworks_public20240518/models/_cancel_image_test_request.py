@@ -14,7 +14,7 @@ class CancelImageTestRequest(DaraModel):
         # 
         # This parameter is required.
         self.id = id
-        # The ID of the image test execution to cancel.
+        # The execution ID of the image test to cancel.
         self.process_id = process_id
 
     def validate(self):

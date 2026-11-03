@@ -1,3 +1,13 @@
+2026-11-03 Version: 9.11.1
+- Update API CreateAgent: add request parameters ExpertSuites.$.VersionSelector.
+- Update API CreateAgent: add request parameters Skills.$.VersionSelector.
+- Update API CreateAgent: add response parameters Body.Agent.ExpertSuites.$.VersionSelector.
+- Update API CreateAgent: add response parameters Body.Agent.Skills.$.VersionSelector.
+- Update API GetAgent: add response parameters Body.Agent.ExpertSuites.$.VersionSelector.
+- Update API GetAgent: add response parameters Body.Agent.Skills.$.VersionSelector.
+- Update API PromptAgentSession: add response parameters Body.Meta.
+
+
 2026-10-26 Version: 9.11.0
 - Support API UpdateAgentSessionTitle.
 - Update API CreateAgent: add request parameters ExpertSuites.

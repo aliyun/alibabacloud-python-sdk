@@ -43,121 +43,84 @@ class CreateFileRequest(DaraModel):
         stop: bool = None,
         timeout: int = None,
     ):
-        # The advanced settings of the node.
+        # The advanced settings of the task.
         # 
+        # This parameter corresponds to the **Advanced Settings** in the right-side navigation pane of the edit page for EMR Spark Streaming and EMR Streaming SQL Data Studio tasks in the [DataWorks console](https://workbench.data.aliyun.com/console).
         # 
-        # 
-        # 
-        # This parameter corresponds to the "Advanced Settings" in the right-side navigation bar on the editing page of EMR Spark Streaming and EMR Streaming SQL Data Studio nodes in the [DataWorks console](https://workbench.data.aliyun.com/console).
-        # 
-        # 
-        # 
-        # 
-        # Currently, only EMR Spark Streaming and EMR Streaming SQL nodes support this parameter. The parameter value is in JSON format.
+        # Currently, only EMR Spark Streaming and EMR Streaming SQL tasks support this parameter, and the parameter value must be in JSON format.
         self.advanced_settings = advanced_settings
-        # Specifies whether the scheduling configuration takes effect immediately after deployment.
+        # Specifies whether the scheduling configuration takes effect immediately after the file is published.
         self.apply_schedule_immediately = apply_schedule_immediately
         # Specifies whether to enable automatic parsing for the file. Valid values:
+        # - true: Automatically parses the code in the file.
+        # - false: Does not automatically parse the code in the file.
         # 
-        # 
-        # 
-        # 
-        # - true: The file automatically parses code.
-        # - false: The file does not automatically parse code.
-        # 
-        # 
-        # 
-        # 
-        # This parameter corresponds to the code parsing setting in the "Schedule Configuration &gt; Scheduling Dependencies" section of a Data Studio node in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # This parameter corresponds to the code parsing setting in **Schedule Settings > Scheduling Dependencies** for a Data Studio task in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.auto_parsing = auto_parsing
-        # The interval between automatic reruns upon failure, in milliseconds. The maximum value is 1800000 milliseconds (30 minutes).
+        # The interval between automatic reruns after a failure, in milliseconds.
+        # Maximum value: 1800000 (30 minutes).
         # 
-        # 
-        # 
-        # 
-        # This parameter corresponds to the "Rerun Interval" setting in the "Schedule Configuration &gt; Time Properties &gt; Auto Rerun upon Error" section of a Data Studio node in the [DataWorks console](https://workbench.data.aliyun.com/console).
-        # 
-        # 
-        # 
-        # 
-        # The "Rerun Interval" in the console uses minutes as the unit. Convert the time accordingly when calling this operation.
+        # This parameter corresponds to the **Rerun Interval** setting in **Schedule Settings > Time Attributes > Automatic Rerun after Failure** for a Data Studio task in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # The time unit for **Rerun Interval** in the console is minutes. Convert the time accordingly when you call this operation.
         self.auto_rerun_interval_millis = auto_rerun_interval_millis
-        # The number of automatic reruns after an error occurs. The maximum value is 10.
+        # The maximum number of automatic reruns after an error occurs.
+        # Maximum value: 10.
         self.auto_rerun_times = auto_rerun_times
-        # The data source that the node connects to when the file is deployed as a node and the node runs.
-        # 
-        # 
-        # 
+        # The data source connected when the task is run after the file is published as a task.
         # 
         # You can call the [UpdateDataSource](https://help.aliyun.com/document_detail/211432.html) operation to obtain the list of available data sources in the workspace.
         self.connection_name = connection_name
-        # The code content of the file. Different code types (fileType) have different code formats.
-        # 
-        # You can find the node of the corresponding type in Operation Center, right-click the node, and then click View Code to view the specific code format.
+        # The code content of the file. The code format varies based on the code type (fileType) of the file.
+        # You can find a task of the corresponding type in Operation Center, right-click the task, and select View Code to view the specific code format.
         self.content = content
-        # Specifies whether to automatically create the directory if the specified directory (FileFolderPath) does not exist in the system. Valid values:
+        # Specifies whether to automatically create the directory specified by the FileFolderPath parameter if the directory does not exist. Valid values:
         # 
-        # - true: Automatically create the directory if it does not exist.
-        # - false: The invocation fails if the directory does not exist.
+        # - true: Automatically creates the directory if it does not exist.
+        # - false: The call fails if the directory does not exist.
         self.create_folder_if_not_exists = create_folder_if_not_exists
-        # The cron expression for periodic scheduling. This parameter corresponds to the "Schedule Configuration &gt; Time Property &gt; Cron Expression" setting of a Data Studio node in the [DataWorks console](https://workbench.data.aliyun.com/console). After you configure the scheduling cycle and timed scheduling time, DataWorks automatically generates the corresponding cron expression.
-        # 
-        # 
-        # 
+        # The cron expression for periodic scheduling. This parameter corresponds to the **Schedule Settings > Time Property > Cron Expression** setting for a Data Studio task in the [DataWorks console](https://workbench.data.aliyun.com/console). After you configure the **Scheduling Cycle** and **timed scheduling time**, DataWorks automatically generates the corresponding cron expression.
         # 
         # Examples:
+        # - timed scheduling at 05:30 every day: `00 30 05 * * ?`
         # 
+        # - timed scheduling at the 15th minute of every hour: `00 15 00-23/1 * * ?`
         # 
+        # - Schedule the task every 10 minutes: `00 00/10 * * * ?`
         # 
+        # - Schedule the task every 10 minutes from 08:00 to 17:00 every day: `00 00-59/10 8-17 * * * ?`
         # 
-        # - Timed scheduling at 05:30 every day: `00 30 05 * * ?`
-        # - Timed scheduling at the 15th minute of every hour: `00 15 00-23/1 * * ?`
-        # - Schedule every 10 minutes: `00 00/10 * * * ?`
-        # - Schedule every 10 minutes from 08:00 to 17:00 every day: `00 00-59/10 8-17 * * * ?`
-        # - Timed scheduling at 00:20 on the 1st of every month: `00 20 00 1 * ?`
-        # - Schedule every 3 months starting from 00:10 on January 1: `00 10 00 1 1-12/3 ?`
-        # - Timed scheduling at 00:05 every Tuesday and Friday: `00 05 00 * * 2,5`
+        # - Automatically schedule the task at 00:20 on the 1st day of every month: `00 20 00 1 * ?`
         # 
+        # - Schedule the task every 3 months starting from 00:10 on January 1: `00 10 00 1 1-12/3 ?`
         # 
-        # 
+        # - Automatically schedule the task at 00:05 every Tuesday and Friday: `00 05 00 * * 2,5`
         # 
         # Due to the rules of the DataWorks scheduling system, cron expressions have the following limits:
         # 
-        # 
-        # 
-        # 
         # - The minimum scheduling interval is 5 minutes.
-        # - The earliest scheduling time each day is 00:05.
+        # 
+        # - The earliest scheduling time every day is 00:05.
         self.cron_express = cron_express
-        # The type of the scheduling cycle. Valid values: NOT_DAY (minute or hour) and DAY (day, week, or month).
+        # The type of the scheduling cycle. Valid values: NOT_DAY (minutes and hours) and DAY (days, weeks, and months).
         # 
-        # 
-        # 
-        # 
-        # This parameter corresponds to the "Schedule Configuration &gt; Time Properties &gt; Scheduling Cycle" setting of a Data Studio node in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # This parameter corresponds to the **Schedule Settings > Time Attributes > Schedule Cycle** setting for a Data Studio task in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.cycle_type = cycle_type
-        # The IDs of the nodes that the current file depends on when DependentType is set to USER_DEFINE. Separate multiple node IDs with commas (,).
+        # The IDs of the nodes on which the current file depends when the DependentType parameter settings are USER_DEFINE. Separate multiple node IDs with commas (,).
         # 
-        # 
-        # 
-        # 
-        # This parameter corresponds to the node IDs specified when you select "Other Nodes" as the dependency after the parameter settings of "Schedule Configuration &gt; Scheduling Dependencies" are set to "Cross-Cycle Dependency (Previous Cycle)" for a Data Studio node in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # This parameter corresponds to the Settings when you set **Schedule Settings > Scheduling Dependencies** to **Cross-cycle Dependencies (formerly Previous Cycle)** and select **Other Nodes** for a Data Studio task in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.dependent_node_id_list = dependent_node_id_list
-        # The type of cross-cycle dependency. Valid values:
+        # The dependency on the previous cycle. Valid values:
         # 
-        # - SELF: The dependency is the current node.
-        # - CHILD: The dependency is the first-level child nodes.
-        # - USER_DEFINE: The dependency is other specified nodes.
-        # - NONE: No dependency is selected. The node does not depend on the previous cycle.   
-        # - USER_DEFINE_AND_SELF: The dependency is a combination of the current node and other specified nodes across cycles.
-        # - CHILD_AND_SELF: The dependency is a combination of the first-level child nodes and the current node across cycles.
+        # - SELF: Depends on the current node.
+        # - CHILD: Depends on the first-level child nodes.
+        # - USER_DEFINE: Depends on other nodes.
+        # - NONE: Does not depend on the previous cycle.   
+        # - USER_DEFINE_AND_SELF: Depends on a combination of the current node and other nodes across cycles.
+        # - CHILD_AND_SELF: Depends on a combination of the first-level child nodes and the current node across cycles.
         self.dependent_type = dependent_type
         # The timestamp in milliseconds when automatic scheduling stops.
         # 
-        # 
-        # 
-        # 
-        # This parameter corresponds to the end time (in milliseconds) of the "Schedule Configuration &gt; Time Properties &gt; Effective Date" setting of a Data Studio node in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # This parameter corresponds to the end time in milliseconds configured in **Schedule Settings > Time Attributes > Effective Date** for a Data Studio task in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.end_effect_date = end_effect_date
         # The description of the file.
         self.file_description = file_description
@@ -168,113 +131,83 @@ class CreateFileRequest(DaraModel):
         # This parameter is required.
         self.file_name = file_name
         # The code type of the file.
-        # 
-        # Different file types have different codes. For more information, see [DataWorks nodes](https://help.aliyun.com/document_detail/600169.html).
-        # 
-        # You can call the [ListFileType](https://help.aliyun.com/document_detail/212428.html) operation to query the code types of files.
+        # Different file types have different code formats. For more information, see [DataWorks node types](https://help.aliyun.com/document_detail/600169.html).
+        # You can call the [ListFileType](https://help.aliyun.com/document_detail/212428.html) operation to query the code type of the file.
         # 
         # This parameter is required.
         self.file_type = file_type
         # Specifies whether to inherit the dry-run property from the previous cycle. Valid values:
         # 
-        # - true: Inherit the dry-run property from the previous cycle.
+        # - true: Inherits the dry-run property from the previous cycle.
         # 
-        # - false: Do not inherit the dry-run property from the previous cycle.
+        # - false: Does not inherit the dry-run property from the previous cycle.
         self.ignore_parent_skip_running_property = ignore_parent_skip_running_property
         # The ID of the custom image.
         self.image_id = image_id
         # The output names of the upstream files on which the current file depends. Separate multiple output names with commas (,).
         # 
-        # 
-        # 
-        # 
-        # This parameter corresponds to the "Upstream Node Output Name" configured in the "Schedule Configuration &gt; Scheduling Dependencies" section of a Data Studio node in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # This parameter corresponds to the **Output Name of Upstream Node** setting in **Schedule Settings > Scheduling Dependencies** for a Data Studio task in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.input_list = input_list
-        # The context input parameters of the node. The parameter value is in JSON format. For the fields included, see the InputContextParameterList parameter structure in the response of the [GetFile](https://help.aliyun.com/document_detail/173954.html) operation.
+        # The context input parameters of the node. The parameter value is in JSON format. For the included fields, refer to the structure of the InputContextParameterList parameter in the response of the [GetFile](https://help.aliyun.com/document_detail/173954.html) operation.
         # 
-        # 
-        # 
-        # 
-        # This parameter corresponds to the "Schedule Configuration &gt; Node Context Parameters &gt; Input Parameters of This Node" setting of a Data Studio node in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # This parameter corresponds to the **Schedule Settings > Node Context Parameters > Input Parameters of Current Node** setting for a Data Studio task in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.input_parameters = input_parameters
+        # The output of the file.
+        # 
+        # This parameter corresponds to the **Output Name of Current Node** setting in **Schedule Settings > Scheduling Dependencies** for a Data Studio task in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.output_list = output_list
-        # The context output parameters of the node. The parameter value is in JSON format. For the fields included, see the OutputContextParameterList parameter structure in the response of the [GetFile](https://help.aliyun.com/document_detail/173954.html) operation.
+        # The context output parameters of the node. The parameter value is in JSON format. For the included fields, refer to the structure of the OutputContextParameterList parameter in the response of the [GetFile](https://help.aliyun.com/document_detail/173954.html) operation.
         # 
-        # 
-        # 
-        # 
-        # This parameter corresponds to the "Schedule Configuration &gt; Node Context Parameters &gt; Output Parameters of This Node" setting of a Data Studio node in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # This parameter corresponds to the **Schedule Settings > Node Context Parameters > Output Parameters of Current Node** setting for a Data Studio task in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.output_parameters = output_parameters
-        # The Alibaba Cloud user ID of the file owner. If this parameter is left empty, the Alibaba Cloud user ID of the caller is used by default.
+        # The Alibaba Cloud user ID of the file owner. If this parameter is left empty,
+        # the Alibaba Cloud user ID of the caller is used by default.
         self.owner = owner
         # The scheduling parameters. Separate multiple parameters with spaces.
         # 
-        # 
-        # 
-        # 
-        # This parameter corresponds to the "Schedule Configuration &gt; Scheduling Parameters" setting of a Data Studio node in the [DataWorks console](https://workbench.data.aliyun.com/console). For more information, see [Scheduling parameters](https://help.aliyun.com/document_detail/137548.html).
+        # This parameter corresponds to the **Schedule Settings > Scheduling Parameters** setting for a Data Studio task in the [DataWorks console](https://workbench.data.aliyun.com/console). For more information, see [Scheduling parameters](https://help.aliyun.com/document_detail/137548.html).
         self.para_value = para_value
-        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Settings page to obtain the workspace ID.
-        # 
-        # You must specify either this parameter or ProjectIdentifier to determine the DataWorks workspace for this API call.
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the workspace ID.
+        # You must specify either this parameter or the ProjectIdentifier parameter to determine the DataWorks workspace for this API call.
         self.project_id = project_id
-        # The name of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Settings page to obtain the workspace name.
+        # The name of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the workspace name.
         # 
-        # You must specify either this parameter or ProjectId to determine the DataWorks workspace for this API call.
+        # You must specify either this parameter or the ProjectId parameter to determine the DataWorks workspace for this API call.
         self.project_identifier = project_identifier
-        # The rerun property. Valid values:
+        # The rerun policy. Valid values:
+        # - ALL_ALLOWED: The task can be rerun after it succeeds or fails.
+        # - FAILURE_ALLOWED: The task cannot be rerun after it succeeds, but can be rerun after it fails.
+        # - ALL_DENIED: The task cannot be rerun regardless of whether it succeeds or fails.
         # 
-        # 
-        # 
-        # 
-        # - ALL_ALLOWED: The node can be rerun regardless of whether it runs successfully or fails.
-        # - FAILURE_ALLOWED: The node can be rerun only after it fails.
-        # - ALL_DENIED: The node cannot be rerun regardless of whether it runs successfully or fails.
-        # 
-        # 
-        # 
-        # 
-        # This parameter corresponds to the "Schedule Configuration &gt; Time Properties &gt; Rerun Property" setting of a Data Studio node in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # This parameter corresponds to the **Rerun Policy** setting in **Schedule Settings > Time Attributes > Rerun Policy** for a Data Studio task in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.rerun_mode = rerun_mode
-        # This field is deprecated. Do not use it.
+        # **[Deprecated]** Do not use this field.
         self.resource_group_id = resource_group_id
-        # The schedule resource group used when the file is deployed as a node and the node runs. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console), go to the Workspace Settings page, and click **Resource Groups** in the left-side navigation pane to obtain the ID of the resource group bound to the current workspace.
+        # The resource group used to run the task after the file is published as a task. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console),
+        # go to the Workspace Management page, and click **Resource Groups** in the left-side navigation pane to obtain the ID of the resource group bound to the current workspace.
         self.resource_group_identifier = resource_group_identifier
         # The scheduling type. Valid values:
         # 
-        # - NORMAL: A normal scheduling node.
-        # - MANUAL: A manual node that is not scheduled on a daily basis. This corresponds to nodes in manual workflows.
-        # - PAUSE: A paused node.
-        # - SKIP: A dry-run node that is scheduled on a daily basis but is directly set to successful when scheduling starts.
+        # - NORMAL: Normal scheduling task.
+        # - MANUAL: Manual task. It is not run on a daily schedule and corresponds to a node in a manual business flow.
+        # - PAUSE: Paused task.
+        # - SKIP: Dry-run task. It is run on a daily schedule, but its status is directly set to successful when the scheduling is triggered.
         self.scheduler_type = scheduler_type
         # The timestamp in milliseconds when automatic scheduling starts.
         # 
-        # 
-        # 
-        # 
-        # This parameter corresponds to the start time (in milliseconds) of the "Schedule Configuration &gt; Time Properties &gt; Effective Date" setting of a Data Studio node in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # This parameter corresponds to the start time in milliseconds configured in **Schedule Settings > Time Attributes > Effective Date** for a Data Studio task in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.start_effect_date = start_effect_date
-        # Specifies whether to start the node immediately after it is deployed.
+        # Specifies whether to start the task immediately after it is published.
         # 
-        # 
-        # 
-        # 
-        # This parameter corresponds to the "Configuration &gt; Time Properties &gt; Startup Method" setting in the right-side navigation bar on the editing page of EMR Spark Streaming and EMR Streaming SQL Data Studio nodes in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # This parameter corresponds to the **Configuration > Time Attributes > Start Mode** setting in the right-side navigation pane of the edit page for EMR Spark Streaming and EMR Streaming SQL Data Studio tasks in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.start_immediately = start_immediately
-        # Specifies whether to suspend scheduling. Valid values:
+        # Specifies whether to pause scheduling. Valid values:
+        # - true: Pauses scheduling.
+        # - false: Does not pause scheduling.
         # 
-        # 
-        # 
-        # 
-        # - true: Suspend scheduling.
-        # - false: Do not suspend scheduling.
-        # 
-        # 
-        # 
-        # 
-        # This parameter corresponds to setting the "Schedule Configuration &gt; Time Properties &gt; Scheduling Type" to "Suspend Scheduling" for a Data Studio node in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # This parameter corresponds to setting **Schedule Settings > Time Attributes > Schedule Type** to **Pause Scheduling** for a Data Studio task in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.stop = stop
-        # The timeout value defined in the scheduling configuration.
+        # The timeout definition in the scheduling configuration.
         self.timeout = timeout
 
     def validate(self):

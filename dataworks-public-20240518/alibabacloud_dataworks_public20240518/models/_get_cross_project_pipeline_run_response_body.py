@@ -14,9 +14,9 @@ class GetCrossProjectPipelineRunResponseBody(DaraModel):
     ):
         # The business response.
         self.data = data
-        # The request ID, which is used to locate and troubleshoot this API call.
+        # The request ID, which is used to locate and troubleshoot the current API call.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -76,13 +76,13 @@ class GetCrossProjectPipelineRunResponseBodyData(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The termination time. This value is a UNIX timestamp in milliseconds. This parameter is returned only after the flow is terminated.
+        # The termination time. The value is a UNIX timestamp in milliseconds. This parameter is returned only after the pipeline run is terminated.
         self.abolish_time = abolish_time
-        # The user who terminated the flow.
+        # The user who terminated the pipeline run.
         self.abolisher = abolisher
         # The change type.
         self.change_type = change_type
-        # The creation time. This value is a UNIX timestamp in milliseconds.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The creator.
         self.creator = creator
@@ -94,11 +94,11 @@ class GetCrossProjectPipelineRunResponseBodyData(DaraModel):
         self.error_code = error_code
         # The error message.
         self.error_message = error_message
-        # The execution time. This value is a UNIX timestamp in milliseconds.
+        # The execution time. The value is a UNIX timestamp in milliseconds.
         self.execute_time = execute_time
         # The executor.
         self.executor = executor
-        # The completion time. This value is a UNIX timestamp in milliseconds.
+        # The completion time. The value is a UNIX timestamp in milliseconds.
         self.finish_time = finish_time
         # The ID of the deployment object.
         self.object_id = object_id
@@ -108,17 +108,11 @@ class GetCrossProjectPipelineRunResponseBodyData(DaraModel):
         self.object_type = object_type
         # The version of the deployment object.
         self.object_version = object_version
-        # The cross-workspace deployment flow ID.
+        # The cross-workspace deployment pipeline run ID.
         self.pipeline_run_id = pipeline_run_id
         # The request ID.
         self.request_id = request_id
-        # The status of the deployment flow. Valid values:
-        # - Building: Building.
-        # - Ready: Ready and waiting for execution.
-        # - Running: Running.
-        # - Termination: Terminated.
-        # - Success: Execution succeeded.
-        # - Fail: Execution failed.
+        # The status of the deployment pipeline run.
         self.status = status
 
     def validate(self):

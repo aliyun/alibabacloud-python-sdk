@@ -55,19 +55,19 @@ class CreateAgentResponseBodyAgent(DaraModel):
         name: str = None,
         skills: List[main_models.CreateAgentResponseBodyAgentSkills] = None,
     ):
-        # 已保存的套件引用。官方资源返回来源及目录 ID；发布后的制品版本由 PackageVersion 表示。
+        # The saved suite references. Official resources return the source and directory ID. The published artifact version is represented by PackageVersion.
         self.expert_suites = expert_suites
-        # The creation time. The value is a UNIX timestamp in milliseconds.
+        # The creation time, in milliseconds.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_create_time = gmt_create_time
-        # The last modification time. The value is a UNIX timestamp in milliseconds.
+        # The last modification time, in milliseconds.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_modified_time = gmt_modified_time
         # The name of the agent.
         self.name = name
-        # 已保存的 Skill 引用；官方 Skill 在 Agent 发布后返回固定的 PackageVersion。
+        # The saved skill references. For official skills, a fixed PackageVersion is returned after the agent is published.
         self.skills = skills
 
     def validate(self):
@@ -139,13 +139,20 @@ class CreateAgentResponseBodyAgentSkills(DaraModel):
         skill_id: str = None,
         source: str = None,
         version: int = None,
+        version_selector: str = None,
     ):
+        # The name of the custom skill.
         self.name = name
-        # 创建时不返回；请使用 GetAgent 显式查询已发布版本获取固定的官方制品版本。
+        # This parameter is not returned upon creation. Call GetAgent to explicitly query the published version to obtain the fixed official artifact version.
         self.package_version = package_version
+        # The ID of the official skill.
         self.skill_id = skill_id
+        # The source of the skill.
         self.source = source
+        # The release version number of the custom skill.
         self.version = version
+        # The saved version selection strategy is returned only for personal or enterprise resources and is mutually exclusive with the fixed integer Version. It does not represent the specific revision actually loaded in the session. This parameter is not returned for official resources.
+        self.version_selector = version_selector
 
     def validate(self):
         pass
@@ -170,6 +177,9 @@ class CreateAgentResponseBodyAgentSkills(DaraModel):
         if self.version is not None:
             result['Version'] = self.version
 
+        if self.version_selector is not None:
+            result['VersionSelector'] = self.version_selector
+
         return result
 
     def from_map(self, m: dict = None):
@@ -189,6 +199,9 @@ class CreateAgentResponseBodyAgentSkills(DaraModel):
         if m.get('Version') is not None:
             self.version = m.get('Version')
 
+        if m.get('VersionSelector') is not None:
+            self.version_selector = m.get('VersionSelector')
+
         return self
 
 class CreateAgentResponseBodyAgentExpertSuites(DaraModel):
@@ -198,12 +211,18 @@ class CreateAgentResponseBodyAgentExpertSuites(DaraModel):
         source: str = None,
         suite_id: str = None,
         version: int = None,
+        version_selector: str = None,
     ):
-        # 创建时不返回；请使用 GetAgent 显式查询已发布版本获取固定的官方套件制品版本。
+        # This parameter is not returned upon creation. Call GetAgent to explicitly query the published version to obtain the fixed official suite artifact version.
         self.package_version = package_version
+        # The source of the expert suite.
         self.source = source
+        # The ID of the expert suite.
         self.suite_id = suite_id
+        # The release version number of the custom suite.
         self.version = version
+        # The saved version selection strategy is returned only for personal or enterprise resources and is mutually exclusive with the fixed integer Version. It does not represent the specific revision actually loaded in the session. This parameter is not returned for official resources.
+        self.version_selector = version_selector
 
     def validate(self):
         pass
@@ -225,6 +244,9 @@ class CreateAgentResponseBodyAgentExpertSuites(DaraModel):
         if self.version is not None:
             result['Version'] = self.version
 
+        if self.version_selector is not None:
+            result['VersionSelector'] = self.version_selector
+
         return result
 
     def from_map(self, m: dict = None):
@@ -240,6 +262,9 @@ class CreateAgentResponseBodyAgentExpertSuites(DaraModel):
 
         if m.get('Version') is not None:
             self.version = m.get('Version')
+
+        if m.get('VersionSelector') is not None:
+            self.version_selector = m.get('VersionSelector')
 
         return self
 

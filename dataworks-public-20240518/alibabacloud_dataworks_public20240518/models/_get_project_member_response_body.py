@@ -13,9 +13,9 @@ class GetProjectMemberResponseBody(DaraModel):
         project_member: main_models.GetProjectMemberResponseBodyProjectMember = None,
         request_id: str = None,
     ):
-        # The details of the Workspace member.
+        # The details of the workspace member.
         self.project_member = project_member
-        # The request ID. Use this ID to locate logs and troubleshoot issues.
+        # The request ID. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -55,21 +55,17 @@ class GetProjectMemberResponseBodyProjectMember(DaraModel):
         user_id: str = None,
         user_name: str = None,
     ):
-        # The ID of the Workspace.
+        # The ID of the workspace.
         self.project_id = project_id
-        # Roles assigned to the Workspace member.
+        # The list of workspace roles assigned to the workspace member.
         self.roles = roles
-        # The status of the Workspace member.
-        # 
-        # 
-        # 
-        # 
-        # - Normal: The member is active.
+        # The status of the workspace member. Valid values:
+        # - Normal: The member is normal.
         # - Forbidden: The member is disabled.
         self.status = status
-        # The ID of the user.
+        # The ID of the DataWorks account.
         self.user_id = user_id
-        # The name of the user.
+        # The cloud account name of the member.
         self.user_name = user_name
 
     def validate(self):
@@ -131,37 +127,23 @@ class GetProjectMemberResponseBodyProjectMemberRoles(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # The code of the Workspace role.
-        # 
-        # The built-in system roles in a DataWorks Workspace include:
-        # 
-        # - role_project_admin: Workspace Administrator
-        # 
-        # - role_project_dev: Developer
-        # 
-        # - role_project_dg_admin: Data Governance Administrator
-        # 
-        # - role_project_guest: Guest
-        # 
-        # - role_project_security: Security Administrator
-        # 
-        # - role_project_deploy: Deployment
-        # 
-        # - role_project_owner: Workspace Owner
-        # 
-        # - role_project_data_analyst: Data Analyst
-        # 
-        # - role_project_pe: O\\&M (Operations & Maintenance)
-        # 
-        # - role_project_erd: Model Designer
+        # The code of the workspace role. Built-in workspace roles in DataWorks:
+        # - role_project_admin: workspace administrator
+        # - role_project_dev: developer
+        # - role_project_dg_admin: data governance administrator
+        # - role_project_guest: guest
+        # - role_project_security: security administrator
+        # - role_project_deploy: deployer
+        # - role_project_owner: workspace owner
+        # - role_project_data_analyst: data analyst
+        # - role_project_pe: operator
+        # - role_project_erd: model designer
         self.code = code
-        # The name of the Workspace role.
+        # The name of the workspace role.
         self.name = name
-        # The type of the Workspace role.
-        # 
-        # - UserCustom: A user-defined role.
-        # 
-        # - System: A built-in System Role.
+        # The type of the workspace role. Valid values:
+        # - UserCustom: custom role
+        # - System: system role
         self.type = type
 
     def validate(self):

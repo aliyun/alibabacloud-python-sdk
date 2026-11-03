@@ -14,9 +14,9 @@ class ListAgentSessionsRequest(DaraModel):
         jsonrpc: str = None,
         params: main_models.ListAgentSessionsRequestParams = None,
     ):
-        # The ID passed in by the requester. The value is returned as-is.
+        # The ID passed by the requester, which is returned as is.
         self.id = id
-        # The JSON-RPC version. Fixed value: 2.0.
+        # The JSON-RPC version. Fixed to 2.0.
         self.jsonrpc = jsonrpc
         # The business parameters.
         self.params = params
@@ -67,21 +67,23 @@ class ListAgentSessionsRequestParams(DaraModel):
         session_title: str = None,
         tag_list: List[str] = None,
     ):
-        # **Agent name** for exact filtering. At least one of this parameter and `SessionSourceList` must be specified.
+        # The exact filter for the **agent name**. You must specify at least one of this parameter and SessionSourceList.
         self.agent_name = agent_name
-        # true仅返回归档会话；false或省略仅返回未归档会话。
+        # Specifies whether to return only archived sessions. Valid values:
+        # - true: Only archived sessions are returned.
+        # - false or not specified: Only unarchived sessions are returned.
         self.archived = archived
         # The number of entries per page. Default value: 50.
         self.max_results = max_results
         # The token for the next page. Set this parameter to 1 for the first page.
         self.next_token = next_token
-        # The session ID for exact matching.
+        # The exact match for the session ID.
         self.session_id = session_id
-        # **Session source list** for filtering. At least one of this parameter and `AgentName` must be specified.
+        # The filter for the **session source list**. You must specify at least one of this parameter and AgentName.
         self.session_source_list = session_source_list
-        # The session title for fuzzy match filtering.
+        # The fuzzy filter for the session title.
         self.session_title = session_title
-        # The list of session tag codes for filtering.
+        # The filter for the session tag code list.
         self.tag_list = tag_list
 
     def validate(self):

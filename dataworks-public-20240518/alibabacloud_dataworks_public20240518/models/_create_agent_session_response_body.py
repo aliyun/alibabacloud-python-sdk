@@ -55,13 +55,15 @@ class CreateAgentSessionResponseBodyJsonRpcResponse(DaraModel):
         result: main_models.CreateAgentSessionResponseBodyJsonRpcResponseResult = None,
         timestamp: int = None,
     ):
+        # The JSON-RPC error message. This field is not returned if the request is successful.
         self.error = error
-        # The request ID passed by the caller. The value is returned as-is.
+        # The ID passed by the requester. The value is returned as is.
         self.id = id
-        # The JSON-RPC version. Fixed value: 2.0.
+        # The JSON-RPC version. This value is always 2.0.
         self.jsonrpc = jsonrpc
         # The business data. The value is null if an error occurs.
         self.result = result
+        # The response time. The value is a UNIX timestamp in milliseconds.
         self.timestamp = timestamp
 
     def validate(self):
@@ -118,7 +120,7 @@ class CreateAgentSessionResponseBodyJsonRpcResponseResult(DaraModel):
         self,
         session_id: str = None,
     ):
-        # The ID of the created session.
+        # The ID of the newly created session.
         self.session_id = session_id
 
     def validate(self):
@@ -149,9 +151,13 @@ class CreateAgentSessionResponseBodyJsonRpcResponseError(DaraModel):
         error_code: str = None,
         message: str = None,
     ):
+        # The JSON-RPC error code.
         self.code = code
+        # The optional additional error information. The content depends on the error type.
         self.data = data
+        # The business error code.
         self.error_code = error_code
+        # The error message.
         self.message = message
 
     def validate(self):

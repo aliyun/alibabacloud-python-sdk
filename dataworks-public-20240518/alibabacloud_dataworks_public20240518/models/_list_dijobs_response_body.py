@@ -13,9 +13,9 @@ class ListDIJobsResponseBody(DaraModel):
         paging_info: main_models.ListDIJobsResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
-        # The paging information.
+        # The pagination information.
         self.paging_info = paging_info
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +54,13 @@ class ListDIJobsResponseBodyPagingInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # A list of Data Integration jobs.
+        # The data integration tasks.
         self.dijobs = dijobs
-        # The returned page number.
+        # The page number of the returned data.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries returned on each page.
         self.page_size = page_size
-        # The total number of entries that meet the filter criteria.
+        # The total number of entries that meet the conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -122,44 +122,34 @@ class ListDIJobsResponseBodyPagingInfoDIJobs(DaraModel):
         project_id: int = None,
         source_data_source_type: str = None,
     ):
-        # This parameter is deprecated. Use the `Id` parameter instead.
+        # **[Deprecated]** This field is deprecated. Use the Id field instead.
         self.dijob_id = dijob_id
-        # The type of the destination data source. Valid values: `Hologres`, `OSS-HDFS`, `OSS`, `MaxCompute`, `Loghub`, `STARROCKS`, `DataHub`, `ANALYTICDB_FOR_MYSQL`, `Kafka`, and `Hive`.
+        # The type of the destination data source. Valid values: Hologres, OSS-HDFS, OSS, MaxCompute, Loghub, STARROCKS, DataHub, ANALYTICDB_FOR_MYSQL, Kafka, and Hive.
         self.destination_data_source_type = destination_data_source_type
-        # The ID of the Data Integration job.
+        # The ID of the data integration task.
         self.id = id
-        # The name of the job.
+        # The name of the task.
         self.job_name = job_name
-        # The job status. Valid values:
-        # 
-        # - `Finished`: The job completed successfully.
-        # 
-        # - `Initialized`: The job is initialized.
-        # 
-        # - `Stopped`: The job is stopped.
-        # 
-        # - `Failed`: The job failed.
-        # 
-        # - `Running`: The job is running.
-        # 
-        # - `Stopping`: The job is being stopped.
+        # The synchronization status. Valid values:
+        # - Finished: finished successfully
+        # - Initialized: initialized
+        # - Stopped: stopped
+        # - Failed: failed
+        # - Running: running
+        # - Stopping: stopping
         self.job_status = job_status
         # The synchronization type. Valid values:
-        # 
-        # - `FullAndRealtimeIncremental`: full and real-time incremental synchronization
-        # 
-        # - `RealtimeIncremental`: real-time incremental synchronization
-        # 
-        # - `Full`: full synchronization
-        # 
-        # - `OfflineIncremental`: offline incremental synchronization
-        # 
-        # - `FullAndOfflineIncremental`: full and offline incremental synchronization
+        # - FullAndRealtimeIncremental: full and real-time incremental synchronization
+        # - RealtimeIncremental: real-time incremental synchronization
+        # - Full: full synchronization
+        # - OfflineIncremental: batch incremental synchronization
+        # - FullAndOfflineIncremental: full and batch incremental synchronization
         self.migration_type = migration_type
+        # The owner of the task.
         self.owner = owner
-        # The ID of the DataWorks workspace that contains the job.
+        # The ID of the DataWorks workspace to which the task belongs.
         self.project_id = project_id
-        # The type of the source data source. Valid values: `PolarDB`, `MySQL`, `Kafka`, `Loghub`, `Hologres`, `Oracle`, `OceanBase`, `MongoDB`, `RedShift`, `Hive`, `SqlServer`, `Doris`, and `ClickHouse`.
+        # The type of the source data source. Valid values: PolarDB, MySQL, Kafka, Loghub, Hologres, Oracle, OceanBase, MongoDB, RedShift, Hive, SqlServer, Doris, and ClickHouse.
         self.source_data_source_type = source_data_source_type
 
     def validate(self):

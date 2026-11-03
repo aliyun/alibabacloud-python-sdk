@@ -12,15 +12,15 @@ class BuildImageRequest(DaraModel):
         process_id: str = None,
         resource_group_id: str = None,
     ):
-        # The number of compute units (CUs) used for the build.
+        # The compute units (CUs) for the build.
         self.cu = cu
         # The image ID.
         # 
         # This parameter is required.
         self.id = id
-        # The image build execution ID, which is used as an idempotence identifier.
+        # Specifies the image build execution ID, which is used as an idempotence token.
         self.process_id = process_id
-        # The unique identifier of the general-purpose resource group.
+        # The unique identifier of the resource group.
         # 
         # This parameter is required.
         self.resource_group_id = resource_group_id

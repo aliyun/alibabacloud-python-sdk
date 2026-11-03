@@ -13,9 +13,9 @@ class StopWorkflowInstancesResponseBody(DaraModel):
         request_id: str = None,
         success_info: Dict[str, main_models.SuccessInfoValue] = None,
     ):
-        # The ID of the request. You can use this ID to locate logs and troubleshoot issues.
+        # The request ID, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # The result information of the batch operation. The structure is a map, where the key is the workflow instance ID and the value is the result information.
+        # The result information of the batch operation. The structure is a map that uses the workflow instance ID as the key and the result information as the value.
         self.success_info = success_info
 
     def validate(self):

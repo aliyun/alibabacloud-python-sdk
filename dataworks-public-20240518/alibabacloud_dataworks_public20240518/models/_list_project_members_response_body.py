@@ -13,9 +13,9 @@ class ListProjectMembersResponseBody(DaraModel):
         paging_info: main_models.ListProjectMembersResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
-        # The paging information.
+        # The pagination information.
         self.paging_info = paging_info
-        # The unique ID of the request, used to track logs and troubleshoot issues.
+        # The request ID. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +54,13 @@ class ListProjectMembersResponseBodyPagingInfo(DaraModel):
         project_members: List[main_models.ListProjectMembersResponseBodyPagingInfoProjectMembers] = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The page number of the requested data.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The list of Workspace members.
+        # The list of workspace members.
         self.project_members = project_members
-        # The total number of matching entries.
+        # The total number of entries that meet the conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -118,19 +118,19 @@ class ListProjectMembersResponseBodyPagingInfoProjectMembers(DaraModel):
         user_id: str = None,
         user_name: str = None,
     ):
-        # The ID of the DataWorks Workspace.
+        # The ID of the DataWorks workspace.
         self.project_id = project_id
-        # The roles assigned to the Workspace member.
+        # The list of workspace roles assigned to the workspace member.
         self.roles = roles
-        # The status of the Workspace member.
+        # The status of the workspace member. Valid values:
         # 
-        # - `Normal`: The member is active.
+        # - Normal: Normal.
         # 
-        # - `Forbidden`: The member is disabled.
+        # - Forbidden: Disabled.
         self.status = status
-        # The ID of the DataWorks user.
+        # The DataWorks account ID.
         self.user_id = user_id
-        # The name of the DataWorks user.
+        # The cloud account name of the member.
         self.user_name = user_name
 
     def validate(self):
@@ -192,15 +192,15 @@ class ListProjectMembersResponseBodyPagingInfoProjectMembersRoles(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # The code of the role.
+        # The code of the workspace role.
         self.code = code
-        # The name of the role.
+        # The name of the workspace role.
         self.name = name
-        # The type of the role.
+        # The type of the workspace role. Valid values:
         # 
-        # - `UserCustom`: A user-defined role.
+        # - UserCustom: Custom role.
         # 
-        # - `System`: A system role.
+        # - System: System role.
         self.type = type
 
     def validate(self):

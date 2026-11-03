@@ -13,7 +13,7 @@ class GetAgentResponseBody(DaraModel):
         agent: main_models.GetAgentResponseBodyAgent = None,
         request_id: str = None,
     ):
-        # The agent details.
+        # The details of the created agent.
         self.agent = agent
         # The request ID.
         self.request_id = request_id
@@ -68,27 +68,27 @@ class GetAgentResponseBodyAgent(DaraModel):
         visibility: str = None,
         visibility_scope: main_models.GetAgentResponseBodyAgentVisibilityScope = None,
     ):
-        # 本次读取的定义版本。更新当前定义时，将该值作为 UpdateAgent 的 ExpectedVersion，可拒绝覆盖其他调用者已提交的新版本。读取历史快照的版本不代表当前版本。
+        # The definition version read in this request. When updating the current definition, use this value as the ExpectedVersion for UpdateAgent to prevent overwriting new versions submitted by other callers. The version read from a historical snapshot does not represent the current version.
         self.agent_version = agent_version
-        # A list of callable sub-agents.
+        # The list of callable sub-agents.
         self.callable_agents = callable_agents
-        # The creator ID.
+        # The ID of the creator.
         self.creator_id = creator_id
         # **The description.**
         self.description = description
         # **The display name.**
         self.display_name = display_name
-        # Agent 定义绑定的专家套件及固定发布版本。
+        # The expert suites associated with the agent definition, including a fixed integer revision number or a version selection strategy. Official resources continue to use PackageVersion to indicate the artifact version.
         self.expert_suites = expert_suites
-        # The creation time, as a Unix timestamp in milliseconds.
+        # The creation time (millisecond timestamp).
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_create_time = gmt_create_time
-        # The last modification time, as a Unix timestamp in milliseconds.
+        # The last modification time (millisecond timestamp).
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_modified_time = gmt_modified_time
-        # **Additional metadata.**
+        # **The extended metadata.**
         self.metadata = metadata
         # **The model configuration.**
         self.model = model
@@ -96,13 +96,13 @@ class GetAgentResponseBodyAgent(DaraModel):
         self.modifier_id = modifier_id
         # **The agent name.**
         self.name = name
-        # The runtime dependencies.
+        # The environment dependencies required for execution.
         self.required_runtime = required_runtime
-        # A list of skills.
+        # The list of skills.
         self.skills = skills
         # **The system prompt.**
         self.system_prompt = system_prompt
-        # **A list of tools.**
+        # **The list of tools.**
         self.tools = tools
         # **The visibility level.**
         self.visibility = visibility
@@ -278,9 +278,9 @@ class GetAgentResponseBodyAgentVisibilityScope(DaraModel):
         project_ids: List[str] = None,
         user_ids: List[str] = None,
     ):
-        # A list of project IDs that can view the agent.
+        # The list of visible project IDs.
         self.project_ids = project_ids
-        # A list of user IDs that can view the agent.
+        # The list of visible user IDs.
         self.user_ids = user_ids
 
     def validate(self):
@@ -317,13 +317,13 @@ class GetAgentResponseBodyAgentTools(DaraModel):
         mcp_items: List[str] = None,
         mcp_server_name: str = None,
     ):
-        # **The name of the built-in tool. This parameter applies only when `Kind` is set to `builtin`.**
+        # **The built-in tool name. Valid when Kind is `builtin`.**
         self.builtin_name = builtin_name
         # **The tool type.**
         self.kind = kind
-        # **The selected MCP tool items. This parameter applies only when `Kind` is set to `mcp`.**
+        # **The selected MCP tool items. Valid when Kind is `mcp`.**
         self.mcp_items = mcp_items
-        # **The name of the associated MCP server. This parameter applies only when `Kind` is set to `mcp`.**
+        # **The associated MCP server name. Valid when Kind is `mcp`.**
         self.mcp_server_name = mcp_server_name
 
     def validate(self):
@@ -372,16 +372,20 @@ class GetAgentResponseBodyAgentSkills(DaraModel):
         skill_id: str = None,
         source: str = None,
         version: int = None,
+        version_selector: str = None,
     ):
         # The skill name.
         self.name = name
-        # 指定 AgentVersion 查询已发布快照时返回固定的官方制品版本；查询草稿或自定义 Skill 时不返回。
+        # The fixed official artifact version returned when querying a released snapshot with a specified AgentVersion. This is not returned when querying a draft or a custom skill.
         self.package_version = package_version
+        # The official skill ID.
         self.skill_id = skill_id
-        # OFFICIAL 表示官方目录资源；省略或 DB 表示原有个人或企业资源。
+        # OFFICIAL indicates an official catalog resource. Omitted or DB indicates an original personal or enterprise resource.
         self.source = source
-        # The skill version.
+        # The skill version number.
         self.version = version
+        # Returned only for personal or enterprise resources to indicate the saved version selection strategy, which is mutually exclusive with the fixed integer Version. It does not represent the specific revision actually loaded in the session. This is not returned for official resources.
+        self.version_selector = version_selector
 
     def validate(self):
         pass
@@ -406,6 +410,9 @@ class GetAgentResponseBodyAgentSkills(DaraModel):
         if self.version is not None:
             result['Version'] = self.version
 
+        if self.version_selector is not None:
+            result['VersionSelector'] = self.version_selector
+
         return result
 
     def from_map(self, m: dict = None):
@@ -425,6 +432,9 @@ class GetAgentResponseBodyAgentSkills(DaraModel):
         if m.get('Version') is not None:
             self.version = m.get('Version')
 
+        if m.get('VersionSelector') is not None:
+            self.version_selector = m.get('VersionSelector')
+
         return self
 
 class GetAgentResponseBodyAgentModel(DaraModel):
@@ -437,17 +447,17 @@ class GetAgentResponseBodyAgentModel(DaraModel):
         temperature: float = None,
         top_p: float = None,
     ):
-        # Additional configuration for the model.
+        # The additional configuration of the model.
         self.config = config
-        # The maximum number of tokens to generate in one response.
+        # The maximum number of output tokens per generation.
         self.max_tokens = max_tokens
         # The model name.
         self.model_name = model_name
-        # Indicates whether streaming output is enabled.
+        # Specifies whether streaming output is enabled.
         self.stream = stream
-        # The temperature.
+        # The sampling temperature.
         self.temperature = temperature
-        # The top-p.
+        # The nucleus sampling Top-P value.
         self.top_p = top_p
 
     def validate(self):
@@ -511,20 +521,26 @@ class GetAgentResponseBodyAgentExpertSuites(DaraModel):
         source: str = None,
         suite_id: str = None,
         version: int = None,
+        version_selector: str = None,
     ):
-        # 套件已删除、发布快照缺失或调用者无权查看时，不返回套件摘要，仅保留 ID 和版本号。
+        # If the suite is deleted, the release snapshot is missing, or the caller does not have permission to view it, the suite summary is not returned, and only the ID and version number are retained.
         self.description = description
+        # The display name of the bound version.
         self.display_name = display_name
+        # The suite name of the bound version.
         self.name = name
-        # 显式查询 Agent 已发布版本时返回固定的官方制品版本；查询草稿或自定义套件时不返回。
+        # The fixed official artifact version returned when explicitly querying a released version of the agent. This is not returned when querying a draft or a custom suite.
         self.package_version = package_version
-        # 可选套件摘要字段，当前新 DataAgent 应用不返回；缺省不表示版本 0。不可作为 UpdateAgent 的 Version，回写引用时必须省略。官方制品的固定版本请读取 PackageVersion。
+        # An optional suite summary field that is not returned by current new DataAgent applications. A default value does not indicate version 0. This cannot be used as the Version for UpdateAgent and must be omitted when writing back references. For the fixed version of official artifacts, read PackageVersion.
         self.semantic_version = semantic_version
-        # OFFICIAL 表示官方目录资源；省略或 DB 表示个人或企业资源。
+        # OFFICIAL indicates an official catalog resource. Omitted or DB indicates a personal or enterprise resource.
         self.source = source
+        # The expert suite ID.
         self.suite_id = suite_id
-        # 仅个人或企业套件在引用明确指定版本或读取发布快照时返回；官方套件不返回。未返回不是 0；SDK 若将缺省整数初始化为 0，回写时必须省略。官方项只回写 Source 和 SuiteId，不传 Version、SemanticVersion 或 PackageVersion。
+        # Returned only when a personal or enterprise suite explicitly specifies a fixed integer version in the reference. This is not returned for official suites. An unreturned value is not 0. If the SDK initializes the default integer to 0, it must be omitted when writing back. For official items, only Source and SuiteId are written back, and Version, VersionSelector, SemanticVersion, or PackageVersion are not passed.
         self.version = version
+        # Returned only for personal or enterprise resources to indicate the saved version selection strategy, which is mutually exclusive with the fixed integer Version. It does not represent the specific revision actually loaded in the session. This is not returned for official resources.
+        self.version_selector = version_selector
 
     def validate(self):
         pass
@@ -558,6 +574,9 @@ class GetAgentResponseBodyAgentExpertSuites(DaraModel):
         if self.version is not None:
             result['Version'] = self.version
 
+        if self.version_selector is not None:
+            result['VersionSelector'] = self.version_selector
+
         return result
 
     def from_map(self, m: dict = None):
@@ -586,6 +605,9 @@ class GetAgentResponseBodyAgentExpertSuites(DaraModel):
         if m.get('Version') is not None:
             self.version = m.get('Version')
 
+        if m.get('VersionSelector') is not None:
+            self.version_selector = m.get('VersionSelector')
+
         return self
 
 class GetAgentResponseBodyAgentCallableAgents(DaraModel):
@@ -596,13 +618,13 @@ class GetAgentResponseBodyAgentCallableAgents(DaraModel):
         source: str = None,
         version: int = None,
     ):
-        # The sub-agent display name.
+        # The display name of the sub-agent.
         self.display_name = display_name
-        # The sub-agent name.
+        # The name of the sub-agent.
         self.name = name
-        # The sub-agent source.
+        # The source of the sub-agent.
         self.source = source
-        # The sub-agent version.
+        # The version number of the sub-agent.
         self.version = version
 
     def validate(self):

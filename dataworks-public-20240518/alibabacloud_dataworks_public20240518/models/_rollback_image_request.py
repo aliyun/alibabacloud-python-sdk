@@ -14,7 +14,7 @@ class RollbackImageRequest(DaraModel):
         # 
         # This parameter is required.
         self.id = id
-        # The image version to roll back to.
+        # The image version to roll back.
         # 
         # This parameter is required.
         self.image_version = image_version

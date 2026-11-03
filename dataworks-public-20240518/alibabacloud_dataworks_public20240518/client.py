@@ -91,6 +91,8 @@ class Client(OpenApiClient):
             'us-east-1': 'dataworks.us-east-1.aliyuncs.com',
             'us-west-1': 'dataworks.us-west-1.aliyuncs.com',
             'ap-northeast-2': 'dataworks.ap-northeast-2.aliyuncs.com',
+            'sa-east-1': 'dataworks.sa-east-1.aliyuncs.com',
+            'na-south-1': 'dataworks.na-south-1.aliyuncs.com',
             'me-central-1': 'dataworks.me-central-1.aliyuncs.com'
         }
         self.check_config(config)

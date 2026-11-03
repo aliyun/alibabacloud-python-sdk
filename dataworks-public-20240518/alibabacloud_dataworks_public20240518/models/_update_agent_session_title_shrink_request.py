@@ -11,8 +11,11 @@ class UpdateAgentSessionTitleShrinkRequest(DaraModel):
         jsonrpc: str = None,
         params_shrink: str = None,
     ):
+        # The JSON-RPC correlation ID for the current request. It is specified by the caller and used to correlate the request and response.
         self.id = id
+        # The JSON-RPC protocol version. Set the value to 2.0.
         self.jsonrpc = jsonrpc
+        # The request parameters for modifying the session title, including the target session ID and the new title.
         self.params_shrink = params_shrink
 
     def validate(self):

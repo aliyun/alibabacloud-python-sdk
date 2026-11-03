@@ -13,9 +13,9 @@ class GetDIJobResponseBody(DaraModel):
         paging_info: main_models.GetDIJobResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
-        # The details of the data integration job.
+        # The pagination information.
         self.paging_info = paging_info
-        # The request ID. You can use this ID to locate logs and troubleshoot issues.
+        # The request ID. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -67,105 +67,96 @@ class GetDIJobResponseBodyPagingInfo(DaraModel):
         table_mappings: List[main_models.GetDIJobResponseBodyPagingInfoTableMappings] = None,
         transformation_rules: List[main_models.GetDIJobResponseBodyPagingInfoTransformationRules] = None,
     ):
-        # This field is deprecated. Use the `Id` field instead.
+        # **[Deprecated]** This field is deprecated. Use the Id field instead.
         self.dijob_id = dijob_id
-        # The description of the job.
+        # The description.
         self.description = description
-        # The settings for the destination data source.
+        # The list of destination data source properties.
         self.destination_data_source_settings = destination_data_source_settings
-        # The type of the destination data source. Valid values: `Hologres`, `OSS-HDFS`, `OSS`, `MaxCompute`, `LogHub`, `StarRocks`, `DataHub`, `AnalyticDB_For_MySQL`, `Kafka`, and `Hive`.
+        # The type of the destination data source. Valid values: Hologres, OSS-HDFS, OSS, MaxCompute, LogHub, StarRocks, DataHub, AnalyticDB_For_MySQL, Kafka, and Hive.
         self.destination_data_source_type = destination_data_source_type
-        # The job ID.
+        # The task ID.
         self.id = id
-        # The name of the job.
+        # The task name.
         self.job_name = job_name
-        # The job settings.
+        # The runtime settings.
         self.job_settings = job_settings
-        # The status of the job. Valid values:
-        # 
-        # 
-        # 
-        # 
-        # - `Finished`: The job completed successfully.
-        # - `Failed`: The job failed.
-        # - `Running`: The job is running.
-        # - `Initialized`: The job is initialized but has not started.
-        # - `Stopping`: The job is being stopped.
-        # - `Stop`: The job is stopped.
+        # The task status. Valid values:
+        # - Finished: the task ran successfully and has finished.
+        # - Failed: the task failed to run.
+        # - Running: the task is running.
+        # - Initialized: the task is initialized but not started.
+        # - Stopping: the task is being stopped.
+        # - Stop: the task is stopped.
         self.job_status = job_status
-        # The job type.
-        # 
-        # - `DatabaseRealtimeMigration`: real-time synchronization of multiple tables from multiple source databases. This type supports full, incremental, or both full and incremental synchronization.
-        # 
-        # - `DatabaseOfflineMigration`: batch synchronization of multiple tables from multiple source databases. This type supports full, incremental, or both full and incremental synchronization.
-        # 
-        # - `SingleTableRealtimeMigration`: real-time synchronization of a single source table.
+        # The task type. Valid values:
+        # - DatabaseRealtimeMigration: performs stream synchronization for multiple tables across multiple source databases. Supports full data only, incremental data only, or both full and incremental data.
+        # - DatabaseOfflineMigration: performs batch synchronization for multiple tables across multiple source databases. Supports full data only, incremental data only, or both full and incremental data.
+        # - SingleTableRealtimeMigration: performs stream synchronization for a single source table.
         self.job_type = job_type
         # The synchronization type. Valid values:
-        # 
-        # - `FullAndRealtimeIncremental`: one-time full synchronization and real-time incremental synchronization (for an entire database).
-        # 
-        # - `RealtimeIncremental`: real-time incremental synchronization (for a single table).
-        # 
-        # - `Full`: one-time full synchronization (for an entire database).
-        # 
-        # - `OfflineIncremental`: offline incremental synchronization (for an entire database).
-        # 
-        # - `FullAndOfflineIncremental`: one-time full synchronization and offline incremental synchronization (for an entire database).
+        # - FullAndRealtimeIncremental: full and real-time incremental synchronization (real-time synchronization for the entire database).
+        # - RealtimeIncremental: real-time incremental synchronization (real-time synchronization for a single table).
+        # - Full: full data synchronization (batch synchronization for the entire database).
+        # - OfflineIncremental: batch incremental synchronization (batch synchronization for the entire database).
+        # - FullAndOfflineIncremental: full and batch incremental synchronization (batch synchronization for the entire database).
         self.migration_type = migration_type
+        # The task owner.
         self.owner = owner
-        # The ID of the DataWorks workspace for the API call. You can obtain the workspace ID from the Workspace Configuration page in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace configuration page to obtain the workspace ID.
+        # 
+        # This parameter specifies the DataWorks workspace used for this API call.
         self.project_id = project_id
         # The resource settings.
         self.resource_settings = resource_settings
-        # The settings for the source data source.
+        # The array of source data source settings.
         self.source_data_source_settings = source_data_source_settings
-        # The type of the source data source. Valid values: `PolarDB`, `MySQL`, `Kafka`, `LogHub`, `Hologres`, `Oracle`, `OceanBase`, `MongoDB`, `RedShift`, `Hive`, `SQLServer`, `Doris`, and `ClickHouse`.
+        # The type of the source data source. Valid values: PolarDB, MySQL, Kafka, LogHub, Hologres, Oracle, OceanBase, MongoDB, RedShift, Hive, SQLServer, Doris, and ClickHouse.
         self.source_data_source_type = source_data_source_type
-        # A list of mappings for object transformation. Each element in the list describes a set of selection rules for source objects and a set of transformation rules that apply to the selected objects.
+        # The list of synchronization object transformation mappings. Each element in the list describes a set of source object selection rules and a list of transformation rules applied to the selected synchronization objects.
         # 
         # > [
-        # > {
-        # > "SourceObjectSelectionRules":[
-        # > {
-        # > "ObjectType":"Database",
-        # > "Action":"Include",
-        # > "ExpressionType":"Exact",
-        # > "Expression":"biz_db"
-        # > },
-        # > {
-        # > "ObjectType":"Schema",
-        # > "Action":"Include",
-        # > "ExpressionType":"Exact",
-        # > "Expression":"s1"
-        # > },
-        # > {
-        # > "ObjectType":"Table",
-        # > "Action":"Include",
-        # > "ExpressionType":"Exact",
-        # > "Expression":"table1"
-        # > }
-        # > ],
-        # > "TransformationRuleNames":[
-        # > {
-        # > "RuleName":"my_database_rename_rule",
-        # > "RuleActionType":"Rename",
-        # > "RuleTargetType":"Schema"
-        # > }
-        # > ]
-        # > }
-        # > ]
+        #   {
+        #     "SourceObjectSelectionRules":[
+        #       {
+        #         "ObjectType":"Database",
+        #         "Action":"Include",
+        #         "ExpressionType":"Exact",
+        #         "Expression":"biz_db"
+        #       },
+        #     {
+        #         "ObjectType":"Schema",
+        #         "Action":"Include",
+        #         "ExpressionType":"Exact",
+        #         "Expression":"s1"
+        #       }, 
+        #     {
+        #         "ObjectType":"Table",
+        #         "Action":"Include",
+        #         "ExpressionType":"Exact",
+        #         "Expression":"table1"
+        #       }
+        #     ],
+        #     "TransformationRuleNames":[
+        #       {
+        #         "RuleName":"my_database_rename_rule",
+        #         "RuleActionType":"Rename",
+        #         "RuleTargetType":"Schema"
+        #   		}
+        #     ]
+        #   }
+        # ]
         self.table_mappings = table_mappings
-        # A list of definitions for object transformation rules.
+        # The list of transformation rule definitions for synchronization objects.
         # 
         # > [
-        # > {
-        # > "RuleName":"my_database_rename_rule",
-        # > "RuleActionType":"Rename",
-        # > "RuleTargetType":"Schema",
-        # > "RuleExpression":"{\\\\"expression\\\\":\\\\"${srcDatasoureName}_${srcDatabaseName}\\\\"}"
-        # > }
-        # > ]
+        #   {
+        #     "RuleName":"my_database_rename_rule",
+        #     "RuleActionType":"Rename",
+        #     "RuleTargetType":"Schema",
+        #     "RuleExpression":"{\\"expression\\":\\"${srcDatasoureName}_${srcDatabaseName}\\"}"
+        #   }
+        # ]
         self.transformation_rules = transformation_rules
 
     def validate(self):
@@ -334,90 +325,62 @@ class GetDIJobResponseBodyPagingInfoTransformationRules(DaraModel):
         rule_target_type: str = None,
     ):
         # The action type. Valid values:
-        # 
-        # - `DefinePrimaryKey`
-        # 
-        # - `Rename`
-        # 
-        # - `AddColumn`
-        # 
-        # - `HandleDml`
-        # 
-        # - `DefineIncrementalCondition`
-        # 
-        # - `DefineCycleScheduleSettings`
-        # 
-        # - `DefinePartitionKey`
+        # - DefinePrimaryKey: defines the primary key.
+        # - Rename: renames the object.
+        # - AddColumn: adds a column.
+        # - HandleDml: handles DML operations.
+        # - DefineIncrementalCondition: defines the incremental condition.
+        # - DefineCycleScheduleSettings: defines the periodic scheduling settings.
+        # - DefinePartitionKey: defines the partition key.
         self.rule_action_type = rule_action_type
-        # The rule expression, in JSON string format.
+        # The rule expression in JSON string format.
         # 
-        # 1. Rename rule (`Rename`)
+        # 1. Rename rule (Rename)
+        # - Example: {"expression":"${srcDatasourceName}_${srcDatabaseName}_0922"}
+        # - expression: the expression for the rename transformation rule. Supported variables in the expression include: ${srcDatasourceName} (source data source name), ${srcDatabaseName} (source database name), and ${srcTableName} (source table name).
         # 
-        # - Example: `{"expression":"${srcDatasourceName}_${srcDatabaseName}_0922"}`
+        # 2. Add column rule (AddColumn)
+        # - Example: {"columns":[{"columnName":"my_add_column","columnValueType":"Constant","columnValue":"123"}]}
+        # - If not specified, the default rule is to add no columns and perform no replication.
+        # - columnName: the name of the appended column.
+        # - columnValueType: the value type of the appended column. Valid values: Constant and Variable.
+        # - columnValue: the value of the appended column. When columnValueType is Constant, the value is a custom constant of the String type. When columnValueType is Variable, the value is a built-in variable. Valid built-in variables include: EXECUTE_TIME (execution time, Long type), DB_NAME_SRC (source database name, String type), DATASOURCE_NAME_SRC (source data source name, String type), TABLE_NAME_SRC (source table name, String type), DB_NAME_DEST (destination database name, String type), DATASOURCE_NAME_DEST (destination data source name, String type), TABLE_NAME_DEST (destination table name, String type), and DB_NAME_SRC_TRANSED (transformed database name, String type).
         # 
-        # - `expression`: The expression for the rename transformation rule. The expression supports the following variables: `${srcDatasourceName}` (source data source name), `${srcDatabaseName}` (source database name), and `${srcTableName}` (source table name).
+        # 3. Specify the primary key column names for the destination table (DefinePrimaryKey)
+        # - Example: {"columns":["ukcolumn1","ukcolumn2"]}
+        # - If not specified, the source primary key columns are used by default.
+        # - When the destination is an existing table: the data integration system does not modify the destination table schema. If the specified primary key columns are not in the destination column set, an error is reported when the task starts.
+        # - When the destination is a table to be created automatically: the data integration system automatically creates the destination table schema, which includes the defined primary key columns. If the specified primary key columns are not in the destination column set, an error is reported when the task starts.
         # 
-        # 2. Add column rule (`AddColumn`)
+        # 4. DML handling rule (HandleDml)
+        # - Example:
+        # {"dmlPolicies":[{"dmlType":"Delete","dmlAction":"Filter","filterCondition":"id > 1"}]}
+        # - If not specified, the default rule is Normal for Insert, Update, and Delete.
+        # - dmlType: the DML operations type. Valid values: Insert, Update, and Delete.
+        # - dmlAction: the DML handling policy. Valid values: Normal (normal processing), Ignore (ignore), Filter (conditional normal processing, used when dmlType is Update or Delete), and LogicalDelete (logical deletion).
+        # - filterCondition: the DML filter condition, used when dmlAction is Filter.
         # 
-        # - Example: `{"columns":[{"columnName":"my_add_column","columnValueType":"Constant","columnValue":"123"}]}`
+        # 5. Incremental condition (DefineIncrementalCondition)
+        # - Example:
+        # {"where":"id > 0"}
+        # - Specifies the incremental filter condition.
         # 
-        # - If you do not specify this parameter, no columns are added or copied by default.
+        # 6. Periodic scheduling parameters (DefineCycleScheduleSettings)
+        # - Example:
+        # {"cronExpress":" * * * * * *", "cycleType":"1"}
+        # - Specifies the scheduling parameters for the scheduled task.
         # 
-        # - `columnName`: The name of the column to add.
-        # 
-        # - `columnValueType`: The value type of the added column. Valid values: `Constant` and `Variable`.
-        # 
-        # - `columnValue`: The value of the added column. If `columnValueType` is `Constant`, the value is a custom string constant. If `columnValueType` is `Variable`, the value is a built-in variable. Valid built-in variables: `EXECUTE_TIME` (execution time, Long), `DB_NAME_SRC` (source database name, String), `DATASOURCE_NAME_SRC` (source data source name, String), `TABLE_NAME_SRC` (source table name, String), `DB_NAME_DEST` (destination database name, String), `DATASOURCE_NAME_DEST` (destination data source name, String), `TABLE_NAME_DEST` (destination table name, String), and `DB_NAME_SRC_TRANSED` (converted database name, String).
-        # 
-        # 3. Define primary key rule (`DefinePrimaryKey`)
-        # 
-        # - Example: `{"columns":["ukcolumn1","ukcolumn2"]}`
-        # 
-        # - By default, the primary key columns from the source table are used.
-        # 
-        # - If the destination table already exists, the data integration system does not modify the table schema. If the specified primary key columns are not in the destination table, the job fails to start.
-        # 
-        # - If the destination table is automatically created, the data integration system automatically creates the table schema that includes the defined primary key columns. If the specified primary key columns are not in the destination table, the job fails to start.
-        # 
-        # 4. DML handling rule (`HandleDml`)
-        # 
-        # - Example: `{"dmlPolicies":[{"dmlType":"Delete","dmlAction":"Filter","filterCondition":"id > 1"}]}`
-        # 
-        # - If you do not specify this parameter, the default value `Normal` is used for Insert, Update, and Delete operations.
-        # 
-        # - `dmlType`: The DML operation type. Valid values: `Insert`, `Update`, and `Delete`.
-        # 
-        # - `dmlAction`: The DML handling policy. Valid values: `Normal` (process normally), `Ignore` (ignore), `Filter` (process conditionally, used when `dmlType` is `Update` or `Delete`), and `LogicalDelete` (logically delete).
-        # 
-        # - `filterCondition`: The DML filter condition. This parameter is used when `dmlAction` is `Filter`.
-        # 
-        # 5. Define incremental condition rule (`DefineIncrementalCondition`)
-        # 
-        # - Example: `{"where":"id > 0"}`
-        # 
-        # - Specifies the filter condition for incremental synchronization.
-        # 
-        # 6. Define cycle schedule settings rule (`DefineCycleScheduleSettings`)
-        # 
-        # - Example: `{"cronExpress":" * * * * * *", "cycleType":"1"}`
-        # 
-        # - Specifies the scheduling parameters for a periodic job.
-        # 
-        # 7. Define partition key rule (`DefinePartitionKey`)
-        # 
-        # - Example: `{"columns":["id"]}`
-        # 
+        # 7. Specify the partition key (DefinePartitionKey)
+        # - Example:
+        # {"columns":["id"]}
         # - Specifies the partition key.
         self.rule_expression = rule_expression
-        # The name of the rule. The rule name must be unique for a specific action type (`RuleActionType`) and target type (`RuleTargetType`).
+        # The rule name. The rule name must be unique under a specific combination of action type and target type.
         self.rule_name = rule_name
-        # The target object type of the action. Valid values:
-        # 
-        # - `Table`
-        # 
-        # - `Schema`
-        # 
-        # - `Database`
+        # The target type of the action. Valid values:
+        # - Table: table.
+        # - Schema: schema.
+        # - Database: database.
         self.rule_target_type = rule_target_type
 
     def validate(self):
@@ -464,9 +427,9 @@ class GetDIJobResponseBodyPagingInfoTableMappings(DaraModel):
         source_object_selection_rules: List[main_models.GetDIJobResponseBodyPagingInfoTableMappingsSourceObjectSelectionRules] = None,
         transformation_rules: List[main_models.GetDIJobResponseBodyPagingInfoTableMappingsTransformationRules] = None,
     ):
-        # Each rule selects a set of source objects to be synchronized. A combination of multiple rules selects one table.
+        # Each rule selects a set of source objects to be synchronized. Multiple rules combine to select a single table.
         self.source_object_selection_rules = source_object_selection_rules
-        # An array of object transformation rule definitions.
+        # The list of transformation rule definitions for synchronization objects. Each element in the list is a transformation rule definition.
         self.transformation_rules = transformation_rules
 
     def validate(self):
@@ -520,24 +483,17 @@ class GetDIJobResponseBodyPagingInfoTableMappingsTransformationRules(DaraModel):
         rule_target_type: str = None,
     ):
         # The action type. Valid values:
-        # 
-        # - `DefinePrimaryKey`
-        # 
-        # - `Rename`
-        # 
-        # - `AddColumn`
-        # 
-        # - `HandleDml`
+        # - DefinePrimaryKey: defines the primary key.
+        # - Rename: renames the object.
+        # - AddColumn: adds a column.
+        # - HandleDml: handles DML operations.
         self.rule_action_type = rule_action_type
-        # The name of the rule. The rule name must be unique for a specific action type (`RuleActionType`) and target type (`RuleTargetType`).
+        # The rule name. The rule name must be unique when the action type and the target type of the action are the same.
         self.rule_name = rule_name
-        # The target object type of the action. Valid values:
-        # 
-        # - `Table`
-        # 
-        # - `Schema`
-        # 
-        # - `Database`
+        # The target type of the action. Valid values:
+        # - Table: table.
+        # - Schema: schema.
+        # - Database: database.
         self.rule_target_type = rule_target_type
 
     def validate(self):
@@ -580,19 +536,16 @@ class GetDIJobResponseBodyPagingInfoTableMappingsSourceObjectSelectionRules(Dara
         expression_type: str = None,
         object_type: str = None,
     ):
-        # The selection action. Valid values: `Include` and `Exclude`.
+        # The selection action. Valid values: Include and Exclude.
         self.action = action
         # The expression.
         self.expression = expression
-        # The expression type. Valid values: `Exact` and `Regex`.
+        # The expression type. Valid values: Exact and Regex.
         self.expression_type = expression_type
         # The object type. Valid values:
-        # 
-        # - `Table`
-        # 
-        # - `Schema`
-        # 
-        # - `Database`
+        # - Table: table.
+        # - Schema: schema.
+        # - Database: database.
         self.object_type = object_type
 
     def validate(self):
@@ -678,7 +631,7 @@ class GetDIJobResponseBodyPagingInfoSourceDataSourceSettingsDataSourceProperties
         encoding: str = None,
         timezone: str = None,
     ):
-        # The encoding of the database.
+        # The database encoding.
         self.encoding = encoding
         # The time zone.
         self.timezone = timezone
@@ -716,11 +669,11 @@ class GetDIJobResponseBodyPagingInfoResourceSettings(DaraModel):
         realtime_resource_settings: main_models.GetDIJobResponseBodyPagingInfoResourceSettingsRealtimeResourceSettings = None,
         schedule_resource_settings: main_models.GetDIJobResponseBodyPagingInfoResourceSettingsScheduleResourceSettings = None,
     ):
-        # The resource settings for the offline synchronization job.
+        # The batch synchronization resources.
         self.offline_resource_settings = offline_resource_settings
-        # The resource settings for the real-time synchronization job.
+        # The real-time synchronization resources.
         self.realtime_resource_settings = realtime_resource_settings
-        # The scheduling resource settings.
+        # The scheduling resource.
         self.schedule_resource_settings = schedule_resource_settings
 
     def validate(self):
@@ -769,9 +722,9 @@ class GetDIJobResponseBodyPagingInfoResourceSettingsScheduleResourceSettings(Dar
         requested_cu: float = None,
         resource_group_identifier: str = None,
     ):
-        # The number of CUs from the scheduling resource group for the offline scheduling job.
+        # The number of CUs of the data integration resource group used by the batch scheduling task.
         self.requested_cu = requested_cu
-        # The name of the scheduling resource group used by the offline scheduling job.
+        # The name of the scheduling resource group used by the batch scheduling task.
         self.resource_group_identifier = resource_group_identifier
 
     def validate(self):
@@ -806,9 +759,9 @@ class GetDIJobResponseBodyPagingInfoResourceSettingsRealtimeResourceSettings(Dar
         requested_cu: float = None,
         resource_group_identifier: str = None,
     ):
-        # The number of CUs from the data integration resource group for the real-time synchronization job.
+        # The number of CUs of the data integration resource group used for real-time synchronization.
         self.requested_cu = requested_cu
-        # The name of the data integration resource group used by the real-time job.
+        # The name of the data integration resource group used for real-time tasks.
         self.resource_group_identifier = resource_group_identifier
 
     def validate(self):
@@ -843,9 +796,9 @@ class GetDIJobResponseBodyPagingInfoResourceSettingsOfflineResourceSettings(Dara
         requested_cu: float = None,
         resource_group_identifier: str = None,
     ):
-        # The number of CUs from the data integration resource group for the offline synchronization job.
+        # The number of compute units (CUs) of the scheduling resource group used by the batch synchronization task.
         self.requested_cu = requested_cu
-        # The name of the data integration resource group used by the offline synchronization job.
+        # The name of the data integration resource group used for batch synchronization.
         self.resource_group_identifier = resource_group_identifier
 
     def validate(self):
@@ -883,33 +836,24 @@ class GetDIJobResponseBodyPagingInfoJobSettings(DaraModel):
         ddl_handling_settings: List[main_models.GetDIJobResponseBodyPagingInfoJobSettingsDdlHandlingSettings] = None,
         runtime_settings: List[main_models.GetDIJobResponseBodyPagingInfoJobSettingsRuntimeSettings] = None,
     ):
-        # The settings for channel-related jobs. You can configure special settings for specific channels. The following channels are supported: Holo2Holo (data synchronization from Hologres to Hologres) and Holo2Kafka (data synchronization from Hologres to Kafka).
-        # 
+        # The channel-related task settings. You can configure specific channels. Currently, Holo2Holo (synchronization from Hologres to Hologres) and Holo2Kafka (synchronization from Hologres to Kafka) are supported.
         # 1. Holo2Kafka
-        # 
-        # - Example: `{"destinationChannelSettings":{"kafkaClientProperties":[{"key":"linger.ms","value":"100"}],"keyColumns":["col3"],"writeMode":"canal"}}`
-        # 
-        # - `kafkaClientProperties`: The parameters for the Kafka producer, used when writing data to Kafka.
-        # 
-        # - `keyColumns`: The columns whose values are used as the key for Kafka records.
-        # 
-        # - `writeMode`: The format for writing data to Kafka. Valid values: `json` and `canal`.
+        # - Example: {"destinationChannelSettings":{"kafkaClientProperties":[{"key":"linger.ms","value":"100"}],"keyColumns":["col3"],"writeMode":"canal"}}
+        # - kafkaClientProperties: the Kafka producer parameters used when writing data to Kafka.
+        # - keyColumns: the Kafka columns to which data is written.
+        # - writeMode: the format in which data is written to Kafka. Valid values: json and canal.
         # 
         # 2. Holo2Holo
-        # 
-        # - Example: `{"destinationChannelSettings":{"conflictMode":"replace","dynamicColumnAction":"replay","writeMode":"replay"}}`
-        # 
-        # - `conflictMode`: The conflict handling policy for writing data to Hologres. Valid values: `replace` (overwrite) and `ignore` (ignore).
-        # 
-        # - `writeMode`: The method for writing data to Hologres. Valid values: `replay` and `insert`.
-        # 
-        # - `dynamicColumnAction`: The method for handling dynamic columns when writing data to Hologres. Valid values: `replay`, `insert`, and `ignore`.
+        # - Example: {"destinationChannelSettings":{"conflictMode":"replace","dynamicColumnAction":"replay","writeMode":"replay"}}
+        # - conflictMode: the conflict handling policy when writing data to Hologres. Valid values: replace (overwrite) and ignore (ignore).
+        # - writeMode: the method used to write data to Hologres. Valid values: replay and insert.
+        # - dynamicColumnAction: the method used to write dynamic columns to Hologres. Valid values: replay, insert, and ignore.
         self.channel_settings = channel_settings
-        # The column data type mappings.
+        # The column type mappings.
         self.column_data_type_settings = column_data_type_settings
-        # The settings for periodic scheduling.
+        # The periodic scheduling settings.
         self.cycle_schedule_settings = cycle_schedule_settings
-        # An array of settings for handling DDL messages. Each element specifies a DDL message type and the corresponding handling rule.
+        # The array of DDL handling settings, which includes a list of DDL types to be handled and their corresponding rules.
         self.ddl_handling_settings = ddl_handling_settings
         # The runtime settings.
         self.runtime_settings = runtime_settings
@@ -993,25 +937,17 @@ class GetDIJobResponseBodyPagingInfoJobSettingsRuntimeSettings(DaraModel):
         name: str = None,
         value: str = None,
     ):
-        # The name of the setting. Valid values:
-        # 
-        # - `src.offline.datasource.max.connection`: the maximum number of connections to the source for an offline batch job.
-        # 
-        # - `dst.offline.truncate`: Whether to truncate the destination table before the offline batch job starts.
-        # 
-        # - `runtime.offline.speed.limit.enable`: Whether to enable throttling for an offline batch job.
-        # 
-        # - `runtime.offline.concurrent`: the concurrency level for an offline batch synchronization job.
-        # 
-        # - `runtime.enable.auto.create.schema`: Whether to automatically create a schema at the destination.
-        # 
-        # - `runtime.realtime.concurrent`: the concurrency level for a real-time job.
-        # 
-        # - `runtime.realtime.failover.minute.dataxcdc`: The wait duration (in minutes) before restarting a failed instance.
-        # 
-        # - `runtime.realtime.failover.times.dataxcdc`: The maximum number of retries for a failed instance.
+        # The setting name. Valid values:
+        # - src.offline.datasource.max.connection: the maximum number of connections to the source for batch tasks.
+        # - dst.offline.truncate: specifies whether to truncate the destination table.
+        # - runtime.offline.speed.limit.enable: specifies whether to enable throttling for batch tasks.
+        # - runtime.offline.concurrent: the concurrency of batch synchronization tasks.
+        # - runtime.enable.auto.create.schema: specifies whether to automatically create a schema at the destination.
+        # - runtime.realtime.concurrent: the concurrency of real-time tasks.
+        # - runtime.realtime.failover.minute.dataxcdc: the wait time in minutes before restarting after a failover failure.
+        # - runtime.realtime.failover.times.dataxcdc: the number of restart attempts after a failover failure.
         self.name = name
-        # The value of the setting.
+        # The setting value.
         self.value = value
 
     def validate(self):
@@ -1047,24 +983,16 @@ class GetDIJobResponseBodyPagingInfoJobSettingsDdlHandlingSettings(DaraModel):
         type: str = None,
     ):
         # The handling action. Valid values:
-        # 
-        # - `Ignore`: Ignores the DDL message.
-        # 
-        # - `Critical`: Reports an error.
-        # 
-        # - `Normal`: Processes the DDL message.
+        # - Ignore: ignores the DDL statement.
+        # - Critical: reports an error.
+        # - Normal: processes the DDL statement normally.
         self.action = action
-        # The DDL message type. Valid values:
-        # 
-        # - `RenameColumn`
-        # 
-        # - `ModifyColumn`
-        # 
-        # - `CreateTable`
-        # 
-        # - `TruncateTable`
-        # 
-        # - `DropTable`
+        # The DDL type. Valid values:
+        # - RenameColumn: renames a column.
+        # - ModifyColumn: modifies a column.
+        # - CreateTable: creates a table.
+        # - TruncateTable: truncates a table.
+        # - DropTable: drops a table.
         self.type = type
 
     def validate(self):
@@ -1099,11 +1027,9 @@ class GetDIJobResponseBodyPagingInfoJobSettingsCycleScheduleSettings(DaraModel):
         cycle_migration_type: str = None,
         schedule_parameters: str = None,
     ):
-        # The synchronization type for periodic scheduling. Valid values:
-        # 
-        # - `Full`: full
-        # 
-        # - `OfflineIncremental`: offline incremental
+        # The synchronization type that requires periodic scheduling. Valid values:
+        # - Full: full data synchronization.
+        # - OfflineIncremental: batch incremental synchronization.
         self.cycle_migration_type = cycle_migration_type
         # The scheduling parameters.
         self.schedule_parameters = schedule_parameters
@@ -1140,9 +1066,9 @@ class GetDIJobResponseBodyPagingInfoJobSettingsColumnDataTypeSettings(DaraModel)
         destination_data_type: str = None,
         source_data_type: str = None,
     ):
-        # The data type in the destination, such as `bigint`, `boolean`, `string`, `text`, `datetime`, `timestamp`, `decimal`, and `binary`. Data types vary depending on the data source.
+        # The destination data type, such as bigint, boolean, string, text, datetime, timestamp, decimal, and binary. Data types vary based on the data source type.
         self.destination_data_type = destination_data_type
-        # The data type in the source, such as `bigint`, `boolean`, `string`, `text`, `datetime`, `timestamp`, `decimal`, and `binary`. Data types vary depending on the data source.
+        # The source data type, such as bigint, boolean, string, text, datetime, timestamp, decimal, and binary. Data types vary based on the data source type.
         self.source_data_type = source_data_type
 
     def validate(self):

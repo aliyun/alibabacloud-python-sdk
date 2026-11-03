@@ -13,7 +13,7 @@ class GetLineageRelationshipResponseBody(DaraModel):
     ):
         # The lineage relationship struct.
         self.lineage_relationship = lineage_relationship
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

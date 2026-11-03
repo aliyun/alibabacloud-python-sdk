@@ -15,7 +15,7 @@ class ListDownstreamTasksResponseBody(DaraModel):
     ):
         # The pagination information.
         self.paging_info = paging_info
-        # The request ID.
+        # The request ID, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -55,15 +55,15 @@ class ListDownstreamTasksResponseBodyPagingInfo(DaraModel):
         tasks: List[main_models.ListDownstreamTasksResponseBodyPagingInfoTasks] = None,
         total_count: int = None,
     ):
-        # The descendant tasks.
+        # The list of downstream nodes.
         self.downstream_tasks = downstream_tasks
         # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The tasks. This parameter is deprecated and replaced by the DownstreamTasks parameter.
+        # **[Deprecated]** The list of nodes. Use DownstreamTasks instead.
         self.tasks = tasks
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -158,68 +158,60 @@ class ListDownstreamTasksResponseBodyPagingInfoTasks(DaraModel):
         # The baseline ID.
         self.baseline_id = baseline_id
         # The creation time.
+        # 
+        # The value is a 13-digit number, such as `1710239005403`.
         self.create_time = create_time
-        # The account ID of the creator.
+        # The account ID of the user who created the node.
         self.create_user = create_user
-        # The information about the associated data source.
+        # The associated data source information.
         self.data_source = data_source
-        # The description of the task.
+        # The description.
         self.description = description
-        # The environment of the workspace. Valid values: Prod (production) and Dev (development).
+        # The project environment. Valid values:
+        # - Prod: Production environment.
+        # - Dev: Development environment.
         self.env_type = env_type
-        # The task ID.
+        # The unique identifier of the node.
         self.id = id
-        # The instance generation mode. Valid values: T+1 (generate the next day) and Immediately (generate immediately).
+        # The instance generation mode. Valid values:
+        # - T+1: Generated on the next day.
+        # - Immediately: Generated immediately.
         self.instance_mode = instance_mode
         # The modification time.
+        # 
+        # The value is a 13-digit number, such as `1710239005403`.
         self.modify_time = modify_time
-        # The account ID of the modifier.
+        # The account ID of the user who modified the node.
         self.modify_user = modify_user
-        # The name of the task.
+        # The name.
         self.name = name
-        # The account ID of the task owner.
+        # The account ID of the node owner.
         self.owner = owner
-        # The priority of the task. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
+        # The node priority. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
         self.priority = priority
-        # The environment of the workspace. This parameter is deprecated and replaced by the EnvType parameter.
-        # 
-        # Valid values:
-        # 
-        # - Prod
-        # 
-        # - Dev
+        # **[Deprecated]** The project environment. Use EnvType instead.
         self.project_env = project_env
-        # The workspace ID.
+        # The project ID.
         self.project_id = project_id
-        # The rerun interval. Unit: seconds.
+        # The retry time interval, in seconds.
         self.rerun_interval = rerun_interval
-        # The rerun mode.
-        # 
-        # Valid values:
-        # 
-        # - AllDenied: The task cannot be rerun regardless of whether it is successfully run or fails to run.
-        # 
-        # - FailureAllowed: The task can be rerun only after it fails to run.
-        # 
-        # - AllAllowed: The task can be rerun regardless of whether it is successfully run or fails to run.
+        # The rerun configuration of the node.
         self.rerun_mode = rerun_mode
-        # The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
+        # The number of retries. This parameter takes effect only when the node is configured to allow reruns.
         self.rerun_times = rerun_times
-        # The configurations of the runtime environment, such as the resource group information.
+        # The runtime environment configuration, such as the resource group information.
         self.runtime_resource = runtime_resource
-        # The scheduling dependency type. Valid values:
-        # 
-        # - Normal: same-cycle scheduling dependency
-        # 
-        # - CrossCycle: cross-cycle scheduling dependency
+        # The dependency type. Valid values:
+        # - Normal: Same-cycle dependency.
+        # - CrossCycle: Cross-cycle dependency.
         self.step_type = step_type
-        # The timeout period of task running. Unit: seconds.
+        # The node execution timeout period, in seconds.
         self.timeout = timeout
-        # The method to trigger task scheduling.
+        # The trigger method of the node.
         self.trigger = trigger
-        # The type of the task.
+        # The node type.
         self.type = type
-        # The ID of the workflow to which the task belongs.
+        # The ID of the workflow to which the node belongs.
         self.workflow_id = workflow_id
 
     def validate(self):
@@ -398,31 +390,21 @@ class ListDownstreamTasksResponseBodyPagingInfoTasksTrigger(DaraModel):
         timezone: str = None,
         type: str = None,
     ):
-        # The CRON expression of the task. This parameter takes effect only if the Type parameter is set to Scheduler.
+        # The cron expression. This parameter takes effect only when Type is set to Scheduler.
         self.cron = cron
-        # The end time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+        # The expiration time of periodic triggering. This parameter takes effect only when Type is set to Scheduler.
+        # 
+        # The format is `yyyy-MM-dd HH:mm:ss`, such as `9999-01-01 00:00:00`. The example does not include a time zone identifier.
         self.end_time = end_time
-        # The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler.
-        # 
-        # Valid values:
-        # 
-        # - Pause
-        # 
-        # - Skip
-        # 
-        # - Normal
+        # The running mode upon triggering. This parameter takes effect only when Type is set to Scheduler.
         self.recurrence = recurrence
-        # The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+        # The effective period of epoch triggering. This parameter takes effect only when Type is set to Scheduler.
+        # 
+        # The format is `yyyy-MM-dd HH:mm:ss`, such as `1970-01-01 00:00:00`. The example does not include a time zone identity.
         self.start_time = start_time
         # The time zone.
         self.timezone = timezone
         # The trigger type.
-        # 
-        # Valid values:
-        # 
-        # - Scheduler: scheduling cycle-based trigger
-        # 
-        # - Manual: manual trigger
         self.type = type
 
     def validate(self):
@@ -482,11 +464,11 @@ class ListDownstreamTasksResponseBodyPagingInfoTasksRuntimeResource(DaraModel):
         image: str = None,
         resource_group_id: str = None,
     ):
-        # The number of compute units (CUs) configured for task running.
+        # The compute unit (CU) consumption configured for node execution.
         self.cu = cu
-        # The ID of the image configured for task running.
+        # The ID of the image configured for node execution.
         self.image = image
-        # The ID of the resource group for scheduling configured for task running.
+        # The identifier of the schedule resource group configured for node execution.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -555,13 +537,11 @@ class ListDownstreamTasksResponseBodyPagingInfoDownstreamTasks(DaraModel):
         dependency_type: str = None,
         task: main_models.ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask = None,
     ):
-        # The scheduling dependency type. Valid values:
-        # 
-        # - Normal: same-cycle scheduling dependency
-        # 
-        # - CrossCycle: cross-cycle scheduling dependency
+        # The dependency type. Valid values:
+        # - Normal: Same-cycle dependency.
+        # - CrossCycle: Cross-cycle dependency.
         self.dependency_type = dependency_type
-        # The information about the task.
+        # The detailed information of the node.
         self.task = task
 
     def validate(self):
@@ -621,52 +601,57 @@ class ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask(DaraModel):
         # The baseline ID.
         self.baseline_id = baseline_id
         # The creation time.
+        # 
+        # The value is a 13-digit number, such as `1710239005403`.
         self.create_time = create_time
-        # The account ID of the creator.
+        # The account ID of the user who created the node.
         self.create_user = create_user
-        # The information about the associated data source.
+        # The associated data source information.
         self.data_source = data_source
         # The description.
         self.description = description
-        # The environment of the workspace. Valid values: Prod (production) and Dev (development).
+        # The project environment. Valid values:
+        # - Prod: Production environment.
+        # - Dev: Development environment.
         self.env_type = env_type
-        # The task ID.
+        # The unique identifier of the node.
         self.id = id
-        # The instance generation mode. Valid values: T+1 (generate the next day) and Immediately (generate immediately).
+        # The instance generation mode. Valid values:
+        # - T+1: Generated on the next day.
+        # - Immediately: Generated immediately.
         self.instance_mode = instance_mode
         # The modification time.
+        # 
+        # The value is a 13-digit number, such as `1710239005403`.
         self.modify_time = modify_time
-        # The account ID of the modifier.
+        # The account ID of the user who modified the node.
         self.modify_user = modify_user
-        # The name of the task.
+        # The name.
         self.name = name
-        # The account ID of the task owner.
+        # The account ID of the node owner.
         self.owner = owner
-        # The priority of the task. Valid values: 1 to 8.
+        # The node priority. Valid values: 1 to 8.
         self.priority = priority
-        # The workspace ID.
+        # The project ID.
         self.project_id = project_id
-        # The rerun interval. Unit: seconds.
+        # The retry time interval, in seconds.
         self.rerun_interval = rerun_interval
-        # The rerun mode. Valid values:
-        # 
-        # - AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
-        # 
-        # - FailureAllowed: The task can be rerun only after it fails to run.
-        # 
-        # - AllAllowed: The task can be rerun regardless of whether it is successfully run or fails to run.
+        # The rerun configuration of the node. Valid values:
+        # - AllDenied: The node cannot be rerun regardless of success or failure.
+        # - FailureAllowed: The node can be rerun only when it fails.
+        # - AllAllowed: The node can be rerun regardless of whether it succeeds or fails.
         self.rerun_mode = rerun_mode
-        # The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
+        # The number of retries. This parameter takes effect only when the node is configured to allow reruns.
         self.rerun_times = rerun_times
-        # The configurations of the runtime environment, such as the resource group information.
+        # The runtime environment configuration, such as the resource group information.
         self.runtime_resource = runtime_resource
-        # The timeout period of task running. Unit: seconds.
+        # The node execution timeout period, in seconds.
         self.timeout = timeout
-        # The trigger method.
+        # The trigger method of the node.
         self.trigger = trigger
-        # The type of the task.
+        # The node type.
         self.type = type
-        # The ID of the workflow to which the task belongs.
+        # The ID of the workflow to which the node belongs.
         self.workflow_id = workflow_id
 
     def validate(self):
@@ -833,21 +818,26 @@ class ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskTrigger(DaraMo
         timezone: str = None,
         type: str = None,
     ):
-        # The CRON expression. This parameter takes effect only if the Type parameter is set to Scheduler.
+        # The cron expression. This parameter takes effect only when Type is set to Scheduler.
         self.cron = cron
-        # The end time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+        # The expiration time of periodic triggering. This parameter takes effect only when Type is set to Scheduler.
+        # 
+        # The format is `yyyy-MM-dd HH:mm:ss`, such as `9999-01-01 00:00:00`. The example does not include a time zone identifier.
         self.end_time = end_time
-        # The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values: Pause (paused), Skip (dry run), and Normal (normal execution).
+        # The execution mode when triggered. This parameter takes effect only when Type is set to Scheduler.
+        # - Pause: Paused.
+        # - Skip: Dry run.
+        # - Normal: Normal execution.
         self.recurrence = recurrence
-        # The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+        # The effective period for epoch triggers. This parameter takes effect only when Type is set to Scheduler.
+        # 
+        # The format is `yyyy-MM-dd HH:mm:ss`, such as `1970-01-01 00:00:00`. This example does not include a time zone identity.
         self.start_time = start_time
         # The time zone.
         self.timezone = timezone
-        # The trigger type. Valid values:
-        # 
-        # - Scheduler: scheduling cycle-based trigger
-        # 
-        # - Manual: manual trigger
+        # The trigger type.
+        # - Scheduler: Triggered by a scheduling cycle.
+        # - Manual: Triggered manually.
         self.type = type
 
     def validate(self):
@@ -907,11 +897,11 @@ class ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskRuntimeResourc
         image: str = None,
         resource_group_id: str = None,
     ):
-        # The number of compute units (CUs) configured for task running.
+        # The compute unit (CU) consumption configured for node execution.
         self.cu = cu
-        # The ID of the image configured for task running.
+        # The ID of the image configured for node execution.
         self.image = image
-        # The ID of the resource group for scheduling configured for task running.
+        # The identifier of the schedule resource group configured for node execution.
         self.resource_group_id = resource_group_id
 
     def validate(self):

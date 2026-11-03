@@ -12,13 +12,13 @@ class GetDIJobRequest(DaraModel):
         project_id: int = None,
         with_details: bool = None,
     ):
-        # This field is deprecated. Use the `Id` field instead.
+        # **[Deprecated]** This field is deprecated. Use the Id field instead.
         self.dijob_id = dijob_id
-        # The ID of the DI job.
+        # The instance ID.
         self.id = id
-        # The DataWorks workspace ID. You can call the `ListProjects` operation to obtain the workspace ID.
+        # The DataWorks workspace ID. You can call the ListProjects operation to obtain the workspace ID.
         self.project_id = project_id
-        # Specifies whether to return the detailed configuration, including `TransformationRules`, `TableMappings`, and `JobSettings`. This configuration is returned by default.
+        # Specifies whether to return detailed configuration information, which includes TransformationRules, TableMappings, and JobSettings. Default value: true.
         self.with_details = with_details
 
     def validate(self):

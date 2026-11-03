@@ -18,7 +18,7 @@ class GetBatchChangeTableOwnerStatusResponseBody(DaraModel):
         self.data = data
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -66,17 +66,17 @@ class GetBatchChangeTableOwnerStatusResponseBodyData(DaraModel):
         success_count: int = None,
         total_count: int = None,
     ):
-        # The batch transfer task ID.
+        # The ID of the batch transfer task.
         self.batch_id = batch_id
         # The transfer result details for each table.
         self.details = details
-        # The number of tables that failed to transfer.
+        # The number of tables that fail to be transferred.
         self.failed_count = failed_count
         # The number of tables that are still being processed.
         self.ongoing_count = ongoing_count
         # The overall status of the task.
         self.status = status
-        # The number of tables that were successfully transferred.
+        # The number of tables that are successfully transferred.
         self.success_count = success_count
         # The total number of tables in the batch.
         self.total_count = total_count
@@ -152,7 +152,7 @@ class GetBatchChangeTableOwnerStatusResponseBodyDataDetails(DaraModel):
         status: str = None,
         table_meta_entity_id: str = None,
     ):
-        # The error message returned when the table transfer fails.
+        # The error message returned when the table fails to be transferred.
         self.error_message = error_message
         # The transfer status of the table.
         self.status = status

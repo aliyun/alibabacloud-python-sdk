@@ -11,7 +11,7 @@ class AbolishCrossProjectPipelineRunRequest(DaraModel):
         project_id: int = None,
         reason: str = None,
     ):
-        # The ID of the cross-workspace publish flow.
+        # The ID of the cross-workspace deployment pipeline run.
         # 
         # This parameter is required.
         self.pipeline_run_id = pipeline_run_id
@@ -19,7 +19,7 @@ class AbolishCrossProjectPipelineRunRequest(DaraModel):
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The reason for stopping the cross-workspace publish flow.
+        # The reason for terminating the pipeline run.
         self.reason = reason
 
     def validate(self):

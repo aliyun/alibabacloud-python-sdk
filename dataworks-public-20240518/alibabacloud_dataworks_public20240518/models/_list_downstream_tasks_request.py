@@ -12,21 +12,15 @@ class ListDownstreamTasksRequest(DaraModel):
         page_size: int = None,
         project_env: str = None,
     ):
-        # The task ID.
+        # The node ID.
         # 
         # This parameter is required.
         self.id = id
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number, starting from 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # The environment of the workspace.
-        # 
-        # Valid values:
-        # 
-        # - Prod: production environment
-        # 
-        # - Dev: development environment
+        # The project environment.
         self.project_env = project_env
 
     def validate(self):

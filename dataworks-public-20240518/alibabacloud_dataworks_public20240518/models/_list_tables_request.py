@@ -19,11 +19,11 @@ class ListTablesRequest(DaraModel):
         sort_by: str = None,
         table_types: List[str] = None,
     ):
-        # The comment. Fuzzy match is supported.
+        # The comment on the data table. Fuzzy match is supported.
         self.comment = comment
         # Specifies whether to return extended properties. If this parameter is set to `true`, extended properties are returned. If this parameter is set to `false`, extended properties are not returned.
         self.include_extended_properties = include_extended_properties
-        # The name. Fuzzy match is supported.
+        # The name of the data table. Fuzzy match is supported.
         self.name = name
         # The sort order. Default value: Asc. Valid values:
         # - Asc: ascending order
@@ -33,17 +33,17 @@ class ListTablesRequest(DaraModel):
         self.page_number = page_number
         # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The ID of the parent metadata entity. You can refer to the response of the ListDatabases or ListSchemas operation, or see [Metadata entity concepts](https://help.aliyun.com/document_detail/2880092.html).
+        # The ID of the parent metadata entity. You can refer to the response of the ListDatabases or ListSchemas operation, or see [Concepts of metadata entities](https://help.aliyun.com/document_detail/2880092.html).
         # 
         # - The parent entity can be the database to which the table belongs. The `ParentMetaEntityId` format is `${EntityType}:${Instance ID or URL-encoded JDBC URL}:${Data catalog identifier}:${Database name}`. Use an empty string as a placeholder for non-existent levels.
         # 
         # - The parent entity can also be the database schema to which the table belongs. The `ParentMetaEntityId` format is `${EntityType}:${Instance ID or URL-encoded JDBC URL}:${Data catalog identifier}:${Database name}:${Schema name}`. Use an empty string as a placeholder for non-existent levels.
         # 
-        # > - The database schema can be used for `ParentMetaEntityId` only when the database type supports schemas (`maxcompute`, `holo`, `postgresql`, `sqlserver`, `hybriddb_for_postgresql`, or `oracle`). For MaxCompute, the three-level model must be enabled. Otherwise, only the database can be used.
-        # > - For MaxCompute and DLF types, use an empty string as a placeholder for the instance ID. For MaxCompute, the database name is the MaxCompute project name.
-        # > - For StarRocks, the data catalog identifier is the catalog name. For DLF, the data catalog identifier is the catalog ID. Other types do not support the catalog level, so use an empty string as a placeholder.
+        # > - You can use a database schema for `ParentMetaEntityId` only when the database type supports schemas (`maxcompute`, `holo`, `postgresql`, `sqlserver`, `hybriddb_for_postgresql`, or `oracle`). For MaxCompute, the three-level model must be enabled. Otherwise, you can only use a database.
+        # > - For MaxCompute and DLF data sources, use an empty string as a placeholder for the instance ID. For MaxCompute, the database name is the MaxCompute project name.
+        # > - For StarRocks, the data catalog identifier is the catalog name. For DLF, the data catalog identifier is the catalog ID. Other types do not support the catalog level, so you can use an empty string as a placeholder.
         # 
-        # Examples of `ParentMetaEntityId` formats for common types:
+        # The following examples show the `ParentMetaEntityId` formats for common data source types:
         # 
         # - `maxcompute-project:::project_name`
         # 
@@ -67,7 +67,7 @@ class ListTablesRequest(DaraModel):
         # 
         # This parameter is required.
         self.parent_meta_entity_id = parent_meta_entity_id
-        # The field used for sorting. Default value: CreateTime. Valid values:
+        # The field by which to sort the results. Default value: CreateTime. Valid values:
         # - CreateTime: creation time
         # - ModifyTime: modification time
         # - Name: name

@@ -15,7 +15,7 @@ class ListTaskInstanceOperationLogsResponseBody(DaraModel):
     ):
         # The pagination information.
         self.paging_info = paging_info
-        # The request ID. You can locate logs and troubleshoot issues based on the ID.
+        # The ID of the request. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -54,7 +54,7 @@ class ListTaskInstanceOperationLogsResponseBodyPagingInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The operation logs.
+        # The list of operation logs.
         self.operation_logs = operation_logs
         # The page number.
         self.page_number = page_number
@@ -118,15 +118,17 @@ class ListTaskInstanceOperationLogsResponseBodyPagingInfoOperationLogs(DaraModel
         task_instance_id: int = None,
         user: str = None,
     ):
-        # The time when the operation log was generated.
+        # The generation time of Operation logs.
+        # 
+        # The format is a 13-digit number, such as `1710239005403`.
         self.create_time = create_time
-        # The operation content.
+        # The content of the operation.
         self.operation_content = operation_content
-        # The serial number of the operation.
+        # The sequence number of the operation.
         self.operation_seq = operation_seq
-        # The ID of the instance on which the operation was performed.
+        # The ID of the node instance on which the operation was performed.
         self.task_instance_id = task_instance_id
-        # The account ID of the operator.
+        # The account ID of the user who performed the operation.
         self.user = user
 
     def validate(self):

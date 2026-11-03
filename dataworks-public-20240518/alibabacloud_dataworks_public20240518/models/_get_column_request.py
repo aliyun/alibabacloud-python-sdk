@@ -9,13 +9,13 @@ class GetColumnRequest(DaraModel):
         self,
         id: str = None,
     ):
-        # The ID. You can refer to the response of the ListColumns operation and [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+        # The ID. You can refer to the response of the ListColumns operation and [Metadata entity concepts](https://help.aliyun.com/document_detail/2880092.html).
         # 
-        # The format is `${EntityType}:${Instance ID or URL-encoded JDBC URL}:${Data catalog identifier}:${Database name}:${Schema name}:${Table name}:${Column name}`. Use an empty string as a placeholder for non-existent levels.
+        # The format is `${EntityType}:${Instance ID or URL-encoded URL}:${Catalog identifier}:${Database name}:${Schema name}:${Table name}:${Column name}`. Use an empty string as a placeholder for non-existent levels.
         # 
-        # > For MaxCompute and DLF types, use an empty string as a placeholder for the instance ID. For MaxCompute, the database name is the MaxCompute project name. If the three-level model is enabled for the project, you must provide the schema name. Otherwise, use an empty string as a placeholder for the schema name.
+        # > For MaxCompute and DLF, use an empty string as a placeholder for the instance ID. For MaxCompute, the database name is the MaxCompute project name. If the three-level model is enabled for the project, the schema name is required. Otherwise, use an empty string as a placeholder for the schema name.
         # 
-        # > For StarRocks, the data catalog identifier is the catalog name. For DLF, the data catalog identifier is the catalog ID. Other types do not support the catalog level, so you can use an empty string as a placeholder.
+        # > For StarRocks, the catalog identifier is the catalog name. For DLF, the catalog identifier is the catalog ID. Other types do not support the catalog level, so use an empty string as a placeholder.
         # 
         # The following are the ID formats for common types:
         # 
@@ -35,7 +35,7 @@ class GetColumnRequest(DaraModel):
         # `catalog_id`: The DLF catalog ID.   
         # `project_name`: The MaxCompute project name.   
         # `database_name`: The database name.   
-        # `schema_name`: The schema name. For MaxCompute, this is required only if the three-level model is enabled for the project. Otherwise, use an empty string as a placeholder.    
+        # `schema_name`: The schema name. For MaxCompute, this is required only when the three-level model is enabled for the project. Otherwise, use an empty string as a placeholder.    
         # `table_name`: The table name.    
         # `column_name`: The column name.
         # 
