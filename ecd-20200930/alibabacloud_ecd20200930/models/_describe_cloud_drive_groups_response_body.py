@@ -16,11 +16,11 @@ class DescribeCloudDriveGroupsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The list of cloud drive team spaces.
+        # The list of team workspaces in the cloud drive.
         self.cloud_drive_groups = cloud_drive_groups
         # The total number of entries.
         self.count = count
-        # The token for the next query. If `NextToken` is empty, no more results exist.
+        # The token for the next query. If `NextToken` is empty, no more results are available.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -97,27 +97,27 @@ class DescribeCloudDriveGroupsResponseBodyCloudDriveGroups(DaraModel):
     ):
         # The list of team administrators.
         self.admin_user_ids = admin_user_ids
-        # The team storage management administrator information.
+        # The information about the administrators of the team storage management.
         self.admin_user_infos = admin_user_infos
-        # The creation time. The time is in the ISO 8601 standard in the UTC format: yyyy-MM-ddTHH:mm:ssZ.
+        # The creation time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
-        # The office network ID.
+        # The ID of the office network.
         self.directory_id = directory_id
-        # The space ID.
+        # The ID of the workspace.
         self.drive_id = drive_id
-        # The team space ID.
+        # The ID of the team workspace.
         self.group_id = group_id
-        # The team space name.
+        # The name of the team workspace.
         self.group_name = group_name
         # The organization ID of the team.
         self.org_id = org_id
-        # The size of the team space recycle bin. Unit: bytes.
+        # The size of the recycle bin in the team workspace. Unit: bytes.
         self.recycle_bin_size = recycle_bin_size
-        # The team space status.
+        # The status of the team workspace.
         self.status = status
-        # The total capacity of the cloud drive team space.
+        # The total capacity of the team workspace.
         self.total_size = total_size
-        # The used space size. Unit: bytes.
+        # The size of the used space. Unit: bytes.
         self.used_size = used_size
 
     def validate(self):
@@ -227,15 +227,15 @@ class DescribeCloudDriveGroupsResponseBodyCloudDriveGroupsAdminUserInfos(DaraMod
     ):
         # The email address.
         self.email = email
-        # The administrator username. This value may not be readable when imported from a third party.
+        # The username of the administrator. The username may be unreadable if it is imported from a third-party system.
         self.end_user_id = end_user_id
-        # The employee ID (DingTalk).
+        # The employee ID in DingTalk.
         self.job_number = job_number
-        # The administrator nickname.
+        # The nickname of the administrator.
         self.nick_name = nick_name
         # The phone number.
         self.phone = phone
-        # The administrator nickname.
+        # The nickname of the administrator.
         self.real_nick_name = real_nick_name
         # The remarks.
         self.remark = remark

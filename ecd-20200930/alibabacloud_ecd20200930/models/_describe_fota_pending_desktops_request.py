@@ -15,24 +15,24 @@ class DescribeFotaPendingDesktopsRequest(DaraModel):
         region_id: str = None,
         task_uid: str = None,
     ):
-        # The ID of the cloud computer.
+        # The cloud desktop ID.
         self.desktop_id = desktop_id
-        # The name of the cloud computer.
+        # The name of the cloud desktop.
         self.desktop_name = desktop_name
-        # The maximum number of entries per page for a paged query.
+        # The maximum number of entries to return per page when paging in a paged query.
         # 
         # - Maximum value: 100
         # - Default value: 20
         self.max_results = max_results
-        # The pagination token. Set the value to the `NextToken` value returned from the previous call to this operation. You do not need to specify this parameter for the first call.
+        # The pagination token. Set the value to the `NextToken` value returned from the last call to this operation. You do not need to specify this parameter for the first call.
         self.next_token = next_token
-        # The ID of the office network. You can call the [DescribeOfficeSites](https://help.aliyun.com/document_detail/216071.html) operation to obtain this parameter.
+        # The office network ID. You can call the [DescribeOfficeSites](https://help.aliyun.com/document_detail/216071.html) operation to obtain this parameter.
         self.office_site_id = office_site_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions supported by cloud computers.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The information about the image upgrade task. You can call the [DescribeFotaTasks](https://help.aliyun.com/document_detail/437001.html) operation to obtain this parameter.
+        # The UID of the image upgrade task. You can call the [DescribeFotaTasks](https://help.aliyun.com/document_detail/437001.html) operation to obtain this parameter.
         self.task_uid = task_uid
 
     def validate(self):

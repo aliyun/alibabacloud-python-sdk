@@ -16,7 +16,7 @@ class DescribePrinterEventsResponseBody(DaraModel):
     ):
         # The user events.
         self.events = events
-        # The pagination token for the next query. If NextToken is empty, no more results exist.
+        # The token for the next query. If NextToken is empty, no more results are available.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -79,9 +79,9 @@ class DescribePrinterEventsResponseBodyEvents(DaraModel):
         printer_port: str = None,
         printer_redir_type: int = None,
     ):
-        # The cloud computer ID.
+        # The cloud desktop ID.
         self.desktop_id = desktop_id
-        # The cloud computer name.
+        # The cloud desktop name.
         self.desktop_name = desktop_name
         # The end user ID.
         self.end_user_id = end_user_id
@@ -89,7 +89,7 @@ class DescribePrinterEventsResponseBodyEvents(DaraModel):
         self.event_id = event_id
         # The printer driver name.
         self.printer_driver = printer_driver
-        # The number of copies to print.
+        # The number of printed copies.
         self.printer_job_copies = printer_job_copies
         # The print job name.
         self.printer_job_name = printer_job_name
@@ -97,9 +97,9 @@ class DescribePrinterEventsResponseBodyEvents(DaraModel):
         self.printer_job_pages = printer_job_pages
         # The number of printed pages.
         self.printer_job_printed_pages = printer_job_printed_pages
-        # The print job size, in bytes.
+        # The print job size in bytes.
         self.printer_job_size = printer_job_size
-        # The print job time, in millisecond-precision UNIX timestamp.
+        # The print job time in milliseconds.
         self.printer_job_time = printer_job_time
         # The printer name.
         self.printer_name = printer_name

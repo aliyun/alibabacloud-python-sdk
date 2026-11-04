@@ -22,36 +22,34 @@ class DescribeCloudDriveGroupsRequest(DaraModel):
         parent_group_id: str = None,
         region_id: str = None,
     ):
-        # The enterprise cloud drive ID.
+        # The ID of the enterprise cloud drive.
         # 
         # This parameter is required.
         self.cds_id = cds_id
-        # The office network ID.
+        # The ID of the office network.
         self.directory_id = directory_id
-        # The office network name.
+        # The name of the office network.
         self.directory_name = directory_name
-        # The team space status.
+        # The status of the team workspace.
         self.drive_status = drive_status
-        # Specifies whether a space is added. Default value: empty, which indicates that all types are queried.
+        # Specifies whether a workspace is added. By default, this parameter is left empty, which indicates that all workspaces are queried.
         self.drive_type = drive_type
-        # The list of team space IDs.
+        # The IDs of the team workspaces.
         self.group_id = group_id
-        # The team space name. Fuzzy match is supported.
+        # The name of the team workspace. Fuzzy match is supported.
         self.group_name = group_name
-        # The team type. Default value: empty, which indicates that all types are queried.
+        # The team type. By default, this parameter is left empty, which indicates that all types are queried.
         self.group_type = group_type
-        # The number of entries per page for a paged query.
+        # The number of entries to return on each page during paging in a paged query.
         # 
-        # - Maximum value: 100.
-        # - Default value: 20.
+        # - Maximum value: 100
+        # - Default value: 20
         self.max_results = max_results
-        # The pagination token. Set this parameter to the value of `NextToken` that was returned in the previous call. You do not need to set this parameter for the first request.
+        # The pagination token. Set the value to the `NextToken` value returned from the last call. You do not need to specify this parameter for the first call.
         self.next_token = next_token
-        # The ID of the parent node of the object to query. To query the root node, set this parameter to `root`.
-        # 
-        # Default value: empty, which indicates that all team spaces are queried.
+        # The ID of the parent node of the object to be queried. To query the root node, set this parameter to `root`. By default, this parameter is left empty, which indicates that all objects are queried.
         self.parent_group_id = parent_group_id
-        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the list of regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id

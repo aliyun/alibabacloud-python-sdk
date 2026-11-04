@@ -56,90 +56,91 @@ class DescribeDesktopsRequest(DaraModel):
         # Enterprise: Enterprise Edition
         # Business: Business Edition
         self.business_channel = business_channel
-        # The billing method of the cloud computer.
+        # The billing method of the cloud desktop.
         self.charge_type = charge_type
-        # The cloud computer pool ID. If you specify `DesktopId`, this `DesktopGroupId` parameter is ignored. If `DesktopId` is empty, the system retrieves the `DesktopId` of all cloud computers in the specified cloud computer pool based on `DesktopGroupId`.
+        # The desktop group ID. If you specify `DesktopId`, the `DesktopGroupId` parameter is ignored. If `DesktopId` is empty, the system queries the `DesktopId` of all cloud desktops in the desktop group based on `DesktopGroupId`.
         self.desktop_group_id = desktop_group_id
-        # The cloud computer IDs. You can specify 1 to 100 IDs.
+        # The cloud desktop IDs. You can specify 1 to 100 IDs.
         self.desktop_id = desktop_id
-        # The cloud computer name.
+        # The cloud desktop name.
         self.desktop_name = desktop_name
-        # The cloud computer status.
+        # The cloud desktop status.
         self.desktop_status = desktop_status
-        # The list of cloud computer statuses.
+        # The list of cloud desktop statuses.
         self.desktop_status_list = desktop_status_list
-        # The cloud computer instance type. Call [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) to query the supported instance type IDs.
+        # The cloud desktop type. You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) operation to query the supported cloud desktop types.
         self.desktop_type = desktop_type
-        # The directory ID. This is the same as the office network ID.
+        # The directory ID. This parameter is equivalent to the office network ID.
         self.directory_id = directory_id
-        # The list of authorized users for the cloud computer. You can set 1 to 100 users.
+        # The authorized users of the cloud desktop. You can specify 1 to 100 users.
         # 
-        # > At any given time, only one user can connect to and use the cloud computer.
+        # > Only one user can connect to and use the cloud desktop at a time.
         self.end_user_id = end_user_id
-        # The list of authorized users to exclude. You can specify 1 to 100 users.
+        # The authorized users of the cloud desktop to exclude. You can specify 1 to 100 users.
         self.excluded_end_user_id = excluded_end_user_id
-        # The expiration time of the subscription cloud computer. The time follows the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
+        # The expiration time of the subscription cloud desktop.
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.expired_time = expired_time
-        # Specifies whether to include enterprise resource group information in the response.
+        # Specifies whether to query the enterprise resource group information.
         self.fill_resource_group = fill_resource_group
-        # Specifies whether to exclude pooled cloud computers (cloud computers in a cloud computer pool).
+        # Specifies whether to exclude pooled cloud desktops (cloud desktops in a desktop group).
         self.filter_desktop_group = filter_desktop_group
         # The elastic GPU pool ID.
         self.gpu_instance_group_id = gpu_instance_group_id
-        # The cloud computer pool ID.
+        # The desktop group ID.
         self.group_id = group_id
         # The list of image IDs.
         self.image_id = image_id
-        # Specifies whether to include automatic snapshot policy information in the response.
+        # Specifies whether to include the automatic snapshot policy information in the response.
         self.include_auto_snapshot_policy = include_auto_snapshot_policy
         # The management flag.
         self.management_flag = management_flag
-        # The number of entries per page for a paged query.
+        # The number of entries to return per page in a paging query.
         # 
-        # - Maximum value: 100
-        # - Default value: 10
+        # - Maximum value: 100.
+        # - Default value: 10.
         self.max_results = max_results
         # Specifies whether there are multiple resources.
         self.multi_resource = multi_resource
         # The private IP address.
         self.network_interface_ip = network_interface_ip
-        # The token that marks the start of the next query. An empty NextToken value indicates that there are no more results.
+        # The token that is used to start the next query. If NextToken is empty, no more results exist.
         self.next_token = next_token
         # The office network ID.
         self.office_site_id = office_site_id
         # The office network name.
         self.office_site_name = office_site_name
-        # Specifies whether to query only pooled cloud computers (cloud computers in a cloud computer pool).
+        # Specifies whether to query only pooled cloud desktops (cloud desktops in a desktop group).
         self.only_desktop_group = only_desktop_group
         # The operating system type.
         self.os_types = os_types
-        # The page number in a paged query.
+        # The page number of the current page in a paging query.
         self.page_number = page_number
-        # The maximum number of entries per page in a paged query.
+        # The maximum number of entries per page in a paging query.
         self.page_size = page_size
-        # The cloud computer policy ID.
+        # The cloud desktop policy ID.
         self.policy_group_id = policy_group_id
         # The protocol type.
         self.protocol_type = protocol_type
-        # The public IP address of the instance. Use this parameter to filter instances by public IP address.
+        # The public IP address of the instance.
         self.public_ip = public_ip
         # The public network bandwidth throttling rule ID.
         self.qos_rule_id = qos_rule_id
-        # Specifies whether to query the image version information of the cloud computer.
+        # Specifies whether to query the image version information of the cloud desktop.
         self.query_fota_update = query_fota_update
-        # The region ID. Call [DescribeRegions](~~DescribeRegions~~) to retrieve the list of regions supported by Alibaba Cloud Workspace.
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions supported by WUYING Workspace.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource reservation pool ID (rp-xxx). Filters cloud computers by reservation pool exactly. If not specified or left empty, no filtering by reservation pool is applied.
+        # The resource reservation pool ID (rp-xxx). This parameter is used to filter cloud desktops precisely by reservation pool. If this parameter is not specified or is empty, cloud desktops are not filtered by reservation pool.
         self.reserve_pool_id = reserve_pool_id
-        # The enterprise resource group ID.
+        # The ID of the enterprise resource group.
         self.resource_group_id = resource_group_id
         # The snapshot policy ID.
         self.snapshot_policy_id = snapshot_policy_id
-        # The purchase method of the cloud computer.
+        # The billing method for the cloud desktop.
         self.sub_pay_type = sub_pay_type
-        # The list of tags. A tag consists of a key-value pair and is used to identify resources. You can use tags to group and manage cloud computers for easier search and batch operations. For more information, see [Use tags to manage cloud computers](https://help.aliyun.com/document_detail/203781.html).
+        # The list of tags. A tag consists of a key-value pair and is used to identify a resource. You can use tags to manage cloud desktops in groups for easy search and batch operations. For more information, see [Use tags to manage cloud desktops](https://help.aliyun.com/document_detail/203781.html).
         self.tag = tag
         # The username.
         self.user_name = user_name
@@ -418,9 +419,9 @@ class DescribeDesktopsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. If you specify `Tag`, `Key` is required. The value cannot exceed 128 characters, cannot start with `aliyun` or `acs:`, cannot contain `http://` or `https://`, and cannot consist of spaces only.
+        # The tag key. If you specify `Tag`, `Key` is required. The tag key can be up to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`, and cannot contain only spaces.
         self.key = key
-        # The tag value. The value cannot exceed 128 characters, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag value. The tag value can be up to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

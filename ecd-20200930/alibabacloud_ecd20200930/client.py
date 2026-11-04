@@ -13202,6 +13202,8 @@ class Client(OpenApiClient):
             query['OfficeSiteId'] = request.office_site_id
         if not DaraCore.is_null(request.order_by):
             query['OrderBy'] = request.order_by
+        if not DaraCore.is_null(request.org_id_list):
+            query['OrgIdList'] = request.org_id_list
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -13266,6 +13268,8 @@ class Client(OpenApiClient):
             query['OfficeSiteId'] = request.office_site_id
         if not DaraCore.is_null(request.order_by):
             query['OrderBy'] = request.order_by
+        if not DaraCore.is_null(request.org_id_list):
+            query['OrgIdList'] = request.org_id_list
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):

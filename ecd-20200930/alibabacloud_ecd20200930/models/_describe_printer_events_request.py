@@ -22,19 +22,21 @@ class DescribePrinterEventsRequest(DaraModel):
         region_id: str = None,
         start_time: str = None,
     ):
-        # The cloud computer ID. If you do not specify this parameter, all cloud computers in the region are queried.
+        # The cloud desktop ID. If you do not specify this parameter, the system queries all cloud desktops in the specified region.
         self.desktop_id = desktop_id
-        # The cloud computer name.
+        # The cloud desktop name.
         self.desktop_name = desktop_name
-        # The end time. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC+0. If you do not specify this parameter, the current time is used.
+        # The end time. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC. If you do not specify this parameter, the current time is used.    
+        # [ISO 8601](https://help.aliyun.com/document_detail/25696.html)
         self.end_time = end_time
-        # The logon user information, which is a RAM user ID or an Active Directory (AD) username. If you do not specify this parameter, events of all users in the region are queried.
+        # The logon user information, which is the RAM user ID or the Active Directory (AD) username. If you do not specify this parameter, the system queries the events of all users in the specified region.
         self.end_user_id = end_user_id
         # The list of end user IDs.
         self.end_user_ids = end_user_ids
-        # The number of entries per page in a paged query. Default value: 100.
+        # The number of entries to return on each page during paging.
+        # Default value: 100.
         self.max_results = max_results
-        # The pagination token. Set this parameter to the value of NextToken that was returned in the previous API call.
+        # The query token. The value is the NextToken value returned by the previous API call.
         self.next_token = next_token
         # The printer driver name.
         self.printer_driver = printer_driver
@@ -42,11 +44,12 @@ class DescribePrinterEventsRequest(DaraModel):
         self.printer_name = printer_name
         # The printer redirection type.
         self.printer_redir_type = printer_redir_type
-        # The region ID. You can call DescribeRegions to query the regions supported by Elastic Desktop Service.
+        # The region ID. You can call the DescribeRegions operation to query the list of regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The start time. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC+0. If you do not specify this parameter, the query starts from the time that is calculated backward from the time specified by `EndTime`.
+        # The start time. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC. If you do not specify this parameter, the system queries events prior to the time specified by `EndTime`.   
+        # [ISO 8601](https://help.aliyun.com/document_detail/25696.html)
         self.start_time = start_time
 
     def validate(self):

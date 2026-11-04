@@ -18,11 +18,11 @@ class DescribeFotaPendingDesktopsResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The list of cloud computers that can be upgraded to the image version corresponding to `TaskUid` but have not been upgraded.
+        # The list of cloud desktops that can be upgraded to the image version corresponding to `TaskUid` but have not been upgraded.
         self.fota_pending_desktops = fota_pending_desktops
         # The message.
         self.message = message
-        # The pagination token for the next query. If NextToken is empty, no more results are available.
+        # The pagination token for the next query. An empty `NextToken` indicates that no more results are available.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -90,19 +90,19 @@ class DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktops(DaraModel):
         sessions: List[main_models.DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktopsSessions] = None,
         status: int = None,
     ):
-        # The current image version of the cloud computer.
+        # The current image version of the cloud desktop.
         self.current_app_version = current_app_version
-        # The ID of the cloud computer.
+        # The cloud desktop ID.
         self.desktop_id = desktop_id
-        # The name of the cloud computer.
+        # The name of the cloud desktop.
         self.desktop_name = desktop_name
         # > This parameter is not publicly available.
         self.fota_project = fota_project
-        # The ID of the office network.
+        # The office network ID.
         self.office_site_id = office_site_id
         # The list of connected sessions.
         self.sessions = sessions
-        # The status of the cloud computer.
+        # The status of the cloud desktop.
         self.status = status
 
     def validate(self):

@@ -19,6 +19,7 @@ class DescribeGlobalDesktopRecordsRequest(DaraModel):
         exclude_desktop_status_list: List[str] = None,
         office_site_id: str = None,
         order_by: str = None,
+        org_id_list: List[str] = None,
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
@@ -30,59 +31,61 @@ class DescribeGlobalDesktopRecordsRequest(DaraModel):
         user_names: List[str] = None,
     ):
         # The business channel. Valid values:
-        # - Enterprise: Enterprise Edition.
-        # - Business: Business Edition.
+        # - Enterprise: Enterprise Edition
+        # - Business: Business Edition
         self.business_channel = business_channel
-        # The cloud desktop ID. You can specify 1 to 100 IDs.
+        # The ID of the cloud computer. You can specify 1 to 100 IDs.
         self.desktop_id = desktop_id
-        # The cloud desktop name.
+        # The name of the cloud computer.
         self.desktop_name = desktop_name
-        # The list of cloud desktop statuses to include.
+        # The list of cloud computer statuses to include.
         self.desktop_status_list = desktop_status_list
-        # The cloud desktop specifications. You can call [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) to query the specification IDs supported by cloud desktops.
+        # The specifications of the cloud computer. You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) operation to query the IDs of the specifications supported by cloud computers.
         self.desktop_type = desktop_type
-        # The end time. The interval between the start time and end time cannot exceed 30 days. Supported format:
+        # The end time. The maximum interval between the start time and the end time is 30 days. Supported format:
         # - Format: YYYY-MM-DDThh:mm:ssZ.
         self.end_time = end_time
-        # The end user ID.
+        # The ID of the end user.
         self.end_user_id = end_user_id
-        # The list of cloud desktop statuses to exclude.
+        # The list of cloud computer statuses to exclude.
         self.exclude_desktop_status_list = exclude_desktop_status_list
         # The office network ID.
         self.office_site_id = office_site_id
-        # The sort field. If this parameter is not specified, results are sorted by creation time in descending order. Valid values:
+        # The sorting field. If not specified, the results are sorted in descending order of creation time. Valid values:
         # 
-        # - uptime: sorts by cloud desktop uptime.
+        # - uptime: Sorts the results by the uptime of the cloud computer.
         self.order_by = order_by
-        # The page number of the current page in a paged query.    
+        # The list of organization IDs.
+        self.org_id_list = org_id_list
+        # The page number of the current page in a paging query.    
         # Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Maximum value: 100.
         self.page_size = page_size
-        # The region ID. Valid values:
+        # The region ID.
         # - Shanghai
         # - Singapore
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The query scope. This parameter is empty by default. Valid values:
+        # The query scope. Default value: empty. Valid values:
         # 
-        # - ADVANCED: queries statistical records such as connection duration.
+        # - ADVANCED: Queries statistical records such as connection duration.
         self.scope = scope
-        # The sort order. Default value: Asc. Valid values:
-        # - Asc: ascending order.
-        # - Desc: descending order.
+        # The sorting order. Default value: Asc. Valid values:
+        # - Asc: ascending order
+        # - Desc: descending order
         self.sort_type = sort_type
         # The start time. Supported format:
         # - Format: YYYY-MM-DDThh:mm:ssZ.
         self.start_time = start_time
-        # The billing method of the cloud desktop. Valid values:
+        # The billing method of the cloud computer. Valid values:
         # 
-        # - prePaid: monthly subscription with unlimited usage duration.
-        # - postPaid: pay-as-you-go.
-        # - monthPackage: monthly duration package.
+        # - prePaid: monthly subscription with unlimited duration
+        # - postPaid: pay-as-you-go
+        # - monthPackage: monthly time package
         self.sub_pay_type = sub_pay_type
         # The list of usernames.
         self.user_names = user_names
@@ -124,6 +127,9 @@ class DescribeGlobalDesktopRecordsRequest(DaraModel):
 
         if self.order_by is not None:
             result['OrderBy'] = self.order_by
+
+        if self.org_id_list is not None:
+            result['OrgIdList'] = self.org_id_list
 
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
@@ -185,6 +191,9 @@ class DescribeGlobalDesktopRecordsRequest(DaraModel):
 
         if m.get('OrderBy') is not None:
             self.order_by = m.get('OrderBy')
+
+        if m.get('OrgIdList') is not None:
+            self.org_id_list = m.get('OrgIdList')
 
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')

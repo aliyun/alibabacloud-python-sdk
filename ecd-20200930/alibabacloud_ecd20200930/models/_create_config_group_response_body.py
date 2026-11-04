@@ -11,7 +11,7 @@ class CreateConfigGroupResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The configuration group ID.
+        # The ID of the configuration group.
         self.group_id = group_id
         # The creation result.
         self.message = message

@@ -77,6 +77,7 @@ class DescribeGlobalDesktopRecordsResponseBodySessions(DaraModel):
         gpu_spec: str = None,
         latest_connection_time: int = None,
         latest_session_end_time: str = None,
+        management_flags: List[str] = None,
         memory: int = None,
         office_site_id: str = None,
         office_site_name: str = None,
@@ -97,33 +98,35 @@ class DescribeGlobalDesktopRecordsResponseBodySessions(DaraModel):
         self.connection_status = connection_status
         # The number of vCPUs.
         self.cpu = cpu
-        # The time when the cloud desktop was created. The time is in the ISO 8601 standard (UTC).
+        # The creation time of the cloud desktop. The time follows the ISO 8601 standard in UTC.
         self.creation_time = creation_time
-        # The shared cloud desktop ID.
+        # The ID of the shared cloud computer.
         self.desktop_group_id = desktop_group_id
-        # The shared cloud desktop name.
+        # The name of the shared cloud computer.
         self.desktop_group_name = desktop_group_name
-        # The cloud desktop ID.
+        # The ID of the cloud computer.
         self.desktop_id = desktop_id
-        # The cloud desktop name.
+        # The name of the cloud computer.
         self.desktop_name = desktop_name
         # The desktop status.
         self.desktop_status = desktop_status
-        # The end user ID.
+        # The ID of the end user.
         self.end_user_id = end_user_id
         # The list of assigned end user IDs.
         self.end_user_ids = end_user_ids
         # The GPU memory size.
         self.gpu_spec = gpu_spec
-        # The duration of the most recent connection to the cloud desktop. Unit: seconds.
+        # The duration of the most recent connection to the cloud computer. Unit: seconds.
         self.latest_connection_time = latest_connection_time
-        # The latest end time of the current session. The time is in the ISO 8601 standard (UTC): yyyy-MM-ddTHH:mm:ssZ.
+        # The latest end time of the current session. The time follows the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
         self.latest_session_end_time = latest_session_end_time
-        # The memory of the cloud desktop. Unit: MiB.
+        # The desktop management status.
+        self.management_flags = management_flags
+        # The memory of the cloud computer. Unit: MiB.
         self.memory = memory
         # The office network ID.
         self.office_site_id = office_site_id
-        # The office network name.
+        # The name of the office network.
         self.office_site_name = office_site_name
         # The office network type.
         self.office_site_type = office_site_type
@@ -132,7 +135,7 @@ class DescribeGlobalDesktopRecordsResponseBodySessions(DaraModel):
         # - Windows
         # - Linux
         self.os_type = os_type
-        # The specific operating system version.
+        # The specific operating system model.
         self.platform = platform
         # The protocol type. Valid values:
         # 
@@ -141,23 +144,23 @@ class DescribeGlobalDesktopRecordsResponseBodySessions(DaraModel):
         self.protocol_type = protocol_type
         # The region ID.
         self.region_id = region_id
-        # The enterprise resource group names.
+        # The name of the enterprise resource group.
         self.resource_groups = resource_groups
-        # The session idle duration. Unit: minutes.
+        # The idle duration of the session. Unit: minutes.
         self.session_idle_time = session_idle_time
         # The session details.
         self.sessions = sessions
-        # The UNIX timestamp when the cloud desktop status changed. Unit: milliseconds.
+        # The UNIX timestamp of the time when the cloud computer status changed. Unit: milliseconds.
         self.status_change_time = status_change_time
-        # The billing method of the cloud desktop. Valid values:
+        # The billing method of the cloud computer. Valid values:
         # 
-        # - prePaid: monthly subscription with unlimited usage duration.
-        # - postPaid: pay-as-you-go.
-        # - monthPackage: monthly duration package.
+        # - prePaid: monthly subscription with unlimited duration
+        # - postPaid: pay-as-you-go
+        # - monthPackage: monthly time package
         self.sub_pay_type = sub_pay_type
         # The total connection duration. Unit: seconds.
         self.total_connection_time = total_connection_time
-        # The cloud desktop uptime. Unit: seconds.
+        # The uptime of the cloud computer. Unit: seconds.
         self.up_time = up_time
 
     def validate(self):
@@ -213,6 +216,9 @@ class DescribeGlobalDesktopRecordsResponseBodySessions(DaraModel):
 
         if self.latest_session_end_time is not None:
             result['LatestSessionEndTime'] = self.latest_session_end_time
+
+        if self.management_flags is not None:
+            result['ManagementFlags'] = self.management_flags
 
         if self.memory is not None:
             result['Memory'] = self.memory
@@ -306,6 +312,9 @@ class DescribeGlobalDesktopRecordsResponseBodySessions(DaraModel):
         if m.get('LatestSessionEndTime') is not None:
             self.latest_session_end_time = m.get('LatestSessionEndTime')
 
+        if m.get('ManagementFlags') is not None:
+            self.management_flags = m.get('ManagementFlags')
+
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
 
@@ -365,9 +374,9 @@ class DescribeGlobalDesktopRecordsResponseBodySessionsSessions(DaraModel):
         end_user_id: str = None,
         establishment_time: str = None,
     ):
-        # The end user ID.
+        # The ID of the end user.
         self.end_user_id = end_user_id
-        # The time when the session was created. The time is in the ISO 8601 standard (UTC): yyyy-MM-ddTHH:mm:ssZ.
+        # The creation time of the session. The time follows the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
         self.establishment_time = establishment_time
 
     def validate(self):
@@ -402,9 +411,9 @@ class DescribeGlobalDesktopRecordsResponseBodySessionsResourceGroups(DaraModel):
         resource_group_id: str = None,
         resource_group_name: str = None,
     ):
-        # The enterprise resource group ID.
+        # The ID of the enterprise resource group.
         self.resource_group_id = resource_group_id
-        # The resource group name.
+        # The name of the resource group.
         self.resource_group_name = resource_group_name
 
     def validate(self):

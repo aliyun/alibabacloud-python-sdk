@@ -21,7 +21,7 @@ class BatchModifyEntitlementRequest(DaraModel):
         # 
         # This parameter is required.
         self.desktop_id = desktop_id
-        # The user IDs, which are the usernames.
+        # The IDs of the users, which are the usernames.
         self.end_user_id = end_user_id
         # The number of cloud desktops assigned to each user.
         self.max_desktop_per_user = max_desktop_per_user
@@ -29,14 +29,13 @@ class BatchModifyEntitlementRequest(DaraModel):
         self.max_user_per_desktop = max_user_per_desktop
         # Specifies whether to preview the assignment. A preview does not perform the actual assignment.
         self.preview = preview
-        # The region ID. You can call DescribeRegions to query the regions supported by Elastic Desktop Service.
+        # The region ID. You can call the DescribeRegions operation to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The policy used when proportional matching is not possible. Valid values:
-        # 
-        # - AVERAGE: Prioritizes assigning cloud desktops to each user. When the number of selected cloud desktops and users cannot be matched proportionally, cloud desktops are assigned to each user first.
-        # - CENTRAL: Prioritizes assigning a specified number of cloud desktops to users. When the number of selected cloud desktops and users cannot be matched proportionally, the specified number of cloud desktops are assigned to users first.
+        # The matching policy used when proportional matching is not possible. Valid values:
+        # - AVERAGE: Assigns cloud desktops to each user first. When the number of selected cloud desktops and the number of users cannot be matched proportionally, cloud desktops are assigned to each user first.
+        # - CENTRAL: Assigns a specified number of cloud desktops to users first. When the number of selected cloud desktops and the number of users cannot be matched proportionally, the specified number of cloud desktops are assigned to users first.
         self.strategy = strategy
 
     def validate(self):
