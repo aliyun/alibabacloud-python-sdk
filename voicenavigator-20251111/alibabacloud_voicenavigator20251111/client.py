@@ -4585,10 +4585,14 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.model):
+            body['Model'] = request.model
         if not DaraCore.is_null(request.nls_access_type):
             body['NlsAccessType'] = request.nls_access_type
         if not DaraCore.is_null(request.nls_engine):
             body['NlsEngine'] = request.nls_engine
+        if not DaraCore.is_null(request.omni_model):
+            body['OmniModel'] = request.omni_model
         if not DaraCore.is_null(request.page_number):
             body['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -4621,10 +4625,14 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.model):
+            body['Model'] = request.model
         if not DaraCore.is_null(request.nls_access_type):
             body['NlsAccessType'] = request.nls_access_type
         if not DaraCore.is_null(request.nls_engine):
             body['NlsEngine'] = request.nls_engine
+        if not DaraCore.is_null(request.omni_model):
+            body['OmniModel'] = request.omni_model
         if not DaraCore.is_null(request.page_number):
             body['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):

@@ -10,9 +10,9 @@ class GetCallDetailRecordRequest(DaraModel):
         instance_id: str = None,
         session_id: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The ID of the session.
+        # The session ID.
         self.session_id = session_id
 
     def validate(self):
