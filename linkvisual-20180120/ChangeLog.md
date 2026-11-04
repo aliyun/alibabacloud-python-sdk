@@ -1,3 +1,7 @@
+2026-11-04 Version: 3.0.0
+- Delete API DetectUserFaceByUrl.
+
+
 2024-02-01 Version: 2.3.0
 - Support API CreateStreamPushJob.
 - Support API CreateStreamSnapshotJob.

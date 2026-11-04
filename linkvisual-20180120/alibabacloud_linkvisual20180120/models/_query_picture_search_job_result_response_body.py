@@ -1,0 +1,233 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List
+
+from alibabacloud_linkvisual20180120 import models as main_models
+from darabonba.model import DaraModel
+
+class QueryPictureSearchJobResultResponseBody(DaraModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: main_models.QueryPictureSearchJobResultResponseBodyData = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The error code returned if the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/145071.html).
+        self.code = code
+        # The response data.
+        self.data = data
+        # The error message returned if the call fails.
+        self.error_message = error_message
+        # The ID of the request.
+        self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.code is not None:
+            result['Code'] = self.code
+
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+
+        if self.success is not None:
+            result['Success'] = self.success
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+
+        if m.get('Data') is not None:
+            temp_model = main_models.QueryPictureSearchJobResultResponseBodyData()
+            self.data = temp_model.from_map(m.get('Data'))
+
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+
+        return self
+
+class QueryPictureSearchJobResultResponseBodyData(DaraModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        page_count: int = None,
+        page_data: List[main_models.QueryPictureSearchJobResultResponseBodyDataPageData] = None,
+        page_size: int = None,
+        total: int = None,
+    ):
+        # The current page number.
+        self.current_page = current_page
+        # The total number of pages.
+        self.page_count = page_count
+        # The query results.
+        self.page_data = page_data
+        # The number of entries returned per page.
+        self.page_size = page_size
+        # The total number of entries.
+        self.total = total
+
+    def validate(self):
+        if self.page_data:
+            for v1 in self.page_data:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+
+        if self.page_count is not None:
+            result['PageCount'] = self.page_count
+
+        result['PageData'] = []
+        if self.page_data is not None:
+            for k1 in self.page_data:
+                result['PageData'].append(k1.to_map() if k1 else None)
+
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+
+        if self.total is not None:
+            result['Total'] = self.total
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+
+        if m.get('PageCount') is not None:
+            self.page_count = m.get('PageCount')
+
+        self.page_data = []
+        if m.get('PageData') is not None:
+            for k1 in m.get('PageData'):
+                temp_model = main_models.QueryPictureSearchJobResultResponseBodyDataPageData()
+                self.page_data.append(temp_model.from_map(k1))
+
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+
+        return self
+
+class QueryPictureSearchJobResultResponseBodyDataPageData(DaraModel):
+    def __init__(
+        self,
+        device_nick_name: str = None,
+        event_time: int = None,
+        gateway_iot_id: str = None,
+        iot_id: str = None,
+        pic_url: str = None,
+        threshold: float = None,
+        vector_id: str = None,
+    ):
+        # The alias of the device.
+        # 
+        # > If no alias is set for the device, this parameter is not returned.
+        self.device_nick_name = device_nick_name
+        # The time when the event was created. The value is a 13-digit timestamp in milliseconds.
+        self.event_time = event_time
+        # The IoT ID of the V-series edge all-in-one device.
+        self.gateway_iot_id = gateway_iot_id
+        # The IoT ID of the queried device.
+        self.iot_id = iot_id
+        # The URL of the image to be searched.
+        self.pic_url = pic_url
+        # The face similarity.
+        self.threshold = threshold
+        # The ID of the image feature.
+        self.vector_id = vector_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.device_nick_name is not None:
+            result['DeviceNickName'] = self.device_nick_name
+
+        if self.event_time is not None:
+            result['EventTime'] = self.event_time
+
+        if self.gateway_iot_id is not None:
+            result['GatewayIotId'] = self.gateway_iot_id
+
+        if self.iot_id is not None:
+            result['IotId'] = self.iot_id
+
+        if self.pic_url is not None:
+            result['PicUrl'] = self.pic_url
+
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+
+        if self.vector_id is not None:
+            result['VectorId'] = self.vector_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceNickName') is not None:
+            self.device_nick_name = m.get('DeviceNickName')
+
+        if m.get('EventTime') is not None:
+            self.event_time = m.get('EventTime')
+
+        if m.get('GatewayIotId') is not None:
+            self.gateway_iot_id = m.get('GatewayIotId')
+
+        if m.get('IotId') is not None:
+            self.iot_id = m.get('IotId')
+
+        if m.get('PicUrl') is not None:
+            self.pic_url = m.get('PicUrl')
+
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+
+        if m.get('VectorId') is not None:
+            self.vector_id = m.get('VectorId')
+
+        return self
+
