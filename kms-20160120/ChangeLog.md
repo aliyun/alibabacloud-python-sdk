@@ -1,3 +1,12 @@
+2026-11-04 Version: 3.3.2
+- Update API GenerateDataKey: add request parameters DataKeyName.
+- Update API GenerateDataKey: add request parameters KeyMaterial.
+- Update API GenerateDataKey: add request parameters ManagedByKms.
+- Update API GenerateDataKey: add response parameters Body.DataKeyName.
+- Update API GenerateDataKey: add response parameters Body.DataKeyVersionId.
+- Update API GenerateDataKey: add response parameters Body.DataKeyVersionName.
+
+
 2026-10-16 Version: 3.3.1
 - Generated python 2016-01-20 for Kms.
 

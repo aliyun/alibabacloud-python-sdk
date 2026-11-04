@@ -9,7 +9,7 @@ class DeletePolicyRequest(DaraModel):
         self,
         name: str = None,
     ):
-        # The name of the permission policy that you want to delete.
+        # The name of the permission policy to delete.
         # 
         # This parameter is required.
         self.name = name

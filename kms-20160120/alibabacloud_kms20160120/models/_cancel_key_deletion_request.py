@@ -9,7 +9,7 @@ class CancelKeyDeletionRequest(DaraModel):
         self,
         key_id: str = None,
     ):
-        # The ID of the CMK. The ID must be globally unique.
+        # The globally unique identifier of the master key.
         # 
         # This parameter is required.
         self.key_id = key_id

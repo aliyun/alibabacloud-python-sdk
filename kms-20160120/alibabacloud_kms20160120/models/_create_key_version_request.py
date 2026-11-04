@@ -9,9 +9,7 @@ class CreateKeyVersionRequest(DaraModel):
         self,
         key_id: str = None,
     ):
-        # The ID of the CMK. The ID must be globally unique.
-        # 
-        # > You can also set the value to an alias that is bound to the CMK. For more information, see [Overview of aliases](https://help.aliyun.com/document_detail/68522.html).
+        # The key ID, which is the globally unique identifier of the key.
         # 
         # This parameter is required.
         self.key_id = key_id

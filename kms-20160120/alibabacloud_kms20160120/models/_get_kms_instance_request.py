@@ -9,7 +9,7 @@ class GetKmsInstanceRequest(DaraModel):
         self,
         kms_instance_id: str = None,
     ):
-        # The ID of the KMS instance to query.
+        # The ID of the KMS instance.
         # 
         # This parameter is required.
         self.kms_instance_id = kms_instance_id

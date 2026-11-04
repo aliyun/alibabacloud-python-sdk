@@ -12,24 +12,27 @@ class CreateClientKeyRequest(DaraModel):
         not_before: str = None,
         password: str = None,
     ):
-        # The operation that you want to perform. Set the value to **CreateClientKey**.
+        # The name of the attached application access point (AAP).
         # 
         # This parameter is required.
         self.aap_name = aap_name
-        # The encryption password of the client key.
+        # The end time of the validity period of the ClientKey.
         # 
-        # The password must be 8 to 64 characters in length and must contain at least two of the following types: digits, letters, and special characters. Special characters include `~ ! @ # $ % ^ & * ? _ -`.
+        # The time is specified in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
+        #  >
+        #  >- If you do not specify NotAfter, the default value is the creation time of the ClientKey plus 5 years.
+        #  >- If you specify NotAfter, you must also specify NotBefore.
         self.not_after = not_after
-        # The end of the validity period of the client key.
+        # The start time of the validity period of the ClientKey.
         # 
-        # Specify the time in the ISO 8601 standard. The time must be in UTC. The time must be in the yyyy-MM-ddTHH:mm:ssZ format.
-        # 
-        # > 
-        # 
-        # *   If you do not configure NotAfter, the default value is the time when the client key was created plus five years.
-        # *   If you configure NotAfter, you must configure NotBefore.
+        # The time is specified in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
+        #  >
+        #  >- If you do not specify NotBefore, the default value is the creation time of the ClientKey.
+        #  >- If you specify NotBefore, you must also specify NotAfter.
         self.not_before = not_before
-        # The name of the AAP.
+        # The passphrase of the ClientKey.
+        # 
+        # The passphrase must be 8 to 64 characters in length and can contain digits, uppercase and lowercase letters, and special characters such as `~!@#$%^&*?_-`. It must contain at least two of these character types.
         # 
         # This parameter is required.
         self.password = password

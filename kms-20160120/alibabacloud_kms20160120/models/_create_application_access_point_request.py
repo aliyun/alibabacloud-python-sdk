@@ -12,17 +12,17 @@ class CreateApplicationAccessPointRequest(DaraModel):
         name: str = None,
         policies: str = None,
     ):
-        # The authentication method. Currently, only ClientKey is supported.
+        # The authentication method. Only ClientKey is supported.
         self.authentication_method = authentication_method
-        # The description of the AAP.
+        # The description.
         self.description = description
-        # The name of the AAP.
+        # The name of the application access point (AAP).
         # 
         # This parameter is required.
         self.name = name
-        # The permission policy.
+        # The attached access policies.
         # 
-        # > You can bind up to three permission policies to each AAP.
+        # > You can attach up to three access policies to each application access point (AAP).
         # 
         # This parameter is required.
         self.policies = policies

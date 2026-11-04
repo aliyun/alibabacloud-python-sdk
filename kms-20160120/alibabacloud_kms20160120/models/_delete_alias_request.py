@@ -9,9 +9,7 @@ class DeleteAliasRequest(DaraModel):
         self,
         alias_name: str = None,
     ):
-        # The alias that you want to delete.
-        # 
-        # The value must be 1 to 255 characters in length and must include the alias/ prefix.
+        # The alias to delete. It must be 1 to 255 characters in length and must include the alias/ prefix.
         # 
         # This parameter is required.
         self.alias_name = alias_name

@@ -11,8 +11,11 @@ class GetChallengeResponseBody(DaraModel):
         nonce: str = None,
         request_id: str = None,
     ):
+        # The challenge token.
         self.challenge_token = challenge_token
+        # The nonce.
         self.nonce = nonce
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

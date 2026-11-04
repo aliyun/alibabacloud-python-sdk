@@ -18,32 +18,33 @@ class AsymmetricDecryptRequest(DaraModel):
         # 
         # This parameter is required.
         self.algorithm = algorithm
-        # The ciphertext to decrypt, encoded in Base64. 
+        # The ciphertext to be decrypted, which is Base64-encoded. 
         # 
-        # > You can call the [AsymmetricEncrypt](https://help.aliyun.com/document_detail/148131.html) operation to generate the ciphertext.
+        # > You can call the [AsymmetricEncrypt](https://help.aliyun.com/document_detail/148131.html) operation to generate ciphertext.
         # 
         # This parameter is required.
         self.ciphertext_blob = ciphertext_blob
-        # Specifies whether to enable DryRun mode. Valid values:
+        # Specifies whether to enable the dry run mode.
         # 
-        # - true: Enabled.
-        # - false (default): Disabled.
+        # - true: enables the dry run mode.
+        # - false: disables the dry run mode. This is the default value.
         # 
-        # DryRun mode is used to test API calls, verify that you have the required permissions on the relevant resources, and check whether the request parameters are configured correctly. When DryRun mode is enabled, KMS always returns a failure with a reason. The failure reasons include the following:
+        # The dry run mode is used to test API calls and verify whether you have the required permissions on the resources and whether the request parameters are correctly configured. When the dry run mode is enabled, KMS always returns a failure and provides the cause of the failure. The causes include:
         # 
-        # - DryRunOperationError: The request would succeed if the DryRun parameter were not specified.
+        # - DryRunOperationError: The request would succeed if the DryRun parameter is not specified.
         # - ValidationError: A parameter specified in the request is invalid.
-        # - AccessDeniedError: You do not have permission to perform this operation on the KMS resource.
+        # - AccessDeniedError: You are not authorized to perform the operation on the KMS resource.
         self.dry_run = dry_run
-        # The ID of the key. You can also specify a key alias or a key Amazon Resource Name (ARN). For more information about aliases, see [Manage key aliases](https://help.aliyun.com/document_detail/480655.html).
-        # > To access a key that belongs to another Alibaba Cloud account, you must specify the key ARN. The key ARN format is `acs:kms:${region}:${account}:key/${keyid}`.
+        # The ID of the key. You can also specify the alias or Alibaba Cloud Resource Name (ARN) of the key. For more information about aliases, refer to [Manage key aliases](https://help.aliyun.com/document_detail/480655.html).
+        # > To access a key that belongs to another Alibaba Cloud account, you must enter the ARN of the key. The ARN of a key is in the `acs:kms:${region}:${account}:key/${keyid}` format.
         # 
         # This parameter is required.
         self.key_id = key_id
-        # The key version ID. The globally unique identifier of the key version.
+        # The ID of the key version, which is the globally unique identifier of the key version.
         # 
         # This parameter is required.
         self.key_version_id = key_version_id
+        # The remote attestation.
         self.recipient = recipient
 
     def validate(self):

@@ -14,15 +14,13 @@ class CreateNetworkRuleRequest(DaraModel):
     ):
         # The description.
         self.description = description
-        # The name of the access control rule.
+        # The name of the network control rule.
         # 
         # This parameter is required.
         self.name = name
-        # The private IP address or private CIDR block. Separate multiple items with commas (,).
+        # The private IP addresses or private CIDR blocks. Separate multiple IP addresses with commas (,).
         self.source_private_ip = source_private_ip
-        # The network type.
-        # 
-        # Only private IP addresses are supported. Set the value to Private.
+        # The network type. Valid values: Private. This value indicates that only private IP addresses are supported.
         # 
         # This parameter is required.
         self.type = type

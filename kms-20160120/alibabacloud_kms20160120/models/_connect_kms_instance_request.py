@@ -13,23 +13,23 @@ class ConnectKmsInstanceRequest(DaraModel):
         vpc_id: str = None,
         zone_ids: str = None,
     ):
-        # The provider of the KMS instance. Set the value to Aliyun.
+        # The provider of the KMS instance. Currently, only Aliyun is supported.
         # 
         # This parameter is required.
         self.kmprovider = kmprovider
-        # The ID of the KMS instance that you want to enable.
+        # The ID of the KMS instance to enable.
         # 
         # This parameter is required.
         self.kms_instance_id = kms_instance_id
-        # The vSwitch in the two zones. The vSwitch must have at least one available IP address.
+        # Sets a vSwitch for the dual-zone deployment. The vSwitch must have at least one available IP address.
         # 
         # This parameter is required.
         self.v_switch_ids = v_switch_ids
-        # The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
+        # The ID of the virtual private cloud (VPC) for the KMS instance.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
-        # The two zones for the KMS instance. Dual-zone deployment improves service availability and disaster recovery capabilities.
+        # Sets two zones for the KMS instance. Dual-zone load balancing improves service availability and disaster recovery capabilities.
         # 
         # This parameter is required.
         self.zone_ids = zone_ids

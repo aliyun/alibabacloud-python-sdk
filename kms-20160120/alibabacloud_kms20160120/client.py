@@ -2919,14 +2919,20 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.encryption_context):
             request.encryption_context_shrink = Utils.array_to_string_with_specified_style(tmp_req.encryption_context, 'EncryptionContext', 'json')
         query = {}
+        if not DaraCore.is_null(request.data_key_name):
+            query['DataKeyName'] = request.data_key_name
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.encryption_context_shrink):
             query['EncryptionContext'] = request.encryption_context_shrink
         if not DaraCore.is_null(request.key_id):
             query['KeyId'] = request.key_id
+        if not DaraCore.is_null(request.key_material):
+            query['KeyMaterial'] = request.key_material
         if not DaraCore.is_null(request.key_spec):
             query['KeySpec'] = request.key_spec
+        if not DaraCore.is_null(request.managed_by_kms):
+            query['ManagedByKms'] = request.managed_by_kms
         if not DaraCore.is_null(request.number_of_bytes):
             query['NumberOfBytes'] = request.number_of_bytes
         body = {}
@@ -2963,14 +2969,20 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.encryption_context):
             request.encryption_context_shrink = Utils.array_to_string_with_specified_style(tmp_req.encryption_context, 'EncryptionContext', 'json')
         query = {}
+        if not DaraCore.is_null(request.data_key_name):
+            query['DataKeyName'] = request.data_key_name
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.encryption_context_shrink):
             query['EncryptionContext'] = request.encryption_context_shrink
         if not DaraCore.is_null(request.key_id):
             query['KeyId'] = request.key_id
+        if not DaraCore.is_null(request.key_material):
+            query['KeyMaterial'] = request.key_material
         if not DaraCore.is_null(request.key_spec):
             query['KeySpec'] = request.key_spec
+        if not DaraCore.is_null(request.managed_by_kms):
+            query['ManagedByKms'] = request.managed_by_kms
         if not DaraCore.is_null(request.number_of_bytes):
             query['NumberOfBytes'] = request.number_of_bytes
         body = {}

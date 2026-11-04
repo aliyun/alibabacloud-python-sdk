@@ -18,33 +18,30 @@ class AsymmetricVerifyRequest(DaraModel):
         # 
         # This parameter is required.
         self.algorithm = algorithm
-        # The digest that is generated using the hash algorithm that corresponds to the value of **Algorithm** to hash the original message.
+        # The digest generated for the original message by using the hash algorithm that corresponds to the **Algorithm** parameter.
         # 
         # > The value is Base64-encoded.
         # 
         # This parameter is required.
         self.digest = digest
-        # Specifies whether to perform a dry run.
+        # Specifies whether to enable the DryRun mode. Valid values:
         # 
-        # - true: performs a dry run.
+        # - true: Enabled.
+        # - false (default): Disabled.
         # 
-        # - false (default): does not perform a dry run.
+        # The DryRun mode is used to test API calls, verify whether you have the required permissions on the resources, and check whether the request parameters are correctly configured. When the DryRun mode is enabled, KMS always returns a failure and provides the cause of the failure. The causes include:
         # 
-        # A dry run is used to test API calls and verify whether you have the permissions to access the specified resources and whether the request parameters are valid. If you perform a dry run, KMS always returns a failure response that indicates the cause of the failure. The following failure causes are included:
-        # 
-        # - DryRunOperationError: The request would have succeeded if the DryRun parameter is not specified.
-        # 
+        # - DryRunOperationError: The request would succeed if the DryRun parameter is not configured.
         # - ValidationError: The specified parameters in the request are invalid.
-        # 
-        # - AccessDeniedError: You are not authorized to perform this operation on the KMS resource.
+        # - AccessDeniedError: You are not authorized to perform the operation on the KMS resources.
         self.dry_run = dry_run
-        # The globally unique identifier (GUID) of the customer master key (CMK).
+        # The globally unique identifier of the customer master key (CMK).
         # 
-        # > You can also specify the alias that is bound to the CMK. For more information, see [Overview of aliases](https://help.aliyun.com/document_detail/68522.html).
+        # > You can also set this parameter to the alias that is bound to the CMK. For more information, see [Usage notes for aliases](https://help.aliyun.com/document_detail/68522.html).
         # 
         # This parameter is required.
         self.key_id = key_id
-        # The ID of the key version. The ID must be the GUID of the key version.
+        # The key version ID. The globally unique identifier of the key version.
         # 
         # This parameter is required.
         self.key_version_id = key_version_id
