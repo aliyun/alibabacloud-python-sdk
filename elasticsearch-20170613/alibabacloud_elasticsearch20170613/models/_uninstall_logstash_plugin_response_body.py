@@ -13,7 +13,7 @@ class UninstallLogstashPluginResponseBody(DaraModel):
         request_id: str = None,
         result: List[str] = None,
     ):
-        # The response headers of this call.
+        # The response headers returned by this call.
         self.headers = headers
         # The request ID.
         self.request_id = request_id

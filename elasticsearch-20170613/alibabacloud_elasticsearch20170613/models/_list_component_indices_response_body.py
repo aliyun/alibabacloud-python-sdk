@@ -71,7 +71,7 @@ class ListComponentIndicesResponseBodyResult(DaraModel):
         content: main_models.ListComponentIndicesResponseBodyResultContent = None,
         name: str = None,
     ):
-        # The information about index templates that reference this composable template.
+        # The information about the index templates that reference this composable template.
         self.composed = composed
         # The content of the composable template.
         self.content = content
@@ -227,9 +227,8 @@ class ListComponentIndicesResponseBodyResultContentTemplateSettingsIndex(DaraMod
         lifecycle: main_models.ListComponentIndicesResponseBodyResultContentTemplateSettingsIndexLifecycle = None,
     ):
         # The index compression method. Valid values:
-        # 
-        # - LZ4: The default compression algorithm of Elasticsearch. It provides fast compression and decompression but a relatively lower compression ratio.
-        # - best_compression: Uses the best_compression algorithm for compression, which provides a higher compression ratio.
+        # - LZ4: The default compression algorithm for Elasticsearch. It provides fast decompression and compression speeds but has a lower compression ratio.
+        # - best_compression: The best_compression algorithm, which provides a higher compression ratio.
         self.codec = codec
         # The index lifecycle configuration.
         self.lifecycle = lifecycle
@@ -267,7 +266,7 @@ class ListComponentIndicesResponseBodyResultContentTemplateSettingsIndexLifecycl
         self,
         name: str = None,
     ):
-        # The name of the lifecycle policy.
+        # The Policy Name of the lifecycle epoch.
         self.name = name
 
     def validate(self):
@@ -295,7 +294,7 @@ class ListComponentIndicesResponseBodyHeaders(DaraModel):
         self,
         x_total_count: int = None,
     ):
-        # The total number of entries returned.
+        # The total number of returned results.
         self.x_total_count = x_total_count
 
     def validate(self):

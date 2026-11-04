@@ -10,12 +10,12 @@ class ValidateConnectionResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The returned result. Valid values:
+        # The return result. Valid values:
         # 
-        # - true: The validation succeeded.
-        # - false: The validation failed.
+        # - true: The verification is successful.
+        # - false: The verification fails.
         self.result = result
 
     def validate(self):

@@ -18,9 +18,9 @@ class UpdateKibanaPvlNetworkRequest(DaraModel):
         self.endpoint_name = endpoint_name
         # The list of security groups.
         self.security_groups = security_groups
-        # A client token that is used to ensure the idempotence of the request.
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
-        # The Kibana private network connection ID.
+        # The ID of the Kibana private network connection.
         self.pvl_id = pvl_id
 
     def validate(self):

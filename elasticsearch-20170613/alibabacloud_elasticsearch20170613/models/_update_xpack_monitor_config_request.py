@@ -15,14 +15,14 @@ class UpdateXpackMonitorConfigRequest(DaraModel):
         password: str = None,
         user_name: str = None,
     ):
-        # A unique token used to ensure the idempotence of the request. The client generates this value. The value must be unique among different requests and cannot exceed 64 ASCII characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must ensure that it is unique among different requests. The token can contain up to 64 ASCII characters.
         self.client_token = client_token
         # Specifies whether to enable X-Pack monitoring. Valid values:
         # 
         # - true: Enabled.
-        # - false: Not enabled.
+        # - false: Disabled.
         self.enable = enable
-        # The access endpoint of the Elasticsearch instance.
+        # The endpoint of the Elasticsearch instance.
         self.endpoints = endpoints
         # The password of the Elasticsearch instance.
         self.password = password

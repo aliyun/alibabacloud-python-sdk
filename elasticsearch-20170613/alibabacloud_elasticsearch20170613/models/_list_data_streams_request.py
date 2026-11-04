@@ -12,11 +12,11 @@ class ListDataStreamsRequest(DaraModel):
     ):
         # Specifies whether to display only managed indexes. Valid values:
         # 
-        # - true: Only managed indexes are displayed.
+        # - true: Displays only managed indexes.
         # 
-        # - false (default): All indexes are displayed.
+        # - false: Displays all indexes. This is the default value.
         self.is_managed = is_managed
-        # The data stream name.
+        # The name of the data stream.
         self.name = name
 
     def validate(self):

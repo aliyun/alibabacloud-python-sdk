@@ -49,7 +49,7 @@ class UpdateDescriptionResponseBodyResult(DaraModel):
         self,
         description: str = None,
     ):
-        # The updated instance name.
+        # The updated name of the instance.
         self.description = description
 
     def validate(self):

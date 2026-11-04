@@ -31,17 +31,17 @@ class CreateInstanceRequest(DaraModel):
         zone_count: int = None,
         client_token: str = None,
     ):
-        # The client node configuration.
+        # The configuration of the client node.
         self.client_node_configuration = client_node_configuration
-        # The instance name.
+        # The name of the instance.
         self.description = description
-        # The elastic node configuration.
+        # The configuration of the elastic node.
         self.elastic_data_node_configuration = elastic_data_node_configuration
         # The access password of the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include !@#$%^&*()_+-=.
         # 
         # This parameter is required.
         self.es_admin_password = es_admin_password
-        # The instance version. Valid values:
+        # The version of the instance. Valid values:
         # - 8.5.1_with_X-Pack
         # - 7.10_with_X-Pack
         # - 6.7_with_X-Pack
@@ -55,17 +55,17 @@ class CreateInstanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.es_version = es_version
-        # The index node configuration. Only instances with the AI engine type support index node configuration.
+        # Only instances that use the AI engine support the configuration of index nodes.
         self.index_node_configuration = index_node_configuration
         # The edition type. Valid values:
-        # - x-pack: Creates a Commercial Edition instance, or an Advanced Edition instance with Indexing Service and OpenStore disabled.
+        # - x-pack: Creates a Commercial Edition instance or an Advanced Edition instance with Indexing Service and OpenStore disabled.
         # - IS: Creates an Advanced Edition instance with Indexing Service or OpenStore enabled.
         self.instance_category = instance_category
-        # The Kibana node configuration.
+        # The configuration of the Kibana node.
         # 
-        # > Enable the Kibana node.
+        # > You are strongly advised to enable the Kibana node.
         self.kibana_configuration = kibana_configuration
-        # The dedicated master node configuration.
+        # The configuration of the dedicated master node.
         # > In the Beijing, Shanghai, Hangzhou, and Shenzhen regions, when you call the createInstance operation to create an instance with a new-generation cloud disk-based dedicated master node, you must specify the instance family with the `.new` suffix, such as elasticsearch.sn1ne.large.new.
         self.master_configuration = master_configuration
         # The network configuration.
@@ -78,11 +78,11 @@ class CreateInstanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.node_amount = node_amount
-        # The data node configuration.
+        # The configuration of the data node.
         # 
         # > In the Beijing, Shanghai, Hangzhou, and Shenzhen regions, when you call the createInstance operation to create an instance with a new-generation cloud disk-based data node, you must specify the instance family with the `.new` suffix, such as elasticsearch.sn1ne.large.new.
         self.node_spec = node_spec
-        # The payment details of the subscription instance. This parameter is required when you create a subscription instance.
+        # The billing details of the subscription instance. This parameter is required when you create a subscription instance.
         self.payment_info = payment_info
         # The billing method. Valid values:
         # 
@@ -91,11 +91,11 @@ class CreateInstanceRequest(DaraModel):
         self.payment_type = payment_type
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # The query node configuration. Only instances with the AI engine type support query node configuration.
+        # Only instances that use the AI engine support the configuration of query nodes.
         self.search_node_configuration = search_node_configuration
-        # The instance label group.
+        # The instance tag labels.
         self.tags = tags
-        # The warm data node configuration.
+        # The configuration of the warm data node.
         self.warm_node_configuration = warm_node_configuration
         # The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.
         self.zone_count = zone_count
@@ -280,9 +280,9 @@ class CreateInstanceRequestTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The key of the tag.
+        # The key of the instance tag.
         self.tag_key = tag_key
-        # The value of the tag.
+        # The value of the instance tag.
         self.tag_value = tag_value
 
     def validate(self):

@@ -12,10 +12,10 @@ class CancelDeletionResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the instance is recovered. Valid values:
+        # Indicates whether the instance was successfully restored. Valid values:
         # 
-        # - true: The instance is recovered.
-        # - false: The instance is not recovered.
+        # - true: Yes.
+        # - false: No.
         self.result = result
 
     def validate(self):

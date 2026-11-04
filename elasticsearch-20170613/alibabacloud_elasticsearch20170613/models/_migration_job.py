@@ -22,16 +22,27 @@ class MigrationJob(DaraModel):
         target_cluster: main_models.MigrationJobTargetCluster = None,
         update_time: int = None,
     ):
+        # currentState
         self.current_state = current_state
+        # disableSourceClusterAuth
         self.disable_source_cluster_auth = disable_source_cluster_auth
+        # disableTargetClusterAuth
         self.disable_target_cluster_auth = disable_target_cluster_auth
+        # endTime
         self.end_time = end_time
+        # migrationJobId
         self.migration_job_id = migration_job_id
+        # phase
         self.phase = phase
+        # sourceCluster
         self.source_cluster = source_cluster
+        # startTime
         self.start_time = start_time
+        # statusResult
         self.status_result = status_result
+        # targetCluster
         self.target_cluster = target_cluster
+        # updateTime
         self.update_time = update_time
 
     def validate(self):
@@ -134,7 +145,9 @@ class MigrationJobTargetCluster(DaraModel):
         instance_id: str = None,
         type: str = None,
     ):
+        # type
         self.instance_id = instance_id
+        # type
         self.type = type
 
     def validate(self):
@@ -169,7 +182,9 @@ class MigrationJobStatusResult(DaraModel):
         code: str = None,
         success: bool = None,
     ):
+        # code
         self.code = code
+        # success
         self.success = success
 
     def validate(self):
@@ -204,7 +219,9 @@ class MigrationJobSourceCluster(DaraModel):
         instance_id: str = None,
         type: str = None,
     ):
+        # instanceId
         self.instance_id = instance_id
+        # type
         self.type = type
 
     def validate(self):

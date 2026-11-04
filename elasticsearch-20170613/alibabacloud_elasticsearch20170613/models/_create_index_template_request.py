@@ -18,26 +18,26 @@ class CreateIndexTemplateRequest(DaraModel):
         priority: int = None,
         template: main_models.CreateIndexTemplateRequestTemplate = None,
     ):
-        # A unique token used to ensure the idempotence of the request. The client generates this value. The value must be unique among different requests and cannot exceed 64 ASCII characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # Specifies whether to enable data streams. Valid values:
+        # Specifies whether to enable the data stream. Valid values:
         # 
-        # - true: Enabled.
-        # - false (default): Disabled.
+        # - true: enables the data stream.
+        # - false: disables the data stream. This is the default value.
         # 
         # This parameter is required.
         self.data_stream = data_stream
-        # The lifecycle policy name.
+        # The life epoch Policy Name.
         self.ilm_policy = ilm_policy
-        # The index matching pattern (regular expression).
+        # The regular expression for the index pattern.
         # 
         # This parameter is required.
         self.index_patterns = index_patterns
-        # The index template name.
+        # The name of the index template.
         # 
         # This parameter is required.
         self.index_template = index_template
-        # The priority of the cluster index template.
+        # The priority of the cluster index template. A larger value indicates a higher priority.
         self.priority = priority
         # The template settings. For more information, see [Multiple Component Templates](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-template.html#multiple-component-templates).
         self.template = template
@@ -107,11 +107,11 @@ class CreateIndexTemplateRequestTemplate(DaraModel):
         mappings: str = None,
         settings: str = None,
     ):
-        # The aliases configuration.
+        # The aliases.
         self.aliases = aliases
-        # The mappings configuration.
+        # The mappings.
         self.mappings = mappings
-        # The settings configuration.
+        # The settings.
         self.settings = settings
 
     def validate(self):

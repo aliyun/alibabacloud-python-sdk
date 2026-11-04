@@ -9,12 +9,7 @@ class ListAlternativeSnapshotReposRequest(DaraModel):
         self,
         already_set_items: bool = None,
     ):
-        # Specifies whether to return the OSS reference repositories that have already been added. Valid values:
-        # 
-        # - true: Returns the already added repositories.
-        # - false: Does not return the already added repositories.
-        # 
-        # Default value: true.
+        # Specifies whether to return the added OSS reference repositories. Default value: true. Valid values: true: Returns the added OSS reference repositories. false: Does not return the added OSS reference repositories.
         self.already_set_items = already_set_items
 
     def validate(self):

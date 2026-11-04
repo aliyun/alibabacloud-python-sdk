@@ -57,20 +57,15 @@ class CapacityPlanResponseBodyResult(DaraModel):
         # The extended configuration information.
         self.extend_configs = extend_configs
         # The edition type. Valid values:
-        # 
         # - advanced: Advanced Edition.
-        # 
         # - x-pack: Commercial Edition.
-        # 
         # - community: Community Edition.
         self.instance_category = instance_category
         # The node information.
         self.node_configurations = node_configurations
-        # The result calculated based on capacity planning. No default value is available. Valid values:
-        # 
-        # - true: The cluster is oversized. The number of data nodes calculated by capacity planning exceeds the threshold of 50.
-        # 
-        # - false: The number of data nodes calculated by capacity planning is within 50.
+        # The result calculated based on capacity planning. No default value is provided. Valid values:
+        # - true: indicates an oversized cluster, which means the number of data nodes calculated by capacity planning exceeds the threshold of 50.
+        # - false: indicates that the number of data nodes calculated by capacity planning is 50 or less.
         self.oversized_cluster = oversized_cluster
 
     def validate(self):
@@ -142,34 +137,23 @@ class CapacityPlanResponseBodyResultNodeConfigurations(DaraModel):
         self.amount = amount
         # The number of CPUs.
         self.cpu = cpu
-        # The disk size, in GiB.
+        # The disk size. Unit: GiB.
         self.disk = disk
         # The disk type. Valid values:
-        # 
         # - cloud_essd: ESSD.
-        # 
         # - cloud_ssd: standard SSD.
-        # 
-        # - cloud_efficiency: ultra cloud disk.
-        # 
+        # - cloud_efficiency: ultra disk.
         # - local_ssd: local SSD.
-        # 
         # - local_efficiency: local ultra disk.
         self.disk_type = disk_type
-        # The memory size of the specification for the current node role.
+        # The memory size for the current node role.
         self.memory = memory
         # The node type. Valid values:
-        # 
         # - WORKER: data node.
-        # 
         # - WORKER_WARM: warm node.
-        # 
         # - MASTER: dedicated master node.
-        # 
         # - KIBANA: Kibana node.
-        # 
         # - COORDINATING: client node.
-        # 
         # - ELASTIC_WORKER: elastic node.
         self.node_type = node_type
 
@@ -231,13 +215,11 @@ class CapacityPlanResponseBodyResultExtendConfigs(DaraModel):
         disk_type: str = None,
     ):
         # The configuration type. The only valid value is sharedDisk.
-        # 
         # > This extendConfigs property may appear when the planned instance type is Advanced Edition (advanced).
         self.config_type = config_type
-        # The disk size, in GiB.
+        # The disk size. Unit: GiB.
         self.disk = disk
         # The disk type. The only valid value is CPFS_PREMIUM.
-        # 
         # > This extendConfigs property may appear when the planned instance type is Advanced Edition (advanced).
         self.disk_type = disk_type
 

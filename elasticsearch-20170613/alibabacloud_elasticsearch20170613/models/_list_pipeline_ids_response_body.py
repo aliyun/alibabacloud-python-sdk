@@ -64,13 +64,13 @@ class ListPipelineIdsResponseBodyResult(DaraModel):
         # 
         # - true: Available.
         # 
-        # - false: Not available.
+        # - false: Unavailable.
         self.available = available
-        # The error code when the pipeline is unavailable.
+        # The error code returned when the pipeline is unavailable.
         self.code = code
-        # The error message when the pipeline is unavailable.
+        # The error message returned when the pipeline is unavailable.
         self.message = message
-        # The pipeline ID created on Kibana.
+        # The ID of the pipeline created in Kibana.
         self.pipeline_id = pipeline_id
 
     def validate(self):

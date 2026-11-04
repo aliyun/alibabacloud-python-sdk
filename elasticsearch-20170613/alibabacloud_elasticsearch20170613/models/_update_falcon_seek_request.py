@@ -9,10 +9,7 @@ class UpdateFalconSeekRequest(DaraModel):
         self,
         enable: bool = None,
     ):
-        # Specifies whether to enable the FalconSeek cloud-native kernel feature. Valid values:
-        # 
-        # - true: Enable the feature.
-        # - false: Disable the feature.
+        # Specifies whether to enable the feature. Valid values: true: enable, false: disable.
         # 
         # This parameter is required.
         self.enable = enable

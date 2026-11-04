@@ -12,10 +12,10 @@ class CloseDiagnosisResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the intelligent O&M feature is disabled. Valid values:
+        # Indicates whether the intelligent O&M feature was successfully disabled. Valid values:
         # 
-        # - true: The feature is disabled.
-        # - false: The feature failed to be disabled.
+        # - true: Succeeded.
+        # - false: Failed.
         self.result = result
 
     def validate(self):

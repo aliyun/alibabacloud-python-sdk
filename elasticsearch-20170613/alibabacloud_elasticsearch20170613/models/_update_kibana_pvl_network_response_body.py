@@ -12,10 +12,10 @@ class UpdateKibanaPvlNetworkResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The result. Valid values:
+        # The returned result. Valid values:
         # 
         # - true: The operation is successful.
-        # - false: The operation failed.
+        # - false: The operation fails.
         self.result = result
 
     def validate(self):

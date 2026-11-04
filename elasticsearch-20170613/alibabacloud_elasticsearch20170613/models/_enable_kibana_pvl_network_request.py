@@ -17,14 +17,15 @@ class EnableKibanaPvlNetworkRequest(DaraModel):
         vpc_id: str = None,
         client_token: str = None,
     ):
-        # The endpoint name.
+        # The name of the endpoint.
         self.endpoint_name = endpoint_name
+        # Specifies whether to use a managed security group. If you use a managed security group, you do not need to specify the securityGroups parameter, and the system automatically creates a managed security group for you.
         self.managed_security_group = managed_security_group
         # The security groups.
         self.security_groups = security_groups
         # The vSwitch and zone information.
         self.v_switch_ids_zone = v_switch_ids_zone
-        # The VPC-connected instance ID.
+        # The VPC instance ID.
         self.vpc_id = vpc_id
         # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token

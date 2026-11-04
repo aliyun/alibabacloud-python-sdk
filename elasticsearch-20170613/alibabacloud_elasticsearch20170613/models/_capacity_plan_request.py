@@ -15,22 +15,21 @@ class CapacityPlanRequest(DaraModel):
         metric: List[main_models.CapacityPlanRequestMetric] = None,
         usage_scenario: str = None,
     ):
-        # Specifies whether complex aggregation query is required. Valid values:
-        # 
-        # - true: Required.
-        # - false (default): Not required.
+        # Indicates whether complex aggregation queries are required. Valid values:
+        # - true: Yes.
+        # - false: No.
+        # Default value: false.
         self.complex_query_available = complex_query_available
-        # The disk usage information.
+        # The disk usage.
         self.data_info = data_info
-        # The metric information for disk usage, search and write operations, and aggregation requests.
+        # The metric information such as disk usage, search and write performance, and aggregate requests.
         self.metric = metric
         # Scenarios. Valid values:
-        # 
-        # - general: general-purpose scenario
-        # - analysisVisualization: data analytics scenario
-        # - dbAcceleration: database acceleration scenario
-        # - search: search scenario
-        # - log: log scenario
+        # - general: general scenarios.
+        # - analysisVisualization: data analytics scenarios.
+        # - dbAcceleration: database acceleration scenarios.
+        # - search: search scenarios.
+        # - log: log scenarios.
         self.usage_scenario = usage_scenario
 
     def validate(self):
@@ -102,22 +101,20 @@ class CapacityPlanRequestMetric(DaraModel):
         # The average QPS.
         self.average_qps = average_qps
         # The search or write metric code. Valid values:
-        # 
-        # - write: write
-        # - search: search
+        # - write: write.
+        # - search: search.
         self.code = code
-        # The number of concurrent connections.
+        # The number of concurrent requests.
         self.concurrent = concurrent
         # The peak QPS.
         self.peak_qps = peak_qps
-        # The expected average response time, in milliseconds.
+        # The expected average response time. Unit: milliseconds.
         self.response_time = response_time
-        # The throughput, in MB/s.
+        # The throughput. Unit: MB/s.
         self.throughput = throughput
-        # The search or write peak type. Valid values:
-        # 
-        # - common: normal
-        # - peak: peak
+        # The peak type for search or write operations. Valid values:
+        # - common: normal.
+        # - peak: peak.
         self.type = type
 
     def validate(self):
@@ -186,27 +183,24 @@ class CapacityPlanRequestDataInfo(DaraModel):
         unit: str = None,
     ):
         # The disk data metric code. Valid values:
-        # 
-        # - totalRawData: source data information
-        # - document: data document information, estimated number of documents
-        # - dailyIncrement: daily data growth
-        # - dailyIncrement: daily incremental documents
-        # - retentionTime: data retention period
-        # - replica: replica settings
+        # - totalRawData: source data information.
+        # - document: document information, which indicates the estimated number of documents.
+        # - dailyIncrement: daily data increment.
+        # - dailyIncrement: daily document increment.
+        # - retentionTime: data retention period.
+        # - replica: replica settings.
         self.code = code
-        # The metric value of disk usage.
+        # The metric value for disk usage.
         self.size = size
         # The total number of data entries.
         self.total_count = total_count
         # The disk data type. Valid values:
-        # 
-        # - hot: hot data
-        # - warm: warm data
+        # - hot: hot data.
+        # - warm: warm data.
         self.type = type
         # The data unit or time unit. Valid values:
-        # 
-        # - Data units: MiB, GiB, TB, PB
-        # - Time units: DAYS, WEEKS, MONTHS, YEARS
+        # - Data units: MiB, GiB, TB, and PB.
+        # - Time units: DAYS, WEEKS, MONTHS, and YEARS.
         self.unit = unit
 
     def validate(self):

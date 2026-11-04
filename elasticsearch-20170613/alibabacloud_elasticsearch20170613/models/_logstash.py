@@ -51,27 +51,24 @@ class Logstash(DaraModel):
         # The data node configuration.
         self.node_spec = node_spec
         # The billing method of the instance. Valid values:
-        # 
         # - prepaid: subscription
-        # - postpaid: pay-as-you-go.
+        # - postpaid: pay-as-you-go
         self.payment_type = payment_type
         # The access protocol of the instance.
         self.protocol = protocol
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
         # The zone status. Valid values:
-        # 
         # - ISOLATION: offline
-        # - NORMAL: Normal.
+        # - NORMAL: normal
         self.status = status
         # The instance tags.
         self.tags = tags
         # The time when the instance was last updated.
         self.updated_at = updated_at
         # The instance version. Valid values:
-        # 
         # - 6.7.0_with_X-Pack
-        # - 7.4.0_with_X-Pack.
+        # - 7.4.0_with_X-Pack
         self.version = version
         # The number of zones for the instance.
         self.zone_count = zone_count
@@ -245,9 +242,8 @@ class LogstashZoneInfos(DaraModel):
         zone_id: str = None,
     ):
         # The zone status. Valid values:
-        # 
         # - ISOLATION: offline
-        # - NORMAL: Normal.
+        # - NORMAL: normal
         self.status = status
         # The zone ID.
         self.zone_id = zone_id
@@ -369,11 +365,11 @@ class LogstashNetworkConfig(DaraModel):
         vs_area: str = None,
         vswitch_id: str = None,
     ):
-        # The network type. Currently, only Virtual Private Cloud (VPC) is supported.
+        # The network type. Only VPC is supported.
         self.type = type
         # The VPC ID.
         self.vpc_id = vpc_id
-        # The zone in which the instance resides.
+        # The zone where the instance is deployed.
         self.vs_area = vs_area
         # The vSwitch ID.
         self.vswitch_id = vswitch_id

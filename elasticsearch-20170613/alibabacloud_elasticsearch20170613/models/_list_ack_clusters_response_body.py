@@ -15,7 +15,7 @@ class ListAckClustersResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The list of ACK clusters returned by the current request.
+        # The list of ACK clusters returned for the current request.
         self.result = result
 
     def validate(self):
@@ -60,13 +60,13 @@ class ListAckClustersResponseBodyResult(DaraModel):
         name: str = None,
         vpc_id: str = None,
     ):
-        # The cluster ID.
+        # The ID of the cluster.
         self.cluster_id = cluster_id
-        # The cluster type. Only ManagedKubernetes is supported, which indicates a managed Kubernetes cluster.
+        # The cluster type. Only ManagedKubernetes, which indicates a Kubernetes cluster, is supported.
         self.cluster_type = cluster_type
-        # The cluster name.
+        # The name of the cluster.
         self.name = name
-        # The ID of the VPC where the cluster resides.
+        # The ID of the VPC where the cluster is deployed.
         self.vpc_id = vpc_id
 
     def validate(self):

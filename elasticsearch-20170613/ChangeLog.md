@@ -1,3 +1,6 @@
+2026-11-04 Version: 5.4.2
+- Generated python 2017-06-13 for elasticsearch.
+
 2026-10-23 Version: 5.4.1
 - Update API DescribeInstance: add response parameters Body.Result.indexNodeConfiguration.
 - Update API DescribeInstance: add response parameters Body.Result.searchNodeConfiguration.

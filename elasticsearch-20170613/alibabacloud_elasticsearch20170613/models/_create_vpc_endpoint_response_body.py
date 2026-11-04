@@ -13,7 +13,7 @@ class CreateVpcEndpointResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The returned result details.
+        # The result details.
         self.result = result
 
     def validate(self):
@@ -52,13 +52,13 @@ class CreateVpcEndpointResponseBodyResult(DaraModel):
         endpoint_name: str = None,
         service_id: str = None,
     ):
-        # The endpoint domain name, which is used for connection configuration.
+        # The endpoint domain name used for connection configuration.
         self.endpoint_domain = endpoint_domain
-        # The ID of the service VPC endpoint.
+        # The ID of the endpoint on the service VPC side.
         self.endpoint_id = endpoint_id
-        # The name of the service VPC endpoint.
+        # The name of the endpoint on the service VPC side.
         self.endpoint_name = endpoint_name
-        # The ID of the user endpoint service associated with the endpoint.
+        # The ID of the endpoint service associated with the endpoint.
         self.service_id = service_id
 
     def validate(self):

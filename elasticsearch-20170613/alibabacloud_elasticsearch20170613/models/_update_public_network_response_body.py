@@ -49,7 +49,7 @@ class UpdatePublicNetworkResponseBodyResult(DaraModel):
         self,
         enable_public: bool = None,
     ):
-        # The status of the public endpoint switch.
+        # The status of the public access switch.
         self.enable_public = enable_public
 
     def validate(self):

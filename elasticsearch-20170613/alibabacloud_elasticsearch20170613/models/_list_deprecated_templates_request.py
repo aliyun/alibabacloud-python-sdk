@@ -11,11 +11,11 @@ class ListDeprecatedTemplatesRequest(DaraModel):
         page: int = None,
         size: int = None,
     ):
-        # The index template name.
+        # The name of the index template.
         self.name = name
-        # The page number settings for a paged query. This parameter is used for paging.
+        # The page number for a paged query.
         self.page = page
-        # The number of entries per page settings for a paged query. This parameter is used for paging.
+        # The number of entries per page for a paged query.
         self.size = size
 
     def validate(self):

@@ -13,7 +13,7 @@ class ListExtendfilesResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.ListExtendfilesResponseBodyResult] = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The returned result.
         self.result = result
@@ -60,11 +60,11 @@ class ListExtendfilesResponseBodyResult(DaraModel):
         name: str = None,
         source_type: str = None,
     ):
-        # The extension file path.
+        # The path of the extension file.
         self.file_path = file_path
-        # The extension file size.
+        # The size of the extension file.
         self.file_size = file_size
-        # The extension file name.
+        # The name of the extension file.
         self.name = name
         # The source type.
         self.source_type = source_type

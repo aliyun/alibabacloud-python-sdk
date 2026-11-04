@@ -67,10 +67,9 @@ class DescribeCollectorResponseBodyResult(DaraModel):
         self.collector_paths = collector_paths
         # The configuration file information of the collector.
         self.configs = configs
-        # Specifies whether to only validate the collector without creating it. Valid values:
-        # 
-        # - true: validates the configuration without creating the collector.
-        # - false: validates the configuration and creates the collector.
+        # Specifies whether to validate and create the collector. Valid values:
+        # - true: Only validates the configuration without creating the collector.
+        # - false: Validates the configuration and creates the collector.
         self.dry_run = dry_run
         # The extended configurations of the collector.
         self.extend_configs = extend_configs
@@ -89,11 +88,10 @@ class DescribeCollectorResponseBodyResult(DaraModel):
         # The version of the collector.
         self.res_version = res_version
         # The status of the collector. Valid values:
-        # 
-        # - activing: activating.
-        # - active: activated.
+        # - activing: Activating.
+        # - active: Active.
         self.status = status
-        # The ID of the virtual private cloud (VPC) where the collector is deployed.
+        # The ID of the virtual private cloud (VPC) where the collector resides.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -224,22 +222,19 @@ class DescribeCollectorResponseBodyResultExtendConfigs(DaraModel):
         user_name: str = None,
     ):
         # The configuration type. Valid values:
-        # 
-        # - collectorTargetInstance: the output of the collector.
-        # - collectorDeployMachine: the machine on which the collector is deployed.
-        # - collectorElasticsearchForKibana: the information about the Elasticsearch instance that supports the Kibana dashboard.
+        # - collectorTargetInstance: The output of the collector.
+        # - collectorDeployMachine: The machine on which the collector is deployed.
+        # - collectorElasticsearchForKibana: The information about the Elasticsearch instance that supports the Kibana dashboard.
         self.config_type = config_type
         # Specifies whether to enable monitoring. This parameter is displayed when **configType** is set to **collectorTargetInstance**. Valid values:
-        # 
-        # - true: enables monitoring.
-        # 
-        # - false: disables monitoring.
+        # - true: Enables monitoring.
+        # - false: Disables monitoring.
         self.enable_monitoring = enable_monitoring
         # The ID of the machine group. This parameter is displayed when **configType** is set to **collectorDeployMachine**.
         self.group_id = group_id
         # The private endpoint of Kibana after the Kibana dashboard is enabled. This parameter is displayed when **configType** is set to **collectorElasticsearchForKibana**.
         self.host = host
-        # The list of host addresses of the target instance for the collector.
+        # The list of host addresses of the target instances for the collector.
         self.hosts = hosts
         # Instance ID of the instance associated with the collector. If **configType** is set to **collectorTargetInstance**, this parameter indicates instance ID of the instance specified in the collector output. If **configType** is set to **collectorDeployMachines** and **type** is set to **ACKCluster**, this parameter indicates instance ID of the ACK cluster.
         self.instance_id = instance_id
@@ -249,14 +244,13 @@ class DescribeCollectorResponseBodyResultExtendConfigs(DaraModel):
         self.kibana_host = kibana_host
         # The list of ECS instances on which the collector is deployed. This parameter is displayed when **configType** is set to **collectorDeployMachines** and **type** is set to **ECSInstanceId**.
         self.machines = machines
-        # The transmission protocol. This protocol must be consistent with the access protocol of the instance specified in the collector output. Valid values: HTTP and HTTPS. This parameter is displayed when **configType** is set to **collectorTargetInstance**.
+        # The transmission protocol, which must be consistent with the access protocol of the instance specified in the collector output. Valid values: HTTP and HTTPS. This parameter is displayed when **configType** is set to **collectorTargetInstance**.
         self.protocol = protocol
         # The number of pods from which data is successfully collected in the ACK cluster.
         self.success_pods_count = success_pods_count
         # The total number of pods from which data is collected in the ACK cluster.
         self.total_pods_count = total_pods_count
         # The type of the machine on which the collector is deployed. This parameter is displayed when **configType** is set to **collectorDeployMachine**. Valid values:
-        # 
         # - ECSInstanceId: ECS instance.
         # - ACKCluster: ACK cluster.
         self.type = type
@@ -376,7 +370,6 @@ class DescribeCollectorResponseBodyResultExtendConfigsMachines(DaraModel):
         instance_id: str = None,
     ):
         # The status of each collector on the ECS instance. Valid values:
-        # 
         # - heartOk: The heartbeat is normal.
         # - heartLost: The heartbeat is abnormal.
         # - uninstalled: The collector is not installed.

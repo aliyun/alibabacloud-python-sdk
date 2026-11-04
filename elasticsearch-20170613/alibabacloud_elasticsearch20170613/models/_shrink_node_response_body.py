@@ -12,10 +12,10 @@ class ShrinkNodeResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The result of the operation. Valid values:
+        # The returned result. Valid values:
         # 
-        # - true: The node shrinking succeeded.
-        # - false: The node shrinking failed.
+        # - true: The scale-in operation succeeded.
+        # - false: The scale-in operation failed.
         self.result = result
 
     def validate(self):

@@ -14,8 +14,8 @@ class CreateComponentIndexResponseBody(DaraModel):
         self.request_id = request_id
         # The returned result. Valid values:
         # 
-        # - true: The template was created successfully.
-        # - false: The template failed to be created.
+        # - true: Created.
+        # - false: Creation failed.
         self.result = result
 
     def validate(self):

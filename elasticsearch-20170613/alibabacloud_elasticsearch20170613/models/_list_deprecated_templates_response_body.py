@@ -18,7 +18,7 @@ class ListDeprecatedTemplatesResponseBody(DaraModel):
         self.headers = headers
         # The request ID.
         self.request_id = request_id
-        # The returned results.
+        # The result details.
         self.result = result
 
     def validate(self):
@@ -74,14 +74,14 @@ class ListDeprecatedTemplatesResponseBodyResult(DaraModel):
         template: main_models.ListDeprecatedTemplatesResponseBodyResultTemplate = None,
         version: str = None,
     ):
-        # Indicates whether the template matches a data stream. Valid values:
+        # Indicates whether the data stream is matched. Valid values:
         # 
-        # - true: matched.
-        # - false: not matched.
+        # - true: Matched.
+        # - false: Not matched.
         self.data_stream = data_stream
         # The index template information.
         self.index_patterns = index_patterns
-        # The index template name.
+        # The name of the index template.
         self.index_template = index_template
         # The priority.
         self.order = order
@@ -149,7 +149,7 @@ class ListDeprecatedTemplatesResponseBodyResultTemplate(DaraModel):
         mappings: str = None,
         settings: str = None,
     ):
-        # The aliases configuration of the template.
+        # The alias configuration of the template.
         self.aliases = aliases
         # The mappings configuration of the template.
         self.mappings = mappings
@@ -193,7 +193,7 @@ class ListDeprecatedTemplatesResponseBodyHeaders(DaraModel):
         self,
         x_total_count: int = None,
     ):
-        # The total number of entries returned.
+        # The total number of returned entries.
         self.x_total_count = x_total_count
 
     def validate(self):

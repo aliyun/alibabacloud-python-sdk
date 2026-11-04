@@ -52,7 +52,7 @@ class UpdateWhiteIpsResponseBodyResult(DaraModel):
         es_ipwhitelist: List[str] = None,
         network_config: main_models.UpdateWhiteIpsResponseBodyResultNetworkConfig = None,
     ):
-        # The private network access whitelist (deprecated).
+        # **[Deprecated]** The private network access whitelist.
         self.es_ipwhitelist = es_ipwhitelist
         # The network configuration.
         self.network_config = network_config
@@ -128,11 +128,11 @@ class UpdateWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList(DaraModel):
         ips: List[str] = None,
         white_ip_type: str = None,
     ):
-        # The name of the whitelist group. The default group is included by default.
+        # The name of the whitelist group. By default, the default group is included.
         self.group_name = group_name
         # The IP address information in the whitelist group.
         self.ips = ips
-        # The whitelist type. The value is fixed as PRIVATE_ES, which indicates the private network access whitelist.
+        # The whitelist type. The value is fixed to PRIVATE_ES, which indicates a private network access whitelist.
         self.white_ip_type = white_ip_type
 
     def validate(self):

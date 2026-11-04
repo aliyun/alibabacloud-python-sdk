@@ -10,9 +10,9 @@ class UpdateTemplateRequest(DaraModel):
         client_token: str = None,
         body: str = None,
     ):
-        # A client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain a maximum of 64 ASCII characters.
         self.client_token = client_token
-        # The template configuration content. For more information, see the RequestBody section below.
+        # Specifies the template configuration content. For more information, see the RequestBody section.
         self.body = body
 
     def validate(self):

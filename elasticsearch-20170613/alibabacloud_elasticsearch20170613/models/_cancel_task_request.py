@@ -10,9 +10,9 @@ class CancelTaskRequest(DaraModel):
         client_token: str = None,
         task_type: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain a maximum of 64 ASCII characters.
         self.client_token = client_token
-        # The task type. Set this parameter to MigrateData, which indicates a data migration task.
+        # The task type. Set the value to MigrateData, which specifies a data migration task.
         # 
         # This parameter is required.
         self.task_type = task_type

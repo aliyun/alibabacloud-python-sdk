@@ -13638,6 +13638,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.client_token):
             query['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.update_strategy):
+            query['updateStrategy'] = request.update_strategy
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -13670,6 +13672,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.client_token):
             query['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.update_strategy):
+            query['updateStrategy'] = request.update_strategy
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),

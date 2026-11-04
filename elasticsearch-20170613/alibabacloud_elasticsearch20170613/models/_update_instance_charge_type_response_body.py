@@ -12,9 +12,9 @@ class UpdateInstanceChargeTypeResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The returned result. Valid values:
+        # The return result. Valid values:
         # 
-        # - true: The conversion is successful.
+        # - true: The conversion succeeded.
         # - false: The conversion failed.
         self.result = result
 

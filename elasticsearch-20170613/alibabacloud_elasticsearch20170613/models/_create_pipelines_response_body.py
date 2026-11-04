@@ -10,12 +10,11 @@ class CreatePipelinesResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the pipeline is created. Valid values:
-        # 
-        # - true: Created.
-        # - false: Failed to create.
+        # Indicates whether the pipeline was created successfully. Valid values:
+        # - true: The pipeline was created successfully.
+        # - false: The pipeline failed to be created.
         self.result = result
 
     def validate(self):

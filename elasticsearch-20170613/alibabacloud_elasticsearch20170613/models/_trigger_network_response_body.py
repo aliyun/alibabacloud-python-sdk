@@ -12,9 +12,9 @@ class TriggerNetworkResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The returned result. Valid values:
+        # The result. Valid values:
         # 
-        # - true: The operation is successful.
+        # - true: The operation succeeded.
         # - false: The operation failed.
         self.result = result
 

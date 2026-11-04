@@ -13,7 +13,7 @@ class CreateComponentIndexRequest(DaraModel):
         meta: Dict[str, Any] = None,
         template: main_models.CreateComponentIndexRequestTemplate = None,
     ):
-        # The metadata, which is used to store remarks and other information.
+        # The metadata used to store information such as remarks.
         self.meta = meta
         # The composable template information.
         self.template = template
@@ -53,11 +53,11 @@ class CreateComponentIndexRequestTemplate(DaraModel):
         mappings: Dict[str, Any] = None,
         settings: Dict[str, Any] = None,
     ):
-        # The aliases configuration of the template.
+        # The template aliases configuration.
         self.aliases = aliases
-        # The mappings configuration of the template.
+        # The template mappings configuration.
         self.mappings = mappings
-        # The settings configuration of the template.
+        # The template settings configuration.
         self.settings = settings
 
     def validate(self):

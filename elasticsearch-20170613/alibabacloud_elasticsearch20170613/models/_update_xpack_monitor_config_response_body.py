@@ -10,11 +10,11 @@ class UpdateXpackMonitorConfigResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The returned result. Valid values:
+        # The result of the request. Valid values:
         # 
-        # - true: The update was successful.
+        # - true: The update succeeded.
         # - false: The update failed.
         self.result = result
 

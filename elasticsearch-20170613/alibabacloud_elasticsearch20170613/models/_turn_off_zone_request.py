@@ -10,6 +10,9 @@ class TurnOffZoneRequest(DaraModel):
         hp_alb_zone_drained: bool = None,
         zone: str = None,
     ):
+        # Specifies whether to drain traffic from the load balancer. Valid values:
+        # - false: Uses the default policy.
+        # - true: Removes traffic from the load balancer.
         self.hp_alb_zone_drained = hp_alb_zone_drained
         # The zone of the instance.
         self.zone = zone

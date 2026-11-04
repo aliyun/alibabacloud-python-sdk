@@ -10,9 +10,9 @@ class AddConnectableClusterResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The result. Valid values:
+        # The returned result. Valid values:
         # 
         # - true: The configuration succeeded.
         # - false: The configuration failed.
