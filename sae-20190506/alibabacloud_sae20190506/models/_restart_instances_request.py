@@ -14,7 +14,7 @@ class RestartInstancesRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The ID of the instance to be restarted. Separate multiple instance IDs with commas (,).
+        # The IDs of the instances to be restarted. Separate multiple instance IDs with commas (,).
         # 
         # This parameter is required.
         self.instance_ids = instance_ids

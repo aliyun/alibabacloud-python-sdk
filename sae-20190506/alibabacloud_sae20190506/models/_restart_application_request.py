@@ -16,27 +16,23 @@ class RestartApplicationRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_id = app_id
-        # Specifies whether to automatically enable an auto scaling policy for the application. Valid values:
-        # 
-        # - **true**: enabled.
-        # 
-        # - **false**: disabled
+        # Specifies whether the elastic scaling policy for the application is automatically enabled. Valid values:
+        # - **true**: enables the policy.
+        # - **false**: disables the policy.
         self.auto_enable_application_scaling_rule = auto_enable_application_scaling_rule
-        # The percentage of the minimum number of available instances. Take note of the following rules:
+        # The percentage of the minimum number of ready instances. Valid values:
         # 
-        # - If you set the value to **-1**, the minimum number of available instances is not determined based on this parameter. Default value: -1.
+        #  - **-1**: the initial value, which indicates that the percentage is not used.
+        #  - **0 to 100**: the percentage, which is rounded up. For example, if you set this parameter to **50** and you have 5 instances, the minimum number of ready instances is 3.
         # 
-        # - If you set the value to a number **from 0 to 100**, the minimum number of available instances is calculated by using the following formula: Current number of instances × (Value of MinReadyInstanceRatio × 100%). The value is the nearest integer rounded up from the calculated result. For example, if the percentage is set to **50**% and five instances are available, the minimum number of available instances is 3.
-        # 
-        # > When **MinReadyInstance** and **MinReadyInstanceRatio** are specified and **MinReadyInstanceRatio** is set to a number from 0 to 100, the value of \\*\\*MinReadyInstanceRatio\\*\\* takes precedence.\\*\\*\\*\\* For example, if **MinReadyInstances** is set to \\*\\*5\\*\\*, and **MinReadyInstanceRatio** is set to **50**, the minimum number of available instances is set to the nearest integer rounded up from the calculated result of the following formula: Current number of instances × **50%**.
+        # > If both **MinReadyInstances** and **MinReadyInstanceRatio** are specified and the value of **MinReadyInstanceRatio** is not **-1**, the **MinReadyInstanceRatio** parameter takes precedence. For example, if **MinReadyInstances** is set to **5** and **MinReadyInstanceRatio** is set to **50**, the system uses **50** to calculate the minimum number of ready instances.
         self.min_ready_instance_ratio = min_ready_instance_ratio
-        # The minimum number of available instances. Special values:
+        # The minimum number of ready instances. Valid values:
         # 
-        # - If you set the value to **0**, business interruptions occur when the application is updated.
+        # - If you set this parameter to **0**, services are interrupted during the application upgrade.
+        # - If you set this parameter to **-1**, the system uses the recommended value, which is 25% of the current number of instances. For example, if you have 5 instances, 5 × 25% = 1.25. The value is rounded up to 2.
         # 
-        # - If you set the value to \\*\\*-1\\*\\*, the minimum number of available instances is automatically set to a system-recommended value. The value is the nearest integer to which the calculated result of the following formula is rounded up: Current number of instances × 25%. For example, if five instances are available, the minimum number of available instances is calculated by using the following formula: 5 × 25% = 1.25. In this case, the minimum number of available instances is 2.
-        # 
-        # > Make sure that at least one instance is available during application deployment and rollback to prevent business interruptions.
+        # > For each rolling deployment, set the minimum number of ready instances to 1 or greater to ensure service continuity.
         self.min_ready_instances = min_ready_instances
 
     def validate(self):

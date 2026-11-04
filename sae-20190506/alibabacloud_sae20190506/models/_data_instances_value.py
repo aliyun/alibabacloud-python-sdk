@@ -14,15 +14,14 @@ class DataInstancesValue(DaraModel):
         listeners: Dict[str, main_models.DataInstancesValueListenersValue] = None,
         created_by_sae: bool = None,
     ):
-        # The DNS name.
+        # The DNS domain name.
         self.dns_name = dns_name
-        # A collection of listener details.
+        # The listener information.
         self.listeners = listeners
-        # Indicates whether SAE created the instance. Valid values:
+        # Specifies whether the instance is purchased by Serverless App Engine (SAE). Valid values:
         # 
-        # - **true**: SAE created the instance.
-        # 
-        # - **false**: SAE reused an existing instance.
+        # - **true**: The instance is created by SAE on your behalf.
+        # - **false**: An existing instance is reused.
         self.created_by_sae = created_by_sae
 
     def validate(self):

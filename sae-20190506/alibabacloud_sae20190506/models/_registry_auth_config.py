@@ -11,8 +11,11 @@ class RegistryAuthConfig(DaraModel):
         role: str = None,
         user_name: str = None,
     ):
+        # password
         self.password = password
+        # role to get c
         self.role = role
+        # userName
         self.user_name = user_name
 
     def validate(self):

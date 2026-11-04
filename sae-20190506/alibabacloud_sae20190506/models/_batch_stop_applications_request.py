@@ -11,15 +11,15 @@ class BatchStopApplicationsRequest(DaraModel):
         namespace_id: str = None,
         version: str = None,
     ):
-        # The ID of the application that you want to stop.
-        # 
-        # > If you want to stop multiple applications at the same time, separate the IDs with commas (,).
+        # The IDs of the applications to be stopped.
+        # > 
+        # > To stop multiple applications at the same time, separate the application IDs with commas (,).
         self.app_ids = app_ids
-        # ebf491f0-c1a5-45e2-b2c4-710dbe2a\\*\\*\\*\\*,ebf491f0-c1a5-45e2-b2c4-71025e2a\\*\\*\\*\\*
+        # The namespace ID.
         # 
         # This parameter is required.
         self.namespace_id = namespace_id
-        # The application version.
+        # The version of the application.
         self.version = version
 
     def validate(self):

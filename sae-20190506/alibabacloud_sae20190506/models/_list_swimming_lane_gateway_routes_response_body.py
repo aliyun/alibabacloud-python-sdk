@@ -18,39 +18,33 @@ class ListSwimmingLaneGatewayRoutesResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code.
+        # The HTTP status code. Valid values:
         # 
-        # - **2xx**: The request was successful.
-        # 
-        # - **3xx**: The request was redirected.
-        # 
-        # - **4xx**: Indicates a client error.
-        # 
-        # - **5xx**: Indicates a server error.
+        # - **2xx**: Success.
+        # - **3xx**: Redirection.
+        # - **4xx**: Request error.
+        # - **5xx**: Server error.
         self.code = code
-        # The list of gateway routes.
+        # The returned result.
         self.data = data
-        # The error code.
+        # The error code. Valid values:
         # 
-        # - This parameter is returned only if the request fails.
-        # 
-        # - For more information, see the **Error codes** section of this topic.
+        # - If the request is successful, the **ErrorCode** field is not returned.
+        # - If the request fails, the **ErrorCode** field is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The message returned for the request.
+        # The additional information. Valid values:
         # 
         # - If the request is successful, **success** is returned.
-        # 
-        # - If the request fails, an error message is returned.
+        # - If an exception occurs, a specific error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful. Valid values:
         # 
-        # - **true**: The request was successful.
-        # 
-        # - **false**: The request failed.
+        # - **true**: Successful.
+        # - **false**: Failed.
         self.success = success
-        # The trace ID of the request.
+        # The trace ID used to query exact call information.
         self.trace_id = trace_id
 
     def validate(self):
@@ -203,7 +197,7 @@ class ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicatePathPredicate(D
     ):
         # The route path.
         self.path = path
-        # The type of the rule.
+        # The rule type.
         self.type = type
 
     def validate(self):

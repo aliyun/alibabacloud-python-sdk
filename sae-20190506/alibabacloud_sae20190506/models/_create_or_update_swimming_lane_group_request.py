@@ -19,23 +19,23 @@ class CreateOrUpdateSwimmingLaneGroupRequest(DaraModel):
     ):
         # The IDs of the baseline applications.
         self.app_ids = app_ids
-        # The unique ID of the gateway.
+        # The unique ID of the corresponding gateway.
         self.entry_app_id = entry_app_id
-        # The type of the gateway that acts as the application\\"s entry point.
+        # The application entry type (gateway type). Valid values:
         # 
-        # - **apig:** cloud-native API gateway
+        # - **apig**: Cloud-native API gateway.
         # 
-        # - **mse:** java service gateway
+        # - **mse**: Java service gateway.
         # 
-        # - **mse-gw:** MSE Cloud Native Gateway
+        # - **mse-gw**: MSE cloud-native gateway.
         self.entry_app_type = entry_app_type
-        # The ID of the swimming lane group. This parameter is required when you update a swimming lane group.
+        # The ID of the traffic lane group. Required when updating a traffic lane group.
         self.group_id = group_id
-        # The name of the swimming lane group.
+        # The name of the traffic lane group.
         self.group_name = group_name
-        # The ID of the namespace.
+        # The namespace ID.
         self.namespace_id = namespace_id
-        # The version of the end-to-end canary release. Valid values: 0 and 2. The value 2 is recommended.
+        # The end-to-end canary release version. Valid values: 0 and 2 (recommended).
         self.swim_version = swim_version
 
     def validate(self):

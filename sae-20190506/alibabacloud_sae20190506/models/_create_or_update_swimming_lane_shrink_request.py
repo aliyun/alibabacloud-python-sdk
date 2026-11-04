@@ -17,33 +17,32 @@ class CreateOrUpdateSwimmingLaneShrinkRequest(DaraModel):
         mse_gateway_entry_rule_shrink: str = None,
         namespace_id: str = None,
     ):
-        # The configuration of the gateway route.
+        # The gateway routing configuration.
         # 
-        # > This parameter is required if the gateway entry application for the swimlane group is a Java application.
+        # > This parameter is required when the gateway entry of the traffic lane group is Java.
         self.app_entry_rule_shrink = app_entry_rule_shrink
-        # The end-to-end canary release mode.
+        # The end-to-end canary release mode. Valid values:
         # 
-        # - `0`: content-based routing
+        # - 0: Routes traffic based on request content.
         # 
-        # - `1`: percentage-based routing
+        # - 1: Routes traffic based on proportion.
         self.canary_model = canary_model
-        # The status of the swimlane.
+        # Specifies whether the traffic lane is enabled. Valid values:
         # 
-        # - `true`: enabled
-        # 
-        # - `false`: disabled
+        # - true: Enabled.
+        # - false: Disabled.
         self.enable = enable
-        # The ID of the swimlane group.
+        # The ID of the traffic lane group to which the traffic lane belongs.
         self.group_id = group_id
-        # The ID of the swimlane.
+        # The ID of the traffic lane.
         self.lane_id = lane_id
-        # The name of the swimlane.
+        # The name of the traffic lane.
         self.lane_name = lane_name
-        # The tag of the swimlane.
+        # The tag of the traffic lane.
         self.lane_tag = lane_tag
-        # Configuration for the MSE gateway route.
+        # The MSE gateway routing configuration.
         # 
-        # > This parameter is required if the **EntryAppType** parameter is set to **apig** or **mse-gw**.
+        # > This parameter is required when **EntryAppType** is set to **apig** or **mse-gw**.
         self.mse_gateway_entry_rule_shrink = mse_gateway_entry_rule_shrink
         # The ID of the namespace.
         self.namespace_id = namespace_id

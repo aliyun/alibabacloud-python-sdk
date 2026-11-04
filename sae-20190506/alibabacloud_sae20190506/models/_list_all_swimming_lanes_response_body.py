@@ -18,39 +18,33 @@ class ListAllSwimmingLanesResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code returned. Valid values:
+        # The API status code or POP error code. Valid values:
         # 
-        # - **2xx**: The request is successful.
-        # 
-        # - **3xx**: The request is redirected.
-        # 
-        # - **4xx**: The request is invalid.
-        # 
-        # - **5xx**: A server error occurs.
+        # - **2xx**: Success.
+        # - **3xx**: Redirection.
+        # - **4xx**: Client error.
+        # - **5xx**: Server error.
         self.code = code
-        # The response data.
+        # The returned result.
         self.data = data
-        # The error code.
+        # The error code. Valid values:
         # 
-        # - The **ErrorCode** parameter is omitted if the request is successful.
-        # 
-        # - The **ErrorCode** parameter is returned if the request fails. For details, see the **Error codes** section in this topic.
+        # - If the request is successful, the **ErrorCode** parameter is not returned.
+        # - If the request fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The response message. Valid values:
+        # The additional information. Valid values:
         # 
-        # - Returns **success** if the request is successful.
-        # 
-        # - Returns a specific error code if the request fails.
+        # - If the request is successful, **success** is returned.
+        # - If the request fails, a specific error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request is successful. Valid values:
         # 
-        # - **true**: The request is successful.
-        # 
-        # - **false**: The request fails.
+        # - **true**: The restart is successful.
+        # - **false**: The restart fails.
         self.success = success
-        # The trace ID used to query the details of a request.
+        # The trace ID used to query invocation details.
         self.trace_id = trace_id
 
     def validate(self):
@@ -132,27 +126,27 @@ class ListAllSwimmingLanesResponseBodyData(DaraModel):
     ):
         # The application entry rule.
         self.app_entry_rule = app_entry_rule
-        # The applications associated with the swimming lane.
+        # The associated applications.
         self.apps = apps
-        # The canary model for the end-to-end canary release:
+        # The end-to-end canary release mode. Valid values:
         # 
-        # - 0: Route by request content.
         # 
-        # - 1: Route by percentage.
+        # - 0: Routes traffic based on request content.
+        # 
+        # - 1: Routes traffic based on proportion.
         self.canary_model = canary_model
-        # Indicates whether the swimming lane is enabled.
+        # The traffic lane status. Valid values:
         # 
-        # - true: enabled
-        # 
-        # - false: disabled
+        # - true: Enabled.
+        # - false: Disabled.
         self.enable = enable
         # Indicates whether traffic rules are enabled.
         self.enable_rules = enable_rules
-        # The swimming lane ID.
+        # The traffic lane ID.
         self.lane_id = lane_id
-        # The swimming lane name.
+        # The traffic lane group name.
         self.lane_name = lane_name
-        # The swimming lane tag.
+        # The traffic lane tag.
         self.lane_tag = lane_tag
         # The MSE gateway route.
         self.mse_gateway_entry_rule = mse_gateway_entry_rule
@@ -250,19 +244,19 @@ class ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRule(DaraModel):
         route_ids: List[int] = None,
         routes: List[main_models.ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutes] = None,
     ):
-        # The logical operator used to join conditions.
+        # The logical connector between conditions.
         self.condition_joiner = condition_joiner
         # The matching conditions.
         self.conditions = conditions
-        # Indicates whether to enable canary release by percentage.
+        # Indicates whether proportion-based canary release is enabled.
         self.independent_percentage_enable = independent_percentage_enable
-        # The percentage of traffic for the path.
+        # The path traffic proportion.
         self.percentage = percentage
-        # A map of route IDs to their corresponding traffic percentages.
+        # The traffic configuration.
         self.percentage_by_route = percentage_by_route
-        # The route IDs.
+        # The list of route IDs.
         self.route_ids = route_ids
-        # The route configurations.
+        # The detailed configuration of the route rule.
         self.routes = routes
 
     def validate(self):
@@ -349,7 +343,7 @@ class ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutes(DaraModel):
         self.route_id = route_id
         # The route name.
         self.route_name = route_name
-        # The route\\"s matching rule.
+        # The route rule.
         self.route_predicate = route_predicate
 
     def validate(self):
@@ -467,7 +461,7 @@ class ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleConditions(DaraMode
         self.name = name
         # The parameter type.
         self.type = type
-        # The value to match in the condition.
+        # The matching value of the condition.
         self.value = value
 
     def validate(self):
@@ -525,7 +519,7 @@ class ListAllSwimmingLanesResponseBodyDataApps(DaraModel):
         self.mse_app_id = mse_app_id
         # The MSE instance name.
         self.mse_app_name = mse_app_name
-        # The ID of the namespace in which the MSE instance resides.
+        # The ID of the namespace where the MSE instance resides.
         self.mse_namespace_id = mse_namespace_id
 
     def validate(self):
@@ -582,21 +576,20 @@ class ListAllSwimmingLanesResponseBodyDataAppEntryRule(DaraModel):
         percentage: int = None,
         percentage_by_path: Dict[str, int] = None,
     ):
-        # The logical operator used to join conditions:
+        # The logical connector between conditions. Valid values:
         # 
         # - AND: All conditions must be met.
-        # 
-        # - OR: One of the conditions must be met.
+        # - OR: Any condition must be met.
         self.condition_joiner = condition_joiner
         # The matching conditions.
         self.conditions = conditions
-        # Indicates whether to enable canary release by percentage.
+        # Indicates whether proportion-based canary release is enabled.
         self.independent_percentage_enable = independent_percentage_enable
-        # The request paths.
+        # The URI of the request.
         self.paths = paths
-        # The percentage of traffic (0-100) to be routed when the route by percentage model is used.
+        # The traffic proportion used for proportion-based routing. Valid values: 0 to 100.
         self.percentage = percentage
-        # A map of paths to their corresponding traffic percentages.
+        # The traffic matching.
         self.percentage_by_path = percentage_by_path
 
     def validate(self):
@@ -672,9 +665,9 @@ class ListAllSwimmingLanesResponseBodyDataAppEntryRuleConditions(DaraModel):
         self.name = name
         # The parameter type.
         self.type = type
-        # The value to match in the condition.
+        # The matching value of the condition.
         self.value = value
-        # The values to match in the condition.
+        # The matching value of the condition.
         self.values = values
 
     def validate(self):

@@ -22,81 +22,52 @@ class ListChangeOrdersRequest(DaraModel):
         self.app_id = app_id
         # The status of the change order. Valid values:
         # 
-        # - **0**: Preparing.
-        # 
-        # - **1**: In progress.
-        # 
-        # - **2**: Succeeded.
-        # 
-        # - **3**: Failed.
-        # 
-        # - **6**: Stopped.
-        # 
-        # - **8**: Paused for manual confirmation.
-        # 
-        # - **9**: Paused for automatic confirmation.
-        # 
-        # - **10**: Failed due to a system exception.
-        # 
-        # - **11**: Pending approval.
-        # 
-        # - **12**: Approved and pending execution.
+        # - **0**: preparing
+        # - **1**: executing
+        # - **2**: executed successfully
+        # - **3**: execution failed
+        # - **6**: terminated
+        # - **8**: waiting for manual batch confirmation
+        # - **9**: waiting for automatic batch confirmation
+        # - **10**: execution failed due to a system exception
+        # - **11**: waiting for approval
+        # - **12**: approved and waiting for execution
         self.co_status = co_status
         # The type of the change order. Valid values:
         # 
-        # - **CoBindSlb**: Attach an SLB instance.
-        # 
-        # - **CoUnbindSlb**: Detach an SLB instance.
-        # 
-        # - **CoCreateApp**: Create an application.
-        # 
-        # - **CoDeleteApp**: Delete an application.
-        # 
-        # - **CoDeploy**: Deploy an application.
-        # 
-        # - **CoRestartApplication**: Restart an application.
-        # 
-        # - **CoRollback**: Roll back an application.
-        # 
-        # - **CoScaleIn**: Scale in an application.
-        # 
-        # - **CoScaleOut**: Scale out an application.
-        # 
-        # - **CoStartApplication**: Start an application.
-        # 
-        # - **CoStopApplication**: Stop an application.
-        # 
-        # - **CoRescaleApplicationVertically**: Change the instance type.
-        # 
-        # - **CoDeployHistroy**: Roll back to a previous version.
-        # 
-        # - **CoBindNas**: Attach a NAS file system.
-        # 
-        # - **CoUnbindNas**: Detach a NAS file system.
-        # 
-        # - **CoBatchStartApplication**: Batch start applications.
-        # 
-        # - **CoBatchStopApplication**: Batch stop applications.
-        # 
-        # - **CoRestartInstances**: Restart instances.
-        # 
-        # - **CoDeleteInstances**: Delete instances.
-        # 
-        # - **CoScaleInAppWithInstances**: Scale in an application by specifying instances.
+        # - **CoBindSlb**: bind an SLB instance
+        # - **CoUnbindSlb**: unbind an SLB instance
+        # - **CoCreateApp**: create an application
+        # - **CoDeleteApp**: delete an application
+        # - **CoDeploy**: deploy an application
+        # - **CoRestartApplication**: restart an application
+        # - **CoRollback**: roll back an application
+        # - **CoScaleIn**: scale in an application
+        # - **CoScaleOut**: scale out an application
+        # - **CoStartApplication**: start an application
+        # - **CoStopApplication**: stop an application
+        # - **CoRescaleApplicationVertically**: change instance specifications
+        # - **CoDeployHistroy**: roll back to a historical version
+        # - **CoBindNas**: bind a NAS file system
+        # - **CoUnbindNas**: unbind a NAS file system
+        # - **CoBatchStartApplication**: start applications in batches
+        # - **CoBatchStopApplication**: stop applications in batches
+        # - **CoRestartInstances**: restart instances
+        # - **CoDeleteInstances**: delete instances
+        # - **CoScaleInAppWithInstances**: scale in specified instances
         self.co_type = co_type
         # The current page number.
         self.current_page = current_page
-        # The keyword for a fuzzy search of change order descriptions. The operation returns only the change orders whose descriptions contain the **keyword**.
+        # The keyword used for fuzzy match of the change order description. Change orders whose descriptions contain the keyword are returned.
         self.key = key
-        # The field by which to sort the results.
+        # The sorting condition.
         self.order_by = order_by
-        # The number of entries to return on each page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The sort order for the field specified by the **OrderBy** parameter. Valid values:
+        # Specifies whether to sort the results in ascending order based on the field specified by the **OrderBy** parameter. Valid values:
         # 
-        # - **true**: The results are sorted in ascending order.
-        # 
-        # - **false**: The results are sorted in descending order.
+        #   - **true**: sort in ascending order
+        #   - **false**: sort in descending order
         self.reverse = reverse
 
     def validate(self):

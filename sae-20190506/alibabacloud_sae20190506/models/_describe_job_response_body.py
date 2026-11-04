@@ -18,35 +18,29 @@ class DescribeJobResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code or POP error code. Valid values:
+        # The API status code or POP error code. Valid values:
         # 
-        # - **2xx**: The request was successful.
-        # 
-        # - **3xx**: The request was redirected.
-        # 
-        # - **4xx**: A request error occurred.
-        # 
-        # - **5xx**: A server error occurred.
+        # - **2xx**: Success.
+        # - **3xx**: Redirection.
+        # - **4xx**: Request error.
+        # - **5xx**: Server error.
         self.code = code
-        # The job template information.
+        # The task template information.
         self.data = data
-        # The error code.
-        # 
-        # - The **ErrorCode** parameter is returned only if the request fails.
-        # 
-        # - For a list of possible **ErrorCode** values, see the **Error codes** section in this topic.
+        # The error code. 
+        # - If the request is successful, the **ErrorCode** parameter is not returned.
+        # - If the request fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # Additional information about the call result.
+        # The additional information about the call result.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the task template configuration was retrieved successfully. Valid values:
         # 
-        # - **true**: The request was successful.
-        # 
-        # - **false**: The request failed.
+        # - **true**: Retrieved successfully.
+        # - **false**: Failed to retrieve.
         self.success = success
-        # The trace ID used to query the details of a request.
+        # The trace ID, which is used to accurately query call information.
         self.trace_id = trace_id
 
     def validate(self):
@@ -171,21 +165,21 @@ class DescribeJobResponseBodyData(DaraModel):
         war_start_options: str = None,
         web_container: str = None,
     ):
-        # The ARN of the RAM role that is required to pull images across accounts. For more information, see [Pull images across Alibaba Cloud accounts](https://help.aliyun.com/document_detail/190675.html) and [Grant permissions across Alibaba Cloud accounts by using a RAM role](https://help.aliyun.com/document_detail/223585.html).
+        # The ARN of the RAM role required to pull images across accounts. For more information, see [Pull Alibaba Cloud images across accounts](https://help.aliyun.com/document_detail/190675.html) and [Implement cross-account authorization by using RAM roles](https://help.aliyun.com/document_detail/223585.html).
         self.acr_assume_role_arn = acr_assume_role_arn
-        # The ID of the Container Registry (ACR) Enterprise Edition instance.
+        # The instance ID of the ACR Enterprise instance.
         self.acr_instance_id = acr_instance_id
-        # The description of the job template.
+        # The description of the task template.
         self.app_description = app_description
         # The ID of the job template.
         self.app_id = app_id
-        # The name of the job template.
+        # The name of the task template.
         self.app_name = app_name
-        # The maximum number of retries for a failed job.
+        # The number of task retries.
         self.backoff_limit = backoff_limit
-        # The Best-Effort policy.
+        # The best-effort policy.
         self.best_effort_type = best_effort_type
-        # The image startup command. The command must be an executable that exists in the container. Example:
+        # The image startup command. The command must be an executable object that exists in the container. Example:
         # 
         # ```
         # command:
@@ -194,267 +188,204 @@ class DescribeJobResponseBodyData(DaraModel):
         #       - >
         #       - file0
         # ```
-        # 
-        # In this example, `Command="echo", CommandArgs=["abc", ">", "file0"]`.
+        # Based on the preceding example, `Command="echo"` and `CommandArgs=["abc", ">", "file0"]`.
         self.command = command
-        # The arguments of the image startup command. The arguments are passed to the **Command** parameter. Format:
+        # The parameters for the image startup command. These are the parameters required by the **Command** startup command. Format:
         # 
         # `["a","b"]`
         # 
-        # In the example of the **Command** parameter, `CommandArgs=["abc", ">", "file0"]`. In this case, `["abc", ">", "file0"]` must be converted to a string in the format of a JSON array. If this parameter is not specified, you do not need to configure it.
+        # In the example of the **Command** parameter, `CommandArgs=["abc", ">", "file0"]`. The `["abc", ">", "file0"]` part must be converted to a string in JSON array format. If this parameter is not required, you do not need to specify it.
         self.command_args = command_args
-        # The concurrency policy for the job. Valid values:
+        # The task concurrency policy. Valid values:
         # 
-        # - **Forbid**: Forbids concurrent runs. A new job is not created if the previous one has not completed.
-        # 
-        # - **Allow**: Allows concurrent runs.
-        # 
-        # - **Replace**: If the previous job has not completed, the new job replaces it.
+        # - **Forbid**: forbids concurrent execution. A new task is not created if the previous task is not completed.
+        # - **Allow**: allows concurrent execution of tasks.
+        # - **Replace**: replaces the previous task with a new task if the previous task is not completed when the creation time of the new task arrives.
         self.concurrency_policy = concurrency_policy
-        # The information about the mounted ConfigMap.
+        # The ConfigMap information.
         self.config_map_mount_desc = config_map_mount_desc
-        # The number of CPU cores that are required by each instance. Unit: millicores. This parameter cannot be set to 0. Only the following fixed specifications are supported:
+        # The CPU required for each instance. Unit: millicores. The value cannot be 0. Only the following defined specifications are supported:
         # 
         # - **500**
-        # 
         # - **1000**
-        # 
         # - **2000**
-        # 
         # - **4000**
-        # 
         # - **8000**
-        # 
         # - **16000**
-        # 
         # - **32000**
         self.cpu = cpu
-        # The custom host mapping in the container. The parameters are described as follows:
+        # The custom host mapping in the container. Valid values:
         # 
-        # - **hostName**: The domain name or hostname.
-        # 
-        # - **ip**: The IP address.
+        # - **hostName**: the domain name or hostname.
+        # - **ip**: the IP address.
         self.custom_host_alias = custom_host_alias
-        # The version of the runtime environment in the HSF framework, such as an Ali-Tomcat container.
+        # The runtime environment version of the task in the HSF framework, such as the Ali-Tomcat container.
         self.edas_container_version = edas_container_version
-        # The container environment variables. You can define custom variables or reference a ConfigMap. To reference a ConfigMap, you must first create a ConfigMap. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). The following formats are supported:
-        # 
-        # - Define custom variables
-        # 
-        #   - **name**: The name of the environment variable.
-        # 
-        #   - **value**: The value of the environment variable.
-        # 
-        # - Reference a ConfigMap
-        # 
-        #   - **name**: The name of the environment variable. You can reference a single key or all keys. To reference all keys, enter `sae-sys-configmap-all-<ConfigMap name>`, for example, `sae-sys-configmap-all-test1`.
-        # 
-        #   - **valueFrom**: The source of the environment variable. Set the value to `configMapRef`.
-        # 
-        #   - **configMapId**: The ID of the ConfigMap.
-        # 
-        #   - **key**: The key of the key-value pair. If you reference all keys in the ConfigMap, you do not need to specify this parameter.
+        # The container environment variable parameters. You can customize environment variables or reference ConfigMaps. To reference a ConfigMap, create a ConfigMap instance first. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). Valid values:
+        # - Custom configuration:
+        #     - **name**: the name of the environment variable.
+        #     - **value**: the value of the environment variable.
+        # - Reference ConfigMap:
+        #     - **name**: the name of the environment variable. You can reference a single key or all keys. To reference all keys, enter `sae-sys-configmap-all-<ConfigMap name>`, for example, `sae-sys-configmap-all-test1`.
+        #     - **valueFrom**: the environment variable reference. Set the value to `configMapRef`.
+        #     - **configMapId**: the ConfigMap ID.
+        #     - **key**: the key. If you reference all key-value pairs, do not set this field.
         self.envs = envs
-        # The ID of the Secret.
+        # The ID of the corresponding secret.
         self.image_pull_secrets = image_pull_secrets
-        # The image URL. This parameter is required if **Package Type** is set to **Image**.
+        # The image address. This parameter is required when **PackageType** is set to **Image**.
         self.image_url = image_url
-        # The arguments for the startup of a JAR package. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
+        # The startup parameters for the JAR package task. Default task startup command: `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`
         self.jar_start_args = jar_start_args
-        # The options for the startup of a JAR package. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
+        # The startup options for the JAR package task. Default task startup command: `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`
         self.jar_start_options = jar_start_options
-        # The JDK version that the deployment package requires. The following versions are supported:
+        # The JDK version required by the deployment package. Valid values:
         # 
         # - **Open JDK 8**
-        # 
         # - **Open JDK 7**
-        # 
         # - **Dragonwell 11**
-        # 
         # - **Dragonwell 8**
-        # 
         # - **openjdk-8u191-jdk-alpine3.9**
-        # 
         # - **openjdk-7u201-jdk-alpine3.9**
         # 
-        # This parameter is not applicable if **Package Type** is set to **Image**.
+        # This parameter is not supported when **PackageType** is set to **Image**.
         self.jdk = jdk
-        # The memory required by each instance, in MB. This value cannot be 0. CPU and memory resources are allocated in fixed ratios. The following combinations are supported:
-        # 
-        # - **1024**: corresponds to 500 millicores and 1,000 millicores.
-        # 
-        # - **2048**: corresponds to 500, 1,000, and 2,000 millicores.
-        # 
-        # - **4096**: corresponds to 1,000, 2,000, and 4,000 millicores.
-        # 
-        # - **8192**: corresponds to 2,000, 4,000, and 8,000 millicores.
-        # 
-        # - **12288**: corresponds to 12,000 millicores.
-        # 
-        # - **16384**: corresponds to 4,000, 8,000, and 16,000 millicores.
-        # 
-        # - **24576**: corresponds to 12,000 millicores.
-        # 
-        # - **32768**: corresponds to 16,000 millicores.
-        # 
-        # - **65536**: corresponds to 8,000, 16,000, and 32,000 millicores.
-        # 
-        # - **131072**: corresponds to 32,000 millicores.
+        # The memory required for each instance. Unit: MB. The value cannot be 0. The memory has a one-to-one mapping with the CPU. Only the following defined specifications are supported:
+        # - **1024**: corresponds to 500 millicores and 1000 millicores.
+        # - **2048**: corresponds to 500, 1000, and 2000 millicores.
+        # - **4096**: corresponds to 1000, 2000, and 4000 millicores.
+        # - **8192**: corresponds to 2000, 4000, and 8000 millicores.
+        # - **12288**: corresponds to 12000 millicores.
+        # - **16384**: corresponds to 4000, 8000, and 16000 millicores.
+        # - **24576**: corresponds to 12000 millicores.
+        # - **32768**: corresponds to 16000 millicores.
+        # - **65536**: corresponds to 8000, 16000, and 32000 millicores.
+        # - **131072**: corresponds to 32000 millicores.
         self.memory = memory
         # The mount description.
         self.mount_desc = mount_desc
-        # The mount target of the Apsara File Storage NAS file system in the job template\\"s VPC. You can omit this parameter if the NAS configuration is unchanged during redeployment. To clear the NAS configuration, set this parameter to an empty string (`""`).
+        # The mount target of the NAS file system in the VPC of the task template. If the configuration remains unchanged during deployment, you do not need to set this parameter (that is, the **MountHost** field is not required in the request). If you need to clear the NAS configuration, you must set the value of this field to an empty string (that is, set **MountHost** to "") in the request.
         self.mount_host = mount_host
         # The namespace ID.
         self.namespace_id = namespace_id
-        # The configuration for mounting an Apsara File Storage NAS file system.
+        # The configuration for mounting NAS.
         self.nas_configs = nas_configs
-        # The ID of the Apsara File Storage NAS file system.
+        # The NAS ID.
         self.nas_id = nas_id
-        # The AccessKey ID for accessing Object Storage Service (OSS) buckets.
+        # The AccessKey ID for OSS read and write operations.
         self.oss_ak_id = oss_ak_id
-        # The AccessKey secret for accessing OSS buckets.
+        # The AccessKey Secret for OSS read and write operations.
         self.oss_ak_secret = oss_ak_secret
-        # The description of the mounted OSS bucket.
+        # The OSS mount description.
         self.oss_mount_descs = oss_mount_descs
-        # The type of the job package. Valid values:
+        # The task package type. Valid values:
         # 
-        # - For Java deployments, **FatJar**, **War**, and **Image** are supported.
-        # 
-        # - For PHP deployments, the following package types are supported:
-        # 
-        #   - **PhpZip**
-        # 
-        #   - **IMAGE_PHP_5_4**
-        # 
-        #   - **IMAGE_PHP_5_4_ALPINE**
-        # 
-        #   - **IMAGE_PHP_5_5**
-        # 
-        #   - **IMAGE_PHP_5_5_ALPINE**
-        # 
-        #   - **IMAGE_PHP_5_6**
-        # 
-        #   - **IMAGE_PHP_5_6_ALPINE**
-        # 
-        #   - **IMAGE_PHP_7_0**
-        # 
-        #   - **IMAGE_PHP_7_0_ALPINE**
-        # 
-        #   - **IMAGE_PHP_7_1**
-        # 
-        #   - **IMAGE_PHP_7_1_ALPINE**
-        # 
-        #   - **IMAGE_PHP_7_2**
-        # 
-        #   - **IMAGE_PHP_7_2_ALPINE**
-        # 
-        #   - **IMAGE_PHP_7_3**
-        # 
-        #   - **IMAGE_PHP_7_3_ALPINE**
-        # 
-        # - For Python deployments, **PythonZip** and **Image** are supported.
+        # - If you deploy the task by using Java, valid values are **FatJar**, **War**, and **Image**.
+        # - If you deploy the task by using PHP, valid values are:
+        #     - **PhpZip**
+        #     - **IMAGE_PHP_5_4**
+        #     - **IMAGE_PHP_5_4_ALPINE**
+        #     - **IMAGE_PHP_5_5**
+        #     - **IMAGE_PHP_5_5_ALPINE**
+        #     - **IMAGE_PHP_5_6**
+        #     - **IMAGE_PHP_5_6_ALPINE**
+        #     - **IMAGE_PHP_7_0**
+        #     - **IMAGE_PHP_7_0_ALPINE**
+        #     - **IMAGE_PHP_7_1**
+        #     - **IMAGE_PHP_7_1_ALPINE**
+        #     - **IMAGE_PHP_7_2**
+        #     - **IMAGE_PHP_7_2_ALPINE**
+        #     - **IMAGE_PHP_7_3**
+        #     - **IMAGE_PHP_7_3_ALPINE**
+        # - If you deploy the task by using Python, valid values are **PythonZip** and **Image**.
         self.package_type = package_type
-        # The URL of the package. This parameter is required if **Package Type** is set to **FatJar** or **War**.
+        # The deployment package URL. This parameter is required when **PackageType** is set to **FatJar** or **War**.
         self.package_url = package_url
-        # The version of the package. This parameter is required if **Package Type** is set to **FatJar** or **War**.
+        # The version number of the deployment package. This parameter is required when **PackageType** is set to **FatJar** or **War**.
         self.package_version = package_version
         # The content of the PHP configuration file.
         self.php_config = php_config
-        # The mount path of the PHP job startup configuration. Make sure that the PHP server uses this configuration to start.
+        # The mount path of the PHP task startup configuration. You must ensure that the PHP server uses this configuration file to start.
         self.php_config_location = php_config_location
-        # The script to execute after the container starts. This script runs immediately after the system creates the container. Example: `{"exec":{"command":["cat","/etc/group"]}}`
+        # The script to execute after the container starts. A script is triggered and executed immediately after the container is created. Format: `{"exec":{"command":["cat","/etc/group"]}}`
         self.post_start = post_start
-        # The script to execute before the container stops. This script runs before the system deletes the container. Example: `{"exec":{"command":["cat","/etc/group"]}}`
+        # The script to execute before the container stops. A script is triggered and executed before the container is deleted. Format: `{"exec":{"command":["cat","/etc/group"]}}`
         self.pre_stop = pre_stop
-        # The programming language that is used for the job template. Valid values:
+        # The programming language of the technology stack used to create the task template. Valid values:
         # 
-        # - **java**: Java
-        # 
-        # - **php**: PHP
-        # 
-        # - **python**: Python
-        # 
-        # - **other**: Other languages, such as C++, Go, .NET, and Node.js.
+        # - **java**: Java.
+        # - **php**: PHP.
+        # - **python**: Python.
+        # - **other**: Multiple languages, such as C++, Go, .NET, and Node.js.
         self.programming_language = programming_language
         # The list of public request URLs for the one-time task.
         self.public_web_hook_urls = public_web_hook_urls
-        # The Python environment. PYTHON 3.9.15 is supported.
+        # The Python environment. Python 3.9.15 is supported.
         self.python = python
-        # The Python module dependencies to install. By default, SAE installs dependencies from a `requirements.txt` file in the package\\"s root directory. Use this parameter to specify dependencies if a `requirements.txt` file is not present or to add extra modules.
+        # The module dependencies for custom installation. By default, the dependencies defined in the requirements.txt file in the root folder are installed. If no custom package is configured, you can specify the dependencies to install.
         self.python_modules = python_modules
-        # The ID of the referenced job template.
+        # The ID of the referenced task template.
         self.ref_app_id = ref_app_id
-        # The IDs of job templates that reference this template.
+        # The list of IDs of the referenced task targets.
         self.refed_app_ids = refed_app_ids
         # The region ID.
         self.region_id = region_id
-        # The number of job instances.
+        # The number of task instances.
         self.replicas = replicas
         # The security group ID.
         self.security_group_id = security_group_id
-        # Specifies whether to enable job sharding.
+        # Specifies whether to enable task slicing.
         self.slice = slice
-        # The parameters for job sharding.
+        # The task slicing parameters.
         self.slice_envs = slice_envs
-        # The configuration for collecting logs to Log Service (SLS).
+        # The configuration for collecting logs to Simple Log Service (SLS).
         # 
-        # - Use an SLS resource that SAE automatically creates: `[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]`.
+        # - To use SLS resources automatically created by Serverless App Engine (SAE): `[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]`.
+        # - To use custom SLS resources: `[{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}]`.
         # 
-        # - Use a custom SLS resource: `[{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}]`.
+        # Parameter descriptions:
         # 
-        # The parameters are described as follows:
+        # - **projectName**: the name of the SLS project.  
+        # - **logDir**: the log path.
+        # - **logType**: the log type. **stdout** indicates container standard output logs. Only one **stdout** log can be set. If this parameter is not set, file logs are collected.
+        # - **logstoreName**: the name of the SLS Logstore.
+        # - **logtailName**: the name of the SLS Logtail. If this parameter is not specified, a new Logtail is created.
         # 
-        # - **projectName**: The name of the SLS project.
-        # 
-        # - **logDir**: The log path.
-        # 
-        # - **logType**: The log type. **stdout** specifies the container\\"s standard output logs. You can specify only one log of the stdout type. If this parameter is omitted, file logs are collected.
-        # 
-        # - **logstoreName**: The name of the Logstore in SLS.
-        # 
-        # - **logtailName**: The name of the Logtail configuration in SLS. If you do not specify this parameter, a new Logtail configuration is created.
-        # 
-        # You can omit this parameter if the Log Service configuration is unchanged during redeployment. To disable log collection, set this parameter to an empty string (`""`).
+        # If the SLS collection configuration remains unchanged during multiple deployments, you do not need to set this parameter (that is, the **SlsConfigs** field is not required in the request). If you no longer need the SLS collection feature, you must set the value of this field to an empty string (that is, set **SlsConfigs** to "") in the request.
         self.sls_configs = sls_configs
-        # Specifies whether to suspend the job template.
+        # Specifies whether to suspend the task template.
         self.suspend = suspend
-        # The tags of the job template.
+        # The tag information.
         self.tags = tags
-        # The timeout for a graceful stop, in seconds. Default: 30. Valid values: 1 to 300.
+        # The graceful shutdown timeout period. Default value: 30. Unit: seconds. Valid values: 1 to 300.
         self.termination_grace_period_seconds = termination_grace_period_seconds
-        # The timeout period for the job. Unit: seconds.
+        # The task timeout period. Unit: seconds.
         self.timeout = timeout
         # The time zone. Default value: **Asia/Shanghai**.
         self.timezone = timezone
-        # The Tomcat file configuration. To delete the configuration, set this parameter to "" or "{}".
+        # The Tomcat file configuration. Set this parameter to "" or "{}" to delete the configuration:
         # 
-        # - **port**: The port number. Valid values: 1024 to 65535. Ports below 1024 are reserved. If you do not specify a port, the default value is 8080.
-        # 
-        # - **contextPath**: The access path. Default value: /.
-        # 
-        # - **maxThreads**: The maximum number of connections in the connection pool. Default value: 400.
-        # 
-        # - **uriEncoding**: The URI encoding scheme for Tomcat. Valid values: **UTF-8**, **ISO-8859-1**, **GBK**, and **GB2312**. If you do not specify this parameter, the default value **ISO-8859-1** is used.
-        # 
-        # - **useBodyEncodingForUri**: Specifies whether to use the character encoding from the request body for the URI. Default value: **true**.
+        # - **port**: the port range is 1024 to 65535. Ports smaller than 1024 require root permissions. Because the container is configured with admin permissions, specify a port greater than 1024. Default value: 8080.
+        # - **contextPath**: the access path. Default value: the root directory "/".
+        # - **maxThreads**: the maximum number of connections in the connection pool. Default value: 400.
+        # - **uriEncoding**: the Tomcat encoding format. Valid values: **UTF-8**, **ISO-8859-1**, **GBK**, and **GB2312**. Default value: **ISO-8859-1**.
+        # - **useBodyEncoding**: specifies whether to use **BodyEncoding for URL**. Default value: **true**.
         self.tomcat_config = tomcat_config
         self.trigger_config = trigger_config
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
         # The VPC ID.
         self.vpc_id = vpc_id
-        # The list of private request URLs for the one-time task.
+        # The list of internal request URLs for one-time tasks.
         self.vpc_web_hook_urls = vpc_web_hook_urls
-        # The options for the startup of a WAR package. The default startup command is `java $JAVA_OPTS $CATALINA_OPTS -Options org.apache.catalina.startup.Bootstrap "$@" start`.
+        # The startup options for the WAR package task. Default task startup command: `java $JAVA_OPTS $CATALINA_OPTS -Options org.apache.catalina.startup.Bootstrap "$@" start`.
         self.war_start_options = war_start_options
-        # The version of the Tomcat container on which the package depends. The following versions are supported:
+        # The Tomcat version required by the deployment package. Valid values:
         # 
         # - **apache-tomcat-7.0.91**
-        # 
         # - **apache-tomcat-8.5.42**
         # 
-        # This parameter is not supported when **Package Type** is set to **Image**.
+        # This parameter is not supported when **PackageType** is set to **Image**.
         self.web_container = web_container
 
     def validate(self):
@@ -913,15 +844,14 @@ class DescribeJobResponseBodyDataOssMountDescs(DaraModel):
     ):
         # The bucket name.
         self.bucket_name = bucket_name
-        # The directory or object that you created in the OSS bucket. An exception is returned if the specified mount directory does not exist.
+        # The directory or OSS object that you created in OSS. If the OSS mount directory does not exist, an exception is triggered.
         self.bucket_path = bucket_path
-        # The path in your SAE container. If the path exists, it is overwritten. If the path does not exist, a new path is created.
+        # The container path in SAE. If the path already exists, the existing path is overwritten. If the path does not exist, a new path is created.
         self.mount_path = mount_path
-        # Specifies whether the container has read-only access to the mounted resources. Valid values:
+        # Specifies whether the container path has read permissions on the resources in the mount directory. Valid values:
         # 
-        # - **true**: The path has read-only permissions.
-        # 
-        # - **false**: The path has read and write permissions.
+        # - **true**: read-only permissions.
+        # - **false**: read and write permissions.
         self.read_only = read_only
 
     def validate(self):
@@ -968,9 +898,9 @@ class DescribeJobResponseBodyDataMountDesc(DaraModel):
         mount_path: str = None,
         nas_path: str = None,
     ):
-        # The container mount path.
+        # The mount path of the container.
         self.mount_path = mount_path
-        # The directory in the Apsara File Storage NAS file system.
+        # The relative file directory of the NAS file system.
         self.nas_path = nas_path
 
     def validate(self):
@@ -1011,9 +941,9 @@ class DescribeJobResponseBodyDataConfigMapMountDesc(DaraModel):
         self.config_map_id = config_map_id
         # The name of the ConfigMap.
         self.config_map_name = config_map_name
-        # The key of the key-value pair in the ConfigMap.
+        # The key of the ConfigMap.
         self.key = key
-        # The container mount path.
+        # The mount path of the container.
         self.mount_path = mount_path
 
     def validate(self):

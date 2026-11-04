@@ -1,3 +1,6 @@
+2026-11-04 Version: 2.11.3
+- Generated python 2019-05-06 for sae.
+
 2026-07-10 Version: 2.11.2
 - Update API CreateApplication: add request parameters RaspConfig.
 - Update API DeployApplication: add request parameters RaspConfig.

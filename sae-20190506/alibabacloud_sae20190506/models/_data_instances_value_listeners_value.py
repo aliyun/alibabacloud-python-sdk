@@ -15,23 +15,19 @@ class DataInstancesValueListenersValue(DaraModel):
     ):
         # The listener protocol.
         self.protocol = protocol
-        # The listener port.
+        # The load balancing listener port.
         self.port = port
-        # The state of the NLB listener. Valid values:
+        # The NLB listener status. Valid values:
         # 
         # - **Creating**: The listener is being created.
-        # 
         # - **Configuring**: The listener is being configured.
-        # 
-        # - **Bounded**: The listener is running as expected.
-        # 
+        # - **Bounded**: The listener is running normally.
         # - **Unbinding**: The listener is being deleted.
-        # 
         # - **Failed**: The listener is unavailable.
         self.status = status
-        # The target port.
+        # The Open Ports of the instance.
         self.target_port = target_port
-        # The server certificate ID.
+        # The server certificate.
         self.cert_ids = cert_ids
 
     def validate(self):

@@ -14,7 +14,7 @@ class DisableApplicationScalingRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The name of the Auto Scaling policy.
+        # The elastic scaling policy name.
         # 
         # This parameter is required.
         self.scaling_rule_name = scaling_rule_name

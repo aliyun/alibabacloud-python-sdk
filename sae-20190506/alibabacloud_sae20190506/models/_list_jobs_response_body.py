@@ -20,37 +20,32 @@ class ListJobsResponseBody(DaraModel):
         success: bool = None,
         total_size: int = None,
     ):
-        # The status of the interface or the POP error code. Valid values:
+        # The HTTP status code or POP error code. Valid values:
         # 
-        # - **2xx**: The request was successful.
-        # 
-        # - **3xx**: Redirection.
-        # 
-        # - **4xx**: A request error occurred.
-        # 
-        # - **5xx**: A server error occurred.
+        # - **2xx**: success
+        # - **3xx**: redirection
+        # - **4xx**: client error
+        # - **5xx**: server error
         self.code = code
         # The current page number.
         self.current_page = current_page
         # The list of job templates.
         self.data = data
-        # The error code.
+        # The error code. Take note of the following items:
         # 
-        # - If the request is successful, this parameter is not returned.
-        # 
-        # - If the request fails, this parameter is returned. For more information, see the **Error codes** section of this topic.
+        # - If the request is successful, the **ErrorCode** parameter is not returned.
+        # - If the request fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section of this topic.
         self.error_code = error_code
-        # Additional information about the call.
+        # The additional information about the operation result.
         self.message = message
         # The number of entries per page.
         self.page_size = page_size
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the list of job templates was obtained. Valid values:
+        # Specifies whether the job template list was queried successfully. Valid values:
         # 
-        # - **true**: The list was obtained.
-        # 
-        # - **false**: The list failed to be obtained.
+        # - **true**: The query was successful.
+        # - **false**: The query failed.
         self.success = success
         # The total number of job templates.
         self.total_size = total_size
@@ -219,77 +214,57 @@ class ListJobsResponseBodyDataApplications(DaraModel):
         self.app_id = app_id
         # The name of the job template.
         self.app_name = app_name
-        # The time when the last job was completed.
+        # The completion time of the last job.
         self.completion_time = completion_time
-        # The CPU required for each instance, in millicores. The value cannot be 0. Only the following defined specifications are supported:
+        # The CPU required for each instance. Unit: millicores. The value cannot be 0. Currently, only the following defined specifications are supported:
         # 
         # - **500**
-        # 
         # - **1000**
-        # 
         # - **2000**
-        # 
         # - **4000**
-        # 
         # - **8000**
-        # 
         # - **16000**
-        # 
         # - **32000**
         self.cpu = cpu
         # The number of failed instances.
         self.failed = failed
         # The image URL.
         self.image_url = image_url
-        # Indicates whether the last release order was successfully executed. Valid values:
-        # 
-        # - **0**: The release order failed to be executed.
-        # 
-        # - **1**: The release order was successfully executed.
+        # Specifies whether the last change order was executed successfully. Valid values:
+        # - **0**: The change order failed.
+        # - **1**: The change order succeeded.
         self.last_changeorder_state = last_changeorder_state
-        # The state of the last job. Valid values:
+        # The running status of the last job. Valid values:
         # 
-        # - **0**: Not executed.
-        # 
-        # - **1**: Successful.
-        # 
-        # - **2**: Failed.
-        # 
-        # - **3**: Running.
+        # - **0**: not executed
+        # - **1**: executed successfully
+        # - **2**: execution failed
+        # - **3**: executing
         self.last_job_state = last_job_state
-        # The time when the last job was started.
+        # The start time of the last job.
         self.last_start_time = last_start_time
-        # The memory required for each instance, in MB. The value cannot be 0. This parameter corresponds to the CPU parameter. Only the following defined specifications are supported:
+        # The memory required for each instance. Unit: MB. The value cannot be 0. The memory has a one-to-one mapping with the CPU. Currently, only the following defined specifications are supported:
         # 
-        # - **1024**: corresponds to 500 and 1,000 millicores of CPU.
-        # 
-        # - **2048**: corresponds to 500, 1,000, and 2,000 millicores of CPU.
-        # 
-        # - **4096**: corresponds to 1,000, 2,000, and 4,000 millicores of CPU.
-        # 
-        # - **8192**: corresponds to 2,000, 4,000, and 8,000 millicores of CPU.
-        # 
-        # - **12288**: corresponds to 12,000 millicores of CPU.
-        # 
-        # - **16384**: corresponds to 4,000, 8,000, and 16,000 millicores of CPU.
-        # 
-        # - **24576**: corresponds to 12,000 millicores of CPU.
-        # 
-        # - **32768**: corresponds to 16,000 millicores of CPU.
-        # 
-        # - **65536**: corresponds to 8,000, 16,000, and 32,000 millicores of CPU.
-        # 
-        # - **131072**: corresponds to 32,000 millicores of CPU.
+        # - **1024**: corresponds to 500 and 1000 millicores
+        # - **2048**: corresponds to 500, 1000, and 2000 millicores
+        # - **4096**: corresponds to 1000, 2000, and 4000 millicores
+        # - **8192**: corresponds to 2000, 4000, and 8000 millicores
+        # - **12288**: corresponds to 12000 millicores
+        # - **16384**: corresponds to 4000, 8000, and 16000 millicores
+        # - **24576**: corresponds to 12000 millicores
+        # - **32768**: corresponds to 16000 millicores
+        # - **65536**: corresponds to 8000, 16000, and 32000 millicores
+        # - **131072**: corresponds to 32000 millicores
         self.mem = mem
-        # Additional information about the call.
+        # The additional information about the operation result.
         self.message = message
-        # The namespace ID.
+        # The ID of the namespace.
         self.namespace_id = namespace_id
         # The region ID.
         self.region_id = region_id
         # The number of successful instances.
         self.succeeded = succeeded
-        # Indicates whether the job template is paused.
+        # Specifies whether the job template is paused.
         self.suspend = suspend
         # The tags of the job template.
         self.tags = tags

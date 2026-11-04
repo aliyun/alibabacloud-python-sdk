@@ -11,7 +11,9 @@ class RegistryConfig(DaraModel):
         auth_config: main_models.RegistryAuthConfig = None,
         cert_config: main_models.RegistryCertConfig = None,
     ):
+        # authConfig
         self.auth_config = auth_config
+        # certConfig
         self.cert_config = cert_config
 
     def validate(self):

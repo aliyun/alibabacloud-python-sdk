@@ -18,37 +18,31 @@ class DescribeConfigurationPriceResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code or POP error code. Valid values:
+        # The API status code or POP error code. Valid values:
         # 
-        # - **2xx**: The request was successful.
-        # 
-        # - **3xx**: The request was redirected.
-        # 
-        # - **4xx**: A request error occurred.
-        # 
-        # - **5xx**: A server error occurred.
+        # - **2xx**: Success.
+        # - **3xx**: Redirection.
+        # - **4xx**: Request error.
+        # - **5xx**: Server error.
         self.code = code
         # The pricing information.
         self.data = data
-        # The error code.
+        # The error code. The value is described as follows:
         # 
-        # - This parameter is not returned if the request is successful.
-        # 
-        # - This parameter is returned if the request fails. For more information, see the **Error codes** section of this topic.
+        # - If the request is successful, the **ErrorCode** field is not returned.
+        # - If the request fails, the **ErrorCode** field is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The returned message.
+        # The additional information. The value is described as follows:
         # 
         # - If the request is successful, **success** is returned.
-        # 
-        # - If the request fails, an error code is returned.
+        # - If the request fails, a specific error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the price of the configuration was obtained.
+        # Indicates whether the configuration pricing information is successfully retrieved. Valid values:
         # 
-        # - **true**: The price was obtained.
-        # 
-        # - **false**: The price failed to be obtained.
+        # - **true**: The pricing information is successfully retrieved.
+        # - **false**: The pricing information fails to be retrieved.
         self.success = success
         # The trace ID.
         self.trace_id = trace_id
@@ -123,15 +117,15 @@ class DescribeConfigurationPriceResponseBodyData(DaraModel):
     ):
         # The remaining quota of the resource plan.
         self.bag_usage = bag_usage
-        # The price of CPU and memory.
+        # The CPU and memory pricing.
         self.cpu_mem_price = cpu_mem_price
         # The pricing information.
         self.order = order
-        # The price per request.
+        # The pricing based on the number of requests.
         self.request_price = request_price
-        # The promotion rules.
+        # The campaign rules.
         self.rules = rules
-        # The price of traffic.
+        # The traffic pricing.
         self.traffic_price = traffic_price
 
     def validate(self):
@@ -215,7 +209,7 @@ class DescribeConfigurationPriceResponseBodyDataTrafficPrice(DaraModel):
     ):
         # The pricing information.
         self.order = order
-        # The promotion rules.
+        # The campaign rules.
         self.rules = rules
 
     def validate(self):
@@ -261,7 +255,7 @@ class DescribeConfigurationPriceResponseBodyDataTrafficPriceRules(DaraModel):
         name: str = None,
         rule_desc_id: float = None,
     ):
-        # The name of the rule.
+        # The rule name.
         self.name = name
         # The rule ID.
         self.rule_desc_id = rule_desc_id
@@ -304,7 +298,7 @@ class DescribeConfigurationPriceResponseBodyDataTrafficPriceOrder(DaraModel):
         self.discount_amount = discount_amount
         # The original price of the order.
         self.original_amount = original_amount
-        # The promotion ID.
+        # The campaign ID.
         self.rule_ids = rule_ids
         # The actual transaction price of the order.
         self.trade_amount = trade_amount
@@ -353,7 +347,7 @@ class DescribeConfigurationPriceResponseBodyDataRules(DaraModel):
         name: str = None,
         rule_desc_id: int = None,
     ):
-        # The name of the rule.
+        # The rule name.
         self.name = name
         # The rule ID.
         self.rule_desc_id = rule_desc_id
@@ -392,7 +386,7 @@ class DescribeConfigurationPriceResponseBodyDataRequestPrice(DaraModel):
     ):
         # The pricing information.
         self.order = order
-        # The promotion rules.
+        # The campaign rules.
         self.rules = rules
 
     def validate(self):
@@ -438,7 +432,7 @@ class DescribeConfigurationPriceResponseBodyDataRequestPriceRules(DaraModel):
         name: str = None,
         rule_desc_id: int = None,
     ):
-        # The name of the rule.
+        # The rule name.
         self.name = name
         # The policy ID.
         self.rule_desc_id = rule_desc_id
@@ -536,9 +530,9 @@ class DescribeConfigurationPriceResponseBodyDataOrder(DaraModel):
         self.discount_amount = discount_amount
         # The original price of the order.
         self.original_amount = original_amount
-        # The promotion ID.
+        # The campaign ID.
         self.rule_ids = rule_ids
-        # The final price of the order.
+        # The transaction amount of the order.
         self.trade_amount = trade_amount
 
     def validate(self):
@@ -587,7 +581,7 @@ class DescribeConfigurationPriceResponseBodyDataCpuMemPrice(DaraModel):
     ):
         # The pricing information.
         self.order = order
-        # The promotion rules.
+        # The campaign rules.
         self.rules = rules
 
     def validate(self):
@@ -633,7 +627,7 @@ class DescribeConfigurationPriceResponseBodyDataCpuMemPriceRules(DaraModel):
         name: str = None,
         rule_desc_id: float = None,
     ):
-        # The name of the rule.
+        # The rule name.
         self.name = name
         # The rule ID.
         self.rule_desc_id = rule_desc_id
@@ -726,11 +720,11 @@ class DescribeConfigurationPriceResponseBodyDataBagUsage(DaraModel):
         cu: float = None,
         mem: float = None,
     ):
-        # The remaining CPU quota. Unit: core-hours.
+        # The remaining CPU quota, in core-hours.
         self.cpu = cpu
-        # The remaining computing units (CUs) of the resource plan.
+        # The remaining CU quota of the resource plan.
         self.cu = cu
-        # The remaining memory quota. Unit: GiB-hours.
+        # The remaining memory quota, in GiB-hours.
         self.mem = mem
 
     def validate(self):

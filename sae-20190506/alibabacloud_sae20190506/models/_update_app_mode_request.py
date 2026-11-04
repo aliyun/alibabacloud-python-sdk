@@ -15,7 +15,7 @@ class UpdateAppModeRequest(DaraModel):
     ):
         # The application ID.
         self.app_id = app_id
-        # The application IDs.
+        # The application ID.
         self.app_ids = app_ids
         # Specifies whether to enable the idle mode.
         self.enable_idle = enable_idle

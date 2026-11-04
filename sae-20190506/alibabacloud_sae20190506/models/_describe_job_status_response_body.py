@@ -16,39 +16,33 @@ class DescribeJobStatusResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The API status code or POP error code. Valid values:
         # 
-        # - **2xx**: The call was successful.
-        # 
-        # - **3xx**: The call was redirected.
-        # 
-        # - **4xx**: The call failed.
-        # 
-        # - **5xx**: A server error occurred.
+        # - **2xx**: Success.
+        # - **3xx**: Redirection.
+        # - **4xx**: Request error.
+        # - **5xx**: Server error.
         self.code = code
         # The returned data.
         self.data = data
-        # The error code returned. Take note of the following rules:
+        # The error code. Valid values:
         # 
-        # - **ErrorCode** is not returned if the request succeeds.
-        # 
-        # - **ErrorCode** is returned if the request fails. For more information, see the "**Error codes**" section in this topic.
+        # - Successful request: The **ErrorCode** field is not returned.
+        # - Failed request: The **ErrorCode** field is returned. For more information, see the **Error codes** section of this topic.
         self.error_code = error_code
-        # The returned message. Take note of the following rules:
+        # The additional information. Valid values:
         # 
-        # - If the call is successful, **success** is returned.
-        # 
-        # - If the call fails, an error code is returned.
+        # - **success**: The request is successful.
+        # - Specific error code: An exception occurred and a specific error code is returned.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
+        # Indicates whether the job status was queried successfully. Valid values:
         # 
-        # - **true**
-        # 
-        # - **false**
+        # - **true**: The query was successful.
+        # - **false**: The query failed.
         self.success = success
-        # The trace ID that is used to query the details of the request.
+        # The trace ID used to accurately query call information.
         self.trace_id = trace_id
 
     def validate(self):
@@ -123,31 +117,27 @@ class DescribeJobStatusResponseBodyData(DaraModel):
     ):
         # The number of running instances.
         self.active = active
-        # The time when the job was executed.
+        # The completion time of the job execution.
         self.completion_time = completion_time
-        # The number of instances that failed to run.
+        # The number of instances that failed.
         self.failed = failed
-        # The job ID.
+        # The ID of the job.
         self.job_id = job_id
-        # The returned message. Take note of the following rules:
+        # The additional information. Valid values:
         # 
-        # - If the call is successful, **success** is returned.
-        # 
-        # - If the call fails, an error code is returned.
+        # - **success**: The request is successful.
+        # - Specific error code: An exception occurred and a specific error code is returned.
         self.message = message
-        # The time when the job was created.
+        # The creation time of the job.
         self.start_time = start_time
-        # The status of the job. Valid values:
+        # The running status of the job. Valid values:
         # 
-        # - **0**: The job is not executed.
-        # 
-        # - **1**: The job was executed.
-        # 
-        # - **2**: The job failed to be executed.
-        # 
-        # - **3**: The job is being executed.
+        # - **0**: Not executed.
+        # - **1**: Succeeded.
+        # - **2**: Failed.
+        # - **3**: Running.
         self.state = state
-        # The number of instances that are successfully run.
+        # The number of instances that succeeded.
         self.succeeded = succeeded
 
     def validate(self):

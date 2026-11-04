@@ -16,19 +16,15 @@ class DescribeJobHistoryRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The number of the page to return.
+        # The current page number.
         self.current_page = current_page
-        # The number of entries to return on each page. Valid values: 0 to 10000.
+        # The number of entries per page in the paging Settings for a paged query. Valid values: 0 to 10000.
         self.page_size = page_size
-        # The status of the job. Valid values:
-        # 
-        # - **0**: The job is not executed.
-        # 
-        # - **1**: The job is executed.
-        # 
-        # - **2**: The job fails to be executed.
-        # 
-        # - **3**: The job is being executed.
+        # The running status of the job. Valid values:
+        # - **0**: Not run.
+        # - **1**: Succeeded.
+        # - **2**: Failed.
+        # - **3**: Running.
         self.state = state
 
     def validate(self):

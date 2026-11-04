@@ -16,39 +16,33 @@ class QueryResourceStaticsResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The API status code or POP error code. Valid values:
         # 
-        # - **2xx**: The request was successful.
-        # 
-        # - **3xx**: The request was redirected.
-        # 
-        # - **4xx**: A client error occurred.
-        # 
-        # - **5xx**: A server error occurred.
+        # - **2xx**: Success.
+        # - **3xx**: Redirection.
+        # - **4xx**: Request error.
+        # - **5xx**: Server error.
         self.code = code
         # The resource usage information.
         self.data = data
-        # The error code.
+        # The error code. Valid values:
         # 
-        # - This parameter is not returned if the request is successful.
-        # 
-        # - This parameter is returned if the request fails. For more information, see the **Error codes** section in this topic.
+        # - If the request is successful, the **ErrorCode** parameter is not returned.
+        # - If the request fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The response message.
+        # The additional information. Valid values:
         # 
         # - If the request is successful, **success** is returned.
-        # 
-        # - If the request fails, an error message is returned.
+        # - If an exception occurs, a specific error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the application resource usage was retrieved successfully. Valid values:
         # 
-        # - **true**: The request was successful.
-        # 
-        # - **false**: The request failed.
+        # - **true**: The retrieval was successful.
+        # - **false**: The retrieval failed.
         self.success = success
-        # The trace ID used to query the details of a request.
+        # The trace ID used to query invocation details.
         self.trace_id = trace_id
 
     def validate(self):
@@ -117,7 +111,7 @@ class QueryResourceStaticsResponseBodyData(DaraModel):
     ):
         # The real-time resource usage.
         self.real_time_res = real_time_res
-        # The resource usage in the current month.
+        # The resource usage information for the current month.
         self.summary = summary
 
     def validate(self):
@@ -163,21 +157,21 @@ class QueryResourceStaticsResponseBodyDataSummary(DaraModel):
         idle_cpu: float = None,
         memory: float = None,
     ):
-        # The active vCPU usage, in Core·min.
+        # The active vCPU usage. Unit: Core·min.
         self.active_cpu = active_cpu
-        # The CPU usage, in Core·min.
+        # The CPU usage. Unit: Core*min.
         self.cpu = cpu
-        # The number of CUs used.
+        # The amount of used compute units (CUs).
         self.cu = cu
-        # The ephemeral storage usage, in GiB·min.
+        # The ephemeral storage usage. Unit: GiB·min.
         self.ephemeral_storage = ephemeral_storage
-        # The GpuA10 usage.
+        # GpuA10
         self.gpu_a10 = gpu_a10
-        # The GpuPpu810e usage.
+        # GpuPpu810e
         self.gpu_ppu_810e = gpu_ppu_810e
-        # The idle vCPU usage, in Core·min.
+        # The idle vCPU usage. Unit: Core·min.
         self.idle_cpu = idle_cpu
-        # The memory usage, in GiB·min.
+        # The memory usage. Unit: GiB*min.
         self.memory = memory
 
     def validate(self):
@@ -249,11 +243,11 @@ class QueryResourceStaticsResponseBodyDataRealTimeRes(DaraModel):
         ephemeral_storage: float = None,
         memory: float = None,
     ):
-        # The CPU usage, in Core·min.
+        # The CPU usage. Unit: Core*min.
         self.cpu = cpu
-        # The ephemeral storage usage, in GiB·min.
+        # The ephemeral storage usage. Unit: GiB·min.
         self.ephemeral_storage = ephemeral_storage
-        # The memory usage, in GiB·min.
+        # The memory usage. Unit: GiB*min.
         self.memory = memory
 
     def validate(self):

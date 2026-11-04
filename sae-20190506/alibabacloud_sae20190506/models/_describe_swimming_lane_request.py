@@ -11,9 +11,9 @@ class DescribeSwimmingLaneRequest(DaraModel):
         lane_id: int = None,
         namespace_id: str = None,
     ):
-        # The lane group ID.
+        # The traffic lane group ID.
         self.group_id = group_id
-        # The swimming lane ID.
+        # The traffic lane ID.
         self.lane_id = lane_id
         # The namespace ID.
         self.namespace_id = namespace_id

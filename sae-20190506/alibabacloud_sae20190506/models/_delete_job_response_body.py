@@ -15,39 +15,33 @@ class DeleteJobResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The API status code or POP error code. Valid values:
         # 
-        # - **2xx**: The call was successful.
-        # 
-        # - **3xx**: The call was redirected.
-        # 
-        # - **4xx**: The call failed.
-        # 
-        # - **5xx**: A server error occurred.
+        # - **2xx**: Success.
+        # - **3xx**: Redirection.
+        # - **4xx**: Request error.
+        # - **5xx**: Server error.
         self.code = code
-        # The result returned.
+        # The returned result.
         self.data = data
-        # The error code that is returned. Take note of the following rules:
+        # The error code. Valid values:
         # 
-        # - The **ErrorCode** parameter is not returned if the request is successful.
-        # 
-        # - If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
+        # - Successful request: The **ErrorCode** field is not returned.
+        # - Failed request: The **ErrorCode** field is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The additional information that is returned. Valid values:
+        # The additional information. Valid values:
         # 
-        # - success: If the call is successful, **success** is returned.
-        # 
-        # - An error code: If the call fails, an error code is returned.
+        # - **success**: The request is successful.
+        # - Specific error code: The request is abnormal.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the application is deleted. Valid values:
+        # Indicates whether the task template was deleted. Valid values:
         # 
-        # - **true**: The namespaces were obtained.
-        # 
-        # - **false**: no
+        # - **true**: The task template was deleted.
+        # - **false**: The task template failed to be deleted.
         self.success = success
-        # The trace ID that is used to query the details of the request.
+        # The trace ID used to query call information.
         self.trace_id = trace_id
 
     def validate(self):

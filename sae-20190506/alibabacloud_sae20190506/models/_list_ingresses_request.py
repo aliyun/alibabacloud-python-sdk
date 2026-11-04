@@ -20,7 +20,7 @@ class ListIngressesRequest(DaraModel):
         # 
         # This parameter is required.
         self.namespace_id = namespace_id
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):

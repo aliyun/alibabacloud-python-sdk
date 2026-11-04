@@ -10,11 +10,11 @@ class DescribeSecretRequest(DaraModel):
         namespace_id: str = None,
         secret_id: int = None,
     ):
-        # The ID of the namespace where the Secret resides. If the namespace is the default namespace, you need to only enter the region ID, such as `cn-beijing`.
+        # The ID of the namespace to which the Secret instance belongs. If the namespace is the default namespace, specify only the RegionId, such as `cn-beijing`.
         # 
         # This parameter is required.
         self.namespace_id = namespace_id
-        # The ID of the Secret instance to be queried. You can call the [ListSecrets](https://help.aliyun.com/document_detail/466929.html) operation to view the IDs of Secrete instances.
+        # Instance ID of the Secret instance to query. You can call the [ListSecrets](https://help.aliyun.com/document_detail/466929.html) operation to obtain instance ID.
         # 
         # This parameter is required.
         self.secret_id = secret_id

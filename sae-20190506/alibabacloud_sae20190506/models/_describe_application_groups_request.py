@@ -15,9 +15,9 @@ class DescribeApplicationGroupsRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The page number to return.
+        # The page number.
         self.current_page = current_page
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
 
     def validate(self):

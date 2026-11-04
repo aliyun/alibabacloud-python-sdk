@@ -19,13 +19,21 @@ class AppStackInstance(DaraModel):
         status: str = None,
         update_time: int = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The endpoints.
         self.endpoints = endpoints
+        # The instance ID.
         self.instance_id = instance_id
+        # The instance name.
         self.instance_name = instance_name
+        # The instance parameters.
         self.parameters = parameters
+        # The stack ID.
         self.stack_id = stack_id
+        # The instance status.
         self.status = status
+        # The update time.
         self.update_time = update_time
 
     def validate(self):
@@ -113,7 +121,9 @@ class AppStackInstanceParameters(DaraModel):
         name: str = None,
         value: str = None,
     ):
+        # The parameter name.
         self.name = name
+        # The parameter value.
         self.value = value
 
     def validate(self):
@@ -151,8 +161,11 @@ class AppStackInstanceEndpoints(DaraModel):
         name: str = None,
         protocol: str = None,
     ):
+        # The address and port.
         self.address = address
+        # The endpoint name.
         self.name = name
+        # The endpoint protocol.
         self.protocol = protocol
 
     def validate(self):

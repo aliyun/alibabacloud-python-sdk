@@ -11,8 +11,11 @@ class PortProtocol(DaraModel):
         protocol: str = None,
         target_port: int = None,
     ):
+        # The port number.
         self.port = port
+        # The protocol.
         self.protocol = protocol
+        # The destination port number.
         self.target_port = target_port
 
     def validate(self):

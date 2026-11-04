@@ -16,39 +16,33 @@ class CreateOrUpdateSwimmingLaneResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code or an error code of Platform as a Service (PaaS). Valid values:
+        # The API status code or POP error code. Valid values:
         # 
-        # - **2xx**: The request is successful.
-        # 
-        # - **3xx**: The request is redirected.
-        # 
-        # - **4xx**: A request error occurs.
-        # 
-        # - **5xx**: A server error occurs.
+        # - **2xx**: Success.
+        # - **3xx**: Redirection.
+        # - **4xx**: Client error.
+        # - **5xx**: Server error.
         self.code = code
-        # The returned data.
+        # The returned information.
         self.data = data
-        # The error code.
+        # The error code. Description:
         # 
-        # - This parameter is not returned if the request is successful.
-        # 
-        # - For more information, see the "**Error codes**" section in this topic.
+        # - If the request is successful, the **ErrorCode** parameter is not returned.
+        # - If the request fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The response message. Valid values:
+        # The additional information. Description:
         # 
-        # - If the request is successful, `success` is returned.
-        # 
-        # - If the request fails, an error message is returned.
+        # - If the request is normal, success is returned.
+        # - If the request is abnormal, a specific error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the swimlane was created or updated. Valid values:
+        # Specifies whether the traffic lane is created or updated successfully. Valid values:
         # 
-        # - true
-        # 
-        # - false
+        # - true: The traffic lane is created or updated successfully.
+        # - false: The traffic lane fails to be created or updated.
         self.success = success
-        # The request trace ID. You can use this ID to query the details of a request.
+        # The trace ID used to query call information accurately.
         self.trace_id = trace_id
 
     def validate(self):
@@ -114,7 +108,7 @@ class CreateOrUpdateSwimmingLaneResponseBodyData(DaraModel):
         self,
         lane_id: int = None,
     ):
-        # The ID of the swimlane.
+        # The ID of the traffic lane.
         self.lane_id = lane_id
 
     def validate(self):

@@ -16,39 +16,33 @@ class DeleteSecretResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The HTTP status code or POP error code. Valid values:
         # 
-        # - **2xx**: The request was successful.
-        # 
-        # - **3xx**: The request was redirected.
-        # 
-        # - **4xx**: A request error.
-        # 
-        # - **5xx**: A server error.
+        # - **2xx**: Success.
+        # - **3xx**: Redirect.
+        # - **4xx**: Client error.
+        # - **5xx**: Server error.
         self.code = code
-        # The returned data.
+        # The returned result.
         self.data = data
-        # The error code.
+        # The error code. Valid values:
         # 
-        # - The **ErrorCode** parameter is not returned if the request is successful.
-        # 
-        # - The **ErrorCode** parameter is returned if the request fails. For a list of error codes, see the **Error codes** section in this topic.
+        # - If the request is successful, the **ErrorCode** parameter is not returned.
+        # - If the request fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The response message.
+        # The additional information. Valid values:
         # 
-        # - **success**: The request was successful.
-        # 
-        # - If the request fails, an error message is returned.
+        # - **success**: The request is successful.
+        # - Specific error code: An exception occurred.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the secret was successfully deleted. Valid values:
+        # Indicates whether the secret instance was deleted. Valid values:
         # 
-        # - **true**: The secret was deleted.
-        # 
-        # - **false**: The secret was not deleted.
+        # - **true**: The instance was deleted.
+        # - **false**: The instance failed to be deleted.
         self.success = success
-        # The ID used to trace the request.
+        # The trace ID used to query the call information.
         self.trace_id = trace_id
 
     def validate(self):
@@ -114,7 +108,7 @@ class DeleteSecretResponseBodyData(DaraModel):
         self,
         secret_id: int = None,
     ):
-        # The ID of the deleted secret.
+        # The instance ID of the deleted secret instance.
         self.secret_id = secret_id
 
     def validate(self):

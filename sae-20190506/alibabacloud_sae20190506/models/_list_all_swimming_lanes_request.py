@@ -10,7 +10,7 @@ class ListAllSwimmingLanesRequest(DaraModel):
         group_id: int = None,
         namespace_id: str = None,
     ):
-        # The swimming lane group ID.
+        # The traffic lane group ID.
         self.group_id = group_id
         # The namespace ID.
         self.namespace_id = namespace_id

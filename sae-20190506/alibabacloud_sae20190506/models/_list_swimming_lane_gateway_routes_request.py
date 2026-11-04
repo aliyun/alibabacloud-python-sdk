@@ -12,7 +12,7 @@ class ListSwimmingLaneGatewayRoutesRequest(DaraModel):
     ):
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
-        # The ID of the namespace.
+        # The namespace ID.
         self.namespace_id = namespace_id
 
     def validate(self):

@@ -18,35 +18,30 @@ class ListNamespaceChangeOrdersResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code or POP error code.
+        # The API status code or POP error code. Valid values:
         # 
-        # - **2xx**: The request was successful.
-        # 
-        # - **3xx**: The request was redirected.
-        # 
-        # - **4xx**: A client error occurred.
-        # 
-        # - **5xx**: A server error occurred.
+        # - **2xx**: success
+        # - **3xx**: redirection
+        # - **4xx**: client error
+        # - **5xx**: server error
         self.code = code
-        # The returned results.
+        # The returned result.
         self.data = data
-        # The error code.
+        # The error code. Valid values:
         # 
-        # - This parameter is returned only when a request fails.
-        # 
-        # - For more information, see the **Error codes** section of this topic.
+        # - Request succeeded: The **ErrorCode** parameter is not returned.
+        # - Request failed: The **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The response message.
+        # The additional information about the API call result.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the change order list was successfully retrieved. Valid values:
         # 
-        # - **true**: The request was successful.
-        # 
-        # - **false**: The request failed.
+        # - **true**: The list was successfully retrieved.
+        # - **false**: The retrieval failed.
         self.success = success
-        # The trace ID, which is used to query the details of the request.
+        # The trace ID used to query the exact call information.
         self.trace_id = trace_id
 
     def validate(self):
@@ -189,49 +184,43 @@ class ListNamespaceChangeOrdersResponseBodyDataChangeOrderList(DaraModel):
         status: int = None,
         user_id: str = None,
     ):
-        # The batch count.
+        # The number of batches.
         self.batch_count = batch_count
         # The batch type.
         self.batch_type = batch_type
         # The change order ID.
         self.change_order_id = change_order_id
-        # The type of the change order, which corresponds to the `CoTypeCode`.
+        # The type of the change order, which is the description of **CoTypeCode**.
         self.co_type = co_type
-        # The type code of the change order. Valid values:
+        # The code of the change order type. Valid values:
         # 
         # - **CoBatchStartApplication**: Starts applications in batches.
-        # 
         # - **CoBatchStopApplication**: Stops applications in batches.
         self.co_type_code = co_type_code
-        # The creation time of the change order.
+        # The creation time.
         self.create_time = create_time
         # The ID of the user who created the change order.
         self.create_user_id = create_user_id
         # The description of the change order.
         self.description = description
-        # The completion time of the change order.
+        # The end time.
         self.finish_time = finish_time
         # The group ID.
         self.group_id = group_id
         # The namespace ID.
         self.namespace_id = namespace_id
-        # The pipeline.
+        # The change pipelines.
         self.pipelines = pipelines
-        # The initiation source for the change order.
+        # The source from which the change order was initiated.
         self.source = source
         # The status of the change order. Valid values:
         # 
-        # - **0**: Preparing
-        # 
-        # - **1**: In progress
-        # 
-        # - **2**: Succeeded
-        # 
-        # - **3**: Failed
-        # 
-        # - **6**: Terminated
-        # 
-        # - **10**: Failed due to a system exception
+        # - **0**: preparing
+        # - **1**: executing
+        # - **2**: succeeded
+        # - **3**: failed
+        # - **6**: terminated
+        # - **10**: failed due to a system exception
         self.status = status
         # The user ID.
         self.user_id = user_id

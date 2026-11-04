@@ -14,7 +14,7 @@ class AbortChangeOrderRequest(DaraModel):
         # 
         # This parameter is required.
         self.change_order_id = change_order_id
-        # Specifies whether to roll back the change order.
+        # Specifies whether to roll back.
         self.rollback = rollback
 
     def validate(self):

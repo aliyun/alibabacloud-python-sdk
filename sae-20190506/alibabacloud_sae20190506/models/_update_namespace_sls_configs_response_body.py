@@ -14,21 +14,22 @@ class UpdateNamespaceSlsConfigsResponseBody(DaraModel):
         trace_id: str = None,
         request_id: str = None,
     ):
-        # The API status code or POP error code. Valid values: 2xx (success), 3xx (redirect), 4xx (client error), 5xx (server error).
+        # The API status code or POP error code. Valid values: 2xx: success. 3xx: redirection. 4xx: request error. 5xx: server error.
         self.code = code
         # The error code. Valid values:
         # 
-        # - If the request is successful, the response does not include the `ErrorCode` parameter.
-        # 
-        # - If the request fails, the response includes the `ErrorCode` parameter. For more information, see the **Error codes** section of this topic.
+        # - Successful request: The **ErrorCode** field is not returned.
+        # - Failed request: The **ErrorCode** field is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # Additional information.
+        # The additional information.
         self.message = message
-        # Indicates whether the namespace\\"s SLS configuration was successfully updated. A value of `true` indicates success, while `false` indicates failure.
+        # Indicates whether the SLS configuration for the namespace was updated successfully. Valid values:
+        # - true: The configuration was updated successfully.
+        # - false: The configuration failed to be updated.
         self.success = success
-        # The trace ID for the request. You can use this ID to query the details of the request.
+        # The trace ID used to precisely query call information.
         self.trace_id = trace_id
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

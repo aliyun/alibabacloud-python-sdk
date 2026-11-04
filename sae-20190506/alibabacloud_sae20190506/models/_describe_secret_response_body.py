@@ -18,39 +18,29 @@ class DescribeSecretResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
-        # 
-        # - **2xx**: The call was successful.
-        # 
-        # - **3xx**: The call was redirected.
-        # 
-        # - **4xx**: The call failed.
-        # 
-        # - **5xx**: A server error occurred.
+        # The API status code or POP error code. Valid values:
+        # - **2xx**: Success.
+        # - **3xx**: Redirection.
+        # - **4xx**: Request error.
+        # - **5xx**: Server error.
         self.code = code
-        # The response.
+        # The returned result.
         self.data = data
-        # The error code returned. Valid values:
-        # 
-        # - The **ErrorCode** parameter is not returned if the request succeeds.
-        # 
-        # - If the call fails, the **ErrorCode** parameter is returned. For more information, see **Error codes** in this topic.
+        # The error code.
+        # - If the request is successful, the **ErrorCode** field is not returned.
+        # - If the request fails, the **ErrorCode** field is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The additional information that is returned. Valid values:
-        # 
-        # - success: If the call is successful, **success** is returned.
-        # 
-        # - An error code: If the call fails, an error code is returned.
+        # The additional information.
+        # - If the request is successful, **success** is returned.
+        # - If the request fails, a specific error code is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the details of the Secret instance are successfully queried. Valid values:
-        # 
-        # - **true**: The information was queried.
-        # 
-        # - **false**: The image failed to be found.
+        # Indicates whether the details of the Secret instance were queried successfully. Valid values:
+        # - **true**: The query was successful.
+        # - **false**: The query failed.
         self.success = success
-        # The trace ID that is used to query the details of the request.
+        # The trace ID used to precisely query invocation information.
         self.trace_id = trace_id
 
     def validate(self):
@@ -123,21 +113,21 @@ class DescribeSecretResponseBodyData(DaraModel):
         secret_type: str = None,
         update_time: int = None,
     ):
-        # The time when the task was created.
+        # The creation time.
         self.create_time = create_time
-        # The ID of the namespace.
+        # The namespace ID.
         self.namespace_id = namespace_id
-        # The associated application.
+        # The associated applications.
         self.relate_apps = relate_apps
-        # Secret key-value pair data.
+        # The key-value pair data of the Secret.
         self.secret_data = secret_data
-        # The ID of the Secret instance.
+        # The Secret instance ID.
         self.secret_id = secret_id
         # The name of the Secret instance.
         self.secret_name = secret_name
         # The type of the Secret instance.
         self.secret_type = secret_type
-        # The time when the task was updated.
+        # The update time.
         self.update_time = update_time
 
     def validate(self):

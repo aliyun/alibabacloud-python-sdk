@@ -9,6 +9,8 @@ class AclEntryConfig(DaraModel):
         self,
         entry: str = None,
     ):
+        # CIDR
+        # 
         # This parameter is required.
         self.entry = entry
 

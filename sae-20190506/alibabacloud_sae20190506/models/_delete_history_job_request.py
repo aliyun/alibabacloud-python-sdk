@@ -10,11 +10,11 @@ class DeleteHistoryJobRequest(DaraModel):
         app_id: str = None,
         job_id: str = None,
     ):
-        # The ID of the job template to which the job that you want to delete belongs.
+        # The ID of the job template to delete.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The ID of the job.
+        # The job ID.
         # 
         # This parameter is required.
         self.job_id = job_id

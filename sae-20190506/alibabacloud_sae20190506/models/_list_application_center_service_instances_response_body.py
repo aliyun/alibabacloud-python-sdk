@@ -18,12 +18,19 @@ class ListApplicationCenterServiceInstancesResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The API status code or POP error code. Valid values: 2xx: Success. 3xx: Redirection. 4xx: Client error. 5xx: Server error.
         self.code = code
+        # The returned results.
         self.data = data
+        # The error code. If the request is successful, the ErrorCode parameter is not returned. If the request fails, the ErrorCode parameter is returned. For more information, see the Error codes section in this topic.
         self.error_code = error_code
+        # The additional information. If the request is successful, success is returned. If the request fails, a specific error code is returned.
         self.message = message
+        # Id of the request
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
+        # The trace ID.
         self.trace_id = trace_id
 
     def validate(self):
@@ -89,6 +96,7 @@ class ListApplicationCenterServiceInstancesResponseBodyData(DaraModel):
         self,
         service_instances: List[main_models.ListApplicationCenterServiceInstancesResponseBodyDataServiceInstances] = None,
     ):
+        # The list of service instances.
         self.service_instances = service_instances
 
     def validate(self):
@@ -128,10 +136,15 @@ class ListApplicationCenterServiceInstancesResponseBodyDataServiceInstances(Dara
         service_name: str = None,
         template_name: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The instance name.
         self.name = name
+        # The service instance ID.
         self.service_instance_id = service_instance_id
+        # The service name.
         self.service_name = service_name
+        # The template name.
         self.template_name = template_name
 
     def validate(self):

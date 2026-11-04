@@ -11,8 +11,12 @@ class DescribeVSwitchesRequest(DaraModel):
         v_switch_name: str = None,
         vpc_id: str = None,
     ):
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
+        # The name of the vSwitch.
         self.v_switch_name = v_switch_name
+        # The ID of the VPC to which the vSwitch belongs.
+        # 
         # This parameter is required.
         self.vpc_id = vpc_id
 

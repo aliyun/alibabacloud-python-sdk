@@ -11,9 +11,9 @@ class BatchStartApplicationsRequest(DaraModel):
         namespace_id: str = None,
         version: str = None,
     ):
-        # The IDs of the applications that you want to start. Separate multiple IDs with commas (,).
+        # The application IDs. Separate multiple IDs with commas (,).
         self.app_ids = app_ids
-        # The ID of the request.
+        # The namespace ID.
         # 
         # This parameter is required.
         self.namespace_id = namespace_id

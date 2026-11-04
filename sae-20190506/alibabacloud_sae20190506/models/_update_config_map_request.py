@@ -11,15 +11,15 @@ class UpdateConfigMapRequest(DaraModel):
         data: str = None,
         description: str = None,
     ):
-        # The ID of the ConfigMap instance that you want to update. To view the ID, call the [ListNamespacedConfigMaps](https://help.aliyun.com/document_detail/176917.html) operation.
+        # Instance ID of the ConfigMap instance to be updated. To obtain instance ID, call the [ListNamespacedConfigMaps](https://help.aliyun.com/document_detail/176917.html) operation.
         # 
         # This parameter is required.
         self.config_map_id = config_map_id
-        # The key-value pairs for the ConfigMap. The value must be a JSON-formatted string, as shown in the following example:
+        # The key-value pair data of the ConfigMap in JSON format. The format is as follows:
         # 
-        # {"Data":"{"k1":"v1", "k2":"v2"}"}
+        # {"Data":"{\\"k1\\":\\"v1\\", \\"k2\\":\\"v2\\"}"}
         # 
-        # In the JSON string, k represents a key and v represents a value. For more information about configuration items, see [Managing and using configuration items](https://help.aliyun.com/document_detail/171326.html).
+        # k represents the key and v represents the value. For more information about ConfigMaps, see [Manage and use ConfigMaps](https://help.aliyun.com/document_detail/171326.html).
         # 
         # This parameter is required.
         self.data = data

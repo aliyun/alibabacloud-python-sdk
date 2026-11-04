@@ -9,7 +9,7 @@ class ListNamespacedConfigMapsRequest(DaraModel):
         self,
         namespace_id: str = None,
     ):
-        # The ID of the namespace.
+        # The namespace ID.
         # 
         # This parameter is required.
         self.namespace_id = namespace_id

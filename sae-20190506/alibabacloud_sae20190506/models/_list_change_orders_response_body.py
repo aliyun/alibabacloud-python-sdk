@@ -18,35 +18,28 @@ class ListChangeOrdersResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code or the POP error code. Valid values:
-        # 
-        # - **2xx**: Success.
-        # 
-        # - **3xx**: Redirect.
-        # 
-        # - **4xx**: Request error.
-        # 
-        # - **5xx**: Server error.
+        # The HTTP status code or POP error code. Valid values:
+        # - **2xx**: success
+        # - **3xx**: redirection
+        # - **4xx**: client error
+        # - **5xx**: server error
         self.code = code
-        # The information about the change orders.
+        # The information about the change order list.
         self.data = data
-        # The error code.
+        # The error code. Take note of the following items:
         # 
-        # - This parameter is not returned on successful requests.
-        # 
-        # - Returned if the request fails. For more information, see the **error code** list in this topic.
+        # - If the request is successful, the **ErrorCode** parameter is not returned.
+        # - If the request fails, the **ErrorCode** parameter is returned. For more information, see the error codes in this topic.
         self.error_code = error_code
-        # Additional information about the response.
+        # The additional information about the call result.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the list of change orders was retrieved. Valid values:
-        # 
-        # - **true**: The list was retrieved.
-        # 
-        # - **false**: The list could not be retrieved.
+        # Indicates whether the change order list was successfully queried. Valid values:
+        # - **true**: the query was successful
+        # - **false**: the query failed
         self.success = success
-        # The trace ID used to query request details.
+        # The trace ID, which is used to accurately query the call information.
         self.trace_id = trace_id
 
     def validate(self):
@@ -119,7 +112,7 @@ class ListChangeOrdersResponseBodyData(DaraModel):
         self.change_order_list = change_order_list
         # The current page number.
         self.current_page = current_page
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
         # The total number of change orders.
         self.total_size = total_size
@@ -193,90 +186,60 @@ class ListChangeOrdersResponseBodyDataChangeOrderList(DaraModel):
         # The number of batches.
         self.batch_count = batch_count
         # The batch type. Valid values:
-        # 
-        # - **auto**: Automatic.
-        # 
-        # - **manual**: Manual.
+        #   - **auto**: automatic
+        #   - **manual**: manual
         self.batch_type = batch_type
         # The change order ID.
         self.change_order_id = change_order_id
-        # The description of the change type code (**CoTypeCode**).
+        # The change type, which is the description of the **CoTypeCode**.
         self.co_type = co_type
         # The code of the change type. Valid values:
-        # 
-        # - **CoBindSlb**: Bind an SLB instance.
-        # 
-        # - **CoUnbindSlb**: Unbind an SLB instance.
-        # 
-        # - **CoCreateApp**: Create an application.
-        # 
-        # - **CoDeleteApp**: Delete an application.
-        # 
-        # - **CoDeploy**: Deploy an application.
-        # 
-        # - **CoRestartApplication**: Restart an application.
-        # 
-        # - **CoRollback**: Roll back an application.
-        # 
-        # - **CoScaleIn**: Scale in an application.
-        # 
-        # - **CoScaleOut**: Scale out an application.
-        # 
-        # - **CoStartApplication**: Start an application.
-        # 
-        # - **CoStopApplication**: Stop an application.
-        # 
-        # - **CoRescaleApplicationVertically**: Change the instance type.
-        # 
-        # - **CoDeployHistroy**: Roll back to a previous version.
-        # 
-        # - **CoBindNas**: Bind a NAS file system.
-        # 
-        # - **CoUnbindNas**: Unbind a NAS file system.
-        # 
-        # - **CoBatchStartApplication**: Start multiple applications.
-        # 
-        # - **CoBatchStopApplication**: Stop multiple applications.
-        # 
-        # - **CoRestartInstances**: Restart instances.
-        # 
-        # - **CoDeleteInstances**: Delete instances.
-        # 
-        # - **CoScaleInAppWithInstances**: Scale in an application by specifying instances.
+        #  
+        # - **CoBindSlb**: bind an SLB instance
+        # - **CoUnbindSlb**: unbind an SLB instance
+        # - **CoCreateApp**: create an application
+        # - **CoDeleteApp**: delete an application
+        # - **CoDeploy**: deploy an application
+        # - **CoRestartApplication**: restart an application
+        # - **CoRollback**: roll back an application
+        # - **CoScaleIn**: scale in an application
+        # - **CoScaleOut**: scale out an application
+        # - **CoStartApplication**: start an application
+        # - **CoStopApplication**: stop an application
+        # - **CoRescaleApplicationVertically**: change instance specifications
+        # - **CoDeployHistroy**: roll back to a historical version
+        # - **CoBindNas**: bind a NAS file system
+        # - **CoUnbindNas**: unbind a NAS file system
+        # - **CoBatchStartApplication**: start applications in batches
+        # - **CoBatchStopApplication**: stop applications in batches
+        # - **CoRestartInstances**: restart instances
+        # - **CoDeleteInstances**: delete instances
+        # - **CoScaleInAppWithInstances**: scale in specified instances
         self.co_type_code = co_type_code
-        # The time the change order was created.
+        # The creation time.
         self.create_time = create_time
         # The ID of the user who created the change order.
         self.create_user_id = create_user_id
         # The description.
         self.description = description
-        # The time the change order was completed.
+        # The end time.
         self.finish_time = finish_time
         # The group ID.
         self.group_id = group_id
-        # The source of the change order.
+        # The source of the change order operation.
         self.source = source
         # The status of the change order. Valid values:
         # 
-        # - **0**: Preparing.
-        # 
-        # - **1**: In progress.
-        # 
-        # - **2**: Succeeded.
-        # 
-        # - **3**: Failed.
-        # 
-        # - **6**: Aborted.
-        # 
-        # - **8**: Paused for manual confirmation.
-        # 
-        # - **9**: Paused for automatic confirmation.
-        # 
-        # - **10**: Failed due to a system exception.
-        # 
-        # - **11**: Pending approval.
-        # 
-        # - **12**: Approved and pending execution.
+        # - **0**: preparing
+        # - **1**: executing
+        # - **2**: executed successfully
+        # - **3**: execution failed
+        # - **6**: terminated
+        # - **8**: waiting for manual batch confirmation
+        # - **9**: waiting for automatic batch confirmation
+        # - **10**: execution failed due to a system exception
+        # - **11**: waiting for approval
+        # - **12**: approved and waiting for execution
         self.status = status
         # The user ID.
         self.user_id = user_id

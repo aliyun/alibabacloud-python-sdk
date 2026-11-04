@@ -16,35 +16,30 @@ class CreateSecretResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code or the error code. Valid values:
+        # The API status code or POP error code. Valid values:
         # 
-        # - **2xx**: The request was successful.
-        # 
-        # - **3xx**: The request was redirected.
-        # 
-        # - **4xx**: The request failed.
-        # 
-        # - **5xx**: A server error occurred.
+        # - **2xx**: success.
+        # - **3xx**: redirection.
+        # - **4xx**: request error.
+        # - **5xx**: server error.
         self.code = code
         # The returned result.
         self.data = data
-        # The status code. Value values:
+        # The error code. Valid values:
         # 
-        # - If the request was successful, **ErrorCode** is not returned.
-        # 
-        # - If the request failed, **ErrorCode** is returned. For more information, see **Error codes** in this topic.
+        # - If the request is successful, the **ErrorCode** parameter is not returned.
+        # - If the request fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The message returned for the operation.
+        # The additional information about the call result.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the Secret was created. Valid values:
+        # Indicates whether the Secret instance was created successfully. Valid values:
         # 
-        # - **true**: The ConfigMap was created.
-        # 
-        # - **false**: The ConfigMap failed to be created.
+        # - **true**: The creation was successful.
+        # - **false**: The creation failed.
         self.success = success
-        # The ID of the trace. The ID is used to query the details of a request.
+        # The trace ID used to query call information.
         self.trace_id = trace_id
 
     def validate(self):
@@ -110,7 +105,7 @@ class CreateSecretResponseBodyData(DaraModel):
         self,
         secret_id: int = None,
     ):
-        # The ID of the created Secret.
+        # The instance ID of the created Secret.
         self.secret_id = secret_id
 
     def validate(self):

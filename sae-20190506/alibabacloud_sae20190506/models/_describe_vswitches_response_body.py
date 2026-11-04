@@ -18,12 +18,32 @@ class DescribeVSwitchesResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The API status code or POP error code. Valid values:
+        # 
+        # - **2xx**: Success.
+        # - **3xx**: Redirection.
+        # - **4xx**: Request error.
+        # - **5xx**: Server error.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error code. Valid values:
+        # 
+        # - Successful request: The **ErrorCode** field is not returned.
+        # - Failed request: The **ErrorCode** field is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
+        # The additional information. Valid values:
+        # 
+        # - **success**: The request is successful.
+        # - Specific error code: The request is abnormal.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Specifies whether the creation or update is successful. Valid values:
+        # 
+        # - Successful.
         self.success = success
+        # The trace ID.
         self.trace_id = trace_id
 
     def validate(self):
@@ -100,11 +120,19 @@ class DescribeVSwitchesResponseBodyData(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # The number of available IP addresses.
         self.available_ip_address_count = available_ip_address_count
+        # The batch status. Valid values:
+        # 
+        # - Available: Available.
         self.status = status
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
+        # The name of the vSwitch.
         self.v_switch_name = v_switch_name
+        # The VPC ID.
         self.vpc_id = vpc_id
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

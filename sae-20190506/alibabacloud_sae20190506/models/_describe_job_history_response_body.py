@@ -18,39 +18,29 @@ class DescribeJobHistoryResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code returned. Valid values:
-        # 
-        # - **2xx**: The call was successful.
-        # 
-        # - **3xx**: The call was redirected.
-        # 
-        # - **4xx**: The call failed.
-        # 
-        # - **5xx**: A server error occurred.
+        # The API status code or POP error code. Valid values:
+        # - **2xx**: Success.
+        # - **3xx**: Redirect.
+        # - **4xx**: Client error.
+        # - **5xx**: Server error.
         self.code = code
-        # The returned data.
+        # The response data.
         self.data = data
-        # The error code returned. Take note of the following rules:
-        # 
-        # - If the call is successful, the **ErrorCode** parameter is not returned.
-        # 
-        # - If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section in this topic.
+        # The error code.
+        # - If the request is successful, the **ErrorCode** parameter is not returned.
+        # - If the request fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The message returned. Take note of the following rules:
-        # 
-        # - If the call is successful, **success** is returned.
-        # 
-        # - If the call fails, an error code is returned.
+        # The additional information.
+        # - If the request is successful, **success** is returned.
+        # - If the request fails, a specific error code is returned.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
-        # 
-        # - **true**
-        # 
-        # - **false**
+        # Indicates whether the job status was queried successfully. Valid values:
+        # - **true**: The query succeeded.
+        # - **false**: The query failed.
         self.success = success
-        # The trace ID that is used to query the details of the request.
+        # The trace ID used to query detailed call information.
         self.trace_id = trace_id
 
     def validate(self):
@@ -119,11 +109,11 @@ class DescribeJobHistoryResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # The page number of the returned page.
+        # The current page number.
         self.current_page = current_page
-        # The jobs.
+        # The list of jobs.
         self.jobs = jobs
-        # The number of entries to return on each page. Valid values: 0 to 10000.
+        # The number of entries per page in the paging Settings for a paged query. Valid values: 0 to 10000.
         self.page_size = page_size
         # The total number of jobs.
         self.total_size = total_size
@@ -188,27 +178,23 @@ class DescribeJobHistoryResponseBodyDataJobs(DaraModel):
     ):
         # The number of running instances.
         self.active = active
-        # The time when the job was executed.
+        # The completion time of the job.
         self.completion_time = completion_time
-        # The number of instances that failed to run.
+        # The number of failed instances.
         self.failed = failed
-        # The job ID.
+        # The ID of the job.
         self.job_id = job_id
-        # The message returned if exceptions occur during job running.
+        # The additional information returned when an exception occurs during job execution.
         self.message = message
-        # The time when the job was created.
+        # The creation time of the job.
         self.start_time = start_time
-        # The status of the job. Valid values:
-        # 
-        # - **0**: The job was not executed.
-        # 
-        # - **1**: The job was executed.
-        # 
-        # - **2**: The job failed to be executed.
-        # 
-        # - **3**: The job is being executed.
+        # The running status of the job. Valid values:
+        # - **0**: Not run.
+        # - **1**: Succeeded.
+        # - **2**: Failed.
+        # - **3**: Running.
         self.state = state
-        # The number of instances that are successfully run.
+        # The number of successful instances.
         self.succeeded = succeeded
 
     def validate(self):

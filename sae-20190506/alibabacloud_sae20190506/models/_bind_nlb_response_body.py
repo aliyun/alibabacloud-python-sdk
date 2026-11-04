@@ -16,39 +16,33 @@ class BindNlbResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code.
+        # The HTTP status code. Valid values:
         # 
-        # - **2xx**: Successful.
-        # 
-        # - **3xx**: Redirection.
-        # 
-        # - **4xx**: Client error.
-        # 
-        # - **5xx**: Server error.
+        # - **2xx**: success.
+        # - **3xx**: redirection.
+        # - **4xx**: request error.
+        # - **5xx**: server error.
         self.code = code
-        # The response data.
+        # The returned result.
         self.data = data
-        # The error code.
+        # The error code. Valid values:
         # 
-        # - This parameter is not returned if the request is successful.
-        # 
-        # - This parameter is returned if the request fails. For more information, see the **Error codes** section.
+        # - If the request is successful, the **ErrorCode** parameter is not returned.
+        # - If the request fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The response message.
+        # The additional information. Valid values:
         # 
-        # - A value of **success** is returned if the request is successful.
-        # 
-        # - If the request fails, an error message is returned.
+        # - If the request is successful, **success** is returned.
+        # - If the request fails, a specific error code is returned.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the applications were stopped in batches successfully. Valid values:
         # 
-        # - **true**: The request was successful.
-        # 
-        # - **false**: The request failed.
+        # - **true**: The applications were stopped successfully.
+        # - **false**: The applications failed to be stopped.
         self.success = success
-        # The request\\"s trace ID, used for troubleshooting.
+        # The trace ID, which is used to accurately query the call information.
         self.trace_id = trace_id
 
     def validate(self):
@@ -114,7 +108,7 @@ class BindNlbResponseBodyData(DaraModel):
         self,
         change_order_id: str = None,
     ):
-        # The ID of the change order. You can use this ID to query the task status.
+        # The ID of the change order, which is used to query the execution status of the task.
         self.change_order_id = change_order_id
 
     def validate(self):

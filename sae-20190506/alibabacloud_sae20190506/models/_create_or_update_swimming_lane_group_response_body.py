@@ -16,39 +16,33 @@ class CreateOrUpdateSwimmingLaneGroupResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code:
+        # The API status code or POP error code. Valid values:
         # 
-        # - **2xx**: The request was successful.
-        # 
-        # - **3xx**: The request was redirected.
-        # 
-        # - **4xx**: A client error occurred.
-        # 
-        # - **5xx**: A server error occurred.
+        # - **2xx**: Success.
+        # - **3xx**: Redirection.
+        # - **4xx**: Request error.
+        # - **5xx**: Server error.
         self.code = code
-        # The data object returned by the operation.
+        # The application information.
         self.data = data
-        # The error code.
+        # The error code. Valid values:
         # 
-        # - This parameter is not returned if the request is successful.
-        # 
-        # - This parameter is returned if the request fails. For more information, see the **Error codes** section of this topic.
+        # - If the request is successful, the **ErrorCode** parameter is not returned.
+        # - If the request fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The response message:
+        # The additional information. Valid values:
         # 
-        # - **success**: The request was successful.
-        # 
-        # - An error code is returned if the request fails.
+        # - If the request is successful, **success** is returned.
+        # - If the request fails, a specific error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful:
+        # Indicates whether the traffic lane group is created. Valid values:
         # 
-        # - **true**: The request was successful.
-        # 
-        # - **false**: The request failed.
+        # - **true**: The traffic lane group is created.
+        # - **false**: The traffic lane group fails to be created.
         self.success = success
-        # The trace ID, which you can use to query the details of the request.
+        # The trace ID used to query invocation details.
         self.trace_id = trace_id
 
     def validate(self):
@@ -114,7 +108,7 @@ class CreateOrUpdateSwimmingLaneGroupResponseBodyData(DaraModel):
         self,
         group_id: int = None,
     ):
-        # The ID of the swimming lane group.
+        # The ID of the traffic lane group.
         self.group_id = group_id
 
     def validate(self):

@@ -23,35 +23,35 @@ class SidecarContainerConfig(DaraModel):
         readiness: str = None,
         secret_mount_desc: str = None,
     ):
-        # The instance ID of the ACR Enterprise Edition. This parameter is required if the `ImageUrl` is from an ACR Enterprise Edition repository.
+        # The ID of the Container Registry ACR Enterprise instance. This parameter is required when ImageUrl is a Container Registry Enterprise instance.
         self.acr_instance_id = acr_instance_id
-        # The startup command for the image. This command overrides the `ENTRYPOINT` defined in the image.
+        # The image startup command.
         self.command = command
-        # The arguments for the startup command. This parameter corresponds to `CMD` in the Dockerfile.
+        # The image startup command arguments.
         self.command_args = command_args
-        # The settings for mounting a ConfigMap. Use this to inject configuration data into the container as files.
+        # The ConfigMap mount description.
         self.config_map_mount_desc = config_map_mount_desc
-        # The CPU resources allocated to the container, measured in millicores. For example, a value of 1000 represents 1 vCPU.
+        # Cpu
         self.cpu = cpu
-        # The configuration for an `emptyDir` volume. This creates a temporary directory that persists for the life of the application instance.
+        # The EmptyDir description.
         self.empty_dir_desc = empty_dir_desc
-        # The environment variables to set in the container. Specify the variables as a JSON array of key-value pairs.
+        # The container environment variable parameters.
         self.envs = envs
-        # The container image URL.
+        # The image URL.
         self.image_url = image_url
-        # The configuration for the liveness probe. The liveness probe checks if the container is running. If the probe fails, the system restarts the container.
+        # The liveness probe configuration.
         self.liveness = liveness
-        # The amount of memory allocated to the container, measured in MB.
+        # Memory
         self.memory = memory
-        # The name of the container.
+        # The container name.
         self.name = name
-        # The configuration for the postStart hook. This hook runs immediately after the container starts to perform initialization tasks.
+        # The PostStart configuration.
         self.post_start = post_start
-        # The configuration for the preStop hook. This hook runs immediately before the container is terminated to ensure a graceful shutdown.
+        # The PreStop configuration.
         self.pre_stop = pre_stop
-        # The configuration for the readiness probe. The readiness probe checks if the container is ready to handle requests. The system will not direct traffic to a container until its readiness probe succeeds.
+        # The readiness probe configuration.
         self.readiness = readiness
-        # Specifies how to mount a Secret. This lets you securely use sensitive data, such as credentials or keys, in your application.
+        # The Secret mount description.
         self.secret_mount_desc = secret_mount_desc
 
     def validate(self):

@@ -14,7 +14,7 @@ class DeleteInstancesRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The IDs of the application instances to delete.
+        # The instance IDs to be deleted.
         # 
         # This parameter is required.
         self.instance_ids = instance_ids

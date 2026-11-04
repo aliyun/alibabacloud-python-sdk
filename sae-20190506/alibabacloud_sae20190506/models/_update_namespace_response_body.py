@@ -16,35 +16,30 @@ class UpdateNamespaceResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The API status code or POP error code. Valid values:
         # 
-        # - **2xx**: The call was successful.
-        # 
-        # - **3xx**: The call was redirected.
-        # 
-        # - **4xx**: The call failed.
-        # 
-        # - **5xx**: A server error occurred.
+        # - **2xx**: Success.
+        # - **3xx**: Redirection.
+        # - **4xx**: Request error.
+        # - **5xx**: Server error.
         self.code = code
-        # The information about a namespace.
+        # The namespace information.
         self.data = data
-        # The error code returned. Take note of the following rules:
+        # The error code. The following rules apply:
         # 
-        # - The **ErrorCode** parameter is not returned if the request succeeds.
-        # 
-        # - If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
+        # - If the request is successful, the **ErrorCode** parameter is not returned.
+        # - If the request fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The message returned for the operation.
+        # The additional information about the request result.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the information about the namespace was updated. Valid values:
+        # Indicates whether the namespace information is updated. Valid values:
         # 
-        # - **true**: The instance was updated.
-        # 
-        # - **false**: The instance failed to be updated.
+        # - **true**: The update is successful.
+        # - **false**: The update fails.
         self.success = success
-        # The trace ID that is used to query the details of the request.
+        # The trace ID. You can use this ID to precisely query invocation information.
         self.trace_id = trace_id
 
     def validate(self):
@@ -115,21 +110,19 @@ class UpdateNamespaceResponseBodyData(DaraModel):
         namespace_name: str = None,
         region_id: str = None,
     ):
-        # Indicates whether to enable SAE built-in registry:
-        # 
+        # Indicates whether the built-in registry of SAE is enabled. Valid values:
         # - **true**
-        # 
         # - **false**
         self.enable_micro_registration = enable_micro_registration
-        # The short ID of the namespace.
+        # The short namespace ID.
         self.name_space_short_id = name_space_short_id
-        # The description of the namespace.
+        # The namespace description.
         self.namespace_description = namespace_description
-        # The ID of the namespace.
+        # The namespace ID.
         self.namespace_id = namespace_id
-        # The name of the namespace.
+        # The namespace name.
         self.namespace_name = namespace_name
-        # The region where the namespace resides.
+        # The region where the namespace is located.
         self.region_id = region_id
 
     def validate(self):

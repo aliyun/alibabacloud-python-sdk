@@ -9,7 +9,7 @@ class DeleteJobRequest(DaraModel):
         self,
         app_id: str = None,
     ):
-        # The ID of the job template that you want to delete.
+        # The ID of the task template to delete.
         # 
         # This parameter is required.
         self.app_id = app_id

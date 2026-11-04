@@ -14,37 +14,30 @@ class DeleteApplicationScalingRuleResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The status of the API call or a POP error code. Valid values:
+        # The API status code or POP error code. Valid values:
         # 
-        # - **2xx**: success.
-        # 
-        # - **3xx**: redirection.
-        # 
-        # - **4xx**: request error.
-        # 
-        # - **5xx**: server error.
+        # - **2xx**: Success.
+        # - **3xx**: Redirection.
+        # - **4xx**: Request error.
+        # - **5xx**: Server error.
         self.code = code
-        # The error code. The following rules apply:
-        # 
-        # - This parameter is not returned if the request is successful.
-        # 
-        # - This parameter is returned if the request fails. For more information, see the list of **error codes** in this topic.
+        # The error code. 
+        # - If the request is successful, the **ErrorCode** parameter is not returned.
+        # - If the request fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # Additional information. The following values may be returned:
+        # The additional information. Valid values:
         # 
-        # - **success** is returned if the request is normal.
-        # 
-        # - A specific error code is returned if the request is abnormal.
+        # - **success**: The request is successful.
+        # - A specific error code: The request fails.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the Auto Scaling policy was successfully deleted. Valid values:
+        # Indicates whether the application auto scaling policy is deleted successfully. Valid values:
         # 
-        # - **true**: The deletion was successful.
-        # 
+        # - **true**: The deletion is successful.
         # - **false**: The deletion failed.
         self.success = success
-        # The trace ID. You can use this ID to query the details of a call.
+        # The trace ID used to accurately query invocation information.
         self.trace_id = trace_id
 
     def validate(self):

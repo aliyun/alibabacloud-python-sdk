@@ -10,7 +10,7 @@ class DeleteSwimmingLaneGroupRequest(DaraModel):
         group_id: int = None,
         namespace_id: str = None,
     ):
-        # The ID of the swimming lane group.
+        # The lane group ID.
         self.group_id = group_id
         # The namespace ID.
         self.namespace_id = namespace_id

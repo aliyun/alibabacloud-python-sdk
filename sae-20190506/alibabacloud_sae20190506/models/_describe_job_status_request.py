@@ -14,7 +14,7 @@ class DescribeJobStatusRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The job ID.
+        # The ID of the job.
         self.job_id = job_id
 
     def validate(self):

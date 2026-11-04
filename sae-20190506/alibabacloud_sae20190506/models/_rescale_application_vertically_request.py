@@ -22,20 +22,21 @@ class RescaleApplicationVerticallyRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The CPU specifications, in millicores.
+        # The target CPU specifications, in millicores.
         # 
         # This parameter is required.
         self.cpu = cpu
         self.deploy = deploy
-        # The disk size for each node, in GB.
+        # The disk storage size per node, in GB.
         self.disk_size = disk_size
-        # The memory size, in MB.
+        # The target memory specifications, in MB.
         # 
         # This parameter is required.
         self.memory = memory
+        # The type of resource used for vertical scaling of the application.
         self.resource_type = resource_type
         self.v_switch_id = v_switch_id
-        # Specifies whether to automatically enable the auto scaling rule.
+        # Specifies whether to automatically enable the elastic scaling rule.
         self.auto_enable_application_scaling_rule = auto_enable_application_scaling_rule
         # The minimum percentage of ready instances.
         self.min_ready_instance_ratio = min_ready_instance_ratio

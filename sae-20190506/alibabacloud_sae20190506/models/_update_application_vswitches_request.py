@@ -17,11 +17,10 @@ class UpdateApplicationVswitchesRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_id = app_id
-        # Indicates whether to deploy the application immediately. Valid values:
+        # Specifies whether to deploy the application immediately. Valid values:
         # 
-        # - **true**: Deploys the application immediately. This is the default.
-        # 
-        # - **false**: The application is not deployed.
+        # - **true**: Deploys the application immediately. This is the default value.
+        # - **false**: Deploys the application later.
         self.deploy = deploy
         # The minimum percentage of ready instances.
         self.min_ready_instance_ratio = min_ready_instance_ratio

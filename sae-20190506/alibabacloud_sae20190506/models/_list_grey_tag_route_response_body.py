@@ -18,39 +18,32 @@ class ListGreyTagRouteResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The status of the interface or the POP error code. Valid values:
+        # The API status code or POP error code. Valid values:
         # 
-        # - **2xx**: The request is successful.
-        # 
-        # - **3xx**: The request is redirected.
-        # 
-        # - **4xx**: A request error occurs.
-        # 
-        # - **5xx**: A server error occurs.
+        # - **2xx**: Success.
+        # - **3xx**: Redirection.
+        # - **4xx**: Client error.
+        # - **5xx**: Server error.
         self.code = code
-        # The information about the grayscale rule.
+        # The canary release rule information.
         self.data = data
         # The error code. Valid values:
         # 
-        # - This parameter is not returned if the request is successful.
-        # 
-        # - This parameter is returned if the request fails. For more information, see the **Error codes** section in this topic.
+        # - If the request is successful, the **ErrorCode** parameter is not returned.
+        # - If the request fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # Additional information. Valid values:
-        # 
+        # The additional information.
         # - If the request is successful, **success** is returned.
-        # 
         # - If the request fails, a specific error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the query succeeded.
+        # Indicates whether the change order information was queried successfully. Valid values:
         # 
-        # - **true**: The query succeeded.
-        # 
+        # - **true**: The query was successful.
         # - **false**: The query failed.
         self.success = success
-        # The trace ID, which is used to query the details of a call.
+        # The trace ID used to precisely query call information.
         self.trace_id = trace_id
 
     def validate(self):
@@ -121,11 +114,11 @@ class ListGreyTagRouteResponseBodyData(DaraModel):
     ):
         # The current page number.
         self.current_page = current_page
-        # The number of entries per page in a paged query. The value can only be **1**.
+        # The number of entries per page in a paged query. Currently, only **1** is supported.
         self.page_size = page_size
         # The returned result.
         self.result = result
-        # The total number of entries. The value can only be **1**.
+        # The total number of entries. Currently, only **1** is supported.
         self.total_size = total_size
 
     def validate(self):
@@ -186,19 +179,19 @@ class ListGreyTagRouteResponseBodyDataResult(DaraModel):
         sc_rules: List[main_models.ListGreyTagRouteResponseBodyDataResultScRules] = None,
         update_time: int = None,
     ):
-        # The grayscale rules created for an application for which an Application Load Balancer (ALB) Ingress is configured.
+        # The canary release rules created for applications with configured Application Load Balancer (ALB) gateway routes.
         self.alb_rules = alb_rules
         # The timestamp when the rule was created. Unit: milliseconds.
         self.create_time = create_time
-        # The description of the rule.
+        # The rule description.
         self.description = description
-        # The grayscale rules for Dubbo services.
+        # The Dubbo service canary release rules.
         self.dubbo_rules = dubbo_rules
         # The rule ID.
         self.grey_tag_route_id = grey_tag_route_id
         # The rule name.
         self.name = name
-        # The grayscale rules for Spring Cloud.
+        # The Spring Cloud canary release rules.
         self.sc_rules = sc_rules
         # The timestamp when the rule was updated. Unit: milliseconds.
         self.update_time = update_time
@@ -298,15 +291,14 @@ class ListGreyTagRouteResponseBodyDataResultScRules(DaraModel):
         items: List[main_models.ListGreyTagRouteResponseBodyDataResultScRulesItems] = None,
         path: str = None,
     ):
-        # The conditional pattern of the grayscale rule. Valid values:
+        # The condition mode of the canary release rule. Valid values:
         # 
-        # - **AND**: All conditions in the list must be met.
-        # 
-        # - **OR**: Any condition in the list can be met.
+        # - **AND**: The logical AND operation. All conditions in the condition list must be met.
+        # - **OR**: The logical OR operation. Any condition in the condition list must be met.
         self.condition = condition
-        # The list of conditions.
+        # The condition list.
         self.items = items
-        # The path that corresponds to the grayscale rule for the Spring Cloud application.
+        # The path corresponding to the canary release rule for the Spring Cloud application.
         self.path = path
 
     def validate(self):
@@ -362,28 +354,23 @@ class ListGreyTagRouteResponseBodyDataResultScRulesItems(DaraModel):
     ):
         # The comparison operator. Valid values: **>**, **<**, **>=**, **<=**, **==**, and **!=**.
         self.cond = cond
-        # This parameter is not applicable to Spring Cloud applications.
+        # Not applicable to Spring Cloud applications.
         self.expr = expr
-        # This parameter is not applicable to Spring Cloud applications.
+        # Not applicable to Spring Cloud applications.
         self.index = index
         # The parameter name.
         self.name = name
         # The operator. Valid values:
         # 
         # - **rawvalue**: Direct comparison.
-        # 
         # - **list**: Whitelist.
-        # 
-        # - **mod**: Modulo 100 operation.
-        # 
+        # - **mod**: Modulo 100.
         # - **deterministic_proportional_steaming_division**: Percentage.
         self.operator = operator
         # The comparison type. Valid values:
         # 
         # - **param**: Parameter.
-        # 
         # - **cookie**: Cookie.
-        # 
         # - **header**: Header.
         self.type = type
         # The parameter value. The value obtained based on **type** and **name** is compared with this value.
@@ -455,21 +442,20 @@ class ListGreyTagRouteResponseBodyDataResultDubboRules(DaraModel):
         service_name: str = None,
         version: str = None,
     ):
-        # The conditional pattern of the grayscale rule. Valid values:
+        # The condition mode of the canary release rule. Valid values:
         # 
-        # - **AND**: All conditions in the list must be met.
-        # 
-        # - **OR**: Any condition in the list can be met.
+        # - **AND**: The logical AND operation. All conditions in the condition list must be met.
+        # - **OR**: The logical OR operation. Any condition in the condition list must be met.
         self.condition = condition
-        # The group of the Dubbo service that corresponds to the grayscale rule.
+        # The group of the Dubbo service corresponding to the canary release rule.
         self.group = group
-        # The list of conditions.
+        # The condition list.
         self.items = items
         # The method name of the Dubbo service.
         self.method_name = method_name
-        # The name of the Dubbo service.
+        # The Dubbo service name.
         self.service_name = service_name
-        # The version of the Dubbo service.
+        # The Dubbo service version.
         self.version = version
 
     def validate(self):
@@ -543,35 +529,27 @@ class ListGreyTagRouteResponseBodyDataResultDubboRulesItems(DaraModel):
     ):
         # The comparison operator. Valid values: **>**, **<**, **>=**, **<=**, **==**, and **!=**.
         self.cond = cond
-        # The expression that is used to obtain the parameter value. The syntax follows the Spring Expression Language (SpEL). Valid values:
+        # The expression used to obtain the parameter value. The syntax follows Spring Expression Language (SpEL). Valid values:
         # 
-        # - **Leave it empty**: Obtains the value of the current parameter.
-        # 
-        # - **.name**: Obtains the name property of the parameter. This is equivalent to args0.getName().
-        # 
-        # - **.isEnabled()**: Obtains the enabled property of the parameter. This is equivalent to args0.isEnabled().
-        # 
-        # - **[0]**: Obtains the first value of the array. This is equivalent to args0[0]. Note that the expression does not start with a period (.).
-        # 
-        # - **.get(0)**: Obtains the first value of the list. This is equivalent to args0.get(0).
-        # 
-        # - **.get("key")**: Obtains the value that corresponds to the specified key from the map. This is equivalent to args0.get("key").
+        # - **Empty**: Obtains the value of the current parameter directly.
+        # - **.name**: Obtains the name property of the parameter, which is equivalent to args0.getName().
+        # - **.isEnabled()**: Obtains the enabled property of the parameter, which is equivalent to args0.isEnabled().
+        # - **[0]**: Specifies that the current parameter is an array and obtains the first value of the array, which is equivalent to args0[0]. Note that there is no period (.) at the beginning.
+        # - **.get(0)**: Specifies that the current parameter is a list and obtains the first value of the list, which is equivalent to args0.get(0).
+        # - **.get("key")**: Specifies that the current parameter is a map and obtains the value corresponding to the key, which is equivalent to args0.get("key").
         self.expr = expr
-        # The parameter number. 0 indicates the first parameter.
+        # The parameter index. A value of 0 indicates the first parameter.
         self.index = index
-        # This parameter is not applicable to Dubbo services.
+        # Not applicable to Dubbo services.
         self.name = name
         # The operator. Valid values:
         # 
         # - **rawvalue**: Direct comparison.
-        # 
         # - **list**: Whitelist.
-        # 
-        # - **mod**: Modulo 100 operation.
-        # 
+        # - **mod**: Modulo 100.
         # - **deterministic_proportional_steaming_division**: Percentage.
         self.operator = operator
-        # This parameter is not applicable to Dubbo services.
+        # Not applicable to Dubbo services.
         self.type = type
         # The parameter value. The value obtained based on **expr** and **index** is compared with this value.
         self.value = value
@@ -640,11 +618,11 @@ class ListGreyTagRouteResponseBodyDataResultAlbRules(DaraModel):
         items: List[main_models.ListGreyTagRouteResponseBodyDataResultAlbRulesItems] = None,
         service_name: str = None,
     ):
-        # The conditional pattern of the grayscale rule. Only AND is supported, which indicates that all conditions in the list must be met.
+        # The condition mode of the canary release rule. Currently, only **AND** is supported, which means all conditions in the condition list must be met.
         self.condition = condition
-        # The Ingress ID.
+        # The gateway route ID.
         self.ingress_id = ingress_id
-        # The list of conditions.
+        # The condition list.
         self.items = items
         # The service name.
         self.service_name = service_name
@@ -706,22 +684,20 @@ class ListGreyTagRouteResponseBodyDataResultAlbRulesItems(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # Only == is supported.
+        # The comparison operator. Currently, only **==** is supported.
         self.cond = cond
-        # This parameter is not applicable to ALB applications.
+        # Not required for ALB applications.
         self.expr = expr
-        # This parameter is not applicable to ALB applications.
+        # Not required for ALB applications.
         self.index = index
         # The parameter name.
         self.name = name
-        # The operator. Valid values: Only rawvalue is supported, which indicates a direct comparison.
+        # The operator. Currently, only **rawvalue** (direct comparison) is supported.
         self.operator = operator
         # The comparison type. Valid values:
         # 
-        # - **sourceIp**: SourceIp.
-        # 
+        # - **sourceIp**: Source IP address.
         # - **cookie**: Cookie.
-        # 
         # - **header**: Header.
         self.type = type
         # The parameter value. The value obtained based on type and name is compared with this value.

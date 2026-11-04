@@ -16,39 +16,33 @@ class DeleteInstancesResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code or a Platform as a Service (PaaS) error code. Valid values:
+        # The API status code or POP error code. Valid values:
         # 
-        # - **2xx**: The request was successful.
-        # 
-        # - **3xx**: The request was redirected.
-        # 
-        # - **4xx**: A request error occurred.
-        # 
-        # - **5xx**: A server error occurred.
+        # - **2xx**: Success.
+        # - **3xx**: Redirection.
+        # - **4xx**: Request error.
+        # - **5xx**: Server error.
         self.code = code
-        # The returned data.
+        # The returned result.
         self.data = data
-        # The error code.
+        # The error code. Valid values:
         # 
-        # - The **ErrorCode** parameter is not returned if the request is successful.
-        # 
-        # - The **ErrorCode** parameter is returned if the request fails. For more information, see the **Error codes** section of this topic.
+        # - If the request is successful, the **ErrorCode** parameter is not returned.
+        # - If the request fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The returned message.
+        # The additional information about the call result. Valid values:
         # 
-        # - If the request is successful, `success` is returned.
-        # 
-        # - If the request fails, an error code is returned.
+        # - success: The request is successful.
+        # - A specific error code: The request is abnormal.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the application instances were deleted. Valid values:
+        # Indicates whether the instance is deleted. Valid values:
         # 
-        # - **true**: The application instances were deleted.
-        # 
-        # - **false**: The application instances failed to be deleted.
+        # - **true**: The instance is deleted.
+        # - **false**: The instance fails to be deleted.
         self.success = success
-        # The trace ID of the request. You can use this ID to query the details of a request.
+        # The trace ID used to accurately query call information.
         self.trace_id = trace_id
 
     def validate(self):
@@ -114,7 +108,7 @@ class DeleteInstancesResponseBodyData(DaraModel):
         self,
         change_order_id: str = None,
     ):
-        # The ID of the change order.
+        # The change order ID.
         self.change_order_id = change_order_id
 
     def validate(self):

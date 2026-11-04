@@ -16,39 +16,33 @@ class CreateJobResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code or a POP error code. Valid values:
+        # The HTTP status code or POP error code. Valid values:
         # 
-        # - **2xx**: The request was successful.
-        # 
-        # - **3xx**: The request was redirected.
-        # 
-        # - **4xx**: A request error occurred.
-        # 
-        # - **5xx**: A server error occurred.
+        # - **2xx**: success.
+        # - **3xx**: redirection.
+        # - **4xx**: request error.
+        # - **5xx**: server error.
         self.code = code
-        # The returned data.
+        # The returned result.
         self.data = data
-        # The error code.
+        # The error code. Valid values:
         # 
-        # - This parameter is not returned if the request is successful.
-        # 
-        # - If the request fails, this parameter is returned. For more information, see the **error codes** section of this topic.
+        # - If the request is successful, the **ErrorCode** parameter is not returned.
+        # - If the request fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # Additional information. Valid values:
+        # The additional information. Valid values:
         # 
         # - If the request is successful, **success** is returned.
-        # 
-        # - If the request fails, an error message is returned.
+        # - If the request fails, a specific error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the job template was created successfully. Valid values:
+        # Indicates whether the job template was created. Valid values:
         # 
-        # - **true**: The job template was created.
-        # 
-        # - **false**: The job template was not created.
+        # - **true**: created.
+        # - **false**: failed to create.
         self.success = success
-        # The call trace ID. You can use this ID to query detailed information about the call.
+        # The trace ID used to accurately query the call information.
         self.trace_id = trace_id
 
     def validate(self):
@@ -115,9 +109,9 @@ class CreateJobResponseBodyData(DaraModel):
         app_id: str = None,
         change_order_id: str = None,
     ):
-        # The job template ID.
+        # The ID of the job template.
         self.app_id = app_id
-        # The change order ID. You can use this ID to check the execution status of the task.
+        # The ID of the returned change order, which is used to query the job execution status.
         self.change_order_id = change_order_id
 
     def validate(self):

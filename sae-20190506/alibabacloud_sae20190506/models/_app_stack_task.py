@@ -19,13 +19,21 @@ class AppStackTask(DaraModel):
         steps: List[main_models.AppStackTaskSteps] = None,
         task_id: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The end time.
         self.end_time = end_time
+        # The instance ID.
         self.instance_id = instance_id
+        # The template ID.
         self.stack_id = stack_id
+        # The start time.
         self.start_time = start_time
+        # The task status.
         self.status = status
+        # The step list.
         self.steps = steps
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -110,13 +118,21 @@ class AppStackTaskSteps(DaraModel):
         start_time: int = None,
         status: str = None,
     ):
+        # The error code.
         self.code = code
+        # The step duration.
         self.duration = duration
+        # The end time.
         self.end_time = end_time
+        # The step ID.
         self.id = id
+        # The error message.
         self.message = message
+        # The step name.
         self.name = name
+        # The start time.
         self.start_time = start_time
+        # The step status.
         self.status = status
 
     def validate(self):

@@ -64,27 +64,26 @@ class CreateJobRequest(DaraModel):
         web_container: str = None,
         workload: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the RAM role that is required to pull images across accounts. For more information, see [Grant permissions to pull images across Alibaba Cloud accounts by using a RAM role](https://help.aliyun.com/document_detail/223585.html).
+        # The Alibaba Cloud Resource Name (ARN) of the Resource Access Management (RAM) role required to pull images across accounts. For more information, see [Use a RAM role to authorize access across Alibaba Cloud accounts](https://help.aliyun.com/document_detail/223585.html).
         self.acr_assume_role_arn = acr_assume_role_arn
-        # The ID of the Container Registry (ACR) Enterprise Edition instance. This parameter is required when **ImageUrl** points to an image in an ACR Enterprise Edition instance.
+        # The instance ID of the ACR Enterprise instance. This parameter is required when **ImageUrl** is set to an ACR Enterprise instance image.
         self.acr_instance_id = acr_instance_id
-        # The description of the job template. It cannot exceed 1,024 characters.
+        # The description of the job template. The description can be up to 1,024 characters in length.
         self.app_description = app_description
-        # The name of the job template. The name can contain letters, digits, and hyphens (-). It must start with a letter and be no longer than 36 characters.
+        # The name of the job template. The name can contain digits, letters, and hyphens (-). It must start with a letter and can be up to 36 characters in length.
         # 
         # This parameter is required.
         self.app_name = app_name
         # Specifies whether to automatically configure the network environment. Valid values:
         # 
-        # - **true**: SAE automatically configures the network environment when you create the job template. The values of **NamespaceId**, **VpcId**, **vSwitchId**, and **SecurityGroupId** are ignored.
-        # 
-        # - **false**: You must manually configure the network environment.
+        # - **true**: SAE automatically configures the network environment when creating the job template. The values of **NamespaceId**, **VpcId**, **vSwitchId**, and **SecurityGroupId** are ignored.
+        # - **false**: You manually configure the network environment when creating the job template.
         self.auto_config = auto_config
-        # The maximum number of retries for a task before it is marked as failed.
+        # The number of retries for the job.
         self.backoff_limit = backoff_limit
         # The BestEffort policy.
         self.best_effort_type = best_effort_type
-        # The entrypoint command for the container. The command must be an executable inside the container. Example:
+        # The startup command of the image. The command must be an executable object that exists in the container. Example:
         # 
         # ```
         # command:
@@ -93,192 +92,134 @@ class CreateJobRequest(DaraModel):
         #       - >
         #       - file0
         # ```
-        # 
-        # For the preceding example, `Command="echo", CommandArgs=["abc", ">", "file0"]`.
+        # Based on the preceding example, Command is set to echo and CommandArgs is set to ["abc", ">", "file0"].
         self.command = command
-        # Arguments for the entrypoint command (**Command**). The format is as follows:
+        # The arguments for the image startup command. These are the arguments required by the **Command** parameter. Format:
         # 
         # `["a","b"]`
         # 
-        # In the example for the `Command` parameter, the value for `CommandArgs` is `["abc", ">", "file0"]`. This value must be a string that contains a JSON array. If the command takes no arguments, you can omit this parameter.
+        # In the preceding example, CommandArgs is set to ["abc", ">", "file0"]. The value ["abc", ">", "file0"] must be converted to a string in JSON array format. If this parameter is not required, you do not need to specify it.
         self.command_args = command_args
-        # The concurrency policy for the task. Valid values:
+        # The concurrency policy of the job. Valid values:
         # 
-        # - **Forbid**: Prohibits concurrent runs. A new task is not created if the previous one is not complete.
-        # 
-        # - **Allow**: Allows concurrent running.
-        # 
-        # - **Replace**: If a previous task is still running when the next one is scheduled, the new task replaces the old one.
+        # - **Forbid**: forbids concurrent execution. A new job is not created if the previous job is not completed.
+        # - **Allow**: allows concurrent execution of jobs.
+        # - **Replace**: replaces the previous job with a new job if the previous job is not completed when the creation time of the new job arrives.
         self.concurrency_policy = concurrency_policy
-        # The **ConfigMap** mount description. Use a ConfigMap created in the namespace to inject configurations into the container. The parameters are described as follows:
+        # The mount description of the **ConfigMap**. Uses the configuration items created on the namespace configuration item page to inject configuration information into the container. The parameter descriptions are as follows:
         # 
-        # - **configMapId**: The ID of the ConfigMap. You can call the [ListNamespacedConfigMaps](https://help.aliyun.com/document_detail/176917.html) operation to obtain this ID.
+        # - **congfigMapId**: the instance ID of the ConfigMap instance. You can invoke the [ListNamespacedConfigMaps](https://help.aliyun.com/document_detail/176917.html) operation to obtain the instance ID.
+        # - **key**: the key value.
         # 
-        # - **key**: The key.
+        # > You can pass the sae-sys-configmap-all parameter to mount all keys.
         # 
-        # > You can pass the `sae-sys-configmap-all` parameter to mount all keys.
-        # 
-        # - **mountPath**: The mount path in the container.
+        # - **mountPath**: the mount path.
         self.config_map_mount_desc = config_map_mount_desc
-        # The CPU required for each instance, in millicores. This value cannot be 0. Only the following fixed specifications are currently supported:
-        # 
+        # The number of CPU cores required for each instance. Unit: millicores. The value cannot be 0. Only the following defined specifications are supported:
         # - **500**
-        # 
         # - **1000**
-        # 
         # - **2000**
-        # 
         # - **4000**
-        # 
         # - **8000**
-        # 
         # - **16000**
-        # 
         # - **32000**
         self.cpu = cpu
-        # The host alias that maps a hostname to an IP address in the container. The parameters are described as follows:
+        # The custom host mapping in the container. Valid values:
         # 
-        # - **hostName**: The domain name or hostname.
-        # 
-        # - **ip**: The IP address.
+        # - **hostName**: the domain name or hostname.
+        # - **ip**: the IP address.
         self.custom_host_alias = custom_host_alias
-        # The version of the HSF runtime environment for the task, such as an Ali-Tomcat container.
+        # The runtime environment version of the job in the High-Speed Service Framework (HSF), such as the Ali-Tomcat container.
         self.edas_container_version = edas_container_version
         # Specifies whether to enable image acceleration. Valid values:
         # 
-        # - **true**: Enables image acceleration.
-        # 
-        # - **false**: Disables image acceleration.
+        # - **true**: enabled.
+        # - **false**: disabled.
         self.enable_image_accl = enable_image_accl
-        # Environment variables to set in the container. To reference variables, the ConfigMap must already exist. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). The value can be configured in one of the following ways:
-        # 
-        # - Specify custom variables
-        # 
-        #   - **name**: The name of the environment variable.
-        # 
-        #   - **value**: The value of the environment variable.
-        # 
+        # The environment variables for the container. You can customize environment variables or reference ConfigMaps. To reference a ConfigMap, you must create a ConfigMap instance first. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). Valid values:
+        # - Custom configuration
+        #     - **name**: the name of the environment variable.
+        #     - **value**: the value of the environment variable.
         # - Reference a ConfigMap
-        # 
-        #   - **name**: The name of the environment variable. You can reference a single key or all keys. To reference all keys, enter a value in the `sae-sys-configmap-all-<ConfigMap name>` format. Example: `sae-sys-configmap-all-test1`.
-        # 
-        #   - **valueFrom**: The source of the environment variable. Set the value to `configMapRef`.
-        # 
-        #   - **configMapId**: The ID of the ConfigMap.
-        # 
-        #   - **key**: The key to reference. If you want to reference all key-value pairs, do not specify this parameter.
+        #     - **name**: the name of the environment variable. You can reference a single key or all keys. To reference all keys, enter sae-sys-configmap-all-<ConfigMap name>, for example, sae-sys-configmap-all-test1.
+        #     - **valueFrom**: the reference of the environment variable. Set the value to configMapRef.
+        #     - **configMapId**: the ID of the ConfigMap.
+        #     - **key**: the key. If you reference all key-value pairs, do not set this field.
         self.envs = envs
-        # The ID of the secret used to pull the image.
+        # The ID of the secret.
         self.image_pull_secrets = image_pull_secrets
-        # The URL of the image. This parameter is required when **PackageType** is set to **Image**.
+        # The image address. This parameter is required when **PackageType** is set to **Image**.
         self.image_url = image_url
-        # The startup arguments for the JAR package. The default startup command is: `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`
+        # The startup arguments for the JAR package. Default job startup command: `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`
         self.jar_start_args = jar_start_args
-        # The startup options for the JAR package. The default startup command is: `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`
+        # The startup options for the JAR package. Default job startup command: `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`
         self.jar_start_options = jar_start_options
-        # The JDK version that the deployment package requires. The following versions are supported:
+        # The Java Development Kit (JDK) version on which the deployment package depends. Valid values:
         # 
         # - **Open JDK 8**
-        # 
         # - **Open JDK 7**
-        # 
         # - **Dragonwell 11**
-        # 
         # - **Dragonwell 8**
-        # 
         # - **openjdk-8u191-jdk-alpine3.9**
-        # 
         # - **openjdk-7u201-jdk-alpine3.9**
         # 
         # This parameter is not supported when **PackageType** is set to **Image**.
         self.jdk = jdk
-        # The memory required for each instance, in MB. This value cannot be 0. CPU and memory specifications are coupled. The following specifications are currently supported:
-        # 
-        # - **1024**: corresponds to 500 or 1,000 millicores of CPU.
-        # 
-        # - **2048**: corresponds to 500, 1,000, or 2,000 millicores of CPU.
-        # 
-        # - **4096**: corresponds to 1,000, 2,000, or 4,000 millicores of CPU.
-        # 
-        # - **8192**: corresponds to 2,000, 4,000, or 8,000 millicores of CPU.
-        # 
-        # - **12288**: corresponds to 12,000 millicores of CPU.
-        # 
-        # - **16384**: corresponds to 4,000, 8,000, or 16,000 millicores of CPU.
-        # 
-        # - **24576**: corresponds to 12,000 millicores of CPU.
-        # 
-        # - **32768**: corresponds to 16,000 millicores of CPU.
-        # 
-        # - **65536**: corresponds to 8,000, 16,000, or 32,000 millicores of CPU.
-        # 
-        # - **131072**: corresponds to 32,000 millicores of CPU.
+        # The memory size required for each instance. Unit: MB. The value cannot be 0. The memory size has a one-to-one mapping with the number of CPU cores. Only the following defined specifications are supported:
+        # - **1024**: corresponds to 500 and 1,000 millicores.
+        # - **2048**: corresponds to 500, 1,000, and 2,000 millicores.
+        # - **4096**: corresponds to 1,000, 2,000, and 4,000 millicores.
+        # - **8192**: corresponds to 2,000, 4,000, and 8,000 millicores.
+        # - **12288**: corresponds to 12,000 millicores.
+        # - **16384**: corresponds to 4,000, 8,000, and 16,000 millicores.
+        # - **24576**: corresponds to 12,000 millicores.
+        # - **32768**: corresponds to 16,000 millicores.
+        # - **65536**: corresponds to 8,000, 16,000, and 32,000 millicores.
+        # - **131072**: corresponds to 32,000 millicores.
         self.memory = memory
-        # The NAS mount description. If this configuration does not change in subsequent deployments, you can omit this parameter. To clear the NAS configuration, set this parameter to an empty string ("").
+        # The description of the NAS mount. If the configuration remains unchanged during deployment, you do not need to set this parameter, which means the **MountDesc** field is not required in the request. To clear the NAS configuration, you must set this field to an empty string in the request, which means the value of the **MountDesc** field is "".
         self.mount_desc = mount_desc
-        # The NAS mount target in the VPC of the job template. If this configuration does not change in subsequent deployments, you can omit this parameter. To clear the NAS configuration, set this parameter to an empty string ("").
+        # The mount target of the NAS file system in the VPC of the job template. If the configuration remains unchanged during deployment, you do not need to set this parameter, which means the **MountHost** field is not required in the request. To clear the NAS configuration, you must set this field to an empty string in the request, which means the value of the **MountHost** field is "".
         self.mount_host = mount_host
-        # The ID of the SAE namespace. The namespace name can contain only lowercase letters and hyphens (-), and must start with a letter.
+        # The ID of the Serverless App Engine (SAE) namespace. Only namespaces whose names contain lowercase letters and hyphens (-) are supported. The name must start with a letter.
         self.namespace_id = namespace_id
-        # The configurations for mounting a NAS file system.
+        # The configuration for mounting the NAS file system.
         self.nas_configs = nas_configs
-        # The ID of the NAS file system. If this configuration does not change in subsequent deployments, you can omit this parameter. To clear the NAS configuration, set this parameter to an empty string ("").
+        # The ID of the Apsara File Storage NAS file system. If the configuration remains unchanged during deployment, you do not need to set this parameter, which means the **NasId** field is not required in the request. To clear the NAS configuration, you must set this field to an empty string in the request, which means the value of the **NasId** field is "".
         self.nas_id = nas_id
-        # The AccessKey ID for reading from and writing to OSS.
+        # The AccessKey ID used to read and write OSS data.
         self.oss_ak_id = oss_ak_id
-        # The AccessKey secret for reading from and writing to OSS.
+        # The AccessKey Secret used to read and write OSS data.
         self.oss_ak_secret = oss_ak_secret
-        # The description of the Object Storage Service (OSS) mount. The parameters are described as follows:
+        # The OSS mount description. The parameter descriptions are as follows:
         # 
-        # - **bucketName**: The name of the bucket.
-        # 
-        # - **bucketPath**: The directory or object in OSS. If the specified directory or object does not exist, an exception is thrown.
-        # 
-        # - **mountPath**: The path in the SAE container. If the path exists, it is overwritten. If the path does not exist, it is created.
-        # 
-        # - **readOnly**: Specifies whether the container has read-only access to the resources in the mount directory. Valid values:
-        # 
-        #   - **true**: read-only permission.
-        # 
-        #   - **false**: read and write permissions.
+        # - **bucketName**: the name of the bucket.
+        # - **bucketPath**: the folder or object that you created in OSS. If the OSS mount folder does not exist, an exception is triggered.
+        # - **mountPath**: the container path in SAE. If the path already exists, it overwrites the existing content. If the path does not exist, it is created.
+        # - **readOnly**: specifies whether the container path has read permissions on the mount folder resources. Valid values:
+        #     - **true**: read-only permissions.
+        #     - **false**: read and write permissions.
         self.oss_mount_descs = oss_mount_descs
-        # The type of the deployment package. Valid values:
+        # The type of the job package. Valid values:
         # 
-        # - For Java applications, valid values are **FatJar**, **War**, and **Image**.
-        # 
-        # - For PHP applications, the valid values are:
-        # 
-        #   - **PhpZip**
-        # 
-        #   - **IMAGE_PHP_5_4**
-        # 
-        #   - **IMAGE_PHP_5_4_ALPINE**
-        # 
-        #   - **IMAGE_PHP_5_5**
-        # 
-        #   - **IMAGE_PHP_5_5_ALPINE**
-        # 
-        #   - **IMAGE_PHP_5_6**
-        # 
-        #   - **IMAGE_PHP_5_6_ALPINE**
-        # 
-        #   - **IMAGE_PHP_7_0**
-        # 
-        #   - **IMAGE_PHP_7_0_ALPINE**
-        # 
-        #   - **IMAGE_PHP_7_1**
-        # 
-        #   - **IMAGE_PHP_7_1_ALPINE**
-        # 
-        #   - **IMAGE_PHP_7_2**
-        # 
-        #   - **IMAGE_PHP_7_2_ALPINE**
-        # 
-        #   - **IMAGE_PHP_7_3**
-        # 
-        #   - **IMAGE_PHP_7_3_ALPINE**
-        # 
-        # - For **Python** applications, valid values are **PythonZip** and **Image**.
+        # - If you use Java for deployment, valid values are **FatJar**, **War**, and **Image**.
+        # - If you use PHP for deployment, valid values are:
+        #     - **PhpZip**
+        #     - **IMAGE_PHP_5_4**
+        #     - **IMAGE_PHP_5_4_ALPINE**
+        #     - **IMAGE_PHP_5_5**
+        #     - **IMAGE_PHP_5_5_ALPINE**
+        #     - **IMAGE_PHP_5_6**
+        #     - **IMAGE_PHP_5_6_ALPINE**
+        #     - **IMAGE_PHP_7_0**
+        #     - **IMAGE_PHP_7_0_ALPINE**
+        #     - **IMAGE_PHP_7_1**
+        #     - **IMAGE_PHP_7_1_ALPINE**
+        #     - **IMAGE_PHP_7_2**
+        #     - **IMAGE_PHP_7_2_ALPINE**
+        #     - **IMAGE_PHP_7_3**
+        #     - **IMAGE_PHP_7_3_ALPINE**
+        # - If you use **Python** for deployment, valid values are **PythonZip** and **Image**.
         # 
         # This parameter is required.
         self.package_type = package_type
@@ -288,86 +229,76 @@ class CreateJobRequest(DaraModel):
         self.package_version = package_version
         # The content of the PHP configuration file.
         self.php_config = php_config
-        # The mount path of the startup configuration file for a PHP task. You must make sure that the PHP server uses this configuration file on startup.
+        # The mount path for the PHP job startup configuration. You must ensure that the PHP server uses this configuration file to start.
         self.php_config_location = php_config_location
-        # A PostStart hook. This script runs immediately after the container is created. The value must be a JSON string, for example: `{"exec":{"command":["sh","-c","echo hello"]}}`
+        # The script to execute after the container starts. A script is triggered and executed immediately after the container is created. Format: `{"exec":{"command":["sh","-c","echo hello"]}}`
         self.post_start = post_start
-        # A PreStop hook. This script runs immediately before the container is stopped. The value must be a JSON string, for example: `{"exec":{"command":["sh","-c","echo hello"]}}`
+        # The script to execute before the container stops. A script is triggered and executed before the container is deleted. Format: `{"exec":{"command":["sh","-c","echo hello"]}}`
         self.pre_stop = pre_stop
         # The programming language. Valid values: **java**, **php**, **python**, and **shell**.
         self.programming_language = programming_language
-        # The Python environment. **PYTHON 3.9.15** is supported.
+        # The Python environment. Valid value: **PYTHON 3.9.15**.
         self.python = python
-        # Python dependencies to install by using pip. If you do not set this parameter, SAE installs dependencies from the \\"requirements.txt\\" file in the root directory of your project.
+        # The module dependencies for custom installation. By default, the dependencies defined in the requirements.txt file in the root folder are installed. If no dependencies are configured or custom packages are used, you can specify the dependencies for custom installation.
         self.python_modules = python_modules
-        # The ID of the referenced job.
+        # The ID of the referenced job target.
         self.ref_app_id = ref_app_id
-        # The number of concurrent task instances.
+        # The number of concurrent instances for the job.
         # 
         # This parameter is required.
         self.replicas = replicas
-        # The security group ID.
+        # The ID of the security group.
         self.security_group_id = security_group_id
-        # Specifies whether to enable task sharding.
+        # Specifies whether to enable job sharding.
         self.slice = slice
-        # The parameters for task sharding.
+        # The sharding parameters of the job.
         self.slice_envs = slice_envs
         # The configuration for collecting logs to Simple Log Service (SLS).
         # 
-        # - To use SLS resources that are automatically created by SAE: `[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]`.
+        # - To use SLS resources automatically created by SAE: `[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]`.
+        # - To use custom SLS resources: `[{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}]`.
         # 
-        # - To use your own SLS resources: `[{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}]`.
+        # The parameter descriptions are as follows:
         # 
-        # The parameters are described as follows:
+        # - **projectName**: the name of the SLS project.  
+        # - **logDir**: the log path.
+        # - **logType**: the log type. **stdout** indicates container standard output logs. You can configure only one such log source. If you do not configure this parameter, file logs are collected.
+        # - **logstoreName**: the name of the SLS Logstore.
+        # - **logtailName**: the name of the SLS Logtail. If you do not specify this parameter, a new Logtail is created.
         # 
-        # - **projectName**: The name of the SLS Project.
+        # If the SLS collection configuration remains unchanged during multiple deployments, you do not need to set this parameter (that is, the **SlsConfigs** field is not required in the request). If you no longer need the SLS collection feature, you must set this field to an empty string (a string with zero characters) in the request (that is, the value of the **SlsConfigs** field is "").
         # 
-        # - **logDir**: The path of the log file.
-        # 
-        # - **logType**: The log type. **stdout** indicates the standard output of the container. You can specify only one standard output. If you do not set this parameter, file logs are collected.
-        # 
-        # - **logstoreName**: The name of the Logstore in SLS.
-        # 
-        # - **logtailName**: The name of the Logtail in SLS. If you do not specify this parameter, a new Logtail is created.
-        # 
-        # If the log collection configuration does not change during subsequent deployments, you do not need to set this parameter (the request does not need to include the **SlsConfigs** field). If you no longer need to use the log collection feature, set the value of this parameter to an empty string ("") in your request.
-        # 
-        # > SAE deletes a project that it automatically created when you delete the corresponding job template. Therefore, if you specify an existing project, do not use one that was automatically created by SAE.
+        # > The project automatically created with the job template is deleted when the job template is deleted. Therefore, when you select an existing project, you cannot select a project automatically created by SAE.
         self.sls_configs = sls_configs
-        # The graceful shutdown timeout, in seconds. The value must be an integer from 1 to 300. Default: 30.
+        # The timeout period for graceful shutdown. Default value: 30. Unit: seconds. Valid values: 1 to 300.
         self.termination_grace_period_seconds = termination_grace_period_seconds
-        # The task timeout, in seconds.
+        # The timeout period of the job. Unit: seconds.
         self.timeout = timeout
         # The time zone. Default value: **Asia/Shanghai**.
         self.timezone = timezone
-        # The Tomcat configuration. To delete the configuration, set this parameter to `""` or `{}`. The parameters are described as follows:
+        # The Tomcat configuration. Set the value to "" or "{}" to delete the configuration. Valid values:
         # 
-        # - **port**: The port number. The valid range is 1024 to 65535. Ports below 1024 require root permissions. Because the container is configured with administrator permissions, specify a port number greater than 1024. If this parameter is not configured, the default port 8080 is used.
-        # 
-        # - **contextPath**: The context path. Default value: /.
-        # 
-        # - **maxThreads**: The maximum number of threads in the connection pool. Default value: 400.
-        # 
-        # - **uriEncoding**: The URI encoding scheme for Tomcat. Valid values: **UTF-8**, **ISO-8859-1**, **GBK**, and **GB2312**. If this parameter is not set, the default value **ISO-8859-1** is used.
-        # 
-        # - **useBodyEncodingForUri**: Specifies whether to use the encoding specified in `request.getCharacterEncoding()` to decode the request URI. Default value: **true**.
+        # - **port**: the port range is 1024 to 65535. Ports smaller than 1024 require root permissions. Because the container is configured with admin permissions, specify a port greater than 1024. Default value: 8080.
+        # - **contextPath**: the access path. Default value: the root directory "/".
+        # - **maxThreads**: the maximum number of connections in the connection pool. Default value: 400.
+        # - **uriEncoding**: the encoding format of Tomcat. Valid values: **UTF-8**, **ISO-8859-1**, **GBK**, and **GB2312**. Default value: **ISO-8859-1**.
+        # - **useBodyEncoding**: specifies whether to use **BodyEncoding for URL**. Default value: **true**.
         self.tomcat_config = tomcat_config
         self.trigger_config = trigger_config
-        # The ID of the vSwitch for the elastic network interface of the task instance. The vSwitch must be located in the specified VPC. The vSwitch is also bound to the SAE namespace. If you do not specify this parameter, the ID of the vSwitch that is bound to the namespace is used by default.
+        # The ID of the vSwitch to which the elastic network interface controller (NIC) of the job instance belongs. The vSwitch must reside in the preceding VPC. The vSwitch is also associated with the SAE namespace. If you do not specify this parameter, the ID of the vSwitch that is associated with the namespace is used by default.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC for the SAE namespace. In SAE, a namespace can be bound to only one VPC, and this binding cannot be changed. The binding is established when you create the first SAE job template in the namespace. A single VPC can be associated with multiple namespaces. If you do not specify this parameter, the ID of the VPC that is bound to the namespace is used by default.
+        # The ID of the virtual private cloud (VPC) that is associated with the SAE namespace. In SAE, a namespace can be associated with only one VPC, and the association cannot be modified. The association is established when you create the first SAE job template in the namespace. Multiple namespaces can be associated with the same VPC. If you do not specify this parameter, the ID of the VPC that is associated with the namespace is used by default.
         self.vpc_id = vpc_id
-        # The startup command for a WAR package deployment. The configuration steps are the same as for an image-based deployment. For more information, see [Set a startup command](https://help.aliyun.com/document_detail/96677.html).
+        # The startup command for the WAR package deployment job. The procedure is the same as configuring the startup command for image deployment. For more information, see [Configure a startup command](https://help.aliyun.com/document_detail/96677.html).
         self.war_start_options = war_start_options
-        # The Tomcat version that the deployment package requires. The following versions are supported:
+        # The Tomcat version on which the deployment package depends. Valid values:
         # 
         # - **apache-tomcat-7.0.91**
-        # 
         # - **apache-tomcat-8.5.42**
         # 
         # This parameter is not supported when **PackageType** is set to **Image**.
         self.web_container = web_container
-        # The workload. Set the value to `job`.
+        # The workload type. Set the value to `job`.
         # 
         # This parameter is required.
         self.workload = workload

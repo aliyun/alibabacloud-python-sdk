@@ -20,33 +20,28 @@ class DescribeApplicationNlbsResponseBody(DaraModel):
     ):
         # The HTTP status code. Valid values:
         # 
-        # - **2xx**: The request is successful.
-        # 
-        # - **3xx**: The request is redirected.
-        # 
-        # - **4xx**: A client error occurred.
-        # 
-        # - **5xx**: A server error occurred.
+        # - **2xx**: Success.
+        # - **3xx**: Redirection.
+        # - **4xx**: Client error.
+        # - **5xx**: Server error.
         self.code = code
-        # The data returned in the response.
+        # The returned data.
         self.data = data
-        # The error code.
+        # The error code. Valid values:
         # 
-        # - This parameter is returned only if the request fails.
-        # 
-        # - For more information, see the **Error codes** section of this topic.
+        # - If the request is successful, the **ErrorCode** parameter is not returned.
+        # - If the request fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The returned message. A value of `success` indicates a successful request; otherwise, an error code is returned.
+        # The additional information. If the request is successful, success is returned. If the request fails, a specific error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Specifies whether the binding is successful. Valid values:
         # 
-        # - **true**: The request was successful.
-        # 
-        # - **false**: The request failed.
+        # - **true**: The binding is successful.
+        # - **false**: The binding failed.
         self.success = success
-        # The trace ID used to query the details of the request.
+        # The trace ID used to query call details.
         self.trace_id = trace_id
 
     def validate(self):
@@ -112,7 +107,7 @@ class DescribeApplicationNlbsResponseBodyData(DaraModel):
         self,
         instances: Dict[str, main_models.DataInstancesValue] = None,
     ):
-        # A collection of instance details.
+        # The instance information.
         self.instances = instances
 
     def validate(self):

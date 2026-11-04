@@ -10,7 +10,7 @@ class BatchRestartApplicationsRequest(DaraModel):
         app_ids: str = None,
         namespace_id: str = None,
     ):
-        # The application IDs. Separate multiple IDs with commas (,).
+        # The list of application IDs. Separate multiple IDs with commas (,).
         # 
         # This parameter is required.
         self.app_ids = app_ids

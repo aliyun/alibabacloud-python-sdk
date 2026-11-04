@@ -14,33 +14,28 @@ class DeleteNamespaceResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The API status code or POP error code. Valid values:
         # 
-        # - **2xx**: The request was successful.
-        # 
-        # - **3xx**: The request was redirected.
-        # 
-        # - **4xx**: A request error occurred.
-        # 
-        # - **5xx**: A server error occurred.
+        # - **2xx**: Success.
+        # - **3xx**: Redirection.
+        # - **4xx**: Client error.
+        # - **5xx**: Server error.
         self.code = code
-        # The error code.
+        # The error code. Valid values:
         # 
-        # - If the request is successful, this parameter is not returned.
-        # 
-        # - If the request fails, this parameter is returned. For more information, see the **Error codes** section in this topic.
+        # - If the request is successful, the **ErrorCode** parameter is not returned.
+        # - If the request fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The additional information that is returned.
+        # The additional information about the call result.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the namespace was deleted. Valid values:
+        # Indicates whether the namespace is deleted. Valid values:
         # 
-        # - **true**: The namespace was deleted.
-        # 
-        # - **false**: The namespace failed to be deleted.
+        # - **true**: The namespace is deleted.
+        # - **false**: The namespace is not deleted.
         self.success = success
-        # The trace ID. You can use this ID to query the details of a request.
+        # The trace ID used to accurately query call information.
         self.trace_id = trace_id
 
     def validate(self):

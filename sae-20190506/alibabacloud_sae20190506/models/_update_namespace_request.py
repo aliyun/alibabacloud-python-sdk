@@ -13,21 +13,19 @@ class UpdateNamespaceRequest(DaraModel):
         namespace_id: str = None,
         namespace_name: str = None,
     ):
-        # Indicates whether to enable SAE built-in registry:
-        # 
+        # Specifies whether to enable the built-in registry of SAE. Valid values:
         # - **true**
-        # 
         # - **false**
         # 
-        # If you set this parameter to true, a shared registry is created for the namespace. The registry cannot be disabled after it is created.
+        # If you set this parameter to true, a shared registry and related information are created for the namespace. After the shared registry is created, it cannot be disabled.
         self.enable_micro_registration = enable_micro_registration
-        # The short ID of the namespace. You do not need to specify a region ID. We recommend that you configure this parameter. The value of this parameter can be up to 20 characters in length and can contain only lowercase letters and digits.
+        # The short namespace ID. You do not need to include the region ID. The value can contain only lowercase letters and digits and cannot exceed 20 characters in length. We recommend that you use this parameter.
         self.name_space_short_id = name_space_short_id
-        # The description of the namespace. The description cannot exceed 100 characters in length.
+        # The namespace description. The value cannot exceed 100 characters in length.
         self.namespace_description = namespace_description
-        # The long ID of the namespace. If you configure this parameter, the long ID take effects and the value of the NameSpaceShortId parameter is ignored. To ensure compatibility, we recommend that you specify a short namespace ID. A long namespace ID follows the `<RegionId>:<NamespaceId>` format. The `NamespaceId` variable can contain only lowercase letters and digits. Example: `cn-beijing:test`. The value of the Namespaceid variable cannot exceed 32 characters in length. For more information about **RegionId**, you can call the [DescribeRegions](https://help.aliyun.com/document_detail/2834842.html) operation to obtain the IDs of regions supported by SAE.
+        # The long namespace ID. If you specify this parameter, it takes effect and NameSpaceShortId is ignored. This parameter is retained for backward compatibility. We recommend that you use the short namespace ID. The format is `<RegionId>:<NamespaceId>`. `NamespaceId` can contain only lowercase letters and digits, such as `cn-beijing:test`. The value cannot exceed 32 characters in length. For more information about the **RegionId** values supported by SAE, see [DescribeRegions](https://help.aliyun.com/document_detail/2834842.html).
         self.namespace_id = namespace_id
-        # The name of the namespace. The name cannot exceed 64 characters in length.
+        # The namespace name. The value cannot exceed 64 characters in length.
         # 
         # This parameter is required.
         self.namespace_name = namespace_name

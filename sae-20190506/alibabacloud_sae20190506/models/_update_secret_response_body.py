@@ -16,35 +16,30 @@ class UpdateSecretResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The status of the API call or a POP error code. Valid values:
+        # The API status code or POP error code. Valid values:
         # 
-        # - **2xx**: The request was successful.
-        # 
-        # - **3xx**: The request was redirected.
-        # 
-        # - **4xx**: A request error occurred.
-        # 
-        # - **5xx**: A server error occurred.
+        # - **2xx**: Success.
+        # - **3xx**: Redirection.
+        # - **4xx**: Request error.
+        # - **5xx**: Server error.
         self.code = code
         # The returned result.
         self.data = data
-        # The error code. The following list describes the values:
+        # The error code. Take note of the following items:
         # 
-        # - If the request is successful, this parameter is not returned.
-        # 
-        # - If the request fails, this parameter is returned. For more information, see the **Error codes** section of this topic.
+        # - If the request is successful, the **ErrorCode** parameter is not returned.
+        # - If the request fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # Additional information about the call result.
+        # The additional information about the call result.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the Secret instance was updated. Valid values:
+        # Indicates whether the Secret instance was updated successfully. Valid values:
         # 
-        # - **true**: The instance was updated.
-        # 
+        # - **true**: The update was successful.
         # - **false**: The update failed.
         self.success = success
-        # The ID of the call chain. You can use this ID to query the details of a call.
+        # The trace ID used to query the call information.
         self.trace_id = trace_id
 
     def validate(self):
@@ -110,7 +105,7 @@ class UpdateSecretResponseBodyData(DaraModel):
         self,
         secret_id: int = None,
     ):
-        # The ID of the Secret instance.
+        # The instance ID of the Secret.
         self.secret_id = secret_id
 
     def validate(self):

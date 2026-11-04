@@ -16,27 +16,30 @@ class CreateConfigMapResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # Empty
+        # The API status code or POP error code. Valid values:
+        # 
+        # - **2xx**: Success.
+        # - **3xx**: Redirection.
+        # - **4xx**: Request error.
+        # - **5xx**: Server error.
         self.code = code
-        # The trace ID that is used to query the details of the request.
+        # The returned result.
         self.data = data
-        # The ID of the ConfigMap that was created.
+        # The error code. Valid values:
+        # 
+        # - Successful request: The **ErrorCode** parameter is not returned.
+        # - Failed request: The **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The request ID.
+        # The additional information about the call result.
         self.message = message
-        # The returned data.
+        # The ID of the request.
         self.request_id = request_id
-        # The HTTP status code. Valid values:
+        # Indicates whether the ConfigMap instance was created successfully. Valid values:
         # 
-        # - **2xx**: The call was successful.
-        # 
-        # - **3xx**: The call was redirected.
-        # 
-        # - **4xx**: The call failed.
-        # 
-        # - **5xx**: A server error occurred.
+        # - **true**: Created.
+        # - **false**: Failed to create.
         self.success = success
-        # The returned message.
+        # The trace ID used to accurately query the call information.
         self.trace_id = trace_id
 
     def validate(self):
@@ -102,7 +105,7 @@ class CreateConfigMapResponseBodyData(DaraModel):
         self,
         config_map_id: int = None,
     ):
-        # The returned result.
+        # The instance ID of the created ConfigMap.
         self.config_map_id = config_map_id
 
     def validate(self):

@@ -9,7 +9,7 @@ class DeleteIngressRequest(DaraModel):
         self,
         ingress_id: int = None,
     ):
-        # The ID of the routing rule to delete. You can obtain the ID by calling the [ListIngresses](https://help.aliyun.com/document_detail/153934.html) operation.
+        # The ID of the ingress rule to delete. You can obtain the ID by calling the [ListIngresses](https://help.aliyun.com/document_detail/153934.html) operation.
         # 
         # This parameter is required.
         self.ingress_id = ingress_id

@@ -10,7 +10,9 @@ class ListApplicationCenterServiceInstancesRequest(DaraModel):
         namespace_id: str = None,
         region_id: str = None,
     ):
+        # The namespace ID.
         self.namespace_id = namespace_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

@@ -14,37 +14,31 @@ class UpdateSwimmingLaneEnableAttributeResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The API status code or POP error code. Valid values:
         # 
-        # - **2xx**: Success
-        # 
-        # - **3xx**: Redirection
-        # 
-        # - **4xx**: Client error
-        # 
-        # - **5xx**: Server error
+        # - **2xx**: Success.
+        # - **3xx**: Redirection.
+        # - **4xx**: Request error.
+        # - **5xx**: Server error.
         self.code = code
-        # The error code.
+        # The error code. The following rules apply:
         # 
-        # - This parameter is not returned if the request is successful.
-        # 
-        # - This parameter is returned if the request fails. For more information, see the **Error codes** section.
+        # - If the request is successful, the **ErrorCode** field is not returned.
+        # - If the request fails, the **ErrorCode** field is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The returned message.
+        # The additional information. The following rules apply:
         # 
         # - If the request is successful, **success** is returned.
-        # 
-        # - If the request fails, an error message is returned.
+        # - If an exception occurs, a specific error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # - **true**: The request was successful.
-        # 
-        # - **false**: The request failed.
+        # - **true**: The deletion is successful.
+        # - **false**: The deletion fails.
         self.success = success
-        # The trace ID. You can use the trace ID to query the details of a request.
+        # The trace ID used to query invocation details.
         self.trace_id = trace_id
 
     def validate(self):

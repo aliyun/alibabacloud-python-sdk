@@ -16,13 +16,21 @@ class AppStackResource(DaraModel):
         stack_id: str = None,
         status: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The instance ID.
         self.instance_id = instance_id
+        # The product.
         self.product_code = product_code
+        # The resource ID.
         self.resource_id = resource_id
+        # The resource name.
         self.resource_name = resource_name
+        # The resource type.
         self.resource_type = resource_type
+        # The stack ID.
         self.stack_id = stack_id
+        # The resource status.
         self.status = status
 
     def validate(self):

@@ -11,7 +11,7 @@ class UpdateSecretShrinkRequest(DaraModel):
         secret_data_shrink: str = None,
         secret_id: int = None,
     ):
-        # The ID of the namespace where the Secret instance is located. If the instance is in the default namespace, specify only the region ID, such as `cn-beijing`.
+        # The ID of the namespace where the Secret instance resides. If the Secret instance resides in the default namespace, specify only the RegionId, such as `cn-beijing`.
         # 
         # This parameter is required.
         self.namespace_id = namespace_id
@@ -19,7 +19,7 @@ class UpdateSecretShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.secret_data_shrink = secret_data_shrink
-        # The ID of the Secret instance.
+        # The instance ID of the Secret.
         # 
         # This parameter is required.
         self.secret_id = secret_id

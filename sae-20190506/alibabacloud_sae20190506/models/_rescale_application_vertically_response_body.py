@@ -16,35 +16,30 @@ class RescaleApplicationVerticallyResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code.
+        # The HTTP status code or POP error code. Valid values:
         # 
-        # - **2xx**: The request was successful.
-        # 
-        # - **3xx**: The request was redirected.
-        # 
-        # - **4xx**: A request error occurred.
-        # 
-        # - **5xx**: A server error occurred.
+        # - **2xx**: Success.
+        # - **3xx**: Redirect.
+        # - **4xx**: Client error.
+        # - **5xx**: Server error.
         self.code = code
-        # The returned data.
+        # The returned result.
         self.data = data
-        # The error code.
+        # The error code. Valid values:
         # 
-        # - If the request is successful, this parameter is not returned.
-        # 
-        # - If the request fails, this parameter is returned. For more information, see the **Error codes** section of this topic.
+        # - If the request is successful, the **ErrorCode** parameter is not returned.
+        # - If the request fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The returned message.
+        # The additional information about the call result.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the instance type was successfully changed.
+        # Indicates whether the instance specifications were modified. Valid values:
         # 
-        # - **true**: The change was successful.
-        # 
-        # - **false**: The change failed.
+        # - **true**: The modification was successful.
+        # - **false**: The modification failed.
         self.success = success
-        # The trace ID of the request. You can use this ID to query the details of the request.
+        # The trace ID used to accurately query call information.
         self.trace_id = trace_id
 
     def validate(self):

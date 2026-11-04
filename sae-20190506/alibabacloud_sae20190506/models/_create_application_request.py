@@ -99,35 +99,35 @@ class CreateApplicationRequest(DaraModel):
         war_start_options: str = None,
         web_container: str = None,
     ):
-        # The ARN of the RAM role required for cross-account image pulling. For more information, see [Grant permissions across Alibaba Cloud accounts by using a RAM role](https://help.aliyun.com/document_detail/223585.html).
+        # The ARN of the RAM role required to pull images across accounts. For more information, see [Use RAM roles to authorize access across Alibaba Cloud accounts](https://help.aliyun.com/document_detail/223585.html).
         self.acr_assume_role_arn = acr_assume_role_arn
-        # The instance ID of the Container Registry Enterprise instance. This parameter is required when **ImageUrl** is set to a Container Registry Enterprise Edition image.
+        # The Container Registry ACR Enterprise instance ID. This parameter is required when **ImageUrl** is set to a Container Registry Enterprise instance image.
         self.acr_instance_id = acr_instance_id
-        # The AliyunAgent version.
+        # The Aliyun Agent version.
         self.agent_version = agent_version
-        # The application description. The description can be up to 1024 characters in length.
+        # The description of the application. The description can be up to 1,024 characters in length.
         self.app_description = app_description
-        # The application name. The name can contain digits, letters, and hyphens (-). The name must start with a letter and cannot end with a hyphen (-). The name can be up to 36 characters in length.
+        # The name of the application. The name can contain digits, letters, and hyphens (-). It must start with a letter and cannot end with a hyphen (-). The name can be up to 36 characters in length.
         # 
         # This parameter is required.
         self.app_name = app_name
-        # Set this parameter to micro_service to create a microservice application.
+        # The source of the application. A value of micro_service indicates a microservice application.
         self.app_source = app_source
-        # Specifies whether to associate an EIP. Valid values:
+        # Specifies whether to associate an elastic IP address (EIP). Valid values:
         # 
-        # - **true**: associate an EIP.
-        # - **false**: do not associate an EIP.
+        # - **true**: associates an EIP.
+        # - **false**: does not associate an EIP.
         self.associate_eip = associate_eip
         # Specifies whether to automatically configure the network environment. Valid values:
         # 
         # - **true**: SAE automatically configures the network environment when the application is created. The values of **NamespaceId**, **VpcId**, **vSwitchId**, and **SecurityGroupId** are ignored.
         # - **false**: SAE manually configures the network environment when the application is created.
         # 
-        # > If this parameter is set to **true**, any other **NamespaceId** value that is passed is ignored.
+        # > If you set this parameter to **true**, other **NamespaceId** values passed are ignored.
         self.auto_config = auto_config
-        # The base application ID.
+        # The ID of the base application.
         self.base_app_id = base_app_id
-        # The command that is used to start the image. The command must be an executable object in the container. Example:
+        # The startup command of the image. The command must be an executable object that exists in the container. Example:
         # 
         # ```
         # command:
@@ -136,28 +136,28 @@ class CreateApplicationRequest(DaraModel):
         #       - >
         #       - file0
         # ```
-        # In the preceding example, `Command="echo", CommandArgs=["abc", ">", "file0"]`.
+        # Based on the preceding example, Command="echo", CommandArgs=["abc", ">", "file0"].
         # 
         # 
-        # >Notice: This parameter is required when PackageType is set to DotnetZip.
+        # >Notice: This parameter is required when PackageType is set to DotnetZip.</notice>
         self.command = command
-        # The arguments of the image startup command. These are the arguments required by the startup command specified in **Command**. Format:
+        # The arguments for the image startup command, which are required by the startup command **Command**. The format is as follows:
         # 
         # `["a","b"]`
         # 
-        # In the preceding example, `CommandArgs=["abc", ">", "file0"]`, where `["abc", ">", "file0"]` must be converted to the String type. The internal format is a JSON array. If this parameter is not required, leave it empty.
-        # >Notice: This parameter is required when PackageType is set to DotnetZip.
+        # In the preceding example, `CommandArgs=["abc", ">", "file0"]`, where `["abc", ">", "file0"]` must be converted to a string in JSON array format. If no arguments are required, leave this parameter empty.
+        # <notice>This parameter is required when PackageType is set to DotnetZip.</notice>
         self.command_args = command_args
-        # The **ConfigMap** mount description. Use a ConfigMap created on the namespace configuration items page to inject configuration information into the container. Parameter description:
+        # The mount description of the **ConfigMap**. Uses the configuration item created on the configuration item page of the namespace to inject configuration information into the container. Parameter description:
         # 
-        # - **configMapId**: the ConfigMap instance ID. You can obtain the ID by invoking the [ListNamespacedConfigMaps](https://help.aliyun.com/document_detail/176917.html) operation.
-        # - **key**: the key.
+        # - **configMapId**: instance ID of the ConfigMap instance. You can invoke the [ListNamespacedConfigMaps](https://help.aliyun.com/document_detail/176917.html) operation to obtain the instance ID.
+        # - **key**: the key value.
         # 
-        # > You can mount all keys by passing the `sae-sys-configmap-all` parameter.
+        # > You can mount all keys by passing the sae-sys-configmap-all parameter.
         # 
         # - **mountPath**: the mount path.
         self.config_map_mount_desc = config_map_mount_desc
-        # The CPU specifications required for each instance, in millicores. This parameter cannot be set to 0. Only the following defined specifications are supported:
+        # The number of CPU cores required for each instance. Unit: millicore. The value cannot be 0. Only the following defined specifications are supported:
         # 
         # - **500**
         # - **1000**
@@ -172,19 +172,19 @@ class CreateApplicationRequest(DaraModel):
         # - **hostName**: the domain name or hostname.
         # - **ip**: the IP address.
         self.custom_host_alias = custom_host_alias
-        # The custom image type. Set this parameter to an empty string if the image is not a custom image:
+        # The custom image type. If the image is not a custom image, set this parameter to an empty string:
         # 
-        # - internet: public image
-        # - intranet: private image
+        # - internet: public network image.
+        # - intranet: private network image.
         self.custom_image_network_type = custom_image_network_type
-        # Specifies whether to immediately deploy the application. Valid values:
+        # Specifies whether to deploy the application immediately. Valid values:
         # 
-        # - **true**: default value. The application is deployed immediately.
-        # - **false**: the application is deployed later.
+        # - **true**: deploys the application immediately. This is the default value.
+        # - **false**: deploys the application later.
         self.deploy = deploy
         # The disk storage size, in GB.
         self.disk_size = disk_size
-        # The version of the .NET framework:
+        # The version number of the .NET framework:
         # 
         # - .NET 3.1
         # - .NET 5.0
@@ -192,68 +192,69 @@ class CreateApplicationRequest(DaraModel):
         # - .NET 7.0
         # - .NET 8.0
         self.dotnet = dotnet
-        # The version of the application runtime environment in the HSF framework, such as the Ali-Tomcat container.
+        # The version of the application runtime environment in the High-Speed Service Framework (HSF), such as the Ali-Tomcat container.
         self.edas_container_version = edas_container_version
         # The shared ephemeral storage configuration.
         self.empty_dir_desc = empty_dir_desc
         # Specifies whether to enable the CPU Burst feature:
         # 
-        # - true: Enabled.
-        # - false: Disabled.
+        # - true: enables the feature.
+        # - false: disables the feature.
         self.enable_cpu_burst = enable_cpu_burst
         # Specifies whether to enable application monitoring for non-Java applications based on eBPF technology. Valid values:
-        # - **true**: enabled.
-        # - **false**: disabled. This is the default value.
+        # - **true**: enables the feature.
+        # - **false**: disables the feature. This is the default value.
         self.enable_ebpf = enable_ebpf
         # Specifies whether to reuse the namespace agent version configuration.
         self.enable_namespace_agent_version = enable_namespace_agent_version
-        # Specifies whether to reuse the namespace SLS log configuration.
+        # Specifies whether to reuse the namespace Simple Log Service (SLS) log configuration.
         self.enable_namespace_sls_config = enable_namespace_sls_config
-        # Specifies whether to enable the new ARMS feature:
+        # Specifies whether to enable the new Application Real-Time Monitoring Service (ARMS) features:
         # 
-        # - true: Enabled.
-        # - false: Disabled.
+        # - true: enables the features.
+        # - false: disables the features.
         self.enable_new_arms = enable_new_arms
         # Specifies whether to enable Prometheus custom metric collection.
         self.enable_prometheus = enable_prometheus
         # Specifies whether to enable sidecar resource isolation:
         # 
-        # - true: Isolated.
-        # - false: Not isolated.
+        # - true: enables isolation.
+        # - false: disables isolation.
         self.enable_sidecar_resource_isolated = enable_sidecar_resource_isolated
-        # The container environment variable parameters. You can customize environment variables or reference a ConfigMap. To reference a ConfigMap, create a ConfigMap instance first. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). Valid values:
+        # The environment variables of the container. You can customize environment variables or reference ConfigMaps. To reference a ConfigMap, you must create a ConfigMap instance first. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). Valid values:
         # - Custom configuration
         #     - **name**: the name of the environment variable.
-        #     - **value**: the value of the environment variable. This takes priority over valueFrom.
+        #     - **value**: the value of the environment variable. The priority of this parameter is higher than that of valueFrom.
         # - Reference a ConfigMap (valueFrom)
-        #     - **name**: the name of the environment variable. You can reference a single key or all keys. To reference all keys, enter `sae-sys-configmap-all-<ConfigMap name>`, such as `sae-sys-configmap-all-test1`.
-        #     - **valueFrom**: the environment variable reference. Set the value to `configMapRef`.
-        #         - **configMapId**: the ConfigMap ID.
-        #         - **key**: the key. If you reference all keys, do not set this field.
+        #     - **name**: the name of the environment variable. You can reference a single key or all keys. To reference all keys, enter sae-sys-configmap-all-<ConfigMap name>, for example, sae-sys-configmap-all-test1.
+        #     - **valueFrom**: the reference of the environment variable. Set the value to configMapRef.
+        #         - **configMapId**: the ID of the ConfigMap.
+        #         - **key**: the key. If you reference all key-value pairs, do not set this field.
         self.envs = envs
+        # The GPU configuration.
         self.gpu_config = gpu_config
-        # The K8s Headless Service-based service registration and discovery.
-        # - serviceName: the service name.
-        # - namespaceId: the namespace ID.
+        # The Kubernetes headless service registration and discovery configuration.
+        # - serviceName: The service name.
+        # - namespaceId: The namespace ID.
         self.headless_pvtz_discovery_svc = headless_pvtz_discovery_svc
-        # The Nginx version.
+        # The NGINX version. Valid values:
         # - nginx 1.20
         # - nginx 1.22
         # - nginx 1.24
         # - nginx 1.26
         # - nginx 1.28
         self.html = html
-        # The corresponding secret ID.
+        # The ID of the corresponding Secret.
         self.image_pull_secrets = image_pull_secrets
-        # The image address. This parameter is required when **Package Type** is set to **Image**.
+        # The URL of the image. This parameter is required when **PackageType** is set to **Image**.
         self.image_url = image_url
         # The init container configuration.
         self.init_containers_config = init_containers_config
         # Specifies whether the application is stateful.
         self.is_stateful = is_stateful
-        # The arguments for starting the JAR package application. The default startup command for the application: `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`
+        # The startup arguments for the JAR package. Default startup command: `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`
         self.jar_start_args = jar_start_args
-        # The options for starting the JAR package application. The default startup command for the application: `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`
+        # The startup options for the JAR package. Default startup command: `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`
         self.jar_start_options = jar_start_options
         # The JDK version on which the deployment package depends. Valid values:
         # 
@@ -264,118 +265,111 @@ class CreateApplicationRequest(DaraModel):
         # - **openjdk-8u191-jdk-alpine3.9**
         # - **openjdk-7u201-jdk-alpine3.9**
         # 
-        # This parameter is not supported when **Package Type** is set to **Image**.
+        # This parameter is not supported when **PackageType** is set to **Image**.
         self.jdk = jdk
-        # The summary of configurations for log collection to Kafka. Valid values:
+        # The summary configuration for collecting logs to Kafka. Valid values:
         # 
         # - **kafkaEndpoint**: the service registration address of the Kafka API.
         # - **kafkaInstanceId**: the Kafka instance ID.
-        # - **kafkaConfigs**: the summary of configurations for one or more log entries. For more information about the valid values, see the **kafkaConfigs** request parameter in this topic.
+        # - **kafkaConfigs**: the summary configuration for one or more logs. For value description, see the **kafkaConfigs** request parameter in this topic.
         self.kafka_configs = kafka_configs
+        # The application labels. Both keys and values are strings.
         self.labels = labels
-        # The container health check. Containers that fail the health check are shutdown and recovered. The following methods are supported:
+        # The liveness probe of the container. A container that failed the health check undergoes shutdown and recovers. The following methods are supported:
         # 
-        # - **exec**: for example, `{"exec":{"command":["sh","-c","cat/home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds":2}`
-        # - **httpGet**: for example, `{"httpGet":{"path":"/","port":18091,"scheme":"HTTP","isContainKeyWord":true,"keyWord":"SAE"},"initialDelaySeconds":11,"periodSeconds":10,"timeoutSeconds":1}`
-        # - **tcpSocket**: for example, `{"tcpSocket":{"port":18091},"initialDelaySeconds":11,"periodSeconds":10,"timeoutSeconds":1}`
+        # - **exec**: for example, {"exec":{"command":["sh","-c","cat/home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds":2}
+        # - **httpGet**: for example, {"httpGet":{"path":"/","port":18091,"scheme":"HTTP","isContainKeyWord":true,"keyWord":"SAE"},"initialDelaySeconds":11,"periodSeconds":10,"timeoutSeconds":1}
+        # - **tcpSocket**: for example, {"tcpSocket":{"port":18091},"initialDelaySeconds":11,"periodSeconds":10,"timeoutSeconds":1}
         # 
-        # > You can use only one method for health checks.
+        # > You can select only one method for the health check.
         # 
         # Parameter description:
         # 
-        # - **exec.command**: the health check command.
+        # - **exec.command**: Settings for the health check command.
         # - **httpGet.path**: the access path.
         # - **httpGet.scheme**: **HTTP** or **HTTPS**.
-        # - **httpGet.isContainKeyWord**: **true** indicates that the keyword is included. **false** indicates that the keyword is not included. If this field is missing, the advanced feature is not used.
-        # - **httpGet.keyWord**: the custom keyword. The **isContainKeyWord** field must be present when this field is used.
+        # - **httpGet.isContainKeyWord**: **true** indicates that the keyword is included, and **false** indicates that the keyword is not included. If this field is missing, the advanced feature is not used.
+        # - **httpGet.keyWord**: the custom keyword. The **isContainKeyWord** field is required when this field is used.
         # - **tcpSocket.port**: the port for TCP connection detection.
-        # - **initialDelaySeconds**: the health check delay detection time. Default value: 10. Unit: seconds.
-        # - **periodSeconds**: the health check period. Default value: 30. Unit: seconds.
-        # - **timeoutSeconds**: the health check timeout period. Default value: 1. Unit: seconds. If this parameter is set to 0 or is not set, the default timeout period is 1 second.
+        # - **initialDelaySeconds**: Settings for the delay before the health check starts. Default value: 10. Unit: seconds.
+        # - **periodSeconds**: Settings for the health check epoch. Default value: 30. Unit: seconds.
+        # - **timeoutSeconds**: Settings for the timeout period of the health check. Default value: 1. Unit: seconds. If this parameter is set to 0 or not set, the default timeout period is 1 second.
         self.liveness = liveness
+        # LokiConfigs
         self.loki_configs = loki_configs
-        # The memory required for each instance, in MB. This parameter cannot be set to 0. The memory has a one-to-one mapping with CPU. Only the following defined specifications are supported:
-        # - **1024**: corresponds to 500 and 1000 millicores of CPU.
-        # - **2048**: corresponds to 500, 1000, and 2000 millicores of CPU.
-        # - **4096**: corresponds to 1000, 2000, and 4000 millicores of CPU.
-        # - **8192**: corresponds to 2000, 4000, and 8000 millicores of CPU.
-        # - **12288**: corresponds to 12000 millicores of CPU.
-        # - **16384**: corresponds to 4000, 8000, and 16000 millicores of CPU.
-        # - **24576**: corresponds to 12000 millicores of CPU.
-        # - **32768**: corresponds to 16000 millicores of CPU.
-        # - **65536**: corresponds to 8000, 16000, and 32000 millicores of CPU.
-        # - **131072**: corresponds to 32000 millicores of CPU.
+        # The memory size required for each instance. Unit: MB. The value cannot be 0. The memory size has a one-to-one correspondence with the number of CPU cores. Only the following defined specifications are supported:
+        # - **1024**: corresponds to 500 and 1,000 millicores.
+        # - **2048**: corresponds to 500, 1,000, and 2,000 millicores.
+        # - **4096**: corresponds to 1,000, 2,000, and 4,000 millicores.
+        # - **8192**: corresponds to 2,000, 4,000, and 8,000 millicores.
+        # - **12288**: corresponds to 12,000 millicores.
+        # - **16384**: corresponds to 4,000, 8,000, and 16,000 millicores.
+        # - **24576**: corresponds to 12,000 millicores.
+        # - **32768**: corresponds to 16,000 millicores.
+        # - **65536**: corresponds to 8,000, 16,000, and 32,000 millicores.
+        # - **131072**: corresponds to 32,000 millicores.
         self.memory = memory
-        # Specifies the Nacos registry. Valid values:
-        # - **0**: SAE built-in Nacos.
-        # - **1**: self-managed Nacos.
-        # - **2**: MSE commercial edition Nacos.
+        # The Nacos registry. Valid values:
+        # - **0**: the built-in Nacos of SAE.
+        # - **1**: a self-managed Nacos.
+        # - **2**: Microservices Engine (MSE) Nacos.
         self.micro_registration = micro_registration
-        # The registry configuration.
+        # The configuration of the registry.
         self.micro_registration_config = micro_registration_config
-        # Configures the microservice governance feature.
-        # 
-        # - Specifies whether to enable microservice governance (enable):
-        # 
-        #    - true: Enabled.
-        # 
+        # Configures microservice governance features.
+        # - enable: Specifies whether to enable microservice governance. Valid values:
+        #   - true: Enabled.
         #   - false: Disabled.
-        # 
-        # - Configures lossless online/offline (mseLosslessRule):
-        # 
-        #   - delayTime: the delay time.
-        # 
-        #   - enable: specifies whether to enable the lossless online feature. true indicates enabled. false indicates disabled.
-        # 
-        #   - notice: specifies whether to enable the notification feature. true indicates enabled. false indicates disabled.
-        # 
-        #   - warmupTime: the warm-up duration for traffic ramping, in seconds.
+        # - mseLosslessRule: Configures lossless online and offline rules.
+        #   - delayTime: The delay time.
+        #   - enable: Specifies whether to enable the lossless online feature. Valid values: true (enabled) and false (disabled).
+        #   - notice: Specifies whether to enable the notification feature. Valid values: true (enabled) and false (disabled).
+        #   - warmupTime: The warm-up duration for low traffic, in seconds.
         self.microservice_engine_config = microservice_engine_config
-        # We recommend that you do not set this parameter. Set **NasConfigs** instead. The NAS mount description. If the configuration does not change during deployment, you do not need to set this parameter (that is, the **MountDesc** field does not need to be included in the request). To clear the NAS configuration, set the value of this field to an empty string (that is, set the value of the **MountDesc** field to "" in the request).
+        # Do not configure this field. Configure **NasConfigs** instead. The mount description of the NAS file system. If the configuration remains unchanged during deployment, you do not need to set this parameter. That is, you do not need to include the **MountDesc** field in the request. If you need to clear the NAS configuration, set the value of this field to an empty string in the request. That is, set the **MountDesc** field to "".
         self.mount_desc = mount_desc
-        # We recommend that you do not set this parameter. Set **NasConfigs** instead. The mount target of the NAS file system in the VPC of the application. If the configuration does not change during deployment, you do not need to set this parameter (that is, the **MountHost** field does not need to be included in the request). To clear the NAS configuration, set the value of this field to an empty string (that is, set the value of the **MountHost** field to "" in the request).
+        # Do not configure this field. Configure **NasConfigs** instead. The mount target of the NAS file system in the VPC of the application. If the configuration remains unchanged during deployment, you do not need to set this parameter. That is, you do not need to include the **MountHost** field in the request. If you need to clear the NAS configuration, set the value of this field to an empty string in the request. That is, set the **MountHost** field to "".
         self.mount_host = mount_host
-        # The SAE namespace ID. Only namespaces whose names contain lowercase letters and hyphens (-) are supported. The name must start with a letter.
-        # You can obtain namespaces by calling the [DescribeNamespaceList](https://help.aliyun.com/document_detail/126547.html) operation.
+        # The ID of the Serverless App Engine (SAE) namespace. Only namespaces whose names contain lowercase letters and hyphens (-) are supported. The name must start with a letter.
+        # You can obtain the namespace by calling the [DescribeNamespaceList](https://help.aliyun.com/document_detail/126547.html) operation.
         self.namespace_id = namespace_id
-        # The NAS mount configuration. Valid values:
+        # The configuration for mounting the NAS file system. Valid values:
         # 
-        # - **mountPath**: the container mount path.
-        # - **readOnly**: set to **false** to grant read and write permission.
-        # - **nasId**: the NAS ID.
-        # - **mountDomain**: the container mount target address. For more information, see [DescribeMountTargets](https://help.aliyun.com/document_detail/62626.html).
-        # - **nasPath**: the NAS relative file directory.
+        # - **mountPath**: the mount path of the container.
+        # - **readOnly**: A value of **false** indicates read and write permissions.
+        # - **nasId**: the ID of the NAS file system.
+        # - **mountDomain**: the mount target address of the container. For more information, see [DescribeMountTargets](https://help.aliyun.com/document_detail/62626.html).
+        # - **nasPath**: the relative file directory of the NAS file system.
         self.nas_configs = nas_configs
-        # We recommend that you do not set this parameter. Set **NasConfigs** instead. The ID of the mounted NAS file system. The NAS file system must be in the same region as the cluster. The NAS file system must have available mount target creation quota, or its mount target must already be on a vSwitch in the VPC. If this parameter is left empty and the **mountDescs** field exists, a NAS file system is automatically purchased and mounted to a vSwitch in the VPC.
+        # Do not configure this field. Configure **NasConfigs** instead. The ID of the mounted Apsara File Storage NAS file system. The NAS file system must reside in the same region as the cluster. It must have an available quota for creating mount targets, or its mount targets must already exist on a vSwitch in the VPC. If you do not specify this parameter and the **mountDescs** field exists, a NAS file system is automatically purchased and mounted to a vSwitch in the VPC by default.
         # 
-        # If the configuration does not change during deployment, you do not need to set this parameter (that is, the **NASId** field does not need to be included in the request). To clear the NAS configuration, set the value of this field to an empty string (that is, set the value of the **NASId** field to "" in the request).
+        # If the configuration remains unchanged during deployment, you do not need to set this parameter. That is, you do not need to include the **NASId** field in the request. If you need to clear the NAS configuration, set the value of this field to an empty string in the request. That is, set the **NASId** field to "".
         self.nas_id = nas_id
-        # The application version:
-        # 
-        # - lite: Lite Edition
-        # - std: Standard Edition
-        # - pro: Professional Edition
+        # The application version. Valid values:
+        # - lite: Lite Edition.
+        # - std: Standard Edition.
+        # - pro: Professional Edition.
         self.new_sae_version = new_sae_version
-        # Specifies the RAM role for identity authentication.
-        # > Create an OIDC identity provider and an identity provider role in the same region in advance. For more information, see <props="china">[CreateOIDCProvider](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-createoidcprovider) and [CreateSAMLProvider](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-createsamlprovider)<props="intl">[CreateOIDCProvider](https://www.alibabacloud.com/help/zh/ram/developer-reference/api-ims-2019-08-15-createoidcprovider) and [CreateSAMLProvider](https://www.alibabacloud.com/help/zh/ram/developer-reference/api-ims-2019-08-15-createsamlprovider).
+        # The RAM role for the identity authentication service.
+        # > You must create an OIDC identity provider and an identity provider role in the same region in advance. For more information, see <props="china">[Create an OIDC identity provider](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-createoidcprovider) and [Create a role-based SSO identity provider](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-createsamlprovider)<props="intl">[Create an OIDC identity provider](https://www.alibabacloud.com/help/zh/ram/developer-reference/api-ims-2019-08-15-createoidcprovider) and [Create a role-based SSO identity provider](https://www.alibabacloud.com/help/zh/ram/developer-reference/api-ims-2019-08-15-createsamlprovider).
         self.oidc_role_name = oidc_role_name
-        # The AccessKey ID for OSS read and write operations.
+        # The AccessKey ID used to read and write OSS data.
         self.oss_ak_id = oss_ak_id
-        # The AccessKey Secret for OSS read and write operations.
+        # The AccessKey Secret used to read and write OSS data.
         self.oss_ak_secret = oss_ak_secret
         # The OSS mount description. Parameter description:
         # 
-        # - **bucketName**: the bucket name.
+        # - **bucketName**: the name of the bucket.
         # - **bucketPath**: the folder or object that you created in OSS. If the OSS mount folder does not exist, an exception is triggered.
-        # - **mountPath**: the container path in SAE. If the path already exists, it is an overwrite relationship. If the path does not exist, it is created.
-        # - **readOnly**: specifies whether the container path has read-only permission on the mounted folder resources. Valid values:
-        #     - **true**: read-only permission.
-        #     - **false**: read and write permission.
+        # - **mountPath**: the container path in SAE. If the path already exists, it will overwrite the existing content. If the path does not exist, it is created.
+        # - **readOnly**: specifies whether the container path has read permissions on the mounted folder resources. Valid values:
+        #     - **true**: read-only permissions.
+        #     - **false**: read and write permissions.
         self.oss_mount_descs = oss_mount_descs
-        # The type of the application deployment package. Valid values:
+        # The type of the application package. Valid values:
         # 
-        # - If you use Java for deployment, **FatJar**, **War**, and **Image** are supported.
-        # - If you use PHP for deployment, the following types are supported:
+        # - When you deploy the application by using Java, **FatJar**, **War**, and **Image** are supported.
+        # - When you deploy the application by using PHP, the following types are supported:
         #     - **PhpZip**
         #     - **IMAGE_PHP_5_4**
         #     - **IMAGE_PHP_5_4_ALPINE**
@@ -391,32 +385,32 @@ class CreateApplicationRequest(DaraModel):
         #     - **IMAGE_PHP_7_2_ALPINE**
         #     - **IMAGE_PHP_7_3**
         #     - **IMAGE_PHP_7_3_ALPINE**
-        # - If you use Python for deployment, **PythonZip** and **Image** are supported.
+        # - When you deploy the application by using Python, **PythonZip** and **Image** are supported.
         # 
-        # - If you use .NET Core for deployment, **DotnetZip** and **Image** are supported.
+        # - When you deploy the application by using .NET Core, **DotnetZip** and **Image** are supported.
         #   > 
-        #   > When DotnetZip is selected, Dotnet specifies the version of the .NET Core runtime. .NET 3.1, .NET 5.0, .NET 6.0, .NET 7.0, and .NET 8.0 are supported. The Dotnet, Command, and CommandArgs parameters are required.
+        #   > If you select DotnetZip, Dotnet specifies the version number of the .NET Core environment. .NET 3.1, .NET 5.0, .NET 6.0, .NET 7.0, and .NET 8.0 are supported. In this case, the Dotnet, Command, and CommandArgs parameters are required.
         # 
         # This parameter is required.
         self.package_type = package_type
-        # The address of the deployment package. This parameter is required when **Package Type** is set to **FatJar**, **War**, or **PythonZip**.
+        # The URL of the deployment package. This parameter is required when **PackageType** is set to **FatJar**, **War**, or **PythonZip**.
         self.package_url = package_url
-        # The version of the deployment package. This parameter is required when **Package Type** is set to **FatJar**, **War**, or **PythonZip**.
+        # The version number of the deployment package. This parameter is required when **PackageType** is set to **FatJar**, **War**, or **PythonZip**.
         self.package_version = package_version
-        # The PHP version on which the deployment package depends. Not supported for images.
+        # The PHP version on which the PHP deployment package depends. Images are not supported.
         self.php = php
-        # The mount path for PHP application monitoring. Make sure that the PHP server loads the configuration file from this path.
-        # You do not need to manage the configuration content. SAE automatically renders the correct configuration file.
+        # The mount path for PHP application monitoring. You must ensure that the PHP server loads the configuration file in this path.
+        # You do not need to pay attention to the configuration content. SAE automatically renders the correct configuration file.
         self.php_arms_config_location = php_arms_config_location
         # The content of the PHP configuration file.
         self.php_config = php_config
-        # The mount path for the PHP application startup configuration. Make sure that the PHP server uses this configuration file to start.
+        # The mount path for the PHP application startup configuration. You must ensure that the PHP server uses this configuration file to start.
         self.php_config_location = php_config_location
-        # The script that is run after the container is started. A script is triggered and run immediately after the container is created. Format: `{"exec":{"command":["cat","/etc/group"]}}`
+        # The script to execute after the container starts. A script is triggered and executed immediately after the container is created. Format: {"exec":{"command":["cat","/etc/group"]}}
         self.post_start = post_start
-        # The script that is run before the container is stopped. A script is triggered and run before the container is deleted. Format: `{"exec":{"command":["cat","/etc/group"]}}`
+        # The script to execute before the container stops. A script is triggered and executed before the container is deleted. Format: {"exec":{"command":["cat","/etc/group"]}}
         self.pre_stop = pre_stop
-        # The programming language of the technology stack used to create the application. Valid values:
+        # The programming language used to create the application. Valid values:
         # 
         # - **java**: Java.
         # - **php**: PHP.
@@ -424,100 +418,100 @@ class CreateApplicationRequest(DaraModel):
         # - **dotnet**: .NET Core.
         # - **other**: multiple languages, such as C++, Go, and Node.js.
         self.programming_language = programming_language
-        # Enables K8s Service-based service registration and discovery. Valid values:
+        # Enables Kubernetes Service registration and discovery. Valid values:
         # 
-        # - **serviceName**: the service name. Format: `custom name-namespace ID`. The suffix `-namespace ID` cannot be customized and must be set based on the namespace of the application. For example, if you select the default namespace in the China (Beijing) region, the suffix is `-cn-beijing-default`.
-        # - **namespaceId**: the namespace ID.
-        # - **portProtocols**: the port and protocol. Valid port values: [1,65535]. Valid protocol values: **TCP** and **UDP**.
-        # - **portAndProtocol**: the port and protocol. Valid port values: [1,65535]. Valid protocol values: **TCP** and **UDP**. **portProtocols is recommended. If portProtocols is set, only portProtocols takes effect**.
-        # - **enable**: enables K8s Service-based service registration and discovery.
+        # - **serviceName**: the service name. The format is custom-namespace ID. The suffix -namespace ID cannot be customized and must be filled in based on the namespace where the application resides. For example, if you select the default namespace in the China (Beijing) region, the value is -cn-beijing-default.
+        # - **namespaceId**: the ID of the namespace.
+        # - **portProtocols**: the port and protocol. The port value ranges from 1 to 65535. The protocol supports **TCP** and **UDP**.
+        # - **portAndProtocol**: the port and protocol. The port value ranges from 1 to 65535. The protocol supports **TCP** and **UDP**. **We recommend that you use portProtocols. If portProtocols Settings are configured, only portProtocols takes effect**.
+        # - **enable**: enables Kubernetes Service registration and discovery.
         self.pvtz_discovery_svc = pvtz_discovery_svc
         # The Python environment. **PYTHON 3.9.15** is supported.
         self.python = python
-        # The custom installation module dependencies. By default, the dependencies defined in the requirements.txt file in the root folder are installed. If the file is not configured or you need custom packages, specify the dependencies to install.
+        # The custom installation module dependencies. By default, the dependencies defined in the requirements.txt file in the root folder are installed. If no dependencies are configured or custom software packages are used, you can specify the dependencies to install.
         self.python_modules = python_modules
+        # The application runtime security protection (RASP) configuration.
         self.rasp_config = rasp_config
-        # The application startup status check. Containers that fail multiple health checks are shut down and restarted. Containers that do not pass the health check do not receive SLB traffic. The **exec**, **httpGet**, and **tcpSocket** methods are supported. For specific examples, see the **Liveness** parameter.
+        # The readiness probe of the application. A container that fails multiple health checks is stopped and restarted. Traffic from Server Load Balancer (SLB) is not routed to containers that fail the health check. The **exec**, **httpGet**, and **tcpSocket** methods are supported. For specific examples, see the **Liveness** parameter.
         # 
-        # > You can use only one method for health checks.
+        # > You can select only one method for the health check.
         self.readiness = readiness
         # The initial number of instances.
         # 
         # This parameter is required.
         self.replicas = replicas
-        # The resource type. Valid values: NULL (default), default, and haiguang (Hygon server).
+        # The resource type. Valid values: NULL (default), default (default), and haiguang (Hygon servers).
         self.resource_type = resource_type
         # The SAE version. Valid values:
         # 
         # - **v1**
         # - **v2**
         self.sae_version = sae_version
-        # The **Secret** mount description. Use a secret created on the namespace secrets page to inject sensitive information into the container. Parameter description:
+        # The mount description of the **Secret**. Uses the Secret created on the Secret page of the namespace to inject confidential information into the container. Parameter description:
         # 
-        # - **secretId**: the secret instance ID. You can obtain the ID by calling the ListSecrets operation.
-        # - **key**: the key.
+        # - **secretId**: instance ID of the Secret instance. You can obtain the instance ID by invoking the ListSecrets operation.
+        # - **key**: the key value.
         # 
-        # > You can mount all keys by passing the `sae-sys-secret-all` parameter.
+        # > You can mount all keys by passing the sae-sys-secret-all parameter.
         # 
         # - **mountPath**: the mount path.
         self.secret_mount_desc = secret_mount_desc
-        # The security group ID.
+        # The ID of the security group.
         self.security_group_id = security_group_id
         # The canary release tags configured for the application.
         self.service_tags = service_tags
-        # The sidecar container configuration.
+        # The container configuration.
         self.sidecar_containers_config = sidecar_containers_config
-        # The configurations for log collection to Simple Log Service.
+        # The configuration for collecting logs to Simple Log Service (SLS).
         # 
-        # - Use SLS resources that are automatically created by SAE: `[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]`.
-        # - Use custom SLS resources: `[{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}]`.
+        # - Use SLS resources from automatic creation by SAE: [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}].
+        # - Use custom SLS resources: [{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}].
         # 
         # Parameter description:
         # 
-        # - **projectName**: the Project name in Simple Log Service.  
+        # - **projectName**: the name of the SLS project.  
         # - **logDir**: the log path.
-        # - **logType**: the log type. **stdout** indicates container standard output logs. You can configure only one entry for this type. If this parameter is not set, file logs are collected.
-        # - **logstoreName**: the Logstore name in Simple Log Service.
-        # - **logtailName**: the Logtail name in Simple Log Service. If this parameter is not specified, a new Logtail is created.
+        # - **logType**: the log type. **stdout** indicates container standard output logs. Only one stdout log Settings can be configured. If Settings are not specified, file logs are collected.
+        # - **logstoreName**: the name of the SLS Logstore.
+        # - **logtailName**: the name of the SLS Logtail. If this parameter is not specified, a new Logtail is created.
         # 
-        # If the SLS collection configuration does not change during multiple deployments, you do not need to set this parameter (that is, the **SlsConfigs** field does not need to be included in the request). If you no longer need the SLS collection feature, set the value of this field to an empty string (that is, set the value of the **SlsConfigs** field to "" in the request).
+        # If the SLS collection configuration remains unchanged during multiple deployments, you do not need to set this parameter. That is, you do not need to include the **SlsConfigs** field in the request. If you no longer need the SLS collection feature, you must set the value of this field to an empty string in the request. That is, set the **SlsConfigs** field to "".
         # 
-        # > Projects that are automatically created with the application are deleted when the application is deleted. Therefore, do not select a project that is automatically created by SAE when you select an existing project.
+        # > Projects from automatic creation with the application are deleted when the application is deleted. Therefore, when selecting an existing project, you cannot select a project from automatic creation by SAE.
         self.sls_configs = sls_configs
         # sls log tags
         self.sls_log_env_tags = sls_log_env_tags
-        # Enables the application startup probe.
-        # 
-        # - Check succeeded: indicates that the application started successfully. If you configured Liveness and Readiness checks, they are performed after the application starts successfully.
-        # - Check failed: indicates that the application failed to start. An exception is reported and the application is automatically restarted.
+        # Enables application startup probes.
+        # - Success: Indicates that the application is started. If you configure liveness and readiness probes, the liveness and readiness probes are executed after the application is started.
+        # - Failure: Indicates that the application fails to start. An exception is reported and the application is automatically restarted.
         # > 
-        # > - The exec, httpGet, and tcpSocket methods are supported. For specific examples, see the Liveness parameter.
-        # > - You can use only one method for health checks.
+        # > - The exec, httpGet, and tcpSocket methods are supported. For specific examples, refer to the Liveness parameter.
+        # > - You can select only one method for health checks.
         self.startup_probe = startup_probe
         # The timeout period for graceful shutdown. Default value: 30. Unit: seconds. Valid values: 1 to 300.
         self.termination_grace_period_seconds = termination_grace_period_seconds
         # The time zone. Default value: **Asia/Shanghai**.
         self.timezone = timezone
-        # The Tomcat configuration. Set this parameter to "" or "{}" to delete the configuration:
+        # The Tomcat file configuration. Set the value to "" or "{}" to delete the configuration:
         # 
-        # - **port**: the port number. Valid values: 1024 to 65535. Ports less than 1024 require root permissions. Because the container is configured with admin permissions, specify a port greater than 1024. Default value: 8080.
-        # - **contextPath**: the access path. Default value: root directory "/".
-        # - **maxThreads**: the maximum number of connections in the connection pool. Default value: 400.
-        # - **uriEncoding**: the encoding format of Tomcat. Valid values: **UTF-8**, **ISO-8859-1**, **GBK**, and **GB2312**. Default value: **ISO-8859-1**.
+        # - **port**: the port range is 1024 to 65535. Ports smaller than 1024 require root permissions. Because the container is configured with admin permissions, specify a port greater than 1024. If this parameter is not configured, the default value is 8080.
+        # - **contextPath**: the access path. The default value is the root directory "/".
+        # - **maxThreads**: the maximum number of connections in the connection pool. The default value is 400.
+        # - **uriEncoding**: the encoding format of Tomcat. Valid values: **UTF-8**, **ISO-8859-1**, **GBK**, and **GB2312**. If this parameter is not set, the default value is **ISO-8859-1**.
         # - **useBodyEncodingForUri**: specifies whether to use **BodyEncoding for URL**. Default value: **true**.
         self.tomcat_config = tomcat_config
-        # The vSwitch where the elastic network interface controller (NIC) of the application instance resides. The vSwitch must be in the specified VPC. The vSwitch also has a binding relationship with the SAE namespace. If you leave this parameter empty, the vSwitch attached to the namespace is used by default.
+        # The ID of the vSwitch to which the elastic network interface controllers (NICs) of the application instance belong. The vSwitch must reside in the preceding VPC. The vSwitch is also attached to the SAE namespace. If you do not specify this parameter, the ID of the vSwitch attached to the namespace is used by default.
         self.v_switch_id = v_switch_id
-        # The VPC that corresponds to the SAE namespace. In SAE, a namespace can correspond to only one VPC, and the mapping cannot be modified. The binding relationship is established when the first SAE application is created in the namespace. Multiple namespaces can correspond to the same VPC. If you leave this parameter empty, the VPC bound to the namespace is used by default.
+        # The ID of the virtual private cloud (VPC) that corresponds to the SAE namespace. In SAE, a namespace can correspond to only one VPC, and the correspondence cannot be modified. The binding relationship is established when you create the first SAE application in the namespace. Multiple namespaces can correspond to one VPC. If you do not specify this parameter, the ID of the VPC bound to the namespace is used by default.
         self.vpc_id = vpc_id
-        # The startup command for deploying a WAR package application. The configuration procedure is the same as that for the startup command of an image deployment. For more information, see [Configure a startup command](https://help.aliyun.com/document_detail/96677.html).
+        # The startup command for the application deployed by using a WAR package. The procedure is the same as that for configuring the startup command for image deployment. For more information, see [Set a startup command](https://help.aliyun.com/document_detail/96677.html).
         self.war_start_options = war_start_options
-        # The version of Tomcat on which the WebContainer deployment package depends. Valid values:
+        # The Tomcat version on which the WebContainer deployment package depends. Valid values:
         # 
         # - **apache-tomcat-7.0.91**
         # - **apache-tomcat-8.5.42**
         # 
-        # This parameter is not supported when **Package Type** is set to **Image**.
+        # This parameter is not supported when **PackageType** is set to **Image**.
         self.web_container = web_container
 
     def validate(self):
@@ -1089,8 +1083,11 @@ class CreateApplicationRequestRaspConfig(DaraModel):
         rasp_app_key: str = None,
         rasp_app_name: str = None,
     ):
+        # Specifies whether the application runtime security protection (RASP) is enabled.
         self.enable_rasp = enable_rasp
+        # The RASP application key.
         self.rasp_app_key = rasp_app_key
+        # The RASP application name.
         self.rasp_app_name = rasp_app_name
 
     def validate(self):

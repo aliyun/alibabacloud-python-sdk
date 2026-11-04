@@ -18,39 +18,33 @@ class ListSecretsResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The API status code or POP error code. Valid values:
         # 
-        # - **2xx**: The request was successful.
-        # 
-        # - **3xx**: The request was redirected.
-        # 
-        # - **4xx**: A client error occurred.
-        # 
-        # - **5xx**: A server error occurred.
+        # - **2xx**: Success.
+        # - **3xx**: Redirect.
+        # - **4xx**: Client error.
+        # - **5xx**: Server error.
         self.code = code
-        # The response object.
+        # The returned result.
         self.data = data
-        # The error code.
+        # The error code. Valid values:
         # 
-        # - This parameter is not returned if the request is successful.
-        # 
-        # - This parameter is returned if the request fails. For more information, see the **Error codes** section.
+        # - Success: The **ErrorCode** field is not returned.
+        # - Failure: The **ErrorCode** field is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The returned message.
+        # The additional information. Valid values:
         # 
-        # - If the request is successful, **success** is returned.
-        # 
-        # - If the request fails, an error message is returned.
+        # - **success**: The request is successful.
+        # - Specific error code: The request failed.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the Secret instance list was successfully queried. Valid values:
         # 
-        # - **true**
-        # 
-        # - **false**
+        # - **true**: The query was successful.
+        # - **false**: The query failed.
         self.success = success
-        # The trace ID. You can use this ID to query the details of a call.
+        # The trace ID used to precisely query call information.
         self.trace_id = trace_id
 
     def validate(self):
@@ -116,7 +110,7 @@ class ListSecretsResponseBodyData(DaraModel):
         self,
         secrets: List[main_models.ListSecretsResponseBodyDataSecrets] = None,
     ):
-        # A list of Secret instances.
+        # The list of Secret instances.
         self.secrets = secrets
 
     def validate(self):
@@ -158,7 +152,7 @@ class ListSecretsResponseBodyDataSecrets(DaraModel):
         secret_type: str = None,
         update_time: int = None,
     ):
-        # The time when the Secret instance was created.
+        # The creation time.
         self.create_time = create_time
         # The namespace ID.
         self.namespace_id = namespace_id
@@ -166,13 +160,13 @@ class ListSecretsResponseBodyDataSecrets(DaraModel):
         self.relate_apps = relate_apps
         # The Secret instance ID.
         self.secret_id = secret_id
-        # The Secret instance name.
+        # The name of the Secret instance.
         self.secret_name = secret_name
-        # The type of the Secret instance. The only valid value is:
+        # The type of the Secret instance. Valid values:
         # 
-        # **kubernetes.io/dockerconfigjson**: a Secret that stores credentials for a container image registry and is used to authenticate image pulls during deployment.
+        # - **kubernetes.io/dockerconfigjson**: A secret that stores the username and password of an image repository. It is used for image pull authentication during deployment.
         self.secret_type = secret_type
-        # The time when the Secret instance was last updated.
+        # The update time.
         self.update_time = update_time
 
     def validate(self):

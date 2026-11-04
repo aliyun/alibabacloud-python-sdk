@@ -18,69 +18,49 @@ class DescribeConfigurationPriceRequest(DaraModel):
     ):
         # The BestEffort policy. Valid values:
         # 
-        # - besteffort: BestEffort
-        # 
-        # - try-besteffort: BestEffort preferred
-        # 
-        # - default: default
+        # - besteffort: BestEffort.
+        # - try-besteffort: BestEffort preferred.
+        # - default: Default.
         self.best_effort_type = best_effort_type
-        # The number of CPU cores required for each instance. Unit: millicores. This value cannot be 0. Only the following defined specifications are supported:
-        # 
+        # The required CPU for each instance, in millicores. The value cannot be 0. Only the following defined specifications are supported:
         # - **500**
-        # 
         # - **1000**
-        # 
         # - **2000**
-        # 
         # - **4000**
-        # 
         # - **8000**
-        # 
         # - **12000**
-        # 
         # - **16000**
-        # 
         # - **32000**
         # 
         # This parameter is required.
         self.cpu = cpu
+        # The number of A10 GPUs.
         self.gpu_a10 = gpu_a10
+        # The number of PPU 810E units.
         self.gpu_ppu_810e = gpu_ppu_810e
-        # The amount of memory required for each instance. Unit: MB. This value cannot be 0. The memory size must correspond to the CPU specification. Only the following defined specifications are supported:
-        # 
-        # - **1024**: Corresponds to 500 millicores and 1,000 millicores of CPU.
-        # 
-        # - **2048**: Corresponds to 500, 1,000, and 2,000 millicores of CPU.
-        # 
-        # - **4096**: Corresponds to 1,000, 2,000, and 4,000 millicores of CPU.
-        # 
-        # - **8192**: Corresponds to 2,000, 4,000, and 8,000 millicores of CPU.
-        # 
-        # - **12288**: Corresponds to 12,000 millicores of CPU.
-        # 
-        # - **16384**: Corresponds to 4,000, 8,000, and 16,000 millicores of CPU.
-        # 
-        # - **24576**: Corresponds to 12,000 millicores of CPU.
-        # 
-        # - **32768**: Corresponds to 16,000 millicores of CPU.
-        # 
-        # - **65536**: Corresponds to 8,000, 16,000, and 32,000 millicores of CPU.
-        # 
-        # - **131072**: Corresponds to 32,000 millicores of CPU.
+        # The required memory for each instance, in MB. The value cannot be 0. Memory has a one-to-one mapping with CPU. Only the following defined specifications are supported:
+        # - **1024**: Corresponds to 500 and 1000 millicores.
+        # - **2048**: Corresponds to 500, 1000, and 2000 millicores.
+        # - **4096**: Corresponds to 1000, 2000, and 4000 millicores.
+        # - **8192**: Corresponds to 2000, 4000, and 8000 millicores.
+        # - **12288**: Corresponds to 12000 millicores.
+        # - **16384**: Corresponds to 4000, 8000, and 16000 millicores.
+        # - **24576**: Corresponds to 12000 millicores.
+        # - **32768**: Corresponds to 16000 millicores.
+        # - **65536**: Corresponds to 8000, 16000, and 32000 millicores.
+        # - **131072**: Corresponds to 32000 millicores.
         # 
         # This parameter is required.
         self.memory = memory
-        # The application version. Valid values:
+        # The application edition. Valid values:
         # 
-        # - lite: Lightweight Edition
-        # 
-        # - std: Standard Edition
-        # 
-        # - pro: Professional Edition
+        # - lite: Lite Edition.
+        # - std: Standard Edition.
+        # - pro: Professional Edition.
         self.new_sae_version = new_sae_version
-        # The resource type. Valid values: NULL (default), default, and haiguang (Haiguang server).
+        # The resource type. Valid values: NULL (default), default (default), and haiguang (Hygon server).
         self.resource_type = resource_type
-        # The application scenario. Valid values:
+        # Common scenarios. Valid values:
         # 
         # - web
         # 

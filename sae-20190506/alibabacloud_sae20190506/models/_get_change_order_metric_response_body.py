@@ -16,31 +16,26 @@ class GetChangeOrderMetricResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The API status code or POP error code. Valid values:
         # 
-        # - **2xx**: The request was successful.
-        # 
-        # - **3xx**: The request was redirected.
-        # 
-        # - **4xx**: A client-side error occurred.
-        # 
-        # - **5xx**: A server-side error occurred.
+        # - **2xx**: Success.
+        # - **3xx**: Redirection.
+        # - **4xx**: Client error.
+        # - **5xx**: Server error.
         self.code = code
         # The list of application information.
         self.data = data
-        # The response message.
+        # The additional information. Valid values:
         # 
-        # - Returns **success** if the request is successful.
-        # 
-        # - Returns an error code if the request fails.
+        # - If the request is successful, **success** is returned.
+        # - If the request fails, a specific error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the service list was retrieved. Valid values:
         # 
-        # - **true**: The request was successful.
-        # 
-        # - **false**: The request failed.
+        # - **true**: The service list was retrieved.
+        # - **false**: The retrieval failed.
         self.success = success
 
     def validate(self):
@@ -111,13 +106,13 @@ class GetChangeOrderMetricResponseBodyData(DaraModel):
     ):
         # The application ID.
         self.app_id = app_id
-        # The average duration of a change order, in milliseconds.
+        # The average time consumed, in milliseconds.
         self.avg_time_cost_ms = avg_time_cost_ms
-        # The number of failed change orders.
+        # The number of abnormal change orders.
         self.error = error
         # The percentage of failed change orders.
         self.error_percent = error_percent
-        # The maximum duration, in milliseconds.
+        # The maximum time consumed, in milliseconds.
         self.max_time_cost_ms = max_time_cost_ms
         # The application name.
         self.name = name
@@ -125,7 +120,7 @@ class GetChangeOrderMetricResponseBodyData(DaraModel):
         self.optimize_suggestions = optimize_suggestions
         # The namespace ID.
         self.region_id = region_id
-        # The average task duration, in milliseconds.
+        # The average time consumed by the task, in milliseconds.
         self.task_time_cost_ms_avg = task_time_cost_ms_avg
         # The total number of change orders.
         self.total = total

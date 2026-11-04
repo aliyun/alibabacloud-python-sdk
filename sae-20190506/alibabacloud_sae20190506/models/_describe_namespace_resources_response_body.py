@@ -16,39 +16,33 @@ class DescribeNamespaceResourcesResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The API status code or POP error code. Valid values:
         # 
-        # - **2xx**: The request was successful.
-        # 
-        # - **3xx**: The request was redirected.
-        # 
-        # - **4xx**: The request was invalid.
-        # 
-        # - **5xx**: A server error occurred.
+        # - **2xx**: Success.
+        # - **3xx**: Redirect.
+        # - **4xx**: Request error.
+        # - **5xx**: Server error.
         self.code = code
-        # The response data.
+        # The response result.
         self.data = data
-        # The error code. This parameter is returned only if the request fails. For more information, see the **Error codes** section of this topic.
+        # The error code. Valid values:
         # 
-        # - A successful request does not return the **ErrorCode** field.
-        # 
-        # - A failed request returns the **ErrorCode** field. For more information, see the list of **error codes** in this topic.
+        # - Successful request: The **ErrorCode** field is not returned.
+        # - Failed request: The **ErrorCode** field is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The returned message. Valid values:
+        # The additional information. Valid values:
         # 
-        # - If the request is successful, **success** is returned.
-        # 
-        # - If the request fails, an error code is returned.
+        # - **success**: The request is normal.
+        # - Specific error code: The request is abnormal.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the namespace resources were queried successfully.
+        # Indicates whether the namespace resource information was queried successfully. Valid values:
         # 
         # - **true**: The query was successful.
-        # 
         # - **false**: The query failed.
         self.success = success
-        # The trace ID. You can use this ID to query the details of the call.
+        # The trace ID, which is used to accurately query call information.
         self.trace_id = trace_id
 
     def validate(self):
@@ -138,77 +132,60 @@ class DescribeNamespaceResourcesResponseBodyData(DaraModel):
         self.apm_java_agent_version = apm_java_agent_version
         # The number of applications.
         self.app_count = app_count
-        # The region of the namespace.
+        # The region to which the namespace belongs.
         self.belong_region = belong_region
-        # The description of the namespace.
+        # The namespace description.
         self.description = description
-        # The ID of the jump server application.
+        # The jump server application ID.
         self.jump_server_app_id = jump_server_app_id
         # The IP address of the jump server.
         self.jump_server_ip = jump_server_ip
-        # The release order ID.
+        # The change order ID.
         self.last_change_order_id = last_change_order_id
-        # Indicates whether a release order is running in the namespace. Valid values:
+        # Indicates whether a change order is running in the namespace. Valid values:
         # 
-        # - **true**: A release order is running.
-        # 
-        # - **false**: No release order is running.
+        # - **true**: A change order is running.
+        # - **false**: No change order is running.
         self.last_change_order_running = last_change_order_running
-        # The status of the last release order. Valid values:
-        # 
-        # - **READY**: The release order is ready.
-        # 
-        # - **RUNNING**: The release order is running.
-        # 
-        # - **SUCCESS**: The release order was successful.
-        # 
-        # - **FAIL**: The release order failed.
-        # 
-        # - **ABORT**: The release order was aborted.
-        # 
-        # - **WAIT_BATCH_CONFIRM**: The release order is waiting for manual batch confirmation.
-        # 
-        # - **AUTO_BATCH_WAIT**: The release order is in an automatic batch-wait state.
-        # 
-        # - **SYSTEM_FAIL**: A system error occurred.
-        # 
-        # - **WAIT_APPROVAL**: The release order is pending approval.
-        # 
-        # - **APPROVED**: The release order is approved and pending execution.
+        # The status of the latest change order. Valid values:
+        #   - **READY**: The latest change order is ready.
+        #   - **RUNNING**: The latest change order is running.
+        #   - **SUCCESS**: The latest change order is successful.
+        #   - **FAIL**: The latest change order failed.
+        #   - **ABORT**: The latest change order is aborted.
+        #   - **WAIT_BATCH_CONFIRM**: The latest change order is waiting for manual batch confirmation.
+        #   - **AUTO_BATCH_WAIT**: The latest change order is in the automatic batch waiting state.
+        #   - **SYSTEM_FAIL**: A system fault occurred.
+        #   - **WAIT_APPROVAL**: The latest change order is waiting for approval.
+        #   - **APPROVED**: The latest change order is approved and waiting to be executed.
         self.last_change_order_status = last_change_order_status
-        # The short-format namespace ID.
+        # The short namespace ID.
         self.name_space_short_id = name_space_short_id
         # The namespace ID.
         self.namespace_id = namespace_id
         # The namespace name.
         self.namespace_name = namespace_name
-        # Indicates whether the notification for the release order has expired. Valid values:
+        # Indicates whether the change order notification has expired. Valid values:
         # 
-        # - **true**: The notification has expired.
-        # 
-        # - **false**: The notification has not expired.
+        # - **true**: The change order notification has expired.
+        # - **false**: The change order notification has not expired.
         self.notification_expired = notification_expired
         # The security group ID.
         self.security_group_id = security_group_id
-        # The configuration for collecting logs to Simple Log Service (SLS).
+        # The configurations for collecting logs to Simple Log Service (SLS).
         # 
-        # - To use SLS resources that are automatically created by SAE: `[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]`.
-        # 
+        # - To use SLS resources through automatic creation by SAE: `[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]`.
         # - To use custom SLS resources: `[{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}]`.
         # 
-        # The configuration includes the following parameters:
+        # Metric description:
         # 
-        # - **projectName**: The project name in SLS.
-        # 
+        # - **projectName**: The name of the SLS project.  
         # - **logDir**: The log path.
+        # - **logType**: The log type. **stdout** indicates container standard output logs. You can configure only one such log in the Settings. If you do not configure it, file logs are collected.
+        # - **logstoreName**: The name of the SLS Logstore.
+        # - **logtailName**: The name of the SLS Logtail. If this parameter is not specified, a new Logtail is created.
         # 
-        # - **logType**: The log type. **stdout** indicates the standard output of the container. Only one stdout entry is allowed. If you omit this parameter, file logs are collected.
-        # 
-        # - **logstoreName**: The Logstore name in SLS.
-        # 
-        # - **logtailName**: The Logtail name in SLS. If you omit this parameter, SAE creates a Logtail.
-        # 
-        # You do not need to set this parameter if the SLS log collection configuration is unchanged for subsequent deployments. To disable log collection, set this parameter to an empty string ("").
+        # If the SLS collection configurations remain unchanged during multiple deployments, you do not need to modify the Settings for this parameter (that is, the **SlsConfigs** field is not required in the request). If you no longer need to use the SLS collection feature, you must change the Settings of this field to an empty character string in the request (that is, the value of the **SlsConfigs** field is "").
         self.sls_configs = sls_configs
         # The tenant ID of the SAE namespace.
         self.tenant_id = tenant_id

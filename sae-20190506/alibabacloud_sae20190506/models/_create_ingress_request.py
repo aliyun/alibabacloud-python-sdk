@@ -32,108 +32,98 @@ class CreateIngressRequest(DaraModel):
         zone_mappings: str = None,
     ):
         # The address type. Valid values:
-        # 
-        # - `Internet`: A public address.
-        # 
-        # - `Intranet`: A private address.
+        # - Internet: public network address.
+        # - Intranet: private network address.
         self.address_type = address_type
-        # The ID of the **CLB** certificate.
+        # The ID of the **CLB** certificate. Valid values:
         # 
-        # - If `LoadBalanceType` is set to `clb`, use this parameter to configure the HTTPS listener certificate.
+        # - If **LoadBalanceType** is set to **clb**, use this field to configure the certificate for the HTTPS listener.
         # 
-        # For more information about how to use SSL certificate IDs for CLB, see [Manage Certificates (CLB)](https://help.aliyun.com/document_detail/90792.html).
+        # For more information about how to use SSL certificate IDs in CLB, see [Manage certificates (CLB)](https://help.aliyun.com/document_detail/90792.html).
         self.cert_id = cert_id
-        # The IDs of the **ALB** certificates.
+        # The IDs of the **ALB** certificates. Valid values:
         # 
-        # - If `LoadBalanceType` is set to `alb`, use this parameter to configure multiple certificates for the HTTPS listener. Separate multiple certificate IDs with a comma (,).
+        # - If **LoadBalanceType** is set to **alb**, use this field to configure multiple certificates for the HTTPS listener. Separate multiple certificate IDs with commas (,).
         # 
-        # - Obtain the SSL certificate ID for an ALB instance from the digital certificate service. For example, if you configure `756***-cn-hangzhou`, `756***` is the certificate ID obtained from the product page and `-cn-hangzhou` is a fixed suffix. For more information, see [Manage Certificates (ALB)](https://help.aliyun.com/document_detail/209076.html).
+        # - You must obtain the SSL certificate IDs used by ALB from the Certificate Management Service. For example, if you configure `756***-cn-hangzhou`, `756***` is the certificate ID obtained from the product page, and `-cn-hangzhou` is a fixed suffix. For more information, see [Manage certificates (ALB)](https://help.aliyun.com/document_detail/209076.html).
         self.cert_ids = cert_ids
-        # Specifies the Cross-Origin Resource Sharing (CORS) configuration.
+        # The cross-origin resource sharing (CORS) configuration.
         self.cors_config = cors_config
-        # The default forwarding rule. Requests that do not match any forwarding rule in the `Rules` parameter are forwarded to the application specified in this rule. The value is a JSON string with the following parameters:
+        # The default forwarding rule. Traffic is forwarded to the specified application based on the IP address through the specified port. The parameters are as follows:
         # 
-        # - `appId`: The ID of the application.
+        # - **appId**: the ID of the application.
+        # - **containerPort**: the port of the application instance.
         # 
-        # - `containerPort`: The port of the application instance.
-        # 
-        # > This rule serves as a catch-all for traffic that is not handled by other specific forwarding rules.
+        # > All requests that do not match or meet the forwarding rules in **Rules** are forwarded to the specified application.
         # 
         # This parameter is required.
         self.default_rule = default_rule
         # The name of the routing rule.
         self.description = description
-        # Specifies whether to enable Gzip for data compression.
+        # Specifies whether to enable data compression.
         self.enable_gzip = enable_gzip
-        # Specifies whether to use the `X-Forwarded-For` header to retrieve the IP address of the client.
+        # Specifies whether to enable the feature to obtain the client IP address of the visitor through the X-Forwarded-For header field.
         self.enable_xforwarded_for = enable_xforwarded_for
-        # Specifies whether to use the `X-Forwarded-Port` header to retrieve the source port of the client.
+        # Specifies whether to obtain the listening port of the load balancing instance through the X-Forwarded-Port header field.
         self.enable_xforwarded_for_client_src_port = enable_xforwarded_for_client_src_port
-        # Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listener protocol of the load balancer instance.
+        # Specifies whether to obtain the listening protocol of the load balancing instance through the X-Forwarded-Proto header field.
         self.enable_xforwarded_for_proto = enable_xforwarded_for_proto
-        # Specifies whether to use the `SLB-ID` header to retrieve the ID of the load balancer instance.
+        # Specifies whether to obtain the load balancing instance ID through the SLB-ID header field.
         self.enable_xforwarded_for_slb_id = enable_xforwarded_for_slb_id
-        # Specifies whether to use the `X-Forwarded-Port` header to retrieve the listener port of the load balancer instance.
+        # Specifies whether to obtain the listening port of the load balancing instance through the X-Forwarded-Port header field.
         self.enable_xforwarded_for_slb_port = enable_xforwarded_for_slb_port
-        # The connection idle timeout, in seconds. Valid values: 1 to 60. If no request is received within the timeout period, the load balancer temporarily closes the connection. The connection is re-established when the next request is received.
+        # Specifies the connection idle timeout period. Unit: seconds. Valid values: 1 to 60. If no access request is received within the timeout period, load balancing temporarily breaks the current connection until a new connection is established when the next request arrives.
         self.idle_timeout = idle_timeout
-        # The listener port for the SLB instance. This port must be available.
+        # The listening port of the SLB instance. The port must not be occupied.
         # 
         # This parameter is required.
         self.listener_port = listener_port
         # The request forwarding protocol. Valid values:
         # 
-        # - `HTTP`: for applications that do not require encryption.
-        # 
-        # - `HTTPS`: suitable for applications that require encrypted data transmission.
+        # - **HTTP**: applicable to applications that need to identify data content.
+        # - **HTTPS**: applicable to applications that require encrypted transmission.
         self.listener_protocol = listener_protocol
-        # The type of the Server Load Balancer (SLB) instance. This parameter cannot be changed after the routing rule is created. Valid values:
+        # The type of the SLB instance. The type depends on the value specified when the routing rule is created and cannot be changed during updates. Valid values:
         # 
-        # - `clb`: Classic Load Balancer (CLB), formerly known as SLB.
-        # 
-        # - `alb`: Application Load Balancer (ALB).
+        # - **clb**: Classic Load Balancer (CLB).
+        # - **alb**: Application Load Balancer (ALB).
         self.load_balance_type = load_balance_type
-        # The edition of the Application Load Balancer (ALB) instance. Different editions have different features and billing policies. Valid values:
+        # The edition of the Application Load Balancer (ALB). Different editions have different feature limits and billing policy. Valid values:
         # 
-        # - `Standard`: Standard edition.
+        # - **Standard**: Standard Edition.
         # 
-        # - `StandardWithWaf`: WAF-enhanced edition.
+        # - **StandardWithWaf**: WAF-enhanced Edition.
         self.load_balancer_edition = load_balancer_edition
-        # The ID of the namespace where the application is located. Cross-namespace applications are not supported.
+        # The ID of the namespace where the application resides. Cross-namespace applications are not supported.
         # 
         # This parameter is required.
         self.namespace_id = namespace_id
-        # The request timeout, in seconds. Valid values: 1 to 180. If a backend server does not respond within the timeout period, the load balancer stops waiting and returns an HTTP 504 error to the client.
+        # Specifies the request timeout period. Unit: seconds. Valid values: 1 to 180. If the backend server does not send a response within the timeout period, load balancing stops waiting and returns an HTTP 504 error code to the client.
         self.request_timeout = request_timeout
-        # The forwarding rules. These rules route traffic to a specified application based on the domain name and path. The value is a JSON string. Each rule contains the following parameters:
+        # The forwarding rules. Traffic is forwarded to the specified application based on the domain name and the request path through the specified port. The parameters are as follows:
         # 
-        # - `appId`: The ID of the application.
+        # - **appId**: the ID of the application.
+        # - **containerPort**: the port of the application instance.
+        # - **domain**: the domain name.
+        # - **path**: the URI of the request.
+        # - **backendProtocol**: the backend service Terms of Service. Valid values: http, https, and grpc. Default value: http.
+        # - **rewritePath**: the rewrite path.
         # 
-        # - `containerPort`: The port of the application instance.
-        # 
-        # - `domain`: The domain name.
-        # 
-        # - `path`: The request path.
-        # 
-        # - `backendProtocol`: The protocol used by backend servers. Valid values: `http`, `https`, and `grpc`. Default value: `http`.
-        # 
-        # - `rewritePath`: The rewritten path.
-        # 
-        # > Only ALB supports path rewriting (`RewritePath`). CLB does not support this feature.
+        # > Currently, only ALB supports the URL path rewrite (RewritePath) feature. CLB does not support this feature.
         # 
         # This parameter is required.
         self.rules = rules
         # The ID of the security policy instance.
         self.security_policy_id = security_policy_id
-        # The ID of the Server Load Balancer (SLB) instance associated with the routing rule.
+        # The SLB instance ID used by the routing rule.
         # 
-        # > Server Load Balancer (SLB) includes Classic Load Balancer (CLB) and Application Load Balancer (ALB) instances.
+        # > Server Load Balancer (SLB) includes CLB and ALB instances.
         self.slb_id = slb_id
-        # A JSON string that contains the mappings between availability zones and VSwitches. If the current region supports two or more availability zones, you must specify at least two. A ZoneMapping consists of the following parameters:
+        # The JSON string of the zone and vSwitch mapping list. If the current region supports two or more zones, you must add at least two zones. A ZoneMapping structure includes:
         # 
-        # - `VSwitchId`: a string that specifies the ID of the VSwitch that corresponds to the availability zone. Each availability zone can have only one VSwitch and one subnet.
+        # - VSwitchId: the vSwitch corresponding to the zone. Data type: String. Only one vSwitch and one subnet can be used in each zone.
         # 
-        # - `ZoneId`: a string that specifies the ID of the availability zone for the load balancer instance.
+        # - ZoneId: the zone ID of the Network Load Balancer (NLB) instance. Data type: String.
         self.zone_mappings = zone_mappings
 
     def validate(self):
