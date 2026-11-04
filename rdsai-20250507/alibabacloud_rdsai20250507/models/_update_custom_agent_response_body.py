@@ -20,9 +20,9 @@ class UpdateCustomAgentResponseBody(DaraModel):
     ):
         # Specifies whether to enable tools.
         self.enable_tools = enable_tools
-        # AgentId。
+        # The agent ID.
         self.id = id
-        # The name of the dedicated agent.
+        # The name of the custom agent.
         self.name = name
         # The request ID.
         self.request_id = request_id
@@ -105,9 +105,13 @@ class UpdateCustomAgentResponseBodySkills(DaraModel):
         name: str = None,
         skill_type: str = None,
     ):
+        # The skill description.
         self.description = description
+        # The unique identifier of the skill.
         self.id = id
+        # The skill name.
         self.name = name
+        # The skill type.
         self.skill_type = skill_type
 
     def validate(self):

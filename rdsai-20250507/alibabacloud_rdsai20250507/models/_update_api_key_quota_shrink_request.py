@@ -10,7 +10,7 @@ class UpdateApiKeyQuotaShrinkRequest(DaraModel):
         instance_id: str = None,
         keys_shrink: str = None,
     ):
-        # The instance ID.
+        # The instance name.
         self.instance_id = instance_id
         # The list of API keys.
         self.keys_shrink = keys_shrink

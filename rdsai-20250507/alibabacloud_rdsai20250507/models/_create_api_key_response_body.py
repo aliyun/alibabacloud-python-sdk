@@ -131,22 +131,22 @@ class CreateApiKeyResponseBodyDataCustomKeyList(DaraModel):
     ):
         # Api Key
         self.api_key = api_key
-        # The daily quota of the API key.
+        # The daily token quota for the API key.
         self.daily_token_quota = daily_token_quota
         # The name of the API key.
         self.key_name = key_name
-        # The quota percentage.
+        # The quota limit percentage.
         self.limit_rate = limit_rate
-        # The quota type. Valid values:
+        # The quota limit type. Valid values:
         # 
-        # - **fixed**: By fixed value.
+        # - **fixed**: Fixed value.
         # 
-        # - **ratio**: By percentage.
+        # - **ratio**: Percentage-based.
         # 
         # - **auto**: Automatic allocation.
         self.limit_type = limit_type
         self.role_arn = role_arn
-        # The quota limit for the current key.
+        # The token quota for the current key.
         self.token_quota = token_quota
 
     def validate(self):

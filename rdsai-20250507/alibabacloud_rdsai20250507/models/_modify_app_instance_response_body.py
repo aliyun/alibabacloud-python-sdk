@@ -15,6 +15,7 @@ class ModifyAppInstanceResponseBody(DaraModel):
         instance_name: str = None,
         request_id: str = None,
     ):
+        # The reserved parameter.
         self.branch_name = branch_name
         # The list of modules.
         self.components = components

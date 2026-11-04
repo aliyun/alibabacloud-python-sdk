@@ -13,8 +13,9 @@ class ModifyInstanceStorageConfigShrinkRequest(DaraModel):
         instance_name: str = None,
         region_id: str = None,
     ):
+        # The reserved parameter.
         self.branch_name = branch_name
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, which prevents repeated submissions of requests.
+        # The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can generate the value on the client.
         self.client_token = client_token
         # The list of storage configurations.
         self.config_list_shrink = config_list_shrink

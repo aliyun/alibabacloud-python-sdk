@@ -12,12 +12,13 @@ class ModifyInstanceAuthConfigShrinkRequest(DaraModel):
         instance_name: str = None,
         region_id: str = None,
     ):
+        # The reserved parameter.
         self.branch_name = branch_name
         # The list of authentication configurations.
         self.config_list_shrink = config_list_shrink
         # The instance ID of the AI application.
         self.instance_name = instance_name
-        # The region.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

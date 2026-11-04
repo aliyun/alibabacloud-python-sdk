@@ -16,14 +16,15 @@ class UpdateCustomAgentRequest(DaraModel):
         system_prompt: str = None,
         tools: List[str] = None,
     ):
-        # AgentId。
+        # The agent ID.
         # 
         # This parameter is required.
         self.custom_agent_id = custom_agent_id
         # Specifies whether to enable tools.
         self.enable_tools = enable_tools
-        # The name of the dedicated agent.
+        # The name of the custom agent.
         self.name = name
+        # The list of associated skill IDs.
         self.skill_ids = skill_ids
         # The system prompt.
         self.system_prompt = system_prompt

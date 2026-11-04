@@ -13,7 +13,7 @@ class UpdateApiKeyQuotaRequest(DaraModel):
         instance_id: str = None,
         keys: List[main_models.UpdateApiKeyQuotaRequestKeys] = None,
     ):
-        # The instance ID.
+        # The instance name.
         self.instance_id = instance_id
         # The list of API keys.
         self.keys = keys
@@ -63,16 +63,16 @@ class UpdateApiKeyQuotaRequestKeys(DaraModel):
     ):
         # API KEY
         self.api_key = api_key
+        # The daily quota of the API key.
         self.daily_token_quota = daily_token_quota
-        # The throttling ratio. This parameter is required when type is set to ratio.
+        # The rate limit ratio. This parameter is required when the limit type is set to ratio.
         self.limit_rate = limit_rate
-        # The quota type. Valid values:
-        # 
-        # - ratio: by ratio.
-        # - fixed: by fixed value.
-        # - auto: automatic allocation of EPS resource.
+        # The quota limit type. Valid values:
+        # - ratio: Proportional limit.
+        # - fixed: Fixed value.
+        # - auto: Automatic allocation.
         self.limit_type = limit_type
-        # The fixed throttling value. This parameter is required when type is set to fixed.
+        # The fixed rate limit value. This parameter is required when the limit type is set to fixed.
         self.token_quota = token_quota
 
     def validate(self):

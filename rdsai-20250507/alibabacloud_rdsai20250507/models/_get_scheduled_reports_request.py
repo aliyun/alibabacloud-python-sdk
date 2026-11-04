@@ -13,17 +13,17 @@ class GetScheduledReportsRequest(DaraModel):
         scheduled_id: str = None,
         start_time: str = None,
     ):
-        # The end time for filtering. Format: YYYY-MM-DDTHH:mm:ssZ. If this parameter is not specified, no end time filter is applied.
+        # The end time for filtering. Format: YYYY-MM-DDTHH:mm:ssZ. If you do not specify this parameter, no filtering is applied.
         self.end_time = end_time
         # The page number. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 20. Maximum value: 100.
         self.page_size = page_size
-        # The inspection task ID.
+        # The ID of the scheduled task.
         # 
         # This parameter is required.
         self.scheduled_id = scheduled_id
-        # The start time for filtering. Format: YYYY-MM-DDTHH:mm:ssZ. If this parameter is not specified, no start time filter is applied.
+        # The start time for filtering. Format: YYYY-MM-DDTHH:mm:ssZ. If you do not specify this parameter, no filtering is applied.
         self.start_time = start_time
 
     def validate(self):

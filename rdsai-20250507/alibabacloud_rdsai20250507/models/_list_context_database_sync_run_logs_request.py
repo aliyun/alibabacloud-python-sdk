@@ -12,10 +12,16 @@ class ListContextDatabaseSyncRunLogsRequest(DaraModel):
         run_id: str = None,
         workspace_id: str = None,
     ):
+        # The page number, starting from 1.
         self.page = page
+        # The number of entries per page.
         self.page_size = page_size
+        # The run ID, which is a system-generated UUID.
+        # 
         # This parameter is required.
         self.run_id = run_id
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

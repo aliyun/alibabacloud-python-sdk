@@ -15,12 +15,14 @@ class ModifyAppInstanceShrinkRequest(DaraModel):
         instance_name: str = None,
         region_id: str = None,
     ):
+        # The reserved parameter.
         self.branch_name = branch_name
-        # The idempotency parameter.
+        # The client token that is used to ensure idempotence.
         self.client_token = client_token
         # The list of modules.
         self.components_shrink = components_shrink
         self.dbinstance_name = dbinstance_name
+        # The instance type. Currently, only **rdsai.supabase.basic** is supported.
         self.instance_class = instance_class
         # The instance ID of the AI application.
         self.instance_name = instance_name

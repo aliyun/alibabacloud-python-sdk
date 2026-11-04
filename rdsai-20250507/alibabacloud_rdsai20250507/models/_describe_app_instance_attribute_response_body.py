@@ -24,6 +24,7 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
         instance_name: str = None,
         login_token: str = None,
         minor_version_detail: str = None,
+        minor_version_release_notes: str = None,
         nat_created_by: str = None,
         nat_gateway_id: str = None,
         nat_status: str = None,
@@ -43,15 +44,15 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
         self.app_name = app_name
         # The application type. Currently, only **supabase** is supported, which indicates [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html).
         self.app_type = app_type
-        # A reserved parameter.
+        # The reserved parameter.
         self.branch_name = branch_name
-        # A reserved parameter.
+        # The reserved parameter.
         self.branching_enabled = branching_enabled
-        # The list of components.
+        # The component list.
         self.components = components
-        # The instance ID of the RDS PostgreSQL database instance connected to the AI application.
+        # The instance ID of the RDS PostgreSQL database instance associated with the AI application.
         self.dbinstance_name = dbinstance_name
-        # The instance ID of the EIP.
+        # The EIP instance ID.
         self.eip_id = eip_id
         # The activation status of the EIP.
         self.eip_status = eip_status
@@ -63,13 +64,15 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
         self.instance_minor_version = instance_minor_version
         # The instance ID of the AI application.
         self.instance_name = instance_name
-        # A reserved parameter.
+        # The reserved parameter.
         self.login_token = login_token
-        # The minor versions of individual components of the RDS AI application instance.
+        # The minor versions of each component in the RDS AI application instance.
         self.minor_version_detail = minor_version_detail
+        # The release notes for the minor version of the RDS AI application instance.
+        self.minor_version_release_notes = minor_version_release_notes
         # The creator of the NAT gateway.
         self.nat_created_by = nat_created_by
-        # The NAT gateway ID.
+        # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
         # The activation status of the NAT gateway.
         self.nat_status = nat_status
@@ -79,15 +82,15 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # A reserved parameter.
+        # The reserved parameter.
         self.retention_hours = retention_hours
-        # A reserved parameter.
+        # The reserved parameter.
         self.sql_extend_mo_instance_id = sql_extend_mo_instance_id
-        # The instance status. For more information, see [Instance status](https://help.aliyun.com/document_detail/2623972.html).
+        # The instance status. For more information, see [Instance status table](https://help.aliyun.com/document_detail/2623972.html).
         self.status = status
-        # A reserved parameter.
+        # The reserved parameter.
         self.upload_key = upload_key
-        # A reserved parameter.
+        # The reserved parameter.
         self.upload_key_list = upload_key_list
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
@@ -154,6 +157,9 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
 
         if self.minor_version_detail is not None:
             result['MinorVersionDetail'] = self.minor_version_detail
+
+        if self.minor_version_release_notes is not None:
+            result['MinorVersionReleaseNotes'] = self.minor_version_release_notes
 
         if self.nat_created_by is not None:
             result['NatCreatedBy'] = self.nat_created_by
@@ -248,6 +254,9 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
         if m.get('MinorVersionDetail') is not None:
             self.minor_version_detail = m.get('MinorVersionDetail')
 
+        if m.get('MinorVersionReleaseNotes') is not None:
+            self.minor_version_release_notes = m.get('MinorVersionReleaseNotes')
+
         if m.get('NatCreatedBy') is not None:
             self.nat_created_by = m.get('NatCreatedBy')
 
@@ -304,15 +313,15 @@ class DescribeAppInstanceAttributeResponseBodyUploadKeyList(DaraModel):
         status: str = None,
         upload_key: str = None,
     ):
-        # A reserved parameter.
+        # The reserved parameter.
         self.is_system_key = is_system_key
-        # A reserved parameter.
+        # The reserved parameter.
         self.remark = remark
-        # A reserved parameter.
+        # The reserved parameter.
         self.sls_storage_bytes = sls_storage_bytes
-        # A reserved parameter.
+        # The reserved parameter.
         self.status = status
-        # A reserved parameter.
+        # The reserved parameter.
         self.upload_key = upload_key
 
     def validate(self):

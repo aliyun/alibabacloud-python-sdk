@@ -15,8 +15,9 @@ class ModifyInstanceSSLRequest(DaraModel):
         server_cert: str = None,
         server_key: str = None,
     ):
+        # The reserved parameter.
         self.branch_name = branch_name
-        # The certificate type. Currently, only **custom** is supported, which indicates that a custom certificate is used.
+        # The certificate type. Only **custom** is supported, which indicates that a custom certificate is used.
         # > This parameter is required when **SSLEnabled** is set to **1**.
         self.catype = catype
         # The instance ID of the AI application.
@@ -25,13 +26,13 @@ class ModifyInstanceSSLRequest(DaraModel):
         self.instance_name = instance_name
         # The region ID.
         self.region_id = region_id
-        # Specifies whether to enable or disable SSL. Valid values:
-        # * **1**: Enable.
-        # * **0**: Disable.
+        # Specifies whether to enable SSL. Valid values:
+        # * **1**: Enabled.
+        # * **0**: Disabled.
         # 
         # This parameter is required.
         self.sslenabled = sslenabled
-        # The custom certificate content.
+        # The content of the custom certificate.
         # 
         # > This parameter is required when **CAType** is set to **custom**.
         self.server_cert = server_cert

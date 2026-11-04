@@ -12,6 +12,7 @@ class DisableAgentRuntimeRequest(DaraModel):
         instance_name: str = None,
         region_id: str = None,
     ):
+        # The reserved parameter.
         self.branch_name = branch_name
         # The idempotence parameter.
         self.client_token = client_token

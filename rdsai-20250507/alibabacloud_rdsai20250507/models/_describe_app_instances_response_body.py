@@ -19,7 +19,7 @@ class DescribeAppInstancesResponseBody(DaraModel):
     ):
         # The list of instances.
         self.instances = instances
-        # A reserved parameter. You can ignore this parameter.
+        # A reserved parameter. You can ignore it.
         self.max_results = max_results
         # The page number.
         self.page_number = page_number
@@ -27,7 +27,7 @@ class DescribeAppInstancesResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -108,8 +108,9 @@ class DescribeAppInstancesResponseBodyInstances(DaraModel):
         self.app_name = app_name
         # The application type. Currently, only **supabase** is supported, which indicates [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html).
         self.app_type = app_type
+        # The list of components.
         self.components = components
-        # The instance ID of the ApsaraDB RDS for PostgreSQL database that is connected to the AI application.
+        # The instance ID of the RDS PostgreSQL database to which the AI application is connected.
         self.dbinstance_name = dbinstance_name
         # The instance type.
         self.instance_class = instance_class
@@ -228,7 +229,9 @@ class DescribeAppInstancesResponseBodyInstancesComponents(DaraModel):
         status: str = None,
         type: str = None,
     ):
+        # The component status.
         self.status = status
+        # The component type.
         self.type = type
 
     def validate(self):

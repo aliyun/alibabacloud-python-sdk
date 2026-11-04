@@ -12,12 +12,13 @@ class ModifyInstanceRAGConfigResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The reserved parameter.
         self.branch_name = branch_name
         # The instance ID of the AI application.
         self.instance_name = instance_name
         # The request ID.
         self.request_id = request_id
-        # The RAG Agent status.
+        # The status of the RAG Agent.
         # 
         # - **true**: Enabled.
         # - **false**: Disabled.

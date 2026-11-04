@@ -15,6 +15,7 @@ class DescribeInstanceStorageConfigResponseBody(DaraModel):
         instance_name: str = None,
         request_id: str = None,
     ):
+        # A reserved parameter.
         self.branch_name = branch_name
         # The list of storage configurations.
         self.config_list = config_list
@@ -77,13 +78,13 @@ class DescribeInstanceStorageConfigResponseBodyConfigList(DaraModel):
     ):
         # The name of the configuration item. Valid values:
         # 
-        # - **AWS_SESSION_TOKEN**: the temporary access token (Session Token) of OSS.
-        # - **AWS_ACCESS_KEY_ID**: the AccessKey ID of OSS.
-        # - **AWS_SECRET_ACCESS_KEY**: the AccessKey Secret of OSS.
-        # - **GLOBAL_S3_BUCKET**: the bucket name of OSS.
-        # - **TENANT_ID**: the tenant ID of the OSS prefix (prefix or directory).
-        # - **GLOBAL_S3_ENDPOINT**: the endpoint of OSS.
-        # - **REGION**: the region of OSS.
+        # - **AWS_SESSION_TOKEN**: The temporary access token (session token) for OSS.
+        # - **AWS_ACCESS_KEY_ID**: The AccessKey ID for OSS.
+        # - **AWS_SECRET_ACCESS_KEY**: The AccessKey secret for OSS.
+        # - **GLOBAL_S3_BUCKET**: The name of the OSS bucket.
+        # - **TENANT_ID**: The tenant ID of the OSS prefix (prefix or directory).
+        # - **GLOBAL_S3_ENDPOINT**: The endpoint of OSS.
+        # - **REGION**: The region of OSS.
         self.name = name
         # The value of the configuration item.
         self.value = value

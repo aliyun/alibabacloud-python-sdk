@@ -16,24 +16,25 @@ class DescribeSandboxTemplatesRequest(DaraModel):
         region_id: str = None,
         template_name: str = None,
     ):
+        # The reserved parameter.
         self.branch_name = branch_name
         # The instance ID of the AI application.
         # 
         # This parameter is required.
         self.instance_name = instance_name
-        # A reserved parameter. You can ignore this parameter.
+        # The backup parameter. You can ignore this parameter.
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token
         # The page number.
         self.page_number = page_number
-        # The number of records per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The sandbox template name.
+        # The name of the sandbox template.
         self.template_name = template_name
 
     def validate(self):

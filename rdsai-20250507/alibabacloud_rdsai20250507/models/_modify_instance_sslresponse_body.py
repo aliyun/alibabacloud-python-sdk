@@ -12,6 +12,7 @@ class ModifyInstanceSSLResponseBody(DaraModel):
         request_id: str = None,
         sslexpired_time: str = None,
     ):
+        # The reserved parameter.
         self.branch_name = branch_name
         # The instance ID of the AI application.
         self.instance_name = instance_name

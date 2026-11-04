@@ -14,14 +14,15 @@ class ModifyInstanceConfigRequest(DaraModel):
         instance_name: str = None,
         region_id: str = None,
     ):
+        # The reserved parameter.
         self.branch_name = branch_name
-        # The idempotence parameter.
+        # The idempotency parameter.
         self.client_token = client_token
-        # The name of the configuration item to modify. This parameter is used together with ConfigValue.
+        # The name of the configuration item to modify. This parameter must be used together with ConfigValue.
         self.config_name = config_name
-        # The value of the configuration item to modify. This parameter is used together with ConfigName.
+        # The value of the configuration item to modify. This parameter must be used together with ConfigName.
         self.config_value = config_value
-        # The instance ID of the AI application.
+        # The ID of the AI application instance.
         # 
         # This parameter is required.
         self.instance_name = instance_name

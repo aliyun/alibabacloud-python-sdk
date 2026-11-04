@@ -15,7 +15,7 @@ class CreateCustomAgentShrinkRequest(DaraModel):
     ):
         # Specifies whether to enable tools.
         self.enable_tools = enable_tools
-        # The name of the agent.
+        # The name of the custom agent.
         self.name = name
         # The list of associated skill IDs.
         self.skill_ids_shrink = skill_ids_shrink

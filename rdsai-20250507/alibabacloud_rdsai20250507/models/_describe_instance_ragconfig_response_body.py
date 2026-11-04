@@ -16,6 +16,7 @@ class DescribeInstanceRAGConfigResponseBody(DaraModel):
         request_id: str = None,
         status: bool = None,
     ):
+        # The reserved parameter.
         self.branch_name = branch_name
         # The list of RAG Agent configurations.
         self.config_list = config_list
@@ -23,7 +24,7 @@ class DescribeInstanceRAGConfigResponseBody(DaraModel):
         self.instance_name = instance_name
         # The request ID.
         self.request_id = request_id
-        # The RAG Agent status. Valid values:
+        # The status of the RAG Agent.
         # - **true**: Enabled.
         # - **false**: Disabled.
         self.status = status

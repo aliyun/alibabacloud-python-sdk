@@ -16,11 +16,11 @@ class DescribeEventsListRequest(DaraModel):
     ):
         # The end time.
         self.end_time = end_time
-        # The list of instances.
+        # The list of instance IDs.
         self.instance_id_list = instance_id_list
         # The page number.
         self.page_number = page_number
-        # The number of records per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The region ID.
         # 

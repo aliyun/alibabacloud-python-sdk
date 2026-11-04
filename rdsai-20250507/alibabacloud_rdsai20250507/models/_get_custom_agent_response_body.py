@@ -20,7 +20,7 @@ class GetCustomAgentResponseBody(DaraModel):
         tools: List[str] = None,
         updated_at: str = None,
     ):
-        # The time when the dedicated agent was created.
+        # The creation time.
         self.created_at = created_at
         # Indicates whether tools are enabled.
         self.enable_tools = enable_tools
@@ -30,12 +30,13 @@ class GetCustomAgentResponseBody(DaraModel):
         self.name = name
         # The request ID.
         self.request_id = request_id
+        # The list of associated skill details.
         self.skills = skills
         # The system prompt.
         self.system_prompt = system_prompt
         # The tool details.
         self.tools = tools
-        # The time when the dedicated agent was last modified.
+        # The modification time.
         self.updated_at = updated_at
 
     def validate(self):
@@ -122,9 +123,13 @@ class GetCustomAgentResponseBodySkills(DaraModel):
         name: str = None,
         skill_type: str = None,
     ):
+        # The description of the skill.
         self.description = description
+        # The unique identifier of the skill.
         self.id = id
+        # The name of the skill.
         self.name = name
+        # The skill type.
         self.skill_type = skill_type
 
     def validate(self):

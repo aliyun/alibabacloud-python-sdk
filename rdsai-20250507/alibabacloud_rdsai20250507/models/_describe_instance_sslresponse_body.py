@@ -16,8 +16,9 @@ class DescribeInstanceSSLResponseBody(DaraModel):
         server_cert: str = None,
         server_key: str = None,
     ):
+        # Reserved parameter.
         self.branch_name = branch_name
-        # The certificate type. The value is **custom**, which indicates that a custom certificate is used.
+        # The certificate type. A value of **custom** indicates that a custom certificate is used.
         self.catype = catype
         # The instance ID of the AI application.
         self.instance_name = instance_name
@@ -28,7 +29,7 @@ class DescribeInstanceSSLResponseBody(DaraModel):
         # * **0**: Disabled.
         self.sslenabled = sslenabled
         self.sslexpired_time = sslexpired_time
-        # The custom certificate content.
+        # The content of the custom certificate.
         self.server_cert = server_cert
         # The private key of the certificate.
         self.server_key = server_key

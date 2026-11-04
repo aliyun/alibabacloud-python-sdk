@@ -11,6 +11,7 @@ class ResetInstancePasswordResponseBody(DaraModel):
         instance_name: str = None,
         request_id: str = None,
     ):
+        # The reserved parameter.
         self.branch_name = branch_name
         # The instance ID of the AI application.
         self.instance_name = instance_name

@@ -18,19 +18,19 @@ class DescribeSandboxTemplatesResponseBody(DaraModel):
         sandbox_templates: List[main_models.DescribeSandboxTemplatesResponseBodySandboxTemplates] = None,
         total_count: int = None,
     ):
-        # A reserved parameter. You can ignore this parameter.
+        # The backup parameter. You can ignore this parameter.
         self.max_results = max_results
-        # The token that indicates the position from which the current read operation starts. An empty value indicates that the read operation starts from the beginning.
+        # The position from which the current read operation starts. An empty value indicates that the read operation starts from the beginning.
         self.next_token = next_token
         # The page number.
         self.page_number = page_number
-        # The number of records per page.
+        # The number of entries per page.
         self.page_size = page_size
         # Id of the request
         self.request_id = request_id
         # The list of sandbox templates.
         self.sandbox_templates = sandbox_templates
-        # The total number of records that meet the request conditions.
+        # The total number of data entries that meet the current request conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -112,20 +112,20 @@ class DescribeSandboxTemplatesResponseBodySandboxTemplates(DaraModel):
         template_id: str = None,
     ):
         self.created_by = created_by
-        # The number of CPUs for the sandbox created by using this template.
+        # The number of CPUs allocated to the sandbox created by using this template.
         self.default_cpu = default_cpu
         # The memory size of the sandbox created by using this template.
         self.default_memory = default_memory
-        # The sandbox template description.
+        # The description of the sandbox template.
         self.description = description
-        # Indicates whether the sandbox created by using this template can access resources in the VPC where Supabase resides.
+        # Specifies whether the sandbox created by using this template can access resources in the VPC where Supabase is deployed.
         self.enable_vpc_access = enable_vpc_access
         self.image = image
-        # The sandbox template name.
+        # The name of the sandbox template.
         self.name = name
         self.replicas = replicas
         self.tags = tags
-        # The sandbox template ID. Specify this ID when you create a sandbox by using this template.
+        # The ID of the sandbox template. Specify this ID when you use the template to create a sandbox.
         self.template_id = template_id
 
     def validate(self):

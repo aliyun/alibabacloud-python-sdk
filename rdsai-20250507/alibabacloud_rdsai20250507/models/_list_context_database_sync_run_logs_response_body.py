@@ -17,11 +17,17 @@ class ListContextDatabaseSyncRunLogsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListContextDatabaseSyncRunLogsResponseBodyData(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The list of logs.
         self.logs = logs
+        # The page number, starting from 1.
         self.page = page
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -144,10 +154,15 @@ class ListContextDatabaseSyncRunLogsResponseBodyDataLogs(DaraModel):
         level: str = None,
         message: str = None,
     ):
+        # The creation time.
         self.created_at = created_at
+        # The details.
         self.detail = detail
+        # The run ID.
         self.id = id
+        # The log level. Valid values: debug, info, warn, and error.
         self.level = level
+        # The response message.
         self.message = message
 
     def validate(self):

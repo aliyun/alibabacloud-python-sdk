@@ -25,10 +25,11 @@ class CreateCustomAgentResponseBody(DaraModel):
         self.enable_tools = enable_tools
         # AgentId
         self.id = id
-        # The name of the agent.
+        # The name of the custom agent.
         self.name = name
         # The request ID.
         self.request_id = request_id
+        # The list of associated skill details.
         self.skills = skills
         # The system prompt.
         self.system_prompt = system_prompt
@@ -113,9 +114,13 @@ class CreateCustomAgentResponseBodySkills(DaraModel):
         name: str = None,
         skill_type: str = None,
     ):
+        # The skill description.
         self.description = description
+        # The unique identifier of the skill.
         self.id = id
+        # The name of the skill.
         self.name = name
+        # The type of the skill.
         self.skill_type = skill_type
 
     def validate(self):

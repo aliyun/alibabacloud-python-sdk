@@ -11,6 +11,7 @@ class DescribeInstanceStorageConfigRequest(DaraModel):
         instance_name: str = None,
         region_id: str = None,
     ):
+        # A reserved parameter.
         self.branch_name = branch_name
         # The instance ID of the AI application.
         # 

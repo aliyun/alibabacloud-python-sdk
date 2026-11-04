@@ -25,10 +25,8 @@ class Client(OpenApiClient):
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-wulanchabu': 'rdsai.aliyuncs.com',
-            'cn-shenzhen': 'rdsai.aliyuncs.com',
             'cn-beijing': 'rdsai.aliyuncs.com',
             'cn-shanghai': 'rdsai.aliyuncs.com',
-            'cn-guangzhou': 'rdsai.aliyuncs.com',
             'cn-hangzhou': 'rdsai.aliyuncs.com'
         }
         self.check_config(config)
