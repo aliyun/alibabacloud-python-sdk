@@ -1,3 +1,6 @@
+2026-11-04 Version: 3.14.2
+- Generated python 2019-03-07 for Cloudauth.
+
 2026-11-03 Version: 3.14.1
 - Update API DeepfakeDetect: add request parameters FaceAttributeCheck.
 - Update API DeepfakeDetect: add response parameters Body.ResultObject.FaceAttributeInfo.
