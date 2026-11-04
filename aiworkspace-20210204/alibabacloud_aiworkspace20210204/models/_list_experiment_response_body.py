@@ -17,11 +17,11 @@ class ListExperimentResponseBody(DaraModel):
     ):
         # The list of experiments.
         self.experiments = experiments
-        # The token for the next page. Save this token and include it in the next request to retrieve the next page of results.
+        # The token for the next page. Record this token and pass it in the next request.
         self.next_page_token = next_page_token
         # The total number of records.
         self.total_count = total_count
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

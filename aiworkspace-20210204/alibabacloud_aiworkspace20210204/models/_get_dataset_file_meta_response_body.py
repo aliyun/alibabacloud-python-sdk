@@ -14,11 +14,11 @@ class GetDatasetFileMetaResponseBody(DaraModel):
         request_id: str = None,
         workspace_id: str = None,
     ):
-        # The details of the dataset file metadata.
+        # The details of the retrieved dataset file metadata.
         self.dataset_file_meta = dataset_file_meta
         # The dataset ID.
         self.dataset_id = dataset_id
-        # The name of the dataset version.
+        # The dataset version name.
         self.dataset_version = dataset_version
         # The request ID.
         self.request_id = request_id

@@ -1,3 +1,6 @@
+2026-11-04 Version: 8.3.6
+- Generated python 2021-02-04 for AIWorkSpace.
+
 2026-10-17 Version: 8.3.5
 - Update API ListConfigs: add request parameters Options.
 

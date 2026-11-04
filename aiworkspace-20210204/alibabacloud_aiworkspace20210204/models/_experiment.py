@@ -26,7 +26,7 @@ class Experiment(DaraModel):
     ):
         # The visibility of the experiment. PRIVATE indicates that the experiment is visible only to the creator and their Alibaba Cloud account. PUBLIC indicates that the experiment is visible to all users.
         self.accessibility = accessibility
-        # The default artifact output path for tasks associated with the experiment. Currently, only OSS paths are supported.
+        # The default artifact output path for the jobs associated with the experiment. Only OSS paths are supported.
         self.artifact_uri = artifact_uri
         # The experiment ID.
         self.experiment_id = experiment_id
@@ -34,19 +34,19 @@ class Experiment(DaraModel):
         self.gmt_create_time = gmt_create_time
         # The time when the experiment was last modified.
         self.gmt_modified_time = gmt_modified_time
-        # The list of experiment labels.
+        # The list of labels for the experiment.
         self.labels = labels
         # The information about the latest run associated with the experiment.
         self.latest_run = latest_run
-        # The experiment name.
+        # The name of the experiment.
         self.name = name
-        # The Alibaba Cloud account ID of the experiment owner.
+        # The Alibaba Cloud account ID of the owner of the experiment.
         self.owner_id = owner_id
         # The request ID.
         self.request_id = request_id
-        # The default OSS storage path for TensorBoard logs of each trial in the experiment.
+        # The default OSS storage path for the TensorBoard logs of each trial in the experiment.
         self.tensorboard_log_uri = tensorboard_log_uri
-        # The user ID of the experiment creator.
+        # The user ID of the creator of the experiment.
         self.user_id = user_id
         # The ID of the workspace to which the experiment belongs.
         self.workspace_id = workspace_id

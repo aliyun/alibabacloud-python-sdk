@@ -9,7 +9,7 @@ class GetRunRequest(DaraModel):
         self,
         verbose: bool = None,
     ):
-        # Specifies whether to get information about metrics, parameters, and labels. This parameter is optional. The default value is false.
+        # Specifies whether to retrieve metrics, parameters, and labels. Default value: false.
         self.verbose = verbose
 
     def validate(self):

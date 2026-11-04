@@ -28,49 +28,39 @@ class GetWorkspaceResponseBody(DaraModel):
     ):
         # The list of administrator account names.
         self.admin_names = admin_names
-        # The ID of the user who created the workspace.
+        # The user ID of the creator.
         self.creator = creator
-        # The description of the workspace.
+        # The workspace description.
         self.description = description
         # The display name of the workspace.
         self.display_name = display_name
-        # The environments that the workspace contains. Valid values:
-        # 
-        # - A workspace in basic mode has only the production environment (prod).
-        # 
-        # - A workspace in standard mode has both the development environment (dev) and the production environment (prod).
+        # The environments included in the workspace.
+        # * Simple mode includes only the production environment (prod).
+        # * Standard mode includes the development environment (dev) and the production environment (prod).
         self.env_types = env_types
-        # Additional information. This parameter currently contains the tenant ID (TenantId).
+        # The extra information, which currently includes TenantId (tenant ID).
         self.extra_infos = extra_infos
-        # The time when the workspace was created. The time is in UTC and follows the ISO 8601 standard.
+        # The time when the workspace was created. The time is displayed in UTC and formatted in ISO 8601.
         self.gmt_create_time = gmt_create_time
-        # The time when the workspace was last modified. The time is in UTC and follows the ISO 8601 standard.
+        # The time when the workspace was modified. The time is displayed in UTC and formatted in ISO 8601.
         self.gmt_modified_time = gmt_modified_time
-        # Indicates whether the workspace is the default workspace. Valid values:
-        # 
+        # Specifies whether the workspace is the default workspace. Valid values:
         # - false: The workspace is not the default workspace.
-        # 
         # - true: The workspace is the default workspace.
         self.is_default = is_default
-        # The information about the workspace owner. This parameter is returned only when Verbose is set to true.
+        # The workspace owner information. Displayed when Verbose is set to true.
         self.owner = owner
         # The request ID.
         self.request_id = request_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The status of the workspace. Valid values:
-        # 
-        # - ENABLED: The workspace is running as normal.
-        # 
-        # - INITIALIZING: The workspace is being initialized.
-        # 
-        # - FAILURE: The workspace failed to be created.
-        # 
-        # - DISABLED: The workspace is manually disabled.
-        # 
-        # - FROZEN: The workspace is frozen due to an overdue payment.
-        # 
-        # - UPDATING: The workspace is being updated.
+        # The workspace status. Valid values:
+        # - ENABLED: Normal.
+        # - INITIALIZING: Initializing.
+        # - FAILURE: Failed.
+        # - DISABLED: Manually disabled.
+        # - FROZEN: Frozen due to overdue payment.
+        # - UPDATING: Updating.
         self.status = status
         # The workspace ID.
         self.workspace_id = workspace_id

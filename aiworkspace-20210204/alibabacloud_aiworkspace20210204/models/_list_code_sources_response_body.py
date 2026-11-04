@@ -18,7 +18,7 @@ class ListCodeSourcesResponseBody(DaraModel):
         self.code_sources = code_sources
         # The request ID.
         self.request_id = request_id
-        # The total number of code source configurations that match the filter conditions.
+        # The total number of code source configurations that meet the filter conditions.
         self.total_count = total_count
 
     def validate(self):

@@ -10,7 +10,7 @@ class CreateExperimentResponseBody(DaraModel):
         experiment_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the experiment. If the creation operation is asynchronous, a specific job ID is returned.
+        # The Job ID returned if the creation API is implemented asynchronously.
         self.experiment_id = experiment_id
         # Id of the request
         self.request_id = request_id

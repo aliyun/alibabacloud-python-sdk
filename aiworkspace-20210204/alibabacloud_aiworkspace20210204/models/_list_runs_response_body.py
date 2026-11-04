@@ -15,11 +15,11 @@ class ListRunsResponseBody(DaraModel):
         total_count: int = None,
         request_id: str = None,
     ):
-        # The pagination token. Pass an empty value for the first page query. The query result returns the token for the next page. A token value of 0 indicates that all data has been retrieved. You can obtain the token for the next page from the NextPageToken field in the response.
+        # The pagination token. Leave this parameter empty when you query the first page. The response returns the token for the next page. A value of 0 indicates that all entries are returned. You can obtain the token for the next page from the **NextPageToken** field in the response.
         self.next_page_token = next_page_token
         # The list of runs.
         self.runs = runs
-        # The total number of records that match the request conditions. This is an optional parameter and may not be returned by default.
+        # The total number of entries that meet the current request conditions. This parameter is optional and is not returned by default.
         self.total_count = total_count
         # The request ID.
         self.request_id = request_id

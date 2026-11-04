@@ -10,9 +10,9 @@ class Label(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The label key. The value can be up to 128 bytes in length and cannot contain equal signs (=) and commas (,).
+        # The tag key. It can be up to 128 bytes in length and cannot contain equal signs (=) or half-width commas (,).
         self.key = key
-        # The label value. The value can be up to 128 bytes in length and cannot contain equal signs (=) and commas (,).
+        # The tag value. It can be up to 128 bytes in length and cannot contain equal signs (=) or half-width commas (,).
         self.value = value
 
     def validate(self):

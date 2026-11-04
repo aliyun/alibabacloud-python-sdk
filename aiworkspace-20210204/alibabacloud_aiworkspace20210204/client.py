@@ -6249,6 +6249,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetWorkspaceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.extra_verbose_fields):
+            query['ExtraVerboseFields'] = request.extra_verbose_fields
         if not DaraCore.is_null(request.verbose):
             query['Verbose'] = request.verbose
         req = open_api_util_models.OpenApiRequest(
@@ -6280,6 +6282,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetWorkspaceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.extra_verbose_fields):
+            query['ExtraVerboseFields'] = request.extra_verbose_fields
         if not DaraCore.is_null(request.verbose):
             query['Verbose'] = request.verbose
         req = open_api_util_models.OpenApiRequest(

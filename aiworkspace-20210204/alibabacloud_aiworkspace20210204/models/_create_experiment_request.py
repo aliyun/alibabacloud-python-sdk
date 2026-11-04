@@ -16,22 +16,17 @@ class CreateExperimentRequest(DaraModel):
         name: str = None,
         workspace_id: str = None,
     ):
-        # The visibility of the experiment. Valid values:
-        # 
-        # - PUBLIC: Visible to all users.
-        # - PRIVATE: Visible only to the creator and the Alibaba Cloud account.
-        # 
-        # Default value: PRIVATE.
+        # The visibility of the experiment. It can be set to private (visible only to the creator and their Alibaba Cloud account) or public (visible to all users). This parameter is optional. Default value: private.
         self.accessibility = accessibility
-        # The default artifact output path for all tasks associated with the experiment. Currently, only OSS paths are supported.
+        # The default artifact output path for all nodes associated with the experiment. Only OSS paths are currently supported.
         self.artifact_uri = artifact_uri
         # The labels.
         self.labels = labels
-        # The name of the experiment. The name must meet the following rules:
+        # The name of the experiment. The naming rules are as follows:
         # 
-        # - The name must start with a lowercase or uppercase letter.
-        # - The name can contain uppercase letters, lowercase letters, digits, underscores (_), or hyphens (-).
-        # - The name must be 1 to 63 characters in length.
+        # - Must start with a lowercase or uppercase letter.
+        # - Can contain lowercase and uppercase letters, digits, underscores (_), and hyphens (-).
+        # - Must be 1 to 63 characters in length.
         # 
         # This parameter is required.
         self.name = name

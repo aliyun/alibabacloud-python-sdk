@@ -9,7 +9,7 @@ class GetExperimentRequest(DaraModel):
         self,
         verbose: bool = None,
     ):
-        # Specifies whether to retrieve the latest run information for the experiment.
+        # Specifies whether to retrieve the latest run information associated with the experiment.
         self.verbose = verbose
 
     def validate(self):

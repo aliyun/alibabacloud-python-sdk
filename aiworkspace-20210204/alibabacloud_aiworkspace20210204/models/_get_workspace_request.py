@@ -7,13 +7,15 @@ from darabonba.model import DaraModel
 class GetWorkspaceRequest(DaraModel):
     def __init__(
         self,
+        extra_verbose_fields: str = None,
         verbose: bool = None,
     ):
-        # Specifies whether to return additional information, such as the workspace owner. Valid values:
-        # 
-        # - false (default): Does not return additional information.
-        # 
-        # - true: Returns additional information.
+        # A comma-separated string used to specify additional information to return. This field does not take effect.
+        self.extra_verbose_fields = extra_verbose_fields
+        # Specifies whether to display supplementary information such as the workspace owner. Valid values:
+        # - false: Does not display supplementary information.
+        # - true: Displays supplementary information.
+        # Default value: false.
         self.verbose = verbose
 
     def validate(self):
@@ -24,6 +26,9 @@ class GetWorkspaceRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.extra_verbose_fields is not None:
+            result['ExtraVerboseFields'] = self.extra_verbose_fields
+
         if self.verbose is not None:
             result['Verbose'] = self.verbose
 
@@ -31,6 +36,9 @@ class GetWorkspaceRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ExtraVerboseFields') is not None:
+            self.extra_verbose_fields = m.get('ExtraVerboseFields')
+
         if m.get('Verbose') is not None:
             self.verbose = m.get('Verbose')
 
