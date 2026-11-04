@@ -29,19 +29,19 @@ class GetContextStoreResponseBody(DaraModel):
         self.context_store_name = context_store_name
         # The type of the context store, such as experience or memory.
         self.context_type = context_type
-        # The time when the context store was created, in ISO 8601 UTC format.
+        # The creation time of the context store in ISO 8601 UTC format.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
         # The description of the context store.
         self.description = description
-        # The ID of the region where the context store is located.
+        # The ID of the region where the context store resides.
         self.region_id = region_id
-        # The request ID used to locate the request during troubleshooting.
+        # The request ID, which is used to locate the request for troubleshooting.
         self.request_id = request_id
-        # The status of the context store, such as ACTIVE, INITIALIZING, or FAILED.
+        # The status of the context store. Valid values: ACTIVE, INITIALIZING, and FAILED.
         self.status = status
-        # The time when the context store was last updated, in ISO 8601 UTC format.
+        # The last update time of the context store in ISO 8601 UTC format.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
@@ -126,6 +126,7 @@ class GetContextStoreResponseBodyConfig(DaraModel):
     def __init__(
         self,
         audit: main_models.GetContextStoreResponseBodyConfigAudit = None,
+        audit_log_store: main_models.GetContextStoreResponseBodyConfigAuditLogStore = None,
         extraction_policies: List[main_models.GetContextStoreResponseBodyConfigExtractionPolicies] = None,
         extraction_policy: main_models.GetContextStoreResponseBodyConfigExtractionPolicy = None,
         inner_source: main_models.GetContextStoreResponseBodyConfigInnerSource = None,
@@ -134,6 +135,8 @@ class GetContextStoreResponseBodyConfig(DaraModel):
         mining_task_name: str = None,
         observability: main_models.GetContextStoreResponseBodyConfigObservability = None,
         output_dataset: main_models.GetContextStoreResponseBodyConfigOutputDataset = None,
+        runtime_recall_enabled: bool = None,
+        runtime_recall_revision: int = None,
         scope_policy: main_models.GetContextStoreResponseBodyConfigScopePolicy = None,
         service_names: List[str] = None,
         source: main_models.GetContextStoreResponseBodyConfigSource = None,
@@ -144,39 +147,48 @@ class GetContextStoreResponseBodyConfig(DaraModel):
     ):
         # The audit configuration.
         self.audit = audit
+        # The Simple Log Service (SLS) audit log location for the experience library user. The console reads the logs by using the existing GetLogs permission.
+        self.audit_log_store = audit_log_store
         # The extraction policies. You can configure 1 to 10 policies. The strategyVersion parameter indicates the snapshot version of the entire library configuration.
         self.extraction_policies = extraction_policies
-        # The extraction policy for the memory type.
+        # The extraction policy of the memory type.
         self.extraction_policy = extraction_policy
-        # The system-assigned coordinates of the event Logstore for the memory type. The Logstore is located in the Simple Log Service (SLS) project bound to the AgentSpace.
+        # The system-assigned event Logstore coordinates for the memory type, located in the Simple Log Service (SLS) project bound to the AgentSpace.
         self.inner_source = inner_source
-        # The metadata field mapping. The key is the business field and the value is the storage field.
+        # The metadata field mapping, where the key is the business field and the value is the storage field.
         self.metadata_field = metadata_field
-        # The interval for experience mining. Valid values: 1h, 6h, 12h, and 1d. Default value: 1d.
+        # The experience mining interval. Valid values: 1h, 6h, 12h, and 1d. Default value: 1d.
         self.mining_interval = mining_interval
-        # The name of the internal running task associated with the server. For continuous libraries, it is used to view consumption records in read-only mode. For manual libraries, it can run limited mining. It is not inferred by the client and cannot replace the ingestion and recall criteria of the native experience library.
+        # The name of the internal running task associated with the server. Continuous libraries are used for read-only viewing of consumption records, and manual libraries can run limited mining. This value is not inferred by the client and cannot replace the ingestion and recall criteria of the native experience library.
         self.mining_task_name = mining_task_name
-        # The observability resource coordinates (memory type).
+        # The observability resource coordinates for the memory type.
         self.observability = observability
-        # The location of the memory output dataset (memory type).
+        # The location of the memory output dataset for the memory type.
         self.output_dataset = output_dataset
+        # Specifies whether runtime recall is allowed for the experience library. This parameter is returned only for the experience type.
+        self.runtime_recall_enabled = runtime_recall_enabled
+        # The version of the runtime recall property, which is read-only. When you update the switch, a concurrency check is performed by using expectedRuntimeRecallRevision.
+        self.runtime_recall_revision = runtime_recall_revision
         # The scope constraint policy.
         self.scope_policy = scope_policy
-        # The list of service names used to locate the trace data source together with source.agentSpace. This parameter cannot be modified in the current phase.
+        # The list of service names, which are used together with source.agentSpace to locate the trace data source. This parameter cannot be changed in the current phase.
         self.service_names = service_names
-        # The data source configuration provided by the user, which serves only as the root identifier of the data source.
+        # The data source configuration passed by the user, which serves only as the root identity of the data source.
         self.source = source
-        # The running status of the data source, applicable to the memory type and experience Dataset follow mode. The experience library submits a checkpoint only after it is published and automatically applied successfully. Pausing and restarting retain the checkpoint.
+        # The running status of the data source. This applies to the memory type and the experience dataset in follow mode. The experience base submits a checkpoint only after it is published and automatically applied. Pausing and restarting retain the checkpoint.
         self.source_status = source_status
+        # The actual storage modes for each policy. A hybrid store includes event and upsert.
         self.storage_modes = storage_modes
         # The storage policy for the memory type.
         self.storage_policy = storage_policy
-        # The currently effective strategy version number for the memory type.
+        # The version number of the currently effective policy for the memory type.
         self.strategy_version = strategy_version
 
     def validate(self):
         if self.audit:
             self.audit.validate()
+        if self.audit_log_store:
+            self.audit_log_store.validate()
         if self.extraction_policies:
             for v1 in self.extraction_policies:
                  if v1:
@@ -206,6 +218,9 @@ class GetContextStoreResponseBodyConfig(DaraModel):
         if self.audit is not None:
             result['audit'] = self.audit.to_map()
 
+        if self.audit_log_store is not None:
+            result['auditLogStore'] = self.audit_log_store.to_map()
+
         result['extractionPolicies'] = []
         if self.extraction_policies is not None:
             for k1 in self.extraction_policies:
@@ -231,6 +246,12 @@ class GetContextStoreResponseBodyConfig(DaraModel):
 
         if self.output_dataset is not None:
             result['outputDataset'] = self.output_dataset.to_map()
+
+        if self.runtime_recall_enabled is not None:
+            result['runtimeRecallEnabled'] = self.runtime_recall_enabled
+
+        if self.runtime_recall_revision is not None:
+            result['runtimeRecallRevision'] = self.runtime_recall_revision
 
         if self.scope_policy is not None:
             result['scopePolicy'] = self.scope_policy.to_map()
@@ -260,6 +281,10 @@ class GetContextStoreResponseBodyConfig(DaraModel):
         if m.get('audit') is not None:
             temp_model = main_models.GetContextStoreResponseBodyConfigAudit()
             self.audit = temp_model.from_map(m.get('audit'))
+
+        if m.get('auditLogStore') is not None:
+            temp_model = main_models.GetContextStoreResponseBodyConfigAuditLogStore()
+            self.audit_log_store = temp_model.from_map(m.get('auditLogStore'))
 
         self.extraction_policies = []
         if m.get('extractionPolicies') is not None:
@@ -291,6 +316,12 @@ class GetContextStoreResponseBodyConfig(DaraModel):
         if m.get('outputDataset') is not None:
             temp_model = main_models.GetContextStoreResponseBodyConfigOutputDataset()
             self.output_dataset = temp_model.from_map(m.get('outputDataset'))
+
+        if m.get('runtimeRecallEnabled') is not None:
+            self.runtime_recall_enabled = m.get('runtimeRecallEnabled')
+
+        if m.get('runtimeRecallRevision') is not None:
+            self.runtime_recall_revision = m.get('runtimeRecallRevision')
 
         if m.get('scopePolicy') is not None:
             temp_model = main_models.GetContextStoreResponseBodyConfigScopePolicy()
@@ -330,15 +361,15 @@ class GetContextStoreResponseBodyConfigStoragePolicy(DaraModel):
         similarity_threshold: float = None,
         ttl_days: int = None,
     ):
-        # The allowed storage actions. Default value: all actions. Valid values: ADD, UPDATE, MERGE, and DELETE.
+        # The allowed storage actions. Default value: all actions (ADD, UPDATE, MERGE, and DELETE).
         self.allowed_actions = allowed_actions
         # Specifies whether to enable deduplication in event mode. Default value: true.
         self.dedupe = dedupe
         # Specifies whether to enable human edit protection. Default value: true. When enabled, automatic extraction does not overwrite manually modified memories.
         self.human_edit_protection = human_edit_protection
-        # The merge key for upsert operations. Default value: semantic. Valid values: factKey, semantic, and both.
+        # The merge key for upsert operations. Valid values: factKey, semantic, and both. Default value: semantic.
         self.merge_key = merge_key
-        # The storage mode. Default value: upsert. Valid values: event (event append) and upsert (merge update).
+        # The storage mode. Valid values: event (event append) and upsert (merge update). Default value: upsert.
         self.mode = mode
         # The similarity threshold for semantic merging. Valid values: 0 to 1. Default value: 0.4.
         self.similarity_threshold = similarity_threshold
@@ -412,13 +443,13 @@ class GetContextStoreResponseBodyConfigSourceStatus(DaraModel):
         retry_count: int = None,
         state: str = None,
     ):
-        # The processing progress. For memory trajectory, the format is {processTimeNs, watermarkMs}. For dataset, the format is {seq}. For manual, the format is {}. For experience Dataset follow, the seq field uses an exact int64 decimal string.
+        # The processing progress. For memory trajectory, the format is {processTimeNs, watermarkMs}. For dataset, the format is {seq}. For manual, the format is {}. For the experience dataset in follow mode, the seq value is an exact int64 decimal string.
         self.checkpoint = checkpoint
-        # The current reserved sequence window for experience Dataset follow, in the format of {after, until, runId}. All sequence numbers are decimal strings. If a failure occurs, the submitted checkpoint is not advanced.
+        # The current scheduled sequence window for the experience dataset in follow mode. The format is {after, until, runId}. All sequence numbers are decimal strings. If a failure occurs, the submitted checkpoint is not advanced.
         self.current_window = current_window
         # The last desensitized error message. This field is empty when the status is normal.
         self.last_error = last_error
-        # The run ID of the last successful automatic application to the native experience library. This field is for audit purposes only.
+        # The run ID of the last successful automatic application to the native experience store, for audit purposes only.
         self.last_run_id = last_run_id
         # The last window processing time in ISO 8601 UTC format.
         self.last_window_at = last_window_at
@@ -497,15 +528,15 @@ class GetContextStoreResponseBodyConfigSource(DaraModel):
         type: str = None,
         version_policy: main_models.GetContextStoreResponseBodyConfigSourceVersionPolicy = None,
     ):
-        # The AgentSpace to which the trace data source belongs, which is the same as the AgentSpace to which it belonged when it was created.
+        # The AgentSpace where the trace data source is located, which is the same as the AgentSpace to which it belonged when it was created.
         self.agent_space = agent_space
         # The DatasetBinding v1 shared with optimization tasks, which retains fixed column validation, supplementary column usage, and all/window selection.
         self.binding = binding
-        # The data source configuration for the memory type dataset. This parameter is required when the type is memory and source.type is dataset.
+        # The dataset data source configuration for the memory type. This parameter is required when the memory type is used and source.type is set to dataset.
         self.dataset = dataset
         # The name of the source dataset for the experience type in the current AgentSpace.
         self.dataset_name = dataset_name
-        # The input format of the dataset. For the experience base dataset, the source is atif.
+        # The input format of the dataset. The source of the experience base dataset is atif.
         self.format = format
         # The maximum number of records to read from the dataset at a time. Valid values: 1 to 1000.
         self.max_records = max_records
@@ -513,11 +544,11 @@ class GetContextStoreResponseBodyConfigSource(DaraModel):
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.start_time = start_time
-        # The data source configuration for the memory type trajectory. This parameter is required when the type is memory and source.type is trajectory.
+        # The trajectory datasource config for the memory type. This parameter is required when the type is memory and source.type is trajectory.
         self.trajectory = trajectory
-        # The source type, which can be trajectory or dataset. For experience, if not specified, the trajectory configuration is used. For Dataset, the datasetName, format, and binding at the current level are used. The default mode is manual. If versionPolicy.mode is set to follow, continuous processing is performed and automatically applied to the experience library. For memory, if not specified, the mode is manual (only written by AddContexts). Otherwise, the trajectory or dataset sub-configuration with the same name is used. This parameter cannot be modified after creation.
+        # The source type. Valid values: trajectory and dataset. For the experience type, if this parameter is not specified, trajectory is used. For datasets, the datasetName, format, and binding parameters at the current level are used. The default mode is manual. If versionPolicy.mode is set to follow, data is continuously processed and automatically applied to the experience base. For the memory type, if this parameter is not specified, manual is used, meaning data is written only through AddContexts. Otherwise, the trajectory or dataset sub-configuration with the same name is used. The value cannot be changed after creation.
         self.type = type
-        # The continuous consumption configuration for the native experience library Dataset. The default mode is manual. The follow mode only allows binding.selection.mode to be set to all, and consumes data by append sequence number. This parameter cannot be modified after creation.
+        # The continuous consumption configuration for the native experience base dataset. The default mode is manual. The follow mode only allows binding.selection.mode to be set to all, and data is consumed based on the append sequence number. The value cannot be changed after creation.
         self.version_policy = version_policy
 
     def validate(self):
@@ -610,7 +641,7 @@ class GetContextStoreResponseBodyConfigSourceVersionPolicy(DaraModel):
     ):
         # The continuous consumption mode. The value is fixed to follow.
         self.mode = mode
-        # The initial consumed append sequence number. The value is a decimal string of a non-negative int64 integer. Default value: 0. The __dataset_seq field is used, and the business timestamp is not used as the consumption checkpoint.
+        # The initial consumed append sequence number. The value is a decimal string of a non-negative int64 integer. Default value: 0. The __dataset_seq parameter is used, and the business timestamp is not used as the consumption checkpoint.
         self.start_seq = start_seq
 
     def validate(self):
@@ -648,9 +679,9 @@ class GetContextStoreResponseBodyConfigSourceTrajectory(DaraModel):
         scope_mapping: main_models.GetContextStoreResponseBodyConfigSourceTrajectoryScopeMapping = None,
         start_time: str = None,
     ):
-        # The trajectory filter condition. Multiple conditions are combined with AND, and conditions within a list are combined with OR.
+        # The trajectory filter conditions. Conditions are combined with AND, and items within a list are combined with OR.
         self.filter = filter
-        # The name of the trajectory Logstore. Default value: agent-trajectory. This parameter cannot be modified after creation.
+        # The name of the trajectory Logstore. Default value: agent-trajectory. The value cannot be changed after creation.
         self.logstore = logstore
         # The polling interval in seconds. Valid values: 60 to 3600. Default value: 300.
         self.poll_interval_seconds = poll_interval_seconds
@@ -774,15 +805,15 @@ class GetContextStoreResponseBodyConfigSourceTrajectoryFilter(DaraModel):
         query: str = None,
         service_names: List[str] = None,
     ):
-        # The list of agent names. An explicit empty list returns a 400 error.
+        # The list of agent names. An explicitly empty list returns a 400 error.
         self.agent_names = agent_names
-        # Specifies whether to exclude degraded trajectories. Default value: false (includes degraded trajectories).
+        # Specifies whether to exclude degraded trajectories. Default value: false, which includes degraded trajectories.
         self.exclude_degraded = exclude_degraded
-        # The minimum step count, which must be greater than or equal to 0.
+        # The minimum number of steps. The value must be greater than or equal to 0.
         self.min_step_count = min_step_count
-        # The native Simple Log Service (SLS) query statement. This statement is combined with the preceding conditions using the AND operator.
+        # The native Simple Log Service (SLS) query statement. This statement is combined with the preceding conditions using AND.
         self.query = query
-        # The list of service names. A single trailing asterisk (*) is supported. An explicit empty list returns a 400 error.
+        # The list of service names. A single trailing asterisk (*) is supported. An explicitly empty list returns a 400 error.
         self.service_names = service_names
 
     def validate(self):
@@ -841,13 +872,13 @@ class GetContextStoreResponseBodyConfigSourceDataset(DaraModel):
     ):
         # The list of custom field declarations.
         self.custom_fields = custom_fields
-        # The name of the dataset in the same AgentSpace. This parameter cannot be modified after creation.
+        # The name of the dataset in the same AgentSpace. This parameter cannot be changed after creation.
         self.dataset_name = dataset_name
-        # The row filter condition.
+        # The row filter conditions.
         self.filter = filter
         # The polling interval in seconds. Valid values: 60 to 3600. Default value: 300.
         self.poll_interval_seconds = poll_interval_seconds
-        # The row schema contract of the dataset. In the current phase, this parameter is fixed to MemorySourceV1.
+        # The row schema contract of the dataset. The value is fixed to MemorySourceV1 in the current phase.
         self.schema_contract = schema_contract
         # The version consumption policy of the dataset.
         self.version_policy = version_policy
@@ -923,7 +954,9 @@ class GetContextStoreResponseBodyConfigSourceDatasetVersionPolicy(DaraModel):
         start_seq: int = None,
         version: str = None,
     ):
-        # The consumption mode. Valid values: follow (incremental consumption based on __dataset_seq) and fixed (full consumption of the specified ACTIVE version at once).
+        # The version consumption mode. Valid values:
+        # - follow: consumes data incrementally based on __dataset_seq.
+        # - fixed: consumes the specified ACTIVE version in full at once.
         self.mode = mode
         # The starting __dataset_seq for the follow mode.
         self.start_seq = start_seq
@@ -967,7 +1000,7 @@ class GetContextStoreResponseBodyConfigSourceDatasetFilter(DaraModel):
         self,
         where: str = None,
     ):
-        # The subset of the pipeline where clause, which is pushed down to SQL.
+        # The subset of the pipeline where clause that is pushed down to SQL.
         self.where = where
 
     def validate(self):
@@ -999,13 +1032,13 @@ class GetContextStoreResponseBodyConfigSourceDatasetCustomFields(DaraModel):
         target: str = None,
         usage: str = None,
     ):
-        # The description of the field. This parameter is required when usage is extraction-input and is appended to the extraction prompt.
+        # The description of the field. This parameter is required when usage is set to extraction-input, and it is appended to the extraction prompt.
         self.description = description
         # Specifies whether the field is a sensitive field.
         self.sensitive = sensitive
         # The name of the source field.
         self.source_field = source_field
-        # The target path for writing, such as metadata.customerTier.
+        # The write target path, such as metadata.customerTier.
         self.target = target
         # The usage of the field. Valid values: extraction-input (participates in extraction) and ignore (ignored).
         self.usage = usage
@@ -1059,7 +1092,7 @@ class GetContextStoreResponseBodyConfigScopePolicy(DaraModel):
         self,
         required_any_of: List[str] = None,
     ):
-        # Specifies that at least one of the scope fields must be non-empty. Valid values: userId, agentId, appId, and runId.
+        # At least one of the scope fields must be non-empty. Valid values for the elements: userId, agentId, appId, and runId.
         self.required_any_of = required_any_of
 
     def validate(self):
@@ -1090,13 +1123,13 @@ class GetContextStoreResponseBodyConfigOutputDataset(DaraModel):
         schema_contract: str = None,
         schema_version: int = None,
     ):
-        # The AgentSpace to which the dataset belongs.
+        # The AgentSpace where the dataset is located.
         self.agent_space = agent_space
         # The name of the dataset.
         self.dataset_name = dataset_name
         # The row schema contract of the dataset.
         self.schema_contract = schema_contract
-        # The schema version.
+        # The version of the schema.
         self.schema_version = schema_version
 
     def validate(self):
@@ -1148,7 +1181,7 @@ class GetContextStoreResponseBodyConfigObservability(DaraModel):
         self.audit_logstore = audit_logstore
         # The name of the event Logstore.
         self.events_logstore = events_logstore
-        # The Simple Log Service (SLS) project to which both belong, which is bound to the AgentSpace.
+        # The Simple Log Service (SLS) project where both resources are located, which is the project bound to the AgentSpace.
         self.project = project
 
     def validate(self):
@@ -1191,7 +1224,7 @@ class GetContextStoreResponseBodyConfigInnerSource(DaraModel):
     ):
         # The name of the event Logstore.
         self.logstore = logstore
-        # The name of the SLS project.
+        # The name of the Simple Log Service (SLS) project.
         self.project = project
 
     def validate(self):
@@ -1233,7 +1266,7 @@ class GetContextStoreResponseBodyConfigExtractionPolicy(DaraModel):
         self.categories = categories
         # The custom extraction instructions. This parameter is required when preset is set to custom. The length must be 1 to 8,000 characters.
         self.custom_instructions = custom_instructions
-        # The list of exclusion rules. Content that matches these rules is not extracted.
+        # The list of exclusion rules. Content that matches the rules is not extracted.
         self.exclude_rules = exclude_rules
         # The extraction model configuration.
         self.model = model
@@ -1291,7 +1324,7 @@ class GetContextStoreResponseBodyConfigExtractionPolicyModel(DaraModel):
         self,
         name: str = None,
     ):
-        # The name of the extraction model. Currently, only qwen3.8-flash is supported. Internal platform credentials are used.
+        # The name of the extraction model. Currently, only qwen3.8-flash is supported. The platform uses internal credentials.
         self.name = name
 
     def validate(self):
@@ -1331,9 +1364,9 @@ class GetContextStoreResponseBodyConfigExtractionPolicies(DaraModel):
         self.categories = categories
         # The custom extraction instructions. This parameter is required when preset is set to custom. The length must be 1 to 8,000 characters.
         self.custom_instructions = custom_instructions
-        # Specifies whether to apply this policy to new inputs. Default value: true. Disabling the policy does not delete historical memories.
+        # Specifies whether to execute this policy for new input. Default value: true. Disabling the policy does not delete historical memories.
         self.enabled = enabled
-        # The list of exclusion rules. Content that matches these rules is not extracted.
+        # The list of exclusion rules. Content that matches the rules is not extracted.
         self.exclude_rules = exclude_rules
         # The extraction model configuration.
         self.model = model
@@ -1341,6 +1374,7 @@ class GetContextStoreResponseBodyConfigExtractionPolicies(DaraModel):
         self.name = name
         # The preset policy. Valid values: fact, toc-profile, tob-digital-twin, and custom. Default value: fact.
         self.preset = preset
+        # The independent storage rules for this policy. If omitted, the original value is retained. New policies use the default value. Repeatedly confirmed memories refresh the validity period by default.
         self.storage_policy = storage_policy
         # The stable ID of the extraction policy. The ID must start with a letter and can contain only letters, digits, underscores, and hyphens. It can be up to 64 characters in length. The ID must be unique within the same context library. Modifying the name or instructions does not change this ID.
         # 
@@ -1431,12 +1465,19 @@ class GetContextStoreResponseBodyConfigExtractionPoliciesStoragePolicy(DaraModel
         similarity_threshold: float = None,
         ttl_days: int = None,
     ):
+        # The allowed storage actions. Default value: all actions (ADD, UPDATE, MERGE, and DELETE).
         self.allowed_actions = allowed_actions
+        # Specifies whether to enable deduplication in event mode. Default value: true.
         self.dedupe = dedupe
+        # Specifies whether to enable human edit protection. Default value: true. When enabled, automatic extraction does not overwrite manually modified memories.
         self.human_edit_protection = human_edit_protection
+        # The merge key for upsert operations. Valid values: factKey, semantic, and both. Default value: semantic.
         self.merge_key = merge_key
+        # The storage mode. Valid values: event (event append) and upsert (merge update). Default value: upsert.
         self.mode = mode
+        # The similarity threshold for semantic merging. Valid values: 0 to 1. Default value: 0.4.
         self.similarity_threshold = similarity_threshold
+        # The number of days before memories expire. A value of 0 indicates that memories do not expire.
         self.ttl_days = ttl_days
 
     def validate(self):
@@ -1500,7 +1541,7 @@ class GetContextStoreResponseBodyConfigExtractionPoliciesModel(DaraModel):
         self,
         name: str = None,
     ):
-        # The name of the extraction model. Currently, only qwen3.8-flash is supported. Internal platform credentials are used.
+        # The name of the extraction model. Currently, only qwen3.8-flash is supported. The platform uses internal credentials.
         self.name = name
 
     def validate(self):
@@ -1523,6 +1564,43 @@ class GetContextStoreResponseBodyConfigExtractionPoliciesModel(DaraModel):
 
         return self
 
+class GetContextStoreResponseBodyConfigAuditLogStore(DaraModel):
+    def __init__(
+        self,
+        logstore: str = None,
+        project: str = None,
+    ):
+        # The name of the Logstore for the experience library audit logs.
+        self.logstore = logstore
+        # The name of the user SLS project where the experience library audit logs are stored.
+        self.project = project
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.logstore is not None:
+            result['logstore'] = self.logstore
+
+        if self.project is not None:
+            result['project'] = self.project
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('logstore') is not None:
+            self.logstore = m.get('logstore')
+
+        if m.get('project') is not None:
+            self.project = m.get('project')
+
+        return self
+
 class GetContextStoreResponseBodyConfigAudit(DaraModel):
     def __init__(
         self,
@@ -1530,9 +1608,9 @@ class GetContextStoreResponseBodyConfigAudit(DaraModel):
         query_mode: str = None,
         retention_days: int = None,
     ):
-        # Specifies whether to write item events for dropped recall candidates. Default value: false.
+        # Specifies whether to write item events for dropped candidates during retrieval. Default value: false.
         self.dropped_candidates = dropped_candidates
-        # The recording mode for recall queries. Valid values: raw (plaintext) and hash (HMAC only). Default value: raw.
+        # The recording mode for retrieval queries. Valid values: raw (plaintext) and hash (HMAC only). Default value: raw.
         self.query_mode = query_mode
         # The number of days to retain audit logs. Valid values: 1 to 180. Default value: 30.
         self.retention_days = retention_days

@@ -294,6 +294,7 @@ from ._execute_query_response_body import ExecuteQueryResponseBodyMetaTruncation
 from ._execute_query_response_body import ExecuteQueryResponseBodyMeta
 from ._get_agent_space_response_body import GetAgentSpaceResponseBodyMseNamespace
 from ._get_context_store_response_body import GetContextStoreResponseBodyConfigAudit
+from ._get_context_store_response_body import GetContextStoreResponseBodyConfigAuditLogStore
 from ._get_context_store_response_body import GetContextStoreResponseBodyConfigExtractionPoliciesModel
 from ._get_context_store_response_body import GetContextStoreResponseBodyConfigExtractionPoliciesStoragePolicy
 from ._get_context_store_response_body import GetContextStoreResponseBodyConfigExtractionPolicies
@@ -401,6 +402,7 @@ from ._update_context_store_request import UpdateContextStoreRequestConfigSource
 from ._update_context_store_request import UpdateContextStoreRequestConfigSource
 from ._update_context_store_request import UpdateContextStoreRequestConfigStoragePolicy
 from ._update_context_store_request import UpdateContextStoreRequestConfig
+from ._update_context_store_response_body import UpdateContextStoreResponseBodyConfig
 from ._update_dataset_request import UpdateDatasetRequestRenames
 from ._update_evaluator_skill_request import UpdateEvaluatorSkillRequestFiles
 from ._update_pipeline_request import UpdatePipelineRequestExecutePolicyContinuous
@@ -717,6 +719,7 @@ __all__ = [
     ExecuteQueryResponseBodyMeta,
     GetAgentSpaceResponseBodyMseNamespace,
     GetContextStoreResponseBodyConfigAudit,
+    GetContextStoreResponseBodyConfigAuditLogStore,
     GetContextStoreResponseBodyConfigExtractionPoliciesModel,
     GetContextStoreResponseBodyConfigExtractionPoliciesStoragePolicy,
     GetContextStoreResponseBodyConfigExtractionPolicies,
@@ -824,6 +827,7 @@ __all__ = [
     UpdateContextStoreRequestConfigSource,
     UpdateContextStoreRequestConfigStoragePolicy,
     UpdateContextStoreRequestConfig,
+    UpdateContextStoreResponseBodyConfig,
     UpdateDatasetRequestRenames,
     UpdateEvaluatorSkillRequestFiles,
     UpdatePipelineRequestExecutePolicyContinuous,

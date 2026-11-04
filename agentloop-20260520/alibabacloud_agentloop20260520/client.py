@@ -5866,6 +5866,10 @@ class Client(OpenApiClient):
             body['contextType'] = request.context_type
         if not DaraCore.is_null(request.description):
             body['description'] = request.description
+        if not DaraCore.is_null(request.expected_runtime_recall_revision):
+            body['expectedRuntimeRecallRevision'] = request.expected_runtime_recall_revision
+        if not DaraCore.is_null(request.reason):
+            body['reason'] = request.reason
         if not DaraCore.is_null(request.status):
             body['status'] = request.status
         req = open_api_util_models.OpenApiRequest(
@@ -5910,6 +5914,10 @@ class Client(OpenApiClient):
             body['contextType'] = request.context_type
         if not DaraCore.is_null(request.description):
             body['description'] = request.description
+        if not DaraCore.is_null(request.expected_runtime_recall_revision):
+            body['expectedRuntimeRecallRevision'] = request.expected_runtime_recall_revision
+        if not DaraCore.is_null(request.reason):
+            body['reason'] = request.reason
         if not DaraCore.is_null(request.status):
             body['status'] = request.status
         req = open_api_util_models.OpenApiRequest(

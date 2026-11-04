@@ -16,11 +16,11 @@ class ListContextStoresResponseBody(DaraModel):
         results: List[main_models.ListContextStoresResponseBodyResults] = None,
         total: int = None,
     ):
-        # The maximum number of results per page specified in the request.
+        # The maximum number of entries per page specified in the request.
         self.max_results = max_results
         # The token for the next page. An empty string indicates that the last page is reached.
         self.next_token = next_token
-        # The request ID, which can be used to locate the request during troubleshooting.
+        # The request ID, which is used to locate the request during troubleshooting.
         self.request_id = request_id
         # The list of context stores.
         self.results = results
@@ -101,7 +101,7 @@ class ListContextStoresResponseBodyResults(DaraModel):
         self.context_store_name = context_store_name
         # The type of the context store, such as experience or memory.
         self.context_type = context_type
-        # The time when the context store was created, in ISO 8601 UTC format.
+        # The time when the context store was created. The time is in the ISO 8601 UTC format.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
@@ -111,14 +111,15 @@ class ListContextStoresResponseBodyResults(DaraModel):
         self.region_id = region_id
         # The list of service names. This parameter has a value only for the experience type. It is used together with the data source AgentSpace to locate the trace data source.
         self.service_names = service_names
-        # The memory data source type, such as manual, trajectory, or dataset. This parameter has a value only for the memory type.
+        # The data source type of the memory context store. Valid values: manual, trajectory, and dataset. This parameter has a value only for the memory type.
         self.source_type = source_type
         # The status of the context store. Valid values include ACTIVE, INITIALIZING, and FAILED.
         self.status = status
-        # The memory storage mode, such as event or upsert. This parameter has a value only for the memory type.
+        # The storage mode of the memory context store. Valid values: event and upsert. This parameter has a value only for the memory type.
         self.storage_mode = storage_mode
+        # The actual storage modes of each policy. A hybrid context store includes both event and upsert.
         self.storage_modes = storage_modes
-        # The time when the context store was last updated, in ISO 8601 UTC format.
+        # The time when the context store was last updated. The time is in the ISO 8601 UTC format.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time

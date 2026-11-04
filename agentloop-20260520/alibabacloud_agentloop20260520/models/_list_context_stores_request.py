@@ -21,7 +21,7 @@ class ListContextStoresRequest(DaraModel):
         self.max_results = max_results
         # The pagination token. To retrieve the next page, pass the nextToken value from the previous response. Do not specify this parameter for the first request.
         self.next_token = next_token
-        # The memory data source type used for filtering, such as manual, trajectory, or dataset. If this parameter is not specified, no filtering is performed.
+        # The data source type of the memory context store used for filtering. Valid values: manual, trajectory, and dataset. If this parameter is not specified, no filtering is performed.
         self.source_type = source_type
 
     def validate(self):

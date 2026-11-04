@@ -24,9 +24,9 @@ class SearchContextRequest(DaraModel):
         self.filter = filter
         # Specifies whether to apply structured formatting to the returned results.
         self.formatted = formatted
-        # Specifies whether to include memories whose sourceState is inactive. Default value: false.
+        # Specifies whether to include memories with sourceState=inactive. Default value: false.
         self.include_inactive = include_inactive
-        # The maximum number of returned results, which corresponds to the top N results by similarity.
+        # The maximum number of returned results based on the top-N similarity.
         self.limit = limit
         # The retrieval query text. Natural language is supported.
         # 
@@ -34,9 +34,9 @@ class SearchContextRequest(DaraModel):
         self.query = query
         # The retrieval options used to control the retrieval strategy.
         self.retrieval_option = retrieval_option
-        # The recall scope. If a field with the same name conflicts with the filter, a 400 ScopeFilterConflict error is returned.
+        # The recall scope. If a field with the same name exists in the filter, a 400 ScopeFilterConflict error is returned.
         self.scope = scope
-        # Filters results by extraction strategy ID. Multiple IDs in the list are evaluated with an OR condition. If this parameter is not specified, all strategies are recalled. An empty list returns a 400 error. If the format is valid but no matching IDs are found, an empty result is returned. IDs of historically removed strategies are supported.
+        # Filters results by extraction strategy IDs. Multiple IDs in the list are evaluated with an OR logic. If this parameter is not specified, all strategies are recalled. An empty list returns a 400 error. Valid IDs with no matches return empty results. Historical removed strategy IDs are supported.
         self.strategy_ids = strategy_ids
         # The similarity threshold. Results with a similarity score below this value are filtered out. Valid values: 0 to 1.
         self.threshold = threshold
@@ -119,13 +119,13 @@ class SearchContextRequestScope(DaraModel):
         run_id: str = None,
         user_id: str = None,
     ):
-        # Agent Id
+        # The ID of the agent.
         self.agent_id = agent_id
-        # The application ID.
+        # The ID of the application.
         self.app_id = app_id
-        # The run ID.
+        # The ID of the run.
         self.run_id = run_id
-        # The user ID.
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):

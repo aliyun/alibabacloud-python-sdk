@@ -1,3 +1,6 @@
+2026-11-04 Version: 2.4.4
+- Generated python 2026-05-20 for AgentLoop.
+
 2026-10-28 Version: 2.4.3
 - Generated python 2026-05-20 for AgentLoop.
 

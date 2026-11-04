@@ -12,7 +12,7 @@ class CreateContextStoreResponseBody(DaraModel):
     ):
         # The request ID, which is used to locate the request during troubleshooting.
         self.request_id = request_id
-        # The version number of the currently effective strategy (memory type).
+        # The version number of the effective strategy for the memory type.
         self.strategy_version = strategy_version
 
     def validate(self):
