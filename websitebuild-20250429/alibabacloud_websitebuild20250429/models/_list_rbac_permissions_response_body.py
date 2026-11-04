@@ -24,25 +24,25 @@ class ListRbacPermissionsResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The detailed reason why access was denied.
+        # The detailed reason why access is denied.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Specifies whether retries are allowed.
         self.allow_retry = allow_retry
-        # The application name.
+        # The name of the app.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
         # The dynamic message.
         self.dynamic_message = dynamic_message
-        # The error parameters returned.
+        # The returned error parameters.
         self.error_args = error_args
-        # The number of entries per query.
+        # The number of entries to return in each query.
         # 
         # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # The response object.
+        # The returned object.
         self.module = module
-        # The token for the next query. This parameter is empty if no more results exist.
+        # The token that is used to start the next query. This parameter is empty if no next query exists.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
@@ -162,9 +162,9 @@ class ListRbacPermissionsResponseBodyModule(DaraModel):
     ):
         # The current page number.
         self.current_page_num = current_page_num
-        # The query results.
+        # The request results.
         self.data = data
-        # The next feature ID.
+        # The ID of the next feature.
         self.next = next
         # Indicates whether a next page exists.
         self.next_page = next_page
@@ -172,7 +172,7 @@ class ListRbacPermissionsResponseBodyModule(DaraModel):
         self.page_size = page_size
         # Indicates whether a previous page exists.
         self.pre_page = pre_page
-        # Apart from pagination limits, the server processes up to 1000 recent records for the current query. If the results exceed 1000 entries, **ResultLimit** is **true**. Narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
+        # In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit** is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
         # The total number of entries.
         self.total_item_num = total_item_num
@@ -266,7 +266,7 @@ class ListRbacPermissionsResponseBodyModuleNext(DaraModel):
         id: str = None,
         resource: str = None,
     ):
-        # The operation that you want to perform. Set the value to **GetRemind**.
+        # The system-defined parameter. Set the value to **GetRemind**.
         self.action = action
         # The scenario description.
         self.description = description
@@ -276,7 +276,7 @@ class ListRbacPermissionsResponseBodyModuleNext(DaraModel):
         # 
         # **Note**: The metadata is constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).resources. A valid resource declaration must include the full-path metadata declaration from level 0 to the validLeaf level.
         # 
-        # Appendix: [ResourceSchema documentation on the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
+        # For more information, see [ResourceSchema documentation for Alibaba Cloud International](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions).
         self.resource = resource
 
     def validate(self):
@@ -325,7 +325,7 @@ class ListRbacPermissionsResponseBodyModuleData(DaraModel):
         id: str = None,
         resource: str = None,
     ):
-        # The operation that you want to perform. Set the value to **GetDISyncInstanceInfo**.
+        # The system-defined parameter. Set the value to **GetDISyncInstanceInfo**.
         self.action = action
         # The scenario description.
         self.description = description

@@ -22,27 +22,27 @@ class QueryRbacRolePermissionsResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The details about the access denial.
+        # The detailed reason for access denial.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Specifies whether retries are allowed.
         self.allow_retry = allow_retry
-        # The application name. The application with this name is queried.
+        # The name of the application.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic message. This parameter is not in use. Ignore this parameter.
+        # The dynamic message. This parameter is not used. Ignore it.
         self.dynamic_message = dynamic_message
-        # The error parameters returned.
+        # The returned error parameters.
         self.error_args = error_args
-        # Indicates whether the operation is successful.
+        # Indicates whether the move is successful.
         self.module = module
         # Id of the request
         self.request_id = request_id
         # The error code.
         self.root_error_code = root_error_code
-        # The error message.
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request is synchronously processed.
+        # Specifies whether synchronous processing is used.
         self.synchro = synchro
 
     def validate(self):
@@ -144,7 +144,7 @@ class QueryRbacRolePermissionsResponseBodyModule(DaraModel):
         self.current_page_num = current_page_num
         # The request result.
         self.data = data
-        # The next feature ID.
+        # The ID of the next feature.
         self.next = next
         # Indicates whether a next page exists.
         self.next_page = next_page
@@ -152,7 +152,7 @@ class QueryRbacRolePermissionsResponseBodyModule(DaraModel):
         self.page_size = page_size
         # Indicates whether a previous page exists.
         self.pre_page = pre_page
-        # The server processes up to 1,000 recent records beyond the pagination limit for the current query. If the results exceed 1,000 records, **ResultLimit** is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
+        # In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit** is **true**. Narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
         # The total number of entries.
         self.total_item_num = total_item_num
@@ -246,7 +246,7 @@ class QueryRbacRolePermissionsResponseBodyModuleNext(DaraModel):
         id: str = None,
         resource: str = None,
     ):
-        # The operation that you want to perform. Set the value to **GetCreateCustomerInfomation**.
+        # The system-defined parameter. Set the value to **GetCreateCustomerInfomation**.
         self.action = action
         # The scenario description.
         self.description = description
@@ -254,7 +254,7 @@ class QueryRbacRolePermissionsResponseBodyModuleNext(DaraModel):
         self.id = id
         # The statistical method for the Warn level.
         # 
-        # The value of `Statistics` varies by cloud service. For more information, see [Cloud service monitoring items](https://help.aliyun.com/document_detail/163515.html).
+        # The value of `Statistics` varies with the cloud service. For more information, see [Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
         self.resource = resource
 
     def validate(self):
@@ -303,13 +303,13 @@ class QueryRbacRolePermissionsResponseBodyModuleData(DaraModel):
         id: str = None,
         resource: str = None,
     ):
-        # The operation that you want to perform. Set the value to **DeleteIntegration**.
+        # The system-defined parameter. Set the value to **DeleteIntegration**.
         self.action = action
         # The scenario description.
         self.description = description
         # The scenario ID.
         self.id = id
-        # The alert rule name.
+        # The name of the alert rule.
         self.resource = resource
 
     def validate(self):

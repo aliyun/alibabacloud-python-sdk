@@ -17,15 +17,15 @@ class ListRbacPermissionsRequest(DaraModel):
     ):
         # The business ID.
         self.biz_id = biz_id
-        # The number of entries per query.
+        # The number of entries to return in each query.
         # 
         # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # The token for the next query. This parameter is empty if no more results exist.
+        # The token that is used to start the next query. This parameter is empty if no next query exists.
         self.next_token = next_token
         # The field used for sorting.
         self.order_column = order_column
-        # The sort type. Valid values: ASC and DESC.
+        # The sort order. Valid values: ASC and DESC.
         self.order_type = order_type
         # The page number. Default value: 1.
         self.page_num = page_num

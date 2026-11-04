@@ -21,20 +21,20 @@ class DeleteRbacOrgUnitResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The access denied details.
+        # The access denial details.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed. Valid values:
-        # - false: Retry is not allowed.
-        # - true: Retry is allowed.
+        # Specifies whether retries are allowed. Valid values:
+        # - false: Retries are not allowed.
+        # - true: Retries are allowed.
         self.allow_retry = allow_retry
-        # The application name. The application with this name is queried.
+        # The name of the application to query.
         self.app_name = app_name
-        # The dynamic code. This parameter is not in use. Ignore this parameter.
+        # The dynamic code. This parameter is not in use and can be ignored.
         self.dynamic_code = dynamic_code
-        # The dynamic error message that is used to replace the `%s` variable in the **ErrMessage** response parameter.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the **DtsJobId** request parameter is invalid.
+        # The dynamic error message, which is used to replace `%s` in the **ErrMessage** error message.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
-        # The error parameters.
+        # The returned error parameters.
         self.error_args = error_args
         # The response data.
         self.module = module
@@ -44,7 +44,7 @@ class DeleteRbacOrgUnitResponseBody(DaraModel):
         self.root_error_code = root_error_code
         # The exception message.
         self.root_error_msg = root_error_msg
-        # A reserved parameter.
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):

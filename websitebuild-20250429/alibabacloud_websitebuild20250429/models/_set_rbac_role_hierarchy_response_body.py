@@ -21,13 +21,13 @@ class SetRbacRoleHierarchyResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The detailed reason why access was denied.
+        # The detailed reason for the access denial.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed. Valid values:
-        # - false: Retry is not allowed.
-        # - true: Retry is allowed.
+        # Specifies whether a retry is allowed. Valid values:
+        # - false: A retry is not allowed.
+        # - true: A retry is allowed.
         self.allow_retry = allow_retry
-        # The application name. The name can contain digits, letters, and hyphens (-). It must start with a letter, cannot end with a hyphen (-), and cannot exceed 36 characters in length.
+        # The application name. It can contain digits, letters, and hyphens (-). It must start with a letter, must not end with a hyphen (-), and must not exceed 36 characters in length.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
@@ -35,7 +35,7 @@ class SetRbacRoleHierarchyResponseBody(DaraModel):
         self.dynamic_message = dynamic_message
         # The returned error parameters.
         self.error_args = error_args
-        # Indicates whether the move was successful.
+        # Indicates whether the move is successful.
         self.module = module
         # Id of the request
         self.request_id = request_id
@@ -43,7 +43,7 @@ class SetRbacRoleHierarchyResponseBody(DaraModel):
         self.root_error_code = root_error_code
         # The exception message.
         self.root_error_msg = root_error_msg
-        # The reserved parameter.
+        # The backup parameter.
         self.synchro = synchro
 
     def validate(self):

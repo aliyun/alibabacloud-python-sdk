@@ -21,7 +21,7 @@ class RevokeRbacUserRoleResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The details of the permission verification failure.
+        # The details of the permission check failure.
         self.access_denied_detail = access_denied_detail
         # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
@@ -29,11 +29,11 @@ class RevokeRbacUserRoleResponseBody(DaraModel):
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic message. This parameter is not in use. Ignore this parameter.
+        # The dynamic message. This parameter is not in use and can be ignored.
         self.dynamic_message = dynamic_message
         # The error parameters.
         self.error_args = error_args
-        # Indicates whether the operation is successful.
+        # Indicates whether the move succeeded.
         self.module = module
         # Id of the request
         self.request_id = request_id

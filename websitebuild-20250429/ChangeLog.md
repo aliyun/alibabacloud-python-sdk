@@ -1,3 +1,12 @@
+2026-11-04 Version: 2.38.7
+- Update API AllocateSupabaseForAdmin: add response parameters Body.Module.SchemaName.
+- Update API AllocateSupabaseForAdmin: add response parameters Body.Module.TenantMode.
+- Update API GetAppSupabaseInstance: add response parameters Body.Module.SchemaName.
+- Update API GetAppSupabaseInstance: add response parameters Body.Module.TenantMode.
+- Update API QuerySupabaseInstanceInfoForAdmin: add response parameters Body.Module.SchemaName.
+- Update API QuerySupabaseInstanceInfoForAdmin: add response parameters Body.Module.TenantMode.
+
+
 2026-10-26 Version: 2.38.6
 - Generated python 2025-04-29 for WebsiteBuild.
 

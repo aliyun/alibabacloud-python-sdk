@@ -17,18 +17,15 @@ class ListRbacOrgTreeRequest(DaraModel):
     ):
         # The business ID.
         self.biz_id = biz_id
-        # The maximum number of entries per query.
+        # The number of results returned per query.
         # 
         # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # The token for the next query. This parameter is empty if no more results exist.
+        # The token used to start the next query. This parameter is empty if no subsequent query is available.
         self.next_token = next_token
-        # The field by which to sort the results.
+        # The field used for sorting.
         self.order_column = order_column
-        # The sort order. Valid values:
-        # 
-        # - ASC: ascending order.
-        # - DESC: descending order.
+        # The sort order. Valid values: ASC and DESC.
         self.order_type = order_type
         # The page number. Default value: 1.
         self.page_num = page_num

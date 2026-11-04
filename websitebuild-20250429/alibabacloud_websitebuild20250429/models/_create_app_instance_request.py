@@ -31,26 +31,25 @@ class CreateAppInstanceRequest(DaraModel):
         self.application_type = application_type
         # Specifies whether to enable auto-renewal upon expiration.
         self.auto_renew = auto_renew
-        # The client token that is used to ensure the idempotence of the request. Generate a unique value from your client. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length.
+        # Ensures request idempotence. You can generate a parameter value from your client to ensure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters and can be up to 64 characters in length.
         self.client_token = client_token
+        # The action.
         self.create_action = create_action
         # The deployment region.
         self.deploy_area = deploy_area
+        # The description of the website.
         self.description = description
         # Required. The number of subscription periods.
         self.duration = duration
         # The extended information.
         self.extend = extend
+        # The name of the website.
         self.name = name
-        # The payment type.
+        # The payment method.
         self.payment_type = payment_type
-        # Required. The unit of the subscription period. Valid values:
-        # - Year: year
-        # - Month: month
-        # - Day: day
-        # - Hour: hour.
+        # Required. The unit of the subscription period. Valid values: Year, Month, Day, and Hour.
         self.pricing_cycle = pricing_cycle
-        # Required. The number of instances to subscribe to.
+        # Required. The number of instances to purchase.
         self.quantity = quantity
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -184,9 +183,9 @@ class CreateAppInstanceRequestTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key.
+        # The key of the tag.
         self.tag_key = tag_key
-        # The value of tag 0.
+        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):

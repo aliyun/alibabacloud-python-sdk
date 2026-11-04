@@ -24,31 +24,29 @@ class ListRbacRolesResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The details about the access denial.
+        # The detailed reason for access denial.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Specifies whether retries are allowed.
         self.allow_retry = allow_retry
         # The application name.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic message. This parameter is not in use. Ignore this parameter.
+        # The dynamic message. This parameter is not used and can be ignored.
         self.dynamic_message = dynamic_message
-        # The error parameters.
+        # The error parameters returned.
         self.error_args = error_args
-        # The maximum number of entries to return per query.
-        # 
-        # Valid values: 10 to 100. Default value: 20.
+        # The maximum number of results per query. Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
         # The response data.
         self.module = module
-        # The token for the next query. This parameter is empty if no more results exist.
+        # The token used to start the next query. If there is no next query, this parameter is empty.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
         # The error code.
         self.root_error_code = root_error_code
-        # The error message.
+        # The exception message.
         self.root_error_msg = root_error_msg
         # The reserved parameter.
         self.synchro = synchro
@@ -162,17 +160,17 @@ class ListRbacRolesResponseBodyModule(DaraModel):
     ):
         # The current page number.
         self.current_page_num = current_page_num
-        # The query results.
+        # The request results.
         self.data = data
         # The decision weight.
         self.next = next
-        # Indicates whether a next page exists.
+        # Specifies whether a next page exists.
         self.next_page = next_page
         # The page size.
         self.page_size = page_size
-        # Indicates whether a previous page exists.
+        # Specifies whether a previous page exists.
         self.pre_page = pre_page
-        # Indicates whether the server-side result limit is reached. The server processes up to 1,000 recent records beyond pagination limits. If the results exceed 1,000, **ResultLimit** is **true** and you must narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
+        # In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit** is **true**. Narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
         # The total number of entries.
         self.total_item_num = total_item_num
@@ -268,13 +266,13 @@ class ListRbacRolesResponseBodyModuleNext(DaraModel):
         label: str = None,
         name: str = None,
     ):
-        # The time when the task was created. The value is in the YYYY-MM-DD HH:mm:ss format.
+        # The task creation time. Format: YYYY-MM-DD HH:mm:ss.
         self.created_at = created_at
         # The primary key.
         self.id = id
-        # Indicates whether this is the default dedicated gateway.
+        # Specifies whether the private gateway is the default one.
         self.is_default = is_default
-        # Indicates whether the approval template is system-defined. Valid values:
+        # Specifies whether the approval template is system-defined. Valid values:
         # - 1: Yes.
         # - 0: No.
         self.is_system = is_system
@@ -343,15 +341,15 @@ class ListRbacRolesResponseBodyModuleData(DaraModel):
         label: str = None,
         name: str = None,
     ):
-        # The creation date. The value is in ISO 8601 format with the time zone set to UTC (Z).
+        # The creation date in ISO 8601 format in the UTC time zone.
         self.created_at = created_at
         # The primary key.
         self.id = id
-        # Indicates whether this is the default report. Valid values:
+        # Specifies whether the report is the default report. Valid values:
         # - **0**: Not the default report.
-        # - **1**: The default report.
+        # - **1**: Default report.
         self.is_default = is_default
-        # Indicates whether the approval template is system-defined. Valid values:
+        # Specifies whether the approval template is system-defined. Valid values:
         # - 1: Yes.
         # - 0: No.
         self.is_system = is_system

@@ -136,10 +136,12 @@ class GetAppSupabaseInstanceResponseBodyModule(DaraModel):
         db_instance_id: str = None,
         db_public_url: str = None,
         instance_create_status: str = None,
+        schema_name: str = None,
         service_key: str = None,
         status: int = None,
         supabase_instance_id: str = None,
         supabase_public_url: str = None,
+        tenant_mode: str = None,
     ):
         # The anonymous key.
         self.anon_key = anon_key
@@ -151,6 +153,7 @@ class GetAppSupabaseInstanceResponseBodyModule(DaraModel):
         self.db_public_url = db_public_url
         # The instance creation status.
         self.instance_create_status = instance_create_status
+        self.schema_name = schema_name
         # The service key.
         self.service_key = service_key
         # trial,draft,live,refunded,expired,released
@@ -159,6 +162,7 @@ class GetAppSupabaseInstanceResponseBodyModule(DaraModel):
         self.supabase_instance_id = supabase_instance_id
         # The public URL of the Supabase instance.
         self.supabase_public_url = supabase_public_url
+        self.tenant_mode = tenant_mode
 
     def validate(self):
         pass
@@ -183,6 +187,9 @@ class GetAppSupabaseInstanceResponseBodyModule(DaraModel):
         if self.instance_create_status is not None:
             result['InstanceCreateStatus'] = self.instance_create_status
 
+        if self.schema_name is not None:
+            result['SchemaName'] = self.schema_name
+
         if self.service_key is not None:
             result['ServiceKey'] = self.service_key
 
@@ -194,6 +201,9 @@ class GetAppSupabaseInstanceResponseBodyModule(DaraModel):
 
         if self.supabase_public_url is not None:
             result['SupabasePublicUrl'] = self.supabase_public_url
+
+        if self.tenant_mode is not None:
+            result['TenantMode'] = self.tenant_mode
 
         return result
 
@@ -214,6 +224,9 @@ class GetAppSupabaseInstanceResponseBodyModule(DaraModel):
         if m.get('InstanceCreateStatus') is not None:
             self.instance_create_status = m.get('InstanceCreateStatus')
 
+        if m.get('SchemaName') is not None:
+            self.schema_name = m.get('SchemaName')
+
         if m.get('ServiceKey') is not None:
             self.service_key = m.get('ServiceKey')
 
@@ -225,6 +238,9 @@ class GetAppSupabaseInstanceResponseBodyModule(DaraModel):
 
         if m.get('SupabasePublicUrl') is not None:
             self.supabase_public_url = m.get('SupabasePublicUrl')
+
+        if m.get('TenantMode') is not None:
+            self.tenant_mode = m.get('TenantMode')
 
         return self
 

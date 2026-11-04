@@ -141,6 +141,7 @@ class AllocateSupabaseForAdminResponseBodyModule(DaraModel):
         instance_create_status: str = None,
         is_deleted: int = None,
         rds_database_password: str = None,
+        schema_name: str = None,
         service_key: str = None,
         status: int = None,
         supabase_dashboard_password: str = None,
@@ -152,6 +153,7 @@ class AllocateSupabaseForAdminResponseBodyModule(DaraModel):
         supabase_public_ip: str = None,
         supabase_public_url: str = None,
         tenant_id: str = None,
+        tenant_mode: str = None,
         user_id: str = None,
     ):
         # The anonymous key.
@@ -176,6 +178,7 @@ class AllocateSupabaseForAdminResponseBodyModule(DaraModel):
         self.is_deleted = is_deleted
         # The access password of the RDS database.
         self.rds_database_password = rds_database_password
+        self.schema_name = schema_name
         # The service key.
         self.service_key = service_key
         # The status of the instance. Valid values:
@@ -200,6 +203,7 @@ class AllocateSupabaseForAdminResponseBodyModule(DaraModel):
         self.supabase_public_url = supabase_public_url
         # The ID of the tenant.
         self.tenant_id = tenant_id
+        self.tenant_mode = tenant_mode
         # The user ID.
         self.user_id = user_id
 
@@ -244,6 +248,9 @@ class AllocateSupabaseForAdminResponseBodyModule(DaraModel):
         if self.rds_database_password is not None:
             result['RdsDatabasePassword'] = self.rds_database_password
 
+        if self.schema_name is not None:
+            result['SchemaName'] = self.schema_name
+
         if self.service_key is not None:
             result['ServiceKey'] = self.service_key
 
@@ -276,6 +283,9 @@ class AllocateSupabaseForAdminResponseBodyModule(DaraModel):
 
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
+
+        if self.tenant_mode is not None:
+            result['TenantMode'] = self.tenant_mode
 
         if self.user_id is not None:
             result['UserId'] = self.user_id
@@ -317,6 +327,9 @@ class AllocateSupabaseForAdminResponseBodyModule(DaraModel):
         if m.get('RdsDatabasePassword') is not None:
             self.rds_database_password = m.get('RdsDatabasePassword')
 
+        if m.get('SchemaName') is not None:
+            self.schema_name = m.get('SchemaName')
+
         if m.get('ServiceKey') is not None:
             self.service_key = m.get('ServiceKey')
 
@@ -349,6 +362,9 @@ class AllocateSupabaseForAdminResponseBodyModule(DaraModel):
 
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
+
+        if m.get('TenantMode') is not None:
+            self.tenant_mode = m.get('TenantMode')
 
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')

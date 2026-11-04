@@ -46,7 +46,7 @@ class AppInstanceAggregate(DaraModel):
         user_id: str = None,
         version: str = None,
     ):
-        # The list of AI agents associated with the application.
+        # The list of AI staff associated with the application.
         self.ai_staff_list = ai_staff_list
         # The operation address of the application.
         self.app_operation_address = app_operation_address
@@ -60,7 +60,7 @@ class AppInstanceAggregate(DaraModel):
         self.biz_id = biz_id
         # The build type.
         self.build_type = build_type
-        # 没有关联会话时为 null。
+        # The associated conversation information. The value is null if no conversation is associated.
         self.conversation_info = conversation_info
         # The creation time.
         self.create_time = create_time
@@ -70,7 +70,7 @@ class AppInstanceAggregate(DaraModel):
         self.description = description
         # The business ID of the design specification.
         self.design_spec_biz_id = design_spec_biz_id
-        # The design specification ID.
+        # The ID of the design configuration.
         self.design_spec_id = design_spec_id
         # The primary domain name.
         self.domain = domain
@@ -80,9 +80,9 @@ class AppInstanceAggregate(DaraModel):
         self.esp_biz_id = esp_biz_id
         # The deletion time.
         self.gmt_delete = gmt_delete
-        # The update time.
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # The publication time.
+        # The publish time.
         self.gmt_publish = gmt_publish
         # The URL of the application icon.
         self.icon_url = icon_url
@@ -388,13 +388,9 @@ class AppInstanceAggregateTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key of the instance. Valid values of N: **1** to **20**. If you specify this parameter, it cannot be an empty string.
-        # 
-        # The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag key of the instance. Valid values of N: **1** to **20**. The value cannot be an empty string. The value can be up to 64 characters in length, and cannot start with `aliyun` or `acs:`. The value cannot contain `http://` or `https://`.
         self.tag_key = tag_key
-        # The tag value of the instance. Valid values of N: **1** to **20**. If you specify this parameter, it can be an empty string.
-        # 
-        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag value of the instance. Valid values of N: **1** to **20**. The value can be an empty string. The value can be up to 128 characters in length, and cannot start with `aliyun` or `acs:`. The value cannot contain `http://` or `https://`.
         self.tag_value = tag_value
 
     def validate(self):
@@ -487,7 +483,7 @@ class AppInstanceAggregatePartnerDetailBindData(DaraModel):
         self.biz_id = biz_id
         # The creation time.
         self.gmt_create = gmt_create
-        # The update time.
+        # The modification time.
         self.gmt_modified = gmt_modified
         # The record ID.
         self.id = id
@@ -569,7 +565,7 @@ class AppInstanceAggregateConversationInfo(DaraModel):
         self,
         chat_num: int = None,
     ):
-        # 0 表示存在空会话。
+        # The number of conversation turns. A value of 0 indicates an empty conversation.
         self.chat_num = chat_num
 
     def validate(self):

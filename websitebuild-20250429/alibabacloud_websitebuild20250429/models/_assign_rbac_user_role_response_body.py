@@ -21,21 +21,21 @@ class AssignRbacUserRoleResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The detailed reason why access was denied.
+        # The detailed reason for access denial.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed. Valid values:
-        # - false: Retry is not allowed.
-        # - true: Retry is allowed.
+        # Specifies whether a retry is allowed. Valid values:
+        # - false: A retry is not allowed.
+        # - true: A retry is allowed.
         self.allow_retry = allow_retry
-        # The application name. The application with this name is queried.
+        # The name of the application to query.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, used to replace the %s variable in the ErrMessage response parameter.
+        # The dynamic error message, which is used to replace %s in the ErrMessage response parameter.
         self.dynamic_message = dynamic_message
         # The error parameters.
         self.error_args = error_args
-        # Indicates whether the deletion was successful.
+        # Indicates whether the deletion is successful.
         self.module = module
         # Id of the request
         self.request_id = request_id
@@ -43,7 +43,7 @@ class AssignRbacUserRoleResponseBody(DaraModel):
         self.root_error_code = root_error_code
         # The exception message.
         self.root_error_msg = root_error_msg
-        # A reserved parameter.
+        # The backup parameter.
         self.synchro = synchro
 
     def validate(self):

@@ -22,19 +22,19 @@ class QueryRbacRoleResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The detailed reason why access was denied.
+        # The detailed reason for the access denial.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed. Valid values:
-        # - false: Retry is not allowed.
-        # - true: Retry is allowed.
+        # Specifies whether retries are allowed. Valid values:
+        # - false: Retries are not allowed.
+        # - true: Retries are allowed.
         self.allow_retry = allow_retry
-        # The application name. The application with this name is queried.
+        # The name of the application.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
         # The dynamic message.
         self.dynamic_message = dynamic_message
-        # The error parameters returned.
+        # The returned error parameters.
         self.error_args = error_args
         # The response data.
         self.module = module
@@ -139,15 +139,15 @@ class QueryRbacRoleResponseBodyModule(DaraModel):
         label: str = None,
         name: str = None,
     ):
-        # The time when the task was created, in ISO 8601 format (such as 2024-01-01T00:00:00+Z).
+        # The time when the task was created, in ISO 8601 format, such as 2024-01-01T00:00:00Z.
         self.created_at = created_at
         # The scenario ID.
         self.id = id
-        # The default status. Valid values:
-        # - 0: not default.
-        # - 1: default.
+        # Indicates whether it is the default. Valid values:
+        # - 0: No.
+        # - 1: Yes.
         self.is_default = is_default
-        # Indicates whether the approval template is system-defined. Valid values:
+        # Specifies whether the approval template is system-defined. Valid values:
         # - 1: Yes.
         # - 0: No.
         self.is_system = is_system

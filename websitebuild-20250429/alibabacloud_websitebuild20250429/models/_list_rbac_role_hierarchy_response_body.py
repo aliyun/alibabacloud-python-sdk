@@ -24,28 +24,28 @@ class ListRbacRoleHierarchyResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The access denied details.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether a retry is allowed. Valid values:
-        # - false: No retry is allowed.
-        # - true: A retry is allowed.
+        # Indicates whether retries are allowed. Valid values:
+        # - false: Retries are not allowed.
+        # - true: Retries are allowed.
         self.allow_retry = allow_retry
         # The application name.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the `%s` variable in the **ErrMessage** response parameter.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the value of the request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace `%s` in the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
-        # The error parameters.
+        # The returned error parameters.
         self.error_args = error_args
-        # The number of entries per query.
+        # The number of entries to return per query.
         # 
         # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # The response object.
+        # The returned object.
         self.module = module
-        # The token for the next query. This parameter is empty if no more results exist.
+        # The token used to start the next query. If no next query is available, this parameter is empty.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
@@ -53,7 +53,7 @@ class ListRbacRoleHierarchyResponseBody(DaraModel):
         self.root_error_code = root_error_code
         # The exception message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request is synchronously processed.
+        # Indicates whether the request is processed synchronously.
         self.synchro = synchro
 
     def validate(self):
@@ -165,7 +165,7 @@ class ListRbacRoleHierarchyResponseBodyModule(DaraModel):
     ):
         # The current page number.
         self.current_page_num = current_page_num
-        # The request results.
+        # The request result.
         self.data = data
         # The decision weight.
         self.next = next
@@ -175,7 +175,7 @@ class ListRbacRoleHierarchyResponseBodyModule(DaraModel):
         self.page_size = page_size
         # Indicates whether a previous page exists.
         self.pre_page = pre_page
-        # The server processes up to 1,000 most recent records beyond the pagination limit. If the results exceed 1,000 records, **ResultLimit** is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
+        # In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit** is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
         # The total number of entries.
         self.total_item_num = total_item_num
@@ -267,9 +267,9 @@ class ListRbacRoleHierarchyResponseBodyModuleNext(DaraModel):
         child_role_id: str = None,
         parent_role_id: str = None,
     ):
-        # The child role ID.
+        # The ID of the child role.
         self.child_role_id = child_role_id
-        # The parent role ID.
+        # The ID of the parent role.
         self.parent_role_id = parent_role_id
 
     def validate(self):
@@ -304,9 +304,9 @@ class ListRbacRoleHierarchyResponseBodyModuleData(DaraModel):
         child_role_id: str = None,
         parent_role_id: str = None,
     ):
-        # The child role ID.
+        # The ID of the child role.
         self.child_role_id = child_role_id
-        # The parent role ID.
+        # The ID of the parent role.
         self.parent_role_id = parent_role_id
 
     def validate(self):

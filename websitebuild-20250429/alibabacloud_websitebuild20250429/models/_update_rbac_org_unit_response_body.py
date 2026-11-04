@@ -21,11 +21,11 @@ class UpdateRbacOrgUnitResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The detailed reason why access is denied.
+        # The detailed reason for the access denial.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Indicates whether a retry is allowed.
         self.allow_retry = allow_retry
-        # The application name.
+        # The app name.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
@@ -39,9 +39,9 @@ class UpdateRbacOrgUnitResponseBody(DaraModel):
         self.request_id = request_id
         # The error code.
         self.root_error_code = root_error_code
-        # The error message.
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request is synchronously processed.
+        # Indicates whether synchronous processing is performed.
         self.synchro = synchro
 
     def validate(self):

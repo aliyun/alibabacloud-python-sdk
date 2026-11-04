@@ -13,9 +13,9 @@ class UpdateRbacOrgUnitRequest(DaraModel):
     ):
         # The business ID.
         self.biz_id = biz_id
-        # The organization parameters.
+        # The organizational unit parameters.
         self.org_unit_data = org_unit_data
-        # The organization ID.
+        # The organizational unit ID.
         self.org_unit_id = org_unit_id
 
     def validate(self):

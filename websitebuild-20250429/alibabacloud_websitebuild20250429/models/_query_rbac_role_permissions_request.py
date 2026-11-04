@@ -16,7 +16,7 @@ class QueryRbacRolePermissionsRequest(DaraModel):
     ):
         # The business ID.
         self.biz_id = biz_id
-        # The field by which to sort the results.
+        # The field used for sorting.
         self.order_column = order_column
         # The sort order. Valid values: ASC and DESC.
         self.order_type = order_type
@@ -24,11 +24,11 @@ class QueryRbacRolePermissionsRequest(DaraModel):
         self.page_num = page_num
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # The organization role ID, including predefined roles and custom roles:
+        # The organization role ID, including preset roles and custom roles:
         # 
-        # - Organization administrator (predefined role): 111111111
-        # - Permission management administrator (predefined role): 111111112
-        # - Regular user (predefined role): 111111113
+        # - Organization administrator (preset role): 111111111
+        # - Permission management administrator (preset role): 111111112
+        # - Regular user (preset role): 111111113
         # - Custom role: the role ID of the custom role
         self.role_id = role_id
 
