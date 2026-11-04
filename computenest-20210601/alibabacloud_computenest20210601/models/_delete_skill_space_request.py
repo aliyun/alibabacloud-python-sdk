@@ -10,9 +10,9 @@ class DeleteSkillSpaceRequest(DaraModel):
         client_token: str = None,
         skill_space_id: str = None,
     ):
-        # A client-generated token to ensure the idempotence of the request. The value must be unique for each request. The **ClientToken** supports only ASCII characters and can be up to 64 characters long.
+        # Ensures the idempotence of the request. Generate a parameter value from your client to ensure that the value is unique across different requests. **ClientToken** supports only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The ID of the SkillSpace.
+        # SkillSpace  ID
         # 
         # This parameter is required.
         self.skill_space_id = skill_space_id

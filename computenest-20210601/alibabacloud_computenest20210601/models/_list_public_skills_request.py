@@ -19,7 +19,7 @@ class ListPublicSkillsRequest(DaraModel):
         self.filter = filter
         # The number of entries per page.
         self.max_results = max_results
-        # Specifies whether to include the download URL of the skill package.
+        # Specifies whether to include the download URL for the skill package.
         self.need_download_url = need_download_url
         # The token for the next query.
         self.next_token = next_token
@@ -84,7 +84,7 @@ class ListPublicSkillsRequestFilter(DaraModel):
         # 
         # - MatchType: the match type that controls how SkillName is matched. Valid values: exact, prefix, and fuzzy.
         # 
-        # - Keyword: keyword match for the skill name or skill description. Fuzzy match.
+        # - Keyword: keyword match against the skill name or skill description. Fuzzy match.
         # 
         # - SkillLabels: the skill label set. Fuzzy match.
         self.name = name

@@ -11,6 +11,7 @@ class CreateSkillRequest(DaraModel):
         self,
         client_token: str = None,
         oss_url: str = None,
+        required_connections: List[str] = None,
         skill_description: str = None,
         skill_display_name: str = None,
         skill_labels: List[str] = None,
@@ -23,10 +24,12 @@ class CreateSkillRequest(DaraModel):
         self.client_token = client_token
         # The OSS URL of the Skill package to upload. This parameter is required when SourceType is set to UPLOAD.
         self.oss_url = oss_url
+        # The set of connection types that the Skill depends on.
+        self.required_connections = required_connections
         # The Skill description.
         self.skill_description = skill_description
         self.skill_display_name = skill_display_name
-        # The Skill labels.
+        # The set of Skill labels.
         self.skill_labels = skill_labels
         # The Skill name.
         self.skill_name = skill_name
@@ -36,7 +39,7 @@ class CreateSkillRequest(DaraModel):
         self.skill_space_id = skill_space_id
         # The public Skill ID. This parameter is required when SourceType is set to COPY.
         self.source_skill_id = source_skill_id
-        # The source type used when creating the Skill.
+        # The source type for creating the Skill.
         # 
         # This parameter is required.
         self.source_type = source_type
@@ -54,6 +57,9 @@ class CreateSkillRequest(DaraModel):
 
         if self.oss_url is not None:
             result['OssUrl'] = self.oss_url
+
+        if self.required_connections is not None:
+            result['RequiredConnections'] = self.required_connections
 
         if self.skill_description is not None:
             result['SkillDescription'] = self.skill_description
@@ -85,6 +91,9 @@ class CreateSkillRequest(DaraModel):
 
         if m.get('OssUrl') is not None:
             self.oss_url = m.get('OssUrl')
+
+        if m.get('RequiredConnections') is not None:
+            self.required_connections = m.get('RequiredConnections')
 
         if m.get('SkillDescription') is not None:
             self.skill_description = m.get('SkillDescription')

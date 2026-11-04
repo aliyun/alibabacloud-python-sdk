@@ -10,9 +10,9 @@ class CreateSkillFileDetectResponseBody(DaraModel):
         hash_key: str = None,
         request_id: str = None,
     ):
-        # The unique identifier for the detection task.
+        # The unique identifier of the current detection task.
         self.hash_key = hash_key
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

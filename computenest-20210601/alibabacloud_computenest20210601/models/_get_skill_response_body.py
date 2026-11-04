@@ -13,6 +13,9 @@ class GetSkillResponseBody(DaraModel):
         create_time: str = None,
         locales: List[main_models.GetSkillResponseBodyLocales] = None,
         request_id: str = None,
+        required_connections: List[str] = None,
+        security_scan_status: str = None,
+        security_scan_suggestions: str = None,
         skill_description: str = None,
         skill_display_name: str = None,
         skill_id: str = None,
@@ -21,23 +24,30 @@ class GetSkillResponseBody(DaraModel):
         skill_space_id: str = None,
         update_time: str = None,
     ):
-        # The time when the Skill was created.
+        # The creation time.
         self.create_time = create_time
         self.locales = locales
         # Id of the request
         self.request_id = request_id
-        # The Skill description.
+        # The set of connection types that the Skill depends on.
+        self.required_connections = required_connections
+        # The security scan status of the source file.
+        self.security_scan_status = security_scan_status
+        # The security scan remediation suggestions (a Markdown-formatted string containing a set of remediation suggestions). This value is meaningful only when the source file security scan status is BLOCK.
+        self.security_scan_suggestions = security_scan_suggestions
+        # The description of the Skill.
         self.skill_description = skill_description
+        # The display name of the Skill.
         self.skill_display_name = skill_display_name
         # Skill ID
         self.skill_id = skill_id
-        # The Skill labels.
+        # The set of labels for the Skill.
         self.skill_labels = skill_labels
-        # The Skill name.
+        # The name of the Skill.
         self.skill_name = skill_name
         # The ID of the SkillSpace to which the Skill belongs.
         self.skill_space_id = skill_space_id
-        # The time when the Skill was last updated.
+        # The update time.
         self.update_time = update_time
 
     def validate(self):
@@ -61,6 +71,15 @@ class GetSkillResponseBody(DaraModel):
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+
+        if self.required_connections is not None:
+            result['RequiredConnections'] = self.required_connections
+
+        if self.security_scan_status is not None:
+            result['SecurityScanStatus'] = self.security_scan_status
+
+        if self.security_scan_suggestions is not None:
+            result['SecurityScanSuggestions'] = self.security_scan_suggestions
 
         if self.skill_description is not None:
             result['SkillDescription'] = self.skill_description
@@ -98,6 +117,15 @@ class GetSkillResponseBody(DaraModel):
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+
+        if m.get('RequiredConnections') is not None:
+            self.required_connections = m.get('RequiredConnections')
+
+        if m.get('SecurityScanStatus') is not None:
+            self.security_scan_status = m.get('SecurityScanStatus')
+
+        if m.get('SecurityScanSuggestions') is not None:
+            self.security_scan_suggestions = m.get('SecurityScanSuggestions')
 
         if m.get('SkillDescription') is not None:
             self.skill_description = m.get('SkillDescription')

@@ -11,6 +11,7 @@ class UpdateSkillRequest(DaraModel):
         self,
         client_token: str = None,
         oss_url: str = None,
+        required_connections: List[str] = None,
         skill_description: str = None,
         skill_display_name: str = None,
         skill_id: str = None,
@@ -23,6 +24,8 @@ class UpdateSkillRequest(DaraModel):
         self.client_token = client_token
         # Required when SourceType is set to UPLOAD. The OSS URL of the skill package to upload.
         self.oss_url = oss_url
+        # The collection of connection types required by the skill.
+        self.required_connections = required_connections
         # The description of the skill.
         self.skill_description = skill_description
         self.skill_display_name = skill_display_name
@@ -52,6 +55,9 @@ class UpdateSkillRequest(DaraModel):
 
         if self.oss_url is not None:
             result['OssUrl'] = self.oss_url
+
+        if self.required_connections is not None:
+            result['RequiredConnections'] = self.required_connections
 
         if self.skill_description is not None:
             result['SkillDescription'] = self.skill_description
@@ -83,6 +89,9 @@ class UpdateSkillRequest(DaraModel):
 
         if m.get('OssUrl') is not None:
             self.oss_url = m.get('OssUrl')
+
+        if m.get('RequiredConnections') is not None:
+            self.required_connections = m.get('RequiredConnections')
 
         if m.get('SkillDescription') is not None:
             self.skill_description = m.get('SkillDescription')

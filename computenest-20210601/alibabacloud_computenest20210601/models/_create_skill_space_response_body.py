@@ -10,9 +10,9 @@ class CreateSkillSpaceResponseBody(DaraModel):
         request_id: str = None,
         skill_space_id: str = None,
     ):
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
-        # The ID of the skill space.
+        # SkillSpace ID
         self.skill_space_id = skill_space_id
 
     def validate(self):

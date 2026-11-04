@@ -22,7 +22,7 @@ class ListSkillsResponseBody(DaraModel):
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
-        # The list of skills.
+        # The list of Skills.
         self.skills = skills
         # The total number of entries.
         self.total_count = total_count
@@ -85,6 +85,8 @@ class ListSkillsResponseBodySkills(DaraModel):
         create_time: str = None,
         download_url: str = None,
         locales: List[main_models.ListSkillsResponseBodySkillsLocales] = None,
+        required_connections: List[str] = None,
+        security_scan_status: str = None,
         skill_description: str = None,
         skill_display_name: str = None,
         skill_id: str = None,
@@ -93,23 +95,28 @@ class ListSkillsResponseBodySkills(DaraModel):
         skill_space_id: str = None,
         update_time: str = None,
     ):
-        # The time when the skill was created.
+        # The time when the Skill was created.
         self.create_time = create_time
-        # The download URL of the skill package.
+        # The download URL for the Skill package.
         self.download_url = download_url
         self.locales = locales
-        # The skill description.
+        # The set of connection types that the Skill depends on.
+        self.required_connections = required_connections
+        # The security scan status of the source file.
+        self.security_scan_status = security_scan_status
+        # The Skill description.
         self.skill_description = skill_description
+        # The Skill display name.
         self.skill_display_name = skill_display_name
         # Skill ID
         self.skill_id = skill_id
-        # The set of skill labels.
+        # The set of Skill labels.
         self.skill_labels = skill_labels
-        # The skill name.
+        # The Skill name.
         self.skill_name = skill_name
-        # The ID of the SkillSpace to which the skill belongs.
+        # The ID of the SkillSpace to which the Skill belongs.
         self.skill_space_id = skill_space_id
-        # The time when the skill was last updated.
+        # The time when the Skill was last updated.
         self.update_time = update_time
 
     def validate(self):
@@ -133,6 +140,12 @@ class ListSkillsResponseBodySkills(DaraModel):
         if self.locales is not None:
             for k1 in self.locales:
                 result['Locales'].append(k1.to_map() if k1 else None)
+
+        if self.required_connections is not None:
+            result['RequiredConnections'] = self.required_connections
+
+        if self.security_scan_status is not None:
+            result['SecurityScanStatus'] = self.security_scan_status
 
         if self.skill_description is not None:
             result['SkillDescription'] = self.skill_description
@@ -170,6 +183,12 @@ class ListSkillsResponseBodySkills(DaraModel):
             for k1 in m.get('Locales'):
                 temp_model = main_models.ListSkillsResponseBodySkillsLocales()
                 self.locales.append(temp_model.from_map(k1))
+
+        if m.get('RequiredConnections') is not None:
+            self.required_connections = m.get('RequiredConnections')
+
+        if m.get('SecurityScanStatus') is not None:
+            self.security_scan_status = m.get('SecurityScanStatus')
 
         if m.get('SkillDescription') is not None:
             self.skill_description = m.get('SkillDescription')

@@ -16,13 +16,13 @@ class GetSkillSpaceResponseBody(DaraModel):
     ):
         # The time when the SkillSpace was created.
         self.create_time = create_time
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
-        # The description of the SkillSpace.
+        # The SkillSpace description.
         self.skill_space_description = skill_space_description
-        # The ID of the SkillSpace.
+        # SkillSpace ID
         self.skill_space_id = skill_space_id
-        # The name of the SkillSpace.
+        # The SkillSpace name.
         self.skill_space_name = skill_space_name
         # The time when the SkillSpace was last updated.
         self.update_time = update_time

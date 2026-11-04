@@ -11,9 +11,9 @@ class CreateSkillFileDetectRequest(DaraModel):
         oss_url: str = None,
         region_id: str = None,
     ):
-        # A unique, client-generated token to ensure request idempotence. **ClientToken** must contain only ASCII characters and be no longer than 64 characters.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The OSS URL of the compressed Skill package.
+        # The OSS URL of the Skill compressed file to be detected.
         # 
         # This parameter is required.
         self.oss_url = oss_url

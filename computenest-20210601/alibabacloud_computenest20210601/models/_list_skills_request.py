@@ -19,7 +19,7 @@ class ListSkillsRequest(DaraModel):
         self.filter = filter
         # The maximum number of entries to return in this request.
         self.max_results = max_results
-        # Specifies whether to include the download URL of the skill package.
+        # Specifies whether to include the download URL for the Skill package.
         self.need_download_url = need_download_url
         # NextToken
         self.next_token = next_token
@@ -78,19 +78,19 @@ class ListSkillsRequestFilter(DaraModel):
     ):
         # The filter name. You can specify one or more names for the query. Valid values:
         # 
-        # - SkillId: the skill ID. Exact match.
+        # - SkillId: the Skill ID. Exact match.
         # 
         # - SkillSpaceId: the SkillSpace ID. Exact match.
         # 
-        # - SkillName: the skill name.
+        # - SkillName: the Skill name.
         # 
         # - MatchType: the match type that controls how SkillName is matched. Valid values: exact, prefix, and fuzzy.
         # 
-        # - SkillType: the skill type. Valid values: official and custom.
+        # - SkillType: the Skill type. Valid values: official and custom.
         # 
-        # - Keyword: keyword match for the skill name or skill description. Fuzzy match.
+        # - Keyword: keyword match for the Skill name or Skill description. Fuzzy match.
         # 
-        # - SkillLabels: the skill labels. Fuzzy match.
+        # - SkillLabels: the Skill labels. Fuzzy match.
         self.name = name
         # The list of filter values. Valid values of N: 1 to 10.
         self.value = value

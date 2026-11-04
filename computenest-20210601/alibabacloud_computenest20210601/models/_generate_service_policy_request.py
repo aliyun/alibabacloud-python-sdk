@@ -19,6 +19,7 @@ class GenerateServicePolicyRequest(DaraModel):
     ):
         # The operation types for which policy information needs to be generated.
         self.operation_types = operation_types
+        # The parameters required to check the deployment permissions of the service instance.
         self.parameters = parameters
         # The region ID.
         # 

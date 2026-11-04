@@ -1,3 +1,6 @@
+2026-11-04 Version: 4.5.4
+- Generated python 2021-06-01 for ComputeNest.
+
 2026-07-02 Version: 4.5.2
 - Update API CreateSkill: add request parameters SkillDisplayName.
 - Update API GetSkill: add response parameters Body.Locales.

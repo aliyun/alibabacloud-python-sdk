@@ -85,6 +85,8 @@ class ListPublicSkillsResponseBodySkills(DaraModel):
         create_time: str = None,
         download_url: str = None,
         locales: List[main_models.ListPublicSkillsResponseBodySkillsLocales] = None,
+        required_connections: List[str] = None,
+        security_scan_status: str = None,
         skill_description: str = None,
         skill_display_name: str = None,
         skill_id: str = None,
@@ -93,13 +95,18 @@ class ListPublicSkillsResponseBodySkills(DaraModel):
         skill_space_id: str = None,
         update_time: str = None,
     ):
-        # The time when the skill was created.
+        # The creation time.
         self.create_time = create_time
-        # The download URL of the skill package.
+        # The download URL for the skill package.
         self.download_url = download_url
         self.locales = locales
+        # The set of connection types that the skill depends on.
+        self.required_connections = required_connections
+        # The security scan status of the source file.
+        self.security_scan_status = security_scan_status
         # The skill description.
         self.skill_description = skill_description
+        # The skill display name.
         self.skill_display_name = skill_display_name
         # Skill ID
         self.skill_id = skill_id
@@ -109,7 +116,7 @@ class ListPublicSkillsResponseBodySkills(DaraModel):
         self.skill_name = skill_name
         # The ID of the SkillSpace to which the skill belongs.
         self.skill_space_id = skill_space_id
-        # The time when the skill was last updated.
+        # The update time.
         self.update_time = update_time
 
     def validate(self):
@@ -133,6 +140,12 @@ class ListPublicSkillsResponseBodySkills(DaraModel):
         if self.locales is not None:
             for k1 in self.locales:
                 result['Locales'].append(k1.to_map() if k1 else None)
+
+        if self.required_connections is not None:
+            result['RequiredConnections'] = self.required_connections
+
+        if self.security_scan_status is not None:
+            result['SecurityScanStatus'] = self.security_scan_status
 
         if self.skill_description is not None:
             result['SkillDescription'] = self.skill_description
@@ -170,6 +183,12 @@ class ListPublicSkillsResponseBodySkills(DaraModel):
             for k1 in m.get('Locales'):
                 temp_model = main_models.ListPublicSkillsResponseBodySkillsLocales()
                 self.locales.append(temp_model.from_map(k1))
+
+        if m.get('RequiredConnections') is not None:
+            self.required_connections = m.get('RequiredConnections')
+
+        if m.get('SecurityScanStatus') is not None:
+            self.security_scan_status = m.get('SecurityScanStatus')
 
         if m.get('SkillDescription') is not None:
             self.skill_description = m.get('SkillDescription')
