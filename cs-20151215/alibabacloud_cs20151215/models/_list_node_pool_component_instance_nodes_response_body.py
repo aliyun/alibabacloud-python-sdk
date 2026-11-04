@@ -77,7 +77,7 @@ class ListNodePoolComponentInstanceNodesResponseBodyNodeList(DaraModel):
         instance_id: str = None,
         node_name: str = None,
     ):
-        # The details of the component on the node.
+        # The detailed information about the component on the node.
         self.component = component
         # The instance ID.
         self.instance_id = instance_id
@@ -128,7 +128,7 @@ class ListNodePoolComponentInstanceNodesResponseBodyNodeListComponent(DaraModel)
     ):
         # The configuration of the node component.
         self.config = config
-        # The custom configuration version number of the component on the node.
+        # The custom configuration revision of the component on the node.
         self.config_revision = config_revision
         # The name of the component on the node.
         self.name = name

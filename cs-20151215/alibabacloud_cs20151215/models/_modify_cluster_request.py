@@ -28,6 +28,7 @@ class ModifyClusterRequest(DaraModel):
         operation_policy: main_models.ModifyClusterRequestOperationPolicy = None,
         resource_group_id: str = None,
         security_group_id: str = None,
+        support_policy: str = None,
         system_events_logging: main_models.ModifyClusterRequestSystemEventsLogging = None,
         timezone: str = None,
         vswitch_ids: List[str] = None,
@@ -104,6 +105,7 @@ class ModifyClusterRequest(DaraModel):
         # - For non-ACK dedicated clusters, the cluster control plane and installed managed components (such as terway-controlplane) will briefly restart during the cluster management procedure. Perform this operation during off-peak hours. After the control plane security group is changed, the elastic network interfaces (ENIs) used by the cluster control plane and installed managed components are automatically added to the new security group.
         # - For ACK dedicated clusters, after the control plane security group is changed, newly scaled-out master nodes automatically apply the new control plane security group. Existing control plane nodes are not affected.
         self.security_group_id = security_group_id
+        self.support_policy = support_policy
         # The system event storage configuration.
         self.system_events_logging = system_events_logging
         # The cluster time zone. See [Supported time zones](https://help.aliyun.com/document_detail/354879.html).
@@ -193,6 +195,9 @@ class ModifyClusterRequest(DaraModel):
         if self.security_group_id is not None:
             result['security_group_id'] = self.security_group_id
 
+        if self.support_policy is not None:
+            result['support_policy'] = self.support_policy
+
         if self.system_events_logging is not None:
             result['system_events_logging'] = self.system_events_logging.to_map()
 
@@ -264,6 +269,9 @@ class ModifyClusterRequest(DaraModel):
 
         if m.get('security_group_id') is not None:
             self.security_group_id = m.get('security_group_id')
+
+        if m.get('support_policy') is not None:
+            self.support_policy = m.get('support_policy')
 
         if m.get('system_events_logging') is not None:
             temp_model = main_models.ModifyClusterRequestSystemEventsLogging()

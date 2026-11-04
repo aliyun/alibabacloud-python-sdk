@@ -13,7 +13,7 @@ class ListNodePoolComponentInstanceNodesShrinkRequest(DaraModel):
         node_names_shrink: str = None,
         version: str = None,
     ):
-        # Filters nodes by the specified configuration version number of the node component.
+        # Filters nodes by the specified configuration revision of the node component.
         self.config_revision = config_revision
         # The maximum number of records to return in a single response for pagination. Default value: 20.
         self.max_results = max_results

@@ -62,33 +62,37 @@ class DescribeKubernetesVersionMetadataResponseBody(DaraModel):
     def __init__(
         self,
         capabilities: Dict[str, Any] = None,
+        creatable: bool = None,
+        expiration_date: str = None,
+        extended_expiration_date: str = None,
         images: List[main_models.DescribeKubernetesVersionMetadataResponseBodyImages] = None,
         meta_data: Dict[str, Any] = None,
-        runtimes: List[main_models.Runtime] = None,
-        version: str = None,
         release_date: str = None,
-        expiration_date: str = None,
-        creatable: bool = None,
+        runtimes: List[main_models.Runtime] = None,
+        support_policy: str = None,
         upgradable_versions: List[str] = None,
+        version: str = None,
     ):
         # The features of the Kubernetes version.
         self.capabilities = capabilities
+        # Indicates whether the Kubernetes version can be created.
+        self.creatable = creatable
+        # The expiration time of the Kubernetes version. The time is in ISO 8601 format and includes time zone information.
+        self.expiration_date = expiration_date
+        self.extended_expiration_date = extended_expiration_date
         # The list of system images.
         self.images = images
         # The metadata of the Kubernetes version.
         self.meta_data = meta_data
-        # The container runtime configurations.
-        self.runtimes = runtimes
-        # The Kubernetes version released by ACK. For more information about versions, see [Overview of Kubernetes version releases](https://help.aliyun.com/document_detail/185269.html).
-        self.version = version
         # The release time of the Kubernetes version. The time is in ISO 8601 format and includes time zone information.
         self.release_date = release_date
-        # The expiration time of the Kubernetes version. The time is in ISO 8601 format and includes time zone information.
-        self.expiration_date = expiration_date
-        # Indicates whether the Kubernetes version can be created.
-        self.creatable = creatable
+        # The container runtime configurations.
+        self.runtimes = runtimes
+        self.support_policy = support_policy
         # The list of upgradable versions.
         self.upgradable_versions = upgradable_versions
+        # The Kubernetes version released by ACK. For more information about versions, see [Overview of Kubernetes version releases](https://help.aliyun.com/document_detail/185269.html).
+        self.version = version
 
     def validate(self):
         if self.images:
@@ -108,6 +112,15 @@ class DescribeKubernetesVersionMetadataResponseBody(DaraModel):
         if self.capabilities is not None:
             result['capabilities'] = self.capabilities
 
+        if self.creatable is not None:
+            result['creatable'] = self.creatable
+
+        if self.expiration_date is not None:
+            result['expiration_date'] = self.expiration_date
+
+        if self.extended_expiration_date is not None:
+            result['extended_expiration_date'] = self.extended_expiration_date
+
         result['images'] = []
         if self.images is not None:
             for k1 in self.images:
@@ -116,25 +129,22 @@ class DescribeKubernetesVersionMetadataResponseBody(DaraModel):
         if self.meta_data is not None:
             result['meta_data'] = self.meta_data
 
+        if self.release_date is not None:
+            result['release_date'] = self.release_date
+
         result['runtimes'] = []
         if self.runtimes is not None:
             for k1 in self.runtimes:
                 result['runtimes'].append(k1.to_map() if k1 else None)
 
-        if self.version is not None:
-            result['version'] = self.version
-
-        if self.release_date is not None:
-            result['release_date'] = self.release_date
-
-        if self.expiration_date is not None:
-            result['expiration_date'] = self.expiration_date
-
-        if self.creatable is not None:
-            result['creatable'] = self.creatable
+        if self.support_policy is not None:
+            result['support_policy'] = self.support_policy
 
         if self.upgradable_versions is not None:
             result['upgradable_versions'] = self.upgradable_versions
+
+        if self.version is not None:
+            result['version'] = self.version
 
         return result
 
@@ -142,6 +152,15 @@ class DescribeKubernetesVersionMetadataResponseBody(DaraModel):
         m = m or dict()
         if m.get('capabilities') is not None:
             self.capabilities = m.get('capabilities')
+
+        if m.get('creatable') is not None:
+            self.creatable = m.get('creatable')
+
+        if m.get('expiration_date') is not None:
+            self.expiration_date = m.get('expiration_date')
+
+        if m.get('extended_expiration_date') is not None:
+            self.extended_expiration_date = m.get('extended_expiration_date')
 
         self.images = []
         if m.get('images') is not None:
@@ -152,53 +171,51 @@ class DescribeKubernetesVersionMetadataResponseBody(DaraModel):
         if m.get('meta_data') is not None:
             self.meta_data = m.get('meta_data')
 
+        if m.get('release_date') is not None:
+            self.release_date = m.get('release_date')
+
         self.runtimes = []
         if m.get('runtimes') is not None:
             for k1 in m.get('runtimes'):
                 temp_model = main_models.Runtime()
                 self.runtimes.append(temp_model.from_map(k1))
 
-        if m.get('version') is not None:
-            self.version = m.get('version')
-
-        if m.get('release_date') is not None:
-            self.release_date = m.get('release_date')
-
-        if m.get('expiration_date') is not None:
-            self.expiration_date = m.get('expiration_date')
-
-        if m.get('creatable') is not None:
-            self.creatable = m.get('creatable')
+        if m.get('support_policy') is not None:
+            self.support_policy = m.get('support_policy')
 
         if m.get('upgradable_versions') is not None:
             self.upgradable_versions = m.get('upgradable_versions')
+
+        if m.get('version') is not None:
+            self.version = m.get('version')
 
         return self
 
 class DescribeKubernetesVersionMetadataResponseBodyImages(DaraModel):
     def __init__(
         self,
+        architecture: str = None,
+        image_category: str = None,
         image_id: str = None,
         image_name: str = None,
-        platform: str = None,
-        os_version: str = None,
         image_type: str = None,
         os_type: str = None,
-        image_category: str = None,
-        architecture: str = None,
+        os_version: str = None,
+        platform: str = None,
     ):
+        # The image architecture.
+        self.architecture = architecture
+        # The image category. Some valid values:
+        # 
+        # - `system`: public images.
+        # - `self`: your custom images.
+        # - `others`: public images from other users.
+        # - `marketplace`: Alibaba Cloud Marketplace images.
+        self.image_category = image_category
         # The image ID.
         self.image_id = image_id
         # The image name.
         self.image_name = image_name
-        # The operating system platform. Valid values:
-        # - `AliyunLinux`
-        # - `CentOS`
-        # - `Windows`
-        # - `WindowsCore`
-        self.platform = platform
-        # The image version.
-        self.os_version = os_version
         # The operating system distribution type. Use this field to specify the operating system for nodes. Valid values:
         # 
         # - `CentOS`
@@ -216,15 +233,14 @@ class DescribeKubernetesVersionMetadataResponseBodyImages(DaraModel):
         # - `Windows`
         # - `Linux`
         self.os_type = os_type
-        # The image category. Some valid values:
-        # 
-        # - `system`: public images.
-        # - `self`: your custom images.
-        # - `others`: public images from other users.
-        # - `marketplace`: Alibaba Cloud Marketplace images.
-        self.image_category = image_category
-        # The image architecture.
-        self.architecture = architecture
+        # The image version.
+        self.os_version = os_version
+        # The operating system platform. Valid values:
+        # - `AliyunLinux`
+        # - `CentOS`
+        # - `Windows`
+        # - `WindowsCore`
+        self.platform = platform
 
     def validate(self):
         pass
@@ -234,17 +250,17 @@ class DescribeKubernetesVersionMetadataResponseBodyImages(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.architecture is not None:
+            result['architecture'] = self.architecture
+
+        if self.image_category is not None:
+            result['image_category'] = self.image_category
+
         if self.image_id is not None:
             result['image_id'] = self.image_id
 
         if self.image_name is not None:
             result['image_name'] = self.image_name
-
-        if self.platform is not None:
-            result['platform'] = self.platform
-
-        if self.os_version is not None:
-            result['os_version'] = self.os_version
 
         if self.image_type is not None:
             result['image_type'] = self.image_type
@@ -252,27 +268,27 @@ class DescribeKubernetesVersionMetadataResponseBodyImages(DaraModel):
         if self.os_type is not None:
             result['os_type'] = self.os_type
 
-        if self.image_category is not None:
-            result['image_category'] = self.image_category
+        if self.os_version is not None:
+            result['os_version'] = self.os_version
 
-        if self.architecture is not None:
-            result['architecture'] = self.architecture
+        if self.platform is not None:
+            result['platform'] = self.platform
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('architecture') is not None:
+            self.architecture = m.get('architecture')
+
+        if m.get('image_category') is not None:
+            self.image_category = m.get('image_category')
+
         if m.get('image_id') is not None:
             self.image_id = m.get('image_id')
 
         if m.get('image_name') is not None:
             self.image_name = m.get('image_name')
-
-        if m.get('platform') is not None:
-            self.platform = m.get('platform')
-
-        if m.get('os_version') is not None:
-            self.os_version = m.get('os_version')
 
         if m.get('image_type') is not None:
             self.image_type = m.get('image_type')
@@ -280,11 +296,11 @@ class DescribeKubernetesVersionMetadataResponseBodyImages(DaraModel):
         if m.get('os_type') is not None:
             self.os_type = m.get('os_type')
 
-        if m.get('image_category') is not None:
-            self.image_category = m.get('image_category')
+        if m.get('os_version') is not None:
+            self.os_version = m.get('os_version')
 
-        if m.get('architecture') is not None:
-            self.architecture = m.get('architecture')
+        if m.get('platform') is not None:
+            self.platform = m.get('platform')
 
         return self
 

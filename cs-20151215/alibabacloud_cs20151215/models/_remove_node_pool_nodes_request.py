@@ -18,7 +18,6 @@ class RemoveNodePoolNodesRequest(DaraModel):
         # Specifies whether to remove the nodes concurrently. Valid values:
         # 
         # - true: removes the nodes from the scaling group concurrently.
-        # 
         # - false: removes the nodes from the scaling group sequentially.
         # 
         # Default value: false.
@@ -27,17 +26,19 @@ class RemoveNodePoolNodesRequest(DaraModel):
         # - true: drains the nodes.
         # - false: does not drain the nodes.
         self.drain_node = drain_node
-        # The list of instances to be removed.
+        # The list of instances to remove.
         self.instance_ids = instance_ids
         # **[Deprecated]**
         # 
-        # The list of nodes to be removed.
+        # The list of nodes to remove.
         # 
-        # >Danger: This parameter is deprecated. Use instance_ids instead.</danger>
+        # >Danger: This parameter is deprecated. Use `instance_ids` instead.</danger>
         self.nodes = nodes
-        # Specifies whether to release the nodes. Valid values:
+        # Specifies whether automatic release the nodes. Valid values:
         # - true: releases the nodes.
         # - false: does not release the nodes.
+        # 
+        # Subscription nodes are not automatically released when you remove them. Automatic release subscription nodes, [change the billing method of the nodes from subscription to pay-as-you-go](https://www.alibabacloud.com/help/en/ecs/change-the-billing-method-of-an-instance-from-subscription-to-pay-as-you-go-1) and then release them in the ECS console.
         self.release_node = release_node
 
     def validate(self):

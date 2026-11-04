@@ -46,6 +46,7 @@ class DescribeClusterDetailResponseBody(DaraModel):
         size: int = None,
         state: str = None,
         subnet_cidr: str = None,
+        support_policy: str = None,
         tags: List[main_models.Tag] = None,
         timezone: str = None,
         updated: str = None,
@@ -183,6 +184,7 @@ class DescribeClusterDetailResponseBody(DaraModel):
         self.state = state
         # The Pod CIDR block.
         self.subnet_cidr = subnet_cidr
+        self.support_policy = support_policy
         # The cluster resource tags.
         self.tags = tags
         # The time zone.
@@ -331,6 +333,9 @@ class DescribeClusterDetailResponseBody(DaraModel):
         if self.subnet_cidr is not None:
             result['subnet_cidr'] = self.subnet_cidr
 
+        if self.support_policy is not None:
+            result['support_policy'] = self.support_policy
+
         result['tags'] = []
         if self.tags is not None:
             for k1 in self.tags:
@@ -474,6 +479,9 @@ class DescribeClusterDetailResponseBody(DaraModel):
 
         if m.get('subnet_cidr') is not None:
             self.subnet_cidr = m.get('subnet_cidr')
+
+        if m.get('support_policy') is not None:
+            self.support_policy = m.get('support_policy')
 
         self.tags = []
         if m.get('tags') is not None:

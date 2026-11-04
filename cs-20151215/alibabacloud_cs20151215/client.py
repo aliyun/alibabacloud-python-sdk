@@ -1287,6 +1287,8 @@ class Client(OpenApiClient):
             body['soc_enabled'] = request.soc_enabled
         if not DaraCore.is_null(request.ssh_flags):
             body['ssh_flags'] = request.ssh_flags
+        if not DaraCore.is_null(request.support_policy):
+            body['support_policy'] = request.support_policy
         if not DaraCore.is_null(request.tags):
             body['tags'] = request.tags
         if not DaraCore.is_null(request.taints):
@@ -1523,6 +1525,8 @@ class Client(OpenApiClient):
             body['soc_enabled'] = request.soc_enabled
         if not DaraCore.is_null(request.ssh_flags):
             body['ssh_flags'] = request.ssh_flags
+        if not DaraCore.is_null(request.support_policy):
+            body['support_policy'] = request.support_policy
         if not DaraCore.is_null(request.tags):
             body['tags'] = request.tags
         if not DaraCore.is_null(request.taints):
@@ -5581,6 +5585,8 @@ class Client(OpenApiClient):
             query['QueryUpgradableVersion'] = request.query_upgradable_version
         if not DaraCore.is_null(request.region):
             query['Region'] = request.region
+        if not DaraCore.is_null(request.support_policy):
+            query['SupportPolicy'] = request.support_policy
         if not DaraCore.is_null(request.runtime):
             query['runtime'] = request.runtime
         req = open_api_util_models.OpenApiRequest(
@@ -5623,6 +5629,8 @@ class Client(OpenApiClient):
             query['QueryUpgradableVersion'] = request.query_upgradable_version
         if not DaraCore.is_null(request.region):
             query['Region'] = request.region
+        if not DaraCore.is_null(request.support_policy):
+            query['SupportPolicy'] = request.support_policy
         if not DaraCore.is_null(request.runtime):
             query['runtime'] = request.runtime
         req = open_api_util_models.OpenApiRequest(
@@ -9338,6 +9346,8 @@ class Client(OpenApiClient):
             body['resource_group_id'] = request.resource_group_id
         if not DaraCore.is_null(request.security_group_id):
             body['security_group_id'] = request.security_group_id
+        if not DaraCore.is_null(request.support_policy):
+            body['support_policy'] = request.support_policy
         if not DaraCore.is_null(request.system_events_logging):
             body['system_events_logging'] = request.system_events_logging
         if not DaraCore.is_null(request.timezone):
@@ -9409,6 +9419,8 @@ class Client(OpenApiClient):
             body['resource_group_id'] = request.resource_group_id
         if not DaraCore.is_null(request.security_group_id):
             body['security_group_id'] = request.security_group_id
+        if not DaraCore.is_null(request.support_policy):
+            body['support_policy'] = request.support_policy
         if not DaraCore.is_null(request.system_events_logging):
             body['system_events_logging'] = request.system_events_logging
         if not DaraCore.is_null(request.timezone):

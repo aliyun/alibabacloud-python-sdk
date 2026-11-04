@@ -124,6 +124,7 @@ class DescribeClustersForRegionResponseBodyClusters(DaraModel):
         service_cidr: str = None,
         size: int = None,
         state: str = None,
+        support_policy: str = None,
         tags: List[main_models.Tag] = None,
         timezone: str = None,
         updated: str = None,
@@ -207,6 +208,7 @@ class DescribeClustersForRegionResponseBodyClusters(DaraModel):
         # - `waiting`: The cluster is waiting to be accessed.
         # - `disconnected`: The cluster is disconnected.
         self.state = state
+        self.support_policy = support_policy
         # The list of tags for the cluster.
         self.tags = tags
         # The time zone.
@@ -289,6 +291,9 @@ class DescribeClustersForRegionResponseBodyClusters(DaraModel):
         if self.state is not None:
             result['state'] = self.state
 
+        if self.support_policy is not None:
+            result['support_policy'] = self.support_policy
+
         result['tags'] = []
         if self.tags is not None:
             for k1 in self.tags:
@@ -369,6 +374,9 @@ class DescribeClustersForRegionResponseBodyClusters(DaraModel):
 
         if m.get('state') is not None:
             self.state = m.get('state')
+
+        if m.get('support_policy') is not None:
+            self.support_policy = m.get('support_policy')
 
         self.tags = []
         if m.get('tags') is not None:

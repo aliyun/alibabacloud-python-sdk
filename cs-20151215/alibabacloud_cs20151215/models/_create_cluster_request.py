@@ -92,6 +92,7 @@ class CreateClusterRequest(DaraModel):
         snat_entry: bool = None,
         soc_enabled: bool = None,
         ssh_flags: bool = None,
+        support_policy: str = None,
         tags: List[main_models.Tag] = None,
         taints: List[main_models.Taint] = None,
         timeout_mins: int = None,
@@ -605,6 +606,7 @@ class CreateClusterRequest(DaraModel):
         # 
         # Default value: `false`.
         self.ssh_flags = ssh_flags
+        self.support_policy = support_policy
         # The node tags. Tag definition rules:
         # 
         # - Tags are case-sensitive key-value pairs. You can settings up to 20 tags.
@@ -1021,6 +1023,9 @@ class CreateClusterRequest(DaraModel):
         if self.ssh_flags is not None:
             result['ssh_flags'] = self.ssh_flags
 
+        if self.support_policy is not None:
+            result['support_policy'] = self.support_policy
+
         result['tags'] = []
         if self.tags is not None:
             for k1 in self.tags:
@@ -1356,6 +1361,9 @@ class CreateClusterRequest(DaraModel):
 
         if m.get('ssh_flags') is not None:
             self.ssh_flags = m.get('ssh_flags')
+
+        if m.get('support_policy') is not None:
+            self.support_policy = m.get('support_policy')
 
         self.tags = []
         if m.get('tags') is not None:

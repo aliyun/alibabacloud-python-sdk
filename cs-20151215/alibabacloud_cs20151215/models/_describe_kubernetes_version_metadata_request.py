@@ -13,6 +13,7 @@ class DescribeKubernetesVersionMetadataRequest(DaraModel):
         profile: str = None,
         query_upgradable_version: bool = None,
         region: str = None,
+        support_policy: str = None,
         runtime: str = None,
     ):
         # The cluster type. Valid values:
@@ -52,6 +53,7 @@ class DescribeKubernetesVersionMetadataRequest(DaraModel):
         # 
         # This parameter is required.
         self.region = region
+        self.support_policy = support_policy
         # The runtime type. You can specify a runtime type to filter system images supported by the runtime. Valid values:
         # 
         # - `docker`: Docker runtime.
@@ -89,6 +91,9 @@ class DescribeKubernetesVersionMetadataRequest(DaraModel):
         if self.region is not None:
             result['Region'] = self.region
 
+        if self.support_policy is not None:
+            result['SupportPolicy'] = self.support_policy
+
         if self.runtime is not None:
             result['runtime'] = self.runtime
 
@@ -113,6 +118,9 @@ class DescribeKubernetesVersionMetadataRequest(DaraModel):
 
         if m.get('Region') is not None:
             self.region = m.get('Region')
+
+        if m.get('SupportPolicy') is not None:
+            self.support_policy = m.get('SupportPolicy')
 
         if m.get('runtime') is not None:
             self.runtime = m.get('runtime')
