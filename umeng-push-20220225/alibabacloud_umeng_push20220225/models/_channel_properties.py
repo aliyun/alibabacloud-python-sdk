@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import Dict, Any
+
 from darabonba.model import DaraModel
 
 class ChannelProperties(DaraModel):
@@ -22,6 +24,8 @@ class ChannelProperties(DaraModel):
         vivo_add_badge: str = None,
         vivo_category: str = None,
         vivo_push_mode: str = None,
+        vivo_template_id: str = None,
+        vivo_template_params: Dict[str, Any] = None,
         xiaomi_channel_id: str = None,
     ):
         self.channel_activity = channel_activity
@@ -39,6 +43,8 @@ class ChannelProperties(DaraModel):
         self.vivo_add_badge = vivo_add_badge
         self.vivo_category = vivo_category
         self.vivo_push_mode = vivo_push_mode
+        self.vivo_template_id = vivo_template_id
+        self.vivo_template_params = vivo_template_params
         self.xiaomi_channel_id = xiaomi_channel_id
 
     def validate(self):
@@ -94,6 +100,12 @@ class ChannelProperties(DaraModel):
         if self.vivo_push_mode is not None:
             result['vivoPushMode'] = self.vivo_push_mode
 
+        if self.vivo_template_id is not None:
+            result['vivoTemplateId'] = self.vivo_template_id
+
+        if self.vivo_template_params is not None:
+            result['vivoTemplateParams'] = self.vivo_template_params
+
         if self.xiaomi_channel_id is not None:
             result['xiaomiChannelId'] = self.xiaomi_channel_id
 
@@ -145,6 +157,12 @@ class ChannelProperties(DaraModel):
 
         if m.get('vivoPushMode') is not None:
             self.vivo_push_mode = m.get('vivoPushMode')
+
+        if m.get('vivoTemplateId') is not None:
+            self.vivo_template_id = m.get('vivoTemplateId')
+
+        if m.get('vivoTemplateParams') is not None:
+            self.vivo_template_params = m.get('vivoTemplateParams')
 
         if m.get('xiaomiChannelId') is not None:
             self.xiaomi_channel_id = m.get('xiaomiChannelId')
