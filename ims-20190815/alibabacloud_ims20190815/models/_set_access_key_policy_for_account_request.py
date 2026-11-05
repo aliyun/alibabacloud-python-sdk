@@ -9,7 +9,7 @@ class SetAccessKeyPolicyForAccountRequest(DaraModel):
         self,
         access_key_policy: str = None,
     ):
-        # The network access restriction policy. The value is a JSON-formatted string. For more information, see the AccessKeyPolicy structure description in the SetAccessKeyPolicy documentation.
+        # The network access restriction policy. A JSON-formatted string. For more information about the AccessKeyPolicy structure, see the SetAccessKeyPolicy documentation.
         # 
         # This parameter is required.
         self.access_key_policy = access_key_policy

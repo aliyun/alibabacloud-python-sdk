@@ -54,10 +54,12 @@ class UpdateApplicationResponseBodyApplication(DaraModel):
         app_id: str = None,
         app_name: str = None,
         app_type: str = None,
+        assignment_type: str = None,
         create_date: str = None,
         delegated_scope: main_models.UpdateApplicationResponseBodyApplicationDelegatedScope = None,
         display_name: str = None,
         is_multi_tenant: bool = None,
+        need_principal_consent: bool = None,
         protocol_version: str = None,
         redirect_uris: main_models.UpdateApplicationResponseBodyApplicationRedirectUris = None,
         refresh_token_validity: int = None,
@@ -74,16 +76,24 @@ class UpdateApplicationResponseBodyApplication(DaraModel):
         self.app_name = app_name
         # The application type.
         self.app_type = app_type
+        # The application assignment type. Valid values:
+        # + AllowAll: Full assignment. All RAM users and roles under the account are allowed to use the application.
+        # + OnDemand: On-demand assignment. Only specified RAM users and roles under the account are allowed to use the application.
+        self.assignment_type = assignment_type
         # The creation time.
         # 
         # Format: RFC 3339 (UTC). Example: 2020-10-23T08:06:57Z.
         self.create_date = create_date
-        # The permission scope information of the application.
+        # The application permission scope information.
         self.delegated_scope = delegated_scope
         # The display name of the application.
         self.display_name = display_name
-        # Indicates whether the application is allowed to be installed by other accounts.
+        # Indicates whether the application can be installed by other accounts.
         self.is_multi_tenant = is_multi_tenant
+        # Specifies whether user authorization is required. Valid values:
+        # + true: User authorization is required.
+        # + false: User authorization is not required.
+        self.need_principal_consent = need_principal_consent
         # The OAuth protocol version of the application. Valid values:
         # + `2.0`: OAuth 2.0 protocol.
         # + `2.1`: OAuth 2.1 protocol.
@@ -124,6 +134,9 @@ class UpdateApplicationResponseBodyApplication(DaraModel):
         if self.app_type is not None:
             result['AppType'] = self.app_type
 
+        if self.assignment_type is not None:
+            result['AssignmentType'] = self.assignment_type
+
         if self.create_date is not None:
             result['CreateDate'] = self.create_date
 
@@ -135,6 +148,9 @@ class UpdateApplicationResponseBodyApplication(DaraModel):
 
         if self.is_multi_tenant is not None:
             result['IsMultiTenant'] = self.is_multi_tenant
+
+        if self.need_principal_consent is not None:
+            result['NeedPrincipalConsent'] = self.need_principal_consent
 
         if self.protocol_version is not None:
             result['ProtocolVersion'] = self.protocol_version
@@ -170,6 +186,9 @@ class UpdateApplicationResponseBodyApplication(DaraModel):
         if m.get('AppType') is not None:
             self.app_type = m.get('AppType')
 
+        if m.get('AssignmentType') is not None:
+            self.assignment_type = m.get('AssignmentType')
+
         if m.get('CreateDate') is not None:
             self.create_date = m.get('CreateDate')
 
@@ -182,6 +201,9 @@ class UpdateApplicationResponseBodyApplication(DaraModel):
 
         if m.get('IsMultiTenant') is not None:
             self.is_multi_tenant = m.get('IsMultiTenant')
+
+        if m.get('NeedPrincipalConsent') is not None:
+            self.need_principal_consent = m.get('NeedPrincipalConsent')
 
         if m.get('ProtocolVersion') is not None:
             self.protocol_version = m.get('ProtocolVersion')

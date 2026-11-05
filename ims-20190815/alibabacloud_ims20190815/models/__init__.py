@@ -26,6 +26,9 @@ from ._create_app_secret_response import CreateAppSecretResponse
 from ._create_application_request import CreateApplicationRequest
 from ._create_application_response_body import CreateApplicationResponseBody
 from ._create_application_response import CreateApplicationResponse
+from ._create_application_assignment_request import CreateApplicationAssignmentRequest
+from ._create_application_assignment_response_body import CreateApplicationAssignmentResponseBody
+from ._create_application_assignment_response import CreateApplicationAssignmentResponse
 from ._create_group_request import CreateGroupRequest
 from ._create_group_response_body import CreateGroupResponseBody
 from ._create_group_response import CreateGroupResponse
@@ -59,6 +62,9 @@ from ._delete_app_secret_response import DeleteAppSecretResponse
 from ._delete_application_request import DeleteApplicationRequest
 from ._delete_application_response_body import DeleteApplicationResponseBody
 from ._delete_application_response import DeleteApplicationResponse
+from ._delete_application_assignment_request import DeleteApplicationAssignmentRequest
+from ._delete_application_assignment_response_body import DeleteApplicationAssignmentResponseBody
+from ._delete_application_assignment_response import DeleteApplicationAssignmentResponse
 from ._delete_group_request import DeleteGroupRequest
 from ._delete_group_response_body import DeleteGroupResponseBody
 from ._delete_group_response import DeleteGroupResponse
@@ -181,6 +187,12 @@ from ._list_access_keys_in_recycle_bin_response import ListAccessKeysInRecycleBi
 from ._list_app_secret_ids_request import ListAppSecretIdsRequest
 from ._list_app_secret_ids_response_body import ListAppSecretIdsResponseBody
 from ._list_app_secret_ids_response import ListAppSecretIdsResponse
+from ._list_application_assignments_request import ListApplicationAssignmentsRequest
+from ._list_application_assignments_response_body import ListApplicationAssignmentsResponseBody
+from ._list_application_assignments_response import ListApplicationAssignmentsResponse
+from ._list_application_assignments_for_principal_request import ListApplicationAssignmentsForPrincipalRequest
+from ._list_application_assignments_for_principal_response_body import ListApplicationAssignmentsForPrincipalResponseBody
+from ._list_application_assignments_for_principal_response import ListApplicationAssignmentsForPrincipalResponse
 from ._list_application_provision_infos_request import ListApplicationProvisionInfosRequest
 from ._list_application_provision_infos_response_body import ListApplicationProvisionInfosResponseBody
 from ._list_application_provision_infos_response import ListApplicationProvisionInfosResponse
@@ -382,6 +394,10 @@ from ._list_access_keys_in_recycle_bin_response_body import ListAccessKeysInRecy
 from ._list_access_keys_in_recycle_bin_response_body import ListAccessKeysInRecycleBinResponseBodyAccessKeys
 from ._list_app_secret_ids_response_body import ListAppSecretIdsResponseBodyAppSecretsAppSecret
 from ._list_app_secret_ids_response_body import ListAppSecretIdsResponseBodyAppSecrets
+from ._list_application_assignments_response_body import ListApplicationAssignmentsResponseBodyApplicationAssignmentApplicationAssignmentInfo
+from ._list_application_assignments_response_body import ListApplicationAssignmentsResponseBodyApplicationAssignment
+from ._list_application_assignments_for_principal_response_body import ListApplicationAssignmentsForPrincipalResponseBodyApplicationAssignmentApplicationAssignmentInfo
+from ._list_application_assignments_for_principal_response_body import ListApplicationAssignmentsForPrincipalResponseBodyApplicationAssignment
 from ._list_application_provision_infos_response_body import ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope
 from ._list_application_provision_infos_response_body import ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScopePredefinedScopes
 from ._list_application_provision_infos_response_body import ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScope
@@ -487,6 +503,9 @@ __all__ = [
     CreateApplicationRequest,
     CreateApplicationResponseBody,
     CreateApplicationResponse,
+    CreateApplicationAssignmentRequest,
+    CreateApplicationAssignmentResponseBody,
+    CreateApplicationAssignmentResponse,
     CreateGroupRequest,
     CreateGroupResponseBody,
     CreateGroupResponse,
@@ -520,6 +539,9 @@ __all__ = [
     DeleteApplicationRequest,
     DeleteApplicationResponseBody,
     DeleteApplicationResponse,
+    DeleteApplicationAssignmentRequest,
+    DeleteApplicationAssignmentResponseBody,
+    DeleteApplicationAssignmentResponse,
     DeleteGroupRequest,
     DeleteGroupResponseBody,
     DeleteGroupResponse,
@@ -642,6 +664,12 @@ __all__ = [
     ListAppSecretIdsRequest,
     ListAppSecretIdsResponseBody,
     ListAppSecretIdsResponse,
+    ListApplicationAssignmentsRequest,
+    ListApplicationAssignmentsResponseBody,
+    ListApplicationAssignmentsResponse,
+    ListApplicationAssignmentsForPrincipalRequest,
+    ListApplicationAssignmentsForPrincipalResponseBody,
+    ListApplicationAssignmentsForPrincipalResponse,
     ListApplicationProvisionInfosRequest,
     ListApplicationProvisionInfosResponseBody,
     ListApplicationProvisionInfosResponse,
@@ -843,6 +871,10 @@ __all__ = [
     ListAccessKeysInRecycleBinResponseBodyAccessKeys,
     ListAppSecretIdsResponseBodyAppSecretsAppSecret,
     ListAppSecretIdsResponseBodyAppSecrets,
+    ListApplicationAssignmentsResponseBodyApplicationAssignmentApplicationAssignmentInfo,
+    ListApplicationAssignmentsResponseBodyApplicationAssignment,
+    ListApplicationAssignmentsForPrincipalResponseBodyApplicationAssignmentApplicationAssignmentInfo,
+    ListApplicationAssignmentsForPrincipalResponseBodyApplicationAssignment,
     ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope,
     ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScopePredefinedScopes,
     ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScope,

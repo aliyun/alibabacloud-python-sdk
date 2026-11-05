@@ -9,9 +9,7 @@ class CreateAccessKeyRequest(DaraModel):
         self,
         user_principal_name: str = None,
     ):
-        # The logon name of the RAM user.
-        # 
-        # If this parameter is empty, an AccessKey pair is created for the current user.
+        # The logon name of the Resource Access Management (RAM) user. If this parameter is left empty, an access key is created for the current user by default.
         self.user_principal_name = user_principal_name
 
     def validate(self):

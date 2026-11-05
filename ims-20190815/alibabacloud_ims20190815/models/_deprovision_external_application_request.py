@@ -9,7 +9,7 @@ class DeprovisionExternalApplicationRequest(DaraModel):
         self,
         app_id: str = None,
     ):
-        # The ID of the application.
+        # The ID of the external application installed for the current account. You can obtain the ID by calling ListExternalApplications or ListApplicationProvisionInfos with SourceType set to external. If the application is not installed, you must first call ProvisionExternalApplication.
         # 
         # This parameter is required.
         self.app_id = app_id

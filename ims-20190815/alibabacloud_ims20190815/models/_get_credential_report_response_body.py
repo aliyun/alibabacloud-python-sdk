@@ -13,21 +13,18 @@ class GetCredentialReportResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The content of the user credential report.
-        # 
-        # The report is Base64-encoded. After you decode the report, the credential report is in the CSV format.
+        # The content of the user credential report. The content is Base64-encoded. After decoding, the content is in CSV format.
         self.content = content
-        # The time when the user credential report was generated.
+        # The time when the user credential report was generated. The time is displayed in the RFC 3339 format in UTC. Example: 2020-10-19T15:06:52Z.
         self.generated_time = generated_time
         # Indicates whether the response is truncated. Valid values:
         # 
         # - true
-        # 
         # - false
         self.is_truncated = is_truncated
-        # The parameter that is used to obtain the truncated part. This parameter takes effect only when `IsTruncated` is set to true.
+        # The token used to retrieve the next set of results. This parameter takes effect only when IsTruncated is set to true.
         self.next_token = next_token
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

@@ -21,29 +21,28 @@ class CreateUserRequest(DaraModel):
         # 
         # The description must be 1 to 128 characters in length.
         self.comments = comments
-        # The display name of the RAM user.
+        # The display name of the Resource Access Management (RAM) user.
         # 
-        # The name must be 1 to 24 characters in length.
+        # The display name must be 1 to 24 characters in length.
         # 
         # This parameter is required.
         self.display_name = display_name
-        # The email address of the RAM user.
-        # 
-        # > This parameter is valid only on the China site (aliyun.com).
+        # The electron mailbox of the Resource Access Management (RAM) user.
+        # > This parameter is applicable only to the China site.
         self.email = email
-        # The mobile number of the RAM user.
+        # The mobile phone number of the Resource Access Management (RAM) user.
         # 
-        # Format: Country code-Mobile phone number.
+        # Format: area code-phone number.
         # 
-        # > This parameter is valid only on the China site (aliyun.com).
+        # > This parameter is applicable only to the China site.
         self.mobile_phone = mobile_phone
-        # The tags. You can specify up to 20 tags.
+        # The list of tags. A maximum of 20 tags can be added.
         self.tag = tag
-        # The logon name of the Resource Access Management (RAM) user.
+        # The logon Resource Access Management (RAM) user.
         # 
-        # The name is in the format of `<username>@<AccountAlias>.onaliyun.com`. `<username>` indicates the name of the RAM user. `<AccountAlias>.onaliyun.com` indicates the default domain name. For more information about how to query the default domain name, see [GetDefaultDomain](https://help.aliyun.com/document_detail/186720.html).
+        # The format is `<username>@<AccountAlias>.onaliyun.com`, where `<username>` is the Resource Access Management (RAM) user and `<AccountAlias>.onaliyun.com` is the default domain name. For more information about how to obtain the default domain name, see [GetDefaultDomain](https://help.aliyun.com/document_detail/186720.html).
         # 
-        # The value of `UserPrincipalName` must be `1 to 128` characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The value of `<username>` must be `1 to 64` characters in length.
+        # The UserPrincipalName parameter must be 1 to 128 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The `<username>` part must be 1 to 64 characters in length.
         # 
         # This parameter is required.
         self.user_principal_name = user_principal_name
@@ -112,13 +111,13 @@ class CreateUserRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         # 
-        # The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
+        # Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         # 
-        # The tag value can be an empty string. The tag value can be up to 128 characters in length. The tag value cannot start with `acs:` or contain `http://` or `https://`.
+        # Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with acs:. It cannot contain http:// or https://.
         self.value = value
 
     def validate(self):

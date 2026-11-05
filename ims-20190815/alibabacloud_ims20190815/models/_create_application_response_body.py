@@ -54,10 +54,12 @@ class CreateApplicationResponseBodyApplication(DaraModel):
         app_id: str = None,
         app_name: str = None,
         app_type: str = None,
+        assignment_type: str = None,
         create_date: str = None,
         delegated_scope: main_models.CreateApplicationResponseBodyApplicationDelegatedScope = None,
         display_name: str = None,
         is_multi_tenant: bool = None,
+        need_principal_consent: bool = None,
         protocol_version: str = None,
         redirect_uris: main_models.CreateApplicationResponseBodyApplicationRedirectUris = None,
         refresh_token_validity: int = None,
@@ -66,7 +68,7 @@ class CreateApplicationResponseBodyApplication(DaraModel):
     ):
         # The validity period of the access token. Unit: seconds.
         self.access_token_validity = access_token_validity
-        # The ID of the Alibaba Cloud account to which the application belongs.
+        # The Alibaba Cloud account ID to which the application belongs.
         self.account_id = account_id
         # The application ID.
         self.app_id = app_id
@@ -74,27 +76,36 @@ class CreateApplicationResponseBodyApplication(DaraModel):
         self.app_name = app_name
         # The application type.
         self.app_type = app_type
-        # The time when the application was created.
+        # The application assignment type. Valid values:
+        # + AllowAll: assigns the application to all RAM users and roles in the account, allowing them to use the application.
+        # + OnDemand: assigns the application only to specified RAM users and roles in the account, allowing only them to use the application.
+        self.assignment_type = assignment_type
+        # The creation time.
+        # 
+        # Format: RFC 3339 (UTC). Example: 2020-10-23T08:06:57Z.
         self.create_date = create_date
-        # The information about the permissions that are granted on the application.
+        # The application scope information.
         self.delegated_scope = delegated_scope
         # The display name of the application.
         self.display_name = display_name
-        # Indicates whether the application can be installed by using other Alibaba Cloud accounts.
+        # Indicates whether the application can be installed by other accounts.
         self.is_multi_tenant = is_multi_tenant
+        # Specifies whether user authorization is required. Valid values:
+        # + true: User authorization is required.
+        # + false: User authorization is not required.
+        self.need_principal_consent = need_principal_consent
         # The OAuth protocol version of the application. Valid values:
-        # 
-        # - `2.0`: OAuth 2.0
-        # 
-        # - `2.1`: OAuth 2.1
+        # + 2.0: OAuth 2.0 protocol.
+        # + 2.1: OAuth 2.1 protocol.
         self.protocol_version = protocol_version
-        # The redirect URLs.
         self.redirect_uris = redirect_uris
         # The validity period of the refresh token. Unit: seconds.
         self.refresh_token_validity = refresh_token_validity
-        # Indicates whether a secret is required.
+        # Indicates whether an application secret is required.
         self.secret_required = secret_required
-        # The time when the application information was last updated.
+        # The update time.
+        # 
+        # Format: RFC 3339 (UTC). Example: 2020-10-23T08:06:57Z.
         self.update_date = update_date
 
     def validate(self):
@@ -123,6 +134,9 @@ class CreateApplicationResponseBodyApplication(DaraModel):
         if self.app_type is not None:
             result['AppType'] = self.app_type
 
+        if self.assignment_type is not None:
+            result['AssignmentType'] = self.assignment_type
+
         if self.create_date is not None:
             result['CreateDate'] = self.create_date
 
@@ -134,6 +148,9 @@ class CreateApplicationResponseBodyApplication(DaraModel):
 
         if self.is_multi_tenant is not None:
             result['IsMultiTenant'] = self.is_multi_tenant
+
+        if self.need_principal_consent is not None:
+            result['NeedPrincipalConsent'] = self.need_principal_consent
 
         if self.protocol_version is not None:
             result['ProtocolVersion'] = self.protocol_version
@@ -169,6 +186,9 @@ class CreateApplicationResponseBodyApplication(DaraModel):
         if m.get('AppType') is not None:
             self.app_type = m.get('AppType')
 
+        if m.get('AssignmentType') is not None:
+            self.assignment_type = m.get('AssignmentType')
+
         if m.get('CreateDate') is not None:
             self.create_date = m.get('CreateDate')
 
@@ -181,6 +201,9 @@ class CreateApplicationResponseBodyApplication(DaraModel):
 
         if m.get('IsMultiTenant') is not None:
             self.is_multi_tenant = m.get('IsMultiTenant')
+
+        if m.get('NeedPrincipalConsent') is not None:
+            self.need_principal_consent = m.get('NeedPrincipalConsent')
 
         if m.get('ProtocolVersion') is not None:
             self.protocol_version = m.get('ProtocolVersion')
@@ -232,7 +255,6 @@ class CreateApplicationResponseBodyApplicationDelegatedScope(DaraModel):
         self,
         predefined_scopes: main_models.CreateApplicationResponseBodyApplicationDelegatedScopePredefinedScopes = None,
     ):
-        # The information about the permissions that are granted on the application.
         self.predefined_scopes = predefined_scopes
 
     def validate(self):

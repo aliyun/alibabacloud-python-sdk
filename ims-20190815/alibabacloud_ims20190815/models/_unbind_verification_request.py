@@ -14,19 +14,18 @@ class UnbindVerificationRequest(DaraModel):
     ):
         # The email address.
         # 
-        # > If you set `VerifyType` to `email`, you must specify this parameter.
+        # > When VerifyType is set to email, this parameter is required.
         self.email = email
         # The mobile phone number.
         # 
-        # > If you set `VerifyType` to `sms`, you must specify this parameter.
+        # > When VerifyType is set to sms, this parameter is required.
         self.mobile_phone = mobile_phone
-        # The logon name of the RAM user.
+        # The logon name of the Resource Access Management (RAM) user.
         self.user_principal_name = user_principal_name
-        # The multi-factor authentication (MFA) method. Valid values:
+        # The multi-factor authentication method. Valid values:
         # 
-        # - sms: mobile phone.
-        # 
-        # - email: email.
+        # - sms: secure phone
+        # - email: security email address
         self.verify_type = verify_type
 
     def validate(self):

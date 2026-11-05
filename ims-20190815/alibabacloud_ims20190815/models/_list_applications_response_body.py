@@ -88,10 +88,12 @@ class ListApplicationsResponseBodyApplicationsApplication(DaraModel):
         app_id: str = None,
         app_name: str = None,
         app_type: str = None,
+        assignment_type: str = None,
         create_date: str = None,
         delegated_scope: main_models.ListApplicationsResponseBodyApplicationsApplicationDelegatedScope = None,
         display_name: str = None,
         is_multi_tenant: bool = None,
+        need_principal_consent: bool = None,
         protocol_version: str = None,
         redirect_uris: main_models.ListApplicationsResponseBodyApplicationsApplicationRedirectUris = None,
         refresh_token_validity: int = None,
@@ -103,10 +105,12 @@ class ListApplicationsResponseBodyApplicationsApplication(DaraModel):
         self.app_id = app_id
         self.app_name = app_name
         self.app_type = app_type
+        self.assignment_type = assignment_type
         self.create_date = create_date
         self.delegated_scope = delegated_scope
         self.display_name = display_name
         self.is_multi_tenant = is_multi_tenant
+        self.need_principal_consent = need_principal_consent
         self.protocol_version = protocol_version
         self.redirect_uris = redirect_uris
         self.refresh_token_validity = refresh_token_validity
@@ -139,6 +143,9 @@ class ListApplicationsResponseBodyApplicationsApplication(DaraModel):
         if self.app_type is not None:
             result['AppType'] = self.app_type
 
+        if self.assignment_type is not None:
+            result['AssignmentType'] = self.assignment_type
+
         if self.create_date is not None:
             result['CreateDate'] = self.create_date
 
@@ -150,6 +157,9 @@ class ListApplicationsResponseBodyApplicationsApplication(DaraModel):
 
         if self.is_multi_tenant is not None:
             result['IsMultiTenant'] = self.is_multi_tenant
+
+        if self.need_principal_consent is not None:
+            result['NeedPrincipalConsent'] = self.need_principal_consent
 
         if self.protocol_version is not None:
             result['ProtocolVersion'] = self.protocol_version
@@ -185,6 +195,9 @@ class ListApplicationsResponseBodyApplicationsApplication(DaraModel):
         if m.get('AppType') is not None:
             self.app_type = m.get('AppType')
 
+        if m.get('AssignmentType') is not None:
+            self.assignment_type = m.get('AssignmentType')
+
         if m.get('CreateDate') is not None:
             self.create_date = m.get('CreateDate')
 
@@ -197,6 +210,9 @@ class ListApplicationsResponseBodyApplicationsApplication(DaraModel):
 
         if m.get('IsMultiTenant') is not None:
             self.is_multi_tenant = m.get('IsMultiTenant')
+
+        if m.get('NeedPrincipalConsent') is not None:
+            self.need_principal_consent = m.get('NeedPrincipalConsent')
 
         if m.get('ProtocolVersion') is not None:
             self.protocol_version = m.get('ProtocolVersion')

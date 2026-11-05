@@ -11,7 +11,7 @@ class CreateAppSecretResponseBody(DaraModel):
         app_secret: main_models.CreateAppSecretResponseBodyAppSecret = None,
         request_id: str = None,
     ):
-        # The details of the application secret.
+        # The application secret information.
         self.app_secret = app_secret
         # The request ID.
         self.request_id = request_id
@@ -52,13 +52,15 @@ class CreateAppSecretResponseBodyAppSecret(DaraModel):
         app_secret_value: str = None,
         create_date: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
-        # The ID of the application secret.
+        # The application secret ID.
         self.app_secret_id = app_secret_id
-        # The content of the application secret. This value can be used as the client secret for open authorization (OAuth).
+        # The application secret content. This value can be used as the client secret for OAuth.
         self.app_secret_value = app_secret_value
         # The creation time.
+        # 
+        # Format: RFC 3339 (UTC). Example: 2020-10-26T02:52:31Z.
         self.create_date = create_date
 
     def validate(self):

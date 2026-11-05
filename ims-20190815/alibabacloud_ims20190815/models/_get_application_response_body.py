@@ -13,7 +13,7 @@ class GetApplicationResponseBody(DaraModel):
         application: main_models.GetApplicationResponseBodyApplication = None,
         request_id: str = None,
     ):
-        # The information about the application.
+        # The application information.
         self.application = application
         # The request ID.
         self.request_id = request_id
@@ -54,10 +54,12 @@ class GetApplicationResponseBodyApplication(DaraModel):
         app_id: str = None,
         app_name: str = None,
         app_type: str = None,
+        assignment_type: str = None,
         create_date: str = None,
         delegated_scope: main_models.GetApplicationResponseBodyApplicationDelegatedScope = None,
         display_name: str = None,
         is_multi_tenant: bool = None,
+        need_principal_consent: bool = None,
         protocol_version: str = None,
         redirect_uris: main_models.GetApplicationResponseBodyApplicationRedirectUris = None,
         refresh_token_validity: int = None,
@@ -66,7 +68,7 @@ class GetApplicationResponseBodyApplication(DaraModel):
     ):
         # The validity period of the access token. Unit: seconds.
         self.access_token_validity = access_token_validity
-        # The ID of the Alibaba Cloud account to which the application belongs.
+        # The Alibaba Cloud account ID to which the application belongs.
         self.account_id = account_id
         # The application ID.
         self.app_id = app_id
@@ -74,33 +76,36 @@ class GetApplicationResponseBodyApplication(DaraModel):
         self.app_name = app_name
         # The application type. Valid values:
         # 
-        # - WebApp: a web application that is based on browser interaction.
-        # 
-        # - NativeApp: a native application that runs on an operating system, such as a desktop or mobile operating system.
-        # 
-        # - ServerApp: an application that directly accesses Alibaba Cloud services without user logon. Currently, only applications that use the System for Cross-domain Identity Management (SCIM) protocol for user synchronization are supported.
+        # - WebApp: web applications that are based on browser interactions.
+        # - NativeApp: local applications that run in operating systems, such as desktop or shift operating systems.
+        # - ServerApp: applications that directly access Alibaba Cloud services without requiring user logon. Currently, only user synchronization applications based on the System for Cross-domain Identity Management protocol are supported.
         self.app_type = app_type
-        # The time when the application was created.
+        # The application assignment type. Valid values:
+        # + AllowAll: full assignment. All RAM users and roles within the account are allowed to use the application.
+        # + OnDemand: on-demand assignment. Only specified RAM users and roles within the account are allowed to use the application.
+        self.assignment_type = assignment_type
+        # The creation time. Format: RFC 3339 (UTC). Example: 2020-10-23T08:06:57Z.
         self.create_date = create_date
-        # The information about the permissions that are granted on the application.
+        # The delegated scope information of the application.
         self.delegated_scope = delegated_scope
         # The display name of the application.
         self.display_name = display_name
-        # Indicates whether the application can be installed by using other Alibaba Cloud accounts.
+        # Specifies whether the application can be installed by other accounts.
         self.is_multi_tenant = is_multi_tenant
+        # Specifies whether user authorization is required. Valid values:
+        # + true: User authorization is required.
+        # + false: User authorization is not required.
+        self.need_principal_consent = need_principal_consent
         # The OAuth protocol version of the application. Valid values:
-        # 
-        # - `2.0`: OAuth 2.0
-        # 
-        # - `2.1`: OAuth 2.1
+        # + `2.0`: OAuth 2.0 protocol.
+        # + `2.1`: OAuth 2.1 protocol.
         self.protocol_version = protocol_version
-        # The redirect URLs.
         self.redirect_uris = redirect_uris
         # The validity period of the refresh token. Unit: seconds.
         self.refresh_token_validity = refresh_token_validity
-        # Indicates whether a secret is required.
+        # Specifies whether an application secret is required.
         self.secret_required = secret_required
-        # The time when the application was last updated.
+        # The update time. Format: RFC 3339 (UTC). Example: 2020-10-23T08:06:57Z.
         self.update_date = update_date
 
     def validate(self):
@@ -129,6 +134,9 @@ class GetApplicationResponseBodyApplication(DaraModel):
         if self.app_type is not None:
             result['AppType'] = self.app_type
 
+        if self.assignment_type is not None:
+            result['AssignmentType'] = self.assignment_type
+
         if self.create_date is not None:
             result['CreateDate'] = self.create_date
 
@@ -140,6 +148,9 @@ class GetApplicationResponseBodyApplication(DaraModel):
 
         if self.is_multi_tenant is not None:
             result['IsMultiTenant'] = self.is_multi_tenant
+
+        if self.need_principal_consent is not None:
+            result['NeedPrincipalConsent'] = self.need_principal_consent
 
         if self.protocol_version is not None:
             result['ProtocolVersion'] = self.protocol_version
@@ -175,6 +186,9 @@ class GetApplicationResponseBodyApplication(DaraModel):
         if m.get('AppType') is not None:
             self.app_type = m.get('AppType')
 
+        if m.get('AssignmentType') is not None:
+            self.assignment_type = m.get('AssignmentType')
+
         if m.get('CreateDate') is not None:
             self.create_date = m.get('CreateDate')
 
@@ -187,6 +201,9 @@ class GetApplicationResponseBodyApplication(DaraModel):
 
         if m.get('IsMultiTenant') is not None:
             self.is_multi_tenant = m.get('IsMultiTenant')
+
+        if m.get('NeedPrincipalConsent') is not None:
+            self.need_principal_consent = m.get('NeedPrincipalConsent')
 
         if m.get('ProtocolVersion') is not None:
             self.protocol_version = m.get('ProtocolVersion')
@@ -238,7 +255,6 @@ class GetApplicationResponseBodyApplicationDelegatedScope(DaraModel):
         self,
         predefined_scopes: main_models.GetApplicationResponseBodyApplicationDelegatedScopePredefinedScopes = None,
     ):
-        # The information about the permissions that are granted on the application.
         self.predefined_scopes = predefined_scopes
 
     def validate(self):

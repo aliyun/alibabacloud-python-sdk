@@ -11,7 +11,7 @@ class GetAccessKeyInfoInRecycleBinResponseBody(DaraModel):
         access_key: main_models.GetAccessKeyInfoInRecycleBinResponseBodyAccessKey = None,
         request_id: str = None,
     ):
-        # The information about the AccessKey pair.
+        # The access key information.
         self.access_key = access_key
         # The request ID.
         self.request_id = request_id
@@ -55,23 +55,28 @@ class GetAccessKeyInfoInRecycleBinResponseBodyAccessKey(DaraModel):
         user_principal_name: str = None,
         user_recycled: bool = None,
     ):
-        # The AccessKey ID.
+        # The access key ID.
         self.access_key_id = access_key_id
-        # The time when the AccessKey pair was created.
+        # The time when the access key was created.
+        # 
+        # Format: RFC 3339 (UTC). Example: 2020-10-12T09:12:00Z.
         self.create_date = create_date
-        # The time when the AccessKey pair will be permanently deleted from the recycle bin.
+        # The time when the access key will be permanently deleted from the recycle bin.
+        # 
+        # Format: RFC 3339 (UTC). Example: 2020-11-12T10:12:00Z.
         self.delete_date = delete_date
-        # The time when the AccessKey pair was deleted and moved to the recycle bin.
+        # The time when the access key was deleted and moved to the recycle bin.
+        # 
+        # Format: RFC 3339 (UTC). Example: 2020-10-12T10:12:00Z.
         self.recycle_date = recycle_date
-        # The ID of the RAM user.
+        # The ID of the Resource Access Management (RAM) user.
         self.user_id = user_id
-        # The logon name of the RAM user.
+        # The logon name of the Resource Access Management (RAM) user.
         self.user_principal_name = user_principal_name
-        # Indicates whether the RAM user to which the AccessKey pair belongs is in the recycle bin. Valid values:
+        # Indicates whether the Resource Access Management (RAM) user to which the access key belongs is revoked. Valid values:
         # 
-        # - true
-        # 
-        # - false
+        # - true: The Resource Access Management (RAM) user is revoked.
+        # - false: The Resource Access Management (RAM) user is not revoked.
         self.user_recycled = user_recycled
 
     def validate(self):

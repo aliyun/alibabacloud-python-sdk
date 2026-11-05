@@ -1,3 +1,6 @@
+2026-11-05 Version: 3.6.0
+- Generated python 2019-08-15 for Ims.
+
 2026-10-21 Version: 3.5.0
 - Support API GetAccessKeyPolicyForAccount.
 - Support API SetAccessKeyPolicyForAccount.

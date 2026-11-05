@@ -571,10 +571,14 @@ class Client(OpenApiClient):
             query['AppName'] = request.app_name
         if not DaraCore.is_null(request.app_type):
             query['AppType'] = request.app_type
+        if not DaraCore.is_null(request.assignment_type):
+            query['AssignmentType'] = request.assignment_type
         if not DaraCore.is_null(request.display_name):
             query['DisplayName'] = request.display_name
         if not DaraCore.is_null(request.is_multi_tenant):
             query['IsMultiTenant'] = request.is_multi_tenant
+        if not DaraCore.is_null(request.need_principal_consent):
+            query['NeedPrincipalConsent'] = request.need_principal_consent
         if not DaraCore.is_null(request.predefined_scopes):
             query['PredefinedScopes'] = request.predefined_scopes
         if not DaraCore.is_null(request.protocol_version):
@@ -619,10 +623,14 @@ class Client(OpenApiClient):
             query['AppName'] = request.app_name
         if not DaraCore.is_null(request.app_type):
             query['AppType'] = request.app_type
+        if not DaraCore.is_null(request.assignment_type):
+            query['AssignmentType'] = request.assignment_type
         if not DaraCore.is_null(request.display_name):
             query['DisplayName'] = request.display_name
         if not DaraCore.is_null(request.is_multi_tenant):
             query['IsMultiTenant'] = request.is_multi_tenant
+        if not DaraCore.is_null(request.need_principal_consent):
+            query['NeedPrincipalConsent'] = request.need_principal_consent
         if not DaraCore.is_null(request.predefined_scopes):
             query['PredefinedScopes'] = request.predefined_scopes
         if not DaraCore.is_null(request.protocol_version):
@@ -667,6 +675,84 @@ class Client(OpenApiClient):
     ) -> main_models.CreateApplicationResponse:
         runtime = RuntimeOptions()
         return await self.create_application_with_options_async(request, runtime)
+
+    def create_application_assignment_with_options(
+        self,
+        request: main_models.CreateApplicationAssignmentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateApplicationAssignmentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.principal_name):
+            query['PrincipalName'] = request.principal_name
+        if not DaraCore.is_null(request.principal_type):
+            query['PrincipalType'] = request.principal_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateApplicationAssignment',
+            version = '2019-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateApplicationAssignmentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_application_assignment_with_options_async(
+        self,
+        request: main_models.CreateApplicationAssignmentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateApplicationAssignmentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.principal_name):
+            query['PrincipalName'] = request.principal_name
+        if not DaraCore.is_null(request.principal_type):
+            query['PrincipalType'] = request.principal_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateApplicationAssignment',
+            version = '2019-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateApplicationAssignmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_application_assignment(
+        self,
+        request: main_models.CreateApplicationAssignmentRequest,
+    ) -> main_models.CreateApplicationAssignmentResponse:
+        runtime = RuntimeOptions()
+        return self.create_application_assignment_with_options(request, runtime)
+
+    async def create_application_assignment_async(
+        self,
+        request: main_models.CreateApplicationAssignmentRequest,
+    ) -> main_models.CreateApplicationAssignmentResponse:
+        runtime = RuntimeOptions()
+        return await self.create_application_assignment_with_options_async(request, runtime)
 
     def create_group_with_options(
         self,
@@ -1537,6 +1623,84 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteApplicationResponse:
         runtime = RuntimeOptions()
         return await self.delete_application_with_options_async(request, runtime)
+
+    def delete_application_assignment_with_options(
+        self,
+        request: main_models.DeleteApplicationAssignmentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteApplicationAssignmentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.principal_name):
+            query['PrincipalName'] = request.principal_name
+        if not DaraCore.is_null(request.principal_type):
+            query['PrincipalType'] = request.principal_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteApplicationAssignment',
+            version = '2019-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteApplicationAssignmentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_application_assignment_with_options_async(
+        self,
+        request: main_models.DeleteApplicationAssignmentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteApplicationAssignmentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.principal_name):
+            query['PrincipalName'] = request.principal_name
+        if not DaraCore.is_null(request.principal_type):
+            query['PrincipalType'] = request.principal_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteApplicationAssignment',
+            version = '2019-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteApplicationAssignmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_application_assignment(
+        self,
+        request: main_models.DeleteApplicationAssignmentRequest,
+    ) -> main_models.DeleteApplicationAssignmentResponse:
+        runtime = RuntimeOptions()
+        return self.delete_application_assignment_with_options(request, runtime)
+
+    async def delete_application_assignment_async(
+        self,
+        request: main_models.DeleteApplicationAssignmentRequest,
+    ) -> main_models.DeleteApplicationAssignmentResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_application_assignment_with_options_async(request, runtime)
 
     def delete_group_with_options(
         self,
@@ -4460,6 +4624,166 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_app_secret_ids_with_options_async(request, runtime)
 
+    def list_application_assignments_with_options(
+        self,
+        request: main_models.ListApplicationAssignmentsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListApplicationAssignmentsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListApplicationAssignments',
+            version = '2019-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListApplicationAssignmentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_application_assignments_with_options_async(
+        self,
+        request: main_models.ListApplicationAssignmentsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListApplicationAssignmentsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListApplicationAssignments',
+            version = '2019-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListApplicationAssignmentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_application_assignments(
+        self,
+        request: main_models.ListApplicationAssignmentsRequest,
+    ) -> main_models.ListApplicationAssignmentsResponse:
+        runtime = RuntimeOptions()
+        return self.list_application_assignments_with_options(request, runtime)
+
+    async def list_application_assignments_async(
+        self,
+        request: main_models.ListApplicationAssignmentsRequest,
+    ) -> main_models.ListApplicationAssignmentsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_application_assignments_with_options_async(request, runtime)
+
+    def list_application_assignments_for_principal_with_options(
+        self,
+        request: main_models.ListApplicationAssignmentsForPrincipalRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListApplicationAssignmentsForPrincipalResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.principal_name):
+            query['PrincipalName'] = request.principal_name
+        if not DaraCore.is_null(request.principal_type):
+            query['PrincipalType'] = request.principal_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListApplicationAssignmentsForPrincipal',
+            version = '2019-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListApplicationAssignmentsForPrincipalResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_application_assignments_for_principal_with_options_async(
+        self,
+        request: main_models.ListApplicationAssignmentsForPrincipalRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListApplicationAssignmentsForPrincipalResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.principal_name):
+            query['PrincipalName'] = request.principal_name
+        if not DaraCore.is_null(request.principal_type):
+            query['PrincipalType'] = request.principal_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListApplicationAssignmentsForPrincipal',
+            version = '2019-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListApplicationAssignmentsForPrincipalResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_application_assignments_for_principal(
+        self,
+        request: main_models.ListApplicationAssignmentsForPrincipalRequest,
+    ) -> main_models.ListApplicationAssignmentsForPrincipalResponse:
+        runtime = RuntimeOptions()
+        return self.list_application_assignments_for_principal_with_options(request, runtime)
+
+    async def list_application_assignments_for_principal_async(
+        self,
+        request: main_models.ListApplicationAssignmentsForPrincipalRequest,
+    ) -> main_models.ListApplicationAssignmentsForPrincipalResponse:
+        runtime = RuntimeOptions()
+        return await self.list_application_assignments_for_principal_with_options_async(request, runtime)
+
     def list_application_provision_infos_with_options(
         self,
         request: main_models.ListApplicationProvisionInfosRequest,
@@ -7239,10 +7563,14 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not DaraCore.is_null(request.new_access_token_validity):
             query['NewAccessTokenValidity'] = request.new_access_token_validity
+        if not DaraCore.is_null(request.new_assignment_type):
+            query['NewAssignmentType'] = request.new_assignment_type
         if not DaraCore.is_null(request.new_display_name):
             query['NewDisplayName'] = request.new_display_name
         if not DaraCore.is_null(request.new_is_multi_tenant):
             query['NewIsMultiTenant'] = request.new_is_multi_tenant
+        if not DaraCore.is_null(request.new_need_principal_consent):
+            query['NewNeedPrincipalConsent'] = request.new_need_principal_consent
         if not DaraCore.is_null(request.new_predefined_scopes):
             query['NewPredefinedScopes'] = request.new_predefined_scopes
         if not DaraCore.is_null(request.new_redirect_uris):
@@ -7283,10 +7611,14 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not DaraCore.is_null(request.new_access_token_validity):
             query['NewAccessTokenValidity'] = request.new_access_token_validity
+        if not DaraCore.is_null(request.new_assignment_type):
+            query['NewAssignmentType'] = request.new_assignment_type
         if not DaraCore.is_null(request.new_display_name):
             query['NewDisplayName'] = request.new_display_name
         if not DaraCore.is_null(request.new_is_multi_tenant):
             query['NewIsMultiTenant'] = request.new_is_multi_tenant
+        if not DaraCore.is_null(request.new_need_principal_consent):
+            query['NewNeedPrincipalConsent'] = request.new_need_principal_consent
         if not DaraCore.is_null(request.new_predefined_scopes):
             query['NewPredefinedScopes'] = request.new_predefined_scopes
         if not DaraCore.is_null(request.new_redirect_uris):

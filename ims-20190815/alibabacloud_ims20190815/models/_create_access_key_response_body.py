@@ -11,7 +11,7 @@ class CreateAccessKeyResponseBody(DaraModel):
         access_key: main_models.CreateAccessKeyResponseBodyAccessKey = None,
         request_id: str = None,
     ):
-        # The information about the AccessKey pair.
+        # The access key.
         self.access_key = access_key
         # The request ID.
         self.request_id = request_id
@@ -52,17 +52,15 @@ class CreateAccessKeyResponseBodyAccessKey(DaraModel):
         create_date: str = None,
         status: str = None,
     ):
-        # The AccessKey ID.
+        # The access key ID.
         self.access_key_id = access_key_id
-        # The AccessKey secret.
+        # The access key.
         self.access_key_secret = access_key_secret
-        # The time when the AccessKey pair was created.
+        # The creation time of the access key. Format: RFC 3339 (UTC). Example: 2020-10-15T08:08:54Z.
         self.create_date = create_date
-        # The status of the AccessKey pair. Valid values:
-        # 
-        # - Active
-        # 
-        # - Inactive
+        # The status of the access key. Valid values:
+        # - Active: Activated.
+        # - Inactive: Disabled.
         self.status = status
 
     def validate(self):
