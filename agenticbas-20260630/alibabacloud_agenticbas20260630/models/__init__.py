@@ -24,6 +24,7 @@ from ._describe_pentest_report_content_request import DescribePentestReportConte
 from ._describe_pentest_report_content_response_body import DescribePentestReportContentResponseBodyReport
 from ._describe_pentest_task_list_request import DescribePentestTaskListRequestOperationInput
 from ._describe_pentest_task_list_response_body import DescribePentestTaskListResponseBodyPageInfo
+from ._describe_pentest_task_list_response_body import DescribePentestTaskListResponseBodyTaskListVulnStats
 from ._describe_pentest_task_list_response_body import DescribePentestTaskListResponseBodyTaskList
 from ._describe_pentest_vuln_list_request import DescribePentestVulnListRequestOperationInput
 from ._describe_pentest_vuln_list_response_body import DescribePentestVulnListResponseBodyPageInfo
@@ -52,6 +53,7 @@ __all__ = [
     DescribePentestReportContentResponseBodyReport,
     DescribePentestTaskListRequestOperationInput,
     DescribePentestTaskListResponseBodyPageInfo,
+    DescribePentestTaskListResponseBodyTaskListVulnStats,
     DescribePentestTaskListResponseBodyTaskList,
     DescribePentestVulnListRequestOperationInput,
     DescribePentestVulnListResponseBodyPageInfo,
