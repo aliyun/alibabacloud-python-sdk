@@ -43,6 +43,9 @@ from ._create_browser_instance_group_request import CreateBrowserInstanceGroupRe
 from ._create_browser_instance_group_shrink_request import CreateBrowserInstanceGroupShrinkRequest
 from ._create_browser_instance_group_response_body import CreateBrowserInstanceGroupResponseBody
 from ._create_browser_instance_group_response import CreateBrowserInstanceGroupResponse
+from ._create_export_task_request import CreateExportTaskRequest
+from ._create_export_task_response_body import CreateExportTaskResponseBody
+from ._create_export_task_response import CreateExportTaskResponse
 from ._create_image_by_instance_request import CreateImageByInstanceRequest
 from ._create_image_by_instance_response_body import CreateImageByInstanceResponseBody
 from ._create_image_by_instance_response import CreateImageByInstanceResponse
@@ -91,12 +94,18 @@ from ._deliver_to_user_sls_response import DeliverToUserSlsResponse
 from ._describe_events_request import DescribeEventsRequest
 from ._describe_events_response_body import DescribeEventsResponseBody
 from ._describe_events_response import DescribeEventsResponse
+from ._describe_export_tasks_request import DescribeExportTasksRequest
+from ._describe_export_tasks_response_body import DescribeExportTasksResponseBody
+from ._describe_export_tasks_response import DescribeExportTasksResponse
 from ._describe_wuying_server_request import DescribeWuyingServerRequest
 from ._describe_wuying_server_response_body import DescribeWuyingServerResponseBody
 from ._describe_wuying_server_response import DescribeWuyingServerResponse
 from ._describe_wuying_server_eip_info_request import DescribeWuyingServerEipInfoRequest
 from ._describe_wuying_server_eip_info_response_body import DescribeWuyingServerEipInfoResponseBody
 from ._describe_wuying_server_eip_info_response import DescribeWuyingServerEipInfoResponse
+from ._get_agent_runtime_statistic_request import GetAgentRuntimeStatisticRequest
+from ._get_agent_runtime_statistic_response_body import GetAgentRuntimeStatisticResponseBody
+from ._get_agent_runtime_statistic_response import GetAgentRuntimeStatisticResponse
 from ._get_app_instance_group_request import GetAppInstanceGroupRequest
 from ._get_app_instance_group_response_body import GetAppInstanceGroupResponseBody
 from ._get_app_instance_group_response import GetAppInstanceGroupResponse
@@ -121,6 +130,9 @@ from ._get_model_provider_template_response import GetModelProviderTemplateRespo
 from ._get_ota_task_by_task_id_request import GetOtaTaskByTaskIdRequest
 from ._get_ota_task_by_task_id_response_body import GetOtaTaskByTaskIdResponseBody
 from ._get_ota_task_by_task_id_response import GetOtaTaskByTaskIdResponse
+from ._get_resource_group_agent_model_settings_request import GetResourceGroupAgentModelSettingsRequest
+from ._get_resource_group_agent_model_settings_response_body import GetResourceGroupAgentModelSettingsResponseBody
+from ._get_resource_group_agent_model_settings_response import GetResourceGroupAgentModelSettingsResponse
 from ._get_resource_modify_price_request import GetResourceModifyPriceRequest
 from ._get_resource_modify_price_response_body import GetResourceModifyPriceResponseBody
 from ._get_resource_modify_price_response import GetResourceModifyPriceResponse
@@ -189,6 +201,9 @@ from ._list_llm_templates_response import ListLlmTemplatesResponse
 from ._list_model_provider_endpoints_request import ListModelProviderEndpointsRequest
 from ._list_model_provider_endpoints_response_body import ListModelProviderEndpointsResponseBody
 from ._list_model_provider_endpoints_response import ListModelProviderEndpointsResponse
+from ._list_model_provider_llm_codes_request import ListModelProviderLlmCodesRequest
+from ._list_model_provider_llm_codes_response_body import ListModelProviderLlmCodesResponseBody
+from ._list_model_provider_llm_codes_response import ListModelProviderLlmCodesResponse
 from ._list_model_provider_templates_request import ListModelProviderTemplatesRequest
 from ._list_model_provider_templates_shrink_request import ListModelProviderTemplatesShrinkRequest
 from ._list_model_provider_templates_response_body import ListModelProviderTemplatesResponseBody
@@ -428,6 +443,7 @@ from ._create_browser_instance_group_request import CreateBrowserInstanceGroupRe
 from ._create_browser_instance_group_request import CreateBrowserInstanceGroupRequestUserInfo
 from ._create_browser_instance_group_request import CreateBrowserInstanceGroupRequestUsers
 from ._create_browser_instance_group_response_body import CreateBrowserInstanceGroupResponseBodyBrowserInstanceGroupModel
+from ._create_export_task_response_body import CreateExportTaskResponseBodyExportTaskModel
 from ._create_image_by_instance_request import CreateImageByInstanceRequestTagList
 from ._create_image_by_instance_response_body import CreateImageByInstanceResponseBodyData
 from ._create_model_provider_template_response_body import CreateModelProviderTemplateResponseBodyData
@@ -437,9 +453,11 @@ from ._create_wuying_server_response_body import CreateWuyingServerResponseBodyD
 from ._delete_app_instances_response_body import DeleteAppInstancesResponseBodyDeleteAppInstanceModels
 from ._deliver_to_user_sls_request import DeliverToUserSlsRequestDeliveryScopes
 from ._describe_events_response_body import DescribeEventsResponseBodyEventList
+from ._describe_export_tasks_response_body import DescribeExportTasksResponseBodyExportTaskModel
 from ._describe_wuying_server_response_body import DescribeWuyingServerResponseBodyDataPrivateIpSets
 from ._describe_wuying_server_response_body import DescribeWuyingServerResponseBodyData
 from ._describe_wuying_server_eip_info_response_body import DescribeWuyingServerEipInfoResponseBodyEipInfoModel
+from ._get_agent_runtime_statistic_response_body import GetAgentRuntimeStatisticResponseBodyData
 from ._get_app_instance_group_response_body import GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps
 from ._get_app_instance_group_response_body import GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedulesTimerPeriods
 from ._get_app_instance_group_response_body import GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedules
@@ -467,6 +485,7 @@ from ._get_browser_instance_group_response_body import GetBrowserInstanceGroupRe
 from ._get_browser_instance_group_response_body import GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModel
 from ._get_file_upload_info_response_body import GetFileUploadInfoResponseBodyData
 from ._get_model_provider_template_response_body import GetModelProviderTemplateResponseBodyData
+from ._get_resource_group_agent_model_settings_response_body import GetResourceGroupAgentModelSettingsResponseBodyData
 from ._get_resource_modify_price_response_body import GetResourceModifyPriceResponseBodyDataPricePromotions
 from ._get_resource_modify_price_response_body import GetResourceModifyPriceResponseBodyDataPrice
 from ._get_resource_modify_price_response_body import GetResourceModifyPriceResponseBodyDataRules
@@ -547,6 +566,12 @@ from ._list_llm_templates_response_body import ListLlmTemplatesResponseBodyDataP
 from ._list_llm_templates_response_body import ListLlmTemplatesResponseBodyData
 from ._list_model_provider_endpoints_response_body import ListModelProviderEndpointsResponseBodyDataEndpoints
 from ._list_model_provider_endpoints_response_body import ListModelProviderEndpointsResponseBodyData
+from ._list_model_provider_llm_codes_response_body import ListModelProviderLlmCodesResponseBodyDataLlmInfoListCreditMultiplier
+from ._list_model_provider_llm_codes_response_body import ListModelProviderLlmCodesResponseBodyDataLlmInfoListInferenceMetadata
+from ._list_model_provider_llm_codes_response_body import ListModelProviderLlmCodesResponseBodyDataLlmInfoListPricesPrices
+from ._list_model_provider_llm_codes_response_body import ListModelProviderLlmCodesResponseBodyDataLlmInfoListPrices
+from ._list_model_provider_llm_codes_response_body import ListModelProviderLlmCodesResponseBodyDataLlmInfoList
+from ._list_model_provider_llm_codes_response_body import ListModelProviderLlmCodesResponseBodyData
 from ._list_model_provider_templates_response_body import ListModelProviderTemplatesResponseBodyData
 from ._list_model_template_resource_group_response_body import ListModelTemplateResourceGroupResponseBodyData
 from ._list_model_templates_response_body import ListModelTemplatesResponseBodyData
@@ -663,6 +688,9 @@ __all__ = [
     CreateBrowserInstanceGroupShrinkRequest,
     CreateBrowserInstanceGroupResponseBody,
     CreateBrowserInstanceGroupResponse,
+    CreateExportTaskRequest,
+    CreateExportTaskResponseBody,
+    CreateExportTaskResponse,
     CreateImageByInstanceRequest,
     CreateImageByInstanceResponseBody,
     CreateImageByInstanceResponse,
@@ -711,12 +739,18 @@ __all__ = [
     DescribeEventsRequest,
     DescribeEventsResponseBody,
     DescribeEventsResponse,
+    DescribeExportTasksRequest,
+    DescribeExportTasksResponseBody,
+    DescribeExportTasksResponse,
     DescribeWuyingServerRequest,
     DescribeWuyingServerResponseBody,
     DescribeWuyingServerResponse,
     DescribeWuyingServerEipInfoRequest,
     DescribeWuyingServerEipInfoResponseBody,
     DescribeWuyingServerEipInfoResponse,
+    GetAgentRuntimeStatisticRequest,
+    GetAgentRuntimeStatisticResponseBody,
+    GetAgentRuntimeStatisticResponse,
     GetAppInstanceGroupRequest,
     GetAppInstanceGroupResponseBody,
     GetAppInstanceGroupResponse,
@@ -741,6 +775,9 @@ __all__ = [
     GetOtaTaskByTaskIdRequest,
     GetOtaTaskByTaskIdResponseBody,
     GetOtaTaskByTaskIdResponse,
+    GetResourceGroupAgentModelSettingsRequest,
+    GetResourceGroupAgentModelSettingsResponseBody,
+    GetResourceGroupAgentModelSettingsResponse,
     GetResourceModifyPriceRequest,
     GetResourceModifyPriceResponseBody,
     GetResourceModifyPriceResponse,
@@ -809,6 +846,9 @@ __all__ = [
     ListModelProviderEndpointsRequest,
     ListModelProviderEndpointsResponseBody,
     ListModelProviderEndpointsResponse,
+    ListModelProviderLlmCodesRequest,
+    ListModelProviderLlmCodesResponseBody,
+    ListModelProviderLlmCodesResponse,
     ListModelProviderTemplatesRequest,
     ListModelProviderTemplatesShrinkRequest,
     ListModelProviderTemplatesResponseBody,
@@ -1048,6 +1088,7 @@ __all__ = [
     CreateBrowserInstanceGroupRequestUserInfo,
     CreateBrowserInstanceGroupRequestUsers,
     CreateBrowserInstanceGroupResponseBodyBrowserInstanceGroupModel,
+    CreateExportTaskResponseBodyExportTaskModel,
     CreateImageByInstanceRequestTagList,
     CreateImageByInstanceResponseBodyData,
     CreateModelProviderTemplateResponseBodyData,
@@ -1057,9 +1098,11 @@ __all__ = [
     DeleteAppInstancesResponseBodyDeleteAppInstanceModels,
     DeliverToUserSlsRequestDeliveryScopes,
     DescribeEventsResponseBodyEventList,
+    DescribeExportTasksResponseBodyExportTaskModel,
     DescribeWuyingServerResponseBodyDataPrivateIpSets,
     DescribeWuyingServerResponseBodyData,
     DescribeWuyingServerEipInfoResponseBodyEipInfoModel,
+    GetAgentRuntimeStatisticResponseBodyData,
     GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps,
     GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedulesTimerPeriods,
     GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedules,
@@ -1087,6 +1130,7 @@ __all__ = [
     GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModel,
     GetFileUploadInfoResponseBodyData,
     GetModelProviderTemplateResponseBodyData,
+    GetResourceGroupAgentModelSettingsResponseBodyData,
     GetResourceModifyPriceResponseBodyDataPricePromotions,
     GetResourceModifyPriceResponseBodyDataPrice,
     GetResourceModifyPriceResponseBodyDataRules,
@@ -1167,6 +1211,12 @@ __all__ = [
     ListLlmTemplatesResponseBodyData,
     ListModelProviderEndpointsResponseBodyDataEndpoints,
     ListModelProviderEndpointsResponseBodyData,
+    ListModelProviderLlmCodesResponseBodyDataLlmInfoListCreditMultiplier,
+    ListModelProviderLlmCodesResponseBodyDataLlmInfoListInferenceMetadata,
+    ListModelProviderLlmCodesResponseBodyDataLlmInfoListPricesPrices,
+    ListModelProviderLlmCodesResponseBodyDataLlmInfoListPrices,
+    ListModelProviderLlmCodesResponseBodyDataLlmInfoList,
+    ListModelProviderLlmCodesResponseBodyData,
     ListModelProviderTemplatesResponseBodyData,
     ListModelTemplateResourceGroupResponseBodyData,
     ListModelTemplatesResponseBodyData,

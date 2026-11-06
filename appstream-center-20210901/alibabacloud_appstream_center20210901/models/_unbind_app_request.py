@@ -13,15 +13,15 @@ class UnbindAppRequest(DaraModel):
         image_id: str = None,
         version_id: str = None,
     ):
-        # The list of application IDs to dissociate from the specified image version. Verify that each application is associated with the selected image version.
+        # The list of application IDs to dissociate from the specified image version. Verify that each application is associated with the selected image version beforehand.
         # 
         # This parameter is required.
         self.app_id_list = app_id_list
-        # The ID of the image from which to dissociate the applications. The image must be a custom image or a community image that the current account can manage.
+        # The ID of the image from which the applications are to be dissociated. The image must be a custom image or community image manageable by the current account.
         # 
         # This parameter is required.
         self.image_id = image_id
-        # The ID of the image version from which to dissociate the applications. If you omit this parameter, the current effective version of the image is used. If you specify this parameter, it must belong to the image specified by ImageId.
+        # The ID of the image version from which the applications are to be dissociated. If omitted, the current active version of the image is used. If specified, the version must belong to the image specified by ImageId.
         self.version_id = version_id
 
     def validate(self):

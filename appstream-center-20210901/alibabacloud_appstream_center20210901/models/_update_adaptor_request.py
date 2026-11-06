@@ -17,21 +17,21 @@ class UpdateAdaptorRequest(DaraModel):
     ):
         # The ID of the application adapter to be modified. This parameter is required and must belong to an application adapter manageable by the current account.
         self.adaptor_id = adaptor_id
-        # **Not enabled. Do not pass this parameter.** This parameter does not support modifying application scripts.
+        # **Not enabled. Do not pass this parameter.** This operation does not support modifying application scripts through this parameter.
         # 
         # The example "Not applicable (not enabled)" is only a description of the field status and is not a valid parameter value.
         self.app_script = app_script
-        # **Not enabled. Do not pass this parameter.** This parameter does not support modifying executable file paths.
+        # **Not enabled. Do not pass this parameter.** This operation does not support modifying executable file paths through this parameter.
         # 
         # The example "Not applicable (not enabled)" is only a description of the field status and is not a valid parameter value.
         self.execute_file_address = execute_file_address
         # The application optimization configuration, represented as a JSON object string. Pass this parameter only when specific optimization configuration requirements exist. The content must be a valid JSON object.
         self.optimize_param = optimize_param
-        # The command-line parameters used when the application starts. If this parameter is not empty, it is used to update the startup parameters of the application adapter. Specify the parameters based on the startup requirements of the application.
+        # The command-line parameters used when the application starts. If not empty, this parameter is used to update the startup parameters of the application adapter. Specify the value based on the startup requirements of the application.
         self.silence_param = silence_param
         # The application runtime configuration object. If this parameter is omitted, the existing user configuration is not modified.
         # 
-        # **If this parameter is passed, the original UserConfig is completely replaced and not merged item by item.** Submit the complete configuration and include the configuration items that need to be retained. Subfields that are not provided do not automatically inherit the original values.
+        # **If passed, the original UserConfig is entirely replaced and not merged item by item.** Submit the complete configuration and include the configuration items that need to be retained. Subfields that are not provided do not automatically inherit the original values.
         self.user_config = user_config
 
     def validate(self):

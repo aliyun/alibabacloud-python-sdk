@@ -16,17 +16,17 @@ class ListRegionIdResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. This field is returned when the request fails. A successful response may not contain this field.
+        # The error code. This parameter is returned when the request fails. A successful response may not contain this field.
         self.code = code
         # The total number of records returned in this list.
         self.count = count
         # The list of region IDs available for image services under the selected product for the current account.
         self.data = data
-        # The error or result message. This field describes the cause when a request fails. A successful response may not contain this field.
+        # The error or result message. This parameter describes the cause when a request fails. A successful response may not contain this field.
         self.message = message
         # The unique identifier of the request. You can provide this value for troubleshooting.
         self.request_id = request_id
-        # Specifies whether the request was processed successfully. A value of true indicates that the request was processed successfully. To determine whether an asynchronous task is completed, you must query the task status separately.
+        # Indicates whether the request was processed successfully. A value of true indicates that the request was processed successfully. To check whether an asynchronous task is completed, you must query the task status separately.
         self.success = success
 
     def validate(self):

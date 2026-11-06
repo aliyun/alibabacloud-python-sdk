@@ -25,15 +25,15 @@ class ListAppResponseBody(DaraModel):
         self.count = count
         # The application records on the current page.
         self.data = data
-        # The error or result message. This field describes the cause when the request fails. A successful response may not contain this field.
+        # The error or result message. This field describes the cause when a request fails. A successful response may not contain this field.
         self.message = message
-        # The page number of the current query. The name of this response field is PageNmuber.
+        # The page number of this query. The name of this response field is PageNmuber.
         self.page_nmuber = page_nmuber
-        # The number of records per page in the paged query.
+        # The number of records per page in this paged query.
         self.page_size = page_size
-        # The unique identifier of the request. You can provide this value when troubleshooting issues.
+        # The unique identifier of the request. You can provide this value for troubleshooting.
         self.request_id = request_id
-        # Indicates whether the request was processed successfully. A value of true indicates that the current request was processed successfully. To check whether an asynchronous task is completed, you must query the task status separately.
+        # Indicates whether the request was processed successfully. A value of true indicates that the request was processed successfully. To check whether an asynchronous task is completed, query the task status separately.
         self.success = success
 
     def validate(self):
@@ -131,7 +131,7 @@ class ListAppResponseBodyData(DaraModel):
         self.ali_uid = ali_uid
         # The URL used to access the application icon.
         self.app_icon_url = app_icon_url
-        # The application ID, which is used for subsequent application queries or unbinding the image.
+        # The application ID, which is used to query the application or unbind an image later.
         self.app_id = app_id
         # The display name of the application.
         self.app_name = app_name
@@ -139,21 +139,21 @@ class ListAppResponseBodyData(DaraModel):
         self.app_theme_color = app_theme_color
         # The source type of the application. Valid values:
         # 
-        # - **USER_APP**: user-created application
-        # - **SYS_APP**: system-provided application
-        # - **VIRTUAL_APP**: virtual application
+        # - **USER_APP**: User-created applications.
+        # - **SYS_APP**: System-provided applications.
+        # - **VIRTUAL_APP**: Virtual applications.
         self.app_type = app_type
         # The business type to which the application belongs. Valid values:
         # 
-        # - **1**: basic product
-        # - **2**: personal cloud
-        # - **3**: cloud office
-        # - **4**: cloud flow
-        # - **10**: personal edition
-        # - **20**: business edition
-        # - **60**: Linggou team edition
+        # - **1**: Basic products.
+        # - **2**: Personal cloud.
+        # - **3**: Cloud office.
+        # - **4**: Cloud Flow.
+        # - **10**: Personal Edition.
+        # - **20**: Business Edition.
+        # - **60**: Linggou Team Edition.
         self.biz_type = biz_type
-        # Indicates whether the current application is not referenced by any image. A value of true indicates that no image references the application. A value of false indicates that the application is still referenced by an image, and the reference must be removed before deletion.
+        # Indicates whether the current application is not referenced by any image. A value of true indicates that no image references the application. A value of false indicates that the application is still referenced by an image. You must remove the reference before deleting the application.
         self.deletable = deletable
         # The path of the executable file saved when the application is created or modified. This field is returned only if the path is configured for the application. An example is the installation path of a Windows business application.
         self.execute_file_address = execute_file_address
@@ -163,38 +163,38 @@ class ListAppResponseBodyData(DaraModel):
         self.gmt_modified = gmt_modified
         # The form of the application. Valid values:
         # 
-        # - **CLIENT_BASE**: client application
-        # - **WEB_BASE**: browser application
-        # - **CLOUD_NATIVE_BASE**: cloud-native application
-        # - **PORT_SERVICE_BASE**: port service application
-        # - **AGENT_SERVICE_BASE**: agent application
+        # - **CLIENT_BASE**: Client applications.
+        # - **WEB_BASE**: Browser applications.
+        # - **CLOUD_NATIVE_BASE**: Cloud-native applications.
+        # - **PORT_SERVICE_BASE**: Port service applications.
+        # - **AGENT_SERVICE_BASE**: Agent applications.
         self.origin_app_type = origin_app_type
-        # The type of the operating system used by the application. Valid values:
+        # The type of operating system used by the application. Valid values:
         # 
-        # - **Unknown**: unknown operating system
-        # - **Windows**: Windows operating system
-        # - **Linux**: Linux operating system
-        # - **Android**: Android operating system
+        # - **Unknown**: The operating system is unknown.
+        # - **Windows**: Windows operating system.
+        # - **Linux**: Linux operating system.
+        # - **Android**: Android operating system.
         self.os_type = os_type
         # The product to which the resource belongs. Valid values:
         # 
-        # - **CloudGame**: cloud game
-        # - **CloudApp**: Wuying cloud application
-        # - **CloudBrowser**: secure browser
-        # - **CloudDesktop**: Wuying cloud computer
-        # - **ImageBuilder**: image building resource
-        # - **ImageValidate**: image validation resource
-        # - **AndroidCloud**: Android cloud
-        # - **GpuRender**: GPU rendering
-        # - **AndroidGpuRender**: Android cloud GPU rendering
-        # - **WuyingServer**: enterprise edition workstation
-        # - **GpuProxy**: GPU remote rendering proxy
-        # - **GpuCache**: GPU remote rendering cache
-        # - **AIAgent**: AI agent service
-        # - **HostedDesktop**: hosted computer
-        # - **WuyingWorkstation**: personal edition container workstation
-        # - **WuyingWorkstationBusiness**: business edition container workstation
-        # - **WuyingWorkstationTeam**: Linggou team edition container workstation
+        # - **CloudGame**: Cloud game.
+        # - **CloudApp**: Wuying cloud application.
+        # - **CloudBrowser**: Secure browser.
+        # - **CloudDesktop**: Wuying cloud desktop.
+        # - **ImageBuilder**: Image builder resources.
+        # - **ImageValidate**: Image validation resources.
+        # - **AndroidCloud**: Android cloud.
+        # - **GpuRender**: GPU rendering.
+        # - **AndroidGpuRender**: Android cloud GPU rendering.
+        # - **WuyingServer**: Enterprise Edition workstation.
+        # - **GpuProxy**: GPU remote rendering proxy.
+        # - **GpuCache**: GPU remote rendering cache.
+        # - **AIAgent**: AI Agent service.
+        # - **HostedDesktop**: Hosted desktop.
+        # - **WuyingWorkstation**: Personal Edition container workstation.
+        # - **WuyingWorkstationBusiness**: Business Edition container workstation.
+        # - **WuyingWorkstationTeam**: Linggou Team Edition container workstation.
         self.product_type = product_type
         # The command-line parameters used when the application is started.
         self.silence_param = silence_param
@@ -202,10 +202,10 @@ class ListAppResponseBodyData(DaraModel):
         self.status = status
         # The subtype of the application. Valid values:
         # 
-        # - **PWA**: progressive web application
-        # - **SAAS**: software as a service (SaaS) application
-        # - **SANDBOX**: sandbox application
-        # - **CONTAINER**: container application
+        # - **PWA**: Progressive web applications.
+        # - **SAAS**: Software as a Service (SaaS) applications.
+        # - **SANDBOX**: Sandbox applications.
+        # - **CONTAINER**: Container applications.
         self.sub_app_type = sub_app_type
 
     def validate(self):

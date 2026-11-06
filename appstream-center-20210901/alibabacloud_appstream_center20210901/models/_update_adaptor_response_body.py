@@ -13,11 +13,11 @@ class UpdateAdaptorResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. This field is returned when the request fails. A successful response may not contain this field.
+        # The error code. This parameter is returned when the request fails. A successful response may not contain this field.
         self.code = code
         # Indicates whether the operation was processed successfully. A value of true indicates that the operation was successful.
         self.data = data
-        # The error or result message. This field describes the cause when the request fails. A successful response may not contain this field.
+        # The error or result message. This parameter describes the cause when the request fails. A successful response may not contain this field.
         self.message = message
         # The unique identifier of the request. You can provide this value when troubleshooting issues.
         self.request_id = request_id

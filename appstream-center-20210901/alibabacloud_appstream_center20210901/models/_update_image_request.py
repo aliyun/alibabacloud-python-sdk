@@ -18,9 +18,9 @@ class UpdateImageRequest(DaraModel):
         version_id: str = None,
         version_name: str = None,
     ):
-        # The complete list of application adaptation IDs for the selected image version. A maximum of 100 items are supported. **When a non-empty list is passed, it must include the adaptations that you still want to retain. Omitting this parameter or passing an empty list does not clear the existing associations.**
+        # The complete list of application adapter IDs for the selected image version. A maximum of 100 items are supported. **When a non-empty list is passed, it must include the adapters that you still want to retain. Omitting this parameter or passing an empty list does not clear the existing associations.**
         self.adaptor_id_list = adaptor_id_list
-        # The new description of the image usage.
+        # The updated description of the image.
         self.description = description
         # The operating system distribution information of the image. This must be consistent with the actual operating system distribution of the image.
         self.distro = distro
@@ -39,7 +39,7 @@ class UpdateImageRequest(DaraModel):
         # - **JP**: A compatible value for Japanese.
         # - **CN-HK**: A compatible value for Traditional Chinese (Hong Kong).
         self.language = language
-        # The ID of the image version to be modified. If this parameter is omitted, the current effective version of the image specified by ImageId is used. You must provide at least one of VersionId and ImageId.
+        # The ID of the image version to be modified. If this parameter is omitted, the current effective version of the image specified by ImageId is used. You must provide at least one of ImageId and VersionId.
         self.version_id = version_id
         # The new display name of the image version.
         self.version_name = version_name

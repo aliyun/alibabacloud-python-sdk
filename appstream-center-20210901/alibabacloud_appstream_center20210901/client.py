@@ -1441,6 +1441,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_browser_instance_group_with_options_async(request, runtime)
 
+    def create_export_task_with_options(
+        self,
+        request: main_models.CreateExportTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateExportTaskResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.export_fields):
+            body['ExportFields'] = request.export_fields
+        if not DaraCore.is_null(request.query_param_json):
+            body['QueryParamJson'] = request.query_param_json
+        if not DaraCore.is_null(request.task_type):
+            body['TaskType'] = request.task_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateExportTask',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateExportTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_export_task_with_options_async(
+        self,
+        request: main_models.CreateExportTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateExportTaskResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.export_fields):
+            body['ExportFields'] = request.export_fields
+        if not DaraCore.is_null(request.query_param_json):
+            body['QueryParamJson'] = request.query_param_json
+        if not DaraCore.is_null(request.task_type):
+            body['TaskType'] = request.task_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateExportTask',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateExportTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_export_task(
+        self,
+        request: main_models.CreateExportTaskRequest,
+    ) -> main_models.CreateExportTaskResponse:
+        runtime = RuntimeOptions()
+        return self.create_export_task_with_options(request, runtime)
+
+    async def create_export_task_async(
+        self,
+        request: main_models.CreateExportTaskRequest,
+    ) -> main_models.CreateExportTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.create_export_task_with_options_async(request, runtime)
+
     def create_image_by_instance_with_options(
         self,
         request: main_models.CreateImageByInstanceRequest,
@@ -2901,6 +2979,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_events_with_options_async(request, runtime)
 
+    def describe_export_tasks_with_options(
+        self,
+        request: main_models.DescribeExportTasksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeExportTasksResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.task_id):
+            body['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.task_type):
+            body['TaskType'] = request.task_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeExportTasks',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeExportTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_export_tasks_with_options_async(
+        self,
+        request: main_models.DescribeExportTasksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeExportTasksResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.task_id):
+            body['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.task_type):
+            body['TaskType'] = request.task_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeExportTasks',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeExportTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_export_tasks(
+        self,
+        request: main_models.DescribeExportTasksRequest,
+    ) -> main_models.DescribeExportTasksResponse:
+        runtime = RuntimeOptions()
+        return self.describe_export_tasks_with_options(request, runtime)
+
+    async def describe_export_tasks_async(
+        self,
+        request: main_models.DescribeExportTasksRequest,
+    ) -> main_models.DescribeExportTasksResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_export_tasks_with_options_async(request, runtime)
+
     def describe_wuying_server_with_options(
         self,
         request: main_models.DescribeWuyingServerRequest,
@@ -3044,6 +3204,88 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeWuyingServerEipInfoResponse:
         runtime = RuntimeOptions()
         return await self.describe_wuying_server_eip_info_with_options_async(request, runtime)
+
+    def get_agent_runtime_statistic_with_options(
+        self,
+        request: main_models.GetAgentRuntimeStatisticRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentRuntimeStatisticResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_platform):
+            query['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            query['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.runtime_type):
+            query['RuntimeType'] = request.runtime_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentRuntimeStatistic',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentRuntimeStatisticResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_agent_runtime_statistic_with_options_async(
+        self,
+        request: main_models.GetAgentRuntimeStatisticRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentRuntimeStatisticResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_platform):
+            query['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            query['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.runtime_type):
+            query['RuntimeType'] = request.runtime_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentRuntimeStatistic',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentRuntimeStatisticResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_agent_runtime_statistic(
+        self,
+        request: main_models.GetAgentRuntimeStatisticRequest,
+    ) -> main_models.GetAgentRuntimeStatisticResponse:
+        runtime = RuntimeOptions()
+        return self.get_agent_runtime_statistic_with_options(request, runtime)
+
+    async def get_agent_runtime_statistic_async(
+        self,
+        request: main_models.GetAgentRuntimeStatisticRequest,
+    ) -> main_models.GetAgentRuntimeStatisticResponse:
+        runtime = RuntimeOptions()
+        return await self.get_agent_runtime_statistic_with_options_async(request, runtime)
 
     def get_app_instance_group_with_options(
         self,
@@ -3680,6 +3922,88 @@ class Client(OpenApiClient):
     ) -> main_models.GetOtaTaskByTaskIdResponse:
         runtime = RuntimeOptions()
         return await self.get_ota_task_by_task_id_with_options_async(request, runtime)
+
+    def get_resource_group_agent_model_settings_with_options(
+        self,
+        request: main_models.GetResourceGroupAgentModelSettingsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetResourceGroupAgentModelSettingsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_platform):
+            query['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            query['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.resource_group_ids):
+            query['ResourceGroupIds'] = request.resource_group_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetResourceGroupAgentModelSettings',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetResourceGroupAgentModelSettingsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_resource_group_agent_model_settings_with_options_async(
+        self,
+        request: main_models.GetResourceGroupAgentModelSettingsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetResourceGroupAgentModelSettingsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_platform):
+            query['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            query['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.resource_group_ids):
+            query['ResourceGroupIds'] = request.resource_group_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetResourceGroupAgentModelSettings',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetResourceGroupAgentModelSettingsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_resource_group_agent_model_settings(
+        self,
+        request: main_models.GetResourceGroupAgentModelSettingsRequest,
+    ) -> main_models.GetResourceGroupAgentModelSettingsResponse:
+        runtime = RuntimeOptions()
+        return self.get_resource_group_agent_model_settings_with_options(request, runtime)
+
+    async def get_resource_group_agent_model_settings_async(
+        self,
+        request: main_models.GetResourceGroupAgentModelSettingsRequest,
+    ) -> main_models.GetResourceGroupAgentModelSettingsResponse:
+        runtime = RuntimeOptions()
+        return await self.get_resource_group_agent_model_settings_with_options_async(request, runtime)
 
     def get_resource_modify_price_with_options(
         self,
@@ -5996,6 +6320,108 @@ class Client(OpenApiClient):
     ) -> main_models.ListModelProviderEndpointsResponse:
         runtime = RuntimeOptions()
         return await self.list_model_provider_endpoints_with_options_async(request, runtime)
+
+    def list_model_provider_llm_codes_with_options(
+        self,
+        request: main_models.ListModelProviderLlmCodesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListModelProviderLlmCodesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.language):
+            query['Language'] = request.language
+        if not DaraCore.is_null(request.llm_code):
+            query['LlmCode'] = request.llm_code
+        if not DaraCore.is_null(request.model_brands):
+            query['ModelBrands'] = request.model_brands
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.provider_name):
+            query['ProviderName'] = request.provider_name
+        if not DaraCore.is_null(request.provider_template_id):
+            query['ProviderTemplateId'] = request.provider_template_id
+        if not DaraCore.is_null(request.recommended):
+            query['Recommended'] = request.recommended
+        if not DaraCore.is_null(request.recommended_levels):
+            query['RecommendedLevels'] = request.recommended_levels
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListModelProviderLlmCodes',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListModelProviderLlmCodesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_model_provider_llm_codes_with_options_async(
+        self,
+        request: main_models.ListModelProviderLlmCodesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListModelProviderLlmCodesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.language):
+            query['Language'] = request.language
+        if not DaraCore.is_null(request.llm_code):
+            query['LlmCode'] = request.llm_code
+        if not DaraCore.is_null(request.model_brands):
+            query['ModelBrands'] = request.model_brands
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.provider_name):
+            query['ProviderName'] = request.provider_name
+        if not DaraCore.is_null(request.provider_template_id):
+            query['ProviderTemplateId'] = request.provider_template_id
+        if not DaraCore.is_null(request.recommended):
+            query['Recommended'] = request.recommended
+        if not DaraCore.is_null(request.recommended_levels):
+            query['RecommendedLevels'] = request.recommended_levels
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListModelProviderLlmCodes',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListModelProviderLlmCodesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_model_provider_llm_codes(
+        self,
+        request: main_models.ListModelProviderLlmCodesRequest,
+    ) -> main_models.ListModelProviderLlmCodesResponse:
+        runtime = RuntimeOptions()
+        return self.list_model_provider_llm_codes_with_options(request, runtime)
+
+    async def list_model_provider_llm_codes_async(
+        self,
+        request: main_models.ListModelProviderLlmCodesRequest,
+    ) -> main_models.ListModelProviderLlmCodesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_model_provider_llm_codes_with_options_async(request, runtime)
 
     def list_model_provider_templates_with_options(
         self,

@@ -17,19 +17,19 @@ class ModifyAppInstanceGroupChargeTypeShrinkRequest(DaraModel):
         product_type: str = None,
         promotion_id: str = None,
     ):
-        # The list of delivery group IDs to be modified, in JSON array format. **You must and can only specify one item per request**. The resources must belong to the current account, the specified product, and the business region.
+        # The list of delivery group IDs to be modified, in JSON array format. **You must and can only specify one item at a time**. The resource must belong to the current account, the specified product, and the business region.
         # 
         # This parameter is required.
         self.app_instance_group_ids_shrink = app_instance_group_ids_shrink
-        # Specifies whether to allow automatic payment for the conversion order. Default value: `false`. Valid values:
+        # Specifies whether to allow automatic payment for this conversion order. Default value: false. Valid values:
         # 
-        # - `true`: Automatic payment is allowed.
-        # - `false`: Automatic payment is not allowed. If an unpaid order is generated, you must complete the payment separately.
+        # - true: allows automatic payment for the conversion order.
+        # - false: does not allow automatic payment. If an unpaid order is generated, you must complete the payment separately.
         self.auto_pay = auto_pay
-        # Specifies whether to enable auto-renewal for the order. We recommend that you explicitly specify this parameter for subscription orders to determine whether to enable auto-renewal. Valid values:
+        # Specifies whether to enable auto-renewal for this order. Explicitly specify this parameter for subscription orders to determine whether to enable auto-renewal. Valid values:
         # 
-        # - `true`: Auto-renewal is enabled.
-        # - `false`: Auto-renewal is not enabled.
+        # - true: enables auto-renewal.
+        # - false: disables auto-renewal.
         self.auto_renew = auto_renew
         # The business region ID of the target delivery group. It must be the same as the actual region to which the resource belongs.
         # 
@@ -37,30 +37,30 @@ class ModifyAppInstanceGroupChargeTypeShrinkRequest(DaraModel):
         self.biz_region_id = biz_region_id
         # The target billing method after conversion. It must be different from the current billing method. Valid values:
         # 
-        # - `PrePaid`: subscription
-        # - `PostPaid`: pay-as-you-go
+        # - PrePaid: subscription.
+        # - PostPaid: pay-as-you-go.
         # 
         # This parameter is required.
         self.charge_type = charge_type
-        # The numeric part of the purchase duration, used together with `PeriodUnit`. When converting to subscription and a purchase duration is required, specify both parameters. For example, `1` and `Month` indicate a purchase duration of one month. The available purchase durations are determined by the sales rules of the target resource.
+        # The numeric part of the purchase duration, used together with PeriodUnit. Specify this parameter along with PeriodUnit when converting to subscription and a purchase duration is required. For example, 1 and Month indicate a purchase duration of one month. The specific available purchase durations are determined by the sales rules of the target resource.
         self.period = period
-        # The unit of the purchase duration, used together with `Period`. This parameter is case-sensitive. Valid values:
+        # The unit of the purchase duration, used together with Period. This parameter is case-sensitive. Valid values:
         # 
-        # - `Hour`: hour
-        # - `Day`: day
-        # - `Week`: week
-        # - `Month`: month
-        # - `Year`: year
+        # - Hour: hour.
+        # - Day: day.
+        # - Week: week.
+        # - Month: month.
+        # - Year: year.
         # 
-        # These units do not mean that any combination is available for every product. When converting to subscription, select a period supported by the target resource. For example, for a resource that supports monthly purchase, you can set `Period` to `1` and `PeriodUnit` to `Month`.
+        # These units do not mean that every product supports any combination. When converting to subscription, select a period supported by the target resource. For example, for a resource that supports monthly purchase, you can set Period=1 and PeriodUnit=Month.
         self.period_unit = period_unit
-        # The product type. Set this parameter to the following fixed value when you call the operation:
+        # The product type. Set this parameter to one of the following values when you call the operation:
         # 
-        # - `CloudApp`: WUYING Cloud Application.
+        # - CloudApp: Wuying Cloud Application.
         # 
         # This parameter is required.
         self.product_type = product_type
-        # The ID of the promotion used for the conversion order. It takes effect only when an order is created and the promotion is applicable. If omitted, no specific coupon is specified. The availability of the promotion is subject to the order result.
+        # The ID of the promotion used for this conversion order. It takes effect only when an order is created and the promotion is applicable. If omitted, no specific coupon is specified. The availability of the promotion is subject to the order result.
         self.promotion_id = promotion_id
 
     def validate(self):

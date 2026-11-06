@@ -1,3 +1,12 @@
+2026-11-06 Version: 5.13.0
+- Support API CreateExportTask.
+- Support API DescribeExportTasks.
+- Support API GetAgentRuntimeStatistic.
+- Support API GetResourceGroupAgentModelSettings.
+- Support API ListModelProviderLlmCodes.
+- Update API ListDesktopAgentRuntime: add response parameters Body.Data.$.AgentInstanceInfoList.$.MindCenterVersion.
+
+
 2026-11-06 Version: 5.12.0
 - Generated python 2021-09-01 for appstream-center.
 

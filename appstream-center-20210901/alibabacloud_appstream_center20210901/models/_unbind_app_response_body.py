@@ -12,13 +12,13 @@ class UnbindAppResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. Returned when the request fails. A successful response may not contain this field.
+        # The error code. This field is returned when the request fails and may not be included in a successful response.
         self.code = code
-        # The error or result message. Used to describe the cause when the request fails. A successful response may not contain this field.
+        # The error or result message. This field describes the cause of a failed request and may not be included in a successful response.
         self.message = message
         # The unique identifier of the request. You can provide this value for troubleshooting.
         self.request_id = request_id
-        # Indicates whether the request was processed successfully. A value of true indicates that the request was processed successfully. To check whether the asynchronous task is completed, query the task status separately.
+        # Indicates whether the request was processed successfully. A value of true indicates that the request was processed successfully. To check whether an asynchronous task is completed, query the task status separately.
         self.success = success
 
     def validate(self):

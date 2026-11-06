@@ -22,75 +22,75 @@ class ListAppRequest(DaraModel):
         product_type_list: List[str] = None,
         sub_app_type: str = None,
     ):
-        # Specifies the application ID for exact match. If omitted, applications are not filtered by application ID.
+        # The application ID for exact query. If this parameter is omitted, applications are not filtered by application ID.
         self.app_id = app_id
-        # The application name used to filter applications. Partial match is supported.
+        # The application name filter. Contains matching is supported.
         self.app_name = app_name
         # The source type of the application. Valid values:
         # 
-        # - **USER_APP**: user-created application
-        # - **SYS_APP**: system-provided application
-        # - **VIRTUAL_APP**: virtual application
+        # - **USER_APP**: User-created applications.
+        # - **SYS_APP**: System-provided applications.
+        # - **VIRTUAL_APP**: Virtual applications.
         self.app_type = app_type
-        # Filters by a single business type. If specified simultaneously with BizTypeList, the intersection is used. Valid values:
+        # Filters by a single business type. If specified together with BizTypeList, the intersection is used. Valid values:
         # 
-        # - **1**: basic product
-        # - **2**: personal cloud
-        # - **3**: cloud office
-        # - **4**: cloud flow
-        # - **10**: personal edition
-        # - **20**: business edition
-        # - **60**: Linggou team edition
+        # - **1**: Basic products.
+        # - **2**: Personal cloud.
+        # - **3**: Cloud office.
+        # - **4**: Cloud Flow.
+        # - **10**: Personal Edition.
+        # - **20**: Business Edition.
+        # - **60**: Linggou Team Edition.
         self.biz_type = biz_type
-        # The list of business types used to filter applications. An application is matched if it matches any business type in the list. If specified simultaneously with BizType, the single-value condition must still be met.
+        # The list of business types for filtering. A match with any business type in the list is considered a match. If specified together with BizType, the single-value condition must still be met.
         self.biz_type_list = biz_type_list
         # The form of the application. Valid values:
         # 
-        # - **CLIENT_BASE**: client application
-        # - **WEB_BASE**: browser application
-        # - **CLOUD_NATIVE_BASE**: cloud-native application
-        # - **PORT_SERVICE_BASE**: port service application
-        # - **AGENT_SERVICE_BASE**: agent application
+        # - **CLIENT_BASE**: Client applications.
+        # - **WEB_BASE**: Browser applications.
+        # - **CLOUD_NATIVE_BASE**: Cloud-native applications.
+        # - **PORT_SERVICE_BASE**: Port service applications.
+        # - **AGENT_SERVICE_BASE**: Agent applications.
         self.origin_app_type = origin_app_type
-        # The type of the operating system used by the application. Valid values:
+        # The type of operating system used by the application. Valid values:
         # 
-        # - **Unknown**: unknown operating system
-        # - **Windows**: Windows operating system
-        # - **Linux**: Linux operating system
-        # - **Android**: Android operating system
+        # - **Unknown**: The operating system is unknown.
+        # - **Windows**: Windows operating system.
+        # - **Linux**: Linux operating system.
+        # - **Android**: Android operating system.
         self.os_type = os_type
-        # The page number for the query. Query pages starting from 1. If omitted, set to 0, or set to 1, the first page is queried.
+        # The page number for the query. Start from 1. If this parameter is omitted, set to 0, or set to 1, the first page is queried.
         self.page_number = page_number
-        # The number of records returned per page. If omitted or set to a value less than 1, the value is processed as 10.
+        # The number of records to return on each page. If this parameter is omitted or set to a value less than 1, the value 10 is used.
         self.page_size = page_size
-        # Filters by a single associated product. If specified simultaneously with ProductTypeList, the intersection is used. Valid values:
+        # Filters by a single associated product. If specified together with ProductTypeList, the intersection is used. Valid values:
         # 
-        # - **CloudGame**: cloud game
-        # - **CloudApp**: Wuying cloud application
-        # - **CloudBrowser**: secure browser
-        # - **CloudDesktop**: Wuying cloud computer
-        # - **ImageBuilder**: image building resource
-        # - **ImageValidate**: image validation resource
-        # - **AndroidCloud**: Android cloud
-        # - **GpuRender**: GPU rendering
-        # - **AndroidGpuRender**: Android cloud GPU rendering
-        # - **WuyingServer**: enterprise edition workstation
-        # - **GpuProxy**: GPU remote rendering proxy
-        # - **GpuCache**: GPU remote rendering cache
-        # - **AIAgent**: AI agent service
-        # - **HostedDesktop**: hosted computer
-        # - **WuyingWorkstation**: personal edition container workstation
-        # - **WuyingWorkstationBusiness**: business edition container workstation
-        # - **WuyingWorkstationTeam**: Linggou team edition container workstation
+        # - **CloudGame**: Cloud game.
+        # - **CloudApp**: Wuying cloud application.
+        # - **CloudBrowser**: Secure browser.
+        # - **CloudDesktop**: Wuying cloud desktop.
+        # - **ImageBuilder**: Image builder resources.
+        # - **ImageValidate**: Image validation resources.
+        # - **AndroidCloud**: Android cloud.
+        # - **GpuRender**: GPU rendering.
+        # - **AndroidGpuRender**: Android cloud GPU rendering.
+        # - **WuyingServer**: Enterprise Edition workstation.
+        # - **GpuProxy**: GPU remote rendering proxy.
+        # - **GpuCache**: GPU remote rendering cache.
+        # - **AIAgent**: AI Agent service.
+        # - **HostedDesktop**: Hosted desktop.
+        # - **WuyingWorkstation**: Personal Edition container workstation.
+        # - **WuyingWorkstationBusiness**: Business Edition container workstation.
+        # - **WuyingWorkstationTeam**: Linggou Team Edition container workstation.
         self.product_type = product_type
-        # The list of associated products used to filter applications. An application is matched if it matches any product in the list. If specified simultaneously with ProductType, the single-value condition must still be met.
+        # The list of associated products for filtering. A match with any product in the list is considered a match. If specified together with ProductType, the single-value condition must still be met.
         self.product_type_list = product_type_list
         # The subtype of the application. Valid values:
         # 
-        # - **PWA**: progressive web application
-        # - **SAAS**: software as a service (SaaS) application
-        # - **SANDBOX**: sandbox application
-        # - **CONTAINER**: container application
+        # - **PWA**: Progressive web applications.
+        # - **SAAS**: Software as a Service (SaaS) applications.
+        # - **SANDBOX**: Sandbox applications.
+        # - **CONTAINER**: Container applications.
         self.sub_app_type = sub_app_type
 
     def validate(self):

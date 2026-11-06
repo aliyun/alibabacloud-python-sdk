@@ -13,7 +13,7 @@ class GetResourceModifyPriceResponseBody(DaraModel):
         data: main_models.GetResourceModifyPriceResponseBodyData = None,
         request_id: str = None,
     ):
-        # The quote for the resource scale-out of the delivery group, which includes the pricing details and pricing calculation rules.
+        # The quote for the resource scale-out of the delivery group, which includes the price details and pricing rules.
         self.data = data
         # The unique ID of the request, which is used to locate and troubleshoot request issues.
         self.request_id = request_id
@@ -52,9 +52,9 @@ class GetResourceModifyPriceResponseBodyData(DaraModel):
         price: main_models.GetResourceModifyPriceResponseBodyDataPrice = None,
         rules: List[main_models.GetResourceModifyPriceResponseBodyDataRules] = None,
     ):
-        # The pricing details of the scale-out. For the currency of the amounts, see Currency. For the coupon selection status, see Promotions.
+        # The price details of the scale-out. For the currency, see Currency. For the coupon selection status, see Promotions.
         self.price = price
-        # The list of pricing calculation rules for the quote, which is used to describe the applicable pricing or discount rules.
+        # The list of pricing rules for the quote, which describes the applicable pricing or discount rules.
         self.rules = rules
 
     def validate(self):
@@ -100,9 +100,9 @@ class GetResourceModifyPriceResponseBodyDataRules(DaraModel):
         description: str = None,
         rule_id: int = None,
     ):
-        # The description of the pricing calculation rule, such as the user discount applicable to the current quote.
+        # The description of the pricing rule, such as the user discount applicable to the quote.
         self.description = description
-        # The ID of the pricing calculation rule, which is used to identify the rule applied in the quote.
+        # The ID of the pricing rule, which is used to identify the rule applied in the quote.
         self.rule_id = rule_id
 
     def validate(self):
@@ -140,19 +140,19 @@ class GetResourceModifyPriceResponseBodyDataPrice(DaraModel):
         promotions: List[main_models.GetResourceModifyPriceResponseBodyDataPricePromotions] = None,
         trade_price: float = None,
     ):
-        # The currency code of the price amount. CNY indicates Chinese Yuan. Refer to this field to understand the amounts of OriginalPrice, DiscountPrice, and TradePrice.
+        # The currency code of the price amount. CNY indicates Chinese Yuan. Use this field to interpret the amounts in OriginalPrice, DiscountPrice, and TradePrice.
         self.currency = currency
-        # The discount amount that can be deducted from the scale-out price, not the discount percentage.
+        # The discount amount for the scale-out, not the discount percentage.
         # 
-        # The discounted price TradePrice is obtained by subtracting this field from the original price OriginalPrice. For the currency of the amount, see Currency.
+        # The final price TradePrice is obtained by subtracting this value from the original price OriginalPrice. For the currency, see Currency.
         self.discount_price = discount_price
-        # The original price of the scale-out, which is the amount before discounts. For the currency of the amount, see Currency.
+        # The original price of the scale-out, which is the amount before discounts. For the currency, see Currency.
         self.original_price = original_price
-        # The list of optional coupons returned in the quote. Each item includes the coupon ID, name, description, and selection status.
+        # The list of available coupons returned in the quote. Each item includes the coupon ID, name, description, and selection status.
         self.promotions = promotions
-        # The discounted price of the scale-out.
+        # The final price of the scale-out after discounts.
         # 
-        # Calculation relationship: TradePrice = OriginalPrice - DiscountPrice. For the currency of the amount, see Currency. This operation returns only a quote and does not execute payment.
+        # Calculation formula: TradePrice = OriginalPrice - DiscountPrice. For the currency, see Currency. This operation returns only a quote and does not execute payment.
         self.trade_price = trade_price
 
     def validate(self):
@@ -218,11 +218,11 @@ class GetResourceModifyPriceResponseBodyDataPricePromotions(DaraModel):
     ):
         # The option code of the coupon, which identifies the coupon returned in the quote together with PromotionId.
         self.option_code = option_code
-        # The description of the coupon, which is used to display the information about the discount.
+        # The description of the coupon, which is used to display information about the discount.
         self.promotion_desc = promotion_desc
         # The ID of the coupon, which is used to identify the coupon returned in the quote.
         self.promotion_id = promotion_id
-        # The name of the coupon, which is used to display the optional discount in the current quote.
+        # The name of the coupon, which is used to display the available discount in the quote.
         self.promotion_name = promotion_name
         # Specifies whether the coupon is selected in the quote. Valid values:
         # 

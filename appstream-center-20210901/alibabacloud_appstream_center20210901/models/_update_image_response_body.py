@@ -15,13 +15,13 @@ class UpdateImageResponseBody(DaraModel):
     ):
         # The error code. This field is returned when the request fails. A successful response may not contain this field.
         self.code = code
-        # Indicates whether the operation was successful. A value of true indicates that the operation was successful.
+        # Indicates whether the operation was processed successfully. A value of true indicates that the operation was successful.
         self.data = data
-        # The error or result message. This field describes the cause when the request fails. A successful response may not contain this field.
+        # The error or result message. This field describes the cause when a request fails. A successful response may not contain this field.
         self.message = message
-        # The unique identifier of the request. You can provide this value for troubleshooting.
+        # The unique identifier of the request. You can provide this value when you troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was processed successfully. A value of true indicates that the request was processed successfully. To check whether an asynchronous task is completed, you must query the task status separately.
+        # Indicates whether the request was processed successfully. A value of true indicates that the request was processed successfully. For asynchronous tasks, you must query the task status separately to check whether the task is completed.
         self.success = success
 
     def validate(self):

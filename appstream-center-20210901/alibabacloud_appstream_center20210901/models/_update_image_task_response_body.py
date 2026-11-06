@@ -13,11 +13,11 @@ class UpdateImageTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. This parameter is returned when the request fails. A successful response may not contain this parameter.
+        # The error code. Returned when the request fails. A successful response may not contain this field.
         self.code = code
         # Indicates whether the operation is successful. A value of true indicates that the operation is successful.
         self.data = data
-        # The error or result message. This parameter describes the cause when the request fails. A successful response may not contain this parameter.
+        # The error or result message. Used to describe the cause when the request fails. A successful response may not contain this field.
         self.message = message
         # The unique identifier of the request. You can provide this value for troubleshooting.
         self.request_id = request_id

@@ -11,9 +11,9 @@ class ModifyAppInstanceGroupChargeTypeResponseBody(DaraModel):
         app_instance_group_model: main_models.ModifyAppInstanceGroupChargeTypeResponseBodyAppInstanceGroupModel = None,
         request_id: str = None,
     ):
-        # The task information for the billing method conversion.
+        # The task information for this billing method conversion.
         self.app_instance_group_model = app_instance_group_model
-        # The unique ID of the request. You can use the ID to troubleshoot request issues.
+        # The unique ID of the request, which can be used to troubleshoot request issues.
         self.request_id = request_id
 
     def validate(self):
@@ -49,7 +49,7 @@ class ModifyAppInstanceGroupChargeTypeResponseBodyAppInstanceGroupModel(DaraMode
         self,
         task_id: str = None,
     ):
-        # The ID of the billing conversion order task, used to associate with the current conversion. It is returned only when a related order task is required and created. It does not indicate that the payment is completed or the new billing method has taken effect.
+        # The ID of the billing conversion order task, used to associate with this conversion. It is returned only when a related order task is required and created. It does not indicate that the payment is completed or the new billing method has taken effect.
         self.task_id = task_id
 
     def validate(self):

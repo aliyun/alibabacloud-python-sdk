@@ -18,13 +18,13 @@ class ListAppInstanceTypeResponseBody(DaraModel):
     ):
         # The list of session instance types on the current page.
         self.app_instance_type_models = app_instance_type_models
-        # The page number used in the current query. This corresponds to the request parameter and the total number of entries.
+        # The page number used in this query, which corresponds to the request parameters and the total number of entries.
         self.page_number = page_number
-        # The number of entries per page used in the current query.
+        # The number of entries per page used in this query.
         self.page_size = page_size
-        # The unique identifier of the request. You can use this ID to troubleshoot request issues.
+        # The unique identifier of the request, which can be used to troubleshoot request issues.
         self.request_id = request_id
-        # The total number of instance types that meet all filtering conditions. This is not the number of entries on the current page.
+        # The total number of instance types that meet all filtering conditions, not the number of entries on the current page.
         self.total_count = total_count
 
     def validate(self):
@@ -96,31 +96,31 @@ class ListAppInstanceTypeResponseBodyAppInstanceTypeModels(DaraModel):
         product_type: str = None,
         system_disk_size: int = None,
     ):
-        # The session instance type code. This can be used as the session instance type parameter for subsequent operations.
+        # The session instance type code, which can be used as the session instance type parameter for subsequent operations.
         self.app_instance_type = app_instance_type
         # The instance type family code to which the session instance type belongs.
         self.app_instance_type_family = app_instance_type_family
-        # The number of CPU cores included in the instance type. This is represented by a numeric string. Unit: cores.
+        # The number of CPU cores included in the instance type, represented by a numeric string. Unit: cores.
         self.cpu = cpu
         # The data cloud disk capacity of the instance type. Unit: GB.
         self.data_disk_size = data_disk_size
-        # This parameter is not enabled. The example value is only used to demonstrate the format and does not represent the actual number of GPUs returned by this operation.
+        # Not enabled yet. The example value is only used to demonstrate the format and does not represent the actual number of GPUs returned by this operation.
         self.gpu = gpu
         # The GPU memory capacity of the instance type. Unit: MB.
         self.gpu_memory = gpu_memory
         # The display value or display range of the GPU memory. Display it as the returned text. Do not directly use it as a numeric value for capacity conversion.
         self.gpu_spec = gpu_spec
-        # The identifier of the instance type record. When you connect to the price inquiry or creation operation, use AppInstanceType. Do not use this field to replace the instance type code.
+        # The identifier of the instance type record. When integrating with pricing or creation operations, use `AppInstanceType`. Do not use this field to replace the instance type code.
         self.id = id
-        # The display name of the instance type. The Chinese name is used only when Language is set to zh-CN. Otherwise, the instance type code is used.
+        # The display name of the instance type. The Chinese name is used only when `Language` is set to `zh-CN`. For other values or when omitted, the instance type code is used.
         self.instance_type_name = instance_type_name
-        # The inventory information of the instance type. This is returned only when the inventory is queried and the relevant information is obtained. If this field is not returned, it does not mean that the inventory is 0.
+        # The inventory information of the instance type. This parameter is returned only when the inventory is queried and the relevant information is obtained. If this parameter is not returned, it does not mean that the inventory is 0.
         self.inventory_info = inventory_info
         # The memory capacity of the instance type. Unit: MB.
         self.memory = memory
         # The type of the product to which the instance type belongs. The current document displays the following values:
         # 
-        # - CloudApp: Wuying Cloud App.
+        # - `CloudApp`: Wuying Cloud Application.
         self.product_type = product_type
         # The system cloud disk capacity of the instance type. Unit: GB.
         self.system_disk_size = system_disk_size
@@ -230,8 +230,8 @@ class ListAppInstanceTypeResponseBodyAppInstanceTypeModelsInventoryInfo(DaraMode
         self.region_id = region_id
         # The instance type inventory status obtained in the current query.
         # 
-        # - Available: The total inventory of the queried zones is greater than 0.
-        # - SoldOut: The total inventory of the queried zones is not greater than 0.
+        # - `Available`: The total inventory of the queried zones is greater than 0.
+        # - `SoldOut`: The total inventory of the queried zones is not greater than 0.
         self.status = status
         # The list of inventory information returned by zone.
         self.zone_inventory_info = zone_inventory_info
@@ -282,9 +282,9 @@ class ListAppInstanceTypeResponseBodyAppInstanceTypeModelsInventoryInfoZoneInven
         amount: str = None,
         zone_id: str = None,
     ):
-        # The available quantity in the zone obtained in the current query. Unit: instances. This value is an inventory snapshot and does not indicate that resources have been reserved for the current account.
+        # The available quantity in the zone obtained in this query. Unit: instances. This value is an inventory snapshot and does not indicate that resources have been reserved for the current account.
         self.amount = amount
-        # The zone ID. You can call [ListZones](https://api.aliyun.com/document/appstream-center/2021-09-01/ListZones) to query the zone ID.
+        # The zone ID, which can be queried by calling the [ListZones](https://api.aliyun.com/document/appstream-center/2021-09-01/ListZones) operation.
         self.zone_id = zone_id
 
     def validate(self):

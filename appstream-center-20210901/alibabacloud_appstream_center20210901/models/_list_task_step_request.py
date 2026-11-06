@@ -10,8 +10,9 @@ class ListTaskStepRequest(DaraModel):
         type: str = None,
     ):
         # The task type to which the step belongs. Valid values:
-        # - **ADAPTOR**: application adaptation steps
-        # - **IMAGE**: image creation steps
+        # 
+        # - **ADAPTOR**: Application adaptation steps.
+        # - **IMAGE**: Image creation steps.
         # 
         # This parameter is required.
         self.type = type

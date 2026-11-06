@@ -16,13 +16,13 @@ class BuilderImageByParentResponseBody(DaraModel):
     ):
         # The error code. This parameter is returned when the request fails. A successful response may not contain this parameter.
         self.code = code
-        # The business data returned by the operation.
+        # The business data returned by this operation.
         self.data = data
         # The error or result message. This parameter describes the cause when the request fails. A successful response may not contain this parameter.
         self.message = message
         # The unique identifier of the request. You can provide this value for troubleshooting.
         self.request_id = request_id
-        # Indicates whether the request was processed successfully. A value of true indicates that the request was processed successfully. To check whether the asynchronous task is complete, you must query the task status separately.
+        # Indicates whether the request is processed successfully. A value of true indicates that the request is processed successfully. To check whether the asynchronous task is completed, you must query the task status separately.
         self.success = success
 
     def validate(self):
@@ -78,11 +78,11 @@ class BuilderImageByParentResponseBodyData(DaraModel):
         task_id: str = None,
         version_id: str = None,
     ):
-        # The ID of the image, which is used to query or modify the image later.
+        # The image ID, which is used for subsequent queries or modifications of the image.
         self.image_id = image_id
-        # The ID of the task, which can be used to call GetTask to query the task status.
+        # The task ID, which can be used to call GetTask to query the task status.
         self.task_id = task_id
-        # The ID of the image version, which is used to query or operate on the specified version of the image.
+        # The image version ID, which is used to query or manage the specified version of the image.
         self.version_id = version_id
 
     def validate(self):

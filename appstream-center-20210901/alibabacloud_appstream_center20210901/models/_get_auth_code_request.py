@@ -14,54 +14,52 @@ class GetAuthCodeRequest(DaraModel):
         task_id: str = None,
         task_type: str = None,
     ):
-        # The ID of the application to connect to. When specifying this parameter, you must also provide the matching AppVersionId. If omitted, the application configured in the building or validation environment is used.
+        # The ID of the application to connect to. When specifying this parameter, you must also provide the matching AppVersionId. If omitted, the application configured in the creation or validation environment is used.
         self.app_id = app_id
         # The ID of the application version to connect to. This parameter is used together with AppId. This parameter is not the image version ID.
         self.app_version_id = app_version_id
         # The region compatibility parameter. The destination region of the current connection resource is determined by the execution region of the task. You cannot use this parameter to switch the task region. Omit this parameter.
         self.biz_region_id = biz_region_id
-        # The type of the resource to connect to.
+        # The type of resource to connect to.
         # 
-        # Valid values:
-        # 
-        # - **BUILDER**: Connects to the building environment.
+        # - **BUILDER**: Connects to the creation environment.
         # - **VALIDATE**: Connects to the validation environment.
         # 
         # The corresponding environment must be created and in a connectable state.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The ID of the existing building or validation task. Create the task and confirm that the corresponding resources are available before calling this operation.
+        # The ID of the existing creation or validation task. Create the task and confirm that the corresponding resources are available before calling this operation.
         # 
         # This parameter is required.
         self.task_id = task_id
-        # The actual type of the task. It must be consistent with the building or validation task corresponding to TaskId. Use the TaskType returned by GetTask. The task must also have connectable building or validation resources. You cannot obtain an authorization code for distribution or snapshot tasks that do not have connection resources.
+        # The actual task type. It must match the creation or validation task corresponding to the TaskId. Use the TaskType returned by GetTask. The task must also have connectable creation or validation resources. You cannot obtain an authorization code for distribution or snapshot tasks that do not have connection resources.
         # 
-        # Valid values:
+        # Recognized task types:
         # 
-        # - **AUTO_CREATE_IMAGE_VHD**: Automatically builds a VHD image.
-        # - **RETRY_CREATE_IMAGE_VHD**: Retries building a VHD image.
-        # - **AUTO_CREATE_VHD**: Automatically builds a VHD.
-        # - **RETRY_VHD**: Retries building a VHD.
+        # - **AUTO_CREATE_IMAGE_VHD**: Automatically creates a VHD image.
+        # - **RETRY_CREATE_IMAGE_VHD**: Retries VHD image creation.
+        # - **AUTO_CREATE_VHD**: Automatically creates a VHD.
+        # - **RETRY_VHD**: Retries VHD creation.
         # - **AUTO_VALIDATE_VHD**: Automatically validates a VHD.
-        # - **RETRY_VALIDATE_VHD**: Retries validating a VHD.
+        # - **RETRY_VALIDATE_VHD**: Retries VHD validation.
         # - **APPLY_VHD_BUILDER**: Applies for a VHD application recording environment.
-        # - **ADAPT_AUTO**: Automatically builds application adaptation.
-        # - **ADAPT_AUTO_RETRY**: Retries automatically building application adaptation.
-        # - **ADAPT_MANUAL**: Manually builds application adaptation.
-        # - **ADAPT_MANUAL_RETRY**: Retries manually building application adaptation.
-        # - **DESKTOP_CUSTOM_IMAGE**: Creates a custom image for a cloud desktop.
-        # - **DESKTOP_CUSTOM_IMAGE_RETRY**: Retries creating a custom image for a cloud desktop.
-        # - **IMAGE_MANUAL**: Manually builds an image.
-        # - **IMAGE_MANUAL_RETRY**: Retries manually building an image.
-        # - **IMAGE_FROM_INSTANCE**: Builds an image based on an instance.
-        # - **IMAGE_FROM_INSTANCE_RETRY**: Retries building an image based on an instance.
+        # - **ADAPT_AUTO**: Automatically creates application adaptation.
+        # - **ADAPT_AUTO_RETRY**: Retries automatic application adaptation creation.
+        # - **ADAPT_MANUAL**: Manually creates application adaptation.
+        # - **ADAPT_MANUAL_RETRY**: Retries manual application adaptation creation.
+        # - **DESKTOP_CUSTOM_IMAGE**: Creates a custom image for cloud desktops.
+        # - **DESKTOP_CUSTOM_IMAGE_RETRY**: Retries custom image creation for cloud desktops.
+        # - **IMAGE_MANUAL**: Manually creates an image.
+        # - **IMAGE_MANUAL_RETRY**: Retries manual image creation.
+        # - **IMAGE_FROM_INSTANCE**: Creates an image based on an instance.
+        # - **IMAGE_FROM_INSTANCE_RETRY**: Retries image creation based on an instance.
         # - **IMAGE_DISTRIBUTE**: Distributes an image to multiple regions.
-        # - **IMAGE_DISTRIBUTE_RETRY**: Retries distributing an image.
+        # - **IMAGE_DISTRIBUTE_RETRY**: Retries image distribution.
         # - **SNAPSHOT_DISTRIBUTE**: Distributes a snapshot to multiple regions.
-        # - **SNAPSHOT_DISTRIBUTE_RETRY**: Retries distributing a snapshot.
+        # - **SNAPSHOT_DISTRIBUTE_RETRY**: Retries snapshot distribution.
         # - **SNAPSHOT_FROM_DISK**: Creates a snapshot based on a disk.
-        # - **SNAPSHOT_FROM_DISK_RETRY**: Retries creating a snapshot based on a disk.
+        # - **SNAPSHOT_FROM_DISK_RETRY**: Retries snapshot creation based on a disk.
         # 
         # This parameter is required.
         self.task_type = task_type
