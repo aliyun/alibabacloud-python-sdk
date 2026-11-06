@@ -24,13 +24,13 @@ class ListAlertAggregationsResponseBody(DaraModel):
         self.max_results = max_results
         # The token for the next query.
         self.next_token = next_token
-        # The page number.
+        # The current page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of records.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -115,25 +115,25 @@ class ListAlertAggregationsResponseBodyAlertAggregations(DaraModel):
         source_codes: List[str] = None,
         status_counts: List[main_models.ListAlertAggregationsResponseBodyAlertAggregationsStatusCounts] = None,
     ):
-        # The list of account display values associated with the aggregation group, in one-to-one correspondence with AccountIds. When the username is valid and differs from the account ID, the format is "username/account ID". Otherwise, only the account ID is returned.
+        # The list of account display values involved in the aggregation group, which corresponds one-to-one with the order of AccountIds. If the username is valid and different from the account ID, the format is "Username/Account ID". Otherwise, only the account ID is returned.
         self.account_display_values = account_display_values
-        # The list of member accounts IDs for which the report is generated. You need to specify this parameter only when you generate a multi-account report and want to limit the report to specific member accounts.
+        # The list of IDs of the member accounts for which the report is generated. Note: You only need to specify this parameter when you generate a multi-account report and want to generate a report for a specified range of accounts.
         self.account_ids = account_ids
-        # The unique identifier of the aggregation group, which is a concatenation of AggregationType, PrimaryValue, and SecondaryValue joined by colons (:). The last segment is empty if no secondary aggregation value exists.
+        # The unique identifier of the aggregation group. It is concatenated by AggregationType, PrimaryValue, and SecondaryValue with colons (:). If there is no secondary aggregation value, the last segment is empty.
         self.aggregation_key = aggregation_key
         # The aggregation method.
         self.aggregation_type = aggregation_type
         # The number of consecutive failures. This parameter is optional.
         self.alert_count = alert_count
-        # The collection of MITRE ATT&CK attack techniques associated with alerts in the aggregation group. Each element is a JSON array string.
+        # The collection of MITRE ATT&CK attack techniques associated with the alerts in the aggregation group. Each element is a JSON array string.
         self.attack_stages = attack_stages
-        # The quantity distribution by defense action within the aggregation group. Name is the action field value, and Value is the corresponding alert count.
+        # The distribution of alert counts by defense action in the aggregation group. Name is the value of the action field, and Value is the corresponding alert count.
         self.defense_action_counts = defense_action_counts
-        # The time of the first access, represented as a UNIX timestamp in seconds.
+        # The time of the first access. The value is a UNIX timestamp accurate to seconds.
         self.first_time = first_time
-        # The most recent time when the attack event occurred.
+        # The time when the attack event last occurred.
         self.latest_time = latest_time
-        # The display text of the primary aggregation value. For account aggregation, the format is "username/account ID". If no valid username exists, only the account ID is returned. For event summaries, the event name is returned based on the Lang parameter. If the name is missing, the event UUID is returned.
+        # The display text of the primary aggregation value. For account aggregation, it returns "Username/Account ID". If there is no valid username, only the account ID is returned. For event summaries, it returns the event name based on Lang. If the name is missing, the event UUID is returned.
         self.primary_display_value = primary_display_value
         # The value corresponding to the primary query condition.
         self.primary_value = primary_value
@@ -141,9 +141,9 @@ class ListAlertAggregationsResponseBodyAlertAggregations(DaraModel):
         self.secondary_value = secondary_value
         # The collection of event source codes.
         # 
-        # > Example: [\\\\\\"MRM\\\\\\"]
+        # > Example: [\\"MRM\\"]
         self.source_codes = source_codes
-        # The quantity distribution by alert status within the aggregation group. Name is the alert status value, and Value is the corresponding alert count.
+        # The distribution of alert counts by alert status in the aggregation group. Name is the alert status value, and Value is the corresponding alert count.
         self.status_counts = status_counts
 
     def validate(self):
@@ -267,9 +267,9 @@ class ListAlertAggregationsResponseBodyAlertAggregationsStatusCounts(DaraModel):
         name: str = None,
         value: int = None,
     ):
-        # The display name of the entity attribute field that can be added to the whitelist.
+        # The display name of the entity property field that can be added to the whitelist.
         self.name = name
-        # The right-hand value.
+        # The right value.
         self.value = value
 
     def validate(self):
@@ -304,9 +304,9 @@ class ListAlertAggregationsResponseBodyAlertAggregationsDefenseActionCounts(Dara
         name: str = None,
         value: int = None,
     ):
-        # The display name of the entity attribute field that can be added to the whitelist.
+        # The display name of the entity property field that can be added to the whitelist.
         self.name = name
-        # The default right-hand value displayed for the whitelist rule.
+        # The default right value displayed for the whitelist rule.
         self.value = value
 
     def validate(self):

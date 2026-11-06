@@ -33,69 +33,69 @@ class ListIncidentsShrinkRequest(DaraModel):
         start_time: int = None,
         threat_level: List[str] = None,
     ):
-        # The alert ID.
+        # The ID of the alert.
         self.alert_uuid = alert_uuid
         # The list of detection rule IDs.
         self.detection_rule_ids = detection_rule_ids
-        # The end time timestamp, in milliseconds (ms).
+        # The timestamp of the end time, accurate to milliseconds.
         self.end_time = end_time
-        # The event name.
+        # The name of the incident.
         self.incident_name = incident_name
-        # The event status. Valid values:
-        # - 0: Unhandled.
-        # - 1: Handling.
-        # - 5: Handling failed.
-        # - 10: Handled.
+        # The status of the incident. Valid values:
+        # - 0: Unprocessed.
+        # - 1: Processing.
+        # - 5: Processing failed.
+        # - 10: Processed.
         self.incident_status = incident_status
-        # The list of event statuses.
+        # The list of incident statuses.
         self.incident_status_list = incident_status_list
-        # The event tags.
+        # The tags of the incident.
         self.incident_tags = incident_tags
-        # The list of event UUIDs, separated by commas (half-width).
+        # The list of incident UUIDs. Separate multiple UUIDs with commas.
         self.incident_uuids_shrink = incident_uuids_shrink
-        # The language of the response messages. Valid values:
+        # The language of the response message. Valid values:
         # - **zh** (default): Chinese.
         # - **en**: English.
         # 
-        # Note: This parameter is required in actual API calls. If it is not provided, the service returns a 400 error: "The specified Lang can not be empty." Pass the language code explicitly.
+        # Note: This parameter is required in actual API calls. If it is not provided, the service returns a 400 error "The specified Lang can not be empty.". Explicitly pass the language code.
         self.lang = lang
-        # The maximum number of entries to read in this request.
+        # The maximum number of entries to return in this call.
         self.max_results = max_results
-        # The pagination token used to retrieve the next page of results. Leave this parameter empty for the first request or when there are no more pages. If more pages exist, set this parameter to the NextToken value returned by the previous API call.
+        # The token for the next query. You do not need to specify this parameter for the first query or when no subsequent query is required. If a subsequent query is required, set this parameter to the value of NextToken returned from the previous API call.
         self.next_token = next_token
         # The sort direction. Valid values:
         # - **desc** (default): Descending order.
         # - **asc**: Ascending order.
         self.order_direction = order_direction
-        # The field used to sort the list. Valid values:
-        # - GmtModified: The event update time (default).
+        # The name of the field used to sort the list. Valid values:
+        # - GmtModified: The time when the incident was updated. This is the default value.
         # - ThreatScore: The threat score.
         self.order_field_name = order_field_name
-        # The UID of the account responsible for the event.
+        # The UIDs of the accounts of the incident owners.
         self.owners = owners
-        # The current page number for pagination.
+        # The current page number.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The number of entries to display per page.
+        # The number of entries to return on each page.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The location of the data management center for Cloud Threat Detection and Response (CTDR). Select the management center location based on the region where your assets reside. Valid values:
-        # - cn-hangzhou: Assets are located in the Chinese mainland.
-        # - ap-southeast-1: Assets are located outside China.
+        # The region of the data management center for Threat Analysis. Select the region of the management center based on the region where your assets are located. Valid values:
+        # - cn-hangzhou: The assets are located in the Chinese mainland.
+        # - ap-southeast-1: The assets are located outside China.
         self.region_id = region_id
-        # The ID of the asset associated with the event.
+        # The ID of the asset associated with the incident.
         self.relate_asset_id = relate_asset_id
-        # The ID of the entity associated with the event.
+        # The ID of the entity associated with the incident.
         self.relate_entity_id = relate_entity_id
-        # The user ID that the administrator uses to switch to another member\\"s view.
+        # The ID of the user whose view the administrator switches to.
         self.role_for = role_for
-        # The view type. Valid values:
-        # - 0: The current Alibaba Cloud account view.
+        # The type of the view. Valid values:
+        # - 0: The view of the current Alibaba Cloud account.
         # - 1: The view of all accounts in the enterprise.
         self.role_type = role_type
-        # The start time timestamp, in milliseconds (ms).
+        # The timestamp of the start time, accurate to milliseconds.
         self.start_time = start_time
         # The threat level. Valid values:
         # - 5: Critical.

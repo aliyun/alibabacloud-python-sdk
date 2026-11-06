@@ -11,7 +11,7 @@ class GetDetectionStatisticResponseBody(DaraModel):
         detection_statistic: main_models.GetDetectionStatisticResponseBodyDetectionStatistic = None,
         request_id: str = None,
     ):
-        # The count results of detection rules.
+        # The detection rule counts.
         self.detection_statistic = detection_statistic
         # The ID of the request.
         self.request_id = request_id

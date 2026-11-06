@@ -16,22 +16,11 @@ class ListDataSourceTemplatesRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
-        # The list of data source template IDs.
         self.data_source_template_ids = data_source_template_ids
-        # The language of the response. Valid values:
-        # - **zh** (default): Chinese.
-        # - **en**: English.
-        # This parameter is required in practice. If you do not specify this parameter, the API returns a 400 error (The specified Lang can not be empty.). Valid values: zh and en.
         self.lang = lang
-        # The page number.
         self.page_number = page_number
-        # The number of entries per page.
         self.page_size = page_size
-        # The region where the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
-        # - cn-hangzhou: Chinese mainland. Your assets reside in the Chinese mainland.
-        # - ap-southeast-1: Outside China. Your assets reside outside China.
         self.region_id = region_id
-        # The ID of the member to which the administrator switches the view.
         self.role_for = role_for
 
     def validate(self):

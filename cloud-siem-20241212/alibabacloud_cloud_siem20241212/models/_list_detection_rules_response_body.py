@@ -20,11 +20,11 @@ class ListDetectionRulesResponseBody(DaraModel):
     ):
         # The list of detection rules.
         self.detection_rules = detection_rules
-        # The maximum number of entries to return in this request.
+        # The maximum number of data entries to return in this request.
         self.max_results = max_results
-        # The token for the next query.
+        # The token used to start the next query.
         self.next_token = next_token
-        # The page number of the current page.
+        # The current page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
@@ -137,9 +137,9 @@ class ListDetectionRulesResponseBodyDetectionRules(DaraModel):
         schedule_window: str = None,
         update_time: int = None,
     ):
-        # The alert ATT&CK technique.
+        # The ATT&CK technique of the alert.
         self.alert_att_ck = alert_att_ck
-        # The ATT&CK technique mapping.
+        # The MITRE ATT&CK technique mapping.
         self.alert_att_ck_mapping = alert_att_ck_mapping
         # The alert description. You can use $$ to reference query output fields.
         self.alert_description = alert_description
@@ -154,25 +154,25 @@ class ListDetectionRulesResponseBodyDetectionRules(DaraModel):
         self.alert_level_mapping = alert_level_mapping
         # The alert name. You can use $$ to reference query output fields.
         self.alert_name = alert_name
-        # The alert template ID of the detection rule. Valid values:
-        # - ALERT_ACTIVITY: other alerts.
-        # - EDR_ALERT_ACTIVITY: endpoint detection and response alerts.
-        # - FIREWALL_ALERT_ACTIVITY: firewall alerts.
-        # - WAF_ALERT_ACTIVITY: web application firewall alerts.
+        # The ID of the alert template for the detection rule. Valid values:
+        # - ALERT_ACTIVITY: other alerts
+        # - EDR_ALERT_ACTIVITY: endpoint detection and response alerts
+        # - FIREWALL_ALERT_ACTIVITY: firewall alerts
+        # - WAF_ALERT_ACTIVITY: Web Application Firewall alerts
         self.alert_schema_id = alert_schema_id
-        # The alert tactic phase.
+        # The tactic phase of the alert.
         self.alert_tactic_id = alert_tactic_id
         # The alert threshold count.
         self.alert_threshold_count = alert_threshold_count
         # The list of alert threshold fields, separated by commas.
         self.alert_threshold_group = alert_threshold_group
-        # The alert threshold period length.
+        # The length of the alert threshold period.
         self.alert_threshold_period = alert_threshold_period
         # The alerting type.
         self.alert_type = alert_type
         # The alerting type mapping.
         self.alert_type_mapping = alert_type_mapping
-        # The creation time. Format: YYYY-MM-DD HH:mm:ss.
+        # The creation time. The format is YYYY-MM-DD HH:mm:ss.
         self.create_time = create_time
         # The expression content of the detection rule.
         self.detection_expression_content = detection_expression_content
@@ -185,25 +185,25 @@ class ListDetectionRulesResponseBodyDetectionRules(DaraModel):
         # The name of the detection rule.
         self.detection_rule_name = detection_rule_name
         # The status of the detection rule. Valid values:
-        # - enabled: Enabled.
-        # - disabled: Disabled.
-        # - testing: Testing.
+        # - enabled: enabled
+        # - disabled: disabled
+        # - testing: testing
         self.detection_rule_status = detection_rule_status
         # The type of the detection rule. Valid values:
-        # - preset: preset detection rule.
-        # - custom: custom detection rule.
-        # - custom_template: rule template.
+        # - preset: preset detection rule
+        # - custom: custom detection rule
+        # - custom_template: rule template
         self.detection_rule_type = detection_rule_type
         # The entity mapping configuration.
         self.entity_mappings = entity_mappings
-        # The event aggregation period configuration.
+        # The incident aggregation period configuration.
         self.incident_aggregation_expression = incident_aggregation_expression
-        # The event aggregation type. Valid values:
-        # - none: No event is generated.
-        # - graph_compute: Graph computing (supported by predefined rules).
-        # - expert: Expert rule.
-        # - passthrough: Alerting pass-through (one-to-one).
-        # - window: Same-type aggregation (window).
+        # The incident aggregation type. Valid values:
+        # - none: no event generated
+        # - graph_compute: graph computing (supported by predefined rules)
+        # - expert: expert rule
+        # - passthrough: alerting pass-through (one-to-one)
+        # - window: similar aggregation (window)
         self.incident_aggregation_type = incident_aggregation_type
         # The ID of the log normalization category.
         self.log_category_id = log_category_id
@@ -213,24 +213,23 @@ class ListDetectionRulesResponseBodyDetectionRules(DaraModel):
         self.playbook = playbook
         # The user-defined parameters of the playbook.
         self.playbook_parameters = playbook_parameters
-        # The playbook UUID.
+        # The UUID of the playbook.
         self.playbook_uuid = playbook_uuid
-        # The scheduling start time (13-digit timestamp).
+        # The start time of the schedule. The value is a 13-digit timestamp.
         self.schedule_begin_time = schedule_begin_time
-        # The scheduling cron expression. This parameter is required when ScheduleType is set to cron.
+        # The cron expression for scheduling. This parameter is required when ScheduleType is set to cron.
         self.schedule_expression = schedule_expression
         # The maximum number of retries upon timeout. Valid values: 1 to 100.
         self.schedule_max_retries = schedule_max_retries
-        # The maximum timeout period, in seconds. Valid values: 60 to 1800.
+        # The maximum timeout period in seconds. Valid values: 60 to 1800.
         self.schedule_max_timeout = schedule_max_timeout
-        # The scheduling type. Valid values:
-        # 
-        # - fixed_rate: fixed interval.
-        # - cron: cron expression.
+        # The schedule type. Valid values:
+        # - fixed_rate: fixed interval
+        # - cron: cron expression
         self.schedule_type = schedule_type
-        # The scheduling window length.
+        # The length of the schedule window.
         self.schedule_window = schedule_window
-        # The update time. Format: YYYY-MM-DD HH:mm:ss.
+        # The update time. The format is YYYY-MM-DD HH:mm:ss.
         self.update_time = update_time
 
     def validate(self):
@@ -480,7 +479,7 @@ class ListDetectionRulesResponseBodyDetectionRulesPlaybook(DaraModel):
         config: str = None,
         flow: str = None,
     ):
-        # The input parameter configuration for invoking the playbook.
+        # The input parameter configuration for calling the playbook.
         self.config = config
         # The flow configuration of the playbook.
         self.flow = flow
@@ -519,7 +518,7 @@ class ListDetectionRulesResponseBodyDetectionRulesEntityMappings(DaraModel):
     ):
         # The entity mapping configuration.
         self.normalization_field_mappings = normalization_field_mappings
-        # The entity type ID.
+        # The ID of the entity type.
         self.normalization_schema_id = normalization_schema_id
 
     def validate(self):
@@ -563,11 +562,11 @@ class ListDetectionRulesResponseBodyDetectionRulesEntityMappingsNormalizationFie
         normalization_field_name: str = None,
         normalization_field_type: str = None,
     ):
-        # The mapping field.
+        # The mapped field.
         self.mapping_field_name = mapping_field_name
-        # The normalized entity field.
+        # The standard field of the entity.
         self.normalization_field_name = normalization_field_name
-        # The data type of the normalized entity field.
+        # The data type of the standard field of the entity.
         self.normalization_field_type = normalization_field_type
 
     def validate(self):

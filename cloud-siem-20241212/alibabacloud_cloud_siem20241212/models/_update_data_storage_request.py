@@ -16,28 +16,28 @@ class UpdateDataStorageRequest(DaraModel):
         role_for: int = None,
         target_project: str = None,
     ):
-        # The version of the delivery settings on which this modification is based. Call GetDataStorage first and pass the original value of Data.DeliverySettings.ConfigurationVersion. Example 1 only demonstrates the format and cannot be used as a fixed version. This parameter is required when modifying the global switch, account selection, automatic inclusion settings, or specified member delivery. If the version is missing or has changed, the OperationDenied.CentralizedDeliveryConfigChanged error is returned. In this case, re-query the data and then submit the request.
+        # The configuration version obtained from the query when modifying multi-account delivery.
         self.configuration_version = configuration_version
-        # The region where logs are stored.
+        # The region for log storage.
         self.data_storage_region_id = data_storage_region_id
-        # The global delivery switch for log management. This switch is not available for configuration. Valid values:
+        # The global delivery switch for log management. This parameter is not available for configuration. Valid values:
         # - enable: Enables all delivery.
         # - disable: Disables all delivery.
         self.delivery_status = delivery_status
         # The language of the response message. Valid values:
         # - **zh** (default): Chinese.
         # - **en**: English.
-        # Note: This parameter is actually required. If it is not specified, the API returns a 400 error: \\"The specified Lang can not be empty.\\" Specify zh or en.
+        # Note: This parameter is required. If you do not specify this parameter, the API returns a 400 error: "The specified Lang can not be empty." Specify zh or en.
         self.lang = lang
-        # The global switch for multi-account centralized delivery. A value of true indicates that centralized delivery from members to the current account is enabled. A value of false indicates that centralized delivery from members to the current account is disabled. When disabled, the account selection and automatic inclusion settings are retained, and the original log type switches for the current account are independently retained. When this parameter is specified, you must also specify ConfigurationVersion and TargetProject, and omit DataStorageRegionId and DeliveryStatus. If this parameter is omitted, the storage region modification process is used. Enabling this switch for the first time initializes the account scope for log types and the automatic inclusion settings.
+        # The global switch for multi-account centralized delivery. If this parameter is omitted, the original storage update behavior is maintained. Do not mix this parameter with the storage region or the original delivery status.
         self.multi_account_delivery_enabled = multi_account_delivery_enabled
-        # The region of the data management center for threat analysis. Select the region of the management center based on the region where your assets are located. Valid values:
+        # The region where the data management center for threat analysis is located. Select the region of the management center based on the region where your assets are located. Valid values:
         # - cn-hangzhou: Assets are located in the Chinese mainland.
         # - ap-southeast-1: Assets are located outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the member whose perspective the administrator switches to.
+        # The ID of the user whose perspective the administrator switches to.
         self.role_for = role_for
-        # The name of the current Simple Log Service project for log delivery. First invoke GetDataStorage and pass the original value of Data.DeliverySettings.TargetProject. This parameter is used to verify the target of this modification, not to specify a new project. This parameter is required when modifying the global switch, account selection, automatic inclusion settings, or specified member delivery. If this parameter is missing or differs from the current target, the OperationDenied.CentralizedDeliveryConfigChanged error is returned. Replace the account UID and region in the example with the query results.
+        # The current target project obtained from the query when modifying multi-account delivery.
         self.target_project = target_project
 
     def validate(self):

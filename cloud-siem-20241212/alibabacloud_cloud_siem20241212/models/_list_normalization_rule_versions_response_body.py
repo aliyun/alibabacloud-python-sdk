@@ -16,15 +16,10 @@ class ListNormalizationRuleVersionsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The maximum number of entries to return.
         self.max_results = max_results
-        # The pagination token. You do not need to specify this parameter for the first request or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
-        # The list of normalization rule versions.
         self.normalization_rule_versions = normalization_rule_versions
-        # The request ID.
         self.request_id = request_id
-        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -88,15 +83,10 @@ class ListNormalizationRuleVersionsResponseBodyNormalizationRuleVersions(DaraMod
         normalization_rule_version: int = None,
         update_time: int = None,
     ):
-        # The creation time.
         self.create_time = create_time
-        # The normalization rule expression.
         self.normalization_rule_expression = normalization_rule_expression
-        # The normalization rule ID.
         self.normalization_rule_id = normalization_rule_id
-        # The normalization rule version.
         self.normalization_rule_version = normalization_rule_version
-        # The update time.
         self.update_time = update_time
 
     def validate(self):

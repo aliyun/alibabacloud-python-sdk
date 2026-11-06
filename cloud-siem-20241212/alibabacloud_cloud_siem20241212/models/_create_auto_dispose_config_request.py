@@ -11,23 +11,19 @@ class CreateAutoDisposeConfigRequest(DaraModel):
         lang: str = None,
         product_code: str = None,
     ):
-        # Specifies whether to enable automated analysis. Valid values:
-        # 
-        # - enabled: Enables automated analysis.
-        # 
-        # - disabled: Disables automated analysis.
+        # Specifies whether automatic analysis is enabled for the user. Valid values:
+        # - enabled: Enabled.
+        # - disabled: Disabled.
         # 
         # This parameter is required.
         self.auto_decision_status = auto_decision_status
-        # The language of the response. Valid values:
-        # 
+        # The language of the response message. Valid values:
         # - **zh** (default): Chinese.
-        # 
         # - **en**: English.
         # 
         # This parameter is required.
         self.lang = lang
-        # The code of the cloud product.
+        # The code of the cloud service.
         # 
         # This parameter is required.
         self.product_code = product_code

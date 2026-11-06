@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Dict, Generator, AsyncGenerator
 
 from alibabacloud_cloud_siem20241212 import models as main_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -21,6 +22,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'cloud-siem'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('cloud-siem', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -6187,6 +6191,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.detection_rule_ids):
             request.detection_rule_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.detection_rule_ids, 'DetectionRuleIds', 'simple')
+        if not DaraCore.is_null(tmp_req.log_schema_ids):
+            request.log_schema_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.log_schema_ids, 'LogSchemaIds', 'json')
         body = {}
         if not DaraCore.is_null(request.alert_att_ck):
             body['AlertAttCk'] = request.alert_att_ck
@@ -6216,6 +6222,8 @@ class Client(OpenApiClient):
             body['LogCategoryId'] = request.log_category_id
         if not DaraCore.is_null(request.log_schema_id):
             body['LogSchemaId'] = request.log_schema_id
+        if not DaraCore.is_null(request.log_schema_ids_shrink):
+            body['LogSchemaIds'] = request.log_schema_ids_shrink
         if not DaraCore.is_null(request.max_results):
             body['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
@@ -6261,6 +6269,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.detection_rule_ids):
             request.detection_rule_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.detection_rule_ids, 'DetectionRuleIds', 'simple')
+        if not DaraCore.is_null(tmp_req.log_schema_ids):
+            request.log_schema_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.log_schema_ids, 'LogSchemaIds', 'json')
         body = {}
         if not DaraCore.is_null(request.alert_att_ck):
             body['AlertAttCk'] = request.alert_att_ck
@@ -6290,6 +6300,8 @@ class Client(OpenApiClient):
             body['LogCategoryId'] = request.log_category_id
         if not DaraCore.is_null(request.log_schema_id):
             body['LogSchemaId'] = request.log_schema_id
+        if not DaraCore.is_null(request.log_schema_ids_shrink):
+            body['LogSchemaIds'] = request.log_schema_ids_shrink
         if not DaraCore.is_null(request.max_results):
             body['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):

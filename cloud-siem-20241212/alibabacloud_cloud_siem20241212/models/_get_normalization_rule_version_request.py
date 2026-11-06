@@ -13,21 +13,10 @@ class GetNormalizationRuleVersionRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
-        # The language of the response message. Valid values:
-        # - **zh** (default): Chinese.
-        # - **en**: English.
-        # 
-        # Note: This parameter is required in actual API calls. If you do not specify this parameter, the service returns a 400 error with the message "The specified Lang can not be empty." Explicitly specify the language code.
         self.lang = lang
-        # The ID of the normalization rule.
         self.normalization_rule_id = normalization_rule_id
-        # The version of the normalization rule.
         self.normalization_rule_version = normalization_rule_version
-        # The region where the data management center of Threat Analysis is located. Select the region of the management center based on the region where your assets are located. Valid values:
-        # - cn-hangzhou: Assets are located in the Chinese mainland.
-        # - ap-southeast-1: Assets are located outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the user whose perspective the administrator switches to.
         self.role_for = role_for
 
     def validate(self):

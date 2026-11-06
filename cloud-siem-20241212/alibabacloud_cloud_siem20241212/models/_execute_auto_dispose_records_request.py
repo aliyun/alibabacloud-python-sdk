@@ -14,7 +14,7 @@ class ExecuteAutoDisposeRecordsRequest(DaraModel):
         selected_entity_list: List[main_models.ExecuteAutoDisposeRecordsRequestSelectedEntityList] = None,
         un_selected_entity_list: List[main_models.ExecuteAutoDisposeRecordsRequestUnSelectedEntityList] = None,
     ):
-        # The language of the response. Valid values:
+        # The language of the response message. Valid values:
         # - **zh** (default): Chinese.
         # - **en**: English.
         # 
@@ -80,7 +80,7 @@ class ExecuteAutoDisposeRecordsRequestUnSelectedEntityList(DaraModel):
         auto_dispose_record_id: str = None,
         entity_uuid: str = None,
     ):
-        # The unique ID of the investigation record.
+        # The unique ID of the analysis record.
         self.auto_dispose_record_id = auto_dispose_record_id
         # The UUID of the entity.
         self.entity_uuid = entity_uuid
@@ -117,7 +117,7 @@ class ExecuteAutoDisposeRecordsRequestSelectedEntityList(DaraModel):
         auto_dispose_record_id: str = None,
         entity_uuid: str = None,
     ):
-        # The unique ID of the investigation record.
+        # The unique ID of the analysis record.
         self.auto_dispose_record_id = auto_dispose_record_id
         # The UUID of the entity.
         self.entity_uuid = entity_uuid

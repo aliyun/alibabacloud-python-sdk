@@ -16,13 +16,13 @@ class ListNormalizationSchemasResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The maximum number of entries to return in this request.
+        # The maximum number of entries to return in the current request.
         self.max_results = max_results
-        # The pagination token for the next query. You do not need to specify this parameter for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
+        # The token used to retrieve the next page of results. Leave this parameter empty for the first request or when no more results are available. For subsequent requests, set this parameter to the NextToken value returned in the previous API call.
         self.next_token = next_token
         # The list of normalization schemas.
         self.normalization_schemas = normalization_schemas
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The total number of records.
         self.total_count = total_count
@@ -99,40 +99,39 @@ class ListNormalizationSchemasResponseBodyNormalizationSchemas(DaraModel):
         update_time: int = None,
         vendor_id: str = None,
     ):
-        # The creation time.
+        # The time when the normalization schema was created. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The normalization rule category ID.
+        # The ID of the normalization rule category.
         self.normalization_category_id = normalization_category_id
-        # The field source. Valid values:
-        # - normalized: normalized field.
-        # - native: native field.
+        # The source of the field. Valid values:
+        # - normalized: Normalized field.
+        # - native: Native field.
         self.normalization_field_source = normalization_field_source
-        # The normalization schema description.
+        # The description of the normalization schema.
         self.normalization_schema_description = normalization_schema_description
-        # The normalization schema source. Valid values:
-        # - preset: predefined.
-        # - custom: custom.
+        # The source of the normalization schema. Valid values: preset and custom.
         self.normalization_schema_from = normalization_schema_from
-        # The normalization schema ID.
+        # The ID of the normalization schema.
         self.normalization_schema_id = normalization_schema_id
-        # The normalization schema name.
+        # The name of the normalization schema.
         self.normalization_schema_name = normalization_schema_name
-        # The LogStore to which the normalization output is written.
+        # The Logstore for normalized output.
         self.normalization_schema_target_log_store = normalization_schema_target_log_store
-        # The normalization schema type.
+        # The type of the normalization schema.
         self.normalization_schema_type = normalization_schema_type
-        # The security domain ID.
+        # The ID of the security domain.
         self.normalization_security_domain_id = normalization_security_domain_id
-        # The product ID.
+        # The ID of the product.
         self.product_id = product_id
+        # The list of recommended entities.
         self.recommend_entities = recommend_entities
-        # The Simple Log Service LogStore.
+        # The Logstore of Simple Log Service.
         self.target_log_store = target_log_store
-        # The Simple Log Service StoreView.
+        # The StoreView of Simple Log Service.
         self.target_store_view = target_store_view
-        # The update time.
+        # The time when the normalization schema was updated. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
-        # The vendor ID.
+        # The ID of the vendor.
         self.vendor_id = vendor_id
 
     def validate(self):

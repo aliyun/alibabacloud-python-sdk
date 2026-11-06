@@ -27,17 +27,17 @@ class CreateCopilotChatRequest(DaraModel):
         thinking_mode: str = None,
         trace_id: str = None,
     ):
-        # The client conversation ID.
+        # The client session ID.
         self.client_conversation_id = client_conversation_id
         # The client message ID.
         # 
         # This parameter is required.
         self.client_message_id = client_message_id
-        # The conversation ID.
+        # The session ID.
         self.conversation_id = conversation_id
-        # The conversation creation configuration.
+        # The session creation configuration.
         self.create_conversation = create_conversation
-        # The language of the returned messages. Valid values:
+        # The language of the returned message. Valid values:
         # - **zh** (default): Chinese.
         # - **en**: English.
         self.lang = lang
@@ -51,21 +51,21 @@ class CreateCopilotChatRequest(DaraModel):
         self.plan_mode = plan_mode
         # The security project ID.
         self.project_id = project_id
-        # The region of the data management center for threat analysis. Specify the management center based on the region where your assets reside. Valid values:
-        # - cn-hangzhou: Your assets reside in the Chinese mainland.
-        # - ap-southeast-1: Your assets reside in regions outside the Chinese mainland.
+        # The region of the data management center for threat analysis. Select the region of the management center based on the region where your assets reside. Valid values:
+        # - cn-hangzhou: Assets reside in the Chinese mainland.
+        # - ap-southeast-1: Assets reside outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the conversation turn to replace.
+        # The ID of the replaced conversation turn.
         self.replace_turn_id = replace_turn_id
-        # The route target identifier.
+        # The target route identifier for execution.
         self.route_target = route_target
-        # The request source.
+        # The source of the request.
         self.source = source
         # Specifies whether to enable streaming responses.
         self.stream = stream
         # The deep thinking configuration.
         self.thinking_mode = thinking_mode
-        # The trace ID, which is used to query specific call information.
+        # The trace ID used to accurately query call information.
         self.trace_id = trace_id
 
     def validate(self):
@@ -195,9 +195,9 @@ class CreateCopilotChatRequestMessages(DaraModel):
         content: str = None,
         role: str = None,
     ):
-        # The message content.
+        # The content of the message.
         self.content = content
-        # The message role.
+        # The role of the message.
         self.role = role
 
     def validate(self):
@@ -243,7 +243,7 @@ class CreateCopilotChatRequestCreateConversation(DaraModel):
         self.project_id = project_id
         # The deep thinking configuration.
         self.thinking_mode = thinking_mode
-        # The conversation title.
+        # The session title.
         self.title = title
 
     def validate(self):

@@ -16,26 +16,26 @@ class ListLogStoresRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
-        # The language of the response. Valid values:
+        # The language of the response message. Valid values:
         # - **zh** (default): Chinese.
         # - **en**: English.
-        # Note: This parameter is required in practice. If you do not specify this parameter, the API returns a 400 error (The specified Lang can not be empty.).
+        # Note: This parameter is actually required. If it is not provided, the API returns a 400 error (The specified Lang can not be empty.).
         self.lang = lang
-        # The name of the Simple Log Service project. The project name follows the naming convention aliyun-cloudsiem-data-{userId}-{regionId}. You can call the GetDataStorage operation and obtain a valid project name from the Data.LogProject field in the response.
+        # The name of the Simple Log Service project. The project name follows the naming convention aliyun-cloudsiem-data-{userId}-{regionId}. You can call the GetDataStorage operation and obtain a valid project name from the Data.LogProject field in the response. This parameter is actually required. You can call the GetDataStorage operation to obtain valid values.
         self.log_project_name = log_project_name
-        # The log storage region ID.
+        # The log storage region ID. This parameter is required when LogProjectName is provided, and the log storage region must match the log project. You can call the GetDataStorage operation to obtain valid values.
         self.log_region_id = log_region_id
-        # The user ID for data ingestion.
+        # The ID of the data ingestion user.
         self.log_user_id = log_user_id
-        # The maximum number of entries to return in this request.
+        # The maximum number of data entries to return in this request.
         self.max_results = max_results
-        # The pagination token for the next query. You do not need to specify this parameter for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
+        # The token for the next query. You do not need to specify this parameter for the first query or when no subsequent query is required. If a subsequent query is required, set the value to the NextToken value returned by the previous API call.
         self.next_token = next_token
-        # The region where the threat analysis data management center is located. Specify the management center based on the region of your assets. Valid values:
-        # - cn-hangzhou: Your assets are located in the Chinese mainland.
-        # - ap-southeast-1: Your assets are located outside China.
+        # The region of the data management center for threat analysis. Select the region of the management center based on the region where your assets are located. Valid values:
+        # - cn-hangzhou: The assets are located in the Chinese mainland.
+        # - ap-southeast-1: The assets are located outside the Chinese mainland.
         self.region_id = region_id
-        # The user ID that the administrator wants to switch to for viewing from another member\\"s perspective.
+        # The ID of the user whose perspective the administrator switches to.
         self.role_for = role_for
 
     def validate(self):

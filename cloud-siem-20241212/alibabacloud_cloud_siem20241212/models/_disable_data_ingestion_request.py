@@ -12,19 +12,9 @@ class DisableDataIngestionRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
-        # The data ingestion ID.
         self.data_ingestion_id = data_ingestion_id
-        # The language of the response. Valid values:
-        # - **zh** (default): Chinese.
-        # - **en**: English.
-        # 
-        # Note: This parameter is actually required. If you do not specify this parameter, the API returns a 400 error: "The specified Lang can not be empty."
         self.lang = lang
-        # The region in which the threat analysis data management center resides. Specify this parameter based on the region where your assets reside. Valid values:
-        # - cn-hangzhou: Your assets reside in the Chinese mainland.
-        # - ap-southeast-1: Your assets reside outside China.
         self.region_id = region_id
-        # The ID of the member to which the administrator switches the view.
         self.role_for = role_for
 
     def validate(self):

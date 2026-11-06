@@ -1,3 +1,7 @@
+2026-11-06 Version: 2.8.1
+- Update API ListDetectionRules: add request parameters LogSchemaIds.
+
+
 2026-10-21 Version: 2.8.0
 - Support API GetIncidentInvestigation.
 - Update API GetDataStorage: add response parameters Body.Data.DeliverySettings.

@@ -21,40 +21,18 @@ class CreateDataSetRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
-        # The description of the dataset.
         self.data_set_description = data_set_description
-        # The unique key name of the dataset.
-        # 
         # This parameter is required.
         self.data_set_field_key_name = data_set_field_key_name
-        # The name of the uploaded dataset file.
-        # 
         # This parameter is required.
         self.data_set_file_name = data_set_file_name
-        # The name of the dataset.
-        # 
         # This parameter is required.
         self.data_set_name = data_set_name
-        # The status of the dataset. Valid values:
-        # - 0: Deleted.
-        # - 1: Enabled.
         self.data_set_status = data_set_status
-        # The type of the dataset. Valid values:
-        # - custom: custom.
-        # - preset: predefined.
         self.data_set_type = data_set_type
-        # The list of recognizers.
         self.ip_whitelist_recognizers = ip_whitelist_recognizers
-        # The language of the response. Valid values:
-        # - **zh** (default): Chinese.
-        # - **en**: English.
-        # Note: This parameter is required. If you do not specify this parameter, the API returns a 400 error: "The specified Lang can not be empty."
         self.lang = lang
-        # The region where the threat analysis data management center resides. Specify the management center based on the region of your assets. Valid values:
-        # - cn-hangzhou: Your assets reside in the Chinese mainland.
-        # - ap-southeast-1: Your assets reside outside China.
         self.region_id = region_id
-        # The ID of the member to which the administrator switches the view.
         self.role_for = role_for
 
     def validate(self):
@@ -146,24 +124,8 @@ class CreateDataSetRequestIpWhitelistRecognizers(DaraModel):
         ip_whitelist_recognizer_type: str = None,
         recognize_scope: str = None,
     ):
-        # The automatic recognition status. Valid values:
-        # - enabled: Enabled.
-        # - disabled: Disabled.
         self.auto_recognize_status = auto_recognize_status
-        # The IP address type identified by the recognizer. Valid values:
-        # - sas_vulnerability_scanner_ip: IP addresses of the Security Center vulnerability web scanner.
-        # - waf_back_source_ip: back-to-origin IP addresses of Web Application Firewall (WAF).
-        # - ddos_back_source_ip: back-to-origin IP addresses of Anti-DDoS.
-        # - esa_back_source_ip: back-to-origin node IP addresses of Edge secure acceleration (ESA).
-        # - ecs_public_ip: public IP addresses of Elastic Compute Service (ECS) instances.
-        # - slb_public_ip: public IP addresses of Server Load Balancer (SLB) instances.
-        # - vpc_eip: elastic IP addresses (EIPs).
-        # - cdn_back_source_ip: back-to-origin IP addresses of content delivery network (CDN).
-        # - ga_back_source_ip: back-to-origin IP addresses of Global Accelerator (GA).
         self.ip_whitelist_recognizer_type = ip_whitelist_recognizer_type
-        # The recognition scope. Valid values:
-        # - current_account: the current account only.
-        # - rd_accounts: multi-account mode enabled.
         self.recognize_scope = recognize_scope
 
     def validate(self):

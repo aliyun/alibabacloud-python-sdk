@@ -14,23 +14,11 @@ class ListNormalizationRuleVersionsRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
-        # The language of the response. Valid values:
-        # - **zh** (default): Chinese.
-        # - **en**: English.
-        # 
-        # Note: This parameter is required in actual calls. If this parameter is not specified, the service returns a 400 error "The specified Lang can not be empty." Explicitly pass in the language code.
         self.lang = lang
-        # The maximum number of entries to return.
         self.max_results = max_results
-        # The pagination token. You do not need to specify this parameter for the first request or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
-        # The normalization rule ID.
         self.normalization_rule_id = normalization_rule_id
-        # The region where the threat detection and response data management center resides. Specify the management center based on the region of your assets. Valid values:
-        # - cn-hangzhou: The assets reside in the Chinese mainland.
-        # - ap-southeast-1: The assets reside outside China.
         self.region_id = region_id
-        # The user ID that the administrator uses to switch to the view of another member.
         self.role_for = role_for
 
     def validate(self):

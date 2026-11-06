@@ -20,15 +20,15 @@ class ListIncidentsResponseBody(DaraModel):
     ):
         # The list of incidents.
         self.incidents = incidents
-        # The maximum number of entries to read in this request.
+        # The maximum number of entries to return in this call.
         self.max_results = max_results
-        # The pagination token used to retrieve the next page of results. Leave this parameter empty for the first request or when there are no more pages. If more pages exist, set this parameter to the NextToken value returned by the previous API call.
+        # The token for the next query. You do not need to specify this parameter for the first query or when no subsequent query is required. If a subsequent query is required, set this parameter to the value of NextToken returned from the previous API call.
         self.next_token = next_token
-        # The current page number for pagination.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries to display per page.
+        # The number of entries to return on each page.
         self.page_size = page_size
-        # The request ID.
+        # The request message ID.
         self.request_id = request_id
         # The total number of records.
         self.total_count = total_count
@@ -138,21 +138,21 @@ class ListIncidentsResponseBodyIncidents(DaraModel):
         self.entity_infos = entity_infos
         # The description of the incident.
         self.incident_description = incident_description
-        # The event name.
+        # The name of the incident.
         self.incident_name = incident_name
         # The remark for the incident.
         self.incident_remark = incident_remark
-        # The event status. Valid values:
-        # - 0: Unhandled.
-        # - 1: Handling.
-        # - 5: Handling failed.
-        # - 10: Handled.
+        # The status of the incident. Valid values:
+        # - 0: Unprocessed.
+        # - 1: Processing.
+        # - 5: Processing failed.
+        # - 10: Processed.
         self.incident_status = incident_status
-        # The event tags.
+        # The tags of the incident.
         self.incident_tags = incident_tags
         # The UUID of the incident.
         self.incident_uuid = incident_uuid
-        # The UID of the account responsible for the event.
+        # The UIDs of the accounts of the incident owners.
         self.owner = owner
         # The display name of the incident owner.
         self.owner_name = owner_name
@@ -160,9 +160,9 @@ class ListIncidentsResponseBodyIncidents(DaraModel):
         self.relate_alert_count = relate_alert_count
         # The number of assets associated with the incident.
         self.relate_asset_count = relate_asset_count
-        # The response time, in milliseconds (ms).
+        # The response time in milliseconds.
         self.response_time = response_time
-        # The list of response types. Valid values: auto, manual, ai.
+        # The list of response types. Valid values: auto, manual, and ai.
         self.response_types = response_types
         # The threat level. Valid values:
         # - 5: Critical.

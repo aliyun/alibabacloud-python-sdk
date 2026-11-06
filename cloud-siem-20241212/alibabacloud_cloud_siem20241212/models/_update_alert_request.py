@@ -16,21 +16,20 @@ class UpdateAlertRequest(DaraModel):
     ):
         # The alert status.
         self.alert_status = alert_status
-        # The alert ID associated with the event.
+        # The ID of the alert associated with the event.
         self.alert_uuid = alert_uuid
-        # The language of the response. Valid values:
+        # The language of the response message. Valid values:
         # - **zh** (default): Chinese.
         # - **en**: English.
         self.lang = lang
-        # The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
-        # - cn-hangzhou: the Chinese mainland and Hong Kong (China).
-        # - ap-southeast-1: regions outside China.
+        # The region where the data management center for threat analysis is located. You must select the region of the management center based on the region where your assets are located. Valid values:
+        # - cn-hangzhou: Select this value if your assets are located in the Chinese mainland and Hong Kong (China).
+        # - ap-southeast-1: Select this value if your assets are located outside China.
         self.region_id = region_id
-        # The ID of the user to which the administrator switches the view.
+        # The ID of the user whose perspective the administrator switches to.
         self.role_for = role_for
         # The view type. Valid values:
-        # 
-        # - 0: the current Alibaba Cloud account view.
+        # - 0: the view of the current Alibaba Cloud account.
         # - 1: the view of all accounts in the enterprise.
         self.role_type = role_type
 

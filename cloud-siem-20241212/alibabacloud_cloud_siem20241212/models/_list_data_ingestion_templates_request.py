@@ -16,31 +16,13 @@ class ListDataIngestionTemplatesRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
-        # The status of the data ingestion template. Valid values:
-        # - pending
-        # - running
-        # - success
-        # - failed
         self.data_ingestion_template_status = data_ingestion_template_status
-        # The list of data source template IDs.
         self.data_source_template_ids = data_source_template_ids
-        # The language of the response. Valid values:
-        # - **zh** (default): Chinese.
-        # - **en**: English.
-        # 
-        # Note: This parameter is required. If you do not specify this parameter, the service returns a 400 error: "The specified Lang can not be empty." Explicitly pass in a language code.
         self.lang = lang
-        # The page number.
         self.page_number = page_number
-        # The number of entries per page.
         self.page_size = page_size
-        # The product ID.
         self.product_id = product_id
-        # The region where the data management center of threat detection and response resides. Specify the management center based on the region of your assets. Valid values:
-        # - cn-hangzhou: Your assets reside in the Chinese mainland.
-        # - ap-southeast-1: Your assets reside outside the Chinese mainland.
         self.region_id = region_id
-        # The user ID used by an administrator to assume the view of another member.
         self.role_for = role_for
 
     def validate(self):

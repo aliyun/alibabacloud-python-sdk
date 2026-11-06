@@ -16,28 +16,13 @@ class ListVendorsShrinkRequest(DaraModel):
         vendor_name: str = None,
         vendor_type: str = None,
     ):
-        # The language of the response. Valid values:
-        # - **zh** (default): Chinese.
-        # - **en**: English.
-        # Note: Although the schema marks this parameter as optional, it is required when you call this operation. If you do not specify this parameter, the API returns a 400 error.
         self.lang = lang
-        # The maximum number of entries to return in this request.
         self.max_results = max_results
-        # The pagination token for the next query. You do not need to specify this parameter for the first request or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
-        # The region where the threat analysis data management center resides. Specify the management center region based on the region of your assets. Valid values:
-        # - cn-hangzhou: The assets reside in the Chinese mainland.
-        # - ap-southeast-1: The assets reside outside China.
         self.region_id = region_id
-        # The user ID that the administrator uses to switch to the perspective of another member.
         self.role_for = role_for
-        # The list of vendors.
         self.vendor_ids_shrink = vendor_ids_shrink
-        # The vendor name.
         self.vendor_name = vendor_name
-        # The vendor type. Valid values:
-        # - preset
-        # - custom
         self.vendor_type = vendor_type
 
     def validate(self):

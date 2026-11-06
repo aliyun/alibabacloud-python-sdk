@@ -29,12 +29,10 @@ class CreateDataSourceRequest(DaraModel):
         role_for: int = None,
     ):
         # The source of the data. Valid values:
-        # 
         # - center
-        # 
         # - custom
         self.data_source_from = data_source_from
-        # A list of data source IDs.
+        # The list of data source IDs.
         self.data_source_ids = data_source_ids
         # The name of the data source.
         self.data_source_name = data_source_name
@@ -42,22 +40,18 @@ class CreateDataSourceRequest(DaraModel):
         self.data_source_recognize_enabled = data_source_recognize_enabled
         # The data source recognizer.
         self.data_source_recognizer = data_source_recognizer
-        # The IDs of associated data access instances.
+        # The data ingestion IDs associated with the data source.
         self.data_source_references = data_source_references
         # The list of Simple Log Service projects.
         self.data_source_stores = data_source_stores
         # The ID of the data source template.
         self.data_source_template_id = data_source_template_id
         # The type of the data source. Valid values:
-        # 
         # - preset
-        # 
         # - custom
         self.data_source_type = data_source_type
-        # The language of the response. Valid values:
-        # 
+        # The language of the response message. Valid values:
         # - **zh** (default): Chinese.
-        # 
         # - **en**: English.
         self.lang = lang
         # The name of the Simple Log Service project.
@@ -66,21 +60,17 @@ class CreateDataSourceRequest(DaraModel):
         self.log_region_id = log_region_id
         # The name of the Simple Log Service Logstore.
         self.log_store_name = log_store_name
-        # The user ID for data ingestion.
+        # The ID of the user for data ingestion.
         self.log_user_id = log_user_id
         # The sort order. Valid values:
-        # 
-        # - desc: descending.
-        # 
-        # - asc: ascending.
+        # - desc: Descending order.
+        # - asc: Ascending order.
         self.order = order
-        # The region of the Management Hub. Select a region based on the location of your assets. Valid values:
-        # 
-        # - cn-hangzhou: Assets are in the Chinese mainland.
-        # 
-        # - ap-southeast-1: Assets are outside China.
+        # The region where the data management center of Threat Analysis is located. You must select the region of the management center based on the region where your assets are located. Valid values:
+        # - cn-hangzhou: The assets are located in the Chinese mainland.
+        # - ap-southeast-1: The assets are located outside the Chinese mainland.
         self.region_id = region_id
-        # The user ID of the member whose perspective the administrator assumes.
+        # The ID of the user whose perspective the administrator switches to.
         self.role_for = role_for
 
     def validate(self):
@@ -218,17 +208,13 @@ class CreateDataSourceRequestDataSourceStores(DaraModel):
         log_store_name: str = None,
     ):
         # The source of the data. Valid values:
-        # 
         # - center
-        # 
         # - custom
         self.data_source_store_from = data_source_store_from
         # The ID of the log storage.
         self.data_source_store_id = data_source_store_id
-        # The status of the log storage. Valid values:
-        # 
+        # The log storage status. Valid values:
         # - normal
-        # 
         # - abnormal
         self.data_source_store_status = data_source_store_status
         # The name of the Simple Log Service project.

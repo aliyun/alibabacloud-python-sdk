@@ -17,32 +17,32 @@ class ListNormalizationSchemasRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
-        # The language type for the request and response messages. Valid values:
+        # The language of the request and response. Valid values:
         # 
         # - **zh** (default): Chinese.
         # - **en**: English.
         # 
-        # Note: This parameter is required in actual calls. If this parameter is not specified, the service returns a 400 error "The specified Lang can not be empty." Explicitly pass in the language code.
+        # Note: This parameter is required in actual API calls. If it is not provided, the service returns a 400 error "The specified Lang can not be empty.". Explicitly specify the language code.
         self.lang = lang
-        # The maximum number of entries to return in this request.
+        # The maximum number of entries to return in the current request.
         self.max_results = max_results
-        # The pagination token for the next query. You do not need to specify this parameter for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
+        # The token used to retrieve the next page of results. Leave this parameter empty for the first request or when no more results are available. For subsequent requests, set this parameter to the NextToken value returned in the previous API call.
         self.next_token = next_token
-        # The normalization rule category ID.
+        # The ID of the normalization rule category.
         self.normalization_category_id = normalization_category_id
-        # The field source filter. Valid values: normalized / native.
+        # The filter for the field source. Valid values: normalized and native.
         self.normalization_field_source = normalization_field_source
-        # The normalization schema type. Valid values:
-        # - log: log.
-        # - entity: entity.
+        # The type of the normalization schema. Valid values:
+        # - log: Log.
+        # - entity: Entity.
         self.normalization_schema_type = normalization_schema_type
-        # The security domain ID.
+        # The ID of the security domain.
         self.normalization_security_domain_id = normalization_security_domain_id
-        # The region where the threat analysis data management center is located. Specify the management center based on the region of your assets. Valid values:
-        # - cn-hangzhou: The assets are located in the Chinese mainland.
-        # - ap-southeast-1: The assets are located outside China.
+        # The region where the data management center of Threat Analysis is located. You must select the region of the management center based on the region where your assets are located. Valid values:
+        # - cn-hangzhou: Assets are located in the Chinese mainland.
+        # - ap-southeast-1: Assets are located outside the Chinese mainland.
         self.region_id = region_id
-        # The user ID used when an administrator switches to the perspective of another member.
+        # The ID of the user whose perspective the administrator switches to.
         self.role_for = role_for
 
     def validate(self):

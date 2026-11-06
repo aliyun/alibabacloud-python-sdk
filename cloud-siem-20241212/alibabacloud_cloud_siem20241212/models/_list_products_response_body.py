@@ -16,15 +16,10 @@ class ListProductsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The maximum number of entries to return in this request.
         self.max_results = max_results
-        # The pagination token. You do not need to specify this parameter for the first request or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
-        # The list of products.
         self.products = products
-        # The request ID.
         self.request_id = request_id
-        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -97,37 +92,19 @@ class ListProductsResponseBodyProducts(DaraModel):
         vendor_id: str = None,
         vendor_name: str = None,
     ):
-        # The number of abnormal data ingestion entries.
         self.abnormal_data_ingestion_count = abnormal_data_ingestion_count
-        # The activation time.
         self.active_time = active_time
-        # Indicates whether data collection can be added.
         self.allow_add_data_ingestion = allow_add_data_ingestion
-        # The creation time.
         self.create_time = create_time
-        # The accessed state of data ingestion. Valid values:
-        # - enabled: Enabled.
-        # - disabled: Disabled.
         self.data_ingestion_status = data_ingestion_status
-        # The number of enabled data ingestion entries.
         self.enabled_data_ingestion_count = enabled_data_ingestion_count
-        # The product alias.
         self.product_alias = product_alias
-        # The product ID.
         self.product_id = product_id
-        # **[Deprecated]** This parameter is deprecated and does not need to be specified.
         self.product_name = product_name
-        # The product type. Valid values:
-        # - preset
-        # - custom
         self.product_type = product_type
-        # The total number of data ingestion entries.
         self.total_data_ingestion_count = total_data_ingestion_count
-        # The update time.
         self.update_time = update_time
-        # The vendor ID.
         self.vendor_id = vendor_id
-        # The vendor name.
         self.vendor_name = vendor_name
 
     def validate(self):

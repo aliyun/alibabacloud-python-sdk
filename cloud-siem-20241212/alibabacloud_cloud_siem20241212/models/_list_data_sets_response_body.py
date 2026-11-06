@@ -18,19 +18,12 @@ class ListDataSetsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of datasets.
         self.data_sets = data_sets
-        # The maximum number of results to return when you use the NextToken-based pagination method. Valid values: 1 to 100. Default value: 50.
         self.max_results = max_results
-        # The pagination token for the next query.
         self.next_token = next_token
-        # The page number.
         self.page_number = page_number
-        # The number of entries per page.
         self.page_size = page_size
-        # The request ID.
         self.request_id = request_id
-        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -113,33 +106,17 @@ class ListDataSetsResponseBodyDataSets(DaraModel):
         ip_whitelist_recognizers: List[main_models.ListDataSetsResponseBodyDataSetsIpWhitelistRecognizers] = None,
         update_time: int = None,
     ):
-        # The creation time. This value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The dataset description.
         self.data_set_description = data_set_description
-        # The unique key name of the dataset.
         self.data_set_field_key_name = data_set_field_key_name
-        # The field names of the dataset.
         self.data_set_field_names = data_set_field_names
-        # The name of the uploaded dataset file.
         self.data_set_file_name = data_set_file_name
-        # The dataset ID.
         self.data_set_id = data_set_id
-        # The dataset name.
         self.data_set_name = data_set_name
-        # The dataset reference data.
         self.data_set_references = data_set_references
-        # The dataset status. Valid values:
-        # - 0: deleted.
-        # - 1: enabled.
         self.data_set_status = data_set_status
-        # The dataset type. Valid values:
-        # - custom: custom dataset.
-        # - preset: predefined dataset.
         self.data_set_type = data_set_type
-        # The list of recognizers.
         self.ip_whitelist_recognizers = ip_whitelist_recognizers
-        # The update time. This value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -253,26 +230,9 @@ class ListDataSetsResponseBodyDataSetsIpWhitelistRecognizers(DaraModel):
         recognize_scope: str = None,
         update_time: int = None,
     ):
-        # The automatic recognition status. Valid values:
-        # - enabled: enabled.
-        # - disabled: disabled.
         self.auto_recognize_status = auto_recognize_status
-        # The IP type identified by the recognizer. Valid values:
-        # - sas_vulnerability_scanner_ip: IP addresses of the Security Center vulnerability web scanner.
-        # - waf_back_source_ip: back-to-origin IP addresses of Web Application Firewall (WAF).
-        # - ddos_back_source_ip: back-to-origin IP addresses of Anti-DDoS.
-        # - esa_back_source_ip: back-to-origin node IP addresses of Edge Security Acceleration (ESA).
-        # - ecs_public_ip: public IP addresses of Elastic Compute Service (ECS) instances.
-        # - slb_public_ip: public IP addresses of Server Load Balancer (SLB) instances.
-        # - vpc_eip: elastic IP addresses (EIPs).
-        # - cdn_back_source_ip: back-to-origin IP addresses of Content Delivery Network (CDN).
-        # - ga_back_source_ip: back-to-origin IP addresses of Global Accelerator (GA).
         self.ip_whitelist_recognizer_type = ip_whitelist_recognizer_type
-        # The recognition scope. Valid values:
-        # - current_account: current account only.
-        # - rd_accounts: multi-account enabled.
         self.recognize_scope = recognize_scope
-        # The update time. This value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -321,15 +281,9 @@ class ListDataSetsResponseBodyDataSetsDataSetReferences(DaraModel):
         data_set_reference_name: str = None,
         data_set_reference_type: str = None,
     ):
-        # The dataset ID.
         self.data_set_id = data_set_id
-        # The ID of the rule or playbook associated with the dataset.
         self.data_set_reference_id = data_set_reference_id
-        # The name of the rule or playbook associated with the dataset.
         self.data_set_reference_name = data_set_reference_name
-        # The type of service associated with the dataset. Valid values:
-        # - custom_rule: custom rule.
-        # - playbook: playbook.
         self.data_set_reference_type = data_set_reference_type
 
     def validate(self):

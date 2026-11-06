@@ -10,15 +10,13 @@ class GetAutoDisposeConfigRequest(DaraModel):
         lang: str = None,
         product_code: str = None,
     ):
-        # The language of the response. Valid values:
-        # 
+        # The language of the response message. Valid values:
         # - **zh** (default): Chinese.
-        # 
         # - **en**: English.
         # 
         # This parameter is required.
         self.lang = lang
-        # The code for the cloud product.
+        # The code of the cloud service.
         # 
         # This parameter is required.
         self.product_code = product_code

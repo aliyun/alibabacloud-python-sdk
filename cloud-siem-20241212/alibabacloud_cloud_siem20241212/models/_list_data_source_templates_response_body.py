@@ -15,13 +15,9 @@ class ListDataSourceTemplatesResponseBody(DaraModel):
         page_size: str = None,
         request_id: str = None,
     ):
-        # The list of data source templates.
         self.data_source_templates = data_source_templates
-        # The page number.
         self.page_number = page_number
-        # The number of entries per page.
         self.page_size = page_size
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -86,33 +82,17 @@ class ListDataSourceTemplatesResponseBodyDataSourceTemplates(DaraModel):
         log_user_ids: List[str] = None,
         update_time: int = None,
     ):
-        # Indicates whether automatic discovery of new users is enabled. Valid values:
-        # - enabled: Enabled.
-        # - disabled: Disabled.
         self.auto_scan_new = auto_scan_new
-        # The creation time. This value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The data source origin. Valid values:
-        # - center
-        # - custom
         self.data_source_from = data_source_from
-        # Indicates whether automatic discovery of new data sources is enabled.
         self.data_source_recognize_enabled = data_source_recognize_enabled
-        # The data source recognizer.
         self.data_source_recognizer = data_source_recognizer
-        # The data source template ID.
         self.data_source_template_id = data_source_template_id
-        # The data source template name.
         self.data_source_template_name = data_source_template_name
-        # The matching rule for the Simple Log Service project name.
         self.log_project_pattern = log_project_pattern
-        # The list of log storage region IDs.
         self.log_region_ids = log_region_ids
-        # The matching rule for the Simple Log Service Logstore name.
         self.log_store_pattern = log_store_pattern
-        # The list of user IDs for batch data ingestion.
         self.log_user_ids = log_user_ids
-        # The update time. This value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):
