@@ -13,11 +13,11 @@ class ModifyDiskSpecResponseBody(DaraModel):
     ):
         # The ID of the generated order.
         # 
-        # > The order ID is returned only when you change the specifications of a subscription disk.
+        # > The order ID is returned only when you change the specifications of a subscription cloud disk.
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id
-        # The task ID for changing the disk specifications.
+        # The ID of the task for the disk specification change.
         # 
         # > This parameter is not returned if you only modify the performance level (PL) of an enterprise SSD.
         self.task_id = task_id

@@ -27,7 +27,7 @@ class DescribeInvocationsResponseBody(DaraModel):
         # The request ID.
         self.request_id = request_id
         # The total number of commands.
-        # > The TotalCount parameter is meaningless when you use the MaxResults and NextToken parameters for paging.
+        # > When you use the MaxResults and NextToken parameters for paging, the returned TotalCount value is meaningless.
         self.total_count = total_count
 
     def validate(self):

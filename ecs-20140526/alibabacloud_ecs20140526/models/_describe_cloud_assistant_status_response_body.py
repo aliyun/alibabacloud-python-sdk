@@ -18,7 +18,7 @@ class DescribeCloudAssistantStatusResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.instance_cloud_assistant_status_set = instance_cloud_assistant_status_set
-        # The pagination token returned by this call.
+        # The pagination token returned by the current call.
         self.next_token = next_token
         # The current page number.
         self.page_number = page_number
@@ -27,7 +27,7 @@ class DescribeCloudAssistantStatusResponseBody(DaraModel):
         # The request ID.
         self.request_id = request_id
         # The total number of instances.
-        # > When you use the MaxResults and NextToken parameters for paged queries, the returned TotalCount value is meaningless.
+        # > If you use the MaxResults and NextToken parameters for paging in a paged query, the returned TotalCount value is meaningless.
         self.total_count = total_count
 
     def validate(self):

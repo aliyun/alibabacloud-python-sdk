@@ -26,37 +26,37 @@ class DescribeDiagnosticReportAttributesResponseBody(DaraModel):
     ):
         # The extended attributes of the diagnostic report.
         self.attributes = attributes
-        # The time when the diagnostic report was created. The time is in ISO 8601 format in UTC.
+        # The time when the diagnostic report was created. The time follows the ISO 8601 standard and is in UTC.
         self.creation_time = creation_time
-        # The end time. This is the parameter passed in when you called the [CreateDiagnosticReport](https://help.aliyun.com/document_detail/442490.html) operation to create the diagnostic report. The time is in ISO 8601 format in UTC.
+        # The end time. This is the parameter passed when you call the [CreateDiagnosticReport](https://help.aliyun.com/document_detail/442490.html) operation to create a diagnostic report. The time follows the ISO 8601 standard and is in UTC.
         self.end_time = end_time
-        # The time when the diagnostic report was completed. The time is in ISO 8601 format in UTC.
+        # The time when the diagnostic report was completed. The time follows the ISO 8601 standard and is in UTC.
         self.finished_time = finished_time
         self.metric_results = metric_results
         # The ID of the diagnostic metric set.
         self.metric_set_id = metric_set_id
-        # The ID of the diagnostic report. This is the unique identifier of the resource diagnostic report.
+        # The ID of the diagnostic report, which uniquely identifies the resource diagnostic report.
         self.report_id = report_id
         # The request ID.
         self.request_id = request_id
-        # The resource ID.
+        # The ID of the resource.
         self.resource_id = resource_id
-        # The resource type. The supported type is instance.
+        # The resource type. Valid value: instance.
         self.resource_type = resource_type
-        # The severity level of the report. This is the most severe level among all metrics. The severity levels in ascending order are:
+        # The severity level of the report. This is the highest severity level among all metrics. The severity levels in ascending order are:
         # 
-        # - Unknown: The initial state. The diagnosis has not started, or the diagnostic process exited abnormally. No diagnostic conclusion is available.
-        # - Normal: The diagnosis is normal. No issues were found.
-        # - Info: Related information is available and may be associated with an exception.
-        # - Warn: Related information is available and may cause an exception.
+        # - Unknown: The initial state, which indicates that the diagnosis has not started or the diagnostic program exited abnormally, and no diagnostic conclusion is available.
+        # - Normal: The diagnosis is normal and no issues are found.
+        # - Info: Associated information is available, which may be related to an exception.
+        # - Warn: Associated information is available, which may cause an exception.
         # - Critical: A critical exception exists.
         self.severity = severity
-        # The start time. This is the parameter passed in when you called the [CreateDiagnosticReport](https://help.aliyun.com/document_detail/442490.html) operation to create the diagnostic report. The time is in ISO 8601 format in UTC.
+        # The start time. This is the parameter passed when you call the [CreateDiagnosticReport](https://help.aliyun.com/document_detail/442490.html) operation to create a diagnostic report. The time follows the ISO 8601 standard and is in UTC.
         self.start_time = start_time
         # The status of the diagnostic report. Valid values:
         # 
         # - InProgress: The diagnosis is in progress.
-        # - Finished: The diagnosis is complete.
+        # - Finished: The diagnosis is completed.
         # - Failed: The diagnosis failed.
         self.status = status
 

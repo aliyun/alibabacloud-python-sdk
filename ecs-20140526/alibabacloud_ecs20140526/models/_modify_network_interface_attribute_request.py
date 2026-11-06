@@ -29,42 +29,43 @@ class ModifyNetworkInterfaceAttributeRequest(DaraModel):
         source_dest_check: bool = None,
         tx_queue_size: int = None,
     ):
-        # The network connectivity tracking configuration.
+        # The network connectivity tracking configuration information collection.
         # 
-        # Before you use this parameter, read [Connection timeout management](https://help.aliyun.com/document_detail/2865958.html).
+        # Before you use this parameter, read [Connection timeout management](https://help.aliyun.com/document_detail/2865958.html) carefully.
         self.connection_tracking_configuration = connection_tracking_configuration
-        # Specifies whether to retain the ENI when the associated instance is released. Valid values:
+        # Specifies whether to retain the ENI when the instance is released. Valid values:
         # 
         # - true: The ENI is not retained.
         # 
         # - false: The ENI is retained.
         self.delete_on_release = delete_on_release
-        # The description of the network interface controller (NIC). The description must be 2 to 255 characters in length and cannot start with http:// or https://.
+        # The description of the network interface controller (NIC). The description must be 2 to 255 characters in length and cannot start with `http://` or `https://`.
         # 
         # Default value: empty.
         self.description = description
+        # Specifies whether to enable the primary IPv6 address for the network interface controller (NIC).
         self.enable_primary_ipv_6 = enable_primary_ipv_6
-        # This parameter is not publicly available.
+        # This parameter is not available for public use.
         self.enhanced_network = enhanced_network
         # The ID of the network interface controller (NIC).
         # 
         # This parameter is required.
         self.network_interface_id = network_interface_id
-        # The name of the network interface controller (NIC). The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`. The name can contain characters under the categorization of letter in Unicode, including English letters, Chinese characters, and digits. The name can also contain colons (:), underscores (_), periods (.), or hyphens (-).
+        # The name of the Elastic Network Interface (ENI). The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`. It supports characters in the Letter category of Unicode, such as English letters, Chinese characters, and digits. It can contain colons (:), underscores (_), periods (.), and hyphens (-).
         # 
         # Default value: empty.
         self.network_interface_name = network_interface_name
-        # The communication parameter of the network interface controller (NIC).
+        # The traffic parameters of the network interface controller (NIC).
         self.network_interface_traffic_config = network_interface_traffic_config
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The number of queues for the ENI. Valid values: 1 to 2048.
         # 
-        # - You can modify the queue number of an ENI that is in the Available state, or an ENI that is in the InUse state but attached to an instance in the Stopped state.
+        # - You can modify the number of queues for an ENI that is in the `Available` state, or for an ENI that is attached (`InUse`) to an instance that is in the `Stopped` state.
         # 
-        # - The queue number cannot exceed the maximum number of queues per ENI allowed by the instance type. The total number of queues across all ENIs of an instance cannot exceed the total queue quota allowed by the instance type. You can call [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) to query the MaximumQueueNumberPerEni and TotalEniQueueQuantity fields for the instance type.
+        # - The number of queues for the ENI cannot exceed the maximum number of queues per ENI allowed by the instance type. The total number of queues for all ENIs attached to the instance cannot exceed the total queue quota allowed by the instance type. You can call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation and query the `MaximumQueueNumberPerEni` and `TotalEniQueueQuantity` parameters to obtain the maximum number of queues per ENI and the total queue quota for the instance type.
         self.queue_number = queue_number
-        # The region ID of the network interface controller (NIC). You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+        # The region ID of the network interface controller (NIC). You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -72,19 +73,19 @@ class ModifyNetworkInterfaceAttributeRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The inbound queue depth of the network interface controller (NIC).
         # 
-        # > This parameter is in invitational preview and is not publicly available. To use this parameter, submit a ticket to request access.
+        # > This parameter is in invitational preview and is not available for public use. If you need to use it, submit a ticket to apply for whitelist access.
         # 
         # Take note of the following items:
         # 
-        # - This parameter applies only to instances of the seventh generation or later.
+        # - This parameter applies only to seventh-generation and later ECS instance types.
         # - This parameter currently applies only to Linux images.
-        # - A larger inbound queue depth can improve inbound throughput and reduce packet loss, but consumes more memory.
+        # - A larger inbound queue depth can increase inbound throughput and reduce the packet loss rate, but it consumes more memory.
         self.rx_queue_size = rx_queue_size
-        # The list of security group IDs. The secondary network interface controller (NIC) joins the specified security groups and is removed from the existing security groups.
+        # The list of security group IDs. The secondary network interface controller (NIC) is added to the specified security groups and removed from its current security groups.
         # 
-        # - Valid values of N depend on the maximum number of security groups to which a network interface controller (NIC) can belong. For more information, see [Limits](~~25412#SecurityGroupQuota~~).
+        # - The valid values of N depend on the quota of security groups that each network interface controller (NIC) can join. For more information, see [Limits](~~25412#SecurityGroupQuota~~).
         # 
-        # - The modification takes effect shortly, but a slight delay may occur.
+        # - The modification takes effect shortly, but there may be a slight delay.
         self.security_group_id = security_group_id
         # Specifies whether to enable source/destination checking. We recommend that you enable this feature to improve network security. Valid values:
         # 
@@ -94,17 +95,17 @@ class ModifyNetworkInterfaceAttributeRequest(DaraModel):
         # 
         # Default value: false.
         # 
-        # > Only specific regions support this feature. Before using this feature, read [Source/destination checking](https://help.aliyun.com/document_detail/2863210.html).
+        # > This feature is supported only in specific regions. Before you use it, read [Source/destination checking](https://help.aliyun.com/document_detail/2863210.html) carefully.
         self.source_dest_check = source_dest_check
         # The outbound queue depth of the network interface controller (NIC).
         # 
-        # > This parameter is in invitational preview and is not publicly available. To use this parameter, submit a ticket to request access.
+        # > This parameter is in invitational preview and is not available for public use. If you need to use it, submit a ticket to apply for whitelist access.
         # 
         # Take note of the following items:
         # 
-        # - This parameter applies only to instances of the seventh generation or later.
+        # - This parameter applies only to seventh-generation and later ECS instance types.
         # - This parameter currently applies only to Linux images.
-        # - A larger outbound queue depth can improve outbound throughput and reduce packet loss, but consumes more memory.
+        # - A larger outbound queue depth can increase outbound throughput and reduce the packet loss rate, but it consumes more memory.
         self.tx_queue_size = tx_queue_size
 
     def validate(self):
@@ -246,48 +247,48 @@ class ModifyNetworkInterfaceAttributeRequestNetworkInterfaceTrafficConfig(DaraMo
         rx_queue_size: int = None,
         tx_queue_size: int = None,
     ):
-        # The communication pattern of the network interface controller (NIC). Valid values:
+        # The traffic pattern of the network interface controller (NIC). Valid values of the parameter:
         # 
-        # - Standard: uses the TCP communication pattern.
-        # - HighPerformance: enables the Elastic RDMA Interface (ERI) and uses the RDMA communication pattern.
+        # - Standard: uses the TCP traffic pattern.
+        # - HighPerformance: enables the Elastic RDMA Interface (ERI) and uses the RDMA traffic pattern.
         # 
-        # When the network interface controller (NIC) is in the attached state, take note of the following items:
-        # - The total number of RDMA network interface controllers (NICs) of an instance cannot exceed the RDMA network interface controller (NIC) quota allowed by the instance type. You can call DescribeInstanceTypes to query the EriQuantity field for the RDMA network interface controller (NIC) quota.
+        # When the Elastic Network Interface (ENI) is attached to an instance, take note of the following items:
+        # - The total number of RDMA network interface controllers (NICs) for the instance cannot exceed the RDMA network interface controller (NIC) quota allowed by the instance type. You can invoke the DescribeInstanceTypes operation and query the EriQuantity parameter to obtain the RDMA network interface controller (NIC) quota for the instance type.
         # 
-        # > This parameter is in invitational preview and is not publicly available.
+        # > This parameter is in invitational preview and is not available for public use.
         self.network_interface_traffic_mode = network_interface_traffic_mode
         # The number of queues for the network interface controller (NIC).
-        # When the network interface controller (NIC) is in the attached state, take note of the following items:
-        # - The value cannot exceed the maximum number of queues per network interface controller (NIC) allowed by the instance type.
-        # - The total number of queues across all network interface controllers (NICs) of an instance cannot exceed the total queue quota allowed by the instance type. You can call DescribeInstanceTypes to query the MaximumQueueNumberPerEni and TotalEniQueueQuantity fields.
+        # When the Elastic Network Interface (ENI) is attached to an instance, take note of the following items:
+        # - The number of queues cannot exceed the maximum number of queues per network interface controller (NIC) allowed by the instance type.
+        # - The total number of queues for all network interface controllers (NICs) attached to the instance cannot exceed the total queue quota allowed by the instance type. You can invoke the DescribeInstanceTypes operation and query the MaximumQueueNumberPerEni and TotalEniQueueQuantity parameters to obtain the maximum number of queues per network interface controller (NIC) and the total queue quota for the instance type.
         # 
-        # > This parameter is in invitational preview and is not publicly available.
+        # > This parameter is in invitational preview and is not available for public use.
         self.queue_number = queue_number
-        # The number of RDMA queues for the network interface controller (NIC).
-        # When the network interface controller (NIC) is in the attached state, take note of the following items:
-        # - The value cannot exceed the maximum number of queues per RDMA network interface controller (NIC) allowed by the instance type. You can call DescribeInstanceTypes to query the QueuePairNumber field for the maximum number of queues per RDMA network interface controller (NIC).
+        # The number of queues for the RDMA network interface controller (NIC).
+        # When the Elastic Network Interface (ENI) is attached to an instance, take note of the following items:
+        # - The number of queues cannot exceed the maximum number of queues per RDMA network interface controller (NIC) allowed by the instance type. You can invoke the DescribeInstanceTypes operation and query the QueuePairNumber parameter to obtain the maximum number of queues per RDMA network interface controller (NIC) for the instance type.
         # 
-        # > This parameter is in invitational preview and is not publicly available.
+        # > This parameter is in invitational preview and is not available for public use.
         self.queue_pair_number = queue_pair_number
         # The inbound queue depth of the network interface controller (NIC).
         # 
-        # > This parameter is in invitational preview and is not publicly available. To use this parameter, submit a ticket to request access.
+        # > This parameter is in invitational preview and is not available for public use. If you need to use it, submit a ticket to apply for whitelist access.
         # 
         # Take note of the following items:
         # 
-        # - This parameter applies only to instances of the seventh generation or later.
+        # - This parameter applies only to seventh-generation and later ECS instance types.
         # - This parameter currently applies only to Linux images.
-        # - A larger inbound queue depth can improve inbound throughput and reduce packet loss, but consumes more memory.
+        # - A larger inbound queue depth can increase inbound throughput and reduce the packet loss rate, but it consumes more memory.
         self.rx_queue_size = rx_queue_size
         # The outbound queue depth of the network interface controller (NIC).
         # 
-        # > This parameter is in invitational preview and is not publicly available. To use this parameter, submit a ticket to request access.
+        # > This parameter is in invitational preview and is not available for public use. If you need to use it, submit a ticket to apply for whitelist access.
         # 
         # Take note of the following items:
         # 
-        # - This parameter applies only to instances of the seventh generation or later.
+        # - This parameter applies only to seventh-generation and later ECS instance types.
         # - This parameter currently applies only to Linux images.
-        # - A larger outbound queue depth can improve outbound throughput and reduce packet loss, but consumes more memory.
+        # - A larger outbound queue depth can increase outbound throughput and reduce the packet loss rate, but it consumes more memory.
         self.tx_queue_size = tx_queue_size
 
     def validate(self):
@@ -343,12 +344,15 @@ class ModifyNetworkInterfaceAttributeRequestEnhancedNetwork(DaraModel):
         virtual_function_quantity: int = None,
         virtual_function_total_queue_number: int = None,
     ):
+        # > This parameter is not available for public use.
         self.enable_express = enable_express
-        # > This parameter is not publicly available.
+        # > This parameter is not available for public use.
         self.enable_rss = enable_rss
-        # This parameter is not publicly available.
+        # This parameter is not available for public use.
         self.enable_sriov = enable_sriov
+        # The number of virtual functions when SR-IOV is enabled. Valid values: 1 to 256.
         self.virtual_function_quantity = virtual_function_quantity
+        # The total number of queues for virtual functions when SR-IOV is enabled.
         self.virtual_function_total_queue_number = virtual_function_total_queue_number
 
     def validate(self):
@@ -402,21 +406,21 @@ class ModifyNetworkInterfaceAttributeRequestConnectionTrackingConfiguration(Dara
         tcp_established_timeout: int = None,
         udp_timeout: int = None,
     ):
-        # The timeout period for TCP connections in the TIME_WAIT and CLOSED states. Unit: seconds. Valid values: integers from 3 to 15.
+        # The timeout period for closed and TIME_WAIT TCP connections. Unit: seconds. Valid values: integers from 3 to 15.
         # 
         # Default value: 3.
         # 
-        # > If your ECS instance is used with NLB or CLB, the default timeout period for connections in the `TIME_WAIT` state is 15 seconds.
+        # > If your ECS instance is used together with an NLB or CLB instance, the default timeout period for connections in the `TIME_WAIT` state is 15 seconds.
         self.tcp_closed_and_time_wait_timeout = tcp_closed_and_time_wait_timeout
-        # The timeout period for established TCP connections. Unit: seconds. Valid values: [30, 60, 80, 100, 200, 300, 500, 700, 910].
+        # The timeout period for established TCP connections. Unit: seconds. Valid values: 30, 60, 80, 100, 200, 300, 500, 700, and 910.
         # 
         # Default value: 910.
         self.tcp_established_timeout = tcp_established_timeout
-        # The timeout period for UDP flows. Unit: seconds. Valid values: [10, 20, 30, 60, 80, 100].
+        # The timeout period for UDP flows. Unit: seconds. Valid values: 10, 20, 30, 60, 80, and 100.
         # 
         # Default value: 30.
         # 
-        # > If your ECS instance is used with NLB or CLB, the default value is 100 seconds.
+        # > If your ECS instance is used together with an NLB or CLB instance, the default value is 100 seconds.
         self.udp_timeout = udp_timeout
 
     def validate(self):

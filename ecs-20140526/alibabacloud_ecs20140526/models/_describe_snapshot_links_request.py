@@ -20,24 +20,24 @@ class DescribeSnapshotLinksRequest(DaraModel):
         resource_owner_id: int = None,
         snapshot_link_ids: str = None,
     ):
-        # The disk IDs. You can specify up to 100 disk IDs at a time. Set the value of DiskIds to a JSON array. Separate multiple IDs with commas (,).
+        # The disk IDs. You can specify up to 100 disk IDs at a time. Set the DiskIds parameter to a JSON array. Separate multiple IDs with commas (,).
         self.disk_ids = disk_ids
         # The instance ID.
         self.instance_id = instance_id
-        # The paging Settings for the maximum number of entries per page in a paged query. Maximum value: 100.
+        # The number of entries per page in a paged query. Maximum value: 100.
         # Default value:
-        # - If you do not specify a value or the Settings value is less than 10, the default value is 10.
-        # - If the Settings value is greater than 100, the default value is 100.
+        # - If you do not specify this parameter or the specified value is less than 10, the default value is 10.
+        # - If the specified value is greater than 100, the default value is 100.
         self.max_results = max_results
-        # The pagination token. Set the value to the NextToken value returned from the last API call.
+        # The pagination token. Set the value to the NextToken value returned in the last API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number of the snapshot chain list. Pages start from 1.
+        # The page number of the list. Pages start from page 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The paging Settings for the number of entries per page in a paged query. Valid values: 1 to 100.
+        # The number of entries per page in a paged query. Valid values: 1 to 100.
         # 
         # Default value: 10.
         self.page_size = page_size
@@ -47,7 +47,7 @@ class DescribeSnapshotLinksRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The snapshot chain IDs. You can specify up to 100 snapshot chain IDs at a time. Set the value of SnapshotLinkIds to a JSON array. Separate multiple IDs with commas (,).
+        # The snapshot chain IDs. You can specify up to 100 snapshot chain IDs at a time. Set the SnapshotLinkIds parameter to a JSON array. Separate multiple IDs with commas (,).
         self.snapshot_link_ids = snapshot_link_ids
 
     def validate(self):

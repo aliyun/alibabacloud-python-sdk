@@ -183,9 +183,9 @@ class DescribeCloudAssistantSettingsResponseBodySessionManagerConfig(DaraModel):
         self,
         session_manager_enabled: bool = None,
     ):
-        # The toggle for the Cloud Assistant session feature. Valid values:
-        # * true: Enabled.
-        # * false: Disabled.
+        # The switch for the Cloud Assistant session feature. Valid values:
+        # * true: enabled
+        # * false: disabled
         # 
         # Precautions:
         # * Enabling or disabling the session feature takes effect in all regions.
@@ -221,17 +221,17 @@ class DescribeCloudAssistantSettingsResponseBodyResourceUsageConfig(DaraModel):
         memory_limit: str = None,
         overload_limit: int = None,
     ):
-        # The maximum CPU usage allowed for the Cloud Assistant Agent main process.
+        # The maximum allowed CPU usage limit for the main process of the Cloud Assistant Agent.
         self.cpu_limit = cpu_limit
-        # Indicates whether the script file is retained in the Cloud Assistant directory after command execution is complete.
+        # Specifies whether to retain script files in the Cloud Assistant directory after command execution is complete.
         self.keep_script_file = keep_script_file
         # The maximum number of Cloud Assistant log files to retain.
         self.log_file_count_limit = log_file_count_limit
         # The size limit of Cloud Assistant log files.
         self.log_size_limit = log_size_limit
-        # The maximum memory usage allowed for the Cloud Assistant Agent main process.
+        # The maximum allowed memory usage limit for the main process of the Cloud Assistant Agent.
         self.memory_limit = memory_limit
-        # The maximum number of consecutive times that CPU or memory resources usage can exceed the limit. After this limit is reached, the Cloud Assistant Agent automatically stops running.
+        # The maximum number of consecutive times that the usage of CPU or memory resources exceeds the limit. After reaching this limit, the Cloud Assistant Agent automatically stops.
         self.overload_limit = overload_limit
 
     def validate(self):
@@ -404,11 +404,11 @@ class DescribeCloudAssistantSettingsResponseBodyAgentUpgradeConfig(DaraModel):
         time_zone: str = None,
     ):
         self.allowed_upgrade_windows = allowed_upgrade_windows
-        # Indicates whether the Cloud Assistant Agent checks for and performs updates immediately upon startup.
+        # Specifies whether to immediately check for and perform updates when the Cloud Assistant Agent starts.
         self.bootstrap_upgrade = bootstrap_upgrade
-        # Indicates whether the Cloud Assistant Agent is prohibited from checking for and performing updates.
+        # Specifies whether to disable the Cloud Assistant Agent from checking for and performing updates.
         self.disable_upgrade = disable_upgrade
-        # Indicates whether the custom Agent upgrade configuration is enabled. If the query result is false or empty, the default behavior of attempting an upgrade every 30 minutes is retained.
+        # Specifies whether the custom Cloud Assistant Agent upgrade configuration is enabled. If the value is false or empty, the system attempts to upgrade the agent every 30 minutes by default.
         self.enabled = enabled
         # The time zone of the allowed upgrade time windows.
         self.time_zone = time_zone

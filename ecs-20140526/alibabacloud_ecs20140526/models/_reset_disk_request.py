@@ -21,8 +21,8 @@ class ResetDiskRequest(DaraModel):
         self.disk_id = disk_id
         # Specifies whether to perform a dry run on the request. Valid values:
         # 
-        # - true: Performs a dry run. The system checks the required parameters, request format, and resource status. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # - false: Performs a normal request. If the request passes the dry run, the cloud disk is rolled back.
+        # - true: performs a dry run without rolling back the cloud disk. The system checks whether the required parameters are specified, the request format, and the resource status limits. If the request fails the check, the corresponding error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+        # - false: performs a normal request. If the request passes the check, the cloud disk rollback operation is initiated.
         # 
         # Default value: false.
         self.dry_run = dry_run
@@ -30,7 +30,7 @@ class ResetDiskRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the historical snapshot used to roll back the cloud disk.
+        # The ID of the snapshot to which the cloud disk is rolled back.
         # 
         # This parameter is required.
         self.snapshot_id = snapshot_id

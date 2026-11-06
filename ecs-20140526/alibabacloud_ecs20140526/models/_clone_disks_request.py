@@ -13,6 +13,7 @@ class CloneDisksRequest(DaraModel):
         arn: List[main_models.CloneDisksRequestArn] = None,
         bursting_enabled: bool = None,
         client_token: str = None,
+        destination_zone_id: str = None,
         disk_category: str = None,
         disk_name: str = None,
         dry_run: str = None,
@@ -31,51 +32,53 @@ class CloneDisksRequest(DaraModel):
     ):
         # > This parameter is not available.
         self.arn = arn
-        # Specifies whether to enable performance bursting for the new cloud disk. Valid values:
-        # - true: enables performance bursting.
-        # - false: disables performance bursting.
-        # > This parameter is supported only when DiskCategory is set to cloud_auto. For more information, see [ESSD AutoPLs](https://www.alibabacloud.com/help/en/ecs/user-guide/essd-autopl-disks).
+        # Specifies whether to enable performance burst for the new disk. Valid values:
+        # - true: enables performance burst.
+        # - false: disables performance burst.
+        # > This parameter is supported only when DiskCategory is set to cloud_auto. For more information, see [ESSD AutoPL disks](https://www.alibabacloud.com/help/en/ecs/user-guide/essd-autopl-disks).
         self.bursting_enabled = bursting_enabled
-        # Ensures the idempotence of the request. You can generate a parameter value from your client to ensure that the value is unique across different requests. The ClientToken parameter only supports ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The category of the new cloud disk. Valid values:
+        # The destination zone of the new disk.
+        self.destination_zone_id = destination_zone_id
+        # The category of the new disk. Valid values:
         # 
-        # - cloud_essd: ESSD.
-        # - cloud_auto: ESSD AutoPL.
-        # - cloud_essd_entry: ESSD Entry.
-        # - cloud_regional_disk_auto: zone-redundant ESSD.
+        # - cloud_essd: standard SSD (ESSD).
+        # - cloud_auto: ESSD AutoPL disk.
+        # - cloud_essd_entry: ESSD Entry disk.
+        # - cloud_regional_disk_auto: regional Standard SSD (ESSD).
         # 
-        # > Limits on cloud disk categories for cloning
-        # > - Non-zone-redundant cloud disks can only be cloned to non-zone-redundant types.
-        # > - Zone-redundant cloud disks can only be cloned to zone-redundant types.
+        # > Disk category restrictions for disk cloning:
+        # > - Non-zone-redundant disks can only be cloned to non-zone-redundant categories.
+        # > - Zone-redundant disks can only be cloned to zone-redundant categories.
         # 
         # This parameter is required.
         self.disk_category = disk_category
-        # The name of the cloud disk. The name must be 2 to 128 characters in length and can contain letters in the Unicode letter category (including English and Chinese characters) and ASCII digits (0-9). It can contain colons (:), underscores (_), periods (.), and hyphens (-). It must start with a letter in the Unicode letter category.
+        # The name of the disk. The name must be 2 to 128 characters in length and can contain letters and digits (0-9). It can also contain colons (:), underscores (_), periods (.), and hyphens (-). It must start with a letter.
         # 
         # Default value: empty.
         self.disk_name = disk_name
-        # Specifies whether to only perform a dry run for this request. Valid values:
-        # - true: sends a check request and does not perform the actual operation. The check items include whether the AccessKey pair is valid, the authorization of the Resource Access Management (RAM) user, and whether the required parameters are specified. If the check fails, the corresponding error is returned. If the check succeeds, the DryRunOperation error code is returned.
-        # - false (default): sends a Normal request. If the check succeeds, a 2XX HTTP status code is returned and the actual operation is performed.
+        # Specifies whether to only perform a dry run on the request. Valid values:
+        # - true: performs a dry run only and does not perform the actual operation. The system checks whether your AccessKey pair is valid, whether the authorization of Resource Access Management (RAM) users is valid, and whether required parameters are specified. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        # - false (default): sends a normal request. If the request passes the dry run, a 2xx HTTP status code is returned and the actual operation is performed.
         self.dry_run = dry_run
-        # Specifies whether the new cloud disk is encrypted. Valid values:
-        # - true: The cloud disk is encrypted.
-        # - false: The cloud disk is not encrypted.
+        # Specifies whether the new disk is encrypted. Valid values:
+        # - true: The new disk is encrypted.
+        # - false: The new disk is not encrypted.
         # 
         # Default value: false.
         self.encrypted = encrypted
-        # The KMS key ID used by the new cloud disk.
+        # The KMS key ID used by the new disk.
         self.kms_key_id = kms_key_id
-        # Specifies whether to enable the multi-attach feature for the new cloud disk. Valid values:
+        # Specifies whether to enable the multi-attach feature for the new disk. Valid values:
         # 
-        # - Disabled: disables the feature.
-        # - Enabled: enables the feature. Only ESSDs support this value.
+        # - Disabled: disables the multi-attach feature.
+        # - Enabled: enables the multi-attach feature. Currently, only ESSDs can be set to Enabled.
         # 
         # This parameter is required.
         self.multi_attach = multi_attach
         self.owner_id = owner_id
-        # The performance level settings of the cloud disk when you create an ESSD. Valid values:
+        # The performance level of the ESSD. Valid values:
         # 
         # - PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
         # - PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
@@ -84,41 +87,41 @@ class CloneDisksRequest(DaraModel):
         # 
         # > If DiskCategory is set to cloud_essd, the PerformanceLevel parameter is required.
         # 
-        # For more information about how to select the performance level of an ESSD, see [ESSD standard SSDs](https://help.aliyun.com/document_detail/122389.html).
+        # For more information about how to select the performance level of an ESSD, see [ESSD](https://help.aliyun.com/document_detail/122389.html).
         self.performance_level = performance_level
-        # The provisioned read and write IOPS for a single ESSD AutoPL. Valid values:
+        # The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values:
         # - If the capacity is less than or equal to 3 GiB, provisioned performance is not supported.
-        # - If the capacity is greater than or equal to 4 GiB, the valid values are 0 to the minimum of (1,000 IOPS/GiB × Capacity - Baseline IOPS) and 50,000.
+        # - If the capacity is greater than or equal to 4 GiB, the valid values are 0 to min{(1,000 IOPS/GiB × Capacity - Baseline IOPS), 50,000}.
         # 
-        # Baseline performance = the maximum of the minimum of (1,800 + 50 × Capacity) and 50,000, and 3,000.
+        # Baseline performance = max{min{1,800 + 50 × Capacity, 50,000}, 3,000}.
         # 
-        # > This parameter is supported only when DiskCategory is set to cloud_auto. For more information, see [ESSD AutoPLs](https://www.alibabacloud.com/help/en/ecs/user-guide/essd-autopl-disks).
+        # > This parameter is supported only when DiskCategory is set to cloud_auto. For more information, see [ESSD AutoPL disks](https://www.alibabacloud.com/help/en/ecs/user-guide/essd-autopl-disks).
         self.provisioned_iops = provisioned_iops
         # The region ID. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/ecs/api-regions-describeregions) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which the cloud disk belongs.
+        # The ID of the resource group to which the disk belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
-        # The capacity of the new cloud disk. Unit: GiB. You must specify a value for this parameter. Valid values:
+        # The capacity of the new disk. Unit: GiB. You must specify this parameter. Valid values:
         # 
         # - cloud_essd: The valid values vary based on the performance level.
-        #   - PL0: 1 to 65,536.
-        #   - PL1: 20 to 65,536.
-        #   - PL2: 461 to 65,536.
-        #   - PL3: 1,261 to 65,536.
+        #     - PL0: 1 to 65,536.
+        #     - PL1: 20 to 65,536.
+        #     - PL2: 461 to 65,536.
+        #     - PL3: 1,261 to 65,536.
         # - cloud_auto: 1 to 65,536.
         # - cloud_essd_entry: 10 to 32,768.
         # - cloud_regional_disk_auto: 10 to 65,536.
         # 
         # This parameter is required.
         self.size = size
-        # The ID of the source cloud disk.
+        # The ID of the source disk.
         # 
         # This parameter is required.
         self.source_disk_id = source_disk_id
-        # The list of tag information for the cloud disk.
+        # The tags of the disk.
         self.tag = tag
 
     def validate(self):
@@ -146,6 +149,9 @@ class CloneDisksRequest(DaraModel):
 
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+
+        if self.destination_zone_id is not None:
+            result['DestinationZoneId'] = self.destination_zone_id
 
         if self.disk_category is not None:
             result['DiskCategory'] = self.disk_category
@@ -210,6 +216,9 @@ class CloneDisksRequest(DaraModel):
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
 
+        if m.get('DestinationZoneId') is not None:
+            self.destination_zone_id = m.get('DestinationZoneId')
+
         if m.get('DiskCategory') is not None:
             self.disk_category = m.get('DiskCategory')
 
@@ -266,9 +275,9 @@ class CloneDisksRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the cloud disk. Valid values of N: 1 to 20. If you specify Tag.N.Key, it cannot be an empty string. The tag key can be up to 128 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
+        # The key of tag N of the disk. Valid values of N: 1 to 20. If you specify Tag.N.Key, it cannot be an empty string. The tag key can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
         self.key = key
-        # The tag value of the cloud disk. Valid values of N: 1 to 20. If you specify Tag.N.Value, it can be an empty string. The tag value can be up to 128 characters in length and cannot contain http:// or https://.
+        # The value of tag N of the disk. Valid values of N: 1 to 20. If you specify Tag.N.Value, it can be an empty string. The tag value can be up to 128 characters in length and cannot contain http:// or https://.
         self.value = value
 
     def validate(self):

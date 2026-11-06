@@ -18,16 +18,16 @@ class DescribeDisksResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.disks = disks
-        # The pagination token returned by this request.
+        # The pagination token returned by this call.
         self.next_token = next_token
-        # > **[Deprecated]** This parameter will soon go offline. We recommend that you use the NextToken and MaxResults parameters for paging to complete the paged query.
+        # > This parameter will be deprecated soon. Use the `NextToken` and `MaxResults` parameters for paged queries.
         self.page_number = page_number
-        # > **[Deprecated]** This parameter will soon go offline. We recommend that you use the NextToken and MaxResults parameters for paging to complete the paged query.
+        # > This parameter will be deprecated soon. Use the `NextToken` and `MaxResults` parameters for paged queries.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of queried results.
-        # > When you use the MaxResults and NextToken parameters for paging to perform a paged query, the returned value of TotalCount is invalid.
+        # The total number of entries returned.
+        # > When you use the `MaxResults` and `NextToken` parameters for paged queries, the returned `TotalCount` value is invalid.
         self.total_count = total_count
 
     def validate(self):

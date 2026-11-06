@@ -30,7 +30,7 @@ class DescribeImagePipelinesRequest(DaraModel):
         self.max_results = max_results
         # The name of the template.
         self.name = name
-        # The query token. Set the value to the NextToken value returned from the previous call. You do not need to specify this parameter for the first call.
+        # The query token. The value is the `NextToken` parameter value returned by the previous call to this operation. You do not need to specify this parameter for the first call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -38,7 +38,7 @@ class DescribeImagePipelinesRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group. When you use this parameter to filter resources, the resource count cannot exceed 1,000.
+        # The resource group ID. When you use this parameter to filter resources, the resource count cannot exceed 1,000.
         # 
         # > Filtering by the default resource group is not supported.
         self.resource_group_id = resource_group_id

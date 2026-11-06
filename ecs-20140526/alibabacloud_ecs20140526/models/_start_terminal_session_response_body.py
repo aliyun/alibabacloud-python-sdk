@@ -14,11 +14,11 @@ class StartTerminalSessionResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The security token that is appended to the WebSocket request header for system verification of the request.
+        # The security token appended to the WebSocket request header, which is used by the system to verify the request.
         self.security_token = security_token
         # The session ID.
         self.session_id = session_id
-        # The URL of the WebSocket session for establishing a remote connection to the ECS instance. The URL contains the session ID (`SessionId`) and the `SecurityToken` used for system verification.
+        # The URL corresponding to the WebSocket session for remotely connecting to the ECS instance. It includes the session ID (`SessionId`) and the `SecurityToken` used for system verification.
         self.web_socket_url = web_socket_url
 
     def validate(self):

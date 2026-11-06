@@ -31,7 +31,7 @@ class ModifyCloudAssistantSettingsShrinkRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The Cloud Assistant resource usage configuration. This setting takes effect only when the Cloud Assistant Agent version is not earlier than the following versions:
+        # The Cloud Assistant resource usage configuration. This parameter takes effect only when the Cloud Assistant Agent version is not earlier than the following versions:
         # 
         # - Windows: 2.1.4.1065
         # 
@@ -40,10 +40,10 @@ class ModifyCloudAssistantSettingsShrinkRequest(DaraModel):
         # The Cloud Assistant session feature configuration.
         self.session_manager_config_shrink = session_manager_config_shrink
         # The service configuration type. Valid values:
-        # - SessionManagerDelivery: session operation log delivery.
-        # - InvocationDelivery: task execution log delivery.
-        # - AgentUpgradeConfig: Cloud Assistant Agent upgrade configuration.
-        # - SessionManagerConfig: Cloud Assistant SessionManager configuration.
+        # - SessionManagerDelivery: session operation record delivery
+        # - InvocationDelivery: task execution record delivery
+        # - AgentUpgradeConfig: Cloud Assistant Agent upgrade configuration
+        # - SessionManagerConfig: Cloud Assistant SessionManager configuration
         # 
         # This parameter is required.
         self.setting_type = setting_type

@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Dict
 
 from alibabacloud_ecs20140526 import models as main_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -20,6 +21,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'Ecs'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-hangzhou': 'ecs-cn-hangzhou.aliyuncs.com',
@@ -2748,6 +2752,8 @@ class Client(OpenApiClient):
             query['BurstingEnabled'] = request.bursting_enabled
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.destination_zone_id):
+            query['DestinationZoneId'] = request.destination_zone_id
         if not DaraCore.is_null(request.disk_category):
             query['DiskCategory'] = request.disk_category
         if not DaraCore.is_null(request.disk_name):
@@ -2810,6 +2816,8 @@ class Client(OpenApiClient):
             query['BurstingEnabled'] = request.bursting_enabled
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.destination_zone_id):
+            query['DestinationZoneId'] = request.destination_zone_id
         if not DaraCore.is_null(request.disk_category):
             query['DiskCategory'] = request.disk_category
         if not DaraCore.is_null(request.disk_name):

@@ -18,20 +18,20 @@ class ResetDisksRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The list of cloud disks.
+        # The list of disks.
         # 
         # This parameter is required.
         self.disk = disk
         # Specifies whether to perform a dry run on the request. Valid values:
         # 
-        # - true: performs a dry run. The system checks the required parameters, request format, and resource status. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # - false: performs a standard request. If the request passes the dry run, the cloud disks are rolled back.
+        # - true: sends a dry run request and does not roll back the disk. The system checks whether required parameters are specified, the request format, and resource status limits. If the request fails the check, the corresponding error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+        # - false: sends a normal request and directly rolls back the disk after the request passes the check.
         # 
         # Default value: false.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -108,9 +108,9 @@ class ResetDisksRequestDisk(DaraModel):
         disk_id: str = None,
         snapshot_id: str = None,
     ):
-        # The ID of the cloud disk to be rolled back. Valid values of N: 1 to 10.
+        # The ID of the disk to be rolled back. Valid values of N: 1 to 10.
         self.disk_id = disk_id
-        # The ID of the snapshot that corresponds to the cloud disk in the instance snapshot. Valid values of N: 1 to 10.
+        # The ID of the snapshot that corresponds to the disk in the instance snapshot. Valid values of N: 1 to 10.
         self.snapshot_id = snapshot_id
 
     def validate(self):

@@ -19,13 +19,13 @@ class DescribeTerminalSessionsRequest(DaraModel):
     ):
         # The instance ID.
         self.instance_id = instance_id
-        # The maximum number of entries per page for a paged query.
+        # The maximum number of entries to return on each page in a paged query.
         # 
         # Maximum value: 100.
         # 
         # Default value: 10.
         self.max_results = max_results
-        # The pagination token. Set this parameter to the NextToken value returned in the previous API call.
+        # The pagination token. Set the value to the NextToken value returned from the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id

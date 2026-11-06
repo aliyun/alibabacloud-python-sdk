@@ -14,7 +14,7 @@ class DescribeTerminalSessionsResponseBody(DaraModel):
         request_id: str = None,
         sessions: main_models.DescribeTerminalSessionsResponseBodySessions = None,
     ):
-        # The pagination token returned in this call.
+        # The pagination token returned in the current call.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id

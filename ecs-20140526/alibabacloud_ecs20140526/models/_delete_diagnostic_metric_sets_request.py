@@ -12,7 +12,7 @@ class DeleteDiagnosticMetricSetsRequest(DaraModel):
         metric_set_ids: List[str] = None,
         region_id: str = None,
     ):
-        # The IDs of the diagnostic metric sets. You can specify up to 10 IDs.
+        # The IDs of the diagnostic metric sets. A maximum of 10 IDs are supported.
         # 
         # This parameter is required.
         self.metric_set_ids = metric_set_ids

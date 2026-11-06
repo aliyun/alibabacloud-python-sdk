@@ -18,13 +18,13 @@ class DescribeElasticityAssuranceInstancesRequest(DaraModel):
         resource_owner_id: int = None,
     ):
         self.private_pool_options = private_pool_options
-        # The number of entries to return per page for paging.
+        # The number of entries to return per page for a paging query.
         # 
         # Maximum value: 100.
         # 
         # Default value: 10.
         self.max_results = max_results
-        # The pagination token for the query. You can obtain the token from the response of the previous request.
+        # The pagination token for the elasticity assurance query. You can obtain the token from the response of the previous request.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id

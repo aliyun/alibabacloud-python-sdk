@@ -23,13 +23,13 @@ class DescribeCloudAssistantStatusRequest(DaraModel):
     ):
         # The list of instance IDs.
         self.instance_id = instance_id
-        # The maximum number of entries to return on each page during a paged query. This parameter is invalid if the **InstanceId** parameter Settings are configured.
+        # The maximum number of entries per page for paging in a paged query. This parameter is invalid if the **InstanceId** parameter settings are specified.
         # 
         # Maximum value: 50.
         # 
         # Default value: 10.
         self.max_results = max_results
-        # The pagination token. Set the value to the NextToken value returned from the previous API call.
+        # The pagination token. Set the value to the NextToken value returned from the previous call.
         self.next_token = next_token
         # The operating system type of the instance. Valid values:
         # 
@@ -39,9 +39,9 @@ class DescribeCloudAssistantStatusRequest(DaraModel):
         self.ostype = ostype
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # > This parameter will be taken offline soon. We recommend that you use NextToken and MaxResults to perform paged queries.
+        # > This parameter will be taken offline soon. Use NextToken and MaxResults for paging in a paged query.
         self.page_number = page_number
-        # > This parameter will be taken offline soon. We recommend that you use NextToken and MaxResults to perform paged queries.
+        # > This parameter will be taken offline soon. Use NextToken and MaxResults for paging in a paged query.
         self.page_size = page_size
         # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 

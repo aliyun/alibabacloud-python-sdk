@@ -12,7 +12,7 @@ class CreateSnapshotResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The ID of the snapshot.
+        # The snapshot ID.
         self.snapshot_id = snapshot_id
 
     def validate(self):

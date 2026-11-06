@@ -13,7 +13,7 @@ class DescribeInstanceModificationPriceResponseBody(DaraModel):
         price_info: main_models.DescribeInstanceModificationPriceResponseBodyPriceInfo = None,
         request_id: str = None,
     ):
-        # The PriceInfo data type, which includes pricing and discount rule information.
+        # The pricing information, including the price and discount rule information.
         self.price_info = price_info
         # The request ID.
         self.request_id = request_id
@@ -55,7 +55,7 @@ class DescribeInstanceModificationPriceResponseBodyPriceInfo(DaraModel):
     ):
         # The price.
         self.price = price
-        # The associated price.
+        # The related price.
         self.related_price = related_price
         self.rules = rules
 
@@ -174,7 +174,7 @@ class DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPrice(DaraMod
         self,
         marketplace_image_price: main_models.DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice = None,
     ):
-        # The Alibaba Cloud Marketplace image price.
+        # The price of the Alibaba Cloud Marketplace image.
         self.marketplace_image_price = marketplace_image_price
 
     def validate(self):
@@ -207,17 +207,17 @@ class DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPriceMarketpl
         original_price: float = None,
         trade_price: float = None,
     ):
-        # The currency unit.
+        # The currency unit. Valid values:
         # 
-        # China site: CNY.
+        # - CNY: China site.
         # 
-        # International site: USD.
+        # - USD: international site.
         self.currency = currency
-        # The discount.
+        # The discount amount.
         self.discount_price = discount_price
         # The original price.
         self.original_price = original_price
-        # The final price, which is the original price minus the discount.
+        # The final price, which is the original price minus the discount amount.
         self.trade_price = trade_price
 
     def validate(self):
@@ -269,16 +269,16 @@ class DescribeInstanceModificationPriceResponseBodyPriceInfoPrice(DaraModel):
     ):
         # The currency unit. Valid values:
         # 
-        # - China site: CNY.
+        # - CNY: China site.
         # 
-        # - International site: USD.
+        # - USD: international site.
         self.currency = currency
         self.detail_infos = detail_infos
-        # The discount.
+        # The discount amount.
         self.discount_price = discount_price
         # The original price.
         self.original_price = original_price
-        # The final price, which is the original price minus the discount.
+        # The final price, which is the original price minus the discount amount.
         self.trade_price = trade_price
 
     def validate(self):

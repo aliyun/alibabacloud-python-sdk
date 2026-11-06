@@ -19,7 +19,7 @@ class DescribeBandwidthPackagesRequest(DaraModel):
     ):
         # The ID of the bandwidth package.
         self.bandwidth_package_id = bandwidth_package_id
-        # The ID of the NAT gateway. If specified, only bandwidth packages associated with the NAT gateway are returned.
+        # The ID of the NAT gateway. If you specify this parameter, only bandwidth packages associated with the NAT gateway are returned.
         self.nat_gateway_id = nat_gateway_id
         self.owner_account = owner_account
         self.owner_id = owner_id

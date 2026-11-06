@@ -11,7 +11,7 @@ class ModifyManagedInstanceResponseBody(DaraModel):
         instance: main_models.ModifyManagedInstanceResponseBodyInstance = None,
         request_id: str = None,
     ):
-        # The information about the managed instance.
+        # The managed instance information.
         self.instance = instance
         # The request ID.
         self.request_id = request_id

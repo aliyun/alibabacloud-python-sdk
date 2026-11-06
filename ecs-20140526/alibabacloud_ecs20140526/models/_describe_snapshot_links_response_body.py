@@ -17,17 +17,17 @@ class DescribeSnapshotLinksResponseBody(DaraModel):
         snapshot_links: main_models.DescribeSnapshotLinksResponseBodySnapshotLinks = None,
         total_count: int = None,
     ):
-        # The pagination token returned by the current call.
+        # The pagination token returned by this call.
         self.next_token = next_token
         # The page number of the snapshot chain list.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page specified in the request.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
         self.snapshot_links = snapshot_links
         # The total number of snapshot chains.
-        # > When you use the `MaxResults` and `NextToken` parameters for paging in a paged query, the returned `TotalCount` value is invalid.
+        # > If you use the `MaxResults` and `NextToken` parameters for paged queries, the returned `TotalCount` value is invalid.
         self.total_count = total_count
 
     def validate(self):

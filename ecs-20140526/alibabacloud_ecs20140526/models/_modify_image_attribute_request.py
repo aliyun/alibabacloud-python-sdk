@@ -24,54 +24,60 @@ class ModifyImageAttributeRequest(DaraModel):
         status: str = None,
     ):
         # The boot mode of the image. Valid values:
-        # - BIOS: Basic Input/Output System (BIOS) boot mode.
-        # - UEFI: Unified Extensible Firmware Interface (UEFI) boot mode.
-        # - UEFI-Preferred: dual boot mode.
+        # - BIOS: BIOS boot mode.
+        # - UEFI: UEFI boot mode.
+        # - UEFI-Preferred: Dual boot mode.
         # 
         # 
         # <notice>
         # 
-        #    To prevent instances from failing to start due to an unsupported boot mode, make sure that you understand the boot modes supported by the image before you modify this parameter. For more information about image boot modes, see [Image boot modes](~~2244655#b9caa9b8bb1wf~~).
+        #    To prevent instances from failing to start due to an unsupported boot mode, make sure that you understand the boot modes supported by the target image before you modify the boot mode. For more information about image boot modes, see [Image boot modes](~~2244655#b9caa9b8bb1wf~~).
         # 
         # </notice>
         self.boot_mode = boot_mode
-        # The description of the custom image. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        # The description of the custom image. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         # 
-        # Default value: null, which indicates that the original description is retained.
+        # Default value: empty. The original description is retained.
         self.description = description
-        self.dry_run = dry_run
-        # The image feature attributes.
-        self.features = features
-        # The name of the image family. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`. It can contain digits, periods (.), colons (:), underscores (_), or hyphens (-).
+        # Specifies whether to only precheck the request. Valid values:
         # 
-        # Default value: null.
+        # - true: A precheck request is sent, and the image attributes are not modified. If the request passes the precheck, the `DryRunOperation` error code is returned.
+        # - false: A normal request is sent, and the image attributes are modified if the request passes the check.
+        # 
+        # Default value: false.
+        self.dry_run = dry_run
+        # The feature-related attributes of the image.
+        self.features = features
+        # The name of the image family. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with aliyun or acs:. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
+        # 
+        # Default value: empty.
         self.image_family = image_family
         # The ID of the custom image.
         # 
         # This parameter is required.
         self.image_id = image_id
-        # The name of the custom image. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`. It can contain digits, periods (.), colons (:), underscores (_), or hyphens (-).
+        # The name of the custom image. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with aliyun or acs:. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
         # 
-        # Default value: null, which indicates that the original name is retained.
+        # Default value: empty. The original name is retained.
         self.image_name = image_name
-        # The license type used to activate the operating system after the image is imported. Currently, only BYOL is supported.
+        # The license type used to activate the operating system after the image is imported. Only BYOL is supported.
         # 
-        # BYOL: The license that comes with the source operating system. When you use BYOL, make sure that your license key supports use on Alibaba Cloud.
+        # BYOL: The license provided with the source operating system. If you use BYOL, you must ensure that your license key is supported on Alibaba Cloud.
         self.license_type = license_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the custom image. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+        # The region ID of the custom image. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The image status. Valid values:
+        # The status of the image. Valid values:
         # 
-        # - Deprecated: Sets the image to the deprecated state. If you have shared the custom image, you must unshare it before you can set it to the deprecated state. A deprecated image cannot be shared or copied. However, you can use the image to create instances or replace system disks.
+        # - Deprecated: Sets the image to the deprecated state. If the custom image is shared, you must unshare it before you can set it to the deprecated state. You cannot share or copy a deprecated image. However, you can use the image to create instances or replace system disks.
         # - Available: Sets the image to the available state. You can restore a deprecated image to the available state.
         # 
-        # > To roll back a custom image in an image family to the previous version, you can set the latest available custom image to the deprecated state. However, if the image is the only available custom image in the image family, the image family will have no available custom image for creating instances after the image is deprecated. Proceed with caution.
+        # > If you want to roll back a custom image in an image family to the previous version, you can set the latest available custom image to the deprecated state. However, if the image is the only available custom image in the image family, deprecating the image leaves the image family without any available custom images for creating instances. Proceed with caution.
         self.status = status
 
     def validate(self):
@@ -181,16 +187,16 @@ class ModifyImageAttributeRequestFeatures(DaraModel):
         nvme_support: str = None,
     ):
         # The metadata access mode of the image. Valid values:
-        # - v1: When you create an ECS instance from this image, you cannot set the metadata access mode to IMDSv2 only (hardened mode).
-        # - v2: When you create an ECS instance from this image, you can set the metadata access mode to IMDSv2 only (hardened mode).
+        # - v1: When you create an ECS instance from this image, you cannot set the metadata access mode to enforced.
+        # - v2: When you create an ECS instance from this image, you can set the metadata access mode to enforced.
         # <notice>
         # 
-        #   ImdsSupport cannot be changed from v2 to v1. If you need to change it, create a new image from the snapshot associated with this image and set the value to v1.
+        #   You cannot change ImdsSupport from v2 to v1. To change the value, create a new image from a snapshot associated with this image and set the value to v1.
         # 
         # </notice>
         self.imds_support = imds_support
-        # Modifies the NVMe support attribute of the image. If this parameter is not specified, the current value is retained.
-        # >Notice: Before enabling this feature, make sure that the NVMe driver is pre-installed in the operating system. Recommended procedure: install the driver on an instance, create a custom image, and then call this operation. Forcibly enabling this feature without the driver will cause instance startup failures.
+        # Modifies the NVMe support attribute of the image. If this parameter is not specified, the original value is retained.
+        # >Notice: Before you enable this feature, ensure that the NVMe driver is pre-installed in the operating system. Recommended procedure: install the driver on an instance, create a custom image, and then call this operation. Forcibly enabling this feature without the driver causes the instance to fail to start.
         self.nvme_support = nvme_support
 
     def validate(self):

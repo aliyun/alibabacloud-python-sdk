@@ -17,7 +17,7 @@ class DescribeElasticityAssuranceInstancesResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.elasticity_assurance_item = elasticity_assurance_item
-        # The number of entries returned per page for paging.
+        # The number of entries returned per page for a paging query.
         self.max_results = max_results
         # The pagination token for the next query.
         self.next_token = next_token

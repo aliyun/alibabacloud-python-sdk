@@ -11,7 +11,7 @@ class DeregisterManagedInstanceResponseBody(DaraModel):
         instance: main_models.DeregisterManagedInstanceResponseBodyInstance = None,
         request_id: str = None,
     ):
-        # The information about the managed instance.
+        # The collection of managed instance information.
         self.instance = instance
         # The request ID.
         self.request_id = request_id
@@ -62,13 +62,13 @@ class DeregisterManagedInstanceResponseBodyInstance(DaraModel):
         registration_time: str = None,
         resource_group_id: str = None,
     ):
-        # The activation code ID.
+        # The ID of the activation code.
         self.activation_id = activation_id
         # The version number of the Cloud Assistant Agent.
         self.agent_version = agent_version
         # The hostname of the managed instance.
         self.hostname = hostname
-        # The managed instance ID.
+        # The instance ID of the managed instance.
         self.instance_id = instance_id
         # The name of the managed instance.
         self.instance_name = instance_name
@@ -76,17 +76,17 @@ class DeregisterManagedInstanceResponseBodyInstance(DaraModel):
         self.internet_ip = internet_ip
         # The internal IP address of the managed instance.
         self.intranet_ip = intranet_ip
-        # The number of times that Cloud Assistant tasks were executed on the managed instance.
+        # The number of Cloud Assistant tasks executed on the managed instance.
         self.invocation_count = invocation_count
-        # The time when the last Cloud Assistant task was executed. The time is displayed in ISO 8601 format in UTC.
+        # The time when the last Cloud Assistant task was executed. The time follows the ISO 8601 standard and is in the UTC time zone.
         self.last_invoked_time = last_invoked_time
-        # The machine code of the managed instance.
+        # The machine ID of the managed instance.
         self.machine_id = machine_id
         # The operating system of the managed instance.
         self.os_type = os_type
-        # The version of the operating system.
+        # The version information of the operating system.
         self.os_version = os_version
-        # The time when the managed instance was registered. The time is displayed in ISO 8601 format in UTC.
+        # The time when the managed instance was registered. The time follows the ISO 8601 standard and is in the UTC time zone.
         self.registration_time = registration_time
         # The ID of the resource group to which the managed instance belongs.
         self.resource_group_id = resource_group_id

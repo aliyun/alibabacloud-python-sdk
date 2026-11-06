@@ -22,56 +22,56 @@ class StopInstancesRequest(DaraModel):
     ):
         # The batch operation mode. Valid values:
         # 
-        # - AllTogether: All operations must succeed for the entire batch operation to be considered successful. If any operation fails, the entire batch operation is considered failed, and all executed operations are rolled back to the pre-operation state.
+        # - AllTogether: all operations must succeed for the entire batch operation to be considered successful. If any operation fails, the entire batch operation is considered failed, and all executed operations are rolled back to their original state.
         # 
-        # - SuccessFirst: Each operation in the batch is executed independently. If an operation fails, other operations can still be executed and confirmed as successful. In this mode, successful operations are committed, and failed operations are marked as failed without affecting the results of other operations.
+        # - SuccessFirst: each operation in the batch is executed independently. If an operation fails, other operations can still continue and succeed. In this mode, successful operations are committed, and failed operations are marked as failed without affecting the results of other operations.
         # 
         # Default value: AllTogether.
         self.batch_optimization = batch_optimization
         # Specifies whether to send a dry run request. Valid values:
         # 
-        # - true: sends a dry run request without stopping the instances. The system checks the required parameters, request format, and instance status. If the check fails, the corresponding error is returned. If the check succeeds, `DRYRUN.SUCCESS` is returned.
-        # > If the BatchOptimization parameter is set to `SuccessFirst`, the dry run result for `DryRun=true` returns only `DRYRUN.SUCCESS`.
+        # - true: sends a dry run request without stopping the instances. The system checks whether required parameters are specified, the request format is valid, and the instance status is valid. If the request fails the check, an error is returned. If the request passes the check, `DRYRUN.SUCCESS` is returned.
+        # > If the `BatchOptimization` parameter is set to `SuccessFirst`, the dry run result for `DryRun=true` only returns `DRYRUN.SUCCESS`.
         # 
-        # - false: sends a normal request. After the request passes the check, the instances are stopped.
+        # - false: sends a regular request and stops the instances directly after the request passes the check.
         # 
         # Default value: false.
         self.dry_run = dry_run
-        # Specifies whether to forcefully stop the instances. Valid values:
+        # Specifies whether to force stop the instances. Valid values:
         # 
-        # - true: forcefully stops the instances.
-        #   >Warning: A forced stop is equivalent to a power-off. Data that is not written to disks in the instance operating system may be lost. Proceed with caution.
+        # - true: force stops the instances.
+        #   >Warning: Force stopping an instance is equivalent to a power outage and may cause data in the operating system that is not written to the disk to be lost. Proceed with caution.
         # - false: normally stops the instances.
         # 
         # Default value: false.
         self.force_stop = force_stop
-        # The instance ID array. Array length: 1 to 100.
+        # The instance IDs. Array length: 1 to 100.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the instances. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The stop mode. Valid values:
-        #   - StopCharging: economical mode. After economical mode is enabled:
-        #     - Billing for compute resources (vCPUs, memory, and GPUs), image license fees, and fixed bandwidth of static public IP addresses is suspended.
-        #     - Billing for system disks, data disks, and fixed bandwidth of Elastic IP Addresses (EIPs) continues.
-        #     - Because compute resources are released, the instance may fail to start due to insufficient resources. Try again later or change the instance type.
-        #     - If an EIP is associated with the instance before it is stopped, the IP address remains unchanged after the instance is restarted. Otherwise, the static public IP address may change, but the private IP address remains unchanged. 
+        #   - StopCharging: economical mode. After you enable economical mode:
+        #     - Billing is suspended for computing resources (vCPUs, memory, and GPUs), image licenses, and static public IP addresses that use the pay-by-bandwidth billing method.
+        #     - Billing continues for system cloud disks, data cloud disks, and Elastic IP Addresses (EIPs) that use the pay-by-bandwidth billing method.
+        #     - Because computing resources are released, the instance may fail to start due to insufficient resource inventory. If this occurs, try again later or change the instance type.
+        #     - If an EIP was associated with the instance before it was stopped, the IP address remains unchanged after the instance is restarted. Otherwise, the static public IP address may change, but the private IP address remains unchanged. 
         # 
         #     For more information, see [Economical mode](https://help.aliyun.com/document_detail/63353.html).
         #     >Notice: 
-        # If the instance does not support economical mode, the API does not return an error. The system prioritizes stopping the instance. Instance types that do not support economical mode include instances with local SSDs and subscription instances.
+        # If the instance does not support economical mode, the API does not return an error and prioritizes stopping the instance. Instance types that do not support economical mode include instances with local disks and subscription instances.
         #     
         # 
-        #   - KeepCharging: standard stop mode. After the instance is stopped, the instance resources are retained and billing continues. The ECS instance type inventory and public IP address are also retained. If you stop the instance to replace the operating system, reinitialize a disk, change the instance type, or modify the private IP address, select this mode to avoid startup failures.
+        #   - KeepCharging: standard stop mode. After the instance is stopped, its resources are retained and continue to be billed. The ECS instance type inventory and public IP address are also reserved for you. Select this mode if you stop the instance to perform operations such as replacing the operating system, reinitializing cloud disks, changing the instance type, or modifying the private IP address. This prevents startup failures.
         # 
-        # Default value: If you [enable economical mode for VPC-connected instances](~~63353#default~~) and the conditions are met, the default value is `StopCharging`. Otherwise, the default value is `KeepCharging`.
+        # Default value: If you [enable economical mode for instances in a VPC](~~63353#default~~) and the instance meets the requirements, the default value is `StopCharging`. Otherwise, the default value is `KeepCharging`.
         self.stopped_mode = stopped_mode
 
     def validate(self):

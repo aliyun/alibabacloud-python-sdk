@@ -34,26 +34,26 @@ class ModifyDiskSpecRequest(DaraModel):
         # 
         # Default value: null, which indicates that no specification change is performed on the disk.
         # 
-        # > - The preceding valid values are listed in descending order of disk performance. If the specified disk is a subscription disk, you cannot downgrade the disk category.
+        # > - The preceding valid values are sorted in descending order of disk performance. If the specified disk is a subscription disk, you cannot downgrade the disk.
         # 
         # <props="china">
         # - ESSD Entry disks can only be changed to enterprise SSDs or ESSD AutoPL disks. For more information, see [Change the category of a disk](https://help.aliyun.com/document_detail/161980.html).
         self.disk_category = disk_category
-        # The ID of the disk.
+        # The ID of the cloud disk.
         # 
         # This parameter is required.
         self.disk_id = disk_id
         # Specifies whether to only precheck the request. Valid values:
         # 
-        # * true: The request is prechecked. The system checks whether required parameters are specified, the request format is valid, the business limits are met, and the ECS inventory is sufficient. If the request fails the precheck, the corresponding error is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+        # * true: The request is prechecked. Items to be checked include whether required parameters are specified, the request format, business limits, and ECS inventory. If the request fails the precheck, the corresponding error is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
         # 
-        # * false: The request is sent. If the request passes the precheck, a 2xx HTTP status code is returned and the disk category or ESSD performance level is directly changed.
+        # * false: The request is sent. If the request passes the precheck, a 2xx HTTP status code is returned and the cloud disk specifications or ESSD performance level are directly changed.
         # 
         # Default value: false.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The disk performance control parameters.
+        # The collection of disk performance control parameters.
         self.performance_control_options = performance_control_options
         # Modifies the performance level (PL) of an enterprise SSD. Valid values:
         # 
@@ -64,7 +64,7 @@ class ModifyDiskSpecRequest(DaraModel):
         # 
         # Default value: PL1.
         self.performance_level = performance_level
-        # The provisioned read and write IOPS of the ESSD AutoPL disk.
+        # Specifies whether to modify the provisioned read/write IOPS of an ESSD AutoPL disk.
         # 
         # Valid values: 0 to min{50000, 1000 × Capacity - Baseline performance}.
         # 
@@ -164,23 +164,25 @@ class ModifyDiskSpecRequestPerformanceControlOptions(DaraModel):
         recover: str = None,
         throughput: int = None,
     ):
-        # The target IOPS of the disk. You can only modify the IOPS of disks in a dedicated block storage cluster.
+        # The target IOPS of the cloud disk. You can only modify the IOPS of cloud disks in dedicated block storage clusters.
         # 
-        # Valid values: 900 to the maximum IOPS of a single disk. Step size: 100.
+        # Valid values: 900 to the maximum IOPS of a single disk, in increments of 100.
         # 
-        # For more information, see [Disk performance](https://help.aliyun.com/document_detail/25382.html).
+        # 
+        # For more information, see [Cloud disk performance](https://help.aliyun.com/document_detail/25382.html).
         self.iops = iops
-        # Resets the disk performance. This parameter is supported only for disks in a dedicated block storage cluster.
+        # Resets the cloud disk performance. This is supported only for cloud disks in dedicated block storage clusters.
         # 
-        # After this parameter is specified, the PerformanceControlOptions.IOPS and PerformanceControlOptions.Throughput parameters do not take effect.
+        # After you specify this parameter, the PerformanceControlOptions.IOPS and PerformanceControlOptions.Throughput parameters do not take effect.
         # 
-        # Currently, you can only set this parameter to All, which resets the disk IOPS and throughput to their initial values.
+        # 
+        # Currently, you can only set this parameter to All, which resets the IOPS and throughput of the cloud disk to their initial values.
         self.recover = recover
-        # The target throughput of the disk. Unit: MB/s. You can only modify the throughput of disks in a dedicated block storage cluster.
+        # The target throughput of the cloud disk. You can only modify the throughput of cloud disks in dedicated block storage clusters. Unit: MB/s.
         # 
         # Valid values: 60 to the maximum throughput of a single disk.
         # 
-        # For more information, see [Disk performance](https://help.aliyun.com/document_detail/25382.html).
+        # For more information, see [Cloud disk performance](https://help.aliyun.com/document_detail/25382.html).
         self.throughput = throughput
 
     def validate(self):

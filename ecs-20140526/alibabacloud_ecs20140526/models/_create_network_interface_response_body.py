@@ -33,20 +33,20 @@ class CreateNetworkInterfaceResponseBody(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The description of the network interface controller (NIC).
+        # The description of the Elastic Network Interface (ENI).
         self.description = description
         self.ipv_4prefix_sets = ipv_4prefix_sets
         self.ipv_6prefix_sets = ipv_6prefix_sets
         self.ipv_6sets = ipv_6sets
-        # The MAC address of the network interface controller (NIC).
+        # The MAC address of the Elastic Network Interface (ENI).
         self.mac_address = mac_address
-        # The ID of the network interface controller (NIC).
+        # The ID of the Elastic Network Interface (ENI).
         self.network_interface_id = network_interface_id
-        # The name of the network interface controller (NIC).
+        # The name of the Elastic Network Interface (ENI).
         self.network_interface_name = network_interface_name
-        # The ID of the account to which the network interface controller (NIC) belongs.
+        # The ID of the account to which the Elastic Network Interface (ENI) belongs.
         self.owner_id = owner_id
-        # The private IP address of the network interface controller (NIC).
+        # The private IP address of the Elastic Network Interface (ENI).
         self.private_ip_address = private_ip_address
         self.private_ip_sets = private_ip_sets
         # The request ID.
@@ -54,16 +54,16 @@ class CreateNetworkInterfaceResponseBody(DaraModel):
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.security_group_ids = security_group_ids
-        # The ID of the Virtual Network Operator (VNO) associated with the network interface controller (NIC).
+        # The ID of the Virtual Network Operator (VNO) associated with the Elastic Network Interface (ENI).
         self.service_id = service_id
-        # Indicates whether the user of the network interface controller (NIC) is a cloud service or a VNO.
+        # Indicates whether the user of the Elastic Network Interface (ENI) is a cloud service or a VNO.
         self.service_managed = service_managed
         # > This parameter is in invitational preview and is not yet available.
         self.source_dest_check = source_dest_check
-        # The status of the elastic network interface (ENI).
+        # The status of the Elastic Network Interface (ENI).
         self.status = status
         self.tags = tags
-        # The type of the network interface controller (NIC).
+        # The type of the Elastic Network Interface (ENI).
         self.type = type
         # The ID of the vSwitch in the VPC.
         self.v_switch_id = v_switch_id

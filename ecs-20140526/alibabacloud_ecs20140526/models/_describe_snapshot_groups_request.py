@@ -29,7 +29,7 @@ class DescribeSnapshotGroupsRequest(DaraModel):
         self.additional_attributes = additional_attributes
         # The instance ID.
         self.instance_id = instance_id
-        # The number of entries per page for a paged query.
+        # The number of entries to return per page in a paging query.
         # 
         # Maximum value: 100.
         # 
@@ -37,7 +37,7 @@ class DescribeSnapshotGroupsRequest(DaraModel):
         self.max_results = max_results
         # The name of the snapshot-consistent group.
         self.name = name
-        # The query token. Set the value to the NextToken value returned in the last API call.
+        # The query token. The value is the NextToken value returned from the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -49,9 +49,9 @@ class DescribeSnapshotGroupsRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The IDs of the snapshot-consistent groups. Valid values of N: 1 to 10.
+        # The ID of snapshot-consistent group N. Valid values of N: 1 to 10.
         self.snapshot_group_id = snapshot_group_id
-        # The status of the snapshot-consistent group. Valid values of N: 1 to 3. Valid values:
+        # The status of snapshot-consistent group N. Valid values of N: 1 to 3. Valid values:
         # 
         # - progressing: The snapshot-consistent group is being created.
         # 
@@ -174,9 +174,9 @@ class DescribeSnapshotGroupsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the snapshot-consistent group. Valid values of N: 1 to 20.
+        # The key of tag N of the snapshot-consistent group. Valid values of N: 1 to 20.
         self.key = key
-        # The tag value of the snapshot-consistent group. Valid values of N: 1 to 20.
+        # The value of tag N of the snapshot-consistent group. Valid values of N: 1 to 20.
         self.value = value
 
     def validate(self):

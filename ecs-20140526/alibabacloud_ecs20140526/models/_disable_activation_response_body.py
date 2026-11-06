@@ -11,7 +11,7 @@ class DisableActivationResponseBody(DaraModel):
         activation: main_models.DisableActivationResponseBodyActivation = None,
         request_id: str = None,
     ):
-        # The information about the activation code and its usage.
+        # The activation code and its usage information.
         self.activation = activation
         # The request ID.
         self.request_id = request_id
@@ -60,9 +60,9 @@ class DisableActivationResponseBodyActivation(DaraModel):
     ):
         # The activation code ID.
         self.activation_id = activation_id
-        # The time when the activation code was created. The time is displayed in ISO 8601 format in UTC.
+        # The time when the activation code was created. The time follows the ISO 8601 standard in UTC.
         self.creation_time = creation_time
-        # The number of deregistered instances.
+        # The number of unregistered instances.
         self.deregistered_count = deregistered_count
         # The description of the activation code.
         self.description = description
