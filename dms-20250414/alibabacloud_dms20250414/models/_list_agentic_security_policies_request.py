@@ -12,16 +12,19 @@ class ListAgenticSecurityPoliciesRequest(DaraModel):
         policy_status: str = None,
         size: int = None,
     ):
-        # Specifies whether to include archived policies in the query scope of user policies. Valid values:
+        # Specifies whether to include archived policies in the user policy query scope. Valid values:
         # - true: Includes archived policies.
         # - false: Does not include archived policies.
-        # Default value: false. When querying archived policies, do not specify PolicyStatus. If ON or OFF is specified, only user policies in the corresponding state are returned. This parameter does not affect system default policies.
+        # Default value: false. When you query archived policies, do not specify PolicyStatus. If you specify ON or OFF, only user policies in the corresponding state are returned. This parameter does not affect system default policies.
         self.include_archived = include_archived
-        # The page number of the user policies to query. Pages start from 1. Default value: 1. Only user policies are paginated. System default policies are returned separately in each call.
+        # The page number for querying user policies. Pages start from 1. Default value: 1. Only user policies are paginated. System default policies are returned separately in each call.
         self.page = page
-        # The filter condition for the user policy status. Valid values: ON (enabled) and OFF (disabled). If this parameter is not specified or contains only whitespace characters, policies are not filtered by status. You cannot specify ARCHIVED. To query archived user policies, do not specify this parameter and set IncludeArchived to true. This parameter does not affect system default policies.
+        # The filter condition for the user policy status. Valid values:
+        # - ON: The policy is enabled.
+        # - OFF: The policy is disabled.
+        # If this parameter is not specified or contains only whitespace characters, policies are not filtered by status. You cannot specify ARCHIVED. To query archived user policies, do not specify this parameter and set IncludeArchived to true. This parameter does not affect system default policies.
         self.policy_status = policy_status
-        # The number of user policies to query on each page. Valid values: 1 to 100. Default value: 20. In addition, each call returns up to Size enabled system default policies. Therefore, the number of items in the returned Data may be greater than Size.
+        # The number of user policies to query on each page. Valid values: 1 to 100. Default value: 20. In addition, each call returns up to Size enabled system default policies. Therefore, the number of returned Data entries may be greater than Size.
         self.size = size
 
     def validate(self):

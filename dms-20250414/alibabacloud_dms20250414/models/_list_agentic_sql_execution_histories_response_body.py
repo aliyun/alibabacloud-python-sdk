@@ -19,17 +19,17 @@ class ListAgenticSqlExecutionHistoriesResponseBody(DaraModel):
     ):
         # The list of SQL execution history.
         self.data = data
-        # The error code. This parameter is empty when the request is successful.
+        # The error code. This field is empty when the request is successful.
         self.error_code = error_code
         # The error message returned when the call fails.
         self.error_message = error_message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # - true: The request was successful.
-        # - false: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
-        # The total number of entries that meet the query conditions.
+        # The total number of entries that meet the conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -118,25 +118,27 @@ class ListAgenticSqlExecutionHistoriesResponseBodyData(DaraModel):
         self.actor_id = actor_id
         # The name of the actor.
         self.actor_name = actor_name
-        # The type of the actor. HUMAN indicates a user, and AGENT indicates an agent.
+        # The type of the actor. Valid values:
+        # - HUMAN: User.
+        # - AGENT: Agent.
         self.actor_type = actor_type
         # The number of affected rows.
         self.affected_rows = affected_rows
-        # The ID of the user to which the agent belongs. The ID starts with usr_.
+        # The ID of the user to whom the agent belongs, starting with usr_.
         self.agent_owner_id = agent_owner_id
-        # The catalog UUID to which the execution belongs.
+        # The catalog UUID to which this execution belongs.
         self.catalog_uuid = catalog_uuid
-        # The IP address of the client that initiated the execution, excluding the port. This parameter is empty in workflow scenarios or when the IP address is not recorded.
+        # The IP address of the client that initiated the execution, excluding the port. This field is empty in workflow scenarios or when not recorded.
         self.client_ip = client_ip
         # The execution duration of the SQL statement.
         self.cost = cost
         # The search name of the database.
         self.database_search_name = database_search_name
-        # The database UUID to which the execution belongs.
+        # The database UUID to which this execution belongs.
         self.database_uuid = database_uuid
-        # The error message returned when the execution fails.
+        # The error message when the execution fails.
         self.error = error
-        # The actual SQL statement that was executed.
+        # The actually executed SQL statement.
         self.executed_sql = executed_sql
         # The execution status. Valid values:
         # - SUCCESS: The execution succeeded.
@@ -145,19 +147,19 @@ class ListAgenticSqlExecutionHistoriesResponseBodyData(DaraModel):
         self.execution_status = execution_status
         # The original SQL statement.
         self.original_sql = original_sql
-        # The query ID of the execution.
+        # The query ID of this execution.
         self.query_id = query_id
         # The number of returned rows.
         self.returned_rows = returned_rows
         # The execution scenario. Valid values:
         # - AGENT_QUERY: The agent directly executes the SQL statement.
-        # - WORKFLOW_QUERY: The SQL statement is asynchronously executed through a workflow.
+        # - WORKFLOW_QUERY: The SQL statement is executed asynchronously through a workflow.
         self.scenario = scenario
         # The SQL type.
         self.sql_type = sql_type
-        # The start time of the execution. The time is in the yyyy-MM-dd HH:mm:ss format.
+        # The execution start time, in the yyyy-MM-dd HH:mm:ss format.
         self.start_time = start_time
-        # The workflow ID. This parameter may be empty in non-workflow scenarios.
+        # The workflow ID. This field may be empty in non-workflow scenarios.
         self.workflow_id = workflow_id
 
     def validate(self):

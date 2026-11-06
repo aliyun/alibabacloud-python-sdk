@@ -22,7 +22,7 @@ class CreateDataAgentWorkspaceResponseBody(DaraModel):
         self.error_message = error_message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -74,6 +74,7 @@ class CreateDataAgentWorkspaceResponseBody(DaraModel):
 class CreateDataAgentWorkspaceResponseBodyData(DaraModel):
     def __init__(
         self,
+        config: str = None,
         create_time: int = None,
         creator: str = None,
         is_session_share_enabled: bool = None,
@@ -86,22 +87,23 @@ class CreateDataAgentWorkspaceResponseBodyData(DaraModel):
         workspace_name: str = None,
         workspace_status: str = None,
     ):
-        # The creation time of the workspace. This value is a UNIX timestamp in seconds.
+        # The workspace configurations.
+        self.config = config
+        # The creation time of the workspace. The value is a UNIX timestamp in seconds.
         self.create_time = create_time
         # The UID of the workspace creator.
         self.creator = creator
-        # Indicates whether session sharing is enabled within the workspace.
+        # Indicates whether session sharing within the workspace is supported.
         self.is_session_share_enabled = is_session_share_enabled
-        # The most recent modification time of the workspace. This value is a UNIX timestamp in seconds.
+        # The last modification time of the workspace. The value is a UNIX timestamp in seconds.
         self.modify_time = modify_time
-        # The role name of the user in the workspace.
+        # The name of the user\\"s role in the workspace.
         self.role_name = role_name
-        # The total number of members in the workspace.
+        # The number of members in the workspace.
         self.total_member = total_member
         # The workspace type. Valid values:
-        # 
-        # - personal: personal workspace.
-        # - common/null: multi-user collaborative workspace.
+        # - personal: Personal workspace.
+        # - common or null: Multi-user collaborative workspace.
         self.type = type
         # The description of the workspace.
         self.workspace_desc = workspace_desc
@@ -120,6 +122,9 @@ class CreateDataAgentWorkspaceResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.config is not None:
+            result['Config'] = self.config
+
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
 
@@ -157,6 +162,9 @@ class CreateDataAgentWorkspaceResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
 

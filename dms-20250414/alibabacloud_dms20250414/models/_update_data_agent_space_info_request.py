@@ -7,21 +7,24 @@ from darabonba.model import DaraModel
 class UpdateDataAgentSpaceInfoRequest(DaraModel):
     def __init__(
         self,
+        config: str = None,
         dmsunit: str = None,
         is_session_share_enabled: bool = None,
         workspace_desc: str = None,
         workspace_id: str = None,
         workspace_name: str = None,
     ):
+        # The workspace configuration items.
+        self.config = config
         # The current DMS unit.
         self.dmsunit = dmsunit
-        # Specifies whether to enable session sharing for the workspace. Valid values: true and false.
+        # Specifies whether to enable the session sharing feature for the workspace.
         self.is_session_share_enabled = is_session_share_enabled
-        # The new description for the workspace.
+        # The new description of the workspace.
         self.workspace_desc = workspace_desc
-        # The ID of the workspace.
+        # The workspace ID.
         self.workspace_id = workspace_id
-        # The new name for the workspace.
+        # The new name of the workspace.
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -32,6 +35,9 @@ class UpdateDataAgentSpaceInfoRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.config is not None:
+            result['Config'] = self.config
+
         if self.dmsunit is not None:
             result['DMSUnit'] = self.dmsunit
 
@@ -51,6 +57,9 @@ class UpdateDataAgentSpaceInfoRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+
         if m.get('DMSUnit') is not None:
             self.dmsunit = m.get('DMSUnit')
 

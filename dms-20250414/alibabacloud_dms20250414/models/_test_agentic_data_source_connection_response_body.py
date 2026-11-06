@@ -20,9 +20,9 @@ class TestAgenticDataSourceConnectionResponseBody(DaraModel):
         self.error_code = error_code
         # The error message returned when the call fails. This parameter is empty when the call is successful.
         self.error_message = error_message
-        # The request ID, which is used to locate the current call.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the current call is successful.
+        # Indicates whether the call is successful.
         self.success = success
 
     def validate(self):
@@ -79,7 +79,7 @@ class TestAgenticDataSourceConnectionResponseBodyData(DaraModel):
     ):
         # The description of the connection test result. This parameter is usually empty when the connection is successful, and returns the cause when the connection fails.
         self.message = message
-        # Indicates whether the data source is connected.
+        # Indicates whether the data source is connected successfully.
         self.success = success
 
     def validate(self):

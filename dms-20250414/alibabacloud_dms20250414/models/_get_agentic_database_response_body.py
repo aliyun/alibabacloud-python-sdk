@@ -16,11 +16,11 @@ class GetAgenticDatabaseResponseBody(DaraModel):
     ):
         # The database details.
         self.data = data
-        # The error code returned when an exception occurs.
+        # The error code returned when an exception occurs during the request.
         self.error_code = error_code
-        # The error message returned when the call fails.
+        # The error message returned when the API call fails.
         self.error_message = error_message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 

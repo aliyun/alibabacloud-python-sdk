@@ -24,9 +24,10 @@ class DescribeDataAgentSessionResponseBody(DaraModel):
         self.error_message = error_message
         # Id of the request
         self.request_id = request_id
-        # The return value description. Valid values:
-        # - true: The deletion succeeded.
-        # - false: The deletion failed.
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # - **true**: The deletion succeeded.
+        # - **false**: The deletion failed.
         self.success = success
 
     def validate(self):
@@ -88,6 +89,7 @@ class DescribeDataAgentSessionResponseBodyData(DaraModel):
         favorite_in_workspace: str = None,
         file: str = None,
         messages: List[main_models.DescribeDataAgentSessionResponseBodyDataMessages] = None,
+        preview_custom_agent: main_models.DescribeDataAgentSessionResponseBodyDataPreviewCustomAgent = None,
         recall_results: List[main_models.DescribeDataAgentSessionResponseBodyDataRecallResults] = None,
         saved: bool = None,
         session_config: main_models.DescribeDataAgentSessionResponseBodyDataSessionConfig = None,
@@ -106,7 +108,7 @@ class DescribeDataAgentSessionResponseBodyData(DaraModel):
         self.capabilities = capabilities
         # The session playback history.
         self.chat_history_locations = chat_history_locations
-        # The time when the session was created.
+        # The session creation time.
         self.create_time = create_time
         # The list of data sources used in the current session.
         self.data_sources = data_sources
@@ -114,13 +116,15 @@ class DescribeDataAgentSessionResponseBodyData(DaraModel):
         self.favorite_in_workspace = favorite_in_workspace
         # The file ID.
         self.file = file
-        # The list of historical session messages.
+        # The list of historical conversation messages in the session.
         self.messages = messages
+        # The custom agent for the intelligent development session preview.
+        self.preview_custom_agent = preview_custom_agent
         # The recall results from the knowledge base and memory for the current session.
         self.recall_results = recall_results
         # Indicates whether the session is favorited by the current logged-on user.
         self.saved = saved
-        # The session configurations.
+        # The session configuration items.
         self.session_config = session_config
         # The agent session ID.
         self.session_id = session_id
@@ -152,6 +156,8 @@ class DescribeDataAgentSessionResponseBodyData(DaraModel):
             for v1 in self.messages:
                  if v1:
                     v1.validate()
+        if self.preview_custom_agent:
+            self.preview_custom_agent.validate()
         if self.recall_results:
             for v1 in self.recall_results:
                  if v1:
@@ -203,6 +209,9 @@ class DescribeDataAgentSessionResponseBodyData(DaraModel):
         if self.messages is not None:
             for k1 in self.messages:
                 result['Messages'].append(k1.to_map() if k1 else None)
+
+        if self.preview_custom_agent is not None:
+            result['PreviewCustomAgent'] = self.preview_custom_agent.to_map()
 
         result['RecallResults'] = []
         if self.recall_results is not None:
@@ -276,6 +285,10 @@ class DescribeDataAgentSessionResponseBodyData(DaraModel):
                 temp_model = main_models.DescribeDataAgentSessionResponseBodyDataMessages()
                 self.messages.append(temp_model.from_map(k1))
 
+        if m.get('PreviewCustomAgent') is not None:
+            temp_model = main_models.DescribeDataAgentSessionResponseBodyDataPreviewCustomAgent()
+            self.preview_custom_agent = temp_model.from_map(m.get('PreviewCustomAgent'))
+
         self.recall_results = []
         if m.get('RecallResults') is not None:
             for k1 in m.get('RecallResults'):
@@ -319,37 +332,37 @@ class DescribeDataAgentSessionResponseBodyDataSessionConfig(DaraModel):
         report_water_mark: str = None,
         user_oss_bucket: str = None,
     ):
-        # The custom agent ID.
+        # The ID of the custom agent.
         self.custom_agent_id = custom_agent_id
         # The usage stage of the custom agent. Valid values:
-        # - debug: Debugging stage.
-        # - prod: Production stage.
+        # - **debug**: Debug stage.
+        # - **prod**: Production stage.
         self.custom_agent_stage = custom_agent_stage
         # Specifies whether to enable web search.
         self.enable_search = enable_search
-        # The encryption key for artifacts stored in OSS, including built-in and user OSS buckets. This key is usually specified in the CreateDataAgentSession operation.
+        # The encryption key for storing artifacts in OSS, including built-in and user OSS. This key is typically specified in CreateDataAgentSession.
         self.encrypt_key = encrypt_key
-        # The encryption type for artifacts stored in OSS, including built-in and user OSS buckets.
+        # The encryption type for storing artifacts in OSS, including built-in and user OSS.
         self.encrypt_type = encrypt_type
         # The list of knowledge base IDs for the current session.
         self.kb_uuid_list = kb_uuid_list
         # The language. Valid values:
-        # - CHINESE: Chinese.
-        # - ENGLISH: English.
+        # - **CHINESE**: Chinese.
+        # - **ENGLISH**: English.
         self.language = language
-        # The list of MCP server IDs in the session configurations.
+        # The list of MCP server IDs in the session configuration.
         self.mcp_server_ids = mcp_server_ids
         # The mode. Valid values:
-        # - ASK_DATA: Data query mode.
-        # - ANALYSIS: Analysis mode.
-        # - INSIGHT: Insight mode.
+        # - **ASK_DATA**: Data query mode.
+        # - **ANALYSIS**: Analysis mode.
+        # - **INSIGHT**: Insight mode.
         self.mode = mode
-        # The page width of the report.
+        # The report page width.
         self.report_page_width = report_page_width
-        # The watermark of the report.
+        # The report watermark.
         self.report_water_mark = report_water_mark
         # The name of the user OSS bucket.
-        # - Files generated during the analysis process and report artifacts can be uploaded to the user-specified OSS bucket.
+        # - Analysis process files and report artifacts can be uploaded to the user-specified OSS bucket.
         self.user_oss_bucket = user_oss_bucket
 
     def validate(self):
@@ -445,9 +458,9 @@ class DescribeDataAgentSessionResponseBodyDataRecallResults(DaraModel):
         score: float = None,
         type: str = None,
     ):
-        # The content of the recalled knowledge block.
+        # The content of the recalled knowledge chunk.
         self.content = content
-        # The similarity score of this data entry. The scoring algorithm is related to the algorithm specified when the index was created, such as l2, ip, or cosine.
+        # The similarity score of this data entry. The scoring algorithm is related to the algorithm specified when the index is created, such as l2, ip, or cosine.
         self.score = score
         # The category of the recalled knowledge.
         self.type = type
@@ -484,6 +497,658 @@ class DescribeDataAgentSessionResponseBodyDataRecallResults(DaraModel):
 
         return self
 
+class DescribeDataAgentSessionResponseBodyDataPreviewCustomAgent(DaraModel):
+    def __init__(
+        self,
+        aliyun_parent_uid: str = None,
+        aliyun_uid: str = None,
+        callback_config: main_models.DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentCallbackConfig = None,
+        creator_user_name: str = None,
+        custom_agent_id: str = None,
+        dmsunit: str = None,
+        data_json: str = None,
+        default_agent: int = None,
+        description: str = None,
+        dms_unit: str = None,
+        execution_config: main_models.DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentExecutionConfig = None,
+        gmt_created: str = None,
+        gmt_modified: str = None,
+        instruction: str = None,
+        is_schedule_task: bool = None,
+        knowledge: str = None,
+        knowledge_config_list: List[main_models.DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentKnowledgeConfigList] = None,
+        knowledge_semantic_config_list: List[main_models.DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentKnowledgeSemanticConfigList] = None,
+        modifier: str = None,
+        modifier_user_name: str = None,
+        name: str = None,
+        next_runtime: int = None,
+        offline_time: str = None,
+        recommend_question_list: List[str] = None,
+        region: str = None,
+        related_session_id: str = None,
+        release_time: str = None,
+        schedule_task_config: main_models.DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentScheduleTaskConfig = None,
+        status: str = None,
+        text_report_config: str = None,
+        user_specified_skill_list: List[str] = None,
+        web_report_config: str = None,
+        web_report_theme: str = None,
+        workspace_id: str = None,
+    ):
+        # The Alibaba Cloud main account ID.
+        self.aliyun_parent_uid = aliyun_parent_uid
+        # The Alibaba Cloud account ID.
+        self.aliyun_uid = aliyun_uid
+        # The callback configuration.
+        self.callback_config = callback_config
+        # The name of the creator.
+        self.creator_user_name = creator_user_name
+        # The custom agent ID.
+        self.custom_agent_id = custom_agent_id
+        # The current DMS unit.
+        self.dmsunit = dmsunit
+        # The specified data scope in JSON string format.
+        self.data_json = data_json
+        # Indicates whether the agent is displayed by default.
+        self.default_agent = default_agent
+        # The custom agent description.
+        self.description = description
+        # The current DMS unit.
+        self.dms_unit = dms_unit
+        # The execution configuration.
+        self.execution_config = execution_config
+        # The creation time.
+        self.gmt_created = gmt_created
+        # The modification time.
+        self.gmt_modified = gmt_modified
+        # The instruction.
+        self.instruction = instruction
+        # Indicates whether a periodic task is configured.
+        self.is_schedule_task = is_schedule_task
+        # The knowledge.
+        self.knowledge = knowledge
+        # The external knowledge bases.
+        self.knowledge_config_list = knowledge_config_list
+        # The knowledge semantic configuration struct.
+        self.knowledge_semantic_config_list = knowledge_semantic_config_list
+        # The modifier.
+        self.modifier = modifier
+        # The name of the modifier.
+        self.modifier_user_name = modifier_user_name
+        # The name of the custom agent.
+        self.name = name
+        # The next run time of the scheduled task.
+        self.next_runtime = next_runtime
+        # The offline time.
+        self.offline_time = offline_time
+        # The list of recommended questions.
+        # - Up to 10 recommended questions can be configured.
+        self.recommend_question_list = recommend_question_list
+        # The region.
+        self.region = region
+        # The ID of the referenced historical session.
+        self.related_session_id = related_session_id
+        # The release time.
+        self.release_time = release_time
+        # The scheduled task configuration.
+        self.schedule_task_config = schedule_task_config
+        # The status of the custom agent.
+        self.status = status
+        # The text report format.
+        self.text_report_config = text_report_config
+        # The list of user-specified skills.
+        self.user_specified_skill_list = user_specified_skill_list
+        # The web report format.
+        self.web_report_config = web_report_config
+        # The web report theme. Valid values:
+        # - default: default
+        # - journal: journal
+        # - legacy: legacy
+        # - neobrutalism: stylized
+        # - infographic: infographic
+        self.web_report_theme = web_report_theme
+        # The workspace ID.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        if self.callback_config:
+            self.callback_config.validate()
+        if self.execution_config:
+            self.execution_config.validate()
+        if self.knowledge_config_list:
+            for v1 in self.knowledge_config_list:
+                 if v1:
+                    v1.validate()
+        if self.knowledge_semantic_config_list:
+            for v1 in self.knowledge_semantic_config_list:
+                 if v1:
+                    v1.validate()
+        if self.schedule_task_config:
+            self.schedule_task_config.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.aliyun_parent_uid is not None:
+            result['AliyunParentUid'] = self.aliyun_parent_uid
+
+        if self.aliyun_uid is not None:
+            result['AliyunUid'] = self.aliyun_uid
+
+        if self.callback_config is not None:
+            result['CallbackConfig'] = self.callback_config.to_map()
+
+        if self.creator_user_name is not None:
+            result['CreatorUserName'] = self.creator_user_name
+
+        if self.custom_agent_id is not None:
+            result['CustomAgentId'] = self.custom_agent_id
+
+        if self.dmsunit is not None:
+            result['DMSUnit'] = self.dmsunit
+
+        if self.data_json is not None:
+            result['DataJson'] = self.data_json
+
+        if self.default_agent is not None:
+            result['DefaultAgent'] = self.default_agent
+
+        if self.description is not None:
+            result['Description'] = self.description
+
+        if self.dms_unit is not None:
+            result['DmsUnit'] = self.dms_unit
+
+        if self.execution_config is not None:
+            result['ExecutionConfig'] = self.execution_config.to_map()
+
+        if self.gmt_created is not None:
+            result['GmtCreated'] = self.gmt_created
+
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+
+        if self.instruction is not None:
+            result['Instruction'] = self.instruction
+
+        if self.is_schedule_task is not None:
+            result['IsScheduleTask'] = self.is_schedule_task
+
+        if self.knowledge is not None:
+            result['Knowledge'] = self.knowledge
+
+        result['KnowledgeConfigList'] = []
+        if self.knowledge_config_list is not None:
+            for k1 in self.knowledge_config_list:
+                result['KnowledgeConfigList'].append(k1.to_map() if k1 else None)
+
+        result['KnowledgeSemanticConfigList'] = []
+        if self.knowledge_semantic_config_list is not None:
+            for k1 in self.knowledge_semantic_config_list:
+                result['KnowledgeSemanticConfigList'].append(k1.to_map() if k1 else None)
+
+        if self.modifier is not None:
+            result['Modifier'] = self.modifier
+
+        if self.modifier_user_name is not None:
+            result['ModifierUserName'] = self.modifier_user_name
+
+        if self.name is not None:
+            result['Name'] = self.name
+
+        if self.next_runtime is not None:
+            result['NextRuntime'] = self.next_runtime
+
+        if self.offline_time is not None:
+            result['OfflineTime'] = self.offline_time
+
+        if self.recommend_question_list is not None:
+            result['RecommendQuestionList'] = self.recommend_question_list
+
+        if self.region is not None:
+            result['Region'] = self.region
+
+        if self.related_session_id is not None:
+            result['RelatedSessionId'] = self.related_session_id
+
+        if self.release_time is not None:
+            result['ReleaseTime'] = self.release_time
+
+        if self.schedule_task_config is not None:
+            result['ScheduleTaskConfig'] = self.schedule_task_config.to_map()
+
+        if self.status is not None:
+            result['Status'] = self.status
+
+        if self.text_report_config is not None:
+            result['TextReportConfig'] = self.text_report_config
+
+        if self.user_specified_skill_list is not None:
+            result['UserSpecifiedSkillList'] = self.user_specified_skill_list
+
+        if self.web_report_config is not None:
+            result['WebReportConfig'] = self.web_report_config
+
+        if self.web_report_theme is not None:
+            result['WebReportTheme'] = self.web_report_theme
+
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliyunParentUid') is not None:
+            self.aliyun_parent_uid = m.get('AliyunParentUid')
+
+        if m.get('AliyunUid') is not None:
+            self.aliyun_uid = m.get('AliyunUid')
+
+        if m.get('CallbackConfig') is not None:
+            temp_model = main_models.DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentCallbackConfig()
+            self.callback_config = temp_model.from_map(m.get('CallbackConfig'))
+
+        if m.get('CreatorUserName') is not None:
+            self.creator_user_name = m.get('CreatorUserName')
+
+        if m.get('CustomAgentId') is not None:
+            self.custom_agent_id = m.get('CustomAgentId')
+
+        if m.get('DMSUnit') is not None:
+            self.dmsunit = m.get('DMSUnit')
+
+        if m.get('DataJson') is not None:
+            self.data_json = m.get('DataJson')
+
+        if m.get('DefaultAgent') is not None:
+            self.default_agent = m.get('DefaultAgent')
+
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+
+        if m.get('DmsUnit') is not None:
+            self.dms_unit = m.get('DmsUnit')
+
+        if m.get('ExecutionConfig') is not None:
+            temp_model = main_models.DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentExecutionConfig()
+            self.execution_config = temp_model.from_map(m.get('ExecutionConfig'))
+
+        if m.get('GmtCreated') is not None:
+            self.gmt_created = m.get('GmtCreated')
+
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+
+        if m.get('Instruction') is not None:
+            self.instruction = m.get('Instruction')
+
+        if m.get('IsScheduleTask') is not None:
+            self.is_schedule_task = m.get('IsScheduleTask')
+
+        if m.get('Knowledge') is not None:
+            self.knowledge = m.get('Knowledge')
+
+        self.knowledge_config_list = []
+        if m.get('KnowledgeConfigList') is not None:
+            for k1 in m.get('KnowledgeConfigList'):
+                temp_model = main_models.DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentKnowledgeConfigList()
+                self.knowledge_config_list.append(temp_model.from_map(k1))
+
+        self.knowledge_semantic_config_list = []
+        if m.get('KnowledgeSemanticConfigList') is not None:
+            for k1 in m.get('KnowledgeSemanticConfigList'):
+                temp_model = main_models.DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentKnowledgeSemanticConfigList()
+                self.knowledge_semantic_config_list.append(temp_model.from_map(k1))
+
+        if m.get('Modifier') is not None:
+            self.modifier = m.get('Modifier')
+
+        if m.get('ModifierUserName') is not None:
+            self.modifier_user_name = m.get('ModifierUserName')
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+
+        if m.get('NextRuntime') is not None:
+            self.next_runtime = m.get('NextRuntime')
+
+        if m.get('OfflineTime') is not None:
+            self.offline_time = m.get('OfflineTime')
+
+        if m.get('RecommendQuestionList') is not None:
+            self.recommend_question_list = m.get('RecommendQuestionList')
+
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+
+        if m.get('RelatedSessionId') is not None:
+            self.related_session_id = m.get('RelatedSessionId')
+
+        if m.get('ReleaseTime') is not None:
+            self.release_time = m.get('ReleaseTime')
+
+        if m.get('ScheduleTaskConfig') is not None:
+            temp_model = main_models.DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentScheduleTaskConfig()
+            self.schedule_task_config = temp_model.from_map(m.get('ScheduleTaskConfig'))
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+
+        if m.get('TextReportConfig') is not None:
+            self.text_report_config = m.get('TextReportConfig')
+
+        if m.get('UserSpecifiedSkillList') is not None:
+            self.user_specified_skill_list = m.get('UserSpecifiedSkillList')
+
+        if m.get('WebReportConfig') is not None:
+            self.web_report_config = m.get('WebReportConfig')
+
+        if m.get('WebReportTheme') is not None:
+            self.web_report_theme = m.get('WebReportTheme')
+
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+
+        return self
+
+class DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentScheduleTaskConfig(DaraModel):
+    def __init__(
+        self,
+        cron_expression: str = None,
+        query: str = None,
+        related_session_id: str = None,
+    ):
+        # The cron expression for scheduled runs.
+        self.cron_expression = cron_expression
+        # The question for scheduled runs.
+        self.query = query
+        # The ID of the referenced session.
+        self.related_session_id = related_session_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.cron_expression is not None:
+            result['CronExpression'] = self.cron_expression
+
+        if self.query is not None:
+            result['Query'] = self.query
+
+        if self.related_session_id is not None:
+            result['RelatedSessionId'] = self.related_session_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CronExpression') is not None:
+            self.cron_expression = m.get('CronExpression')
+
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
+
+        if m.get('RelatedSessionId') is not None:
+            self.related_session_id = m.get('RelatedSessionId')
+
+        return self
+
+class DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentKnowledgeSemanticConfigList(DaraModel):
+    def __init__(
+        self,
+        db_id: str = None,
+        instance_id: str = None,
+        knowledge_uuid: str = None,
+        type: str = None,
+    ):
+        # The DMS database ID.
+        self.db_id = db_id
+        # The DMS instance ID.
+        self.instance_id = instance_id
+        # The knowledge UUID.
+        self.knowledge_uuid = knowledge_uuid
+        # The knowledge semantic type. Valid values:
+        # - sql_template: SQL template
+        # - ossie_model: Ossie semantic view
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
+
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+
+        if self.knowledge_uuid is not None:
+            result['KnowledgeUuid'] = self.knowledge_uuid
+
+        if self.type is not None:
+            result['Type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
+
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+
+        if m.get('KnowledgeUuid') is not None:
+            self.knowledge_uuid = m.get('KnowledgeUuid')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+
+        return self
+
+class DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentKnowledgeConfigList(DaraModel):
+    def __init__(
+        self,
+        access_type: str = None,
+        kb_uuid: str = None,
+        mcp_server_id: str = None,
+    ):
+        # The access type. If this parameter is not specified, the default value is mcp. Valid values:
+        # - mcp: MCP access. You must specify the McpServerId parameter.
+        # - dms_kb: DMS knowledge base access. You must specify the KbUuid parameter.
+        self.access_type = access_type
+        # The knowledge base ID.
+        self.kb_uuid = kb_uuid
+        # The MCP server ID.
+        self.mcp_server_id = mcp_server_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.access_type is not None:
+            result['AccessType'] = self.access_type
+
+        if self.kb_uuid is not None:
+            result['KbUuid'] = self.kb_uuid
+
+        if self.mcp_server_id is not None:
+            result['McpServerId'] = self.mcp_server_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessType') is not None:
+            self.access_type = m.get('AccessType')
+
+        if m.get('KbUuid') is not None:
+            self.kb_uuid = m.get('KbUuid')
+
+        if m.get('McpServerId') is not None:
+            self.mcp_server_id = m.get('McpServerId')
+
+        return self
+
+class DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentExecutionConfig(DaraModel):
+    def __init__(
+        self,
+        clarification_tendency: float = None,
+        forbidden_append_data_source: bool = None,
+        skip_ask_human: bool = None,
+        skip_plan: bool = None,
+        skip_sql_confirm: bool = None,
+        skip_web_report_confirm: bool = None,
+    ):
+        # The tendency of the agent to ask follow-up questions to clarify requirements. **This parameter takes effect only when SkipAskHuman is set to false and SkipPlan is set to false.** Valid values: 0 to 1.
+        # 
+        # The following list describes some tendency values:
+        # - 0.0: Do not ask questions. The agent does not ask the user any questions, skips confirmation after generating a plan, and directly executes the plan.
+        # - 0.1: Confirm the plan only. The agent confirms the generated plan only once and does not ask additional questions about requirements or details.
+        # - 0.4: Ask questions when the task is blocked. The agent handles the task autonomously by default and asks questions only when the task cannot proceed or be completed.
+        # - 0.7: Ask questions when key criteria are uncertain. The agent proactively asks questions when there is critical ambiguity in the goals, scope, business criteria, or acceptance criteria.
+        # - 1.0: Fully align throughout the process. The agent proactively clarifies requirements during planning and execution, and continuously confirms when encountering important ambiguities, assumptions, or solution branches.
+        self.clarification_tendency = clarification_tendency
+        # Indicates whether appending data sources in the session is prohibited.
+        self.forbidden_append_data_source = forbidden_append_data_source
+        # Indicates whether user inquiries during the process are prohibited.
+        self.skip_ask_human = skip_ask_human
+        # Indicates whether the plan confirmation step is skipped.
+        self.skip_plan = skip_plan
+        # Indicates whether all SQL confirmations are skipped.
+        self.skip_sql_confirm = skip_sql_confirm
+        # Indicates whether the confirmation for generating a web report is skipped.
+        self.skip_web_report_confirm = skip_web_report_confirm
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.clarification_tendency is not None:
+            result['ClarificationTendency'] = self.clarification_tendency
+
+        if self.forbidden_append_data_source is not None:
+            result['ForbiddenAppendDataSource'] = self.forbidden_append_data_source
+
+        if self.skip_ask_human is not None:
+            result['SkipAskHuman'] = self.skip_ask_human
+
+        if self.skip_plan is not None:
+            result['SkipPlan'] = self.skip_plan
+
+        if self.skip_sql_confirm is not None:
+            result['SkipSqlConfirm'] = self.skip_sql_confirm
+
+        if self.skip_web_report_confirm is not None:
+            result['SkipWebReportConfirm'] = self.skip_web_report_confirm
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClarificationTendency') is not None:
+            self.clarification_tendency = m.get('ClarificationTendency')
+
+        if m.get('ForbiddenAppendDataSource') is not None:
+            self.forbidden_append_data_source = m.get('ForbiddenAppendDataSource')
+
+        if m.get('SkipAskHuman') is not None:
+            self.skip_ask_human = m.get('SkipAskHuman')
+
+        if m.get('SkipPlan') is not None:
+            self.skip_plan = m.get('SkipPlan')
+
+        if m.get('SkipSqlConfirm') is not None:
+            self.skip_sql_confirm = m.get('SkipSqlConfirm')
+
+        if m.get('SkipWebReportConfirm') is not None:
+            self.skip_web_report_confirm = m.get('SkipWebReportConfirm')
+
+        return self
+
+class DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentCallbackConfig(DaraModel):
+    def __init__(
+        self,
+        callback_args: str = None,
+        callback_prompt: str = None,
+        callback_time: int = None,
+        tool_id: str = None,
+        type: str = None,
+    ):
+        # The callback tool invocation parameters.
+        self.callback_args = callback_args
+        # The prompt used to generate callback tool invocation parameters.
+        self.callback_prompt = callback_prompt
+        # The timing for callback tool invocation.
+        self.callback_time = callback_time
+        # The callback tool identifier.
+        self.tool_id = tool_id
+        # The callback tool type.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.callback_args is not None:
+            result['CallbackArgs'] = self.callback_args
+
+        if self.callback_prompt is not None:
+            result['CallbackPrompt'] = self.callback_prompt
+
+        if self.callback_time is not None:
+            result['CallbackTime'] = self.callback_time
+
+        if self.tool_id is not None:
+            result['ToolId'] = self.tool_id
+
+        if self.type is not None:
+            result['Type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CallbackArgs') is not None:
+            self.callback_args = m.get('CallbackArgs')
+
+        if m.get('CallbackPrompt') is not None:
+            self.callback_prompt = m.get('CallbackPrompt')
+
+        if m.get('CallbackTime') is not None:
+            self.callback_time = m.get('CallbackTime')
+
+        if m.get('ToolId') is not None:
+            self.tool_id = m.get('ToolId')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+
+        return self
+
 class DescribeDataAgentSessionResponseBodyDataMessages(DaraModel):
     def __init__(
         self,
@@ -492,13 +1157,13 @@ class DescribeDataAgentSessionResponseBodyDataMessages(DaraModel):
         send_time: int = None,
         status: str = None,
     ):
-        # The content of the historical session message.
+        # The content of the historical conversation message.
         self.content = content
-        # The unique ID of the historical session message.
+        # The unique ID of the historical conversation message.
         self.id = id
-        # The time when the historical session message was sent.
+        # The send time of the historical conversation message.
         self.send_time = send_time
-        # The status of the historical session message.
+        # The status of the historical conversation message.
         self.status = status
 
     def validate(self):
@@ -545,9 +1210,9 @@ class DescribeDataAgentSessionResponseBodyDataDataSources(DaraModel):
         category: str = None,
         detail: str = None,
     ):
-        # The source of the data source. Valid values:
-        # - CHAT: The data source is specified in a conversation by calling the CreateDataAgentSession or SendChatMessage operation.
-        # - CUSTOM_AGENT: The data source is from the preset analysis data scope in a custom agent.
+        # The data source category. Valid values:
+        # - **CHAT**: The data source is specified in a conversation by calling the CreateDataAgentSession or SendChatMessage operation.
+        # - **CUSTOM_AGENT**: The data source comes from the preset analysis data scope in a custom agent.
         self.category = category
         # The data source details. When Category is set to CHAT or CUSTOM_AGENT, the structure of Detail aligns with the structure of a single element in the DataSources parameter of the SendChatMessage operation.
         self.detail = detail
@@ -622,12 +1287,12 @@ class DescribeDataAgentSessionResponseBodyDataCapabilities(DaraModel):
         type: str = None,
     ):
         # The ID of the mounted capability.
-        # - If Type is set to skill, this parameter indicates the skill ID.
-        # - If Type is set to dms_kb, this parameter indicates the knowledge base ID.
+        # - If Type is set to skill, the value indicates the skill ID.
+        # - If Type is set to dms_kb, the value indicates the knowledge base ID.
         self.id = id
-        # The capability type. Valid values:
-        # - skill: Skill.
-        # - dms_kb: Knowledge base.
+        # The type. Valid values:
+        # - skill: skill
+        # - dms_kb: knowledge base
         self.type = type
 
     def validate(self):
@@ -672,7 +1337,7 @@ class DescribeDataAgentSessionResponseBodyDataArtifacts(DaraModel):
         self.description = description
         # The time when the backend completed the artifact task. The value is a UNIX timestamp accurate to seconds.
         self.finish_time = finish_time
-        # The globally unique artifact ID. If the artifact is a report generated by specifying MessageType as REPORT in the SendChatMessage operation, the artifact ID is the same as the MessageId value returned by the SendChatMessage operation.
+        # The globally unique artifact ID. If the report is generated by calling the SendChatMessage operation with MessageType set to REPORT, the artifact ID is the same as the MessageId value returned by the SendChatMessage operation.
         self.id = id
         # The artifact name. This is usually a concatenated string generated by the project and aligns with the name field in the ListFileUpload operation. You can use this field to query the download URL of the artifact file.
         self.name = name

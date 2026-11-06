@@ -20,7 +20,7 @@ class GetDataAgentWorkspaceInfoResponseBody(DaraModel):
         self.error_code = error_code
         # The error message.
         self.error_message = error_message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
@@ -74,6 +74,7 @@ class GetDataAgentWorkspaceInfoResponseBody(DaraModel):
 class GetDataAgentWorkspaceInfoResponseBodyData(DaraModel):
     def __init__(
         self,
+        config: str = None,
         create_time: str = None,
         creator: str = None,
         is_session_share_enabled: bool = None,
@@ -86,11 +87,13 @@ class GetDataAgentWorkspaceInfoResponseBodyData(DaraModel):
         workspace_name: str = None,
         workspace_status: str = None,
     ):
-        # The creation time of the workspace. The value is a UNIX timestamp in seconds.
+        # The configuration items of the workspace.
+        self.config = config
+        # The creation time of the session. The value is a UNIX timestamp in seconds.
         self.create_time = create_time
         # The UID of the workspace creator.
         self.creator = creator
-        # Indicates whether sessions are shared within the workspace.
+        # Indicates whether sessions in the workspace are shared.
         self.is_session_share_enabled = is_session_share_enabled
         # The last modification time of the workspace. The value is a UNIX timestamp in seconds.
         self.modify_time = modify_time
@@ -100,9 +103,9 @@ class GetDataAgentWorkspaceInfoResponseBodyData(DaraModel):
         self.total_member = total_member
         # The type of the workspace.
         self.type = type
-        # The description of the workspace.
+        # The description of the collaborative workspace.
         self.workspace_desc = workspace_desc
-        # The ID of the workspace.
+        # The ID of the collaborative workspace.
         self.workspace_id = workspace_id
         # The name of the workspace.
         self.workspace_name = workspace_name
@@ -117,6 +120,9 @@ class GetDataAgentWorkspaceInfoResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.config is not None:
+            result['Config'] = self.config
+
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
 
@@ -154,6 +160,9 @@ class GetDataAgentWorkspaceInfoResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
 

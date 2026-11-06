@@ -7,6 +7,7 @@ import json
 from typing import Dict, Generator, AsyncGenerator
 
 from alibabacloud_dms20250414 import models as main_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -22,6 +23,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'Dms'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('dms', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -49,6 +53,8 @@ class Client(OpenApiClient):
     ) -> main_models.AddAgenticDataSourceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.adb_spark_resource_group):
+            query['AdbSparkResourceGroup'] = request.adb_spark_resource_group
         if not DaraCore.is_null(request.alias):
             query['Alias'] = request.alias
         if not DaraCore.is_null(request.auth_account):
@@ -121,6 +127,8 @@ class Client(OpenApiClient):
     ) -> main_models.AddAgenticDataSourceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.adb_spark_resource_group):
+            query['AdbSparkResourceGroup'] = request.adb_spark_resource_group
         if not DaraCore.is_null(request.alias):
             query['Alias'] = request.alias
         if not DaraCore.is_null(request.auth_account):
@@ -1021,6 +1029,8 @@ class Client(OpenApiClient):
             query['AgentType'] = request.agent_type
         if not DaraCore.is_null(request.callback_config_shrink):
             query['CallbackConfig'] = request.callback_config_shrink
+        if not DaraCore.is_null(request.create_from):
+            query['CreateFrom'] = request.create_from
         if not DaraCore.is_null(request.dmsunit):
             query['DMSUnit'] = request.dmsunit
         if not DaraCore.is_null(request.data_json):
@@ -1101,6 +1111,8 @@ class Client(OpenApiClient):
             query['AgentType'] = request.agent_type
         if not DaraCore.is_null(request.callback_config_shrink):
             query['CallbackConfig'] = request.callback_config_shrink
+        if not DaraCore.is_null(request.create_from):
+            query['CreateFrom'] = request.create_from
         if not DaraCore.is_null(request.dmsunit):
             query['DMSUnit'] = request.dmsunit
         if not DaraCore.is_null(request.data_json):
@@ -1755,6 +1767,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateDataAgentWorkspaceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.config):
+            query['Config'] = request.config
         if not DaraCore.is_null(request.dmsunit):
             query['DMSUnit'] = request.dmsunit
         if not DaraCore.is_null(request.is_session_share_enabled):
@@ -1789,6 +1803,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateDataAgentWorkspaceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.config):
+            query['Config'] = request.config
         if not DaraCore.is_null(request.dmsunit):
             query['DMSUnit'] = request.dmsunit
         if not DaraCore.is_null(request.is_session_share_enabled):
@@ -1997,6 +2013,76 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteAgenticDataSourceResponse:
         runtime = RuntimeOptions()
         return await self.delete_agentic_data_source_with_options_async(request, runtime)
+
+    def delete_agentic_vpc_endpoint_with_options(
+        self,
+        request: main_models.DeleteAgenticVpcEndpointRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAgenticVpcEndpointResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAgenticVpcEndpoint',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAgenticVpcEndpointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_agentic_vpc_endpoint_with_options_async(
+        self,
+        request: main_models.DeleteAgenticVpcEndpointRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAgenticVpcEndpointResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAgenticVpcEndpoint',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAgenticVpcEndpointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_agentic_vpc_endpoint(
+        self,
+        request: main_models.DeleteAgenticVpcEndpointRequest,
+    ) -> main_models.DeleteAgenticVpcEndpointResponse:
+        runtime = RuntimeOptions()
+        return self.delete_agentic_vpc_endpoint_with_options(request, runtime)
+
+    async def delete_agentic_vpc_endpoint_async(
+        self,
+        request: main_models.DeleteAgenticVpcEndpointRequest,
+    ) -> main_models.DeleteAgenticVpcEndpointResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_agentic_vpc_endpoint_with_options_async(request, runtime)
 
     def delete_airflow_with_options(
         self,
@@ -10551,6 +10637,8 @@ class Client(OpenApiClient):
     ) -> main_models.TestAgenticDataSourceConnectionResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.adb_spark_resource_group):
+            query['AdbSparkResourceGroup'] = request.adb_spark_resource_group
         if not DaraCore.is_null(request.alias):
             query['Alias'] = request.alias
         if not DaraCore.is_null(request.auth_account):
@@ -10621,6 +10709,8 @@ class Client(OpenApiClient):
     ) -> main_models.TestAgenticDataSourceConnectionResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.adb_spark_resource_group):
+            query['AdbSparkResourceGroup'] = request.adb_spark_resource_group
         if not DaraCore.is_null(request.alias):
             query['Alias'] = request.alias
         if not DaraCore.is_null(request.auth_account):
@@ -10705,6 +10795,8 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateAgenticDataSourceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.adb_spark_resource_group):
+            query['AdbSparkResourceGroup'] = request.adb_spark_resource_group
         if not DaraCore.is_null(request.alias):
             query['Alias'] = request.alias
         if not DaraCore.is_null(request.auth_account):
@@ -10745,6 +10837,12 @@ class Client(OpenApiClient):
             query['SyncAlias'] = request.sync_alias
         if not DaraCore.is_null(request.use_ssl):
             query['UseSsl'] = request.use_ssl
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -10771,6 +10869,8 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateAgenticDataSourceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.adb_spark_resource_group):
+            query['AdbSparkResourceGroup'] = request.adb_spark_resource_group
         if not DaraCore.is_null(request.alias):
             query['Alias'] = request.alias
         if not DaraCore.is_null(request.auth_account):
@@ -10811,6 +10911,12 @@ class Client(OpenApiClient):
             query['SyncAlias'] = request.sync_alias
         if not DaraCore.is_null(request.use_ssl):
             query['UseSsl'] = request.use_ssl
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -11189,6 +11295,8 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateDataAgentSpaceInfoResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.config):
+            query['Config'] = request.config
         if not DaraCore.is_null(request.dmsunit):
             query['DMSUnit'] = request.dmsunit
         if not DaraCore.is_null(request.is_session_share_enabled):
@@ -11225,6 +11333,8 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateDataAgentSpaceInfoResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.config):
+            query['Config'] = request.config
         if not DaraCore.is_null(request.dmsunit):
             query['DMSUnit'] = request.dmsunit
         if not DaraCore.is_null(request.is_session_share_enabled):

@@ -14,13 +14,13 @@ class GetAgenticDataSourceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The data source details. This parameter is empty if the data source does not exist.
+        # The data source details. This field is empty if the data source does not exist.
         self.data = data
-        # The error code returned when the call fails. This parameter is empty if the call is successful.
+        # The error code returned when the call fails. This field is empty when the call succeeds.
         self.error_code = error_code
-        # The error message returned when the call fails. This parameter is empty if the call is successful.
+        # The error message returned when the call fails. This field is empty when the call succeeds.
         self.error_message = error_message
-        # The ID of the request.
+        # The request ID, which is used to locate the call.
         self.request_id = request_id
         # Indicates whether the call is successful.
         self.success = success
@@ -74,6 +74,7 @@ class GetAgenticDataSourceResponseBody(DaraModel):
 class GetAgenticDataSourceResponseBodyData(DaraModel):
     def __init__(
         self,
+        adb_spark_resource_group: str = None,
         alias: str = None,
         auth_account: str = None,
         auth_password: str = None,
@@ -105,25 +106,27 @@ class GetAgenticDataSourceResponseBodyData(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # The name of the ADB MySQL Spark resource group. This field is returned only for data sources whose DbType is ADB_MYSQL_SPARK and is independent of the Schema (database name).
+        self.adb_spark_resource_group = adb_spark_resource_group
         # The display name of the data source.
         self.alias = alias
-        # The logon username for the data source. This parameter is empty if username authentication is not used.
+        # The logon username for the data source. This field is empty if username authentication is not used.
         self.auth_account = auth_account
-        # The masked value of the password or token. The actual value is not returned.
+        # The masked value of the password or token. The actual content is not returned.
         self.auth_password = auth_password
         # The authentication method. Valid values:
-        # - -1: no authentication required
-        # - 0: username and password
-        # - 1: password only
-        # - 2: password-free
+        # - -1: No authentication required.
+        # - 0: Username and password.
+        # - 1: Password only.
+        # - 2: Password-free.
         self.auth_type = auth_type
         # The name of the metadata catalog associated with the data source.
         self.catalog_name = catalog_name
         # The UUID of the metadata catalog associated with the data source.
         self.catalog_uuid = catalog_uuid
         # The method used to register the data source. Valid values:
-        # - INSTANCE_ID: select an existing cloud instance
-        # - HOST_PORT: register by endpoint and port
+        # - INSTANCE_ID: Select an existing cloud instance.
+        # - HOST_PORT: Register by endpoint and port.
         self.create_mode = create_mode
         # The unique identifier of the data source.
         self.data_source_uuid = data_source_uuid
@@ -137,18 +140,18 @@ class GetAgenticDataSourceResponseBodyData(DaraModel):
         self.gmt_modified = gmt_modified
         # The endpoint of the data source. A masked value may be returned in sensitive scenarios.
         self.host = host
-        # The ID of the cloud resource instance. This parameter may be empty for data sources registered by endpoint.
+        # The ID of the cloud resource instance. This field may be empty for data sources registered by endpoint.
         self.instance_resource_id = instance_resource_id
         # The source of the data source. Valid values:
-        # - RDS: ApsaraDB instance
-        # - PUBLIC_OWN: self-managed database on the Internet
-        # - ECS_OWN: self-managed database on an ECS instance
-        # - GATEWAY: connected through Database Gateway
-        # - VPC_IDC: connected through a VPC or IDC
+        # - RDS: ApsaraDB instance.
+        # - PUBLIC_OWN: Self-managed database on the Internet.
+        # - ECS_OWN: Self-managed database on an ECS instance.
+        # - GATEWAY: Connected through Database Gateway.
+        # - VPC_IDC: Connected through a VPC or IDC.
         self.instance_source = instance_source
-        # The name of the KMS-managed credential. This parameter is empty if KMS is not used. This field contains sensitive information.
+        # The name of the KMS-managed credential. This field is empty if KMS is not used and is considered sensitive information.
         self.kms_secret = kms_secret
-        # The ID of the data access security policy currently in use. This parameter is empty if no policy is configured.
+        # The ID of the data access security policy currently in use. This field is empty if no policy is configured.
         self.policy_id = policy_id
         # The connection port of the data source.
         self.port = port
@@ -156,33 +159,33 @@ class GetAgenticDataSourceResponseBodyData(DaraModel):
         self.region_id = region_id
         # The ID of the Alibaba Cloud account to which the resource belongs.
         self.resource_account_id = resource_account_id
-        # The ARN of the RAM role used to access the data source. This parameter is empty if role-based authorization is not used.
+        # The ARN of the Alibaba Cloud RAM role used to access the data source. This field is empty if role-based authorization is not used.
         self.role_arn = role_arn
-        # The name of the connection target. For ADB_POSTGRESQL, DRDS, POSTGRESQL, and POLARDB_POSTGRESQL, this indicates the database name. For ORACLE, this indicates the SID or service name. For POLARDB_ORACLE, this indicates the SID. For MAXCOMPUTE, this indicates the project. For other types, this parameter is usually empty.
+        # The name of the connection target. For ADB_POSTGRESQL, DRDS, POSTGRESQL, and POLARDB_POSTGRESQL, this indicates the database name. For ORACLE, this indicates the SID or service name. For POLARDB_ORACLE, this indicates the SID. For MAXCOMPUTE, this indicates the project. For other types, this field is usually empty.
         self.schema = schema
-        # The name of the Snowflake role. This parameter takes effect only when DbType is set to SNOWFLAKE.
+        # The name of the Snowflake role. This field takes effect only when DbType is SNOWFLAKE.
         self.snowflake_role = snowflake_role
-        # The name of the Snowflake compute warehouse. This parameter takes effect only when DbType is set to SNOWFLAKE.
+        # The name of the Snowflake compute warehouse. This field takes effect only when DbType is SNOWFLAKE.
         self.snowflake_warehouse = snowflake_warehouse
         # The status of the data source. Valid values:
-        # - 0: normal
-        # - -1: deleted
-        # - -2: disabled
+        # - 0: Normal.
+        # - -1: Deleted.
+        # - -2: Disabled.
         self.state = state
         # Specifies whether to use the cloud instance name as the data source name. Valid values:
-        # - 1: yes
-        # - 0: no
+        # - 1: Yes.
+        # - 0: No.
         self.sync_alias = sync_alias
         # The SSL settings. Valid values:
-        # - 1: enabled
-        # - 0: disabled
-        # - -1: use default settings
+        # - 1: Enabled.
+        # - 0: Disabled.
+        # - -1: Use default settings.
         self.use_ssl = use_ssl
-        # The ID of the destination vSwitch used when accessing MaxCompute. This parameter is empty in other scenarios.
+        # The ID of the destination vSwitch used when accessing MaxCompute. This field is empty in other scenarios.
         self.v_switch_id = v_switch_id
-        # The ID of the destination VPC used when accessing MaxCompute. This parameter is empty in other scenarios.
+        # The ID of the destination VPC used when accessing MaxCompute. This field is empty in other scenarios.
         self.vpc_id = vpc_id
-        # The ID of the destination zone used when accessing MaxCompute. This parameter is empty in other scenarios.
+        # The ID of the destination zone used when accessing MaxCompute. This field is empty in other scenarios.
         self.zone_id = zone_id
 
     def validate(self):
@@ -193,6 +196,9 @@ class GetAgenticDataSourceResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.adb_spark_resource_group is not None:
+            result['AdbSparkResourceGroup'] = self.adb_spark_resource_group
+
         if self.alias is not None:
             result['Alias'] = self.alias
 
@@ -287,6 +293,9 @@ class GetAgenticDataSourceResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdbSparkResourceGroup') is not None:
+            self.adb_spark_resource_group = m.get('AdbSparkResourceGroup')
+
         if m.get('Alias') is not None:
             self.alias = m.get('Alias')
 

@@ -25,9 +25,7 @@ class ListAgenticGlobalSqlExecutionHistoriesResponseBody(DaraModel):
         self.error_message = error_message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
-        # - true: The request is successful.
-        # - false: The request fails.
+        # Indicates whether the request is successful. Valid values: true and false.
         self.success = success
         # The total number of entries that meet the conditions.
         self.total_count = total_count
@@ -114,48 +112,43 @@ class ListAgenticGlobalSqlExecutionHistoriesResponseBodyData(DaraModel):
         start_time: str = None,
         workflow_id: str = None,
     ):
-        # The ID of the actor. A user ID starts with usr_, and an agent ID starts with agt_.
+        # The ID of the executor. User IDs start with usr_, and agent IDs start with agt_.
         self.actor_id = actor_id
-        # The name of the actor.
+        # The name of the executor.
         self.actor_name = actor_name
-        # The type of the actor. A value of HUMAN indicates a user, and a value of AGENT indicates an agent.
+        # The type of the executor. Valid values: HUMAN (user) and AGENT (agent).
         self.actor_type = actor_type
         # The number of affected rows.
         self.affected_rows = affected_rows
         # The ID of the user to which the agent belongs. The ID starts with usr_.
         self.agent_owner_id = agent_owner_id
-        # The catalog UUID to which the execution belongs.
+        # The Catalog UUID to which the current execution belongs.
         self.catalog_uuid = catalog_uuid
-        # The IP address of the client that initiates the execution, excluding the port. This parameter is empty in workflow scenarios or when the IP address is not recorded.
+        # The IP address of the client that initiates the execution, excluding the port. This parameter is empty in workflow scenarios or when not recorded.
         self.client_ip = client_ip
         # The execution duration of the SQL statement.
         self.cost = cost
         # The search name of the database.
         self.database_search_name = database_search_name
-        # The database UUID to which the execution belongs.
+        # The Database UUID to which the current execution belongs.
         self.database_uuid = database_uuid
-        # The error message returned when the execution fails.
+        # The error message when the execution fails.
         self.error = error
-        # The actual SQL statement that is executed.
+        # The actually executed SQL statement.
         self.executed_sql = executed_sql
-        # The execution status. Valid values:
-        # - SUCCESS: The execution is successful.
-        # - FAILED: The execution fails.
-        # - BLOCKED: The execution is blocked or not actually executed.
+        # The execution status. Valid values: SUCCESS, FAILED, and BLOCKED (intercepted or not actually executed).
         self.execution_status = execution_status
         # The original SQL statement.
         self.original_sql = original_sql
-        # The query ID of the execution.
+        # The query ID of the current execution.
         self.query_id = query_id
         # The number of returned rows.
         self.returned_rows = returned_rows
-        # The execution scenario. Valid values:
-        # - AGENT_QUERY: The agent directly executes the SQL statement.
-        # - WORKFLOW_QUERY: The SQL statement is asynchronously executed through a workflow.
+        # The execution scenario. Valid values: AGENT_QUERY (the agent directly executes the SQL statement) and WORKFLOW_QUERY (the SQL statement is asynchronously executed through a workflow).
         self.scenario = scenario
         # The SQL type.
         self.sql_type = sql_type
-        # The start time of the execution. The time is in the yyyy-MM-dd HH:mm:ss format.
+        # The execution start time. Format: yyyy-MM-dd HH:mm:ss.
         self.start_time = start_time
         # The workflow ID. This parameter may be empty in non-workflow scenarios.
         self.workflow_id = workflow_id

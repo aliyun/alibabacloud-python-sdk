@@ -14,15 +14,15 @@ class UpdateDataAgentSpaceInfoResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The returned data.
+        # The response struct.
         self.data = data
-        # The error code returned if the request fails.
+        # The error code returned when a request exception occurs.
         self.error_code = error_code
-        # The error message returned if the request fails.
+        # The error message returned when the call fails.
         self.error_message = error_message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -74,6 +74,7 @@ class UpdateDataAgentSpaceInfoResponseBody(DaraModel):
 class UpdateDataAgentSpaceInfoResponseBodyData(DaraModel):
     def __init__(
         self,
+        config: str = None,
         create_time: str = None,
         creator: str = None,
         description: str = None,
@@ -85,21 +86,23 @@ class UpdateDataAgentSpaceInfoResponseBodyData(DaraModel):
         workspace_name: str = None,
         workspace_status: str = None,
     ):
-        # The time when the workspace was created, specified as a UNIX timestamp in seconds.
+        # The workspace configuration items.
+        self.config = config
+        # The creation time of the session (UNIX timestamp in seconds).
         self.create_time = create_time
-        # The user ID (UID) of the workspace creator.
+        # The UID of the workspace creator.
         self.creator = creator
-        # The description of the workspace.
+        # The description of the table.
         self.description = description
-        # Indicates whether session sharing is enabled in the workspace.
+        # Indicates whether session sharing within the workspace is supported.
         self.is_session_share_enabled = is_session_share_enabled
-        # The time when the workspace was last modified, specified as a UNIX timestamp in seconds.
+        # The last modification time of the workspace (UNIX timestamp in seconds).
         self.modify_time = modify_time
-        # The user role in the workspace.
+        # The name of the removed user role.
         self.role_name = role_name
         # The total number of members in the workspace.
         self.total_member = total_member
-        # The ID of the workspace.
+        # The workspace ID.
         self.workspace_id = workspace_id
         # The updated name of the workspace.
         self.workspace_name = workspace_name
@@ -114,6 +117,9 @@ class UpdateDataAgentSpaceInfoResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.config is not None:
+            result['Config'] = self.config
+
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
 
@@ -148,6 +154,9 @@ class UpdateDataAgentSpaceInfoResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
 

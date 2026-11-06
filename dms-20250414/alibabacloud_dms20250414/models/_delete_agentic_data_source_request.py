@@ -9,7 +9,7 @@ class DeleteAgenticDataSourceRequest(DaraModel):
         self,
         data_source_uuid: str = None,
     ):
-        # The UUID of the data source to delete. Ensure that no workloads are using the data source before deletion.
+        # The UUID of the data source to delete. Ensure that the data source is no longer in use before deletion.
         # 
         # This parameter is required.
         self.data_source_uuid = data_source_uuid

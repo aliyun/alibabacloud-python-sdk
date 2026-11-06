@@ -16,13 +16,13 @@ class AddAgenticDataSourceResponseBody(DaraModel):
     ):
         # The details of the created data source.
         self.data = data
-        # The error code returned when the call fails. This parameter is empty if the call is successful.
+        # The error code returned when the call fails. This field is empty when the call is successful.
         self.error_code = error_code
-        # The error message returned when the call fails. This parameter is empty if the call is successful.
+        # The error message returned when the call fails. This field is empty when the call is successful.
         self.error_message = error_message
-        # The request ID, which is used to trace the call.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the call is successful.
         self.success = success
 
     def validate(self):
@@ -74,6 +74,7 @@ class AddAgenticDataSourceResponseBody(DaraModel):
 class AddAgenticDataSourceResponseBodyData(DaraModel):
     def __init__(
         self,
+        adb_spark_resource_group: str = None,
         alias: str = None,
         auth_account: str = None,
         auth_password: str = None,
@@ -99,9 +100,11 @@ class AddAgenticDataSourceResponseBodyData(DaraModel):
         sync_alias: int = None,
         use_ssl: int = None,
     ):
+        # The name of the ADB MySQL Spark resource group. This field is returned only for data sources whose DbType is ADB_MYSQL_SPARK. It is independent of the Schema (database name).
+        self.adb_spark_resource_group = adb_spark_resource_group
         # The display name of the data source.
         self.alias = alias
-        # The logon username for the data source. This parameter is empty if username authentication is not used.
+        # The logon username for the data source. This field is empty if username authentication is not used.
         self.auth_account = auth_account
         # The masked value of the password or token. The actual value is not returned.
         self.auth_password = auth_password
@@ -123,41 +126,36 @@ class AddAgenticDataSourceResponseBodyData(DaraModel):
         self.db_type = db_type
         # The environment type. Valid values: product, pre, dev, test, sit, uat, pet, and stag.
         self.env_type = env_type
-        # The time when the data source was created. The time is in the yyyy-MM-dd HH:mm:ss format.
+        # The time when the data source was created. The format is yyyy-MM-dd HH:mm:ss.
         self.gmt_create = gmt_create
-        # The time when the data source was last modified. The time is in the yyyy-MM-dd HH:mm:ss format.
+        # The time when the data source was last modified. The format is yyyy-MM-dd HH:mm:ss.
         self.gmt_modified = gmt_modified
         # The endpoint of the data source. A masked value may be returned in sensitive scenarios.
         self.host = host
-        # The ID of the cloud resource instance. This parameter may be empty for data sources registered by endpoint.
+        # The ID of the cloud resource instance. This field may be empty for data sources registered by endpoint.
         self.instance_resource_id = instance_resource_id
-        # The source of the data source. Valid values:
-        # - RDS: An ApsaraDB instance.
-        # - PUBLIC_OWN: A self-managed database on the Internet.
-        # - ECS_OWN: A self-managed database on an ECS instance.
-        # - GATEWAY: A database accessed through Database Gateway.
-        # - VPC_IDC: A database accessed through a VPC or data center.
+        # The source of the data source. Valid values: RDS: ApsaraDB instance, PUBLIC_OWN: self-managed database connected over the Internet, ECS_OWN: self-managed database hosted on an ECS instance, GATEWAY: database connected through Database Gateway, and VPC_IDC: database connected through a VPC or IDC.
         self.instance_source = instance_source
-        # The name of the KMS-managed credential. This parameter is empty if KMS is not used. This is sensitive information.
+        # The name of the Key Management Service (KMS) managed credential. This field is empty if KMS is not used and is considered sensitive information.
         self.kms_secret = kms_secret
-        # The ID of the data access security policy in use. This parameter is empty if no policy is configured.
+        # The ID of the data access security policy currently in use. This field is empty if no policy is configured.
         self.policy_id = policy_id
         # The connection port of the data source.
         self.port = port
-        # The region where the data source resides.
+        # The region where the data source is located.
         self.region_id = region_id
         # The ID of the Alibaba Cloud account to which the resource belongs.
         self.resource_account_id = resource_account_id
-        # The ARN of the RAM role used to access the data source. This parameter is empty if role authorization is not used.
+        # The Alibaba Cloud Resource Name (ARN) of the Resource Access Management (RAM) role used to access the data source. This field is empty if role-based authorization is not used.
         self.role_arn = role_arn
-        # The name of the connection target. For ADB_POSTGRESQL, DRDS, POSTGRESQL, and POLARDB_POSTGRESQL, this indicates the database name. For ORACLE, this indicates the SID or service name. For POLARDB_ORACLE, this indicates the SID. For MAXCOMPUTE, this indicates the project. For other types, this parameter is usually empty.
+        # The name of the connection target. For ADB_POSTGRESQL, DRDS, POSTGRESQL, and POLARDB_POSTGRESQL, this indicates the database name. For ORACLE, this indicates the SID or service name. For POLARDB_ORACLE, this indicates the SID. For MAXCOMPUTE, this indicates the project. For other types, this field is usually empty.
         self.schema = schema
         # The status of the data source. Valid values:
         # - 0: normal
         # - -1: deleted
         # - -2: disabled
         self.state = state
-        # Indicates whether the cloud instance name is used as the data source name. Valid values:
+        # Specifies whether to use the cloud instance name as the data source name. Valid values:
         # - 1: yes
         # - 0: no
         self.sync_alias = sync_alias
@@ -175,6 +173,9 @@ class AddAgenticDataSourceResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.adb_spark_resource_group is not None:
+            result['AdbSparkResourceGroup'] = self.adb_spark_resource_group
+
         if self.alias is not None:
             result['Alias'] = self.alias
 
@@ -251,6 +252,9 @@ class AddAgenticDataSourceResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdbSparkResourceGroup') is not None:
+            self.adb_spark_resource_group = m.get('AdbSparkResourceGroup')
+
         if m.get('Alias') is not None:
             self.alias = m.get('Alias')
 

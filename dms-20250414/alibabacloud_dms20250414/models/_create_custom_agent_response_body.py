@@ -117,15 +117,15 @@ class CreateCustomAgentResponseBodyData(DaraModel):
         # - Default: The system-built-in custom agent.
         # - Common: The common custom agent.
         self.agent_type = agent_type
-        # The Alibaba Cloud main account ID.
+        # The ID of the Alibaba Cloud main account.
         self.aliyun_parent_uid = aliyun_parent_uid
         # The Alibaba Cloud account ID.
         self.aliyun_uid = aliyun_uid
-        # The callback feature configuration.
+        # The callback feature configuration items.
         self.callback_config = callback_config
         # The name of the creator.
         self.creator_user_name = creator_user_name
-        # The custom agent ID.
+        # The ID of the custom agent.
         self.custom_agent_id = custom_agent_id
         # The current DMS unit.
         self.dmsunit = dmsunit
@@ -141,9 +141,9 @@ class CreateCustomAgentResponseBodyData(DaraModel):
         self.gmt_created = gmt_created
         # The modification time.
         self.gmt_modified = gmt_modified
-        # The instructions.
+        # The instruction.
         self.instruction = instruction
-        # Indicates whether a scheduled task is configured.
+        # Indicates whether a periodic task is configured.
         self.is_schedule_task = is_schedule_task
         # The knowledge.
         self.knowledge = knowledge
@@ -157,7 +157,7 @@ class CreateCustomAgentResponseBodyData(DaraModel):
         self.modifier_user_name = modifier_user_name
         # The name of the custom agent.
         self.name = name
-        # The next run time of the scheduled task.
+        # The next execution time of the periodic task.
         # - Timestamp format.
         self.next_runtime = next_runtime
         # The offline time.
@@ -171,7 +171,7 @@ class CreateCustomAgentResponseBodyData(DaraModel):
         self.related_session_id = related_session_id
         # The release time.
         self.release_time = release_time
-        # The scheduled task configuration.
+        # The periodic task configuration.
         self.schedule_task_config = schedule_task_config
         # The custom agent status.
         self.status = status
@@ -184,7 +184,7 @@ class CreateCustomAgentResponseBodyData(DaraModel):
         # The web report theme. Valid values:
         # - default: Default.
         # - journal: Journal.
-        # - legacy: Classic.
+        # - legacy: Legacy.
         # - neobrutalism: Neobrutalism.
         # - infographic: Infographic.
         self.web_report_theme = web_report_theme
@@ -444,7 +444,7 @@ class CreateCustomAgentResponseBodyDataScheduleTaskConfig(DaraModel):
     ):
         # The cron expression for time-based scheduling.
         self.cron_expression = cron_expression
-        # The query for the scheduled task.
+        # The question for the scheduled task.
         self.query = query
         # The ID of the referenced historical session.
         self.related_session_id = related_session_id
@@ -546,12 +546,12 @@ class CreateCustomAgentResponseBodyDataKnowledgeConfigList(DaraModel):
         mcp_server_id: str = None,
     ):
         # The access type. Valid values:
-        # - mcp: MCP access.
-        # - dms_kb: DMS knowledge base access.
+        # - mcp: Accessed through MCP.
+        # - dms_kb: Accessed through the DMS knowledge base.
         self.access_type = access_type
         # The knowledge base ID.
         self.kb_uuid = kb_uuid
-        # The MCP server ID.
+        # The ID of the MCP server.
         self.mcp_server_id = mcp_server_id
 
     def validate(self):
@@ -659,11 +659,11 @@ class CreateCustomAgentResponseBodyDataCallbackConfig(DaraModel):
         tool_id: str = None,
         type: str = None,
     ):
-        # The callback tool invocation parameters.
+        # The parameters to invoke the callback tool.
         self.callback_args = callback_args
-        # The prompt for generating callback tool invocation parameters.
+        # The prompt for generating parameters to invoke the callback tool.
         self.callback_prompt = callback_prompt
-        # The callback tool invocation timing.
+        # The timing to invoke the callback tool.
         self.callback_time = callback_time
         # The callback tool identifier.
         self.tool_id = tool_id

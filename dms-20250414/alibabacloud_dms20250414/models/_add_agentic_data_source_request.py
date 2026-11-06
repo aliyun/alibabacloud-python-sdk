@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class AddAgenticDataSourceRequest(DaraModel):
     def __init__(
         self,
+        adb_spark_resource_group: str = None,
         alias: str = None,
         auth_account: str = None,
         auth_password: str = None,
@@ -31,24 +32,19 @@ class AddAgenticDataSourceRequest(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # The name of the ADB MySQL Spark resource group. This parameter takes effect only when DbType is set to ADB_MYSQL_SPARK. You must specify a resource group for this connection type. This parameter is independent of Schema (database name) and they cannot replace each other.
+        self.adb_spark_resource_group = adb_spark_resource_group
         # The display name of the data source. If you do not specify this parameter, the server generates a name.
         self.alias = alias
-        # The logon username. You can leave this parameter empty for authentication methods that do not require a username.
+        # The logon username. You can leave this parameter empty if the authentication method does not require a username.
         self.auth_account = auth_account
         # The logon password. This is sensitive information. Do not record or disclose it.
         self.auth_password = auth_password
-        # Optional. The authentication type. Valid values:
-        # - -1: No authentication required.
-        # - 0: Username and password.
-        # - 1: Password only.
-        # - 2: Password-free.
+        # Optional. The authentication type. Valid values: -1: no authentication required, 0: username and password, 1: password only, and 2: password-free.
         self.auth_type = auth_type
-        # The name of the metadata catalog. If you do not specify this parameter, the name is automatically generated. The name can be up to 128 characters in length. It must start with a Chinese character, a letter, or an underscore, and can contain digits and hyphens. It cannot contain only digits.
+        # The name of the metadata catalog. If you do not specify this parameter, the name is automatically generated. The name can be up to 128 characters in length. It must start with a letter, Chinese character, or underscore, and can contain digits and hyphens. It cannot contain only digits.
         self.catalog_name = catalog_name
-        # The entry method. Valid values:
-        # - INSTANCE_ID: Select an existing cloud instance.
-        # - HOST_PORT: Enter the endpoint and port.
-        # If you do not specify this parameter, HOST_PORT is used.
+        # The entry method. Valid values: INSTANCE_ID: select an existing cloud instance, and HOST_PORT: enter an endpoint and port. If you do not specify this parameter, HOST_PORT is used.
         self.create_mode = create_mode
         # The type of the data source. Use uppercase letters. Do not pass numbers. Valid values: MYSQL, POSTGRESQL, ORACLE, SQLSERVER, MARIADB, POLARDB, POLARDB_POSTGRESQL, POLARDB_ORACLE, OCEANBASEX, DRDS, ADB_MYSQL, ADB_POSTGRESQL, CLICKHOUSE, SELECTDB, STARROCKS, HOLOGRES, MAXCOMPUTE, ES_REST, and TRINO.
         # 
@@ -60,18 +56,13 @@ class AddAgenticDataSourceRequest(DaraModel):
         self.host = host
         # The ID of the cloud resource instance. This parameter is required when you select an existing cloud instance. You can leave this parameter empty when you enter an endpoint.
         self.instance_resource_id = instance_resource_id
-        # The source of the data source. Valid values:
-        # - RDS: An ApsaraDB instance.
-        # - PUBLIC_OWN: A self-managed database on the Internet.
-        # - ECS_OWN: A self-managed database on an ECS instance.
-        # - GATEWAY: A database accessed through Database Gateway.
-        # - VPC_IDC: A database accessed through a VPC or data center.
+        # The source of the data source. Valid values: RDS: ApsaraDB instance, PUBLIC_OWN: self-managed database connected over the Internet, ECS_OWN: self-managed database hosted on an ECS instance, GATEWAY: database connected through Database Gateway, and VPC_IDC: database connected through a VPC or IDC.
         # 
         # This parameter is required.
         self.instance_source = instance_source
         # The name of the credential. Specify this parameter when you use Key Management Service (KMS) to manage database credentials. Leave this parameter empty in other scenarios.
         self.kms_secret = kms_secret
-        # Optional. The ID of the data access security policy. This policy is used to control the access and protection rules for the data source.
+        # Optional. The ID of the data access security policy. This policy is used to control access and protection rules for the data source.
         self.policy_id = policy_id
         # Optional. The service port of the database. You can leave this parameter empty if you select an existing cloud instance and the port is automatically populated.
         self.port = port
@@ -83,16 +74,9 @@ class AddAgenticDataSourceRequest(DaraModel):
         self.snowflake_role = snowflake_role
         # The name of the Snowflake compute warehouse. This parameter takes effect only when DbType is set to SNOWFLAKE.
         self.snowflake_warehouse = snowflake_warehouse
-        # Specifies whether to use the cloud instance name as the data source name. Valid values:
-        # - 1: Yes.
-        # - 0: No.
-        # This parameter takes effect only when you select a cloud database instance.
+        # Specifies whether to use the cloud instance name as the data source name. Valid values: 1: yes, and 0: no. This parameter takes effect only when you select a cloud database instance.
         self.sync_alias = sync_alias
-        # Specifies whether to use SSL. Valid values:
-        # - 1: Enable.
-        # - 0: Disable.
-        # - -1: Use the default setting.
-        # Only ADB_MYSQL, CLICKHOUSE, MARIADB, MYSQL, OCEANBASEX, POLARDB, SELECTDB, and STARROCKS support SSL. Leave this parameter empty for other types.
+        # Specifies whether to use SSL. Valid values: 1: enabled, 0: disabled, and -1: default settings. Only ADB_MYSQL, CLICKHOUSE, MARIADB, MYSQL, OCEANBASEX, POLARDB, SELECTDB, and STARROCKS support SSL. Leave this parameter empty for other types.
         self.use_ssl = use_ssl
         # The ID of the destination vSwitch. Specify this parameter when you access MaxCompute through a VPC. Leave this parameter empty in other scenarios.
         self.v_switch_id = v_switch_id
@@ -109,6 +93,9 @@ class AddAgenticDataSourceRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.adb_spark_resource_group is not None:
+            result['AdbSparkResourceGroup'] = self.adb_spark_resource_group
+
         if self.alias is not None:
             result['Alias'] = self.alias
 
@@ -182,6 +169,9 @@ class AddAgenticDataSourceRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdbSparkResourceGroup') is not None:
+            self.adb_spark_resource_group = m.get('AdbSparkResourceGroup')
+
         if m.get('Alias') is not None:
             self.alias = m.get('Alias')
 

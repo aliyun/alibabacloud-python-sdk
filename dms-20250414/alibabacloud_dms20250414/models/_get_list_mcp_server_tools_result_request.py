@@ -11,11 +11,11 @@ class GetListMcpServerToolsResultRequest(DaraModel):
         mcp_server_uuid: str = None,
         session_id: str = None,
     ):
-        # The DMS unit identifier. This value is typically the same as the DMSUnit used in the request that started the tool detection.
+        # The DMS unit identifier. This is typically the same as the DMSUnit used in the request to start tool detection.
         self.dmsunit = dmsunit
-        # The MCP Server ID used when the detection was started. This value must match the detection record associated with the SessionId.
+        # The MCP server ID used when starting the detection. It must match the detection record corresponding to SessionId.
         self.mcp_server_uuid = mcp_server_uuid
-        # The temporary session ID returned by StartListMcpServerTools. This ID is used to locate the connectivity detection task.
+        # The temporary session ID returned by StartListMcpServerTools, which is used to locate this connectivity detection task.
         self.session_id = session_id
 
     def validate(self):

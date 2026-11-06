@@ -13,15 +13,15 @@ class DeleteAgenticDataSourceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Indicates whether the deletion was successful.
+        # Indicates whether the deletion is successful.
         self.data = data
-        # The error code returned when the call fails. This field is empty when the call succeeds.
+        # The error code returned if the call fails. This parameter is empty if the call succeeds.
         self.error_code = error_code
-        # The error message returned when the call fails. This field is empty when the call succeeds.
+        # The error message returned if the call fails. This parameter is empty if the call succeeds.
         self.error_message = error_message
-        # The ID of the request. You can use this ID to trace the call.
+        # The request ID used to trace the call.
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the call is successful.
         self.success = success
 
     def validate(self):

@@ -20,24 +20,23 @@ class ListAgenticSqlExecutionHistoriesRequest(DaraModel):
         sql_type: str = None,
         start_time: str = None,
     ):
-        # The ID of the actor. User IDs start with usr_, and agent IDs start with agt_. If you do not specify this parameter, a user queries their own execution history and the execution history of their agents, while an agent queries only its own execution history. If you specify this parameter, exact matching is performed, and the value must be the ID of the current user or an agent owned by the current user.
+        # The ID of the actor. User IDs start with usr_, and agent IDs start with agt_. If not specified, a user queries their own history and the history of their agents, while an agent queries only its own history. If specified, exact matching is applied, and the value must be the ID of the current user or an agent owned by the current user.
         self.actor_id = actor_id
         # The name of the actor for exact matching.
         self.actor_name = actor_name
-        # The type of the actor for exact matching. Valid values: HUMAN and AGENT.
+        # The type of the actor for exact matching. Valid values: HUMAN, AGENT.
         self.actor_type = actor_type
         # The catalog UUID for exact matching. You can obtain this value by calling ListAgenticCatalog or SearchAgenticCatalog.
         self.catalog_uuid = catalog_uuid
         # The database UUID for exact matching. You can obtain this value by calling ListAgenticDatabase or SearchAgenticDatabase.
         self.database_uuid = database_uuid
-        # The end time of the query. Specify the time in the yyyy-MM-dd HH:mm:ss format. If you do not specify this parameter, the default value is the current time. If the format cannot be parsed or the end time is earlier than the start time, the request fails.
+        # The end time of the query, in the yyyy-MM-dd HH:mm:ss format. If not specified, the default is the current time. If the format cannot be parsed or the end time is earlier than the start time, the request fails.
         self.end_time = end_time
-        # The page number. Pages start from 1. Default value: 1.
+        # The page number, starting from 1. Default value: 1.
         self.page = page
-        # The execution scenario for exact matching. Valid values:
+        # The execution scenario for exact matching. If not specified, both scenarios are queried. Valid values:
         # - AGENT_QUERY: The agent directly executes the SQL statement.
-        # - WORKFLOW_QUERY: The SQL statement is asynchronously executed through a workflow.
-        # If you do not specify this parameter, both scenarios are queried.
+        # - WORKFLOW_QUERY: The SQL statement is executed asynchronously through a workflow.
         self.scenario = scenario
         # The number of entries per page. Default value: 20. Maximum value: 100.
         self.size = size
@@ -45,7 +44,7 @@ class ListAgenticSqlExecutionHistoriesRequest(DaraModel):
         self.sql_keyword = sql_keyword
         # The SQL type for exact matching.
         self.sql_type = sql_type
-        # The start time of the query. Specify the time in the yyyy-MM-dd HH:mm:ss format. If you do not specify this parameter, the default time range is the last 7 days. If the specified time is more than 730 days ago or the format cannot be parsed, the query is performed for the last 730 days.
+        # The start time of the query, in the yyyy-MM-dd HH:mm:ss format. If not specified, the default is the last 7 days. If the time is earlier than 730 days ago or the format cannot be parsed, the query starts from 730 days ago.
         self.start_time = start_time
 
     def validate(self):

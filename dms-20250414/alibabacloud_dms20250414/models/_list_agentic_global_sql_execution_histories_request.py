@@ -20,32 +20,29 @@ class ListAgenticGlobalSqlExecutionHistoriesRequest(DaraModel):
         sql_type: str = None,
         start_time: str = None,
     ):
-        # The ID of the actor. A user ID starts with usr_, and an agent ID starts with agt_. If you do not specify this parameter, all records within the current tenant are queried. If you specify a user ID, the records of the user and the agents under the user are included. If you specify an agent ID, only the records of the agent are matched. The actor must belong to the current tenant.
+        # The ID of the executor. User IDs start with usr_, and agent IDs start with agt_. If you do not specify this parameter, all records within the current tenant are queried. If you specify a user ID, the records of the user and their agents are included. If you specify an agent ID, only the records of the agent are matched. The executor must belong to the current tenant.
         self.actor_id = actor_id
-        # The name of the actor for exact match.
+        # The name of the executor for exact match.
         self.actor_name = actor_name
-        # The type of the actor for exact match. Valid values: HUMAN and AGENT.
+        # The type of the executor for exact match. Valid values: HUMAN and AGENT.
         self.actor_type = actor_type
-        # The catalog UUID for exact match. You can obtain this value by calling ListAgenticCatalog or SearchAgenticCatalog.
+        # The Catalog UUID for exact match. You can obtain this value by calling ListAgenticCatalog or SearchAgenticCatalog.
         self.catalog_uuid = catalog_uuid
-        # The database UUID for exact match. You can obtain this value by calling ListAgenticDatabase or SearchAgenticDatabase.
+        # The Database UUID for exact match. You can obtain this value by calling ListAgenticDatabase or SearchAgenticDatabase.
         self.database_uuid = database_uuid
-        # The end time of the query. Specify the time in the yyyy-MM-dd HH:mm:ss format. If you do not specify this parameter, the default end time is the current time. If the format cannot be parsed or the end time is earlier than the start time, the request fails.
+        # The end time of the query. Format: yyyy-MM-dd HH:mm:ss. Default value: the current time. If the format cannot be parsed or the end time is earlier than the start time, the request fails.
         self.end_time = end_time
         # The page number. Pages start from 1. Default value: 1.
         self.page = page
-        # The execution scenario for exact match. Valid values:
-        # - AGENT_QUERY: The agent directly executes the SQL statement.
-        # - WORKFLOW_QUERY: The SQL statement is asynchronously executed through a workflow.
-        # If you do not specify this parameter, both scenarios are queried.
+        # The execution scenario for exact match. Valid values: AGENT_QUERY (the agent directly executes the SQL statement) and WORKFLOW_QUERY (the SQL statement is asynchronously executed through a workflow). If you do not specify this parameter, both scenarios are queried.
         self.scenario = scenario
         # The number of entries per page. Default value: 20. Maximum value: 100.
         self.size = size
-        # The keyword for fuzzy match based on the original SQL statement.
+        # The keyword for fuzzy match against the original SQL statement.
         self.sql_keyword = sql_keyword
         # The SQL type for exact match.
         self.sql_type = sql_type
-        # The start time of the query. Specify the time in the yyyy-MM-dd HH:mm:ss format. If you do not specify this parameter, the default time range is the last 7 days. If the specified time is earlier than 730 days ago or the format cannot be parsed, the query starts from 730 days ago.
+        # The start time of the query. Format: yyyy-MM-dd HH:mm:ss. Default value: the last 7 days. If the specified time is earlier than 730 days ago or the format cannot be parsed, the query starts from 730 days ago.
         self.start_time = start_time
 
     def validate(self):

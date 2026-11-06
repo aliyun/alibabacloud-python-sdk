@@ -23,8 +23,7 @@ class CreateDataAgentSkillMetaResponseBody(DaraModel):
         # Id of the request
         self.request_id = request_id
         # Indicates whether the request is successful. Valid values:
-        # 
-        # - **true**: The request is successful.                                 
+        # - **true**: The request is successful.
         # - **false**: The request fails.
         self.success = success
 
@@ -104,9 +103,10 @@ class CreateDataAgentSkillMetaResponseBodyData(DaraModel):
         self.enabled = enabled
         # The creation time.
         self.gmt_created = gmt_created
-        # The modification time.
+        # The update time.
         self.gmt_modified = gmt_modified
-        # The error message for skill parsing. This message is returned when the skill status is INVALID.
+        # The skill parsing error message.
+        # - This error message is returned when the skill status is INVALID.
         self.parse_error = parse_error
         # The region.
         self.region = region
@@ -117,9 +117,9 @@ class CreateDataAgentSkillMetaResponseBodyData(DaraModel):
         # The skill name.
         self.skill_name = skill_name
         # The skill status. Valid values:
-        # - INIT: The skill is not ready.
-        # - ACTIVE: The skill is active.
-        # - INVALID: The skill is invalid.
+        # - INIT: Not ready.
+        # - ACTIVE: Active.
+        # - INVALID: Invalid.
         self.skill_status = skill_status
         # The workspace ID.
         self.workspace_id = workspace_id

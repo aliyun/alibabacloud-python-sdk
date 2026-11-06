@@ -16,11 +16,11 @@ class UpdateAgenticDataSourceResponseBody(DaraModel):
     ):
         # The updated data source details.
         self.data = data
-        # The error code returned if the call fails. This parameter is empty if the call is successful.
+        # The error code returned when the call fails. This parameter is empty when the call is successful.
         self.error_code = error_code
-        # The error message returned if the call fails. This parameter is empty if the call is successful.
+        # The error message returned when the call fails. This parameter is empty when the call is successful.
         self.error_message = error_message
-        # The ID of the request.
+        # The request ID used to trace the call.
         self.request_id = request_id
         # Indicates whether the call is successful.
         self.success = success
@@ -74,6 +74,7 @@ class UpdateAgenticDataSourceResponseBody(DaraModel):
 class UpdateAgenticDataSourceResponseBodyData(DaraModel):
     def __init__(
         self,
+        adb_spark_resource_group: str = None,
         alias: str = None,
         auth_account: str = None,
         auth_password: str = None,
@@ -99,11 +100,13 @@ class UpdateAgenticDataSourceResponseBodyData(DaraModel):
         sync_alias: int = None,
         use_ssl: int = None,
     ):
+        # The name of the ADB MySQL Spark resource group. This parameter is returned only for data source details where DbType is ADB_MYSQL_SPARK. It is independent of the schema (database name).
+        self.adb_spark_resource_group = adb_spark_resource_group
         # The display name of the data source.
         self.alias = alias
         # The logon username for the data source. This parameter is empty if username authentication is not used.
         self.auth_account = auth_account
-        # The masked value of the password or token. The actual value is not returned.
+        # The masked value of the password or token. The actual content is not returned.
         self.auth_password = auth_password
         # The authentication method. Valid values:
         # - -1: no authentication required
@@ -119,7 +122,7 @@ class UpdateAgenticDataSourceResponseBodyData(DaraModel):
         self.create_mode = create_mode
         # The unique identifier of the data source.
         self.data_source_uuid = data_source_uuid
-        # The type of the data source. Valid values: MYSQL, POSTGRESQL, ORACLE, SQLSERVER, MARIADB, POLARDB, POLARDB_POSTGRESQL, POLARDB_ORACLE, OCEANBASEX, DRDS, ADB_MYSQL, ADB_POSTGRESQL, CLICKHOUSE, SELECTDB, STARROCKS, HOLOGRES, MAXCOMPUTE, ES_REST, and TRINO.
+        # The data source type. Valid values: MYSQL, POSTGRESQL, ORACLE, SQLSERVER, MARIADB, POLARDB, POLARDB_POSTGRESQL, POLARDB_ORACLE, OCEANBASEX, DRDS, ADB_MYSQL, ADB_POSTGRESQL, CLICKHOUSE, SELECTDB, STARROCKS, HOLOGRES, MAXCOMPUTE, ES_REST, and TRINO.
         self.db_type = db_type
         # The environment type. Valid values: product, pre, dev, test, sit, uat, pet, and stag.
         self.env_type = env_type
@@ -133,14 +136,14 @@ class UpdateAgenticDataSourceResponseBodyData(DaraModel):
         self.instance_resource_id = instance_resource_id
         # The source of the data source. Valid values:
         # - RDS: ApsaraDB instance
-        # - PUBLIC_OWN: self-managed database on the Internet
-        # - ECS_OWN: self-managed database on an ECS instance
-        # - GATEWAY: connected through Database Gateway
-        # - VPC_IDC: connected through a VPC or IDC
+        # - PUBLIC_OWN: self-managed database connected over the Internet
+        # - ECS_OWN: self-managed database hosted on an ECS instance
+        # - GATEWAY: database connected through Database Gateway
+        # - VPC_IDC: database connected through a VPC or data center
         self.instance_source = instance_source
         # The name of the KMS-managed credential. This parameter is empty if KMS is not used. This is sensitive information.
         self.kms_secret = kms_secret
-        # The ID of the data access security policy in use. This parameter is empty if no policy is configured.
+        # The ID of the data access security policy currently in use. This parameter is empty if no policy is set.
         self.policy_id = policy_id
         # The connection port of the data source.
         self.port = port
@@ -148,7 +151,7 @@ class UpdateAgenticDataSourceResponseBodyData(DaraModel):
         self.region_id = region_id
         # The ID of the Alibaba Cloud account to which the resource belongs.
         self.resource_account_id = resource_account_id
-        # The ARN of the RAM role used to access the data source. This parameter is empty if role authorization is not used.
+        # The ARN of the RAM role used to access the data source. This parameter is empty if role-based authorization is not used.
         self.role_arn = role_arn
         # The name of the connection target. For ADB_POSTGRESQL, DRDS, POSTGRESQL, and POLARDB_POSTGRESQL, this indicates the database name. For ORACLE, this indicates the SID or service name. For POLARDB_ORACLE, this indicates the SID. For MAXCOMPUTE, this indicates the project. For other types, this parameter is usually empty.
         self.schema = schema
@@ -162,9 +165,9 @@ class UpdateAgenticDataSourceResponseBodyData(DaraModel):
         # - 0: no
         self.sync_alias = sync_alias
         # The SSL settings. Valid values:
-        # - 1: enabled
-        # - 0: disabled
-        # - -1: default settings
+        # - 1: enable
+        # - 0: disable
+        # - -1: use default settings
         self.use_ssl = use_ssl
 
     def validate(self):
@@ -175,6 +178,9 @@ class UpdateAgenticDataSourceResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.adb_spark_resource_group is not None:
+            result['AdbSparkResourceGroup'] = self.adb_spark_resource_group
+
         if self.alias is not None:
             result['Alias'] = self.alias
 
@@ -251,6 +257,9 @@ class UpdateAgenticDataSourceResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdbSparkResourceGroup') is not None:
+            self.adb_spark_resource_group = m.get('AdbSparkResourceGroup')
+
         if m.get('Alias') is not None:
             self.alias = m.get('Alias')
 

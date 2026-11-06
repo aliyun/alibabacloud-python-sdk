@@ -7,18 +7,21 @@ from darabonba.model import DaraModel
 class CreateDataAgentWorkspaceRequest(DaraModel):
     def __init__(
         self,
+        config: str = None,
         dmsunit: str = None,
         is_session_share_enabled: bool = None,
         workspace_desc: str = None,
         workspace_name: str = None,
     ):
+        # The workspace configurations.
+        self.config = config
         # The current DMS unit.
         self.dmsunit = dmsunit
-        # Specifies whether session sharing is enabled within the workspace.
+        # Specifies whether sessions within the workspace are shared.
         self.is_session_share_enabled = is_session_share_enabled
-        # The description of the workspace.
+        # The description of the collaborative workspace.
         self.workspace_desc = workspace_desc
-        # The name of the workspace.
+        # The name of the collaborative workspace.
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -29,6 +32,9 @@ class CreateDataAgentWorkspaceRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.config is not None:
+            result['Config'] = self.config
+
         if self.dmsunit is not None:
             result['DMSUnit'] = self.dmsunit
 
@@ -45,6 +51,9 @@ class CreateDataAgentWorkspaceRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+
         if m.get('DMSUnit') is not None:
             self.dmsunit = m.get('DMSUnit')
 

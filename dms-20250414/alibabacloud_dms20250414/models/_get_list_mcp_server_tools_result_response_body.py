@@ -16,15 +16,15 @@ class GetListMcpServerToolsResultResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The MCP Server connectivity detection result. The business status is distinguished by the State field.
+        # The connectivity detection results of the MCP server. The business status is indicated by State.
         self.data = data
-        # The return code. The value success is returned if the request succeeds. An error code is returned if the request fails.
+        # The error code. The value is success if the request succeeds, or the corresponding error code if the request fails.
         self.error_code = error_code
-        # The error message returned when a system-level request failure occurs.
+        # The error message returned when the request fails at the system level.
         self.error_message = error_message
-        # The request ID, which is used to locate this API call.
+        # The request ID, which is used to locate the call.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values: true and false.
+        # Indicates whether the request was successful. A value of true indicates success. A value of false indicates failure.
         self.success = success
 
     def validate(self):
@@ -80,14 +80,9 @@ class GetListMcpServerToolsResultResponseBodyData(DaraModel):
         state: str = None,
         tools: List[main_models.GetListMcpServerToolsResultResponseBodyDataTools] = None,
     ):
-        # Indicates whether the MCP Server is accessible. The value is true only when State is success.
+        # Indicates whether the MCP server is accessible. The value is true only when State is success.
         self.accessible = accessible
-        # The detection status. Valid values:
-        # - pending: The detection is in progress.
-        # - success: The detection succeeded.
-        # - failed: The detection failed or timed out.
-        # 
-        # The top-level Success field can be true in all three business states.
+        # The detection status. Valid values: pending: The detection is in progress. success: The detection succeeded. failed: The detection failed or timed out. The top-level Success field can be true in all three business statuses.
         self.state = state
         # The list of detected MCP tools. A non-empty list is returned only when State is success.
         self.tools = tools
@@ -139,11 +134,11 @@ class GetListMcpServerToolsResultResponseBodyDataTools(DaraModel):
         input_schema: str = None,
         name: str = None,
     ):
-        # The description of the MCP tool functionality.
+        # The description of the MCP tool.
         self.description = description
-        # The JSON Schema string of the tool input parameters.
+        # The JSON schema string for the input parameters of the tool.
         self.input_schema = input_schema
-        # The MCP tool name.
+        # The name of the MCP tool.
         self.name = name
 
     def validate(self):

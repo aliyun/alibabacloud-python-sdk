@@ -20,7 +20,7 @@ class CreateAgenticSqlExecuteCredentialResponseBody(DaraModel):
         self.error_code = error_code
         # The error message returned if the call fails.
         self.error_message = error_message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # Indicates whether the request is successful. Valid values:
         # 
@@ -88,7 +88,7 @@ class CreateAgenticSqlExecuteCredentialResponseBodyData(DaraModel):
     ):
         # The AccessKey of the credential.
         self.access_key = access_key
-        # The AccessKey secret of the credential. This value is returned only once when the credential is created. Keep it secure.
+        # The AccessSecret of the credential. This value is returned only once when the credential is created. Keep it secure.
         self.access_secret = access_secret
         # The name of the instance.
         self.catalog_name = catalog_name

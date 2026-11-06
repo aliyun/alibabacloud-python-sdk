@@ -123,6 +123,9 @@ from ._create_one_meta_sql_template_response import CreateOneMetaSqlTemplateResp
 from ._delete_agentic_data_source_request import DeleteAgenticDataSourceRequest
 from ._delete_agentic_data_source_response_body import DeleteAgenticDataSourceResponseBody
 from ._delete_agentic_data_source_response import DeleteAgenticDataSourceResponse
+from ._delete_agentic_vpc_endpoint_request import DeleteAgenticVpcEndpointRequest
+from ._delete_agentic_vpc_endpoint_response_body import DeleteAgenticVpcEndpointResponseBody
+from ._delete_agentic_vpc_endpoint_response import DeleteAgenticVpcEndpointResponse
 from ._delete_airflow_request import DeleteAirflowRequest
 from ._delete_airflow_response_body import DeleteAirflowResponseBody
 from ._delete_airflow_response import DeleteAirflowResponse
@@ -508,6 +511,7 @@ from ._create_data_agent_session_response_body import CreateDataAgentSessionResp
 from ._create_data_agent_skill_meta_response_body import CreateDataAgentSkillMetaResponseBodyData
 from ._create_data_agent_theme_response_body import CreateDataAgentThemeResponseBodyData
 from ._create_data_agent_workspace_response_body import CreateDataAgentWorkspaceResponseBodyData
+from ._delete_agentic_vpc_endpoint_response_body import DeleteAgenticVpcEndpointResponseBodyData
 from ._delete_airflow_response_body import DeleteAirflowResponseBodyRootResponses
 from ._delete_airflow_response_body import DeleteAirflowResponseBodyRoot
 from ._delete_custom_agent_response_body import DeleteCustomAgentResponseBodyData
@@ -531,6 +535,12 @@ from ._describe_data_agent_session_response_body import DescribeDataAgentSession
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataChatHistoryLocations
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataDataSources
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataMessages
+from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentCallbackConfig
+from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentExecutionConfig
+from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentKnowledgeConfigList
+from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentKnowledgeSemanticConfigList
+from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentScheduleTaskConfig
+from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataPreviewCustomAgent
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataRecallResults
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataSessionConfig
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyData
@@ -755,6 +765,9 @@ __all__ = [
     DeleteAgenticDataSourceRequest,
     DeleteAgenticDataSourceResponseBody,
     DeleteAgenticDataSourceResponse,
+    DeleteAgenticVpcEndpointRequest,
+    DeleteAgenticVpcEndpointResponseBody,
+    DeleteAgenticVpcEndpointResponse,
     DeleteAirflowRequest,
     DeleteAirflowResponseBody,
     DeleteAirflowResponse,
@@ -1140,6 +1153,7 @@ __all__ = [
     CreateDataAgentSkillMetaResponseBodyData,
     CreateDataAgentThemeResponseBodyData,
     CreateDataAgentWorkspaceResponseBodyData,
+    DeleteAgenticVpcEndpointResponseBodyData,
     DeleteAirflowResponseBodyRootResponses,
     DeleteAirflowResponseBodyRoot,
     DeleteCustomAgentResponseBodyData,
@@ -1163,6 +1177,12 @@ __all__ = [
     DescribeDataAgentSessionResponseBodyDataChatHistoryLocations,
     DescribeDataAgentSessionResponseBodyDataDataSources,
     DescribeDataAgentSessionResponseBodyDataMessages,
+    DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentCallbackConfig,
+    DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentExecutionConfig,
+    DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentKnowledgeConfigList,
+    DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentKnowledgeSemanticConfigList,
+    DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentScheduleTaskConfig,
+    DescribeDataAgentSessionResponseBodyDataPreviewCustomAgent,
     DescribeDataAgentSessionResponseBodyDataRecallResults,
     DescribeDataAgentSessionResponseBodyDataSessionConfig,
     DescribeDataAgentSessionResponseBodyData,
