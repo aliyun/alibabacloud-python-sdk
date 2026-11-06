@@ -18,7 +18,7 @@ class WebFetchResponseBody(DaraModel):
         url: str = None,
         url_type: str = None,
     ):
-        # The content of the web page.
+        # The web page content.
         self.content = content
         # The actual output format. Valid values:
         # 
@@ -26,7 +26,7 @@ class WebFetchResponseBody(DaraModel):
         # 
         # - **html**: HTML format.
         # 
-        # - **text**: Plain text format.
+        # - **text**: plain text format.
         self.content_format = content_format
         # The error code.
         self.error_code = error_code
@@ -38,16 +38,16 @@ class WebFetchResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
-        # The title of the web page.
+        # The web page title.
         self.title = title
         # The URL of the web page.
         self.url = url
         # The URL classification result. Valid values:
-        # - **static_html**: A static HTML page.
-        # - **dynamic_js**: A single-page application (SPA) page that requires JavaScript rendering.
-        # - **audio**: An audio file.
-        # - **video**: A video file.
-        # - **document**: A document file (PDF, Word, PPT, or Excel).
+        # - **static_html**: Static HTML page.
+        # - **dynamic_js**: Single-page application (SPA) page that requires JavaScript rendering.
+        # - **audio**: Audio file.
+        # - **video**: Video file.
+        # - **document**: Document file (PDF, Word, PPT, or Excel).
         # - **unknown**: Unrecognizable.
         self.url_type = url_type
 

@@ -13,7 +13,7 @@ class DescribeDocParserJobStatusRequest(DaraModel):
     ):
         # The agent name.
         self.agent_name = agent_name
-        # The ID of the document parsing task. You can obtain this ID by calling CreateDocParserJob.
+        # The ID of the document parsing task. You can obtain the ID by calling CreateDocParserJob.
         # 
         # This parameter is required.
         self.job_id = job_id

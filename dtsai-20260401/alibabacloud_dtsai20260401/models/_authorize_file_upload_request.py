@@ -12,8 +12,9 @@ class AuthorizeFileUploadRequest(DaraModel):
         file_format: str = None,
         region_id: str = None,
     ):
-        # The Agent or client source that initiates the call, such as codex, cursor, or openapi. Maximum length: 32 characters. Used only for statistics and does not participate in authentication, throttling, quota, or billing.
+        # The source of the agent or client that initiates the call, such as codex, cursor, or openapi. The maximum length is 32 characters. This parameter is used only for statistics and does not participate in authentication, throttling, quota management, or billing.
         self.agent_name = agent_name
+        # The number of OSS PostObject direct upload authorizations returned in this request.
         self.batch_size = batch_size
         # The format of the file to be uploaded.
         self.file_format = file_format

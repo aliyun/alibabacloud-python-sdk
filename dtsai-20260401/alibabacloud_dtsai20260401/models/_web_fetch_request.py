@@ -20,13 +20,13 @@ class WebFetchRequest(DaraModel):
         # 
         # - **html**: HTML format.
         # 
-        # - **text**: Plain text format.
+        # - **text**: plain text format.
         self.output_format = output_format
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The URL of the target web page to crawl.
+        # The URL of the target web page to fetch.
         # 
         # This parameter is required.
         self.url = url

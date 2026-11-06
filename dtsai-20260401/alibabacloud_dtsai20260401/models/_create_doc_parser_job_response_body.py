@@ -24,7 +24,7 @@ class CreateDocParserJobResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The document parsing task ID.
+        # The ID of the document parsing task.
         self.job_id = job_id
         # The request ID.
         self.request_id = request_id
@@ -32,11 +32,11 @@ class CreateDocParserJobResponseBody(DaraModel):
         self.result = result
         # The result type.
         self.result_type = result_type
-        # The result URL.
+        # The URL of the result.
         self.result_url = result_url
         # The status information.
         self.status = status
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

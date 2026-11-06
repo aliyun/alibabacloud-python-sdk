@@ -18,7 +18,7 @@ class WebSearchRequest(DaraModel):
         self.agent_name = agent_name
         # The maximum number of results to return. Default value: 10. Valid values: 1 to 50.
         self.max_results = max_results
-        # The search query statement.
+        # The search query string.
         # 
         # This parameter is required.
         self.query = query
@@ -26,9 +26,9 @@ class WebSearchRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The list of domain names.
+        # A comma-separated list of domain names. The total length cannot exceed 20,480 characters, and the list can contain up to 100 entries. Subdomains are included by default.
         self.url_scope_domains = url_scope_domains
-        # The URL scope mode.
+        # The domain scope mode. Valid values: allowOnly and deny. This parameter must be specified together with UrlScopeDomains, or both must be omitted.
         self.url_scope_mode = url_scope_mode
 
     def validate(self):

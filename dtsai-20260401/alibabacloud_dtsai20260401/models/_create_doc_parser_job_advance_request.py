@@ -14,6 +14,7 @@ class CreateDocParserJobAdvanceRequest(DaraModel):
         audio_clip_output: bool = None,
         audio_window_seconds: int = None,
         chunk_summary: bool = None,
+        document_structure: bool = None,
         file_format: str = None,
         file_name: str = None,
         file_url_object: BinaryIO = None,
@@ -34,27 +35,29 @@ class CreateDocParserJobAdvanceRequest(DaraModel):
         result_type: str = None,
         table_format: str = None,
     ):
-        # The agent name.
+        # The name of the agent.
         self.agent_name = agent_name
-        # The language type for speech recognition.
+        # The Automatic Speech Recognition (ASR) language hint. Valid values: auto, zh, and en. Default value: auto. If set to auto, the language field in the result is empty.
         self.asr_language = asr_language
-        # The audio clip output.
+        # Specifies whether to output segmented audio clips to OSS. Default value: true.
         self.audio_clip_output = audio_clip_output
-        # The audio window duration in seconds.
+        # The audio chunk window duration in seconds. This parameter takes effect only for pure audio files. Valid values: 10 to 600. If this parameter is passed in a video request, an InvalidParameter error is returned.
         self.audio_window_seconds = audio_window_seconds
-        # The chunk summary information.
+        # Specifies whether to generate a one-sentence summary for each segment. Default value: true.
         self.chunk_summary = chunk_summary
+        # Specifies whether to extract the directory and section structure of the document.
+        self.document_structure = document_structure
         # The format of the input file. Valid values:
         # 
         # - **pdf**: PDF file.
         # 
-        # - **docx**: Word file in docx format.
+        # - **docx**: Word file in DOCX format.
         # 
-        # - **doc**: Word file in doc format.
+        # - **doc**: Word file in DOC format.
         # 
-        # - **pptx**: PPT file in pptx format.
+        # - **pptx**: PowerPoint file in PPTX format.
         # 
-        # - **ppt**: PPT file in ppt format.
+        # - **ppt**: PowerPoint file in PPT format.
         # 
         # - **txt**: Plain text file.
         # 
@@ -68,33 +71,33 @@ class CreateDocParserJobAdvanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.file_format = file_format
-        # The file name, which must include the file name extension.
+        # The name of the file, which must include the file name extension.
         # 
         # This parameter is required.
         self.file_name = file_name
         # The HTTP or HTTPS URL of the file to be parsed.
-        # >SDKs for various programming languages additionally provide a `CreateDocParserJobAdvance` method that supports passing a local file stream directly (such as Java InputStream), without the need to upload the file to OSS and construct a FileUrl in advance. When using the Advance method, replace the `FileUrl` parameter (URL string) with the `FileUrlObject` parameter (file stream). All other request parameters remain unchanged. The SDK automatically performs the following operations:
-        # >1. Obtains temporary OSS upload credentials.
-        # >2. Uploads the file stream directly to OSS.
-        # >3. Calls the CreateDocParserJob operation using the generated OSS URL.
+        # > SDKs for various programming languages also provide the `CreateDocParserJobAdvance` method, which allows you to pass a local file stream (such as InputStream in Java) directly without uploading the file to OSS and constructing a FileUrl in advance. When you use the Advance method, replace the `FileUrl` parameter (URL string) with the `FileUrlObject` parameter (file stream) and keep other request parameters unchanged. The SDK automatically performs the following operations:
+        # > 1. Obtains temporary OSS upload credentials.
+        # > 2. Uploads the file stream directly to OSS.
+        # > 3. Calls the CreateDocParserJob operation by using the generated OSS URL.
         self.file_url_object = file_url_object
-        # The frame output result.
+        # Specifies whether to output the original images of keyframes to OSS. This parameter takes effect only for videos. Default value: true. The media references in the result are oss:// protocol addresses, and the caller must have OSS permissions to read them.
         self.frame_output = frame_output
-        # The global summary information.
+        # Specifies whether to generate a global summary for the entire media. Default value: true.
         self.global_summary = global_summary
-        # The image processing format.
+        # The image handling mode. Valid values: ignore, base64, placeholder, and oss. Default value: oss. If set to oss, image links are returned in the body text.
         self.image_mode = image_mode
-        # The image understanding and analysis setting.
+        # Specifies whether to generate image understanding text. Valid values: full and none. Default value: full.
         self.image_understanding = image_understanding
-        # The media chunk interval in seconds.
+        # The media chunking interval in seconds. This parameter takes effect only for videos and when the chunking strategy is set to interval. Valid values: 5 to 600.
         self.media_chunk_interval_seconds = media_chunk_interval_seconds
-        # The media chunk strategy.
+        # The chunking strategy. This parameter takes effect only for videos. Valid values: scene and interval. Default value: scene, which chunks the video by scene. If set to interval, the video is chunked by fixed intervals.
         self.media_chunk_strategy = media_chunk_strategy
-        # The number of media frames per minute.
+        # The number of media frames extracted per minute. This parameter takes effect only for videos. Valid values: 0 to 30. A value of 0 indicates that the dynamic frame budget is disabled.
         self.media_frames_per_minute = media_frames_per_minute
-        # The maximum frame budget for media.
+        # The maximum media frame budget. This parameter takes effect only for videos. It specifies the upper limit of the frame budget. Valid values: 1 to 600. If the lower limit is also set, the lower limit must not be greater than the upper limit.
         self.media_max_frame_budget = media_max_frame_budget
-        # The minimum frame budget for media.
+        # The minimum media frame budget. This parameter takes effect only for videos. It specifies the lower limit of the frame budget. Valid values: 1 to 600. If the upper limit is also set, the lower limit must not be greater than the upper limit.
         self.media_min_frame_budget = media_min_frame_budget
         # The OSS file URL.
         self.oss_file_url = oss_file_url
@@ -104,17 +107,17 @@ class CreateDocParserJobAdvanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.output_format = output_format
-        # The parsing scene.
+        # The parsing scene. This parameter takes effect only for document and image parsing. Valid values: general and formula_ocr. Default value: general. If set to formula_ocr, full-page OCR is performed and formulas are output in LaTeX format.
         self.parse_scene = parse_scene
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The response mode.
+        # The response mode. Valid values: async and sync. Default value: async, which returns only the JobId and requires the caller to poll for the result. If set to sync, the parsing result is returned synchronously within the same request. For more information, see the response description below.
         self.response_mode = response_mode
-        # The result type.
+        # The result return method. Valid values: content and url. Default value: content, which returns the Markdown body text. If set to url, a temporary OSS download URL is returned.
         self.result_type = result_type
-        # The table processing format.
+        # The table format. Valid values: html and markdown. Default value: markdown.
         self.table_format = table_format
 
     def validate(self):
@@ -139,6 +142,9 @@ class CreateDocParserJobAdvanceRequest(DaraModel):
 
         if self.chunk_summary is not None:
             result['ChunkSummary'] = self.chunk_summary
+
+        if self.document_structure is not None:
+            result['DocumentStructure'] = self.document_structure
 
         if self.file_format is not None:
             result['FileFormat'] = self.file_format
@@ -215,6 +221,9 @@ class CreateDocParserJobAdvanceRequest(DaraModel):
 
         if m.get('ChunkSummary') is not None:
             self.chunk_summary = m.get('ChunkSummary')
+
+        if m.get('DocumentStructure') is not None:
+            self.document_structure = m.get('DocumentStructure')
 
         if m.get('FileFormat') is not None:
             self.file_format = m.get('FileFormat')

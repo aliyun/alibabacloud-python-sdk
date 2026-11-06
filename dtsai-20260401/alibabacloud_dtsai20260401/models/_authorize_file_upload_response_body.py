@@ -27,10 +27,11 @@ class AuthorizeFileUploadResponseBody(DaraModel):
     ):
         # The temporary AccessKey ID used for OSS PostObject.
         self.access_key_id = access_key_id
+        # The list of OSS PostObject direct upload authorizations returned in batch.
         self.authorizations = authorizations
         # The destination OSS bucket.
         self.bucket = bucket
-        # The Base64-encoded PostObject policy, which includes the ObjectKey and file size limits.
+        # The Base64-encoded PostObject policy, which includes the object key and file size limits.
         self.encoded_policy = encoded_policy
         # OSS Endpoint
         self.endpoint = endpoint
@@ -38,18 +39,19 @@ class AuthorizeFileUploadResponseBody(DaraModel):
         self.error_code = error_code
         # The error message.
         self.error_message = error_message
+        # The expiration time of the OSS PostObject direct upload authorization.
         self.expire_time = expire_time
-        # The business-level HTTP status code.
+        # The business semantic status code.
         self.http_status_code = http_status_code
-        # The object key that must be used as-is for the upload.
+        # The object key that must be used exactly as provided for the upload.
         self.object_key = object_key
         # The request ID.
         self.request_id = request_id
-        # The Security Token Service (STS) temporary security token.
+        # The temporary Security Token Service (STS) token.
         self.security_token = security_token
         # The policy signature.
         self.signature = signature
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -167,8 +169,11 @@ class AuthorizeFileUploadResponseBodyAuthorizations(DaraModel):
         object_key: str = None,
         signature: str = None,
     ):
+        # The Base64-encoded PostObject policy, which includes the object key and file size limits.
         self.encoded_policy = encoded_policy
+        # The object key that must be used exactly as provided for the upload.
         self.object_key = object_key
+        # The policy signature.
         self.signature = signature
 
     def validate(self):

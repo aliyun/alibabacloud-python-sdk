@@ -25,7 +25,7 @@ class WebSearchResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The search query statement.
+        # The search query string.
         self.query = query
         # The request ID.
         self.request_id = request_id

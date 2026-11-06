@@ -37,7 +37,7 @@ class DescribeDocParserJobStatusResponseBody(DaraModel):
         # 
         # - **failed**: Failed. The reason is provided in FailureMessage.
         # 
-        # - **cancelled**: Cancelled.
+        # - **cancelled**: Canceled.
         self.status = status
         # Indicates whether the request was successful.
         self.success = success
