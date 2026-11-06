@@ -10,7 +10,7 @@ class ListDomainProxyTokensRequest(DaraModel):
         domain_id: str = None,
         instance_id: str = None,
     ):
-        # The domain ID.
+        # The domain name ID.
         # 
         # This parameter is required.
         self.domain_id = domain_id

@@ -16,11 +16,11 @@ class ListBrandsRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of entries per page in a paged query.
+        # The maximum number of entries per page in a paging query.
         self.max_results = max_results
-        # The pagination token.
+        # The next token.
         self.next_token = next_token
-        # The token used to query the previous page.
+        # The previous token.
         self.previous_token = previous_token
 
     def validate(self):

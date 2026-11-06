@@ -13,19 +13,17 @@ class UpdateAuthorizationRuleRequest(DaraModel):
         client_token: str = None,
         instance_id: str = None,
     ):
-        # The scope of the authorized resources. Valid values:
-        # 
-        # - global: global resources within the project.
-        # 
-        # - custom: specified resources within the project.
+        # The authorization resource scope. Valid values:
+        # - global: global resources under the project
+        # - custom: resources under a specified project scope
         self.authorization_resource_scope = authorization_resource_scope
         # The authorization rule ID.
         # 
         # This parameter is required.
         self.authorization_rule_id = authorization_rule_id
-        # The name of the authorization rule. The name can be up to 64 characters long.
+        # The name of the authorization rule. The name can be up to 64 characters in length.
         self.authorization_rule_name = authorization_rule_name
-        # A client token that ensures the idempotence of the request. Generate a unique value for this parameter from your client. The token can contain only ASCII characters and must be no more than 64 characters in length. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+        # Ensures the idempotence of the request. You can generate a parameter value on your client to ensure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters and cannot exceed 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
         # 
         # This parameter is required.
         self.client_token = client_token

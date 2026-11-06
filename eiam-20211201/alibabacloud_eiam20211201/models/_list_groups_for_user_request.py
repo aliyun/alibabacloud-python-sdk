@@ -20,7 +20,7 @@ class ListGroupsForUserRequest(DaraModel):
         self.page_number = page_number
         # The page size. Default value: 20. Maximum value: 100.
         self.page_size = page_size
-        # The account ID.
+        # The user ID.
         # 
         # This parameter is required.
         self.user_id = user_id

@@ -13,9 +13,9 @@ class GetApplicationProvisioningScopeResponseBody(DaraModel):
         application_provisioning_scope: main_models.GetApplicationProvisioningScopeResponseBodyApplicationProvisioningScope = None,
         request_id: str = None,
     ):
-        # The scope of account synchronization.
+        # The account synchronization scope.
         self.application_provisioning_scope = application_provisioning_scope
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +54,13 @@ class GetApplicationProvisioningScopeResponseBodyApplicationProvisioningScope(Da
         organizational_unit_ids: List[str] = None,
         used_quota: int = None,
     ):
-        # Synchronize the list of authorized groups.
+        # The list of groups authorized for synchronization.
         self.group_ids = group_ids
-        # Instance Indicates the maximum quota number of authorized agents.
+        # The maximum quota of authorized principals for the tenant.
         self.max_quota = max_quota
-        # The list of organizational units that are authorized for account synchronization.
+        # The list of organizational unit scopes authorized for account synchronization.
         self.organizational_unit_ids = organizational_unit_ids
-        # Indicates the quota number of used authorized agents.
+        # The used quota of authorized principals.
         self.used_quota = used_quota
 
     def validate(self):

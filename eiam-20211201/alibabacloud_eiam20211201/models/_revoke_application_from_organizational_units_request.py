@@ -18,13 +18,13 @@ class RevokeApplicationFromOrganizationalUnitsRequest(DaraModel):
         # 
         # This parameter is required.
         self.application_id = application_id
-        # 应用角色ID。
+        # The application role ID.
         self.application_role_id = application_role_id
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # A list of organizational unit IDs. A single operation supports up to 100 organizational unit IDs.
+        # The list of organizational unit IDs. You can specify up to 100 organizational unit IDs in a single request.
         # 
         # This parameter is required.
         self.organizational_unit_ids = organizational_unit_ids

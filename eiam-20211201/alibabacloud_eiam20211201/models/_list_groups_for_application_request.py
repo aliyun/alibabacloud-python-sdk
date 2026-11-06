@@ -22,15 +22,15 @@ class ListGroupsForApplicationRequest(DaraModel):
         self.application_id = application_id
         # The application role ID.
         self.application_role_id = application_role_id
-        # A list of group IDs. You can specify up to 100 group IDs in a single operation.
+        # The list of group IDs. You can specify up to 100 group IDs in a single operation.
         self.group_ids = group_ids
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The page number of the list.
+        # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
 
     def validate(self):

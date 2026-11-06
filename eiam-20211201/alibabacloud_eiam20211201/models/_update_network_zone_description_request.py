@@ -12,9 +12,9 @@ class UpdateNetworkZoneDescriptionRequest(DaraModel):
         instance_id: str = None,
         network_zone_id: str = None,
     ):
-        # A client token. It is used to ensure the idempotence of the request.
+        # The client token used to ensure idempotence.
         self.client_token = client_token
-        # The description of the network zone.
+        # The network zone description.
         # 
         # This parameter is required.
         self.description = description

@@ -18,7 +18,7 @@ class ListUsersForApplicationResponseBody(DaraModel):
         self.request_id = request_id
         # The total number of entries.
         self.total_count = total_count
-        # The list of accounts.
+        # The list of account IDs.
         self.users = users
 
     def validate(self):
@@ -67,7 +67,7 @@ class ListUsersForApplicationResponseBodyUsers(DaraModel):
         application_roles: List[main_models.ListUsersForApplicationResponseBodyUsersApplicationRoles] = None,
         user_id: str = None,
     ):
-        # The list of application roles.
+        # The list of application roles. No roles are returned for SAML applications.
         self.application_roles = application_roles
         # The account ID.
         self.user_id = user_id

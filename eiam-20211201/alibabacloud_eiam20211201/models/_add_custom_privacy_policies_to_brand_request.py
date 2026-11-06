@@ -17,7 +17,7 @@ class AddCustomPrivacyPoliciesToBrandRequest(DaraModel):
         # 
         # This parameter is required.
         self.brand_id = brand_id
-        # The list of term IDs.
+        # The IDs of the custom privacy policies.
         # 
         # This parameter is required.
         self.custom_privacy_policy_ids = custom_privacy_policy_ids

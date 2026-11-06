@@ -11,13 +11,13 @@ class UpdateApplicationDescriptionRequest(DaraModel):
         description: str = None,
         instance_id: str = None,
     ):
-        # The ID of the application that you want to modify.
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
         # The description of the application.
         self.description = description
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

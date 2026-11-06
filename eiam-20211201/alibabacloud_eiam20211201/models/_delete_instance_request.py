@@ -9,7 +9,7 @@ class DeleteInstanceRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
-        # The instance ID of the instance to delete.
+        # The instance ID to delete.
         # 
         # This parameter is required.
         self.instance_id = instance_id

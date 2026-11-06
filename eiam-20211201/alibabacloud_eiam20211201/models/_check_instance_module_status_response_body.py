@@ -11,7 +11,7 @@ class CheckInstanceModuleStatusResponseBody(DaraModel):
         module: main_models.CheckInstanceModuleStatusResponseBodyModule = None,
         request_id: str = None,
     ):
-        # The status information.
+        # The modification status information.
         self.module = module
         # The request ID.
         self.request_id = request_id

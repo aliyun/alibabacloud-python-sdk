@@ -14,7 +14,7 @@ class ListOrganizationalUnitsForApplicationResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of organizations.
+        # The list of organizational unit IDs.
         self.organizational_units = organizational_units
         # The request ID.
         self.request_id = request_id
@@ -67,9 +67,9 @@ class ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnits(DaraM
         application_roles: List[main_models.ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnitsApplicationRoles] = None,
         organizational_unit_id: str = None,
     ):
-        # The list of application roles.
+        # The application roles.
         self.application_roles = application_roles
-        # The organization ID.
+        # The organizational unit ID.
         self.organizational_unit_id = organizational_unit_id
 
     def validate(self):
@@ -111,7 +111,7 @@ class ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnitsApplic
         self,
         application_role_id: str = None,
     ):
-        # The ID of the application role.
+        # The application role ID.
         self.application_role_id = application_role_id
 
     def validate(self):

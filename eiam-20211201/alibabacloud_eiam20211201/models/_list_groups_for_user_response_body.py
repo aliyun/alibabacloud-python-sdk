@@ -14,11 +14,11 @@ class ListGroupsForUserResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of account groups.
+        # The list of groups.
         self.groups = groups
         # The request ID.
         self.request_id = request_id
-        # The total number of matching records. The maximum number of records returned per page is determined by PageSize.
+        # The total number of matched entries. The maximum number of entries returned per page is specified by the PageSize parameter.
         self.total_count = total_count
 
     def validate(self):
@@ -68,23 +68,16 @@ class ListGroupsForUserResponseBodyGroups(DaraModel):
         group_member_relation_source_id: str = None,
         group_member_relation_source_type: str = None,
     ):
-        # The account group ID.
+        # The group ID.
         self.group_id = group_id
-        # The source ID of the group member relationship.
-        # 
-        # For the build_in type, this defaults to the instance ID. For other types, this corresponds to the enterprise ID of the respective source. For example, for a DingTalk source, this corresponds to the corpId of the DingTalk enterprise.
+        # The source ID of the group member relationship. For self-managed groups, the default value is the instance ID. For other types, the value corresponds to the enterprise ID of the source. For example, if the source is DingTalk, the value is the corpId of the DingTalk enterprise.
         self.group_member_relation_source_id = group_member_relation_source_id
         # The source type of the group member relationship. Valid values:
-        # 
-        # build_in: built-in.
-        # 
-        # ding_talk: imported from DingTalk.
-        # 
-        # ad: imported from AD.
-        # 
-        # ldap: imported from LDAP.
-        # 
-        # we_com: imported from WeCom.
+        # - build_in: Self-managed.
+        # - ding_talk: Imported from DingTalk.
+        # - ad: Imported from AD.
+        # - ldap: Imported from LDAP.
+        # - we_com: Imported from WeCom.
         self.group_member_relation_source_type = group_member_relation_source_type
 
     def validate(self):

@@ -18,13 +18,13 @@ class AuthorizeApplicationToOrganizationalUnitsRequest(DaraModel):
         # 
         # This parameter is required.
         self.application_id = application_id
-        # 应用角色ID。
+        # The application role ID.
         self.application_role_id = application_role_id
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The list of organization IDs. You can specify a maximum of 100 organization IDs per operation.
+        # The list of organizational unit IDs. A single operation supports up to 100 organizational unit IDs.
         # 
         # This parameter is required.
         self.organizational_unit_ids = organizational_unit_ids

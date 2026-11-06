@@ -17,7 +17,7 @@ class GenerateWebAuthnAuthenticatorRegistrationUrlRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The user ID.
+        # UserID
         # 
         # This parameter is required.
         self.user_id = user_id

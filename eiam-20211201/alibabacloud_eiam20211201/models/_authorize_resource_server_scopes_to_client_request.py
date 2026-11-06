@@ -14,7 +14,7 @@ class AuthorizeResourceServerScopesToClientRequest(DaraModel):
         resource_server_application_id: str = None,
         resource_server_scope_ids: List[str] = None,
     ):
-        # The unique identifier of the Client application.
+        # The ID of the client application.
         # 
         # This parameter is required.
         self.client_application_id = client_application_id
@@ -22,11 +22,11 @@ class AuthorizeResourceServerScopesToClientRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The unique identifier of the ResourceServer application.
+        # The ID of the resource server application.
         # 
         # This parameter is required.
         self.resource_server_application_id = resource_server_application_id
-        # The list of Scope permission IDs under the ResourceServer.
+        # The IDs of the scope permissions under the resource server.
         # 
         # This parameter is required.
         self.resource_server_scope_ids = resource_server_scope_ids

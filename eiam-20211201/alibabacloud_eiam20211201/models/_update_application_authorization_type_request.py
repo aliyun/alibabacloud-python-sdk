@@ -11,18 +11,17 @@ class UpdateApplicationAuthorizationTypeRequest(DaraModel):
         authorization_type: str = None,
         instance_id: str = None,
     ):
-        # The ID of the application that you want to modify.
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # The authorization type of the application. Valid values:
-        # 
-        # *   authorize_required: Only the user with explicit authorization can access the application.
-        # *   default_all: By default, all users can access the application.
+        # The access authorization type of the application. Valid values:
+        # - authorize_required: Explicit authorization is required for access.
+        # - default_all: All members have access permissions by default.
         # 
         # This parameter is required.
         self.authorization_type = authorization_type
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

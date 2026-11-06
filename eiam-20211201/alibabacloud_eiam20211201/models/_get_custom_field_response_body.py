@@ -67,7 +67,7 @@ class GetCustomFieldResponseBodyCustomField(DaraModel):
         update_time: int = None,
         user_permission: str = None,
     ):
-        # The time when the extended field was created, in UNIX timestamp format. Unit: milliseconds.
+        # The creation time of the extended field. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The default value of the field.
         self.default_value = default_value
@@ -75,9 +75,9 @@ class GetCustomFieldResponseBodyCustomField(DaraModel):
         self.description = description
         # Indicates whether the field is encrypted.
         self.encrypted = encrypted
-        # The entity type to which the field belongs.
+        # The entity type of the field.
         self.entity_type = entity_type
-        # The field value configuration items.
+        # The configuration items for the field values.
         self.field_data_config = field_data_config
         # The data type.
         self.field_data_type = field_data_type
@@ -97,9 +97,9 @@ class GetCustomFieldResponseBodyCustomField(DaraModel):
         self.status = status
         # Indicates whether the field is unique.
         self.unique = unique
-        # The time when the extended field was last updated, in UNIX timestamp format. Unit: milliseconds.
+        # The last update time of the extended field. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
-        # The user-side (portal-side) permission.
+        # The permissions on the user portal side.
         self.user_permission = user_permission
 
     def validate(self):

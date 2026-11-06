@@ -23,7 +23,7 @@ class UpdateAuthorizationRuleApplicationAttachmentRequest(DaraModel):
         # 
         # This parameter is required.
         self.authorization_rule_id = authorization_rule_id
-        # A client token to ensure the idempotence of the request. Generate a unique value from your client for this parameter. The ClientToken can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+        # Ensures the idempotence of the request. You can generate a parameter value from your client to ensure that the parameter value is unique among different requests. The ClientToken can contain only ASCII characters and cannot exceed 64 characters in length. References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
         # 
         # This parameter is required.
         self.client_token = client_token
@@ -34,10 +34,8 @@ class UpdateAuthorizationRuleApplicationAttachmentRequest(DaraModel):
         # The time range of the validity period. This parameter takes effect only when **ValidityType** is set to **time_bound**.
         self.validity_period = validity_period
         # The validity type of the relationship. Valid values:
-        # 
-        # - permanent: The relationship is permanent.
-        # 
-        # - time_bound: The relationship is valid for a custom time range.
+        # - permanent: permanent
+        # - time_bound: custom time range
         # 
         # This parameter is required.
         self.validity_type = validity_type
@@ -100,9 +98,9 @@ class UpdateAuthorizationRuleApplicationAttachmentRequestValidityPeriod(DaraMode
         end_time: int = None,
         start_time: int = None,
     ):
-        # The end time of the validity period. This is a UNIX timestamp. Unit: milliseconds.
+        # The end time of the validity period. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The start time of the validity period. This is a UNIX timestamp. Unit: milliseconds.
+        # The start time of the validity period. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
 
     def validate(self):

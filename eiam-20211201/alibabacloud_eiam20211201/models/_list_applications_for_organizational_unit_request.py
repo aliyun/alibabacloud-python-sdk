@@ -15,7 +15,7 @@ class ListApplicationsForOrganizationalUnitRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The list of application IDs. A maximum of 100 application IDs are supported in a single operation.
+        # The list of application IDs. You can specify up to 100 application IDs in a single request.
         self.application_ids = application_ids
         # The instance ID.
         # 

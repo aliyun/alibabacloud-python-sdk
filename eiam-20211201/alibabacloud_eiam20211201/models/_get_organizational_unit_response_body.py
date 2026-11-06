@@ -11,9 +11,9 @@ class GetOrganizationalUnitResponseBody(DaraModel):
         organizational_unit: main_models.GetOrganizationalUnitResponseBodyOrganizationalUnit = None,
         request_id: str = None,
     ):
-        # Organizational unit data object.
+        # The organizational unit data object.
         self.organizational_unit = organizational_unit
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -59,36 +59,32 @@ class GetOrganizationalUnitResponseBodyOrganizationalUnit(DaraModel):
         parent_id: str = None,
         update_time: int = None,
     ):
-        # The time when the organizational unit was created, in Unix timestamp format, in milliseconds.
+        # The time when the organizational unit was created. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # Description of the organizational unit.
+        # The description of the organizational unit.
         self.description = description
-        # Instance ID.
+        # The instance ID.
         self.instance_id = instance_id
-        # Indicates whether the organizational unit is a leaf node. A value of true indicates that the organizational unit has no child nodes, and a value of false indicates that the organizational unit has child nodes.
+        # Specifies whether the organizational unit is a leaf node. A value of true indicates that the organizational unit has no child nodes. A value of false indicates that the organizational unit has child nodes.
         self.leaf = leaf
-        # Organizational unit external ID, used for mapping between external data and IDaaS organizational units. The default value is the IDaaS organizational unit ID.
-        # 
-        # Note: The external ID is unique within the same source type and source ID.
+        # The external ID of the organizational unit. It is used to map external data to IDaaS organizational units. The default value is the IDaaS organizational unit ID. Note: The external ID must be unique within the same source type and source ID.
         self.organizational_unit_external_id = organizational_unit_external_id
-        # Organizational unit ID.
+        # The organizational unit ID.
         self.organizational_unit_id = organizational_unit_id
-        # Organizational unit name.
+        # The name of the organizational unit.
         self.organizational_unit_name = organizational_unit_name
-        # Organizational unit source ID.
-        # 
-        # The default value for the self-built type is the instance ID. For other types, the value corresponds to the enterprise ID of the respective source. For example, the DingTalk source corresponds to the corpId of the DingTalk enterprise.
+        # The source ID of the organizational unit. For self-managed organizational units, the default value is the instance ID. For other types, the value corresponds to the enterprise ID of the respective source. For example, for DingTalk, the value is the corpId of the DingTalk enterprise.
         self.organizational_unit_source_id = organizational_unit_source_id
-        # Account source type. Valid values:
-        # - build_in: self-built.
-        # - ding_talk: imported from DingTalk.
-        # - ad: imported from AD.
-        # - ldap: imported from LDAP.
-        # - we_com: imported from WeCom.
+        # The account source type. Valid values:
+        # - build_in: Self-managed.
+        # - ding_talk: Imported from DingTalk.
+        # - ad: Imported from AD.
+        # - ldap: Imported from LDAP.
+        # - we_com: Imported from WeCom.
         self.organizational_unit_source_type = organizational_unit_source_type
-        # Parent organizational unit ID.
+        # The ID of the parent organizational unit.
         self.parent_id = parent_id
-        # The time when the organizational unit was last updated, in Unix timestamp format, in milliseconds.
+        # The time when the organizational unit was last updated. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):

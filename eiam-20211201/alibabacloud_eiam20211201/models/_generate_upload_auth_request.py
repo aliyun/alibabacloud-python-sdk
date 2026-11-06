@@ -11,13 +11,13 @@ class GenerateUploadAuthRequest(DaraModel):
         purpose: str = None,
         type: str = None,
     ):
-        # Instance ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # File purpose.
+        # The file purpose.
         self.purpose = purpose
-        # File type.
+        # The file type.
         self.type = type
 
     def validate(self):

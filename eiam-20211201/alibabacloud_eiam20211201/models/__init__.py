@@ -2,6 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._activate_cloud_account_privilege_request import ActivateCloudAccountPrivilegeRequest
+from ._activate_cloud_account_privilege_response_body import ActivateCloudAccountPrivilegeResponseBody
+from ._activate_cloud_account_privilege_response import ActivateCloudAccountPrivilegeResponse
 from ._add_application_account_to_user_request import AddApplicationAccountToUserRequest
 from ._add_application_account_to_user_response_body import AddApplicationAccountToUserResponseBody
 from ._add_application_account_to_user_response import AddApplicationAccountToUserResponse
@@ -92,6 +95,9 @@ from ._create_cloud_account_response import CreateCloudAccountResponse
 from ._create_cloud_account_role_request import CreateCloudAccountRoleRequest
 from ._create_cloud_account_role_response_body import CreateCloudAccountRoleResponseBody
 from ._create_cloud_account_role_response import CreateCloudAccountRoleResponse
+from ._create_cloud_permission_template_request import CreateCloudPermissionTemplateRequest
+from ._create_cloud_permission_template_response_body import CreateCloudPermissionTemplateResponseBody
+from ._create_cloud_permission_template_response import CreateCloudPermissionTemplateResponse
 from ._create_conditional_access_policy_request import CreateConditionalAccessPolicyRequest
 from ._create_conditional_access_policy_response_body import CreateConditionalAccessPolicyResponseBody
 from ._create_conditional_access_policy_response import CreateConditionalAccessPolicyResponse
@@ -149,6 +155,9 @@ from ._create_trusted_origin_response import CreateTrustedOriginResponse
 from ._create_user_request import CreateUserRequest
 from ._create_user_response_body import CreateUserResponseBody
 from ._create_user_response import CreateUserResponse
+from ._deactivate_cloud_account_privilege_request import DeactivateCloudAccountPrivilegeRequest
+from ._deactivate_cloud_account_privilege_response_body import DeactivateCloudAccountPrivilegeResponseBody
+from ._deactivate_cloud_account_privilege_response import DeactivateCloudAccountPrivilegeResponse
 from ._delete_application_request import DeleteApplicationRequest
 from ._delete_application_response_body import DeleteApplicationResponseBody
 from ._delete_application_response import DeleteApplicationResponse
@@ -182,6 +191,9 @@ from ._delete_cloud_account_response import DeleteCloudAccountResponse
 from ._delete_cloud_account_role_request import DeleteCloudAccountRoleRequest
 from ._delete_cloud_account_role_response_body import DeleteCloudAccountRoleResponseBody
 from ._delete_cloud_account_role_response import DeleteCloudAccountRoleResponse
+from ._delete_cloud_permission_template_request import DeleteCloudPermissionTemplateRequest
+from ._delete_cloud_permission_template_response_body import DeleteCloudPermissionTemplateResponseBody
+from ._delete_cloud_permission_template_response import DeleteCloudPermissionTemplateResponse
 from ._delete_conditional_access_policy_request import DeleteConditionalAccessPolicyRequest
 from ._delete_conditional_access_policy_response_body import DeleteConditionalAccessPolicyResponseBody
 from ._delete_conditional_access_policy_response import DeleteConditionalAccessPolicyResponse
@@ -278,9 +290,15 @@ from ._disable_brand_response import DisableBrandResponse
 from ._disable_client_public_key_request import DisableClientPublicKeyRequest
 from ._disable_client_public_key_response_body import DisableClientPublicKeyResponseBody
 from ._disable_client_public_key_response import DisableClientPublicKeyResponse
+from ._disable_cloud_account_privilege_request import DisableCloudAccountPrivilegeRequest
+from ._disable_cloud_account_privilege_response_body import DisableCloudAccountPrivilegeResponseBody
+from ._disable_cloud_account_privilege_response import DisableCloudAccountPrivilegeResponse
 from ._disable_cloud_account_role_request import DisableCloudAccountRoleRequest
 from ._disable_cloud_account_role_response_body import DisableCloudAccountRoleResponseBody
 from ._disable_cloud_account_role_response import DisableCloudAccountRoleResponse
+from ._disable_cloud_permission_template_request import DisableCloudPermissionTemplateRequest
+from ._disable_cloud_permission_template_response_body import DisableCloudPermissionTemplateResponseBody
+from ._disable_cloud_permission_template_response import DisableCloudPermissionTemplateResponse
 from ._disable_conditional_access_policy_request import DisableConditionalAccessPolicyRequest
 from ._disable_conditional_access_policy_response_body import DisableConditionalAccessPolicyResponseBody
 from ._disable_conditional_access_policy_response import DisableConditionalAccessPolicyResponse
@@ -362,9 +380,15 @@ from ._enable_brand_response import EnableBrandResponse
 from ._enable_client_public_key_request import EnableClientPublicKeyRequest
 from ._enable_client_public_key_response_body import EnableClientPublicKeyResponseBody
 from ._enable_client_public_key_response import EnableClientPublicKeyResponse
+from ._enable_cloud_account_privilege_request import EnableCloudAccountPrivilegeRequest
+from ._enable_cloud_account_privilege_response_body import EnableCloudAccountPrivilegeResponseBody
+from ._enable_cloud_account_privilege_response import EnableCloudAccountPrivilegeResponse
 from ._enable_cloud_account_role_request import EnableCloudAccountRoleRequest
 from ._enable_cloud_account_role_response_body import EnableCloudAccountRoleResponseBody
 from ._enable_cloud_account_role_response import EnableCloudAccountRoleResponse
+from ._enable_cloud_permission_template_request import EnableCloudPermissionTemplateRequest
+from ._enable_cloud_permission_template_response_body import EnableCloudPermissionTemplateResponseBody
+from ._enable_cloud_permission_template_response import EnableCloudPermissionTemplateResponse
 from ._enable_conditional_access_policy_request import EnableConditionalAccessPolicyRequest
 from ._enable_conditional_access_policy_response_body import EnableConditionalAccessPolicyResponseBody
 from ._enable_conditional_access_policy_response import EnableConditionalAccessPolicyResponse
@@ -482,6 +506,9 @@ from ._get_cloud_account_response import GetCloudAccountResponse
 from ._get_cloud_account_role_request import GetCloudAccountRoleRequest
 from ._get_cloud_account_role_response_body import GetCloudAccountRoleResponseBody
 from ._get_cloud_account_role_response import GetCloudAccountRoleResponse
+from ._get_cloud_permission_template_request import GetCloudPermissionTemplateRequest
+from ._get_cloud_permission_template_response_body import GetCloudPermissionTemplateResponseBody
+from ._get_cloud_permission_template_response import GetCloudPermissionTemplateResponse
 from ._get_conditional_access_policy_request import GetConditionalAccessPolicyRequest
 from ._get_conditional_access_policy_response_body import GetConditionalAccessPolicyResponseBody
 from ._get_conditional_access_policy_response import GetConditionalAccessPolicyResponse
@@ -509,6 +536,9 @@ from ._get_federated_credential_provider_response import GetFederatedCredentialP
 from ._get_forget_password_configuration_request import GetForgetPasswordConfigurationRequest
 from ._get_forget_password_configuration_response_body import GetForgetPasswordConfigurationResponseBody
 from ._get_forget_password_configuration_response import GetForgetPasswordConfigurationResponse
+from ._get_global_cloud_account_system_role_policy_request import GetGlobalCloudAccountSystemRolePolicyRequest
+from ._get_global_cloud_account_system_role_policy_response_body import GetGlobalCloudAccountSystemRolePolicyResponseBody
+from ._get_global_cloud_account_system_role_policy_response import GetGlobalCloudAccountSystemRolePolicyResponse
 from ._get_group_request import GetGroupRequest
 from ._get_group_response_body import GetGroupResponseBody
 from ._get_group_response import GetGroupResponse
@@ -668,6 +698,9 @@ from ._list_cloud_account_roles_response import ListCloudAccountRolesResponse
 from ._list_cloud_accounts_request import ListCloudAccountsRequest
 from ._list_cloud_accounts_response_body import ListCloudAccountsResponseBody
 from ._list_cloud_accounts_response import ListCloudAccountsResponse
+from ._list_cloud_permission_templates_request import ListCloudPermissionTemplatesRequest
+from ._list_cloud_permission_templates_response_body import ListCloudPermissionTemplatesResponseBody
+from ._list_cloud_permission_templates_response import ListCloudPermissionTemplatesResponse
 from ._list_conditional_access_policies_request import ListConditionalAccessPoliciesRequest
 from ._list_conditional_access_policies_response_body import ListConditionalAccessPoliciesResponseBody
 from ._list_conditional_access_policies_response import ListConditionalAccessPoliciesResponse
@@ -992,6 +1025,9 @@ from ._update_cloud_account_description_response import UpdateCloudAccountDescri
 from ._update_cloud_account_role_description_request import UpdateCloudAccountRoleDescriptionRequest
 from ._update_cloud_account_role_description_response_body import UpdateCloudAccountRoleDescriptionResponseBody
 from ._update_cloud_account_role_description_response import UpdateCloudAccountRoleDescriptionResponse
+from ._update_cloud_permission_template_request import UpdateCloudPermissionTemplateRequest
+from ._update_cloud_permission_template_response_body import UpdateCloudPermissionTemplateResponseBody
+from ._update_cloud_permission_template_response import UpdateCloudPermissionTemplateResponse
 from ._update_conditional_access_policy_request import UpdateConditionalAccessPolicyRequest
 from ._update_conditional_access_policy_response_body import UpdateConditionalAccessPolicyResponseBody
 from ._update_conditional_access_policy_response import UpdateConditionalAccessPolicyResponse
@@ -1090,6 +1126,8 @@ from ._create_application_federated_credential_request import CreateApplicationF
 from ._create_application_token_response_body import CreateApplicationTokenResponseBodyApplicationTokens
 from ._create_authorization_resource_request import CreateAuthorizationResourceRequestConditionCredentialCondition
 from ._create_authorization_resource_request import CreateAuthorizationResourceRequestCondition
+from ._create_cloud_permission_template_request import CreateCloudPermissionTemplateRequestApplicableScope
+from ._create_cloud_permission_template_request import CreateCloudPermissionTemplateRequestCloudAccountResources
 from ._create_conditional_access_policy_request import CreateConditionalAccessPolicyRequestConditionsConfigApplications
 from ._create_conditional_access_policy_request import CreateConditionalAccessPolicyRequestConditionsConfigNetworkZones
 from ._create_conditional_access_policy_request import CreateConditionalAccessPolicyRequestConditionsConfigUsers
@@ -1186,6 +1224,10 @@ from ._get_cloud_account_response_body import GetCloudAccountResponseBodyCloudAc
 from ._get_cloud_account_role_response_body import GetCloudAccountRoleResponseBodyCloudAccountRoleCloudAccountRoleHealthCheckResultErrorReason
 from ._get_cloud_account_role_response_body import GetCloudAccountRoleResponseBodyCloudAccountRoleCloudAccountRoleHealthCheckResult
 from ._get_cloud_account_role_response_body import GetCloudAccountRoleResponseBodyCloudAccountRole
+from ._get_cloud_permission_template_response_body import GetCloudPermissionTemplateResponseBodyCloudPermissionTemplateApplicableScope
+from ._get_cloud_permission_template_response_body import GetCloudPermissionTemplateResponseBodyCloudPermissionTemplateCloudPermissionTemplateCreator
+from ._get_cloud_permission_template_response_body import GetCloudPermissionTemplateResponseBodyCloudPermissionTemplateCloudPermissionTemplateInitResult
+from ._get_cloud_permission_template_response_body import GetCloudPermissionTemplateResponseBodyCloudPermissionTemplate
 from ._get_conditional_access_policy_response_body import GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigApplications
 from ._get_conditional_access_policy_response_body import GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigNetworkZones
 from ._get_conditional_access_policy_response_body import GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigUsers
@@ -1372,6 +1414,10 @@ from ._list_cloud_accounts_response_body import ListCloudAccountsResponseBodyClo
 from ._list_cloud_accounts_response_body import ListCloudAccountsResponseBodyCloudAccountsCloudAccountHealthCheckResult
 from ._list_cloud_accounts_response_body import ListCloudAccountsResponseBodyCloudAccountsPrivilegeHostingError
 from ._list_cloud_accounts_response_body import ListCloudAccountsResponseBodyCloudAccounts
+from ._list_cloud_permission_templates_response_body import ListCloudPermissionTemplatesResponseBodyCloudPermissionTemplatesApplicableScope
+from ._list_cloud_permission_templates_response_body import ListCloudPermissionTemplatesResponseBodyCloudPermissionTemplatesCloudPermissionTemplateCreator
+from ._list_cloud_permission_templates_response_body import ListCloudPermissionTemplatesResponseBodyCloudPermissionTemplatesCloudPermissionTemplateInitResult
+from ._list_cloud_permission_templates_response_body import ListCloudPermissionTemplatesResponseBodyCloudPermissionTemplates
 from ._list_conditional_access_policies_response_body import ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigApplications
 from ._list_conditional_access_policies_response_body import ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones
 from ._list_conditional_access_policies_response_body import ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigUsers
@@ -1547,6 +1593,8 @@ from ._update_application_sso_form_params_request import UpdateApplicationSsoFor
 from ._update_authorization_rule_application_attachment_request import UpdateAuthorizationRuleApplicationAttachmentRequestValidityPeriod
 from ._update_authorization_rule_group_attachment_request import UpdateAuthorizationRuleGroupAttachmentRequestValidityPeriod
 from ._update_authorization_rule_user_attachment_request import UpdateAuthorizationRuleUserAttachmentRequestValidityPeriod
+from ._update_cloud_permission_template_request import UpdateCloudPermissionTemplateRequestApplicableScope
+from ._update_cloud_permission_template_request import UpdateCloudPermissionTemplateRequestCloudAccountResources
 from ._update_conditional_access_policy_request import UpdateConditionalAccessPolicyRequestConditionsConfigApplications
 from ._update_conditional_access_policy_request import UpdateConditionalAccessPolicyRequestConditionsConfigNetworkZones
 from ._update_conditional_access_policy_request import UpdateConditionalAccessPolicyRequestConditionsConfigUsers
@@ -1577,6 +1625,9 @@ from ._update_identity_provider_request import UpdateIdentityProviderRequestWeCo
 from ._update_user_request import UpdateUserRequestCustomFields
 
 __all__ = [
+    ActivateCloudAccountPrivilegeRequest,
+    ActivateCloudAccountPrivilegeResponseBody,
+    ActivateCloudAccountPrivilegeResponse,
     AddApplicationAccountToUserRequest,
     AddApplicationAccountToUserResponseBody,
     AddApplicationAccountToUserResponse,
@@ -1667,6 +1718,9 @@ __all__ = [
     CreateCloudAccountRoleRequest,
     CreateCloudAccountRoleResponseBody,
     CreateCloudAccountRoleResponse,
+    CreateCloudPermissionTemplateRequest,
+    CreateCloudPermissionTemplateResponseBody,
+    CreateCloudPermissionTemplateResponse,
     CreateConditionalAccessPolicyRequest,
     CreateConditionalAccessPolicyResponseBody,
     CreateConditionalAccessPolicyResponse,
@@ -1724,6 +1778,9 @@ __all__ = [
     CreateUserRequest,
     CreateUserResponseBody,
     CreateUserResponse,
+    DeactivateCloudAccountPrivilegeRequest,
+    DeactivateCloudAccountPrivilegeResponseBody,
+    DeactivateCloudAccountPrivilegeResponse,
     DeleteApplicationRequest,
     DeleteApplicationResponseBody,
     DeleteApplicationResponse,
@@ -1757,6 +1814,9 @@ __all__ = [
     DeleteCloudAccountRoleRequest,
     DeleteCloudAccountRoleResponseBody,
     DeleteCloudAccountRoleResponse,
+    DeleteCloudPermissionTemplateRequest,
+    DeleteCloudPermissionTemplateResponseBody,
+    DeleteCloudPermissionTemplateResponse,
     DeleteConditionalAccessPolicyRequest,
     DeleteConditionalAccessPolicyResponseBody,
     DeleteConditionalAccessPolicyResponse,
@@ -1853,9 +1913,15 @@ __all__ = [
     DisableClientPublicKeyRequest,
     DisableClientPublicKeyResponseBody,
     DisableClientPublicKeyResponse,
+    DisableCloudAccountPrivilegeRequest,
+    DisableCloudAccountPrivilegeResponseBody,
+    DisableCloudAccountPrivilegeResponse,
     DisableCloudAccountRoleRequest,
     DisableCloudAccountRoleResponseBody,
     DisableCloudAccountRoleResponse,
+    DisableCloudPermissionTemplateRequest,
+    DisableCloudPermissionTemplateResponseBody,
+    DisableCloudPermissionTemplateResponse,
     DisableConditionalAccessPolicyRequest,
     DisableConditionalAccessPolicyResponseBody,
     DisableConditionalAccessPolicyResponse,
@@ -1937,9 +2003,15 @@ __all__ = [
     EnableClientPublicKeyRequest,
     EnableClientPublicKeyResponseBody,
     EnableClientPublicKeyResponse,
+    EnableCloudAccountPrivilegeRequest,
+    EnableCloudAccountPrivilegeResponseBody,
+    EnableCloudAccountPrivilegeResponse,
     EnableCloudAccountRoleRequest,
     EnableCloudAccountRoleResponseBody,
     EnableCloudAccountRoleResponse,
+    EnableCloudPermissionTemplateRequest,
+    EnableCloudPermissionTemplateResponseBody,
+    EnableCloudPermissionTemplateResponse,
     EnableConditionalAccessPolicyRequest,
     EnableConditionalAccessPolicyResponseBody,
     EnableConditionalAccessPolicyResponse,
@@ -2057,6 +2129,9 @@ __all__ = [
     GetCloudAccountRoleRequest,
     GetCloudAccountRoleResponseBody,
     GetCloudAccountRoleResponse,
+    GetCloudPermissionTemplateRequest,
+    GetCloudPermissionTemplateResponseBody,
+    GetCloudPermissionTemplateResponse,
     GetConditionalAccessPolicyRequest,
     GetConditionalAccessPolicyResponseBody,
     GetConditionalAccessPolicyResponse,
@@ -2084,6 +2159,9 @@ __all__ = [
     GetForgetPasswordConfigurationRequest,
     GetForgetPasswordConfigurationResponseBody,
     GetForgetPasswordConfigurationResponse,
+    GetGlobalCloudAccountSystemRolePolicyRequest,
+    GetGlobalCloudAccountSystemRolePolicyResponseBody,
+    GetGlobalCloudAccountSystemRolePolicyResponse,
     GetGroupRequest,
     GetGroupResponseBody,
     GetGroupResponse,
@@ -2243,6 +2321,9 @@ __all__ = [
     ListCloudAccountsRequest,
     ListCloudAccountsResponseBody,
     ListCloudAccountsResponse,
+    ListCloudPermissionTemplatesRequest,
+    ListCloudPermissionTemplatesResponseBody,
+    ListCloudPermissionTemplatesResponse,
     ListConditionalAccessPoliciesRequest,
     ListConditionalAccessPoliciesResponseBody,
     ListConditionalAccessPoliciesResponse,
@@ -2567,6 +2648,9 @@ __all__ = [
     UpdateCloudAccountRoleDescriptionRequest,
     UpdateCloudAccountRoleDescriptionResponseBody,
     UpdateCloudAccountRoleDescriptionResponse,
+    UpdateCloudPermissionTemplateRequest,
+    UpdateCloudPermissionTemplateResponseBody,
+    UpdateCloudPermissionTemplateResponse,
     UpdateConditionalAccessPolicyRequest,
     UpdateConditionalAccessPolicyResponseBody,
     UpdateConditionalAccessPolicyResponse,
@@ -2665,6 +2749,8 @@ __all__ = [
     CreateApplicationTokenResponseBodyApplicationTokens,
     CreateAuthorizationResourceRequestConditionCredentialCondition,
     CreateAuthorizationResourceRequestCondition,
+    CreateCloudPermissionTemplateRequestApplicableScope,
+    CreateCloudPermissionTemplateRequestCloudAccountResources,
     CreateConditionalAccessPolicyRequestConditionsConfigApplications,
     CreateConditionalAccessPolicyRequestConditionsConfigNetworkZones,
     CreateConditionalAccessPolicyRequestConditionsConfigUsers,
@@ -2761,6 +2847,10 @@ __all__ = [
     GetCloudAccountRoleResponseBodyCloudAccountRoleCloudAccountRoleHealthCheckResultErrorReason,
     GetCloudAccountRoleResponseBodyCloudAccountRoleCloudAccountRoleHealthCheckResult,
     GetCloudAccountRoleResponseBodyCloudAccountRole,
+    GetCloudPermissionTemplateResponseBodyCloudPermissionTemplateApplicableScope,
+    GetCloudPermissionTemplateResponseBodyCloudPermissionTemplateCloudPermissionTemplateCreator,
+    GetCloudPermissionTemplateResponseBodyCloudPermissionTemplateCloudPermissionTemplateInitResult,
+    GetCloudPermissionTemplateResponseBodyCloudPermissionTemplate,
     GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigApplications,
     GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigNetworkZones,
     GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigUsers,
@@ -2947,6 +3037,10 @@ __all__ = [
     ListCloudAccountsResponseBodyCloudAccountsCloudAccountHealthCheckResult,
     ListCloudAccountsResponseBodyCloudAccountsPrivilegeHostingError,
     ListCloudAccountsResponseBodyCloudAccounts,
+    ListCloudPermissionTemplatesResponseBodyCloudPermissionTemplatesApplicableScope,
+    ListCloudPermissionTemplatesResponseBodyCloudPermissionTemplatesCloudPermissionTemplateCreator,
+    ListCloudPermissionTemplatesResponseBodyCloudPermissionTemplatesCloudPermissionTemplateInitResult,
+    ListCloudPermissionTemplatesResponseBodyCloudPermissionTemplates,
     ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigApplications,
     ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones,
     ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigUsers,
@@ -3122,6 +3216,8 @@ __all__ = [
     UpdateAuthorizationRuleApplicationAttachmentRequestValidityPeriod,
     UpdateAuthorizationRuleGroupAttachmentRequestValidityPeriod,
     UpdateAuthorizationRuleUserAttachmentRequestValidityPeriod,
+    UpdateCloudPermissionTemplateRequestApplicableScope,
+    UpdateCloudPermissionTemplateRequestCloudAccountResources,
     UpdateConditionalAccessPolicyRequestConditionsConfigApplications,
     UpdateConditionalAccessPolicyRequestConditionsConfigNetworkZones,
     UpdateConditionalAccessPolicyRequestConditionsConfigUsers,

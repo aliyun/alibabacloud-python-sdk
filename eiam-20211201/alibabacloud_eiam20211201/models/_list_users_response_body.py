@@ -16,15 +16,15 @@ class ListUsersResponseBody(DaraModel):
         total_count: int = None,
         users: List[main_models.ListUsersResponseBodyUsers] = None,
     ):
-        # The number of entries per page for paging.
+        # The maximum number of entries per page in a paging query.
         self.max_results = max_results
-        # The pagination token.
+        # The query token.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
-        # The list of account data.
+        # The list of accounts.
         self.users = users
 
     def validate(self):
@@ -104,55 +104,53 @@ class ListUsersResponseBodyUsers(DaraModel):
         user_source_type: str = None,
         username: str = None,
     ):
-        # The account expiration time, in UNIX timestamp format. Unit: milliseconds.
+        # The expiration time of the account. The value is a UNIX timestamp in milliseconds.
         self.account_expire_time = account_expire_time
-        # The account creation time, in UNIX timestamp format. Unit: milliseconds.
+        # The creation time of the account. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The description of the account.
         self.description = description
-        # The display name of the account.
+        # The display name.
         self.display_name = display_name
         # The email address of the account.
         self.email = email
-        # Indicates whether the email address has been verified. A value of true indicates that the email address has been verified by the user or set as verified by the administrator. A value of false indicates that the email address has not been verified.
+        # Indicates whether the email address is verified. A value of true indicates that the email address has been verified by the user or set as verified by the administrator. A value of false indicates that the email address is not verified.
         self.email_verified = email_verified
         # The instance ID.
         self.instance_id = instance_id
-        # The account lock expiration time, in UNIX timestamp format. Unit: milliseconds.
+        # The expiration time of the account lock. The value is a UNIX timestamp in milliseconds.
         self.lock_expire_time = lock_expire_time
-        # The password expiration time, in UNIX timestamp format. Unit: milliseconds.
+        # The expiration time of the password. The value is a UNIX timestamp in milliseconds.
         self.password_expire_time = password_expire_time
-        # Indicates whether a password has been set.
+        # Indicates whether the password is set.
         self.password_set = password_set
-        # The phone number of the account.
+        # The phone number.
         self.phone_number = phone_number
-        # Indicates whether the phone number has been verified. A value of true indicates that the phone number has been verified by the user or set as verified by the administrator. A value of false indicates that the phone number has not been verified.
+        # Indicates whether the phone number is verified. A value of true indicates that the phone number has been verified by the user or set as verified by the administrator. A value of false indicates that the phone number is not verified.
         self.phone_number_verified = phone_number_verified
-        # The phone region code. Example: The region code for the Chinese mainland is 86, without the 00 or + prefix.
+        # The phone region code. Example: 86 for the Chinese mainland, without 00 or +.
         self.phone_region = phone_region
-        # The account registration time, in UNIX timestamp format. Unit: milliseconds.
+        # The registration time of the account. The value is a UNIX timestamp in milliseconds.
         self.register_time = register_time
-        # The account status. Valid values:
-        # - enabled: Enabled.
-        # - disabled: Disabled.
+        # The status of the account. Valid values:
+        # - enabled: enabled
+        # - disabled: disabled
         self.status = status
-        # The time when the account was last updated, in UNIX timestamp format. Unit: milliseconds.
+        # The last update time of the account. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
-        # The external ID of the account, which is used to associate external data with IDaaS accounts. The default value is the IDaaS account ID.
-        # 
-        # Note: The external ID must be unique within the same source type and source ID.
+        # The external ID of the account. This ID is used to map external data to IDaaS accounts. The default value is the IDaaS account ID. Note: The external ID must be unique within the same source type and source ID.
         self.user_external_id = user_external_id
         # The account ID.
         self.user_id = user_id
         # The source ID of the account.
         # 
-        # For self-built accounts, the default value is the instance ID. For other types, the value corresponds to the enterprise ID of the respective source. For example, for a DingTalk source, the value corresponds to the corpId of the DingTalk enterprise.
+        # For the build-in type, the default value is the instance ID. For other types, the value corresponds to the enterprise ID of the source. For example, for the DingTalk source, the value is the corpId of the DingTalk enterprise.
         self.user_source_id = user_source_id
         # The source type of the account. Valid values:
-        # - build_in: self-built.
-        # - ding_talk: imported from DingTalk.
-        # - ad: imported from AD.
-        # - ldap: imported from LDAP.
+        # - build_in: self-managed
+        # - ding_talk: imported from DingTalk
+        # - ad: imported from AD
+        # - ldap: imported from LDAP
         self.user_source_type = user_source_type
         # The username.
         self.username = username

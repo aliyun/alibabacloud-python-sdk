@@ -26,15 +26,15 @@ class ListGroupsForAuthorizationRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The maximum number of entries to return on each page.
+        # The maximum number of records to return per page.
         # 
-        # - Default value: 20.
+        # - If this parameter is not specified, the default value is 20.
         # 
-        # - The value cannot exceed 100.
+        # - The maximum value is 100.
         self.max_results = max_results
-        # The token that is used to start the next paged query.
+        # The token used to identify the starting position of the next page.
         # 
-        # - If you do not specify this parameter, the query starts from the first page.
+        # - If this parameter is not specified, the query starts from the first page by default.
         self.next_token = next_token
 
     def validate(self):
@@ -97,9 +97,9 @@ class ListGroupsForAuthorizationRuleRequestFilter(DaraModel):
     ):
         # The name of the filter field. Valid values:
         # 
-        # - GroupId: The group ID.
+        # - GroupId: the group ID
         self.name = name
-        # The values of the filter field.
+        # The list of filter field values.
         self.value = value
 
     def validate(self):

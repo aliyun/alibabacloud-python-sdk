@@ -18,7 +18,7 @@ class ListEventTypesResponseBody(DaraModel):
         self.event_types = event_types
         # The request ID.
         self.request_id = request_id
-        # The total number of entries in the list.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

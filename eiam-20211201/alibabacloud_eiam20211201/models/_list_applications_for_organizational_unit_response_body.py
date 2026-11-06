@@ -14,11 +14,11 @@ class ListApplicationsForOrganizationalUnitResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of applications that are authorized for access.
+        # The list of applications that the organization is authorized to access.
         self.applications = applications
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -69,7 +69,7 @@ class ListApplicationsForOrganizationalUnitResponseBodyApplications(DaraModel):
     ):
         # The application ID.
         self.application_id = application_id
-        # The list of application roles.
+        # The list of application roles. No roles are returned for SAML applications.
         self.application_roles = application_roles
 
     def validate(self):
@@ -111,7 +111,7 @@ class ListApplicationsForOrganizationalUnitResponseBodyApplicationsApplicationRo
         self,
         application_role_id: str = None,
     ):
-        # The application role ID.
+        # The application role identifier.
         self.application_role_id = application_role_id
 
     def validate(self):

@@ -15,17 +15,17 @@ class ListUserAuthnSourceMappingsRequest(DaraModel):
         user_external_id: str = None,
         user_id: str = None,
     ):
-        # The source identity provider (IdP) ID.
+        # The source IdP ID.
         self.identity_provider_id = identity_provider_id
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The maximum number of rows per page in a paged query.
+        # The maximum number of entries to return per page in a paging query.
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token
-        # The token used to query the previous page.
+        # The pagination token for the previous page.
         self.previous_token = previous_token
         # The external association ID.
         self.user_external_id = user_external_id

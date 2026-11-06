@@ -24,7 +24,7 @@ class AuthorizeApplicationToUsersRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The list of account IDs. You can specify up to 100 account IDs in a single request.
+        # The list of account IDs. A single operation supports a maximum of 100 account IDs.
         # 
         # This parameter is required.
         self.user_ids = user_ids

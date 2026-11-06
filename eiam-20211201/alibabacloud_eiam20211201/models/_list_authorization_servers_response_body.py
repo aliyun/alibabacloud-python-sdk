@@ -18,9 +18,9 @@ class ListAuthorizationServersResponseBody(DaraModel):
     ):
         # The list of authorization servers.
         self.authorization_servers = authorization_servers
-        # The maximum number of entries per page for a paged query.
+        # The number of entries to return per page in a paging query.
         self.max_results = max_results
-        # The pagination token returned by this call.
+        # The next token returned in the current call.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id

@@ -13,7 +13,7 @@ class ListNetworkAccessEndpointAvailableRegionsResponseBody(DaraModel):
         regions: List[main_models.ListNetworkAccessEndpointAvailableRegionsResponseBodyRegions] = None,
         request_id: str = None,
     ):
-        # The collection of available regions.
+        # The list of available regions.
         self.regions = regions
         # The request ID.
         self.request_id = request_id

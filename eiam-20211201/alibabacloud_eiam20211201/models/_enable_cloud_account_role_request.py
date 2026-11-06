@@ -12,15 +12,15 @@ class EnableCloudAccountRoleRequest(DaraModel):
         cloud_account_role_id: str = None,
         instance_id: str = None,
     ):
-        # A client token used to ensure the idempotence of the request. Generate a unique value for this parameter. The token can contain only ASCII characters and must be no more than 64 characters in length. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+        # Ensures the idempotence of the request. You can generate a parameter value on your client to ensure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters and can be up to 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
         # 
         # This parameter is required.
         self.client_token = client_token
-        # The ID of the Alibaba Cloud account.
+        # The cloud account ID.
         # 
         # This parameter is required.
         self.cloud_account_id = cloud_account_id
-        # The ID of the cloud role.
+        # The cloud role ID.
         # 
         # This parameter is required.
         self.cloud_account_role_id = cloud_account_role_id

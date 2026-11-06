@@ -17,15 +17,15 @@ class ListApplicationsForNetworkZoneRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of entries per page in a paged query.
+        # The number of entries to return per page for paging in a paged query.
         self.max_results = max_results
-        # The ID of the network zone associated with the application.
+        # The ID of the network zone.
         # 
         # This parameter is required.
         self.network_zone_id = network_zone_id
-        # The pagination token.
+        # The next token.
         self.next_token = next_token
-        # The pagination token for the previous page.
+        # The previous token.
         self.previous_token = previous_token
 
     def validate(self):

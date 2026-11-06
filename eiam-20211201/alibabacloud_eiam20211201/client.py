@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Dict
 
 from alibabacloud_eiam20211201 import models as main_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -20,6 +21,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'Eiam'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('eiam', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -39,6 +43,84 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(endpoint_map) and not DaraCore.is_null(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+
+    def activate_cloud_account_privilege_with_options(
+        self,
+        request: main_models.ActivateCloudAccountPrivilegeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ActivateCloudAccountPrivilegeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.cloud_account_id):
+            query['CloudAccountId'] = request.cloud_account_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ActivateCloudAccountPrivilege',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ActivateCloudAccountPrivilegeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def activate_cloud_account_privilege_with_options_async(
+        self,
+        request: main_models.ActivateCloudAccountPrivilegeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ActivateCloudAccountPrivilegeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.cloud_account_id):
+            query['CloudAccountId'] = request.cloud_account_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ActivateCloudAccountPrivilege',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ActivateCloudAccountPrivilegeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def activate_cloud_account_privilege(
+        self,
+        request: main_models.ActivateCloudAccountPrivilegeRequest,
+    ) -> main_models.ActivateCloudAccountPrivilegeResponse:
+        runtime = RuntimeOptions()
+        return self.activate_cloud_account_privilege_with_options(request, runtime)
+
+    async def activate_cloud_account_privilege_async(
+        self,
+        request: main_models.ActivateCloudAccountPrivilegeRequest,
+    ) -> main_models.ActivateCloudAccountPrivilegeResponse:
+        runtime = RuntimeOptions()
+        return await self.activate_cloud_account_privilege_with_options_async(request, runtime)
 
     def add_application_account_to_user_with_options(
         self,
@@ -2624,6 +2706,108 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_cloud_account_role_with_options_async(request, runtime)
 
+    def create_cloud_permission_template_with_options(
+        self,
+        request: main_models.CreateCloudPermissionTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCloudPermissionTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.allow_request):
+            query['AllowRequest'] = request.allow_request
+        if not DaraCore.is_null(request.applicable_scope):
+            query['ApplicableScope'] = request.applicable_scope
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.cloud_account_id):
+            query['CloudAccountId'] = request.cloud_account_id
+        if not DaraCore.is_null(request.cloud_account_resources):
+            query['CloudAccountResources'] = request.cloud_account_resources
+        if not DaraCore.is_null(request.cloud_permission_template_name):
+            query['CloudPermissionTemplateName'] = request.cloud_permission_template_name
+        if not DaraCore.is_null(request.cloud_permission_template_usage_type):
+            query['CloudPermissionTemplateUsageType'] = request.cloud_permission_template_usage_type
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCloudPermissionTemplate',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCloudPermissionTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_cloud_permission_template_with_options_async(
+        self,
+        request: main_models.CreateCloudPermissionTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCloudPermissionTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.allow_request):
+            query['AllowRequest'] = request.allow_request
+        if not DaraCore.is_null(request.applicable_scope):
+            query['ApplicableScope'] = request.applicable_scope
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.cloud_account_id):
+            query['CloudAccountId'] = request.cloud_account_id
+        if not DaraCore.is_null(request.cloud_account_resources):
+            query['CloudAccountResources'] = request.cloud_account_resources
+        if not DaraCore.is_null(request.cloud_permission_template_name):
+            query['CloudPermissionTemplateName'] = request.cloud_permission_template_name
+        if not DaraCore.is_null(request.cloud_permission_template_usage_type):
+            query['CloudPermissionTemplateUsageType'] = request.cloud_permission_template_usage_type
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCloudPermissionTemplate',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCloudPermissionTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_cloud_permission_template(
+        self,
+        request: main_models.CreateCloudPermissionTemplateRequest,
+    ) -> main_models.CreateCloudPermissionTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.create_cloud_permission_template_with_options(request, runtime)
+
+    async def create_cloud_permission_template_async(
+        self,
+        request: main_models.CreateCloudPermissionTemplateRequest,
+    ) -> main_models.CreateCloudPermissionTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.create_cloud_permission_template_with_options_async(request, runtime)
+
     def create_conditional_access_policy_with_options(
         self,
         request: main_models.CreateConditionalAccessPolicyRequest,
@@ -4426,6 +4610,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_user_with_options_async(request, runtime)
 
+    def deactivate_cloud_account_privilege_with_options(
+        self,
+        request: main_models.DeactivateCloudAccountPrivilegeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeactivateCloudAccountPrivilegeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.cloud_account_id):
+            query['CloudAccountId'] = request.cloud_account_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeactivateCloudAccountPrivilege',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeactivateCloudAccountPrivilegeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def deactivate_cloud_account_privilege_with_options_async(
+        self,
+        request: main_models.DeactivateCloudAccountPrivilegeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeactivateCloudAccountPrivilegeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.cloud_account_id):
+            query['CloudAccountId'] = request.cloud_account_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeactivateCloudAccountPrivilege',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeactivateCloudAccountPrivilegeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def deactivate_cloud_account_privilege(
+        self,
+        request: main_models.DeactivateCloudAccountPrivilegeRequest,
+    ) -> main_models.DeactivateCloudAccountPrivilegeResponse:
+        runtime = RuntimeOptions()
+        return self.deactivate_cloud_account_privilege_with_options(request, runtime)
+
+    async def deactivate_cloud_account_privilege_async(
+        self,
+        request: main_models.DeactivateCloudAccountPrivilegeRequest,
+    ) -> main_models.DeactivateCloudAccountPrivilegeResponse:
+        runtime = RuntimeOptions()
+        return await self.deactivate_cloud_account_privilege_with_options_async(request, runtime)
+
     def delete_application_with_options(
         self,
         request: main_models.DeleteApplicationRequest,
@@ -5267,6 +5529,84 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteCloudAccountRoleResponse:
         runtime = RuntimeOptions()
         return await self.delete_cloud_account_role_with_options_async(request, runtime)
+
+    def delete_cloud_permission_template_with_options(
+        self,
+        request: main_models.DeleteCloudPermissionTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCloudPermissionTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cloud_account_id):
+            query['CloudAccountId'] = request.cloud_account_id
+        if not DaraCore.is_null(request.cloud_permission_template_id):
+            query['CloudPermissionTemplateId'] = request.cloud_permission_template_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCloudPermissionTemplate',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCloudPermissionTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_cloud_permission_template_with_options_async(
+        self,
+        request: main_models.DeleteCloudPermissionTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCloudPermissionTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cloud_account_id):
+            query['CloudAccountId'] = request.cloud_account_id
+        if not DaraCore.is_null(request.cloud_permission_template_id):
+            query['CloudPermissionTemplateId'] = request.cloud_permission_template_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCloudPermissionTemplate',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCloudPermissionTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_cloud_permission_template(
+        self,
+        request: main_models.DeleteCloudPermissionTemplateRequest,
+    ) -> main_models.DeleteCloudPermissionTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.delete_cloud_permission_template_with_options(request, runtime)
+
+    async def delete_cloud_permission_template_async(
+        self,
+        request: main_models.DeleteCloudPermissionTemplateRequest,
+    ) -> main_models.DeleteCloudPermissionTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_cloud_permission_template_with_options_async(request, runtime)
 
     def delete_conditional_access_policy_with_options(
         self,
@@ -7676,6 +8016,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.disable_client_public_key_with_options_async(request, runtime)
 
+    def disable_cloud_account_privilege_with_options(
+        self,
+        request: main_models.DisableCloudAccountPrivilegeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableCloudAccountPrivilegeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.cloud_account_id):
+            query['CloudAccountId'] = request.cloud_account_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableCloudAccountPrivilege',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableCloudAccountPrivilegeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_cloud_account_privilege_with_options_async(
+        self,
+        request: main_models.DisableCloudAccountPrivilegeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableCloudAccountPrivilegeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.cloud_account_id):
+            query['CloudAccountId'] = request.cloud_account_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableCloudAccountPrivilege',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableCloudAccountPrivilegeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_cloud_account_privilege(
+        self,
+        request: main_models.DisableCloudAccountPrivilegeRequest,
+    ) -> main_models.DisableCloudAccountPrivilegeResponse:
+        runtime = RuntimeOptions()
+        return self.disable_cloud_account_privilege_with_options(request, runtime)
+
+    async def disable_cloud_account_privilege_async(
+        self,
+        request: main_models.DisableCloudAccountPrivilegeRequest,
+    ) -> main_models.DisableCloudAccountPrivilegeResponse:
+        runtime = RuntimeOptions()
+        return await self.disable_cloud_account_privilege_with_options_async(request, runtime)
+
     def disable_cloud_account_role_with_options(
         self,
         request: main_models.DisableCloudAccountRoleRequest,
@@ -7757,6 +8175,84 @@ class Client(OpenApiClient):
     ) -> main_models.DisableCloudAccountRoleResponse:
         runtime = RuntimeOptions()
         return await self.disable_cloud_account_role_with_options_async(request, runtime)
+
+    def disable_cloud_permission_template_with_options(
+        self,
+        request: main_models.DisableCloudPermissionTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableCloudPermissionTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cloud_account_id):
+            query['CloudAccountId'] = request.cloud_account_id
+        if not DaraCore.is_null(request.cloud_permission_template_id):
+            query['CloudPermissionTemplateId'] = request.cloud_permission_template_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableCloudPermissionTemplate',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableCloudPermissionTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_cloud_permission_template_with_options_async(
+        self,
+        request: main_models.DisableCloudPermissionTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableCloudPermissionTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cloud_account_id):
+            query['CloudAccountId'] = request.cloud_account_id
+        if not DaraCore.is_null(request.cloud_permission_template_id):
+            query['CloudPermissionTemplateId'] = request.cloud_permission_template_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableCloudPermissionTemplate',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableCloudPermissionTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_cloud_permission_template(
+        self,
+        request: main_models.DisableCloudPermissionTemplateRequest,
+    ) -> main_models.DisableCloudPermissionTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.disable_cloud_permission_template_with_options(request, runtime)
+
+    async def disable_cloud_permission_template_async(
+        self,
+        request: main_models.DisableCloudPermissionTemplateRequest,
+    ) -> main_models.DisableCloudPermissionTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.disable_cloud_permission_template_with_options_async(request, runtime)
 
     def disable_conditional_access_policy_with_options(
         self,
@@ -9788,6 +10284,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.enable_client_public_key_with_options_async(request, runtime)
 
+    def enable_cloud_account_privilege_with_options(
+        self,
+        request: main_models.EnableCloudAccountPrivilegeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableCloudAccountPrivilegeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.cloud_account_id):
+            query['CloudAccountId'] = request.cloud_account_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableCloudAccountPrivilege',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableCloudAccountPrivilegeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_cloud_account_privilege_with_options_async(
+        self,
+        request: main_models.EnableCloudAccountPrivilegeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableCloudAccountPrivilegeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.cloud_account_id):
+            query['CloudAccountId'] = request.cloud_account_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableCloudAccountPrivilege',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableCloudAccountPrivilegeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_cloud_account_privilege(
+        self,
+        request: main_models.EnableCloudAccountPrivilegeRequest,
+    ) -> main_models.EnableCloudAccountPrivilegeResponse:
+        runtime = RuntimeOptions()
+        return self.enable_cloud_account_privilege_with_options(request, runtime)
+
+    async def enable_cloud_account_privilege_async(
+        self,
+        request: main_models.EnableCloudAccountPrivilegeRequest,
+    ) -> main_models.EnableCloudAccountPrivilegeResponse:
+        runtime = RuntimeOptions()
+        return await self.enable_cloud_account_privilege_with_options_async(request, runtime)
+
     def enable_cloud_account_role_with_options(
         self,
         request: main_models.EnableCloudAccountRoleRequest,
@@ -9869,6 +10443,84 @@ class Client(OpenApiClient):
     ) -> main_models.EnableCloudAccountRoleResponse:
         runtime = RuntimeOptions()
         return await self.enable_cloud_account_role_with_options_async(request, runtime)
+
+    def enable_cloud_permission_template_with_options(
+        self,
+        request: main_models.EnableCloudPermissionTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableCloudPermissionTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cloud_account_id):
+            query['CloudAccountId'] = request.cloud_account_id
+        if not DaraCore.is_null(request.cloud_permission_template_id):
+            query['CloudPermissionTemplateId'] = request.cloud_permission_template_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableCloudPermissionTemplate',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableCloudPermissionTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_cloud_permission_template_with_options_async(
+        self,
+        request: main_models.EnableCloudPermissionTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableCloudPermissionTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cloud_account_id):
+            query['CloudAccountId'] = request.cloud_account_id
+        if not DaraCore.is_null(request.cloud_permission_template_id):
+            query['CloudPermissionTemplateId'] = request.cloud_permission_template_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableCloudPermissionTemplate',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableCloudPermissionTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_cloud_permission_template(
+        self,
+        request: main_models.EnableCloudPermissionTemplateRequest,
+    ) -> main_models.EnableCloudPermissionTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.enable_cloud_permission_template_with_options(request, runtime)
+
+    async def enable_cloud_permission_template_async(
+        self,
+        request: main_models.EnableCloudPermissionTemplateRequest,
+    ) -> main_models.EnableCloudPermissionTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.enable_cloud_permission_template_with_options_async(request, runtime)
 
     def enable_conditional_access_policy_with_options(
         self,
@@ -12828,6 +13480,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_cloud_account_role_with_options_async(request, runtime)
 
+    def get_cloud_permission_template_with_options(
+        self,
+        request: main_models.GetCloudPermissionTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCloudPermissionTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cloud_account_id):
+            query['CloudAccountId'] = request.cloud_account_id
+        if not DaraCore.is_null(request.cloud_permission_template_id):
+            query['CloudPermissionTemplateId'] = request.cloud_permission_template_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCloudPermissionTemplate',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCloudPermissionTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_cloud_permission_template_with_options_async(
+        self,
+        request: main_models.GetCloudPermissionTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCloudPermissionTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cloud_account_id):
+            query['CloudAccountId'] = request.cloud_account_id
+        if not DaraCore.is_null(request.cloud_permission_template_id):
+            query['CloudPermissionTemplateId'] = request.cloud_permission_template_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCloudPermissionTemplate',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCloudPermissionTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_cloud_permission_template(
+        self,
+        request: main_models.GetCloudPermissionTemplateRequest,
+    ) -> main_models.GetCloudPermissionTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.get_cloud_permission_template_with_options(request, runtime)
+
+    async def get_cloud_permission_template_async(
+        self,
+        request: main_models.GetCloudPermissionTemplateRequest,
+    ) -> main_models.GetCloudPermissionTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.get_cloud_permission_template_with_options_async(request, runtime)
+
     def get_conditional_access_policy_with_options(
         self,
         request: main_models.GetConditionalAccessPolicyRequest,
@@ -13489,6 +14219,66 @@ class Client(OpenApiClient):
     ) -> main_models.GetForgetPasswordConfigurationResponse:
         runtime = RuntimeOptions()
         return await self.get_forget_password_configuration_with_options_async(request, runtime)
+
+    def get_global_cloud_account_system_role_policy_with_options(
+        self,
+        request: main_models.GetGlobalCloudAccountSystemRolePolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGlobalCloudAccountSystemRolePolicyResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetGlobalCloudAccountSystemRolePolicy',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGlobalCloudAccountSystemRolePolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_global_cloud_account_system_role_policy_with_options_async(
+        self,
+        request: main_models.GetGlobalCloudAccountSystemRolePolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGlobalCloudAccountSystemRolePolicyResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetGlobalCloudAccountSystemRolePolicy',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGlobalCloudAccountSystemRolePolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_global_cloud_account_system_role_policy(
+        self,
+        request: main_models.GetGlobalCloudAccountSystemRolePolicyRequest,
+    ) -> main_models.GetGlobalCloudAccountSystemRolePolicyResponse:
+        runtime = RuntimeOptions()
+        return self.get_global_cloud_account_system_role_policy_with_options(request, runtime)
+
+    async def get_global_cloud_account_system_role_policy_async(
+        self,
+        request: main_models.GetGlobalCloudAccountSystemRolePolicyRequest,
+    ) -> main_models.GetGlobalCloudAccountSystemRolePolicyResponse:
+        runtime = RuntimeOptions()
+        return await self.get_global_cloud_account_system_role_policy_with_options_async(request, runtime)
 
     def get_group_with_options(
         self,
@@ -17655,6 +18445,104 @@ class Client(OpenApiClient):
     ) -> main_models.ListCloudAccountsResponse:
         runtime = RuntimeOptions()
         return await self.list_cloud_accounts_with_options_async(request, runtime)
+
+    def list_cloud_permission_templates_with_options(
+        self,
+        request: main_models.ListCloudPermissionTemplatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCloudPermissionTemplatesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cloud_account_id):
+            query['CloudAccountId'] = request.cloud_account_id
+        if not DaraCore.is_null(request.cloud_permission_template_name_prefix):
+            query['CloudPermissionTemplateNamePrefix'] = request.cloud_permission_template_name_prefix
+        if not DaraCore.is_null(request.cloud_permission_template_sharing_mode):
+            query['CloudPermissionTemplateSharingMode'] = request.cloud_permission_template_sharing_mode
+        if not DaraCore.is_null(request.cloud_permission_template_usage_type):
+            query['CloudPermissionTemplateUsageType'] = request.cloud_permission_template_usage_type
+        if not DaraCore.is_null(request.creator_type):
+            query['CreatorType'] = request.creator_type
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCloudPermissionTemplates',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCloudPermissionTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cloud_permission_templates_with_options_async(
+        self,
+        request: main_models.ListCloudPermissionTemplatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCloudPermissionTemplatesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cloud_account_id):
+            query['CloudAccountId'] = request.cloud_account_id
+        if not DaraCore.is_null(request.cloud_permission_template_name_prefix):
+            query['CloudPermissionTemplateNamePrefix'] = request.cloud_permission_template_name_prefix
+        if not DaraCore.is_null(request.cloud_permission_template_sharing_mode):
+            query['CloudPermissionTemplateSharingMode'] = request.cloud_permission_template_sharing_mode
+        if not DaraCore.is_null(request.cloud_permission_template_usage_type):
+            query['CloudPermissionTemplateUsageType'] = request.cloud_permission_template_usage_type
+        if not DaraCore.is_null(request.creator_type):
+            query['CreatorType'] = request.creator_type
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCloudPermissionTemplates',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCloudPermissionTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cloud_permission_templates(
+        self,
+        request: main_models.ListCloudPermissionTemplatesRequest,
+    ) -> main_models.ListCloudPermissionTemplatesResponse:
+        runtime = RuntimeOptions()
+        return self.list_cloud_permission_templates_with_options(request, runtime)
+
+    async def list_cloud_permission_templates_async(
+        self,
+        request: main_models.ListCloudPermissionTemplatesRequest,
+    ) -> main_models.ListCloudPermissionTemplatesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_cloud_permission_templates_with_options_async(request, runtime)
 
     def list_conditional_access_policies_with_options(
         self,
@@ -26781,6 +27669,108 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateCloudAccountRoleDescriptionResponse:
         runtime = RuntimeOptions()
         return await self.update_cloud_account_role_description_with_options_async(request, runtime)
+
+    def update_cloud_permission_template_with_options(
+        self,
+        request: main_models.UpdateCloudPermissionTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCloudPermissionTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.allow_request):
+            query['AllowRequest'] = request.allow_request
+        if not DaraCore.is_null(request.applicable_scope):
+            query['ApplicableScope'] = request.applicable_scope
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.cloud_account_id):
+            query['CloudAccountId'] = request.cloud_account_id
+        if not DaraCore.is_null(request.cloud_account_resources):
+            query['CloudAccountResources'] = request.cloud_account_resources
+        if not DaraCore.is_null(request.cloud_permission_template_id):
+            query['CloudPermissionTemplateId'] = request.cloud_permission_template_id
+        if not DaraCore.is_null(request.cloud_permission_template_name):
+            query['CloudPermissionTemplateName'] = request.cloud_permission_template_name
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCloudPermissionTemplate',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCloudPermissionTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_cloud_permission_template_with_options_async(
+        self,
+        request: main_models.UpdateCloudPermissionTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCloudPermissionTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.allow_request):
+            query['AllowRequest'] = request.allow_request
+        if not DaraCore.is_null(request.applicable_scope):
+            query['ApplicableScope'] = request.applicable_scope
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.cloud_account_id):
+            query['CloudAccountId'] = request.cloud_account_id
+        if not DaraCore.is_null(request.cloud_account_resources):
+            query['CloudAccountResources'] = request.cloud_account_resources
+        if not DaraCore.is_null(request.cloud_permission_template_id):
+            query['CloudPermissionTemplateId'] = request.cloud_permission_template_id
+        if not DaraCore.is_null(request.cloud_permission_template_name):
+            query['CloudPermissionTemplateName'] = request.cloud_permission_template_name
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCloudPermissionTemplate',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCloudPermissionTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_cloud_permission_template(
+        self,
+        request: main_models.UpdateCloudPermissionTemplateRequest,
+    ) -> main_models.UpdateCloudPermissionTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.update_cloud_permission_template_with_options(request, runtime)
+
+    async def update_cloud_permission_template_async(
+        self,
+        request: main_models.UpdateCloudPermissionTemplateRequest,
+    ) -> main_models.UpdateCloudPermissionTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.update_cloud_permission_template_with_options_async(request, runtime)
 
     def update_conditional_access_policy_with_options(
         self,

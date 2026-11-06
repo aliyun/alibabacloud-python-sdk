@@ -14,12 +14,12 @@ class SetForgetPasswordConfigurationRequest(DaraModel):
         instance_id: str = None,
     ):
         # The list of authentication channels. Valid values:
-        # - email: email.
-        # - sms: text message.
+        # - email: Email.
+        # - sms: SMS.
         self.authentication_channels = authentication_channels
         # The forgot password configuration status. Valid values:
-        # - enabled: enabled.
-        # - disabled: disabled.
+        # - enabled: Enabled.
+        # - disabled: Disabled.
         # 
         # This parameter is required.
         self.forget_password_status = forget_password_status

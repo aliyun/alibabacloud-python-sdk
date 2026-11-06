@@ -11,7 +11,7 @@ class DeleteDomainProxyTokenRequest(DaraModel):
         domain_proxy_token_id: str = None,
         instance_id: str = None,
     ):
-        # The domain name ID.
+        # The domain ID.
         # 
         # This parameter is required.
         self.domain_id = domain_id

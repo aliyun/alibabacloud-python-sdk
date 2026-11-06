@@ -19,7 +19,7 @@ class ListNetworkAccessEndpointsRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of rows per page in a paged query. Maximum value: 100.
+        # The number of entries to return per page in a paging query. Maximum value: 100.
         self.max_results = max_results
         # The status of the network access endpoint. Valid values:
         #  
@@ -33,15 +33,15 @@ class ListNetworkAccessEndpointsRequest(DaraModel):
         # The type of the network access endpoint. Valid values:
         # 
         # - shared: shared network access endpoint.
-        # - private: dedicated network access endpoint.
+        # - private: private network access endpoint.
         # 
         # Default value: private.
         self.network_access_endpoint_type = network_access_endpoint_type
-        # The pagination token. Set this parameter to the NextToken value returned in the previous API call. Leave this parameter empty for the first query.
+        # The pagination token. Set the value to the NextToken value returned from the previous API call. Leave this parameter empty for the first call.
         self.next_token = next_token
-        # The VPC ID of the dedicated network access endpoint. This parameter does not take effect when NetworkAccessEndpointType is set to shared.
+        # The ID of the VPC to which the private network access endpoint is connected. This parameter does not take effect when NetworkAccessEndpointType is set to shared.
         self.vpc_id = vpc_id
-        # The region of the VPC for the dedicated network access endpoint. The region must be one of the regions returned by the ListNetworkAccessEndpointAvailableRegions operation. This parameter does not take effect when NetworkAccessEndpointType is set to shared.
+        # The region of the VPC to which the private network access endpoint is connected. The region must be returned by the ListNetworkAccessEndpointAvailableRegions operation. This parameter does not take effect when NetworkAccessEndpointType is set to shared.
         self.vpc_region_id = vpc_region_id
 
     def validate(self):

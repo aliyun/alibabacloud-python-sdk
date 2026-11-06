@@ -1,3 +1,18 @@
+2026-11-06 Version: 3.1.0
+- Support API ActivateCloudAccountPrivilege.
+- Support API CreateCloudPermissionTemplate.
+- Support API DeactivateCloudAccountPrivilege.
+- Support API DeleteCloudPermissionTemplate.
+- Support API DisableCloudAccountPrivilege.
+- Support API DisableCloudPermissionTemplate.
+- Support API EnableCloudAccountPrivilege.
+- Support API EnableCloudPermissionTemplate.
+- Support API GetCloudPermissionTemplate.
+- Support API GetGlobalCloudAccountSystemRolePolicy.
+- Support API ListCloudPermissionTemplates.
+- Support API UpdateCloudPermissionTemplate.
+
+
 2026-10-14 Version: 3.0.1
 - Update API GenerateFileImportTemplate: add request parameters FieldSelectionEnabled.
 - Update API GenerateFileImportTemplate: add request parameters SelectedFieldNames.

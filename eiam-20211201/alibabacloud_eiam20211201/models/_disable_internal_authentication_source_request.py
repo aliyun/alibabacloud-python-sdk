@@ -10,7 +10,7 @@ class DisableInternalAuthenticationSourceRequest(DaraModel):
         authentication_source_id: str = None,
         instance_id: str = None,
     ):
-        # The ID of the internal authentication source.
+        # The internal authentication source ID.
         self.authentication_source_id = authentication_source_id
         # The instance ID.
         # 

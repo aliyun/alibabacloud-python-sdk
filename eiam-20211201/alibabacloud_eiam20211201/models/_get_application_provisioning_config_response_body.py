@@ -62,39 +62,31 @@ class GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfig(
     ):
         # The application ID.
         self.application_id = application_id
-        # The configuration parameters for the custom event callback protocol of IDaaS.
+        # The configuration parameters for the IDaaS custom event callback protocol.
         self.callback_provisioning_config = callback_provisioning_config
         # The rendering mode of the account synchronization page. Valid values:
-        # 
-        # - standard: standard mode.
-        # 
-        # - template: template mode.
+        # - standard: Standard mode.
+        # - template: Template mode.
         self.config_operate_mode = config_operate_mode
         # The instance ID.
         self.instance_id = instance_id
         # The network endpoint ID.
         self.network_access_endpoint_id = network_access_endpoint_id
-        # The public key endpoint for signature verification of application synchronization callback messages.
+        # The public key endpoint for verifying the signature of application synchronization callback information.
         self.provision_jwks_endpoint = provision_jwks_endpoint
-        # Indicates whether to synchronize passwords in IDaaS user event callbacks. Valid values:
-        # 
-        # - true: Passwords are synchronized.
-        # 
-        # - false: Passwords are not synchronized.
+        # Specifies whether to synchronize passwords in IDaaS user event callbacks. Valid values:
+        # - true: Synchronize passwords.
+        # - false: Do not synchronize passwords.
         self.provision_password = provision_password
-        # The protocol type for application synchronization. Valid values:
-        # 
-        # - idaas_callback: the custom event callback protocol of IDaaS.
-        # 
-        # - scim2: the System for Cross-domain Identity Management (SCIM) protocol.
+        # The application synchronization protocol type. Valid values:
+        # - idaas_callback: IDaaS custom event callback protocol.
+        # - scim2: System for Cross-domain Identity Management protocol.
         self.provision_protocol_type = provision_protocol_type
-        # The configuration parameters for IDaaS SCIM protocol synchronization.
+        # The configuration parameters for IDaaS System for Cross-domain Identity Management protocol synchronization.
         self.scim_provisioning_config = scim_provisioning_config
-        # The status of the IDaaS account synchronization feature. Valid values:
-        # 
-        # - enabled: The feature is enabled.
-        # 
-        # - disabled: The feature is disabled.
+        # The enabling status of the IDaaS account synchronization feature. Valid values:
+        # - enabled: Enabled.
+        # - disabled: Disabled.
         self.status = status
 
     def validate(self):
@@ -184,21 +176,17 @@ class GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfigS
         provisioning_actions: List[str] = None,
         scim_base_url: str = None,
     ):
-        # The configuration parameters for SCIM protocol synchronization.
+        # The configuration parameters related to System for Cross-domain Identity Management protocol synchronization.
         self.authn_configuration = authn_configuration
-        # The scope of a full push for the SCIM protocol. Valid values:
-        # 
-        # - urn:alibaba:idaas:app:scim:User:PUSH: performs a full synchronization of users.
+        # The full push scope for the System for Cross-domain Identity Management protocol. Valid values:
+        # - urn:alibaba:idaas:app:scim:User:PUSH: Full user synchronization.
         self.full_push_scopes = full_push_scopes
-        # The operations on the target resource for the SCIM protocol. Valid values:
-        # 
-        # - urn:alibaba:idaas:app:scim:User:CREATE: creates an account.
-        # 
-        # - urn:alibaba:idaas:app:scim:User:UPDATE: updates an account.
-        # 
-        # - urn:alibaba:idaas:app:scim:User:DELETE: deletes an account.
+        # The operations on target resources for the System for Cross-domain Identity Management protocol. Valid values:
+        # - urn:alibaba:idaas:app:scim:User:CREATE: Create an account.
+        # - urn:alibaba:idaas:app:scim:User:UPDATE: Update an account.
+        # - urn:alibaba:idaas:app:scim:User:DELETE: Delete an account.
         self.provisioning_actions = provisioning_actions
-        # The base URL where the application receives IDaaS SCIM protocol synchronization.
+        # The base URL for the application to receive IDaaS System for Cross-domain Identity Management protocol synchronization.
         self.scim_base_url = scim_base_url
 
     def validate(self):
@@ -248,21 +236,16 @@ class GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfigS
         authn_param: main_models.GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfigScimProvisioningConfigAuthnConfigurationAuthnParam = None,
         grant_type: str = None,
     ):
-        # The authorization mode for the SCIM protocol interface. Valid values:
-        # 
-        # - oauth2: OAuth2 mode.
+        # The authorization pattern for System for Cross-domain Identity Management protocol APIs. Valid values:
+        # - oauth2: OAuth2 pattern.
         self.authn_mode = authn_mode
         # The authorization configuration parameters. Usage:
-        # 
         # - If GrantType is set to client_credentials, you must specify ClientId, ClientSecret, and AuthnMethod.
-        # 
         # - If GrantType is set to bearer_token, you must specify AccessToken.
         self.authn_param = authn_param
-        # The authorization mode for the SCIM protocol. Valid values:
-        # 
-        # - client_credentials: client credentials mode.
-        # 
-        # - bearer_token: bearer token mode.
+        # The authorization pattern for the System for Cross-domain Identity Management protocol. Valid values:
+        # - client_credentials: Client credentials pattern.
+        # - bearer_token: Bearer token pattern.
         self.grant_type = grant_type
 
     def validate(self):
@@ -308,13 +291,11 @@ class GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfigS
         client_secret: str = None,
         token_endpoint: str = None,
     ):
-        # The access token. This parameter is required when GrantType is set to bearer_token.
+        # The access token. This field is required when the bearer_token mode is used.
         self.access_token = access_token
-        # The authentication mode for the SCIM protocol. Valid values:
-        # 
-        # - client_secret_basic: The key is passed in the request header.
-        # 
-        # - client_secret_post: The key is passed in the request body.
+        # The authentication pattern for the System for Cross-domain Identity Management protocol. Valid values:
+        # - client_secret_basic: Pass the secret in the request header.
+        # - client_secret_post: Pass the secret in the request body.
         self.authn_method = authn_method
         # The client ID of the application.
         self.client_id = client_id
@@ -375,17 +356,15 @@ class GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfigC
         encrypt_required: bool = None,
         listen_event_scopes: List[str] = None,
     ):
-        # The destination address where the application receives IDaaS event callbacks.
+        # The destination address for the application to receive IDaaS event callbacks.
         self.callback_url = callback_url
-        # The symmetric key for encrypting and decrypting IDaaS event callbacks. This key uses the AES-256 algorithm and is in hexadecimal format.
+        # The symmetric encryption and decryption key for IDaaS event callbacks. The key uses the AES256 algorithm and is encoded in Hex format.
         self.encrypt_key = encrypt_key
-        # Indicates whether to encrypt IDaaS event callback messages. Valid values:
-        # 
-        # - true: The messages are encrypted.
-        # 
-        # - false: The messages are not encrypted and are transmitted in plaintext.
+        # Specifies whether IDaaS event callback messages are encrypted. Valid values:
+        # - true: Encrypted.
+        # - false: Not encrypted. Messages are transmitted in plaintext.
         self.encrypt_required = encrypt_required
-        # The list of message types for the IDaaS event callback listener.
+        # The list of message types listened to by IDaaS event callbacks.
         self.listen_event_scopes = listen_event_scopes
 
     def validate(self):

@@ -16,7 +16,7 @@ class DeleteUsersRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # A list of account IDs.
+        # The list of account IDs.
         # 
         # This parameter is required.
         self.user_ids = user_ids

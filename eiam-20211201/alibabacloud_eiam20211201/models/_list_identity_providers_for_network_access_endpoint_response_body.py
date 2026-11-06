@@ -15,9 +15,9 @@ class ListIdentityProvidersForNetworkAccessEndpointResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The collection of IdPs for the network endpoint.
+        # The IdPs under the network access endpoint.
         self.identity_providers_for_network_access_endpoint = identity_providers_for_network_access_endpoint
-        # The token that is returned from the call.
+        # The pagination token returned by this call.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -77,9 +77,9 @@ class ListIdentityProvidersForNetworkAccessEndpointResponseBodyIdentityProviders
         identity_provider_name: str = None,
         instance_id: str = None,
     ):
-        # The ID of the IdP.
+        # The IdP ID.
         self.identity_provider_id = identity_provider_id
-        # The name of the IdP.
+        # The IdP name.
         self.identity_provider_name = identity_provider_name
         # The instance ID.
         self.instance_id = instance_id

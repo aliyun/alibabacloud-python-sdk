@@ -57,24 +57,24 @@ class GetGroupResponseBodyGroup(DaraModel):
         instance_id: str = None,
         update_time: int = None,
     ):
-        # The time when the group was created. The value is a UNIX timestamp in milliseconds.
+        # The creation time of the group. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The group description.
         self.description = description
-        # The external ID of the group, which is used to associate the group with an external system. The default value is the account group ID.
+        # The external identifier of the group. It is used to associate with external systems. Default value: the group ID.
         self.group_external_id = group_external_id
         # The group ID.
         self.group_id = group_id
         # The group name.
         self.group_name = group_name
-        # The source ID of the group. The default value is the instance ID.
+        # The source ID of the group. Default value: the instance ID.
         self.group_source_id = group_source_id
-        # The source type of the group. Currently, only built-in groups are supported. Valid values:
+        # The source type of the group. Only built-in groups are supported. Valid values:
         # - build_in: built-in.
         self.group_source_type = group_source_type
         # The instance ID.
         self.instance_id = instance_id
-        # The time when the group was last updated. The value is a UNIX timestamp in milliseconds.
+        # The last update time of the group. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):

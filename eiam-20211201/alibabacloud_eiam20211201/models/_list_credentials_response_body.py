@@ -18,9 +18,9 @@ class ListCredentialsResponseBody(DaraModel):
     ):
         # The list of credentials.
         self.credentials = credentials
-        # The maximum number of rows per page in a paging query.
+        # The number of entries per page for paging in a paged query.
         self.max_results = max_results
-        # The pagination token returned by this call.
+        # The pagination token returned by the current request.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -106,7 +106,7 @@ class ListCredentialsResponseBodyCredentials(DaraModel):
         self.credential_content = credential_content
         # The creation type of the credential. Valid values:
         # - system_init: Created by the system.
-        # - user_custom: Created by the user.
+        # - user_custom: Created by a user.
         self.credential_creation_type = credential_creation_type
         # The external unique identifiers of the credentials.
         self.credential_external_id = credential_external_id
@@ -116,26 +116,26 @@ class ListCredentialsResponseBodyCredentials(DaraModel):
         self.credential_identifier = credential_identifier
         # The credential name.
         self.credential_name = credential_name
-        # The usage scenario label of the credential. Valid values:
-        # - llm: Large language model.
+        # The Scenarios label of the credential. Valid values:
+        # - llm: Large model.
         # - saas: Third-party SaaS service.
         self.credential_scenario_label = credential_scenario_label
         # The credential sharing scope. Valid values:
-        # - common: common
-        # - user_exclusive: account-exclusive
+        # - common: General.
+        # - user_exclusive: Account-specific.
         self.credential_sharing_scope = credential_sharing_scope
-        # The subject ID of the credential.
+        # The ID of the subject to which the credential belongs.
         self.credential_subject_id = credential_subject_id
-        # The subject type of the credential. Valid values:
+        # The subject type to which the credential belongs. Valid values:
         # - authentication_token_provider: Authentication token provider.
         self.credential_subject_type = credential_subject_type
         # The credential type. Valid values:
-        # - api_key: API key authentication credential.
-        # - oauth_client: OAuth client authentication credential.
+        # - api_key: API key credential.
+        # - oauth_client: OAuth client credential.
         self.credential_type = credential_type
         # The credential description.
         self.description = description
-        # The exclusive user ID of the credential.
+        # The ID of the exclusive user for the credential.
         self.exclusive_user_id = exclusive_user_id
         # The EIAM instance ID.
         self.instance_id = instance_id
@@ -269,7 +269,7 @@ class ListCredentialsResponseBodyCredentialsCredentialContent(DaraModel):
         self,
         oauth_client_content: main_models.ListCredentialsResponseBodyCredentialsCredentialContentOAuthClientContent = None,
     ):
-        # The credential content for the OAuth client authentication credential type.
+        # The content of an OAuth client credential.
         self.oauth_client_content = oauth_client_content
 
     def validate(self):

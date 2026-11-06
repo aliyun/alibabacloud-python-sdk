@@ -25,7 +25,7 @@ class UpdateCustomPrivacyPolicyRequest(DaraModel):
         self.custom_privacy_policy_id = custom_privacy_policy_id
         # The name of the custom privacy policy.
         self.custom_privacy_policy_name = custom_privacy_policy_name
-        # The default language of the policy. The value is the LanguageCode returned by the ListLanguages operation.
+        # The default language code for the privacy policy items. The value is the LanguageCode returned by the ListLanguages API operation.
         self.default_language_code = default_language_code
         # The instance ID.
         # 
@@ -101,9 +101,9 @@ class UpdateCustomPrivacyPolicyRequestCustomPrivacyPolicyContents(DaraModel):
     ):
         # The items of the custom privacy policy.
         self.custom_privacy_policy_items = custom_privacy_policy_items
-        # The prompt for the custom privacy policy content.
+        # The tip for the custom privacy policy content.
         self.custom_privacy_policy_tip = custom_privacy_policy_tip
-        # The language of the custom privacy policy. The value is the LanguageCode returned by the ListLanguages operation.
+        # The language of the custom privacy policy. The value is the LanguageCode returned by the ListLanguages API operation.
         self.language_code = language_code
 
     def validate(self):
@@ -154,7 +154,7 @@ class UpdateCustomPrivacyPolicyRequestCustomPrivacyPolicyContentsCustomPrivacyPo
     ):
         # The name of the custom privacy policy item.
         self.custom_privacy_policy_item_name = custom_privacy_policy_item_name
-        # The endpoint of the custom privacy policy item. The value must start with https\\://.
+        # The access URL of the custom privacy policy item. The URL must start with https://.
         self.custom_privacy_policy_item_url = custom_privacy_policy_item_url
 
     def validate(self):

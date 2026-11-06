@@ -13,17 +13,17 @@ class ListCustomPrivacyPoliciesRequest(DaraModel):
         next_token: str = None,
         previous_token: str = None,
     ):
-        # The custom term name. Left fuzzy match is supported.
+        # The prefix of the custom privacy policy name for fuzzy matching.
         self.custom_privacy_policy_name_starts_with = custom_privacy_policy_name_starts_with
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of entries per page in a paged query.
+        # The maximum number of entries to return per page in a paging query.
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token
-        # The token for the previous page.
+        # The pagination token for the previous page.
         self.previous_token = previous_token
 
     def validate(self):

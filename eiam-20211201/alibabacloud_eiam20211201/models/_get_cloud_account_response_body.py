@@ -69,49 +69,50 @@ class GetCloudAccountResponseBodyCloudAccount(DaraModel):
     ):
         # The external unique identifier of the cloud account.
         self.cloud_account_external_id = cloud_account_external_id
-        # The health status of the cloud account. Valid values:
-        # - healthy: The cloud account is healthy.
-        # - unhealthy: The cloud account is unhealthy.
-        # - unknown: The health status is unknown.
+        # The cloud account health status. Valid values:
+        # - healthy: Healthy.
+        # - unhealthy: Unhealthy.
+        # - unknown: Unknown.
         self.cloud_account_health = cloud_account_health
-        # The health check result of the cloud account.
+        # The cloud account health check result.
         self.cloud_account_health_check_result = cloud_account_health_check_result
         # The cloud account ID.
         self.cloud_account_id = cloud_account_id
-        # The name of the cloud account.
+        # The cloud account name.
         self.cloud_account_name = cloud_account_name
-        # The configuration information of the identity provider.
+        # The identity provider configuration information.
         self.cloud_account_provider_config = cloud_account_provider_config
-        # The name of the identity provider.
+        # The identity provider name.
         self.cloud_account_provider_name = cloud_account_provider_name
-        # The site of the cloud account. Valid values:
+        # The cloud account site. Valid values:
         # - china_mainland: The Chinese mainland.
         # - global: Global.
         self.cloud_account_site = cloud_account_site
-        # The type of the cloud account. Valid values:
+        # The cloud account type. Valid values:
+        # 
         # - alibaba_cloud: Alibaba Cloud.
         self.cloud_account_vendor_type = cloud_account_vendor_type
         # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The description of the cloud account.
+        # The cloud account description.
         self.description = description
         # The instance ID.
         self.instance_id = instance_id
-        # The list of associated privileged application IDs.
+        # The list of associated privilege application IDs.
         self.privilege_application_ids = privilege_application_ids
         # The cause of the privilege hosting or removal failure.
         self.privilege_hosting_error = privilege_hosting_error
-        # The hosting status of the cloud account. Default value: hosting_unmanaged. Valid values:
+        # The cloud account hosting status. Default value: hosting_unmanaged. Valid values:
         # - hosting_unmanaged: Unmanaged. The cloud account has not initiated hosting and is in the initial state.
-        # - hosting_pending: Hosting. The hosting task has been submitted and is being executed asynchronously. Wait for the hosting process to complete to enter the final state.
-        # - hosting_completed: Hosting completed. The cloud account hosting process is executed successfully, and the relevant permission templates and hosting bindings have taken effect.
-        # - hosting_failed: Hosting failed. The hosting process encounters an exception. You can view the cause of the failure and initiate hosting again.
-        # - hosting_removing: Removing. The removal task has been submitted and is being executed asynchronously. Wait for the removal process to complete to enter the final state.
-        # - hosting_remove_failed: Removal failed. The removal process encounters an exception. You can view the cause of the failure and initiate removal again.
+        # - hosting_pending: Hosting. The hosting task is submitted and executed asynchronously. You must wait for the hosting process to complete to enter the final state.
+        # - hosting_completed: Hosting completed. The hosting process is executed successfully, and the relevant permission templates and hosting bindings take effect.
+        # - hosting_failed: Hosting failed. An exception occurs during the hosting process. You can view the failure cause and initiate hosting again.
+        # - hosting_removing: Removing. The removal task is submitted and executed asynchronously. You must wait for the removal process to complete to enter the final state.
+        # - hosting_remove_failed: Removal failed. An exception occurs during the removal process. You can view the failure cause and initiate removal again.
         self.privilege_hosting_state = privilege_hosting_state
-        # The status of the privilege switch. Valid values:
-        # - enabled: Enabled. The resource is in the effective state and can be used normally.
-        # - disabled: Disabled. The resource is in the stopped state and no longer takes effect. You can enable it again to restore it.
+        # The privilege switch status. Valid values:
+        # - enabled: Enabled. The resource is active and can be used normally.
+        # - disabled: Disabled. The resource is deactivated and no longer takes effect. You can re-enable it to restore the resource.
         self.privilege_status = privilege_status
         # The last update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
@@ -246,9 +247,9 @@ class GetCloudAccountResponseBodyCloudAccountPrivilegeHostingError(DaraModel):
         error_code: str = None,
         error_message: str = None,
     ):
-        # The error code of the failure.
+        # The failure error code.
         self.error_code = error_code
-        # The error message of the failure.
+        # The failure message.
         self.error_message = error_message
 
     def validate(self):
@@ -287,7 +288,7 @@ class GetCloudAccountResponseBodyCloudAccountCloudAccountProviderConfig(DaraMode
     ):
         # The audience identifier.
         self.audience = audience
-        # The ID of the authorization server.
+        # The authorization server ID.
         self.authorization_server_id = authorization_server_id
         # The issuer.
         self.issuer = issuer
@@ -341,11 +342,12 @@ class GetCloudAccountResponseBodyCloudAccountCloudAccountHealthCheckResult(DaraM
     ):
         # The error reason. This field returns a value when the health check status is unhealthy.
         self.error_reason = error_reason
-        # The time of the last check. The value is a UNIX timestamp in milliseconds.
+        # The last check time. The value is a UNIX timestamp in milliseconds.
         self.last_check_time = last_check_time
-        # The health check result of the cloud account. Valid values:
-        # - success: The check succeeded.
-        # - failed: The check failed.
+        # The cloud account health check result. Valid values:
+        # 
+        # - success: Success.
+        # - failed: Failure.
         self.result = result
 
     def validate(self):

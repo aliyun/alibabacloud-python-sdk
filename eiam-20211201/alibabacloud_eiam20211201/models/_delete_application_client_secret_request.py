@@ -19,7 +19,7 @@ class DeleteApplicationClientSecretRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The client secret ID of the application.
+        # The ID of the client secret for the application.
         # 
         # This parameter is required.
         self.secret_id = secret_id

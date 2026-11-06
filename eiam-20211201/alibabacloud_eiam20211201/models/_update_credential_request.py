@@ -14,7 +14,7 @@ class UpdateCredentialRequest(DaraModel):
         credential_name: str = None,
         instance_id: str = None,
     ):
-        # Ensures idempotence. Generate a unique value on your client for each request. The ClientToken value must contain only ASCII characters and cannot exceed 64 characters. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+        # Ensures the idempotence of the request. You can generate a parameter value on your client to ensure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters and can be up to 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
         # 
         # This parameter is required.
         self.client_token = client_token
@@ -83,9 +83,9 @@ class UpdateCredentialRequestCredentialContent(DaraModel):
         api_key_content: main_models.UpdateCredentialRequestCredentialContentApiKeyContent = None,
         oauth_client_content: main_models.UpdateCredentialRequestCredentialContentOAuthClientContent = None,
     ):
-        # The credential content for an API key credential type.
+        # The credential content for the API key credential type.
         self.api_key_content = api_key_content
-        # The credential content for an OAuth client authentication credential type.
+        # The credential content for the OAuth client credential type.
         self.oauth_client_content = oauth_client_content
 
     def validate(self):
@@ -125,9 +125,9 @@ class UpdateCredentialRequestCredentialContentOAuthClientContent(DaraModel):
         client_id: str = None,
         client_secret: str = None,
     ):
-        # The client_id in the OAuth protocol.
+        # The client_id of the OAuth protocol.
         self.client_id = client_id
-        # The client_secret in the OAuth protocol.
+        # The client_secret of the OAuth protocol.
         self.client_secret = client_secret
 
     def validate(self):
@@ -161,7 +161,7 @@ class UpdateCredentialRequestCredentialContentApiKeyContent(DaraModel):
         self,
         api_key: str = None,
     ):
-        # The API key value.
+        # The API key content.
         self.api_key = api_key
 
     def validate(self):

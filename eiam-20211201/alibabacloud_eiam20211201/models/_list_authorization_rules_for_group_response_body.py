@@ -18,13 +18,13 @@ class ListAuthorizationRulesForGroupResponseBody(DaraModel):
     ):
         # The list of authorization rules.
         self.authorization_rules = authorization_rules
-        # The number of entries per page in a paged query. This parameter specifies the paging size.
+        # The number of entries per page for paging.
         self.max_results = max_results
-        # The pagination token returned in this call. Use this token to query the next page.
+        # The pagination token returned by the current call for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -94,8 +94,8 @@ class ListAuthorizationRulesForGroupResponseBodyAuthorizationRules(DaraModel):
         # The time range of the validity period. This parameter takes effect only when **ValidityType** is set to **time_bound**.
         self.validity_period = validity_period
         # The validity type of the relationship. Valid values:
-        # - permanent: permanent
-        # - time_bound: custom time range.
+        # - permanent: Permanent.
+        # - time_bound: Custom time range.
         self.validity_type = validity_type
 
     def validate(self):
@@ -144,9 +144,9 @@ class ListAuthorizationRulesForGroupResponseBodyAuthorizationRulesValidityPeriod
         end_time: int = None,
         start_time: int = None,
     ):
-        # The end time of the validity period, in UNIX timestamp format. Unit: milliseconds.
+        # The end time when the authorization expires. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The start time of the validity period, in UNIX timestamp format. Unit: milliseconds.
+        # The start time when the authorization takes effect. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
 
     def validate(self):

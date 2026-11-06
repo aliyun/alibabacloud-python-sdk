@@ -17,17 +17,17 @@ class ListUserAuthnSourceMappingsResponseBody(DaraModel):
         total_count: int = None,
         user_authn_source_mappings: List[main_models.ListUserAuthnSourceMappingsResponseBodyUserAuthnSourceMappings] = None,
     ):
-        # The maximum number of rows per page in a paged query.
+        # The maximum number of entries to return per page in a paging query.
         self.max_results = max_results
-        # The pagination token returned by this call.
+        # The pagination token returned by the current call.
         self.next_token = next_token
-        # The pagination token returned by this call.
+        # The pagination token returned by the current call.
         self.previous_token = previous_token
         # The request ID.
         self.request_id = request_id
         # The total number of entries in the list.
         self.total_count = total_count
-        # The list of third-party account login bindings.
+        # The list of third-party account logon bindings.
         self.user_authn_source_mappings = user_authn_source_mappings
 
     def validate(self):
@@ -100,11 +100,11 @@ class ListUserAuthnSourceMappingsResponseBodyUserAuthnSourceMappings(DaraModel):
         user_external_id: str = None,
         user_id: str = None,
     ):
-        # The authentication source type of the source IdP.
+        # The source IdP authentication source type.
         self.authn_source_type = authn_source_type
         # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The association information of the third-party account.
+        # The third-party account association information.
         self.external_data = external_data
         # The source IdP ID.
         self.identity_provider_id = identity_provider_id

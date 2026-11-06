@@ -20,11 +20,11 @@ class ListApplicationsForAuthorizationRuleResponseBody(DaraModel):
         self.applications = applications
         # The number of entries per page in a paging query.
         self.max_results = max_results
-        # The pagination token returned in this call. Use this token for the next paged query.
+        # The pagination token returned in the response, which is used to query the next page.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries in the list.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -91,11 +91,11 @@ class ListApplicationsForAuthorizationRuleResponseBodyApplications(DaraModel):
         self.application_id = application_id
         # The instance ID.
         self.instance_id = instance_id
-        # The time range of the validity period. This parameter takes effect only when ValidityType is set to time_bound.
+        # The time range of the validity period. This parameter takes effect only when **ValidityType** is set to **time_bound**.
         self.validity_period = validity_period
         # The validity type of the association. Valid values:
         # - permanent: permanent
-        # - time_bound: custom time range.
+        # - time_bound: custom time range
         self.validity_type = validity_type
 
     def validate(self):
@@ -144,9 +144,9 @@ class ListApplicationsForAuthorizationRuleResponseBodyApplicationsValidityPeriod
         end_time: int = None,
         start_time: int = None,
     ):
-        # The end time of the validity period, in UNIX timestamp format. Unit: milliseconds.
+        # The end time of the validity period. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The start time of the validity period, in UNIX timestamp format. Unit: milliseconds.
+        # The start time of the validity period. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
 
     def validate(self):

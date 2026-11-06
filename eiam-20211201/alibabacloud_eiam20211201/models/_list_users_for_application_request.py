@@ -20,7 +20,7 @@ class ListUsersForApplicationRequest(DaraModel):
         # 
         # This parameter is required.
         self.application_id = application_id
-        # 应用角色ID。
+        # The application role ID.
         self.application_role_id = application_role_id
         # The instance ID.
         # 
@@ -28,9 +28,9 @@ class ListUsersForApplicationRequest(DaraModel):
         self.instance_id = instance_id
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
-        # The list of account IDs. A maximum of 100 account IDs are supported in a single request.
+        # The list of account IDs. You can specify up to 100 account IDs in a single operation.
         self.user_ids = user_ids
 
     def validate(self):

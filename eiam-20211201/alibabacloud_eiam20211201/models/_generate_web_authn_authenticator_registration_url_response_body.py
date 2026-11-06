@@ -13,7 +13,7 @@ class GenerateWebAuthnAuthenticatorRegistrationUrlResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Information about the WebAuthn authenticator registration URL.
+        # The WebAuthn authenticator registration URL information.
         self.web_authn_authenticator_registration_url = web_authn_authenticator_registration_url
 
     def validate(self):
@@ -52,7 +52,7 @@ class GenerateWebAuthnAuthenticatorRegistrationUrlResponseBodyWebAuthnAuthentica
     ):
         # The WebAuthn authenticator registration URL.
         self.registration_url = registration_url
-        # The parameters for the WebAuthn authenticator registration URL.
+        # The WebAuthn authenticator registration URL parameters.
         self.registration_url_parameters = registration_url_parameters
 
     def validate(self):

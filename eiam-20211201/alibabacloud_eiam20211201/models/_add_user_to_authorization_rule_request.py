@@ -19,7 +19,7 @@ class AddUserToAuthorizationRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.authorization_rule_id = authorization_rule_id
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate a parameter value, but make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see References [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate a parameter value, but you must ensure that the parameter value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
         # 
         # This parameter is required.
         self.client_token = client_token
@@ -31,11 +31,11 @@ class AddUserToAuthorizationRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.user_id = user_id
-        # The time range of the validity period. This parameter takes effect only when **ValidityType** is set to **time_bound**.
+        # The time range of the validity period. This parameter takes effect when **ValidityType** is set to **time_bound**.
         self.validity_period = validity_period
         # The validity type of the relationship. Valid values:
-        # - permanent: permanent
-        # - time_bound: custom time range.
+        # - permanent: Permanent.
+        # - time_bound: Custom time range.
         # 
         # This parameter is required.
         self.validity_type = validity_type

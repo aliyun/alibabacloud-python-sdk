@@ -13,7 +13,7 @@ class ListDomainProxyTokensResponseBody(DaraModel):
         domain_proxy_tokens: List[main_models.ListDomainProxyTokensResponseBodyDomainProxyTokens] = None,
         request_id: str = None,
     ):
-        # A list of domain proxy token objects.
+        # The list of proxy tokens for the domain name.
         self.domain_proxy_tokens = domain_proxy_tokens
         # The request ID.
         self.request_id = request_id
@@ -64,9 +64,9 @@ class ListDomainProxyTokensResponseBodyDomainProxyTokens(DaraModel):
         status: str = None,
         update_time: int = None,
     ):
-        # The creation time of the domain proxy token, in Unix timestamp format, in milliseconds.
+        # The creation time of the domain proxy token. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The domain ID.
+        # The domain name ID.
         self.domain_id = domain_id
         # The domain proxy token.
         self.domain_proxy_token = domain_proxy_token
@@ -74,14 +74,14 @@ class ListDomainProxyTokensResponseBodyDomainProxyTokens(DaraModel):
         self.domain_proxy_token_id = domain_proxy_token_id
         # The instance ID.
         self.instance_id = instance_id
-        # The most recent usage time of the domain proxy token, in Unix timestamp format, in milliseconds.
+        # The last used time of the domain proxy token. The value is a UNIX timestamp in milliseconds.
         self.last_used_time = last_used_time
         # The token status. Valid values:
-        # - enabled: The token is enabled.
+        # - enabled: Enabled.
         # 
-        # - disabled: The token is disabled.
+        # - disabled: Disabled.
         self.status = status
-        # The most recent update time of the domain proxy token, in Unix timestamp format, in milliseconds.
+        # The last update time of the domain proxy token. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):

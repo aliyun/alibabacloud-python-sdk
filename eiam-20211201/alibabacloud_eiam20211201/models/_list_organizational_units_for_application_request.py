@@ -20,17 +20,17 @@ class ListOrganizationalUnitsForApplicationRequest(DaraModel):
         # 
         # This parameter is required.
         self.application_id = application_id
-        # 应用角色ID。
+        # The application role ID.
         self.application_role_id = application_role_id
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The list of organization IDs. A single request can contain up to 100 organization IDs.
+        # The organizational unit IDs. A maximum of 100 organizational unit IDs can be specified in a single operation.
         self.organizational_unit_ids = organizational_unit_ids
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
 
     def validate(self):
