@@ -14,15 +14,15 @@ class ModifyDBInstanceAutoUpgradeMinorVersionRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The minor version upgrade method for the instance. Valid values:
-        # * **Auto**: Automatically upgrades the minor version.
-        # * **Manual**: Does not automatically upgrade the minor version. The minor version is forcibly upgraded only when the current version is retired.
+        # The method used to upgrade the minor engine version of the instance. Valid values:
+        # * **Auto**: automatically upgrades the minor engine version.
+        # * **Manual**: does not automatically upgrade the minor engine version. The minor engine version is forcibly upgraded only when the current version is retired.
         # 
         # This parameter is required.
         self.auto_upgrade_minor_version = auto_upgrade_minor_version
-        # The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can be up to 64 characters in length and cannot contain non-ASCII characters.
+        # The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can use the client to generate the value, but you must ensure that it is unique among different requests. The value can be up to 64 characters in length and can contain only ASCII characters.
         self.client_token = client_token
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id

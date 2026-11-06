@@ -32,34 +32,34 @@ class ModifyDBInstanceSSLRequest(DaraModel):
         # - **cert**
         # - **prefer**
         # - **verify-ca**
-        # - **verify-full**: supported by ApsaraDB RDS for PostgreSQL 12 and later
+        # - **verify-full**: supported by ApsaraDB RDS for PostgreSQL 12 and later.
         # 
         # > This parameter can be configured only when ClientCAEnabled is set to **1**.
         self.acl = acl
-        # The type of the certificate for ApsaraDB RDS for MySQL and ApsaraDB RDS for PostgreSQL instances that use cloud disks. Valid values:
+        # The certificate type for ApsaraDB RDS for MySQL and ApsaraDB RDS for PostgreSQL instances that use cloud disks. Valid values:
         # - **aliyun**: Alibaba Cloud certificate. This is the default value.
-        # - **custom**: custom certificate
+        # - **custom**: custom certificate.
         # > This parameter is required when SSLEnabled is set to **1**.
         self.catype = catype
-        # The content of the custom certificate for ApsaraDB RDS for SQL Server instances. Only the pfx format is supported.
-        # - Public endpoint: `oss-<Region ID>.aliyuncs.com:<Bucket name>:<Certificate file name (with extension)>`
-        # - Internal endpoint: `oss-<Region ID>-internal.aliyuncs.com:<Bucket name>:<Certificate file name (with extension)>`
+        # The content of the custom certificate for ApsaraDB RDS for SQL Server instances. Only the `pfx` format is supported.
+        # - Public endpoint: `oss-<region ID>.aliyuncs.com:<bucket name>:<certificate file name (with extension)>`
+        # - Internal endpoint: `oss-<region ID>-internal.aliyuncs.com:<bucket name>:<certificate file name (with extension)>`
         self.certificate = certificate
-        # The client certificate authority (CA) public key for ApsaraDB RDS for PostgreSQL instances that use cloud disks.
+        # The public key of the client certificate authorization authority for ApsaraDB RDS for PostgreSQL instances that use cloud disks.
         # 
         # > This parameter is required when ClientCAEnabled is set to **1**.
         self.client_cacert = client_cacert
         # Specifies whether to enable the client certificate authority (CA) public key for ApsaraDB RDS for PostgreSQL instances that use cloud disks. Valid values:
-        # - **1**: enabled
-        # - **0**: disabled
+        # - **1**: Enabled.
+        # - **0**: Disabled.
         self.client_caenabled = client_caenabled
         # The client revocation certificate file for ApsaraDB RDS for PostgreSQL instances that use cloud disks.
         # 
         # > This parameter is required when ClientCrlEnabled is set to **1**.
         self.client_cert_revocation_list = client_cert_revocation_list
         # Specifies whether to enable the client certificate revocation list (CRL) for ApsaraDB RDS for PostgreSQL instances that use cloud disks. Valid values:
-        # - **1**: enabled
-        # - **0**: disabled
+        # - **1**: Enabled.
+        # - **0**: Disabled.
         # 
         # > This parameter can be configured only when ClientCAEnabled is set to **1**.
         self.client_crl_enabled = client_crl_enabled
@@ -67,14 +67,14 @@ class ModifyDBInstanceSSLRequest(DaraModel):
         # 
         # This parameter is required.
         self.connection_string = connection_string
-        # Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
+        # The instance ID. You can call the DescribeDBInstances operation to query the ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The [SSL forced encryption switch](https://help.aliyun.com/document_detail/95715.html) for ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and ApsaraDB RDS for SQL Server instances. Valid values:
+        # The [forced SSL encryption switch](https://help.aliyun.com/document_detail/95715.html) for ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and ApsaraDB RDS for SQL Server instances. Valid values:
         # 
-        # - **1**: enabled
-        # - **0**: disabled
+        # - **1**: Enabled.
+        # - **0**: Disabled.
         self.force_encryption = force_encryption
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -84,16 +84,16 @@ class ModifyDBInstanceSSLRequest(DaraModel):
         # - **cert**
         # - **prefer**
         # - **verify-ca**
-        # - **verify-full**: supported by ApsaraDB RDS for PostgreSQL 12 and later
+        # - **verify-full**: supported by ApsaraDB RDS for PostgreSQL 12 and later.
         # > This parameter can be configured only when ClientCAEnabled is set to **1**.
         self.replication_acl = replication_acl
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # Specifies whether to enable SSL encryption. Valid values:
-        # * **1**: enabled
-        # * **0**: disabled
+        # - **1**: Enabled.
+        # - **0**: Disabled.
         self.sslenabled = sslenabled
-        # The content of the custom server certificate for ApsaraDB RDS for MySQL and ApsaraDB RDS for PostgreSQL instances that use cloud disks.
+        # The content of the custom certificate for the server of ApsaraDB RDS for MySQL and ApsaraDB RDS for PostgreSQL instances that use cloud disks.
         # 
         # > This parameter is required when CAType is set to **custom**.
         self.server_cert = server_cert
@@ -101,9 +101,9 @@ class ModifyDBInstanceSSLRequest(DaraModel):
         # 
         # > This parameter is required when CAType is set to **custom**.
         self.server_key = server_key
-        # The [minimum TLS version](https://help.aliyun.com/document_detail/95715.html) for ApsaraDB RDS for SQL Server instances. Client connections that use a TLS version lower than the specified version are rejected. Valid values: 1.0, 1.1, and 1.2.
+        # The [minimum TLS version](https://help.aliyun.com/document_detail/95715.html) for ApsaraDB RDS for SQL Server instances. Connections that use a version lower than the specified version are rejected. Valid values: 1.0, 1.1, and 1.2.
         # 
-        # For example, if you set this parameter to 1.1, the server accepts only client connection requests that use TLS 1.1 or TLS 1.2. Clients that attempt to establish connections by using TLS 1.0 are rejected.
+        # For example, if you set this parameter to 1.1, the server accepts only client connection requests that use TLS 1.1 and TLS 1.2. Clients that attempt to establish connections by using TLS 1.0 are rejected.
         self.tls_version = tls_version
 
     def validate(self):

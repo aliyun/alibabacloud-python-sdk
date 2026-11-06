@@ -26,11 +26,9 @@ class DescribeRCMetricListRequest(DaraModel):
         self.express = express
         # The instance ID. This parameter is required.
         self.instance_id = instance_id
-        # The number of records to return on each page for paging in a paged query.
-        # 
-        # Default value: 1000.
+        # The number of records to return on each page for paging in a paged query. Default value: 1000.
         self.length = length
-        # The [monitored metrics](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
+        # The [monitored metric](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
         # 
         # This parameter is required.
         self.metric_name = metric_name

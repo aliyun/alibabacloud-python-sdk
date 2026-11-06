@@ -13,7 +13,7 @@ class AddRCInstancesToDeploymentSetResponseBody(DaraModel):
         request_id: str = None,
         results: List[main_models.AddRCInstancesToDeploymentSetResponseBodyResults] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The inspection results.
         self.results = results
@@ -62,14 +62,14 @@ class AddRCInstancesToDeploymentSetResponseBodyResults(DaraModel):
         status: str = None,
     ):
         # The node status. Valid values:
-        # * **activation**: running.
-        # * **creating**: creating.
+        # * **activation**: The node is running.
+        # * **creating**: The node is being created.
         self.error_message = error_message
         # The instance IDs.
         self.rcinstance_id = rcinstance_id
         # The node status. Valid values:
-        # * **Success**: succeeded.
-        # * **Failed**: failed.
+        # * **Success**: Successful.
+        # * **Failed**: Failed.
         self.status = status
 
     def validate(self):

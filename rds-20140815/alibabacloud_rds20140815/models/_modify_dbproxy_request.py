@@ -28,9 +28,9 @@ class ModifyDBProxyRequest(DaraModel):
     ):
         # Specifies whether to enable or disable the database proxy. Valid values:
         # 
-        # * **Startup**: Enables the proxy service.
-        # * **Shutdown**: Disables the proxy service.
-        # * **Modify**: Modifies the proxy service.
+        # * **Startup**: enables the proxy service.
+        # * **Shutdown**: disables the proxy service.
+        # * **Modify**: modifies the proxy service.
         # 
         # This parameter is required.
         self.config_dbproxy_service = config_dbproxy_service
@@ -45,10 +45,10 @@ class ModifyDBProxyRequest(DaraModel):
         # > More proxy instances can process more requests. You can check the load of proxy instances based on monitoring data and specify an appropriate number of proxy instances.
         self.dbproxy_instance_num = dbproxy_instance_num
         # The type of the database proxy instance. Valid values:
-        # - **common**: General-purpose database proxy.
-        # - **exclusive**: Dedicated proxy (default).
+        # - **common**: general-purpose database proxy
+        # - **exclusive**: dedicated proxy (default)
         self.dbproxy_instance_type = dbproxy_instance_type
-        # The list of proxy nodes.
+        # The proxy nodes.
         self.dbproxy_nodes = dbproxy_nodes
         # The network type of the instance. Only VPC is supported. Valid value: **VPC**.
         # 
@@ -56,10 +56,10 @@ class ModifyDBProxyRequest(DaraModel):
         self.instance_network_type = instance_network_type
         self.owner_id = owner_id
         # Specifies whether to enable connection keep-alive. Valid values:
-        # - **Enabled**: Enables connection keep-alive.
-        # - **Disabled**: Disables connection keep-alive.
+        # - **Enabled**: enables connection keep-alive.
+        # - **Disabled**: disables connection keep-alive.
         # 
-        # > - Only ApsaraDB RDS for MySQL supports this parameter.
+        # > - This parameter is supported only for ApsaraDB RDS for MySQL.
         # > - When you modify the connection keep-alive status, set **ConfigDBProxyService** to **Modify**.
         self.persistent_connection_status = persistent_connection_status
         # The region ID. You can call the DescribeRegions operation to query the region ID.

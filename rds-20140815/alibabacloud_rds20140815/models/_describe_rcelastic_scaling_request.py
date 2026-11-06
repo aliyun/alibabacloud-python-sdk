@@ -7,12 +7,14 @@ from darabonba.model import DaraModel
 class DescribeRCElasticScalingRequest(DaraModel):
     def __init__(
         self,
+        acu_type: str = None,
         instance_charge_type: str = None,
         instance_id: str = None,
         instance_type: str = None,
         region_id: str = None,
         support_case: str = None,
     ):
+        self.acu_type = acu_type
         self.instance_charge_type = instance_charge_type
         self.instance_id = instance_id
         self.instance_type = instance_type
@@ -27,6 +29,9 @@ class DescribeRCElasticScalingRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.acu_type is not None:
+            result['AcuType'] = self.acu_type
+
         if self.instance_charge_type is not None:
             result['InstanceChargeType'] = self.instance_charge_type
 
@@ -46,6 +51,9 @@ class DescribeRCElasticScalingRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AcuType') is not None:
+            self.acu_type = m.get('AcuType')
+
         if m.get('InstanceChargeType') is not None:
             self.instance_charge_type = m.get('InstanceChargeType')
 

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Dict
 
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_rds20140815 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
@@ -20,6 +21,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'Rds'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-qingdao': 'rds.aliyuncs.com',
@@ -20352,6 +20356,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeRCElasticScalingResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.acu_type):
+            query['AcuType'] = request.acu_type
         if not DaraCore.is_null(request.instance_charge_type):
             query['InstanceChargeType'] = request.instance_charge_type
         if not DaraCore.is_null(request.instance_id):
@@ -20388,6 +20394,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeRCElasticScalingResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.acu_type):
+            query['AcuType'] = request.acu_type
         if not DaraCore.is_null(request.instance_charge_type):
             query['InstanceChargeType'] = request.instance_charge_type
         if not DaraCore.is_null(request.instance_id):
@@ -27744,6 +27752,8 @@ class Client(OpenApiClient):
             query['EnableAdvancedBackupPolicy'] = request.enable_advanced_backup_policy
         if not DaraCore.is_null(request.enable_backup_log):
             query['EnableBackupLog'] = request.enable_backup_log
+        if not DaraCore.is_null(request.enable_immutable_backup):
+            query['EnableImmutableBackup'] = request.enable_immutable_backup
         if not DaraCore.is_null(request.enable_increment_data_backup):
             query['EnableIncrementDataBackup'] = request.enable_increment_data_backup
         if not DaraCore.is_null(request.enable_pitr_protection):
@@ -27834,6 +27844,8 @@ class Client(OpenApiClient):
             query['EnableAdvancedBackupPolicy'] = request.enable_advanced_backup_policy
         if not DaraCore.is_null(request.enable_backup_log):
             query['EnableBackupLog'] = request.enable_backup_log
+        if not DaraCore.is_null(request.enable_immutable_backup):
+            query['EnableImmutableBackup'] = request.enable_immutable_backup
         if not DaraCore.is_null(request.enable_increment_data_backup):
             query['EnableIncrementDataBackup'] = request.enable_increment_data_backup
         if not DaraCore.is_null(request.enable_pitr_protection):

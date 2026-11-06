@@ -32,13 +32,13 @@ class CreateDBProxyEndpointAddressRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbproxy_connect_string_net_type = dbproxy_connect_string_net_type
-        # The ID of the database proxy endpoint. You can call the DescribeDBProxyEndpoint operation to query the database proxy endpoint ID.
+        # The ID of the database proxy endpoint. You can call the DescribeDBProxyEndpoint operation to query the ID.
         # 
         # This parameter is required.
         self.dbproxy_endpoint_id = dbproxy_endpoint_id
-        # The reserved parameter. You do not need to specify this parameter.
+        # A reserved parameter. No configuration is required.
         self.dbproxy_engine_type = dbproxy_engine_type
-        # The port of the new database proxy endpoint. Default values:
+        # The port number of the new database proxy endpoint. Default values:
         # 
         # - MySQL: **3306**
         # - PostgreSQL: **5432**

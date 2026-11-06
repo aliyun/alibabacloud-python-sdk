@@ -24,6 +24,7 @@ class DescribeBackupPolicyResponseBody(DaraModel):
         category: str = None,
         compress_type: str = None,
         enable_backup_log: str = None,
+        enable_immutable_backup: bool = None,
         enable_increment_data_backup: bool = None,
         enable_pitr_protection: bool = None,
         high_space_usage_protection: str = None,
@@ -48,38 +49,38 @@ class DescribeBackupPolicyResponseBody(DaraModel):
         self.advanced_backup_policy_enabled = advanced_backup_policy_enabled
         self.advanced_data_policies = advanced_data_policies
         self.advanced_log_policies = advanced_log_policies
-        # The number of archived backups retained for a **MySQL** instance.
+        # The number of archived backups retained for an **ApsaraDB RDS for MySQL** instance.
         self.archive_backup_keep_count = archive_backup_keep_count
-        # The retention period for archived backups of a **MySQL** instance.
+        # The retention cycle of archived backups for an **ApsaraDB RDS for MySQL** instance.
         self.archive_backup_keep_policy = archive_backup_keep_policy
-        # The number of days for which archived backups of a **MySQL** instance are retained.
+        # The number of days for which archived backups are retained for an **ApsaraDB RDS for MySQL** instance.
         self.archive_backup_retention_period = archive_backup_retention_period
         # The backup interval. Unit: minutes.
-        # * For MySQL instances: the [snapshot backup frequency](https://help.aliyun.com/document_detail/98818.html), not the snapshot backup cycle.
-        # * For SQL Server instances: the log backup frequency.
+        # * For an ApsaraDB RDS for MySQL instance, this parameter indicates the [snapshot backup frequency](https://help.aliyun.com/document_detail/98818.html) rather than the snapshot backup cycle.
+        # * For an ApsaraDB RDS for SQL Server instance, this parameter indicates the log backup frequency.
         self.backup_interval = backup_interval
         # Indicates whether log backup is enabled. Valid values:
         # * **Enable**: yes
         # * **Disabled**: no
         # 
-        # **For SQL Server instances:**
+        # **For an ApsaraDB RDS for SQL Server instance:**
         # 
-        # - **Enable** is returned only when instance log backup frequency is **every 5 minutes**.
-        # - **Disabled** is returned when instance log backup frequency is **every 30 minutes** or **the same as the data backup frequency**. **Refer to the BackupInterval parameter for the actual frequency**.
+        # - **Enable** is returned only when instance log backup frequency of the instance is set to **Every 5 Minutes**.
+        # - **Disabled** is returned when instance log backup frequency is set to **Every 30 Minutes** or **Same as Data Backup**. **Refer to the value of BackupInterval**.
         self.backup_log = backup_log
-        # The backup method for **SQL Server instances with cloud disks**. Valid values:
+        # The backup method for an **ApsaraDB RDS for SQL Server instance with cloud disks**. Valid values:
         # * **Physical**: physical backup
         # * **Snapshot**: snapshot backup
         self.backup_method = backup_method
-        # The secondary node backup setting for **SQL Server Enterprise Cluster Edition** instances. Valid values:
+        # The secondary node backup setting for an **ApsaraDB RDS for SQL Server Cluster Edition** instance. Valid values:
         # - **1**: prefer secondary node
         # - **2**: force primary node
         # 
-        # > This parameter is returned only when SupportModifyBackupPriority is True.
+        # > This parameter is returned only when SupportModifyBackupPriority is set to True.
         self.backup_priority = backup_priority
         # The number of days for which data backups are retained.
         self.backup_retention_period = backup_retention_period
-        # Indicates whether backup within seconds is enabled for **MySQL** and **PostgreSQL** instances. Valid values:
+        # Indicates whether backup within seconds is enabled for **ApsaraDB RDS for MySQL** and **ApsaraDB RDS for PostgreSQL** instances. Valid values:
         # 
         # - **Flash**: enabled
         # - **Standard**: disabled
@@ -90,48 +91,50 @@ class DescribeBackupPolicyResponseBody(DaraModel):
         # * **0**: no compression
         # * **1**: zlib compression
         # * **2**: parallel zlib compression
-        # * **4**: quicklz compression with database and table restoration enabled
-        # * **8**: quicklz compression without database and table restoration supported
+        # * **4**: QuickLZ compression with database and table restoration enabled
+        # * **8**: QuickLZ compression without database and table restoration supported
         self.compress_type = compress_type
         # Indicates whether log backup is enabled. Valid values:
         # * **1**: enabled
         # * **0**: disabled
         # 
-        # **For SQL Server instances:**
-        # - **1** is returned only when instance log backup frequency is **every 5 minutes**.
-        # - **0** is returned when instance log backup frequency is **every 30 minutes** or **the same as the data backup frequency**. **Refer to the BackupInterval parameter for the actual frequency**.
+        # **For an ApsaraDB RDS for SQL Server instance:**
+        # - **1** is returned only when instance log backup frequency of the instance is set to **Every 5 Minutes**.
+        # - **0** is returned when instance log backup frequency is set to **Every 30 Minutes** or **Same as Data Backup**. **Refer to the value of BackupInterval**.
         self.enable_backup_log = enable_backup_log
-        # Indicates whether incremental backup is enabled for **SQL Server** instances. Valid values:
+        # Indicates whether immutable backup is enabled. This parameter takes effect only when Engine is set to PostgreSQL.
+        self.enable_immutable_backup = enable_immutable_backup
+        # Indicates whether incremental backup is enabled for an **ApsaraDB RDS for SQL Server** instance. Valid values:
         # * **True**: yes
         # * **False**: no
         self.enable_increment_data_backup = enable_increment_data_backup
-        # Indicates whether point-in-time recovery (PITR) is enabled for **MySQL** instances. PITR is an upgraded version of log backup. Valid values:
+        # Indicates whether point-in-time recovery (PITR) is enabled for an **ApsaraDB RDS for MySQL** instance. PITR is an upgraded version of log backup. Valid values:
         # - **True**: yes
         # - **False**: no
         # 
         # > For more information, see [Configure a point-in-time recovery policy](https://help.aliyun.com/document_detail/2666046.html).
         self.enable_pitr_protection = enable_pitr_protection
-        # Indicates whether binary logs are forcibly deleted when the storage usage of a **MySQL** instance exceeds 80% or the remaining storage is less than 5 GB. Valid values:
+        # Indicates whether binary logs are forcibly deleted when the storage usage of an **ApsaraDB RDS for MySQL** instance exceeds 80% or the remaining storage is less than 5 GB. Valid values:
         # 
-        # * **Disable**: does not delete binary logs
-        # * **Enable**: deletes binary logs
+        # * **Disable**: no
+        # * **Enable**: yes
         self.high_space_usage_protection = high_space_usage_protection
         # The interval for high-frequency incremental backups. Unit: minutes. Valid values: 60, 120, 240, 360, and 720.
         self.inc_backup_interval = inc_backup_interval
-        # The number of hours for which binary log backups of a **MySQL** instance are retained.
+        # The number of hours for which local binary log backups are retained for an **ApsaraDB RDS for MySQL** instance.
         self.local_log_retention_hours = local_log_retention_hours
-        # The maximum storage usage for binary logs of a **MySQL** instance.
+        # The maximum storage usage of binary logs for an **ApsaraDB RDS for MySQL** instance.
         self.local_log_retention_space = local_log_retention_space
-        # The log backup frequency for **SQL Server** instances. Valid values:
+        # The log backup frequency for an **ApsaraDB RDS for SQL Server** instance. Valid values:
         # 
         # * **LogInterval**: every 30 minutes
-        # * Default: the same as the data backup cycle specified by **PreferredBackupPeriod**
+        # * Default value: the same as the data backup cycle specified by **PreferredBackupPeriod**.
         self.log_backup_frequency = log_backup_frequency
-        # The number of local binary logs retained for a **MySQL** instance.
+        # The number of local binary logs retained for an **ApsaraDB RDS for MySQL** instance.
         self.log_backup_local_retention_number = log_backup_local_retention_number
         # The number of days for which log backups are retained.
         self.log_backup_retention_period = log_backup_retention_period
-        # The number of days for which point-in-time recovery is available for a **MySQL** instance.
+        # The number of days to which an **ApsaraDB RDS for MySQL** instance can be restored by using PITR.
         self.pitr_retention_period = pitr_retention_period
         # The data backup cycle. Separate multiple values with commas (,). Valid values:
         # * **Monday**: Monday
@@ -146,26 +149,26 @@ class DescribeBackupPolicyResponseBody(DaraModel):
         self.preferred_backup_time = preferred_backup_time
         # The time of the next backup. Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC).
         self.preferred_next_backup_time = preferred_next_backup_time
-        # The data retention policy for archived backups of deleted **MySQL** instances. Valid values:
-        # * **None**: no retention
-        # * **Lastest**: retains the last backup
-        # * **All**: retains all backups
+        # The data retention policy for archived backups of a deleted **ApsaraDB RDS for MySQL** instance. Valid values:
+        # * **None**: does not retain archived backups
+        # * **Lastest**: retains only the last archived backup
+        # * **All**: retains all archived backups
         self.released_keep_policy = released_keep_policy
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the secondary node backup option can be modified for **SQL Server** instances. Valid values:
+        # Indicates whether the secondary node backup option can be modified for an **ApsaraDB RDS for SQL Server** instance. Valid values:
         # 
         # - **True**: yes
         # - **False**: no
         self.support_modify_backup_priority = support_modify_backup_priority
-        # A reserved parameter.
+        # The reserved parameter.
         self.support_released_keep = support_released_keep
-        # Indicates whether snapshot backup is supported for **SQL Server** instances. Valid values:
+        # Indicates whether snapshot backup is supported for an **ApsaraDB RDS for SQL Server** instance. Valid values:
         # 
         # - **1**: yes
         # - **0**: no
         self.support_volume_shadow_copy = support_volume_shadow_copy
-        # Indicates whether the [5-minute log backup feature](https://help.aliyun.com/document_detail/95717.html) is supported for **SQL Server** instances. Valid values:
+        # Indicates whether the [5-minute log backup feature](https://help.aliyun.com/document_detail/95717.html) is supported for an **ApsaraDB RDS for SQL Server** instance. Valid values:
         # - **0**: not supported
         # - **1**: supported
         self.supports_high_frequency_backup = supports_high_frequency_backup
@@ -222,6 +225,9 @@ class DescribeBackupPolicyResponseBody(DaraModel):
 
         if self.enable_backup_log is not None:
             result['EnableBackupLog'] = self.enable_backup_log
+
+        if self.enable_immutable_backup is not None:
+            result['EnableImmutableBackup'] = self.enable_immutable_backup
 
         if self.enable_increment_data_backup is not None:
             result['EnableIncrementDataBackup'] = self.enable_increment_data_backup
@@ -327,6 +333,9 @@ class DescribeBackupPolicyResponseBody(DaraModel):
 
         if m.get('EnableBackupLog') is not None:
             self.enable_backup_log = m.get('EnableBackupLog')
+
+        if m.get('EnableImmutableBackup') is not None:
+            self.enable_immutable_backup = m.get('EnableImmutableBackup')
 
         if m.get('EnableIncrementDataBackup') is not None:
             self.enable_increment_data_backup = m.get('EnableIncrementDataBackup')

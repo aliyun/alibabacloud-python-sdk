@@ -13,21 +13,21 @@ class AddRCInstancesToDeploymentSetRequest(DaraModel):
         rcinstance_ids: str = None,
         region_id: str = None,
     ):
-        # The group number of the instance in the deployment set. This parameter is valid only when the deployment set strategy of the ECS instance to be added or adjusted is AvailabilityGroup. Valid values: 1 to 7.
+        # The group number of the ECS instance in the deployment set. You can specify this parameter when the deployment set policy is the AvailabilityGroup policy. Valid values: 1 to 7.
         self.deployment_set_group_no = deployment_set_group_no
-        # The ID of the deployment set.
+        # The deployment set ID.
         # 
         # This parameter is required.
         self.deployment_set_id = deployment_set_id
         # Specifies whether to forcibly release the running instance. Valid values:
-        # * **true**: yes.
-        # * **false** (default): no.
+        # * **true**: Yes.
+        # * **false** (default): No.
         self.force = force
         # The instance IDs.
         # 
         # This parameter is required.
         self.rcinstance_ids = rcinstance_ids
-        # The region ID. You can call the DescribeRegions operation to query the region ID.
+        # The region ID. You can call DescribeRegions to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

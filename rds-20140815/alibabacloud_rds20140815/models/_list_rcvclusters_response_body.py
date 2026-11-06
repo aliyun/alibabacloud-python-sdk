@@ -139,12 +139,14 @@ class ListRCVClustersResponseBodyVClustersMysqlOperator(DaraModel):
     def __init__(
         self,
         dashboard_public_endpoint: str = None,
+        dashboard_public_endpoint_expire_time: str = None,
         dashboard_username: str = None,
         dashboard_vpc_endpoint: str = None,
         deploy_time: str = None,
         status: str = None,
     ):
         self.dashboard_public_endpoint = dashboard_public_endpoint
+        self.dashboard_public_endpoint_expire_time = dashboard_public_endpoint_expire_time
         self.dashboard_username = dashboard_username
         self.dashboard_vpc_endpoint = dashboard_vpc_endpoint
         self.deploy_time = deploy_time
@@ -160,6 +162,9 @@ class ListRCVClustersResponseBodyVClustersMysqlOperator(DaraModel):
             result = _map
         if self.dashboard_public_endpoint is not None:
             result['DashboardPublicEndpoint'] = self.dashboard_public_endpoint
+
+        if self.dashboard_public_endpoint_expire_time is not None:
+            result['DashboardPublicEndpointExpireTime'] = self.dashboard_public_endpoint_expire_time
 
         if self.dashboard_username is not None:
             result['DashboardUsername'] = self.dashboard_username
@@ -179,6 +184,9 @@ class ListRCVClustersResponseBodyVClustersMysqlOperator(DaraModel):
         m = m or dict()
         if m.get('DashboardPublicEndpoint') is not None:
             self.dashboard_public_endpoint = m.get('DashboardPublicEndpoint')
+
+        if m.get('DashboardPublicEndpointExpireTime') is not None:
+            self.dashboard_public_endpoint_expire_time = m.get('DashboardPublicEndpointExpireTime')
 
         if m.get('DashboardUsername') is not None:
             self.dashboard_username = m.get('DashboardUsername')

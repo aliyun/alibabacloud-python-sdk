@@ -12,6 +12,8 @@ class DescribeRCElasticScalingResponseBody(DaraModel):
         self,
         acu_type: str = None,
         instance_id: str = None,
+        max_acu: int = None,
+        min_acu: int = None,
         request_id: str = None,
         scaling_enabled: bool = None,
         scaling_supported: bool = None,
@@ -21,6 +23,8 @@ class DescribeRCElasticScalingResponseBody(DaraModel):
     ):
         self.acu_type = acu_type
         self.instance_id = instance_id
+        self.max_acu = max_acu
+        self.min_acu = min_acu
         self.request_id = request_id
         self.scaling_enabled = scaling_enabled
         self.scaling_supported = scaling_supported
@@ -42,6 +46,12 @@ class DescribeRCElasticScalingResponseBody(DaraModel):
 
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+
+        if self.max_acu is not None:
+            result['MaxAcu'] = self.max_acu
+
+        if self.min_acu is not None:
+            result['MinAcu'] = self.min_acu
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -70,6 +80,12 @@ class DescribeRCElasticScalingResponseBody(DaraModel):
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('MaxAcu') is not None:
+            self.max_acu = m.get('MaxAcu')
+
+        if m.get('MinAcu') is not None:
+            self.min_acu = m.get('MinAcu')
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
