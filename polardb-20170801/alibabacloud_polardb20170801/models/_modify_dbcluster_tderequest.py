@@ -22,21 +22,19 @@ class ModifyDBClusterTDERequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # Specifies whether to automatically rotate the TDE key of the instance during the next O\\&M window after a new version of the KMS key is available. This parameter is valid only for custom keys.
+        # Specifies whether to allow the TDE key of the instance to automatically rotate at the nearest maintenance window after the rotation period when a KMS key version change is detected. This parameter is supported only for custom keys. Valid values:
+        # - **true**: Allows automatic rotation.
+        # - **false**: Does not allow automatic rotation.
         # 
-        # - **true**
-        # 
-        # - **false**
-        # 
-        # > This parameter is supported only when the database engine is compatible with PostgreSQL or Oracle.
+        # > This parameter is supported only when the database engine is PostgreSQL-compatible or Oracle-compatible.
         self.enable_automatic_rotation = enable_automatic_rotation
-        # Specifies whether to automatically encrypt all new tables. Valid values:
+        # Specifies whether to automatically encrypt all newly created tables. Valid values:
         # 
-        # - **ON**
+        # - **ON**: Enables automatic encryption.
         # 
-        # - **OFF**
+        # - **OFF**: Disables automatic encryption.
         # 
-        # > This parameter is valid only when the database engine is compatible with MySQL.
+        # > This parameter takes effect only when the database engine is MySQL-compatible.
         self.encrypt_new_tables = encrypt_new_tables
         # The ID of the custom key.
         self.encryption_key = encryption_key
@@ -44,7 +42,7 @@ class ModifyDBClusterTDERequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The Global Resource Descriptor of the role. You can use this parameter to specify a role. For more information, see [Overview of RAM roles](https://help.aliyun.com/document_detail/93689.html).
+        # The global resource descriptor of the role, used to specify a specific role. For details, see [RAM role overview](https://help.aliyun.com/document_detail/93689.html).
         self.role_arn = role_arn
         # The TDE status. Set the value to **Enable**.
         # 

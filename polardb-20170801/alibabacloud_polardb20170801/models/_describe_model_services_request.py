@@ -23,7 +23,7 @@ class DescribeModelServicesRequest(DaraModel):
         self.gw_cluster_id = gw_cluster_id
         # The model category.
         self.model_category = model_category
-        # The model service IDs.
+        # The IDs of the model services.
         self.model_service_ids = model_service_ids
         # The model service name.
         self.name = name

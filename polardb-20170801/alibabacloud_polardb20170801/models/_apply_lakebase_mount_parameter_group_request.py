@@ -11,7 +11,7 @@ class ApplyLakebaseMountParameterGroupRequest(DaraModel):
         polar_fs_instance_id: str = None,
         region_id: str = None,
     ):
-        # The parameter template ID. The ID starts with pagp-.
+        # The parameter template ID, which starts with pagp-.
         # 
         # This parameter is required.
         self.parameter_group_id = parameter_group_id

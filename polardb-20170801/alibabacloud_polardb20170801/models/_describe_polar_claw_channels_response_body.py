@@ -18,11 +18,11 @@ class DescribePolarClawChannelsResponseBody(DaraModel):
     ):
         # The application ID.
         self.application_id = application_id
-        # A list of PolarClaw channel objects.
+        # The list of channels.
         self.channels = channels
         # The returned status code.
         self.code = code
-        # The response message. A value of `successful` indicates that the request succeeded.
+        # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -88,13 +88,13 @@ class DescribePolarClawChannelsResponseBodyChannels(DaraModel):
         default_account_id: str = None,
         enabled: bool = None,
     ):
-        # A list of account objects for the channel.
+        # The list of channel accounts.
         self.accounts = accounts
         # The channel ID.
         self.channel_id = channel_id
         # Indicates whether the channel is configured.
         self.configured = configured
-        # The default account ID for the channel.
+        # The default account ID.
         self.default_account_id = default_account_id
         # Indicates whether the channel is enabled.
         self.enabled = enabled
@@ -170,11 +170,11 @@ class DescribePolarClawChannelsResponseBodyChannelsAccounts(DaraModel):
         self.connected = connected
         # Indicates whether the account is enabled.
         self.enabled = enabled
-        # A list of issues related to the account.
+        # The list of account issues.
         self.issues = issues
-        # The timestamp (in milliseconds) of the last inbound message.
+        # The timestamp of the last inbound message in milliseconds.
         self.last_inbound_at = last_inbound_at
-        # The timestamp (in milliseconds) of the last outbound message.
+        # The timestamp of the last outbound message in milliseconds.
         self.last_outbound_at = last_outbound_at
 
     def validate(self):

@@ -12,11 +12,11 @@ class DescribePolarClawChannelsRequest(DaraModel):
         application_id: str = None,
         channel_list: List[str] = None,
     ):
-        # The application ID.
+        # The PolarClaw application ID. First call DescribeApplications to filter applications where ApplicationType is polardb_polarclaw and Status is Activated, and then use the returned ApplicationId to query channels.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # The channel IDs to query. Leave this parameter empty to return all channels.
+        # The list of channel IDs to query. If this parameter is left empty, all channels are returned.
         self.channel_list = channel_list
 
     def validate(self):

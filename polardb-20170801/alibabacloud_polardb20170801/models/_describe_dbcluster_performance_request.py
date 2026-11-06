@@ -15,40 +15,35 @@ class DescribeDBClusterPerformanceRequest(DaraModel):
         sub_group_name: str = None,
         type: str = None,
     ):
-        # The cluster ID.
+        # The ID of the PolarDB cluster. Before you query performance data, the cluster must be in the Running state. You can call the DescribeDBClusters operation and check the DBClusterStatus parameter to confirm the cluster status.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The end of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+        # The end time of the query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The granularity of the performance data. Valid values:
+        # The data granularity of the performance data. Valid values:
         # 
         # - 5
-        # 
         # - 30
-        # 
         # - 60
-        # 
         # - 600
-        # 
         # - 1800
-        # 
         # - 3600
-        # 
         # - 86400
         self.interval = interval
-        # The performance metrics that you want to query. Separate multiple metrics with commas (,). For more information, see [Performance parameters](https://help.aliyun.com/document_detail/141787.html).
+        # The performance metrics to query. Separate multiple values with commas (,). For more information, see [Performance metrics](https://help.aliyun.com/document_detail/141787.html).
         # 
-        # > Specify up to five performance metrics.
+        # > You can specify up to 5 performance metrics.
         # 
         # This parameter is required.
         self.key = key
-        # The beginning of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+        # The start time of the query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
         # 
         # This parameter is required.
         self.start_time = start_time
+        # The name of the subgroup for the performance metrics. Specify this parameter only when the queried metrics contain a subgroup.
         self.sub_group_name = sub_group_name
         # The query type.
         self.type = type

@@ -15,7 +15,7 @@ class ListTagResourcesForRegionRequest(DaraModel):
         resource_owner_id: int = None,
         resource_type: str = None,
     ):
-        # The token that is used to retrieve the next page of results. Optional for the first request. If the query does not return all results, the response contains a token. You can use this token in the next request to continue the query.
+        # The token used to retrieve more results. You do not need to specify this parameter for the first query. If the first query does not return all results, you can pass the token returned in the previous response to retrieve the remaining results.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -28,7 +28,6 @@ class ListTagResourcesForRegionRequest(DaraModel):
         # The resource type. Valid values:
         # 
         # - cluster: cluster instance
-        # 
         # - aicluster: AI cluster instance
         self.resource_type = resource_type
 

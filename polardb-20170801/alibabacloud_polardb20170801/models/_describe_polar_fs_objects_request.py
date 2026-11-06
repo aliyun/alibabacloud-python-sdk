@@ -14,7 +14,7 @@ class DescribePolarFsObjectsRequest(DaraModel):
         # 
         # This parameter is required.
         self.path = path
-        # The PolarFs instance ID.
+        # The PolarFS instance ID.
         # 
         # This parameter is required.
         self.polar_fs_instance_id = polar_fs_instance_id

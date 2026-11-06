@@ -65,15 +65,15 @@ class DescribeAgenticDBBranchEndpointsResponseBodyItems(DaraModel):
         password: str = None,
         port: int = None,
     ):
-        # The account name.
+        # The name of the account.
         self.account = account
-        # The compatible connection address. A public endpoint is returned first. If no public endpoint is available, a private endpoint is returned.
+        # The compatible endpoint. The public endpoint is returned preferentially. If no public endpoint is available, the private network endpoint is returned.
         self.address = address
         # The list of public and private network endpoints.
         self.address_items = address_items
-        # The compatible connection string. A public connection string is returned first. If no public connection string is available, a private connection string is returned.
+        # The compatible connection string. The public connection string is returned preferentially. If no public connection string is available, the private connection string is returned.
         self.connection_string = connection_string
-        # The database name.
+        # The name of the database.
         self.database = database
         # The endpoint ID.
         self.endpoint_id = endpoint_id
@@ -81,7 +81,7 @@ class DescribeAgenticDBBranchEndpointsResponseBodyItems(DaraModel):
         self.endpoint_type = endpoint_type
         # The password.
         self.password = password
-        # The compatible connection port that corresponds to the Address parameter.
+        # The compatible connection port corresponding to the address.
         self.port = port
 
     def validate(self):
@@ -172,9 +172,7 @@ class DescribeAgenticDBBranchEndpointsResponseBodyItemsAddressItems(DaraModel):
         self.address = address
         # The full PostgreSQL connection string.
         self.connection_string = connection_string
-        # The network type. Valid values:
-        # - Private: private network.
-        # - Public: public network.
+        # The network type. Valid values: Private and Public.
         self.net_type = net_type
         # The port.
         self.port = port

@@ -23,7 +23,7 @@ class CreatePolarClawCronJobShrinkRequest(DaraModel):
         session_target: str = None,
         wake_mode: str = None,
     ):
-        # The ID of the specified execution agent.
+        # The specified execution agent.
         self.agent_id = agent_id
         # The application ID.
         # 
@@ -49,7 +49,7 @@ class CreatePolarClawCronJobShrinkRequest(DaraModel):
         self.payload_shrink = payload_shrink
         # Specifies whether to restart the gateway after creation. Default value: true.
         self.restart = restart
-        # Specifies whether to run it once immediately after creation. Default value: false.
+        # Specifies whether to run the task immediately after creation. Default value: false.
         self.run_immediately = run_immediately
         # The schedule configuration.
         # 
@@ -57,11 +57,11 @@ class CreatePolarClawCronJobShrinkRequest(DaraModel):
         self.schedule_shrink = schedule_shrink
         # The session routing key.
         self.session_key = session_key
-        # The session target. Valid values: main, isolated, current.
+        # The execution session target. If set to main, it indicates the main session, and Payload.Kind must be systemEvent. If set to isolated or current, it supports agentTurn or systemEvent.
         # 
         # This parameter is required.
         self.session_target = session_target
-        # The wake mode. Valid values: now, next-heartbeat.
+        # The wake mode. Valid values: now and next-heartbeat.
         # 
         # This parameter is required.
         self.wake_mode = wake_mode

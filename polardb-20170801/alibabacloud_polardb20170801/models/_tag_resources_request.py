@@ -116,13 +116,13 @@ class TagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. To add multiple tags to the cluster at once, click **Add** to specify multiple tag keys.
+        # The tag key. To add multiple tags to the target cluster at a time, click **Add** to add tag keys.
         # 
-        # > You can add a maximum of 20 tag pairs at a time. `Tag.n.Key` corresponds to `Tag.n.Value`.
+        # > You can add up to 20 tags at a time. The value of `Tag.n.Key` corresponds to `Tag.n.Value`.
         self.key = key
-        # The tag value. To add multiple tags to the cluster at once, click **Add** to specify multiple tag values.
+        # The tag value. To add multiple tags to the target cluster at a time, click **Add** to add tag values.
         # 
-        # > You can add a maximum of 20 tag pairs at a time. `Tag.n.Value` corresponds to `Tag.n.Key`.
+        # > You can add up to 20 tags at a time. The value of `Tag.n.Value` corresponds to `Tag.n.Key`.
         self.value = value
 
     def validate(self):

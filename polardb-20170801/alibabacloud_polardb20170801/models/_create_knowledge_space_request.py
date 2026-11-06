@@ -26,7 +26,7 @@ class CreateKnowledgeSpaceRequest(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The database engine type.
+        # The type of the database engine.
         self.dbtype = dbtype
         # The description of the knowledge space. The description can be up to 512 characters in length.
         self.description = description
@@ -38,7 +38,7 @@ class CreateKnowledgeSpaceRequest(DaraModel):
         # 
         # This parameter is required.
         self.embedding_model = embedding_model
-        # Specifies whether to enable ACL-based authentication for the knowledge space.
+        # Specifies whether to enforce access control list (ACL) authentication for the knowledge space.
         self.enforce_acl = enforce_acl
         # The name of the large language model.
         self.llmmodel = llmmodel
@@ -46,7 +46,7 @@ class CreateKnowledgeSpaceRequest(DaraModel):
         # 
         # This parameter is required.
         self.name = name
-        # OSS AK
+        # The AccessKey ID used to access OSS.
         # 
         # This parameter is required.
         self.ossaccess_key = ossaccess_key
@@ -54,7 +54,7 @@ class CreateKnowledgeSpaceRequest(DaraModel):
         # 
         # This parameter is required.
         self.ossbucket = ossbucket
-        # OSS SK
+        # The AccessKey secret used to access OSS.
         # 
         # This parameter is required.
         self.osssecret_key = osssecret_key
@@ -62,9 +62,9 @@ class CreateKnowledgeSpaceRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The name of the reranking model.
+        # The name of the rerank model.
         self.rerank_model = rerank_model
-        # The security group ID.
+        # The ID of the security group.
         # 
         # This parameter is required.
         self.security_group_id = security_group_id
@@ -73,9 +73,8 @@ class CreateKnowledgeSpaceRequest(DaraModel):
         # This parameter is required.
         self.sharding_size = sharding_size
         # The sharding strategy. Valid values:
-        # 
-        # - hierarchical (default)
-        # - hybrid
+        # - hierarchical: hierarchical sharding. This is the default value.
+        # - hybrid: hybrid sharding.
         # 
         # This parameter is required.
         self.sharding_strategy = sharding_strategy

@@ -10,9 +10,9 @@ class DeleteAIDBClusterApiKeyResponseBody(DaraModel):
         api_key: str = None,
         request_id: str = None,
     ):
-        # The API key of the model service.
+        # The API key for the model service.
         self.api_key = api_key
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

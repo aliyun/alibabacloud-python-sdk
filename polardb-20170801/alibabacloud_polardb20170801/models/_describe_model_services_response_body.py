@@ -30,7 +30,7 @@ class DescribeModelServicesResponseBody(DaraModel):
         # 
         # Default value: **30**.
         self.page_size = page_size
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
         # The total number of entries.
         self.total_record_count = total_record_count
@@ -111,19 +111,19 @@ class DescribeModelServicesResponseBodyItems(DaraModel):
     ):
         # The API key of the model service.
         self.api_key = api_key
-        # The upstream service endpoint.
+        # The upstream service URL.
         self.base_url = base_url
-        # The creation date of the model.
+        # The creation time of the model.
         self.gmt_created = gmt_created
-        # The input points.
+        # The input cost in points per million.
         self.input_cost_points_per_million = input_cost_points_per_million
         # The category.
         self.model_category = model_category
-        # The model service IDs.
+        # The IDs of the model services.
         self.model_service_id = model_service_id
         # The model service name.
         self.name = name
-        # The output points.
+        # The output cost in points per million.
         self.output_cost_points_per_million = output_cost_points_per_million
         # The protocol type. Valid values:
         # * **openai**
@@ -131,7 +131,7 @@ class DescribeModelServicesResponseBodyItems(DaraModel):
         # * **bailian**
         # * **vllm**
         self.protocol = protocol
-        # The number of requests.
+        # The request cost in points.
         self.request_cost_points = request_cost_points
         # The status.
         self.status = status

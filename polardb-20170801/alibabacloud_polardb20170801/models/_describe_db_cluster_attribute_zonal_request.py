@@ -14,11 +14,11 @@ class DescribeDbClusterAttributeZonalRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The cluster ID.
+        # The ID of the edge cluster. You can call the DescribeDBClustersZonal operation to list available edge clusters and then use the returned DBClusterId to query the attributes. IDs of common clusters are not applicable to this operation.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # Specifies whether to retrieve AI-related node information.
+        # Specifies whether to retrieve information about AI nodes.
         self.describe_type = describe_type
         self.owner_account = owner_account
         self.owner_id = owner_id

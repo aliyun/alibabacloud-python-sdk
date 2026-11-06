@@ -20,19 +20,17 @@ class DescribePolarFsQuotaListResponseBody(DaraModel):
     ):
         # The current page number.
         self.page_number = page_number
-        # The number of records on the current page.
+        # The number of entries on the current page.
         self.page_record_count = page_record_count
-        # The number of entries per page. Valid values: **30**, **50**, and **100**.
-        #                               
-        # Default value: **30**.
+        # The number of entries per page. Valid values: **30**, **50**, and **100**. Default value: **30**.
         self.page_size = page_size
-        # The PolarFs instance ID.
+        # The PolarFS instance ID.
         self.polar_fs_instance_id = polar_fs_instance_id
         # The directory quotas.
         self.quota_items = quota_items
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
-        # The total number of records.
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -110,7 +108,7 @@ class DescribePolarFsQuotaListResponseBodyQuotaItems(DaraModel):
     ):
         # The capacity.
         self.capacity = capacity
-        # Inodes
+        # The number of inodes.
         self.inodes = inodes
         # The directory path.
         self.path = path

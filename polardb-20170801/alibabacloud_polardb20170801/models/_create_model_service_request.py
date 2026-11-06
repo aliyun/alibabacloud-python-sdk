@@ -19,11 +19,11 @@ class CreateModelServiceRequest(DaraModel):
         request_cost_points: str = None,
         vendor: str = None,
     ):
-        # The API key for the model service.
+        # The API key of the model service.
         # 
         # This parameter is required.
         self.api_key = api_key
-        # The URL of the upstream service.
+        # The address of the upstream service.
         # 
         # This parameter is required.
         self.base_url = base_url
@@ -31,7 +31,7 @@ class CreateModelServiceRequest(DaraModel):
         # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
-        # The billing cost for input, measured in points per one million tokens.
+        # The number of input points.
         self.input_cost_points_per_million = input_cost_points_per_million
         # The model category.
         # 
@@ -41,7 +41,7 @@ class CreateModelServiceRequest(DaraModel):
         # 
         # This parameter is required.
         self.name = name
-        # The billing cost for output, measured in points per one million tokens.
+        # The number of output points.
         self.output_cost_points_per_million = output_cost_points_per_million
         # The protocol type.
         # 
@@ -49,9 +49,9 @@ class CreateModelServiceRequest(DaraModel):
         self.protocol = protocol
         # The region ID.
         self.region_id = region_id
-        # The billing cost per request, measured in points.
+        # The number of requests.
         self.request_cost_points = request_cost_points
-        # The model service provider. The example value `bailian` is a pinyin-based identifier that corresponds to the product name Model Studio.
+        # The model service provider.
         # 
         # This parameter is required.
         self.vendor = vendor

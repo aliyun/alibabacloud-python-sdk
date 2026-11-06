@@ -61,11 +61,11 @@ class DescribePolarAgentChatRecordsResponseBodyData(DaraModel):
         query_id: str = None,
         session_id: str = None,
     ):
-        # The answer.
+        # The reply.
         self.answer = answer
         # The feedback type.
         self.feedback_type = feedback_type
-        # The session query. Obtain this value from the response of the API call to start a digital human.
+        # The session query. You can obtain this value from the response of the API operation that starts a digital human.
         self.query = query
         # The query ID.
         self.query_id = query_id

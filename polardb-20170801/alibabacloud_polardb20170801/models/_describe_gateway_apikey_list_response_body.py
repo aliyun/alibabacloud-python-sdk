@@ -31,7 +31,7 @@ class DescribeGatewayApikeyListResponseBody(DaraModel):
         # 
         # Default value: 30.
         self.page_size = page_size
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
         # The total number of pages.
         self.total_pages = total_pages
@@ -114,7 +114,7 @@ class DescribeGatewayApikeyListResponseBodyItems(DaraModel):
         modify_time: str = None,
         name: str = None,
     ):
-        # The API key in use.
+        # The API key used.
         self.api_key = api_key
         # The user group ID.
         self.consumer_group_id = consumer_group_id
@@ -122,11 +122,11 @@ class DescribeGatewayApikeyListResponseBodyItems(DaraModel):
         self.consumer_id = consumer_id
         # The consumer tag.
         self.consumer_tag = consumer_tag
-        # The creation time.
+        # The creation time. The time follows the ISO 8601 standard in UTC (YYYY-MM-DDTHH:mm:ssZ).
         self.create_time = create_time
         # The gateway instance ID.
         self.gw_cluster_id = gw_cluster_id
-        # The last modification time.
+        # The last modification time. The time follows the ISO 8601 standard in UTC (YYYY-MM-DDTHH:mm:ssZ).
         self.modify_time = modify_time
         # The username.
         self.name = name

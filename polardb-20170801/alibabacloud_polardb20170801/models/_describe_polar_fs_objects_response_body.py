@@ -26,7 +26,7 @@ class DescribePolarFsObjectsResponseBody(DaraModel):
         self.page_size = page_size
         # The absolute path of the directory.
         self.path = path
-        # The PolarFs instance ID.
+        # The PolarFS instance ID.
         self.polar_fs_instance_id = polar_fs_instance_id
         # The request ID.
         self.request_id = request_id
@@ -112,17 +112,17 @@ class DescribePolarFsObjectsResponseBodyItems(DaraModel):
     ):
         # The capacity.
         self.capacity = capacity
-        # The creation time.
+        # The creation time. The value is a UNIX timestamp in seconds, and the time zone is UTC.
         self.creation_time = creation_time
-        # The last modified time.
+        # The last modified time. The value is a UNIX timestamp in seconds, and the time zone is UTC.
         self.last_modified = last_modified
         # The real path of the symbolic link.
         self.link_target = link_target
         # The file system permissions.
         self.mode = mode
-        # The number of links.
+        # The number of hard links. The value is an integer. This field may not be returned for some entries.
         self.nlink = nlink
-        # Owner
+        # The owner of the file or directory.
         self.owner = owner
         # The absolute path of the directory.
         self.path = path

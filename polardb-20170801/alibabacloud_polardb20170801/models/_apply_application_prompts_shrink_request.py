@@ -11,13 +11,13 @@ class ApplyApplicationPromptsShrinkRequest(DaraModel):
         disabled_prompt_ids_shrink: str = None,
         enabled_prompt_ids_shrink: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # An array of prompt IDs to disable.
+        # The list of prompt IDs to disable. You must provide a non-empty list for at least one of EnabledPromptIds and DisabledPromptIds. Otherwise, the InvalidApplicationPromptId.Malformed error is returned.
         self.disabled_prompt_ids_shrink = disabled_prompt_ids_shrink
-        # An array of prompt IDs to enable.
+        # The list of prompt IDs to enable. You must provide a non-empty list for at least one of EnabledPromptIds and DisabledPromptIds. Otherwise, the InvalidApplicationPromptId.Malformed error is returned.
         self.enabled_prompt_ids_shrink = enabled_prompt_ids_shrink
 
     def validate(self):

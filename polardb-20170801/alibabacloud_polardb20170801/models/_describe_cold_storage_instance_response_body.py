@@ -23,7 +23,7 @@ class DescribeColdStorageInstanceResponseBody(DaraModel):
         tables: List[main_models.DescribeColdStorageInstanceResponseBodyTables] = None,
         total_record: int = None,
     ):
-        # The maximum number of data entries to read in this request. Default value: 10.
+        # The maximum number of data entries to read in the current request. Default value: 10.
         self.max_results = max_results
         # The query token. Set the value to the NextToken value returned from the previous API call. If there are no more queries, do not specify this parameter.
         self.next_token = next_token
@@ -31,8 +31,8 @@ class DescribeColdStorageInstanceResponseBody(DaraModel):
         self.object_type = object_type
         # Specifies whether OSS storage space is enabled. Valid values:
         # 
-        # - **true**: enabled
-        # - **false**: disabled
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.oss_cluster_enabled = oss_cluster_enabled
         # The list of OSS addresses for the cold storage instance.
         self.oss_cluster_info_list = oss_cluster_info_list
@@ -44,7 +44,7 @@ class DescribeColdStorageInstanceResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # Specifies whether the current cluster supports enabling cold storage. For clusters that do not support this feature, the switch is not displayed on the page.
+        # Indicates whether the current cluster supports enabling cold storage. For clusters that do not support this feature, the switch is not displayed on the page.
         self.support_oss_cluster = support_oss_cluster
         # The list of cold storage instances.
         self.tables = tables
@@ -180,7 +180,7 @@ class DescribeColdStorageInstanceResponseBodyTables(DaraModel):
         self.oss_cluster_id = oss_cluster_id
         # The partition of the cold storage instance.
         self.partion = partion
-        # The disk size of the cold storage instance. Unit: GiB.
+        # The disk size of the cold storage instance, in GiB.
         self.size = size
         # The task status.
         self.status = status
@@ -279,21 +279,21 @@ class DescribeColdStorageInstanceResponseBodyTablesChildObjects(DaraModel):
         size: str = None,
         status: str = None,
     ):
-        # The object name.
+        # The name of the object.
         self.object_name = object_name
         # The object type.
         self.object_type = object_type
-        # The disk size. Unit: GiB.
+        # The disk size, in GiB.
         self.size = size
         # The task status. Valid values:
-        # * **Scheduled**: waiting for execution
-        # * **Running**: running
-        # * **Succeed**: succeeded
-        # * **Cancelling**: cancelling
-        # * **Canceled**: canceled
-        # * **Waiting**: waiting for the preset time
+        # * **Scheduled**: Pending execution.
+        # * **Running**: Executing.
+        # * **Succeed**: Executed successfully.
+        # * **Cancelling**: Terminating.
+        # * **Canceled**: Terminated.
+        # * **Waiting**: Waiting for the scheduled time.
         # 
-        # To query multiple statuses, separate them with commas (,). The default value is empty, which indicates that all statuses are selected.
+        # To query multiple statuses, separate them with commas (,). By default, this parameter is left empty, which indicates all statuses.
         self.status = status
 
     def validate(self):
@@ -342,13 +342,13 @@ class DescribeColdStorageInstanceResponseBodyOssClusterInfoList(DaraModel):
         region: str = None,
         size: str = None,
     ):
-        # The creation time of the cluster. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time when the cluster was created. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
         self.created_time = created_time
         # The cold storage instance ID.
         self.oss_cluster_id = oss_cluster_id
         # The region ID of the region where the task resides.
         self.region = region
-        # The size of the cold storage table. Unit: GB.
+        # The size of the cold storage table, in GB.
         self.size = size
 
     def validate(self):

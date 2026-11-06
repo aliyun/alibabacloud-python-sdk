@@ -78,35 +78,35 @@ class CreateApplicationShrinkRequest(DaraModel):
         self.auth_provider = auth_provider
         # The authentication provider configuration.
         self.auth_provider_config = auth_provider_config
-        # Specifies whether the automatic creation is enabled and whether to attach and associate with an EIP.
+        # Specifies whether an elastic IP address is automatically created and attached.
         self.auto_allocate_public_eip = auto_allocate_public_eip
-        # Specifies whether to automatically create a Polarlakebase cold storage edition instance. Valid values:
-        # * false (default): Do not automatically create the instance.
-        # * true: Automatically create the instance.
+        # Specifies whether to enable automatic creation of a Polarlakebase cold storage instance. Valid values:
+        # * false (default): disables automatic creation.
+        # * true: enables automatic creation.
         self.auto_create_polar_fs = auto_create_polar_fs
         # Specifies whether to enable auto-renewal.
         self.auto_renew = auto_renew
         # Specifies whether to automatically use coupons. Valid values:
-        # * true (default): Use coupons.
-        # * false: Do not use coupons.
+        # - true: uses coupons. This is the default value.
+        # - false: does not use coupons.
         self.auto_use_coupon = auto_use_coupon
         # The list of custom application subcomponents.
         self.components_shrink = components_shrink
-        # The ID of the PolarDB instance on which the application depends.
+        # The PolarDB instance ID on which the application depends.
         self.dbcluster_id = dbcluster_id
         # The description or remark of the application.
         self.description = description
         # The list of expected DNAT entries for NAT mapping. This parameter must be specified together with VpcNatGatewayId. You can leave this parameter empty to indicate that no DNAT entries are created.
         self.dnat_entries_shrink = dnat_entries_shrink
-        # The dedicated NAT IP address allocated for DNAT, which is separate from the SNAT IP address. The IP address must belong to the specified gateway, be in the available state, and the vSwitch where the gateway resides must belong to a primary CIDR block reachable from the office network. This parameter must be specified together with VpcNatGatewayId. Prerequisite: An SNAT entry is associated with the vSwitch where the application resides.
+        # The dedicated NAT IP address allocated for DNAT, which is separate from the SNAT IP address. The IP address must belong to the gateway, be in the available state, and the vSwitch where the gateway resides must belong to the primary CIDR block reachable from the office network. This parameter must be specified together with VpcNatGatewayId. Prerequisite: An SNAT entry is bound to the vSwitch where the application resides.
         self.dnat_ip_address = dnat_ip_address
-        # Specifies whether to perform a dry run. Default value: `false`. If you set this parameter to `true`, only parameter and resource validations are performed, and no resources are actually created.
+        # Specifies whether to perform a dry run. Default value: `false`. If you set this parameter to `true`, only parameter and resource validation is performed, and no resources are actually created.
         self.dry_run = dry_run
         # The list of custom service endpoints. By default, a VPC endpoint is created.
         self.endpoints_shrink = endpoints_shrink
-        # The knowledge application specification. This parameter is required for knowledge applications.
+        # The required specification for knowledge applications.
         self.knowledge_application_spec_shrink = knowledge_application_spec_shrink
-        # The Mem0 application specification. This parameter is required for mem0 applications.
+        # The required specification for mem0 applications.
         self.mem_application_spec_shrink = mem_application_spec_shrink
         # The API of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
         self.model_api = model_api
@@ -115,9 +115,9 @@ class CreateApplicationShrinkRequest(DaraModel):
         # The base URL of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
         self.model_base_url = model_base_url
         # The source of the model. Valid values:
-        # * bailian: Model Studio model.
-        # * custom: Custom model.
-        # * maas: PolarDB model operator.
+        # - bailian: Model Studio model.
+        # - custom: Custom model.
+        # - maas: PolarDB model operator.
         self.model_from = model_from
         # The name of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
         self.model_name = model_name
@@ -127,9 +127,9 @@ class CreateApplicationShrinkRequest(DaraModel):
         self.pay_type = pay_type
         # The subscription period unit.
         self.period = period
-        # The ID of the Polarlakebase cold storage or high-performance edition instance. Default value: empty. If you specify this parameter, the corresponding storage is mounted to the application.
+        # The Polarlakebase cold storage or high-performance instance ID. Default value: empty. If you specify this parameter, the corresponding storage is mounted to the application.
         # 
-        # Currently, only the following applications support this parameter:
+        # Currently, only the following applications are supported:
         # - supabase
         # - raycluster
         self.polar_fsinstance_id = polar_fsinstance_id
@@ -147,11 +147,11 @@ class CreateApplicationShrinkRequest(DaraModel):
         self.security_iplist = security_iplist
         # The type of the IP address.
         self.security_iptype = security_iptype
-        # The skill template ID.
+        # The ID of the skill template.
         self.skill_template_id = skill_template_id
         # The list of application storages.
         self.storages_shrink = storages_shrink
-        # The tag.
+        # The tags.
         self.tag = tag
         # The target version.
         self.target_version = target_version
@@ -161,7 +161,7 @@ class CreateApplicationShrinkRequest(DaraModel):
         self.v_switch_id = v_switch_id
         # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
-        # The VPC NAT gateway ID for NAT mapping. If you specify this parameter, NAT mapping is enabled when the instance is created. The gateway must reside in the same VPC as the application, be of the private network (intranet) type, and be active.
+        # NAT mapping: the NAT gateway ID of the self-managed VPC NAT gateway. If you specify this parameter, NAT mapping is enabled when the instance is created. The gateway must be in the same VPC as the application, be of the private network type (intranet), and be in the active state.
         self.vpc_nat_gateway_id = vpc_nat_gateway_id
         # The zone ID. Default value: the primary zone of the instance.
         self.zone_id = zone_id

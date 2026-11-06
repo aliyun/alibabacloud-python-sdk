@@ -25,7 +25,7 @@ class DescribeAvailableModelsResponseBody(DaraModel):
         self.items = items
         # The model type corresponding to the request.
         self.model_type = model_type
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
         # The model fine-tuning architecture.
         self.tune_arch = tune_arch
@@ -124,7 +124,7 @@ class DescribeAvailableModelsResponseBodyItems(DaraModel):
         self.direct_command = direct_command
         # The display name of the model.
         self.display_model_name = display_model_name
-        # The time when the registration was last modified.
+        # The last modification time of the registration.
         self.gmt_modified = gmt_modified
         # The supported GPU models.
         self.gpu_required = gpu_required

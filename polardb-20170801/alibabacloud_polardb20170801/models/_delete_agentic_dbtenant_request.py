@@ -11,7 +11,7 @@ class DeleteAgenticDBTenantRequest(DaraModel):
         region_id: str = None,
         tenant_id: str = None,
     ):
-        # The ID of the AgenticDB cluster.
+        # The AgenticDB cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -19,7 +19,7 @@ class DeleteAgenticDBTenantRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the tenant.
+        # The tenant ID.
         # 
         # This parameter is required.
         self.tenant_id = tenant_id

@@ -15,7 +15,7 @@ class DescribeZonesResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # A list of zones.
+        # The list of zones.
         self.zones = zones
 
     def validate(self):
@@ -60,23 +60,19 @@ class DescribeZonesResponseBodyZones(DaraModel):
         status: str = None,
         zone_id: str = None,
     ):
-        # The enumeration of statuses. Valid values:
+        # The enumeration values for various availability states. Valid values:
         # 
-        # - **UnSet**: The zone is not open for use.
-        # 
-        # - **SoldOut**: The resources in the zone are sold out.
-        # 
-        # - **WithStock**: The zone has available resources.
+        # - **UnSet**: not available
+        # - **SoldOut**: sold out
+        # - **WithStock**: in stock
         self.mode_code = mode_code
         # The priority.
         self.priority = priority
-        # The status of the zone. Valid values:
-        # 
-        # - **ON**: The zone is available.
-        # 
-        # - **OFF**: The zone is unavailable.
+        # The zone status. Valid values:
+        # - **ON**: available
+        # - **OFF**: unavailable
         self.status = status
-        # The ID of the zone.
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

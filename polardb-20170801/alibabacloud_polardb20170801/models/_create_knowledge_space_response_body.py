@@ -12,13 +12,13 @@ class CreateKnowledgeSpaceResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the PolarDB instance created by automatic creation.
+        # The PolarDB instance ID for automatic creation.
         self.dbcluster_id = dbcluster_id
         # The unique identifier of the knowledge space.
         self.knowledge_space_id = knowledge_space_id
         # The order ID.
         self.order_id = order_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

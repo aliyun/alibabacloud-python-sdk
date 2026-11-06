@@ -21,24 +21,25 @@ class DescribeApplicationPerformanceShrinkRequest(DaraModel):
         start_step: int = None,
         start_time: str = None,
     ):
-        # The application cluster ID.
+        # The ID of the application cluster.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # The user.
+        # The consumer.
         self.consumer = consumer
-        # The user group.
+        # The consumer group.
         self.consumer_group = consumer_group
-        # The downsampling policy.
+        # The downsampling strategy.
         self.downsample = downsample
-        # The end step number.
+        # The end step.
         self.end_step = end_step
-        # The end of the time range to query. Specify the time in the yyyy-MM-ddTHH:mmZ format (UTC).
+        # The end time of the query. Specify the time in the yyyy-MM-ddTHH:mmZ format (UTC).
         # 
         # This parameter is required.
         self.end_time = end_time
+        # The optional filter conditions for performance data, represented as a JSON object. If this parameter is not specified, no filtering is applied based on this condition.
         self.filter_shrink = filter_shrink
-        # The data granularity of performance data. Valid values:
+        # The performance data granularity. Valid values:
         # - 5
         # - 30
         # - 60
@@ -48,18 +49,18 @@ class DescribeApplicationPerformanceShrinkRequest(DaraModel):
         # - 86400
         self.interval = interval
         # The performance metrics to query. Separate multiple values with commas (,).
-        # 
-        # >  You can specify up to 5 performance metrics.
+        # Note
+        # You can specify up to 5 performance metrics.
         # 
         # This parameter is required.
         self.key = key
-        # The maximum number of data points to return.
+        # The maximum number of points to return.
         self.max_points = max_points
         # The model service.
         self.model_service = model_service
-        # The start step number.
+        # The start step.
         self.start_step = start_step
-        # The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mmZ format (UTC).
+        # The start time of the query. Specify the time in the yyyy-MM-ddTHH:mmZ format (UTC).
         # 
         # This parameter is required.
         self.start_time = start_time

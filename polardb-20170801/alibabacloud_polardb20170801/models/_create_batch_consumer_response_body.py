@@ -31,7 +31,7 @@ class CreateBatchConsumerResponseBody(DaraModel):
         # 
         # Default value: 30.
         self.page_size = page_size
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
         # The total number of pages.
         self.total_pages = total_pages
@@ -127,7 +127,7 @@ class CreateBatchConsumerResponseBodyItems(DaraModel):
     ):
         # Indicates whether the consumer is active.
         self.active = active
-        # The complete API key. This value is returned only in the current response.
+        # The complete API key. This value is returned only in this response.
         self.api_key = api_key
         # The MD5 hash of the API key.
         self.api_key_md_5 = api_key_md_5
@@ -139,7 +139,7 @@ class CreateBatchConsumerResponseBodyItems(DaraModel):
         self.budget_limit = budget_limit
         # The ID of the budget policy. Each key has an independent budget policy.
         self.budget_policy_id = budget_policy_id
-        # The used quota.
+        # The used budget.
         self.budget_used = budget_used
         # The ID of the consumer group.
         self.consumer_group_id = consumer_group_id
@@ -151,7 +151,7 @@ class CreateBatchConsumerResponseBodyItems(DaraModel):
         self.description = description
         # The expiration time.
         # 
-        # The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time is in ISO 8601 format and UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
         self.expire_time = expire_time
         # Indicates whether the consumer has expired.
         self.expired = expired

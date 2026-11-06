@@ -28,9 +28,9 @@ class CreatePolarClawCronJobResponseBody(DaraModel):
         self.message = message
         # Indicates whether the operation is successful.
         self.ok = ok
-        # Indicates whether the job was executed immediately and successfully.
+        # Indicates whether the job was executed immediately and succeeded.
         self.ran_immediately = ran_immediately
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -135,13 +135,13 @@ class CreatePolarClawCronJobResponseBodyJob(DaraModel):
         self.schedule = schedule
         # The session routing key.
         self.session_key = session_key
-        # The session target. Valid values: main, isolated, current.
+        # The session target. Valid values: main, isolated, and current.
         self.session_target = session_target
-        # The execution status.
+        # The execution state.
         self.state = state
         # The update timestamp in milliseconds.
         self.updated_at_ms = updated_at_ms
-        # The wake mode. Valid values: now, next-heartbeat.
+        # The wake mode. Valid values: now and next-heartbeat.
         self.wake_mode = wake_mode
 
     def validate(self):
@@ -347,7 +347,7 @@ class CreatePolarClawCronJobResponseBodyJobSchedule(DaraModel):
         self.every_ms = every_ms
         # The cron expression.
         self.expr = expr
-        # The schedule type: cron, every, or at.
+        # The schedule type. Valid values: cron, every, and at.
         self.kind = kind
         # The IANA time zone.
         self.tz = tz
@@ -423,7 +423,7 @@ class CreatePolarClawCronJobResponseBodyJobRuns(DaraModel):
     ):
         # The action. Valid values: finished, error, and skipped.
         self.action = action
-        # Indicates whether the run was delivered.
+        # Indicates whether the job run has been delivered.
         self.delivered = delivered
         # The delivery status.
         self.delivery_status = delivery_status
@@ -433,11 +433,11 @@ class CreatePolarClawCronJobResponseBodyJobRuns(DaraModel):
         self.job_id = job_id
         # The job name.
         self.job_name = job_name
-        # The model used.
+        # The model used for the execution.
         self.model = model
         # The timestamp of the next execution in milliseconds.
         self.next_run_at_ms = next_run_at_ms
-        # The model provider.
+        # The provider of the model.
         self.provider = provider
         # The actual execution timestamp in milliseconds.
         self.run_at_ms = run_at_ms
@@ -445,11 +445,11 @@ class CreatePolarClawCronJobResponseBodyJobRuns(DaraModel):
         self.session_id = session_id
         # The status. Valid values: ok, error, and skipped.
         self.status = status
-        # The execution summary text.
+        # The text of the execution summary.
         self.summary = summary
         # The execution timestamp in milliseconds.
         self.ts = ts
-        # The token usage details.
+        # The details of token usage.
         self.usage = usage
 
     def validate(self):
@@ -624,7 +624,7 @@ class CreatePolarClawCronJobResponseBodyJobPayload(DaraModel):
         self.channel = channel
         # Specifies whether to deliver the output to a channel.
         self.deliver = deliver
-        # The payload type. Valid values: agentTurn, systemEvent.
+        # The payload type. Valid values: agentTurn and systemEvent.
         self.kind = kind
         # Specifies whether to use a lightweight context.
         self.light_context = light_context
@@ -722,13 +722,13 @@ class CreatePolarClawCronJobResponseBodyJobDelivery(DaraModel):
         mode: str = None,
         to: str = None,
     ):
-        # The channel account ID.
+        # The ID of the channel account.
         self.account_id = account_id
         # Specifies whether to ignore delivery failures.
         self.best_effort = best_effort
         # The delivery channel.
         self.channel = channel
-        # The delivery mode. Valid values: none, announce, webhook.
+        # The delivery mode. Valid values: none, announce, and webhook.
         self.mode = mode
         # The delivery target.
         self.to = to

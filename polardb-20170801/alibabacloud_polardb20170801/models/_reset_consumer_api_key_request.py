@@ -11,11 +11,11 @@ class ResetConsumerApiKeyRequest(DaraModel):
         gw_cluster_id: str = None,
         region_id: str = None,
     ):
-        # The user ID.
+        # The ID of the consumer. You can obtain the ID by calling the DescribeConsumers operation. Call sequence: CreateGateway, CreateConsumer, and then ResetConsumerApiKey.
         # 
         # This parameter is required.
         self.consumer_id = consumer_id
-        # The gateway instance ID.
+        # Instance ID of the gateway instance. You can obtain instance ID by calling the DescribeGatewayAttribute operation. Before calling this operation, create a gateway and confirm its VPC, vSwitch, and zone configurations.
         # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id

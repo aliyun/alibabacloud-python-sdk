@@ -26,14 +26,14 @@ class DescribeAIDBClusterPerformanceResponseBody(DaraModel):
         self.dbcluster_id = dbcluster_id
         # The type of the database engine. Only **polardb_ai** is supported.
         self.dbtype = dbtype
-        # The version number of the database AI DPI engine.
+        # The version number of the database AI engine.
         # 
         # 
         #   -3.0
         self.dbversion = dbversion
-        # The end time of the query. The end time must be later than the start time. Specify the time in the `YYYY-MM-DDThh:mmZ` format. The time must be in UTC.
+        # The end time of the query. The end time must be later than the start time. The format is YYYY-MM-DDThh:mmZ (UTC).
         self.end_time = end_time
-        # The data granularity of performance. Valid values:
+        # The data granularity of the performance data. Valid values:
         # 
         # - 60
         # - 3600
@@ -42,7 +42,7 @@ class DescribeAIDBClusterPerformanceResponseBody(DaraModel):
         self.performance_keys = performance_keys
         # The request ID.
         self.request_id = request_id
-        # The start time of the query. Specify the time in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+        # The start time of the query. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
         self.start_time = start_time
 
     def validate(self):
@@ -131,9 +131,9 @@ class DescribeAIDBClusterPerformanceResponseBodyPerformanceKeys(DaraModel):
     ):
         # The ID of the database cluster node.
         self.dbnode_id = dbnode_id
-        # The performance metrics.
+        # The performance metric.
         self.measurement = measurement
-        # The specific measurement name of the performance metrics.
+        # The name of the specific performance metric.
         self.metric_name = metric_name
         # The array of performance data.
         self.points = points
@@ -190,9 +190,9 @@ class DescribeAIDBClusterPerformanceResponseBodyPerformanceKeysPoints(DaraModel)
         timestamp: int = None,
         value: str = None,
     ):
-        # The specific time point of the monitoring metric. The format is a UNIX timestamp, and the unit is milliseconds.
+        # The specific time point of the monitoring metric. The format is a UNIX timestamp in milliseconds.
         self.timestamp = timestamp
-        # The value of the monitoring metric.
+        # The data value of the monitoring metric.
         self.value = value
 
     def validate(self):

@@ -16,7 +16,7 @@ class DescribePolarClawPluginsRequest(DaraModel):
         # 
         # This parameter is required.
         self.application_id = application_id
-        # A list of plugin IDs. If omitted, all plugins are returned.
+        # The list of plugin IDs to query. If this parameter is empty, all plugins are returned.
         self.plugin_list = plugin_list
 
     def validate(self):

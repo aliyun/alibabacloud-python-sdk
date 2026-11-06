@@ -13,13 +13,13 @@ class ApplyApplicationPromptsRequest(DaraModel):
         disabled_prompt_ids: List[str] = None,
         enabled_prompt_ids: List[str] = None,
     ):
-        # The ID of the application.
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # An array of prompt IDs to disable.
+        # The list of prompt IDs to disable. You must provide a non-empty list for at least one of EnabledPromptIds and DisabledPromptIds. Otherwise, the InvalidApplicationPromptId.Malformed error is returned.
         self.disabled_prompt_ids = disabled_prompt_ids
-        # An array of prompt IDs to enable.
+        # The list of prompt IDs to enable. You must provide a non-empty list for at least one of EnabledPromptIds and DisabledPromptIds. Otherwise, the InvalidApplicationPromptId.Malformed error is returned.
         self.enabled_prompt_ids = enabled_prompt_ids
 
     def validate(self):

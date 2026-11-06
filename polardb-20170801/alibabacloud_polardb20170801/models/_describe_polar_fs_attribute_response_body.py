@@ -77,17 +77,13 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         # The bucket ID.
         self.bucket_id = bucket_id
         # The Polarlakebase edition. Valid values:
-        # 
         # - **high_performance**: High-performance Edition.
-        # 
         # - **basic**: Basic Edition.
-        # 
         # - **cold**: Cold Storage Edition.
         self.category = category
         # The client download URL.
         self.client_download_path = client_download_path
         # The creation time.
-        # 
         # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
         # The custom bucket path.
@@ -100,24 +96,21 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         # * **MySQL**
         # * **PostgreSQL**
         self.dbtype = dbtype
-        # The list of endpoints, including endpoint information for types such as NAS and S3 Gateway.
+        # The list of endpoints, including endpoint information such as NAS and S3 Gateway.
         self.endpoint_items = endpoint_items
         # The expiration time of the cluster.
-        # 
-        # > This parameter is returned only for clusters whose billing method is **Prepaid** (subscription). For clusters whose billing method is **Postpaid** (pay-as-you-go), an empty value is returned.
-        # 
+        # > This parameter is returned only for subscription clusters whose billing method is **Prepaid**. For pay-as-you-go clusters whose billing method is **Postpaid**, an empty value is returned.
         # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.expire_time = expire_time
         # Indicates whether the cluster has expired.
-        # > This parameter is returned only for clusters whose billing method is **Prepaid** (subscription).
+        # > This parameter is returned only for subscription clusters whose billing method is **Prepaid**.
         self.expired = expired
         # The file system ID.
         self.file_system_id = file_system_id
-        # The lock mode. Valid values: 
-        # 
+        # The lock mode. Valid values:
         # - **Unlock**: Unlocked.
-        # - **ManualLock**: Manually locked. 
-        # - **LockByExpiration**: Automatically locked due to cluster expiration.
+        # - **ManualLock**: Manually locked.
+        # - **LockByExpiration**: Automatically locked due to expiration.
         self.lock_mode = lock_mode
         # The proxy endpoint ID.
         self.maxscale_endpoint_id = maxscale_endpoint_id
@@ -129,20 +122,19 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         self.meta_mxs_conn_string = meta_mxs_conn_string
         # The metadata address for FUSE mounting (encrypted).
         self.meta_url = meta_url
-        # The minor version number of the instance.
+        # The minor version of the instance.
         self.minor_version = minor_version
         # The mount configuration.
         self.mount_info = mount_info
         # The billing method. Valid values:
-        # 
         # - **Postpaid**: Pay-as-you-go.
         # - **Prepaid**: Subscription.
         self.pay_type = pay_type
-        # The Polarlakebase instance description.
+        # The description of the Polarlakebase instance.
         self.polar_fs_instance_description = polar_fs_instance_description
         # The Polarlakebase instance ID.
         self.polar_fs_instance_id = polar_fs_instance_id
-        # The Polarlakebase instance status.
+        # The status of the Polarlakebase instance.
         self.polar_fs_status = polar_fs_status
         # The instance version. Valid values:
         # - **PolarFS 2.0**: 2.0.
@@ -154,9 +146,9 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         self.region_id = region_id
         # The ID of the associated PolarDB cluster.
         self.relative_db_cluster_id = relative_db_cluster_id
-        # The associated Polarlakebase instance ID.
+        # The ID of the associated Polarlakebase instance.
         self.relative_pfs_cluster_id = relative_pfs_cluster_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -164,12 +156,10 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         self.security_group_id = security_group_id
         # The storage space. Unit: GB.
         self.storage_space = storage_space
-        # The storage type. 
-        # For High-performance Edition, valid values are:
+        # The storage type. Valid values for High-performance Edition:
         # * **ESSDPL1**
         # * **ESSDPL0**
-        # 
-        # For Basic Edition, valid values are:
+        # Valid values for Basic Edition:
         # * **city_redundancy**: Zone-redundant storage.
         self.storage_type = storage_type
         # The used storage space. Unit: bytes.
@@ -611,7 +601,7 @@ class DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems(DaraModel):
         vpcid: str = None,
         v_switch_id: str = None,
     ):
-        # The protocol endpoint.
+        # The protocol connection address.
         self.connection_string = connection_string
         # The IP address.
         self.ipaddress = ipaddress

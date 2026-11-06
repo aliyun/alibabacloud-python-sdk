@@ -10,11 +10,11 @@ class DescribePolarAgentChatRecordsRequest(DaraModel):
         session_id: str = None,
         source: str = None,
     ):
-        # The session ID.
+        # The session ID. To obtain the SessionId, use Signature Version 3.0 to call GetPolarAgent to initiate a conversation and extract the SessionId from the returned stream.
         # 
         # This parameter is required.
         self.session_id = session_id
-        # The product source. Valid value: polardb-console.
+        # The product type source. Valid value: polardb-console.
         self.source = source
 
     def validate(self):

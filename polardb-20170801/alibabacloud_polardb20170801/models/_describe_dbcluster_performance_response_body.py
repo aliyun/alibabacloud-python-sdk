@@ -18,18 +18,18 @@ class DescribeDBClusterPerformanceResponseBody(DaraModel):
         request_id: str = None,
         start_time: str = None,
     ):
-        # The database cluster ID.
+        # The ID of the database cluster.
         self.dbcluster_id = dbcluster_id
         # The compatible database type.
         self.dbtype = dbtype
         # The compatible database version.
         self.dbversion = dbversion
-        # The end of the time range. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
+        # The end time of the query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.end_time = end_time
         self.performance_keys = performance_keys
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The beginning of the time range. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
+        # The start time of the query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.start_time = start_time
 
     def validate(self):

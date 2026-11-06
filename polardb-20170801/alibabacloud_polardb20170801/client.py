@@ -6,6 +6,7 @@ import json
 
 from typing import Dict, Generator, AsyncGenerator
 
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_polardb20170801 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
@@ -22,6 +23,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'polardb'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-qingdao': 'polardb.aliyuncs.com',
@@ -2293,6 +2297,108 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.check_kmsauthorized_with_options_async(request, runtime)
 
+    def check_polar_claw_skill_with_options(
+        self,
+        request: main_models.CheckPolarClawSkillRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckPolarClawSkillResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bucket_region_id):
+            query['BucketRegionId'] = request.bucket_region_id
+        if not DaraCore.is_null(request.bucket_type):
+            query['BucketType'] = request.bucket_type
+        if not DaraCore.is_null(request.ossbucket):
+            query['OSSBucket'] = request.ossbucket
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.skill_name):
+            query['SkillName'] = request.skill_name
+        if not DaraCore.is_null(request.skill_version):
+            query['SkillVersion'] = request.skill_version
+        if not DaraCore.is_null(request.summary):
+            query['Summary'] = request.summary
+        if not DaraCore.is_null(request.tags):
+            query['Tags'] = request.tags
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckPolarClawSkill',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckPolarClawSkillResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_polar_claw_skill_with_options_async(
+        self,
+        request: main_models.CheckPolarClawSkillRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckPolarClawSkillResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bucket_region_id):
+            query['BucketRegionId'] = request.bucket_region_id
+        if not DaraCore.is_null(request.bucket_type):
+            query['BucketType'] = request.bucket_type
+        if not DaraCore.is_null(request.ossbucket):
+            query['OSSBucket'] = request.ossbucket
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.skill_name):
+            query['SkillName'] = request.skill_name
+        if not DaraCore.is_null(request.skill_version):
+            query['SkillVersion'] = request.skill_version
+        if not DaraCore.is_null(request.summary):
+            query['Summary'] = request.summary
+        if not DaraCore.is_null(request.tags):
+            query['Tags'] = request.tags
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckPolarClawSkill',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckPolarClawSkillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_polar_claw_skill(
+        self,
+        request: main_models.CheckPolarClawSkillRequest,
+    ) -> main_models.CheckPolarClawSkillResponse:
+        runtime = RuntimeOptions()
+        return self.check_polar_claw_skill_with_options(request, runtime)
+
+    async def check_polar_claw_skill_async(
+        self,
+        request: main_models.CheckPolarClawSkillRequest,
+    ) -> main_models.CheckPolarClawSkillResponse:
+        runtime = RuntimeOptions()
+        return await self.check_polar_claw_skill_with_options_async(request, runtime)
+
     def check_polar_fs_quota_consistency_with_options(
         self,
         request: main_models.CheckPolarFsQuotaConsistencyRequest,
@@ -4513,6 +4619,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_application_agent_relation_with_options_async(request, runtime)
 
+    def create_application_backup_with_options(
+        self,
+        request: main_models.CreateApplicationBackupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateApplicationBackupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_type):
+            query['ApplicationType'] = request.application_type
+        if not DaraCore.is_null(request.job_mode):
+            query['JobMode'] = request.job_mode
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateApplicationBackup',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateApplicationBackupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_application_backup_with_options_async(
+        self,
+        request: main_models.CreateApplicationBackupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateApplicationBackupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_type):
+            query['ApplicationType'] = request.application_type
+        if not DaraCore.is_null(request.job_mode):
+            query['JobMode'] = request.job_mode
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateApplicationBackup',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateApplicationBackupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_application_backup(
+        self,
+        request: main_models.CreateApplicationBackupRequest,
+    ) -> main_models.CreateApplicationBackupResponse:
+        runtime = RuntimeOptions()
+        return self.create_application_backup_with_options(request, runtime)
+
+    async def create_application_backup_async(
+        self,
+        request: main_models.CreateApplicationBackupRequest,
+    ) -> main_models.CreateApplicationBackupResponse:
+        runtime = RuntimeOptions()
+        return await self.create_application_backup_with_options_async(request, runtime)
+
     def create_application_endpoint_address_with_options(
         self,
         request: main_models.CreateApplicationEndpointAddressRequest,
@@ -6571,6 +6759,222 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_dbnodes_with_options_async(request, runtime)
 
+    def create_data_process_job_with_options(
+        self,
+        request: main_models.CreateDataProcessJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDataProcessJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.destination_config):
+            query['DestinationConfig'] = request.destination_config
+        if not DaraCore.is_null(request.destination_id):
+            query['DestinationId'] = request.destination_id
+        if not DaraCore.is_null(request.destination_path):
+            query['DestinationPath'] = request.destination_path
+        if not DaraCore.is_null(request.destination_type):
+            query['DestinationType'] = request.destination_type
+        if not DaraCore.is_null(request.model_name):
+            query['ModelName'] = request.model_name
+        if not DaraCore.is_null(request.processing_mode):
+            query['ProcessingMode'] = request.processing_mode
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.source_config):
+            query['SourceConfig'] = request.source_config
+        if not DaraCore.is_null(request.source_id):
+            query['SourceId'] = request.source_id
+        if not DaraCore.is_null(request.source_path):
+            query['SourcePath'] = request.source_path
+        if not DaraCore.is_null(request.source_type):
+            query['SourceType'] = request.source_type
+        if not DaraCore.is_null(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDataProcessJob',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDataProcessJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_data_process_job_with_options_async(
+        self,
+        request: main_models.CreateDataProcessJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDataProcessJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.destination_config):
+            query['DestinationConfig'] = request.destination_config
+        if not DaraCore.is_null(request.destination_id):
+            query['DestinationId'] = request.destination_id
+        if not DaraCore.is_null(request.destination_path):
+            query['DestinationPath'] = request.destination_path
+        if not DaraCore.is_null(request.destination_type):
+            query['DestinationType'] = request.destination_type
+        if not DaraCore.is_null(request.model_name):
+            query['ModelName'] = request.model_name
+        if not DaraCore.is_null(request.processing_mode):
+            query['ProcessingMode'] = request.processing_mode
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.source_config):
+            query['SourceConfig'] = request.source_config
+        if not DaraCore.is_null(request.source_id):
+            query['SourceId'] = request.source_id
+        if not DaraCore.is_null(request.source_path):
+            query['SourcePath'] = request.source_path
+        if not DaraCore.is_null(request.source_type):
+            query['SourceType'] = request.source_type
+        if not DaraCore.is_null(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDataProcessJob',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDataProcessJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_data_process_job(
+        self,
+        request: main_models.CreateDataProcessJobRequest,
+    ) -> main_models.CreateDataProcessJobResponse:
+        runtime = RuntimeOptions()
+        return self.create_data_process_job_with_options(request, runtime)
+
+    async def create_data_process_job_async(
+        self,
+        request: main_models.CreateDataProcessJobRequest,
+    ) -> main_models.CreateDataProcessJobResponse:
+        runtime = RuntimeOptions()
+        return await self.create_data_process_job_with_options_async(request, runtime)
+
+    def create_data_process_job_template_with_options(
+        self,
+        request: main_models.CreateDataProcessJobTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDataProcessJobTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.captioning):
+            query['Captioning'] = request.captioning
+        if not DaraCore.is_null(request.captioning_prompt):
+            query['CaptioningPrompt'] = request.captioning_prompt
+        if not DaraCore.is_null(request.embedding):
+            query['Embedding'] = request.embedding
+        if not DaraCore.is_null(request.embedding_dimension):
+            query['EmbeddingDimension'] = request.embedding_dimension
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.template_config):
+            query['TemplateConfig'] = request.template_config
+        if not DaraCore.is_null(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not DaraCore.is_null(request.template_type):
+            query['TemplateType'] = request.template_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDataProcessJobTemplate',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDataProcessJobTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_data_process_job_template_with_options_async(
+        self,
+        request: main_models.CreateDataProcessJobTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDataProcessJobTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.captioning):
+            query['Captioning'] = request.captioning
+        if not DaraCore.is_null(request.captioning_prompt):
+            query['CaptioningPrompt'] = request.captioning_prompt
+        if not DaraCore.is_null(request.embedding):
+            query['Embedding'] = request.embedding
+        if not DaraCore.is_null(request.embedding_dimension):
+            query['EmbeddingDimension'] = request.embedding_dimension
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.template_config):
+            query['TemplateConfig'] = request.template_config
+        if not DaraCore.is_null(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not DaraCore.is_null(request.template_type):
+            query['TemplateType'] = request.template_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDataProcessJobTemplate',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDataProcessJobTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_data_process_job_template(
+        self,
+        request: main_models.CreateDataProcessJobTemplateRequest,
+    ) -> main_models.CreateDataProcessJobTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.create_data_process_job_template_with_options(request, runtime)
+
+    async def create_data_process_job_template_async(
+        self,
+        request: main_models.CreateDataProcessJobTemplateRequest,
+    ) -> main_models.CreateDataProcessJobTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.create_data_process_job_template_with_options_async(request, runtime)
+
     def create_database_with_options(
         self,
         request: main_models.CreateDatabaseRequest,
@@ -7439,6 +7843,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_gw_consumer_order_with_options_async(request, runtime)
 
+    def create_inspection_task_with_options(
+        self,
+        request: main_models.CreateInspectionTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateInspectionTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cron_expression):
+            query['CronExpression'] = request.cron_expression
+        if not DaraCore.is_null(request.dbcluster_list):
+            query['DBClusterList'] = request.dbcluster_list
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.space_id):
+            query['SpaceId'] = request.space_id
+        if not DaraCore.is_null(request.task_description):
+            query['TaskDescription'] = request.task_description
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateInspectionTask',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateInspectionTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_inspection_task_with_options_async(
+        self,
+        request: main_models.CreateInspectionTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateInspectionTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cron_expression):
+            query['CronExpression'] = request.cron_expression
+        if not DaraCore.is_null(request.dbcluster_list):
+            query['DBClusterList'] = request.dbcluster_list
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.space_id):
+            query['SpaceId'] = request.space_id
+        if not DaraCore.is_null(request.task_description):
+            query['TaskDescription'] = request.task_description
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateInspectionTask',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateInspectionTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_inspection_task(
+        self,
+        request: main_models.CreateInspectionTaskRequest,
+    ) -> main_models.CreateInspectionTaskResponse:
+        runtime = RuntimeOptions()
+        return self.create_inspection_task_with_options(request, runtime)
+
+    async def create_inspection_task_async(
+        self,
+        request: main_models.CreateInspectionTaskRequest,
+    ) -> main_models.CreateInspectionTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.create_inspection_task_with_options_async(request, runtime)
+
     def create_kbsync_link_with_options(
         self,
         request: main_models.CreateKBSyncLinkRequest,
@@ -7796,6 +8290,96 @@ class Client(OpenApiClient):
     ) -> main_models.CreateKnowledgeSpaceResponse:
         runtime = RuntimeOptions()
         return await self.create_knowledge_space_with_options_async(request, runtime)
+
+    def create_lakebase_mount_parameter_group_with_options(
+        self,
+        request: main_models.CreateLakebaseMountParameterGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateLakebaseMountParameterGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.param_group_category):
+            query['ParamGroupCategory'] = request.param_group_category
+        if not DaraCore.is_null(request.parameter_group_desc):
+            query['ParameterGroupDesc'] = request.parameter_group_desc
+        if not DaraCore.is_null(request.parameter_group_name):
+            query['ParameterGroupName'] = request.parameter_group_name
+        if not DaraCore.is_null(request.parameters):
+            query['Parameters'] = request.parameters
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateLakebaseMountParameterGroup',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateLakebaseMountParameterGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_lakebase_mount_parameter_group_with_options_async(
+        self,
+        request: main_models.CreateLakebaseMountParameterGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateLakebaseMountParameterGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.param_group_category):
+            query['ParamGroupCategory'] = request.param_group_category
+        if not DaraCore.is_null(request.parameter_group_desc):
+            query['ParameterGroupDesc'] = request.parameter_group_desc
+        if not DaraCore.is_null(request.parameter_group_name):
+            query['ParameterGroupName'] = request.parameter_group_name
+        if not DaraCore.is_null(request.parameters):
+            query['Parameters'] = request.parameters
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateLakebaseMountParameterGroup',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateLakebaseMountParameterGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_lakebase_mount_parameter_group(
+        self,
+        request: main_models.CreateLakebaseMountParameterGroupRequest,
+    ) -> main_models.CreateLakebaseMountParameterGroupResponse:
+        runtime = RuntimeOptions()
+        return self.create_lakebase_mount_parameter_group_with_options(request, runtime)
+
+    async def create_lakebase_mount_parameter_group_async(
+        self,
+        request: main_models.CreateLakebaseMountParameterGroupRequest,
+    ) -> main_models.CreateLakebaseMountParameterGroupResponse:
+        runtime = RuntimeOptions()
+        return await self.create_lakebase_mount_parameter_group_with_options_async(request, runtime)
 
     def create_lakebase_s3account_with_options(
         self,
@@ -8758,6 +9342,202 @@ class Client(OpenApiClient):
     ) -> main_models.CreatePolarClawCronJobResponse:
         runtime = RuntimeOptions()
         return await self.create_polar_claw_cron_job_with_options_async(request, runtime)
+
+    def create_polar_claw_skill_with_options(
+        self,
+        request: main_models.CreatePolarClawSkillRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePolarClawSkillResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bucket_region_id):
+            query['BucketRegionId'] = request.bucket_region_id
+        if not DaraCore.is_null(request.bucket_type):
+            query['BucketType'] = request.bucket_type
+        if not DaraCore.is_null(request.ossbucket):
+            query['OSSBucket'] = request.ossbucket
+        if not DaraCore.is_null(request.ossprefix):
+            query['OSSPrefix'] = request.ossprefix
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.skill_name):
+            query['SkillName'] = request.skill_name
+        if not DaraCore.is_null(request.skill_version):
+            query['SkillVersion'] = request.skill_version
+        if not DaraCore.is_null(request.summary):
+            query['Summary'] = request.summary
+        if not DaraCore.is_null(request.tags):
+            query['Tags'] = request.tags
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePolarClawSkill',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePolarClawSkillResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_polar_claw_skill_with_options_async(
+        self,
+        request: main_models.CreatePolarClawSkillRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePolarClawSkillResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bucket_region_id):
+            query['BucketRegionId'] = request.bucket_region_id
+        if not DaraCore.is_null(request.bucket_type):
+            query['BucketType'] = request.bucket_type
+        if not DaraCore.is_null(request.ossbucket):
+            query['OSSBucket'] = request.ossbucket
+        if not DaraCore.is_null(request.ossprefix):
+            query['OSSPrefix'] = request.ossprefix
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.skill_name):
+            query['SkillName'] = request.skill_name
+        if not DaraCore.is_null(request.skill_version):
+            query['SkillVersion'] = request.skill_version
+        if not DaraCore.is_null(request.summary):
+            query['Summary'] = request.summary
+        if not DaraCore.is_null(request.tags):
+            query['Tags'] = request.tags
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePolarClawSkill',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePolarClawSkillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_polar_claw_skill(
+        self,
+        request: main_models.CreatePolarClawSkillRequest,
+    ) -> main_models.CreatePolarClawSkillResponse:
+        runtime = RuntimeOptions()
+        return self.create_polar_claw_skill_with_options(request, runtime)
+
+    async def create_polar_claw_skill_async(
+        self,
+        request: main_models.CreatePolarClawSkillRequest,
+    ) -> main_models.CreatePolarClawSkillResponse:
+        runtime = RuntimeOptions()
+        return await self.create_polar_claw_skill_with_options_async(request, runtime)
+
+    def create_polar_claw_skill_template_with_options(
+        self,
+        request: main_models.CreatePolarClawSkillTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePolarClawSkillTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_type):
+            query['ApplicationType'] = request.application_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.skill_template_desc):
+            query['SkillTemplateDesc'] = request.skill_template_desc
+        if not DaraCore.is_null(request.skill_template_name):
+            query['SkillTemplateName'] = request.skill_template_name
+        if not DaraCore.is_null(request.skill_template_param):
+            query['SkillTemplateParam'] = request.skill_template_param
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePolarClawSkillTemplate',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePolarClawSkillTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_polar_claw_skill_template_with_options_async(
+        self,
+        request: main_models.CreatePolarClawSkillTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePolarClawSkillTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_type):
+            query['ApplicationType'] = request.application_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.skill_template_desc):
+            query['SkillTemplateDesc'] = request.skill_template_desc
+        if not DaraCore.is_null(request.skill_template_name):
+            query['SkillTemplateName'] = request.skill_template_name
+        if not DaraCore.is_null(request.skill_template_param):
+            query['SkillTemplateParam'] = request.skill_template_param
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePolarClawSkillTemplate',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePolarClawSkillTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_polar_claw_skill_template(
+        self,
+        request: main_models.CreatePolarClawSkillTemplateRequest,
+    ) -> main_models.CreatePolarClawSkillTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.create_polar_claw_skill_template_with_options(request, runtime)
+
+    async def create_polar_claw_skill_template_async(
+        self,
+        request: main_models.CreatePolarClawSkillTemplateRequest,
+    ) -> main_models.CreatePolarClawSkillTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.create_polar_claw_skill_template_with_options_async(request, runtime)
 
     def create_polar_fs_with_options(
         self,
@@ -11641,6 +12421,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_dbnodes_with_options_async(request, runtime)
 
+    def delete_data_process_job_template_with_options(
+        self,
+        request: main_models.DeleteDataProcessJobTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDataProcessJobTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDataProcessJobTemplate',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDataProcessJobTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_data_process_job_template_with_options_async(
+        self,
+        request: main_models.DeleteDataProcessJobTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDataProcessJobTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDataProcessJobTemplate',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDataProcessJobTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_data_process_job_template(
+        self,
+        request: main_models.DeleteDataProcessJobTemplateRequest,
+    ) -> main_models.DeleteDataProcessJobTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.delete_data_process_job_template_with_options(request, runtime)
+
+    async def delete_data_process_job_template_async(
+        self,
+        request: main_models.DeleteDataProcessJobTemplateRequest,
+    ) -> main_models.DeleteDataProcessJobTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_data_process_job_template_with_options_async(request, runtime)
+
     def delete_database_with_options(
         self,
         request: main_models.DeleteDatabaseRequest,
@@ -12681,6 +13535,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_knowledge_base_file_with_options_async(request, runtime)
 
+    def delete_lakebase_mount_parameter_group_with_options(
+        self,
+        request: main_models.DeleteLakebaseMountParameterGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteLakebaseMountParameterGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.parameter_group_id):
+            query['ParameterGroupId'] = request.parameter_group_id
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteLakebaseMountParameterGroup',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteLakebaseMountParameterGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_lakebase_mount_parameter_group_with_options_async(
+        self,
+        request: main_models.DeleteLakebaseMountParameterGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteLakebaseMountParameterGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.parameter_group_id):
+            query['ParameterGroupId'] = request.parameter_group_id
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteLakebaseMountParameterGroup',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteLakebaseMountParameterGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_lakebase_mount_parameter_group(
+        self,
+        request: main_models.DeleteLakebaseMountParameterGroupRequest,
+    ) -> main_models.DeleteLakebaseMountParameterGroupResponse:
+        runtime = RuntimeOptions()
+        return self.delete_lakebase_mount_parameter_group_with_options(request, runtime)
+
+    async def delete_lakebase_mount_parameter_group_async(
+        self,
+        request: main_models.DeleteLakebaseMountParameterGroupRequest,
+    ) -> main_models.DeleteLakebaseMountParameterGroupResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_lakebase_mount_parameter_group_with_options_async(request, runtime)
+
     def delete_lakebase_s3account_with_options(
         self,
         request: main_models.DeleteLakebaseS3AccountRequest,
@@ -13435,6 +14367,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_polar_claw_cron_job_with_options_async(request, runtime)
 
+    def delete_polar_claw_skill_with_options(
+        self,
+        request: main_models.DeletePolarClawSkillRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePolarClawSkillResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.skill_name):
+            query['SkillName'] = request.skill_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePolarClawSkill',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePolarClawSkillResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_polar_claw_skill_with_options_async(
+        self,
+        request: main_models.DeletePolarClawSkillRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePolarClawSkillResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.skill_name):
+            query['SkillName'] = request.skill_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePolarClawSkill',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePolarClawSkillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_polar_claw_skill(
+        self,
+        request: main_models.DeletePolarClawSkillRequest,
+    ) -> main_models.DeletePolarClawSkillResponse:
+        runtime = RuntimeOptions()
+        return self.delete_polar_claw_skill_with_options(request, runtime)
+
+    async def delete_polar_claw_skill_async(
+        self,
+        request: main_models.DeletePolarClawSkillRequest,
+    ) -> main_models.DeletePolarClawSkillResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_polar_claw_skill_with_options_async(request, runtime)
+
     def delete_polar_fs_with_options(
         self,
         request: main_models.DeletePolarFsRequest,
@@ -14079,6 +15085,66 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_sqlrate_limiting_rules_with_options_async(request, runtime)
 
+    def describe_aiagent_order_with_options(
+        self,
+        request: main_models.DescribeAIAgentOrderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAIAgentOrderResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'DescribeAIAgentOrder',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAIAgentOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_aiagent_order_with_options_async(
+        self,
+        request: main_models.DescribeAIAgentOrderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAIAgentOrderResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'DescribeAIAgentOrder',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAIAgentOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_aiagent_order(
+        self,
+        request: main_models.DescribeAIAgentOrderRequest,
+    ) -> main_models.DescribeAIAgentOrderResponse:
+        runtime = RuntimeOptions()
+        return self.describe_aiagent_order_with_options(request, runtime)
+
+    async def describe_aiagent_order_async(
+        self,
+        request: main_models.DescribeAIAgentOrderRequest,
+    ) -> main_models.DescribeAIAgentOrderResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_aiagent_order_with_options_async(request, runtime)
+
     def describe_aidbcluster_api_keys_with_options(
         self,
         request: main_models.DescribeAIDBClusterApiKeysRequest,
@@ -14438,6 +15504,96 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeAIDBClusterPerformanceResponse:
         runtime = RuntimeOptions()
         return await self.describe_aidbcluster_performance_with_options_async(request, runtime)
+
+    def describe_aidbcluster_resource_usage_with_options(
+        self,
+        request: main_models.DescribeAIDBClusterResourceUsageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAIDBClusterResourceUsageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAIDBClusterResourceUsage',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAIDBClusterResourceUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_aidbcluster_resource_usage_with_options_async(
+        self,
+        request: main_models.DescribeAIDBClusterResourceUsageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAIDBClusterResourceUsageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAIDBClusterResourceUsage',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAIDBClusterResourceUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_aidbcluster_resource_usage(
+        self,
+        request: main_models.DescribeAIDBClusterResourceUsageRequest,
+    ) -> main_models.DescribeAIDBClusterResourceUsageResponse:
+        runtime = RuntimeOptions()
+        return self.describe_aidbcluster_resource_usage_with_options(request, runtime)
+
+    async def describe_aidbcluster_resource_usage_async(
+        self,
+        request: main_models.DescribeAIDBClusterResourceUsageRequest,
+    ) -> main_models.DescribeAIDBClusterResourceUsageResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_aidbcluster_resource_usage_with_options_async(request, runtime)
 
     def describe_aidbcluster_task_attribute_with_options(
         self,
@@ -15512,6 +16668,116 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeActiveOperationMaintainConfResponse:
         runtime = RuntimeOptions()
         return await self.describe_active_operation_maintain_conf_with_options_async(request, runtime)
+
+    def describe_active_operation_task_with_options(
+        self,
+        request: main_models.DescribeActiveOperationTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeActiveOperationTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.is_history):
+            query['IsHistory'] = request.is_history
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.product_id):
+            query['ProductId'] = request.product_id
+        if not DaraCore.is_null(request.region):
+            query['Region'] = request.region
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeActiveOperationTask',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeActiveOperationTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_active_operation_task_with_options_async(
+        self,
+        request: main_models.DescribeActiveOperationTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeActiveOperationTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.is_history):
+            query['IsHistory'] = request.is_history
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.product_id):
+            query['ProductId'] = request.product_id
+        if not DaraCore.is_null(request.region):
+            query['Region'] = request.region
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeActiveOperationTask',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeActiveOperationTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_active_operation_task(
+        self,
+        request: main_models.DescribeActiveOperationTaskRequest,
+    ) -> main_models.DescribeActiveOperationTaskResponse:
+        runtime = RuntimeOptions()
+        return self.describe_active_operation_task_with_options(request, runtime)
+
+    async def describe_active_operation_task_async(
+        self,
+        request: main_models.DescribeActiveOperationTaskRequest,
+    ) -> main_models.DescribeActiveOperationTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_active_operation_task_with_options_async(request, runtime)
 
     def describe_active_operation_tasks_with_options(
         self,
@@ -16785,6 +18051,440 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_application_attribute_with_options_async(request, runtime)
 
+    def describe_application_available_models_with_options(
+        self,
+        request: main_models.DescribeApplicationAvailableModelsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeApplicationAvailableModelsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_type):
+            query['ApplicationType'] = request.application_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeApplicationAvailableModels',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeApplicationAvailableModelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_application_available_models_with_options_async(
+        self,
+        request: main_models.DescribeApplicationAvailableModelsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeApplicationAvailableModelsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_type):
+            query['ApplicationType'] = request.application_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeApplicationAvailableModels',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeApplicationAvailableModelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_application_available_models(
+        self,
+        request: main_models.DescribeApplicationAvailableModelsRequest,
+    ) -> main_models.DescribeApplicationAvailableModelsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_application_available_models_with_options(request, runtime)
+
+    async def describe_application_available_models_async(
+        self,
+        request: main_models.DescribeApplicationAvailableModelsRequest,
+    ) -> main_models.DescribeApplicationAvailableModelsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_application_available_models_with_options_async(request, runtime)
+
+    def describe_application_available_version_with_options(
+        self,
+        tmp_req: main_models.DescribeApplicationAvailableVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeApplicationAvailableVersionResponse:
+        tmp_req.validate()
+        request = main_models.DescribeApplicationAvailableVersionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.components):
+            request.components_shrink = Utils.array_to_string_with_specified_style(tmp_req.components, 'Components', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_type):
+            query['ApplicationType'] = request.application_type
+        if not DaraCore.is_null(request.components_shrink):
+            query['Components'] = request.components_shrink
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeApplicationAvailableVersion',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeApplicationAvailableVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_application_available_version_with_options_async(
+        self,
+        tmp_req: main_models.DescribeApplicationAvailableVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeApplicationAvailableVersionResponse:
+        tmp_req.validate()
+        request = main_models.DescribeApplicationAvailableVersionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.components):
+            request.components_shrink = Utils.array_to_string_with_specified_style(tmp_req.components, 'Components', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_type):
+            query['ApplicationType'] = request.application_type
+        if not DaraCore.is_null(request.components_shrink):
+            query['Components'] = request.components_shrink
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeApplicationAvailableVersion',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeApplicationAvailableVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_application_available_version(
+        self,
+        request: main_models.DescribeApplicationAvailableVersionRequest,
+    ) -> main_models.DescribeApplicationAvailableVersionResponse:
+        runtime = RuntimeOptions()
+        return self.describe_application_available_version_with_options(request, runtime)
+
+    async def describe_application_available_version_async(
+        self,
+        request: main_models.DescribeApplicationAvailableVersionRequest,
+    ) -> main_models.DescribeApplicationAvailableVersionResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_application_available_version_with_options_async(request, runtime)
+
+    def describe_application_backup_policy_with_options(
+        self,
+        request: main_models.DescribeApplicationBackupPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeApplicationBackupPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_type):
+            query['ApplicationType'] = request.application_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeApplicationBackupPolicy',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeApplicationBackupPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_application_backup_policy_with_options_async(
+        self,
+        request: main_models.DescribeApplicationBackupPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeApplicationBackupPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_type):
+            query['ApplicationType'] = request.application_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeApplicationBackupPolicy',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeApplicationBackupPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_application_backup_policy(
+        self,
+        request: main_models.DescribeApplicationBackupPolicyRequest,
+    ) -> main_models.DescribeApplicationBackupPolicyResponse:
+        runtime = RuntimeOptions()
+        return self.describe_application_backup_policy_with_options(request, runtime)
+
+    async def describe_application_backup_policy_async(
+        self,
+        request: main_models.DescribeApplicationBackupPolicyRequest,
+    ) -> main_models.DescribeApplicationBackupPolicyResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_application_backup_policy_with_options_async(request, runtime)
+
+    def describe_application_backups_with_options(
+        self,
+        request: main_models.DescribeApplicationBackupsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeApplicationBackupsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_type):
+            query['ApplicationType'] = request.application_type
+        if not DaraCore.is_null(request.backup_status):
+            query['BackupStatus'] = request.backup_status
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeApplicationBackups',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeApplicationBackupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_application_backups_with_options_async(
+        self,
+        request: main_models.DescribeApplicationBackupsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeApplicationBackupsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_type):
+            query['ApplicationType'] = request.application_type
+        if not DaraCore.is_null(request.backup_status):
+            query['BackupStatus'] = request.backup_status
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeApplicationBackups',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeApplicationBackupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_application_backups(
+        self,
+        request: main_models.DescribeApplicationBackupsRequest,
+    ) -> main_models.DescribeApplicationBackupsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_application_backups_with_options(request, runtime)
+
+    async def describe_application_backups_async(
+        self,
+        request: main_models.DescribeApplicationBackupsRequest,
+    ) -> main_models.DescribeApplicationBackupsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_application_backups_with_options_async(request, runtime)
+
+    def describe_application_component_performance_with_options(
+        self,
+        request: main_models.DescribeApplicationComponentPerformanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeApplicationComponentPerformanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.component_id):
+            query['ComponentId'] = request.component_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.interval):
+            query['Interval'] = request.interval
+        if not DaraCore.is_null(request.key):
+            query['Key'] = request.key
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeApplicationComponentPerformance',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeApplicationComponentPerformanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_application_component_performance_with_options_async(
+        self,
+        request: main_models.DescribeApplicationComponentPerformanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeApplicationComponentPerformanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.component_id):
+            query['ComponentId'] = request.component_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.interval):
+            query['Interval'] = request.interval
+        if not DaraCore.is_null(request.key):
+            query['Key'] = request.key
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeApplicationComponentPerformance',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeApplicationComponentPerformanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_application_component_performance(
+        self,
+        request: main_models.DescribeApplicationComponentPerformanceRequest,
+    ) -> main_models.DescribeApplicationComponentPerformanceResponse:
+        runtime = RuntimeOptions()
+        return self.describe_application_component_performance_with_options(request, runtime)
+
+    async def describe_application_component_performance_async(
+        self,
+        request: main_models.DescribeApplicationComponentPerformanceRequest,
+    ) -> main_models.DescribeApplicationComponentPerformanceResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_application_component_performance_with_options_async(request, runtime)
+
     def describe_application_logs_with_options(
         self,
         request: main_models.DescribeApplicationLogsRequest,
@@ -17434,6 +19134,124 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeApplicationSessionIdsResponse:
         runtime = RuntimeOptions()
         return await self.describe_application_session_ids_with_options_async(request, runtime)
+
+    def describe_application_session_logs_with_options(
+        self,
+        request: main_models.DescribeApplicationSessionLogsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeApplicationSessionLogsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent):
+            query['Agent'] = request.agent
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.role):
+            query['Role'] = request.role
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeApplicationSessionLogs',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeApplicationSessionLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_application_session_logs_with_options_async(
+        self,
+        request: main_models.DescribeApplicationSessionLogsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeApplicationSessionLogsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent):
+            query['Agent'] = request.agent
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.role):
+            query['Role'] = request.role
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeApplicationSessionLogs',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeApplicationSessionLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_application_session_logs(
+        self,
+        request: main_models.DescribeApplicationSessionLogsRequest,
+    ) -> main_models.DescribeApplicationSessionLogsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_application_session_logs_with_options(request, runtime)
+
+    async def describe_application_session_logs_async(
+        self,
+        request: main_models.DescribeApplicationSessionLogsRequest,
+    ) -> main_models.DescribeApplicationSessionLogsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_application_session_logs_with_options_async(request, runtime)
 
     def describe_application_usage_with_options(
         self,
@@ -18710,6 +20528,88 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeBudgetPoliciesResponse:
         runtime = RuntimeOptions()
         return await self.describe_budget_policies_with_options_async(request, runtime)
+
+    def describe_budget_usage_with_options(
+        self,
+        request: main_models.DescribeBudgetUsageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeBudgetUsageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.budget_dimension_ref_id):
+            query['BudgetDimensionRefId'] = request.budget_dimension_ref_id
+        if not DaraCore.is_null(request.budget_dimension_type):
+            query['BudgetDimensionType'] = request.budget_dimension_type
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeBudgetUsage',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeBudgetUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_budget_usage_with_options_async(
+        self,
+        request: main_models.DescribeBudgetUsageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeBudgetUsageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.budget_dimension_ref_id):
+            query['BudgetDimensionRefId'] = request.budget_dimension_ref_id
+        if not DaraCore.is_null(request.budget_dimension_type):
+            query['BudgetDimensionType'] = request.budget_dimension_type
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeBudgetUsage',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeBudgetUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_budget_usage(
+        self,
+        request: main_models.DescribeBudgetUsageRequest,
+    ) -> main_models.DescribeBudgetUsageResponse:
+        runtime = RuntimeOptions()
+        return self.describe_budget_usage_with_options(request, runtime)
+
+    async def describe_budget_usage_async(
+        self,
+        request: main_models.DescribeBudgetUsageRequest,
+    ) -> main_models.DescribeBudgetUsageResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_budget_usage_with_options_async(request, runtime)
 
     def describe_character_set_name_with_options(
         self,
@@ -20481,6 +22381,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_dbcluster_migration_with_options_async(request, runtime)
 
+    def describe_dbcluster_model_enhancement_with_options(
+        self,
+        request: main_models.DescribeDBClusterModelEnhancementRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDBClusterModelEnhancementResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDBClusterModelEnhancement',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDBClusterModelEnhancementResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbcluster_model_enhancement_with_options_async(
+        self,
+        request: main_models.DescribeDBClusterModelEnhancementRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDBClusterModelEnhancementResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDBClusterModelEnhancement',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDBClusterModelEnhancementResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbcluster_model_enhancement(
+        self,
+        request: main_models.DescribeDBClusterModelEnhancementRequest,
+    ) -> main_models.DescribeDBClusterModelEnhancementResponse:
+        runtime = RuntimeOptions()
+        return self.describe_dbcluster_model_enhancement_with_options(request, runtime)
+
+    async def describe_dbcluster_model_enhancement_async(
+        self,
+        request: main_models.DescribeDBClusterModelEnhancementRequest,
+    ) -> main_models.DescribeDBClusterModelEnhancementResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_dbcluster_model_enhancement_with_options_async(request, runtime)
+
     def describe_dbcluster_monitor_with_options(
         self,
         request: main_models.DescribeDBClusterMonitorRequest,
@@ -22149,6 +24119,108 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_dbinstance_performance_with_options_async(request, runtime)
 
+    def describe_dbinstances_with_options(
+        self,
+        request: main_models.DescribeDBInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDBInstancesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.instance_network_type):
+            query['InstanceNetworkType'] = request.instance_network_type
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDBInstances',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDBInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbinstances_with_options_async(
+        self,
+        request: main_models.DescribeDBInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDBInstancesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.instance_network_type):
+            query['InstanceNetworkType'] = request.instance_network_type
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDBInstances',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDBInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbinstances(
+        self,
+        request: main_models.DescribeDBInstancesRequest,
+    ) -> main_models.DescribeDBInstancesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_dbinstances_with_options(request, runtime)
+
+    async def describe_dbinstances_async(
+        self,
+        request: main_models.DescribeDBInstancesRequest,
+    ) -> main_models.DescribeDBInstancesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_dbinstances_with_options_async(request, runtime)
+
     def describe_dblinks_with_options(
         self,
         request: main_models.DescribeDBLinksRequest,
@@ -22827,6 +24899,252 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_das_config_with_options_async(request, runtime)
 
+    def describe_data_process_job_attribute_with_options(
+        self,
+        request: main_models.DescribeDataProcessJobAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDataProcessJobAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDataProcessJobAttribute',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDataProcessJobAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_data_process_job_attribute_with_options_async(
+        self,
+        request: main_models.DescribeDataProcessJobAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDataProcessJobAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDataProcessJobAttribute',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDataProcessJobAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_data_process_job_attribute(
+        self,
+        request: main_models.DescribeDataProcessJobAttributeRequest,
+    ) -> main_models.DescribeDataProcessJobAttributeResponse:
+        runtime = RuntimeOptions()
+        return self.describe_data_process_job_attribute_with_options(request, runtime)
+
+    async def describe_data_process_job_attribute_async(
+        self,
+        request: main_models.DescribeDataProcessJobAttributeRequest,
+    ) -> main_models.DescribeDataProcessJobAttributeResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_data_process_job_attribute_with_options_async(request, runtime)
+
+    def describe_data_process_job_templates_with_options(
+        self,
+        request: main_models.DescribeDataProcessJobTemplatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDataProcessJobTemplatesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not DaraCore.is_null(request.template_type):
+            query['TemplateType'] = request.template_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDataProcessJobTemplates',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDataProcessJobTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_data_process_job_templates_with_options_async(
+        self,
+        request: main_models.DescribeDataProcessJobTemplatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDataProcessJobTemplatesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not DaraCore.is_null(request.template_type):
+            query['TemplateType'] = request.template_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDataProcessJobTemplates',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDataProcessJobTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_data_process_job_templates(
+        self,
+        request: main_models.DescribeDataProcessJobTemplatesRequest,
+    ) -> main_models.DescribeDataProcessJobTemplatesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_data_process_job_templates_with_options(request, runtime)
+
+    async def describe_data_process_job_templates_async(
+        self,
+        request: main_models.DescribeDataProcessJobTemplatesRequest,
+    ) -> main_models.DescribeDataProcessJobTemplatesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_data_process_job_templates_with_options_async(request, runtime)
+
+    def describe_data_process_jobs_with_options(
+        self,
+        request: main_models.DescribeDataProcessJobsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDataProcessJobsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.source_id):
+            query['SourceId'] = request.source_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDataProcessJobs',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDataProcessJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_data_process_jobs_with_options_async(
+        self,
+        request: main_models.DescribeDataProcessJobsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDataProcessJobsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.source_id):
+            query['SourceId'] = request.source_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDataProcessJobs',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDataProcessJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_data_process_jobs(
+        self,
+        request: main_models.DescribeDataProcessJobsRequest,
+    ) -> main_models.DescribeDataProcessJobsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_data_process_jobs_with_options(request, runtime)
+
+    async def describe_data_process_jobs_async(
+        self,
+        request: main_models.DescribeDataProcessJobsRequest,
+    ) -> main_models.DescribeDataProcessJobsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_data_process_jobs_with_options_async(request, runtime)
+
     def describe_databases_with_options(
         self,
         request: main_models.DescribeDatabasesRequest,
@@ -23239,6 +25557,66 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_detached_backups_with_options_async(request, runtime)
 
+    def describe_edge_cloud_region_with_options(
+        self,
+        request: main_models.DescribeEdgeCloudRegionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeEdgeCloudRegionResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'DescribeEdgeCloudRegion',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeEdgeCloudRegionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_edge_cloud_region_with_options_async(
+        self,
+        request: main_models.DescribeEdgeCloudRegionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeEdgeCloudRegionResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'DescribeEdgeCloudRegion',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeEdgeCloudRegionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_edge_cloud_region(
+        self,
+        request: main_models.DescribeEdgeCloudRegionRequest,
+    ) -> main_models.DescribeEdgeCloudRegionResponse:
+        runtime = RuntimeOptions()
+        return self.describe_edge_cloud_region_with_options(request, runtime)
+
+    async def describe_edge_cloud_region_async(
+        self,
+        request: main_models.DescribeEdgeCloudRegionRequest,
+    ) -> main_models.DescribeEdgeCloudRegionResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_edge_cloud_region_with_options_async(request, runtime)
+
     def describe_encryption_dbrole_privilege_with_options(
         self,
         request: main_models.DescribeEncryptionDBRolePrivilegeRequest,
@@ -23492,6 +25870,88 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeExtensionsResponse:
         runtime = RuntimeOptions()
         return await self.describe_extensions_with_options_async(request, runtime)
+
+    def describe_file_systems_with_options(
+        self,
+        request: main_models.DescribeFileSystemsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeFileSystemsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeFileSystems',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeFileSystemsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_file_systems_with_options_async(
+        self,
+        request: main_models.DescribeFileSystemsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeFileSystemsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeFileSystems',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeFileSystemsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_file_systems(
+        self,
+        request: main_models.DescribeFileSystemsRequest,
+    ) -> main_models.DescribeFileSystemsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_file_systems_with_options(request, runtime)
+
+    async def describe_file_systems_async(
+        self,
+        request: main_models.DescribeFileSystemsRequest,
+    ) -> main_models.DescribeFileSystemsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_file_systems_with_options_async(request, runtime)
 
     def describe_firewall_rules_with_options(
         self,
@@ -24519,6 +26979,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_history_events_with_options_async(request, runtime)
 
+    def describe_history_events_stat_with_options(
+        self,
+        request: main_models.DescribeHistoryEventsStatRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeHistoryEventsStatResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.archive_status):
+            query['ArchiveStatus'] = request.archive_status
+        if not DaraCore.is_null(request.from_start_time):
+            query['FromStartTime'] = request.from_start_time
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.to_start_time):
+            query['ToStartTime'] = request.to_start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeHistoryEventsStat',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeHistoryEventsStatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_history_events_stat_with_options_async(
+        self,
+        request: main_models.DescribeHistoryEventsStatRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeHistoryEventsStatResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.archive_status):
+            query['ArchiveStatus'] = request.archive_status
+        if not DaraCore.is_null(request.from_start_time):
+            query['FromStartTime'] = request.from_start_time
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.to_start_time):
+            query['ToStartTime'] = request.to_start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeHistoryEventsStat',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeHistoryEventsStatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_history_events_stat(
+        self,
+        request: main_models.DescribeHistoryEventsStatRequest,
+    ) -> main_models.DescribeHistoryEventsStatResponse:
+        runtime = RuntimeOptions()
+        return self.describe_history_events_stat_with_options(request, runtime)
+
+    async def describe_history_events_stat_async(
+        self,
+        request: main_models.DescribeHistoryEventsStatRequest,
+    ) -> main_models.DescribeHistoryEventsStatResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_history_events_stat_with_options_async(request, runtime)
+
     def describe_history_tasks_with_options(
         self,
         request: main_models.DescribeHistoryTasksRequest,
@@ -24775,6 +27317,326 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_history_tasks_stat_with_options_async(request, runtime)
 
+    def describe_inspection_report_list_with_options(
+        self,
+        request: main_models.DescribeInspectionReportListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInspectionReportListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInspectionReportList',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInspectionReportListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_inspection_report_list_with_options_async(
+        self,
+        request: main_models.DescribeInspectionReportListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInspectionReportListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInspectionReportList',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInspectionReportListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_inspection_report_list(
+        self,
+        request: main_models.DescribeInspectionReportListRequest,
+    ) -> main_models.DescribeInspectionReportListResponse:
+        runtime = RuntimeOptions()
+        return self.describe_inspection_report_list_with_options(request, runtime)
+
+    async def describe_inspection_report_list_async(
+        self,
+        request: main_models.DescribeInspectionReportListRequest,
+    ) -> main_models.DescribeInspectionReportListResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_inspection_report_list_with_options_async(request, runtime)
+
+    def describe_inspection_task_attribute_with_options(
+        self,
+        request: main_models.DescribeInspectionTaskAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInspectionTaskAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInspectionTaskAttribute',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInspectionTaskAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_inspection_task_attribute_with_options_async(
+        self,
+        request: main_models.DescribeInspectionTaskAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInspectionTaskAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInspectionTaskAttribute',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInspectionTaskAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_inspection_task_attribute(
+        self,
+        request: main_models.DescribeInspectionTaskAttributeRequest,
+    ) -> main_models.DescribeInspectionTaskAttributeResponse:
+        runtime = RuntimeOptions()
+        return self.describe_inspection_task_attribute_with_options(request, runtime)
+
+    async def describe_inspection_task_attribute_async(
+        self,
+        request: main_models.DescribeInspectionTaskAttributeRequest,
+    ) -> main_models.DescribeInspectionTaskAttributeResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_inspection_task_attribute_with_options_async(request, runtime)
+
+    def describe_inspection_task_list_with_options(
+        self,
+        request: main_models.DescribeInspectionTaskListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInspectionTaskListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.space_id):
+            query['SpaceId'] = request.space_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInspectionTaskList',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInspectionTaskListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_inspection_task_list_with_options_async(
+        self,
+        request: main_models.DescribeInspectionTaskListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInspectionTaskListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.space_id):
+            query['SpaceId'] = request.space_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInspectionTaskList',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInspectionTaskListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_inspection_task_list(
+        self,
+        request: main_models.DescribeInspectionTaskListRequest,
+    ) -> main_models.DescribeInspectionTaskListResponse:
+        runtime = RuntimeOptions()
+        return self.describe_inspection_task_list_with_options(request, runtime)
+
+    async def describe_inspection_task_list_async(
+        self,
+        request: main_models.DescribeInspectionTaskListRequest,
+    ) -> main_models.DescribeInspectionTaskListResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_inspection_task_list_with_options_async(request, runtime)
+
+    def describe_instance_report_attribute_with_options(
+        self,
+        request: main_models.DescribeInstanceReportAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInstanceReportAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.report_id):
+            query['ReportId'] = request.report_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInstanceReportAttribute',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInstanceReportAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_instance_report_attribute_with_options_async(
+        self,
+        request: main_models.DescribeInstanceReportAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInstanceReportAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.report_id):
+            query['ReportId'] = request.report_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInstanceReportAttribute',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInstanceReportAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_instance_report_attribute(
+        self,
+        request: main_models.DescribeInstanceReportAttributeRequest,
+    ) -> main_models.DescribeInstanceReportAttributeResponse:
+        runtime = RuntimeOptions()
+        return self.describe_instance_report_attribute_with_options(request, runtime)
+
+    async def describe_instance_report_attribute_async(
+        self,
+        request: main_models.DescribeInstanceReportAttributeRequest,
+    ) -> main_models.DescribeInstanceReportAttributeResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_instance_report_attribute_with_options_async(request, runtime)
+
     def describe_kbsync_link_attribute_with_options(
         self,
         request: main_models.DescribeKBSyncLinkAttributeRequest,
@@ -24938,6 +27800,166 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeKBSyncLinksResponse:
         runtime = RuntimeOptions()
         return await self.describe_kbsync_links_with_options_async(request, runtime)
+
+    def describe_kvcache_instance_attribute_with_options(
+        self,
+        request: main_models.DescribeKVCacheInstanceAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeKVCacheInstanceAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.kvcache_instance_id):
+            query['KVCacheInstanceId'] = request.kvcache_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeKVCacheInstanceAttribute',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeKVCacheInstanceAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_kvcache_instance_attribute_with_options_async(
+        self,
+        request: main_models.DescribeKVCacheInstanceAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeKVCacheInstanceAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.kvcache_instance_id):
+            query['KVCacheInstanceId'] = request.kvcache_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeKVCacheInstanceAttribute',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeKVCacheInstanceAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_kvcache_instance_attribute(
+        self,
+        request: main_models.DescribeKVCacheInstanceAttributeRequest,
+    ) -> main_models.DescribeKVCacheInstanceAttributeResponse:
+        runtime = RuntimeOptions()
+        return self.describe_kvcache_instance_attribute_with_options(request, runtime)
+
+    async def describe_kvcache_instance_attribute_async(
+        self,
+        request: main_models.DescribeKVCacheInstanceAttributeRequest,
+    ) -> main_models.DescribeKVCacheInstanceAttributeResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_kvcache_instance_attribute_with_options_async(request, runtime)
+
+    def describe_kvcache_instances_with_options(
+        self,
+        request: main_models.DescribeKVCacheInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeKVCacheInstancesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.kvcache_instance_description):
+            query['KVCacheInstanceDescription'] = request.kvcache_instance_description
+        if not DaraCore.is_null(request.kvcache_instance_ids):
+            query['KVCacheInstanceIds'] = request.kvcache_instance_ids
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.relative_dbcluster_id):
+            query['RelativeDBClusterId'] = request.relative_dbcluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeKVCacheInstances',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeKVCacheInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_kvcache_instances_with_options_async(
+        self,
+        request: main_models.DescribeKVCacheInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeKVCacheInstancesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.kvcache_instance_description):
+            query['KVCacheInstanceDescription'] = request.kvcache_instance_description
+        if not DaraCore.is_null(request.kvcache_instance_ids):
+            query['KVCacheInstanceIds'] = request.kvcache_instance_ids
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.relative_dbcluster_id):
+            query['RelativeDBClusterId'] = request.relative_dbcluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeKVCacheInstances',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeKVCacheInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_kvcache_instances(
+        self,
+        request: main_models.DescribeKVCacheInstancesRequest,
+    ) -> main_models.DescribeKVCacheInstancesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_kvcache_instances_with_options(request, runtime)
+
+    async def describe_kvcache_instances_async(
+        self,
+        request: main_models.DescribeKVCacheInstancesRequest,
+    ) -> main_models.DescribeKVCacheInstancesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_kvcache_instances_with_options_async(request, runtime)
 
     def describe_knowledge_base_answer_with_options(
         self,
@@ -25438,6 +28460,334 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeKnowledgeSpaceAttributeResponse:
         runtime = RuntimeOptions()
         return await self.describe_knowledge_space_attribute_with_options_async(request, runtime)
+
+    def describe_lakebase_mount_parameter_group_with_options(
+        self,
+        request: main_models.DescribeLakebaseMountParameterGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeLakebaseMountParameterGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.parameter_group_id):
+            query['ParameterGroupId'] = request.parameter_group_id
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeLakebaseMountParameterGroup',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeLakebaseMountParameterGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_lakebase_mount_parameter_group_with_options_async(
+        self,
+        request: main_models.DescribeLakebaseMountParameterGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeLakebaseMountParameterGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.parameter_group_id):
+            query['ParameterGroupId'] = request.parameter_group_id
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeLakebaseMountParameterGroup',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeLakebaseMountParameterGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_lakebase_mount_parameter_group(
+        self,
+        request: main_models.DescribeLakebaseMountParameterGroupRequest,
+    ) -> main_models.DescribeLakebaseMountParameterGroupResponse:
+        runtime = RuntimeOptions()
+        return self.describe_lakebase_mount_parameter_group_with_options(request, runtime)
+
+    async def describe_lakebase_mount_parameter_group_async(
+        self,
+        request: main_models.DescribeLakebaseMountParameterGroupRequest,
+    ) -> main_models.DescribeLakebaseMountParameterGroupResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_lakebase_mount_parameter_group_with_options_async(request, runtime)
+
+    def describe_lakebase_mount_parameter_group_change_logs_with_options(
+        self,
+        request: main_models.DescribeLakebaseMountParameterGroupChangeLogsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeLakebaseMountParameterGroupChangeLogsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.parameter_group_id):
+            query['ParameterGroupId'] = request.parameter_group_id
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeLakebaseMountParameterGroupChangeLogs',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeLakebaseMountParameterGroupChangeLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_lakebase_mount_parameter_group_change_logs_with_options_async(
+        self,
+        request: main_models.DescribeLakebaseMountParameterGroupChangeLogsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeLakebaseMountParameterGroupChangeLogsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.parameter_group_id):
+            query['ParameterGroupId'] = request.parameter_group_id
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeLakebaseMountParameterGroupChangeLogs',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeLakebaseMountParameterGroupChangeLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_lakebase_mount_parameter_group_change_logs(
+        self,
+        request: main_models.DescribeLakebaseMountParameterGroupChangeLogsRequest,
+    ) -> main_models.DescribeLakebaseMountParameterGroupChangeLogsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_lakebase_mount_parameter_group_change_logs_with_options(request, runtime)
+
+    async def describe_lakebase_mount_parameter_group_change_logs_async(
+        self,
+        request: main_models.DescribeLakebaseMountParameterGroupChangeLogsRequest,
+    ) -> main_models.DescribeLakebaseMountParameterGroupChangeLogsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_lakebase_mount_parameter_group_change_logs_with_options_async(request, runtime)
+
+    def describe_lakebase_mount_parameter_groups_with_options(
+        self,
+        request: main_models.DescribeLakebaseMountParameterGroupsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeLakebaseMountParameterGroupsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.param_group_category):
+            query['ParamGroupCategory'] = request.param_group_category
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeLakebaseMountParameterGroups',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeLakebaseMountParameterGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_lakebase_mount_parameter_groups_with_options_async(
+        self,
+        request: main_models.DescribeLakebaseMountParameterGroupsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeLakebaseMountParameterGroupsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.param_group_category):
+            query['ParamGroupCategory'] = request.param_group_category
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeLakebaseMountParameterGroups',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeLakebaseMountParameterGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_lakebase_mount_parameter_groups(
+        self,
+        request: main_models.DescribeLakebaseMountParameterGroupsRequest,
+    ) -> main_models.DescribeLakebaseMountParameterGroupsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_lakebase_mount_parameter_groups_with_options(request, runtime)
+
+    async def describe_lakebase_mount_parameter_groups_async(
+        self,
+        request: main_models.DescribeLakebaseMountParameterGroupsRequest,
+    ) -> main_models.DescribeLakebaseMountParameterGroupsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_lakebase_mount_parameter_groups_with_options_async(request, runtime)
+
+    def describe_lakebase_mount_parameter_template_list_with_options(
+        self,
+        request: main_models.DescribeLakebaseMountParameterTemplateListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeLakebaseMountParameterTemplateListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.engine):
+            query['Engine'] = request.engine
+        if not DaraCore.is_null(request.param_group_category):
+            query['ParamGroupCategory'] = request.param_group_category
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeLakebaseMountParameterTemplateList',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeLakebaseMountParameterTemplateListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_lakebase_mount_parameter_template_list_with_options_async(
+        self,
+        request: main_models.DescribeLakebaseMountParameterTemplateListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeLakebaseMountParameterTemplateListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.engine):
+            query['Engine'] = request.engine
+        if not DaraCore.is_null(request.param_group_category):
+            query['ParamGroupCategory'] = request.param_group_category
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeLakebaseMountParameterTemplateList',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeLakebaseMountParameterTemplateListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_lakebase_mount_parameter_template_list(
+        self,
+        request: main_models.DescribeLakebaseMountParameterTemplateListRequest,
+    ) -> main_models.DescribeLakebaseMountParameterTemplateListResponse:
+        runtime = RuntimeOptions()
+        return self.describe_lakebase_mount_parameter_template_list_with_options(request, runtime)
+
+    async def describe_lakebase_mount_parameter_template_list_async(
+        self,
+        request: main_models.DescribeLakebaseMountParameterTemplateListRequest,
+    ) -> main_models.DescribeLakebaseMountParameterTemplateListResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_lakebase_mount_parameter_template_list_with_options_async(request, runtime)
 
     def describe_lakebase_s3account_with_options(
         self,
@@ -27767,6 +31117,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_polar_claw_plugins_with_options_async(request, runtime)
 
+    def describe_polar_claw_skill_assessment_with_options(
+        self,
+        request: main_models.DescribePolarClawSkillAssessmentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePolarClawSkillAssessmentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.skill_name):
+            query['SkillName'] = request.skill_name
+        if not DaraCore.is_null(request.skill_version):
+            query['SkillVersion'] = request.skill_version
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePolarClawSkillAssessment',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePolarClawSkillAssessmentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_polar_claw_skill_assessment_with_options_async(
+        self,
+        request: main_models.DescribePolarClawSkillAssessmentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePolarClawSkillAssessmentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.skill_name):
+            query['SkillName'] = request.skill_name
+        if not DaraCore.is_null(request.skill_version):
+            query['SkillVersion'] = request.skill_version
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePolarClawSkillAssessment',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePolarClawSkillAssessmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_polar_claw_skill_assessment(
+        self,
+        request: main_models.DescribePolarClawSkillAssessmentRequest,
+    ) -> main_models.DescribePolarClawSkillAssessmentResponse:
+        runtime = RuntimeOptions()
+        return self.describe_polar_claw_skill_assessment_with_options(request, runtime)
+
+    async def describe_polar_claw_skill_assessment_async(
+        self,
+        request: main_models.DescribePolarClawSkillAssessmentRequest,
+    ) -> main_models.DescribePolarClawSkillAssessmentResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_polar_claw_skill_assessment_with_options_async(request, runtime)
+
     def describe_polar_claw_skill_detail_with_options(
         self,
         request: main_models.DescribePolarClawSkillDetailRequest,
@@ -27840,6 +31276,366 @@ class Client(OpenApiClient):
     ) -> main_models.DescribePolarClawSkillDetailResponse:
         runtime = RuntimeOptions()
         return await self.describe_polar_claw_skill_detail_with_options_async(request, runtime)
+
+    def describe_polar_claw_skill_template_with_options(
+        self,
+        request: main_models.DescribePolarClawSkillTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePolarClawSkillTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_type):
+            query['ApplicationType'] = request.application_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.skill_template_id):
+            query['SkillTemplateId'] = request.skill_template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePolarClawSkillTemplate',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePolarClawSkillTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_polar_claw_skill_template_with_options_async(
+        self,
+        request: main_models.DescribePolarClawSkillTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePolarClawSkillTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_type):
+            query['ApplicationType'] = request.application_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.skill_template_id):
+            query['SkillTemplateId'] = request.skill_template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePolarClawSkillTemplate',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePolarClawSkillTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_polar_claw_skill_template(
+        self,
+        request: main_models.DescribePolarClawSkillTemplateRequest,
+    ) -> main_models.DescribePolarClawSkillTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.describe_polar_claw_skill_template_with_options(request, runtime)
+
+    async def describe_polar_claw_skill_template_async(
+        self,
+        request: main_models.DescribePolarClawSkillTemplateRequest,
+    ) -> main_models.DescribePolarClawSkillTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_polar_claw_skill_template_with_options_async(request, runtime)
+
+    def describe_polar_claw_skill_templates_with_options(
+        self,
+        request: main_models.DescribePolarClawSkillTemplatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePolarClawSkillTemplatesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_type):
+            query['ApplicationType'] = request.application_type
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.skill_template_id):
+            query['SkillTemplateId'] = request.skill_template_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePolarClawSkillTemplates',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePolarClawSkillTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_polar_claw_skill_templates_with_options_async(
+        self,
+        request: main_models.DescribePolarClawSkillTemplatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePolarClawSkillTemplatesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_type):
+            query['ApplicationType'] = request.application_type
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.skill_template_id):
+            query['SkillTemplateId'] = request.skill_template_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePolarClawSkillTemplates',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePolarClawSkillTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_polar_claw_skill_templates(
+        self,
+        request: main_models.DescribePolarClawSkillTemplatesRequest,
+    ) -> main_models.DescribePolarClawSkillTemplatesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_polar_claw_skill_templates_with_options(request, runtime)
+
+    async def describe_polar_claw_skill_templates_async(
+        self,
+        request: main_models.DescribePolarClawSkillTemplatesRequest,
+    ) -> main_models.DescribePolarClawSkillTemplatesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_polar_claw_skill_templates_with_options_async(request, runtime)
+
+    def describe_polar_claw_skills_with_options(
+        self,
+        request: main_models.DescribePolarClawSkillsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePolarClawSkillsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePolarClawSkills',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePolarClawSkillsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_polar_claw_skills_with_options_async(
+        self,
+        request: main_models.DescribePolarClawSkillsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePolarClawSkillsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePolarClawSkills',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePolarClawSkillsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_polar_claw_skills(
+        self,
+        request: main_models.DescribePolarClawSkillsRequest,
+    ) -> main_models.DescribePolarClawSkillsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_polar_claw_skills_with_options(request, runtime)
+
+    async def describe_polar_claw_skills_async(
+        self,
+        request: main_models.DescribePolarClawSkillsRequest,
+    ) -> main_models.DescribePolarClawSkillsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_polar_claw_skills_with_options_async(request, runtime)
+
+    def describe_polar_claw_skills_market_with_options(
+        self,
+        request: main_models.DescribePolarClawSkillsMarketRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePolarClawSkillsMarketResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.search_by_skill_name):
+            query['SearchBySkillName'] = request.search_by_skill_name
+        if not DaraCore.is_null(request.search_by_tag_name):
+            query['SearchByTagName'] = request.search_by_tag_name
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePolarClawSkillsMarket',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePolarClawSkillsMarketResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_polar_claw_skills_market_with_options_async(
+        self,
+        request: main_models.DescribePolarClawSkillsMarketRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePolarClawSkillsMarketResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.search_by_skill_name):
+            query['SearchBySkillName'] = request.search_by_skill_name
+        if not DaraCore.is_null(request.search_by_tag_name):
+            query['SearchByTagName'] = request.search_by_tag_name
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePolarClawSkillsMarket',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePolarClawSkillsMarketResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_polar_claw_skills_market(
+        self,
+        request: main_models.DescribePolarClawSkillsMarketRequest,
+    ) -> main_models.DescribePolarClawSkillsMarketResponse:
+        runtime = RuntimeOptions()
+        return self.describe_polar_claw_skills_market_with_options(request, runtime)
+
+    async def describe_polar_claw_skills_market_async(
+        self,
+        request: main_models.DescribePolarClawSkillsMarketRequest,
+    ) -> main_models.DescribePolarClawSkillsMarketResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_polar_claw_skills_market_with_options_async(request, runtime)
 
     def describe_polar_claw_task_with_options(
         self,
@@ -28254,6 +32050,100 @@ class Client(OpenApiClient):
     ) -> main_models.DescribePolarFsObjectsResponse:
         runtime = RuntimeOptions()
         return await self.describe_polar_fs_objects_with_options_async(request, runtime)
+
+    def describe_polar_fs_performance_with_options(
+        self,
+        request: main_models.DescribePolarFsPerformanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePolarFsPerformanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.interval):
+            query['Interval'] = request.interval
+        if not DaraCore.is_null(request.key):
+            query['Key'] = request.key
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePolarFsPerformance',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePolarFsPerformanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_polar_fs_performance_with_options_async(
+        self,
+        request: main_models.DescribePolarFsPerformanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePolarFsPerformanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.interval):
+            query['Interval'] = request.interval
+        if not DaraCore.is_null(request.key):
+            query['Key'] = request.key
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePolarFsPerformance',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePolarFsPerformanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_polar_fs_performance(
+        self,
+        request: main_models.DescribePolarFsPerformanceRequest,
+    ) -> main_models.DescribePolarFsPerformanceResponse:
+        runtime = RuntimeOptions()
+        return self.describe_polar_fs_performance_with_options(request, runtime)
+
+    async def describe_polar_fs_performance_async(
+        self,
+        request: main_models.DescribePolarFsPerformanceRequest,
+    ) -> main_models.DescribePolarFsPerformanceResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_polar_fs_performance_with_options_async(request, runtime)
 
     def describe_polar_fs_quota_with_options(
         self,
@@ -28869,6 +32759,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
 
+    def describe_replication_slots_with_options(
+        self,
+        request: main_models.DescribeReplicationSlotsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeReplicationSlotsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.sub_group_name):
+            query['SubGroupName'] = request.sub_group_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeReplicationSlots',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeReplicationSlotsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_replication_slots_with_options_async(
+        self,
+        request: main_models.DescribeReplicationSlotsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeReplicationSlotsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.sub_group_name):
+            query['SubGroupName'] = request.sub_group_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeReplicationSlots',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeReplicationSlotsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_replication_slots(
+        self,
+        request: main_models.DescribeReplicationSlotsRequest,
+    ) -> main_models.DescribeReplicationSlotsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_replication_slots_with_options(request, runtime)
+
+    async def describe_replication_slots_async(
+        self,
+        request: main_models.DescribeReplicationSlotsRequest,
+    ) -> main_models.DescribeReplicationSlotsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_replication_slots_with_options_async(request, runtime)
+
     def describe_resource_packages_with_options(
         self,
         runtime: RuntimeOptions,
@@ -28918,6 +32882,186 @@ class Client(OpenApiClient):
     async def describe_resource_packages_async(self) -> main_models.DescribeResourcePackagesResponse:
         runtime = RuntimeOptions()
         return await self.describe_resource_packages_with_options_async(runtime)
+
+    def describe_sqlexplorer_policy_with_options(
+        self,
+        request: main_models.DescribeSQLExplorerPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSQLExplorerPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSQLExplorerPolicy',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSQLExplorerPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sqlexplorer_policy_with_options_async(
+        self,
+        request: main_models.DescribeSQLExplorerPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSQLExplorerPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSQLExplorerPolicy',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSQLExplorerPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sqlexplorer_policy(
+        self,
+        request: main_models.DescribeSQLExplorerPolicyRequest,
+    ) -> main_models.DescribeSQLExplorerPolicyResponse:
+        runtime = RuntimeOptions()
+        return self.describe_sqlexplorer_policy_with_options(request, runtime)
+
+    async def describe_sqlexplorer_policy_async(
+        self,
+        request: main_models.DescribeSQLExplorerPolicyRequest,
+    ) -> main_models.DescribeSQLExplorerPolicyResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_sqlexplorer_policy_with_options_async(request, runtime)
+
+    def describe_sqlexplorer_retention_with_options(
+        self,
+        request: main_models.DescribeSQLExplorerRetentionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSQLExplorerRetentionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSQLExplorerRetention',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSQLExplorerRetentionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sqlexplorer_retention_with_options_async(
+        self,
+        request: main_models.DescribeSQLExplorerRetentionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSQLExplorerRetentionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSQLExplorerRetention',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSQLExplorerRetentionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sqlexplorer_retention(
+        self,
+        request: main_models.DescribeSQLExplorerRetentionRequest,
+    ) -> main_models.DescribeSQLExplorerRetentionResponse:
+        runtime = RuntimeOptions()
+        return self.describe_sqlexplorer_retention_with_options(request, runtime)
+
+    async def describe_sqlexplorer_retention_async(
+        self,
+        request: main_models.DescribeSQLExplorerRetentionRequest,
+    ) -> main_models.DescribeSQLExplorerRetentionResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_sqlexplorer_retention_with_options_async(request, runtime)
 
     def describe_sqlrate_limiting_rules_with_options(
         self,
@@ -29142,6 +33286,154 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeScheduleTasksResponse:
         runtime = RuntimeOptions()
         return await self.describe_schedule_tasks_with_options_async(request, runtime)
+
+    def describe_search_modify_parameter_log_with_options(
+        self,
+        request: main_models.DescribeSearchModifyParameterLogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSearchModifyParameterLogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSearchModifyParameterLog',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSearchModifyParameterLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_search_modify_parameter_log_with_options_async(
+        self,
+        request: main_models.DescribeSearchModifyParameterLogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSearchModifyParameterLogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSearchModifyParameterLog',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSearchModifyParameterLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_search_modify_parameter_log(
+        self,
+        request: main_models.DescribeSearchModifyParameterLogRequest,
+    ) -> main_models.DescribeSearchModifyParameterLogResponse:
+        runtime = RuntimeOptions()
+        return self.describe_search_modify_parameter_log_with_options(request, runtime)
+
+    async def describe_search_modify_parameter_log_async(
+        self,
+        request: main_models.DescribeSearchModifyParameterLogRequest,
+    ) -> main_models.DescribeSearchModifyParameterLogResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_search_modify_parameter_log_with_options_async(request, runtime)
+
+    def describe_search_parameters_with_options(
+        self,
+        request: main_models.DescribeSearchParametersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSearchParametersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSearchParameters',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSearchParametersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_search_parameters_with_options_async(
+        self,
+        request: main_models.DescribeSearchParametersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSearchParametersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSearchParameters',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSearchParametersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_search_parameters(
+        self,
+        request: main_models.DescribeSearchParametersRequest,
+    ) -> main_models.DescribeSearchParametersResponse:
+        runtime = RuntimeOptions()
+        return self.describe_search_parameters_with_options(request, runtime)
+
+    async def describe_search_parameters_async(
+        self,
+        request: main_models.DescribeSearchParametersRequest,
+    ) -> main_models.DescribeSearchParametersResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_search_parameters_with_options_async(request, runtime)
 
     def describe_shared_backups_with_options(
         self,
@@ -29484,6 +33776,100 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeSlowLogsResponse:
         runtime = RuntimeOptions()
         return await self.describe_slow_logs_with_options_async(request, runtime)
+
+    def describe_storage_plan_with_options(
+        self,
+        request: main_models.DescribeStoragePlanRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeStoragePlanResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeStoragePlan',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeStoragePlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_storage_plan_with_options_async(
+        self,
+        request: main_models.DescribeStoragePlanRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeStoragePlanResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeStoragePlan',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeStoragePlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_storage_plan(
+        self,
+        request: main_models.DescribeStoragePlanRequest,
+    ) -> main_models.DescribeStoragePlanResponse:
+        runtime = RuntimeOptions()
+        return self.describe_storage_plan_with_options(request, runtime)
+
+    async def describe_storage_plan_async(
+        self,
+        request: main_models.DescribeStoragePlanRequest,
+    ) -> main_models.DescribeStoragePlanResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_storage_plan_with_options_async(request, runtime)
 
     def describe_tasks_with_options(
         self,
@@ -30235,6 +34621,146 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_zones_with_options_async(request, runtime)
 
+    def disable_dbcluster_ctable_with_options(
+        self,
+        request: main_models.DisableDBClusterCTableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableDBClusterCTableResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableDBClusterCTable',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableDBClusterCTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_dbcluster_ctable_with_options_async(
+        self,
+        request: main_models.DisableDBClusterCTableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableDBClusterCTableResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableDBClusterCTable',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableDBClusterCTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_dbcluster_ctable(
+        self,
+        request: main_models.DisableDBClusterCTableRequest,
+    ) -> main_models.DisableDBClusterCTableResponse:
+        runtime = RuntimeOptions()
+        return self.disable_dbcluster_ctable_with_options(request, runtime)
+
+    async def disable_dbcluster_ctable_async(
+        self,
+        request: main_models.DisableDBClusterCTableRequest,
+    ) -> main_models.DisableDBClusterCTableResponse:
+        runtime = RuntimeOptions()
+        return await self.disable_dbcluster_ctable_with_options_async(request, runtime)
+
+    def disable_dbcluster_document_dbwith_options(
+        self,
+        request: main_models.DisableDBClusterDocumentDBRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableDBClusterDocumentDBResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableDBClusterDocumentDB',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableDBClusterDocumentDBResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_dbcluster_document_dbwith_options_async(
+        self,
+        request: main_models.DisableDBClusterDocumentDBRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableDBClusterDocumentDBResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableDBClusterDocumentDB',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableDBClusterDocumentDBResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_dbcluster_document_db(
+        self,
+        request: main_models.DisableDBClusterDocumentDBRequest,
+    ) -> main_models.DisableDBClusterDocumentDBResponse:
+        runtime = RuntimeOptions()
+        return self.disable_dbcluster_document_dbwith_options(request, runtime)
+
+    async def disable_dbcluster_document_db_async(
+        self,
+        request: main_models.DisableDBClusterDocumentDBRequest,
+    ) -> main_models.DisableDBClusterDocumentDBResponse:
+        runtime = RuntimeOptions()
+        return await self.disable_dbcluster_document_dbwith_options_async(request, runtime)
+
     def disable_dbcluster_dynamo_dbwith_options(
         self,
         request: main_models.DisableDBClusterDynamoDBRequest,
@@ -30726,6 +35252,240 @@ class Client(OpenApiClient):
     ) -> main_models.DisablePolarClawPluginResponse:
         runtime = RuntimeOptions()
         return await self.disable_polar_claw_plugin_with_options_async(request, runtime)
+
+    def enable_aidbcluster_dataset_service_with_options(
+        self,
+        request: main_models.EnableAIDBClusterDatasetServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableAIDBClusterDatasetServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.relative_dbcluster_id):
+            query['RelativeDBClusterId'] = request.relative_dbcluster_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableAIDBClusterDatasetService',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableAIDBClusterDatasetServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_aidbcluster_dataset_service_with_options_async(
+        self,
+        request: main_models.EnableAIDBClusterDatasetServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableAIDBClusterDatasetServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.relative_dbcluster_id):
+            query['RelativeDBClusterId'] = request.relative_dbcluster_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableAIDBClusterDatasetService',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableAIDBClusterDatasetServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_aidbcluster_dataset_service(
+        self,
+        request: main_models.EnableAIDBClusterDatasetServiceRequest,
+    ) -> main_models.EnableAIDBClusterDatasetServiceResponse:
+        runtime = RuntimeOptions()
+        return self.enable_aidbcluster_dataset_service_with_options(request, runtime)
+
+    async def enable_aidbcluster_dataset_service_async(
+        self,
+        request: main_models.EnableAIDBClusterDatasetServiceRequest,
+    ) -> main_models.EnableAIDBClusterDatasetServiceResponse:
+        runtime = RuntimeOptions()
+        return await self.enable_aidbcluster_dataset_service_with_options_async(request, runtime)
+
+    def enable_dbcluster_ctable_with_options(
+        self,
+        request: main_models.EnableDBClusterCTableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableDBClusterCTableResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableDBClusterCTable',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableDBClusterCTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_dbcluster_ctable_with_options_async(
+        self,
+        request: main_models.EnableDBClusterCTableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableDBClusterCTableResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableDBClusterCTable',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableDBClusterCTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_dbcluster_ctable(
+        self,
+        request: main_models.EnableDBClusterCTableRequest,
+    ) -> main_models.EnableDBClusterCTableResponse:
+        runtime = RuntimeOptions()
+        return self.enable_dbcluster_ctable_with_options(request, runtime)
+
+    async def enable_dbcluster_ctable_async(
+        self,
+        request: main_models.EnableDBClusterCTableRequest,
+    ) -> main_models.EnableDBClusterCTableResponse:
+        runtime = RuntimeOptions()
+        return await self.enable_dbcluster_ctable_with_options_async(request, runtime)
+
+    def enable_dbcluster_document_dbwith_options(
+        self,
+        request: main_models.EnableDBClusterDocumentDBRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableDBClusterDocumentDBResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableDBClusterDocumentDB',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableDBClusterDocumentDBResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_dbcluster_document_dbwith_options_async(
+        self,
+        request: main_models.EnableDBClusterDocumentDBRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableDBClusterDocumentDBResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableDBClusterDocumentDB',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableDBClusterDocumentDBResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_dbcluster_document_db(
+        self,
+        request: main_models.EnableDBClusterDocumentDBRequest,
+    ) -> main_models.EnableDBClusterDocumentDBResponse:
+        runtime = RuntimeOptions()
+        return self.enable_dbcluster_document_dbwith_options(request, runtime)
+
+    async def enable_dbcluster_document_db_async(
+        self,
+        request: main_models.EnableDBClusterDocumentDBRequest,
+    ) -> main_models.EnableDBClusterDocumentDBResponse:
+        runtime = RuntimeOptions()
+        return await self.enable_dbcluster_document_dbwith_options_async(request, runtime)
 
     def enable_dbcluster_dynamo_dbwith_options(
         self,
@@ -32261,6 +37021,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_polar_claw_config_with_options_async(request, runtime)
 
+    def get_polar_claw_skill_region_with_options(
+        self,
+        request: main_models.GetPolarClawSkillRegionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPolarClawSkillRegionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPolarClawSkillRegion',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPolarClawSkillRegionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_polar_claw_skill_region_with_options_async(
+        self,
+        request: main_models.GetPolarClawSkillRegionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPolarClawSkillRegionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPolarClawSkillRegion',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPolarClawSkillRegionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_polar_claw_skill_region(
+        self,
+        request: main_models.GetPolarClawSkillRegionRequest,
+    ) -> main_models.GetPolarClawSkillRegionResponse:
+        runtime = RuntimeOptions()
+        return self.get_polar_claw_skill_region_with_options(request, runtime)
+
+    async def get_polar_claw_skill_region_async(
+        self,
+        request: main_models.GetPolarClawSkillRegionRequest,
+    ) -> main_models.GetPolarClawSkillRegionResponse:
+        runtime = RuntimeOptions()
+        return await self.get_polar_claw_skill_region_with_options_async(request, runtime)
+
     def grant_account_privilege_with_options(
         self,
         request: main_models.GrantAccountPrivilegeRequest,
@@ -33525,6 +38355,104 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_aidbcluster_model_with_options_async(request, runtime)
 
+    def modify_aidbcluster_task_with_options(
+        self,
+        request: main_models.ModifyAIDBClusterTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAIDBClusterTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.modify_mode):
+            query['ModifyMode'] = request.modify_mode
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.relative_dbcluster_id):
+            query['RelativeDBClusterId'] = request.relative_dbcluster_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAIDBClusterTask',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAIDBClusterTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_aidbcluster_task_with_options_async(
+        self,
+        request: main_models.ModifyAIDBClusterTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAIDBClusterTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.modify_mode):
+            query['ModifyMode'] = request.modify_mode
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.relative_dbcluster_id):
+            query['RelativeDBClusterId'] = request.relative_dbcluster_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAIDBClusterTask',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAIDBClusterTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_aidbcluster_task(
+        self,
+        request: main_models.ModifyAIDBClusterTaskRequest,
+    ) -> main_models.ModifyAIDBClusterTaskResponse:
+        runtime = RuntimeOptions()
+        return self.modify_aidbcluster_task_with_options(request, runtime)
+
+    async def modify_aidbcluster_task_async(
+        self,
+        request: main_models.ModifyAIDBClusterTaskRequest,
+    ) -> main_models.ModifyAIDBClusterTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_aidbcluster_task_with_options_async(request, runtime)
+
     def modify_account_description_with_options(
         self,
         request: main_models.ModifyAccountDescriptionRequest,
@@ -34320,6 +39248,96 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyAgenticDBProjectHistoryRetentionResponse:
         runtime = RuntimeOptions()
         return await self.modify_agentic_dbproject_history_retention_with_options_async(request, runtime)
+
+    def modify_application_backup_policy_with_options(
+        self,
+        request: main_models.ModifyApplicationBackupPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyApplicationBackupPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_type):
+            query['ApplicationType'] = request.application_type
+        if not DaraCore.is_null(request.preferred_backup_period):
+            query['PreferredBackupPeriod'] = request.preferred_backup_period
+        if not DaraCore.is_null(request.preferred_backup_retention_period):
+            query['PreferredBackupRetentionPeriod'] = request.preferred_backup_retention_period
+        if not DaraCore.is_null(request.preferred_backup_time):
+            query['PreferredBackupTime'] = request.preferred_backup_time
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyApplicationBackupPolicy',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyApplicationBackupPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_application_backup_policy_with_options_async(
+        self,
+        request: main_models.ModifyApplicationBackupPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyApplicationBackupPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_type):
+            query['ApplicationType'] = request.application_type
+        if not DaraCore.is_null(request.preferred_backup_period):
+            query['PreferredBackupPeriod'] = request.preferred_backup_period
+        if not DaraCore.is_null(request.preferred_backup_retention_period):
+            query['PreferredBackupRetentionPeriod'] = request.preferred_backup_retention_period
+        if not DaraCore.is_null(request.preferred_backup_time):
+            query['PreferredBackupTime'] = request.preferred_backup_time
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyApplicationBackupPolicy',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyApplicationBackupPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_application_backup_policy(
+        self,
+        request: main_models.ModifyApplicationBackupPolicyRequest,
+    ) -> main_models.ModifyApplicationBackupPolicyResponse:
+        runtime = RuntimeOptions()
+        return self.modify_application_backup_policy_with_options(request, runtime)
+
+    async def modify_application_backup_policy_async(
+        self,
+        request: main_models.ModifyApplicationBackupPolicyRequest,
+    ) -> main_models.ModifyApplicationBackupPolicyResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_application_backup_policy_with_options_async(request, runtime)
 
     def modify_application_description_with_options(
         self,
@@ -36164,6 +41182,80 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyDBClusterAuditLogCollectorResponse:
         runtime = RuntimeOptions()
         return await self.modify_dbcluster_audit_log_collector_with_options_async(request, runtime)
+
+    def modify_dbcluster_auto_upgrade_minor_version_with_options(
+        self,
+        request: main_models.ModifyDBClusterAutoUpgradeMinorVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyDBClusterAutoUpgradeMinorVersionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_upgrade_minor_version):
+            query['AutoUpgradeMinorVersion'] = request.auto_upgrade_minor_version
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyDBClusterAutoUpgradeMinorVersion',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyDBClusterAutoUpgradeMinorVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dbcluster_auto_upgrade_minor_version_with_options_async(
+        self,
+        request: main_models.ModifyDBClusterAutoUpgradeMinorVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyDBClusterAutoUpgradeMinorVersionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_upgrade_minor_version):
+            query['AutoUpgradeMinorVersion'] = request.auto_upgrade_minor_version
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyDBClusterAutoUpgradeMinorVersion',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyDBClusterAutoUpgradeMinorVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dbcluster_auto_upgrade_minor_version(
+        self,
+        request: main_models.ModifyDBClusterAutoUpgradeMinorVersionRequest,
+    ) -> main_models.ModifyDBClusterAutoUpgradeMinorVersionResponse:
+        runtime = RuntimeOptions()
+        return self.modify_dbcluster_auto_upgrade_minor_version_with_options(request, runtime)
+
+    async def modify_dbcluster_auto_upgrade_minor_version_async(
+        self,
+        request: main_models.ModifyDBClusterAutoUpgradeMinorVersionRequest,
+    ) -> main_models.ModifyDBClusterAutoUpgradeMinorVersionResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_dbcluster_auto_upgrade_minor_version_with_options_async(request, runtime)
 
     def modify_dbcluster_deletion_with_options(
         self,
@@ -38795,6 +43887,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_dbnode_hot_replica_mode_with_options_async(request, runtime)
 
+    def modify_dbnode_router_weight_with_options(
+        self,
+        request: main_models.ModifyDBNodeRouterWeightRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyDBNodeRouterWeightResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dbnode_weights):
+            query['DBNodeWeights'] = request.dbnode_weights
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyDBNodeRouterWeight',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyDBNodeRouterWeightResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dbnode_router_weight_with_options_async(
+        self,
+        request: main_models.ModifyDBNodeRouterWeightRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyDBNodeRouterWeightResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dbnode_weights):
+            query['DBNodeWeights'] = request.dbnode_weights
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyDBNodeRouterWeight',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyDBNodeRouterWeightResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dbnode_router_weight(
+        self,
+        request: main_models.ModifyDBNodeRouterWeightRequest,
+    ) -> main_models.ModifyDBNodeRouterWeightResponse:
+        runtime = RuntimeOptions()
+        return self.modify_dbnode_router_weight_with_options(request, runtime)
+
+    async def modify_dbnode_router_weight_async(
+        self,
+        request: main_models.ModifyDBNodeRouterWeightRequest,
+    ) -> main_models.ModifyDBNodeRouterWeightResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_dbnode_router_weight_with_options_async(request, runtime)
+
     def modify_dbnode_scc_mode_with_options(
         self,
         request: main_models.ModifyDBNodeSccModeRequest,
@@ -39823,6 +45009,178 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_global_security_ipgroup_relation_with_options_async(request, runtime)
 
+    def modify_lakebase_mount_parameter_group_with_options(
+        self,
+        request: main_models.ModifyLakebaseMountParameterGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyLakebaseMountParameterGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.delete_parameters):
+            query['DeleteParameters'] = request.delete_parameters
+        if not DaraCore.is_null(request.parameter_group_id):
+            query['ParameterGroupId'] = request.parameter_group_id
+        if not DaraCore.is_null(request.parameter_group_name):
+            query['ParameterGroupName'] = request.parameter_group_name
+        if not DaraCore.is_null(request.parameters):
+            query['Parameters'] = request.parameters
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyLakebaseMountParameterGroup',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyLakebaseMountParameterGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_lakebase_mount_parameter_group_with_options_async(
+        self,
+        request: main_models.ModifyLakebaseMountParameterGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyLakebaseMountParameterGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.delete_parameters):
+            query['DeleteParameters'] = request.delete_parameters
+        if not DaraCore.is_null(request.parameter_group_id):
+            query['ParameterGroupId'] = request.parameter_group_id
+        if not DaraCore.is_null(request.parameter_group_name):
+            query['ParameterGroupName'] = request.parameter_group_name
+        if not DaraCore.is_null(request.parameters):
+            query['Parameters'] = request.parameters
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyLakebaseMountParameterGroup',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyLakebaseMountParameterGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_lakebase_mount_parameter_group(
+        self,
+        request: main_models.ModifyLakebaseMountParameterGroupRequest,
+    ) -> main_models.ModifyLakebaseMountParameterGroupResponse:
+        runtime = RuntimeOptions()
+        return self.modify_lakebase_mount_parameter_group_with_options(request, runtime)
+
+    async def modify_lakebase_mount_parameter_group_async(
+        self,
+        request: main_models.ModifyLakebaseMountParameterGroupRequest,
+    ) -> main_models.ModifyLakebaseMountParameterGroupResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_lakebase_mount_parameter_group_with_options_async(request, runtime)
+
+    def modify_lakebase_s3account_policy_with_options(
+        self,
+        request: main_models.ModifyLakebaseS3AccountPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyLakebaseS3AccountPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.pfs_instance_id):
+            query['PfsInstanceId'] = request.pfs_instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.user_acc_ak):
+            query['UserAccAk'] = request.user_acc_ak
+        if not DaraCore.is_null(request.user_acc_policy):
+            query['UserAccPolicy'] = request.user_acc_policy
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyLakebaseS3AccountPolicy',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyLakebaseS3AccountPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_lakebase_s3account_policy_with_options_async(
+        self,
+        request: main_models.ModifyLakebaseS3AccountPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyLakebaseS3AccountPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.pfs_instance_id):
+            query['PfsInstanceId'] = request.pfs_instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.user_acc_ak):
+            query['UserAccAk'] = request.user_acc_ak
+        if not DaraCore.is_null(request.user_acc_policy):
+            query['UserAccPolicy'] = request.user_acc_policy
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyLakebaseS3AccountPolicy',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyLakebaseS3AccountPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_lakebase_s3account_policy(
+        self,
+        request: main_models.ModifyLakebaseS3AccountPolicyRequest,
+    ) -> main_models.ModifyLakebaseS3AccountPolicyResponse:
+        runtime = RuntimeOptions()
+        return self.modify_lakebase_s3account_policy_with_options(request, runtime)
+
+    async def modify_lakebase_s3account_policy_async(
+        self,
+        request: main_models.ModifyLakebaseS3AccountPolicyRequest,
+    ) -> main_models.ModifyLakebaseS3AccountPolicyResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_lakebase_s3account_policy_with_options_async(request, runtime)
+
     def modify_log_backup_policy_with_options(
         self,
         tmp_req: main_models.ModifyLogBackupPolicyRequest,
@@ -40352,6 +45710,260 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyPendingMaintenanceActionResponse:
         runtime = RuntimeOptions()
         return await self.modify_pending_maintenance_action_with_options_async(request, runtime)
+
+    def modify_polar_claw_skill_with_options(
+        self,
+        request: main_models.ModifyPolarClawSkillRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyPolarClawSkillResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.modify_type):
+            query['ModifyType'] = request.modify_type
+        if not DaraCore.is_null(request.path):
+            query['Path'] = request.path
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.skill_name):
+            query['SkillName'] = request.skill_name
+        if not DaraCore.is_null(request.skill_version):
+            query['SkillVersion'] = request.skill_version
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyPolarClawSkill',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyPolarClawSkillResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_polar_claw_skill_with_options_async(
+        self,
+        request: main_models.ModifyPolarClawSkillRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyPolarClawSkillResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.modify_type):
+            query['ModifyType'] = request.modify_type
+        if not DaraCore.is_null(request.path):
+            query['Path'] = request.path
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.skill_name):
+            query['SkillName'] = request.skill_name
+        if not DaraCore.is_null(request.skill_version):
+            query['SkillVersion'] = request.skill_version
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyPolarClawSkill',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyPolarClawSkillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_polar_claw_skill(
+        self,
+        request: main_models.ModifyPolarClawSkillRequest,
+    ) -> main_models.ModifyPolarClawSkillResponse:
+        runtime = RuntimeOptions()
+        return self.modify_polar_claw_skill_with_options(request, runtime)
+
+    async def modify_polar_claw_skill_async(
+        self,
+        request: main_models.ModifyPolarClawSkillRequest,
+    ) -> main_models.ModifyPolarClawSkillResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_polar_claw_skill_with_options_async(request, runtime)
+
+    def modify_polar_fs_with_options(
+        self,
+        request: main_models.ModifyPolarFsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyPolarFsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.custom_oss_ak):
+            query['CustomOssAk'] = request.custom_oss_ak
+        if not DaraCore.is_null(request.custom_oss_sk):
+            query['CustomOssSk'] = request.custom_oss_sk
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyPolarFs',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyPolarFsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_polar_fs_with_options_async(
+        self,
+        request: main_models.ModifyPolarFsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyPolarFsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.custom_oss_ak):
+            query['CustomOssAk'] = request.custom_oss_ak
+        if not DaraCore.is_null(request.custom_oss_sk):
+            query['CustomOssSk'] = request.custom_oss_sk
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyPolarFs',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyPolarFsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_polar_fs(
+        self,
+        request: main_models.ModifyPolarFsRequest,
+    ) -> main_models.ModifyPolarFsResponse:
+        runtime = RuntimeOptions()
+        return self.modify_polar_fs_with_options(request, runtime)
+
+    async def modify_polar_fs_async(
+        self,
+        request: main_models.ModifyPolarFsRequest,
+    ) -> main_models.ModifyPolarFsResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_polar_fs_with_options_async(request, runtime)
+
+    def modify_polar_fs_instance_description_with_options(
+        self,
+        request: main_models.ModifyPolarFsInstanceDescriptionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyPolarFsInstanceDescriptionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.polar_fs_instance_description):
+            query['PolarFsInstanceDescription'] = request.polar_fs_instance_description
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyPolarFsInstanceDescription',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyPolarFsInstanceDescriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_polar_fs_instance_description_with_options_async(
+        self,
+        request: main_models.ModifyPolarFsInstanceDescriptionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyPolarFsInstanceDescriptionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.polar_fs_instance_description):
+            query['PolarFsInstanceDescription'] = request.polar_fs_instance_description
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyPolarFsInstanceDescription',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyPolarFsInstanceDescriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_polar_fs_instance_description(
+        self,
+        request: main_models.ModifyPolarFsInstanceDescriptionRequest,
+    ) -> main_models.ModifyPolarFsInstanceDescriptionResponse:
+        runtime = RuntimeOptions()
+        return self.modify_polar_fs_instance_description_with_options(request, runtime)
+
+    async def modify_polar_fs_instance_description_async(
+        self,
+        request: main_models.ModifyPolarFsInstanceDescriptionRequest,
+    ) -> main_models.ModifyPolarFsInstanceDescriptionResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_polar_fs_instance_description_with_options_async(request, runtime)
 
     def modify_polar_fs_mapping_auth_with_options(
         self,
@@ -40885,6 +46497,276 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_schedule_task_with_options_async(request, runtime)
 
+    def modify_search_parameters_with_options(
+        self,
+        request: main_models.ModifySearchParametersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifySearchParametersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.parameters):
+            query['Parameters'] = request.parameters
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifySearchParameters',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifySearchParametersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_search_parameters_with_options_async(
+        self,
+        request: main_models.ModifySearchParametersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifySearchParametersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.parameters):
+            query['Parameters'] = request.parameters
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifySearchParameters',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifySearchParametersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_search_parameters(
+        self,
+        request: main_models.ModifySearchParametersRequest,
+    ) -> main_models.ModifySearchParametersResponse:
+        runtime = RuntimeOptions()
+        return self.modify_search_parameters_with_options(request, runtime)
+
+    async def modify_search_parameters_async(
+        self,
+        request: main_models.ModifySearchParametersRequest,
+    ) -> main_models.ModifySearchParametersResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_search_parameters_with_options_async(request, runtime)
+
+    def modify_security_ips_with_options(
+        self,
+        request: main_models.ModifySecurityIpsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifySecurityIpsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_iparray_attribute):
+            query['DBClusterIPArrayAttribute'] = request.dbcluster_iparray_attribute
+        if not DaraCore.is_null(request.dbcluster_iparray_name):
+            query['DBClusterIPArrayName'] = request.dbcluster_iparray_name
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.security_ips):
+            query['SecurityIps'] = request.security_ips
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifySecurityIps',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifySecurityIpsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_security_ips_with_options_async(
+        self,
+        request: main_models.ModifySecurityIpsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifySecurityIpsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_iparray_attribute):
+            query['DBClusterIPArrayAttribute'] = request.dbcluster_iparray_attribute
+        if not DaraCore.is_null(request.dbcluster_iparray_name):
+            query['DBClusterIPArrayName'] = request.dbcluster_iparray_name
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.security_ips):
+            query['SecurityIps'] = request.security_ips
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifySecurityIps',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifySecurityIpsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_security_ips(
+        self,
+        request: main_models.ModifySecurityIpsRequest,
+    ) -> main_models.ModifySecurityIpsResponse:
+        runtime = RuntimeOptions()
+        return self.modify_security_ips_with_options(request, runtime)
+
+    async def modify_security_ips_async(
+        self,
+        request: main_models.ModifySecurityIpsRequest,
+    ) -> main_models.ModifySecurityIpsResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_security_ips_with_options_async(request, runtime)
+
+    def modify_task_info_with_options(
+        self,
+        request: main_models.ModifyTaskInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyTaskInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.action_params):
+            query['ActionParams'] = request.action_params
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.step_name):
+            query['StepName'] = request.step_name
+        if not DaraCore.is_null(request.task_action):
+            query['TaskAction'] = request.task_action
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyTaskInfo',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyTaskInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_task_info_with_options_async(
+        self,
+        request: main_models.ModifyTaskInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyTaskInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.action_params):
+            query['ActionParams'] = request.action_params
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.step_name):
+            query['StepName'] = request.step_name
+        if not DaraCore.is_null(request.task_action):
+            query['TaskAction'] = request.task_action
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyTaskInfo',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyTaskInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_task_info(
+        self,
+        request: main_models.ModifyTaskInfoRequest,
+    ) -> main_models.ModifyTaskInfoResponse:
+        runtime = RuntimeOptions()
+        return self.modify_task_info_with_options(request, runtime)
+
+    async def modify_task_info_async(
+        self,
+        request: main_models.ModifyTaskInfoRequest,
+    ) -> main_models.ModifyTaskInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_task_info_with_options_async(request, runtime)
+
     def move_polar_fs_objects_with_options(
         self,
         request: main_models.MovePolarFsObjectsRequest,
@@ -41380,6 +47262,112 @@ class Client(OpenApiClient):
     ) -> main_models.RefreshDBClusterStorageUsageResponse:
         runtime = RuntimeOptions()
         return await self.refresh_dbcluster_storage_usage_with_options_async(request, runtime)
+
+    def refresh_proxy_level_with_options(
+        self,
+        request: main_models.RefreshProxyLevelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RefreshProxyLevelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.from_time_service):
+            query['FromTimeService'] = request.from_time_service
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.planned_end_time):
+            query['PlannedEndTime'] = request.planned_end_time
+        if not DaraCore.is_null(request.planned_start_time):
+            query['PlannedStartTime'] = request.planned_start_time
+        if not DaraCore.is_null(request.proxy_target_class):
+            query['ProxyTargetClass'] = request.proxy_target_class
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RefreshProxyLevel',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RefreshProxyLevelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def refresh_proxy_level_with_options_async(
+        self,
+        request: main_models.RefreshProxyLevelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RefreshProxyLevelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.from_time_service):
+            query['FromTimeService'] = request.from_time_service
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.planned_end_time):
+            query['PlannedEndTime'] = request.planned_end_time
+        if not DaraCore.is_null(request.planned_start_time):
+            query['PlannedStartTime'] = request.planned_start_time
+        if not DaraCore.is_null(request.proxy_target_class):
+            query['ProxyTargetClass'] = request.proxy_target_class
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RefreshProxyLevel',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RefreshProxyLevelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def refresh_proxy_level(
+        self,
+        request: main_models.RefreshProxyLevelRequest,
+    ) -> main_models.RefreshProxyLevelResponse:
+        runtime = RuntimeOptions()
+        return self.refresh_proxy_level_with_options(request, runtime)
+
+    async def refresh_proxy_level_async(
+        self,
+        request: main_models.RefreshProxyLevelRequest,
+    ) -> main_models.RefreshProxyLevelResponse:
+        runtime = RuntimeOptions()
+        return await self.refresh_proxy_level_with_options_async(request, runtime)
 
     def register_aidbcluster_custom_model_with_options(
         self,
@@ -42367,6 +48355,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.reset_agentic_dbtenant_api_key_with_options_async(request, runtime)
 
+    def reset_application_account_password_with_options(
+        self,
+        request: main_models.ResetApplicationAccountPasswordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResetApplicationAccountPasswordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.account_name):
+            query['AccountName'] = request.account_name
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.new_account_password):
+            query['NewAccountPassword'] = request.new_account_password
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResetApplicationAccountPassword',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResetApplicationAccountPasswordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reset_application_account_password_with_options_async(
+        self,
+        request: main_models.ResetApplicationAccountPasswordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResetApplicationAccountPasswordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.account_name):
+            query['AccountName'] = request.account_name
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.new_account_password):
+            query['NewAccountPassword'] = request.new_account_password
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResetApplicationAccountPassword',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResetApplicationAccountPasswordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reset_application_account_password(
+        self,
+        request: main_models.ResetApplicationAccountPasswordRequest,
+    ) -> main_models.ResetApplicationAccountPasswordResponse:
+        runtime = RuntimeOptions()
+        return self.reset_application_account_password_with_options(request, runtime)
+
+    async def reset_application_account_password_async(
+        self,
+        request: main_models.ResetApplicationAccountPasswordRequest,
+    ) -> main_models.ResetApplicationAccountPasswordResponse:
+        runtime = RuntimeOptions()
+        return await self.reset_application_account_password_with_options_async(request, runtime)
+
     def reset_consumer_api_key_with_options(
         self,
         request: main_models.ResetConsumerApiKeyRequest,
@@ -42694,6 +48760,100 @@ class Client(OpenApiClient):
     ) -> main_models.RestartAIDBClusterResponse:
         runtime = RuntimeOptions()
         return await self.restart_aidbcluster_with_options_async(request, runtime)
+
+    def restart_dbcluster_with_options(
+        self,
+        request: main_models.RestartDBClusterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RestartDBClusterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RestartDBCluster',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RestartDBClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def restart_dbcluster_with_options_async(
+        self,
+        request: main_models.RestartDBClusterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RestartDBClusterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RestartDBCluster',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RestartDBClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def restart_dbcluster(
+        self,
+        request: main_models.RestartDBClusterRequest,
+    ) -> main_models.RestartDBClusterResponse:
+        runtime = RuntimeOptions()
+        return self.restart_dbcluster_with_options(request, runtime)
+
+    async def restart_dbcluster_async(
+        self,
+        request: main_models.RestartDBClusterRequest,
+    ) -> main_models.RestartDBClusterResponse:
+        runtime = RuntimeOptions()
+        return await self.restart_dbcluster_with_options_async(request, runtime)
 
     def restart_dblink_with_options(
         self,
@@ -43054,6 +49214,88 @@ class Client(OpenApiClient):
     ) -> main_models.RestartPolarClawGatewayResponse:
         runtime = RuntimeOptions()
         return await self.restart_polar_claw_gateway_with_options_async(request, runtime)
+
+    def restore_application_by_backup_set_with_options(
+        self,
+        request: main_models.RestoreApplicationByBackupSetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RestoreApplicationByBackupSetResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_type):
+            query['ApplicationType'] = request.application_type
+        if not DaraCore.is_null(request.backup_set_id):
+            query['BackupSetId'] = request.backup_set_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RestoreApplicationByBackupSet',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RestoreApplicationByBackupSetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def restore_application_by_backup_set_with_options_async(
+        self,
+        request: main_models.RestoreApplicationByBackupSetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RestoreApplicationByBackupSetResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_type):
+            query['ApplicationType'] = request.application_type
+        if not DaraCore.is_null(request.backup_set_id):
+            query['BackupSetId'] = request.backup_set_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RestoreApplicationByBackupSet',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RestoreApplicationByBackupSetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def restore_application_by_backup_set(
+        self,
+        request: main_models.RestoreApplicationByBackupSetRequest,
+    ) -> main_models.RestoreApplicationByBackupSetResponse:
+        runtime = RuntimeOptions()
+        return self.restore_application_by_backup_set_with_options(request, runtime)
+
+    async def restore_application_by_backup_set_async(
+        self,
+        request: main_models.RestoreApplicationByBackupSetRequest,
+    ) -> main_models.RestoreApplicationByBackupSetResponse:
+        runtime = RuntimeOptions()
+        return await self.restore_application_by_backup_set_with_options_async(request, runtime)
 
     def restore_table_with_options(
         self,
@@ -44624,6 +50866,92 @@ class Client(OpenApiClient):
     ) -> main_models.UninstallPolarClawPluginResponse:
         runtime = RuntimeOptions()
         return await self.uninstall_polar_claw_plugin_with_options_async(request, runtime)
+
+    def uninstall_polar_claw_skills_with_options(
+        self,
+        request: main_models.UninstallPolarClawSkillsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UninstallPolarClawSkillsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.scope):
+            query['Scope'] = request.scope
+        if not DaraCore.is_null(request.uninstall_skill_names):
+            query['UninstallSkillNames'] = request.uninstall_skill_names
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UninstallPolarClawSkills',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UninstallPolarClawSkillsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def uninstall_polar_claw_skills_with_options_async(
+        self,
+        request: main_models.UninstallPolarClawSkillsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UninstallPolarClawSkillsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.scope):
+            query['Scope'] = request.scope
+        if not DaraCore.is_null(request.uninstall_skill_names):
+            query['UninstallSkillNames'] = request.uninstall_skill_names
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UninstallPolarClawSkills',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UninstallPolarClawSkillsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def uninstall_polar_claw_skills(
+        self,
+        request: main_models.UninstallPolarClawSkillsRequest,
+    ) -> main_models.UninstallPolarClawSkillsResponse:
+        runtime = RuntimeOptions()
+        return self.uninstall_polar_claw_skills_with_options(request, runtime)
+
+    async def uninstall_polar_claw_skills_async(
+        self,
+        request: main_models.UninstallPolarClawSkillsRequest,
+    ) -> main_models.UninstallPolarClawSkillsResponse:
+        runtime = RuntimeOptions()
+        return await self.uninstall_polar_claw_skills_with_options_async(request, runtime)
 
     def untag_resources_with_options(
         self,

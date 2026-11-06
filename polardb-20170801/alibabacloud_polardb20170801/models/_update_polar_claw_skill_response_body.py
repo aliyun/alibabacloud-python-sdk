@@ -28,7 +28,7 @@ class UpdatePolarClawSkillResponseBody(DaraModel):
         self.message = message
         # Indicates whether the operation is successful.
         self.ok = ok
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
         # The skill identifier key.
         self.skill_key = skill_key

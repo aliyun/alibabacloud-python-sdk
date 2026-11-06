@@ -24,7 +24,7 @@ class CreateKBSyncLinkRequest(DaraModel):
         user_id: str = None,
         user_refresh_token: str = None,
     ):
-        # The client identifier.
+        # The client ID.
         # 
         # This parameter is required.
         self.client_id = client_id
@@ -34,7 +34,7 @@ class CreateKBSyncLinkRequest(DaraModel):
         self.client_secret = client_secret
         # The description of the synchronization link.
         self.description = description
-        # The validity period of the successful snapshot of Lark group members for fallback reuse, in seconds. This parameter can be explicitly set only for FEISHU synchronization links. A value of -1 indicates that the snapshot never expires. A value of 0 disables snapshot fallback reuse. A positive integer indicates the maximum age of the snapshot allowed for reuse. Default value: -1. If this parameter is omitted, the default value -1 takes effect.
+        # The time-to-live (TTL) of the successful snapshot of Lark chat members for fallback reuse, in seconds. This parameter can be explicitly set only for FEISHU synchronization links. A value of -1 indicates that the snapshot never expires. A value of 0 disables snapshot fallback reuse. A positive integer indicates the maximum age of the snapshot allowed for reuse. Default value: -1. If this parameter is not specified, the default value -1 is used.
         self.feishu_chat_member_stale_ttl_seconds = feishu_chat_member_stale_ttl_seconds
         # The unique identifier of the knowledge base.
         # 
@@ -56,7 +56,7 @@ class CreateKBSyncLinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.source_dir = source_dir
-        # The data source type. Valid values: FEISHU and SHAREPOINT.
+        # The data source type. Valid values: FEISHU, SHAREPOINT.
         # 
         # This parameter is required.
         self.source_type = source_type
@@ -64,11 +64,11 @@ class CreateKBSyncLinkRequest(DaraModel):
         self.sync_interval_minutes = sync_interval_minutes
         # The tenant ID. This parameter is required when SourceType is set to SHAREPOINT.
         self.tenant_id = tenant_id
-        # The Lark user access token. This token is used only when the application identity cannot expand group members because the bot is not in the group chat.
+        # The Lark user access token. This token is used only when the application identity cannot expand chat members because the bot is not in the chat.
         self.user_access_token = user_access_token
         # The ID of the DingTalk user who performs the operation.
         self.user_id = user_id
-        # The Lark user refresh token. This token must be provided together with UserAccessToken to automatically rotate the fallback identity for expanding group members.
+        # The Lark user refresh token. This token must be provided together with UserAccessToken to automatically rotate the fallback identity for expanding chat members.
         self.user_refresh_token = user_refresh_token
 
     def validate(self):

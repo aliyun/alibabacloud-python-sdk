@@ -26,7 +26,7 @@ class CreatePolarClawCronJobRequest(DaraModel):
         session_target: str = None,
         wake_mode: str = None,
     ):
-        # The ID of the specified execution agent.
+        # The specified execution agent.
         self.agent_id = agent_id
         # The application ID.
         # 
@@ -52,7 +52,7 @@ class CreatePolarClawCronJobRequest(DaraModel):
         self.payload = payload
         # Specifies whether to restart the gateway after creation. Default value: true.
         self.restart = restart
-        # Specifies whether to run it once immediately after creation. Default value: false.
+        # Specifies whether to run the task immediately after creation. Default value: false.
         self.run_immediately = run_immediately
         # The schedule configuration.
         # 
@@ -60,11 +60,11 @@ class CreatePolarClawCronJobRequest(DaraModel):
         self.schedule = schedule
         # The session routing key.
         self.session_key = session_key
-        # The session target. Valid values: main, isolated, current.
+        # The execution session target. If set to main, it indicates the main session, and Payload.Kind must be systemEvent. If set to isolated or current, it supports agentTurn or systemEvent.
         # 
         # This parameter is required.
         self.session_target = session_target
-        # The wake mode. Valid values: now, next-heartbeat.
+        # The wake mode. Valid values: now and next-heartbeat.
         # 
         # This parameter is required.
         self.wake_mode = wake_mode
@@ -203,11 +203,11 @@ class CreatePolarClawCronJobRequestSchedule(DaraModel):
         self.every_ms = every_ms
         # The cron expression.
         self.expr = expr
-        # The schedule type. Valid values: cron, every, at.
+        # The schedule type. Valid values: cron, every, and at.
         self.kind = kind
         # The deterministic jitter window in milliseconds.
         self.stagger_ms = stagger_ms
-        # The IANA time zone.
+        # The time zone.
         self.tz = tz
 
     def validate(self):
@@ -290,7 +290,7 @@ class CreatePolarClawCronJobRequestPayload(DaraModel):
         self.deliver = deliver
         # The list of fallback models.
         self.fallbacks = fallbacks
-        # The payload type. Valid values: agentTurn, systemEvent.
+        # The payload type. Valid values: agentTurn and systemEvent.
         self.kind = kind
         # Specifies whether to use a lightweight context.
         self.light_context = light_context
@@ -300,7 +300,7 @@ class CreatePolarClawCronJobRequestPayload(DaraModel):
         self.model = model
         # The system event text.
         self.text = text
-        # The thinking level. Valid values: off, minimal, low, medium, high, xhigh.
+        # The thinking level. Valid values: off, minimal, low, medium, high, and xhigh.
         self.thinking = thinking
         # The execution timeout in seconds.
         self.timeout_seconds = timeout_seconds
@@ -403,9 +403,9 @@ class CreatePolarClawCronJobRequestFailureAlert(DaraModel):
         mode: str = None,
         to: str = None,
     ):
-        # The channel account ID.
+        # The ID of the channel account.
         self.account_id = account_id
-        # The number of consecutive failures before an alert is triggered.
+        # The number of consecutive failures after which an alert is triggered.
         self.after = after
         # The alert channel.
         self.channel = channel
@@ -475,13 +475,13 @@ class CreatePolarClawCronJobRequestDelivery(DaraModel):
         mode: str = None,
         to: str = None,
     ):
-        # The channel account ID.
+        # The ID of the channel account.
         self.account_id = account_id
         # Specifies whether to ignore delivery failures.
         self.best_effort = best_effort
         # The delivery channel.
         self.channel = channel
-        # The delivery mode. Valid values: none, announce, webhook.
+        # The delivery mode. Valid values: none, announce, and webhook.
         self.mode = mode
         # The delivery target.
         self.to = to

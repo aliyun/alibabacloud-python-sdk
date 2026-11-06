@@ -13,9 +13,9 @@ class UpdateKBSyncLinkResponseBody(DaraModel):
     ):
         # The ID of the synchronization link.
         self.link_id = link_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
-        # The scheduling time of the synchronization task.
+        # The scheduled time of the synchronization task.
         self.sync_schedule = sync_schedule
 
     def validate(self):

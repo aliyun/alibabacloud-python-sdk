@@ -20,19 +20,18 @@ class ListTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
-        # A token to retrieve the next page of results. You do not need to specify this parameter for the first request. If the first request does not return all results, the response returns a token. You can use this token in the next request to continue the query.
+        # The token used to return more results. You do not need to specify this parameter for the first query. If the first query does not return all results, you can pass the token returned in the previous response to the next query to obtain more results.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to view the available region IDs.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of a cluster. You can specify multiple cluster IDs to query the tags of multiple clusters.
+        # The ID of the target cluster. To query the tags of multiple clusters, click **Add** to add more cluster IDs.
         # 
-        # > - You must specify either the `ResourceId.N` parameter or the `Tag.N.Key` parameter.
-        # >
-        # > - If you specify the `ResourceId.N` parameter, you can add up to 50 cluster IDs.
+        # > * You must specify at least one of the ResourceId.N and Tag.N.Key parameters.
+        # > * If you specify the ResourceId.N parameter, you can add up to 50 cluster IDs at a time.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -125,13 +124,12 @@ class ListTagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of a tag. You can specify multiple tags to query for resources that have all of the specified tags.
+        # The tag key. To query the details of all target clusters under multiple tags, click **Add** to add more tags.
         # 
-        # > - You must specify either the `ResourceId.N` parameter or the `Tag.N.Key` parameter.
-        # >
-        # > - If you specify the `Tag.N.Key` parameter, you can add up to 20 tag pairs.
+        # >* You must specify at least one of the ResourceId.N and Tag.N.Key parameters.
+        # >* If you specify the Tag.N.Key parameter, you can add up to 20 tag key-value pairs at a time.
         self.key = key
-        # The tag value that corresponds to the tag key. An empty string is allowed.
+        # The tag value corresponding to the tag key. An empty string is allowed.
         self.value = value
 
     def validate(self):

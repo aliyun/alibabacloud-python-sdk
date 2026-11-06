@@ -10,7 +10,7 @@ class CreateColdStorageInstanceResponseBody(DaraModel):
         cold_storage_instance_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the cold storage instance.
+        # The cold storage instance ID.
         self.cold_storage_instance_id = cold_storage_instance_id
         # The request ID.
         self.request_id = request_id

@@ -23,7 +23,7 @@ class DescribeKnowledgeBaseFileShardsResponseBody(DaraModel):
         self.page_record_count = page_record_count
         # The number of entries per page in a paging query.
         self.page_size = page_size
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
         # The shard information.
         self.shards = shards
@@ -102,9 +102,9 @@ class DescribeKnowledgeBaseFileShardsResponseBodyShards(DaraModel):
     ):
         # The list of figure or table captions associated with the shard.
         self.captions = captions
-        # The list of structured element references of the source document associated with the shard, which can be used to precisely locate the original elements.
+        # The list of structured element references in the source document associated with the shard, which can be used to precisely locate the original elements.
         self.doc_items = doc_items
-        # The section heading chain to which the shard belongs.
+        # The chain of section headings to which the shard belongs.
         self.headings = headings
         # The list of image resources referenced by the shard.
         self.image_resources = image_resources

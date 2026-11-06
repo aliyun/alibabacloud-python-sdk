@@ -21,11 +21,11 @@ class DescribePolarClawPluginsResponseBody(DaraModel):
         self.application_id = application_id
         # The response status code.
         self.code = code
-        # An array of diagnostic objects.
+        # The list of diagnostic information.
         self.diagnostics = diagnostics
         # The response message.
         self.message = message
-        # An array of plugin objects.
+        # The list of plugins.
         self.plugins = plugins
         # The request ID.
         self.request_id = request_id
@@ -112,27 +112,27 @@ class DescribePolarClawPluginsResponseBodyPlugins(DaraModel):
         status: str = None,
         version: str = None,
     ):
-        # A list of channel IDs, which can be empty.
+        # The list of provided channel IDs. An empty array indicates that no channel IDs are available.
         self.channel_ids = channel_ids
         # The description of the plugin.
         self.description = description
-        # The error message, or `null` if no error occurred.
+        # The error message. If this field is missing, no error occurred.
         self.error = error
-        # The format of the plugin, which can be an empty string.
+        # The format of the plugin. This field can be an empty string.
         self.format = format
         # The plugin ID.
         self.id = id
         # The display name of the plugin.
         self.name = name
-        # The origin of the plugin. Valid values: `bundled`, `global`, and `user-install`.
+        # The origin of the plugin. Valid values: `bundled` (built-in), `global` (global), and `user-install` (user-installed).
         self.origin = origin
-        # A list of provider IDs, which can be empty.
+        # The list of provided provider IDs. An empty array indicates that no provider IDs are available.
         self.provider_ids = provider_ids
-        # The file path to the plugin\\"s entry point.
+        # The path to the plugin entry file.
         self.source = source
-        # The status of the plugin. Valid values: `loaded`, `disabled`, and `error`.
+        # The status of the plugin. Valid values: `loaded` (loaded), `disabled` (disabled), and `error` (failed to load).
         self.status = status
-        # The version number of the plugin.
+        # The version number.
         self.version = version
 
     def validate(self):
@@ -223,13 +223,13 @@ class DescribePolarClawPluginsResponseBodyDiagnostics(DaraModel):
         plugin_id: str = None,
         source: str = None,
     ):
-        # The severity level. Valid values: `error` and `warn`.
+        # The diagnostic level. Valid values: `error` and `warn`.
         self.level = level
-        # The detailed diagnostic message.
+        # The details of the diagnostic message.
         self.message = message
         # The ID of the associated plugin.
         self.plugin_id = plugin_id
-        # The source file path associated with the diagnostic.
+        # The path to the source file of the associated plugin.
         self.source = source
 
     def validate(self):

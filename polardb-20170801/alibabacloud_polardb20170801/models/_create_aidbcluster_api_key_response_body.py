@@ -13,7 +13,7 @@ class CreateAIDBClusterApiKeyResponseBody(DaraModel):
     ):
         # The API key.
         self.api_key = api_key
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -53,17 +53,17 @@ class CreateAIDBClusterApiKeyResponseBodyApiKey(DaraModel):
         id: str = None,
         status: str = None,
     ):
-        # The API key for model serving.
+        # The API key for the model service.
         self.api_key = api_key
-        # The time when the API key was created.
+        # The creation time.
         # 
-        # The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+        # The time is displayed in ISO 8601 format in the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
         self.create_time = create_time
         # The description.
         self.description = description
-        # id
+        # The API key ID.
         self.id = id
-        # The API key status.
+        # The status of the API key.
         self.status = status
 
     def validate(self):

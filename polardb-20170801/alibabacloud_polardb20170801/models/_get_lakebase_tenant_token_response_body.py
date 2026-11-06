@@ -16,7 +16,7 @@ class GetLakebaseTenantTokenResponseBody(DaraModel):
     ):
         # The associated PolarDB instance ID.
         self.dbcluster_id = dbcluster_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
         # The status.
         self.status = status

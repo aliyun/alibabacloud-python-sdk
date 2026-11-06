@@ -23,7 +23,7 @@ class UpdatePolarClawSkillRequest(DaraModel):
         self.application_id = application_id
         # Specifies whether the skill is enabled.
         self.enabled = enabled
-        # The environment variables. This is a map of key-value pairs. An empty value indicates that the variable is deleted.
+        # The environment variables. This is a key-value pair map. An empty value indicates that the variable is deleted.
         self.env = env
         # The skill identifier key.
         # 

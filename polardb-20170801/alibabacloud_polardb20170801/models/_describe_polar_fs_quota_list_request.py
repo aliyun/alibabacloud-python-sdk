@@ -14,22 +14,17 @@ class DescribePolarFsQuotaListRequest(DaraModel):
         quota_mode: str = None,
         region_id: str = None,
     ):
-        # The instance ID of the PolarDB instance on which the application depends.
+        # The PolarDB instance ID on which the application depends.
         self.dbcluster_id = dbcluster_id
         # The page number.
         self.page_number = page_number
-        # The number of entries per page. Valid values: 30, 50, and 100.
-        # 
-        # Default value: 30.
+        # The number of entries per page. Valid values: 30, 50, and 100. Default value: 30.
         self.page_size = page_size
-        # The PolarFs instance ID.
+        # The PolarFS instance ID.
         # 
         # This parameter is required.
         self.polar_fs_instance_id = polar_fs_instance_id
-        # The query mode. Valid values:
-        # 
-        # -  **quotaPolicy**: quota rule
-        # - **quota**: quota
+        # The quota mode. Currently, only quota is supported, which indicates that quota policies are queried.
         self.quota_mode = quota_mode
         # The region ID.
         self.region_id = region_id

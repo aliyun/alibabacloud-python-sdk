@@ -15,7 +15,7 @@ class DescribeApikeyAttributeResponseBody(DaraModel):
     ):
         # The list of consumer objects.
         self.items = items
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -119,7 +119,7 @@ class DescribeApikeyAttributeResponseBodyItemsUsageStatistics(DaraModel):
     ):
         # The dimension reference ID, which is the consumer ID.
         self.dimension_ref_id = dimension_ref_id
-        # The statistical dimension. The value is typically Consumer.
+        # The statistical dimension. Typically, the value is Consumer.
         self.dimension_type = dimension_type
         # The gateway instance ID.
         self.gw_cluster_id = gw_cluster_id
@@ -257,11 +257,11 @@ class DescribeApikeyAttributeResponseBodyItemsConsumer(DaraModel):
         self.consumer_id = consumer_id
         # The consumer tag.
         self.consumer_tag = consumer_tag
-        # The creation time. The format is YYYY-MM-DDTHH:mm:ssZ (UTC time).
+        # The creation time. The format is YYYY-MM-DDTHH:mm:ssZ (UTC).
         self.create_time = create_time
         # The gateway instance ID.
         self.gw_cluster_id = gw_cluster_id
-        # The last modification time. The format is YYYY-MM-DDTHH:mm:ssZ (UTC time).
+        # The last modification time. The format is YYYY-MM-DDTHH:mm:ssZ (UTC).
         self.modify_time = modify_time
         # The consumer name.
         self.name = name

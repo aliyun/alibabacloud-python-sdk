@@ -16,7 +16,7 @@ class CreateModelApiResponseBody(DaraModel):
         self.invoke_endpoint = invoke_endpoint
         # The model API ID.
         self.model_api_id = model_api_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
         # The status of the model API.
         self.status = status

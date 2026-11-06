@@ -14,11 +14,11 @@ class GetLakebaseTenantTokenRequest(DaraModel):
     ):
         # The associated PolarDB instance ID.
         self.dbcluster_id = dbcluster_id
-        # The PolarFS instance ID.
+        # The PolarFS instance ID. The CreationCategory of the instance must be basic (Basic Edition). Other categories are not supported by this operation.
         # 
         # This parameter is required.
         self.polar_fs_instance_id = polar_fs_instance_id
-        # The mount subdirectory. Specify an absolute path.
+        # The absolute path of the mount subdirectory.
         # 
         # This parameter is required.
         self.subdir = subdir

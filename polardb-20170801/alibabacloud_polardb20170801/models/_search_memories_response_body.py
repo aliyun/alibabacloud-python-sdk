@@ -19,13 +19,13 @@ class SearchMemoriesResponseBody(DaraModel):
     ):
         # The current page number.
         self.page = page
-        # The number of records per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
         # The list of results.
         self.results = results
-        # The total number of matching records.
+        # The total number of entries that meet the conditions.
         self.total = total
         # The total number of pages.
         self.total_pages = total_pages
@@ -102,7 +102,7 @@ class SearchMemoriesResponseBodyResults(DaraModel):
     ):
         # The creation time.
         # 
-        # The time follows the ISO 8601 standard in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+        # The time follows the ISO 8601 standard and is displayed in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.create_time = create_time
         # The memory ID.
         self.id = id
@@ -118,7 +118,7 @@ class SearchMemoriesResponseBodyResults(DaraModel):
         self.score = score
         # The update time.
         # 
-        # The time follows the ISO 8601 standard in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+        # The time follows the ISO 8601 standard and is displayed in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.update_time = update_time
 
     def validate(self):

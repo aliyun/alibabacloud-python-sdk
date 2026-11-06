@@ -26,11 +26,11 @@ class DescribeAIDBClustersRequest(DaraModel):
     ):
         # The node type. You can specify multiple types separated by commas (,). Valid values:
         # 
-        # - vnode: managed by Kubernetes.
-        # - container: logon-enabled container.
-        # - maas: model service.
+        # - vnode: managed by Kubernetes
+        # - container: container with logon access
+        # - maas: model service
         self.ai_node_type = ai_node_type
-        # The cluster description. Fuzzy match is supported.
+        # The description of the cluster. Fuzzy search is supported.
         self.dbcluster_description = dbcluster_description
         # The cluster IDs. Separate multiple cluster IDs with commas (,).
         self.dbcluster_ids = dbcluster_ids
@@ -47,7 +47,7 @@ class DescribeAIDBClustersRequest(DaraModel):
         # - **NetAddressDeleting**: The network connectivity is being deleted.
         # - **NetAddressModifying**: The network connectivity is being modified. 
         # - **Deleted**: The cluster is released.
-        # - **ClassChanged**: Resources are being revoked after an upgrade or decrease the quota.
+        # * **ClassChanged**: Resources are being revoked after you increase or decrease the quota.
         self.dbcluster_status = dbcluster_status
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -177,9 +177,9 @@ class DescribeAIDBClustersRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. You can use tags to filter the cluster list. You can specify up to 20 tag key-value pairs. The number n in each tag pair must be unique and must be a consecutive integer starting from 1. The value of Tag.n.Key is Tag.n.Value.
+        # The tag key. You can filter the cluster list by tags. A maximum of 20 tag key-value pairs are supported. The number n in each tag pair must be unique and must be a consecutive integer starting from 1. The value of Tag.n.Key corresponds to Tag.n.Value.
         self.key = key
-        # The tag value that corresponds to the tag key.
+        # The tag value corresponding to the tag key.
         self.value = value
 
     def validate(self):

@@ -22,7 +22,7 @@ class CreateAgenticDBTenantRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The name of the tenant. It must be 1 to 64 characters in length, start with a letter, and contain only letters, digits, underscores (_), and hyphens (-).
+        # The tenant name. The name must be 1 to 64 characters in length, start with a letter, and contain only letters, digits, underscores (_), and hyphens (-).
         # 
         # This parameter is required.
         self.tenant_name = tenant_name

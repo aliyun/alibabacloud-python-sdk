@@ -11,7 +11,7 @@ class DescribeAvailableModelsRequest(DaraModel):
         model_type: str = None,
         region_id: str = None,
     ):
-        # aideploy
+        # The Kubernetes cluster type, such as aideploy.
         self.kube_type = kube_type
         # The model type. Valid values: custom and public. If you do not specify this parameter, all models are returned.
         self.model_type = model_type

@@ -11,14 +11,14 @@ class DeleteAIDBClusterApiKeyRequest(DaraModel):
         model_space_name: str = None,
         region_id: str = None,
     ):
-        # The API key of the model service.
+        # The API key for the model service.
         # 
         # This parameter is required.
         self.api_key = api_key
         # The model space ID.
         self.model_space_name = model_space_name
         # The region ID.
-        # >You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available region IDs.
+        # >You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

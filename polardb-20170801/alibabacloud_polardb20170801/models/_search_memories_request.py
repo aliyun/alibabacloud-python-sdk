@@ -17,7 +17,7 @@ class SearchMemoriesRequest(DaraModel):
         query: str = None,
         top_k: str = None,
     ):
-        # The ID of the application. Example value: pa-**************.
+        # The application ID. Example: pa-**************. The application must be of the mem0 type. When creating the application by using CreateApplication, set ApplicationType to mem0. Calling this operation on a non-mem0 application returns the IncorrectDBInstanceEngine (403) error.
         # 
         # This parameter is required.
         self.application_id = application_id
@@ -33,11 +33,11 @@ class SearchMemoriesRequest(DaraModel):
         self.memory_user_id = memory_user_id
         # The page number.
         self.page = page
-        # The number of records to display on each page.
+        # The number of entries per page.
         self.page_size = page_size
         # The search query.
         self.query = query
-        # Specifies the number of top results to return.
+        # The number of top results to return.
         self.top_k = top_k
 
     def validate(self):
