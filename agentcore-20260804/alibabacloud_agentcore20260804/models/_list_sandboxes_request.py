@@ -10,6 +10,7 @@ class ListSandboxesRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
         search_text: str = None,
+        service_endpoint_id: str = None,
         session_id: str = None,
     ):
         # The maximum number of entries to return per page. Default value: 20. Valid values: 1 to 100.
@@ -18,6 +19,8 @@ class ListSandboxesRequest(DaraModel):
         self.next_token = next_token
         # The fragment of the Sandbox ID for a case-insensitive fuzzy search.
         self.search_text = search_text
+        # 省略或传空白时查询智能体 latest 运行单元；传入时该服务端点必须属于本智能体且目标类型为 AGENT_VERSION，否则返回 Resource.NotFound。独立运行的服务端点只返回其自身运行单元的 Sandbox；DEFAULT 服务端点尚未接管独立运行时回落到 latest 运行单元；非 DEFAULT 且未独立运行时返回 ServiceEndpointTargetNotReady。运行单元尚未创建时返回空列表且 totalCount 为 0，不报错。
+        self.service_endpoint_id = service_endpoint_id
         # The fragment of the current valid session ID for a case-insensitive fuzzy search.
         self.session_id = session_id
 
@@ -38,6 +41,9 @@ class ListSandboxesRequest(DaraModel):
         if self.search_text is not None:
             result['searchText'] = self.search_text
 
+        if self.service_endpoint_id is not None:
+            result['serviceEndpointId'] = self.service_endpoint_id
+
         if self.session_id is not None:
             result['sessionId'] = self.session_id
 
@@ -53,6 +59,9 @@ class ListSandboxesRequest(DaraModel):
 
         if m.get('searchText') is not None:
             self.search_text = m.get('searchText')
+
+        if m.get('serviceEndpointId') is not None:
+            self.service_endpoint_id = m.get('serviceEndpointId')
 
         if m.get('sessionId') is not None:
             self.session_id = m.get('sessionId')

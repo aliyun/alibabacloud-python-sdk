@@ -36,7 +36,7 @@ class ListExternalAgentsResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
-        # The total number of records that meet the filter conditions.
+        # The total number of records that meet the conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -140,7 +140,7 @@ class ListExternalAgentsResponseBodyItems(DaraModel):
         self.deploy_type = deploy_type
         # The description of the managed agent.
         self.description = description
-        # The latest specification version.
+        # The latest specification version number.
         self.latest_spec_version = latest_spec_version
         # The name of the managed agent.
         self.name = name

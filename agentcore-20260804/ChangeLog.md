@@ -1,3 +1,18 @@
+2026-11-06 Version: 3.4.0
+- Support API CreateAgentVersion.
+- Support API DeleteAgentVersion.
+- Support API GetAgentVersion.
+- Support API ListAgentVersions.
+- Update API GetServiceEndpoint: add response parameters Body.data.effectivePublicAccessEnabled.
+- Update API GetServiceEndpoint: add response parameters Body.data.elasticityPolicy.
+- Update API GetServiceEndpoint: add response parameters Body.data.publicAccessEnabled.
+- Update API ListSandboxSessions: add request parameters serviceEndpointId.
+- Update API ListSandboxes: add request parameters serviceEndpointId.
+- Update API ListServiceEndpoints: add response parameters Body.items.$.effectivePublicAccessEnabled.
+- Update API ListServiceEndpoints: add response parameters Body.items.$.elasticityPolicy.
+- Update API ListServiceEndpoints: add response parameters Body.items.$.publicAccessEnabled.
+
+
 2026-11-06 Version: 3.3.0
 - Generated python 2026-08-04 for AgentCore.
 

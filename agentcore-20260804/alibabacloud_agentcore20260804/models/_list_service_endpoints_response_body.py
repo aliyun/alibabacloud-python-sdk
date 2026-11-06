@@ -121,8 +121,11 @@ class ListServiceEndpointsResponseBodyItems(DaraModel):
         access_urls: List[main_models.ListServiceEndpointsResponseBodyItemsAccessUrls] = None,
         authentication: main_models.ListServiceEndpointsResponseBodyItemsAuthentication = None,
         created_at: str = None,
+        effective_public_access_enabled: bool = None,
+        elasticity_policy: main_models.ListServiceEndpointsResponseBodyItemsElasticityPolicy = None,
         endpoint_type: str = None,
         name: str = None,
+        public_access_enabled: bool = None,
         region_id: str = None,
         service_endpoint_id: str = None,
         status: str = None,
@@ -137,10 +140,16 @@ class ListServiceEndpointsResponseBodyItems(DaraModel):
         self.authentication = authentication
         # The creation time in UTC format compliant with RFC 3339.
         self.created_at = created_at
+        # publicAccessEnabled 与工作空间公网入向上限叠加后的结果：二者均允许时为 true。仅表示策略目标，不代表公网入口已发布完成，实际状态以 accessUrls 与 status 为准。
+        self.effective_public_access_enabled = effective_public_access_enabled
+        # 仅在服务端点设置过弹性覆盖值时返回，可设置的为 Router 类型服务端点与 GATEWAY_API_WITH_VPC_INGRESS 类型的 DEFAULT 服务端点；未设置覆盖值时不返回该对象，表示继承智能体源配置，不得当作空对象或默认策略。返回时三个字段必全。
+        self.elasticity_policy = elasticity_policy
         # The type of the service endpoint. DEFAULT indicates a default endpoint created and maintained by the platform. NAMED indicates a named endpoint explicitly created by the user.
         self.endpoint_type = endpoint_type
         # The name of the service endpoint. The name must be unique within the workspace and be 1 to 128 characters in length.
         self.name = name
+        # 用户在服务端点上设置的公网入向期望；未设置过的历史服务端点按 true 返回。仅表示配置期望，实际公网地址是否可用以 accessUrls 与 status 为准。
+        self.public_access_enabled = public_access_enabled
         # The ID of the region where the service endpoint resides.
         self.region_id = region_id
         # The ID of the service endpoint.
@@ -163,6 +172,8 @@ class ListServiceEndpointsResponseBodyItems(DaraModel):
                     v1.validate()
         if self.authentication:
             self.authentication.validate()
+        if self.elasticity_policy:
+            self.elasticity_policy.validate()
         if self.target:
             self.target.validate()
 
@@ -182,11 +193,20 @@ class ListServiceEndpointsResponseBodyItems(DaraModel):
         if self.created_at is not None:
             result['createdAt'] = self.created_at
 
+        if self.effective_public_access_enabled is not None:
+            result['effectivePublicAccessEnabled'] = self.effective_public_access_enabled
+
+        if self.elasticity_policy is not None:
+            result['elasticityPolicy'] = self.elasticity_policy.to_map()
+
         if self.endpoint_type is not None:
             result['endpointType'] = self.endpoint_type
 
         if self.name is not None:
             result['name'] = self.name
+
+        if self.public_access_enabled is not None:
+            result['publicAccessEnabled'] = self.public_access_enabled
 
         if self.region_id is not None:
             result['regionId'] = self.region_id
@@ -226,11 +246,21 @@ class ListServiceEndpointsResponseBodyItems(DaraModel):
         if m.get('createdAt') is not None:
             self.created_at = m.get('createdAt')
 
+        if m.get('effectivePublicAccessEnabled') is not None:
+            self.effective_public_access_enabled = m.get('effectivePublicAccessEnabled')
+
+        if m.get('elasticityPolicy') is not None:
+            temp_model = main_models.ListServiceEndpointsResponseBodyItemsElasticityPolicy()
+            self.elasticity_policy = temp_model.from_map(m.get('elasticityPolicy'))
+
         if m.get('endpointType') is not None:
             self.endpoint_type = m.get('endpointType')
 
         if m.get('name') is not None:
             self.name = m.get('name')
+
+        if m.get('publicAccessEnabled') is not None:
+            self.public_access_enabled = m.get('publicAccessEnabled')
 
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')
@@ -317,6 +347,52 @@ class ListServiceEndpointsResponseBodyItemsTarget(DaraModel):
 
         if m.get('targetType') is not None:
             self.target_type = m.get('targetType')
+
+        return self
+
+class ListServiceEndpointsResponseBodyItemsElasticityPolicy(DaraModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        max_sandbox_count: int = None,
+        min_sandbox_count: int = None,
+    ):
+        # 是否开启弹性。
+        self.enabled = enabled
+        # 最大实例数，不小于 1。
+        self.max_sandbox_count = max_sandbox_count
+        # 最小实例数，不小于 0 且不大于 maxSandboxCount。
+        self.min_sandbox_count = min_sandbox_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+
+        if self.max_sandbox_count is not None:
+            result['maxSandboxCount'] = self.max_sandbox_count
+
+        if self.min_sandbox_count is not None:
+            result['minSandboxCount'] = self.min_sandbox_count
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+
+        if m.get('maxSandboxCount') is not None:
+            self.max_sandbox_count = m.get('maxSandboxCount')
+
+        if m.get('minSandboxCount') is not None:
+            self.min_sandbox_count = m.get('minSandboxCount')
 
         return self
 

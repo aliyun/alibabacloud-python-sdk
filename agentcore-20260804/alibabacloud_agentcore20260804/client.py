@@ -685,6 +685,106 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_agent_spec_version_with_options_async(workspace_id, agent_spec_name, request, headers, runtime)
 
+    def create_agent_version_with_options(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        tmp_req: main_models.CreateAgentVersionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAgentVersionResponse:
+        tmp_req.validate()
+        request = main_models.CreateAgentVersionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAgentVersion',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/agents/{DaraURL.percent_encode(agent_id)}/versions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAgentVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_agent_version_with_options_async(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        tmp_req: main_models.CreateAgentVersionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAgentVersionResponse:
+        tmp_req.validate()
+        request = main_models.CreateAgentVersionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAgentVersion',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/agents/{DaraURL.percent_encode(agent_id)}/versions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAgentVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_agent_version(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.CreateAgentVersionRequest,
+    ) -> main_models.CreateAgentVersionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_agent_version_with_options(workspace_id, agent_id, request, headers, runtime)
+
+    async def create_agent_version_async(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.CreateAgentVersionRequest,
+    ) -> main_models.CreateAgentVersionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_agent_version_with_options_async(workspace_id, agent_id, request, headers, runtime)
+
     def create_credential_with_options(
         self,
         workspace_id: str,
@@ -2748,6 +2848,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_agent_spec_version_with_options_async(workspace_id, agent_spec_name, request, headers, runtime)
+
+    def delete_agent_version_with_options(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        agent_version: str,
+        request: main_models.DeleteAgentVersionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAgentVersionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAgentVersion',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/agents/{DaraURL.percent_encode(agent_id)}/versions/{DaraURL.percent_encode(agent_version)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAgentVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_agent_version_with_options_async(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        agent_version: str,
+        request: main_models.DeleteAgentVersionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAgentVersionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAgentVersion',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/agents/{DaraURL.percent_encode(agent_id)}/versions/{DaraURL.percent_encode(agent_version)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAgentVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_agent_version(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        agent_version: str,
+        request: main_models.DeleteAgentVersionRequest,
+    ) -> main_models.DeleteAgentVersionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_agent_version_with_options(workspace_id, agent_id, agent_version, request, headers, runtime)
+
+    async def delete_agent_version_async(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        agent_version: str,
+        request: main_models.DeleteAgentVersionRequest,
+    ) -> main_models.DeleteAgentVersionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_agent_version_with_options_async(workspace_id, agent_id, agent_version, request, headers, runtime)
 
     def delete_credential_with_options(
         self,
@@ -5400,6 +5588,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_agent_spec_version_with_options_async(workspace_id, agent_spec_name, agent_spec_version, request, headers, runtime)
+
+    def get_agent_version_with_options(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        agent_version: str,
+        request: main_models.GetAgentVersionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentVersionResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentVersion',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/agents/{DaraURL.percent_encode(agent_id)}/versions/{DaraURL.percent_encode(agent_version)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_agent_version_with_options_async(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        agent_version: str,
+        request: main_models.GetAgentVersionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentVersionResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentVersion',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/agents/{DaraURL.percent_encode(agent_id)}/versions/{DaraURL.percent_encode(agent_version)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_agent_version(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        agent_version: str,
+        request: main_models.GetAgentVersionRequest,
+    ) -> main_models.GetAgentVersionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_agent_version_with_options(workspace_id, agent_id, agent_version, request, headers, runtime)
+
+    async def get_agent_version_async(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        agent_version: str,
+        request: main_models.GetAgentVersionRequest,
+    ) -> main_models.GetAgentVersionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_agent_version_with_options_async(workspace_id, agent_id, agent_version, request, headers, runtime)
 
     def get_credential_with_options(
         self,
@@ -8405,6 +8673,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_agent_teams_with_options_async(workspace_id, request, headers, runtime)
 
+    def list_agent_versions_with_options(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.ListAgentVersionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgentVersionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAgentVersions',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/agents/{DaraURL.percent_encode(agent_id)}/versions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAgentVersionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_agent_versions_with_options_async(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.ListAgentVersionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgentVersionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAgentVersions',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/agents/{DaraURL.percent_encode(agent_id)}/versions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAgentVersionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_agent_versions(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.ListAgentVersionsRequest,
+    ) -> main_models.ListAgentVersionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_agent_versions_with_options(workspace_id, agent_id, request, headers, runtime)
+
+    async def list_agent_versions_async(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.ListAgentVersionsRequest,
+    ) -> main_models.ListAgentVersionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_agent_versions_with_options_async(workspace_id, agent_id, request, headers, runtime)
+
     def list_connector_models_with_options(
         self,
         workspace_id: str,
@@ -10428,6 +10784,8 @@ class Client(OpenApiClient):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.service_endpoint_id):
+            query['serviceEndpointId'] = request.service_endpoint_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -10463,6 +10821,8 @@ class Client(OpenApiClient):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.service_endpoint_id):
+            query['serviceEndpointId'] = request.service_endpoint_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -10521,6 +10881,8 @@ class Client(OpenApiClient):
             query['nextToken'] = request.next_token
         if not DaraCore.is_null(request.search_text):
             query['searchText'] = request.search_text
+        if not DaraCore.is_null(request.service_endpoint_id):
+            query['serviceEndpointId'] = request.service_endpoint_id
         if not DaraCore.is_null(request.session_id):
             query['sessionId'] = request.session_id
         req = open_api_util_models.OpenApiRequest(
@@ -10559,6 +10921,8 @@ class Client(OpenApiClient):
             query['nextToken'] = request.next_token
         if not DaraCore.is_null(request.search_text):
             query['searchText'] = request.search_text
+        if not DaraCore.is_null(request.service_endpoint_id):
+            query['serviceEndpointId'] = request.service_endpoint_id
         if not DaraCore.is_null(request.session_id):
             query['sessionId'] = request.session_id
         req = open_api_util_models.OpenApiRequest(

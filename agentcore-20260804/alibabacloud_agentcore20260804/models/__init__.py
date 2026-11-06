@@ -32,6 +32,10 @@ from ._create_agent_spec_version_request import CreateAgentSpecVersionRequest
 from ._create_agent_spec_version_shrink_request import CreateAgentSpecVersionShrinkRequest
 from ._create_agent_spec_version_response_body import CreateAgentSpecVersionResponseBody
 from ._create_agent_spec_version_response import CreateAgentSpecVersionResponse
+from ._create_agent_version_request import CreateAgentVersionRequest
+from ._create_agent_version_shrink_request import CreateAgentVersionShrinkRequest
+from ._create_agent_version_response_body import CreateAgentVersionResponseBody
+from ._create_agent_version_response import CreateAgentVersionResponse
 from ._create_credential_request import CreateCredentialRequest
 from ._create_credential_shrink_request import CreateCredentialShrinkRequest
 from ._create_credential_response_body import CreateCredentialResponseBody
@@ -117,6 +121,9 @@ from ._delete_agent_spec_response import DeleteAgentSpecResponse
 from ._delete_agent_spec_version_request import DeleteAgentSpecVersionRequest
 from ._delete_agent_spec_version_response_body import DeleteAgentSpecVersionResponseBody
 from ._delete_agent_spec_version_response import DeleteAgentSpecVersionResponse
+from ._delete_agent_version_request import DeleteAgentVersionRequest
+from ._delete_agent_version_response_body import DeleteAgentVersionResponseBody
+from ._delete_agent_version_response import DeleteAgentVersionResponse
 from ._delete_credential_request import DeleteCredentialRequest
 from ._delete_credential_response_body import DeleteCredentialResponseBody
 from ._delete_credential_response import DeleteCredentialResponse
@@ -219,6 +226,9 @@ from ._get_agent_spec_latest_response import GetAgentSpecLatestResponse
 from ._get_agent_spec_version_request import GetAgentSpecVersionRequest
 from ._get_agent_spec_version_response_body import GetAgentSpecVersionResponseBody
 from ._get_agent_spec_version_response import GetAgentSpecVersionResponse
+from ._get_agent_version_request import GetAgentVersionRequest
+from ._get_agent_version_response_body import GetAgentVersionResponseBody
+from ._get_agent_version_response import GetAgentVersionResponse
 from ._get_credential_request import GetCredentialRequest
 from ._get_credential_response_body import GetCredentialResponseBody
 from ._get_credential_response import GetCredentialResponse
@@ -334,6 +344,9 @@ from ._list_agent_teams_request import ListAgentTeamsRequest
 from ._list_agent_teams_shrink_request import ListAgentTeamsShrinkRequest
 from ._list_agent_teams_response_body import ListAgentTeamsResponseBody
 from ._list_agent_teams_response import ListAgentTeamsResponse
+from ._list_agent_versions_request import ListAgentVersionsRequest
+from ._list_agent_versions_response_body import ListAgentVersionsResponseBody
+from ._list_agent_versions_response import ListAgentVersionsResponse
 from ._list_connector_models_request import ListConnectorModelsRequest
 from ._list_connector_models_response_body import ListConnectorModelsResponseBody
 from ._list_connector_models_response import ListConnectorModelsResponse
@@ -624,6 +637,8 @@ from ._create_agent_imchannel_response_body import CreateAgentIMChannelResponseB
 from ._create_agent_imchannel_response_body import CreateAgentIMChannelResponseBodyData
 from ._create_agent_spec_request import CreateAgentSpecRequestBody
 from ._create_agent_spec_version_request import CreateAgentSpecVersionRequestBody
+from ._create_agent_version_request import CreateAgentVersionRequestBody
+from ._create_agent_version_response_body import CreateAgentVersionResponseBodyData
 from ._create_credential_request import CreateCredentialRequestBodyResourceRefs
 from ._create_credential_request import CreateCredentialRequestBody
 from ._create_credential_response_body import CreateCredentialResponseBodyDataResourceRefs
@@ -879,6 +894,7 @@ from ._get_agent_spec_latest_response_body import GetAgentSpecLatestResponseBody
 from ._get_agent_spec_latest_response_body import GetAgentSpecLatestResponseBodyDataSkills
 from ._get_agent_spec_latest_response_body import GetAgentSpecLatestResponseBodyData
 from ._get_agent_spec_version_response_body import GetAgentSpecVersionResponseBodyData
+from ._get_agent_version_response_body import GetAgentVersionResponseBodyData
 from ._get_credential_response_body import GetCredentialResponseBodyDataBoundAgents
 from ._get_credential_response_body import GetCredentialResponseBodyDataResourceRefs
 from ._get_credential_response_body import GetCredentialResponseBodyData
@@ -1005,6 +1021,7 @@ from ._get_model_response_body import GetModelResponseBodyData
 from ._get_model_connection_response_body import GetModelConnectionResponseBodyData
 from ._get_service_endpoint_response_body import GetServiceEndpointResponseBodyDataAccessUrls
 from ._get_service_endpoint_response_body import GetServiceEndpointResponseBodyDataAuthentication
+from ._get_service_endpoint_response_body import GetServiceEndpointResponseBodyDataElasticityPolicy
 from ._get_service_endpoint_response_body import GetServiceEndpointResponseBodyDataTarget
 from ._get_service_endpoint_response_body import GetServiceEndpointResponseBodyData
 from ._get_service_endpoint_api_key_response_body import GetServiceEndpointApiKeyResponseBodyData
@@ -1085,6 +1102,7 @@ from ._list_agent_specs_response_body import ListAgentSpecsResponseBodyDataPageI
 from ._list_agent_specs_response_body import ListAgentSpecsResponseBodyData
 from ._list_agent_teams_request import ListAgentTeamsRequestBody
 from ._list_agent_teams_response_body import ListAgentTeamsResponseBodyItems
+from ._list_agent_versions_response_body import ListAgentVersionsResponseBodyItems
 from ._list_connector_models_response_body import ListConnectorModelsResponseBodyItems
 from ._list_connectors_response_body import ListConnectorsResponseBodyItems
 from ._list_credentials_response_body import ListCredentialsResponseBodyItemsResourceRefs
@@ -1152,6 +1170,7 @@ from ._list_sandbox_sessions_response_body import ListSandboxSessionsResponseBod
 from ._list_sandboxes_response_body import ListSandboxesResponseBodyItems
 from ._list_service_endpoints_response_body import ListServiceEndpointsResponseBodyItemsAccessUrls
 from ._list_service_endpoints_response_body import ListServiceEndpointsResponseBodyItemsAuthentication
+from ._list_service_endpoints_response_body import ListServiceEndpointsResponseBodyItemsElasticityPolicy
 from ._list_service_endpoints_response_body import ListServiceEndpointsResponseBodyItemsTarget
 from ._list_service_endpoints_response_body import ListServiceEndpointsResponseBodyItems
 from ._list_skill_references_response_body import ListSkillReferencesResponseBodyDataPageItems
@@ -1474,6 +1493,10 @@ __all__ = [
     CreateAgentSpecVersionShrinkRequest,
     CreateAgentSpecVersionResponseBody,
     CreateAgentSpecVersionResponse,
+    CreateAgentVersionRequest,
+    CreateAgentVersionShrinkRequest,
+    CreateAgentVersionResponseBody,
+    CreateAgentVersionResponse,
     CreateCredentialRequest,
     CreateCredentialShrinkRequest,
     CreateCredentialResponseBody,
@@ -1559,6 +1582,9 @@ __all__ = [
     DeleteAgentSpecVersionRequest,
     DeleteAgentSpecVersionResponseBody,
     DeleteAgentSpecVersionResponse,
+    DeleteAgentVersionRequest,
+    DeleteAgentVersionResponseBody,
+    DeleteAgentVersionResponse,
     DeleteCredentialRequest,
     DeleteCredentialResponseBody,
     DeleteCredentialResponse,
@@ -1661,6 +1687,9 @@ __all__ = [
     GetAgentSpecVersionRequest,
     GetAgentSpecVersionResponseBody,
     GetAgentSpecVersionResponse,
+    GetAgentVersionRequest,
+    GetAgentVersionResponseBody,
+    GetAgentVersionResponse,
     GetCredentialRequest,
     GetCredentialResponseBody,
     GetCredentialResponse,
@@ -1776,6 +1805,9 @@ __all__ = [
     ListAgentTeamsShrinkRequest,
     ListAgentTeamsResponseBody,
     ListAgentTeamsResponse,
+    ListAgentVersionsRequest,
+    ListAgentVersionsResponseBody,
+    ListAgentVersionsResponse,
     ListConnectorModelsRequest,
     ListConnectorModelsResponseBody,
     ListConnectorModelsResponse,
@@ -2066,6 +2098,8 @@ __all__ = [
     CreateAgentIMChannelResponseBodyData,
     CreateAgentSpecRequestBody,
     CreateAgentSpecVersionRequestBody,
+    CreateAgentVersionRequestBody,
+    CreateAgentVersionResponseBodyData,
     CreateCredentialRequestBodyResourceRefs,
     CreateCredentialRequestBody,
     CreateCredentialResponseBodyDataResourceRefs,
@@ -2321,6 +2355,7 @@ __all__ = [
     GetAgentSpecLatestResponseBodyDataSkills,
     GetAgentSpecLatestResponseBodyData,
     GetAgentSpecVersionResponseBodyData,
+    GetAgentVersionResponseBodyData,
     GetCredentialResponseBodyDataBoundAgents,
     GetCredentialResponseBodyDataResourceRefs,
     GetCredentialResponseBodyData,
@@ -2447,6 +2482,7 @@ __all__ = [
     GetModelConnectionResponseBodyData,
     GetServiceEndpointResponseBodyDataAccessUrls,
     GetServiceEndpointResponseBodyDataAuthentication,
+    GetServiceEndpointResponseBodyDataElasticityPolicy,
     GetServiceEndpointResponseBodyDataTarget,
     GetServiceEndpointResponseBodyData,
     GetServiceEndpointApiKeyResponseBodyData,
@@ -2527,6 +2563,7 @@ __all__ = [
     ListAgentSpecsResponseBodyData,
     ListAgentTeamsRequestBody,
     ListAgentTeamsResponseBodyItems,
+    ListAgentVersionsResponseBodyItems,
     ListConnectorModelsResponseBodyItems,
     ListConnectorsResponseBodyItems,
     ListCredentialsResponseBodyItemsResourceRefs,
@@ -2594,6 +2631,7 @@ __all__ = [
     ListSandboxesResponseBodyItems,
     ListServiceEndpointsResponseBodyItemsAccessUrls,
     ListServiceEndpointsResponseBodyItemsAuthentication,
+    ListServiceEndpointsResponseBodyItemsElasticityPolicy,
     ListServiceEndpointsResponseBodyItemsTarget,
     ListServiceEndpointsResponseBodyItems,
     ListSkillReferencesResponseBodyDataPageItems,

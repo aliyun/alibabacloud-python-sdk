@@ -99,9 +99,9 @@ class GetMcpCodePackageUploadUrlResponseBodyData(DaraModel):
         self.code_package_token = code_package_token
         # The expiration time of the presigned upload URL, in ISO 8601 UTC format.
         self.expires_at = expires_at
-        # The HTTP request headers. The key is the header name, and the value is the header content.
+        # The HTTP request headers, where the key is the header name and the value is the header content.
         self.headers = headers
-        # The maximum allowed size of the code package to be uploaded, in bytes.
+        # The maximum allowed size of the code package to upload, in bytes.
         self.max_size = max_size
         # The HTTP method used to upload the code package.
         self.upload_method = upload_method
