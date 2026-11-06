@@ -1,3 +1,7 @@
+2026-11-06 Version: 4.5.0
+- Support API DescribeDataAgentSkillDownload.
+
+
 2026-11-06 Version: 4.4.0
 - Generated python 2025-04-14 for Dms.
 

@@ -185,6 +185,9 @@ from ._describe_data_agent_metrics_response import DescribeDataAgentMetricsRespo
 from ._describe_data_agent_session_request import DescribeDataAgentSessionRequest
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBody
 from ._describe_data_agent_session_response import DescribeDataAgentSessionResponse
+from ._describe_data_agent_skill_download_request import DescribeDataAgentSkillDownloadRequest
+from ._describe_data_agent_skill_download_response_body import DescribeDataAgentSkillDownloadResponseBody
+from ._describe_data_agent_skill_download_response import DescribeDataAgentSkillDownloadResponse
 from ._describe_data_agent_theme_request import DescribeDataAgentThemeRequest
 from ._describe_data_agent_theme_response_body import DescribeDataAgentThemeResponseBody
 from ._describe_data_agent_theme_response import DescribeDataAgentThemeResponse
@@ -544,6 +547,7 @@ from ._describe_data_agent_session_response_body import DescribeDataAgentSession
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataRecallResults
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataSessionConfig
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyData
+from ._describe_data_agent_skill_download_response_body import DescribeDataAgentSkillDownloadResponseBodyData
 from ._describe_data_agent_theme_response_body import DescribeDataAgentThemeResponseBodyData
 from ._describe_document_response_body import DescribeDocumentResponseBodyData
 from ._describe_file_upload_signature_response_body import DescribeFileUploadSignatureResponseBodyData
@@ -827,6 +831,9 @@ __all__ = [
     DescribeDataAgentSessionRequest,
     DescribeDataAgentSessionResponseBody,
     DescribeDataAgentSessionResponse,
+    DescribeDataAgentSkillDownloadRequest,
+    DescribeDataAgentSkillDownloadResponseBody,
+    DescribeDataAgentSkillDownloadResponse,
     DescribeDataAgentThemeRequest,
     DescribeDataAgentThemeResponseBody,
     DescribeDataAgentThemeResponse,
@@ -1186,6 +1193,7 @@ __all__ = [
     DescribeDataAgentSessionResponseBodyDataRecallResults,
     DescribeDataAgentSessionResponseBodyDataSessionConfig,
     DescribeDataAgentSessionResponseBodyData,
+    DescribeDataAgentSkillDownloadResponseBodyData,
     DescribeDataAgentThemeResponseBodyData,
     DescribeDocumentResponseBodyData,
     DescribeFileUploadSignatureResponseBodyData,

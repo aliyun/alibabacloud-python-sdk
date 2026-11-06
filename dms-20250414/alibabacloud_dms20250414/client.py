@@ -3554,6 +3554,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_data_agent_session_with_options_async(request, runtime)
 
+    def describe_data_agent_skill_download_with_options(
+        self,
+        request: main_models.DescribeDataAgentSkillDownloadRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDataAgentSkillDownloadResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.skill_id):
+            query['SkillId'] = request.skill_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDataAgentSkillDownload',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDataAgentSkillDownloadResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_data_agent_skill_download_with_options_async(
+        self,
+        request: main_models.DescribeDataAgentSkillDownloadRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDataAgentSkillDownloadResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.skill_id):
+            query['SkillId'] = request.skill_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDataAgentSkillDownload',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDataAgentSkillDownloadResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_data_agent_skill_download(
+        self,
+        request: main_models.DescribeDataAgentSkillDownloadRequest,
+    ) -> main_models.DescribeDataAgentSkillDownloadResponse:
+        runtime = RuntimeOptions()
+        return self.describe_data_agent_skill_download_with_options(request, runtime)
+
+    async def describe_data_agent_skill_download_async(
+        self,
+        request: main_models.DescribeDataAgentSkillDownloadRequest,
+    ) -> main_models.DescribeDataAgentSkillDownloadResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_data_agent_skill_download_with_options_async(request, runtime)
+
     def describe_data_agent_theme_with_options(
         self,
         request: main_models.DescribeDataAgentThemeRequest,
