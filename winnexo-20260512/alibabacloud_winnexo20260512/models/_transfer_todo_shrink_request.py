@@ -12,15 +12,15 @@ class TransferTodoShrinkRequest(DaraModel):
         tenant_id: str = None,
         todo_id: str = None,
     ):
-        # The handover description.
+        # The handover note.
         self.comment = comment
-        # The list of target user IDs to whom the task is reassigned. You can specify 1 to 100 user IDs.
+        # The list of target user IDs for the transfer (1 to 100).
         # 
         # This parameter is required.
         self.target_user_ids_shrink = target_user_ids_shrink
-        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
+        # The to-do item ID.
         self.tenant_id = tenant_id
-        # The ID of the to-do task.
+        # The list of target user IDs for the transfer (1 to 100).
         # 
         # This parameter is required.
         self.todo_id = todo_id

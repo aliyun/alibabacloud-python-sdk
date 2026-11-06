@@ -15,9 +15,9 @@ class MarkTodosReadResponseBody(DaraModel):
     ):
         # The business status code. A value of 200 indicates success.
         self.code = code
-        # The error message.
+        # The error description.
         self.message = message
-        # The request ID.
+        # The request tracking ID.
         self.request_id = request_id
         # The number of unread to-do items remaining after the operation.
         self.unread_count = unread_count

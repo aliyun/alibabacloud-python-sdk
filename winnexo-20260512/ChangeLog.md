@@ -1,3 +1,49 @@
+2026-11-06 Version: 1.8.0
+- Support API CreateFreeExplorationWorkItem.
+- Support API GetCollaborationGroupOutputItemPreview.
+- Support API GetWorkItemAudit.
+- Support API GetWorkItemRunSummaries.
+- Support API GetWorkflowNodeConfiguration.
+- Support API ListCollaborationGroupMembers.
+- Support API ListCollaborationGroups.
+- Support API RerunWorkflowNode.
+- Support API ResetWorkflowNodeConfiguration.
+- Support API SendWorkItemMessage.
+- Support API UpdateWorkflowNodeConfiguration.
+- Update API CreateWorkflowTemplate: add response parameters Body.edges.
+- Update API CreateWorkflowTemplate: add response parameters Body.layout.
+- Update API CreateWorkflowTemplate: add response parameters Body.schemaVersion.
+- Update API CreateWorkflowTemplate: add response parameters Body.steps.$.reviewOutput.
+- Update API CreateWorkflowTemplateDraftVersion: add response parameters Body.edges.
+- Update API CreateWorkflowTemplateDraftVersion: add response parameters Body.layout.
+- Update API CreateWorkflowTemplateDraftVersion: add response parameters Body.schemaVersion.
+- Update API CreateWorkflowTemplateDraftVersion: add response parameters Body.steps.$.reviewOutput.
+- Update API ExportWorkflowTemplate: add response parameters Body.template.edges.
+- Update API ExportWorkflowTemplate: add response parameters Body.template.layout.
+- Update API ExportWorkflowTemplate: add response parameters Body.template.schemaVersion.
+- Update API ExportWorkflowTemplate: add response parameters Body.template.steps.$.reviewOutput.
+- Update API GenerateWorkflowTemplateDraft: add response parameters Body.draft.edges.
+- Update API GenerateWorkflowTemplateDraft: add response parameters Body.draft.layout.
+- Update API GenerateWorkflowTemplateDraft: add response parameters Body.draft.schemaVersion.
+- Update API GenerateWorkflowTemplateDraft: add response parameters Body.draft.steps.$.reviewOutput.
+- Update API GetWorkflowTemplate: add response parameters Body.edges.
+- Update API GetWorkflowTemplate: add response parameters Body.layout.
+- Update API GetWorkflowTemplate: add response parameters Body.schemaVersion.
+- Update API GetWorkflowTemplate: add response parameters Body.steps.$.reviewOutput.
+- Update API ImportWorkflowTemplate: add response parameters Body.edges.
+- Update API ImportWorkflowTemplate: add response parameters Body.layout.
+- Update API ImportWorkflowTemplate: add response parameters Body.schemaVersion.
+- Update API ImportWorkflowTemplate: add response parameters Body.steps.$.reviewOutput.
+- Update API SetWorkflowTemplateEffectiveVersion: add response parameters Body.edges.
+- Update API SetWorkflowTemplateEffectiveVersion: add response parameters Body.layout.
+- Update API SetWorkflowTemplateEffectiveVersion: add response parameters Body.schemaVersion.
+- Update API SetWorkflowTemplateEffectiveVersion: add response parameters Body.steps.$.reviewOutput.
+- Update API UpdateWorkflowTemplate: add response parameters Body.edges.
+- Update API UpdateWorkflowTemplate: add response parameters Body.layout.
+- Update API UpdateWorkflowTemplate: add response parameters Body.schemaVersion.
+- Update API UpdateWorkflowTemplate: add response parameters Body.steps.$.reviewOutput.
+
+
 2026-10-23 Version: 1.7.0
 - Support API CreateWorkflowTemplateDraftVersion.
 - Support API DeleteWorkflowTemplateVersion.

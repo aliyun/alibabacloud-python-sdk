@@ -14,13 +14,13 @@ class DeleteAppResourcePermissionsRequest(DaraModel):
         resource_tenant_id: str = None,
         tenant_id: str = None,
     ):
-        # The scope of the permissions to be revoked.
+        # The scope of permission revocation.
         # 
         # This parameter is required.
         self.items = items
-        # The ID of the tenant to which the resource belongs. If not specified, the current tenant of the caller is used.
+        # The scope of permission revocation.
         self.resource_tenant_id = resource_tenant_id
-        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
+        # The ID of the tenant to which the resource belongs. If omitted, the current tenant of the caller is used.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -76,17 +76,17 @@ class DeleteAppResourcePermissionsRequestItems(DaraModel):
     ):
         # The list of grantee principal IDs.
         self.grantee_ids = grantee_ids
-        # The ID of the tenant to which the grantee user belongs. This parameter is optional if the user and the resource belong to the same tenant, and is required for cross-tenant users.
+        # The tenant to which the grantee user belongs. This parameter can be omitted if the user belongs to the same tenant as the resource, and is required for cross-tenant users.
         self.grantee_tenant_id = grantee_tenant_id
-        # The grantee principal type.
+        # The type of the grantee principal.
         self.grantee_type = grantee_type
-        # Specifies whether to include dot-separated descendant resources for the RESOURCE. Default value: false.
+        # Specifies whether the resource includes dot-separated descendant resources. Default value: false.
         self.include_descendants = include_descendants
-        # The dot-separated resource key whose first segment is the application key of the APP.
+        # The dot-separated resource key whose first segment is the APP application key.
         # 
         # This parameter is required.
         self.resource_key = resource_key
-        # The resource type. Set the value to APP_RESOURCE.
+        # The resource type. Fixed to APP_RESOURCE.
         # 
         # This parameter is required.
         self.resource_type = resource_type

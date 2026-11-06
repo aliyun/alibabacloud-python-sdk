@@ -19,7 +19,7 @@ class ListOutputFilesShrinkRequest(DaraModel):
         tags_shrink: str = None,
         tenant_id: str = None,
     ):
-        # The business ID used for exact filtering. The length is 1 to 128 characters. This value is derived from the businessId of the file registration or associated workflow instance.
+        # The business ID used for exact filtering. The length is 1 to 128 characters. This ID is derived from file registrations or the businessId of associated workflow instances.
         self.biz_id = biz_id
         # The ID of the collaboration workspace. The length is 1 to 64 characters. This parameter is optional. If not specified, the personal outputs of the current user are queried. If specified, the real-time permissions of the workspace members and source resources are verified.
         self.collaboration_group_id = collaboration_group_id
@@ -27,7 +27,7 @@ class ListOutputFilesShrinkRequest(DaraModel):
         self.item_type = item_type
         # The keyword used to match the output title or detail name.
         self.keyword = keyword
-        # The name of the digital employee (operating object). Filters outputs by name.
+        # The name of the digital employee (operating object). Filters results by name.
         self.operating_object_name = operating_object_name
         # The page number. Pages start from 1. Default value: 1.
         self.page = page
@@ -35,9 +35,9 @@ class ListOutputFilesShrinkRequest(DaraModel):
         self.page_size = page_size
         # The session ID used for exact filtering. The length is 1 to 128 characters. This parameter applies to regular sessions, skill sessions, and the executionId of task executions.
         self.session_id = session_id
-        # Specifies whether to display only shared outputs and output details.
+        # Specifies whether to display only the outputs and output details that have sharing enabled.
         self.shared_only = shared_only
-        # The tags used for exact filtering. All specified tags must be matched simultaneously. You can specify up to 20 tags. Each tag must be a non-empty string of 1 to 128 characters. Tags are derived from file registrations or the variables.tags of associated instances.
+        # The tags used for exact filtering. All specified tags must match simultaneously. You can specify up to 20 tags. Each tag must be a non-empty string of 1 to 128 characters. Tags are derived from file registrations or the variables.tags of associated instances.
         self.tags_shrink = tags_shrink
         # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used. The identity and tenant permissions are determined by the gateway and backend authentication.
         self.tenant_id = tenant_id

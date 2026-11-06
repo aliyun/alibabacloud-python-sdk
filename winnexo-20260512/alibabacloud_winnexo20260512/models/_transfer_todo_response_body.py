@@ -24,7 +24,7 @@ class TransferTodoResponseBody(DaraModel):
         self.request_id = request_id
         # The processing results for each target.
         self.targets = targets
-        # The ID of the to-do task.
+        # The list of target user IDs for the transfer (1 to 100).
         self.todo_id = todo_id
 
     def validate(self):
@@ -87,7 +87,7 @@ class TransferTodoResponseBodyTargets(DaraModel):
     ):
         # The processing result. Valid values: CREATED, REVIVED, and ALREADY_PENDING.
         self.result = result
-        # The ID of the target user.
+        # The target user ID.
         self.user_id = user_id
 
     def validate(self):

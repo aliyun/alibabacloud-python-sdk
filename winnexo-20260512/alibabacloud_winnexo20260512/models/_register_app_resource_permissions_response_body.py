@@ -17,11 +17,11 @@ class RegisterAppResourcePermissionsResponseBody(DaraModel):
     ):
         # The business status code. A value of 200 indicates success.
         self.code = code
-        # The error message. This parameter is empty if the request is successful.
+        # The error description. Empty if the request is successful.
         self.message = message
-        # The newly created or idempotently matched permission records.
+        # The created or idempotently matched permission records.
         self.records = records
-        # The request tracking ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -88,11 +88,11 @@ class RegisterAppResourcePermissionsResponseBodyRecords(DaraModel):
     ):
         # The creation time.
         self.created_at = created_at
-        # The expiration time.
+        # The expiration time with a time zone. If omitted, the permissions never expire.
         self.expire_at = expire_at
         # The platform user ID of the grantor.
         self.granted_by = granted_by
-        # The principal ID.
+        # The principal ID. Omit this parameter for ALL_USERS.
         self.grantee_id = grantee_id
         # The principal name.
         self.grantee_name = grantee_name
@@ -104,9 +104,9 @@ class RegisterAppResourcePermissionsResponseBodyRecords(DaraModel):
         self.permission = permission
         # The permission record ID.
         self.permission_id = permission_id
-        # The resource key.
+        # The dot-separated resource key with the first segment as the APP application key.
         self.resource_key = resource_key
-        # The resource type.
+        # The resource type. Fixed to APP_RESOURCE.
         self.resource_type = resource_type
         # The update time.
         self.updated_at = updated_at

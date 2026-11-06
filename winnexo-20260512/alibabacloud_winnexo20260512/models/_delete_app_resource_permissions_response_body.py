@@ -12,11 +12,11 @@ class DeleteAppResourcePermissionsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The business status code. The value 200 indicates success.
+        # The business status code. A value of 200 indicates success.
         self.code = code
         # The number of deleted permission records.
         self.deleted_count = deleted_count
-        # The error message. This field is empty if the request is successful.
+        # The error message. Empty if the request is successful.
         self.message = message
         # The request ID.
         self.request_id = request_id

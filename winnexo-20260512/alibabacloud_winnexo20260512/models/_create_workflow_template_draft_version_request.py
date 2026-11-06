@@ -22,7 +22,7 @@ class CreateWorkflowTemplateDraftVersionRequest(DaraModel):
         self.template_id = template_id
         # The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
-        # The version number of the template on which the edit is based. The format is a lowercase v followed by a positive integer, such as v1. A draft version is returned as-is.
+        # The version number to which the returned content belongs.
         # 
         # This parameter is required.
         self.version = version

@@ -12,17 +12,17 @@ class SetWorkflowTemplateEffectiveVersionRequest(DaraModel):
         tenant_id: str = None,
         version: str = None,
     ):
-        # The ID of the collaboration workspace.
+        # The collaboration workspace ID.
         # 
         # This parameter is required.
         self.collaboration_group_id = collaboration_group_id
-        # The ID of the template.
+        # The template ID.
         # 
         # This parameter is required.
         self.template_id = template_id
-        # The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
+        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
-        # The submitted template version number to be set as effective. The format is a lowercase v followed by a positive integer, such as v1.
+        # The version number of the returned content.
         # 
         # This parameter is required.
         self.version = version

@@ -21,13 +21,13 @@ class GetScheduledTaskExecutionRecordsResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # Indicates whether more data is available.
+        # Indicates whether more data exists.
         self.has_more = has_more
         # The description of the status code.
         self.message = message
-        # The current page number.
+        # The page number, starting from 1.
         self.page = page
-        # The number of tasks per page.
+        # The ID of the collaboration group, such as cg_101. If you specify this parameter, the data is returned by group dimension, and the caller must be a valid group member. If you do not specify this parameter, the data is returned by personal dimension, excluding group tasks.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -120,7 +120,7 @@ class GetScheduledTaskExecutionRecordsResponseBodyTasks(DaraModel):
         timezone: str = None,
         trigger_type: str = None,
     ):
-        # The ID of the collaboration group to which the task belongs. An empty value indicates a personal task.
+        # The pre-filter for a single task. If you do not specify this parameter, the execution records of all visible tasks are returned.
         self.collaboration_group_id = collaboration_group_id
         # The cron expression.
         self.cron_expression = cron_expression
@@ -128,10 +128,7 @@ class GetScheduledTaskExecutionRecordsResponseBodyTasks(DaraModel):
         self.description = description
         # Indicates whether public access is enabled.
         self.is_open = is_open
-        # The execution model tier. Valid values:
-        # - flagship: Flagship.
-        # - standard: Standard.
-        # - quick: Lightweight.
+        # The execution model tier. Valid values: flagship (flagship), standard (standard), and quick (lightweight).
         self.model = model
         # The name.
         self.name = name
@@ -144,8 +141,8 @@ class GetScheduledTaskExecutionRecordsResponseBodyTasks(DaraModel):
         # > Default value: UTC+8.
         self.timezone = timezone
         # The trigger type. Valid values:
-        # - Manual: Manual execution.
-        # - Cron: Timed scheduling.
+        # - Manual: manual execution.
+        # - Cron: scheduled trigger.
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -242,7 +239,7 @@ class GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline(DaraModel):
         scheduled_time: str = None,
         status: str = None,
     ):
-        # The actual hours spent, in hours.
+        # The actual working hours in hours.
         self.actual_time = actual_time
         # The name of the schedule location.
         self.display_name = display_name
@@ -250,9 +247,9 @@ class GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline(DaraModel):
         self.error_message = error_message
         # The execution record ID.
         self.execution_id = execution_id
-        # Indicates whether the execution record has been archived due to expiration.
+        # The time zone.
         self.is_expired = is_expired
-        # The execution output content (historical records only).
+        # The execution output content (history records only).
         self.output_content = output_content
         # The timed scheduling time.
         self.scheduled_time = scheduled_time

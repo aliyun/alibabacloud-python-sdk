@@ -10,9 +10,9 @@ class BatchCancelTodosShrinkRequest(DaraModel):
         tenant_id: str = None,
         todo_ids_shrink: str = None,
     ):
-        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
+        # The list of to-do item IDs. You can specify 1 to 100 IDs.
         self.tenant_id = tenant_id
-        # The list of to-do IDs. You can specify 1 to 100 IDs.
+        # The list of to-do item IDs. You can specify 1 to 100 IDs.
         # 
         # This parameter is required.
         self.todo_ids_shrink = todo_ids_shrink

@@ -54,6 +54,10 @@ from ._create_conversation_response import CreateConversationResponse
 from ._create_custom_org_request import CreateCustomOrgRequest
 from ._create_custom_org_response_body import CreateCustomOrgResponseBody
 from ._create_custom_org_response import CreateCustomOrgResponse
+from ._create_free_exploration_work_item_request import CreateFreeExplorationWorkItemRequest
+from ._create_free_exploration_work_item_shrink_request import CreateFreeExplorationWorkItemShrinkRequest
+from ._create_free_exploration_work_item_response_body import CreateFreeExplorationWorkItemResponseBody
+from ._create_free_exploration_work_item_response import CreateFreeExplorationWorkItemResponse
 from ._create_graph_request import CreateGraphRequest
 from ._create_graph_response_body import CreateGraphResponseBody
 from ._create_graph_response import CreateGraphResponse
@@ -239,6 +243,9 @@ from ._get_ali_ding_minutes_content_response import GetAliDingMinutesContentResp
 from ._get_chat_session_request import GetChatSessionRequest
 from ._get_chat_session_response_body import GetChatSessionResponseBody
 from ._get_chat_session_response import GetChatSessionResponse
+from ._get_collaboration_group_output_item_preview_request import GetCollaborationGroupOutputItemPreviewRequest
+from ._get_collaboration_group_output_item_preview_response_body import GetCollaborationGroupOutputItemPreviewResponseBody
+from ._get_collaboration_group_output_item_preview_response import GetCollaborationGroupOutputItemPreviewResponse
 from ._get_graph_draft_assembled_request import GetGraphDraftAssembledRequest
 from ._get_graph_draft_assembled_response_body import GetGraphDraftAssembledResponseBody
 from ._get_graph_draft_assembled_response import GetGraphDraftAssembledResponse
@@ -324,9 +331,18 @@ from ._get_work_item_artifact_access_response import GetWorkItemArtifactAccessRe
 from ._get_work_item_attachment_access_request import GetWorkItemAttachmentAccessRequest
 from ._get_work_item_attachment_access_response_body import GetWorkItemAttachmentAccessResponseBody
 from ._get_work_item_attachment_access_response import GetWorkItemAttachmentAccessResponse
+from ._get_work_item_audit_request import GetWorkItemAuditRequest
+from ._get_work_item_audit_response_body import GetWorkItemAuditResponseBody
+from ._get_work_item_audit_response import GetWorkItemAuditResponse
+from ._get_work_item_run_summaries_request import GetWorkItemRunSummariesRequest
+from ._get_work_item_run_summaries_response_body import GetWorkItemRunSummariesResponseBody
+from ._get_work_item_run_summaries_response import GetWorkItemRunSummariesResponse
 from ._get_workflow_instance_request import GetWorkflowInstanceRequest
 from ._get_workflow_instance_response_body import GetWorkflowInstanceResponseBody
 from ._get_workflow_instance_response import GetWorkflowInstanceResponse
+from ._get_workflow_node_configuration_request import GetWorkflowNodeConfigurationRequest
+from ._get_workflow_node_configuration_response_body import GetWorkflowNodeConfigurationResponseBody
+from ._get_workflow_node_configuration_response import GetWorkflowNodeConfigurationResponse
 from ._get_workflow_template_request import GetWorkflowTemplateRequest
 from ._get_workflow_template_response_body import GetWorkflowTemplateResponseBody
 from ._get_workflow_template_response import GetWorkflowTemplateResponse
@@ -377,6 +393,12 @@ from ._list_billing_response import ListBillingResponse
 from ._list_chat_sessions_request import ListChatSessionsRequest
 from ._list_chat_sessions_response_body import ListChatSessionsResponseBody
 from ._list_chat_sessions_response import ListChatSessionsResponse
+from ._list_collaboration_group_members_request import ListCollaborationGroupMembersRequest
+from ._list_collaboration_group_members_response_body import ListCollaborationGroupMembersResponseBody
+from ._list_collaboration_group_members_response import ListCollaborationGroupMembersResponse
+from ._list_collaboration_groups_request import ListCollaborationGroupsRequest
+from ._list_collaboration_groups_response_body import ListCollaborationGroupsResponseBody
+from ._list_collaboration_groups_response import ListCollaborationGroupsResponse
 from ._list_graph_draft_resources_request import ListGraphDraftResourcesRequest
 from ._list_graph_draft_resources_response_body import ListGraphDraftResourcesResponseBody
 from ._list_graph_draft_resources_response import ListGraphDraftResourcesResponse
@@ -553,12 +575,18 @@ from ._replace_source_file_response import ReplaceSourceFileResponse
 from ._rerun_node_airequest import RerunNodeAIRequest
 from ._rerun_node_airesponse_body import RerunNodeAIResponseBody
 from ._rerun_node_airesponse import RerunNodeAIResponse
+from ._rerun_workflow_node_request import RerunWorkflowNodeRequest
+from ._rerun_workflow_node_response_body import RerunWorkflowNodeResponseBody
+from ._rerun_workflow_node_response import RerunWorkflowNodeResponse
 from ._reset_password_request import ResetPasswordRequest
 from ._reset_password_response_body import ResetPasswordResponseBody
 from ._reset_password_response import ResetPasswordResponse
 from ._reset_token_request import ResetTokenRequest
 from ._reset_token_response_body import ResetTokenResponseBody
 from ._reset_token_response import ResetTokenResponse
+from ._reset_workflow_node_configuration_request import ResetWorkflowNodeConfigurationRequest
+from ._reset_workflow_node_configuration_response_body import ResetWorkflowNodeConfigurationResponseBody
+from ._reset_workflow_node_configuration_response import ResetWorkflowNodeConfigurationResponse
 from ._resolve_work_item_artifact_access_request import ResolveWorkItemArtifactAccessRequest
 from ._resolve_work_item_artifact_access_response_body import ResolveWorkItemArtifactAccessResponseBody
 from ._resolve_work_item_artifact_access_response import ResolveWorkItemArtifactAccessResponse
@@ -618,6 +646,9 @@ from ._send_chat_message_request import SendChatMessageRequest
 from ._send_chat_message_shrink_request import SendChatMessageShrinkRequest
 from ._send_chat_message_response_body import SendChatMessageResponseBody
 from ._send_chat_message_response import SendChatMessageResponse
+from ._send_work_item_message_request import SendWorkItemMessageRequest
+from ._send_work_item_message_response_body import SendWorkItemMessageResponseBody
+from ._send_work_item_message_response import SendWorkItemMessageResponse
 from ._set_work_item_pinned_request import SetWorkItemPinnedRequest
 from ._set_work_item_pinned_response_body import SetWorkItemPinnedResponseBody
 from ._set_work_item_pinned_response import SetWorkItemPinnedResponse
@@ -707,6 +738,10 @@ from ._update_work_item_request import UpdateWorkItemRequest
 from ._update_work_item_shrink_request import UpdateWorkItemShrinkRequest
 from ._update_work_item_response_body import UpdateWorkItemResponseBody
 from ._update_work_item_response import UpdateWorkItemResponse
+from ._update_workflow_node_configuration_request import UpdateWorkflowNodeConfigurationRequest
+from ._update_workflow_node_configuration_shrink_request import UpdateWorkflowNodeConfigurationShrinkRequest
+from ._update_workflow_node_configuration_response_body import UpdateWorkflowNodeConfigurationResponseBody
+from ._update_workflow_node_configuration_response import UpdateWorkflowNodeConfigurationResponse
 from ._update_workflow_template_request import UpdateWorkflowTemplateRequest
 from ._update_workflow_template_shrink_request import UpdateWorkflowTemplateShrinkRequest
 from ._update_workflow_template_response_body import UpdateWorkflowTemplateResponseBody
@@ -794,9 +829,16 @@ from ._get_todo_detail_response_body import GetTodoDetailResponseBodyQuestionsOp
 from ._get_todo_detail_response_body import GetTodoDetailResponseBodyQuestions
 from ._get_user_info_response_body import GetUserInfoResponseBodyTenantList
 from ._get_work_item_response_body import GetWorkItemResponseBodyAttachments
+from ._get_work_item_audit_response_body import GetWorkItemAuditResponseBodyItems
+from ._get_work_item_run_summaries_response_body import GetWorkItemRunSummariesResponseBodyItemsRunSummaryTools
+from ._get_work_item_run_summaries_response_body import GetWorkItemRunSummariesResponseBodyItems
 from ._get_workflow_instance_response_body import GetWorkflowInstanceResponseBodyCurrentNode
 from ._get_workflow_instance_response_body import GetWorkflowInstanceResponseBodyCurrentNodes
 from ._get_workflow_instance_response_body import GetWorkflowInstanceResponseBodyProgress
+from ._get_workflow_node_configuration_response_body import GetWorkflowNodeConfigurationResponseBodyDefaultExecutor
+from ._get_workflow_node_configuration_response_body import GetWorkflowNodeConfigurationResponseBodyEffectiveExecutor
+from ._get_workflow_node_configuration_response_body import GetWorkflowNodeConfigurationResponseBodyOverridesExecutor
+from ._get_workflow_node_configuration_response_body import GetWorkflowNodeConfigurationResponseBodyOverrides
 from ._get_workflow_template_response_body import GetWorkflowTemplateResponseBodySteps
 from ._import_workflow_template_response_body import ImportWorkflowTemplateResponseBodySteps
 from ._list_active_announcements_response_body import ListActiveAnnouncementsResponseBodyItems
@@ -811,6 +853,8 @@ from ._list_app_resource_user_permissions_response_body import ListAppResourceUs
 from ._list_authorized_users_response_body import ListAuthorizedUsersResponseBodyItems
 from ._list_available_configs_response_body import ListAvailableConfigsResponseBodyConfigs
 from ._list_billing_response_body import ListBillingResponseBodyList
+from ._list_collaboration_group_members_response_body import ListCollaborationGroupMembersResponseBodyItems
+from ._list_collaboration_groups_response_body import ListCollaborationGroupsResponseBodyItems
 from ._list_graph_draft_resources_response_body import ListGraphDraftResourcesResponseBodyItems
 from ._list_graph_schemas_response_body import ListGraphSchemasResponseBodyItems
 from ._list_graphs_response_body import ListGraphsResponseBodyItems
@@ -862,6 +906,10 @@ from ._register_app_resource_permissions_request import RegisterAppResourcePermi
 from ._register_app_resource_permissions_response_body import RegisterAppResourcePermissionsResponseBodyRecords
 from ._replace_object_bindings_request import ReplaceObjectBindingsRequestObjectBindings
 from ._replace_object_bindings_response_body import ReplaceObjectBindingsResponseBodyObjectBindings
+from ._reset_workflow_node_configuration_response_body import ResetWorkflowNodeConfigurationResponseBodyDefaultExecutor
+from ._reset_workflow_node_configuration_response_body import ResetWorkflowNodeConfigurationResponseBodyEffectiveExecutor
+from ._reset_workflow_node_configuration_response_body import ResetWorkflowNodeConfigurationResponseBodyOverridesExecutor
+from ._reset_workflow_node_configuration_response_body import ResetWorkflowNodeConfigurationResponseBodyOverrides
 from ._resume_work_item_response_body import ResumeWorkItemResponseBodyAttachments
 from ._retry_directory_failed_sources_response_body import RetryDirectoryFailedSourcesResponseBodyFailedSources
 from ._retry_knowledge_base_failed_sources_response_body import RetryKnowledgeBaseFailedSourcesResponseBodyFailedSources
@@ -894,6 +942,11 @@ from ._update_user_info_response_body import UpdateUserInfoResponseBodyUserTenan
 from ._update_user_info_response_body import UpdateUserInfoResponseBodyUser
 from ._update_work_item_request import UpdateWorkItemRequestAttachments
 from ._update_work_item_response_body import UpdateWorkItemResponseBodyAttachments
+from ._update_workflow_node_configuration_request import UpdateWorkflowNodeConfigurationRequestExecutor
+from ._update_workflow_node_configuration_response_body import UpdateWorkflowNodeConfigurationResponseBodyDefaultExecutor
+from ._update_workflow_node_configuration_response_body import UpdateWorkflowNodeConfigurationResponseBodyEffectiveExecutor
+from ._update_workflow_node_configuration_response_body import UpdateWorkflowNodeConfigurationResponseBodyOverridesExecutor
+from ._update_workflow_node_configuration_response_body import UpdateWorkflowNodeConfigurationResponseBodyOverrides
 from ._update_workflow_template_response_body import UpdateWorkflowTemplateResponseBodySteps
 
 __all__ = [
@@ -949,6 +1002,10 @@ __all__ = [
     CreateCustomOrgRequest,
     CreateCustomOrgResponseBody,
     CreateCustomOrgResponse,
+    CreateFreeExplorationWorkItemRequest,
+    CreateFreeExplorationWorkItemShrinkRequest,
+    CreateFreeExplorationWorkItemResponseBody,
+    CreateFreeExplorationWorkItemResponse,
     CreateGraphRequest,
     CreateGraphResponseBody,
     CreateGraphResponse,
@@ -1134,6 +1191,9 @@ __all__ = [
     GetChatSessionRequest,
     GetChatSessionResponseBody,
     GetChatSessionResponse,
+    GetCollaborationGroupOutputItemPreviewRequest,
+    GetCollaborationGroupOutputItemPreviewResponseBody,
+    GetCollaborationGroupOutputItemPreviewResponse,
     GetGraphDraftAssembledRequest,
     GetGraphDraftAssembledResponseBody,
     GetGraphDraftAssembledResponse,
@@ -1219,9 +1279,18 @@ __all__ = [
     GetWorkItemAttachmentAccessRequest,
     GetWorkItemAttachmentAccessResponseBody,
     GetWorkItemAttachmentAccessResponse,
+    GetWorkItemAuditRequest,
+    GetWorkItemAuditResponseBody,
+    GetWorkItemAuditResponse,
+    GetWorkItemRunSummariesRequest,
+    GetWorkItemRunSummariesResponseBody,
+    GetWorkItemRunSummariesResponse,
     GetWorkflowInstanceRequest,
     GetWorkflowInstanceResponseBody,
     GetWorkflowInstanceResponse,
+    GetWorkflowNodeConfigurationRequest,
+    GetWorkflowNodeConfigurationResponseBody,
+    GetWorkflowNodeConfigurationResponse,
     GetWorkflowTemplateRequest,
     GetWorkflowTemplateResponseBody,
     GetWorkflowTemplateResponse,
@@ -1272,6 +1341,12 @@ __all__ = [
     ListChatSessionsRequest,
     ListChatSessionsResponseBody,
     ListChatSessionsResponse,
+    ListCollaborationGroupMembersRequest,
+    ListCollaborationGroupMembersResponseBody,
+    ListCollaborationGroupMembersResponse,
+    ListCollaborationGroupsRequest,
+    ListCollaborationGroupsResponseBody,
+    ListCollaborationGroupsResponse,
     ListGraphDraftResourcesRequest,
     ListGraphDraftResourcesResponseBody,
     ListGraphDraftResourcesResponse,
@@ -1448,12 +1523,18 @@ __all__ = [
     RerunNodeAIRequest,
     RerunNodeAIResponseBody,
     RerunNodeAIResponse,
+    RerunWorkflowNodeRequest,
+    RerunWorkflowNodeResponseBody,
+    RerunWorkflowNodeResponse,
     ResetPasswordRequest,
     ResetPasswordResponseBody,
     ResetPasswordResponse,
     ResetTokenRequest,
     ResetTokenResponseBody,
     ResetTokenResponse,
+    ResetWorkflowNodeConfigurationRequest,
+    ResetWorkflowNodeConfigurationResponseBody,
+    ResetWorkflowNodeConfigurationResponse,
     ResolveWorkItemArtifactAccessRequest,
     ResolveWorkItemArtifactAccessResponseBody,
     ResolveWorkItemArtifactAccessResponse,
@@ -1513,6 +1594,9 @@ __all__ = [
     SendChatMessageShrinkRequest,
     SendChatMessageResponseBody,
     SendChatMessageResponse,
+    SendWorkItemMessageRequest,
+    SendWorkItemMessageResponseBody,
+    SendWorkItemMessageResponse,
     SetWorkItemPinnedRequest,
     SetWorkItemPinnedResponseBody,
     SetWorkItemPinnedResponse,
@@ -1602,6 +1686,10 @@ __all__ = [
     UpdateWorkItemShrinkRequest,
     UpdateWorkItemResponseBody,
     UpdateWorkItemResponse,
+    UpdateWorkflowNodeConfigurationRequest,
+    UpdateWorkflowNodeConfigurationShrinkRequest,
+    UpdateWorkflowNodeConfigurationResponseBody,
+    UpdateWorkflowNodeConfigurationResponse,
     UpdateWorkflowTemplateRequest,
     UpdateWorkflowTemplateShrinkRequest,
     UpdateWorkflowTemplateResponseBody,
@@ -1689,9 +1777,16 @@ __all__ = [
     GetTodoDetailResponseBodyQuestions,
     GetUserInfoResponseBodyTenantList,
     GetWorkItemResponseBodyAttachments,
+    GetWorkItemAuditResponseBodyItems,
+    GetWorkItemRunSummariesResponseBodyItemsRunSummaryTools,
+    GetWorkItemRunSummariesResponseBodyItems,
     GetWorkflowInstanceResponseBodyCurrentNode,
     GetWorkflowInstanceResponseBodyCurrentNodes,
     GetWorkflowInstanceResponseBodyProgress,
+    GetWorkflowNodeConfigurationResponseBodyDefaultExecutor,
+    GetWorkflowNodeConfigurationResponseBodyEffectiveExecutor,
+    GetWorkflowNodeConfigurationResponseBodyOverridesExecutor,
+    GetWorkflowNodeConfigurationResponseBodyOverrides,
     GetWorkflowTemplateResponseBodySteps,
     ImportWorkflowTemplateResponseBodySteps,
     ListActiveAnnouncementsResponseBodyItems,
@@ -1706,6 +1801,8 @@ __all__ = [
     ListAuthorizedUsersResponseBodyItems,
     ListAvailableConfigsResponseBodyConfigs,
     ListBillingResponseBodyList,
+    ListCollaborationGroupMembersResponseBodyItems,
+    ListCollaborationGroupsResponseBodyItems,
     ListGraphDraftResourcesResponseBodyItems,
     ListGraphSchemasResponseBodyItems,
     ListGraphsResponseBodyItems,
@@ -1757,6 +1854,10 @@ __all__ = [
     RegisterAppResourcePermissionsResponseBodyRecords,
     ReplaceObjectBindingsRequestObjectBindings,
     ReplaceObjectBindingsResponseBodyObjectBindings,
+    ResetWorkflowNodeConfigurationResponseBodyDefaultExecutor,
+    ResetWorkflowNodeConfigurationResponseBodyEffectiveExecutor,
+    ResetWorkflowNodeConfigurationResponseBodyOverridesExecutor,
+    ResetWorkflowNodeConfigurationResponseBodyOverrides,
     ResumeWorkItemResponseBodyAttachments,
     RetryDirectoryFailedSourcesResponseBodyFailedSources,
     RetryKnowledgeBaseFailedSourcesResponseBodyFailedSources,
@@ -1789,5 +1890,10 @@ __all__ = [
     UpdateUserInfoResponseBodyUser,
     UpdateWorkItemRequestAttachments,
     UpdateWorkItemResponseBodyAttachments,
+    UpdateWorkflowNodeConfigurationRequestExecutor,
+    UpdateWorkflowNodeConfigurationResponseBodyDefaultExecutor,
+    UpdateWorkflowNodeConfigurationResponseBodyEffectiveExecutor,
+    UpdateWorkflowNodeConfigurationResponseBodyOverridesExecutor,
+    UpdateWorkflowNodeConfigurationResponseBodyOverrides,
     UpdateWorkflowTemplateResponseBodySteps
 ]

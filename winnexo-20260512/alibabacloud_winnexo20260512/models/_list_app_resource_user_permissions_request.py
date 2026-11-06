@@ -19,27 +19,27 @@ class ListAppResourceUserPermissionsRequest(DaraModel):
         target_user_tenant_id: str = None,
         tenant_id: str = None,
     ):
-        # The page number.
-        self.page = page
         # The number of entries per page.
+        self.page = page
+        # The permission filter.
         self.page_size = page_size
-        # The permission points to filter.
+        # The permission filter.
         self.permissions = permissions
-        # The application key or its subpath.
+        # The page number.
         # 
         # This parameter is required.
         self.resource_key_prefix = resource_key_prefix
-        # The ID of the tenant to which the resource belongs. If you do not specify this parameter, the current tenant of the caller is used.
+        # The ID of the target platform user.
         self.resource_tenant_id = resource_tenant_id
-        # The resource type. Set the value to APP_RESOURCE.
+        # The application key or its subpath.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The ID of the target platform user.
-        self.target_user_id = target_user_id
         # The tenant to which the target user belongs. This parameter is required for cross-tenant targets.
+        self.target_user_id = target_user_id
+        # The fixed value APP_RESOURCE.
         self.target_user_tenant_id = target_user_tenant_id
-        # The tenant ID. This is a common parameter. If you do not specify this parameter, the default tenant of the caller is used.
+        # The ID of the tenant to which the resource belongs. If omitted, the current tenant of the caller is used.
         self.tenant_id = tenant_id
 
     def validate(self):

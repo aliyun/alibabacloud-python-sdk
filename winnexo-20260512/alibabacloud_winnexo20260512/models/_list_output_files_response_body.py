@@ -20,17 +20,17 @@ class ListOutputFilesResponseBody(DaraModel):
     ):
         # The response status code.
         self.code = code
-        # The output list.
+        # The list of output main records on the current page. By default, the latest published version is returned for file details.
         self.items = items
         # The message.
         self.message = message
-        # The current page number.
+        # The current page number, starting from 1. Pagination is based on primary output records.
         self.page = page
-        # The number of items per page.
+        # The number of primary output records per page. Default value: 20. Valid values: 1 to 100.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of matching outputs.
+        # The total number of primary output records that meet the filter conditions. The count is deduplicated by outputId and does not include the number of files or historical versions.
         self.total = total
 
     def validate(self):
@@ -114,17 +114,17 @@ class ListOutputFilesResponseBodyItems(DaraModel):
     ):
         # The conversation ID.
         self.conversation_id = conversation_id
-        # The creation time of the output or detail, serialized from a backend datetime value into an ISO 8601 string, with time zone information returned along with the original value.
+        # The creation time of the output or detail, serialized from a backend datetime value into an ISO 8601 string. The time zone information is returned with the original value.
         self.gmt_create = gmt_create
-        # The update time of the output or detail, serialized from a backend datetime value into an ISO 8601 string, with time zone information returned along with the original value.
+        # The update time of the output or detail, serialized from a backend datetime value into an ISO 8601 string. The time zone information is returned with the original value.
         self.gmt_modified = gmt_modified
         # The output name.
         self.name = name
-        # The name of the digital worker (operating object).
+        # The name of the digital employee (operating object).
         self.operating_object_name = operating_object_name
         # The output ID.
         self.output_id = output_id
-        # The output detail list.
+        # The list of details under the current output main record. For versioned files, only the latest published version is returned, and historical versions are not expanded.
         self.output_items = output_items
         # The output type: `conversation/skill/task`.
         self.output_type = output_type
@@ -242,15 +242,15 @@ class ListOutputFilesResponseBodyItemsOutputItems(DaraModel):
         slides_info: main_models.ListOutputFilesResponseBodyItemsOutputItemsSlidesInfo = None,
         task_execution_id: str = None,
     ):
-        # The creation time of the output detail, serialized from a backend datetime value into an ISO 8601 string, with time zone information returned along with the original value.
+        # The creation time of the output detail, serialized from a backend datetime value into an ISO 8601 string. The time zone information is returned with the original value.
         self.create_time = create_time
-        # The email information, present when the type is email.
+        # The email information. This field is present when the type is email.
         self.email_info = email_info
-        # The file information, present when the type is file.
+        # The file information. This field is present when the type is file.
         self.file_info = file_info
-        # The creation time of the output or detail, serialized from a backend datetime value into an ISO 8601 string, with time zone information returned along with the original value.
+        # The creation time of the output or detail, serialized from a backend datetime value into an ISO 8601 string. The time zone information is returned with the original value.
         self.gmt_create = gmt_create
-        # The update time of the output or detail, serialized from a backend datetime value into an ISO 8601 string, with time zone information returned along with the original value.
+        # The update time of the output or detail, serialized from a backend datetime value into an ISO 8601 string. The time zone information is returned with the original value.
         self.gmt_modified = gmt_modified
         # The output name.
         self.item_name = item_name
@@ -262,13 +262,13 @@ class ListOutputFilesResponseBodyItemsOutputItems(DaraModel):
         self.message_id = message_id
         # The output detail ID.
         self.output_item_id = output_item_id
-        # Indicates whether sharing is enabled.
+        # Specifies whether sharing is enabled.
         self.share_enabled = share_enabled
-        # The share token, present when sharing is enabled. You can use this token to access the public share preview API.
+        # The share token. This field is present when sharing is enabled. You can use this token to access the public share preview API.
         self.share_token = share_token
         # The skill output ID.
         self.skill_output_id = skill_output_id
-        # The slide deck information, present when the type is slide deck.
+        # The slide deck information. This field is present when the type is slide deck.
         self.slides_info = slides_info
         # The task execution ID.
         self.task_execution_id = task_execution_id
@@ -452,7 +452,7 @@ class ListOutputFilesResponseBodyItemsOutputItemsFileInfo(DaraModel):
         self.description = description
         # The file name.
         self.name = name
-        # The file location. It is compatible with file URLs and legacy OSS object keys. The specific value is derived from the output registration information.
+        # The file download link. For versioned files, it is bound to the published version and content revision at the time of query. The link has a time-to-live. If it expires, query the list again to obtain a new link.
         self.path = path
         # The file type, such as .pdf or .md.
         self.type = type
@@ -507,7 +507,7 @@ class ListOutputFilesResponseBodyItemsOutputItemsEmailInfo(DaraModel):
         self.body = body
         # The content type, such as MARKDOWN, JSONML, or HTML.
         self.content_type = content_type
-        # The recipient list.
+        # The list of recipients.
         self.recipients = recipients
         # The email subject.
         self.subject = subject

@@ -16,17 +16,17 @@ class CheckAppResourcePermissionsBatchRequest(DaraModel):
         target_user_tenant_id: str = None,
         tenant_id: str = None,
     ):
-        # The check items.
+        # The check item.
         # 
         # This parameter is required.
         self.checks = checks
-        # The ID of the tenant to which the resource belongs. If not specified, the current tenant of the caller is used.
-        self.resource_tenant_id = resource_tenant_id
         # The ID of the target platform user.
-        self.target_user_id = target_user_id
+        self.resource_tenant_id = resource_tenant_id
         # The tenant to which the target user belongs. This parameter is required for cross-tenant targets.
+        self.target_user_id = target_user_id
+        # The check item.
         self.target_user_tenant_id = target_user_tenant_id
-        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
+        # The ID of the tenant to which the resource belongs. If this parameter is not specified, the current tenant of the caller is used.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -92,7 +92,7 @@ class CheckAppResourcePermissionsBatchRequestChecks(DaraModel):
         # 
         # This parameter is required.
         self.permission = permission
-        # The dot-separated resource key whose first segment is the APP application key.
+        # The dot-separated resource key whose first segment is the application key.
         # 
         # This parameter is required.
         self.resource_key = resource_key

@@ -13,12 +13,15 @@ class SetWorkflowTemplateEffectiveVersionResponseBody(DaraModel):
         code: str = None,
         created_by_user_id: int = None,
         description: str = None,
+        edges: List[Dict[str, Any]] = None,
         effective_version: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
+        layout: Dict[str, Any] = None,
         message: str = None,
         name: str = None,
         request_id: str = None,
+        schema_version: int = None,
         steps: List[main_models.SetWorkflowTemplateEffectiveVersionResponseBodySteps] = None,
         template_id: str = None,
         version: str = None,
@@ -29,27 +32,33 @@ class SetWorkflowTemplateEffectiveVersionResponseBody(DaraModel):
         self.code = code
         # The user ID of the creator.
         self.created_by_user_id = created_by_user_id
-        # The description of the template.
+        # The template description.
         self.description = description
-        # The current effective version number of the template. An empty value indicates that only a draft exists and the template cannot be used for work items.
+        # 节点依赖边；每项包含from/to，引用稳定stepId
+        self.edges = edges
+        # The current effective version number of the template. An empty value indicates that only a draft exists and it cannot be used for work items.
         self.effective_version = effective_version
         # The creation time in ISO 8601 format.
         self.gmt_create = gmt_create
         # The modification time in ISO 8601 format.
         self.gmt_modified = gmt_modified
+        # 可选画布布局，按stepId索引；只影响展示，不决定依赖
+        self.layout = layout
         # The error description.
         self.message = message
-        # The name of the template.
+        # The step name. This field can be empty for drafts but is required upon submission.
         self.name = name
         # The request tracking ID.
         self.request_id = request_id
+        # 模板结构版本，当前为2，与业务版本vN独立
+        self.schema_version = schema_version
         # The ordered steps.
         self.steps = steps
-        # The ID of the template.
+        # The template ID.
         self.template_id = template_id
-        # The version number to which the returned content belongs.
+        # The version number of the returned content.
         self.version = version
-        # The change description of the version. An empty value indicates that no description is provided.
+        # The change description for this version. An empty value indicates that no description is provided.
         self.version_description = version_description
         # The version status. Valid values:
         # - DRAFT: Draft.
@@ -76,6 +85,9 @@ class SetWorkflowTemplateEffectiveVersionResponseBody(DaraModel):
         if self.description is not None:
             result['description'] = self.description
 
+        if self.edges is not None:
+            result['edges'] = self.edges
+
         if self.effective_version is not None:
             result['effectiveVersion'] = self.effective_version
 
@@ -85,6 +97,9 @@ class SetWorkflowTemplateEffectiveVersionResponseBody(DaraModel):
         if self.gmt_modified is not None:
             result['gmtModified'] = self.gmt_modified
 
+        if self.layout is not None:
+            result['layout'] = self.layout
+
         if self.message is not None:
             result['message'] = self.message
 
@@ -93,6 +108,9 @@ class SetWorkflowTemplateEffectiveVersionResponseBody(DaraModel):
 
         if self.request_id is not None:
             result['requestId'] = self.request_id
+
+        if self.schema_version is not None:
+            result['schemaVersion'] = self.schema_version
 
         result['steps'] = []
         if self.steps is not None:
@@ -124,6 +142,9 @@ class SetWorkflowTemplateEffectiveVersionResponseBody(DaraModel):
         if m.get('description') is not None:
             self.description = m.get('description')
 
+        if m.get('edges') is not None:
+            self.edges = m.get('edges')
+
         if m.get('effectiveVersion') is not None:
             self.effective_version = m.get('effectiveVersion')
 
@@ -133,6 +154,9 @@ class SetWorkflowTemplateEffectiveVersionResponseBody(DaraModel):
         if m.get('gmtModified') is not None:
             self.gmt_modified = m.get('gmtModified')
 
+        if m.get('layout') is not None:
+            self.layout = m.get('layout')
+
         if m.get('message') is not None:
             self.message = m.get('message')
 
@@ -141,6 +165,9 @@ class SetWorkflowTemplateEffectiveVersionResponseBody(DaraModel):
 
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
+
+        if m.get('schemaVersion') is not None:
+            self.schema_version = m.get('schemaVersion')
 
         self.steps = []
         if m.get('steps') is not None:
@@ -170,6 +197,7 @@ class SetWorkflowTemplateEffectiveVersionResponseBodySteps(DaraModel):
         owner_agent_name: str = None,
         owner_type: str = None,
         owner_user_id: int = None,
+        review_output: bool = None,
         reviewer_user_ids: List[int] = None,
         sort_order: int = None,
         specification: str = None,
@@ -178,25 +206,27 @@ class SetWorkflowTemplateEffectiveVersionResponseBodySteps(DaraModel):
     ):
         # The model tier.
         self.model_mode = model_mode
-        # The name of the step.
+        # The step name. This field can be empty for drafts but is required upon submission.
         self.name = name
-        # The name of the digital worker executor. This parameter is required when ownerType is set to AGENT.
+        # The name of the agent owner.
         self.owner_agent_name = owner_agent_name
-        # The type of the executor. Valid values:
-        # - MEMBER: Workspace member.
-        # - AGENT: Digital worker.
+        # The owner type. Valid values:
+        # - MEMBER: Human.
+        # - AGENT: Agent.
         self.owner_type = owner_type
-        # The user ID of the member executor. This parameter is required when ownerType is set to MEMBER.
+        # The user ID of the human owner.
         self.owner_user_id = owner_user_id
-        # The list of user IDs of the owners (formerly reviewers). This parameter is valid only for steps with a digital worker executor and is always empty for steps with a member executor.
+        # 是否人工审核产出物，默认关闭；仅数字员工可开启，审核待办自动发负责人
+        self.review_output = review_output
+        # The list of user IDs of the reviewers.
         self.reviewer_user_ids = reviewer_user_ids
-        # The order of the step.
+        # The step order.
         self.sort_order = sort_order
-        # The array of ordered step description segments. Supported types include text, mention, skill, app, files, and web_search. When plain text is entered, a single text segment is returned. The fields and nested attachments of each segment are retained as-is by the backend.
+        # The display text derived from ordered segments. Fixed titles are not added, and the text is not stored independently.
         self.specification = specification
-        # The array of structured step description segments. Supported types include text, mention, skill, app, files, and web_search. The fields and nested attachments of each segment are retained as-is by the backend.
+        # The array of ordered segments. Supports text, mention, skill, app, files, and web_search. Retains reference identities and order.
         self.specification_json = specification_json
-        # The ID of the step.
+        # The step ID.
         self.step_id = step_id
 
     def validate(self):
@@ -221,6 +251,9 @@ class SetWorkflowTemplateEffectiveVersionResponseBodySteps(DaraModel):
 
         if self.owner_user_id is not None:
             result['ownerUserId'] = self.owner_user_id
+
+        if self.review_output is not None:
+            result['reviewOutput'] = self.review_output
 
         if self.reviewer_user_ids is not None:
             result['reviewerUserIds'] = self.reviewer_user_ids
@@ -255,6 +288,9 @@ class SetWorkflowTemplateEffectiveVersionResponseBodySteps(DaraModel):
 
         if m.get('ownerUserId') is not None:
             self.owner_user_id = m.get('ownerUserId')
+
+        if m.get('reviewOutput') is not None:
+            self.review_output = m.get('reviewOutput')
 
         if m.get('reviewerUserIds') is not None:
             self.reviewer_user_ids = m.get('reviewerUserIds')

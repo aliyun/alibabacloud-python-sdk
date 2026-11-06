@@ -16,7 +16,7 @@ class BatchCancelTodosResponseBody(DaraModel):
         self.cancelled_count = cancelled_count
         # The business status code. A value of 200 indicates success.
         self.code = code
-        # The error description.
+        # The error message.
         self.message = message
         # The request tracking ID.
         self.request_id = request_id

@@ -11,7 +11,7 @@ class ListInstanceNodesRequest(DaraModel):
         instance_id: str = None,
         tenant_id: str = None,
     ):
-        # The collaboration workspace ID.
+        # The ID of the collaboration workspace.
         # 
         # This parameter is required.
         self.collaboration_group_id = collaboration_group_id

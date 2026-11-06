@@ -11,15 +11,15 @@ class ImportWorkflowTemplateShrinkRequest(DaraModel):
         template_shrink: str = None,
         tenant_id: str = None,
     ):
-        # The collaboration workspace ID.
+        # The ID of the collaboration workspace.
         # 
         # This parameter is required.
         self.collaboration_group_id = collaboration_group_id
-        # The portable template JSON. The stepId and sortOrder fields can be omitted.
+        # The portable template in JSON format. The stepId and sortOrder fields can be omitted.
         # 
         # This parameter is required.
         self.template_shrink = template_shrink
-        # The tenant ID. This is a common parameter. If omitted, the default tenant of the caller is used.
+        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
 
     def validate(self):

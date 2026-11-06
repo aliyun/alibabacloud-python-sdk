@@ -19,9 +19,9 @@ class GenerateWorkflowTemplateDraftResponseBody(DaraModel):
         self.code = code
         # The generated non-persistent template draft.
         self.draft = draft
-        # The error description.
+        # The error message.
         self.message = message
-        # The request tracking ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -68,13 +68,22 @@ class GenerateWorkflowTemplateDraftResponseBodyDraft(DaraModel):
     def __init__(
         self,
         description: str = None,
+        edges: List[Dict[str, Any]] = None,
+        layout: Dict[str, Any] = None,
         name: str = None,
+        schema_version: int = None,
         steps: List[main_models.GenerateWorkflowTemplateDraftResponseBodyDraftSteps] = None,
     ):
         # The description of the template.
         self.description = description
+        # 节点依赖边；每项包含from/to，引用稳定stepId
+        self.edges = edges
+        # 可选画布布局，按stepId索引；只影响展示，不决定依赖
+        self.layout = layout
         # The name of the template.
         self.name = name
+        # 模板结构版本，当前为2，与业务版本vN独立
+        self.schema_version = schema_version
         # The ordered steps.
         self.steps = steps
 
@@ -92,8 +101,17 @@ class GenerateWorkflowTemplateDraftResponseBodyDraft(DaraModel):
         if self.description is not None:
             result['description'] = self.description
 
+        if self.edges is not None:
+            result['edges'] = self.edges
+
+        if self.layout is not None:
+            result['layout'] = self.layout
+
         if self.name is not None:
             result['name'] = self.name
+
+        if self.schema_version is not None:
+            result['schemaVersion'] = self.schema_version
 
         result['steps'] = []
         if self.steps is not None:
@@ -107,8 +125,17 @@ class GenerateWorkflowTemplateDraftResponseBodyDraft(DaraModel):
         if m.get('description') is not None:
             self.description = m.get('description')
 
+        if m.get('edges') is not None:
+            self.edges = m.get('edges')
+
+        if m.get('layout') is not None:
+            self.layout = m.get('layout')
+
         if m.get('name') is not None:
             self.name = m.get('name')
+
+        if m.get('schemaVersion') is not None:
+            self.schema_version = m.get('schemaVersion')
 
         self.steps = []
         if m.get('steps') is not None:
@@ -126,6 +153,7 @@ class GenerateWorkflowTemplateDraftResponseBodyDraftSteps(DaraModel):
         owner_agent_name: str = None,
         owner_type: str = None,
         owner_user_id: int = None,
+        review_output: bool = None,
         reviewer_user_ids: List[int] = None,
         sort_order: int = None,
         specification: str = None,
@@ -136,19 +164,23 @@ class GenerateWorkflowTemplateDraftResponseBodyDraftSteps(DaraModel):
         self.model_mode = model_mode
         # The name of the step.
         self.name = name
-        # The name of the responsible agent.
+        # The name of the agent owner.
         self.owner_agent_name = owner_agent_name
-        # The type of the owner. Valid values: MEMBER: Human. AGENT: Agent.
+        # The type of the owner. Valid values:
+        # - MEMBER: human
+        # - AGENT: agent
         self.owner_type = owner_type
         # The user ID of the human owner.
         self.owner_user_id = owner_user_id
+        # 是否人工审核产出物，默认关闭；仅数字员工可开启，审核待办自动发负责人
+        self.review_output = review_output
         # The list of user IDs of the reviewers.
         self.reviewer_user_ids = reviewer_user_ids
-        # The order of the step.
+        # The sort order of the step.
         self.sort_order = sort_order
-        # The processing instructions for the step.
+        # The processing instructions of the step.
         self.specification = specification
-        # The array of structured segments for the step instructions. Supported types include text, mention, skill, app, files, and web_search. The fields and nested attachments of each segment are retained as returned by the backend.
+        # The ordered array of fragments. Supported types include text, mention, skill, app, files, and web_search. The referenced identities and order are preserved.
         self.specification_json = specification_json
         # The ID of the step.
         self.step_id = step_id
@@ -175,6 +207,9 @@ class GenerateWorkflowTemplateDraftResponseBodyDraftSteps(DaraModel):
 
         if self.owner_user_id is not None:
             result['ownerUserId'] = self.owner_user_id
+
+        if self.review_output is not None:
+            result['reviewOutput'] = self.review_output
 
         if self.reviewer_user_ids is not None:
             result['reviewerUserIds'] = self.reviewer_user_ids
@@ -209,6 +244,9 @@ class GenerateWorkflowTemplateDraftResponseBodyDraftSteps(DaraModel):
 
         if m.get('ownerUserId') is not None:
             self.owner_user_id = m.get('ownerUserId')
+
+        if m.get('reviewOutput') is not None:
+            self.review_output = m.get('reviewOutput')
 
         if m.get('reviewerUserIds') is not None:
             self.reviewer_user_ids = m.get('reviewerUserIds')

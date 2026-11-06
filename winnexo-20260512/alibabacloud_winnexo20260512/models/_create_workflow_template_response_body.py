@@ -13,12 +13,15 @@ class CreateWorkflowTemplateResponseBody(DaraModel):
         code: str = None,
         created_by_user_id: int = None,
         description: str = None,
+        edges: List[Dict[str, Any]] = None,
         effective_version: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
+        layout: Dict[str, Any] = None,
         message: str = None,
         name: str = None,
         request_id: str = None,
+        schema_version: int = None,
         steps: List[main_models.CreateWorkflowTemplateResponseBodySteps] = None,
         template_id: str = None,
         version: str = None,
@@ -31,27 +34,35 @@ class CreateWorkflowTemplateResponseBody(DaraModel):
         self.created_by_user_id = created_by_user_id
         # The template description.
         self.description = description
-        # The current effective version number of the template. An empty value indicates that only a draft exists and it cannot be used for work items.
+        # 节点依赖边；每项包含from/to，引用稳定stepId；显式空数组表示没有依赖
+        self.edges = edges
+        # The current effective version number of the template. An empty value indicates that only a draft exists and the template cannot be used for work items.
         self.effective_version = effective_version
         # The creation time in ISO 8601 format.
         self.gmt_create = gmt_create
         # The modification time in ISO 8601 format.
         self.gmt_modified = gmt_modified
+        # 可选画布布局，按stepId索引；只影响展示，不决定依赖
+        self.layout = layout
         # The error description.
         self.message = message
         # The template name.
         self.name = name
         # The request tracking ID.
         self.request_id = request_id
+        # 模板结构版本，当前为2，与业务版本vN独立
+        self.schema_version = schema_version
         # The ordered steps.
         self.steps = steps
         # The template ID.
         self.template_id = template_id
         # The version number of the returned content.
         self.version = version
-        # The change description for this version. If this field is empty for v1, the template description is displayed.
+        # The change description of the version. If this field is empty for v1, the template description can be displayed.
         self.version_description = version_description
-        # The version status. Valid values: DRAFT: Draft. SUBMITTED: Submitted.
+        # The version status. Valid values:
+        # - DRAFT: Draft.
+        # - SUBMITTED: Submitted.
         self.version_status = version_status
 
     def validate(self):
@@ -74,6 +85,9 @@ class CreateWorkflowTemplateResponseBody(DaraModel):
         if self.description is not None:
             result['description'] = self.description
 
+        if self.edges is not None:
+            result['edges'] = self.edges
+
         if self.effective_version is not None:
             result['effectiveVersion'] = self.effective_version
 
@@ -83,6 +97,9 @@ class CreateWorkflowTemplateResponseBody(DaraModel):
         if self.gmt_modified is not None:
             result['gmtModified'] = self.gmt_modified
 
+        if self.layout is not None:
+            result['layout'] = self.layout
+
         if self.message is not None:
             result['message'] = self.message
 
@@ -91,6 +108,9 @@ class CreateWorkflowTemplateResponseBody(DaraModel):
 
         if self.request_id is not None:
             result['requestId'] = self.request_id
+
+        if self.schema_version is not None:
+            result['schemaVersion'] = self.schema_version
 
         result['steps'] = []
         if self.steps is not None:
@@ -122,6 +142,9 @@ class CreateWorkflowTemplateResponseBody(DaraModel):
         if m.get('description') is not None:
             self.description = m.get('description')
 
+        if m.get('edges') is not None:
+            self.edges = m.get('edges')
+
         if m.get('effectiveVersion') is not None:
             self.effective_version = m.get('effectiveVersion')
 
@@ -131,6 +154,9 @@ class CreateWorkflowTemplateResponseBody(DaraModel):
         if m.get('gmtModified') is not None:
             self.gmt_modified = m.get('gmtModified')
 
+        if m.get('layout') is not None:
+            self.layout = m.get('layout')
+
         if m.get('message') is not None:
             self.message = m.get('message')
 
@@ -139,6 +165,9 @@ class CreateWorkflowTemplateResponseBody(DaraModel):
 
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
+
+        if m.get('schemaVersion') is not None:
+            self.schema_version = m.get('schemaVersion')
 
         self.steps = []
         if m.get('steps') is not None:
@@ -168,6 +197,7 @@ class CreateWorkflowTemplateResponseBodySteps(DaraModel):
         owner_agent_name: str = None,
         owner_type: str = None,
         owner_user_id: int = None,
+        review_output: bool = None,
         reviewer_user_ids: List[int] = None,
         sort_order: int = None,
         specification: str = None,
@@ -178,19 +208,23 @@ class CreateWorkflowTemplateResponseBodySteps(DaraModel):
         self.model_mode = model_mode
         # The step name.
         self.name = name
-        # The name of the responsible agent.
+        # The name of the agent in charge.
         self.owner_agent_name = owner_agent_name
-        # The owner type. Valid values: MEMBER: Human. AGENT: Agent.
+        # The type of the person in charge. Valid values:
+        # - MEMBER: Human.
+        # - AGENT: Agent.
         self.owner_type = owner_type
-        # The user ID of the human owner.
+        # The user ID of the human person in charge.
         self.owner_user_id = owner_user_id
-        # The list of reviewer user IDs.
+        # 是否人工审核产出物，默认关闭；仅数字员工可开启，审核待办自动发负责人
+        self.review_output = review_output
+        # The list of user IDs of the reviewers.
         self.reviewer_user_ids = reviewer_user_ids
         # The step order.
         self.sort_order = sort_order
         # The step processing instructions.
         self.specification = specification
-        # The array of structured segments for step instructions. Supports text, mention, skill, app, files, and web_search. Segment fields and nested attachments are preserved as returned by the backend.
+        # The ordered array of fragments. Supported types include text, mention, skill, app, files, and web_search. The referenced identities and order are preserved.
         self.specification_json = specification_json
         # The step ID.
         self.step_id = step_id
@@ -217,6 +251,9 @@ class CreateWorkflowTemplateResponseBodySteps(DaraModel):
 
         if self.owner_user_id is not None:
             result['ownerUserId'] = self.owner_user_id
+
+        if self.review_output is not None:
+            result['reviewOutput'] = self.review_output
 
         if self.reviewer_user_ids is not None:
             result['reviewerUserIds'] = self.reviewer_user_ids
@@ -251,6 +288,9 @@ class CreateWorkflowTemplateResponseBodySteps(DaraModel):
 
         if m.get('ownerUserId') is not None:
             self.owner_user_id = m.get('ownerUserId')
+
+        if m.get('reviewOutput') is not None:
+            self.review_output = m.get('reviewOutput')
 
         if m.get('reviewerUserIds') is not None:
             self.reviewer_user_ids = m.get('reviewerUserIds')

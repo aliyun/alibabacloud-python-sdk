@@ -11,13 +11,13 @@ class RegisterAppResourcePermissionsShrinkRequest(DaraModel):
         resource_tenant_id: str = None,
         tenant_id: str = None,
     ):
-        # The batch authorization items.
+        # The batch authorization item.
         # 
         # This parameter is required.
         self.items_shrink = items_shrink
-        # The ID of the tenant to which the resource belongs. If not specified, the current tenant of the caller is used.
+        # The batch authorization item.
         self.resource_tenant_id = resource_tenant_id
-        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
+        # The ID of the tenant to which the resource belongs. If omitted, the current tenant of the caller is used.
         self.tenant_id = tenant_id
 
     def validate(self):

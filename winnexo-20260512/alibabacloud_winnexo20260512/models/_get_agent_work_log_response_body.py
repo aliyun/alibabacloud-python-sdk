@@ -24,13 +24,13 @@ class GetAgentWorkLogResponseBody(DaraModel):
         self.logs = logs
         # The error message.
         self.message = message
-        # The current page number, starting from 1.
+        # The page number, starting from 1.
         self.page = page
-        # The number of entries per page. Valid values: 1 to 100.
+        # The number of entries per page. Maximum value: 100.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of filtered operation log entries.
+        # The total number of filtered operation logs.
         self.total = total
 
     def validate(self):
@@ -108,13 +108,13 @@ class GetAgentWorkLogResponseBodyLogs(DaraModel):
     ):
         # The record type. Valid values: THINK, REPLY, TOOL_CALL, SKILL_CALL, and ARTIFACT.
         self.action = action
-        # The saved raw record content. Tool invocations and artifact metadata are represented as JSON strings.
+        # The saved original record content. Tool invocations and artifact metadata are JSON strings.
         self.detail = detail
-        # The duration of this operation record, in milliseconds. The value is 0 for artifact records.
+        # The time consumed by the operation record, in milliseconds. The value is 0 for artifact records.
         self.duration = duration
-        # The key of the node to which the record belongs. This is not the session ID.
+        # The optional node key.
         self.node_id = node_id
-        # The time when the event was recorded, in ISO 8601 format. If the source record has no time, an empty string is returned.
+        # The event time of the record in ISO 8601 format. If the source record has no time, an empty string is returned.
         self.timestamp = timestamp
 
     def validate(self):

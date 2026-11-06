@@ -15,7 +15,7 @@ class GetAgentWorkLogRequest(DaraModel):
     ):
         # The optional node key.
         self.node_id = node_id
-        # The page number. Pages start from 1.
+        # The page number, starting from 1.
         self.page = page
         # The number of entries per page. Maximum value: 100.
         self.page_size = page_size

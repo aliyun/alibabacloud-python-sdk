@@ -17,11 +17,11 @@ class CheckAppResourcePermissionsBatchResponseBody(DaraModel):
     ):
         # The business status code. A value of 200 indicates success.
         self.code = code
-        # The error message. This field is empty if the request is successful.
+        # The error description. This field is empty if the request is successful.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The results, returned in the same order as the requested items.
+        # The results in the same order as the request.
         self.results = results
 
     def validate(self):
@@ -78,11 +78,11 @@ class CheckAppResourcePermissionsBatchResponseBodyResults(DaraModel):
         resource_key: str = None,
         resource_type: str = None,
     ):
-        # Indicates whether the user has the permission.
+        # Indicates whether the user has the required permissions.
         self.allowed = allowed
         # The target permission.
         self.permission = permission
-        # The dot-separated resource key whose first segment is the APP application key.
+        # The dot-separated resource key whose first segment is the application key.
         self.resource_key = resource_key
         # The resource type. Set the value to APP_RESOURCE.
         self.resource_type = resource_type

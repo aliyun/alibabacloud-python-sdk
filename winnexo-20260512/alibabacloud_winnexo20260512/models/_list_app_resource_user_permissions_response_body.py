@@ -22,13 +22,13 @@ class ListAppResourceUserPermissionsResponseBody(DaraModel):
         self.code = code
         # The resources and permissions on the current page.
         self.items = items
-        # The error description. This parameter is empty if the request is successful.
+        # The error description. This field is empty when the request is successful.
         self.message = message
-        # The page number.
-        self.page = page
         # The number of entries per page.
+        self.page = page
+        # The permission filter.
         self.page_size = page_size
-        # The request ID.
+        # The request tracking ID.
         self.request_id = request_id
         # The total number of resources.
         self.total = total
@@ -104,11 +104,11 @@ class ListAppResourceUserPermissionsResponseBodyItems(DaraModel):
         resource_key: str = None,
         resource_type: str = None,
     ):
-        # The stored and valid permission points.
+        # The permission filter.
         self.permissions = permissions
         # The resource key.
         self.resource_key = resource_key
-        # The resource type.
+        # The application key or its subpath.
         self.resource_type = resource_type
 
     def validate(self):

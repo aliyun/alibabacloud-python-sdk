@@ -18,29 +18,29 @@ class ListAppResourcePermissionRecordsShrinkRequest(DaraModel):
         resource_type: str = None,
         tenant_id: str = None,
     ):
-        # The grantee ID filter.
+        # The tenant filter for cross-tenant users.
         self.grantee_id = grantee_id
-        # The tenant ID filter for cross-tenant users.
+        # The permission filter.
         self.grantee_tenant_id = grantee_tenant_id
-        # The grantee type filter.
+        # The principal ID filter.
         self.grantee_type = grantee_type
-        # The page number.
+        # The number of items per page.
         self.page = page
-        # The number of entries per page.
+        # The principal type filter.
         self.page_size = page_size
         # The permission filter.
         self.permissions_shrink = permissions_shrink
-        # The application key or its subpath.
+        # The page number.
         # 
         # This parameter is required.
         self.resource_key_prefix = resource_key_prefix
-        # The ID of the tenant to which the resource belongs. If not specified, the current tenant of the caller is used.
+        # The resource tenant ID. This parameter is fixed to APP_RESOURCE.
         self.resource_tenant_id = resource_tenant_id
-        # The resource type. Set this parameter to APP_RESOURCE.
+        # The application key or its subpath.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
+        # The ID of the tenant to which the resource belongs. If omitted, the current tenant of the caller is used.
         self.tenant_id = tenant_id
 
     def validate(self):

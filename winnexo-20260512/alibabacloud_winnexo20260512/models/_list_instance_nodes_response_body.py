@@ -17,15 +17,15 @@ class ListInstanceNodesResponseBody(DaraModel):
         request_id: str = None,
         state_version: int = None,
     ):
-        # The business status code. A value of 200 indicates success.
+        # The business status code. The value 200 indicates success.
         self.code = code
-        # The physical instance ID.
+        # The physical workflow instance ID (planId).
         self.instance_id = instance_id
-        # The error description.
+        # The error message.
         self.message = message
         # The visible nodes arranged in topological order. The number of nodes is determined by the actual dynamic graph.
         self.nodes = nodes
-        # The request tracking ID.
+        # The request trace ID.
         self.request_id = request_id
         # The state version.
         self.state_version = state_version
@@ -109,15 +109,15 @@ class ListInstanceNodesResponseBodyNodes(DaraModel):
         self.conclusion = conclusion
         # The total number of seconds from the first run to the desired state. This field is empty if the time is missing.
         self.duration = duration
-        # The time when the node was first run. This field is empty for historical or unrun nodes.
+        # The time when the node was first run. This field is empty for historical nodes or nodes that have not run.
         self.entered_at = entered_at
         # The time when the node actually entered the desired state. This field is empty if the node has not finished.
         self.finished_at = finished_at
         # The display name of the node assignee. This field is empty if the assignee is unknown.
         self.handler = handler
-        # The lane position of the node in the workflow graph.
+        # The lane of the node in the workflow graph.
         self.lane = lane
-        # The key of the node (nodeKey). This is not the session ID.
+        # The visible nodes arranged in topological order. The number of nodes is determined by the actual dynamic graph.
         self.node_id = node_id
         # The display name of the node.
         self.node_name = node_name
@@ -127,9 +127,9 @@ class ListInstanceNodesResponseBodyNodes(DaraModel):
         self.node_type = node_type
         # The level of the node in the workflow graph, starting from 0.
         self.rank = rank
-        # The original running status of the node, such as READY, RUNNING, WAITING, SUCCEEDED, or FAILED.
+        # The original node running status, such as READY, RUNNING, WAITING, SUCCEEDED, or FAILED.
         self.status = status
-        # The reason for waiting, such as HUMAN_INPUT, HUMAN_STEP, REVIEW, MANUAL_PAUSE, or UNBLOCK. This field is empty if the node is not waiting.
+        # The wait reason: HUMAN_INPUT, HUMAN_STEP, REVIEW, MANUAL_PAUSE, or UNBLOCK. This field is empty when the node is not waiting.
         self.wait_type = wait_type
 
     def validate(self):

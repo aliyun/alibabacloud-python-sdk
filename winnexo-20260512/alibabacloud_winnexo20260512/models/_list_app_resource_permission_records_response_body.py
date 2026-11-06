@@ -24,11 +24,11 @@ class ListAppResourcePermissionRecordsResponseBody(DaraModel):
         self.items = items
         # The error message. This parameter is empty if the request is successful.
         self.message = message
-        # The page number.
+        # The number of items per page.
         self.page = page
-        # The number of entries per page.
+        # The principal type filter.
         self.page_size = page_size
-        # The request ID.
+        # The request tracking ID.
         self.request_id = request_id
         # The total number of records.
         self.total = total
@@ -119,21 +119,21 @@ class ListAppResourcePermissionRecordsResponseBodyItems(DaraModel):
         self.expire_at = expire_at
         # The platform user ID of the grantor.
         self.granted_by = granted_by
-        # The grantee ID.
+        # The tenant filter for cross-tenant users.
         self.grantee_id = grantee_id
-        # The grantee name.
+        # The principal name.
         self.grantee_name = grantee_name
-        # The ID of the tenant to which the cross-tenant user belongs.
+        # The permission filter.
         self.grantee_tenant_id = grantee_tenant_id
-        # The grantee type.
+        # The principal ID filter.
         self.grantee_type = grantee_type
         # The permission.
         self.permission = permission
-        # The ID of the permission record.
+        # The permission record ID.
         self.permission_id = permission_id
         # The resource key.
         self.resource_key = resource_key
-        # The resource type.
+        # The application key or its subpath.
         self.resource_type = resource_type
         # The update time.
         self.updated_at = updated_at

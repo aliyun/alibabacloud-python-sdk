@@ -15,19 +15,19 @@ class SubmitTodoResponseBody(DaraModel):
         status: str = None,
         todo_id: str = None,
     ):
-        # The business status code. A value of 200 indicates success.
+        # The array of answer values.
         self.code = code
-        # The completion time in ISO 8601 UTC format. Note that this format differs from other time fields formatted in UTC+8.
+        # The completion time in ISO 8601 UTC format. This format differs from other fields formatted in UTC+8.
         self.completed_at = completed_at
-        # The user ID of the user who completed the item.
+        # The user ID of the user who completed the task.
         self.completed_by_user_id = completed_by_user_id
         # The error description.
         self.message = message
         # The request tracking ID.
         self.request_id = request_id
-        # The status after submission. This value is always COMPLETED.
+        # The status after submission. The value is always COMPLETED.
         self.status = status
-        # The ID of the to-do item.
+        # The answer array. The original text of the question must align with the to-do question.
         self.todo_id = todo_id
 
     def validate(self):

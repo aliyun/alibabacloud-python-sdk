@@ -11,13 +11,13 @@ class SubmitTodoShrinkRequest(DaraModel):
         tenant_id: str = None,
         todo_id: str = None,
     ):
-        # The array of answers. The original text of the question must match the to-do question.
+        # The answer array. The original text of the question must align with the to-do question.
         # 
         # This parameter is required.
         self.answers_shrink = answers_shrink
-        # The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
+        # The to-do task ID.
         self.tenant_id = tenant_id
-        # The ID of the to-do item.
+        # The answer array. The original text of the question must align with the to-do question.
         # 
         # This parameter is required.
         self.todo_id = todo_id
