@@ -17,21 +17,20 @@ class ListServicesRequest(DaraModel):
     ):
         # The ID of the cloud-native API gateway.
         self.gateway_id = gateway_id
-        # The service name for exact match query.
+        # The service name for exact match queries.
         self.name = name
         # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The source type of the service. Valid values:
-        # 
-        # - MSE_NACOS: The service originates from MSE Nacos.
-        # - K8S: The service originates from a Kubernetes cluster in Container Service.
-        # - FC3: The service originates from Function Compute.
-        # - VIP: The service originates from a fixed address.
-        # - DNS: The service originates from a domain name.
+        # - MSE_NACOS: Services from MSE Nacos.
+        # - K8S: Services from Kubernetes clusters in Container Service.
+        # - FC3: Services from Function Compute.
+        # - VIP: Services from fixed addresses.
+        # - DNS: Services from domain names.
         self.source_type = source_type
         # The list of service source types.
         self.source_types = source_types

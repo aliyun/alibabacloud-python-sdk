@@ -72,7 +72,7 @@ class QueryConsumerAuthorizationRulesResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: str = None,
     ):
-        # The list of consumer authorization rules.
+        # The list of consumer rules.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -151,7 +151,7 @@ class QueryConsumerAuthorizationRulesResponseBodyDataItems(DaraModel):
     ):
         # The API information.
         self.api_info = api_info
-        # The consumer authorization rule ID.
+        # The ID of the consumer authorization rule.
         self.consumer_authorization_rule_id = consumer_authorization_rule_id
         # The consumer group ID. This field is returned for consumer group authorization rules.
         self.consumer_group_id = consumer_group_id
@@ -163,7 +163,7 @@ class QueryConsumerAuthorizationRulesResponseBodyDataItems(DaraModel):
         self.consumer_info = consumer_info
         # The creation timestamp. Unit: milliseconds.
         self.create_timestamp = create_timestamp
-        # The deployment status of the API in the current environment.
+        # The publish status of the API in the current environment.
         self.deploy_status = deploy_status
         # The environment context.
         self.environment_info = environment_info
@@ -333,7 +333,7 @@ class QueryConsumerAuthorizationRulesResponseBodyDataItemsResourceInfo(DaraModel
     ):
         # The API operation information.
         self.operation_info = operation_info
-        # The routing rule.
+        # The routing rules.
         self.route = route
 
     def validate(self):

@@ -9,7 +9,7 @@ class SubscribeProductRequest(DaraModel):
         self,
         product_id: str = None,
     ):
-        # The ID of the API product to subscribe to. This is the primary ID of the API product resource. You can obtain this ID from the productId field in the response of the ListProducts operation.
+        # The ID of the API product to subscribe to. This is the primary ID of the API product resource. You can obtain this ID from the productId field in the list items returned by the ListProducts operation.
         self.product_id = product_id
 
     def validate(self):

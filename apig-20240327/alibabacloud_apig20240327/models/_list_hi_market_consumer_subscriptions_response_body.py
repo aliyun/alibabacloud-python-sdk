@@ -25,7 +25,7 @@ class ListHiMarketConsumerSubscriptionsResponseBody(DaraModel):
         self.max_results = max_results
         # The response message.
         self.message = message
-        # The cursor for the next page. An empty value indicates that the last page is reached.
+        # The pagination token for the next page. An empty value indicates that the last page is reached.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -156,19 +156,19 @@ class ListHiMarketConsumerSubscriptionsResponseBodyDataContent(DaraModel):
         status: str = None,
         subscription_id: str = None,
     ):
-        # The ID of the consumer to which the subscription belongs. This is the same identifier as the consumerId path parameter of this API operation.
+        # The ID of the consumer to which the subscription belongs. This is the same as the consumerId path parameter of this operation.
         self.consumer_id = consumer_id
         # The name of the consumer to which the subscription belongs.
         self.consumer_name = consumer_name
-        # The ID of the subscribed API product, which is the primary ID of the API product resource.
+        # The ID of the subscribed API product. This is the primary ID of the API product resource.
         self.product_id = product_id
         # The name of the subscribed API product.
         self.product_name = product_name
-        # The type of the subscribed API product. This response parameter does not declare enums. The related ListProductSubscriptions API operation declares the following valid values for the parameter with the same name: REST_API, HTTP_API, MCP_SERVER, AGENT_API, and MODEL_API.
+        # The type of the subscribed API product. No enum is specified for this response parameter. However, the related ListProductSubscriptions operation specifies the following valid values for the parameter with the same name: REST_API, HTTP_API, MCP_SERVER, AGENT_API, and MODEL_API.
         self.product_type = product_type
-        # The subscription status. Valid values: PENDING and APPROVED. This set of valid values is declared in the enums of the status request parameter in this API operation, and this response parameter does not declare enums.
+        # The subscription status. Valid values: PENDING and APPROVED. These valid values are declared in the enum of the status request parameter, and no enum is specified for this response parameter.
         self.status = status
-        # The subscription ID. You can use this ID to unsubscribe from the product by calling UnsubscribeHiMarketProduct or approve the subscription by calling ApproveProductSubscription. Both operations locate the subscription by using the /himarket/v1/consumers/{consumerId}/subscriptions/{subscriptionId} path.
+        # The subscription ID. You can use this ID to cancel the subscription by calling UnsubscribeHiMarketProduct or approve the subscription by calling ApproveProductSubscription. Both operations locate the subscription by using the /himarket/v1/consumers/{consumerId}/subscriptions/{subscriptionId} path.
         self.subscription_id = subscription_id
 
     def validate(self):

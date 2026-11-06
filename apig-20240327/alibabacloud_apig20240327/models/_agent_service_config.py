@@ -18,18 +18,19 @@ class AgentServiceConfig(DaraModel):
         enable_outlier_detection: bool = None,
         protocols: List[str] = None,
         provider: str = None,
+        upstream_auth_mode: str = None,
     ):
         # The address.
         # 
         # This parameter is required.
         self.address = address
-        # The custom configuration. This parameter is required when provider is set to custom.
+        # The custom configuration. Specify this parameter when provider is set to custom.
         self.custom_config = custom_config
-        # The DashScope service configuration. This parameter is required when provider is set to qwen. The appCredentials parameter cannot be empty, and each entry must have non-empty appId and apiKey values.
+        # The DashScope service configuration. Specify this parameter when provider is set to qwen. The appCredentials parameter cannot be empty, and both appId and apiKey must be specified for each item.
         self.dash_scope_config = dash_scope_config
-        # The Dify service configuration. This parameter is required when provider is set to dify. The botType and apiKey parameters cannot be empty.
+        # The Dify service configuration. Specify this parameter when provider is set to dify. Both botType and apiKey must be specified.
         self.dify_config = dify_config
-        # Specifies whether to enable health check.
+        # Specifies whether to enable the health check.
         self.enable_health_check = enable_health_check
         # Specifies whether to enable outlier detection.
         self.enable_outlier_detection = enable_outlier_detection
@@ -39,6 +40,8 @@ class AgentServiceConfig(DaraModel):
         # 
         # This parameter is required.
         self.provider = provider
+        # Supported only for custom agents. The value api-key indicates a managed API key, and downstream-auth indicates passing through the complete client Authorization header. If this parameter is omitted or left empty during creation, the historical rule applies. If this parameter is omitted or left empty during an update, the existing mode is retained. When passing through the authorization, you can omit customConfig, and you cannot submit a non-empty key.
+        self.upstream_auth_mode = upstream_auth_mode
 
     def validate(self):
         if self.custom_config:
@@ -77,6 +80,9 @@ class AgentServiceConfig(DaraModel):
         if self.provider is not None:
             result['provider'] = self.provider
 
+        if self.upstream_auth_mode is not None:
+            result['upstreamAuthMode'] = self.upstream_auth_mode
+
         return result
 
     def from_map(self, m: dict = None):
@@ -107,6 +113,9 @@ class AgentServiceConfig(DaraModel):
 
         if m.get('provider') is not None:
             self.provider = m.get('provider')
+
+        if m.get('upstreamAuthMode') is not None:
+            self.upstream_auth_mode = m.get('upstreamAuthMode')
 
         return self
 

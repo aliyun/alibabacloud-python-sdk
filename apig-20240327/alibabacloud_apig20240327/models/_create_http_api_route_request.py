@@ -13,6 +13,7 @@ class CreateHttpApiRouteRequest(DaraModel):
         backend_config: main_models.CreateHttpApiRouteRequestBackendConfig = None,
         deploy_configs: List[main_models.HttpApiDeployConfig] = None,
         description: str = None,
+        dfp_config: main_models.CreateHttpApiRouteRequestDfpConfig = None,
         domain_ids: List[str] = None,
         environment_id: str = None,
         match: main_models.HttpRouteMatch = None,
@@ -20,12 +21,14 @@ class CreateHttpApiRouteRequest(DaraModel):
         name: str = None,
         policy_configs: List[main_models.HttpApiPolicyConfigs] = None,
     ):
-        # The backend service configuration of the route.
+        # The backend service configuration for the route.
         self.backend_config = backend_config
         # The API deployment configuration.
         self.deploy_configs = deploy_configs
         # The route description.
         self.description = description
+        # The fixed dynamic forwarding and ExtProc combination configuration. When you use this configuration, specify only serviceId, and do not specify environmentId or backendConfig.
+        self.dfp_config = dfp_config
         # The domain name IDs.
         self.domain_ids = domain_ids
         # The environment ID.
@@ -46,6 +49,8 @@ class CreateHttpApiRouteRequest(DaraModel):
             for v1 in self.deploy_configs:
                  if v1:
                     v1.validate()
+        if self.dfp_config:
+            self.dfp_config.validate()
         if self.match:
             self.match.validate()
         if self.mcp_route_config:
@@ -70,6 +75,9 @@ class CreateHttpApiRouteRequest(DaraModel):
 
         if self.description is not None:
             result['description'] = self.description
+
+        if self.dfp_config is not None:
+            result['dfpConfig'] = self.dfp_config.to_map()
 
         if self.domain_ids is not None:
             result['domainIds'] = self.domain_ids
@@ -107,6 +115,10 @@ class CreateHttpApiRouteRequest(DaraModel):
 
         if m.get('description') is not None:
             self.description = m.get('description')
+
+        if m.get('dfpConfig') is not None:
+            temp_model = main_models.CreateHttpApiRouteRequestDfpConfig()
+            self.dfp_config = temp_model.from_map(m.get('dfpConfig'))
 
         if m.get('domainIds') is not None:
             self.domain_ids = m.get('domainIds')
@@ -182,6 +194,34 @@ class CreateHttpApiRouteRequestMcpRouteConfig(DaraModel):
 
         return self
 
+class CreateHttpApiRouteRequestDfpConfig(DaraModel):
+    def __init__(
+        self,
+        service_id: str = None,
+    ):
+        # The ID of the imported ExtProc gRPC service.
+        self.service_id = service_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.service_id is not None:
+            result['serviceId'] = self.service_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('serviceId') is not None:
+            self.service_id = m.get('serviceId')
+
+        return self
+
 class CreateHttpApiRouteRequestBackendConfig(DaraModel):
     def __init__(
         self,
@@ -190,7 +230,7 @@ class CreateHttpApiRouteRequestBackendConfig(DaraModel):
     ):
         # The backend service scenario. Valid values:
         # - SingleService: Single service.
-        # - MultiServiceByRatio: Multi-service canary release by ratio.
+        # - MultiServiceByRatio: Canary release of multiple services by ratio.
         # - Mock: Mock service.
         # - Redirect: Redirect service.
         self.scene = scene
@@ -245,13 +285,13 @@ class CreateHttpApiRouteRequestBackendConfigServices(DaraModel):
         version: str = None,
         weight: int = None,
     ):
-        # The service group. Used in HTTP-to-Dubbo transcoding scenarios.
+        # The service group. Used in HTTP-to-Dubbo conversion scenarios.
         self.group_name = group_name
-        # The HTTP-to-Dubbo protocol transcoding configuration. Only supported for SingleService MSE_NACOS DUBBO backends of HTTP APIs.
+        # The HTTP-to-Dubbo protocol conversion configuration. This configuration is supported only for SingleService MSE_NACOS DUBBO backends of HTTP APIs.
         self.http_dubbo_transcoder = http_dubbo_transcoder
-        # The target model name. This field is shared by multiple existing model backend scenarios. The specific routing or model rewrite semantics are determined by backendConfig.scene. This field is required for the SemanticRouter scenario. If not specified in the AiAutoRouter scenario, the default model of the AI service is used.
+        # The target model name. This field is shared by multiple existing model backend scenarios. The specific routing or model rewriting semantics are determined by backendConfig.scene. This field is required for the SemanticRouter scenario. If it is not configured for the AiAutoRouter scenario, the default model of the AI service is used.
         self.model_name = model_name
-        # The service namespace. Used in HTTP-to-Dubbo transcoding scenarios.
+        # The service namespace. Used in HTTP-to-Dubbo conversion scenarios.
         self.namespace = namespace
         # The service port. Do not specify this parameter for dynamic ports.
         self.port = port
@@ -261,9 +301,9 @@ class CreateHttpApiRouteRequestBackendConfigServices(DaraModel):
         self.protocol = protocol
         # The service ID.
         self.service_id = service_id
-        # The service source type. Used in HTTP-to-Dubbo transcoding scenarios.
+        # The service source type. Used in HTTP-to-Dubbo conversion scenarios.
         self.source_type = source_type
-        # The service version. This parameter takes effect only in the by-tag scenario.
+        # The service version. This parameter is valid only in the tag-based scenario.
         self.version = version
         # The percentage value of the traffic ratio.
         self.weight = weight

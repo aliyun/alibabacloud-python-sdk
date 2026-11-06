@@ -15,6 +15,7 @@ class HttpRoute(DaraModel):
         create_timestamp: int = None,
         deploy_status: str = None,
         description: str = None,
+        dfp_config: main_models.HttpRouteDfpConfig = None,
         domain_infos: List[main_models.HttpRouteDomainInfos] = None,
         environment_info: main_models.HttpRouteEnvironmentInfo = None,
         gateway_status: Dict[str, str] = None,
@@ -26,7 +27,7 @@ class HttpRoute(DaraModel):
     ):
         # The backend service.
         self.backend = backend
-        # Indicates whether the route is a system built-in route.
+        # Indicates whether the route is a built-in system route.
         self.builtin = builtin
         # The creation time, in milliseconds.
         self.create_timestamp = create_timestamp
@@ -34,7 +35,9 @@ class HttpRoute(DaraModel):
         self.deploy_status = deploy_status
         # The route description.
         self.description = description
-        # The list of domain name information.
+        # The ExtProc service selected for the fixed dynamic forwarding route. This field is not returned when no matching binding exists.
+        self.dfp_config = dfp_config
+        # The list of domain information.
         self.domain_infos = domain_infos
         # The environment context of the routing.
         self.environment_info = environment_info
@@ -42,11 +45,11 @@ class HttpRoute(DaraModel):
         self.gateway_status = gateway_status
         # The route matching rules.
         self.match = match
-        # The MCP server information.
+        # The MCP service information.
         self.mcp_server_info = mcp_server_info
         # The route name.
         self.name = name
-        # The HttpApi route ID.
+        # The HTTP API route ID.
         self.route_id = route_id
         # The update time, in milliseconds.
         self.update_timestamp = update_timestamp
@@ -54,6 +57,8 @@ class HttpRoute(DaraModel):
     def validate(self):
         if self.backend:
             self.backend.validate()
+        if self.dfp_config:
+            self.dfp_config.validate()
         if self.domain_infos:
             for v1 in self.domain_infos:
                  if v1:
@@ -84,6 +89,9 @@ class HttpRoute(DaraModel):
 
         if self.description is not None:
             result['description'] = self.description
+
+        if self.dfp_config is not None:
+            result['dfpConfig'] = self.dfp_config.to_map()
 
         result['domainInfos'] = []
         if self.domain_infos is not None:
@@ -130,6 +138,10 @@ class HttpRoute(DaraModel):
 
         if m.get('description') is not None:
             self.description = m.get('description')
+
+        if m.get('dfpConfig') is not None:
+            temp_model = main_models.HttpRouteDfpConfig()
+            self.dfp_config = temp_model.from_map(m.get('dfpConfig'))
 
         self.domain_infos = []
         if m.get('domainInfos') is not None:
@@ -181,7 +193,7 @@ class HttpRouteMcpServerInfo(DaraModel):
         self.import_mcp_server_id = import_mcp_server_id
         # The Nacos namespace.
         self.import_namespace = import_namespace
-        # The MCP route information.
+        # The MCP routing information.
         self.mcp_route_config = mcp_route_config
         # The MCP server metadata configuration.
         self.mcp_server_config = mcp_server_config
@@ -284,7 +296,7 @@ class HttpRouteEnvironmentInfo(DaraModel):
         name: str = None,
         sub_domains: List[main_models.HttpRouteEnvironmentInfoSubDomains] = None,
     ):
-        # The environment name alias.
+        # The alias of the environment name.
         self.alias = alias
         # The environment ID.
         self.environment_id = environment_id
@@ -292,7 +304,7 @@ class HttpRouteEnvironmentInfo(DaraModel):
         self.gateway_info = gateway_info
         # The environment name.
         self.name = name
-        # The list of default subdomain names for the environment.
+        # The list of default subdomains for the environment.
         self.sub_domains = sub_domains
 
     def validate(self):
@@ -358,7 +370,7 @@ class HttpRouteEnvironmentInfoSubDomains(DaraModel):
         network_type: str = None,
         protocol: str = None,
     ):
-        # The domain name ID.
+        # The domain ID.
         self.domain_id = domain_id
         # The domain name.
         self.name = name
@@ -412,7 +424,7 @@ class HttpRouteEnvironmentInfoGatewayInfo(DaraModel):
         gateway_id: str = None,
         name: str = None,
     ):
-        # The gateway instance edition. Valid values: Professional, Serverless, MultiTenantServerless, Unknown.
+        # The gateway instance edition. Valid values: Professional, Serverless, MultiTenantServerless, and Unknown.
         self.gateway_edition = gateway_edition
         # The gateway ID.
         self.gateway_id = gateway_id
@@ -458,7 +470,7 @@ class HttpRouteDomainInfos(DaraModel):
         name: str = None,
         protocol: str = None,
     ):
-        # The domain name ID.
+        # The domain ID.
         self.domain_id = domain_id
         # The domain name.
         self.name = name
@@ -494,6 +506,34 @@ class HttpRouteDomainInfos(DaraModel):
 
         if m.get('protocol') is not None:
             self.protocol = m.get('protocol')
+
+        return self
+
+class HttpRouteDfpConfig(DaraModel):
+    def __init__(
+        self,
+        service_id: str = None,
+    ):
+        # The ExtProc gRPC service ID.
+        self.service_id = service_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.service_id is not None:
+            result['serviceId'] = self.service_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('serviceId') is not None:
+            self.service_id = m.get('serviceId')
 
         return self
 

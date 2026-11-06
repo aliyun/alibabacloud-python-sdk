@@ -15,7 +15,7 @@ class ListPortalPublicationsRequest(DaraModel):
         self.page_number = page_number
         # The page size.
         self.page_size = page_size
-        # The API product name. This corresponds to the productName field in the response list items.
+        # The API product name. This is the same field as productName in the response list items.
         self.product_name = product_name
 
     def validate(self):

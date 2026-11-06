@@ -27,7 +27,7 @@ class ListChatSessionsResponseBody(DaraModel):
         self.message = message
         # The pagination token for the next page. An empty value indicates that the last page has been reached.
         self.next_token = next_token
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -94,7 +94,7 @@ class ListChatSessionsResponseBodyData(DaraModel):
         self.content = content
         # The page number.
         self.page_number = page_number
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
         # The total number of entries.
         self.total_count = total_count
@@ -159,7 +159,7 @@ class ListChatSessionsResponseBodyDataContent(DaraModel):
         self.products = products
         # The ID of the chat session. You can use this ID to locate the session in API operations such as UpdateChatSession, DeleteChatSession, and ListConversations.
         self.session_id = session_id
-        # The conversation type of the session. Valid values: MODEL and AGENT. These values are defined in the talkType enumeration of the CreateChatSession request parameter, and this response parameter does not have the @enums annotation.
+        # The conversation type of the session. Valid values: MODEL and AGENT. These values are defined in the talkType request parameter of the CreateChatSession operation. This response parameter does not include the @enums annotation.
         self.talk_type = talk_type
 
     def validate(self):

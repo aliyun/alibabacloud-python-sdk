@@ -12,16 +12,19 @@ class UpdateHttpApiRouteRequest(DaraModel):
         self,
         backend_config: main_models.UpdateHttpApiRouteRequestBackendConfig = None,
         description: str = None,
+        dfp_config: main_models.UpdateHttpApiRouteRequestDfpConfig = None,
         domain_ids: List[str] = None,
         environment_id: str = None,
         match: main_models.HttpRouteMatch = None,
         mcp_route_config: main_models.UpdateHttpApiRouteRequestMcpRouteConfig = None,
         policy_configs: List[main_models.HttpApiPolicyConfigs] = None,
     ):
-        # The backend service configuration of the route.
+        # The backend service configuration for the route.
         self.backend_config = backend_config
         # The route description.
         self.description = description
+        # The current ExtProc service selection for fixed DFP routes. You can only edit mounted routes. This parameter cannot be submitted together with backendConfig, mcpRouteConfig, or policyConfigs.
+        self.dfp_config = dfp_config
         # The list of domain name IDs.
         self.domain_ids = domain_ids
         # The environment ID.
@@ -30,12 +33,14 @@ class UpdateHttpApiRouteRequest(DaraModel):
         self.match = match
         # The MCP route configuration.
         self.mcp_route_config = mcp_route_config
-        # The route-level policy configurations.
+        # The route-level policy configuration.
         self.policy_configs = policy_configs
 
     def validate(self):
         if self.backend_config:
             self.backend_config.validate()
+        if self.dfp_config:
+            self.dfp_config.validate()
         if self.match:
             self.match.validate()
         if self.mcp_route_config:
@@ -55,6 +60,9 @@ class UpdateHttpApiRouteRequest(DaraModel):
 
         if self.description is not None:
             result['description'] = self.description
+
+        if self.dfp_config is not None:
+            result['dfpConfig'] = self.dfp_config.to_map()
 
         if self.domain_ids is not None:
             result['domainIds'] = self.domain_ids
@@ -83,6 +91,10 @@ class UpdateHttpApiRouteRequest(DaraModel):
 
         if m.get('description') is not None:
             self.description = m.get('description')
+
+        if m.get('dfpConfig') is not None:
+            temp_model = main_models.UpdateHttpApiRouteRequestDfpConfig()
+            self.dfp_config = temp_model.from_map(m.get('dfpConfig'))
 
         if m.get('domainIds') is not None:
             self.domain_ids = m.get('domainIds')
@@ -152,6 +164,34 @@ class UpdateHttpApiRouteRequestMcpRouteConfig(DaraModel):
 
         return self
 
+class UpdateHttpApiRouteRequestDfpConfig(DaraModel):
+    def __init__(
+        self,
+        service_id: str = None,
+    ):
+        # The ID of the ExtProc service mounted to the current route. When updating a fixed DFP route, this value must match the existing service. Service switching is not supported.
+        self.service_id = service_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.service_id is not None:
+            result['serviceId'] = self.service_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('serviceId') is not None:
+            self.service_id = m.get('serviceId')
+
+        return self
+
 class UpdateHttpApiRouteRequestBackendConfig(DaraModel):
     def __init__(
         self,
@@ -211,19 +251,19 @@ class UpdateHttpApiRouteRequestBackendConfigServices(DaraModel):
         version: str = None,
         weight: int = None,
     ):
-        # The service group. Used in HTTP-to-Dubbo conversion scenarios.
+        # The service group. Used for HTTP-to-Dubbo conversion scenarios.
         self.group_name = group_name
-        # The HTTP-to-Dubbo protocol conversion configuration. Only supported for SingleService MSE_NACOS DUBBO backends of HTTP APIs.
+        # The HTTP-to-Dubbo protocol conversion configuration. This is only supported for SingleService MSE_NACOS DUBBO backends of HTTP APIs.
         self.http_dubbo_transcoder = http_dubbo_transcoder
-        # The target model name. This field is shared by multiple existing model backend scenarios. The specific routing or model rewrite semantics are determined by backendConfig.scene. This field is required for the SemanticRouter scenario. If this field is not specified for the AiAutoRouter scenario, the default model of the AI service is used.
+        # The target model name. This field is shared by multiple existing model backend scenarios. The specific routing or model rewriting semantics are determined by backendConfig.scene. It must be configured for the SemanticRouter scenario. If it is not configured for the AiAutoRouter scenario, the default model of the AI service is used.
         self.model_name = model_name
-        # The service namespace. Used in HTTP-to-Dubbo conversion scenarios.
+        # The service namespace. Used for HTTP-to-Dubbo conversion scenarios.
         self.namespace = namespace
         # The service port. Do not specify this parameter for dynamic ports.
         self.port = port
         # The service protocol. Valid values:
-        # - HTTP
-        # - HTTPS
+        # - HTTP.
+        # - HTTPS.
         self.protocol = protocol
         # The service ID.
         self.service_id = service_id

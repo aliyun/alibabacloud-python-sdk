@@ -70,6 +70,8 @@ class GetGatewayQuotaRuleResponseBodyData(DaraModel):
         base_timestamp: int = None,
         consumer_count: int = None,
         consumers: List[main_models.GetGatewayQuotaRuleResponseBodyDataConsumers] = None,
+        current_cycle_reset_at: str = None,
+        period_multiplier: int = None,
         period_type: str = None,
         quota_dimension: str = None,
         quota_limit: int = None,
@@ -82,13 +84,17 @@ class GetGatewayQuotaRuleResponseBodyData(DaraModel):
         timezone: str = None,
         window_alignment: str = None,
     ):
-        # The period base timestamp.
+        # The base timestamp of the cycle, in UNIX seconds.
         self.base_timestamp = base_timestamp
-        # The number of API consumers associated with the rule.
+        # The number of consumers associated with the rule.
         self.consumer_count = consumer_count
-        # The list of subjects (API consumers) bound to this rule.
+        # The list of subjects (consumers) bound to this rule.
         self.consumers = consumers
-        # The quota period type.
+        # The reset time of the current cycle, in RFC 3339 format.
+        self.current_cycle_reset_at = current_cycle_reset_at
+        # The number of days in the custom cycle. This parameter is returned only when windowAlignment is set to epoch. Valid values: 1 to 106751. This parameter is not returned for natural cycles.
+        self.period_multiplier = period_multiplier
+        # The quota cycle type.
         self.period_type = period_type
         # The quota dimension.
         self.quota_dimension = quota_dimension
@@ -102,13 +108,13 @@ class GetGatewayQuotaRuleResponseBodyData(DaraModel):
         self.rule_status = rule_status
         # The number of associated subjects.
         self.subject_count = subject_count
-        # The rule subject type. Valid values: consumer and consumer_group.
+        # The subject type of the rule. Valid values: consumer and consumer_group.
         self.subject_type = subject_type
-        # The list of general subjects bound to this rule. Returned only when withSubjects is set to true.
+        # The list of general subjects bound to this rule. This parameter is returned only when withSubjects is set to true.
         self.subjects = subjects
-        # The time zone corresponding to the calendar period, in UTC+x format.
+        # The time zone corresponding to the natural cycle, in UTC+x format.
         self.timezone = timezone
-        # The reset period type.
+        # The reset cycle type.
         self.window_alignment = window_alignment
 
     def validate(self):
@@ -136,6 +142,12 @@ class GetGatewayQuotaRuleResponseBodyData(DaraModel):
         if self.consumers is not None:
             for k1 in self.consumers:
                 result['consumers'].append(k1.to_map() if k1 else None)
+
+        if self.current_cycle_reset_at is not None:
+            result['currentCycleResetAt'] = self.current_cycle_reset_at
+
+        if self.period_multiplier is not None:
+            result['periodMultiplier'] = self.period_multiplier
 
         if self.period_type is not None:
             result['periodType'] = self.period_type
@@ -187,6 +199,12 @@ class GetGatewayQuotaRuleResponseBodyData(DaraModel):
             for k1 in m.get('consumers'):
                 temp_model = main_models.GetGatewayQuotaRuleResponseBodyDataConsumers()
                 self.consumers.append(temp_model.from_map(k1))
+
+        if m.get('currentCycleResetAt') is not None:
+            self.current_cycle_reset_at = m.get('currentCycleResetAt')
+
+        if m.get('periodMultiplier') is not None:
+            self.period_multiplier = m.get('periodMultiplier')
 
         if m.get('periodType') is not None:
             self.period_type = m.get('periodType')
@@ -278,9 +296,9 @@ class GetGatewayQuotaRuleResponseBodyDataConsumers(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # The subject (API consumer) ID.
+        # The ID of the subject (consumer).
         self.id = id
-        # The subject (API consumer) name.
+        # The name of the subject (consumer).
         self.name = name
 
     def validate(self):

@@ -13,7 +13,7 @@ class CheckCommodityStatusResponseBody(DaraModel):
         commodities: List[main_models.CheckCommodityStatusResponseBodyCommodities] = None,
         request_id: str = None,
     ):
-        # The commodity status list. Each item contains the commodity code and indicates whether the commodity capability is enabled for the current account.
+        # The list of commodity statuses. Each item contains the commodity code and indicates whether the commodity capability is enabled for the current account.
         self.commodities = commodities
         # The request ID.
         self.request_id = request_id

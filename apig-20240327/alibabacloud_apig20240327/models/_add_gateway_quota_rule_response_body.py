@@ -19,9 +19,9 @@ class AddGatewayQuotaRuleResponseBody(DaraModel):
         self.code = code
         # The response data.
         self.data = data
-        # The response message.
+        # The message.
         self.message = message
-        # The request ID.
+        # The unique identifier of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -72,13 +72,13 @@ class AddGatewayQuotaRuleResponseBodyData(DaraModel):
         dry_run: bool = None,
         rule_id: str = None,
     ):
-        # Indicates whether the write request is accepted by the system. A value of false typically indicates a retryable scenario, such as an unconfirmed conflict overwrite.
+        # Indicates whether the semantics of this write request can be accepted by the system. A value of false typically occurs in retryable scenarios such as unconfirmed conflict overwrites.
         self.accepted = accepted
         # The conflict preview.
         self.conflict_preview = conflict_preview
-        # Indicates whether the request is a dry run.
+        # Indicates whether a dry run is performed.
         self.dry_run = dry_run
-        # The rule ID.
+        # The ID of the rule.
         self.rule_id = rule_id
 
     def validate(self):
@@ -182,18 +182,21 @@ class AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems(DaraModel):
         conflict_type: str = None,
         consumer_id: str = None,
         consumer_name: str = None,
+        period_type: str = None,
         subject_id: str = None,
         subject_name: str = None,
         subject_type: str = None,
     ):
-        # The period type of the existing conflicting rule on the consumer subject. A value of day, week, or month indicates that the period of the existing conflicting rule is day, week, or month respectively.
+        # The period type of the existing conflicting rule on the consumption subject. If conflictPeriodType is day, week, or month, it indicates that the period of the existing conflicting rule on the consumption subject is day, week, or month, respectively.
         self.conflict_period_type = conflict_period_type
-        # The type of the existing conflicting rule on the consumer subject. A value of calendar indicates that the existing conflicting rule uses a calendar period. A value of epoch indicates that the existing conflicting rule uses a custom period.
+        # The type of the existing conflicting rule on the consumption subject. If conflictType is calendar, it indicates that the existing conflicting rule on the consumption subject is a natural period. If conflictType is epoch, it indicates that the existing conflicting rule is a custom period.
         self.conflict_type = conflict_type
-        # The conflicting consumer ID. Use subjectId instead.
+        # The ID of the conflicting consumer. You can now use subjectId instead.
         self.consumer_id = consumer_id
-        # The conflicting consumer name. Use subjectName instead.
+        # The name of the conflicting consumer. You can now use subjectName instead.
         self.consumer_name = consumer_name
+        # The period type of the existing conflicting rule. day, week, and month indicate day, week, and month, respectively.
+        self.period_type = period_type
         # The ID of the conflicting subject.
         self.subject_id = subject_id
         # The name of the conflicting subject.
@@ -221,6 +224,9 @@ class AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems(DaraModel):
         if self.consumer_name is not None:
             result['consumerName'] = self.consumer_name
 
+        if self.period_type is not None:
+            result['periodType'] = self.period_type
+
         if self.subject_id is not None:
             result['subjectId'] = self.subject_id
 
@@ -245,6 +251,9 @@ class AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems(DaraModel):
 
         if m.get('consumerName') is not None:
             self.consumer_name = m.get('consumerName')
+
+        if m.get('periodType') is not None:
+            self.period_type = m.get('periodType')
 
         if m.get('subjectId') is not None:
             self.subject_id = m.get('subjectId')

@@ -148,6 +148,7 @@ class ListGatewayQuotaRulesResponseBodyData(DaraModel):
 class ListGatewayQuotaRulesResponseBodyDataItems(DaraModel):
     def __init__(
         self,
+        period_multiplier: int = None,
         period_type: str = None,
         quota_dimension: str = None,
         quota_limit: int = None,
@@ -157,6 +158,8 @@ class ListGatewayQuotaRulesResponseBodyDataItems(DaraModel):
         timezone: str = None,
         window_alignment: str = None,
     ):
+        # The number of days in a custom period. This parameter is returned only when windowAlignment is set to epoch. Valid values: 1 to 106751. This parameter is not returned for natural periods.
+        self.period_multiplier = period_multiplier
         # The period type.
         self.period_type = period_type
         # The quota dimension.
@@ -169,7 +172,7 @@ class ListGatewayQuotaRulesResponseBodyDataItems(DaraModel):
         self.rule_name = rule_name
         # The rule status.
         self.rule_status = rule_status
-        # The time zone for the natural period, in UTC+x format.
+        # The time zone corresponding to the natural period, in UTC+x format.
         self.timezone = timezone
         # The reset period type.
         self.window_alignment = window_alignment
@@ -182,6 +185,9 @@ class ListGatewayQuotaRulesResponseBodyDataItems(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.period_multiplier is not None:
+            result['periodMultiplier'] = self.period_multiplier
+
         if self.period_type is not None:
             result['periodType'] = self.period_type
 
@@ -210,6 +216,9 @@ class ListGatewayQuotaRulesResponseBodyDataItems(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('periodMultiplier') is not None:
+            self.period_multiplier = m.get('periodMultiplier')
+
         if m.get('periodType') is not None:
             self.period_type = m.get('periodType')
 

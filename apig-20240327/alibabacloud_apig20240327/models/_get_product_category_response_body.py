@@ -74,7 +74,7 @@ class GetProductCategoryResponseBodyData(DaraModel):
         self.category_id = category_id
         # The description of the product category.
         self.description = description
-        # The icon of the product category. It consists of two fields: icon type (type) and icon value (value).
+        # The icon of the product category, which consists of the icon type (type) and icon information (value) fields.
         self.icon = icon
         # The name of the product category.
         self.name = name

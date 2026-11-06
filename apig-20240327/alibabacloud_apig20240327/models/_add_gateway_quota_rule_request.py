@@ -23,31 +23,31 @@ class AddGatewayQuotaRuleRequest(DaraModel):
         timezone: str = None,
         window_alignment: str = None,
     ):
-        # The conflict snapshot hash, used to prevent concurrent dirty overwrites during confirmation. Obtain this value from the response of a previous dry run (dryRun=true).
+        # The conflict snapshot hash used to prevent concurrent dirty overwrites when you confirm an overwrite. You can obtain this value by first performing a dry run with dryRun=true and extracting it from the response.
         # 
-        # This parameter is not required in the following cases: no conflicts exist, the request is a dry run (dryRun=true), or overwrite is set to false.
+        # You do not need to specify this parameter in the following scenarios: no conflict exists; you are only performing a dry run with dryRun=true; or overwrite=false, which means you do not confirm the overwrite.
         # 
-        # When dryRun is set to false and overwrite is set to true, if this parameter is not specified or the value has expired and no longer matches, the backend returns accepted=false with a new conflict preview. Perform a new dry run to confirm the updated conflicts.
+        # If dryRun=false and overwrite=true but this parameter is not specified or has expired and does not match, the backend returns accepted=false along with a new conflict preview. In this case, you must perform a dry run again to confirm the new conflict.
         self.conflict_hash = conflict_hash
-        # The list of consumer group IDs to bind to the rule. Specify this parameter when subjectType is set to consumer_group. This parameter cannot be specified together with consumerIds.
+        # The list of consumer group IDs to which the rule is bound.
         self.consumer_group_ids = consumer_group_ids
-        # The list of consumer IDs to bind to the rule. A maximum of 1,000 consumers can be specified in a single request.
+        # The list of consumer IDs to which the rule is bound. You can specify up to 1,000 consumers in a single request.
         self.consumer_ids = consumer_ids
-        # Specifies whether to perform only a dry run without applying the configuration. A dry run checks whether conflicting rules exist on the bound consumer subjects. For example, a consumer that already has a calendar-day quota rule cannot have another calendar-day quota rule.
+        # Specifies whether to perform only a dry run without saving data to the database or delivering actual configurations. This parameter is used to check whether conflicting rules exist on the bound consumption subjects. A single consumption subject cannot be configured with two natural period quotas of the same period. For example, a consumption subject that already has a natural day quota cannot be added with another natural day quota rule.
         self.dry_run = dry_run
-        # Specifies whether to allow overwriting on conflict. If overwriting is allowed, the conflicting subjects (consumers or consumer groups) are unbound from the old rule and bound to the new rule.
+        # Specifies whether to allow overwriting when a conflict occurs. If you allow overwriting, the conflicting subjects (consumers or consumer groups) are unbound from the old rule and bound to the new rule.
         self.overwrite = overwrite
-        # The period multiplier, which specifies the number of periods after which the quota resets. This parameter is required for custom period rules. Minimum value: 1. Maximum value: 60.
+        # The period multiplier. This parameter applies to custom period rules.
         self.period_multiplier = period_multiplier
-        # The period type. For calendar periods, the value can be day, week, or month. For custom periods, only day is supported.
+        # The period type. Natural periods support daily, weekly, and monthly statistics. Valid values: day, week, and month. Custom periods support only daily statistics, and the value is fixed to day.
         # 
         # This parameter is required.
         self.period_type = period_type
-        # The quota dimension or throttling type. Valid values: token and credit.
+        # The quota dimension or limit type. Valid values: token and credit.
         # 
         # This parameter is required.
         self.quota_dimension = quota_dimension
-        # The total available quota per period.
+        # The total available quota (limit) for the period.
         # 
         # This parameter is required.
         self.quota_limit = quota_limit
@@ -55,17 +55,11 @@ class AddGatewayQuotaRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.rule_name = rule_name
-        # The subject type of the rule. Valid values:
-        # 
-        # - consumer: API consumer. This is the default value.
-        # - consumer_group: API consumer group.
+        # The subject type of the rule. consumer indicates a consumer, and consumer_group indicates a consumer group. If you do not specify this parameter, the default value is consumer.
         self.subject_type = subject_type
-        # The time zone for the calendar period, in UTC+x format.
+        # The time zone corresponding to the natural period in the UTC+x format.
         self.timezone = timezone
-        # The reset period alignment type. Valid values:
-        # 
-        # - calendar: calendar period. The period starts from the beginning of a calendar day, week, or month.
-        # - epoch: custom period. The period starts from the time the rule is applied.
+        # The reset period type. Natural periods (windowAlignment=calendar) and custom periods (windowAlignment=epoch) are supported.
         self.window_alignment = window_alignment
 
     def validate(self):

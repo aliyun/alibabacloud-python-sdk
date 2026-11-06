@@ -32,31 +32,31 @@ class UpdateHttpApiRequest(DaraModel):
         self.ai_protocols = ai_protocols
         # The authentication configuration.
         self.auth_config = auth_config
-        # The base path of the API. The value must start with a forward slash (/).
+        # The base path of the API, which must start with a forward slash (/).
         # 
         # This parameter is required.
         self.base_path = base_path
         # The list of API deployment configurations.
         self.deploy_configs = deploy_configs
-        # The API description.
+        # The description of the API.
         self.description = description
         # Specifies whether to enable authentication.
         self.enable_auth = enable_auth
-        # The first byte timeout period. Unit: seconds.
+        # The time to first byte timeout, in seconds.
         self.first_byte_timeout = first_byte_timeout
-        # The configuration of the HTTP Ingress API.
+        # The configuration information of the HTTP Ingress API.
         self.ingress_config = ingress_config
-        # Specifies whether to only modify the configuration. If this parameter is set to true, only the configuration is modified without triggering redeployment.
+        # Specifies whether to only modify the configuration. A value of true indicates that only the configuration is modified without triggering a redeployment.
         self.only_change_config = only_change_config
         # The list of API access protocols.
         self.protocols = protocols
-        # Specifies whether to remove the base path when forwarding requests.
+        # Specifies whether to remove the base path during forwarding.
         self.remove_base_path_on_forward = remove_base_path_on_forward
         # The API versioning configuration.
         self.version_config = version_config
-        # The idempotency token. If you call this operation for the same HTTP API by using the same clientToken value and request parameters, the result of the first successful call is returned.
+        # The idempotency token. If the same HTTP API is repeatedly called with the same client token and request parameters, the first successful result is returned.
         self.client_token = client_token
-        # Specifies whether to perform only a dry run. If this parameter is set to true, all synchronous validations identical to an actual update are performed, but no configurations are updated and no side effects are produced. If this parameter is not specified or is set to false, the behavior is the same as the existing version.
+        # Specifies whether to perform a dry run. If set to true, all synchronization checks consistent with a real update are executed, but no configurations are updated and no side effects are generated. If left empty or set to false, the behavior is consistent with the existing version.
         self.dry_run = dry_run
 
     def validate(self):
@@ -197,7 +197,7 @@ class UpdateHttpApiRequestIngressConfig(DaraModel):
         self.override_ingress_ip = override_ingress_ip
         # The source ID.
         self.source_id = source_id
-        # The namespace to listen on.
+        # The namespace to watch.
         self.watch_namespace = watch_namespace
 
     def validate(self):

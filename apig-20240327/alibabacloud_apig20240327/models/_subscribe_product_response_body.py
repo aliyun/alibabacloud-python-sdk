@@ -73,15 +73,15 @@ class SubscribeProductResponseBodyData(DaraModel):
         status: str = None,
         subscription_id: str = None,
     ):
-        # The ID of the consumer to which the subscription belongs. This is the same identifier as the consumerId path parameter in the request and refers to the same consumer as the consumerName field returned at the same level.
+        # The ID of the consumer to which the subscription belongs. This is the same identifier as the consumerId path parameter in the request and refers to the same consumer as the consumerName returned at the same level.
         self.consumer_id = consumer_id
-        # The name of the consumer to which the subscription belongs. This refers to the same consumer as the consumerId field returned at the same level.
+        # The name of the consumer to which the subscription belongs. This refers to the same consumer as the consumerId returned at the same level.
         self.consumer_name = consumer_name
         # The ID of the subscribed API product. This is the primary ID of the API product resource and is the same identifier as the productId passed in the request body.
         self.product_id = product_id
         # The name of the subscribed API product. This is the Name property of the API product resource.
         self.product_name = product_name
-        # The type of the subscribed API product. The valid values are not declared in this operation definition. The response parameter with the same name in the related ListProductSubscriptions operation includes the following valid values: REST_API, HTTP_API, MCP_SERVER, AGENT_API, and MODEL_API.
+        # The type of the subscribed API product. The valid values are not declared in this operation definition. The response parameter with the same name in the related ListProductSubscriptions operation has the following valid values: REST_API, HTTP_API, MCP_SERVER, AGENT_API, and MODEL_API.
         self.product_type = product_type
         # The subscription status. Valid values: PENDING and APPROVED. These valid values are declared in the status request parameter of the related ListProductSubscriptions operation.
         self.status = status

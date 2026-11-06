@@ -17,7 +17,7 @@ class ListGatewaysResponseBody(DaraModel):
     ):
         # The response status code.
         self.code = code
-        # The query result of the gateway list.
+        # The gateway list query results.
         self.data = data
         # The response message.
         self.message = message
@@ -78,7 +78,7 @@ class ListGatewaysResponseBodyData(DaraModel):
         self.page_number = page_number
         # The page size.
         self.page_size = page_size
-        # The total number of gateways.
+        # The total count.
         self.total_size = total_size
 
     def validate(self):
@@ -133,6 +133,7 @@ class ListGatewaysResponseBodyDataItems(DaraModel):
         charge_type: str = None,
         create_from: str = None,
         create_timestamp: int = None,
+        elastic_enabled: bool = None,
         expire_timestamp: int = None,
         gateway_edition: str = None,
         gateway_id: str = None,
@@ -141,6 +142,8 @@ class ListGatewaysResponseBodyDataItems(DaraModel):
         legacy: bool = None,
         load_balancers: List[main_models.ListGatewaysResponseBodyDataItemsLoadBalancers] = None,
         name: str = None,
+        network_access_config: main_models.ListGatewaysResponseBodyDataItemsNetworkAccessConfig = None,
+        private_link: main_models.ListGatewaysResponseBodyDataItemsPrivateLink = None,
         replicas: str = None,
         resource_group_id: str = None,
         security_group: main_models.ListGatewaysResponseBodyDataItemsSecurityGroup = None,
@@ -156,21 +159,20 @@ class ListGatewaysResponseBodyDataItems(DaraModel):
         zones: List[main_models.ListGatewaysResponseBodyDataItemsZones] = None,
     ):
         # The billing method. Valid values:
-        # 
-        # - POSTPAY: pay-as-you-go.
-        # - PREPAY: subscription.
+        # - POSTPAY: Pay-as-you-go.
+        # - PREPAY: Subscription.
         self.charge_type = charge_type
         # The source from which the gateway was created. Valid values:
-        # - Console: the console.
+        # - Console: Alibaba Cloud Management Console.
         self.create_from = create_from
-        # The creation timestamp. Unit: milliseconds.
+        # The timestamp when the gateway was created. Unit: milliseconds.
         self.create_timestamp = create_timestamp
-        # The expiration timestamp for subscription instances. Unit: milliseconds.
+        # Indicates whether elastic scaling is enabled. A value of true indicates that elastic scaling is enabled. A value of false indicates that elastic scaling is disabled. A value of null or a missing value indicates that the status is unknown. This parameter is for query and display purposes only.
+        self.elastic_enabled = elastic_enabled
+        # The expiration timestamp of the subscription gateway. Unit: milliseconds.
         self.expire_timestamp = expire_timestamp
-        # The gateway instance edition. Valid values:
-        # 
-        # - Professional: standard instance.
-        # 
+        # The edition of the gateway instance. Valid values:
+        # - Professional: Regular instance.
         # - Serverless: Serverless instance.
         self.gateway_edition = gateway_edition
         # The gateway ID.
@@ -178,42 +180,45 @@ class ListGatewaysResponseBodyDataItems(DaraModel):
         # The running mode of the AI MultiTenantServerless gateway. Valid values:
         # - ENTERPRISE: Enterprise Edition.
         # - STANDARD: Standard Edition.
-        # 
         # This parameter is returned only for AI MultiTenantServerless gateways.
         self.gateway_mode = gateway_mode
         # The gateway type.
         self.gateway_type = gateway_type
         # Indicates whether the gateway instance was created before the AI gateway feature was released.
         self.legacy = legacy
-        # The list of gateway ingress addresses.
+        # The list of ingress addresses for the gateway.
         self.load_balancers = load_balancers
         # The gateway name.
         self.name = name
-        # The number of gateway instance nodes.
+        # The network access configuration of the gateway, including the access ingress type and the security group used by the internal endpoint. This parameter is returned only when the gateway is configured with an internal ingress.
+        self.network_access_config = network_access_config
+        # The private connection information of the gateway, including the endpoint ID, access domain name, connection status, and zone information.
+        self.private_link = private_link
+        # The number of nodes in the gateway instance.
         self.replicas = replicas
         # The resource group ID.
         self.resource_group_id = resource_group_id
         # The security group information of the gateway.
         self.security_group = security_group
         # The gateway specification. Valid values:
-        # - apigw.small.x1: small specification.
+        # - apigw.small.x1: Small.
         self.spec = spec
         # The gateway status. Valid values:
-        # - Running: The gateway is running.
-        # - Creating: The gateway is being created.
-        # - CreateFailed: The gateway failed to be created.
-        # - Upgrading: The gateway is being upgraded.
-        # - UpgradeFailed: The gateway failed to be upgraded.
-        # - Restarting: The gateway is being restarted.
-        # - RestartFailed: The gateway failed to be restarted.
-        # - Deleting: The gateway is being released.
-        # - DeleteFailed: The gateway failed to be released.
+        # - Running: Running.
+        # - Creating: Creating.
+        # - CreateFailed: Creation failed.
+        # - Upgrading: Upgrading.
+        # - UpgradeFailed: Upgrade failed.
+        # - Restarting: Restarting.
+        # - RestartFailed: Restart failed.
+        # - Deleting: Releasing.
+        # - DeleteFailed: Release failed.
         self.status = status
-        # The list of second-level domain names.
+        # The list of subdomains.
         self.sub_domain_infos = sub_domain_infos
         # The list of tags.
         self.tags = tags
-        # The target version of the gateway. When this value differs from version, a version upgrade can be performed.
+        # The target version of the gateway. If this value differs from the current version, you can upgrade the gateway.
         self.target_version = target_version
         # The update timestamp. Unit: milliseconds.
         self.update_timestamp = update_timestamp
@@ -231,6 +236,10 @@ class ListGatewaysResponseBodyDataItems(DaraModel):
             for v1 in self.load_balancers:
                  if v1:
                     v1.validate()
+        if self.network_access_config:
+            self.network_access_config.validate()
+        if self.private_link:
+            self.private_link.validate()
         if self.security_group:
             self.security_group.validate()
         if self.sub_domain_infos:
@@ -264,6 +273,9 @@ class ListGatewaysResponseBodyDataItems(DaraModel):
         if self.create_timestamp is not None:
             result['createTimestamp'] = self.create_timestamp
 
+        if self.elastic_enabled is not None:
+            result['elasticEnabled'] = self.elastic_enabled
+
         if self.expire_timestamp is not None:
             result['expireTimestamp'] = self.expire_timestamp
 
@@ -289,6 +301,12 @@ class ListGatewaysResponseBodyDataItems(DaraModel):
 
         if self.name is not None:
             result['name'] = self.name
+
+        if self.network_access_config is not None:
+            result['networkAccessConfig'] = self.network_access_config.to_map()
+
+        if self.private_link is not None:
+            result['privateLink'] = self.private_link.to_map()
 
         if self.replicas is not None:
             result['replicas'] = self.replicas
@@ -348,6 +366,9 @@ class ListGatewaysResponseBodyDataItems(DaraModel):
         if m.get('createTimestamp') is not None:
             self.create_timestamp = m.get('createTimestamp')
 
+        if m.get('elasticEnabled') is not None:
+            self.elastic_enabled = m.get('elasticEnabled')
+
         if m.get('expireTimestamp') is not None:
             self.expire_timestamp = m.get('expireTimestamp')
 
@@ -374,6 +395,14 @@ class ListGatewaysResponseBodyDataItems(DaraModel):
 
         if m.get('name') is not None:
             self.name = m.get('name')
+
+        if m.get('networkAccessConfig') is not None:
+            temp_model = main_models.ListGatewaysResponseBodyDataItemsNetworkAccessConfig()
+            self.network_access_config = temp_model.from_map(m.get('networkAccessConfig'))
+
+        if m.get('privateLink') is not None:
+            temp_model = main_models.ListGatewaysResponseBodyDataItemsPrivateLink()
+            self.private_link = temp_model.from_map(m.get('privateLink'))
 
         if m.get('replicas') is not None:
             self.replicas = m.get('replicas')
@@ -616,6 +645,206 @@ class ListGatewaysResponseBodyDataItemsSecurityGroup(DaraModel):
 
         return self
 
+class ListGatewaysResponseBodyDataItemsPrivateLink(DaraModel):
+    def __init__(
+        self,
+        connection_status: str = None,
+        endpoint_domain: str = None,
+        endpoint_id: str = None,
+        endpoint_security_group_id: str = None,
+        endpoint_status: str = None,
+        last_error_code: str = None,
+        last_error_message: str = None,
+        observed_at: str = None,
+        resource_may_be_charged: bool = None,
+        stage: str = None,
+        zones: List[main_models.ListGatewaysResponseBodyDataItemsPrivateLinkZones] = None,
+    ):
+        # The connection status between the internal endpoint and the endpoint service.
+        self.connection_status = connection_status
+        # The endpoint domain name used for connection configuration.
+        self.endpoint_domain = endpoint_domain
+        # The endpoint ID.
+        self.endpoint_id = endpoint_id
+        # The ID of the security group configured for the internal endpoint.
+        self.endpoint_security_group_id = endpoint_security_group_id
+        # The status of the internal endpoint.
+        self.endpoint_status = endpoint_status
+        # The error code of the most recent fault that occurred during the create or delete procedure of the private network ingress. This parameter is not returned if no error message is available.
+        self.last_error_code = last_error_code
+        # The description of the most recent fault that occurred during the create or delete procedure of the private network ingress. You can use this description along with the error code to troubleshoot the issue. This parameter is not returned if no error message is available.
+        self.last_error_message = last_error_message
+        # The time when the system last obtained the status of the internal endpoint. The time is in RFC 3339 format, such as 2026-11-02T10:00:00Z. This parameter is not returned if the status has not been obtained.
+        self.observed_at = observed_at
+        # Indicates whether the internal endpoint may continue to incur charges. A value of true indicates that the endpoint has been created and its release has not been confirmed. A value of false indicates that there is no such charge prompt currently. The actual charges are subject to the bill.
+        self.resource_may_be_charged = resource_may_be_charged
+        # The current processing stage of the internal ingress. A value of Ready indicates that the internal ingress is ready.
+        self.stage = stage
+        # The zone names.
+        self.zones = zones
+
+    def validate(self):
+        if self.zones:
+            for v1 in self.zones:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.connection_status is not None:
+            result['connectionStatus'] = self.connection_status
+
+        if self.endpoint_domain is not None:
+            result['endpointDomain'] = self.endpoint_domain
+
+        if self.endpoint_id is not None:
+            result['endpointId'] = self.endpoint_id
+
+        if self.endpoint_security_group_id is not None:
+            result['endpointSecurityGroupId'] = self.endpoint_security_group_id
+
+        if self.endpoint_status is not None:
+            result['endpointStatus'] = self.endpoint_status
+
+        if self.last_error_code is not None:
+            result['lastErrorCode'] = self.last_error_code
+
+        if self.last_error_message is not None:
+            result['lastErrorMessage'] = self.last_error_message
+
+        if self.observed_at is not None:
+            result['observedAt'] = self.observed_at
+
+        if self.resource_may_be_charged is not None:
+            result['resourceMayBeCharged'] = self.resource_may_be_charged
+
+        if self.stage is not None:
+            result['stage'] = self.stage
+
+        result['zones'] = []
+        if self.zones is not None:
+            for k1 in self.zones:
+                result['zones'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('connectionStatus') is not None:
+            self.connection_status = m.get('connectionStatus')
+
+        if m.get('endpointDomain') is not None:
+            self.endpoint_domain = m.get('endpointDomain')
+
+        if m.get('endpointId') is not None:
+            self.endpoint_id = m.get('endpointId')
+
+        if m.get('endpointSecurityGroupId') is not None:
+            self.endpoint_security_group_id = m.get('endpointSecurityGroupId')
+
+        if m.get('endpointStatus') is not None:
+            self.endpoint_status = m.get('endpointStatus')
+
+        if m.get('lastErrorCode') is not None:
+            self.last_error_code = m.get('lastErrorCode')
+
+        if m.get('lastErrorMessage') is not None:
+            self.last_error_message = m.get('lastErrorMessage')
+
+        if m.get('observedAt') is not None:
+            self.observed_at = m.get('observedAt')
+
+        if m.get('resourceMayBeCharged') is not None:
+            self.resource_may_be_charged = m.get('resourceMayBeCharged')
+
+        if m.get('stage') is not None:
+            self.stage = m.get('stage')
+
+        self.zones = []
+        if m.get('zones') is not None:
+            for k1 in m.get('zones'):
+                temp_model = main_models.ListGatewaysResponseBodyDataItemsPrivateLinkZones()
+                self.zones.append(temp_model.from_map(k1))
+
+        return self
+
+class ListGatewaysResponseBodyDataItemsPrivateLinkZones(DaraModel):
+    def __init__(
+        self,
+        status: str = None,
+        zone_id: str = None,
+    ):
+        # The status of the endpoint in the zone.
+        self.status = status
+        # The zone ID.
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.status is not None:
+            result['status'] = self.status
+
+        if self.zone_id is not None:
+            result['zoneId'] = self.zone_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('status') is not None:
+            self.status = m.get('status')
+
+        if m.get('zoneId') is not None:
+            self.zone_id = m.get('zoneId')
+
+        return self
+
+class ListGatewaysResponseBodyDataItemsNetworkAccessConfig(DaraModel):
+    def __init__(
+        self,
+        endpoint_security_group_id: str = None,
+        type: str = None,
+    ):
+        # The ID of the security group configured for the internal endpoint. The security group belongs to the VPC selected by the user and is a non-managed security group.
+        self.endpoint_security_group_id = endpoint_security_group_id
+        # The access ingress type of the gateway.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.endpoint_security_group_id is not None:
+            result['endpointSecurityGroupId'] = self.endpoint_security_group_id
+
+        if self.type is not None:
+            result['type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endpointSecurityGroupId') is not None:
+            self.endpoint_security_group_id = m.get('endpointSecurityGroupId')
+
+        if m.get('type') is not None:
+            self.type = m.get('type')
+
+        return self
+
 class ListGatewaysResponseBodyDataItemsLoadBalancers(DaraModel):
     def __init__(
         self,
@@ -633,34 +862,34 @@ class ListGatewaysResponseBodyDataItemsLoadBalancers(DaraModel):
     ):
         # The load balancing address.
         self.address = address
-        # The protocol version. Valid values:
+        # The IP version. Valid values:
         # - ipv4: IPv4.
         # - ipv6: IPv6.
         self.address_ip_version = address_ip_version
         # The load balancing address type. Valid values:
-        # - Internet: public network.
-        # - Intranet: private network.
+        # - Internet: Internet.
+        # - Intranet: Private network.
         self.address_type = address_type
-        # Indicates whether this is the default ingress address of the gateway.
+        # Indicates whether the address is the default ingress address of the gateway.
         self.gateway_default = gateway_default
         # The list of IPv4 addresses.
         self.ipv_4addresses = ipv_4addresses
         # The list of IPv6 addresses.
         self.ipv_6addresses = ipv_6addresses
-        # The load balancing instance ID.
+        # The load balancing ID.
         self.load_balancer_id = load_balancer_id
         # The load balancing provisioning pattern of the gateway. Valid values:
-        # - Managed: managed by the cloud-native API gateway.
+        # - Managed: Managed by Cloud-native API Gateway.
         self.mode = mode
-        # The list of listening ports.
+        # The list of listened ports.
         self.ports = ports
-        # The status of the load balancing instance. Valid values:
-        # - Ready: active.
-        # - NotCreate: No instance is associated.
+        # The status of the load balancing. Valid values:
+        # - Ready: Active.
+        # - NotCreate: Not associated with an instance.
         self.status = status
         # The load balancing type of the gateway. Valid values:
-        # - NLB: Network Load Balancer (NLB).
-        # - CLB: Classic Load Balancer (CLB).
+        # - NLB: Network load balancing.
+        # - CLB: Classic load balancing.
         self.type = type
 
     def validate(self):

@@ -78,7 +78,7 @@ class ListApiPathFieldTemplatesResponseBodyData(DaraModel):
         self.page_number = page_number
         # The page size.
         self.page_size = page_size
-        # The total number of records.
+        # The total number of entries.
         self.total_size = total_size
 
     def validate(self):
@@ -134,11 +134,11 @@ class ListApiPathFieldTemplatesResponseBodyDataItems(DaraModel):
         protocol: str = None,
         template_id: str = None,
     ):
-        # The request path corresponding to the field template.
+        # The API request path corresponding to the field template.
         self.path = path
         # The API protocol applicable to the field template.
         self.protocol = protocol
-        # The ID of the field template.
+        # The field template ID.
         self.template_id = template_id
 
     def validate(self):

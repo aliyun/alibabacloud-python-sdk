@@ -13,7 +13,7 @@ class ListGatewayQuotaRulesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The rule name keyword for fuzzy match.
+        # The keyword used for fuzzy matching of rule names.
         self.keyword = keyword
         # The maximum number of records to retrieve at a time. This parameter is not supported.
         self.max_results = max_results
@@ -21,7 +21,7 @@ class ListGatewayQuotaRulesRequest(DaraModel):
         self.next_token = next_token
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of items per page.
         self.page_size = page_size
 
     def validate(self):

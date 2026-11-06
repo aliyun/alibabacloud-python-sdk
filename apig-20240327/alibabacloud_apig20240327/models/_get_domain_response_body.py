@@ -21,7 +21,7 @@ class GetDomainResponseBody(DaraModel):
         self.data = data
         # The response message.
         self.message = message
-        # The request ID, which is used to trace the API call chain.
+        # The request ID used to trace the API call chain.
         self.request_id = request_id
 
     def validate(self):
@@ -96,7 +96,7 @@ class GetDomainResponseBodyData(DaraModel):
         tls_min: str = None,
         updatetimestamp: int = None,
     ):
-        # The encryption algorithm name.
+        # The name of the encryption algorithm.
         self.algorithm = algorithm
         # The CA certificate identifier.
         self.ca_cert_identifier = ca_cert_identifier
@@ -112,46 +112,46 @@ class GetDomainResponseBodyData(DaraModel):
         self.cert_name = cert_name
         # The client CA certificate.
         self.client_cacert = client_cacert
-        # The source from which the domain name was created.
+        # The creation source.
         self.create_from = create_from
         # The creation timestamp.
         self.create_timestamp = create_timestamp
-        # Indicates whether this is the default domain name.
+        # Indicates whether the domain name is the default domain name.
         self.default = default
         # The domain name ID.
         self.domain_id = domain_id
         # The domain name scope.
         self.domain_scope = domain_scope
-        # Specifies whether to enable forced HTTPS redirect when the HTTPS protocol type is configured.
+        # The Settings for the HTTPS Protocol Type and whether forced HTTPS redirection is enabled.
         self.force_https = force_https
-        # The HTTP/2 setting.
+        # The HTTP/2 settings.
         self.http_2option = http_2option
         # The certification authority.
         self.issuer = issuer
-        # Indicates whether mutual TLS (mTLS) authentication is enabled.
+        # Indicates whether mTLS mutual authentication is enabled.
         self.m_tlsenabled = m_tlsenabled
         # The domain name.
         self.name = name
-        # The certificate expiration time.
+        # The expiration time of the certificate.
         self.not_after_timstamp = not_after_timstamp
-        # The certificate effective period.
+        # The effective period of the certificate.
         self.not_before_timestamp = not_before_timestamp
-        # The protocol type supported by the domain name.
+        # The protocol types supported by the domain name.
         # 
-        # - HTTP: Only the HTTP protocol is supported.
-        # - HTTPS: Only the HTTPS protocol is supported.
+        # - HTTP: Supports only the HTTP protocol.
+        # - HTTPS: Supports only the HTTPS protocol.
         self.protocol = protocol
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # All domain names bound to the certificate.
+        # All the domain names bound to the certificate.
         self.sans = sans
         # The online resource information.
         self.statistics_info = statistics_info
         # The cipher suite configuration.
         self.tls_cipher_suites_config = tls_cipher_suites_config
-        # The maximum TLS protocol version. TLS 1.3 is the maximum supported version.
+        # The maximum TLS protocol version. The maximum supported version is TLS 1.3.
         self.tls_max = tls_max
-        # The minimum TLS protocol version. TLS 1.0 is the minimum supported version.
+        # The minimum TLS protocol version. The minimum supported version is TLS 1.0.
         self.tls_min = tls_min
         # The update timestamp.
         self.updatetimestamp = updatetimestamp

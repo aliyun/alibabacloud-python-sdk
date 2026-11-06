@@ -11,11 +11,11 @@ class ListProductCategoriesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The keyword for the category name. This parameter is used to search for product categories by name.
+        # The keyword used to search for product categories by name.
         self.name = name
-        # The page number. The value starts from 1.
+        # The page number. Pages start from 1.
         self.page_number = page_number
-        # The number of entries to return on each page. The minimum value is 1.
+        # The number of entries to return on each page. Minimum value: 1.
         self.page_size = page_size
 
     def validate(self):

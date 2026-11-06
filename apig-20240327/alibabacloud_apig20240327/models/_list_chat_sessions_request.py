@@ -12,13 +12,13 @@ class ListChatSessionsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The maximum number of entries per page. The default value and value range are not specified in the API definition.
+        # The maximum number of entries per page. The default value and valid values are not specified in the API definition.
         self.max_results = max_results
-        # The pagination token. Pass the nextToken returned in the previous response to obtain the next page. Do not specify this parameter for the first query.
+        # The pagination token. Pass the nextToken returned in the previous response to retrieve the next page. Do not specify this parameter for the first query.
         self.next_token = next_token
         # The page number. Pages start from 1.
         self.page_number = page_number
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):

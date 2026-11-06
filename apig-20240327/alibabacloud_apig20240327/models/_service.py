@@ -34,30 +34,31 @@ class Service(DaraModel):
         runtime_detail_error_code: str = None,
         runtime_detail_status: str = None,
         service_id: str = None,
+        service_meta_data: main_models.ServiceServiceMetaData = None,
         source_type: str = None,
         unhealthy_endpoints: List[str] = None,
         update_timestamp: int = None,
         versions: List[main_models.ServiceVersions] = None,
     ):
-        # The address information, which is a list of IP addresses or domain names.
+        # The address information, such as IP addresses or domain names.
         self.addresses = addresses
         # The agent service configuration.
         self.agent_service_config = agent_service_config
         # The AI service configuration.
         self.ai_service_config = ai_service_config
-        # The time when the service was created.
+        # The creation time.
         self.create_timestamp = create_timestamp
         # The list of DNS servers.
         self.dns_servers = dns_servers
-        # The execution mode of CloudFlow.
+        # The execution method of CloudFlow.
         self.express_type = express_type
-        # The instance ID of the gateway.
+        # The gateway instance ID.
         self.gateway_id = gateway_id
         # The name of the service group.
         self.group_name = group_name
         # The health check configuration.
         self.health_check = health_check
-        # The health check status. Valid values: Healthy and Unhealthy.
+        # The monitoring check status.
         self.health_status = health_status
         # The healthy panic threshold.
         self.healthy_panic_threshold = healthy_panic_threshold
@@ -69,9 +70,9 @@ class Service(DaraModel):
         self.name = name
         # The namespace.
         self.namespace = namespace
-        # The outlier detection configuration for removing abnormal instances.
+        # The outlier detection configuration.
         self.outlier_detection = outlier_detection
-        # The circuit-broken endpoints.
+        # The ejected endpoints.
         self.outlier_endpoints = outlier_endpoints
         # The list of port information.
         self.ports = ports
@@ -81,17 +82,19 @@ class Service(DaraModel):
         self.qualifier = qualifier
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The masked error code of the runtime details.
+        # The masked error code in the runtime details.
         self.runtime_detail_error_code = runtime_detail_error_code
         # The runtime detail status.
         self.runtime_detail_status = runtime_detail_status
         # The unique ID of the service.
         self.service_id = service_id
+        # The ExtProc reference status in the service list. This field is not returned if the relationship read fails.
+        self.service_meta_data = service_meta_data
         # The source type of the service.
         self.source_type = source_type
         # The unhealthy endpoints.
         self.unhealthy_endpoints = unhealthy_endpoints
-        # The time when the service was updated.
+        # The update time.
         self.update_timestamp = update_timestamp
         # The list of service versions.
         self.versions = versions
@@ -113,6 +116,8 @@ class Service(DaraModel):
             for v1 in self.ports:
                  if v1:
                     v1.validate()
+        if self.service_meta_data:
+            self.service_meta_data.validate()
         if self.versions:
             for v1 in self.versions:
                  if v1:
@@ -198,6 +203,9 @@ class Service(DaraModel):
 
         if self.service_id is not None:
             result['serviceId'] = self.service_id
+
+        if self.service_meta_data is not None:
+            result['serviceMetaData'] = self.service_meta_data.to_map()
 
         if self.source_type is not None:
             result['sourceType'] = self.source_type
@@ -299,6 +307,10 @@ class Service(DaraModel):
         if m.get('serviceId') is not None:
             self.service_id = m.get('serviceId')
 
+        if m.get('serviceMetaData') is not None:
+            temp_model = main_models.ServiceServiceMetaData()
+            self.service_meta_data = temp_model.from_map(m.get('serviceMetaData'))
+
         if m.get('sourceType') is not None:
             self.source_type = m.get('sourceType')
 
@@ -398,6 +410,43 @@ class ServiceVersionsLabels(DaraModel):
 
         return self
 
+class ServiceServiceMetaData(DaraModel):
+    def __init__(
+        self,
+        dfp_referenced: bool = None,
+        ext_proc: bool = None,
+    ):
+        # Specifies whether the current service is referenced by an explicit DFP ExtProc binding of the gateway.
+        self.dfp_referenced = dfp_referenced
+        # Specifies whether the current service is referenced by an ExtProc configuration of the same user and gateway.
+        self.ext_proc = ext_proc
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.dfp_referenced is not None:
+            result['dfpReferenced'] = self.dfp_referenced
+
+        if self.ext_proc is not None:
+            result['extProc'] = self.ext_proc
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('dfpReferenced') is not None:
+            self.dfp_referenced = m.get('dfpReferenced')
+
+        if m.get('extProc') is not None:
+            self.ext_proc = m.get('extProc')
+
+        return self
+
 class ServicePorts(DaraModel):
     def __init__(
         self,
@@ -409,7 +458,7 @@ class ServicePorts(DaraModel):
         self.name = name
         # The port number.
         self.port = port
-        # The protocol. Valid values: TCP and UDP.
+        # The protocol.
         self.protocol = protocol
 
     def validate(self):
@@ -453,13 +502,13 @@ class ServiceOutlierDetection(DaraModel):
         failure_percentage_threshold: int = None,
         interval: int = None,
     ):
-        # The base ejection duration in seconds. Valid values: 1 to 3600.
+        # The base ejection time in seconds. Valid values: 1 to 3600.
         self.base_ejection_time = base_ejection_time
-        # Specifies whether to enable outlier detection.
+        # Specifies whether to enable the feature.
         self.enable = enable
-        # The minimum number of hosts. The value must be greater than or equal to 0.
+        # The minimum number of hosts. Valid values: 0 or greater.
         self.failure_percentage_minimum_hosts = failure_percentage_minimum_hosts
-        # The failure rate threshold in percentage. Valid values: 1 to 100.
+        # The failure percentage threshold. Valid values: 1 to 100.
         self.failure_percentage_threshold = failure_percentage_threshold
         # The detection interval in seconds. Valid values: 1 to 3600.
         self.interval = interval

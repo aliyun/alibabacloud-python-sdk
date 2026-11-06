@@ -13,6 +13,8 @@ class UpdateServiceRequest(DaraModel):
         addresses: List[str] = None,
         agent_service_config: main_models.AgentServiceConfig = None,
         ai_service_config: main_models.AiServiceConfig = None,
+        api_key_references_to_add: List[str] = None,
+        api_keys_to_add: List[str] = None,
         dns_servers: List[str] = None,
         health_check_config: main_models.UpdateServiceRequestHealthCheckConfig = None,
         healthy_panic_threshold: float = None,
@@ -21,12 +23,16 @@ class UpdateServiceRequest(DaraModel):
         ports: List[main_models.UpdateServiceRequestPorts] = None,
         protocol: str = None,
     ):
-        # The list of domain names or fixed addresses.
+        # The list of domain names or static addresses.
         self.addresses = addresses
         # The agent service configuration.
         self.agent_service_config = agent_service_config
         # The AI service configuration.
         self.ai_service_config = ai_service_config
+        # The list of KMS reference names to append. This parameter is available only in Reference mode and does not read KMS content.
+        self.api_key_references_to_add = api_key_references_to_add
+        # The list of API keys to append. This parameter is available only in the Custom API Key mode for AI services. It must be used with fully masked apiKeys or omitted apiKeys, and does not read or return existing keys.
+        self.api_keys_to_add = api_keys_to_add
         # The DNS server addresses.
         self.dns_servers = dns_servers
         # The health check configuration of the service.
@@ -35,7 +41,7 @@ class UpdateServiceRequest(DaraModel):
         self.healthy_panic_threshold = healthy_panic_threshold
         # The model provider ID.
         self.model_provider_id = model_provider_id
-        # The passive health check parameter settings.
+        # The parameter settings for passive health checks.
         self.outlier_detection_config = outlier_detection_config
         # The port information.
         self.ports = ports
@@ -69,6 +75,12 @@ class UpdateServiceRequest(DaraModel):
 
         if self.ai_service_config is not None:
             result['aiServiceConfig'] = self.ai_service_config.to_map()
+
+        if self.api_key_references_to_add is not None:
+            result['apiKeyReferencesToAdd'] = self.api_key_references_to_add
+
+        if self.api_keys_to_add is not None:
+            result['apiKeysToAdd'] = self.api_keys_to_add
 
         if self.dns_servers is not None:
             result['dnsServers'] = self.dns_servers
@@ -108,6 +120,12 @@ class UpdateServiceRequest(DaraModel):
             temp_model = main_models.AiServiceConfig()
             self.ai_service_config = temp_model.from_map(m.get('aiServiceConfig'))
 
+        if m.get('apiKeyReferencesToAdd') is not None:
+            self.api_key_references_to_add = m.get('apiKeyReferencesToAdd')
+
+        if m.get('apiKeysToAdd') is not None:
+            self.api_keys_to_add = m.get('apiKeysToAdd')
+
         if m.get('dnsServers') is not None:
             self.dns_servers = m.get('dnsServers')
 
@@ -145,7 +163,7 @@ class UpdateServiceRequestPorts(DaraModel):
     ):
         # The port name.
         self.name = name
-        # The port number.
+        # The port.
         self.port = port
         # The protocol.
         self.protocol = protocol
@@ -191,15 +209,13 @@ class UpdateServiceRequestOutlierDetectionConfig(DaraModel):
         failure_percentage_threshold: int = None,
         interval: int = None,
     ):
-        # The base ejection time, which is the initial isolation duration after a node is ejected (for example, 30 seconds). The isolation time is calculated by using the following formula: k × base_ejection_time, where k starts at 1. Each ejection increases the isolation time by incrementing k by 1. If consecutive checks are normal, the isolation time is gradually reduced by decrementing k by 1.
+        # The initial isolation duration. This is the initial isolation duration after a node is ejected, such as 30 seconds. The isolation time is calculated by using the following formula: k × base_ejection_time, where the initial value of k is 1. The isolation time is extended each time the node is ejected by incrementing k by 1. If consecutive health checks are normal, the isolation time is gradually reduced by decrementing k by 1.
         self.base_ejection_time = base_ejection_time
         # enable
         self.enable = enable
-        # The panic threshold.
-        # 
-        # When the proportion of healthy nodes in the service is greater than the panic threshold, health checks function normally and requests are sent only to healthy nodes, not to ejected nodes. When the proportion of healthy nodes in the service is less than or equal to the panic threshold, health checks are effectively disabled and requests are sent to all nodes, including ejected nodes.
+        # The panic threshold. If the proportion of healthy nodes in the service is greater than the panic threshold, the health check takes effect normally, and requests are sent only to healthy nodes rather than ejected nodes. If the proportion of healthy nodes in the service is less than or equal to the panic threshold, the health check is equivalent to being disabled, and requests are sent to all nodes, including ejected nodes.
         self.failure_percentage_minimum_hosts = failure_percentage_minimum_hosts
-        # The failure percentage threshold. When the proportion of failed requests on a node reaches this threshold, the system triggers the ejection mechanism for that node.
+        # The failure rate threshold. When the proportion of failed requests for a node reaches this threshold, the system triggers the ejection mechanism for the node.
         self.failure_percentage_threshold = failure_percentage_threshold
         # The detection interval.
         self.interval = interval
@@ -261,23 +277,23 @@ class UpdateServiceRequestHealthCheckConfig(DaraModel):
         timeout: int = None,
         unhealthy_threshold: int = None,
     ):
-        # Specifies whether to enable health checks for the service.
+        # Specifies whether to enable the health check for the service.
         self.enable = enable
-        # The list of expected normal status codes returned by requests. This parameter is required when the protocol is HTTP.
+        # The list of normal HTTP status codes returned by requests. This parameter is required when the protocol is HTTP.
         self.expected_statuses = expected_statuses
-        # The healthy threshold for health checks.
+        # The healthy threshold for the health check.
         self.healthy_threshold = healthy_threshold
-        # The domain name for health checks. This parameter is optional and can be configured when the protocol is HTTP.
+        # The domain name for the health check. This parameter is optional and can be configured when the protocol is HTTP.
         self.http_host = http_host
-        # The request path for health checks. This parameter is required when the protocol is HTTP.
+        # The request path for the health check. This parameter is required when the protocol is HTTP.
         self.http_path = http_path
         # The health check interval. Unit: seconds.
         self.interval = interval
-        # The protocol used for health checks.
+        # The protocol for the health check.
         self.protocol = protocol
-        # The response timeout period for health checks. Unit: seconds.
+        # The response timeout period for the health check. Unit: seconds.
         self.timeout = timeout
-        # The unhealthy threshold for health checks.
+        # The unhealthy threshold for the health check.
         self.unhealthy_threshold = unhealthy_threshold
 
     def validate(self):

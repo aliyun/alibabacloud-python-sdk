@@ -21,11 +21,11 @@ class ListDevelopersResponseBody(DaraModel):
         self.code = code
         # The response data.
         self.data = data
-        # The maximum number of entries on the current page.
+        # The maximum number of entries returned on the current page.
         self.max_results = max_results
         # The response message.
         self.message = message
-        # The cursor for the next page. An empty value indicates that the last page has been reached.
+        # The pagination token for the next page. An empty value indicates that you have reached the last page.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -153,11 +153,11 @@ class ListDevelopersResponseBodyDataContent(DaraModel):
         status: str = None,
         username: str = None,
     ):
-        # The developer ID. You can use this ID to locate the developer in API operations such as SetHiMarketDeveloperStatus and DeleteHiMarketDeveloper.
+        # The ID of the developer. You can use this ID to identify the developer in operations such as SetHiMarketDeveloperStatus and DeleteHiMarketDeveloper.
         self.developer_id = developer_id
-        # The ID of the portal to which the developer belongs. You can use this ID to locate the portal in API operations such as GetPortal, UpdatePortal, and DeletePortal.
+        # The ID of the portal to which the developer belongs. You can use this ID to identify the portal in operations such as GetPortal, UpdatePortal, and DeletePortal.
         self.portal_id = portal_id
-        # The status of the developer. Valid values: PENDING, APPROVED, and REJECTED.
+        # The developer status. Valid values: PENDING, APPROVED, and REJECTED.
         self.status = status
         # The logon username of the developer.
         self.username = username

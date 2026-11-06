@@ -348,6 +348,9 @@ from ._get_environment_response_body import GetEnvironmentResponseBody
 from ._get_environment_response import GetEnvironmentResponse
 from ._get_gateway_response_body import GetGatewayResponseBody
 from ._get_gateway_response import GetGatewayResponse
+from ._get_gateway_dfp_ext_proc_service_request import GetGatewayDfpExtProcServiceRequest
+from ._get_gateway_dfp_ext_proc_service_response_body import GetGatewayDfpExtProcServiceResponseBody
+from ._get_gateway_dfp_ext_proc_service_response import GetGatewayDfpExtProcServiceResponse
 from ._get_gateway_elastic_policy_request import GetGatewayElasticPolicyRequest
 from ._get_gateway_elastic_policy_response_body import GetGatewayElasticPolicyResponseBody
 from ._get_gateway_elastic_policy_response import GetGatewayElasticPolicyResponse
@@ -569,6 +572,9 @@ from ._list_portal_publications_response import ListPortalPublicationsResponse
 from ._list_portals_request import ListPortalsRequest
 from ._list_portals_response_body import ListPortalsResponseBody
 from ._list_portals_response import ListPortalsResponse
+from ._list_private_link_security_groups_request import ListPrivateLinkSecurityGroupsRequest
+from ._list_private_link_security_groups_response_body import ListPrivateLinkSecurityGroupsResponseBody
+from ._list_private_link_security_groups_response import ListPrivateLinkSecurityGroupsResponse
 from ._list_product_categories_request import ListProductCategoriesRequest
 from ._list_product_categories_response_body import ListProductCategoriesResponseBody
 from ._list_product_categories_response import ListProductCategoriesResponse
@@ -634,6 +640,9 @@ from ._reset_gateway_quota_rule_response_body import ResetGatewayQuotaRuleRespon
 from ._reset_gateway_quota_rule_response import ResetGatewayQuotaRuleResponse
 from ._restart_gateway_response_body import RestartGatewayResponseBody
 from ._restart_gateway_response import RestartGatewayResponse
+from ._reveal_service_credential_request import RevealServiceCredentialRequest
+from ._reveal_service_credential_response_body import RevealServiceCredentialResponseBody
+from ._reveal_service_credential_response import RevealServiceCredentialResponse
 from ._run_plugin_pipeline_request import RunPluginPipelineRequest
 from ._run_plugin_pipeline_response_body import RunPluginPipelineResponseBody
 from ._run_plugin_pipeline_response import RunPluginPipelineResponse
@@ -776,6 +785,7 @@ from ._ai_cache_config import AiCacheConfigEmbeddingConfig
 from ._ai_cache_config import AiCacheConfigVectorConfig
 from ._ai_fallback_config import AiFallbackConfigServiceConfigs
 from ._ai_network_search_config import AiNetworkSearchConfigSearchRewrite
+from ._ai_security_guard_config import AiSecurityGuardConfigConsumerConfigBindings
 from ._ai_security_guard_config import AiSecurityGuardConfigConsumerRequestCheckService
 from ._ai_security_guard_config import AiSecurityGuardConfigConsumerResponseCheckService
 from ._ai_security_guard_config import AiSecurityGuardConfigConsumerRiskLevel
@@ -831,6 +841,7 @@ from ._http_api_api_info import HttpApiApiInfoIngressInfoEnvironmentInfo
 from ._http_api_api_info import HttpApiApiInfoIngressInfoK8sClusterInfo
 from ._http_api_api_info import HttpApiApiInfoIngressInfo
 from ._http_api_deploy_config import HttpApiDeployConfigCustomDomainInfos
+from ._http_api_deploy_config import HttpApiDeployConfigDfpConfig
 from ._http_api_deploy_config import HttpApiDeployConfigEnvDomainInfos
 from ._http_api_deploy_config import HttpApiDeployConfigServiceConfigsObservabilityRouteConfig
 from ._http_api_deploy_config import HttpApiDeployConfigServiceConfigs
@@ -849,6 +860,7 @@ from ._http_api_request_contract import HttpApiRequestContractBody
 from ._http_api_response_contract import HttpApiResponseContractItems
 from ._http_dubbo_transcoder import HttpDubboTranscoderMethodMapListParamMapsList
 from ._http_dubbo_transcoder import HttpDubboTranscoderMethodMapList
+from ._http_route import HttpRouteDfpConfig
 from ._http_route import HttpRouteDomainInfos
 from ._http_route import HttpRouteEnvironmentInfoGatewayInfo
 from ._http_route import HttpRouteEnvironmentInfoSubDomains
@@ -865,6 +877,7 @@ from ._risk_check_results import RiskCheckResultsMetadata
 from ._risk_check_results import RiskCheckResultsRiskDetails
 from ._service import ServiceOutlierDetection
 from ._service import ServicePorts
+from ._service import ServiceServiceMetaData
 from ._service import ServiceVersionsLabels
 from ._service import ServiceVersions
 from ._service_info import ServiceInfoPorts
@@ -918,6 +931,7 @@ from ._create_http_api_operation_response_body import CreateHttpApiOperationResp
 from ._create_http_api_operation_response_body import CreateHttpApiOperationResponseBodyData
 from ._create_http_api_route_request import CreateHttpApiRouteRequestBackendConfigServices
 from ._create_http_api_route_request import CreateHttpApiRouteRequestBackendConfig
+from ._create_http_api_route_request import CreateHttpApiRouteRequestDfpConfig
 from ._create_http_api_route_request import CreateHttpApiRouteRequestMcpRouteConfig
 from ._create_http_api_route_response_body import CreateHttpApiRouteResponseBodyData
 from ._create_mcp_server_request import CreateMcpServerRequestAssembledSources
@@ -1003,6 +1017,9 @@ from ._get_gateway_response_body import GetGatewayResponseBodyDataEnvironments
 from ._get_gateway_response_body import GetGatewayResponseBodyDataLoadBalancersPorts
 from ._get_gateway_response_body import GetGatewayResponseBodyDataLoadBalancers
 from ._get_gateway_response_body import GetGatewayResponseBodyDataMaintenancePeriod
+from ._get_gateway_response_body import GetGatewayResponseBodyDataNetworkAccessConfig
+from ._get_gateway_response_body import GetGatewayResponseBodyDataPrivateLinkZones
+from ._get_gateway_response_body import GetGatewayResponseBodyDataPrivateLink
 from ._get_gateway_response_body import GetGatewayResponseBodyDataSecurityGroup
 from ._get_gateway_response_body import GetGatewayResponseBodyDataTags
 from ._get_gateway_response_body import GetGatewayResponseBodyDataVSwitch
@@ -1010,6 +1027,7 @@ from ._get_gateway_response_body import GetGatewayResponseBodyDataVpc
 from ._get_gateway_response_body import GetGatewayResponseBodyDataZonesVSwitch
 from ._get_gateway_response_body import GetGatewayResponseBodyDataZones
 from ._get_gateway_response_body import GetGatewayResponseBodyData
+from ._get_gateway_dfp_ext_proc_service_response_body import GetGatewayDfpExtProcServiceResponseBodyData
 from ._get_gateway_elastic_policy_response_body import GetGatewayElasticPolicyResponseBodyDataElasticPolicyDisableScaleTimePolicyList
 from ._get_gateway_elastic_policy_response_body import GetGatewayElasticPolicyResponseBodyDataElasticPolicyEnableScaleTimePolicyList
 from ._get_gateway_elastic_policy_response_body import GetGatewayElasticPolicyResponseBodyDataElasticPolicyTimePolicyList
@@ -1129,6 +1147,9 @@ from ._list_gateway_quota_rules_response_body import ListGatewayQuotaRulesRespon
 from ._list_gateways_request import ListGatewaysRequestTag
 from ._list_gateways_response_body import ListGatewaysResponseBodyDataItemsLoadBalancersPorts
 from ._list_gateways_response_body import ListGatewaysResponseBodyDataItemsLoadBalancers
+from ._list_gateways_response_body import ListGatewaysResponseBodyDataItemsNetworkAccessConfig
+from ._list_gateways_response_body import ListGatewaysResponseBodyDataItemsPrivateLinkZones
+from ._list_gateways_response_body import ListGatewaysResponseBodyDataItemsPrivateLink
 from ._list_gateways_response_body import ListGatewaysResponseBodyDataItemsSecurityGroup
 from ._list_gateways_response_body import ListGatewaysResponseBodyDataItemsTags
 from ._list_gateways_response_body import ListGatewaysResponseBodyDataItemsVSwitch
@@ -1182,6 +1203,8 @@ from ._list_portal_publications_response_body import ListPortalPublicationsRespo
 from ._list_portal_publications_response_body import ListPortalPublicationsResponseBodyData
 from ._list_portals_response_body import ListPortalsResponseBodyDataContent
 from ._list_portals_response_body import ListPortalsResponseBodyData
+from ._list_private_link_security_groups_response_body import ListPrivateLinkSecurityGroupsResponseBodyDataItems
+from ._list_private_link_security_groups_response_body import ListPrivateLinkSecurityGroupsResponseBodyData
 from ._list_product_categories_response_body import ListProductCategoriesResponseBodyDataContent
 from ._list_product_categories_response_body import ListProductCategoriesResponseBodyData
 from ._list_product_publications_response_body import ListProductPublicationsResponseBodyData
@@ -1219,6 +1242,8 @@ from ._query_consumer_authorization_rules_response_body import QueryConsumerAuth
 from ._reset_gateway_quota_rule_response_body import ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems
 from ._reset_gateway_quota_rule_response_body import ResetGatewayQuotaRuleResponseBodyDataConflictPreview
 from ._reset_gateway_quota_rule_response_body import ResetGatewayQuotaRuleResponseBodyData
+from ._reveal_service_credential_response_body import RevealServiceCredentialResponseBodyDataCredential
+from ._reveal_service_credential_response_body import RevealServiceCredentialResponseBodyData
 from ._subscribe_product_response_body import SubscribeProductResponseBodyData
 from ._sync_mcpservers_request import SyncMCPServersRequestNacosMcpServers
 from ._sync_mcpservers_response_body import SyncMCPServersResponseBodyDataFailedMcpServers
@@ -1254,6 +1279,7 @@ from ._update_gateway_quota_rule_response_body import UpdateGatewayQuotaRuleResp
 from ._update_http_api_request import UpdateHttpApiRequestIngressConfig
 from ._update_http_api_route_request import UpdateHttpApiRouteRequestBackendConfigServices
 from ._update_http_api_route_request import UpdateHttpApiRouteRequestBackendConfig
+from ._update_http_api_route_request import UpdateHttpApiRouteRequestDfpConfig
 from ._update_http_api_route_request import UpdateHttpApiRouteRequestMcpRouteConfig
 from ._update_mcp_server_request import UpdateMcpServerRequestAssembledSources
 from ._update_mcp_server_request import UpdateMcpServerRequestBackendConfigServices
@@ -1618,6 +1644,9 @@ __all__ = [
     GetEnvironmentResponse,
     GetGatewayResponseBody,
     GetGatewayResponse,
+    GetGatewayDfpExtProcServiceRequest,
+    GetGatewayDfpExtProcServiceResponseBody,
+    GetGatewayDfpExtProcServiceResponse,
     GetGatewayElasticPolicyRequest,
     GetGatewayElasticPolicyResponseBody,
     GetGatewayElasticPolicyResponse,
@@ -1839,6 +1868,9 @@ __all__ = [
     ListPortalsRequest,
     ListPortalsResponseBody,
     ListPortalsResponse,
+    ListPrivateLinkSecurityGroupsRequest,
+    ListPrivateLinkSecurityGroupsResponseBody,
+    ListPrivateLinkSecurityGroupsResponse,
     ListProductCategoriesRequest,
     ListProductCategoriesResponseBody,
     ListProductCategoriesResponse,
@@ -1904,6 +1936,9 @@ __all__ = [
     ResetGatewayQuotaRuleResponse,
     RestartGatewayResponseBody,
     RestartGatewayResponse,
+    RevealServiceCredentialRequest,
+    RevealServiceCredentialResponseBody,
+    RevealServiceCredentialResponse,
     RunPluginPipelineRequest,
     RunPluginPipelineResponseBody,
     RunPluginPipelineResponse,
@@ -2046,6 +2081,7 @@ __all__ = [
     AiCacheConfigVectorConfig,
     AiFallbackConfigServiceConfigs,
     AiNetworkSearchConfigSearchRewrite,
+    AiSecurityGuardConfigConsumerConfigBindings,
     AiSecurityGuardConfigConsumerRequestCheckService,
     AiSecurityGuardConfigConsumerResponseCheckService,
     AiSecurityGuardConfigConsumerRiskLevel,
@@ -2101,6 +2137,7 @@ __all__ = [
     HttpApiApiInfoIngressInfoK8sClusterInfo,
     HttpApiApiInfoIngressInfo,
     HttpApiDeployConfigCustomDomainInfos,
+    HttpApiDeployConfigDfpConfig,
     HttpApiDeployConfigEnvDomainInfos,
     HttpApiDeployConfigServiceConfigsObservabilityRouteConfig,
     HttpApiDeployConfigServiceConfigs,
@@ -2119,6 +2156,7 @@ __all__ = [
     HttpApiResponseContractItems,
     HttpDubboTranscoderMethodMapListParamMapsList,
     HttpDubboTranscoderMethodMapList,
+    HttpRouteDfpConfig,
     HttpRouteDomainInfos,
     HttpRouteEnvironmentInfoGatewayInfo,
     HttpRouteEnvironmentInfoSubDomains,
@@ -2135,6 +2173,7 @@ __all__ = [
     RiskCheckResultsRiskDetails,
     ServiceOutlierDetection,
     ServicePorts,
+    ServiceServiceMetaData,
     ServiceVersionsLabels,
     ServiceVersions,
     ServiceInfoPorts,
@@ -2188,6 +2227,7 @@ __all__ = [
     CreateHttpApiOperationResponseBodyData,
     CreateHttpApiRouteRequestBackendConfigServices,
     CreateHttpApiRouteRequestBackendConfig,
+    CreateHttpApiRouteRequestDfpConfig,
     CreateHttpApiRouteRequestMcpRouteConfig,
     CreateHttpApiRouteResponseBodyData,
     CreateMcpServerRequestAssembledSources,
@@ -2273,6 +2313,9 @@ __all__ = [
     GetGatewayResponseBodyDataLoadBalancersPorts,
     GetGatewayResponseBodyDataLoadBalancers,
     GetGatewayResponseBodyDataMaintenancePeriod,
+    GetGatewayResponseBodyDataNetworkAccessConfig,
+    GetGatewayResponseBodyDataPrivateLinkZones,
+    GetGatewayResponseBodyDataPrivateLink,
     GetGatewayResponseBodyDataSecurityGroup,
     GetGatewayResponseBodyDataTags,
     GetGatewayResponseBodyDataVSwitch,
@@ -2280,6 +2323,7 @@ __all__ = [
     GetGatewayResponseBodyDataZonesVSwitch,
     GetGatewayResponseBodyDataZones,
     GetGatewayResponseBodyData,
+    GetGatewayDfpExtProcServiceResponseBodyData,
     GetGatewayElasticPolicyResponseBodyDataElasticPolicyDisableScaleTimePolicyList,
     GetGatewayElasticPolicyResponseBodyDataElasticPolicyEnableScaleTimePolicyList,
     GetGatewayElasticPolicyResponseBodyDataElasticPolicyTimePolicyList,
@@ -2399,6 +2443,9 @@ __all__ = [
     ListGatewaysRequestTag,
     ListGatewaysResponseBodyDataItemsLoadBalancersPorts,
     ListGatewaysResponseBodyDataItemsLoadBalancers,
+    ListGatewaysResponseBodyDataItemsNetworkAccessConfig,
+    ListGatewaysResponseBodyDataItemsPrivateLinkZones,
+    ListGatewaysResponseBodyDataItemsPrivateLink,
     ListGatewaysResponseBodyDataItemsSecurityGroup,
     ListGatewaysResponseBodyDataItemsTags,
     ListGatewaysResponseBodyDataItemsVSwitch,
@@ -2452,6 +2499,8 @@ __all__ = [
     ListPortalPublicationsResponseBodyData,
     ListPortalsResponseBodyDataContent,
     ListPortalsResponseBodyData,
+    ListPrivateLinkSecurityGroupsResponseBodyDataItems,
+    ListPrivateLinkSecurityGroupsResponseBodyData,
     ListProductCategoriesResponseBodyDataContent,
     ListProductCategoriesResponseBodyData,
     ListProductPublicationsResponseBodyData,
@@ -2489,6 +2538,8 @@ __all__ = [
     ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems,
     ResetGatewayQuotaRuleResponseBodyDataConflictPreview,
     ResetGatewayQuotaRuleResponseBodyData,
+    RevealServiceCredentialResponseBodyDataCredential,
+    RevealServiceCredentialResponseBodyData,
     SubscribeProductResponseBodyData,
     SyncMCPServersRequestNacosMcpServers,
     SyncMCPServersResponseBodyDataFailedMcpServers,
@@ -2524,6 +2575,7 @@ __all__ = [
     UpdateHttpApiRequestIngressConfig,
     UpdateHttpApiRouteRequestBackendConfigServices,
     UpdateHttpApiRouteRequestBackendConfig,
+    UpdateHttpApiRouteRequestDfpConfig,
     UpdateHttpApiRouteRequestMcpRouteConfig,
     UpdateMcpServerRequestAssembledSources,
     UpdateMcpServerRequestBackendConfigServices,

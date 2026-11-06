@@ -15,13 +15,13 @@ class ListHiMarketConsumerSubscriptionsRequest(DaraModel):
     ):
         # The maximum number of entries per page. The default value and valid values are not specified in the API definition.
         self.max_results = max_results
-        # The pagination cursor. Pass the nextToken returned in the previous response to retrieve the next page. Do not pass this parameter for the first query.
+        # The pagination token. Pass the token returned in the previous response to retrieve the next page. Do not specify this parameter for the first request.
         self.next_token = next_token
-        # The page number. Pages start from 1.
+        # The number of the page to return. Pages start from 1.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The subscription status used to filter subscriptions. Valid values: PENDING and APPROVED.
+        # The subscription status, which is used to filter subscriptions. Valid values: PENDING and APPROVED.
         self.status = status
 
     def validate(self):

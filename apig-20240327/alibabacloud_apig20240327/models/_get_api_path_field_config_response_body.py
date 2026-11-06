@@ -124,7 +124,7 @@ class GetApiPathFieldConfigResponseBodyDataPathConfigs(DaraModel):
         field_paths: Dict[str, List[main_models.DataPathConfigsFieldPathsValue]] = None,
         path: str = None,
     ):
-        # The collection of field configurations under the path, grouped by mapping key, where each group represents a set of field configuration items.
+        # The collection of field configurations under the path, grouped by mapping key. Each group contains a set of field configuration items.
         self.field_paths = field_paths
         # The request path of the API.
         self.path = path

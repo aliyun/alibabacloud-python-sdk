@@ -12,9 +12,9 @@ class UpdateCategoryProductsRequest(DaraModel):
         action: str = None,
         product_ids: List[str] = None,
     ):
-        # The direction of this bulk operation: adds the API products specified in productIds to the category, or removes these API products from the category. The set of valid values is not declared in the API definition.
+        # The direction of the batch operation: adds the API products specified in productIds to the category, or removes these API products from the category. The set of valid values is not declared in the API definition.
         self.action = action
-        # The list of API product IDs to process. Each element is a primary ID of the API product resource.
+        # The list of API product IDs to process. Each element is the primary ID of the API product resource Product.
         self.product_ids = product_ids
 
     def validate(self):

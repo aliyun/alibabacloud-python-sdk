@@ -25,7 +25,7 @@ class ListHiMarketConsumersResponseBody(DaraModel):
         self.max_results = max_results
         # The response message.
         self.message = message
-        # The pagination token for the next page. An empty value indicates that the last page has been reached.
+        # The pagination token for the next page. An empty value indicates that the last page is reached.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -90,7 +90,7 @@ class ListHiMarketConsumersResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The list of consumers. Each element represents a HiMarket consumer.
+        # The list of consumers. The list element is named consumer, and each element represents a HiMarket consumer.
         self.content = content
         # The page number.
         self.page_number = page_number
@@ -153,13 +153,13 @@ class ListHiMarketConsumersResponseBodyDataContent(DaraModel):
         is_primary: bool = None,
         name: str = None,
     ):
-        # The consumer ID. You can use this ID to locate the consumer in operations such as GetHiMarketConsumer, DeleteHiMarketConsumer, GetHiMarketConsumerCredential, and ListHiMarketConsumerSubscriptions.
+        # The consumer ID. You can use this ID to locate the consumer in API operations such as GetHiMarketConsumer, DeleteHiMarketConsumer, GetHiMarketConsumerCredential, and ListHiMarketConsumerSubscriptions.
         self.consumer_id = consumer_id
-        # The description of the consumer.
+        # The consumer description.
         self.description = description
         # Indicates whether the consumer is a primary consumer.
         self.is_primary = is_primary
-        # The name of the consumer.
+        # The consumer name.
         self.name = name
 
     def validate(self):

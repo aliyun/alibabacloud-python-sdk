@@ -78,7 +78,7 @@ class ListConsumerAuthorizationRulesResponseBodyData(DaraModel):
         self.page_number = page_number
         # The page size.
         self.page_size = page_size
-        # The total number of entries.
+        # The total count.
         self.total_size = total_size
 
     def validate(self):
@@ -146,7 +146,7 @@ class ListConsumerAuthorizationRulesResponseBodyDataItems(DaraModel):
     ):
         # The API information.
         self.api_info = api_info
-        # The consumer authorization rule ID.
+        # The ID of the consumer authorization rule.
         self.consumer_authorization_rule_id = consumer_authorization_rule_id
         # The consumer ID.
         self.consumer_id = consumer_id
@@ -156,9 +156,7 @@ class ListConsumerAuthorizationRulesResponseBodyDataItems(DaraModel):
         self.deploy_status = deploy_status
         # The environment context.
         self.environment_info = environment_info
-        # The expiration mode. Valid values:
-        # - LongTerm: long-term
-        # - ShortTerm: short-term
+        # The expiration mode. Valid values: LongTerm and ShortTerm.
         self.expire_mode = expire_mode
         # The expiration status.
         self.expire_status = expire_status

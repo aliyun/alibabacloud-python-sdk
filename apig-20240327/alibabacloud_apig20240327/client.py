@@ -7,6 +7,7 @@ import json
 from typing import Dict, Generator, AsyncGenerator
 
 from alibabacloud_apig20240327 import models as main_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -23,6 +24,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'APIG'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('apig', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -2382,6 +2386,8 @@ class Client(OpenApiClient):
             body['deployConfigs'] = request.deploy_configs
         if not DaraCore.is_null(request.description):
             body['description'] = request.description
+        if not DaraCore.is_null(request.dfp_config):
+            body['dfpConfig'] = request.dfp_config
         if not DaraCore.is_null(request.domain_ids):
             body['domainIds'] = request.domain_ids
         if not DaraCore.is_null(request.environment_id):
@@ -2429,6 +2435,8 @@ class Client(OpenApiClient):
             body['deployConfigs'] = request.deploy_configs
         if not DaraCore.is_null(request.description):
             body['description'] = request.description
+        if not DaraCore.is_null(request.dfp_config):
+            body['dfpConfig'] = request.dfp_config
         if not DaraCore.is_null(request.domain_ids):
             body['domainIds'] = request.domain_ids
         if not DaraCore.is_null(request.environment_id):
@@ -7444,6 +7452,78 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_gateway_with_options_async(gateway_id, headers, runtime)
+
+    def get_gateway_dfp_ext_proc_service_with_options(
+        self,
+        gateway_id: str,
+        request: main_models.GetGatewayDfpExtProcServiceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGatewayDfpExtProcServiceResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetGatewayDfpExtProcService',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/dfp-ext-proc-service',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGatewayDfpExtProcServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_gateway_dfp_ext_proc_service_with_options_async(
+        self,
+        gateway_id: str,
+        request: main_models.GetGatewayDfpExtProcServiceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGatewayDfpExtProcServiceResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetGatewayDfpExtProcService',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/dfp-ext-proc-service',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGatewayDfpExtProcServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_gateway_dfp_ext_proc_service(
+        self,
+        gateway_id: str,
+        request: main_models.GetGatewayDfpExtProcServiceRequest,
+    ) -> main_models.GetGatewayDfpExtProcServiceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_gateway_dfp_ext_proc_service_with_options(gateway_id, request, headers, runtime)
+
+    async def get_gateway_dfp_ext_proc_service_async(
+        self,
+        gateway_id: str,
+        request: main_models.GetGatewayDfpExtProcServiceRequest,
+    ) -> main_models.GetGatewayDfpExtProcServiceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_gateway_dfp_ext_proc_service_with_options_async(gateway_id, request, headers, runtime)
 
     def get_gateway_elastic_policy_with_options(
         self,
@@ -14209,6 +14289,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_portals_with_options_async(request, headers, runtime)
 
+    def list_private_link_security_groups_with_options(
+        self,
+        request: main_models.ListPrivateLinkSecurityGroupsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPrivateLinkSecurityGroupsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.vpc_id):
+            query['vpcId'] = request.vpc_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPrivateLinkSecurityGroups',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/private-link-security-groups',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPrivateLinkSecurityGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_private_link_security_groups_with_options_async(
+        self,
+        request: main_models.ListPrivateLinkSecurityGroupsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPrivateLinkSecurityGroupsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.vpc_id):
+            query['vpcId'] = request.vpc_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPrivateLinkSecurityGroups',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/private-link-security-groups',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPrivateLinkSecurityGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_private_link_security_groups(
+        self,
+        request: main_models.ListPrivateLinkSecurityGroupsRequest,
+    ) -> main_models.ListPrivateLinkSecurityGroupsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_private_link_security_groups_with_options(request, headers, runtime)
+
+    async def list_private_link_security_groups_async(
+        self,
+        request: main_models.ListPrivateLinkSecurityGroupsRequest,
+    ) -> main_models.ListPrivateLinkSecurityGroupsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_private_link_security_groups_with_options_async(request, headers, runtime)
+
     def list_product_categories_with_options(
         self,
         request: main_models.ListProductCategoriesRequest,
@@ -16148,6 +16312,78 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.restart_gateway_with_options_async(gateway_id, headers, runtime)
+
+    def reveal_service_credential_with_options(
+        self,
+        service_id: str,
+        request: main_models.RevealServiceCredentialRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RevealServiceCredentialResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'RevealServiceCredential',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/services/{DaraURL.percent_encode(service_id)}/reveal-credential',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RevealServiceCredentialResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reveal_service_credential_with_options_async(
+        self,
+        service_id: str,
+        request: main_models.RevealServiceCredentialRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RevealServiceCredentialResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'RevealServiceCredential',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/services/{DaraURL.percent_encode(service_id)}/reveal-credential',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RevealServiceCredentialResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reveal_service_credential(
+        self,
+        service_id: str,
+        request: main_models.RevealServiceCredentialRequest,
+    ) -> main_models.RevealServiceCredentialResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.reveal_service_credential_with_options(service_id, request, headers, runtime)
+
+    async def reveal_service_credential_async(
+        self,
+        service_id: str,
+        request: main_models.RevealServiceCredentialRequest,
+    ) -> main_models.RevealServiceCredentialResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.reveal_service_credential_with_options_async(service_id, request, headers, runtime)
 
     def run_plugin_pipeline_with_options(
         self,
@@ -18739,6 +18975,8 @@ class Client(OpenApiClient):
             body['backendConfig'] = request.backend_config
         if not DaraCore.is_null(request.description):
             body['description'] = request.description
+        if not DaraCore.is_null(request.dfp_config):
+            body['dfpConfig'] = request.dfp_config
         if not DaraCore.is_null(request.domain_ids):
             body['domainIds'] = request.domain_ids
         if not DaraCore.is_null(request.environment_id):
@@ -18783,6 +19021,8 @@ class Client(OpenApiClient):
             body['backendConfig'] = request.backend_config
         if not DaraCore.is_null(request.description):
             body['description'] = request.description
+        if not DaraCore.is_null(request.dfp_config):
+            body['dfpConfig'] = request.dfp_config
         if not DaraCore.is_null(request.domain_ids):
             body['domainIds'] = request.domain_ids
         if not DaraCore.is_null(request.environment_id):
@@ -19800,6 +20040,10 @@ class Client(OpenApiClient):
             body['agentServiceConfig'] = request.agent_service_config
         if not DaraCore.is_null(request.ai_service_config):
             body['aiServiceConfig'] = request.ai_service_config
+        if not DaraCore.is_null(request.api_key_references_to_add):
+            body['apiKeyReferencesToAdd'] = request.api_key_references_to_add
+        if not DaraCore.is_null(request.api_keys_to_add):
+            body['apiKeysToAdd'] = request.api_keys_to_add
         if not DaraCore.is_null(request.dns_servers):
             body['dnsServers'] = request.dns_servers
         if not DaraCore.is_null(request.health_check_config):
@@ -19849,6 +20093,10 @@ class Client(OpenApiClient):
             body['agentServiceConfig'] = request.agent_service_config
         if not DaraCore.is_null(request.ai_service_config):
             body['aiServiceConfig'] = request.ai_service_config
+        if not DaraCore.is_null(request.api_key_references_to_add):
+            body['apiKeyReferencesToAdd'] = request.api_key_references_to_add
+        if not DaraCore.is_null(request.api_keys_to_add):
+            body['apiKeysToAdd'] = request.api_keys_to_add
         if not DaraCore.is_null(request.dns_servers):
             body['dnsServers'] = request.dns_servers
         if not DaraCore.is_null(request.health_check_config):

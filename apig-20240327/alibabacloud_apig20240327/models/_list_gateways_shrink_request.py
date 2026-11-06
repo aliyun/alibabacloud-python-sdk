@@ -17,23 +17,23 @@ class ListGatewaysShrinkRequest(DaraModel):
         tag_shrink: str = None,
         vpc_id: str = None,
     ):
-        # The gateway ID for exact match query.
+        # The gateway ID for exact match.
         self.gateway_id = gateway_id
         # The gateway type.
         self.gateway_type = gateway_type
-        # The keyword for full match search. The search is case-insensitive.
+        # The keyword for case-insensitive full match search.
         self.keyword = keyword
-        # The gateway name for exact match query.
+        # The gateway name for exact match.
         self.name = name
         # The page number.
         self.page_number = page_number
         # The page size.
         self.page_size = page_size
-        # The resource group ID.
+        # The resource group.
         self.resource_group_id = resource_group_id
         # The list of tags.
         self.tag_shrink = tag_shrink
-        # The virtual private cloud (VPC) ID.
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):

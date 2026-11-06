@@ -17,7 +17,7 @@ class CreateHttpApiOperationResponseBody(DaraModel):
     ):
         # The response status code.
         self.code = code
-        # The operation information.
+        # The API operation information.
         self.data = data
         # The response message.
         self.message = message
@@ -69,7 +69,7 @@ class CreateHttpApiOperationResponseBodyData(DaraModel):
         self,
         operations: List[main_models.CreateHttpApiOperationResponseBodyDataOperations] = None,
     ):
-        # The operation information.
+        # The API operation information.
         self.operations = operations
 
     def validate(self):
@@ -105,7 +105,7 @@ class CreateHttpApiOperationResponseBodyDataOperations(DaraModel):
         self,
         operation_id: str = None,
     ):
-        # The operation ID.
+        # The API operation ID.
         self.operation_id = operation_id
 
     def validate(self):

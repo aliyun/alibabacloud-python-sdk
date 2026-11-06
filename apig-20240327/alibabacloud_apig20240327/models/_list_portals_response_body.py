@@ -90,13 +90,13 @@ class ListPortalsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The list of portals. The list element is named portalConfig, and each element contains the information of a HiMarket developer portal.
+        # The portal list. Each element in the list is named portalConfig and contains information about a HiMarket developer portal.
         self.content = content
         # The page number.
         self.page_number = page_number
         # The page size.
         self.page_size = page_size
-        # The total number of entries.
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -162,11 +162,11 @@ class ListPortalsResponseBodyDataContent(DaraModel):
         self.description = description
         # The portal name, which is the Name property of the portal resource.
         self.name = name
-        # The list of portal domain configurations. The list element is named domainConfig.
+        # The list of portal domain configurations. The list elements are named domainConfig.
         self.portal_domain_config = portal_domain_config
-        # The portal ID, which is the primary ID of the portal resource. It can be used in GetPortal, UpdatePortal, and DeletePortal to locate the portal at /himarket/v1/portals/{portalId}.
+        # The portal ID. This is the primary ID of the portal resource and can be used to locate the portal in the GetPortal, UpdatePortal, and DeletePortal operations through the /himarket/v1/portals/{portalId} path.
         self.portal_id = portal_id
-        # The portal configuration, including whether username and password authentication is enabled, whether developer registrations are automatically approved, and whether subscription requests are automatically approved.
+        # The portal configuration, which specifies whether username and password authentication is enabled, whether developer registrations are automatically approved, and whether subscription requests are automatically approved.
         self.portal_setting_config = portal_setting_config
         # The region ID, which corresponds to the RegionId property of the portal resource.
         self.region_id = region_id

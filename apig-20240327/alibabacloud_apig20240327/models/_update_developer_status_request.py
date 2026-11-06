@@ -10,7 +10,7 @@ class UpdateDeveloperStatusRequest(DaraModel):
         portal_id: str = None,
         status: str = None,
     ):
-        # The ID of the portal to which the developer belongs, which is the primary ID of the portal resource. You can obtain this ID from the portalId field in the CreatePortal response or from the portalId field of an item in the ListPortals response.
+        # The ID of the portal to which the developer belongs. This is the primary ID of the portal resource. You can obtain this ID from the portalId field in the CreatePortal response or the portalId field of an item in the ListPortals response.
         self.portal_id = portal_id
         # The target status of the developer. Valid values: PENDING, APPROVED, and REJECTED.
         self.status = status

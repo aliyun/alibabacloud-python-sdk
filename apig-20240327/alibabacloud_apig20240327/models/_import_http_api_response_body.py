@@ -126,15 +126,15 @@ class ImportHttpApiResponseBodyDataDryRunInfo(DaraModel):
         success_routes: List[main_models.ImportHttpApiResponseBodyDataDryRunInfoSuccessRoutes] = None,
         warning_messages: List[str] = None,
     ):
-        # The error messages. If the error messages are not empty, the API cannot be imported.
+        # The error messages. If this field is not empty, the API cannot be imported successfully.
         self.error_messages = error_messages
-        # The information about the existing API. If this field is not empty, the import action will update this API.
+        # The existing API information. If this field is not empty, the import operation will update the API.
         self.exist_http_api_info = exist_http_api_info
         # The list of data structures that failed the dry run.
         self.failure_components = failure_components
         # The list of operations that failed the dry run.
         self.failure_operations = failure_operations
-        # The list of routes that failed.
+        # The list of failed routes.
         self.failure_routes = failure_routes
         # The MCP tool definition information.
         self.mcp_tools_definition = mcp_tools_definition
@@ -142,9 +142,9 @@ class ImportHttpApiResponseBodyDataDryRunInfo(DaraModel):
         self.success_components = success_components
         # The list of operations that passed the dry run.
         self.success_operations = success_operations
-        # The list of routes that were imported.
+        # The list of successfully imported routes.
         self.success_routes = success_routes
-        # The warning messages. If the warning messages are not empty, some operations or data structures may fail to be imported.
+        # The warning messages. If this field is not empty, some operations or data structures may fail to be imported.
         self.warning_messages = warning_messages
 
     def validate(self):
@@ -283,7 +283,7 @@ class ImportHttpApiResponseBodyDataDryRunInfoSuccessRoutes(DaraModel):
         action: str = None,
         name: str = None,
     ):
-        # The action type.
+        # The operation type.
         self.action = action
         # The name.
         self.name = name
@@ -323,8 +323,8 @@ class ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations(DaraModel):
         path: str = None,
     ):
         # The action to be performed after the dry run. Valid values:
-        # - Create: create.
-        # - Update: update.
+        # - Create: create
+        # - Update: update
         self.action = action
         # The operation method.
         self.method = method
@@ -378,8 +378,8 @@ class ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents(DaraModel):
         name: str = None,
     ):
         # The action to be performed after the dry run. Valid values:
-        # - Create: create.
-        # - Update: update.
+        # - Create: create
+        # - Update: update
         self.action = action
         # The data structure name.
         self.name = name

@@ -21,11 +21,11 @@ class DataPathConfigsFieldPathsValue(DaraModel):
         json_path_rewrite_allowed: bool = None,
         from_template: bool = None,
     ):
-        # The identity key of the field, which is unique within the same request path, such as input_token.
+        # The identifier key of the field, which is unique within the same request path, such as input_token.
         self.field_key = field_key
         # The JSONPath expression of the field in the request or response message, such as usage.prompt_tokens.
         self.json_path = json_path
-        # The value extraction rule for the field.
+        # The value extraction rule of the field.
         self.rule = rule
         # The display name of the field.
         self.name = name
@@ -45,7 +45,7 @@ class DataPathConfigsFieldPathsValue(DaraModel):
         self.toggle_allowed = toggle_allowed
         # Indicates whether the JSONPath of the field can be rewritten.
         self.json_path_rewrite_allowed = json_path_rewrite_allowed
-        # Indicates whether the field configuration is derived from a field template.
+        # Indicates whether the field configuration is from a field template.
         self.from_template = from_template
 
     def validate(self):

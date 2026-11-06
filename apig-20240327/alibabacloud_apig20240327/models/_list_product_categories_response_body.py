@@ -21,7 +21,7 @@ class ListProductCategoriesResponseBody(DaraModel):
         self.data = data
         # The response message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -72,13 +72,13 @@ class ListProductCategoriesResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The list of product categories. Each element in the list is named category and contains the information about a product category.
+        # The list of product categories. Each element in the list represents a product category.
         self.content = content
         # The page number.
         self.page_number = page_number
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # The total count.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -135,13 +135,13 @@ class ListProductCategoriesResponseBodyDataContent(DaraModel):
         icon: main_models.HiMarketIcon = None,
         name: str = None,
     ):
-        # The product category ID. You can use this ID as the categoryId path parameter for GetProductCategory, UpdateProductCategory, and DeleteProductCategory. You can also use it as an element in the categories parameter, which is a set of category IDs, for SetProductCategories and CreateProduct.
+        # The ID of the product category. You can use this ID as the categoryId path parameter in the GetProductCategory, UpdateProductCategory, and DeleteProductCategory operations, or as an element in the categories parameter in the SetProductCategories and CreateProduct operations.
         self.category_id = category_id
-        # The product category description.
+        # The description of the product category.
         self.description = description
-        # The product category icon, which consists of the icon type (type) and icon information (value) fields.
+        # The icon of the product category. It consists of two fields: type (the icon type) and value (the icon information).
         self.icon = icon
-        # The product category name.
+        # The name of the product category.
         self.name = name
 
     def validate(self):

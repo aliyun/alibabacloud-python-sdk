@@ -68,7 +68,7 @@ class CreateProductCategoryResponseBodyData(DaraModel):
         category_id: str = None,
         name: str = None,
     ):
-        # The ID of the newly created product category. It can be used as the categoryId path parameter in GetProductCategory, UpdateProductCategory, and DeleteProductCategory, or as an element in the category ID array for SetProductCategories.
+        # The ID of the newly created product category. It can be used as the categoryId path parameter for GetProductCategory, UpdateProductCategory, and DeleteProductCategory, or as an element in the category ID array for SetProductCategories.
         self.category_id = category_id
         # The name of the product category.
         self.name = name

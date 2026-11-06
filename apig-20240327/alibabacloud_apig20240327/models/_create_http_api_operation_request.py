@@ -12,7 +12,7 @@ class CreateHttpApiOperationRequest(DaraModel):
         self,
         operations: List[main_models.HttpApiOperation] = None,
     ):
-        # The list of operation definitions.
+        # The list of API operation definitions.
         self.operations = operations
 
     def validate(self):

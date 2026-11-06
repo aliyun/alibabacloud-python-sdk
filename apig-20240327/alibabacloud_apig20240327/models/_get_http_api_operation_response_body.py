@@ -15,7 +15,7 @@ class GetHttpApiOperationResponseBody(DaraModel):
     ):
         # The response status code.
         self.code = code
-        # The operation information.
+        # The API operation information.
         self.data = data
         # The response message.
         self.message = message

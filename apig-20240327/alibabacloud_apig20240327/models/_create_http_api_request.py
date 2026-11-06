@@ -31,40 +31,31 @@ class CreateHttpApiRequest(DaraModel):
         version_config: main_models.HttpApiVersionConfig = None,
         client_token: str = None,
     ):
-        # The list of protocols supported by the agent. This parameter is required when type is set to Agent. You do not need to specify this parameter for other types.
+        # The list of protocols supported by the agent. This parameter is required when type is set to Agent. This field is not required for other types.
         self.agent_protocols = agent_protocols
-        # The list of AI API protocols. This parameter is required when type is set to LLM, and only one protocol can be specified. This parameter is required when type is set to Ai, and multiple protocols can be specified. You do not need to specify this parameter for other types. Example protocol entry: OpenAI/v1.
+        # The list of AI API protocols. This parameter is required and only one protocol can be passed when type is set to LLM. This parameter is required and multiple protocols can be passed when type is set to Ai. This parameter is not required for other types. Example protocol item: OpenAI/v1.
         self.ai_protocols = ai_protocols
-        # The authentication configuration. This parameter is required when enableAuth is set to true.
+        # The permission authentication configuration. This parameter is required when enableAuth is set to true.
         self.auth_config = auth_config
-        # The base path of the API. The path must start with a forward slash (/), cannot exceed 256 bytes in length, and cannot contain spaces. This parameter is required when type is set to Rest. When type is set to LLM, Ai, or Agent, this parameter is optional and defaults to /.
+        # The base path of the API. It must start with a forward slash (/), be up to 256 bytes in length, and contain no spaces. This parameter is required when type is set to Rest. When type is set to LLM, Ai, or Agent, this parameter is optional and defaults to /.
         self.base_path = base_path
-        # The ID of the gateway to which the API belongs.
+        # The ID of the associated gateway.
         self.belong_gateway_id = belong_gateway_id
-        # The list of deployment configurations for the HTTP API. This parameter is required when type is set to LLM or Ai, and only one deployment configuration can be specified. This parameter is not validated at the request level for other types.
+        # The list of deployment configurations for the HTTP API. This parameter is required and only one deployment configuration can be passed when type is set to LLM or Ai. Request-layer validation is not required for other types.
         self.deploy_configs = deploy_configs
         # The description of the API.
         self.description = description
-        # Specifies whether to perform a dry run without executing the operation.
+        # Specifies whether to only preview the operation without executing it.
         self.dry_run = dry_run
-        # Specifies whether to enable authentication. This parameter is validated when type is set to LLM, Ai, or Agent. This parameter is not validated at the request level when type is set to Rest.
+        # Specifies whether to enable permission authentication. This parameter is validated when type is set to LLM, Ai, or Agent. This field is not validated at the request layer when type is set to Rest.
         self.enable_auth = enable_auth
-        # The timeout period for waiting for the first byte from the backend.
+        # The timeout period for waiting for the backend to return the first byte.
         self.first_byte_timeout = first_byte_timeout
-        # The HTTP Ingress API configuration. This parameter is required and cannot be nil when type is set to HttpIngress. You do not need to specify this parameter for other types.
+        # The configuration information of the HTTP Ingress API. This parameter is required and cannot be nil when type is set to HttpIngress. This field is not required for other types.
         self.ingress_config = ingress_config
-        # The AI model category. This parameter is optional when type is set to LLM or Ai. You do not need to specify this parameter for other types. Valid values:
-        # 
-        # - Text: text generation.
-        # - Image: image generation.
-        # - Audio: audio processing.
-        # - Video: AI video generation.
-        # - MultiModal: multimodal.
-        # - Embedding: embedding.
-        # - Rerank: reranking.
-        # - Others: other.
+        # The AI model category. This parameter is optional when type is set to LLM or Ai, and is not required for other types. Valid values: Text (text generation), Image (image generation), Audio (audio processing), Video (video generation), MultiModal (multimodal), Embedding (vector embedding), Rerank (reranking), and Others (others).
         self.model_category = model_category
-        # The name of the HTTP API, which is used to identify the API resource. Example: test-api.
+        # The name of the HTTP API, which is used to identify the current API resource, such as test-api.
         # 
         # This parameter is required.
         self.name = name
@@ -74,22 +65,15 @@ class CreateHttpApiRequest(DaraModel):
         self.remove_base_path_on_forward = remove_base_path_on_forward
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The conflict merge strategy for import.
+        # The conflict merging strategy for import.
         self.strategy = strategy
-        # The type of the HTTP API. Valid values:
-        # 
-        # - Http: standard HTTP API.
-        # - Rest: RESTful API.
-        # - WebSocket: WebSocket API.
-        # - HttpIngress: HTTP API connected through Ingress.
-        # - LLM: large language model API.
-        # - Agent: agent proxy API.
+        # The type of the HTTP API. Valid values: Http (common HTTP API), Rest (RESTful API), WebSocket (WebSocket API), HttpIngress (HTTP API accessed through Ingress), LLM (large language model API), and Agent (agent API).
         # 
         # This parameter is required.
         self.type = type
         # The API versioning configuration.
         self.version_config = version_config
-        # The idempotency token, which is a globally unique value generated by the caller. We recommend that you use a UUID. The token cannot exceed 64 characters in length. Within approximately 24 hours after the first successful request, a duplicate request that carries the same ClientToken and identical request parameters directly returns the httpApiId created by the first request without creating a duplicate HTTP API. If the same ClientToken is carried but the request parameters differ, an IdempotentParameterMismatch error is returned. If the first request is still being processed, an IdempotentProcessing error is returned. If this parameter is not specified, idempotency control is not enabled, and the behavior is consistent with the existing version.
+        # The client token. It is a globally unique value generated by the caller (UUID is recommended) and can be up to 64 characters in length. Within about 24 hours after the first request succeeds, a repeated request with the same ClientToken and identical request parameters directly returns the httpApiId created by the first request without creating the HTTP API again. If the same ClientToken is used but the request parameters are different, IdempotentParameterMismatch is returned. If the first request is still being processed, IdempotentProcessing is returned. If this parameter is not specified, idempotence control is not enabled, and the behavior is consistent with the existing version.
         self.client_token = client_token
 
     def validate(self):
@@ -263,7 +247,7 @@ class CreateHttpApiRequestIngressConfig(DaraModel):
         self.override_ingress_ip = override_ingress_ip
         # The source ID.
         self.source_id = source_id
-        # The namespace to listen on.
+        # The namespace to watch.
         self.watch_namespace = watch_namespace
 
     def validate(self):

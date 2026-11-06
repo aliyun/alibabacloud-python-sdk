@@ -68,9 +68,9 @@ class GetHiMarketConsumerCredentialResponseBodyData(DaraModel):
         api_key_config: main_models.HiMarketApiKeyConfig = None,
         hmac_config: main_models.HiMarketHmacConfig = None,
     ):
-        # The API key credential configuration of the consumer. This corresponds to the common data structure HiMarketApiKeyConfig and includes the key, source, and credentials list members. Each item in the credentials list contains an apiKey.
+        # The API key consumer credential configuration, which corresponds to the common data structure HiMarketApiKeyConfig. The members include key, source, and the credential list credentials, where each list item contains an apiKey.
         self.api_key_config = api_key_config
-        # The HMAC credential configuration of the consumer. This corresponds to the common data structure HiMarketHmacConfig and includes the credentials list member. Each item in the credentials list contains an ak and an sk.
+        # The HMAC consumer credential configuration, which corresponds to the common data structure HiMarketHmacConfig. The members include the credential list credentials, where each list item contains ak and sk.
         self.hmac_config = hmac_config
 
     def validate(self):

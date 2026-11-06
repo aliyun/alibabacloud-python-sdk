@@ -72,11 +72,11 @@ class GetHiMarketConsumerResponseBodyData(DaraModel):
     ):
         # The consumer ID.
         self.consumer_id = consumer_id
-        # The description of the consumer.
+        # The consumer description.
         self.description = description
-        # Indicates whether the consumer is the primary consumer.
+        # Indicates whether the consumer is a primary consumer.
         self.is_primary = is_primary
-        # The name of the consumer.
+        # The consumer name.
         self.name = name
 
     def validate(self):

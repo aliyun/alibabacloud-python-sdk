@@ -21,7 +21,7 @@ class ListHiMarketConsumersRequest(DaraModel):
         self.max_results = max_results
         # The search keyword for the consumer name.
         self.name = name
-        # The pagination token. To retrieve the next page, pass the nextToken value returned in the previous response. Do not specify this parameter for the first query.
+        # The pagination token. Pass the nextToken value returned in the previous response to retrieve the next page. Do not pass this parameter for the first query.
         self.next_token = next_token
         # The page number. Pages start from 1.
         self.page_number = page_number

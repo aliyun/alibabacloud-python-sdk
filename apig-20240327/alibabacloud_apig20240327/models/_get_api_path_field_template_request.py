@@ -9,7 +9,7 @@ class GetApiPathFieldTemplateRequest(DaraModel):
         self,
         path: str = None,
     ):
-        # The gateway type.
+        # The API request path used to query the corresponding field template.
         self.path = path
 
     def validate(self):

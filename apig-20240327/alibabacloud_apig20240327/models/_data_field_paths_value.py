@@ -16,7 +16,7 @@ class DataFieldPathsValue(DaraModel):
         self.field_key = field_key
         # The JSONPath expression of the template field in the request or response message, such as usage.prompt_tokens.
         self.json_path = json_path
-        # The value source of the field, which indicates the part of the message from which the field is read, such as response_body.
+        # The value source of the field, which identifies the part of the message from which the field is read, such as response_body.
         self.source = source
         # The statistical category to which the field belongs.
         self.category = category

@@ -68,9 +68,9 @@ class GetProductRefResponseBodyData(DaraModel):
         apig_ref_config: main_models.HiMarketProductRefConfig = None,
         gateway_id: str = None,
     ):
-        # The API configurations currently associated with the API product. The structure is derived from the common struct HiMarketProductRefConfig. This struct contains the gatewayId and apigRefConfig members. The inner apigRefConfig struct contains the mcpServerId, mcpRouteId, mcpServerName, agentApiId, agentApiName, modelApiId, and modelApiName members.
+        # The API configurations currently associated with the API product. The structure is derived from the common struct HiMarketProductRefConfig. This struct contains two members: gatewayId and apigRefConfig. The inner apigRefConfig contains the following members: mcpServerId, mcpRouteId, mcpServerName, agentApiId, agentApiName, modelApiId, and modelApiName.
         self.apig_ref_config = apig_ref_config
-        # The gateway ID. The ID of the gateway instance where the association configuration of the API product resides.
+        # The ID of the gateway instance where the association configuration of the API product resides.
         self.gateway_id = gateway_id
 
     def validate(self):

@@ -12,13 +12,13 @@ class ListProductSubscriptionsRequest(DaraModel):
         page_size: int = None,
         status: str = None,
     ):
-        # The keyword of the consumer name used to search the subscription records of the API product by consumer name.
+        # The keyword of the consumer name, which is used to search for subscription records of the API product by consumer name.
         self.consumer_name = consumer_name
         # The page number. Pages start from 1.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The subscription status used to filter subscriptions. Valid values: PENDING and APPROVED.
+        # The subscription status, which is used to filter subscriptions by status. Valid values:
         self.status = status
 
     def validate(self):
