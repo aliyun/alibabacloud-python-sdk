@@ -21,7 +21,7 @@ class GetDatasetResponseBody(DaraModel):
         schema: Dict[str, main_models.IndexKey] = None,
         update_time: str = None,
     ):
-        # The name of the agent space.
+        # The name of the agent workspace.
         self.agent_space = agent_space
         # The creation time.
         # 

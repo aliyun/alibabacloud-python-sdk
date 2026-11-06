@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Dict
 
 from alibabacloud_agentloop20260520 import models as main_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -21,6 +22,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'AgentLoop'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('agentloop', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -2898,8 +2902,12 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GetDatasetResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.version):
+            query['version'] = request.version
         req = open_api_util_models.OpenApiRequest(
-            headers = headers
+            headers = headers,
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'GetDataset',
@@ -2926,8 +2934,12 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GetDatasetResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.version):
+            query['version'] = request.version
         req = open_api_util_models.OpenApiRequest(
-            headers = headers
+            headers = headers,
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'GetDataset',
