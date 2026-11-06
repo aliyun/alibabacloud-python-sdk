@@ -13,7 +13,7 @@ class DescribeAccountAuthorityResponseBody(DaraModel):
         data: main_models.DescribeAccountAuthorityResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned data.
+        # The response data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -60,29 +60,26 @@ class DescribeAccountAuthorityResponseBodyData(DaraModel):
     ):
         # The name of the database account.
         self.account = account
-        # A list of authorized databases.
+        # The list of authorized databases.
         self.allow_databases = allow_databases
-        # A list of authorized dictionaries.
+        # The list of authorized dictionaries.
         self.allow_dictionaries = allow_dictionaries
         # The cluster ID.
         self.dbinstance_id = dbinstance_id
-        # Indicates whether DDL permissions are granted to the database account. Valid values:
+        # Indicates whether Data Definition Language (DDL) permissions are granted to the database account. Valid values:
         # 
-        # - **true**: DDL operations are allowed.
-        # 
-        # - **false**: DDL operations are prohibited.
+        # - **true**: DDL is allowed.
+        # - **false**: DDL is not allowed.
         self.ddl_authority = ddl_authority
-        # The DML permissions that are granted to the database account. Valid values:
+        # Indicates whether Data Manipulation Language (DML) permissions are granted to the database account. Valid values:
         # 
         # - 0: Read, write, and change settings queries are allowed.
-        # 
         # - 1: Only read data queries are allowed.
-        # 
         # - 2: Read data and change settings queries are allowed.
         self.dml_authority = dml_authority
-        # A list of all databases.
+        # The list of all databases.
         self.total_databases = total_databases
-        # The database.
+        # The dictionaries.
         self.total_dictionaries = total_dictionaries
 
     def validate(self):

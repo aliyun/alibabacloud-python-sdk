@@ -12,7 +12,7 @@ class DeleteAccountRequest(DaraModel):
         product: str = None,
         region_id: str = None,
     ):
-        # The destination database account.
+        # The target database account.
         # 
         # This parameter is required.
         self.account = account
@@ -20,7 +20,7 @@ class DeleteAccountRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The code of the cloud service.
+        # The product code.
         self.product = product
         # The region ID.
         # 

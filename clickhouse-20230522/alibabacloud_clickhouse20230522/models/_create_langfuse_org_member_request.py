@@ -21,7 +21,7 @@ class CreateLangfuseOrgMemberRequest(DaraModel):
         # 
         # This parameter is required.
         self.email = email
-        # The Langfuse organization ID.
+        # The ID of the Langfuse organization.
         # 
         # This parameter is required.
         self.organization_id = organization_id

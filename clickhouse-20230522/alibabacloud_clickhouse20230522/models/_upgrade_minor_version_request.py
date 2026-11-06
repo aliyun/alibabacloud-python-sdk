@@ -22,15 +22,15 @@ class UpgradeMinorVersionRequest(DaraModel):
         # This parameter is required.
         self.region_id = region_id
         # The specified upgrade time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
-        # > This parameter is required when SwitchTimeMode is set to SpecifyTime.
+        # > If SwitchTimeMode is set to SpecifyTime, you must use this parameter to specify the upgrade time.
         self.switch_time = switch_time
-        # Specifies when to upgrade. Valid values:
-        # - **Immediate**: upgrades immediately.
-        # - **MaintainTime**: upgrades during the O&M window.
-        # - **SpecifyTime**: upgrades at a specified time.
+        # Specifies whether to upgrade the minor engine version immediately. Valid values:
+        # - **Immediate**: Upgrades immediately.
+        # - **MaintainTime**: Upgrades within the O&M window.
+        # - **SpecifyTime**: Upgrades at a specified time.
         self.switch_time_mode = switch_time_mode
         # The target minor engine version.
-        # >By default, leave this parameter empty to upgrade to the latest minor engine version.
+        # > By default, this parameter is left empty, and the minor engine version is upgraded to the latest version.
         self.target_minor_version = target_minor_version
 
     def validate(self):

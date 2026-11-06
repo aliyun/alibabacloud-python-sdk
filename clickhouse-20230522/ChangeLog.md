@@ -1,3 +1,6 @@
+2026-11-06 Version: 3.1.2
+- Generated python 2023-05-22 for clickhouse.
+
 2026-08-10 Version: 3.1.0
 - Support API ModifyLangfuseSecurityIPList.
 

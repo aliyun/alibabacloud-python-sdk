@@ -60,9 +60,9 @@ class ModifyDBInstanceClassResponseBodyData(DaraModel):
         self.dbinstance_id = dbinstance_id
         # The cluster name.
         self.dbinstance_name = dbinstance_name
-        # The maximum value for serverless elastic scaling.
+        # **[Deprecated]** The maximum value for serverless elastic scaling.
         self.scale_max = scale_max
-        # The minimum value for serverless elastic scaling.
+        # **[Deprecated]** The minimum value for serverless elastic scaling.
         self.scale_min = scale_min
         # The task ID.
         self.task_id = task_id

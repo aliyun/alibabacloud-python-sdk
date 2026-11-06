@@ -12,7 +12,7 @@ class ModifyAccountAuthorityShrinkRequest(DaraModel):
         dml_auth_setting_shrink: str = None,
         region_id: str = None,
     ):
-        # The name of the database account.
+        # The database account.
         # 
         # This parameter is required.
         self.account = account
@@ -20,7 +20,7 @@ class ModifyAccountAuthorityShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The information about permissions.
+        # The authorization information.
         # 
         # This parameter is required.
         self.dml_auth_setting_shrink = dml_auth_setting_shrink

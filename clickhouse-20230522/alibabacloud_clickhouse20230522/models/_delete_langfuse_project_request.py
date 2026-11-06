@@ -16,11 +16,11 @@ class DeleteLangfuseProjectRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The Langfuse organization ID.
+        # The ID of the Langfuse organization.
         # 
         # This parameter is required.
         self.organization_id = organization_id
-        # The Langfuse project ID.
+        # The ID of the Langfuse project.
         # 
         # This parameter is required.
         self.project_id = project_id

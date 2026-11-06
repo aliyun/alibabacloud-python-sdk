@@ -13,7 +13,7 @@ class DescribeLangfuseUsersResponseBody(DaraModel):
         data: main_models.DescribeLangfuseUsersResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned result.
+        # The response data.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -56,9 +56,9 @@ class DescribeLangfuseUsersResponseBodyData(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries to return on each page.
         self.page_size = page_size
-        # The total number of records.
+        # The total number of entries.
         self.total_count = total_count
         # The list of users.
         self.users = users
@@ -112,15 +112,18 @@ class DescribeLangfuseUsersResponseBodyData(DaraModel):
 class DescribeLangfuseUsersResponseBodyDataUsers(DaraModel):
     def __init__(
         self,
+        allow_org_creation: bool = None,
         created_at: str = None,
         email: str = None,
         name: str = None,
     ):
-        # The time when the user was created.
+        # Indicates whether the user is allowed to create an organization.
+        self.allow_org_creation = allow_org_creation
+        # The time when the user was created. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format and is displayed in UTC.
         self.created_at = created_at
         # The email address of the user.
         self.email = email
-        # The username.
+        # The name of the user.
         self.name = name
 
     def validate(self):
@@ -131,6 +134,9 @@ class DescribeLangfuseUsersResponseBodyDataUsers(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.allow_org_creation is not None:
+            result['AllowOrgCreation'] = self.allow_org_creation
+
         if self.created_at is not None:
             result['CreatedAt'] = self.created_at
 
@@ -144,6 +150,9 @@ class DescribeLangfuseUsersResponseBodyDataUsers(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AllowOrgCreation') is not None:
+            self.allow_org_creation = m.get('AllowOrgCreation')
+
         if m.get('CreatedAt') is not None:
             self.created_at = m.get('CreatedAt')
 

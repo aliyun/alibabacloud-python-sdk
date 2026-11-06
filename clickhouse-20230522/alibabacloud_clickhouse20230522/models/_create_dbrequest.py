@@ -12,23 +12,18 @@ class CreateDBRequest(DaraModel):
         dbname: str = None,
         region_id: str = None,
     ):
-        # The description of the database.
+        # The description.
         self.comment = comment
         # The cluster ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The name of the database. The name must meet the following requirements:
+        # The database name. The name must meet the following requirements:
+        # - It can contain lowercase letters, digits, underscores (_), and hyphens (-).
+        # - It must start with a lowercase letter and end with a lowercase letter or a digit.
+        # - It can be up to 64 characters in length.
         # 
-        # - Consist of lowercase letters, digits, underscores (_), and hyphens (-).
-        # 
-        # - Start with a lowercase letter and end with a lowercase letter or a digit.
-        # 
-        # - Be up to 64 characters in length.
-        # 
-        # >Notice: 
-        # 
-        # An underscore (_) is counted as two characters.
+        # >Notice: An underscore (_) is counted as two characters.
         # 
         # This parameter is required.
         self.dbname = dbname

@@ -11,7 +11,7 @@ class UpgradeMinorVersionResponseBody(DaraModel):
         data: main_models.UpgradeMinorVersionResponseBodyData = None,
         request_id: str = None,
     ):
-        # The response result.
+        # The response data.
         self.data = data
         # The request ID.
         self.request_id = request_id

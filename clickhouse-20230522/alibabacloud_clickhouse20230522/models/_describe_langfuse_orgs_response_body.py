@@ -13,7 +13,7 @@ class DescribeLangfuseOrgsResponseBody(DaraModel):
         data: main_models.DescribeLangfuseOrgsResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned result.
+        # The response data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -54,13 +54,13 @@ class DescribeLangfuseOrgsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The Langfuse organization information.
+        # The Langfuse organizations.
         self.organizations = organizations
         # The current page number.
         self.page_number = page_number
-        # The number of records per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The total number of records.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -117,13 +117,13 @@ class DescribeLangfuseOrgsResponseBodyDataOrganizations(DaraModel):
         organization_id: str = None,
         updated_at: str = None,
     ):
-        # The time when the Langfuse organization was created.
+        # The time when the Langfuse organization was created. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
         self.created_at = created_at
-        # The Langfuse organization name.
+        # The name of the Langfuse organization.
         self.name = name
-        # The Langfuse organization ID.
+        # The ID of the Langfuse organization.
         self.organization_id = organization_id
-        # The time when the Langfuse organization was last updated.
+        # The time when the Langfuse organization was updated. The time follows the YYYY-MM-DDTHH:mm:ss format.
         self.updated_at = updated_at
 
     def validate(self):

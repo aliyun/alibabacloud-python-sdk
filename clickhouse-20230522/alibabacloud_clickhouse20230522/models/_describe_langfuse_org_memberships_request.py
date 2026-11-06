@@ -17,11 +17,11 @@ class DescribeLangfuseOrgMembershipsRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The Langfuse organization ID.
+        # The ID of the Langfuse organization.
         # 
         # This parameter is required.
         self.organization_id = organization_id
-        # The page number of the page to return.
+        # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size

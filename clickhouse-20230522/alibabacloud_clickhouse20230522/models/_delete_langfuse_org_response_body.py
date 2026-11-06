@@ -11,7 +11,7 @@ class DeleteLangfuseOrgResponseBody(DaraModel):
         data: main_models.DeleteLangfuseOrgResponseBodyData = None,
         request_id: str = None,
     ):
-        # The response result.
+        # The returned result.
         self.data = data
         # Id of the request
         self.request_id = request_id

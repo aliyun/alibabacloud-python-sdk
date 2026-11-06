@@ -16,11 +16,11 @@ class CreateLangfuseProjectRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The Langfuse project name.
+        # The name of the Langfuse project.
         # 
         # This parameter is required.
         self.name = name
-        # The organization ID to which the Langfuse project belongs.
+        # The ID of the organization to which the Langfuse project belongs.
         # 
         # This parameter is required.
         self.organization_id = organization_id

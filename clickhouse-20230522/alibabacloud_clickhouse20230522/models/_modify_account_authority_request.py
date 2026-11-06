@@ -15,7 +15,7 @@ class ModifyAccountAuthorityRequest(DaraModel):
         dml_auth_setting: main_models.ModifyAccountAuthorityRequestDmlAuthSetting = None,
         region_id: str = None,
     ):
-        # The name of the database account.
+        # The database account.
         # 
         # This parameter is required.
         self.account = account
@@ -23,7 +23,7 @@ class ModifyAccountAuthorityRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The information about permissions.
+        # The authorization information.
         # 
         # This parameter is required.
         self.dml_auth_setting = dml_auth_setting
@@ -80,22 +80,24 @@ class ModifyAccountAuthorityRequestDmlAuthSetting(DaraModel):
         ddl_authority: bool = None,
         dml_authority: int = None,
     ):
-        # The databases on which you want to grant permissions. Separate multiple databases with commas (,).
+        # The list of databases to be authorized. Separate multiple databases with commas (,).
         self.allow_databases = allow_databases
-        # The dictionaries on which you want to grant permissions. Separate multiple dictionaries with commas (,).
+        # The list of dictionaries to be authorized. Separate multiple dictionaries with commas (,).
         self.allow_dictionaries = allow_dictionaries
-        # Specifies whether to grant the DDL permissions to the database account. Valid values:
+        # Specifies whether to grant DDL permissions to the database account. Valid values:
         # 
-        # *   **true**: The account has the permissions to execute DDL statements.
-        # *   **false**: The account does not have the permissions to execute DDL statements.
+        # - **true**: DDL is allowed.
+        # - **false**: DDL is not allowed.
         # 
         # This parameter is required.
         self.ddl_authority = ddl_authority
-        # Specifies whether to grant the DML permissions to the database account. Valid values:
+        # Specifies whether to grant DML permissions to the database account. Valid values:
         # 
-        # *   **0**: The account has the permissions to read data from the database, write data to the database, and modify the settings of the database.
-        # *   **1**: The account only has the permissions to read data from the database.
-        # *   **2**: The account only has the permissions to read data from the database and modify the settings of the database.
+        # - **0**: Read, write, and change settings queries are allowed.
+        # 
+        # - **1**: Only read data queries are allowed.
+        # 
+        # - **2**: Read data and change settings queries are allowed.
         # 
         # This parameter is required.
         self.dml_authority = dml_authority

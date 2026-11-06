@@ -13,15 +13,15 @@ class CreateEndpointRequest(DaraModel):
         dbinstance_net_type: str = None,
         region_id: str = None,
     ):
-        # The computing group ID.
+        # The compute group ID.
         self.computing_group_id = computing_group_id
-        # The prefix for the connection string.
+        # The prefix of the destination endpoint. This is the prefix of the ConnectionString parameter.
         self.connection_prefix = connection_prefix
         # The cluster ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The network type. Set this value to Public to create a public endpoint.
+        # The network type.
         self.dbinstance_net_type = dbinstance_net_type
         # The region ID.
         # 

@@ -47,16 +47,19 @@ class CreateLangfuseUserResponseBody(DaraModel):
 class CreateLangfuseUserResponseBodyData(DaraModel):
     def __init__(
         self,
+        allow_org_creation: bool = None,
         created_at: str = None,
         email: str = None,
         membership: main_models.CreateLangfuseUserResponseBodyDataMembership = None,
         name: str = None,
     ):
-        # The time when the user was created.
+        # Indicates whether the user is allowed to create organizations.
+        self.allow_org_creation = allow_org_creation
+        # The time when the user was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.created_at = created_at
         # The email address of the user.
         self.email = email
-        # The role of the user.
+        # The user role.
         self.membership = membership
         # The username.
         self.name = name
@@ -70,6 +73,9 @@ class CreateLangfuseUserResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.allow_org_creation is not None:
+            result['AllowOrgCreation'] = self.allow_org_creation
+
         if self.created_at is not None:
             result['CreatedAt'] = self.created_at
 
@@ -86,6 +92,9 @@ class CreateLangfuseUserResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AllowOrgCreation') is not None:
+            self.allow_org_creation = m.get('AllowOrgCreation')
+
         if m.get('CreatedAt') is not None:
             self.created_at = m.get('CreatedAt')
 

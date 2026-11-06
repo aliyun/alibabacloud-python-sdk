@@ -20,11 +20,11 @@ class DescribeLangfuseUsersRequest(DaraModel):
         self.dbinstance_id = dbinstance_id
         # The email address of the user.
         self.email = email
-        # The username.
+        # The name of the user.
         self.name = name
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries to return on each page.
         self.page_size = page_size
         # The region ID.
         # 

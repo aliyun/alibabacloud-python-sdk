@@ -11,11 +11,11 @@ class CreateWhitelistTemplateRequest(DaraModel):
         security_iplist: str = None,
         template_name: str = None,
     ):
-        # The region ID.
+        # RegionId
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The IP addresses in the whitelist. Separate multiple IP addresses with commas (,). You can add up to 100 IP addresses.
+        # The whitelist. Separate multiple IP addresses with commas. You can specify up to 100 IP addresses.
         # 
         # This parameter is required.
         self.security_iplist = security_iplist

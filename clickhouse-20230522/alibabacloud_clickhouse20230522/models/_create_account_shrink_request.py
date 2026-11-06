@@ -16,15 +16,17 @@ class CreateAccountShrinkRequest(DaraModel):
         product: str = None,
         region_id: str = None,
     ):
-        # The name of the account.
+        # The database account. The account name must meet the following requirements:
+        # - The name must be unique.
+        # - The name can contain lowercase letters, digits, and underscores (_).
+        # - The name must start with a lowercase letter and end with a lowercase letter or a digit.
+        # - The name must be 2 to 64 characters in length.
         # 
         # This parameter is required.
         self.account = account
         # The type of the database account. Valid values:
-        # 
-        # - **NormalAccount**: standard account
-        # 
-        # - **SuperAccount**: privileged account
+        # - **NormalAccount**: Standard account.
+        # - **SuperAccount**: Privileged account.
         # 
         # This parameter is required.
         self.account_type = account_type
@@ -32,21 +34,21 @@ class CreateAccountShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The description of the account.
+        # The description.
         self.description = description
-        # The information about permissions.
+        # The authorization information.
         self.dml_auth_setting_shrink = dml_auth_setting_shrink
         # The password of the database account. The password must meet the following requirements:
         # 
         # - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
         # 
-        # - The following special characters are supported: ! @ # $ % ^ & \\* ( ) _ + - =
+        # - Special characters include !@#$%^&*()_+-=.
         # 
         # - The password must be 8 to 32 characters in length.
         # 
         # This parameter is required.
         self.password = password
-        # The code of the cloud service.
+        # The product code.
         self.product = product
         # The region ID.
         # 

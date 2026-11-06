@@ -19,7 +19,7 @@ class ModifyDBInstanceClassShrinkRequest(DaraModel):
         storage_quota: int = None,
         storage_type: str = None,
     ):
-        # The automatic horizontal scaling configuration.
+        # The automatic horizontal elastic configuration.
         self.auto_scale_config_shrink = auto_scale_config_shrink
         # The compute group ID.
         self.computing_group_id = computing_group_id
@@ -37,11 +37,11 @@ class ModifyDBInstanceClassShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The maximum value for serverless elastic scaling.
+        # **[Deprecated]** The maximum value for serverless elastic scaling.
         self.scale_max = scale_max
-        # The minimum value for serverless elastic scaling.
+        # **[Deprecated]** The minimum value for serverless elastic scaling.
         self.scale_min = scale_min
-        # The pre-purchased storage quota, in GB.
+        # The purchased storage quota. Unit: GB.
         self.storage_quota = storage_quota
         # The storage type.
         self.storage_type = storage_type

@@ -13,7 +13,7 @@ class DescribeDBInstanceConfigChangeLogResponseBody(DaraModel):
         data: main_models.DescribeDBInstanceConfigChangeLogResponseBodyData = None,
         request_id: str = None,
     ):
-        # The result set.
+        # The query result set.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -102,18 +102,19 @@ class DescribeDBInstanceConfigChangeLogResponseBodyDataParamChangeLogs(DaraModel
         new_value: str = None,
         old_value: str = None,
     ):
-        # Indicates whether the configuration takes effect:
+        # Indicates whether the configuration has taken effect. Valid values:
         # 
-        # - true: The execution plan takes effect.
-        # - false: The execution plan does not take effect.
+        # - true: The configuration has taken effect.
+        # 
+        # - false: The configuration has not taken effect.
         self.applied = applied
         # The time when the change was created.
         self.gmt_created = gmt_created
-        # The time when the change was modified.
+        # The time when the change was last modified.
         self.gmt_modified = gmt_modified
         # The operation ID.
         self.id = id
-        # The name of the parameter.
+        # The parameter name.
         self.name = name
         # The new parameter value.
         self.new_value = new_value

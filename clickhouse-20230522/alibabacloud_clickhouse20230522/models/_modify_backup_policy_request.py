@@ -23,7 +23,7 @@ class ModifyBackupPolicyRequest(DaraModel):
         # 
         # This parameter is required.
         self.preferred_backup_period = preferred_backup_period
-        # The backup time.
+        # The backup time in UTC. The format is HH:mmZ-HH:mmZ.
         # 
         # This parameter is required.
         self.preferred_backup_time = preferred_backup_time

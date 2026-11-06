@@ -11,7 +11,7 @@ class ResetLangfuseUserPasswordResponseBody(DaraModel):
         data: main_models.ResetLangfuseUserPasswordResponseBodyData = None,
         request_id: str = None,
     ):
-        # The response result.
+        # The response data.
         self.data = data
         # Id of the request
         self.request_id = request_id

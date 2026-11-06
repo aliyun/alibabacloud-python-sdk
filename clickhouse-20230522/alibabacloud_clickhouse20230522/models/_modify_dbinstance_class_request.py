@@ -22,7 +22,7 @@ class ModifyDBInstanceClassRequest(DaraModel):
         storage_quota: int = None,
         storage_type: str = None,
     ):
-        # The automatic horizontal scaling configuration.
+        # The automatic horizontal elastic configuration.
         self.auto_scale_config = auto_scale_config
         # The compute group ID.
         self.computing_group_id = computing_group_id
@@ -40,11 +40,11 @@ class ModifyDBInstanceClassRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The maximum value for serverless elastic scaling.
+        # **[Deprecated]** The maximum value for serverless elastic scaling.
         self.scale_max = scale_max
-        # The minimum value for serverless elastic scaling.
+        # **[Deprecated]** The minimum value for serverless elastic scaling.
         self.scale_min = scale_min
-        # The pre-purchased storage quota, in GB.
+        # The purchased storage quota. Unit: GB.
         self.storage_quota = storage_quota
         # The storage type.
         self.storage_type = storage_type
@@ -138,12 +138,11 @@ class ModifyDBInstanceClassRequestAutoScaleConfig(DaraModel):
         status: str = None,
         v_switch_infos: List[main_models.ModifyDBInstanceClassRequestAutoScaleConfigVSwitchInfos] = None,
     ):
-        # The number of nodes available for burstable horizontal scaling.
+        # The number of burstable nodes for horizontal elastic scaling.
         self.burst_num = burst_num
         # The configuration status. Valid values:
-        # 
-        # - disable: disabled.
-        # - enable: enabled.
+        # - disable: Disabled.
+        # - enable: Enabled.
         self.status = status
         # The vSwitch information.
         self.v_switch_infos = v_switch_infos
@@ -194,7 +193,7 @@ class ModifyDBInstanceClassRequestAutoScaleConfigVSwitchInfos(DaraModel):
         v_switch_ids: List[str] = None,
         zone_id: str = None,
     ):
-        # The vSwitch IDs in the zone.
+        # The vSwitch ID in the zone.
         self.v_switch_ids = v_switch_ids
         # The zone of the hot pool.
         self.zone_id = zone_id

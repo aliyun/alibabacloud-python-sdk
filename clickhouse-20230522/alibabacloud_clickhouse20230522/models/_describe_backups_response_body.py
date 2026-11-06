@@ -20,11 +20,11 @@ class DescribeBackupsResponseBody(DaraModel):
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of backups.
+        # The total number of backup sets.
         self.total_count = total_count
 
     def validate(self):
@@ -93,30 +93,27 @@ class DescribeBackupsResponseBodyItems(DaraModel):
         dbinstance_id: str = None,
         expire_date: str = None,
     ):
-        # The end time of the backup. The time is in UTC.
+        # The end time of the backup in UTC.
         self.backup_end_time = backup_end_time
         # The backup record ID.
         self.backup_id = backup_id
         # The backup method.
         self.backup_method = backup_method
-        # The information about the backup set.
+        # The backup set information.
         self.backup_set_info = backup_set_info
-        # The size of the backup file in MB.
+        # The size of the backup file. Unit: MB.
         self.backup_size = backup_size
-        # The start time of the backup.
+        # The start time of the backup. The time is in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.backup_start_time = backup_start_time
         # The status of the backup set.
         self.backup_status = backup_status
-        # The backup type.
-        # Valid values:
-        # 
-        # - **FullBackup**: full backup.
-        # 
-        # - **IncrementalBackup**: incremental backup.
+        # The backup type. Valid values:
+        # - **FullBackup**: full backup
+        # - **IncrementalBackup**: incremental backup
         self.backup_type = backup_type
         # The cluster ID.
         self.dbinstance_id = dbinstance_id
-        # The expiration time of the backup set.
+        # The expiration time of the backup set. The time is in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.expire_date = expire_date
 
     def validate(self):

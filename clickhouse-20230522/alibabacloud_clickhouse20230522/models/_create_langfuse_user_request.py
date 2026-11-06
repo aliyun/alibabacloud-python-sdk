@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class CreateLangfuseUserRequest(DaraModel):
     def __init__(
         self,
+        allow_org_creation: bool = None,
         dbinstance_id: str = None,
         email: str = None,
         name: str = None,
@@ -15,6 +16,8 @@ class CreateLangfuseUserRequest(DaraModel):
         password: str = None,
         region_id: str = None,
     ):
+        # Specifies whether the user is allowed to create organizations. Default value: false.
+        self.allow_org_creation = allow_org_creation
         # The Langfuse instance ID.
         # 
         # This parameter is required.
@@ -33,11 +36,11 @@ class CreateLangfuseUserRequest(DaraModel):
         self.organization_id = organization_id
         # The password of the user account. The password must meet the following requirements:
         # 
-        # - Contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        # - It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
         # 
-        # - The following special characters are supported: !@#$%^&*()_+-=
+        # - Special characters include !@#$%^&*()_+-=.
         # 
-        # - The password must be 8 to 32 characters in length.
+        # - It must be 8 to 32 characters in length.
         # 
         # This parameter is required.
         self.password = password
@@ -54,6 +57,9 @@ class CreateLangfuseUserRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.allow_org_creation is not None:
+            result['AllowOrgCreation'] = self.allow_org_creation
+
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
 
@@ -79,6 +85,9 @@ class CreateLangfuseUserRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AllowOrgCreation') is not None:
+            self.allow_org_creation = m.get('AllowOrgCreation')
+
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
 

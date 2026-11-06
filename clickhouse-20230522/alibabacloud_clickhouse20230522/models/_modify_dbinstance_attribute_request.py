@@ -13,15 +13,13 @@ class ModifyDBInstanceAttributeRequest(DaraModel):
         product: str = None,
         region_id: str = None,
     ):
-        # The type of attribute to modify. Valid values:
-        # 
-        # - MaintainTime: Modify the O\\&M window.
-        # 
-        # - DBInstanceDescription: Modify the instance name.
+        # The attribute type to modify.
+        # - MaintainTime: Modifies the O&M window.
+        # - DBInstanceDescription: Modifies the instance name.
         # 
         # This parameter is required.
         self.attribute_type = attribute_type
-        # The new value for the attribute.
+        # The new value of the attribute.
         # 
         # This parameter is required.
         self.attribute_value = attribute_value

@@ -13,7 +13,7 @@ class DescribeLangfuseProjectsResponseBody(DaraModel):
         data: main_models.DescribeLangfuseProjectsResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned result.
+        # The returned results.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -56,11 +56,11 @@ class DescribeLangfuseProjectsResponseBodyData(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The number of records per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The list of Langfuse projects.
         self.projects = projects
-        # The total number of records.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -118,15 +118,15 @@ class DescribeLangfuseProjectsResponseBodyDataProjects(DaraModel):
         project_id: str = None,
         updated_at: str = None,
     ):
-        # The time when the Langfuse project was created.
+        # The time when the Langfuse project was created. The time is in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.created_at = created_at
-        # The Langfuse project name.
+        # The name of the Langfuse project.
         self.name = name
-        # The organization ID to which the Langfuse project belongs.
+        # The ID of the organization to which the Langfuse project belongs.
         self.organization_id = organization_id
         # The Langfuse project ID.
         self.project_id = project_id
-        # The time when the Langfuse project was last updated.
+        # The time when the Langfuse project was updated. The time is in the YYYY-MM-DDTHH:mm:ss format.
         self.updated_at = updated_at
 
     def validate(self):

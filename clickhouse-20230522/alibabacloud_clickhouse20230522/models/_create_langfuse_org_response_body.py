@@ -51,11 +51,11 @@ class CreateLangfuseOrgResponseBodyData(DaraModel):
         name: str = None,
         organization_id: str = None,
     ):
-        # The time when the Langfuse organization was created.
+        # The creation time of the Langfuse organization. The time is in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ss.SSSZ format.
         self.created_at = created_at
         # The name of the Langfuse organization.
         self.name = name
-        # The Langfuse organization ID.
+        # The ID of the Langfuse organization.
         self.organization_id = organization_id
 
     def validate(self):

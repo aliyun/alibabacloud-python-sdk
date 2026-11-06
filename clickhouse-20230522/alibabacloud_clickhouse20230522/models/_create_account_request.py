@@ -19,15 +19,17 @@ class CreateAccountRequest(DaraModel):
         product: str = None,
         region_id: str = None,
     ):
-        # The name of the account.
+        # The database account. The account name must meet the following requirements:
+        # - The name must be unique.
+        # - The name can contain lowercase letters, digits, and underscores (_).
+        # - The name must start with a lowercase letter and end with a lowercase letter or a digit.
+        # - The name must be 2 to 64 characters in length.
         # 
         # This parameter is required.
         self.account = account
         # The type of the database account. Valid values:
-        # 
-        # - **NormalAccount**: standard account
-        # 
-        # - **SuperAccount**: privileged account
+        # - **NormalAccount**: Standard account.
+        # - **SuperAccount**: Privileged account.
         # 
         # This parameter is required.
         self.account_type = account_type
@@ -35,21 +37,21 @@ class CreateAccountRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The description of the account.
+        # The description.
         self.description = description
-        # The information about permissions.
+        # The authorization information.
         self.dml_auth_setting = dml_auth_setting
         # The password of the database account. The password must meet the following requirements:
         # 
         # - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
         # 
-        # - The following special characters are supported: ! @ # $ % ^ & \\* ( ) _ + - =
+        # - Special characters include !@#$%^&*()_+-=.
         # 
         # - The password must be 8 to 32 characters in length.
         # 
         # This parameter is required.
         self.password = password
-        # The code of the cloud service.
+        # The product code.
         self.product = product
         # The region ID.
         # 
@@ -128,23 +130,19 @@ class CreateAccountRequestDmlAuthSetting(DaraModel):
         ddl_authority: bool = None,
         dml_authority: int = None,
     ):
-        # The databases on which you want to grant permissions. Separate multiple databases with commas (,).
+        # The list of databases to be authorized. Separate multiple databases with commas (,).
         self.allow_databases = allow_databases
-        # The dictionaries on which you want to grant permissions. Separate multiple dictionaries with commas (,).
+        # The list of dictionaries to be authorized. Separate multiple dictionaries with commas (,).
         self.allow_dictionaries = allow_dictionaries
-        # Specifies whether to grant the DDL permissions to the database account. Valid values:
+        # Specifies whether to grant DDL permissions to the database account. Valid values:
         # 
-        # - **true**: The account has the permissions to execute DDL statements.
-        # 
-        # - **false**: The account does not have the permissions to execute DDL statements.
+        # - **true**: Allows DDL operations.
+        # - **false**: Prohibits DDL operations.
         self.ddl_authority = ddl_authority
-        # Specifies whether to grant the DML permissions to the database account. Valid values:
-        # 
-        # - **0**: The account has the permissions to read data from the database, write data to the database, and modify the settings of the database.
-        # 
-        # - **1**: The account only has the permissions to read data from the database.
-        # 
-        # - **2**: The account only has the permissions to read data from the database and modify the settings of the database.
+        # Specifies whether to grant DML permissions to the database account. Valid values:
+        # - **0**: Allows queries for reading, writing, and changing settings.
+        # - **1**: Allows only queries for reading data.
+        # - **2**: Allows queries for reading data and changing settings.
         self.dml_authority = dml_authority
 
     def validate(self):

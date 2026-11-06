@@ -21,19 +21,19 @@ class DescribeBackupsRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The end of the time range to query. The time is in UTC.
+        # The end time of the backup in UTC.
         # 
         # This parameter is required.
         self.end_time = end_time
         # The page number.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         self.page_size = page_size
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The beginning of the time range to query. The time is in UTC.
+        # The start time of the backup in UTC.
         # 
         # This parameter is required.
         self.start_time = start_time

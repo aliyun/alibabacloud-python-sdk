@@ -60,7 +60,7 @@ class DescribeLangfuseOrgMembershipsResponseBodyData(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The total number of records.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -117,11 +117,11 @@ class DescribeLangfuseOrgMembershipsResponseBodyDataMemberships(DaraModel):
         name: str = None,
         role: str = None,
     ):
-        # The time when the user was created.
+        # The time when the user was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.created_at = created_at
         # The email address of the user.
         self.email = email
-        # The username.
+        # The name of the user.
         self.name = name
         # The role of the user.
         self.role = role

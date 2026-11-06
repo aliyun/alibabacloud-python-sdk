@@ -11,7 +11,7 @@ class CreateAccountResponseBody(DaraModel):
         data: main_models.CreateAccountResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The returned result.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -50,7 +50,7 @@ class CreateAccountResponseBodyData(DaraModel):
         account: str = None,
         dbinstance_id: str = None,
     ):
-        # The name of the database account.
+        # The database account.
         self.account = account
         # The cluster ID.
         self.dbinstance_id = dbinstance_id

@@ -15,7 +15,7 @@ class AttachWhitelistTemplateToInstanceResponseBody(DaraModel):
     ):
         # The returned data.
         self.data = data
-        # Request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -53,11 +53,11 @@ class AttachWhitelistTemplateToInstanceResponseBodyData(DaraModel):
         attach_successed_list: List[main_models.AttachWhitelistTemplateToInstanceResponseBodyDataAttachSuccessedList] = None,
         status: str = None,
     ):
-        # Instances that failed to be attached.
+        # The instances that failed to be disassociated.
         self.attach_fail_list = attach_fail_list
-        # Instances to which the template was successfully attached.
+        # The templates that were successfully associated.
         self.attach_successed_list = attach_successed_list
-        # The status of the operation. A value of `ok` indicates success.
+        # The operation status.
         self.status = status
 
     def validate(self):
@@ -115,9 +115,9 @@ class AttachWhitelistTemplateToInstanceResponseBodyDataAttachSuccessedList(DaraM
         dbinstance_id: str = None,
         templates: List[main_models.AttachWhitelistTemplateToInstanceResponseBodyDataAttachSuccessedListTemplates] = None,
     ):
-        # The name of the instance.
+        # The instance name.
         self.dbinstance_id = dbinstance_id
-        # The list of whitelist templates.
+        # The whitelist templates.
         self.templates = templates
 
     def validate(self):
@@ -162,13 +162,13 @@ class AttachWhitelistTemplateToInstanceResponseBodyDataAttachSuccessedListTempla
         template_id: str = None,
         template_name: str = None,
     ):
-        # The list of attached instances.
+        # The associated instances.
         self.db_instances = db_instances
-        # The IP address whitelist.
+        # The IP whitelists.
         self.security_iplist = security_iplist
-        # The ID of the whitelist template.
+        # The whitelist template ID.
         self.template_id = template_id
-        # The name of the whitelist template.
+        # The whitelist template name.
         self.template_name = template_name
 
     def validate(self):
@@ -222,7 +222,7 @@ class AttachWhitelistTemplateToInstanceResponseBodyDataAttachSuccessedListTempla
         self,
         dbinstance_id: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
 
     def validate(self):
@@ -253,9 +253,9 @@ class AttachWhitelistTemplateToInstanceResponseBodyDataAttachFailList(DaraModel)
         dbinstance_id: str = None,
         reason: str = None,
     ):
-        # The name of the instance.
+        # The instance name.
         self.dbinstance_id = dbinstance_id
-        # The reason for the attachment failure.
+        # The reason for the disassociation failure.
         self.reason = reason
 
     def validate(self):
