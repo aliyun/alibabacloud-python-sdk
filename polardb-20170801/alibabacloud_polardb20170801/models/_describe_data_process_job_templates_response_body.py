@@ -93,15 +93,15 @@ class DescribeDataProcessJobTemplatesResponseBodyItems(DaraModel):
         template_name: str = None,
         template_type: str = None,
     ):
-        # Specifies whether it is required to fetch the summary or video synopsis.
+        # Specifies whether it is to fetch the image summary or video synopsis.
         self.captioning = captioning
         # The prompt used when extracting captions.
         self.captioning_prompt = captioning_prompt
         # The time when the task template was created, in RFC 3339 format.
         self.creation_time = creation_time
-        # Specifies whether to convert content into vectors.
+        # Indicates whether content is converted into vectors.
         self.embedding = embedding
-        # The output dimension of the vector.
+        # The vector output dimensions.
         self.embedding_dimension = embedding_dimension
         # The task template status.
         self.status = status

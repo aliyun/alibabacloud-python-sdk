@@ -10,7 +10,7 @@ class DescribeInspectionTaskAttributeRequest(DaraModel):
         region_id: str = None,
         task_id: str = None,
     ):
-        # The ID of the region where the task is located.
+        # The ID of the region where the task resides.
         self.region_id = region_id
         # The ID of the inspection task to query. This parameter is required.
         self.task_id = task_id

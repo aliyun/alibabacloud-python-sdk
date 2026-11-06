@@ -16,7 +16,7 @@ class DescribeInspectionReportListRequest(DaraModel):
     ):
         # The end time of the query. If you specify StartTime, you must also specify EndTime. Specify the time in the ISO 8601 standard in the YYYY-MM-DDTHH:mmZ format. The time must be in UTC and cannot be earlier than the start time.
         self.end_time = end_time
-        # The number of the page to return. Pages start from 1. Maximum value: 2147483647. Default value: 1.
+        # The page number. Pages start from 1. Maximum value: 2147483647. Default value: 1.
         self.page_number = page_number
         # The number of entries to return on each page. Valid values: 30, 50, and 100. Default value: 30.
         self.page_size = page_size

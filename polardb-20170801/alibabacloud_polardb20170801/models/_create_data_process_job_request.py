@@ -23,7 +23,7 @@ class CreateDataProcessJobRequest(DaraModel):
     ):
         # The description of the data processing task.
         self.description = description
-        # The JSON string for the destination database connection configuration, including Account and Password.
+        # The JSON string for the destination database connection configuration, which includes the account and password.
         self.destination_config = destination_config
         # The ID of the destination PolarDB cluster.
         # 
@@ -33,7 +33,7 @@ class CreateDataProcessJobRequest(DaraModel):
         # 
         # This parameter is required.
         self.destination_path = destination_path
-        # The type of the destination. Only PolarDB is supported.
+        # The destination type. Currently, only PolarDB is supported.
         # 
         # This parameter is required.
         self.destination_type = destination_type
@@ -47,7 +47,7 @@ class CreateDataProcessJobRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The additional configuration for the data source in JSON string format. This parameter can be left empty.
+        # The additional configuration for the data source in JSON string format. You can leave this parameter empty.
         self.source_config = source_config
         # The ID of the PolarFS instance that serves as the data source.
         # 
@@ -57,7 +57,7 @@ class CreateDataProcessJobRequest(DaraModel):
         # 
         # This parameter is required.
         self.source_path = source_path
-        # The type of the data source. Only PolarFS is supported.
+        # The data source type. Currently, only PolarFS is supported.
         # 
         # This parameter is required.
         self.source_type = source_type

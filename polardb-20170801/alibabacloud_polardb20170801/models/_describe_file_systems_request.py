@@ -12,9 +12,9 @@ class DescribeFileSystemsRequest(DaraModel):
         next_token: str = None,
         polar_fs_instance_id: str = None,
     ):
-        # The absolute path of the directory to query. If you do not specify this parameter, the default path is used.
+        # The absolute path of the directory to query. If not specified, the default path is used.
         self.file_system_id = file_system_id
-        # The maximum number of records to return for each request.
+        # The maximum number of records to return per request.
         self.max_results = max_results
         # The pagination token returned from the previous query to retrieve the next page.
         self.next_token = next_token

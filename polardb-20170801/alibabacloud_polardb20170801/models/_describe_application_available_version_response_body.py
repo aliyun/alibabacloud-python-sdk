@@ -72,7 +72,7 @@ class DescribeApplicationAvailableVersionResponseBodyVersions(DaraModel):
     ):
         # The release date.
         self.release_date = release_date
-        # The release notes of the version.
+        # The release notes.
         self.release_note = release_note
         # The release type.
         self.release_type = release_type

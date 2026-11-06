@@ -35,7 +35,7 @@ class DescribeBudgetUsageResponseBody(DaraModel):
         self.gmt_created = gmt_created
         # The last modification time of the budget usage record in RFC 3339 UTC format.
         self.gmt_modified = gmt_modified
-        # The ID of the gateway instance.
+        # The gateway instance ID.
         self.gw_cluster_id = gw_cluster_id
         # The list of associated budget policies.
         self.policies = policies
@@ -162,13 +162,13 @@ class DescribeBudgetUsageResponseBodyPolicies(DaraModel):
         self.budget_dimension_type = budget_dimension_type
         # The number of budget points set by the policy.
         self.budget_points = budget_points
-        # The ID of the budget policy.
+        # The budget policy ID.
         self.budget_policy_id = budget_policy_id
         # The budget type.
         self.budget_type = budget_type
         # The day of the month when the budget is reset. For example, 1 indicates the first day of each month.
         self.reset_day_of_month = reset_day_of_month
-        # The status of the budget policy.
+        # The budget policy status.
         self.status = status
 
     def validate(self):

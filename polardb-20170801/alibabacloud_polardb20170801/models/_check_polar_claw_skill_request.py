@@ -17,19 +17,19 @@ class CheckPolarClawSkillRequest(DaraModel):
         tags: str = None,
         title: str = None,
     ):
-        # The region ID of the OSS bucket where the skill files are stored.
+        # The region ID of the OSS bucket that stores the skill files.
         self.bucket_region_id = bucket_region_id
         # The type of the bucket used for skill files. UserOwned indicates a user-owned bucket. Hosted indicates a hosted bucket. You must have the required permissions to use a hosted bucket.
         self.bucket_type = bucket_type
-        # The name of the OSS bucket to be unbound.
+        # The name of the OSS bucket to be disassociated.
         self.ossbucket = ossbucket
         # The region ID.
         self.region_id = region_id
-        # The name of the skill.
+        # The skill name.
         # 
         # This parameter is required.
         self.skill_name = skill_name
-        # The version number of the skill.
+        # The skill version number.
         # 
         # This parameter is required.
         self.skill_version = skill_version

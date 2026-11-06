@@ -26,7 +26,7 @@ class DescribeKVCacheInstanceAttributeResponseBody(DaraModel):
         self.connection_string = connection_string
         # The time when the instance was created, in ISO 8601 format.
         self.creation_time = creation_time
-        # The time when the instance expires, in ISO 8601 format. An empty character string is returned for pay-as-you-go instances.
+        # The time when the instance expires, in ISO 8601 format. An empty string is returned for pay-as-you-go instances.
         self.expire_time = expire_time
         # Indicates whether the instance has expired.
         self.expired = expired

@@ -22,7 +22,7 @@ class DescribeApplicationBackupsResponseBody(DaraModel):
         self.page_numbers = page_numbers
         # The number of backup sets returned on the current page.
         self.page_record_count = page_record_count
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The total number of backup sets that meet the query conditions.
         self.total_record_count = total_record_count
@@ -91,15 +91,15 @@ class DescribeApplicationBackupsResponseBodyItems(DaraModel):
     ):
         # The end time of the backup. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
         self.backup_end_time = backup_end_time
-        # The backup set ID.
+        # The ID of the backup set.
         self.backup_id = backup_id
         # The start time of the backup. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
         self.backup_start_time = backup_start_time
-        # The backup status. A value of Success indicates that the backup is completed, and a value of Failed indicates that the backup failed.
+        # The backup status. Valid values: Success: The backup is completed. Failed: The backup failed.
         self.backup_status = backup_status
-        # The backup type. A value of FullBackup indicates a full backup, and a value of IncrementalBackup indicates an incremental backup.
+        # The backup type. Valid values: FullBackup: full backup. IncrementalBackup: incremental backup.
         self.backup_type = backup_type
-        # The backup mode. A value of Automated indicates an automatic backup, and a value of Manual indicates a manual backup.
+        # The backup mode. Valid values: Automated: automatic backup. Manual: manual backup.
         self.job_mode = job_mode
 
     def validate(self):

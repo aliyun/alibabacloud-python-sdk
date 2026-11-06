@@ -19,21 +19,21 @@ class DescribeFileSystemsResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The ID of the bucket.
+        # The bucket ID.
         self.bucket_id = bucket_id
-        # The total number of files that meet the specified conditions.
+        # The total number of files that match the conditions.
         self.file_count = file_count
-        # The ID of the file system.
+        # The file system ID.
         self.file_system_id = file_system_id
         # The list of files.
         self.file_systems = file_systems
-        # Indicates whether the results are truncated. If the value is true, you can use NextToken to query subsequent results.
+        # Indicates whether the results are truncated. If true, you can use NextToken to retrieve subsequent results.
         self.is_truncated = is_truncated
         # The maximum number of records returned for this request.
         self.max_results = max_results
         # The pagination token for the next page.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -114,11 +114,11 @@ class DescribeFileSystemsResponseBodyFileSystems(DaraModel):
         last_modified: str = None,
         storage_type: str = None,
     ):
-        # The capacity of the file.
+        # The file capacity.
         self.capacity = capacity
-        # The name of the file.
+        # The file name.
         self.file_name = file_name
-        # The time when the file was last modified. The time is in the RFC 3339 UTC format.
+        # The last modified time of the file, in RFC 3339 UTC format.
         self.last_modified = last_modified
         # The storage type of the file.
         self.storage_type = storage_type

@@ -18,7 +18,7 @@ class DescribeInspectionTaskAttributeResponseBody(DaraModel):
     ):
         # The creation date of the inspection task.
         self.create_time = create_time
-        # The cron expression for scheduling periodic inspections.
+        # The cron expression for periodic inspections.
         self.cron_expression = cron_expression
         # The IDs of the PolarDB clusters to be inspected. Separate multiple IDs with commas.
         self.dbcluster_ids = dbcluster_ids

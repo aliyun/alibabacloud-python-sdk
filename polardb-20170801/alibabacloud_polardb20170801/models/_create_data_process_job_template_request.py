@@ -16,9 +16,9 @@ class CreateDataProcessJobTemplateRequest(DaraModel):
         template_name: str = None,
         template_type: str = None,
     ):
-        # Specifies whether to fetch the image summary or video synopsis. When Settings is set to true, CaptioningPrompt must be specified.
+        # Specifies whether to fetch the image summary or video synopsis. When Settings is true, CaptioningPrompt must be provided.
         self.captioning = captioning
-        # The prompt used for extracting summaries. This parameter takes effect only when Captioning is set to true.
+        # The prompt used for extracting captions. This parameter takes effect only when Captioning is set to true.
         self.captioning_prompt = captioning_prompt
         # Specifies whether to convert the content into vectors.
         self.embedding = embedding
@@ -34,7 +34,7 @@ class CreateDataProcessJobTemplateRequest(DaraModel):
         self.template_config = template_config
         # The name of the task template.
         self.template_name = template_name
-        # The templatetype of the node. Valid values: image.
+        # The templatetype of the node template. Valid value: image.
         # 
         # This parameter is required.
         self.template_type = template_type

@@ -26,9 +26,9 @@ class RefreshProxyLevelRequest(DaraModel):
         self.from_time_service = from_time_service
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The latest time to start the proxy specification upgrade, in the YYYY-MM-DDThh:mm:ssZ format (UTC).
+        # The latest time to execute the proxy specification upgrade. Specify the time in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
         self.planned_end_time = planned_end_time
-        # The earliest time to start the proxy specification upgrade, in the YYYY-MM-DDThh:mm:ssZ format (UTC).
+        # The earliest time to execute the proxy specification upgrade. Specify the time in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
         self.planned_start_time = planned_start_time
         # The target proxy performance level. Valid values: ProxyStandard, ProxyStandardx2, and ProxyStandardx4.
         # 

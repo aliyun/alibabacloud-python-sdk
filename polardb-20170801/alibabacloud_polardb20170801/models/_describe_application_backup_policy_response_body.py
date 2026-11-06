@@ -14,7 +14,7 @@ class DescribeApplicationBackupPolicyResponseBody(DaraModel):
         preferred_backup_time: str = None,
         request_id: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.application_id = application_id
         # The application type, such as polarclaw.
         self.application_type = application_type
@@ -22,7 +22,7 @@ class DescribeApplicationBackupPolicyResponseBody(DaraModel):
         self.preferred_backup_period = preferred_backup_period
         # The retention period of level-1 backups, in days.
         self.preferred_backup_retention_period = preferred_backup_retention_period
-        # The time window when automatic backups are performed. The time follows the HH:mmZ-HH:mmZ format in UTC.
+        # The time period when automatic backups are performed. The time is in the HH:mmZ-HH:mmZ format and in UTC.
         self.preferred_backup_time = preferred_backup_time
         # The request ID.
         self.request_id = request_id

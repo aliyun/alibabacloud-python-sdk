@@ -58,7 +58,7 @@ class DescribeHistoryEventsStatResponseBodyItems(DaraModel):
         event_category: str = None,
         total_count: int = None,
     ):
-        # The category of the system event. For example, Exception indicates an exception event.
+        # The system event category. For example, Exception indicates an exception event.
         self.event_category = event_category
         # The number of events in the event category.
         self.total_count = total_count

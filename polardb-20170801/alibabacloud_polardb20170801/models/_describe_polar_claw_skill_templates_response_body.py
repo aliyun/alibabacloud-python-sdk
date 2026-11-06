@@ -28,7 +28,7 @@ class DescribePolarClawSkillTemplatesResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The skill templates.
+        # The skill template group.
         self.skill_templates = skill_templates
         # The total number of entries. This parameter is returned only when you query a list.
         self.total_count = total_count

@@ -10,11 +10,11 @@ class DescribeDataProcessJobAttributeRequest(DaraModel):
         job_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the data processing job to query.
+        # The ID of the data processing task to query.
         # 
         # This parameter is required.
         self.job_id = job_id
-        # The ID of the region where the job is located.
+        # The region ID of the region where the task is located.
         # 
         # This parameter is required.
         self.region_id = region_id

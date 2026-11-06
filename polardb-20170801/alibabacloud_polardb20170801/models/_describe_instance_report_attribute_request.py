@@ -10,7 +10,7 @@ class DescribeInstanceReportAttributeRequest(DaraModel):
         region_id: str = None,
         report_id: str = None,
     ):
-        # The ID of the region where the instance resides.
+        # The region ID of the instance.
         self.region_id = region_id
         # The ID of the instance inspection report to query.
         self.report_id = report_id

@@ -42,7 +42,7 @@ class DescribeApplicationAvailableModelsResponseBody(DaraModel):
         self.default_memory_type = default_memory_type
         # The default reranking model.
         self.default_rerank_model = default_rerank_model
-        # The default vision-language model.
+        # The default visual language model.
         self.default_vlmodel = default_vlmodel
         # The default VisualEmbedder model.
         self.default_visual_embedder_model = default_visual_embedder_model
@@ -62,7 +62,7 @@ class DescribeApplicationAvailableModelsResponseBody(DaraModel):
         self.request_id = request_id
         # The list of available reranking models.
         self.rerank_models = rerank_models
-        # The list of available vision-language models.
+        # The list of available visual language models.
         self.vlmodels = vlmodels
         # The list of available VisualEmbedder models.
         self.visual_embedder_models = visual_embedder_models

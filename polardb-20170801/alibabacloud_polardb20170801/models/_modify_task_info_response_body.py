@@ -18,7 +18,7 @@ class ModifyTaskInfoResponseBody(DaraModel):
         self.error_task_id = error_task_id
         # The request ID.
         self.request_id = request_id
-        # The number of tasks that were successfully updated.
+        # The number of successfully updated tasks.
         self.success_count = success_count
 
     def validate(self):

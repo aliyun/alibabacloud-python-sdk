@@ -13,15 +13,15 @@ class DescribeHistoryEventsStatRequest(DaraModel):
         to_start_time: str = None,
     ):
         # The archive status of the events. Valid values:
-        # - Archived: Archived.
-        # - UnArchived: Unarchived.
-        # - All: All.
+        # - Archived: The events are archived.
+        # - UnArchived: The events are not archived.
+        # - All: All events.
         self.archive_status = archive_status
-        # The start time of the time range for the task start time. Specify the time in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
+        # The start time of the time range for task start times to query, in the YYYY-MM-DDThh:mm:ssZ format (UTC).
         self.from_start_time = from_start_time
         # The ID of the region where the events are located.
         self.region_id = region_id
-        # The end time of the time range for the task start time. Specify the time in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
+        # The end time of the time range for task start times to query, in the YYYY-MM-DDThh:mm:ssZ format (UTC).
         self.to_start_time = to_start_time
 
     def validate(self):

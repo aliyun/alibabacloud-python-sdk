@@ -16,21 +16,21 @@ class DescribeApplicationBackupsRequest(DaraModel):
         region_id: str = None,
         start_time: str = None,
     ):
-        # The application ID.
+        # The ID of the application.
         # 
         # This parameter is required.
         self.application_id = application_id
         # The application type, such as polarclaw.
         self.application_type = application_type
-        # The filter condition for the backup status. A value of Success indicates that the backup is completed, and a value of Failed indicates that the backup failed.
+        # The backup status filter. Valid values: Success: The backup is completed. Failed: The backup failed.
         self.backup_status = backup_status
         # The end time of the query. This parameter is required and cannot be earlier than the start time. Specify the time in the ISO 8601 standard in the YYYY-MM-DDTHH:mmZ format. The time must be in UTC.
         self.end_time = end_time
-        # The page number. The value must be an integer greater than 0 and less than or equal to 2147483647. Default value: 1.
+        # The page number. The value must be a positive integer up to 2147483647. Default value: 1.
         self.page_number = page_number
         # The number of entries to return on each page. Valid values: 30, 50, and 100. Default value: 30.
         self.page_size = page_size
-        # The region ID of the application.
+        # The ID of the region where the application resides.
         self.region_id = region_id
         # The start time of the query. This parameter is required. Specify the time in the ISO 8601 standard in the YYYY-MM-DDTHH:mmZ format. The time must be in UTC and cannot be later than the current time.
         self.start_time = start_time

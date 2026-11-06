@@ -23,9 +23,9 @@ class DescribeAIDBClusterResourceUsageResponseBody(DaraModel):
         self.dbcluster_id = dbcluster_id
         # The database engine of the cluster.
         self.engine = engine
-        # The DPI engine version of the cluster.
+        # The database engine version of the cluster.
         self.engine_version = engine_version
-        # The resource usage information of the nodes in the cluster.
+        # The list of resource usage details for the nodes in the cluster.
         self.node_items = node_items
         # The request ID.
         self.request_id = request_id
@@ -102,25 +102,25 @@ class DescribeAIDBClusterResourceUsageResponseBodyNodeItems(DaraModel):
         pod_items: List[main_models.DescribeAIDBClusterResourceUsageResponseBodyNodeItemsPodItems] = None,
         vnode_id: str = None,
     ):
-        # The total CPU capacity of the node.
+        # The total CPU resources of the node.
         self.cpu = cpu
-        # The used CPU capacity of the node.
+        # The amount of CPU resources used on the node.
         self.cpuused = cpuused
         # The ID of the database node.
         self.dbnode_id = dbnode_id
-        # The total GPU capacity of the node.
+        # The total GPU resources of the node.
         self.gpu = gpu
         # The GPU model of the node.
         self.gpumodel = gpumodel
-        # The used GPU capacity of the node.
+        # The amount of GPU resources used on the node.
         self.gpuused = gpuused
-        # The total memory capacity of the node.
+        # The total memory of the node.
         self.memory = memory
-        # The used memory capacity of the node.
+        # The amount of memory used on the node.
         self.memory_used = memory_used
-        # The resource information of the pods on the node.
+        # The list of resource information for the pods on the node.
         self.pod_items = pod_items
-        # The ID of the virtual node associated with the database node.
+        # The ID of the virtual node corresponding to the database node.
         self.vnode_id = vnode_id
 
     def validate(self):
@@ -223,9 +223,9 @@ class DescribeAIDBClusterResourceUsageResponseBodyNodeItemsPodItems(DaraModel):
         self.name_space = name_space
         # The IP address of the pod.
         self.pod_ip = pod_ip
-        # The requested resources of the pod.
+        # The resource configuration requested by the pod.
         self.resource_request = resource_request
-        # The status of the pod.
+        # The running status of the pod.
         self.status = status
 
     def validate(self):

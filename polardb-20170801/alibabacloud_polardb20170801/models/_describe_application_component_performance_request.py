@@ -29,7 +29,7 @@ class DescribeApplicationComponentPerformanceRequest(DaraModel):
         self.end_time = end_time
         # The sampling granularity of the performance data. Unit: seconds.
         self.interval = interval
-        # The performance metrics to query. Separate multiple metrics with commas (,). You can specify up to 5 metrics.
+        # The performance metrics to query. Separate multiple metrics with commas. You can specify up to 5 metrics.
         # 
         # This parameter is required.
         self.key = key

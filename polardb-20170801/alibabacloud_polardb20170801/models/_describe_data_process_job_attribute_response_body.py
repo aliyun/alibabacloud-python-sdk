@@ -24,7 +24,7 @@ class DescribeDataProcessJobAttributeResponseBody(DaraModel):
         template_id: str = None,
         template_type: str = None,
     ):
-        # The time when the job was created, in RFC 3339 format.
+        # The time when the task was created, in RFC 3339 format.
         self.creation_time = creation_time
         # The JSON string of the destination database connection configuration.
         self.destination_config = destination_config
@@ -32,15 +32,15 @@ class DescribeDataProcessJobAttributeResponseBody(DaraModel):
         self.destination_id = destination_id
         # The name of the destination database.
         self.destination_path = destination_path
-        # The destination type. Currently, only PolarDB is supported.
+        # The type of the destination. Currently, only PolarDB is supported.
         self.destination_type = destination_type
-        # The ID of the data processing job.
+        # The ID of the data processing task.
         self.job_id = job_id
         # The name of the model used for feature extraction.
         self.model_name = model_name
         # The data processing mode. Valid values: Full, Incremental, and Both.
         self.processing_mode = processing_mode
-        # The ID of the region where the data processing job is located.
+        # The region ID of the region where the data processing task is located.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
@@ -48,11 +48,11 @@ class DescribeDataProcessJobAttributeResponseBody(DaraModel):
         self.source_id = source_id
         # The source data path in PolarFS.
         self.source_path = source_path
-        # The data source type. Currently, only PolarFS is supported.
+        # The type of the data source. Currently, only PolarFS is supported.
         self.source_type = source_type
-        # The status of the data processing job.
+        # The status of the data processing task.
         self.status = status
-        # The ID of the template used by the job.
+        # The ID of the template used by the task.
         self.template_id = template_id
         # The node templatetype. Currently, only image is supported.
         self.template_type = template_type

@@ -11,8 +11,11 @@ class CreatePolarClawSkillResponseBody(DaraModel):
         request_id: str = None,
         skill_name: str = None,
     ):
+        # Used for system scheduled task checks. Modifications are not supported for the current scheduled task.
         self.is_update = is_update
+        # The request ID.
         self.request_id = request_id
+        # The name of the skill.
         self.skill_name = skill_name
 
     def validate(self):

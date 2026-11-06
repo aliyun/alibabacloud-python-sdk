@@ -18,19 +18,36 @@ class CreatePolarClawSkillRequest(DaraModel):
         tags: str = None,
         title: str = None,
     ):
+        # The ID of the region where the OSS bucket that stores the skill files resides.
         self.bucket_region_id = bucket_region_id
+        # The type of the bucket used for skill files. UserOwned indicates a user-owned bucket. Hosted indicates a hosted bucket. You must have the required permissions to use a hosted bucket.
         self.bucket_type = bucket_type
+        # The name of the OSS bucket that resides in the same region as the current project.
+        # 
         # This parameter is required.
         self.ossbucket = ossbucket
+        # The prefix of the OSS object. The prefix can contain digits and letters and must be 1 to 30 characters in length.
+        # 
         # This parameter is required.
         self.ossprefix = ossprefix
+        # The ID of the region where the parameter template resides.
+        # 
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query region IDs.
         self.region_id = region_id
+        # The name of the skill.
+        # 
         # This parameter is required.
         self.skill_name = skill_name
+        # The version of the skill.
+        # 
         # This parameter is required.
         self.skill_version = skill_version
+        # The brief description of the skill.
         self.summary = summary
+        # The tag details.
         self.tags = tags
+        # The title.
+        # 
         # This parameter is required.
         self.title = title
 

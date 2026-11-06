@@ -30,7 +30,7 @@ class DescribeInstanceReportAttributeResponseBody(DaraModel):
         self.report_score = report_score
         # The generation status of the inspection report.
         self.report_status = report_status
-        # The check results in the report.
+        # The inspection results for each item in the report.
         self.report_sub_items = report_sub_items
         # The overall summary of the inspection report.
         self.report_summary = report_summary
@@ -123,13 +123,13 @@ class DescribeInstanceReportAttributeResponseBodyReportSubItems(DaraModel):
         skill_name: str = None,
         summary: str = None,
     ):
-        # The risk level of the check item.
+        # The risk level of the inspection item.
         self.risk_level = risk_level
-        # The score of the check item.
+        # The score of the inspection item.
         self.score = score
-        # The name of the inspection skill that generated the check result.
+        # The name of the inspection skill that generated the result.
         self.skill_name = skill_name
-        # The result summary of the check item.
+        # The result summary of the inspection item.
         self.summary = summary
 
     def validate(self):

@@ -16,9 +16,9 @@ class DescribeInspectionTaskListRequest(DaraModel):
         self.page_number = page_number
         # The number of entries to return on each page. Default value: 30.
         self.page_size = page_size
-        # The ID of the region where the task is located.
+        # The region ID of the region where the task is located.
         self.region_id = region_id
-        # The ID of the inspection space used to filter tasks.
+        # The ID of the inspection workspace, which is used to filter tasks.
         self.space_id = space_id
 
     def validate(self):

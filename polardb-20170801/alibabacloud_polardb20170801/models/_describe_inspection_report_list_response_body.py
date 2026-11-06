@@ -19,7 +19,7 @@ class DescribeInspectionReportListResponseBody(DaraModel):
     ):
         # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries returned per page.
         self.page_size = page_size
         # The list of inspection reports.
         self.report_items = report_items
@@ -105,7 +105,7 @@ class DescribeInspectionReportListResponseBodyReportItems(DaraModel):
     ):
         # The ID of the inspected PolarDB cluster.
         self.dbcluster_id = dbcluster_id
-        # Indicates whether this is the latest inspection report. The value is returned as a string.
+        # Indicates whether the inspection report is the latest report. The value is returned as a string.
         self.latest = latest
         # The region ID of the inspected cluster.
         self.region_id = region_id
@@ -222,13 +222,13 @@ class DescribeInspectionReportListResponseBodyReportItemsSubItems(DaraModel):
         normal: int = None,
         warning: int = None,
     ):
-        # The number of check items at the Critical level.
+        # The number of check items at the critical level.
         self.critical = critical
-        # The number of check items at the Info level.
+        # The number of check items at the info level.
         self.info = info
-        # The number of check items at the Normal level.
+        # The number of normal check items.
         self.normal = normal
-        # The number of check items at the Warning level.
+        # The number of check items at the warning level.
         self.warning = warning
 
     def validate(self):

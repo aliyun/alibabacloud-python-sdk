@@ -24,7 +24,7 @@ class DescribeDataProcessJobsResponseBody(DaraModel):
         self.page_record_count = page_record_count
         # The request ID.
         self.request_id = request_id
-        # The total number of jobs that meet the query conditions.
+        # The total number of jobs that match the query conditions.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -104,7 +104,7 @@ class DescribeDataProcessJobsResponseBodyItems(DaraModel):
         self.destination_id = destination_id
         # The name of the destination database.
         self.destination_path = destination_path
-        # The destination type. Currently, only PolarDB is supported.
+        # The type of the destination. Currently, only PolarDB is supported.
         self.destination_type = destination_type
         # The ID of the data processing job.
         self.job_id = job_id

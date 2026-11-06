@@ -11,7 +11,7 @@ class DescribeApplicationBackupPolicyRequest(DaraModel):
         application_type: str = None,
         region_id: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id

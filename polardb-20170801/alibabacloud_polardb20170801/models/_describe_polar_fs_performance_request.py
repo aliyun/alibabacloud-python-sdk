@@ -18,7 +18,7 @@ class DescribePolarFsPerformanceRequest(DaraModel):
         # The cluster ID.
         # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all Data Warehouse Edition clusters in the specified region.
         self.dbcluster_id = dbcluster_id
-        # The end time of the query. Specify the time in the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time must be in UTC and must not be earlier than the start time.
+        # The end time of the query. Specify the time in the YYYY-MM-DDTHH:mm:ssZ format. The time must be in UTC. The end time must not be earlier than the start time.
         # 
         # This parameter is required.
         self.end_time = end_time
@@ -34,7 +34,7 @@ class DescribePolarFsPerformanceRequest(DaraModel):
         self.polar_fs_instance_id = polar_fs_instance_id
         # The region ID.
         self.region_id = region_id
-        # The start time of the query. Specify the time in the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time must be in UTC.
+        # The start time of the query. Specify the time in the YYYY-MM-DDTHH:mm:ssZ format. The time must be in UTC.
         # 
         # This parameter is required.
         self.start_time = start_time

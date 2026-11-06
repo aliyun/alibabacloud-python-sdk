@@ -16,7 +16,7 @@ class DescribeBudgetUsageRequest(DaraModel):
         self.budget_dimension_ref_id = budget_dimension_ref_id
         # The budget dimension type.
         self.budget_dimension_type = budget_dimension_type
-        # The ID of the gateway instance to query.
+        # The ID of the gateway instance.
         self.gw_cluster_id = gw_cluster_id
         # The region ID of the gateway instance.
         self.region_id = region_id

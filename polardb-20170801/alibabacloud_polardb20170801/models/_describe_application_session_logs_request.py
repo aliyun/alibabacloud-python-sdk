@@ -21,7 +21,7 @@ class DescribeApplicationSessionLogsRequest(DaraModel):
         start_time: str = None,
         type: str = None,
     ):
-        # The agent name. This parameter must be specified together with the SessionId parameter, or neither of them is specified.
+        # The agent name. This parameter must be specified together with the SessionId parameter, or neither is specified.
         self.agent = agent
         # The application ID.
         # 
@@ -42,15 +42,15 @@ class DescribeApplicationSessionLogsRequest(DaraModel):
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
-        # The role filter for logs. Valid values: user, assistant, and toolResult.
+        # The role filter for logs. A value of user indicates a user, assistant indicates an assistant, and toolResult indicates a tool execution result.
         self.role = role
-        # The session ID. This parameter must be specified together with the Agent parameter, or neither of them is specified.
+        # The session ID. This parameter must be specified together with the Agent parameter, or neither is specified.
         self.session_id = session_id
         # The start time of the query. Specify the time in the ISO 8601 standard in the YYYY-MM-DDTHH:mmZ format. The time must be in UTC. The start time cannot be later than the current time, and the interval between the start time and the current time cannot exceed 31 days.
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The log type. This API operation only queries session logs. Set the value to session.
+        # The log type. This operation only queries session logs.
         self.type = type
 
     def validate(self):
