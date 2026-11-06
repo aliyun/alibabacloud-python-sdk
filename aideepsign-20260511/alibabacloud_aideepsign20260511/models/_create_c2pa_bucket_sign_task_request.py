@@ -9,6 +9,7 @@ class CreateC2paBucketSignTaskRequest(DaraModel):
         self,
         bucket_name: str = None,
         bucket_region_id: str = None,
+        custom_assertions: str = None,
         software_agent: str = None,
         source_prefix: str = None,
         source_type: str = None,
@@ -17,13 +18,15 @@ class CreateC2paBucketSignTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.bucket_name = bucket_name
-        # The region of the user OSS bucket. It must be consistent with the actual region of the bucket.
+        # The region of the user OSS bucket. It must match the actual region of the bucket.
         # 
         # This parameter is required.
         self.bucket_region_id = bucket_region_id
+        # The JSON string of the custom assertion list.
+        self.custom_assertions = custom_assertions
         # The optional name of the software that generated the content. This parameter is not supported in the current version.
         self.software_agent = software_agent
-        # The source object prefix. It must be `ai-deepsign/` or its subdirectory. The service recursively processes objects under this prefix.
+        # The source object prefix. It must be ai-deepsign/ or its subdirectories. The service recursively processes objects under this prefix.
         # 
         # This parameter is required.
         self.source_prefix = source_prefix
@@ -44,6 +47,9 @@ class CreateC2paBucketSignTaskRequest(DaraModel):
         if self.bucket_region_id is not None:
             result['BucketRegionId'] = self.bucket_region_id
 
+        if self.custom_assertions is not None:
+            result['CustomAssertions'] = self.custom_assertions
+
         if self.software_agent is not None:
             result['SoftwareAgent'] = self.software_agent
 
@@ -62,6 +68,9 @@ class CreateC2paBucketSignTaskRequest(DaraModel):
 
         if m.get('BucketRegionId') is not None:
             self.bucket_region_id = m.get('BucketRegionId')
+
+        if m.get('CustomAssertions') is not None:
+            self.custom_assertions = m.get('CustomAssertions')
 
         if m.get('SoftwareAgent') is not None:
             self.software_agent = m.get('SoftwareAgent')

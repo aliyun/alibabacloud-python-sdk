@@ -27,19 +27,19 @@ class CreateVideoTaskRequest(DaraModel):
         self.audio = audio
         # The idempotency parameter.
         self.client_token = client_token
-        # The video duration in seconds. Valid values: an integer in the range of [2, 30], -1 (intelligent duration), and 0 (the server uses the default value of 5 seconds).
+        # The duration of the video in seconds. Valid values: an integer from 2 to 30, -1 for intelligent duration, and 0 for the server default of 5 seconds.
         self.duration = duration
         # The model name. Valid values: wan3.0-video (default) and wan3.0-video-prime (high-speed version).
         self.model = model
-        # The video description prompt. Either this parameter or Media is required. For pure text-to-video generation, only Prompt is required.
+        # The video description prompt. Either this parameter or Media is required. For text-to-video generation, only Prompt is required.
         self.prompt = prompt
-        # Specifies whether to enable intelligent rewriting (prompt_extend). Default value: true.
+        # Specifies whether to enable intelligent prompt rewriting. Default value: true.
         self.prompt_extend = prompt_extend
-        # The aspect ratio. Valid values: adaptive (default), 16:9, 4:3, 1:1, 3:4, and 9:16.
+        # The aspect ratio of the video. Valid values: adaptive, 16:9, 4:3, 1:1, 3:4, and 9:16. Default value: adaptive.
         self.ratio = ratio
-        # The resolution. Valid values: 1080P (default), 720P, and 480P.
+        # The video resolution. Valid values: 1080P, 720P, and 480P. Default value: 1080P.
         self.resolution = resolution
-        # The random seed. Valid values: -1 (random), an integer in the range of [0, 2147483647], and 0 (the server uses a random seed by default).
+        # The random seed. Valid values: -1 (random) or an integer from 0 to 2147483647. A value of 0 is a valid reproducible seed. If not specified, the server uses a random seed by default.
         self.seed = seed
         # Specifies whether to add a Model Studio watermark. Default value: false.
         self.watermark = watermark
@@ -140,9 +140,9 @@ class CreateVideoTaskRequestMedia(DaraModel):
         type: str = None,
         url: str = None,
     ):
-        # The media type for the first item. Valid values: first_frame, last_frame, reference_image, reference_video, reference_audio, file, and link.
+        # The material type for the first item. Valid values: first_frame, last_frame, reference_image, reference_video, reference_audio, file, and link.
         self.type = type
-        # The media URL for the first item. You can specify a public HTTP or HTTPS URL, a temporary oss:// URL, or inline data in the format of data:{mime};base64,....
+        # The material URL for the first item. The value can be a public HTTP or HTTPS URL, a temporary oss:// URL, or inline data in the data:{mime};base64,... format.
         self.url = url
 
     def validate(self):

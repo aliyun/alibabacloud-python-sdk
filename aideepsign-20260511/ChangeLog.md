@@ -1,3 +1,6 @@
+2026-11-06 Version: 2.0.2
+- Generated python 2026-05-11 for AIDeepSign.
+
 2026-11-03 Version: 2.0.1
 - Update API CreateVideoTask: add request parameters Media.10.Type.
 - Update API CreateVideoTask: add request parameters Media.10.Url.

@@ -16,9 +16,9 @@ class CreateVideoTaskResponseBody(DaraModel):
     ):
         # The return code.
         self.code = code
-        # **HTTP status code**. A value of 200 indicates that the request is successful.
+        # The **HTTP status code**. A value of 200 is returned if the request is successful.
         self.http_status_code = http_status_code
-        # The additional information. A value of success indicates that the request is successful.
+        # The additional information. A value of success is returned if the request is successful.
         self.message = message
         # Id of the request
         self.request_id = request_id
