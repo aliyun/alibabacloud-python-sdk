@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Dict
 
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_pai_dlc20201203 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
@@ -21,6 +22,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'pai-dlc'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'ap-northeast-2-pop': 'pai-dlc.aliyuncs.com',
@@ -2322,6 +2326,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetWebTerminalResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.container_name):
+            query['ContainerName'] = request.container_name
         if not DaraCore.is_null(request.is_shared):
             query['IsShared'] = request.is_shared
         if not DaraCore.is_null(request.pod_uid):
@@ -2356,6 +2362,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetWebTerminalResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.container_name):
+            query['ContainerName'] = request.container_name
         if not DaraCore.is_null(request.is_shared):
             query['IsShared'] = request.is_shared
         if not DaraCore.is_null(request.pod_uid):

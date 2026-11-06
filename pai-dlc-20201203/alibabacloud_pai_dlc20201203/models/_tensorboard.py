@@ -65,7 +65,7 @@ class Tensorboard(DaraModel):
         self.max_running_time_minutes = max_running_time_minutes
         # The memory size in GB.
         self.memory = memory
-        # The extended fields of the dataset in JSON format. Currently, MountPath is supported, which specifies the mount path for a custom dataset.
+        # The extended fields of the dataset in JSON format. Currently, MountPath is supported to specify the mount path for a custom dataset.
         self.options = options
         # The priority of the Tensorboard job.
         self.priority = priority
@@ -99,7 +99,7 @@ class Tensorboard(DaraModel):
         self.user_id = user_id
         # The username of the creator.
         self.username = username
-        # The workspace ID.
+        # The workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

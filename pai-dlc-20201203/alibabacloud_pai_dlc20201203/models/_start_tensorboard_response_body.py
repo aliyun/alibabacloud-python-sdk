@@ -12,7 +12,7 @@ class StartTensorboardResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The Tensorboard ID.
+        # The TensorBoard ID.
         self.tensorboard_id = tensorboard_id
 
     def validate(self):

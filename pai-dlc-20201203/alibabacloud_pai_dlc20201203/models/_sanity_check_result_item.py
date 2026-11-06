@@ -14,17 +14,17 @@ class SanityCheckResultItem(DaraModel):
         started_at: str = None,
         status: str = None,
     ):
-        # The sequence number of the check.
+        # The check number.
         self.check_number = check_number
-        # The end time of the check.
+        # The check end time.
         self.finished_at = finished_at
-        # The details of the check result.
+        # The check result details.
         self.message = message
-        # The phase of the check.
+        # The check phase.
         self.phase = phase
-        # The start time of the check.
+        # The check start time.
         self.started_at = started_at
-        # The status of the check.
+        # The check status.
         self.status = status
 
     def validate(self):

@@ -10,9 +10,9 @@ class GetWebTerminalResponseBody(DaraModel):
         request_id: str = None,
         web_terminal_url: str = None,
     ):
-        # The request ID for this call, used for diagnostics and troubleshooting.
+        # The ID of the request. This ID is used for diagnostics and troubleshooting.
         self.request_id = request_id
-        # The WebSocket link for accessing the container. You need to build a WebSocket client. For the detailed communication format, refer to the following code:
+        # The WebSocket link for accessing the container. You must build a WebSocket client. For the detailed communication format, refer to the following code:
         #   ```
         #   ws = new WebSocket(
         #     `wss://xxxxx`,
@@ -27,7 +27,7 @@ class GetWebTerminalResponseBody(DaraModel):
         #     term.write(\\"Connection closed\\");
         #   };
         # 
-        #   // Receive response from the backend
+        #   // Receive a response from the backend
         #   ws.onmessage = function incoming(event) {
         #     const msg = JSON.parse(event.data);
         #     console.warn(msg);

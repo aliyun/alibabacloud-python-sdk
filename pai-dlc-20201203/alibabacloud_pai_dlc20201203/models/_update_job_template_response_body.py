@@ -19,11 +19,11 @@ class UpdateJobTemplateResponseBody(DaraModel):
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_modify_time = gmt_modify_time
-        # The ID of the request, used for diagnostics and troubleshooting.
+        # The ID of the request, which is used for diagnostics and troubleshooting.
         self.request_id = request_id
         # The version number.
         self.version = version
-        # Indicates whether a new version was created.
+        # Indicates whether a new version is created.
         self.version_created = version_created
 
     def validate(self):

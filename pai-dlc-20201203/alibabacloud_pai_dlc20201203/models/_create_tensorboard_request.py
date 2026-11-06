@@ -53,15 +53,15 @@ class CreateTensorboardRequest(DaraModel):
         self.max_running_time_minutes = max_running_time_minutes
         # The memory size. Unit: GB.
         self.memory = memory
-        # The extension field of custom dataset, in JSON format. Currently, only MountPath is supported, which specifies the custom mount path of custom dataset.
+        # The extended fields of custom dataset in JSON format. Currently, MountPath is supported, which specifies the custom mount path of custom dataset.
         self.options = options
         # The priority of the job. This parameter is optional. Default value: 1. Valid values: 1 to 9.
         # - 1: the lowest priority.
         # - 9: the highest priority.
         self.priority = priority
         # The resource quota ID. This parameter is required when you create a TensorBoard job by using resources from a resource quota. <props="china">For more information about how to obtain the resource quota ID, see [ListQuotas](https://help.aliyun.com/document_detail/2628071.html).
-        # <props="china">Released only on the China site.
-        # Currently, only whitelisted users can create TensorBoard jobs by using resources from a resource quota. To use this feature, contact us.
+        # <props="china">Available only on the China site.
+        # Currently, only whitelisted users can use resource quota resources to create TensorBoard jobs. To use this feature, contact us.
         self.quota_id = quota_id
         # The source ID.
         self.source_id = source_id
@@ -73,9 +73,9 @@ class CreateTensorboardRequest(DaraModel):
         self.summary_relative_path = summary_relative_path
         # The list of dataset configurations mounted to the TensorBoard job.
         self.tensorboard_data_sources = tensorboard_data_sources
-        # The pay-as-you-go configuration information of the TensorBoard instance, which is used to create a TensorBoard job that uses pay-as-you-go resources.
+        # The pay-as-you-go configuration information of TensorBoard, which is used to create a TensorBoard job that uses pay-as-you-go resources.
         self.tensorboard_spec = tensorboard_spec
-        # The URI of the dataset:
+        # The URI of the dataset.
         # - If DataSourceType is set to OSS, the format is `oss://[oss-bucket].[endpoint]/[path]`.
         # - If DataSourceType is set to NAS, the format is `nas://[nas-filesystem-id].[region]/[path]`.
         self.uri = uri

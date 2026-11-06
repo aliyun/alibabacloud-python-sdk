@@ -1,3 +1,7 @@
+2026-11-06 Version: 1.11.8
+- Update API GetWebTerminal: add request parameters ContainerName.
+
+
 2026-10-28 Version: 1.11.7
 - Update API CreateJob: add request parameters body.DryRun.
 

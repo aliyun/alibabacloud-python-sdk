@@ -22,6 +22,7 @@ class JobSettings(DaraModel):
         enable_cpuaffinity: bool = None,
         enable_dswdev: bool = None,
         enable_error_monitoring_in_aimaster: bool = None,
+        enable_intra_job_ssh: bool = None,
         enable_oss_append: bool = None,
         enable_rdma: bool = None,
         enable_sanity_check: bool = None,
@@ -39,9 +40,9 @@ class JobSettings(DaraModel):
     ):
         # The additional advanced parameter settings.
         self.advanced_settings = advanced_settings
-        # Specifies whether to allocate all RDMA NICs.
+        # Specifies whether to mount all RDMA NICs.
         self.allocate_all_rdmadevices = allocate_all_rdmadevices
-        # Specifies whether to allow jobs to be scheduled to nodes that are marked as unschedulable or are in the workspace blacklist. If enabled, node status checks are skipped and the corresponding bypass configurations are applied.
+        # Specifies whether to allow the job to be scheduled to nodes that are marked as unschedulable or included in the workspace blacklist. If enabled, node status checks are skipped and corresponding bypass configurations are applied.
         self.allow_unschedulable_nodes = allow_unschedulable_nodes
         # The ID of the user associated with the job.
         self.business_user_id = business_user_id
@@ -49,7 +50,7 @@ class JobSettings(DaraModel):
         self.caller = caller
         # The DataJuicer job configuration.
         self.data_juicer_config = data_juicer_config
-        # Specifies whether to skip the ECS inventory check. Valid values:
+        # Specifies whether to skip the inventory check. Valid values:
         # - true
         # - false
         self.disable_ecs_stock_check = disable_ecs_stock_check
@@ -57,7 +58,7 @@ class JobSettings(DaraModel):
         self.driver = driver
         # The maximum number of restarts for an elastic spot job.
         self.elastic_spot_job_max_restart_times = elastic_spot_job_max_restart_times
-        # The CPU affinity settings. These settings take effect only when general-purpose computing subscription resources are used.
+        # The CPU affinity settings. This setting takes effect only when general-purpose computing subscription resources are used.
         self.enable_cpuaffinity = enable_cpuaffinity
         # Specifies whether to enable the DSW development mode for the job. If enabled, a sidecar container is injected into the pod.
         self.enable_dswdev = enable_dswdev
@@ -65,7 +66,11 @@ class JobSettings(DaraModel):
         # - true
         # - false
         self.enable_error_monitoring_in_aimaster = enable_error_monitoring_in_aimaster
-        # Specifies whether to allow OSS append writes. Valid values:
+        # Specifies whether to allow job nodes to communicate with each other over SSH. The image must have SSHD built-in. This parameter takes effect only for PyTorch jobs that use self-managed computing resources. Valid values:
+        # - true
+        # - false
+        self.enable_intra_job_ssh = enable_intra_job_ssh
+        # Specifies whether to allow OSS append operations. Valid values:
         # - true
         # - false
         self.enable_oss_append = enable_oss_append
@@ -73,15 +78,15 @@ class JobSettings(DaraModel):
         # - true
         # - false
         self.enable_rdma = enable_rdma
-        # Specifies whether to enable computing power health checks for the job. Valid values:
+        # Specifies whether to enable the computing power health check for the job. Valid values:
         # - true
         # - false
         self.enable_sanity_check = enable_sanity_check
-        # Specifies whether to allow the job to use tide resources. Valid values:
+        # Specifies whether to allow the job to use tidal resources. Valid values:
         # - true
         # - false
         self.enable_tide_resource = enable_tide_resource
-        # The configuration parameters for fault tolerance monitoring when it is enabled, such as specifying whether to enable log hang-based detection.
+        # The configuration parameters for fault tolerance monitoring after it is enabled, such as specifying whether to enable log hang-based detection.
         self.error_monitoring_args = error_monitoring_args
         # The retention duration after the job ends, in minutes.
         self.job_reserved_minutes = job_reserved_minutes
@@ -91,11 +96,11 @@ class JobSettings(DaraModel):
         self.model_config = model_config
         # The oversold resource usage mode for the job, which can be not accepted, accepted, or only accepted.
         self.oversold_type = oversold_type
-        # The workflow ID.
+        # The pipeline ID.
         self.pipeline_id = pipeline_id
-        # The configuration parameters for computing power health checks.
+        # The configuration parameters for the computing power health check.
         self.sanity_check_args = sanity_check_args
-        # The shell used to execute job commands. Valid values: /bin/sh and /bin/bash.
+        # The shell used to execute job commands, such as /bin/sh or /bin/bash.
         self.shell = shell
         # The custom tags.
         self.tags = tags
@@ -148,6 +153,9 @@ class JobSettings(DaraModel):
 
         if self.enable_error_monitoring_in_aimaster is not None:
             result['EnableErrorMonitoringInAIMaster'] = self.enable_error_monitoring_in_aimaster
+
+        if self.enable_intra_job_ssh is not None:
+            result['EnableIntraJobSSH'] = self.enable_intra_job_ssh
 
         if self.enable_oss_append is not None:
             result['EnableOssAppend'] = self.enable_oss_append
@@ -231,6 +239,9 @@ class JobSettings(DaraModel):
 
         if m.get('EnableErrorMonitoringInAIMaster') is not None:
             self.enable_error_monitoring_in_aimaster = m.get('EnableErrorMonitoringInAIMaster')
+
+        if m.get('EnableIntraJobSSH') is not None:
+            self.enable_intra_job_ssh = m.get('EnableIntraJobSSH')
 
         if m.get('EnableOssAppend') is not None:
             self.enable_oss_append = m.get('EnableOssAppend')
