@@ -17,11 +17,11 @@ class DescribeJVSInstanceResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The returned result object.
+        # The response object.
         self.data = data
-        # The maximum number of results returned in the current request.
+        # The maximum number of data entries returned in the current request.
         self.max_results = max_results
-        # The token that specifies the starting position for the query. An empty value indicates that the query starts from the beginning.
+        # The token that specifies the starting position for the current query. If this parameter is left empty, the query starts from the beginning.
         self.next_token = next_token
         # The number of pending upgrades.
         self.pending_upgrade_count = pending_upgrade_count
@@ -97,6 +97,7 @@ class DescribeJVSInstanceResponseBodyData(DaraModel):
         expire_time: str = None,
         installed_skills: List[main_models.DescribeJVSInstanceResponseBodyDataInstalledSkills] = None,
         instance_id: str = None,
+        instance_name: str = None,
         jvs_package_id: str = None,
         modify_time: str = None,
         status: str = None,
@@ -104,19 +105,21 @@ class DescribeJVSInstanceResponseBodyData(DaraModel):
     ):
         # The AI Engine version and upgrade status.
         self.agent_version = agent_version
-        # The creation time. The time is displayed in UTC and follows the ISO 8601 standard.
+        # The creation time. The time is in UTC and follows the ISO 8601 standard.
         self.create_time = create_time
-        # The credit limit configuration. Subsequent quota configurations overwrite previous configurations.
+        # The credit limit configuration. Subsequent quota configurations overwrite previous ones.
         self.credit_config = credit_config
-        # The expiration time. The time is displayed in UTC and follows the ISO 8601 standard.
+        # The expiration time. The time is in UTC and follows the ISO 8601 standard.
         self.expire_time = expire_time
         # The list of skills installed on the instance.
         self.installed_skills = installed_skills
         # The instance ID.
         self.instance_id = instance_id
+        # The instance name.
+        self.instance_name = instance_name
         # This parameter is not supported.
         self.jvs_package_id = jvs_package_id
-        # The modification time. The time is displayed in UTC and follows the ISO 8601 standard.
+        # The modification time. The time is in UTC and follows the ISO 8601 standard.
         self.modify_time = modify_time
         # The instance status.
         self.status = status
@@ -166,6 +169,9 @@ class DescribeJVSInstanceResponseBodyData(DaraModel):
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+
         if self.jvs_package_id is not None:
             result['JvsPackageId'] = self.jvs_package_id
 
@@ -209,6 +215,9 @@ class DescribeJVSInstanceResponseBodyData(DaraModel):
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
 
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+
         if m.get('JvsPackageId') is not None:
             self.jvs_package_id = m.get('JvsPackageId')
 
@@ -234,7 +243,7 @@ class DescribeJVSInstanceResponseBodyDataUsedCredit(DaraModel):
     ):
         # The credit amount.
         self.credit = credit
-        # The dimension of the current credit.
+        # The period of the current credit.
         self.limit_period = limit_period
 
     def validate(self):
@@ -344,7 +353,7 @@ class DescribeJVSInstanceResponseBodyDataCreditConfig(DaraModel):
     ):
         # The credit limit.
         self.credit_limit = credit_limit
-        # The credit limit period.
+        # The limit period.
         self.limit_period = limit_period
 
     def validate(self):

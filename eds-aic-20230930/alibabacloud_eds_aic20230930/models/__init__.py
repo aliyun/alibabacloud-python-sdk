@@ -430,6 +430,7 @@ from ._activate_edge_mobile_agent_response_body import ActivateEdgeMobileAgentRe
 from ._attach_key_pair_response_body import AttachKeyPairResponseBodyData
 from ._backup_android_instance_response_body import BackupAndroidInstanceResponseBodyData
 from ._backup_app_response_body import BackupAppResponseBodyData
+from ._backup_file_request import BackupFileRequestCustomScripts
 from ._backup_file_response_body import BackupFileResponseBodyData
 from ._batch_get_acp_connection_ticket_request import BatchGetAcpConnectionTicketRequestInstanceTasks
 from ._batch_get_acp_connection_ticket_response_body import BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels
@@ -600,6 +601,7 @@ from ._reboot_android_instances_in_group_response_body import RebootAndroidInsta
 from ._reboot_android_instances_in_group_response_body import RebootAndroidInstancesInGroupResponseBodyTasks
 from ._recover_android_instance_response_body import RecoverAndroidInstanceResponseBodyData
 from ._recover_app_response_body import RecoverAppResponseBodyData
+from ._recovery_file_request import RecoveryFileRequestCustomScripts
 from ._recovery_file_response_body import RecoveryFileResponseBodyData
 from ._refresh_auth_tokens_response_body import RefreshAuthTokensResponseBodyDataTokens
 from ._refresh_auth_tokens_response_body import RefreshAuthTokensResponseBodyData
@@ -1051,6 +1053,7 @@ __all__ = [
     AttachKeyPairResponseBodyData,
     BackupAndroidInstanceResponseBodyData,
     BackupAppResponseBodyData,
+    BackupFileRequestCustomScripts,
     BackupFileResponseBodyData,
     BatchGetAcpConnectionTicketRequestInstanceTasks,
     BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels,
@@ -1221,6 +1224,7 @@ __all__ = [
     RebootAndroidInstancesInGroupResponseBodyTasks,
     RecoverAndroidInstanceResponseBodyData,
     RecoverAppResponseBodyData,
+    RecoveryFileRequestCustomScripts,
     RecoveryFileResponseBodyData,
     RefreshAuthTokensResponseBodyDataTokens,
     RefreshAuthTokensResponseBodyData,
