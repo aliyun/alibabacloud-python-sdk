@@ -77,21 +77,26 @@ class DescribeKubernetesVersionMetadataResponseBody(DaraModel):
         self.capabilities = capabilities
         # Indicates whether the Kubernetes version can be created.
         self.creatable = creatable
-        # The expiration time of the Kubernetes version. The time is in ISO 8601 format and includes time zone information.
+        # The expiration time of the Kubernetes version, in ISO 8601 format with time zone information.
         self.expiration_date = expiration_date
+        # The expiration time of the extended support for the Kubernetes version. An empty value indicates that extended support is not provided for this version.
         self.extended_expiration_date = extended_expiration_date
         # The list of system images.
         self.images = images
-        # The metadata of the Kubernetes version.
+        # The metadata information of the Kubernetes version.
         self.meta_data = meta_data
-        # The release time of the Kubernetes version. The time is in ISO 8601 format and includes time zone information.
+        # The release time of the Kubernetes version, in ISO 8601 format with time zone information.
         self.release_date = release_date
         # The container runtime configurations.
         self.runtimes = runtimes
+        # The support policy required to obtain this patch version. The value is case-sensitive. Valid values:
+        # - Standard: regular patch versions
+        # - Extended: patch versions exclusive to the extended support period, which include backported CVE and critical bug fixes. Only clusters with extended support enabled can be upgraded to these versions.
+        # This field always has a value. It shares the same name and value range as the support_policy of the cluster. You can directly compare the policy enabled for the cluster with the policy required for this version.
         self.support_policy = support_policy
         # The list of upgradable versions.
         self.upgradable_versions = upgradable_versions
-        # The Kubernetes version released by ACK. For more information about versions, see [Overview of Kubernetes version releases](https://help.aliyun.com/document_detail/185269.html).
+        # The Kubernetes version released by ACK. For more version information, see [Kubernetes version release overview](https://help.aliyun.com/document_detail/185269.html).
         self.version = version
 
     def validate(self):
@@ -203,21 +208,19 @@ class DescribeKubernetesVersionMetadataResponseBodyImages(DaraModel):
         os_version: str = None,
         platform: str = None,
     ):
-        # The image architecture.
+        # The architecture of the image.
         self.architecture = architecture
-        # The image category. Some valid values:
-        # 
-        # - `system`: public images.
-        # - `self`: your custom images.
-        # - `others`: public images from other users.
-        # - `marketplace`: Alibaba Cloud Marketplace images.
+        # The category of the image. Valid values:
+        # - `system`: public images
+        # - `self`: custom images
+        # - `others`: public images from other users
+        # - `marketplace`: marketplace images
         self.image_category = image_category
-        # The image ID.
+        # The ID of the image.
         self.image_id = image_id
-        # The image name.
+        # The name of the image.
         self.image_name = image_name
-        # The operating system distribution type. Use this field to specify the operating system for nodes. Valid values:
-        # 
+        # The operating system distribution type. Use this field to specify the node operating system. Valid values:
         # - `CentOS`
         # - `AliyunLinux`
         # - `AliyunLinux Qboot`
@@ -228,8 +231,7 @@ class DescribeKubernetesVersionMetadataResponseBodyImages(DaraModel):
         # - `AliyunLinux3Arm64`
         # - `ContainerOS`
         self.image_type = image_type
-        # The operating system type. Examples:
-        # 
+        # The operating system type. Valid values:
         # - `Windows`
         # - `Linux`
         self.os_type = os_type

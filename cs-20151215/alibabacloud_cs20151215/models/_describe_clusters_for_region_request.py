@@ -17,34 +17,34 @@ class DescribeClustersForRegionRequest(DaraModel):
     ):
         # The cluster ID.
         self.cluster_id = cluster_id
-        # Specifies the cluster specification. Valid values:
+        # The cluster specification. Valid values:
         # 
-        # - `ack.standard`: Basic edition.
-        # - `ack.pro.small`: Pro edition.
-        # - `ack.pro.xlarge`: Pro XL.
-        # - `ack.pro.2xlarge`: Pro 2XL.
-        # - `ack.pro.4xlarge`: Pro 4XL (requires whitelist approval from customer service).
+        # - `ack.standard`: Basic
+        # - `ack.pro.small`: Pro
+        # - `ack.pro.xlarge`: Pro XL
+        # - `ack.pro.2xlarge`: Pro 2XL
+        # - `ack.pro.4xlarge`: Pro 4XL (requires contacting customer service to apply for whitelist access)
         # 
-        # Pro XL, Pro 2XL, and Pro 4XL are the three tiers provided by <props="china">[ACK Pro provisioned control plane](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane)<props="intl">[ACK Pro provisioned control plane](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane). By pre-allocating and dedicating control plane resources, these tiers ensure that API concurrency and pod scheduling capabilities remain consistently at a high level. They are suitable for AI training and inference, ultra-large-scale clusters, and mission-critical workloads.
+        # Pro XL, Pro 2XL, and Pro 4XL are the three tiers provided by the <props="china">[ACK Pro provisioned control plane](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane)<props="intl">[ACK Pro provisioned control plane](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane). By pre-allocating and dedicating control plane resources, these tiers ensure that API concurrency and pod scheduling capabilities remain at a consistently high level. They are suitable for AI training and inference, ultra-large-scale clusters, and mission-critical workloads.
         # 
-        # For cluster management fees of the Pro edition and provisioned control plane editions, refer to <props="china">[Cluster management fees](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee)<props="intl">[Cluster management fees](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee).
+        # For the cluster management fees of the Pro edition and provisioned control plane editions, see <props="china">[Cluster management fees](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee)<props="intl">[Cluster management fees](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee).
         self.cluster_spec = cluster_spec
-        # Specifies the cluster type. Valid values:
-        # - Kubernetes: ACK dedicated clusters.
+        # The cluster type. Valid values:
+        # - Kubernetes: ACK dedicated cluster.
         # - ManagedKubernetes: ACK managed clusters, including ACK managed clusters (ACK Pro and ACK Basic), ACK Serverless clusters (Pro and Basic), ACK Edge clusters (Pro and Basic), and ACK Lingjun clusters (Pro).
-        # - ExternalKubernetes: registered clusters.
+        # - ExternalKubernetes: registered cluster.
         self.cluster_type = cluster_type
-        # Specifies the cluster name for fuzzy match.
+        # The cluster name for fuzzy match.
         self.name = name
         # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # Specifies the cluster subtype. Valid values:
+        # The cluster profile used to query clusters of a specified subtype. Valid values:
         # - Default: ACK managed clusters, including ACK Pro and ACK Basic.
         # - Edge: ACK Edge clusters, including ACK Edge Pro and ACK Edge Basic.
         # - Serverless: ACK Serverless clusters, including ACK Serverless Pro and ACK Serverless Basic.
-        # - LingJun: ACK Lingjun clusters, available only in Pro edition.
+        # - LingJun: ACK Lingjun clusters, available in the Pro edition.
         self.profile = profile
 
     def validate(self):

@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Dict
 
 from alibabacloud_cs20151215 import models as main_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -21,6 +22,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'CS'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'ap-northeast-2-pop': 'cs.aliyuncs.com',
@@ -2786,6 +2790,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.drain_node):
             body['drain_node'] = request.drain_node
+        if not DaraCore.is_null(request.drain_timeout_seconds):
+            body['drain_timeout_seconds'] = request.drain_timeout_seconds
         if not DaraCore.is_null(request.nodes):
             body['nodes'] = request.nodes
         if not DaraCore.is_null(request.release_node):
@@ -2821,6 +2827,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.drain_node):
             body['drain_node'] = request.drain_node
+        if not DaraCore.is_null(request.drain_timeout_seconds):
+            body['drain_timeout_seconds'] = request.drain_timeout_seconds
         if not DaraCore.is_null(request.nodes):
             body['nodes'] = request.nodes
         if not DaraCore.is_null(request.release_node):
@@ -10321,6 +10329,8 @@ class Client(OpenApiClient):
             query['concurrency'] = request.concurrency
         if not DaraCore.is_null(request.drain_node):
             query['drain_node'] = request.drain_node
+        if not DaraCore.is_null(request.drain_timeout_seconds):
+            query['drain_timeout_seconds'] = request.drain_timeout_seconds
         if not DaraCore.is_null(request.instance_ids_shrink):
             query['instance_ids'] = request.instance_ids_shrink
         if not DaraCore.is_null(request.nodes_shrink):
@@ -10367,6 +10377,8 @@ class Client(OpenApiClient):
             query['concurrency'] = request.concurrency
         if not DaraCore.is_null(request.drain_node):
             query['drain_node'] = request.drain_node
+        if not DaraCore.is_null(request.drain_timeout_seconds):
+            query['drain_timeout_seconds'] = request.drain_timeout_seconds
         if not DaraCore.is_null(request.instance_ids_shrink):
             query['instance_ids'] = request.instance_ids_shrink
         if not DaraCore.is_null(request.nodes_shrink):

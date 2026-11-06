@@ -11,12 +11,13 @@ class UpdateClusterAuditLogConfigRequest(DaraModel):
         sls_project_name: str = None,
     ):
         # Specifies whether to disable the cluster audit log feature. Valid values:
-        # - false: enables the audit log feature or updates the audit log configurations.
+        # - false: enables the audit log feature or updates the audit log configuration.
+        # 
         # - true: disables the audit log feature.
         self.disable = disable
-        # The [SLS project](https://help.aliyun.com/document_detail/48873.html) where the [Logstore](https://help.aliyun.com/document_detail/48874.html) for cluster audit logs is located.
+        # The [SLS project](https://help.aliyun.com/document_detail/48873.html) where the [Logstore](https://help.aliyun.com/document_detail/48874.html) for cluster audit logs is stored.
         # 
-        # - The default value is k8s-log-{clusterid}.
+        # - Default value: k8s-log-{clusterid}.
         # 
         # - After you enable the cluster audit log feature, a Logstore for cluster audit logs is created in the specified SLS project.
         # 

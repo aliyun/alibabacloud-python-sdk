@@ -1,3 +1,8 @@
+2026-11-06 Version: 7.2.6
+- Update API DeleteClusterNodes: add request parameters body.drain_timeout_seconds.
+- Update API RemoveNodePoolNodes: add request parameters drain_timeout_seconds.
+
+
 2026-11-04 Version: 7.2.5
 - Update API CreateCluster: add request parameters body.support_policy.
 - Update API DescribeClusterDetail: add response parameters Body.support_policy.
