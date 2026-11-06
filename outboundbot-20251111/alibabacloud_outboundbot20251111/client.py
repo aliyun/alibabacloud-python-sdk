@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Dict
 
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_outboundbot20251111 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
@@ -20,6 +21,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'OutboundBot'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('outboundbot', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -694,6 +698,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_instance_with_options_async(request, runtime)
 
+    def create_llm_access_profile_with_options(
+        self,
+        tmp_req: main_models.CreateLlmAccessProfileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateLlmAccessProfileResponse:
+        tmp_req.validate()
+        request = main_models.CreateLlmAccessProfileShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.profile):
+            request.profile_shrink = Utils.array_to_string_with_specified_style(tmp_req.profile, 'Profile', 'json')
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.profile_shrink):
+            body['Profile'] = request.profile_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateLlmAccessProfile',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateLlmAccessProfileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_llm_access_profile_with_options_async(
+        self,
+        tmp_req: main_models.CreateLlmAccessProfileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateLlmAccessProfileResponse:
+        tmp_req.validate()
+        request = main_models.CreateLlmAccessProfileShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.profile):
+            request.profile_shrink = Utils.array_to_string_with_specified_style(tmp_req.profile, 'Profile', 'json')
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.profile_shrink):
+            body['Profile'] = request.profile_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateLlmAccessProfile',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateLlmAccessProfileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_llm_access_profile(
+        self,
+        request: main_models.CreateLlmAccessProfileRequest,
+    ) -> main_models.CreateLlmAccessProfileResponse:
+        runtime = RuntimeOptions()
+        return self.create_llm_access_profile_with_options(request, runtime)
+
+    async def create_llm_access_profile_async(
+        self,
+        request: main_models.CreateLlmAccessProfileRequest,
+    ) -> main_models.CreateLlmAccessProfileResponse:
+        runtime = RuntimeOptions()
+        return await self.create_llm_access_profile_with_options_async(request, runtime)
+
     def create_outbound_call_restriction_with_options(
         self,
         tmp_req: main_models.CreateOutboundCallRestrictionRequest,
@@ -1144,6 +1230,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_clone_voice_with_options_async(request, runtime)
 
+    def delete_corp_number_with_options(
+        self,
+        request: main_models.DeleteCorpNumberRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCorpNumberResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.force):
+            body['Force'] = request.force
+        if not DaraCore.is_null(request.number):
+            body['Number'] = request.number
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCorpNumber',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCorpNumberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_corp_number_with_options_async(
+        self,
+        request: main_models.DeleteCorpNumberRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCorpNumberResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.force):
+            body['Force'] = request.force
+        if not DaraCore.is_null(request.number):
+            body['Number'] = request.number
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCorpNumber',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCorpNumberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_corp_number(
+        self,
+        request: main_models.DeleteCorpNumberRequest,
+    ) -> main_models.DeleteCorpNumberResponse:
+        runtime = RuntimeOptions()
+        return self.delete_corp_number_with_options(request, runtime)
+
+    async def delete_corp_number_async(
+        self,
+        request: main_models.DeleteCorpNumberRequest,
+    ) -> main_models.DeleteCorpNumberResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_corp_number_with_options_async(request, runtime)
+
     def delete_flash_sms_access_profile_with_options(
         self,
         request: main_models.DeleteFlashSmsAccessProfileRequest,
@@ -1287,6 +1451,170 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteInstanceResponse:
         runtime = RuntimeOptions()
         return await self.delete_instance_with_options_async(request, runtime)
+
+    def delete_llm_access_profile_with_options(
+        self,
+        request: main_models.DeleteLlmAccessProfileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteLlmAccessProfileResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.access_profile_id):
+            body['AccessProfileId'] = request.access_profile_id
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteLlmAccessProfile',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteLlmAccessProfileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_llm_access_profile_with_options_async(
+        self,
+        request: main_models.DeleteLlmAccessProfileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteLlmAccessProfileResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.access_profile_id):
+            body['AccessProfileId'] = request.access_profile_id
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteLlmAccessProfile',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteLlmAccessProfileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_llm_access_profile(
+        self,
+        request: main_models.DeleteLlmAccessProfileRequest,
+    ) -> main_models.DeleteLlmAccessProfileResponse:
+        runtime = RuntimeOptions()
+        return self.delete_llm_access_profile_with_options(request, runtime)
+
+    async def delete_llm_access_profile_async(
+        self,
+        request: main_models.DeleteLlmAccessProfileRequest,
+    ) -> main_models.DeleteLlmAccessProfileResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_llm_access_profile_with_options_async(request, runtime)
+
+    def delete_numbers_with_options(
+        self,
+        tmp_req: main_models.DeleteNumbersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteNumbersResponse:
+        tmp_req.validate()
+        request = main_models.DeleteNumbersShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.numbers):
+            request.numbers_shrink = Utils.array_to_string_with_specified_style(tmp_req.numbers, 'Numbers', 'json')
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        body = {}
+        if not DaraCore.is_null(request.numbers_shrink):
+            body['Numbers'] = request.numbers_shrink
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteNumbers',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteNumbersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_numbers_with_options_async(
+        self,
+        tmp_req: main_models.DeleteNumbersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteNumbersResponse:
+        tmp_req.validate()
+        request = main_models.DeleteNumbersShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.numbers):
+            request.numbers_shrink = Utils.array_to_string_with_specified_style(tmp_req.numbers, 'Numbers', 'json')
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        body = {}
+        if not DaraCore.is_null(request.numbers_shrink):
+            body['Numbers'] = request.numbers_shrink
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteNumbers',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteNumbersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_numbers(
+        self,
+        request: main_models.DeleteNumbersRequest,
+    ) -> main_models.DeleteNumbersResponse:
+        runtime = RuntimeOptions()
+        return self.delete_numbers_with_options(request, runtime)
+
+    async def delete_numbers_async(
+        self,
+        request: main_models.DeleteNumbersRequest,
+    ) -> main_models.DeleteNumbersResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_numbers_with_options_async(request, runtime)
 
     def delete_outbound_call_restriction_with_options(
         self,
@@ -2106,6 +2434,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_subscription_with_options_async(request, runtime)
 
+    def list_asr_models_with_options(
+        self,
+        request: main_models.ListAsrModelsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAsrModelsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAsrModels',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAsrModelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_asr_models_with_options_async(
+        self,
+        request: main_models.ListAsrModelsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAsrModelsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAsrModels',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAsrModelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_asr_models(
+        self,
+        request: main_models.ListAsrModelsRequest,
+    ) -> main_models.ListAsrModelsResponse:
+        runtime = RuntimeOptions()
+        return self.list_asr_models_with_options(request, runtime)
+
+    async def list_asr_models_async(
+        self,
+        request: main_models.ListAsrModelsRequest,
+    ) -> main_models.ListAsrModelsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_asr_models_with_options_async(request, runtime)
+
     def list_campaigns_with_options(
         self,
         request: main_models.ListCampaignsRequest,
@@ -2550,6 +2948,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_clone_voices_with_options_async(request, runtime)
 
+    def list_corp_numbers_with_options(
+        self,
+        request: main_models.ListCorpNumbersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCorpNumbersResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.number):
+            body['Number'] = request.number
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.sip_trunk_id):
+            body['SipTrunkId'] = request.sip_trunk_id
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCorpNumbers',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCorpNumbersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_corp_numbers_with_options_async(
+        self,
+        request: main_models.ListCorpNumbersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCorpNumbersResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.number):
+            body['Number'] = request.number
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.sip_trunk_id):
+            body['SipTrunkId'] = request.sip_trunk_id
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCorpNumbers',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCorpNumbersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_corp_numbers(
+        self,
+        request: main_models.ListCorpNumbersRequest,
+    ) -> main_models.ListCorpNumbersResponse:
+        runtime = RuntimeOptions()
+        return self.list_corp_numbers_with_options(request, runtime)
+
+    async def list_corp_numbers_async(
+        self,
+        request: main_models.ListCorpNumbersRequest,
+    ) -> main_models.ListCorpNumbersResponse:
+        runtime = RuntimeOptions()
+        return await self.list_corp_numbers_with_options_async(request, runtime)
+
     def list_flash_sms_access_profiles_with_options(
         self,
         request: main_models.ListFlashSmsAccessProfilesRequest,
@@ -2780,6 +3264,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_flash_sms_templates_with_options_async(request, runtime)
 
+    def list_instance_bindings_of_number_with_options(
+        self,
+        request: main_models.ListInstanceBindingsOfNumberRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstanceBindingsOfNumberResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.number):
+            body['Number'] = request.number
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInstanceBindingsOfNumber',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInstanceBindingsOfNumberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_instance_bindings_of_number_with_options_async(
+        self,
+        request: main_models.ListInstanceBindingsOfNumberRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstanceBindingsOfNumberResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.number):
+            body['Number'] = request.number
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInstanceBindingsOfNumber',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInstanceBindingsOfNumberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_instance_bindings_of_number(
+        self,
+        request: main_models.ListInstanceBindingsOfNumberRequest,
+    ) -> main_models.ListInstanceBindingsOfNumberResponse:
+        runtime = RuntimeOptions()
+        return self.list_instance_bindings_of_number_with_options(request, runtime)
+
+    async def list_instance_bindings_of_number_async(
+        self,
+        request: main_models.ListInstanceBindingsOfNumberRequest,
+    ) -> main_models.ListInstanceBindingsOfNumberResponse:
+        runtime = RuntimeOptions()
+        return await self.list_instance_bindings_of_number_with_options_async(request, runtime)
+
     def list_instances_with_options(
         self,
         request: main_models.ListInstancesRequest,
@@ -2857,6 +3415,248 @@ class Client(OpenApiClient):
     ) -> main_models.ListInstancesResponse:
         runtime = RuntimeOptions()
         return await self.list_instances_with_options_async(request, runtime)
+
+    def list_llm_access_profiles_with_options(
+        self,
+        request: main_models.ListLlmAccessProfilesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListLlmAccessProfilesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListLlmAccessProfiles',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListLlmAccessProfilesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_llm_access_profiles_with_options_async(
+        self,
+        request: main_models.ListLlmAccessProfilesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListLlmAccessProfilesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListLlmAccessProfiles',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListLlmAccessProfilesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_llm_access_profiles(
+        self,
+        request: main_models.ListLlmAccessProfilesRequest,
+    ) -> main_models.ListLlmAccessProfilesResponse:
+        runtime = RuntimeOptions()
+        return self.list_llm_access_profiles_with_options(request, runtime)
+
+    async def list_llm_access_profiles_async(
+        self,
+        request: main_models.ListLlmAccessProfilesRequest,
+    ) -> main_models.ListLlmAccessProfilesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_llm_access_profiles_with_options_async(request, runtime)
+
+    def list_number_bindings_of_instance_with_options(
+        self,
+        request: main_models.ListNumberBindingsOfInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListNumberBindingsOfInstanceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListNumberBindingsOfInstance',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListNumberBindingsOfInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_number_bindings_of_instance_with_options_async(
+        self,
+        request: main_models.ListNumberBindingsOfInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListNumberBindingsOfInstanceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListNumberBindingsOfInstance',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListNumberBindingsOfInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_number_bindings_of_instance(
+        self,
+        request: main_models.ListNumberBindingsOfInstanceRequest,
+    ) -> main_models.ListNumberBindingsOfInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.list_number_bindings_of_instance_with_options(request, runtime)
+
+    async def list_number_bindings_of_instance_async(
+        self,
+        request: main_models.ListNumberBindingsOfInstanceRequest,
+    ) -> main_models.ListNumberBindingsOfInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.list_number_bindings_of_instance_with_options_async(request, runtime)
+
+    def list_numbers_with_options(
+        self,
+        request: main_models.ListNumbersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListNumbersResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.number):
+            body['Number'] = request.number
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.sip_trunk_id):
+            body['SipTrunkId'] = request.sip_trunk_id
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListNumbers',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListNumbersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_numbers_with_options_async(
+        self,
+        request: main_models.ListNumbersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListNumbersResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.number):
+            body['Number'] = request.number
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.sip_trunk_id):
+            body['SipTrunkId'] = request.sip_trunk_id
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListNumbers',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListNumbersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_numbers(
+        self,
+        request: main_models.ListNumbersRequest,
+    ) -> main_models.ListNumbersResponse:
+        runtime = RuntimeOptions()
+        return self.list_numbers_with_options(request, runtime)
+
+    async def list_numbers_async(
+        self,
+        request: main_models.ListNumbersRequest,
+    ) -> main_models.ListNumbersResponse:
+        runtime = RuntimeOptions()
+        return await self.list_numbers_with_options_async(request, runtime)
 
     def list_outbound_call_restrictions_with_options(
         self,
@@ -3899,6 +4699,264 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateInstanceResponse:
         runtime = RuntimeOptions()
         return await self.update_instance_with_options_async(request, runtime)
+
+    def update_instance_bindings_of_number_with_options(
+        self,
+        tmp_req: main_models.UpdateInstanceBindingsOfNumberRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateInstanceBindingsOfNumberResponse:
+        tmp_req.validate()
+        request = main_models.UpdateInstanceBindingsOfNumberShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.instance_ids):
+            request.instance_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.instance_ids_shrink):
+            body['InstanceIds'] = request.instance_ids_shrink
+        if not DaraCore.is_null(request.number):
+            body['Number'] = request.number
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateInstanceBindingsOfNumber',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateInstanceBindingsOfNumberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_instance_bindings_of_number_with_options_async(
+        self,
+        tmp_req: main_models.UpdateInstanceBindingsOfNumberRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateInstanceBindingsOfNumberResponse:
+        tmp_req.validate()
+        request = main_models.UpdateInstanceBindingsOfNumberShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.instance_ids):
+            request.instance_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.instance_ids_shrink):
+            body['InstanceIds'] = request.instance_ids_shrink
+        if not DaraCore.is_null(request.number):
+            body['Number'] = request.number
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateInstanceBindingsOfNumber',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateInstanceBindingsOfNumberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_instance_bindings_of_number(
+        self,
+        request: main_models.UpdateInstanceBindingsOfNumberRequest,
+    ) -> main_models.UpdateInstanceBindingsOfNumberResponse:
+        runtime = RuntimeOptions()
+        return self.update_instance_bindings_of_number_with_options(request, runtime)
+
+    async def update_instance_bindings_of_number_async(
+        self,
+        request: main_models.UpdateInstanceBindingsOfNumberRequest,
+    ) -> main_models.UpdateInstanceBindingsOfNumberResponse:
+        runtime = RuntimeOptions()
+        return await self.update_instance_bindings_of_number_with_options_async(request, runtime)
+
+    def update_llm_access_profile_with_options(
+        self,
+        tmp_req: main_models.UpdateLlmAccessProfileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateLlmAccessProfileResponse:
+        tmp_req.validate()
+        request = main_models.UpdateLlmAccessProfileShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.profile):
+            request.profile_shrink = Utils.array_to_string_with_specified_style(tmp_req.profile, 'Profile', 'json')
+        body = {}
+        if not DaraCore.is_null(request.access_profile_id):
+            body['AccessProfileId'] = request.access_profile_id
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.profile_shrink):
+            body['Profile'] = request.profile_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateLlmAccessProfile',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateLlmAccessProfileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_llm_access_profile_with_options_async(
+        self,
+        tmp_req: main_models.UpdateLlmAccessProfileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateLlmAccessProfileResponse:
+        tmp_req.validate()
+        request = main_models.UpdateLlmAccessProfileShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.profile):
+            request.profile_shrink = Utils.array_to_string_with_specified_style(tmp_req.profile, 'Profile', 'json')
+        body = {}
+        if not DaraCore.is_null(request.access_profile_id):
+            body['AccessProfileId'] = request.access_profile_id
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.profile_shrink):
+            body['Profile'] = request.profile_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateLlmAccessProfile',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateLlmAccessProfileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_llm_access_profile(
+        self,
+        request: main_models.UpdateLlmAccessProfileRequest,
+    ) -> main_models.UpdateLlmAccessProfileResponse:
+        runtime = RuntimeOptions()
+        return self.update_llm_access_profile_with_options(request, runtime)
+
+    async def update_llm_access_profile_async(
+        self,
+        request: main_models.UpdateLlmAccessProfileRequest,
+    ) -> main_models.UpdateLlmAccessProfileResponse:
+        runtime = RuntimeOptions()
+        return await self.update_llm_access_profile_with_options_async(request, runtime)
+
+    def update_number_bindings_of_instance_with_options(
+        self,
+        tmp_req: main_models.UpdateNumberBindingsOfInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateNumberBindingsOfInstanceResponse:
+        tmp_req.validate()
+        request = main_models.UpdateNumberBindingsOfInstanceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.numbers):
+            request.numbers_shrink = Utils.array_to_string_with_specified_style(tmp_req.numbers, 'Numbers', 'json')
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.numbers_shrink):
+            body['Numbers'] = request.numbers_shrink
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateNumberBindingsOfInstance',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateNumberBindingsOfInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_number_bindings_of_instance_with_options_async(
+        self,
+        tmp_req: main_models.UpdateNumberBindingsOfInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateNumberBindingsOfInstanceResponse:
+        tmp_req.validate()
+        request = main_models.UpdateNumberBindingsOfInstanceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.numbers):
+            request.numbers_shrink = Utils.array_to_string_with_specified_style(tmp_req.numbers, 'Numbers', 'json')
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.numbers_shrink):
+            body['Numbers'] = request.numbers_shrink
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateNumberBindingsOfInstance',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateNumberBindingsOfInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_number_bindings_of_instance(
+        self,
+        request: main_models.UpdateNumberBindingsOfInstanceRequest,
+    ) -> main_models.UpdateNumberBindingsOfInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.update_number_bindings_of_instance_with_options(request, runtime)
+
+    async def update_number_bindings_of_instance_async(
+        self,
+        request: main_models.UpdateNumberBindingsOfInstanceRequest,
+    ) -> main_models.UpdateNumberBindingsOfInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.update_number_bindings_of_instance_with_options_async(request, runtime)
 
     def update_script_with_options(
         self,

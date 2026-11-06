@@ -27,6 +27,10 @@ from ._create_flash_sms_access_profile_response import CreateFlashSmsAccessProfi
 from ._create_instance_request import CreateInstanceRequest
 from ._create_instance_response_body import CreateInstanceResponseBody
 from ._create_instance_response import CreateInstanceResponse
+from ._create_llm_access_profile_request import CreateLlmAccessProfileRequest
+from ._create_llm_access_profile_shrink_request import CreateLlmAccessProfileShrinkRequest
+from ._create_llm_access_profile_response_body import CreateLlmAccessProfileResponseBody
+from ._create_llm_access_profile_response import CreateLlmAccessProfileResponse
 from ._create_outbound_call_restriction_request import CreateOutboundCallRestrictionRequest
 from ._create_outbound_call_restriction_shrink_request import CreateOutboundCallRestrictionShrinkRequest
 from ._create_outbound_call_restriction_response_body import CreateOutboundCallRestrictionResponseBody
@@ -45,12 +49,22 @@ from ._create_voice_access_profile_response import CreateVoiceAccessProfileRespo
 from ._delete_clone_voice_request import DeleteCloneVoiceRequest
 from ._delete_clone_voice_response_body import DeleteCloneVoiceResponseBody
 from ._delete_clone_voice_response import DeleteCloneVoiceResponse
+from ._delete_corp_number_request import DeleteCorpNumberRequest
+from ._delete_corp_number_response_body import DeleteCorpNumberResponseBody
+from ._delete_corp_number_response import DeleteCorpNumberResponse
 from ._delete_flash_sms_access_profile_request import DeleteFlashSmsAccessProfileRequest
 from ._delete_flash_sms_access_profile_response_body import DeleteFlashSmsAccessProfileResponseBody
 from ._delete_flash_sms_access_profile_response import DeleteFlashSmsAccessProfileResponse
 from ._delete_instance_request import DeleteInstanceRequest
 from ._delete_instance_response_body import DeleteInstanceResponseBody
 from ._delete_instance_response import DeleteInstanceResponse
+from ._delete_llm_access_profile_request import DeleteLlmAccessProfileRequest
+from ._delete_llm_access_profile_response_body import DeleteLlmAccessProfileResponseBody
+from ._delete_llm_access_profile_response import DeleteLlmAccessProfileResponse
+from ._delete_numbers_request import DeleteNumbersRequest
+from ._delete_numbers_shrink_request import DeleteNumbersShrinkRequest
+from ._delete_numbers_response_body import DeleteNumbersResponseBody
+from ._delete_numbers_response import DeleteNumbersResponse
 from ._delete_outbound_call_restriction_request import DeleteOutboundCallRestrictionRequest
 from ._delete_outbound_call_restriction_shrink_request import DeleteOutboundCallRestrictionShrinkRequest
 from ._delete_outbound_call_restriction_response_body import DeleteOutboundCallRestrictionResponseBody
@@ -85,6 +99,9 @@ from ._get_script_profile_template_response import GetScriptProfileTemplateRespo
 from ._get_subscription_request import GetSubscriptionRequest
 from ._get_subscription_response_body import GetSubscriptionResponseBody
 from ._get_subscription_response import GetSubscriptionResponse
+from ._list_asr_models_request import ListAsrModelsRequest
+from ._list_asr_models_response_body import ListAsrModelsResponseBody
+from ._list_asr_models_response import ListAsrModelsResponse
 from ._list_campaigns_request import ListCampaignsRequest
 from ._list_campaigns_response_body import ListCampaignsResponseBody
 from ._list_campaigns_response import ListCampaignsResponse
@@ -98,6 +115,9 @@ from ._list_clone_voice_models_response import ListCloneVoiceModelsResponse
 from ._list_clone_voices_request import ListCloneVoicesRequest
 from ._list_clone_voices_response_body import ListCloneVoicesResponseBody
 from ._list_clone_voices_response import ListCloneVoicesResponse
+from ._list_corp_numbers_request import ListCorpNumbersRequest
+from ._list_corp_numbers_response_body import ListCorpNumbersResponseBody
+from ._list_corp_numbers_response import ListCorpNumbersResponse
 from ._list_flash_sms_access_profiles_request import ListFlashSmsAccessProfilesRequest
 from ._list_flash_sms_access_profiles_response_body import ListFlashSmsAccessProfilesResponseBody
 from ._list_flash_sms_access_profiles_response import ListFlashSmsAccessProfilesResponse
@@ -107,9 +127,21 @@ from ._list_flash_sms_providers_response import ListFlashSmsProvidersResponse
 from ._list_flash_sms_templates_request import ListFlashSmsTemplatesRequest
 from ._list_flash_sms_templates_response_body import ListFlashSmsTemplatesResponseBody
 from ._list_flash_sms_templates_response import ListFlashSmsTemplatesResponse
+from ._list_instance_bindings_of_number_request import ListInstanceBindingsOfNumberRequest
+from ._list_instance_bindings_of_number_response_body import ListInstanceBindingsOfNumberResponseBody
+from ._list_instance_bindings_of_number_response import ListInstanceBindingsOfNumberResponse
 from ._list_instances_request import ListInstancesRequest
 from ._list_instances_response_body import ListInstancesResponseBody
 from ._list_instances_response import ListInstancesResponse
+from ._list_llm_access_profiles_request import ListLlmAccessProfilesRequest
+from ._list_llm_access_profiles_response_body import ListLlmAccessProfilesResponseBody
+from ._list_llm_access_profiles_response import ListLlmAccessProfilesResponse
+from ._list_number_bindings_of_instance_request import ListNumberBindingsOfInstanceRequest
+from ._list_number_bindings_of_instance_response_body import ListNumberBindingsOfInstanceResponseBody
+from ._list_number_bindings_of_instance_response import ListNumberBindingsOfInstanceResponse
+from ._list_numbers_request import ListNumbersRequest
+from ._list_numbers_response_body import ListNumbersResponseBody
+from ._list_numbers_response import ListNumbersResponse
 from ._list_outbound_call_restrictions_request import ListOutboundCallRestrictionsRequest
 from ._list_outbound_call_restrictions_response_body import ListOutboundCallRestrictionsResponseBody
 from ._list_outbound_call_restrictions_response import ListOutboundCallRestrictionsResponse
@@ -151,6 +183,18 @@ from ._update_flash_sms_access_profile_response import UpdateFlashSmsAccessProfi
 from ._update_instance_request import UpdateInstanceRequest
 from ._update_instance_response_body import UpdateInstanceResponseBody
 from ._update_instance_response import UpdateInstanceResponse
+from ._update_instance_bindings_of_number_request import UpdateInstanceBindingsOfNumberRequest
+from ._update_instance_bindings_of_number_shrink_request import UpdateInstanceBindingsOfNumberShrinkRequest
+from ._update_instance_bindings_of_number_response_body import UpdateInstanceBindingsOfNumberResponseBody
+from ._update_instance_bindings_of_number_response import UpdateInstanceBindingsOfNumberResponse
+from ._update_llm_access_profile_request import UpdateLlmAccessProfileRequest
+from ._update_llm_access_profile_shrink_request import UpdateLlmAccessProfileShrinkRequest
+from ._update_llm_access_profile_response_body import UpdateLlmAccessProfileResponseBody
+from ._update_llm_access_profile_response import UpdateLlmAccessProfileResponse
+from ._update_number_bindings_of_instance_request import UpdateNumberBindingsOfInstanceRequest
+from ._update_number_bindings_of_instance_shrink_request import UpdateNumberBindingsOfInstanceShrinkRequest
+from ._update_number_bindings_of_instance_response_body import UpdateNumberBindingsOfInstanceResponseBody
+from ._update_number_bindings_of_instance_response import UpdateNumberBindingsOfInstanceResponse
 from ._update_script_request import UpdateScriptRequest
 from ._update_script_response_body import UpdateScriptResponseBody
 from ._update_script_response import UpdateScriptResponse
@@ -176,6 +220,7 @@ from ._create_campaign_request import CreateCampaignRequestCases
 from ._create_clone_voice_response_body import CreateCloneVoiceResponseBodyData
 from ._create_flash_sms_access_profile_request import CreateFlashSmsAccessProfileRequestAccessProfileDySmsAccessProfiles
 from ._create_flash_sms_access_profile_request import CreateFlashSmsAccessProfileRequestAccessProfile
+from ._create_llm_access_profile_request import CreateLlmAccessProfileRequestProfile
 from ._create_outbound_call_restriction_request import CreateOutboundCallRestrictionRequestOutboundCallRestriction
 from ._create_script_version_request import CreateScriptVersionRequestInteractionConfigBargeInConfig
 from ._create_script_version_request import CreateScriptVersionRequestInteractionConfigEndConversationConfigTriggers
@@ -209,6 +254,7 @@ from ._get_recording_response_body import GetRecordingResponseBodyData
 from ._get_script_profile_template_response_body import GetScriptProfileTemplateResponseBodyData
 from ._get_subscription_response_body import GetSubscriptionResponseBodyDataEventList
 from ._get_subscription_response_body import GetSubscriptionResponseBodyData
+from ._list_asr_models_response_body import ListAsrModelsResponseBodyData
 from ._list_campaigns_response_body import ListCampaignsResponseBodyDataList
 from ._list_campaigns_response_body import ListCampaignsResponseBodyData
 from ._list_cases_response_body import ListCasesResponseBodyDataListLabels
@@ -218,13 +264,22 @@ from ._list_clone_voice_models_response_body import ListCloneVoiceModelsResponse
 from ._list_clone_voice_models_response_body import ListCloneVoiceModelsResponseBodyData
 from ._list_clone_voices_response_body import ListCloneVoicesResponseBodyDataCloneVoices
 from ._list_clone_voices_response_body import ListCloneVoicesResponseBodyData
+from ._list_corp_numbers_response_body import ListCorpNumbersResponseBodyDataCorpNumbers
+from ._list_corp_numbers_response_body import ListCorpNumbersResponseBodyData
 from ._list_flash_sms_access_profiles_response_body import ListFlashSmsAccessProfilesResponseBodyDataFlashSmsAccessProfiles
 from ._list_flash_sms_access_profiles_response_body import ListFlashSmsAccessProfilesResponseBodyData
 from ._list_flash_sms_providers_response_body import ListFlashSmsProvidersResponseBodyData
 from ._list_flash_sms_templates_response_body import ListFlashSmsTemplatesResponseBodyDataFlashSmsTemplates
 from ._list_flash_sms_templates_response_body import ListFlashSmsTemplatesResponseBodyData
+from ._list_instance_bindings_of_number_response_body import ListInstanceBindingsOfNumberResponseBodyData
 from ._list_instances_response_body import ListInstancesResponseBodyDataInstances
 from ._list_instances_response_body import ListInstancesResponseBodyData
+from ._list_llm_access_profiles_response_body import ListLlmAccessProfilesResponseBodyDataLlmAccessProfilesProfile
+from ._list_llm_access_profiles_response_body import ListLlmAccessProfilesResponseBodyDataLlmAccessProfiles
+from ._list_llm_access_profiles_response_body import ListLlmAccessProfilesResponseBodyData
+from ._list_number_bindings_of_instance_response_body import ListNumberBindingsOfInstanceResponseBodyData
+from ._list_numbers_response_body import ListNumbersResponseBodyDataNumbers
+from ._list_numbers_response_body import ListNumbersResponseBodyData
 from ._list_outbound_call_restrictions_response_body import ListOutboundCallRestrictionsResponseBodyDataOutboundCallRestrictions
 from ._list_outbound_call_restrictions_response_body import ListOutboundCallRestrictionsResponseBodyData
 from ._list_script_profile_templates_response_body import ListScriptProfileTemplatesResponseBodyData
@@ -237,6 +292,7 @@ from ._list_voice_access_profiles_response_body import ListVoiceAccessProfilesRe
 from ._list_voice_access_profiles_response_body import ListVoiceAccessProfilesResponseBodyData
 from ._update_flash_sms_access_profile_request import UpdateFlashSmsAccessProfileRequestAccessProfileDySmsAccessProfiles
 from ._update_flash_sms_access_profile_request import UpdateFlashSmsAccessProfileRequestAccessProfile
+from ._update_llm_access_profile_request import UpdateLlmAccessProfileRequestProfile
 from ._update_script_version_request import UpdateScriptVersionRequestInteractionConfigBargeInConfig
 from ._update_script_version_request import UpdateScriptVersionRequestInteractionConfigEndConversationConfigTriggers
 from ._update_script_version_request import UpdateScriptVersionRequestInteractionConfigEndConversationConfig
@@ -284,6 +340,10 @@ __all__ = [
     CreateInstanceRequest,
     CreateInstanceResponseBody,
     CreateInstanceResponse,
+    CreateLlmAccessProfileRequest,
+    CreateLlmAccessProfileShrinkRequest,
+    CreateLlmAccessProfileResponseBody,
+    CreateLlmAccessProfileResponse,
     CreateOutboundCallRestrictionRequest,
     CreateOutboundCallRestrictionShrinkRequest,
     CreateOutboundCallRestrictionResponseBody,
@@ -302,12 +362,22 @@ __all__ = [
     DeleteCloneVoiceRequest,
     DeleteCloneVoiceResponseBody,
     DeleteCloneVoiceResponse,
+    DeleteCorpNumberRequest,
+    DeleteCorpNumberResponseBody,
+    DeleteCorpNumberResponse,
     DeleteFlashSmsAccessProfileRequest,
     DeleteFlashSmsAccessProfileResponseBody,
     DeleteFlashSmsAccessProfileResponse,
     DeleteInstanceRequest,
     DeleteInstanceResponseBody,
     DeleteInstanceResponse,
+    DeleteLlmAccessProfileRequest,
+    DeleteLlmAccessProfileResponseBody,
+    DeleteLlmAccessProfileResponse,
+    DeleteNumbersRequest,
+    DeleteNumbersShrinkRequest,
+    DeleteNumbersResponseBody,
+    DeleteNumbersResponse,
     DeleteOutboundCallRestrictionRequest,
     DeleteOutboundCallRestrictionShrinkRequest,
     DeleteOutboundCallRestrictionResponseBody,
@@ -342,6 +412,9 @@ __all__ = [
     GetSubscriptionRequest,
     GetSubscriptionResponseBody,
     GetSubscriptionResponse,
+    ListAsrModelsRequest,
+    ListAsrModelsResponseBody,
+    ListAsrModelsResponse,
     ListCampaignsRequest,
     ListCampaignsResponseBody,
     ListCampaignsResponse,
@@ -355,6 +428,9 @@ __all__ = [
     ListCloneVoicesRequest,
     ListCloneVoicesResponseBody,
     ListCloneVoicesResponse,
+    ListCorpNumbersRequest,
+    ListCorpNumbersResponseBody,
+    ListCorpNumbersResponse,
     ListFlashSmsAccessProfilesRequest,
     ListFlashSmsAccessProfilesResponseBody,
     ListFlashSmsAccessProfilesResponse,
@@ -364,9 +440,21 @@ __all__ = [
     ListFlashSmsTemplatesRequest,
     ListFlashSmsTemplatesResponseBody,
     ListFlashSmsTemplatesResponse,
+    ListInstanceBindingsOfNumberRequest,
+    ListInstanceBindingsOfNumberResponseBody,
+    ListInstanceBindingsOfNumberResponse,
     ListInstancesRequest,
     ListInstancesResponseBody,
     ListInstancesResponse,
+    ListLlmAccessProfilesRequest,
+    ListLlmAccessProfilesResponseBody,
+    ListLlmAccessProfilesResponse,
+    ListNumberBindingsOfInstanceRequest,
+    ListNumberBindingsOfInstanceResponseBody,
+    ListNumberBindingsOfInstanceResponse,
+    ListNumbersRequest,
+    ListNumbersResponseBody,
+    ListNumbersResponse,
     ListOutboundCallRestrictionsRequest,
     ListOutboundCallRestrictionsResponseBody,
     ListOutboundCallRestrictionsResponse,
@@ -408,6 +496,18 @@ __all__ = [
     UpdateInstanceRequest,
     UpdateInstanceResponseBody,
     UpdateInstanceResponse,
+    UpdateInstanceBindingsOfNumberRequest,
+    UpdateInstanceBindingsOfNumberShrinkRequest,
+    UpdateInstanceBindingsOfNumberResponseBody,
+    UpdateInstanceBindingsOfNumberResponse,
+    UpdateLlmAccessProfileRequest,
+    UpdateLlmAccessProfileShrinkRequest,
+    UpdateLlmAccessProfileResponseBody,
+    UpdateLlmAccessProfileResponse,
+    UpdateNumberBindingsOfInstanceRequest,
+    UpdateNumberBindingsOfInstanceShrinkRequest,
+    UpdateNumberBindingsOfInstanceResponseBody,
+    UpdateNumberBindingsOfInstanceResponse,
     UpdateScriptRequest,
     UpdateScriptResponseBody,
     UpdateScriptResponse,
@@ -433,6 +533,7 @@ __all__ = [
     CreateCloneVoiceResponseBodyData,
     CreateFlashSmsAccessProfileRequestAccessProfileDySmsAccessProfiles,
     CreateFlashSmsAccessProfileRequestAccessProfile,
+    CreateLlmAccessProfileRequestProfile,
     CreateOutboundCallRestrictionRequestOutboundCallRestriction,
     CreateScriptVersionRequestInteractionConfigBargeInConfig,
     CreateScriptVersionRequestInteractionConfigEndConversationConfigTriggers,
@@ -466,6 +567,7 @@ __all__ = [
     GetScriptProfileTemplateResponseBodyData,
     GetSubscriptionResponseBodyDataEventList,
     GetSubscriptionResponseBodyData,
+    ListAsrModelsResponseBodyData,
     ListCampaignsResponseBodyDataList,
     ListCampaignsResponseBodyData,
     ListCasesResponseBodyDataListLabels,
@@ -475,13 +577,22 @@ __all__ = [
     ListCloneVoiceModelsResponseBodyData,
     ListCloneVoicesResponseBodyDataCloneVoices,
     ListCloneVoicesResponseBodyData,
+    ListCorpNumbersResponseBodyDataCorpNumbers,
+    ListCorpNumbersResponseBodyData,
     ListFlashSmsAccessProfilesResponseBodyDataFlashSmsAccessProfiles,
     ListFlashSmsAccessProfilesResponseBodyData,
     ListFlashSmsProvidersResponseBodyData,
     ListFlashSmsTemplatesResponseBodyDataFlashSmsTemplates,
     ListFlashSmsTemplatesResponseBodyData,
+    ListInstanceBindingsOfNumberResponseBodyData,
     ListInstancesResponseBodyDataInstances,
     ListInstancesResponseBodyData,
+    ListLlmAccessProfilesResponseBodyDataLlmAccessProfilesProfile,
+    ListLlmAccessProfilesResponseBodyDataLlmAccessProfiles,
+    ListLlmAccessProfilesResponseBodyData,
+    ListNumberBindingsOfInstanceResponseBodyData,
+    ListNumbersResponseBodyDataNumbers,
+    ListNumbersResponseBodyData,
     ListOutboundCallRestrictionsResponseBodyDataOutboundCallRestrictions,
     ListOutboundCallRestrictionsResponseBodyData,
     ListScriptProfileTemplatesResponseBodyData,
@@ -494,6 +605,7 @@ __all__ = [
     ListVoiceAccessProfilesResponseBodyData,
     UpdateFlashSmsAccessProfileRequestAccessProfileDySmsAccessProfiles,
     UpdateFlashSmsAccessProfileRequestAccessProfile,
+    UpdateLlmAccessProfileRequestProfile,
     UpdateScriptVersionRequestInteractionConfigBargeInConfig,
     UpdateScriptVersionRequestInteractionConfigEndConversationConfigTriggers,
     UpdateScriptVersionRequestInteractionConfigEndConversationConfig,

@@ -30,7 +30,7 @@ class GetCallDetailRecordResponseBody(DaraModel):
         self.params = params
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -119,9 +119,9 @@ class GetCallDetailRecordResponseBodyData(DaraModel):
         self.access_channel_id = access_channel_id
         # The access channel type.
         self.access_channel_type = access_channel_type
-        # The callee number.
+        # The called number.
         self.callee = callee
-        # The caller number.
+        # The calling number.
         self.caller = caller
         # The case ID.
         self.case_id = case_id
@@ -129,25 +129,25 @@ class GetCallDetailRecordResponseBodyData(DaraModel):
         self.disposition_code = disposition_code
         # The disposition reason.
         self.disposition_reason = disposition_reason
-        # Indicates whether this is a draft version.
+        # Indicates whether it is a draft version.
         self.draft_version = draft_version
         # The total duration.
         self.duration = duration
-        # The end time of the call.
+        # The call end time.
         self.end_time = end_time
-        # The list of labels.
+        # The label list.
         self.labels = labels
-        # The party that initiated the hang-up.
+        # The hang-up initiator.
         self.release_initiator = release_initiator
         # The call session ID.
         self.session_id = session_id
-        # The start time of the call.
+        # The call start time.
         self.start_time = start_time
         # The talk time.
         self.talk_time = talk_time
         # The number of conversation turns.
         self.talk_turns = talk_turns
-        # Indicates whether the task was completed.
+        # Indicates whether the task is completed.
         self.task_completed = task_completed
         # The conversation transcripts.
         self.transcripts = transcripts
@@ -332,15 +332,15 @@ class GetCallDetailRecordResponseBodyDataTranscripts(DaraModel):
         utterance: str = None,
         vendor_params: str = None,
     ):
-        # The assistant answer.
+        # The assistant response.
         self.answer = answer
-        # Indicates whether the transcript is a backchannel response.
+        # Indicates whether it is a backchannel.
         self.backchannels = backchannels
-        # The begin time.
+        # The start time.
         self.begin_time = begin_time
-        # The list of control parameters.
+        # The control parameter list.
         self.control_params_list = control_params_list
-        # The end time of the call.
+        # The call end time.
         self.end_time = end_time
         # The event time.
         self.event_time = event_time
@@ -348,15 +348,17 @@ class GetCallDetailRecordResponseBodyDataTranscripts(DaraModel):
         self.extras = extras
         # The number of input tokens.
         self.input_tokens = input_tokens
-        # Indicates whether the response was interrupted.
+        # Indicates whether it was interrupted.
         self.interrupted = interrupted
-        # Indicates whether the transcript is from the legacy version.
+        # Indicates whether it is a legacy version.
         self.legacy = legacy
         # The model.
         self.model = model
         # The number of output tokens.
         self.output_tokens = output_tokens
+        # The playback status.
         self.playback_status = playback_status
+        # The played content.
         self.played_answer = played_answer
         # The played text.
         self.played_words = played_words
@@ -523,9 +525,9 @@ class GetCallDetailRecordResponseBodyDataLabels(DaraModel):
         name: str = None,
         system: bool = None,
     ):
-        # The set of preset values for the label.
+        # The candidate values for the label.
         self.candidate_values = candidate_values
-        # Indicates whether the label has been collected.
+        # Indicates whether the label is collected.
         self.collected = collected
         # The label description.
         self.description = description
@@ -533,7 +535,7 @@ class GetCallDetailRecordResponseBodyDataLabels(DaraModel):
         self.matched_value = matched_value
         # The label name.
         self.name = name
-        # Indicates whether the label is a system label.
+        # The system label.
         self.system = system
 
     def validate(self):
