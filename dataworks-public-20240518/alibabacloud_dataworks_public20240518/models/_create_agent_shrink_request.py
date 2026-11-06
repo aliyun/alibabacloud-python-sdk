@@ -27,20 +27,17 @@ class CreateAgentShrinkRequest(DaraModel):
         self.description = description
         # The display name of the agent.
         self.display_name = display_name
-        # The released expert suites bound to the agent. For personal or enterprise suites, use SuiteId and optionally specify a fixed Version or VersionSelector. For official suites, you must explicitly set Source to OFFICIAL and specify the SuiteId from the official catalog. Do not specify Version or VersionSelector. If this parameter is not specified, an empty list is created, and official suites are not loaded by default.
+        # The published expert suites bound to the agent. For personal or enterprise suites, use SuiteId, and optionally specify a fixed Version or VersionSelector. For official suites, you must explicitly specify Source=OFFICIAL and the SuiteId from the official catalog, and do not specify Version or VersionSelector. If not specified, an empty list is created, and all official suites are not loaded by default.
         self.expert_suites_shrink = expert_suites_shrink
-        # The extended metadata as key-value pairs.
+        # The extended metadata in key-value pairs.
         self.metadata_shrink = metadata_shrink
         # The model configuration.
         self.model_shrink = model_shrink
-        # The name of the agent. It must be unique within the current account.
+        # The name of the agent. The name must be unique within the current account.
         # 
         # This parameter is required.
         self.name = name
-        # Specifies whether to publish the agent immediately after creation. Valid values:
-        # - true: Publishes the created version.
-        # - false or omitted: Retains the original behavior of creating a draft only.
-        # Saving and publishing are not atomic operations. If publishing fails, the draft may already exist. Query the agent before retrying to avoid duplicate creation.
+        # Specifies whether to publish the agent immediately after creation. A value of true publishes the created version. A value of false or omitting this parameter maintains the original behavior of creating a draft only. Saving and publishing are not atomic operations. If publishing fails, the draft may already exist. Before retrying, query the agent first to avoid duplicate creation.
         self.publish_immediately = publish_immediately
         # The list of skills.
         self.skills_shrink = skills_shrink
@@ -53,7 +50,7 @@ class CreateAgentShrinkRequest(DaraModel):
         # `PROJECT`: Visible to specified projects.<br>
         # `USER`: Visible to specified users.
         self.visibility = visibility
-        # The visibility scope. The corresponding fields are used based on the Visibility parameter.
+        # The visibility scope. Specify the corresponding fields based on the Visibility value.
         self.visibility_scope_shrink = visibility_scope_shrink
 
     def validate(self):

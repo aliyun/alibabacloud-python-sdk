@@ -62,9 +62,9 @@ class CreateResourceGroupResponseBodyResourceGroupOrder(DaraModel):
     ):
         # The unique identifier of the general-purpose resource group.
         self.id = id
-        # The ID of the order.
+        # The ID of the order for the general-purpose resource group.
         self.order_id = order_id
-        # The instance ID of the order.
+        # The instance ID of the order for the general-purpose resource group.
         self.order_instance_id = order_instance_id
 
     def validate(self):

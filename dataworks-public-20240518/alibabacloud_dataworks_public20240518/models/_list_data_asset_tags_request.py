@@ -12,7 +12,7 @@ class ListDataAssetTagsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The tag type.
+        # The tag category. Valid values:
         # - Normal
         # - System
         self.category = category

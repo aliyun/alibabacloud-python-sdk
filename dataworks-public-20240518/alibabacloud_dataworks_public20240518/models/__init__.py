@@ -43,6 +43,10 @@ from ._apply_resource_access_permission_response import ApplyResourceAccessPermi
 from ._approve_process_instance_request import ApproveProcessInstanceRequest
 from ._approve_process_instance_response_body import ApproveProcessInstanceResponseBody
 from ._approve_process_instance_response import ApproveProcessInstanceResponse
+from ._archive_agent_session_request import ArchiveAgentSessionRequest
+from ._archive_agent_session_shrink_request import ArchiveAgentSessionShrinkRequest
+from ._archive_agent_session_response_body import ArchiveAgentSessionResponseBody
+from ._archive_agent_session_response import ArchiveAgentSessionResponse
 from ._associate_project_to_image_request import AssociateProjectToImageRequest
 from ._associate_project_to_image_response_body import AssociateProjectToImageResponseBody
 from ._associate_project_to_image_response import AssociateProjectToImageResponse
@@ -97,6 +101,9 @@ from ._create_calendar_request import CreateCalendarRequest
 from ._create_calendar_shrink_request import CreateCalendarShrinkRequest
 from ._create_calendar_response_body import CreateCalendarResponseBody
 from ._create_calendar_response import CreateCalendarResponse
+from ._create_code_review_request import CreateCodeReviewRequest
+from ._create_code_review_response_body import CreateCodeReviewResponseBody
+from ._create_code_review_response import CreateCodeReviewResponse
 from ._create_component_request import CreateComponentRequest
 from ._create_component_response_body import CreateComponentResponseBody
 from ._create_component_response import CreateComponentResponse
@@ -278,6 +285,10 @@ from ._create_workflow_instances_response import CreateWorkflowInstancesResponse
 from ._delete_agent_request import DeleteAgentRequest
 from ._delete_agent_response_body import DeleteAgentResponseBody
 from ._delete_agent_response import DeleteAgentResponse
+from ._delete_agent_session_request import DeleteAgentSessionRequest
+from ._delete_agent_session_shrink_request import DeleteAgentSessionShrinkRequest
+from ._delete_agent_session_response_body import DeleteAgentSessionResponseBody
+from ._delete_agent_session_response import DeleteAgentSessionResponse
 from ._delete_alert_rule_request import DeleteAlertRuleRequest
 from ._delete_alert_rule_response_body import DeleteAlertRuleResponseBody
 from ._delete_alert_rule_response import DeleteAlertRuleResponse
@@ -468,6 +479,9 @@ from ._get_agent_session_artifact_meta_request import GetAgentSessionArtifactMet
 from ._get_agent_session_artifact_meta_shrink_request import GetAgentSessionArtifactMetaShrinkRequest
 from ._get_agent_session_artifact_meta_response_body import GetAgentSessionArtifactMetaResponseBody
 from ._get_agent_session_artifact_meta_response import GetAgentSessionArtifactMetaResponse
+from ._get_agent_session_events_request import GetAgentSessionEventsRequest
+from ._get_agent_session_events_response_body import GetAgentSessionEventsResponseBody
+from ._get_agent_session_events_response import GetAgentSessionEventsResponse
 from ._get_agent_session_token_usage_request import GetAgentSessionTokenUsageRequest
 from ._get_agent_session_token_usage_shrink_request import GetAgentSessionTokenUsageShrinkRequest
 from ._get_agent_session_token_usage_response_body import GetAgentSessionTokenUsageResponseBody
@@ -493,6 +507,9 @@ from ._get_catalog_response import GetCatalogResponse
 from ._get_certificate_request import GetCertificateRequest
 from ._get_certificate_response_body import GetCertificateResponseBody
 from ._get_certificate_response import GetCertificateResponse
+from ._get_code_review_request import GetCodeReviewRequest
+from ._get_code_review_response_body import GetCodeReviewResponseBody
+from ._get_code_review_response import GetCodeReviewResponse
 from ._get_column_request import GetColumnRequest
 from ._get_column_response_body import GetColumnResponseBody
 from ._get_column_response import GetColumnResponse
@@ -740,6 +757,9 @@ from ._list_catalogs_response import ListCatalogsResponse
 from ._list_certificates_request import ListCertificatesRequest
 from ._list_certificates_response_body import ListCertificatesResponseBody
 from ._list_certificates_response import ListCertificatesResponse
+from ._list_code_reviews_request import ListCodeReviewsRequest
+from ._list_code_reviews_response_body import ListCodeReviewsResponseBody
+from ._list_code_reviews_response import ListCodeReviewsResponse
 from ._list_columns_request import ListColumnsRequest
 from ._list_columns_response_body import ListColumnsResponseBody
 from ._list_columns_response import ListColumnsResponse
@@ -1058,6 +1078,9 @@ from ._move_workflow_definition_response import MoveWorkflowDefinitionResponse
 from ._preview_dataset_version_request import PreviewDatasetVersionRequest
 from ._preview_dataset_version_response_body import PreviewDatasetVersionResponseBody
 from ._preview_dataset_version_response import PreviewDatasetVersionResponse
+from ._preview_task_parameters_request import PreviewTaskParametersRequest
+from ._preview_task_parameters_response_body import PreviewTaskParametersResponseBody
+from ._preview_task_parameters_response import PreviewTaskParametersResponse
 from ._prompt_agent_session_request import PromptAgentSessionRequest
 from ._prompt_agent_session_shrink_request import PromptAgentSessionShrinkRequest
 from ._prompt_agent_session_response_body import PromptAgentSessionResponseBody
@@ -1179,6 +1202,10 @@ from ._un_tag_data_assets_request import UnTagDataAssetsRequest
 from ._un_tag_data_assets_shrink_request import UnTagDataAssetsShrinkRequest
 from ._un_tag_data_assets_response_body import UnTagDataAssetsResponseBody
 from ._un_tag_data_assets_response import UnTagDataAssetsResponse
+from ._update_agent_request import UpdateAgentRequest
+from ._update_agent_shrink_request import UpdateAgentShrinkRequest
+from ._update_agent_response_body import UpdateAgentResponseBody
+from ._update_agent_response import UpdateAgentResponse
 from ._update_agent_session_title_request import UpdateAgentSessionTitleRequest
 from ._update_agent_session_title_shrink_request import UpdateAgentSessionTitleShrinkRequest
 from ._update_agent_session_title_response_body import UpdateAgentSessionTitleResponseBody
@@ -1194,6 +1221,9 @@ from ._update_calendar_request import UpdateCalendarRequest
 from ._update_calendar_shrink_request import UpdateCalendarShrinkRequest
 from ._update_calendar_response_body import UpdateCalendarResponseBody
 from ._update_calendar_response import UpdateCalendarResponse
+from ._update_code_review_request import UpdateCodeReviewRequest
+from ._update_code_review_response_body import UpdateCodeReviewResponseBody
+from ._update_code_review_response import UpdateCodeReviewResponse
 from ._update_column_business_metadata_request import UpdateColumnBusinessMetadataRequest
 from ._update_column_business_metadata_shrink_request import UpdateColumnBusinessMetadataShrinkRequest
 from ._update_column_business_metadata_response_body import UpdateColumnBusinessMetadataResponseBody
@@ -1410,6 +1440,10 @@ from ._abolish_cross_project_pipeline_run_response_body import AbolishCrossProje
 from ._apply_resource_access_permission_request import ApplyResourceAccessPermissionRequestApplyContentsGrantee
 from ._apply_resource_access_permission_request import ApplyResourceAccessPermissionRequestApplyContentsResource
 from ._apply_resource_access_permission_request import ApplyResourceAccessPermissionRequestApplyContents
+from ._archive_agent_session_request import ArchiveAgentSessionRequestParams
+from ._archive_agent_session_response_body import ArchiveAgentSessionResponseBodyJsonRpcResponseError
+from ._archive_agent_session_response_body import ArchiveAgentSessionResponseBodyJsonRpcResponseResult
+from ._archive_agent_session_response_body import ArchiveAgentSessionResponseBodyJsonRpcResponse
 from ._batch_create_meta_entities_request import BatchCreateMetaEntitiesRequestEntities
 from ._batch_update_tasks_request import BatchUpdateTasksRequestTasksDataSource
 from ._batch_update_tasks_request import BatchUpdateTasksRequestTasksRuntimeResource
@@ -1550,6 +1584,9 @@ from ._create_workflow_instances_request import CreateWorkflowInstancesRequestDe
 from ._create_workflow_instances_request import CreateWorkflowInstancesRequestPeriodsBizDates
 from ._create_workflow_instances_request import CreateWorkflowInstancesRequestPeriods
 from ._create_workflow_instances_request import CreateWorkflowInstancesRequestTags
+from ._delete_agent_session_request import DeleteAgentSessionRequestParams
+from ._delete_agent_session_response_body import DeleteAgentSessionResponseBodyJsonRpcResponseError
+from ._delete_agent_session_response_body import DeleteAgentSessionResponseBodyJsonRpcResponse
 from ._delete_semantic_job_response_body import DeleteSemanticJobResponseBodyData
 from ._download_semantic_results_response_body import DownloadSemanticResultsResponseBodyDataResults
 from ._download_semantic_results_response_body import DownloadSemanticResultsResponseBodyData
@@ -1605,6 +1642,7 @@ from ._get_business_response_body import GetBusinessResponseBodyData
 from ._get_calendar_response_body import GetCalendarResponseBodyCalendarSchedulePolicy
 from ._get_calendar_response_body import GetCalendarResponseBodyCalendar
 from ._get_certificate_response_body import GetCertificateResponseBodyCertificate
+from ._get_code_review_response_body import GetCodeReviewResponseBodyCodeReview
 from ._get_component_response_body import GetComponentResponseBodyComponent
 from ._get_compute_resource_response_body import GetComputeResourceResponseBodyComputeResource
 from ._get_compute_resource_auth_user_mappings_response_body import GetComputeResourceAuthUserMappingsResponseBodyDataAccounts
@@ -1860,6 +1898,8 @@ from ._list_calendars_response_body import ListCalendarsResponseBodyPagingInfo
 from ._list_catalogs_response_body import ListCatalogsResponseBodyPagingInfo
 from ._list_certificates_response_body import ListCertificatesResponseBodyPagingInfoCertificates
 from ._list_certificates_response_body import ListCertificatesResponseBodyPagingInfo
+from ._list_code_reviews_response_body import ListCodeReviewsResponseBodyPagingInfoCodeReviews
+from ._list_code_reviews_response_body import ListCodeReviewsResponseBodyPagingInfo
 from ._list_columns_response_body import ListColumnsResponseBodyPagingInfo
 from ._list_components_response_body import ListComponentsResponseBodyPagingInfoComponentsInputs
 from ._list_components_response_body import ListComponentsResponseBodyPagingInfoComponentsOutputs
@@ -2212,6 +2252,7 @@ from ._list_workflows_response_body import ListWorkflowsResponseBodyPagingInfo
 from ._load_agent_session_request import LoadAgentSessionRequestParamsMeta
 from ._load_agent_session_request import LoadAgentSessionRequestParams
 from ._preview_dataset_version_response_body import PreviewDatasetVersionResponseBodyPreviewResult
+from ._preview_task_parameters_response_body import PreviewTaskParametersResponseBodyItems
 from ._prompt_agent_session_request import PromptAgentSessionRequestParamsMeta
 from ._prompt_agent_session_request import PromptAgentSessionRequestParamsPromptMeta
 from ._prompt_agent_session_request import PromptAgentSessionRequestParamsPrompt
@@ -2234,6 +2275,14 @@ from ._tag_data_assets_request import TagDataAssetsRequestTags
 from ._test_data_source_connectivity_response_body import TestDataSourceConnectivityResponseBodyConnectivityDetailLogs
 from ._test_data_source_connectivity_response_body import TestDataSourceConnectivityResponseBodyConnectivity
 from ._un_tag_data_assets_request import UnTagDataAssetsRequestTags
+from ._update_agent_request import UpdateAgentRequestCallableAgents
+from ._update_agent_request import UpdateAgentRequestExpertSuites
+from ._update_agent_request import UpdateAgentRequestSkills
+from ._update_agent_request import UpdateAgentRequestTools
+from ._update_agent_request import UpdateAgentRequestVisibilityScope
+from ._update_agent_response_body import UpdateAgentResponseBodyAgentExpertSuites
+from ._update_agent_response_body import UpdateAgentResponseBodyAgentSkills
+from ._update_agent_response_body import UpdateAgentResponseBodyAgent
 from ._update_agent_session_title_request import UpdateAgentSessionTitleRequestParams
 from ._update_agent_session_title_response_body import UpdateAgentSessionTitleResponseBodyJsonRpcResponseError
 from ._update_agent_session_title_response_body import UpdateAgentSessionTitleResponseBodyJsonRpcResponseResult
@@ -2414,6 +2463,10 @@ __all__ = [
     ApproveProcessInstanceRequest,
     ApproveProcessInstanceResponseBody,
     ApproveProcessInstanceResponse,
+    ArchiveAgentSessionRequest,
+    ArchiveAgentSessionShrinkRequest,
+    ArchiveAgentSessionResponseBody,
+    ArchiveAgentSessionResponse,
     AssociateProjectToImageRequest,
     AssociateProjectToImageResponseBody,
     AssociateProjectToImageResponse,
@@ -2468,6 +2521,9 @@ __all__ = [
     CreateCalendarShrinkRequest,
     CreateCalendarResponseBody,
     CreateCalendarResponse,
+    CreateCodeReviewRequest,
+    CreateCodeReviewResponseBody,
+    CreateCodeReviewResponse,
     CreateComponentRequest,
     CreateComponentResponseBody,
     CreateComponentResponse,
@@ -2649,6 +2705,10 @@ __all__ = [
     DeleteAgentRequest,
     DeleteAgentResponseBody,
     DeleteAgentResponse,
+    DeleteAgentSessionRequest,
+    DeleteAgentSessionShrinkRequest,
+    DeleteAgentSessionResponseBody,
+    DeleteAgentSessionResponse,
     DeleteAlertRuleRequest,
     DeleteAlertRuleResponseBody,
     DeleteAlertRuleResponse,
@@ -2839,6 +2899,9 @@ __all__ = [
     GetAgentSessionArtifactMetaShrinkRequest,
     GetAgentSessionArtifactMetaResponseBody,
     GetAgentSessionArtifactMetaResponse,
+    GetAgentSessionEventsRequest,
+    GetAgentSessionEventsResponseBody,
+    GetAgentSessionEventsResponse,
     GetAgentSessionTokenUsageRequest,
     GetAgentSessionTokenUsageShrinkRequest,
     GetAgentSessionTokenUsageResponseBody,
@@ -2864,6 +2927,9 @@ __all__ = [
     GetCertificateRequest,
     GetCertificateResponseBody,
     GetCertificateResponse,
+    GetCodeReviewRequest,
+    GetCodeReviewResponseBody,
+    GetCodeReviewResponse,
     GetColumnRequest,
     GetColumnResponseBody,
     GetColumnResponse,
@@ -3111,6 +3177,9 @@ __all__ = [
     ListCertificatesRequest,
     ListCertificatesResponseBody,
     ListCertificatesResponse,
+    ListCodeReviewsRequest,
+    ListCodeReviewsResponseBody,
+    ListCodeReviewsResponse,
     ListColumnsRequest,
     ListColumnsResponseBody,
     ListColumnsResponse,
@@ -3429,6 +3498,9 @@ __all__ = [
     PreviewDatasetVersionRequest,
     PreviewDatasetVersionResponseBody,
     PreviewDatasetVersionResponse,
+    PreviewTaskParametersRequest,
+    PreviewTaskParametersResponseBody,
+    PreviewTaskParametersResponse,
     PromptAgentSessionRequest,
     PromptAgentSessionShrinkRequest,
     PromptAgentSessionResponseBody,
@@ -3550,6 +3622,10 @@ __all__ = [
     UnTagDataAssetsShrinkRequest,
     UnTagDataAssetsResponseBody,
     UnTagDataAssetsResponse,
+    UpdateAgentRequest,
+    UpdateAgentShrinkRequest,
+    UpdateAgentResponseBody,
+    UpdateAgentResponse,
     UpdateAgentSessionTitleRequest,
     UpdateAgentSessionTitleShrinkRequest,
     UpdateAgentSessionTitleResponseBody,
@@ -3565,6 +3641,9 @@ __all__ = [
     UpdateCalendarShrinkRequest,
     UpdateCalendarResponseBody,
     UpdateCalendarResponse,
+    UpdateCodeReviewRequest,
+    UpdateCodeReviewResponseBody,
+    UpdateCodeReviewResponse,
     UpdateColumnBusinessMetadataRequest,
     UpdateColumnBusinessMetadataShrinkRequest,
     UpdateColumnBusinessMetadataResponseBody,
@@ -3781,6 +3860,10 @@ __all__ = [
     ApplyResourceAccessPermissionRequestApplyContentsGrantee,
     ApplyResourceAccessPermissionRequestApplyContentsResource,
     ApplyResourceAccessPermissionRequestApplyContents,
+    ArchiveAgentSessionRequestParams,
+    ArchiveAgentSessionResponseBodyJsonRpcResponseError,
+    ArchiveAgentSessionResponseBodyJsonRpcResponseResult,
+    ArchiveAgentSessionResponseBodyJsonRpcResponse,
     BatchCreateMetaEntitiesRequestEntities,
     BatchUpdateTasksRequestTasksDataSource,
     BatchUpdateTasksRequestTasksRuntimeResource,
@@ -3921,6 +4004,9 @@ __all__ = [
     CreateWorkflowInstancesRequestPeriodsBizDates,
     CreateWorkflowInstancesRequestPeriods,
     CreateWorkflowInstancesRequestTags,
+    DeleteAgentSessionRequestParams,
+    DeleteAgentSessionResponseBodyJsonRpcResponseError,
+    DeleteAgentSessionResponseBodyJsonRpcResponse,
     DeleteSemanticJobResponseBodyData,
     DownloadSemanticResultsResponseBodyDataResults,
     DownloadSemanticResultsResponseBodyData,
@@ -3976,6 +4062,7 @@ __all__ = [
     GetCalendarResponseBodyCalendarSchedulePolicy,
     GetCalendarResponseBodyCalendar,
     GetCertificateResponseBodyCertificate,
+    GetCodeReviewResponseBodyCodeReview,
     GetComponentResponseBodyComponent,
     GetComputeResourceResponseBodyComputeResource,
     GetComputeResourceAuthUserMappingsResponseBodyDataAccounts,
@@ -4231,6 +4318,8 @@ __all__ = [
     ListCatalogsResponseBodyPagingInfo,
     ListCertificatesResponseBodyPagingInfoCertificates,
     ListCertificatesResponseBodyPagingInfo,
+    ListCodeReviewsResponseBodyPagingInfoCodeReviews,
+    ListCodeReviewsResponseBodyPagingInfo,
     ListColumnsResponseBodyPagingInfo,
     ListComponentsResponseBodyPagingInfoComponentsInputs,
     ListComponentsResponseBodyPagingInfoComponentsOutputs,
@@ -4583,6 +4672,7 @@ __all__ = [
     LoadAgentSessionRequestParamsMeta,
     LoadAgentSessionRequestParams,
     PreviewDatasetVersionResponseBodyPreviewResult,
+    PreviewTaskParametersResponseBodyItems,
     PromptAgentSessionRequestParamsMeta,
     PromptAgentSessionRequestParamsPromptMeta,
     PromptAgentSessionRequestParamsPrompt,
@@ -4605,6 +4695,14 @@ __all__ = [
     TestDataSourceConnectivityResponseBodyConnectivityDetailLogs,
     TestDataSourceConnectivityResponseBodyConnectivity,
     UnTagDataAssetsRequestTags,
+    UpdateAgentRequestCallableAgents,
+    UpdateAgentRequestExpertSuites,
+    UpdateAgentRequestSkills,
+    UpdateAgentRequestTools,
+    UpdateAgentRequestVisibilityScope,
+    UpdateAgentResponseBodyAgentExpertSuites,
+    UpdateAgentResponseBodyAgentSkills,
+    UpdateAgentResponseBodyAgent,
     UpdateAgentSessionTitleRequestParams,
     UpdateAgentSessionTitleResponseBodyJsonRpcResponseError,
     UpdateAgentSessionTitleResponseBodyJsonRpcResponseResult,

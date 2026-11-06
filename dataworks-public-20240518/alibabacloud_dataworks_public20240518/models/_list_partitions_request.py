@@ -14,9 +14,9 @@ class ListPartitionsRequest(DaraModel):
         sort_by: str = None,
         table_id: str = None,
     ):
-        # The partition name. Fuzzy match is supported. This parameter is valid only for MaxCompute tables.
+        # The name of the partition. Fuzzy match is supported. This parameter is valid only for MaxCompute tables.
         self.name = name
-        # The sort direction. Default value: Asc. Valid values:
+        # The sort order. Default value: Asc. Valid values:
         # 
         # 
         # - Asc: ascending order.
@@ -26,16 +26,16 @@ class ListPartitionsRequest(DaraModel):
         self.page_number = page_number
         # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The field by which to sort the results. Default value: CreateTime. Valid values:
+        # The field used for sorting. Default value: CreateTime. Valid values:
         # 
         # 
         # - CreateTime: the creation time. Only MaxCompute tables are supported.
         # - ModifyTime: the modification time. Only MaxCompute tables are supported.
-        # - Name: the name. This is the sort method used for HMS tables.
+        # - Name: the name. Used for HMS tables.
         # - RecordCount: the number of records. Only MaxCompute tables are supported.
         # - DataSize: the storage size. Only MaxCompute tables are supported.
         self.sort_by = sort_by
-        # The ID of the table. You can obtain this value from the response of the [ListTables](https://help.aliyun.com/document_detail/2880092.html) operation. For more information, see [Metadata entity concepts](https://help.aliyun.com/document_detail/2880092.html).
+        # The ID of the table. You can refer to the response of the ListTables API operation and [Metadata entity concepts](https://help.aliyun.com/document_detail/2880092.html).
         # 
         # This parameter is required.
         self.table_id = table_id

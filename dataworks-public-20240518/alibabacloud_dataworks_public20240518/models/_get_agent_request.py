@@ -10,9 +10,9 @@ class GetAgentRequest(DaraModel):
         agent_version: int = None,
         name: str = None,
     ):
-        # If omitted, the current definition is retrieved. If a published version is specified, the corresponding snapshot and the fixed versions of official skills and suite artifacts are retrieved. If a current unpublished version is specified, the draft is returned without fixed artifact versions. This is not the POP system parameter Version.
+        # If omitted, the current definition is retrieved. If a published version is specified, the corresponding snapshot and the fixed versions of official skills and suite artifacts are retrieved. If the current unpublished version is specified, the draft is returned without fixed artifact versions. This is not the POP system parameter Version.
         self.agent_version = agent_version
-        # The name of the skill to read.
+        # The name of the skill to retrieve.
         # 
         # This parameter is required.
         self.name = name

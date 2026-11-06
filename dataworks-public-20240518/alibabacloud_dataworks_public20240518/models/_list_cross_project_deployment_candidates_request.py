@@ -21,11 +21,11 @@ class ListCrossProjectDeploymentCandidatesRequest(DaraModel):
     ):
         # The change type.
         self.change_type = change_type
-        # The start of the commit time range. This value is a UNIX timestamp in milliseconds.
+        # The start of the commit time range. The value is a UNIX timestamp in milliseconds.
         self.commit_time_from = commit_time_from
-        # The end of the commit time range. This value is a UNIX timestamp in milliseconds.
+        # The end of the commit time range. The value is a UNIX timestamp in milliseconds.
         self.commit_time_to = commit_time_to
-        # The committer.
+        # The submitter.
         self.commit_user = commit_user
         # The cross-workspace deployment environment ID.
         # 

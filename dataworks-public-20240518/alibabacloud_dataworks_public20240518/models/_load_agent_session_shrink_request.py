@@ -11,9 +11,9 @@ class LoadAgentSessionShrinkRequest(DaraModel):
         jsonrpc: str = None,
         params_shrink: str = None,
     ):
-        # The ID provided by the requester. This ID is echoed back as is.
+        # The ID passed by the requester. The value is returned as is.
         self.id = id
-        # The JSON-RPC version. Fixed to 2.0.
+        # The JSON-RPC version. The value is fixed to 2.0.
         self.jsonrpc = jsonrpc
         # The business parameters.
         self.params_shrink = params_shrink

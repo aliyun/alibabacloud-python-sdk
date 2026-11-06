@@ -22,17 +22,17 @@ class PromptAgentSessionResponseBody(DaraModel):
     ):
         # The error message in the SSE frame. The returned content complies with the open-source Agent Client Protocol (ACP) specification. For more information, see https://agentclientprotocol.com/protocol/prompt-turn.
         self.error = error
-        # The ID passed by the requester. The value is returned as is.
+        # The ID passed by the requester, which is echoed back as is.
         self.id = id
-        # The JSON-RPC version. Set the value to 2.0.
+        # The JSON-RPC version. Fixed to 2.0.
         self.jsonrpc = jsonrpc
-        # Carried only by verified native events. The client saves the EventCursor after fully applying the event, and uses EventId and EventEpoch to resume the subscription to GetAgentSessionEvents after a disconnection. Common subscription errors do not contain proof of the native execution terminal state.
+        # The event continuation metadata.
         self.meta = meta
-        # The method of the SSE. The returned content complies with the open-source Agent Client Protocol (ACP) specification. For more information, see https://agentclientprotocol.com/protocol/prompt-turn.
+        # The SSE method. The returned content complies with the open-source Agent Client Protocol (ACP) specification. For more information, see https://agentclientprotocol.com/protocol/prompt-turn.
         self.method = method
-        # The params of the SSE. The returned content complies with the open-source Agent Client Protocol (ACP) specification. For more information, see https://agentclientprotocol.com/protocol/prompt-turn.
+        # The SSE parameters. The returned content complies with the open-source Agent Client Protocol (ACP) specification. For more information, see https://agentclientprotocol.com/protocol/prompt-turn.
         self.params = params
-        # Id of the request
+        # The request ID of this API invocation, which is used to troubleshoot invocation issues.
         self.request_id = request_id
         # The result set of the SSE frame. The returned content complies with the open-source Agent Client Protocol (ACP) specification. For more information, see https://agentclientprotocol.com/protocol/prompt-turn.
         self.result = result
@@ -114,7 +114,7 @@ class PromptAgentSessionResponseBodyMeta(DaraModel):
         self,
         event_cursor: main_models.PromptAgentSessionResponseBodyMetaEventCursor = None,
     ):
-        # The resumption cursor of the current native event. Carried only by verified native events. The client saves the cursor after fully processing the event, and uses the EventId and EventEpoch in it to resume the subscription to GetAgentSessionEvents after a disconnection without resending the prompt.
+        # The event continuation cursor.
         self.event_cursor = event_cursor
 
     def validate(self):
@@ -148,15 +148,15 @@ class PromptAgentSessionResponseBodyMetaEventCursor(DaraModel):
         prompt_id: str = None,
         session_id: str = None,
     ):
-        # The event stream generation identifier returned when the current prompt is accepted. It is paired with EventId during resumption. Pass this value as is to the EventEpoch query parameter of GetAgentSessionEvents to verify the same event stream.
+        # The event stream epoch.
         self.event_epoch = event_epoch
-        # The integer ID of the current native event, returned as a decimal string. The client saves it after fully processing the event, and passes this value as the Last-Event-Id HTTP header of GetAgentSessionEvents during resumption to continue receiving subsequent events.
+        # The event ID.
         self.event_id = event_id
-        # The type of the current native event, obtained from the type field of the native event. The examples do not constitute a fixed enumeration.
+        # The event type.
         self.event_type = event_type
-        # The execution identifier returned when the current prompt is accepted. It is used to associate the current execution with its events.
+        # The prompt execution ID.
         self.prompt_id = prompt_id
-        # The identifier of the current DataAgent session. It is used to associate the event with its session.
+        # The session ID.
         self.session_id = session_id
 
     def validate(self):

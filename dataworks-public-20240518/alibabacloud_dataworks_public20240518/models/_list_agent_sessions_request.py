@@ -14,9 +14,9 @@ class ListAgentSessionsRequest(DaraModel):
         jsonrpc: str = None,
         params: main_models.ListAgentSessionsRequestParams = None,
     ):
-        # The ID passed by the requester, which is returned as is.
+        # The request ID provided by the caller. This ID is returned as is in the response.
         self.id = id
-        # The JSON-RPC version. Fixed to 2.0.
+        # The JSON-RPC version, which is fixed to 2.0.
         self.jsonrpc = jsonrpc
         # The business parameters.
         self.params = params
@@ -67,23 +67,21 @@ class ListAgentSessionsRequestParams(DaraModel):
         session_title: str = None,
         tag_list: List[str] = None,
     ):
-        # The exact filter for the **agent name**. You must specify at least one of this parameter and SessionSourceList.
+        # The **agent name** for exact match filtering. You must specify at least one of this parameter and `SessionSourceList`.
         self.agent_name = agent_name
-        # Specifies whether to return only archived sessions. Valid values:
-        # - true: Only archived sessions are returned.
-        # - false or not specified: Only unarchived sessions are returned.
+        # Specifies whether to query archived sessions. If you set this parameter to true, only archived sessions are returned. If you set this parameter to false or omit it, only unarchived sessions are returned. A value of false does not mean all sessions. To query both types of sessions, send separate requests and handle the pagination for each.
         self.archived = archived
         # The number of entries per page. Default value: 50.
         self.max_results = max_results
         # The token for the next page. Set this parameter to 1 for the first page.
         self.next_token = next_token
-        # The exact match for the session ID.
+        # The session ID for exact matching.
         self.session_id = session_id
-        # The filter for the **session source list**. You must specify at least one of this parameter and AgentName.
+        # The **session source list** for filtering. You must specify at least one of this parameter and `AgentName`.
         self.session_source_list = session_source_list
-        # The fuzzy filter for the session title.
+        # The session title for fuzzy match filtering.
         self.session_title = session_title
-        # The filter for the session tag code list.
+        # The session tag code list for filtering.
         self.tag_list = tag_list
 
     def validate(self):

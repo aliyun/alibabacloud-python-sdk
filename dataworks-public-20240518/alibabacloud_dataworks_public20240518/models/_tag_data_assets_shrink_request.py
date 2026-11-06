@@ -21,18 +21,18 @@ class TagDataAssetsShrinkRequest(DaraModel):
         # This parameter is required.
         self.data_asset_ids_shrink = data_asset_ids_shrink
         # The data asset type. Valid values:
-        # - DataWorks table (ACS::DataWorks::Table)
-        # - DataWorks scheduled task (ACS::DataWorks::Task)
+        # - Data table (ACS::DataWorks::Table)
+        # - Scheduling task (ACS::DataWorks::Task)
         # 
         # This parameter is required.
         self.data_asset_type = data_asset_type
         # The workspace environment to which the data asset belongs. Valid values:
-        # - Dev (development environment)
-        # - Prod (production environment)
+        # - Dev: development environment
+        # - Prod: production environment
         self.env_type = env_type
         # The ID of the workspace.
         self.project_id = project_id
-        # The list of data asset tags to attach.
+        # The list of tags to attach to the data assets.
         # 
         # This parameter is required.
         self.tags_shrink = tags_shrink

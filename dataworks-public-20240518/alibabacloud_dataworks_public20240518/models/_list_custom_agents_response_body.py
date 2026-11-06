@@ -115,8 +115,8 @@ class ListCustomAgentsResponseBodyPagingInfoAgents(DaraModel):
         creator_id: str = None,
         description: str = None,
         display_name: str = None,
-        gmt_create_time: str = None,
-        gmt_modified_time: str = None,
+        gmt_create_time: int = None,
+        gmt_modified_time: int = None,
         modifier_id: str = None,
         name: str = None,
         visibility: str = None,
@@ -128,12 +128,8 @@ class ListCustomAgentsResponseBodyPagingInfoAgents(DaraModel):
         # **The display name.**
         self.display_name = display_name
         # **The creation time (UNIX timestamp in milliseconds).**
-        # 
-        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_create_time = gmt_create_time
         # **The last modification time (UNIX timestamp in milliseconds).**
-        # 
-        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_modified_time = gmt_modified_time
         # **The last modifier ID.**
         self.modifier_id = modifier_id

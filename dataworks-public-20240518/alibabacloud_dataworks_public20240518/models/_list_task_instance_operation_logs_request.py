@@ -14,7 +14,7 @@ class ListTaskInstanceOperationLogsRequest(DaraModel):
     ):
         # The date of the operation, accurate to the day. The default value is the current day. You can query operation logs from the past 31 days. Specify the value as a timestamp.
         self.date = date
-        # The node instance ID.
+        # The task instance ID.
         # 
         # This parameter is required.
         self.id = id

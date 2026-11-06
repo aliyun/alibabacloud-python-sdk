@@ -11,9 +11,9 @@ class PromptAgentSessionShrinkRequest(DaraModel):
         jsonrpc: str = None,
         params_shrink: str = None,
     ):
-        # The ID passed by the requester. The value is returned as is.
+        # The ID passed by the requester, which is echoed back as is.
         self.id = id
-        # The JSON-RPC version. Set the value to 2.0.
+        # The JSON-RPC version. Fixed to 2.0.
         self.jsonrpc = jsonrpc
         # The business parameters.
         self.params_shrink = params_shrink

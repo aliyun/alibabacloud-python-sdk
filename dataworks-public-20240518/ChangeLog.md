@@ -1,3 +1,32 @@
+2026-11-06 Version: 10.0.0
+- Support API ArchiveAgentSession.
+- Support API CreateCodeReview.
+- Support API DeleteAgentSession.
+- Support API GetAgentSessionEvents.
+- Support API GetCodeReview.
+- Support API ListCodeReviews.
+- Support API PreviewTaskParameters.
+- Support API UpdateAgent.
+- Support API UpdateCodeReview.
+- Update API CreateAgent: add request parameters Tools.$.BuiltinName.
+- Update API CreateAgent: add request parameters Tools.$.Kind.
+- Update API CreateAgent: add request parameters Tools.$.McpItems.
+- Update API CreateAgent: add request parameters Tools.$.McpServerName.
+- Update API CreateAgent: update response parameters Body.Agent.GmtCreateTime' type has changed.
+- Update API CreateAgent: update response parameters Body.Agent.GmtCreateTime' format has changed.
+- Update API CreateAgent: update response parameters Body.Agent.GmtModifiedTime' type has changed.
+- Update API CreateAgent: update response parameters Body.Agent.GmtModifiedTime' format has changed.
+- Update API CreateAgentSession: add request parameters Params.Meta.InitialConfigOptions.Cu.
+- Update API GetAgent: update response parameters Body.Agent.GmtCreateTime' type has changed.
+- Update API GetAgent: update response parameters Body.Agent.GmtCreateTime' format has changed.
+- Update API GetAgent: update response parameters Body.Agent.GmtModifiedTime' type has changed.
+- Update API GetAgent: update response parameters Body.Agent.GmtModifiedTime' format has changed.
+- Update API ListCustomAgents: update response parameters Body.PagingInfo.Agents.$.GmtCreateTime' type has changed.
+- Update API ListCustomAgents: update response parameters Body.PagingInfo.Agents.$.GmtCreateTime' format has changed.
+- Update API ListCustomAgents: update response parameters Body.PagingInfo.Agents.$.GmtModifiedTime' type has changed.
+- Update API ListCustomAgents: update response parameters Body.PagingInfo.Agents.$.GmtModifiedTime' format has changed.
+
+
 2026-11-03 Version: 9.11.1
 - Update API CreateAgent: add request parameters ExpertSuites.$.VersionSelector.
 - Update API CreateAgent: add request parameters Skills.$.VersionSelector.

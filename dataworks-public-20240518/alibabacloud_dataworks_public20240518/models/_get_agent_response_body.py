@@ -55,8 +55,8 @@ class GetAgentResponseBodyAgent(DaraModel):
         description: str = None,
         display_name: str = None,
         expert_suites: List[main_models.GetAgentResponseBodyAgentExpertSuites] = None,
-        gmt_create_time: str = None,
-        gmt_modified_time: str = None,
+        gmt_create_time: int = None,
+        gmt_modified_time: int = None,
         metadata: Dict[str, Any] = None,
         model: main_models.GetAgentResponseBodyAgentModel = None,
         modifier_id: str = None,
@@ -78,15 +78,11 @@ class GetAgentResponseBodyAgent(DaraModel):
         self.description = description
         # **The display name.**
         self.display_name = display_name
-        # The expert suites associated with the agent definition, including a fixed integer revision number or a version selection strategy. Official resources continue to use PackageVersion to indicate the artifact version.
+        # The expert suites bound to the agent definition, including a fixed integer revision number or a version selection policy. Official resources continue to use PackageVersion to indicate the artifact version.
         self.expert_suites = expert_suites
-        # The creation time (millisecond timestamp).
-        # 
-        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
+        # The creation time, expressed as a timestamp in milliseconds.
         self.gmt_create_time = gmt_create_time
-        # The last modification time (millisecond timestamp).
-        # 
-        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
+        # The last modified time, expressed as a timestamp in milliseconds.
         self.gmt_modified_time = gmt_modified_time
         # **The extended metadata.**
         self.metadata = metadata
@@ -96,7 +92,7 @@ class GetAgentResponseBodyAgent(DaraModel):
         self.modifier_id = modifier_id
         # **The agent name.**
         self.name = name
-        # The environment dependencies required for execution.
+        # The environment dependencies required for runtime.
         self.required_runtime = required_runtime
         # The list of skills.
         self.skills = skills
@@ -317,13 +313,13 @@ class GetAgentResponseBodyAgentTools(DaraModel):
         mcp_items: List[str] = None,
         mcp_server_name: str = None,
     ):
-        # **The built-in tool name. Valid when Kind is `builtin`.**
+        # **The name of the built-in tool. Valid when Kind is builtin.**
         self.builtin_name = builtin_name
         # **The tool type.**
         self.kind = kind
-        # **The selected MCP tool items. Valid when Kind is `mcp`.**
+        # **The selected MCP tool items. Valid when Kind is mcp.**
         self.mcp_items = mcp_items
-        # **The associated MCP server name. Valid when Kind is `mcp`.**
+        # **The name of the associated MCP server. Valid when Kind is mcp.**
         self.mcp_server_name = mcp_server_name
 
     def validate(self):
@@ -374,17 +370,17 @@ class GetAgentResponseBodyAgentSkills(DaraModel):
         version: int = None,
         version_selector: str = None,
     ):
-        # The skill name.
+        # The name of the skill.
         self.name = name
-        # The fixed official artifact version returned when querying a released snapshot with a specified AgentVersion. This is not returned when querying a draft or a custom skill.
+        # Returns the fixed official artifact version when querying a published snapshot with a specified AgentVersion. Not returned when querying a draft or a custom skill.
         self.package_version = package_version
-        # The official skill ID.
+        # The ID of the official skill.
         self.skill_id = skill_id
         # OFFICIAL indicates an official catalog resource. Omitted or DB indicates an original personal or enterprise resource.
         self.source = source
-        # The skill version number.
+        # The version number of the skill.
         self.version = version
-        # Returned only for personal or enterprise resources to indicate the saved version selection strategy, which is mutually exclusive with the fixed integer Version. It does not represent the specific revision actually loaded in the session. This is not returned for official resources.
+        # Returned only for personal or enterprise resources to indicate the saved version selection policy, which is mutually exclusive with the fixed integer Version. It does not represent the specific revision actually loaded in the session. Not returned for official resources.
         self.version_selector = version_selector
 
     def validate(self):
@@ -449,15 +445,15 @@ class GetAgentResponseBodyAgentModel(DaraModel):
     ):
         # The additional configuration of the model.
         self.config = config
-        # The maximum number of output tokens per generation.
+        # The maximum number of output tokens per request.
         self.max_tokens = max_tokens
-        # The model name.
+        # The name of the model.
         self.model_name = model_name
-        # Specifies whether streaming output is enabled.
+        # Specifies whether to use streaming output.
         self.stream = stream
         # The sampling temperature.
         self.temperature = temperature
-        # The nucleus sampling Top-P value.
+        # The top-P value for nucleus sampling.
         self.top_p = top_p
 
     def validate(self):
@@ -523,23 +519,23 @@ class GetAgentResponseBodyAgentExpertSuites(DaraModel):
         version: int = None,
         version_selector: str = None,
     ):
-        # If the suite is deleted, the release snapshot is missing, or the caller does not have permission to view it, the suite summary is not returned, and only the ID and version number are retained.
+        # If the suite is deleted, the published snapshot is missing, or the caller does not have permission to view it, the suite summary is not returned, and only the ID and version number are retained.
         self.description = description
         # The display name of the bound version.
         self.display_name = display_name
         # The suite name of the bound version.
         self.name = name
-        # The fixed official artifact version returned when explicitly querying a released version of the agent. This is not returned when querying a draft or a custom suite.
+        # Returns the fixed official artifact version when explicitly querying a published version of the agent. Not returned when querying a draft or a custom suite.
         self.package_version = package_version
-        # An optional suite summary field that is not returned by current new DataAgent applications. A default value does not indicate version 0. This cannot be used as the Version for UpdateAgent and must be omitted when writing back references. For the fixed version of official artifacts, read PackageVersion.
+        # An optional suite summary field that is not returned by current new DataAgent applications. A missing value does not indicate version 0. This field cannot be used as the Version for UpdateAgent and must be omitted when writing back references. For the fixed version of official artifacts, read PackageVersion.
         self.semantic_version = semantic_version
         # OFFICIAL indicates an official catalog resource. Omitted or DB indicates a personal or enterprise resource.
         self.source = source
-        # The expert suite ID.
+        # The ID of the expert suite.
         self.suite_id = suite_id
-        # Returned only when a personal or enterprise suite explicitly specifies a fixed integer version in the reference. This is not returned for official suites. An unreturned value is not 0. If the SDK initializes the default integer to 0, it must be omitted when writing back. For official items, only Source and SuiteId are written back, and Version, VersionSelector, SemanticVersion, or PackageVersion are not passed.
+        # Returned only when a personal or enterprise suite explicitly specifies a fixed integer version in the reference. Not returned for official suites. A missing value is not 0. If the SDK initializes a missing integer to 0, it must be omitted when writing back. For official items, only Source and SuiteId are written back, and Version, VersionSelector, SemanticVersion, or PackageVersion are not passed.
         self.version = version
-        # Returned only for personal or enterprise resources to indicate the saved version selection strategy, which is mutually exclusive with the fixed integer Version. It does not represent the specific revision actually loaded in the session. This is not returned for official resources.
+        # Returned only for personal or enterprise resources to indicate the saved version selection policy, which is mutually exclusive with the fixed integer Version. It does not represent the specific revision actually loaded in the session. Not returned for official resources.
         self.version_selector = version_selector
 
     def validate(self):

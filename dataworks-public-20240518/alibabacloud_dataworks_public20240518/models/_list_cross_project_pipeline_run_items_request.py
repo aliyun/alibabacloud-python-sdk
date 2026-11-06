@@ -14,9 +14,9 @@ class ListCrossProjectPipelineRunItemsRequest(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of items per page.
         self.page_size = page_size
-        # The ID of the cross-workspace publish pipeline.
+        # The cross-workspace deployment pipeline ID.
         # 
         # This parameter is required.
         self.pipeline_run_id = pipeline_run_id

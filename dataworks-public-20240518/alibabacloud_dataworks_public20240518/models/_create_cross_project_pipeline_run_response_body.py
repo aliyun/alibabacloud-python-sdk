@@ -14,9 +14,9 @@ class CreateCrossProjectPipelineRunResponseBody(DaraModel):
     ):
         # The business response.
         self.data = data
-        # The request ID, which is used to locate and troubleshoot this API call.
+        # The request ID, which is used to locate and troubleshoot the API call.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -59,7 +59,7 @@ class CreateCrossProjectPipelineRunResponseBodyData(DaraModel):
         pipeline_run_id: str = None,
         request_id: str = None,
     ):
-        # The cross-workspace deployment flow ID.
+        # The ID of the cross-workspace deployment pipeline.
         self.pipeline_run_id = pipeline_run_id
         # The request ID.
         self.request_id = request_id

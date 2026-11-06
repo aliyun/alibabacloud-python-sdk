@@ -30,20 +30,17 @@ class CreateAgentRequest(DaraModel):
         self.description = description
         # The display name of the agent.
         self.display_name = display_name
-        # The released expert suites bound to the agent. For personal or enterprise suites, use SuiteId and optionally specify a fixed Version or VersionSelector. For official suites, you must explicitly set Source to OFFICIAL and specify the SuiteId from the official catalog. Do not specify Version or VersionSelector. If this parameter is not specified, an empty list is created, and official suites are not loaded by default.
+        # The published expert suites bound to the agent. For personal or enterprise suites, use SuiteId, and optionally specify a fixed Version or VersionSelector. For official suites, you must explicitly specify Source=OFFICIAL and the SuiteId from the official catalog, and do not specify Version or VersionSelector. If not specified, an empty list is created, and all official suites are not loaded by default.
         self.expert_suites = expert_suites
-        # The extended metadata as key-value pairs.
+        # The extended metadata in key-value pairs.
         self.metadata = metadata
         # The model configuration.
         self.model = model
-        # The name of the agent. It must be unique within the current account.
+        # The name of the agent. The name must be unique within the current account.
         # 
         # This parameter is required.
         self.name = name
-        # Specifies whether to publish the agent immediately after creation. Valid values:
-        # - true: Publishes the created version.
-        # - false or omitted: Retains the original behavior of creating a draft only.
-        # Saving and publishing are not atomic operations. If publishing fails, the draft may already exist. Query the agent before retrying to avoid duplicate creation.
+        # Specifies whether to publish the agent immediately after creation. A value of true publishes the created version. A value of false or omitting this parameter maintains the original behavior of creating a draft only. Saving and publishing are not atomic operations. If publishing fails, the draft may already exist. Before retrying, query the agent first to avoid duplicate creation.
         self.publish_immediately = publish_immediately
         # The list of skills.
         self.skills = skills
@@ -56,7 +53,7 @@ class CreateAgentRequest(DaraModel):
         # `PROJECT`: Visible to specified projects.<br>
         # `USER`: Visible to specified users.
         self.visibility = visibility
-        # The visibility scope. The corresponding fields are used based on the Visibility parameter.
+        # The visibility scope. Specify the corresponding fields based on the Visibility value.
         self.visibility_scope = visibility_scope
 
     def validate(self):
@@ -229,8 +226,20 @@ class CreateAgentRequestVisibilityScope(DaraModel):
 class CreateAgentRequestTools(DaraModel):
     def __init__(
         self,
+        builtin_name: str = None,
+        kind: str = None,
+        mcp_items: List[str] = None,
+        mcp_server_name: str = None,
         name: str = None,
     ):
+        # Required when Kind is BUILTIN_TOOLSET. Specifies the name of the built-in toolset supported by the target server. Omit this parameter when Kind is MCP_TOOLSET.
+        self.builtin_name = builtin_name
+        # Required for valid tool references. BUILTIN_TOOLSET indicates a built-in toolset, and BuiltinName must be specified. MCP_TOOLSET indicates an MCP toolset, and McpServerName must be specified. The target server validates the parameter based on the tool type.
+        self.kind = kind
+        # Optional when Kind is MCP_TOOLSET. If specified, only the listed tools are used. If omitted or left as an empty array, tools are not filtered by name. Each item must be the name of an actual tool in the target MCP service.
+        self.mcp_items = mcp_items
+        # Required when Kind is MCP_TOOLSET. Specifies the MCP service name that the current caller has permission to reference and that has an active published version.
+        self.mcp_server_name = mcp_server_name
         # The name of the MCP server.
         self.name = name
 
@@ -242,6 +251,18 @@ class CreateAgentRequestTools(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.builtin_name is not None:
+            result['BuiltinName'] = self.builtin_name
+
+        if self.kind is not None:
+            result['Kind'] = self.kind
+
+        if self.mcp_items is not None:
+            result['McpItems'] = self.mcp_items
+
+        if self.mcp_server_name is not None:
+            result['McpServerName'] = self.mcp_server_name
+
         if self.name is not None:
             result['Name'] = self.name
 
@@ -249,6 +270,18 @@ class CreateAgentRequestTools(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BuiltinName') is not None:
+            self.builtin_name = m.get('BuiltinName')
+
+        if m.get('Kind') is not None:
+            self.kind = m.get('Kind')
+
+        if m.get('McpItems') is not None:
+            self.mcp_items = m.get('McpItems')
+
+        if m.get('McpServerName') is not None:
+            self.mcp_server_name = m.get('McpServerName')
+
         if m.get('Name') is not None:
             self.name = m.get('Name')
 
@@ -265,13 +298,13 @@ class CreateAgentRequestSkills(DaraModel):
     ):
         # The name of the skill.
         self.name = name
-        # The official catalog ID. Specify this parameter when Source is set to OFFICIAL. Do not specify Name, Version, or VersionSelector. Do not specify this parameter for personal or enterprise skills.
+        # When Source is OFFICIAL, specify the official catalog ID. Do not specify Name, Version, or VersionSelector. Do not specify this field for personal or enterprise skills.
         self.skill_id = skill_id
-        # The source of the skill. Valid values: OFFICIAL: official catalog resources. DB: personal or enterprise resources. If this parameter is omitted, the original query-by-name semantics are retained.
+        # OFFICIAL indicates an official catalog resource. DB indicates a personal or enterprise resource. If omitted, the original query-by-name semantics are maintained.
         self.source = source
-        # The fixed integer revision number of a released snapshot. This parameter applies only to personal or enterprise skills and is mutually exclusive with VersionSelector. Releasing a new version does not change the fixed reference. If both parameters are omitted, the latest version is used for each new session. Do not specify this parameter when Source is set to OFFICIAL.
+        # Used only for personal or enterprise skills. Specifies the fixed integer revision number of a published snapshot. This parameter is mutually exclusive with VersionSelector. Publishing a new version does not change the fixed reference. If both are omitted, the latest version is used for each new session. Do not specify this parameter when Source is OFFICIAL.
         self.version = version
-        # The version selection expression. This parameter applies only to personal or enterprise resources and is mutually exclusive with Version. It supports exact semantic versions, latest, and the full npm/node-semver range syntax, such as 1.2.*, ^1.2.3, ~1.2.3, >=1.0.0 <2.0.0, and 1.x || 2.x. If both parameters are omitted, latest is used, and the highest matching released version is selected for each new session. Existing fixed integer references remain unchanged. Do not specify this parameter when Source is set to OFFICIAL.
+        # Used only for personal or enterprise resources. This parameter is mutually exclusive with Version. Supports exact semantic versions, latest, and full npm/node-semver range syntax, such as 1.2.*, ^1.2.3, ~1.2.3, >=1.0.0 <2.0.0, and 1.x || 2.x. If both are omitted, the latest version is used, and the highest matching published version is selected for each new session. Existing fixed integer references remain unchanged. Do not specify this parameter when Source is OFFICIAL.
         self.version_selector = version_selector
 
     def validate(self):
@@ -326,13 +359,13 @@ class CreateAgentRequestExpertSuites(DaraModel):
         version: int = None,
         version_selector: str = None,
     ):
-        # The source of the expert suite. Valid values: OFFICIAL: official catalog resources. DB: personal or enterprise resources. If this parameter is omitted, the original database resource query semantics are retained. For official resources, the artifact version is fixed when the agent is released.
+        # OFFICIAL indicates an official catalog resource. DB indicates a personal or enterprise resource. If omitted, the original database resource query semantics are maintained. For official resources, the artifact version is fixed when the agent is published.
         self.source = source
-        # The ID of the expert suite. When you specify expert suite references, each item must include a SuiteId, which is verified by the server. When Source is set to OFFICIAL, this is the official catalog ID. Otherwise, this is the ID returned by expert suite management. The referenced resource must be visible to the caller.
+        # When passing expert suite references, each item must provide a SuiteId, which is validated by the server. When Source is OFFICIAL, this is the official catalog ID. Otherwise, this is the ID returned by expert suite management. The referenced resource must be visible to the caller.
         self.suite_id = suite_id
-        # The fixed integer revision number of a released snapshot. This parameter applies only to personal or enterprise suites and is mutually exclusive with VersionSelector. Releasing a new version does not change the fixed reference. If both parameters are omitted, the latest version is used for each new session. Do not specify this parameter when Source is set to OFFICIAL.
+        # Used only for personal or enterprise suites. Specifies the fixed integer revision number of a published snapshot. This parameter is mutually exclusive with VersionSelector. Publishing a new version does not change the fixed reference. If both are omitted, the latest version is used for each new session. Do not specify this parameter when Source is OFFICIAL.
         self.version = version
-        # The version selection expression. This parameter applies only to personal or enterprise resources and is mutually exclusive with Version. It supports exact semantic versions, latest, and the full npm/node-semver range syntax, such as 1.2.*, ^1.2.3, ~1.2.3, >=1.0.0 <2.0.0, and 1.x || 2.x. If both parameters are omitted, latest is used, and the highest matching released version is selected for each new session. Existing fixed integer references remain unchanged. Do not specify this parameter when Source is set to OFFICIAL.
+        # Used only for personal or enterprise resources. This parameter is mutually exclusive with Version. Supports exact semantic versions, latest, and full npm/node-semver range syntax, such as 1.2.*, ^1.2.3, ~1.2.3, >=1.0.0 <2.0.0, and 1.x || 2.x. If both are omitted, the latest version is used, and the highest matching published version is selected for each new session. Existing fixed integer references remain unchanged. Do not specify this parameter when Source is OFFICIAL.
         self.version_selector = version_selector
 
     def validate(self):

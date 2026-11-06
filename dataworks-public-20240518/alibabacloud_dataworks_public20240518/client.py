@@ -7,6 +7,7 @@ import json
 from typing import Dict, Generator, AsyncGenerator
 
 from alibabacloud_dataworks_public20240518 import models as main_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import exceptions as open_api_exceptions
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
@@ -31,6 +32,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'dataworks-public'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'ap-northeast-1': 'dataworks.ap-northeast-1.aliyuncs.com',
@@ -671,6 +675,92 @@ class Client(OpenApiClient):
     ) -> main_models.ApproveProcessInstanceResponse:
         runtime = RuntimeOptions()
         return await self.approve_process_instance_with_options_async(request, runtime)
+
+    def archive_agent_session_with_options(
+        self,
+        tmp_req: main_models.ArchiveAgentSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ArchiveAgentSessionResponse:
+        tmp_req.validate()
+        request = main_models.ArchiveAgentSessionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'Params', 'json')
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.jsonrpc):
+            body['Jsonrpc'] = request.jsonrpc
+        if not DaraCore.is_null(request.params_shrink):
+            body['Params'] = request.params_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ArchiveAgentSession',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ArchiveAgentSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def archive_agent_session_with_options_async(
+        self,
+        tmp_req: main_models.ArchiveAgentSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ArchiveAgentSessionResponse:
+        tmp_req.validate()
+        request = main_models.ArchiveAgentSessionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'Params', 'json')
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.jsonrpc):
+            body['Jsonrpc'] = request.jsonrpc
+        if not DaraCore.is_null(request.params_shrink):
+            body['Params'] = request.params_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ArchiveAgentSession',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ArchiveAgentSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def archive_agent_session(
+        self,
+        request: main_models.ArchiveAgentSessionRequest,
+    ) -> main_models.ArchiveAgentSessionResponse:
+        runtime = RuntimeOptions()
+        return self.archive_agent_session_with_options(request, runtime)
+
+    async def archive_agent_session_async(
+        self,
+        request: main_models.ArchiveAgentSessionRequest,
+    ) -> main_models.ArchiveAgentSessionResponse:
+        runtime = RuntimeOptions()
+        return await self.archive_agent_session_with_options_async(request, runtime)
 
     def associate_project_to_image_with_options(
         self,
@@ -2009,6 +2099,88 @@ class Client(OpenApiClient):
     ) -> main_models.CreateCalendarResponse:
         runtime = RuntimeOptions()
         return await self.create_calendar_with_options_async(request, runtime)
+
+    def create_code_review_with_options(
+        self,
+        request: main_models.CreateCodeReviewRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCodeReviewResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.pipeline_run_id):
+            body['PipelineRunId'] = request.pipeline_run_id
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.reviewers):
+            body['Reviewers'] = request.reviewers
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCodeReview',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCodeReviewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_code_review_with_options_async(
+        self,
+        request: main_models.CreateCodeReviewRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCodeReviewResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.pipeline_run_id):
+            body['PipelineRunId'] = request.pipeline_run_id
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.reviewers):
+            body['Reviewers'] = request.reviewers
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCodeReview',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCodeReviewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_code_review(
+        self,
+        request: main_models.CreateCodeReviewRequest,
+    ) -> main_models.CreateCodeReviewResponse:
+        runtime = RuntimeOptions()
+        return self.create_code_review_with_options(request, runtime)
+
+    async def create_code_review_async(
+        self,
+        request: main_models.CreateCodeReviewRequest,
+    ) -> main_models.CreateCodeReviewResponse:
+        runtime = RuntimeOptions()
+        return await self.create_code_review_with_options_async(request, runtime)
 
     def create_component_with_options(
         self,
@@ -7324,6 +7496,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_agent_with_options_async(request, runtime)
 
+    def delete_agent_session_with_options(
+        self,
+        tmp_req: main_models.DeleteAgentSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAgentSessionResponse:
+        tmp_req.validate()
+        request = main_models.DeleteAgentSessionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'Params', 'json')
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.jsonrpc):
+            body['Jsonrpc'] = request.jsonrpc
+        if not DaraCore.is_null(request.params_shrink):
+            body['Params'] = request.params_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAgentSession',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAgentSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_agent_session_with_options_async(
+        self,
+        tmp_req: main_models.DeleteAgentSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAgentSessionResponse:
+        tmp_req.validate()
+        request = main_models.DeleteAgentSessionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'Params', 'json')
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.jsonrpc):
+            body['Jsonrpc'] = request.jsonrpc
+        if not DaraCore.is_null(request.params_shrink):
+            body['Params'] = request.params_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAgentSession',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAgentSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_agent_session(
+        self,
+        request: main_models.DeleteAgentSessionRequest,
+    ) -> main_models.DeleteAgentSessionResponse:
+        runtime = RuntimeOptions()
+        return self.delete_agent_session_with_options(request, runtime)
+
+    async def delete_agent_session_async(
+        self,
+        request: main_models.DeleteAgentSessionRequest,
+    ) -> main_models.DeleteAgentSessionResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_agent_session_with_options_async(request, runtime)
+
     def delete_alert_rule_with_options(
         self,
         request: main_models.DeleteAlertRuleRequest,
@@ -11900,6 +12158,158 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_agent_session_artifact_meta_with_options_async(request, runtime)
 
+    def get_agent_session_events_with_sse(
+        self,
+        request: main_models.GetAgentSessionEventsRequest,
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.GetAgentSessionEventsResponse, None, None]:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.event_epoch):
+            query['EventEpoch'] = request.event_epoch
+        if not DaraCore.is_null(request.session_code):
+            query['SessionCode'] = request.session_code
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentSessionEvents',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.GetAgentSessionEventsResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    async def get_agent_session_events_with_sse_async(
+        self,
+        request: main_models.GetAgentSessionEventsRequest,
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.GetAgentSessionEventsResponse, None, None]:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.event_epoch):
+            query['EventEpoch'] = request.event_epoch
+        if not DaraCore.is_null(request.session_code):
+            query['SessionCode'] = request.session_code
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentSessionEvents',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.GetAgentSessionEventsResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    def get_agent_session_events_with_options(
+        self,
+        request: main_models.GetAgentSessionEventsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentSessionEventsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.event_epoch):
+            query['EventEpoch'] = request.event_epoch
+        if not DaraCore.is_null(request.session_code):
+            query['SessionCode'] = request.session_code
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentSessionEvents',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentSessionEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_agent_session_events_with_options_async(
+        self,
+        request: main_models.GetAgentSessionEventsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentSessionEventsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.event_epoch):
+            query['EventEpoch'] = request.event_epoch
+        if not DaraCore.is_null(request.session_code):
+            query['SessionCode'] = request.session_code
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentSessionEvents',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentSessionEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_agent_session_events(
+        self,
+        request: main_models.GetAgentSessionEventsRequest,
+    ) -> main_models.GetAgentSessionEventsResponse:
+        runtime = RuntimeOptions()
+        return self.get_agent_session_events_with_options(request, runtime)
+
+    async def get_agent_session_events_async(
+        self,
+        request: main_models.GetAgentSessionEventsRequest,
+    ) -> main_models.GetAgentSessionEventsResponse:
+        runtime = RuntimeOptions()
+        return await self.get_agent_session_events_with_options_async(request, runtime)
+
     def get_agent_session_token_usage_with_options(
         self,
         tmp_req: main_models.GetAgentSessionTokenUsageRequest,
@@ -12471,6 +12881,80 @@ class Client(OpenApiClient):
     ) -> main_models.GetCertificateResponse:
         runtime = RuntimeOptions()
         return await self.get_certificate_with_options_async(request, runtime)
+
+    def get_code_review_with_options(
+        self,
+        request: main_models.GetCodeReviewRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCodeReviewResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCodeReview',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCodeReviewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_code_review_with_options_async(
+        self,
+        request: main_models.GetCodeReviewRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCodeReviewResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCodeReview',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCodeReviewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_code_review(
+        self,
+        request: main_models.GetCodeReviewRequest,
+    ) -> main_models.GetCodeReviewResponse:
+        runtime = RuntimeOptions()
+        return self.get_code_review_with_options(request, runtime)
+
+    async def get_code_review_async(
+        self,
+        request: main_models.GetCodeReviewRequest,
+    ) -> main_models.GetCodeReviewResponse:
+        runtime = RuntimeOptions()
+        return await self.get_code_review_with_options_async(request, runtime)
 
     def get_column_with_options(
         self,
@@ -18367,6 +18851,96 @@ class Client(OpenApiClient):
     ) -> main_models.ListCertificatesResponse:
         runtime = RuntimeOptions()
         return await self.list_certificates_with_options_async(request, runtime)
+
+    def list_code_reviews_with_options(
+        self,
+        request: main_models.ListCodeReviewsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCodeReviewsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.creator):
+            query['Creator'] = request.creator
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.reviewer):
+            query['Reviewer'] = request.reviewer
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCodeReviews',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCodeReviewsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_code_reviews_with_options_async(
+        self,
+        request: main_models.ListCodeReviewsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCodeReviewsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.creator):
+            query['Creator'] = request.creator
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.reviewer):
+            query['Reviewer'] = request.reviewer
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCodeReviews',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCodeReviewsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_code_reviews(
+        self,
+        request: main_models.ListCodeReviewsRequest,
+    ) -> main_models.ListCodeReviewsResponse:
+        runtime = RuntimeOptions()
+        return self.list_code_reviews_with_options(request, runtime)
+
+    async def list_code_reviews_async(
+        self,
+        request: main_models.ListCodeReviewsRequest,
+    ) -> main_models.ListCodeReviewsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_code_reviews_with_options_async(request, runtime)
 
     def list_columns_with_options(
         self,
@@ -26696,6 +27270,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.preview_dataset_version_with_options_async(request, runtime)
 
+    def preview_task_parameters_with_options(
+        self,
+        request: main_models.PreviewTaskParametersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PreviewTaskParametersResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.bizdate):
+            body['Bizdate'] = request.bizdate
+        if not DaraCore.is_null(request.cron):
+            body['Cron'] = request.cron
+        if not DaraCore.is_null(request.parameters):
+            body['Parameters'] = request.parameters
+        if not DaraCore.is_null(request.preview_count):
+            body['PreviewCount'] = request.preview_count
+        if not DaraCore.is_null(request.project_env):
+            body['ProjectEnv'] = request.project_env
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PreviewTaskParameters',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PreviewTaskParametersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def preview_task_parameters_with_options_async(
+        self,
+        request: main_models.PreviewTaskParametersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PreviewTaskParametersResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.bizdate):
+            body['Bizdate'] = request.bizdate
+        if not DaraCore.is_null(request.cron):
+            body['Cron'] = request.cron
+        if not DaraCore.is_null(request.parameters):
+            body['Parameters'] = request.parameters
+        if not DaraCore.is_null(request.preview_count):
+            body['PreviewCount'] = request.preview_count
+        if not DaraCore.is_null(request.project_env):
+            body['ProjectEnv'] = request.project_env
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PreviewTaskParameters',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PreviewTaskParametersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def preview_task_parameters(
+        self,
+        request: main_models.PreviewTaskParametersRequest,
+    ) -> main_models.PreviewTaskParametersResponse:
+        runtime = RuntimeOptions()
+        return self.preview_task_parameters_with_options(request, runtime)
+
+    async def preview_task_parameters_async(
+        self,
+        request: main_models.PreviewTaskParametersRequest,
+    ) -> main_models.PreviewTaskParametersResponse:
+        runtime = RuntimeOptions()
+        return await self.preview_task_parameters_with_options_async(request, runtime)
+
     def prompt_agent_session_with_sse(
         self,
         tmp_req: main_models.PromptAgentSessionRequest,
@@ -29620,6 +30288,160 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.un_tag_data_assets_with_options_async(request, runtime)
 
+    def update_agent_with_options(
+        self,
+        tmp_req: main_models.UpdateAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAgentResponse:
+        tmp_req.validate()
+        request = main_models.UpdateAgentShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.callable_agents):
+            request.callable_agents_shrink = Utils.array_to_string_with_specified_style(tmp_req.callable_agents, 'CallableAgents', 'json')
+        if not DaraCore.is_null(tmp_req.expert_suites):
+            request.expert_suites_shrink = Utils.array_to_string_with_specified_style(tmp_req.expert_suites, 'ExpertSuites', 'json')
+        if not DaraCore.is_null(tmp_req.metadata):
+            request.metadata_shrink = Utils.array_to_string_with_specified_style(tmp_req.metadata, 'Metadata', 'json')
+        if not DaraCore.is_null(tmp_req.model):
+            request.model_shrink = Utils.array_to_string_with_specified_style(tmp_req.model, 'Model', 'json')
+        if not DaraCore.is_null(tmp_req.skills):
+            request.skills_shrink = Utils.array_to_string_with_specified_style(tmp_req.skills, 'Skills', 'json')
+        if not DaraCore.is_null(tmp_req.tools):
+            request.tools_shrink = Utils.array_to_string_with_specified_style(tmp_req.tools, 'Tools', 'json')
+        if not DaraCore.is_null(tmp_req.visibility_scope):
+            request.visibility_scope_shrink = Utils.array_to_string_with_specified_style(tmp_req.visibility_scope, 'VisibilityScope', 'json')
+        body = {}
+        if not DaraCore.is_null(request.callable_agents_shrink):
+            body['CallableAgents'] = request.callable_agents_shrink
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.display_name):
+            body['DisplayName'] = request.display_name
+        if not DaraCore.is_null(request.expected_version):
+            body['ExpectedVersion'] = request.expected_version
+        if not DaraCore.is_null(request.expert_suites_shrink):
+            body['ExpertSuites'] = request.expert_suites_shrink
+        if not DaraCore.is_null(request.metadata_shrink):
+            body['Metadata'] = request.metadata_shrink
+        if not DaraCore.is_null(request.model_shrink):
+            body['Model'] = request.model_shrink
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.publish_immediately):
+            body['PublishImmediately'] = request.publish_immediately
+        if not DaraCore.is_null(request.skills_shrink):
+            body['Skills'] = request.skills_shrink
+        if not DaraCore.is_null(request.system_prompt):
+            body['SystemPrompt'] = request.system_prompt
+        if not DaraCore.is_null(request.tools_shrink):
+            body['Tools'] = request.tools_shrink
+        if not DaraCore.is_null(request.visibility):
+            body['Visibility'] = request.visibility
+        if not DaraCore.is_null(request.visibility_scope_shrink):
+            body['VisibilityScope'] = request.visibility_scope_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAgent',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_agent_with_options_async(
+        self,
+        tmp_req: main_models.UpdateAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAgentResponse:
+        tmp_req.validate()
+        request = main_models.UpdateAgentShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.callable_agents):
+            request.callable_agents_shrink = Utils.array_to_string_with_specified_style(tmp_req.callable_agents, 'CallableAgents', 'json')
+        if not DaraCore.is_null(tmp_req.expert_suites):
+            request.expert_suites_shrink = Utils.array_to_string_with_specified_style(tmp_req.expert_suites, 'ExpertSuites', 'json')
+        if not DaraCore.is_null(tmp_req.metadata):
+            request.metadata_shrink = Utils.array_to_string_with_specified_style(tmp_req.metadata, 'Metadata', 'json')
+        if not DaraCore.is_null(tmp_req.model):
+            request.model_shrink = Utils.array_to_string_with_specified_style(tmp_req.model, 'Model', 'json')
+        if not DaraCore.is_null(tmp_req.skills):
+            request.skills_shrink = Utils.array_to_string_with_specified_style(tmp_req.skills, 'Skills', 'json')
+        if not DaraCore.is_null(tmp_req.tools):
+            request.tools_shrink = Utils.array_to_string_with_specified_style(tmp_req.tools, 'Tools', 'json')
+        if not DaraCore.is_null(tmp_req.visibility_scope):
+            request.visibility_scope_shrink = Utils.array_to_string_with_specified_style(tmp_req.visibility_scope, 'VisibilityScope', 'json')
+        body = {}
+        if not DaraCore.is_null(request.callable_agents_shrink):
+            body['CallableAgents'] = request.callable_agents_shrink
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.display_name):
+            body['DisplayName'] = request.display_name
+        if not DaraCore.is_null(request.expected_version):
+            body['ExpectedVersion'] = request.expected_version
+        if not DaraCore.is_null(request.expert_suites_shrink):
+            body['ExpertSuites'] = request.expert_suites_shrink
+        if not DaraCore.is_null(request.metadata_shrink):
+            body['Metadata'] = request.metadata_shrink
+        if not DaraCore.is_null(request.model_shrink):
+            body['Model'] = request.model_shrink
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.publish_immediately):
+            body['PublishImmediately'] = request.publish_immediately
+        if not DaraCore.is_null(request.skills_shrink):
+            body['Skills'] = request.skills_shrink
+        if not DaraCore.is_null(request.system_prompt):
+            body['SystemPrompt'] = request.system_prompt
+        if not DaraCore.is_null(request.tools_shrink):
+            body['Tools'] = request.tools_shrink
+        if not DaraCore.is_null(request.visibility):
+            body['Visibility'] = request.visibility
+        if not DaraCore.is_null(request.visibility_scope_shrink):
+            body['VisibilityScope'] = request.visibility_scope_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAgent',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_agent(
+        self,
+        request: main_models.UpdateAgentRequest,
+    ) -> main_models.UpdateAgentResponse:
+        runtime = RuntimeOptions()
+        return self.update_agent_with_options(request, runtime)
+
+    async def update_agent_async(
+        self,
+        request: main_models.UpdateAgentRequest,
+    ) -> main_models.UpdateAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.update_agent_with_options_async(request, runtime)
+
     def update_agent_session_title_with_options(
         self,
         tmp_req: main_models.UpdateAgentSessionTitleRequest,
@@ -30023,6 +30845,84 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateCalendarResponse:
         runtime = RuntimeOptions()
         return await self.update_calendar_with_options_async(request, runtime)
+
+    def update_code_review_with_options(
+        self,
+        request: main_models.UpdateCodeReviewRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCodeReviewResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCodeReview',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCodeReviewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_code_review_with_options_async(
+        self,
+        request: main_models.UpdateCodeReviewRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCodeReviewResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCodeReview',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCodeReviewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_code_review(
+        self,
+        request: main_models.UpdateCodeReviewRequest,
+    ) -> main_models.UpdateCodeReviewResponse:
+        runtime = RuntimeOptions()
+        return self.update_code_review_with_options(request, runtime)
+
+    async def update_code_review_async(
+        self,
+        request: main_models.UpdateCodeReviewRequest,
+    ) -> main_models.UpdateCodeReviewResponse:
+        runtime = RuntimeOptions()
+        return await self.update_code_review_with_options_async(request, runtime)
 
     def update_column_business_metadata_with_options(
         self,

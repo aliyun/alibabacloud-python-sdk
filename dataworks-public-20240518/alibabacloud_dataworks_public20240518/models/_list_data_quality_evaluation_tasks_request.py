@@ -13,11 +13,11 @@ class ListDataQualityEvaluationTasksRequest(DaraModel):
         project_id: int = None,
         table_guid: str = None,
     ):
-        # The name of the data quality evaluation task for fuzzy matching.
+        # The keyword used to fuzzy match the name of the data quality check task.
         self.name = name
-        # The page number for the paging query of the list. Default value: 1.
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # The page size for the paging query of the list. Default value: 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
         # The ID of the DataWorks workspace.
         self.project_id = project_id

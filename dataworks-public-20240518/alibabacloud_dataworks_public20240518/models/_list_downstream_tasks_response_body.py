@@ -15,7 +15,7 @@ class ListDownstreamTasksResponseBody(DaraModel):
     ):
         # The pagination information.
         self.paging_info = paging_info
-        # The request ID, which is used to locate logs and troubleshoot issues.
+        # The request ID. You can use this ID to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -55,13 +55,13 @@ class ListDownstreamTasksResponseBodyPagingInfo(DaraModel):
         tasks: List[main_models.ListDownstreamTasksResponseBodyPagingInfoTasks] = None,
         total_count: int = None,
     ):
-        # The list of downstream nodes.
+        # The list of downstream tasks.
         self.downstream_tasks = downstream_tasks
         # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # **[Deprecated]** The list of nodes. Use DownstreamTasks instead.
+        # **[Deprecated]** The list of tasks. Use DownstreamTasks instead.
         self.tasks = tasks
         # The total number of entries.
         self.total_count = total_count
@@ -161,43 +161,43 @@ class ListDownstreamTasksResponseBodyPagingInfoTasks(DaraModel):
         # 
         # The value is a 13-digit number, such as `1710239005403`.
         self.create_time = create_time
-        # The account ID of the user who created the node.
+        # The account ID of the user who created the task.
         self.create_user = create_user
         # The associated data source information.
         self.data_source = data_source
         # The description.
         self.description = description
         # The project environment. Valid values:
-        # - Prod: Production environment.
-        # - Dev: Development environment.
+        # - Prod: Production.
+        # - Dev: Development.
         self.env_type = env_type
-        # The unique identifier of the node.
+        # The unique identifier of the task.
         self.id = id
         # The instance generation mode. Valid values:
         # - T+1: Generated on the next day.
         # - Immediately: Generated immediately.
         self.instance_mode = instance_mode
-        # The modification time.
+        # The update time.
         # 
         # The value is a 13-digit number, such as `1710239005403`.
         self.modify_time = modify_time
-        # The account ID of the user who modified the node.
+        # The account ID of the user who updated the task.
         self.modify_user = modify_user
         # The name.
         self.name = name
-        # The account ID of the node owner.
+        # The account ID of the task owner.
         self.owner = owner
-        # The node priority. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
+        # The task priority. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
         self.priority = priority
         # **[Deprecated]** The project environment. Use EnvType instead.
         self.project_env = project_env
         # The project ID.
         self.project_id = project_id
-        # The retry time interval, in seconds.
+        # The retry interval, in seconds.
         self.rerun_interval = rerun_interval
-        # The rerun configuration of the node.
+        # The rerun configuration of the task.
         self.rerun_mode = rerun_mode
-        # The number of retries. This parameter takes effect only when the node is configured to allow reruns.
+        # The number of retries. This parameter takes effect only when the task is configured to be rerunnable.
         self.rerun_times = rerun_times
         # The runtime environment configuration, such as the resource group information.
         self.runtime_resource = runtime_resource
@@ -205,13 +205,13 @@ class ListDownstreamTasksResponseBodyPagingInfoTasks(DaraModel):
         # - Normal: Same-cycle dependency.
         # - CrossCycle: Cross-cycle dependency.
         self.step_type = step_type
-        # The node execution timeout period, in seconds.
+        # The task execution timeout period, in seconds.
         self.timeout = timeout
-        # The trigger method of the node.
+        # The trigger method of the task.
         self.trigger = trigger
-        # The node type.
+        # The task type.
         self.type = type
-        # The ID of the workflow to which the node belongs.
+        # The ID of the workflow to which the task belongs.
         self.workflow_id = workflow_id
 
     def validate(self):
@@ -396,11 +396,11 @@ class ListDownstreamTasksResponseBodyPagingInfoTasksTrigger(DaraModel):
         # 
         # The format is `yyyy-MM-dd HH:mm:ss`, such as `9999-01-01 00:00:00`. The example does not include a time zone identifier.
         self.end_time = end_time
-        # The running mode upon triggering. This parameter takes effect only when Type is set to Scheduler.
+        # The running mode when the task is triggered. This parameter takes effect only when Type is set to Scheduler.
         self.recurrence = recurrence
-        # The effective period of epoch triggering. This parameter takes effect only when Type is set to Scheduler.
+        # The effective time of periodic triggering. This parameter takes effect only when Type is set to Scheduler.
         # 
-        # The format is `yyyy-MM-dd HH:mm:ss`, such as `1970-01-01 00:00:00`. The example does not include a time zone identity.
+        # The format is `yyyy-MM-dd HH:mm:ss`, such as `1970-01-01 00:00:00`. The example does not include a time zone identifier.
         self.start_time = start_time
         # The time zone.
         self.timezone = timezone
@@ -464,11 +464,11 @@ class ListDownstreamTasksResponseBodyPagingInfoTasksRuntimeResource(DaraModel):
         image: str = None,
         resource_group_id: str = None,
     ):
-        # The compute unit (CU) consumption configured for node execution.
+        # The number of compute units (CUs) consumed during task execution.
         self.cu = cu
-        # The ID of the image configured for node execution.
+        # The ID of the image configured for task execution.
         self.image = image
-        # The identifier of the schedule resource group configured for node execution.
+        # The identifier of the scheduling resource group configured for task execution.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -541,7 +541,7 @@ class ListDownstreamTasksResponseBodyPagingInfoDownstreamTasks(DaraModel):
         # - Normal: Same-cycle dependency.
         # - CrossCycle: Cross-cycle dependency.
         self.dependency_type = dependency_type
-        # The detailed information of the node.
+        # The details of the task.
         self.task = task
 
     def validate(self):
@@ -604,54 +604,54 @@ class ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask(DaraModel):
         # 
         # The value is a 13-digit number, such as `1710239005403`.
         self.create_time = create_time
-        # The account ID of the user who created the node.
+        # The account ID of the user who created the task.
         self.create_user = create_user
         # The associated data source information.
         self.data_source = data_source
         # The description.
         self.description = description
         # The project environment. Valid values:
-        # - Prod: Production environment.
-        # - Dev: Development environment.
+        # - Prod: Production.
+        # - Dev: Development.
         self.env_type = env_type
-        # The unique identifier of the node.
+        # The unique identifier of the task.
         self.id = id
         # The instance generation mode. Valid values:
         # - T+1: Generated on the next day.
         # - Immediately: Generated immediately.
         self.instance_mode = instance_mode
-        # The modification time.
+        # The update time.
         # 
         # The value is a 13-digit number, such as `1710239005403`.
         self.modify_time = modify_time
-        # The account ID of the user who modified the node.
+        # The account ID of the user who updated the task.
         self.modify_user = modify_user
         # The name.
         self.name = name
-        # The account ID of the node owner.
+        # The account ID of the task owner.
         self.owner = owner
-        # The node priority. Valid values: 1 to 8.
+        # The task priority. Valid values: 1 to 8.
         self.priority = priority
         # The project ID.
         self.project_id = project_id
-        # The retry time interval, in seconds.
+        # The retry interval, in seconds.
         self.rerun_interval = rerun_interval
-        # The rerun configuration of the node. Valid values:
-        # - AllDenied: The node cannot be rerun regardless of success or failure.
-        # - FailureAllowed: The node can be rerun only when it fails.
-        # - AllAllowed: The node can be rerun regardless of whether it succeeds or fails.
+        # The rerun configuration of the task. Valid values:
+        # - AllDenied: The task cannot be rerun regardless of whether it succeeds or fails.
+        # - FailureAllowed: The task can be rerun only when it fails.
+        # - AllAllowed: The task can be rerun regardless of whether it succeeds or fails.
         self.rerun_mode = rerun_mode
-        # The number of retries. This parameter takes effect only when the node is configured to allow reruns.
+        # The number of retries. This parameter takes effect only when the task is configured to be rerunnable.
         self.rerun_times = rerun_times
         # The runtime environment configuration, such as the resource group information.
         self.runtime_resource = runtime_resource
-        # The node execution timeout period, in seconds.
+        # The task execution timeout period, in seconds.
         self.timeout = timeout
-        # The trigger method of the node.
+        # The trigger method of the task.
         self.trigger = trigger
-        # The node type.
+        # The task type.
         self.type = type
-        # The ID of the workflow to which the node belongs.
+        # The ID of the workflow to which the task belongs.
         self.workflow_id = workflow_id
 
     def validate(self):
@@ -824,20 +824,20 @@ class ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskTrigger(DaraMo
         # 
         # The format is `yyyy-MM-dd HH:mm:ss`, such as `9999-01-01 00:00:00`. The example does not include a time zone identifier.
         self.end_time = end_time
-        # The execution mode when triggered. This parameter takes effect only when Type is set to Scheduler.
+        # The execution mode when the task is triggered. This parameter takes effect only when Type is set to Scheduler. Valid values:
         # - Pause: Paused.
         # - Skip: Dry run.
         # - Normal: Normal execution.
         self.recurrence = recurrence
-        # The effective period for epoch triggers. This parameter takes effect only when Type is set to Scheduler.
+        # The effective time of periodic triggering. This parameter takes effect only when Type is set to Scheduler.
         # 
-        # The format is `yyyy-MM-dd HH:mm:ss`, such as `1970-01-01 00:00:00`. This example does not include a time zone identity.
+        # The format is `yyyy-MM-dd HH:mm:ss`, such as `1970-01-01 00:00:00`. The example does not include a time zone identifier.
         self.start_time = start_time
         # The time zone.
         self.timezone = timezone
-        # The trigger type.
+        # The trigger type. Valid values:
         # - Scheduler: Triggered by a scheduling cycle.
-        # - Manual: Triggered manually.
+        # - Manual: Manually triggered.
         self.type = type
 
     def validate(self):
@@ -897,11 +897,11 @@ class ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskRuntimeResourc
         image: str = None,
         resource_group_id: str = None,
     ):
-        # The compute unit (CU) consumption configured for node execution.
+        # The number of compute units (CUs) consumed during task execution.
         self.cu = cu
-        # The ID of the image configured for node execution.
+        # The ID of the image configured for task execution.
         self.image = image
-        # The identifier of the schedule resource group configured for node execution.
+        # The identifier of the scheduling resource group configured for task execution.
         self.resource_group_id = resource_group_id
 
     def validate(self):

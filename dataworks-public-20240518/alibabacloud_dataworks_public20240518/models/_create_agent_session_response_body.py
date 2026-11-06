@@ -13,9 +13,9 @@ class CreateAgentSessionResponseBody(DaraModel):
         json_rpc_response: main_models.CreateAgentSessionResponseBodyJsonRpcResponse = None,
         request_id: str = None,
     ):
-        # The JSON-RPC response.
+        # The JSON-RPC response result.
         self.json_rpc_response = json_rpc_response
-        # Id of the request
+        # The request ID for this OpenAPI call. You can use it to troubleshoot issues with the call.
         self.request_id = request_id
 
     def validate(self):
@@ -55,15 +55,15 @@ class CreateAgentSessionResponseBodyJsonRpcResponse(DaraModel):
         result: main_models.CreateAgentSessionResponseBodyJsonRpcResponseResult = None,
         timestamp: int = None,
     ):
-        # The JSON-RPC error message. This field is not returned if the request is successful.
+        # The JSON-RPC error message. This field is not returned when the request is successful.
         self.error = error
         # The ID passed by the requester. The value is returned as is.
         self.id = id
-        # The JSON-RPC version. This value is always 2.0.
+        # The JSON-RPC version. Fixed to 2.0.
         self.jsonrpc = jsonrpc
-        # The business data. The value is null if an error occurs.
+        # The business data. The value is null when an error occurs.
         self.result = result
-        # The response time. The value is a UNIX timestamp in milliseconds.
+        # The response time. It is a UNIX timestamp in milliseconds.
         self.timestamp = timestamp
 
     def validate(self):

@@ -13,7 +13,7 @@ class ListDataAssetTagsResponseBody(DaraModel):
         paging_info: main_models.ListDataAssetTagsResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
-        # The paginated query results for the tag list.
+        # The paginated query results of the tag list.
         self.paging_info = paging_info
         # Id of the request
         self.request_id = request_id
@@ -123,15 +123,15 @@ class ListDataAssetTagsResponseBodyPagingInfoDataAssetTags(DaraModel):
         value_type: str = None,
         values: List[str] = None,
     ):
-        # The tag type.
+        # The tag category. Valid values:
         # - Normal
         # - System
         self.category = category
-        # The creation time of the tag.
+        # The time when the tag was created.
         # 
         # The value is a 13-digit number, such as `1735890003000`.
         self.create_time = create_time
-        # The creator of the tag.
+        # The user who created the tag.
         self.create_user = create_user
         # The description.
         self.description = description
@@ -139,7 +139,7 @@ class ListDataAssetTagsResponseBodyPagingInfoDataAssetTags(DaraModel):
         self.key = key
         # The list of tag administrators.
         self.managers = managers
-        # The last modification time of the tag.
+        # The time when the tag was last modified.
         # 
         # The value is a 13-digit number, such as `1735890003000`.
         self.modify_time = modify_time

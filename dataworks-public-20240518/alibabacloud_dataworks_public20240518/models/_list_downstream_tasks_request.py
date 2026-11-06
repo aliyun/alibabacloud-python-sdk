@@ -12,7 +12,7 @@ class ListDownstreamTasksRequest(DaraModel):
         page_size: int = None,
         project_env: str = None,
     ):
-        # The node ID.
+        # The task ID.
         # 
         # This parameter is required.
         self.id = id

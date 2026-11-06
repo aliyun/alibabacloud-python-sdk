@@ -14,11 +14,11 @@ class ListCrossProjectPipelineRunItemsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business response.
+        # The response data.
         self.data = data
-        # The request ID, which is used to locate and troubleshoot this API call.
+        # The request ID used to locate and troubleshoot the API call.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -66,9 +66,9 @@ class ListCrossProjectPipelineRunItemsResponseBodyData(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of items per page.
         self.page_size = page_size
-        # The list of publish items for the root objects and their child objects that are fixed in the cross-workspace publish pipeline.
+        # The list of publish items for the root object and its child objects in the cross-workspace publish pipeline.
         self.pipeline_run_items = pipeline_run_items
         # The request ID.
         self.request_id = request_id
@@ -149,17 +149,17 @@ class ListCrossProjectPipelineRunItemsResponseBodyDataPipelineRunItems(DaraModel
         self.error_message = error_message
         # Indicates whether the object is a root object.
         self.is_root = is_root
-        # The ID of the publish object.
+        # The ID of the deployment object.
         self.object_id = object_id
-        # The name of the publish object.
+        # The name of the deployment object.
         self.object_name = object_name
-        # The object type of the publish object.
+        # The deployment object type.
         self.object_type = object_type
-        # The version of the publish object.
+        # The version of the deployment object.
         self.object_version = object_version
         # The ID of the parent object.
         self.parent_object_id = parent_object_id
-        # The status of the publish item.
+        # The status of the deployment item.
         self.status = status
 
     def validate(self):

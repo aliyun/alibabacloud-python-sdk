@@ -13,7 +13,7 @@ class ListDataQualityEvaluationTasksResponseBody(DaraModel):
         paging_info: main_models.ListDataQualityEvaluationTasksResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
-        # The paging query results of the data quality evaluation tasks.
+        # The paged query results of the data quality check tasks.
         self.paging_info = paging_info
         # The ID of the API request.
         self.request_id = request_id
@@ -54,7 +54,7 @@ class ListDataQualityEvaluationTasksResponseBodyPagingInfo(DaraModel):
         page_size: str = None,
         total_count: str = None,
     ):
-        # The data quality evaluation tasks.
+        # The data quality check tasks.
         self.data_quality_evaluation_tasks = data_quality_evaluation_tasks
         # The page number.
         self.page_number = page_number
@@ -123,24 +123,25 @@ class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationT
         target: main_models.ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTarget = None,
         trigger: main_models.ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTrigger = None,
     ):
+        # The ID of the data source used by the data quality monitoring task.
         self.data_source_id = data_source_id
-        # The description of the data quality evaluation task. The description can be up to 65,535 characters in length.
+        # The description of the data quality check task. The description can be up to 65,535 characters in length.
         self.description = description
-        # The callback settings in the instance lifecycle epoch of the data quality evaluation task. Currently, only one hook that blocks scheduling tasks is supported.
+        # The callback settings in the lifecycle of the data quality check task instance. Currently, only one hook that blocks the scheduled task is supported.
         self.hooks = hooks
-        # The ID of the data quality evaluation task.
+        # The ID of the data quality check task.
         self.id = id
-        # The name of the data quality evaluation task. The name can contain digits, letters, Chinese characters, and half-width or full-width punctuation marks, and can be up to 255 characters in length.
+        # The name of the data quality check task. The name can contain digits, letters, Chinese characters, and half-width or full-width punctuation marks, and can be up to 255 characters in length.
         self.name = name
         # The alert configuration.
         self.notifications = notifications
         # The ID of the DataWorks workspace.
         self.project_id = project_id
-        # The settings for using the data source. Currently, you can only specify the YARN queue for EMR and set the SQL engine to SPARK_SQL, KYUUBI, PRESTO_SQL, or HIVE_SQL when collecting EMR tables.
+        # The settings used when accessing the data source. Currently, you can only specify the YARN queue for EMR and set the SQL engine to SPARK_SQL, KYUUBI, PRESTO_SQL, or HIVE_SQL when collecting EMR tables.
         self.runtime_conf = runtime_conf
-        # The monitored object of the data quality evaluation task.
+        # The monitored object of the data quality check task.
         self.target = target
-        # The trigger configuration of the data quality evaluation task.
+        # The trigger configuration of the data quality check task.
         self.trigger = trigger
 
     def validate(self):
@@ -242,7 +243,8 @@ class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationT
     ):
         # The IDs of the scheduled nodes. This parameter takes effect only when Type is set to ByScheduledTaskInstance. It specifies the scheduled nodes whose successful instance execution triggers the task.
         self.task_ids = task_ids
-        # The event that triggers the execution of the data quality evaluation task. Valid values:
+        # The event that triggers the execution of the data quality check task.
+        # 
         # - ByScheduledTaskInstance: The scheduled instance runs successfully.
         self.type = type
 
@@ -280,7 +282,7 @@ class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationT
         table_guid: str = None,
         type: str = None,
     ):
-        # The database type of the table dataset. Valid values:
+        # The database type of the table for table-type datasets. Valid values:
         # - maxcompute
         # - emr
         # - cdh
@@ -293,7 +295,8 @@ class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationT
         self.partition_spec = partition_spec
         # The unique ID of the table in Data Map.
         self.table_guid = table_guid
-        # The monitored object type. Valid values:
+        # The type of the monitored object.
+        # 
         # - Table
         self.type = type
 
@@ -388,7 +391,7 @@ class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationT
     ):
         # The notification channel configuration.
         self.notification_channels = notification_channels
-        # The notification recipient configuration.
+        # The alert recipient configuration.
         self.notification_receivers = notification_receivers
 
     def validate(self):
@@ -443,14 +446,14 @@ class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationT
     ):
         # The extended information in JSON format. For example, DingTalk chatbots support mentioning all members.
         self.extension = extension
-        # The type of the notification recipient. Valid values:
-        # - AliUid: the UID of the Alibaba Cloud account
-        # - WebhookUrl: the custom webhook URL
-        # - DingdingUrl: the DingTalk chatbot URL
-        # - FeishuUrl: the Lark chatbot URL
-        # - WeixinUrl: the WeCom chatbot URL
+        # The type of the alert recipient.
+        # - AliUid: Alibaba Cloud account UID
+        # - WebhookUrl: Custom webhook URL
+        # - DingdingUrl: DingTalk chatbot webhook URL
+        # - FeishuUrl: Lark chatbot webhook URL
+        # - WeixinUrl: WeCom chatbot webhook URL
         self.receiver_type = receiver_type
-        # The specific value of the notification recipient.
+        # The specific value of the alert recipient.
         self.receiver_values = receiver_values
 
     def validate(self):
@@ -521,7 +524,7 @@ class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationT
     ):
         # The trigger condition of the hook.
         self.condition = condition
-        # The type of the subsequent action. Valid values:
+        # The type of the subsequent action.
         # - BlockTaskInstance: Blocks the execution of the DataWorks task instance.
         self.type = type
 

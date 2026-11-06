@@ -118,15 +118,15 @@ class ListTaskInstanceOperationLogsResponseBodyPagingInfoOperationLogs(DaraModel
         task_instance_id: int = None,
         user: str = None,
     ):
-        # The generation time of Operation logs.
+        # The time when the operation log was generated.
         # 
-        # The format is a 13-digit number, such as `1710239005403`.
+        # The value is a 13-digit number, such as `1710239005403`.
         self.create_time = create_time
         # The content of the operation.
         self.operation_content = operation_content
         # The sequence number of the operation.
         self.operation_seq = operation_seq
-        # The ID of the node instance on which the operation was performed.
+        # The ID of the task instance on which the operation was performed.
         self.task_instance_id = task_instance_id
         # The account ID of the user who performed the operation.
         self.user = user

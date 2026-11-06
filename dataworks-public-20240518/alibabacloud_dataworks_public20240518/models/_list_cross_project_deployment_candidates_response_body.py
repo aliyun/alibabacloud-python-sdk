@@ -14,11 +14,11 @@ class ListCrossProjectDeploymentCandidatesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business response.
+        # The response data.
         self.data = data
-        # The request ID, which is used to locate and troubleshoot this API call.
+        # The request ID. You can use the ID to locate and troubleshoot the API call.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -64,7 +64,7 @@ class ListCrossProjectDeploymentCandidatesResponseBodyData(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of candidate objects from the source workspace that are available for cross-workspace deployment.
+        # The list of candidate objects in the source workspace that are available for cross-workspace deployment.
         self.deployment_candidates = deployment_candidates
         # The page number.
         self.page_number = page_number
@@ -140,17 +140,17 @@ class ListCrossProjectDeploymentCandidatesResponseBodyDataDeploymentCandidates(D
     ):
         # The change type.
         self.change_type = change_type
-        # The commit time. This value is a UNIX timestamp in milliseconds.
+        # The commit time. The value is a UNIX timestamp in milliseconds.
         self.commit_time = commit_time
-        # The committer.
+        # The submitter.
         self.commit_user = commit_user
         # The candidate object ID.
         self.object_id = object_id
-        # The candidate object name.
+        # The name of the candidate object.
         self.object_name = object_name
         # The candidate object type.
         self.object_type = object_type
-        # The candidate object version.
+        # The version of the candidate object.
         self.object_version = object_version
 
     def validate(self):

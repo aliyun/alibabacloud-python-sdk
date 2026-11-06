@@ -50,24 +50,20 @@ class CreateAgentResponseBodyAgent(DaraModel):
     def __init__(
         self,
         expert_suites: List[main_models.CreateAgentResponseBodyAgentExpertSuites] = None,
-        gmt_create_time: str = None,
-        gmt_modified_time: str = None,
+        gmt_create_time: int = None,
+        gmt_modified_time: int = None,
         name: str = None,
         skills: List[main_models.CreateAgentResponseBodyAgentSkills] = None,
     ):
         # The saved suite references. Official resources return the source and directory ID. The published artifact version is represented by PackageVersion.
         self.expert_suites = expert_suites
-        # The creation time, in milliseconds.
-        # 
-        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
+        # The creation time, expressed as a timestamp in milliseconds.
         self.gmt_create_time = gmt_create_time
-        # The last modification time, in milliseconds.
-        # 
-        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
+        # The last modification time, expressed as a timestamp in milliseconds.
         self.gmt_modified_time = gmt_modified_time
         # The name of the agent.
         self.name = name
-        # The saved skill references. For official skills, a fixed PackageVersion is returned after the agent is published.
+        # The saved skill references. Official skills return a fixed PackageVersion after the agent is published.
         self.skills = skills
 
     def validate(self):
@@ -143,7 +139,7 @@ class CreateAgentResponseBodyAgentSkills(DaraModel):
     ):
         # The name of the custom skill.
         self.name = name
-        # This parameter is not returned upon creation. Call GetAgent to explicitly query the published version to obtain the fixed official artifact version.
+        # This field is not returned during creation. Use GetAgent to explicitly query the published version to obtain the fixed official artifact version.
         self.package_version = package_version
         # The ID of the official skill.
         self.skill_id = skill_id
@@ -151,7 +147,7 @@ class CreateAgentResponseBodyAgentSkills(DaraModel):
         self.source = source
         # The release version number of the custom skill.
         self.version = version
-        # The saved version selection strategy is returned only for personal or enterprise resources and is mutually exclusive with the fixed integer Version. It does not represent the specific revision actually loaded in the session. This parameter is not returned for official resources.
+        # The saved version selection strategy is returned only for personal or enterprise resources and is mutually exclusive with the fixed integer Version. It does not represent the specific revision actually loaded in the session. This field is not returned for official resources.
         self.version_selector = version_selector
 
     def validate(self):
@@ -213,7 +209,7 @@ class CreateAgentResponseBodyAgentExpertSuites(DaraModel):
         version: int = None,
         version_selector: str = None,
     ):
-        # This parameter is not returned upon creation. Call GetAgent to explicitly query the published version to obtain the fixed official suite artifact version.
+        # This field is not returned during creation. Use GetAgent to explicitly query the published version to obtain the fixed official suite artifact version.
         self.package_version = package_version
         # The source of the expert suite.
         self.source = source
@@ -221,7 +217,7 @@ class CreateAgentResponseBodyAgentExpertSuites(DaraModel):
         self.suite_id = suite_id
         # The release version number of the custom suite.
         self.version = version
-        # The saved version selection strategy is returned only for personal or enterprise resources and is mutually exclusive with the fixed integer Version. It does not represent the specific revision actually loaded in the session. This parameter is not returned for official resources.
+        # The saved version selection strategy is returned only for personal or enterprise resources and is mutually exclusive with the fixed integer Version. It does not represent the specific revision actually loaded in the session. This field is not returned for official resources.
         self.version_selector = version_selector
 
     def validate(self):

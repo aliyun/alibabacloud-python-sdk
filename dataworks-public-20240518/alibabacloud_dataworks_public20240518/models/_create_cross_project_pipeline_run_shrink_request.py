@@ -13,13 +13,13 @@ class CreateCrossProjectPipelineRunShrinkRequest(DaraModel):
         project_id: int = None,
         type: str = None,
     ):
-        # The cross-workspace deployment environment ID.
+        # The ID of the cross-workspace deployment environment.
         # 
         # This parameter is required.
         self.deployment_environment_id = deployment_environment_id
         # The deployment description.
         self.description = description
-        # The list of top-level object IDs from the source project to deploy. The list must contain exactly one object. Child objects of composite objects such as workflows are automatically included by the system.
+        # The list of top-level object IDs from the source project to be deployed. The list must contain exactly one object. Sub-objects of composite objects such as workflows are automatically included by the system.
         # 
         # This parameter is required.
         self.object_ids_shrink = object_ids_shrink
@@ -27,13 +27,7 @@ class CreateCrossProjectPipelineRunShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The deployment type. Valid values:
-        # 
-        # 
-        # 
-        # 
-        # - Offline: Deployment to take the object offline.
-        # - Online: Deployment to bring the object online.
+        # The deployment type.
         # 
         # This parameter is required.
         self.type = type

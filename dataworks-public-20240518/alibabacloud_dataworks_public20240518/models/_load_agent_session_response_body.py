@@ -18,19 +18,19 @@ class LoadAgentSessionResponseBody(DaraModel):
         result: Any = None,
         timestamp: int = None,
     ):
-        # The error message in the SSE frame information. The returned content complies with the open-source Agent Client Protocol (ACP) specification. For more information, see https://agentclientprotocol.com/protocol/prompt-turn.
+        # The error message in the SSE frame information. The returned content complies with the open source Agent Client Protocol (ACP) specification. For more information, see https://agentclientprotocol.com/protocol/prompt-turn.
         self.error = error
-        # The ID provided by the requester. This ID is echoed back as is.
+        # The ID passed by the requester. The value is returned as is.
         self.id = id
-        # The JSON-RPC version. Fixed to 2.0.
+        # The JSON-RPC version. The value is fixed to 2.0.
         self.jsonrpc = jsonrpc
-        # The method of the SSE. The returned content complies with the open-source Agent Client Protocol (ACP) specification. For more information, see https://agentclientprotocol.com/protocol/prompt-turn.
+        # The method of the SSE. The returned content complies with the open source Agent Client Protocol (ACP) specification. For more information, see https://agentclientprotocol.com/protocol/prompt-turn.
         self.method = method
-        # The parameters of the SSE. The returned content complies with the open-source Agent Client Protocol (ACP) specification. For more information, see https://agentclientprotocol.com/protocol/prompt-turn.
+        # The parameters of the SSE. The returned content complies with the open source Agent Client Protocol (ACP) specification. For more information, see https://agentclientprotocol.com/protocol/prompt-turn.
         self.params = params
         # Id of the request
         self.request_id = request_id
-        # The result set of the SSE frame. The returned content complies with the open-source Agent Client Protocol (ACP) specification. For more information, see https://agentclientprotocol.com/protocol/prompt-turn.
+        # The result set of the SSE frame. The returned content complies with the open source Agent Client Protocol (ACP) specification. For more information, see https://agentclientprotocol.com/protocol/prompt-turn.
         self.result = result
         # The timestamp.
         self.timestamp = timestamp
