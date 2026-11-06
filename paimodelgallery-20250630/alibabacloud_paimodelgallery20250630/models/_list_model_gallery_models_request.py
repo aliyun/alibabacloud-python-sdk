@@ -38,69 +38,32 @@ class ListModelGalleryModelsRequest(DaraModel):
         task: str = None,
         trainable: bool = None,
     ):
-        # The collection to which the model belongs. The collection for ModelGallery models is QuickStart.
         self.collections = collections
-        # Specifies whether model compression is supported.
         self.compressible = compressible
-        # The list of conditions.
         self.conditions = conditions
-        # Specifies whether deep thinking is supported.
         self.deep_think = deep_think
-        # Specifies whether online experience is supported.
         self.demonstrable = demonstrable
-        # Specifies whether deployment is supported.
         self.deployable = deployable
-        # Specifies whether distillation is supported.
         self.distillable = distillable
-        # The domain used to filter the model list. For example, aigc (generative AI), nlp (natural language processing), or cv (computer vision).
         self.domain = domain
-        # Specifies whether evaluation is supported.
         self.evaluable = evaluable
-        # Specifies whether FunctionCall is supported.
         self.function_call = function_call
-        # The model name. By default, fuzzy match is used to filter the model list. Enclose the name in double quotation marks for exact match. For example, "DeepSeek-V3.2" exactly matches the model DeepSeek-V3.2.
         self.model_name = model_name
-        # The model series. For example, PAI Optimized Model, Qwen, Wan-AI, GLM, Baichuan, DeepSeek, Kimi, MiniMax, Yi, InternLM, InternVL, OpenAI, NVIDIA, Gemma, Phi, dots_vlm, Llama, Mistral, Stable Diffusion, FLUX, Byte Dance, StepFun AI, ERNIE Bot, Tencent Hunyuan, or YOLO.
         self.model_series = model_series
-        # The model type.
         self.model_type = model_type
-        # The sort order for the specified sort field in a paged query. Default value: ASC.
-        # 
-        # Valid values:
-        # - ASC: ascending order.
-        # - DESC: descending order.
         self.order = order
-        # The model source used to filter models that belong to a specific community or organization. For example, ModelScope, PAI, or NIM.
         self.origin = origin
-        # The page number of the model list. Minimum value: 1. Default value: 1.
         self.page_number = page_number
-        # The number of models to display on each page in a paged query. Default value: 10.
         self.page_size = page_size
-        # The query condition. Fuzzy match is performed across multiple fields such as ModelName, Domain, and Task.
         self.query = query
-        # The sort field for a paged query. Currently, the GmtCreateTime field is used for sorting. Valid values:
-        # 
-        # - GmtCreateTime: the model creation time.
-        # 
-        # - GmtLatestVersionModified: the time when the latest model version was updated.
-        # 
-        # - OrderNumber: the ordinal number.
         self.sort_by = sort_by
-        # The supported compression resources, such as CPU, GPU, or GP7V. For example, if you specify GP7V, only models that support compression on GP7V resources are returned.
         self.supported_compression_resource = supported_compression_resource
-        # The supported distillation resources, such as CPU, GPU, or GP7V. For example, if you specify GP7V, only models that support distillation on GP7V resources are returned.
         self.supported_distillation_resource = supported_distillation_resource
-        # The supported evaluation resources, such as CPU, GPU, or GP7V. For example, if you specify GP7V, only models that support evaluation on GP7V resources are returned.
         self.supported_evaluation_resource = supported_evaluation_resource
-        # The supported deployment resources, such as CPU, GPU, or GP7V. For example, if you specify GP7V, only models that support deployment on GP7V resources are returned.
         self.supported_inference_resource = supported_inference_resource
-        # The supported training resources, such as CPU, GPU, or GP7V. For example, if you specify GP7V, only models that support training on GP7V resources are returned.
         self.supported_training_resource = supported_training_resource
-        # The list of labels.
         self.tag = tag
-        # The task. For example, large-language-model (large language model), image-classification (image classification), or embedding.
         self.task = task
-        # Specifies whether training is supported.
         self.trainable = trainable
 
     def validate(self):
@@ -302,9 +265,7 @@ class ListModelGalleryModelsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The label key.
         self.key = key
-        # The label value.
         self.value = value
 
     def validate(self):
@@ -340,11 +301,8 @@ class ListModelGalleryModelsRequestConditions(DaraModel):
         operator: str = None,
         value: str = None,
     ):
-        # The parameter name. ParameterSize is supported. Unit: M.
         self.column = column
-        # The operator. For example, LessThan.
         self.operator = operator
-        # The value. If Column is set to ParameterSize, the value is an integer. Unit: M.
         self.value = value
 
     def validate(self):

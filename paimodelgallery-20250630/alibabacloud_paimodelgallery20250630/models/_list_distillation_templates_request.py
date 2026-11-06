@@ -12,17 +12,14 @@ class ListDistillationTemplatesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
         template_id: str = None,
+        template_kind: str = None,
     ):
-        # The template category for scenario-specific template filtering.
         self.category = category
-        # The search keyword for cross-language substring matching against template names, descriptions, and other text fields. If this parameter is left empty, no keyword filtering is applied.
         self.keyword = keyword
-        # The page number, starting from 1. If this parameter is not specified or is invalid, the default value 1 is used.
         self.page_number = page_number
-        # The number of entries per page. If this parameter is not specified or is invalid, the default value is used. If the value exceeds the upper limit, the upper limit is used.
         self.page_size = page_size
-        # The template ID for exact filtering. If this parameter is left empty, no filtering by ID is applied.
         self.template_id = template_id
+        self.template_kind = template_kind
 
     def validate(self):
         pass
@@ -47,6 +44,9 @@ class ListDistillationTemplatesRequest(DaraModel):
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
 
+        if self.template_kind is not None:
+            result['TemplateKind'] = self.template_kind
+
         return result
 
     def from_map(self, m: dict = None):
@@ -65,6 +65,9 @@ class ListDistillationTemplatesRequest(DaraModel):
 
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
+
+        if m.get('TemplateKind') is not None:
+            self.template_kind = m.get('TemplateKind')
 
         return self
 

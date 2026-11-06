@@ -16,15 +16,10 @@ class ListDistillationTemplatesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of distillation template summaries, sorted by OrderNumber in ascending order.
         self.distillation_templates = distillation_templates
-        # The page number, which echoes the PageNumber value in the request.
         self.page_number = page_number
-        # The number of entries per page, which echoes the PageSize value in the request.
         self.page_size = page_size
-        # The request ID.
         self.request_id = request_id
-        # The total number of templates that match the filter conditions.
         self.total_count = total_count
 
     def validate(self):

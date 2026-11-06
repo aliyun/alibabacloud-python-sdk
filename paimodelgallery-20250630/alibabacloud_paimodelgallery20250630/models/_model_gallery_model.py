@@ -48,79 +48,42 @@ class ModelGalleryModel(DaraModel):
         task: str = None,
         trainable: bool = None,
     ):
-        # The collection to which the model belongs.
         self.collection = collection
-        # Indicates whether compression is supported.
         self.compressible = compressible
-        # Indicates whether deep thinking is supported.
         self.deep_think = deep_think
-        # Indicates whether online experience is supported.
         self.demonstrable = demonstrable
-        # Indicates whether deployment is supported.
         self.deployable = deployable
-        # Indicates whether distillation is supported.
         self.distillable = distillable
-        # The domain. For example, aigc (generative AI), nlp (natural language processing), or cv (computer vision).
         self.domain = domain
-        # Indicates whether evaluation is supported.
         self.evaluable = evaluable
-        # The additional information.
         self.extra_info = extra_info
-        # Indicates whether FunctionCall is supported.
         self.function_call = function_call
-        # The creation time.
         self.gmt_create_time = gmt_create_time
-        # The update time of the latest model version.
         self.gmt_latest_version_modified = gmt_latest_version_modified
-        # The update time.
         self.gmt_modified_time = gmt_modified_time
-        # The latest model version.
         self.latest_version_name = latest_version_name
-        # The model description.
         self.model_description = model_description
-        # The model documentation.
         self.model_doc = model_doc
-        # The model ID.
         self.model_id = model_id
-        # The model name.
         self.model_name = model_name
-        # The model series.
         self.model_series = model_series
-        # The model type.
         self.model_type = model_type
-        # The ordinal number.
         self.order_number = order_number
-        # The model source, used to filter the list of models that belong to a specific community or organization. For example, ModelScope, PAI, or NIM.
         self.origin = origin
-        # The number of parameters, in millions (M).
         self.parameter_size = parameter_size
-        # The search keywords.
         self.search_words = search_words
-        # The supported compression methods.
         self.supported_compression_methods = supported_compression_methods
-        # The resources supported for compression.
         self.supported_compression_resources = supported_compression_resources
-        # The supported distillation methods.
         self.supported_distillation_methods = supported_distillation_methods
-        # The resources supported for distillation.
         self.supported_distillation_resources = supported_distillation_resources
-        # The supported evaluation methods.
         self.supported_evaluation_methods = supported_evaluation_methods
-        # The resources supported for evaluation.
         self.supported_evaluation_resources = supported_evaluation_resources
-        # The supported deployment methods.
         self.supported_inference_methods = supported_inference_methods
-        # The resources supported for deployment.
         self.supported_inference_resources = supported_inference_resources
-        # The supported training methods.
         self.supported_training_methods = supported_training_methods
-        # The resources supported for training.
         self.supported_training_resources = supported_training_resources
-        # The list of tags.
         self.tags = tags
-        # The task. For example, large-language-model (large language model), image-classification (image classification), or embedding.
         self.task = task
-        # Indicates whether training is supported.
         self.trainable = trainable
 
     def validate(self):
@@ -367,9 +330,7 @@ class ModelGalleryModelTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
         self.key = key
-        # The tag value.
         self.value = value
 
     def validate(self):

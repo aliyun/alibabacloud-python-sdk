@@ -24,43 +24,30 @@ class DistillationTemplate(DaraModel):
         order_number: int = None,
         pipeline_stages: List[main_models.DistillationTemplatePipelineStages] = None,
         preset_config: List[main_models.DistillationTemplatePresetConfig] = None,
+        processor_example_uri: str = None,
         template_id: str = None,
+        template_kind: str = None,
         template_name: str = None,
         training_options: List[main_models.DistillationTemplateTrainingOptions] = None,
     ):
-        # The algorithm name.
         self.algorithm_name = algorithm_name
-        # The algorithm provider.
         self.algorithm_provider = algorithm_provider
-        # The algorithm version.
         self.algorithm_version = algorithm_version
-        # The list of capability tags used for displaying scenario cards.
         self.capability_tags = capability_tags
-        # The template category. The frontend uses this value to filter scenario cards.
         self.category = category
-        # The raw YAML content of the EasyDistill default configurations. The frontend uses this content for rendering the configuration form and supports recovering to default configurations. The model and credential fields are intentionally left empty and are populated by the user in the form upon commit.
         self.default_config = default_config
-        # The template description, localized based on the requested language. The description specifies the applicable scenarios and outputs.
         self.description = description
-        # Specifies whether the input data must be an entire directory. If this parameter is set to true, only a directory can be selected on the form, not a single file. If this parameter is absent or set to false, either a file or a directory can be selected. This value is true when seed files reference other files in the same directory by relative path.
         self.input_dataset_must_be_directory = input_dataset_must_be_directory
-        # The OSS address of the sample input data, rendered based on the region. Users can download the sample and prepare their own data in the same format. An empty value indicates that the template does not provide a sample.
         self.input_example_uri = input_example_uri
-        # The algorithm job type. The value is the same as TemplateId.
         self.job_type = job_type
-        # The list of model slots that require user selection. The frontend uses this list to render the model selection form.
         self.model_slots = model_slots
-        # The display order. A smaller value indicates a higher priority.
         self.order_number = order_number
-        # The list of pipeline stages. The order of the stages represents the execution order.
         self.pipeline_stages = pipeline_stages
-        # The content of the preset configuration card, displayed in order to show the key default configurations of the template.
         self.preset_config = preset_config
-        # The distillation template ID, which is the same as the algorithm job_type. Pass this value as TemplateId when creating a task plan.
+        self.processor_example_uri = processor_example_uri
         self.template_id = template_id
-        # The template display name, localized based on the requested language.
+        self.template_kind = template_kind
         self.template_name = template_name
-        # The capability declaration for the second stage (training the student model with the distilled data). An empty value indicates that the template supports only the distillation stage.
         self.training_options = training_options
 
     def validate(self):
@@ -134,8 +121,14 @@ class DistillationTemplate(DaraModel):
             for k1 in self.preset_config:
                 result['PresetConfig'].append(k1.to_map() if k1 else None)
 
+        if self.processor_example_uri is not None:
+            result['ProcessorExampleUri'] = self.processor_example_uri
+
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
+
+        if self.template_kind is not None:
+            result['TemplateKind'] = self.template_kind
 
         if self.template_name is not None:
             result['TemplateName'] = self.template_name
@@ -200,8 +193,14 @@ class DistillationTemplate(DaraModel):
                 temp_model = main_models.DistillationTemplatePresetConfig()
                 self.preset_config.append(temp_model.from_map(k1))
 
+        if m.get('ProcessorExampleUri') is not None:
+            self.processor_example_uri = m.get('ProcessorExampleUri')
+
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
+
+        if m.get('TemplateKind') is not None:
+            self.template_kind = m.get('TemplateKind')
 
         if m.get('TemplateName') is not None:
             self.template_name = m.get('TemplateName')
@@ -221,11 +220,8 @@ class DistillationTemplateTrainingOptions(DaraModel):
         training_methods: List[str] = None,
         training_type: str = None,
     ):
-        # The range of Model Gallery tasks available for the student model.
         self.model_tasks = model_tasks
-        # The list of supported training method families.
         self.training_methods = training_methods
-        # The training type. The frontend uses this value to select the training workflow and display text.
         self.training_type = training_type
 
     def validate(self):
@@ -266,9 +262,7 @@ class DistillationTemplatePresetConfig(DaraModel):
         label: str = None,
         value: str = None,
     ):
-        # The configuration item name, localized based on the requested language. Names are matched by position across languages, so the same row can have different names in different languages.
         self.label = label
-        # The configuration item value, localized based on the requested language.
         self.value = value
 
     def validate(self):
@@ -304,11 +298,8 @@ class DistillationTemplatePipelineStages(DaraModel):
         key: str = None,
         name: str = None,
     ):
-        # The stage description, localized based on the requested language.
         self.description = description
-        # The stage identifier, which corresponds to the value of pipeline[].stage in the algorithm configuration.
         self.key = key
-        # The stage display name, localized based on the requested language.
         self.name = name
 
     def validate(self):
@@ -352,15 +343,10 @@ class DistillationTemplateModelSlots(DaraModel):
         name: str = None,
         required: bool = None,
     ):
-        # The list of model access methods supported by this slot.
         self.backends = backends
-        # The slot description, localized based on the requested language.
         self.description = description
-        # The slot identifier, which corresponds to the backend section name in the submitted configuration.
         self.key = key
-        # The slot display name, localized based on the requested language.
         self.name = name
-        # Specifies whether this slot is required. If this parameter is set to false, the user can skip the selection, and the algorithm falls back to other slots.
         self.required = required
 
     def validate(self):
@@ -423,9 +409,7 @@ class DistillationTemplateModelSlotsBackends(DaraModel):
         channel: str = None,
         type: str = None,
     ):
-        # The channel name of the PAI-Token gateway. The frontend uses this value to retrieve the list of available models for the channel. This value must be passed back as-is upon submission. This parameter is returned only when Type is pai_token.
         self.channel = channel
-        # The model access method. pai_token indicates the PAI-Token gateway, where the user selects from the list of available models for the channel. pai_eas indicates the user\\"s own PAI-EAS service instance, which requires the service address and token.
         self.type = type
 
     def validate(self):

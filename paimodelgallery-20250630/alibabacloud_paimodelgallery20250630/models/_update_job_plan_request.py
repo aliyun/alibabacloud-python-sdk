@@ -13,9 +13,7 @@ class UpdateJobPlanRequest(DaraModel):
         job_plan_current_step: str = None,
         tag: List[main_models.UpdateJobPlanRequestTag] = None,
     ):
-        # The current step of the task plan. Set this parameter to `DatasetSynthesisAndModelTrain` for the full process or `DatasetSynthesisModelTrain` for step-by-step execution.
         self.job_plan_current_step = job_plan_current_step
-        # The list of tags.
         self.tag = tag
 
     def validate(self):
@@ -58,9 +56,7 @@ class UpdateJobPlanRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. If the tag key already exists, the tag is updated. Otherwise, a new tag is added.
         self.key = key
-        # The tag key. If the tag key already exists, the tag is updated. Otherwise, a new tag is added.
         self.value = value
 
     def validate(self):

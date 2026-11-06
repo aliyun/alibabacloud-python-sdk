@@ -33,9 +33,7 @@ class JobPlan(DaraModel):
         self.job_plan_type = job_plan_type
         self.owner_id = owner_id
         self.tags = tags
-        # The distillation template ID used when creating the task plan. An empty value indicates that this is not a scenario-specific distillation task.
         self.template_id = template_id
-        # The display name of the distillation template used, localized based on the language specified in the request.
         self.template_name = template_name
         self.user_id = user_id
         self.workspace_id = workspace_id

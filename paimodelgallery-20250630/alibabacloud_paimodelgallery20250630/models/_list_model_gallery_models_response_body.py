@@ -12,11 +12,8 @@ class ListModelGalleryModelsResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The list of models.
         self.models = models
-        # Id of the request
         self.request_id = request_id
-        # The total number of models.
         self.total_count = total_count
 
     def validate(self):

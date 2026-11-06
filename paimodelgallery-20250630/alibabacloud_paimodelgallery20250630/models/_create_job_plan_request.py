@@ -17,17 +17,11 @@ class CreateJobPlanRequest(DaraModel):
         template_id: str = None,
         workspace_id: str = None,
     ):
-        # The name of the job plan.
         self.job_plan_name = job_plan_name
-        # The steps of the job plan.
         self.job_plan_steps = job_plan_steps
-        # The type of the job plan.
         self.job_plan_type = job_plan_type
-        # Note: According to the Alibaba Cloud tag system specification, this parameter name is in singular form.
         self.tag = tag
-        # The ID of the scenario-specific distillation template, obtained from ListDistillationTemplates. If this parameter is not specified, a general-purpose job plan is created.
         self.template_id = template_id
-        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -103,9 +97,7 @@ class CreateJobPlanRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # **Key**
         self.key = key
-        # **Value**
         self.value = value
 
     def validate(self):
@@ -141,11 +133,8 @@ class CreateJobPlanRequestJobPlanSteps(DaraModel):
         job_plan_step_spec: Dict[str, Any] = None,
         job_plan_step_type: str = None,
     ):
-        # The name of the job plan step.
         self.job_plan_step_name = job_plan_step_name
-        # The detailed configuration of the job plan step.
         self.job_plan_step_spec = job_plan_step_spec
-        # The type of the job plan step.
         self.job_plan_step_type = job_plan_step_type
 
     def validate(self):

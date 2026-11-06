@@ -17,26 +17,19 @@ class DistillationTemplateSummary(DaraModel):
         order_number: int = None,
         pipeline_stages: List[main_models.DistillationTemplateSummaryPipelineStages] = None,
         template_id: str = None,
+        template_kind: str = None,
         template_name: str = None,
         training_options: List[main_models.DistillationTemplateSummaryTrainingOptions] = None,
     ):
-        # The list of capability tags, used for scenario card display.
         self.capability_tags = capability_tags
-        # The template category. The frontend uses this value to filter scenario cards.
         self.category = category
-        # The template description, localized based on the language specified in the request. The description specifies applicable scenarios and outputs.
         self.description = description
-        # The algorithm job type. The value is the same as TemplateId.
         self.job_type = job_type
-        # The display order. A smaller value indicates a higher position.
         self.order_number = order_number
-        # The list of pipeline stages. The order of the stages represents the execution order.
         self.pipeline_stages = pipeline_stages
-        # The distillation template ID, which is the same as the algorithm job_type. Pass this value as TemplateId when creating a task plan.
         self.template_id = template_id
-        # The template display name, localized based on the language specified in the request.
+        self.template_kind = template_kind
         self.template_name = template_name
-        # The capability declaration for the second stage, in which the distilled data is used to train the student model. An empty value indicates that the template supports only the distillation stage.
         self.training_options = training_options
 
     def validate(self):
@@ -77,6 +70,9 @@ class DistillationTemplateSummary(DaraModel):
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
 
+        if self.template_kind is not None:
+            result['TemplateKind'] = self.template_kind
+
         if self.template_name is not None:
             result['TemplateName'] = self.template_name
 
@@ -113,6 +109,9 @@ class DistillationTemplateSummary(DaraModel):
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
 
+        if m.get('TemplateKind') is not None:
+            self.template_kind = m.get('TemplateKind')
+
         if m.get('TemplateName') is not None:
             self.template_name = m.get('TemplateName')
 
@@ -131,11 +130,8 @@ class DistillationTemplateSummaryTrainingOptions(DaraModel):
         training_methods: List[str] = None,
         training_type: str = None,
     ):
-        # The available Model Gallery Task values for the student model.
         self.model_tasks = model_tasks
-        # The list of supported training method families.
         self.training_methods = training_methods
-        # The training type. The frontend uses this value to select the training workflow and display text.
         self.training_type = training_type
 
     def validate(self):
@@ -177,11 +173,8 @@ class DistillationTemplateSummaryPipelineStages(DaraModel):
         key: str = None,
         name: str = None,
     ):
-        # The stage description, localized based on the language specified in the request.
         self.description = description
-        # The stage identifier, which corresponds to the pipeline[].stage value in the algorithm configuration.
         self.key = key
-        # The stage display name, localized based on the language specified in the request.
         self.name = name
 
     def validate(self):

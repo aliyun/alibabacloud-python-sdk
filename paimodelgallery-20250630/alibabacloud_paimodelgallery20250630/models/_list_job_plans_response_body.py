@@ -14,11 +14,8 @@ class ListJobPlansResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of job plans.
         self.job_plans = job_plans
-        # The request ID.
         self.request_id = request_id
-        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

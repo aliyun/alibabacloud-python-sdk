@@ -11,9 +11,7 @@ class GetDistillationTemplateResponseBody(DaraModel):
         distillation_template: main_models.DistillationTemplate = None,
         request_id: str = None,
     ):
-        # The distillation template details.
         self.distillation_template = distillation_template
-        # **Request ID**
         self.request_id = request_id
 
     def validate(self):

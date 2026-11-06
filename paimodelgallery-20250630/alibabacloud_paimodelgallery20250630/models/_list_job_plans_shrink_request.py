@@ -18,29 +18,15 @@ class ListJobPlansShrinkRequest(DaraModel):
         template_id: str = None,
         workspace_id: str = None,
     ):
-        # Specifies whether to filter by template association. Valid values:
-        # - true: Returns only scenario-specific job plans that have a template.
-        # - false: Returns only general-purpose job plans that do not have a template.
-        # 
-        # If this parameter is not specified, no filtering is applied. If both this parameter and TemplateId are specified, the value of TemplateId takes precedence.
         self.has_template = has_template
-        # The name of the job plan.
         self.job_plan_name = job_plan_name
-        # The type of the job plan.
         self.job_plan_type = job_plan_type
-        # The sort order.
         self.order = order
-        # The page number.
         self.page_number = page_number
-        # The number of entries per page.
         self.page_size = page_size
-        # The field by which to sort the results.
         self.sort_by = sort_by
-        # The list of tags.
         self.tag_shrink = tag_shrink
-        # The distillation template ID. Filters results to return only scenario-specific tasks that use the specified template.
         self.template_id = template_id
-        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

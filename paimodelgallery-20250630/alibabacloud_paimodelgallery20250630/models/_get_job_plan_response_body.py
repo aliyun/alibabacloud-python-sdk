@@ -25,33 +25,19 @@ class GetJobPlanResponseBody(DaraModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
-        # The creation time of the job plan.
         self.gmt_create_time = gmt_create_time
-        # The last modified time of the job plan.
         self.gmt_modified_time = gmt_modified_time
-        # The current step.
         self.job_plan_current_step = job_plan_current_step
-        # The job plan ID.
         self.job_plan_id = job_plan_id
-        # The job plan name, which is unique within the workspace.
         self.job_plan_name = job_plan_name
-        # The job plan steps.
         self.job_plan_steps = job_plan_steps
-        # The job plan type.
         self.job_plan_type = job_plan_type
-        # The Alibaba Cloud account ID that owns the job plan.
         self.owner_id = owner_id
-        # The request ID.
         self.request_id = request_id
-        # The list of tags.
         self.tags = tags
-        # The distillation template ID used to create the job plan. An empty value indicates that this is not a scenario-based distillation task.
         self.template_id = template_id
-        # The display name of the distillation template, localized based on the requested language.
         self.template_name = template_name
-        # The Alibaba Cloud account ID that created the job plan.
         self.user_id = user_id
-        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -175,9 +161,7 @@ class GetJobPlanResponseBodyTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
         self.key = key
-        # The tag value.
         self.value = value
 
     def validate(self):
@@ -214,13 +198,9 @@ class GetJobPlanResponseBodyJobPlanSteps(DaraModel):
         job_plan_step_spec: Dict[str, Any] = None,
         job_plan_step_type: str = None,
     ):
-        # The generated PAIFlow PipelineRunId.
         self.job_plan_step_id = job_plan_step_id
-        # The job plan step name.
         self.job_plan_step_name = job_plan_step_name
-        # The job plan step configuration.
         self.job_plan_step_spec = job_plan_step_spec
-        # The job plan step type.
         self.job_plan_step_type = job_plan_step_type
 
     def validate(self):

@@ -10,9 +10,7 @@ class CreateJobPlanResponseBody(DaraModel):
         job_plan_id: str = None,
         request_id: str = None,
     ):
-        # The job plan ID.
         self.job_plan_id = job_plan_id
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
