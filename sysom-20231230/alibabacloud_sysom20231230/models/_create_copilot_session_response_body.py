@@ -13,9 +13,15 @@ class CreateCopilotSessionResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The error code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
+        # - If `code == Success`, this field is empty.
+        # - Otherwise, this field contains the request error message.
         self.message = message
+        # The request ID, which can be used for end-to-end diagnostics.
         self.request_id = request_id
 
     def validate(self):
@@ -72,18 +78,31 @@ class CreateCopilotSessionResponseBodyData(DaraModel):
         status: str = None,
         updated_at: str = None,
     ):
+        # The information about the current active execution.
         self.active_turn = active_turn
+        # The creation time.
         self.created_at = created_at
-        # 十进制事件序号字符串，范围 0..9223372036854775807；避免 JavaScript 精度丢失
+        # The cursor of the latest persisted event in the session. For a newly created session without events, 0 is returned. This field is a decimal string.
         self.cursor = cursor
+        # The information about the most recent execution.
         self.last_turn = last_turn
+        # The session name. If not specified, the value is New Session.
         self.name = name
-        # 定时任务触发快照；非定时会话为空
+        # The information about the associated scheduled task.
         self.scheduled_task = scheduled_task
+        # The session ID. Use this value to send messages, query, update, or delete the session.
         self.session_id = session_id
-        # 会话初始来源：chat、scheduled_task、alert；后续追问不改变来源
+        # The session source. Valid values:
+        # - openapi: proactive call.
+        # - cron: scheduled task.
+        # - im_dingtalk: DingTalk.
+        # - im_feishu: Lark.
+        # - alert: alert.
+        # The session created by this operation is openapi.
         self.session_type = session_type
+        # The session status. The session created by this operation is active, which indicates that the session is available. It does not indicate that the agent is executing a task.
         self.status = status
+        # The update time.
         self.updated_at = updated_at
 
     def validate(self):
@@ -178,17 +197,17 @@ class CreateCopilotSessionResponseBodyDataScheduledTask(DaraModel):
         task_name: str = None,
         timezone: str = None,
     ):
-        # 本次定时执行的 Run ID
+        # The ID of this scheduled execution, which is used to distinguish different trigger records of the same scheduled task.
         self.run_id = run_id
-        # 计划触发时间，ISO 8601 含时区偏移
+        # The scheduled trigger time. The time is in ISO 8601 format and includes the time zone offset.
         self.scheduled_at = scheduled_at
-        # Copilot 开始处理时间，ISO 8601 含时区偏移
+        # The time when Copilot started processing this scheduled execution. The time is in ISO 8601 format and includes the time zone offset.
         self.started_at = started_at
-        # 任务 ID；任务删除后仍保留
+        # The ID of the associated scheduled task.
         self.task_id = task_id
-        # 触发时的任务名称快照
+        # The task name when the scheduled task is triggered. Subsequent changes to the task name do not affect this value.
         self.task_name = task_name
-        # 任务的 cron 时区
+        # The scheduling time zone of the scheduled task.
         self.timezone = timezone
 
     def validate(self):
@@ -253,13 +272,21 @@ class CreateCopilotSessionResponseBodyDataLastTurn(DaraModel):
         turn_id: str = None,
         updated_at: str = None,
     ):
+        # The time when the execution was created. The time is in ISO 8601 format and includes the time zone offset.
         self.created_at = created_at
+        # The time when the execution finished. The time is in ISO 8601 format and includes the time zone offset. The value is null if the execution has not finished.
         self.finished_at = finished_at
+        # The cumulative number of input tokens consumed by this execution.
         self.input_tokens = input_tokens
+        # The cumulative number of output tokens consumed by this execution.
         self.output_tokens = output_tokens
+        # The ID of the form that is waiting for user input.
         self.pending_input_id = pending_input_id
+        # The execution status.
         self.status = status
+        # The execution ID.
         self.turn_id = turn_id
+        # The time when the execution was updated. The time is in ISO 8601 format and includes the time zone offset.
         self.updated_at = updated_at
 
     def validate(self):
@@ -336,13 +363,21 @@ class CreateCopilotSessionResponseBodyDataActiveTurn(DaraModel):
         turn_id: str = None,
         updated_at: str = None,
     ):
+        # The time when the execution was created. The time is in ISO 8601 format and includes the time zone offset.
         self.created_at = created_at
+        # The time when the execution finished. The time is in ISO 8601 format and includes the time zone offset. The value is null if the execution has not finished.
         self.finished_at = finished_at
+        # The cumulative number of input tokens consumed by this execution.
         self.input_tokens = input_tokens
+        # The cumulative number of output tokens generated by this execution.
         self.output_tokens = output_tokens
+        # The ID of the form that is waiting for user input. Use this value when submitting user input. The value is null if no form is pending submission.
         self.pending_input_id = pending_input_id
+        # The execution status.
         self.status = status
+        # The execution ID. Use this value to submit user input, reconnect to the event stream, or stop the execution.
         self.turn_id = turn_id
+        # The time when the execution was updated. The time is in ISO 8601 format and includes the time zone offset.
         self.updated_at = updated_at
 
     def validate(self):

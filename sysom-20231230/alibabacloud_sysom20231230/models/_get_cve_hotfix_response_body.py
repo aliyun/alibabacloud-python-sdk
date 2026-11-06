@@ -17,7 +17,7 @@ class GetCveHotfixResponseBody(DaraModel):
     ):
         # The status code.
         # - If `code == Success`, the authorization is successful.
-        # - Other status codes indicate that the authorization failed. If the authorization failed, check the `message` field for the detailed fault information.
+        # - Other status codes indicate that the authorization failed. If the authorization fails, check the `message` field for the detailed fault message.
         self.code = code
         # The returned data.
         self.data = data
@@ -122,15 +122,15 @@ class GetCveHotfixResponseBodyDataHotfix(DaraModel):
         packages: List[main_models.GetCveHotfixResponseBodyDataHotfixPackages] = None,
         version: str = None,
     ):
-        # The hotfix description.
+        # The description of the hotfix.
         self.description = description
-        # The hotfix name.
+        # The name of the hotfix.
         self.hotfix_name = hotfix_name
-        # The hotfix module name.
+        # The module name of the hotfix.
         self.module_name = module_name
-        # The list of published packages that meet the kernel requirements.
+        # The list of published packages that meet the kernel conditions.
         self.packages = packages
-        # The hotfix version.
+        # The version of the hotfix.
         self.version = version
 
     def validate(self):
@@ -195,9 +195,9 @@ class GetCveHotfixResponseBodyDataHotfixPackages(DaraModel):
     ):
         # The architecture.
         self.arch = arch
-        # The distribution. This value is null if the distribution is not registered.
+        # The distribution. The value is null if the distribution is not registered.
         self.distro = distro
-        # The compatible full kernel version.
+        # The adapted full kernel version.
         self.kernel_version = kernel_version
         # The RPM package identifier.
         self.rpm_nevra = rpm_nevra

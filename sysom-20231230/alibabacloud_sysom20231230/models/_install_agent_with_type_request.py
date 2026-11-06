@@ -17,6 +17,7 @@ class InstallAgentWithTypeRequest(DaraModel):
         instance_type: str = None,
         instances: List[main_models.InstallAgentWithTypeRequestInstances] = None,
     ):
+        # The list of tags.
         self.tag = tag
         # The ID of the component to install.
         # 
@@ -26,7 +27,7 @@ class InstallAgentWithTypeRequest(DaraModel):
         # 
         # This parameter is required.
         self.agent_version = agent_version
-        # The configuration ID of the component to install.
+        # The ID of the component configuration to install.
         self.config_id = config_id
         # The instance type.
         # 
@@ -151,7 +152,9 @@ class InstallAgentWithTypeRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

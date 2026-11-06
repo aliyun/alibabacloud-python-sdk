@@ -13,9 +13,15 @@ class DeleteCopilotSessionResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
+        # - If `code` is `Success`, the authorization is successful.
+        # - Other status codes indicate that the authorization failed. If the authorization fails, check the `message` field for the detailed fault message.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message returned when the code is not Success.
         self.message = message
+        # The request ID, which can be used for end-to-end diagnostics.
         self.request_id = request_id
 
     def validate(self):
@@ -64,7 +70,9 @@ class DeleteCopilotSessionResponseBodyData(DaraModel):
         deleted: bool = None,
         session_id: str = None,
     ):
+        # Indicates whether the session was deleted.
         self.deleted = deleted
+        # The ID of the deleted session.
         self.session_id = session_id
 
     def validate(self):

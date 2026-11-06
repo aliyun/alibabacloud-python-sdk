@@ -10,7 +10,10 @@ class DeleteCopilotSessionRequest(DaraModel):
         agent_id: str = None,
         session_id: str = None,
     ):
+        # The agent identifier.
         self.agent_id = agent_id
+        # The session ID.
+        # 
         # This parameter is required.
         self.session_id = session_id
 

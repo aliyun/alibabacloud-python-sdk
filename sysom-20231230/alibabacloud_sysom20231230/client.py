@@ -6,6 +6,7 @@ import json
 
 from typing import Dict, Generator, AsyncGenerator
 
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_sysom20231230 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
@@ -23,6 +24,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'SysOM'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('sysom', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -6245,6 +6249,194 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_clusters_with_options_async(request, headers, runtime)
 
+    def list_copilot_session_messages_with_options(
+        self,
+        request: main_models.ListCopilotSessionMessagesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCopilotSessionMessagesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['agentId'] = request.agent_id
+        if not DaraCore.is_null(request.limit):
+            query['limit'] = request.limit
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.offset):
+            query['offset'] = request.offset
+        if not DaraCore.is_null(request.session_id):
+            query['sessionId'] = request.session_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCopilotSessionMessages',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/copilot/session-messages',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCopilotSessionMessagesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_copilot_session_messages_with_options_async(
+        self,
+        request: main_models.ListCopilotSessionMessagesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCopilotSessionMessagesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['agentId'] = request.agent_id
+        if not DaraCore.is_null(request.limit):
+            query['limit'] = request.limit
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.offset):
+            query['offset'] = request.offset
+        if not DaraCore.is_null(request.session_id):
+            query['sessionId'] = request.session_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCopilotSessionMessages',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/copilot/session-messages',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCopilotSessionMessagesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_copilot_session_messages(
+        self,
+        request: main_models.ListCopilotSessionMessagesRequest,
+    ) -> main_models.ListCopilotSessionMessagesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_copilot_session_messages_with_options(request, headers, runtime)
+
+    async def list_copilot_session_messages_async(
+        self,
+        request: main_models.ListCopilotSessionMessagesRequest,
+    ) -> main_models.ListCopilotSessionMessagesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_copilot_session_messages_with_options_async(request, headers, runtime)
+
+    def list_copilot_sessions_with_options(
+        self,
+        request: main_models.ListCopilotSessionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCopilotSessionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['agentId'] = request.agent_id
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.scheduled_task_id):
+            query['scheduledTaskId'] = request.scheduled_task_id
+        if not DaraCore.is_null(request.session_type):
+            query['sessionType'] = request.session_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCopilotSessions',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/copilot/sessions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCopilotSessionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_copilot_sessions_with_options_async(
+        self,
+        request: main_models.ListCopilotSessionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCopilotSessionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['agentId'] = request.agent_id
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.scheduled_task_id):
+            query['scheduledTaskId'] = request.scheduled_task_id
+        if not DaraCore.is_null(request.session_type):
+            query['sessionType'] = request.session_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCopilotSessions',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/copilot/sessions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCopilotSessionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_copilot_sessions(
+        self,
+        request: main_models.ListCopilotSessionsRequest,
+    ) -> main_models.ListCopilotSessionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_copilot_sessions_with_options(request, headers, runtime)
+
+    async def list_copilot_sessions_async(
+        self,
+        request: main_models.ListCopilotSessionsRequest,
+    ) -> main_models.ListCopilotSessionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_copilot_sessions_with_options_async(request, headers, runtime)
+
     def list_diagnosis_with_options(
         self,
         request: main_models.ListDiagnosisRequest,
@@ -8434,6 +8626,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_cluster_agent_config_with_options_async(request, headers, runtime)
+
+    def update_copilot_session_with_options(
+        self,
+        session_id: str,
+        request: main_models.UpdateCopilotSessionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCopilotSessionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.status):
+            body['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCopilotSession',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/copilot/sessions/{DaraURL.percent_encode(session_id)}',
+            method = 'PATCH',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCopilotSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_copilot_session_with_options_async(
+        self,
+        session_id: str,
+        request: main_models.UpdateCopilotSessionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCopilotSessionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.status):
+            body['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCopilotSession',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/copilot/sessions/{DaraURL.percent_encode(session_id)}',
+            method = 'PATCH',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCopilotSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_copilot_session(
+        self,
+        session_id: str,
+        request: main_models.UpdateCopilotSessionRequest,
+    ) -> main_models.UpdateCopilotSessionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_copilot_session_with_options(session_id, request, headers, runtime)
+
+    async def update_copilot_session_async(
+        self,
+        session_id: str,
+        request: main_models.UpdateCopilotSessionRequest,
+    ) -> main_models.UpdateCopilotSessionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_copilot_session_with_options_async(session_id, request, headers, runtime)
 
     def update_events_attention_with_options(
         self,

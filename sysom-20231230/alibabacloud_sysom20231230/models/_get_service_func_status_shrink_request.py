@@ -15,7 +15,7 @@ class GetServiceFuncStatusShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.channel = channel
-        # The diagnostic parameters. Different types of diagnostics require different diagnostic parameters. You can use this field to filter records whose parameters match the specified values.
+        # The diagnostic parameters. Different types of diagnostics require different diagnostic parameters. You can use this field to filter records where the parameters match the specified values.
         # 
         # This parameter is required.
         self.params_shrink = params_shrink

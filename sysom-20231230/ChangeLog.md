@@ -1,3 +1,6 @@
+2026-11-06 Version: 3.3.0
+- Generated python 2023-12-30 for SysOM.
+
 2026-10-30 Version: 3.2.0
 - Support API CreateCopilotSession.
 - Support API DeleteCopilotSession.

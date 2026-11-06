@@ -14,10 +14,10 @@ class InstallAgentWithTypeResponseBody(DaraModel):
         request_id: str = None,
     ):
         # The status code.
-        # - `code == Success` indicates that the authorization is successful.
-        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
+        # - If `code == Success`, the authorization is successful.
+        # - Other status codes indicate that the authorization failed. If the authorization failed, check the `message` field for the detailed fault message.
         self.code = code
-        # The response data.
+        # The returned data.
         self.data = data
         # Id of the request
         self.message = message
@@ -71,7 +71,7 @@ class InstallAgentWithTypeResponseBodyData(DaraModel):
     ):
         # The task ID.
         # 
-        # You can use this task ID to call the GetAgentTask operation to check the task execution status.
+        # You can use this task ID to call the GetAgentTask operation to query the execution status of the task.
         self.task_id = task_id
 
     def validate(self):

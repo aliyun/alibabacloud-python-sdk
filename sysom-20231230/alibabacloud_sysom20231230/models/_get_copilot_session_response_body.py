@@ -13,9 +13,15 @@ class GetCopilotSessionResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
+        # - If `code == Success`, this field is empty.
+        # - Otherwise, this field contains the request error message.
         self.message = message
+        # The request ID. You can use it for end-to-end diagnostics.
         self.request_id = request_id
 
     def validate(self):
@@ -72,18 +78,32 @@ class GetCopilotSessionResponseBodyData(DaraModel):
         status: str = None,
         updated_at: str = None,
     ):
+        # The execution information of the turn that currently occupies the session.
         self.active_turn = active_turn
+        # The time when the session was created, in ISO 8601 format.
         self.created_at = created_at
-        # 十进制事件序号字符串，范围 0..9223372036854775807；避免 JavaScript 精度丢失
+        # The cursor of the latest persisted event in the current session.
         self.cursor = cursor
+        # The information about the most recent execution turn.
         self.last_turn = last_turn
+        # The session title.
         self.name = name
-        # 定时任务触发快照；非定时会话为空
+        # The snapshot information captured when the scheduled task was triggered.
         self.scheduled_task = scheduled_task
+        # The session ID.
         self.session_id = session_id
-        # 会话初始来源：chat、scheduled_task、alert；后续追问不改变来源
+        # The session source. Valid values:
+        # - openapi: API call.
+        # - cron: Scheduled task.
+        # - im_dingtalk: DingTalk.
+        # - im_feishu: Lark.
+        # - alert: Alert.
         self.session_type = session_type
+        # The session status. Valid values:
+        # - active: The session is not archived.
+        # - archived: The session is archived.
         self.status = status
+        # The time when the session was last updated, in ISO 8601 format.
         self.updated_at = updated_at
 
     def validate(self):
@@ -178,17 +198,17 @@ class GetCopilotSessionResponseBodyDataScheduledTask(DaraModel):
         task_name: str = None,
         timezone: str = None,
     ):
-        # 本次定时执行的 Run ID
+        # The ID of this scheduled execution. It is used to associate with the scheduled execution record. Multiple triggers of the same scheduled task use different runIds.
         self.run_id = run_id
-        # 计划触发时间，ISO 8601 含时区偏移
+        # The scheduled trigger time, in ISO 8601 format with a time zone. This field is empty if no record exists.
         self.scheduled_at = scheduled_at
-        # Copilot 开始处理时间，ISO 8601 含时区偏移
+        # The time when the processing of this schedule started, in ISO 8601 format with a time zone.
         self.started_at = started_at
-        # 任务 ID；任务删除后仍保留
+        # The ID of the associated scheduled task.
         self.task_id = task_id
-        # 触发时的任务名称快照
+        # The name of the scheduled task when this trigger occurred. Subsequent changes to the task name do not change this snapshot.
         self.task_name = task_name
-        # 任务的 cron 时区
+        # The scheduling time zone of the scheduled task.
         self.timezone = timezone
 
     def validate(self):
@@ -253,13 +273,21 @@ class GetCopilotSessionResponseBodyDataLastTurn(DaraModel):
         turn_id: str = None,
         updated_at: str = None,
     ):
+        # The time when the execution turn was created, in ISO 8601 format.
         self.created_at = created_at
+        # The time when the execution turn ended, in ISO 8601 format. This field is empty if the execution has not ended.
         self.finished_at = finished_at
+        # The cumulative number of input tokens in this execution turn.
         self.input_tokens = input_tokens
+        # The cumulative number of output tokens in this execution turn.
         self.output_tokens = output_tokens
+        # The ID of the form that is waiting for user input. It is used when you submit user input. This field is empty if no form needs to be filled out.
         self.pending_input_id = pending_input_id
+        # The execution status.
         self.status = status
+        # The ID of the execution turn. It is used when you submit user input, reconnect, or stop the execution.
         self.turn_id = turn_id
+        # The time when the execution turn was last updated, in ISO 8601 format.
         self.updated_at = updated_at
 
     def validate(self):
@@ -336,13 +364,21 @@ class GetCopilotSessionResponseBodyDataActiveTurn(DaraModel):
         turn_id: str = None,
         updated_at: str = None,
     ):
+        # The time when the execution turn was created, in ISO 8601 format.
         self.created_at = created_at
+        # The time when the execution turn ended, in ISO 8601 format. This field is empty if the execution has not ended.
         self.finished_at = finished_at
+        # The cumulative number of input tokens in this execution turn.
         self.input_tokens = input_tokens
+        # The cumulative number of output tokens in this execution turn.
         self.output_tokens = output_tokens
+        # The ID of the form that is waiting for user input. It is used when you submit user input. This field is empty if no form needs to be filled out.
         self.pending_input_id = pending_input_id
+        # The execution status.
         self.status = status
+        # The ID of the execution turn. It is used when you submit user input, reconnect, or stop the execution.
         self.turn_id = turn_id
+        # The time when the execution turn was last updated, in ISO 8601 format.
         self.updated_at = updated_at
 
     def validate(self):

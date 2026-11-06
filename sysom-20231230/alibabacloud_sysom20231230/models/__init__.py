@@ -212,6 +212,12 @@ from ._list_cluster_agent_install_records_response import ListClusterAgentInstal
 from ._list_clusters_request import ListClustersRequest
 from ._list_clusters_response_body import ListClustersResponseBody
 from ._list_clusters_response import ListClustersResponse
+from ._list_copilot_session_messages_request import ListCopilotSessionMessagesRequest
+from ._list_copilot_session_messages_response_body import ListCopilotSessionMessagesResponseBody
+from ._list_copilot_session_messages_response import ListCopilotSessionMessagesResponse
+from ._list_copilot_sessions_request import ListCopilotSessionsRequest
+from ._list_copilot_sessions_response_body import ListCopilotSessionsResponseBody
+from ._list_copilot_sessions_response import ListCopilotSessionsResponse
 from ._list_diagnosis_request import ListDiagnosisRequest
 from ._list_diagnosis_response_body import ListDiagnosisResponseBody
 from ._list_diagnosis_response import ListDiagnosisResponse
@@ -284,6 +290,9 @@ from ._update_alert_strategy_response import UpdateAlertStrategyResponse
 from ._update_cluster_agent_config_request import UpdateClusterAgentConfigRequest
 from ._update_cluster_agent_config_response_body import UpdateClusterAgentConfigResponseBody
 from ._update_cluster_agent_config_response import UpdateClusterAgentConfigResponse
+from ._update_copilot_session_request import UpdateCopilotSessionRequest
+from ._update_copilot_session_response_body import UpdateCopilotSessionResponseBody
+from ._update_copilot_session_response import UpdateCopilotSessionResponse
 from ._update_events_attention_request import UpdateEventsAttentionRequest
 from ._update_events_attention_response_body import UpdateEventsAttentionResponseBody
 from ._update_events_attention_response import UpdateEventsAttentionResponse
@@ -392,6 +401,15 @@ from ._list_all_instances_response_body import ListAllInstancesResponseBodyDataA
 from ._list_all_instances_response_body import ListAllInstancesResponseBodyData
 from ._list_cluster_agent_install_records_response_body import ListClusterAgentInstallRecordsResponseBodyData
 from ._list_clusters_response_body import ListClustersResponseBodyData
+from ._list_copilot_session_messages_response_body import ListCopilotSessionMessagesResponseBodyDataMessagesContent
+from ._list_copilot_session_messages_response_body import ListCopilotSessionMessagesResponseBodyDataMessages
+from ._list_copilot_session_messages_response_body import ListCopilotSessionMessagesResponseBodyDataSessionScheduledTask
+from ._list_copilot_session_messages_response_body import ListCopilotSessionMessagesResponseBodyDataSession
+from ._list_copilot_session_messages_response_body import ListCopilotSessionMessagesResponseBodyData
+from ._list_copilot_sessions_response_body import ListCopilotSessionsResponseBodyDataSessionsActiveTurn
+from ._list_copilot_sessions_response_body import ListCopilotSessionsResponseBodyDataSessionsScheduledTask
+from ._list_copilot_sessions_response_body import ListCopilotSessionsResponseBodyDataSessions
+from ._list_copilot_sessions_response_body import ListCopilotSessionsResponseBodyData
 from ._list_diagnosis_response_body import ListDiagnosisResponseBodyData
 from ._list_instance_health_response_body import ListInstanceHealthResponseBodyData
 from ._list_instance_info_response_body import ListInstanceInfoResponseBodyData
@@ -422,6 +440,10 @@ from ._update_agent_config_response_body import UpdateAgentConfigResponseBodyDat
 from ._update_alert_destination_request import UpdateAlertDestinationRequestParams
 from ._update_alert_strategy_request import UpdateAlertStrategyRequestStrategy
 from ._update_cluster_agent_config_response_body import UpdateClusterAgentConfigResponseBodyData
+from ._update_copilot_session_response_body import UpdateCopilotSessionResponseBodyDataActiveTurn
+from ._update_copilot_session_response_body import UpdateCopilotSessionResponseBodyDataLastTurn
+from ._update_copilot_session_response_body import UpdateCopilotSessionResponseBodyDataScheduledTask
+from ._update_copilot_session_response_body import UpdateCopilotSessionResponseBodyData
 from ._update_events_attention_response_body import UpdateEventsAttentionResponseBodyData
 from ._update_func_switch_record_request import UpdateFuncSwitchRecordRequestParamsArgs
 from ._update_func_switch_record_request import UpdateFuncSwitchRecordRequestParams
@@ -645,6 +667,12 @@ __all__ = [
     ListClustersRequest,
     ListClustersResponseBody,
     ListClustersResponse,
+    ListCopilotSessionMessagesRequest,
+    ListCopilotSessionMessagesResponseBody,
+    ListCopilotSessionMessagesResponse,
+    ListCopilotSessionsRequest,
+    ListCopilotSessionsResponseBody,
+    ListCopilotSessionsResponse,
     ListDiagnosisRequest,
     ListDiagnosisResponseBody,
     ListDiagnosisResponse,
@@ -717,6 +745,9 @@ __all__ = [
     UpdateClusterAgentConfigRequest,
     UpdateClusterAgentConfigResponseBody,
     UpdateClusterAgentConfigResponse,
+    UpdateCopilotSessionRequest,
+    UpdateCopilotSessionResponseBody,
+    UpdateCopilotSessionResponse,
     UpdateEventsAttentionRequest,
     UpdateEventsAttentionResponseBody,
     UpdateEventsAttentionResponse,
@@ -825,6 +856,15 @@ __all__ = [
     ListAllInstancesResponseBodyData,
     ListClusterAgentInstallRecordsResponseBodyData,
     ListClustersResponseBodyData,
+    ListCopilotSessionMessagesResponseBodyDataMessagesContent,
+    ListCopilotSessionMessagesResponseBodyDataMessages,
+    ListCopilotSessionMessagesResponseBodyDataSessionScheduledTask,
+    ListCopilotSessionMessagesResponseBodyDataSession,
+    ListCopilotSessionMessagesResponseBodyData,
+    ListCopilotSessionsResponseBodyDataSessionsActiveTurn,
+    ListCopilotSessionsResponseBodyDataSessionsScheduledTask,
+    ListCopilotSessionsResponseBodyDataSessions,
+    ListCopilotSessionsResponseBodyData,
     ListDiagnosisResponseBodyData,
     ListInstanceHealthResponseBodyData,
     ListInstanceInfoResponseBodyData,
@@ -855,6 +895,10 @@ __all__ = [
     UpdateAlertDestinationRequestParams,
     UpdateAlertStrategyRequestStrategy,
     UpdateClusterAgentConfigResponseBodyData,
+    UpdateCopilotSessionResponseBodyDataActiveTurn,
+    UpdateCopilotSessionResponseBodyDataLastTurn,
+    UpdateCopilotSessionResponseBodyDataScheduledTask,
+    UpdateCopilotSessionResponseBodyData,
     UpdateEventsAttentionResponseBodyData,
     UpdateFuncSwitchRecordRequestParamsArgs,
     UpdateFuncSwitchRecordRequestParams,

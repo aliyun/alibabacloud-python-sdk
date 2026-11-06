@@ -14,14 +14,14 @@ class GetServiceFuncStatusResponseBody(DaraModel):
         request_id: str = None,
     ):
         # The status code.
-        # - `code == Success` indicates that the authorization is successful.
-        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
+        # - If `code == Success`, the authorization succeeds.
+        # - Other status codes indicate that the authorization failed. If the authorization fails, check the `message` field for the detailed fault message.
         self.code = code
-        # The response data.
+        # The returned results.
         self.data = data
         # The error message.
-        # - If `code == Success`, this field is empty.
-        # - Otherwise, this field contains the request error information.
+        # - If code is Success, this field is empty.
+        # - Otherwise, this field contains the request error message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -115,7 +115,7 @@ class GetServiceFuncStatusResponseBodyDataArgs(DaraModel):
         self.java_store_path = java_store_path
         # The lock tracing switch.
         self.locks = locks
-        # The tracing cycle.
+        # The tracing interval.
         self.loop = loop
         # The memory tracing switch.
         self.mem = mem

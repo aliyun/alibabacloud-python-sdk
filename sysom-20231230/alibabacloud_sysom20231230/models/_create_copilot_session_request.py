@@ -9,7 +9,7 @@ class CreateCopilotSessionRequest(DaraModel):
         self,
         name: str = None,
     ):
-        # 不填为 New Session
+        # The session name. The name must be 1 to 255 characters in length. Default value: New Session. Empty strings or null values are not supported. If no name is specified, the server uses content generation to create a session name based on the first user message when it is received.
         self.name = name
 
     def validate(self):
