@@ -17,7 +17,7 @@ class ResetGatewayQuotaRuleResponseBody(DaraModel):
     ):
         # The status code or error code.
         self.code = code
-        # The response data.
+        # The request data content.
         self.data = data
         # The message content.
         self.message = message
@@ -72,11 +72,11 @@ class ResetGatewayQuotaRuleResponseBodyData(DaraModel):
         dry_run: bool = None,
         rule_id: str = None,
     ):
-        # Indicates whether the write request is accepted by the system. A value of false typically indicates a retryable scenario, such as an unconfirmed conflict overwrite.
+        # Indicates whether the semantics of the current write request can be accepted by the system. A value of false is common in retryable scenarios such as unconfirmed conflict overwrites.
         self.accepted = accepted
         # The conflict preview.
         self.conflict_preview = conflict_preview
-        # Indicates whether the request is a dry run.
+        # Indicates whether it is a dry run.
         self.dry_run = dry_run
         # The rule ID.
         self.rule_id = rule_id
@@ -128,7 +128,7 @@ class ResetGatewayQuotaRuleResponseBodyDataConflictPreview(DaraModel):
         items: List[main_models.ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems] = None,
         total_conflict_count: int = None,
     ):
-        # The hash of the conflict snapshot.
+        # The hash of the conflict.
         self.conflict_hash = conflict_hash
         # The list of conflicting subjects.
         self.items = items
@@ -186,26 +186,19 @@ class ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems(DaraModel):
         subject_name: str = None,
         subject_type: str = None,
     ):
-        # The period type of the existing conflicting rule on the subject. Valid values:
-        # - day: daily.
-        # - week: weekly.
-        # - month: monthly.
+        # The period type of the existing conflicting rule on the subject. A value of day, week, or month indicates that the period of the existing conflicting rule on the subject is daily, weekly, or monthly.
         self.conflict_period_type = conflict_period_type
-        # The type of the existing conflicting rule on the subject. Valid values:
-        # - calendar: The existing conflicting rule uses a calendar period.
-        # - epoch: The existing conflicting rule uses a custom period.
+        # The type of the existing conflicting rule on the subject. A value of calendar indicates that the existing conflicting rule on the subject uses a natural period. A value of epoch indicates that the existing conflicting rule uses a custom period.
         self.conflict_type = conflict_type
-        # The consumer ID. You can use subjectId instead.
+        # The consumer ID. This parameter can now be uniformly replaced by subjectId.
         self.consumer_id = consumer_id
-        # The consumer name. You can use subjectName instead.
+        # The consumer name. This parameter can now be uniformly replaced by subjectName.
         self.consumer_name = consumer_name
         # The ID of the conflicting subject.
         self.subject_id = subject_id
         # The name of the conflicting subject.
         self.subject_name = subject_name
-        # The type of the conflicting subject. Valid values:
-        # - consumer: consumer.
-        # - consumer_group: consumer group.
+        # The type of the conflicting subject. Valid values: consumer and consumer_group.
         self.subject_type = subject_type
 
     def validate(self):

@@ -21,7 +21,7 @@ class GetDomainResponseBody(DaraModel):
         self.data = data
         # The response message.
         self.message = message
-        # The request ID used to trace the API call chain.
+        # The request ID, which is used to trace the API call chain.
         self.request_id = request_id
 
     def validate(self):
@@ -100,9 +100,9 @@ class GetDomainResponseBodyData(DaraModel):
         self.algorithm = algorithm
         # The CA certificate identifier.
         self.ca_cert_identifier = ca_cert_identifier
-        # The certificate detail error code.
+        # The error code for the certificate details.
         self.cert_detail_error_code = cert_detail_error_code
-        # The certificate detail error message.
+        # The error message for the certificate details.
         self.cert_detail_error_message = cert_detail_error_message
         # The certificate detail status.
         self.cert_detail_status = cert_detail_status
@@ -112,7 +112,7 @@ class GetDomainResponseBodyData(DaraModel):
         self.cert_name = cert_name
         # The client CA certificate.
         self.client_cacert = client_cacert
-        # The creation source.
+        # The source from which the domain name was created.
         self.create_from = create_from
         # The creation timestamp.
         self.create_timestamp = create_timestamp
@@ -122,11 +122,11 @@ class GetDomainResponseBodyData(DaraModel):
         self.domain_id = domain_id
         # The domain name scope.
         self.domain_scope = domain_scope
-        # The Settings for the HTTPS Protocol Type and whether forced HTTPS redirection is enabled.
+        # The HTTPS protocol type settings. Specifies whether forced HTTPS redirection is enabled.
         self.force_https = force_https
         # The HTTP/2 settings.
         self.http_2option = http_2option
-        # The certification authority.
+        # The certificate issuer.
         self.issuer = issuer
         # Indicates whether mTLS mutual authentication is enabled.
         self.m_tlsenabled = m_tlsenabled
@@ -136,16 +136,15 @@ class GetDomainResponseBodyData(DaraModel):
         self.not_after_timstamp = not_after_timstamp
         # The effective period of the certificate.
         self.not_before_timestamp = not_before_timestamp
-        # The protocol types supported by the domain name.
-        # 
-        # - HTTP: Supports only the HTTP protocol.
-        # - HTTPS: Supports only the HTTPS protocol.
+        # The protocol types supported by the domain name. Valid values:
+        # - HTTP: Only the HTTP protocol is supported.
+        # - HTTPS: Only the HTTPS protocol is supported.
         self.protocol = protocol
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # All the domain names bound to the certificate.
+        # All domain names bound to the certificate.
         self.sans = sans
-        # The online resource information.
+        # The production resource information.
         self.statistics_info = statistics_info
         # The cipher suite configuration.
         self.tls_cipher_suites_config = tls_cipher_suites_config

@@ -140,7 +140,7 @@ class ListPluginAttachmentsResponseBodyDataItems(DaraModel):
         plugin_id: str = None,
         resource_infos: List[main_models.ResourceInfo] = None,
     ):
-        # The plugin mount resource type. Valid values: GatewayRoute, Gateway, GatewayDomain, HttpApi, and Operation.
+        # The type of the plugin mount resource. Valid values: GatewayRoute, Gateway, GatewayDomain, HttpApi, and Operation.
         self.attach_resource_type = attach_resource_type
         # Indicates whether the plugin is enabled.
         self.enable = enable
@@ -148,15 +148,15 @@ class ListPluginAttachmentsResponseBodyDataItems(DaraModel):
         self.environment_info = environment_info
         # The parent resource information.
         self.parent_resource_info = parent_resource_info
-        # The plugin mount ID.
+        # The ID of the plugin mount.
         self.plugin_attachment_id = plugin_attachment_id
-        # The plugin type information.
+        # The plugin class information.
         self.plugin_class_info = plugin_class_info
         # The Base64-encoded content of the original plugin configuration.
         self.plugin_config = plugin_config
         # The plugin ID.
         self.plugin_id = plugin_id
-        # The mount resource information.
+        # The mounted resource information.
         self.resource_infos = resource_infos
 
     def validate(self):

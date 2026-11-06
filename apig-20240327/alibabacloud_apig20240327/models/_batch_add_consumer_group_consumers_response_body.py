@@ -15,7 +15,7 @@ class BatchAddConsumerGroupConsumersResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The response status code. Ok is returned if the request is successful.
+        # The response status code. The value is Ok if the request succeeds.
         self.code = code
         # The response data.
         self.data = data
@@ -73,9 +73,9 @@ class BatchAddConsumerGroupConsumersResponseBodyData(DaraModel):
     ):
         # The list of consumer IDs that failed to be added.
         self.failed_consumer_ids = failed_consumer_ids
-        # The list of consumer IDs that already exist in the consumer group and were skipped.
+        # The list of consumer IDs that are already in the consumer group and are skipped in this operation.
         self.skipped_consumer_ids = skipped_consumer_ids
-        # The list of consumer IDs that were successfully added to the consumer group.
+        # The list of consumer IDs successfully added to the consumer group.
         self.success_consumer_ids = success_consumer_ids
 
     def validate(self):

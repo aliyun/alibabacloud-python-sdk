@@ -67,7 +67,7 @@ class CreatePortalResponseBodyData(DaraModel):
         self,
         portal_id: str = None,
     ):
-        # The portal ID. It can be used to locate the portal in API operations such as GetPortal, UpdatePortal, and DeletePortal.
+        # The portal ID. You can use this ID to locate the portal in API operations such as GetPortal, UpdatePortal, and DeletePortal.
         self.portal_id = portal_id
 
     def validate(self):

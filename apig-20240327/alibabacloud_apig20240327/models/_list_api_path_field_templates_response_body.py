@@ -72,13 +72,13 @@ class ListApiPathFieldTemplatesResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # The list of field templates. Each element in the items list is a field template record that contains the templateId, path, and protocol.
+        # The list of field templates. The list element is named items, and each element is a field template record that contains the templateId, path, and protocol.
         self.items = items
         # The page number.
         self.page_number = page_number
         # The page size.
         self.page_size = page_size
-        # The total number of entries.
+        # The total number of items.
         self.total_size = total_size
 
     def validate(self):

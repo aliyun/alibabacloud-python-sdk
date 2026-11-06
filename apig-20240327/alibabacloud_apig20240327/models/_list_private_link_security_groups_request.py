@@ -13,9 +13,9 @@ class ListPrivateLinkSecurityGroupsRequest(DaraModel):
     ):
         # The maximum number of entries to return.
         self.max_results = max_results
-        # The token for the next page.
+        # The next token.
         self.next_token = next_token
-        # The ID of the VPC owned by the authorized user. The candidate security groups must belong to this VPC.
+        # The ID of the VPC owned by the currently authorized user. The candidate security groups must belong to this VPC.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id

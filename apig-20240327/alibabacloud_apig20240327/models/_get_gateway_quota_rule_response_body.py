@@ -84,7 +84,7 @@ class GetGatewayQuotaRuleResponseBodyData(DaraModel):
         timezone: str = None,
         window_alignment: str = None,
     ):
-        # The base timestamp of the cycle, in UNIX seconds.
+        # The base timestamp of the period.
         self.base_timestamp = base_timestamp
         # The number of consumers associated with the rule.
         self.consumer_count = consumer_count
@@ -92,9 +92,9 @@ class GetGatewayQuotaRuleResponseBodyData(DaraModel):
         self.consumers = consumers
         # The reset time of the current cycle, in RFC 3339 format.
         self.current_cycle_reset_at = current_cycle_reset_at
-        # The number of days in the custom cycle. This parameter is returned only when windowAlignment is set to epoch. Valid values: 1 to 106751. This parameter is not returned for natural cycles.
+        # The number of days in a custom period. This parameter is returned only when windowAlignment is set to epoch. Valid values: 1 to 106751. This parameter is not returned for natural periods.
         self.period_multiplier = period_multiplier
-        # The quota cycle type.
+        # The quota period type.
         self.period_type = period_type
         # The quota dimension.
         self.quota_dimension = quota_dimension
@@ -112,9 +112,9 @@ class GetGatewayQuotaRuleResponseBodyData(DaraModel):
         self.subject_type = subject_type
         # The list of general subjects bound to this rule. This parameter is returned only when withSubjects is set to true.
         self.subjects = subjects
-        # The time zone corresponding to the natural cycle, in UTC+x format.
+        # The time zone corresponding to the natural period, in UTC+x format.
         self.timezone = timezone
-        # The reset cycle type.
+        # The reset period type.
         self.window_alignment = window_alignment
 
     def validate(self):
@@ -296,9 +296,9 @@ class GetGatewayQuotaRuleResponseBodyDataConsumers(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # The ID of the subject (consumer).
+        # The subject (consumer) ID.
         self.id = id
-        # The name of the subject (consumer).
+        # The subject (consumer) name.
         self.name = name
 
     def validate(self):

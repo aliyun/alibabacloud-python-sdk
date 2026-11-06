@@ -9,7 +9,7 @@ class GetDomainRequest(DaraModel):
         self,
         with_statistics: bool = None,
     ):
-        # Specifies whether to return online resource information.
+        # Specifies whether to return production resource information.
         self.with_statistics = with_statistics
 
     def validate(self):

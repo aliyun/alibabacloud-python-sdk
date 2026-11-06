@@ -14,7 +14,7 @@ class UpdateProductCategoryRequest(DaraModel):
     ):
         # The description of the product category. The description can be up to 500 characters in length.
         self.description = description
-        # The icon of the product category, which consists of the icon type (type) and icon information (value) fields.
+        # The icon of the product category. It consists of two fields: icon type (type) and icon information (value).
         self.icon = icon
         # The name of the product category. The name can be up to 100 characters in length.
         self.name = name

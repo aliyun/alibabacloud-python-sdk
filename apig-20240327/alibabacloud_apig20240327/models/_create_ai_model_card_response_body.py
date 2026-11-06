@@ -17,11 +17,11 @@ class CreateAiModelCardResponseBody(DaraModel):
     ):
         # The response status code.
         self.code = code
-        # The model card information returned after successful creation.
+        # The model card information returned after the model card is created.
         self.data = data
         # The response message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -78,7 +78,7 @@ class CreateAiModelCardResponseBodyData(DaraModel):
         source: str = None,
         update_time: str = None,
     ):
-        # The list of invocation paths supported by the model.
+        # The list of call paths supported by the model.
         self.available_paths = available_paths
         # The credit billing information of the model.
         self.credit = credit
@@ -86,15 +86,15 @@ class CreateAiModelCardResponseBodyData(DaraModel):
         self.features = features
         # The AI gateway instance ID to which the model card belongs.
         self.gateway_id = gateway_id
-        # The token limits and input/output modality information of the model.
+        # The token limits and input and output modality information of the model.
         self.meta = meta
-        # The model card ID.
+        # The ID of the model card.
         self.model_card_id = model_card_id
-        # The model name.
+        # The name of the model.
         self.model_name = model_name
-        # The model provider identifier.
+        # The identifier of the model provider.
         self.model_provider = model_provider
-        # The source of the model card. The current value is user.
+        # The source of the model card. Currently, user is returned.
         self.source = source
         # The last update time of the model card, in the yyyy-MM-dd HH:mm:ss format.
         self.update_time = update_time
@@ -259,13 +259,13 @@ class CreateAiModelCardResponseBodyDataCredit(DaraModel):
         output_cost: float = None,
         type: str = None,
     ):
-        # The cache hit token cost, in Credits per million tokens.
+        # The cost of cache hit tokens, in Credits per million tokens.
         self.cache_cost = cache_cost
-        # The input token cost, in Credits per million tokens.
+        # The cost of input tokens, in Credits per million tokens.
         self.input_cost = input_cost
-        # The output token cost, in Credits per million tokens.
+        # The cost of output tokens, in Credits per million tokens.
         self.output_cost = output_cost
-        # The billing type. The current value is fixed.
+        # The billing type. Currently, fixed is returned.
         self.type = type
 
     def validate(self):
@@ -312,9 +312,9 @@ class CreateAiModelCardResponseBodyDataAvailablePaths(DaraModel):
         path: str = None,
         type: str = None,
     ):
-        # The model invocation path.
+        # The model call path.
         self.path = path
-        # The protocol type of the path.
+        # The protocol type corresponding to the path.
         self.type = type
 
     def validate(self):

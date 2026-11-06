@@ -74,9 +74,9 @@ class VerifyMigrationTaskResponseBodyData(DaraModel):
     ):
         # Indicates whether all routes are compatible and can be migrated.
         self.is_supported = is_supported
-        # The description of the check result, such as the failure reason or incompatibility summary. This value is from the Istio validation Reason.
+        # The description of the check result, such as the failure cause or incompatibility summary, which is derived from the Istio validation reason.
         self.message = message
-        # Indicates whether the check is successful, which means whether the Istiod query link is working properly.
+        # Indicates whether the check is successfully executed, which reflects whether the Istiod query link is functioning properly.
         self.success = success
         # The list of incompatible routes.
         self.un_supported_route_rules = un_supported_route_rules
@@ -136,7 +136,7 @@ class VerifyMigrationTaskResponseBodyDataUnSupportedRouteRules(DaraModel):
     ):
         # The namespaced name of the incompatible Ingress.
         self.name = name
-        # The summary of the incompatible rule, in the format of request URI → destination service.
+        # The summary of the incompatible rule, including the request URI and the destination service.
         self.rule = rule
         # The list of unsupported annotations on the Ingress.
         self.un_supported_annotations = un_supported_annotations

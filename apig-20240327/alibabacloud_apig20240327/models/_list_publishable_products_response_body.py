@@ -72,13 +72,13 @@ class ListPublishableProductsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The list of API products that can be published to the portal. The list element is named productInfo, and each element contains the information about an API product.
+        # The list of API products that can be published to the portal. Each element in the list is named productInfo and contains the information about an API product.
         self.content = content
         # The page number.
         self.page_number = page_number
         # The page size.
         self.page_size = page_size
-        # The total number of entries.
+        # The total count.
         self.total_count = total_count
 
     def validate(self):

@@ -76,7 +76,7 @@ class ListProductPublicationsResponseBodyData(DaraModel):
         self.content = content
         # The page number.
         self.page_number = page_number
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
         # The total number of entries.
         self.total_count = total_count

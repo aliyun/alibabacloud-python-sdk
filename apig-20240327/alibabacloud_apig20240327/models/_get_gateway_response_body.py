@@ -102,7 +102,7 @@ class GetGatewayResponseBodyData(DaraModel):
         # - POSTPAY: Pay-as-you-go.
         # - PREPAY: Subscription.
         self.charge_type = charge_type
-        # The creation source of the gateway. Valid values:
+        # The source from which the gateway was created. Valid values:
         # - Console: The console.
         self.create_from = create_from
         # The creation timestamp. Unit: milliseconds.
@@ -113,19 +113,19 @@ class GetGatewayResponseBodyData(DaraModel):
         self.environments = environments
         # The expiration timestamp for subscription instances. Unit: milliseconds.
         self.expire_timestamp = expire_timestamp
-        # The edition of the gateway instance. Valid values:
+        # The gateway edition. Valid values:
         # - Professional: Professional instance.
         # - Serverless: Serverless instance.
         self.gateway_edition = gateway_edition
         # The gateway ID.
         self.gateway_id = gateway_id
-        # The operation mode for AI multi-tenant V2. The default value is ENTERPRISE. This parameter is applicable only to AI and MultiTenantServerless gateways.
+        # The AI multi-tenant V2 operation mode. The default value is ENTERPRISE. This parameter is allowed only for AI and MultiTenantServerless.
         self.gateway_mode = gateway_mode
         # The gateway type. Valid values:
         # - API: API gateway.
         # - AI: AI gateway.
         self.gateway_type = gateway_type
-        # The type of the Internet service provider (ISP).
+        # The network ISP type.
         self.isp = isp
         # The list of ingress addresses for the gateway.
         self.load_balancers = load_balancers
@@ -133,7 +133,7 @@ class GetGatewayResponseBodyData(DaraModel):
         self.maintenance_period = maintenance_period
         # The gateway name.
         self.name = name
-        # The network access configuration of the gateway, including the access endpoint type and the security group used by the private endpoint. This parameter is returned only when the gateway is configured with a private endpoint.
+        # The network access configuration of the gateway, including the access endpoint type and the security group used by the internal endpoint. This parameter is returned only when the gateway is configured with an internal endpoint.
         self.network_access_config = network_access_config
         # The PrivateLink information of the gateway, including the endpoint ID, access domain name, connection status, and zone information.
         self.private_link = private_link
@@ -144,7 +144,7 @@ class GetGatewayResponseBodyData(DaraModel):
         # The security group of the gateway.
         self.security_group = security_group
         # The gateway specifications. Valid values:
-        # - apigw.small.x1: Small specifications.
+        # - apigw.small.x1: Small.
         self.spec = spec
         # The gateway status. Valid values:
         # - Running: The gateway is running.
@@ -161,7 +161,7 @@ class GetGatewayResponseBodyData(DaraModel):
         self.sub_domain_infos = sub_domain_infos
         # The resource tags.
         self.tags = tags
-        # The target version of the gateway. If this value is different from the current version, you can upgrade the gateway.
+        # The target version of the gateway. You can upgrade the gateway if this value is different from the current version.
         self.target_version = target_version
         # The tenant ID returned in STANDARD mode.
         self.tenant_id = tenant_id
@@ -680,23 +680,23 @@ class GetGatewayResponseBodyDataPrivateLink(DaraModel):
         stage: str = None,
         zones: List[main_models.GetGatewayResponseBodyDataPrivateLinkZones] = None,
     ):
-        # The connection status between the private endpoint and the endpoint service. A value of Connected indicates that the endpoint is connected.
+        # The connection status between the internal endpoint and the endpoint service. A value of Connected indicates that the endpoint is connected.
         self.connection_status = connection_status
-        # The access domain name of the private endpoint, which can be used to access the gateway from the user VPC.
+        # The access domain name of the internal endpoint, which can be used to access the gateway from the user VPC.
         self.endpoint_domain = endpoint_domain
-        # The ID of the private endpoint.
+        # The internal endpoint ID.
         self.endpoint_id = endpoint_id
-        # The ID of the security group configured for the private endpoint.
+        # The ID of the security group configured for the internal endpoint.
         self.endpoint_security_group_id = endpoint_security_group_id
-        # The status of the private endpoint. A value of Active indicates that the endpoint is available.
+        # The status of the internal endpoint. A value of Active indicates that the endpoint is available.
         self.endpoint_status = endpoint_status
-        # The error code of the most recent error that occurred during the creation or delete operations of the private endpoint. This parameter is not returned if no error message is available.
+        # The error code of the most recent fault that occurred during the creation or delete procedure of the private network ingress. This parameter is not returned if no error message is available.
         self.last_error_code = last_error_code
-        # The description of the most recent error that occurred during the creation or delete operations of the private endpoint. You can use this description along with the error code to troubleshoot the issue. This parameter is not returned if no error message is available.
+        # The description of the most recent fault that occurred during the creation or delete procedure of the private network ingress. You can use this description along with the error code to troubleshoot the issue. This parameter is not returned if no error message is available.
         self.last_error_message = last_error_message
         # The time when the system last retrieved the status of the private endpoint. The time is in RFC 3339 format. This parameter is not returned if the status has not been retrieved.
         self.observed_at = observed_at
-        # Indicates whether the private endpoint may continue to incur fees. A value of true indicates that the endpoint is created and its release is not confirmed. A value of false indicates that no fee prompt is available. The actual fees are subject to the bill.
+        # Indicates whether the private endpoint may continue to incur charges. A value of true indicates that the endpoint is created and its release is not confirmed. A value of false indicates that no charge prompt is available. Actual charges are subject to the bill.
         self.resource_may_be_charged = resource_may_be_charged
         # The current processing stage of the private endpoint. A value of Ready indicates that the private endpoint is ready.
         self.stage = stage
@@ -834,11 +834,11 @@ class GetGatewayResponseBodyDataNetworkAccessConfig(DaraModel):
         endpoint_security_group_id: str = None,
         type: str = None,
     ):
-        # The ID of the security group configured for the private endpoint. The security group belongs to the VPC selected by the user and is an unmanaged security group.
+        # The ID of the security group configured for the internal endpoint. The security group belongs to the VPC selected by the user and is an unmanaged security group.
         self.endpoint_security_group_id = endpoint_security_group_id
         # The access endpoint type of the gateway. Valid values:
-        # - Intranet: Private endpoint only.
-        # - InternetAndIntranet: Both Internet and private endpoints.
+        # - Intranet: Internal endpoint only.
+        # - InternetAndIntranet: Internet and internal endpoints.
         self.type = type
 
     def validate(self):
@@ -873,9 +873,9 @@ class GetGatewayResponseBodyDataMaintenancePeriod(DaraModel):
         end_time: str = None,
         start_time: str = None,
     ):
-        # The end time of the O&M window in the HH:mm format.
+        # The O&M end time in HH:mm format.
         self.end_time = end_time
-        # The start time of the O&M window in the HH:mm format.
+        # The O&M start time in HH:mm format.
         self.start_time = start_time
 
     def validate(self):
@@ -925,8 +925,8 @@ class GetGatewayResponseBodyDataLoadBalancers(DaraModel):
         # - ipv4: IPv4.
         # - ipv6: IPv6.
         self.address_ip_version = address_ip_version
-        # The type of the load balancing address. Valid values:
-        # - Internet: Internet-facing.
+        # The load balancing address type. Valid values:
+        # - Internet: Internet.
         # - Intranet: Private network.
         self.address_type = address_type
         # Indicates whether the address is the default ingress address for the gateway.
@@ -937,16 +937,16 @@ class GetGatewayResponseBodyDataLoadBalancers(DaraModel):
         self.ipv_6addresses = ipv_6addresses
         # The load balancing ID.
         self.load_balancer_id = load_balancer_id
-        # The load balancing pattern of the gateway. Valid values:
+        # The load balancing provisioning pattern for the gateway. Valid values:
         # - Managed: Managed by Cloud-native API Gateway.
         self.mode = mode
-        # The list of listener ports.
+        # The list of listened ports.
         self.ports = ports
         # The status of the load balancing. Valid values:
         # - Ready: Active.
         # - NotCreate: Not associated with an instance.
         self.status = status
-        # The type of the load balancing. Valid values:
+        # The load balancing type. Valid values:
         # - NLB: Network Load Balancer (NLB).
         # - CLB: Classic Load Balancer.
         self.type = type
@@ -1085,7 +1085,7 @@ class GetGatewayResponseBodyDataEnvironments(DaraModel):
         environment_id: str = None,
         name: str = None,
     ):
-        # The alias of the environment.
+        # The environment alias.
         self.alias = alias
         # The environment ID.
         self.environment_id = environment_id

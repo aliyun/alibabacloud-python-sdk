@@ -18,25 +18,25 @@ class CreatePluginClassRequest(DaraModel):
         wasm_language: str = None,
         wasm_url: str = None,
     ):
-        # The alias of the plugin class. This parameter is required. If this parameter is not specified, the service returns an InvalidParameter.WithValue error.
+        # The alias of the plug-in. This parameter is required. If it is not provided, the service returns InvalidParameter.WithValue.
         self.alias = alias
-        # The description of the plugin.
+        # The description of the plug-in.
         # 
         # This parameter is required.
         self.description = description
-        # The execution priority of the plugin. This parameter is required when executeStage is specified. The default value 0 is invalid. We recommend that you set this parameter to 200.
+        # The execution priority of the plug-in. This parameter is required when executeStage is specified. The default value 0 is invalid. Set this parameter to 200.
         self.execute_priority = execute_priority
-        # The execution stage of the plugin.
+        # The execution stage of the plug-in.
         # 
         # This parameter is required.
         self.execute_stage = execute_stage
-        # The name of the plugin class.
+        # The name of the plug-in class.
         # 
         # This parameter is required.
         self.name = name
-        # The minimum gateway version that the plugin is compatible with.
+        # The minimum supported gateway version.
         self.supported_min_gateway_version = supported_min_gateway_version
-        # The version number of the plugin.
+        # The version number of the plug-in.
         # 
         # This parameter is required.
         self.version = version
@@ -44,11 +44,11 @@ class CreatePluginClassRequest(DaraModel):
         # 
         # This parameter is required.
         self.version_description = version_description
-        # The development language of the WASM plugin. Valid values: TinyGo.
+        # The development language of the WASM plug-in. Valid values: TinyGo.
         # 
         # This parameter is required.
         self.wasm_language = wasm_language
-        # The download URL of the WASM plugin binary file.
+        # The download URL of the WASM plug-in binary file.
         # 
         # This parameter is required.
         self.wasm_url = wasm_url

@@ -82,21 +82,21 @@ class ListModelCardsResponseBodyData(DaraModel):
         snapshots: List[Dict[str, Any]] = None,
         source: str = None,
     ):
-        # The list of available paths for the model card. Each element consists of a path and a type member. The API definition does not specify the criteria for availability.
+        # The list of available paths for the model card. Each element consists of the path and type members. The criteria for availability are not specified in the API definition.
         self.available_paths = available_paths
-        # The feature configuration of the model card. This is a key-value pair map structure. The key set is not declared in the API definition.
+        # The feature configuration of the model card, structured as a key-value pair mapping. The set of keys is not declared in the API definition.
         self.features = features
-        # The metadata container for the model card. Only the description member is declared in the API definition.
+        # The metadata container of the model card. Only the description member is declared in the API definition.
         self.meta = meta
         # The model name.
         self.model_name = model_name
-        # The pricing information of the model card. This is a key-value pair map structure. The key set and billing criteria are not declared in the API definition.
+        # The pricing information of the model card, structured as a key-value pair mapping. The set of keys and billing metrics are not declared in the API definition.
         self.pricing = pricing
         # The model provider identifier corresponding to the model card.
         self.provider = provider
-        # The list of snapshots for the model card. Array items are map structures with undeclared members. The API definition does not specify the snapshot content or generation rules.
+        # The list of snapshots for the model card. Array items are mapping structures with undeclared members. The snapshot content and generation rules are not specified in the API definition.
         self.snapshots = snapshots
-        # The source identifier of the model card. The valid values are not declared in the API definition.
+        # The source identifier of the model card. The set of valid values is not declared in the API definition.
         self.source = source
 
     def validate(self):
@@ -208,7 +208,7 @@ class ListModelCardsResponseBodyDataAvailablePaths(DaraModel):
     ):
         # The request path of the API.
         self.path = path
-        # The type identifier of the available path record. The valid values are not declared in the API definition.
+        # The type identifier of the available path record. The set of valid values is not declared in the API definition.
         self.type = type
 
     def validate(self):

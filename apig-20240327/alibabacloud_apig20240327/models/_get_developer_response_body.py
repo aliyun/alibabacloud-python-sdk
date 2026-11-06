@@ -70,9 +70,9 @@ class GetDeveloperResponseBodyData(DaraModel):
         status: str = None,
         username: str = None,
     ):
-        # The developer ID. You can use this ID to locate the developer in API operations such as SetHiMarketDeveloperStatus and DeleteHiMarketDeveloper.
+        # The developer ID. You can use it to identify the developer in API operations such as SetHiMarketDeveloperStatus and DeleteHiMarketDeveloper.
         self.developer_id = developer_id
-        # The ID of the portal to which the developer belongs. You can use this ID to locate the portal in API operations such as GetPortal, UpdatePortal, and DeletePortal.
+        # The ID of the portal to which the developer belongs. You can use it to identify the portal in API operations such as GetPortal, UpdatePortal, and DeletePortal.
         self.portal_id = portal_id
         # The developer status. Valid values: PENDING, APPROVED, and REJECTED.
         self.status = status

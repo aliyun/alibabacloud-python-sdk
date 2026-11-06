@@ -67,7 +67,7 @@ class CreatePluginClassResponseBodyData(DaraModel):
         self,
         plugin_class_id: str = None,
     ):
-        # The plugin class ID.
+        # The ID of the plug-in class.
         self.plugin_class_id = plugin_class_id
 
     def validate(self):

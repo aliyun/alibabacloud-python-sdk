@@ -15,11 +15,11 @@ class RevealServiceCredentialResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The response code. The value is Ok for a successful request.
+        # The response code. A value of Ok indicates success.
         self.code = code
         # The currently active credential data.
         self.data = data
-        # The response message. The value is success if the request is successful.
+        # The response message. A value of success indicates success.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -73,9 +73,9 @@ class RevealServiceCredentialResponseBodyData(DaraModel):
         provider: str = None,
         service_id: str = None,
     ):
-        # The current configuration revision. The value is legacy for historical objects.
+        # The current configuration revision. For legacy objects, the value is legacy.
         self.config_revision = config_revision
-        # The credential object of the currently active type. Only the fields corresponding to the credentialType are populated.
+        # The credential object for the currently active type. Only the fields corresponding to the credentialType are populated.
         self.credential = credential
         # The currently active credential type. Valid values: apiKey, bedrock, vertex, and kling.
         self.credential_type = credential_type
@@ -149,9 +149,9 @@ class RevealServiceCredentialResponseBodyDataCredential(DaraModel):
     ):
         # The API key generation mode. Valid values: Custom and Reference. Historical null values are treated as Custom.
         self.api_key_generate_mode = api_key_generate_mode
-        # The list of Key Management Service (KMS) reference names. This list is returned only in Reference mode, and the reference values are not returned.
+        # The list of Key Management Service (KMS) reference names. This field is returned only in Reference mode. Reference values are not returned.
         self.api_key_references = api_key_references
-        # The list of custom API keys. This list is returned only when apiKeyGenerateMode is set to Custom. The keys are returned in the original order without deduplication.
+        # The list of custom API keys. This field is returned only when apiKeyGenerateMode is set to Custom. The keys are returned in their original order without deduplication.
         self.api_keys = api_keys
         # Bedrock AWS Access Key
         self.aws_access_key = aws_access_key
@@ -159,9 +159,9 @@ class RevealServiceCredentialResponseBodyDataCredential(DaraModel):
         self.aws_region = aws_region
         # Bedrock AWS Secret Key
         self.aws_secret_key = aws_secret_key
-        # The source of the credential. The value is pai-eas when backfilled by the PAI-EAS system.
+        # The source of the credential. When backfilled by the PAI-EAS system, the value is pai-eas.
         self.credential_source = credential_source
-        # The Bedrock endpoint mode. The value runtime is returned for historical null values.
+        # The Bedrock endpoint mode. A value of runtime is returned for historical null values.
         self.endpoint_mode = endpoint_mode
         # Kling Access Key
         self.kling_access_key = kling_access_key

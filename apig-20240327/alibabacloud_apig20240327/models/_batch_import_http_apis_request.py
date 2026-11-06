@@ -19,27 +19,27 @@ class BatchImportHttpApisRequest(DaraModel):
         strategy: str = None,
         with_gateway_extension: bool = None,
     ):
-        # Specifies whether to overwrite existing APIs. If set to true, gatewayId is required.
+        # Specifies whether to allow overwriting existing APIs. The gatewayId parameter is required when this parameter is set to true.
         self.allow_update = allow_update
         # The API type.
         # 
         # This parameter is required.
         self.api_type = api_type
-        # Enables the dry run feature, which validates the definition without performing the actual import.
+        # The dry run feature that checks definitions without importing.
         self.dry_run = dry_run
-        # The gateway instance ID. For REST APIs, this parameter is required when withGatewayExtension is set to true or allowUpdate is set to true. For batch import of HTTP APIs, this parameter is always required.
+        # The gateway instance ID. This parameter is required for REST APIs when withGatewayExtension or allowUpdate is set to true. This parameter is required for batch importing HTTP APIs.
         self.gateway_id = gateway_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The standard Base64 encoding of the raw bytes of the OAS ZIP package. The decoded size cannot exceed 10 MiB. This parameter cannot be specified together with specFileUrl or specOssConfig. Dry run is supported and returns validation results, but the dry run task result does not return a replayable importRequest.
+        # The standard Base64 encoding of the raw bytes of the OAS ZIP package. The maximum size after decoding is 10 MiB. This parameter cannot be specified together with specFileUrl or specOssConfig. Dry runs are supported and return check results, but the Base64 dry run task result does not return a replayable importRequest.
         self.spec_content_base_64 = spec_content_base_64
-        # The download URL of the OAS ZIP file. The URL must support unauthenticated downloads. OSS URLs and whitelisted backend domain names are supported. At least one of specFileUrl and specOssConfig must be specified.
+        # The download URL of the OAS ZIP file. The URL must support unauthenticated downloads. OSS URLs or backend whitelisted domains are supported. At least one of specFileUrl and specOssConfig must be specified.
         self.spec_file_url = spec_file_url
-        # The OSS configuration for the OAS file in ZIP format. At least one of specFileUrl and specOssConfig must be specified.
+        # The OSS configuration of the OAS file. The file must be in ZIP format. At least one of specFileUrl and specOssConfig must be specified.
         self.spec_oss_config = spec_oss_config
-        # The conflict merge strategy during import. Default value: ExistFirst.
+        # The conflict merging strategy during import. Default value: ExistFirst.
         self.strategy = strategy
-        # Specifies whether to import with gateway extension configurations. This parameter must be set to true for batch import of HTTP APIs.
+        # Specifies whether to import with gateway extension configurations. This parameter must be set to true for batch importing HTTP APIs.
         self.with_gateway_extension = with_gateway_extension
 
     def validate(self):
@@ -125,11 +125,11 @@ class BatchImportHttpApisRequestSpecOssConfig(DaraModel):
         object_key: str = None,
         region_id: str = None,
     ):
-        # The OSS bucket name.
+        # The name of the OSS bucket.
         # 
         # This parameter is required.
         self.bucket_name = bucket_name
-        # OSS Object Key。
+        # The OSS object key.
         # 
         # This parameter is required.
         self.object_key = object_key

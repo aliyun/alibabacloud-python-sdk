@@ -9,7 +9,7 @@ class GetHttpApiRequest(DaraModel):
         self,
         expand_policy_configs: bool = None,
     ):
-        # Specifies whether to expand independent policy configurations. If this parameter is omitted or set to true, the full compatible view is returned. If set to false, policy-managed Model API token throttling returns policy references and optional read-only plug-in statuses. The rule body can be retrieved by calling GetPolicy.
+        # Specifies whether to expand independent policy configurations. If this parameter is omitted or set to true, a fully compatible view is returned. If this parameter is set to false, policy references and optional read-only plug-in statuses are returned for Model API token throttling managed by policies, and the rule body can be retrieved by calling GetPolicy.
         self.expand_policy_configs = expand_policy_configs
 
     def validate(self):

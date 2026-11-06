@@ -18,8 +18,7 @@ class GetDashboardRequest(DaraModel):
         source: str = None,
         upstream_cluster: str = None,
     ):
-        # The language of the response. Valid values:
-        # 
+        # The language. Valid values:
         # - zh: Chinese.
         # - en: English.
         self.accept_language = accept_language
@@ -28,23 +27,19 @@ class GetDashboardRequest(DaraModel):
         # The filter configuration.
         self.filter = filter
         # The name of the dashboard. Valid values:
-        # 
-        # - LOG: access log.
-        # - PLUGIN: plugin log.
-        # 
-        # > Note: This parameter is required. If this parameter is not specified, the API returns InvalidParameter.IsEmpty (400).
+        # - LOG: Access log.
+        # - PLUGIN: Plugin log.
+        # Note: This parameter is required. If it is not specified, the API returns the InvalidParameter.IsEmpty(400) error.
         self.name = name
-        # The plugin type ID.
+        # The plugin class ID.
         self.plugin_class_id = plugin_class_id
         # The plugin ID.
         self.plugin_id = plugin_id
         # The route ID.
         self.route_id = route_id
         # The source of the dashboard. Valid values:
-        # 
-        # - SLS: log dashboard.
-        # 
-        # > Note: This parameter is required. If this parameter is not specified, the API returns InvalidParameter.IsEmpty (400).
+        # - SLS: Log dashboard.
+        # Note: This parameter is required. If it is not specified, the API returns the InvalidParameter.IsEmpty(400) error.
         self.source = source
         # The AI service identifier.
         self.upstream_cluster = upstream_cluster

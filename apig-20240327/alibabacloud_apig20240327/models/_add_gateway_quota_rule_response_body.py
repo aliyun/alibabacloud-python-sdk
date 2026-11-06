@@ -19,7 +19,7 @@ class AddGatewayQuotaRuleResponseBody(DaraModel):
         self.code = code
         # The response data.
         self.data = data
-        # The message.
+        # The message content.
         self.message = message
         # The unique identifier of the request.
         self.request_id = request_id
@@ -72,7 +72,7 @@ class AddGatewayQuotaRuleResponseBodyData(DaraModel):
         dry_run: bool = None,
         rule_id: str = None,
     ):
-        # Indicates whether the semantics of this write request can be accepted by the system. A value of false typically occurs in retryable scenarios such as unconfirmed conflict overwrites.
+        # Indicates whether the semantics of the write request can be accepted by the system. A value of false typically occurs in retryable scenarios, such as when conflicts are not confirmed for overwriting.
         self.accepted = accepted
         # The conflict preview.
         self.conflict_preview = conflict_preview
@@ -128,7 +128,7 @@ class AddGatewayQuotaRuleResponseBodyDataConflictPreview(DaraModel):
         items: List[main_models.AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems] = None,
         total_conflict_count: int = None,
     ):
-        # The conflict hash.
+        # The hash of the conflicts.
         self.conflict_hash = conflict_hash
         # The list of conflicting subjects (consumers or consumer groups).
         self.items = items
@@ -187,15 +187,15 @@ class AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems(DaraModel):
         subject_name: str = None,
         subject_type: str = None,
     ):
-        # The period type of the existing conflicting rule on the consumption subject. If conflictPeriodType is day, week, or month, it indicates that the period of the existing conflicting rule on the consumption subject is day, week, or month, respectively.
+        # The period type of the existing conflicting rule on the subject. This is a legacy field. Use periodType in the actual response instead. This field is not guaranteed to be returned. A value of day, week, or month indicates that the period of the existing conflicting rule is day, week, or month.
         self.conflict_period_type = conflict_period_type
-        # The type of the existing conflicting rule on the consumption subject. If conflictType is calendar, it indicates that the existing conflicting rule on the consumption subject is a natural period. If conflictType is epoch, it indicates that the existing conflicting rule is a custom period.
+        # The type of the existing conflicting rule on the subject. A value of calendar indicates that the existing conflicting rule uses a natural period. A value of epoch indicates that the existing conflicting rule uses a custom period.
         self.conflict_type = conflict_type
-        # The ID of the conflicting consumer. You can now use subjectId instead.
+        # The ID of the conflicting consumer. You can use subjectId instead.
         self.consumer_id = consumer_id
-        # The name of the conflicting consumer. You can now use subjectName instead.
+        # The name of the conflicting consumer. You can use subjectName instead.
         self.consumer_name = consumer_name
-        # The period type of the existing conflicting rule. day, week, and month indicate day, week, and month, respectively.
+        # The period type of the existing conflicting rule. Valid values: day, week, and month.
         self.period_type = period_type
         # The ID of the conflicting subject.
         self.subject_id = subject_id

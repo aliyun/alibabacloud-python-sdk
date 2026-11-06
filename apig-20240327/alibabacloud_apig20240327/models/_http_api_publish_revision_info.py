@@ -24,7 +24,7 @@ class HttpApiPublishRevisionInfo(DaraModel):
         sub_domains: List[main_models.HttpApiDomainInfo] = None,
         vip_configs: List[main_models.HttpApiPublishRevisionInfoVipConfigs] = None,
     ):
-        # The API publish scenario.
+        # The API release scenario.
         self.backend_scene = backend_scene
         # The backend type.
         self.backend_type = backend_type
@@ -34,21 +34,21 @@ class HttpApiPublishRevisionInfo(DaraModel):
         self.create_timestamp = create_timestamp
         # The list of custom domain names.
         self.custom_domains = custom_domains
-        # The DNS domain name configuration. In the single-service scenario, only one entry can be configured. In the by-ratio or by-content scenario, multiple entries can be configured.
+        # The DNS domain name configuration. Only one entry can be configured in the single service scenario, and multiple entries can be configured in the by ratio and by content scenarios.
         self.dns_configs = dns_configs
         # The environment context.
         self.environment_info = environment_info
         # Indicates whether this is the current version.
         self.is_current_version = is_current_version
-        # The list of API operations.
+        # The API operation list.
         self.operations = operations
-        # The version number of the published API.
+        # The version number of the API release.
         self.revision_id = revision_id
-        # The existing service configurations. In a single-service scenario, only one entry can be configured. In proportion-based, content-based, or tag-based scenarios, multiple entries can be configured.
+        # The existing service configuration. Only one entry can be configured in the single service scenario, and multiple entries can be configured in the by ratio, by content, and by tag scenarios.
         self.service_configs = service_configs
         # The list of default domain names for the environment.
         self.sub_domains = sub_domains
-        # The static address configurations. In a single-service scenario, only one entry can be configured. In proportion-based or content-based scenarios, multiple entries can be configured.
+        # The fixed address configuration. Only one entry can be configured in the single service scenario, and multiple entries can be configured in the by ratio and by content scenarios.
         self.vip_configs = vip_configs
 
     def validate(self):
@@ -209,11 +209,11 @@ class HttpApiPublishRevisionInfoVipConfigs(DaraModel):
         match: main_models.HttpApiBackendMatchConditions = None,
         weight: int = None,
     ):
-        # The list of static addresses.
+        # The list of fixed addresses.
         self.endpoints = endpoints
-        # The match condition. This parameter is valid only in the by-content scenario.
+        # The match condition. This parameter takes effect only in the by content scenario.
         self.match = match
-        # The weight. Valid values: 1 to 100. This parameter is valid only in the by-ratio scenario.
+        # The weight. Valid values: 1 to 100. This parameter takes effect only in the by ratio scenario.
         self.weight = weight
 
     def validate(self):
@@ -428,9 +428,9 @@ class HttpApiPublishRevisionInfoDnsConfigs(DaraModel):
     ):
         # The list of DNS domain names.
         self.dns_list = dns_list
-        # The match condition. This parameter is valid only in the by-content scenario.
+        # The match condition. This parameter takes effect only in the by content scenario.
         self.match = match
-        # The weight. Valid values: 1 to 100. This parameter is valid only in the by-ratio scenario.
+        # The weight. Valid values: 1 to 100. This parameter takes effect only in the by ratio scenario.
         self.weight = weight
 
     def validate(self):
@@ -479,7 +479,7 @@ class HttpApiPublishRevisionInfoCloudProductConfig(DaraModel):
         self.cloud_product_type = cloud_product_type
         # The container service configuration.
         self.container_service_configs = container_service_configs
-        # The Function Compute (FC) configuration.
+        # The FC configuration.
         self.function_configs = function_configs
         # The MSE Nacos configuration.
         self.mse_nacos_configs = mse_nacos_configs
@@ -558,7 +558,7 @@ class HttpApiPublishRevisionInfoCloudProductConfigMseNacosConfigs(DaraModel):
         namespace: str = None,
         weight: int = None,
     ):
-        # The ID of the associated service.
+        # The associated service ID.
         self.gateway_service_id = gateway_service_id
         # The service group.
         self.group_name = group_name
@@ -632,7 +632,7 @@ class HttpApiPublishRevisionInfoCloudProductConfigFunctionConfigs(DaraModel):
         qualifier: str = None,
         weight: int = None,
     ):
-        # The ID of the associated service.
+        # The associated service ID.
         self.gateway_service_id = gateway_service_id
         # The match condition.
         self.match = match
@@ -700,7 +700,7 @@ class HttpApiPublishRevisionInfoCloudProductConfigContainerServiceConfigs(DaraMo
         protocol: str = None,
         weight: str = None,
     ):
-        # The ID of the associated service.
+        # The associated service ID.
         self.gateway_service_id = gateway_service_id
         # The match condition.
         self.match = match
@@ -710,7 +710,7 @@ class HttpApiPublishRevisionInfoCloudProductConfigContainerServiceConfigs(DaraMo
         self.namespace = namespace
         # The service port.
         self.port = port
-        # The service protocol.
+        # The terms of service.
         self.protocol = protocol
         # The service weight.
         self.weight = weight

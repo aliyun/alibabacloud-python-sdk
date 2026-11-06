@@ -128,17 +128,17 @@ class GetGatewayResourceQuotaUsageResponseBodyDataItems(DaraModel):
         used: int = None,
         used_scope: str = None,
     ):
-        # Indicates whether quota numerical values are provided.
+        # Specifies whether the quota value is provided.
         self.applicable = applicable
         # The effective limit.
         self.limit = limit
-        # The scope to which the limit applies.
+        # The applicable scope of the limit.
         self.limit_scope = limit_scope
         # The quota metric.
         self.quota_key = quota_key
         # The current usage.
         self.used = used
-        # The scope for usage statistics.
+        # The scope of usage statistics.
         self.used_scope = used_scope
 
     def validate(self):

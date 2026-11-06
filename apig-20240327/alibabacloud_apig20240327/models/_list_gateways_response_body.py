@@ -163,13 +163,13 @@ class ListGatewaysResponseBodyDataItems(DaraModel):
         # - PREPAY: Subscription.
         self.charge_type = charge_type
         # The source from which the gateway was created. Valid values:
-        # - Console: Alibaba Cloud Management Console.
+        # - Console: The console.
         self.create_from = create_from
-        # The timestamp when the gateway was created. Unit: milliseconds.
+        # The creation timestamp. Unit: milliseconds.
         self.create_timestamp = create_timestamp
-        # Indicates whether elastic scaling is enabled. A value of true indicates that elastic scaling is enabled. A value of false indicates that elastic scaling is disabled. A value of null or a missing value indicates that the status is unknown. This parameter is for query and display purposes only.
+        # Indicates whether elastic scaling is enabled. A value of true indicates that elastic scaling is enabled. A value of false indicates that elastic scaling is disabled. A value of null or an empty value indicates that the status is unknown. This parameter is for query and display purposes only.
         self.elastic_enabled = elastic_enabled
-        # The expiration timestamp of the subscription gateway. Unit: milliseconds.
+        # The expiration timestamp for subscription instances. Unit: milliseconds.
         self.expire_timestamp = expire_timestamp
         # The edition of the gateway instance. Valid values:
         # - Professional: Regular instance.
@@ -190,7 +190,7 @@ class ListGatewaysResponseBodyDataItems(DaraModel):
         self.load_balancers = load_balancers
         # The gateway name.
         self.name = name
-        # The network access configuration of the gateway, including the access ingress type and the security group used by the internal endpoint. This parameter is returned only when the gateway is configured with an internal ingress.
+        # The network access configuration of the gateway, including the access ingress type and the security group used by the private endpoint. This parameter is returned only when the gateway is configured with a private ingress.
         self.network_access_config = network_access_config
         # The private connection information of the gateway, including the endpoint ID, access domain name, connection status, and zone information.
         self.private_link = private_link
@@ -201,7 +201,7 @@ class ListGatewaysResponseBodyDataItems(DaraModel):
         # The security group information of the gateway.
         self.security_group = security_group
         # The gateway specification. Valid values:
-        # - apigw.small.x1: Small.
+        # - apigw.small.x1: Small specification.
         self.spec = spec
         # The gateway status. Valid values:
         # - Running: Running.
@@ -660,25 +660,25 @@ class ListGatewaysResponseBodyDataItemsPrivateLink(DaraModel):
         stage: str = None,
         zones: List[main_models.ListGatewaysResponseBodyDataItemsPrivateLinkZones] = None,
     ):
-        # The connection status between the internal endpoint and the endpoint service.
+        # The connection status between the private endpoint and the endpoint service.
         self.connection_status = connection_status
         # The endpoint domain name used for connection configuration.
         self.endpoint_domain = endpoint_domain
         # The endpoint ID.
         self.endpoint_id = endpoint_id
-        # The ID of the security group configured for the internal endpoint.
+        # The ID of the security group configured for the private endpoint.
         self.endpoint_security_group_id = endpoint_security_group_id
-        # The status of the internal endpoint.
+        # The status of the private endpoint.
         self.endpoint_status = endpoint_status
-        # The error code of the most recent fault that occurred during the create or delete procedure of the private network ingress. This parameter is not returned if no error message is available.
+        # The error code of the most recent fault that occurred during the private network ingress creation or delete procedure. This parameter is not returned if no error message is available.
         self.last_error_code = last_error_code
-        # The description of the most recent fault that occurred during the create or delete procedure of the private network ingress. You can use this description along with the error code to troubleshoot the issue. This parameter is not returned if no error message is available.
+        # The description of the most recent fault that occurred during the private network ingress creation or delete procedure. You can use this description along with the error code to troubleshoot the issue. This parameter is not returned if no error message is available.
         self.last_error_message = last_error_message
-        # The time when the system last obtained the status of the internal endpoint. The time is in RFC 3339 format, such as 2026-11-02T10:00:00Z. This parameter is not returned if the status has not been obtained.
+        # The time when the system last obtained the status of the private endpoint. The time is in RFC 3339 format, such as 2026-11-02T10:00:00Z. This parameter is not returned if the status has not been obtained.
         self.observed_at = observed_at
-        # Indicates whether the internal endpoint may continue to incur charges. A value of true indicates that the endpoint has been created and its release has not been confirmed. A value of false indicates that there is no such charge prompt currently. The actual charges are subject to the bill.
+        # Indicates whether the private endpoint may continue to incur charges. A value of true indicates that the endpoint has been created and its release has not been confirmed. A value of false indicates that there is no charge prompt. Actual charges are subject to the bill.
         self.resource_may_be_charged = resource_may_be_charged
-        # The current processing stage of the internal ingress. A value of Ready indicates that the internal ingress is ready.
+        # The current processing stage of the private ingress. A value of Ready indicates that the private ingress is ready.
         self.stage = stage
         # The zone names.
         self.zones = zones
@@ -814,9 +814,9 @@ class ListGatewaysResponseBodyDataItemsNetworkAccessConfig(DaraModel):
         endpoint_security_group_id: str = None,
         type: str = None,
     ):
-        # The ID of the security group configured for the internal endpoint. The security group belongs to the VPC selected by the user and is a non-managed security group.
+        # The ID of the security group configured for the private endpoint. The security group belongs to the VPC selected by the user and is a non-managed security group.
         self.endpoint_security_group_id = endpoint_security_group_id
-        # The access ingress type of the gateway.
+        # The gateway access ingress type.
         self.type = type
 
     def validate(self):
@@ -883,12 +883,12 @@ class ListGatewaysResponseBodyDataItemsLoadBalancers(DaraModel):
         self.mode = mode
         # The list of listened ports.
         self.ports = ports
-        # The status of the load balancing. Valid values:
+        # The load balancing status. Valid values:
         # - Ready: Active.
         # - NotCreate: Not associated with an instance.
         self.status = status
         # The load balancing type of the gateway. Valid values:
-        # - NLB: Network load balancing.
+        # - NLB: Network Load Balancer (NLB) load balancing.
         # - CLB: Classic load balancing.
         self.type = type
 
@@ -989,8 +989,8 @@ class ListGatewaysResponseBodyDataItemsLoadBalancersPorts(DaraModel):
         # The port number.
         self.port = port
         # The protocol. Valid values:
-        # - TCP.
-        # - UDP.
+        # - TCP: TCP.
+        # - UDP: UDP.
         self.protocol = protocol
 
     def validate(self):

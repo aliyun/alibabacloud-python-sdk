@@ -67,7 +67,7 @@ class CreateChatSessionResponseBodyData(DaraModel):
         self,
         session_id: str = None,
     ):
-        # The ID of the chat session. You can use this ID to locate the session in operations such as UpdateChatSession and DeleteChatSession.
+        # The ID of the chat session. You can use this ID to locate the session in API operations such as UpdateChatSession and DeleteChatSession.
         self.session_id = session_id
 
     def validate(self):

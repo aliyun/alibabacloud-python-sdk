@@ -13,7 +13,7 @@ class ListProductPublicationsRequest(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
         # The name of the portal to which the API product is published.
         self.portal_name = portal_name

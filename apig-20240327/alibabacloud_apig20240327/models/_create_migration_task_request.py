@@ -16,22 +16,21 @@ class CreateMigrationTaskRequest(DaraModel):
         migration_type: str = None,
         watch_namespace: str = None,
     ):
-        # The ID of the source ACK cluster. The value must be the same as the cluster specified in the IngressInfo of the API. Note: This parameter is actually required. If this parameter is not specified, the API returns 400 InvalidParameter.IsEmpty.
+        # The ID of the source ACK cluster. It must match the cluster in the IngressInfo of the API. Note: This parameter is required. If it is not provided, the API returns a 400 InvalidParameter.IsEmpty error.
         self.cluster_id = cluster_id
-        # The description of the task. The description is stored only when the task is created.
+        # The task description. It is stored in the database only when the task is created.
         self.description = description
-        # The ID of the destination environment. The value must be the same as the Ingress import environment of the API. Note: This parameter is actually required. If this parameter is not specified, the API returns 400 InvalidParameter.IsEmpty. You can call ListEnvironments to query existing environment IDs. CreateEnvironment has been deprecated.
+        # The ID of the destination environment. It must match the Ingress import environment of the API. Note: This parameter is required. If it is not provided, the API returns a 400 InvalidParameter.IsEmpty error. You can call ListEnvironments to query existing environment IDs. CreateEnvironment is deprecated.
         self.environment_id = environment_id
-        # The ID of the destination gateway to which traffic is migrated.
+        # The ID of the destination gateway to which migration traffic is switched.
         self.gateway_id = gateway_id
-        # The HTTP API ID. The API must have been imported as an Ingress type (HttpIngress) API. Note: This parameter is actually required. If this parameter is not specified, the API returns 400 InvalidParameter.IsEmpty.
+        # The ID of the HTTP API. The API must be imported as an Ingress type (HttpIngress) API. Note: This parameter is required. If it is not provided, the API returns a 400 InvalidParameter.IsEmpty error.
         self.http_api_id = http_api_id
-        # The Ingress class. If specified, the value must be the same as the API import configuration. Otherwise, an ingress class conflict error is returned.
+        # The Ingress class. It must match the API import configuration. Otherwise, an ingress class conflict error is reported.
         self.ingress_class = ingress_class
         # The migration type.
-        # [_single.params.body.props.migrationType.enum.Nginx Ingress]Nginx Ingress migration.
         self.migration_type = migration_type
-        # The watched namespace. If specified, the value must be the same as the API import configuration. Otherwise, a watchNamespace conflict error is returned.
+        # The watched namespace. It must match the API import configuration. Otherwise, a watchNamespace conflict error is reported.
         self.watch_namespace = watch_namespace
 
     def validate(self):

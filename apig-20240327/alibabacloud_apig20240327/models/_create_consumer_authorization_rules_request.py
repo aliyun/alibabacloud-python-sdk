@@ -54,17 +54,17 @@ class CreateConsumerAuthorizationRulesRequestAuthorizationRules(DaraModel):
         resource_identifier: main_models.CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier = None,
         resource_type: str = None,
     ):
-        # The consumer group ID.
+        # The ID of the consumer group.
         self.consumer_group_id = consumer_group_id
-        # The consumer ID.
+        # The ID of the consumer.
         self.consumer_id = consumer_id
-        # The expiration mode. Currently, only LongTerm is supported.
+        # The expiration mode. Only LongTerm is supported.
         self.expire_mode = expire_mode
         # The expiration timestamp. Unit: milliseconds.
         self.expire_timestamp = expire_timestamp
-        # The principal type.
+        # The type of the principal.
         self.principal_type = principal_type
-        # The resource identifier, which serves as a unique identifier for space reuse by non-standard code sources.
+        # The resource identifier, which is provided to non-standard code sources as a unique identifier for space reuse.
         self.resource_identifier = resource_identifier
         # The resource type.
         self.resource_type = resource_type
@@ -135,11 +135,11 @@ class CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifie
         resource_id: str = None,
         resources: List[str] = None,
     ):
-        # The environment ID.
+        # The ID of the environment.
         self.environment_id = environment_id
-        # The parent resource ID.
+        # The ID of the parent resource.
         self.parent_resource_id = parent_resource_id
-        # The ID of the target resource to authorize. The required ID type is determined by resourceType, and the prefix must match.
+        # The ID of the target resource for authorization. The required ID type is determined by resourceType, and the prefix must match.
         self.resource_id = resource_id
         # The resource information.
         self.resources = resources

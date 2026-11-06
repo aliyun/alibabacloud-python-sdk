@@ -33,19 +33,19 @@ class HttpApiDeployConfig(DaraModel):
     ):
         # Specifies whether to enable automatic deployment.
         self.auto_deploy = auto_deploy
-        # The deployment scenario.
+        # The publishing scenario.
         self.backend_scene = backend_scene
         # The list of built-in route names.
         self.builtin_route_names = builtin_route_names
-        # The list of custom domain IDs.
+        # The list of custom domain name IDs.
         self.custom_domain_ids = custom_domain_ids
-        # The list of custom domain content.
+        # The list of custom domain name details.
         self.custom_domain_infos = custom_domain_infos
-        # The combination of fixed dynamic forwarding and ExtProc. For REST APIs, submit this in the deployConfigs of the operation. For ModelAPIs, submit this in the deployConfigs of the API. When creating either, you must submit both gatewayId and dfpConfig.serviceId in the same configuration item. The server verifies that the gateway and service belong to the same entity and determines the default environment and backend. GetHttpApiOperation, ListHttpApiOperations, GetHttpApi, and ListHttpApis return the entire object only when the corresponding resource is precisely mounted with the plugin bound to the current gateway. This field is not supported for API-level configurations of standard HTTP APIs.
+        # The fixed dynamic forwarding and ExtProc combination. For REST APIs, submit in the deployConfigs of the operation. For ModelAPIs, submit in the deployConfigs of the API. When creating either, you must submit both gatewayId and dfpConfig.serviceId in the same configuration item. The server verifies that the gateway and service belong to the same entity and determines the default environment and backend. GetHttpApiOperation, ListHttpApiOperations, GetHttpApi, and ListHttpApis return the entire object only when the corresponding resource is precisely mounted with the current gateway-bound plugin. This field is not supported for API-level configurations of standard HTTP APIs.
         self.dfp_config = dfp_config
-        # Specifies whether to enable gateway system models. This takes effect only when the deployment scenario is AiAutoRouter. The default value is false. This field is used for compatibility with legacy clients. If systemModelTiers is not submitted, true indicates that all three tiers of system models are enabled, and false indicates that none are enabled.
+        # Specifies whether to enable gateway system models. This takes effect only when the publishing scenario is AiAutoRouter. The default value is false. This field is used for compatibility with legacy clients. If systemModelTiers is not submitted, true indicates that all three tiers of system models are enabled, and false indicates that none are enabled.
         self.enable_system_models = enable_system_models
-        # The list of environment domain IDs. If not provided, all environment domains are bound. An empty array indicates that no environment domains are bound.
+        # The list of environment domain name IDs. If not specified, all environment domain names are bound. An empty array indicates that no environment domain names are bound.
         self.env_domain_ids = env_domain_ids
         # The list of environment domain names.
         self.env_domain_infos = env_domain_infos
@@ -61,7 +61,7 @@ class HttpApiDeployConfig(DaraModel):
         self.mock = mock
         # The list of policy configurations.
         self.policy_configs = policy_configs
-        # The current online routing mode for REST APIs. ordinary indicates operation-by-operation routing, and compressed indicates a single prefix route for the API. This field is not returned for non-REST APIs.
+        # The current online routing mode for REST APIs. ordinary indicates per-operation routing, and compressed indicates single-prefix routing for the API. This field is not returned for non-REST APIs.
         self.rest_api_route_mode = rest_api_route_mode
         # The backend service information.
         self.route_backend = route_backend
@@ -69,7 +69,7 @@ class HttpApiDeployConfig(DaraModel):
         self.service_configs = service_configs
         # The list of subdomains.
         self.sub_domains = sub_domains
-        # The set of explicitly enabled gateway system model capability tiers. This takes effect only when the deployment scenario is AiAutoRouter. Valid values: economy, standard, and premium. An explicit empty array indicates that no system models are enabled.
+        # The set of explicitly enabled gateway system model capability tiers. This takes effect only when the publishing scenario is AiAutoRouter. Valid values: economy, standard, and premium. An explicit empty array indicates that no system models are enabled.
         self.system_model_tiers = system_model_tiers
 
     def validate(self):
@@ -270,7 +270,7 @@ class HttpApiDeployConfigSubDomains(DaraModel):
         network_type: str = None,
         protocol: str = None,
     ):
-        # The domain ID.
+        # The domain name ID.
         self.domain_id = domain_id
         # The domain name.
         self.name = name
@@ -335,7 +335,7 @@ class HttpApiDeployConfigServiceConfigs(DaraModel):
         version: str = None,
         weight: int = None,
     ):
-        # The capability tier for intelligent routing candidates. Fill in only when the deployment scenario is AiAutoRouter. Valid values: economy, standard, and premium.
+        # The capability tier for intelligent routing candidates. Fill in only when the publishing scenario is AiAutoRouter. Valid values: economy, standard, and premium.
         self.capability_tier = capability_tier
         # The gateway service ID.
         self.gateway_service_id = gateway_service_id
@@ -520,7 +520,7 @@ class HttpApiDeployConfigEnvDomainInfos(DaraModel):
         name: str = None,
         protocol: str = None,
     ):
-        # The domain ID.
+        # The domain name ID.
         self.domain_id = domain_id
         # The domain name.
         self.name = name
@@ -564,7 +564,7 @@ class HttpApiDeployConfigDfpConfig(DaraModel):
         self,
         service_id: str = None,
     ):
-        # The ID of the imported ExtProc gRPC service. Required when creating a REST operation or ModelAPI. Must match the service currently bound to the resource during updates.
+        # The imported ExtProc gRPC service ID. Required when creating a REST operation or ModelAPI. Must match the service currently bound to the resource during updates.
         self.service_id = service_id
 
     def validate(self):
@@ -594,7 +594,7 @@ class HttpApiDeployConfigCustomDomainInfos(DaraModel):
         name: str = None,
         protocol: str = None,
     ):
-        # The domain ID.
+        # The domain name ID.
         self.domain_id = domain_id
         # The domain name.
         self.name = name

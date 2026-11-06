@@ -70,13 +70,13 @@ class GetProductCategoryResponseBodyData(DaraModel):
         icon: main_models.HiMarketIcon = None,
         name: str = None,
     ):
-        # The ID of the product category. This ID can be used as the categoryId path parameter for GetProductCategory, UpdateProductCategory, and DeleteProductCategory, or as an element in the categories array for SetProductCategories and CreateProduct.
+        # The product category ID. This ID can be used as the categoryId path parameter for GetProductCategory, UpdateProductCategory, and DeleteProductCategory, or as an element in the categories array for SetProductCategories and CreateProduct.
         self.category_id = category_id
-        # The description of the product category.
+        # The product category description.
         self.description = description
-        # The icon of the product category, which consists of the icon type (type) and icon information (value) fields.
+        # The product category icon, which consists of two fields: icon type (type) and icon information (value).
         self.icon = icon
-        # The name of the product category.
+        # The product category name.
         self.name = name
 
     def validate(self):

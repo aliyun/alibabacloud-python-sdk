@@ -16,27 +16,25 @@ class ResetGatewayQuotaRuleRequest(DaraModel):
         timezone: str = None,
         window_alignment: str = None,
     ):
-        # The conflict snapshot hash, used to prevent concurrent dirty overwrites during confirmation. Obtain this value from the response data of a previous dryRun=true call.
+        # The conflict snapshot hash, which is used to prevent concurrent dirty overwrites when overwriting is confirmed. You can obtain this value by first executing a request with dryRun=true and extracting it from the returned data.
         # 
-        # This parameter is not required in the following cases: no conflicts exist, the request is a dry run (dryRun=true), or overwrite is set to false.
+        # This parameter is not required in the following scenarios: no conflicts exist; the request is only a dry run with dryRun=true; overwrite=false, meaning overwriting is not confirmed.
         # 
-        # When dryRun is set to false and overwrite is set to true, if this parameter is not provided or the value has expired and does not match, the backend returns accepted=false with a new conflict preview. Perform the dry run again to confirm the new conflicts.
+        # If dryRun=false and overwrite=true but this parameter is not provided or has expired and does not match, the backend returns accepted=false along with a new conflict preview. You must perform a dry run again to confirm the new conflicts.
         self.conflict_hash = conflict_hash
-        # Specifies whether to perform only a dry run without persisting or applying the configuration. A dry run checks whether conflicting rules exist on the bound subjects. The same subject cannot have two calendar-period quotas with the same period. For example, a subject that already has a daily calendar quota cannot have another daily calendar quota rule added.
+        # Specifies whether to perform a dry run only without saving to the database or delivering actual configurations. This is used to check whether conflicting rules exist on the bound subjects. A single subject cannot be configured with two natural period quotas of the same period. For example, a subject that already has a natural daily quota cannot be added with another natural daily quota rule.
         self.dry_run = dry_run
-        # Specifies whether to allow overwriting when conflicts exist. If overwriting is allowed, conflicting subjects (consumers or consumer groups) are unbound from the old rule and bound to the new rule.
+        # Specifies whether to allow overwriting when a conflict occurs. Note that if overwriting is allowed, the conflicting subjects (consumers or consumer groups) are unbound from the old rule and bound to the new rule.
         self.overwrite = overwrite
         # The period multiplier, which specifies the number of periods after which the quota is reset. This parameter is returned when the rule uses a custom period. Minimum value: 1. Maximum value: 60.
         self.period_multiplier = period_multiplier
-        # The period type. Calendar periods support daily, weekly, and monthly statistics. Valid values: day, week, and month. Custom periods support only daily statistics. The value is fixed to day.
+        # The period type. Natural periods support daily, weekly, and monthly statistics, and valid values are day, week, and month. Custom periods support only daily statistics, and the fixed value is day.
         self.period_type = period_type
         # The total available quota per period after the reset.
         self.quota_limit = quota_limit
-        # The time zone for the calendar period, in UTC+x format.
+        # The time zone corresponding to the natural period, in UTC+x format.
         self.timezone = timezone
-        # The period alignment type after the reset. Valid values:
-        # - calendar: calendar period.
-        # - epoch: custom period.
+        # The period type for the reset. Natural periods (windowAlignment=calendar) and custom periods (windowAlignment=epoch) are supported.
         self.window_alignment = window_alignment
 
     def validate(self):

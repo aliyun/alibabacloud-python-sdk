@@ -17,7 +17,7 @@ class ListServicesRequest(DaraModel):
     ):
         # The ID of the cloud-native API gateway.
         self.gateway_id = gateway_id
-        # The service name for exact match queries.
+        # The exact name of the service to query.
         self.name = name
         # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number

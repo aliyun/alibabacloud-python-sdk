@@ -12,11 +12,11 @@ class CreateProductCategoryRequest(DaraModel):
         icon: main_models.HiMarketIcon = None,
         name: str = None,
     ):
-        # The description of the product category. The maximum length is 500 characters.
+        # The description of the product category. Maximum length: 500 characters.
         self.description = description
-        # The icon of the product category, which consists of two fields: icon type and icon information.
+        # The icon of the product category, which consists of the icon type and icon information fields.
         self.icon = icon
-        # The name of the product category. The maximum length is 100 characters.
+        # The name of the product category. Maximum length: 100 characters.
         self.name = name
 
     def validate(self):

@@ -13,13 +13,13 @@ class GetGatewayDfpExtProcServiceResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The request result code. The value is Ok if the request succeeds.
+        # The result code of the request. The value is Ok if the request is successful.
         self.code = code
         # The binding information of the dynamic forwarding ExtProc service for the gateway.
         self.data = data
-        # The result description. This field contains the fault information if the request fails.
+        # The result message of the request. If the request failed, the message contains the error message of the fault.
         self.message = message
-        # The request ID for troubleshooting.
+        # The request ID, which is used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -71,9 +71,9 @@ class GetGatewayDfpExtProcServiceResponseBodyData(DaraModel):
     ):
         # Indicates whether the gateway is bound to a dynamic forwarding ExtProc service.
         self.bound = bound
-        # The ID of the bound ExtProc gRPC service. This field is not returned if no service is bound.
+        # The ID of the bound ExtProc gRPC service. This parameter is not returned if no service is bound.
         self.service_id = service_id
-        # The gRPC port of the bound service. This field is not returned if no service is bound.
+        # The gRPC port of the bound service. This parameter is not returned if no service is bound.
         self.service_port = service_port
 
     def validate(self):

@@ -71,7 +71,7 @@ class ImportHttpApiResponseBodyData(DaraModel):
         http_api_id: str = None,
         name: str = None,
     ):
-        # The dry run result.
+        # The dry run results.
         self.dry_run_info = dry_run_info
         # The unique ID of the HTTP API.
         self.http_api_id = http_api_id
@@ -126,7 +126,7 @@ class ImportHttpApiResponseBodyDataDryRunInfo(DaraModel):
         success_routes: List[main_models.ImportHttpApiResponseBodyDataDryRunInfoSuccessRoutes] = None,
         warning_messages: List[str] = None,
     ):
-        # The error messages. If this field is not empty, the API cannot be imported successfully.
+        # The error messages. If the error messages are not empty, the API cannot be imported.
         self.error_messages = error_messages
         # The existing API information. If this field is not empty, the import operation will update the API.
         self.exist_http_api_info = exist_http_api_info
@@ -134,7 +134,7 @@ class ImportHttpApiResponseBodyDataDryRunInfo(DaraModel):
         self.failure_components = failure_components
         # The list of operations that failed the dry run.
         self.failure_operations = failure_operations
-        # The list of failed routes.
+        # The list of routes that failed to be imported.
         self.failure_routes = failure_routes
         # The MCP tool definition information.
         self.mcp_tools_definition = mcp_tools_definition
@@ -142,9 +142,9 @@ class ImportHttpApiResponseBodyDataDryRunInfo(DaraModel):
         self.success_components = success_components
         # The list of operations that passed the dry run.
         self.success_operations = success_operations
-        # The list of successfully imported routes.
+        # The list of routes that were successfully imported.
         self.success_routes = success_routes
-        # The warning messages. If this field is not empty, some operations or data structures may fail to be imported.
+        # The warning messages. If the warning messages are not empty, some operations or data structures may fail to be imported.
         self.warning_messages = warning_messages
 
     def validate(self):
@@ -323,8 +323,8 @@ class ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations(DaraModel):
         path: str = None,
     ):
         # The action to be performed after the dry run. Valid values:
-        # - Create: create
-        # - Update: update
+        # - Create: Create.
+        # - Update: Update.
         self.action = action
         # The operation method.
         self.method = method
@@ -378,8 +378,8 @@ class ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents(DaraModel):
         name: str = None,
     ):
         # The action to be performed after the dry run. Valid values:
-        # - Create: create
-        # - Update: update
+        # - Create: Create.
+        # - Update: Update.
         self.action = action
         # The data structure name.
         self.name = name

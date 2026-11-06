@@ -91,19 +91,19 @@ class GetMcpServerResponseBodyData(DaraModel):
         route_id: str = None,
         type: str = None,
     ):
-        # API ID。
+        # The API ID.
         self.api_id = api_id
-        # The list of assembled sources. This parameter is required when type is AssemblyMCP.
+        # The list of assembly sources. This parameter is required when type is set to AssemblyMCP.
         self.assembled_sources = assembled_sources
         # The backend service of the route.
         self.backend = backend
-        # The creation source type. Valid values:
+        # The creation source type.
         # 
-        # - ApiGatewayHttpToMCP: gateway-managed HTTP-to-MCP conversion.
-        # - ApiGatewayMcpHosting: gateway-managed MCP direct proxy.
-        # - ApiGatewayAssembly: gateway MCP assembly.
-        # - NacosHttpToMCP: gateway-managed Nacos-synced HTTP-to-MCP conversion.
-        # - NacosMcpHosting: gateway-managed Nacos-synced MCP direct proxy.
+        # ApiGatewayHttpToMCP: Gateway-hosted HTTP-to-MCP conversion
+        # ApiGatewayMcpHosting: Gateway-hosted direct MCP proxy
+        # ApiGatewayAssembly: Gateway MCP assembly
+        # NacosHttpToMCP: Gateway-hosted Nacos-synchronized HTTP-to-MCP conversion
+        # NacosMcpHosting: Gateway-hosted Nacos-synchronized direct MCP proxy
         self.create_from_type = create_from_type
         # The publish status of the API in the current environment.
         self.deploy_status = deploy_status
@@ -113,35 +113,35 @@ class GetMcpServerResponseBodyData(DaraModel):
         self.domain_ids = domain_ids
         # The list of domain name information.
         self.domain_infos = domain_infos
-        # The environment ID.
+        # The ID of the environment.
         self.environment_id = environment_id
-        # The exposed URI path. This parameter is required when protocol is SSE or StreamableHTTP and type is RealMCP.
+        # The exposed URI path. This parameter is required when protocol is set to SSE or StreamableHTTP and type is set to RealMCP.
         self.exposed_uri_path = exposed_uri_path
         # The gateway instance ID.
         self.gateway_id = gateway_id
-        # The canary release route configurations.
+        # The canary route configurations.
         self.gray_mcp_server_configs = gray_mcp_server_configs
-        # The route match rule.
+        # The route match rules.
         self.match = match
         # The HTTP-to-MCP configuration.
         self.mcp_server_config = mcp_server_config
-        # The MCP server plugin configuration attachment ID.
+        # The attachment ID of the MCP server plug-in configuration.
         self.mcp_server_config_plugin_attachment_id = mcp_server_config_plugin_attachment_id
         # MCP Server ID
         self.mcp_server_id = mcp_server_id
-        # The MCP server access path provided by the gateway.
+        # The access path of the MCP server provided by the gateway.
         self.mcp_server_path = mcp_server_path
-        # Specifies whether MCP observability is enabled. Default value: false.
+        # Specifies whether to enable MCP observability. Default value: false.
         self.mcp_statistics_enable = mcp_statistics_enable
-        # The Nacos-synced managed MCP information.
+        # The information about the Nacos-synchronized managed MCP.
         self.nacos_mcp_sync_info = nacos_mcp_sync_info
-        # The MCP server name.
+        # The name of the MCP server.
         self.name = name
         # The service protocol.
         self.protocol = protocol
-        # The route ID.
+        # The ID of the route.
         self.route_id = route_id
-        # The MCP server type.
+        # The type of the MCP server.
         self.type = type
 
     def validate(self):
@@ -340,7 +340,7 @@ class GetMcpServerResponseBodyDataNacosMcpSyncInfo(DaraModel):
     ):
         # The Nacos instance.
         self.import_instance_id = import_instance_id
-        # The synced MCP server ID.
+        # The ID of the synchronized MCP server.
         self.import_mcp_server_id = import_mcp_server_id
         # The Nacos namespace.
         self.import_namespace = import_namespace
@@ -384,11 +384,11 @@ class GetMcpServerResponseBodyDataGrayMcpServerConfigs(DaraModel):
         match: main_models.HttpRouteMatch = None,
         route_id: str = None,
     ):
-        # The canary release route backend configuration.
+        # The backend configuration of the canary route.
         self.backend_config = backend_config
-        # The canary release route match rule.
+        # The match rules of the canary route.
         self.match = match
-        # The canary release route ID.
+        # The ID of the canary route.
         self.route_id = route_id
 
     def validate(self):
@@ -434,7 +434,7 @@ class GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfig(DaraModel):
         scene: str = None,
         services: List[main_models.GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices] = None,
     ):
-        # The backend scene.
+        # The backend scenario.
         self.scene = scene
         # The list of service configurations.
         self.services = services
@@ -486,7 +486,7 @@ class GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices(Dara
         self.port = port
         # The service protocol.
         self.protocol = protocol
-        # The service ID.
+        # The ID of the service.
         self.service_id = service_id
         # The service version.
         self.version = version
@@ -592,7 +592,7 @@ class GetMcpServerResponseBodyDataAssembledSources(DaraModel):
     ):
         # MCP Server ID
         self.mcp_server_id = mcp_server_id
-        # The MCP server name.
+        # The name of the MCP server.
         self.mcp_server_name = mcp_server_name
         # The list of MCP tools.
         self.tools = tools

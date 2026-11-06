@@ -12,7 +12,7 @@ class CreateDeveloperRequest(DaraModel):
     ):
         # The password of the developer account. The length must be 6 to 32 characters.
         self.password = password
-        # The logon username of the developer. The length must not exceed 64 characters.
+        # The logon username of the developer. The length cannot exceed 64 characters.
         self.username = username
 
     def validate(self):

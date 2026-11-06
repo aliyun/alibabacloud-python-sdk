@@ -13,9 +13,9 @@ class ListGatewayQuotaRulesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The keyword used for fuzzy matching of rule names.
+        # The keyword in the rule name for fuzzy match.
         self.keyword = keyword
-        # The maximum number of records to retrieve at a time. This parameter is not supported.
+        # The maximum number of records to return in a single request. This parameter is not supported.
         self.max_results = max_results
         # The pagination token. This parameter is not supported.
         self.next_token = next_token

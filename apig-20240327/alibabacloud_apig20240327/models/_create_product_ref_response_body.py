@@ -11,11 +11,11 @@ class CreateProductRefResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The response status code.
+        # The status code of the response.
         self.code = code
         # The response message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

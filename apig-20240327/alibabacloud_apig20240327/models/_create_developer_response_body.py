@@ -67,7 +67,7 @@ class CreateDeveloperResponseBodyData(DaraModel):
         self,
         developer_id: str = None,
     ):
-        # The developer ID. You can use this ID to locate the developer in operations such as SetHiMarketDeveloperStatus and DeleteHiMarketDeveloper.
+        # The developer ID. This ID can be used to identify the developer in API operations such as SetHiMarketDeveloperStatus and DeleteHiMarketDeveloper.
         self.developer_id = developer_id
 
     def validate(self):

@@ -81,21 +81,21 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyData(DaraModel):
         used_amount: int = None,
         used_amount_decimal: float = None,
     ):
-        # The total consumption of cached tokens.
+        # The total cached token consumption.
         self.cached_amount = cached_amount
-        # The exact value of the total cached consumption. Decimals are supported in credit scenarios.
+        # The exact total cached consumption. Decimals are supported in credit scenarios.
         self.cached_amount_decimal = cached_amount_decimal
         # The pagination of consumption details.
         self.details = details
-        # The total consumption of input tokens.
+        # The total input token consumption.
         self.input_amount = input_amount
-        # The exact value of the total input consumption. Decimals are supported in credit scenarios.
+        # The exact total input consumption. Decimals are supported in credit scenarios.
         self.input_amount_decimal = input_amount_decimal
-        # The total consumption of output tokens.
+        # The total output token consumption.
         self.output_amount = output_amount
-        # The exact value of the total output consumption. Decimals are supported in credit scenarios.
+        # The exact total output consumption. Decimals are supported in credit scenarios.
         self.output_amount_decimal = output_amount_decimal
-        # Indicates whether the limit is exceeded.
+        # Indicates whether the quota is exceeded.
         self.over_limit = over_limit
         # The quota dimension. Valid values: token and credit.
         self.quota_dimension = quota_dimension
@@ -105,7 +105,7 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyData(DaraModel):
         self.total_quota = total_quota
         # The total used quota of the subject.
         self.used_amount = used_amount
-        # The exact value of the total used quota of the subject. Decimals are supported in credit scenarios.
+        # The exact total used quota of the subject. Decimals are supported in credit scenarios.
         self.used_amount_decimal = used_amount_decimal
 
     def validate(self):
@@ -281,29 +281,29 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems(DaraModel):
         used_amount: int = None,
         used_amount_decimal: float = None,
     ):
-        # The consumption of cached tokens.
+        # The cached token consumption.
         self.cached_amount = cached_amount
-        # The exact value of the cached consumption. Decimals are supported in credit scenarios.
+        # The exact cached consumption. Decimals are supported in credit scenarios.
         self.cached_amount_decimal = cached_amount_decimal
         # The name of the consumer.
         self.consumer = consumer
-        # The consumption of input tokens.
+        # The input token consumption.
         self.input_amount = input_amount
-        # The exact value of the input consumption. Decimals are supported in credit scenarios.
+        # The exact input consumption. Decimals are supported in credit scenarios.
         self.input_amount_decimal = input_amount_decimal
         # The name of the model.
         self.model = model
-        # The consumption of output tokens.
+        # The output token consumption.
         self.output_amount = output_amount
-        # The exact value of the output consumption. Decimals are supported in credit scenarios.
+        # The exact output consumption. Decimals are supported in credit scenarios.
         self.output_amount_decimal = output_amount_decimal
         # The request ID.
         self.request_id = request_id
-        # The consumption or request time in YYYY-MM-DD format.
+        # The consumption or request time in the YYYY-MM-DD format.
         self.start_time = start_time
         # The total consumption.
         self.used_amount = used_amount
-        # The exact value of the total consumption. Decimals are supported in credit scenarios.
+        # The exact total consumption. Decimals are supported in credit scenarios.
         self.used_amount_decimal = used_amount_decimal
 
     def validate(self):

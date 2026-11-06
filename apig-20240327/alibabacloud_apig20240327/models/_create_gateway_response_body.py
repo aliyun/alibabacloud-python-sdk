@@ -67,7 +67,7 @@ class CreateGatewayResponseBodyData(DaraModel):
         self,
         gateway_id: str = None,
     ):
-        # The gateway ID.
+        # The ID of the gateway.
         self.gateway_id = gateway_id
 
     def validate(self):

@@ -73,9 +73,9 @@ class ListPrivateLinkSecurityGroupsResponseBodyData(DaraModel):
     ):
         # The source information.
         self.items = items
-        # The maximum number of results returned for this query.
+        # The maximum number of entries returned in this query.
         self.max_results = max_results
-        # The token for the next page.
+        # The next token.
         self.next_token = next_token
 
     def validate(self):
@@ -131,8 +131,9 @@ class ListPrivateLinkSecurityGroupsResponseBodyDataItems(DaraModel):
         # The security group name.
         self.security_group_name = security_group_name
         # Specifies whether the resource is created by a service account. Valid values:
-        # - 0: The resource is not created by a service account.
-        # - 1: The resource is created by a service account.
+        # 
+        # - 0: Not created by a service account.
+        # - 1: Created by a service account.
         self.service_managed = service_managed
         # The VPC ID.
         self.vpc_id = vpc_id

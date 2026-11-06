@@ -149,7 +149,7 @@ class QueryConsumerAuthorizationRulesResponseBodyDataItems(DaraModel):
         resource_type: str = None,
         update_timestamp: int = None,
     ):
-        # The API information.
+        # The API information details.
         self.api_info = api_info
         # The ID of the consumer authorization rule.
         self.consumer_authorization_rule_id = consumer_authorization_rule_id
@@ -159,7 +159,7 @@ class QueryConsumerAuthorizationRulesResponseBodyDataItems(DaraModel):
         self.consumer_group_info = consumer_group_info
         # The consumer ID.
         self.consumer_id = consumer_id
-        # The consumer information.
+        # The consumer information details.
         self.consumer_info = consumer_info
         # The creation timestamp. Unit: milliseconds.
         self.create_timestamp = create_timestamp
@@ -179,7 +179,7 @@ class QueryConsumerAuthorizationRulesResponseBodyDataItems(DaraModel):
         self.principal_type = principal_type
         # The resource ID.
         self.resource_id = resource_id
-        # The resource information.
+        # The resource information details.
         self.resource_info = resource_info
         # The resource type.
         self.resource_type = resource_type
@@ -333,7 +333,7 @@ class QueryConsumerAuthorizationRulesResponseBodyDataItemsResourceInfo(DaraModel
     ):
         # The API operation information.
         self.operation_info = operation_info
-        # The routing rules.
+        # The routing rule.
         self.route = route
 
     def validate(self):

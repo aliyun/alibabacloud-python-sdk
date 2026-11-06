@@ -19,17 +19,17 @@ class CreatePluginAttachmentRequest(DaraModel):
     ):
         # The list of mount point IDs.
         self.attach_resource_ids = attach_resource_ids
-        # The resource type to which the plug-in is mounted. Valid values: GatewayRoute, Gateway, GatewayDomain, HttpApi, and Operation.
+        # The type of the resource to which the plugin is mounted. Valid values: GatewayRoute, Gateway, GatewayDomain, HttpApi, and Operation.
         self.attach_resource_type = attach_resource_type
-        # Specifies whether to enable the plug-in. Default value: false.
+        # Specifies whether to enable the plugin. Default value: false.
         self.enable = enable
         # The environment ID.
         self.environment_id = environment_id
         # The gateway instance ID.
         self.gateway_id = gateway_id
-        # The Base64-encoded content of the original plug-in configuration.
+        # The Base64-encoded content of the original plugin configuration.
         self.plugin_config = plugin_config
-        # The plug-in ID.
+        # The plugin ID.
         self.plugin_id = plugin_id
 
     def validate(self):

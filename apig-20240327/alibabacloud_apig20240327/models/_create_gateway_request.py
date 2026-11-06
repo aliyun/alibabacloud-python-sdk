@@ -23,37 +23,37 @@ class CreateGatewayRequest(DaraModel):
         vpc_id: str = None,
         zone_config: main_models.CreateGatewayRequestZoneConfig = None,
     ):
-        # The billing method. This parameter is required for Serverless instances and must be set to POSTPAY.
+        # The billing method. This parameter is required for the Serverless edition and must be set to POSTPAY.
         self.charge_type = charge_type
-        # The gateway instance edition. Valid values:
+        # The gateway instance edition:
         # 
-        # - Professional: Standard instance.
+        # - Standard instance: Professional
         # 
-        # - Serverless: Serverless instance.
+        # - Serverless: Serverless
         # 
-        # - MultiTenantServerless: Multi-tenant Serverless instance.
+        # - Multi-tenant Serverless: MultiTenantServerless
         # 
-        # - Unknown: Unknown.
+        # - Unknown: Unknown
         self.gateway_edition = gateway_edition
-        # The operation mode for AI multi-tenant V2. The default value is ENTERPRISE. This parameter is only allowed for AI and MultiTenantServerless gateways.
+        # The operation mode for AI multi-tenant V2. The default value is ENTERPRISE. This parameter is only allowed for AI and MultiTenantServerless.
         self.gateway_mode = gateway_mode
         # The gateway type. This parameter must be explicitly set to AI for AI Serverless or multi-tenant gateways.
         self.gateway_type = gateway_type
         # The log configuration for the gateway.
         self.log_config = log_config
-        # The name of the gateway. This parameter is required for all gateway types.
+        # The name of the gateway. This parameter is required for all editions.
         self.name = name
         # The network access configuration. This parameter is actually required. If it is not provided, the service returns InvalidParameter.IsEmpty (400).
         self.network_access_config = network_access_config
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The node specifications. This parameter is required for Serverless instances.
+        # The node specifications. This parameter is required for the Serverless edition.
         self.spec = spec
         # The list of tags.
         self.tag = tag
-        # The ID of the virtual private cloud (VPC). This parameter is required for all gateway types.
+        # The ID of the VPC. This parameter is required for all editions.
         self.vpc_id = vpc_id
-        # The zone configuration. This parameter is required for all gateway types.
+        # The zone configuration. This parameter is required for all editions.
         self.zone_config = zone_config
 
     def validate(self):
@@ -293,7 +293,7 @@ class CreateGatewayRequestNetworkAccessConfig(DaraModel):
         endpoint_security_group_id: str = None,
         type: str = None,
     ):
-        # The ID of the endpoint security group. This parameter is required when a multi-tenant API gateway or multi-tenant AI gateway Enterprise Edition uses private network or dual-entry access, and must be a non-managed security group in your VPC. Do not specify this parameter for public network requests.
+        # The ID of the endpoint security group. This parameter is required when a multi-tenant API gateway or multi-tenant AI gateway Enterprise Edition selects private network or dual-entry access. It must be an unmanaged security group in the user VPC. Do not pass this parameter for public network requests.
         self.endpoint_security_group_id = endpoint_security_group_id
         # The network access type.
         self.type = type

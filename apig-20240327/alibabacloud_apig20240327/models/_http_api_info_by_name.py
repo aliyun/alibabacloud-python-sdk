@@ -24,7 +24,7 @@ class HttpApiInfoByName(DaraModel):
         self.type = type
         # Indicates whether version management is enabled.
         self.version_enabled = version_enabled
-        # The versioned API version information.
+        # The version information of the versioned APIs.
         self.versioned_http_apis = versioned_http_apis
 
     def validate(self):

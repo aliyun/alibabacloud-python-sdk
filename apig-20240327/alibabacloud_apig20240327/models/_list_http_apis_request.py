@@ -29,7 +29,7 @@ class ListHttpApisRequest(DaraModel):
         self.gateway_id = gateway_id
         # The type of the gateway associated with the HTTP API. Valid values: API (cloud-native API gateway) and AI (AI gateway).
         self.gateway_type = gateway_type
-        # The search keyword. Supports fuzzy search by API name or exact search by API ID.
+        # The search keyword. Supports fuzzy match by API name or exact search by API ID.
         self.keyword = keyword
         # The name for exact search.
         self.name = name
@@ -45,21 +45,21 @@ class ListHttpApisRequest(DaraModel):
         # - Websocket
         # - HttpIngress
         self.types = types
-        # Specifies whether to return information about APIs published to the specified environment.
+        # Specifies whether to return the information about APIs published to the specified environment.
         self.with_apis_published_to_environment = with_apis_published_to_environment
-        # The environment ID. The response includes consumer authentication policy information for the specified environment in each API entry.
+        # The ID of the environment. If specified, the response includes the consumer authentication policy information for each API in the specified environment.
         self.with_auth_policy_in_environment_id = with_auth_policy_in_environment_id
-        # Specifies whether to include the list of authentication policies.
+        # Specifies whether the permission authentication policy is enabled.
         self.with_auth_policy_list = with_auth_policy_list
-        # The consumer ID. The response includes the list of authorization rules for the specified consumer in each API entry.
+        # The ID of the consumer. If specified, the response includes the list of authorization rules for the specified consumer in each API information.
         self.with_consumer_info_by_id = with_consumer_info_by_id
         # The environment context.
         self.with_environment_info = with_environment_info
-        # The environment ID.
+        # The ID of the environment.
         self.with_environment_info_by_id = with_environment_info_by_id
         # Specifies whether to include Ingress information.
         self.with_ingress_info = with_ingress_info
-        # The plugin ID. The response includes plugin release information based on the specified plugin ID.
+        # The ID of the plug-in. If specified, the plug-in release information is retrieved based on this plug-in ID.
         self.with_plugin_attachment_by_plugin_id = with_plugin_attachment_by_plugin_id
         # Specifies whether to include policy information.
         self.with_policy_configs = with_policy_configs

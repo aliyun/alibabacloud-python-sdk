@@ -17,11 +17,11 @@ class ListHttpApisResponseBody(DaraModel):
     ):
         # The response status code.
         self.code = code
-        # The list of APIs.
+        # The API list.
         self.data = data
         # The response message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

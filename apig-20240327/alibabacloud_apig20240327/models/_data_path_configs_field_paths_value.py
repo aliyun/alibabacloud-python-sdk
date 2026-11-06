@@ -21,25 +21,25 @@ class DataPathConfigsFieldPathsValue(DaraModel):
         json_path_rewrite_allowed: bool = None,
         from_template: bool = None,
     ):
-        # The identifier key of the field, which is unique within the same request path, such as input_token.
+        # The identity key of the field, which is unique within the same request path, such as input_token.
         self.field_key = field_key
         # The JSONPath expression of the field in the request or response message, such as usage.prompt_tokens.
         self.json_path = json_path
-        # The value extraction rule of the field.
+        # The value rule for the field.
         self.rule = rule
         # The display name of the field.
         self.name = name
         # The description of the field.
         self.description = description
-        # The source of the field value, indicating which part of the message the field is read from, such as response_body.
+        # The source of the field value, which indicates the part of the message from which the field is read, such as response_body.
         self.source = source
         # The statistical category to which the field belongs.
         self.category = category
-        # The message direction to which the field belongs, indicating whether it is extracted from the request or the response.
+        # The message direction of the field, which indicates whether it is extracted from the request or the response.
         self.io = io
         # Indicates whether the field contains sensitive information.
         self.sensitive = sensitive
-        # Indicates whether collection is enabled for the field.
+        # Indicates whether the collection of the field is enabled.
         self.record_enabled = record_enabled
         # Indicates whether the collection status of the field can be toggled.
         self.toggle_allowed = toggle_allowed

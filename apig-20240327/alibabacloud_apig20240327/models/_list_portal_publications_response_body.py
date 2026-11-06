@@ -72,13 +72,13 @@ class ListPortalPublicationsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The list of published API products on the portal. The list element is named portalConfig, and each element represents an API product publication record.
+        # The list of published API products on the portal. The list elements are named portalConfig, and each element represents an API product publication record.
         self.content = content
         # The page number.
         self.page_number = page_number
         # The page size.
         self.page_size = page_size
-        # The total number of entries.
+        # The total number of items.
         self.total_count = total_count
 
     def validate(self):
@@ -137,17 +137,17 @@ class ListPortalPublicationsResponseBodyDataContent(DaraModel):
         product_type: str = None,
         publication_id: str = None,
     ):
-        # The creation time. The time is formatted in ISO 8601 (RFC 3339) and in the UTC time zone, such as 2026-05-15T10:00:00Z.
+        # The creation time. The time is in ISO 8601 (RFC 3339) format in the UTC time zone, such as 2026-05-15T10:00:00Z.
         self.created_at = created_at
         # The description of the API product.
         self.description = description
-        # The API product ID. It is the primary ID of the API product resource Product and identifies the API product corresponding to this publication record.
+        # The API product ID. This is the primary ID of the API product resource and identifies the API product corresponding to this publication record.
         self.product_id = product_id
-        # The API product name. It is the Name property of the API product resource Product.
+        # The API product name. This is the Name property of the API product resource.
         self.product_name = product_name
-        # The API product type. The valid values are not declared in the API definition. Refer to the types displayed in the console.
+        # The API product type. The valid values are not defined in the API specification. Refer to the types displayed in the console.
         self.product_type = product_type
-        # The publication record ID of the API product. It is returned when PublishProduct publishes the API product to the portal. You can use this ID in the /himarket/v1/products/{productId}/publications/{publicationId} path to locate the publication record for UnpublishProduct.
+        # The publication record ID of the API product. This ID is returned when an API product is published to a portal by using the PublishProduct operation. You can use this ID in the /himarket/v1/products/{productId}/publications/{publicationId} path to locate the publication record for the UnpublishProduct operation.
         self.publication_id = publication_id
 
     def validate(self):

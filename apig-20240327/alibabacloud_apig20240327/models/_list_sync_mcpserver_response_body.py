@@ -70,9 +70,9 @@ class ListSyncMCPServerResponseBodyData(DaraModel):
         domain_ids: List[str] = None,
         mcp_servers: List[str] = None,
     ):
-        # The list of domain name IDs bound to the Nacos MCP export of the gateway, excluding the default domain name. If no configuration exists, an empty array [] is returned.
+        # The list of domain IDs bound to the Nacos MCP export for this gateway, excluding the default domain name. If not configured, the value is [].
         self.domain_ids = domain_ids
-        # The list of synchronized (whitelisted) MCP server names, obtained from the AllowMcpServers field in the MCP Bridge registration configuration. If no configuration exists, an empty array [] is returned.
+        # The list of synchronized (whitelisted) MCP server names, which are derived from the AllowMcpServers in the MCP Bridge registration configuration. If not configured, the value is [].
         self.mcp_servers = mcp_servers
 
     def validate(self):

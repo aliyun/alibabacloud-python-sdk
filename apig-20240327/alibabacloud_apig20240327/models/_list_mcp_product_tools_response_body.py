@@ -69,7 +69,7 @@ class ListMcpProductToolsResponseBodyData(DaraModel):
         self,
         tools: List[main_models.ListMcpProductToolsResponseBodyDataTools] = None,
     ):
-        # The list of MCP tools. The list element is named tool, and each element represents an MCP tool.
+        # The list of MCP tools. Each element in the list is named tool and represents an MCP tool.
         self.tools = tools
 
     def validate(self):
@@ -111,17 +111,17 @@ class ListMcpProductToolsResponseBodyDataTools(DaraModel):
         output_schema: Dict[str, Any] = None,
         title: str = None,
     ):
-        # The annotation information of the tool in a map structure. The API definition declares it only as map<any> without specifying its members and purposes.
+        # The annotations of the tool. This is a map structure. The API definition declares it only as map<any> without specifying its members and usage.
         self.annotations = annotations
         # The description of the tool.
         self.description = description
-        # The input parameter structure definition of the tool in a map structure. The API definition declares it only as map<any> without specifying its members and constraints.
+        # The input parameter schema of the tool. This is a map structure. The API definition declares it only as map<any> without specifying its members and constraints.
         self.input_schema = input_schema
-        # The metadata information of the tool in a map structure. The API definition declares it only as map<any> without specifying its members and purposes.
+        # The metadata of the tool. This is a map structure. The API definition declares it only as map<any> without specifying its members and usage.
         self.meta = meta
         # The name of the tool.
         self.name = name
-        # The output result structure definition of the tool in a map structure. The API definition declares it only as map<any> without specifying its members and constraints.
+        # The output schema of the tool. This is a map structure. The API definition declares it only as map<any> without specifying its members and constraints.
         self.output_schema = output_schema
         # The title of the tool.
         self.title = title

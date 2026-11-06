@@ -67,7 +67,7 @@ class CreateProductResponseBodyData(DaraModel):
         self,
         product_id: str = None,
     ):
-        # The ID of the newly created API product, which can be used to locate the product in operations such as GetProduct, UpdateProduct, PublishProduct, and GetProductRef.
+        # The ID of the new API product. You can use this ID to locate the product in API operations such as GetProduct, UpdateProduct, PublishProduct, and GetProductRef.
         self.product_id = product_id
 
     def validate(self):

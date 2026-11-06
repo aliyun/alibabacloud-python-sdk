@@ -69,11 +69,11 @@ class HandleOidcCallbackResponseBodyData(DaraModel):
         expires_in: int = None,
         token_type: str = None,
     ):
-        # The access token returned for this OIDC logon. The API definition marks this field as a sensitive field.
+        # The access token returned for the OIDC logon. This field is marked as sensitive in the API definition.
         self.access_token = access_token
-        # The validity period value of the access token (expiresIn, int64). The unit is not declared in the API definition.
+        # The numeric value for the validity period of the access token. The unit is not declared in the API definition.
         self.expires_in = expires_in
-        # The type identifier of the access token (tokenType). The set of valid values is not declared in the API definition.
+        # The type identifier of the access token. The valid values are not declared in the API definition.
         self.token_type = token_type
 
     def validate(self):

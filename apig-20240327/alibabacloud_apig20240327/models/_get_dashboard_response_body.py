@@ -25,7 +25,7 @@ class GetDashboardResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -88,13 +88,13 @@ class GetDashboardResponseBodyData(DaraModel):
         title: str = None,
         url: str = None,
     ):
-        # The unique ID of the gateway.
+        # The unique identifier of the gateway.
         self.gateway_id = gateway_id
-        # The name of the dashboard.
+        # The dashboard name.
         self.name = name
-        # The title of the dashboard.
+        # The dashboard title.
         self.title = title
-        # The URL of the dashboard.
+        # The dashboard URL.
         self.url = url
 
     def validate(self):

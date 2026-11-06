@@ -21,7 +21,7 @@ class ListGatewayQuotaRulesResponseBody(DaraModel):
         self.code = code
         # The response data.
         self.data = data
-        # The maximum number of records to retrieve at a time. This parameter is not supported.
+        # The maximum number of records to return in a single request. This parameter is not supported.
         self.max_results = max_results
         # The response message.
         self.message = message

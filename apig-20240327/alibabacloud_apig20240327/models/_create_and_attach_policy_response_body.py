@@ -15,7 +15,7 @@ class CreateAndAttachPolicyResponseBody(DaraModel):
     ):
         # The response status code.
         self.code = code
-        # The response struct.
+        # The response structure.
         self.data = data
         # The response message.
         self.message = message
@@ -68,7 +68,7 @@ class CreateAndAttachPolicyResponseBodyData(DaraModel):
         attachment: main_models.Attachment = None,
         policy_id: str = None,
     ):
-        # The attachment information.
+        # The attachment relationship information.
         self.attachment = attachment
         # The ID of the newly created policy.
         self.policy_id = policy_id

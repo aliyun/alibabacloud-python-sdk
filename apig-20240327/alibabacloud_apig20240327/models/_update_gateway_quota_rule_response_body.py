@@ -19,7 +19,7 @@ class UpdateGatewayQuotaRuleResponseBody(DaraModel):
         self.code = code
         # The response data.
         self.data = data
-        # The message.
+        # The message content.
         self.message = message
         # The unique identifier of the request.
         self.request_id = request_id
@@ -72,13 +72,13 @@ class UpdateGatewayQuotaRuleResponseBodyData(DaraModel):
         dry_run: bool = None,
         rule_id: str = None,
     ):
-        # Specifies whether the semantics of the current write request can be accepted by the system. A value of false typically occurs in retryable scenarios such as unconfirmed overwrites for conflicts.
+        # Indicates whether the write request is accepted by the system. If dryRun=true, a value of true only indicates that the dry run is accepted, not that the configuration is saved. If a formal write request returns false, it indicates that the configuration is not saved due to conflicts, and you should check the conflictPreview. A value of false typically occurs in retryable scenarios, such as when a conflict overwrite is not confirmed.
         self.accepted = accepted
         # The conflict preview.
         self.conflict_preview = conflict_preview
-        # Specifies whether a dry run is performed.
+        # Indicates whether the request is a dry run.
         self.dry_run = dry_run
-        # The rule ID.
+        # The ID of the rule.
         self.rule_id = rule_id
 
     def validate(self):
@@ -128,7 +128,7 @@ class UpdateGatewayQuotaRuleResponseBodyDataConflictPreview(DaraModel):
         items: List[main_models.UpdateGatewayQuotaRuleResponseBodyDataConflictPreviewItems] = None,
         total_conflict_count: int = None,
     ):
-        # The conflict hash.
+        # The hash of the conflict.
         self.conflict_hash = conflict_hash
         # The list of conflicting subjects (consumers or consumer groups).
         self.items = items
@@ -187,15 +187,15 @@ class UpdateGatewayQuotaRuleResponseBodyDataConflictPreviewItems(DaraModel):
         subject_name: str = None,
         subject_type: str = None,
     ):
-        # The period type of the existing conflicting rule on the consumption subject. A value of day, week, or month indicates that the period of the existing conflicting rule on the consumption subject is day, week, or month, respectively.
+        # The period type of the existing conflicting rule on the consumer. A value of day, week, or month indicates that the period of the existing conflicting rule is day, week, or month, respectively. This is a legacy field. Use the periodType field in the actual response instead. This field is not guaranteed to be returned.
         self.conflict_period_type = conflict_period_type
-        # The type of the existing conflicting rule on the consumption subject. A value of calendar indicates that the existing conflicting rule on the consumption subject uses a natural period. A value of epoch indicates that the existing conflicting rule uses a custom period.
+        # The type of the existing conflicting rule on the consumer. Valid values: calendar, which indicates that the existing conflicting rule uses a natural period, and epoch, which indicates that the existing conflicting rule uses a custom period.
         self.conflict_type = conflict_type
-        # The consumer ID. You can now uniformly use subjectId instead.
+        # The ID of the consumer. This parameter is replaced by subjectId.
         self.consumer_id = consumer_id
-        # The consumer name. You can now uniformly use subjectName instead.
+        # The name of the consumer. This parameter is replaced by subjectName.
         self.consumer_name = consumer_name
-        # The period type of the existing conflicting rule. Valid values: day, week, and month, which indicate day, week, and month, respectively.
+        # The period type of the existing conflicting rule. Valid values: day, week, and month.
         self.period_type = period_type
         # The ID of the conflicting subject.
         self.subject_id = subject_id

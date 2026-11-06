@@ -24,31 +24,31 @@ class HttpApiOperationInfo(DaraModel):
         response: main_models.HttpApiResponseContract = None,
         status: str = None,
     ):
-        # The authentication configuration.
+        # The permission authentication configuration.
         self.auth_config = auth_config
         # The creation timestamp.
         self.create_timestamp = create_timestamp
-        # The backend service deployment information for the API operation.
+        # The API operation backend service deployment information.
         self.deploy_configs = deploy_configs
         # The description.
         self.description = description
-        # Indicates whether authentication is enabled.
+        # Specifies whether authentication is enabled.
         self.enable_auth = enable_auth
-        # The HTTP method of the API operation.
+        # The API operation method.
         self.method = method
-        # The mock parameter settings for the API operation.
+        # The API operation mock parameter settings.
         self.mock = mock
-        # The name of the API operation.
+        # The API operation name.
         self.name = name
-        # The ID of the API operation.
+        # The API operation ID.
         self.operation_id = operation_id
-        # The path of the API operation.
+        # The API operation path.
         self.path = path
-        # The request parameter definition of the API operation.
+        # The API operation request parameter definition.
         self.request = request
-        # The response parameter definition of the API operation.
+        # The API operation response parameter definition.
         self.response = response
-        # The publish status of the API operation on the gateway.
+        # The publication status of the API operation on the gateway.
         self.status = status
 
     def validate(self):

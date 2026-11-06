@@ -15,9 +15,9 @@ class ListPortalsRequest(DaraModel):
     ):
         # The maximum number of entries to return per request.
         self.max_results = max_results
-        # The name of the portal. This corresponds to the Name property of the portal resource and matches the name field in the response list items.
+        # The portal name, which is the Name property of the portal resource. This corresponds to the name field in the response list items.
         self.name = name
-        # The pagination token for the next page.
+        # The cursor token for querying the next page.
         self.next_token = next_token
         # The page number.
         self.page_number = page_number

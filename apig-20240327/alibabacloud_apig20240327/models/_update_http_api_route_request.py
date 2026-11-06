@@ -19,7 +19,7 @@ class UpdateHttpApiRouteRequest(DaraModel):
         mcp_route_config: main_models.UpdateHttpApiRouteRequestMcpRouteConfig = None,
         policy_configs: List[main_models.HttpApiPolicyConfigs] = None,
     ):
-        # The backend service configuration for the route.
+        # The backend service configuration of the route.
         self.backend_config = backend_config
         # The route description.
         self.description = description
@@ -169,7 +169,7 @@ class UpdateHttpApiRouteRequestDfpConfig(DaraModel):
         self,
         service_id: str = None,
     ):
-        # The ID of the ExtProc service mounted to the current route. When updating a fixed DFP route, this value must match the existing service. Service switching is not supported.
+        # The ID of the ExtProc service mounted to the current route. When updating a fixed DFP route, this ID must match the existing service. Service switching is not supported.
         self.service_id = service_id
 
     def validate(self):
@@ -251,13 +251,13 @@ class UpdateHttpApiRouteRequestBackendConfigServices(DaraModel):
         version: str = None,
         weight: int = None,
     ):
-        # The service group. Used for HTTP-to-Dubbo conversion scenarios.
+        # The service group. Used in HTTP-to-Dubbo conversion scenarios.
         self.group_name = group_name
-        # The HTTP-to-Dubbo protocol conversion configuration. This is only supported for SingleService MSE_NACOS DUBBO backends of HTTP APIs.
+        # The HTTP-to-Dubbo protocol conversion configuration. This configuration is only supported for SingleService MSE_NACOS DUBBO backends of HTTP APIs.
         self.http_dubbo_transcoder = http_dubbo_transcoder
-        # The target model name. This field is shared by multiple existing model backend scenarios. The specific routing or model rewriting semantics are determined by backendConfig.scene. It must be configured for the SemanticRouter scenario. If it is not configured for the AiAutoRouter scenario, the default model of the AI service is used.
+        # The name of the target model. This field is shared by multiple existing model backend scenarios. The specific routing or model rewriting semantics are determined by backendConfig.scene. This field is required for the SemanticRouter scenario. If it is not configured for the AiAutoRouter scenario, the default model of the AI service is used.
         self.model_name = model_name
-        # The service namespace. Used for HTTP-to-Dubbo conversion scenarios.
+        # The service namespace. Used in HTTP-to-Dubbo conversion scenarios.
         self.namespace = namespace
         # The service port. Do not specify this parameter for dynamic ports.
         self.port = port

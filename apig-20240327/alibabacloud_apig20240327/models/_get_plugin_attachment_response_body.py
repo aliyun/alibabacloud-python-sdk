@@ -85,7 +85,7 @@ class GetPluginAttachmentResponseBodyData(DaraModel):
         self.gateway_info = gateway_info
         # The parent mounted resource information.
         self.parent_resource_info = parent_resource_info
-        # The ID of the plugin attachment.
+        # The plugin attachment ID.
         self.plugin_attachment_id = plugin_attachment_id
         # The plugin class information.
         self.plugin_class_info = plugin_class_info

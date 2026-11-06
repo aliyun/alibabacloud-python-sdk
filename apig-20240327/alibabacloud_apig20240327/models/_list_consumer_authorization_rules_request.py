@@ -15,7 +15,7 @@ class ListConsumerAuthorizationRulesRequest(DaraModel):
         self.api_name_like = api_name_like
         # The page number.
         self.page_number = page_number
-        # The page size. Default value: 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
 
     def validate(self):

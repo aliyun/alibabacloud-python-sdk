@@ -67,7 +67,7 @@ class BatchImportHttpApisResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The asynchronous task ID. You can call the GetBatchImportTask operation to query the task progress.
+        # The ID of the asynchronous task. You can call the GetBatchImportTask operation to query the task progress.
         self.task_id = task_id
 
     def validate(self):

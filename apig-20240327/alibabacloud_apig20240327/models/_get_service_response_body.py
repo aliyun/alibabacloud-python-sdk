@@ -15,7 +15,7 @@ class GetServiceResponseBody(DaraModel):
     ):
         # The response status code.
         self.code = code
-        # The service details.
+        # The service details data.
         self.data = data
         # The response message.
         self.message = message

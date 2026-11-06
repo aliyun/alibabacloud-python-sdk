@@ -15,13 +15,13 @@ class GetMigrationNamespacedServicesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The response status code.
+        # The status code of the response.
         self.code = code
         # The response data.
         self.data = data
         # The response message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -151,7 +151,7 @@ class GetMigrationNamespacedServicesResponseBodyDataNamespacedServicesServices(D
         name: str = None,
         slb_id: str = None,
     ):
-        # The service name. After you select a Server Load Balancer (SLB) instance, the frontend populates this value into the serviceName field.
+        # The name of the service. After an SLB instance is selected, the frontend populates this value into the serviceName field.
         self.name = name
         # The ID of the load balancing instance associated with the service.
         self.slb_id = slb_id

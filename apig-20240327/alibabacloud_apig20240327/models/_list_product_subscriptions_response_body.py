@@ -142,15 +142,15 @@ class ListProductSubscriptionsResponseBodyDataContent(DaraModel):
         self.consumer_id = consumer_id
         # The name of the consumer to which the subscription belongs. This corresponds to the keyword search of the consumerName request parameter.
         self.consumer_name = consumer_name
-        # The ID of the subscribed API product, which is the primary ID of the API product resource. This is the same identifier as the productId path parameter of this operation.
+        # The ID of the subscribed API product, which is the primary ID of the API product resource. This ID is the same as the productId path parameter of this operation.
         self.product_id = product_id
         # The name of the subscribed API product, which is the Name property of the API product resource.
         self.product_name = product_name
-        # The product type of the subscribed API. Valid values: REST_API, HTTP_API, MCP_SERVER, AGENT_API, and MODEL_API.
+        # The type of the subscribed API product. Valid values: REST_API, HTTP_API, MCP_SERVER, AGENT_API, and MODEL_API.
         self.product_type = product_type
-        # The subscription status. Valid values: PENDING and APPROVED. The valid values are declared in the enum of the status request parameter in this topic. This response parameter does not have the @enums annotation.
+        # The subscription status. Valid values: PENDING and APPROVED. The valid values are defined in the enum of the status request parameter, and this response parameter is not annotated with @enums.
         self.status = status
-        # The subscription ID, which identifies an API product subscription record. You can use this ID to cancel the subscription by calling UnsubscribeHiMarketProduct or approve the subscription by calling ApproveProductSubscription. Both operations locate the record by using the /himarket/v1/consumers/{consumerId}/subscriptions/{subscriptionId} path.
+        # The subscription ID, which identifies an API product subscription record. You can use this ID to cancel the subscription by calling UnsubscribeHiMarketProduct or approve the subscription by calling ApproveProductSubscription. Both operations locate the record by using the path /himarket/v1/consumers/{consumerId}/subscriptions/{subscriptionId}.
         self.subscription_id = subscription_id
 
     def validate(self):

@@ -29,7 +29,7 @@ class CreateAiModelProviderRequest(DaraModel):
         self.provider = provider
         # The list of service IDs to bind to the provider.
         self.service_ids = service_ids
-        # The client token that is used to ensure the idempotence of the request.
+        # The client token that ensures the idempotence of the request.
         self.client_token = client_token
 
     def validate(self):

@@ -23,40 +23,40 @@ class UpdateMcpServerRequest(DaraModel):
         protocol: str = None,
         type: str = None,
     ):
-        # The list of assembled sources. This parameter is required when type is set to AssemblyMCP.
+        # The list of assembly sources. This parameter is required when type is set to AssemblyMCP.
         self.assembled_sources = assembled_sources
-        # The backend service configuration of the route. This parameter is conditionally required. If this parameter is not specified, the API returns InvalidParameter.WithValue(400).
+        # The backend service configurations of the route. This parameter is conditionally required. If it is not provided, the API returns InvalidParameter.WithValue(400).
         self.backend_config = backend_config
         # The creation source type. Valid values:
-        # - ApiGatewayHttpToMCP: Gateway-managed HTTP-to-MCP conversion.
-        # - ApiGatewayProxyMcpHosting: Gateway-managed MCP direct proxy.
-        # - ApiGatewayAssembly: Gateway MCP assembly.
-        # - NacosHttpToMCP: Gateway-managed Nacos-synced HTTP-to-MCP conversion.
-        # - NacosMcpHosting: Gateway-managed Nacos-synced MCP direct proxy.
+        # - ApiGatewayHttpToMCP: API gateway-hosted HTTP-to-MCP.
+        # - ApiGatewayProxyMcpHosting: API gateway-hosted MCP direct proxy.
+        # - ApiGatewayAssembly: API gateway MCP assembly.
+        # - NacosHttpToMCP: API gateway-hosted Nacos-synchronized HTTP-to-MCP.
+        # - NacosMcpHosting: API gateway-hosted Nacos-synchronized MCP direct proxy.
         self.create_from_type = create_from_type
         # The description.
         self.description = description
-        # The domain name ID.
+        # The domain name IDs.
         self.domain_ids = domain_ids
         # The exposed URI path. This parameter is required when protocol is set to SSE or StreamableHTTP and type is set to RealMCP.
         self.exposed_uri_path = exposed_uri_path
-        # The list of canary release MCP server route configurations.
+        # The list of canary MCP server route configurations.
         self.gray_mcp_server_configs = gray_mcp_server_configs
-        # The route match rule. This parameter is conditionally required. If this parameter is not specified, the API returns InvalidParameter.IsEmpty(400).
+        # The route match rules. This parameter is conditionally required. If it is not provided, the API returns InvalidParameter.IsEmpty(400).
         self.match = match
-        # The HTTP-to-MCP configuration.
+        # The HTTP-to-MCP configurations.
         self.mcp_server_config = mcp_server_config
         # Specifies whether to enable MCP observability. Default value: false.
         self.mcp_statistics_enable = mcp_statistics_enable
         # The protocol type. Valid values:
-        # - HTTP: HTTP protocol.
-        # - HTTPS: HTTPS protocol.
-        # - SSE: Server-Sent Events protocol.
-        # - StreamableHTTP: Streamable HTTP protocol.
+        # - HTTP: HTTP.
+        # - HTTPS: HTTPS.
+        # - SSE: Server-Sent Events.
+        # - StreamableHTTP: Streaming HTTP.
         # 
         # This parameter is required.
         self.protocol = protocol
-        # The MCP server type filter. Valid values: RealMCP, AssemblyMCP.
+        # The MCP server type filter. Valid values: RealMCP and AssemblyMCP.
         # 
         # This parameter is required.
         self.type = type
@@ -179,9 +179,9 @@ class UpdateMcpServerRequestMcpServerConfig(DaraModel):
         mcp_server_spec: str = None,
         swagger_config: str = None,
     ):
-        # The MCP server configuration. This parameter is mutually exclusive with swaggerConfig.
+        # The MCP server configurations. This parameter is mutually exclusive with the swaggerConfig parameter.
         self.mcp_server_spec = mcp_server_spec
-        # The Swagger document for HTTP-to-MCP conversion. The document must comply with the OpenAPI 3.0 specification.
+        # The Swagger document for HTTP-to-MCP. The document must comply with the OpenAPI 3.0 specification.
         self.swagger_config = swagger_config
 
     def validate(self):
@@ -217,9 +217,9 @@ class UpdateMcpServerRequestGrayMcpServerConfigs(DaraModel):
         match: main_models.HttpRouteMatch = None,
         route_id: str = None,
     ):
-        # The backend configuration.
+        # The backend configurations.
         self.backend_config = backend_config
-        # The route match rule.
+        # The route match rules.
         self.match = match
         # The route ID.
         self.route_id = route_id
@@ -317,7 +317,7 @@ class UpdateMcpServerRequestGrayMcpServerConfigsBackendConfigServices(DaraModel)
     ):
         # The service port.
         self.port = port
-        # The Terms of Service.
+        # The service protocol.
         self.protocol = protocol
         # The service ID.
         self.service_id = service_id
@@ -426,7 +426,7 @@ class UpdateMcpServerRequestBackendConfigServices(DaraModel):
     ):
         # The service port. Do not specify this parameter for dynamic ports.
         self.port = port
-        # The Terms of Service. Valid values:
+        # The service protocol. Valid values:
         # - TCP.
         # - HTTP.
         # - DUBBO.
@@ -435,7 +435,7 @@ class UpdateMcpServerRequestBackendConfigServices(DaraModel):
         self.service_id = service_id
         # The service version.
         self.version = version
-        # The percentage value of the traffic ratio.
+        # The percentage value of the traffic proportion.
         self.weight = weight
 
     def validate(self):
@@ -491,7 +491,7 @@ class UpdateMcpServerRequestAssembledSources(DaraModel):
     ):
         # MCP Server ID
         self.mcp_server_id = mcp_server_id
-        # The MCP server name.
+        # The name of the MCP server.
         self.mcp_server_name = mcp_server_name
         # The list of MCP tools.
         self.tools = tools

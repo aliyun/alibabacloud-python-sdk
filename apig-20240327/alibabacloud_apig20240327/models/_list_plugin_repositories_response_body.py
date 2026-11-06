@@ -130,7 +130,7 @@ class ListPluginRepositoriesResponseBodyDataRepositories(DaraModel):
         repository_id: str = None,
         repository_name: str = None,
     ):
-        # The Codeup repository ID (numeric string).
+        # The Codeup repository ID, which is a numeric string.
         self.repository_id = repository_id
         # The repository name.
         self.repository_name = repository_name

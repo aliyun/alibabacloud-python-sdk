@@ -144,9 +144,9 @@ class ListConsumerGroupQuotaRulesResponseBodyDataItems(DaraModel):
     ):
         # The ID of the gateway.
         self.gateway_id = gateway_id
-        # The name of the gateway. Falls back to the gateway ID if the name is unavailable.
+        # The name of the gateway. If the name is unavailable, the gateway ID is returned.
         self.gateway_name = gateway_name
-        # The period multiplier, which specifies the number of days before the quota resets. A positive integer is returned for custom periods. This field is not returned for calendar-based periods.
+        # The period multiplier, which indicates the interval in days for quota reset. A positive integer is returned for a custom period. This field is not returned for a natural period.
         self.period_multiplier = period_multiplier
         # The period type.
         self.period_type = period_type
@@ -158,15 +158,11 @@ class ListConsumerGroupQuotaRulesResponseBodyDataItems(DaraModel):
         self.rule_id = rule_id
         # The name of the rule.
         self.rule_name = rule_name
-        # The status of the rule. Valid values:
-        # - enabled
-        # - disabled
+        # The status of the rule. Valid values: enabled and disabled.
         self.rule_status = rule_status
         # The time zone.
         self.timezone = timezone
-        # The window alignment type. Valid values:
-        # - calendar: calendar-based period.
-        # - epoch: custom period.
+        # The period type. A value of calendar indicates a natural period. A value of epoch indicates a custom period.
         self.window_alignment = window_alignment
 
     def validate(self):

@@ -17,7 +17,7 @@ class CreateAiModelProviderResponseBody(DaraModel):
     ):
         # The response status code.
         self.code = code
-        # The response struct.
+        # The response structure.
         self.data = data
         # The response message.
         self.message = message
@@ -87,7 +87,7 @@ class CreateAiModelProviderResponseBodyData(DaraModel):
         self.model_cards = model_cards
         # The number of models under the provider.
         self.model_count = model_count
-        # The model provider ID.
+        # The ID of the model provider.
         self.model_provider_id = model_provider_id
         # The identifier of the model provider.
         self.provider = provider
@@ -198,23 +198,23 @@ class CreateAiModelProviderResponseBodyDataModelCards(DaraModel):
     ):
         # The list of available paths for the model.
         self.available_paths = available_paths
-        # The credits consumption configuration of the model.
+        # The credits consumption configuration for the model.
         self.credit = credit
         # The capability features of the model.
         self.features = features
-        # The instance ID of the gateway to which the model card belongs.
+        # The associated gateway instance ID.
         self.gateway_id = gateway_id
-        # The model metadata.
+        # The metadata of the model.
         self.meta = meta
-        # The model card ID.
+        # The ID of the model card.
         self.model_card_id = model_card_id
-        # The model name.
+        # The name of the model.
         self.model_name = model_name
-        # The identifier of the model provider to which the model card belongs.
+        # The identifier of the associated model provider.
         self.model_provider = model_provider
-        # The model source.
+        # The source of the model.
         self.source = source
-        # The URL of the model metadata.
+        # The URL for the model metadata.
         self.source_url = source_url
         # The last update time in the yyyy-MM-ddTHH:mm:ssZ format.
         self.update_time = update_time
@@ -385,13 +385,13 @@ class CreateAiModelProviderResponseBodyDataModelCardsCredit(DaraModel):
         output_cost: float = None,
         type: str = None,
     ):
-        # The credits consumption coefficient for cached tokens.
+        # The credit consumption coefficient for cached tokens.
         self.cache_cost = cache_cost
-        # The credits consumption coefficient for input tokens.
+        # The credit consumption coefficient for input tokens.
         self.input_cost = input_cost
-        # The credits consumption coefficient for output tokens.
+        # The credit consumption coefficient for output tokens.
         self.output_cost = output_cost
-        # The credits billing type.
+        # The billing type for credits.
         self.type = type
 
     def validate(self):

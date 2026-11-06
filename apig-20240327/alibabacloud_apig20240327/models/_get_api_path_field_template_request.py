@@ -9,7 +9,7 @@ class GetApiPathFieldTemplateRequest(DaraModel):
         self,
         path: str = None,
     ):
-        # The API request path used to query the corresponding field template.
+        # The URI of the request, used to query the field template corresponding to the URI.
         self.path = path
 
     def validate(self):

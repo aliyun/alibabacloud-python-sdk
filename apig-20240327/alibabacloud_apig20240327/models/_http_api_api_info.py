@@ -37,13 +37,13 @@ class HttpApiApiInfo(DaraModel):
         self.auth_config = auth_config
         # The API base path.
         self.base_path = base_path
-        # The deployment status of the API operation.
+        # The API operation deployment status.
         self.deploy_cnt_map = deploy_cnt_map
         # The list of API deployment configurations.
         self.deploy_configs = deploy_configs
         # The API description.
         self.description = description
-        # Specifies whether authentication is enabled.
+        # Specifies whether to enable authentication.
         self.enable_auth = enable_auth
         # The publish environment context of the API.
         self.environments = environments
@@ -51,7 +51,7 @@ class HttpApiApiInfo(DaraModel):
         self.gateway_id = gateway_id
         # The HTTP API ID.
         self.http_api_id = http_api_id
-        # The HTTP Ingress API information.
+        # The HTTP ingress API information.
         self.ingress_info = ingress_info
         # The model category.
         self.model_category = model_category
@@ -235,11 +235,11 @@ class HttpApiApiInfoIngressInfo(DaraModel):
     ):
         # The environment context.
         self.environment_info = environment_info
-        # The Ingress class being listened to.
+        # The ingress class to listen on.
         self.ingress_class = ingress_class
         # The Kubernetes cluster information.
         self.k_8s_cluster_info = k_8s_cluster_info
-        # Specifies whether to override the IP address in the Ingress status.
+        # Specifies whether to update the address in the ingress status.
         self.override_ingress_ip = override_ingress_ip
         # The source ID.
         self.source_id = source_id
@@ -373,17 +373,17 @@ class HttpApiApiInfoEnvironments(DaraModel):
     ):
         # The environment alias.
         self.alias = alias
-        # The deployment scenario.
+        # The release scenario.
         self.backend_scene = backend_scene
         # The backend type.
         self.backend_type = backend_type
-        # The information about the custom domain names published by the user.
+        # The published domain name information.
         self.custom_domains = custom_domains
-        # The deployment status of the API in the current environment.
+        # The API deployment status in the current environment.
         self.deploy_status = deploy_status
         # The environment ID.
         self.environment_id = environment_id
-        # The information about the gateway instance to which the current environment belongs.
+        # The gateway instance information for the current environment.
         self.gateway_info = gateway_info
         # The environment name.
         self.name = name
@@ -564,7 +564,7 @@ class HttpApiApiInfoEnvironmentsServiceConfigs(DaraModel):
     ):
         # The service ID.
         self.gateway_service_id = gateway_service_id
-        # The match condition.
+        # The match conditions.
         self.match = match
         # The service name.
         self.name = name
@@ -650,7 +650,7 @@ class HttpApiApiInfoEnvironmentsGatewayInfo(DaraModel):
         gateway_id: str = None,
         name: str = None,
     ):
-        # The edition of the gateway instance. Valid values: Professional, Serverless, MultiTenantServerless, and Unknown.
+        # The gateway instance edition. Valid values: Professional, Serverless, MultiTenantServerless, and Unknown.
         self.gateway_edition = gateway_edition
         # The gateway instance ID.
         self.gateway_id = gateway_id
