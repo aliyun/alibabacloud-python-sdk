@@ -19,6 +19,10 @@ from ._authorize_users_for_app_response import AuthorizeUsersForAppResponse
 from ._batch_create_llm_templates_request import BatchCreateLlmTemplatesRequest
 from ._batch_create_llm_templates_response_body import BatchCreateLlmTemplatesResponseBody
 from ._batch_create_llm_templates_response import BatchCreateLlmTemplatesResponse
+from ._builder_image_by_parent_request import BuilderImageByParentRequest
+from ._builder_image_by_parent_shrink_request import BuilderImageByParentShrinkRequest
+from ._builder_image_by_parent_response_body import BuilderImageByParentResponseBody
+from ._builder_image_by_parent_response import BuilderImageByParentResponse
 from ._config_resource_group_model_template_request import ConfigResourceGroupModelTemplateRequest
 from ._config_resource_group_model_template_response_body import ConfigResourceGroupModelTemplateResponseBody
 from ._config_resource_group_model_template_response import ConfigResourceGroupModelTemplateResponse
@@ -28,6 +32,9 @@ from ._config_runtime_channel_response import ConfigRuntimeChannelResponse
 from ._config_runtime_model_template_request import ConfigRuntimeModelTemplateRequest
 from ._config_runtime_model_template_response_body import ConfigRuntimeModelTemplateResponseBody
 from ._config_runtime_model_template_response import ConfigRuntimeModelTemplateResponse
+from ._create_and_bind_app_request import CreateAndBindAppRequest
+from ._create_and_bind_app_response_body import CreateAndBindAppResponseBody
+from ._create_and_bind_app_response import CreateAndBindAppResponse
 from ._create_app_instance_group_request import CreateAppInstanceGroupRequest
 from ._create_app_instance_group_shrink_request import CreateAppInstanceGroupShrinkRequest
 from ._create_app_instance_group_response_body import CreateAppInstanceGroupResponseBody
@@ -51,6 +58,12 @@ from ._create_model_template_response import CreateModelTemplateResponse
 from ._create_wuying_server_request import CreateWuyingServerRequest
 from ._create_wuying_server_response_body import CreateWuyingServerResponseBody
 from ._create_wuying_server_response import CreateWuyingServerResponse
+from ._delete_adaptor_request import DeleteAdaptorRequest
+from ._delete_adaptor_response_body import DeleteAdaptorResponseBody
+from ._delete_adaptor_response import DeleteAdaptorResponse
+from ._delete_app_request import DeleteAppRequest
+from ._delete_app_response_body import DeleteAppResponseBody
+from ._delete_app_response import DeleteAppResponse
 from ._delete_app_instance_group_request import DeleteAppInstanceGroupRequest
 from ._delete_app_instance_group_response_body import DeleteAppInstanceGroupResponseBody
 from ._delete_app_instance_group_response import DeleteAppInstanceGroupResponse
@@ -75,6 +88,9 @@ from ._delete_wuying_server_response import DeleteWuyingServerResponse
 from ._deliver_to_user_sls_request import DeliverToUserSlsRequest
 from ._deliver_to_user_sls_response_body import DeliverToUserSlsResponseBody
 from ._deliver_to_user_sls_response import DeliverToUserSlsResponse
+from ._describe_events_request import DescribeEventsRequest
+from ._describe_events_response_body import DescribeEventsResponseBody
+from ._describe_events_response import DescribeEventsResponse
 from ._describe_wuying_server_request import DescribeWuyingServerRequest
 from ._describe_wuying_server_response_body import DescribeWuyingServerResponseBody
 from ._describe_wuying_server_response import DescribeWuyingServerResponse
@@ -84,6 +100,9 @@ from ._describe_wuying_server_eip_info_response import DescribeWuyingServerEipIn
 from ._get_app_instance_group_request import GetAppInstanceGroupRequest
 from ._get_app_instance_group_response_body import GetAppInstanceGroupResponseBody
 from ._get_app_instance_group_response import GetAppInstanceGroupResponse
+from ._get_auth_code_request import GetAuthCodeRequest
+from ._get_auth_code_response_body import GetAuthCodeResponseBody
+from ._get_auth_code_response import GetAuthCodeResponse
 from ._get_browser_instance_group_request import GetBrowserInstanceGroupRequest
 from ._get_browser_instance_group_response_body import GetBrowserInstanceGroupResponseBody
 from ._get_browser_instance_group_response import GetBrowserInstanceGroupResponse
@@ -102,9 +121,15 @@ from ._get_model_provider_template_response import GetModelProviderTemplateRespo
 from ._get_ota_task_by_task_id_request import GetOtaTaskByTaskIdRequest
 from ._get_ota_task_by_task_id_response_body import GetOtaTaskByTaskIdResponseBody
 from ._get_ota_task_by_task_id_response import GetOtaTaskByTaskIdResponse
+from ._get_resource_modify_price_request import GetResourceModifyPriceRequest
+from ._get_resource_modify_price_response_body import GetResourceModifyPriceResponseBody
+from ._get_resource_modify_price_response import GetResourceModifyPriceResponse
 from ._get_resource_price_request import GetResourcePriceRequest
 from ._get_resource_price_response_body import GetResourcePriceResponseBody
 from ._get_resource_price_response import GetResourcePriceResponse
+from ._get_resource_quota_request import GetResourceQuotaRequest
+from ._get_resource_quota_response_body import GetResourceQuotaResponseBody
+from ._get_resource_quota_response import GetResourceQuotaResponse
 from ._get_resource_renew_price_request import GetResourceRenewPriceRequest
 from ._get_resource_renew_price_response_body import GetResourceRenewPriceResponseBody
 from ._get_resource_renew_price_response import GetResourceRenewPriceResponse
@@ -114,9 +139,19 @@ from ._get_runtime_channel_response import GetRuntimeChannelResponse
 from ._get_runtime_model_config_request import GetRuntimeModelConfigRequest
 from ._get_runtime_model_config_response_body import GetRuntimeModelConfigResponseBody
 from ._get_runtime_model_config_response import GetRuntimeModelConfigResponse
+from ._get_task_request import GetTaskRequest
+from ._get_task_response_body import GetTaskResponseBody
+from ._get_task_response import GetTaskResponse
+from ._list_app_request import ListAppRequest
+from ._list_app_shrink_request import ListAppShrinkRequest
+from ._list_app_response_body import ListAppResponseBody
+from ._list_app_response import ListAppResponse
 from ._list_app_instance_group_request import ListAppInstanceGroupRequest
 from ._list_app_instance_group_response_body import ListAppInstanceGroupResponseBody
 from ._list_app_instance_group_response import ListAppInstanceGroupResponse
+from ._list_app_instance_type_request import ListAppInstanceTypeRequest
+from ._list_app_instance_type_response_body import ListAppInstanceTypeResponseBody
+from ._list_app_instance_type_response import ListAppInstanceTypeResponse
 from ._list_app_instances_request import ListAppInstancesRequest
 from ._list_app_instances_response_body import ListAppInstancesResponseBody
 from ._list_app_instances_response import ListAppInstancesResponse
@@ -183,6 +218,9 @@ from ._list_published_app_instance_group_response import ListPublishedAppInstanc
 from ._list_published_apps_request import ListPublishedAppsRequest
 from ._list_published_apps_response_body import ListPublishedAppsResponseBody
 from ._list_published_apps_response import ListPublishedAppsResponse
+from ._list_region_id_request import ListRegionIdRequest
+from ._list_region_id_response_body import ListRegionIdResponseBody
+from ._list_region_id_response import ListRegionIdResponse
 from ._list_regions_request import ListRegionsRequest
 from ._list_regions_response_body import ListRegionsResponseBody
 from ._list_regions_response import ListRegionsResponse
@@ -192,11 +230,17 @@ from ._list_tag_cloud_resources_response import ListTagCloudResourcesResponse
 from ._list_tag_resources_request import ListTagResourcesRequest
 from ._list_tag_resources_response_body import ListTagResourcesResponseBody
 from ._list_tag_resources_response import ListTagResourcesResponse
+from ._list_task_step_request import ListTaskStepRequest
+from ._list_task_step_response_body import ListTaskStepResponseBody
+from ._list_task_step_response import ListTaskStepResponse
 from ._list_tenant_config_response_body import ListTenantConfigResponseBody
 from ._list_tenant_config_response import ListTenantConfigResponse
 from ._list_wuying_server_request import ListWuyingServerRequest
 from ._list_wuying_server_response_body import ListWuyingServerResponseBody
 from ._list_wuying_server_response import ListWuyingServerResponse
+from ._list_wuying_server_workload_template_request import ListWuyingServerWorkloadTemplateRequest
+from ._list_wuying_server_workload_template_response_body import ListWuyingServerWorkloadTemplateResponseBody
+from ._list_wuying_server_workload_template_response import ListWuyingServerWorkloadTemplateResponse
 from ._list_zones_request import ListZonesRequest
 from ._list_zones_response_body import ListZonesResponseBody
 from ._list_zones_response import ListZonesResponse
@@ -207,6 +251,10 @@ from ._modify_app_instance_group_attribute_request import ModifyAppInstanceGroup
 from ._modify_app_instance_group_attribute_shrink_request import ModifyAppInstanceGroupAttributeShrinkRequest
 from ._modify_app_instance_group_attribute_response_body import ModifyAppInstanceGroupAttributeResponseBody
 from ._modify_app_instance_group_attribute_response import ModifyAppInstanceGroupAttributeResponse
+from ._modify_app_instance_group_charge_type_request import ModifyAppInstanceGroupChargeTypeRequest
+from ._modify_app_instance_group_charge_type_shrink_request import ModifyAppInstanceGroupChargeTypeShrinkRequest
+from ._modify_app_instance_group_charge_type_response_body import ModifyAppInstanceGroupChargeTypeResponseBody
+from ._modify_app_instance_group_charge_type_response import ModifyAppInstanceGroupChargeTypeResponse
 from ._modify_app_policy_request import ModifyAppPolicyRequest
 from ._modify_app_policy_shrink_request import ModifyAppPolicyShrinkRequest
 from ._modify_app_policy_response_body import ModifyAppPolicyResponseBody
@@ -235,6 +283,36 @@ from ._modify_wuying_server_attribute_response import ModifyWuyingServerAttribut
 from ._page_list_app_instance_group_user_request import PageListAppInstanceGroupUserRequest
 from ._page_list_app_instance_group_user_response_body import PageListAppInstanceGroupUserResponseBody
 from ._page_list_app_instance_group_user_response import PageListAppInstanceGroupUserResponse
+from ._query_app_instance_group_report_list_request import QueryAppInstanceGroupReportListRequest
+from ._query_app_instance_group_report_list_response_body import QueryAppInstanceGroupReportListResponseBody
+from ._query_app_instance_group_report_list_response import QueryAppInstanceGroupReportListResponse
+from ._query_connection_report_request import QueryConnectionReportRequest
+from ._query_connection_report_response_body import QueryConnectionReportResponseBody
+from ._query_connection_report_response import QueryConnectionReportResponse
+from ._query_dau_report_data_request import QueryDauReportDataRequest
+from ._query_dau_report_data_response_body import QueryDauReportDataResponseBody
+from ._query_dau_report_data_response import QueryDauReportDataResponse
+from ._query_mau_report_data_request import QueryMauReportDataRequest
+from ._query_mau_report_data_response_body import QueryMauReportDataResponseBody
+from ._query_mau_report_data_response import QueryMauReportDataResponse
+from ._query_network_rtt_report_request import QueryNetworkRttReportRequest
+from ._query_network_rtt_report_response_body import QueryNetworkRttReportResponseBody
+from ._query_network_rtt_report_response import QueryNetworkRttReportResponse
+from ._query_node_report_data_request import QueryNodeReportDataRequest
+from ._query_node_report_data_response_body import QueryNodeReportDataResponseBody
+from ._query_node_report_data_response import QueryNodeReportDataResponse
+from ._query_session_report_data_request import QuerySessionReportDataRequest
+from ._query_session_report_data_response_body import QuerySessionReportDataResponseBody
+from ._query_session_report_data_response import QuerySessionReportDataResponse
+from ._query_user_app_usage_aggregate_by_hour_request import QueryUserAppUsageAggregateByHourRequest
+from ._query_user_app_usage_aggregate_by_hour_response_body import QueryUserAppUsageAggregateByHourResponseBody
+from ._query_user_app_usage_aggregate_by_hour_response import QueryUserAppUsageAggregateByHourResponse
+from ._query_user_app_usage_time_rank_request import QueryUserAppUsageTimeRankRequest
+from ._query_user_app_usage_time_rank_response_body import QueryUserAppUsageTimeRankResponseBody
+from ._query_user_app_usage_time_rank_response import QueryUserAppUsageTimeRankResponse
+from ._query_user_usage_report_request import QueryUserUsageReportRequest
+from ._query_user_usage_report_response_body import QueryUserUsageReportResponseBody
+from ._query_user_usage_report_response import QueryUserUsageReportResponse
 from ._remove_resource_group_model_template_request import RemoveResourceGroupModelTemplateRequest
 from ._remove_resource_group_model_template_response_body import RemoveResourceGroupModelTemplateResponseBody
 from ._remove_resource_group_model_template_response import RemoveResourceGroupModelTemplateResponse
@@ -275,15 +353,28 @@ from ._unassign_wuying_server_private_addresses_response import UnassignWuyingSe
 from ._unbind_request import UnbindRequest
 from ._unbind_response_body import UnbindResponseBody
 from ._unbind_response import UnbindResponse
+from ._unbind_app_request import UnbindAppRequest
+from ._unbind_app_response_body import UnbindAppResponseBody
+from ._unbind_app_response import UnbindAppResponse
 from ._untag_cloud_resources_request import UntagCloudResourcesRequest
 from ._untag_cloud_resources_response_body import UntagCloudResourcesResponseBody
 from ._untag_cloud_resources_response import UntagCloudResourcesResponse
 from ._untag_resources_request import UntagResourcesRequest
 from ._untag_resources_response_body import UntagResourcesResponseBody
 from ._untag_resources_response import UntagResourcesResponse
+from ._update_adaptor_request import UpdateAdaptorRequest
+from ._update_adaptor_shrink_request import UpdateAdaptorShrinkRequest
+from ._update_adaptor_response_body import UpdateAdaptorResponseBody
+from ._update_adaptor_response import UpdateAdaptorResponse
 from ._update_app_instance_group_image_request import UpdateAppInstanceGroupImageRequest
 from ._update_app_instance_group_image_response_body import UpdateAppInstanceGroupImageResponseBody
 from ._update_app_instance_group_image_response import UpdateAppInstanceGroupImageResponse
+from ._update_image_request import UpdateImageRequest
+from ._update_image_response_body import UpdateImageResponseBody
+from ._update_image_response import UpdateImageResponse
+from ._update_image_task_request import UpdateImageTaskRequest
+from ._update_image_task_response_body import UpdateImageTaskResponseBody
+from ._update_image_task_response import UpdateImageTaskResponse
 from ._update_model_provider_template_request import UpdateModelProviderTemplateRequest
 from ._update_model_provider_template_shrink_request import UpdateModelProviderTemplateShrinkRequest
 from ._update_model_provider_template_response_body import UpdateModelProviderTemplateResponseBody
@@ -299,7 +390,11 @@ from ._authorize_users_for_app_request import AuthorizeUsersForAppRequestUserMet
 from ._batch_create_llm_templates_request import BatchCreateLlmTemplatesRequestLlmTemplateItems
 from ._batch_create_llm_templates_response_body import BatchCreateLlmTemplatesResponseBodyDataSkippedItems
 from ._batch_create_llm_templates_response_body import BatchCreateLlmTemplatesResponseBodyData
+from ._builder_image_by_parent_request import BuilderImageByParentRequestResourceList
+from ._builder_image_by_parent_shrink_request import BuilderImageByParentShrinkRequestResourceList
+from ._builder_image_by_parent_response_body import BuilderImageByParentResponseBodyData
 from ._config_runtime_model_template_response_body import ConfigRuntimeModelTemplateResponseBodyData
+from ._create_and_bind_app_response_body import CreateAndBindAppResponseBodyData
 from ._create_app_instance_group_request import CreateAppInstanceGroupRequestNetworkDomainRules
 from ._create_app_instance_group_request import CreateAppInstanceGroupRequestNetworkRoutes
 from ._create_app_instance_group_request import CreateAppInstanceGroupRequestNetwork
@@ -341,6 +436,7 @@ from ._create_wuying_server_request import CreateWuyingServerRequestDataDisk
 from ._create_wuying_server_response_body import CreateWuyingServerResponseBodyData
 from ._delete_app_instances_response_body import DeleteAppInstancesResponseBodyDeleteAppInstanceModels
 from ._deliver_to_user_sls_request import DeliverToUserSlsRequestDeliveryScopes
+from ._describe_events_response_body import DescribeEventsResponseBodyEventList
 from ._describe_wuying_server_response_body import DescribeWuyingServerResponseBodyDataPrivateIpSets
 from ._describe_wuying_server_response_body import DescribeWuyingServerResponseBodyData
 from ._describe_wuying_server_eip_info_response_body import DescribeWuyingServerEipInfoResponseBodyEipInfoModel
@@ -351,6 +447,7 @@ from ._get_app_instance_group_response_body import GetAppInstanceGroupResponseBo
 from ._get_app_instance_group_response_body import GetAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo
 from ._get_app_instance_group_response_body import GetAppInstanceGroupResponseBodyAppInstanceGroupModelsTags
 from ._get_app_instance_group_response_body import GetAppInstanceGroupResponseBodyAppInstanceGroupModels
+from ._get_auth_code_response_body import GetAuthCodeResponseBodyData
 from ._get_browser_instance_group_response_body import GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelAuthorizedUserInfo
 from ._get_browser_instance_group_response_body import GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelBrowserConfigBookmarks
 from ._get_browser_instance_group_response_body import GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelBrowserConfig
@@ -370,6 +467,10 @@ from ._get_browser_instance_group_response_body import GetBrowserInstanceGroupRe
 from ._get_browser_instance_group_response_body import GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModel
 from ._get_file_upload_info_response_body import GetFileUploadInfoResponseBodyData
 from ._get_model_provider_template_response_body import GetModelProviderTemplateResponseBodyData
+from ._get_resource_modify_price_response_body import GetResourceModifyPriceResponseBodyDataPricePromotions
+from ._get_resource_modify_price_response_body import GetResourceModifyPriceResponseBodyDataPrice
+from ._get_resource_modify_price_response_body import GetResourceModifyPriceResponseBodyDataRules
+from ._get_resource_modify_price_response_body import GetResourceModifyPriceResponseBodyData
 from ._get_resource_price_response_body import GetResourcePriceResponseBodyPriceListPricePromotions
 from ._get_resource_price_response_body import GetResourcePriceResponseBodyPriceListPrice
 from ._get_resource_price_response_body import GetResourcePriceResponseBodyPriceListRules
@@ -388,6 +489,10 @@ from ._get_runtime_model_config_response_body import GetRuntimeModelConfigRespon
 from ._get_runtime_model_config_response_body import GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList
 from ._get_runtime_model_config_response_body import GetRuntimeModelConfigResponseBodyDataModelProviderList
 from ._get_runtime_model_config_response_body import GetRuntimeModelConfigResponseBodyData
+from ._get_task_response_body import GetTaskResponseBodyDataResourceList
+from ._get_task_response_body import GetTaskResponseBodyDataTaskStepList
+from ._get_task_response_body import GetTaskResponseBodyData
+from ._list_app_response_body import ListAppResponseBodyData
 from ._list_app_instance_group_request import ListAppInstanceGroupRequestTag
 from ._list_app_instance_group_response_body import ListAppInstanceGroupResponseBodyAppInstanceGroupModelsApps
 from ._list_app_instance_group_response_body import ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedulesTimerPeriods
@@ -397,6 +502,9 @@ from ._list_app_instance_group_response_body import ListAppInstanceGroupResponse
 from ._list_app_instance_group_response_body import ListAppInstanceGroupResponseBodyAppInstanceGroupModelsResourceTags
 from ._list_app_instance_group_response_body import ListAppInstanceGroupResponseBodyAppInstanceGroupModelsTags
 from ._list_app_instance_group_response_body import ListAppInstanceGroupResponseBodyAppInstanceGroupModels
+from ._list_app_instance_type_response_body import ListAppInstanceTypeResponseBodyAppInstanceTypeModelsInventoryInfoZoneInventoryInfo
+from ._list_app_instance_type_response_body import ListAppInstanceTypeResponseBodyAppInstanceTypeModelsInventoryInfo
+from ._list_app_instance_type_response_body import ListAppInstanceTypeResponseBodyAppInstanceTypeModels
 from ._list_app_instances_response_body import ListAppInstancesResponseBodyAppInstanceModelsBindInfo
 from ._list_app_instances_response_body import ListAppInstancesResponseBodyAppInstanceModels
 from ._list_apps_by_app_instance_group_id_response_body import ListAppsByAppInstanceGroupIdResponseBodyApps
@@ -454,6 +562,7 @@ from ._list_tag_cloud_resources_response_body import ListTagCloudResourcesRespon
 from ._list_tag_cloud_resources_response_body import ListTagCloudResourcesResponseBodyResourceTags
 from ._list_tag_resources_request import ListTagResourcesRequestTag
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
+from ._list_task_step_response_body import ListTaskStepResponseBodyData
 from ._list_tenant_config_response_body import ListTenantConfigResponseBodyTenantConfigModel
 from ._list_wuying_server_response_body import ListWuyingServerResponseBodyWuyingServerListDataDisk
 from ._list_wuying_server_response_body import ListWuyingServerResponseBodyWuyingServerListInstanceInfoList
@@ -461,6 +570,7 @@ from ._list_wuying_server_response_body import ListWuyingServerResponseBodyWuyin
 from ._list_wuying_server_response_body import ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo
 from ._list_wuying_server_response_body import ListWuyingServerResponseBodyWuyingServerListSessions
 from ._list_wuying_server_response_body import ListWuyingServerResponseBodyWuyingServerList
+from ._list_wuying_server_workload_template_response_body import ListWuyingServerWorkloadTemplateResponseBodyWorkloadTemplates
 from ._list_zones_response_body import ListZonesResponseBodyListZonesModel
 from ._modify_app_instance_group_attribute_request import ModifyAppInstanceGroupAttributeRequestNetworkDomainRules
 from ._modify_app_instance_group_attribute_request import ModifyAppInstanceGroupAttributeRequestNetwork
@@ -469,6 +579,7 @@ from ._modify_app_instance_group_attribute_request import ModifyAppInstanceGroup
 from ._modify_app_instance_group_attribute_request import ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfile
 from ._modify_app_instance_group_attribute_request import ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfileFollow
 from ._modify_app_instance_group_attribute_request import ModifyAppInstanceGroupAttributeRequestStoragePolicy
+from ._modify_app_instance_group_charge_type_response_body import ModifyAppInstanceGroupChargeTypeResponseBodyAppInstanceGroupModel
 from ._modify_app_policy_request import ModifyAppPolicyRequestVideoPolicy
 from ._modify_browser_instance_group_request import ModifyBrowserInstanceGroupRequestBrowserConfigBookmarks
 from ._modify_browser_instance_group_request import ModifyBrowserInstanceGroupRequestBrowserConfig
@@ -489,6 +600,16 @@ from ._modify_node_pool_amount_response_body import ModifyNodePoolAmountResponse
 from ._modify_node_pool_attribute_request import ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedulesTimerPeriods
 from ._modify_node_pool_attribute_request import ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules
 from ._modify_node_pool_attribute_request import ModifyNodePoolAttributeRequestNodePoolStrategy
+from ._query_app_instance_group_report_list_response_body import QueryAppInstanceGroupReportListResponseBodyIndexData
+from ._query_connection_report_response_body import QueryConnectionReportResponseBodyConnectionReportDataModel
+from ._query_dau_report_data_response_body import QueryDauReportDataResponseBodyDauReportDataModel
+from ._query_mau_report_data_response_body import QueryMauReportDataResponseBodyMauReportDataModel
+from ._query_network_rtt_report_response_body import QueryNetworkRttReportResponseBodyNetworkRttReportDataModel
+from ._query_node_report_data_response_body import QueryNodeReportDataResponseBodyReportDataModel
+from ._query_session_report_data_response_body import QuerySessionReportDataResponseBodyReportDataModel
+from ._query_user_app_usage_aggregate_by_hour_response_body import QueryUserAppUsageAggregateByHourResponseBodyIndexData
+from ._query_user_app_usage_time_rank_response_body import QueryUserAppUsageTimeRankResponseBodyIndexData
+from ._query_user_usage_report_response_body import QueryUserUsageReportResponseBodyUserUsageReportDataModel
 from ._remove_resource_group_model_template_response_body import RemoveResourceGroupModelTemplateResponseBodyData
 from ._remove_runtime_model_template_response_body import RemoveRuntimeModelTemplateResponseBodyData
 from ._tag_cloud_resources_request import TagCloudResourcesRequestTags
@@ -497,6 +618,7 @@ from ._tag_cloud_resources_response_body import TagCloudResourcesResponseBodyFai
 from ._tag_resources_request import TagResourcesRequestTag
 from ._untag_cloud_resources_response_body import UntagCloudResourcesResponseBodyFailedResourcesTags
 from ._untag_cloud_resources_response_body import UntagCloudResourcesResponseBodyFailedResources
+from ._update_adaptor_request import UpdateAdaptorRequestUserConfig
 from ._update_model_provider_template_request import UpdateModelProviderTemplateRequestConfig
 
 __all__ = [
@@ -517,6 +639,10 @@ __all__ = [
     BatchCreateLlmTemplatesRequest,
     BatchCreateLlmTemplatesResponseBody,
     BatchCreateLlmTemplatesResponse,
+    BuilderImageByParentRequest,
+    BuilderImageByParentShrinkRequest,
+    BuilderImageByParentResponseBody,
+    BuilderImageByParentResponse,
     ConfigResourceGroupModelTemplateRequest,
     ConfigResourceGroupModelTemplateResponseBody,
     ConfigResourceGroupModelTemplateResponse,
@@ -526,6 +652,9 @@ __all__ = [
     ConfigRuntimeModelTemplateRequest,
     ConfigRuntimeModelTemplateResponseBody,
     ConfigRuntimeModelTemplateResponse,
+    CreateAndBindAppRequest,
+    CreateAndBindAppResponseBody,
+    CreateAndBindAppResponse,
     CreateAppInstanceGroupRequest,
     CreateAppInstanceGroupShrinkRequest,
     CreateAppInstanceGroupResponseBody,
@@ -549,6 +678,12 @@ __all__ = [
     CreateWuyingServerRequest,
     CreateWuyingServerResponseBody,
     CreateWuyingServerResponse,
+    DeleteAdaptorRequest,
+    DeleteAdaptorResponseBody,
+    DeleteAdaptorResponse,
+    DeleteAppRequest,
+    DeleteAppResponseBody,
+    DeleteAppResponse,
     DeleteAppInstanceGroupRequest,
     DeleteAppInstanceGroupResponseBody,
     DeleteAppInstanceGroupResponse,
@@ -573,6 +708,9 @@ __all__ = [
     DeliverToUserSlsRequest,
     DeliverToUserSlsResponseBody,
     DeliverToUserSlsResponse,
+    DescribeEventsRequest,
+    DescribeEventsResponseBody,
+    DescribeEventsResponse,
     DescribeWuyingServerRequest,
     DescribeWuyingServerResponseBody,
     DescribeWuyingServerResponse,
@@ -582,6 +720,9 @@ __all__ = [
     GetAppInstanceGroupRequest,
     GetAppInstanceGroupResponseBody,
     GetAppInstanceGroupResponse,
+    GetAuthCodeRequest,
+    GetAuthCodeResponseBody,
+    GetAuthCodeResponse,
     GetBrowserInstanceGroupRequest,
     GetBrowserInstanceGroupResponseBody,
     GetBrowserInstanceGroupResponse,
@@ -600,9 +741,15 @@ __all__ = [
     GetOtaTaskByTaskIdRequest,
     GetOtaTaskByTaskIdResponseBody,
     GetOtaTaskByTaskIdResponse,
+    GetResourceModifyPriceRequest,
+    GetResourceModifyPriceResponseBody,
+    GetResourceModifyPriceResponse,
     GetResourcePriceRequest,
     GetResourcePriceResponseBody,
     GetResourcePriceResponse,
+    GetResourceQuotaRequest,
+    GetResourceQuotaResponseBody,
+    GetResourceQuotaResponse,
     GetResourceRenewPriceRequest,
     GetResourceRenewPriceResponseBody,
     GetResourceRenewPriceResponse,
@@ -612,9 +759,19 @@ __all__ = [
     GetRuntimeModelConfigRequest,
     GetRuntimeModelConfigResponseBody,
     GetRuntimeModelConfigResponse,
+    GetTaskRequest,
+    GetTaskResponseBody,
+    GetTaskResponse,
+    ListAppRequest,
+    ListAppShrinkRequest,
+    ListAppResponseBody,
+    ListAppResponse,
     ListAppInstanceGroupRequest,
     ListAppInstanceGroupResponseBody,
     ListAppInstanceGroupResponse,
+    ListAppInstanceTypeRequest,
+    ListAppInstanceTypeResponseBody,
+    ListAppInstanceTypeResponse,
     ListAppInstancesRequest,
     ListAppInstancesResponseBody,
     ListAppInstancesResponse,
@@ -681,6 +838,9 @@ __all__ = [
     ListPublishedAppsRequest,
     ListPublishedAppsResponseBody,
     ListPublishedAppsResponse,
+    ListRegionIdRequest,
+    ListRegionIdResponseBody,
+    ListRegionIdResponse,
     ListRegionsRequest,
     ListRegionsResponseBody,
     ListRegionsResponse,
@@ -690,11 +850,17 @@ __all__ = [
     ListTagResourcesRequest,
     ListTagResourcesResponseBody,
     ListTagResourcesResponse,
+    ListTaskStepRequest,
+    ListTaskStepResponseBody,
+    ListTaskStepResponse,
     ListTenantConfigResponseBody,
     ListTenantConfigResponse,
     ListWuyingServerRequest,
     ListWuyingServerResponseBody,
     ListWuyingServerResponse,
+    ListWuyingServerWorkloadTemplateRequest,
+    ListWuyingServerWorkloadTemplateResponseBody,
+    ListWuyingServerWorkloadTemplateResponse,
     ListZonesRequest,
     ListZonesResponseBody,
     ListZonesResponse,
@@ -705,6 +871,10 @@ __all__ = [
     ModifyAppInstanceGroupAttributeShrinkRequest,
     ModifyAppInstanceGroupAttributeResponseBody,
     ModifyAppInstanceGroupAttributeResponse,
+    ModifyAppInstanceGroupChargeTypeRequest,
+    ModifyAppInstanceGroupChargeTypeShrinkRequest,
+    ModifyAppInstanceGroupChargeTypeResponseBody,
+    ModifyAppInstanceGroupChargeTypeResponse,
     ModifyAppPolicyRequest,
     ModifyAppPolicyShrinkRequest,
     ModifyAppPolicyResponseBody,
@@ -733,6 +903,36 @@ __all__ = [
     PageListAppInstanceGroupUserRequest,
     PageListAppInstanceGroupUserResponseBody,
     PageListAppInstanceGroupUserResponse,
+    QueryAppInstanceGroupReportListRequest,
+    QueryAppInstanceGroupReportListResponseBody,
+    QueryAppInstanceGroupReportListResponse,
+    QueryConnectionReportRequest,
+    QueryConnectionReportResponseBody,
+    QueryConnectionReportResponse,
+    QueryDauReportDataRequest,
+    QueryDauReportDataResponseBody,
+    QueryDauReportDataResponse,
+    QueryMauReportDataRequest,
+    QueryMauReportDataResponseBody,
+    QueryMauReportDataResponse,
+    QueryNetworkRttReportRequest,
+    QueryNetworkRttReportResponseBody,
+    QueryNetworkRttReportResponse,
+    QueryNodeReportDataRequest,
+    QueryNodeReportDataResponseBody,
+    QueryNodeReportDataResponse,
+    QuerySessionReportDataRequest,
+    QuerySessionReportDataResponseBody,
+    QuerySessionReportDataResponse,
+    QueryUserAppUsageAggregateByHourRequest,
+    QueryUserAppUsageAggregateByHourResponseBody,
+    QueryUserAppUsageAggregateByHourResponse,
+    QueryUserAppUsageTimeRankRequest,
+    QueryUserAppUsageTimeRankResponseBody,
+    QueryUserAppUsageTimeRankResponse,
+    QueryUserUsageReportRequest,
+    QueryUserUsageReportResponseBody,
+    QueryUserUsageReportResponse,
     RemoveResourceGroupModelTemplateRequest,
     RemoveResourceGroupModelTemplateResponseBody,
     RemoveResourceGroupModelTemplateResponse,
@@ -773,15 +973,28 @@ __all__ = [
     UnbindRequest,
     UnbindResponseBody,
     UnbindResponse,
+    UnbindAppRequest,
+    UnbindAppResponseBody,
+    UnbindAppResponse,
     UntagCloudResourcesRequest,
     UntagCloudResourcesResponseBody,
     UntagCloudResourcesResponse,
     UntagResourcesRequest,
     UntagResourcesResponseBody,
     UntagResourcesResponse,
+    UpdateAdaptorRequest,
+    UpdateAdaptorShrinkRequest,
+    UpdateAdaptorResponseBody,
+    UpdateAdaptorResponse,
     UpdateAppInstanceGroupImageRequest,
     UpdateAppInstanceGroupImageResponseBody,
     UpdateAppInstanceGroupImageResponse,
+    UpdateImageRequest,
+    UpdateImageResponseBody,
+    UpdateImageResponse,
+    UpdateImageTaskRequest,
+    UpdateImageTaskResponseBody,
+    UpdateImageTaskResponse,
     UpdateModelProviderTemplateRequest,
     UpdateModelProviderTemplateShrinkRequest,
     UpdateModelProviderTemplateResponseBody,
@@ -797,7 +1010,11 @@ __all__ = [
     BatchCreateLlmTemplatesRequestLlmTemplateItems,
     BatchCreateLlmTemplatesResponseBodyDataSkippedItems,
     BatchCreateLlmTemplatesResponseBodyData,
+    BuilderImageByParentRequestResourceList,
+    BuilderImageByParentShrinkRequestResourceList,
+    BuilderImageByParentResponseBodyData,
     ConfigRuntimeModelTemplateResponseBodyData,
+    CreateAndBindAppResponseBodyData,
     CreateAppInstanceGroupRequestNetworkDomainRules,
     CreateAppInstanceGroupRequestNetworkRoutes,
     CreateAppInstanceGroupRequestNetwork,
@@ -839,6 +1056,7 @@ __all__ = [
     CreateWuyingServerResponseBodyData,
     DeleteAppInstancesResponseBodyDeleteAppInstanceModels,
     DeliverToUserSlsRequestDeliveryScopes,
+    DescribeEventsResponseBodyEventList,
     DescribeWuyingServerResponseBodyDataPrivateIpSets,
     DescribeWuyingServerResponseBodyData,
     DescribeWuyingServerEipInfoResponseBodyEipInfoModel,
@@ -849,6 +1067,7 @@ __all__ = [
     GetAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo,
     GetAppInstanceGroupResponseBodyAppInstanceGroupModelsTags,
     GetAppInstanceGroupResponseBodyAppInstanceGroupModels,
+    GetAuthCodeResponseBodyData,
     GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelAuthorizedUserInfo,
     GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelBrowserConfigBookmarks,
     GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelBrowserConfig,
@@ -868,6 +1087,10 @@ __all__ = [
     GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModel,
     GetFileUploadInfoResponseBodyData,
     GetModelProviderTemplateResponseBodyData,
+    GetResourceModifyPriceResponseBodyDataPricePromotions,
+    GetResourceModifyPriceResponseBodyDataPrice,
+    GetResourceModifyPriceResponseBodyDataRules,
+    GetResourceModifyPriceResponseBodyData,
     GetResourcePriceResponseBodyPriceListPricePromotions,
     GetResourcePriceResponseBodyPriceListPrice,
     GetResourcePriceResponseBodyPriceListRules,
@@ -886,6 +1109,10 @@ __all__ = [
     GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList,
     GetRuntimeModelConfigResponseBodyDataModelProviderList,
     GetRuntimeModelConfigResponseBodyData,
+    GetTaskResponseBodyDataResourceList,
+    GetTaskResponseBodyDataTaskStepList,
+    GetTaskResponseBodyData,
+    ListAppResponseBodyData,
     ListAppInstanceGroupRequestTag,
     ListAppInstanceGroupResponseBodyAppInstanceGroupModelsApps,
     ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedulesTimerPeriods,
@@ -895,6 +1122,9 @@ __all__ = [
     ListAppInstanceGroupResponseBodyAppInstanceGroupModelsResourceTags,
     ListAppInstanceGroupResponseBodyAppInstanceGroupModelsTags,
     ListAppInstanceGroupResponseBodyAppInstanceGroupModels,
+    ListAppInstanceTypeResponseBodyAppInstanceTypeModelsInventoryInfoZoneInventoryInfo,
+    ListAppInstanceTypeResponseBodyAppInstanceTypeModelsInventoryInfo,
+    ListAppInstanceTypeResponseBodyAppInstanceTypeModels,
     ListAppInstancesResponseBodyAppInstanceModelsBindInfo,
     ListAppInstancesResponseBodyAppInstanceModels,
     ListAppsByAppInstanceGroupIdResponseBodyApps,
@@ -952,6 +1182,7 @@ __all__ = [
     ListTagCloudResourcesResponseBodyResourceTags,
     ListTagResourcesRequestTag,
     ListTagResourcesResponseBodyTagResources,
+    ListTaskStepResponseBodyData,
     ListTenantConfigResponseBodyTenantConfigModel,
     ListWuyingServerResponseBodyWuyingServerListDataDisk,
     ListWuyingServerResponseBodyWuyingServerListInstanceInfoList,
@@ -959,6 +1190,7 @@ __all__ = [
     ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo,
     ListWuyingServerResponseBodyWuyingServerListSessions,
     ListWuyingServerResponseBodyWuyingServerList,
+    ListWuyingServerWorkloadTemplateResponseBodyWorkloadTemplates,
     ListZonesResponseBodyListZonesModel,
     ModifyAppInstanceGroupAttributeRequestNetworkDomainRules,
     ModifyAppInstanceGroupAttributeRequestNetwork,
@@ -967,6 +1199,7 @@ __all__ = [
     ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfile,
     ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfileFollow,
     ModifyAppInstanceGroupAttributeRequestStoragePolicy,
+    ModifyAppInstanceGroupChargeTypeResponseBodyAppInstanceGroupModel,
     ModifyAppPolicyRequestVideoPolicy,
     ModifyBrowserInstanceGroupRequestBrowserConfigBookmarks,
     ModifyBrowserInstanceGroupRequestBrowserConfig,
@@ -987,6 +1220,16 @@ __all__ = [
     ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedulesTimerPeriods,
     ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules,
     ModifyNodePoolAttributeRequestNodePoolStrategy,
+    QueryAppInstanceGroupReportListResponseBodyIndexData,
+    QueryConnectionReportResponseBodyConnectionReportDataModel,
+    QueryDauReportDataResponseBodyDauReportDataModel,
+    QueryMauReportDataResponseBodyMauReportDataModel,
+    QueryNetworkRttReportResponseBodyNetworkRttReportDataModel,
+    QueryNodeReportDataResponseBodyReportDataModel,
+    QuerySessionReportDataResponseBodyReportDataModel,
+    QueryUserAppUsageAggregateByHourResponseBodyIndexData,
+    QueryUserAppUsageTimeRankResponseBodyIndexData,
+    QueryUserUsageReportResponseBodyUserUsageReportDataModel,
     RemoveResourceGroupModelTemplateResponseBodyData,
     RemoveRuntimeModelTemplateResponseBodyData,
     TagCloudResourcesRequestTags,
@@ -995,5 +1238,6 @@ __all__ = [
     TagResourcesRequestTag,
     UntagCloudResourcesResponseBodyFailedResourcesTags,
     UntagCloudResourcesResponseBodyFailedResources,
+    UpdateAdaptorRequestUserConfig,
     UpdateModelProviderTemplateRequestConfig
 ]
