@@ -10,9 +10,9 @@ class CreateCustomAgentShrinkRequest(DaraModel):
         body_shrink: str = None,
         client_token: str = None,
     ):
-        # The JSON configuration of the custom agent. You must specify the name, artifact, roleArn, and runtime parameters.
+        # The JSON configuration of the custom code or image agent. You must specify name, artifact, roleArn, and runtime.
         self.body_shrink = body_shrink
-        # Idempotence is not currently guaranteed. Do not rely on this parameter to prevent duplicate requests.
+        # The idempotency token passed as a query parameter. This parameter is required when explicitly submitting a customImage or setting container.type to custom, and is optional for ACR image and code package submissions. The token must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), colons (:), and hyphens (-). Reuse the same token for retries of the same submission. If the same token is used with different parameters, the request is rejected.
         self.client_token = client_token
 
     def validate(self):

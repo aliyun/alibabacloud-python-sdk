@@ -9,7 +9,7 @@ class DownloadAgentSpecViaOssRequest(DaraModel):
         self,
         agent_spec_version: str = None,
     ):
-        # The version number. If you do not specify this parameter, the version associated with the latest tag is downloaded.
+        # The version number. If you do not specify this parameter, the version corresponding to the latest tag is downloaded.
         self.agent_spec_version = agent_spec_version
 
     def validate(self):

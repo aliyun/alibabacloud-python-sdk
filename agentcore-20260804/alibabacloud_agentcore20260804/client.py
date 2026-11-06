@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Dict
 
 from alibabacloud_agentcore20260804 import models as main_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -21,6 +22,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'AgentCore'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('agentcore', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -6400,6 +6404,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_mcp_with_options_async(workspace_id, mcp_server_id, request, headers, runtime)
+
+    def get_mcp_code_package_upload_url_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.GetMcpCodePackageUploadUrlRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMcpCodePackageUploadUrlResponse:
+        tmp_req.validate()
+        request = main_models.GetMcpCodePackageUploadUrlShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMcpCodePackageUploadUrl',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/mcp-server-actions/get-code-package-upload-url',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMcpCodePackageUploadUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_mcp_code_package_upload_url_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.GetMcpCodePackageUploadUrlRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMcpCodePackageUploadUrlResponse:
+        tmp_req.validate()
+        request = main_models.GetMcpCodePackageUploadUrlShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMcpCodePackageUploadUrl',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/mcp-server-actions/get-code-package-upload-url',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMcpCodePackageUploadUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_mcp_code_package_upload_url(
+        self,
+        workspace_id: str,
+        request: main_models.GetMcpCodePackageUploadUrlRequest,
+    ) -> main_models.GetMcpCodePackageUploadUrlResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_mcp_code_package_upload_url_with_options(workspace_id, request, headers, runtime)
+
+    async def get_mcp_code_package_upload_url_async(
+        self,
+        workspace_id: str,
+        request: main_models.GetMcpCodePackageUploadUrlRequest,
+    ) -> main_models.GetMcpCodePackageUploadUrlResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_mcp_code_package_upload_url_with_options_async(workspace_id, request, headers, runtime)
 
     def get_mcp_market_item_with_options(
         self,

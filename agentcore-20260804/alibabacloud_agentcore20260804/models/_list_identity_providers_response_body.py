@@ -26,17 +26,17 @@ class ListIdentityProvidersResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The list of external identity providers.
         self.items = items
-        # The maximum number of records per page that takes effect in this query.
+        # The maximum number of records returned per page for the current query.
         self.max_results = max_results
         # The response message. An error description is returned if the request fails.
         self.message = message
-        # The cursor for the next page. Empty if there is no next page.
+        # The cursor for the next page. It is empty if no next page exists.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
-        # The total number of external identity providers that match the query conditions.
+        # The total number of external identity providers that meet the query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -133,13 +133,13 @@ class ListIdentityProvidersResponseBodyItems(DaraModel):
         updated_at: str = None,
         workspace_id: str = None,
     ):
-        # The actual SAML configuration is read on demand only by GetIdentityProvider. SCIM queries and preparations return the actual received status and URLs.
+        # The actual SAML configuration is retrieved on demand only by GetIdentityProvider. SCIM queries and preparations return the actual receiving status and URL.
         self.configuration = configuration
-        # The creation time in UTC format based on RFC 3339.
+        # The creation time in RFC 3339 UTC format.
         self.created_at = created_at
         # The event subscription callback URL. You must configure this URL in the external identity provider application to receive organization change events. An empty string is returned if the user pool is not activated.
         self.event_subscription_callback_url = event_subscription_callback_url
-        # The type of the external identity provider. Valid values: DingTalk, Feishu.
+        # The type of the external identity provider. Valid values: DingTalk and Feishu.
         self.identity_provider_type = identity_provider_type
         # The logon callback URL. You must configure this URL in the external identity provider application. An empty string is returned if the user pool is not activated.
         self.login_callback_url = login_callback_url
@@ -147,26 +147,17 @@ class ListIdentityProvidersResponseBodyItems(DaraModel):
         self.login_enabled = login_enabled
         # The application configuration of the external identity provider. Application secret configurations are not returned.
         self.metadata = metadata
-        # Only SAML is currently supported. This field may not be returned if no valid configuration is saved. OIDC placeholder initialization is not supported.
+        # Currently, only SAML is supported. This parameter may not be returned if no valid configuration is saved. OIDC placeholder initialization is not supported.
         self.protocol = protocol
-        # The input supports either XML or complete manual entry. Queries return the standardized configuration and do not echo the original XML. This field can be omitted if it is not configured.
+        # The input supports either XML or complete manual entry. Queries return the standardized configuration and do not echo the original XML. This parameter can be omitted if it is not configured.
         self.saml = saml
-        # The binding status. Valid values:
-        # - CONFIGURED: The configuration is accepted and waiting for user pool activation.
-        # - SYNCING: Organization members are being synchronized.
-        # - SYNCED: Organization member synchronization is complete.
-        # - READY: The binding is in effect.
-        # - SYNC_FAILED: Organization member synchronization failed.
-        # - UPDATING: The configuration is being updated.
-        # - UPDATE_FAILED: Configuration update failed.
-        # - DISCONNECTING: The binding is being disconnected.
-        # - DISCONNECT_FAILED: Disconnection failed.
+        # The binding status. Valid values: CONFIGURED (the configuration is accepted and waiting for the user pool to be activated), SYNCING (organization members are being synchronized), SYNCED (organization member synchronization is complete), READY (the binding is in effect), SYNC_FAILED (organization member synchronization failed), UPDATING (the configuration is being updated), UPDATE_FAILED (configuration update failed), DISCONNECTING (the binding is being disconnected), and DISCONNECT_FAILED (disconnection failed).
         self.status = status
-        # Specifies whether to enable organization member synchronization. If enabled, organization members are synchronized as workspace users by this external identity provider.
+        # Specifies whether to enable organization member synchronization. After this feature is enabled, organization members are synchronized as workspace users by this external identity provider.
         self.sync_enabled = sync_enabled
-        # Follows the department-based synchronization scope definition. If omitted during creation, the default value is AllAuthorized, and the first provider synchronization is determined by syncOnBind. If omitted or set to null during an update, the original value is retained. Updating the saved scope does not automatically trigger full synchronization.
+        # Follows the synchronization scope definition by department. If omitted during creation, the default value is AllAuthorized, and the first vendor synchronization is determined by syncOnBind. If omitted or set to null during an update, the original value is retained. Updating and saving the scope does not automatically trigger full synchronization.
         self.sync_scope = sync_scope
-        # The time of the last modification in UTC format based on RFC 3339.
+        # The time of the last modification in UTC format as defined by RFC 3339.
         self.updated_at = updated_at
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -286,12 +277,9 @@ class ListIdentityProvidersResponseBodyItemsSyncScope(DaraModel):
         department_ids: List[str] = None,
         mode: str = None,
     ):
-        # When the mode is SelectedDepartments, it must contain at least one non-empty department ID obtained from ListIdentityProviderDepartments. When the mode is AllAuthorized, pass an empty array or omit this field.
+        # When the mode is SelectedDepartments, at least one non-empty department ID must be included, which should be obtained from ListIdentityProviderDepartments. When the mode is AllAuthorized, pass an empty array or omit this parameter.
         self.department_ids = department_ids
-        # Valid values:
-        # - AllAuthorized: The full authorization scope, limited by the application address book authorization.
-        # - SelectedDepartments: The selected departments and all their sub-departments.
-        # You must provide a valid mode when explicitly submitting syncScope. The backend verifies the mode.
+        # The scope mode. Valid values: AllAuthorized (all authorized scopes, subject to the application address book authorization limits) and SelectedDepartments (the selected departments and all their sub-departments). When explicitly submitting syncScope, you must provide a valid mode, which is verified by the backend.
         self.mode = mode
 
     def validate(self):
@@ -328,11 +316,11 @@ class ListIdentityProvidersResponseBodyItemsSaml(DaraModel):
         login_url: str = None,
         x_509certificates: List[str] = None,
     ):
-        # HTTP-Redirect or HTTP-POST. Required for manual entry. Queries return the short name.
+        # The SAML binding type, which can be HTTP-Redirect or HTTP-POST. This parameter is required for manual entry. Queries return the short name.
         self.binding_type = binding_type
-        # Required for manual entry. It must be non-empty and contain a maximum of 2,048 characters. Existing configurations cannot be changed. This is different from the local entity ID returned in SP queries.
+        # Required for manual entry. The value must be non-empty and up to 2048 characters in length. Existing configurations cannot be changed. This value is different from the local entity ID returned by SP queries.
         self.entity_id = entity_id
-        # Required for manual entry. It must be an absolute HTTPS URL without user credentials or fragments.
+        # Required for manual entry. The value must be an absolute HTTPS URL that does not contain user credentials or fragments.
         self.login_url = login_url
         # A non-empty array is required for manual entry. Use PEM X.509 certificate text. The current validity period is verified. A maximum of two certificates are allowed after deduplication.
         self.x_509certificates = x_509certificates
@@ -386,19 +374,19 @@ class ListIdentityProvidersResponseBodyItemsMetadata(DaraModel):
         entity_id: str = None,
         login_url: str = None,
     ):
-        # The App ID of the Lark application. Required when the binding type is Feishu.
+        # The app ID of the Lark application. This parameter is required when the binding type is Feishu.
         self.app_id = app_id
-        # The AppKey of the DingTalk application. Required when the binding type is DingTalk.
+        # The AppKey of the DingTalk application. This parameter is required when the binding type is DingTalk.
         self.app_key = app_key
-        # The SAML binding URI in the historical metadata snapshot. Use saml.bindingType for CustomSSO updates.
+        # The SAML binding URI in the historical metadata snapshot. To update CustomSSO, use saml.bindingType.
         self.binding = binding
-        # The certificate string in the historical metadata snapshot. Use saml.x509Certificates to edit the configuration. Do not submit the old metadata.
+        # The certificate string in the historical metadata snapshot. To edit the configuration, use saml.x509Certificates and do not submit the old metadata.
         self.certificates = certificates
-        # The CorpId of the DingTalk enterprise. Required when the binding type is DingTalk.
+        # The CorpId of the DingTalk enterprise. This parameter is required when the binding type is DingTalk.
         self.corp_id = corp_id
-        # Required for manual entry. It must be non-empty and contain a maximum of 2,048 characters. Existing configurations cannot be changed. This is different from the local entity ID returned in SP queries.
+        # Required for manual entry. The value must be non-empty and up to 2048 characters in length. Existing configurations cannot be changed. This value is different from the local entity ID returned by SP queries.
         self.entity_id = entity_id
-        # Required for manual entry. It must be an absolute HTTPS URL without user credentials or fragments.
+        # Required for manual entry. The value must be an absolute HTTPS URL that does not contain user credentials or fragments.
         self.login_url = login_url
 
     def validate(self):
@@ -465,13 +453,13 @@ class ListIdentityProvidersResponseBodyItemsConfiguration(DaraModel):
         login_url: str = None,
         sso_status: str = None,
     ):
-        # HTTP-Redirect or HTTP-POST. Required for manual entry. Queries return the short name.
+        # The SAML binding type, which can be HTTP-Redirect or HTTP-POST. This parameter is required for manual entry. Queries return the short name.
         self.binding_type = binding_type
-        # Required for manual entry. It must be non-empty and contain a maximum of 2,048 characters. Existing configurations cannot be changed. This is different from the local entity ID returned in SP queries.
+        # Required for manual entry. The value must be non-empty and up to 2048 characters in length. Existing configurations cannot be changed. This value is different from the local entity ID returned by SP queries.
         self.entity_id = entity_id
-        # Required for manual entry. It must be an absolute HTTPS URL without user credentials or fragments.
+        # Required for manual entry. The value must be an absolute HTTPS URL that does not contain user credentials or fragments.
         self.login_url = login_url
-        # The actual switch value is Enabled or Disabled. This is not equivalent to the expected loginEnabled value saved in AC.
+        # The actual switch value, which is Enabled or Disabled. This value is different from the expected loginEnabled value saved in AC.
         self.sso_status = sso_status
 
     def validate(self):

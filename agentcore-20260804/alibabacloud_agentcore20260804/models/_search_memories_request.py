@@ -52,7 +52,7 @@ class SearchMemoriesRequestBody(DaraModel):
     ):
         # Specifies whether to enable reranking. Default value: true.
         self.enable_rerank = enable_rerank
-        # The string key-value metadata for exact match. You can specify up to 16 keys. Each key can be up to 64 characters in length, and each value can be up to 1,024 characters in length.
+        # The string key-value metadata for exact match. A maximum of 16 keys are supported. Each key can be up to 64 characters in length, and each value can be up to 1,024 characters in length.
         self.metadata = metadata
         # The minimum relevance score. Valid values: 0 to 1. Default value: 0.2. If both minScore and minSimilarity are specified, the AND logic is applied for filtering.
         self.min_score = min_score
@@ -64,7 +64,7 @@ class SearchMemoriesRequestBody(DaraModel):
         self.query = query
         # The retrieval scope. UserId, AgentId, and SessionId are all optional.
         self.scope = scope
-        # The number of results to return.
+        # The number of returned results.
         self.top_k = top_k
 
     def validate(self):
@@ -132,11 +132,11 @@ class SearchMemoriesRequestBodyScope(DaraModel):
         session_id: str = None,
         user_id: str = None,
     ):
-        # The agent ID. The ID must be 1 to 128 bytes in length and encoded in UTF-8. The ID cannot contain a forward slash (/) or an asterisk (*). If the memory is not associated with an agent ID, this field is not returned.
+        # The agent ID. The ID must be 1 to 128 bytes in length and encoded in UTF-8. The ID cannot contain forward slashes (/) or asterisks (*). If the memory is not associated with an agent ID, this field is not returned.
         self.agent_id = agent_id
-        # The session ID. The ID must be 1 to 128 bytes in length and encoded in UTF-8. The ID cannot contain a forward slash (/) or an asterisk (*). If the memory is not associated with a session ID, this field is not returned.
+        # The session ID. The ID must be 1 to 128 bytes in length and encoded in UTF-8. The ID cannot contain forward slashes (/) or asterisks (*). If the memory is not associated with a session ID, this field is not returned.
         self.session_id = session_id
-        # The user ID. The ID must be 1 to 128 bytes in length and encoded in UTF-8. The ID cannot contain a forward slash (/) or an asterisk (*). If the memory is not associated with a user ID, this field is not returned.
+        # The user ID. The ID must be 1 to 128 bytes in length and encoded in UTF-8. The ID cannot contain forward slashes (/) or asterisks (*). If the memory is not associated with a user ID, this field is not returned.
         self.user_id = user_id
 
     def validate(self):

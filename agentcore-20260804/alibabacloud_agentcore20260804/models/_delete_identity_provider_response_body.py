@@ -19,13 +19,13 @@ class DeleteIdentityProviderResponseBody(DaraModel):
     ):
         # The business status code.
         self.code = code
-        # The external identity provider binding information after the disconnection operation is accepted.
+        # The binding information of the external identity provider after the disconnection operation is accepted.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The response message. An error description is returned if the request fails.
+        # The response message. An error description is returned when the request fails.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
@@ -92,17 +92,17 @@ class DeleteIdentityProviderResponseBodyData(DaraModel):
         status: str = None,
         workspace_id: str = None,
     ):
-        # The actual SAML configuration is read back on demand only in GetIdentityProvider. SCIM queries and preparations return the actual receiving status and URL.
+        # The actual SAML configuration is read back on demand only by GetIdentityProvider. SCIM queries and preparations return the actual receiving status and URL.
         self.configuration = configuration
         # The type of the external identity provider. Valid values: DingTalk and Feishu.
         self.identity_provider_type = identity_provider_type
-        # Only SAML is currently supported. This parameter may not be returned if no valid configuration is saved. OIDC placeholder initialization is not supported.
+        # Only SAML is currently supported. This field may not be returned if no valid configuration is saved. OIDC placeholder initialization is not supported.
         self.protocol = protocol
-        # The input supports either XML or complete manual entry. Queries return the standardized configuration and do not echo the original XML. This parameter can be omitted if it is not configured.
+        # The input supports either XML or complete manual entry. Queries return the standardized configuration and do not echo the original XML. This field can be omitted if it is not configured.
         self.saml = saml
-        # The status. Valid values: CONFIGURED (the configuration is accepted and the system is waiting to activate the user pool), SYNCING (synchronizing organization members), SYNCED (organization member synchronization is complete), READY (the binding has taken effect), SYNC_FAILED (organization member synchronization failed), UPDATING (updating the configuration), UPDATE_FAILED (configuration update failed), DISCONNECTING (disconnecting), and DISCONNECT_FAILED (disconnection failed).
+        # The status. Valid values: CONFIGURED (the configuration is accepted and the system is waiting to activate the user pool), SYNCING (organization members are being synchronized), SYNCED (organization member synchronization is complete), READY (the binding is in effect), SYNC_FAILED (organization member synchronization failed), UPDATING (the configuration is being updated), UPDATE_FAILED (configuration update failed), DISCONNECTING (disconnecting), and DISCONNECT_FAILED (disconnection failed).
         self.status = status
-        # The workspace ID.
+        # The ID of the workspace.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -168,13 +168,13 @@ class DeleteIdentityProviderResponseBodyDataSaml(DaraModel):
         login_url: str = None,
         x_509certificates: List[str] = None,
     ):
-        # HTTP-Redirect or HTTP-POST. This parameter is required when you manually enter the configuration. Queries return the short name.
+        # HTTP-Redirect or HTTP-POST. Required when manually specified. Queries return the short name.
         self.binding_type = binding_type
-        # This parameter is required when you manually enter the configuration. It must be non-empty and cannot exceed 2,048 characters. Existing configurations cannot be replaced. This is different from the entity ID of the service provider (SP) queried on our side.
+        # Required when manually specified. It must be non-empty and no more than 2,048 characters in length. Existing configurations cannot be replaced. This is different from the local Entity ID returned by SP queries.
         self.entity_id = entity_id
-        # This parameter is required when you manually enter the configuration. It must be an absolute HTTPS URL and cannot contain user credentials or fragments.
+        # Required when manually specified. It must be an absolute HTTPS URL and cannot contain user credentials or fragments.
         self.login_url = login_url
-        # This parameter is required when you manually enter the configuration. It must be a non-empty array and use PEM X.509 certificate text. The system verifies the current validity period. A maximum of two certificates are allowed after deduplication.
+        # Required when manually specified. It must be a non-empty array using PEM X.509 certificate text. The current validity period is verified. A maximum of two certificates are allowed after deduplication.
         self.x_509certificates = x_509certificates
 
     def validate(self):
@@ -223,13 +223,13 @@ class DeleteIdentityProviderResponseBodyDataConfiguration(DaraModel):
         login_url: str = None,
         sso_status: str = None,
     ):
-        # HTTP-Redirect or HTTP-POST. This parameter is required when you manually enter the configuration. Queries return the short name.
+        # HTTP-Redirect or HTTP-POST. Required when manually specified. Queries return the short name.
         self.binding_type = binding_type
-        # This parameter is required when you manually enter the configuration. It must be non-empty and cannot exceed 2,048 characters. Existing configurations cannot be replaced. This is different from the entity ID of the service provider (SP) queried on our side.
+        # Required when manually specified. It must be non-empty and no more than 2,048 characters in length. Existing configurations cannot be replaced. This is different from the local Entity ID returned by SP queries.
         self.entity_id = entity_id
-        # This parameter is required when you manually enter the configuration. It must be an absolute HTTPS URL and cannot contain user credentials or fragments.
+        # Required when manually specified. It must be an absolute HTTPS URL and cannot contain user credentials or fragments.
         self.login_url = login_url
-        # The actual switch value, which is Enabled or Disabled. This is not equivalent to the expected value of loginEnabled saved in AC.
+        # The actual switch value, which is Enabled or Disabled. This is not equivalent to the expected loginEnabled value saved by AC.
         self.sso_status = sso_status
 
     def validate(self):

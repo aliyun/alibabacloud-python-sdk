@@ -15,7 +15,7 @@ class CreateExternalAgentRequest(DaraModel):
     ):
         # The request body.
         self.body = body
-        # The reserved idempotency token. The backend does not provide idempotency guarantees in the current phase.
+        # A reserved query parameter. Currently, the backend does not provide idempotency guarantees for deduplication or restoring the original processing result based on this identifier.
         self.client_token = client_token
 
     def validate(self):
@@ -58,17 +58,15 @@ class CreateExternalAgentRequestBody(DaraModel):
         template: main_models.CreateExternalAgentRequestBodyTemplate = None,
         tools: List[main_models.CreateExternalAgentRequestBodyTools] = None,
     ):
-        # The description of the external agent.
+        # The description of the managed agent.
         self.description = description
-        # The instructions that guide the behavior of the agent.
+        # The agent instructions used to guide the behavior of the agent.
         self.instruction = instruction
-        # The model configuration. This parameter is available only when modelSource is set to PLATFORM.
+        # The model configuration. Available only when modelSource is set to PLATFORM.
         self.model = model
-        # The source of the model configuration. PLATFORM indicates that the platform parses and delivers the model configuration. RUNTIME indicates that the external runtime manages the model, and the model parameter cannot be passed at the same time. Valid values:
-        # - PLATFORM: Platform model.
-        # - RUNTIME: Runtime model.
+        # The source of the model configuration. PLATFORM indicates that the platform parses and delivers the model configuration. RUNTIME indicates that the external runtime manages the model, and the model parameter cannot be provided at the same time. Valid values: PLATFORM (platform model) and RUNTIME (runtime model).
         self.model_source = model_source
-        # The name of the external agent.
+        # The name of the managed agent.
         # 
         # This parameter is required.
         self.name = name
@@ -174,8 +172,7 @@ class CreateExternalAgentRequestBodyTools(DaraModel):
         # 
         # This parameter is required.
         self.name = name
-        # The tool type. Valid values:
-        # - MCP: MCP tool.
+        # The tool type. Valid values: MCP (MCP tool).
         # 
         # This parameter is required.
         self.type = type
@@ -289,13 +286,11 @@ class CreateExternalAgentRequestBodySkills(DaraModel):
         # 
         # This parameter is required.
         self.name = name
-        # The source type of the skill. Valid values:
-        # - REFERENCE: References the AI Registry.
-        # - STATIC: Statically provided with the package.
+        # The skill source type. Valid values: REFERENCE (references the AI Registry) and STATIC (statically provided with the package).
         self.source_type = source_type
-        # The skill version.
+        # The skill version field for compatibility with legacy requests. For new requests, use sourceType and versionSelector. Do not submit this parameter in combination with sourceType.
         self.version = version
-        # The referenced version selector. If omitted, the default value is LABEL/latest. Currently, only LABEL/latest is supported.
+        # The skill reference version selector. Supports LABEL for tags and VERSION for specific versions. If omitted, LABEL/latest is used. Selectors are not provided for STATIC sources.
         self.version_selector = version_selector
 
     def validate(self):
@@ -344,11 +339,9 @@ class CreateExternalAgentRequestBodySkillsVersionSelector(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The type of the version selector. Valid values:
-        # - LABEL: By label.
-        # - VERSION: By specific version.
+        # The version selector type. Valid values: LABEL (selects by tag) and VERSION (selects by specific version).
         self.type = type
-        # The value of the selector. If the type is LABEL, this value is the label name, such as latest. If the type is VERSION, this value is the specific version number.
+        # The selector value. When the type is LABEL, this is the tag name, such as latest. When the type is VERSION, this is the specific version number.
         self.value = value
 
     def validate(self):
@@ -392,7 +385,7 @@ class CreateExternalAgentRequestBodyModel(DaraModel):
         # 
         # This parameter is required.
         self.model_name = model_name
-        # The model token quota configuration. If this parameter is not specified, no quota is configured.
+        # The model token quota configuration. If this parameter is not provided, no quota is configured.
         self.quota = quota
 
     def validate(self):
@@ -437,15 +430,13 @@ class CreateExternalAgentRequestBodyModelQuota(DaraModel):
         period_type: str = None,
         usage_limit: int = None,
     ):
-        # Specifies whether to enable the token quota. Default value: true. If you set this parameter to false, the quota is disabled and existing quota rules are deleted.
+        # Specifies whether to enable the token quota. If this parameter is not specified, the default value is true. If you set this parameter to false, the quota is disabled and existing quota rules are deleted.
         self.enabled = enabled
-        # The quota limit type. This parameter is required when the quota is enabled. Fixed value: token.
+        # The quota limit type. This parameter is required and validated by the backend when the quota is enabled. Fixed value: token.
         self.limit_type = limit_type
-        # The statistical period of the quota. This parameter is required when the quota is enabled. Valid values:
-        # - day: Daily.
-        # - month: Monthly.
+        # The quota statistical period. This parameter is required and validated by the backend when the quota is enabled. Valid values: day (daily) and month (monthly).
         self.period_type = period_type
-        # The maximum number of tokens that can be consumed in a single period. This parameter is required when the quota is enabled and must be greater than 0.
+        # The maximum number of tokens that can be consumed in a single period. This parameter is required and validated by the backend when the quota is enabled. The value must be greater than 0.
         self.usage_limit = usage_limit
 
     def validate(self):

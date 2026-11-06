@@ -40,7 +40,7 @@ class DebugModelRequestBody(DaraModel):
         self,
         prompt: str = None,
     ):
-        # The prompt used to verify the model call chain.
+        # The prompt used to verify the model invocation pipeline.
         # 
         # This parameter is required.
         self.prompt = prompt

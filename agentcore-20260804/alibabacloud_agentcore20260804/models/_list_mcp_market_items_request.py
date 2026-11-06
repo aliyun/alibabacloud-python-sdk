@@ -15,11 +15,11 @@ class ListMcpMarketItemsRequest(DaraModel):
     ):
         # The keyword used to filter MCP marketplace templates.
         self.keyword = keyword
-        # The maximum number of records to return in this query.
+        # The maximum number of records to return for this query.
         self.max_results = max_results
         # The MCP type.
         self.mcp_type = mcp_type
-        # The pagination token used to retrieve the next page of results.
+        # The pagination token used to query the next page.
         self.next_token = next_token
         # The official usage tag.
         self.official_tag = official_tag

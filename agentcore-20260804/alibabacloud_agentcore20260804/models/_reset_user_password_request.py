@@ -10,7 +10,7 @@ class ResetUserPasswordRequest(DaraModel):
         self,
         body: main_models.ResetUserPasswordRequestBody = None,
     ):
-        # The request body for resetting the user password.
+        # The request body for resetting a user password.
         self.body = body
 
     def validate(self):

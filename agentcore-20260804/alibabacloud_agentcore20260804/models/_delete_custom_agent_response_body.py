@@ -17,15 +17,15 @@ class DeleteCustomAgentResponseBody(DaraModel):
     ):
         # The result code of the request. The value is SUCCESS if the request is successful.
         self.code = code
-        # The summary of the custom agent whose deletion is accepted. The runtime resources are subsequently cleaned up in the background.
+        # The summary of the custom code or image agent whose deletion is accepted. Runtime resources are subsequently cleaned up in the background.
         self.data = data
         # The HTTP status code of the request. The value is 200 if the request is successful.
         self.http_status_code = http_status_code
         # The processing result message of the request. The value is success if the request is successful.
         self.message = message
-        # The unique identifier of the request. You can use this ID to locate and troubleshoot issues.
+        # The unique identifier of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was processed successfully. A value of true indicates success. A successful creation, update, or deletion does not mean that the background operations are complete.
+        # Indicates whether the request was successful. A value of true indicates that the request was successful. A successful creation, update, or deletion does not mean that the background operations are complete.
         self.success = success
 
     def validate(self):
@@ -101,21 +101,21 @@ class DeleteCustomAgentResponseBodyData(DaraModel):
         self.access_mode = access_mode
         # The user access scope.
         self.access_scope = access_scope
-        # The unique identifier of the custom agent. You can obtain it from the response of CreateCustomAgent or ListCustomAgents.
+        # The unique identifier of the custom code or image agent. You can obtain this value from the response of CreateCustomAgent or ListCustomAgents.
         self.agent_id = agent_id
-        # The creation mode of the agent. The value is CUSTOM for custom agents.
+        # The creation mode of the agent. The value is CUSTOM for custom code or image agents.
         self.create_mode = create_mode
-        # The time when the agent was created. The time is in ISO 8601 format. A trailing Z indicates the UTC time zone. Fractional seconds may be included.
+        # The time when the agent was created. The time is in ISO 8601 format, with a trailing Z indicating the UTC time zone. Fractional seconds may be included.
         self.created_at = created_at
-        # The deployment mode of the agent. Custom agents are deployed and managed by the platform, so the value is MANAGED.
+        # The deployment mode of the agent. The value is MANAGED for custom code or image agents because they are deployed and managed by the platform.
         self.deploy_type = deploy_type
-        # The description of the agent.
+        # The description of the agent\\"s purpose.
         self.description = description
         # The latest configuration version number. Updates with the same configuration may retain the original version number. This field does not indicate that the configuration has taken effect.
         self.latest_spec_version = latest_spec_version
-        # The name of the custom agent.
+        # The name of the custom code or image agent.
         self.name = name
-        # The compute specifications of the agent. Valid values: INTERACTIVE, STANDARD, and HEAVY.
+        # The compute specification of the agent. Valid values: INTERACTIVE, STANDARD, and HEAVY.
         self.runtime = runtime
         # The overall status of the agent. Valid values:
         # - Creating: The agent is being created.
@@ -124,11 +124,12 @@ class DeleteCustomAgentResponseBodyData(DaraModel):
         # - Updating: The agent is being updated.
         # - Deleting: The agent is being deleted.
         # - Deleted: The agent is deleted.
+        # 
         # Call GetCustomAgent to query the execution progress of the latest configuration.
         self.status = status
-        # The time when the agent was last updated. The time is in ISO 8601 format. A trailing Z indicates the UTC time zone. Fractional seconds may be included.
+        # The time when the agent was last updated. The time is in ISO 8601 format, with a trailing Z indicating the UTC time zone. Fractional seconds may be included.
         self.updated_at = updated_at
-        # The ID of the workspace to which the custom agent belongs.
+        # The ID of the workspace to which the custom code or image agent belongs.
         self.workspace_id = workspace_id
 
     def validate(self):

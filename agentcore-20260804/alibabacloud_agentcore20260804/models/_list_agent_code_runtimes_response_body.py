@@ -24,13 +24,13 @@ class ListAgentCodeRuntimesResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The list of supported code runtime environments.
+        # The supported code runtime environments.
         self.items = items
         # The actual page size.
         self.max_results = max_results
         # The response message.
         self.message = message
-        # The token for the next page.
+        # The next page token.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id

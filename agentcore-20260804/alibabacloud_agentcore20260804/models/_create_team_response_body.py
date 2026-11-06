@@ -101,13 +101,13 @@ class CreateTeamResponseBodyData(DaraModel):
         self.created_at = created_at
         # The team description.
         self.description = description
-        # The team name. The name can only contain lowercase letters, digits, and hyphens. It must start and end with a lowercase letter or a digit, and must be 1 to 128 characters in length.
+        # The team name. It can only contain lowercase letters, digits, and hyphens, must start and end with a lowercase letter or a digit, and must be 1 to 128 characters in length.
         self.name = name
         # The team status. Valid values: Creating, Active, Updating, Deleting, Failed, and Deleted.
         self.status = status
         # The team ID.
         self.team_id = team_id
-        # The time of the last update in RFC 3339 UTC format.
+        # The last update time in RFC 3339 UTC format.
         self.updated_at = updated_at
         # The list of user members in the team.
         self.users = users

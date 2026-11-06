@@ -28,15 +28,15 @@ class ListAgentTeamsResponseBody(DaraModel):
         self.items = items
         # The number of records returned on the current page.
         self.max_results = max_results
-        # The response message. Returns an error description when the request fails.
+        # The response message. Returns an error description if the request fails.
         self.message = message
-        # The cursor used to retrieve the next page. An empty value indicates that no more data is available.
+        # The cursor used to obtain the next page. An empty value indicates that no more data is available.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
-        # The total number of records that match the query conditions.
+        # The total number of records that meet the conditions.
         self.total_count = total_count
 
     def validate(self):

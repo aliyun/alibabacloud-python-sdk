@@ -46,9 +46,7 @@ class UpdateAgentSpecRequestBody(DaraModel):
         self.biz_tags = biz_tags
         # The label mapping as a JSON-formatted string.
         self.labels = labels
-        # The visibility scope. Valid values:
-        # - PUBLIC
-        # - PRIVATE
+        # The visibility scope. Valid values: PUBLIC and PRIVATE.
         self.scope = scope
 
     def validate(self):

@@ -17,25 +17,21 @@ class ListSkillsRequest(DaraModel):
         search: str = None,
         skill_name: str = None,
     ):
-        # The maximum number of entries per page.
+        # The maximum number of items to return per page.
         self.max_results = max_results
-        # The pagination token for the next page.
+        # The token for the next page.
         self.next_token = next_token
-        # The field by which to sort results. The value download_count is supported. Default value: gmt_modified.
+        # The sort field. Valid value: download_count. Default value: gmt_modified.
         self.order_by = order_by
-        # Filters results by owner.
+        # Filters the skills by owner.
         self.owner = owner
         # The page number. Default value: 1.
         self.page_no = page_no
-        # The number of entries per page. Default value: 10. Maximum value: 50.
+        # The number of items per page. Default value: 10. Maximum value: 50.
         self.page_size = page_size
-        # Filters results by visibility. Valid values:
-        # - PUBLIC
-        # - PRIVATE
+        # Filters the skills by visibility. Valid values: PUBLIC and PRIVATE.
         self.scope = scope
-        # The search mode. Valid values:
-        # - accurate: exact match.
-        # - blur: fuzzy match.
+        # The search mode. Valid values: accurate (exact match) and blur (fuzzy match).
         self.search = search
         # The filter keyword.
         self.skill_name = skill_name

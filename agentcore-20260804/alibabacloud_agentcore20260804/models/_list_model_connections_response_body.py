@@ -26,17 +26,17 @@ class ListModelConnectionsResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The list of model connections.
         self.items = items
-        # The number of records per page. Valid values: 0 to 100. If this parameter is not set or is set to 0, the default value 10 is used.
+        # The maximum number of entries to return on each page. Valid values: 0 to 100. Default value: 10. If this parameter is not specified or is set to 0, the default value is used.
         self.max_results = max_results
-        # The request processing result message.
+        # The message about the request processing result.
         self.message = message
-        # The pagination token. Pass the token returned in the previous query. An empty response indicates that no more pages are available.
+        # The pagination token. Pass the token returned in the previous query for the current request. An empty response indicates that no more pages are available.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
-        # The total number of resources that match the query conditions.
+        # The total number of resources that meet the query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -133,31 +133,31 @@ class ListModelConnectionsResponseBodyItems(DaraModel):
         updated_at: str = None,
         workspace_id: str = None,
     ):
-        # The number of API keys configured for the model connection.
+        # The number of API keys configured in the model connection.
         self.api_key_count = api_key_count
         # The model connection ID.
         self.connection_id = connection_id
-        # The time when the resource was created, in RFC 3339 UTC format.
+        # The time when the resource was created. The time is displayed in the RFC 3339 UTC format.
         self.created_at = created_at
-        # Indicates whether access credentials have been configured for the model connection.
+        # Indicates whether access credentials are configured for the model connection.
         self.credential_configured = credential_configured
-        # The description of the model connection. Maximum length: 255 characters.
+        # The description of the model connection. The description can be up to 255 characters in length.
         self.description = description
-        # The absolute HTTP or HTTPS address of the upstream model service. Maximum length: 1024 characters.
+        # The absolute HTTP or HTTPS URL of the upstream model service. The URL can be up to 1,024 characters in length.
         self.endpoint = endpoint
-        # The list of model summaries associated with the model connection.
+        # The list of summaries of models associated with the model connection.
         self.models = models
-        # The model connection name. The name must be 1 to 128 non-whitespace characters in length.
+        # The name of the model connection. The name must be 1 to 128 characters in length and cannot contain whitespace characters.
         self.name = name
-        # The model invocation protocol. Currently only OpenAI/v1 is supported. If not configured in Settings when the model connection is created, this default value is used.
+        # The model invocation protocol. Currently, only OpenAI/v1 is supported. If this parameter is not specified during model connection creation, this default value is used.
         self.protocol = protocol
         # The model provider type.
         self.provider_type = provider_type
         # The resource status.
         self.status = status
-        # The failure summary returned when the model connection fails to be published or fails to be deleted but remains in the Deleting state. This value is empty for other states.
+        # The failure summary returned when the model connection fails to be published, or when deletion fails but the connection remains in the deleting state. This field is empty in other states.
         self.status_reason = status_reason
-        # The time when the resource was last updated, in RFC 3339 UTC format.
+        # The time when the resource was last updated. The time is displayed in the RFC 3339 UTC format.
         self.updated_at = updated_at
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -276,7 +276,7 @@ class ListModelConnectionsResponseBodyItemsModels(DaraModel):
     ):
         # The model ID.
         self.model_id = model_id
-        # The upstream model name.
+        # The name of the upstream model.
         self.model_name = model_name
 
     def validate(self):

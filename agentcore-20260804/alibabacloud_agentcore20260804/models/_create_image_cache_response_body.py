@@ -35,7 +35,7 @@ class CreateImageCacheResponseBody(DaraModel):
         # 
         # This parameter is required.
         self.request_id = request_id
-        # Indicates whether the request is successful. This does not indicate that the cache creation is complete.
+        # Indicates whether the request is successful. A successful request does not mean that the cache creation is complete.
         # 
         # This parameter is required.
         self.success = success
@@ -110,59 +110,59 @@ class CreateImageCacheResponseBodyData(DaraModel):
         tag: str = None,
         workspace_id: str = None,
     ):
-        # The ID of the source ACR Enterprise instance.
+        # The ID of the source ACR instance.
         # 
         # This parameter is required.
         self.acr_instance_id = acr_instance_id
-        # The deduplicated number of agents that have useImageCache set to true and are associated with this logical resource in the current workspace. The value is greater than or equal to 0. This set is the same as the set filtered by imageCacheId in ListAllAgents. Agents with the feature disabled are not counted, and this value is independent of the number of occupied instances.
+        # The number of agents that use the cache.
         # 
         # This parameter is required.
         self.agent_count = agent_count
-        # The actual cache size in bytes. The known value is greater than or equal to 0. If the value is unknown, it is null. The compressed size of the source image cannot be used as a substitute.
+        # The size of the cache in bytes.
         # 
         # This parameter is required.
         self.cache_size_bytes = cache_size_bytes
-        # Indicates whether deletion is allowed. The value is true when there are no configuration references with the switch enabled, no valid instances occupying the resource, and the resource is not being deleted in the current workspace. If the reference status is unknown, the query should fail, and deletion cannot be allowed by default.
+        # Indicates whether deletion is allowed.
         # 
         # This parameter is required.
         self.can_delete = can_delete
-        # The creation time of the logical resource in the current workspace, in RFC3339 format with time zone. The time is not refreshed when the content of the latest tag is updated.
+        # The time when the resource was created. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
         # 
         # This parameter is required.
         self.created_at = created_at
-        # The reason why deletion is blocked. The value is null when canDelete is true. Otherwise, the value is returned based on the priority of DELETING, AGENT_ENABLED, and INSTANCES_RELEASING. Even if the number of agents is 0, old instances may still occupy the resource.
+        # The reason why deletion is blocked.
         # 
         # This parameter is required.
         self.delete_block_reason = delete_block_reason
-        # The current content digest in the format of sha256: followed by a 64-character lowercase hexadecimal string. It only describes the currently registered content and does not prove that old instances have been switched.
+        # The current content digest.
         # 
         # This parameter is required.
         self.digest = digest
-        # The reason for the cache failure. This is a non-null object when the status is FAILED, and null for other statuses. It only describes the current content and the current creation round.
+        # The reason for the cache failure.
         # 
         # This parameter is required.
         self.error = error
-        # The logical resource ID manageable by the current workspace, which is not a shared physical cache ID.
+        # The ID of the image cache.
         # 
         # This parameter is required.
         self.image_id = image_id
-        # The domain name of the source image, excluding the protocol, path, and credentials.
+        # The domain name of the source image.
         # 
         # This parameter is required.
         self.registry = registry
-        # The path of the source image repository in the namespace/repository format, which already includes the namespace.
+        # The repository path of the source image.
         # 
         # This parameter is required.
         self.repository = repository
-        # The status of the image cache. Valid values: PENDING: creating, READY: available, FAILED: abnormal, DELETING: deleting in the current workspace.
+        # The image cache status.
         # 
         # This parameter is required.
         self.status = status
-        # The tag of the source image. Case is preserved. Regular tags cannot be registered with different digests, with the exact lowercase latest tag being the only exception.
+        # The tag of the source image.
         # 
         # This parameter is required.
         self.tag = tag
-        # The workspace ID, which is consistent with the requested workspace. Resources with the same content from other workspaces are not returned.
+        # The workspace ID.
         # 
         # This parameter is required.
         self.workspace_id = workspace_id
@@ -273,11 +273,11 @@ class CreateImageCacheResponseBodyDataError(DaraModel):
         code: str = None,
         message: str = None,
     ):
-        # The secure and non-null error code for the current creation failure.
+        # The error code for the creation failure.
         # 
         # This parameter is required.
         self.code = code
-        # The secure and non-null display reason for the creation failure, excluding credentials, internal addresses, or stack traces.
+        # The description of the creation failure.
         # 
         # This parameter is required.
         self.message = message

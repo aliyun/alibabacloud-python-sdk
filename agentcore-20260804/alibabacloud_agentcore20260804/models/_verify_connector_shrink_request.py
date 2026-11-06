@@ -9,7 +9,7 @@ class VerifyConnectorShrinkRequest(DaraModel):
         self,
         body_shrink: str = None,
     ):
-        # The validation request body.
+        # The verification request body.
         # 
         # This parameter is required.
         self.body_shrink = body_shrink

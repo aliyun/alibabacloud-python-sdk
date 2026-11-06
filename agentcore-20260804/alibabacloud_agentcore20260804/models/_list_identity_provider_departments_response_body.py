@@ -20,23 +20,23 @@ class ListIdentityProviderDepartmentsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The business status code of the API request. SUCCESS indicates that the request is successful, but does not indicate that the asynchronous synchronization task is completed.
+        # The business status code of the API request. SUCCESS indicates that the current request is successful, but does not indicate that the asynchronous synchronization task is completed.
         self.code = code
-        # The HTTP status code of the API request, which does not indicate the execution result of the asynchronous task.
+        # The HTTP status code of the API request. This does not indicate the execution result of an asynchronous task.
         self.http_status_code = http_status_code
-        # The direct child departments on the current page under the current parent department. You must make another query to obtain the details of the child departments.
+        # The direct child departments on the current page under the current parent department. For details about the child departments, query them separately.
         self.items = items
-        # The number of items per page used for this query.
+        # The number of entries per page used for the current query.
         self.max_results = max_results
         # The response message of the API request.
         self.message = message
-        # The token for the next page. An empty or missing value indicates that there are no subsequent pages at the current hierarchy level of the parent department, but does not indicate that the entire department tree has been returned.
+        # The token for the next page. An empty value or no return value indicates that there are no subsequent pages at the current level of the parent department, which does not mean that the entire department tree has been returned.
         self.next_token = next_token
         # The unique identifier of the request. Provide this value when troubleshooting issues.
         self.request_id = request_id
         # Indicates whether the API request is successful. To check whether an asynchronous task is completed, query the task status.
         self.success = success
-        # The total number of departments. This operation does not provide this statistic and may not return this field. Do not treat a missing value as 0.
+        # The total number of departments. This operation does not calculate the total number of departments. Currently, JSON null is actually returned. To determine whether pagination has ended, check whether nextToken is an empty string.
         self.total_count = total_count
 
     def validate(self):
@@ -124,11 +124,11 @@ class ListIdentityProviderDepartmentsResponseBodyItems(DaraModel):
         name: str = None,
         parent_id: str = None,
     ):
-        # Indicates whether the department has child departments. A value of true indicates that the department has child departments and an expansion entry can be displayed accordingly. A value of false indicates a leaf node. If this field is not returned, the status is unknown. You must use the ID of the current node to make another query to obtain the details of the child departments.
+        # Indicates whether the department has child departments. A value of true indicates that the department has child departments, and an expansion entry can be displayed based on this value. A value of false indicates a leaf node. If this parameter is not returned, the value is unknown. To obtain details about the child departments, use the ID of the current node to query them separately.
         self.has_children = has_children
-        # The unique identifier of the department returned by the identity provider. When querying the child departments of this node, use this value as the parentDepartmentId.
+        # The unique identifier of the department returned by the identity provider. When querying the child departments of this node, use this value as parentDepartmentId.
         self.id = id
-        # The number of members in the department returned by the identity provider. This field is not returned when the number is unknown. Do not treat a missing value as 0.
+        # The number of department members returned by the identity provider. This parameter is not returned when the value is unknown. Do not treat a missing value as 0.
         self.member_count = member_count
         # The name of the department returned by the identity provider.
         self.name = name

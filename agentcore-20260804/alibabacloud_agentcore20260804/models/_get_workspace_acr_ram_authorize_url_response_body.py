@@ -113,7 +113,7 @@ class GetWorkspaceAcrRamAuthorizeUrlResponseBodyData(DaraModel):
         # 
         # This parameter is required.
         self.role_name = role_name
-        # The source of the shared role. This does not indicate that authorization is complete.
+        # The source of the shared role. This does not indicate that the authorization is complete.
         # 
         # This parameter is required.
         self.role_source = role_source

@@ -20,17 +20,17 @@ class ListManagedAgentsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The business status code. The value is SUCCESS if the request is successful.
+        # The business status code. The value is SUCCESS when the request is successful.
         self.code = code
-        # The HTTP status code. The value is 200 if the request is successful.
+        # The HTTP status code. The value is 200 when the request is successful.
         self.http_status_code = http_status_code
-        # The list of managed agents.
+        # The list of managed Harness agents.
         self.items = items
-        # The maximum number of results returned for this request.
+        # The maximum number of results returned for the current request.
         self.max_results = max_results
         # The message about the request processing result.
         self.message = message
-        # The token for the next page. An empty value indicates that the last page is reached.
+        # The token for the next page. An empty value indicates that the end of the list is reached.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -133,11 +133,11 @@ class ListManagedAgentsResponseBodyItems(DaraModel):
         updated_at: str = None,
         workspace_id: str = None,
     ):
-        # API_KEY 表示使用 API Key；USER 表示使用用户身份。
+        # The inbound access method.
         self.access_mode = access_mode
-        # 仅 accessMode 为 USER 时返回：ALL 表示全部用户，SPECIFIED 表示指定用户。
+        # The user access scope.
         self.access_scope = access_scope
-        # The ID of the managed agent.
+        # The ID of the managed Harness agent.
         self.agent_id = agent_id
         # The creation mode.
         self.create_mode = create_mode
@@ -145,17 +145,17 @@ class ListManagedAgentsResponseBodyItems(DaraModel):
         self.created_at = created_at
         # The deployment type.
         self.deploy_type = deploy_type
-        # The description of the managed agent.
+        # The description of the managed Harness agent.
         self.description = description
         # The agent runtime framework.
         self.harness = harness
         # The latest specification version number.
         self.latest_spec_version = latest_spec_version
-        # The name of the managed agent.
+        # The name of the managed Harness agent.
         self.name = name
         # The runtime type.
         self.runtime = runtime
-        # The status of the managed agent.
+        # The status of the managed Harness agent.
         self.status = status
         # The update time in RFC 3339 format.
         self.updated_at = updated_at
@@ -307,9 +307,9 @@ class ListManagedAgentsResponseBodyItemsHarnessConfiguration(DaraModel):
         connector_service_account_key: str = None,
         connector_service_account_name: str = None,
     ):
-        # Connector Service Account Key
+        # The ID of the connector account key record bound to qodercli, not the original service account key.
         self.connector_service_account_key = connector_service_account_key
-        # Connector Service Account Name
+        # The name of the connector account bound to qodercli.
         self.connector_service_account_name = connector_service_account_name
 
     def validate(self):

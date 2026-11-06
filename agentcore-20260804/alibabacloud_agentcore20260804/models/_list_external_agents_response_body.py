@@ -24,7 +24,7 @@ class ListExternalAgentsResponseBody(DaraModel):
         self.code = code
         # The HTTP status code. The value is 200 if the request is successful.
         self.http_status_code = http_status_code
-        # The list of external agents.
+        # The list of managed agents.
         self.items = items
         # The maximum number of entries returned per page for this request.
         self.max_results = max_results
@@ -36,7 +36,7 @@ class ListExternalAgentsResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
-        # The total number of records that meet the conditions.
+        # The total number of records that meet the filter conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -130,7 +130,7 @@ class ListExternalAgentsResponseBodyItems(DaraModel):
         updated_at: str = None,
         workspace_id: str = None,
     ):
-        # The ID of the external agent.
+        # The ID of the managed agent.
         self.agent_id = agent_id
         # The creation mode.
         self.create_mode = create_mode
@@ -138,15 +138,15 @@ class ListExternalAgentsResponseBodyItems(DaraModel):
         self.created_at = created_at
         # The deployment type.
         self.deploy_type = deploy_type
-        # The description of the external agent.
+        # The description of the managed agent.
         self.description = description
-        # The latest specification version number.
+        # The latest specification version.
         self.latest_spec_version = latest_spec_version
-        # The name of the external agent.
+        # The name of the managed agent.
         self.name = name
-        # The runtime type reported by the external agent.
+        # The runtime type reported by the managed agent.
         self.runtime = runtime
-        # The status of the external agent. Valid values: Creating, Running, Failed, Updating, Deleting, and Deleted.
+        # The status of the managed agent. Valid values: Creating, Running, Failed, Updating, Deleting, and Deleted.
         self.status = status
         # The update time in RFC 3339 format.
         self.updated_at = updated_at

@@ -26,7 +26,7 @@ class ListMcpToolsResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The list data.
         self.items = items
-        # The maximum number of results per page.
+        # The maximum number of entries returned per page.
         self.max_results = max_results
         # The response message.
         self.message = message
@@ -34,7 +34,7 @@ class ListMcpToolsResponseBody(DaraModel):
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
         # The total number of records.
         self.total_count = total_count

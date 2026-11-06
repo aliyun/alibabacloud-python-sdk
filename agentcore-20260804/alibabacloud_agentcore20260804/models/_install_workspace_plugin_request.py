@@ -13,7 +13,7 @@ class InstallWorkspacePluginRequest(DaraModel):
         body: main_models.InstallWorkspacePluginRequestBody = None,
         client_token: str = None,
     ):
-        # The request body for installing a plugin.
+        # The request body for installing the component.
         self.body = body
         # The client idempotency token.
         self.client_token = client_token
@@ -51,7 +51,7 @@ class InstallWorkspacePluginRequestBody(DaraModel):
         self,
         config: main_models.InstallWorkspacePluginRequestBodyConfig = None,
     ):
-        # The plugin-specific configuration. The configuration structure is determined by pluginName. Currently, the collaboration plugin supports network.
+        # The component-specific configuration. The configuration structure is determined by the pluginName parameter. Currently, the collaboration component supports the network configuration.
         self.config = config
 
     def validate(self):
@@ -81,7 +81,7 @@ class InstallWorkspacePluginRequestBodyConfig(DaraModel):
         self,
         network: main_models.InstallWorkspacePluginRequestBodyConfigNetwork = None,
     ):
-        # The network configuration used by the collaboration plugin. If not specified, the server uses the existing network configuration of the workspace.
+        # The network configuration used by the collaboration component. If not specified, the server uses the existing network configuration of the workspace.
         self.network = network
 
     def validate(self):
@@ -112,9 +112,9 @@ class InstallWorkspacePluginRequestBodyConfigNetwork(DaraModel):
         internet: main_models.InstallWorkspacePluginRequestBodyConfigNetworkInternet = None,
         vpc: main_models.InstallWorkspacePluginRequestBodyConfigNetworkVpc = None,
     ):
-        # Specifies whether to allow public network access for collaboration components. This configuration only controls public network access capabilities and does not expose component services to the public network.
+        # Specifies whether the collaboration component is allowed to access the public network. This configuration only controls the public network access capability and does not expose the component service to the public network.
         self.internet = internet
-        # The user VPC and vSwitch list used for deploying the collaboration plugin. The zones corresponding to the vSwitches are queried by the server, and users do not need to pass in Zones.
+        # The user VPC and the list of vSwitches used to deploy the collaboration component. The zones corresponding to the vSwitches are queried by the server. You do not need to pass the Zones parameter.
         self.vpc = vpc
 
     def validate(self):
@@ -155,13 +155,13 @@ class InstallWorkspacePluginRequestBodyConfigNetworkVpc(DaraModel):
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
     ):
-        # Explicitly controls whether the collaboration plugin uses the VPC network. If set to false, vpcId and vSwitchIds are ignored. If set to true, you must provide both vpcId and at least two vSwitchIds.
+        # Explicitly controls whether the collaboration component uses a VPC network. If this parameter is set to false, vpcId and vSwitchIds are ignored. If this parameter is set to true, you must provide a vpcId and at least two vSwitchIds.
         self.enabled = enabled
-        # The list of vSwitch IDs. The collaboration plugin requires that the vSwitches cover at least two different zones, and all vSwitches must belong to the VPC specified by vpcId.
+        # The list of vSwitch IDs. The collaboration component requires that the vSwitches cover at least two different zones, and all vSwitches must belong to the VPC specified by vpcId.
         # 
         # This parameter is required.
         self.v_switch_ids = v_switch_ids
-        # The user VPC ID.
+        # The ID of the user VPC.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
@@ -203,7 +203,7 @@ class InstallWorkspacePluginRequestBodyConfigNetworkInternet(DaraModel):
         self,
         enabled: bool = None,
     ):
-        # Specifies whether to enable Internet access. If set to true and no VPC is specified, PUB_NET is used. If set to true and a VPC is specified, PRIVATE_PUBNET is used. If only a VPC is specified, PRIVATE_NET is used. At least one of Internet access and VPC must be configured.
+        # Specifies whether to enable Internet access. If this parameter is set to true and no VPC is specified, PUB_NET is used. If this parameter is set to true and a VPC is specified, PRIVATE_PUBNET is used. If only a VPC is specified, PRIVATE_NET is used. You must configure at least one of Internet access and VPC access.
         self.enabled = enabled
 
     def validate(self):

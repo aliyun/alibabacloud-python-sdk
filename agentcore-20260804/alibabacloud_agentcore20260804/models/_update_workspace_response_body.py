@@ -19,13 +19,13 @@ class UpdateWorkspaceResponseBody(DaraModel):
     ):
         # The business status code.
         self.code = code
-        # The details of the updated workspace.
+        # The updated workspace details.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
         # The response message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
@@ -95,7 +95,7 @@ class UpdateWorkspaceResponseBodyData(DaraModel):
         tenant_id: str = None,
         workspace_id: str = None,
     ):
-        # The authorization status of OSS storage.
+        # The OSS storage authorization status.
         self.authorization_status = authorization_status
         # The name of the private OSS bucket.
         self.bucket_name = bucket_name
@@ -103,7 +103,7 @@ class UpdateWorkspaceResponseBodyData(DaraModel):
         self.name = name
         # The network configuration of the workspace.
         self.network_configuration = network_configuration
-        # The ID of the region where the workspace resides.
+        # The region ID of the workspace.
         self.region_id = region_id
         # The status of the workspace. Valid values: Initializing, Initialized, Deleting, and Deleted.
         self.status = status
@@ -111,7 +111,7 @@ class UpdateWorkspaceResponseBodyData(DaraModel):
         self.storage_type = storage_type
         # The ID of the tenant to which the workspace belongs.
         self.tenant_id = tenant_id
-        # The ID of the workspace.
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -191,9 +191,9 @@ class UpdateWorkspaceResponseBodyDataNetworkConfiguration(DaraModel):
         public_ingress_enabled: bool = None,
         vpc: main_models.UpdateWorkspaceResponseBodyDataNetworkConfigurationVpc = None,
     ):
-        # Returns the target configuration value. Updating indicates that the change is still in progress, and UpdateFailed indicates that the current change failed. This parameter only controls whether the latest versions of managed and custom agents use the public egress of the platform. It does not control fixed historical versions, model or MCP proxy egress, or the public egress of the user VPC.
+        # Returns the target configuration value. Updating indicates that the change is still in progress, and UpdateFailed indicates that the current change failed. This parameter only controls whether the latest versions of managed and custom agents use the public network egress of the platform. It does not control fixed historical versions, model or MCP proxy egresses, or the public network egress of the user VPC.
         self.public_egress_enabled = public_egress_enabled
-        # Returns the target configuration value. Updating indicates that the change is in progress, and UpdateFailed indicates that the change failed. After this feature is disabled, the public ingress for all agent endpoints in the workspace is closed. After this feature is re-enabled, the original public ingress is restored. INNER_DIRECT and user VPC ingress are not affected. Collaboration and Element Web ingress are not controlled by this parameter.
+        # Returns the target configuration value. Updating indicates that the change is in progress, and UpdateFailed indicates that the change failed. When disabled, the public network ingress for all agent endpoints in the workspace is closed, and the original public network ingress is restored when re-enabled. INNER_DIRECT and user VPC ingress are not affected, and collaboration and Element Web ingress are not controlled by this parameter.
         self.public_ingress_enabled = public_ingress_enabled
         # The VPC network configuration of the user.
         self.vpc = vpc
@@ -239,7 +239,7 @@ class UpdateWorkspaceResponseBodyDataNetworkConfigurationVpc(DaraModel):
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
     ):
-        # Specifies whether to enable the VPC network.
+        # Specifies whether to enable VPC networking.
         self.enabled = enabled
         # The list of vSwitch IDs.
         self.v_switch_ids = v_switch_ids

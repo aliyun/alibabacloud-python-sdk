@@ -51,7 +51,7 @@ class CreatePermissionRulesRequestBody(DaraModel):
         self,
         rules: List[main_models.CreatePermissionRulesRequestBodyRules] = None,
     ):
-        # The list of permission rules to create.
+        # The list of permission rules to be created.
         # 
         # This parameter is required.
         self.rules = rules

@@ -10,7 +10,7 @@ class EnableConnectorRequest(DaraModel):
         self,
         body: main_models.EnableConnectorRequestBody = None,
     ):
-        # The enable request body.
+        # The request body for enabling the connector.
         # 
         # This parameter is required.
         self.body = body
@@ -42,7 +42,7 @@ class EnableConnectorRequestBody(DaraModel):
         self,
         metadata: str = None,
     ):
-        # The Connector configuration JSON string. Set site to global or cn. apiKey is required. serviceAccountKeys must contain at least one named service account key. organizationId is optional.
+        # The JSON string for the connector configuration. The site parameter must be global or cn. The apiKey parameter is required. The serviceAccountKeys parameter must contain at least one named service account key. The organizationId parameter is optional.
         # 
         # This parameter is required.
         self.metadata = metadata

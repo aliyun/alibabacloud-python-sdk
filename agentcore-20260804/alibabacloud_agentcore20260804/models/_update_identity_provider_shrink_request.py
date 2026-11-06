@@ -9,7 +9,7 @@ class UpdateIdentityProviderShrinkRequest(DaraModel):
         self,
         body_shrink: str = None,
     ):
-        # The configuration fields to be modified. For DingTalk and Feishu, you must submit at least one of the following fields: loginEnabled, syncEnabled, metadata, and syncScope. For CustomSSO, use the protocol, saml, and loginEnabled fields. You cannot submit the vendor metadata, syncEnabled, or syncScope fields.
+        # Submit business parameters as described in this operation. The body parameters of public APIs are mapped to backend wrappers by the gateway. Do not mix them with direct backend body wrappers.
         self.body_shrink = body_shrink
 
     def validate(self):

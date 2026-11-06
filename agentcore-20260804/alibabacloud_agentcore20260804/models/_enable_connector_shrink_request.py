@@ -9,7 +9,7 @@ class EnableConnectorShrinkRequest(DaraModel):
         self,
         body_shrink: str = None,
     ):
-        # The enable request body.
+        # The request body for enabling the connector.
         # 
         # This parameter is required.
         self.body_shrink = body_shrink

@@ -26,15 +26,15 @@ class ListConnectorModelsResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The list of available models.
         self.items = items
-        # The number of models returned in this request.
+        # The number of models returned in this response.
         self.max_results = max_results
         # The response message.
         self.message = message
-        # The next page token. This field is not returned in the current version.
+        # The next token. This field is not returned in the current version.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
         # The total number of models returned.
         self.total_count = total_count
@@ -129,9 +129,9 @@ class ListConnectorModelsResponseBodyItems(DaraModel):
         self.description = description
         # The display name of the model.
         self.display_name = display_name
-        # The associated Connector Key ID. This field is not returned in the current version.
+        # The associated connector key ID. This field is not returned in the current version.
         self.key_id = key_id
-        # The associated Connector Key name. This field is not returned in the current version.
+        # The name of the associated connector key. This field is not returned in the current version.
         self.key_name = key_name
         # The stable identifier of the model.
         self.model_id = model_id

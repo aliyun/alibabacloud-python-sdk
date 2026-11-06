@@ -19,7 +19,7 @@ class VerifyConnectorResponseBody(DaraModel):
     ):
         # The business status code.
         self.code = code
-        # The validation result.
+        # The verification result.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -27,7 +27,7 @@ class VerifyConnectorResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -88,9 +88,9 @@ class VerifyConnectorResponseBodyData(DaraModel):
         invalid_service_account_keys: List[str] = None,
         valid: bool = None,
     ):
-        # The list of Service Account Key labels that failed validation or returned indeterminate results.
+        # The list of service account key labels that failed the verification or have uncertain verification results.
         self.invalid_service_account_keys = invalid_service_account_keys
-        # Indicates whether all validated Service Account Keys are valid.
+        # Indicates whether all verified service account keys are valid.
         self.valid = valid
 
     def validate(self):

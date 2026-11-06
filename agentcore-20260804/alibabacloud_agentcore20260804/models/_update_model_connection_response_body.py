@@ -15,11 +15,11 @@ class UpdateModelConnectionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business status code. The value is SUCCESS if the request succeeds.
+        # The business status code. The value is SUCCESS if the request is successful.
         self.code = code
         # The updated model connection information.
         self.data = data
-        # The HTTP status code. The value is 200 if the request succeeds.
+        # The HTTP status code. The value is 200 if the request is successful.
         self.http_status_code = http_status_code
         # The message about the request processing result.
         self.message = message
@@ -97,19 +97,19 @@ class UpdateModelConnectionResponseBodyData(DaraModel):
         updated_at: str = None,
         workspace_id: str = None,
     ):
-        # The number of API keys configured for the model connection.
+        # The number of API keys configured in the model connection.
         self.api_key_count = api_key_count
         # The model connection ID.
         self.connection_id = connection_id
-        # The time when the resource was created. The time is in RFC 3339 UTC format.
+        # The time when the resource was created, in RFC 3339 UTC format.
         self.created_at = created_at
         # Indicates whether access credentials are configured for the model connection.
         self.credential_configured = credential_configured
-        # The description of the model connection. The description can be up to 255 characters in length.
+        # The description of the model connection, which can be up to 255 characters in length.
         self.description = description
-        # The absolute HTTP or HTTPS URL of the upstream model service. The URL can be up to 1,024 characters in length.
+        # The absolute HTTP or HTTPS URL of the upstream model service, which can be up to 1,024 characters in length.
         self.endpoint = endpoint
-        # The name of the model connection. The name must be 1 to 128 non-whitespace characters in length.
+        # The name of the model connection, which must be 1 to 128 non-whitespace characters in length.
         self.name = name
         # The model invoke protocol. Currently, only OpenAI/v1 is supported. If the Settings are not specified during model creation, this default value is used.
         self.protocol = protocol
@@ -117,9 +117,9 @@ class UpdateModelConnectionResponseBodyData(DaraModel):
         self.provider_type = provider_type
         # The resource status.
         self.status = status
-        # The failure summary returned when the model connection fails to be published, or when deletion fails but the connection remains in the Deleting state. This field is empty in other states.
+        # The failure summary returned when the model connection fails to be published, or when deletion fails but the connection remains in the deleting state. This field is empty in other states.
         self.status_reason = status_reason
-        # The time when the resource was last updated. The time is in RFC 3339 UTC format.
+        # The time when the resource was last updated, in RFC 3339 UTC format.
         self.updated_at = updated_at
         # The workspace ID.
         self.workspace_id = workspace_id

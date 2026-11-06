@@ -19,9 +19,9 @@ class GetIdentityProviderSyncScopeResponseBody(DaraModel):
     ):
         # The business status code of the API request. SUCCESS indicates that the request is successful, but does not indicate that the asynchronous synchronization task is completed.
         self.code = code
-        # The business data returned by the request.
+        # The business data returned in the response.
         self.data = data
-        # The HTTP status code of the API request. It does not indicate the execution result of the asynchronous task.
+        # The HTTP status code of the API request. This code does not indicate the execution result of the asynchronous task.
         self.http_status_code = http_status_code
         # The response message of the API request.
         self.message = message
@@ -91,15 +91,15 @@ class GetIdentityProviderSyncScopeResponseBodyData(DaraModel):
         selected_departments: List[main_models.GetIdentityProviderSyncScopeResponseBodyDataSelectedDepartments] = None,
         sync_scope: main_models.GetIdentityProviderSyncScopeResponseBodyDataSyncScope = None,
     ):
-        # The estimation status of the user count for the synchronization scope. The count is available only when the status is Ready. A missing count in other states cannot be considered as 0.
+        # The estimation status of the user count for the synchronization scope. The counts are available only when the status is Ready. Missing counts in other states must not be treated as 0.
         self.estimate_status = estimate_status
-        # The estimated number of users in the saved synchronization scope. This parameter is returned only when estimateStatus is Ready and the downstream system provides the value. It does not represent the number of users that have been synchronized.
+        # The estimated number of users in the saved synchronization scope. This value is returned only when estimateStatus is Ready and the downstream system provides the value. It does not represent the number of users that have already been synchronized.
         self.estimated_user_count = estimated_user_count
-        # The estimated number of departments including sub-departments. This parameter is returned only when estimateStatus is Ready and the downstream system provides the value.
+        # The estimated number of departments, including child departments. This value is returned only when estimateStatus is Ready and the downstream system provides the value.
         self.expanded_department_count = expanded_department_count
-        # The names and validity of the saved selected departments. This parameter can be an empty array when the mode is AllAuthorized. An empty array does not indicate that the organization has no departments.
+        # The names and validity of the saved selected departments. This can be an empty array when the mode is AllAuthorized. An empty array does not indicate that the organization has no departments.
         self.selected_departments = selected_departments
-        # The saved synchronization scope downstream. AllAuthorized indicates the address book scope authorized for the application.
+        # The saved synchronization scope of the downstream system. AllAuthorized indicates the address book scope authorized for the application.
         self.sync_scope = sync_scope
 
     def validate(self):
@@ -163,9 +163,9 @@ class GetIdentityProviderSyncScopeResponseBodyDataSyncScope(DaraModel):
         department_ids: List[str] = None,
         mode: str = None,
     ):
-        # When the mode is SelectedDepartments, this parameter contains at least one non-empty department ID, which should be obtained from ListIdentityProviderDepartments. When the mode is AllAuthorized, pass an empty array or omit this parameter.
+        # When the mode is SelectedDepartments, the list must contain at least one non-empty department ID, which should be obtained from ListIdentityProviderDepartments. When the mode is AllAuthorized, pass an empty array or omit this parameter.
         self.department_ids = department_ids
-        # The scope mode. Valid values: AllAuthorized (the entire authorized scope, limited by the application\\"s address book authorization) and SelectedDepartments (the selected departments and all their sub-departments). When explicitly submitting syncScope, a valid mode must be provided and verified by the backend.
+        # AllAuthorized: the full authorized scope, which is restricted by the application\\"s address book authorization. SelectedDepartments: the selected departments and all their child departments. When explicitly submitting syncScope, you must provide a valid mode, which is verified by the backend.
         self.mode = mode
 
     def validate(self):
@@ -203,7 +203,7 @@ class GetIdentityProviderSyncScopeResponseBodyDataSelectedDepartments(DaraModel)
     ):
         # Indicates whether the selected department still exists. A value of false indicates that the selection is invalid and the synchronization scope must be reconfirmed.
         self.exists = exists
-        # The unique identifier of the department returned by the identity provider. When querying the sub-departments of this node, use this value as parentDepartmentId.
+        # The unique identifier of the department returned by the identity provider. When querying the child departments of this node, use this value as parentDepartmentId.
         self.id = id
         # The name of the department returned by the identity provider.
         self.name = name

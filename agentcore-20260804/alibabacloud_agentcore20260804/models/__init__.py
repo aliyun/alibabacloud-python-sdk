@@ -258,6 +258,10 @@ from ._get_managed_agent_response import GetManagedAgentResponse
 from ._get_mcp_request import GetMcpRequest
 from ._get_mcp_response_body import GetMcpResponseBody
 from ._get_mcp_response import GetMcpResponse
+from ._get_mcp_code_package_upload_url_request import GetMcpCodePackageUploadUrlRequest
+from ._get_mcp_code_package_upload_url_shrink_request import GetMcpCodePackageUploadUrlShrinkRequest
+from ._get_mcp_code_package_upload_url_response_body import GetMcpCodePackageUploadUrlResponseBody
+from ._get_mcp_code_package_upload_url_response import GetMcpCodePackageUploadUrlResponse
 from ._get_mcp_market_item_request import GetMcpMarketItemRequest
 from ._get_mcp_market_item_response_body import GetMcpMarketItemResponseBody
 from ._get_mcp_market_item_response import GetMcpMarketItemResponse
@@ -986,6 +990,8 @@ from ._get_mcp_response_body import GetMcpResponseBodyDataDeploymentConfig
 from ._get_mcp_response_body import GetMcpResponseBodyDataMarketSource
 from ._get_mcp_response_body import GetMcpResponseBodyDataTemplate
 from ._get_mcp_response_body import GetMcpResponseBodyData
+from ._get_mcp_code_package_upload_url_request import GetMcpCodePackageUploadUrlRequestBody
+from ._get_mcp_code_package_upload_url_response_body import GetMcpCodePackageUploadUrlResponseBodyData
 from ._get_mcp_market_item_response_body import GetMcpMarketItemResponseBodyData
 from ._get_memory_response_body import GetMemoryResponseBodyDataContent
 from ._get_memory_response_body import GetMemoryResponseBodyDataScope
@@ -1694,6 +1700,10 @@ __all__ = [
     GetMcpRequest,
     GetMcpResponseBody,
     GetMcpResponse,
+    GetMcpCodePackageUploadUrlRequest,
+    GetMcpCodePackageUploadUrlShrinkRequest,
+    GetMcpCodePackageUploadUrlResponseBody,
+    GetMcpCodePackageUploadUrlResponse,
     GetMcpMarketItemRequest,
     GetMcpMarketItemResponseBody,
     GetMcpMarketItemResponse,
@@ -2422,6 +2432,8 @@ __all__ = [
     GetMcpResponseBodyDataMarketSource,
     GetMcpResponseBodyDataTemplate,
     GetMcpResponseBodyData,
+    GetMcpCodePackageUploadUrlRequestBody,
+    GetMcpCodePackageUploadUrlResponseBodyData,
     GetMcpMarketItemResponseBodyData,
     GetMemoryResponseBodyDataContent,
     GetMemoryResponseBodyDataScope,

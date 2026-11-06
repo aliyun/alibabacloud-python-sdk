@@ -97,25 +97,25 @@ class CreateCredentialResponseBodyData(DaraModel):
         updated_at: str = None,
         workspace_id: str = None,
     ):
-        # The time when the credential was created. The time is displayed in UTC and follows the RFC 3339 format.
+        # The time when the credential was created. The time is in UTC and follows the RFC 3339 format.
         self.created_at = created_at
         # The credential ID.
         self.credential_id = credential_id
-        # The desensitized result of the credential content. If credentialType is apiKey, the value of apiKey is returned as asterisks (*) of the same length.
+        # The masked result of the credential content. For the apiKey type, a masked key is returned. For the mcpHeader type, only header names are returned, and values are not returned.
         self.credential_metadata = credential_metadata
-        # The credential type. Currently, only apiKey is supported.
+        # The credential type. Valid values: apiKey (API key) and mcpHeader (MCP request header).
         self.credential_type = credential_type
         # The description of the credential. The description can be up to 256 characters in length.
         self.description = description
-        # The name of the credential. The name must be unique within the workspace, can only contain letters, digits, periods, underscores, and hyphens, and must be 3 to 128 characters in length. Runtime reserved names cannot be used.
+        # The name of the credential. The name must be unique within the workspace, contain only letters, digits, periods, underscores, and hyphens, and be 3 to 99 characters in length. Runtime reserved names cannot be used.
         self.name = name
-        # The region ID of the resource.
+        # The ID of the region where the resource resides.
         self.region_id = region_id
-        # Each item contains resourceType, resourceId, and resourceName. If the resource is deleted, resourceName is empty.
+        # The list of MCP services to which the credential applies.
         self.resource_refs = resource_refs
-        # The application scope of the credential resource.
+        # The application scope of the credential. ALL indicates all scopes, and SPECIFIED indicates the specified MCP services.
         self.resource_scope = resource_scope
-        # The time when the credential was last modified. The time is displayed in UTC and follows the RFC 3339 format.
+        # The time when the credential was last modified. The time is in UTC and follows the RFC 3339 format.
         self.updated_at = updated_at
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -215,11 +215,11 @@ class CreateCredentialResponseBodyDataResourceRefs(DaraModel):
         resource_name: str = None,
         resource_type: str = None,
     ):
-        # The unique identifier of the resource.
+        # The ID of the applicable MCP service.
         self.resource_id = resource_id
         # The name of the resource. This parameter is empty if the resource is deleted.
         self.resource_name = resource_name
-        # The type of the resource, such as agent.
+        # The type of the resource. Set the value to mcpServer, which indicates an MCP service.
         self.resource_type = resource_type
 
     def validate(self):

@@ -20,25 +20,23 @@ class ListSandboxSessionsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The business status code. The value SUCCESS is returned if the request was successful.
+        # The business status code. The value is SUCCESS if the request is successful.
         self.code = code
-        # The HTTP status code. The value 200 is returned if the request was successful.
+        # The HTTP status code. The value is 200 if the request is successful.
         self.http_status_code = http_status_code
         # The list of active sessions in the sandbox.
         self.items = items
-        # The maximum number of records per page for this query.
+        # The maximum number of records per page for the current query.
         self.max_results = max_results
-        # The response message. The value success is returned if the request was successful.
+        # The response message. The value is success if the request is successful.
         self.message = message
         # The pagination token for the next page. An empty value indicates that no more results are available.
         self.next_token = next_token
         # The request ID, which is used to locate and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # - true: The request was successful.
-        # - false: The request failed.
+        # Indicates whether the request is successful. A value of true indicates that the request is successful. A value of false indicates that the request fails.
         self.success = success
-        # The total number of records that match the query conditions.
+        # The total number of records that meet the query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -124,15 +122,11 @@ class ListSandboxSessionsResponseBodyItems(DaraModel):
         session_id: str = None,
         source_type: str = None,
     ):
-        # The external channel type, such as DINGTALK, FEISHU, or WECOM. This parameter is empty for non-external channels.
+        # The type of the external channel, such as DINGTALK, FEISHU, or WECOM. This parameter is empty for non-external channels.
         self.channel_type = channel_type
         # The unique identifier of the active session.
         self.session_id = session_id
-        # The session source type. Valid values:
-        # - API: API call.
-        # - CONSOLE_DEBUG: Console debugging.
-        # - EXTERNAL_CHANNEL: External channel.
-        # - UNKNOWN: Unknown source.
+        # The source type of the session. A value of API indicates an API call. A value of CONSOLE_DEBUG indicates console debugging. A value of EXTERNAL_CHANNEL indicates an external channel. A value of UNKNOWN indicates an unknown source.
         self.source_type = source_type
 
     def validate(self):

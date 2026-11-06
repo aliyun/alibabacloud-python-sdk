@@ -23,7 +23,7 @@ class UpdateAccessApplicationResponseBody(DaraModel):
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request result message.
+        # The request processing result message.
         self.message = message
         # The request ID.
         self.request_id = request_id

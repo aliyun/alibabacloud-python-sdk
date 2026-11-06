@@ -15,23 +15,22 @@ class ListMcpsRequest(DaraModel):
         search_type: str = None,
         usage_active: bool = None,
     ):
-        # Filters results by custom tag. The tag must be an exact match.
+        # Filters the results by custom tags. An exact match with the tags is required.
         self.custom_tag = custom_tag
-        # The maximum number of entries per page.
+        # The maximum number of entries to return per page.
         self.max_results = max_results
-        # The MCP service name or service ID. Used together with SearchType.
+        # The service name or ID of the MCP service. This parameter is used in conjunction with SearchType.
         self.name = name
         # The pagination token for the next page.
         self.next_token = next_token
-        # Filters results by official usage tag.
+        # Filters the results by official usage tags.
         self.official_tag = official_tag
-        # The name matching method. Takes effect only when Name is specified. Valid values:
-        # - accurate: exact match.
-        # - blur: fuzzy match.
-        # 
+        # The name matching mode. This parameter takes effect only when Name is specified. Valid values:
+        # - accurate: Exact match.
+        # - blur: Fuzzy match.
         # Default value: blur.
         self.search_type = search_type
-        # Specifies whether the service is still bound by the official template usage.
+        # Specifies whether the service is still subject to official template usage constraints.
         self.usage_active = usage_active
 
     def validate(self):

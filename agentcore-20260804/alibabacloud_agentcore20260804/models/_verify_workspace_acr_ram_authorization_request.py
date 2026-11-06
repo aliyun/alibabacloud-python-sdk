@@ -15,11 +15,11 @@ class VerifyWorkspaceAcrRamAuthorizationRequest(DaraModel):
         # 
         # This parameter is required.
         self.acr_instance_id = acr_instance_id
-        # The target ACR namespace, which corresponds to artifact.container.namespace of the agent. This is not a Kubernetes namespace. It determines the authorization scope together with the instance and repository.
+        # The ACR namespace.
         # 
         # This parameter is required.
         self.namespace = namespace
-        # The target repository name, which corresponds to artifact.container.repo of the agent. It does not include tags, namespaces, or path separators. Wildcards are not supported.
+        # The name of the ACR image repository.
         # 
         # This parameter is required.
         self.repository = repository

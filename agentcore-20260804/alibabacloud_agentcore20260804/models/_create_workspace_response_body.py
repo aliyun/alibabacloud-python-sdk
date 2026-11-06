@@ -101,15 +101,15 @@ class CreateWorkspaceResponseBodyData(DaraModel):
         tenant_id: str = None,
         workspace_id: str = None,
     ):
-        # The AI Registry namespace ID. This value is returned after related resources are bound and may be empty during initialization.
+        # The AI Registry namespace ID. This value is returned after the related resources are bound and may be empty during initialization.
         self.ai_registry_namespace_id = ai_registry_namespace_id
         # The OSS storage authorization status.
         self.authorization_status = authorization_status
         # The name of the private OSS bucket.
         self.bucket_name = bucket_name
-        # The CloudMonitor workspace ID. This value is returned after related resources are bound and may be empty during initialization.
+        # The CloudMonitor workspace ID. This value is returned after the related resources are bound and may be empty during initialization.
         self.cms_workspace_id = cms_workspace_id
-        # The time when the workspace was created. The time follows the ISO 8601 standard.
+        # The time when the workspace was created. The time is displayed in the ISO 8601 format.
         # 
         # This parameter is required.
         self.create_time = create_time
@@ -117,7 +117,7 @@ class CreateWorkspaceResponseBodyData(DaraModel):
         self.name = name
         # The network configuration of the workspace.
         self.network_configuration = network_configuration
-        # The ID of the region where the workspace resides.
+        # The ID of the region where the workspace is located.
         self.region_id = region_id
         # The ID of the resource group to which the workspace belongs. This value may be empty if no resource group is specified.
         self.resource_group_id = resource_group_id
@@ -133,7 +133,7 @@ class CreateWorkspaceResponseBodyData(DaraModel):
         self.tags = tags
         # The ID of the tenant to which the workspace belongs.
         self.tenant_id = tenant_id
-        # The ID of the workspace.
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -299,7 +299,7 @@ class CreateWorkspaceResponseBodyDataNetworkConfiguration(DaraModel):
         public_ingress_enabled: bool = None,
         vpc: main_models.CreateWorkspaceResponseBodyDataNetworkConfigurationVpc = None,
     ):
-        # Returns the target configuration value. Updating indicates that the change is still in progress, and UpdateFailed indicates that the current change failed. This parameter only controls whether the latest versions of managed and custom agents use the public egress of the platform. It does not control fixed historical versions, model or MCP proxy egress, or the public egress of the user VPC.
+        # Returns the target configuration value. Updating indicates that the change is still being executed, and UpdateFailed indicates that the current change failed. This parameter only controls whether the latest versions of managed and custom agents use the public egress of the platform. It does not control fixed historical versions, model or MCP proxy egress, or the public egress of the user VPC.
         self.public_egress_enabled = public_egress_enabled
         # Returns the target configuration value. Updating indicates that the change is in progress, and UpdateFailed indicates that the change failed. If disabled, the public ingress for all agent endpoints in the workspace is closed, and the original public ingress is restored when re-enabled. INNER_DIRECT and user VPC ingress are not affected. Collaboration and Element Web ingress are not controlled by this parameter.
         self.public_ingress_enabled = public_ingress_enabled

@@ -15,17 +15,17 @@ class CreateIdentityProviderSyncJobResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business status code of the API request. SUCCESS indicates that the request is successful, but does not indicate that the asynchronous synchronization task is completed.
+        # The business status code for the current API request. SUCCESS indicates that the current request is successful, but does not indicate that the asynchronous synchronization task is complete.
         self.code = code
-        # The business data returned in the response.
+        # The business data returned by the current request.
         self.data = data
-        # The HTTP status code of the API request, which does not indicate the execution result of the asynchronous task.
+        # The HTTP status code for the current API request. This does not indicate the execution result of the asynchronous task.
         self.http_status_code = http_status_code
-        # The response message of the API request.
+        # The response message for the current API request.
         self.message = message
         # The unique identifier of the request. Provide this value when troubleshooting issues.
         self.request_id = request_id
-        # Indicates whether the API request is successful. To check whether the asynchronous task is completed, query the task status.
+        # Indicates whether the current API request is successful. To determine whether the asynchronous task is complete, query the task status.
         self.success = success
 
     def validate(self):
@@ -90,17 +90,17 @@ class CreateIdentityProviderSyncJobResponseBodyData(DaraModel):
         synchronization_job_id: str = None,
         task_id: str = None,
     ):
-        # The current execution step of the AgentCore asynchronous task. This field may not be returned if the task has not started.
+        # The current execution step of the AgentCore asynchronous task. This may not be returned if the task has not started executing.
         self.current_step = current_step
-        # The failure summary of the asynchronous task. This field is not returned if no failure information is available. You can use this field along with the taskId and requestId for troubleshooting.
+        # The failure summary of the asynchronous task. This is not returned when no failure information is available. You can use this in combination with taskId and requestId for troubleshooting.
         self.failure_reason = failure_reason
-        # The status of the synchronization task. Valid values: PENDING: pending. RUNNING: running. PAUSED: paused. SUCCESS: successful. FAILED: failed. CANCELED: canceled. The first three are non-terminal states, and the last three are terminal states. Query the status until a terminal state is reached to determine the result.
+        # The status of the synchronization task. Valid values: PENDING: to be executed; RUNNING: executing; PAUSED: paused; SUCCESS: successful; FAILED: failed; CANCELED: canceled. The first three are non-terminal states, and the last three are terminal states. Query the status until a terminal state is reached to determine the result.
         self.status = status
-        # The number of user entries that have been read locally and written or updated, including existing users. This does not represent the number of newly added users or the synchronization percentage. This field is not returned when no statistics are available.
+        # The number of user entries that have been locally read and written or updated, including existing users. This does not represent the number of newly added users or the synchronization percentage. This is not returned when no statistics are available.
         self.synced_user_count = synced_user_count
-        # The ID of the downstream synchronization task in AgentIdentity. This field is not returned if the task has not been created. You cannot use this ID in place of taskId to call GetIdentityProviderSyncJob.
+        # The downstream AgentIdentity synchronization task ID. This is not returned if the task has not been created. You cannot use this ID instead of taskId to call GetIdentityProviderSyncJob.
         self.synchronization_job_id = synchronization_job_id
-        # The local task ID in AgentCore returned by CreateIdentityProviderSyncJob, which is different from the synchronizationJobId in AgentIdentity. You must use the same workspace and identity provider when querying the task.
+        # The local AgentCore task ID returned by CreateIdentityProviderSyncJob. This is not the synchronizationJobId of AgentIdentity. You must use the same workspace and identity provider when querying.
         self.task_id = task_id
 
     def validate(self):

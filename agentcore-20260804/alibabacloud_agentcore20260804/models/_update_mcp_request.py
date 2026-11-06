@@ -15,7 +15,7 @@ class UpdateMcpRequest(DaraModel):
     ):
         # The request body.
         self.body = body
-        # The client token used to ensure the idempotency of the request.
+        # The client token that is used to ensure request idempotency. This is a reserved query parameter. The current console backend does not read this parameter and does not provide idempotency guarantees such as deduplication or recovery of the original acceptance result based on this token.
         self.client_token = client_token
 
     def validate(self):
@@ -59,15 +59,15 @@ class UpdateMcpRequestBody(DaraModel):
     ):
         # The list of MCP service addresses.
         self.addresses = addresses
-        # The backend authentication configuration. When enabled is set to true, specify directProxy (name and value) for DIRECT_PROXY, specify the httpToMcp array (each item includes id, type, and credential; apiKey also requires position and name) for HTTP_TO_MCP, which supports multiple authentication objects where the first one is the default upstream credential, and specify codePackage (headerName and apiKey) for CODE_PACKAGE to verify MCP callers. HTTP_TO_MCP credentials are merged into the securitySchemes of Swagger.
+        # The backend authentication configuration. When enabled is set to true, specify directProxy (name and value) for DIRECT_PROXY, specify the httpToMcp array (each item includes id, type, and credential; apiKey also requires position and name) for HTTP_TO_MCP, and specify codePackage for CODE_PACKAGE. Multiple authentication objects are supported, and the first one serves as the default upstream credential. HTTP_TO_MCP credentials are merged into the securitySchemes of Swagger.
         self.auth = auth
         # The custom tags. Multiple tags are supported. Pass an empty list to clear the tags.
         self.custom_tags = custom_tags
-        # The deployment configuration patch for CODE_PACKAGE MCP, where object fields are merged hierarchically. To retain the current code package, omit CodeConfiguration.CodePackageToken and the server reuses the deployed code package. To replace the code package, provide a new non-empty token. CodePackageUrl is supported only in CreateMcp and not in updates.
+        # The deployment configuration patch for a CODE_PACKAGE MCP. Object fields are merged hierarchically. To retain the current code package, omit CodeConfiguration.CodePackageToken, and the server reuses the deployed code package. To replace the code package, provide a new non-empty token. CodePackageUrl is only supported in CreateMcp and is not supported during updates.
         self.deployment_config = deployment_config
         # The description.
         self.description = description
-        # The access permission mode. PUBLIC indicates public access, and CONTROLLED indicates that access is controlled based on permission rules.
+        # The access permission mode. PUBLIC indicates public access. CONTROLLED indicates that access is controlled based on permission rules.
         self.permission_mode = permission_mode
         # The Swagger configuration. Specify this field if the type is HTTP_TO_MCP.
         self.swagger_config = swagger_config
@@ -151,11 +151,11 @@ class UpdateMcpRequestBodyDeploymentConfig(DaraModel):
         proxy_configuration: main_models.UpdateMcpRequestBodyDeploymentConfigProxyConfiguration = None,
         runtime_configuration: main_models.UpdateMcpRequestBodyDeploymentConfigRuntimeConfiguration = None,
     ):
-        # The MCP entrypoint access control.
+        # The access control for the MCP entry point.
         self.access_control = access_control
         # The agent identity configuration.
         self.agent_identity_configuration = agent_identity_configuration
-        # The artifact type. Code indicates a ZIP code package. Container indicates a custom container.
+        # The artifact type. Code indicates a ZIP code package, and Container indicates a custom container.
         self.artifact_type = artifact_type
         # The code package configuration.
         self.code_configuration = code_configuration
@@ -328,21 +328,21 @@ class UpdateMcpRequestBodyDeploymentConfigRuntimeConfiguration(DaraModel):
         port: int = None,
         timeout: int = None,
     ):
-        # The CPU specification in cores. Default value: 0.25.
+        # The CPU specification, in cores. Default value: 0.25.
         self.cpu = cpu
-        # The ephemeral disk size in MB. Valid values: 512 and 10240.
+        # The ephemeral disk size, in MB. Valid values: 512 and 10240.
         self.disk_size = disk_size
         # The environment variables.
         self.environment_variables = environment_variables
         # The ARN of the RAM role used by user code to access downstream Alibaba Cloud resources.
         self.execution_role_arn = execution_role_arn
-        # Default value: 200.
+        # The number of concurrent requests per instance. Default value: 200.
         self.instance_concurrency = instance_concurrency
-        # The unit is MB. Default value: 512.
+        # The memory specification, in MB. Default value: 512.
         self.memory = memory
-        # Default value: 9000.
+        # The service port. Default value: 9000.
         self.port = port
-        # The unit is seconds. Default value: 300.
+        # The function timeout period, in seconds. Default value: 300.
         self.timeout = timeout
 
     def validate(self):
@@ -412,7 +412,7 @@ class UpdateMcpRequestBodyDeploymentConfigProxyConfiguration(DaraModel):
         self,
         enabled: bool = None,
     ):
-        # Specifies whether to enable the MCP proxy.
+        # Specifies whether the MCP proxy is enabled.
         self.enabled = enabled
 
     def validate(self):
@@ -530,7 +530,7 @@ class UpdateMcpRequestBodyDeploymentConfigOssMountConfigurationMountPoints(DaraM
         self.bucket_name = bucket_name
         # The path in the OSS bucket.
         self.bucket_path = bucket_path
-        # The endpoint of the OSS service.
+        # The OSS endpoint.
         self.endpoint = endpoint
         # The local mount directory.
         self.mount_dir = mount_dir
@@ -701,7 +701,7 @@ class UpdateMcpRequestBodyDeploymentConfigNasConfigurationMountPoints(DaraModel)
         self.enable_tls = enable_tls
         # The local mount directory.
         self.mount_dir = mount_dir
-        # The address of the NAS server.
+        # The NAS server address.
         self.server_addr = server_addr
 
     def validate(self):
@@ -804,7 +804,7 @@ class UpdateMcpRequestBodyDeploymentConfigLogConfiguration(DaraModel):
         self.enable_instance_metrics = enable_instance_metrics
         # Specifies whether to collect request metrics.
         self.enable_request_metrics = enable_request_metrics
-        # The start rule for Function Compute log splitting.
+        # The start rule for Function Compute log segmentation.
         self.log_begin_rule = log_begin_rule
         # The name of the Logstore.
         self.logstore = logstore
@@ -860,7 +860,7 @@ class UpdateMcpRequestBodyDeploymentConfigHookConfiguration(DaraModel):
         self,
         hooks: List[main_models.UpdateMcpRequestBodyDeploymentConfigHookConfigurationHooks] = None,
     ):
-        # Executes PRE_LIST_TOOLS, PRE_CALL_TOOL, POST_LIST_TOOLS, and POST_CALL_TOOL hooks in the array order.
+        # The ordered list of hooks. Executes PRE_LIST_TOOLS, PRE_CALL_TOOL, POST_LIST_TOOLS, and POST_CALL_TOOL hooks in array order.
         self.hooks = hooks
 
     def validate(self):
@@ -908,13 +908,13 @@ class UpdateMcpRequestBodyDeploymentConfigHookConfigurationHooks(DaraModel):
         self.description = description
         # Specifies whether to enable the hook.
         self.enabled = enabled
-        # The event of the hook.
+        # The hook event.
         self.event = event
-        # The request headers of the hook.
+        # The hook request headers.
         self.headers = headers
-        # The timeout period of the hook, in milliseconds.
+        # The timeout period in milliseconds.
         self.timeout = timeout
-        # The callback URL of the hook.
+        # The hook callback URL.
         self.url = url
 
     def validate(self):
@@ -988,15 +988,15 @@ class UpdateMcpRequestBodyDeploymentConfigContainerConfiguration(DaraModel):
         self.acr_instance_id = acr_instance_id
         # The startup command.
         self.command = command
-        # The entrypoint parameters of the container.
+        # The entrypoint arguments for the container.
         self.entrypoint = entrypoint
-        # The URL of the container image.
+        # The address of the container image.
         self.image = image
         # The type of the image registry.
         self.image_registry_type = image_registry_type
-        # The MCP runtime mode. Custom containers must currently expose standard MCP by themselves. Valid value: SELF_HOSTED.
+        # The MCP runtime mode. Custom containers must expose standard MCP themselves. Set the value to SELF_HOSTED.
         self.mcp_runtime_mode = mcp_runtime_mode
-        # The source type of the container. Currently fixed to CONTAINER_IMAGE.
+        # The source type of the container. Currently, this is fixed to CONTAINER_IMAGE.
         self.source_type = source_type
 
     def validate(self):
@@ -1066,7 +1066,7 @@ class UpdateMcpRequestBodyDeploymentConfigCodeConfiguration(DaraModel):
         self.code_package_token = code_package_token
         # The complete startup command, passed sequentially by parameter boundaries. For example, when using supergateway to start a stdio MCP, pass supergateway, --stdio, the complete subcommand, and the remaining parameters.
         self.command = command
-        # The runtime of the code package. Valid values: python3.13, nodejs22, and java17.
+        # The code package runtime: python3.13, nodejs22, or java17.
         self.language = language
 
     def validate(self):
@@ -1163,11 +1163,11 @@ class UpdateMcpRequestBodyDeploymentConfigAccessControl(DaraModel):
         enabled: bool = None,
         mode: str = None,
     ):
-        # References an AgentCore credential when the mode is CREDENTIAL.
+        # The AgentCore credential referenced when the mode is CREDENTIAL.
         self.credential_id = credential_id
-        # Specifies whether to enable entrypoint access control.
+        # Specifies whether to enable access control for the MCP entry point.
         self.enabled = enabled
-        # Specifies the access control mode. ANONYMOUS indicates anonymous access. CREDENTIAL indicates the use of AgentCore access credentials.
+        # The access control mode. ANONYMOUS indicates anonymous access, and CREDENTIAL indicates the use of AgentCore access credentials.
         self.mode = mode
 
     def validate(self):
@@ -1214,7 +1214,7 @@ class UpdateMcpRequestBodyAuth(DaraModel):
         self.code_package = code_package
         # The direct proxy authentication configuration.
         self.direct_proxy = direct_proxy
-        # Specifies whether to enable the configuration.
+        # Specifies whether the configuration is enabled.
         self.enabled = enabled
         # The list of HTTP_TO_MCP authentication configurations.
         self.http_to_mcp = http_to_mcp

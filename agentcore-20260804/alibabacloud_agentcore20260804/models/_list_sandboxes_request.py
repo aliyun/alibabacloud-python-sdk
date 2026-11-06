@@ -12,13 +12,13 @@ class ListSandboxesRequest(DaraModel):
         search_text: str = None,
         session_id: str = None,
     ):
-        # The maximum number of records per page. Default value: 20.
+        # The maximum number of entries to return per page. Default value: 20. Valid values: 1 to 100.
         self.max_results = max_results
-        # The pagination token for querying the next page. When paginating, keep workspaceId, agentId, searchText, sessionId, and maxResults unchanged.
+        # The cursor for querying the next page. When paginating, keep `workspaceId`, `agentId`, `searchText`, `sessionId`, and `maxResults` unchanged.
         self.next_token = next_token
-        # Performs a case-insensitive fuzzy search by sandbox ID fragment.
+        # The fragment of the Sandbox ID for a case-insensitive fuzzy search.
         self.search_text = search_text
-        # Performs a case-insensitive fuzzy search by active session ID fragment.
+        # The fragment of the current valid session ID for a case-insensitive fuzzy search.
         self.session_id = session_id
 
     def validate(self):

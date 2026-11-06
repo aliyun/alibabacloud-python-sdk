@@ -13,7 +13,7 @@ class PrecheckSkillUploadViaOssResponseBody(DaraModel):
         data: List[main_models.PrecheckSkillUploadViaOssResponseBodyData] = None,
         request_id: str = None,
     ):
-        # The response data.
+        # The returned data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -71,17 +71,17 @@ class PrecheckSkillUploadViaOssResponseBodyData(DaraModel):
         target_version: str = None,
         workspace_id: str = None,
     ):
-        # The draft mode: HEAD or VERSIONED, determined by the server.
+        # The draft mode. Valid values: HEAD and VERSIONED. The value is determined by the server.
         self.draft_mode = draft_mode
         # The version currently being edited.
         self.editing_version = editing_version
-        # The entry path of the Skill package.
+        # The entry path of the skill package.
         self.entry_path = entry_path
-        # Indicates whether the Skill already exists.
+        # Indicates whether the skill already exists.
         self.exists = exists
-        # The content revision identifier of the persistent draft, used to determine whether the local cache has expired. Returned only in HEAD draft mode.
+        # The content revision identifier of the persistent draft, which is used to determine whether the local cache has expired. This parameter is returned only in HEAD draft mode.
         self.head_revision = head_revision
-        # The status of the persistent draft: draft, reviewing, or reviewed. Returned only in HEAD draft mode.
+        # The status of the persistent draft. Valid values: draft, reviewing, and reviewed. This parameter is returned only in HEAD draft mode.
         self.head_status = head_status
         # The highest published version.
         self.max_published_version = max_published_version
@@ -89,13 +89,13 @@ class PrecheckSkillUploadViaOssResponseBodyData(DaraModel):
         self.owner = owner
         # The version parsed from the uploaded content.
         self.parsed_version = parsed_version
-        # The dry run result code.
+        # The precheck result code. HEAD_EXISTS indicates that the upload will overwrite the existing persistent draft and requires secondary confirmation. HEAD_LOCKED indicates that the draft is under review and cannot be overwritten. You must withdraw the review first.
         self.precheck_code = precheck_code
         # The reason description.
         self.reason = reason
         # The version currently under review.
         self.reviewing_version = reviewing_version
-        # The Skill name.
+        # The skill name.
         self.skill_name = skill_name
         # The target version.
         self.target_version = target_version

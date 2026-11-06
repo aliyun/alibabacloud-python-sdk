@@ -11,11 +11,11 @@ class DataI18nValue(DaraModel):
         name: str = None,
         readme: str = None,
     ):
-        # The MCP service description in the corresponding language.
+        # The MCP service description in this language.
         self.description = description
-        # The MCP marketplace template name in the corresponding language.
+        # The MCP marketplace template name in this language.
         self.name = name
-        # The MCP marketplace template usage instructions in the corresponding language.
+        # The MCP marketplace template instructions in this language.
         self.readme = readme
 
     def validate(self):

@@ -15,17 +15,17 @@ class DeleteModelConnectionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business status code. The value SUCCESS indicates success.
+        # The business status code. A value of SUCCESS indicates success.
         self.code = code
-        # The identifier of the model connection that has been accepted for deletion.
+        # The identifier of the model connection for which the deletion task has been accepted.
         self.data = data
-        # The HTTP status code. The value 200 indicates success.
+        # The HTTP status code. A value of 200 indicates success.
         self.http_status_code = http_status_code
-        # The request processing result message.
+        # The message indicating the request processing result.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

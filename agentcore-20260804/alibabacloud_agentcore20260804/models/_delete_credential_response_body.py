@@ -89,7 +89,7 @@ class DeleteCredentialResponseBodyData(DaraModel):
     ):
         # The credential ID.
         self.credential_id = credential_id
-        # The credential name. It must be unique within the workspace, contain only letters, digits, periods, underscores, and hyphens, and be 3 to 128 characters in length. Runtime reserved names cannot be used.
+        # The credential name. The name must be unique within the workspace, contain only letters, digits, periods, underscores, and hyphens, and be 3 to 99 characters in length. You cannot use runtime reserved names.
         self.name = name
         # The workspace ID.
         self.workspace_id = workspace_id

@@ -19,7 +19,7 @@ class CreateIdentityProviderResponseBody(DaraModel):
     ):
         # The business status code.
         self.code = code
-        # The binding information for the external identity provider.
+        # The binding information of the external identity provider.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -95,30 +95,30 @@ class CreateIdentityProviderResponseBodyData(DaraModel):
         sync_scope: main_models.CreateIdentityProviderResponseBodyDataSyncScope = None,
         workspace_id: str = None,
     ):
-        # The actual SAML configuration is read back on demand only by the GetIdentityProvider operation. SCIM queries and preparations return the actual received status and URL.
+        # The actual SAML configuration is read back on demand only in GetIdentityProvider. SCIM queries and preparations return the actual receiving status and URL.
         self.configuration = configuration
         # The type of the external identity provider. Valid values: DingTalk and Feishu.
         self.identity_provider_type = identity_provider_type
         # Specifies whether to allow workspace users to log on through the external identity provider.
         self.login_enabled = login_enabled
-        # The logon protocol. Currently, only SAML is supported. This parameter may not be returned if no valid configuration is saved. Placeholder initialization with OIDC is not supported.
+        # Only SAML is currently supported. This parameter may not be returned if no valid configuration is saved. Placeholder initialization with OIDC is not supported.
         self.protocol = protocol
-        # The SAML logon configuration. Input supports either XML or complete manual input. Queries return the standardized configuration and do not echo the original XML. This parameter can be omitted if not configured.
+        # The input supports either XML or complete manual entry. The query returns the standardized configuration and does not echo the original XML. This parameter can be omitted if it is not configured.
         self.saml = saml
         # The binding status. Valid values:
         # - CONFIGURED: The configuration is accepted and waiting for the user pool to be activated.
         # - SYNCING: Organization members are being synchronized.
-        # - SYNCED: Organization member synchronization is complete.
+        # - SYNCED: The synchronization of organization members is complete.
         # - READY: The binding is in effect.
-        # - SYNC_FAILED: Organization member synchronization failed.
+        # - SYNC_FAILED: The synchronization of organization members failed.
         # - UPDATING: The configuration is being updated.
-        # - UPDATE_FAILED: Configuration update failed.
+        # - UPDATE_FAILED: The configuration update failed.
         # - DISCONNECTING: The binding is being disconnected.
-        # - DISCONNECT_FAILED: Disconnection failed.
+        # - DISCONNECT_FAILED: The disconnection failed.
         self.status = status
-        # Specifies whether to enable organization member synchronization. If enabled, the external identity provider synchronizes organization members as workspace users.
+        # Specifies whether to enable organization member synchronization. When enabled, organization members are synchronized as workspace users by the external identity provider.
         self.sync_enabled = sync_enabled
-        # Retains the department-based synchronization scope definition. If omitted during creation, the default value is AllAuthorized. The first vendor synchronization is determined by syncOnBind. If omitted or set to null during an update, the original value is retained. Updating and saving the scope does not automatically perform full synchronization.
+        # Uses the department-based synchronization scope definition. If this parameter is omitted during creation, the default value is AllAuthorized. The initial provider synchronization is determined by syncOnBind. If this parameter is omitted or set to null during an update, the original value is retained. Updating and saving the scope does not automatically trigger full synchronization.
         self.sync_scope = sync_scope
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -205,9 +205,9 @@ class CreateIdentityProviderResponseBodyDataSyncScope(DaraModel):
         department_ids: List[str] = None,
         mode: str = None,
     ):
-        # When the mode is SelectedDepartments, the list must contain at least one non-empty department ID, which should be obtained from ListIdentityProviderDepartments. When the mode is AllAuthorized, pass an empty array or omit this parameter.
+        # When the mode is SelectedDepartments, this parameter must contain at least one non-empty department ID, which should be obtained from ListIdentityProviderDepartments. When the mode is AllAuthorized, pass an empty array or omit this parameter.
         self.department_ids = department_ids
-        # AllAuthorized: the full authorization scope, which is limited by the application address book authorization. SelectedDepartments: the selected departments and all their sub-departments. When explicitly submitting syncScope, you must provide a valid mode, which is verified by the backend.
+        # AllAuthorized: the entire authorized scope, which is limited by the application address book authorization. SelectedDepartments: the selected departments and all their sub-departments. When you explicitly submit syncScope, you must provide a valid mode, which is verified by the backend.
         self.mode = mode
 
     def validate(self):
@@ -244,13 +244,13 @@ class CreateIdentityProviderResponseBodyDataSaml(DaraModel):
         login_url: str = None,
         x_509certificates: List[str] = None,
     ):
-        # The SAML binding type. Valid values: HTTP-Redirect and HTTP-POST. This parameter is required for manual input. Queries return the short name.
+        # HTTP-Redirect or HTTP-POST. This parameter is required when you manually enter the configuration. The query returns the short name.
         self.binding_type = binding_type
-        # The entity identifier of the identity provider (IdP). This parameter is required for manual input, must not be empty, and cannot exceed 2,048 characters. Existing configurations do not support replacement. This is different from the entity ID of the service provider (SP) returned in queries.
+        # This parameter is required when you manually enter the configuration. It cannot be empty and cannot exceed 2,048 characters. Existing configurations cannot be replaced. This is different from the Entity ID of the service provider (SP) returned in the query.
         self.entity_id = entity_id
-        # The logon URL of the IdP. This parameter is required for manual input and must be an absolute HTTPS URL without user credentials or fragments.
+        # This parameter is required when you manually enter the configuration. It must be an absolute HTTPS URL and cannot contain user credentials or fragments.
         self.login_url = login_url
-        # The list of IdP signing certificates. For manual input, a non-empty array is required, and PEM X.509 certificate text must be used. The current validity period is verified. A maximum of two certificates are allowed after deduplication.
+        # This parameter is required when you manually enter the configuration. It must be a non-empty array that uses PEM X.509 certificate text. The current validity period is verified, and a maximum of two certificates are allowed after deduplication.
         self.x_509certificates = x_509certificates
 
     def validate(self):
@@ -299,13 +299,13 @@ class CreateIdentityProviderResponseBodyDataConfiguration(DaraModel):
         login_url: str = None,
         sso_status: str = None,
     ):
-        # The SAML binding type. Valid values: HTTP-Redirect and HTTP-POST. This parameter is required for manual input. Queries return the short name.
+        # HTTP-Redirect or HTTP-POST. This parameter is required when you manually enter the configuration. The query returns the short name.
         self.binding_type = binding_type
-        # The entity identifier of the identity provider (IdP). This parameter is required for manual input, must not be empty, and cannot exceed 2,048 characters. Existing configurations do not support replacement. This is different from the entity ID of the service provider (SP) returned in queries.
+        # This parameter is required when you manually enter the configuration. It cannot be empty and cannot exceed 2,048 characters. Existing configurations cannot be replaced. This is different from the Entity ID of the service provider (SP) returned in the query.
         self.entity_id = entity_id
-        # The logon URL of the IdP. This parameter is required for manual input and must be an absolute HTTPS URL without user credentials or fragments.
+        # This parameter is required when you manually enter the configuration. It must be an absolute HTTPS URL and cannot contain user credentials or fragments.
         self.login_url = login_url
-        # The actual SSO logon status of AgentIdentity. Valid values: Enabled and Disabled. This value is not equivalent to the expected loginEnabled value saved in the access configuration (AC).
+        # The actual switch value is Enabled or Disabled, which differs from the expected loginEnabled value saved in AC.
         self.sso_status = sso_status
 
     def validate(self):

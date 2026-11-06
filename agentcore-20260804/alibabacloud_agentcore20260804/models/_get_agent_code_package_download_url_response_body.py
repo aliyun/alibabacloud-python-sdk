@@ -94,7 +94,7 @@ class GetAgentCodePackageDownloadUrlResponseBodyData(DaraModel):
     ):
         # The CRC64 value of the code package object.
         self.crc_64 = crc_64
-        # The time-limited, read-only download URL for the code package.
+        # The time-limited read-only download URL for the code package.
         self.download_url = download_url
         # The ETag of the code package object.
         self.etag = etag
@@ -102,7 +102,7 @@ class GetAgentCodePackageDownloadUrlResponseBodyData(DaraModel):
         self.expires_at = expires_at
         # The original file name of the code package.
         self.file_name = file_name
-        # The compressed size of the code package.
+        # The compressed file size of the code package, in bytes.
         self.file_size = file_size
         # The format of the code package.
         self.format = format

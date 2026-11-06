@@ -12,7 +12,7 @@ class ListAgentCodeRuntimesRequest(DaraModel):
     ):
         # The maximum number of records per page.
         self.max_results = max_results
-        # The token for the next page.
+        # The next page token.
         self.next_token = next_token
 
     def validate(self):

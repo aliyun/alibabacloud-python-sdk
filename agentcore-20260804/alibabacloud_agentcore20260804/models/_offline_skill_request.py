@@ -41,11 +41,9 @@ class OfflineSkillRequestBody(DaraModel):
         scope: str = None,
         skill_version: str = None,
     ):
-        # The operation scope. Valid values:
-        # - skill: the entire Skill.
-        # - version: a specified version.
+        # The scope of the operation. Valid values: skill (the entire skill) and version (a specified version).
         self.scope = scope
-        # The Skill version number.
+        # The skill version number.
         self.skill_version = skill_version
 
     def validate(self):

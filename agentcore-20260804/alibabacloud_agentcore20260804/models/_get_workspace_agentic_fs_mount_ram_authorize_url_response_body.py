@@ -85,7 +85,7 @@ class GetWorkspaceAgenticFsMountRamAuthorizeUrlResponseBodyData(DaraModel):
         self,
         authorize_url: str = None,
     ):
-        # The RAM authorization URL. After you open the URL and complete the authorization, call the verification API.
+        # The RAM authorization URL. After you open the URL and complete the authorization, call the verification operation.
         self.authorize_url = authorize_url
 
     def validate(self):

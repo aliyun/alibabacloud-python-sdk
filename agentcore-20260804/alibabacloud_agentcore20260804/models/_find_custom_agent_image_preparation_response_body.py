@@ -17,7 +17,7 @@ class FindCustomAgentImagePreparationResponseBody(DaraModel):
     ):
         # The business status code.
         self.code = code
-        # The preparation query result. For the asynchronous execution status, refer to the phase.
+        # The preparation query result. For the asynchronous execution status, see phase.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -91,13 +91,13 @@ class FindCustomAgentImagePreparationResponseBodyData(DaraModel):
     ):
         # The ID of the target agent.
         self.agent_id = agent_id
-        # The security error. This parameter is returned only when the task fails. Otherwise, the value is null.
+        # The error information. Returned only when the operation fails. Otherwise, null is returned.
         self.error = error
-        # The phase where the failure occurred. This parameter is returned only when the phase is FAILED. Otherwise, the value is null.
+        # The phase where the failure occurred. Returned only when the status is FAILED. Otherwise, null is returned.
         self.failed_phase = failed_phase
-        # The current phase. Only SUCCEEDED indicates that the target version is deployed successfully.
+        # The current phase. Only SUCCEEDED indicates that the target version deployment succeeded.
         self.phase = phase
-        # The ID of the task submitted in the console.
+        # The ID of the preparation task submitted from the console.
         self.preparation_id = preparation_id
 
     def validate(self):
@@ -152,9 +152,9 @@ class FindCustomAgentImagePreparationResponseBodyDataError(DaraModel):
         code: str = None,
         message: str = None,
     ):
-        # The business error code for image preparation. This code is used to identify the failure type. For the specific cause, refer to the message.
+        # The business error code for image preparation. Used to identify the failure type. For the specific cause, see message.
         self.code = code
-        # The specific cause of the failure. This may include underlying errors such as image not found, authentication failure, network timeout, or certificate verification error. Passwords, tokens, or authentication headers are not returned. If the underlying system does not provide a cause, a general description is returned.
+        # The specific cause of the failure, which may include underlying errors such as image not found, authentication failure, network timeout, or certificate verification error. Passwords, tokens, or authentication headers are not returned. If the underlying system does not provide a specific cause, a general description is returned.
         self.message = message
 
     def validate(self):

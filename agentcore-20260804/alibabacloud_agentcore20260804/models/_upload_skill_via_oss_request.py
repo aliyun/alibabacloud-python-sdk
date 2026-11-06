@@ -45,13 +45,13 @@ class UploadSkillViaOssRequestBody(DaraModel):
     ):
         # The commit message. This parameter is optional.
         self.commit_msg = commit_msg
-        # The OSS object name (path).
+        # The name or path of the OSS object.
         # 
         # This parameter is required.
         self.oss_object_name = oss_object_name
-        # Specifies whether to overwrite an existing Skill. Default value: false.
+        # Specifies whether to overwrite an existing skill. Default value: false.
         self.overwrite = overwrite
-        # The target upload version number. This parameter is optional and serves as a fallback when the ZIP package does not contain version information.
+        # The target version to upload. This parameter is optional and serves as a fallback when no version information is included in the ZIP package.
         self.target_version = target_version
 
     def validate(self):

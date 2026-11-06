@@ -44,7 +44,7 @@ class GetAgentCodePackageUploadUrlRequestBody(DaraModel):
         file_size: int = None,
         format: str = None,
     ):
-        # The filename of the code package.
+        # The name of the code package file.
         # 
         # This parameter is required.
         self.file_name = file_name

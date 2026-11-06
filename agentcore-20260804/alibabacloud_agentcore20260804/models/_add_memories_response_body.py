@@ -19,13 +19,13 @@ class AddMemoriesResponseBody(DaraModel):
     ):
         # The business status code.
         self.code = code
-        # The result of the write operation.
+        # The write result.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
         # The response message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
@@ -88,9 +88,9 @@ class AddMemoriesResponseBodyData(DaraModel):
         memories: List[main_models.AddMemoriesResponseBodyDataMemories] = None,
         task_id: str = None,
     ):
-        # The memory references returned only when sync is set to true. An empty array is allowed. This parameter is not returned together with taskId.
+        # The memory references. This parameter is returned only when sync is set to true. An empty array is allowed. This parameter is not returned together with taskId.
         self.memories = memories
-        # The ID of the task returned only when sync is set to false. This parameter is not returned together with memories.
+        # The task ID. This parameter is returned only when sync is set to false. This parameter is not returned together with memories.
         self.task_id = task_id
 
     def validate(self):
@@ -132,7 +132,7 @@ class AddMemoriesResponseBodyDataMemories(DaraModel):
         self,
         memory_id: str = None,
     ):
-        # The ID of the long-term memory.
+        # The long-term memory ID.
         self.memory_id = memory_id
 
     def validate(self):

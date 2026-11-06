@@ -19,9 +19,9 @@ class UpdateManagedAgentResponseBody(DaraModel):
     ):
         # The business status code. The value is SUCCESS if the request is successful.
         self.code = code
-        # The details of the managed agent.
+        # The details of the managed Harness agent.
         self.data = data
-        # The HTTP status code. The value is 200 if the request is successful.
+        # The HTTP status code. 200 indicates success.
         self.http_status_code = http_status_code
         # The request processing result message.
         self.message = message
@@ -115,13 +115,13 @@ class UpdateManagedAgentResponseBodyData(DaraModel):
         updated_at: str = None,
         workspace_id: str = None,
     ):
-        # API_KEY 表示使用 API Key；USER 表示使用用户身份。
+        # The inbound access mode.
         self.access_mode = access_mode
-        # 仅 accessMode 为 USER 时返回：ALL 表示全部用户，SPECIFIED 表示指定用户。
+        # The user access scope.
         self.access_scope = access_scope
-        # The managed agent ID.
+        # The ID of the managed Harness agent.
         self.agent_id = agent_id
-        # The list of additional AgenticFS mounts. The total number of AgenticFS mounts and OSS mounts cannot exceed 10.
+        # The NAS storage mount configuration. Currently, only the AgenticFS type is supported, which is used to mount file directories in access points to agent runtime instances. The total number of NAS mounts and ossMounts cannot exceed 10.
         self.agentic_fs_mounts = agentic_fs_mounts
         # The explicitly configured skills.
         self.configured_skills = configured_skills
@@ -131,23 +131,23 @@ class UpdateManagedAgentResponseBodyData(DaraModel):
         self.created_at = created_at
         # The deployment type.
         self.deploy_type = deploy_type
-        # The description of the managed agent.
+        # The description of the managed Harness agent.
         self.description = description
-        # The environment configuration.
+        # The environment configuration information.
         self.environment = environment
         # The agent runtime framework.
         self.harness = harness
-        # The agent instruction, which is used to guide the behavior of the agent.
+        # The agent instructions used to guide the behavior of the agent.
         self.instruction = instruction
-        # The latest specification version.
+        # The latest specification version number.
         self.latest_spec_version = latest_spec_version
         # The status of the latest version.
         self.latest_version_status = latest_version_status
-        # The model configuration.
+        # The model configuration information.
         self.model = model
-        # The name of the managed agent.
+        # The name of the managed Harness agent.
         self.name = name
-        # The network configuration.
+        # The network configuration information.
         self.network = network
         # The list of OSS mounts. A maximum of 10 items are allowed.
         self.oss_mounts = oss_mounts
@@ -157,11 +157,11 @@ class UpdateManagedAgentResponseBodyData(DaraModel):
         self.region_id = region_id
         # The runtime configuration information.
         self.runtime = runtime
-        # The number of managed agent instances grouped by sandbox phase. Current keys: PENDING (creating or initializing), RUNNING (running), HIBERNATING (hibernating), HIBERNATED (hibernated), RESUMING (resuming), TERMINATING (terminating), and FAILED (runtime failure). Only phases that actually occur are returned, and missing keys are treated as 0. This field is a dynamic map and new keys may be added in the future. You can use FAILED > 0 to check for abnormal instances.
+        # The number of managed Harness agent instances grouped by sandbox phase. Current keys: PENDING (creating or initializing), RUNNING (running), HIBERNATING (hibernating), HIBERNATED (hibernated), RESUMING (resuming), TERMINATING (terminating), and FAILED (failed at runtime). Only the phases that actually occur are returned. Missing keys are treated as 0. This field is a dynamic mapping and new keys may be added in the future. The frontend can use FAILED > 0 to determine whether abnormal instances exist.
         self.sandbox_phase_counts = sandbox_phase_counts
         # The list of skill configurations.
         self.skills = skills
-        # The status of the managed agent.
+        # The status of the managed Harness agent.
         self.status = status
         # The list of sub-agent configurations.
         self.sub_agents = sub_agents
@@ -448,11 +448,11 @@ class UpdateManagedAgentResponseBodyDataTools(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # The tool name.
+        # The name of the tool.
         # 
         # This parameter is required.
         self.name = name
-        # The tool type.
+        # The type of the tool.
         # 
         # This parameter is required.
         self.type = type
@@ -488,7 +488,7 @@ class UpdateManagedAgentResponseBodyDataTemplate(DaraModel):
         self,
         ai_registry: main_models.UpdateManagedAgentResponseBodyDataTemplateAiRegistry = None,
     ):
-        # The AI registry template configuration.
+        # The AI Registry template configuration.
         self.ai_registry = ai_registry
 
     def validate(self):
@@ -519,11 +519,11 @@ class UpdateManagedAgentResponseBodyDataTemplateAiRegistry(DaraModel):
         name: str = None,
         version: str = None,
     ):
-        # The name of the template in the AI registry.
+        # The name of the template in the AI Registry.
         # 
         # This parameter is required.
         self.name = name
-        # The version of the template in the AI registry.
+        # The version of the template in the AI Registry.
         self.version = version
 
     def validate(self):
@@ -559,15 +559,15 @@ class UpdateManagedAgentResponseBodyDataSubAgents(DaraModel):
         name: str = None,
         skills: List[main_models.UpdateManagedAgentResponseBodyDataSubAgentsSkills] = None,
     ):
-        # The sub-agent instruction.
+        # The instruction for the sub-agent.
         # 
         # This parameter is required.
         self.instruction = instruction
-        # The sub-agent name.
+        # The name of the sub-agent.
         # 
         # This parameter is required.
         self.name = name
-        # The list of sub-agent skills.
+        # The list of skills for the sub-agent.
         self.skills = skills
 
     def validate(self):
@@ -616,9 +616,9 @@ class UpdateManagedAgentResponseBodyDataSubAgentsSkills(DaraModel):
         name: str = None,
         version: str = None,
     ):
-        # The skill name.
+        # The name of the skill.
         self.name = name
-        # The skill version.
+        # The version of the skill.
         self.version = version
 
     def validate(self):
@@ -660,17 +660,17 @@ class UpdateManagedAgentResponseBodyDataSkills(DaraModel):
     ):
         # The applied runtime version. This field is read-only.
         self.applied_version = applied_version
-        # Specifies whether the skill is from a fixed template. This field is read-only. Template items cannot be removed.
+        # Indicates whether the skill is from a fixed template. This field is read-only. Template items cannot be removed.
         self.from_template = from_template
-        # The skill name.
+        # The name of the skill.
         self.name = name
         # The current target version. This field is read-only.
         self.resolved_version = resolved_version
-        # The source type of the skill. Valid values: REFERENCE (references the AI registry) and STATIC (provided statically within the package).
+        # The source type of the skill. REFERENCE indicates that the skill references an AI Registry asset. STATIC indicates that the skill is statically provided with the deployment package.
         self.source_type = source_type
-        # The skill version.
+        # The current target version compatible with legacy clients. New clients use resolvedVersion and determine the applied runtime version based on appliedVersion.
         self.version = version
-        # The referenced version selector. If omitted, the default is LABEL/latest.
+        # The version selector for the skill reference. Supports LABEL for tag-based selection and VERSION for specific version selection. If omitted, LABEL/latest is used. Do not specify a selector for STATIC sources.
         self.version_selector = version_selector
 
     def validate(self):
@@ -737,9 +737,9 @@ class UpdateManagedAgentResponseBodyDataSkillsVersionSelector(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The type of the version selector. Valid values: LABEL (by tag) and VERSION (by specific version).
+        # The type of the version selector. Valid values: LABEL (selects by tag) and VERSION (selects by specific version).
         self.type = type
-        # The value of the selector. If the type is LABEL, this value is the tag name, such as latest. If the type is VERSION, this value is the specific version number.
+        # The value of the selector. If the type is LABEL, specify a tag name such as latest. If the type is VERSION, specify a specific version number.
         self.value = value
 
     def validate(self):
@@ -779,7 +779,7 @@ class UpdateManagedAgentResponseBodyDataRuntime(DaraModel):
         # 
         # This parameter is required.
         self.compute = compute
-        # The sandbox auto scaling and session configuration.
+        # The automatic scaling and session configurations for the sandbox.
         self.hpa = hpa
         # The session policy configuration.
         # 
@@ -874,15 +874,15 @@ class UpdateManagedAgentResponseBodyDataRuntimeHpa(DaraModel):
         min_sandbox_count: int = None,
         session_ttl_seconds: int = None,
     ):
-        # Specifies whether to enable auto scaling. This parameter is required and validated by the backend when HPA is present.
+        # Specifies whether elastic scaling is enabled in the current configuration.
         self.enabled = enabled
-        # The maximum number of active sessions per sandbox. This parameter is required and validated by the backend when HPA is present.
+        # The maximum number of concurrent sessions per instance in the current configuration.
         self.max_concurrent_sessions_per_sandbox = max_concurrent_sessions_per_sandbox
-        # The maximum number of sandboxes. This parameter is required and must be greater than or equal to the minimum value when HPA is enabled.
+        # The maximum number of instances in the current configuration.
         self.max_sandbox_count = max_sandbox_count
-        # The minimum number of sandboxes. This parameter is required when HPA is enabled.
+        # The minimum number of instances in the current configuration.
         self.min_sandbox_count = min_sandbox_count
-        # The idle timeout in seconds before an inactive session is reclaimed. This parameter is required and validated by the backend when HPA is present.
+        # The maximum idle time for a session in the current configuration, in seconds.
         self.session_ttl_seconds = session_ttl_seconds
 
     def validate(self):
@@ -934,7 +934,7 @@ class UpdateManagedAgentResponseBodyDataRuntimeCompute(DaraModel):
         self,
         compute_class: str = None,
     ):
-        # The compute class.
+        # The compute specifications.
         # 
         # This parameter is required.
         self.compute_class = compute_class
@@ -1013,13 +1013,13 @@ class UpdateManagedAgentResponseBodyDataOssMounts(DaraModel):
         path: str = None,
         read_only: bool = None,
     ):
-        # The name of the OSS bucket. This field is required for each mount item and validated by the backend.
+        # The name of the OSS bucket. This parameter is required and validated by the backend for each mount item.
         self.bucket_name = bucket_name
-        # The absolute mount path in the container. This field is required for each mount item and validated by the backend.
+        # The absolute mount path in the container, such as /data/train. Mount targets cannot be duplicated or form parent-child overwrites, and must avoid platform reserved directories.
         self.mount_path = mount_path
-        # The relative object prefix in the bucket. If not specified, the entire bucket is mounted.
+        # The non-empty relative directory prefix in the currently configured bucket.
         self.path = path
-        # Specifies whether to mount the bucket in read-only mode. If not specified, the default value is false.
+        # Specifies whether the mount is read-only. Default value: false.
         self.read_only = read_only
 
     def validate(self):
@@ -1107,7 +1107,7 @@ class UpdateManagedAgentResponseBodyDataNetworkAccessVpc(DaraModel):
         self,
         enabled: bool = None,
     ):
-        # Specifies whether to allow VPC access.
+        # Specifies whether to allow access to the VPC.
         self.enabled = enabled
 
     def validate(self):
@@ -1135,7 +1135,7 @@ class UpdateManagedAgentResponseBodyDataNetworkAccessInternet(DaraModel):
         self,
         enabled: bool = None,
     ):
-        # Specifies whether to allow Internet access.
+        # Specifies whether to allow access to the Internet.
         self.enabled = enabled
 
     def validate(self):
@@ -1169,7 +1169,7 @@ class UpdateManagedAgentResponseBodyDataModel(DaraModel):
         self.model_connection_id = model_connection_id
         # The upstream model name.
         self.model_name = model_name
-        # The model token quota configuration and the quota usage status for the current period. This field is empty if no quota is configured.
+        # The model token quota configuration and the quota usage status for the current cycle. This field is empty if no quota is configured.
         self.quota = quota
 
     def validate(self):
@@ -1221,15 +1221,15 @@ class UpdateManagedAgentResponseBodyDataModelQuota(DaraModel):
         self.enabled = enabled
         # The quota limit type. Currently, only token is supported.
         self.limit_type = limit_type
-        # Indicates whether the quota is exceeded for the current period. This is a read-only field returned by the backend.
+        # Indicates whether the quota is exceeded in the current period. This field is read-only and returned by the backend.
         self.over_limit = over_limit
-        # The quota statistical period. A value of day indicates daily, and a value of month indicates monthly.
+        # The statistical period of the quota. Valid values: day and month.
         self.period_type = period_type
-        # The gateway quota rule status. This is a read-only field returned by the backend.
+        # The status of the gateway quota rule. This field is read-only and returned by the backend.
         self.rule_status = rule_status
-        # The maximum number of tokens that can be consumed in a single period.
+        # The maximum number of tokens allowed to be consumed in a single period.
         self.usage_limit = usage_limit
-        # The number of tokens consumed in the current period. This is a read-only field returned by the backend.
+        # The number of tokens consumed in the current period. This field is read-only and returned by the backend.
         self.used_amount = used_amount
 
     def validate(self):
@@ -1333,9 +1333,9 @@ class UpdateManagedAgentResponseBodyDataHarnessConfiguration(DaraModel):
         connector_service_account_key: str = None,
         connector_service_account_name: str = None,
     ):
-        # The connector service account key.
+        # The ID of the connector account key record bound to qodercli. This is not the original service account key.
         self.connector_service_account_key = connector_service_account_key
-        # The connector service account name.
+        # The name of the connector account bound to qodercli.
         self.connector_service_account_name = connector_service_account_name
 
     def validate(self):
@@ -1501,11 +1501,11 @@ class UpdateManagedAgentResponseBodyDataConfiguredSkills(DaraModel):
         # 
         # This parameter is required.
         self.name = name
-        # The source type of the skill. Valid values: REFERENCE (references the AI registry) and STATIC (provided statically within the package).
+        # The source type of the skill. REFERENCE indicates that the skill references an AI Registry asset. STATIC indicates that the skill is statically provided with the deployment package.
         self.source_type = source_type
         # The legacy compatibility field. For new requests, use sourceType and versionSelector.
         self.version = version
-        # The referenced version selector. If omitted, the default value is LABEL/latest. Currently, only LABEL/latest is supported.
+        # The version selector for the skill reference. Supports LABEL for tag-based selection and VERSION for specific version selection. If omitted, LABEL/latest is used. Do not specify a selector for STATIC sources.
         self.version_selector = version_selector
 
     def validate(self):
@@ -1554,9 +1554,9 @@ class UpdateManagedAgentResponseBodyDataConfiguredSkillsVersionSelector(DaraMode
         type: str = None,
         value: str = None,
     ):
-        # The type of the version selector. Valid values: LABEL (by tag) and VERSION (by specific version).
+        # The type of the version selector. Valid values: LABEL (selects by tag) and VERSION (selects by specific version).
         self.type = type
-        # The value of the selector. If the type is LABEL, this value is the tag name, such as latest. If the type is VERSION, this value is the specific version number.
+        # The value of the selector. If the type is LABEL, specify a tag name such as latest. If the type is VERSION, specify a specific version number.
         self.value = value
 
     def validate(self):
@@ -1593,13 +1593,13 @@ class UpdateManagedAgentResponseBodyDataAgenticFsMounts(DaraModel):
         read_only: bool = None,
         server: str = None,
     ):
-        # The subdirectory under /mnt/agenticfs/ in the container. This field is required for each mount item and validated by the backend. Mount targets must not overlap or have parent-child overrides.
+        # The absolute mount path in the container, such as /data/train. Mount targets cannot be duplicated or form parent-child overwrites, and must avoid platform reserved directories.
         self.mount_path = mount_path
-        # The existing non-empty relative directory under the access point. This field is required for each mount item and validated by the backend. Root directories, absolute paths, and parent directory segments are not allowed.
+        # The existing non-empty relative directory under the AccessPoint. This field is required and validated by the backend for each mount item. The root directory, absolute paths, or parent directory segments are not allowed.
         self.path = path
-        # Specifies whether to mount the file system in read-only mode. If omitted, the default value is false. This does not apply the read-only policy of the RAM role.
+        # Specifies whether to mount as read-only. The default value is false if omitted. This is not a RAM role read-only policy.
         self.read_only = read_only
-        # The domain name of the access point. This field is required for each mount item and validated by the backend. Do not include the protocol, port, or path. Use the DomainName value from the NAS ListAccessPoints response.
+        # The AccessPoint domain name. This field is required and validated by the backend for each mount item. It does not contain a protocol, port, or path, and takes the DomainName from the NAS ListAccessPoints response.
         self.server = server
 
     def validate(self):

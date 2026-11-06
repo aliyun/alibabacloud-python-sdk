@@ -17,13 +17,13 @@ class UpdateAgentIMChannelCredentialResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business status code. The value is SUCCESS when the request is successful.
+        # The business status code. The value is SUCCESS if the request is successful.
         self.code = code
         # The summary of the updated IM channel credentials.
         self.data = data
-        # The HTTP status code. The value is 200 when the request is successful.
+        # The HTTP status code. The value is 200 if the request is successful.
         self.http_status_code = http_status_code
-        # The message indicating the request processing result.
+        # The message about the request processing result.
         self.message = message
         # The request ID.
         self.request_id = request_id

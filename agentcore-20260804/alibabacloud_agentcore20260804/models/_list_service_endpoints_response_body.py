@@ -26,7 +26,7 @@ class ListServiceEndpointsResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The list of service endpoints.
         self.items = items
-        # The maximum number of records per page that takes effect in this query.
+        # The maximum number of entries returned on a single page for this query.
         self.max_results = max_results
         # The response message. An error description is returned when the request fails.
         self.message = message
@@ -137,21 +137,21 @@ class ListServiceEndpointsResponseBodyItems(DaraModel):
         self.authentication = authentication
         # The creation time in UTC format compliant with RFC 3339.
         self.created_at = created_at
-        # The service endpoint type. DEFAULT indicates a default endpoint created and maintained by the platform. NAMED indicates a named endpoint explicitly created by a user.
+        # The type of the service endpoint. DEFAULT indicates a default endpoint created and maintained by the platform. NAMED indicates a named endpoint explicitly created by the user.
         self.endpoint_type = endpoint_type
-        # The service endpoint name. The name must be unique within the workspace and 1 to 128 characters in length.
+        # The name of the service endpoint. The name must be unique within the workspace and be 1 to 128 characters in length.
         self.name = name
-        # The region ID of the service endpoint.
+        # The ID of the region where the service endpoint resides.
         self.region_id = region_id
-        # The service endpoint ID.
+        # The ID of the service endpoint.
         self.service_endpoint_id = service_endpoint_id
-        # The service endpoint status. Valid values: CREATING, READY, UPDATING, DEGRADED, DISABLED, and DELETING.
+        # The status of the service endpoint. Valid values: CREATING, READY, UPDATING, DEGRADED, DISABLED, and DELETING.
         self.status = status
         # The reason for the service endpoint status. The specific reason is returned when the status is abnormal.
         self.status_reason = status_reason
         # The target routing configuration of the service endpoint.
         self.target = target
-        # The last update time in UTC format compliant with RFC 3339.
+        # The time of the last modification in UTC format compliant with RFC 3339.
         self.updated_at = updated_at
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -265,11 +265,11 @@ class ListServiceEndpointsResponseBodyItemsTarget(DaraModel):
         resource_binding_id: str = None,
         target_type: str = None,
     ):
-        # The target agent ID. This parameter is returned when the target type is AGENT_VERSION.
+        # The ID of the target agent. This parameter is returned when the target type is AGENT_VERSION.
         self.agent_id = agent_id
-        # The target agent version. This parameter is returned when the target type is AGENT_VERSION.
+        # The version of the target agent. This parameter is returned when the target type is AGENT_VERSION.
         self.agent_version = agent_version
-        # The collaboration component type. This parameter is returned when the target type is TEAM_COLLABORATION.
+        # The type of the collaboration component. This parameter is returned when the target type is TEAM_COLLABORATION.
         self.collaboration_component = collaboration_component
         # The workspace resource binding ID associated with the target collaboration component. This parameter is returned when the target type is TEAM_COLLABORATION.
         self.resource_binding_id = resource_binding_id
@@ -325,7 +325,7 @@ class ListServiceEndpointsResponseBodyItemsAuthentication(DaraModel):
         self,
         type: str = None,
     ):
-        # The authentication method. NONE indicates that no authentication is required. API_KEY indicates that authentication is performed by passing an API key in the x-api-key request header.
+        # The authentication method. NONE indicates that no authentication is required. API_KEY indicates that authentication is performed by passing an API key in the `x-api-key` request header.
         self.type = type
 
     def validate(self):
@@ -356,9 +356,9 @@ class ListServiceEndpointsResponseBodyItemsAccessUrls(DaraModel):
         status_reason: str = None,
         url: str = None,
     ):
-        # The access URL type. Valid values: INTERNET and VPC.
+        # The type of the access URL. Valid values: INTERNET and VPC.
         self.access_type = access_type
-        # The access URL status. Valid values: CREATING, READY, and DEGRADED.
+        # The status of the access URL. Valid values: CREATING, READY, and DEGRADED.
         self.status = status
         # The reason for the access URL status. The specific reason is returned when the status is abnormal.
         self.status_reason = status_reason

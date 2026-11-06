@@ -19,11 +19,11 @@ class GetWorkspacePluginResponseBody(DaraModel):
     ):
         # The business status code.
         self.code = code
-        # The plugin details.
+        # The component details.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The response message. An error description is returned if the request fails.
+        # The response message. An error description is returned when the request fails.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -91,13 +91,13 @@ class GetWorkspacePluginResponseBodyData(DaraModel):
         status: str = None,
         workspace_id: str = None,
     ):
-        # The user-configurable properties that are currently in effect for the plugin. This field is empty if the plugin is not installed.
+        # The user-configurable properties that currently take effect for the component. This field is empty when the component is not installed.
         self.config = config
-        # Indicates whether the plugin is enabled. The value is true if the status is ENABLED.
+        # Indicates whether the component is enabled. The value is true when the status is ENABLED.
         self.enabled = enabled
-        # The plugin name.
+        # The component name.
         self.plugin_name = plugin_name
-        # The plugin status. Valid values: DISABLED, ENABLING, ENABLED, ENABLE_FAILED, DISABLING, and DISABLE_FAILED.
+        # The component status. Valid values: DISABLED, ENABLING, ENABLED, ENABLE_FAILED, DISABLING, and DISABLE_FAILED.
         self.status = status
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -154,9 +154,9 @@ class GetWorkspacePluginResponseBodyDataConfig(DaraModel):
         agent_loop: main_models.GetWorkspacePluginResponseBodyDataConfigAgentLoop = None,
         network: main_models.GetWorkspacePluginResponseBodyDataConfigNetwork = None,
     ):
-        # The AgentLoop plugin configuration.
+        # The AgentLoop component configuration.
         self.agent_loop = agent_loop
-        # The network configuration of the plugin, including the public network access configuration and VPC configuration.
+        # The network configuration of the component, including the public network access configuration and VPC configuration.
         self.network = network
 
     def validate(self):
@@ -239,11 +239,11 @@ class GetWorkspacePluginResponseBodyDataConfigNetworkVpc(DaraModel):
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
     ):
-        # Indicates whether VPC networking is currently enabled for the collaboration plugin.
+        # Indicates whether VPC network access is currently enabled for the collaboration component.
         self.enabled = enabled
-        # The list of vSwitch IDs used for plugin deployment.
+        # The list of vSwitch IDs used for component deployment.
         self.v_switch_ids = v_switch_ids
-        # The VPC ID used for plugin deployment.
+        # The VPC ID used for component deployment.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -313,11 +313,11 @@ class GetWorkspacePluginResponseBodyDataConfigAgentLoop(DaraModel):
         created_at: str = None,
         region_id: str = None,
     ):
-        # The name of the AgentSpace associated with the AgentLoop plugin.
+        # The name of the AgentSpace associated with the AgentLoop component.
         self.agent_space_name = agent_space_name
         # The creation time of the AgentSpace, in UTC format compliant with RFC 3339.
         self.created_at = created_at
-        # The region ID of the AgentSpace.
+        # The region ID where the AgentSpace resides.
         self.region_id = region_id
 
     def validate(self):

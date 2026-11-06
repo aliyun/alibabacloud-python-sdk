@@ -9,7 +9,7 @@ class DeleteAgentIMChannelRequest(DaraModel):
         self,
         client_token: str = None,
     ):
-        # The reserved idempotence token. The backend does not provide persistent idempotence guarantee in the current version.
+        # The reserved idempotence token. The backend does not provide persistent idempotence guarantees in the current phase.
         self.client_token = client_token
 
     def validate(self):

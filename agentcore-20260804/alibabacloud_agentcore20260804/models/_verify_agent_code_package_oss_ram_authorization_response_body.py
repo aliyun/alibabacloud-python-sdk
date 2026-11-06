@@ -17,7 +17,7 @@ class VerifyAgentCodePackageOssRamAuthorizationResponseBody(DaraModel):
     ):
         # The business status code.
         self.code = code
-        # The response data.
+        # The returned result.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code

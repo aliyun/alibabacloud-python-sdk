@@ -98,9 +98,9 @@ class CreateUserResponseBodyData(DaraModel):
     ):
         # The user ID.
         self.agent_core_user_id = agent_core_user_id
-        # The authentication method of the user. A value of password indicates that local password authentication in the workspace is used. A value of dingtalk or feishu indicates that the user is synchronized and authenticated by the corresponding external identity provider.
+        # The authentication method of the user. A value of password indicates that local password authentication in the workspace is used. A value of dingtalk or feishu indicates that the user is synchronized and authenticated by the corresponding external identity provider (IdP).
         self.auth_method = auth_method
-        # The time when the user was created. The time is displayed in UTC and follows the RFC 3339 format.
+        # The creation time. The time is displayed in UTC and follows the RFC 3339 format.
         self.created_at = created_at
         # The display name of the user. The name must be 1 to 32 characters in length.
         self.display_name = display_name
@@ -110,13 +110,13 @@ class CreateUserResponseBodyData(DaraModel):
         self.initial_password = initial_password
         # The username. The username must be unique within the workspace, can contain only lowercase letters, digits, and hyphens, must start and end with a lowercase letter or a digit, and must be 1 to 32 characters in length.
         self.name = name
-        # The note for the user. The note can be up to 1,024 characters in length.
+        # The remarks for the user. The remarks can be up to 1,024 characters in length.
         self.note = note
         # The region ID of the resource.
         self.region_id = region_id
         # The status of the user. Valid values: Creating, Active, Updating, Deleting, Failed, and DeleteFailed.
         self.status = status
-        # The time when the user was last modified. The time is displayed in UTC and follows the RFC 3339 format.
+        # The time of the last update. The time is displayed in UTC and follows the RFC 3339 format.
         self.updated_at = updated_at
         # The workspace ID.
         self.workspace_id = workspace_id

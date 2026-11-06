@@ -131,29 +131,29 @@ class ListAgentSpecsResponseBodyDataPageItems(DaraModel):
         self.biz_tags = biz_tags
         # The description.
         self.description = description
-        # The download count.
+        # The number of downloads.
         self.download_count = download_count
-        # The version that is currently being edited.
+        # The version currently being edited.
         self.editing_version = editing_version
-        # Indicates whether the AgentSpec is enabled.
+        # Indicates whether it is enabled.
         self.enable = enable
         # The source.
         self.from_ = from_
         # The version labels.
         self.labels = labels
-        # The list of MCP server references.
+        # The list of referenced MCP servers.
         self.mcp_servers = mcp_servers
         # The name.
         self.name = name
         # The number of online versions.
         self.online_cnt = online_cnt
-        # The version that is currently under review.
+        # The version currently under review.
         self.reviewing_version = reviewing_version
         # The visibility scope.
         self.scope = scope
-        # The list of Skill references.
+        # The list of referenced skills.
         self.skills = skills
-        # The update time. This value is a UNIX timestamp in milliseconds.
+        # The update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -280,10 +280,7 @@ class ListAgentSpecsResponseBodyDataPageItemsSkills(DaraModel):
     ):
         # The name.
         self.name = name
-        # The Skill source type. Valid values:
-        # 
-        # - REFERENCE: references the AI Registry.
-        # - STATIC: statically bundled with the package.
+        # The source type of the skill. Valid values: REFERENCE (references the AI Registry) and STATIC (statically provided with the package).
         self.source_type = source_type
         # The referenced version selector. If omitted, the default value is LABEL/latest.
         self.version_selector = version_selector
@@ -328,12 +325,9 @@ class ListAgentSpecsResponseBodyDataPageItemsSkillsVersionSelector(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The version selector type. Valid values:
-        # 
-        # - LABEL: selects by label.
-        # - VERSION: selects by specific version.
+        # The type of the version selector. Valid values: LABEL (by label) and VERSION (by specific version).
         self.type = type
-        # The selector value. If the type is LABEL, this value is a label name such as latest. If the type is VERSION, this value is a specific version number.
+        # The value of the selector. If the type is LABEL, the value is the label name, such as latest. If the type is VERSION, the value is the specific version number.
         self.value = value
 
     def validate(self):

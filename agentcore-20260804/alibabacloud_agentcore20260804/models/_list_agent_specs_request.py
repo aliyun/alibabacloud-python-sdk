@@ -17,31 +17,23 @@ class ListAgentSpecsRequest(DaraModel):
         search: str = None,
         with_capabilities: bool = None,
     ):
-        # The AgentSpec name used as a search keyword. This parameter is used together with the search parameter.
+        # The name of the AgentSpec, used as a search keyword in combination with the search parameter.
         self.agent_spec_name = agent_spec_name
         # The business tag used for fuzzy filtering.
         self.biz_tag = biz_tag
-        # The field by which to sort the results. Set the value to download_count to sort by download count. By default, results are sorted by update time.
+        # The field by which to sort the results. Supports download_count. By default, the results are sorted by update time.
         self.order_by = order_by
-        # The owner used to filter the results.
+        # The owner filter.
         self.owner = owner
         # The page number. Pages start from 1. Default value: 1.
         self.page_no = page_no
         # The number of entries per page. Default value: 10. Maximum value: 50.
         self.page_size = page_size
-        # The visibility scope used to filter the results. Valid values:
-        # 
-        # - PUBLIC
-        # - PRIVATE
+        # The visibility scope filter. Valid values: PUBLIC and PRIVATE.
         self.scope = scope
-        # The search mode. Valid values:
-        # 
-        # - accurate: exact match.
-        # - blur: fuzzy match.
-        # 
-        # Default value: blur.
+        # The search mode. Valid values: accurate (exact match) and blur (fuzzy match). Default value: blur.
         self.search = search
-        # Specifies whether to return the Skills and McpServers lists. Default value: false.
+        # Specifies whether to return the lists of skills and MCP servers. Default value: false.
         self.with_capabilities = with_capabilities
 
     def validate(self):

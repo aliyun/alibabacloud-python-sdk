@@ -17,11 +17,11 @@ class DeleteExternalAgentResponseBody(DaraModel):
     ):
         # The business status code. The value is SUCCESS when the request is successful.
         self.code = code
-        # The summary information of the deleted external agent.
+        # The summary information of the deleted managed agent.
         self.data = data
         # The HTTP status code. The value is 200 when the request is successful.
         self.http_status_code = http_status_code
-        # The request processing result message.
+        # The message about the request processing result.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -101,7 +101,7 @@ class DeleteExternalAgentResponseBodyData(DaraModel):
         self.access_mode = access_mode
         # The user access scope.
         self.access_scope = access_scope
-        # The external agent ID.
+        # The managed agent ID.
         self.agent_id = agent_id
         # The creation mode.
         self.create_mode = create_mode
@@ -109,15 +109,15 @@ class DeleteExternalAgentResponseBodyData(DaraModel):
         self.created_at = created_at
         # The deployment type.
         self.deploy_type = deploy_type
-        # The description of the external agent.
+        # The description of the managed agent.
         self.description = description
         # The latest specification version number.
         self.latest_spec_version = latest_spec_version
-        # The name of the external agent.
+        # The name of the managed agent.
         self.name = name
-        # The runtime type reported by the external agent.
+        # The runtime type reported by the managed agent.
         self.runtime = runtime
-        # The status of the external agent. Valid values: Creating, Running, Failed, Updating, Deleting, and Deleted.
+        # The status of the managed agent. Valid values: Creating, Running, Failed, Updating, Deleting, and Deleted.
         self.status = status
         # The update time in RFC 3339 format.
         self.updated_at = updated_at

@@ -23,7 +23,7 @@ class ListMemorySessionsResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The list of sessions.
+        # The session list.
         self.items = items
         # The maximum number of records per page.
         self.max_results = max_results
@@ -115,7 +115,7 @@ class ListMemorySessionsResponseBodyItems(DaraModel):
     ):
         # The agent ID. This field is not returned if the session is not associated with an agent ID.
         self.agent_id = agent_id
-        # Session ID
+        # The session ID.
         self.session_id = session_id
         # The user ID. This field is not returned if the session is not associated with a user ID.
         self.user_id = user_id

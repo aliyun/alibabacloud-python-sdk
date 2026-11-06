@@ -20,25 +20,23 @@ class ListSandboxesResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The business status code. The value SUCCESS is returned if the request was successful.
+        # The business status code. The value is SUCCESS when the request is successful.
         self.code = code
-        # The HTTP status code. The value 200 is returned if the request was successful.
+        # The HTTP status code. The value is 200 when the request is successful.
         self.http_status_code = http_status_code
-        # The list of sandboxes that match the filter conditions.
+        # The list of sandboxes that meet the filter conditions.
         self.items = items
         # The maximum number of records per page for this query.
         self.max_results = max_results
-        # The response message. The value success is returned if the request was successful.
+        # The response message. The value is success when the request is successful.
         self.message = message
         # The pagination token for the next page. An empty value indicates that no more results are available.
         self.next_token = next_token
         # The request ID, which is used to locate and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # - true: The request was successful.
-        # - false: The request failed.
+        # Indicates whether the request is successful. A value of true indicates success, and a value of false indicates failure.
         self.success = success
-        # The total number of records that match the query conditions.
+        # The total number of records that meet the query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -128,19 +126,19 @@ class ListSandboxesResponseBodyItems(DaraModel):
         phase: str = None,
         sandbox_id: str = None,
     ):
-        # The number of active sessions for this sandbox.
+        # The number of active sessions in the sandbox.
         self.active_session_count = active_session_count
-        # The time when the sandbox was created, in RFC 3339 UTC format.
+        # The time when the sandbox was created. The time is in the RFC 3339 UTC format.
         self.created_at = created_at
-        # The time of the last activity on the sandbox, in RFC 3339 UTC format.
+        # The time of the last activity of the sandbox. The time is in the RFC 3339 UTC format.
         self.last_active_at = last_active_at
-        # The time of the last heartbeat from the sandbox, in RFC 3339 UTC format.
+        # The time of the last heartbeat of the sandbox. The time is in the RFC 3339 UTC format.
         self.last_heartbeat_at = last_heartbeat_at
-        # The maximum number of concurrent sessions allowed for this sandbox, derived from the auto scaling configuration in effect at runtime. This value is empty if auto scaling is not enabled or the configuration is unavailable.
+        # The maximum number of concurrent sessions allowed for the sandbox. This value is obtained from the auto-scaling configuration that takes effect at runtime. If auto-scaling is disabled or the configuration is unavailable, this value is empty.
         self.max_concurrent_sessions = max_concurrent_sessions
         # The current running phase of the sandbox.
         self.phase = phase
-        # The sandbox ID. You can call the ListSandboxes operation to query sandbox IDs.
+        # The sandbox ID, which can be queried by calling ListSandboxes.
         self.sandbox_id = sandbox_id
 
     def validate(self):

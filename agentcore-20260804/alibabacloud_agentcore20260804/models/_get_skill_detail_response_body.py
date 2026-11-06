@@ -53,6 +53,7 @@ class GetSkillDetailResponseBodyData(DaraModel):
         description: str = None,
         download_count: int = None,
         draft_mode: str = None,
+        editable: bool = None,
         editing_version: str = None,
         enable: bool = None,
         from_: str = None,
@@ -67,17 +68,19 @@ class GetSkillDetailResponseBodyData(DaraModel):
         workspace_id: str = None,
         writeable: bool = None,
     ):
-        # The business label JSON array string.
+        # The JSON array string of business tags.
         self.biz_tags = biz_tags
         # The description.
         self.description = description
         # The total number of downloads.
         self.download_count = download_count
-        # The draft pattern. HEAD indicates that the Skill has a persistent draft. VERSIONED indicates that each edit creates a draft with a version number. The server determines the pattern, and the invoker uses it for routing what to do next.
+        # The draft pattern. A value of HEAD indicates that the skill has a persistent draft, and a value of VERSIONED indicates that a draft with a version number is created for each edit. This is determined by the server, and the client uses this value to invoke routing for What to do next.
         self.draft_mode = draft_mode
+        # Specifies whether the root data is editable.
+        self.editable = editable
         # The version being edited.
         self.editing_version = editing_version
-        # Indicates whether the Skill is enabled.
+        # Specifies whether the skill is enabled.
         self.enable = enable
         # The source tag.
         self.from_ = from_
@@ -93,13 +96,13 @@ class GetSkillDetailResponseBodyData(DaraModel):
         self.reviewing_version = reviewing_version
         # The visibility scope.
         self.scope = scope
-        # The update time. This value is a UNIX timestamp in milliseconds.
+        # The update time. It is a UNIX timestamp in milliseconds.
         self.update_time = update_time
         # The list of all version summaries.
         self.versions = versions
         # The workspace ID.
         self.workspace_id = workspace_id
-        # Indicates whether the current user has write permissions.
+        # Specifies whether the current user has write permissions.
         self.writeable = writeable
 
     def validate(self):
@@ -124,6 +127,9 @@ class GetSkillDetailResponseBodyData(DaraModel):
 
         if self.draft_mode is not None:
             result['draftMode'] = self.draft_mode
+
+        if self.editable is not None:
+            result['editable'] = self.editable
 
         if self.editing_version is not None:
             result['editingVersion'] = self.editing_version
@@ -181,6 +187,9 @@ class GetSkillDetailResponseBodyData(DaraModel):
 
         if m.get('draftMode') is not None:
             self.draft_mode = m.get('draftMode')
+
+        if m.get('editable') is not None:
+            self.editable = m.get('editable')
 
         if m.get('editingVersion') is not None:
             self.editing_version = m.get('editingVersion')
@@ -244,9 +253,9 @@ class GetSkillDetailResponseBodyDataVersions(DaraModel):
         self.author = author
         # The commit message.
         self.commit_msg = commit_msg
-        # The MD5 checksum of the Skill content package for this version, used to verify content consistency.
+        # The MD5 checksum of the skill content package for this version, which is used to verify content consistency.
         self.content_md_5 = content_md_5
-        # The creation time. This value is a UNIX timestamp in milliseconds.
+        # The creation time. It is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The description.
         self.description = description
@@ -256,7 +265,7 @@ class GetSkillDetailResponseBodyDataVersions(DaraModel):
         self.publish_pipeline_info = publish_pipeline_info
         # The status.
         self.status = status
-        # The update time. This value is a UNIX timestamp in milliseconds.
+        # The update time. It is a UNIX timestamp in milliseconds.
         self.update_time = update_time
         # The version number.
         self.version = version

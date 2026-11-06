@@ -14,7 +14,7 @@ class ListSkillReferencesRequest(DaraModel):
     ):
         # The page number. Pages start from 1. Default value: 1.
         self.page_no = page_no
-        # The number of entries per page. If not specified, the default value on the server is used.
+        # The number of entries per page. If not specified, the server default value is used.
         self.page_size = page_size
         # The reference selector type used for filtering. Valid values: LABEL and VERSION.
         self.selector_type = selector_type

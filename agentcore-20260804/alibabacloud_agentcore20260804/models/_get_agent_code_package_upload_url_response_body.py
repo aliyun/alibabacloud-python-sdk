@@ -19,7 +19,7 @@ class GetAgentCodePackageUploadUrlResponseBody(DaraModel):
     ):
         # The business status code.
         self.code = code
-        # The response data.
+        # The returned result.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -94,11 +94,11 @@ class GetAgentCodePackageUploadUrlResponseBodyData(DaraModel):
     ):
         # The expiration time of the upload URL.
         self.expires_at = expires_at
-        # The HTTP headers that must be included in the direct upload request.
+        # The required HTTP request headers for direct upload.
         self.headers = headers
         # The maximum compressed size of the code package.
         self.max_size = max_size
-        # The temporary Object Storage Service (OSS) URI of the code package.
+        # The OSS URI of the temporary code package.
         self.source_uri = source_uri
         # The HTTP method for direct upload.
         self.upload_method = upload_method

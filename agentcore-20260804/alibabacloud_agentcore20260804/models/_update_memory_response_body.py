@@ -94,7 +94,7 @@ class UpdateMemoryResponseBodyData(DaraModel):
     ):
         # The memory content.
         self.content = content
-        # The creation time.
+        # The creation time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
         self.created_at = created_at
         # The long-term memory ID.
         self.memory_id = memory_id
@@ -102,7 +102,7 @@ class UpdateMemoryResponseBodyData(DaraModel):
         self.metadata = metadata
         # The memory scope.
         self.scope = scope
-        # The last update time.
+        # The last update time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
         self.updated_at = updated_at
 
     def validate(self):

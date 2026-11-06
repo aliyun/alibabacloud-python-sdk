@@ -17,7 +17,7 @@ class GetServiceEndpointApiKeyResponseBody(DaraModel):
     ):
         # The response code. The value is SUCCESS if the request is successful.
         self.code = code
-        # The information about the currently active API key for the service endpoint.
+        # The active API key information of the service endpoint.
         self.data = data
         # The HTTP status code. The value is 200 if the request is successful.
         self.http_status_code = http_status_code
@@ -91,18 +91,15 @@ class GetServiceEndpointApiKeyResponseBodyData(DaraModel):
         service_endpoint_id: str = None,
         workspace_id: str = None,
     ):
-        # The currently active API key for the service endpoint. The service reads this value from the gateway consumer in real time, and AgentCore does not persist the plaintext. When calling the service endpoint, include this value in the request header specified by apiKeyName. Do not log this value or expose it in public configurations.
+        # The active API key of the service endpoint. The service reads this value in real time from the gateway consumer, and AgentCore does not persist the plaintext. When calling the service endpoint, place this value in the request header specified by apiKeyName. Do not log this value or expose it in public configurations.
         self.api_key = api_key
-        # The fingerprint of the API key, which consists of the first 12 lowercase hexadecimal characters of the SHA-256 hash of the API key. It can be used to identify the key version but cannot be used in place of the API key for authentication.
+        # The API key fingerprint, which consists of the first 12 lowercase hexadecimal characters of the SHA-256 digest of the API key. It can be used to identify the key version but cannot replace the API key for authentication.
         self.api_key_fingerprint = api_key_fingerprint
-        # The name of the HTTP request header used to pass the API key. The value is fixed to x-api-key.
+        # The name of the HTTP request header used to pass the API key. Currently, this is fixed to x-api-key.
         self.api_key_name = api_key_name
-        # The location where the API key is passed. The value is fixed to Header, which indicates that the API key is passed through an HTTP request header.
+        # The delivery location of the API key. Currently, this is fixed to Header, which indicates that the API key is passed through an HTTP request header.
         self.api_key_source = api_key_source
-        # The authentication type of the service endpoint. Valid values:
-        # - NONE: Authentication is not enabled.
-        # - API_KEY: API key authentication is used.
-        # This operation succeeds only when the authentication type is API_KEY. Therefore, a successful response always returns API_KEY.
+        # The authentication type of the service endpoint. Valid values: NONE (authentication is disabled) and API_KEY (API key authentication is used). This operation succeeds only when the authentication type is API_KEY. Therefore, a successful response always returns API_KEY.
         self.authentication_type = authentication_type
         # The ID of the service endpoint.
         self.service_endpoint_id = service_endpoint_id

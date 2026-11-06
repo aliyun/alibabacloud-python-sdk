@@ -37,7 +37,7 @@ class ListPermissionRulesRequest(DaraModel):
         self.resource_type = resource_type
         # The rule source.
         self.source = source
-        # The rule target.
+        # The target of the rule.
         self.target = target
 
     def validate(self):

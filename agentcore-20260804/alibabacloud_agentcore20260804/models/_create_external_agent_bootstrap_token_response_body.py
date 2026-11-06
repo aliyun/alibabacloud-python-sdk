@@ -15,13 +15,13 @@ class CreateExternalAgentBootstrapTokenResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business status code. The value is SUCCESS when the operation is successful.
+        # The business status code. The value is SUCCESS if the request is successful.
         self.code = code
-        # The Bootstrap token and CMS configuration required to onboard the external agent.
+        # The bootstrap token and CMS configuration required for the managed agent onboarding.
         self.data = data
-        # The HTTP status code. The value is 200 when the operation is successful.
+        # The HTTP status code. The value is 200 if the request is successful.
         self.http_status_code = http_status_code
-        # The result message of the request.
+        # The request processing result message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -90,15 +90,15 @@ class CreateExternalAgentBootstrapTokenResponseBodyData(DaraModel):
         token_fingerprint: str = None,
         workspace_id: str = None,
     ):
-        # The external agent ID.
+        # The ID of the managed agent.
         self.agent_id = agent_id
-        # The Bootstrap token used to onboard the external agent.
+        # The bootstrap token used for the managed agent onboarding.
         self.bootstrap_token = bootstrap_token
-        # The CMS configuration used to onboard the external agent.
+        # The CMS configuration used for the managed agent onboarding.
         self.cms = cms
-        # The network type for onboarding. Valid values: INTRANET (internal network) and INTERNET (Internet).
+        # The access network type. Valid values: INTRANET (internal network) and INTERNET (Internet).
         self.network_type = network_type
-        # The fingerprint of the Bootstrap token.
+        # The fingerprint of the bootstrap token.
         self.token_fingerprint = token_fingerprint
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -164,9 +164,9 @@ class CreateExternalAgentBootstrapTokenResponseBodyDataCms(DaraModel):
     ):
         # The CMS reporting endpoint.
         self.endpoint = endpoint
-        # The license key used for CMS connection.
+        # The license key used for CMS access.
         self.license_key = license_key
-        # The CMS workspace name.
+        # The name of the CMS workspace.
         self.workspace = workspace
 
     def validate(self):

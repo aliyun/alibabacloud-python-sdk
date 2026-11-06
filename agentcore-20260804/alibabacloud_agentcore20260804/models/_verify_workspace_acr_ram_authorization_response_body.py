@@ -108,23 +108,23 @@ class VerifyWorkspaceAcrRamAuthorizationResponseBodyData(DaraModel):
         # 
         # This parameter is required.
         self.acr_instance_id = acr_instance_id
-        # The current attachment status of the policy for the target repository.
+        # The mount status of the policy for the current target repository.
         # 
         # This parameter is required.
         self.authorization_status = authorization_status
-        # The access prerequisite status, which does not indicate Secret Ready.
+        # The onboarding prerequisite, which is not Secret Ready.
         # 
         # This parameter is required.
         self.eligibility_status = eligibility_status
-        # The stable reason code for unauthorized or unmet conditions. This field is omitted if no reason exists.
+        # The stable reason code for unauthorized or unmet conditions. This field is omitted when no reason is available.
         self.reason_code = reason_code
-        # The user-readable reason. This field is omitted if no reason exists.
+        # The user-readable reason. This field is omitted when no reason is available.
         self.reason_message = reason_message
         # The name of the shared role selected by the backend. This field is not editable on the frontend.
         # 
         # This parameter is required.
         self.role_name = role_name
-        # The source of the shared role. This does not indicate that authorization is complete.
+        # The source of the shared role. This does not indicate that the authorization is complete.
         # 
         # This parameter is required.
         self.role_source = role_source

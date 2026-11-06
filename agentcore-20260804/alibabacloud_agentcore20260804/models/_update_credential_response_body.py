@@ -101,19 +101,19 @@ class UpdateCredentialResponseBodyData(DaraModel):
         self.created_at = created_at
         # The credential ID.
         self.credential_id = credential_id
-        # The desensitized result of the credential content. If credentialType is apiKey, the value of apiKey is returned as asterisks (*) of the same length.
+        # The masked result of the credential content. For the apiKey type, a key mask is returned. For the mcpHeader type, only the header names are returned, and the values are not returned.
         self.credential_metadata = credential_metadata
-        # The credential type. Currently, only apiKey is supported.
+        # The credential type. Valid values: apiKey (API key) and mcpHeader (MCP request header).
         self.credential_type = credential_type
-        # The credential description, which can be up to 256 characters in length.
+        # The credential description. The description can be up to 256 characters in length.
         self.description = description
-        # The credential name. The name must be unique within the workspace, can only contain letters, digits, periods (.), underscores (_), and hyphens (-), must be 3 to 128 characters in length, and cannot be a runtime reserved name.
+        # The credential name. The name must be unique within the workspace, contain only letters, digits, periods, underscores, and hyphens, and be 3 to 99 characters in length. Runtime reserved names cannot be used.
         self.name = name
         # The region ID of the resource.
         self.region_id = region_id
-        # Each item includes resourceType, resourceId, and resourceName. resourceName is empty if the resource is deleted.
+        # The list of MCP services to which the credential applies.
         self.resource_refs = resource_refs
-        # The application scope of the credential resources.
+        # The application scope of the credential. ALL indicates all scopes, and SPECIFIED indicates the specified MCP services.
         self.resource_scope = resource_scope
         # The time of the last modification in UTC format compliant with RFC 3339.
         self.updated_at = updated_at
@@ -215,11 +215,11 @@ class UpdateCredentialResponseBodyDataResourceRefs(DaraModel):
         resource_name: str = None,
         resource_type: str = None,
     ):
-        # The unique identifier of the resource.
+        # The ID of the applicable MCP service.
         self.resource_id = resource_id
-        # The resource name. This parameter is empty if the resource is deleted.
+        # The resource name. This field is empty if the resource has been deleted.
         self.resource_name = resource_name
-        # The resource type, such as agent.
+        # The resource type. Currently, the value is mcpServer, which indicates an MCP service.
         self.resource_type = resource_type
 
     def validate(self):

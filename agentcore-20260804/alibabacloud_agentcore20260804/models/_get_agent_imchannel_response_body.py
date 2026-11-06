@@ -17,13 +17,13 @@ class GetAgentIMChannelResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business status code. The value is SUCCESS if the request succeeds.
+        # The business status code. The value is SUCCESS if the request is successful.
         self.code = code
         # The IM channel details.
         self.data = data
-        # The HTTP status code. The value is 200 if the request succeeds.
+        # The HTTP status code. The value is 200 if the request is successful.
         self.http_status_code = http_status_code
-        # The result message of the request.
+        # The request processing result message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -109,15 +109,15 @@ class GetAgentIMChannelResponseBodyData(DaraModel):
         self.create_time = create_time
         # The channel credential summary. Only non-sensitive fields and configured secret field names are returned. Secret values are not returned.
         self.credential_summary = credential_summary
-        # Specifies whether the IM channel is enabled. The default value is true upon creation.
+        # Indicates whether the IM channel is enabled. Default value: true.
         self.enabled = enabled
-        # The public network access URL of the attached service endpoint.
+        # The public network access URL of the attached ServiceEndpoint.
         self.endpoint_url = endpoint_url
         # The IM channel ID.
         self.im_channel_id = im_channel_id
-        # The ID of the bound service endpoint. The endpoint must belong to the specified agent and its current version, be in the ready state, and have a public endpoint URL.
+        # The ID of the bound service endpoint. The endpoint must belong to the specified agent and its current version, be in the ready state, and have a public address.
         self.service_endpoint_id = service_endpoint_id
-        # The IM channel status. Valid values: CREATING (Creating), READY (Ready), UPDATING (Updating), FAILED (Failed), DELETING (Deleting), and DELETE_FAILED (Deletion failed).
+        # The IM channel status. Valid values: CREATING (creating), READY (ready), UPDATING (updating), FAILED (failed), DELETING (deleting), and DELETE_FAILED (deletion failed).
         self.status = status
         # The reason for the current status of the IM channel.
         self.status_reason = status_reason

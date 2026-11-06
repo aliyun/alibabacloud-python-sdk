@@ -9,7 +9,7 @@ class VerifyWorkspaceOssMountRamAuthorizationRequest(DaraModel):
         self,
         bucket_name: str = None,
     ):
-        # The OSS bucket name.
+        # The name of the OSS bucket.
         self.bucket_name = bucket_name
 
     def validate(self):

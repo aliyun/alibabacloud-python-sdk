@@ -11,11 +11,11 @@ class ListConnectorModelsRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # The Connector Key ID. This parameter is not supported in the current version.
+        # The connector key ID. This parameter is not supported in the current version.
         self.connector_key_id = connector_key_id
         # The page size. This parameter is not supported in the current version.
         self.max_results = max_results
-        # The next page token. This parameter is not supported in the current version.
+        # The next token. This parameter is not supported in the current version.
         self.next_token = next_token
 
     def validate(self):

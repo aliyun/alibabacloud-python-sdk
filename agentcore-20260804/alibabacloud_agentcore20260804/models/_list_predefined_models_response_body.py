@@ -17,13 +17,13 @@ class ListPredefinedModelsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business status code. The value is SUCCESS if the request is successful.
+        # The business status code. The value is SUCCESS if the request succeeds.
         self.code = code
         # The list of predefined models.
         self.data = data
-        # The HTTP status code. The value is 200 if the request is successful.
+        # The HTTP status code. The value is 200 if the request succeeds.
         self.http_status_code = http_status_code
-        # The message indicating the request processing result.
+        # The message about the request processing result.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -101,11 +101,11 @@ class ListPredefinedModelsResponseBodyData(DaraModel):
         self.capabilities = capabilities
         # The context window size of the model, in tokens. The value must be a positive integer.
         self.context_size = context_size
-        # The maximum number of output tokens supported by the model in a single generation.
+        # The maximum number of output tokens supported by the model per generation.
         self.max_tokens = max_tokens
         # The upstream model name.
         self.model_name = model_name
-        # The release date of the model. The format is YYYY-MM-DD.
+        # The release date of the model, in the YYYY-MM-DD format.
         self.release_date = release_date
 
     def validate(self):
@@ -170,7 +170,7 @@ class ListPredefinedModelsResponseBodyDataCapabilities(DaraModel):
         self.audio = audio
         # Indicates whether the model supports document input.
         self.document = document
-        # Specifies whether the model is able to invoke multiple tool calling in a single response.
+        # Specifies whether the model is able to invoke multiple tool calling operations in a single response.
         self.multi_tool_call = multi_tool_call
         # Indicates whether the model supports reasoning capabilities.
         self.reasoning = reasoning

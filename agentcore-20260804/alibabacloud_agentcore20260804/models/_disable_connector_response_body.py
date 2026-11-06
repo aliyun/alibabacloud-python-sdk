@@ -17,7 +17,7 @@ class DisableConnectorResponseBody(DaraModel):
     ):
         # The business status code.
         self.code = code
-        # The Connector details.
+        # The connector details.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -25,7 +25,7 @@ class DisableConnectorResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -89,15 +89,15 @@ class DisableConnectorResponseBodyData(DaraModel):
         name: str = None,
         status: str = None,
     ):
-        # The number of Agents bound to the Connector.
+        # The number of bound agents.
         self.bound_agent_count = bound_agent_count
-        # The time when the Connector was enabled.
+        # The time when the connector was enabled.
         self.enabled_at = enabled_at
-        # The Connector configuration JSON string before the Connector was disabled. This is sensitive data.
+        # The JSON string of the connector configuration before it was disabled. This is sensitive information.
         self.metadata = metadata
-        # The Connector name. Currently, the value is qodercli.
+        # The connector name. The current value is qodercli.
         self.name = name
-        # The Connector status.
+        # The connector status.
         self.status = status
 
     def validate(self):

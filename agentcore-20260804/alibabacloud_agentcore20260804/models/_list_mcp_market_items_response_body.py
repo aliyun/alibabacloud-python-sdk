@@ -26,17 +26,17 @@ class ListMcpMarketItemsResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The list of query results.
         self.items = items
-        # The maximum number of records to return in this query.
+        # The maximum number of records to return for this query.
         self.max_results = max_results
         # The response message.
         self.message = message
-        # The pagination token used to retrieve the next page of results.
+        # The pagination token used to query the next page.
         self.next_token = next_token
-        # The request ID, which is used to locate and troubleshoot issues.
+        # The request ID used to locate and troubleshoot the request.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
-        # The total number of records that match the specified conditions.
+        # The total number of records that meet the conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -140,7 +140,7 @@ class ListMcpMarketItemsResponseBodyItems(DaraModel):
         self.description = description
         # The display metadata of the template.
         self.display_metadata = display_metadata
-        # The multilingual display content organized by BCP-47 language tags. Falls back to default fields if the specified language is not matched.
+        # The multilingual display content organized by BCP-47 language tags. If a language is not matched, the system falls back to the default fields.
         self.i_18n = i_18n
         # The icon URL of the MCP marketplace template.
         self.icon_url = icon_url
@@ -160,7 +160,7 @@ class ListMcpMarketItemsResponseBodyItems(DaraModel):
         self.readme = readme
         # The schema version of the template.
         self.schema_version = schema_version
-        # The template input schema, represented as a JSON Schema string.
+        # The input schema of the template, represented as a JSON Schema string.
         self.template_input_schema = template_input_schema
         # The version of the MCP marketplace template.
         self.template_version = template_version

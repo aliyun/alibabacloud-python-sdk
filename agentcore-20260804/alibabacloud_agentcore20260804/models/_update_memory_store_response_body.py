@@ -92,7 +92,7 @@ class UpdateMemoryStoreResponseBodyData(DaraModel):
         updated_at: str = None,
         workspace_id: str = None,
     ):
-        # The creation time.
+        # The creation time. It is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
         self.created_at = created_at
         # The MemoryStore description.
         self.description = description
@@ -102,9 +102,9 @@ class UpdateMemoryStoreResponseBodyData(DaraModel):
         self.memory_store_id = memory_store_id
         # The MemoryStore name. It cannot be modified after creation.
         self.memory_store_name = memory_store_name
-        # The lifecycle status of the MemoryStore.
+        # The lifecycle state of the MemoryStore.
         self.status = status
-        # The last updated time.
+        # The last update time. It is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
         self.updated_at = updated_at
         # The AgentCore workspace ID.
         self.workspace_id = workspace_id

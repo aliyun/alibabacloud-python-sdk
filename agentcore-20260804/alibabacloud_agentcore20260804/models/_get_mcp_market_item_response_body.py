@@ -25,9 +25,9 @@ class GetMcpMarketItemResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The response message.
         self.message = message
-        # The request ID, which is used to locate and troubleshoot issues.
+        # The request ID used to locate and troubleshoot the request.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -107,11 +107,11 @@ class GetMcpMarketItemResponseBodyData(DaraModel):
         self.description = description
         # The template display metadata.
         self.display_metadata = display_metadata
-        # The multilingual display content, organized by BCP-47 language tags. Falls back to default fields when the specified language is not matched.
+        # The multilingual display content organized by BCP-47 language tags. If a language is not matched, the default fields are used.
         self.i_18n = i_18n
         # The icon URL of the MCP marketplace template.
         self.icon_url = icon_url
-        # The number of times the template has been installed.
+        # The template installation count.
         self.install_count = install_count
         # The MCP marketplace template ID.
         self.market_item_id = market_item_id
@@ -123,7 +123,7 @@ class GetMcpMarketItemResponseBodyData(DaraModel):
         self.official_tag = official_tag
         # The MCP protocol.
         self.protocol = protocol
-        # The usage instructions for the MCP marketplace template.
+        # The MCP marketplace template instructions.
         self.readme = readme
         # The template schema version.
         self.schema_version = schema_version

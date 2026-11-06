@@ -118,7 +118,7 @@ class ListMemoriesResponseBodyItems(DaraModel):
     ):
         # The memory content.
         self.content = content
-        # The creation time.
+        # The creation time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
         self.created_at = created_at
         # The long-term memory ID.
         self.memory_id = memory_id
@@ -126,7 +126,7 @@ class ListMemoriesResponseBodyItems(DaraModel):
         self.metadata = metadata
         # The memory scope.
         self.scope = scope
-        # The last update time.
+        # The last update time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
         self.updated_at = updated_at
 
     def validate(self):
@@ -191,11 +191,11 @@ class ListMemoriesResponseBodyItemsScope(DaraModel):
         session_id: str = None,
         user_id: str = None,
     ):
-        # The agent ID. The value must be 1 to 128 bytes in length and encoded in UTF-8. The value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with an agent ID.
+        # The agent ID. The value must be 1 to 128 UTF-8 bytes in length and cannot contain slashes (/) or asterisks (*). This field is not returned if the memory is not associated with an agent ID.
         self.agent_id = agent_id
-        # The session ID. The value must be 1 to 128 bytes in length and encoded in UTF-8. The value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with a session ID.
+        # The session ID. The value must be 1 to 128 UTF-8 bytes in length and cannot contain slashes (/) or asterisks (*). This field is not returned if the memory is not associated with a session ID.
         self.session_id = session_id
-        # The user ID. The value must be 1 to 128 bytes in length and encoded in UTF-8. The value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with a user ID.
+        # The user ID. The value must be 1 to 128 UTF-8 bytes in length and cannot contain slashes (/) or asterisks (*). This field is not returned if the memory is not associated with a user ID.
         self.user_id = user_id
 
     def validate(self):

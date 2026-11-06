@@ -17,7 +17,7 @@ class UpdateConnectorResponseBody(DaraModel):
     ):
         # The business status code.
         self.code = code
-        # The Connector details.
+        # The connector details.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -25,7 +25,7 @@ class UpdateConnectorResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -91,13 +91,13 @@ class UpdateConnectorResponseBodyData(DaraModel):
     ):
         # The number of bound agents.
         self.bound_agent_count = bound_agent_count
-        # The time when the Connector was enabled.
+        # The time when the connector was enabled.
         self.enabled_at = enabled_at
-        # The updated Connector configuration JSON string. This is sensitive information.
+        # The updated JSON string for the connector configuration. This is sensitive information.
         self.metadata = metadata
-        # The Connector name. Currently, the value is qodercli.
+        # The name of the connector. Currently, the value is qodercli.
         self.name = name
-        # The Connector status.
+        # The status of the connector.
         self.status = status
 
     def validate(self):

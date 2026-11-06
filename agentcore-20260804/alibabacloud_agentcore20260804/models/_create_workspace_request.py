@@ -55,9 +55,9 @@ class CreateWorkspaceRequestBody(DaraModel):
         network_configuration: main_models.CreateWorkspaceRequestBodyNetworkConfiguration = None,
         storage_type: str = None,
     ):
-        # If specified, the workspace is directly bound to this AgentSpace without creating a new one. The associated CloudMonitor (CMS) workspace is determined by the server\\"s reverse lookup result, and CmsWorkspace validation is skipped. When the workspace is deleted, only the binding is removed, and the AgentSpace is not deleted. The value must match the current account and region, and the associated CMS workspace must be found through reverse lookup. Otherwise, InvalidParameter is returned.
+        # If specified, the workspace is directly bound to this AgentSpace without creating a new one. The CloudMonitor (CMS) workspace to which it belongs is determined by the server-side reverse lookup result, and CmsWorkspace validation is not required in this case. When the workspace is deleted, it is only unbound, and the AgentSpace is not deleted. The value must match the current account and region, and the reverse lookup must return the associated CMS workspace. Otherwise, InvalidParameter is returned.
         self.agent_space = agent_space
-        # If specified, the workspace is bound to this CloudMonitor (CMS) workspace without creating a new one. When the workspace is deleted, only the binding is removed, and the CMS workspace is not deleted. The value must match the current account and region. Otherwise, InvalidParameter is returned.
+        # If specified, the workspace is bound to this CloudMonitor (CMS) workspace without creating a new one. When the workspace is deleted, it is only unbound, and the CMS workspace is not deleted. The value must match the current account and region. Otherwise, InvalidParameter is returned.
         self.cms_workspace = cms_workspace
         # The name of the workspace.
         # 
@@ -65,7 +65,7 @@ class CreateWorkspaceRequestBody(DaraModel):
         self.name = name
         # The network configuration of the workspace.
         self.network_configuration = network_configuration
-        # The storage type of the workspace. PLATFORM indicates platform-managed storage. PRIVATE indicates user-owned private Object Storage Service (OSS) storage.
+        # The storage type of the workspace.
         self.storage_type = storage_type
 
     def validate(self):
@@ -121,9 +121,9 @@ class CreateWorkspaceRequestBodyNetworkConfiguration(DaraModel):
         public_ingress_enabled: bool = None,
         vpc: main_models.CreateWorkspaceRequestBodyNetworkConfigurationVpc = None,
     ):
-        # Specifies whether to allow public outbound access from the platform. If not specified, the default value is true. This setting only controls whether the latest versions of managed and custom agents use the public outbound endpoint of the platform. It does not affect fixed historical versions, model or Model Context Protocol (MCP) proxy outbound endpoints, or the public outbound endpoint of the user VPC.
+        # Specifies whether to allow public egress access from the platform. If not specified, this feature is enabled by default. This parameter only controls whether the latest versions of managed and custom agents use the public egress of the platform. It does not control fixed historical versions, model or MCP proxy egress, or the public egress of the user VPC.
         self.public_egress_enabled = public_egress_enabled
-        # Specifies whether to allow public inbound access. If not specified, the default value is true. If disabled, the public inbound endpoints of all agent endpoints in the workspace are closed. If re-enabled, the original public inbound endpoints are restored. INNER_DIRECT and user VPC inbound endpoints are not affected. Collaboration and Element Web inbound endpoints are not controlled by this setting.
+        # Specifies whether to allow public ingress access. If not specified, this feature is enabled by default. If disabled, the public ingress endpoints of all agent endpoints in the workspace are closed. If re-enabled, the original public ingress endpoints are restored. INNER_DIRECT and user VPC ingress endpoints are not affected. Collaboration and Element Web ingress endpoints are not controlled by this parameter.
         self.public_ingress_enabled = public_ingress_enabled
         # The VPC network configuration of the user.
         self.vpc = vpc
@@ -171,7 +171,7 @@ class CreateWorkspaceRequestBodyNetworkConfigurationVpc(DaraModel):
     ):
         # Specifies whether to enable the VPC network.
         self.enabled = enabled
-        # The list of vSwitch IDs. If the VPC network is enabled, at least one vSwitch must be included, and all vSwitches must belong to the VPC specified by VpcId.
+        # The list of vSwitch IDs. When the VPC network is enabled, at least one vSwitch must be included, and all vSwitches must belong to the VPC specified by VpcId.
         self.v_switch_ids = v_switch_ids
         # The ID of the user VPC.
         self.vpc_id = vpc_id

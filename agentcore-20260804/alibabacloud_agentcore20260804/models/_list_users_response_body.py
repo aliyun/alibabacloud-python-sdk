@@ -24,7 +24,7 @@ class ListUsersResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The list of users.
+        # The user list.
         self.items = items
         # The maximum number of records per page that takes effect in this query.
         self.max_results = max_results
@@ -134,21 +134,21 @@ class ListUsersResponseBodyItems(DaraModel):
         self.agent_core_user_id = agent_core_user_id
         # The authentication method of the user. A value of password indicates that local password authentication in the workspace is used. A value of dingtalk or feishu indicates that the user is synchronized and authenticated by the corresponding external identity provider.
         self.auth_method = auth_method
-        # The creation time in UTC format based on RFC 3339.
+        # The creation time. The time is displayed in UTC and follows the RFC 3339 format.
         self.created_at = created_at
-        # The display name of the user. The name must be 1 to 32 characters in length.
+        # The display name of the user. The value must be 1 to 32 characters in length.
         self.display_name = display_name
-        # The email address of the user. The email address can be up to 256 characters in length.
+        # The email address of the user. The value can be up to 256 characters in length.
         self.email = email
-        # The user name. The name must be unique within the workspace, contain only lowercase letters, digits, and hyphens, start and end with a lowercase letter or a digit, and be 1 to 32 characters in length.
+        # The username. The username must be unique within the workspace and can contain only lowercase letters, digits, and hyphens. It must start and end with a lowercase letter or a digit, and must be 1 to 32 characters in length.
         self.name = name
-        # The user remarks. The remarks can be up to 1,024 characters in length.
+        # The remarks of the user. The value can be up to 1,024 characters in length.
         self.note = note
         # The region ID of the resource.
         self.region_id = region_id
         # The user status. Valid values: Creating, Active, Updating, Deleting, Failed, and DeleteFailed.
         self.status = status
-        # The last modification time in UTC format based on RFC 3339.
+        # The time of the last modification. The time is displayed in UTC and follows the RFC 3339 format.
         self.updated_at = updated_at
         # The workspace ID.
         self.workspace_id = workspace_id

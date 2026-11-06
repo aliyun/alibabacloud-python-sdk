@@ -17,11 +17,11 @@ class GetModelConnectionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business status code. The value is SUCCESS when the request is successful.
+        # The business status code. The value is SUCCESS when the operation is successful.
         self.code = code
         # The detailed information about the model connection.
         self.data = data
-        # The HTTP status code. The value is 200 when the request is successful.
+        # The HTTP status code. The value is 200 if the request is successful.
         self.http_status_code = http_status_code
         # The message about the request processing result.
         self.message = message
@@ -115,9 +115,9 @@ class GetModelConnectionResponseBodyData(DaraModel):
         self.description = description
         # The absolute HTTP or HTTPS URL of the upstream model service. The URL can be up to 1,024 characters in length.
         self.endpoint = endpoint
-        # The name of the model connection. The name must be 1 to 128 non-whitespace characters in length.
+        # The name of the model connection. The name is 1 to 128 non-whitespace characters in length.
         self.name = name
-        # The protocol used to invoke the model. Currently, only OpenAI/v1 is supported. If no Settings are specified during model creation, this default value is used.
+        # The protocol to invoke the model. Currently, only OpenAI/v1 is supported. If the Settings are not specified during model creation, this default value is used.
         self.protocol = protocol
         # The type of the model provider.
         self.provider_type = provider_type
@@ -125,7 +125,7 @@ class GetModelConnectionResponseBodyData(DaraModel):
         self.region_id = region_id
         # The status of the resource.
         self.status = status
-        # The failure summary returned when the model connection fails to be published, or when deletion fails but the resource remains in the deleting state. This field is empty in other states.
+        # The failure summary returned when the model connection fails to be published, or when deletion fails but the connection remains in the deleting state. This field is empty in other states.
         self.status_reason = status_reason
         # The time when the resource was last updated. The time is in RFC 3339 UTC format.
         self.updated_at = updated_at

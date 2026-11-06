@@ -66,11 +66,11 @@ class CreateModelConnectionRequestBody(DaraModel):
         # 
         # This parameter is required.
         self.endpoint = endpoint
-        # The name of the model connection. The name must be 1 to 128 non-whitespace characters in length.
+        # The name of the model connection. It must be 1 to 128 non-whitespace characters in length.
         # 
         # This parameter is required.
         self.name = name
-        # The model invoke protocol. Currently, only OpenAI/v1 is supported. If the Settings are not specified during model creation, this default value is used.
+        # The model invoke protocol. Currently, only OpenAI/v1 is supported. If this parameter is not specified in Settings during model creation, this default value is used.
         self.protocol = protocol
         # The model provider type.
         # 

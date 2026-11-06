@@ -25,7 +25,7 @@ class VerifyWorkspaceAgenticFsMountRamAuthorizationResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -85,7 +85,7 @@ class VerifyWorkspaceAgenticFsMountRamAuthorizationResponseBodyData(DaraModel):
         self,
         authorization_status: str = None,
     ):
-        # The authorization status. A value of AUTHORIZED does not indicate that the actual mount was successful.
+        # The authorization status. A value of AUTHORIZED does not indicate that the actual mount is successful.
         self.authorization_status = authorization_status
 
     def validate(self):

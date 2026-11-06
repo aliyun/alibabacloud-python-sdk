@@ -88,9 +88,9 @@ class ValidateAgentCodePackageFromOssResponseBodyData(DaraModel):
         format: str = None,
         source_uri: str = None,
     ):
-        # The original file name of the code package.
+        # The file name of the original code package.
         self.file_name = file_name
-        # The compressed size of the code package.
+        # The compressed file size of the code package, in bytes.
         self.file_size = file_size
         # The format of the code package.
         self.format = format

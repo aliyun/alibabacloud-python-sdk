@@ -9,7 +9,7 @@ class DeletePermissionRuleRequest(DaraModel):
         self,
         client_token: str = None,
     ):
-        # The client token that ensures the idempotence of the request.
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
 
     def validate(self):

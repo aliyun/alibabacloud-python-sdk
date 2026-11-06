@@ -13,7 +13,7 @@ class GetSkillVersionDetailResponseBody(DaraModel):
         data: main_models.GetSkillVersionDetailResponseBodyData = None,
         request_id: str = None,
     ):
-        # The response data.
+        # The returned data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -59,9 +59,9 @@ class GetSkillVersionDetailResponseBodyData(DaraModel):
         self.description = description
         # The name.
         self.name = name
-        # The resource mapping in which the key is the resource name.
+        # The resource mapping, where the key is the resource name.
         self.resource = resource
-        # The Skill card content (SKILL.md).
+        # The skill card content (SKILL.md).
         self.skill_md = skill_md
         # The workspace ID.
         self.workspace_id = workspace_id

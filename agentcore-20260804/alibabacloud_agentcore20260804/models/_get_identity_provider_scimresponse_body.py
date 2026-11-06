@@ -15,17 +15,17 @@ class GetIdentityProviderSCIMResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business result code. Use this code along with the HTTP status code and message for error handling.
+        # The business result code. If the request fails, handle the issue based on the HTTP status code and the message.
         self.code = code
-        # The SCIM actual configuration, expected synchronization switch, and independent operation status. For the result structure, see the response fields of this operation. The response of an asynchronous write operation indicates that the request is accepted, but does not guarantee that the background task is complete.
+        # The result structure. For details, see the response fields of this operation. The response of an asynchronous write operation indicates that the request is accepted, but does not guarantee that the background task is completed.
         self.data = data
-        # The HTTP status code of the current request. This code indicates the processing status of the request and is not equivalent to the final result of the background task.
+        # The processing status of the current request, which is not equivalent to the final result of the background task.
         self.http_status_code = http_status_code
-        # Task result message. It indicates that the request is accepted or provides an error message. For asynchronous tasks, you must check task results by calling the corresponding query operation.
+        # The request acceptance or error message. For asynchronous tasks, check the task result by using the corresponding query operation.
         self.message = message
-        # The request ID. It is used to associate the current call with troubleshooting. Retain this ID when a failure occurs.
+        # The request ID. Used to associate this call with troubleshooting. Keep the ID if the request fails.
         self.request_id = request_id
-        # Indicates whether the current request is successful. A value of true indicates that the request is processed successfully. For asynchronous write operations, you must continue to query the task results.
+        # Indicates whether the current request is successful. A value of true indicates that the request is processed successfully. For asynchronous writes, you must continue to query the task results.
         self.success = success
 
     def validate(self):
@@ -88,27 +88,13 @@ class GetIdentityProviderSCIMResponseBodyData(DaraModel):
         status: str = None,
         sync_enabled: bool = None,
     ):
-        # The actual receiving status and URL. The actual SAML configuration is read back on demand only in GetIdentityProvider. SCIM queries and preparations return the actual receiving status and URL.
+        # The actual SAML configuration is read back on demand only in GetIdentityProvider. SCIM queries and preparations return the actual receiving status and URL.
         self.configuration = configuration
-        # The status of the most recent SCIM operation task. This status is independent of the SAML logon binding status. Valid values:
-        # - PENDING: Waiting for execution.
-        # - RUNNING: Executing.
-        # - PAUSED: Paused.
-        # - SUCCESS: Succeeded.
-        # - FAILED: Failed.
-        # - CANCELED: Canceled.
-        # If there are no tasks, it returns null or is not returned. This status only represents the most recent SCIM switch and the initial full import task when enabled. It does not indicate credential issuance, external provisioning connection tests, or continuous incremental synchronization health. Clients poll this operation when the status is PENDING or RUNNING.
+        # The original status of the most recent independent SCIM operation task. An empty string ("") is returned if no historical tasks exist.
         self.operation_status = operation_status
-        # The independent SCIM configuration status. Valid values:
-        # - UNCONFIGURED: Preparation is not complete.
-        # - WAITING_CONFIGURATION: Receiving is enabled, a valid HTTPS URL and at least one valid token are available, waiting for external configuration and enablement confirmation.
-        # - UPDATING: The enablement or disablement task is PENDING or RUNNING.
-        # - READY: Synchronization is enabled and the current enablement task succeeded, and the receiving end, URL, and token are still available.
-        # - DISABLED: The disablement task succeeded, and the configuration, credentials, and users are retained.
-        # - UPDATE_FAILED: The operation failed, was paused, was canceled, or the configuration and credentials are unavailable when enablement is expected.
-        # This status is independent of the SAML or OIDC status. READY does not prove that Matrix execution or the continuous incremental link has been accepted.
+        # The SCIM independent configuration status.
         self.status = status
-        # Specifies whether local synchronization is expected. You must determine whether it takes effect based on the actual configuration and task records. Do not set this parameter to true during CustomSSO initialization. You can only update it later by calling UpdateIdentityProviderSCIM, and determine the result based on operationStatus.
+        # Do not pass true during CustomSSO initialization. It can only be updated later through UpdateIdentityProviderSCIM. Determine the result in combination with operationStatus.
         self.sync_enabled = sync_enabled
 
     def validate(self):
@@ -157,9 +143,9 @@ class GetIdentityProviderSCIMResponseBodyDataConfiguration(DaraModel):
         base_url: str = None,
         status: str = None,
     ):
-        # The URL configured for the external provisioning system. The presence of a URL does not indicate that external configuration is complete or that AC synchronization is enabled.
+        # The URL configured for the external provisioning system. The presence of a URL does not mean that the external configuration is completed or AgentCore synchronization is enabled.
         self.base_url = base_url
-        # The AgentIdentity receiving status. Enabled indicates that SCIM receiving is enabled. Disabled indicates that it is disabled. This is not equivalent to the expected value of syncEnabled for AC.
+        # A value of Enabled indicates that SCIM receiving is enabled, and Disabled indicates that it is disabled. This is not equivalent to the expected value of syncEnabled in AgentCore.
         self.status = status
 
     def validate(self):

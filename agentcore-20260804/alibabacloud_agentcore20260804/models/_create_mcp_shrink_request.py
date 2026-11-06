@@ -12,7 +12,7 @@ class CreateMcpShrinkRequest(DaraModel):
     ):
         # The request body.
         self.body_shrink = body_shrink
-        # The client token that is used to ensure the idempotency of the request.
+        # The reserved query request identifier. The console backend currently does not read this parameter and does not provide idempotency guarantees for deduplication or restoring the original processing result based on this identifier.
         self.client_token = client_token
 
     def validate(self):

@@ -9,7 +9,7 @@ class UpdateIdentityProviderSCIMShrinkRequest(DaraModel):
         self,
         body_shrink: str = None,
     ):
-        # Submits the business parameters as described in this API. The body parameters of the public API are mapped to the backend wrapper by the gateway. Do not mix them with the backend direct connection body wrapper.
+        # The business parameters submitted in the request body. The body parameters of public APIs are mapped to backend wrappers by the gateway and must not be mixed with direct backend body wrappers.
         # 
         # This parameter is required.
         self.body_shrink = body_shrink

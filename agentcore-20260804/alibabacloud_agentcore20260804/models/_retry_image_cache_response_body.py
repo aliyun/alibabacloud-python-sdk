@@ -19,7 +19,7 @@ class RetryImageCacheResponseBody(DaraModel):
         # 
         # This parameter is required.
         self.code = code
-        # The retry image cache result.
+        # The result of retrying image cache creation.
         # 
         # This parameter is required.
         self.data = data
@@ -35,7 +35,7 @@ class RetryImageCacheResponseBody(DaraModel):
         # 
         # This parameter is required.
         self.request_id = request_id
-        # Indicates whether the request is successful. This does not mean that the cache production is complete.
+        # Indicates whether the request is successful. A successful request does not mean that the cache creation is complete.
         # 
         # This parameter is required.
         self.success = success
@@ -110,63 +110,59 @@ class RetryImageCacheResponseBodyData(DaraModel):
         tag: str = None,
         workspace_id: str = None,
     ):
-        # The source ACR Enterprise instance ID.
+        # The ID of the source ACR instance.
         # 
         # This parameter is required.
         self.acr_instance_id = acr_instance_id
-        # The deduplicated number of agents in the current workspace that have useImageCache set to true and are associated with this logical resource. The value is greater than or equal to 0. This uses the same set as the imageCacheId filter in ListAllAgents. Agents with the feature disabled are not counted, regardless of the number of occupied instances.
+        # The number of agents that use the cache.
         # 
         # This parameter is required.
         self.agent_count = agent_count
-        # The actual cache size in bytes. Known values are greater than or equal to 0. If unknown, the value is null. The compressed size of the source image cannot be used as a substitute.
+        # The size of the cache in bytes.
         # 
         # This parameter is required.
         self.cache_size_bytes = cache_size_bytes
-        # Indicates whether deletion is allowed. The value is true when the current workspace has no configuration references with the switch enabled, no valid instances are occupying the resource, and the resource is not being deleted. If the reference status is unknown, the query fails instead of allowing deletion by default.
+        # Indicates whether the cache can be deleted.
         # 
         # This parameter is required.
         self.can_delete = can_delete
-        # The creation time of the logical resource in the current workspace, in RFC3339 format with time zone. Content updates for the "latest" tag do not refresh this time.
+        # The time when the resource was created. The time follows the RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
         # 
         # This parameter is required.
         self.created_at = created_at
-        # The reason why deletion is blocked. The value is null when canDelete is true. Otherwise, the value is returned based on the priority of DELETING, AGENT_ENABLED, and INSTANCES_RELEASING. Old instances may still occupy the resource even if the agent count is 0.
+        # The reason why the cache cannot be deleted.
         # 
         # This parameter is required.
         self.delete_block_reason = delete_block_reason
-        # The current content digest in the sha256: format followed by a 64-character lowercase hexadecimal string. It only describes the currently registered content and does not prove that old instances have been switched.
+        # The current content digest.
         # 
         # This parameter is required.
         self.digest = digest
-        # The reason for cache failure. This is a non-empty object when the status is FAILED, and null for other statuses. It only describes the current content and the current production round.
+        # The reason for the cache failure.
         # 
         # This parameter is required.
         self.error = error
-        # The logical resource ID manageable by the current workspace, not the shared physical cache ID.
+        # The image cache ID.
         # 
         # This parameter is required.
         self.image_id = image_id
-        # The source image domain name, excluding the protocol, path, and credentials.
+        # The domain name of the source image.
         # 
         # This parameter is required.
         self.registry = registry
-        # The source image repository path in the namespace/repository format, which includes the namespace.
+        # The path of the source image repository.
         # 
         # This parameter is required.
         self.repository = repository
-        # The image cache status. Valid values:
-        # - PENDING: The cache is being created.
-        # - READY: The cache is available.
-        # - FAILED: An exception occurred.
-        # - DELETING: The cache is being deleted in the current workspace.
+        # The cache status.
         # 
         # This parameter is required.
         self.status = status
-        # The source image tag with case preserved. Regular tags cannot be registered with different digests, except for the exact lowercase "latest" tag.
+        # The tag of the source image.
         # 
         # This parameter is required.
         self.tag = tag
-        # The workspace ID, which is consistent with the requested workspace. Resources with the same content from other workspaces are not returned.
+        # The workspace ID.
         # 
         # This parameter is required.
         self.workspace_id = workspace_id
@@ -277,11 +273,11 @@ class RetryImageCacheResponseBodyDataError(DaraModel):
         code: str = None,
         message: str = None,
     ):
-        # The secure and non-empty error code for the current production failure.
+        # The error code for the creation failure.
         # 
         # This parameter is required.
         self.code = code
-        # The secure and non-empty display reason for the production failure, excluding credentials, internal addresses, or stack traces.
+        # The description of the creation failure.
         # 
         # This parameter is required.
         self.message = message

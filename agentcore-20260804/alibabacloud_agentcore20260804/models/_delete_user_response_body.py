@@ -25,7 +25,7 @@ class DeleteUserResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -89,7 +89,7 @@ class DeleteUserResponseBodyData(DaraModel):
     ):
         # The user ID.
         self.agent_core_user_id = agent_core_user_id
-        # The username. The username must be unique within the workspace. It can contain only lowercase letters, digits, and hyphens (-), and must start and end with a lowercase letter or digit. The username must be 1 to 32 characters in length.
+        # The username. It must be unique within the workspace and can contain only lowercase letters, digits, and hyphens. It must start and end with a lowercase letter or a digit, and must be 1 to 32 characters in length.
         self.name = name
         # The workspace ID.
         self.workspace_id = workspace_id

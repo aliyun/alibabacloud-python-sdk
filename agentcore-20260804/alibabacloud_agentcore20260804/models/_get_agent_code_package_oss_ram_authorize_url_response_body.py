@@ -17,7 +17,7 @@ class GetAgentCodePackageOssRamAuthorizeUrlResponseBody(DaraModel):
     ):
         # The business status code.
         self.code = code
-        # The returned result.
+        # The response data.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -88,7 +88,7 @@ class GetAgentCodePackageOssRamAuthorizeUrlResponseBodyData(DaraModel):
         role_name: str = None,
         workspace_id: str = None,
     ):
-        # The RAM authorization URL.
+        # The RAM authorization link.
         self.authorize_url = authorize_url
         # The name of the authorized source OSS bucket.
         self.oss_bucket_name = oss_bucket_name

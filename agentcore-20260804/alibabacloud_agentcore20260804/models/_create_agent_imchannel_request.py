@@ -15,7 +15,7 @@ class CreateAgentIMChannelRequest(DaraModel):
     ):
         # The request body.
         self.body = body
-        # The reserved idempotence token. The backend does not provide persistent idempotence guarantees in the current phase.
+        # The reserved idempotency token. The backend does not provide persistent idempotency guarantees in the current phase.
         self.client_token = client_token
 
     def validate(self):
@@ -61,13 +61,13 @@ class CreateAgentIMChannelRequestBody(DaraModel):
         # 
         # This parameter is required.
         self.channel_type = channel_type
-        # The channel credentials. You must pass all fields and ensure that the field values are non-empty strings. For DingTalk, use clientID and clientSecret. For Lark, use appId and appSecret. For WeCom, use botId and secret.
+        # The channel credentials. You must pass all credential fields and ensure that the field values are non-empty strings. For DingTalk, use clientID and clientSecret. For Lark, use appId and appSecret. For WeCom, use botId and secret.
         # 
         # This parameter is required.
         self.credential = credential
         # Specifies whether to enable the IM channel. Default value: true.
         self.enabled = enabled
-        # The ID of the bound ServiceEndpoint. The endpoint must belong to the specified agent and its current version, and must be ready and have a public network address.
+        # The ID of the bound service endpoint. The endpoint must belong to the specified agent and its current version, be in the ready state, and have a publicly accessible address.
         # 
         # This parameter is required.
         self.service_endpoint_id = service_endpoint_id

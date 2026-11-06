@@ -17,9 +17,9 @@ class ListSkillsResponseBody(DaraModel):
     ):
         # The returned data.
         self.data = data
-        # The maximum number of entries per page.
+        # The maximum number of items to return per page.
         self.max_results = max_results
-        # The pagination token for the next page.
+        # The token for the next page.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -134,6 +134,7 @@ class ListSkillsResponseBodyDataPageItems(DaraModel):
         description: str = None,
         download_count: int = None,
         draft_mode: str = None,
+        editable: bool = None,
         editing_version: str = None,
         enable: bool = None,
         from_: str = None,
@@ -147,21 +148,19 @@ class ListSkillsResponseBodyDataPageItems(DaraModel):
         workspace_id: str = None,
         writeable: bool = None,
     ):
-        # The business tags as a JSON array string.
+        # The business tags in a JSON array string.
         self.biz_tags = biz_tags
         # The description.
         self.description = description
         # The total number of downloads.
         self.download_count = download_count
-        # The draft mode. Valid values:
-        # - HEAD: The Skill has a persistent draft.
-        # - VERSIONED: Each edit creates a versioned draft.
-        # 
-        # The value is determined by the server. The caller uses this value to render the status column.
+        # The draft mode. Valid values: HEAD (the skill has a persistent draft) and VERSIONED (each edit creates a versioned draft). This is determined by the server and used by the caller to render the status column.
         self.draft_mode = draft_mode
-        # The version that is being edited. In HEAD draft mode, the value is HEAD.
+        # Indicates whether the page item is editable.
+        self.editable = editable
+        # The version being edited. The value is HEAD in HEAD draft mode.
         self.editing_version = editing_version
-        # Indicates whether the Skill is enabled.
+        # Indicates whether the skill is enabled.
         self.enable = enable
         # The source tag.
         self.from_ = from_
@@ -173,11 +172,11 @@ class ListSkillsResponseBodyDataPageItems(DaraModel):
         self.online_cnt = online_cnt
         # The resource owner.
         self.owner = owner
-        # The version that is under review. In HEAD draft mode, the value is HEAD.
+        # The version under review. The value is HEAD in HEAD draft mode.
         self.reviewing_version = reviewing_version
         # The visibility scope.
         self.scope = scope
-        # The update time. This value is a UNIX timestamp in milliseconds.
+        # The update time. It is a UNIX timestamp in milliseconds.
         self.update_time = update_time
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -203,6 +202,9 @@ class ListSkillsResponseBodyDataPageItems(DaraModel):
 
         if self.draft_mode is not None:
             result['draftMode'] = self.draft_mode
+
+        if self.editable is not None:
+            result['editable'] = self.editable
 
         if self.editing_version is not None:
             result['editingVersion'] = self.editing_version
@@ -255,6 +257,9 @@ class ListSkillsResponseBodyDataPageItems(DaraModel):
 
         if m.get('draftMode') is not None:
             self.draft_mode = m.get('draftMode')
+
+        if m.get('editable') is not None:
+            self.editable = m.get('editable')
 
         if m.get('editingVersion') is not None:
             self.editing_version = m.get('editingVersion')

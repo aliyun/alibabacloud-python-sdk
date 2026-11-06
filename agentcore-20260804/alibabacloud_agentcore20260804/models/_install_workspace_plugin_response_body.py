@@ -17,11 +17,11 @@ class InstallWorkspacePluginResponseBody(DaraModel):
     ):
         # The business status code.
         self.code = code
-        # The details of the plugin installation operation.
+        # The details of the component installation operation.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The response message. Returns an error description when the request fails.
+        # The response message. An error description is returned if the request fails.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -88,11 +88,11 @@ class InstallWorkspacePluginResponseBodyData(DaraModel):
         status: str = None,
         workspace_id: str = None,
     ):
-        # Indicates whether the plugin is enabled.
+        # Indicates whether the component is enabled.
         self.enabled = enabled
-        # The plugin name.
+        # The component name.
         self.plugin_name = plugin_name
-        # The plugin status. Valid values: DISABLED, ENABLING, ENABLED, ENABLE_FAILED, DISABLING, and DISABLE_FAILED.
+        # The component status. Valid values: DISABLED, ENABLING, ENABLED, ENABLE_FAILED, DISABLING, and DISABLE_FAILED.
         self.status = status
         # The workspace ID.
         self.workspace_id = workspace_id

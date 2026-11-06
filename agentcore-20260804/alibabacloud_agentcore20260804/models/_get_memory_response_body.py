@@ -27,7 +27,7 @@ class GetMemoryResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -94,7 +94,7 @@ class GetMemoryResponseBodyData(DaraModel):
     ):
         # The memory content.
         self.content = content
-        # The creation time.
+        # The creation time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
         self.created_at = created_at
         # The long-term memory ID.
         self.memory_id = memory_id
@@ -102,7 +102,7 @@ class GetMemoryResponseBodyData(DaraModel):
         self.metadata = metadata
         # The memory scope.
         self.scope = scope
-        # The last update time.
+        # The last update time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
         self.updated_at = updated_at
 
     def validate(self):
@@ -167,11 +167,11 @@ class GetMemoryResponseBodyDataScope(DaraModel):
         session_id: str = None,
         user_id: str = None,
     ):
-        # The agent ID. The length is limited to 1 to 128 UTF-8 bytes, and it must not contain / or *. This field is not returned if the memory is not associated with an agent ID.
+        # The agent ID. The length is limited to 1 to 128 UTF-8 bytes. Slashes (/) and asterisks (*) are not allowed. This field is not returned if the memory is not associated with an agent ID.
         self.agent_id = agent_id
-        # The session ID. The length is limited to 1 to 128 UTF-8 bytes, and it must not contain / or *. This field is not returned if the memory is not associated with a session ID.
+        # The session ID. The length is limited to 1 to 128 UTF-8 bytes. Slashes (/) and asterisks (*) are not allowed. This field is not returned if the memory is not associated with a session ID.
         self.session_id = session_id
-        # The user ID. The length is limited to 1 to 128 UTF-8 bytes, and it must not contain / or *. This field is not returned if the memory is not associated with a user ID.
+        # The user ID. The length is limited to 1 to 128 UTF-8 bytes. Slashes (/) and asterisks (*) are not allowed. This field is not returned if the memory is not associated with a user ID.
         self.user_id = user_id
 
     def validate(self):
