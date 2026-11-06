@@ -571,6 +571,9 @@ from ._export_desktop_group_info_response import ExportDesktopGroupInfoResponse
 from ._export_desktop_list_info_request import ExportDesktopListInfoRequest
 from ._export_desktop_list_info_response_body import ExportDesktopListInfoResponseBody
 from ._export_desktop_list_info_response import ExportDesktopListInfoResponse
+from ._generate_scene_key_request import GenerateSceneKeyRequest
+from ._generate_scene_key_response_body import GenerateSceneKeyResponseBody
+from ._generate_scene_key_response import GenerateSceneKeyResponse
 from ._get_aggregated_desktops_request import GetAggregatedDesktopsRequest
 from ._get_aggregated_desktops_response_body import GetAggregatedDesktopsResponseBody
 from ._get_aggregated_desktops_response import GetAggregatedDesktopsResponse
@@ -1818,6 +1821,9 @@ __all__ = [
     ExportDesktopListInfoRequest,
     ExportDesktopListInfoResponseBody,
     ExportDesktopListInfoResponse,
+    GenerateSceneKeyRequest,
+    GenerateSceneKeyResponseBody,
+    GenerateSceneKeyResponse,
     GetAggregatedDesktopsRequest,
     GetAggregatedDesktopsResponseBody,
     GetAggregatedDesktopsResponse,

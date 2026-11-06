@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Dict
 
 from alibabacloud_ecd20200930 import models as main_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -21,6 +22,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'ecd'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('ecd', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -18776,6 +18780,88 @@ class Client(OpenApiClient):
     ) -> main_models.ExportDesktopListInfoResponse:
         runtime = RuntimeOptions()
         return await self.export_desktop_list_info_with_options_async(request, runtime)
+
+    def generate_scene_key_with_options(
+        self,
+        request: main_models.GenerateSceneKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GenerateSceneKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.desktop_id):
+            query['DesktopId'] = request.desktop_id
+        if not DaraCore.is_null(request.expire_time):
+            query['ExpireTime'] = request.expire_time
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.scene):
+            query['Scene'] = request.scene
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GenerateSceneKey',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GenerateSceneKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def generate_scene_key_with_options_async(
+        self,
+        request: main_models.GenerateSceneKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GenerateSceneKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.desktop_id):
+            query['DesktopId'] = request.desktop_id
+        if not DaraCore.is_null(request.expire_time):
+            query['ExpireTime'] = request.expire_time
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.scene):
+            query['Scene'] = request.scene
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GenerateSceneKey',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GenerateSceneKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def generate_scene_key(
+        self,
+        request: main_models.GenerateSceneKeyRequest,
+    ) -> main_models.GenerateSceneKeyResponse:
+        runtime = RuntimeOptions()
+        return self.generate_scene_key_with_options(request, runtime)
+
+    async def generate_scene_key_async(
+        self,
+        request: main_models.GenerateSceneKeyRequest,
+    ) -> main_models.GenerateSceneKeyResponse:
+        runtime = RuntimeOptions()
+        return await self.generate_scene_key_with_options_async(request, runtime)
 
     def get_aggregated_desktops_with_options(
         self,

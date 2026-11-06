@@ -1,3 +1,7 @@
+2026-11-06 Version: 5.6.0
+- Support API GenerateSceneKey.
+
+
 2026-11-04 Version: 5.5.3
 - Generated python 2020-09-30 for ecd.
 
