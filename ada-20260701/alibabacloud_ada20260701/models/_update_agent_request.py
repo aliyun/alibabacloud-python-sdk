@@ -19,29 +19,25 @@ class UpdateAgentRequest(DaraModel):
         tools: Any = None,
         visibility: str = None,
     ):
-        # The new description. If not specified, the existing value is retained.
+        # The new description. If not passed, the original value is retained.
         self.description = description
-        # The new display name. If not specified, the existing value is retained.
+        # The new display name. If not passed, the original value is retained.
         self.display_name = display_name
-        # The expected current configuration revision number. This parameter is omitted by default. For concurrency protection, pass in the `AgentVersion` returned by the most recent `GetAgent` call.
+        # The expected current configuration revision number. This parameter is omitted by default. Pass the `AgentVersion` returned by the most recent `GetAgent` call when concurrent protection is required.
         self.expected_version = expected_version
-        # The list of knowledge base bindings, which contains at most one element. If not specified, the existing value is retained. A non-empty array replaces the entire value. Passing `[ ]` removes all bindings.
+        # The list of knowledge base bindings, which can contain at most one element. If not passed, the original value is retained. If a non-empty array is passed, the entire list is replaced. If `[ ]` is passed, all bindings are removed.
         self.knowledge_bases = knowledge_bases
-        # The name of the Agent to update.
+        # The name of the agent to update.
         # 
         # This parameter is required.
         self.name = name
-        # The list of Skill references. If not specified, the existing value is retained. A non-empty array replaces the entire value. Passing `[ ]` removes all bindings.
+        # The list of skill references. If not passed, the original value is retained. If a non-empty array is passed, the entire list is replaced. If `[ ]` is passed, all bindings are removed.
         self.skills = skills
-        # The new system prompt. If not specified, the existing value is retained.
+        # The new system prompt. If not passed, the original value is retained.
         self.system_prompt = system_prompt
-        # The list of MCP Server and Connector name references. The same array supports both types of entries. Each entry specifies one type of reference. If items is omitted for an MCP entry, all public tools are included. Previously specified items retain their existing values.
+        # The list of MCP server and connector name references. The same array supports both types of entries. Specify only one type of reference for each entry. For MCP, omitting items indicates all public tools. Historically specified items retain their original values.
         self.tools = tools
-        # The new visibility scope. Valid values:
-        # - user
-        # - tenant
-        # 
-        # If not specified, the existing value is retained.
+        # The new visibility scope. Valid values: `user` and `tenant`. If not passed, the original value is retained.
         self.visibility = visibility
 
     def validate(self):

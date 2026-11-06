@@ -1,0 +1,45 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import Any
+
+from darabonba.model import DaraModel
+
+class GetAgentSessionModelResponseBody(DaraModel):
+    def __init__(
+        self,
+        json_rpc_response: Any = None,
+        request_id: str = None,
+    ):
+        # The defined JSON-RPC response structure. For core nested fields, see the supplementary description.
+        self.json_rpc_response = json_rpc_response
+        # The ID of the request, which is used for troubleshooting.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.json_rpc_response is not None:
+            result['JsonRpcResponse'] = self.json_rpc_response
+
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JsonRpcResponse') is not None:
+            self.json_rpc_response = m.get('JsonRpcResponse')
+
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+
+        return self
+

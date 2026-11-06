@@ -29,7 +29,7 @@ class GetAgentResponseBody(DaraModel):
         updated_at: int = None,
         visibility: str = None,
     ):
-        # Agent ID。
+        # The agent ID.
         self.agent_id = agent_id
         # The current configuration revision number.
         self.agent_version = agent_version
@@ -39,31 +39,31 @@ class GetAgentResponseBody(DaraModel):
         self.can_modify = can_modify
         # The creation time. The value is a UNIX timestamp in milliseconds.
         self.created_at = created_at
-        # The description of the agent. This field may not be returned if it is not configured.
+        # The agent description. This field may not be returned if it is not configured.
         self.description = description
         # The display name of the agent. This field may not be returned if it is not configured.
         self.display_name = display_name
-        # The list of knowledge base references. The list contains at most one element.
+        # The knowledge base reference list. The list contains at most one element.
         self.knowledge_bases = knowledge_bases
-        # The display metadata of the agent. For specific fields, see "Supplementary description of response elements".
+        # The display metadata of the agent. For specific fields, refer to the supplementary description of response parameters.
         self.metadata = metadata
-        # The saved model configuration. This field is returned only for official agents. The value supports an object array and is compatible with legacy single objects and strings. An empty array returns [ \\]. Object arrays preserve the original order, duplicate names, and object fields.
+        # The saved model configuration. This information is returned only for official agents. Object arrays are supported, and historical single objects and strings are compatible. An empty array is returned as [ \\]. Object arrays retain the original order, duplicate names, and object fields.
         self.model = model
-        # The name of the agent.
+        # The agent name.
         self.name = name
         # Indicates whether the agent is an official agent provided by the platform.
         self.official = official
-        # The request ID, which is used for Tracing Analysis and troubleshooting.
+        # The request ID. It is used for Tracing Analysis and troubleshooting.
         self.request_id = request_id
-        # The list of skill references. For specific fields, see "Supplementary description of response elements".
+        # The skill reference list. For specific fields, refer to the supplementary description of response parameters.
         self.skills = skills
-        # The status of the agent. The default status of a newly created agent is `draft`.
+        # The agent status. The default status of a newly created agent is `draft`.
         self.status = status
         # The system prompt. This field may not be returned if it is not configured.
         self.system_prompt = system_prompt
-        # The list of MCP Server and Connector name references. For element fields, see the following section.
+        # The reference list of MCP server and connector names. For element fields, refer to the following sections.
         self.tools = tools
-        # The most recent update time. The value is a UNIX timestamp in milliseconds.
+        # The last update time. The value is a UNIX timestamp in milliseconds.
         self.updated_at = updated_at
         # The visibility scope of the agent. Valid values: `user` and `tenant`.
         self.visibility = visibility

@@ -13,15 +13,15 @@ class UpdateSkillResponseBody(DaraModel):
         success: bool = None,
         updated_at: int = None,
     ):
-        # The Skill name.
+        # The name of the skill.
         self.name = name
         # The request ID.
         self.request_id = request_id
-        # Skill ID。
+        # The skill ID.
         self.skill_id = skill_id
-        # Returns `true` when the Skill update and optional bundle replacement have been fully committed and confirmed by read-back.
+        # Indicates whether the operation is successful. Returns `true` if the skill update and optional package replacement have been fully submitted and confirmed by read-back.
         self.success = success
-        # The time when the Skill was updated, in UNIX millisecond timestamp.
+        # The time when the skill was updated. The value is a UNIX timestamp in milliseconds.
         self.updated_at = updated_at
 
     def validate(self):

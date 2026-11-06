@@ -15,21 +15,19 @@ class GetTransitMetaResponseBody(DaraModel):
         status: str = None,
         transit_id: str = None,
     ):
-        # The temporary download URL. If `Network` is not specified, `null` is returned. If the file is not yet available, the URL may not be accessible. Do not write this URL to logs, persist it for long-term use, or share it with unauthorized users.
+        # The temporary download URL. If Network is not specified, null is returned. The URL may be unavailable if the file is not yet available. Do not write this URL to logs, store it for a long time, or forward it to irrelevant users.
         self.download_url = download_url
-        # The expiration time of the Transit record, expressed as a UTC UNIX timestamp in milliseconds (the number of milliseconds elapsed since 1970-01-01 00:00:00 UTC). You can compare this value directly with the current UNIX timestamp in milliseconds without adding or subtracting 8 hours. Do not use the record after this time.
+        # The expiration time of the transit record. The value is a UTC UNIX timestamp in milliseconds, which is the number of milliseconds that have elapsed since 00:00:00 UTC on January 1, 1970. You can directly compare this value with the current UNIX timestamp in milliseconds without adding or subtracting 8 hours. Do not continue to use the record after this time.
         self.expire_at = expire_at
-        # The opaque object path of the file. Do not parse or manually construct this value.
+        # The opaque object path corresponding to the file. Callers must not parse or construct this value.
         self.file_path = file_path
         # The request ID, which is used for Tracing Analysis and troubleshooting.
         self.request_id = request_id
-        # The file size in bytes. `null` may be returned if no available file has been detected.
+        # The file size, in bytes. If no available file is detected, null may be returned.
         self.size = size
-        # The Transit file status. Valid values:
-        # - PENDING: The file is not yet available. You can query again later.
-        # - SUCCESS: The file is available.
+        # The status of the transit file. A value of PENDING indicates that the file is not yet available, and the caller can query again later. A value of SUCCESS indicates that the file is available.
         self.status = status
-        # Transit ID。
+        # The transit ID.
         self.transit_id = transit_id
 
     def validate(self):

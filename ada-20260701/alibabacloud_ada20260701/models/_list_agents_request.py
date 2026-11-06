@@ -21,15 +21,15 @@ class ListAgentsRequest(DaraModel):
         self.creator_id = creator_id
         # The number of entries per page for cursor-based pagination. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
-        # The next page token returned in the previous response.
+        # The next token returned in the previous response.
         self.next_token = next_token
         # The page number for page number-based pagination. Minimum value: 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page for page number-based pagination. Valid values: 1 to 100. Default value: 20.
         self.page_size = page_size
-        # The search keyword. Matches the name, display name, or description.
+        # The search keyword used to match the name, display name, or description.
         self.q = q
-        # Filters agents by runtime label.
+        # Filters agents by the runtime tag.
         self.required_runtime = required_runtime
         # The query scope. Valid values: `SYSTEM` and `CUSTOM`.
         self.scope = scope

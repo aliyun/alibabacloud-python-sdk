@@ -9,7 +9,7 @@ class DeleteAgentRequest(DaraModel):
         self,
         name: str = None,
     ):
-        # The name of the Agent to delete.
+        # The name of the agent to delete.
         # 
         # This parameter is required.
         self.name = name

@@ -13,15 +13,15 @@ class CreateSkillResponseBody(DaraModel):
         success: bool = None,
         updated_at: int = None,
     ):
-        # The unique identifier of the Skill.
+        # The unique identifier of the skill.
         self.name = name
         # The request ID, which is used to locate and troubleshoot the request.
         self.request_id = request_id
-        # Skill ID。
+        # The skill ID.
         self.skill_id = skill_id
-        # Indicates whether the Skill and its body or bundle are fully created and readable. A value of true is returned upon success. Business failures are returned as error responses.
+        # Indicates whether the operation is successful. A value of true is returned when the skill and its body or bundle are fully created and readable. Business failures are indicated by error responses.
         self.success = success
-        # The time when the Skill was last updated after creation. The value is a UNIX timestamp in milliseconds.
+        # The update time after the skill is created. The value is a UNIX timestamp in milliseconds.
         self.updated_at = updated_at
 
     def validate(self):

@@ -13,15 +13,15 @@ class UpdateAgentResponseBody(DaraModel):
         success: bool = None,
         updated_at: int = None,
     ):
-        # Agent ID。
+        # The agent ID.
         self.agent_id = agent_id
-        # The Agent name.
+        # The name of the agent.
         self.name = name
-        # The request ID, used for Tracing Analysis and troubleshooting.
+        # The request ID, which is used for Tracing Analysis and troubleshooting.
         self.request_id = request_id
-        # Indicates whether the Agent was successfully updated. A successful response always returns `true`. A failure returns an error response.
+        # Indicates whether the agent is updated. A success response always returns `true`. An error response is returned upon failure.
         self.success = success
-        # The most recent update time, as a UNIX timestamp in milliseconds.
+        # The most recent update time. The value is a UNIX timestamp in milliseconds.
         self.updated_at = updated_at
 
     def validate(self):

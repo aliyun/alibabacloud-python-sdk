@@ -19,17 +19,17 @@ class ListSkillsResponseBody(DaraModel):
     ):
         # The number of entries per page for the current cursor-based pagination.
         self.max_results = max_results
-        # The token for the next page. An empty string is returned if there is no next page.
+        # The next token. An empty string is returned if no next page exists.
         self.next_token = next_token
-        # The current page number for compatible page-number-based pagination.
+        # The current compatible page number.
         self.page_number = page_number
-        # The number of entries per page for compatible page-number-based pagination.
+        # The number of entries per page for the current compatible pagination.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The list of Skill summaries. The current public contract does not define a fixed structure for list items. For common fields, see "Supplementary description of response elements".
+        # The list of skill summaries. The structure of list items is not fixed in the current public contract. For common fields, see the supplementary description of response parameters.
         self.skills = skills
-        # The total number of Skills that match the current visibility and filter conditions.
+        # The total number of skills that meet the current visibility and filter conditions.
         self.total = total
 
     def validate(self):

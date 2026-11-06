@@ -17,11 +17,11 @@ class ListAgentsResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The list of agent summaries. For field details, see "Supplementary description of response parameters".
+        # The list of agent summaries. For the fields of each element, see the supplementary description of response parameters.
         self.agents = agents
-        # The actual cursor-based pagination size used.
+        # The actual page size used for cursor-based pagination.
         self.max_results = max_results
-        # The next page token. An empty string is returned if there is no next page.
+        # The next token. An empty string is returned if no next page exists.
         self.next_token = next_token
         # The current page number.
         self.page_number = page_number
@@ -29,7 +29,7 @@ class ListAgentsResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID, used for Tracing Analysis and troubleshooting.
         self.request_id = request_id
-        # The total number of agents that match the filter conditions.
+        # The total number of agents that meet the filter conditions.
         self.total = total
 
     def validate(self):

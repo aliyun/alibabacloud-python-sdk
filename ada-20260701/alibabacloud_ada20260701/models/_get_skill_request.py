@@ -11,13 +11,13 @@ class GetSkillRequest(DaraModel):
         network: str = None,
         skill_version: int = None,
     ):
-        # The Skill name.
+        # The name of the skill.
         # 
         # This parameter is required.
         self.name = name
         # The network type of the download URL. Valid values: public and internal. If omitted, no download URL is generated.
         self.network = network
-        # The release history version number to query. If omitted, the current Skill main record is returned.
+        # Specifies the published history version number to query. If omitted, the current main record of the skill is returned.
         self.skill_version = skill_version
 
     def validate(self):

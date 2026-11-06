@@ -18,27 +18,23 @@ class CreateAgentRequest(DaraModel):
         tools: Any = None,
         visibility: str = None,
     ):
-        # The description of the Agent.
+        # The description of the agent.
         self.description = description
-        # The display name of the Agent.
+        # The display name of the agent.
         self.display_name = display_name
-        # The knowledge base reference list, which contains at most one element.
+        # The list of knowledge base references, which can contain at most one element.
         self.knowledge_bases = knowledge_bases
-        # The Agent name, which is also the unique identifier that cannot be modified after creation.
+        # The name of the agent, which is also the unique identifier that cannot be modified after creation.
         # 
         # This parameter is required.
         self.name = name
-        # The Skill reference list. For specific fields, see "Supplementary description of request parameters".
+        # The list of skill references. For specific fields, refer to the supplementary description of request parameters.
         self.skills = skills
         # The system prompt.
         self.system_prompt = system_prompt
-        # The reference list of MCP Server and Connector names. The same array supports both types of entries. Each entry specifies one type of reference. If items is omitted for an MCP Server, all public tools are included. Previously specified items retain their original values.
+        # The list of MCP server and connector name references. The same array supports both types of entries. Specify only one type of reference for each entry. For MCP, omitting items indicates all public tools, and historically specified items retain their original values.
         self.tools = tools
-        # The visibility scope of the Agent. Valid values:
-        # - user
-        # - tenant
-        # 
-        # Default value: user.
+        # The visibility scope of the agent. Valid values: `user` and `tenant`. Default value: `user`.
         self.visibility = visibility
 
     def validate(self):

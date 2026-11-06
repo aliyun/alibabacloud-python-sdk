@@ -14,24 +14,19 @@ class CreateSkillRequest(DaraModel):
         name: str = None,
         visibility: str = None,
     ):
-        # The description of the Skill.
+        # The description of the skill.
         # 
         # This parameter is required.
         self.description = description
-        # The Skill metadata in JSON object format. Exactly one content source must be provided. For more information about the fields, see "Request parameter description".
+        # The metadata of the skill, in JSON object format. You must and can only provide one content source. For specific fields, refer to the supplementary description of request parameters.
         # 
         # This parameter is required.
         self.metadata = metadata
-        # The unique identifier of the Skill. Only letters, digits, underscores, and hyphens are supported. The value can be up to 64 characters in length.
+        # The unique identifier of the skill. Only English letters, digits, underscores, and hyphens are supported. The length cannot exceed 64 characters.
         # 
         # This parameter is required.
         self.name = name
-        # The visibility of the Skill. Valid values:
-        # 
-        # - user
-        # - tenant
-        # 
-        # Default value: user.
+        # The visibility of the skill. Valid values: user and tenant. Default value: user.
         self.visibility = visibility
 
     def validate(self):

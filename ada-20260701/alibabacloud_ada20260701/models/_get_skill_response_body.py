@@ -25,35 +25,35 @@ class GetSkillResponseBody(DaraModel):
         updated_at: int = None,
         visibility: str = None,
     ):
-        # Indicates whether the current caller can delete the Skill.
+        # Indicates whether the current caller can delete the skill.
         self.can_delete = can_delete
-        # Indicates whether the current caller can modify the Skill.
+        # Indicates whether the current caller can modify the skill.
         self.can_modify = can_modify
-        # The creation time of the Skill, in Unix millisecond timestamp.
+        # The creation time of the skill. The value is a UNIX timestamp in milliseconds.
         self.created_at = created_at
-        # The description in the current Skill main record.
+        # The description in the current main record of the skill.
         self.description = description
-        # The bundle download URL. Returned when a network type is specified, an accessible Artifact exists, and pre-signing succeeds.
+        # The download URL of the bundle. This field is returned when the network is specified, an accessible artifact exists, and the pre-signing is successful.
         self.download_url = download_url
-        # The network type used to generate the download URL.
+        # The network type actually used to generate the download URL.
         self.download_url_network = download_url_network
-        # The Skill icon URL, sourced from the iconUrl in the metadata. This field may be empty if no icon is configured.
+        # The URL of the skill icon, which is derived from the iconUrl in the metadata. This field may be empty if no icon is configured.
         self.icon_url = icon_url
-        # The Skill metadata, mapped to the metadata field in the backend response.
+        # The metadata of the skill, which is mapped to the metadata field in the backend response.
         self.metadata = metadata
-        # The Skill name.
+        # The name of the skill.
         self.name = name
-        # Indicates whether the Skill is an official Skill.
+        # Indicates whether the skill is an official skill.
         self.official = official
-        # The request ID, used for Tracing Analysis and troubleshooting.
+        # The request ID, which is used for Tracing Analysis and troubleshooting.
         self.request_id = request_id
-        # Skill ID。
+        # The skill ID.
         self.skill_id = skill_id
-        # The current Skill status. Common values are DRAFT and PUBLISHED.
+        # The current status of the skill. Common values include DRAFT and PUBLISHED.
         self.status = status
-        # The update time of the Skill, in Unix millisecond timestamp.
+        # The update time of the skill. The value is a UNIX timestamp in milliseconds.
         self.updated_at = updated_at
-        # The visibility of the current Skill. Common values are user and tenant.
+        # The visibility of the current skill. Common values include user and tenant.
         self.visibility = visibility
 
     def validate(self):

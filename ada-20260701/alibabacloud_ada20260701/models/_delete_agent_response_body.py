@@ -10,9 +10,9 @@ class DeleteAgentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The request ID, which is used for Tracing Analysis and troubleshooting.
+        # The request ID used for Tracing Analysis and troubleshooting.
         self.request_id = request_id
-        # Indicates whether the Agent is deleted. The value `true` is returned for a successful response. An error response is returned for a failed request.
+        # Indicates whether the agent was successfully deleted. A successful response always returns `true`. If the operation fails, an error response is returned.
         self.success = success
 
     def validate(self):

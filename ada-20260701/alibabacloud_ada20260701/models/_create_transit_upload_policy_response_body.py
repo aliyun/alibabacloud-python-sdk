@@ -14,15 +14,15 @@ class CreateTransitUploadPolicyResponseBody(DaraModel):
         success: bool = None,
         transit_id: str = None,
     ):
-        # The object storage key, which is also the `key` field in the PostObject form.
+        # The object storage key, which is also the `key` in the PostObject form.
         self.file_path = file_path
-        # The upload policy object. For the complete list of subfields, see the following table.
+        # The upload policy object. For complete sub-fields, see the following table.
         self.policy_info = policy_info
         # The request ID, used for Tracing Analysis and troubleshooting.
         self.request_id = request_id
-        # Indicates whether the upload policy is generated. A successful response always returns `true`. An error response is returned upon failure.
+        # Indicates whether the upload policy is successfully generated. A successful response always returns `true`. An error response is returned upon failure.
         self.success = success
-        # The ID of the newly created Transit record, used for subsequent queries and storage operations.
+        # The ID of the newly created Transit record, which is used for subsequent queries and storage.
         self.transit_id = transit_id
 
     def validate(self):
@@ -83,17 +83,17 @@ class CreateTransitUploadPolicyResponseBodyPolicyInfo(DaraModel):
         security_token: str = None,
         signature: str = None,
     ):
-        # The `OSSAccessKeyId` field in the PostObject form. Protect this value together with the entire `PolicyInfo`.
+        # The `OSSAccessKeyId` in the PostObject form. Keep it secure along with the entire `PolicyInfo`.
         self.access_id = access_id
         # The object storage key. The value is the same as the top-level `FilePath`.
         self.dir = dir
-        # The target URL to which the client sends the PostObject request.
+        # The destination URL for the client to execute the PostObject request.
         self.host = host
-        # The Base64-encoded PostObject upload policy. Protect this value together with the entire `PolicyInfo`.
+        # The Base64-encoded PostObject upload policy. Keep it secure along with the entire `PolicyInfo`.
         self.policy = policy
-        # The `x-oss-security-token` field in the PostObject form when STS credentials are used. This field may be empty when STS is not used. This field contains sensitive authorization information.
+        # When STS credentials are used, this is the `x-oss-security-token` in the PostObject form. It may be empty if STS is not used. This field contains sensitive authorization information.
         self.security_token = security_token
-        # The signature field in the PostObject form. This field contains sensitive authorization information.
+        # The signature of the PostObject form. This field contains sensitive authorization information.
         self.signature = signature
 
     def validate(self):
