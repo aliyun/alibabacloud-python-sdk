@@ -154,6 +154,9 @@ from ._get_runtime_model_config_response import GetRuntimeModelConfigResponse
 from ._get_task_request import GetTaskRequest
 from ._get_task_response_body import GetTaskResponseBody
 from ._get_task_response import GetTaskResponse
+from ._list_agent_instance_versions_request import ListAgentInstanceVersionsRequest
+from ._list_agent_instance_versions_response_body import ListAgentInstanceVersionsResponseBody
+from ._list_agent_instance_versions_response import ListAgentInstanceVersionsResponse
 from ._list_app_request import ListAppRequest
 from ._list_app_shrink_request import ListAppShrinkRequest
 from ._list_app_response_body import ListAppResponseBody
@@ -185,9 +188,15 @@ from ._list_authorized_users_response import ListAuthorizedUsersResponse
 from ._list_bind_info_request import ListBindInfoRequest
 from ._list_bind_info_response_body import ListBindInfoResponseBody
 from ._list_bind_info_response import ListBindInfoResponse
+from ._list_browser_bookmarks_request import ListBrowserBookmarksRequest
+from ._list_browser_bookmarks_response_body import ListBrowserBookmarksResponseBody
+from ._list_browser_bookmarks_response import ListBrowserBookmarksResponse
 from ._list_browser_instance_group_request import ListBrowserInstanceGroupRequest
 from ._list_browser_instance_group_response_body import ListBrowserInstanceGroupResponseBody
 from ._list_browser_instance_group_response import ListBrowserInstanceGroupResponse
+from ._list_browser_restricted_urls_request import ListBrowserRestrictedURLsRequest
+from ._list_browser_restricted_urls_response_body import ListBrowserRestrictedURLsResponseBody
+from ._list_browser_restricted_urls_response import ListBrowserRestrictedURLsResponse
 from ._list_desktop_agent_runtime_request import ListDesktopAgentRuntimeRequest
 from ._list_desktop_agent_runtime_response_body import ListDesktopAgentRuntimeResponseBody
 from ._list_desktop_agent_runtime_response import ListDesktopAgentRuntimeResponse
@@ -316,6 +325,9 @@ from ._query_network_rtt_report_response import QueryNetworkRttReportResponse
 from ._query_node_report_data_request import QueryNodeReportDataRequest
 from ._query_node_report_data_response_body import QueryNodeReportDataResponseBody
 from ._query_node_report_data_response import QueryNodeReportDataResponse
+from ._query_session_data_request import QuerySessionDataRequest
+from ._query_session_data_response_body import QuerySessionDataResponseBody
+from ._query_session_data_response import QuerySessionDataResponse
 from ._query_session_report_data_request import QuerySessionReportDataRequest
 from ._query_session_report_data_response_body import QuerySessionReportDataResponseBody
 from ._query_session_report_data_response import QuerySessionReportDataResponse
@@ -400,6 +412,9 @@ from ._update_model_template_response import UpdateModelTemplateResponse
 from ._update_wuying_server_image_request import UpdateWuyingServerImageRequest
 from ._update_wuying_server_image_response_body import UpdateWuyingServerImageResponseBody
 from ._update_wuying_server_image_response import UpdateWuyingServerImageResponse
+from ._validate_llm_template_config_request import ValidateLlmTemplateConfigRequest
+from ._validate_llm_template_config_response_body import ValidateLlmTemplateConfigResponseBody
+from ._validate_llm_template_config_response import ValidateLlmTemplateConfigResponse
 from ._authorize_instance_group_request import AuthorizeInstanceGroupRequestUserMeta
 from ._authorize_users_for_app_request import AuthorizeUsersForAppRequestUserMeta
 from ._batch_create_llm_templates_request import BatchCreateLlmTemplatesRequestLlmTemplateItems
@@ -533,6 +548,7 @@ from ._list_authorized_apps_by_user_response_body import ListAuthorizedAppsByUse
 from ._list_authorized_user_groups_response_body import ListAuthorizedUserGroupsResponseBodyUserGroups
 from ._list_authorized_users_response_body import ListAuthorizedUsersResponseBodyUsers
 from ._list_bind_info_response_body import ListBindInfoResponseBodyBindInfoModels
+from ._list_browser_bookmarks_response_body import ListBrowserBookmarksResponseBodyData
 from ._list_browser_instance_group_request import ListBrowserInstanceGroupRequestTag
 from ._list_browser_instance_group_response_body import ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsAuthorizedUserInfo
 from ._list_browser_instance_group_response_body import ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsBrowserConfig
@@ -548,6 +564,7 @@ from ._list_browser_instance_group_response_body import ListBrowserInstanceGroup
 from ._list_browser_instance_group_response_body import ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsTimers
 from ._list_browser_instance_group_response_body import ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsUserLimit
 from ._list_browser_instance_group_response_body import ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModels
+from ._list_browser_restricted_urls_response_body import ListBrowserRestrictedURLsResponseBodyData
 from ._list_desktop_agent_runtime_response_body import ListDesktopAgentRuntimeResponseBodyDataAgentImInfo
 from ._list_desktop_agent_runtime_response_body import ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList
 from ._list_desktop_agent_runtime_response_body import ListDesktopAgentRuntimeResponseBodyDataResourceGroup
@@ -631,6 +648,7 @@ from ._query_dau_report_data_response_body import QueryDauReportDataResponseBody
 from ._query_mau_report_data_response_body import QueryMauReportDataResponseBodyMauReportDataModel
 from ._query_network_rtt_report_response_body import QueryNetworkRttReportResponseBodyNetworkRttReportDataModel
 from ._query_node_report_data_response_body import QueryNodeReportDataResponseBodyReportDataModel
+from ._query_session_data_response_body import QuerySessionDataResponseBodyIndexData
 from ._query_session_report_data_response_body import QuerySessionReportDataResponseBodyReportDataModel
 from ._query_user_app_usage_aggregate_by_hour_response_body import QueryUserAppUsageAggregateByHourResponseBodyIndexData
 from ._query_user_app_usage_time_rank_response_body import QueryUserAppUsageTimeRankResponseBodyIndexData
@@ -645,6 +663,8 @@ from ._untag_cloud_resources_response_body import UntagCloudResourcesResponseBod
 from ._untag_cloud_resources_response_body import UntagCloudResourcesResponseBodyFailedResources
 from ._update_adaptor_request import UpdateAdaptorRequestUserConfig
 from ._update_model_provider_template_request import UpdateModelProviderTemplateRequestConfig
+from ._validate_llm_template_config_response_body import ValidateLlmTemplateConfigResponseBodyDataValidationErrors
+from ._validate_llm_template_config_response_body import ValidateLlmTemplateConfigResponseBodyData
 
 __all__ = [
     ApproveOtaTaskRequest,
@@ -799,6 +819,9 @@ __all__ = [
     GetTaskRequest,
     GetTaskResponseBody,
     GetTaskResponse,
+    ListAgentInstanceVersionsRequest,
+    ListAgentInstanceVersionsResponseBody,
+    ListAgentInstanceVersionsResponse,
     ListAppRequest,
     ListAppShrinkRequest,
     ListAppResponseBody,
@@ -830,9 +853,15 @@ __all__ = [
     ListBindInfoRequest,
     ListBindInfoResponseBody,
     ListBindInfoResponse,
+    ListBrowserBookmarksRequest,
+    ListBrowserBookmarksResponseBody,
+    ListBrowserBookmarksResponse,
     ListBrowserInstanceGroupRequest,
     ListBrowserInstanceGroupResponseBody,
     ListBrowserInstanceGroupResponse,
+    ListBrowserRestrictedURLsRequest,
+    ListBrowserRestrictedURLsResponseBody,
+    ListBrowserRestrictedURLsResponse,
     ListDesktopAgentRuntimeRequest,
     ListDesktopAgentRuntimeResponseBody,
     ListDesktopAgentRuntimeResponse,
@@ -961,6 +990,9 @@ __all__ = [
     QueryNodeReportDataRequest,
     QueryNodeReportDataResponseBody,
     QueryNodeReportDataResponse,
+    QuerySessionDataRequest,
+    QuerySessionDataResponseBody,
+    QuerySessionDataResponse,
     QuerySessionReportDataRequest,
     QuerySessionReportDataResponseBody,
     QuerySessionReportDataResponse,
@@ -1045,6 +1077,9 @@ __all__ = [
     UpdateWuyingServerImageRequest,
     UpdateWuyingServerImageResponseBody,
     UpdateWuyingServerImageResponse,
+    ValidateLlmTemplateConfigRequest,
+    ValidateLlmTemplateConfigResponseBody,
+    ValidateLlmTemplateConfigResponse,
     AuthorizeInstanceGroupRequestUserMeta,
     AuthorizeUsersForAppRequestUserMeta,
     BatchCreateLlmTemplatesRequestLlmTemplateItems,
@@ -1178,6 +1213,7 @@ __all__ = [
     ListAuthorizedUserGroupsResponseBodyUserGroups,
     ListAuthorizedUsersResponseBodyUsers,
     ListBindInfoResponseBodyBindInfoModels,
+    ListBrowserBookmarksResponseBodyData,
     ListBrowserInstanceGroupRequestTag,
     ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsAuthorizedUserInfo,
     ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsBrowserConfig,
@@ -1193,6 +1229,7 @@ __all__ = [
     ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsTimers,
     ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsUserLimit,
     ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModels,
+    ListBrowserRestrictedURLsResponseBodyData,
     ListDesktopAgentRuntimeResponseBodyDataAgentImInfo,
     ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList,
     ListDesktopAgentRuntimeResponseBodyDataResourceGroup,
@@ -1276,6 +1313,7 @@ __all__ = [
     QueryMauReportDataResponseBodyMauReportDataModel,
     QueryNetworkRttReportResponseBodyNetworkRttReportDataModel,
     QueryNodeReportDataResponseBodyReportDataModel,
+    QuerySessionDataResponseBodyIndexData,
     QuerySessionReportDataResponseBodyReportDataModel,
     QueryUserAppUsageAggregateByHourResponseBodyIndexData,
     QueryUserAppUsageTimeRankResponseBodyIndexData,
@@ -1289,5 +1327,7 @@ __all__ = [
     UntagCloudResourcesResponseBodyFailedResourcesTags,
     UntagCloudResourcesResponseBodyFailedResources,
     UpdateAdaptorRequestUserConfig,
-    UpdateModelProviderTemplateRequestConfig
+    UpdateModelProviderTemplateRequestConfig,
+    ValidateLlmTemplateConfigResponseBodyDataValidationErrors,
+    ValidateLlmTemplateConfigResponseBodyData
 ]

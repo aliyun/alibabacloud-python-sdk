@@ -1,3 +1,11 @@
+2026-11-07 Version: 5.14.0
+- Support API ListAgentInstanceVersions.
+- Support API ListBrowserBookmarks.
+- Support API ListBrowserRestrictedURLs.
+- Support API QuerySessionData.
+- Support API ValidateLlmTemplateConfig.
+
+
 2026-11-06 Version: 5.13.0
 - Support API CreateExportTask.
 - Support API DescribeExportTasks.

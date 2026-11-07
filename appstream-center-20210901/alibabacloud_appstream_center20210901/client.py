@@ -4611,6 +4611,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_task_with_options_async(request, runtime)
 
+    def list_agent_instance_versions_with_options(
+        self,
+        request: main_models.ListAgentInstanceVersionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgentInstanceVersionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_platform):
+            query['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            query['AgentProvider'] = request.agent_provider
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAgentInstanceVersions',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAgentInstanceVersionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_agent_instance_versions_with_options_async(
+        self,
+        request: main_models.ListAgentInstanceVersionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgentInstanceVersionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_platform):
+            query['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            query['AgentProvider'] = request.agent_provider
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAgentInstanceVersions',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAgentInstanceVersionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_agent_instance_versions(
+        self,
+        request: main_models.ListAgentInstanceVersionsRequest,
+    ) -> main_models.ListAgentInstanceVersionsResponse:
+        runtime = RuntimeOptions()
+        return self.list_agent_instance_versions_with_options(request, runtime)
+
+    async def list_agent_instance_versions_async(
+        self,
+        request: main_models.ListAgentInstanceVersionsRequest,
+    ) -> main_models.ListAgentInstanceVersionsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_agent_instance_versions_with_options_async(request, runtime)
+
     def list_app_with_options(
         self,
         tmp_req: main_models.ListAppRequest,
@@ -5671,6 +5745,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_bind_info_with_options_async(request, runtime)
 
+    def list_browser_bookmarks_with_options(
+        self,
+        request: main_models.ListBrowserBookmarksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListBrowserBookmarksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.browser_instance_group_id):
+            query['BrowserInstanceGroupId'] = request.browser_instance_group_id
+        if not DaraCore.is_null(request.browser_instance_group_set_id):
+            query['BrowserInstanceGroupSetId'] = request.browser_instance_group_set_id
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListBrowserBookmarks',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListBrowserBookmarksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_browser_bookmarks_with_options_async(
+        self,
+        request: main_models.ListBrowserBookmarksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListBrowserBookmarksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.browser_instance_group_id):
+            query['BrowserInstanceGroupId'] = request.browser_instance_group_id
+        if not DaraCore.is_null(request.browser_instance_group_set_id):
+            query['BrowserInstanceGroupSetId'] = request.browser_instance_group_set_id
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListBrowserBookmarks',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListBrowserBookmarksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_browser_bookmarks(
+        self,
+        request: main_models.ListBrowserBookmarksRequest,
+    ) -> main_models.ListBrowserBookmarksResponse:
+        runtime = RuntimeOptions()
+        return self.list_browser_bookmarks_with_options(request, runtime)
+
+    async def list_browser_bookmarks_async(
+        self,
+        request: main_models.ListBrowserBookmarksRequest,
+    ) -> main_models.ListBrowserBookmarksResponse:
+        runtime = RuntimeOptions()
+        return await self.list_browser_bookmarks_with_options_async(request, runtime)
+
     def list_browser_instance_group_with_options(
         self,
         request: main_models.ListBrowserInstanceGroupRequest,
@@ -5796,6 +5956,92 @@ class Client(OpenApiClient):
     ) -> main_models.ListBrowserInstanceGroupResponse:
         runtime = RuntimeOptions()
         return await self.list_browser_instance_group_with_options_async(request, runtime)
+
+    def list_browser_restricted_urls_with_options(
+        self,
+        request: main_models.ListBrowserRestrictedURLsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListBrowserRestrictedURLsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.browser_instance_group_id):
+            query['BrowserInstanceGroupId'] = request.browser_instance_group_id
+        if not DaraCore.is_null(request.browser_instance_group_set_id):
+            query['BrowserInstanceGroupSetId'] = request.browser_instance_group_set_id
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListBrowserRestrictedURLs',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListBrowserRestrictedURLsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_browser_restricted_urls_with_options_async(
+        self,
+        request: main_models.ListBrowserRestrictedURLsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListBrowserRestrictedURLsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.browser_instance_group_id):
+            query['BrowserInstanceGroupId'] = request.browser_instance_group_id
+        if not DaraCore.is_null(request.browser_instance_group_set_id):
+            query['BrowserInstanceGroupSetId'] = request.browser_instance_group_set_id
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListBrowserRestrictedURLs',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListBrowserRestrictedURLsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_browser_restricted_urls(
+        self,
+        request: main_models.ListBrowserRestrictedURLsRequest,
+    ) -> main_models.ListBrowserRestrictedURLsResponse:
+        runtime = RuntimeOptions()
+        return self.list_browser_restricted_urls_with_options(request, runtime)
+
+    async def list_browser_restricted_urls_async(
+        self,
+        request: main_models.ListBrowserRestrictedURLsRequest,
+    ) -> main_models.ListBrowserRestrictedURLsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_browser_restricted_urls_with_options_async(request, runtime)
 
     def list_desktop_agent_runtime_with_options(
         self,
@@ -9689,6 +9935,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.query_node_report_data_with_options_async(request, runtime)
 
+    def query_session_data_with_options(
+        self,
+        request: main_models.QuerySessionDataRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QuerySessionDataResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not DaraCore.is_null(request.biz_region_id):
+            body['BizRegionId'] = request.biz_region_id
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.stat_date):
+            body['StatDate'] = request.stat_date
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QuerySessionData',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QuerySessionDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_session_data_with_options_async(
+        self,
+        request: main_models.QuerySessionDataRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QuerySessionDataResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not DaraCore.is_null(request.biz_region_id):
+            body['BizRegionId'] = request.biz_region_id
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.stat_date):
+            body['StatDate'] = request.stat_date
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QuerySessionData',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QuerySessionDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_session_data(
+        self,
+        request: main_models.QuerySessionDataRequest,
+    ) -> main_models.QuerySessionDataResponse:
+        runtime = RuntimeOptions()
+        return self.query_session_data_with_options(request, runtime)
+
+    async def query_session_data_async(
+        self,
+        request: main_models.QuerySessionDataRequest,
+    ) -> main_models.QuerySessionDataResponse:
+        runtime = RuntimeOptions()
+        return await self.query_session_data_with_options_async(request, runtime)
+
     def query_session_report_data_with_options(
         self,
         request: main_models.QuerySessionReportDataRequest,
@@ -12030,3 +12358,77 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateWuyingServerImageResponse:
         runtime = RuntimeOptions()
         return await self.update_wuying_server_image_with_options_async(request, runtime)
+
+    def validate_llm_template_config_with_options(
+        self,
+        request: main_models.ValidateLlmTemplateConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ValidateLlmTemplateConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.config):
+            query['Config'] = request.config
+        if not DaraCore.is_null(request.provider_template_id):
+            query['ProviderTemplateId'] = request.provider_template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ValidateLlmTemplateConfig',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ValidateLlmTemplateConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def validate_llm_template_config_with_options_async(
+        self,
+        request: main_models.ValidateLlmTemplateConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ValidateLlmTemplateConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.config):
+            query['Config'] = request.config
+        if not DaraCore.is_null(request.provider_template_id):
+            query['ProviderTemplateId'] = request.provider_template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ValidateLlmTemplateConfig',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ValidateLlmTemplateConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def validate_llm_template_config(
+        self,
+        request: main_models.ValidateLlmTemplateConfigRequest,
+    ) -> main_models.ValidateLlmTemplateConfigResponse:
+        runtime = RuntimeOptions()
+        return self.validate_llm_template_config_with_options(request, runtime)
+
+    async def validate_llm_template_config_async(
+        self,
+        request: main_models.ValidateLlmTemplateConfigRequest,
+    ) -> main_models.ValidateLlmTemplateConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.validate_llm_template_config_with_options_async(request, runtime)
