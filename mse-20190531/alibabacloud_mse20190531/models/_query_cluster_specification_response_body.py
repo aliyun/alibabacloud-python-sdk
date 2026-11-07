@@ -20,20 +20,19 @@ class QueryClusterSpecificationResponseBody(DaraModel):
     ):
         # The return value.
         self.code = code
-        # The details of the data.
+        # The data overview.
         self.data = data
-        # The error code returned if the request failed.
+        # The error code.
         self.error_code = error_code
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message returned.
+        # The message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # - `true`: The request was successful.
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -107,11 +106,11 @@ class QueryClusterSpecificationResponseBodyData(DaraModel):
         cpu_capacity: str = None,
         memory_capacity: str = None,
     ):
-        # The engine specifications that can be used.
+        # The available engine specifications.
         self.cluster_specification_name = cluster_specification_name
-        # The number of vCPUs in the specifications.
+        # The number of CPU cores for this specification.
         self.cpu_capacity = cpu_capacity
-        # The memory size in the specifications. Unit: GB.
+        # The memory size for this specification. Unit: GB.
         self.memory_capacity = memory_capacity
 
     def validate(self):

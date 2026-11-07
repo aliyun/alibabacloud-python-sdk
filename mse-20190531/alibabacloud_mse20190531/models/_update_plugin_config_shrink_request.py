@@ -19,17 +19,20 @@ class UpdatePluginConfigShrinkRequest(DaraModel):
         plugin_id: int = None,
         resource_id_list_shrink: str = None,
     ):
-        # The language of the response. Valid values:
+        # The language of the returned information. Valid values:
         # 
-        # zh: Chinese en: English
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
-        # The plug-in configuration. Configurations of WebAssembly plug-ins are in the YAML format, and configurations of Lua plug-ins are in the Lua code.
+        # The configuration content of the plug-in. Use YAML for Wasm plug-ins and Lua code for Lua plug-ins.
         self.config = config
-        # The application scope of the plug-in.
+        # The application scope of the plug-in. Valid values:
         # 
-        # *   0: global
-        # *   1: route
-        # *   2: domain name
+        # - 0: Global.
+        # 
+        # - 1: Route.
+        # 
+        # - 2: Domain name.
         self.config_level = config_level
         # Specifies whether to enable the plug-in.
         self.enable = enable
@@ -45,6 +48,7 @@ class UpdatePluginConfigShrinkRequest(DaraModel):
         self.id = id
         # The ID of the gateway plug-in.
         self.plugin_id = plugin_id
+        # The list of domain name IDs or route IDs, which depends on the value of ConfigLevel.
         self.resource_id_list_shrink = resource_id_list_shrink
 
     def validate(self):

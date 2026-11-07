@@ -20,26 +20,25 @@ class ListEurekaServicesResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The details of the data.
+        # The data overview.
         self.data = data
-        # The error code returned if the request failed.
+        # The error code.
         self.error_code = error_code
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_code = http_code
-        # The message returned.
+        # The message.
         self.message = message
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of instances to return per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - `true`: The request succeeded.
+        # - `false`: The request failed.
         self.success = success
-        # The total number of returned instances.
+        # The total number of instances.
         self.total_count = total_count
 
     def validate(self):
@@ -125,11 +124,11 @@ class ListEurekaServicesResponseBodyData(DaraModel):
         name: str = None,
         up_status: str = None,
     ):
-        # The details of the instance.
+        # The instance information.
         self.instances_id = instances_id
-        # The name of the service.
+        # The service name.
         self.name = name
-        # The number of service providers. The value is in the following format: Number of healthy instances/Total number of instances.
+        # The number of service providers, in the format of healthy instances/total instances.
         self.up_status = up_status
 
     def validate(self):

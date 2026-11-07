@@ -15,25 +15,27 @@ class UpdateClusterSpecResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code returned.
+        # The response code.
         self.code = code
-        # A reserved parameter.
+        # This is a reserved field.
         self.data = data
-        # The error code returned if the request failed. Take note of the following rules:
+        # The error code. Take note of the following items:
         # 
-        # *   The **ErrorCode** parameter is not returned if the request succeeds.
-        # *   The **ErrorCode** parameter is returned if the request fails. For more information, see the **Error codes** section in this topic.
+        # - If the request is successful: The **ErrorCode** field is not returned.
+        # 
+        # - If the request fails: The **ErrorCode** field is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message returned.
+        # The message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):

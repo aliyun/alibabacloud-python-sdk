@@ -17,20 +17,21 @@ class ListGatewayRouteResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The code returned.
+        # Code.
         self.code = code
-        # The data returned.
+        # Returned data.
         self.data = data
-        # The HTTP status code returned.
+        # HTTP status code.
         self.http_status_code = http_status_code
-        # The error message returned if the request failed.
+        # Error message.
         self.message = message
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Request result, with the following values:
         # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # - `true`: The request is successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -93,13 +94,13 @@ class ListGatewayRouteResponseBodyData(DaraModel):
         result: List[main_models.ListGatewayRouteResponseBodyDataResult] = None,
         total_size: int = None,
     ):
-        # The page number of the returned page.
+        # Page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # Page size.
         self.page_size = page_size
-        # The data structure.
+        # Data structure.
         self.result = result
-        # The total number of entries returned.
+        # Total number of entries.
         self.total_size = total_size
 
     def validate(self):
@@ -179,58 +180,59 @@ class ListGatewayRouteResponseBodyDataResult(DaraModel):
         status: int = None,
         type: str = None,
     ):
-        # The route comment (ingress).
+        # Route comment (ingress)
         self.comment = comment
-        # The default service ID.
+        # Default service ID.
         self.default_service_id = default_service_id
-        # The default service name.
+        # Default service name.
         self.default_service_name = default_service_name
-        # The destination service type.
+        # Destination type.
         self.destination_type = destination_type
-        # The information about service mocking.
+        # Mock configuration
         self.direct_response = direct_response
-        # The domain ID.
+        # Domain ID.
         self.domain_id = domain_id
-        # The domain IDs.
+        # Domain list.
         self.domain_id_list = domain_id_list
-        # The domain name.
+        # Domain name.
         self.domain_name = domain_name
-        # The domain names.
+        # Domain name list.
         self.domain_name_list = domain_name_list
+        # Whether to enable dynamic routing
         self.dynamic_route = dynamic_route
-        # Indicates whether Web Application Firewall (WAF) is activated.
+        # Whether to enable WAF
         self.enable_waf = enable_waf
-        # Indicates whether the Fallback service is enabled.
+        # Whether to enable Fallback service.
         self.fallback = fallback
-        # The information about the Fallback service.
+        # Fallback service.
         self.fallback_services = fallback_services
-        # The ID of the gateway.
+        # Gateway ID.
         self.gateway_id = gateway_id
-        # The unique ID of the gateway.
+        # Gateway unique identifier.
         self.gateway_unique_id = gateway_unique_id
-        # The creation time.
+        # Creation time.
         self.gmt_create = gmt_create
-        # The modification time.
+        # Modification time
         self.gmt_modified = gmt_modified
-        # The ID.
+        # Route ID.
         self.id = id
-        # The name.
+        # Name.
         self.name = name
-        # The matching rules.
+        # Matching rules
         self.predicates = predicates
-        # The information about redirection.
+        # Redirection
         self.redirect = redirect
-        # The order.
+        # Order
         self.route_order = route_order
-        # The matching rules.
+        # Matching rules
         self.route_predicates = route_predicates
-        # The information about services.
+        # Service.
         self.route_services = route_services
-        # The information about services.
+        # Service.
         self.services = services
-        # The status.
+        # Status.
         self.status = status
-        # The route type.
+        # Route type
         self.type = type
 
     def validate(self):
@@ -455,29 +457,39 @@ class ListGatewayRouteResponseBodyDataResultRouteServices(DaraModel):
         unhealthy_endpoints: List[str] = None,
         version: str = None,
     ):
-        # The type of the protocol.
+        # Protocol Type.
         self.agreement_type = agreement_type
-        # The name of the group to which the service belongs.
+        # Service group name.
         self.group_name = group_name
+        # Health status
+        # 
+        # - Health
+        # 
+        # - Unhealthy
+        # 
+        # - Checking
+        # 
+        # - Unknown
         self.health_status = health_status
-        # The transcoder of the Dubbo protocol.
+        # Dubbo protocol conversion body.
         self.http_dubbo_transcoder = http_dubbo_transcoder
-        # The name.
+        # Name.
         self.name = name
-        # The namespace.
+        # Namespace.
         self.namespace = namespace
-        # The weight in the form of a percentage value.
+        # Weight percentage
         self.percent = percent
-        # The ID of the service.
+        # Service ID
         self.service_id = service_id
-        # The name of the service.
+        # Service name.
         self.service_name = service_name
-        # The Dubbo port number.
+        # Service port.
         self.service_port = service_port
-        # The source type.
+        # Source type
         self.source_type = source_type
+        # Unhealthy Endpoint list
         self.unhealthy_endpoints = unhealthy_endpoints
-        # The version of the service.
+        # Service version.
         self.version = version
 
     def validate(self):
@@ -582,13 +594,13 @@ class ListGatewayRouteResponseBodyDataResultRouteServicesHttpDubboTranscoder(Dar
         dubbo_service_version: str = None,
         mothed_map_list: List[main_models.ListGatewayRouteResponseBodyDataResultRouteServicesHttpDubboTranscoderMothedMapList] = None,
     ):
-        # The Dubbo service group.
+        # Dubbo service group.
         self.dubbo_service_group = dubbo_service_group
-        # The name of the Dubbo service.
+        # Dubbo service name.
         self.dubbo_service_name = dubbo_service_name
-        # The version of the Dubbo service.
+        # Dubbo service version.
         self.dubbo_service_version = dubbo_service_version
-        # The forwarding rules of the Dubbo service.
+        # Dubbo forwarding rule list.
         self.mothed_map_list = mothed_map_list
 
     def validate(self):
@@ -647,37 +659,37 @@ class ListGatewayRouteResponseBodyDataResultRouteServicesHttpDubboTranscoderMoth
         pass_through_all_headers: str = None,
         pass_through_list: List[str] = None,
     ):
-        # The method name of the Dubbo service.
+        # Dubbo method name.
         self.dubbo_mothed_name = dubbo_mothed_name
-        # The HTTP method.
+        # Http method.
         # 
-        # > Valid values:
-        # 
-        # *   ALL_GET
-        # 
-        # *   ALL_POST
-        # 
-        # *   ALL_PUT
-        # 
-        # *   ALL_DELETE
-        # 
-        # *   ALL_PATCH
+        # > Supported HTTP method parameter values.
+        # >
+        # > - ALL_GET
+        # >
+        # > - ALL_POST
+        # >
+        # > - ALL_PUT
+        # >
+        # > - ALL_DELETE
+        # >
+        # > - ALL_PATCH
         self.http_mothed = http_mothed
-        # The path used for method matching.
+        # Method matching path.
         self.mothedpath = mothedpath
-        # The information about parameter mappings.
+        # Parameter mapping list.
         self.param_maps_list = param_maps_list
-        # The pass-through type of the header.
+        # Header pass-through type.
         # 
-        # > Valid values:
-        # 
-        # *   PASS_ALL: All headers are passed through.
-        # 
-        # *   PASS_NOT: All headers are not passed through.
-        # 
-        # *   PASS_ASSIGN: Specified headers are passed through.
+        # > Pass-through type enumeration values.
+        # >
+        # > - Pass through all: PASS_ALL
+        # >
+        # > - No pass-through: PASS_NOT
+        # >
+        # > - Specified parameters: PASS_ASSIGN
         self.pass_through_all_headers = pass_through_all_headers
-        # The list of headers to be passed through.
+        # Specified pass-through Header list.
         self.pass_through_list = pass_through_list
 
     def validate(self):
@@ -745,21 +757,21 @@ class ListGatewayRouteResponseBodyDataResultRouteServicesHttpDubboTranscoderMoth
         extract_key_spec: str = None,
         mapping_type: str = None,
     ):
-        # The key extracted from the input parameter.
+        # Extract key from input.
         self.extract_key = extract_key
-        # The position of the input parameter.
+        # Input parameter position.
         # 
-        # > Valid values:
-        # 
-        # *   `ALL_QUERY_PARAMETER`: request parameter
-        # 
-        # *   `ALL_HEADER`: request header
-        # 
-        # *   `ALL_PATH`: request path
-        # 
-        # *   `ALL_BODY`: request body
+        # > Input parameter position enumeration values.
+        # >
+        # > - Request parameter: `ALL_QUERY_PARAMETER`
+        # >
+        # > - Request header: `ALL_HEADER`
+        # >
+        # > - Request path: `ALL_PATH`
+        # >
+        # > - Request body: `ALL_BODY`
         self.extract_key_spec = extract_key_spec
-        # The type of the backend service parameter.
+        # Backend parameter type.
         self.mapping_type = mapping_type
 
     def validate(self):
@@ -802,13 +814,13 @@ class ListGatewayRouteResponseBodyDataResultRoutePredicates(DaraModel):
         path_predicates: main_models.ListGatewayRouteResponseBodyDataResultRoutePredicatesPathPredicates = None,
         query_predicates: List[main_models.ListGatewayRouteResponseBodyDataResultRoutePredicatesQueryPredicates] = None,
     ):
-        # The headers used for route matching.
+        # Header matching
         self.header_predicates = header_predicates
-        # The HTTP methods used for route matching.
+        # HTTP method matching
         self.method_predicates = method_predicates
-        # The path used for route matching.
+        # Route Path matching.
         self.path_predicates = path_predicates
-        # The parameters used for route matching.
+        # Parameter matching
         self.query_predicates = query_predicates
 
     def validate(self):
@@ -876,11 +888,11 @@ class ListGatewayRouteResponseBodyDataResultRoutePredicatesQueryPredicates(DaraM
         type: str = None,
         value: str = None,
     ):
-        # The key.
+        # Parameter name
         self.key = key
-        # The matching type.
+        # Matching type
         self.type = type
-        # The value.
+        # Matching value
         self.value = value
 
     def validate(self):
@@ -922,11 +934,11 @@ class ListGatewayRouteResponseBodyDataResultRoutePredicatesPathPredicates(DaraMo
         path: str = None,
         type: str = None,
     ):
-        # Indicates whether case sensitivity is ignored.
+        # Case insensitive
         self.ignore_case = ignore_case
-        # The path of the node.
+        # Node path.
         self.path = path
-        # The matching type.
+        # Matching type.
         self.type = type
 
     def validate(self):
@@ -968,11 +980,11 @@ class ListGatewayRouteResponseBodyDataResultRoutePredicatesHeaderPredicates(Dara
         type: str = None,
         value: str = None,
     ):
-        # The header key.
+        # Header KEY
         self.key = key
-        # The matching type.
+        # Matching type
         self.type = type
-        # The value.
+        # Matching value
         self.value = value
 
     def validate(self):
@@ -1014,11 +1026,11 @@ class ListGatewayRouteResponseBodyDataResultRedirect(DaraModel):
         host: str = None,
         path: str = None,
     ):
-        # The response code returned.
+        # Response code.
         self.code = code
-        # The hostname to be redirected to.
+        # Redirect hostname
         self.host = host
-        # The path.
+        # Path.
         self.path = path
 
     def validate(self):
@@ -1067,25 +1079,25 @@ class ListGatewayRouteResponseBodyDataResultFallbackServices(DaraModel):
         source_type: str = None,
         version: str = None,
     ):
-        # The type of the protocol.
+        # Protocol Type.
         self.agreement_type = agreement_type
-        # The name of the group to which the service belongs.
+        # Service group name.
         self.group_name = group_name
-        # The name.
+        # Name.
         self.name = name
-        # The namespace to which the service belongs.
+        # Service namespace.
         self.namespace = namespace
-        # The weight in the form of a percentage value.
+        # Weight percentage.
         self.percent = percent
-        # The ID of the service.
+        # Service ID.
         self.service_id = service_id
-        # The name of the service.
+        # Service name.
         self.service_name = service_name
-        # The service port number.
+        # Service port.
         self.service_port = service_port
-        # The source type.
+        # Source type.
         self.source_type = source_type
-        # The version of the service.
+        # Service version.
         self.version = version
 
     def validate(self):
@@ -1168,9 +1180,9 @@ class ListGatewayRouteResponseBodyDataResultDirectResponse(DaraModel):
         body: str = None,
         code: int = None,
     ):
-        # The return value for service mocking.
+        # Mock return value
         self.body = body
-        # The response code returned.
+        # Response code.
         self.code = code
 
     def validate(self):
@@ -1204,7 +1216,7 @@ class ListGatewayRouteResponseBodyDataResultComment(DaraModel):
         self,
         status: str = None,
     ):
-        # The status.
+        # Status.
         self.status = status
 
     def validate(self):

@@ -15,12 +15,19 @@ class DeleteBlackWhiteListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code, which is used only to indicate whether the request is successful, similar to the Success parameter.
         self.code = code
+        # The data structure.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # - `true`: The request was successful.
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -90,16 +97,37 @@ class DeleteBlackWhiteListResponseBodyData(DaraModel):
         status: bool = None,
         type: str = None,
     ):
+        # The configuration content.
         self.content = content
+        # The ID of the gateway.
         self.gateway_id = gateway_id
+        # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
+        # The creation time.
         self.gmt_create = gmt_create
+        # The update time.
         self.gmt_modified = gmt_modified
+        # The ID of the blacklists and whitelists entry.
         self.id = id
+        # Indicates whether the entry is a whitelist.
         self.is_white = is_white
+        # Deprecated.
         self.resource_id = resource_id
+        # The granularity at which the blacklist or whitelist takes effect. Valid values:
+        # 
+        # - GATEWAY: gateway-wide
+        # 
+        # - DOMAIN: domain name
+        # 
+        # - ROUTE: route
         self.resource_type = resource_type
+        # The enabling status. Valid values:
+        # 
+        # - 0: disabled
+        # 
+        # - 1: enabled
         self.status = status
+        # Deprecated. A fixed value.
         self.type = type
 
     def validate(self):

@@ -15,12 +15,19 @@ class ListNacosMcpServersRequest(DaraModel):
         page_size: int = None,
         search: str = None,
     ):
+        # The language of the response. Valid values: zh (default): Chinese, en: English.
         self.accept_language = accept_language
+        # The instance ID.
         self.instance_id = instance_id
+        # The MCP server name.
         self.name = name
+        # The namespace ID.
         self.namespace_id = namespace_id
+        # The page number.
         self.page_num = page_num
+        # The page size.
         self.page_size = page_size
+        # The query pattern.
         self.search = search
 
     def validate(self):

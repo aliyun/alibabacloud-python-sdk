@@ -16,20 +16,20 @@ class ImportZookeeperDataResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details of the data.
+        # The data overview.
         self.data = data
-        # The error code returned if the request failed.
+        # The error code.
         self.error_code = error_code
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_code = http_code
-        # The message returned.
+        # The response message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # - `true`: The request succeeded.
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):

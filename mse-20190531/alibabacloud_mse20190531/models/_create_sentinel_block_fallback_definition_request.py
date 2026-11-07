@@ -19,16 +19,27 @@ class CreateSentinelBlockFallbackDefinitionRequest(DaraModel):
         scenario: str = None,
         source: str = None,
     ):
+        # The language in which you want to display the results. Valid values: zh and en. zh is the default value, which indicates Chinese. en indicates English.
         self.accept_language = accept_language
+        # The application ID, which can be omitted.
         self.app_id = app_id
+        # The application name.
         self.app_name = app_name
+        # The behavior details.
         self.fallback_behavior = fallback_behavior
+        # The programming language, such as Java or Go.
         self.language = language
+        # The behavior name.
         self.name = name
+        # The name of the Microservices Engine (MSE) namespace.
         self.namespace = namespace
+        # The region.
         self.region_id = region_id
+        # The target resource type.
         self.resource_classification = resource_classification
+        # The scenario, uniformly fill in default.
         self.scenario = scenario
+        # Redundant parameter, currently ignored.
         self.source = source
 
     def validate(self):

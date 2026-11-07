@@ -22,27 +22,31 @@ class UpdateMigrationTaskRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
-        self.accept_language = accept_language
-        # The type of the instance. Valid values:
+        # - zh: Chinese
         # 
-        # *   Nacos-Ans
-        # *   ZooKeeper
-        # *   Eureka
+        # - en: English
+        self.accept_language = accept_language
+        # The type of a cluster.
+        # 
+        # - Nacos-Ans
+        # 
+        # - ZooKeeper
+        # 
+        # - Eureka
         self.cluster_type = cluster_type
-        # The ID of the task.
+        # The task ID.
         self.id = id
-        # The address of the source instance node.
+        # The source instance node address.
         self.origin_instance_address = origin_instance_address
         # The name of the source instance.
         self.origin_instance_name = origin_instance_name
-        # The list of namespaces. This parameter is optional if you want to migrate applications from a Nacos instance.
+        # The list of namespaces. This parameter is optional if applications are migrated from a Nacos instance.
         self.origin_instance_namespace = origin_instance_namespace
-        # The description.
+        # The description of the task.
         self.project_desc = project_desc
-        # The extended request parameters in the JSON format.
+        # The extended request parameter in the JSON format.
         self.request_pars = request_pars
+        # The synchronization type
         self.sync_type = sync_type
         # The name of the destination instance.
         self.target_cluster_name = target_cluster_name

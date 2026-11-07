@@ -12,15 +12,16 @@ class UpdateAclRequest(DaraModel):
         instance_id: str = None,
         network_type: str = None,
     ):
-        # The language of the response. Valid values:
+        # The language of the returned information. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
-        # The IP addresses or CIDR blocks in the IP address whitelist.
+        # The whitelist.
         self.acl_entry_list = acl_entry_list
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
+        # The network type to which the access control rule applies. Valid values: Public and Private.
         self.network_type = network_type
 
     def validate(self):

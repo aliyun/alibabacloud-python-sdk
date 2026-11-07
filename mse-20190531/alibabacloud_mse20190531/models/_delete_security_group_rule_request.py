@@ -14,13 +14,15 @@ class DeleteSecurityGroupRuleRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # 
+        # - en: English
         self.accept_language = accept_language
+        # Specifies whether to perform a cascading delete.
         self.cascading_delete = cascading_delete
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
-        # The destination ID.
+        # The ID of the security group rule.
         self.id = id
 
     def validate(self):

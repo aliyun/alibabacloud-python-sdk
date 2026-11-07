@@ -14,10 +14,15 @@ class CreateNamespaceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response data.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message returned.
         self.message = message
+        # The request ID
         self.request_id = request_id
+        # Indicates whether the request was successful
         self.success = success
 
     def validate(self):
@@ -72,7 +77,9 @@ class CreateNamespaceResponseBodyData(DaraModel):
         namespace: str = None,
         region: str = None,
     ):
+        # The name of the namespace.
         self.namespace = namespace
+        # The region to which the namespace belongs.
         self.region = region
 
     def validate(self):

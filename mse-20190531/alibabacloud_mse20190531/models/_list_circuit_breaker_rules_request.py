@@ -16,7 +16,7 @@ class ListCircuitBreakerRulesRequest(DaraModel):
         resource: str = None,
         resource_search_key: str = None,
     ):
-        # The language of the response. Valid values: zh-CN and en-US. Default value: zh-CN. The value zh-CN indicates Chinese, and the value en-US indicates English.
+        # The language in which you want the results to be displayed. Valid values: zh-CN (default value): Chinese. en-US: English
         self.accept_language = accept_language
         # The ID of the application.
         self.app_id = app_id
@@ -28,13 +28,13 @@ class ListCircuitBreakerRulesRequest(DaraModel):
         # 
         # This parameter is required.
         self.namespace = namespace
-        # The start page of the returned pages. Default value: 1.
+        # The first page number. Default value: 1.
         self.page_index = page_index
         # The number of entries per page. Default value: 6.
         self.page_size = page_size
-        # This parameter is used for exact match of circuit breaking rules.
+        # The interface for which the protection rule is configured.
         self.resource = resource
-        # This parameter is used for fuzzy match of circuit breaking rules.
+        # The interface keyword in the protection rule.
         self.resource_search_key = resource_search_key
 
     def validate(self):

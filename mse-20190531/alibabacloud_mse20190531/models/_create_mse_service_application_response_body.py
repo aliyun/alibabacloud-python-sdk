@@ -15,14 +15,14 @@ class CreateMseServiceApplicationResponseBody(DaraModel):
     ):
         # The data structure.
         self.data = data
-        # The message returned.
+        # The message.
         self.message = message
         # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # The request result. Valid values:
         # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # - `true`: The request is successful.
+        # - `false`: The request fails.
         self.success = success
 
     def validate(self):
@@ -81,25 +81,25 @@ class CreateMseServiceApplicationResponseBodyData(DaraModel):
         user_id: str = None,
         version: str = None,
     ):
-        # The application ID.
+        # The ID of the application.
         self.app_id = app_id
         # The name of the application.
         self.app_name = app_name
-        # The creation time.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The additional information.
         self.extra_info = extra_info
         # The programming language of the application.
         self.language = language
-        # The license key in use.
+        # The license key of the user.
         self.license_key = license_key
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
         # The source type.
         self.source = source
-        # The status. Valid values: 1: available; 2: deleted.
+        # The status. A value of 1 indicates the available state, and a value of 2 indicates the deleted state.
         self.status = status
-        # The last modification time.
+        # The last update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
         # The ID of the user.
         self.user_id = user_id

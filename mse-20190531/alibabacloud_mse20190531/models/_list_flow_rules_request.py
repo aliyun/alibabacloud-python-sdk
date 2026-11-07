@@ -16,14 +16,13 @@ class ListFlowRulesRequest(DaraModel):
         resource: str = None,
         resource_search_key: str = None,
     ):
-        # The language of the response. Valid values:
-        # 
-        # *   zh: Chinese
-        # *   en: English
+        # The language of the returned information. Valid values:
+        # - zh: Chinese
+        # - en: English
         self.accept_language = accept_language
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
-        # The name of the application.
+        # The application name.
         # 
         # This parameter is required.
         self.app_name = app_name
@@ -31,13 +30,13 @@ class ListFlowRulesRequest(DaraModel):
         # 
         # This parameter is required.
         self.namespace = namespace
-        # The page number. Default value: 1.
+        # The target page number. Default value: 1.
         self.page_index = page_index
         # The number of entries per page.
         self.page_size = page_size
-        # The name of the resource.
+        # The resource name.
         self.resource = resource
-        # The keyword that is used for the search.
+        # The search keyword.
         self.resource_search_key = resource_search_key
 
     def validate(self):

@@ -17,20 +17,21 @@ class ListSSLCertResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned. A value of 200 indicates that the request is successful.
+        # The status code. A value of 200 indicates that the request is successful.
         self.code = code
-        # The returned data.
+        # The response data.
         self.data = data
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -105,23 +106,23 @@ class ListSSLCertResponseBodyData(DaraModel):
         issuer: str = None,
         sans: str = None,
     ):
-        # The time when the certificate expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time when the certificate expired. The time was formatted as a UNIX timestamp in milliseconds.
         self.after_date = after_date
         # The algorithm.
         self.algorithm = algorithm
-        # The time when the certificate took effect. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time when the certificate took effect. The time was formatted as a UNIX timestamp in milliseconds.
         self.before_date = before_date
-        # The ID of the certificate.
+        # The certificate ID.
         self.cert_identifier = cert_identifier
-        # The name of the certificate.
+        # The certificate name.
         self.cert_name = cert_name
         # The domain name with which the certificate is associated.
         self.common_name = common_name
-        # The time when the certificate expires. This value is a GMT timestamp.
+        # The time when the certificate expired. The time was formatted as a GMT timestamp.
         self.gmt_after = gmt_after
-        # The time when the certificate took effect. This value is a GMT timestamp.
+        # The time when the certificate took effect. The time was formatted as a GMT timestamp.
         self.gmt_before = gmt_before
-        # The issuer of the certificate.
+        # The issuer.
         self.issuer = issuer
         # The SSL certificate.
         self.sans = sans

@@ -20,15 +20,45 @@ class UpdateGatewayServiceRequest(DaraModel):
         service_protocol: str = None,
         tls_setting: str = None,
     ):
+        # The language in which you want the results to be displayed. Valid values: zh (default): Chinese. en: English.
         self.accept_language = accept_language
+        # The list of Domain Name System (DNS) servers (for DNS domain name services only).
         self.dns_server_list = dns_server_list
+        # The gateway ID.
         self.gateway_id = gateway_id
+        # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
+        # The service ID.
         self.id = id
+        # The address list of fixed address services or domain name list of Domain Name System (DNS) services.
         self.ip_list = ip_list
+        # The service name. This parameter is deprecated and cannot be modified. The value of this parameter must be the same as the current service name.
         self.name = name
+        # The service port. Specify this parameter for DNS services.
         self.service_port = service_port
+        # The service protocol.
+        # 
+        # - HTTP
+        # 
+        # - HTTPS
+        # 
+        # - HTTP2
+        # 
+        # - GRPC
+        # 
+        # - DUBBO
         self.service_protocol = service_protocol
+        # The Transport Layer Security (TLS) settings. Valid values:
+        # 
+        # - mode: TLS mode
+        # 
+        # - certId: certificate ID
+        # 
+        # - caCertId: CA certificate ID
+        # 
+        # - caCertContent: CA certificate public key
+        # 
+        # - sni: service name identification
         self.tls_setting = tls_setting
 
     def validate(self):

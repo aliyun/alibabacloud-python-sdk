@@ -14,18 +14,18 @@ class DeleteNacosConfigsRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
-        # The IDs of configurations.
+        # The configuration IDs.
         # 
         # This parameter is required.
         self.ids = ids
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the namespace.
+        # The namespace ID.
         # 
         # This parameter is required.
         self.namespace_id = namespace_id

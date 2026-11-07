@@ -13,20 +13,20 @@ class QueryGovernanceKubernetesClusterRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The language of the response. Valid values:
+        # The language of the returned information. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
         # The ID of the Kubernetes cluster.
         self.cluster_id = cluster_id
         # The name of the Kubernetes cluster.
         self.cluster_name = cluster_name
-        # The number of the page to return.
+        # The page number.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of items per page.
         # 
         # This parameter is required.
         self.page_size = page_size

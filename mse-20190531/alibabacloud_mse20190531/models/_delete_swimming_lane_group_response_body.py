@@ -15,18 +15,17 @@ class DeleteSwimmingLaneGroupResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details of the data.
+        # The data overview.
         self.data = data
         # The error code.
         self.error_code = error_code
-        # The message returned.
+        # The response message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - `true`: The request is successful.
+        # - `false`: The request fails.
         self.success = success
 
     def validate(self):

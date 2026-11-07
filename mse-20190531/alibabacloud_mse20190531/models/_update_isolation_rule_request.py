@@ -16,16 +16,27 @@ class UpdateIsolationRuleRequest(DaraModel):
         rule_id: int = None,
         threshold: float = None,
     ):
+        # The language in which the response is displayed. Valid values: zh (default): Chinese. en: English.
         self.accept_language = accept_language
+        # The ID of the application.
         self.app_id = app_id
+        # The name of the application.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # Specifies whether the rule is enabled.
         self.enable = enable
+        # The source application of the request.
         self.limit_app = limit_app
+        # The microservice namespace to which the application belongs.
+        # 
         # This parameter is required.
         self.namespace = namespace
+        # The ID of the rule.
+        # 
         # This parameter is required.
         self.rule_id = rule_id
+        # The concurrency threshold of the isolation rule.
         self.threshold = threshold
 
     def validate(self):

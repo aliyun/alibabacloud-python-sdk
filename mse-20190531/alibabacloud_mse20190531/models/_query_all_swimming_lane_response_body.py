@@ -16,18 +16,19 @@ class QueryAllSwimmingLaneResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details of the data.
+        # Data Overview.
         self.data = data
         # The error code.
         self.error_code = error_code
         # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -104,39 +105,41 @@ class QueryAllSwimmingLaneResponseBodyData(DaraModel):
         gmt_create: str = None,
         gmt_modified: str = None,
     ):
-        # 是否开启。
+        # Indicates whether the lane is enabled.
         self.enable = enable
-        # The ingress application rules.
+        # The list of rules for the ingress application.
         self.entry_rules = entry_rules
-        # 网关路由信息（使用云原生网关为入口时使用）
+        # The information about the gateway route. This parameter is used when a cloud-native gateway or an API Gateway instance is used as the ingress.
         self.gateway_swimming_lane_route = gateway_swimming_lane_route
+        # The information about the gateway. This parameter is used when an MSE cloud-native gateway or a cloud-native API Gateway instance is used as the ingress.
         self.gateway_swimming_lane_route_json = gateway_swimming_lane_route_json
         # The ID of the lane group.
         self.group_id = group_id
-        # The ID of the lane group.
+        # The lane ID.
         self.id = id
-        # The side on which canary release for messaging is implemented.
+        # The side on which canary release for messages is implemented.
         self.message_queue_filter_side = message_queue_filter_side
-        # Indicates whether canary release for messaging is enabled.
+        # Indicates whether canary release for messages is enabled.
         self.message_queue_gray_enable = message_queue_gray_enable
         # The name of the lane group.
         self.name = name
-        # The Microservices Engine (MSE) namespace to which the lane belongs.
+        # The MSE namespace to which the lane belongs.
         self.namespace = namespace
+        # Indicates whether to set the percentage for each path.
         self.path_independent_percentage_enable = path_independent_percentage_enable
-        # Indicates whether request details were recorded (metrics of end-to-end canary release).
+        # Indicates whether to record the request details. This is for the observability of end-to-end canary releases.
         self.record_canary_detail = record_canary_detail
         # The region ID.
         self.region_id = region_id
         # The tag of the lane.
         self.tag = tag
-        # The user ID of the lane group.
+        # The ID of the user to which the lane belongs.
         self.user_id = user_id
-        # Indicates whether the rule is enabled.
+        # Indicates whether rules are enabled.
         self.enable_rules = enable_rules
         # The time when the lane was created.
         self.gmt_create = gmt_create
-        # The time when the lane was updated.
+        # The time when the lane was last updated.
         self.gmt_modified = gmt_modified
 
     def validate(self):
@@ -285,24 +288,27 @@ class QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute(DaraModel):
         route_independent_percentage_enable: str = None,
         route_independent_percentage_list: List[main_models.QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteRouteIndependentPercentageList] = None,
     ):
-        # 全链路灰度模式：
+        # The mode of the end-to-end canary release. Valid values:
         # 
-        # - 0: 按请求内容路由
+        # - 0: route by the content of the request
         # 
-        # - 1: 按比例路由
+        # - 1: route by proportion
         self.canary_model = canary_model
+        # The condition for the canary release.
         self.condition = condition
-        # 匹配条件列表（按内容路由使用）
+        # The list of matching conditions. This parameter is used when you route requests by content.
         self.conditions = conditions
-        # 网关ID
+        # The gateway ID.
         self.gateway_id = gateway_id
-        # 网关唯一ID
+        # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
-        # 流量比例（按比例路由使用，取值0-100）
+        # The traffic proportion. This parameter is used when you route requests by proportion. Valid values: 0 to 100.
         self.percentage = percentage
-        # 路由ID列表
+        # The list of route IDs. This parameter is optional if the canary release is effective at the gateway level.
         self.route_id_list = route_id_list
+        # Indicates whether to independently set the percentage for each path.
         self.route_independent_percentage_enable = route_independent_percentage_enable
+        # The list of routes and percentages.
         self.route_independent_percentage_list = route_independent_percentage_list
 
     def validate(self):
@@ -396,7 +402,9 @@ class QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteRouteIndepende
         percentage: str = None,
         route_id: str = None,
     ):
+        # The percentage.
         self.percentage = percentage
+        # The route ID.
         self.route_id = route_id
 
     def validate(self):
@@ -434,20 +442,25 @@ class QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions(Dar
         type: str = None,
         value: str = None,
     ):
-        # 条件：
-        # - PRE：前缀匹配
-        # - EQUAL：精确匹配
-        # - ERGULAR：正则匹配
+        # The condition. Valid values:
+        # 
+        # - PRE: prefix match
+        # 
+        # - EQUAL: exact match
+        # 
+        # - REGULAR: regular expression match
         self.cond = cond
-        # 参数名称
+        # The parameter name.
         self.name = name
         # NameList
         self.name_list = name_list
-        # 参数类型：
-        # - header：Header
-        # - param：Parameter
+        # The parameter type. Valid values:
+        # 
+        # - header: Header
+        # 
+        # - param: Parameter
         self.type = type
-        # 参数值
+        # The parameter value.
         self.value = value
 
     def validate(self):
@@ -506,9 +519,9 @@ class QueryAllSwimmingLaneResponseBodyDataEntryRules(DaraModel):
         self.condition = condition
         # The path.
         self.path = path
-        # The paths.
+        # The list of paths.
         self.paths = paths
-        # The RESTful matching rules.
+        # The list of RESTful matching rules.
         self.rest_items = rest_items
 
     def validate(self):
@@ -571,15 +584,15 @@ class QueryAllSwimmingLaneResponseBodyDataEntryRulesRestItems(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The matching character.
+        # The matching operator.
         self.cond = cond
         # The value.
         self.datum = datum
         # The divisor.
         self.divisor = divisor
-        # The name of the matching rule.
+        # The name.
         self.name = name
-        # The matching list.
+        # The list of items to match.
         self.name_list = name_list
         # The operator.
         self.operator = operator

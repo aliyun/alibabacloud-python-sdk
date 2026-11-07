@@ -14,20 +14,20 @@ class DeleteNacosConfigsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code returned.
+        # The response code.
         self.code = code
-        # The error code returned if the request failed.
+        # The error code.
         self.error_code = error_code
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_code = http_code
-        # The message returned.
+        # The request message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # The request result. Valid values:
         # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # - `true`: The request succeeded.
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):

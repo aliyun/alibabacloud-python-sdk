@@ -20,28 +20,26 @@ class ListGatewayAuthConsumerResourceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code. A value of 200 is returned if the request is successful.
+        # The code used only to synchronize with the success field.
         self.code = code
-        # The returned result.
+        # The returned data.
         self.data = data
-        # The dynamic part in the error message.
+        # The placeholder in the dynamic error message.
         self.dynamic_code = dynamic_code
-        # The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\* variable in the **ErrMessage** parameter.
-        # 
-        # >  If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
+        # The dynamic error message, which is used to replace the **%s** placeholder in the error message of the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
-        # The error code that is returned.
+        # The error code.
         self.error_code = error_code
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error message returned.
+        # The response message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):
@@ -122,13 +120,13 @@ class ListGatewayAuthConsumerResourceResponseBodyData(DaraModel):
         result: List[main_models.ListGatewayAuthConsumerResourceResponseBodyDataResult] = None,
         total_size: int = None,
     ):
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The data structure.
         self.result = result
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_size = total_size
 
     def validate(self):
@@ -189,22 +187,23 @@ class ListGatewayAuthConsumerResourceResponseBodyDataResult(DaraModel):
         route_id: int = None,
         route_name: str = None,
     ):
-        # The ID of the consumer.
+        # The ID of the gateway authentication consumer.
         self.consumer_id = consumer_id
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
         # The creation time.
         self.gmt_create = gmt_create
-        # The modification time.
+        # The update time.
         self.gmt_modified = gmt_modified
-        # The ID of the authorized resource for the consumer.
+        # The authorization ID of the gateway authentication consumer.
         self.id = id
         # The resource authorization status. Valid values:
         # 
-        # *   true: enabled
-        # *   false: disabled
+        # - true: Enabled.
+        # 
+        # - false: Disabled.
         self.resource_status = resource_status
-        # The ID of the route.
+        # The route ID.
         self.route_id = route_id
         # The name of the route.
         self.route_name = route_name

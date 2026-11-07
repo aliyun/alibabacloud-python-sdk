@@ -21,24 +21,56 @@ class UpdateGatewayIsolationRuleRequest(DaraModel):
         route_id: int = None,
         route_name: str = None,
     ):
+        # The language in which you want to display the results. Valid values: zh (default): Chinese. en: English.
         self.accept_language = accept_language
+        # The type of the web fallback behavior.
+        # 
+        # 0: The specified content is returned.
+        # 
+        # 1: Redirect to the specified page.
+        # 
         # This parameter is required.
         self.behavior_type = behavior_type
+        # The encoding type.
+        # 
+        # 0: plain text
+        # 
+        # 1: JSON text
         self.body_encoding = body_encoding
+        # Specifies whether to enable the rule.
+        # 
+        # 0: disable
+        # 
+        # 1: enable
+        # 
         # This parameter is required.
         self.enable = enable
+        # The gateway ID.
         self.gateway_id = gateway_id
+        # The unique ID of the gateway.
+        # 
         # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
+        # The ID of the concurrency rule.
+        # 
         # This parameter is required.
         self.id = id
+        # The maximum number of concurrent requests.
+        # 
         # This parameter is required.
         self.max_concurrency = max_concurrency
+        # The HTTP text to be returned.
         self.response_content_body = response_content_body
+        # The URL to be redirected to.
         self.response_redirect_url = response_redirect_url
+        # The HTTP status code.
         self.response_status_code = response_status_code
+        # The route ID.
+        # 
         # This parameter is required.
         self.route_id = route_id
+        # The route name.
+        # 
         # This parameter is required.
         self.route_name = route_name
 

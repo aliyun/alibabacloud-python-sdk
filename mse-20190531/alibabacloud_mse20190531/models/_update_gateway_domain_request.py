@@ -13,6 +13,7 @@ class UpdateGatewayDomainRequest(DaraModel):
         accept_language: str = None,
         ca_cert_identifier: str = None,
         cert_identifier: str = None,
+        enable_waf: bool = None,
         gateway_unique_id: str = None,
         http_2: str = None,
         id: int = None,
@@ -23,36 +24,38 @@ class UpdateGatewayDomainRequest(DaraModel):
         tls_max: str = None,
         tls_min: str = None,
     ):
-        # The language of the response. Valid values:
-        # 
-        # *   zh: Chinese
-        # *   en: English
+        # The language of the returned information. Valid values:
+        # - zh: Chinese (default).
+        # - en: English.
         self.accept_language = accept_language
+        # The CA certificate content.
         self.ca_cert_identifier = ca_cert_identifier
-        # The ID of the certificate.
+        # The certificate ID.
         self.cert_identifier = cert_identifier
+        # Specifies whether to enable Web Application Firewall (WAF) for the gateway domain name.
+        self.enable_waf = enable_waf
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
-        # Specifies whether to enable `HTTP/2`.
-        # 
-        # *   `open`: `HTTP/2` is enabled.
-        # *   `close`: `HTTP/2` is disabled.
-        # *   `globalConfig`: Global configurations are used.
+        # Specifies whether to enable HTTP/2. Valid values:
+        # - `open`: enables HTTP/2.
+        # - `close`: disables HTTP/2.
+        # - `globalConfig`: uses the global configuration.
         self.http_2 = http_2
-        # The ID of the domain name that you want to update.
+        # The ID of the domain name to be updated.
         self.id = id
+        # Specifies whether to enable mTLS.
         self.mtls_enabled = mtls_enabled
-        # Specifies whether to forcibly use HTTPS.
+        # Specifies whether to force HTTPS.
         self.must_https = must_https
-        # The type of the protocol. Valid values:
-        # 
-        # *   HTTPS
-        # *   HTTP
+        # The protocol type. Valid values:
+        # - HTTPS
+        # - HTTP
         self.protocol = protocol
+        # The TLS cipher suite configuration.
         self.tls_cipher_suites_config_json = tls_cipher_suites_config_json
-        # The maximum version of Transport Layer Security (TLS).
+        # The maximum TLS version.
         self.tls_max = tls_max
-        # The minimum version of TLS.
+        # The minimum TLS version.
         self.tls_min = tls_min
 
     def validate(self):
@@ -72,6 +75,9 @@ class UpdateGatewayDomainRequest(DaraModel):
 
         if self.cert_identifier is not None:
             result['CertIdentifier'] = self.cert_identifier
+
+        if self.enable_waf is not None:
+            result['EnableWaf'] = self.enable_waf
 
         if self.gateway_unique_id is not None:
             result['GatewayUniqueId'] = self.gateway_unique_id
@@ -113,6 +119,9 @@ class UpdateGatewayDomainRequest(DaraModel):
         if m.get('CertIdentifier') is not None:
             self.cert_identifier = m.get('CertIdentifier')
 
+        if m.get('EnableWaf') is not None:
+            self.enable_waf = m.get('EnableWaf')
+
         if m.get('GatewayUniqueId') is not None:
             self.gateway_unique_id = m.get('GatewayUniqueId')
 
@@ -149,7 +158,11 @@ class UpdateGatewayDomainRequestTlsCipherSuitesConfigJSON(DaraModel):
         config_type: str = None,
         tls_cipher_suites: List[str] = None,
     ):
+        # The cipher suite configuration type. Valid values:
+        # - DEFAULT
+        # - CUSTOM
         self.config_type = config_type
+        # The list of cipher suite names.
         self.tls_cipher_suites = tls_cipher_suites
 
     def validate(self):

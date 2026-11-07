@@ -20,12 +20,12 @@ class AddMockRuleRequest(DaraModel):
         sc_mock_items: str = None,
         source: str = None,
     ):
-        # The language of the response. Valid values:
+        # The language of the returned information. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # - en: English
         self.accept_language = accept_language
-        # The ID of the custom application.
+        # The IDs of the custom applications.
         # 
         # This parameter is required.
         self.consumer_app_ids = consumer_app_ids
@@ -33,21 +33,21 @@ class AddMockRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.dubbo_mock_items = dubbo_mock_items
-        # Specifies whether to enable the alert rule. Valid values:
+        # Specifies whether the alert rule is enabled. Valid values:
         # 
-        # *   `true`: enables the alert rule.
-        # *   `false`: disables the alert rule.
+        # - `true`: Enabled.
+        # - `false`: Disabled.
         self.enable = enable
         # The description.
         # 
         # This parameter is required.
         self.extra_json = extra_json
-        # The response time (RT) threshold of slow calls. Valid values:
+        # The response time (RT) for slow calls. Valid values:
         # 
-        # *   \\- 15: 15 ms
-        # *   \\- 30: 30 ms
-        # *   \\- 60: 60 ms
-        # *   \\- 120: 120 ms
+        # - 15: 15 ms
+        # - 30: 30 ms
+        # - 60: 60 ms
+        # - 120: 120 ms
         self.mock_type = mock_type
         # The name of the rule.
         # 
@@ -57,15 +57,15 @@ class AddMockRuleRequest(DaraModel):
         self.provider_app_id = provider_app_id
         # The name of the service provider application.
         self.provider_app_name = provider_app_name
-        # The ID of the region.
+        # The region ID.
         # 
         # This parameter is required.
         self.region = region
-        # The input parameters. The JSON format is supported.
+        # The input parameters. JSON format is supported.
         # 
         # This parameter is required.
         self.sc_mock_items = sc_mock_items
-        # The rule source.
+        # The source of the rule.
         # 
         # This parameter is required.
         self.source = source

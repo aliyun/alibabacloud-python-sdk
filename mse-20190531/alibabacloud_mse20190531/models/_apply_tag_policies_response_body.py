@@ -15,13 +15,13 @@ class ApplyTagPoliciesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details of the data.
+        # The data overview.
         self.data = data
-        # The message returned.
+        # The response message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # The request result.
         self.success = success
 
     def validate(self):
@@ -84,26 +84,26 @@ class ApplyTagPoliciesResponseBodyData(DaraModel):
         status: int = None,
         tag: str = None,
     ):
-        # Indicates whether the field is the primary key.
+        # Indicates whether it is a primary key.
         self.carry_data = carry_data
-        # Indicates whether the rule is enabled. Valid values:
+        # Indicates whether the feature is enabled. Valid values:
         # 
-        # *   `true`: The rule is enabled.
-        # *   `false`: The rule is disabled.
+        # - `true`: Enabled.
+        # - `false`: Disabled.
         self.enable = enable
-        # The ID of the primary key.
+        # The primary key ID.
         self.id = id
         # The number of instances.
         self.instance_num = instance_num
         # The policy name.
         self.name = name
-        # The rate.
+        # The ratio.
         self.rate = rate
-        # Indicates whether the routing rule was deleted.
+        # Indicates whether the deletion is successful.
         self.remove = remove
-        # The details of the routing rule.
+        # The tag rules.
         self.rules = rules
-        # The status.
+        # The effective status.
         self.status = status
         # The tag.
         self.tag = tag

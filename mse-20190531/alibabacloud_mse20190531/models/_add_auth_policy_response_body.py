@@ -14,11 +14,20 @@ class AddAuthPolicyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The code, which is used only to synchronize with the Success parameter.
         self.code = code
+        # The data overview.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # - `true`: The request is successful.
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):

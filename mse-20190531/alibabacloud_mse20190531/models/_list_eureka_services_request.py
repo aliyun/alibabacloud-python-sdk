@@ -14,26 +14,26 @@ class ListEurekaServicesRequest(DaraModel):
         region_id: str = None,
         request_pars: str = None,
     ):
-        # The language of the response. Valid values:
+        # The language of the returned information. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
-        # The ID of the instance.
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The number of the page to return.
+        # The page number.
         # 
         # This parameter is required.
         self.page_num = page_num
-        # The number of entries to return on each page.
+        # The number of instances to return per page.
         # 
         # This parameter is required.
         self.page_size = page_size
         # The region ID.
         self.region_id = region_id
-        # The extended request parameters in the JSON format.
+        # The extended request parameters in JSON format.
         self.request_pars = request_pars
 
     def validate(self):

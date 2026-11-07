@@ -15,23 +15,22 @@ class AddGatewayResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # The return code.
         self.code = code
-        # The unique ID of the gateway.
-        self.data = data
-        # The message returned.
-        # 
-        # *   If the request is successful, a success message is returned.
-        # *   If the request fails, an error message is returned.
-        self.http_status_code = http_status_code
-        # The request is successfully processed.
-        self.message = message
-        # The HTTP status code returned.
-        self.request_id = request_id
         # The returned data.
+        self.data = data
+        # The HTTP status code.
+        self.http_status_code = http_status_code
+        # The returned message.
+        # 
+        # - If the request is successful, a success message is returned.
+        # - If the request fails, the cause of the failure is returned.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # - `true`: The request is successful.
+        # - `false`: The request fails.
         self.success = success
 
     def validate(self):
@@ -91,7 +90,7 @@ class AddGatewayResponseBodyData(DaraModel):
         self,
         gateway_unique_id: str = None,
     ):
-        # code
+        # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
 
     def validate(self):

@@ -15,16 +15,17 @@ class GetGovernanceKubernetesClusterResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details of the data.
+        # The data overview.
         self.data = data
-        # The message returned.
+        # The information that is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -81,23 +82,25 @@ class GetGovernanceKubernetesClusterResponseBodyData(DaraModel):
         update_time: str = None,
         version_life_cycle: str = None,
     ):
-        # The ID of the instance.
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # The name of the instance.
+        # The cluster name.
         self.cluster_name = cluster_name
-        # The version of Kubernetes.
+        # The Kubernetes version.
         self.k_8s_version = k_8s_version
-        # The information of the namespace.
+        # The information about namespaces.
         self.namespace_infos = namespace_infos
-        # The queried namespaces.
+        # The list of namespaces.
         self.namespaces = namespaces
-        # The time when the pilot component was started.
+        # The Pilot startup time.
         self.pilot_start_time = pilot_start_time
+        # The ack-onepilot component version
         self.pilot_version = pilot_version
-        # The ID of the region in which the instance resides. The region is supported by MSE.
+        # The region where the cluster is located. MSE supports specific regions.
         self.region = region
-        # The time of the last modification.
+        # The time when the UDF was last modified.
         self.update_time = update_time
+        # The version lifecycle.
         self.version_life_cycle = version_life_cycle
 
     def validate(self):
@@ -188,9 +191,9 @@ class GetGovernanceKubernetesClusterResponseBodyDataNamespaces(DaraModel):
         mse_namespace: str = None,
         name: str = None,
     ):
-        # The name of the MSE namespace that you want to access.
+        # The corresponding MSE namespace name.
         self.mse_namespace = mse_namespace
-        # The name of the namespace in the ACK cluster.
+        # The Kubernetes namespace name.
         self.name = name
 
     def validate(self):

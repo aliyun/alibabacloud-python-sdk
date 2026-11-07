@@ -14,20 +14,19 @@ class UpdateClusterRequest(DaraModel):
         maintenance_start_time: str = None,
         request_pars: str = None,
     ):
-        # The language of the response. Valid values:
-        # 
-        # *   zh: Chinese
-        # *   en: English
+        # The language of the returned information. Valid values:
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
-        # The alias of the instance.
+        # The alias of the cluster.
         self.cluster_alias_name = cluster_alias_name
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The end time of the O\\&M window.
+        # The end time of the O&M window.
         self.maintenance_end_time = maintenance_end_time
-        # The start time of the O\\&M window.
+        # The start time of the O&M window.
         self.maintenance_start_time = maintenance_start_time
-        # The extended request parameters in the JSON format.
+        # The extended request parameters in JSON format.
         self.request_pars = request_pars
 
     def validate(self):

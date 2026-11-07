@@ -11,9 +11,11 @@ class DeleteNamespaceRequest(DaraModel):
         name: str = None,
         region: str = None,
     ):
-        # The language in which you want to display the results. Valid values: zh and en. Default value: zh. The value zh indicates Chinese, and the value en indicates English.
+        # The language in which the response is displayed. Valid values: zh (default): Chinese, en: English
         self.accept_language = accept_language
+        # The name of the MSE namespace to be deleted.
         self.name = name
+        # The region of the operation.
         self.region = region
 
     def validate(self):

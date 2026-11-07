@@ -15,13 +15,13 @@ class QueryGovernanceKubernetesClusterResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The data returned.
+        # The response data.
         self.data = data
         # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -72,11 +72,11 @@ class QueryGovernanceKubernetesClusterResponseBodyData(DaraModel):
         result: List[main_models.QueryGovernanceKubernetesClusterResponseBodyDataResult] = None,
         total_size: int = None,
     ):
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The size of the current page.
         self.page_size = page_size
-        # The details of the data.
+        # The data structure.
         self.result = result
         # The total number of clusters.
         self.total_size = total_size
@@ -145,13 +145,15 @@ class QueryGovernanceKubernetesClusterResponseBodyDataResult(DaraModel):
         self.cluster_name = cluster_name
         # The version of the cluster.
         self.k_8s_version = k_8s_version
-        # The information about the namespace.
+        # The namespace information.
         self.namespace_infos = namespace_infos
-        # The time when the pilot component was started.
+        # The start time of Pilot.
         self.pilot_start_time = pilot_start_time
+        # The Pilot version.
         self.pilot_version = pilot_version
-        # The region where the cluster resides.
+        # The region where the cluster is deployed.
         self.region = region
+        # The version lifecycle.
         self.version_life_cycle = version_life_cycle
 
     def validate(self):

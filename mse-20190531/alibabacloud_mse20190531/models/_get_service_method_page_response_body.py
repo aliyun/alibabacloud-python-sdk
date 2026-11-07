@@ -15,9 +15,13 @@ class GetServiceMethodPageResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response to the request.
         self.data = data
+        # The request information.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
         self.success = success
 
     def validate(self):
@@ -68,9 +72,13 @@ class GetServiceMethodPageResponseBodyData(DaraModel):
         result: List[main_models.GetServiceMethodPageResponseBodyDataResult] = None,
         total_size: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The method description list.
         self.result = result
+        # The total number of methods.
         self.total_size = total_size
 
     def validate(self):
@@ -133,15 +141,25 @@ class GetServiceMethodPageResponseBodyDataResult(DaraModel):
         return_details: str = None,
         return_type: str = None,
     ):
+        # The full name of the Controller class to which the interface belongs.
         self.method_controller = method_controller
+        # The name of the method.
         self.name = name
+        # The interface description information.
         self.name_detail = name_detail
+        # The detailed definition of the parameter.
         self.parameter_definitions = parameter_definitions
+        # The type of the interface parameter.
         self.parameter_details = parameter_details
+        # The parameter types.
         self.parameter_types = parameter_types
+        # The list of request paths that correspond to the interface.
         self.paths = paths
+        # The HTTP request method.
         self.request_methods = request_methods
+        # The type of the return value.
         self.return_details = return_details
+        # The type of the return value.
         self.return_type = return_type
 
     def validate(self):
@@ -233,8 +251,11 @@ class GetServiceMethodPageResponseBodyDataResultParameterDefinitions(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # The description of the parameter.
         self.description = description
+        # The name of the parameter.
         self.name = name
+        # The parameter type.
         self.type = type
 
     def validate(self):

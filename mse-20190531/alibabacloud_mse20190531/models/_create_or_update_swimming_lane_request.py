@@ -24,36 +24,33 @@ class CreateOrUpdateSwimmingLaneRequest(DaraModel):
         region_id: str = None,
         tag: str = None,
     ):
-        # The language of the response. Valid values: zh and en. Default value: zh. The value zh indicates Chinese, and the value en indicates English.
+        # The language in which the results are returned. Valid values: zh (Chinese, default) and en (English).
         self.accept_language = accept_language
-        # Specifies whether to enable the lane.
+        # Specifies whether the lane is enabled.
         self.enable = enable
-        # Specifies whether to configure a routing rule for the lane. If an Ingress gateway is used, this parameter is not required.
+        # Specifies whether to configure routing rules for the lane. Configuration is not required if the ingress is a gateway.
         self.enable_rules = enable_rules
         # The JSON string.
         self.entry_rule = entry_rule
-        # The lane.
+        # The collection of lane rules.
         self.entry_rules = entry_rules
-        # The information about the routing rule for the gateway. This parameter is required when a cloud-native gateway is used as the ingress.
+        # The gateway routing information. This parameter is used when a cloud-native gateway is used as the ingress.
         self.gateway_swimming_lane_route_json = gateway_swimming_lane_route_json
-        # The language of the response. Valid values:****
-        # 
-        # *   **zh-CN**: Chinese
-        # *   **en-US**: English
-        # 
-        # > Default value: **zh-CN**.
+        # The ID of the lane group to which the lane belongs.
         self.group_id = group_id
-        # The ID of the primary key. The value -1 indicates a request that is used to create a lane. A value greater than 0 indicates a request that is used to modify a lane.
+        # The primary key ID. A value of -1 indicates that a lane is created. A value greater than 0 indicates that a specified lane is updated.
         self.id = id
         # The name of the lane.
         # 
         # This parameter is required.
         self.name = name
+        # The name of the MSE namespace.
         self.namespace = namespace
+        # **[Deprecated]** The Java gateway-related configuration for percentage-based routing by path.
         self.path_independent_percentage_enable = path_independent_percentage_enable
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
-        # The tag.
+        # The identifier.
         self.tag = tag
 
     def validate(self):
@@ -172,18 +169,27 @@ class CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson(DaraModel):
         route_independent_percentage_enable: bool = None,
         route_independent_percentage_list: List[main_models.CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonRouteIndependentPercentageList] = None,
     ):
+        # The end-to-end canary release mode. Valid values:
+        # 
+        # - 0: route by request content
+        # 
+        # - 1: route by percentage
         self.canary_model = canary_model
+        # The canary release condition. Valid values: AND (all conditions must be met) and OR (any condition must be met).
         self.condition = condition
-        # The matching conditions.
+        # The list of matching conditions.
         self.conditions = conditions
         # The ID of the gateway.
         self.gateway_id = gateway_id
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
+        # The traffic percentage. This parameter is used for percentage-based routing. Valid values: 0 to 100.
         self.percentage = percentage
-        # The route IDs.
+        # The list of route IDs.
         self.route_id_list = route_id_list
+        # **[Deprecated]** This parameter is used to specify the percentage-based routing setting by route when an MSE cloud-native gateway is used as the ingress.
         self.route_independent_percentage_enable = route_independent_percentage_enable
+        # **[Deprecated]** The list of routes for independent percentage-based canary releases by route.
         self.route_independent_percentage_list = route_independent_percentage_list
 
     def validate(self):
@@ -277,7 +283,9 @@ class CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonRouteIndepend
         percentage: int = None,
         route_id: int = None,
     ):
+        # The traffic percentage. This parameter is used for percentage-based routing. Valid values: 0 to 100.
         self.percentage = percentage
+        # The route ID.
         self.route_id = route_id
 
     def validate(self):
@@ -314,18 +322,26 @@ class CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonConditions(Da
         type: str = None,
         value: str = None,
     ):
-        # The matching condition. Valid values:
+        # If you use the legacy version of end-to-end canary release (swimversion is 0, which uses tag-based routing and canary routing), the following values are supported:
+        # - PRE: prefix match
+        # - ERGULAR: regular expression match
+        # - EQUAL: exact match
         # 
-        # *   PRE: prefix matching
-        # *   EQUAL: exact matching
-        # *   ERGULAR: regular expression matching
+        # If you use the new version of end-to-end canary release (swimversion is 1 or 2, which uses single-service routing), the following values are supported:
+        # - PRE: prefix match
+        # - regexp: regular expression match
+        # - ==: equal to
+        # - !=: not equal to
+        # - list: in
+        # - %: percentage
+        # 
+        # The new version of end-to-end canary release provides the same features as the legacy version but delivers better performance and simpler configuration. Migrate to the new version of end-to-end canary release.
         self.cond = cond
         # The name of the parameter.
         self.name = name
         # The type of the parameter. Valid values:
-        # 
-        # *   header
-        # *   param
+        # - header: header
+        # - param: parameter
         self.type = type
         # The value of the parameter.
         self.value = value
@@ -376,13 +392,13 @@ class CreateOrUpdateSwimmingLaneRequestEntryRules(DaraModel):
         priority: int = None,
         rest_items: List[main_models.CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems] = None,
     ):
-        # Specifies how RESTful items are combined into the final condition.
+        # Specifies how RestItems are combined to form the final condition.
         self.condition = condition
-        # The paths.
+        # The list of paths.
         self.paths = paths
         # The priority.
         self.priority = priority
-        # The matching list.
+        # The list of matching items.
         self.rest_items = rest_items
 
     def validate(self):
@@ -445,7 +461,7 @@ class CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The matching character.
+        # The match operator.
         self.cond = cond
         # The value.
         self.datum = datum
@@ -453,7 +469,7 @@ class CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems(DaraModel):
         self.divisor = divisor
         # The name.
         self.name = name
-        # The matching list.
+        # The list of matching items.
         self.name_list = name_list
         # The operator.
         self.operator = operator
@@ -461,7 +477,7 @@ class CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems(DaraModel):
         self.rate = rate
         # The remainder.
         self.remainder = remainder
-        # The matching type.
+        # The match type.
         self.type = type
         # The value.
         self.value = value

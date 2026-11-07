@@ -25,37 +25,49 @@ class CreateOrUpdateSwimmingLaneGroupShrinkRequest(DaraModel):
         swim_version: int = None,
     ):
         # The language of the response. Valid values:
-        # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
-        # The IDs of applications. Separate application IDs with commas (,).
+        # The IDs of the applications. Separate multiple IDs with commas (,).
         self.app_ids = app_ids
+        # The end-to-end canary release mode. Valid values:
+        # - 0: Route by request content.
+        # - 1: Route by proportion.
         self.canary_model = canary_model
-        # Specifies whether to enable database canary release.
+        # **[Deprecated]** Specifies whether to enable canary release for databases.
         self.db_gray_enable = db_gray_enable
-        # The ingress application.
+        # The entry application. Format: Source system:ID. Examples:
+        # - mse:${MSE application ID}
+        # - mse-gw:${MSE cloud-native gateway ID}
+        # - apig:${cloud-native API gateway ID}
         self.entry_app = entry_app
-        # The ID of the lane group. A value of -1 is used to create a lane group. A value greater than 0 is used to modify the specified lane group.
+        # The ID of the swimlane group. A value of -1 indicates that a swimlane group is created. A value greater than 0 indicates that a specified swimlane group is updated.
         self.id = id
-        # The side for message filtering when the canary release for messaging feature is enabled.
+        # The side where message queue canary release filtering is performed.
         self.message_queue_filter_side = message_queue_filter_side
-        # Specifies whether to enable canary release for messaging.
+        # Specifies whether to enable canary release for message queues.
         self.message_queue_gray_enable = message_queue_gray_enable
-        # The name.
+        # The name of the swimlane group.
         # 
         # This parameter is required.
         self.name = name
-        # The name of the Microservices Engine (MSE) namespace.
+        # The name of the MSE namespace.
         self.namespace = namespace
+        # **[Deprecated]** The paths. This parameter is required when a Java gateway is used as the entry point.
         self.paths_shrink = paths_shrink
         # Specifies whether to record request details.
         self.record_canary_detail = record_canary_detail
-        # The region ID.
+        # The region.
         self.region = region
+        # The IDs of the routes. If a cloud-native gateway is used as the entry point, you must call this operation to pass the IDs of the selected cloud-native gateway routes before creating a swimlane for the swimlane group.
         self.route_ids_shrink = route_ids_shrink
-        # The status of the lane group. The value 0 specifies that the lane group is disabled. The value 1 specifies that the lane group is enabled.
+        # The status of the swimlane group. Valid values:
+        # - 0: Inactive.
+        # - 1: Active.
         self.status = status
+        # The version of the end-to-end canary release. Valid values:
+        # - 0: Not recommended. Routes must be specified.
+        # - 2: Recommended. Routes do not need to be specified.
         self.swim_version = swim_version
 
     def validate(self):

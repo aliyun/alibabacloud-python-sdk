@@ -20,26 +20,25 @@ class ListClustersResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The details of the data.
+        # The data overview.
         self.data = data
-        # The error code returned if the request failed.
+        # The error code.
         self.error_code = error_code
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_code = http_code
-        # The message returned.
+        # The message.
         self.message = message
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of instances returned on each page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - `true`: The request is successful.
+        # - `false`: The request fails.
         self.success = success
-        # The total number of returned instances.
+        # The total number of instances.
         self.total_count = total_count
 
     def validate(self):
@@ -146,44 +145,47 @@ class ListClustersResponseBodyData(DaraModel):
     ):
         # The application version.
         self.app_version = app_version
-        # Indicates whether the instance can be upgraded.
+        # Indicates whether the cluster can be upgraded.
         self.can_update = can_update
-        # The billing method, such as subscription or pay-as-you-go.
+        # The billing method, including subscription and pay-as-you-go.
         self.charge_type = charge_type
         # The alias of the cluster.
         self.cluster_alias_name = cluster_alias_name
         # The name of the cluster.
         self.cluster_name = cluster_name
-        # The type of the cluster. Valid values: ZooKeeper, Nacos-Ans, and Eureka.
+        # The cluster type, including ZooKeeper, Nacos-Ans, and Eureka.
         self.cluster_type = cluster_type
         # The time when the cluster was created.
         self.create_time = create_time
-        # The time when the cluster expires.
+        # The expiration time of the cluster.
         self.end_date = end_date
-        # The initialization status of the instance.
+        # The initialization status.
         self.init_status = init_status
         # The number of clusters.
         self.instance_count = instance_count
         # The instance ID.
         self.instance_id = instance_id
-        # The public IP address.
+        # The public address.
         self.internet_address = internet_address
-        # The public endpoint.
+        # The public domain name.
         self.internet_domain = internet_domain
-        # The internal IP address.
+        # The private network address.
         self.intranet_address = intranet_address
-        # The internal endpoint.
+        # The internal domain name.
         self.intranet_domain = intranet_domain
+        # The O&M time window.
         self.maintenance_period = maintenance_period
         # The edition of the cluster.
         self.mse_version = mse_version
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # The tags that are attached to the instance.
+        # The tags bound to the instance.
         self.tags = tags
         # The version information.
         self.version_code = version_code
+        # The version lifecycle.
         self.version_lifecycle = version_lifecycle
+        # The ID of the VPC where the cluster is deployed.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -340,7 +342,9 @@ class ListClustersResponseBodyDataMaintenancePeriod(DaraModel):
         end_time: str = None,
         start_time: str = None,
     ):
+        # The end time of the O&M time window.
         self.end_time = end_time
+        # The start time of the O&M time window.
         self.start_time = start_time
 
     def validate(self):

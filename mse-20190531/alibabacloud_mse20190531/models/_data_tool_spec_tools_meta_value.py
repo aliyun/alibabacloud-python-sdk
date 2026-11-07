@@ -12,7 +12,9 @@ class DataToolSpecToolsMetaValue(DaraModel):
         enabled: bool = None,
         templates: Dict[str, Any] = None,
     ):
+        # Indicates whether the tool is enabled.
         self.enabled = enabled
+        # The protocol conversion template configuration.
         self.templates = templates
 
     def validate(self):

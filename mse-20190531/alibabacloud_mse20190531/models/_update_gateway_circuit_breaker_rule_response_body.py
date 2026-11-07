@@ -13,7 +13,9 @@ class UpdateGatewayCircuitBreakerRuleResponseBody(DaraModel):
         data: main_models.UpdateGatewayCircuitBreakerRuleResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -68,25 +70,56 @@ class UpdateGatewayCircuitBreakerRuleResponseBodyData(DaraModel):
         strategy: int = None,
         trigger_ratio: int = None,
     ):
+        # The web fallback behavior type. Valid values:
+        # - 0: Return specified text.
+        # - 1: Redirect to a specified page.
         self.behavior_type = behavior_type
+        # The encoding type. Valid values:
+        # - 0: Plain text.
+        # - 1: JSON.
         self.body_encoding = body_encoding
+        # Specifies whether to enable the rule. Valid values:
+        # - 0: Disabled.
+        # - 1: Enabled.
         self.enable = enable
+        # The ID of the gateway.
         self.gateway_id = gateway_id
+        # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
+        # The ID of the circuit breaker rule.
         self.id = id
+        # The IDs of the filter rules.
         self.id_list = id_list
+        # The threshold conversion mode. Valid values:
+        # - 0: Standalone.
+        # - 1: Cluster.
+        # - 2: Cluster to standalone.
         self.limit_mode = limit_mode
+        # The slow call threshold in slow call mode.
         self.max_allowed_ms = max_allowed_ms
+        # The minimum number of requests that triggers circuit breaking.
         self.min_request_amount = min_request_amount
+        # The recovery duration for circuit breaking.
         self.recovery_timeout_sec = recovery_timeout_sec
+        # The custom headers, which are entered as key-value pairs.
         self.response_additional_headers = response_additional_headers
+        # The HTTP response text.
         self.response_content_body = response_content_body
+        # The redirect URL.
         self.response_redirect_url = response_redirect_url
+        # The HTTP status code.
         self.response_status_code = response_status_code
+        # The ID of the route.
         self.route_id = route_id
+        # The name of the route.
         self.route_name = route_name
+        # The statistical duration for circuit breaking.
         self.stat_duration_sec = stat_duration_sec
+        # The threshold type. Valid values:
+        # - 0: Slow call.
+        # - 1: Exception.
         self.strategy = strategy
+        # The percentage that triggers circuit breaking.
         self.trigger_ratio = trigger_ratio
 
     def validate(self):

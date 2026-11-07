@@ -17,11 +17,17 @@ class ListIsolationRulesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The details of the rule.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The result of the request.
         self.success = success
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListIsolationRulesResponseBodyData(DaraModel):
         result: List[main_models.ListIsolationRulesResponseBodyDataResult] = None,
         total_size: int = None,
     ):
+        # The first page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The returned results.
         self.result = result
+        # The total number of rules.
         self.total_size = total_size
 
     def validate(self):
@@ -149,15 +159,25 @@ class ListIsolationRulesResponseBodyDataResult(DaraModel):
         rule_id: int = None,
         threshold: int = None,
     ):
+        # The application ID.
         self.app_id = app_id
+        # The application name.
         self.app_name = app_name
+        # Indicates whether the rule is enabled.
         self.enable = enable
+        # The behavior that was bound to the rule.
         self.fallback_object = fallback_object
+        # The source application of the request.
         self.limit_app = limit_app
+        # The microservice namespace to which the application belongs.
         self.namespace = namespace
+        # The region in which the cluster resides.
         self.region_id = region_id
+        # The name of the interface to which the rule applies. The interface name must be the same as the name on the interface details page in the console.
         self.resource = resource
+        # The rule ID.
         self.rule_id = rule_id
+        # The concurrency threshold for isolation rules.
         self.threshold = threshold
 
     def validate(self):

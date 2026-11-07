@@ -18,35 +18,33 @@ class AddGatewaySlbShrinkRequest(DaraModel):
         vserver_group_id: str = None,
         vservice_list_shrink: str = None,
     ):
-        # The language of the response. Valid values:
-        # 
-        # *   zh: Chinese
-        # *   en: English
+        # The language of the returned information. Valid values:
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
         # The unique ID of the gateway.
         # 
         # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
-        # The HTTP port number (virtual service group).
+        # The HTTP port (virtual service group).
         self.http_port = http_port
-        # The HTTPS port number (virtual service group).
+        # The HTTPS port (virtual service group).
         self.https_port = https_port
         # The ID of the HTTPS virtual service group.
         self.https_vserver_group_id = https_vserver_group_id
-        # The service weight.
+        # The weight of the service.
         self.service_weight = service_weight
-        # The ID of the SLB instance.
+        # The SLB ID.
         # 
         # This parameter is required.
         self.slb_id = slb_id
-        # The type of the service source. Valid values:
-        # 
-        # *   PUB_NET: Internet
-        # *   PRIVATE_NET: VPC
+        # The type. Valid values:
+        # - PUB_NET: Internet.
+        # - PRIVATE_NET: Private network.
         self.type = type
         # The ID of the HTTP virtual service group.
         self.vserver_group_id = vserver_group_id
-        # The SLB monitoring information.
+        # The SLB listener information.
         self.vservice_list_shrink = vservice_list_shrink
 
     def validate(self):

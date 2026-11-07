@@ -19,27 +19,29 @@ class QueryAllSwimmingLaneGroupResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code. A value of 200 is returned if the request is successful.
+        # The code is used only to synchronize with success.
         self.code = code
-        # The details of the data.
+        # The data returned.
         self.data = data
         # The dynamic part in the error message.
         self.dynamic_message = dynamic_message
-        # The error code returned if the request failed.
+        # The error code.
         self.error_code = error_code
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The returned message.
+        # The message that is returned for the request.
         # 
-        # *   If the request is successful, a success message is returned.
-        # *   If the request fails, an error message is returned.
+        # - If the request is successful, a success message is returned.
+        # 
+        # - If the request fails, an error message is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -131,24 +133,31 @@ class QueryAllSwimmingLaneGroupResponseBodyData(DaraModel):
     ):
         # The application IDs.
         self.app_ids = app_ids
+        # The routing mode for end-to-end canary release:
+        # 
+        # - 0: routing based on request content
+        # 
+        # - 1: routing based on percentages
         self.canary_model = canary_model
-        # The type and ID of the ingress application.
+        # The type of the ingress application and the ID of the ingress application.
         self.entry_app = entry_app
         # The ID of the lane group.
         self.id = id
-        # The side at which canary release for messaging was enabled.
+        # The side at which canary release for messaging is enabled.
         self.message_queue_filter_side = message_queue_filter_side
         # Indicates whether canary release for messaging is enabled.
         self.message_queue_gray_enable = message_queue_gray_enable
-        # The name of the lane group.
+        # The name of a lane group.
         self.name = name
         # The MSE namespace to which the lane belongs.
         self.namespace = namespace
+        # This parameter is deprecated
         self.paths = paths
-        # Indicates whether the request details (metrics of end-to-end canary release) were recorded.
+        # Indicates whether to record the request details (metrics of end-to-end canary release).
         self.record_canary_detail = record_canary_detail
         # The region ID.
         self.region = region
+        # The canary version. Valid values: 0 and 2. Recommended value: 2.
         self.swim_version = swim_version
         # The ID of the user to which the lane belongs.
         self.user_id = user_id

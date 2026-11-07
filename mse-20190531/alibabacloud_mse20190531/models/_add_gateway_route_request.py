@@ -29,51 +29,49 @@ class AddGatewayRouteRequest(DaraModel):
         route_type: str = None,
         services: List[main_models.AddGatewayRouteRequestServices] = None,
     ):
-        # The language of the response. Valid values:
-        # 
-        # *   zh: Chinese
-        # *   en: English
+        # The language of the returned information. Valid values:
+        # - zh: Chinese
+        # - en: English
         self.accept_language = accept_language
+        # The route description.
         self.description = description
-        # The type of the destination service. Valid values:
-        # 
-        # *   Single
-        # *   Multiple
-        # *   VersionOriented
-        # *   Mock
-        # *   Redirect
+        # The destination service type. Valid values:
+        # - Single: single service
+        # - Multiple: multiple services
+        # - VersionOriented: tag-based routing
+        # - Mock: mock
+        # - Redirect: redirect
         self.destination_type = destination_type
         # The mock response configuration.
         self.direct_response_json = direct_response_json
-        # The domain ID.
+        # The domain name ID.
         self.domain_id = domain_id
-        # The domain IDs.
+        # The domain name list.
         self.domain_id_list_json = domain_id_list_json
-        # Specifies whether to activate Web Application Firewall (WAF).
+        # **[Deprecated]** Use UpdateGatewayRouteWafStatus to update the WAF status of the route.
         self.enable_waf = enable_waf
-        # Specifies whether to enable the Fallback service.
+        # Specifies whether to enable the fallback service.
         self.fallback = fallback
-        # The information about the Fallback service.
+        # The fallback service.
         self.fallback_services = fallback_services
-        # The ID of the gateway.
+        # The gateway ID.
         self.gateway_id = gateway_id
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
-        # The name of the route.
+        # The route name.
         self.name = name
-        # The routing policy in a JSON string.
+        # The JSON string of the route policy.
         self.policies = policies
-        # The matching rule.
+        # The matching rules.
         self.predicates = predicates
-        # The configuration of the redirection.
+        # The redirect configuration.
         self.redirect_json = redirect_json
-        # The sequence number of the route. (A small value indicates a high priority.)
+        # The route order. A smaller value indicates a higher priority.
         self.route_order = route_order
         # The route type. Valid values:
-        # 
-        # Op: Manage routes.
+        # - Op: management and control route
         self.route_type = route_type
-        # The list of services.
+        # The service list. This parameter is required when the route points to a single service, multiple services, or tag-based routing.
         self.services = services
 
     def validate(self):
@@ -238,25 +236,25 @@ class AddGatewayRouteRequestServices(DaraModel):
         source_type: str = None,
         version: str = None,
     ):
-        # The type of the protocol.
+        # The protocol type.
         self.agreement_type = agreement_type
-        # The name of the group to which the service belongs.
+        # The service group name.
         self.group_name = group_name
-        # The transcoder of the Dubbo protocol.
+        # The Dubbo protocol transcoding configuration.
         self.http_dubbo_transcoder = http_dubbo_transcoder
         # The name.
         self.name = name
-        # The namespace to which the service belongs.
+        # The namespace where the service resides.
         self.namespace = namespace
-        # The weight in the form of a percentage value.
+        # The traffic distribution percentage for the current service or service version. This parameter is required only when multiple services or tag-based routing is used.
         self.percent = percent
-        # The ID of the service.
+        # The service ID.
         self.service_id = service_id
-        # The service port number.
+        # The service port.
         self.service_port = service_port
         # The source type.
         self.source_type = source_type
-        # The version of the service.
+        # The service version. This parameter is required only when tag-based routing is used.
         self.version = version
 
     def validate(self):
@@ -343,13 +341,13 @@ class AddGatewayRouteRequestServicesHttpDubboTranscoder(DaraModel):
         dubbo_service_version: str = None,
         mothed_map_list: List[main_models.AddGatewayRouteRequestServicesHttpDubboTranscoderMothedMapList] = None,
     ):
-        # The name of the service group.
+        # The service group.
         self.dubbo_service_group = dubbo_service_group
-        # The name of the Dubbo service.
+        # The Dubbo service name.
         self.dubbo_service_name = dubbo_service_name
-        # The version of the Dubbo service.
+        # The Dubbo service version.
         self.dubbo_service_version = dubbo_service_version
-        # The forwarding rules of the Dubbo service.
+        # The list of Dubbo forwarding rules.
         self.mothed_map_list = mothed_map_list
 
     def validate(self):
@@ -408,37 +406,25 @@ class AddGatewayRouteRequestServicesHttpDubboTranscoderMothedMapList(DaraModel):
         pass_through_all_headers: str = None,
         pass_through_list: List[str] = None,
     ):
-        # The method name of the Dubbo service.
+        # The Dubbo method name.
         self.dubbo_mothed_name = dubbo_mothed_name
-        # The HTTP method.
-        # 
-        # > Valid values:
-        # 
-        # *   ALL_GET
-        # 
-        # *   ALL_POST
-        # 
-        # *   ALL_PUT
-        # 
-        # *   ALL_DELETE
-        # 
-        # *   ALL_PATCH
+        # The HTTP method. Valid values:
+        # - ALL_GET: all GET methods
+        # - ALL_POST: all POST methods
+        # - ALL_PUT: all PUT methods
+        # - ALL_DELETE: all DELETE methods
+        # - ALL_PATCH: all PATCH methods
         self.http_mothed = http_mothed
-        # The path used for method matching.
+        # The method matching path.
         self.mothedpath = mothedpath
-        # The information about parameter mappings.
+        # The parameter mapping list.
         self.param_maps_list = param_maps_list
-        # The pass-through type of the header.
-        # 
-        # > Valid values:
-        # 
-        # *   PASS_ALL: All headers are passed through.
-        # 
-        # *   PASS_NOT: All headers are not passed through.
-        # 
-        # *   PASS_ASSIGN: Specified headers are passed through.
+        # The header pass-through type. Valid values:
+        # - PASS_ALL: pass through all headers
+        # - PASS_NOT: do not pass through headers
+        # - PASS_ASSIGN: pass through specified headers
         self.pass_through_all_headers = pass_through_all_headers
-        # The list of headers to be passed through.
+        # The list of specified headers to pass through.
         self.pass_through_list = pass_through_list
 
     def validate(self):
@@ -506,19 +492,15 @@ class AddGatewayRouteRequestServicesHttpDubboTranscoderMothedMapListParamMapsLis
         extract_key_spec: str = None,
         mapping_type: str = None,
     ):
-        # The key extracted from the input parameter.
+        # The key extracted from the input parameter location.
         self.extract_key = extract_key
-        # The position of the input parameter.
-        # 
-        # > Valid values:
-        # 
-        # *   `ALL_QUERY_PARAMETER`: request parameter
-        # 
-        # *   `ALL_HEADER`: request header
-        # *   `ALL_PATH`: request path
-        # *   `ALL_BODY`: request body
+        # The input parameter location. Valid values:
+        # - ALL_QUERY_PARAMETER: request parameters
+        # - ALL_HEADER: request headers
+        # - ALL_PATH: URI of the request
+        # - ALL_BODY: request body
         self.extract_key_spec = extract_key_spec
-        # The type of the backend service parameter.
+        # The backend parameter type.
         self.mapping_type = mapping_type
 
     def validate(self):
@@ -560,11 +542,11 @@ class AddGatewayRouteRequestRedirectJSON(DaraModel):
         host: str = None,
         path: str = None,
     ):
-        # The status code returned.
+        # The response code.
         self.code = code
-        # The hostname to be redirected to.
+        # The redirect hostname.
         self.host = host
-        # The path to be redirected to.
+        # The redirect path.
         self.path = path
 
     def validate(self):
@@ -607,13 +589,13 @@ class AddGatewayRouteRequestPredicates(DaraModel):
         path_predicates: main_models.AddGatewayRouteRequestPredicatesPathPredicates = None,
         query_predicates: List[main_models.AddGatewayRouteRequestPredicatesQueryPredicates] = None,
     ):
-        # The information about header matching.
+        # The request header matching rules.
         self.header_predicates = header_predicates
-        # The information about method matching.
+        # The method matching rules.
         self.method_predicates = method_predicates
-        # The information about route matching.
+        # The path matching rules.
         self.path_predicates = path_predicates
-        # The information about URL parameter matching.
+        # The URL parameter matching rules.
         self.query_predicates = query_predicates
 
     def validate(self):
@@ -681,11 +663,11 @@ class AddGatewayRouteRequestPredicatesQueryPredicates(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The name of the parameter.
+        # The parameter name.
         self.key = key
         # The matching type.
         self.type = type
-        # The value of the parameter.
+        # The matching value.
         self.value = value
 
     def validate(self):
@@ -727,15 +709,14 @@ class AddGatewayRouteRequestPredicatesPathPredicates(DaraModel):
         path: str = None,
         type: str = None,
     ):
-        # Specifies whether to ignore case sensitivity.
+        # Specifies whether to ignore case.
         self.ignore_case = ignore_case
         # The path.
         self.path = path
         # The route matching type. Valid values:
-        # 
-        # *   PRE: prefix matching
-        # *   EQUAL: exact matching
-        # *   ERGULAR: regular expression matching
+        # - PRE: prefix match
+        # - EQUAL: exact match
+        # - ERGULAR: regular expression match
         self.type = type
 
     def validate(self):
@@ -777,11 +758,11 @@ class AddGatewayRouteRequestPredicatesHeaderPredicates(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The key of the request header.
+        # The request header key.
         self.key = key
         # The matching type.
         self.type = type
-        # The value of the request header.
+        # The corresponding value.
         self.value = value
 
     def validate(self):
@@ -829,23 +810,23 @@ class AddGatewayRouteRequestFallbackServices(DaraModel):
         source_type: str = None,
         version: str = None,
     ):
-        # The type of the protocol.
+        # The protocol type.
         self.agreement_type = agreement_type
-        # The name of the group to which the service belongs.
+        # The service group name.
         self.group_name = group_name
         # The name.
         self.name = name
-        # The namespace to which the service belongs.
+        # The namespace where the service resides.
         self.namespace = namespace
-        # The weight in the form of a percentage value.
+        # The weight percentage.
         self.percent = percent
-        # The ID of the service.
+        # The service ID.
         self.service_id = service_id
-        # The service port number.
+        # The service port.
         self.service_port = service_port
         # The source type.
         self.source_type = source_type
-        # The version of the service.
+        # The service version.
         self.version = version
 
     def validate(self):
@@ -922,9 +903,9 @@ class AddGatewayRouteRequestDirectResponseJSON(DaraModel):
         body: str = None,
         code: int = None,
     ):
-        # The mock return value.
+        # The mock response body.
         self.body = body
-        # The mock return code.
+        # The mock response code.
         self.code = code
 
     def validate(self):

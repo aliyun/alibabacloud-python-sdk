@@ -18,22 +18,25 @@ class UpdateClusterSpecRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # 
+        # - en: English
         self.accept_language = accept_language
+        # Specifies whether to automatically pay after placing an order. If this value is false, this interface will return a payment URL for the order, which you can manually confirm to pay
         self.auto_pay = auto_pay
-        # The ID of the cluster.
+        # The cluster ID.
         self.cluster_id = cluster_id
         # The destination engine specifications.
         self.cluster_specification = cluster_specification
         # The number of destination nodes.
         self.instance_count = instance_count
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The MSE version.
         self.mse_version = mse_version
+        # Internet bandwidth
         self.pub_network_flow = pub_network_flow
 
     def validate(self):

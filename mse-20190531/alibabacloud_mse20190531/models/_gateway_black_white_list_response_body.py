@@ -20,13 +20,13 @@ class GatewayBlackWhiteListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code. A value of 200 is returned if the request is successful.
+        # The code that synchronizes with the Success parameter.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The placeholder in the dynamic error message. This parameter is not returned.
+        # The placeholder in the dynamic error message. This parameter is not used and can be ignored.
         self.dynamic_code = dynamic_code
-        # The dynamic message. This parameter is not returned.
+        # The dynamic message. This parameter is not used and can be ignored.
         self.dynamic_message = dynamic_message
         # The error code.
         self.error_code = error_code
@@ -36,10 +36,9 @@ class GatewayBlackWhiteListResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`
-        # *   `false`
+        # Indicates whether the request is successful. Valid values:
+        # - `true`: The request is successful.
+        # - `false`: The request fails.
         self.success = success
 
     def validate(self):
@@ -120,13 +119,13 @@ class GatewayBlackWhiteListResponseBodyData(DaraModel):
         result: List[main_models.GatewayBlackWhiteListResponseBodyDataResult] = None,
         total_size: int = None,
     ):
-        # The page number.
+        # The page number of the instance list.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page specified in the request.
         self.page_size = page_size
-        # The returned information.
+        # The returned result set.
         self.result = result
-        # The total number of instances returned.
+        # The total number of queried instances.
         self.total_size = total_size
 
     def validate(self):
@@ -198,41 +197,42 @@ class GatewayBlackWhiteListResponseBodyDataResult(DaraModel):
         self.content = content
         # The gateway ID.
         self.gateway_id = gateway_id
-        # The unique ID of the gateway.
+        # The unique identifier of the gateway.
         self.gateway_unique_id = gateway_unique_id
-        # The time when the blacklist or whitelist was created.
+        # The creation time.
         self.gmt_create = gmt_create
-        # The time when the rule was modified.
+        # The update time.
         self.gmt_modified = gmt_modified
-        # The ID of the blacklist and whitelist.
+        # The ID of the blacklists and whitelists.
         self.id = id
-        # Specifies whether to enable the whitelist feature.
+        # Indicates whether it is a whitelist.
         self.is_white = is_white
         # The name of the blacklist.
         self.name = name
-        # The comment.
+        # The note.
         self.note = note
         # The resource ID.
         self.resource_id = resource_id
-        # The list of resource IDs in the JSON format.
+        # The JSON string of the resource ID list.
         # 
-        # *   If the value of the ResourceType parameter is ROUTE, the value of this parameter is the list of route IDs.
-        # *   If the value of the ResourceType parameter is DOMAIN, the value of this parameter is the list of domain names.
+        # - If ResourceType is set to ROUTE, this parameter is a list of route IDs.
+        # 
+        # - If ResourceType is set to DOMAIN, this parameter is a list of domain name IDs.
         self.resource_id_json_list = resource_id_json_list
-        # The description of the resource name.
+        # The resource name description.
         self.resource_id_name_json = resource_id_name_json
-        # The effective scope of the blacklist or whitelist. Valid values:
-        # 
-        # *   GATEWAY
-        # *   DOMAIN
-        # *   ROUTE
+        # The effective granularity. Valid values:
+        # - GATEWAY: global gateway level.
+        # - DOMAIN: domain name level.
+        # - ROUTE: route level.
         self.resource_type = resource_type
-        # The status of the blacklist or whitelist.
+        # The status of the blacklists and whitelists. Valid values:
         # 
-        # *   on
-        # *   off
+        # - on: enabled.
+        # 
+        # - off: shutdown.
         self.status = status
-        # The type of the blacklist and whitelist. The value is fixed to IP address blacklist and whitelist.
+        # The type of the blacklists and whitelists. The value is fixed to IP blacklists and whitelists.
         self.type = type
 
     def validate(self):

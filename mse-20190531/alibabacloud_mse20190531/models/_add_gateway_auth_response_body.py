@@ -14,20 +14,19 @@ class AddGatewayAuthResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
+        # The code synchronized with the Success parameter. If Success is true, Code is 200.
         self.code = code
-        # The data returned.
+        # The ID of the created authentication.
         self.data = data
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message returned.
+        # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # The request result. Valid values:
+        # - `true`: The request is successful.
+        # - `false`: The request fails.
         self.success = success
 
     def validate(self):

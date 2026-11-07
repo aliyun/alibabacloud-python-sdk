@@ -10,7 +10,10 @@ class GetGatewayConfigRequest(DaraModel):
         accept_language: str = None,
         gateway_unique_id: str = None,
     ):
+        # The language of the returned results. Valid values: zh (default): Chinese. en: English.
         self.accept_language = accept_language
+        # The unique ID of the gateway.
+        # 
         # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
 

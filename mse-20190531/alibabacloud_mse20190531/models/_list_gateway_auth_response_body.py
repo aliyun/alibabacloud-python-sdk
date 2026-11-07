@@ -17,12 +17,19 @@ class ListGatewayAuthResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. A value of 200 indicates success.
         self.code = code
+        # The returned data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):
@@ -85,9 +92,13 @@ class ListGatewayAuthResponseBodyData(DaraModel):
         result: List[main_models.ListGatewayAuthResponseBodyDataResult] = None,
         total_size: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The returned results.
         self.result = result
+        # The total number of entries.
         self.total_size = total_size
 
     def validate(self):
@@ -164,29 +175,72 @@ class ListGatewayAuthResponseBodyDataResult(DaraModel):
         token_position: str = None,
         type: str = None,
     ):
+        # The authorization resource mode. Valid values:
+        # - 0: simple mode.
+        # - 1: complex mode.
         self.auth_resource_mode = auth_resource_mode
+        # The application ID registered in the service. This parameter is used for OIDC or IDaaS.
         self.client_id = client_id
+        # The application secret registered in the service. This parameter is used for OIDC or IDaaS.
         self.client_secret = client_secret
+        # The domain name of the cookie. After authentication, the cookie is sent to the specified domain name to maintain the logon status. This parameter is used for OIDC or IDaaS.
         self.cookie_domain = cookie_domain
+        # The custom authentication information.
         self.external_auth_z = external_auth_z
+        # The gateway ID.
         self.gateway_id = gateway_id
+        # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
+        # The creation time.
         self.gmt_create = gmt_create
+        # The modification time.
         self.gmt_modified = gmt_modified
+        # The authentication ID.
         self.id = id
+        # The authorization blacklists and whitelists mode. Valid values:
+        # - true: whitelist mode. Hosts and paths in the whitelist can be accessed without verification, while all other hosts and paths require verification.
+        # - false: blacklist mode. Hosts and paths in the blacklist require verification, while all other hosts and paths can be accessed directly.
         self.is_white = is_white
+        # Used when the authentication type is JWT or OIDC:
+        # - JWT: the iss (issuer) claim in the JWT, which represents the issuer.
+        # - OIDC: the iss (issuer) claim in the OIDC token, which represents the issuer.
         self.issuer = issuer
+        # The JWT public key in JSON format.
         self.jwks = jwks
+        # The URL of the user logon page for the IDaaS instance. This parameter is used for IDaaS.
         self.login_url = login_url
+        # The name of the authentication rule.
         self.name = name
+        # The redirect URL after successful authorization. This parameter is used for OIDC or IDaaS and must be consistent with the redirect URL configured in OIDC or IDaaS.
         self.redirect_url = redirect_url
+        # The OIDC authorization scopes. This parameter is used for OIDC.
         self.scopes_list = scopes_list
+        # The enabling status. Valid values:
+        # - false: disabled.
+        # - true: enabled.
         self.status = status
+        # Used when the authentication type is JWT. The sub (subject) claim in the JWT, which represents the subject.
         self.sub = sub
+        # The location where the JWT token is stored.
+        # 
+        # By default, the token to be verified is prefixed with Bearer and placed in the Authorization header, for example, `Authorization: Bearer token`.
         self.token_name = token_name
+        # The prefix of the JWT token.
+        # 
+        # By default, the token to be verified is prefixed with Bearer and placed in the Authorization header, for example, `Authorization: Bearer token`.
         self.token_name_prefix = token_name_prefix
+        # Specifies whether to pass through the token.
         self.token_pass = token_pass
+        # The JWT token position. Valid values:
+        # - HEADER: transmitted through the header.
+        # 
+        # By default, the token to be verified is prefixed with Bearer and placed in the Authorization header, for example, Authorization: Bearer token.
         self.token_position = token_position
+        # The authentication type. Valid values:
+        # - JWT
+        # - OIDC
+        # - IDaaS
+        # - ExternalAuthZ: self-managed authentication service
         self.type = type
 
     def validate(self):
@@ -364,16 +418,29 @@ class ListGatewayAuthResponseBodyDataResultExternalAuthZ(DaraModel):
         with_rematch_route: bool = None,
         with_request_body: bool = None,
     ):
+        # The names of the allowed request headers.
         self.allow_request_headers = allow_request_headers
+        # The names of the allowed response headers.
         self.allow_upstream_headers = allow_upstream_headers
+        # The maximum number of bytes for the request body.
         self.body_max_bytes = body_max_bytes
+        # The custom authentication mode. Valid values:
+        # - true: strict mode. When the authentication service is unavailable (connection establishment fails or a 5xx status code is returned), the gateway rejects the client request.
+        # - false: loose mode. When the authentication service is unavailable (connection establishment fails or a 5xx status code is returned), the gateway allows the client request.
         self.is_restrict = is_restrict
+        # The path of the authentication API provided by the authentication service. The API path must be prefix-matched.
         self.prefix_path = prefix_path
+        # The authentication service information.
         self.service = service
+        # The ID of the authentication service.
         self.service_id = service_id
+        # The timeout period of the authentication service. Unit: seconds.
         self.timeout = timeout
+        # The token location, which indicates the header in the request message where the token is located. Common values include Authorization and Cookie.
         self.token_key = token_key
+        # Specifies whether to rematch the route after authentication is completed.
         self.with_rematch_route = with_rematch_route
+        # Specifies whether to include the request body.
         self.with_request_body = with_request_body
 
     def validate(self):
@@ -466,9 +533,13 @@ class ListGatewayAuthResponseBodyDataResultExternalAuthZService(DaraModel):
         namespace: str = None,
         source_type: str = None,
     ):
+        # The name of the service group.
         self.group_name = group_name
+        # The authentication service name.
         self.name = name
+        # The namespace.
         self.namespace = namespace
+        # The source type of the authentication service.
         self.source_type = source_type
 
     def validate(self):

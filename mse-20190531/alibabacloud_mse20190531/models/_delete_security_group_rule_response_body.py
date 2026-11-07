@@ -15,20 +15,21 @@ class DeleteSecurityGroupRuleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
+        # The status code.
         self.code = code
         # The returned data.
         self.data = data
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message returned.
+        # The response message.
         self.message = message
         # The ID of the request.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -96,34 +97,41 @@ class DeleteSecurityGroupRuleResponseBodyData(DaraModel):
         port_range: str = None,
         security_group_id: str = None,
     ):
-        # The description.
+        # The description of the rule.
         self.description = description
-        # The ID of the gateway.
+        # The gateway ID.
         self.gateway_id = gateway_id
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
-        # The creation time.
+        # The time when the rule was created.
         self.gmt_create = gmt_create
-        # The modification time.
+        # The time when the rule was last modified.
         self.gmt_modified = gmt_modified
-        # The ID.
+        # The rule ID.
         self.id = id
-        # The transport layer protocol. The value of this parameter is case-insensitive. Valid values:
+        # The transport-layer protocol. The value is not case-sensitive. Valid values:
         # 
-        # *   icmp
-        # *   gre
-        # *   tcp
-        # *   udp
-        # *   all: All protocols are supported.
+        # - icmp
+        # 
+        # - gre
+        # 
+        # - tcp
+        # 
+        # - udp
+        # 
+        # - all: The rule applies to all protocols.
         self.ip_protocol = ip_protocol
-        # The range of ports for the transport layer protocol in the destination security group. Valid values:
+        # The transport-layer port range. Valid values:
         # 
-        # *   When the IpProtocol parameter is set to tcp or udp, the port number range is 1 to 65535. The start port number and the end port number are separated by a forward slash (/). Example: 1/200.
-        # *   If the IpProtocol parameter is set to icmp, the port number range is -1/-1, which indicates all ports.
-        # *   If the IpProtocol parameter is set to gre, the port number range is -1/-1, which indicates all ports.
-        # *   If the IpProtocol parameter is set to all, the port number range is -1/-1, which indicates all ports.
+        # - For TCP or UDP, the port range is 1 to 65535. Use a forward slash (/) to separate the start port from the end port. For example: `1/200`.
+        # 
+        # - For ICMP, the value is `-1/-1`.
+        # 
+        # - For GRE, the value is `-1/-1`.
+        # 
+        # - For all protocols, the value is `-1/-1`.
         self.port_range = port_range
-        # The ID of the security group.
+        # The security group ID.
         self.security_group_id = security_group_id
 
     def validate(self):

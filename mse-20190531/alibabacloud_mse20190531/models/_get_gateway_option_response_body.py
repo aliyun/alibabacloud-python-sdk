@@ -15,29 +15,32 @@ class GetGatewayOptionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned. The value 200 indicates that the request is successfully processed.
+        # The status code. A value of 200 indicates success.
         self.code = code
-        # The detailed configurations of the gateway.
+        # The gateway operation details.
         # 
-        # *   **TraceDetails**: the sampling description of Managed Service for OpenTelemetry. Content: TraceEnabled indicates whether Managed Service for OpenTelemetry is activated. Sample indicates the sampling rate of Managed Service for OpenTelemetry.
-        # *   **LogConfigDetails**: the description of Simple Log Service. Content: LogEnabled indicates whether Simple Log Service is activated. ProjectName indicates the Simple Log Service project to which logs are delivered. LogStoreName indicates the name of the Logstore.
-        # *   **EnableHardwareAcceleration**: indicates whether hardware acceleration is enabled.
-        # *   **DisableHttp2Alpn**: indicates whether the HTTP/2 protocol is disabled.
-        # *   **EnableWaf**: indicates whether Web Application Firewall (WAF) is enabled.
+        # - **TraceDetails**: The XTrace sampling description. It includes TraceEnabled, which indicates whether XTrace is enabled, and Sample, which indicates the XTrace sampling rate.
+        # 
+        # - **LogConfigDetails**: The log delivery service description. It includes LogEnabled, which indicates whether log delivery to Simple Log Service (SLS) is enabled, ProjectName, which indicates the destination project for log delivery, and LogStoreName, which indicates the Logstore name.
+        # 
+        # - **EnableHardwareAcceleration**: Indicates whether hardware acceleration is enabled.
+        # 
+        # - **DisableHttp2Alpn**: Indicates whether HTTP/2 is disabled.
+        # 
+        # - **EnableWaf**: Indicates whether Web Application Firewall (WAF) is enabled.
         self.data = data
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message returned.
+        # The returned message.
         # 
-        # *   If the request is successful, a success message is returned.
-        # *   If the request fails, an error message is returned, such as the "TaskId not found" message.
+        # - If the request is successful, a success message is returned.
+        # - If the request fails, the cause of the failure is returned, such as TaskId not found.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # The request result. Valid values:
+        # - `true`: The request is successful.
+        # - `false`: The request fails.
         self.success = success
 
     def validate(self):

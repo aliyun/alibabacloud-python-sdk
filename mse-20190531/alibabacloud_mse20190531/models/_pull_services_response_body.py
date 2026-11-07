@@ -17,20 +17,19 @@ class PullServicesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
+        # The response code.
         self.code = code
         # The returned data.
         self.data = data
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message returned.
+        # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - `true`: The request is successful.
+        # - `false`: The request fails.
         self.success = success
 
     def validate(self):
@@ -99,13 +98,13 @@ class PullServicesResponseBodyData(DaraModel):
         namespace_show_name: str = None,
         services: List[main_models.PullServicesResponseBodyDataServices] = None,
     ):
-        # The name of the group.
+        # The group.
         self.group_name = group_name
         # The namespace.
         self.namespace = namespace
-        # The alias of the namespace.
+        # The namespace alias.
         self.namespace_show_name = namespace_show_name
-        # The information about services.
+        # The list of services.
         self.services = services
 
     def validate(self):
@@ -165,17 +164,19 @@ class PullServicesResponseBodyDataServices(DaraModel):
         source_id_list: List[int] = None,
         source_type: str = None,
     ):
-        # The name of the group.
+        # The group.
         self.group_name = group_name
-        # The name of the service.
+        # The service name.
         self.name = name
         # The namespace.
         self.namespace = namespace
+        # The SAE application ID.
         self.sae_app_id = sae_app_id
-        # The ID of the service source.
+        # The source ID.
         self.source_id = source_id
+        # The list of associated service source IDs.
         self.source_id_list = source_id_list
-        # The type of the service source.
+        # The source type.
         self.source_type = source_type
 
     def validate(self):

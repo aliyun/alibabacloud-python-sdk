@@ -18,7 +18,7 @@ class UpdateAuthPolicyRequest(DaraModel):
         region: str = None,
         source: str = None,
     ):
-        # The language of the response. Valid values: zh-CN and en-US. Default value: zh-CN. The value zh-CN indicates Chinese, and the value en-US indicates English.
+        # The language in which you want the results to be displayed. Valid values: zh-CN and en-US. Default value: zh-CN. The value zh-CN indicates Chinese, and the value en-US indicates English.
         self.accept_language = accept_language
         # The application ID.
         self.app_id = app_id
@@ -30,19 +30,21 @@ class UpdateAuthPolicyRequest(DaraModel):
         # 
         # This parameter is required.
         self.id = id
-        # The ID of the ACK cluster namespace.
+        # The namespace ID of the Kubernetes cluster.
         self.k_8s_namespace = k_8s_namespace
-        # The name of the rule.
+        # The rule name.
         self.name = name
-        # The protocol type. Valid values:
+        # The Protocol Type. Valid values:
         # 
-        # *   **SPRING_CLOUD**
-        # *   **DUBBO**
-        # *   **istio**
+        # - **SPRING_CLOUD**.
+        # 
+        # - **DUBBO**.
+        # 
+        # - **istio**.
         self.protocol = protocol
-        # The region ID.
+        # The region.
         self.region = region
-        # The source for application access.
+        # The service source that the application accesses.
         self.source = source
 
     def validate(self):

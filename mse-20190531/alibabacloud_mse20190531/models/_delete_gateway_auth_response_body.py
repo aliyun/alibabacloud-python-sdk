@@ -17,11 +17,19 @@ class DeleteGatewayAuthResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The code returned in synchronization with the Success parameter. When Success is true, the value is 200.
         self.code = code
+        # The returned data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):
@@ -101,26 +109,59 @@ class DeleteGatewayAuthResponseBodyData(DaraModel):
         token_position: str = None,
         type: str = None,
     ):
+        # The application ID registered for the service. This parameter is used for OIDC or IDaaS.
         self.client_id = client_id
+        # The application secret registered for the service. This parameter is used for OIDC or IDaaS.
         self.client_secret = client_secret
+        # The domain name of the cookie. After authentication, the cookie is sent to the specified domain name to maintain the logon status. This parameter is used for OIDC or IDaaS.
         self.cookie_domain = cookie_domain
+        # The gateway ID.
         self.gateway_id = gateway_id
+        # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
+        # The creation time.
         self.gmt_create = gmt_create
+        # The update time.
         self.gmt_modified = gmt_modified
+        # The authentication ID.
         self.id = id
+        # The authorization blacklist and whitelist mode. Valid values:
+        # - true: whitelist mode. Hosts and paths in the whitelist can be accessed without verification, while all other hosts and paths require verification.
+        # - false: blacklist mode. Hosts and paths in the blacklist require verification, while all other hosts and paths can be accessed directly.
         self.is_white = is_white
+        # The issuer used when the authentication type is JWT or OIDC:
+        # - JWT: the iss (issuer) claim of the JWT, which represents the issuer.
+        # - OIDC: the iss (issuer) claim of the OIDC, which represents the issuer.
         self.issuer = issuer
+        # The JWT public key in JSON format.
         self.jwks = jwks
+        # The URL of the user logon page for the IDaaS instance. This parameter is used for IDaaS.
         self.login_url = login_url
+        # The authentication name.
         self.name = name
+        # The redirect URL after successful authorization. This parameter is used for OIDC or IDaaS and must be consistent with the redirect URL configured in OIDC or IDaaS.
         self.redirect_url = redirect_url
+        # The OIDC scopes. This parameter is used for OIDC.
         self.scopes_list = scopes_list
+        # The enabling status. Valid values:
+        # - true: enabled.
+        # - false: disabled.
         self.status = status
+        # The name of the token parameter to be verified. By default, the token is prefixed with Bearer and placed in the Authorization header. Example: `Authorization: Bearer token`.
         self.token_name = token_name
+        # The prefix of the JWT token.
         self.token_name_prefix = token_name_prefix
+        # Specifies whether to pass through the token.
         self.token_pass = token_pass
+        # The position of the JWT token. Valid values:
+        # - HEADER: transmitted through the header.
+        # The token parameter to be verified. By default, the token is prefixed with Bearer and placed in the Authorization header. Example: `Authorization: Bearer token`.
         self.token_position = token_position
+        # The authentication type. Valid values:
+        # - JWT
+        # - OIDC
+        # - IDaaS
+        # - ExternalAuthZ: custom authentication service.
         self.type = type
 
     def validate(self):

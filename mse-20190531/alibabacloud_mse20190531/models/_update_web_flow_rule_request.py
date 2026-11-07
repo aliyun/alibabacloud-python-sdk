@@ -23,22 +23,59 @@ class UpdateWebFlowRuleRequest(DaraModel):
         stat_interval_ms: int = None,
         threshold: float = None,
     ):
+        # The language in which you want the results to be displayed. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
         self.accept_language = accept_language
+        # The application ID.
         self.app_id = app_id
+        # The application name.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # The number of additional requests allowed for burst requests. The effect is equivalent to the maximum number of tokens for the token bucket algorithm.
         self.burst = burst
+        # The flow control method. Valid values:
+        # 
+        # - 0: fast failure
+        # 
+        # - 2: wait in queue
         self.control_behavior = control_behavior
+        # The rule status. Valid values:
+        # 
+        # - true (enabled)
+        # 
+        # - false (disabled)
         self.enable = enable
+        # The timeout period. Unit: milliseconds. This parameter is required if the ControlBehavior parameter is set to 2.
         self.max_queueing_time_ms = max_queueing_time_ms
+        # The threshold type. Valid values:
+        # 
+        # - 1: number of requests
         self.metric_type = metric_type
+        # The namespace.
         self.namespace = namespace
+        # The parameter description item, which is a JSON string containing the following key-value pairs:
+        # 
+        # - parseStrategy: the parameter property (0: client IP address. 1: remote host. 2: header. 3: URL parameter)
+        # 
+        # - fieldName: the header name or URL parameter name. You must specify this key only if parseStrategy is set to 2 or 3
+        # 
+        # - matchStrategy: the method to match the property value. You must specify this key only if parseStrategy is set to 2 or 3 and the property value is matched. Valid values: 0 (exact match), 2 (regular expression match), and 3 (substring match)
+        # 
+        # - pattern: the match string. You must specify this key only if parseStrategy is set to 2 or 3 and the property value is matched
         self.param_item = param_item
+        # The region.
         self.region_id = region_id
+        # The resource mode. Valid values:
+        # 
+        # - 0: resource name mode
         self.resource_mode = resource_mode
+        # The rule ID.
+        # 
         # This parameter is required.
         self.rule_id = rule_id
+        # The length of the time window. Unit: milliseconds.
         self.stat_interval_ms = stat_interval_ms
+        # The threshold.
         self.threshold = threshold
 
     def validate(self):

@@ -23,20 +23,35 @@ class GetServiceMethodPageRequest(DaraModel):
         service_type: str = None,
         service_version: str = None,
     ):
+        # The language in which you want the results to be displayed. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
         self.accept_language = accept_language
+        # The application ID.
         self.app_id = app_id
+        # The application name.
         self.app_name = app_name
+        # The IP address of the service provider.
         self.ip = ip
+        # The full name of the Controller class to which the interface belongs.
         self.method_controller = method_controller
+        # The method name.
         self.name = name
+        # The Microservices Engine (MSE) namespace to which the application belongs.
         self.namespace = namespace
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request path that corresponds to the interface.
         self.path = path
+        # The region.
         self.region = region
+        # The group to which the service belongs.
         self.service_group = service_group
+        # The name of the service.
         self.service_name = service_name
+        # The engine type.
         self.service_type = service_type
+        # The service version.
         self.service_version = service_version
 
     def validate(self):

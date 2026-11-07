@@ -12,11 +12,18 @@ class DeleteWebFlowRulesRequest(DaraModel):
         ids: str = None,
         namespace: str = None,
     ):
+        # The language of the response. Valid values: zh (default): Chinese, en: English.
         self.accept_language = accept_language
+        # The name of the application.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # The IDs of the rules to delete.
+        # 
         # This parameter is required.
         self.ids = ids
+        # The name of the MSE namespace.
+        # 
         # This parameter is required.
         self.namespace = namespace
 

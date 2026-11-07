@@ -15,20 +15,19 @@ class ListGatewayRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The language of the response. Valid values:
-        # 
-        # *   zh: Chinese
-        # *   en: English
+        # The language of the returned information. Valid values:
+        # - zh: Chinese
+        # - en: English
         self.accept_language = accept_language
-        # Specifies whether to enable the sorting feature. This feature is not available.
+        # The sorting order. This parameter is currently not used.
         self.desc_sort = desc_sort
-        # The details of parameters.
+        # The filter parameters.
         self.filter_params = filter_params
         # The order information.
         self.order_item = order_item
-        # The number of the page to return.
+        # The page number.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of instances per page.
         self.page_size = page_size
 
     def validate(self):
@@ -94,19 +93,19 @@ class ListGatewayRequestFilterParams(DaraModel):
         resource_group_id: str = None,
         vpc: str = None,
     ):
-        # The type of the gateway.
+        # The gateway type.
         self.gateway_type = gateway_type
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The tag of the instance.
+        # The resource tag.
         self.mse_tag = mse_tag
-        # The name of the gateway.
+        # The gateway name.
         self.name = name
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The ID of the virtual private cloud (VPC).
+        # The VPC.
         self.vpc = vpc
 
     def validate(self):

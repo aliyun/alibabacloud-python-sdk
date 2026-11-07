@@ -23,30 +23,32 @@ class ListClustersRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
-        # The alias of the instance. Fuzzy match is supported.
+        # The name of the cluster. Fuzzy match is supported.
         self.cluster_alias_name = cluster_alias_name
+        # The key ID. If the cluster is a Nacos cluster, this parameter is used to query instances bound to the specified key ID.
         self.key_id = key_id
-        # The number of the page to return.
+        # The page number.
         # 
         # This parameter is required.
         self.page_num = page_num
-        # The number of entries to return on each page.
+        # The number of clusters to return on each page.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The ID of the region in which the instance resides. The region is supported by MSE.
+        # The region ID of the cluster. The region must be supported by Microservices Engine (MSE).
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The extended request parameters in the JSON format.
+        # The extended request parameters in JSON format.
         self.request_pars = request_pars
-        # The ID of the resource group. For more information about resource groups, see the topic "View basic information of a resource group."
+        # The ID of the resource group. For more information, see View basic information of a resource group.
         self.resource_group_id = resource_group_id
-        # The list of tags. A maximum number of 20 tags are supported.
+        # The list of tags. A maximum of 20 tags can be specified.
         self.tag = tag
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -137,9 +139,9 @@ class ListClustersRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):

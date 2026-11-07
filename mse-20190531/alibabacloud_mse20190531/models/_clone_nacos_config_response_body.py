@@ -19,24 +19,24 @@ class CloneNacosConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Response code.
+        # The response code.
         self.code = code
-        # Data overview.
+        # The data overview.
         self.data = data
-        # Dynamic error message, used to replace the **%s** in the **ErrMessage** error message.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid**, and **DynamicMessage** returns **DtsJobId**, it indicates that the input request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace the **%s** placeholder in the **ErrMessage** error message.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # Error code.
+        # The error code.
         self.error_code = error_code
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Response message.
+        # The response message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Request result, with the following values:
-        # - `true`: Request succeeded.
-        # - `false`: Request failed.
+        # The request result. Valid values:
+        # - `true`: The request was successful.
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -111,13 +111,13 @@ class CloneNacosConfigResponseBodyData(DaraModel):
         skip_data: List[main_models.CloneNacosConfigResponseBodyDataSkipData] = None,
         succ_count: int = None,
     ):
-        # Failed configuration information.
+        # The failed configuration information.
         self.fail_data = fail_data
-        # Number of skips.
+        # The number of skipped configurations.
         self.skip_count = skip_count
-        # Skipped configuration information.
+        # The skipped configuration information.
         self.skip_data = skip_data
-        # Number of successes.
+        # The number of successful configurations.
         self.succ_count = succ_count
 
     def validate(self):
@@ -181,9 +181,9 @@ class CloneNacosConfigResponseBodyDataSkipData(DaraModel):
         data_id: str = None,
         group: str = None,
     ):
-        # Data ID.
+        # The data ID.
         self.data_id = data_id
-        # Group ID.
+        # The group ID.
         self.group = group
 
     def validate(self):
@@ -219,11 +219,11 @@ class CloneNacosConfigResponseBodyDataFailData(DaraModel):
         group: str = None,
         reason: str = None,
     ):
-        # Data ID.
+        # The data ID.
         self.data_id = data_id
-        # Group ID.
+        # The group ID.
         self.group = group
-        # The reason for the current operation.
+        # The error reason.
         self.reason = reason
 
     def validate(self):

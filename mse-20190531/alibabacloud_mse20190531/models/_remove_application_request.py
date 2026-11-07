@@ -13,10 +13,17 @@ class RemoveApplicationRequest(DaraModel):
         namespace: str = None,
         region: str = None,
     ):
+        # The language of the returned results. Valid values:
+        # - zh: Chinese. This is the default value.
+        # - en: English.
         self.accept_language = accept_language
+        # The ID of the application to delete.
         self.app_id = app_id
+        # The name of the application to delete.
         self.app_name = app_name
+        # The microservice namespace.
         self.namespace = namespace
+        # The region.
         self.region = region
 
     def validate(self):

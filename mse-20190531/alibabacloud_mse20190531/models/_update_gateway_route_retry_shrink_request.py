@@ -15,16 +15,17 @@ class UpdateGatewayRouteRetryShrinkRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # 
+        # - en: English
         self.accept_language = accept_language
-        # The ID of the gateway.
+        # The gateway ID.
         self.gateway_id = gateway_id
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
         # The ID of the associated record.
         self.id = id
-        # The information about the retry policy.
+        # The retry policy.
         self.retry_jsonshrink = retry_jsonshrink
 
     def validate(self):

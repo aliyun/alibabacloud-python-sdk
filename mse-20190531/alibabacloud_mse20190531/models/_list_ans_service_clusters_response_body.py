@@ -29,8 +29,9 @@ class ListAnsServiceClustersResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -104,8 +105,9 @@ class ListAnsServiceClustersResponseBodyData(DaraModel):
         self.clusters = clusters
         # Indicates whether the service is a temporary service. Valid values:
         # 
-        # *   `true`: yes
-        # *   `false`: no
+        # - `true`: yes
+        # 
+        # - `false`: no
         self.ephemeral = ephemeral
         # The service group to which the service belongs.
         self.group_name = group_name
@@ -119,9 +121,11 @@ class ListAnsServiceClustersResponseBodyData(DaraModel):
         self.selector_type = selector_type
         # The source type of the service. Valid values:
         # 
-        # *   console: The service was registered in the console.
-        # *   sdk: The service was registered by using the SDK.
-        # *   governance: The service was registered on Microservices Governance.
+        # - console: The service was registered in the console.
+        # 
+        # - sdk: The service was registered by using the SDK.
+        # 
+        # - governance: The service was registered on Microservices Governance.
         self.source = source
 
     def validate(self):
@@ -310,9 +314,11 @@ class ListAnsServiceClustersResponseBodyDataAppDetail(DaraModel):
         self.check_timeout = check_timeout
         # The type of the health check. Valid values:
         # 
-        # *   connection: connection status check
-        # *   tcp: TCP connection check
-        # *   http: HTTP connection check
+        # - connection: connection status check
+        # 
+        # - tcp: TCP connection check
+        # 
+        # - http: HTTP connection check
         self.check_type = check_type
         # The maximum number of health check retries when the instance state changes from unhealthy to healthy.
         self.healthy_check_times = healthy_check_times

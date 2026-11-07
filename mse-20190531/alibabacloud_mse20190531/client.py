@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Dict
 
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_mse20190531 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
@@ -20,6 +21,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'mse'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('mse', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -1821,6 +1825,96 @@ class Client(OpenApiClient):
     ) -> main_models.AddServiceSourceResponse:
         runtime = RuntimeOptions()
         return await self.add_service_source_with_options_async(request, runtime)
+
+    def add_zoo_keeper_sasl_user_with_options(
+        self,
+        tmp_req: main_models.AddZooKeeperSaslUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddZooKeeperSaslUserResponse:
+        tmp_req.validate()
+        request = main_models.AddZooKeeperSaslUserShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.sasl_user):
+            request.sasl_user_shrink = Utils.array_to_string_with_specified_style(tmp_req.sasl_user, 'SaslUser', 'json')
+        query = {}
+        if not DaraCore.is_null(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.reload):
+            query['Reload'] = request.reload
+        if not DaraCore.is_null(request.sasl_user_shrink):
+            query['SaslUser'] = request.sasl_user_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddZooKeeperSaslUser',
+            version = '2019-05-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddZooKeeperSaslUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_zoo_keeper_sasl_user_with_options_async(
+        self,
+        tmp_req: main_models.AddZooKeeperSaslUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddZooKeeperSaslUserResponse:
+        tmp_req.validate()
+        request = main_models.AddZooKeeperSaslUserShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.sasl_user):
+            request.sasl_user_shrink = Utils.array_to_string_with_specified_style(tmp_req.sasl_user, 'SaslUser', 'json')
+        query = {}
+        if not DaraCore.is_null(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.reload):
+            query['Reload'] = request.reload
+        if not DaraCore.is_null(request.sasl_user_shrink):
+            query['SaslUser'] = request.sasl_user_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddZooKeeperSaslUser',
+            version = '2019-05-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddZooKeeperSaslUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_zoo_keeper_sasl_user(
+        self,
+        request: main_models.AddZooKeeperSaslUserRequest,
+    ) -> main_models.AddZooKeeperSaslUserResponse:
+        runtime = RuntimeOptions()
+        return self.add_zoo_keeper_sasl_user_with_options(request, runtime)
+
+    async def add_zoo_keeper_sasl_user_async(
+        self,
+        request: main_models.AddZooKeeperSaslUserRequest,
+    ) -> main_models.AddZooKeeperSaslUserResponse:
+        runtime = RuntimeOptions()
+        return await self.add_zoo_keeper_sasl_user_with_options_async(request, runtime)
 
     def apply_gateway_route_with_options(
         self,
@@ -15694,6 +15788,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_znode_children_with_options_async(request, runtime)
 
+    def list_zoo_keeper_sasl_user_with_options(
+        self,
+        request: main_models.ListZooKeeperSaslUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListZooKeeperSaslUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListZooKeeperSaslUser',
+            version = '2019-05-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListZooKeeperSaslUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_zoo_keeper_sasl_user_with_options_async(
+        self,
+        request: main_models.ListZooKeeperSaslUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListZooKeeperSaslUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListZooKeeperSaslUser',
+            version = '2019-05-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListZooKeeperSaslUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_zoo_keeper_sasl_user(
+        self,
+        request: main_models.ListZooKeeperSaslUserRequest,
+    ) -> main_models.ListZooKeeperSaslUserResponse:
+        runtime = RuntimeOptions()
+        return self.list_zoo_keeper_sasl_user_with_options(request, runtime)
+
+    async def list_zoo_keeper_sasl_user_async(
+        self,
+        request: main_models.ListZooKeeperSaslUserRequest,
+    ) -> main_models.ListZooKeeperSaslUserResponse:
+        runtime = RuntimeOptions()
+        return await self.list_zoo_keeper_sasl_user_with_options_async(request, runtime)
+
     def modify_governance_kubernetes_cluster_with_options(
         self,
         tmp_req: main_models.ModifyGovernanceKubernetesClusterRequest,
@@ -17928,6 +18096,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.remove_auth_policy_with_options_async(request, runtime)
 
+    def remove_zoo_keeper_sasl_user_with_options(
+        self,
+        tmp_req: main_models.RemoveZooKeeperSaslUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveZooKeeperSaslUserResponse:
+        tmp_req.validate()
+        request = main_models.RemoveZooKeeperSaslUserShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.user_names):
+            request.user_names_shrink = Utils.array_to_string_with_specified_style(tmp_req.user_names, 'UserNames', 'json')
+        query = {}
+        if not DaraCore.is_null(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.reload):
+            query['Reload'] = request.reload
+        if not DaraCore.is_null(request.user_names_shrink):
+            query['UserNames'] = request.user_names_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveZooKeeperSaslUser',
+            version = '2019-05-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveZooKeeperSaslUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_zoo_keeper_sasl_user_with_options_async(
+        self,
+        tmp_req: main_models.RemoveZooKeeperSaslUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveZooKeeperSaslUserResponse:
+        tmp_req.validate()
+        request = main_models.RemoveZooKeeperSaslUserShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.user_names):
+            request.user_names_shrink = Utils.array_to_string_with_specified_style(tmp_req.user_names, 'UserNames', 'json')
+        query = {}
+        if not DaraCore.is_null(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.reload):
+            query['Reload'] = request.reload
+        if not DaraCore.is_null(request.user_names_shrink):
+            query['UserNames'] = request.user_names_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveZooKeeperSaslUser',
+            version = '2019-05-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveZooKeeperSaslUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_zoo_keeper_sasl_user(
+        self,
+        request: main_models.RemoveZooKeeperSaslUserRequest,
+    ) -> main_models.RemoveZooKeeperSaslUserResponse:
+        runtime = RuntimeOptions()
+        return self.remove_zoo_keeper_sasl_user_with_options(request, runtime)
+
+    async def remove_zoo_keeper_sasl_user_async(
+        self,
+        request: main_models.RemoveZooKeeperSaslUserRequest,
+    ) -> main_models.RemoveZooKeeperSaslUserResponse:
+        runtime = RuntimeOptions()
+        return await self.remove_zoo_keeper_sasl_user_with_options_async(request, runtime)
+
     def restart_cluster_with_options(
         self,
         request: main_models.RestartClusterRequest,
@@ -20135,6 +20393,8 @@ class Client(OpenApiClient):
             query['CaCertIdentifier'] = request.ca_cert_identifier
         if not DaraCore.is_null(request.cert_identifier):
             query['CertIdentifier'] = request.cert_identifier
+        if not DaraCore.is_null(request.enable_waf):
+            query['EnableWaf'] = request.enable_waf
         if not DaraCore.is_null(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not DaraCore.is_null(request.http_2):
@@ -20189,6 +20449,8 @@ class Client(OpenApiClient):
             query['CaCertIdentifier'] = request.ca_cert_identifier
         if not DaraCore.is_null(request.cert_identifier):
             query['CertIdentifier'] = request.cert_identifier
+        if not DaraCore.is_null(request.enable_waf):
+            query['EnableWaf'] = request.enable_waf
         if not DaraCore.is_null(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not DaraCore.is_null(request.http_2):
@@ -23527,6 +23789,96 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateZnodeResponse:
         runtime = RuntimeOptions()
         return await self.update_znode_with_options_async(request, runtime)
+
+    def update_zoo_keeper_sasl_user_with_options(
+        self,
+        tmp_req: main_models.UpdateZooKeeperSaslUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateZooKeeperSaslUserResponse:
+        tmp_req.validate()
+        request = main_models.UpdateZooKeeperSaslUserShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.sasl_user):
+            request.sasl_user_shrink = Utils.array_to_string_with_specified_style(tmp_req.sasl_user, 'SaslUser', 'json')
+        query = {}
+        if not DaraCore.is_null(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.reload):
+            query['Reload'] = request.reload
+        if not DaraCore.is_null(request.sasl_user_shrink):
+            query['SaslUser'] = request.sasl_user_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateZooKeeperSaslUser',
+            version = '2019-05-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateZooKeeperSaslUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_zoo_keeper_sasl_user_with_options_async(
+        self,
+        tmp_req: main_models.UpdateZooKeeperSaslUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateZooKeeperSaslUserResponse:
+        tmp_req.validate()
+        request = main_models.UpdateZooKeeperSaslUserShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.sasl_user):
+            request.sasl_user_shrink = Utils.array_to_string_with_specified_style(tmp_req.sasl_user, 'SaslUser', 'json')
+        query = {}
+        if not DaraCore.is_null(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.reload):
+            query['Reload'] = request.reload
+        if not DaraCore.is_null(request.sasl_user_shrink):
+            query['SaslUser'] = request.sasl_user_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateZooKeeperSaslUser',
+            version = '2019-05-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateZooKeeperSaslUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_zoo_keeper_sasl_user(
+        self,
+        request: main_models.UpdateZooKeeperSaslUserRequest,
+    ) -> main_models.UpdateZooKeeperSaslUserResponse:
+        runtime = RuntimeOptions()
+        return self.update_zoo_keeper_sasl_user_with_options(request, runtime)
+
+    async def update_zoo_keeper_sasl_user_async(
+        self,
+        request: main_models.UpdateZooKeeperSaslUserRequest,
+    ) -> main_models.UpdateZooKeeperSaslUserResponse:
+        runtime = RuntimeOptions()
+        return await self.update_zoo_keeper_sasl_user_with_options_async(request, runtime)
 
     def upgrade_cluster_with_options(
         self,

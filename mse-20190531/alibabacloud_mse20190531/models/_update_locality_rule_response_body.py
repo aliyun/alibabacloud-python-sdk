@@ -14,11 +14,19 @@ class UpdateLocalityRuleResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The response code.
         self.code = code
+        # The returned result.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):

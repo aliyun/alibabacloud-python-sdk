@@ -19,31 +19,39 @@ class ImportServicesShrinkRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
+        # The Function Compute service alias. This parameter is required when the service source is Function Compute.
         self.fc_alias = fc_alias
+        # The Function Compute service name. This parameter is required when the service source is Function Compute.
         self.fc_service_name = fc_service_name
+        # The Function Compute service version. This parameter is required when the service source is Function Compute.
         self.fc_version = fc_version
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
-        # The information about services.
+        # The service list.
         self.service_list_shrink = service_list_shrink
+        # The service source ID. This parameter is used when you add a service from a specified source.
         self.source_id = source_id
         # The service source. Valid values:
         # 
-        # *   MSE: MSE Nacos instance
-        # *   K8s: ACK cluster
-        # *   VIP: fixed address
-        # *   DNS: DNS domain
+        # - MSE: Microservices Engine (MSE Nacos).
+        # - K8s: Container Service for Kubernetes (ACK).
+        # - VIP: Fixed address.
+        # - DNS: DNS domain name.
         self.source_type = source_type
-        # The Transport Layer Security (TLS) settings. Valid values:
+        # The TLS settings.
         # 
-        # *   mode: TLS mode
-        # *   certId: certificate ID
-        # *   caCertId: CA certificate ID
-        # *   caCertContent: CA certificate public key
-        # *   sni: service name identification
+        # - TLS pattern: mode
+        # 
+        # - Certificate ID: certId
+        # 
+        # - CA certificate ID: caCertId
+        # 
+        # - CA certificate public key: caCertContent
+        # 
+        # - Service name identity: sni
         self.tls_setting = tls_setting
 
     def validate(self):

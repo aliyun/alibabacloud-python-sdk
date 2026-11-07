@@ -31,48 +31,72 @@ class AddGatewayAuthShrinkRequest(DaraModel):
         token_position: str = None,
         type: str = None,
     ):
+        # The language of the returned result. Valid values:
+        # - zh: Chinese. This is the default value.
+        # - en: English.
         self.accept_language = accept_language
+        # The YAML configuration for the complex mode.
         self.auth_resource_config = auth_resource_config
-        # The information about the resource to be authorized.
+        # The list of authorization rules for authentication. Multiple rule conditions use the OR operator, and multiple matching items within a rule condition use the AND operator.
         self.auth_resource_list_shrink = auth_resource_list_shrink
+        # The authorization resource mode. Valid values:
+        # - 0: simple mode.
+        # - 1: complex mode.
         self.auth_resource_mode = auth_resource_mode
-        # The application ID registered with the OIDC authentication service.
+        # The application ID registered in the service. This parameter is used for OIDC and IDaaS.
         self.client_id = client_id
-        # The application secret registered with the OIDC authentication service.
+        # The application secret registered in the service. This parameter is used for OIDC and IDaaS.
         self.client_secret = client_secret
-        # The domain name of the cookie. After the authentication is passed, the cookie is sent to the specified domain name to maintain the logon status. For example, if you set `Cookie-domain` to a.example.com, the cookie is sent to the domain name `a.example.com`. If you set `Cookie-domain` to .example.com, the cookie is sent to all subdomains of `example.com`.
+        # The domain name of the cookie. After authentication, the cookie is sent to the specified domain name to maintain the logon state.
+        # 
+        # For example, if you set the value to `Cookie-domain=a.example.com`, the cookie is sent to the `a.example.com` domain name. If you set the value to `Cookie-domain=.example.com`, the cookie is sent to all subdomains of `example.com`.
         self.cookie_domain = cookie_domain
-        # The information about the custom authentication service.
+        # The custom authentication information.
         self.external_auth_zjsonshrink = external_auth_zjsonshrink
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
-        # Specifies whether to enable the whitelist feature.
+        # The authorization blacklist and whitelist mode. Valid values:
+        # - true: whitelist mode. Hosts and paths in the list can be accessed without verification, while all others require verification.
+        # - false: blacklist mode. Hosts and paths in the list require verification, while all others can be accessed directly.
         self.is_white = is_white
-        # The iss value of JWT claims, which indicates the issuer. You must make sure that the value of this parameter is the same as the iss value in the payload of JWT claims.
+        # Used when the authentication type is JWT or OIDC:
+        # - JWT: specifies the `iss` (issuer) claim of the JWT.
+        # - OIDC: specifies the `iss` (issuer) claim of the OIDC token.
         self.issuer = issuer
-        # The JWT public key. The JSON format is supported.
+        # The JWT public key. JSON format is supported.
         self.jwks = jwks
-        # The URL that is used to log on to the IDaaS instance.
+        # The URL of the user logon page for the IDaaS instance. This parameter is used for IDaaS.
         self.login_url = login_url
-        # The name.
+        # The name of the authentication.
         self.name = name
-        # The redirect URL.
+        # The redirect URL after successful authorization. This parameter is used for OIDC and IDaaS. The value must be the same as the redirect URL configured in OIDC or IDaaS.
         self.redirect_url = redirect_url
-        # The OIDC scope.
+        # The OIDC authorization scopes. This parameter is used for OIDC.
         self.scopes_list_shrink = scopes_list_shrink
-        # The status.
+        # An unavailable parameter. You do not need to specify this parameter. By default, authentication is disabled after it is created.
         self.status = status
-        # The sub value of JWT claims, which indicates the subject. You must make sure that the value of this parameter is the same as the sub value in the payload of JWT claims. If you do not set this parameter or leave it empty, the default value, which is the value of the Issuer parameter, is used.
+        # Used when the authentication type is JWT. Specifies the `sub` (subject) claim of the JWT. Make sure that the value of the `sub` field in the JWT payload is the same as the value configured here. If this parameter is not specified or is empty, the default value is the same as the value of the Issuer parameter.
         self.sub = sub
-        # The name of the parameter that is required to verify a token. By default, a token is prefixed with Bearer and stored in the authorization header. Example: `Authorization: Bearer token`.
+        # The location where the JWT token is stored.
+        # 
+        # By default, the token to be verified is placed in the Authorization header with the Bearer prefix, such as `Authorization: Bearer token`.
         self.token_name = token_name
-        # The name prefix of the parameter that is required to verify a token. By default, a token is prefixed with Bearer and stored in the authorization header. Example: `Authorization: Bearer token`
+        # The prefix of the JWT token.
+        # 
+        # By default, the token to be verified is placed in the Authorization header with the Bearer prefix, such as `Authorization: Bearer token`.
         self.token_name_prefix = token_name_prefix
-        # Specifies whether to enable pass-through.
+        # Specifies whether to pass through the token.
         self.token_pass = token_pass
-        # The position of the parameter that is required to verify a token. By default, a token is prefixed with Bearer and stored in the authorization header. Example: `Authorization: Bearer token`.
+        # The position of the JWT token. Valid values:
+        # - HEADER: transmitted in the HTTP header.
+        # 
+        # By default, the token to be verified is placed in the Authorization header with the Bearer prefix, such as Authorization: Bearer token.
         self.token_position = token_position
-        # The authentication type. JSON Web Token (JWT) authentication, OpenID Connect (OIDC) authentication, Identity as a Service (IDaaS) authentication, or custom authentication are supported.
+        # The authentication type. Valid values:
+        # - JWT
+        # - OIDC
+        # - IDaaS
+        # - ExternalAuthZ (custom authentication service)
         self.type = type
 
     def validate(self):

@@ -11,8 +11,11 @@ class InitializeServiceLinkRoleRequest(DaraModel):
         role_name: str = None,
         token: str = None,
     ):
+        # The language in which the returned results are displayed. Valid values: zh (default): Chinese. en: English.
         self.accept_language = accept_language
+        # The name of the server-linked role. Set this parameter to AliyunServiceRoleForMSE
         self.role_name = role_name
+        # This parameter is reserved and not in use.
         self.token = token
 
     def validate(self):

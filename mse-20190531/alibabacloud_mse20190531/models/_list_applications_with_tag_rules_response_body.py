@@ -16,21 +16,21 @@ class ListApplicationsWithTagRulesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response parameters.
+        # The data overview.
         self.data = data
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
         # The returned message.
         # 
-        # *   If the request is successful, a success message is returned.
-        # *   If the request fails, an error message is returned.
+        # - If the request is successful, a success message is returned.
+        # - If the request fails, the cause of the failure is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # - `true`: The request is successful.
+        # - `false`: The request fails.
         self.success = success
 
     def validate(self):
@@ -87,13 +87,13 @@ class ListApplicationsWithTagRulesResponseBodyData(DaraModel):
         result: List[main_models.ListApplicationsWithTagRulesResponseBodyDataResult] = None,
         total_size: int = None,
     ):
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The page size.
         self.page_size = page_size
-        # The returned data.
+        # The data structure.
         self.result = result
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_size = total_size
 
     def validate(self):
@@ -151,18 +151,19 @@ class ListApplicationsWithTagRulesResponseBodyDataResult(DaraModel):
         route_rules: List[main_models.ListApplicationsWithTagRulesResponseBodyDataResultRouteRules] = None,
         route_status: int = None,
     ):
-        # The application ID.
+        # The ID of the application.
         self.app_id = app_id
         # The application name.
         self.app_name = app_name
         # The MSE namespace to which the application belongs.
         self.namespace = namespace
-        # The queried rules.
+        # The list of rules.
         self.route_rules = route_rules
-        # The route state. Valid values:
+        # The routing status. Valid values:
         # 
-        # *   0: disabled
-        # *   1: enabled
+        # - 0: Disabled.
+        # 
+        # - 1: Enabled.
         self.route_status = route_status
 
     def validate(self):
@@ -229,10 +230,10 @@ class ListApplicationsWithTagRulesResponseBodyDataResultRouteRules(DaraModel):
         status: int = None,
         tag: str = None,
     ):
-        # Indicates whether the alert rule is enabled. Valid values:
+        # The enabling status of the alert rule. Valid values:
         # 
-        # *   `true`
-        # *   `false`
+        # - `true`: Enabled.
+        # - `false`: Disabled.
         self.enable = enable
         # The rule ID.
         self.id = id
@@ -240,9 +241,9 @@ class ListApplicationsWithTagRulesResponseBodyDataResultRouteRules(DaraModel):
         self.instance_num = instance_num
         # The rule name.
         self.name = name
-        # The rate.
+        # The proportion.
         self.rate = rate
-        # The details of the routing rule.
+        # The applicable routes of the rule.
         self.rules = rules
         # The status.
         self.status = status
@@ -319,7 +320,9 @@ class ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRules(DaraMode
         dubbo: List[main_models.ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubbo] = None,
         springcloud: List[main_models.ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloud] = None,
     ):
+        # The Dubbo rule.
         self.dubbo = dubbo
+        # The Spring Cloud rule.
         self.springcloud = springcloud
 
     def validate(self):
@@ -378,14 +381,23 @@ class ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringclo
         tags: List[str] = None,
         trigger_policy: str = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The logical relationship among the following items. Valid values: AND and OR.
         self.condition = condition
+        # Specifies whether the feature is enabled.
         self.enable = enable
+        # The path.
         self.path = path
+        # The list of paths.
         self.paths = paths
+        # The priority.
         self.priority = priority
+        # The list of matching conditions for REST requests.
         self.rest_items = rest_items
+        # The list of tags.
         self.tags = tags
+        # The policy type.
         self.trigger_policy = trigger_policy
 
     def validate(self):
@@ -478,15 +490,25 @@ class ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringclo
         type: str = None,
         value: str = None,
     ):
+        # The comparison operator. Valid values: >=, <=, >, <, and ==.
         self.cond = cond
+        # The value to be compared for operators such as rawvalue.
         self.datum = datum
+        # The field required for the mod operator, which is the divisor.
         self.divisor = divisor
+        # The name.
         self.name = name
+        # The field required for the list operator.
         self.name_list = name_list
+        # The operator. A value of rawvalue indicates direct comparison, mode indicates modulo operation, and list indicates a whitelist.
         self.operator = operator
+        # The proportion rule, where 20% of traffic is routed to the node corresponding to this tag.
         self.rate = rate
+        # The field required for the percentage operation, which is the percentage value.
         self.remainder = remainder
+        # The type.
         self.type = type
+        # The value.
         self.value = value
 
     def validate(self):
@@ -577,15 +599,25 @@ class ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubbo(Dar
         trigger_policy: str = None,
         version: str = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The list of parameter arguments.
         self.argument_items = argument_items
+        # The logical relationship among the following items. Valid values: AND and OR.
         self.condition = condition
+        # The Dubbo service group.
         self.group = group
+        # The Dubbo service method name.
         self.method_name = method_name
+        # The list of parameter types.
         self.param_types = param_types
+        # The service name (interface).
         self.service_name = service_name
+        # The list of tags.
         self.tags = tags
+        # The policy type.
         self.trigger_policy = trigger_policy
+        # The Dubbo service version.
         self.version = version
 
     def validate(self):
@@ -684,15 +716,25 @@ class ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubboArgu
         remainder: int = None,
         value: str = None,
     ):
+        # The comparison operator. Valid values: >=, <=, >, <, and ==.
         self.cond = cond
+        # The value to be compared for operators such as rawvalue.
         self.datum = datum
+        # The field required for the mod operator, which is the divisor.
         self.divisor = divisor
+        # The expression. For more information, see the descriptions of other fields.
         self.expr = expr
+        # The parameter position, starting from 0.
         self.index = index
+        # The list of names.
         self.name_list = name_list
+        # The operator. A value of rawvalue indicates direct comparison, mode indicates modulo operation, and list indicates a whitelist.
         self.operator = operator
+        # The proportion rule, where 20% of traffic is routed to the node corresponding to this tag.
         self.rate = rate
+        # The field required for the percentage operation, which is the percentage value.
         self.remainder = remainder
+        # The value used for comparison. The value obtained from the expression is compared with this value. If the operator is a list whitelist, separate multiple values with commas (,), such as 1,2,3.
         self.value = value
 
     def validate(self):

@@ -17,16 +17,27 @@ class UpdateLocalityRuleRequest(DaraModel):
         source: str = None,
         threshold: float = None,
     ):
+        # The language of the response. Valid values: zh (default): Chinese. en: English.
         self.accept_language = accept_language
+        # The ID of the application.
         self.app_id = app_id
+        # The name of the application.
         self.app_name = app_name
+        # Specifies whether to enable zone affinity.
+        # 
         # This parameter is required.
         self.enable = enable
+        # The name of the MSE namespace.
         self.namespace = namespace
+        # The region.
+        # 
         # This parameter is required.
         self.region = region
+        # The reserved parameter. This parameter is not used.
         self.rules = rules
+        # The source of the rule.
         self.source = source
+        # The threshold for zone affinity to take effect. The zone affinity routing feature is enabled for a zone only when the proportion of instances of the current application deployed in the zone exceeds this threshold. That is, when a consumer sends a request to the application, the request is preferentially routed to an instance in the same zone as the consumer.
         self.threshold = threshold
 
     def validate(self):

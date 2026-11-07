@@ -14,20 +14,20 @@ class ListClusterTypesRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
         # The network type. Valid values:
         # 
-        # *   slb
-        # *   eni
+        # - slb
+        # - eni
         self.connect_type = connect_type
-        # The edition of the MSE instance that you want to purchase.
+        # The Microservices Engine (MSE) cluster edition to be activated. Valid values:
         # 
-        # *   mse_pro: Professional Edition
-        # *   mse_dev: Developer Edition
+        # - mse_pro: Professional Edition.
+        # - mse_dev: Developer Edition.
         self.mse_version = mse_version
-        # The ID of the region in which the instance resides. The region is supported by Microservices Engine (MSE).
+        # The region ID of the cluster. The region must be supported by Microservices Engine (MSE).
         self.region_id = region_id
 
     def validate(self):

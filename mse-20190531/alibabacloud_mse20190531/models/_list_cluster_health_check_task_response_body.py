@@ -20,31 +20,33 @@ class ListClusterHealthCheckTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code. A value of 200 is returned if the request was successful.
+        # Code is only used to synchronize with success
         self.code = code
-        # The details of the data.
+        # The data returned.
         self.data = data
         # The dynamic part in the error message.
         self.dynamic_code = dynamic_code
-        # The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\* variable in the **ErrMessage** parameter.
+        # The dynamic error message used to replace \\*\\*%s\\*\\* in the **ErrMessage** parameter.
         # 
-        # > If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid**, and **DynamicMessage** returns **DtsJobId**, it indicates that the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
-        # The error code returned if the request failed. Take note of the following rules:
+        # The error code. Take note of the following items:
         # 
-        # *   The **ErrorCode** parameter is not returned if the request is successful.
-        # *   The **ErrorCode** parameter is returned if the request fails. For more information, see the **Error codes** section in this topic.
+        # - Successful request: The **ErrorCode** field is not returned.
+        # 
+        # - Failed request: The **ErrorCode** field is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message returned.
+        # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -125,13 +127,13 @@ class ListClusterHealthCheckTaskResponseBodyData(DaraModel):
         result: List[main_models.ListClusterHealthCheckTaskResponseBodyDataResult] = None,
         total_size: int = None,
     ):
-        # The page number of the returned page.
+        # The page number of the list.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The list of health check tasks.
         self.result = result
-        # The total number of returned entries.
+        # The total number of queried rules.
         self.total_size = total_size
 
     def validate(self):
@@ -206,19 +208,19 @@ class ListClusterHealthCheckTaskResponseBodyDataResult(DaraModel):
         self.app_version = app_version
         # The billing method.
         self.charge_type = charge_type
-        # The type of the cluster.
+        # The type of the instance.
         self.cluster_type = cluster_type
         # The time when the task was created.
         self.create_time = create_time
         # The ID.
         self.id = id
-        # A redundant parameter.
+        # Redundant field.
         self.image_version = image_version
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The ID of the user to which the instance belongs.
+        # The ID of the user to which the cluster belongs.
         self.primary_user = primary_user
-        # The number of nodes in the instance.
+        # The number of nodes in the cluster.
         self.replica = replica
         # The list of risk items.
         self.risk_list = risk_list
@@ -226,15 +228,15 @@ class ListClusterHealthCheckTaskResponseBodyDataResult(DaraModel):
         self.score = score
         # The specifications.
         self.spec = spec
-        # The status of the task.
+        # The job states.
         self.status = status
-        # The total number of check items.
+        # The total number of inspection items.
         self.total_item = total_item
         # The total number of risk items.
         self.total_risk = total_risk
-        # A redundant parameter.
+        # Redundant field.
         self.type = type
-        # The last update time.
+        # The time when the instance was last updated.
         self.update_time = update_time
         # The version number.
         self.version_code = version_code
@@ -394,44 +396,51 @@ class ListClusterHealthCheckTaskResponseBodyDataResultRiskList(DaraModel):
     ):
         # The description.
         self.description = description
+        # The English description of the risk.
         self.description_en = description_en
         # The ID.
         self.id = id
-        # A redundant parameter.
+        # Redundant field.
         self.module = module
-        # Indicates whether the risk item notification feature is disabled.
+        # Specifies whether to disable the notification feature if the risk item occurs.
         # 
-        # *   true: disabled
-        # *   false: enabled
+        # - true: Disables risk item notifications
+        # 
+        # - false: Enables risk item notifications
         self.mute = mute
-        # A redundant parameter.
+        # Redundant field.
         self.notice_feature = notice_feature
         # The ID of the user to which the cluster belongs.
         self.primary_user = primary_user
         # The risk code.
         self.risk_code = risk_code
-        # The severity of the risk. Valid values:
+        # The risk level. Valid values:
         # 
-        # *   HIGH: high risk
-        # *   MID: medium risk
-        # *   LOW: low risk
+        # - HIGH: High risk
+        # 
+        # - MID: Medium risk
+        # 
+        # - LOW: Low risk
         self.risk_level = risk_level
-        # The name of the risk.
+        # The risk name.
         self.risk_name = risk_name
+        # The English name of the risk.
         self.risk_name_en = risk_name_en
         # The type of the risk.
         self.risk_type = risk_type
-        # The situation.
+        # The current situation.
         self.situation = situation
+        # The English description of the current situation.
         self.situation_en = situation_en
         # The suggestion.
         self.suggestion = suggestion
+        # The English description of the suggestion.
         self.suggestion_en = suggestion_en
         # The ID of the associated parent task.
         self.task_id = task_id
-        # A redundant parameter.
+        # Redundant field.
         self.type = type
-        # A redundant parameter.
+        # Redundant field.
         self.values = values
 
     def validate(self):

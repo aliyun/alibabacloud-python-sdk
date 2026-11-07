@@ -19,34 +19,32 @@ class AddMigrationTaskRequest(DaraModel):
         target_cluster_url: str = None,
         target_instance_id: str = None,
     ):
-        # Language type of the returned information:
-        # 
-        # - zh: Chinese
-        # - en: English
+        # The language of the response. Valid values:
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
-        # Cluster type.
-        # 
+        # The cluster type. Valid values:
         # - Nacos-Ans
         # - ZooKeeper
         # - Eureka
         self.cluster_type = cluster_type
-        # Source instance node address.
+        # The address of the source instance node.
         self.origin_instance_address = origin_instance_address
-        # Source instance name.
+        # The name of the source instance.
         self.origin_instance_name = origin_instance_name
-        # Namespace list, required when the source cluster is Nacos.
+        # The list of namespaces. This parameter is optional when the source cluster is Nacos.
         self.origin_instance_namespace = origin_instance_namespace
-        # Description.
+        # The description.
         self.project_desc = project_desc
-        # Extended request parameters, in JSON format.
+        # The extended request parameters in JSON format.
         self.request_pars = request_pars
-        # SyncType
+        # The synchronization type. Valid values: configuration synchronization, service synchronization, or full synchronization.
         self.sync_type = sync_type
-        # Target instance name.
+        # The name of the target instance.
         self.target_cluster_name = target_cluster_name
-        # Target instance URL.
+        # The URL of the target instance.
         self.target_cluster_url = target_cluster_url
-        # Target instance ID.
+        # The instance ID of the target instance.
         self.target_instance_id = target_instance_id
 
     def validate(self):

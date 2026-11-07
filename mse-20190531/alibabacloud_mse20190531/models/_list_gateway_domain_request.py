@@ -12,15 +12,16 @@ class ListGatewayDomainRequest(DaraModel):
         gateway_unique_id: str = None,
         type: str = None,
     ):
-        # The language of the response. Valid values:
+        # The language of the returned information. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # - en: English
         self.accept_language = accept_language
+        # The domain name used for fuzzy search.
         self.domain_name = domain_name
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
-        # The type of the domain name.
+        # The domain name type.
         self.type = type
 
     def validate(self):

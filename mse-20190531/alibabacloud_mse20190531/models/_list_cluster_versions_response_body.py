@@ -19,24 +19,23 @@ class ListClusterVersionsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
+        # The response code.
         self.code = code
-        # The details of the data.
+        # The data overview.
         self.data = data
-        # The dynamic part in the error message.
+        # The dynamic error message related to the request.
         self.dynamic_message = dynamic_message
-        # The error code returned if the request failed.
+        # The error code.
         self.error_code = error_code
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message returned.
+        # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - `true`: The request is successful.
+        # - `false`: The request fails.
         self.success = success
 
     def validate(self):
@@ -116,11 +115,11 @@ class ListClusterVersionsResponseBodyData(DaraModel):
         code: str = None,
         show_name: str = None,
     ):
-        # The type of the instance.
+        # The cluster type.
         self.cluster_type = cluster_type
-        # The code of the instance type.
+        # The cluster type code.
         self.code = code
-        # The version of the instance.
+        # The cluster version.
         self.show_name = show_name
 
     def validate(self):

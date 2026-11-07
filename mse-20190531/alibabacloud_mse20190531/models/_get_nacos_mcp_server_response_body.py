@@ -13,7 +13,9 @@ class GetNacosMcpServerResponseBody(DaraModel):
         data: main_models.GetNacosMcpServerResponseBodyData = None,
         request_id: str = None,
     ):
+        # The response data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -62,20 +64,37 @@ class GetNacosMcpServerResponseBodyData(DaraModel):
         version_detail: main_models.GetNacosMcpServerResponseBodyDataVersionDetail = None,
         yaml_config: str = None,
     ):
+        # All version information of the current MCP server.
         self.all_versions = all_versions
+        # The backend service endpoints.
         self.backend_endpoints = backend_endpoints
+        # The capabilities of the current MCP server.
         self.capabilities = capabilities
+        # The description.
         self.description = description
+        # Indicates whether the gateway is enabled.
+        # 
+        # - true: Enabled.
+        # 
+        # - false: Disabled.
         self.enabled = enabled
+        # The exposed protocol type.
         self.front_protocol = front_protocol
-        # ID。
+        # The ID.
         self.id = id
+        # The local MCP server configuration.
         self.local_server_config = local_server_config
+        # The name.
         self.name = name
+        # The protocol.
         self.protocol = protocol
+        # The remote server configuration.
         self.remote_server_config = remote_server_config
+        # The tool specification.
         self.tool_spec = tool_spec
+        # The version details.
         self.version_detail = version_detail
+        # The YAML configuration of the AI gateway.
         self.yaml_config = yaml_config
 
     def validate(self):
@@ -209,8 +228,11 @@ class GetNacosMcpServerResponseBodyDataVersionDetail(DaraModel):
         release_date: str = None,
         version: str = None,
     ):
+        # Indicates whether it is the latest version.
         self.is_latest = is_latest
+        # The release date.
         self.release_date = release_date
+        # The version number.
         self.version = version
 
     def validate(self):
@@ -254,10 +276,15 @@ class GetNacosMcpServerResponseBodyDataToolSpec(DaraModel):
         tools: List[main_models.GetNacosMcpServerResponseBodyDataToolSpecTools] = None,
         tools_meta: Dict[str, main_models.DataToolSpecToolsMetaValue] = None,
     ):
+        # The list of security authentication schemes in the MCP tool definition.
         self.security_schemes = security_schemes
+        # The storage format type of the MCP tool definition.
         self.specification_type = specification_type
+        # The decryption result status of the MCP tool definition.
         self.tool_decrypt_status = tool_decrypt_status
+        # The list of tools.
         self.tools = tools
+        # The tool metadata map.
         self.tools_meta = tools_meta
 
     def validate(self):
@@ -328,8 +355,11 @@ class GetNacosMcpServerResponseBodyDataToolSpecTools(DaraModel):
         input_schema: Dict[str, Any] = None,
         name: str = None,
     ):
+        # The description.
         self.description = description
+        # The input schema of the tool.
         self.input_schema = input_schema
+        # The tool name.
         self.name = name
 
     def validate(self):
@@ -370,7 +400,9 @@ class GetNacosMcpServerResponseBodyDataRemoteServerConfig(DaraModel):
         export_path: str = None,
         service_ref: main_models.GetNacosMcpServerResponseBodyDataRemoteServerConfigServiceRef = None,
     ):
+        # The exposed path.
         self.export_path = export_path
+        # The service reference.
         self.service_ref = service_ref
 
     def validate(self):
@@ -408,8 +440,11 @@ class GetNacosMcpServerResponseBodyDataRemoteServerConfigServiceRef(DaraModel):
         namespace_id: str = None,
         service_name: str = None,
     ):
+        # The group to which the service belongs.
         self.group_name = group_name
+        # The namespace ID.
         self.namespace_id = namespace_id
+        # The service name.
         self.service_name = service_name
 
     def validate(self):
@@ -451,8 +486,11 @@ class GetNacosMcpServerResponseBodyDataBackendEndpoints(DaraModel):
         path: str = None,
         port: int = None,
     ):
+        # The address.
         self.address = address
+        # The path.
         self.path = path
+        # The port number.
         self.port = port
 
     def validate(self):
@@ -494,8 +532,11 @@ class GetNacosMcpServerResponseBodyDataAllVersions(DaraModel):
         release_date: str = None,
         version: str = None,
     ):
+        # Indicates whether it is the latest version.
         self.is_latest = is_latest
+        # The release date.
         self.release_date = release_date
+        # The version number.
         self.version = version
 
     def validate(self):

@@ -13,7 +13,9 @@ class ListNamespacesResponseBody(DaraModel):
         data: main_models.ListNamespacesResponseBodyData = None,
         request_id: str = None,
     ):
+        # Return results.
         self.data = data
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -53,10 +55,15 @@ class ListNamespacesResponseBodyData(DaraModel):
         results: List[main_models.ListNamespacesResponseBodyDataResults] = None,
         total_size: int = None,
     ):
+        # Result page number.
         self.page_number = page_number
+        # Page size for the query.
         self.page_size = page_size
+        # Return results.
         self.result = result
+        # Result set.
         self.results = results
+        # Total number of query results.
         self.total_size = total_size
 
     def validate(self):
@@ -133,14 +140,23 @@ class ListNamespacesResponseBodyDataResults(DaraModel):
         user_id: str = None,
         version: int = None,
     ):
+        # Number of applications.
         self.app_count = app_count
+        # Creation time.
         self.create_time = create_time
+        # Namespace description.
         self.describe = describe
+        # Number of online nodes.
         self.instance_count = instance_count
+        # Namespace.
         self.namespace = namespace
+        # Region.
         self.region = region
+        # Update time.
         self.update_time = update_time
+        # User ID.
         self.user_id = user_id
+        # Version. Basic Edition 0, Professional Edition 1, Enterprise Edition 2.
         self.version = version
 
     def validate(self):
@@ -225,15 +241,25 @@ class ListNamespacesResponseBodyDataResult(DaraModel):
         user_id: str = None,
         version: int = None,
     ):
+        # Number of applications.
         self.app_count = app_count
+        # Creation time.
         self.create_time = create_time
+        # Namespace description.
         self.describe = describe
+        # Number of online nodes.
         self.instance_count = instance_count
+        # Namespace.
         self.namespace = namespace
+        # Region.
         self.region = region
+        # Alibaba Cloud tags.
         self.tags = tags
+        # Update time.
         self.update_time = update_time
+        # User ID.
         self.user_id = user_id
+        # Version. Basic Edition 0, Professional Edition 1, Enterprise Edition 2.
         self.version = version
 
     def validate(self):

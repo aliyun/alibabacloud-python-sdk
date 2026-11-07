@@ -13,7 +13,9 @@ class ListGatewayIsolationRuleResponseBody(DaraModel):
         data: main_models.ListGatewayIsolationRuleResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -53,10 +55,15 @@ class ListGatewayIsolationRuleResponseBodyData(DaraModel):
         results: List[main_models.ListGatewayIsolationRuleResponseBodyDataResults] = None,
         total_size: int = None,
     ):
+        # The page number of the instance list.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The returned results.
         self.result = result
+        # The returned result collection.
         self.results = results
+        # The total number of queried instances.
         self.total_size = total_size
 
     def validate(self):
@@ -139,20 +146,44 @@ class ListGatewayIsolationRuleResponseBodyDataResults(DaraModel):
         route_id: int = None,
         route_name: str = None,
     ):
+        # The web fallback behavior type. Valid values:
+        # - 0: return specified content.
+        # - 1: redirect to a specified page.
         self.behavior_type = behavior_type
+        # The encoding type. Valid values:
+        # - 0: plain text.
+        # - 1: JSON.
         self.body_encoding = body_encoding
+        # Specifies whether the rule is enabled. Valid values:
+        # - 0: disabled.
+        # - 1: enabled.
         self.enable = enable
+        # The ID of the gateway.
         self.gateway_id = gateway_id
+        # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
+        # The ID of the concurrency rule.
         self.id = id
+        # The IDs of the filter rules.
         self.id_list = id_list
+        # The threshold conversion type. Valid values:
+        # - 0: standalone.
+        # - 1: cluster.
+        # - 2: standalone to cluster.
         self.limit_mode = limit_mode
+        # The overall concurrency threshold.
         self.max_concurrency = max_concurrency
+        # The custom headers, specified as key-value pairs.
         self.response_additional_headers = response_additional_headers
+        # The HTTP response body.
         self.response_content_body = response_content_body
+        # The redirect URL.
         self.response_redirect_url = response_redirect_url
+        # The HTTP status code.
         self.response_status_code = response_status_code
+        # The ID of the route.
         self.route_id = route_id
+        # The name of the route.
         self.route_name = route_name
 
     def validate(self):
@@ -278,20 +309,44 @@ class ListGatewayIsolationRuleResponseBodyDataResult(DaraModel):
         route_id: int = None,
         route_name: str = None,
     ):
+        # The web fallback behavior type. Valid values:
+        # - 0: return specified content.
+        # - 1: redirect to a specified page.
         self.behavior_type = behavior_type
+        # The encoding type. Valid values:
+        # - 0: plain text.
+        # - 1: JSON.
         self.body_encoding = body_encoding
+        # Specifies whether the rule is enabled. Valid values:
+        # - 0: disabled.
+        # - 1: enabled.
         self.enable = enable
+        # The ID of the gateway.
         self.gateway_id = gateway_id
+        # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
+        # The ID of the concurrency rule.
         self.id = id
+        # The IDs of the filter rules.
         self.id_list = id_list
+        # The threshold conversion mode. Valid values:
+        # - 0: standalone.
+        # - 1: cluster.
+        # - 2: cluster to standalone.
         self.limit_mode = limit_mode
+        # The overall concurrency threshold.
         self.max_concurrency = max_concurrency
+        # The custom headers, specified as key-value pairs.
         self.response_additional_headers = response_additional_headers
+        # The HTTP response body.
         self.response_content_body = response_content_body
+        # The redirect URL.
         self.response_redirect_url = response_redirect_url
+        # The HTTP status code.
         self.response_status_code = response_status_code
+        # The ID of the route.
         self.route_id = route_id
+        # The name of the route.
         self.route_name = route_name
 
     def validate(self):

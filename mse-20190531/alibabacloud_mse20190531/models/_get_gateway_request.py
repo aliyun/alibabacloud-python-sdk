@@ -12,8 +12,8 @@ class GetGatewayRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id

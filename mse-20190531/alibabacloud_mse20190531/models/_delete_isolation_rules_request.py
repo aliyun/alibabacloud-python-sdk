@@ -14,10 +14,16 @@ class DeleteIsolationRulesRequest(DaraModel):
         ids: List[int] = None,
         namespace: str = None,
     ):
+        # The language in which the response is displayed. Valid values: zh (default): Chinese; en: English.
         self.accept_language = accept_language
+        # The application name.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # The list of rule IDs to be deleted.
         self.ids = ids
+        # The microservice namespace to which the application belongs.
+        # 
         # This parameter is required.
         self.namespace = namespace
 

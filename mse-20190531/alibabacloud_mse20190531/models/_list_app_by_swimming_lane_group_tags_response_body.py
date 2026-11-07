@@ -16,15 +16,15 @@ class ListAppBySwimmingLaneGroupTagsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The returned data.
+        # The data returned in the response.
         self.data = data
         # The error code.
         self.error_code = error_code
-        # The additional request information.
+        # The additional information about the request.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

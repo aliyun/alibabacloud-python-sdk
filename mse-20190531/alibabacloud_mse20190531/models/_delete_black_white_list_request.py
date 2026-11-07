@@ -12,9 +12,13 @@ class DeleteBlackWhiteListRequest(DaraModel):
         gateway_unique_id: str = None,
         id: int = None,
     ):
+        # The language of the response. Valid values: zh (default): Chinese, en: English.
         self.accept_language = accept_language
+        # The ID of the gateway.
         self.gateway_id = gateway_id
+        # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
+        # The ID of the blacklists and whitelists entry.
         self.id = id
 
     def validate(self):

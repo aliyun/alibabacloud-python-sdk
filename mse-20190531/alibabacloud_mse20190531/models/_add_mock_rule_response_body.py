@@ -15,20 +15,19 @@ class AddMockRuleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
+        # The return code.
         self.code = code
-        # The details of the data.
+        # The data overview.
         self.data = data
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message returned.
+        # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - `true`: The request succeeded.
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -101,39 +100,39 @@ class AddMockRuleResponseBodyData(DaraModel):
         sc_mock_item_json: str = None,
         source: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
+        # The account ID.
         self.account_id = account_id
-        # The ID of the consumer application.
+        # The ID of the service consumer application.
         self.consumer_app_id = consumer_app_id
-        # The name of the consumer application.
+        # The name of the application to be queried.
         self.consumer_app_name = consumer_app_name
-        # Indicates whether the mock rule is enabled.
+        # Indicates whether the rule is enabled. Valid values:
         # 
-        # *   `true`: enabled
-        # *   `false`: disabled
+        # - `true`: Enabled.
+        # - `false`: Disabled.
         self.enable = enable
         # The description.
         self.extra_json = extra_json
-        # The ID of the rule.
+        # The rule ID.
         self.id = id
-        # The mock type. Valid values:
+        # The model type. Valid values:
         # 
-        # *   \\- `[unk]0[unk]`: desktop client
-        # *   \\- `[unk]1[unk]`: mobile client
+        # - `[unk]0[unk]`: Desktop model
+        # - `[unk]1[unk]`: Mobile model
         self.mock_type = mock_type
         # The name.
         self.name = name
-        # The ID of the namespace.
+        # The namespace ID.
         self.namespace_id = namespace_id
         # The ID of the service provider application.
         self.provider_app_id = provider_app_id
         # The name of the service provider application.
         self.provider_app_name = provider_app_name
-        # The region ID.
+        # The region.
         self.region = region
-        # The HTTP mock rule.
+        # The mock rule for the HTTP protocol.
         self.sc_mock_item_json = sc_mock_item_json
-        # The service source.
+        # The source.
         self.source = source
 
     def validate(self):

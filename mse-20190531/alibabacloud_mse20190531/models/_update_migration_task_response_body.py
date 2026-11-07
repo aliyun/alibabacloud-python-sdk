@@ -17,18 +17,19 @@ class UpdateMigrationTaskResponseBody(DaraModel):
     ):
         # The data structure.
         self.data = data
-        # The error code returned if the request failed.
+        # The error code.
         self.error_code = error_code
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_code = http_code
-        # The message returned.
+        # The message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -100,26 +101,29 @@ class UpdateMigrationTaskResponseBodyData(DaraModel):
         target_instance_id: str = None,
         user_id: str = None,
     ):
-        # The type of the instance.
+        # The type of the cluster.
         # 
-        # *   Nacos-Ans
-        # *   ZooKeeper
-        # *   Eureka
+        # - Nacos-Ans
+        # 
+        # - ZooKeeper
+        # 
+        # - Eureka
         self.cluster_type = cluster_type
-        # The creation time.
+        # The time when the migration task was created.
         self.gmt_create = gmt_create
-        # The modification time.
+        # The time when the migration task was updated.
         self.gmt_modified = gmt_modified
-        # The ID of the task.
+        # The task ID.
         self.id = id
-        # The address of the source instance node.
+        # The source instance node address.
         self.origin_instance_address = origin_instance_address
         # The name of the source instance.
         self.origin_instance_name = origin_instance_name
         # The list of namespaces. This parameter is optional if applications are migrated from a Nacos instance.
         self.origin_instance_namespace = origin_instance_namespace
-        # The description.
+        # The description of the task.
         self.project_desc = project_desc
+        # The synchronization type
         self.sync_type = sync_type
         # The name of the destination instance.
         self.target_cluster_name = target_cluster_name
@@ -127,7 +131,7 @@ class UpdateMigrationTaskResponseBodyData(DaraModel):
         self.target_cluster_url = target_cluster_url
         # The ID of the destination instance.
         self.target_instance_id = target_instance_id
-        # The ID of the user.
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

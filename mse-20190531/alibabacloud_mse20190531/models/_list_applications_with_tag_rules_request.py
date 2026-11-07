@@ -16,10 +16,10 @@ class ListApplicationsWithTagRulesRequest(DaraModel):
         region: str = None,
         source: str = None,
     ):
-        # The language of the response. Valid values:
+        # The language of the returned information. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # - en: English
         self.accept_language = accept_language
         # The ID of the application.
         self.app_id = app_id
@@ -27,17 +27,17 @@ class ListApplicationsWithTagRulesRequest(DaraModel):
         self.app_name = app_name
         # The MSE namespace to which the application belongs.
         self.namespace = namespace
-        # The number of the page to return.
+        # The page number.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The ID of the region.
+        # The region.
         self.region = region
-        # The source of the routing rule. Default value: edasmsc.
+        # The data source. Default value: edasmsc.
         self.source = source
 
     def validate(self):

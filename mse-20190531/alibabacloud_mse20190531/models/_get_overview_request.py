@@ -11,14 +11,14 @@ class GetOverviewRequest(DaraModel):
         period: int = None,
         region: str = None,
     ):
-        # The language of the response. Valid values:
+        # The language of the returned information. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # - en: English
         self.accept_language = accept_language
-        # The query time. Unit: days. For example, if you set this parameter to 30, the governance rules within the last 30 days are queried.
+        # The query period. Unit: days. For example, if you set this parameter to 30, the governance rules within the last 30 days are queried.
         self.period = period
-        # The ID of the region.
+        # The region.
         self.region = region
 
     def validate(self):

@@ -61,6 +61,10 @@ from ._add_service_source_request import AddServiceSourceRequest
 from ._add_service_source_shrink_request import AddServiceSourceShrinkRequest
 from ._add_service_source_response_body import AddServiceSourceResponseBody
 from ._add_service_source_response import AddServiceSourceResponse
+from ._add_zoo_keeper_sasl_user_request import AddZooKeeperSaslUserRequest
+from ._add_zoo_keeper_sasl_user_shrink_request import AddZooKeeperSaslUserShrinkRequest
+from ._add_zoo_keeper_sasl_user_response_body import AddZooKeeperSaslUserResponseBody
+from ._add_zoo_keeper_sasl_user_response import AddZooKeeperSaslUserResponse
 from ._apply_gateway_route_request import ApplyGatewayRouteRequest
 from ._apply_gateway_route_response_body import ApplyGatewayRouteResponseBody
 from ._apply_gateway_route_response import ApplyGatewayRouteResponse
@@ -543,6 +547,9 @@ from ._list_zk_track_response import ListZkTrackResponse
 from ._list_znode_children_request import ListZnodeChildrenRequest
 from ._list_znode_children_response_body import ListZnodeChildrenResponseBody
 from ._list_znode_children_response import ListZnodeChildrenResponse
+from ._list_zoo_keeper_sasl_user_request import ListZooKeeperSaslUserRequest
+from ._list_zoo_keeper_sasl_user_response_body import ListZooKeeperSaslUserResponseBody
+from ._list_zoo_keeper_sasl_user_response import ListZooKeeperSaslUserResponse
 from ._modify_governance_kubernetes_cluster_request import ModifyGovernanceKubernetesClusterRequest
 from ._modify_governance_kubernetes_cluster_shrink_request import ModifyGovernanceKubernetesClusterShrinkRequest
 from ._modify_governance_kubernetes_cluster_response_body import ModifyGovernanceKubernetesClusterResponseBody
@@ -625,6 +632,10 @@ from ._remove_application_response import RemoveApplicationResponse
 from ._remove_auth_policy_request import RemoveAuthPolicyRequest
 from ._remove_auth_policy_response_body import RemoveAuthPolicyResponseBody
 from ._remove_auth_policy_response import RemoveAuthPolicyResponse
+from ._remove_zoo_keeper_sasl_user_request import RemoveZooKeeperSaslUserRequest
+from ._remove_zoo_keeper_sasl_user_shrink_request import RemoveZooKeeperSaslUserShrinkRequest
+from ._remove_zoo_keeper_sasl_user_response_body import RemoveZooKeeperSaslUserResponseBody
+from ._remove_zoo_keeper_sasl_user_response import RemoveZooKeeperSaslUserResponse
 from ._restart_cluster_request import RestartClusterRequest
 from ._restart_cluster_response_body import RestartClusterResponseBody
 from ._restart_cluster_response import RestartClusterResponse
@@ -802,6 +813,10 @@ from ._update_web_flow_rule_response import UpdateWebFlowRuleResponse
 from ._update_znode_request import UpdateZnodeRequest
 from ._update_znode_response_body import UpdateZnodeResponseBody
 from ._update_znode_response import UpdateZnodeResponse
+from ._update_zoo_keeper_sasl_user_request import UpdateZooKeeperSaslUserRequest
+from ._update_zoo_keeper_sasl_user_shrink_request import UpdateZooKeeperSaslUserShrinkRequest
+from ._update_zoo_keeper_sasl_user_response_body import UpdateZooKeeperSaslUserResponseBody
+from ._update_zoo_keeper_sasl_user_response import UpdateZooKeeperSaslUserResponse
 from ._upgrade_cluster_request import UpgradeClusterRequest
 from ._upgrade_cluster_response_body import UpgradeClusterResponseBody
 from ._upgrade_cluster_response import UpgradeClusterResponse
@@ -841,6 +856,7 @@ from ._add_migration_task_response_body import AddMigrationTaskResponseBodyData
 from ._add_mock_rule_response_body import AddMockRuleResponseBodyData
 from ._add_service_source_request import AddServiceSourceRequestIngressOptionsRequest
 from ._add_service_source_request import AddServiceSourceRequestToAuthorizeSecurityGroups
+from ._add_zoo_keeper_sasl_user_request import AddZooKeeperSaslUserRequestSaslUser
 from ._apply_tag_policies_response_body import ApplyTagPoliciesResponseBodyData
 from ._clone_nacos_config_response_body import CloneNacosConfigResponseBodyDataFailData
 from ._clone_nacos_config_response_body import CloneNacosConfigResponseBodyDataSkipData
@@ -1101,6 +1117,7 @@ from ._list_web_flow_rules_response_body import ListWebFlowRulesResponseBodyData
 from ._list_web_flow_rules_response_body import ListWebFlowRulesResponseBodyData
 from ._list_zk_track_response_body import ListZkTrackResponseBodyTraces
 from ._list_znode_children_response_body import ListZnodeChildrenResponseBodyData
+from ._list_zoo_keeper_sasl_user_response_body import ListZooKeeperSaslUserResponseBodyData
 from ._modify_governance_kubernetes_cluster_request import ModifyGovernanceKubernetesClusterRequestNamespaceInfos
 from ._pull_services_response_body import PullServicesResponseBodyDataServices
 from ._pull_services_response_body import PullServicesResponseBodyData
@@ -1179,6 +1196,7 @@ from ._update_isolation_rule_response_body import UpdateIsolationRuleResponseBod
 from ._update_migration_task_response_body import UpdateMigrationTaskResponseBodyData
 from ._update_service_source_request import UpdateServiceSourceRequestIngressOptionsRequest
 from ._update_web_flow_rule_response_body import UpdateWebFlowRuleResponseBodyData
+from ._update_zoo_keeper_sasl_user_request import UpdateZooKeeperSaslUserRequestSaslUser
 
 __all__ = [
     GatewayDomain,
@@ -1240,6 +1258,10 @@ __all__ = [
     AddServiceSourceShrinkRequest,
     AddServiceSourceResponseBody,
     AddServiceSourceResponse,
+    AddZooKeeperSaslUserRequest,
+    AddZooKeeperSaslUserShrinkRequest,
+    AddZooKeeperSaslUserResponseBody,
+    AddZooKeeperSaslUserResponse,
     ApplyGatewayRouteRequest,
     ApplyGatewayRouteResponseBody,
     ApplyGatewayRouteResponse,
@@ -1722,6 +1744,9 @@ __all__ = [
     ListZnodeChildrenRequest,
     ListZnodeChildrenResponseBody,
     ListZnodeChildrenResponse,
+    ListZooKeeperSaslUserRequest,
+    ListZooKeeperSaslUserResponseBody,
+    ListZooKeeperSaslUserResponse,
     ModifyGovernanceKubernetesClusterRequest,
     ModifyGovernanceKubernetesClusterShrinkRequest,
     ModifyGovernanceKubernetesClusterResponseBody,
@@ -1804,6 +1829,10 @@ __all__ = [
     RemoveAuthPolicyRequest,
     RemoveAuthPolicyResponseBody,
     RemoveAuthPolicyResponse,
+    RemoveZooKeeperSaslUserRequest,
+    RemoveZooKeeperSaslUserShrinkRequest,
+    RemoveZooKeeperSaslUserResponseBody,
+    RemoveZooKeeperSaslUserResponse,
     RestartClusterRequest,
     RestartClusterResponseBody,
     RestartClusterResponse,
@@ -1981,6 +2010,10 @@ __all__ = [
     UpdateZnodeRequest,
     UpdateZnodeResponseBody,
     UpdateZnodeResponse,
+    UpdateZooKeeperSaslUserRequest,
+    UpdateZooKeeperSaslUserShrinkRequest,
+    UpdateZooKeeperSaslUserResponseBody,
+    UpdateZooKeeperSaslUserResponse,
     UpgradeClusterRequest,
     UpgradeClusterResponseBody,
     UpgradeClusterResponse,
@@ -2020,6 +2053,7 @@ __all__ = [
     AddMockRuleResponseBodyData,
     AddServiceSourceRequestIngressOptionsRequest,
     AddServiceSourceRequestToAuthorizeSecurityGroups,
+    AddZooKeeperSaslUserRequestSaslUser,
     ApplyTagPoliciesResponseBodyData,
     CloneNacosConfigResponseBodyDataFailData,
     CloneNacosConfigResponseBodyDataSkipData,
@@ -2280,6 +2314,7 @@ __all__ = [
     ListWebFlowRulesResponseBodyData,
     ListZkTrackResponseBodyTraces,
     ListZnodeChildrenResponseBodyData,
+    ListZooKeeperSaslUserResponseBodyData,
     ModifyGovernanceKubernetesClusterRequestNamespaceInfos,
     PullServicesResponseBodyDataServices,
     PullServicesResponseBodyData,
@@ -2357,5 +2392,6 @@ __all__ = [
     UpdateIsolationRuleResponseBodyData,
     UpdateMigrationTaskResponseBodyData,
     UpdateServiceSourceRequestIngressOptionsRequest,
-    UpdateWebFlowRuleResponseBodyData
+    UpdateWebFlowRuleResponseBodyData,
+    UpdateZooKeeperSaslUserRequestSaslUser
 ]

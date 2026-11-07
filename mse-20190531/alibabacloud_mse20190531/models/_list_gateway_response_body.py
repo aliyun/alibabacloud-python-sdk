@@ -17,20 +17,19 @@ class ListGatewayResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The return value.
+        # The return code.
         self.code = code
-        # The data returned.
+        # The returned metadata.
         self.data = data
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message returned.
+        # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - `true`: The request is successful.
+        # - `false`: The request fails.
         self.success = success
 
     def validate(self):
@@ -93,13 +92,13 @@ class ListGatewayResponseBodyData(DaraModel):
         result: List[main_models.ListGatewayResponseBodyDataResult] = None,
         total_size: int = None,
     ):
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The data returned.
+        # The returned data.
         self.result = result
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_size = total_size
 
     def validate(self):
@@ -195,102 +194,106 @@ class ListGatewayResponseBodyDataResult(DaraModel):
         vpc_id: str = None,
         vswitch_2: str = None,
     ):
-        # Indicates whether Application High Availability Service (AHAS) is activated.
+        # Indicates whether AHAS is enabled.
         self.ahas_on = ahas_on
-        # The version of the application.
+        # The application version.
         self.app_version = app_version
-        # Indicates whether Application Real-Time Monitoring Service (ARMS) is activated.
+        # Indicates whether ARMS is enabled.
         self.arms_on = arms_on
         # The billing method.
         self.charge_type = charge_type
-        # The current version of the gateway.
+        # The current version.
         self.current_version = current_version
-        # Indicates whether auto scale-out is enabled.
+        # Indicates whether auto-scaling is enabled.
         self.elastic = elastic
-        # The ID of the elastic gateway. This parameter is returned if auto scale-out is used.
+        # The gateway elastic instance ID. This parameter is returned when auto-scaling is used.
         self.elastic_instance_id = elastic_instance_id
-        # The auto scale-out policy.
+        # The auto-scaling policy.
         self.elastic_policy = elastic_policy
-        # The number of replicas that are automatically scaled out.
+        # The number of auto-scaling replicas.
         self.elastic_replica = elastic_replica
-        # The type of auto scale-out. Valid value:
+        # The auto-scaling type. Valid values:
         # 
-        # *   CronHPA: scale-out by time
+        # - CronHPA: time-based scaling
         self.elastic_type = elastic_type
-        # The time when the instance expires.
+        # The expiration date.
         self.end_date = end_date
+        # The gateway entry address. This parameter is applicable to standard Professional Edition instances.
         self.gateway_entry = gateway_entry
         # The gateway type.
         self.gateway_type = gateway_type
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
-        # The version of the gateway.
+        # The gateway version.
         self.gateway_version = gateway_version
-        # The time when the gateway was created.
+        # The creation time.
         self.gmt_create = gmt_create
-        # The time when the gateway was modified.
+        # The modification time.
         self.gmt_modified = gmt_modified
         # The gateway ID.
         self.id = id
-        # The configurations.
+        # The configuration information.
         self.init_config = init_config
         # The instance ID.
         self.instance_id = instance_id
-        # The details of the Internet-facing SLB instances.
+        # The Internet SLB.
         self.internet_slb = internet_slb
-        # The latest version of the gateway.
+        # The latest version.
         self.latest_version = latest_version
+        # The O&M time window.
         self.maintenance_period = maintenance_period
         # The resource tag.
         self.mse_tag = mse_tag
+        # The cluster version.
         self.mse_version = mse_version
-        # Indicates whether the instance was forcefully upgraded.
+        # The forced upgrade.
         self.must_upgrade = must_upgrade
         # The gateway name.
         self.name = name
         # The user information.
         self.primary_user = primary_user
-        # The region ID.
+        # The region.
         self.region = region
-        # The number of replicas.
+        # The backup.
         self.replica = replica
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Indicates whether rollbacks are allowed.
+        # Indicates whether rollback is supported.
         self.roll_back = roll_back
-        # The details of Server Load Balancer (SLB) instances.
+        # The SLB list.
         self.slb = slb
-        # The specifications of the gateway.
+        # The specification.
         self.spec = spec
-        # The gateway state. Valid values:
+        # The gateway status. Valid values:
         # 
-        # *   0: The gateway is being created.
-        # *   1: The gateway failed to be created.
-        # *   2: The gateway is running.
-        # *   3: The gateway is being changed.
-        # *   4: The gateway is scaling in.
-        # *   6: The gateway is scaling out.
-        # *   8: The gateway is being deleted.
-        # *   9: The gateway is suspended and is to be released.
-        # *   10: The gateway is restarting.
-        # *   11: The gateway is being rebuilt.
-        # *   12: The gateway is being upgraded.
-        # *   13: The gateway failed to be upgraded.
+        # - 0: creating
+        # - 1: creation failed
+        # - 2: running
+        # - 3: modifying
+        # - 4: scaling in
+        # - 6: scaling out
+        # - 8: deleting
+        # - 9: stopped and pending release
+        # - 10: restarting
+        # - 11: rebuilding
+        # - 12: upgrading
+        # - 13: upgrade failed
         self.status = status
-        # The description of the gateway state.
+        # The status description.
         self.status_desc = status_desc
-        # Indicates whether WebAssembly (Wasm) is supported.
+        # Indicates whether WASM is supported.
         self.support_wasm = support_wasm
         # The tag.
         self.tag = tag
-        # The total number of replicas, including the number of replicas that are automatically scaled out.
+        # The total number of replicas, including the number of auto-scaling replicas.
         self.total_replica = total_replica
-        # Indicates whether the instance was upgraded.
+        # The upgrade.
         self.upgrade = upgrade
+        # The version lifecycle.
         self.version_lifecycle = version_lifecycle
-        # The ID of the virtual private cloud (VPC) to which the gateway belongs.
+        # The VPC ID of the gateway.
         self.vpc_id = vpc_id
-        # The ID of the secondary vSwitch.
+        # The second vSwitch.
         self.vswitch_2 = vswitch_2
 
     def validate(self):
@@ -612,24 +615,24 @@ class ListGatewayResponseBodyDataResultSlb(DaraModel):
         status_desc: str = None,
         type: str = None,
     ):
-        # The mode of the SLB instance.
+        # The gateway SLB mode.
         self.gateway_slb_mode = gateway_slb_mode
-        # The state of the SLB instance.
+        # The gateway SLB status.
         self.gateway_slb_status = gateway_slb_status
-        # The ID of the SLB instance.
+        # The SLB ID.
         self.slb_id = slb_id
-        # The IP address of the SLB instance.
+        # The SLB IP address.
         self.slb_ip = slb_ip
-        # The port number of the SLB instance.
+        # The SLB port.
         self.slb_port = slb_port
-        # The specifications of the SLB instance.
+        # The SLB specification.
         self.slb_spec = slb_spec
-        # The description of the state.
+        # The status description.
         self.status_desc = status_desc
         # The network type. Valid values:
         # 
-        # *   PUB_NET
-        # *   PRIVATE_NET
+        # - PUB_NET: public network
+        # - PRIVATE_NET: private network
         self.type = type
 
     def validate(self):
@@ -701,8 +704,11 @@ class ListGatewayResponseBodyDataResultMaintenancePeriod(DaraModel):
         start_time: str = None,
         time_zone: str = None,
     ):
+        # The end time.
         self.end_time = end_time
+        # The start time.
         self.start_time = start_time
+        # The time zone.
         self.time_zone = time_zone
 
     def validate(self):
@@ -750,23 +756,23 @@ class ListGatewayResponseBodyDataResultInternetSlb(DaraModel):
         status_desc: str = None,
         type: str = None,
     ):
-        # The mode of the SLB instance.
+        # The gateway SLB mode.
         self.gateway_slb_mode = gateway_slb_mode
-        # The state of the SLB instance.
+        # The gateway SLB status.
         self.gateway_slb_status = gateway_slb_status
-        # The traffic of the gateway.
+        # The gateway traffic.
         self.internet_network_flow = internet_network_flow
-        # The ID of the SLB instance.
+        # The SLB ID.
         self.slb_id = slb_id
-        # The IP address of the SLB instance.
+        # The SLB IP address.
         self.slb_ip = slb_ip
-        # The port number of the SLB instance.
+        # The SLB port.
         self.slb_port = slb_port
-        # The specifications of the SLB instance.
+        # The SLB specification.
         self.slb_spec = slb_spec
-        # The description of the state.
+        # The status description.
         self.status_desc = status_desc
-        # The type of the SLB instance.
+        # The type.
         self.type = type
 
     def validate(self):
@@ -843,7 +849,7 @@ class ListGatewayResponseBodyDataResultInitConfig(DaraModel):
         enable_waf: bool = None,
         support_waf: bool = None,
     ):
-        # Indicates whether Web Application Firewall (WAF) is enabled.
+        # Indicates whether WAF is enabled.
         self.enable_waf = enable_waf
         # Indicates whether WAF is supported.
         self.support_waf = support_waf
@@ -885,12 +891,21 @@ class ListGatewayResponseBodyDataResultGatewayEntry(DaraModel):
         net_type: str = None,
         status: str = None,
     ):
+        # The entry domain name.
         self.entry_domain = entry_domain
+        # The list of HTTP listener ports.
         self.http_ports = http_ports
+        # The list of HTTPS listener ports.
         self.https_ports = https_ports
+        # The list of entry IP addresses.
         self.ip_list = ip_list
+        # The IPv6 address.
         self.ipv_6list = ipv_6list
+        # The entry network type. Valid values:
+        # - PRIVATE_NET: private network
+        # - PUB_NET: public network
         self.net_type = net_type
+        # The readiness status of the gateway entry.
         self.status = status
 
     def validate(self):
@@ -959,17 +974,19 @@ class ListGatewayResponseBodyDataResultElasticPolicy(DaraModel):
         max_replica: int = None,
         time_policy_list: List[main_models.ListGatewayResponseBodyDataResultElasticPolicyTimePolicyList] = None,
     ):
-        # Indicates whether auto scale-out is enabled.
+        # Indicates whether auto-scaling is enabled.
         self.elastic = elastic
-        # The type of auto scale-out. Valid value:
+        # The auto-scaling type. Valid values:
         # 
-        # *   CronHPA: scale-out by time
+        # * CronHPA: time-based scaling
         self.elastic_type = elastic_type
+        # The allowed time periods for scaling in.
         self.enable_scale_time_policy_list = enable_scale_time_policy_list
+        # Specifies the load-based elastic scaling watermark settings for the gateway. true indicates that the warning watermark is enabled, and false indicates that the safe watermark is enabled.
         self.load_warning_threshold = load_warning_threshold
-        # The maximum number of instances that are automatically scaled out. This parameter is used for horizontal scale-out.
+        # The maximum number of instances for auto-scaling, used for horizontal scaling.
         self.max_replica = max_replica
-        # The time policy list for auto scale-out.
+        # The list of time-based auto-scaling policies.
         self.time_policy_list = time_policy_list
 
     def validate(self):
@@ -1046,11 +1063,11 @@ class ListGatewayResponseBodyDataResultElasticPolicyTimePolicyList(DaraModel):
         end_time: str = None,
         start_time: str = None,
     ):
-        # The expected number of replicas for auto scale-out.
+        # The expected number of replicas for auto-scaling.
         self.desired_replica = desired_replica
-        # The end time of auto scale-out.
+        # The end time for auto-scaling.
         self.end_time = end_time
-        # The start time of auto scale-out.
+        # The start time for auto-scaling.
         self.start_time = start_time
 
     def validate(self):
@@ -1091,7 +1108,9 @@ class ListGatewayResponseBodyDataResultElasticPolicyEnableScaleTimePolicyList(Da
         end_time: str = None,
         start_time: str = None,
     ):
+        # The end time.
         self.end_time = end_time
+        # The start time.
         self.start_time = start_time
 
     def validate(self):

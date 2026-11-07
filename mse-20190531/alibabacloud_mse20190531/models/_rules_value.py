@@ -20,64 +20,20 @@ class RulesValue(DaraModel):
         rules: main_models.RulesValueRules = None,
     ):
         # The status.
-        # 
-        # Valid values:
-        # 
-        # *   0
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     The routing rule does not take effect
-        # 
-        #     <!-- -->
-        # 
-        #     .
-        # 
-        # *   1
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     The routing rule takes effect
-        # 
-        #     <!-- -->
-        # 
-        #     .
-        # 
-        # *   2
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     The routing rule is invalid
-        # 
-        #     <!-- -->
-        # 
-        #     .
         self.status = status
         # The percentage.
         self.rate = rate
-        # Specifies whether to enable the routing rule.
+        # Specifies whether the rule is enabled.
         self.enable = enable
-        # The environment of the routing rule.
+        # The environment of this routing rule.
         self.tag = tag
         # The name of the routing rule.
         self.name = name
-        # The ID of the routing rule.
+        # The ID of the rule.
         self.id = id
         # The number of instances.
         self.instance_num = instance_num
-        # The details of the routing rule.
+        # The rule information.
         self.rules = rules
 
     def validate(self):
@@ -150,9 +106,9 @@ class RulesValueRules(DaraModel):
         springcloud: List[main_models.RulesValueRulesSpringcloud] = None,
         dubbo: List[main_models.RulesValueRulesDubbo] = None,
     ):
-        # The rule of the Spring Cloud application.
+        # The Spring Cloud rules.
         self.springcloud = springcloud
-        # The rules of the Dubbo application.
+        # The Dubbo rules.
         self.dubbo = dubbo
 
     def validate(self):
@@ -214,23 +170,23 @@ class RulesValueRulesDubbo(DaraModel):
     ):
         # The ID of the application.
         self.app_id = app_id
-        # The tags.
+        # The list of tags.
         self.tags = tags
         # The policy type.
         self.trigger_policy = trigger_policy
         # The service name (interface).
         self.service_name = service_name
-        # The group of the Dubbo application.
+        # The Dubbo service group.
         self.group = group
-        # The version of the Dubbo application.
+        # The Dubbo service version.
         self.version = version
-        # The method name of the Dubbo application.
+        # The method name of the Dubbo service.
         self.method_name = method_name
-        # The list of parameter data types.
+        # The list of parameter types.
         self.param_types = param_types
-        # The logical operation relationships. Valid values: AND and OR.
+        # The logical operator used between the following items. Valid values: AND and OR.
         self.condition = condition
-        # The list of parameter contents.
+        # The list of parameter content.
         self.argument_items = argument_items
 
     def validate(self):
@@ -329,25 +285,25 @@ class RulesValueRulesDubboArgumentItems(DaraModel):
         expr: str = None,
         value: Any = None,
     ):
-        # The operator. A value of rawvalue indicates direct comparison. A value of mode indicates the modulo operation. A value of list indicates using a whitelist.
+        # The operator. A value of rawvalue indicates direct comparison. A value of mode indicates a modulo operation. A value of list indicates a whitelist.
         self.operator = operator
         # The list of names.
         self.name_list = name_list
-        # The value on which operators such as rawvalue are performed.
+        # The value to be compared for operators such as rawvalue.
         self.datum = datum
         # The comparison operator. Valid values: >=, <=, >, <, and ==.
         self.cond = cond
-        # The divisor that is required by the mod operator.
+        # The divisor field required for the mod operator.
         self.divisor = divisor
-        # The remainder.
+        # The percentage value field required for the percentage operation.
         self.remainder = remainder
-        # The rate. A value of 20 indicates that 20% of the traffic is routed to the tagged node.
+        # The proportion rule. For example, 20% indicates that 20% of the traffic is routed to the node corresponding to the tag.
         self.rate = rate
-        # The position of the parameter, which starts from 0.
+        # The position of the parameter, starting from 0.
         self.index = index
-        # The expression.
+        # The expression. See other field descriptions for details.
         self.expr = expr
-        # The value that is used for comparison. The value obtained by the expression is compared with this value. If the list operator is used, data of the value parameter is separated by commas (,). For example, 1,2,3.
+        # The value to compare. The value obtained from the expression is compared with this value. If the operator is a list whitelist, separate values with commas (,), such as 1,2,3.
         self.value = value
 
     def validate(self):
@@ -437,36 +393,19 @@ class RulesValueRulesSpringcloud(DaraModel):
         paths: List[str] = None,
         path: str = None,
     ):
-        # The logical operation relationships. Valid values: AND and OR.
+        # The logical operator used between the following items. Valid values: AND and OR.
         self.condition = condition
+        # The list of matching conditions for REST requests.
         self.rest_items = rest_items
         # The policy type.
-        # 
-        # Valid values:
-        # 
-        # *   PERCENT
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   CONTENT
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.trigger_policy = trigger_policy
-        # Specifies whether to enable the routing rule.
+        # Specifies whether the rule is enabled.
         self.enable = enable
         # The ID of the application.
         self.app_id = app_id
         # The priority.
         self.priority = priority
-        # The tags.
+        # The list of tags.
         self.tags = tags
         # The list of paths.
         self.paths = paths
@@ -563,19 +502,19 @@ class RulesValueRulesSpringcloudRestItems(DaraModel):
         name: str = None,
         value: Any = None,
     ):
-        # The value on which operators such as rawvalue are performed.
+        # The value to be compared for operators such as rawvalue.
         self.datum = datum
-        # The operator. A value of rawvalue indicates direct comparison. A value of mode indicates the modulo operation. A value of list indicates using a whitelist.
+        # The operator. A value of rawvalue indicates direct comparison. A value of mode indicates a modulo operation. A value of list indicates a whitelist.
         self.operator = operator
-        # Information about the fields that are required by the list operator.
+        # The field required for the list operator.
         self.name_list = name_list
         # The comparison operator. Valid values: >=, <=, >, <, and ==.
         self.cond = cond
-        # The divisor that is required by the mod operator.
+        # The divisor field required for the mod operator.
         self.divisor = divisor
-        # The remainder.
+        # The percentage value field required for the percentage operation.
         self.remainder = remainder
-        # The rate. A value of 20 indicates that 20% of the traffic is routed to the tagged node.
+        # The proportion rule. For example, 20% indicates that 20% of the traffic is routed to the node corresponding to the tag.
         self.rate = rate
         # The type.
         self.type = type

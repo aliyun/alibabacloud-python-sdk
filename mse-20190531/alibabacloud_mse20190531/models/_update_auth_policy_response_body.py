@@ -16,15 +16,15 @@ class UpdateAuthPolicyResponseBody(DaraModel):
     ):
         # The response code.
         self.code = code
-        # The details of the data.
+        # The returned data.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The returned message.
+        # The message that is returned for the request.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values: true: The request was successful. false: The request failed.
+        # The result of the request. Valid values: - true: The request is successful. - false: The request failed.
         self.success = success
 
     def validate(self):

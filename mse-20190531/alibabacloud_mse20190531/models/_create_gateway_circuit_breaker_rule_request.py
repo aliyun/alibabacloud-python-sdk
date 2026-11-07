@@ -25,31 +25,74 @@ class CreateGatewayCircuitBreakerRuleRequest(DaraModel):
         strategy: int = None,
         trigger_ratio: int = None,
     ):
+        # The language in which you want the results to be displayed. Valid values: zh (default): Chinese. en: English.
         self.accept_language = accept_language
+        # The type of the web fallback behavior.
+        # 
+        # 0: returns the specified content.
+        # 
+        # 1: redirects to the specified page.
+        # 
         # This parameter is required.
         self.behavior_type = behavior_type
+        # The encoding type.
+        # 
+        # 0: plain text
+        # 
+        # 1: JSON
         self.body_encoding = body_encoding
+        # Specifies whether to enable the rule.
+        # 
+        # 0: disables the rule.
+        # 
+        # 1: enables the rule.
+        # 
         # This parameter is required.
         self.enable = enable
+        # The gateway ID.
         self.gateway_id = gateway_id
+        # The unique ID of the gateway.
+        # 
         # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
+        # The threshold in slow call proportion mode.
         self.max_allowed_ms = max_allowed_ms
+        # The minimum number of requests to trigger circuit breaking.
+        # 
         # This parameter is required.
         self.min_request_amount = min_request_amount
+        # The circuit breaking timeout period.
+        # 
         # This parameter is required.
         self.recovery_timeout_sec = recovery_timeout_sec
+        # The HTTP text to be returned.
         self.response_content_body = response_content_body
+        # The redirection URL.
         self.response_redirect_url = response_redirect_url
+        # The HTTP status code.
         self.response_status_code = response_status_code
+        # The route ID.
+        # 
         # This parameter is required.
         self.route_id = route_id
+        # The route name.
+        # 
         # This parameter is required.
         self.route_name = route_name
+        # The statistical duration for triggering circuit breaking.
+        # 
         # This parameter is required.
         self.stat_duration_sec = stat_duration_sec
+        # The type of the threshold.
+        # 
+        # 0: slow call proportion
+        # 
+        # 1: failure proportion
+        # 
         # This parameter is required.
         self.strategy = strategy
+        # The request percentage that triggers circuit breaking.
+        # 
         # This parameter is required.
         self.trigger_ratio = trigger_ratio
 

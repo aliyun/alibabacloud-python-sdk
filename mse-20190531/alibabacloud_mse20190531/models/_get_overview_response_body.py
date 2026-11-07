@@ -14,20 +14,20 @@ class GetOverviewResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The response code returned.
+        # The response code.
         self.code = code
-        # The details of the data.
+        # The data overview.
         self.data = data
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message returned.
+        # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # The request result. Valid values:
         # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):

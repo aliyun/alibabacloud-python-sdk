@@ -14,12 +14,19 @@ class ListNamespacesShrinkRequest(DaraModel):
         region: str = None,
         tag_shrink: str = None,
     ):
+        # Language for displaying results. Values: zh (default): Chinese, en: English
         self.accept_language = accept_language
+        # Namespace name for fuzzy query. If not specified, all namespaces are queried by default.
         self.name = name
+        # Page number for paged query.
         self.page_number = page_number
+        # Number of entries per page for paged queries. The default is 5. To return more data, increase this value.
         self.page_size = page_size
+        # Region.
+        # 
         # This parameter is required.
         self.region = region
+        # Alibaba Cloud tags.
         self.tag_shrink = tag_shrink
 
     def validate(self):

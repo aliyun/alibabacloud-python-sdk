@@ -10,7 +10,7 @@ class CreatePluginConfigResponseBody(DaraModel):
         plugin_config_id: int = None,
         request_id: str = None,
     ):
-        # The plug-in configuration ID.
+        # The ID of the plug-in configuration.
         self.plugin_config_id = plugin_config_id
         # The request ID.
         self.request_id = request_id

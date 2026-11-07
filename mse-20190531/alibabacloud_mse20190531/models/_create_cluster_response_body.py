@@ -14,19 +14,19 @@ class CreateClusterResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Error code.
+        # The error code.
         self.error_code = error_code
-        # Instance ID.
+        # The instance ID.
         self.instance_id = instance_id
-        # Return message.
+        # The returned message.
         self.message = message
-        # Order ID.
+        # The order ID.
         self.order_id = order_id
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Request result, with the following values:
-        # - `true`: Request succeeded.
-        # - `false`: Request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - `true`: The request is successful.
+        # - `false`: The request fails.
         self.success = success
 
     def validate(self):

@@ -17,20 +17,23 @@ class GetAppMessageQueueRouteResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code returned.
+        # The response code.
         self.code = code
-        # The data returned.
+        # The data.
         self.data = data
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message returned.
+        # The returned message.
         # 
-        # *   If the request is successful, a success message is returned.
-        # *   If the request fails, an error message is returned.
+        # - If the request is successful, a success message is returned.
+        # - If the request fails, the cause of the failure is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values: true and false. The value true indicates that the request was successful. The value false indicates that the request failed.
+        # The request result. Valid values:
+        # 
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):
@@ -95,19 +98,20 @@ class GetAppMessageQueueRouteResponseBodyData(DaraModel):
         region: str = None,
         tags: List[str] = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
-        # Indicates whether the canary release for messaging feature is enabled.
+        # Indicates whether the feature is enabled. Valid values:
         # 
-        # *   `true`: enabled
-        # *   `false`: disabled
+        # - `true`: Enabled.
+        # - `false`: Disabled.
         self.enable = enable
-        # The side for message filtering when the canary release for messaging feature is enabled.
+        # The filtering side for message canary release.
         self.filter_side = filter_side
+        # The list of baseline environment labels for MSMQ grayscale rules.
         self.gray_base_tags = gray_base_tags
-        # The region ID.
+        # The region.
         self.region = region
-        # The tags used to ignore message consumption for nodes in untagged environments.
+        # The tags that are not consumed by the untagged environments of the application.
         self.tags = tags
 
     def validate(self):

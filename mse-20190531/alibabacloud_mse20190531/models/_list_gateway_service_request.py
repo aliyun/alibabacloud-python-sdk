@@ -16,19 +16,18 @@ class ListGatewayServiceRequest(DaraModel):
         page_size: int = None,
     ):
         # The language of the response. Valid values:
-        # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
-        # Specifies whether to enable sorting.
+        # The sort order.
         self.desc_sort = desc_sort
-        # The parameters that are used to specify filter conditions. The values of the parameters are in the format of {"key1":"value1"}.
+        # The filter conditions in the format of {"key1":"value1"}.
         self.filter_params = filter_params
-        # The item based on which entries are sorted.
+        # The sort attribute.
         self.order_item = order_item
-        # The number of the page to return.
+        # The page number.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The page size.
         self.page_size = page_size
 
     def validate(self):
@@ -95,21 +94,20 @@ class ListGatewayServiceRequestFilterParams(DaraModel):
     ):
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
-        # The group.
+        # The group name.
         self.group_name = group_name
-        # The name of the service.
+        # The service name.
         self.name = name
-        # The namespace to which the service belongs.
+        # The namespace.
         self.namespace = namespace
-        # The protocol of the service.
-        # 
-        # *   HTTP
-        # *   HTTPS
-        # *   HTTP2
-        # *   GRPC
-        # *   DUBBO
+        # The Terms of Service. Valid values:
+        # - HTTP
+        # - HTTPS
+        # - HTTP2
+        # - GRPC
+        # - DUBBO
         self.service_protocol = service_protocol
-        # The type of the source.
+        # The source type.
         self.source_type = source_type
 
     def validate(self):

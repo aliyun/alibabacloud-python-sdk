@@ -21,35 +21,35 @@ class AddGatewayDomainShrinkRequest(DaraModel):
         tls_min: str = None,
     ):
         # The language of the response. Valid values:
-        # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese. This is the default value.
+        # - en: English.
         self.accept_language = accept_language
+        # The content of the CA certificate.
         self.ca_cert_identifier = ca_cert_identifier
-        # The ID of the certificate.
+        # The certificate ID.
         self.cert_identifier = cert_identifier
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
-        # Specifies whether to enable `HTTP/2`.
-        # 
-        # *   `open`: enables `HTTP/2`
-        # *   `close`: disables `HTTP/2`
-        # *   `globalConfig`: uses global configurations
+        # Specifies whether to enable HTTP/2. Valid values:
+        # - `open`: Enables HTTP/2.
+        # - `close`: Disables HTTP/2.
+        # - `globalConfig`: Uses the global configuration.
         self.http_2 = http_2
+        # Specifies whether to enable mTLS.
         self.mtls_enabled = mtls_enabled
         # Specifies whether to enable HTTPS.
         self.must_https = must_https
         # The domain name.
         self.name = name
-        # The type of the protocol. Valid values:
-        # 
-        # *   `HTTP`
-        # *   `HTTPS`
+        # The protocol type. Valid values:
+        # - `HTTP`
+        # - `HTTPS`
         self.protocol = protocol
+        # The TLS cipher suite configuration.
         self.tls_cipher_suites_config_jsonshrink = tls_cipher_suites_config_jsonshrink
-        # The maximum version of Transport Layer Security (TLS).
+        # The maximum TLS version.
         self.tls_max = tls_max
-        # The minimum version of TLS.
+        # The minimum TLS version.
         self.tls_min = tls_min
 
     def validate(self):

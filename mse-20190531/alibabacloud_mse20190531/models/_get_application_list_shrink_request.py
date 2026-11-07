@@ -22,35 +22,37 @@ class GetApplicationListShrinkRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # 
+        # - en: English
         self.accept_language = accept_language
-        # The ID of an application.
+        # The application ID.
         self.app_id = app_id
-        # The name of an application.
+        # The application name.
         self.app_name = app_name
-        # The programming language of the application, such as Java and Go.
+        # The programming language, such as Java or Go.
         self.language = language
         # The microservice namespace to which the application belongs.
         self.namespace = namespace
-        # The number of the page to return.
+        # The page number.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The ID of the region.
+        # The region.
         # 
         # This parameter is required.
         self.region = region
-        # Specifies whether to enable the Sentinel-compatible mode.
+        # Specifies whether to enable the Sentinel component.
         self.sentinel_enable = sentinel_enable
         # The source of the application. The value is fixed as edasmsc.
         self.source = source
-        # Specifies whether to enable switching.
+        # Specifies whether to enable the switch.
         self.switch_enable = switch_enable
+        # Alibaba Cloud tags. You can perform filtering by Alibaba Cloud tag.
         self.tags_shrink = tags_shrink
 
     def validate(self):

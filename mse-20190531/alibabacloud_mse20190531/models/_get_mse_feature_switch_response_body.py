@@ -15,18 +15,17 @@ class GetMseFeatureSwitchResponseBody(DaraModel):
         result: Dict[str, Any] = None,
         success: bool = None,
     ):
-        # The error code returned if the request failed.
+        # The error code.
         self.error_code = error_code
-        # The message returned.
+        # The response message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The returned result.
+        # The response result.
         self.result = result
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - `true`: The request is successful.
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):

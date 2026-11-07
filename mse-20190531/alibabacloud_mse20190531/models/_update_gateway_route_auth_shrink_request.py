@@ -15,10 +15,10 @@ class UpdateGatewayRouteAuthShrinkRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # - en: English
         self.accept_language = accept_language
-        # The authentication configurations.
+        # The authentication configuration.
         # 
         # This parameter is required.
         self.auth_jsonshrink = auth_jsonshrink

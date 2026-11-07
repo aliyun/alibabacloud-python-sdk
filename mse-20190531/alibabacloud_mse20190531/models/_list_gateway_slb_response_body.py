@@ -17,20 +17,19 @@ class ListGatewaySlbResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
+        # The return code.
         self.code = code
-        # The data entries returned.
+        # The returned data.
         self.data = data
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message returned.
+        # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):
@@ -114,40 +113,45 @@ class ListGatewaySlbResponseBodyData(DaraModel):
         vservice_list: List[main_models.ListGatewaySlbResponseBodyDataVServiceList] = None,
         vs_meta_info: str = None,
     ):
-        # Indicates whether the edit operation is supported.
+        # Indicates whether the resource is editable.
         self.edit_enable = edit_enable
-        # The ID of the gateway.
+        # The gateway ID.
         self.gateway_id = gateway_id
-        # The mode of the SLB instance.
+        # The source.
         self.gateway_slb_mode = gateway_slb_mode
         # The association status.
         self.gateway_slb_status = gateway_slb_status
         # The creation time.
         self.gmt_create = gmt_create
-        # The port number of the HTTP virtual service group.
+        # The HTTP port (virtual server group).
         self.http_port = http_port
-        # The port number of the HTTPS virtual service group.
+        # The HTTPS port (virtual server group).
         self.https_port = https_port
-        # The ID of the HTTPS virtual service group.
+        # The ID of the HTTPS virtual server group.
         self.https_vserver_group_id = https_vserver_group_id
-        # The ID.
+        # ID
         self.id = id
         # The service weight.
         self.service_weight = service_weight
-        # The ID of the SLB instance.
+        # SLB ID
         self.slb_id = slb_id
-        # The IP address of the SLB instance.
+        # SLB IP
         self.slb_ip = slb_ip
-        # The port number of the SLB instance.
+        # The SLB port.
         self.slb_port = slb_port
+        # The SLB type.
         self.slb_type = slb_type
-        # The description of the status.
+        # The status description.
         self.status_desc = status_desc
-        # The type.
+        # The network type. Valid values:
+        # - PUB_NET: Internet.
+        # - PRIVATE_NET: Private network.
         self.type = type
-        # The ID of the HTTP virtual service group.
+        # The ID of the HTTP virtual server group.
         self.vserver_group_id = vserver_group_id
+        # The SLB listener information.
         self.vservice_list = vservice_list
+        # The metadata of the virtual server group.
         self.vs_meta_info = vs_meta_info
 
     def validate(self):
@@ -294,9 +298,15 @@ class ListGatewaySlbResponseBodyDataVServiceList(DaraModel):
         vserver_group_id: str = None,
         vserver_group_name: str = None,
     ):
+        # The port.
         self.port = port
+        # The protocol type. Valid values:
+        # - HTTPS
+        # - HTTP
         self.protocol = protocol
+        # The ID of the virtual server group.
         self.vserver_group_id = vserver_group_id
+        # The name of the virtual server group.
         self.vserver_group_name = vserver_group_name
 
     def validate(self):

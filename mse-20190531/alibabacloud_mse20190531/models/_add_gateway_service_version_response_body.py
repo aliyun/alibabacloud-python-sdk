@@ -14,20 +14,19 @@ class AddGatewayServiceVersionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned. The value 200 indicates that the request is successfully processed.
+        # The status code. A value of 200 indicates success.
         self.code = code
-        # The ID of the gateway service.
+        # The gateway service ID.
         self.data = data
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # The request result. Valid values:
+        # - `true`: The request succeeded.
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):

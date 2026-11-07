@@ -18,14 +18,25 @@ class GetGatewayConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The code used to synchronize with the success field.
         self.code = code
+        # The data overview.
         self.data = data
+        # This field is not used. Ignore this field.
         self.dynamic_code = dynamic_code
+        # This field is not used. Ignore this field.
         self.dynamic_message = dynamic_message
+        # The error code.
         self.error_code = error_code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The request result. Valid values:
+        # - `true`: The request is successful.
+        # - `false`: The request fails.
         self.success = success
 
     def validate(self):
@@ -123,6 +134,7 @@ class GetGatewayConfigResponseBodyData(DaraModel):
         keepalive_header_timeout: int = None,
         lite_metrics: bool = None,
         log_filter_config: str = None,
+        log_request_response_config: str = None,
         no_supported_config_list: str = None,
         path_with_escaped_slashes: str = None,
         preserve_external_request_id: bool = None,
@@ -135,38 +147,81 @@ class GetGatewayConfigResponseBodyData(DaraModel):
         xtrace_details: main_models.GetGatewayConfigResponseBodyDataXtraceDetails = None,
         zip_algorithm: str = None,
     ):
+        # The custom log format.
         self.access_log_header = access_log_header
+        # The buffer size for a single gateway connection. Configuring this parameter affects throughput and gateway memory usage. Unit: bytes.
         self.downstream_connection_buffer_limits = downstream_connection_buffer_limits
+        # The maximum number of concurrent streams on a single connection when the client uses HTTP/2. This parameter takes effect at the request level.
         self.downstream_http_2max_concurrent_stream = downstream_http_2max_concurrent_stream
+        # The idle timeout period for connections from the client to the gateway. Unit: seconds. If no request is received within the specified period, the gateway disconnects the connection. Valid values: 0 to 600.
         self.downstream_idle_time = downstream_idle_time
+        # Specifies whether to enable custom authentication configuration push for self-managed authentication services. When enabled, changes to authentication rules do not cause connection interruptions. This feature is applicable to WebSocket and online business scenarios.
         self.enable_custom_auth_config_push = enable_custom_auth_config_push
+        # Specifies whether to generate a request ID in the request header for request tracking. This parameter takes effect at the request level.
         self.enable_generate_request_id = enable_generate_request_id
+        # Specifies whether to enable Gzip compression for requests and responses. Enabling this feature reduces gateway traffic but increases gateway CPU consumption.
         self.enable_gzip = enable_gzip
+        # Specifies whether to enable Gzip hardware acceleration.
         self.enable_gzip_hardware_accelerate = enable_gzip_hardware_accelerate
+        # Specifies whether to enable hardware acceleration. This configuration fails if the region does not support hardware acceleration at the underlying layer or if hardware acceleration was not specified during purchase.
         self.enable_hardware_accelerate = enable_hardware_accelerate
+        # Specifies whether to use HTTP/2 during negotiation between the server and the client. This parameter takes effect at the request level. Changes take effect after 1 to 2 minutes.
         self.enable_http_2 = enable_http_2
+        # Specifies whether the HTTP/3 protocol is supported.
         self.enable_http_3 = enable_http_3
+        # The tag filtering configuration for Kubernetes service source workloads.
         self.enable_k8s_source_workload_filter = enable_k8s_source_workload_filter
+        # Specifies whether to enable the PROXY protocol. If the gateway ingress traffic is routed through a Network Load Balancer (NLB) and this feature is disabled, the real IP address of the client cannot be obtained. Enabling this feature does not affect non-PROXY protocol requests.
         self.enable_proxy_protocol = enable_proxy_protocol
+        # Specifies whether to merge consecutive slashes in a request URL. For example, if this feature is enabled, the extra slash in `www.a.com//b` is merged, making it equivalent to `www.a.com/b`. This parameter takes effect at the request level.
         self.enable_slash_merge = enable_slash_merge
+        # Specifies whether WAF is enabled.
         self.enable_waf = enable_waf
+        # The configuration for trusted X-Forwarded-For source CIDR blocks.
         self.enable_xff_trusted_cidrs = enable_xff_trusted_cidrs
+        # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
+        # The initial connection-level window size negotiated between the gateway and the client when HTTP/2 is used. Unit: bytes. This parameter takes effect at the request level.
         self.initial_connection_window_size = initial_connection_window_size
+        # The initial stream window size negotiated between the gateway and the client when HTTP/2 is used. Unit: bytes. This parameter takes effect at the request level.
         self.initial_stream_window_size = initial_stream_window_size
+        # The keep-alive time in the Keep-Alive response header. Unit: seconds. If this parameter is set to 0, the response header is not returned.
         self.keepalive_header_timeout = keepalive_header_timeout
+        # Indicates whether lightweight metric collection is enabled.
         self.lite_metrics = lite_metrics
+        # Not available for use.
         self.log_filter_config = log_filter_config
+        # The log collection configuration for request and response headers and bodies. The content is a JSON string.
+        self.log_request_response_config = log_request_response_config
+        # The list of unsupported configurations.
         self.no_supported_config_list = no_supported_config_list
+        # The action to take when a URI path contains escaped slashes such as %2F, %2f, %5C, or %5c. Default value: KEEP_UNCHANGED. Valid values:
+        # 
+        # - KEEP_UNCHANGED
+        # 
+        # - REJECT_REQUEST
+        # 
+        # - UNESCAPE_AND_REDIRECT
+        # 
+        # - UNESCAPE_AND_FORWARD
         self.path_with_escaped_slashes = path_with_escaped_slashes
+        # Specifies whether to preserve the request ID passed by the client.
         self.preserve_external_request_id = preserve_external_request_id
+        # Specifies whether to preserve the original case of request and response headers. In HTTP/1.1, headers are case-insensitive. To ensure compatibility with HTTP/2, headers are converted to lowercase by default.
         self.preserve_header_format = preserve_header_format
+        # The log delivery information.
         self.sls_config_details = sls_config_details
+        # Indicates whether the gateway supports Web Application Firewall (WAF).
         self.support_waf = support_waf
+        # The default idle timeout period for upstream connections.
         self.upstream_idle_timeout = upstream_idle_timeout
+        # The keep-alive time maintained for WebSocket connections when connections must be closed during gateway instance upgrades or restarts. Unit: seconds.
         self.websocket_term_grace_period = websocket_term_grace_period
+        # The number of trusted proxies in front of the gateway. This parameter affects whether the gateway uses request headers such as X-Forwarded-For and X-Request-ID generated by the client. This parameter takes effect at the request level.
         self.xff_trusted_num = xff_trusted_num
+        # The Tracing Analysis information.
         self.xtrace_details = xtrace_details
+        # The compression algorithm used when compression is enabled. Valid values: brotli and gzip. If this parameter is set and EnableGzip is disabled, EnableGzip is automatically enabled.
         self.zip_algorithm = zip_algorithm
 
     def validate(self):
@@ -249,6 +304,9 @@ class GetGatewayConfigResponseBodyData(DaraModel):
 
         if self.log_filter_config is not None:
             result['LogFilterConfig'] = self.log_filter_config
+
+        if self.log_request_response_config is not None:
+            result['LogRequestResponseConfig'] = self.log_request_response_config
 
         if self.no_supported_config_list is not None:
             result['NoSupportedConfigList'] = self.no_supported_config_list
@@ -355,6 +413,9 @@ class GetGatewayConfigResponseBodyData(DaraModel):
         if m.get('LogFilterConfig') is not None:
             self.log_filter_config = m.get('LogFilterConfig')
 
+        if m.get('LogRequestResponseConfig') is not None:
+            self.log_request_response_config = m.get('LogRequestResponseConfig')
+
         if m.get('NoSupportedConfigList') is not None:
             self.no_supported_config_list = m.get('NoSupportedConfigList')
 
@@ -406,15 +467,33 @@ class GetGatewayConfigResponseBodyDataXtraceDetails(DaraModel):
         trace_on: bool = None,
         trace_type: str = None,
     ):
+        # The gateway ID.
         self.gateway_id = gateway_id
+        # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
+        # The time when the Tracing Analysis information was created.
         self.gmt_create = gmt_create
+        # The time when the Tracing Analysis information was modified.
         self.gmt_modified = gmt_modified
+        # The ID of the Tracing Analysis information.
         self.id = id
+        # The sampling rate (%).
         self.sample = sample
+        # The SkyWalking service ID for self-managed SkyWalking.
         self.service_id = service_id
+        # The SkyWalking service port for self-managed SkyWalking.
         self.service_port = service_port
+        # Specifies whether Tracing Analysis is enabled.
         self.trace_on = trace_on
+        # The Tracing Analysis type. Valid values:
+        # 
+        # - XTRACE: Managed Service for OpenTelemetry with the Zipkin Tracing Analysis protocol.
+        # 
+        # - SKYWALKING: Self-managed SkyWalking.
+        # 
+        # - OPENTELEMETRY: Managed Service for OpenTelemetry with the OpenTelemetry Tracing Analysis protocol.
+        # 
+        # - OTSKYWALKING: Managed Service for OpenTelemetry with the SkyWalking Tracing Analysis protocol.
         self.trace_type = trace_type
 
     def validate(self):
@@ -504,14 +583,27 @@ class GetGatewayConfigResponseBodyDataSlsConfigDetails(DaraModel):
         nginx_compatible: bool = None,
         project_name: str = None,
     ):
+        # The gateway ID.
         self.gateway_id = gateway_id
+        # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
+        # Not available for use.
         self.gmt_create = gmt_create
+        # Not available for use.
         self.gmt_modified = gmt_modified
+        # Not available for use.
         self.id = id
+        # Specifies whether log delivery is enabled.
         self.log_on = log_on
+        # The destination Logstore for log delivery. Valid values:
+        # 
+        # - mse_gw_access_log: Nginx Ingress compatibility is disabled.
+        # 
+        # - nginx-ingress: Nginx Ingress compatibility is enabled.
         self.log_store_name = log_store_name
+        # Specifies whether Nginx Ingress compatibility is enabled.
         self.nginx_compatible = nginx_compatible
+        # The destination Simple Log Service project for log delivery.
         self.project_name = project_name
 
     def validate(self):
@@ -588,7 +680,9 @@ class GetGatewayConfigResponseBodyDataEnableXffTrustedCidrs(DaraModel):
         enable: bool = None,
         ip_list_content: str = None,
     ):
+        # Specifies whether to enable the configuration for trusted X-Forwarded-For source CIDR blocks.
         self.enable = enable
+        # The list of trusted source IP addresses or CIDR blocks.
         self.ip_list_content = ip_list_content
 
     def validate(self):
@@ -625,9 +719,13 @@ class GetGatewayConfigResponseBodyDataEnableK8sSourceWorkloadFilter(DaraModel):
         label_key: str = None,
         label_value: str = None,
     ):
+        # Specifies whether to enable tag filtering for Kubernetes service source workloads.
         self.enable = enable
+        # The tag filtering method. Valid values: EQUAL (matches the specified tag) and NOT_EQUAL (excludes the specified tag).
         self.filter_opt = filter_opt
+        # The tag key used to filter Kubernetes workloads.
         self.label_key = label_key
+        # The tag value used to filter Kubernetes workloads.
         self.label_value = label_value
 
     def validate(self):

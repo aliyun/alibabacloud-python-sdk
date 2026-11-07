@@ -11,17 +11,17 @@ class ListClusterVersionsRequest(DaraModel):
         cluster_type: str = None,
         mse_version: str = None,
     ):
-        # The language of the response. Valid values:
+        # The language of the returned information. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
-        # The type of the instance. Valid values: ZooKeeper, Nacos-Ans, and Eureka.
+        # The cluster type. Valid values: ZooKeeper, Nacos-Ans, and Eureka.
         self.cluster_type = cluster_type
-        # The instance edition. Valid values:
+        # Valid values:
         # 
-        # *   `mse_dev`: Developer Edition.
-        # *   `mse_pro`: Professional Edition. This is the default value.
+        # - `mse_dev`: Developer Edition.
+        # - `mse_pro`: Professional Edition (default).
         self.mse_version = mse_version
 
     def validate(self):

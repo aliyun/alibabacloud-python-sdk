@@ -14,23 +14,21 @@ class AddGatewaySlbResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code returned.
+        # The response code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message returned.
-        # 
-        # *   If the request is successful, a success message is returned.
-        # *   If the request fails, an error message is returned.
+        # The returned message.
+        # - If the request is successful, a success message is returned.
+        # - If the request fails, the cause of the failure is returned.
         self.message = message
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):

@@ -17,14 +17,26 @@ class CreateNacosMcpServerRequest(DaraModel):
         tool_specification: str = None,
         yaml_config: str = None,
     ):
+        # The language of the response. Valid values: zh (Chinese, default) and en (English).
         self.accept_language = accept_language
+        # Specifies whether to encrypt the MCP tool specification. Valid values:
+        # 
+        # - `true`: Encrypts the specification.
+        # - `false`: Does not encrypt the specification. This is the default value.
         self.encrypt_tool_spec = encrypt_tool_spec
+        # The JSON string of the endpoint specification.
         self.endpoint_specification = endpoint_specification
+        # The instance ID.
         self.instance_id = instance_id
+        # The namespace ID.
         self.namespace_id = namespace_id
+        # The service name.
         self.server_name = server_name
+        # The JSON string of the server specification.
         self.server_specification = server_specification
+        # The JSON string of the tool specification.
         self.tool_specification = tool_specification
+        # The YAML configuration of the AI gateway. This parameter is optional.
         self.yaml_config = yaml_config
 
     def validate(self):

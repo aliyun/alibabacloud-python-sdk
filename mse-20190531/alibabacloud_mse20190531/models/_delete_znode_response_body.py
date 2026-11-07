@@ -15,20 +15,19 @@ class DeleteZnodeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details of the data.
+        # The data overview.
         self.data = data
-        # The error code returned if the request failed.
+        # The error code.
         self.error_code = error_code
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_code = http_code
-        # The message returned.
+        # The message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # The request result. Valid values:
+        # - `true`: The request succeeded.
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -91,16 +90,15 @@ class DeleteZnodeResponseBodyData(DaraModel):
         name: str = None,
         path: str = None,
     ):
-        # The data of the node.
+        # The list of node data.
         self.data = data
-        # Indicates whether the node information was returned. Valid values:
-        # 
-        # *   `true`: The node information was returned.
-        # *   `false`: The node information failed to be returned.
+        # The node list information. Valid values:
+        # - `true`: The information is returned successfully.
+        # - `false`: The information fails to be returned.
         self.dir = dir
-        # The name of the node.
+        # The node name.
         self.name = name
-        # The path of the node.
+        # The node path.
         self.path = path
 
     def validate(self):

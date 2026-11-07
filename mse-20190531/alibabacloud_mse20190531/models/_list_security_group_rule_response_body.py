@@ -17,20 +17,19 @@ class ListSecurityGroupRuleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
+        # The return code.
         self.code = code
         # The returned result.
         self.data = data
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message returned.
+        # The response message.
         self.message = message
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # The request result. Valid values:
+        # - `true`: The request is successful.
+        # - `false`: The request fails.
         self.success = success
 
     def validate(self):
@@ -105,10 +104,11 @@ class ListSecurityGroupRuleResponseBodyData(DaraModel):
         port_range: str = None,
         security_group_id: str = None,
     ):
+        # The list of IP address CIDR blocks with authorization to access the gateway.
         self.auth_cidrs = auth_cidrs
         # The rule description.
         self.description = description
-        # The gateway ID.
+        # The ID of the gateway.
         self.gateway_id = gateway_id
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id

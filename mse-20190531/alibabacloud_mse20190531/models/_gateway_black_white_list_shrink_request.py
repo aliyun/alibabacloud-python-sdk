@@ -14,15 +14,15 @@ class GatewayBlackWhiteListShrinkRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
+        # The language of the response. Valid values: zh (Chinese, default) and en (English).
         self.accept_language = accept_language
-        # This parameter is unavailable for public use.
+        # This parameter is not available.
         self.desc_sort = desc_sort
-        # The filter parameters.
+        # parse from filterParams
         self.filter_params_shrink = filter_params_shrink
-        # This parameter is unavailable for public use.
+        # This parameter is not available.
         self.order_item = order_item
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. Valid values: integers greater than 0. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 1.
         self.page_size = page_size

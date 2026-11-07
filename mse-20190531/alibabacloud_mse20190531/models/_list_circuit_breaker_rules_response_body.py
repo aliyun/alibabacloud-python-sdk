@@ -19,15 +19,15 @@ class ListCircuitBreakerRulesResponseBody(DaraModel):
     ):
         # The response code.
         self.code = code
-        # The details of the rule.
+        # The rules.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The returned message.
+        # The response message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # The result of the request.
         self.success = success
 
     def validate(self):
@@ -90,7 +90,7 @@ class ListCircuitBreakerRulesResponseBodyData(DaraModel):
         result: List[main_models.ListCircuitBreakerRulesResponseBodyDataResult] = None,
         total_size: int = None,
     ):
-        # The page number.
+        # The first page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
@@ -170,7 +170,7 @@ class ListCircuitBreakerRulesResponseBodyDataResult(DaraModel):
         self.app_id = app_id
         # The name of the application.
         self.app_name = app_name
-        # Indicates whether the rule was enabled.
+        # Indicates whether the rule is enabled.
         self.enable = enable
         # The behavior that was bound to the rule.
         self.fallback_object = fallback_object
@@ -184,44 +184,19 @@ class ListCircuitBreakerRulesResponseBodyDataResult(DaraModel):
         self.min_request_amount = min_request_amount
         # The microservice namespace to which the application belongs.
         self.namespace = namespace
-        # The region in which the instance resides.
+        # The region in which the cluster resides.
         self.region_id = region_id
-        # The name of the interface to which the rule is applicable. The interface name must be the same as the name on the interface details page in the console.
+        # The name of the interface to which the rule applies. The interface name must be the same as that displayed on the API Details page in the console.
         self.resource = resource
+        # The interface resource type.
         self.resource_type = resource_type
-        # The period in which circuit breaking is implemented. Unit: milliseconds. If circuit breaking is implemented on the requests for the route, the calls to all the requests for the route fail in the configured circuit breaking period.
+        # The period in which circuit breaking is implemented. Unit: milliseconds. If circuit breaking is implemented on the resources, all requests quickly fail in the configured duration.
         self.retry_timeout_ms = retry_timeout_ms
         # The ID of the rule.
         self.rule_id = rule_id
         # The length of the time window. Unit: milliseconds. The valid range is from 1 second to 120 minutes.
         self.stat_interval_ms = stat_interval_ms
         # The threshold type.
-        # 
-        # Valid values:
-        # 
-        # *   0
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     slow call proportion
-        # 
-        #     <!-- -->
-        # 
-        # *   1
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     abnormal proportion
-        # 
-        #     <!-- -->
         self.strategy = strategy
         # A percentage threshold for triggering circuit breaking. Valid values: 0-1. These values represent 0% to 100%.
         self.threshold = threshold

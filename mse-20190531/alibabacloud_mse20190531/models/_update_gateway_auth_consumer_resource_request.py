@@ -15,20 +15,20 @@ class UpdateGatewayAuthConsumerResourceRequest(DaraModel):
         gateway_unique_id: str = None,
         resource_list: List[main_models.UpdateGatewayAuthConsumerResourceRequestResourceList] = None,
     ):
-        # The language of the response. Valid values:
+        # The language of the returned information. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
-        # The gateway authentication consumer ID.
+        # The ID of the gateway authentication consumer.
         # 
         # This parameter is required.
         self.consumer_id = consumer_id
-        # The unique ID of the gateway.
+        # UpdateGatewayAuthConsumerResource
         # 
         # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
-        # The gateway authentication consumer ID.
+        # The list of resources.
         self.resource_list = resource_list
 
     def validate(self):
@@ -85,7 +85,7 @@ class UpdateGatewayAuthConsumerResourceRequestResourceList(DaraModel):
     ):
         # The route ID.
         self.route_id = route_id
-        # The name of the route.
+        # The route name.
         self.route_name = route_name
 
     def validate(self):

@@ -16,18 +16,19 @@ class QuerySwimmingLaneByIdResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details of the data.
+        # The returned data.
         self.data = data
-        # The error code returned if the request failed.
+        # The error code.
         self.error_code = error_code
-        # The message returned.
+        # The message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -94,32 +95,33 @@ class QuerySwimmingLaneByIdResponseBodyData(DaraModel):
         status: int = None,
         tag: str = None,
     ):
+        # This parameter is discontinued. This parameter is used to specify whether to enable grayscale by path when Java gateway is used as the entry for the swimming lane group.
         self.path_independent_percentage_enable = path_independent_percentage_enable
-        # 泳道开关
+        # The swimming lane switch.
         self.enable = enable
-        # 是否开启规则。
+        # Specifies whether to enable the rule. Valid values:
         self.enable_rules = enable_rules
-        # 入口应用规则
+        # The entry application rule.
         self.entry_rule = entry_rule
-        # 入口应用规则详情
+        # The details of the entry application rules.
         self.entry_rules = entry_rules
-        # MSE网关路由规则
+        # The MSE gateway routing rule.
         self.gateway_swimming_lane_route_json = gateway_swimming_lane_route_json
-        # 规则创建时间
+        # Rule Created At
         self.gmt_create = gmt_create
-        # 规则修改时间
+        # Rule Modified At
         self.gmt_modified = gmt_modified
-        # 泳道组Id。
+        # The swimming lane group ID.
         self.group_id = group_id
-        # 泳道ID
+        # The swimming lane ID.
         self.id = id
-        # 泳道名称
+        # The swimming lane name.
         self.name = name
-        # 区域ID。
+        # The region ID.
         self.region_id = region_id
-        # 泳道状态
+        # The swimming lane status.
         self.status = status
-        # 泳道对应的标签。
+        # The tag corresponding to the swimming lane.
         self.tag = tag
 
     def validate(self):
@@ -236,13 +238,13 @@ class QuerySwimmingLaneByIdResponseBodyDataEntryRules(DaraModel):
         paths: List[str] = None,
         rest_items: List[main_models.QuerySwimmingLaneByIdResponseBodyDataEntryRulesRestItems] = None,
     ):
-        # 条件
+        # The condition.
         self.condition = condition
-        # 路径
+        # The path.
         self.path = path
-        # 路径列表
+        # The list of paths.
         self.paths = paths
-        # Rest匹配规则列表
+        # The Restful matching rules.
         self.rest_items = rest_items
 
     def validate(self):
@@ -305,25 +307,25 @@ class QuerySwimmingLaneByIdResponseBodyDataEntryRulesRestItems(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # 匹配符
+        # The matching character.
         self.cond = cond
-        # 数值
+        # The number.
         self.datum = datum
-        # 除数
+        # The divisor.
         self.divisor = divisor
-        # 名称
+        # The name.
         self.name = name
-        # 名称列表
+        # The names.
         self.name_list = name_list
-        # 操作符
+        # The filter operator.
         self.operator = operator
-        # 百分比
+        # The percentage.
         self.rate = rate
-        # 余数
+        # The remainder.
         self.remainder = remainder
-        # 匹配类型
+        # The matching type.
         self.type = type
-        # 值
+        # The value.
         self.value = value
 
     def validate(self):

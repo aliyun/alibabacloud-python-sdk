@@ -20,24 +20,25 @@ class ListMigrationTaskResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The array structure.
+        # The data array.
         self.data = data
-        # The error code returned if the request failed.
+        # The error code.
         self.error_code = error_code
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_code = http_code
-        # The message returned.
+        # The returned message.
         self.message = message
-        # The number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
         # The total number of entries.
         self.total_count = total_count
@@ -135,26 +136,29 @@ class ListMigrationTaskResponseBodyData(DaraModel):
         target_instance_id: str = None,
         user_id: str = None,
     ):
-        # The type of the instance.
+        # The type of the cluster. Valid values:
         # 
-        # *   Nacos-Ans
-        # *   ZooKeeper
-        # *   Eureka
+        # - Nacos-Ans
+        # 
+        # - ZooKeeper
+        # 
+        # - Eureka
         self.cluster_type = cluster_type
-        # The creation time.
+        # The time when the task was created.
         self.gmt_create = gmt_create
-        # The update time.
+        # The time when the task was updated.
         self.gmt_modified = gmt_modified
-        # The ID of the job.
+        # The ID of the task.
         self.id = id
-        # The address of the source instance node.
+        # The endpoint of the source instance.
         self.origin_instance_address = origin_instance_address
         # The name of the source instance.
         self.origin_instance_name = origin_instance_name
-        # The list of namespaces. This parameter is optional if applications are migrated from a Nacos instance.
+        # The list of namespaces. This parameter is optional when the source instance is a Nacos instance.
         self.origin_instance_namespace = origin_instance_namespace
         # The description.
         self.project_desc = project_desc
+        # The synchronization type.
         self.sync_type = sync_type
         # The name of the destination instance.
         self.target_cluster_name = target_cluster_name

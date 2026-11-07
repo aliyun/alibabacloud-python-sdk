@@ -20,26 +20,27 @@ class ListListenersByIpResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The error code returned if the request failed.
+        # Error code.
         self.error_code = error_code
-        # The HTTP status code.
+        # HTTP status code.
         self.http_code = http_code
-        # The information about listeners.
+        # Listener information.
         self.listeners = listeners
-        # The message returned.
+        # Response message.
         self.message = message
-        # The page number of the returned page.
+        # Current page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # Size of the current page.
         self.page_size = page_size
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Request result, with the following values:
         # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # - `true`: The request is successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
-        # The total number of returned instances.
+        # Total number of instances.
         self.total_count = total_count
 
     def validate(self):
@@ -126,12 +127,13 @@ class ListListenersByIpResponseBodyListeners(DaraModel):
         md_5: str = None,
         namespace_id: str = None,
     ):
-        # The ID of the data.
+        # Data ID.
         self.data_id = data_id
-        # The group.
+        # Group.
         self.group = group
-        # The verification string.
+        # Verification string.
         self.md_5 = md_5
+        # Namespace ID
         self.namespace_id = namespace_id
 
     def validate(self):

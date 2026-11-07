@@ -16,17 +16,17 @@ class UpdatePluginConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
+        # The code.
         self.code = code
-        # The ID of the plug-in configuration.
+        # The ID value.
         self.data = data
-        # The dynamic part in the error message.
+        # The placeholder in the dynamic error message.
         self.dynamic_message = dynamic_message
-        # The error code that is returned.
+        # The error code.
         self.error_code = error_code
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message returned.
+        # The returned message.
         self.message = message
         # The ID of the request.
         self.request_id = request_id

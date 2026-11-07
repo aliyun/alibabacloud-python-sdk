@@ -19,21 +19,48 @@ class AddAuthPolicyRequest(DaraModel):
         region: str = None,
         source: str = None,
     ):
+        # The language of the response. Valid values: zh-CN (Chinese, default) and en-US (English).
         self.accept_language = accept_language
+        # The ID of the application.
         self.app_id = app_id
+        # The content of the service authentication rule.
+        # 
         # This parameter is required.
         self.auth_rule = auth_rule
+        # The type of the rule. Valid values:
+        # 
+        # - 0: application dimension.
+        # - 1: namespace dimension.
         self.auth_type = auth_type
+        # Specifies whether the authentication rule is enabled. Valid values:
+        # 
+        # - `true`: Enabled.
+        # - `false`: Disabled.
+        # 
         # This parameter is required.
         self.enable = enable
+        # The ID of the namespace in the Kubernetes cluster.
         self.k_8s_namespace = k_8s_namespace
+        # The name of the rule.
+        # 
         # This parameter is required.
         self.name = name
+        # The MSE namespace to which the application belongs.
         self.namespace = namespace
+        # The protocol type. Valid values:
+        # 
+        # - **SPRING_CLOUD**
+        # - **DUBBO**
+        # - **istio**
+        # 
         # This parameter is required.
         self.protocol = protocol
+        # The region.
+        # 
         # This parameter is required.
         self.region = region
+        # The source. Valid values: edasmsc.
+        # 
         # This parameter is required.
         self.source = source
 

@@ -12,16 +12,15 @@ class AddGatewayServiceVersionRequest(DaraModel):
         service_id: int = None,
         service_version: str = None,
     ):
-        # The language of the response. Valid values:
-        # 
-        # *   zh: Chinese
-        # *   en: English
+        # The language of the returned information. Valid values:
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
-        # The unique ID of the gateway.
+        # The unique gateway ID.
         self.gateway_unique_id = gateway_unique_id
-        # The ID of the service.
+        # The service ID.
         self.service_id = service_id
-        # The version of the service.
+        # The service version.
         self.service_version = service_version
 
     def validate(self):

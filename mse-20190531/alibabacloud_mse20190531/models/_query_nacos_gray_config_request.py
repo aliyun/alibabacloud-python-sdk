@@ -16,15 +16,25 @@ class QueryNacosGrayConfigRequest(DaraModel):
         region_id: str = None,
         request_pars: str = None,
     ):
+        # The language of the response. Valid values: zh (default): Chinese. en: English.
         self.accept_language = accept_language
+        # The DataId of the configuration.
+        # 
         # This parameter is required.
         self.data_id = data_id
+        # The name of the canary release rule.
         self.gray_name = gray_name
+        # The configuration group.
         self.group = group
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The namespace ID.
         self.namespace_id = namespace_id
+        # The region where the cluster resides.
         self.region_id = region_id
+        # This field is deprecated.
         self.request_pars = request_pars
 
     def validate(self):

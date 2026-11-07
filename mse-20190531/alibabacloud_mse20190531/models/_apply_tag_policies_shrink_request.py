@@ -18,8 +18,8 @@ class ApplyTagPoliciesShrinkRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
         # The ID of the application.
         # 
@@ -27,15 +27,15 @@ class ApplyTagPoliciesShrinkRequest(DaraModel):
         self.app_id = app_id
         # The name of the application.
         self.app_name = app_name
-        # Specifies whether to enable the routing rule.
+        # Specifies whether the rule is enabled.
         self.enable = enable
-        # The Microservices Engine (MSE) namespace to which the application belongs.
+        # The MSE namespace to which the application belongs.
         self.namespace = namespace
-        # Optional. The ID of the namespace.
+        # The namespace ID. This parameter is optional.
         self.namespace_id = namespace_id
-        # The region ID.
+        # The region.
         self.region = region
-        # The details of the routing rule.
+        # The routing rules.
         self.rules_shrink = rules_shrink
 
     def validate(self):

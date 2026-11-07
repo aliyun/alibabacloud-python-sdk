@@ -20,26 +20,25 @@ class ListListenersByConfigResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The error code returned if the request failed.
+        # The error code.
         self.error_code = error_code
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_code = http_code
-        # The information about listeners.
+        # The listener information.
         self.listeners = listeners
-        # The message returned.
+        # The response message.
         self.message = message
-        # The page number of the returned page.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The size of the current page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # The request result. Valid values:
+        # - `true`: The request was successful.
+        # - `false`: The request failed.
         self.success = success
-        # The total number of entries returned.
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -129,17 +128,19 @@ class ListListenersByConfigResponseBodyListeners(DaraModel):
         status: str = None,
         version: str = None,
     ):
-        # The IP address.
+        # IP。
         self.ip = ip
-        # The label of the listener.
+        # The labels of the listener.
         self.labels = labels
+        # The name of the canary release rule matched by the current listener.
         self.match_rule_name = match_rule_name
+        # The type of the matched canary release rule.
         self.match_rule_type = match_rule_type
-        # The verification string.
+        # The checksum string.
         self.md_5 = md_5
-        # The status.
+        # Indicates whether the push is successful.
         self.status = status
-        # The current version of the listener. Valid values: gray and normal.
+        # The current version of the listener. Valid values: gray (canary release version) or normal (production version).
         self.version = version
 
     def validate(self):

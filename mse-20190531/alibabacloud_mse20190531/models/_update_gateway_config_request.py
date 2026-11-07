@@ -12,11 +12,68 @@ class UpdateGatewayConfigRequest(DaraModel):
         config_value: str = None,
         gateway_unique_id: str = None,
     ):
+        # The language in which you want to display the results. Valid values: zh (default): Chinese. en: English.
         self.accept_language = accept_language
+        # The configuration name of the parameter. Valid values:
+        # 
+        # - EnableHttp2
+        # 
+        # - DownstreamIdleTime
+        # 
+        # - PreserveHeaderFormat
+        # 
+        # - UpstreamIdleTimeout
+        # 
+        # - EnableXffTrustedCidrs
+        # 
+        # - EnableK8sSourceWorkloadFilter
+        # 
         # This parameter is required.
         self.config_name = config_name
+        # The configuration value of the parameter. Examples:
+        # 
+        # - EnableHttp2
+        # 
+        # ```
+        # true / false
+        # ```
+        # 
+        # - DownstreamIdleTime
+        # 
+        # ```
+        # 15
+        # ```
+        # 
+        # - PreserveHeaderFormat
+        # 
+        # ```
+        # true / false
+        # ```
+        # 
+        # - UpstreamIdleTimeout
+        # 
+        # ```
+        # 60
+        # ```
+        # 
+        # - EnableXffTrustedCidrs
+        # 
+        # ```json
+        # {"enable":true,"ipListContent":"192.168.1.0/24
+        # 2.2.2.2"}
+        # ```
+        # 
+        # - EnableK8sSourceWorkloadFilter
+        # 
+        # ```json
+        # 	
+        # {"enable":true,"filterOpt":"EQUAL","labelKey":"key","labelValue":"value"}
+        # ```
+        # 
         # This parameter is required.
         self.config_value = config_value
+        # The unique ID of the gateway.
+        # 
         # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
 

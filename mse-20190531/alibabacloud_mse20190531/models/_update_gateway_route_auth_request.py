@@ -16,10 +16,10 @@ class UpdateGatewayRouteAuthRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # - en: English
         self.accept_language = accept_language
-        # The authentication configurations.
+        # The authentication configuration.
         # 
         # This parameter is required.
         self.auth_json = auth_json
@@ -85,9 +85,9 @@ class UpdateGatewayRouteAuthRequestAuthJSON(DaraModel):
         self,
         type: str = None,
     ):
-        # The authentication type. If an empty string is passed, no authentication type is available. Valid values:
+        # The authentication type. An empty string indicates that authentication is disabled. Valid values:
         # 
-        # *   JWT
+        # - JWT
         self.type = type
 
     def validate(self):

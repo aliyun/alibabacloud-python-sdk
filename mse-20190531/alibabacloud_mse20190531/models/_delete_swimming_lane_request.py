@@ -12,15 +12,14 @@ class DeleteSwimmingLaneRequest(DaraModel):
         namespace: str = None,
     ):
         # The language of the response. Valid values:
-        # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
-        # The ID of the lane.
+        # The ID of the traffic lane.
         # 
         # This parameter is required.
         self.lane_id = lane_id
-        # The name of the Microservices Engine (MSE) namespace.
+        # The name of the MSE namespace.
         self.namespace = namespace
 
     def validate(self):

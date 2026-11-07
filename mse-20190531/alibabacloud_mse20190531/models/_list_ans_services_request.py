@@ -22,33 +22,35 @@ class ListAnsServicesRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # 
+        # - en: English
         self.accept_language = accept_language
         # The ID of the cluster.
         # 
-        # > This operation contains both the InstanceId and ClusterId parameters. You must specify one of them.
+        # > You must specify either this parameter or InstanceId.
         self.cluster_id = cluster_id
-        # 查询服务下某个集群的实例列表是所需要的参数
+        # The parameter that is required to query the list of instances in a specific cluster of a service.
         self.cluster_name = cluster_name
         # The name of the contact group.
         self.group_name = group_name
-        # Specifies whether to query the number of instances that are used for the service.
+        # Specifies whether to query the number of service instances.
         self.has_ip_count = has_ip_count
         # The ID of the instance.
         # 
-        # > This operation contains both the InstanceId and ClusterId parameters. You must specify one of them.
+        # > You must specify either this parameter or ClusterId.
         self.instance_id = instance_id
         # The ID of the namespace.
         self.namespace_id = namespace_id
-        # The number of the page to return.
+        # The page number.
         # 
         # This parameter is required.
         self.page_num = page_num
-        # The number of entries returned per page.
+        # The number of instances to display on each page.
         # 
         # This parameter is required.
         self.page_size = page_size
+        # The region.
         self.region_id = region_id
         # The extended request parameters in the JSON format.
         self.request_pars = request_pars

@@ -17,43 +17,17 @@ class ListFlowRulesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code.
         self.code = code
-        # The details of the data.
+        # The node data.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The returned message.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     The request was successful.
-        # 
-        #     <!-- -->
-        # 
-        # *   false
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     The request failed.
-        # 
-        #     <!-- -->
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -120,7 +94,7 @@ class ListFlowRulesResponseBodyData(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The data returned.
+        # The returned collection.
         self.result = result
         # The total number of entries.
         self.total_size = total_size
@@ -190,79 +164,35 @@ class ListFlowRulesResponseBodyDataResult(DaraModel):
         threshold: float = None,
         traffic_tags: Dict[str, Any] = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
         # The application name.
         self.app_name = app_name
-        # The throttling effect.
-        # 
-        # Valid values:
-        # 
-        # *   0
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     fast failure
-        # 
-        #     <!-- -->
-        # 
-        # *   2
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     in queue
-        # 
-        #     <!-- -->
+        # The flow control behavior.
         self.control_behavior = control_behavior
-        # Indicates whether the throttling rule was enabled.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   false
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # Indicates whether the rule is enabled.
         self.enable = enable
-        # The throttling behavior.
+        # The fallback behavior.
         self.fallback_object = fallback_object
-        # Requests source application.
+        # The source application of the request.
         self.limit_app = limit_app
-        # The timeout period for queuing when the value of ControlBehavior is set to 2. Unit: milliseconds.
+        # The timeout period in milliseconds when the flow control behavior is set to queuing.
         self.max_queueing_time_ms = max_queueing_time_ms
-        # The statistical dimension. The value 1 indicates that the number of accepted requests is used for statistics.
+        # The statistical dimension. A value of 1 indicates the number of passed requests.
         self.metric_type = metric_type
         # The namespace.
         self.namespace = namespace
-        # The ID of the region in which the instance resides.
+        # The region ID.
         self.region_id = region_id
-        # The name of the interface resource.
+        # The API resource name.
         self.resource = resource
-        # Interface resource type.
+        # The API resource category.
         self.resource_type = resource_type
         # The rule ID.
         self.rule_id = rule_id
-        # The throttling threshold.
+        # The threshold of the flow control rule.
         self.threshold = threshold
-        # A reserved parameter.
+        # The reserved field.
         self.traffic_tags = traffic_tags
 
     def validate(self):

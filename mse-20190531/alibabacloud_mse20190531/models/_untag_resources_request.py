@@ -16,34 +16,35 @@ class UntagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
-        # The language of the response. Valid values:
+        # The language of the response information:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # - en: English
         self.accept_language = accept_language
-        # Specifies whether to delete all tags. This parameter takes effect only when the TagKey.N parameter is not specified. Valid values:
+        # Specifies whether to delete all tags. This parameter takes effect only when TagKey.N is empty. Valid values: 
         # 
-        # *   true
-        # *   false
+        # - true
+        # - false
         # 
         # Default value: false.
         self.all = all
-        # The ID of the region.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource IDs. A maximum of 50 resource IDs can be specified.
+        # The resource IDs. You can specify up to 50 resource IDs.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The type of the resource. Valid values:
+        # The resource type. Valid values:
         # 
-        # *   CLUSTER: MSE instance
-        # *   GATEWAY: cloud-native gateway
+        # - CLUSTER: registration and configuration center.
+        # 
+        # - GATEWAY: cloud-native gateway.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tag keys. A maximum of 20 tag keys are supported.
+        # The tag keys. You can specify up to 20 tag keys.
         self.tag_key = tag_key
 
     def validate(self):

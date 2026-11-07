@@ -13,7 +13,9 @@ class ListGatewayFlowRuleResponseBody(DaraModel):
         data: main_models.ListGatewayFlowRuleResponseBodyData = None,
         request_id: str = None,
     ):
+        # The Meta return information.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -53,10 +55,15 @@ class ListGatewayFlowRuleResponseBodyData(DaraModel):
         results: List[main_models.ListGatewayFlowRuleResponseBodyDataResults] = None,
         total_size: int = None,
     ):
+        # The page number of the instance list.
         self.page_number = page_number
+        # The number of rows per page set during input.
         self.page_size = page_size
+        # The returned data.
         self.result = result
+        # The paged data collection.
         self.results = results
+        # The total number of instances queried.
         self.total_size = total_size
 
     def validate(self):
@@ -140,21 +147,55 @@ class ListGatewayFlowRuleResponseBodyDataResults(DaraModel):
         stat_duration_ms: int = None,
         threshold: int = None,
     ):
+        # The Web fallback behavior type.
+        # 
+        # 0: Return specified content
+        # 
+        # 1: Redirect to specified page
         self.behavior_type = behavior_type
+        # The encoding type.
+        # 
+        # 0: Plain text
+        # 
+        # 1: JSON
         self.body_encoding = body_encoding
+        # Indicates whether the rule is enabled.
+        # 
+        # 0: Disabled.
+        # 
+        # 1: Enabled.
         self.enable = enable
+        # The gateway ID.
         self.gateway_id = gateway_id
+        # The unique gateway identity ID.
         self.gateway_unique_id = gateway_unique_id
+        # The routing throttle rule ID.
         self.id = id
+        # The filtered rule IDs.
         self.id_list = id_list
+        # The threshold conversion mode.
+        # 
+        # 0: Single machine.
+        # 
+        # 1: Cluster.
+        # 
+        # 2: Cluster to single machine.
         self.limit_mode = limit_mode
+        # The custom headers, entered as key-value pairs.
         self.response_additional_headers = response_additional_headers
+        # The HTTP response text.
         self.response_content_body = response_content_body
+        # The redirect URL.
         self.response_redirect_url = response_redirect_url
+        # The HTTP status code.
         self.response_status_code = response_status_code
+        # The routing ID.
         self.route_id = route_id
+        # The routing name.
         self.route_name = route_name
+        # The statistics duration.
         self.stat_duration_ms = stat_duration_ms
+        # The overall QPS threshold.
         self.threshold = threshold
 
     def validate(self):
@@ -283,17 +324,41 @@ class ListGatewayFlowRuleResponseBodyDataResult(DaraModel):
         route_name: str = None,
         threshold: int = None,
     ):
+        # The Web fallback behavior type.
+        # 
+        # 0: Return specified content
+        # 
+        # 1: Redirect to specified page
         self.behavior_type = behavior_type
+        # The encoding type.
+        # 
+        # 0: Plain text
+        # 
+        # 1: JSON
         self.body_encoding = body_encoding
+        # Indicates whether the rule is enabled.
+        # 
+        # 0: Disabled.
+        # 
+        # 1: Enabled.
         self.enable = enable
+        # The gateway ID.
         self.gateway_id = gateway_id
+        # The unique gateway identity ID.
         self.gateway_unique_id = gateway_unique_id
+        # The routing throttle rule ID.
         self.id = id
+        # The HTTP response text.
         self.response_content_body = response_content_body
+        # The redirect URL.
         self.response_redirect_url = response_redirect_url
+        # The HTTP status code.
         self.response_status_code = response_status_code
+        # The routing ID.
         self.route_id = route_id
+        # The routing name.
         self.route_name = route_name
+        # The overall QPS threshold.
         self.threshold = threshold
 
     def validate(self):

@@ -15,15 +15,15 @@ class GatewayBlackWhiteListRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
+        # The language of the response. Valid values: zh (Chinese, default) and en (English).
         self.accept_language = accept_language
-        # This parameter is unavailable for public use.
+        # This parameter is not available.
         self.desc_sort = desc_sort
-        # The filter parameters.
+        # parse from filterParams
         self.filter_params = filter_params
-        # This parameter is unavailable for public use.
+        # This parameter is not available.
         self.order_item = order_item
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. Valid values: integers greater than 0. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 1.
         self.page_size = page_size
@@ -93,21 +93,23 @@ class GatewayBlackWhiteListRequestFilterParams(DaraModel):
     ):
         # The gateway ID.
         self.gateway_id = gateway_id
-        # The unique ID of the gateway. If this parameter is used together with the GatewayId parameter, the value of the GatewayId parameter is used.
+        # The unique identifier of the gateway. If both GatewayUniqueId and GatewayId are specified, GatewayId takes precedence.
         self.gateway_unique_id = gateway_unique_id
-        # This parameter is unavailable for public use.
+        # This parameter is not available.
         self.is_white = is_white
-        # This parameter is unavailable for public use.
+        # This parameter is not available.
         self.resource_type = resource_type
-        # The content that you want to query.
+        # The search content.
         self.search_content = search_content
         # The query type. Valid values:
         # 
-        # *   ROUTE: The list is queried by route. If the value of this parameter is ROUTE, set the SearchContent parameter to the route name.
-        # *   DOMAIN: The list is queried by domain name. If the value of this parameter is DOMAIN, set the SearchContent parameter to the domain name.
-        # *   IP: The list is queried by specified IP address. If the value of this parameter is IP, set the SearchContent parameter to the IP address.
+        # - ROUTE: searches by route. Set SearchContent to the route name.
+        # 
+        # - DOMAIN: searches by domain name. Set SearchContent to the domain name.
+        # 
+        # - IP: searches by specified IP address. Set SearchContent to the IP address.
         self.search_type = search_type
-        # This parameter is unavailable for public use.
+        # This parameter is not available.
         self.type = type
 
     def validate(self):

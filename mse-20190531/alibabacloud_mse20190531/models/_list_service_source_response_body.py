@@ -17,20 +17,19 @@ class ListServiceSourceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
+        # The response code.
         self.code = code
-        # The returned data.
+        # The returned results.
         self.data = data
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - `true`: The request is successful.
+        # - `false`: The request fails.
         self.success = success
 
     def validate(self):
@@ -110,11 +109,11 @@ class ListServiceSourceResponseBodyData(DaraModel):
         source_unique_id: str = None,
         type: str = None,
     ):
-        # The ID of the Container Service for Kubernetes (ACK) cluster or the endpoint of the Microservices Engine (MSE) instance.
+        # The ACK ID or the MSE registry address.
         self.address = address
-        # Indicates whether the service source is associated with the gateway. The value 1 indicates that the service source is associated with the gateway.
+        # Indicates whether the binding is completed. A value of 1 indicates that the binding is completed.
         self.binding_with_gateway = binding_with_gateway
-        # The ID of the gateway.
+        # The gateway ID.
         self.gateway_id = gateway_id
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
@@ -126,16 +125,17 @@ class ListServiceSourceResponseBodyData(DaraModel):
         self.group_list = group_list
         # The ID.
         self.id = id
-        # The information about the support for Ingresses by applications.
+        # The Ingress support for application routing.
         self.ingress_options = ingress_options
+        # Indicates whether the source is valid.
         self.invalid = invalid
         # The name.
         self.name = name
-        # The array of root paths of service lists.
+        # The array of root paths for the service list.
         self.path_list = path_list
-        # The type of the service source.
+        # The source type.
         self.source = source
-        # The unique ID of the service source.
+        # The unique identifier of the source.
         self.source_unique_id = source_unique_id
         # The type.
         self.type = type
@@ -254,13 +254,13 @@ class ListServiceSourceResponseBodyDataIngressOptions(DaraModel):
         ingress_class: str = None,
         watch_namespace: str = None,
     ):
-        # Indicates whether Ingresses are enabled.
+        # Specifies whether to enable or disable Ingress.
         self.enable_ingress = enable_ingress
-        # Indicates whether the Ingress status is updated.
+        # Specifies whether to update IngressStatus.
         self.enable_status = enable_status
         # The Ingress class.
         self.ingress_class = ingress_class
-        # The namespace that you want to monitor.
+        # The monitored namespace.
         self.watch_namespace = watch_namespace
 
     def validate(self):

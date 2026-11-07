@@ -21,28 +21,27 @@ class ListNacosConfigsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The status code returned.
+        # The returned code.
         self.code = code
-        # The configurations.
+        # The list of configurations.
         self.configurations = configurations
-        # The error code returned if the request failed.
+        # The error code.
         self.error_code = error_code
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_code = http_code
-        # The message returned.
+        # The returned message.
         self.message = message
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of instances displayed on each page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - `true`: The request is successful.
+        # - `false`: The request fails.
         self.success = success
-        # The total number of returned instances.
+        # The total number of instances.
         self.total_count = total_count
 
     def validate(self):
@@ -137,15 +136,17 @@ class ListNacosConfigsResponseBodyConfigurations(DaraModel):
         group: str = None,
         id: str = None,
     ):
-        # The name of the application.
+        # The application name.
         self.app_name = app_name
+        # The tags of the configuration. Multiple tags are separated by commas.
         self.config_tags = config_tags
-        # The ID of the configuration.
+        # The configuration ID.
         self.data_id = data_id
+        # The description of the configuration item.
         self.description = description
-        # The ID of the group.
+        # The group ID.
         self.group = group
-        # The ID of the application.
+        # The application ID.
         self.id = id
 
     def validate(self):

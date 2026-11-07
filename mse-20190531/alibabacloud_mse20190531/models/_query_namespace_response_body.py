@@ -16,12 +16,15 @@ class QueryNamespaceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The data returned.
+        # The data that is returned.
         self.data = data
         # The error code.
         self.error_code = error_code
+        # The error message returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

@@ -20,24 +20,25 @@ class ListNacosHistoryConfigsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The error code returned if the request failed.
+        # The error code.
         self.error_code = error_code
         # The configuration items.
         self.history_items = history_items
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_code = http_code
-        # The message returned.
+        # The message that is returned for the request.
         self.message = message
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
         # The number of entries returned per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
         # The total number of entries returned.
         self.total_count = total_count
@@ -129,18 +130,19 @@ class ListNacosHistoryConfigsResponseBodyHistoryItems(DaraModel):
         op_type: str = None,
         src_user: str = None,
     ):
-        # The application tag.
+        # The tags of the application.
         self.app_name = app_name
         # The ID of the data.
         self.data_id = data_id
         # The name of the group.
         self.group = group
-        # The ID of the configuration.
+        # The configuration ID.
         self.id = id
         # The timestamp when the configuration was last modified.
         self.last_modified_time = last_modified_time
         # The format of the configuration file.
         self.op_type = op_type
+        # The user who modified this version
         self.src_user = src_user
 
     def validate(self):

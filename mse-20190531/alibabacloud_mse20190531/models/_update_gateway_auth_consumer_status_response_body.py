@@ -17,20 +17,20 @@ class UpdateGatewayAuthConsumerStatusResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. The status code 200 indicates that the request was successful.
+        # The code is used only to synchronize with the success field.
         self.code = code
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the execution is successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Successful.
+        # 
+        # - false: Failed.
         self.data = data
-        # The dynamic part in the error message.
+        # The placeholder in the dynamic error message.
         self.dynamic_code = dynamic_code
-        # The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\* variable in the **ErrMessage** parameter.
-        # 
-        # > If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
+        # The dynamic error message, which is used to replace the **%s** placeholder in the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the value of the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
-        # The error code returned if the request failed.
+        # The error code.
         self.error_code = error_code
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -38,10 +38,11 @@ class UpdateGatewayAuthConsumerStatusResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # *   `true`
-        # *   `false`
+        # - `true`: The request is successful.
+        # 
+        # - `false`: The request fails.
         self.success = success
 
     def validate(self):

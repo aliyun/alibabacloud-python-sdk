@@ -11,14 +11,15 @@ class GetGatewayRouteDetailRequest(DaraModel):
         gateway_unique_id: str = None,
         route_id: int = None,
     ):
-        # The language of the response. Valid values:
+        # Language type of the returned information:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # 
+        # - en: English
         self.accept_language = accept_language
-        # The unique ID of the gateway.
+        # Gateway unique identifier ID.
         self.gateway_unique_id = gateway_unique_id
-        # The ID of the route.
+        # Route ID.
         self.route_id = route_id
 
     def validate(self):

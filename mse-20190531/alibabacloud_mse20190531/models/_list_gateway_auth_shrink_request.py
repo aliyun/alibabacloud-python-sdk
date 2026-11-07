@@ -14,11 +14,17 @@ class ListGatewayAuthShrinkRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The language of the response. Valid values: zh (default): Chinese, en: English.
         self.accept_language = accept_language
+        # The sort order.
         self.desc_sort = desc_sort
+        # The filter conditions. Refer to the examples.
         self.filter_params_shrink = filter_params_shrink
+        # This parameter is not available.
         self.order_item = order_item
+        # The page number.
         self.page_number = page_number
+        # The number of items per page.
         self.page_size = page_size
 
     def validate(self):

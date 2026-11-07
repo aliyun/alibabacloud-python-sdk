@@ -11,14 +11,14 @@ class GetGatewayDomainDetailRequest(DaraModel):
         gateway_unique_id: str = None,
         id: str = None,
     ):
-        # The language of the response. Valid values:
+        # The language of the returned information. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # - en: English
         self.accept_language = accept_language
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
-        # The domain ID.
+        # The domain name ID.
         self.id = id
 
     def validate(self):

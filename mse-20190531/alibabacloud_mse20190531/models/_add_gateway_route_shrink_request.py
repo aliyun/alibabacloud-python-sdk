@@ -26,51 +26,49 @@ class AddGatewayRouteShrinkRequest(DaraModel):
         route_type: str = None,
         services_shrink: str = None,
     ):
-        # The language of the response. Valid values:
-        # 
-        # *   zh: Chinese
-        # *   en: English
+        # The language of the returned information. Valid values:
+        # - zh: Chinese
+        # - en: English
         self.accept_language = accept_language
+        # The route description.
         self.description = description
-        # The type of the destination service. Valid values:
-        # 
-        # *   Single
-        # *   Multiple
-        # *   VersionOriented
-        # *   Mock
-        # *   Redirect
+        # The destination service type. Valid values:
+        # - Single: single service
+        # - Multiple: multiple services
+        # - VersionOriented: tag-based routing
+        # - Mock: mock
+        # - Redirect: redirect
         self.destination_type = destination_type
         # The mock response configuration.
         self.direct_response_jsonshrink = direct_response_jsonshrink
-        # The domain ID.
+        # The domain name ID.
         self.domain_id = domain_id
-        # The domain IDs.
+        # The domain name list.
         self.domain_id_list_json = domain_id_list_json
-        # Specifies whether to activate Web Application Firewall (WAF).
+        # **[Deprecated]** Use UpdateGatewayRouteWafStatus to update the WAF status of the route.
         self.enable_waf = enable_waf
-        # Specifies whether to enable the Fallback service.
+        # Specifies whether to enable the fallback service.
         self.fallback = fallback
-        # The information about the Fallback service.
+        # The fallback service.
         self.fallback_services_shrink = fallback_services_shrink
-        # The ID of the gateway.
+        # The gateway ID.
         self.gateway_id = gateway_id
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
-        # The name of the route.
+        # The route name.
         self.name = name
-        # The routing policy in a JSON string.
+        # The JSON string of the route policy.
         self.policies = policies
-        # The matching rule.
+        # The matching rules.
         self.predicates_shrink = predicates_shrink
-        # The configuration of the redirection.
+        # The redirect configuration.
         self.redirect_jsonshrink = redirect_jsonshrink
-        # The sequence number of the route. (A small value indicates a high priority.)
+        # The route order. A smaller value indicates a higher priority.
         self.route_order = route_order
         # The route type. Valid values:
-        # 
-        # Op: Manage routes.
+        # - Op: management and control route
         self.route_type = route_type
-        # The list of services.
+        # The service list. This parameter is required when the route points to a single service, multiple services, or tag-based routing.
         self.services_shrink = services_shrink
 
     def validate(self):

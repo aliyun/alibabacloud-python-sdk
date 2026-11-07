@@ -12,9 +12,13 @@ class CreateNamespaceShrinkRequest(DaraModel):
         name: str = None,
         tag_shrink: str = None,
     ):
+        # The language in which you want the results to be displayed. Valid values: zh (default): Chinese. en: English
         self.accept_language = accept_language
+        # The description of the namespace that you want to create for Microservices Governance.
         self.describe = describe
+        # The name of the namespace that you want to create for Microservices Governance.
         self.name = name
+        # The tag.
         self.tag_shrink = tag_shrink
 
     def validate(self):

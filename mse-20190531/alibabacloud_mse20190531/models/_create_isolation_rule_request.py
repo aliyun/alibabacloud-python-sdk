@@ -17,18 +17,34 @@ class CreateIsolationRuleRequest(DaraModel):
         resource: str = None,
         threshold: float = None,
     ):
+        # The language of the response. Valid values:
+        # - zh: Chinese. This is the default value.
+        # - en: English.
         self.accept_language = accept_language
+        # The ID of the application.
         self.app_id = app_id
+        # The name of the application.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # The enabling status of the rule.
+        # 
         # This parameter is required.
         self.enable = enable
+        # The source application of the request.
         self.limit_app = limit_app
+        # The microservice namespace to which the application belongs.
+        # 
         # This parameter is required.
         self.namespace = namespace
+        # The region where the cluster is deployed.
         self.region_id = region_id
+        # The name of the interface to which the rule applies. The name must be the same as the interface name displayed in the interface details on the console.
+        # 
         # This parameter is required.
         self.resource = resource
+        # The concurrency threshold of the isolation rule.
+        # 
         # This parameter is required.
         self.threshold = threshold
 

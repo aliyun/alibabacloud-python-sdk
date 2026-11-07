@@ -18,28 +18,39 @@ class TagResourcesRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # 
+        # - en: English
         self.accept_language = accept_language
-        # The ID of the region.
+        # The region.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The instance ID.
+        # The resource ID.
         # 
-        # > This parameter specifies the instance ID that is passed. Examples:
+        # - *Registration and configuration center*: the instance ID.
         # 
-        # - ResourceId.0 specifies the first instance ID that is passed.
-        # - ResourceId.1 specifies the second instance ID that is passed.
+        # - *Cloud-native gateway*: the unique ID of the gateway.
+        # 
+        # - *Microservice administration application*: the AppID of the microservice administration application. Note that this is not the LicenseKey.
+        # 
+        # > The number in the parameter name specifies the index of the instance ID. For example:
+        # 
+        # - **ResourceId.0** specifies the first instance ID.
+        # 
+        # - **ResourceId.1** specifies the second instance ID.
         self.resource_id = resource_id
-        # The type of the resources. Valid values:
+        # The resource type. Valid values:
         # 
-        # *   CLUSTER: Microservices Engine (MSE) instance
-        # *   GATEWAY: cloud-native gateway
+        # - CLUSTER: a registration and configuration center.
+        # 
+        # - GATEWAY: a cloud-native gateway.
+        # 
+        # - GOVERNANCEAPPLICATION: a microservice administration application.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The list of tags. You can specify a maximum of 20 tags.
+        # A list of tags. You can specify up to 20 tags.
         # 
         # This parameter is required.
         self.tag = tag
@@ -102,9 +113,9 @@ class TagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key must be 1 to 128 characters in length. The tag key cannot start with acs: or aliyun or contain [http:// or https://.](http://https://。)
+        # The tag key. The tag key cannot be an empty string. It can be up to 128 characters in length. The tag key cannot start with \\`aliyun\\` or \\`acs:\\`. The tag key cannot contain \\`http\\://\\` or \\`https\\://\\`.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):

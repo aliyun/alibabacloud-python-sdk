@@ -15,13 +15,13 @@ class DataValue(DaraModel):
     ):
         # The ID of the user to which the application belongs.
         self.user_id = user_id
-        # The region where the application resides.
+        # The region where the application is deployed.
         self.region_id = region_id
         # The microservice namespace where the application resides.
         self.namespace = namespace
-        # The application name.
+        # The name of the application.
         self.app_name = app_name
-        # The application ID.
+        # The ID of the application.
         self.app_id = app_id
 
     def validate(self):

@@ -19,30 +19,31 @@ class ListNacosHistoryConfigsRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # 
+        # - en: English
         self.accept_language = accept_language
         # The ID of the data.
         self.data_id = data_id
         # The name of the configuration group.
         self.group = group
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the namespace.
+        # The namespace ID. Default value: public
         self.namespace_id = namespace_id
-        # The number of the page to return.
+        # The page number.
         # 
         # This parameter is required.
         self.page_num = page_num
-        # The number of entries to return on each page.
+        # The number of entries to return per page.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The ID of the region in which the instance resides. The region is supported by MSE.
+        # The region where the cluster is located. MSE supports specific regions.
         self.region_id = region_id
-        # The extended request parameters in the JSON format.
+        # The extended request parameter in the JSON format.
         self.request_pars = request_pars
 
     def validate(self):

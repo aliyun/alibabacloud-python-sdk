@@ -14,20 +14,20 @@ class QueryInstancesInfoRequest(DaraModel):
         region_id: str = None,
         request_pars: str = None,
     ):
-        # The language of the response. Valid values:
+        # The language of the returned information. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
-        # The ID of the cluster.
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The ID of the order.
+        # The order ID.
         self.order_id = order_id
-        # The ID of the region where the instance resides.
+        # The region ID of the instance.
         self.region_id = region_id
-        # The extended request parameters in the JSON format.
+        # The extended request parameters in JSON format.
         self.request_pars = request_pars
 
     def validate(self):

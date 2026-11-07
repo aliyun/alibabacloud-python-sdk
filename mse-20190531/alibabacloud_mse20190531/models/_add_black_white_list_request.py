@@ -19,34 +19,31 @@ class AddBlackWhiteListRequest(DaraModel):
         type: str = None,
     ):
         # The language of the response. Valid values:
-        # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
         # The content of the blacklist.
         self.content = content
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
-        # The whitelist. Default value: No.
+        # Specifies whether the list is a whitelist. Default value: false.
         self.is_white = is_white
         # The name.
         self.name = name
-        # The description.
+        # The note.
         self.note = note
-        # The resource IDs in the JSON format.
+        # The JSON string of the resource ID list.
         self.resource_id_json_list = resource_id_json_list
-        # The effective scope of the blacklist or whitelist. Valid values:
-        # 
-        # *   GATEWAY
-        # *   DOMAIN
-        # *   ROUTE
+        # The effective granularity. Valid values:
+        # - GATEWAY: the entire gateway.
+        # - DOMAIN: the domain name.
+        # - ROUTE: the route.
         self.resource_type = resource_type
-        # The status of the blacklist.
-        # 
-        # *   on: enabled
-        # *   off: disabled
+        # The status of the blacklist. Valid values:
+        # - on: enabled.
+        # - off: disabled.
         self.status = status
-        # The type of object in the blacklist or whitelist.
+        # The type of blacklists and whitelists.
         self.type = type
 
     def validate(self):

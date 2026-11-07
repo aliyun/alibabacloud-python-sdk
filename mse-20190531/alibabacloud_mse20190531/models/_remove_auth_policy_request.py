@@ -10,7 +10,10 @@ class RemoveAuthPolicyRequest(DaraModel):
         accept_language: str = None,
         policy_id: str = None,
     ):
+        # The language in which the returned results are displayed. Values: zh-CN (default): Chinese, en-US: English
         self.accept_language = accept_language
+        # Policy ID.
+        # 
         # This parameter is required.
         self.policy_id = policy_id
 

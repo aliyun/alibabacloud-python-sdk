@@ -13,18 +13,17 @@ class GetLosslessRuleByAppRequest(DaraModel):
         namespace: str = None,
         region_id: str = None,
     ):
-        # The language of the response. Valid values:
-        # 
-        # *   zh: Chinese
-        # *   en: English
+        # The language of the returned information. Valid values:
+        # * zh: Chinese.
+        # * en: English.
         self.accept_language = accept_language
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
-        # The name of the application.
+        # The application name.
         self.app_name = app_name
-        # The name of the MSE namespace.
+        # The Microservices Engine (MSE) namespace name.
         self.namespace = namespace
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

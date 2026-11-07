@@ -17,23 +17,22 @@ class QueryInstancesInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details of the data.
+        # The data overview.
         self.data = data
-        # The error code returned if the request failed.
+        # The error code.
         self.error_code = error_code
         # The HTTP status code.
         self.http_code = http_code
-        # The message that is returned.
+        # The returned message.
         # 
-        # *   If the request is successful, a success message is returned.
-        # *   If the request fails, an error message is returned.
+        # - If the request is successful, a success message is returned.
+        # - If the request fails, the cause of the failure is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - `true`: The request is successful.
+        # - `false`: The request fails.
         self.success = success
 
     def validate(self):
@@ -112,7 +111,7 @@ class QueryInstancesInfoResponseBodyData(DaraModel):
         self.client_port = client_port
         # The creation time.
         self.creation_timestamp = creation_timestamp
-        # A reserved parameter.
+        # The reserved field.
         self.health_status = health_status
         # The public IP address.
         self.internet_ip = internet_ip
@@ -120,13 +119,13 @@ class QueryInstancesInfoResponseBodyData(DaraModel):
         self.ip = ip
         # The pod name.
         self.pod_name = pod_name
-        # A reserved parameter.
+        # The reserved field.
         self.role = role
         # The internal IP address.
         self.single_tunnel_vip = single_tunnel_vip
-        # The zone ID.
+        # The zone.
         self.zone = zone
-        # Indicates whether all pods in the cluster are distributed in the specified zones.
+        # Indicates whether all pods are distributed across multiple zones.
         self.zone_distributed = zone_distributed
 
     def validate(self):

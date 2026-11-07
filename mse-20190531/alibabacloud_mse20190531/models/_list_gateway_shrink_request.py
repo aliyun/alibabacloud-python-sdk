@@ -14,20 +14,19 @@ class ListGatewayShrinkRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The language of the response. Valid values:
-        # 
-        # *   zh: Chinese
-        # *   en: English
+        # The language of the returned information. Valid values:
+        # - zh: Chinese
+        # - en: English
         self.accept_language = accept_language
-        # Specifies whether to enable the sorting feature. This feature is not available.
+        # The sorting order. This parameter is currently not used.
         self.desc_sort = desc_sort
-        # The details of parameters.
+        # The filter parameters.
         self.filter_params_shrink = filter_params_shrink
         # The order information.
         self.order_item = order_item
-        # The number of the page to return.
+        # The page number.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of instances per page.
         self.page_size = page_size
 
     def validate(self):

@@ -12,15 +12,17 @@ class UpdateGatewayAuthConsumerStatusRequest(DaraModel):
         gateway_unique_id: str = None,
         id: int = None,
     ):
-        # The language of the response. Valid values:
+        # The language of the returned information. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese.
+        # 
+        # - en: English.
         self.accept_language = accept_language
-        # The status of the consumer. Valid values:
+        # Specifies whether the authentication consumer is enabled. Valid values:
         # 
-        # *   true: The consumer is enabled.
-        # *   false: The consumer is disabled.
+        # - true: Enabled.
+        # 
+        # - false: Disabled.
         # 
         # This parameter is required.
         self.consumer_status = consumer_status
@@ -28,7 +30,7 @@ class UpdateGatewayAuthConsumerStatusRequest(DaraModel):
         # 
         # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
-        # The consumer ID.
+        # The ID of the authentication consumer.
         # 
         # This parameter is required.
         self.id = id

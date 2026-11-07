@@ -15,13 +15,13 @@ class GetServiceListPageResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response to the request.
+        # The response data.
         self.data = data
         # The request information.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -72,13 +72,13 @@ class GetServiceListPageResponseBodyData(DaraModel):
         result: List[main_models.GetServiceListPageResponseBodyDataResult] = None,
         total_size: str = None,
     ):
-        # The page number.
+        # The current page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
         # The data on the current page.
         self.result = result
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_size = total_size
 
     def validate(self):
@@ -143,14 +143,15 @@ class GetServiceListPageResponseBodyDataResult(DaraModel):
         self.app_id = app_id
         # The application name.
         self.app_name = app_name
-        # The time when the service was last updated.
+        # The last update time of the service.
         self.gmt_modify_time = gmt_modify_time
-        # The group to which the service belongs.
+        # The service group.
         self.group = group
-        # The number of service nodes.
+        # The number of instances for the service.
         self.instance_num = instance_num
         # The service name.
         self.service_name = service_name
+        # The service type.
         self.service_type = service_type
         # The service version.
         self.version = version

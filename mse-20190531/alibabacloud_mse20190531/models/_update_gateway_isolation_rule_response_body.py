@@ -13,7 +13,9 @@ class UpdateGatewayIsolationRuleResponseBody(DaraModel):
         data: main_models.UpdateGatewayIsolationRuleResponseBodyData = None,
         request_id: str = None,
     ):
+        # The response data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -63,20 +65,53 @@ class UpdateGatewayIsolationRuleResponseBodyData(DaraModel):
         route_id: int = None,
         route_name: str = None,
     ):
+        # The type of the web fallback behavior.
+        # 
+        # 0: The specified content is returned.
+        # 
+        # 1: Redirect the specified page.
         self.behavior_type = behavior_type
+        # The encoding type.
+        # 
+        # 0: plain text
+        # 
+        # 1: JSON text
         self.body_encoding = body_encoding
+        # Specifies whether to enable the rule.
+        # 
+        # 0: disable
+        # 
+        # 1: enable
         self.enable = enable
+        # The gateway ID.
         self.gateway_id = gateway_id
+        # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
+        # The ID of the concurrency rule.
         self.id = id
+        # The IDs of the circuit breaking rules that are used to filter data.
         self.id_list = id_list
+        # The threshold conversion mode.
+        # 
+        # 0: standalone
+        # 
+        # 1: cluster
+        # 
+        # 2: cluster-to-standalone
         self.limit_mode = limit_mode
+        # The maximum number of concurrent requests.
         self.max_concurrency = max_concurrency
+        # The custom header. The input is a key-value pair.
         self.response_additional_headers = response_additional_headers
+        # The HTTP text to be returned.
         self.response_content_body = response_content_body
+        # The URL that is redirected to.
         self.response_redirect_url = response_redirect_url
+        # The HTTP status code.
         self.response_status_code = response_status_code
+        # The route ID.
         self.route_id = route_id
+        # The route name.
         self.route_name = route_name
 
     def validate(self):

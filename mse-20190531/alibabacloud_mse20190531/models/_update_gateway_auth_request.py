@@ -36,30 +36,82 @@ class UpdateGatewayAuthRequest(DaraModel):
         token_position: str = None,
         type: str = None,
     ):
+        # The language of the response. Valid values: zh (default): Chinese. en: English.
         self.accept_language = accept_language
+        # The YAML configuration for complex mode.
         self.auth_resource_config = auth_resource_config
+        # The list of authorization rules for authentication. Multiple rule conditions have an OR relationship. Multiple matching items within a rule condition have an AND relationship.
         self.auth_resource_list = auth_resource_list
+        # The authorization resource mode. Valid values:
+        # 
+        # - 0: simple mode.
+        # - 1: complex mode.
         self.auth_resource_mode = auth_resource_mode
+        # The application ID registered with the service. This parameter is used for OIDC/IDaaS.
         self.client_id = client_id
+        # The application secret registered with the OIDC authentication service.
         self.client_secret = client_secret
+        # The cookie domain name. After authentication succeeds, the cookie is sent to the specified domain name to maintain the logon state.
+        # 
+        # Example: If you set `Cookie-domain=a.example.com`, the cookie is sent to the domain name `a.example.com`. If you set `Cookie-domain=.example.com`, the cookie is sent to all subdomains of `example.com`.
         self.cookie_domain = cookie_domain
+        # The list of resource record IDs to delete.
         self.delete_resource_id_list = delete_resource_id_list
+        # The custom authentication information.
         self.external_auth_zjson = external_auth_zjson
+        # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
+        # The authentication rule ID.
         self.id = id
+        # The authorization blacklist/whitelist mode. Valid values:
+        # 
+        # - true: whitelist mode. Hosts and paths in the list can be accessed without verification. All others require verification.
+        # - false: blacklist mode. Hosts and paths in the list require verification. All others can be accessed directly.
         self.is_white = is_white
+        # Used when the authentication type is JWT or OIDC:
+        # 
+        # - JWT: the iss (issuer) in JWT claims, which specifies the token issuer.
+        # - OIDC: the iss (issuer) in OIDC claims, which specifies the token issuer.
         self.issuer = issuer
+        # The JWT public key. JSON format is supported.
         self.jwks = jwks
+        # The user logon page URL of the IDaaS instance. This parameter is used for IDaaS.
         self.login_url = login_url
+        # The authentication name.
         self.name = name
+        # The redirect URL after successful authorization. This parameter is used for OIDC/IDaaS and must be consistent with the redirect URL configured in OIDC/IDaaS.
         self.redirect_url = redirect_url
+        # The OIDC authorization scopes. This parameter is used for OIDC.
         self.scopes_list = scopes_list
+        # The enabled status. Valid values:
+        # 
+        # - false: disabled.
+        # - true: enabled.
         self.status = status
+        # Used when the authentication type is JWT. The sub (subject) in JWT claims, which specifies the principal. Make sure that the value of the sub field in the JWT payload is consistent with the value configured here. If this parameter is not set or is empty, the value defaults to the value of the Issuer parameter.
         self.sub = sub
+        # The location where the JWT token is stored.
+        # 
+        # The token parameter information to be verified. By default, the token is placed in the Authorization header with the Bearer prefix. Example: `Authorization: Bearer token`.
         self.token_name = token_name
+        # The prefix of the JWT token.
+        # 
+        # The token parameter information to be verified. By default, the token is placed in the Authorization header with the Bearer prefix. Example: `Authorization: Bearer token`.
         self.token_name_prefix = token_name_prefix
+        # Specifies whether to pass through the token.
         self.token_pass = token_pass
+        # The JWT token type. Valid values:
+        # 
+        # - HEADER: transmitted through a header.
+        # 
+        # The token parameter information to be verified. By default, the token is placed in the Authorization header with the Bearer prefix. Example: Authorization: Bearer token.
         self.token_position = token_position
+        # The authentication type. Valid values:
+        # 
+        # - JWT
+        # - OIDC
+        # - IDaaS
+        # - ExternalAuthZ: a self-managed authentication service.
         self.type = type
 
     def validate(self):
@@ -251,15 +303,28 @@ class UpdateGatewayAuthRequestExternalAuthZJSON(DaraModel):
         with_rematch_route: bool = None,
         with_request_body: bool = None,
     ):
+        # The allowed request header names.
         self.allow_request_headers = allow_request_headers
+        # The allowed response header names.
         self.allow_upstream_headers = allow_upstream_headers
+        # The maximum number of bytes for the body.
         self.body_max_bytes = body_max_bytes
+        # The custom authentication mode. Valid values:
+        # 
+        # - true: strict mode. When the authentication service is unavailable (connection establishment fails or a 5xx response is returned), the gateway rejects client requests.
+        # - false: loose mode. When the authentication service is unavailable (connection establishment fails or a 5xx response is returned), the gateway allows client requests.
         self.is_restrict = is_restrict
+        # The path of the authentication API provided by the authentication service. The API path must use prefix matching.
         self.prefix_path = prefix_path
+        # The authentication service ID.
         self.service_id = service_id
+        # The timeout period of the authentication service. Unit: seconds.
         self.timeout = timeout
+        # The header in which the token is located in the request message. Common values include Authorization and Cookie.
         self.token_key = token_key
+        # Specifies whether to re-match routes after authentication is complete.
         self.with_rematch_route = with_rematch_route
+        # Specifies whether to allow carrying the body.
         self.with_request_body = with_request_body
 
     def validate(self):
@@ -346,11 +411,24 @@ class UpdateGatewayAuthRequestAuthResourceList(DaraModel):
         match_type: str = None,
         path: str = None,
     ):
+        # The request headers of the rule. Currently only used for custom authentication.
         self.auth_resource_header_list = auth_resource_header_list
+        # The ID of the domain name in the rule.
         self.domain_id = domain_id
+        # The resource record ID.
         self.id = id
+        # Specifies whether case sensitivity is enabled for the path. This parameter is used when creating custom authentication. Other authentication types enable case sensitivity by default. Valid values:
+        # 
+        # - true: case sensitivity is enabled.
+        # - false: case sensitivity is disabled.
         self.ignore_case = ignore_case
+        # The matching type for the request path. Valid values:
+        # 
+        # - EQUAL: exact match.
+        # - PRE: prefix match.
+        # - ERGULAR: regular expression match.
         self.match_type = match_type
+        # The matching path of the rule.
         self.path = path
 
     def validate(self):
@@ -418,8 +496,21 @@ class UpdateGatewayAuthRequestAuthResourceListAuthResourceHeaderList(DaraModel):
         header_method: str = None,
         header_value: str = None,
     ):
+        # The request header name.
         self.header_key = header_key
+        # The matching condition. Valid values:
+        # 
+        # - EQUAL: equal to.
+        # - NOT_EQUAL: not equal to.
+        # - EXIST: exists.
+        # - NOT_EXIST: does not exist.
+        # - INCLUDE: contains.
+        # - EXCLUDE: does not contain.
+        # - PREFIX: prefix.
+        # - SUFFIX: suffix.
+        # - REGREX: regular expression.
         self.header_method = header_method
+        # The value of the request header.
         self.header_value = header_value
 
     def validate(self):

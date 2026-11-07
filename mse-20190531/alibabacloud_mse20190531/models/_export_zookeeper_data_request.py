@@ -14,20 +14,18 @@ class ExportZookeeperDataRequest(DaraModel):
         request_pars: str = None,
     ):
         # The language of the response. Valid values:
-        # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # - en: English
         self.accept_language = accept_language
-        # The type of the object that is exported. Valid values:
-        # 
-        # *   transactionLog: transaction logs
-        # *   snapshot: snapshots
+        # The export type. Valid values:
+        # - transactionLog: transaction log
+        # - snapshot: snapshot file
         self.export_type = export_type
         # The instance ID.
         self.instance_id = instance_id
-        # The ID of the region in which the instance resides. The region is supported by Microservices Engine (MSE).
+        # The region where the cluster is deployed. Specify a region supported by Microservices Engine (MSE).
         self.region_id = region_id
-        # The extended request parameters in the JSON format.
+        # The extended request parameters in JSON format.
         self.request_pars = request_pars
 
     def validate(self):

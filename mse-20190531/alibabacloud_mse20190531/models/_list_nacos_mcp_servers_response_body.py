@@ -13,7 +13,9 @@ class ListNacosMcpServersResponseBody(DaraModel):
         data: main_models.ListNacosMcpServersResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data structure.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -52,11 +54,13 @@ class ListNacosMcpServersResponseBodyData(DaraModel):
         pages_available: int = None,
         total_count: int = None,
     ):
+        # The paginated list of MCP servers.
         self.page_items = page_items
         # pageNumber.
         self.page_number = page_number
         # pagesAvailable.
         self.pages_available = pages_available
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -117,14 +121,21 @@ class ListNacosMcpServersResponseBodyDataPageItems(DaraModel):
         version: str = None,
         version_detail: main_models.ListNacosMcpServersResponseBodyDataPageItemsVersionDetail = None,
     ):
+        # The capabilities of the MCP server.
         self.capabilities = capabilities
+        # The description.
         self.description = description
+        # The frontend protocol type.
         self.front_protocol = front_protocol
         # ID。
         self.id = id
+        # The name.
         self.name = name
+        # The type of the MCP server.
         self.protocol = protocol
+        # The current latest version.
         self.version = version
+        # The version details.
         self.version_detail = version_detail
 
     def validate(self):
@@ -198,8 +209,11 @@ class ListNacosMcpServersResponseBodyDataPageItemsVersionDetail(DaraModel):
         release_date: str = None,
         version: str = None,
     ):
+        # Indicates whether this is the latest version.
         self.is_latest = is_latest
+        # The release date.
         self.release_date = release_date
+        # The version number.
         self.version = version
 
     def validate(self):

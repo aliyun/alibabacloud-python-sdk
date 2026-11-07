@@ -16,18 +16,17 @@ class QueryClusterDetailResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details of the data.
+        # The data overview.
         self.data = data
-        # The error code returned if the request failed.
+        # The error code.
         self.error_code = error_code
-        # The message returned.
+        # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -120,85 +119,83 @@ class QueryClusterDetailResponseBodyData(DaraModel):
     ):
         # The whitelist.
         self.acl_entry_list = acl_entry_list
-        # The ID of the whitelist.
+        # The whitelist ID.
         self.acl_id = acl_id
         # The application version.
         self.app_version = app_version
-        # The billing method, such as subscription or pay-as-you-go.
+        # The billing method, including subscription and pay-as-you-go.
         self.charge_type = charge_type
-        # The alias of the instance.
+        # The alias of the cluster.
         self.cluster_alias_name = cluster_alias_name
-        # The name of the instance.
+        # The name of the cluster.
         self.cluster_name = cluster_name
         # The engine specifications.
         self.cluster_specification = cluster_specification
-        # The type of the instance. Valid values: ZooKeeper, Nacos-Ans, and Eureka.
+        # The cluster type, including ZooKeeper, Nacos-Ans, and Eureka.
         self.cluster_type = cluster_type
-        # The version of the instance.
+        # The cluster version.
         self.cluster_version = cluster_version
-        # The network connection type. Valid values:
-        # 
-        # *   slb
-        # *   eni
+        # The network connectivity type. Valid values:
+        # - slb
+        # - eni
         self.connection_type = connection_type
-        # The number of vCPUs.
+        # The number of CPUs.
         self.cpu = cpu
-        # The time when the instance was created.
+        # The time when the cluster was created.
         self.create_time = create_time
-        # The capacity of the disk. Unit: GB.
+        # The disk capacity. Unit: GB.
         self.disk_capacity = disk_capacity
-        # The type of the disk.
+        # The disk type.
         self.disk_type = disk_type
-        # The health status of the instance.
+        # The health status of the cluster.
         self.health_status = health_status
-        # The amount of time taken to create the instance. Unit: milliseconds.
+        # The time taken to create the cluster. Unit: ms.
         self.init_cost_time = init_cost_time
-        # The creation status of the instance.
+        # The creation status of the cluster.
         self.init_status = init_status
-        # The number of instance nodes.
+        # The number of instances in the cluster.
         self.instance_count = instance_count
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The list of instance nodes.
+        # The list of instances.
         self.instance_models = instance_models
-        # The public IP address of the instance.
+        # The public endpoint.
         self.internet_address = internet_address
-        # The public endpoint of the instance.
+        # The public domain name.
         self.internet_domain = internet_domain
-        # The private port number.
+        # The private port.
         self.internet_port = internet_port
-        # The internal IP address.
+        # The private endpoint.
         self.intranet_address = intranet_address
-        # The internal endpoint of the instance.
+        # The private domain name.
         self.intranet_domain = intranet_domain
-        # The private port number.
+        # The private port.
         self.intranet_port = intranet_port
-        # The size of the memory. Unit: GB.
+        # The memory size. Unit: GB.
         self.memory_capacity = memory_capacity
-        # The edition of Microservices Engine (MSE).
+        # The MSE version.
         self.mse_version = mse_version
-        # The network type of the instance. Valid values:
-        # 
-        # *   `privatenet`: VPC
-        # *   `pubnet`: Internet
+        # The network type. Valid values:
+        # - privatenet: VPC.
+        # - pubnet: Internet.
         self.net_type = net_type
-        # The version number of the original order.
+        # The original order version number.
         self.order_cluster_version = order_cluster_version
-        # The billing method, such as subscription or pay-as-you-go.
+        # The billing method, including subscription and pay-as-you-go.
         self.pay_info = pay_info
-        # The public bandwidth. Unit: Mbit/s.\\
-        # Valid values: 0 to 5000. The value 0 indicates no access to the Internet.
+        # The Internet bandwidth. Unit: Mbit/s. Valid values: 0 to 5000. A value of 0 indicates that the cluster is not connected to the Internet.
         self.pub_network_flow = pub_network_flow
         # The region ID.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The tags that are attached to the instance.
+        # The tags bound to the instance.
         self.tags = tags
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The version lifecycle.
         self.version_lifecycle = version_lifecycle
-        # The ID of the virtual private cloud (VPC).
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -463,7 +460,7 @@ class QueryClusterDetailResponseBodyDataInstanceModels(DaraModel):
         single_tunnel_vip: str = None,
         zone: str = None,
     ):
-        # The timestamp when the instance was created.
+        # The creation timestamp.
         self.creation_timestamp = creation_timestamp
         # The health status of the instance.
         self.health_status = health_status
@@ -475,9 +472,9 @@ class QueryClusterDetailResponseBodyDataInstanceModels(DaraModel):
         self.pod_name = pod_name
         # The role.
         self.role = role
-        # The single-thread IP address.
+        # The single-tunnel IP address.
         self.single_tunnel_vip = single_tunnel_vip
-        # The zone ID.
+        # The zone.
         self.zone = zone
 
     def validate(self):

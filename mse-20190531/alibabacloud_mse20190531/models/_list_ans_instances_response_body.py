@@ -20,26 +20,25 @@ class ListAnsInstancesResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The details of the data.
+        # The data overview.
         self.data = data
-        # The error code returned if the request failed.
+        # The error code.
         self.error_code = error_code
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_code = http_code
-        # The message returned.
+        # The message.
         self.message = message
-        # The number of the page to return.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of instances to return on each page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - `true`: The request is successful.
+        # - `false`: The request fails.
         self.success = success
-        # The total number of returned instances.
+        # The total number of instances.
         self.total_count = total_count
 
     def validate(self):
@@ -142,55 +141,51 @@ class ListAnsInstancesResponseBodyData(DaraModel):
         service_name: str = None,
         weight: int = None,
     ):
-        # The name of the application.
+        # The application name.
         self.app = app
-        # The name of the cluster.
+        # The cluster name.
         self.cluster_name = cluster_name
-        # The reference key.
+        # The datum key.
         self.datum_key = datum_key
         # The default key.
         self.default_key = default_key
-        # The effective status of the instance. Valid values:
-        # 
-        # *   `true`: The instance takes effect.
-        # *   `false`: The instance does not take effect.
+        # Indicates whether the instance is enabled. Valid values:
+        # - `true`: Enabled.
+        # - `false`: Disabled.
         self.enabled = enabled
-        # Indicates whether the information about the ephemeral node is obtained. Valid values:
-        # 
-        # *   `true`: yes
-        # *   `false`: no
+        # Indicates whether the node is ephemeral. Valid values:
+        # - `true`: Obtained successfully.
+        # - `false`: Failed to obtain.
         self.ephemeral = ephemeral
-        # The number of counted failures.
+        # The failure count.
         self.fail_count = fail_count
         # The health status of the instance. Valid values:
-        # 
-        # *   `true`: The instance is healthy.
-        # *   `false`: The instance is unhealthy.
+        # - `true`: The instance is healthy.
+        # - `false`: The instance is unhealthy.
         self.healthy = healthy
         # The heartbeat interval of the instance. Unit: seconds.
         self.instance_heart_beat_interval = instance_heart_beat_interval
-        # The timeout period of the instance heartbeat.
+        # The instance heartbeat timeout.
         self.instance_heart_beat_time_out = instance_heart_beat_time_out
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
         # The public IP address.
         self.ip = ip
-        # The timeout period for removing an IP address.
+        # The IP address deletion timeout.
         self.ip_delete_timeout = ip_delete_timeout
-        # The last heartbeat time.
+        # The time of the last heartbeat.
         self.last_beat = last_beat
-        # Indicates whether the instance was marked. Valid values:
-        # 
-        # *   `true`: The instance marking was successful.
-        # *   `false`: The instance marking failed.
+        # Indicates whether the instance is marked. Valid values:
+        # - `true`: Marked successfully.
+        # - `false`: Failed to mark.
         self.marked = marked
         # The metadata.
         self.metadata = metadata
-        # The number of counted successes.
+        # The success count.
         self.ok_count = ok_count
         # The port number.
         self.port = port
-        # The name of the service.
+        # The service name.
         self.service_name = service_name
         # The weight.
         self.weight = weight

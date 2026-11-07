@@ -17,20 +17,19 @@ class GetGatewayServiceDetailResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code returned.
+        # The response code.
         self.code = code
-        # The data returned.
+        # The data overview.
         self.data = data
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message returned.
+        # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - `true`: The request is successful.
+        # - `false`: The request fails.
         self.success = success
 
     def validate(self):
@@ -114,10 +113,11 @@ class GetGatewayServiceDetailResponseBodyData(DaraModel):
         version_details: List[main_models.GetGatewayServiceDetailResponseBodyDataVersionDetails] = None,
         versions: List[main_models.GetGatewayServiceDetailResponseBodyDataVersions] = None,
     ):
+        # The list of DNS servers. This parameter is only used for DNS domain name services.
         self.dns_server_list = dns_server_list
-        # The ID of the gateway.
+        # The gateway ID.
         self.gateway_id = gateway_id
-        # The traffic policy of the service.
+        # The service traffic policy.
         self.gateway_traffic_policy = gateway_traffic_policy
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
@@ -125,41 +125,43 @@ class GetGatewayServiceDetailResponseBodyData(DaraModel):
         self.gmt_create = gmt_create
         # The last modification time.
         self.gmt_modified = gmt_modified
-        # The name of the group.
+        # The group name.
         self.group_name = group_name
-        # Indicates whether the health check is enabled.
+        # Indicates whether health checks are enabled.
         self.health_check = health_check
-        # The status of the health check. Valid values:
+        # The health check status.
         self.health_status = health_status
-        # The ID of the service.
+        # The service ID.
         self.id = id
-        # The IP address of the service.
+        # The IP addresses of the service.
         self.ips = ips
-        # The details of the tag.
+        # The label details.
         self.label_details = label_details
-        # The basic information about the service.
+        # The basic information of the service.
         self.meta_info = meta_info
-        # The name of the service.
+        # The service name.
         self.name = name
         # The namespace.
         self.namespace = namespace
-        # The traffic policy of service ports.
+        # The traffic policies for service ports.
         self.port_traffic_policy_list = port_traffic_policy_list
         # The array of service ports.
         self.ports = ports
+        # The fully qualified domain name (FQDN) of the service.
         self.service_fqdn = service_fqdn
-        # The name of the service registered with the service registry.
+        # The name of the service registered in the registry.
         self.service_name_in_registry = service_name_in_registry
+        # The service port.
         self.service_port = service_port
-        # The protocol of the service.
+        # The service protocol.
         self.service_protocol = service_protocol
-        # The ID of the service source.
+        # The source ID.
         self.source_id = source_id
-        # The source type of the service.
+        # The service source.
         self.source_type = source_type
-        # The details of versions.
+        # The version details.
         self.version_details = version_details
-        # The service version. This parameter is deprecated.
+        # The service version numbers. **[Deprecated]**
         self.versions = versions
 
     def validate(self):
@@ -371,11 +373,11 @@ class GetGatewayServiceDetailResponseBodyDataVersions(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The tag.
+        # The label.
         self.label = label
         # The type.
         self.type = type
-        # The tag value.
+        # The label value.
         self.value = value
 
     def validate(self):
@@ -464,9 +466,9 @@ class GetGatewayServiceDetailResponseBodyDataVersionDetailsServiceVersion(DaraMo
         labels: List[main_models.GetGatewayServiceDetailResponseBodyDataVersionDetailsServiceVersionLabels] = None,
         name: str = None,
     ):
-        # The tag.
+        # The label.
         self.labels = labels
-        # The version number.
+        # The version name.
         self.name = name
 
     def validate(self):
@@ -509,9 +511,9 @@ class GetGatewayServiceDetailResponseBodyDataVersionDetailsServiceVersionLabels(
         key: str = None,
         value: str = None,
     ):
-        # The tag.
+        # The label.
         self.key = key
-        # The tag value.
+        # The label value.
         self.value = value
 
     def validate(self):
@@ -557,11 +559,11 @@ class GetGatewayServiceDetailResponseBodyDataPortTrafficPolicyList(DaraModel):
         self.gmt_create = gmt_create
         # The modification time.
         self.gmt_modified = gmt_modified
-        # The port ID.
+        # The port configuration ID.
         self.id = id
         # The service ID.
         self.service_id = service_id
-        # The service port number.
+        # The service port.
         self.service_port = service_port
         # The traffic policy.
         self.traffic_policy = traffic_policy
@@ -630,9 +632,9 @@ class GetGatewayServiceDetailResponseBodyDataLabelDetails(DaraModel):
         key: str = None,
         values: List[str] = None,
     ):
-        # The tag.
+        # The label.
         self.key = key
-        # The tag value.
+        # The label value.
         self.values = values
 
     def validate(self):

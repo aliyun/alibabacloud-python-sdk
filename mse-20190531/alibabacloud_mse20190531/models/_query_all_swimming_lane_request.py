@@ -13,8 +13,9 @@ class QueryAllSwimmingLaneRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # 
+        # - en: English
         self.accept_language = accept_language
         # The ID of the lane group.
         # 

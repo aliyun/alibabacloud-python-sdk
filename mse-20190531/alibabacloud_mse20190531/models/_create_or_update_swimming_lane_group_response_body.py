@@ -14,17 +14,17 @@ class CreateOrUpdateSwimmingLaneGroupResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response parameters.
+        # The data overview.
         self.data = data
         # The error code.
         self.error_code = error_code
-        # The message returned.
+        # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # true: The request was successful. false: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):
@@ -90,25 +90,31 @@ class CreateOrUpdateSwimmingLaneGroupResponseBodyData(DaraModel):
         region: str = None,
         user_id: str = None,
     ):
-        # The list of application IDs that are separated by commas (,).
+        # The IDs of the applications, separated by commas (,).
         self.app_ids = app_ids
+        # The end-to-end canary release mode. Valid values:
+        # - 0: Route by request content.
+        # - 1: Route by proportion.
         self.canary_model = canary_model
+        # Indicates whether canary release is enabled for databases.
         self.db_gray_enable = db_gray_enable
-        # The ingress application.
+        # The entry application.
         self.entry_app = entry_app
-        # The ID of the lane group.
+        # The ID of the swimlane group.
         self.id = id
-        # The side for message filtering when the canary release for messaging feature is enabled.
+        # The side where message queue canary release filtering is performed.
         self.message_queue_filter_side = message_queue_filter_side
-        # Specifies whether to enable canary release for messaging.
+        # Specifies whether to enable canary release for message queues.
         self.message_queue_gray_enable = message_queue_gray_enable
+        # The name of the application.
         self.name = name
         # The name of the MSE namespace.
         self.namespace = namespace
+        # **[Deprecated]** The paths. This parameter is a list of paths when a Java gateway is used as the entry point.
         self.paths = paths
         # Specifies whether to record request details.
         self.record_canary_detail = record_canary_detail
-        # The region where the application resides.
+        # The region to which the application belongs.
         self.region = region
         # The ID of the user to which the application belongs.
         self.user_id = user_id

@@ -21,32 +21,32 @@ class ListNacosConfigsRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # - en: English
         self.accept_language = accept_language
-        # The name of the application.
+        # The application name.
         self.app_name = app_name
-        # The ID of the data.
+        # The data ID.
         self.data_id = data_id
-        # The name of the group. Default value: `default`
+        # The group type. Default value: `default`.
         self.group = group
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the namespace.
+        # The namespace ID.
         self.namespace_id = namespace_id
-        # The number of the page to return.
+        # The page number.
         # 
         # This parameter is required.
         self.page_num = page_num
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The ID of the region in which the instance resides. The region is supported by Microservices Engine (MSE).
+        # The region where the cluster is located. Only regions supported by Microservices Engine (MSE) are valid.
         self.region_id = region_id
-        # The extended request parameters. The JSON format is supported.
+        # The extended request parameters. JSON format is supported.
         self.request_pars = request_pars
         # The tags.
         self.tags = tags

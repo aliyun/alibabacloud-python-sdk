@@ -18,27 +18,24 @@ class ExportZookeeperDataResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details of the data.
+        # The data overview.
         self.data = data
-        # The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\* variable in the **ErrMessage** parameter.
-        # 
-        # > If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
+        # The dynamic error message, which is used to replace the **%s** placeholder in the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the specified **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
-        # The error code returned if the request failed.
+        # The error code.
         self.error_code = error_code
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message returned.
-        # 
-        # *   If the request is successful, a success message is returned.
-        # *   If the request fails, an error message is returned.
+        # The returned message.
+        # - If the request succeeds, a success message is returned.
+        # - If the request fails, the cause of the failure is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # The request result. Valid values:
+        # - `true`: The request succeeded.
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -112,32 +109,30 @@ class ExportZookeeperDataResponseBodyData(DaraModel):
         status: str = None,
         update_time: int = None,
     ):
-        # The content of a task.
+        # The task content.
         self.content_map = content_map
-        # The creation time.
+        # The time when the task was created. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The type of the object that is exported. Valid values:
-        # 
-        # *   transactionLog: transaction logs
-        # *   snapshot: snapshots
+        # The export type. Valid values:
+        # - transactionLog: transaction log
+        # - snapshot: snapshot file
         self.export_type = export_type
         # The extended information.
         self.extend = extend
-        # The ID of the task.
+        # The task ID.
         self.id = id
-        # The ID of the instance
+        # The instance ID.
         self.instance_id = instance_id
-        # The ID of the associated task at the underlying layer. This parameter is used only to troubleshoot failures.
+        # The associated underlying task ID. This parameter is used only for troubleshooting when a task fails.
         self.kubeone_task_ids = kubeone_task_ids
-        # The status of the task. Valid values:
-        # 
-        # *   CREATE: The object is being created.
-        # *   RUNNING: The task is running.
-        # *   FINISH: The task is completed.
-        # *   FAILED: The task fails.
-        # *   EXPIRE: The task has expired.
+        # The task status. Valid values:
+        # - CREATE: creating
+        # - RUNNING: running
+        # - FINISH: completed
+        # - FAILED: failed
+        # - EXPIRE: expired
         self.status = status
-        # The last update time.
+        # The time when the task was updated. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):

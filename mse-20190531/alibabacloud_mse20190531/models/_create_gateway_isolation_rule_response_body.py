@@ -10,7 +10,9 @@ class CreateGatewayIsolationRuleResponseBody(DaraModel):
         data: int = None,
         request_id: str = None,
     ):
+        # The ID of the circuit breaking rule that you create.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

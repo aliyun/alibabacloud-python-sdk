@@ -15,20 +15,21 @@ class ListGatewayRouteRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The language of the response. Valid values:
+        # Language type for returned information:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # 
+        # - en: English
         self.accept_language = accept_language
-        # Specifies whether to enable sorting. This parameter is unavailable.
+        # Sorting. This field is currently unavailable and being deprecated.
         self.desc_sort = desc_sort
-        # The parameters that specify filter conditions. The parameters are in the format of {"key1":"value1"}.
+        # Filter conditions in the format {"key1":"value1"}
         self.filter_params = filter_params
-        # The item based on which entries are sorted.
+        # Sorting property.
         self.order_item = order_item
-        # The number of the page to return.
+        # Page number.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # Number of instances displayed per page (currently not in effect, queries all instances by default).
         self.page_size = page_size
 
     def validate(self):
@@ -96,24 +97,37 @@ class ListGatewayRouteRequestFilterParams(DaraModel):
         route_order: int = None,
         status: int = None,
     ):
-        # The default service ID.
+        # Default service ID
         self.default_service_id = default_service_id
-        # The domain ID.
+        # Domain ID
         self.domain_id = domain_id
-        # The associated domain name.
+        # Associated domain
         self.domain_name = domain_name
-        # The ID of the gateway.
+        # Gateway ID
         self.gateway_id = gateway_id
-        # The unique ID of the gateway.
+        # Gateway unique identifier ID
         # 
         # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
-        # The name of the gateway.
+        # Route name
         self.name = name
+        # Route path
         self.path = path
-        # The order.
+        # Order (unused)
         self.route_order = route_order
-        # The status.
+        # Route status:
+        # 
+        # - Unpublished: 0
+        # 
+        # - Publishing: 2
+        # 
+        # - Published: 3
+        # 
+        # - Editing (updates not published): 4
+        # 
+        # - Unpublishing: 5
+        # 
+        # - Unavailable: 6
         self.status = status
 
     def validate(self):

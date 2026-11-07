@@ -15,20 +15,20 @@ class CreateApplicationResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The response code returned.
+        # The response code.
         self.code = code
-        # The data of the node.
+        # The data.
         self.data = data
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message returned.
+        # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # The request result. Valid values:
         # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # - `true`: The request is successful.
+        # - `false`: The request fails.
         self.success = success
 
     def validate(self):
@@ -100,34 +100,34 @@ class CreateApplicationResponseBodyData(DaraModel):
         user_id: str = None,
         version: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
-        # The name of the application.
+        # The application name.
         self.app_name = app_name
-        # The creation time.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The additional information.
+        # The extra information.
         self.extra_info = extra_info
         # The programming language of the application.
         self.language = language
-        # The license key in use.
+        # The license key corresponding to the user.
         self.license_key = license_key
-        # MSE命名空间名字。
+        # The name of the MSE namespace.
         self.namespace = namespace
         # The region ID.
         self.region_id = region_id
-        # The service where the application is deployed. Valid values:
+        # The deployment method of the application. Valid values:
         # 
-        # *   \\- ACK: Container Service for Kubernetes
-        # *   \\- Normal: another service
+        # - ACK: Container Service for Kubernetes (ACK).
+        # - Normal: Other access methods.
         self.source = source
-        # The status of the application. A value of 1 indicates that the application is in a normal state.
+        # The application status. A value of 1 indicates normal.
         self.status = status
-        # The update time.
+        # The last update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
-        # The ID of the Alibaba Cloud account.
+        # The Alibaba Cloud user ID.
         self.user_id = user_id
-        # 版本号。
+        # The version number.
         self.version = version
 
     def validate(self):

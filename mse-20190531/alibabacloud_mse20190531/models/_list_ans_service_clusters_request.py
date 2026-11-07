@@ -19,12 +19,13 @@ class ListAnsServiceClustersRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # 
+        # - en: English
         self.accept_language = accept_language
         # The ID of the MSE cluster.
         # 
-        # >  The MSE cluster is different from the cluster of the Nacos service.
+        # > The MSE cluster is different from the cluster of the Nacos service.
         self.cluster_id = cluster_id
         # The alias of the cluster.
         self.cluster_name = cluster_name

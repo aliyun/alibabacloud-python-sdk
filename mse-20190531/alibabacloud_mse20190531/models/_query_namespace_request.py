@@ -11,9 +11,12 @@ class QueryNamespaceRequest(DaraModel):
         name: str = None,
         region: str = None,
     ):
-        # The language of the response. Valid values: zh and en. Default value: zh. The value zh which indicates Chinese, and the value en indicates English.
+        # The language in which you want the results to be displayed. Valid values: zh (default): Chinese. en: English.
         self.accept_language = accept_language
+        # The name of the namespace that you want to query.
         self.name = name
+        # The region to which the namespace belongs.
+        # 
         # This parameter is required.
         self.region = region
 

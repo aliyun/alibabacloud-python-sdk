@@ -17,20 +17,19 @@ class GetGatewayResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned. A value of 200 indicates that the request is successful.
+        # The status code. A value of 200 indicates success.
         self.code = code
-        # The information about the gateway.
+        # The gateway information.
         self.data = data
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message returned.
+        # The message that indicates whether the request is successful.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - `true`: The request is successful.
+        # - `false`: The request fails.
         self.success = success
 
     def validate(self):
@@ -116,73 +115,72 @@ class GetGatewayResponseBodyData(DaraModel):
         vswitch_2: str = None,
         xtrace_details: main_models.GetGatewayResponseBodyDataXtraceDetails = None,
     ):
-        # The billing method, such as subscription or pay-as-you-go.
+        # The billing method. Valid values: subscription and pay-as-you-go.
         self.charge_type = charge_type
-        # Indicates whether auto scale-out is enabled.
+        # Specifies whether auto-scaling is enabled.
         self.elastic = elastic
-        # The auto scale-out policy.
+        # The auto-scaling policy.
         self.elastic_policy = elastic_policy
-        # The number of replicas that are automatically scaled out.
+        # The number of auto-scaling replicas.
         self.elastic_replica = elastic_replica
-        # The type of auto scale-out. Valid value:
+        # The auto-scaling type. Valid values:
         # 
-        # *   CronHPA: scale-out by time
+        # * CronHPA: Time-based scaling.
         self.elastic_type = elastic_type
-        # The time when the gateway expires.
+        # The expiration time of the gateway.
         self.end_date = end_date
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
-        # The time when the gateway was created. The time is displayed in GMT. The time is the local time of the region in which the gateway resides.
+        # The time when the gateway was created. The time is in GMT and represents the local time of the user.
         self.gmt_create = gmt_create
-        # The time when the gateway was last modified.
+        # The time when the instance was last updated.
         self.gmt_modified = gmt_modified
-        # The ID of the gateway.
+        # The gateway ID.
         self.id = id
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
         # The log configuration.
         self.log_config_details = log_config_details
-        # The tag of the resource.
+        # The resource tags.
         self.mse_tag = mse_tag
-        # The name of the gateway.
+        # The gateway name.
         self.name = name
-        # The Alibaba Cloud account ID of the user who created the gateway.
+        # The ID of the primary user who created the gateway.
         self.primary_user = primary_user
-        # The region ID.
+        # The region.
         self.region = region
         # The number of gateway replicas.
         self.replica = replica
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The ID of the security group.
+        # The security group.
         self.security_group = security_group
-        # The specifications of the gateway.
+        # The gateway specifications.
         self.spec = spec
-        # The status of the gateway. Valid values:
-        # 
-        # *   0: The gateway is being created.
-        # *   1: The gateway fails to be created.
-        # *   2: The gateway is running.
-        # *   3: The gateway is changing.
-        # *   4: The gateway is scaling in.
-        # *   6: The gateway is scaling out.
-        # *   8: The gateway is being deleted.
-        # *   10: The gateway is restarting.
-        # *   11: The gateway is being rebuilt.
-        # *   12: The gateway is updating.
-        # *   13: The gateway fails to be updated.
+        # The result status of the data integration synchronization node. Valid values:
+        # * 0: Creating.
+        # * 1: Creation failed.
+        # * 2: Running.
+        # * 3: Modifying.
+        # * 4: Scaling in.
+        # * 6: Scaling out.
+        # * 8: delete.
+        # * 10: Restarting.
+        # * 11: Rebuilding.
+        # * 12: Upgrading.
+        # * 13: Upgrade failed.
         self.status = status
-        # The description of the status.
+        # The status description.
         self.status_desc = status_desc
-        # The total number of replicas, including the number of replicas that are automatically scaled out.
+        # The total number of replicas, including auto-scaling replicas.
         self.total_replica = total_replica
-        # The ID of the VPC.
+        # The VPC ID.
         self.vpc = vpc
-        # The ID of the vSwitch.
+        # The vSwitch.
         self.vswitch = vswitch
-        # The ID of the secondary vSwitch.
+        # The secondary vSwitch.
         self.vswitch_2 = vswitch_2
-        # The details of Tracing Analysis.
+        # The XTrace details.
         self.xtrace_details = xtrace_details
 
     def validate(self):
@@ -375,9 +373,9 @@ class GetGatewayResponseBodyDataXtraceDetails(DaraModel):
         sample: int = None,
         trace_on: bool = None,
     ):
-        # The sampling rate of Tracing Analysis.
+        # The XTrace sampling rate.
         self.sample = sample
-        # Indicates whether sampling by using Tracing Analysis is enabled.
+        # Specifies whether XTrace sampling is enabled.
         self.trace_on = trace_on
 
     def validate(self):
@@ -413,11 +411,11 @@ class GetGatewayResponseBodyDataLogConfigDetails(DaraModel):
         log_store_name: str = None,
         project_name: str = None,
     ):
-        # Indicates whether Log Service is activated.
+        # Specifies whether log delivery is enabled.
         self.log_enabled = log_enabled
-        # The name of the Logstore.
+        # The Logstore name.
         self.log_store_name = log_store_name
-        # The name of the project.
+        # The project name.
         self.project_name = project_name
 
     def validate(self):
@@ -459,13 +457,13 @@ class GetGatewayResponseBodyDataElasticPolicy(DaraModel):
         max_replica: int = None,
         time_policy_list: List[main_models.GetGatewayResponseBodyDataElasticPolicyTimePolicyList] = None,
     ):
-        # The type of auto scale-out. Valid value:
+        # The auto-scaling type. Valid values:
         # 
-        # *   CronHPA: scale-out by time
+        # - CronHPA: Time-based scaling.
         self.elastic_type = elastic_type
-        # The maximum number of instances that are automatically scaled out. This parameter is used for horizontal scale-out.
+        # The maximum number of instances for auto-scaling, which is used for horizontal scaling.
         self.max_replica = max_replica
-        # The policy of scale-out by time.
+        # The time-based scaling policy.
         self.time_policy_list = time_policy_list
 
     def validate(self):
@@ -515,11 +513,11 @@ class GetGatewayResponseBodyDataElasticPolicyTimePolicyList(DaraModel):
         end_time: str = None,
         start_time: str = None,
     ):
-        # The number of expected replicas.
+        # The expected number of replicas.
         self.desired_replica = desired_replica
-        # The end time of auto scale-out.
+        # The end time in the HH:mm format (24-hour clock).
         self.end_time = end_time
-        # The start time of auto scale-out.
+        # The start time in the HH:mm format (24-hour clock).
         self.start_time = start_time
 
     def validate(self):

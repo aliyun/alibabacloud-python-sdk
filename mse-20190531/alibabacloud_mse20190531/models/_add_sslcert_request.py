@@ -13,13 +13,12 @@ class AddSSLCertRequest(DaraModel):
         gateway_unique_id: str = None,
     ):
         # The language of the response. Valid values:
-        # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # - en: English
         self.accept_language = accept_language
-        # The ID of the certificate.
+        # The certificate ID.
         self.cert_identifier = cert_identifier
-        # The domain ID.
+        # The domain name ID.
         self.domain_id = domain_id
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id

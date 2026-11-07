@@ -38,85 +38,96 @@ class UpdateConfigRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # 
+        # - en: English
         self.accept_language = accept_language
+        # Specifies whether to enable forced Simple Authentication and Security Layer (SASL) authentication. After this feature is enabled, clients that do not perform SASL authentication cannot access the cluster
         self.auth_enabled = auth_enabled
-        # A reserved parameter.
+        # The reserved field.
         self.autopurge_purge_interval = autopurge_purge_interval
-        # A reserved parameter.
+        # The reserved field.
         self.autopurge_snap_retain_count = autopurge_snap_retain_count
-        # The ID of the cluster.
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # Specifies whether to enable Resource Access Management (RAM) authentication for a configuration center. This parameter is valid for Nacos instances. Valid values:
+        # Specifies whether to enable RAM authentication for the configuration center in Nacos:
         # 
-        # *   `true`: enabled.
-        # *   `false`: disabled.
+        # - `true`: enabled
         # 
-        # > Before you configure this parameter, you must call the QueryConfig operation to obtain the ConfigAuthSupported parameter value to check whether the instance supports the RAM authentication feature.
+        # - `false`: disabled
+        # 
+        # > Before you set this parameter, call the QueryConfig operation to obtain the ConfigAuthSupported parameter to check whether the current cluster supports this feature.
         self.config_auth_enabled = config_auth_enabled
-        # Specifies whether to enable configuration encryption for a configuration center. This parameter is valid for Nacos instances. Valid values:
+        # Specifies whether to enable the configuration encryption feature for the configuration center in Nacos. Valid values:
         # 
-        # *   `true`: enabled.
-        # *   `false`: disabled.
+        # - `true`: The request was successful.
         # 
-        # > Before you configure this parameter, you must call the QueryConfig operation to obtain the ConfigSecretSupported parameter value to check whether the instance supports configuration encryption.
+        # - `false`: The request failed.
+        # 
+        # > Before you set this parameter, call the QueryConfig operation to obtain the ConfigSecretSupported parameter to check whether the current cluster supports this feature.
         self.config_secret_enabled = config_secret_enabled
-        # The format of the configuration. Supported formats include TEXT, JSON, XML, and HTML.
+        # The format of the configurations. Supported formats include TEXT, JSON, XML, and HTML.
         self.config_type = config_type
+        # Specifies whether to enable the Nacos open-source console
         self.console_uienabled = console_uienabled
+        # Specifies whether to enable the four-character command access feature
         self.enable_4lw = enable_4lw
+        # Specifies whether to enable Eureka protocol support in Nacos
         self.eureka_supported = eureka_supported
-        # Specifies whether to enable the time to live (TTL) configuration. This parameter is valid for ZooKeeper instances.
+        # Specifies whether to enable TTL configuration in ZooKeeper parameters.
         self.extended_types_enable = extended_types_enable
         # The maximum connection duration of the instance. This parameter is valid for ZooKeeper instances. Unit: seconds.
         self.init_limit = init_limit
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The maximum amount of data on each node. This parameter is valid for ZooKeeper instances. The default maximum data amount on each node is 1 megabyte. Unit: bytes.
+        # The maximum amount of data on each node. This parameter is valid for ZooKeeper instances. Unit: bytes.
         self.jute_maxbuffer = jute_maxbuffer
-        # Specifies whether to enable Mesh Configuration Protocol (MCP). This parameter is valid for Nacos instances. Valid values:
+        # Specifies whether MCP is enabled in Nacos configuration. Valid values:
         # 
-        # *   `true`: enabled.
-        # *   `false`: disabled.
+        # - `true`: enabled
         # 
-        # > Before you configure this parameter, you must call the QueryConfig operation to obtain the MCPSupported parameter value to check whether the instance supports MCP.
+        # - `false`: disabled
+        # 
+        # > Before you set this parameter, call the QueryConfig operation to obtain the MCPSupported parameter to check whether the current cluster supports this feature.
         self.mcpenabled = mcpenabled
-        # The number of connections between a client and a server. This parameter is valid for ZooKeeper instances.\\
-        # If this parameter is set to 0, no limits are imposed on the number of connections.
+        # The number of connections between a single client and a single server in ZooKeeper configuration.<br>
+        # If this parameter is set to 0, no limits are imposed on the number of connections.<br>
         self.max_client_cnxns = max_client_cnxns
-        # The maximum timeout period. This parameter is valid for ZooKeeper instances. Unit: seconds.
+        # The maximum timeout period in ZooKeeper configuration. Unit: seconds.
         self.max_session_timeout = max_session_timeout
-        # The minimum timeout period. This parameter is valid for ZooKeeper instances. Unit: seconds.
+        # The minimum timeout period in ZooKeeper configuration. Unit: seconds.
         self.min_session_timeout = min_session_timeout
-        # Specifies whether to enable RAM authentication for a registry. This parameter is valid for Nacos instances. Valid values:
+        # Specifies whether to enable RAM authentication for the Accreditation Centre in Nacos:
         # 
-        # *   `true`: enabled.
-        # *   `false`: disabled.
+        # - `true`: enabled
         # 
-        # > Before you configure this parameter, you must call the QueryConfig operation to obtain the NamingAuthSupporte parameter value to check whether the instance supports the RAM authentication feature.
+        # - `false`: disabled
+        # 
+        # > Before you set this parameter, call the QueryConfig operation to obtain the NamingAuthSupporte parameter to check whether the current cluster supports this feature.
         self.naming_auth_enabled = naming_auth_enabled
-        # Specifies whether to enable super permissions. This parameter is valid for ZooKeeper instances. Valid values:
+        # Specifies whether super permissions are enabled. This parameter is valid for ZooKeeper instances. Valid values:
         # 
-        # *   `true`: enabled
-        # *   `false`: disabled
+        # - `true`: enabled
+        # 
+        # - `false`: disabled
         self.open_super_acl = open_super_acl
-        # The password that corresponds to the username.
+        # The password of the account.
         # 
-        # > You must specify this parameter if OpenSuperAcl is set to true.
+        # > This parameter is required when OpenSuperAcl is set to true.
         self.pass_word = pass_word
-        # The extended request parameters in the JSON format.
+        # The extended request parameter in the JSON format.
         self.request_pars = request_pars
-        # The frequency for generating snapshots. This parameter is valid for ZooKeeper instances.
+        # The frequency at which snapshots are generated in ZooKeeper configuration
         self.snapshot_count = snapshot_count
         # The connection timeout period of the instance. This parameter is valid for ZooKeeper instances. Unit: seconds.
         self.sync_limit = sync_limit
+        # Specifies whether to enable TLS transmission link encryption in Nacos
         self.tlsenabled = tlsenabled
         # The time unit. This parameter is valid for ZooKeeper instances. Default value: 2000. Unit: milliseconds.
         self.tick_time = tick_time
-        # The name of the user.
+        # The username of the account.
         # 
-        # > You must specify this parameter if OpenSuperAcl is set to true.
+        # > This parameter is required when OpenSuperAcl is set to true.
         self.user_name = user_name
 
     def validate(self):

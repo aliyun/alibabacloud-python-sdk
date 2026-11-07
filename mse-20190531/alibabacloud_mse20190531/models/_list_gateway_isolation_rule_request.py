@@ -10,6 +10,7 @@ class ListGatewayIsolationRuleRequest(DaraModel):
         accept_language: str = None,
         filter_params: str = None,
     ):
+        # The language of the response. Valid values: zh (default): Chinese. en: English.
         self.accept_language = accept_language
         # just for POP
         # 

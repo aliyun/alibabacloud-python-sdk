@@ -14,17 +14,17 @@ class AddMigrationTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Data structure.
+        # The data structure.
         self.data = data
-        # Error code.
+        # The error code.
         self.error_code = error_code
-        # Message.
+        # The message.
         self.message = message
-        # Request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # 请求结果，取值如下：
-        # - `true`：请求成功。
-        # - `false`：请求失败。
+        # Indicates whether the request is successful. Valid values:
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):
@@ -88,31 +88,30 @@ class AddMigrationTaskResponseBodyData(DaraModel):
         target_instance_id: str = None,
         user_id: str = None,
     ):
-        # Cluster type.
-        # 
+        # The cluster type. Valid values:
         # - Nacos-Ans
         # - ZooKeeper
         # - Eureka
         self.cluster_type = cluster_type
-        # Task ID.
+        # The ID of the task.
         self.id = id
-        # Source instance node address.
+        # The address of the source instance node.
         self.origin_instance_address = origin_instance_address
-        # Source instance name.
+        # The name of the source instance.
         self.origin_instance_name = origin_instance_name
-        # Namespace list, required when the source cluster is Nacos.
+        # The list of namespaces. This parameter is optional when the source cluster is Nacos.
         self.origin_instance_namespace = origin_instance_namespace
-        # Description.
+        # The description.
         self.project_desc = project_desc
-        # SyncType
+        # The synchronization type.
         self.sync_type = sync_type
-        # Target instance name.
+        # The name of the target instance.
         self.target_cluster_name = target_cluster_name
-        # Target instance URL.
+        # The URL of the target instance.
         self.target_cluster_url = target_cluster_url
-        # Target instance ID.
+        # The instance ID of the target instance.
         self.target_instance_id = target_instance_id
-        # User ID.
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):

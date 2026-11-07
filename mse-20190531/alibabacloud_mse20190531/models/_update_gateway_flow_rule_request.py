@@ -21,24 +21,56 @@ class UpdateGatewayFlowRuleRequest(DaraModel):
         route_name: str = None,
         threshold: int = None,
     ):
+        # The language in which you want to display the results. Valid values: zh (default): Chinese. en: English.
         self.accept_language = accept_language
+        # The type of the web fallback behavior.
+        # 
+        # 0: returns the specified text
+        # 
+        # 1: redirects to the specified page
+        # 
         # This parameter is required.
         self.behavior_type = behavior_type
+        # The encoding type.
+        # 
+        # 0: plain text
+        # 
+        # 1: JSON
         self.body_encoding = body_encoding
+        # Specifies whether to enable the rule.
+        # 
+        # 0: disables the rule.
+        # 
+        # 1: enables the rule.
+        # 
         # This parameter is required.
         self.enable = enable
+        # The gateway ID.
         self.gateway_id = gateway_id
+        # The unique ID of the gateway.
+        # 
         # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
+        # The ID of the throttling rule.
+        # 
         # This parameter is required.
         self.id = id
+        # The returned HTTP text.
         self.response_content_body = response_content_body
+        # The redirection URL.
         self.response_redirect_url = response_redirect_url
+        # The HTTP status code.
         self.response_status_code = response_status_code
+        # The route ID.
+        # 
         # This parameter is required.
         self.route_id = route_id
+        # The route name.
+        # 
         # This parameter is required.
         self.route_name = route_name
+        # The overall queries per second (QPS) threshold.
+        # 
         # This parameter is required.
         self.threshold = threshold
 

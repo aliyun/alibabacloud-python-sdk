@@ -15,24 +15,23 @@ class GetAppMessageQueueRouteRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # - en: English
         self.accept_language = accept_language
-        # The ID of the application.
+        # The application ID.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The name of the application.
+        # The application name.
         self.app_name = app_name
-        # The name of the Microservices Engine (MSE) namespace.
+        # The MSE namespace name.
         self.namespace = namespace
-        # The region where the instance resides. Examples:
-        # 
-        # *   `cn-hangzhou`: China (Hangzhou)
-        # *   `cn-beijing`: China (Beijing)
-        # *   `cn-shanghai`: China (Shanghai)
-        # *   `cn-zhangjiakou`: China (Zhangjiakou)
-        # *   `cn-shenzhen`: China (Shenzhen)
+        # The region where the cluster is deployed, including but not limited to:
+        # - `cn-hangzhou`: Hangzhou
+        # - `cn-beijing`: Beijing
+        # - `cn-shanghai`: Shanghai
+        # - `cn-zhangjiakou`: Zhangjiakou
+        # - `cn-shenzhen`: Shenzhen
         # 
         # This parameter is required.
         self.region = region

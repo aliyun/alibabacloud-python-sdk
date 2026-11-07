@@ -12,20 +12,20 @@ class UpdateGatewayAuthConsumerResourceShrinkRequest(DaraModel):
         gateway_unique_id: str = None,
         resource_list_shrink: str = None,
     ):
-        # The language of the response. Valid values:
+        # The language of the returned information. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
-        # The gateway authentication consumer ID.
+        # The ID of the gateway authentication consumer.
         # 
         # This parameter is required.
         self.consumer_id = consumer_id
-        # The unique ID of the gateway.
+        # UpdateGatewayAuthConsumerResource
         # 
         # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
-        # The gateway authentication consumer ID.
+        # The list of resources.
         self.resource_list_shrink = resource_list_shrink
 
     def validate(self):

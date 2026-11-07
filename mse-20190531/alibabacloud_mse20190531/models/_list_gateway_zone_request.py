@@ -9,7 +9,7 @@ class ListGatewayZoneRequest(DaraModel):
         self,
         accept_language: str = None,
     ):
-        # The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
+        # The language of the response. Valid values: `zh` (Chinese) and `en` (English). Default value: `zh`.
         self.accept_language = accept_language
 
     def validate(self):

@@ -14,10 +14,19 @@ class InitializeServiceLinkRoleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.code = code
+        # The response parameters.
         self.data = data
+        # The message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -73,8 +82,11 @@ class InitializeServiceLinkRoleResponseBodyData(DaraModel):
         role_name: str = None,
         service_name: str = None,
     ):
+        # The permission that is granted to the RAM user to call the API operation.
         self.required_permission = required_permission
+        # The name of the created service-linked role.
         self.role_name = role_name
+        # The service to which the service-linked role belongs.
         self.service_name = service_name
 
     def validate(self):

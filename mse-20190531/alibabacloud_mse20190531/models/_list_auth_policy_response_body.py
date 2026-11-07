@@ -19,7 +19,7 @@ class ListAuthPolicyResponseBody(DaraModel):
     ):
         # The response code.
         self.code = code
-        # The details of the data.
+        # The data overview.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -27,10 +27,11 @@ class ListAuthPolicyResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # The request result, with the following values:
         # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -95,9 +96,9 @@ class ListAuthPolicyResponseBodyData(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
-        # The data returned.
+        # The returned data.
         self.result = result
         # The total number of entries.
         self.total_size = total_size
@@ -166,41 +167,45 @@ class ListAuthPolicyResponseBodyDataResult(DaraModel):
         source: str = None,
         status: int = None,
     ):
-        # The ID of the Alibaba Cloud account to which the resource belongs.
+        # The Alibaba Cloud account ID of the resource owner.
         self.account_id = account_id
         # The application ID.
         self.app_id = app_id
         # The application name.
         self.app_name = app_name
-        # The content of the service authentication rule.
+        # The list of service authentication rules.
         self.auth_rule = auth_rule
-        # The rule type. Valid values:
+        # The rule type.
         # 
-        # *   0: by application
-        # *   1: by namespace
+        # - 0: by application dimension.
+        # 
+        # - 1: by namespace dimension.
         self.auth_type = auth_type
-        # Indicates whether the rule was enabled or disabled. Valid values:
+        # Enable or disable.
         # 
-        # *   `true`: enabled
-        # *   `false`: disabled
+        # - `true`: Enable.
+        # 
+        # - `false`: disable.
         self.enable = enable
-        # The rule ID.
+        # The ID.
         self.id = id
         # The namespace.
         self.k_8s_namespace = k_8s_namespace
-        # The name of the authentication rule.
+        # The authentication rule name.
         self.name = name
         # The namespace ID.
         self.namespace_id = namespace_id
-        # The protocol type. Valid values:
+        # The Protocol Type. Valid values:
         # 
-        # *   **SPRING_CLOUD**
-        # *   **DUBBO**
-        # *   **istio**
+        # - **SPRING_CLOUD**.
+        # 
+        # - **DUBBO**.
+        # 
+        # - **istio**.
         self.protocol = protocol
         # The region ID.
         self.region_id = region_id
-        # The source of the application.
+        # The application source.
         self.source = source
         # The status.
         self.status = status
@@ -321,20 +326,21 @@ class ListAuthPolicyResponseBodyDataResultAuthRule(DaraModel):
         method: main_models.ListAuthPolicyResponseBodyDataResultAuthRuleMethod = None,
         path: str = None,
     ):
-        # The IDs of applications.
+        # The application collection.
         self.app_ids = app_ids
-        # The rule type. Valid values:
+        # The rule type.
         # 
-        # *   0: by application
-        # *   1: by namespace
+        # - 0, by application dimension.
+        # 
+        # - 1, by namespace dimension.
         self.auth_type = auth_type
-        # Indicates whether the rule is a blacklist rule.
+        # Indicates whether it is a blacklist.
         self.black = black
-        # The queried namespaces.
+        # The namespace list.
         self.k_8s_namespaces = k_8s_namespaces
         # The request method.
         self.method = method
-        # The service path.
+        # The path.
         self.path = path
 
     def validate(self):
@@ -403,13 +409,13 @@ class ListAuthPolicyResponseBodyDataResultAuthRuleMethod(DaraModel):
         self.group = group
         # The method name.
         self.name = name
-        # The types of request parameters.
+        # The list of request parameter types.
         self.parameter_types = parameter_types
-        # The type of the return value.
+        # The return value type.
         self.return_type = return_type
         # The service name.
         self.service_name = service_name
-        # The method version.
+        # The method version number.
         self.version = version
 
     def validate(self):

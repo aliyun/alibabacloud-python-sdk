@@ -15,30 +15,30 @@ class CloneNacosConfigRequest(DaraModel):
         policy: str = None,
         target_namespace_id: str = None,
     ):
-        # Language type of the returned message:
+        # The language of the response. Valid values:
         # 
-        # - zh: Chinese
-        # - en: English
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
-        # Configuration items to be cloned, in the format of dataId+group, with multiple items separated by commas.
+        # The configuration items to clone, in the format of dataId+group. Separate multiple configuration items with commas (,).
         self.data_ids = data_ids
-        # List of configuration IDs.
+        # The list of configuration IDs.
         self.ids = ids
-        # Instance ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Source namespace ID.
+        # The source namespace ID.
         self.origin_namespace_id = origin_namespace_id
-        # The strategy used when a write conflict occurs.
+        # The policy used when a write conflict occurs. Valid values:
         # 
         # - ABORT
         # - SKIP
-        # - OVERWRITE
+        # - OVERWRITE.
         # 
         # This parameter is required.
         self.policy = policy
-        # Target namespace ID.
+        # The destination namespace ID.
         self.target_namespace_id = target_namespace_id
 
     def validate(self):

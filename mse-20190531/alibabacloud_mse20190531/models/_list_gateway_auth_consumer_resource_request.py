@@ -17,10 +17,10 @@ class ListGatewayAuthConsumerResourceRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
-        # The ID of the consumer.
+        # The ID of the gateway authentication consumer.
         # 
         # This parameter is required.
         self.consumer_id = consumer_id
@@ -28,18 +28,19 @@ class ListGatewayAuthConsumerResourceRequest(DaraModel):
         # 
         # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
-        # The number of the page to return.
+        # The page number.
         # 
         # This parameter is required.
         self.page_num = page_num
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The resource authorization status. Valid values:
+        # The resource status. Valid values:
         # 
-        # *   true: enabled
-        # *   false: disabled
+        # - true: Enabled.
+        # 
+        # - false: Disabled.
         self.resource_status = resource_status
         # The name of the route.
         self.route_name = route_name

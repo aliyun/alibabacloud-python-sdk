@@ -19,10 +19,10 @@ class UpdateBlackWhiteListRequest(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The language of the response. Valid values:
+        # The language of the returned information. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
         # The content of the blacklist.
         self.content = content
@@ -30,19 +30,19 @@ class UpdateBlackWhiteListRequest(DaraModel):
         self.gateway_unique_id = gateway_unique_id
         # The ID of the blacklist.
         self.id = id
-        # Specifies whether to enable the whitelist.
+        # Specifies whether the list is a whitelist. Default value: false.
         self.is_white = is_white
         # The name.
         self.name = name
         # The description.
         self.note = note
-        # The resource IDs in the JSON format.
+        # The JSON string of the resource ID list.
         self.resource_id_json_list = resource_id_json_list
-        # The type of the resource.
+        # The scope of the bound resources.
         self.resource_type = resource_type
-        # Specifies whether to enable the blacklist or whitelist.
+        # Specifies whether it is enabled.
         self.status = status
-        # The type of the blacklist or whitelist.
+        # The resource type of blacklists and whitelists.
         self.type = type
 
     def validate(self):

@@ -16,16 +16,17 @@ class QueryConfigRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # 
+        # - en: English
         self.accept_language = accept_language
         # The ID of the cluster.
         self.cluster_id = cluster_id
-        # A reserved parameter.
+        # A reserved field.
         self.config_type = config_type
         # The ID of the instance.
         self.instance_id = instance_id
-        # Specifies whether runtime configurations are required.
+        # Specifies whether to query the runtime configuration.
         self.need_running_conf = need_running_conf
         # The extended request parameters in the JSON format.
         self.request_pars = request_pars

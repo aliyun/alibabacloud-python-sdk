@@ -20,26 +20,27 @@ class ListGatewayZoneResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. The status code 200 indicates that the request was successful.
+        # The status code. A value of `200` is returned when `Success` is `true`.
         self.code = code
-        # The queried zones.
+        # A list of zones.
         self.data = data
-        # The dynamic part in the error message.
+        # The placeholder in the dynamic error message.
         self.dynamic_code = dynamic_code
-        # The dynamic part in the error message. This parameter is used to replace %s in **ErrMessage**.
+        # The dynamic error message that is used to replace the **%s** placeholder in the ErrMessage parameter.
         self.dynamic_message = dynamic_message
-        # The status code.
+        # The error code returned if the request fails.
         self.error_code = error_code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message returned.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # - `true`
+        # 
+        # - `false`
         self.success = success
 
     def validate(self):
@@ -125,8 +126,9 @@ class ListGatewayZoneResponseBodyData(DaraModel):
         support_qat: bool = None,
         zone_id: str = None,
     ):
-        # The local name of the zone.
+        # The name of the zone.
         self.local_name = local_name
+        # Indicates whether the zone supports QAT.
         self.support_qat = support_qat
         # The zone ID.
         self.zone_id = zone_id

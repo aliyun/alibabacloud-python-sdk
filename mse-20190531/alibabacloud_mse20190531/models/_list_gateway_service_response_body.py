@@ -21,16 +21,15 @@ class ListGatewayServiceResponseBody(DaraModel):
         self.code = code
         # The returned data.
         self.data = data
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error message returned if the request failed.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - `true`: The request is successful.
+        # - `false`: The request fails.
         self.success = success
 
     def validate(self):
@@ -93,13 +92,13 @@ class ListGatewayServiceResponseBodyData(DaraModel):
         result: List[main_models.ListGatewayServiceResponseBodyDataResult] = None,
         total_size: int = None,
     ):
-        # The number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page. Default value: 10.
+        # The maximum number of records per page. Default value: 10.
         self.page_size = page_size
-        # The data returned.
+        # The returned collection.
         self.result = result
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_size = total_size
 
     def validate(self):
@@ -177,6 +176,7 @@ class ListGatewayServiceResponseBodyDataResult(DaraModel):
         unhealthy_endpoints: List[str] = None,
         versions: List[main_models.ListGatewayServiceResponseBodyDataResultVersions] = None,
     ):
+        # The DNS server list (for DNS domain name service only).
         self.dns_server_list = dns_server_list
         # The gateway ID.
         self.gateway_id = gateway_id
@@ -184,54 +184,59 @@ class ListGatewayServiceResponseBodyDataResult(DaraModel):
         self.gateway_traffic_policy = gateway_traffic_policy
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
-        # The creation time.
+        # The time when the record was created.
         self.gmt_create = gmt_create
-        # The modification time.
+        # The time when the record was modified.
         self.gmt_modified = gmt_modified
-        # The group.
+        # The group name.
         self.group_name = group_name
-        # The health status.
+        # The health status. Valid values:
         # 
-        # *   Health
-        # *   Unhealthy
-        # *   Unknown
+        # - Health
+        # 
+        # - Unhealthy
+        # 
+        # - Unknown
         self.healeh_status = healeh_status
         # Indicates whether health checks are performed.
         self.health_check = health_check
-        # The information about health checks.
+        # The health check information.
         self.health_check_info = health_check_info
-        # The health status.
+        # The health status. Valid values:
         # 
-        # *   Health
-        # *   Unhealthy
-        # *   Unknown
+        # - Health
+        # 
+        # - Unhealthy
+        # 
+        # - Unknown
         self.health_status = health_status
         # The ID.
         self.id = id
-        # The list of IP addresses.
+        # The IP address list.
         self.ips = ips
-        # The metadata or IP addresses of the service.
+        # The metadata or IP address list.
         self.meta_info = meta_info
-        # The name of the service.
+        # The service name.
         self.name = name
         # The namespace.
         self.namespace = namespace
-        # The port array.
+        # The array of ports.
         self.ports = ports
+        # The fully qualified domain name (FQDN) of the service.
         self.service_fqdn = service_fqdn
-        # The name of the service that is registered with the service registry.
+        # The original service name in the registry.
         self.service_name_in_registry = service_name_in_registry
-        # The service port number.
+        # The service port.
         self.service_port = service_port
-        # The protocol of the service.
+        # The service protocol.
         self.service_protocol = service_protocol
-        # The ID of the service source.
+        # The source ID.
         self.source_id = source_id
         # The source type.
         self.source_type = source_type
-        # The array of endpoints of unhealthy instances.
+        # The array of unhealthy endpoints.
         self.unhealthy_endpoints = unhealthy_endpoints
-        # The service version.
+        # The service versions.
         self.versions = versions
 
     def validate(self):
@@ -417,7 +422,7 @@ class ListGatewayServiceResponseBodyDataResultVersions(DaraModel):
         self,
         name: str = None,
     ):
-        # The version number.
+        # The version name.
         self.name = name
 
     def validate(self):
@@ -453,15 +458,15 @@ class ListGatewayServiceResponseBodyDataResultHealthCheckInfo(DaraModel):
         timeout: int = None,
         unhealthy_threshold: int = None,
     ):
-        # Indicates whether checks are performed.
+        # Indicates whether the check is performed.
         self.check = check
-        # The expected status of the health check.
+        # The expected HTTP status codes for health checks.
         self.expected_statuses = expected_statuses
-        # The threshold for healthy instances.
+        # The healthy threshold.
         self.healthy_threshold = healthy_threshold
-        # The endpoint of the HTTP request for the health check.
+        # The HTTP request address for health checks.
         self.http_host = http_host
-        # The path to which the HTTP request for the health check is sent.
+        # The HTTP request path for health checks.
         self.http_path = http_path
         # The health check interval.
         self.interval = interval
@@ -469,7 +474,7 @@ class ListGatewayServiceResponseBodyDataResultHealthCheckInfo(DaraModel):
         self.protocol = protocol
         # The timeout period.
         self.timeout = timeout
-        # The threshold for unhealthy instances.
+        # The unhealthy threshold.
         self.unhealthy_threshold = unhealthy_threshold
 
     def validate(self):
@@ -548,7 +553,7 @@ class ListGatewayServiceResponseBodyDataResultGatewayTrafficPolicy(DaraModel):
     ):
         # The load balancing settings.
         self.load_balancer_settings = load_balancer_settings
-        # The Transport Layer Security (TLS).
+        # The TLS.
         self.tls = tls
 
     def validate(self):
@@ -592,22 +597,25 @@ class ListGatewayServiceResponseBodyDataResultGatewayTrafficPolicyTls(DaraModel)
         sni: str = None,
         subject_alt_names: List[str] = None,
     ):
-        # The public key of the CA certificate .
+        # The public key of the CA certificate.
         self.ca_cert_content = ca_cert_content
-        # The ID of the certification authority (CA) certificate.
+        # The CA certificate ID.
         self.ca_cert_id = ca_cert_id
-        # The ID of the certificate.
+        # The certificate ID.
         self.cert_id = cert_id
-        # The TLS mode.
+        # The TLS mode. Valid values:
         # 
-        # *   DISABLE
-        # *   SIMPLE
-        # *   MUTUAL
-        # *   ISTIO_MUTUAL
+        # - DISABLE
+        # 
+        # - SIMPLE
+        # 
+        # - MUTUAL
+        # 
+        # - ISTIO_MUTUAL
         self.mode = mode
-        # The Server Name Indication (SNI) value.
+        # The service name identity.
         self.sni = sni
-        # The array of subject aliases.
+        # The array of subject alternative names.
         self.subject_alt_names = subject_alt_names
 
     def validate(self):
@@ -667,16 +675,19 @@ class ListGatewayServiceResponseBodyDataResultGatewayTrafficPolicyLoadBalancerSe
         loadbalancer_type: str = None,
         warmup_duration: int = None,
     ):
-        # The consistent hashing settings.
+        # The consistent hashing configuration.
         self.consistent_hash_lbconfig = consistent_hash_lbconfig
-        # The load balancing type.
+        # The load balancing policy. Valid values:
         # 
-        # *   ROUND_ROBIN
-        # *   LEAST_CONN
-        # *   RANDOM
-        # *   CONSISTENT_HASH
+        # - ROUND_ROBIN
+        # 
+        # - LEAST_CONN
+        # 
+        # - RANDOM
+        # 
+        # - CONSISTENT_HASH
         self.loadbalancer_type = loadbalancer_type
-        # The prefetch time of the least connection load balancing.
+        # The warm-up duration for the minimum number of requests.
         self.warmup_duration = warmup_duration
 
     def validate(self):
@@ -721,18 +732,21 @@ class ListGatewayServiceResponseBodyDataResultGatewayTrafficPolicyLoadBalancerSe
         minimum_ring_size: int = None,
         parameter_name: str = None,
     ):
-        # The type based on which consistent hashing load balancing is performed.
+        # The consistent hashing method. Valid values:
         # 
-        # *   HEADER
-        # *   COOKIE
-        # *   SOURCE_IP
-        # *   QUERY_PARAMETER
+        # - HEADER
+        # 
+        # - COOKIE
+        # 
+        # - SOURCE_IP
+        # 
+        # - QUERY_PARAMETER
         self.consistent_hash_lbtype = consistent_hash_lbtype
-        # The cookie-based load balancing parameters.
+        # The cookie-based parameter.
         self.http_cookie = http_cookie
-        # The minimum value of the hash ring.
+        # The minimum size of the hash ring.
         self.minimum_ring_size = minimum_ring_size
-        # The name of the parameter.
+        # The parameter name.
         self.parameter_name = parameter_name
 
     def validate(self):
@@ -782,11 +796,11 @@ class ListGatewayServiceResponseBodyDataResultGatewayTrafficPolicyLoadBalancerSe
         path: str = None,
         ttl: str = None,
     ):
-        # The name of the cookie.
+        # The cookie name.
         self.name = name
-        # The path of the cookie.
+        # The cookie path.
         self.path = path
-        # The lifecycle of the cookie.
+        # The time-to-live (TTL) of the cookie.
         self.ttl = ttl
 
     def validate(self):

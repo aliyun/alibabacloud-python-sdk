@@ -11,8 +11,13 @@ class DeleteGatewayAuthRequest(DaraModel):
         gateway_unique_id: str = None,
         id: int = None,
     ):
+        # The language of the response. Valid values:
+        # - zh: Chinese. This is the default value.
+        # - en: English.
         self.accept_language = accept_language
+        # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
+        # The authentication ID.
         self.id = id
 
     def validate(self):

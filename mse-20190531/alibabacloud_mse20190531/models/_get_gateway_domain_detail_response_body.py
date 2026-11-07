@@ -17,20 +17,19 @@ class GetGatewayDomainDetailResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
+        # The status code.
         self.code = code
-        # The returned data.
+        # The data.
         self.data = data
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message returned.
+        # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - `true`: The request is successful.
+        # - `false`: The request fails.
         self.success = success
 
     def validate(self):
@@ -95,6 +94,7 @@ class GetGatewayDomainDetailResponseBodyData(DaraModel):
         cert_identifier: str = None,
         cert_name: str = None,
         common_name: str = None,
+        enable_waf: bool = None,
         gateway_id: int = None,
         gateway_unique_id: str = None,
         gmt_after: str = None,
@@ -110,59 +110,67 @@ class GetGatewayDomainDetailResponseBodyData(DaraModel):
         name: str = None,
         protocol: str = None,
         sans: str = None,
+        support_waf: bool = None,
         tls_cipher_suites_config: main_models.GetGatewayDomainDetailResponseBodyDataTlsCipherSuitesConfig = None,
         tls_max: str = None,
         tls_min: str = None,
     ):
-        # The start time.
+        # The certificate expiration time.
         self.after_date = after_date
         # The algorithm.
         self.algorithm = algorithm
-        # The expiration time.
+        # The certificate issuance time.
         self.before_date = before_date
+        # The CA certificate content.
         self.ca_cert_identifier = ca_cert_identifier
-        # The ID of the certificate.
+        # The certificate identifier.
         self.cert_identifier = cert_identifier
-        # The name of the certificate.
+        # The certificate name.
         self.cert_name = cert_name
         # The public domain name.
         self.common_name = common_name
-        # The ID of the gateway.
+        # Indicates whether WAF protection is enabled for the domain name.
+        self.enable_waf = enable_waf
+        # The gateway ID.
         self.gateway_id = gateway_id
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
-        # The start time.
+        # The certificate expiration time in GMT.
         self.gmt_after = gmt_after
-        # The expiration time.
+        # The certificate issuance time in GMT.
         self.gmt_before = gmt_before
         # The creation time.
         self.gmt_create = gmt_create
         # The update time.
         self.gmt_modified = gmt_modified
-        # Indicates whether `HTTP/2` is enabled.
-        # 
-        # *   `open`: `HTTP/2` is enabled.
-        # *   `close`: `HTTP/2` is disabled.
-        # *   `globalConfig`: Global configurations are used.
+        # Indicates whether HTTP/2 is enabled. Valid values:
+        # - `open`: HTTP/2 is enabled.
+        # - `close`: HTTP/2 is disabled.
+        # - `globalConfig`: The global configuration is used.
         self.http_2 = http_2
         # The ID.
         self.id = id
+        # Indicates whether the domain name is managed.
         self.is_managed = is_managed
         # The issuer.
         self.issuer = issuer
+        # Indicates whether mTLS is enabled.
         self.mtls_enabled = mtls_enabled
-        # Indicates whether HTTPS is forcibly used.
+        # Indicates whether HTTPS is forced.
         self.must_https = must_https
-        # The domain name.
+        # The name.
         self.name = name
-        # The protocol of the gateway.
+        # The gateway protocol.
         self.protocol = protocol
-        # The name of the extended field.
+        # The subject alternative names.
         self.sans = sans
+        # Indicates whether the gateway supports WAF protection.
+        self.support_waf = support_waf
+        # The TLS cipher suite configuration, including the configuration type and the list of cipher suite names.
         self.tls_cipher_suites_config = tls_cipher_suites_config
-        # The maximum version of Transport Layer Security (TLS).
+        # The maximum TLS version.
         self.tls_max = tls_max
-        # The minimum version of TLS.
+        # The minimum TLS version.
         self.tls_min = tls_min
 
     def validate(self):
@@ -194,6 +202,9 @@ class GetGatewayDomainDetailResponseBodyData(DaraModel):
 
         if self.common_name is not None:
             result['CommonName'] = self.common_name
+
+        if self.enable_waf is not None:
+            result['EnableWaf'] = self.enable_waf
 
         if self.gateway_id is not None:
             result['GatewayId'] = self.gateway_id
@@ -240,6 +251,9 @@ class GetGatewayDomainDetailResponseBodyData(DaraModel):
         if self.sans is not None:
             result['Sans'] = self.sans
 
+        if self.support_waf is not None:
+            result['SupportWaf'] = self.support_waf
+
         if self.tls_cipher_suites_config is not None:
             result['TlsCipherSuitesConfig'] = self.tls_cipher_suites_config.to_map()
 
@@ -273,6 +287,9 @@ class GetGatewayDomainDetailResponseBodyData(DaraModel):
 
         if m.get('CommonName') is not None:
             self.common_name = m.get('CommonName')
+
+        if m.get('EnableWaf') is not None:
+            self.enable_waf = m.get('EnableWaf')
 
         if m.get('GatewayId') is not None:
             self.gateway_id = m.get('GatewayId')
@@ -319,6 +336,9 @@ class GetGatewayDomainDetailResponseBodyData(DaraModel):
         if m.get('Sans') is not None:
             self.sans = m.get('Sans')
 
+        if m.get('SupportWaf') is not None:
+            self.support_waf = m.get('SupportWaf')
+
         if m.get('TlsCipherSuitesConfig') is not None:
             temp_model = main_models.GetGatewayDomainDetailResponseBodyDataTlsCipherSuitesConfig()
             self.tls_cipher_suites_config = temp_model.from_map(m.get('TlsCipherSuitesConfig'))
@@ -337,7 +357,9 @@ class GetGatewayDomainDetailResponseBodyDataTlsCipherSuitesConfig(DaraModel):
         config_type: str = None,
         tls_cipher_suites: List[str] = None,
     ):
+        # The TLS cipher suite configuration type. DEFAULT indicates the default configuration, and CUSTOM indicates the custom configuration.
         self.config_type = config_type
+        # The list of TLS cipher suite names.
         self.tls_cipher_suites = tls_cipher_suites
 
     def validate(self):

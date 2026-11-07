@@ -18,36 +18,32 @@ class ListAnsInstancesRequest(DaraModel):
         request_pars: str = None,
         service_name: str = None,
     ):
-        # The language of the response. Valid values:
+        # The language of the returned information. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # - en: English
         self.accept_language = accept_language
-        # The ID of the Nacos instance.
-        # 
-        # > This operation contains both the InstanceId and ClusterId parameters. You must specify one of them.
+        # The cluster ID.>Notice: If this operation includes both InstanceId and ClusterId, you must specify at least one of them.
         self.cluster_id = cluster_id
-        # The alias of the Nacos instance.
+        # The cluster alias.
         self.cluster_name = cluster_name
-        # The name of the contact group.
+        # The contact group name.
         self.group_name = group_name
-        # The ID of the instance.
-        # 
-        # > This operation contains both the InstanceId and ClusterId parameters. You must specify one of them.
+        # The instance ID.>Notice: If this operation includes both InstanceId and ClusterId, you must specify at least one of them.
         self.instance_id = instance_id
-        # The ID of the namespace.
+        # The namespace ID.
         self.namespace_id = namespace_id
-        # The number of the page to return.
+        # The page number.
         # 
         # This parameter is required.
         self.page_num = page_num
-        # The number of entries to return on each page.
+        # The number of instances to return on each page.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The extended request parameters in the JSON format.
+        # The extended request parameters in JSON format.
         self.request_pars = request_pars
-        # The name of the service.
+        # The service name.
         # 
         # This parameter is required.
         self.service_name = service_name

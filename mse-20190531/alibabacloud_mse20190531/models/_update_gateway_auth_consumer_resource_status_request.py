@@ -13,12 +13,12 @@ class UpdateGatewayAuthConsumerResourceStatusRequest(DaraModel):
         id_list: str = None,
         resource_status: bool = None,
     ):
-        # The language of the response. Valid values:
+        # The language of the returned information. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
-        # The ID of the consumer.
+        # The ID of the gateway authentication consumer.
         # 
         # This parameter is required.
         self.consumer_id = consumer_id
@@ -26,14 +26,15 @@ class UpdateGatewayAuthConsumerResourceStatusRequest(DaraModel):
         # 
         # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
-        # The list of IDs of the authorized resources that a user wants to update.
+        # The list of authorization IDs to update.
         # 
         # This parameter is required.
         self.id_list = id_list
-        # The resource authorization status. Valid values:
+        # The resource status. Valid values:
         # 
-        # *   true: enabled
-        # *   false: disabled
+        # - true: Enabled.
+        # 
+        # - false: Disabled.
         # 
         # This parameter is required.
         self.resource_status = resource_status

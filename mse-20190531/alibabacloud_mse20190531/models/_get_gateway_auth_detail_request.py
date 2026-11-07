@@ -12,9 +12,15 @@ class GetGatewayAuthDetailRequest(DaraModel):
         gateway_unique_id: str = None,
         id: int = None,
     ):
+        # The language of the response. Valid values:
+        # * zh: Chinese. This is the default value.
+        # * en: English.
         self.accept_language = accept_language
+        # The gateway ID. Specify either this parameter or GatewayUniqueId.
         self.gateway_id = gateway_id
+        # The unique ID of the gateway. Specify either this parameter or GatewayId. If both are specified, GatewayUniqueId takes precedence.
         self.gateway_unique_id = gateway_unique_id
+        # The authentication ID.
         self.id = id
 
     def validate(self):

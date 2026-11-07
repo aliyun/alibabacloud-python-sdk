@@ -14,17 +14,20 @@ class AddServiceSourceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # duplicatedClusterAliasName
+        # The return code.
         self.code = code
-        # mse-100-007
+        # The returned data.
         self.data = data
-        # code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # mse-200-105
+        # The returned message.
         self.message = message
-        # The response data.
+        # The ID of the request.
         self.request_id = request_id
-        # duplicated cluster alias name
+        # The request result. Valid values:
+        # 
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):

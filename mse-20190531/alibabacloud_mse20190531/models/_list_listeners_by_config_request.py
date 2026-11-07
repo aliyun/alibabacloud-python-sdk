@@ -20,15 +20,16 @@ class ListListenersByConfigRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
-        # The ID of the data.
+        # The data ID.
         # 
         # This parameter is required.
         self.data_id = data_id
+        # The list of additional canary release rules. When performing listener matching, the additional canary release rules are merged with existing rules for matching.
         self.ext_gray_rules = ext_gray_rules
-        # The name of the group.
+        # The group.
         # 
         # This parameter is required.
         self.group = group
@@ -36,9 +37,9 @@ class ListListenersByConfigRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the namespace.
+        # The namespace ID. Default value: public.
         self.namespace_id = namespace_id
-        # The extended request parameters in the JSON format.
+        # This parameter is deprecated and does not need to be specified.
         self.request_pars = request_pars
 
     def validate(self):
@@ -113,9 +114,13 @@ class ListListenersByConfigRequestExtGrayRules(DaraModel):
         gray_rule_priority: int = None,
         gray_rule_type: str = None,
     ):
+        # The canary release rule. If it is a Beta canary release, this field contains the IP addresses of the canary release clients, separated by commas. If it is a tag-based canary release, this field contains tag_name=tag_value, with multiple tag values separated by commas.
         self.gray_rule = gray_rule
+        # The name of the canary release version.
         self.gray_rule_name = gray_rule_name
+        # The priority of the canary release version.
         self.gray_rule_priority = gray_rule_priority
+        # The type of the canary release rule.
         self.gray_rule_type = gray_rule_type
 
     def validate(self):

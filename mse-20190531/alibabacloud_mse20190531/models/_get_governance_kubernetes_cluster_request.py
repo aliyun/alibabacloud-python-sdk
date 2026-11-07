@@ -13,14 +13,15 @@ class GetGovernanceKubernetesClusterRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese.
+        # 
+        # - en: English.
         self.accept_language = accept_language
-        # The ID of the instance.
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The ID of the region in which the instance resides. The region is supported by MSE.
+        # The region where the cluster is located. MSE supports specific regions.
         # 
         # This parameter is required.
         self.region_id = region_id

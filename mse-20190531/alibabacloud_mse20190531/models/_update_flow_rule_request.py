@@ -20,8 +20,9 @@ class UpdateFlowRuleRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # 
+        # - en: English
         self.accept_language = accept_language
         # The application ID.
         self.app_id = app_id
@@ -30,55 +31,12 @@ class UpdateFlowRuleRequest(DaraModel):
         # This parameter is required.
         self.app_name = app_name
         # The throttling effect.
-        # 
-        # Valid values:
-        # 
-        # *   0
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     fast failure
-        # 
-        #     <!-- -->
-        # 
-        # *   2
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     in queue
-        # 
-        #     <!-- -->
         self.control_behavior = control_behavior
         # Specifies whether to enable the rule.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   false
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.enable = enable
+        # The source application of the request.
         self.limit_app = limit_app
-        # The timeout period. Unit: milliseconds. This parameter is required when the value of ControlBehavior is set to 2.
+        # The timeout period. Unit: milliseconds. This parameter is required if the ControlBehavior parameter is set to 2.
         self.max_queueing_time_ms = max_queueing_time_ms
         # The namespace.
         # 

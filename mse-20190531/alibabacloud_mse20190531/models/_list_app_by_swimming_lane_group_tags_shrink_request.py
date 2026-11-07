@@ -12,17 +12,19 @@ class ListAppBySwimmingLaneGroupTagsShrinkRequest(DaraModel):
         namespace: str = None,
         tags_shrink: str = None,
     ):
-        # The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
+        # The language of the response. Valid values:
+        # - zh: Chinese. This is the default value.
+        # - en: English.
         self.accept_language = accept_language
         # The ID of the lane group.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The name of the MSE namespace that you want to query.
+        # The name of the Microservices Engine (MSE) namespace to query.
         # 
         # This parameter is required.
         self.namespace = namespace
-        # The tag based on which you want to list applications.
+        # The tags to query.
         self.tags_shrink = tags_shrink
 
     def validate(self):

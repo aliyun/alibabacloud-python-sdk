@@ -15,11 +15,17 @@ class ListGatewayAuthRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The language of the response. Valid values: zh (default): Chinese, en: English.
         self.accept_language = accept_language
+        # The sort order.
         self.desc_sort = desc_sort
+        # The filter conditions. Refer to the examples.
         self.filter_params = filter_params
+        # This parameter is not available.
         self.order_item = order_item
+        # The page number.
         self.page_number = page_number
+        # The number of items per page.
         self.page_size = page_size
 
     def validate(self):
@@ -83,10 +89,15 @@ class ListGatewayAuthRequestFilterParams(DaraModel):
         status: bool = None,
         type: str = None,
     ):
+        # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
+        # The whitelist mode.
         self.is_white = is_white
+        # The parameter name.
         self.name = name
+        # The enabling status.
         self.status = status
+        # The type.
         self.type = type
 
     def validate(self):

@@ -19,24 +19,24 @@ class ImportNacosConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error message returned.
+        # The code.
         self.code = code
-        # The number of configurations that are imported.
+        # The data overview.
         self.data = data
-        # The details of the data.
+        # The dynamic error message, which is used to replace **%s** in the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
-        # The code returned.
+        # The error code.
         self.error_code = error_code
-        # The ID of the request.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request is successfully processed.
+        # The returned message.
         self.message = message
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # The request ID.
         self.request_id = request_id
-        # The error code that is returned.
+        # Indicates whether the request was successful. Valid values:
+        # - `true`: The request was successful.
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -111,13 +111,13 @@ class ImportNacosConfigResponseBodyData(DaraModel):
         skip_data: List[main_models.ImportNacosConfigResponseBodyDataSkipData] = None,
         succ_count: int = None,
     ):
-        # The data structure.
+        # The list of failed imports.
         self.fail_data = fail_data
-        # The information about skipped configurations.
+        # The number of skipped messages.
         self.skip_count = skip_count
-        # The data structure.
+        # The list of skipped configurations.
         self.skip_data = skip_data
-        # The number of configurations that are skipped.
+        # The number of successfully imported instances.
         self.succ_count = succ_count
 
     def validate(self):
@@ -181,9 +181,9 @@ class ImportNacosConfigResponseBodyDataSkipData(DaraModel):
         data_id: str = None,
         group: str = None,
     ):
-        # The ID of the group.
+        # The data ID.
         self.data_id = data_id
-        # The information about configurations that are failed to be imported.
+        # The group ID.
         self.group = group
 
     def validate(self):
@@ -219,9 +219,11 @@ class ImportNacosConfigResponseBodyDataFailData(DaraModel):
         group: str = None,
         reason: str = None,
     ):
-        # The ID of the group.
+        # The data ID.
         self.data_id = data_id
+        # The group ID.
         self.group = group
+        # The cause of the failure.
         self.reason = reason
 
     def validate(self):

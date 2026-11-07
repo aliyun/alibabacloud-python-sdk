@@ -15,16 +15,17 @@ class GetApplicationListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details of the data.
+        # The data structure.
         self.data = data
-        # The message returned.
+        # The message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -75,13 +76,13 @@ class GetApplicationListResponseBodyData(DaraModel):
         result: List[main_models.GetApplicationListResponseBodyDataResult] = None,
         total_size: int = None,
     ):
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The data returned.
+        # The information about the applications.
         self.result = result
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_size = total_size
 
     def validate(self):
@@ -145,13 +146,13 @@ class GetApplicationListResponseBodyDataResult(DaraModel):
         tags: Dict[str, Any] = None,
         user_id: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
-        # The name of the application.
+        # The application name.
         self.app_name = app_name
         # The additional information.
         self.extra_info = extra_info
-        # The number of instances.
+        # The total number of instances.
         self.instances_number = instances_number
         # The programming language of the application.
         self.language = language
@@ -163,6 +164,7 @@ class GetApplicationListResponseBodyDataResult(DaraModel):
         self.source = source
         # The status.
         self.status = status
+        # The Alibaba Cloud tags.
         self.tags = tags
         # The user ID.
         self.user_id = user_id

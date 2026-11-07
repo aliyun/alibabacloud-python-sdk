@@ -18,26 +18,24 @@ class ListTagResourcesRequest(DaraModel):
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
         # The language of the response. Valid values:
-        # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # - en: English
         self.accept_language = accept_language
-        # The token used to start the next query.
+        # The token for the next query.
         self.next_token = next_token
-        # The ID of the region.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource IDs. You can specify a maximum of 50 resource IDs.
+        # The resource IDs. You can specify up to 50 resource IDs.
         self.resource_id = resource_id
-        # The type of the resource. Valid values:
-        # 
-        # *   CLUSTER: MSE instance
-        # *   GATEWAY: cloud-native gateway
+        # The resource type. Valid values:
+        # - CLUSTER: registration configuration center
+        # - GATEWAY: cloud-native gateway
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The list of tags. A maximum number of 20 tags are supported.
+        # The tags. You can specify up to 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -104,9 +102,9 @@ class ListTagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):

@@ -24,23 +24,24 @@ class UpdateGatewayRouteShrinkRequest(DaraModel):
         route_order: int = None,
         services_shrink: str = None,
     ):
-        # The language of the response. Valid values:
+        # The language of the returned information. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # - en: English
         self.accept_language = accept_language
+        # The description of the route.
         self.description = description
-        # The destination service type.
+        # The type of the destination service.
         self.destination_type = destination_type
-        # The information about service mocking.
+        # The mock content.
         self.direct_response_jsonshrink = direct_response_jsonshrink
-        # The associated domain name.
+        # The associated domain names.
         self.domain_id_list_json = domain_id_list_json
-        # Specifies whether to activate Web Application Firewall (WAF).
+        # **[Deprecated]** Use UpdateGatewayRouteWafStatus to update the WAF status of the route.
         self.enable_waf = enable_waf
-        # Specifies whether to enable the Fallback service.
+        # Specifies whether to enable the fallback service.
         self.fallback = fallback
-        # The information about the Fallback service.
+        # The fallback services.
         self.fallback_services_shrink = fallback_services_shrink
         # The ID of the gateway.
         self.gateway_id = gateway_id
@@ -50,13 +51,13 @@ class UpdateGatewayRouteShrinkRequest(DaraModel):
         self.id = id
         # The name of the route.
         self.name = name
-        # The route matching conditions.
+        # The matching conditions of the route.
         self.predicates_shrink = predicates_shrink
-        # The information about redirection.
+        # The redirect configuration.
         self.redirect_jsonshrink = redirect_jsonshrink
-        # The sequence number of the route.
+        # The order of the route.
         self.route_order = route_order
-        # The information about destination services.
+        # The destination services. Specify this parameter when the route points to a single service, multiple services, or tag-based routing.
         self.services_shrink = services_shrink
 
     def validate(self):

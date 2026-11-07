@@ -16,11 +16,17 @@ class DeleteIsolationRulesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The return code.
         self.code = code
+        # The list of rule IDs that have been deleted.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The request result.
         self.success = success
 
     def validate(self):

@@ -18,22 +18,21 @@ class CreateOrUpdateSwimmingLaneResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code. The value 200 is returned if the request is successful.
+        # The code used only to synchronize with the Success parameter.
         self.code = code
-        # The details of the data.
+        # The data overview.
         self.data = data
-        # The error code returned if the request failed.
+        # The error code.
         self.error_code = error_code
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message returned.
+        # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - `true`: The request is successful.
+        # - `false`: The request fails.
         self.success = success
 
     def validate(self):
@@ -112,32 +111,33 @@ class CreateOrUpdateSwimmingLaneResponseBodyData(DaraModel):
         status: int = None,
         tag: str = None,
     ):
-        # Indicates whether the lane was enabled.
+        # The swimlane switch.
         self.enable = enable
-        # Indicates whether the rule is enabled.
+        # Specifies whether the rules are enabled.
         self.enable_rules = enable_rules
-        # The rule for the ingress application.
+        # The entry application rule.
         self.entry_rule = entry_rule
         # The name.
         self.entry_rules = entry_rules
-        # The routing rule for the MSE gateway.
+        # The MSE gateway routing rules.
         self.gateway_swimming_lane_route_json = gateway_swimming_lane_route_json
-        # The time when the lane was created.
+        # The time when the swimlane was created.
         self.gmt_create = gmt_create
-        # The time when the lane was updated.
+        # The time when the swimlane was updated.
         self.gmt_modified = gmt_modified
-        # The ID of the lane group.
+        # The swimlane group ID.
         self.group_id = group_id
-        # The ID of the lane.
+        # The swimlane ID.
         self.id = id
-        # The name of the lane.
+        # The swimlane name.
         self.name = name
+        # **[Deprecated]** Specifies whether to enable percentage-based canary releases by path when a Java gateway is used as the entry point.
         self.path_independent_percentage_enable = path_independent_percentage_enable
-        # The ID of the region where the application is deployed.
+        # The region where the application is located.
         self.region_id = region_id
-        # The status of the lane.
+        # The swimlane status.
         self.status = status
-        # The tag of the lane.
+        # The tag corresponding to the swimlane.
         self.tag = tag
 
     def validate(self):
@@ -256,11 +256,11 @@ class CreateOrUpdateSwimmingLaneResponseBodyDataEntryRules(DaraModel):
     ):
         # The condition.
         self.condition = condition
-        # The path of the code group.
+        # The code group path.
         self.path = path
-        # The paths.
+        # The list of paths.
         self.paths = paths
-        # The conditions to be met.
+        # The list of REST matching rules.
         self.rest_items = rest_items
 
     def validate(self):
@@ -323,7 +323,7 @@ class CreateOrUpdateSwimmingLaneResponseBodyDataEntryRulesRestItems(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The matching character.
+        # The match operator.
         self.cond = cond
         # The value.
         self.datum = datum
@@ -331,7 +331,7 @@ class CreateOrUpdateSwimmingLaneResponseBodyDataEntryRulesRestItems(DaraModel):
         self.divisor = divisor
         # The name.
         self.name = name
-        # The names.
+        # The list of names.
         self.name_list = name_list
         # The operator.
         self.operator = operator
@@ -339,7 +339,7 @@ class CreateOrUpdateSwimmingLaneResponseBodyDataEntryRulesRestItems(DaraModel):
         self.rate = rate
         # The remainder.
         self.remainder = remainder
-        # The matching type.
+        # The match type.
         self.type = type
         # The value.
         self.value = value

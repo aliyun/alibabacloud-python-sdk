@@ -14,10 +14,15 @@ class CreateIsolationRuleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The rule information.
         self.data = data
+        # The response message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -79,14 +84,23 @@ class CreateIsolationRuleResponseBodyData(DaraModel):
         resource: str = None,
         threshold: float = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The name of the application.
         self.app_name = app_name
+        # The enabling status of the rule.
         self.enable = enable
+        # The ID of the rule.
         self.id = id
+        # The source application of the request.
         self.limit_app = limit_app
+        # The microservice namespace to which the application belongs.
         self.namespace = namespace
+        # The region where the cluster is deployed.
         self.region_id = region_id
+        # The name of the interface to which the rule applies. The name must be the same as the interface name displayed in the interface details on the console.
         self.resource = resource
+        # The concurrency threshold of the isolation rule.
         self.threshold = threshold
 
     def validate(self):

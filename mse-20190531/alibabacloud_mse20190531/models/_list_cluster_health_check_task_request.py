@@ -16,18 +16,19 @@ class ListClusterHealthCheckTaskRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # 
+        # - en: English
         self.accept_language = accept_language
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
         # The number of the page to return.
         self.page_num = page_num
-        # The number of entries to return on each page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The region in which the instance resides.
+        # The region in which the cluster resides.
         self.region_id = region_id
-        # The extended request parameters in the JSON format.
+        # The extended request parameter in the JSON format.
         self.request_pars = request_pars
 
     def validate(self):

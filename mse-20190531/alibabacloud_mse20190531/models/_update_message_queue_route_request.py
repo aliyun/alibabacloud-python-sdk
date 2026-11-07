@@ -19,30 +19,33 @@ class UpdateMessageQueueRouteRequest(DaraModel):
         region: str = None,
         tags: List[str] = None,
     ):
-        # The language of the response. Valid values:
+        # The language of the returned information. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
-        # The ID of the application.
+        # The application ID.
         # 
         # This parameter is required.
         self.app_id = app_id
+        # The application name.
         self.app_name = app_name
-        # Specifies whether the canary release for messaging feature is enabled for the application. Valid values:
+        # Specifies whether message canary release is enabled. Valid values:
         # 
-        # *   `true`: enabled
-        # *   `false`: disabled
+        # - `true`: Enabled.
+        # - `false`: Disabled.
         self.enable = enable
-        # The side for message filtering when the canary release for messaging feature is enabled.
+        # The filtering side for message canary release.
         self.filter_side = filter_side
+        # The list of baseline environment labels for MSMQ grayscale rules.
         self.gray_base_tags = gray_base_tags
+        # The MSE namespace name.
         self.namespace = namespace
-        # The region ID.
+        # The region.
         # 
         # This parameter is required.
         self.region = region
-        # The tag that is negligible for the untagged environment of the application.
+        # The ignored tags for the untagged environments of the application.
         self.tags = tags
 
     def validate(self):

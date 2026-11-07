@@ -24,36 +24,33 @@ class CreateOrUpdateSwimmingLaneShrinkRequest(DaraModel):
         region_id: str = None,
         tag: str = None,
     ):
-        # The language of the response. Valid values: zh and en. Default value: zh. The value zh indicates Chinese, and the value en indicates English.
+        # The language in which the results are returned. Valid values: zh (Chinese, default) and en (English).
         self.accept_language = accept_language
-        # Specifies whether to enable the lane.
+        # Specifies whether the lane is enabled.
         self.enable = enable
-        # Specifies whether to configure a routing rule for the lane. If an Ingress gateway is used, this parameter is not required.
+        # Specifies whether to configure routing rules for the lane. Configuration is not required if the ingress is a gateway.
         self.enable_rules = enable_rules
         # The JSON string.
         self.entry_rule = entry_rule
-        # The lane.
+        # The collection of lane rules.
         self.entry_rules = entry_rules
-        # The information about the routing rule for the gateway. This parameter is required when a cloud-native gateway is used as the ingress.
+        # The gateway routing information. This parameter is used when a cloud-native gateway is used as the ingress.
         self.gateway_swimming_lane_route_json_shrink = gateway_swimming_lane_route_json_shrink
-        # The language of the response. Valid values:****
-        # 
-        # *   **zh-CN**: Chinese
-        # *   **en-US**: English
-        # 
-        # > Default value: **zh-CN**.
+        # The ID of the lane group to which the lane belongs.
         self.group_id = group_id
-        # The ID of the primary key. The value -1 indicates a request that is used to create a lane. A value greater than 0 indicates a request that is used to modify a lane.
+        # The primary key ID. A value of -1 indicates that a lane is created. A value greater than 0 indicates that a specified lane is updated.
         self.id = id
         # The name of the lane.
         # 
         # This parameter is required.
         self.name = name
+        # The name of the MSE namespace.
         self.namespace = namespace
+        # **[Deprecated]** The Java gateway-related configuration for percentage-based routing by path.
         self.path_independent_percentage_enable = path_independent_percentage_enable
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
-        # The tag.
+        # The identifier.
         self.tag = tag
 
     def validate(self):
@@ -164,13 +161,13 @@ class CreateOrUpdateSwimmingLaneShrinkRequestEntryRules(DaraModel):
         priority: int = None,
         rest_items: List[main_models.CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems] = None,
     ):
-        # Specifies how RESTful items are combined into the final condition.
+        # Specifies how RestItems are combined to form the final condition.
         self.condition = condition
-        # The paths.
+        # The list of paths.
         self.paths = paths
         # The priority.
         self.priority = priority
-        # The matching list.
+        # The list of matching items.
         self.rest_items = rest_items
 
     def validate(self):
@@ -233,7 +230,7 @@ class CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The matching character.
+        # The match operator.
         self.cond = cond
         # The value.
         self.datum = datum
@@ -241,7 +238,7 @@ class CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems(DaraModel):
         self.divisor = divisor
         # The name.
         self.name = name
-        # The matching list.
+        # The list of matching items.
         self.name_list = name_list
         # The operator.
         self.operator = operator
@@ -249,7 +246,7 @@ class CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems(DaraModel):
         self.rate = rate
         # The remainder.
         self.remainder = remainder
-        # The matching type.
+        # The match type.
         self.type = type
         # The value.
         self.value = value

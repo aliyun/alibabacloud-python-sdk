@@ -21,43 +21,44 @@ class AddGatewayAuthConsumerRequest(DaraModel):
         token_prefix: str = None,
         type: str = None,
     ):
-        # The language of the response. Valid values:
+        # The language of the returned information. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # - en: English
         self.accept_language = accept_language
-        # The description of the consumer.
+        # The description of the authentication consumer.
         self.description = description
         # The encryption type. Valid values:
         # 
-        # *   RSA
-        # *   OCT
+        # - RSA
+        # 
+        # - OCT
         self.encode_type = encode_type
         # The unique ID of the gateway.
         # 
         # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
-        # The JWT public key. The JSON format is supported.
+        # The JWT public key in JSON format.
         self.jwks = jwks
-        # The name of the key used for JWT-based identity authentication.
+        # The KeyName identity in the JWT.
         self.key_name = key_name
-        # The value of the key used for JWT-based identity authentication.
+        # The KeyValue identity in the JWT.
         self.key_value = key_value
-        # The name of the consumer.
+        # The name of the authentication consumer.
         # 
         # This parameter is required.
         self.name = name
-        # The names of the parameters that are required to verify each token. By default, each token is prefixed with Bearer and stored in the Authorization header, such as `Authorization: Bearer <Content of a token>`.
+        # The name of the token parameter to be verified. By default, the token is prefixed with Bearer and placed in the Authorization header, such as `Authorization: Bearer token`.
         self.token_name = token_name
-        # Specifies whether to enable pass-through.
+        # Specifies whether to pass through the token.
         self.token_pass = token_pass
-        # The positions of the parameters that are required to verify each token. By default, each token is prefixed with Bearer and stored in the Authorization header, such as `Authorization: Bearer <Content of a token>`.
+        # The position of the token parameter to be verified. By default, the token is prefixed with Bearer and placed in the Authorization header, such as `Authorization: Bearer token`.
         self.token_position = token_position
-        # The prefixes of the parameters that are required to verify each token. By default, each token is prefixed with Bearer and stored in the Authorization header, such as `Authorization: Bearer <Content of a token>`.
+        # The prefix of the token parameter to be verified. By default, the token is prefixed with Bearer and placed in the Authorization header, such as `Authorization: Bearer token`.
         self.token_prefix = token_prefix
         # The authentication type. Valid values:
         # 
-        # *   JWT
+        # - JWT
         # 
         # This parameter is required.
         self.type = type

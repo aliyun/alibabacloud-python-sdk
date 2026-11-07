@@ -15,9 +15,13 @@ class CreateNamespaceRequest(DaraModel):
         name: str = None,
         tag: List[main_models.CreateNamespaceRequestTag] = None,
     ):
+        # The language in which you want the results to be displayed. Valid values: zh (default): Chinese. en: English
         self.accept_language = accept_language
+        # The description of the namespace that you want to create for Microservices Governance.
         self.describe = describe
+        # The name of the namespace that you want to create for Microservices Governance.
         self.name = name
+        # The tag.
         self.tag = tag
 
     def validate(self):
@@ -72,7 +76,9 @@ class CreateNamespaceRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key of the resource. You cannot specify an empty string as a tag key. The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http\\:// or https\\://.
         self.key = key
+        # The tag value. The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

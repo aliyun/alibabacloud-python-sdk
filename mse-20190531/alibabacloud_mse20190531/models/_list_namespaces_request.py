@@ -17,12 +17,19 @@ class ListNamespacesRequest(DaraModel):
         region: str = None,
         tag: List[main_models.ListNamespacesRequestTag] = None,
     ):
+        # Language for displaying results. Values: zh (default): Chinese, en: English
         self.accept_language = accept_language
+        # Namespace name for fuzzy query. If not specified, all namespaces are queried by default.
         self.name = name
+        # Page number for paged query.
         self.page_number = page_number
+        # Number of entries per page for paged queries. The default is 5. To return more data, increase this value.
         self.page_size = page_size
+        # Region.
+        # 
         # This parameter is required.
         self.region = region
+        # Alibaba Cloud tags.
         self.tag = tag
 
     def validate(self):
@@ -89,7 +96,9 @@ class ListNamespacesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # Tag key.
         self.key = key
+        # Tag value.
         self.value = value
 
     def validate(self):

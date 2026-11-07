@@ -17,11 +17,21 @@ class ListWebFlowRulesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -84,9 +94,13 @@ class ListWebFlowRulesResponseBodyData(DaraModel):
         result: List[main_models.ListWebFlowRulesResponseBodyDataResult] = None,
         total_size: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The returned results.
         self.result = result
+        # The total number of queried rules.
         self.total_size = total_size
 
     def validate(self):
@@ -156,22 +170,65 @@ class ListWebFlowRulesResponseBodyDataResult(DaraModel):
         stat_interval_ms: int = None,
         threshold: float = None,
     ):
+        # The application ID.
         self.app_id = app_id
+        # The application name.
         self.app_name = app_name
+        # The number of additional requests allowed for burst requests. The effect is equivalent to the maximum number of tokens for the token bucket algorithm.
         self.burst = burst
+        # The flow control method. Valid values:
+        # 
+        # - 0: fast failure
+        # 
+        # - 2: wait in queue
         self.control_behavior = control_behavior
+        # Indicates whether the rule is enabled or disabled.
+        # 
+        # - `true`: enabled.
+        # 
+        # - `false`: disabled.
         self.enable = enable
+        # The behavior that was bound to the rule.
         self.fallback_object = fallback_object
+        # The timeout period for queuing when the ControlBehavior parameter is set to 2. Unit: milliseconds.
         self.max_queueing_time_ms = max_queueing_time_ms
+        # The threshold type. Valid values:
+        # 
+        # - 1: number of requests
         self.metric_type = metric_type
+        # The namespace.
         self.namespace = namespace
+        # The parameter description item, which is a JSON string containing the following key-value pairs:
+        # 
+        # - parseStrategy: the parameter property (0: client IP address. 1: remote host. 2: header. 3: URL parameter)
+        # 
+        # - fieldName: the header name or URL parameter name. You must specify this key only if parseStrategy is set to 2 or 3
+        # 
+        # - matchStrategy: the method to match the property value. You must specify this key only if parseStrategy is set to 2 or 3 and the property value is matched. Valid values: 0 (exact match), 2 (regular expression match), and 3 (substring match)
+        # 
+        # - pattern: the match string. You must specify this key only if parseStrategy is set to 2 or 3 and the property value is matched
         self.param_item = param_item
+        # The region ID.
         self.region_id = region_id
+        # The name of the interface resource.
         self.resource = resource
+        # The resource mode. Valid values:
+        # 
+        # - 0: resource name mode
         self.resource_mode = resource_mode
+        # The resource type
+        # 
+        # - 0: custom interface
+        # 
+        # - 1: WEB
+        # 
+        # - 2: RPC
         self.resource_type = resource_type
+        # The rule ID.
         self.rule_id = rule_id
+        # The length of the time window. Unit: milliseconds.
         self.stat_interval_ms = stat_interval_ms
+        # The threshold.
         self.threshold = threshold
 
     def validate(self):

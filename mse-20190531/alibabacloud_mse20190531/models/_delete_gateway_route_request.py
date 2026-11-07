@@ -13,12 +13,12 @@ class DeleteGatewayRouteRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
-        # The unique ID of the gateway.
+        # The unique identifier of the gateway.
         self.gateway_unique_id = gateway_unique_id
-        # The ID of the route.
+        # The ID of the route entry.
         self.route_id = route_id
 
     def validate(self):

@@ -15,14 +15,13 @@ class FetchLosslessRuleListRequest(DaraModel):
         page_size: int = None,
         region_id: str = None,
     ):
-        # The language of the response. Valid values:
-        # 
-        # *   zh: Chinese
-        # *   en: English
+        # The language of the returned information. Valid values:
+        # * zh: Chinese.
+        # * en: English.
         self.accept_language = accept_language
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
-        # The name of the application.
+        # The application name.
         self.app_name = app_name
         # The namespace.
         self.namespace = namespace
@@ -34,7 +33,7 @@ class FetchLosslessRuleListRequest(DaraModel):
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The ID of the region.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

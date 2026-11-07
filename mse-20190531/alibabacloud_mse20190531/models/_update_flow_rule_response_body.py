@@ -14,41 +14,15 @@ class UpdateFlowRuleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code.
+        # The return value.
         self.code = code
         # The data of the node.
         self.data = data
-        # The returned message.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     The request was successful.
-        # 
-        #     <!-- -->
-        # 
-        # *   false
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     The request failed.
-        # 
-        #     <!-- -->
+        # The result of the request.
         self.success = success
 
     def validate(self):
@@ -116,61 +90,18 @@ class UpdateFlowRuleResponseBodyData(DaraModel):
         # The application name.
         self.app_name = app_name
         # The throttling effect.
-        # 
-        # Valid values:
-        # 
-        # *   0
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     fast failure
-        # 
-        #     <!-- -->
-        # 
-        # *   2
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     in queue
-        # 
-        #     <!-- -->
         self.control_behavior = control_behavior
-        # Indicates whether the rule was enabled.
-        # 
-        # Valid value:
-        # 
-        # *   true
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   false
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # Indicates whether the rule is enabled.
         self.enable = enable
         # The rule ID.
         self.id = id
+        # The source application of the request.
         self.limit_app = limit_app
-        # The timeout period for queuing when the value of ControlBehavior is set to 2. Unit: milliseconds.
+        # The timeout period for queuing when the ControlBehavior parameter is set to 2. Unit: milliseconds.
         self.max_queueing_time_ms = max_queueing_time_ms
         # The namespace.
         self.namespace = namespace
-        # The name of the API resource.
+        # The interface resource name.
         self.resource = resource
         # The throttling threshold.
         self.threshold = threshold

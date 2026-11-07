@@ -15,20 +15,19 @@ class DeleteGatewayRouteResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code returned.
+        # The status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message returned.
+        # The error message.
         self.message = message
         # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - `true`: The request is successful.
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -97,11 +96,11 @@ class DeleteGatewayRouteResponseBodyData(DaraModel):
         route_order: int = None,
         status: int = None,
     ):
-        # The default service ID.
+        # The ID of the default service.
         self.default_service_id = default_service_id
         # The ID of the gateway.
         self.gateway_id = gateway_id
-        # The unique ID of the gateway.
+        # The unique identifier of the gateway.
         self.gateway_unique_id = gateway_unique_id
         # The creation time.
         self.gmt_create = gmt_create
@@ -113,16 +112,15 @@ class DeleteGatewayRouteResponseBodyData(DaraModel):
         self.name = name
         # The matching rules.
         self.predicates = predicates
-        # The sequence number of the route.
+        # The route order.
         self.route_order = route_order
-        # The status of the route. Valid values:
-        # 
-        # *   0: unpublished
-        # *   2: publishing
-        # *   3: published
-        # *   4: editing (updated but not published)
-        # *   5: unpublishing
-        # *   6: unavailable
+        # The route status. Valid values:
+        # - 0: Unpublished.
+        # - 2: Publishing.
+        # - 3: Published.
+        # - 4: Editing (unpublished updates).
+        # - 5: Going offline.
+        # - 6: Unavailable.
         self.status = status
 
     def validate(self):

@@ -16,21 +16,20 @@ class QueryClusterInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details of the data.
+        # The data overview.
         self.data = data
-        # The error code returned if the request failed.
+        # The error code.
         self.error_code = error_code
-        # The message returned.
+        # The returned message.
         # 
-        # *   If the request is successful, a success message is returned.
-        # *   If the request fails, an error message is returned.
+        # - If the request is successful, a success message is returned.
+        # - If the request fails, the cause of the failure is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # The request result. Valid values:
+        # - `true`: The request is successful.
+        # - `false`: The request fails.
         self.success = success
 
     def validate(self):
@@ -127,91 +126,93 @@ class QueryClusterInfoResponseBodyData(DaraModel):
         version_lifecycle: str = None,
         vpc_id: str = None,
     ):
-        # The public IP address whitelist.
+        # The public network whitelist.
         self.acl_entry_list = acl_entry_list
-        # The ID of the instance in the public IP address whitelist.
+        # The instance ID of the Internet whitelist.
         self.acl_id = acl_id
-        # The version of the instance.
+        # The cluster version number.
         self.app_version = app_version
+        # Indicates whether the cluster has a minor version available for upgrade.
         self.can_update = can_update
-        # The billing method, such as subscription or pay-as-you-go.
+        # The billing method. Valid values: subscription and pay-as-you-go.
         self.charge_type = charge_type
-        # The alias of the instance.
+        # The alias of the cluster.
         self.cluster_alias_name = cluster_alias_name
-        # The full name of the instance.
+        # The full name of the cluster.
         self.cluster_name = cluster_name
         # The engine specifications.
         self.cluster_specification = cluster_specification
-        # The type of the instance. Valid values: ZooKeeper, Nacos-Ans, and Eureka.
+        # The cluster type. Valid values: ZooKeeper, Nacos-Ans, and Eureka.
         self.cluster_type = cluster_type
-        # The version of the order.
+        # The order version.
         self.cluster_version = cluster_version
-        # A deprecated parameter.
+        # The deprecated field.
         self.connection_type = connection_type
-        # A deprecated parameter.
+        # The deprecated field.
         self.cpu = cpu
-        # The time when the instance was created.
+        # The time when the cluster was created.
         self.create_time = create_time
-        # A deprecated parameter.
+        # The deprecated field.
         self.disk_capacity = disk_capacity
-        # A deprecated parameter.
+        # The deprecated field.
         self.disk_type = disk_type
-        # The ID of the instance that is associated with the Elastic IP Address (EIP).
+        # The instance ID of the elastic IP address (EIP).
         self.eip_instance_id = eip_instance_id
-        # The time when the subscription instance expires.
+        # The expiration time for subscription instances.
         self.end_date = end_date
-        # The zones to which the current cluster can be distributed.
+        # The list of zones to which the current cluster can be distributed.
         self.expect_zones = expect_zones
-        # The status of the instance.
+        # The cluster status.
         self.health_status = health_status
-        # The time that is required to initialize the instance. Unit: milliseconds.
+        # The time taken to initialize the cluster, in milliseconds.
         self.init_cost_time = init_cost_time
-        # The initial status of the instance.
+        # The initialization status.
         self.init_status = init_status
-        # The number of instance nodes.
+        # The number of instances in the cluster.
         self.instance_count = instance_count
-        # The ID of the instance
+        # The instance ID.
         self.instance_id = instance_id
         # The reserved structure.
         self.instance_models = instance_models
-        # A reserved parameter.
+        # The reserved field.
         self.internet_address = internet_address
-        # The public endpoint.
+        # The public domain name.
         self.internet_domain = internet_domain
-        # The instance ports that are accessible over the Internet.
+        # The open ports for the Internet cluster.
         self.internet_port = internet_port
-        # A reserved parameter.
+        # The reserved field.
         self.intranet_address = intranet_address
-        # The internal endpoint.
+        # The internal domain name.
         self.intranet_domain = intranet_domain
-        # The instance ports that are accessible over an internal network.
+        # The internal network port opened for the cluster.
         self.intranet_port = intranet_port
-        # The O\\&M time window.
+        # The O&M time window.
         self.maintenance_period = maintenance_period
-        # A deprecated parameter.
+        # The deprecated field.
         self.memory_capacity = memory_capacity
-        # The version of the instance.
+        # The cluster version.
         self.mse_version = mse_version
-        # The network connection type of the instance.
+        # The network connectivity type of the cluster.
         self.net_type = net_type
         # The billing method.
         self.pay_info = pay_info
-        # The public bandwidth. Unit: Mbit/s.\\
-        # Valid values: 0 to 5000. The value 0 indicates no access to the Internet.
+        # The Internet bandwidth. Unit: Mbit/s. Valid values: 0 to 5000. A value of 0 indicates that the cluster is not connected to the Internet.
         self.pub_network_flow = pub_network_flow
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
-        # The ID of the security group to which the elastic network interface (ENI) is connected.
+        # The ID of the security group for ENI network access.
         self.security_group_id = security_group_id
-        # The type of the security group to which the ENI is connected.
+        # The type of the security group for ENI network access.
         self.security_group_type = security_group_type
-        # The tag.
+        # The tags.
         self.tags = tags
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The current version code of the cluster.
         self.version_code = version_code
+        # The version lifecycle.
         self.version_lifecycle = version_lifecycle
-        # The ID of the VPC where the instance resides.
+        # The ID of the VPC where the cluster is deployed.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -509,9 +510,9 @@ class QueryClusterInfoResponseBodyDataMaintenancePeriod(DaraModel):
         end_time: str = None,
         start_time: str = None,
     ):
-        # The start time of the O\\&M time window.
+        # The start time of the O&M time window.
         self.end_time = end_time
-        # The end time of the O\\&M time window.
+        # The end time of the O&M time window.
         self.start_time = start_time
 
     def validate(self):
@@ -552,21 +553,21 @@ class QueryClusterInfoResponseBodyDataInstanceModels(DaraModel):
         single_tunnel_vip: str = None,
         zone: str = None,
     ):
-        # A reserved parameter.
+        # The reserved field.
         self.creation_timestamp = creation_timestamp
-        # A reserved parameter.
+        # The reserved field.
         self.health_status = health_status
-        # A reserved parameter.
+        # The reserved field.
         self.internet_ip = internet_ip
-        # A reserved parameter.
+        # The reserved field.
         self.ip = ip
-        # A reserved parameter.
+        # The reserved field.
         self.pod_name = pod_name
-        # A reserved parameter.
+        # The reserved field.
         self.role = role
-        # A reserved parameter.
+        # The reserved field.
         self.single_tunnel_vip = single_tunnel_vip
-        # A reserved parameter.
+        # The reserved field.
         self.zone = zone
 
     def validate(self):

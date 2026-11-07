@@ -14,12 +14,19 @@ class GetLocalityRuleRequest(DaraModel):
         region: str = None,
         source: str = None,
     ):
+        # The language in which you want the results to be displayed. Valid values: zh and en. zh is the default value, which indicates Chinese. en indicates English.
         self.accept_language = accept_language
+        # The application ID.
         self.app_id = app_id
+        # The application name.
         self.app_name = app_name
+        # The name of the Microservices Engine (MSE) namespace.
         self.namespace = namespace
+        # The region of the gateway.
+        # 
         # This parameter is required.
         self.region = region
+        # The source of the rule. This field is optional.
         self.source = source
 
     def validate(self):

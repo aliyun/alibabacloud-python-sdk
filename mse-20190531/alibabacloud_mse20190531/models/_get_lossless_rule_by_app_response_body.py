@@ -18,20 +18,19 @@ class GetLosslessRuleByAppResponseBody(DaraModel):
     ):
         # The response code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The error code returned.
+        # The error code.
         self.error_code = error_code
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message returned.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - true: The request succeeded.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -107,30 +106,29 @@ class GetLosslessRuleByAppResponseBodyData(DaraModel):
         related: bool = None,
         warmup_time: int = None,
     ):
-        # Indicates whether service registration is complete before readiness probe.
+        # Indicates whether service registration is completed before the readiness check is passed.
         self.aligned = aligned
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
-        # The name of the application.
+        # The application name.
         self.app_name = app_name
         # The number of instances.
         self.count = count
-        # The registration latency. Unit: seconds.
+        # The delayed registration time in seconds.
         self.delay_time = delay_time
-        # Indicates whether graceful start is enabled. Valid values:
-        # 
-        # *   `true`: enabled
-        # *   `false`: disabled
+        # The enabling status of graceful start. Valid values:
+        # - `true`: Enabled.
+        # - `false`: Disabled.
         self.enable = enable
-        # The slope of the prefetching curve.
+        # The slope of the warm-up curve.
         self.func_type = func_type
-        # Indicates whether online and offline processing details are displayed.
+        # Indicates whether the processing details for graceful start and shutdown are enabled.
         self.loss_less_detail = loss_less_detail
-        # Indicates whether notification is enabled.
+        # Indicates whether proactive notification is enabled.
         self.notice = notice
-        # Indicates whether service prefetching is complete before readiness probe.
+        # Indicates whether service warm-up is completed before the readiness check is passed.
         self.related = related
-        # The prefetching duration. Unit: seconds.
+        # The warm-up duration in seconds.
         self.warmup_time = warmup_time
 
     def validate(self):

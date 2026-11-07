@@ -14,10 +14,10 @@ class DeleteGatewayAuthConsumerResourceRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # - en: English
         self.accept_language = accept_language
-        # The consumer ID.
+        # The ID of the gateway authentication consumer.
         # 
         # This parameter is required.
         self.consumer_id = consumer_id
@@ -25,7 +25,7 @@ class DeleteGatewayAuthConsumerResourceRequest(DaraModel):
         # 
         # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
-        # The IDs of the authorized resources that you want to delete.
+        # The list of authorization IDs to delete.
         # 
         # This parameter is required.
         self.id_list = id_list

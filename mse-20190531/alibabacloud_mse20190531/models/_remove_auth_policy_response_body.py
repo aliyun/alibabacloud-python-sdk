@@ -14,11 +14,21 @@ class RemoveAuthPolicyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # Data overview.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Return message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Request result, with the following values:
+        # 
+        # - `true`: The request is successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):

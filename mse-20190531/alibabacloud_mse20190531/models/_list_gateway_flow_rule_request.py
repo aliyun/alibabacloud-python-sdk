@@ -10,6 +10,7 @@ class ListGatewayFlowRuleRequest(DaraModel):
         accept_language: str = None,
         filter_params: str = None,
     ):
+        # The language in which the returned results are displayed. Valid values: zh (default): Chinese, en: English
         self.accept_language = accept_language
         # just for POP
         # 

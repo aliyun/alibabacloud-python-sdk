@@ -11,7 +11,9 @@ class QueryNacosGrayConfigResponseBody(DaraModel):
         data: main_models.QueryNacosGrayConfigResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -56,15 +58,25 @@ class QueryNacosGrayConfigResponseBodyData(DaraModel):
         last_modified: str = None,
         md_5: str = None,
     ):
+        # The application name.
         self.app_name = app_name
+        # The configuration content.
         self.content = content
+        # The DataId of the configuration.
         self.data_id = data_id
+        # The canary release rule.
         self.gray_rule = gray_rule
+        # The name of the canary release version.
         self.gray_rule_name = gray_rule_name
+        # The priority of the canary release version.
         self.gray_rule_priority = gray_rule_priority
+        # The canary release type. Valid values: Beta or Tag.
         self.gray_type = gray_type
+        # The configuration group.
         self.group = group
+        # The last modification time of the configuration.
         self.last_modified = last_modified
+        # The MD5 hash of the configuration content.
         self.md_5 = md_5
 
     def validate(self):

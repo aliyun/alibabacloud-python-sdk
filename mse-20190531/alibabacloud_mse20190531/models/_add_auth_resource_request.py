@@ -20,25 +20,23 @@ class AddAuthResourceRequest(DaraModel):
         path: str = None,
     ):
         # The language of the response. Valid values:
-        # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
-        # The ID of the authorization record.
+        # The authorization ID.
         self.auth_id = auth_id
-        # The authentication resource headers.
+        # The list of authentication resource headers.
         self.auth_resource_header_list = auth_resource_header_list
-        # The domain ID.
+        # The domain name ID.
         self.domain_id = domain_id
-        # The unique ID of the gateway.
+        # The unique gateway ID.
         self.gateway_unique_id = gateway_unique_id
-        # Specifies whether the matching is not case-sensitive. Default value: true.
+        # Specifies whether to ignore case. Default value: true.
         self.ignore_case = ignore_case
-        # The matching type. Valid values:
-        # 
-        # *   EQUAL
-        # *   PRE
-        # *   ERGULAR
+        # The match type. Valid values:
+        # - EQUAL: Exact match.
+        # - PRE: Prefix match.
+        # - ERGULAR: Regular expression match.
         self.match_type = match_type
         # The path.
         self.path = path
@@ -120,85 +118,11 @@ class AddAuthResourceRequestAuthResourceHeaderList(DaraModel):
         header_method: str = None,
         header_value: str = None,
     ):
-        # The parameter of the HTTP header.
+        # The HTTP header parameter.
         self.header_key = header_key
-        # The header matching mode.
-        # 
-        # Valid values:
-        # 
-        # *   SUFFIX
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   EXIST
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   PREFIX
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   EQUAL
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   EXCLUDE
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   NOT_EQUAL
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   NOT_EXIST
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   REGREX
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   INCLUDE
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The header match method.
         self.header_method = header_method
-        # The parameter value of the HTTP header.
+        # The value of the HTTP header parameter.
         self.header_value = header_value
 
     def validate(self):

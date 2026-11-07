@@ -17,13 +17,13 @@ class ListAuthPolicyRequest(DaraModel):
         region: str = None,
         source: str = None,
     ):
-        # The language of the response. Valid values: zh-CN and en-US. Default value: zh-CN. The value zh-CN indicates Chinese and the value en-US indicates English.
+        # The language in which the response is displayed. Valid values: zh-CN (default): Chinese, en-US: English
         self.accept_language = accept_language
         # The application ID.
         self.app_id = app_id
-        # The name of the authentication rule.
+        # The authentication rule name.
         self.name = name
-        # The name of the Microservices Engine (MSE) namespace.
+        # The MSE namespace name.
         self.namespace = namespace
         # The page number.
         # 
@@ -33,17 +33,19 @@ class ListAuthPolicyRequest(DaraModel):
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The protocol type. Valid values:
+        # The Protocol Type. Valid values:
         # 
-        # *   **SPRING_CLOUD**
-        # *   **DUBBO**
-        # *   **istio**
+        # - **SPRING_CLOUD**.
+        # 
+        # - **DUBBO**.
+        # 
+        # - **istio**.
         self.protocol = protocol
-        # The region ID.
+        # Region ID.
         # 
         # This parameter is required.
         self.region = region
-        # The service source.
+        # The source.
         # 
         # This parameter is required.
         self.source = source

@@ -17,10 +17,10 @@ class CreateApplicationShrinkRequest(DaraModel):
         switch_enable: str = None,
         tags_shrink: str = None,
     ):
-        # The language of the response. Valid values:
+        # The language of the returned information. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # - en: English
         self.accept_language = accept_language
         # The name of the application.
         # 
@@ -28,18 +28,19 @@ class CreateApplicationShrinkRequest(DaraModel):
         self.app_name = app_name
         # The programming language of the application.
         self.language = language
-        # MSE命名空间名字。
+        # The name of the MSE namespace.
         self.namespace = namespace
         # The region to which the application belongs.
         # 
         # This parameter is required.
         self.region = region
-        # Specifies whether to start the switch.
+        # Specifies whether to enable Sentinel.
         self.sentinel_enable = sentinel_enable
-        # The service where the application is deployed. A value of ACK indicates Container Service for Kubernetes.
+        # The deployment method of the application. ACK indicates Container Service for Kubernetes (ACK).
         self.source = source
-        # The name of the Microservices Engine (MSE) namespace.
+        # Specifies whether to enable Switch.
         self.switch_enable = switch_enable
+        # The Alibaba Cloud tags.
         self.tags_shrink = tags_shrink
 
     def validate(self):

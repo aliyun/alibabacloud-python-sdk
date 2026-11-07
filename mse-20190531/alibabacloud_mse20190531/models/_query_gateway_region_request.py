@@ -9,10 +9,10 @@ class QueryGatewayRegionRequest(DaraModel):
         self,
         accept_language: str = None,
     ):
-        # The language of the response. Valid values:
+        # The language of the returned information. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
 
     def validate(self):

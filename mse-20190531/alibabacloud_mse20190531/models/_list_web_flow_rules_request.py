@@ -16,14 +16,23 @@ class ListWebFlowRulesRequest(DaraModel):
         resource: str = None,
         resource_search_key: str = None,
     ):
+        # The language in which the returned results are displayed. Valid values: zh (default): Chinese. en: English.
         self.accept_language = accept_language
+        # The application ID.
         self.app_id = app_id
+        # The application name.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # The namespace.
         self.namespace = namespace
+        # The first page to export. Default value: 1.
         self.page_index = page_index
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The interface to which the protection rule applies. This parameter is mutually exclusive with the ResourceSearchKey parameter.
         self.resource = resource
+        # The interface keyword that you can search from protection rules. This parameter is mutually exclusive with the Resource parameter.
         self.resource_search_key = resource_search_key
 
     def validate(self):

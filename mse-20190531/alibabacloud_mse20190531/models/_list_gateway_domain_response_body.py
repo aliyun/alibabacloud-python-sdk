@@ -17,20 +17,19 @@ class ListGatewayDomainResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
+        # The return code.
         self.code = code
-        # The details of the data.
+        # The node data.
         self.data = data
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error message returned if the request failed.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - `true`: The request is successful.
+        # - `false`: The request fails.
         self.success = success
 
     def validate(self):
@@ -97,6 +96,7 @@ class ListGatewayDomainResponseBodyData(DaraModel):
         cert_before_date: str = None,
         cert_identifier: str = None,
         comment: main_models.ListGatewayDomainResponseBodyDataComment = None,
+        enable_waf: bool = None,
         gateway_id: int = None,
         gmt_create: str = None,
         gmt_modified: str = None,
@@ -107,56 +107,61 @@ class ListGatewayDomainResponseBodyData(DaraModel):
         name: str = None,
         protocol: str = None,
         status: int = None,
+        support_waf: bool = None,
         tls_cipher_suites_config: main_models.ListGatewayDomainResponseBodyDataTlsCipherSuitesConfig = None,
         tls_max: str = None,
         tls_min: str = None,
         type: str = None,
     ):
-        # The time when the certificate expires.
+        # **[Deprecated]** The expiration time of the certificate. Go to the domain name details page to view the information.
         self.cert_before_date = cert_before_date
         # The certificate ID.
         self.cert_identifier = cert_identifier
-        # The route comment. This parameter is returned only in ingress scenarios.
+        # The route remark (Ingress).
         self.comment = comment
+        # Indicates whether WAF protection is enabled for the domain name.
+        self.enable_waf = enable_waf
         # The gateway ID.
         self.gateway_id = gateway_id
-        # The time when the domain name was created.
+        # The time when the domain name record was created.
         self.gmt_create = gmt_create
-        # The time when the domain name was updated.
+        # The time when the domain name record was updated.
         self.gmt_modified = gmt_modified
-        # Indicates whether `HTTP/2` is enabled.
-        # 
-        # *   `open`: `HTTP/2` is enabled.
-        # *   `close`: `HTTP/2` is disabled.
-        # *   `globalConfig`: Global configurations are used.
+        # Indicates whether HTTP/2 is enabled. Valid values:
+        # - `open`: HTTP/2 is enabled.
+        # - `close`: HTTP/2 is disabled.
+        # - `globalConfig`: The global configuration is used.
         self.http_2 = http_2
-        # The ID of the domain name.
+        # The domain name ID.
         self.id = id
+        # Indicates whether the domain name is managed.
         self.is_managed = is_managed
-        # Indicates whether HTTPS is forcefully used.
+        # Indicates whether HTTPS is forced.
         self.must_https = must_https
         # The domain name.
         self.name = name
         # The protocol.
         self.protocol = protocol
-        # The state of the domain name. Valid values:
+        # The domain name status. Valid values:
         # 
-        # *   0: unpublished
-        # *   2: publishing
-        # *   3: published
-        # *   4: editing
-        # *   5: unpublishing
-        # *   6: unavailable
+        # - 0: unpublished
+        # - 2: publishing
+        # - 3: published
+        # - 4: editing
+        # - 5: taking offline
+        # - 6: unavailable
         self.status = status
+        # Indicates whether the gateway supports WAF protection.
+        self.support_waf = support_waf
+        # The TLS cipher suite configuration, including the configuration type and the list of cipher suite names.
         self.tls_cipher_suites_config = tls_cipher_suites_config
-        # The maximum version of Transport Layer Security (TLS).
+        # The maximum TLS version.
         self.tls_max = tls_max
-        # The minimum version of TLS.
+        # The minimum TLS version.
         self.tls_min = tls_min
-        # The type of the domain name source. Valid values:
-        # 
-        # *   Op: console
-        # *   Ingress: MSE Ingress
+        # The source type of the domain name. Valid values:
+        # - Op: created in the console
+        # - Ingress: created by MSE Ingress
         self.type = type
 
     def validate(self):
@@ -178,6 +183,9 @@ class ListGatewayDomainResponseBodyData(DaraModel):
 
         if self.comment is not None:
             result['Comment'] = self.comment.to_map()
+
+        if self.enable_waf is not None:
+            result['EnableWaf'] = self.enable_waf
 
         if self.gateway_id is not None:
             result['GatewayId'] = self.gateway_id
@@ -209,6 +217,9 @@ class ListGatewayDomainResponseBodyData(DaraModel):
         if self.status is not None:
             result['Status'] = self.status
 
+        if self.support_waf is not None:
+            result['SupportWaf'] = self.support_waf
+
         if self.tls_cipher_suites_config is not None:
             result['TlsCipherSuitesConfig'] = self.tls_cipher_suites_config.to_map()
 
@@ -234,6 +245,9 @@ class ListGatewayDomainResponseBodyData(DaraModel):
         if m.get('Comment') is not None:
             temp_model = main_models.ListGatewayDomainResponseBodyDataComment()
             self.comment = temp_model.from_map(m.get('Comment'))
+
+        if m.get('EnableWaf') is not None:
+            self.enable_waf = m.get('EnableWaf')
 
         if m.get('GatewayId') is not None:
             self.gateway_id = m.get('GatewayId')
@@ -265,6 +279,9 @@ class ListGatewayDomainResponseBodyData(DaraModel):
         if m.get('Status') is not None:
             self.status = m.get('Status')
 
+        if m.get('SupportWaf') is not None:
+            self.support_waf = m.get('SupportWaf')
+
         if m.get('TlsCipherSuitesConfig') is not None:
             temp_model = main_models.ListGatewayDomainResponseBodyDataTlsCipherSuitesConfig()
             self.tls_cipher_suites_config = temp_model.from_map(m.get('TlsCipherSuitesConfig'))
@@ -286,7 +303,9 @@ class ListGatewayDomainResponseBodyDataTlsCipherSuitesConfig(DaraModel):
         config_type: str = None,
         tls_cipher_suites: List[str] = None,
     ):
+        # The TLS encrypt cipher suite configuration type. DEFAULT indicates the default configurations, and CUSTOM indicates a custom configuration.
         self.config_type = config_type
+        # The list of TLS cipher suite names.
         self.tls_cipher_suites = tls_cipher_suites
 
     def validate(self):
@@ -320,7 +339,7 @@ class ListGatewayDomainResponseBodyDataComment(DaraModel):
         self,
         status: str = None,
     ):
-        # The route status.
+        # The status.
         self.status = status
 
     def validate(self):

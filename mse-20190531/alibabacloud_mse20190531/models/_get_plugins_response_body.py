@@ -20,23 +20,23 @@ class GetPluginsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The returned code.
+        # The code.
         self.code = code
-        # The data entries returned.
+        # The returned data.
         self.data = data
-        # The dynamic part in the error message.
+        # The placeholder in the dynamic error message.
         self.dynamic_code = dynamic_code
         # The dynamic error message.
         self.dynamic_message = dynamic_message
-        # The error code returned if the request failed.
+        # The error code.
         self.error_code = error_code
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message returned.
+        # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -136,61 +136,61 @@ class GetPluginsResponseBodyData(DaraModel):
         wasm_file: str = None,
         wasm_lang: int = None,
     ):
-        # The type of the plug-in. Valid values:
-        # 
-        # 0: custom
-        # 
-        # 1: permission authorization
-        # 
-        # 2: security protection
-        # 
-        # 3: transmission protocol
-        # 
-        # 4: traffic control
-        # 
-        # 5: traffic observation
+        # The plug-in type. Valid values:
+        # - 0: Custom.
+        # - 1: Authentication and authorization.
+        # - 2: Security protection.
+        # - 3: Transport protocol.
+        # - 4: Traffic control.
+        # - 5: Traffic observability.
         self.category = category
-        # The information about the plug-in configuration used for checking.
+        # The configuration validation.
         self.config_check = config_check
-        # The ID of the plug-in.
+        # The plug-in ID.
         self.id = id
+        # The latest version.
         self.max_version = max_version
+        # The plug-in language. Valid values:
+        # - 0: Wasm plug-in.
+        # - 2: Lua plug-in.
         self.mode = mode
         # The name of the plug-in.
         self.name = name
+        # Indicates whether the latest version is being published.
         self.new_version_publishing_flag = new_version_publishing_flag
-        # The execution stage of the plug-in.
-        # 
-        # *   0: default stage
-        # *   1: authorization stage
-        # *   2: authentication stage
-        # *   3: statistics stage
+        # The plug-in execution phase. Valid values:
+        # - 0: Default phase.
+        # - 1: Authentication phase.
+        # - 2: Authorization phase.
+        # - 3: Statistics phase.
         self.phase = phase
         # The ID of the creator.
         self.primary_user = primary_user
         # The execution priority of the plug-in. A larger value indicates a higher priority.
         self.priority = priority
-        # The publish status.
+        # The publish status. Valid values:
+        # - 0: Successful.
+        # - 1: Publishing.
+        # - 2: Failed.
         self.publish_state = publish_state
-        # Indicates whether the plug-in is enabled.
-        # 
-        # *   0: disabled
-        # *   1: enabled
+        # The enabling status. Valid values:
+        # - 0: Disabled.
+        # - 1: Enabled.
         self.status = status
-        # The summary of the plug-in.
+        # The plug-in summary.
         self.summary = summary
+        # The English plug-in summary.
         self.summary_en = summary_en
-        # The version of the plug-in.
+        # The plug-in version.
         self.version = version
-        # The URL of the Object Storage Service (OSS) bucket that stores the WebAssembly plug-in.
+        # The OSS object of the Wasm plug-in.
         self.wasm_file = wasm_file
-        # The WebAssembly language. Valid values:
-        # 
-        # *   0: C++
-        # *   1: TinyGo
-        # *   2: Rust
-        # *   3: AssemblyScript
-        # *   4: Zig
+        # The WebAssembly (Wasm) implementation language. Valid values:
+        # - 0: C++.
+        # - 1: TinyGo.
+        # - 2: Rust.
+        # - 3: AssemblyScript.
+        # - 4: Zig.
         self.wasm_lang = wasm_lang
 
     def validate(self):

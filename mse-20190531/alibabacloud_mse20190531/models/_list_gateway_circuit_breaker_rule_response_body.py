@@ -13,7 +13,9 @@ class ListGatewayCircuitBreakerRuleResponseBody(DaraModel):
         data: main_models.ListGatewayCircuitBreakerRuleResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -53,10 +55,15 @@ class ListGatewayCircuitBreakerRuleResponseBodyData(DaraModel):
         results: List[main_models.ListGatewayCircuitBreakerRuleResponseBodyDataResults] = None,
         total_size: int = None,
     ):
+        # The page number of the instance list
         self.page_number = page_number
+        # The number of rows per page set during input
         self.page_size = page_size
+        # The returned result.
         self.result = result
+        # The returned result collection.
         self.results = results
+        # The total number of instances queried
         self.total_size = total_size
 
     def validate(self):
@@ -144,25 +151,67 @@ class ListGatewayCircuitBreakerRuleResponseBodyDataResults(DaraModel):
         strategy: int = None,
         trigger_ratio: int = None,
     ):
+        # The Web fallback behavior type.
+        # 
+        # 0: Return specified content
+        # 
+        # 1: Redirect to a specified page
         self.behavior_type = behavior_type
+        # The encoding type.
+        # 
+        # 0: Plain text
+        # 
+        # 1: JSON
         self.body_encoding = body_encoding
+        # Whether to enable.
+        # 
+        # 0: Not enabled.
+        # 
+        # 1: Enabled.
         self.enable = enable
+        # The gateway ID.
         self.gateway_id = gateway_id
+        # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
+        # The circuit breaker rule ID.
         self.id = id
+        # The filter rule id
         self.id_list = id_list
+        # The threshold conversion mode.
+        # 
+        # 0: Single machine.
+        # 
+        # 1: Cluster.
+        # 
+        # 2: Cluster to single machine.
         self.limit_mode = limit_mode
+        # The slow call threshold in slow call pattern.
         self.max_allowed_ms = max_allowed_ms
+        # The minimum number of requests to trigger circuit breaking.
         self.min_request_amount = min_request_amount
+        # The circuit breaking recovery duration.
         self.recovery_timeout_sec = recovery_timeout_sec
+        # The custom header, input as key-value pairs.
         self.response_additional_headers = response_additional_headers
+        # The HTTP response text.
         self.response_content_body = response_content_body
+        # The redirect URL.
         self.response_redirect_url = response_redirect_url
+        # The HTTP status code.
         self.response_status_code = response_status_code
+        # The route ID.
         self.route_id = route_id
+        # The route name.
         self.route_name = route_name
+        # The circuit breaking statistics duration.
         self.stat_duration_sec = stat_duration_sec
+        # The threshold pattern.
+        # 
+        # 0: Slow call pattern.
+        # 
+        # 1: Exception pattern.
         self.strategy = strategy
+        # The percentage to trigger circuit breaking.
         self.trigger_ratio = trigger_ratio
 
     def validate(self):
@@ -323,25 +372,67 @@ class ListGatewayCircuitBreakerRuleResponseBodyDataResult(DaraModel):
         strategy: int = None,
         trigger_ratio: int = None,
     ):
+        # The Web fallback behavior type.
+        # 
+        # 0: Return specified content.
+        # 
+        # 1: Redirect to a specified page.
         self.behavior_type = behavior_type
+        # The encoding type.
+        # 
+        # 0: Plain text
+        # 
+        # 1: JSON
         self.body_encoding = body_encoding
+        # Whether to enable.
+        # 
+        # 0: Not enabled.
+        # 
+        # 1: Enabled.
         self.enable = enable
+        # The gateway ID.
         self.gateway_id = gateway_id
+        # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
+        # The circuit breaker rule ID.
         self.id = id
+        # The filter rule id
         self.id_list = id_list
+        # The threshold conversion mode.
+        # 
+        # 0: Single machine.
+        # 
+        # 1: Cluster.
+        # 
+        # 2: Cluster to single machine.
         self.limit_mode = limit_mode
+        # The slow call threshold in slow call pattern.
         self.max_allowed_ms = max_allowed_ms
+        # The minimum number of requests to trigger circuit breaking.
         self.min_request_amount = min_request_amount
+        # The circuit breaking recovery duration.
         self.recovery_timeout_sec = recovery_timeout_sec
+        # The custom header, input as key-value pairs.
         self.response_additional_headers = response_additional_headers
+        # The HTTP response text.
         self.response_content_body = response_content_body
+        # The redirect URL.
         self.response_redirect_url = response_redirect_url
+        # The HTTP status code.
         self.response_status_code = response_status_code
+        # The route ID.
         self.route_id = route_id
+        # The route name.
         self.route_name = route_name
+        # The circuit breaking statistics duration.
         self.stat_duration_sec = stat_duration_sec
+        # The threshold pattern.
+        # 
+        # 0: Slow call pattern.
+        # 
+        # 1: Exception pattern.
         self.strategy = strategy
+        # The percentage to trigger circuit breaking.
         self.trigger_ratio = trigger_ratio
 
     def validate(self):

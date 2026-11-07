@@ -12,10 +12,11 @@ class QueryAllSwimmingLaneGroupRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # 
+        # - en: English
         self.accept_language = accept_language
-        # The name of the Microservices Engine (MSE) namespace that you want to query.
+        # The name of the MSE namespace to query.
         self.namespace = namespace
 
     def validate(self):

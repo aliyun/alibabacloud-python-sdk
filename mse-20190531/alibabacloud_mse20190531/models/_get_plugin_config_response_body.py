@@ -20,7 +20,7 @@ class GetPluginConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
+        # The code.
         self.code = code
         # The returned data.
         self.data = data
@@ -28,13 +28,13 @@ class GetPluginConfigResponseBody(DaraModel):
         self.dynamic_code = dynamic_code
         # The dynamic error message.
         self.dynamic_message = dynamic_message
-        # The error code returned if the request failed.
+        # The error code.
         self.error_code = error_code
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message returned.
+        # The API message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
@@ -137,81 +137,76 @@ class GetPluginConfigResponseBodyData(DaraModel):
         version_json: str = None,
         wasm_lang: int = None,
     ):
-        # The category of the plug-in. Valid values:
+        # The plug-in category. Valid values:
         # 
-        # 0: user-defined
-        # 
-        # 1: permission authentication
-        # 
-        # 2: security protection
-        # 
-        # 3: transmission protocol
-        # 
-        # 4: traffic control
-        # 
-        # 5: traffic observation
+        # - 0: Custom.
+        # - 1: Authentication and authorization.
+        # - 2: Security protection.
+        # - 3: Transport protocol.
+        # - 4: Traffic control.
+        # - 5: Traffic observation.
         self.category = category
-        # The information about the plug-in configuration used for checking.
+        # The configuration validation.
         self.config_check = config_check
+        # The plug-in configuration example.
         self.config_example = config_example
+        # The start index of domain-level rules in GatewayConfigList. If no domain-level rules exist, the value is -1.
         self.domain_config_start_index = domain_config_start_index
         # The list of gateway plug-in configurations.
         self.gateway_config_list = gateway_config_list
+        # The index of instance-level rules in GatewayConfigList. If no instance-level rules exist, the value is -1.
         self.gateway_config_start_index = gateway_config_start_index
-        # The ID of the plug-in.
+        # The plug-in ID.
         self.id = id
-        # The name of the image.
+        # The image name.
         self.image_name = image_name
         # The mode.
         self.mode = mode
-        # The name of the plug-in.
+        # The plug-in name.
         self.name = name
-        # The execution stage of the plug-in. Valid values:
+        # The plug-in execution phase. Valid values:
         # 
-        # 0: default stage
-        # 
-        # 1: authorization stage
-        # 
-        # 2: authentication stage
-        # 
-        # 3: statistics stage
+        # - 0: Default phase.
+        # - 1: Authentication phase.
+        # - 2: Authorization phase.
+        # - 3: Statistics phase.
         self.phase = phase
         # The ID of the creator.
         self.primary_user = primary_user
-        # The execution priority of the plug-in. A larger value indicates a higher priority.
+        # The plug-in execution priority. A larger value indicates a higher priority.
         self.priority = priority
         # The publish status.
         self.publish_state = publish_state
-        # The description of the README file.
+        # The README description.
         self.readme = readme
-        # The description of the README file that is edited in English.
+        # The README description in English.
         self.readme_en = readme_en
+        # The start index of route-level rules in GatewayConfigList. If no route-level rules exist, the value is -1.
         self.route_config_start_index = route_config_start_index
-        # Indicates whether the plug-in is enabled. Valid values:
+        # The enabling status. Valid values:
         # 
-        # 0: disabled
-        # 
-        # 1: enabled
+        # - 0: Disabled.
+        # - 1: Enabled.
         self.status = status
-        # The summary of the plug-in.
+        # The plug-in summary.
         self.summary = summary
+        # The plug-in summary in English.
         self.summary_en = summary_en
-        # The type.
+        # The plug-in type. Valid values:
+        # - 0: HTTP filter.
+        # - 1: Network filter.
         self.type = type
-        # The version of the plug-in.
+        # The plug-in version.
         self.version = version
+        # The list of gateway plug-in version information.
         self.version_json = version_json
-        # The WebAssembly language. Valid values:
+        # The WebAssembly (Wasm) implementation language. Valid values:
         # 
-        # 0: C++
-        # 
-        # 1: TinyGo
-        # 
-        # 2: Rust
-        # 
-        # 3: AssemblyScript
-        # 
-        # 4: Zig
+        # - 0: C++.
+        # - 1: TinyGo.
+        # - 2: Rust.
+        # - 3: AssemblyScript.
+        # - 4: Zig.
         self.wasm_lang = wasm_lang
 
     def validate(self):
@@ -396,17 +391,15 @@ class GetPluginConfigResponseBodyDataGatewayConfigList(DaraModel):
     ):
         # The plug-in configuration.
         self.config = config
-        # The application scope of the plug-in. Valid values:
+        # The plug-in application scope. Valid values:
         # 
-        # 0: global
-        # 
-        # 1: domain names
-        # 
-        # 2: routes
+        # - 0: Global.
+        # - 1: Domain name.
+        # - 2: Route.
         self.config_level = config_level
         # Indicates whether the plug-in is enabled.
         self.enable = enable
-        # The ID of the gateway.
+        # The gateway ID.
         self.gateway_id = gateway_id
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
@@ -414,10 +407,11 @@ class GetPluginConfigResponseBodyDataGatewayConfigList(DaraModel):
         self.gmt_create = gmt_create
         # The update time.
         self.gmt_modified = gmt_modified
-        # The ID of the plug-in configuration.
+        # The plug-in configuration ID.
         self.id = id
         # The ID of the gateway plug-in.
         self.plugin_id = plugin_id
+        # The list of domain name and route resources, distinguished by ConfigLevel.
         self.resource_list = resource_list
 
     def validate(self):
@@ -508,7 +502,9 @@ class GetPluginConfigResponseBodyDataGatewayConfigListResourceList(DaraModel):
         id: int = None,
         name: str = None,
     ):
+        # The resource ID.
         self.id = id
+        # The resource name, which is the domain name or route name.
         self.name = name
 
     def validate(self):

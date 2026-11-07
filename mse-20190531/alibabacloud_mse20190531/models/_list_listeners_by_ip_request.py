@@ -13,22 +13,23 @@ class ListListenersByIpRequest(DaraModel):
         namespace_id: str = None,
         request_pars: str = None,
     ):
-        # The language of the response. Valid values:
+        # Language type of the returned information:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # 
+        # - en: English
         self.accept_language = accept_language
-        # The ID of the instance.
+        # Instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The IP address of the listener.
+        # Listener IP address.
         # 
         # This parameter is required.
         self.ip = ip
-        # The ID of the namespace.
+        # Namespace ID, default is public
         self.namespace_id = namespace_id
-        # The extended request parameters in the JSON format.
+        # Extended request parameters in JSON format.
         self.request_pars = request_pars
 
     def validate(self):

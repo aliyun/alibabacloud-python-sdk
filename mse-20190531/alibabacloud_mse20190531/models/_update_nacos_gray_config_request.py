@@ -23,23 +23,41 @@ class UpdateNacosGrayConfigRequest(DaraModel):
         request_pars: str = None,
         stop_gray: bool = None,
     ):
+        # The language in which you want the results to be displayed. Valid values: zh (default): Chinese. en: English.
         self.accept_language = accept_language
+        # The application name.
         self.app_name = app_name
+        # The configuration content.
         self.content = content
+        # The data ID.
+        # 
         # This parameter is required.
         self.data_id = data_id
+        # The canary release rule. For a beta release, you can specify one or more client IP addresses for this parameter. You must separate multiple IP addresses with commas (,). For a tag-based canary release, the value is in the format of Tag name=Tag value. You must separate multiple tag values with commas (,).
         self.gray_rule = gray_rule
+        # The canary version name.
         self.gray_rule_name = gray_rule_name
+        # The canary version priority.
         self.gray_rule_priority = gray_rule_priority
+        # The canary release type. Beta release (IP address-based canary release) and tag-based canary release are supported.
+        # 
         # This parameter is required.
         self.gray_type = gray_type
+        # The group name. Default value: DEFAULT_GROUP.
         self.group = group
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The namespace ID. Default value: public.
         self.namespace_id = namespace_id
+        # The operation type. Valid values: Create (create a canary release configuration) and Update (update an existing canary release configuration).
         self.op_type = op_type
+        # The region.
         self.region_id = region_id
+        # The extended request parameter in the JSON format.
         self.request_pars = request_pars
+        # Specifies whether to stop the canary release.
         self.stop_gray = stop_gray
 
     def validate(self):

@@ -12,18 +12,17 @@ class UpgradeClusterRequest(DaraModel):
         request_pars: str = None,
         upgrade_version: str = None,
     ):
-        # The language of the response. Valid values:
-        # 
-        # *   zh: Chinese
-        # *   en: English
+        # The language of the returned information. Valid values:
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The extended request parameters in the JSON format.
+        # The extended request parameters in JSON format.
         self.request_pars = request_pars
-        # The destination version.
+        # The target upgrade version.
         # 
         # This parameter is required.
         self.upgrade_version = upgrade_version

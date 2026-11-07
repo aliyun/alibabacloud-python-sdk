@@ -17,10 +17,10 @@ class CreateMseServiceApplicationRequest(DaraModel):
         source: str = None,
         switch_enable: str = None,
     ):
-        # The language of the response. Valid values:
+        # The language of the returned information. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # - en: English
         self.accept_language = accept_language
         # The name of the application.
         # 
@@ -30,26 +30,26 @@ class CreateMseServiceApplicationRequest(DaraModel):
         self.extra_info = extra_info
         # The programming language of the application.
         self.language = language
-        # The edition of the MSE instance that you want to purchase.
+        # The version of the Microservices Engine (MSE) cluster to be activated. Valid values:
         # 
-        # *   mse_pro: Professional Edition.
-        # *   mse_dev: Developer Edition.
+        # - mse_pro: Professional Edition.
+        # - mse_dev: Developer Edition.
         self.mse_version = mse_version
-        # The ID of the region where the instance resides. Examples:
+        # The region where the cluster is located, including but not limited to:
         # 
-        # *   cn-hangzhou: China (Hangzhou)
-        # *   cn-beijing: China (Beijing)
-        # *   cn-shanghai: China (Shanghai)
-        # *   cn-zhangjiakou: China (Zhangjiakou)
-        # *   cn-shenzhen: China (Shenzhen)
+        # - cn-hangzhou: Hangzhou
+        # - cn-beijing: Beijing
+        # - cn-shanghai: Shanghai
+        # - cn-zhangjiakou: Zhangjiakou
+        # - cn-shenzhen: Shenzhen
         # 
         # This parameter is required.
         self.region = region
-        # Specifies whether to enable the Sentinel-compatible mode.
+        # Specifies whether to enable Sentinel.
         self.sentinel_enable = sentinel_enable
-        # The service source.
+        # The source.
         self.source = source
-        # Specifies whether to enable switching.
+        # Specifies whether to enable Switch.
         self.switch_enable = switch_enable
 
     def validate(self):

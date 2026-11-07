@@ -12,11 +12,18 @@ class DeleteGatewayIsolationRuleRequest(DaraModel):
         route_id: int = None,
         rule_id: int = None,
     ):
+        # The language in which you want the results to be displayed. Valid values: zh (default): Chinese. en: English.
         self.accept_language = accept_language
+        # The unique ID of the gateway.
+        # 
         # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
+        # The ID of the route.
+        # 
         # This parameter is required.
         self.route_id = route_id
+        # The ID of the concurrency rule.
+        # 
         # This parameter is required.
         self.rule_id = rule_id
 

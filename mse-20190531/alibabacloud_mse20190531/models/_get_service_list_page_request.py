@@ -18,21 +18,21 @@ class GetServiceListPageRequest(DaraModel):
         service_name: str = None,
         service_type: str = None,
     ):
-        # The language of the response. Valid values: zh and en. Default value: zh. The value zh indicates Chinese, and the value en indicates English.
+        # The language of the response. Valid values: zh: Chinese, en: English. Default value: zh.
         self.accept_language = accept_language
         # The application ID.
         self.app_id = app_id
         # The application name.
         self.app_name = app_name
-        # The IP address from which the query is initiated.
+        # The IP address to query.
         self.ip = ip
-        # The name of the MSE namespace.
+        # The MSE namespace name.
         self.namespace = namespace
         # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The region ID.
+        # The region.
         self.region = region
         # The service name.
         self.service_name = service_name

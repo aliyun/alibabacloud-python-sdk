@@ -17,20 +17,21 @@ class GetGatewayRouteDetailResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned. A value of 200 indicates that the request is successful.
+        # Status code. Note that 200 indicates success.
         self.code = code
-        # The data returned.
+        # Returned data.
         self.data = data
-        # The HTTP status code returned.
+        # HTTP status code.
         self.http_status_code = http_status_code
-        # The error message returned if the request failed.
+        # Error message.
         self.message = message
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Request result, with the following values:
         # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # - `true`: The request is successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -122,77 +123,83 @@ class GetGatewayRouteDetailResponseBodyData(DaraModel):
         status: int = None,
         timeout: main_models.GetGatewayRouteDetailResponseBodyDataTimeout = None,
     ):
-        # The status of Application High Availability Service (AHAS).
+        # Ahas status.
         self.ahas_status = ahas_status
-        # The configuration for cross-origin resource sharing (CORS).
+        # Cross-domain configuration.
         self.cors = cors
-        # The default service ID.
+        # Default service ID.
         self.default_service_id = default_service_id
-        # The default service name.
+        # Default service name.
         self.default_service_name = default_service_name
+        # Route description
         self.description = description
-        # The destination service type.
+        # Target service type.
         self.destination_type = destination_type
-        # The information about service mocking.
+        # Mock information.
         self.direct_response = direct_response
-        # The domain ID.
+        # Domain ID.
         self.domain_id = domain_id
-        # The IDs of domains.
+        # Domain list
         self.domain_id_list = domain_id_list
-        # The domain name.
+        # Domain name.
         self.domain_name = domain_name
-        # The list of domain names.
+        # Domain name list
         self.domain_name_list = domain_name_list
-        # Indicates whether Web Application Firewall (WAF) is activated.
+        # Whether to enable Waf.
         self.enable_waf = enable_waf
-        # Indicates whether the Fallback service is enabled.
+        # Whether to enable Fallback service.
         self.fallback = fallback
-        # The information of the Fallback service.
+        # Fallback services.
         self.fallback_services = fallback_services
-        # 流量镜像配置。
+        # Traffic mirroring configuration.
         self.flow_mirror = flow_mirror
-        # The ID of the gateway.
+        # Gateway ID.
         self.gateway_id = gateway_id
-        # The unique ID of the gateway.
+        # Gateway unique identifier ID.
         self.gateway_unique_id = gateway_unique_id
-        # The creation time.
+        # Creation time.
         self.gmt_create = gmt_create
-        # The last modification time.
+        # Last modification time.
         self.gmt_modified = gmt_modified
-        # The information about the rewrite policy.
+        # Rewrite policy information.
         self.httprewrite = httprewrite
-        # The header settings.
+        # Header settings information.
         self.header_op = header_op
-        # The ID.
+        # ID.
         self.id = id
-        # The name.
+        # Name.
         self.name = name
-        # The routing policy in a JSON string.
+        # Routing policy Json string.
         self.policies = policies
-        # The matching conditions.
+        # Matching conditions.
         self.predicates = predicates
-        # The configuration of the redirection.
+        # Redirection configuration
         self.redirect = redirect
-        # The retry configuration.
+        # Retry configuration.
         self.retry = retry
-        # The sequence number of the route.
+        # Route order.
         self.route_order = route_order
-        # The information about route matching.
+        # Route matching.
         self.route_predicates = route_predicates
-        # The services.
+        # Services.
         self.route_services = route_services
-        # The configurations of services.
+        # Service configuration information.
         self.services = services
-        # The status of the route. Valid values:
+        # Route status.
         # 
-        # *   0: unpublished
-        # *   2: publishing
-        # *   3: published
-        # *   4: editing (updated but not published)
-        # *   5: unpublishing
-        # *   6: unavailable
+        # - Not published: 0
+        # 
+        # - Publishing: 2
+        # 
+        # - Published: 3
+        # 
+        # - Editing (updates not published): 4
+        # 
+        # - Unpublishing: 5
+        # 
+        # - Unavailable: 6
         self.status = status
-        # The timeout configuration.
+        # Timeout configuration.
         self.timeout = timeout
 
     def validate(self):
@@ -458,11 +465,11 @@ class GetGatewayRouteDetailResponseBodyDataTimeout(DaraModel):
         time_unit: str = None,
         unit_num: int = None,
     ):
-        # The status.
+        # Status.
         self.status = status
-        # The time unit.
+        # Time unit.
         self.time_unit = time_unit
-        # The unit number.
+        # Unit number.
         self.unit_num = unit_num
 
     def validate(self):
@@ -514,28 +521,39 @@ class GetGatewayRouteDetailResponseBodyDataRouteServices(DaraModel):
         unhealthy_endpoints: List[str] = None,
         version: str = None,
     ):
-        # The protocol type.
+        # Protocol Type.
         self.agreement_type = agreement_type
-        # The name of the group to which the service belongs.
+        # Service group name.
         self.group_name = group_name
+        # Health status
+        # 
+        # - Health
+        # 
+        # - Unhealthy
+        # 
+        # - Checking
+        # 
+        # - Unknown
         self.health_status = health_status
+        # Dubbo protocol conversion body.
         self.http_dubbo_transcoder = http_dubbo_transcoder
-        # The service name.
+        # Service name.
         self.name = name
-        # The namespace.
+        # Namespace.
         self.namespace = namespace
-        # The weight.
+        # Weight.
         self.percent = percent
-        # The service ID.
+        # Service ID.
         self.service_id = service_id
-        # The service name.
+        # Service name.
         self.service_name = service_name
-        # The port number of the service.
+        # Service port.
         self.service_port = service_port
-        # The source type of the service.
+        # Service source.
         self.source_type = source_type
+        # Unhealthy Endpoint list
         self.unhealthy_endpoints = unhealthy_endpoints
-        # The service version.
+        # Service version.
         self.version = version
 
     def validate(self):
@@ -640,9 +658,13 @@ class GetGatewayRouteDetailResponseBodyDataRouteServicesHttpDubboTranscoder(Dara
         dubbo_service_version: str = None,
         mothed_map_list: List[main_models.GetGatewayRouteDetailResponseBodyDataRouteServicesHttpDubboTranscoderMothedMapList] = None,
     ):
+        # Dubbo service group.
         self.dubbo_service_group = dubbo_service_group
+        # Dubbo service name.
         self.dubbo_service_name = dubbo_service_name
+        # Dubbo service version.
         self.dubbo_service_version = dubbo_service_version
+        # Dubbo forwarding rule list.
         self.mothed_map_list = mothed_map_list
 
     def validate(self):
@@ -701,11 +723,37 @@ class GetGatewayRouteDetailResponseBodyDataRouteServicesHttpDubboTranscoderMothe
         pass_through_all_headers: str = None,
         pass_through_list: List[str] = None,
     ):
+        # Dubbo method name.
         self.dubbo_mothed_name = dubbo_mothed_name
+        # Http method.
+        # 
+        # > Supported http method parameter values.
+        # >
+        # > - ALL_GET
+        # >
+        # > - ALL_POST
+        # >
+        # > - ALL_PUT
+        # >
+        # > - ALL_DELETE
+        # >
+        # > - ALL_PATCH
         self.http_mothed = http_mothed
+        # Method matching path.
         self.mothedpath = mothedpath
+        # Parameter mapping list.
         self.param_maps_list = param_maps_list
+        # Header pass-through type.
+        # 
+        # > Pass-through type enumeration values.
+        # >
+        # > - Pass through all: PASS_ALL
+        # >
+        # > - No pass-through: PASS_NOT
+        # >
+        # > - Specified parameters: PASS_ASSIGN
         self.pass_through_all_headers = pass_through_all_headers
+        # Specified Header pass-through list.
         self.pass_through_list = pass_through_list
 
     def validate(self):
@@ -773,8 +821,21 @@ class GetGatewayRouteDetailResponseBodyDataRouteServicesHttpDubboTranscoderMothe
         extract_key_spec: str = None,
         mapping_type: str = None,
     ):
+        # Input parameter extraction Key.
         self.extract_key = extract_key
+        # Input parameter position.
+        # 
+        # > Input parameter position enumeration values.
+        # >
+        # > - Request parameter: `ALL_QUERY_PARAMETER`
+        # >
+        # > - Request header: `ALL_HEADER`
+        # >
+        # > - URI of the request: `ALL_PATH`
+        # >
+        # > - Request body: `ALL_BODY`
         self.extract_key_spec = extract_key_spec
+        # Backend parameter type.
         self.mapping_type = mapping_type
 
     def validate(self):
@@ -817,13 +878,13 @@ class GetGatewayRouteDetailResponseBodyDataRoutePredicates(DaraModel):
         path_predicates: main_models.GetGatewayRouteDetailResponseBodyDataRoutePredicatesPathPredicates = None,
         query_predicates: List[main_models.GetGatewayRouteDetailResponseBodyDataRoutePredicatesQueryPredicates] = None,
     ):
-        # The information about header matching.
+        # Header matching.
         self.header_predicates = header_predicates
-        # The information about method matching.
+        # Method matching.
         self.method_predicates = method_predicates
-        # The information about route matching.
+        # Route matching.
         self.path_predicates = path_predicates
-        # The information about parameter matching.
+        # Parameter matching.
         self.query_predicates = query_predicates
 
     def validate(self):
@@ -891,11 +952,11 @@ class GetGatewayRouteDetailResponseBodyDataRoutePredicatesQueryPredicates(DaraMo
         type: str = None,
         value: str = None,
     ):
-        # The parameter name.
+        # Parameter name.
         self.key = key
-        # The route type.
+        # Type.
         self.type = type
-        # The value of the parameter.
+        # Matching value.
         self.value = value
 
     def validate(self):
@@ -937,11 +998,11 @@ class GetGatewayRouteDetailResponseBodyDataRoutePredicatesPathPredicates(DaraMod
         path: str = None,
         type: str = None,
     ):
-        # Indicates whether case sensitivity is ignored.
+        # Whether to ignore case.
         self.ignore_case = ignore_case
-        # The path.
+        # Path.
         self.path = path
-        # The matching type.
+        # Matching type.
         self.type = type
 
     def validate(self):
@@ -983,11 +1044,11 @@ class GetGatewayRouteDetailResponseBodyDataRoutePredicatesHeaderPredicates(DaraM
         type: str = None,
         value: str = None,
     ):
-        # The key of the request header.
+        # Request header KEY.
         self.key = key
-        # The route type.
+        # Type.
         self.type = type
-        # The value of the request header.
+        # Matching value.
         self.value = value
 
     def validate(self):
@@ -1030,13 +1091,13 @@ class GetGatewayRouteDetailResponseBodyDataRetry(DaraModel):
         retry_on: List[str] = None,
         status: str = None,
     ):
-        # The number of retries allowed.
+        # Number of retry attempts.
         self.attempts = attempts
-        # The HTTP status codes.
+        # HTTP status codes.
         self.http_codes = http_codes
-        # The retry condition.
+        # Retry conditions.
         self.retry_on = retry_on
-        # The retry status.
+        # Retry status.
         self.status = status
 
     def validate(self):
@@ -1084,11 +1145,11 @@ class GetGatewayRouteDetailResponseBodyDataRedirect(DaraModel):
         host: str = None,
         path: str = None,
     ):
-        # The response code returned.
+        # Response code.
         self.code = code
-        # The hostname.
+        # Host.
         self.host = host
-        # The path.
+        # Path.
         self.path = path
 
     def validate(self):
@@ -1129,9 +1190,9 @@ class GetGatewayRouteDetailResponseBodyDataHeaderOp(DaraModel):
         header_op_items: List[main_models.GetGatewayRouteDetailResponseBodyDataHeaderOpHeaderOpItems] = None,
         status: str = None,
     ):
-        # The information about headers.
+        # Header field objects.
         self.header_op_items = header_op_items
-        # The status.
+        # Status.
         self.status = status
 
     def validate(self):
@@ -1176,13 +1237,13 @@ class GetGatewayRouteDetailResponseBodyDataHeaderOpHeaderOpItems(DaraModel):
         op_type: str = None,
         value: str = None,
     ):
-        # The request or response.
+        # Request or response.
         self.direction_type = direction_type
-        # The header key.
+        # Header Key.
         self.key = key
-        # The type of the operation.
+        # Operation type.
         self.op_type = op_type
-        # The header value.
+        # Setting value.
         self.value = value
 
     def validate(self):
@@ -1233,17 +1294,17 @@ class GetGatewayRouteDetailResponseBodyDataHTTPRewrite(DaraModel):
         status: str = None,
         substitution: str = None,
     ):
-        # The hostname of the gateway.
+        # Instance address.
         self.host = host
-        # The path of the node.
+        # Node path.
         self.path = path
-        # The rewrite type.
+        # Rewrite type.
         self.path_type = path_type
-        # The matching pattern.
+        # Matching Pattern.
         self.pattern = pattern
-        # The status of the policy.
+        # Enabling status.
         self.status = status
-        # The replacement.
+        # Replacement.
         self.substitution = substitution
 
     def validate(self):
@@ -1305,18 +1366,19 @@ class GetGatewayRouteDetailResponseBodyDataFlowMirror(DaraModel):
         target_service_id: int = None,
         target_service_name: str = None,
     ):
-        # 流量复制比例（%），取值0-100。
+        # Traffic replication percentage (%), value range 0-100.
         self.percentage = percentage
-        # 目标服务端口。
+        # Target service port.
         self.port = port
-        # 开启状态，取值：
+        # Enabling status, values:
         # 
-        # - on：开启
-        # - off：关闭
+        # - on: enabled
+        # 
+        # - off: disabled
         self.status = status
-        # 目标服务ID。
+        # Target service ID.
         self.target_service_id = target_service_id
-        # 目标服务名称。
+        # Target service name.
         self.target_service_name = target_service_name
 
     def validate(self):
@@ -1377,25 +1439,25 @@ class GetGatewayRouteDetailResponseBodyDataFallbackServices(DaraModel):
         source_type: str = None,
         version: str = None,
     ):
-        # The protocol type.
+        # Protocol Type.
         self.agreement_type = agreement_type
-        # The name of the group to which the service belongs.
+        # Service group name.
         self.group_name = group_name
-        # The name.
+        # Name.
         self.name = name
-        # The namespace to which the service belongs.
+        # Service namespace.
         self.namespace = namespace
-        # The weight in the form of a percentage value.
+        # Weight percentage.
         self.percent = percent
-        # The service ID.
+        # Service ID.
         self.service_id = service_id
-        # The service name.
+        # Service name.
         self.service_name = service_name
-        # The port number of the service.
+        # Service port.
         self.service_port = service_port
-        # The source type of the service.
+        # Source type.
         self.source_type = source_type
-        # The service version.
+        # Service version.
         self.version = version
 
     def validate(self):
@@ -1478,9 +1540,9 @@ class GetGatewayRouteDetailResponseBodyDataDirectResponse(DaraModel):
         body: str = None,
         code: int = None,
     ):
-        # The mock return value.
+        # Mock return value.
         self.body = body
-        # The response code returned.
+        # Response code.
         self.code = code
 
     def validate(self):
@@ -1521,21 +1583,21 @@ class GetGatewayRouteDetailResponseBodyDataCors(DaraModel):
         time_unit: str = None,
         unit_num: int = None,
     ):
-        # The credentials allowed.
+        # Allow credentials.
         self.allow_credentials = allow_credentials
-        # The headers allowed.
+        # Cross-domain Header.
         self.allow_headers = allow_headers
-        # The methods allowed.
+        # Cross-domain methods.
         self.allow_methods = allow_methods
-        # The origins allowed.
+        # Cross-domain.
         self.allow_origins = allow_origins
-        # The response headers.
+        # Response header.
         self.expose_headers = expose_headers
-        # The status.
+        # Status.
         self.status = status
-        # The time unit.
+        # Time unit.
         self.time_unit = time_unit
-        # The unit number.
+        # Time number.
         self.unit_num = unit_num
 
     def validate(self):

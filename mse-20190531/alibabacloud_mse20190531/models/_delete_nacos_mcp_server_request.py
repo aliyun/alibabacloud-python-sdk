@@ -12,9 +12,13 @@ class DeleteNacosMcpServerRequest(DaraModel):
         mcp_server_id: str = None,
         namespace_id: str = None,
     ):
+        # The language of the returned results. Valid values: zh (default): Chinese. en: English.
         self.accept_language = accept_language
+        # The instance ID.
         self.instance_id = instance_id
+        # The ID of the MCP Server.
         self.mcp_server_id = mcp_server_id
+        # The namespace ID.
         self.namespace_id = namespace_id
 
     def validate(self):

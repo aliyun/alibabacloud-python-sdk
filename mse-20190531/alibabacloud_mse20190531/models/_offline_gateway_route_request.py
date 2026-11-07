@@ -11,14 +11,14 @@ class OfflineGatewayRouteRequest(DaraModel):
         gateway_unique_id: str = None,
         route_id: str = None,
     ):
-        # The language of the response. Valid values:
+        # The language of the returned information. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
-        # The ID of the route.
+        # The route entry ID.
         self.route_id = route_id
 
     def validate(self):

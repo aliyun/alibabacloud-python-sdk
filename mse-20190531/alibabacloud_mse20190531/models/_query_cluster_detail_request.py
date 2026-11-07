@@ -12,16 +12,15 @@ class QueryClusterDetailRequest(DaraModel):
         instance_id: str = None,
         order_id: str = None,
     ):
-        # The language of the response. Valid values:
-        # 
-        # *   zh: Chinese
-        # *   en: English
+        # The language of the returned information. Valid values:
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
-        # Specifies whether to query access control lists (ACLs).
+        # Specifies whether to query the access control list (ACL).
         self.acl_switch = acl_switch
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The ID of the order.
+        # The order ID.
         self.order_id = order_id
 
     def validate(self):

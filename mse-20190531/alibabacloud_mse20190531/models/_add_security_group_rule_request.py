@@ -15,8 +15,8 @@ class AddSecurityGroupRuleRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
         # The description.
         self.description = description
@@ -24,7 +24,7 @@ class AddSecurityGroupRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
-        # The range of port numbers.
+        # The port range.
         # 
         # This parameter is required.
         self.port_range = port_range

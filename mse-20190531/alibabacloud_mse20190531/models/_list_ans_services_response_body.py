@@ -20,26 +20,27 @@ class ListAnsServicesResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The details of the data.
+        # The data overview.
         self.data = data
-        # The error code returned if the request failed.
+        # The error code.
         self.error_code = error_code
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_code = http_code
         # The message returned.
         self.message = message
-        # The number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of instances displayed per page.
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # The result of the request. Valid values:
         # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
-        # The total number of instances returned.
+        # The total number of instances.
         self.total_count = total_count
 
     def validate(self):
@@ -132,12 +133,19 @@ class ListAnsServicesResponseBodyData(DaraModel):
         self.cluster_count = cluster_count
         # The name of the contact group.
         self.group_name = group_name
-        # The total number of instances with healthy heartbeats.
+        # The total number of service instances with healthy heartbeats.
         self.healthy_instance_count = healthy_instance_count
-        # The total number of instances that are used for the current service.
+        # The total number of instances of the current service.
         self.ip_count = ip_count
         # The name of the service.
         self.name = name
+        # The type of the service. Valid values:
+        # 
+        # - console: registered on the console.
+        # 
+        # - sdk: registered using an SDK.
+        # 
+        # - governance: registered using service administration.
         self.source = source
 
     def validate(self):

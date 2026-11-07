@@ -15,11 +15,21 @@ class CreateSentinelBlockFallbackDefinitionResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The response code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -85,12 +95,19 @@ class CreateSentinelBlockFallbackDefinitionResponseBodyData(DaraModel):
         resource_classification: int = None,
         user_id: str = None,
     ):
+        # The name of the application.
         self.app_name = app_name
+        # The behavior details.
         self.fallback_behavior = fallback_behavior
+        # The behavior ID.
         self.id = id
+        # The behavior name.
         self.name = name
+        # The microservice namespace to which the application belongs.
         self.namespace = namespace
+        # The target resource type.
         self.resource_classification = resource_classification
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

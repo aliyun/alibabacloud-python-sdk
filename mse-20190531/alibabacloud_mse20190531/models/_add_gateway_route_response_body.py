@@ -15,28 +15,28 @@ class AddGatewayRouteResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
+        # The return code.
         self.code = code
         # The ID of the created route.
         self.data = data
-        # The error code that is returned.
+        # The error code.
         # 
-        # *   InvalidParameter: The parameter is invalid. For example, the parameter is incomplete or the parameter format is invalid.
-        # *   IllegalRequest: The request is invalid. Unauthorized access to data initiated by parameters is identified.
-        # *   NoPermission: You are not authorized to perform this operation.
-        # *   NotFound: The resource does not exist and error 404 is returned.
-        # *   InternalError: An internal error occurred.
+        # Valid values:
+        # - InvalidParameter: Parameter error: missing or invalid format.
+        # - IllegalRequest: Illegal request: unauthorized parameter.
+        # - NoPermission: Permission denied.
+        # - NotFound: Resource not found.
+        # - InternalError: Internal error.
         self.error_code = error_code
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message returned.
+        # The response message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # Indicates whether the request succeeded. Valid values:
+        # - `true`: The request succeeded.
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):

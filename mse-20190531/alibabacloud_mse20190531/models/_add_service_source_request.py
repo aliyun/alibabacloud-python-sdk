@@ -21,35 +21,49 @@ class AddServiceSourceRequest(DaraModel):
         to_authorize_security_groups: List[main_models.AddServiceSourceRequestToAuthorizeSecurityGroups] = None,
         type: str = None,
     ):
-        # The language of the response. Valid values:
+        # The supported languages. Valid values:
         # 
-        # *   zh-CN (default): Chinese
-        # *   en-US: English
-        # *   ja: Japanese
+        # - zh-CN: Chinese. This is the default value.
+        # - en-US: English.
+        # - ja: Japanese.
         self.accept_language = accept_language
-        # Specifies whether to monitor Ingress classes.
+        # The access address. This parameter is required.
+        # * Container Service: the ID of the Container Service cluster.
+        # * MSE Nacos: the internal endpoint of the instance.
+        # * MSE ZooKeeper: the internal endpoint of the instance.
+        # * SAE registry: the namespace TID.
+        # * EDAS registry: the microservice namespace.
         self.address = address
-        # Specifies whether to update the Ingress status.
+        # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
-        # The data structure.
-        self.group_list = group_list
         # The list of service groups.
+        self.group_list = group_list
+        # The Ingress configurations. This parameter is used when the service source type is K8s.
         self.ingress_options_request = ingress_options_request
-        # The namespace whose resources you want to monitor.
+        # The name.
+        # 
+        # 
+        # > Descriptions for different source types.
+        # - When the type is K8s, the input parameter is the name.
+        # - When the type is NACOS, the input parameter is the instance ID.
         self.name = name
-        # The HTTP status code returned.
+        # The array of service root paths.
         self.path_list = path_list
-        # The service source.
-        # 
-        # *   K8s: ACK cluster
-        # *   NACOS: MSE Nacos instance
+        # The service source type:
+        # - Container Service: K8S
+        # - MSE Nacos: MSE
+        # - MSE ZooKeeper: MSE_ZK
+        # - SAE registry: SAE
+        # - EDAS registry: EDAS
         self.source = source
-        # The list of security groups to be authorized. You can specify security groups to allow backend services to access data sources that you create.
+        # The list of security groups to be authorized. This parameter is used to remove security group restrictions for backend services when creating a source.
         self.to_authorize_security_groups = to_authorize_security_groups
-        # The type of the service source.
-        # 
-        # *   K8s: Container Service for Kubernetes (ACK) cluster
-        # *   NACOS: Nacos instance
+        # The service registration type. Specify the corresponding value based on the source type:
+        # - Container Service: K8S
+        # - MSE Nacos: NACOS
+        # - MSE ZooKeeper: ZOOKEEPER
+        # - SAE registry: NACOS
+        # - EDAS registry: NACOS
         self.type = type
 
     def validate(self):
@@ -146,7 +160,7 @@ class AddServiceSourceRequestToAuthorizeSecurityGroups(DaraModel):
     ):
         # The description of the authorization record.
         self.description = description
-        # The authorized port range of the security group. You can select multiple port ranges. Separate each port range with a comma (,).
+        # The authorized port range of the security group. You can specify multiple port ranges separated by commas (,).
         self.port_range = port_range
         # The ID of the security group.
         self.security_group_id = security_group_id
@@ -191,17 +205,13 @@ class AddServiceSourceRequestIngressOptionsRequest(DaraModel):
         ingress_class: str = None,
         watch_namespace: str = None,
     ):
-        # The group to which the service belongs.
+        # Specifies whether to enable Ingress.
         self.enable_ingress = enable_ingress
-        # The language of the response. Valid values:
-        # 
-        # *   zh-CN: Chinese. This is the default value.
-        # *   en-US: English.
-        # *   ja: Japanese.
+        # Specifies whether to update the Ingress status.
         self.enable_status = enable_status
-        # An array of service root paths.
+        # The Ingress class to listen on.
         self.ingress_class = ingress_class
-        # The root path of the service.
+        # The target namespace to watch.
         self.watch_namespace = watch_namespace
 
     def validate(self):

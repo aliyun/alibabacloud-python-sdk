@@ -11,16 +11,16 @@ class DeleteGatewayAuthConsumerRequest(DaraModel):
         gateway_unique_id: str = None,
         id: int = None,
     ):
-        # The language of the response. Valid values:
+        # The language of the returned information. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
         # The unique ID of the gateway.
         # 
         # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
-        # The ID of the consumer on which the gateway performs authentication operations.
+        # The ID of the gateway authentication consumer.
         # 
         # This parameter is required.
         self.id = id

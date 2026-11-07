@@ -22,31 +22,39 @@ class ImportServicesRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
+        # The Function Compute service alias. This parameter is required when the service source is Function Compute.
         self.fc_alias = fc_alias
+        # The Function Compute service name. This parameter is required when the service source is Function Compute.
         self.fc_service_name = fc_service_name
+        # The Function Compute service version. This parameter is required when the service source is Function Compute.
         self.fc_version = fc_version
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
-        # The information about services.
+        # The service list.
         self.service_list = service_list
+        # The service source ID. This parameter is used when you add a service from a specified source.
         self.source_id = source_id
         # The service source. Valid values:
         # 
-        # *   MSE: MSE Nacos instance
-        # *   K8s: ACK cluster
-        # *   VIP: fixed address
-        # *   DNS: DNS domain
+        # - MSE: Microservices Engine (MSE Nacos).
+        # - K8s: Container Service for Kubernetes (ACK).
+        # - VIP: Fixed address.
+        # - DNS: DNS domain name.
         self.source_type = source_type
-        # The Transport Layer Security (TLS) settings. Valid values:
+        # The TLS settings.
         # 
-        # *   mode: TLS mode
-        # *   certId: certificate ID
-        # *   caCertId: CA certificate ID
-        # *   caCertContent: CA certificate public key
-        # *   sni: service name identification
+        # - TLS pattern: mode
+        # 
+        # - Certificate ID: certId
+        # 
+        # - CA certificate ID: caCertId
+        # 
+        # - CA certificate public key: caCertContent
+        # 
+        # - Service name identity: sni
         self.tls_setting = tls_setting
 
     def validate(self):
@@ -137,19 +145,21 @@ class ImportServicesRequestServiceList(DaraModel):
         service_port: int = None,
         service_protocol: str = None,
     ):
+        # The list of DNS servers (for DNS domain name services only).
         self.dns_server_list = dns_server_list
-        # The group.
+        # The group name.
         self.group_name = group_name
-        # The IP addresses of the service.
+        # The list of IP addresses.
         self.ips = ips
-        # The name of the service.
+        # The service name.
         self.name = name
         # The namespace.
         self.namespace = namespace
+        # The SAE application ID.
         self.sae_app_id = sae_app_id
-        # The port of the service.
+        # The service port.
         self.service_port = service_port
-        # The protocol of the service.
+        # The service protocol version.
         self.service_protocol = service_protocol
 
     def validate(self):
