@@ -9,13 +9,15 @@ from darabonba.model import DaraModel
 class DisableMetricRulesRequest(DaraModel):
     def __init__(
         self,
+        client_token: str = None,
         dry_run: bool = None,
         region_id: str = None,
         rule_id: List[str] = None,
     ):
-        # Specifies whether to perform a dry run of the request. Valid values:
-        # - **true**: sends a dry run request and does not bind a security group to the instance. Check items include whether required parameters are specified, the request format, and service limits. If the request fails the check, the corresponding error is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        # - **false** (default): sends a normal request. If the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
+        self.client_token = client_token
+        # Specifies whether to perform a dry run only. Valid values:
+        # - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters are specified, the request format, and service limits. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+        # - **false** (default): sends a normal request. If the check passes, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
         self.region_id = region_id
         # The ID of the alert rule.
@@ -31,6 +33,9 @@ class DisableMetricRulesRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
 
@@ -44,6 +49,9 @@ class DisableMetricRulesRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
 

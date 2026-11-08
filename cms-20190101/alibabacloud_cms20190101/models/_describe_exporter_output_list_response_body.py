@@ -18,9 +18,9 @@ class DescribeExporterOutputListResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
-        # The status code.
+        # The HTTP status code.
         # 
-        # > The status code 200 indicates that the call was successful. Other status codes indicate that the call failed.
+        # > A status code of 200 indicates success, and other values indicate failure.
         self.code = code
         self.datapoints = datapoints
         # The error message.
@@ -30,10 +30,10 @@ class DescribeExporterOutputListResponseBody(DaraModel):
         # The request ID.
         self.request_id = request_id
         # Indicates whether the call was successful. Valid values:  
-        # - `true`: successful
-        # - `false`: failed
+        # - `true`: The call was successful.
+        # - `false`: The call failed.
         self.success = success
-        # The total number of records.
+        # The total number of entries.
         self.total = total
 
     def validate(self):

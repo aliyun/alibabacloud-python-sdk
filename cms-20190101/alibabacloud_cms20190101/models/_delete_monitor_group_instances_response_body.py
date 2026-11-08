@@ -20,7 +20,7 @@ class DeleteMonitorGroupInstancesResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation is successful. Valid values:
+        # Specifies whether the operation is successful. Valid values:
         # 
         # - true: The operation is successful.
         # - false: The operation fails.

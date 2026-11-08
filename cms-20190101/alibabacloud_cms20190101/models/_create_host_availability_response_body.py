@@ -13,19 +13,19 @@ class CreateHostAvailabilityResponseBody(DaraModel):
         success: bool = None,
         task_id: int = None,
     ):
-        # The status code.
+        # The HTTP status code.
         # 
-        # > A value of 200 indicates success.
+        # > A status code of 200 indicates that the request is successful.
         self.code = code
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful. Valid values:
+        # Indicates whether the operation is successful. Valid values:
         # 
-        # - true: The operation was successful.
+        # - true: The operation is successful.
         # 
-        # - false: The operation failed.
+        # - false: The operation fails.
         self.success = success
         # The ID of the availability monitoring task.
         self.task_id = task_id

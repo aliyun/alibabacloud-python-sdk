@@ -10,7 +10,7 @@ class DeleteExporterOutputRequest(DaraModel):
         dest_name: str = None,
         region_id: str = None,
     ):
-        # The name of the destination configuration.
+        # The destination name of the configuration.
         # 
         # This parameter is required.
         self.dest_name = dest_name

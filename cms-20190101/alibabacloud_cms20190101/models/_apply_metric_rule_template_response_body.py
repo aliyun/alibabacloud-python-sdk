@@ -16,8 +16,8 @@ class ApplyMetricRuleTemplateResponseBody(DaraModel):
         resource: main_models.ApplyMetricRuleTemplateResponseBodyResource = None,
         success: bool = None,
     ):
-        # The status code.
-        # >A status code of 200 indicates success.
+        # The HTTP status code.
+        # > A status code of 200 indicates that the request was successful.
         self.code = code
         # The error message.
         self.message = message
@@ -25,11 +25,11 @@ class ApplyMetricRuleTemplateResponseBody(DaraModel):
         self.request_id = request_id
         # The resources affected by the alert rule.
         self.resource = resource
-        # Indicates whether the operation is successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # - true: The operation is successful.
+        # - true: The operation was successful.
         # 
-        # - false: The operation fails.
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):
@@ -132,8 +132,8 @@ class ApplyMetricRuleTemplateResponseBodyResourceAlertResults(DaraModel):
         rule_name: str = None,
         success: bool = None,
     ):
-        # The status code.
-        # >A status code of 200 indicates success.
+        # The HTTP status code.
+        # > A status code of 200 indicates that the request was successful.
         self.code = code
         # The returned message.
         self.message = message
@@ -141,11 +141,11 @@ class ApplyMetricRuleTemplateResponseBodyResourceAlertResults(DaraModel):
         self.rule_id = rule_id
         # The name of the alert rule.
         self.rule_name = rule_name
-        # Indicates whether the operation is successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # - true: The operation is successful.
+        # - true: The operation was successful.
         # 
-        # - false: The operation fails.
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):

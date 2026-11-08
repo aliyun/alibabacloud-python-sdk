@@ -16,17 +16,17 @@ class DescribeAlertLogCountResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The alert history statistics.
+        # The statistics of the alert history count.
         self.alert_log_count = alert_log_count
         # The status code.
         # 
-        # > The value 200 indicates success.
+        # > 200 indicates success.
         self.code = code
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful. Valid values:
+        # Indicates whether the operation is successful. Valid values:
         # 
         # - true: Successful.
         # 
@@ -91,7 +91,7 @@ class DescribeAlertLogCountResponseBodyAlertLogCount(DaraModel):
         count: int = None,
         logs: List[main_models.DescribeAlertLogCountResponseBodyAlertLogCountLogs] = None,
     ):
-        # The number of alert history statistics.
+        # The number of alert history records.
         self.count = count
         # The details of the alert history statistics.
         self.logs = logs

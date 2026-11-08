@@ -7,14 +7,16 @@ from darabonba.model import DaraModel
 class DeleteMonitorGroupRequest(DaraModel):
     def __init__(
         self,
+        client_token: str = None,
         dry_run: bool = None,
         group_id: int = None,
         region_id: str = None,
     ):
-        # Specifies whether to perform a dry run on the request. A dry run includes checks on permissions and instance status. Valid values:
+        self.client_token = client_token
+        # Specifies whether to perform a dry run on the request. The dry run checks permissions and instance status. Valid values:
         # 
-        # - **false** (default): Sends a normal request. If the request passes the check, the name and description of the route table are modified.
-        # - **true**: Sends a dry run request. Only the check is performed, and the name and description of the route table are not modified. Check items include whether required parameters are specified and the request format. If the check fails, the corresponding error is returned. If the check passes, the `DryRunOperation` error code is returned.
+        # - **false** (default): sends a normal request. If the request passes the check, the name and description of the route table are modified.
+        # - **true**: sends a dry run request. Only the check is performed, and the name and description of the route table are not modified. The check items include whether required parameters are specified and the request format. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
         self.dry_run = dry_run
         # The ID of the application group.
         # 
@@ -30,6 +32,9 @@ class DeleteMonitorGroupRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
 
@@ -43,6 +48,9 @@ class DeleteMonitorGroupRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
 

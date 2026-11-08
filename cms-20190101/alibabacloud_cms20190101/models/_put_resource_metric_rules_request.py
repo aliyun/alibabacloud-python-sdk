@@ -10,12 +10,14 @@ from darabonba.model import DaraModel
 class PutResourceMetricRulesRequest(DaraModel):
     def __init__(
         self,
+        client_token: str = None,
         dry_run: bool = None,
         rules: List[main_models.PutResourceMetricRulesRequestRules] = None,
     ):
-        # Specifies whether to only precheck the request. Valid values:
-        # - **true**: The system only prechecks the request and does not bind a security group to the instance. The system checks whether required parameters are specified, the request format, and service limits. If the request fails the precheck, the corresponding error is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # - **false** (default): The system sends a normal request. After the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
+        self.client_token = client_token
+        # Specifies whether to only precheck this request. Valid values:
+        # - **true**: A check request is sent, and no security group is associated with the instance. Check items include whether required parameters are specified, the request format, and service limits. If the check fails, an error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+        # - **false** (default): A normal request is sent. If the check succeeds, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The list of threshold alert rules.
         # 
@@ -35,6 +37,9 @@ class PutResourceMetricRulesRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
 
@@ -47,6 +52,9 @@ class PutResourceMetricRulesRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
 
@@ -84,7 +92,7 @@ class PutResourceMetricRulesRequestRules(DaraModel):
         # 
         # Valid values of N: 1 to 50.
         # 
-        # > An alert contact group is a group of alert contacts and can contain one or more alert contacts. For more information about how to create alert contacts and alert contact groups, see [PutContact](https://help.aliyun.com/document_detail/114923.html) and [PutContactGroup](https://help.aliyun.com/document_detail/114929.html).
+        # > An alert contact group contains one or more alert contacts. For more information about how to create an alert contact and an alert contact group, see [PutContact](https://help.aliyun.com/document_detail/114923.html) and [PutContactGroup](https://help.aliyun.com/document_detail/114929.html).
         # 
         # This parameter is required.
         self.contact_groups = contact_groups
@@ -102,15 +110,15 @@ class PutResourceMetricRulesRequestRules(DaraModel):
         # 
         # Valid values of N: 1 to 50.
         # 
-        # > For more information about how to query the statistical period of a monitoring metric, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
+        # > For more information about how to query the statistical period of a metric, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
         self.interval = interval
         # The labels that are written to the metric and displayed in the alert notification when the metric meets the alert condition and an alert is triggered.
         self.labels = labels
-        # The monitoring metric name.
+        # The name of the metric.
         # 
         # Valid values of N: 1 to 50.
         # 
-        # For more information about how to query the monitoring metric name, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
+        # For more information about how to query the name of a metric, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
         self.metric_name = metric_name
         # The data namespace of the Alibaba Cloud service.
         # 
@@ -120,25 +128,25 @@ class PutResourceMetricRulesRequestRules(DaraModel):
         # 
         # This parameter is required.
         self.namespace = namespace
-        # The handling method for alerts when no monitoring data is available. Valid values:
+        # The processing method when no monitoring data is available. Valid values:
         # 
-        # - KEEP_LAST_STATE (default): No operations are performed.
+        # - KEEP_LAST_STATE (default): No action is taken.
         # - INSUFFICIENT_DATA: The alert content indicates that no data is available.
         # - OK: Normal.
         # 
         # Valid values of N: 1 to 50.
         self.no_data_policy = no_data_policy
-        # The inactive time range of the alert rule.
+        # The time range during which the alert rule does not take effect.
         # 
         # Valid values of N: 1 to 50.
         self.no_effective_interval = no_effective_interval
-        # The statistical period of the monitoring metric.
+        # The statistical period of the metric.
         # 
-        # Unit: seconds. Default value: the original reporting period of the monitoring metric.
+        # Unit: seconds. Default value: the original reporting period of the metric.
         # 
         # Valid values of N: 1 to 50.
         # 
-        # > For more information about how to query the statistical period of a monitoring metric, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
+        # > For more information about how to query the statistical period of a metric, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
         self.period = period
         # The resource information. Examples: `[{"instanceId":"i-uf6j91r34rnwawoo****"}]` and `[{"userId":"100931896542****"}]`.
         # 
@@ -178,7 +186,7 @@ class PutResourceMetricRulesRequestRules(DaraModel):
         # 
         # > The mute epoch refers to the interval at which to send an alert notification again if the alert does not recover to Normal after it is triggered.
         self.silence_time = silence_time
-        # The webhook URL to which a POST request is sent when an alert callback is triggered.
+        # The webhook URL to which a POST request is sent when an alert is triggered.
         # 
         # Valid values of N: 1 to 50.
         self.webhook = webhook
@@ -316,11 +324,11 @@ class PutResourceMetricRulesRequestRulesLabels(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The label key.
         self.key = key
-        # The tag value.
+        # The label value.
         # 
-        # > Tag values support template parameters. The template parameters are replaced with the actual tag values.
+        # > Label values support template parameters. The template parameters are replaced with the actual label values.
         self.value = value
 
     def validate(self):
@@ -410,14 +418,14 @@ class PutResourceMetricRulesRequestRulesEscalationsWarn(DaraModel):
         threshold: str = None,
         times: int = None,
     ):
-        # The comparison operator for the Warn-level threshold. Valid values:
+        # The comparison operator for the Warn level. Valid values:
         # 
-        # - GreaterThanOrEqualToThreshold: greater than or equal to.
-        # - GreaterThanThreshold: greater than.
-        # - LessThanOrEqualToThreshold: less than or equal to.
-        # - LessThanThreshold: less than.
-        # - NotEqualToThreshold: not equal to.
-        # - EqualToThreshold: equal to.
+        # - GreaterThanOrEqualToThreshold: greater than or equal to the threshold.
+        # - GreaterThanThreshold: greater than the threshold.
+        # - LessThanOrEqualToThreshold: less than or equal to the threshold.
+        # - LessThanThreshold: less than the threshold.
+        # - NotEqualToThreshold: not equal to the threshold.
+        # - EqualToThreshold: equal to the threshold.
         # - GreaterThanYesterday: greater than the value at the same time yesterday.
         # - LessThanYesterday: less than the value at the same time yesterday.
         # - GreaterThanLastWeek: greater than the value at the same time last week.
@@ -427,29 +435,29 @@ class PutResourceMetricRulesRequestRulesEscalationsWarn(DaraModel):
         # 
         # Valid values of N: 1 to 50.
         # 
-        # > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
+        # > You must configure at least one of the following alert levels: Critical, Warn, or Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
         self.comparison_operator = comparison_operator
         self.n = n
         self.pre_condition = pre_condition
-        # The statistical method for Warn-level alerts.
+        # The statistical method for the Warn level.
         # 
         # Valid values of N: 1 to 50.
         # 
-        # The value of this parameter is determined by the `Statistics` column corresponding to the `MetricName` parameter of the specified Alibaba Cloud service, such as Maximum, Minimum, and Average. For more information about how to obtain the value of this parameter, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
+        # The value of this parameter is determined by the `Statistics` column corresponding to the `MetricName` of the specified Alibaba Cloud service, such as Maximum, Minimum, and Average. For more information about how to obtain the value of this parameter, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
         # 
-        # > You must configure the Settings for at least one of the following alert levels: Critical, Warn (warning), and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
+        # > You must configure the Settings for at least one of the following alert levels: Critical, Warn, or Info. For the configured alert level, you must configure the Settings for the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
         self.statistics = statistics
-        # The threshold for Warn-level alerts.
+        # The alert threshold for the Warn level.
         # 
         # Valid values of N: 1 to 50.
         # 
-        # > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
+        # > You must configure at least one of the following alert levels: Critical, Warn, or Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
         self.threshold = threshold
-        # The number of retries for Warn-level alerts.
+        # The number of alert retries for the Warn level.
         # 
         # Valid values of N: 1 to 50.
         # 
-        # > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
+        # > You must configure at least one of the following alert levels: Critical, Warn, or Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
         self.times = times
 
     def validate(self):
@@ -512,14 +520,14 @@ class PutResourceMetricRulesRequestRulesEscalationsInfo(DaraModel):
         threshold: str = None,
         times: int = None,
     ):
-        # The comparison operator for the Info-level threshold. Valid values:
+        # The comparison operator for the Info level. Valid values:
         # 
-        # - GreaterThanOrEqualToThreshold: greater than or equal to.
-        # - GreaterThanThreshold: greater than.
-        # - LessThanOrEqualToThreshold: less than or equal to.
-        # - LessThanThreshold: less than.
-        # - NotEqualToThreshold: not equal to.
-        # - EqualToThreshold: equal to.
+        # - GreaterThanOrEqualToThreshold: greater than or equal to the threshold.
+        # - GreaterThanThreshold: greater than the threshold.
+        # - LessThanOrEqualToThreshold: less than or equal to the threshold.
+        # - LessThanThreshold: less than the threshold.
+        # - NotEqualToThreshold: not equal to the threshold.
+        # - EqualToThreshold: equal to the threshold.
         # - GreaterThanYesterday: greater than the value at the same time yesterday.
         # - LessThanYesterday: less than the value at the same time yesterday.
         # - GreaterThanLastWeek: greater than the value at the same time last week.
@@ -529,27 +537,27 @@ class PutResourceMetricRulesRequestRulesEscalationsInfo(DaraModel):
         # 
         # Valid values of N: 1 to 50.
         # 
-        # > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
+        # > You must configure at least one of the following alert levels: Critical, Warn, or Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
         self.comparison_operator = comparison_operator
         self.n = n
         self.pre_condition = pre_condition
-        # The statistical method for Info-level alerts.
+        # The statistical method for the Info level.
         # 
         # Valid values of N: 1 to 50.
         # 
-        # The value of this parameter is determined by the `Statistics` column corresponding to the `MetricName` parameter of the specified Alibaba Cloud service, such as Maximum, Minimum, and Average. For more information about how to obtain the value of this parameter, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
+        # The value of this parameter is determined by the `Statistics` column corresponding to the `MetricName` of the specified Alibaba Cloud service, such as Maximum, Minimum, and Average. For more information about how to obtain the value of this parameter, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
         # 
-        # > You must configure the Settings for at least one of the following alert levels: Critical, Warn (warning), and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
+        # > You must configure the Settings for at least one of the following alert levels: Critical, Warn, or Info. For the configured alert level, you must configure the Settings for the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
         self.statistics = statistics
-        # The threshold for Info-level alerts.
+        # The alert threshold for the Info level.
         # 
-        # > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
+        # > You must configure at least one of the following alert levels: Critical, Warn, or Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
         self.threshold = threshold
-        # The number of retries for Info-level alerts.
+        # The number of alert retries for the Info level.
         # 
         # Valid values of N: 1 to 50.
         # 
-        # > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
+        # > You must configure at least one of the following alert levels: Critical, Warn, or Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
         self.times = times
 
     def validate(self):
@@ -612,14 +620,14 @@ class PutResourceMetricRulesRequestRulesEscalationsCritical(DaraModel):
         threshold: str = None,
         times: int = None,
     ):
-        # The comparison operator for the Critical-level threshold. Valid values:
+        # The comparison operator for the Critical level. Valid values:
         # 
-        # - GreaterThanOrEqualToThreshold: greater than or equal to.
-        # - GreaterThanThreshold: greater than.
-        # - LessThanOrEqualToThreshold: less than or equal to.
-        # - LessThanThreshold: less than.
-        # - NotEqualToThreshold: not equal to.
-        # - EqualToThreshold: equal to.
+        # - GreaterThanOrEqualToThreshold: greater than or equal to the threshold.
+        # - GreaterThanThreshold: greater than the threshold.
+        # - LessThanOrEqualToThreshold: less than or equal to the threshold.
+        # - LessThanThreshold: less than the threshold.
+        # - NotEqualToThreshold: not equal to the threshold.
+        # - EqualToThreshold: equal to the threshold.
         # - GreaterThanYesterday: greater than the value at the same time yesterday.
         # - LessThanYesterday: less than the value at the same time yesterday.
         # - GreaterThanLastWeek: greater than the value at the same time last week.
@@ -629,30 +637,30 @@ class PutResourceMetricRulesRequestRulesEscalationsCritical(DaraModel):
         # 
         # Valid values of N: 1 to 50.
         # 
-        # > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
+        # > You must configure at least one of the following alert levels: Critical, Warn, or Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
         self.comparison_operator = comparison_operator
         self.n = n
         self.pre_condition = pre_condition
-        # The statistical method for Critical-level alerts.
+        # The statistical method for the Critical level.
         # 
         # Valid values of N: 1 to 50.
         # 
-        # The value of this parameter is determined by the `Statistics` column corresponding to the `MetricName` parameter of the specified Alibaba Cloud service, such as Maximum, Minimum, and Average. For more information about how to obtain the value of this parameter, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
+        # The value of this parameter is determined by the `Statistics` column corresponding to the `MetricName` of the specified Alibaba Cloud service, such as Maximum, Minimum, and Average. For more information about how to obtain the value of this parameter, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
         # 
-        # > You must configure the Settings for at least one of the following alert levels: Critical, Warn (warning), and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
+        # > You must configure the Settings for at least one of the following alert levels: Critical, Warn, or Info. For the configured alert level, you must configure the Settings for the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
         self.statistics = statistics
-        # The threshold for Critical-level alerts.
+        # The alert threshold for the Critical level.
         # 
         # Valid values of N: 1 to 50.
         # 
         # 
-        # > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
+        # > You must configure at least one of the following alert levels: Critical, Warn, or Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
         self.threshold = threshold
-        # The number of retries for Critical-level alerts.
+        # The number of alert retries for the Critical level.
         # 
         # Valid values of N: 1 to 50.
         # 
-        # > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
+        # > You must configure at least one of the following alert levels: Critical, Warn, or Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
         self.times = times
 
     def validate(self):

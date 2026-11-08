@@ -21,8 +21,8 @@ class DisableMetricRulesResponseBody(DaraModel):
         # The request ID.
         self.request_id = request_id
         # Indicates whether the operation is successful. Valid values:
-        # - true: The operation is successful.
-        # - false: The operation fails.
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):

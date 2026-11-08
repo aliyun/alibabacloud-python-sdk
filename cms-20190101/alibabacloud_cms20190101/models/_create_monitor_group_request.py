@@ -7,19 +7,21 @@ from darabonba.model import DaraModel
 class CreateMonitorGroupRequest(DaraModel):
     def __init__(
         self,
+        client_token: str = None,
         contact_groups: str = None,
         dry_run: bool = None,
         group_name: str = None,
         region_id: str = None,
     ):
+        self.client_token = client_token
         # The alert contact group. Alert notifications for the application group are sent to the alert contacts in this alert contact group.
         # 
         # > An alert contact group contains one or more alert contacts. For more information about how to create alert contacts and alert contact groups, see [PutContact](~~PutContact~~) and [PutContactGroup](~~PutContactGroup~~).
         self.contact_groups = contact_groups
-        # Specifies whether to perform a dry run on the request. A dry run checks items such as permissions and instance status. Valid values:
+        # Specifies whether to perform a dry run on the request, including checks on permissions and instance status. Valid values:
         # 
-        # - **false** (default): Sends a normal request. If the request passes the check, the name and description of the route table are modified.
-        # - **true**: Sends a dry run request. Only the check is performed, and the name and description of the route table are not modified. The check items include whether required parameters are specified and whether the request format is valid. If the request fails the check, an error is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+        # - **false** (default): Sends a regular request. If the request passes the check, the name and description of the route table are modified.
+        # - **true**: Sends a dry run request. Only the check is performed, and the name and description of the route table are not modified. The check items include whether required parameters are specified and whether the request format is valid. If the check fails, the corresponding error is returned. If the check passes, the `DryRunOperation` error code is returned.
         self.dry_run = dry_run
         # The name of the application group.
         # 
@@ -35,6 +37,9 @@ class CreateMonitorGroupRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+
         if self.contact_groups is not None:
             result['ContactGroups'] = self.contact_groups
 
@@ -51,6 +56,9 @@ class CreateMonitorGroupRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+
         if m.get('ContactGroups') is not None:
             self.contact_groups = m.get('ContactGroups')
 

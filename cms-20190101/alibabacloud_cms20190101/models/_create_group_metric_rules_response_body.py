@@ -16,17 +16,18 @@ class CreateGroupMetricRulesResponseBody(DaraModel):
         resources: main_models.CreateGroupMetricRulesResponseBodyResources = None,
         success: bool = None,
     ):
-        # The status code.
-        # >A value of 200 indicates success.
+        # The HTTP status code.
+        # 
+        # > 200 indicates success.
         self.code = code
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
         self.resources = resources
-        # Indicates whether the operation is successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # - true: The operation is successful.
+        # - true: The operation was successful.
         # 
         # - false: The operation failed.
         self.success = success

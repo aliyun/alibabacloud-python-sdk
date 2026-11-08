@@ -20,7 +20,7 @@ class DescribeExporterRuleListResponseBody(DaraModel):
     ):
         # The status code.
         # 
-        # > A value of 200 indicates success. Any other value indicates failure.
+        # > A status code of 200 indicates success. Other values indicate failure.
         self.code = code
         self.datapoints = datapoints
         # The returned message.
@@ -29,9 +29,9 @@ class DescribeExporterRuleListResponseBody(DaraModel):
         self.page_number = page_number
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:  
-        # - `true`: Successful.
-        # - `false`: Failed.
+        # Indicates whether the request is successful. Valid values:  
+        # - `true`: The request is successful.
+        # - `false`: The request fails.
         self.success = success
         # The total number of entries.
         self.total = total

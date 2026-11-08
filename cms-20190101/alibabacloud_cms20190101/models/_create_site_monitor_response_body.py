@@ -17,22 +17,22 @@ class CreateSiteMonitorResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The status code of the operation.
+        # The status code.
         # 
-        # > A value of \\`200\\` indicates success.
+        # > 200 indicates success.
         self.code = code
         self.create_result_list = create_result_list
-        # The results of the monitoring task.
+        # The details of the monitoring task result.
         self.data = data
-        # The message returned for the request.
+        # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the operation is successful. Valid values:
         # 
-        # - true: The request was successful.
+        # - true: The operation is successful.
         # 
-        # - false: The request failed.
+        # - false: The operation fails.
         self.success = success
 
     def validate(self):

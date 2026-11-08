@@ -14,9 +14,9 @@ class CreateGroupMonitoringAgentProcessResponseBody(DaraModel):
         resource: main_models.CreateGroupMonitoringAgentProcessResponseBodyResource = None,
         success: bool = None,
     ):
-        # The status code.
+        # The HTTP status code.
         # 
-        # > The status code 200 indicates that the call is successful.
+        # > A status code of 200 indicates success.
         self.code = code
         # The error message.
         self.message = message
@@ -24,11 +24,11 @@ class CreateGroupMonitoringAgentProcessResponseBody(DaraModel):
         self.request_id = request_id
         # The group process information.
         self.resource = resource
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # - true: The call is successful.
+        # - true: The operation was successful.
         # 
-        # - false: The call fails.
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):
@@ -82,7 +82,7 @@ class CreateGroupMonitoringAgentProcessResponseBodyResource(DaraModel):
         self,
         group_process_id: str = None,
     ):
-        # The ID of the group process.
+        # The group process ID.
         self.group_process_id = group_process_id
 
     def validate(self):

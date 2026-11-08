@@ -17,13 +17,13 @@ class DescribeCustomEventAttributeRequest(DaraModel):
         search_keywords: str = None,
         start_time: str = None,
     ):
-        # The end of the time range to query.
+        # The end time.
         # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The value is a UNIX timestamp that indicates the number of milliseconds that have elapsed since January 1, 1970.
         self.end_time = end_time
         # The event ID.
         self.event_id = event_id
-        # The ID of the application group.
+        # The application group ID.
         self.group_id = group_id
         # The event name.
         self.name = name
@@ -32,15 +32,14 @@ class DescribeCustomEventAttributeRequest(DaraModel):
         # The number of entries per page.
         self.page_size = page_size
         self.region_id = region_id
-        # The keywords that are used to search for the event.
+        # The keywords used to search event content.
         # 
-        # - If you need to query the custom event whose content contains a and b, set the value to a and b.
-        # 
-        # - If you need to query the custom event whose content contains a or b, set the value to a or b.
+        # - If the event content contains both A and B, you can search for A and B.
+        # - If the event content contains either A or B, you can search for A or B.
         self.search_keywords = search_keywords
-        # The beginning of the time range to query.
+        # The start time.
         # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The value is a UNIX timestamp that indicates the number of milliseconds that have elapsed since January 1, 1970.
         self.start_time = start_time
 
     def validate(self):

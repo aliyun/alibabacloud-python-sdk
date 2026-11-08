@@ -12,6 +12,7 @@ class PutGroupMetricRuleRequest(DaraModel):
         self,
         escalations: main_models.PutGroupMetricRuleRequestEscalations = None,
         category: str = None,
+        client_token: str = None,
         contact_groups: str = None,
         dimensions: str = None,
         dry_run: bool = None,
@@ -35,17 +36,18 @@ class PutGroupMetricRuleRequest(DaraModel):
         self.escalations = escalations
         # The abbreviation of the Alibaba Cloud service name.
         # 
-        # For information about how to obtain the abbreviation of an Alibaba Cloud service name, see the `metricCategory` field in the `Labels` response parameter of the [DescribeProjectMeta](https://help.aliyun.com/document_detail/114916.html) operation.
+        # For information about how to obtain the abbreviation, see the metricCategory field in the Labels response parameter of the [DescribeProjectMeta](https://help.aliyun.com/document_detail/114916.html) operation.
         self.category = category
+        self.client_token = client_token
         # The alert contact group.
         self.contact_groups = contact_groups
         # The first-level dimension of the alert rule in the application group.
         # 
-        # Format: a collection of `key:value` pairs. Examples: `{"userId":"120886317861****"}` and `{"instanceId":"i-m5e1qg6uo38rztr4****"}`.
+        # Format: a collection of key:value pairs, such as `{"userId":"120886317861****"}` and `{"instanceId":"i-m5e1qg6uo38rztr4****"}`.
         self.dimensions = dimensions
         # Specifies whether to only precheck the request. Valid values:
-        # - **true**: sends a check request. The system does not bind a security group to the instance. The check items include whether required parameters are specified, the request format, and service limits. If the check fails, the system returns an error. If the check succeeds, the system returns the error code `DryRunOperation`.
-        # - **false** (default value): sends a normal request. If the check succeeds, the system returns an HTTP 2xx status code and performs the operation.
+        # - **true**: A check request is sent, and no security group is associated with the instance. The check items include whether required parameters are specified, the request format, and service limits. If the check fails, an error is returned. If the check succeeds, the error code DryRunOperation is returned.
+        # - **false**: A normal request is sent. If the check succeeds, an HTTP 2xx status code is returned and the operation is performed. This is the default value.
         self.dry_run = dry_run
         # The effective period of the alert rule.
         self.effective_interval = effective_interval
@@ -53,68 +55,68 @@ class PutGroupMetricRuleRequest(DaraModel):
         self.email_subject = email_subject
         # The second-level or third-level dimension of the alert rule in the application group.
         # 
-        # Format: a collection of `key:value` pairs. Examples: `port:80` and `/dev/xvda:d-m5e6yphgzn3aprwu****`.
+        # Format: a collection of key:value pairs, such as `port:80` and `/dev/xvda:d-m5e6yphgzn3aprwu****`.
         # 
         # If the first-level dimension of the alert rule is `{"instanceId":"i-m5e1qg6uo38rztr4****"}`, the second-level dimension is the cloud disk in the instance, such as `{"/dev/xvda":"d-m5e6yphgzn3aprwu****"}`.
         self.extra_dimension_json = extra_dimension_json
-        # The ID of the application group.
+        # The application group ID.
         # 
-        # For information about how to obtain the ID of an application group, see [DescribeMonitorGroups](https://help.aliyun.com/document_detail/115032.html).
+        # For information about how to obtain the application group ID, see [DescribeMonitorGroups](https://help.aliyun.com/document_detail/115032.html).
         # 
         # This parameter is required.
         self.group_id = group_id
         # The detection period of the alert rule. Unit: seconds.
         # 
-        # > Make sure the detection period of the alert rule is the same as the data reporting period. If the detection period is shorter than the data reporting period, alerts may not be triggered due to insufficient data.
+        # > Set the detection period of the alert rule to the same as the data reporting period. If the detection period is shorter than the data reporting period, alerts cannot be triggered due to insufficient data.
         self.interval = interval
         # The tags of the alert rule.
         # 
-        # Alert notifications include tags.
+        # Alert notifications include the tags.
         self.labels = labels
-        # The name of the metric.
+        # The metric name.
         # 
-        # For information about how to obtain the name of a metric, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html) or [cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
+        # For information about how to obtain the metric name, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html) or [Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
         # 
         # This parameter is required.
         self.metric_name = metric_name
         # The namespace of the Alibaba Cloud service.
         # 
-        # For information about how to obtain the namespace of an Alibaba Cloud service, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html) or [cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
+        # For information about how to obtain the namespace, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html) or [Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
         # 
         # This parameter is required.
         self.namespace = namespace
-        # The action to take when no monitoring data is found. Valid values:
-        # - KEEP_LAST_STATE (default value): Takes no action.
-        # - INSUFFICIENT_DATA: Sends an alert notification indicating that no data is found.
-        # - OK: Sends an alert notification indicating that the status is normal.
+        # The processing method when no monitoring data is available. Valid values:
+        # - KEEP_LAST_STATE: No action is taken. This is the default value.
+        # - INSUFFICIENT_DATA: An alert indicating insufficient data is triggered.
+        # - OK: The status is normal.
         self.no_data_policy = no_data_policy
         # The time range during which the alert rule is inactive.
         self.no_effective_interval = no_effective_interval
         # The advanced settings.
         # 
-        # Format: `{"key1":"value1","key2":"value2"}`. Example: `{"NotSendOK":true}`, which specifies whether to send alert recovery notifications. The key is `NotSendOK`, and the value is `true` (do not send) or `false` (send by default).
+        # Format: `{"key1":"value1","key2":"value2"}`. Example: `{"NotSendOK":true}`, which specifies whether to send alert recovery notifications. The key is NotSendOK, and the value is true (do not send) or false (send, which is the default value).
         self.options = options
         # The reporting period of monitoring data.
         # 
-        # The value of `Period` must be 60 or an integer multiple of 60. Unit: seconds. Default value: 300.
+        # The value of Period must be 60 or an integer multiple of 60. Unit: seconds. Default value: 300.
         self.period = period
-        # The ID of the alert rule.
+        # The alert rule ID.
         # 
-        # - To create an alert rule for the application group, enter an alert rule ID.
+        # - When you create an alert rule for the application group, enter the alert rule ID.
         # 
-        # - To modify a specified alert rule in the application group, you must obtain the alert rule ID. For information about how to obtain the ID of an alert rule, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+        # - When you modify a specified alert rule in the application group, you must obtain the alert rule ID. For information about how to obtain the alert rule ID, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
         # 
         # This parameter is required.
         self.rule_id = rule_id
-        # The name of the alert rule.
+        # The alert rule name.
         # 
-        # - To create an alert rule for the application group, enter an alert rule name.
+        # - When you create an alert rule for the application group, enter the alert rule name.
         # 
-        # - To modify a specified alert rule in the application group, you must obtain the alert rule name. For information about how to obtain the name of an alert rule, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+        # - When you modify a specified alert rule in the application group, you must obtain the alert rule name. For information about how to obtain the alert rule name, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
         # 
         # This parameter is required.
         self.rule_name = rule_name
-        # The mute for epoch.
+        # The mute period.
         # 
         # Unit: seconds. Default value: 86400.
         self.silence_time = silence_time
@@ -141,6 +143,9 @@ class PutGroupMetricRuleRequest(DaraModel):
 
         if self.category is not None:
             result['Category'] = self.category
+
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
 
         if self.contact_groups is not None:
             result['ContactGroups'] = self.contact_groups
@@ -211,6 +216,9 @@ class PutGroupMetricRuleRequest(DaraModel):
 
         if m.get('Category') is not None:
             self.category = m.get('Category')
+
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
 
         if m.get('ContactGroups') is not None:
             self.contact_groups = m.get('ContactGroups')
@@ -372,21 +380,21 @@ class PutGroupMetricRuleRequestEscalationsWarn(DaraModel):
     ):
         # The threshold comparison operator for Warn-level alerts. Valid values:
         # 
-        # - GreaterThanOrEqualToThreshold: greater than or equal to the threshold.
-        # - GreaterThanThreshold: greater than the threshold.
-        # - LessThanOrEqualToThreshold: less than or equal to the threshold.
-        # - LessThanThreshold: less than the threshold.
-        # - NotEqualToThreshold: not equal to the threshold.
-        # - GreaterThanYesterday: greater than the value at the same time yesterday.
-        # - LessThanYesterday: less than the value at the same time yesterday.
-        # - GreaterThanLastWeek: greater than the value at the same time last week.
-        # - LessThanLastWeek: less than the value at the same time last week.
-        # - GreaterThanLastPeriod: greater than the value in the last period.
-        # - LessThanLastPeriod: less than the value in the last period.
+        # - GreaterThanOrEqualToThreshold: Greater than or equal to the threshold.
+        # - GreaterThanThreshold: Greater than the threshold.
+        # - LessThanOrEqualToThreshold: Less than or equal to the threshold.
+        # - LessThanThreshold: Less than the threshold.
+        # - NotEqualToThreshold: Not equal to the threshold.
+        # - GreaterThanYesterday: Greater than the value at the same time yesterday.
+        # - LessThanYesterday: Less than the value at the same time yesterday.
+        # - GreaterThanLastWeek: Greater than the value at the same time last week.
+        # - LessThanLastWeek: Less than the value at the same time last week.
+        # - GreaterThanLastPeriod: Greater than the value in the last period.
+        # - LessThanLastPeriod: Less than the value in the last period.
         self.comparison_operator = comparison_operator
         # The statistical method for Warn-level alerts. Separate multiple statistical methods with commas (,).
         # 
-        # The valid values of this parameter are determined by the `Statistics` column corresponding to the `MetricName` of the specified Alibaba Cloud service. Examples: Maximum, Minimum, and Average. For information about how to obtain the valid values of this parameter, see [cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
+        # The valid values of this parameter are determined by the Statistics column corresponding to the MetricName of the specified Alibaba Cloud service, such as Maximum, Minimum, and Average. For information about how to obtain the valid values of this parameter, see [Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
         self.statistics = statistics
         # The threshold for Warn-level alerts.
         self.threshold = threshold
@@ -441,21 +449,21 @@ class PutGroupMetricRuleRequestEscalationsInfo(DaraModel):
     ):
         # The threshold comparison operator for Info-level alerts. Valid values:
         # 
-        # - GreaterThanOrEqualToThreshold: greater than or equal to the threshold.
-        # - GreaterThanThreshold: greater than the threshold.
-        # - LessThanOrEqualToThreshold: less than or equal to the threshold.
-        # - LessThanThreshold: less than the threshold.
-        # - NotEqualToThreshold: not equal to the threshold.
-        # - GreaterThanYesterday: greater than the value at the same time yesterday.
-        # - LessThanYesterday: less than the value at the same time yesterday.
-        # - GreaterThanLastWeek: greater than the value at the same time last week.
-        # - LessThanLastWeek: less than the value at the same time last week.
-        # - GreaterThanLastPeriod: greater than the value in the last period.
-        # - LessThanLastPeriod: less than the value in the last period.
+        # - GreaterThanOrEqualToThreshold: Greater than or equal to the threshold.
+        # - GreaterThanThreshold: Greater than the threshold.
+        # - LessThanOrEqualToThreshold: Less than or equal to the threshold.
+        # - LessThanThreshold: Less than the threshold.
+        # - NotEqualToThreshold: Not equal to the threshold.
+        # - GreaterThanYesterday: Greater than the value at the same time yesterday.
+        # - LessThanYesterday: Less than the value at the same time yesterday.
+        # - GreaterThanLastWeek: Greater than the value at the same time last week.
+        # - LessThanLastWeek: Less than the value at the same time last week.
+        # - GreaterThanLastPeriod: Greater than the value in the last period.
+        # - LessThanLastPeriod: Less than the value in the last period.
         self.comparison_operator = comparison_operator
         # The statistical method for Info-level alerts. Separate multiple statistical methods with commas (,).
         # 
-        # The valid values of this parameter are determined by the `Statistics` column corresponding to the `MetricName` of the specified Alibaba Cloud service. Examples: Maximum, Minimum, and Average. For information about how to obtain the valid values of this parameter, see [cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
+        # The valid values of this parameter are determined by the Statistics column corresponding to the MetricName of the specified Alibaba Cloud service, such as Maximum, Minimum, and Average. For information about how to obtain the valid values of this parameter, see [Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
         self.statistics = statistics
         # The threshold for Info-level alerts.
         self.threshold = threshold
@@ -510,21 +518,21 @@ class PutGroupMetricRuleRequestEscalationsCritical(DaraModel):
     ):
         # The threshold comparison operator for Critical-level alerts. Valid values:
         # 
-        # - GreaterThanOrEqualToThreshold: greater than or equal to the threshold.
-        # - GreaterThanThreshold: greater than the threshold.
-        # - LessThanOrEqualToThreshold: less than or equal to the threshold.
-        # - LessThanThreshold: less than the threshold.
-        # - NotEqualToThreshold: not equal to the threshold.
-        # - GreaterThanYesterday: greater than the value at the same time yesterday.
-        # - LessThanYesterday: less than the value at the same time yesterday.
-        # - GreaterThanLastWeek: greater than the value at the same time last week.
-        # - LessThanLastWeek: less than the value at the same time last week.
-        # - GreaterThanLastPeriod: greater than the value in the last period.
-        # - LessThanLastPeriod: less than the value in the last period.
+        # - GreaterThanOrEqualToThreshold: Greater than or equal to the threshold.
+        # - GreaterThanThreshold: Greater than the threshold.
+        # - LessThanOrEqualToThreshold: Less than or equal to the threshold.
+        # - LessThanThreshold: Less than the threshold.
+        # - NotEqualToThreshold: Not equal to the threshold.
+        # - GreaterThanYesterday: Greater than the value at the same time yesterday.
+        # - LessThanYesterday: Less than the value at the same time yesterday.
+        # - GreaterThanLastWeek: Greater than the value at the same time last week.
+        # - LessThanLastWeek: Less than the value at the same time last week.
+        # - GreaterThanLastPeriod: Greater than the value in the last period.
+        # - LessThanLastPeriod: Less than the value in the last period.
         self.comparison_operator = comparison_operator
         # The statistical method for Critical-level alerts. Separate multiple statistical methods with commas (,).
         # 
-        # The valid values of this parameter are determined by the `Statistics` column corresponding to the `MetricName` of the specified Alibaba Cloud service. Examples: Maximum, Minimum, and Average. For information about how to obtain the valid values of this parameter, see [cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
+        # The valid values of this parameter are determined by the Statistics column corresponding to the MetricName of the specified Alibaba Cloud service, such as Maximum, Minimum, and Average. For information about how to obtain the valid values of this parameter, see [Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
         self.statistics = statistics
         # The threshold for Critical-level alerts.
         self.threshold = threshold

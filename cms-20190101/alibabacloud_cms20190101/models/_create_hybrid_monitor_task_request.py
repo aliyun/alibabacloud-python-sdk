@@ -25,11 +25,11 @@ class CreateHybridMonitorTaskRequest(DaraModel):
         task_type: str = None,
         yarmconfig: str = None,
     ):
-        # The labels of the metric.
+        # The tags of the metric.
         # 
-        # > This parameter is required only when `TaskType` is set to `aliyun_sls`.
+        # > This parameter is required only when TaskType is set to aliyun_sls.
         self.attach_labels = attach_labels
-        # The list of primary account IDs of other cloud providers that are imported into CloudMonitor.
+        # The list of Alibaba Cloud account IDs used by other cloud providers to connect to CloudMonitor.
         self.cloud_access_id = cloud_access_id
         # The collection period of the metric. Valid values:
         # 
@@ -38,61 +38,61 @@ class CreateHybridMonitorTaskRequest(DaraModel):
         # 
         # Unit: seconds.
         # 
-        # > This parameter is required only when `TaskType` is set to `aliyun_sls`.
+        # > This parameter is required only when TaskType is set to aliyun_sls.
         self.collect_interval = collect_interval
         # The type of the collection target for monitoring data.
-        # - If `TaskType` is set to `aliyun_fc`, enter `aliyun_fc`.
-        # - If `TaskType` is set to `aliyun_sls`, enter the name of the Logstore group for SLS logs.
+        # - If TaskType is set to aliyun_fc, set this parameter to aliyun_fc.
+        # - If TaskType is set to aliyun_sls, enter the name of the Logstore group for SLS logs.
         # 
         # This parameter is required.
         self.collect_target_type = collect_target_type
         # The description of the monitoring task.
         self.description = description
-        # The application group ID.
+        # The ID of the application group.
         # 
-        # For information about how to obtain the application group ID, see [DescribeMonitorGroups](https://help.aliyun.com/document_detail/115032.html).
+        # For information about how to obtain the ID of an application group, see [DescribeMonitorGroups](https://help.aliyun.com/document_detail/115032.html).
         # 
-        # > This parameter is required only when `TaskType` is set to `aliyun_sls`.
+        # > This parameter is required only when TaskType is set to aliyun_sls.
         self.group_id = group_id
-        # The name of the namespace.
+        # The name of the metric repository.
         # 
-        # For information about how to obtain the namespace name, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
+        # For information about how to obtain the name of a metric repository, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
         # 
         # This parameter is required.
         self.namespace = namespace
         self.region_id = region_id
-        # The SLS log configuration.
+        # The configurations for SLS logs.
         # 
-        # > This parameter is required only when `TaskType` is set to `aliyun_sls`.
+        # > This parameter is required only when TaskType is set to aliyun_sls.
         self.slsprocess_config = slsprocess_config
-        # The member ID.
+        # The ID of the member.
         # 
-        # When you invoke this operation by using a management account, you can use cloud native mode to import Alibaba Cloud services of any member in the resource folder into Hybrid Cloud Monitoring. This allows you to use the resource directory to monitor Alibaba Cloud services across accounts in CloudMonitor. You can go to **Settings** to configure this feature.
+        # When you invoke this API by using a management account, you can use the cloud native mode to connect the Alibaba Cloud services of any member in the resource folder to Hybrid Cloud Monitoring (CloudMonitor). This allows you to monitor the target Alibaba Cloud services across accounts in an enterprise by using the resource folder.
         # 
-        # > This parameter is required only when `TaskType` is set to `aliyun_fc`.
+        # > The Settings for this parameter are required only when TaskType is set to aliyun_fc.
         self.target_user_id = target_user_id
-        # The member IDs. Separate multiple member IDs with commas (,).
+        # The IDs of the members. Separate multiple member IDs with commas (,).
         # 
         # > This parameter is required only when you call this operation by using a management account.
         self.target_user_id_list = target_user_id_list
         # The name of the monitoring task.
         # 
-        # - If `TaskType` is set to `aliyun_fc`, enter the name of the data import task for the Alibaba Cloud service.
-        # - If `TaskType` is set to `aliyun_sls`, enter the metric name for SLS logs.
+        # - If TaskType is set to aliyun_fc, enter the name of the data import task for the Alibaba Cloud service.
+        # - If TaskType is set to aliyun_sls, enter the name of the metric for SLS logs.
         self.task_name = task_name
         # The type of the monitoring task. Valid values:
         # 
-        # - aliyun_fc: a data import task for Alibaba Cloud services.
-        # - aliyun_sls: a metric for SLS logs.
+        # - aliyun_fc: data import task for Alibaba Cloud services
+        # - aliyun_sls: metric for SLS logs
         # 
         # This parameter is required.
         self.task_type = task_type
-        # The configuration file of the Alibaba Cloud service to be imported into Hybrid Cloud Monitoring.
+        # The configuration file for the Alibaba Cloud service that is connected to Hybrid Cloud Monitoring.
         # 
-        # - namespace: the namespace of the Alibaba Cloud service. For information about how to query the namespace, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html).
-        # - metric_list: the metrics of the Alibaba Cloud service. For information about how to query the metrics, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html).
+        # - namespace: the namespace of the Alibaba Cloud service. For information about how to query the namespace of an Alibaba Cloud service, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html).
+        # - metric_list: the metrics of the Alibaba Cloud service. For information about how to query the metrics of an Alibaba Cloud service, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html).
         # 
-        # The following example shows the configuration file:
+        # Sample configuration file:
         # 
         # ```
         # products:
@@ -113,7 +113,7 @@ class CreateHybridMonitorTaskRequest(DaraModel):
         #     - MySQL_QPS
         #     - MySQL_TPS
         # ```
-        # > This parameter is required when `TaskType` is set to `aliyun_fc`.
+        # > This parameter is required when TaskType is set to aliyun_fc.
         self.yarmconfig = yarmconfig
 
     def validate(self):
@@ -233,11 +233,11 @@ class CreateHybridMonitorTaskRequestSLSProcessConfig(DaraModel):
         group_by: List[main_models.CreateHybridMonitorTaskRequestSLSProcessConfigGroupBy] = None,
         statistics: List[main_models.CreateHybridMonitorTaskRequestSLSProcessConfigStatistics] = None,
     ):
-        # The arithmetic operation results of the extended fields for SLS log statistical results.
+        # The arithmetic operation result of the extended fields in the SLS log statistical result.
         self.express = express
         # The filter conditions for parameters in SLS logs.
         self.filter = filter
-        # Aggregates data by spatial dimensions, equivalent to Group By in SQL.
+        # Aggregates data by dimension, which is equivalent to GROUP BY in SQL.
         self.group_by = group_by
         # The statistical method for SLS logs.
         self.statistics = statistics
@@ -320,28 +320,28 @@ class CreateHybridMonitorTaskRequestSLSProcessConfigStatistics(DaraModel):
     ):
         # The alias of the SLS log statistical result.
         self.alias = alias
-        # The statistical method used to aggregate log data within the statistical period. Valid values:
-        # - count: counts the number of occurrences.
-        # - sum: calculates the sum.
-        # - avg: calculates the average.
-        # - max: returns the maximum value.
-        # - min: returns the minimum value.
-        # - value: samples within the period.
-        # - countps: calculates the average count per second for the specified field within the statistical period.
-        # - sumps: calculates the average sum per second for the specified field within the statistical period.
-        # - distinct: calculates the number of occurrences of the specified field after deduplication within the statistical period.
-        # - distribution: calculates the number of occurrences of field values within a specified range.
-        # - percentile: calculates the distribution value of field values, such as P50.
+        # The aggregation method used to process log data based on the selected statistical method within the calculation period. Valid values:
+        # - count: count
+        # - sum: sum
+        # - avg: average value
+        # - max: maximum value
+        # - min: minimum value
+        # - value: sampling within the period
+        # - countps: average count per second of the specified field within the statistical period
+        # - sumps: average sum per second of the specified field within the statistical period
+        # - distinct: number of occurrences of the specified field within the statistical period after deduplication
+        # - distribution: number of occurrences of the field value within a specified range
+        # - percentile: percentile of the field value, such as P50
         self.function = function
         # The statistical value of SLS logs.
         # 
-        # - If `Function` is set to `distribution`, this parameter specifies the lower limit of the statistical range. For example, to count the number of 2XX HTTP status codes, set this parameter to 200.
+        # - If Function is set to distribution, this parameter specifies the lower limit of the statistical range. For example, to count the number of 2XX HTTP status codes, enter 200.
         # 
-        # - If `Function` is set to `percentile`, this parameter specifies the percentile of the statistical distribution. For example, 0.5 indicates P50.
+        # - If Function is set to percentile, this parameter specifies the percentile of the statistical distribution. For example, 0.5 indicates P50.
         self.parameter_1 = parameter_1
         # The statistical value of SLS logs.
         # 
-        # > This parameter is required only when `Function` is set to `distribution`. It specifies the upper limit of the statistical range. For example, to count the number of 2XX HTTP status codes, set this parameter to 299.
+        # > This parameter is required only when Function is set to distribution. It specifies the upper limit of the statistical range. For example, to count the number of 2XX HTTP status codes, enter 299.
         self.parameter_2 = parameter_2
         # The name of the parameter for SLS log statistics.
         self.slskey_name = slskey_name
@@ -435,7 +435,7 @@ class CreateHybridMonitorTaskRequestSLSProcessConfigFilter(DaraModel):
     ):
         # The list of filter conditions for parameters in SLS logs.
         self.filters = filters
-        # The relationship between multiple filter conditions. Valid values:
+        # The relationship between multiple parameter filter conditions. Valid values:
         # 
         # - and (default): Logs are processed only when all filter conditions are met.
         # - or: Logs are processed when any filter condition is met.
@@ -482,17 +482,17 @@ class CreateHybridMonitorTaskRequestSLSProcessConfigFilterFilters(DaraModel):
         slskey_name: str = None,
         value: str = None,
     ):
-        # The filter method for parameter values in SLS logs. Valid values:
-        # - `contain`: contains.
-        # - `notContain`: does not contain.
-        # - `>`: greater than.
-        # - `<`: less than.
-        # - `=`: equal to.
-        # - `!=`: not equal to.
-        # - `>=`: greater than or equal to.
-        # - `<=`: less than or equal to.
+        # The filtering method for parameter values in SLS logs. Valid values:
+        # - contain: includes
+        # - notContain: does not include
+        # - >: greater than
+        # - <: less than
+        # - =: equal to
+        # - !=: not equal to
+        # - >=: greater than or equal to
+        # - <=: less than or equal to
         self.operator = operator
-        # The name of the parameter to filter in SLS logs.
+        # The name of the filtered parameter in SLS logs.
         self.slskey_name = slskey_name
         # The filter value of the parameter in SLS logs.
         self.value = value
@@ -535,9 +535,9 @@ class CreateHybridMonitorTaskRequestSLSProcessConfigExpress(DaraModel):
         alias: str = None,
         express: str = None,
     ):
-        # The alias of the arithmetic operation result of the extended field for SLS log statistical results.
+        # The alias of the arithmetic operation result of the extended fields in the SLS log statistical result.
         self.alias = alias
-        # The arithmetic operation results of the extended fields for SLS log statistical results.
+        # The arithmetic operation result of the extended fields in the SLS log statistical result.
         self.express = express
 
     def validate(self):
@@ -572,9 +572,9 @@ class CreateHybridMonitorTaskRequestAttachLabels(DaraModel):
         name: str = None,
         value: str = None,
     ):
-        # The label key of the metric.
+        # The tag key of the metric.
         self.name = name
-        # The label value of the metric.
+        # The tag value of the metric.
         self.value = value
 
     def validate(self):

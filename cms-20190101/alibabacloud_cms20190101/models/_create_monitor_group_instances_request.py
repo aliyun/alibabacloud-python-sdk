@@ -10,17 +10,22 @@ from darabonba.model import DaraModel
 class CreateMonitorGroupInstancesRequest(DaraModel):
     def __init__(
         self,
+        client_token: str = None,
         dry_run: str = None,
         group_id: str = None,
         instances: List[main_models.CreateMonitorGroupInstancesRequestInstances] = None,
         region_id: str = None,
     ):
+        self.client_token = client_token
+        # Specifies whether to only perform a dry run on the request. Valid values:
+        # - **true**: performs a dry run. A check request is sent, and no security group is bound to the instance. The system checks whether the required parameters are specified, the request format is valid, and the service limits are met. If the request fails the check, the corresponding error is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+        # - **false** (default): sends a normal request. If the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the application group.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The instances that you want to add to the application group.
+        # The list of instances.
         # 
         # This parameter is required.
         self.instances = instances
@@ -37,6 +42,9 @@ class CreateMonitorGroupInstancesRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
 
@@ -55,6 +63,9 @@ class CreateMonitorGroupInstancesRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
 
@@ -82,7 +93,7 @@ class CreateMonitorGroupInstancesRequestInstances(DaraModel):
     ):
         # The abbreviation of the Alibaba Cloud service name.
         # 
-        # To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](https://help.aliyun.com/document_detail/114916.html) operation. The `metricCategory` tag in the `Labels` response parameter indicates the abbreviation of the Alibaba Cloud service name.
+        # For more information about how to obtain the abbreviation of the Alibaba Cloud service name, see the `metricCategory` field in the `Labels` response parameter of the [DescribeProjectMeta](https://help.aliyun.com/document_detail/114916.html) operation.
         # 
         # This parameter is required.
         self.category = category
@@ -90,11 +101,11 @@ class CreateMonitorGroupInstancesRequestInstances(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The instance name.
+        # The name of the instance.
         # 
         # This parameter is required.
         self.instance_name = instance_name
-        # The region ID of the instance.
+        # The region where the instance resides.
         # 
         # This parameter is required.
         self.region_id = region_id

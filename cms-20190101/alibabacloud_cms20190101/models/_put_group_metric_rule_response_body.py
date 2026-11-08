@@ -82,7 +82,7 @@ class PutGroupMetricRuleResponseBodyResult(DaraModel):
         self,
         rule_id: str = None,
     ):
-        # The ID of the alert rule.
+        # The alert rule ID.
         self.rule_id = rule_id
 
     def validate(self):

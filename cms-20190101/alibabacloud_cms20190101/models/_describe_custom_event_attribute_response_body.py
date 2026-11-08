@@ -17,19 +17,18 @@ class DescribeCustomEventAttributeResponseBody(DaraModel):
         success: str = None,
     ):
         # The status code.
-        # 
-        # > The status code 200 indicates that the request was successful.
+        # A value of 200 indicates success.
         self.code = code
         self.custom_events = custom_events
         # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values: Valid values:
+        # Indicates whether the operation is successful. Valid values:
         # 
-        # - true
+        # - true: Successful.
         # 
-        # - false
+        # - false: Failed.
         self.success = success
 
     def validate(self):

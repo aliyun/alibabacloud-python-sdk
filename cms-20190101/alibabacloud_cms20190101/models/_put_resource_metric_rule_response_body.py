@@ -12,9 +12,9 @@ class PutResourceMetricRuleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code.
         # 
-        # > A status code of 200 indicates that the request was successful.
+        # > A status code of 200 indicates success.
         self.code = code
         # The error message.
         self.message = message

@@ -16,9 +16,9 @@ class PutResourceMetricRulesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code.
         # 
-        # > A status code of 200 indicates success.
+        # > 200 indicates success.
         self.code = code
         self.failed_list_result = failed_list_result
         # The error message.
@@ -27,9 +27,9 @@ class PutResourceMetricRulesResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the operation was successful. Valid values:
         # 
-        # - true: The operation was successful.
+        # - true: Successful.
         # 
-        # - false: The operation failed.
+        # - false: Failed.
         self.success = success
 
     def validate(self):

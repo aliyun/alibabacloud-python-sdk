@@ -14,7 +14,7 @@ class InstallMonitoringAgentResponseBody(DaraModel):
     ):
         # The status code.
         # 
-        # > A status code of 200 indicates success.
+        # > A value of 200 indicates success.
         self.code = code
         # The error message.
         self.message = message

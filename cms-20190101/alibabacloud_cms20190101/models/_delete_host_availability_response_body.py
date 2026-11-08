@@ -14,13 +14,13 @@ class DeleteHostAvailabilityResponseBody(DaraModel):
     ):
         # The status code.
         # 
-        # > A status code of 200 indicates that the request was successful.
+        # > 200 indicates success.
         self.code = code
         # The returned message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the operation was successful. \\`true\\`: The operation was successful. \\`false\\`: The operation failed.
+        # Indicates whether the operation was successful. A value of true indicates success, and a value of false indicates failure.
         self.success = success
 
     def validate(self):

@@ -13,9 +13,9 @@ class CreateHybridMonitorTaskResponseBody(DaraModel):
         success: str = None,
         task_id: int = None,
     ):
-        # The HTTP status code.
+        # The status code.
         # 
-        # > 200 indicates success.
+        # > A status code of 200 indicates that the call was successful.
         self.code = code
         # The error message.
         self.message = message
@@ -23,10 +23,10 @@ class CreateHybridMonitorTaskResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the operation was successful. Valid values:
         # 
-        # - true: Successful.
-        # - false: Failed.
+        # - true: The operation was successful.
+        # - false: The operation failed.
         self.success = success
-        # The monitoring task ID.
+        # The ID of the monitoring task.
         self.task_id = task_id
 
     def validate(self):

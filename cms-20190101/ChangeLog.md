@@ -1,3 +1,21 @@
+2026-11-08 Version: 4.0.12
+- Update API ApplyMetricRuleTemplate: add request parameters ClientToken.
+- Update API CreateDynamicTagGroup: add request parameters ClientToken.
+- Update API CreateMonitorGroup: add request parameters ClientToken.
+- Update API CreateMonitorGroupInstances: add request parameters ClientToken.
+- Update API DeleteMetricRules: add request parameters ClientToken.
+- Update API DeleteMonitorGroup: add request parameters ClientToken.
+- Update API DeleteMonitorGroupInstances: add request parameters ClientToken.
+- Update API DisableMetricRules: add request parameters ClientToken.
+- Update API EnableMetricRules: add request parameters ClientToken.
+- Update API InstallMonitoringAgent: add request parameters ClientToken.
+- Update API PutGroupMetricRule: add request parameters ClientToken.
+- Update API PutMonitorGroupDynamicRule: add request parameters ClientToken.
+- Update API PutMonitoringConfig: add request parameters ClientToken.
+- Update API PutResourceMetricRule: add request parameters ClientToken.
+- Update API PutResourceMetricRules: add request parameters ClientToken.
+
+
 2026-10-30 Version: 4.0.11
 - Generated python 2019-01-01 for Cms.
 

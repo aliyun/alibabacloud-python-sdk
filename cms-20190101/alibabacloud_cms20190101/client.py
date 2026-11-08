@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Dict
 
 from alibabacloud_cms20190101 import models as main_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -20,6 +21,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'Cms'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-beijing': 'metrics.cn-beijing.aliyuncs.com',
@@ -167,6 +171,8 @@ class Client(OpenApiClient):
             query['AppendMode'] = request.append_mode
         if not DaraCore.is_null(request.apply_mode):
             query['ApplyMode'] = request.apply_mode
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.enable_end_time):
@@ -213,6 +219,8 @@ class Client(OpenApiClient):
             query['AppendMode'] = request.append_mode
         if not DaraCore.is_null(request.apply_mode):
             query['ApplyMode'] = request.apply_mode
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.enable_end_time):
@@ -433,6 +441,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateDynamicTagGroupResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.contact_group_list):
             query['ContactGroupList'] = request.contact_group_list
         if not DaraCore.is_null(request.dry_run):
@@ -477,6 +487,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateDynamicTagGroupResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.contact_group_list):
             query['ContactGroupList'] = request.contact_group_list
         if not DaraCore.is_null(request.dry_run):
@@ -1513,6 +1525,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateMonitorGroupResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.contact_groups):
             query['ContactGroups'] = request.contact_groups
         if not DaraCore.is_null(request.dry_run):
@@ -1545,6 +1559,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateMonitorGroupResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.contact_groups):
             query['ContactGroups'] = request.contact_groups
         if not DaraCore.is_null(request.dry_run):
@@ -1681,6 +1697,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateMonitorGroupInstancesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.group_id):
@@ -1713,6 +1731,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateMonitorGroupInstancesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.group_id):
@@ -3419,6 +3439,8 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteMetricRulesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.id):
@@ -3449,6 +3471,8 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteMetricRulesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.id):
@@ -3493,6 +3517,8 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteMonitorGroupResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.group_id):
@@ -3523,6 +3549,8 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteMonitorGroupResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.group_id):
@@ -3643,6 +3671,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.category):
             query['Category'] = request.category
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.group_id):
@@ -3677,6 +3707,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.category):
             query['Category'] = request.category
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.group_id):
@@ -10121,6 +10153,8 @@ class Client(OpenApiClient):
     ) -> main_models.DisableMetricRulesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.rule_id):
@@ -10151,6 +10185,8 @@ class Client(OpenApiClient):
     ) -> main_models.DisableMetricRulesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.rule_id):
@@ -10557,6 +10593,8 @@ class Client(OpenApiClient):
     ) -> main_models.EnableMetricRulesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.rule_id):
@@ -10587,6 +10625,8 @@ class Client(OpenApiClient):
     ) -> main_models.EnableMetricRulesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.rule_id):
@@ -10701,6 +10741,8 @@ class Client(OpenApiClient):
     ) -> main_models.InstallMonitoringAgentResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.force):
@@ -10735,6 +10777,8 @@ class Client(OpenApiClient):
     ) -> main_models.InstallMonitoringAgentResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.force):
@@ -12643,6 +12687,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.category):
             query['Category'] = request.category
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.contact_groups):
             query['ContactGroups'] = request.contact_groups
         if not DaraCore.is_null(request.dimensions):
@@ -12711,6 +12757,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.category):
             query['Category'] = request.category
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.contact_groups):
             query['ContactGroups'] = request.contact_groups
         if not DaraCore.is_null(request.dimensions):
@@ -13057,6 +13105,8 @@ class Client(OpenApiClient):
     ) -> main_models.PutMonitorGroupDynamicRuleResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.group_id):
@@ -13091,6 +13141,8 @@ class Client(OpenApiClient):
     ) -> main_models.PutMonitorGroupDynamicRuleResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.group_id):
@@ -13141,6 +13193,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.auto_install):
             query['AutoInstall'] = request.auto_install
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.enable_install_agent_new_ecs):
@@ -13173,6 +13227,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.auto_install):
             query['AutoInstall'] = request.auto_install
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.enable_install_agent_new_ecs):
@@ -13223,6 +13279,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.prometheus):
             request.prometheus_shrink = Utils.array_to_string_with_specified_style(tmp_req.prometheus, 'Prometheus', 'json')
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.composite_expression_shrink):
             query['CompositeExpression'] = request.composite_expression_shrink
         if not DaraCore.is_null(request.contact_groups):
@@ -13295,6 +13353,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.prometheus):
             request.prometheus_shrink = Utils.array_to_string_with_specified_style(tmp_req.prometheus, 'Prometheus', 'json')
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.composite_expression_shrink):
             query['CompositeExpression'] = request.composite_expression_shrink
         if not DaraCore.is_null(request.contact_groups):
@@ -13375,6 +13435,8 @@ class Client(OpenApiClient):
     ) -> main_models.PutResourceMetricRulesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.rules):
@@ -13405,6 +13467,8 @@ class Client(OpenApiClient):
     ) -> main_models.PutResourceMetricRulesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.rules):
