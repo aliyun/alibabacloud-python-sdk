@@ -1,3 +1,12 @@
+2026-11-09 Version: 2.0.0
+- Support API DeleteWildcardByTopic.
+- Support API QueryWildcardByTopic.
+- Update API CreateGroupId: add request parameters Tag.
+- Update API CreateGroupId: delete request parameters Tags.
+- Update API ListGroupId: add request parameters Tag.
+- Update API ListGroupId: delete request parameters Tags.
+
+
 2025-03-31 Version: 1.7.1
 - Update API CreateGroupId: add request parameters Tags.
 - Update API ListGroupId: add request parameters Tags.
