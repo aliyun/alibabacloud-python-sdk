@@ -20,15 +20,15 @@ class ListSandboxesResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The business status code. The value is SUCCESS when the request is successful.
+        # The business status code. The value is SUCCESS if the request is successful.
         self.code = code
-        # The HTTP status code. The value is 200 when the request is successful.
+        # The HTTP status code. The value is 200 if the request is successful.
         self.http_status_code = http_status_code
         # The list of sandboxes that meet the filter conditions.
         self.items = items
         # The maximum number of records per page for this query.
         self.max_results = max_results
-        # The response message. The value is success when the request is successful.
+        # The response message. The value is success if the request is successful.
         self.message = message
         # The pagination token for the next page. An empty value indicates that no more results are available.
         self.next_token = next_token
@@ -120,26 +120,38 @@ class ListSandboxesResponseBodyItems(DaraModel):
         self,
         active_session_count: int = None,
         created_at: str = None,
+        harness_version: str = None,
         last_active_at: str = None,
         last_heartbeat_at: str = None,
+        last_rebuild_operation_id: str = None,
         max_concurrent_sessions: int = None,
         phase: str = None,
         sandbox_id: str = None,
+        update_available: bool = None,
+        update_failed: bool = None,
     ):
         # The number of active sessions in the sandbox.
         self.active_session_count = active_session_count
-        # The time when the sandbox was created. The time is in the RFC 3339 UTC format.
+        # The time when the sandbox was created, in RFC 3339 UTC format.
         self.created_at = created_at
-        # The time of the last activity of the sandbox. The time is in the RFC 3339 UTC format.
+        # The tag of the actual observed image of the currently returned instance. This parameter is empty if the tag cannot be parsed.
+        self.harness_version = harness_version
+        # The time of the last activity of the sandbox, in RFC 3339 UTC format.
         self.last_active_at = last_active_at
-        # The time of the last heartbeat of the sandbox. The time is in the RFC 3339 UTC format.
+        # The time of the last heartbeat of the sandbox, in RFC 3339 UTC format.
         self.last_heartbeat_at = last_heartbeat_at
-        # The maximum number of concurrent sessions allowed for the sandbox. This value is obtained from the auto-scaling configuration that takes effect at runtime. If auto-scaling is disabled or the configuration is unavailable, this value is empty.
+        # Used to continue calling GetSandboxRebuildOperation to query the overall result after a page refresh. This parameter is empty if there is no historical rebuild. Do not use the ID of a subsequently created task instead.
+        self.last_rebuild_operation_id = last_rebuild_operation_id
+        # The maximum number of concurrent sessions allowed for the sandbox, which is obtained from the effective auto-scaling configuration at runtime. This parameter is empty if auto-scaling is disabled or the configuration is unavailable.
         self.max_concurrent_sessions = max_concurrent_sessions
         # The current running phase of the sandbox.
         self.phase = phase
         # The sandbox ID, which can be queried by calling ListSandboxes.
         self.sandbox_id = sandbox_id
+        # The server compares the actual image tag of the instance with the pool target image tag. The value is true if the tags are different during the RUNNING, HIBERNATED, or FAILED phase. The value is false if the tags are the same or during other known phases. This parameter is empty if the tag or phase cannot be confirmed, and it cannot be treated as false. The version sequence is not determined by the tag size.
+        self.update_available = update_available
+        # A value of true indicates that the most recent rebuild corresponding to the current instance generation failed as a whole. A value of false indicates that there is no historical rebuild or the rebuild succeeded as a whole. This parameter is empty if the rebuild is in progress, canceled, replaced, the generation does not match, or the result cannot be confirmed.
+        self.update_failed = update_failed
 
     def validate(self):
         pass
@@ -155,11 +167,17 @@ class ListSandboxesResponseBodyItems(DaraModel):
         if self.created_at is not None:
             result['createdAt'] = self.created_at
 
+        if self.harness_version is not None:
+            result['harnessVersion'] = self.harness_version
+
         if self.last_active_at is not None:
             result['lastActiveAt'] = self.last_active_at
 
         if self.last_heartbeat_at is not None:
             result['lastHeartbeatAt'] = self.last_heartbeat_at
+
+        if self.last_rebuild_operation_id is not None:
+            result['lastRebuildOperationId'] = self.last_rebuild_operation_id
 
         if self.max_concurrent_sessions is not None:
             result['maxConcurrentSessions'] = self.max_concurrent_sessions
@@ -169,6 +187,12 @@ class ListSandboxesResponseBodyItems(DaraModel):
 
         if self.sandbox_id is not None:
             result['sandboxId'] = self.sandbox_id
+
+        if self.update_available is not None:
+            result['updateAvailable'] = self.update_available
+
+        if self.update_failed is not None:
+            result['updateFailed'] = self.update_failed
 
         return result
 
@@ -180,11 +204,17 @@ class ListSandboxesResponseBodyItems(DaraModel):
         if m.get('createdAt') is not None:
             self.created_at = m.get('createdAt')
 
+        if m.get('harnessVersion') is not None:
+            self.harness_version = m.get('harnessVersion')
+
         if m.get('lastActiveAt') is not None:
             self.last_active_at = m.get('lastActiveAt')
 
         if m.get('lastHeartbeatAt') is not None:
             self.last_heartbeat_at = m.get('lastHeartbeatAt')
+
+        if m.get('lastRebuildOperationId') is not None:
+            self.last_rebuild_operation_id = m.get('lastRebuildOperationId')
 
         if m.get('maxConcurrentSessions') is not None:
             self.max_concurrent_sessions = m.get('maxConcurrentSessions')
@@ -194,6 +224,12 @@ class ListSandboxesResponseBodyItems(DaraModel):
 
         if m.get('sandboxId') is not None:
             self.sandbox_id = m.get('sandboxId')
+
+        if m.get('updateAvailable') is not None:
+            self.update_available = m.get('updateAvailable')
+
+        if m.get('updateFailed') is not None:
+            self.update_failed = m.get('updateFailed')
 
         return self
 

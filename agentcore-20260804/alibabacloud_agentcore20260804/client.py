@@ -7225,6 +7225,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_model_connection_with_options_async(workspace_id, connection_id, request, headers, runtime)
 
+    def get_sandbox_rebuild_operation_with_options(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        sandbox_id: str,
+        operation_id: str,
+        request: main_models.GetSandboxRebuildOperationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSandboxRebuildOperationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.service_endpoint_id):
+            query['serviceEndpointId'] = request.service_endpoint_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSandboxRebuildOperation',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/managed-agents/{DaraURL.percent_encode(agent_id)}/sandboxes/{DaraURL.percent_encode(sandbox_id)}/rebuild-operations/{DaraURL.percent_encode(operation_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSandboxRebuildOperationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_sandbox_rebuild_operation_with_options_async(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        sandbox_id: str,
+        operation_id: str,
+        request: main_models.GetSandboxRebuildOperationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSandboxRebuildOperationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.service_endpoint_id):
+            query['serviceEndpointId'] = request.service_endpoint_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSandboxRebuildOperation',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/managed-agents/{DaraURL.percent_encode(agent_id)}/sandboxes/{DaraURL.percent_encode(sandbox_id)}/rebuild-operations/{DaraURL.percent_encode(operation_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSandboxRebuildOperationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_sandbox_rebuild_operation(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        sandbox_id: str,
+        operation_id: str,
+        request: main_models.GetSandboxRebuildOperationRequest,
+    ) -> main_models.GetSandboxRebuildOperationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_sandbox_rebuild_operation_with_options(workspace_id, agent_id, sandbox_id, operation_id, request, headers, runtime)
+
+    async def get_sandbox_rebuild_operation_async(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        sandbox_id: str,
+        operation_id: str,
+        request: main_models.GetSandboxRebuildOperationRequest,
+    ) -> main_models.GetSandboxRebuildOperationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_sandbox_rebuild_operation_with_options_async(workspace_id, agent_id, sandbox_id, operation_id, request, headers, runtime)
+
     def get_service_endpoint_with_options(
         self,
         workspace_id: str,
@@ -11988,6 +12080,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.publish_skill_version_with_options_async(workspace_id, skill_name, skill_version, request, headers, runtime)
+
+    def rebuild_sandbox_with_options(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        sandbox_id: str,
+        request: main_models.RebuildSandboxRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RebuildSandboxResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.service_endpoint_id):
+            query['serviceEndpointId'] = request.service_endpoint_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RebuildSandbox',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/managed-agents/{DaraURL.percent_encode(agent_id)}/sandboxes/{DaraURL.percent_encode(sandbox_id)}/rebuild',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RebuildSandboxResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def rebuild_sandbox_with_options_async(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        sandbox_id: str,
+        request: main_models.RebuildSandboxRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RebuildSandboxResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.service_endpoint_id):
+            query['serviceEndpointId'] = request.service_endpoint_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RebuildSandbox',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/managed-agents/{DaraURL.percent_encode(agent_id)}/sandboxes/{DaraURL.percent_encode(sandbox_id)}/rebuild',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RebuildSandboxResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def rebuild_sandbox(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        sandbox_id: str,
+        request: main_models.RebuildSandboxRequest,
+    ) -> main_models.RebuildSandboxResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.rebuild_sandbox_with_options(workspace_id, agent_id, sandbox_id, request, headers, runtime)
+
+    async def rebuild_sandbox_async(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        sandbox_id: str,
+        request: main_models.RebuildSandboxRequest,
+    ) -> main_models.RebuildSandboxResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.rebuild_sandbox_with_options_async(workspace_id, agent_id, sandbox_id, request, headers, runtime)
 
     def redraft_skill_version_with_options(
         self,

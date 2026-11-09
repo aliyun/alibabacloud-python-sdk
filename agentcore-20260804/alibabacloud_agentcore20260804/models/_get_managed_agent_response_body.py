@@ -1164,6 +1164,7 @@ class GetManagedAgentResponseBodyDataModel(DaraModel):
         model_connection_id: str = None,
         model_name: str = None,
         quota: main_models.GetManagedAgentResponseBodyDataModelQuota = None,
+        thinking_level: str = None,
     ):
         # The model connection ID.
         self.model_connection_id = model_connection_id
@@ -1171,6 +1172,8 @@ class GetManagedAgentResponseBodyDataModel(DaraModel):
         self.model_name = model_name
         # The model token quota configuration and the quota usage status for the current cycle. This field is empty if no quota is configured.
         self.quota = quota
+        # 未配置时表示 default，空字符串、null 或省略均按模型和 Harness 默认行为处理。可选值 off、low、medium、high、xhigh、max。创建未传或 null 时使用 default；更新提交模型配置时，思考强度未传或为 null 均恢复 default。除 off 转为 none 外原样传给运行框架，不校验模型支持情况、不自动降档；模型不支持时请调整强度。
+        self.thinking_level = thinking_level
 
     def validate(self):
         if self.quota:
@@ -1190,6 +1193,9 @@ class GetManagedAgentResponseBodyDataModel(DaraModel):
         if self.quota is not None:
             result['quota'] = self.quota.to_map()
 
+        if self.thinking_level is not None:
+            result['thinkingLevel'] = self.thinking_level
+
         return result
 
     def from_map(self, m: dict = None):
@@ -1203,6 +1209,9 @@ class GetManagedAgentResponseBodyDataModel(DaraModel):
         if m.get('quota') is not None:
             temp_model = main_models.GetManagedAgentResponseBodyDataModelQuota()
             self.quota = temp_model.from_map(m.get('quota'))
+
+        if m.get('thinkingLevel') is not None:
+            self.thinking_level = m.get('thinkingLevel')
 
         return self
 
@@ -1292,12 +1301,18 @@ class GetManagedAgentResponseBodyDataHarness(DaraModel):
     def __init__(
         self,
         configuration: main_models.GetManagedAgentResponseBodyDataHarnessConfiguration = None,
+        outdated_instance_count: int = None,
         type: str = None,
+        version: str = None,
     ):
         # The runtime framework configuration.
         self.configuration = configuration
+        # 仅查询返回。服务端按完整实例分布统计，不受实例列表分页和筛选影响。镜像 tag 缺失、分页不完整或无法确认时为空，不等同于 0。
+        self.outdated_instance_count = outdated_instance_count
         # The type of the runtime framework.
         self.type = type
+        # 仅查询返回。当前返回 Pool 目标镜像 tag；无法解析时为空，不能用 Agent 配置版本代替。
+        self.version = version
 
     def validate(self):
         if self.configuration:
@@ -1311,8 +1326,14 @@ class GetManagedAgentResponseBodyDataHarness(DaraModel):
         if self.configuration is not None:
             result['configuration'] = self.configuration.to_map()
 
+        if self.outdated_instance_count is not None:
+            result['outdatedInstanceCount'] = self.outdated_instance_count
+
         if self.type is not None:
             result['type'] = self.type
+
+        if self.version is not None:
+            result['version'] = self.version
 
         return result
 
@@ -1322,8 +1343,14 @@ class GetManagedAgentResponseBodyDataHarness(DaraModel):
             temp_model = main_models.GetManagedAgentResponseBodyDataHarnessConfiguration()
             self.configuration = temp_model.from_map(m.get('configuration'))
 
+        if m.get('outdatedInstanceCount') is not None:
+            self.outdated_instance_count = m.get('outdatedInstanceCount')
+
         if m.get('type') is not None:
             self.type = m.get('type')
+
+        if m.get('version') is not None:
+            self.version = m.get('version')
 
         return self
 

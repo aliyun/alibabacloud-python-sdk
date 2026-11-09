@@ -12,7 +12,7 @@ class ListManagedAgentsRequest(DaraModel):
     ):
         # The maximum number of entries to return per page. Valid values: 0 to 100. If this parameter is omitted or set to 0, the default value is 20.
         self.max_results = max_results
-        # The pagination token. Leave this parameter empty for the first call. For subsequent calls, use the `nextToken` value returned in the previous response.
+        # The pagination token. Leave this parameter empty for the first call. For subsequent calls, use the nextToken value returned in the previous response.
         self.next_token = next_token
 
     def validate(self):

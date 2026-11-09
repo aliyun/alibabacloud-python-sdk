@@ -17,17 +17,17 @@ class GetAgentVersionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 业务状态码，请求成功时为 SUCCESS，失败时为错误码。
+        # The business status code. The value is SUCCESS if the request is successful, or an error code if the request fails.
         self.code = code
-        # 智能体固定版本详情，configuration 为版本保存时的 Agent 配置。
+        # The details of the fixed agent version. The configuration field contains the agent configuration at the time the version was saved.
         self.data = data
-        # HTTP 状态码。
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # 响应消息，请求成功时为 success，失败时为错误信息。
+        # The response message. The value is success if the request is successful, or an error message if the request fails.
         self.message = message
-        # 请求 ID，用于定位和排查请求。
+        # The request ID, which is used to locate and troubleshoot the request.
         self.request_id = request_id
-        # 请求是否成功。
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -96,25 +96,25 @@ class GetAgentVersionResponseBodyData(DaraModel):
         version_name: str = None,
         workspace_id: str = None,
     ):
-        # 版本所属的托管智能体或自定义智能体 ID。
+        # The ID of the managed or custom agent that owns the version.
         self.agent_id = agent_id
-        # 系统按 Agent 递增生成的版本号，例如 v1、v2。查询、删除版本及服务端点引用版本时使用。
+        # The system-generated version number that increments for each agent, such as v1 and v2. This is used when querying or deleting versions, and when referencing versions in service endpoints.
         self.agent_version = agent_version
-        # 仅表示版本模板与制品归档是否完整，不代表部署或运行状态。READY 为完整，INVALID 为归档缺失或不一致。
+        # Indicates only whether the version template and artifact archiving are complete, and does not represent the deployment or running status. A value of READY indicates that the archiving is complete. A value of INVALID indicates that the archiving is missing or inconsistent.
         self.artifact_status = artifact_status
-        # 托管智能体与 GetManagedAgent 的 data 结构一致，自定义智能体与 GetCustomAgent 的 data 结构一致，脱敏规则相同。
+        # For managed agents, the structure is consistent with the data structure of GetManagedAgent. For custom agents, the structure is consistent with the data structure of GetCustomAgent. The desensitization rules are the same.
         self.configuration = configuration
-        # 版本保存的时间，采用 ISO 8601 UTC 格式。
+        # The time when the version was saved, in ISO 8601 UTC format.
         self.created_at = created_at
-        # 保存该版本的调用者阿里云账号 UID；RAM 用户调用时为其所属阿里云主账号 UID。
+        # The UID of the Alibaba Cloud account of the caller who saved the version. If the API is called by a RAM user, this value is the UID of the Alibaba Cloud account to which the RAM user belongs.
         self.created_by = created_by
-        # 保存版本时填写的版本描述，最多 1024 个字符；保存时未填写则为空。
+        # The version description provided when the version was saved. It can contain up to 1,024 characters. If no description was provided when the version was saved, this field is empty.
         self.description = description
-        # 保存版本时 Agent 已生效的发布流水号，即当时的 effectiveSpecVersion。版本保存后该值不再变化。
+        # The effective release serial number of the agent when the version was saved, which is the effectiveSpecVersion at that time. This value does not change after the version is saved.
         self.target_spec_version = target_spec_version
-        # 保存版本时用户指定的展示名称。早期保存且未记录名称的版本返回 agentVersion。
+        # The display name specified by the user when the version was saved. For earlier saved versions that did not record a name, the agentVersion is returned.
         self.version_name = version_name
-        # 版本所属智能体所在的 AgentCore 工作空间 ID。
+        # The ID of the AgentCore workspace where the agent that owns the version resides.
         self.workspace_id = workspace_id
 
     def validate(self):

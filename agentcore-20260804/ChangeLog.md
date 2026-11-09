@@ -1,3 +1,25 @@
+2026-11-09 Version: 3.5.0
+- Support API GetSandboxRebuildOperation.
+- Support API RebuildSandbox.
+- Update API CreateManagedAgent: add request parameters body.model.thinkingLevel.
+- Update API CreateManagedAgent: add response parameters Body.data.harness.outdatedInstanceCount.
+- Update API CreateManagedAgent: add response parameters Body.data.harness.version.
+- Update API CreateManagedAgent: add response parameters Body.data.model.thinkingLevel.
+- Update API GetManagedAgent: add response parameters Body.data.harness.outdatedInstanceCount.
+- Update API GetManagedAgent: add response parameters Body.data.harness.version.
+- Update API GetManagedAgent: add response parameters Body.data.model.thinkingLevel.
+- Update API ListManagedAgents: add response parameters Body.items.$.harness.outdatedInstanceCount.
+- Update API ListManagedAgents: add response parameters Body.items.$.harness.version.
+- Update API ListSandboxes: add response parameters Body.items.$.harnessVersion.
+- Update API ListSandboxes: add response parameters Body.items.$.lastRebuildOperationId.
+- Update API ListSandboxes: add response parameters Body.items.$.updateAvailable.
+- Update API ListSandboxes: add response parameters Body.items.$.updateFailed.
+- Update API UpdateManagedAgent: add request parameters body.model.thinkingLevel.
+- Update API UpdateManagedAgent: add response parameters Body.data.harness.outdatedInstanceCount.
+- Update API UpdateManagedAgent: add response parameters Body.data.harness.version.
+- Update API UpdateManagedAgent: add response parameters Body.data.model.thinkingLevel.
+
+
 2026-11-06 Version: 3.4.0
 - Support API CreateAgentVersion.
 - Support API DeleteAgentVersion.

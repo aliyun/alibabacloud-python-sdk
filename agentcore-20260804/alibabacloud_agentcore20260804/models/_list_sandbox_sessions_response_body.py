@@ -24,7 +24,7 @@ class ListSandboxSessionsResponseBody(DaraModel):
         self.code = code
         # The HTTP status code. The value is 200 if the request is successful.
         self.http_status_code = http_status_code
-        # The list of active sessions in the sandbox.
+        # The list of active sessions for the sandbox.
         self.items = items
         # The maximum number of records per page for the current query.
         self.max_results = max_results
@@ -122,11 +122,11 @@ class ListSandboxSessionsResponseBodyItems(DaraModel):
         session_id: str = None,
         source_type: str = None,
     ):
-        # The type of the external channel, such as DINGTALK, FEISHU, or WECOM. This parameter is empty for non-external channels.
+        # The external channel type, such as DINGTALK, FEISHU, or WECOM. This parameter is empty for non-external channels.
         self.channel_type = channel_type
         # The unique identifier of the active session.
         self.session_id = session_id
-        # The source type of the session. A value of API indicates an API call. A value of CONSOLE_DEBUG indicates console debugging. A value of EXTERNAL_CHANNEL indicates an external channel. A value of UNKNOWN indicates an unknown source.
+        # The source type of the session. A value of API indicates an API call, CONSOLE_DEBUG indicates console debugging, EXTERNAL_CHANNEL indicates an external channel, and UNKNOWN indicates an unknown source.
         self.source_type = source_type
 
     def validate(self):

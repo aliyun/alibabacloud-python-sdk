@@ -15,7 +15,7 @@ class CreateManagedAgentRequest(DaraModel):
     ):
         # The request body.
         self.body = body
-        # A reserved query parameter. The backend currently does not provide idempotency guarantees for deduplication or recovering original acceptance results based on this token.
+        # The reserved query parameter. Currently, the backend does not provide idempotency guarantees to deduplicate or recover the original acceptance result based on this identity.
         self.client_token = client_token
 
     def validate(self):
@@ -75,11 +75,11 @@ class CreateManagedAgentRequestBody(DaraModel):
         self.agentic_fs_mounts = agentic_fs_mounts
         # The description of the managed Harness agent.
         self.description = description
-        # The environment configurations.
+        # The environment configuration.
         self.environment = environment
-        # The runtime framework object. If omitted, the default value is qwenpaw. Supported values are qwenpaw and qodercli. The type cannot be changed after creation.
+        # The runtime framework object. If this parameter is omitted, qwenpaw is used by default. Valid values: qwenpaw and qodercli. The type cannot be changed after creation.
         self.harness = harness
-        # The agent instructions, which are used to guide the behavior of the agent.
+        # The agent instruction, which is used to guide the behavior of the agent.
         self.instruction = instruction
         # The model configurations.
         # 
@@ -89,9 +89,9 @@ class CreateManagedAgentRequestBody(DaraModel):
         # 
         # This parameter is required.
         self.name = name
-        # The runtime network configurations. If you provide this parameter, you must specify both accessInternet.enabled and accessVpc.enabled. Actual access is restricted by the workspace network.
+        # The runtime network configuration. If provided, both accessInternet.enabled and accessVpc.enabled must be included. Actual access is subject to workspace network restrictions.
         self.network = network
-        # The list of OSS directory mounts. The total number of OSS mounts and AgenticFS mounts cannot exceed 10. During an update, this list is replaced entirely. Pass [] to clear the list.
+        # The list of OSS directory mounts. The total number of OSS mounts and agenticFsMounts cannot exceed 10. During an update, this list is replaced entirely. Pass an empty array [] to clear the list.
         self.oss_mounts = oss_mounts
         # The prompt variable declarations.
         self.prompt_variables = prompt_variables
@@ -341,7 +341,7 @@ class CreateManagedAgentRequestBodyTemplate(DaraModel):
         self,
         ai_registry: main_models.CreateManagedAgentRequestBodyTemplateAiRegistry = None,
     ):
-        # The AI registry template configuration.
+        # The AI Registry template configuration.
         self.ai_registry = ai_registry
 
     def validate(self):
@@ -372,11 +372,11 @@ class CreateManagedAgentRequestBodyTemplateAiRegistry(DaraModel):
         name: str = None,
         version: str = None,
     ):
-        # The name of the template in the AI registry.
+        # The name of the template in the AI Registry.
         # 
         # This parameter is required.
         self.name = name
-        # The version of the template in the AI registry.
+        # The version of the template in the AI Registry.
         self.version = version
 
     def validate(self):
@@ -514,9 +514,9 @@ class CreateManagedAgentRequestBodySkills(DaraModel):
         self.name = name
         # The skill source type.
         self.source_type = source_type
-        # The skill version field for backward compatibility with legacy requests. For new requests, use sourceType and versionSelector. Do not submit this parameter together with sourceType.
+        # The skill version field for backward compatibility with legacy requests. For new requests, use sourceType and versionSelector. Do not submit this field in combination with sourceType.
         self.version = version
-        # The version selector for the skill reference. Supports LABEL for tags and VERSION for specific versions. If omitted, LABEL/latest is used. Selectors are not provided for STATIC sources.
+        # The version selector for skill references. Supports LABEL for tags and VERSION for specific versions. If omitted, LABEL/latest is used. Selectors are not provided for STATIC sources.
         self.version_selector = version_selector
 
     def validate(self):
@@ -567,7 +567,7 @@ class CreateManagedAgentRequestBodySkillsVersionSelector(DaraModel):
     ):
         # The version selector type.
         self.type = type
-        # The selector value. When the type is LABEL, this is the tag name, such as latest. When the type is VERSION, this is the specific version number.
+        # The selector value. For LABEL, this is the tag name, such as latest. For VERSION, this is the specific version number.
         self.value = value
 
     def validate(self):
@@ -607,7 +607,7 @@ class CreateManagedAgentRequestBodyRuntime(DaraModel):
         # 
         # This parameter is required.
         self.compute = compute
-        # The elastic scaling and session configuration. Omitted fields use default values. To retain the original policy during an update, submit the complete hpa or omit the entire runtime.
+        # The elastic scaling and session configuration. Omitted fields use default values. To retain the original policy during an update, submit the complete hpa object or omit the entire runtime object.
         self.hpa = hpa
         # The session policy configuration.
         # 
@@ -660,7 +660,7 @@ class CreateManagedAgentRequestBodyRuntimeSessionPolicy(DaraModel):
         header_name: str = None,
         type: str = None,
     ):
-        # The name of the request header used for session identification. This parameter is required when type is set to ISOLATED_HEADER_FIELD and must be a valid HTTP request header name. Do not specify this parameter for other policy types.
+        # The name of the request header for session identification. Required when type is ISOLATED_HEADER_FIELD, and must be a valid HTTP request header name. Do not specify this parameter for other policies.
         self.header_name = header_name
         # The session policy type.
         # 
@@ -762,7 +762,7 @@ class CreateManagedAgentRequestBodyRuntimeCompute(DaraModel):
         self,
         compute_class: str = None,
     ):
-        # The compute specifications.
+        # The compute specification.
         # 
         # This parameter is required.
         self.compute_class = compute_class
@@ -841,13 +841,13 @@ class CreateManagedAgentRequestBodyOssMounts(DaraModel):
         path: str = None,
         read_only: bool = None,
     ):
-        # The name of the OSS bucket. This parameter is required for each mount item and validated by the backend.
+        # The name of the OSS bucket. Required for each mount item.
         self.bucket_name = bucket_name
         # The absolute mount path in the container, such as /data/train. Mount targets cannot be duplicated or form parent-child directory overwrites, and must avoid platform-reserved directories.
         self.mount_path = mount_path
-        # The non-empty relative object directory prefix in the bucket. This parameter is required for each mount item.
+        # The non-empty relative object directory prefix in the bucket. Required for each mount item.
         self.path = path
-        # Specifies whether to mount the directory in read-only mode. If not specified, the default value is false.
+        # Specifies whether to mount the directory as read-only. Default value: false.
         self.read_only = read_only
 
     def validate(self):
@@ -894,9 +894,9 @@ class CreateManagedAgentRequestBodyNetwork(DaraModel):
         access_internet: main_models.CreateManagedAgentRequestBodyNetworkAccessInternet = None,
         access_vpc: main_models.CreateManagedAgentRequestBodyNetworkAccessVpc = None,
     ):
-        # The public network access configurations.
+        # The public network access configuration.
         self.access_internet = access_internet
-        # The VPC access configurations.
+        # The VPC access configuration.
         self.access_vpc = access_vpc
 
     def validate(self):
@@ -935,7 +935,7 @@ class CreateManagedAgentRequestBodyNetworkAccessVpc(DaraModel):
         self,
         enabled: bool = None,
     ):
-        # Specifies whether to allow access to the VPC.
+        # Specifies whether to allow VPC access.
         self.enabled = enabled
 
     def validate(self):
@@ -963,7 +963,7 @@ class CreateManagedAgentRequestBodyNetworkAccessInternet(DaraModel):
         self,
         enabled: bool = None,
     ):
-        # Specifies whether to allow access to the Internet.
+        # Specifies whether to allow Internet access.
         self.enabled = enabled
 
     def validate(self):
@@ -992,15 +992,18 @@ class CreateManagedAgentRequestBodyModel(DaraModel):
         model_connection_id: str = None,
         model_name: str = None,
         quota: main_models.CreateManagedAgentRequestBodyModelQuota = None,
+        thinking_level: str = None,
     ):
-        # For qwenpaw, use the workspace model connection ID. For qodercli, use the available model identifier returned by ListConnectorModels.
+        # For qwenpaw, set this parameter to the workspace model connection ID. For qodercli, set this parameter to the available model identifier returned by the ListConnectorModels operation.
         # 
         # This parameter is required.
         self.model_connection_id = model_connection_id
-        # For qwenpaw, use the name of the upstream model created under the model connection. This parameter is required. For qodercli, you can omit this parameter.
+        # For qwenpaw, set this parameter to the name of the upstream model created under the model connection. This parameter is required. For qodercli, you can omit this parameter.
         self.model_name = model_name
         # The model token quota configurations. If you do not pass this parameter, no quota is configured.
         self.quota = quota
+        # Valid values: off, low, medium, high, xhigh, and max. If this parameter is not passed or is set to null during creation, the default value is used. When you update and submit model configurations, if the thinking level is not passed or is set to null, the default value is restored. Except for off, which is converted to none, the value is passed to the runtime framework as is. The system does not verify model support or automatically downgrade the level. If the model does not support the specified level, adjust the level.
+        self.thinking_level = thinking_level
 
     def validate(self):
         if self.quota:
@@ -1020,6 +1023,9 @@ class CreateManagedAgentRequestBodyModel(DaraModel):
         if self.quota is not None:
             result['quota'] = self.quota.to_map()
 
+        if self.thinking_level is not None:
+            result['thinkingLevel'] = self.thinking_level
+
         return result
 
     def from_map(self, m: dict = None):
@@ -1034,6 +1040,9 @@ class CreateManagedAgentRequestBodyModel(DaraModel):
             temp_model = main_models.CreateManagedAgentRequestBodyModelQuota()
             self.quota = temp_model.from_map(m.get('quota'))
 
+        if m.get('thinkingLevel') is not None:
+            self.thinking_level = m.get('thinkingLevel')
+
         return self
 
 class CreateManagedAgentRequestBodyModelQuota(DaraModel):
@@ -1044,13 +1053,13 @@ class CreateManagedAgentRequestBodyModelQuota(DaraModel):
         period_type: str = None,
         usage_limit: int = None,
     ):
-        # Specifies whether to enable the token quota. If not specified, the default value is true. If you set this parameter to false, the quota is disabled and existing quota rules are deleted.
+        # Specifies whether to enable the token quota. If you do not specify this parameter, the default value is true. If you set this parameter to false, the quota is disabled and existing quota rules are deleted.
         self.enabled = enabled
-        # The quota limit type. This parameter is required and validated by the backend when the quota is enabled. Fixed value: token.
+        # The quota limit type. This parameter is required and verified by the backend when the quota is enabled. Fixed value: token.
         self.limit_type = limit_type
-        # The quota statistical period. This parameter is required and validated by the backend when the quota is enabled. Valid values: day (daily) and month (monthly).
+        # The statistical period of the quota. This parameter is required and verified by the backend when the quota is enabled. Valid values: day and month.
         self.period_type = period_type
-        # The maximum number of tokens that can be consumed in a single period. This parameter is required and validated by the backend when the quota is enabled. The value must be greater than 0.
+        # The maximum number of tokens that can be consumed in a single period. This parameter is required and verified by the backend when the quota is enabled. The value must be greater than 0.
         self.usage_limit = usage_limit
 
     def validate(self):
@@ -1136,7 +1145,7 @@ class CreateManagedAgentRequestBodyHarnessConfiguration(DaraModel):
         connector_service_account_key: str = None,
         connector_service_account_name: str = None,
     ):
-        # The account key record ID in the qodercli connector. You can query this ID by using ListConnectors. This is not the original key. You can omit this parameter if only one record exists. If multiple records exist, you must specify this parameter. Do not specify this parameter for qwenpaw.
+        # The account key record ID in the qodercli connector. You can query this ID by calling the ListConnectors operation. This parameter does not represent the original key. You can omit this parameter if only one record exists. You must specify this parameter if multiple records exist. Do not specify this parameter for qwenpaw.
         self.connector_service_account_key = connector_service_account_key
         # The connector account name bound to qodercli. Do not specify this parameter for qwenpaw.
         self.connector_service_account_name = connector_service_account_name
@@ -1227,11 +1236,11 @@ class CreateManagedAgentRequestBodyEnvironmentVariables(DaraModel):
         name: str = None,
         value: str = None,
     ):
-        # The name of the environment variable.
+        # The environment variable name.
         # 
         # This parameter is required.
         self.name = name
-        # The value of the environment variable.
+        # The environment variable value.
         # 
         # This parameter is required.
         self.value = value
@@ -1302,11 +1311,11 @@ class CreateManagedAgentRequestBodyAgenticFsMounts(DaraModel):
     ):
         # The absolute mount path in the container, such as /data/train. Mount targets cannot be duplicated or form parent-child directory overwrites, and must avoid platform-reserved directories.
         self.mount_path = mount_path
-        # The existing non-empty relative directory under the access point. This parameter is required for each mount item and validated by the backend. Root directories, absolute paths, and parent directory segments are not allowed.
+        # The existing non-empty relative directory in the access point. This parameter is required and verified by the backend for each mount item. Root directories, absolute paths, and parent directory segments are not allowed.
         self.path = path
-        # Specifies whether to mount the directory in read-only mode. If omitted, the default value is false. This parameter does not represent a RAM role read-only policy.
+        # Specifies whether the mount is read-only. If this parameter is omitted, the default value is false. This parameter does not represent a RAM role read-only policy.
         self.read_only = read_only
-        # The access point domain name. This parameter is required for each mount item and validated by the backend. The domain name cannot contain a protocol, port, or path. Use the DomainName value from the NAS ListAccessPoints response.
+        # The access point domain name. This parameter is required and verified by the backend for each mount item. The value cannot contain a protocol, port, or path. Set this parameter to the DomainName value in the NAS ListAccessPoints response.
         self.server = server
 
     def validate(self):

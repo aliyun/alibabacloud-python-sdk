@@ -290,6 +290,9 @@ from ._get_model_response import GetModelResponse
 from ._get_model_connection_request import GetModelConnectionRequest
 from ._get_model_connection_response_body import GetModelConnectionResponseBody
 from ._get_model_connection_response import GetModelConnectionResponse
+from ._get_sandbox_rebuild_operation_request import GetSandboxRebuildOperationRequest
+from ._get_sandbox_rebuild_operation_response_body import GetSandboxRebuildOperationResponseBody
+from ._get_sandbox_rebuild_operation_response import GetSandboxRebuildOperationResponse
 from ._get_service_endpoint_request import GetServiceEndpointRequest
 from ._get_service_endpoint_response_body import GetServiceEndpointResponseBody
 from ._get_service_endpoint_response import GetServiceEndpointResponse
@@ -456,6 +459,9 @@ from ._publish_skill_version_request import PublishSkillVersionRequest
 from ._publish_skill_version_shrink_request import PublishSkillVersionShrinkRequest
 from ._publish_skill_version_response_body import PublishSkillVersionResponseBody
 from ._publish_skill_version_response import PublishSkillVersionResponse
+from ._rebuild_sandbox_request import RebuildSandboxRequest
+from ._rebuild_sandbox_response_body import RebuildSandboxResponseBody
+from ._rebuild_sandbox_response import RebuildSandboxResponse
 from ._redraft_skill_version_request import RedraftSkillVersionRequest
 from ._redraft_skill_version_shrink_request import RedraftSkillVersionShrinkRequest
 from ._redraft_skill_version_response_body import RedraftSkillVersionResponseBody
@@ -1019,6 +1025,8 @@ from ._get_memory_task_response_body import GetMemoryTaskResponseBodyData
 from ._get_model_response_body import GetModelResponseBodyDataCapabilities
 from ._get_model_response_body import GetModelResponseBodyData
 from ._get_model_connection_response_body import GetModelConnectionResponseBodyData
+from ._get_sandbox_rebuild_operation_response_body import GetSandboxRebuildOperationResponseBodyDataError
+from ._get_sandbox_rebuild_operation_response_body import GetSandboxRebuildOperationResponseBodyData
 from ._get_service_endpoint_response_body import GetServiceEndpointResponseBodyDataAccessUrls
 from ._get_service_endpoint_response_body import GetServiceEndpointResponseBodyDataAuthentication
 from ._get_service_endpoint_response_body import GetServiceEndpointResponseBodyDataElasticityPolicy
@@ -1192,6 +1200,7 @@ from ._prepare_identity_provider_scimresponse_body import PrepareIdentityProvide
 from ._prepare_identity_provider_scimresponse_body import PrepareIdentityProviderSCIMResponseBodyDataCredential
 from ._prepare_identity_provider_scimresponse_body import PrepareIdentityProviderSCIMResponseBodyData
 from ._publish_skill_version_request import PublishSkillVersionRequestBody
+from ._rebuild_sandbox_response_body import RebuildSandboxResponseBodyData
 from ._redraft_skill_version_request import RedraftSkillVersionRequestBody
 from ._reset_user_password_request import ResetUserPasswordRequestBody
 from ._reset_user_password_response_body import ResetUserPasswordResponseBodyData
@@ -1751,6 +1760,9 @@ __all__ = [
     GetModelConnectionRequest,
     GetModelConnectionResponseBody,
     GetModelConnectionResponse,
+    GetSandboxRebuildOperationRequest,
+    GetSandboxRebuildOperationResponseBody,
+    GetSandboxRebuildOperationResponse,
     GetServiceEndpointRequest,
     GetServiceEndpointResponseBody,
     GetServiceEndpointResponse,
@@ -1917,6 +1929,9 @@ __all__ = [
     PublishSkillVersionShrinkRequest,
     PublishSkillVersionResponseBody,
     PublishSkillVersionResponse,
+    RebuildSandboxRequest,
+    RebuildSandboxResponseBody,
+    RebuildSandboxResponse,
     RedraftSkillVersionRequest,
     RedraftSkillVersionShrinkRequest,
     RedraftSkillVersionResponseBody,
@@ -2480,6 +2495,8 @@ __all__ = [
     GetModelResponseBodyDataCapabilities,
     GetModelResponseBodyData,
     GetModelConnectionResponseBodyData,
+    GetSandboxRebuildOperationResponseBodyDataError,
+    GetSandboxRebuildOperationResponseBodyData,
     GetServiceEndpointResponseBodyDataAccessUrls,
     GetServiceEndpointResponseBodyDataAuthentication,
     GetServiceEndpointResponseBodyDataElasticityPolicy,
@@ -2653,6 +2670,7 @@ __all__ = [
     PrepareIdentityProviderSCIMResponseBodyDataCredential,
     PrepareIdentityProviderSCIMResponseBodyData,
     PublishSkillVersionRequestBody,
+    RebuildSandboxResponseBodyData,
     RedraftSkillVersionRequestBody,
     ResetUserPasswordRequestBody,
     ResetUserPasswordResponseBodyData,

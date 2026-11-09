@@ -9,7 +9,7 @@ class DeleteAgentVersionRequest(DaraModel):
         self,
         client_token: str = None,
     ):
-        # 客户端生成的幂等令牌，当前为预留参数，后端暂不提供持久化幂等保证。
+        # The client-generated idempotency token. This is a reserved parameter, and the backend does not currently provide persistent idempotency guarantees.
         self.client_token = client_token
 
     def validate(self):

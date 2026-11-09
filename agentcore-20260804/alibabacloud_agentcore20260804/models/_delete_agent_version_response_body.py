@@ -13,15 +13,15 @@ class DeleteAgentVersionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 业务状态码，请求成功时为 SUCCESS，失败时为错误码。
+        # The business status code. The value is SUCCESS if the request is successful, or an error code if the request fails.
         self.code = code
-        # HTTP 状态码。
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # 响应消息，请求成功时为 success，失败时为错误信息。
+        # The response message. The value is success if the request is successful, or an error message if the request fails.
         self.message = message
-        # 请求 ID，用于定位和排查请求。
+        # The request ID, which is used to locate and troubleshoot requests.
         self.request_id = request_id
-        # 请求是否成功。
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

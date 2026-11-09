@@ -20,9 +20,9 @@ class ListManagedAgentsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The business status code. The value is SUCCESS when the request is successful.
+        # The business status code. A value of SUCCESS indicates success.
         self.code = code
-        # The HTTP status code. The value is 200 when the request is successful.
+        # The HTTP status code. A value of 200 indicates success.
         self.http_status_code = http_status_code
         # The list of managed Harness agents.
         self.items = items
@@ -266,12 +266,18 @@ class ListManagedAgentsResponseBodyItemsHarness(DaraModel):
     def __init__(
         self,
         configuration: main_models.ListManagedAgentsResponseBodyItemsHarnessConfiguration = None,
+        outdated_instance_count: int = None,
         type: str = None,
+        version: str = None,
     ):
         # The runtime framework configuration.
         self.configuration = configuration
+        # Returned only in queries. The server calculates this value based on the complete instance distribution, which is not affected by the pagination and filtering of the instance list. If the image tag is missing, pagination is incomplete, or the value cannot be confirmed, this parameter is empty, which is not equivalent to 0.
+        self.outdated_instance_count = outdated_instance_count
         # The runtime framework type.
         self.type = type
+        # Returned only in queries. Currently returns the tag of the pool target image. If the tag cannot be parsed, this parameter is empty and cannot be replaced by the agent configuration version.
+        self.version = version
 
     def validate(self):
         if self.configuration:
@@ -285,8 +291,14 @@ class ListManagedAgentsResponseBodyItemsHarness(DaraModel):
         if self.configuration is not None:
             result['configuration'] = self.configuration.to_map()
 
+        if self.outdated_instance_count is not None:
+            result['outdatedInstanceCount'] = self.outdated_instance_count
+
         if self.type is not None:
             result['type'] = self.type
+
+        if self.version is not None:
+            result['version'] = self.version
 
         return result
 
@@ -296,8 +308,14 @@ class ListManagedAgentsResponseBodyItemsHarness(DaraModel):
             temp_model = main_models.ListManagedAgentsResponseBodyItemsHarnessConfiguration()
             self.configuration = temp_model.from_map(m.get('configuration'))
 
+        if m.get('outdatedInstanceCount') is not None:
+            self.outdated_instance_count = m.get('outdatedInstanceCount')
+
         if m.get('type') is not None:
             self.type = m.get('type')
+
+        if m.get('version') is not None:
+            self.version = m.get('version')
 
         return self
 
@@ -307,7 +325,7 @@ class ListManagedAgentsResponseBodyItemsHarnessConfiguration(DaraModel):
         connector_service_account_key: str = None,
         connector_service_account_name: str = None,
     ):
-        # The ID of the connector account key record bound to qodercli, not the original service account key.
+        # The ID of the connector account key record bound to qodercli, which is not the original service account key.
         self.connector_service_account_key = connector_service_account_key
         # The name of the connector account bound to qodercli.
         self.connector_service_account_name = connector_service_account_name
