@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Dict
 
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -20,11 +21,10 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'wss'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'ap-southeast-1': 'wss.ap-southeast-1.aliyuncs.com',
-            'cn-shanghai': 'wss.cn-shanghai.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('wss', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -235,6 +235,8 @@ class Client(OpenApiClient):
             query['BizType'] = request.biz_type
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.scene_type):
+            query['SceneType'] = request.scene_type
         if not DaraCore.is_null(request.usage_type):
             query['UsageType'] = request.usage_type
         req = open_api_util_models.OpenApiRequest(
@@ -267,6 +269,8 @@ class Client(OpenApiClient):
             query['BizType'] = request.biz_type
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.scene_type):
+            query['SceneType'] = request.scene_type
         if not DaraCore.is_null(request.usage_type):
             query['UsageType'] = request.usage_type
         req = open_api_util_models.OpenApiRequest(
@@ -438,6 +442,214 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_delivery_address_with_options_async(runtime)
 
+    def describe_groups_with_options(
+        self,
+        request: main_models.DescribeGroupsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeGroupsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.group_resource_types):
+            query['GroupResourceTypes'] = request.group_resource_types
+        if not DaraCore.is_null(request.group_type):
+            query['GroupType'] = request.group_type
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.states):
+            query['States'] = request.states
+        if not DaraCore.is_null(request.time_using_period):
+            query['TimeUsingPeriod'] = request.time_using_period
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeGroups',
+            version = '2021-12-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_groups_with_options_async(
+        self,
+        request: main_models.DescribeGroupsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeGroupsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.group_resource_types):
+            query['GroupResourceTypes'] = request.group_resource_types
+        if not DaraCore.is_null(request.group_type):
+            query['GroupType'] = request.group_type
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.states):
+            query['States'] = request.states
+        if not DaraCore.is_null(request.time_using_period):
+            query['TimeUsingPeriod'] = request.time_using_period
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeGroups',
+            version = '2021-12-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_groups(
+        self,
+        request: main_models.DescribeGroupsRequest,
+    ) -> main_models.DescribeGroupsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_groups_with_options(request, runtime)
+
+    async def describe_groups_async(
+        self,
+        request: main_models.DescribeGroupsRequest,
+    ) -> main_models.DescribeGroupsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_groups_with_options_async(request, runtime)
+
+    def describe_instance_auto_renewal_attribute_with_options(
+        self,
+        request: main_models.DescribeInstanceAutoRenewalAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInstanceAutoRenewalAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_renewal):
+            query['AutoRenewal'] = request.auto_renewal
+        if not DaraCore.is_null(request.instance_id_list):
+            query['InstanceIdList'] = request.instance_id_list
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.resource_type_list):
+            query['ResourceTypeList'] = request.resource_type_list
+        if not DaraCore.is_null(request.search_region_id):
+            query['SearchRegionId'] = request.search_region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInstanceAutoRenewalAttribute',
+            version = '2021-12-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInstanceAutoRenewalAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_instance_auto_renewal_attribute_with_options_async(
+        self,
+        request: main_models.DescribeInstanceAutoRenewalAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInstanceAutoRenewalAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_renewal):
+            query['AutoRenewal'] = request.auto_renewal
+        if not DaraCore.is_null(request.instance_id_list):
+            query['InstanceIdList'] = request.instance_id_list
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.resource_type_list):
+            query['ResourceTypeList'] = request.resource_type_list
+        if not DaraCore.is_null(request.search_region_id):
+            query['SearchRegionId'] = request.search_region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInstanceAutoRenewalAttribute',
+            version = '2021-12-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInstanceAutoRenewalAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_instance_auto_renewal_attribute(
+        self,
+        request: main_models.DescribeInstanceAutoRenewalAttributeRequest,
+    ) -> main_models.DescribeInstanceAutoRenewalAttributeResponse:
+        runtime = RuntimeOptions()
+        return self.describe_instance_auto_renewal_attribute_with_options(request, runtime)
+
+    async def describe_instance_auto_renewal_attribute_async(
+        self,
+        request: main_models.DescribeInstanceAutoRenewalAttributeRequest,
+    ) -> main_models.DescribeInstanceAutoRenewalAttributeResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_instance_auto_renewal_attribute_with_options_async(request, runtime)
+
     def describe_multi_price_with_options(
         self,
         request: main_models.DescribeMultiPriceRequest,
@@ -527,10 +739,32 @@ class Client(OpenApiClient):
     ) -> main_models.DescribePackageDeductionsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.agent_type):
+            query['AgentType'] = request.agent_type
+        if not DaraCore.is_null(request.agent_types):
+            query['AgentTypes'] = request.agent_types
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.consume_wy_id):
+            query['ConsumeWyId'] = request.consume_wy_id
+        if not DaraCore.is_null(request.consume_wy_ids):
+            query['ConsumeWyIds'] = request.consume_wy_ids
+        if not DaraCore.is_null(request.deduction_request_id):
+            query['DeductionRequestId'] = request.deduction_request_id
+        if not DaraCore.is_null(request.deduction_types):
+            query['DeductionTypes'] = request.deduction_types
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.group_resource_types):
+            query['GroupResourceTypes'] = request.group_resource_types
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.instance_id_type):
+            query['InstanceIdType'] = request.instance_id_type
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.model):
+            query['Model'] = request.model
         if not DaraCore.is_null(request.package_ids):
             query['PackageIds'] = request.package_ids
         if not DaraCore.is_null(request.page_num):
@@ -541,8 +775,14 @@ class Client(OpenApiClient):
             query['ResourceType'] = request.resource_type
         if not DaraCore.is_null(request.resource_types):
             query['ResourceTypes'] = request.resource_types
+        if not DaraCore.is_null(request.run_id):
+            query['RunId'] = request.run_id
+        if not DaraCore.is_null(request.run_id_list):
+            query['RunIdList'] = request.run_id_list
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.wy_id):
+            query['WyId'] = request.wy_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -569,10 +809,32 @@ class Client(OpenApiClient):
     ) -> main_models.DescribePackageDeductionsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.agent_type):
+            query['AgentType'] = request.agent_type
+        if not DaraCore.is_null(request.agent_types):
+            query['AgentTypes'] = request.agent_types
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.consume_wy_id):
+            query['ConsumeWyId'] = request.consume_wy_id
+        if not DaraCore.is_null(request.consume_wy_ids):
+            query['ConsumeWyIds'] = request.consume_wy_ids
+        if not DaraCore.is_null(request.deduction_request_id):
+            query['DeductionRequestId'] = request.deduction_request_id
+        if not DaraCore.is_null(request.deduction_types):
+            query['DeductionTypes'] = request.deduction_types
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.group_resource_types):
+            query['GroupResourceTypes'] = request.group_resource_types
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.instance_id_type):
+            query['InstanceIdType'] = request.instance_id_type
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.model):
+            query['Model'] = request.model
         if not DaraCore.is_null(request.package_ids):
             query['PackageIds'] = request.package_ids
         if not DaraCore.is_null(request.page_num):
@@ -583,8 +845,14 @@ class Client(OpenApiClient):
             query['ResourceType'] = request.resource_type
         if not DaraCore.is_null(request.resource_types):
             query['ResourceTypes'] = request.resource_types
+        if not DaraCore.is_null(request.run_id):
+            query['RunId'] = request.run_id
+        if not DaraCore.is_null(request.run_id_list):
+            query['RunIdList'] = request.run_id_list
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.wy_id):
+            query['WyId'] = request.wy_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -633,6 +901,12 @@ class Client(OpenApiClient):
             query['AliUid'] = request.ali_uid
         if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.consume_wy_id):
+            query['ConsumeWyId'] = request.consume_wy_id
+        if not DaraCore.is_null(request.consume_wy_ids):
+            query['ConsumeWyIds'] = request.consume_wy_ids
+        if not DaraCore.is_null(request.deduction_request_id):
+            query['DeductionRequestId'] = request.deduction_request_id
         if not DaraCore.is_null(request.deduction_types):
             query['DeductionTypes'] = request.deduction_types
         if not DaraCore.is_null(request.end_time):
@@ -643,12 +917,16 @@ class Client(OpenApiClient):
             query['GroupResourceTypes'] = request.group_resource_types
         if not DaraCore.is_null(request.group_separator):
             query['GroupSeparator'] = request.group_separator
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.instance_id_type):
             query['InstanceIdType'] = request.instance_id_type
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.model):
+            query['Model'] = request.model
         if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.package_ids):
@@ -661,6 +939,10 @@ class Client(OpenApiClient):
             query['ResourceType'] = request.resource_type
         if not DaraCore.is_null(request.resource_types):
             query['ResourceTypes'] = request.resource_types
+        if not DaraCore.is_null(request.run_id):
+            query['RunId'] = request.run_id
+        if not DaraCore.is_null(request.run_id_list):
+            query['RunIdList'] = request.run_id_list
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
         if not DaraCore.is_null(request.wy_id):
@@ -699,6 +981,12 @@ class Client(OpenApiClient):
             query['AliUid'] = request.ali_uid
         if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.consume_wy_id):
+            query['ConsumeWyId'] = request.consume_wy_id
+        if not DaraCore.is_null(request.consume_wy_ids):
+            query['ConsumeWyIds'] = request.consume_wy_ids
+        if not DaraCore.is_null(request.deduction_request_id):
+            query['DeductionRequestId'] = request.deduction_request_id
         if not DaraCore.is_null(request.deduction_types):
             query['DeductionTypes'] = request.deduction_types
         if not DaraCore.is_null(request.end_time):
@@ -709,12 +997,16 @@ class Client(OpenApiClient):
             query['GroupResourceTypes'] = request.group_resource_types
         if not DaraCore.is_null(request.group_separator):
             query['GroupSeparator'] = request.group_separator
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.instance_id_type):
             query['InstanceIdType'] = request.instance_id_type
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.model):
+            query['Model'] = request.model
         if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.package_ids):
@@ -727,6 +1019,10 @@ class Client(OpenApiClient):
             query['ResourceType'] = request.resource_type
         if not DaraCore.is_null(request.resource_types):
             query['ResourceTypes'] = request.resource_types
+        if not DaraCore.is_null(request.run_id):
+            query['RunId'] = request.run_id
+        if not DaraCore.is_null(request.run_id_list):
+            query['RunIdList'] = request.run_id_list
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
         if not DaraCore.is_null(request.wy_id):
@@ -777,6 +1073,8 @@ class Client(OpenApiClient):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.key):
             query['Key'] = request.key
+        if not DaraCore.is_null(request.properties):
+            query['Properties'] = request.properties
         if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
         if not DaraCore.is_null(request.value):
@@ -813,6 +1111,8 @@ class Client(OpenApiClient):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.key):
             query['Key'] = request.key
+        if not DaraCore.is_null(request.properties):
+            query['Properties'] = request.properties
         if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
         if not DaraCore.is_null(request.value):
@@ -865,6 +1165,8 @@ class Client(OpenApiClient):
             query['BizType'] = request.biz_type
         if not DaraCore.is_null(request.credit_quota):
             query['CreditQuota'] = request.credit_quota
+        if not DaraCore.is_null(request.scene_type):
+            query['SceneType'] = request.scene_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -899,6 +1201,8 @@ class Client(OpenApiClient):
             query['BizType'] = request.biz_type
         if not DaraCore.is_null(request.credit_quota):
             query['CreditQuota'] = request.credit_quota
+        if not DaraCore.is_null(request.scene_type):
+            query['SceneType'] = request.scene_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

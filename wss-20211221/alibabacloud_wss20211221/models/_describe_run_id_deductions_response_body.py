@@ -24,19 +24,19 @@ class DescribeRunIdDeductionsResponseBody(DaraModel):
         self.deductions = deductions
         # The number of entries per page.
         self.max_results = max_results
-        # The pagination token. Leave this parameter empty for the first request. For subsequent requests, use the `nextToken` value from the previous response.
+        # The pagination token. Leave this parameter empty for the first request. For subsequent requests, use the nextToken value returned in the previous response.
         self.next_token = next_token
-        # The page number. Default value: 1.
+        # The current page number. Default value: 1.
         self.page_num = page_num
-        # The number of entries per page for a paged query.
+        # The Settings for the number of entries per page during paging in a paged query.
         self.page_size = page_size
-        # Id of the request
+        # The unique identifier of the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # The total number of core-hour package deduction details in the query result.
+        # The total number of core-hour package deduction details returned.
         self.total_count = total_count
-        # The total usage duration. Unit: seconds. Do not use this field for AI scenarios.
+        # The total usage duration. Unit: seconds. Do not use this field in AI scenarios.
         self.total_used_time = total_used_time
-        # The total credits used that match the specified conditions.
+        # The total used credits that meet the conditions.
         self.total_used_time_decimal = total_used_time_decimal
 
     def validate(self):
@@ -132,30 +132,31 @@ class DescribeRunIdDeductionsResponseBodyDeductions(DaraModel):
         used_time: int = None,
         used_time_decimal: str = None,
     ):
-        # The agent type: `CREDIT_PACKAGE` / `JVS_CLAW` / `OPEN_CLAW` / `JVS_COPILOT`.
+        # The agent type. Valid values: CREDIT_PACKAGE, JVS_CLAW, OPEN_CLAW, and JVS_COPILOT.
         self.agent_type = agent_type
-        # The end time of the period.
+        # The end time of the period. The time is in ISO 8601 format and displayed in UTC.
         self.end_time = end_time
-        # The group resource type.
+        # The grouped resource type to which the deduction record belongs.
         self.group_resource_type = group_resource_type
         # The instance ID.
         self.instance_id = instance_id
+        # The identifier of the called large language model. This field is used to distinguish the consumption of each model when grouping by model.
         self.model = model
-        # The credit or plan package ID.
+        # The ID of the credit or package.
         self.package_id = package_id
         # The resource ID.
         self.resource_id = resource_id
         # The resource type.
         self.resource_type = resource_type
-        # The unique run ID.
+        # The unique ID of the run.
         self.run_id = run_id
-        # The start time.
+        # The start time. The time is in ISO 8601 format and displayed in UTC.
         self.start_time = start_time
         # The summary of the large language model call.
         self.summary = summary
-        # The usage duration. Unit: seconds. Do not use this field for AI scenarios.
+        # The usage duration. Unit: seconds. Do not use this field in AI scenarios.
         self.used_time = used_time
-        # The credits used.
+        # The used credits.
         self.used_time_decimal = used_time_decimal
 
     def validate(self):

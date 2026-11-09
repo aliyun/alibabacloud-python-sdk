@@ -13,8 +13,9 @@ class SetAgentCreditQuotaRequest(DaraModel):
         agent_type: str = None,
         biz_type: str = None,
         credit_quota: int = None,
+        scene_type: str = None,
     ):
-        # A list of Agent IDs.
+        # The list of Agent IDs.
         self.agent_ids = agent_ids
         # The Agent type.
         self.agent_type = agent_type
@@ -22,6 +23,11 @@ class SetAgentCreditQuotaRequest(DaraModel):
         self.biz_type = biz_type
         # The credit quota.
         self.credit_quota = credit_quota
+        # The operator scenarios type. Valid values:
+        # - If this parameter is not specified or is set to NaturalMonthlyOwn: calendar month exclusive.
+        # - JzYearlyShare: Jiaozi yearly shared.
+        # - JzYearlyOwn: Jiaozi yearly exclusive.
+        self.scene_type = scene_type
 
     def validate(self):
         pass
@@ -43,6 +49,9 @@ class SetAgentCreditQuotaRequest(DaraModel):
         if self.credit_quota is not None:
             result['CreditQuota'] = self.credit_quota
 
+        if self.scene_type is not None:
+            result['SceneType'] = self.scene_type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -58,6 +67,9 @@ class SetAgentCreditQuotaRequest(DaraModel):
 
         if m.get('CreditQuota') is not None:
             self.credit_quota = m.get('CreditQuota')
+
+        if m.get('SceneType') is not None:
+            self.scene_type = m.get('SceneType')
 
         return self
 

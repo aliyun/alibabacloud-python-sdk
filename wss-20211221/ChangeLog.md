@@ -1,3 +1,7 @@
+2026-11-09 Version: 1.7.0
+- Support API DescribeInstanceAutoRenewalAttribute.
+
+
 2026-08-17 Version: 1.5.2
 - Update API DescribeCreditUsageInfo: add response parameters Body.UsageInfoList.$.UsageInfo.CurrentInstanceExpiredTime.
 

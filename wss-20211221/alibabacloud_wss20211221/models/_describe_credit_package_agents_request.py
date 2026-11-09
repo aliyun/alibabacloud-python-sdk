@@ -17,7 +17,7 @@ class DescribeCreditPackageAgentsRequest(DaraModel):
     ):
         # A JSON string of the AgentId list. Example: `["agent-1","agent-2"]`.
         self.agent_ids = agent_ids
-        # The Agent type. Valid values: `CREDIT_PACKAGE`, `JVS_CLAW`, `OPEN_CLAW`, and `JVS_COPILOT`.
+        # The agent type. Valid values: `CREDIT_PACKAGE`, `JVS_CLAW`, `OPEN_CLAW`, and `JVS_COPILOT`.
         self.agent_type = agent_type
         # The business type.
         self.biz_type = biz_type

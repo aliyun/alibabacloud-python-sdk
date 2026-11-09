@@ -15,7 +15,7 @@ class DescribeCreditPackageAgentsResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The Agent list.
+        # The agent list.
         self.agents = agents
         # The number of entries per page.
         self.max_results = max_results
@@ -84,17 +84,17 @@ class DescribeCreditPackageAgentsResponseBodyAgents(DaraModel):
     ):
         # Agent ID
         self.agent_id = agent_id
-        # **The instance creation time.**
+        # The time when the instance was created, in the YYYY-MM-DD HH:mm:ss format.
         self.created_time = created_time
         # **The ID of the currently active credit package instance.**
         self.credit_package_id = credit_package_id
-        # **The time when the instance expires.**
+        # The time when the instance expires, in the YYYY-MM-DD HH:mm:ss format.
         self.expired_time = expired_time
         # The instance type.
         self.instance_type = instance_type
         # **The total number of credits.**
         self.total_credit = total_credit
-        # **The amount of credits used.**
+        # **The number of credits used.**
         self.used_credit = used_credit
         # **The alert threshold percentage (0–100).**
         self.warn_percent = warn_percent

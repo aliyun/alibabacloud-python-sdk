@@ -13,7 +13,7 @@ class DescribeMultiPriceResponseBody(DaraModel):
         price_info: main_models.DescribeMultiPriceResponseBodyPriceInfo = None,
         request_id: str = None,
     ):
-        # The price details.
+        # The detailed pricing information.
         self.price_info = price_info
         # The request ID.
         self.request_id = request_id
@@ -52,7 +52,7 @@ class DescribeMultiPriceResponseBodyPriceInfo(DaraModel):
         price: main_models.DescribeMultiPriceResponseBodyPriceInfoPrice = None,
         rules: List[main_models.DescribeMultiPriceResponseBodyPriceInfoRules] = None,
     ):
-        # The price information.
+        # The pricing information.
         self.price = price
         # The promotion rule information.
         self.rules = rules
@@ -102,7 +102,7 @@ class DescribeMultiPriceResponseBodyPriceInfoRules(DaraModel):
     ):
         # The description of the promotion rule.
         self.description = description
-        # The promotion rule ID.
+        # The pricing rule ID. The value is an integer.
         self.rule_id = rule_id
 
     def validate(self):
@@ -143,19 +143,19 @@ class DescribeMultiPriceResponseBodyPriceInfoPrice(DaraModel):
         refund_price: float = None,
         trade_price: float = None,
     ):
-        # The currency unit.
+        # The currency unit. CNY for the China site. USD for the international site.
         self.currency = currency
-        # The discount price.
+        # The discounted price.
         self.discount_price = discount_price
         # The original price.
         self.original_price = original_price
-        # The price details.
+        # The pricing details.
         self.price_details = price_details
         # The promotion information.
         self.promotions = promotions
-        # The unsubscription instance and pricing details.
+        # The unsubscribed instances and pricing details.
         self.refund_instance_id_price_map = refund_instance_id_price_map
-        # The unsubscription price.
+        # The refund price.
         self.refund_price = refund_price
         # The actual payment price. The value is the original price minus the discount.
         self.trade_price = trade_price
@@ -254,17 +254,17 @@ class DescribeMultiPriceResponseBodyPriceInfoPricePromotions(DaraModel):
         selected: bool = None,
         start_timestamp: str = None,
     ):
-        # The activity ID.
+        # The promotion activity ID.
         self.activity_id = activity_id
-        # Indicates whether the activity is effective.
+        # Indicates whether the promotion activity is in effect.
         self.effective = effective
-        # The timestamp when the activity ends.
+        # The end time of the promotion activity. The value is a UNIX timestamp in milliseconds.
         self.end_timestamp = end_timestamp
         # The description of the promotion rule.
         self.option_code = option_code
-        # The tiered pricing discount value.
+        # The discount amount after the spend-and-save promotion threshold is reached. Unit: CNY. Two decimal places are retained.
         self.price_break_reduce_value = price_break_reduce_value
-        # The tiered pricing threshold.
+        # The threshold amount for the spend-and-save promotion. Unit: CNY. Two decimal places are retained.
         self.price_break_threshold = price_break_threshold
         # The description of the promotion.
         self.promotion_desc = promotion_desc
@@ -274,7 +274,7 @@ class DescribeMultiPriceResponseBodyPriceInfoPricePromotions(DaraModel):
         self.promotion_name = promotion_name
         # Indicates whether the promotion is selected.
         self.selected = selected
-        # The timestamp when the activity starts.
+        # The start time of the promotion activity. The value is a UNIX timestamp in milliseconds.
         self.start_timestamp = start_timestamp
 
     def validate(self):
@@ -364,11 +364,11 @@ class DescribeMultiPriceResponseBodyPriceInfoPricePriceDetails(DaraModel):
         order_item: int = None,
         price_detail: main_models.DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail = None,
     ):
-        # The pricing module details.
+        # The pricing details of the billing module.
         self.module_details = module_details
-        # The sort property.
+        # The sorting attribute.
         self.order_item = order_item
-        # The price details.
+        # The pricing details.
         self.price_detail = price_detail
 
     def validate(self):
@@ -423,7 +423,7 @@ class DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail(DaraMo
         saving_plan_recommend_price: float = None,
         trade_price: float = None,
     ):
-        # The discount price.
+        # The discounted price.
         self.discount_price = discount_price
         # The original price.
         self.original_price = original_price
@@ -489,7 +489,7 @@ class DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails(Dara
         saving_plan_discount_price: float = None,
         trade_price: float = None,
     ):
-        # The discount price.
+        # The discounted price.
         self.discount_price = discount_price
         # The module code.
         self.module_code = module_code

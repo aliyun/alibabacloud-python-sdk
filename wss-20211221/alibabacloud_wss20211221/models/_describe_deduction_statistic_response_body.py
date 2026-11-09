@@ -57,7 +57,7 @@ class DescribeDeductionStatisticResponseBodyData(DaraModel):
         self.available_core_packages = available_core_packages
         # The deduction details.
         self.deductions = deductions
-        # **The usage list.**
+        # **The list of usage records.**
         self.usages = usages
 
     def validate(self):
@@ -173,7 +173,7 @@ class DescribeDeductionStatisticResponseBodyDataDeductions(DaraModel):
     ):
         # The consumption duration, in seconds.
         self.consume_second = consume_second
-        # The deduction date.
+        # The deduction date in the YYYY-MM-DD format.
         self.deduction_date = deduction_date
         # The resource type.
         self.resource_type = resource_type
@@ -230,11 +230,11 @@ class DescribeDeductionStatisticResponseBodyDataAvailableCorePackages(DaraModel)
     ):
         # The Alibaba Cloud UID.
         self.ali_uid = ali_uid
-        # The creation time.
+        # The creation time in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
-        # The end time.
+        # The end time in the YYYY-MM-DD HH:mm:ss format.
         self.end_time = end_time
-        # The expiration time.
+        # The expiration time in the YYYY-MM-DD HH:mm:ss format.
         self.expired_time = expired_time
         # The group ID.
         self.group_id = group_id
@@ -248,7 +248,7 @@ class DescribeDeductionStatisticResponseBodyDataAvailableCorePackages(DaraModel)
         self.resource_id = resource_id
         # The group resource type.
         self.resource_type = resource_type
-        # The start time.
+        # The start time in the YYYY-MM-DD HH:mm:ss format.
         self.start_time = start_time
         # The status.
         self.status = status

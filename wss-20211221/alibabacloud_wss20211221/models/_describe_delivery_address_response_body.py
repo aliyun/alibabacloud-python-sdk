@@ -14,13 +14,11 @@ class DescribeDeliveryAddressResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The address list.
+        # The list of addresses.
         self.addresses = addresses
-        # The request ID. Alibaba Cloud generates this unique identifier for each request.
+        # The ID of the request.
         self.request_id = request_id
-        # The total count of addresses.
-        # 
-        # > Up to 20 addresses are supported.
+        # The total number of addresses. A maximum of 20 addresses are supported.
         self.total_count = total_count
 
     def validate(self):
@@ -76,17 +74,17 @@ class DescribeDeliveryAddressResponseBodyAddresses(DaraModel):
         province: main_models.DescribeDeliveryAddressResponseBodyAddressesProvince = None,
         town: main_models.DescribeDeliveryAddressResponseBodyAddressesTown = None,
     ):
-        # The area.
+        # The district.
         self.area = area
         # The city.
         self.city = city
-        # The contact name.
+        # The contact.
         self.contacts = contacts
-        # Indicates whether this is the default address.
+        # Indicates whether the address is the default address.
         self.default_address = default_address
-        # The detailed address, which should include the street name and house number.
+        # The detailed address, which must be accurate down to the street and building number.
         self.detail = detail
-        # The mobile number.
+        # The mobile phone number.
         self.mobile = mobile
         # The postal code.
         self.postal_code = postal_code
@@ -217,9 +215,7 @@ class DescribeDeliveryAddressResponseBodyAddressesProvince(DaraModel):
         province_id: int = None,
         province_name: str = None,
     ):
-        # The province ID. For more information, see [China regions, countries and territories codes](https://help.aliyun.com/document_detail/167926.html).
-        # 
-        # For example, **110000** represents Beijing and **120000** represents Tianjin.
+        # The province ID. For more information, see [Codes for regions, countries, and areas in China](https://help.aliyun.com/document_detail/167926.html). For example, **110000** indicates Beijing, and **120000** indicates Tianjin.
         self.province_id = province_id
         # The province name.
         self.province_name = province_name
@@ -293,9 +289,9 @@ class DescribeDeliveryAddressResponseBodyAddressesArea(DaraModel):
         area_id: int = None,
         area_name: str = None,
     ):
-        # The area ID.
+        # The district ID.
         self.area_id = area_id
-        # The area name.
+        # The district name.
         self.area_name = area_name
 
     def validate(self):

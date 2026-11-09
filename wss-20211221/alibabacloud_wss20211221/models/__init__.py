@@ -17,6 +17,12 @@ from ._describe_deduction_statistic_response_body import DescribeDeductionStatis
 from ._describe_deduction_statistic_response import DescribeDeductionStatisticResponse
 from ._describe_delivery_address_response_body import DescribeDeliveryAddressResponseBody
 from ._describe_delivery_address_response import DescribeDeliveryAddressResponse
+from ._describe_groups_request import DescribeGroupsRequest
+from ._describe_groups_response_body import DescribeGroupsResponseBody
+from ._describe_groups_response import DescribeGroupsResponse
+from ._describe_instance_auto_renewal_attribute_request import DescribeInstanceAutoRenewalAttributeRequest
+from ._describe_instance_auto_renewal_attribute_response_body import DescribeInstanceAutoRenewalAttributeResponseBody
+from ._describe_instance_auto_renewal_attribute_response import DescribeInstanceAutoRenewalAttributeResponse
 from ._describe_multi_price_request import DescribeMultiPriceRequest
 from ._describe_multi_price_response_body import DescribeMultiPriceResponseBody
 from ._describe_multi_price_response import DescribeMultiPriceResponse
@@ -51,6 +57,10 @@ from ._describe_delivery_address_response_body import DescribeDeliveryAddressRes
 from ._describe_delivery_address_response_body import DescribeDeliveryAddressResponseBodyAddressesProvince
 from ._describe_delivery_address_response_body import DescribeDeliveryAddressResponseBodyAddressesTown
 from ._describe_delivery_address_response_body import DescribeDeliveryAddressResponseBodyAddresses
+from ._describe_groups_response_body import DescribeGroupsResponseBodyGroupsInstancesUsageAlertRule
+from ._describe_groups_response_body import DescribeGroupsResponseBodyGroupsInstances
+from ._describe_groups_response_body import DescribeGroupsResponseBodyGroups
+from ._describe_instance_auto_renewal_attribute_response_body import DescribeInstanceAutoRenewalAttributeResponseBodyInstanceAttribute
 from ._describe_multi_price_request import DescribeMultiPriceRequestOrderItemsComponents
 from ._describe_multi_price_request import DescribeMultiPriceRequestOrderItems
 from ._describe_multi_price_response_body import DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails
@@ -62,6 +72,7 @@ from ._describe_multi_price_response_body import DescribeMultiPriceResponseBodyP
 from ._describe_multi_price_response_body import DescribeMultiPriceResponseBodyPriceInfo
 from ._describe_package_deductions_response_body import DescribePackageDeductionsResponseBodyDeductions
 from ._describe_run_id_deductions_response_body import DescribeRunIdDeductionsResponseBodyDeductions
+from ._modify_instance_properties_request import ModifyInstancePropertiesRequestProperties
 
 __all__ = [
     CreateMultiOrderRequest,
@@ -79,6 +90,12 @@ __all__ = [
     DescribeDeductionStatisticResponse,
     DescribeDeliveryAddressResponseBody,
     DescribeDeliveryAddressResponse,
+    DescribeGroupsRequest,
+    DescribeGroupsResponseBody,
+    DescribeGroupsResponse,
+    DescribeInstanceAutoRenewalAttributeRequest,
+    DescribeInstanceAutoRenewalAttributeResponseBody,
+    DescribeInstanceAutoRenewalAttributeResponse,
     DescribeMultiPriceRequest,
     DescribeMultiPriceResponseBody,
     DescribeMultiPriceResponse,
@@ -113,6 +130,10 @@ __all__ = [
     DescribeDeliveryAddressResponseBodyAddressesProvince,
     DescribeDeliveryAddressResponseBodyAddressesTown,
     DescribeDeliveryAddressResponseBodyAddresses,
+    DescribeGroupsResponseBodyGroupsInstancesUsageAlertRule,
+    DescribeGroupsResponseBodyGroupsInstances,
+    DescribeGroupsResponseBodyGroups,
+    DescribeInstanceAutoRenewalAttributeResponseBodyInstanceAttribute,
     DescribeMultiPriceRequestOrderItemsComponents,
     DescribeMultiPriceRequestOrderItems,
     DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails,
@@ -123,5 +144,6 @@ __all__ = [
     DescribeMultiPriceResponseBodyPriceInfoRules,
     DescribeMultiPriceResponseBodyPriceInfo,
     DescribePackageDeductionsResponseBodyDeductions,
-    DescribeRunIdDeductionsResponseBodyDeductions
+    DescribeRunIdDeductionsResponseBodyDeductions,
+    ModifyInstancePropertiesRequestProperties
 ]

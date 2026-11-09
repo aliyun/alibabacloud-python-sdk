@@ -15,7 +15,7 @@ class DescribeCreditUsageInfoResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The array of usage data.
+        # The business data array.
         self.usage_info_list = usage_info_list
 
     def validate(self):
@@ -60,7 +60,7 @@ class DescribeCreditUsageInfoResponseBodyUsageInfoList(DaraModel):
     ):
         # The usage data details.
         self.usage_info = usage_info
-        # The usage primary key. When `UsageType=User`, this is the `aliUid`. When `UsageType=CreditPackage`, this is the credit package instance ID. When `UsageType=Agent`, this is the `AgentId`.
+        # The primary key for usage. The value is `aliUid` when `UsageType` is `User`, the credit package instance ID when `UsageType` is `CreditPackage`, and the agent ID when `UsageType` is `Agent`.
         self.usage_info_key = usage_info_key
 
     def validate(self):
@@ -104,7 +104,11 @@ class DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo(DaraModel):
         current_used_credit: int = None,
         day_used_credit: int = None,
         last_triggered_at: str = None,
+        period_credit_quota: int = None,
+        period_pay_go_used_credit: int = None,
+        period_shared_used_credit: int = None,
         period_total_credit: int = None,
+        period_total_used_credit: int = None,
         period_used_credit: int = None,
         remain_credit: int = None,
         remain_credit_info: main_models.DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoRemainCreditInfo = None,
@@ -115,40 +119,53 @@ class DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo(DaraModel):
         warn_percent: int = None,
         week_used_credit: int = None,
     ):
+        # The number of currently available instances for the reported resources.
         self.available_amount = available_amount
+        # The list of contact group names.
         self.contact_group_names = contact_group_names
         # The hourly consumption samples of the current credit package.
         self.credit_trend_list = credit_trend_list
+        # The time when the current instance expires, in the `YYYY-MM-DD HH:mm:ss` format.
         self.current_instance_expired_time = current_instance_expired_time
-        # The instance ID of the current active credit package.
+        # The instance ID of the currently active credit package.
         self.current_instance_id = current_instance_id
-        # The remaining credits of the current active credit package.
+        # The remaining amount of the currently active credit package.
         self.current_remain_credit = current_remain_credit
-        # The total credits of the current active credit package.
+        # The total amount of the currently active credit package.
         self.current_total_credit = current_total_credit
-        # The used credits of the current active credit package.
+        # The used amount of the currently active credit package.
         self.current_used_credit = current_used_credit
-        # The credit usage in the last 1 day.
+        # The credit usage in the last day.
         self.day_used_credit = day_used_credit
+        # The last trigger time.
         self.last_triggered_at = last_triggered_at
+        # The credit quota for the current period.
+        self.period_credit_quota = period_credit_quota
+        # The pay-as-you-go credits consumed in the current period.
+        self.period_pay_go_used_credit = period_pay_go_used_credit
+        # The shared credits consumed in the current period.
+        self.period_shared_used_credit = period_shared_used_credit
         # The shared credit quota in the current active period.
         self.period_total_credit = period_total_credit
+        # The total credits consumed in the current period.
+        self.period_total_used_credit = period_total_used_credit
         # The shared credit usage in the current active period.
         self.period_used_credit = period_used_credit
-        # The cumulative remaining credits.
+        # The cumulative remaining billable credits.
         self.remain_credit = remain_credit
+        # The remaining credit information.
         self.remain_credit_info = remain_credit_info
-        # The quota used today.
+        # The used quota for today.
         self.today_used = today_used
-        # The total cumulative credits.
+        # The cumulative total credits.
         self.total_credit = total_credit
         # The cumulative used quota.
         self.total_used = total_used
         # The cumulative credit usage.
         self.total_used_credit = total_used_credit
-        # The alert threshold percentage (0–100).
+        # The alert threshold percentage, ranging from 0 to 100.
         self.warn_percent = warn_percent
-        # The credit usage in the last 1 week.
+        # The credit usage in the last week.
         self.week_used_credit = week_used_credit
 
     def validate(self):
@@ -196,8 +213,20 @@ class DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo(DaraModel):
         if self.last_triggered_at is not None:
             result['LastTriggeredAt'] = self.last_triggered_at
 
+        if self.period_credit_quota is not None:
+            result['PeriodCreditQuota'] = self.period_credit_quota
+
+        if self.period_pay_go_used_credit is not None:
+            result['PeriodPayGoUsedCredit'] = self.period_pay_go_used_credit
+
+        if self.period_shared_used_credit is not None:
+            result['PeriodSharedUsedCredit'] = self.period_shared_used_credit
+
         if self.period_total_credit is not None:
             result['PeriodTotalCredit'] = self.period_total_credit
+
+        if self.period_total_used_credit is not None:
+            result['PeriodTotalUsedCredit'] = self.period_total_used_credit
 
         if self.period_used_credit is not None:
             result['PeriodUsedCredit'] = self.period_used_credit
@@ -263,8 +292,20 @@ class DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo(DaraModel):
         if m.get('LastTriggeredAt') is not None:
             self.last_triggered_at = m.get('LastTriggeredAt')
 
+        if m.get('PeriodCreditQuota') is not None:
+            self.period_credit_quota = m.get('PeriodCreditQuota')
+
+        if m.get('PeriodPayGoUsedCredit') is not None:
+            self.period_pay_go_used_credit = m.get('PeriodPayGoUsedCredit')
+
+        if m.get('PeriodSharedUsedCredit') is not None:
+            self.period_shared_used_credit = m.get('PeriodSharedUsedCredit')
+
         if m.get('PeriodTotalCredit') is not None:
             self.period_total_credit = m.get('PeriodTotalCredit')
+
+        if m.get('PeriodTotalUsedCredit') is not None:
+            self.period_total_used_credit = m.get('PeriodTotalUsedCredit')
 
         if m.get('PeriodUsedCredit') is not None:
             self.period_used_credit = m.get('PeriodUsedCredit')
@@ -302,7 +343,9 @@ class DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoRemainCreditInfo(
         deducting_amount: int = None,
         pending_amount: int = None,
     ):
+        # The number of instances being deducted.
         self.deducting_amount = deducting_amount
+        # The number of instances pending to take effect.
         self.pending_amount = pending_amount
 
     def validate(self):
@@ -337,9 +380,9 @@ class DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoCreditTrendList(D
         time_point: str = None,
         used_credit: int = None,
     ):
-        # The time point in the format `yyyy-MM-dd HH` (accurate to the hour).
+        # The time point in the `yyyy-MM-dd HH` format, accurate to the hour.
         self.time_point = time_point
-        # The number of credits consumed in this hour.
+        # The number of credits consumed in the hour.
         self.used_credit = used_credit
 
     def validate(self):

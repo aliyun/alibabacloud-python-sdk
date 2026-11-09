@@ -19,9 +19,9 @@ class DescribeMultiPriceRequest(DaraModel):
         self.order_items = order_items
         # The order type.
         self.order_type = order_type
-        # The package code. You do not need to specify this parameter if the product is not a package.
+        # The package code. You do not need to specify this parameter for non-package types.
         self.package_code = package_code
-        # The user ID of resource ownership in the reselling pattern. You do not need to specify this parameter if the product is not in the reselling pattern.
+        # The user ID for resource ownership in the reseller pattern. You do not need to specify this parameter for non-reseller patterns.
         self.reseller_owner_uid = reseller_owner_uid
 
     def validate(self):
@@ -83,27 +83,35 @@ class DescribeMultiPriceRequestOrderItems(DaraModel):
         resource_ids: List[str] = None,
         resource_type: str = None,
         saving_plan_period: str = None,
+        unified_expire_day: int = None,
     ):
-        # The quantity to purchase.
+        # The purchase quantity.
         self.amount = amount
         # The list of product modules.
         self.components = components
-        # The extended properties.
+        # The extended data of the order item, which is passed as a JSON string. The structure varies based on the order scenario. For the billing method change scenario, you can pass the instance and the list of target billing methods. If no extended data is required, you can leave this parameter empty.
         self.data = data
         # The list of instance IDs.
         self.instance_ids = instance_ids
-        # The subscription duration. Valid values:
+        # The subscription period. Valid values:
+        # 
+        # - When `PeriodUnit` is set to `Year`: 1, 2, and 3.
+        # 
+        # - When `PeriodUnit` is set to `Month`: 1, 2, 3, and 6.
         self.period = period
-        # The unit of the subscription duration.
+        # The unit of the subscription period.
         self.period_unit = period_unit
-        # The promotion ID.
+        # The ID of the promotion.
         self.promotion_id = promotion_id
         # The list of resource IDs.
         self.resource_ids = resource_ids
         # The resource type.
+        # > This parameter is case-sensitive. Make sure that the spelling is correct.
         self.resource_type = resource_type
-        # The period of the savings plan.
+        # The subscription period of the savings plan. For example, 1Year indicates one year.
         self.saving_plan_period = saving_plan_period
+        # The unified expiration date, which can be a day from the 1st to the 28th of a month. If you do not specify this parameter, the instance is renewed in the standard way.
+        self.unified_expire_day = unified_expire_day
 
     def validate(self):
         if self.components:
@@ -148,6 +156,9 @@ class DescribeMultiPriceRequestOrderItems(DaraModel):
         if self.saving_plan_period is not None:
             result['SavingPlanPeriod'] = self.saving_plan_period
 
+        if self.unified_expire_day is not None:
+            result['UnifiedExpireDay'] = self.unified_expire_day
+
         return result
 
     def from_map(self, m: dict = None):
@@ -185,6 +196,9 @@ class DescribeMultiPriceRequestOrderItems(DaraModel):
         if m.get('SavingPlanPeriod') is not None:
             self.saving_plan_period = m.get('SavingPlanPeriod')
 
+        if m.get('UnifiedExpireDay') is not None:
+            self.unified_expire_day = m.get('UnifiedExpireDay')
+
         return self
 
 class DescribeMultiPriceRequestOrderItemsComponents(DaraModel):
@@ -196,6 +210,30 @@ class DescribeMultiPriceRequestOrderItemsComponents(DaraModel):
         # The key of the module.
         self.key = key
         # The value of the module.
+        # 
+        # The following section describes the sample values and valid values of each key for the Enterprise Edition monthly package:
+        # 
+        # - RegionId: cn-shanghai
+        # - InstanceType: eds.enterprise_office.4c8g
+        # - DurationType (hours): Valid values: 
+        #    - 120
+        #    - 250
+        # - OsType: Valid values: 
+        #    - Windows
+        #    - Linux
+        # - RootDiskSize (GiB): 80
+        # - RootDiskCategory: Valid values: 
+        #    - cloud_efficiency (ultra cloud disk)
+        #    - cloud_auto (ESSD AutoPL cloud disk)
+        #    - cloud_essd (enhanced standard SSD, supported only by specific instance types)
+        # - RootPerformanceLevel: Valid values: 
+        #    - PL0
+        #    - PL1
+        #    - PL2
+        #    - PL3
+        # - DataDiskSize (GiB): Same as RootDiskSize.
+        # - DataDiskCategory: Same as RootDiskCategory.
+        # - DataPerformanceLevel: Same as RootPerformanceLevel.
         self.value = value
 
     def validate(self):

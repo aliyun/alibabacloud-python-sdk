@@ -23,17 +23,17 @@ class DescribePackageDeductionsResponseBody(DaraModel):
         self.deductions = deductions
         # The current page number.
         self.page_num = page_num
-        # The number of entries per page in a paged query. Settings the number of rows per page for paging.
+        # The number of entries per page in the Settings for paging during a paged query.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of deduction detail records returned.
+        # The total number of core-hour package deduction details queried.
         self.total_count = total_count
         # The total deducted core-hours.
         self.total_used_core_time = total_used_core_time
         # The total usage duration.
         self.total_used_time = total_used_time
-        # The total usage duration in decimal format.
+        # The total usage calculated by using a precision factor, rounded to four decimal places. This field uses the same metering criteria as UsedTimeDecimal in the details.
         self.total_used_time_decimal = total_used_time_decimal
 
     def validate(self):
@@ -109,7 +109,10 @@ class DescribePackageDeductionsResponseBody(DaraModel):
 class DescribePackageDeductionsResponseBodyDeductions(DaraModel):
     def __init__(
         self,
+        agent_type: str = None,
         cpu: int = None,
+        deduction_request_id: str = None,
+        deduction_type: str = None,
         desktop_id: str = None,
         desktop_name: str = None,
         desktop_type: str = None,
@@ -119,53 +122,71 @@ class DescribePackageDeductionsResponseBodyDeductions(DaraModel):
         instance_state: str = None,
         instance_type: str = None,
         memory: int = None,
+        model: str = None,
         os_type: str = None,
+        package_id: str = None,
         region_id: str = None,
+        resource_id: str = None,
         resource_type: str = None,
         session_id: str = None,
         sta_time: str = None,
+        summary: str = None,
         used_core_time: float = None,
         used_time: int = None,
         used_time_decimal: str = None,
         used_time_with_scale: int = None,
     ):
+        # The agent type.
+        self.agent_type = agent_type
         # The number of vCPUs.
         self.cpu = cpu
-        # The cloud computer ID.
+        # The request ID.
+        self.deduction_request_id = deduction_request_id
+        # The deduction types.
+        self.deduction_type = deduction_type
+        # The Cloud Desktop ID.
         self.desktop_id = desktop_id
-        # The name of the cloud computer.
+        # The name of the cloud desktop.
         self.desktop_name = desktop_name
-        # The specifications of the cloud computer.
+        # The specifications of the cloud desktop.
         self.desktop_type = desktop_type
-        # The end time of the period.
+        # The end time of the deduction record in UTC. The format is yyyy-MM-ddTHH:mm:ssZ. For records aggregated by hour, the format can be yyyy-MM-ddTHH:mmZ with seconds omitted.
         self.end_time = end_time
-        # The group resource type.
+        # The group resource type to which the deduction record belongs.
         self.group_resource_type = group_resource_type
         # The instance ID.
         self.instance_id = instance_id
         # The status of the core-hour package.
         self.instance_state = instance_state
-        # The instance type.
+        # The instance specifications for the deduction.
         self.instance_type = instance_type
-        # The memory size. Unit: MB.
+        # The memory. Unit: MB.
         self.memory = memory
-        # The operating system type of the cloud computer.
+        # The model.
+        self.model = model
+        # The operating system type of the cloud desktop.
         self.os_type = os_type
-        # The region ID of the cloud computer.
+        # The ID of the credit package.
+        self.package_id = package_id
+        # The region ID of the cloud desktop.
         self.region_id = region_id
+        # The ID of the first resource in the deduction item.
+        self.resource_id = resource_id
         # The resource type.
         self.resource_type = resource_type
-        # The session ID.
+        # The ID of the session associated with the deduction record.
         self.session_id = session_id
-        # The start time of the period.
+        # The start time of the deduction record in UTC. The format is yyyy-MM-ddTHH:mm:ssZ. For records aggregated by hour, the format can be yyyy-MM-ddTHH:mmZ with seconds omitted.
         self.sta_time = sta_time
-        # The number of cores deducted in this period.
+        # The summary.
+        self.summary = summary
+        # The number of cores deducted.
         self.used_core_time = used_core_time
         # The usage duration. Unit: seconds.
         self.used_time = used_time
-        # The usage duration in decimal format.
+        # The usage calculated from UsedTime by using a precision factor, rounded to four decimal places. This field is returned only for applicable resource types and must be read based on the metering criteria of the corresponding resource.
         self.used_time_decimal = used_time_decimal
-        # The usage duration after proportional scaling.
+        # The usage that includes the deduction coefficient. In scenarios where deduction is based on duration, the value is measured in seconds and returned as an integer.
         self.used_time_with_scale = used_time_with_scale
 
     def validate(self):
@@ -176,8 +197,17 @@ class DescribePackageDeductionsResponseBodyDeductions(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.agent_type is not None:
+            result['AgentType'] = self.agent_type
+
         if self.cpu is not None:
             result['Cpu'] = self.cpu
+
+        if self.deduction_request_id is not None:
+            result['DeductionRequestId'] = self.deduction_request_id
+
+        if self.deduction_type is not None:
+            result['DeductionType'] = self.deduction_type
 
         if self.desktop_id is not None:
             result['DesktopId'] = self.desktop_id
@@ -206,11 +236,20 @@ class DescribePackageDeductionsResponseBodyDeductions(DaraModel):
         if self.memory is not None:
             result['Memory'] = self.memory
 
+        if self.model is not None:
+            result['Model'] = self.model
+
         if self.os_type is not None:
             result['OsType'] = self.os_type
 
+        if self.package_id is not None:
+            result['PackageId'] = self.package_id
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
 
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
@@ -220,6 +259,9 @@ class DescribePackageDeductionsResponseBodyDeductions(DaraModel):
 
         if self.sta_time is not None:
             result['StaTime'] = self.sta_time
+
+        if self.summary is not None:
+            result['Summary'] = self.summary
 
         if self.used_core_time is not None:
             result['UsedCoreTime'] = self.used_core_time
@@ -237,8 +279,17 @@ class DescribePackageDeductionsResponseBodyDeductions(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentType') is not None:
+            self.agent_type = m.get('AgentType')
+
         if m.get('Cpu') is not None:
             self.cpu = m.get('Cpu')
+
+        if m.get('DeductionRequestId') is not None:
+            self.deduction_request_id = m.get('DeductionRequestId')
+
+        if m.get('DeductionType') is not None:
+            self.deduction_type = m.get('DeductionType')
 
         if m.get('DesktopId') is not None:
             self.desktop_id = m.get('DesktopId')
@@ -267,11 +318,20 @@ class DescribePackageDeductionsResponseBodyDeductions(DaraModel):
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
 
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+
         if m.get('OsType') is not None:
             self.os_type = m.get('OsType')
 
+        if m.get('PackageId') is not None:
+            self.package_id = m.get('PackageId')
+
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
 
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
@@ -281,6 +341,9 @@ class DescribePackageDeductionsResponseBodyDeductions(DaraModel):
 
         if m.get('StaTime') is not None:
             self.sta_time = m.get('StaTime')
+
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
 
         if m.get('UsedCoreTime') is not None:
             self.used_core_time = m.get('UsedCoreTime')
