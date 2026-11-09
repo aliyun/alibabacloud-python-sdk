@@ -11,7 +11,7 @@ class DescribeFreeUserAssetCountResponseBody(DaraModel):
         asset: main_models.DescribeFreeUserAssetCountResponseBodyAsset = None,
         request_id: str = None,
     ):
-        # The statistics information about assets detected by the basic API security feature.
+        # The asset statistics information for basic detection.
         self.asset = asset
         # The request ID.
         self.request_id = request_id

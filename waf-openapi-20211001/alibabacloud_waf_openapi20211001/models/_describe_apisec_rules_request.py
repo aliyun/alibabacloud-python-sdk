@@ -21,81 +21,62 @@ class DescribeApisecRulesRequest(DaraModel):
     ):
         # The ID of the WAF instance.
         # 
-        # > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The language of the response. Valid values:
+        # The language of the returned rules. Valid values:
         # 
-        # - **zh** (default): Chinese
-        # 
-        # - **en**: English
+        # - **zh** (default): Chinese.
+        # - **en**: English.
         self.lang = lang
         # The level of the rule.
         # 
-        # For threat detection (risk) and security events (event), valid values are:
+        # For risk detection (risk) and security events (event), valid values:
+        # - **high**: High risk.
+        # - **medium**: Medium risk.
+        # - **low**: Low risk.
         # 
-        # - **high**: important
-        # 
-        # - **medium**: medium
-        # 
-        # - **low**: low
-        # 
-        # For sensitive data (sensitive_word), valid values are:
-        # 
-        # - **S1**: S1
-        # 
-        # - **S2**: S2
-        # 
-        # - **S3**: S3
-        # 
-        # - **S4**: S4
+        # For sensitive data (sensitive_word), valid values:
+        # - **S1**: S1 level.
+        # - **S2**: S2 level.
+        # - **S3**: S3 level.
+        # - **S4**: S4 level.
         self.level = level
         # The name of the rule.
         self.name = name
         # The source of the rule. Valid values:
-        # 
-        # - **custom**: custom
-        # 
-        # - **default**: built-in
+        # - **custom**: Custom.
+        # - **default**: Built-in.
         self.origin = origin
-        # The number of the page to return. Default value: **1**.
+        # The page number to return in a paged query. Default value: **1**, which indicates the first page of paging.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: **10**.
+        # The number of entries to return on each page in a paged query. Default value: **10**, which indicates 10 entries per paging.
         self.page_size = page_size
-        # The region of the WAF instance. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
-        # - **cn-hangzhou**: the Chinese mainland
+        # - **cn-hangzhou**: the Chinese mainland.
         # 
-        # - **ap-southeast-1**: outside the Chinese mainland
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The enabling status of the rule. Valid values:
         # 
-        # - **1**: enabled
+        # - **1**: Enabled.
         # 
-        # - **0**: disabled
+        # - **0**: shutdown.
         self.status = status
-        # The type of the rule. Valid values:
-        # 
-        # - **risk**: threat detection
-        # 
-        # - **event**: security event
-        # 
-        # - **sensitive_word**: sensitive data
-        # 
-        # - **auth_flag**: authentication credential
-        # 
-        # - **api_tag**: business purpose
-        # 
-        # - **desensitization**: data masking
-        # 
-        # - **whitelist**: whitelist
-        # 
-        # - **recognition**: API
-        # 
-        # - **offline_api**: lifecycle management
+        # The rule type. Valid values:
+        # - **risk**: Risk detection.
+        # - **event**: Security events.
+        # - **sensitive_word**: Sensitive data.
+        # - **auth_flag**: Authentication credentials.
+        # - **api_tag**: Business purpose.
+        # - **desensitization**: Data masking.
+        # - **whitelist**: Whitelist.
+        # - **recognition**: API identification.
+        # - **offline_api**: Lifecycle management.
         # 
         # This parameter is required.
         self.type = type

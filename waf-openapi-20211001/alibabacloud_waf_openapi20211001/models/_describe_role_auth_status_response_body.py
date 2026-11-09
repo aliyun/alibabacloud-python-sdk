@@ -10,11 +10,9 @@ class DescribeRoleAuthStatusResponseBody(DaraModel):
         auth_status: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether the service-linked role for WAF is authorized.
-        # 
-        # - **true**: The service-linked role is authorized.
-        # 
-        # - **false**: The service-linked role is not authorized.
+        # The authorization status. Valid values:
+        # - **false**: Not authorized.
+        # - **true**: Authorized.
         self.auth_status = auth_status
         # The request ID.
         self.request_id = request_id

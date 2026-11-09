@@ -15,29 +15,28 @@ class UntagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
-        # Specifies whether to remove all tags from the specified resource groups or members. Valid values:
-        # 
-        # - false (default)
-        # 
-        # - true
+        # Specifies whether to remove and delete all tags from the specified resource group or resource directory member. Valid values:
+        # - false: no.
+        # - true: yes.
+        # Default value: false.
         self.all = all
-        # The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+        # The region where the Web Application Firewall (WAF) instance resides. Valid values:
         # 
-        # - **cn-hangzhou**: Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
         # 
         # - **ap-southeast-1**: outside the Chinese mainland.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource IDs. You can specify up to 50 resource IDs.
+        # The list of resource IDs. You can specify up to 50 items.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The type of the resource. Set the value to ALIYUN::WAF::DEFENSERESOURCE.
+        # The resource type. Valid value: ALIYUN::WAF::DEFENSERESOURCE.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tag keys. You can specify up to 20 tag keys.
+        # The list of tag keys. You can specify up to 20 items.
         self.tag_key = tag_key
 
     def validate(self):

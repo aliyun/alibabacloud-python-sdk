@@ -16,17 +16,17 @@ class DescribeBotRuleLabelsResponseBody(DaraModel):
         rule_labels: List[main_models.DescribeBotRuleLabelsResponseBodyRuleLabels] = None,
         total_count: int = None,
     ):
-        # The number of entries per page in a paged query. Valid values: 1 to 200. Default value: 20.
+        # The number of entries to return per paging in a paged query. Valid values: 1 to 200. Default value: 20.
         self.max_results = max_results
-        # The pagination token for the next page. If a next page exists, this field returns a value.
+        # The pagination token for the next page. This parameter is returned only if a next page exists.
         # 
-        # > If this parameter returns a value, a next page exists. Use the returned **NextToken** as a request parameter to retrieve the next page of data. Repeat until no value is returned, which indicates that all data has been retrieved.
+        # > If this parameter is returned, it indicates that there is a next page. You can use the returned **NextToken** as a request parameter to obtain the data of the next page until no value is returned, which indicates that all data is obtained.
         self.next_token = next_token
         # The ID of the request.
         self.request_id = request_id
-        # The list of bot management rule tags.
+        # The list of bot management rule labels.
         self.rule_labels = rule_labels
-        # The total number of entries returned.
+        # The total number of returned results.
         self.total_count = total_count
 
     def validate(self):
@@ -93,13 +93,13 @@ class DescribeBotRuleLabelsResponseBodyRuleLabels(DaraModel):
         label_type: str = None,
         sub_scene: str = None,
     ):
-        # The crawler behavior corresponding to the rule tag. Valid values:
+        # The bot behavior corresponding to the rule label.
         # 
-        # - **malicious**: malicious crawler.
-        # - **suspicious**: suspected crawler.
-        # - **normal**: normal crawler.
+        # - **malicious**: malicious bots.
+        # - **suspicious**: suspicious bots.
+        # - **normal**: normal bots.
         self.bot_behavior = bot_behavior
-        # The default action. Valid values:
+        # The default action.
         # 
         # - **block**: block.
         # - **monitor**: monitor.
@@ -110,24 +110,26 @@ class DescribeBotRuleLabelsResponseBodyRuleLabels(DaraModel):
         self.default_action = default_action
         # The default configurations corresponding to the label.
         self.default_config = default_config
-        # The default status of the tag rule. Valid values:
+        # The default status of the label rule.
         # 
-        # - **1**: enabled.
-        # - **0**: disabled.
+        # - **1**: The rule is enabled.
+        # - **0**: The rule is disabled.
         self.default_status = default_status
-        # The bot management rule tag.
+        # The bot management rule label.
         self.label_key = label_key
-        # The tag status. Valid values:
+        # The status of the label.
         # 
         # - **online**: online.
         # - **wait_offline**: pending offline.
         self.label_status = label_status
-        # The type of the bot rule tag.
+        # The type of the bot rule label.
         self.label_type = label_type
-        # The collection of bot management protection scenarios to which the rule belongs. Multiple scenarios are separated by commas (,). Valid values:
+        # The bot management protection scenarios to which the rule belongs. Multiple scenarios are separated by commas (,). Valid values:
         # 
-        # - **web**: Web protection scenario.
-        # - **app**: App protection scenario.
+        # - **web**: the web protection scenario.
+        # - **app**: the app protection scenario.
+        # - **agentic_web**: the Agentic Web protection scenario.
+        # - **agentic_app**: the Agentic App protection scenario.
         self.sub_scene = sub_scene
 
     def validate(self):

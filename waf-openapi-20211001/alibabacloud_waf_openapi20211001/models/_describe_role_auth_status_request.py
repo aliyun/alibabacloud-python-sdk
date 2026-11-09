@@ -10,11 +10,11 @@ class DescribeRoleAuthStatusRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The region in which the WAF instance resides. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
-        # - **cn-hangzhou**: the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland
         # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # - **ap-southeast-1**: outside the Chinese mainland
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id

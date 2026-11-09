@@ -13,9 +13,9 @@ class DescribeRuleHitsTopTuleTypeResponseBody(DaraModel):
         request_id: str = None,
         rule_hits_top_tule_type: List[main_models.DescribeRuleHitsTopTuleTypeResponseBodyRuleHitsTopTuleType] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The top 10 protection rule types that were hit.
+        # The top 10 protection types with the most rule hits.
         self.rule_hits_top_tule_type = rule_hits_top_tule_type
 
     def validate(self):
@@ -60,19 +60,19 @@ class DescribeRuleHitsTopTuleTypeResponseBodyRuleHitsTopTuleType(DaraModel):
     ):
         # The number of requests that hit the rule.
         self.count = count
-        # The type of rule that was hit. This parameter is not returned by default, which indicates that data for all rule types is returned.
+        # The type of the rule hit by the protected object. By default, this parameter is not returned, which indicates that all rules are displayed. Valid values:
         # 
-        # - **waf**: basic protection rules.
+        # - **waf**: basic protection rule.
         # 
-        # - **blacklist**: IP address blacklist.
+        # - **blacklist**: IP blacklist.
         # 
-        # - **custom**: custom rules.
+        # - **custom**: custom rule.
         # 
-        # - **antiscan**: scan protection rules.
+        # - **antiscan**: scan protection rule.
         # 
-        # - **cc_system**: HTTP flood protection rules.
+        # - **cc_system**: HTTP flood protection rule.
         # 
-        # - **region_block**: location blacklist.
+        # - **region_block**: area blocking.
         # 
         # - **scene**: bot management.
         # 

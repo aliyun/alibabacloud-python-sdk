@@ -16,31 +16,31 @@ class DescribeIpAbroadCountryInfosRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The region outside China to query. Supports fuzzy query by region ID or region name in Chinese or English.
+        # The overseas region to query. You can perform a fuzzy match by using the region ID or the region name in Chinese or English.
         self.abroad_region = abroad_region
-        # The country outside China to query. Supports fuzzy query by country ID or country name in Chinese or English.
+        # The overseas country to query. You can perform a fuzzy match by using the country ID or the country name in Chinese or English.
         self.country = country
-        # The ID of the WAF instance.
+        # Instance ID of the WAF instance.
         # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the current WAF instance ID.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The language used for country and region names in the response. Valid values:
+        # The language used for the country and region names in the response. Valid values:
         # 
         # - **en** (**default**): English.
         # 
         # - **cn**: Simplified Chinese.
         self.language = language
-        # The number of entries per page in a paged query. Valid values: 1 to 500. Default value: 20.
+        # The number of entries to return on each page for a paging query. Valid values: 1 to 500. Default value: 20.
         self.max_results = max_results
-        # The token for the next page. Set this parameter to the value of the **NextToken** parameter returned from the previous API call. You do not need to specify this parameter for the first page query.
+        # The paging token that is used to query the next page. Set the value to the **NextToken** value returned from the previous API call. You do not need to specify this parameter for the first call.
         self.next_token = next_token
-        # The region in which the WAF instance is deployed. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
-        # - **cn-hangzhou**: The Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
         # 
-        # - **ap-southeast-1**: Outside the Chinese mainland.
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id

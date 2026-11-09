@@ -17,27 +17,27 @@ class DescribeChargeResultRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The billing cycle for the calculation. Valid values:
-        # - **Year**: Calculates the billing result for one year.
-        # - **Month**: Calculates the billing result for one month.
-        # - **Day**: Calculates the billing result for one day.
+        # The billing cycle. Valid values:
+        # - **Year**: calculates the billing result for one year
+        # - **Month**: calculates the billing result for one month
+        # - **Day**: calculates the billing result for one day
         self.charge_cycle = charge_cycle
-        # The list of billing modules to calculate.
+        # The list of billing modules to be calculated.
         # 
         # This parameter is required.
         self.charge_modules = charge_modules
         # The metering unit.
         self.charge_unit = charge_unit
-        # The billing type of the instance. Valid values:
-        # - **POSTPAY**: pay-as-you-go WAF instance.
+        # The billing method of the instance. Valid values:
+        # - **POSTPAY**: pay-as-you-go WAF instances
         # 
         # This parameter is required.
         self.pay_type = pay_type
-        # The region where the WAF instance resides. Valid values:
+        # The region of the WAF instance. Valid values:
         # 
-        # - **cn-hangzhou**: the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland
         # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # - **ap-southeast-1**: outside the Chinese mainland
         self.region_id = region_id
         # The Alibaba Cloud resource group ID.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
@@ -105,11 +105,14 @@ class DescribeChargeResultRequestChargeModules(DaraModel):
         self,
         module_code: str = None,
         usage: int = None,
+        usage_decimal: float = None,
     ):
-        # The pricing module identifier.
+        # The billing module code.
         self.module_code = module_code
-        # The usage of the pricing module.
+        # The usage of the billing module.
         self.usage = usage
+        # The usage of the billing module, which supports integers and decimals. If the billing module is log storage capacity, the usage supports up to one decimal place, such as 10.5. This parameter is optional and has no default value. If this parameter is specified, it takes precedence even if the value is 0. If this parameter is not specified, Usage is used.
+        self.usage_decimal = usage_decimal
 
     def validate(self):
         pass
@@ -125,6 +128,9 @@ class DescribeChargeResultRequestChargeModules(DaraModel):
         if self.usage is not None:
             result['Usage'] = self.usage
 
+        if self.usage_decimal is not None:
+            result['UsageDecimal'] = self.usage_decimal
+
         return result
 
     def from_map(self, m: dict = None):
@@ -134,6 +140,9 @@ class DescribeChargeResultRequestChargeModules(DaraModel):
 
         if m.get('Usage') is not None:
             self.usage = m.get('Usage')
+
+        if m.get('UsageDecimal') is not None:
+            self.usage_decimal = m.get('UsageDecimal')
 
         return self
 

@@ -19,7 +19,7 @@ class DescribeChargeResultResponseBody(DaraModel):
         self.module_details = module_details
         # The request ID.
         self.request_id = request_id
-        # The total number of calculated Credits.
+        # The total number of calculated credits.
         self.total_credit = total_credit
         # The total number of calculated SeCUs.
         self.total_se_cu = total_se_cu
@@ -77,11 +77,11 @@ class DescribeChargeResultResponseBodyModuleDetails(DaraModel):
         module_code: str = None,
         se_cu: float = None,
     ):
-        # The number of Credits for the pricing module.
+        # The number of credits for the billing module.
         self.credit = credit
-        # The pricing module identifier.
+        # The billing module code.
         self.module_code = module_code
-        # The number of SeCUs for the pricing module.
+        # The number of SeCUs for the billing module.
         self.se_cu = se_cu
 
     def validate(self):

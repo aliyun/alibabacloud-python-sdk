@@ -17,15 +17,14 @@ class DescribeUserAbnormalTypeRequest(DaraModel):
         start_time: int = None,
         user_status_list: List[str] = None,
     ):
-        # The ID of the hybrid cloud cluster.
-        # 
-        # > This parameter applies only to hybrid cloud scenarios. Call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the IDs of hybrid cloud clusters.
+        # The ID of the hybrid cloud cluster. 
+        # > This parameter applies only to hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to obtain the hybrid cloud cluster information.
         self.cluster_id = cluster_id
-        # The end of the time range to query. Specify the time as a UNIX timestamp in seconds. The time is in UTC.
+        # The end time of the query, in UNIX timestamp format (UTC). Unit: seconds.
         self.end_time = end_time
-        # The ID of the WAF instance.
+        # Instance ID of the WAF instance. 
         # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -37,11 +36,11 @@ class DescribeUserAbnormalTypeRequest(DaraModel):
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The beginning of the time range to query. Specify the time as a UNIX timestamp in seconds. The time is in UTC.
+        # The start time of the query, in UNIX timestamp format (UTC). Unit: seconds.
         self.start_time = start_time
-        # The list of risk states for which to collect statistics.
+        # The list of statuses for risk statistics.
         # 
-        # > By default, statistics are collected for risks in the **toBeConfirmed**, **toBeFixed**, **toBeVerified**, and **notFixed** states.
+        # > By default, risk data in the **toBeConfirmed**, **toBeFixed**, **toBeVerified**, and **notFixed** states is collected.
         self.user_status_list = user_status_list
 
     def validate(self):

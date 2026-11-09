@@ -13,7 +13,7 @@ class DescribeFreeUserEventTypesResponseBody(DaraModel):
         data: List[main_models.DescribeFreeUserEventTypesResponseBodyData] = None,
         request_id: str = None,
     ):
-        # The list of security event types detected by the basic detection feature.
+        # The list of security event types for basic detection.
         self.data = data
         # The request ID.
         self.request_id = request_id

@@ -1,3 +1,7 @@
+2026-11-09 Version: 7.8.8
+- Update API DescribeChargeResult: add request parameters ChargeModules.$.UsageDecimal.
+
+
 2026-09-23 Version: 7.8.7
 - Update API DescribeApisecApiResources: add request parameters ApiIds.
 

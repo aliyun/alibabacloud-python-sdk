@@ -16,9 +16,9 @@ class DescribeApisecRulesResponseBody(DaraModel):
     ):
         # The list of rules.
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -72,35 +72,26 @@ class DescribeApisecRulesResponseBodyData(DaraModel):
     ):
         # The ID of the rule.
         self.id = id
-        # The details of the rule. The value is a string that is converted from a JSON object.
+        # The rule details, formatted as a JSON string constructed from a series of parameters.
         self.rule = rule
         # The status of the rule. Valid values:
         # 
-        # - **1**: enabled
+        # - **1**: Enabled.
         # 
-        # - **0**: disabled
+        # - **0**: Disabled.
         self.status = status
-        # The type of the rule. Valid values:
-        # 
-        # - **risk**: threat detection
-        # 
-        # - **event**: security event
-        # 
-        # - **sensitive_word**: sensitive data
-        # 
-        # - **auth_flag**: authentication credential
-        # 
-        # - **api_tag**: business purpose
-        # 
-        # - **desensitization**: data masking
-        # 
-        # - **whitelist**: whitelist
-        # 
-        # - **recognition**: API.
-        # 
-        # - **offline_api**: lifecycle management
+        # The rule type. Valid values:
+        # - **risk**: Risk detection.
+        # - **event**: Security events.
+        # - **sensitive_word**: Sensitive data.
+        # - **auth_flag**: Authentication credentials.
+        # - **api_tag**: Business purpose.
+        # - **desensitization**: Data masking.
+        # - **whitelist**: Whitelist.
+        # - **recognition**: API identification.
+        # - **offline_api**: Lifecycle management.
         self.type = type
-        # The time when the rule was updated. This value is a UNIX timestamp. Unit: seconds.
+        # The update time of the rule. The time is a UNIX timestamp in UTC. Unit: seconds.
         self.update_time = update_time
 
     def validate(self):

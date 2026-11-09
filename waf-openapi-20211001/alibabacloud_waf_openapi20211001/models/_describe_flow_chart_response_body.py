@@ -13,7 +13,7 @@ class DescribeFlowChartResponseBody(DaraModel):
         flow_chart: List[main_models.DescribeFlowChartResponseBodyFlowChart] = None,
         request_id: str = None,
     ):
-        # The traffic statistics.
+        # The traffic statistics information.
         self.flow_chart = flow_chart
         # The request ID.
         self.request_id = request_id
@@ -80,53 +80,53 @@ class DescribeFlowChartResponseBodyFlowChart(DaraModel):
         waf_block_sum: int = None,
         waf_report_sum: str = None,
     ):
-        # The number of requests that are blocked by custom access control list (ACL) rules.
+        # The number of requests blocked by custom ACL rules.
         self.acl_custom_block_sum = acl_custom_block_sum
-        # The number of requests that are monitored by custom ACL rules.
+        # The number of monitored hits on custom ACL rules.
         self.acl_custom_reports_sum = acl_custom_reports_sum
-        # The number of requests that are blocked by scan protection rules.
+        # The number of requests blocked by scan protection rules.
         self.anti_scan_block_sum = anti_scan_block_sum
-        # The number of requests that are blocked by bot management rules.
+        # The number of requests blocked by bot management rules.
         self.antibot_block_sum = antibot_block_sum
-        # The number of requests that are monitored by bot management rules.
+        # The number of monitored hits on bot management rules.
         self.antibot_report_sum = antibot_report_sum
-        # The number of requests that are monitored by scan protection rules.
+        # The number of monitored hits on scan protection rules.
         self.antiscan_reports_sum = antiscan_reports_sum
-        # The number of requests that are blocked by the IP address blacklist.
+        # The number of requests blocked by the IP blacklist.
         self.blacklist_block_sum = blacklist_block_sum
-        # The number of requests that are monitored by the IP address blacklist.
+        # The number of monitored hits on the IP blacklist.
         self.blacklist_reports_sum = blacklist_reports_sum
-        # The number of requests that are blocked by custom HTTP flood protection rules.
+        # The number of requests blocked by custom HTTP flood mitigation rules.
         self.cc_custom_block_sum = cc_custom_block_sum
-        # The number of requests that are monitored by custom HTTP flood protection rules.
+        # The number of monitored hits on custom HTTP flood mitigation rules.
         self.cc_custom_reports_sum = cc_custom_reports_sum
-        # The number of requests that are blocked by system HTTP flood protection rules.
+        # The number of requests blocked by built-in HTTP flood mitigation rules.
         self.cc_system_blocks_sum = cc_system_blocks_sum
-        # The number of requests that are monitored by system HTTP flood protection rules.
+        # The number of monitored hits on built-in HTTP flood mitigation rules.
         self.cc_system_reports_sum = cc_system_reports_sum
         # The total number of requests.
         self.count = count
-        # The total volume of inbound traffic. Unit: bytes.
+        # The total inbound traffic to WAF.
         self.in_bytes = in_bytes
-        # The time sequence number, sorted in chronological order.
+        # The time index, sorted in chronological order.
         self.index = index
         # The peak number of requests.
         self.max_pv = max_pv
-        # The total volume of outbound traffic. Unit: bytes.
+        # The total outbound traffic from WAF.
         self.out_bytes = out_bytes
-        # The number of requests that are blocked by peak traffic throttling rules.
+        # The number of requests blocked by peak traffic throttling rules.
         self.ratelimit_block_sum = ratelimit_block_sum
-        # The number of requests that are monitored by peak traffic throttling rules.
+        # The number of monitored hits on peak traffic throttling rules.
         self.ratelimit_report_sum = ratelimit_report_sum
-        # The number of requests that are blocked by Location Blacklist rules.
+        # The number of requests blocked by area blocking rules.
         self.region_block_blocks_sum = region_block_blocks_sum
-        # The number of requests that are monitored by Location Blacklist rules.
+        # The number of monitored hits on area blocking rules.
         self.region_block_reports_sum = region_block_reports_sum
-        # The total number of requests from bots.
+        # The total number of bot requests.
         self.robot_count = robot_count
-        # The number of requests that are blocked by basic protection rules.
+        # The number of requests blocked by basic protection rules.
         self.waf_block_sum = waf_block_sum
-        # The number of requests that are monitored by basic protection rules.
+        # The number of monitored hits on basic protection rules.
         self.waf_report_sum = waf_report_sum
 
     def validate(self):

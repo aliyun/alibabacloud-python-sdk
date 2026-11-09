@@ -21,15 +21,15 @@ class DescribeBotRuleLabelsRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The type of bot rule tag to query.
+        # The type of the bot rule label to query.
         self.label_type = label_type
-        # The number of entries per page in a paged query. Valid values: 1 to 200. Default value: 20.
+        # The number of entries to return per paging in a paged query. Valid values: 1 to 200. Default value: 20.
         self.max_results = max_results
-        # The pagination token for the next page. If a next page exists, this field returns a value.
+        # The pagination token for the next page. This parameter is returned only if a next page exists.
         # 
-        # > If this parameter returns a value, a next page exists. Use the returned **NextToken** as a request parameter to retrieve the next page of data. Repeat until no value is returned, which indicates that all data has been retrieved.
+        # > If this parameter is returned, it indicates that there is a next page. You can use the returned **NextToken** as a request parameter to obtain the data of the next page until no value is returned, which indicates that all data is obtained.
         self.next_token = next_token
-        # The region where the WAF instance is deployed. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
         # 
@@ -37,7 +37,7 @@ class DescribeBotRuleLabelsRequest(DaraModel):
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The bot management protection scenario type.
+        # The type of the bot management protection scenario.
         self.sub_scene = sub_scene
 
     def validate(self):

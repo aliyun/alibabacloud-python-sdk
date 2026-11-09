@@ -15,11 +15,10 @@ class DescribeFlowChartRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
         start_timestamp: str = None,
     ):
-        # The end of the time range to query. This value is a UNIX timestamp. Unit: seconds. If you do not specify this parameter, the current time is used as the end time.
+        # The end time of the query. Unit: seconds. If you do not specify this parameter, the end time is the current time.
         self.end_timestamp = end_timestamp
-        # The ID of the Web Application Firewall (WAF) instance.
-        # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # The ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -35,9 +34,9 @@ class DescribeFlowChartRequest(DaraModel):
         self.region_id = region_id
         # The protected object to query.
         self.resource = resource
-        # The ID of the resource group.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The beginning of the time range to query. This value is a UNIX timestamp. Unit: seconds.
+        # The start time of the query. Unit: seconds.
         # 
         # This parameter is required.
         self.start_timestamp = start_timestamp
