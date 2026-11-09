@@ -1,3 +1,8 @@
+2026-11-09 Version: 3.6.10
+- Update API DescribeFileModerationResult: add response parameters Body.Data.ManualTaskId.
+- Update API DescribeFileModerationResult: add response parameters Body.Data.TaskId.
+
+
 2026-10-10 Version: 3.6.8
 - Update API ImageModeration: add response parameters Body.Data.Frame.
 - Update API ImageModeration: add response parameters Body.Data.FrameNum.

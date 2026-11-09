@@ -6,6 +6,7 @@ import json
 
 from typing import Dict, Generator, AsyncGenerator
 
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_green20220302 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
@@ -23,6 +24,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'Green'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'ap-northeast-1': 'green.ap-southeast-1.aliyuncs.com',
