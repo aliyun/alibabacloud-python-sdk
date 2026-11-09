@@ -13,10 +13,15 @@ class ListBrowserBookmarksRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The ID of the cloud browser group. You must specify either this parameter or BrowserInstanceGroupSetId, but not both.
         self.browser_instance_group_id = browser_instance_group_id
+        # The ID of the browser delivery group set. You must specify either this parameter or BrowserInstanceGroupId, but not both.
         self.browser_instance_group_set_id = browser_instance_group_set_id
+        # The keyword used for substring matching in bookmark names or URLs. The matching is case-insensitive for English characters. The keyword can be up to 1,024 characters in length after leading and trailing spaces are removed. If this parameter is not specified or contains only spaces, no filtering is applied. Special characters are matched literally.
         self.keyword = keyword
+        # The page number of the page to return. Pages start from page 1.
         self.page_number = page_number
+        # The number of entries to return on each page. Valid values: 1 to 200.
         self.page_size = page_size
 
     def validate(self):

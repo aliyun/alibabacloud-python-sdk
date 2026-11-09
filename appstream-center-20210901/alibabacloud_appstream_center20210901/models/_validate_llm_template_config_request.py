@@ -10,8 +10,12 @@ class ValidateLlmTemplateConfigRequest(DaraModel):
         config: str = None,
         provider_template_id: str = None,
     ):
+        # The JSON string of the LLM configuration to be validated.
+        # 
         # This parameter is required.
         self.config = config
+        # The ID of the provider template.
+        # 
         # This parameter is required.
         self.provider_template_id = provider_template_id
 

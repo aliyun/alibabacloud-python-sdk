@@ -16,9 +16,9 @@ class GetAgentRuntimeStatisticResponseBody(DaraModel):
     ):
         # The list of runtime statistics grouped by agent platform and agent provider. If AgentProvider is specified but no matching runtimes are found, a record with all statistical values set to 0 is returned.
         self.data = data
-        # The request ID, which is used to uniquely identify the request.
+        # The request ID, which uniquely identifies the request.
         self.request_id = request_id
-        # The total number of returned statistical records, which is the length of the Data list.
+        # The number of returned statistics records, which is the length of the Data list.
         self.total_count = total_count
 
     def validate(self):
@@ -73,7 +73,7 @@ class GetAgentRuntimeStatisticResponseBodyData(DaraModel):
         risky_runtime_count: int = None,
         total_runtime_count: int = None,
     ):
-        # The display name of the agent, which is determined by both the agent platform and the agent provider. For example, OpenClaw under the ENTERPRISE platform is displayed as OpenClaw, and OpenClaw under the JVS platform is displayed as JVS Claw.
+        # The agent display name, which is determined by both the agent platform and the agent provider. For example, OpenClaw under the ENTERPRISE platform is displayed as OpenClaw, and OpenClaw under the JVS platform is displayed as JVS Claw.
         self.agent_display_name = agent_display_name
         # The agent platform, such as ENTERPRISE_AGENTIC_COMPUTER.
         self.agent_platform = agent_platform

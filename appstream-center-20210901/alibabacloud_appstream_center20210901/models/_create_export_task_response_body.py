@@ -11,9 +11,9 @@ class CreateExportTaskResponseBody(DaraModel):
         export_task_model: main_models.CreateExportTaskResponseBodyExportTaskModel = None,
         request_id: str = None,
     ):
-        # The information about the newly created export task. When the task is created, Status is INIT, Progress is 0, and the download URL and error message are empty.
+        # The information about the newly created export task. If the task is created, Status is INIT, Progress is 0, and the download URL and error message are empty.
         self.export_task_model = export_task_model
-        # The ID of the request. You can use the ID to locate call records and troubleshoot issues. The example value is partially desensitized.
+        # The ID of the request, which is used to locate call records and troubleshoot issues. The example value is partially desensitized.
         self.request_id = request_id
 
     def validate(self):
@@ -55,19 +55,19 @@ class CreateExportTaskResponseBodyExportTaskModel(DaraModel):
         task_id: str = None,
         task_type: str = None,
     ):
-        # The time when the task was created. The time is in the yyyy-MM-dd HH:mm:ss format, accurate to seconds. The returned string does not include the time zone offset.
+        # The time when the task was created. The time is in the yyyy-MM-dd HH:mm:ss format, accurate to seconds. The returned string does not contain a time zone offset.
         self.create_time = create_time
         # The download URL of the exported file. When the task is created by calling this operation, the file is not generated and this field is empty. The null in the example represents a JSON null value, not the string "null". You can subsequently call DescribeExportTasks to query the latest download URL of the completed task and use it within the validity period.
         self.download_url = download_url
-        # The error message when the task execution fails. When the task is created by calling this operation, this field is empty. The null in the example represents a JSON null value, not the string "null". When you query the task status and it is FAILED, you can use this field to identify the cause of the failure.
+        # The error message when the task execution fails. If the task is created by calling this operation, this field is empty. The null in the example represents a JSON null value, not the string "null". When you query the task status and the status is FAILED, you can use this field to identify the cause of the failure.
         self.error_msg = error_msg
-        # The progress of the export task. The value is a percentage ranging from 0 to 100. When the task is created by calling this operation, 0 is returned. The value is updated based on the execution phase and reaches 100 when the task is completed.
+        # The progress of the export task, in percentage. Valid values: 0 to 100. If the task is created by calling this operation, 0 is returned. The value is updated based on the execution phase and reaches 100 when the task is completed.
         self.progress = progress
-        # The status of the task. When the task is created by calling this operation, INIT (initialized and waiting for execution) is returned. You can subsequently call DescribeExportTasks to query RUNNING (executing), FINISHED (completed), or FAILED (failed). Do not treat INIT as export completion.
+        # The status of the task. If the task is created by calling this operation, INIT (initialized and waiting for execution) is returned. You can subsequently call DescribeExportTasks to query RUNNING (executing), FINISHED (completed), or FAILED (failed). Do not treat INIT as export completion.
         self.status = status
-        # The ID of the newly created export task. The value is a 32-character UUID string without hyphens. You can use this value as the TaskId parameter to query the task in DescribeExportTasks.
+        # The ID of the newly created export task, which is a 32-character UUID string without hyphens. You can use this value as the TaskId parameter in DescribeExportTasks to query the task.
         self.task_id = task_id
-        # The type of the export task. The value is the same as the TaskType in the request. For the meaning of each type, see the TaskType request parameter.
+        # The type of the export task, which is the same as the TaskType in the request. For the meaning of each type, see the TaskType request parameter.
         self.task_type = task_type
 
     def validate(self):

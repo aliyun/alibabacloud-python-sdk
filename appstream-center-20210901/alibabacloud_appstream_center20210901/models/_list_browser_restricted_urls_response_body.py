@@ -16,10 +16,15 @@ class ListBrowserRestrictedURLsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of restricted URLs on the current page. Each record contains a restricted URL and its unique identifier. If no restricted URLs are configured under the specified conditions, an empty array is returned.
         self.data = data
+        # The actual page number used in this query. This is the echoed value of the PageNumber request parameter.
         self.page_number = page_number
+        # The actual number of entries returned per page in this query. This is the echoed value of the PageSize request parameter.
         self.page_size = page_size
+        # The ID of the request. You can use the ID to locate call records and troubleshoot issues. The example value is partially masked.
         self.request_id = request_id
+        # The total number of restricted URL records that meet the filter conditions. This value is independent of the number of records returned on the current page and can be used with PageSize to calculate the total number of pages. If no records meet the conditions, 0 is returned.
         self.total_count = total_count
 
     def validate(self):
@@ -80,7 +85,9 @@ class ListBrowserRestrictedURLsResponseBodyData(DaraModel):
         restricted_urlid: str = None,
         url: str = None,
     ):
+        # The unique identifier of the restricted URL record.
         self.restricted_urlid = restricted_urlid
+        # The URL address that is restricted from access.
         self.url = url
 
     def validate(self):

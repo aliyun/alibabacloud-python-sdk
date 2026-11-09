@@ -13,8 +13,11 @@ class ListAgentInstanceVersionsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of agent instance version numbers, deduplicated and sorted in ascending order by version number.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # The total count.
         self.total_count = total_count
 
     def validate(self):

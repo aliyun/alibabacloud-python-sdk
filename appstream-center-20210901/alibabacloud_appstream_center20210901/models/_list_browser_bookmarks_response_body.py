@@ -16,10 +16,15 @@ class ListBrowserBookmarksResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of bookmarks on the current page.
         self.data = data
+        # The current page number.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The request ID, which is used to troubleshoot issues.
         self.request_id = request_id
+        # The total number of bookmarks that meet the filtering conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -82,9 +87,13 @@ class ListBrowserBookmarksResponseBodyData(DaraModel):
         bookmark_name: str = None,
         bookmark_url: str = None,
     ):
+        # The bookmark folder.
         self.bookmark_folder = bookmark_folder
+        # The bookmark ID.
         self.bookmark_id = bookmark_id
+        # The bookmark name.
         self.bookmark_name = bookmark_name
+        # The bookmark URL.
         self.bookmark_url = bookmark_url
 
     def validate(self):

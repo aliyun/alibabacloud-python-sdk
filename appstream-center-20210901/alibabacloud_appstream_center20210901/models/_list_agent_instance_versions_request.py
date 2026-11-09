@@ -10,7 +10,10 @@ class ListAgentInstanceVersionsRequest(DaraModel):
         agent_platform: str = None,
         agent_provider: str = None,
     ):
+        # The agent platform used to filter version numbers by business type. If not specified, the default value is ENTERPRISE.
         self.agent_platform = agent_platform
+        # The name of the agent provider.
+        # 
         # This parameter is required.
         self.agent_provider = agent_provider
 

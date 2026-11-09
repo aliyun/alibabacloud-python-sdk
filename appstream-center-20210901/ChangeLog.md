@@ -1,3 +1,7 @@
+2026-11-09 Version: 5.15.0
+- Support API GetMqttTicket.
+
+
 2026-11-07 Version: 5.14.0
 - Support API ListAgentInstanceVersions.
 - Support API ListBrowserBookmarks.

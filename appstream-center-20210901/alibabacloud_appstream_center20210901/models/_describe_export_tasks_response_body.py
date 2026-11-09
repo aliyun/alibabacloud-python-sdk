@@ -16,15 +16,15 @@ class DescribeExportTasksResponseBody(DaraModel):
         page_size: int = None,
         request_id: str = None,
     ):
-        # The total number of tasks that meet the query conditions, regardless of the number of tasks returned on the current page. You can use this value and PageSize to calculate the total number of pages. If no tasks meet the conditions, 0 is returned.
+        # The total number of tasks that meet the query conditions. This value is independent of the number of tasks returned on the current page and can be used with PageSize to calculate the total number of pages. If no tasks meet the conditions, 0 is returned.
         self.count = count
         # The list of export tasks, sorted in descending order of task creation time, with the most recently created tasks listed first. If no tasks meet the conditions, an empty array is returned.
         self.export_task_model = export_task_model
-        # The actual page number used in this query, which is the echoed value of the PageNumber request parameter.
+        # The actual page number used for this query, which is the echoed value of the PageNumber request parameter.
         self.page_number = page_number
-        # The actual number of tasks per page used in this query, which is the echoed value of the PageSize request parameter.
+        # The actual number of tasks per page used for this query, which is the echoed value of the PageSize request parameter.
         self.page_size = page_size
-        # The ID of the request, which is used to locate call records and troubleshoot issues. The example value is partially desensitized.
+        # The ID of the request, which is used to locate call records and troubleshoot issues. The example value is partially masked.
         self.request_id = request_id
 
     def validate(self):
@@ -91,25 +91,25 @@ class DescribeExportTasksResponseBodyExportTaskModel(DaraModel):
         task_id: str = None,
         task_type: str = None,
     ):
-        # The creation time of the task, in yyyy-MM-dd HH:mm:ss format, accurate to seconds. The returned string does not include the time zone offset.
+        # The creation time of the task. The format is yyyy-MM-dd HH:mm:ss, accurate to seconds. The returned string does not include the time zone offset.
         self.create_time = create_time
-        # The OSS pre-signed download URL of the export file, which is returned only for tasks whose Status is FINISHED. The default maximum validity period of the signature is 1 hour and does not exceed the 24-hour validity period after the task is created. When the remaining validity period is less than 10 minutes, the server automatically refreshes and returns a new URL. If the task is not completed, the task has expired, or the URL refresh fails, this field is empty. The domain name and path in the example URL are for demonstration purposes. The actual returned value is a complete URL with signature parameters. Use the URL returned by the most recent query for downloading.
+        # The OSS pre-signed download URL of the export file. This field is returned only for tasks whose Status is FINISHED. The default maximum validity period of the signature is 1 hour and does not exceed the 24-hour validity period after the task is created. When the remaining validity period is less than 10 minutes, the server automatically refreshes and returns a new URL. If the task is not completed, the task has expired, or the URL refresh fails, this field is empty. The domain name and path in the example URL are for demonstration purposes. The actual returned value is a complete URL with signature parameters. Use the URL returned by the most recent query for downloading.
         self.download_url = download_url
-        # The cause of the task execution failure, which is returned only when Status is FAILED. The content is the English error description recorded by the server and can be directly displayed to users or used for troubleshooting. This field is empty in other states.
+        # The cause of the task execution failure. This field is returned only when Status is FAILED. The content is the English error description recorded by the server and can be directly displayed to users or used for troubleshooting. This field is empty in other states.
         self.error_msg = error_msg
-        # The name of the export file, which consists of the task type, task creation time (in yyyyMMddHHmmss format), and the first 8 characters of the task ID, connected by underscores. The file extension is .xlsx. If the file is not generated, this field is empty.
+        # The name of the export file. The name consists of the task type, task creation time in yyyyMMddHHmmss format, and the first 8 characters of the task ID, connected by underscores, with the .xlsx extension. If the file is not generated, this field is empty.
         self.export_file_name = export_file_name
-        # The progress of the export task, in percentage. Valid values: 0 to 100. The value is updated based on the execution stage and reaches 100 when the task is completed.
+        # The progress of the export task, in percentage. Valid values: 0 to 100. This value is updated based on the execution stage of the task and is 100 when the task is completed.
         self.progress = progress
         # The status of the export task. This operation returns the following valid values:
         # - INIT: The task is created and waiting to be executed. Continue polling.
-        # - RUNNING: The export file is being generated. You can use Progress to display the progress and continue polling.
+        # - RUNNING: The export file is being generated. You can display the progress based on Progress and continue polling.
         # - FINISHED: The export file is generated. Stop polling and use DownloadUrl to download the file.
         # - FAILED: The task execution failed. Stop polling and check ErrorMsg.
         # 
-        # The server also has an internal EXPIRED state, but this operation does not return tasks in this state.
+        # The server also has an EXPIRED state, but this operation does not return tasks in this state.
         self.status = status
-        # The ID of the export task, which is a 32-character UUID string without hyphens. You can use this value as the TaskId parameter to poll this task.
+        # The ID of the export task, which is a 32-character UUID string without hyphens. You can use this value as the TaskId parameter for this operation to poll the task.
         self.task_id = task_id
         # The type of the export task. For the meaning of each value, see the TaskType request parameter.
         self.task_type = task_type

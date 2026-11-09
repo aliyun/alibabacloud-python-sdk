@@ -127,6 +127,10 @@ from ._get_file_upload_info_response import GetFileUploadInfoResponse
 from ._get_model_provider_template_request import GetModelProviderTemplateRequest
 from ._get_model_provider_template_response_body import GetModelProviderTemplateResponseBody
 from ._get_model_provider_template_response import GetModelProviderTemplateResponse
+from ._get_mqtt_ticket_request import GetMqttTicketRequest
+from ._get_mqtt_ticket_shrink_request import GetMqttTicketShrinkRequest
+from ._get_mqtt_ticket_response_body import GetMqttTicketResponseBody
+from ._get_mqtt_ticket_response import GetMqttTicketResponse
 from ._get_ota_task_by_task_id_request import GetOtaTaskByTaskIdRequest
 from ._get_ota_task_by_task_id_response_body import GetOtaTaskByTaskIdResponseBody
 from ._get_ota_task_by_task_id_response import GetOtaTaskByTaskIdResponse
@@ -792,6 +796,10 @@ __all__ = [
     GetModelProviderTemplateRequest,
     GetModelProviderTemplateResponseBody,
     GetModelProviderTemplateResponse,
+    GetMqttTicketRequest,
+    GetMqttTicketShrinkRequest,
+    GetMqttTicketResponseBody,
+    GetMqttTicketResponse,
     GetOtaTaskByTaskIdRequest,
     GetOtaTaskByTaskIdResponseBody,
     GetOtaTaskByTaskIdResponse,

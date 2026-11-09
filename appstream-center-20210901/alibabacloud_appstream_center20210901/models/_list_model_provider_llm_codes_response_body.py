@@ -16,7 +16,7 @@ class ListModelProviderLlmCodesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The paginated data object that contains the list of LLM information.
+        # The paginated data object that contains a list of LLM information.
         self.data = data
         # The current page number.
         self.page_number = page_number
@@ -78,7 +78,7 @@ class ListModelProviderLlmCodesResponseBodyData(DaraModel):
         self,
         llm_info_list: List[main_models.ListModelProviderLlmCodesResponseBodyDataLlmInfoList] = None,
     ):
-        # The list of LLM information.
+        # The LLM information list.
         self.llm_info_list = llm_info_list
 
     def validate(self):
@@ -138,7 +138,7 @@ class ListModelProviderLlmCodesResponseBodyDataLlmInfoList(DaraModel):
         self.llm_code = llm_code
         # The model brand, such as Qwen, Wanx, or DeepSeek. This parameter is returned only for models annotated in the platform-side model pool.
         self.model_brand = model_brand
-        # The model information, such as the context window size and the maximum number of input/output tokens.
+        # The model information, such as context window size and maximum input/output tokens.
         self.model_info = model_info
         # The model series, such as Qwen-Max or DeepSeek. This parameter is returned only for the wuying-credit provider.
         self.model_series = model_series
@@ -148,7 +148,7 @@ class ListModelProviderLlmCodesResponseBodyDataLlmInfoList(DaraModel):
         self.prices = prices
         # The time when the model was published, in ISO 8601 format, such as 2026-03-04T06:25:17.000+00:00.
         self.published_time = published_time
-        # Indicates whether the model is recommended. Valid values: true (recommended), false (explicitly not recommended), and null (not applicable, such as non-Bailian or unannotated models).
+        # Indicates whether the model is recommended. This is a tri-state value: true indicates that the model is recommended for display, false indicates that the model is explicitly not recommended, and null indicates that the status is not applicable, such as for non-Bailian models or unannotated models.
         self.recommended = recommended
         # The model risk type. This parameter is returned only when includeRiskInfo is set to true.
         self.risk_type = risk_type
@@ -393,9 +393,9 @@ class ListModelProviderLlmCodesResponseBodyDataLlmInfoListCreditMultiplier(DaraM
         max: float = None,
         min: float = None,
     ):
-        # The upper limit of the multiplier. An empty value indicates no upper limit. For example, if the minimum multiplier is 1 and the maximum multiplier is empty, it is displayed as starting from 1x.
+        # The upper limit of the multiplier. An empty value indicates no upper limit. For example, if the minimum value is 1 and the maximum value is empty, it is displayed as starting from 1x.
         self.max = max
-        # The lower limit of the multiplier. If this value is equal to the maximum multiplier, it is a fixed multiplier. For example, if both the minimum and maximum multipliers are 2, it is displayed as 2x.
+        # The lower limit of the multiplier. If this value is equal to the maximum value, the multiplier is fixed. For example, if both the minimum and maximum values are 2, it is displayed as 2x.
         self.min = min
 
     def validate(self):

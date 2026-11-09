@@ -3853,6 +3853,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_model_provider_template_with_options_async(request, runtime)
 
+    def get_mqtt_ticket_with_options(
+        self,
+        tmp_req: main_models.GetMqttTicketRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMqttTicketResponse:
+        tmp_req.validate()
+        request = main_models.GetMqttTicketShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.properties):
+            request.properties_shrink = Utils.array_to_string_with_specified_style(tmp_req.properties, 'Properties', 'json')
+        body = {}
+        if not DaraCore.is_null(request.client_os):
+            body['ClientOS'] = request.client_os
+        if not DaraCore.is_null(request.client_type):
+            body['ClientType'] = request.client_type
+        if not DaraCore.is_null(request.client_version):
+            body['ClientVersion'] = request.client_version
+        if not DaraCore.is_null(request.properties_shrink):
+            body['Properties'] = request.properties_shrink
+        if not DaraCore.is_null(request.uuid):
+            body['Uuid'] = request.uuid
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMqttTicket',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMqttTicketResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_mqtt_ticket_with_options_async(
+        self,
+        tmp_req: main_models.GetMqttTicketRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMqttTicketResponse:
+        tmp_req.validate()
+        request = main_models.GetMqttTicketShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.properties):
+            request.properties_shrink = Utils.array_to_string_with_specified_style(tmp_req.properties, 'Properties', 'json')
+        body = {}
+        if not DaraCore.is_null(request.client_os):
+            body['ClientOS'] = request.client_os
+        if not DaraCore.is_null(request.client_type):
+            body['ClientType'] = request.client_type
+        if not DaraCore.is_null(request.client_version):
+            body['ClientVersion'] = request.client_version
+        if not DaraCore.is_null(request.properties_shrink):
+            body['Properties'] = request.properties_shrink
+        if not DaraCore.is_null(request.uuid):
+            body['Uuid'] = request.uuid
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMqttTicket',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMqttTicketResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_mqtt_ticket(
+        self,
+        request: main_models.GetMqttTicketRequest,
+    ) -> main_models.GetMqttTicketResponse:
+        runtime = RuntimeOptions()
+        return self.get_mqtt_ticket_with_options(request, runtime)
+
+    async def get_mqtt_ticket_async(
+        self,
+        request: main_models.GetMqttTicketRequest,
+    ) -> main_models.GetMqttTicketResponse:
+        runtime = RuntimeOptions()
+        return await self.get_mqtt_ticket_with_options_async(request, runtime)
+
     def get_ota_task_by_task_id_with_options(
         self,
         request: main_models.GetOtaTaskByTaskIdRequest,

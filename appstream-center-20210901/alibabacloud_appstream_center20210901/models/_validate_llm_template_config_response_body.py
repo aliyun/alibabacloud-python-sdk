@@ -13,7 +13,9 @@ class ValidateLlmTemplateConfigResponseBody(DaraModel):
         data: main_models.ValidateLlmTemplateConfigResponseBodyData = None,
         request_id: str = None,
     ):
+        # The validation result of the LLM template configuration, which includes whether the configuration is valid and a list of validation errors.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -50,7 +52,9 @@ class ValidateLlmTemplateConfigResponseBodyData(DaraModel):
         valid: bool = None,
         validation_errors: List[main_models.ValidateLlmTemplateConfigResponseBodyDataValidationErrors] = None,
     ):
+        # Indicates whether the configuration is valid. The value is true if all validation items pass.
         self.valid = valid
+        # The list of validation errors. This list is empty if Valid is true.
         self.validation_errors = validation_errors
 
     def validate(self):
@@ -94,8 +98,11 @@ class ValidateLlmTemplateConfigResponseBodyDataValidationErrors(DaraModel):
         field: str = None,
         message: str = None,
     ):
+        # The error code, such as MISSING_FIELD, UNKNOWN_FIELD, INVALID_TYPE, or INVALID_JSON.
         self.code = code
+        # The name of the field where the error occurred, such as id, name, or contextWindow.
         self.field = field
+        # The error message.
         self.message = message
 
     def validate(self):
