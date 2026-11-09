@@ -11,35 +11,35 @@ class SubmitRemakeScriptJobRequest(DaraModel):
         remake_type: str = None,
         user_data: str = None,
     ):
-        # The remake parameters (JSON string). The structure varies depending on `RemakeType`. For `faithful-remake`, the structure is as follows:
+        # The remake parameters. This parameter is a JSON string. The structure varies based on RemakeType. For faithful-remake, the structure is as follows:
         # 
-        # - ComprehensionResult (string, required): The content comprehension result. A URL to a JSON file.
+        # - ComprehensionResult (string, required): The content understanding result. This is the URL of the JSON file.
         # 
-        # - Product (Object, required): The product information (original product + new product).
+        # - Product (object, required): The product information, including the original product and the new product.
         # 
-        #   - OriginalProductName (String, required): The product or brand name in the original video (the object to be replaced). Used to locate and replace mentions of the original product in the script.
+        #   - OriginalProductName (string, required): The product or brand name in the original video to be replaced. This is used to locate and replace mentions of the original product in the script.
         # 
-        #   - NewProduct (Object, required): The new product information. 
+        #   - NewProduct (object, required): The new product information. 
         # 
-        #     - ProductName (String, required): The product or brand name.
-        #     - Description (String, required): The product description.
-        #     - ProductKnowledge (String, required): The physical knowledge of the product, such as material and usage instructions.
-        #     - ProductImages (Array\\<String\\>, required): The images of the new product. Must not be empty. Each item is an http(s) URL.
-        #     - SellingPoints (Array\\<String\\>, optional): The list of product selling points.
-        #     - OriginalPrice (String, optional): The original price.
-        #     - CurrentPrice (String, optional): The current price.
-        #     - Discount (String, optional): The discount information, such as "50 off 200" or "buy one get one free".
+        #     - ProductName (string, required): The product or brand name.
+        #     - Description (string, required): The product description.
+        #     - ProductKnowledge (string, required): The physical knowledge of the product, such as the material and usage instructions.
+        #     - ProductImages (array of strings, required): The images of the new product. This array cannot be empty. Each item must be an HTTP or HTTPS URL.
+        #     - SellingPoints (array of strings, optional): The list of product selling points.
+        #     - OriginalPrice (string, optional): The original price.
+        #     - CurrentPrice (string, optional): The current price.
+        #     - Discount (string, optional): The discount information, such as "50 off for purchases over 200" or "buy one get one free".
         # 
-        # - Avatar (Object, required): The model information (original model + new model).
+        # - Avatar (object, required): The avatar information, including the original avatar and the new avatar.
         # 
-        #     - NewAvatarImages (Array\\<String\\>, required): The list of new model images. Must not be empty. Each item is a media asset ID or an image URL (when a URL is provided, the system automatically registers it as a media asset). **Currently, only 1 image is supported** (only the first element of the array is used). The array format is reserved for future expansion.
-        #     - OriginalAvatarName (String, required): The name of the model in the original video (the object to be replaced). Used to locate and replace the original model in the script and visuals.
+        #     - NewAvatarImages (array of strings, required): The list of images for the new avatar. This array cannot be empty. Each item must be a media asset ID or an image URL. If a URL is provided, the system automatically registers it as a media asset. **Currently, only one image is supported** (only the first element of the array is used). The array format is reserved for future extensions.
+        #     - OriginalAvatarName (string, required): The avatar name in the original video to be replaced. This is used to locate and replace the original avatar in the script or video frames.
         # 
-        # -   VoiceoverLanguage (String, optional): The voiceover language. Valid values: `zh` (Chinese), `en` (English), `es` (Spanish), `pt` (Portuguese), `fr` (French), `de` (German), `ja` (Japanese), `ko` (Korean), `ar` (Arabic). Default value: `zh`.
+        # - VoiceoverLanguage (string, optional): The voiceover language. Valid values: `zh` (Chinese), `en` (English), `es` (Spanish), `pt` (Portuguese), `fr` (French), `de` (German), `ja` (Japanese), `ko` (Korean), and `ar` (Arabic). Default value: `zh`.
         self.remake_params = remake_params
-        # The remake type, which determines the structure of `RemakeParams`. Currently, only `faithful-remake` is supported (faithful remake: remakes the original hit video segment by segment, replacing the product and model).
+        # The remake type. This parameter determines the structure of RemakeParams. Currently, only faithful-remake is supported. faithful-remake indicates a faithful remake that replicates the original viral structure paragraph by paragraph and replaces the product and avatar.
         self.remake_type = remake_type
-        # The custom parameters in JSON format. These parameters are returned as-is in the callback result (for example, newsKey). The system reserved field NotifyAddress specifies the callback URL. The system sends a callback to this URL after the task is completed.
+        # The custom parameters. This parameter is a JSON string and is returned as-is in the callback result, such as newsKey. NotifyAddress is a system-reserved field for the callback URL. The system sends a callback to this URL after the task is completed.
         self.user_data = user_data
 
     def validate(self):

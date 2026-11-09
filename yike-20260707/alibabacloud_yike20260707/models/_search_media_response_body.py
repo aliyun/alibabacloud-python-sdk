@@ -17,17 +17,17 @@ class SearchMediaResponseBody(DaraModel):
         success: str = None,
         total: int = None,
     ):
-        # The response code.
+        # The return code.
         self.code = code
-        # The collection of media assets that meet the specified criteria.
+        # The collection of media assets that meet the requirements.
         self.media_info_list = media_info_list
         # The request ID.
         self.request_id = request_id
-        # The pagination token.
+        # The scroll token.
         self.scroll_token = scroll_token
-        # Indicates whether the call was successful.
+        # Indicates whether the call is successful.
         self.success = success
-        # The total number of media assets that meet the specified criteria.
+        # The total number of media assets that meet the requirements.
         self.total = total
 
     def validate(self):
@@ -98,7 +98,7 @@ class SearchMediaResponseBodyMediaInfoList(DaraModel):
     ):
         # The list of media files.
         self.file_info_list = file_info_list
-        # The basic information of the media asset.
+        # The basic media asset information.
         self.media_basic_info = media_basic_info
         # The dynamic data of the media asset.
         self.media_dynamic_info = media_dynamic_info
@@ -428,7 +428,7 @@ class SearchMediaResponseBodyMediaInfoListFileInfoList(DaraModel):
         self,
         file_basic_info: main_models.SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo = None,
     ):
-        # The basic file information, including duration and size.
+        # The basic file information, including the duration and size.
         self.file_basic_info = file_basic_info
 
     def validate(self):
@@ -479,7 +479,7 @@ class SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo(DaraModel):
         self.duration = duration
         # The file name.
         self.file_name = file_name
-        # The file size, in bytes.
+        # The file size in bytes.
         self.file_size = file_size
         # The file status.
         self.file_status = file_status
@@ -495,7 +495,7 @@ class SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo(DaraModel):
         self.images_input = images_input
         # The modification time.
         self.modified_time = modified_time
-        # The file storage region.
+        # The storage region of the file.
         self.region = region
         # The width.
         self.width = width

@@ -12,8 +12,9 @@ class DeleteMediasRequest(DaraModel):
         input_urls: str = None,
         media_ids: str = None,
     ):
+        # The business configuration. It is a JSON string that can contain ProductionId (the project ID).
         self.biz_config = biz_config
-        # Specifies whether to delete the physical files at the same time.
+        # Specifies whether to delete physical files at the same time.
         self.delete_physical_files = delete_physical_files
         # Not supported.
         self.input_urls = input_urls

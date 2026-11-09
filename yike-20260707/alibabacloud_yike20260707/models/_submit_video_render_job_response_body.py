@@ -13,7 +13,7 @@ class SubmitVideoRenderJobResponseBody(DaraModel):
     ):
         # The error code. This parameter is returned when the task is in the Failed state.
         self.error_code = error_code
-        # The task ID.
+        # The job ID.
         self.job_id = job_id
         # The request ID.
         self.request_id = request_id

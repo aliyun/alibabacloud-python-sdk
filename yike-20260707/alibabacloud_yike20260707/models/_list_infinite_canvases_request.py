@@ -15,23 +15,23 @@ class ListInfiniteCanvasesRequest(DaraModel):
         sort_order: str = None,
         workspace_id: str = None,
     ):
-        # The keyword for querying site monitoring tasks. Supports fuzzy match based on task name or task address.
+        # The keyword used to query site monitoring tasks. Note: Fuzzy match is supported based on the task name or task address.
         self.keyword = keyword
         # The current page number. Default value: 1.
         self.page_no = page_no
         # The number of entries per page.
         self.page_size = page_size
+        # The project ID.
         self.production_id = production_id
         # The sort field and sort order. Separate multiple values with commas (,).
         self.sort_by = sort_by
-        # The sort direction.
-        # 
-        # Valid values:
-        # - Asc: Ascending order.
-        # - Desc: Descending order.
+        # The sort direction. Valid values:
+        # - Asc: ascending order
+        # - Desc: descending order
         # 
         # Default value: Desc.
         self.sort_order = sort_order
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

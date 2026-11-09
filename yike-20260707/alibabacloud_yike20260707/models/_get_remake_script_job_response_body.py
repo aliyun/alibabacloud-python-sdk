@@ -58,19 +58,19 @@ class GetRemakeScriptJobResponseBodyJob(DaraModel):
         self.error_code = error_code
         # The error message. Returned when the status is Failed.
         self.error_message = error_message
-        # The task ID.
+        # The job ID.
         self.job_id = job_id
-        # The file URL of the script imitation result. The file content is in JSON format of the creative script.
+        # The URL of the file that contains the script rewriting result. The file content is the creative script in JSON format.
         self.result = result
-        # The file status. Valid values:
+        # The status. Valid values:
         # 
-        # - Created: Created.
-        # - Executing: Executing.
-        # - Finished: Finished.
-        # - Failed: Failed.
-        # - Deleted: Deleted.
+        # - Created: The task is created.
+        # - Executing: The task is executing.
+        # - Finished: The task is finished.
+        # - Failed: The task failed.
+        # - Deleted: The task is deleted.
         self.status = status
-        # The user-defined parameter, in JSON format string.
+        # The user-defined parameter, which is a string in JSON format.
         self.user_data = user_data
 
     def validate(self):

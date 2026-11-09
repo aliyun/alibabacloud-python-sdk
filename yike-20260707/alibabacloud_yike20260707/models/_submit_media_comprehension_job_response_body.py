@@ -11,7 +11,7 @@ class SubmitMediaComprehensionJobResponseBody(DaraModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The business error code. An empty string is returned when the submission is successful.
+        # The business error code. It is an empty string if the submission is successful.
         self.error_code = error_code
         # The job ID.
         self.job_id = job_id

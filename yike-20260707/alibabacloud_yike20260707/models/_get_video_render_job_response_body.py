@@ -11,7 +11,7 @@ class GetVideoRenderJobResponseBody(DaraModel):
         job: main_models.GetVideoRenderJobResponseBodyJob = None,
         request_id: str = None,
     ):
-        # The video rendering and composition task object.
+        # The video rendering and compositing task object.
         self.job = job
         # The request ID.
         self.request_id = request_id
@@ -56,27 +56,27 @@ class GetVideoRenderJobResponseBodyJob(DaraModel):
         status: str = None,
         user_data: str = None,
     ):
-        # The online editing project ID, which can be used for secondary editing of the output video.
+        # The ID of the online editing project, which can be used for secondary editing of the produced video.
         self.editing_project_id = editing_project_id
-        # The error code. This parameter is returned when the task is in the Failed state.
+        # The error code. This parameter is returned when the job is in the Failed state.
         self.error_code = error_code
-        # The error message. This parameter is returned when the task is in the Failed state.
+        # The error message. This parameter is returned when the job is in the Failed state.
         self.error_message = error_message
-        # The task ID.
+        # The job ID.
         self.job_id = job_id
-        # The narration language of the output video.
+        # The voiceover language of the produced video.
         self.language = language
-        # The download URL of the rendered and composed video.
+        # The download URL of the rendered and composited video.
         self.result = result
-        # The task status. Valid values:
+        # The job status. Valid values:
         # 
-        # - Created: The task is created.
-        # - Executing: The task is being executed.
-        # - Finished: The task is completed.
-        # - Failed: The task has failed.
-        # - Deleted: The task is deleted.
+        # - Created: The job is created.
+        # - Executing: The job is being executed.
+        # - Finished: The job is completed.
+        # - Failed: The job failed.
+        # - Deleted: The job is deleted.
         self.status = status
-        # The custom user data in JSON format.
+        # The user-defined parameter, which is a JSON-formatted string.
         self.user_data = user_data
 
     def validate(self):

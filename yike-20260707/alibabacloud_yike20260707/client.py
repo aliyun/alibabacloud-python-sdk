@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Dict
 
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -20,6 +21,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'Yike'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('yike', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -1169,6 +1173,76 @@ class Client(OpenApiClient):
     ) -> main_models.GetRemakeScriptJobResponse:
         runtime = RuntimeOptions()
         return await self.get_remake_script_job_with_options_async(request, runtime)
+
+    def get_video_creative_generation_job_with_options(
+        self,
+        request: main_models.GetVideoCreativeGenerationJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetVideoCreativeGenerationJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetVideoCreativeGenerationJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetVideoCreativeGenerationJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_video_creative_generation_job_with_options_async(
+        self,
+        request: main_models.GetVideoCreativeGenerationJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetVideoCreativeGenerationJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetVideoCreativeGenerationJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetVideoCreativeGenerationJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_video_creative_generation_job(
+        self,
+        request: main_models.GetVideoCreativeGenerationJobRequest,
+    ) -> main_models.GetVideoCreativeGenerationJobResponse:
+        runtime = RuntimeOptions()
+        return self.get_video_creative_generation_job_with_options(request, runtime)
+
+    async def get_video_creative_generation_job_async(
+        self,
+        request: main_models.GetVideoCreativeGenerationJobRequest,
+    ) -> main_models.GetVideoCreativeGenerationJobResponse:
+        runtime = RuntimeOptions()
+        return await self.get_video_creative_generation_job_with_options_async(request, runtime)
 
     def get_video_detext_job_with_options(
         self,
@@ -2327,6 +2401,108 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitRemakeScriptJobResponse:
         runtime = RuntimeOptions()
         return await self.submit_remake_script_job_with_options_async(request, runtime)
+
+    def submit_video_creative_generation_job_with_options(
+        self,
+        request: main_models.SubmitVideoCreativeGenerationJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitVideoCreativeGenerationJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.aspect_ratio):
+            query['AspectRatio'] = request.aspect_ratio
+        if not DaraCore.is_null(request.avatar_data):
+            query['AvatarData'] = request.avatar_data
+        if not DaraCore.is_null(request.job_params):
+            query['JobParams'] = request.job_params
+        if not DaraCore.is_null(request.output_languages):
+            query['OutputLanguages'] = request.output_languages
+        if not DaraCore.is_null(request.resolution):
+            query['Resolution'] = request.resolution
+        if not DaraCore.is_null(request.scene_type):
+            query['SceneType'] = request.scene_type
+        if not DaraCore.is_null(request.user_data):
+            query['UserData'] = request.user_data
+        if not DaraCore.is_null(request.user_materials):
+            query['UserMaterials'] = request.user_materials
+        if not DaraCore.is_null(request.with_subtitles):
+            query['WithSubtitles'] = request.with_subtitles
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitVideoCreativeGenerationJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitVideoCreativeGenerationJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_video_creative_generation_job_with_options_async(
+        self,
+        request: main_models.SubmitVideoCreativeGenerationJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitVideoCreativeGenerationJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.aspect_ratio):
+            query['AspectRatio'] = request.aspect_ratio
+        if not DaraCore.is_null(request.avatar_data):
+            query['AvatarData'] = request.avatar_data
+        if not DaraCore.is_null(request.job_params):
+            query['JobParams'] = request.job_params
+        if not DaraCore.is_null(request.output_languages):
+            query['OutputLanguages'] = request.output_languages
+        if not DaraCore.is_null(request.resolution):
+            query['Resolution'] = request.resolution
+        if not DaraCore.is_null(request.scene_type):
+            query['SceneType'] = request.scene_type
+        if not DaraCore.is_null(request.user_data):
+            query['UserData'] = request.user_data
+        if not DaraCore.is_null(request.user_materials):
+            query['UserMaterials'] = request.user_materials
+        if not DaraCore.is_null(request.with_subtitles):
+            query['WithSubtitles'] = request.with_subtitles
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitVideoCreativeGenerationJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitVideoCreativeGenerationJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_video_creative_generation_job(
+        self,
+        request: main_models.SubmitVideoCreativeGenerationJobRequest,
+    ) -> main_models.SubmitVideoCreativeGenerationJobResponse:
+        runtime = RuntimeOptions()
+        return self.submit_video_creative_generation_job_with_options(request, runtime)
+
+    async def submit_video_creative_generation_job_async(
+        self,
+        request: main_models.SubmitVideoCreativeGenerationJobRequest,
+    ) -> main_models.SubmitVideoCreativeGenerationJobResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_video_creative_generation_job_with_options_async(request, runtime)
 
     def submit_video_detext_job_with_options(
         self,

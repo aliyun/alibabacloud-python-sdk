@@ -47,6 +47,9 @@ from ._get_media_comprehension_job_response import GetMediaComprehensionJobRespo
 from ._get_remake_script_job_request import GetRemakeScriptJobRequest
 from ._get_remake_script_job_response_body import GetRemakeScriptJobResponseBody
 from ._get_remake_script_job_response import GetRemakeScriptJobResponse
+from ._get_video_creative_generation_job_request import GetVideoCreativeGenerationJobRequest
+from ._get_video_creative_generation_job_response_body import GetVideoCreativeGenerationJobResponseBody
+from ._get_video_creative_generation_job_response import GetVideoCreativeGenerationJobResponse
 from ._get_video_detext_job_request import GetVideoDetextJobRequest
 from ._get_video_detext_job_response_body import GetVideoDetextJobResponseBody
 from ._get_video_detext_job_response import GetVideoDetextJobResponse
@@ -89,6 +92,9 @@ from ._submit_media_comprehension_job_response import SubmitMediaComprehensionJo
 from ._submit_remake_script_job_request import SubmitRemakeScriptJobRequest
 from ._submit_remake_script_job_response_body import SubmitRemakeScriptJobResponseBody
 from ._submit_remake_script_job_response import SubmitRemakeScriptJobResponse
+from ._submit_video_creative_generation_job_request import SubmitVideoCreativeGenerationJobRequest
+from ._submit_video_creative_generation_job_response_body import SubmitVideoCreativeGenerationJobResponseBody
+from ._submit_video_creative_generation_job_response import SubmitVideoCreativeGenerationJobResponse
 from ._submit_video_detext_job_request import SubmitVideoDetextJobRequest
 from ._submit_video_detext_job_response_body import SubmitVideoDetextJobResponseBody
 from ._submit_video_detext_job_response import SubmitVideoDetextJobResponse
@@ -137,6 +143,7 @@ from ._get_media_response_body import GetMediaResponseBodyMediaInfo
 from ._get_media_comprehension_job_response_body import GetMediaComprehensionJobResponseBodyJob
 from ._get_media_comprehension_job_response_body import GetMediaComprehensionJobResponseBodyMediaComprehensionJob
 from ._get_remake_script_job_response_body import GetRemakeScriptJobResponseBodyJob
+from ._get_video_creative_generation_job_response_body import GetVideoCreativeGenerationJobResponseBodyJobResult
 from ._get_video_detext_job_response_body import GetVideoDetextJobResponseBodyJob
 from ._get_video_generation_job_response_body import GetVideoGenerationJobResponseBodyVideoGenerationJob
 from ._get_video_render_job_response_body import GetVideoRenderJobResponseBodyJob
@@ -198,6 +205,9 @@ __all__ = [
     GetRemakeScriptJobRequest,
     GetRemakeScriptJobResponseBody,
     GetRemakeScriptJobResponse,
+    GetVideoCreativeGenerationJobRequest,
+    GetVideoCreativeGenerationJobResponseBody,
+    GetVideoCreativeGenerationJobResponse,
     GetVideoDetextJobRequest,
     GetVideoDetextJobResponseBody,
     GetVideoDetextJobResponse,
@@ -240,6 +250,9 @@ __all__ = [
     SubmitRemakeScriptJobRequest,
     SubmitRemakeScriptJobResponseBody,
     SubmitRemakeScriptJobResponse,
+    SubmitVideoCreativeGenerationJobRequest,
+    SubmitVideoCreativeGenerationJobResponseBody,
+    SubmitVideoCreativeGenerationJobResponse,
     SubmitVideoDetextJobRequest,
     SubmitVideoDetextJobResponseBody,
     SubmitVideoDetextJobResponse,
@@ -288,6 +301,7 @@ __all__ = [
     GetMediaComprehensionJobResponseBodyJob,
     GetMediaComprehensionJobResponseBodyMediaComprehensionJob,
     GetRemakeScriptJobResponseBodyJob,
+    GetVideoCreativeGenerationJobResponseBodyJobResult,
     GetVideoDetextJobResponseBodyJob,
     GetVideoGenerationJobResponseBodyVideoGenerationJob,
     GetVideoRenderJobResponseBodyJob,

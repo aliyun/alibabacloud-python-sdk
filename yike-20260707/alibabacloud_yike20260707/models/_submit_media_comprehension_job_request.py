@@ -12,21 +12,21 @@ class SubmitMediaComprehensionJobRequest(DaraModel):
         job_type: str = None,
         user_data: str = None,
     ):
-        # The input material. JSON string with the following structure:
+        # The input material. It is a JSON string with the following structure:
         # 
-        # - Medias (Array<Object>, required): The list of media assets. Contains 1 to 10 elements. Each element includes the following fields:
-        #   - Type (String, required): The media asset type. Valid values: video or image (case-insensitive).
-        #   - Url (String, either Url or MediaId is required): The URL of the media asset. The URL must start with http:// or https:// and cannot exceed 2048 characters in length. Unregistered URLs are automatically registered as media assets.
-        #   - MediaId (String, either Url or MediaId is required): The ID of a registered media asset. If both Url and MediaId are specified, MediaId takes precedence.
+        # - Medias (Array<Object>, required): The list of media assets. It contains 1 to 10 elements. Each element includes the following fields:
+        #   - Type (String, required): The type of the media asset. Valid values: video and image. The value is not case-sensitive.
+        #   - Url (String, mutually exclusive with MediaId): The URL of the media asset. It must start with http:// or https:// and be up to 2,048 characters in length. Unregistered URLs are automatically registered as media assets.
+        #   - MediaId (String, mutually exclusive with Url): The ID of the registered media asset. If both Url and MediaId are specified, MediaId takes precedence.
         self.input = input
-        # The analysis parameters. JSON string. The total length cannot exceed 65536 characters, and the total number of fields cannot exceed 20.
+        # The analysis parameters. It is a JSON string with a maximum length of 65,536 characters and a maximum of 20 fields.
         self.job_params = job_params
-        # The job type.
+        # The job type. Valid values:
         # 
-        # - VideoBreakdown: viral video breakdown. Requires Medias to contain exactly 1 element with Type=video.
-        # - ProductRecognition: product image information recognition. Requires all elements in Medias to have Type=image.
+        # - VideoBreakdown: viral video breakdown. The Medias array must contain exactly one element with Type set to video.
+        # - ProductRecognition: product image information recognition. All elements in the Medias array must have Type set to image.
         self.job_type = job_type
-        # The custom parameters. JSON string that is returned as-is in the callback result (for example, newsKey). The system reserved field NotifyAddress specifies the callback URL. The callback is triggered after the job is completed.
+        # The custom parameters. It is a JSON string that is returned as-is in the callback result, such as newsKey. NotifyAddress is a system-reserved field for the callback URL. A callback is triggered to this URL after the job is completed.
         self.user_data = user_data
 
     def validate(self):

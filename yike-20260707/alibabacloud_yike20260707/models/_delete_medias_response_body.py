@@ -13,9 +13,9 @@ class DeleteMediasResponseBody(DaraModel):
         ignored_list: List[str] = None,
         request_id: str = None,
     ):
-        # The IDs or input URLs that are forbidden from being deleted.
+        # The IDs or inputUrls that are forbidden to be deleted.
         self.forbidden_list = forbidden_list
-        # The ignored IDs or input URLs, which are invalid or have retrieval errors.
+        # The ignored IDs or inputUrls (invalid items or items with retrieval errors).
         self.ignored_list = ignored_list
         # The request ID.
         self.request_id = request_id

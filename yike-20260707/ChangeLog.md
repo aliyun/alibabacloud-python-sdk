@@ -1,3 +1,8 @@
+2026-11-09 Version: 2.7.0
+- Support API GetVideoCreativeGenerationJob.
+- Support API SubmitVideoCreativeGenerationJob.
+
+
 2026-09-15 Version: 2.6.0
 - Support API CancelGenerationJob.
 

@@ -91,13 +91,13 @@ class ListInfiniteCanvasesResponseBodyCanvasList(DaraModel):
     ):
         # The ID of the infinite canvas.
         self.canvas_id = canvas_id
-        # The cover URL.
+        # The URL of the cover image.
         self.cover_url = cover_url
         # The creation time, in milliseconds.
         self.gmt_create = gmt_create
         # The last modification time.
         self.gmt_modified = gmt_modified
-        # The thumbnail height, in px.
+        # The height of the thumbnail, in pixels.
         self.thumbnail = thumbnail
         # The title of the infinite canvas.
         self.title = title

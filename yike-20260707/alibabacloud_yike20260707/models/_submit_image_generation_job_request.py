@@ -28,10 +28,13 @@ class SubmitImageGenerationJobRequest(DaraModel):
         # 
         # - Prompt: String. Required. The prompt text.
         # - Medias: A list of media items. Required when the task type is `image_to_image`. A maximum of 9 items are supported.
-        # > The Media structure contains the following fields: Type, the media type (String, valid value: image). URL, the media download URL (String). MediaId, the media asset ID (String).
+        # > The Media structure contains the following fields: Type, the media type, String, valid value: image. URL, the media download URL, String. MediaId, the media asset ID, String.
         # >
         self.input = input
-        # The task feature parameters. The value is a JSON string. You do not need to set this parameter currently.
+        # The task parameters. The value is a JSON string.
+        # 
+        # - PromptExtend: Specifies whether to enable prompt optimization. Boolean. Valid values: `true` and `false`.
+        # - PromptExtendMode: The prompt extension mode. Valid values: `direct` (default) and `agent` (supported for text-to-image generation). Only qwen-image-3.0 supports this parameter.
         self.job_parameters = job_parameters
         # The type of the generation task. This parameter is required. Valid values:
         # 
@@ -45,7 +48,7 @@ class SubmitImageGenerationJobRequest(DaraModel):
         # - qwen-image-2.0
         # - wan2.7-image
         self.model = model
-        # The number of images. Valid values: 1 to 4. Default value: 1.
+        # The number of images to generate. Valid values: 1 to 4. Default value: 1.
         self.n = n
         # The resolution. Valid values: 1K (default), 2K, and 4K.
         self.resolution = resolution
