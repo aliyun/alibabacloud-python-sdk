@@ -83,13 +83,13 @@ class ImageUpscaleResponseBodyData(DaraModel):
     ):
         # The high-definition upscaling result data.
         self.data = data
-        # The error code returned when the call fails, such as InvalidParameter or DownstreamUnavailable.
+        # The error code. Returned upon failure, such as InvalidParameter or DownstreamUnavailable.
         self.error_code = error_code
-        # The error message returned when the call fails.
+        # The error message. Returned upon failure.
         self.error_message = error_message
-        # Indicates whether the call is successful. A value of true indicates success, and a value of false indicates failure.
+        # Indicates whether the operation is successful. A value of true indicates success, and a value of false indicates failure.
         self.success = success
-        # The ID of the downstream task. This parameter is left empty for synchronous API calls.
+        # The downstream task ID. This parameter is empty for synchronous operations.
         self.task_id = task_id
         # The usage information.
         self.usage_map = usage_map
@@ -186,7 +186,7 @@ class ImageUpscaleResponseBodyDataData(DaraModel):
     ):
         # The actual height of the generated image.
         self.image_height = image_height
-        # The result information of the upscaled single image.
+        # The result information of the high-definition upscaling for a single image.
         self.image_url = image_url
         # The actual width of the generated image.
         self.image_width = image_width

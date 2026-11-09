@@ -27,43 +27,43 @@ class VisionFlowRequest(DaraModel):
         translating_brand_in_the_product: bool = None,
         upscale_factor: int = None,
     ):
-        # The AI capabilities to apply (1 = Intelligent Element Detection, 2 = Intelligent Matting, 3 = Intelligent Removal, 4 = Image Translation Pro, 5 = Intelligent Cropping, 6 = HD Upscaling). Multiple selections allowed.
+        # The AI capabilities to be processed. Multiple values are supported. Valid values: 1 (Intelligent element recognition), 2 (Intelligent cutout), 3 (Intelligent erasure), 4 (Image translation Pro), 5 (Intelligent cropping), and 6 (High-definition upscaling).
         # 
         # This parameter is required.
         self.ability = ability
-        # The background type of the output image. Valid values: WHITE_BACKGROUND (white background) and TRANSPARENT (transparent background). This parameter is required when the Intelligent Matting capability is selected.
+        # The background type of the returned image. Valid values: WHITE_BACKGROUND (White background image) and TRANSPARENT (Transparent background image). Required when the intelligent cutout capability is selected.
         self.back_ground_type = back_ground_type
-        # The glossary ID. Optional. Create a glossary separately in the console and provide its ID. If left empty, translation results are not modified.
+        # The ID of the intervention glossary. Optional. You must create the glossary in the console and provide its ID. If this parameter is left empty, the translation results are not modified.
         self.glossary = glossary
-        # The URL of the image to process. This parameter is required. Resolution must be greater than 256 × 256, long side no greater than 1920 pixels, short side no greater than 1080 pixels. Maximum size: 5 MB. Supported formats: png, jpeg, jpg, bmp, and webp.
+        # The URL of the image to be processed. Required. The resolution must be greater than 256×256, the long side must not exceed 1920 pixels, and the short side must not exceed 1080 pixels. The size must not exceed 5 MB. Supported formats include PNG, JPEG, JPG, BMP, and WEBP.
         # 
         # This parameter is required.
         self.image_url = image_url
-        # Specifies whether to translate text on the image subject. Optional. Default value: false. Helps protect embedded information such as product names from being translated.
+        # Specifies whether to translate text on the image subject. Optional. Default value: false. This parameter helps protect embedded information such as product names from being translated.
         self.including_product_area = including_product_area
-        # Specifies whether images with the detected elements proceed to subsequent processing. A value of true indicates that images containing the elements proceed to subsequent processing. A value of false indicates that they do not. This parameter is required when the Intelligent Element Detection capability is selected.
+        # Specifies whether to include images with the specified elements in subsequent processing. A value of true indicates that images with the elements are included in subsequent processing. A value of false indicates that images with the elements are not included. Required when the intelligent element recognition capability is selected.
         self.is_filter = is_filter
-        # The specific removal region in RLE format. Optional. If provided, this parameter takes priority and the ObjectRemoveElements and NonobjectRemoveElements parameters are ignored.
+        # The specific erasure area in Run-Length Encoding (RLE) format. Optional. If this parameter is specified, it takes precedence and the ObjectRemoveElements and NonobjectRemoveElements parameters are ignored.
         self.mask = mask
-        # The elements to detect on the non-subject area of the image (1 = Watermark, 2 = Logo, 3 = Text, 4 = Text-bearing color block). Multiple selections allowed. When the Intelligent Element Detection capability is selected, at least one of NonobjectDetectElements or ObjectDetectElements is required.
+        # The elements to detect on the non-subject area of the image. Multiple values are supported. Valid values: 1 (Watermark), 2 (Logo), 3 (Text), and 4 (Text block). When the intelligent element recognition capability is selected, at least one of this parameter and ObjectDetectElements must be specified.
         self.nonobject_detect_elements = nonobject_detect_elements
-        # The elements to remove from the non-subject area of the image (1 = Transparent text block, 2 = Specific name, 3 = Text, 4 = Overlay patch). Multiple selections allowed. When the Intelligent Removal capability is selected, at least one of NonobjectRemoveElements or ObjectRemoveElements is required.
+        # The elements to remove from the non-subject area of the image. Multiple values are supported. Valid values: 1 (Transparent text block), 2 (Specific name), 3 (Text), and 4 (Cluttered text). When the intelligent erasure capability is selected, at least one of this parameter and ObjectRemoveElements must be specified.
         self.nonobject_remove_elements = nonobject_remove_elements
-        # The elements to detect on the image subject (1 = Watermark, 2 = Logo, 3 = Text, 4 = Text-bearing color block). Multiple selections allowed. When the Intelligent Element Detection capability is selected, at least one of ObjectDetectElements or NonobjectDetectElements is required.
+        # The elements to detect on the image subject. Multiple values are supported. Valid values: 1 (Watermark), 2 (Logo), 3 (Text), and 4 (Text block). When the intelligent element recognition capability is selected, at least one of this parameter and NonobjectDetectElements must be specified.
         self.object_detect_elements = object_detect_elements
-        # The elements to remove from the image subject (1 = Transparent text block, 2 = Specific name, 3 = Text, 4 = Overlay patch). Multiple selections allowed. When the Intelligent Removal capability is selected, at least one of ObjectRemoveElements or NonobjectRemoveElements is required.
+        # The elements to remove from the image subject. Multiple values are supported. Valid values: 1 (Transparent text block), 2 (Specific name), 3 (Text), and 4 (Cluttered text). When the intelligent erasure capability is selected, at least one of this parameter and NonobjectRemoveElements must be specified.
         self.object_remove_elements = object_remove_elements
-        # The source language code. Optional. For supported language pairs, refer to the supported translation language pairs list.
+        # The source language code. Optional. For supported language pairs, see the list of supported translation languages.
         self.source_language = source_language
-        # The desired height of the cropped image, in pixels. Valid values: 100 to 5000. This parameter is required when the Intelligent Cropping capability is selected.
+        # The expected height of the cropped image, in pixels. Valid values: 100 to 5000. Required when the intelligent cropping capability is selected.
         self.target_height = target_height
-        # The target language code. Optional. For supported language pairs, refer to the supported translation language pairs list.
+        # The target language code. Optional. For supported language pairs, see the list of supported translation languages.
         self.target_language = target_language
-        # The desired width of the cropped image, in pixels. Valid values: 100 to 5000. This parameter is required when the Intelligent Cropping capability is selected.
+        # The expected width of the cropped image, in pixels. Valid values: 100 to 5000. Required when the intelligent cropping capability is selected.
         self.target_width = target_width
-        # Specifies whether to translate brand names in the image. Optional. Default value: false. Helps protect brand name information from being translated.
+        # Specifies whether to translate brand names in the image. Optional. Default value: false. This parameter helps protect brand name information from being translated.
         self.translating_brand_in_the_product = translating_brand_in_the_product
-        # The image upscaling factor. Optional. Default value: 2. Valid values: 2 to 4. This parameter is required when the HD Upscaling capability is selected.
+        # The image upscaling factor. Optional. Default value: 2. Valid values: 2 to 4. Required when the high-definition upscaling capability is selected.
         self.upscale_factor = upscale_factor
 
     def validate(self):

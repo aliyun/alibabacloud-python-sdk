@@ -1,3 +1,6 @@
+2026-11-09 Version: 5.13.2
+- Generated python 2026-04-28 for Aidge.
+
 2026-11-03 Version: 5.13.0
 - Support API ImageUpscale.
 - Update API ImageMatting: add response parameters Body.Data.StructData.
