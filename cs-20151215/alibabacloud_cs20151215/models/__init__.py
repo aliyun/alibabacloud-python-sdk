@@ -233,6 +233,9 @@ from ._install_cluster_addons_response import InstallClusterAddonsResponse
 from ._install_node_pool_components_request import InstallNodePoolComponentsRequest
 from ._install_node_pool_components_response_body import InstallNodePoolComponentsResponseBody
 from ._install_node_pool_components_response import InstallNodePoolComponentsResponse
+from ._invoke_agent_request import InvokeAgentRequest
+from ._invoke_agent_response_body import InvokeAgentResponseBody
+from ._invoke_agent_response import InvokeAgentResponse
 from ._list_addons_request import ListAddonsRequest
 from ._list_addons_response_body import ListAddonsResponseBody
 from ._list_addons_response import ListAddonsResponse
@@ -599,6 +602,15 @@ from ._install_node_pool_components_request import InstallNodePoolComponentsRequ
 from ._install_node_pool_components_request import InstallNodePoolComponentsRequestComponentsConfig
 from ._install_node_pool_components_request import InstallNodePoolComponentsRequestComponents
 from ._install_node_pool_components_request import InstallNodePoolComponentsRequestRollingPolicy
+from ._invoke_agent_request import InvokeAgentRequestContext
+from ._invoke_agent_request import InvokeAgentRequestForwardedProps
+from ._invoke_agent_request import InvokeAgentRequestMessagesToolCallsFunction
+from ._invoke_agent_request import InvokeAgentRequestMessagesToolCalls
+from ._invoke_agent_request import InvokeAgentRequestMessages
+from ._invoke_agent_request import InvokeAgentRequestResume
+from ._invoke_agent_request import InvokeAgentRequestTools
+from ._invoke_agent_response_body import InvokeAgentResponseBodyOutcomeInterrupts
+from ._invoke_agent_response_body import InvokeAgentResponseBodyOutcome
 from ._list_addons_response_body import ListAddonsResponseBodyAddons
 from ._list_auto_repair_policies_response_body import ListAutoRepairPoliciesResponseBodyItemsRulesIncidents
 from ._list_auto_repair_policies_response_body import ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedureInterventionApprovedLabel
@@ -906,6 +918,9 @@ __all__ = [
     InstallNodePoolComponentsRequest,
     InstallNodePoolComponentsResponseBody,
     InstallNodePoolComponentsResponse,
+    InvokeAgentRequest,
+    InvokeAgentResponseBody,
+    InvokeAgentResponse,
     ListAddonsRequest,
     ListAddonsResponseBody,
     ListAddonsResponse,
@@ -1272,6 +1287,15 @@ __all__ = [
     InstallNodePoolComponentsRequestComponentsConfig,
     InstallNodePoolComponentsRequestComponents,
     InstallNodePoolComponentsRequestRollingPolicy,
+    InvokeAgentRequestContext,
+    InvokeAgentRequestForwardedProps,
+    InvokeAgentRequestMessagesToolCallsFunction,
+    InvokeAgentRequestMessagesToolCalls,
+    InvokeAgentRequestMessages,
+    InvokeAgentRequestResume,
+    InvokeAgentRequestTools,
+    InvokeAgentResponseBodyOutcomeInterrupts,
+    InvokeAgentResponseBodyOutcome,
     ListAddonsResponseBodyAddons,
     ListAutoRepairPoliciesResponseBodyItemsRulesIncidents,
     ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedureInterventionApprovedLabel,

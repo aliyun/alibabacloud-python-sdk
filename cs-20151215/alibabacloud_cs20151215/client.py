@@ -2,7 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
+import json
+
+from typing import Dict, Generator, AsyncGenerator
 
 from alibabacloud_cs20151215 import models as main_models
 from alibabacloud_gateway_pop.client import Client as GatewayClientClient
@@ -7914,6 +7916,224 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.install_node_pool_components_with_options_async(cluster_id, node_pool_id, request, headers, runtime)
+
+    def invoke_agent_with_sse(
+        self,
+        request: main_models.InvokeAgentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.InvokeAgentResponse, None, None]:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.context):
+            body['context'] = request.context
+        if not DaraCore.is_null(request.forwarded_props):
+            body['forwardedProps'] = request.forwarded_props
+        if not DaraCore.is_null(request.messages):
+            body['messages'] = request.messages
+        if not DaraCore.is_null(request.parent_run_id):
+            body['parentRunId'] = request.parent_run_id
+        if not DaraCore.is_null(request.resume):
+            body['resume'] = request.resume
+        if not DaraCore.is_null(request.run_id):
+            body['runId'] = request.run_id
+        if not DaraCore.is_null(request.state):
+            body['state'] = request.state
+        if not DaraCore.is_null(request.thread_id):
+            body['threadId'] = request.thread_id
+        if not DaraCore.is_null(request.tools):
+            body['tools'] = request.tools
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'InvokeAgent',
+            version = '2015-12-15',
+            protocol = 'HTTPS',
+            pathname = f'/intelligence/invoke',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.InvokeAgentResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    async def invoke_agent_with_sse_async(
+        self,
+        request: main_models.InvokeAgentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.InvokeAgentResponse, None, None]:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.context):
+            body['context'] = request.context
+        if not DaraCore.is_null(request.forwarded_props):
+            body['forwardedProps'] = request.forwarded_props
+        if not DaraCore.is_null(request.messages):
+            body['messages'] = request.messages
+        if not DaraCore.is_null(request.parent_run_id):
+            body['parentRunId'] = request.parent_run_id
+        if not DaraCore.is_null(request.resume):
+            body['resume'] = request.resume
+        if not DaraCore.is_null(request.run_id):
+            body['runId'] = request.run_id
+        if not DaraCore.is_null(request.state):
+            body['state'] = request.state
+        if not DaraCore.is_null(request.thread_id):
+            body['threadId'] = request.thread_id
+        if not DaraCore.is_null(request.tools):
+            body['tools'] = request.tools
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'InvokeAgent',
+            version = '2015-12-15',
+            protocol = 'HTTPS',
+            pathname = f'/intelligence/invoke',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.InvokeAgentResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    def invoke_agent_with_options(
+        self,
+        request: main_models.InvokeAgentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.InvokeAgentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.context):
+            body['context'] = request.context
+        if not DaraCore.is_null(request.forwarded_props):
+            body['forwardedProps'] = request.forwarded_props
+        if not DaraCore.is_null(request.messages):
+            body['messages'] = request.messages
+        if not DaraCore.is_null(request.parent_run_id):
+            body['parentRunId'] = request.parent_run_id
+        if not DaraCore.is_null(request.resume):
+            body['resume'] = request.resume
+        if not DaraCore.is_null(request.run_id):
+            body['runId'] = request.run_id
+        if not DaraCore.is_null(request.state):
+            body['state'] = request.state
+        if not DaraCore.is_null(request.thread_id):
+            body['threadId'] = request.thread_id
+        if not DaraCore.is_null(request.tools):
+            body['tools'] = request.tools
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'InvokeAgent',
+            version = '2015-12-15',
+            protocol = 'HTTPS',
+            pathname = f'/intelligence/invoke',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InvokeAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def invoke_agent_with_options_async(
+        self,
+        request: main_models.InvokeAgentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.InvokeAgentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.context):
+            body['context'] = request.context
+        if not DaraCore.is_null(request.forwarded_props):
+            body['forwardedProps'] = request.forwarded_props
+        if not DaraCore.is_null(request.messages):
+            body['messages'] = request.messages
+        if not DaraCore.is_null(request.parent_run_id):
+            body['parentRunId'] = request.parent_run_id
+        if not DaraCore.is_null(request.resume):
+            body['resume'] = request.resume
+        if not DaraCore.is_null(request.run_id):
+            body['runId'] = request.run_id
+        if not DaraCore.is_null(request.state):
+            body['state'] = request.state
+        if not DaraCore.is_null(request.thread_id):
+            body['threadId'] = request.thread_id
+        if not DaraCore.is_null(request.tools):
+            body['tools'] = request.tools
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'InvokeAgent',
+            version = '2015-12-15',
+            protocol = 'HTTPS',
+            pathname = f'/intelligence/invoke',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InvokeAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def invoke_agent(
+        self,
+        request: main_models.InvokeAgentRequest,
+    ) -> main_models.InvokeAgentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.invoke_agent_with_options(request, headers, runtime)
+
+    async def invoke_agent_async(
+        self,
+        request: main_models.InvokeAgentRequest,
+    ) -> main_models.InvokeAgentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.invoke_agent_with_options_async(request, headers, runtime)
 
     def list_addons_with_options(
         self,

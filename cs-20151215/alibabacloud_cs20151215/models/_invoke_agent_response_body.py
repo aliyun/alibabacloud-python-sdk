@@ -1,0 +1,280 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import Any, List, Dict
+
+from alibabacloud_cs20151215 import models as main_models
+from darabonba.model import DaraModel
+
+class InvokeAgentResponseBody(DaraModel):
+    def __init__(
+        self,
+        code: str = None,
+        content: str = None,
+        delta: str = None,
+        message: str = None,
+        message_id: str = None,
+        name: str = None,
+        outcome: main_models.InvokeAgentResponseBodyOutcome = None,
+        parent_message_id: str = None,
+        role: str = None,
+        run_id: str = None,
+        snapshot: Any = None,
+        thread_id: str = None,
+        tool_call_id: str = None,
+        tool_call_name: str = None,
+        type: str = None,
+        value: Any = None,
+    ):
+        self.code = code
+        self.content = content
+        self.delta = delta
+        self.message = message
+        self.message_id = message_id
+        self.name = name
+        self.outcome = outcome
+        self.parent_message_id = parent_message_id
+        self.role = role
+        self.run_id = run_id
+        self.snapshot = snapshot
+        self.thread_id = thread_id
+        self.tool_call_id = tool_call_id
+        self.tool_call_name = tool_call_name
+        # This parameter is required.
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        if self.outcome:
+            self.outcome.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.code is not None:
+            result['code'] = self.code
+
+        if self.content is not None:
+            result['content'] = self.content
+
+        if self.delta is not None:
+            result['delta'] = self.delta
+
+        if self.message is not None:
+            result['message'] = self.message
+
+        if self.message_id is not None:
+            result['messageId'] = self.message_id
+
+        if self.name is not None:
+            result['name'] = self.name
+
+        if self.outcome is not None:
+            result['outcome'] = self.outcome.to_map()
+
+        if self.parent_message_id is not None:
+            result['parentMessageId'] = self.parent_message_id
+
+        if self.role is not None:
+            result['role'] = self.role
+
+        if self.run_id is not None:
+            result['runId'] = self.run_id
+
+        if self.snapshot is not None:
+            result['snapshot'] = self.snapshot
+
+        if self.thread_id is not None:
+            result['threadId'] = self.thread_id
+
+        if self.tool_call_id is not None:
+            result['toolCallId'] = self.tool_call_id
+
+        if self.tool_call_name is not None:
+            result['toolCallName'] = self.tool_call_name
+
+        if self.type is not None:
+            result['type'] = self.type
+
+        if self.value is not None:
+            result['value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+
+        if m.get('content') is not None:
+            self.content = m.get('content')
+
+        if m.get('delta') is not None:
+            self.delta = m.get('delta')
+
+        if m.get('message') is not None:
+            self.message = m.get('message')
+
+        if m.get('messageId') is not None:
+            self.message_id = m.get('messageId')
+
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        if m.get('outcome') is not None:
+            temp_model = main_models.InvokeAgentResponseBodyOutcome()
+            self.outcome = temp_model.from_map(m.get('outcome'))
+
+        if m.get('parentMessageId') is not None:
+            self.parent_message_id = m.get('parentMessageId')
+
+        if m.get('role') is not None:
+            self.role = m.get('role')
+
+        if m.get('runId') is not None:
+            self.run_id = m.get('runId')
+
+        if m.get('snapshot') is not None:
+            self.snapshot = m.get('snapshot')
+
+        if m.get('threadId') is not None:
+            self.thread_id = m.get('threadId')
+
+        if m.get('toolCallId') is not None:
+            self.tool_call_id = m.get('toolCallId')
+
+        if m.get('toolCallName') is not None:
+            self.tool_call_name = m.get('toolCallName')
+
+        if m.get('type') is not None:
+            self.type = m.get('type')
+
+        if m.get('value') is not None:
+            self.value = m.get('value')
+
+        return self
+
+class InvokeAgentResponseBodyOutcome(DaraModel):
+    def __init__(
+        self,
+        interrupts: List[main_models.InvokeAgentResponseBodyOutcomeInterrupts] = None,
+        type: str = None,
+    ):
+        self.interrupts = interrupts
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        if self.interrupts:
+            for v1 in self.interrupts:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['interrupts'] = []
+        if self.interrupts is not None:
+            for k1 in self.interrupts:
+                result['interrupts'].append(k1.to_map() if k1 else None)
+
+        if self.type is not None:
+            result['type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.interrupts = []
+        if m.get('interrupts') is not None:
+            for k1 in m.get('interrupts'):
+                temp_model = main_models.InvokeAgentResponseBodyOutcomeInterrupts()
+                self.interrupts.append(temp_model.from_map(k1))
+
+        if m.get('type') is not None:
+            self.type = m.get('type')
+
+        return self
+
+class InvokeAgentResponseBodyOutcomeInterrupts(DaraModel):
+    def __init__(
+        self,
+        expires_at: str = None,
+        id: str = None,
+        message: str = None,
+        metadata: Dict[str, Any] = None,
+        reason: str = None,
+        response_schema: Dict[str, Any] = None,
+        tool_call_id: str = None,
+    ):
+        self.expires_at = expires_at
+        # This parameter is required.
+        self.id = id
+        self.message = message
+        self.metadata = metadata
+        # This parameter is required.
+        self.reason = reason
+        self.response_schema = response_schema
+        self.tool_call_id = tool_call_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.expires_at is not None:
+            result['expiresAt'] = self.expires_at
+
+        if self.id is not None:
+            result['id'] = self.id
+
+        if self.message is not None:
+            result['message'] = self.message
+
+        if self.metadata is not None:
+            result['metadata'] = self.metadata
+
+        if self.reason is not None:
+            result['reason'] = self.reason
+
+        if self.response_schema is not None:
+            result['responseSchema'] = self.response_schema
+
+        if self.tool_call_id is not None:
+            result['toolCallId'] = self.tool_call_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('expiresAt') is not None:
+            self.expires_at = m.get('expiresAt')
+
+        if m.get('id') is not None:
+            self.id = m.get('id')
+
+        if m.get('message') is not None:
+            self.message = m.get('message')
+
+        if m.get('metadata') is not None:
+            self.metadata = m.get('metadata')
+
+        if m.get('reason') is not None:
+            self.reason = m.get('reason')
+
+        if m.get('responseSchema') is not None:
+            self.response_schema = m.get('responseSchema')
+
+        if m.get('toolCallId') is not None:
+            self.tool_call_id = m.get('toolCallId')
+
+        return self
+
