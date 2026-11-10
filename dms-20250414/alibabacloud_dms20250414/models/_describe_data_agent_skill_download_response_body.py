@@ -16,7 +16,7 @@ class DescribeDataAgentSkillDownloadResponseBody(DaraModel):
     ):
         # The response struct.
         self.data = data
-        # The error code. This parameter is returned when a request exception occurs.
+        # The error code returned when a request exception occurs.
         self.error_code = error_code
         # The error message returned when the call fails.
         self.error_message = error_message
