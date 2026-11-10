@@ -17,9 +17,9 @@ class QueryPushRecordsResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # Deprecated. This parameter is no longer used.
+        # **[Deprecated]** This parameter is deprecated and no longer used.
         self.next_token = next_token
-        # The current page number.
+        # The current page number of the push records.
         self.page = page
         # The number of entries per page.
         self.page_size = page_size

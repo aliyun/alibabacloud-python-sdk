@@ -1,3 +1,10 @@
+2026-11-10 Version: 2.1.9
+- Update API MassPush: add request parameters PushTask.$.AndroidVivoTemplateId.
+- Update API MassPush: add request parameters PushTask.$.AndroidVivoTemplateParams.
+- Update API Push: add request parameters AndroidVivoTemplateId.
+- Update API Push: add request parameters AndroidVivoTemplateParams.
+
+
 2026-08-20 Version: 2.1.8
 - Generated python 2016-08-01 for Push.
 

@@ -18,55 +18,53 @@ class QueryPushRecordsRequest(DaraModel):
         start_time: str = None,
         target: str = None,
     ):
-        # The AppKey of the application.
+        # The AppKey information.
         # 
         # This parameter is required.
         self.app_key = app_key
-        # The end time for the query. Specify the time in UTC, using the ISO-8601 format `YYYY-MM-DDThh:mm:ssZ`.
+        # The end time of the query. The time is in UTC and follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The keyword used for the query. The search covers the `MessageId`, `Title`, and `Body` fields. For `Title` and `Body`, the system applies Chinese word segmentation and matches whole tokens instead of substrings.
+        # The query keyword. The query is performed based on the MessageId, Title, and Body fields. The system performs Chinese word segmentation on the title and body of the push, and uses the segmented words for the query instead of substring matching.
         self.keyword = keyword
-        # This parameter is deprecated.
+        # **[Deprecated]** This parameter is deprecated and no longer used.
         self.next_token = next_token
-        # The page number to query. Default: 1. Maximum: 10,000.
+        # The current page number of the push records. Default value: 1. Maximum value: 10000.
         self.page = page
-        # The number of entries to return on each page. Default: 20. Maximum: 100.
+        # The number of entries per page. Default value: 20. Maximum value: 100.
         self.page_size = page_size
         # The push type. Valid values:
         # 
-        # - **MESSAGE**: A message.
+        # - **MESSAGE**: message
         # 
-        # - **NOTICE**: A notification.
+        # - **NOTICE**: notification
         # 
-        # - **LIVE_ACTIVITY**: A Live Activity.
+        # - **LIVE_ACTIVITY**: live activity
         self.push_type = push_type
         # The push source. Valid values:
         # 
-        # - **API**: Pushes initiated via an OpenAPI call.
-        # 
-        # - **CONSOLE**: Pushes initiated from the Mobile Push console.
-        # 
-        # - **OpenAPIExplorer**: Pushes initiated from Alibaba Cloud OpenAPI Explorer.
+        # - **API**: push initiated by OpenAPI, including pushes initiated from the OpenAPI platform console
+        # - **CONSOLE**: push initiated from the Mobile Push console
+        # - **OpenAPIExplorer**: push initiated from the Alibaba Cloud OpenAPI Explorer platform
         self.source = source
-        # The start time for the query. Specify the time in UTC, using the ISO-8601 format `YYYY-MM-DDThh:mm:ssZ`.
+        # The start time of the query. The time is in UTC and follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
         # 
         # This parameter is required.
         self.start_time = start_time
         # The push target. Valid values:
         # 
-        # - **DEVICE**: Push to devices.
+        # - **DEVICE**: push by device
         # 
-        # - **ACCOUNT**: Push to accounts.
+        # - **ACCOUNT**: push by account
         # 
-        # - **ALIAS**: Push to aliases.
+        # - **ALIAS**: push by alias
         # 
-        # - **TAG**: Push to tags.
+        # - **TAG**: push by tag
         # 
-        # - **ALL**: Push to all devices.
+        # - **ALL**: push to all devices
         # 
-        # - **TBD**: Initializes a continuous push. The push target is specified in a subsequent call to the `ContinuouslyPush` API operation.
+        # - **TBD**: initialize continuous push, where the push target is specified by the subsequent ContinuouslyPush operation
         self.target = target
 
     def validate(self):

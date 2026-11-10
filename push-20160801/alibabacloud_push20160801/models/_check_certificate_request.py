@@ -9,7 +9,7 @@ class CheckCertificateRequest(DaraModel):
         self,
         app_key: int = None,
     ):
-        # The AppKey of the application.
+        # The AppKey information.
         # 
         # This parameter is required.
         self.app_key = app_key

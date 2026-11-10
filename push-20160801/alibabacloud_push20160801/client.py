@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Dict
 
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_push20160801 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
@@ -20,6 +21,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'Push'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'ap-northeast-1': 'cloudpush.aliyuncs.com',
@@ -1183,6 +1187,10 @@ class Client(OpenApiClient):
             query['AndroidVivoPushMode'] = request.android_vivo_push_mode
         if not DaraCore.is_null(request.android_vivo_receipt_id):
             query['AndroidVivoReceiptId'] = request.android_vivo_receipt_id
+        if not DaraCore.is_null(request.android_vivo_template_id):
+            query['AndroidVivoTemplateId'] = request.android_vivo_template_id
+        if not DaraCore.is_null(request.android_vivo_template_params):
+            query['AndroidVivoTemplateParams'] = request.android_vivo_template_params
         if not DaraCore.is_null(request.android_xiao_mi_activity):
             query['AndroidXiaoMiActivity'] = request.android_xiao_mi_activity
         if not DaraCore.is_null(request.android_xiao_mi_notify_body):
@@ -1457,6 +1465,10 @@ class Client(OpenApiClient):
             query['AndroidVivoPushMode'] = request.android_vivo_push_mode
         if not DaraCore.is_null(request.android_vivo_receipt_id):
             query['AndroidVivoReceiptId'] = request.android_vivo_receipt_id
+        if not DaraCore.is_null(request.android_vivo_template_id):
+            query['AndroidVivoTemplateId'] = request.android_vivo_template_id
+        if not DaraCore.is_null(request.android_vivo_template_params):
+            query['AndroidVivoTemplateParams'] = request.android_vivo_template_params
         if not DaraCore.is_null(request.android_xiao_mi_activity):
             query['AndroidXiaoMiActivity'] = request.android_xiao_mi_activity
         if not DaraCore.is_null(request.android_xiao_mi_notify_body):

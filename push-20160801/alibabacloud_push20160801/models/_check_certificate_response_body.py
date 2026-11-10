@@ -14,23 +14,19 @@ class CheckCertificateResponseBody(DaraModel):
         production_cert_info: main_models.CheckCertificateResponseBodyProductionCertInfo = None,
         request_id: str = None,
     ):
-        # Indicates whether the AppKey belongs to an Android app:
-        # 
+        # Indicates whether the AppKey represents an Android app:
         # - true
-        # 
         # - false
         self.android = android
-        # The information about the certificate for the development or sandbox environment.
+        # The certificate information for accessing the development or sandbox environment.
         self.development_cert_info = development_cert_info
-        # Indicates whether the AppKey belongs to an iOS app:
-        # 
+        # Indicates whether the AppKey represents an iOS app:
         # - true
-        # 
         # - false
         self.ios = ios
-        # The information about the certificate for the production environment.
+        # The certificate information for accessing the production environment.
         self.production_cert_info = production_cert_info
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -90,16 +86,12 @@ class CheckCertificateResponseBodyProductionCertInfo(DaraModel):
     ):
         # The expiration time of the certificate.
         self.exipre_time = exipre_time
-        # The status of the certificate. Valid values:
+        # The certificate status. Valid values:
         # 
-        # - **EXPIRED**: The certificate is expired.
-        # 
+        # - **EXPIRED**: The certificate has expired.
         # - **NOT_CONFIGURED**: The certificate is not configured.
-        # 
-        # - **NO_PASSWORD**: The password for the certificate is not configured.
-        # 
+        # - **NO_PASSWORD**: The password is not configured.
         # - **OK**: The certificate is normal.
-        # 
         # - **REVOKED**: The certificate is revoked.
         self.status = status
 
@@ -137,16 +129,12 @@ class CheckCertificateResponseBodyDevelopmentCertInfo(DaraModel):
     ):
         # The expiration time of the certificate.
         self.exipre_time = exipre_time
-        # The status of the certificate. Valid values:
+        # The certificate status. Valid values:
         # 
-        # - **EXPIRED**: The certificate is expired.
-        # 
+        # - **EXPIRED**: The certificate has expired.
         # - **NOT_CONFIGURED**: The certificate is not configured.
-        # 
-        # - **NO_PASSWORD**: The password for the certificate is not configured.
-        # 
+        # - **NO_PASSWORD**: The password is not configured.
         # - **OK**: The certificate is normal.
-        # 
         # - **REVOKED**: The certificate is revoked.
         self.status = status
 
