@@ -122,23 +122,23 @@ class ListGatewayLoadBalancersResponseBodyDataItems(DaraModel):
         v_server_group_meta_info: str = None,
         virtual_server_group_list: List[main_models.ListGatewayLoadBalancersResponseBodyDataItemsVirtualServerGroupList] = None,
     ):
-        # Indicates whether this is the default ingress of the gateway.
+        # Indicates whether the load balancer is the default ingress of the gateway.
         self.default_gateway_ingress = default_gateway_ingress
-        # Indicates whether the load balancer can be edited. This parameter serves as an edit switch for load balancers that are being migrated.
+        # Indicates whether the load balancer can be edited. This serves as an edit switch for load balancers during migration.
         self.edit_enable = edit_enable
         # The gateway ID.
         self.gateway_id = gateway_id
-        # The load balancer address (IP address or domain name).
+        # The load balancer address, which can be an IP address or a domain name.
         self.load_balancer_address = load_balancer_address
         # The IP version.
         self.load_balancer_address_ip_version = load_balancer_address_ip_version
         # The address type.
         self.load_balancer_address_type = load_balancer_address_type
-        # The load balancer availability status.
+        # The availability status of the load balancer.
         self.load_balancer_available_status = load_balancer_available_status
         # The load balancer instance ID.
         self.load_balancer_id = load_balancer_id
-        # The binding mode.
+        # The association mode.
         self.load_balancer_mode = load_balancer_mode
         # The load balancer name.
         self.load_balancer_name = load_balancer_name
@@ -152,9 +152,9 @@ class ListGatewayLoadBalancersResponseBodyDataItems(DaraModel):
         self.load_balancer_zone_mappings = load_balancer_zone_mappings
         # The list of listener ports.
         self.ports = ports
-        # The gateway service weight, which ranges from 0 to 100. This parameter is used in migration and traffic shifting scenarios.
+        # The gateway service weight, which ranges from 0 to 100 and is used in migration and traffic switching scenarios.
         self.service_weight = service_weight
-        # The VServerGroup metadata.
+        # The metadata of the vServer group.
         self.v_server_group_meta_info = v_server_group_meta_info
         # The list of virtual server groups.
         self.virtual_server_group_list = virtual_server_group_list
@@ -316,9 +316,9 @@ class ListGatewayLoadBalancersResponseBodyDataItemsVirtualServerGroupList(DaraMo
     ):
         # The list of associated listeners.
         self.listeners = listeners
-        # The virtual server group ID. For CLB, this is the VServerGroupId. For NLB, this is the ServerGroupId.
+        # The ID of the virtual server group. This is VServerGroupId for Classic Load Balancer (CLB) and ServerGroupId for Network Load Balancer (NLB).
         self.virtual_service_group_id = virtual_service_group_id
-        # The group name.
+        # The name of the group.
         self.virtual_service_group_name = virtual_service_group_name
 
     def validate(self):
@@ -369,7 +369,7 @@ class ListGatewayLoadBalancersResponseBodyDataItemsVirtualServerGroupListListene
     ):
         # The listener port.
         self.port = port
-        # The listener protocol. No backend enumeration validation is performed. The actual values are returned from SLB or NLB OpenAPI. Common values include tcp, udp, http, https, and tls.
+        # The listener protocol. No backend enumeration validation is performed. The actual value is obtained from the SLB or NLB API. Common values include tcp, udp, http, https, and tls.
         self.protocol = protocol
 
     def validate(self):
@@ -447,7 +447,7 @@ class ListGatewayLoadBalancersResponseBodyDataItemsLoadBalancerZoneMappings(Dara
         self.load_balancer_addresses = load_balancer_addresses
         # The zone status.
         self.status = status
-        # The vSwitch ID that corresponds to the zone.
+        # The vSwitch ID corresponding to the zone.
         self.v_switch_id = v_switch_id
         # The zone ID.
         self.zone_id = zone_id
@@ -511,9 +511,9 @@ class ListGatewayLoadBalancersResponseBodyDataItemsLoadBalancerZoneMappingsLoadB
         private_ipv_6hc_status: str = None,
         public_ipv_4address: str = None,
     ):
-        # The Elastic IP Address (EIP) allocation ID that corresponds to the public address.
+        # The allocation ID of the elastic IP address (EIP) corresponding to the public IP address.
         self.allocation_id = allocation_id
-        # The ID of the elastic network interface (ENI).
+        # The ID of the elastic network interface controller (NIC).
         self.eni_id = eni_id
         # The list of private IPv4 addresses.
         self.ipv_4local_addresses = ipv_4local_addresses

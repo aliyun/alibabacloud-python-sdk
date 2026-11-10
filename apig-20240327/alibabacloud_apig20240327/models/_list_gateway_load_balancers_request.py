@@ -14,21 +14,17 @@ class ListGatewayLoadBalancersRequest(DaraModel):
         type: str = None,
         vpc_id: str = None,
     ):
-        # Specifies whether to return all instances in the selectable list mode. This parameter affects pagination and filtering behavior.
+        # Specifies whether to return all instances in the optional list mode. This parameter affects the pagination and filtering strategies.
         self.all = all
-        # The load balancer instance ID. Specify this parameter to query details of a specific load balancer in the selectable list mode.
+        # The exact load balancer instance ID used to query details by ID in the optional list mode.
         self.load_balancer_id = load_balancer_id
-        # The network type used to filter results.
+        # The network type filter.
         self.network = network
-        # The mode switch. Valid values:
-        # - true: Returns the list of load balancers that are already associated with the gateway by reading database relationships.
-        # - false (default): Returns the selectable list by calling SLB or NLB OpenAPI to filter bindable instances.
-        # 
-        # Use related=true to retrieve the list of associated load balancers. The default mode (related=false) calls SLB or NLB OpenAPI to filter bindable instances, which may return a 500 error in common scenarios due to backend data issues.
+        # Specifies whether to return the list of load balancers associated with the gateway. If set to true, the associated load balancers are returned based on database relationships. We recommend setting this parameter to true to retrieve the associated load balancers. If set to false or left empty, the optional list mode is used to call the SLB or NLB API and filter bindable instances. In the default mode where related is false, calling the SLB or NLB API may return a 500 error due to backend data issues in common scenarios.
         self.related = related
-        # The load balancer type used to filter results.
+        # The load balancer type filter.
         self.type = type
-        # The VPC ID used to filter instances within the specified VPC in the selectable list mode. This parameter is required when type is set to NLB and related is not set to true. Otherwise, the API returns a 500 error.
+        # The VPC filter used to filter instances within the specified VPC in the optional list mode. This parameter is required when type is set to NLB and related is not set to true. Otherwise, the API returns a 500 error.
         self.vpc_id = vpc_id
 
     def validate(self):

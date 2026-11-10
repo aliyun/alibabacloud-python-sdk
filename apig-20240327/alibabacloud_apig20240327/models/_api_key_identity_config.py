@@ -17,7 +17,7 @@ class ApiKeyIdentityConfig(DaraModel):
     ):
         # The API key source configuration.
         self.apikey_source = apikey_source
-        # The complete set of API key credential sources. The set contains one to three items. Multiple sources are applicable only to the AI gateway Header mode. Query String and non-AI gateway scenarios allow only a single source. If submitted together with apikeySource, the latter must be consistent with the compatible projection.
+        # The complete collection of API key credential sources. The collection contains one to three items. Multiple sources apply only to the AI gateway header mode. Query string and non-AI gateway modes allow only a single source. If submitted together with apikeySource, the latter must be consistent with the compatible projection.
         self.apikey_sources = apikey_sources
         # The list of credentials.
         self.credentials = credentials
@@ -125,7 +125,7 @@ class ApiKeyIdentityConfigApikeySources(DaraModel):
         source: str = None,
         value: str = None,
     ):
-        # The credential source type.
+        # The credential source category.
         self.source = source
         # The field name of the HTTP header or query string.
         self.value = value

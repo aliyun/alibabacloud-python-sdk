@@ -77,7 +77,7 @@ class GetApiPathFieldTemplateResponseBodyData(DaraModel):
         self.description = description
         # The set of fields defined by the field template, grouped by mapping key, where each group contains a set of template field items.
         self.field_paths = field_paths
-        # The URI of the request corresponding to the field template.
+        # The API request path corresponding to the field template.
         self.path = path
         # The API protocol applicable to the field template, such as openai.
         self.protocol = protocol

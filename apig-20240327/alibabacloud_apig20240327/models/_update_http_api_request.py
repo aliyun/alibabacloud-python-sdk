@@ -32,7 +32,7 @@ class UpdateHttpApiRequest(DaraModel):
         self.ai_protocols = ai_protocols
         # The authentication configuration.
         self.auth_config = auth_config
-        # The base path of the API. It must start with a forward slash (/).
+        # The base path of the API, which must start with a forward slash (/).
         self.base_path = base_path
         # The list of API deployment configurations.
         self.deploy_configs = deploy_configs
@@ -44,7 +44,7 @@ class UpdateHttpApiRequest(DaraModel):
         self.first_byte_timeout = first_byte_timeout
         # The configuration information of the HTTP Ingress API.
         self.ingress_config = ingress_config
-        # Specifies whether to only modify the configuration. A value of true indicates that only the configuration is modified without triggering a redeployment.
+        # Specifies whether to modify only the configuration. A value of true indicates that only the configuration is modified without triggering a redeployment.
         self.only_change_config = only_change_config
         # The list of API access protocols.
         self.protocols = protocols
@@ -52,9 +52,9 @@ class UpdateHttpApiRequest(DaraModel):
         self.remove_base_path_on_forward = remove_base_path_on_forward
         # The versioning configuration of the API.
         self.version_config = version_config
-        # The idempotent request token. If you call the same HTTP API with the same client token and request parameters, the result of the first successful call is returned.
+        # The idempotency token. If the same HTTP API is repeatedly called with the same client token and request parameters, the first successful result is returned.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. If you set this parameter to true, all synchronization checks consistent with a real update are performed, but no configurations are updated and no side effects are generated. If this parameter is left empty or set to false, the behavior remains the same as the existing version.
+        # Specifies whether to perform a dry run. A value of true indicates that all synchronization checks identical to a real update are executed without updating any configurations or causing side effects. If omitted or set to false, the behavior remains consistent with the current version.
         self.dry_run = dry_run
 
     def validate(self):
@@ -189,9 +189,9 @@ class UpdateHttpApiRequestIngressConfig(DaraModel):
     ):
         # The environment ID.
         self.environment_id = environment_id
-        # The Ingress class to listen on.
+        # The Ingress class to listen to.
         self.ingress_class = ingress_class
-        # Specifies whether to update the IP address in the Ingress status.
+        # Specifies whether to update the address in the Ingress status.
         self.override_ingress_ip = override_ingress_ip
         # The source ID.
         self.source_id = source_id

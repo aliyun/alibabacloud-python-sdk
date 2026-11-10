@@ -28,22 +28,22 @@ class UpdateDomainRequest(DaraModel):
         self.client_cacert = client_cacert
         # The scope of the domain name.
         self.domain_scope = domain_scope
-        # Specifies whether to enable forced HTTPS redirect when the HTTPS protocol type is set. When the protocol is HTTPS, forceHttps is required.
+        # The Settings for the HTTPS Protocol Type. Specifies whether to enable forced HTTPS redirection. This parameter is required when the protocol is HTTPS.
         self.force_https = force_https
         # The HTTP/2 settings.
         self.http_2option = http_2option
-        # Specifies whether to enable mutual TLS (mTLS) authentication.
+        # Specifies whether to enable mTLS mutual authentication.
         self.m_tlsenabled = m_tlsenabled
-        # The protocol type supported by the domain name.
+        # The protocol types supported by the domain name.
         # 
-        # - HTTP: Only the HTTP protocol is supported.
-        # - HTTPS: Only the HTTPS protocol is supported.
+        # - HTTP: Supports only the HTTP protocol.
+        # - HTTPS: Supports only the HTTPS protocol.
         self.protocol = protocol
-        # The cipher suite configuration.
+        # The cipher suite configurations.
         self.tls_cipher_suites_config = tls_cipher_suites_config
-        # The maximum TLS protocol version. TLS 1.3 is the maximum supported version.
+        # The maximum TLS protocol version. The maximum supported version is TLS 1.3.
         self.tls_max = tls_max
-        # The minimum TLS protocol version. TLS 1.0 is the minimum supported version.
+        # The minimum TLS protocol version. The minimum supported version is TLS 1.0.
         self.tls_min = tls_min
 
     def validate(self):

@@ -15,21 +15,21 @@ class ListGatewayErrorAccessLogsRequest(DaraModel):
         route_name: str = None,
         start_time: int = None,
     ):
-        # The domain name filter. This parameter performs an exact match against the authority field in Simple Log Service (SLS).
+        # The domain name filter. This parameter performs an exact match on the authority field in Simple Log Service (SLS).
         self.authority = authority
-        # The end of the query window, in UNIX seconds. The value cannot be later than the current time, and the time span cannot exceed 24 hours.
+        # The end time of the query window, in UNIX seconds. The value cannot be later than the current time, and the time span must be less than or equal to 24 hours.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The gateway request ID (x-acs-request-id) for exact match filtering.
+        # The exact filter for the gateway request ID (x-acs-request-id).
         self.gateway_request_id = gateway_request_id
         # The request path filter.
         self.path = path
-        # The HTTP error code. Only three-digit numbers in the 400–599 range are accepted. This parameter is required. If you do not specify this parameter, the API returns InvalidParameter.WithDetail (400).
+        # The specific HTTP error code. Only three-digit numbers in the range of 400 to 599 are accepted. This parameter is required. If it is not provided, the API returns the InvalidParameter.WithDetail(400) error.
         self.response_code = response_code
         # The route name filter.
         self.route_name = route_name
-        # The start of the query window, in UNIX seconds. The value must be no earlier than 24 hours before the current time.
+        # The start time of the query window, in UNIX seconds. The value must be greater than or equal to the current time minus 24 hours.
         # 
         # This parameter is required.
         self.start_time = start_time

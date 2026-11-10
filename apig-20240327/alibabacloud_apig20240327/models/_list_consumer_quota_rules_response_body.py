@@ -21,7 +21,7 @@ class ListConsumerQuotaRulesResponseBody(DaraModel):
         self.data = data
         # The response message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -146,7 +146,7 @@ class ListConsumerQuotaRulesResponseBodyDataItems(DaraModel):
         self.gateway_id = gateway_id
         # The name of the gateway to which the rule belongs.
         self.gateway_name = gateway_name
-        # The period multiplier, which specifies the number of periods after which the quota resets. This parameter is returned when the rule uses a custom period. Minimum value: 1. Maximum value: 60.
+        # The period multiplier, which indicates the number of periods after which the quota is reset. This parameter is returned when the rule uses a custom period. Minimum value: 1. Maximum value: 60.
         self.period_multiplier = period_multiplier
         # The period type.
         self.period_type = period_type
@@ -160,11 +160,9 @@ class ListConsumerQuotaRulesResponseBodyDataItems(DaraModel):
         self.rule_name = rule_name
         # The rule status.
         self.rule_status = rule_status
-        # The time zone corresponding to the calendar period, in UTC+x format.
+        # The time zone corresponding to the natural period, in UTC+x format.
         self.timezone = timezone
-        # The period type. Valid values:
-        # - calendar: calendar period.
-        # - epoch: custom period.
+        # The period type. calendar indicates a natural period, and epoch indicates a custom period.
         self.window_alignment = window_alignment
 
     def validate(self):

@@ -20,11 +20,11 @@ class AiCacheConfig(DaraModel):
         self.cache_key_strategy = cache_key_strategy
         # The cache mode.
         self.cache_mode = cache_mode
-        # The cache expiration time, in seconds.
+        # The cache expiration time in seconds.
         self.cache_ttl = cache_ttl
         # The embedding service configuration.
         self.embedding_config = embedding_config
-        # The plugin running status.
+        # The running status of the plugin.
         self.plugin_status = plugin_status
         # The Redis configuration for exact cache count storage.
         self.redis_config = redis_config
@@ -108,15 +108,15 @@ class AiCacheConfigVectorConfig(DaraModel):
         timeout: int = None,
         type: str = None,
     ):
-        # The vector database API key.
+        # The API key for the vector database.
         self.api_key = api_key
-        # The vector collection ID.
+        # The ID of the vector collection.
         self.collection_id = collection_id
-        # The vector database service address.
+        # The vector database service endpoint.
         self.service_host = service_host
         # The similarity threshold.
         self.threshold = threshold
-        # The request timeout period, in milliseconds.
+        # The request timeout in milliseconds.
         self.timeout = timeout
         # The vector database type.
         self.type = type
@@ -179,11 +179,11 @@ class AiCacheConfigEmbeddingConfig(DaraModel):
         timeout: int = None,
         type: str = None,
     ):
-        # The embedding model name.
+        # The name of the embedding model.
         self.model_name = model_name
-        # The embedding service ID.
+        # The ID of the embedding service.
         self.service_id = service_id
-        # The request timeout period, in milliseconds.
+        # The request timeout in milliseconds.
         self.timeout = timeout
         # The embedding service type.
         self.type = type

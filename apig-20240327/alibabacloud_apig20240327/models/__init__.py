@@ -168,6 +168,9 @@ from ._create_environment_response import CreateEnvironmentResponse
 from ._create_gateway_request import CreateGatewayRequest
 from ._create_gateway_response_body import CreateGatewayResponseBody
 from ._create_gateway_response import CreateGatewayResponse
+from ._create_gateway_quota_rule_subject_usage_export_task_request import CreateGatewayQuotaRuleSubjectUsageExportTaskRequest
+from ._create_gateway_quota_rule_subject_usage_export_task_response_body import CreateGatewayQuotaRuleSubjectUsageExportTaskResponseBody
+from ._create_gateway_quota_rule_subject_usage_export_task_response import CreateGatewayQuotaRuleSubjectUsageExportTaskResponse
 from ._create_http_api_request import CreateHttpApiRequest
 from ._create_http_api_response_body import CreateHttpApiResponseBody
 from ._create_http_api_response import CreateHttpApiResponse
@@ -360,6 +363,9 @@ from ._get_gateway_quota_rule_response import GetGatewayQuotaRuleResponse
 from ._get_gateway_quota_rule_subject_usage_request import GetGatewayQuotaRuleSubjectUsageRequest
 from ._get_gateway_quota_rule_subject_usage_response_body import GetGatewayQuotaRuleSubjectUsageResponseBody
 from ._get_gateway_quota_rule_subject_usage_response import GetGatewayQuotaRuleSubjectUsageResponse
+from ._get_gateway_quota_rule_subject_usage_export_task_request import GetGatewayQuotaRuleSubjectUsageExportTaskRequest
+from ._get_gateway_quota_rule_subject_usage_export_task_response_body import GetGatewayQuotaRuleSubjectUsageExportTaskResponseBody
+from ._get_gateway_quota_rule_subject_usage_export_task_response import GetGatewayQuotaRuleSubjectUsageExportTaskResponse
 from ._get_gateway_resource_quota_usage_request import GetGatewayResourceQuotaUsageRequest
 from ._get_gateway_resource_quota_usage_response_body import GetGatewayResourceQuotaUsageResponseBody
 from ._get_gateway_resource_quota_usage_response import GetGatewayResourceQuotaUsageResponse
@@ -925,6 +931,7 @@ from ._create_gateway_request import CreateGatewayRequestTag
 from ._create_gateway_request import CreateGatewayRequestZoneConfigZones
 from ._create_gateway_request import CreateGatewayRequestZoneConfig
 from ._create_gateway_response_body import CreateGatewayResponseBodyData
+from ._create_gateway_quota_rule_subject_usage_export_task_response_body import CreateGatewayQuotaRuleSubjectUsageExportTaskResponseBodyData
 from ._create_http_api_request import CreateHttpApiRequestIngressConfig
 from ._create_http_api_response_body import CreateHttpApiResponseBodyData
 from ._create_http_api_operation_response_body import CreateHttpApiOperationResponseBodyDataOperations
@@ -1039,6 +1046,8 @@ from ._get_gateway_quota_rule_response_body import GetGatewayQuotaRuleResponseBo
 from ._get_gateway_quota_rule_subject_usage_response_body import GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems
 from ._get_gateway_quota_rule_subject_usage_response_body import GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetails
 from ._get_gateway_quota_rule_subject_usage_response_body import GetGatewayQuotaRuleSubjectUsageResponseBodyData
+from ._get_gateway_quota_rule_subject_usage_export_task_response_body import GetGatewayQuotaRuleSubjectUsageExportTaskResponseBodyDataResult
+from ._get_gateway_quota_rule_subject_usage_export_task_response_body import GetGatewayQuotaRuleSubjectUsageExportTaskResponseBodyData
 from ._get_gateway_resource_quota_usage_response_body import GetGatewayResourceQuotaUsageResponseBodyDataItems
 from ._get_gateway_resource_quota_usage_response_body import GetGatewayResourceQuotaUsageResponseBodyData
 from ._get_hi_market_consumer_response_body import GetHiMarketConsumerResponseBodyData
@@ -1464,6 +1473,9 @@ __all__ = [
     CreateGatewayRequest,
     CreateGatewayResponseBody,
     CreateGatewayResponse,
+    CreateGatewayQuotaRuleSubjectUsageExportTaskRequest,
+    CreateGatewayQuotaRuleSubjectUsageExportTaskResponseBody,
+    CreateGatewayQuotaRuleSubjectUsageExportTaskResponse,
     CreateHttpApiRequest,
     CreateHttpApiResponseBody,
     CreateHttpApiResponse,
@@ -1656,6 +1668,9 @@ __all__ = [
     GetGatewayQuotaRuleSubjectUsageRequest,
     GetGatewayQuotaRuleSubjectUsageResponseBody,
     GetGatewayQuotaRuleSubjectUsageResponse,
+    GetGatewayQuotaRuleSubjectUsageExportTaskRequest,
+    GetGatewayQuotaRuleSubjectUsageExportTaskResponseBody,
+    GetGatewayQuotaRuleSubjectUsageExportTaskResponse,
     GetGatewayResourceQuotaUsageRequest,
     GetGatewayResourceQuotaUsageResponseBody,
     GetGatewayResourceQuotaUsageResponse,
@@ -2221,6 +2236,7 @@ __all__ = [
     CreateGatewayRequestZoneConfigZones,
     CreateGatewayRequestZoneConfig,
     CreateGatewayResponseBodyData,
+    CreateGatewayQuotaRuleSubjectUsageExportTaskResponseBodyData,
     CreateHttpApiRequestIngressConfig,
     CreateHttpApiResponseBodyData,
     CreateHttpApiOperationResponseBodyDataOperations,
@@ -2335,6 +2351,8 @@ __all__ = [
     GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems,
     GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetails,
     GetGatewayQuotaRuleSubjectUsageResponseBodyData,
+    GetGatewayQuotaRuleSubjectUsageExportTaskResponseBodyDataResult,
+    GetGatewayQuotaRuleSubjectUsageExportTaskResponseBodyData,
     GetGatewayResourceQuotaUsageResponseBodyDataItems,
     GetGatewayResourceQuotaUsageResponseBodyData,
     GetHiMarketConsumerResponseBodyData,

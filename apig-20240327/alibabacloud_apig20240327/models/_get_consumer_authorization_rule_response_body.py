@@ -24,17 +24,17 @@ class GetConsumerAuthorizationRuleResponseBody(DaraModel):
     ):
         # The API information.
         self.api_info = api_info
-        # Filters the API list by a specified consumer authorization rule ID. The API list in the response contains only authorized APIs.
+        # Filters the API list by a specific consumer authorization rule ID. The API list in the response contains only authorized APIs.
         self.consumer_authorization_rule_id = consumer_authorization_rule_id
         # The consumer ID.
         self.consumer_id = consumer_id
         # The creation timestamp. Unit: milliseconds.
         self.create_timestamp = create_timestamp
-        # The publishing status of the API in the current environment.
+        # The publish status of the API in the current environment.
         self.deploy_status = deploy_status
         # The environment context.
         self.environment_info = environment_info
-        # The expiration mode. Valid values: LongTerm and ShortTerm. Specify one of the two.
+        # The expiration mode. Valid values: LongTerm, ShortTerm.
         self.expire_mode = expire_mode
         # The expiration status.
         self.expire_status = expire_status

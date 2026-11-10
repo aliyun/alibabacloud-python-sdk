@@ -23,14 +23,14 @@ class CreateServiceRequest(DaraModel):
         # The list of service configurations. At least one service configuration must be included.
         self.service_configs = service_configs
         # The source of the service. Valid values:
-        # - MSE_NACOS: services in MSE Nacos.
-        # - K8S: services in Container Service for Kubernetes clusters.
-        # - VIP: fixed address services.
+        # - MSE_NACOS: Services in MSE Nacos.
+        # - K8S: Services in Kubernetes clusters of Container Service.
+        # - VIP: Fixed-address services.
         # - DNS: DNS domain name services.
-        # - FC3: services in Function Compute.
+        # - FC3: Services in Function Compute.
         # - SAE_K8S_SERVICE: SAE Kubernetes services.
         # - AI: AI services.
-        # - AGENT: agent services.
+        # - AGENT: Agent services.
         self.source_type = source_type
         # The client token.
         self.client_token = client_token
@@ -105,30 +105,32 @@ class CreateServiceRequestServiceConfigs(DaraModel):
     ):
         # The list of domain names or fixed addresses.
         self.addresses = addresses
-        # The agent service configuration. This parameter is required when the sourceType is AGENT.
+        # The agent service configuration. This parameter is required when the source type is AGENT.
         self.agent_service_config = agent_service_config
-        # The AI service configuration. This parameter is required when the sourceType is AI.
+        # The AI service configuration. This parameter is required when the source type is AI.
         self.ai_service_config = ai_service_config
         # The list of DNS server addresses.
         self.dns_servers = dns_servers
         # The service expression type, which identifies the special type or mode of the service.
         self.express_type = express_type
-        # The name of the service group. This parameter is required when the sourceType is MSE_NACOS.
+        # The name of the service group. This parameter is required when the source type is MSE_NACOS.
         self.group_name = group_name
         # The ID of the model provider. This parameter is applicable only to AI services.
         self.model_provider_id = model_provider_id
-        # The name of the service. This parameter is required when the sourceType is FC3.
+        # The name of the service. This parameter is required when the source type is FC3.
         self.name = name
         # The namespace of the service:
-        # - When the sourceType is K8S, this parameter specifies the namespace where the Kubernetes service resides.
-        # - When the sourceType is MSE_NACOS, this parameter specifies the namespace in Nacos.
-        # This parameter is required when the sourceType is K8S or MSE_NACOS.
+        # 
+        # - If the source type is K8S, this parameter specifies the namespace where the Kubernetes service resides.
+        # - If the source type is MSE_NACOS, this parameter specifies the namespace in Nacos.
+        # 
+        # This parameter is required when the source type is K8S or MSE_NACOS.
         self.namespace = namespace
         # The function version or alias.
         self.qualifier = qualifier
         # The ID of the service source. This parameter is required in scenarios with multiple Nacos instances.
         self.source_id = source_id
-        # The validation options, which are configuration options related to service validation.
+        # The validation options, which include configuration options related to service validation.
         self.validation_options = validation_options
 
     def validate(self):

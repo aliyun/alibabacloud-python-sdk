@@ -111,11 +111,11 @@ class JwtIdentityConfigJwtTokenConfig(DaraModel):
         position: str = None,
         prefix: str = None,
     ):
-        # The key configuration of the JWT.
+        # The JWT key configuration.
         self.key = key
-        # Indicates whether the request is passed through.
+        # Specifies whether to pass the token.
         self.pass_ = pass_
-        # The position where the JWT is stored.
+        # The JWT storage location.
         self.position = position
         # The prefix configuration.
         self.prefix = prefix
@@ -204,9 +204,9 @@ class JwtIdentityConfigClaimsToHeadersConfigs(DaraModel):
     ):
         # The claim name in the JWT payload.
         self.claim = claim
-        # The HTTP header name after conversion.
+        # The converted HTTP header name.
         self.header = header
-        # Specifies whether to overwrite an existing header with the same name.
+        # Specifies whether to override an existing header with the same name.
         self.override = override
 
     def validate(self):

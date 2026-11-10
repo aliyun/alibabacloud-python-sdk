@@ -14,11 +14,11 @@ class TagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.TagResourcesRequestTag] = None,
     ):
-        # The resource IDs. You can specify up to 50 subkeys.
+        # The IDs of the resources. You can specify up to 50 resource IDs.
         self.resource_id = resource_id
-        # The resource type used for the tagging operation. Set this parameter to Gateway.
+        # The resource type used for the tagging operation. Set the value to Gateway.
         self.resource_type = resource_type
-        # The list of labels.
+        # The list of tags.
         self.tag = tag
 
     def validate(self):
@@ -67,9 +67,9 @@ class TagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The label key.
+        # The tag key.
         self.key = key
-        # The label value.
+        # The tag value.
         self.value = value
 
     def validate(self):

@@ -2135,6 +2135,110 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_gateway_with_options_async(request, headers, runtime)
 
+    def create_gateway_quota_rule_subject_usage_export_task_with_options(
+        self,
+        gateway_id: str,
+        rule_id: str,
+        subject_id: str,
+        request: main_models.CreateGatewayQuotaRuleSubjectUsageExportTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGatewayQuotaRuleSubjectUsageExportTaskResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.end_time):
+            body['endTime'] = request.end_time
+        if not DaraCore.is_null(request.filter_failed_requests):
+            body['filterFailedRequests'] = request.filter_failed_requests
+        if not DaraCore.is_null(request.format):
+            body['format'] = request.format
+        if not DaraCore.is_null(request.start_time):
+            body['startTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGatewayQuotaRuleSubjectUsageExportTask',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/quota-rules/{DaraURL.percent_encode(rule_id)}/subjects/{DaraURL.percent_encode(subject_id)}/usage/export-tasks',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGatewayQuotaRuleSubjectUsageExportTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_gateway_quota_rule_subject_usage_export_task_with_options_async(
+        self,
+        gateway_id: str,
+        rule_id: str,
+        subject_id: str,
+        request: main_models.CreateGatewayQuotaRuleSubjectUsageExportTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGatewayQuotaRuleSubjectUsageExportTaskResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.end_time):
+            body['endTime'] = request.end_time
+        if not DaraCore.is_null(request.filter_failed_requests):
+            body['filterFailedRequests'] = request.filter_failed_requests
+        if not DaraCore.is_null(request.format):
+            body['format'] = request.format
+        if not DaraCore.is_null(request.start_time):
+            body['startTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGatewayQuotaRuleSubjectUsageExportTask',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/quota-rules/{DaraURL.percent_encode(rule_id)}/subjects/{DaraURL.percent_encode(subject_id)}/usage/export-tasks',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGatewayQuotaRuleSubjectUsageExportTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_gateway_quota_rule_subject_usage_export_task(
+        self,
+        gateway_id: str,
+        rule_id: str,
+        subject_id: str,
+        request: main_models.CreateGatewayQuotaRuleSubjectUsageExportTaskRequest,
+    ) -> main_models.CreateGatewayQuotaRuleSubjectUsageExportTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_gateway_quota_rule_subject_usage_export_task_with_options(gateway_id, rule_id, subject_id, request, headers, runtime)
+
+    async def create_gateway_quota_rule_subject_usage_export_task_async(
+        self,
+        gateway_id: str,
+        rule_id: str,
+        subject_id: str,
+        request: main_models.CreateGatewayQuotaRuleSubjectUsageExportTaskRequest,
+    ) -> main_models.CreateGatewayQuotaRuleSubjectUsageExportTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_gateway_quota_rule_subject_usage_export_task_with_options_async(gateway_id, rule_id, subject_id, request, headers, runtime)
+
     def create_http_api_with_options(
         self,
         request: main_models.CreateHttpApiRequest,
@@ -7796,6 +7900,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_gateway_quota_rule_subject_usage_with_options_async(gateway_id, rule_id, subject_id, request, headers, runtime)
+
+    def get_gateway_quota_rule_subject_usage_export_task_with_options(
+        self,
+        gateway_id: str,
+        rule_id: str,
+        subject_id: str,
+        task_id: str,
+        request: main_models.GetGatewayQuotaRuleSubjectUsageExportTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGatewayQuotaRuleSubjectUsageExportTaskResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetGatewayQuotaRuleSubjectUsageExportTask',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/quota-rules/{DaraURL.percent_encode(rule_id)}/subjects/{DaraURL.percent_encode(subject_id)}/usage/export-tasks/{DaraURL.percent_encode(task_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGatewayQuotaRuleSubjectUsageExportTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_gateway_quota_rule_subject_usage_export_task_with_options_async(
+        self,
+        gateway_id: str,
+        rule_id: str,
+        subject_id: str,
+        task_id: str,
+        request: main_models.GetGatewayQuotaRuleSubjectUsageExportTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGatewayQuotaRuleSubjectUsageExportTaskResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetGatewayQuotaRuleSubjectUsageExportTask',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/quota-rules/{DaraURL.percent_encode(rule_id)}/subjects/{DaraURL.percent_encode(subject_id)}/usage/export-tasks/{DaraURL.percent_encode(task_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGatewayQuotaRuleSubjectUsageExportTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_gateway_quota_rule_subject_usage_export_task(
+        self,
+        gateway_id: str,
+        rule_id: str,
+        subject_id: str,
+        task_id: str,
+        request: main_models.GetGatewayQuotaRuleSubjectUsageExportTaskRequest,
+    ) -> main_models.GetGatewayQuotaRuleSubjectUsageExportTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_gateway_quota_rule_subject_usage_export_task_with_options(gateway_id, rule_id, subject_id, task_id, request, headers, runtime)
+
+    async def get_gateway_quota_rule_subject_usage_export_task_async(
+        self,
+        gateway_id: str,
+        rule_id: str,
+        subject_id: str,
+        task_id: str,
+        request: main_models.GetGatewayQuotaRuleSubjectUsageExportTaskRequest,
+    ) -> main_models.GetGatewayQuotaRuleSubjectUsageExportTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_gateway_quota_rule_subject_usage_export_task_with_options_async(gateway_id, rule_id, subject_id, task_id, request, headers, runtime)
 
     def get_gateway_resource_quota_usage_with_options(
         self,

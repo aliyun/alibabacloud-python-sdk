@@ -12,7 +12,7 @@ class ListGatewayErrorAccessLogsResponseBody(DaraModel):
         data: List[Dict[str, str]] = None,
         request_id: str = None,
     ):
-        # The list of log entries. Each entry is a mapping from field names to field values.
+        # The list of log data. Each entry is a mapping of field names to field values.
         self.data = data
         # The request ID.
         self.request_id = request_id
