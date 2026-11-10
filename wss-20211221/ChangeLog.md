@@ -1,3 +1,7 @@
+2026-11-10 Version: 1.8.0
+- Support API DescribeAICallDetails.
+
+
 2026-11-09 Version: 1.7.0
 - Support API DescribeInstanceAutoRenewalAttribute.
 

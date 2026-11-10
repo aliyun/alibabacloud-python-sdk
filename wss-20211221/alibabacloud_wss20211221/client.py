@@ -138,6 +138,108 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_multi_order_with_options_async(request, runtime)
 
+    def describe_aicall_details_with_options(
+        self,
+        request: main_models.DescribeAICallDetailsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAICallDetailsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.gateway_region):
+            query['GatewayRegion'] = request.gateway_region
+        if not DaraCore.is_null(request.model_id):
+            query['ModelId'] = request.model_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.search_request_id):
+            query['SearchRequestId'] = request.search_request_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.wy_ids):
+            query['WyIds'] = request.wy_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAICallDetails',
+            version = '2021-12-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAICallDetailsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_aicall_details_with_options_async(
+        self,
+        request: main_models.DescribeAICallDetailsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAICallDetailsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.gateway_region):
+            query['GatewayRegion'] = request.gateway_region
+        if not DaraCore.is_null(request.model_id):
+            query['ModelId'] = request.model_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.search_request_id):
+            query['SearchRequestId'] = request.search_request_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.wy_ids):
+            query['WyIds'] = request.wy_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAICallDetails',
+            version = '2021-12-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAICallDetailsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_aicall_details(
+        self,
+        request: main_models.DescribeAICallDetailsRequest,
+    ) -> main_models.DescribeAICallDetailsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_aicall_details_with_options(request, runtime)
+
+    async def describe_aicall_details_async(
+        self,
+        request: main_models.DescribeAICallDetailsRequest,
+    ) -> main_models.DescribeAICallDetailsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_aicall_details_with_options_async(request, runtime)
+
     def describe_credit_package_agents_with_options(
         self,
         request: main_models.DescribeCreditPackageAgentsRequest,

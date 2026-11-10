@@ -6,6 +6,9 @@ from ._create_multi_order_request import CreateMultiOrderRequest
 from ._create_multi_order_shrink_request import CreateMultiOrderShrinkRequest
 from ._create_multi_order_response_body import CreateMultiOrderResponseBody
 from ._create_multi_order_response import CreateMultiOrderResponse
+from ._describe_aicall_details_request import DescribeAICallDetailsRequest
+from ._describe_aicall_details_response_body import DescribeAICallDetailsResponseBody
+from ._describe_aicall_details_response import DescribeAICallDetailsResponse
 from ._describe_credit_package_agents_request import DescribeCreditPackageAgentsRequest
 from ._describe_credit_package_agents_response_body import DescribeCreditPackageAgentsResponseBody
 from ._describe_credit_package_agents_response import DescribeCreditPackageAgentsResponse
@@ -42,6 +45,8 @@ from ._create_multi_order_request import CreateMultiOrderRequestOrderItemsCompon
 from ._create_multi_order_request import CreateMultiOrderRequestOrderItems
 from ._create_multi_order_shrink_request import CreateMultiOrderShrinkRequestOrderItemsComponents
 from ._create_multi_order_shrink_request import CreateMultiOrderShrinkRequestOrderItems
+from ._describe_aicall_details_response_body import DescribeAICallDetailsResponseBodyCallDetailsPointsBreakdown
+from ._describe_aicall_details_response_body import DescribeAICallDetailsResponseBodyCallDetails
 from ._describe_credit_package_agents_response_body import DescribeCreditPackageAgentsResponseBodyAgents
 from ._describe_credit_usage_info_response_body import DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoCreditTrendList
 from ._describe_credit_usage_info_response_body import DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoRemainCreditInfo
@@ -79,6 +84,9 @@ __all__ = [
     CreateMultiOrderShrinkRequest,
     CreateMultiOrderResponseBody,
     CreateMultiOrderResponse,
+    DescribeAICallDetailsRequest,
+    DescribeAICallDetailsResponseBody,
+    DescribeAICallDetailsResponse,
     DescribeCreditPackageAgentsRequest,
     DescribeCreditPackageAgentsResponseBody,
     DescribeCreditPackageAgentsResponse,
@@ -115,6 +123,8 @@ __all__ = [
     CreateMultiOrderRequestOrderItems,
     CreateMultiOrderShrinkRequestOrderItemsComponents,
     CreateMultiOrderShrinkRequestOrderItems,
+    DescribeAICallDetailsResponseBodyCallDetailsPointsBreakdown,
+    DescribeAICallDetailsResponseBodyCallDetails,
     DescribeCreditPackageAgentsResponseBodyAgents,
     DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoCreditTrendList,
     DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoRemainCreditInfo,
