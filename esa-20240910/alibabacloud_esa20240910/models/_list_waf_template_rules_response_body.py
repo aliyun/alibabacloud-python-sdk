@@ -15,7 +15,7 @@ class ListWafTemplateRulesResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # A list of template rules.
+        # The list of returned template rules.
         self.rules = rules
 
     def validate(self):
@@ -65,7 +65,7 @@ class ListWafTemplateRulesResponseBodyRules(DaraModel):
         self.config = config
         # The rule name.
         self.name = name
-        # The WAF running phase.
+        # The WAF phase.
         self.phase = phase
         # The rule status.
         self.status = status

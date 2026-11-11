@@ -10,11 +10,11 @@ class GetHttpRequestHeaderModificationRuleRequest(DaraModel):
         config_id: int = None,
         site_id: int = None,
     ):
-        # The configuration ID. You can obtain this ID by calling the [ListHttpRequestHeaderModificationRules](https://help.aliyun.com/document_detail/2867483.html) operation.
+        # The ID of the configuration. You can call the [ListHttpRequestHeaderModificationRules](https://help.aliyun.com/document_detail/2867483.html) operation to obtain the ID.
         # 
         # This parameter is required.
         self.config_id = config_id
-        # The ID of the site. You can obtain this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The ID of the site. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
         # 
         # This parameter is required.
         self.site_id = site_id

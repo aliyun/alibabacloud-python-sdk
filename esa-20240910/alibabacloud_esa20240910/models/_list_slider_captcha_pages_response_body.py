@@ -14,11 +14,11 @@ class ListSliderCaptchaPagesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of custom slider CAPTCHA pages.
+        # The list of custom slider pages.
         self.pages = pages
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -68,9 +68,9 @@ class ListSliderCaptchaPagesResponseBodyPages(DaraModel):
         name: str = None,
         site_ids: List[int] = None,
     ):
-        # The ID of the custom slider CAPTCHA page.
+        # The ID of the custom slider page.
         self.id = id
-        # The name of the custom slider CAPTCHA page.
+        # The name of the custom slider page.
         self.name = name
         # The list of associated site IDs.
         self.site_ids = site_ids

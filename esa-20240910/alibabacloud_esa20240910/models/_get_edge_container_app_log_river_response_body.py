@@ -11,7 +11,7 @@ class GetEdgeContainerAppLogRiverResponseBody(DaraModel):
         request_id: str = None,
         stdout: bool = None,
     ):
-        # The log file path of the container. The path must be an absolute path that starts with a forward slash (/). Asterisks (*) and question marks (?) can be used as wildcards.
+        # The log file path of the container. It must be an absolute path starting with a forward slash (/). Asterisks (*) and question marks (?) are supported as wildcards.
         self.path = path
         # The request ID.
         self.request_id = request_id

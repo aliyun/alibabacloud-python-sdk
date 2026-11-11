@@ -17,11 +17,11 @@ class UpdateUserWafRulesetShrinkRequest(DaraModel):
         shared_shrink: str = None,
         status: str = None,
     ):
-        # The description of the WAF ruleset.
+        # The description of the WAF rule set.
         self.description = description
-        # The expression of the WAF ruleset.
+        # The expression of the WAF rule set.
         self.expression = expression
-        # The WAF ruleset ID.
+        # The WAF rule set ID.
         # 
         # This parameter is required.
         self.id = id
@@ -29,15 +29,15 @@ class UpdateUserWafRulesetShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The name of the WAF ruleset.
+        # The name of the WAF rule set.
         self.name = name
-        # The position of the WAF ruleset.
+        # The position of the WAF rule set.
         self.position = position
-        # A list of rule configurations in the WAF ruleset.
+        # The list of rule configurations in the WAF rule set.
         self.rules_shrink = rules_shrink
-        # The shared configuration of the WAF ruleset.
+        # The sharing configuration of the WAF rule set.
         self.shared_shrink = shared_shrink
-        # The status of the WAF ruleset.
+        # The status of the WAF rule set.
         self.status = status
 
     def validate(self):

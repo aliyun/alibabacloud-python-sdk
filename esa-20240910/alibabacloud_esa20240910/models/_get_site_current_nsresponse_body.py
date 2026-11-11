@@ -12,7 +12,7 @@ class GetSiteCurrentNSResponseBody(DaraModel):
         nslist: List[str] = None,
         request_id: str = None,
     ):
-        # The nameservers of the website.
+        # The list of current name servers for the site.
         self.nslist = nslist
         # The request ID.
         self.request_id = request_id

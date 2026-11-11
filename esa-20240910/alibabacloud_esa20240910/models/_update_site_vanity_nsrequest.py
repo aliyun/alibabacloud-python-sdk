@@ -14,7 +14,7 @@ class UpdateSiteVanityNSRequest(DaraModel):
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The list of custom NS names. You can specify 2 to 5 custom NS names, separated by commas (,).
+        # The list of custom NS names. You can specify 2 to 5 custom NS names. Separate multiple names with commas (,).
         self.vanity_nslist = vanity_nslist
 
     def validate(self):

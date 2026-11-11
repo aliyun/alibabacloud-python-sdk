@@ -13,31 +13,25 @@ class CheckSiteNameResponseBody(DaraModel):
         passed: bool = None,
         request_id: str = None,
     ):
-        # The description of the verification result. Valid values:
+        # The description of the validation result. Valid values:
         # 
-        # - **success**: The verification is successful.
-        # 
-        # - **Site.AlreadyExist**: The website domain name has already been added.
-        # 
-        # - **Site.InvalidName**: Invalid website domain name.
-        # 
-        # - **Site.SubSiteUnavailable**: Subdomains are not allowed.
-        # 
-        # - **Site.InternalError**: An internal error occurs.
+        # - **success**: Success.
+        # - **Site.AlreadyExist**: The user has already added this site.
+        # - **Site.InvalidName**: The site name is invalid.
+        # - **Site.SubSiteUnavailable**: The subsite is unavailable.
+        # - **Site.InternalError**: Other errors.
         self.description = description
-        # Indicates whether a subdomain is specified. Valid values:
+        # Indicates whether the site is a subsite. Valid values:
         # 
-        # - **true**
-        # 
-        # - **false**
+        # - **true**: The site is a subsite.
+        # - **false**: The site is not a subsite.
         self.is_sub_site = is_sub_site
-        # The verification message.
+        # The validation message.
         self.messeage = messeage
-        # Indicates whether the verification passed.
+        # Indicates whether the validation is passed. Valid values:
         # 
-        # - **true**
-        # 
-        # - **false**
+        # - **true**: Passed.
+        # - **false**: Not passed.
         self.passed = passed
         # The request ID.
         self.request_id = request_id

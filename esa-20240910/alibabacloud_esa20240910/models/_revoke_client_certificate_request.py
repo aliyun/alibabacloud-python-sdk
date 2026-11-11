@@ -14,7 +14,7 @@ class RevokeClientCertificateRequest(DaraModel):
         # 
         # This parameter is required.
         self.id = id
-        # The website ID.
+        # The site ID.
         # 
         # This parameter is required.
         self.site_id = site_id

@@ -14,13 +14,13 @@ class ListCiphersResponseBody(DaraModel):
         result: List[str] = None,
         total_count: int = None,
     ):
-        # Name of the cipher suite group.
+        # The name of the cipher suite group.
         self.ciphers_group = ciphers_group
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returned result.
+        # The returned results.
         self.result = result
-        # Total number of cipher suites.
+        # The total number of cipher suites.
         self.total_count = total_count
 
     def validate(self):

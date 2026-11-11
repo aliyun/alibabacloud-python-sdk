@@ -13,23 +13,19 @@ class GetManagedTransformResponseBody(DaraModel):
         request_id: str = None,
         site_version: int = None,
     ):
-        # Indicates whether a header that contains the visitor\\"s geolocation is added. Valid values:
-        # 
-        # - on: Enables this feature.
-        # 
-        # - off: Disables this feature.
+        # Indicates whether the visitor geolocation header is added. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.add_client_geolocation_header = add_client_geolocation_header
-        # Indicates whether the "ali-real-client-ip" header is added to include the real client IP. Valid values:
-        # 
-        # - on: Enables this feature.
-        # 
-        # - off: Disables this feature.
+        # Indicates whether the ali-real-client-ip header containing the real client IP address is added. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.add_real_client_ip_header = add_real_client_ip_header
-        # The real client IP header name.
+        # The name of the real client IP address header.
         self.real_client_ip_header_name = real_client_ip_header_name
         # The request ID.
         self.request_id = request_id
-        # The version of the site for which the configuration is returned.
+        # The site version number. For sites with version management enabled, you can use this parameter to specify the site version to which the configuration applies. Default value: 0.
         self.site_version = site_version
 
     def validate(self):

@@ -13,19 +13,17 @@ class DeleteRoutineEnvironmentVariablesRequest(DaraModel):
         environment_variable_keys: List[str] = None,
         name: str = None,
     ):
-        # The environment name.
-        # 
-        # Valid values:
-        # - `staging`: staging environment
-        # - `production`: production environment
+        # The environment name. Valid values:
+        # - `staging`: the staging environment.
+        # - `production`: the production environment.
         # 
         # This parameter is required.
         self.env = env
-        # The list of environment variable keys to delete.
+        # The keys of the environment variables to delete.
         # 
         # This parameter is required.
         self.environment_variable_keys = environment_variable_keys
-        # The name of the Routine function.
+        # The name of the routine.
         # 
         # This parameter is required.
         self.name = name

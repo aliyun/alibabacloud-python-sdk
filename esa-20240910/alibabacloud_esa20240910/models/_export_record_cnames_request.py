@@ -9,7 +9,7 @@ class ExportRecordCnamesRequest(DaraModel):
         self,
         site_id: int = None,
     ):
-        # The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
+        # The ID of the site. You can call the [ListSites](~~ListSites~~) operation to query the ID.
         # 
         # This parameter is required.
         self.site_id = site_id

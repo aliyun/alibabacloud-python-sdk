@@ -16,14 +16,14 @@ class UpdateUserDeliveryTaskRequest(DaraModel):
     ):
         # The real-time log type. Valid values:
         # 
-        # - **dcdn_log_access_l1 (default)**: access logs.
-        # - **dcdn_log_er**: Edge Routine function logs.
+        # - **dcdn_log_access_l1** (default): access logs.
+        # - **dcdn_log_er**: Edge Routine logs.
         # - **dcdn_log_waf**: security protection logs.
         # - **dcdn_log_ipa**: Layer 4 acceleration logs.
         self.business_type = business_type
-        # The list of ER PODs to configure.
+        # The list of pods configured for Edge Routine.
         self.details = details
-        # The discard rate. If not specified, the default value is 0.
+        # The discard rate. If you do not specify this parameter, the default value is 0.
         self.discard_rate = discard_rate
         # The selected fields, separated by commas (,).
         # 
@@ -31,7 +31,7 @@ class UpdateUserDeliveryTaskRequest(DaraModel):
         self.field_name = field_name
         # The version of the filter rule.
         # 
-        # > Compatible with legacy filter rules. The default value is v1. Newly created tasks use v2.
+        # > Compatible with earlier versions of filter rules. The default value is v1. For newly created rules, the value is v2.
         self.filter_ver = filter_ver
         # The task name.
         # 

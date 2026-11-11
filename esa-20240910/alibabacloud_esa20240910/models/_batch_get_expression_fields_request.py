@@ -19,13 +19,13 @@ class BatchGetExpressionFieldsRequest(DaraModel):
     ):
         # The list of expressions.
         self.expressions = expressions
-        # The plan instance ID.
+        # The instance ID of the plan.
         self.instance_id = instance_id
         # The type of the expression.
         self.kind = kind
         # The WAF phase.
         self.phase = phase
-        # The plan name (in English).
+        # The name of the plan in English.
         self.plan_name_en = plan_name_en
         # The site ID.
         self.site_id = site_id

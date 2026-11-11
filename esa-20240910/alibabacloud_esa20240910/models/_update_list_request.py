@@ -14,7 +14,7 @@ class UpdateListRequest(DaraModel):
         items: List[str] = None,
         name: str = None,
     ):
-        # The new description of the list.
+        # The updated description of the list.
         # 
         # This parameter is required.
         self.description = description
@@ -22,21 +22,21 @@ class UpdateListRequest(DaraModel):
         # 
         # This parameter is required.
         self.id = id
-        # The new list content. The value is a JSON array string, for example, `["1.1.1.1","2.2.2.2"]`.
+        # The updated items in the list. The value is a JSON array string, such as `["1.1.1.1","2.2.2.2"]`.
         # 
-        # **Full overwrite semantics**: The specified `Items` value completely overwrites the existing list content instead of appending to it.
+        # **Full overwrite semantics**: The specified `Items` completely overwrites the original list content instead of appending to it.
         # 
-        # > ⚠️ **If this parameter is not specified or is set to an empty value, the existing list content is cleared**. To retain existing items and append new ones, call `GetList` to retrieve the current `Items`, merge them, and then submit the combined list.
+        # > ⚠️ **If this parameter is not specified or is left empty, the original list content is cleared**. To retain the original items and append new ones, call `GetList` to retrieve the existing `Items`, concatenate them, and submit them at once.
         # 
-        # **Element format**: The format depends on the `Kind` value specified when the list was created. UpdateList does not support modifying Kind.
+        # **Element format**: The format depends on the `Kind` specified when the list was created. UpdateList does not support modifying the kind.
         # - Kind = `ip`: Each element must be a valid IP address or CIDR block. If an element is invalid, `WrongValueMatched` is returned.
-        # - Other Kind values: The element format is subject to the relevant specifications. The number of elements is limited by the tenant quota `NumberItemsPerList`. This limit does not apply to the `ip` Kind.
+        # - Other kinds: The element format is subject to conventions, and the number of elements is limited by the tenant quota `NumberItemsPerList`. Only the `ip` kind is not subject to this limit.
         # 
         # This parameter is required.
         self.items = items
-        # The new name of the custom list. If this parameter is not specified, the original name is retained.
+        # The updated name of the custom list. If this parameter is not specified, the original name is retained.
         # 
-        # **Naming rules**: Only letters, digits, and underscores are supported (`^\\w{1,64}$`). The name must be 1 to 64 characters in length.
+        # **Naming rules**: Only letters, digits, and underscores are supported. The regular expression is `^\\w{1,64}$`, and the length is 1 to 64 characters.
         # 
         # This parameter is required.
         self.name = name

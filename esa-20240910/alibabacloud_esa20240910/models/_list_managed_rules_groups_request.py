@@ -10,9 +10,9 @@ class ListManagedRulesGroupsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The page number for the paged query.
+        # The page number for paging in a paged query.
         self.page_number = page_number
-        # The number of entries per page for the paged query.
+        # The number of entries per page for paging in a paged query.
         self.page_size = page_size
 
     def validate(self):

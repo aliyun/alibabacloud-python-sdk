@@ -21,47 +21,49 @@ class UpdateRecordRequest(DaraModel):
         ttl: int = None,
         type: str = None,
     ):
-        # The origin authentication information of the CNAME record.
+        # The origin server authentication information for a CNAME record.
         self.auth_conf = auth_conf
-        # The business scenario for record acceleration. This parameter is not required for records without acceleration enabled. Valid values:
-        # - **video_image**: video and image.
+        # The business scenario when record acceleration is enabled. This parameter is not required for records without acceleration enabled. Valid values:
+        # - **video_image**: Video and image.
         # - **api**: API.
-        # - **web**: web page.
+        # - **web**: Web page.
         self.biz_name = biz_name
-        # The comment for the record.
+        # The description of the record.
         self.comment = comment
-        # The DNS information of the record. The content varies depending on the record type. For more information, see <props="china">[documentation](https://help.aliyun.com/document_detail/2708761.html)<props="intl">[documentation](https://www.alibabacloud.com/help/doc-detail/2708761.html).
+        # The DNS information of the record. The required content for this field varies based on the record type. For more information, see <props="china">[Documentation](https://help.aliyun.com/document_detail/2708761.html)<props="intl">[Documentation](https://www.alibabacloud.com/help/doc-detail/2708761.html).
         # 
         # This parameter is required.
         self.data = data
-        # The back-to-origin HOST policy. This parameter takes effect when the record type is CNAME. Settings the HOST policy for back-to-origin requests. Valid values:
+        # The back-to-origin host policy. This parameter takes effect when the record type is CNAME and specifies the host header policy for back-to-origin requests. Valid values:
         # 
-        # - **follow_hostname**: follows the host record.
-        # - **follow_origin_domain**: follows the Origin Domain Name.
+        # - **follow_hostname**: Follows the host record.
+        # - **follow_origin_domain**: Follows the origin domain name.
         self.host_policy = host_policy
+        # The HTTP port. By default, port 80 is supported.
         self.http_ports = http_ports
+        # The HTTPS port. By default, port 443 is supported.
         self.https_ports = https_ports
-        # Specifies whether to enable proxy acceleration for the record. Only CNAME records and A/AAAA records support proxy acceleration. Valid values:
-        # - **true**: Enable proxy acceleration.
-        # - **false**: Disable proxy acceleration.
+        # Specifies whether to enable proxy acceleration for the record. Only CNAME, A, and AAAA records support proxy acceleration. Valid values:
+        # - **true**: Enables proxy acceleration.
+        # - **false**: Disables proxy acceleration.
         self.proxied = proxied
-        # The ID of the record. You can call [ListRecords](https://help.aliyun.com/document_detail/2850265.html) to obtain the record ID.
+        # The ID of the record. You can obtain the ID by calling the [ListRecords](https://help.aliyun.com/document_detail/2850265.html) operation.
         # 
         # This parameter is required.
         self.record_id = record_id
-        # The origin server type of the CNAME record. This parameter is required when you add a CNAME record. Valid values:
+        # The origin server type for a CNAME record. This parameter is required when you add a CNAME record. Valid values:
         # 
         # - **OSS**: OSS origin server.
         # - **S3**: S3 origin server.
-        # - **LB**: load balancing origin server.
-        # - **OP**: IPAM pool origin server.
-        # - **Domain**: standard domain name origin server.
+        # - **LB**: Load balancer origin server.
+        # - **OP**: Origin address pool origin server.
+        # - **Domain**: Common domain name origin server.
         # 
-        # If this parameter is not specified or is left empty, the default value is Domain, which indicates a standard domain name origin server type.
+        # If this parameter is not specified or is left empty, the default value is **Domain**, which indicates a common domain name origin server.
         self.source_type = source_type
-        # The time-to-live (TTL) of the record, in seconds. Valid values: **30 to 86400**, or 1. A value of 1 indicates that the TTL of the record is automatically determined.
+        # The time-to-live (TTL) of the record, in seconds. Valid values: **30** to **86400**, or **1**. A value of 1 indicates that the TTL is automatic.
         self.ttl = ttl
-        # The DNS type of the record, such as A/AAAA, CNAME, or TXT.
+        # The DNS record type. Examples include A, AAAA, CNAME, and TXT.
         self.type = type
 
     def validate(self):
@@ -173,42 +175,42 @@ class UpdateRecordRequestData(DaraModel):
         value: str = None,
         weight: int = None,
     ):
-        # The encryption algorithm used by the record. Valid values: **0 to 255**. This parameter is required when you add CERT or SSHFP records.
+        # The encryption algorithm used by the record. Valid values: **0** to **255**. This parameter is required when you add CERT or SSHFP records.
         self.algorithm = algorithm
         # The public key certificate information of the record. This parameter is required when you add CERT, SMIMEA, or TLSA records.
         self.certificate = certificate
-        # The public key fingerprint value of the record. This parameter is required when you add SSHFP records.
+        # The public key fingerprint of the record. This parameter is required when you add an SSHFP record.
         self.fingerprint = fingerprint
-        # The flag of the record. The Flag of a CAA record indicates its priority and processing method. Valid values: **0 to 255**. This parameter is required when you add CAA records.
+        # The flag of the record. For a CAA record, the flag indicates its priority and processing method. Valid values: **0** to **255**. This parameter is required when you add a CAA record.
         self.flag = flag
-        # The public key identifier of the record. Valid values: **0 to 65535**. This parameter is required when you add CERT records.
+        # The public key tag of the record. Valid values: **0** to **65535**. This parameter is required when you add a CERT record.
         self.key_tag = key_tag
-        # The algorithm policy used by the record for matching or verifying certificates. Valid values: **0 to 255**. This parameter is required when you add SMIMEA or TLSA records.
+        # The algorithm policy used to match or verify the certificate. Valid values: **0** to **255**. This parameter is required when you add SMIMEA or TLSA records.
         self.matching_type = matching_type
-        # The port of the record. Valid values: **0 to 65535**. This parameter is required when you add SRV records.
+        # The port of the record. Valid values: **0** to **65535**. This parameter is required when you add an SRV record.
         self.port = port
-        # The priority of the record. Valid values: **0 to 65535**. A smaller value indicates a higher priority. This parameter is required when you add MX, SRV, or URI records.
+        # The priority of the record. Valid values: **0** to **65535**. A smaller value indicates a higher priority. This parameter is required when you add MX, SRV, or URI records.
         self.priority = priority
-        # The type of certificate or public key used by the record. Valid values: **0 to 255**. This parameter is required when you add SMIMEA or TLSA records.
+        # The type of the certificate or public key used by the record. Valid values: **0** to **255**. This parameter is required when you add SMIMEA or TLSA records.
         self.selector = selector
-        # The tag of the record. The Tag of a CAA record indicates its specific type and purpose. This parameter is required when you add CAA records.
+        # The tag of the record. For a CAA record, the tag indicates its specific type and purpose. This parameter is required when you add a CAA record.
         self.tag = tag
-        # The certificate type of the record (for CERT records) or the public key type (for SSHFP records). This parameter is required when you add CERT or SSHFP records.
+        # The certificate type for a CERT record, or the public key type for an SSHFP record. This parameter is required when you add CERT or SSHFP records.
         self.type = type
-        # The usage identifier of the record. Valid values: **0 to 255**. This parameter is required when you add SMIMEA or TLSA records.
+        # The usage identifier of the record. Valid values: **0** to **255**. This parameter is required when you add SMIMEA or TLSA records.
         self.usage = usage
-        # The record value or partial content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, or URI records. The meaning varies depending on the record type:
+        # The record value or partial content. This parameter is required when you add A, AAAA, CNAME, NS, MX, TXT, CAA, SRV, or URI records. The meaning of this parameter varies based on the record type:
         # 
-        # - **A/AAAA**: The IP address to which the record points. Separate multiple IP addresses with commas (,). At least one IPv4 address is required.
-        # - **CNAME**: The target domain name to which the record points.
-        # - **NS**: The name server for the specified domain name.
-        # - **MX**: A valid target mail server domain name.
+        # - **A/AAAA**: The destination IP address. Separate multiple IP addresses with commas (,). At least one IPv4 address is required.
+        # - **CNAME**: The target domain name.
+        # - **NS**: The name server of the specified domain name.
+        # - **MX**: The valid domain name of the target mail server.
         # - **TXT**: A valid text string.
-        # - **CAA**: A valid certification authority domain name.
-        # - **SRV**: A valid target host domain name.
+        # - **CAA**: The valid domain name of the certificate issuing authority.
+        # - **SRV**: The valid domain name of the target host.
         # - **URI**: A valid URI string.
         self.value = value
-        # The weight of the record. Valid values: **0 to 65535**. This parameter is required when you add SRV or URI records.
+        # The weight of the record. Valid values: **0** to **65535**. This parameter is required when you add SRV or URI records.
         self.weight = weight
 
     def validate(self):
@@ -318,25 +320,25 @@ class UpdateRecordRequestAuthConf(DaraModel):
         secret_key: str = None,
         version: str = None,
     ):
-        # The AccessKey of the account to which the origin server belongs. This parameter is required when the origin server type is OSS and the origin authentication type is private cross-account read, or when the origin server type is S3 and the origin authentication type is private read.
+        # The AccessKey of the account to which the origin server belongs. This parameter is required when the origin server type is OSS and the authentication type is private cross-account read, or when the origin server type is S3 and the authentication type is private read.
         self.access_key = access_key
-        # The origin authentication type. Different origin server types support different authentication types. The origin server type refers to the SourceType parameter in this operation. When the origin server type is OSS or S3, you must specify the origin authentication type. Valid values:
+        # The origin server authentication type. Supported authentication types vary based on the origin server type, which is specified by the SourceType parameter in this operation. This parameter is required when the origin server type is OSS or S3. Valid values:
         # 
-        # - **public**: public read. Select this value when the origin server type is OSS or S3 and the origin server allows public read access.
-        # - **private**: private read. Select this value when the origin server type is S3 and the origin server allows only private read access.
-        # - **private_same_account**: private same-account read. Select this value when the origin server type is OSS, the origin server is under the same Alibaba Cloud account, and the origin server allows only private read access.
+        # - **public**: Public read. Select this value when the origin server type is OSS or S3 and the origin server allows public read access.
+        # - **private**: Private read. Select this value when the origin server type is S3 and the origin server allows private read access.
+        # - **private_same_account**: Private read within the same account. Select this value when the origin server type is OSS, the origin server and the current resource belong to the same Alibaba Cloud account, and the origin server allows private read access.
         self.auth_type = auth_type
-        # The signature algorithm version. This parameter is required when the origin server type is S3 and the origin authentication type is private read. Valid values:
+        # The signature algorithm version. This parameter is required when the origin server type is S3 and the authentication type is private read. Valid values:
         # 
         # - **v2**
         # 
         # - **v4**
         # 
-        # Default value: v4.
+        # If this parameter is not specified, the default value is **v4**.
         self.region = region
-        # The SecretKey of the account to which the origin server belongs. This parameter is required when the origin server type is OSS and the origin authentication type is private cross-account read, or when the origin server type is S3 and the origin authentication type is private read.
+        # The secret key of the account to which the origin server belongs. This parameter is required when the origin server type is OSS and the authentication type is private cross-account read, or when the origin server type is S3 and the authentication type is private read.
         self.secret_key = secret_key
-        # The region to which the origin server belongs. This parameter is required when the origin server type is S3. Obtain the region from the official S3 website.
+        # The region to which the origin server belongs. This parameter is required when the origin server type is S3. You can obtain the region of the origin server from the official website of S3.
         self.version = version
 
     def validate(self):

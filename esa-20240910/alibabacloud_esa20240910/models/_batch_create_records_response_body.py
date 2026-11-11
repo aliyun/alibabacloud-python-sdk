@@ -13,7 +13,7 @@ class BatchCreateRecordsResponseBody(DaraModel):
         record_result_list: main_models.BatchCreateRecordsResponseBodyRecordResultList = None,
         request_id: str = None,
     ):
-        # The list of record creation results, including details of successfully and unsuccessfully created records.
+        # The list of record creation results, including the details of successful and failed records.
         self.record_result_list = record_result_list
         # The request ID.
         self.request_id = request_id
@@ -53,9 +53,9 @@ class BatchCreateRecordsResponseBodyRecordResultList(DaraModel):
         success: List[main_models.BatchCreateRecordsResponseBodyRecordResultListSuccess] = None,
         total_count: int = None,
     ):
-        # The list of records that failed to be created.
+        # The list of failed records.
         self.failed = failed
-        # The list of successfully created records.
+        # The list of successful records.
         self.success = success
         # The total number of records in the creation operation.
         self.total_count = total_count
@@ -125,34 +125,36 @@ class BatchCreateRecordsResponseBodyRecordResultListSuccess(DaraModel):
         ttl: int = None,
     ):
         # The business scenario for record acceleration. Valid values:
-        # - **image_video**: video and image.
-        # - **api**: API.
-        # - **web**: web page.
+        # - **image_video**: images and videos.
+        # - **api**: API operations.
+        # - **web**: web pages.
         self.biz_name = biz_name
         # The DNS information of the record.
         self.data = data
         # The description of the creation result.
         self.description = description
+        # The HTTP port. By default, port 80 is supported.
         self.http_ports = http_ports
+        # The HTTPS port. Port 443 is supported by default.
         self.https_ports = https_ports
-        # Specifies whether to enable proxied acceleration for the record. Only CNAME records and A/AAAA records support proxied acceleration. Valid values:
-        # - **true**: Proxied acceleration is enabled.
-        # - **false**: Proxied acceleration is disabled.
+        # Specifies whether to enable proxy acceleration for the record. Only CNAME and A/AAAA records can enable proxy acceleration. Valid values:
+        # - **true**: enables proxy acceleration.
+        # - **false**: disables proxy acceleration.
         self.proxied = proxied
         # The record ID.
         self.record_id = record_id
         # The record name.
         self.record_name = record_name
-        # The DNS type of the record, such as **A/AAAA, CNAME, or TXT**.
+        # The DNS record type, such as **A/AAAA**, **CNAME**, or **TXT**.
         self.record_type = record_type
-        # The origin type of the CNAME record. This field is empty for other record types. Valid values:
-        # - **OSS**: OSS origin.
-        # - **S3**: S3 origin.
-        # - **LB**: load balancing origin.
-        # - **OP**: IPAM pool origin.
-        # - **Domain**: common domain name origin.
+        # The origin server type for CNAME records. This field is empty for other record types. Valid values:
+        # - **OSS**: OSS origin server.
+        # - **S3**: S3 origin server.
+        # - **LB**: Load balancing origin server.
+        # - **OP**: Source IPAM pool origin server.
+        # - **Domain**: Common domain name origin server.
         self.source_type = source_type
-        # The time-to-live (TTL) of the record, in seconds. A value of 1 indicates that the TTL is set to automatic.
+        # The time-to-live (TTL) of the record, in seconds. A value of 1 indicates that the TTL is automatic.
         self.ttl = ttl
 
     def validate(self):
@@ -255,42 +257,41 @@ class BatchCreateRecordsResponseBodyRecordResultListSuccessData(DaraModel):
         value: str = None,
         weight: int = None,
     ):
-        # The encryption algorithm used by the record. Value range: **0 to 255**. This parameter applies to CERT and SSHFP records.
+        # The encryption algorithm used by the record. Valid values: **0** to **255**. This parameter applies to CERT and SSHFP records.
         self.algorithm = algorithm
         # The public key certificate information of the record. This parameter applies to CERT, SMIMEA, and TLSA records.
         self.certificate = certificate
         # The public key fingerprint of the record. This parameter applies to SSHFP records.
         self.fingerprint = fingerprint
-        # The flag of the record, which indicates its priority and processing method. This parameter applies to CAA records.
+        # The flag of the record. Indicates the priority and processing method. This parameter applies to CAA records.
         self.flag = flag
-        # The public key identifier of the record. Value range: **0 to 65535**. This parameter applies to CERT records.
+        # The public key identifier of the record. Valid values: **0** to **65535**. This parameter applies to CERT records.
         self.key_tag = key_tag
-        # The algorithm policy used to match or verify certificates. Value range: **0 to 255**. This parameter applies to SMIMEA and TLSA records.
+        # The algorithm policy used by the record to match or verify the certificate. Valid values: **0** to **255**. This parameter applies to SMIMEA and TLSA records.
         self.matching_type = matching_type
-        # The port of the record. Value range: **0 to 65535**. This parameter applies only to SRV records.
+        # The port of the record. Valid values: **0** to **65535**. This parameter applies only to SRV records.
         self.port = port
-        # The priority of the record. Value range: **0 to 65535**. A smaller value indicates a higher priority. This parameter applies to MX, SRV, and URI records.
+        # The priority of the record. Valid values: **0** to **65535**. A smaller value indicates a higher priority. This parameter applies to MX, SRV, and URI records.
         self.priority = priority
-        # The type of certificate or public key used by the record. Value range: **0 to 255**. This parameter applies to SMIMEA and TLSA records.
+        # The type of the certificate or public key used by the record. Valid values: **0** to **255**. This parameter applies to SMIMEA and TLSA records.
         self.selector = selector
-        # The tag of the CAA record, which indicates its specific type and purpose, such as issue, issuewild, or iodef.
+        # The tag of the CAA record. Indicates the specific type and purpose, such as issue, issuewild, or iodef.
         self.tag = tag
-        # The certificate type (for CERT records) or public key type (for SSHFP records) of the record.
+        # The certificate type for CERT records or the public key type for SSHFP records.
         self.type = type
-        # The usage identifier of the record. Value range: **0 to 255**. This parameter applies to SMIMEA and TLSA records.
+        # The usage identifier of the record. Valid values: **0** to **255**. This parameter applies to SMIMEA and TLSA records.
         self.usage = usage
-        # The record value or partial content. This parameter is included in A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. The meaning varies by record type:
-        # 
-        # - **A/AAAA**: the IP address. Separate multiple IP addresses with commas (,). At least one IPv4 address is required.
-        # - **CNAME**: the target domain name.
-        # - **NS**: the name server of the specified domain name.
-        # - **MX**: a valid target mail server domain name.
-        # - **TXT**: a valid text string.
-        # - **CAA**: a valid certification authority domain name.
-        # - **SRV**: a valid target host domain name.
-        # - **URI**: a valid URI string.
+        # The record value or partial content. This parameter is included in A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It indicates different meanings in different record types:
+        # - **A/AAAA**: The IP address. Separate multiple IP addresses with commas (,). At least one IPv4 address is required.
+        # - **CNAME**: The target domain name.
+        # - **NS**: The name server of the specified domain name.
+        # - **MX**: The valid domain name of the target mail server.
+        # - **TXT**: The valid text character string.
+        # - **CAA**: The valid domain name of the certificate issuing authority.
+        # - **SRV**: The valid domain name of the target host.
+        # - **URI**: The valid URI string.
         self.value = value
-        # The weight of the record. Value range: **0 to 65535**. This parameter applies to SRV and URI records.
+        # The weight of the record. Valid values: **0** to **65535**. This parameter applies to SRV and URI records.
         self.weight = weight
 
     def validate(self):
@@ -407,35 +408,36 @@ class BatchCreateRecordsResponseBodyRecordResultListFailed(DaraModel):
         ttl: int = None,
     ):
         # The business scenario for record acceleration. Valid values:
-        # - **image_video**: video and image.
-        # - **api**: API.
-        # - **web**: web page.
+        # - **image_video**: images and videos.
+        # - **api**: API operations.
+        # - **web**: web pages.
         self.biz_name = biz_name
-        # The DNS information of the record, including record values and related properties for various record types.
+        # The DNS information of the record, including the values and related attributes of various record types.
         self.data = data
         # The result description.
         self.description = description
+        # The HTTP port. By default, port 80 is supported.
         self.http_ports = http_ports
+        # The HTTPS port. Port 443 is supported by default.
         self.https_ports = https_ports
-        # Indicates whether proxied acceleration is enabled for the record. Only CNAME records and A/AAAA records support proxied acceleration. Valid values:
-        # 
-        # - **true**: Proxied acceleration is enabled.
-        # - **false**: Proxied acceleration is disabled.
+        # Specifies whether proxy acceleration is enabled for the record. Only CNAME and A/AAAA records support proxy acceleration. Valid values:
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.proxied = proxied
-        # The record ID.
+        # The ID of the created record.
         self.record_id = record_id
         # The record name.
         self.record_name = record_name
-        # The DNS type of the record, such as **A/AAAA, CNAME, or TXT**.
+        # The DNS record type, such as **A/AAAA**, **CNAME**, or **TXT**.
         self.record_type = record_type
-        # The origin type of the CNAME record. This field is empty for other record types. Valid values:
-        # - **OSS**: OSS origin.
-        # - **S3**: S3 origin.
-        # - **LB**: load balancing origin.
-        # - **OP**: IPAM pool origin.
-        # - **Domain**: common domain name origin.
+        # The origin server type for CNAME records. This field is empty for other record types. Valid values:
+        # - **OSS**: OSS origin server.
+        # - **S3**: S3 origin server.
+        # - **LB**: Load balancing origin server.
+        # - **OP**: Source IPAM pool origin server.
+        # - **Domain**: Common domain name origin server.
         self.source_type = source_type
-        # The time-to-live (TTL) of the record, in seconds. A value of 1 indicates that the TTL is set to automatic.
+        # The time-to-live (TTL) of the record, in seconds. A value of 1 indicates that the TTL is automatic.
         self.ttl = ttl
 
     def validate(self):
@@ -538,40 +540,39 @@ class BatchCreateRecordsResponseBodyRecordResultListFailedData(DaraModel):
         value: str = None,
         weight: int = None,
     ):
-        # The encryption algorithm used by the record. Value range: **0 to 255**. This parameter applies to CERT and SSHFP records.
+        # The encryption algorithm used by the record. Valid values: **0** to **255**. This parameter applies to CERT and SSHFP records.
         self.algorithm = algorithm
         # The public key certificate information of the record. This parameter applies to CERT, SMIMEA, and TLSA records.
         self.certificate = certificate
         # The public key fingerprint of the record. This parameter applies to SSHFP records.
         self.fingerprint = fingerprint
-        # The flag of the record, which indicates its priority and processing method. This parameter applies to CAA records.
+        # The flag of the record. Indicates the priority and processing method. This parameter applies to CAA records.
         self.flag = flag
-        # The public key identifier of the record. Value range: **0 to 65535**. This parameter applies to CERT records.
+        # The public key identifier of the record. Valid values: **0** to **65535**. This parameter applies to CERT records.
         self.key_tag = key_tag
-        # The algorithm policy used to match or verify certificates. Value range: **0 to 255**. This parameter applies to SMIMEA and TLSA records.
+        # The algorithm policy used by the record to match or verify the certificate. Valid values: **0** to **255**. This parameter applies to SMIMEA and TLSA records.
         self.matching_type = matching_type
-        # The port number of the record. This parameter applies only to SRV records.
+        # The port number of the record. This parameter is associated with SRV records and applies only to SRV records.
         self.port = port
-        # The priority of the record. Value range: **0 to 65535**. A smaller value indicates a higher priority. This parameter applies to MX, SRV, and URI records.
+        # The priority of the record. Valid values: **0** to **65535**. A smaller value indicates a higher priority. This parameter applies to MX, SRV, and URI records.
         self.priority = priority
-        # The type of certificate or public key used by the record. Value range: **0 to 255**. This parameter applies to SMIMEA and TLSA records.
+        # The type of the certificate or public key used by the record. Valid values: **0** to **255**. This parameter applies to SMIMEA and TLSA records.
         self.selector = selector
-        # The tag of the CAA record, which indicates its specific type and purpose, such as issue, issuewild, or iodef.
+        # The tag of the CAA record. Indicates the specific type and purpose, such as issue, issuewild, or iodef.
         self.tag = tag
-        # The certificate type (for CERT records) or public key type (for SSHFP records) of the record.
+        # The certificate type for CERT records or the public key type for SSHFP records.
         self.type = type
-        # The usage identifier of the record. Value range: **0 to 255**. This parameter applies to SMIMEA and TLSA records.
+        # The usage identifier of the record. Valid values: **0** to **255**. This parameter applies to SMIMEA and TLSA records.
         self.usage = usage
-        # The record value or partial content. This parameter is included in A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. The meaning varies by record type:
-        # 
-        # - **A/AAAA**: the IP address. Separate multiple IP addresses with commas (,). At least one IPv4 address is required.
-        # - **CNAME**: the target domain name.
-        # - **NS**: the name server of the specified domain name.
-        # - **MX**: a valid target mail server domain name.
-        # - **TXT**: a valid text string.
-        # - **CAA**: a valid certification authority domain name.
-        # - **SRV**: a valid target host domain name.
-        # - **URI**: a valid URI string.
+        # The record value or partial content. This parameter is included in A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It indicates different meanings in different record types:
+        # - **A/AAAA**: The target IP address. Separate multiple IP addresses with half-width commas (,). At least one IPv4 address is required.
+        # - **CNAME**: The target domain name.
+        # - **NS**: The name server of the specified domain name.
+        # - **MX**: The valid domain name of the target mail server.
+        # - **TXT**: The valid text character string.
+        # - **CAA**: The valid domain name of the certificate issuing authority.
+        # - **SRV**: The valid domain name of the target host.
+        # - **URI**: The valid URI string.
         self.value = value
         # The weight of the record. This parameter applies to SRV and URI records.
         self.weight = weight

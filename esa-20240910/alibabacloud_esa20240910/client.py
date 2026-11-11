@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Dict
 
 from alibabacloud_esa20240910 import models as main_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import exceptions as open_api_exceptions
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
@@ -29,6 +30,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'ESA'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('esa', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -3308,6 +3312,108 @@ class Client(OpenApiClient):
     ) -> main_models.CreateEnvironmentResponse:
         runtime = RuntimeOptions()
         return await self.create_environment_with_options_async(request, runtime)
+
+    def create_error_pages_redirect_rule_with_options(
+        self,
+        tmp_req: main_models.CreateErrorPagesRedirectRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateErrorPagesRedirectRuleResponse:
+        tmp_req.validate()
+        request = main_models.CreateErrorPagesRedirectRuleShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.error_pages_redirect):
+            request.error_pages_redirect_shrink = Utils.array_to_string_with_specified_style(tmp_req.error_pages_redirect, 'ErrorPagesRedirect', 'json')
+        query = {}
+        if not DaraCore.is_null(request.error_pages_redirect_shrink):
+            query['ErrorPagesRedirect'] = request.error_pages_redirect_shrink
+        if not DaraCore.is_null(request.rule):
+            query['Rule'] = request.rule
+        if not DaraCore.is_null(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not DaraCore.is_null(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not DaraCore.is_null(request.sequence):
+            query['Sequence'] = request.sequence
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        if not DaraCore.is_null(request.site_version):
+            query['SiteVersion'] = request.site_version
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateErrorPagesRedirectRule',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateErrorPagesRedirectRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_error_pages_redirect_rule_with_options_async(
+        self,
+        tmp_req: main_models.CreateErrorPagesRedirectRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateErrorPagesRedirectRuleResponse:
+        tmp_req.validate()
+        request = main_models.CreateErrorPagesRedirectRuleShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.error_pages_redirect):
+            request.error_pages_redirect_shrink = Utils.array_to_string_with_specified_style(tmp_req.error_pages_redirect, 'ErrorPagesRedirect', 'json')
+        query = {}
+        if not DaraCore.is_null(request.error_pages_redirect_shrink):
+            query['ErrorPagesRedirect'] = request.error_pages_redirect_shrink
+        if not DaraCore.is_null(request.rule):
+            query['Rule'] = request.rule
+        if not DaraCore.is_null(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not DaraCore.is_null(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not DaraCore.is_null(request.sequence):
+            query['Sequence'] = request.sequence
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        if not DaraCore.is_null(request.site_version):
+            query['SiteVersion'] = request.site_version
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateErrorPagesRedirectRule',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateErrorPagesRedirectRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_error_pages_redirect_rule(
+        self,
+        request: main_models.CreateErrorPagesRedirectRuleRequest,
+    ) -> main_models.CreateErrorPagesRedirectRuleResponse:
+        runtime = RuntimeOptions()
+        return self.create_error_pages_redirect_rule_with_options(request, runtime)
+
+    async def create_error_pages_redirect_rule_async(
+        self,
+        request: main_models.CreateErrorPagesRedirectRuleRequest,
+    ) -> main_models.CreateErrorPagesRedirectRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.create_error_pages_redirect_rule_with_options_async(request, runtime)
 
     def create_http_incoming_request_header_modification_rule_with_options(
         self,
@@ -8684,6 +8790,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteEnvironmentResponse:
         runtime = RuntimeOptions()
         return await self.delete_environment_with_options_async(request, runtime)
+
+    def delete_error_pages_redirect_rule_with_options(
+        self,
+        request: main_models.DeleteErrorPagesRedirectRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteErrorPagesRedirectRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteErrorPagesRedirectRule',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteErrorPagesRedirectRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_error_pages_redirect_rule_with_options_async(
+        self,
+        request: main_models.DeleteErrorPagesRedirectRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteErrorPagesRedirectRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteErrorPagesRedirectRule',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteErrorPagesRedirectRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_error_pages_redirect_rule(
+        self,
+        request: main_models.DeleteErrorPagesRedirectRuleRequest,
+    ) -> main_models.DeleteErrorPagesRedirectRuleResponse:
+        runtime = RuntimeOptions()
+        return self.delete_error_pages_redirect_rule_with_options(request, runtime)
+
+    async def delete_error_pages_redirect_rule_async(
+        self,
+        request: main_models.DeleteErrorPagesRedirectRuleRequest,
+    ) -> main_models.DeleteErrorPagesRedirectRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_error_pages_redirect_rule_with_options_async(request, runtime)
 
     def delete_http_ddo_sintelligent_rule_with_options(
         self,
@@ -17383,6 +17563,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_er_service_with_options_async(request, runtime)
 
+    def get_error_pages_redirect_rule_with_options(
+        self,
+        request: main_models.GetErrorPagesRedirectRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetErrorPagesRedirectRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetErrorPagesRedirectRule',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetErrorPagesRedirectRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_error_pages_redirect_rule_with_options_async(
+        self,
+        request: main_models.GetErrorPagesRedirectRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetErrorPagesRedirectRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetErrorPagesRedirectRule',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetErrorPagesRedirectRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_error_pages_redirect_rule(
+        self,
+        request: main_models.GetErrorPagesRedirectRuleRequest,
+    ) -> main_models.GetErrorPagesRedirectRuleResponse:
+        runtime = RuntimeOptions()
+        return self.get_error_pages_redirect_rule_with_options(request, runtime)
+
+    async def get_error_pages_redirect_rule_async(
+        self,
+        request: main_models.GetErrorPagesRedirectRuleRequest,
+    ) -> main_models.GetErrorPagesRedirectRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.get_error_pages_redirect_rule_with_options_async(request, runtime)
+
     def get_fail_file_with_options(
         self,
         request: main_models.GetFailFileRequest,
@@ -24002,6 +24256,100 @@ class Client(OpenApiClient):
     ) -> main_models.ListEnvironmentsResponse:
         runtime = RuntimeOptions()
         return await self.list_environments_with_options_async(request, runtime)
+
+    def list_error_pages_redirect_rules_with_options(
+        self,
+        request: main_models.ListErrorPagesRedirectRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListErrorPagesRedirectRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not DaraCore.is_null(request.config_type):
+            query['ConfigType'] = request.config_type
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        if not DaraCore.is_null(request.site_version):
+            query['SiteVersion'] = request.site_version
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListErrorPagesRedirectRules',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListErrorPagesRedirectRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_error_pages_redirect_rules_with_options_async(
+        self,
+        request: main_models.ListErrorPagesRedirectRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListErrorPagesRedirectRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not DaraCore.is_null(request.config_type):
+            query['ConfigType'] = request.config_type
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        if not DaraCore.is_null(request.site_version):
+            query['SiteVersion'] = request.site_version
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListErrorPagesRedirectRules',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListErrorPagesRedirectRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_error_pages_redirect_rules(
+        self,
+        request: main_models.ListErrorPagesRedirectRulesRequest,
+    ) -> main_models.ListErrorPagesRedirectRulesResponse:
+        runtime = RuntimeOptions()
+        return self.list_error_pages_redirect_rules_with_options(request, runtime)
+
+    async def list_error_pages_redirect_rules_async(
+        self,
+        request: main_models.ListErrorPagesRedirectRulesRequest,
+    ) -> main_models.ListErrorPagesRedirectRulesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_error_pages_redirect_rules_with_options_async(request, runtime)
 
     def list_http_incoming_request_header_modification_rules_with_options(
         self,
@@ -33970,6 +34318,108 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateEnvironmentVersionResponse:
         runtime = RuntimeOptions()
         return await self.update_environment_version_with_options_async(request, runtime)
+
+    def update_error_pages_redirect_rule_with_options(
+        self,
+        tmp_req: main_models.UpdateErrorPagesRedirectRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateErrorPagesRedirectRuleResponse:
+        tmp_req.validate()
+        request = main_models.UpdateErrorPagesRedirectRuleShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.error_pages_redirect):
+            request.error_pages_redirect_shrink = Utils.array_to_string_with_specified_style(tmp_req.error_pages_redirect, 'ErrorPagesRedirect', 'json')
+        query = {}
+        if not DaraCore.is_null(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not DaraCore.is_null(request.error_pages_redirect_shrink):
+            query['ErrorPagesRedirect'] = request.error_pages_redirect_shrink
+        if not DaraCore.is_null(request.rule):
+            query['Rule'] = request.rule
+        if not DaraCore.is_null(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not DaraCore.is_null(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not DaraCore.is_null(request.sequence):
+            query['Sequence'] = request.sequence
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateErrorPagesRedirectRule',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateErrorPagesRedirectRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_error_pages_redirect_rule_with_options_async(
+        self,
+        tmp_req: main_models.UpdateErrorPagesRedirectRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateErrorPagesRedirectRuleResponse:
+        tmp_req.validate()
+        request = main_models.UpdateErrorPagesRedirectRuleShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.error_pages_redirect):
+            request.error_pages_redirect_shrink = Utils.array_to_string_with_specified_style(tmp_req.error_pages_redirect, 'ErrorPagesRedirect', 'json')
+        query = {}
+        if not DaraCore.is_null(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not DaraCore.is_null(request.error_pages_redirect_shrink):
+            query['ErrorPagesRedirect'] = request.error_pages_redirect_shrink
+        if not DaraCore.is_null(request.rule):
+            query['Rule'] = request.rule
+        if not DaraCore.is_null(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not DaraCore.is_null(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not DaraCore.is_null(request.sequence):
+            query['Sequence'] = request.sequence
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateErrorPagesRedirectRule',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateErrorPagesRedirectRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_error_pages_redirect_rule(
+        self,
+        request: main_models.UpdateErrorPagesRedirectRuleRequest,
+    ) -> main_models.UpdateErrorPagesRedirectRuleResponse:
+        runtime = RuntimeOptions()
+        return self.update_error_pages_redirect_rule_with_options(request, runtime)
+
+    async def update_error_pages_redirect_rule_async(
+        self,
+        request: main_models.UpdateErrorPagesRedirectRuleRequest,
+    ) -> main_models.UpdateErrorPagesRedirectRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.update_error_pages_redirect_rule_with_options_async(request, runtime)
 
     def update_http_incoming_request_header_modification_rule_with_options(
         self,

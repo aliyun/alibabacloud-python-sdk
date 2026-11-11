@@ -101,7 +101,7 @@ class GetOriginCaCertificateResponseBodyResult(DaraModel):
     ):
         # The common name of the certificate.
         self.common_name = common_name
-        # The creation time. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
+        # The creation time. The time follows the YYYY-MM-DD HH:MM:SS format and is in the UTC/GMT time zone.
         self.create_time = create_time
         # The SHA-256 fingerprint of the certificate.
         self.fingerprint_sha_256 = fingerprint_sha_256
@@ -111,13 +111,13 @@ class GetOriginCaCertificateResponseBodyResult(DaraModel):
         self.issuer = issuer
         # The certificate name.
         self.name = name
-        # The end time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
+        # The expiration time of the certificate. The time follows the YYYY-MM-DD HH:MM:SS format and is in the UTC/GMT time zone.
         self.not_after = not_after
-        # The start time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
+        # The start time of the certificate validity period. The time follows the YYYY-MM-DD HH:MM:SS format and is in the UTC/GMT time zone.
         self.not_before = not_before
         # The public key algorithm of the certificate.
         self.pubkey_algorithm = pubkey_algorithm
-        # The Subject Alternative Name (SAN) of the certificate.
+        # The subject alternative name (SAN) of the certificate.
         self.san = san
         # The certificate serial number.
         self.serial_number = serial_number
@@ -127,7 +127,7 @@ class GetOriginCaCertificateResponseBodyResult(DaraModel):
         self.status = status
         # The certificate type.
         self.type = type
-        # The update time. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
+        # The update time. The time follows the YYYY-MM-DD HH:MM:SS format and is in the UTC/GMT time zone.
         self.update_time = update_time
 
     def validate(self):

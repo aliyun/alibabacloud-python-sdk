@@ -23,38 +23,35 @@ class GetOriginProtectionResponseBody(DaraModel):
         request_id: str = None,
         site_id: int = None,
     ):
-        # Automatically enable the latest origin IP list.
+        # Specifies whether to automatically enable the latest back-to-origin IP addresses list.
         self.auto_confirm_iplist = auto_confirm_iplist
-        # The current origin IP whitelist used by the site.
+        # The current back-to-origin IP addresses whitelist used by the site.
         self.current_ipwhitelist = current_ipwhitelist
-        # The changed origin IP whitelist.
+        # The changed back-to-origin IP addresses whitelist.
         self.diff_ipwhitelist = diff_ipwhitelist
-        # The latest origin IP whitelist.
+        # The latest back-to-origin IP addresses whitelist.
         self.latest_ipwhitelist = latest_ipwhitelist
-        # Indicates whether the origin IP whitelist needs to be updated. When the current origin IP whitelist differs from the latest origin IP whitelist, an update is needed and this value returns true.
-        # 
-        # - true: Update is needed.
-        # - false: No update is needed.
+        # Specifies whether the back-to-origin IP addresses whitelist needs to be updated. If the back-to-origin IP addresses whitelist in use differs from the latest back-to-origin IP addresses whitelist, it must be updated and this parameter returns true. Valid values:
+        # - true: Needs to be updated.
+        # - false: Does not need to be updated.
         self.need_update = need_update
-        # Origin convergence switch:
-        # 
+        # The back-to-origin convergence switch. Valid values:
         # - on: Enabled.
         # - off: Disabled.
         self.origin_converge = origin_converge
-        # Origin protection switch:
-        # 
+        # The origin server protection switch. Valid values:
         # - on: Enabled.
         # - off: Disabled.
         self.origin_protection = origin_protection
-        # The regional origin IP whitelist currently used by the site.
+        # The current area back-to-origin IP addresses whitelist used by the site.
         self.regional_current_ipwhitelist = regional_current_ipwhitelist
-        # The changed regional origin IP whitelist.
+        # The changed area back-to-origin IP addresses whitelist.
         self.regional_diff_ipwhitelist = regional_diff_ipwhitelist
-        # The latest regional origin IP whitelist.
+        # The latest area back-to-origin IP addresses whitelist.
         self.regional_latest_ipwhitelist = regional_latest_ipwhitelist
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Site ID.
+        # The site ID.
         self.site_id = site_id
 
     def validate(self):
@@ -166,9 +163,9 @@ class GetOriginProtectionResponseBodyRegionalLatestIPWhitelist(DaraModel):
         regional_ipv_4: List[main_models.GetOriginProtectionResponseBodyRegionalLatestIPWhitelistRegionalIPv4] = None,
         regional_ipv_6: List[main_models.GetOriginProtectionResponseBodyRegionalLatestIPWhitelistRegionalIPv6] = None,
     ):
-        # The latest regional origin IP whitelist, IPv4 CIDR blocks and regions.
+        # The IPv4 CIDR blocks and areas in the latest area back-to-origin IP addresses whitelist.
         self.regional_ipv_4 = regional_ipv_4
-        # The latest regional origin IP whitelist, IPv6 CIDR blocks and regions.
+        # The IPv6 CIDR blocks and areas in the latest area back-to-origin IP addresses whitelist.
         self.regional_ipv_6 = regional_ipv_6
 
     def validate(self):
@@ -220,12 +217,12 @@ class GetOriginProtectionResponseBodyRegionalLatestIPWhitelistRegionalIPv6(DaraM
         cidr: str = None,
         region: str = None,
     ):
-        # IPv6 CIDR block.
+        # The IPv6 CIDR block.
         self.cidr = cidr
-        # IPv6 region. Valid values:
+        # The IPv6 region. Valid values:
         # 
-        # - chinese_mainland: Chinese mainland.
-        # - global_excluding_chinese_mainland: Global (excluding Chinese mainland).
+        # - chinese_mainland: the Chinese mainland
+        # - global_excluding_chinese_mainland: global (excluding the Chinese mainland)
         self.region = region
 
     def validate(self):
@@ -260,12 +257,12 @@ class GetOriginProtectionResponseBodyRegionalLatestIPWhitelistRegionalIPv4(DaraM
         cidr: str = None,
         region: str = None,
     ):
-        # IPv4 CIDR block.
+        # The IPv4 CIDR block.
         self.cidr = cidr
-        # IPv4 region. Valid values:
+        # The IPv4 region. Valid values:
         # 
-        # - chinese_mainland: Chinese mainland.
-        # - global_excluding_chinese_mainland: Global (excluding Chinese mainland).
+        # - chinese_mainland: the Chinese mainland
+        # - global_excluding_chinese_mainland: global (excluding the Chinese mainland)
         self.region = region
 
     def validate(self):
@@ -301,11 +298,11 @@ class GetOriginProtectionResponseBodyRegionalDiffIPWhitelist(DaraModel):
         no_change_ip_whitelist: main_models.GetOriginProtectionResponseBodyRegionalDiffIPWhitelistNoChangeIpWhitelist = None,
         removed_ipregion_whitelist: main_models.GetOriginProtectionResponseBodyRegionalDiffIPWhitelistRemovedIPRegionWhitelist = None,
     ):
-        # The added regional origin IP whitelist entries.
+        # The added area back-to-origin IP addresses whitelist.
         self.added_ipregion_whitelist = added_ipregion_whitelist
-        # The unchanged regional origin IP whitelist entries.
+        # The unchanged area back-to-origin IP addresses whitelist.
         self.no_change_ip_whitelist = no_change_ip_whitelist
-        # The removed regional origin IP whitelist entries.
+        # The deleted area back-to-origin IP addresses whitelist.
         self.removed_ipregion_whitelist = removed_ipregion_whitelist
 
     def validate(self):
@@ -354,9 +351,9 @@ class GetOriginProtectionResponseBodyRegionalDiffIPWhitelistRemovedIPRegionWhite
         regional_ipv_4: List[main_models.GetOriginProtectionResponseBodyRegionalDiffIPWhitelistRemovedIPRegionWhitelistRegionalIPv4] = None,
         regional_ipv_6: List[main_models.GetOriginProtectionResponseBodyRegionalDiffIPWhitelistRemovedIPRegionWhitelistRegionalIPv6] = None,
     ):
-        # Regional origin IP whitelist, IPv4 CIDR blocks and regions.
+        # The area back-to-origin IP addresses whitelist, IPv4 CIDR blocks, and areas.
         self.regional_ipv_4 = regional_ipv_4
-        # Regional origin IP whitelist, IPv6 CIDR blocks and regions.
+        # The area back-to-origin IP addresses whitelist, IPv6 CIDR blocks, and areas.
         self.regional_ipv_6 = regional_ipv_6
 
     def validate(self):
@@ -408,12 +405,12 @@ class GetOriginProtectionResponseBodyRegionalDiffIPWhitelistRemovedIPRegionWhite
         cidr: str = None,
         region: str = None,
     ):
-        # IPv6 CIDR block.
+        # The IPv6 CIDR block.
         self.cidr = cidr
-        # IPv6 region. Valid values:
+        # The IPv6 region. Valid values:
         # 
-        # - chinese_mainland: Chinese mainland.
-        # - global_excluding_chinese_mainland: Global (excluding Chinese mainland).
+        # - chinese_mainland: the Chinese mainland
+        # - global_excluding_chinese_mainland: global (excluding the Chinese mainland)
         self.region = region
 
     def validate(self):
@@ -448,12 +445,12 @@ class GetOriginProtectionResponseBodyRegionalDiffIPWhitelistRemovedIPRegionWhite
         cidr: str = None,
         region: str = None,
     ):
-        # IPv4 CIDR block.
+        # The IPv4 CIDR block.
         self.cidr = cidr
-        # IPv4 region. Valid values:
+        # The IPv4 region. Valid values:
         # 
-        # - chinese_mainland: Chinese mainland.
-        # - global_excluding_chinese_mainland: Global (excluding Chinese mainland).
+        # - chinese_mainland: the Chinese mainland
+        # - global_excluding_chinese_mainland: global (excluding the Chinese mainland)
         self.region = region
 
     def validate(self):
@@ -488,9 +485,9 @@ class GetOriginProtectionResponseBodyRegionalDiffIPWhitelistNoChangeIpWhitelist(
         regional_ipv_4: List[main_models.GetOriginProtectionResponseBodyRegionalDiffIPWhitelistNoChangeIpWhitelistRegionalIPv4] = None,
         regional_ipv_6: List[main_models.GetOriginProtectionResponseBodyRegionalDiffIPWhitelistNoChangeIpWhitelistRegionalIPv6] = None,
     ):
-        # Regional origin IP whitelist, IPv4 CIDR blocks and regions.
+        # The area back-to-origin IP addresses whitelist, IPv4 CIDR blocks, and areas.
         self.regional_ipv_4 = regional_ipv_4
-        # Regional origin IP whitelist, IPv6 CIDR blocks and regions.
+        # The area back-to-origin IP addresses whitelist, IPv6 CIDR blocks, and areas.
         self.regional_ipv_6 = regional_ipv_6
 
     def validate(self):
@@ -542,12 +539,12 @@ class GetOriginProtectionResponseBodyRegionalDiffIPWhitelistNoChangeIpWhitelistR
         cidr: str = None,
         region: str = None,
     ):
-        # IPv6 CIDR block.
+        # The IPv6 CIDR block.
         self.cidr = cidr
-        # IPv6 region. Valid values:
+        # The IPv6 region. Valid values:
         # 
-        # - chinese_mainland: Chinese mainland.
-        # - global_excluding_chinese_mainland: Global (excluding Chinese mainland).
+        # - chinese_mainland: the Chinese mainland
+        # - global_excluding_chinese_mainland: global (excluding the Chinese mainland)
         self.region = region
 
     def validate(self):
@@ -582,12 +579,12 @@ class GetOriginProtectionResponseBodyRegionalDiffIPWhitelistNoChangeIpWhitelistR
         cidr: str = None,
         region: str = None,
     ):
-        # IPv4 CIDR block.
+        # The IPv4 CIDR block.
         self.cidr = cidr
-        # IPv4 region. Valid values:
+        # The IPv4 region. Valid values:
         # 
-        # - chinese_mainland: Chinese mainland.
-        # - global_excluding_chinese_mainland: Global (excluding Chinese mainland).
+        # - chinese_mainland: the Chinese mainland
+        # - global_excluding_chinese_mainland: global (excluding the Chinese mainland)
         self.region = region
 
     def validate(self):
@@ -622,9 +619,9 @@ class GetOriginProtectionResponseBodyRegionalDiffIPWhitelistAddedIPRegionWhiteli
         regional_ipv_4: List[main_models.GetOriginProtectionResponseBodyRegionalDiffIPWhitelistAddedIPRegionWhitelistRegionalIPv4] = None,
         regional_ipv_6: List[main_models.GetOriginProtectionResponseBodyRegionalDiffIPWhitelistAddedIPRegionWhitelistRegionalIPv6] = None,
     ):
-        # Regional origin IP whitelist, IPv4 CIDR blocks and regions.
+        # The IPv4 CIDR blocks and areas in the added area back-to-origin IP addresses whitelist.
         self.regional_ipv_4 = regional_ipv_4
-        # Regional origin IP whitelist, IPv6 CIDR blocks and regions.
+        # The IPv6 CIDR blocks and areas in the added area back-to-origin IP addresses whitelist.
         self.regional_ipv_6 = regional_ipv_6
 
     def validate(self):
@@ -676,12 +673,12 @@ class GetOriginProtectionResponseBodyRegionalDiffIPWhitelistAddedIPRegionWhiteli
         cidr: str = None,
         region: str = None,
     ):
-        # IPv6 CIDR block.
+        # The IPv6 CIDR block.
         self.cidr = cidr
-        # IPv6 region. Valid values:
+        # The IPv6 region. Valid values:
         # 
-        # - chinese_mainland: Chinese mainland.
-        # - global_excluding_chinese_mainland: Global (excluding Chinese mainland).
+        # - chinese_mainland: the Chinese mainland
+        # - global_excluding_chinese_mainland: global (excluding the Chinese mainland)
         self.region = region
 
     def validate(self):
@@ -716,12 +713,12 @@ class GetOriginProtectionResponseBodyRegionalDiffIPWhitelistAddedIPRegionWhiteli
         cidr: str = None,
         region: str = None,
     ):
-        # IPv4 CIDR block.
+        # The IPv4 CIDR block.
         self.cidr = cidr
-        # IPv4 region. Valid values:
+        # The IPv4 region. Valid values:
         # 
-        # - chinese_mainland: Chinese mainland.
-        # - global_excluding_chinese_mainland: Global (excluding Chinese mainland).
+        # - chinese_mainland: the Chinese mainland
+        # - global_excluding_chinese_mainland: global (excluding the Chinese mainland)
         self.region = region
 
     def validate(self):
@@ -756,9 +753,9 @@ class GetOriginProtectionResponseBodyRegionalCurrentIPWhitelist(DaraModel):
         regional_ipv_4: List[main_models.GetOriginProtectionResponseBodyRegionalCurrentIPWhitelistRegionalIPv4] = None,
         regional_ipv_6: List[main_models.GetOriginProtectionResponseBodyRegionalCurrentIPWhitelistRegionalIPv6] = None,
     ):
-        # The regional origin IP whitelist currently used by the site, IPv4 CIDR blocks and regions.
+        # The IPv4 CIDR blocks and areas in the current area back-to-origin IP addresses whitelist used by the site.
         self.regional_ipv_4 = regional_ipv_4
-        # The regional origin IP whitelist currently used by the site, IPv6 CIDR blocks and regions.
+        # The IPv6 CIDR blocks and areas in the current area back-to-origin IP addresses whitelist used by the site.
         self.regional_ipv_6 = regional_ipv_6
 
     def validate(self):
@@ -810,12 +807,12 @@ class GetOriginProtectionResponseBodyRegionalCurrentIPWhitelistRegionalIPv6(Dara
         cidr: str = None,
         region: str = None,
     ):
-        # IPv6 CIDR block.
+        # The IPv6 CIDR block.
         self.cidr = cidr
-        # IPv6 region. Valid values:
+        # The IPv6 region. Valid values:
         # 
-        # - chinese_mainland: Chinese mainland.
-        # - global_excluding_chinese_mainland: Global (excluding Chinese mainland).
+        # - chinese_mainland: the Chinese mainland
+        # - global_excluding_chinese_mainland: global (excluding the Chinese mainland)
         self.region = region
 
     def validate(self):
@@ -850,12 +847,12 @@ class GetOriginProtectionResponseBodyRegionalCurrentIPWhitelistRegionalIPv4(Dara
         cidr: str = None,
         region: str = None,
     ):
-        # IPv4 CIDR block.
+        # The IPv4 CIDR block.
         self.cidr = cidr
-        # IPv4 region. Valid values:
+        # The IPv4 region. Valid values:
         # 
-        # - chinese_mainland: Chinese mainland.
-        # - global_excluding_chinese_mainland: Global (excluding Chinese mainland).
+        # - chinese_mainland: the Chinese mainland
+        # - global_excluding_chinese_mainland: global (excluding the Chinese mainland)
         self.region = region
 
     def validate(self):
@@ -890,9 +887,9 @@ class GetOriginProtectionResponseBodyLatestIPWhitelist(DaraModel):
         ipv_4: List[str] = None,
         ipv_6: List[str] = None,
     ):
-        # The latest origin IP whitelist, IPv4 addresses or CIDR blocks.
+        # The IPv4 addresses or CIDR blocks in the latest back-to-origin IP addresses whitelist.
         self.ipv_4 = ipv_4
-        # The latest origin IP whitelist, IPv6 addresses or CIDR blocks.
+        # The IPv6 addresses or CIDR blocks in the latest back-to-origin IP addresses whitelist.
         self.ipv_6 = ipv_6
 
     def validate(self):
@@ -928,11 +925,11 @@ class GetOriginProtectionResponseBodyDiffIPWhitelist(DaraModel):
         no_change_ip_whitelist: main_models.GetOriginProtectionResponseBodyDiffIPWhitelistNoChangeIpWhitelist = None,
         removed_ipwhitelist: main_models.GetOriginProtectionResponseBodyDiffIPWhitelistRemovedIPWhitelist = None,
     ):
-        # The added origin IP whitelist entries.
+        # The added back-to-origin IP addresses whitelist.
         self.added_ipwhitelist = added_ipwhitelist
-        # The unchanged origin IP whitelist entries.
+        # The unchanged back-to-origin IP addresses whitelist.
         self.no_change_ip_whitelist = no_change_ip_whitelist
-        # The removed origin IP whitelist entries.
+        # The deleted back-to-origin IP addresses whitelist.
         self.removed_ipwhitelist = removed_ipwhitelist
 
     def validate(self):
@@ -981,9 +978,9 @@ class GetOriginProtectionResponseBodyDiffIPWhitelistRemovedIPWhitelist(DaraModel
         ipv_4: List[str] = None,
         ipv_6: List[str] = None,
     ):
-        # Origin IP whitelist, IPv4 addresses or CIDR blocks.
+        # The IPv4 addresses or CIDR blocks in the deleted back-to-origin IP addresses whitelist.
         self.ipv_4 = ipv_4
-        # Origin IP whitelist, IPv6 addresses or CIDR blocks.
+        # The IPv6 addresses or CIDR blocks in the deleted back-to-origin IP addresses whitelist.
         self.ipv_6 = ipv_6
 
     def validate(self):
@@ -1018,9 +1015,9 @@ class GetOriginProtectionResponseBodyDiffIPWhitelistNoChangeIpWhitelist(DaraMode
         ipv_4: List[str] = None,
         ipv_6: List[str] = None,
     ):
-        # Origin IP whitelist, IPv4 addresses or CIDR blocks.
+        # The IPv4 addresses or CIDR blocks in the unchanged back-to-origin IP addresses whitelist.
         self.ipv_4 = ipv_4
-        # Origin IP whitelist, IPv6 addresses or CIDR blocks.
+        # The IPv6 addresses or CIDR blocks in the unchanged back-to-origin IP addresses whitelist.
         self.ipv_6 = ipv_6
 
     def validate(self):
@@ -1055,9 +1052,9 @@ class GetOriginProtectionResponseBodyDiffIPWhitelistAddedIPWhitelist(DaraModel):
         ipv_4: List[str] = None,
         ipv_6: List[str] = None,
     ):
-        # Origin IP whitelist, IPv4 addresses or CIDR blocks.
+        # The IPv4 addresses or CIDR blocks in the added back-to-origin IP addresses whitelist.
         self.ipv_4 = ipv_4
-        # Origin IP whitelist, IPv6 addresses or CIDR blocks.
+        # The IPv6 addresses or CIDR blocks in the added back-to-origin IP addresses whitelist.
         self.ipv_6 = ipv_6
 
     def validate(self):
@@ -1092,9 +1089,9 @@ class GetOriginProtectionResponseBodyCurrentIPWhitelist(DaraModel):
         ipv_4: List[str] = None,
         ipv_6: List[str] = None,
     ):
-        # The current origin IP whitelist used by the site, IPv4 addresses or CIDR blocks.
+        # The IPv4 addresses or CIDR blocks in the current back-to-origin IP addresses whitelist used by the site.
         self.ipv_4 = ipv_4
-        # The current origin IP whitelist used by the site, IPv6 addresses or CIDR blocks.
+        # The IPv6 addresses or CIDR blocks in the current back-to-origin IP addresses whitelist used by the site.
         self.ipv_6 = ipv_6
 
     def validate(self):

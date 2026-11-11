@@ -26,7 +26,7 @@ class ListWafRulesResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The list of rules returned.
+        # The returned list of rules.
         self.rules = rules
         # The site usage.
         self.site_usage = site_usage
@@ -116,33 +116,33 @@ class ListWafRulesResponseBodyRules(DaraModel):
         type: str = None,
         update_time: str = None,
     ):
-        # The action associated with the rule. Valid values:
-        # - deny: Block.
-        # - monitor: Monitor.
-        # - js: JavaScript Challenge.
-        # - captcha: Slider challenge.
+        # The action corresponding to the rule. Valid values:
+        # - deny: block
+        # - monitor: monitor
+        # - js: JavaScript challenge
+        # - captcha: slider challenge
         self.action = action
-        # The list of statistical objects for frequency control rules.
+        # The list of statistical objects for rate limiting rules.
         self.characteristics_fields = characteristics_fields
         # The rule configuration.
         self.config = config
-        # The list of matching fields for the rule.
+        # The list of match fields for the rule.
         self.fields = fields
         # The rule ID.
         self.id = id
         # The rule name.
         self.name = name
-        # The WAF rule execution phase. Valid values:
-        # - http_whitelist: whitelist rule
-        # - http_custom: custom rule
-        # - http_managed: managed rule
-        # - http_anti_scan: scan protection rule
-        # - http_ratelimit: frequency control rule
-        # - ip_access_rule: IP access rule
-        # - http_bot: advanced mode bots
-        # - http_security_level_rule: security rule
+        # The execution phase of the WAF rule. Valid values:
+        # - http_whitelist: whitelist rules
+        # - http_custom: custom rules
+        # - http_managed: managed rules
+        # - http_anti_scan: scan protection rules
+        # - http_ratelimit: rate limiting rules
+        # - ip_access_rule: IP access rules
+        # - http_bot: advanced bot management
+        # - http_security_level_rule: security rules
         self.phase = phase
-        # The position of the rule in the corresponding ruleset.
+        # The position sequence of the rule in the corresponding ruleset.
         self.position = position
         # The ruleset ID.
         self.ruleset_id = ruleset_id
@@ -150,15 +150,15 @@ class ListWafRulesResponseBodyRules(DaraModel):
         self.skip = skip
         # The rule status.
         self.status = status
-        # The list of WAF phases to skip for whitelist rules.
+        # The list of skipped WAF phases for whitelist rules.
         self.tags = tags
         # The effective period configuration of the rule.
         self.timer = timer
         # The rule type.
         self.type = type
-        # The last modification time of the rule.
+        # The last update time of the rule.
         # 
-        # Format: RFC 3339 / ISO 8601, UTC time zone (ending with Z).
+        # Format: RFC 3339 or ISO 8601, UTC time zone (ending with Z).
         # 
         # Example: 2026-06-10T14:23:45Z
         self.update_time = update_time

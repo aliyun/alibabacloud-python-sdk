@@ -20,47 +20,49 @@ class UpdateRecordShrinkRequest(DaraModel):
         ttl: int = None,
         type: str = None,
     ):
-        # The origin authentication information of the CNAME record.
+        # The origin server authentication information for a CNAME record.
         self.auth_conf_shrink = auth_conf_shrink
-        # The business scenario for record acceleration. This parameter is not required for records without acceleration enabled. Valid values:
-        # - **video_image**: video and image.
+        # The business scenario when record acceleration is enabled. This parameter is not required for records without acceleration enabled. Valid values:
+        # - **video_image**: Video and image.
         # - **api**: API.
-        # - **web**: web page.
+        # - **web**: Web page.
         self.biz_name = biz_name
-        # The comment for the record.
+        # The description of the record.
         self.comment = comment
-        # The DNS information of the record. The content varies depending on the record type. For more information, see <props="china">[documentation](https://help.aliyun.com/document_detail/2708761.html)<props="intl">[documentation](https://www.alibabacloud.com/help/doc-detail/2708761.html).
+        # The DNS information of the record. The required content for this field varies based on the record type. For more information, see <props="china">[Documentation](https://help.aliyun.com/document_detail/2708761.html)<props="intl">[Documentation](https://www.alibabacloud.com/help/doc-detail/2708761.html).
         # 
         # This parameter is required.
         self.data_shrink = data_shrink
-        # The back-to-origin HOST policy. This parameter takes effect when the record type is CNAME. Settings the HOST policy for back-to-origin requests. Valid values:
+        # The back-to-origin host policy. This parameter takes effect when the record type is CNAME and specifies the host header policy for back-to-origin requests. Valid values:
         # 
-        # - **follow_hostname**: follows the host record.
-        # - **follow_origin_domain**: follows the Origin Domain Name.
+        # - **follow_hostname**: Follows the host record.
+        # - **follow_origin_domain**: Follows the origin domain name.
         self.host_policy = host_policy
+        # The HTTP port. By default, port 80 is supported.
         self.http_ports = http_ports
+        # The HTTPS port. By default, port 443 is supported.
         self.https_ports = https_ports
-        # Specifies whether to enable proxy acceleration for the record. Only CNAME records and A/AAAA records support proxy acceleration. Valid values:
-        # - **true**: Enable proxy acceleration.
-        # - **false**: Disable proxy acceleration.
+        # Specifies whether to enable proxy acceleration for the record. Only CNAME, A, and AAAA records support proxy acceleration. Valid values:
+        # - **true**: Enables proxy acceleration.
+        # - **false**: Disables proxy acceleration.
         self.proxied = proxied
-        # The ID of the record. You can call [ListRecords](https://help.aliyun.com/document_detail/2850265.html) to obtain the record ID.
+        # The ID of the record. You can obtain the ID by calling the [ListRecords](https://help.aliyun.com/document_detail/2850265.html) operation.
         # 
         # This parameter is required.
         self.record_id = record_id
-        # The origin server type of the CNAME record. This parameter is required when you add a CNAME record. Valid values:
+        # The origin server type for a CNAME record. This parameter is required when you add a CNAME record. Valid values:
         # 
         # - **OSS**: OSS origin server.
         # - **S3**: S3 origin server.
-        # - **LB**: load balancing origin server.
-        # - **OP**: IPAM pool origin server.
-        # - **Domain**: standard domain name origin server.
+        # - **LB**: Load balancer origin server.
+        # - **OP**: Origin address pool origin server.
+        # - **Domain**: Common domain name origin server.
         # 
-        # If this parameter is not specified or is left empty, the default value is Domain, which indicates a standard domain name origin server type.
+        # If this parameter is not specified or is left empty, the default value is **Domain**, which indicates a common domain name origin server.
         self.source_type = source_type
-        # The time-to-live (TTL) of the record, in seconds. Valid values: **30 to 86400**, or 1. A value of 1 indicates that the TTL of the record is automatically determined.
+        # The time-to-live (TTL) of the record, in seconds. Valid values: **30** to **86400**, or **1**. A value of 1 indicates that the TTL is automatic.
         self.ttl = ttl
-        # The DNS type of the record, such as A/AAAA, CNAME, or TXT.
+        # The DNS record type. Examples include A, AAAA, CNAME, and TXT.
         self.type = type
 
     def validate(self):

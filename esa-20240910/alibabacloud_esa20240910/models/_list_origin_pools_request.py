@@ -14,25 +14,22 @@ class ListOriginPoolsRequest(DaraModel):
         page_size: int = None,
         site_id: int = None,
     ):
-        # Specifies how to match the origin pool name. The default is `exact`. Valid values:
-        # 
-        # - `fuzzy`: Performs a fuzzy search.
-        # 
-        # - `exact`: Performs an exact match.
+        # The match type for name-based queries. Valid values:
+        # - fuzzy: fuzzy search.
+        # - exact: exact search.
+        # Default value: exact.
         self.match_type = match_type
-        # The name of the origin pool.
+        # The name of the origin address pool.
         self.name = name
-        # Specifies how the results are sorted. By default, results are sorted by ID in descending order. To sort by ID in ascending order, set this parameter to `id`. IDs increase with creation time.
-        # 
-        # - id: Sorts by ID in descending order.
-        # 
-        # - id: Sorts by ID in ascending order.
+        # The sort order. Supports ascending or descending order by ID. The ID is positively correlated with the creation time. Default value: descending order by ID. Valid values:
+        # - id: descending order by ID.
+        # - id: ascending order by ID.
         self.order_by = order_by
-        # The page number. The default value is 1.
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. The value must be an integer from 1 to 500. If you specify a value greater than 500, the system uses 500.
+        # The number of entries per page. The value must be a positive integer. Maximum value: 500. If the value exceeds 500, it is reset to 500.
         self.page_size = page_size
-        # The site ID. To get this ID, call the [ListSites](~~ListSites~~) operation.
+        # The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id

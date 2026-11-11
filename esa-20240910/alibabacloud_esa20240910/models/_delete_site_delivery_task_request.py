@@ -10,11 +10,11 @@ class DeleteSiteDeliveryTaskRequest(DaraModel):
         site_id: int = None,
         task_name: str = None,
     ):
-        # The site ID. You can obtain the site ID by calling [ListSites](https://help.aliyun.com/document_detail/2850189.html).
+        # The ID of the site. You can obtain the ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The task name.
+        # The name of the task.
         # 
         # This parameter is required.
         self.task_name = task_name

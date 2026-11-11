@@ -17,7 +17,7 @@ class ListUserRatePlanInstancesResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # The plan instances that meet the query conditions under the user.
+        # The plan instances that meet the conditions under the user.
         self.instance_info = instance_info
         # The current page number, which is the same as the PageNumber request parameter.
         self.page_number = page_number
@@ -130,24 +130,23 @@ class ListUserRatePlanInstancesResponseBodyInstanceInfo(DaraModel):
         # If this parameter is empty, no bot protection instance is purchased for the plan. If a value is returned, a bot protection instance is purchased for the plan. Valid values:
         # 
         # - enterprise_bot: Web edition.
-        # 
         # - enterprise_bot_with_app: App edition.
         self.bot_instance_level = bot_instance_level
         # The prepaid number of bot requests in the plan. Unit: 10,000 requests.
         self.bot_request = bot_request
         # The acceleration regions where the site can be bound. Multiple regions are separated by commas (,). Valid values:
         # 
-        # - **domestic**: Chinese mainland.
+        # - **domestic**: The Chinese mainland.
         # - **overseas**: Global (excluding the Chinese mainland).
         # - **global**: Global (including the Chinese mainland).
         self.coverages = coverages
-        # The creation time of the plan instance. The time is displayed in UTC and formatted as yyyy-MM-ddTHH:mm:ssZ in accordance with ISO 8601.
+        # The creation time of the plan instance. The time is displayed in UTC and formatted in accordance with the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.create_time = create_time
         # The prepaid China network acceleration traffic in the plan. Unit: GB.
         self.crossborder_traffic = crossborder_traffic
-        # The specifications of the Anti-DDoS instance in the plan for the Chinese mainland.
+        # The specifications of the Anti-DDoS instance in the Chinese mainland for the plan.
         self.ddos_burstable_domestic_protection = ddos_burstable_domestic_protection
-        # The specifications of the Anti-DDoS instance in the plan for regions outside the Chinese mainland.
+        # The specifications of the Anti-DDoS instance outside the Chinese mainland for the plan.
         self.ddos_burstable_overseas_protection = ddos_burstable_overseas_protection
         # If this parameter is empty, no Anti-DDoS instance is purchased for the plan. If a value is returned, an Anti-DDoS instance is purchased for the plan, and the value is `esa_ddos_instance`.
         self.ddos_instance_level = ddos_instance_level
@@ -155,11 +154,11 @@ class ListUserRatePlanInstancesResponseBodyInstanceInfo(DaraModel):
         self.duration = duration
         # The prepaid number of Edge Routine (ER) requests in the plan. Unit: 10,000 requests.
         self.edge_routine_rquest = edge_routine_rquest
-        # The prepaid number of Web Application Firewall (WAF) requests in the plan. Unit: 10,000 requests.
+        # The prepaid number of WAF requests in the plan. Unit: 10,000 requests.
         self.edge_waf_request = edge_waf_request
-        # The expiration time of the plan instance. The time is displayed in UTC and formatted as yyyy-MM-ddTHH:mm:ssZ in accordance with ISO 8601.
+        # The expiration time of the plan instance. The time is displayed in UTC and formatted in accordance with the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.expire_time = expire_time
-        # The instance ID.
+        # The instance ID of the plan.
         self.instance_id = instance_id
         # The prepaid Layer 4 proxy traffic in the plan for the Chinese mainland. Unit: GB.
         self.layer_4traffic = layer_4traffic
@@ -184,7 +183,7 @@ class ListUserRatePlanInstancesResponseBodyInstanceInfo(DaraModel):
         self.renewal_status = renewal_status
         self.resource_owner = resource_owner
         self.share_type = share_type
-        # The quota for the number of sites under the plan instance.
+        # The site quota under the plan instance.
         self.site_quota = site_quota
         # The list of sites bound to the current plan instance.
         self.sites = sites
@@ -192,10 +191,10 @@ class ListUserRatePlanInstancesResponseBodyInstanceInfo(DaraModel):
         self.smart_routing_request = smart_routing_request
         # The prepaid number of HTTP requests in the plan. Unit: 10,000 requests.
         self.static_request = static_request
-        # The instance status. Valid values:
-        # - **online**: The instance is in normal service status.
-        # - **offline**: The instance has expired but is not overdue, and is in an inactive state.
-        # - **disable**: The instance is released.
+        # The instance status of the plan. Valid values:
+        # - **online**: The normal service status.
+        # - **offline**: The instance has expired but not overdue, and is in an inactive state.
+        # - **disable**: The released status.
         self.status = status
         # The subscription type of the plan. Valid values:
         # 
@@ -425,7 +424,7 @@ class ListUserRatePlanInstancesResponseBodyInstanceInfoSites(DaraModel):
         # - **pending**: The site is pending configuration.
         # - **active**: The site is activated.
         # - **offline**: The site is offline.
-        # - **moved**: The site is replaced.
+        # - **moved**: The site has been replaced.
         self.site_status = site_status
 
     def validate(self):

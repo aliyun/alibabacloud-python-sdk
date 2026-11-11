@@ -18,7 +18,7 @@ class ListWafRulesetsResponseBody(DaraModel):
         site_usage: int = None,
         total_count: int = None,
     ):
-        # The number of WAF rulesets used by the instance in this WAF execution phase.
+        # The number of WAF rulesets used by the instance in the current WAF phase.
         self.instance_usage = instance_usage
         # The current page number.
         self.page_number = page_number
@@ -26,9 +26,9 @@ class ListWafRulesetsResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The list of rulesets, including detailed information about each ruleset.
+        # The list of rulesets, which contains the detailed information about the rulesets.
         self.rulesets = rulesets
-        # The number of WAF rulesets used by the site in this WAF execution phase.
+        # The number of WAF rulesets used by the site in the current WAF phase.
         self.site_usage = site_usage
         # The total number of records after filtering.
         self.total_count = total_count
@@ -111,9 +111,9 @@ class ListWafRulesetsResponseBodyRulesets(DaraModel):
     ):
         # The list of match objects.
         self.fields = fields
-        # The ID of the WAF ruleset. You can call the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation to obtain the ruleset ID.
+        # The ID of the WAF ruleset. You can obtain the ruleset ID by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation.
         self.id = id
-        # The ruleset name.
+        # The name of the ruleset.
         self.name = name
         # The WAF rule execution phase. Valid values:
         # - http_whitelist: whitelist rules
@@ -125,15 +125,15 @@ class ListWafRulesetsResponseBodyRulesets(DaraModel):
         # - http_bot: advanced mode bots
         # - http_security_level_rule: security rules
         self.phase = phase
-        # The ruleset status.
+        # The status of the ruleset.
         self.status = status
-        # The protection target type in http_bot.
+        # The protection target type for http_bot.
         self.target = target
         # The list of rule types.
         self.types = types
-        # The last modification time of the ruleset.
+        # The last update time of the ruleset.
         # 
-        # Format: RFC 3339 / ISO 8601, UTC time zone (ending with Z).
+        # Format: RFC 3339/ISO 8601, UTC time zone (ending with Z).
         # 
         # Example: 2026-06-10T14:23:45Z
         self.update_time = update_time

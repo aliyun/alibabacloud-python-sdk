@@ -13,9 +13,9 @@ class ListWaitingRoomEventsResponseBody(DaraModel):
         request_id: str = None,
         waiting_room_events: List[main_models.ListWaitingRoomEventsResponseBodyWaitingRoomEvents] = None,
     ):
-        # The request ID, which is used to trace a call.
+        # The ID of the request.
         self.request_id = request_id
-        # The details of the waiting room events.
+        # The list of waiting room events, which contains the specific information of each event.
         self.waiting_room_events = waiting_room_events
 
     def validate(self):
@@ -76,89 +76,74 @@ class ListWaitingRoomEventsResponseBodyWaitingRoomEvents(DaraModel):
         waiting_room_id: str = None,
         waiting_room_type: str = None,
     ):
-        # The content of the custom waiting room page. This parameter is returned when the waiting room type is set to custom. The content is URL-encoded.
+        # The custom content of the waiting room page. This parameter is required when the waiting room type is custom. The content must be URL-encoded.
         self.custom_page_html = custom_page_html
-        # The event description.
+        # The detailed description of the event.
         self.description = description
-        # Indicates whether session renewal is disabled. Valid values:
-        # 
-        # - on
-        # 
-        # - off
+        # Specifies whether session renewal is disabled. Valid values:
+        # - **on**: Enabled.
+        # - **off**: Disabled.
         self.disable_session_renewal_enable = disable_session_renewal_enable
-        # The event status. Valid values:
-        # 
-        # - on
-        # 
-        # - off
+        # The enabled status of the event. Valid values:
+        # - **on**: Enabled.
+        # - **off**: Disabled.
         self.enable = enable
-        # The end time of the event. This value is a UNIX timestamp.
+        # The end time of the event. The value is a UNIX timestamp.
         self.end_time = end_time
-        # Indicates whether JOSN response is enabled. If JSON response is enabled, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
+        # Specifies whether to enable JSON responses. If this feature is enabled and the Accept request header contains "application/json", JSON data is returned. Valid values:
         # 
-        # - on
-        # 
-        # - off
+        # - **on**: Enabled.
+        # - **off**: Disabled.
         self.json_response_enable = json_response_enable
-        # The language of the waiting room page. This parameter is returned when the waiting room type is set to default. Valid values:
+        # The language of the waiting room page. This parameter is required when the waiting room type is default. Valid values:
         # 
-        # - enus: English.
-        # 
-        # - zhcn: Simplified Chinese.
-        # 
-        # - zhhk: Traditional Chinese.
+        # - **enus**: English.
+        # - **zhcn**: Simplified Chinese.
+        # - **zhhk**: Traditional Chinese.
         self.language = language
-        # The custom event name.
+        # The event name, which is a custom event description.
         self.name = name
-        # The maximum number of new users per minute.
+        # The number of new users per minute.
         self.new_users_per_minute = new_users_per_minute
-        # Indicates whether pre-queuing is enabled. Valid values:
+        # Specifies whether to enable pre-queuing. Valid values:
         # 
-        # - on
-        # 
-        # - off
+        # - **on**: Enabled.
+        # - **off**: Disabled.
         self.pre_queue_enable = pre_queue_enable
-        # The start time for pre-queuing. This value is a UNIX timestamp. This parameter is valid only when pre-queuing is enabled.
+        # The start time of pre-queuing. The value is a UNIX timestamp. This parameter is valid only when pre-queuing is enabled.
         self.pre_queue_start_time = pre_queue_start_time
         # The queuing method. Valid values:
         # 
-        # - random: Users gain access to the origin randomly, regardless of the arrival time.
-        # 
-        # - fifo: Users gain access to the origin in order of arrival.
-        # 
-        # - passthrough: Users pass through the waiting room and go straight to the origin.
-        # 
-        # - reject-all: Users are blocked from reaching the origin.
+        # - **random**: Random.
+        # - **fifo**: First-in, first-out (FIFO).
+        # - **passthrough**: Passthrough.
+        # - **reject-all**: Reject all.
         self.queuing_method = queuing_method
-        # The HTTP status code to return while a user is in the queue. Valid values:
+        # The waiting room status code. Valid values:
         # 
-        # - 200
-        # 
-        # - 202
-        # 
-        # - 429
+        # - **200**
+        # - **202**
+        # - **429**
         self.queuing_status_code = queuing_status_code
-        # Indicates whether random queuing is enabled. Valid values:
+        # Specifies whether to enable random pre-queuing. Valid values:
         # 
-        # - on
-        # 
-        # - off
+        # - **on**: Enabled.
+        # - **off**: Disabled.
         self.random_pre_queue_enable = random_pre_queue_enable
-        # The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+        # The session duration, in minutes.
         self.session_duration = session_duration
-        # The start time of the event. This value is a UNIX timestamp.
+        # The start time of the event. The value is a UNIX timestamp.
         self.start_time = start_time
-        # The maximum number of active users.
+        # The total number of active users.
         self.total_active_users = total_active_users
-        # The unique ID of the waiting room event.
+        # The event ID, which uniquely identifies a waiting room event.
         self.waiting_room_event_id = waiting_room_event_id
-        # The ID of the waiting room associated with the event.
+        # The ID of the associated waiting room.
         self.waiting_room_id = waiting_room_id
-        # The type of the waiting room. Valid values:
+        # The waiting room type. Valid values:
         # 
-        # - default
-        # 
-        # - custom
+        # - **default**: Default type.
+        # - **custom**: Custom type.
         self.waiting_room_type = waiting_room_type
 
     def validate(self):

@@ -13,9 +13,9 @@ class DeleteRoutineEnvironmentVariablesResponseBody(DaraModel):
         failed_keys: List[str] = None,
         request_id: str = None,
     ):
-        # The list of environment variable keys that were deleted successfully.
+        # The keys of the successfully deleted environment variables.
         self.deleted_keys = deleted_keys
-        # The list of environment variable keys that failed to be deleted.
+        # The keys of the environment variables that failed to be deleted.
         self.failed_keys = failed_keys
         # Id of the request
         self.request_id = request_id

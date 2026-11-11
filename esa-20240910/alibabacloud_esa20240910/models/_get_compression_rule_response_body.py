@@ -19,38 +19,38 @@ class GetCompressionRuleResponseBody(DaraModel):
         site_version: int = None,
         zstd: str = None,
     ):
-        # Brotli compression. Possible values:
-        # - on: Enabled.
-        # - off: Disabled.
+        # Brotli compression. Valid values:
+        # - on: enabled.
+        # - off: disabled.
         self.brotli = brotli
-        # Configuration ID.
+        # The ID of the configuration.
         self.config_id = config_id
-        # Configuration type. Possible values:
-        # - global: Global configuration.
-        # - rule: Rule-based configuration.
+        # The type of the configuration. Valid values:
+        # - global: global configuration.
+        # - rule: rule configuration.
         self.config_type = config_type
-        # Gzip compression. Possible values:
-        # - on: Enabled.
-        # - off: Disabled.
+        # Gzip compression. Valid values:
+        # - on: enabled.
+        # - off: disabled.
         self.gzip = gzip
-        # Request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-        # - Match all incoming requests: Set the value to true
-        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        # The rule content, which uses a conditional expression to match user requests. You do not need to set this parameter when adding a global configuration. Two scenarios are supported:
+        # - Match all incoming requests: set the value to true.
+        # - Match specific requests: set the value to a custom expression, such as (http.host eq "video.example.com").
         self.rule = rule
-        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
-        # - on: Enabled.
-        # - off: Disabled.
+        # The rule switch. You do not need to set this parameter when adding a global configuration. Valid values:
+        # - on: enabled.
+        # - off: disabled.
         self.rule_enable = rule_enable
-        # Rule name. This parameter is not required when adding a global configuration.
+        # The name of the rule. You do not need to set this parameter when adding a global configuration.
         self.rule_name = rule_name
-        # Rule execution order. The smaller the value, the higher the priority.
+        # The execution sequence of the rule. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # The version number of the site configuration. For sites with version management enabled, this parameter can specify the effective version of the configuration, defaulting to version 0.
+        # The version number of the site configuration. For sites with configuration version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. The default value is version 0.
         self.site_version = site_version
-        # Zstd compression. Value range: 
-        # - on: enabled. 
+        # Zstd compression. Valid values:
+        # - on: enabled.
         # - off: disabled.
         self.zstd = zstd
 

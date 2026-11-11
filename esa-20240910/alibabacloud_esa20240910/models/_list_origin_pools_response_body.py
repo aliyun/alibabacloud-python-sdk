@@ -17,15 +17,15 @@ class ListOriginPoolsResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # A list of origin pools.
+        # The list of origin address pools.
         self.origin_pools = origin_pools
         # The current page number.
         self.page_number = page_number
-        # The number of items returned per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of origin pools found.
+        # The total number of entries.
         self.total_count = total_count
         # The total number of pages.
         self.total_page = total_page
@@ -100,25 +100,23 @@ class ListOriginPoolsResponseBodyOriginPools(DaraModel):
         references: main_models.ListOriginPoolsResponseBodyOriginPoolsReferences = None,
         site_id: int = None,
     ):
-        # Indicates whether the origin pool is enabled.
-        # 
-        # - `true`: Enabled.
-        # 
-        # - `false`: Disabled.
+        # Indicates whether the origin address pool is enabled. Valid values:
+        # - true: enabled.
+        # - false: disabled.
         self.enabled = enabled
-        # The ID of the origin pool.
+        # The origin address pool ID.
         self.id = id
-        # The name of the origin pool. The name must be unique within a site.
+        # The name of the origin address pool. The name must be unique within a site.
         self.name = name
-        # The origins in the origin pool.
+        # The origin server information added to the origin address pool.
         self.origins = origins
-        # The domain name assigned to the origin pool. This can be used as the origin address for records within the site.
+        # The domain name allocated to the origin IPAM pool. It can be used as the addresses of the origin server for records under the site.
         self.record_name = record_name
-        # The number of load balancers that reference this origin pool.
+        # The number of load balancing instances that reference this origin IPAM pool.
         self.reference_lbcount = reference_lbcount
-        # The resources that reference this origin pool. An origin pool is considered referenced when it is configured as an origin for a load balancer or a record.
+        # The reference information of the origin IPAM pool. An origin IPAM pool is considered referenced when it is configured for load balancing or configured as an origin server in a record.
         self.references = references
-        # The ID of the site to which the origin pool belongs.
+        # The ID of the site to which the origin address pool belongs.
         self.site_id = site_id
 
     def validate(self):
@@ -201,11 +199,11 @@ class ListOriginPoolsResponseBodyOriginPoolsReferences(DaraModel):
         iparecords: List[main_models.ListOriginPoolsResponseBodyOriginPoolsReferencesIPARecords] = None,
         load_balancers: List[main_models.ListOriginPoolsResponseBodyOriginPoolsReferencesLoadBalancers] = None,
     ):
-        # A list of Layer 7 records that use this origin pool as an origin.
+        # The list of Layer 7 records that use this origin address pool as the origin server.
         self.dns_records = dns_records
-        # A list of Layer 4 records that use this origin pool as an origin.
+        # The list of Layer 4 records that use this origin address pool as the origin server.
         self.iparecords = iparecords
-        # A list of load balancers that use this origin pool.
+        # The list of load balancing instances that use this origin IPAM pool.
         self.load_balancers = load_balancers
 
     def validate(self):
@@ -272,9 +270,9 @@ class ListOriginPoolsResponseBodyOriginPoolsReferencesLoadBalancers(DaraModel):
         id: int = None,
         name: str = None,
     ):
-        # The ID of the load balancer.
+        # The load balancing instance ID.
         self.id = id
-        # The name of the load balancer.
+        # The name of the load balancing instance.
         self.name = name
 
     def validate(self):
@@ -309,9 +307,9 @@ class ListOriginPoolsResponseBodyOriginPoolsReferencesIPARecords(DaraModel):
         id: int = None,
         name: str = None,
     ):
-        # The ID of the record.
+        # The record ID.
         self.id = id
-        # The name of the record.
+        # The record name.
         self.name = name
 
     def validate(self):
@@ -346,9 +344,9 @@ class ListOriginPoolsResponseBodyOriginPoolsReferencesDnsRecords(DaraModel):
         id: int = None,
         name: str = None,
     ):
-        # The ID of the record.
+        # The record ID.
         self.id = id
-        # The name of the record.
+        # The record name.
         self.name = name
 
     def validate(self):
@@ -390,41 +388,32 @@ class ListOriginPoolsResponseBodyOriginPoolsOrigins(DaraModel):
         type: str = None,
         weight: int = None,
     ):
-        # The address of the origin, such as `www.example.com`.
+        # The addresses of the origin server, such as www.example.com.
         self.address = address
-        # The authentication configuration. This parameter is required if the origin is an OSS or AWS S3 bucket that requires authentication.
+        # The authentication information. If the origin server is an OSS or S3 origin server that requires authentication, you must provide the authentication configuration information.
         self.auth_conf = auth_conf
-        # Indicates whether the origin is enabled.
-        # 
-        # - `true`: Enabled.
-        # 
-        # - `false`: Disabled.
+        # Indicates whether the origin server is enabled. Valid values:
+        # - true: enabled.
+        # - false: disabled.
         self.enabled = enabled
-        # The request header to include in origin fetches. Only the `Host` header is supported.
+        # The request header included in back-to-origin requests. Only the Host header is supported.
         self.header = header
-        # The ID of the origin.
+        # The origin server ID.
         self.id = id
-        # The IP protocol version used for origin fetch requests. Valid values:
-        # 
-        # - `round_robin`: Randomly selects an IPv4 or IPv6 origin.
-        # 
-        # - `ipv4_first`: Prioritizes IPv4 origins.
-        # 
-        # - `ipv6_first`: Prioritizes IPv6 origins.
-        # 
-        # - `follow`: Follows the IP version used by the client.
+        # The IP protocol version used for back-to-origin requests. Valid values:
+        # - round_robin: the default policy. Randomly polls IPv4 or IPv6 origin servers.
+        # - ipv4_first: prioritizes IPv4 origin servers.
+        # - ipv6_first: prioritizes IPv6 origin servers.
+        # - follow: prioritizes the IP version used by the client.
         self.ip_version_policy = ip_version_policy
-        # The name of the origin.
+        # The origin server name.
         self.name = name
-        # The type of the origin. Valid values:
-        # 
-        # - `ip_domain`: An origin with an IP address or domain name.
-        # 
-        # - `OSS`: An Alibaba Cloud Object Storage Service (OSS) origin.
-        # 
-        # - `S3`: An AWS S3 origin.
+        # The origin server type. Valid values:
+        # - ip_domain: an origin server that uses an IP address or a domain name.
+        # - OSS: an OSS origin server.
+        # - S3: an AWS S3 origin server.
         self.type = type
-        # The weight of the origin, an integer from 0 to 100.
+        # The weight. The value must be an integer from 0 to 100.
         self.weight = weight
 
     def validate(self):
@@ -506,23 +495,19 @@ class ListOriginPoolsResponseBodyOriginPoolsOriginsAuthConf(DaraModel):
         secret_key: str = None,
         version: str = None,
     ):
-        # The Access Key ID required for private authentication.
+        # The AccessKey required for private authentication.
         self.access_key = access_key
         # The authentication type. Valid values:
-        # 
-        # - `public`: Public read/write. Use for OSS or AWS S3 origins that have public access permissions.
-        # 
-        # - `private_same_account`: Private, same account. Use for OSS origins that use private authentication within the same account.
-        # 
-        # - `private_cross_account`: Private, cross-account. Use for OSS origins that use private authentication from a different account.
-        # 
-        # - `private`: Private. Use for AWS S3 origins that require private authentication.
+        # - public: public read/write. Used when the origin server is an OSS or S3 origin server with public read/write permissions.
+        # - private_same_account: private within the same account. Used when the origin server is an OSS origin server and the authentication type is private authentication within the same account.
+        # - private_cross_account: private across accounts. Used when the origin server is an OSS origin server and the authentication type is private authentication across accounts.
+        # - private: private. Used when the origin server is an S3 origin server and the authentication type is private.
         self.auth_type = auth_type
-        # The region of the origin. Required for AWS S3 origins.
+        # The region of the origin server required when the origin server is an AWS S3 origin server.
         self.region = region
-        # The Secret Access Key required for private authentication.
+        # The SecretKey required for private authentication.
         self.secret_key = secret_key
-        # The signature version. Required for AWS S3 origins.
+        # The signature version required when the origin server is an AWS S3 origin server.
         self.version = version
 
     def validate(self):

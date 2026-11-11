@@ -10,11 +10,11 @@ class DeleteCompressionRuleRequest(DaraModel):
         config_id: int = None,
         site_id: int = None,
     ):
-        # Configuration ID. It can be obtained by calling the [ListCompressionRules](https://help.aliyun.com/document_detail/2867498.html) interface.
+        # The ID of the configuration. You can call the [ListCompressionRules](https://help.aliyun.com/document_detail/2867498.html) operation to query the configuration ID.
         # 
         # This parameter is required.
         self.config_id = config_id
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # The ID of the site. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to query the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id

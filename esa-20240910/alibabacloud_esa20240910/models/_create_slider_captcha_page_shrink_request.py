@@ -15,7 +15,7 @@ class CreateSliderCaptchaPageShrinkRequest(DaraModel):
     ):
         # The predefined configurations for the custom slider page.
         self.configs_shrink = configs_shrink
-        # The custom slider configurations. The value is a JSON string.
+        # The custom slider configuration, in JSON string format.
         self.custom_content = custom_content
         # The forced language.
         self.force_language = force_language

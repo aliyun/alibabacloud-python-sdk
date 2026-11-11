@@ -29,29 +29,29 @@ class WafRuleConfig(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The operation to perform after the WAF rule is matched.
+        # The action performed after a WAF rule is matched.
         self.action = action
-        # The extended action configurations.
+        # The extended actions.
         self.actions = actions
-        # The configuration of secondary package detection.
+        # The repackaging detection configuration.
         self.app_package = app_package
-        # The SDK configuration for apps.
+        # The app SDK configuration.
         self.app_sdk = app_sdk
-        # The match expression.
+        # The matching expression.
         self.expression = expression
         # The ID of the WAF rule.
         self.id = id
-        # The ID of the managed rule group, which is deprecated.
+        # **[Deprecated]** The managed rule group ID.
         self.managed_group_id = managed_group_id
         # The managed list.
         self.managed_list = managed_list
-        # The managed rulesets.
+        # The list of managed rulesets.
         self.managed_rulesets = managed_rulesets
         # The name of the WAF rule.
         self.name = name
         # The remarks.
         self.notes = notes
-        # The configuration of the rate limiting rule.
+        # The configurations related to the rate limiting rule.
         self.rate_limit = rate_limit
         # The security level.
         self.security_level = security_level
@@ -61,9 +61,9 @@ class WafRuleConfig(DaraModel):
         self.status = status
         # The timer.
         self.timer = timer
-        # The name of the WAF rule.
+        # The type of the WAF rule.
         self.type = type
-        # Defines whether the IP can access.
+        # The IP access control value.
         self.value = value
 
     def validate(self):
@@ -219,14 +219,13 @@ class WafRuleConfigSecurityLevel(DaraModel):
         self,
         value: str = None,
     ):
-        # Valid value:
-        # 
-        # *   off
-        # *   essentially_off
-        # *   low
-        # *   medium
-        # *   high
-        # *   under_attack
+        # The security level value. Valid values:
+        # * off: Disabled.
+        # * essentially_off: Essentially disabled.
+        # * low: Low.
+        # * medium: Medium.
+        # * high: High.
+        # * under_attack: Under attack.
         self.value = value
 
     def validate(self):
@@ -258,15 +257,15 @@ class WafRuleConfigRateLimit(DaraModel):
         ttl: int = None,
         threshold: main_models.WafRuleConfigRateLimitThreshold = None,
     ):
-        # The statistical objects to which the rule applies.
+        # The specified object for rate statistics.
         self.characteristics = characteristics
-        # The statistical interval.
+        # The statistical period.
         self.interval = interval
-        # Indicates whether to apply the rule to requests that hit the cache.
+        # Specifies whether to apply the rule to requests that hit the cache.
         self.on_hit = on_hit
-        # The timeout period for creating the stack.
+        # The timeout period.
         self.ttl = ttl
-        # The thresholds.
+        # The statistical threshold.
         self.threshold = threshold
 
     def validate(self):
@@ -327,15 +326,15 @@ class WafRuleConfigRateLimitThreshold(DaraModel):
         response_status: main_models.WafRuleConfigRateLimitThresholdResponseStatus = None,
         traffic: str = None,
     ):
-        # The maximum number of managed rules that are triggered.
+        # The threshold for the number of distinct managed rules.
         self.distinct_managed_rules = distinct_managed_rules
-        # The maximum number of times that the managed rule is triggered.
+        # The managed rule hit threshold.
         self.managed_rules_blocked = managed_rules_blocked
         # The request threshold.
         self.request = request
-        # The configuration of the status code threshold.
+        # The response code threshold.
         self.response_status = response_status
-        # The traffic threshold, which is deprecated.
+        # **[Deprecated]** The traffic threshold.
         self.traffic = traffic
 
     def validate(self):
@@ -391,11 +390,11 @@ class WafRuleConfigRateLimitThresholdResponseStatus(DaraModel):
         count: int = None,
         ratio: int = None,
     ):
-        # The HTTP status code.
+        # The HTTP response code.
         self.code = code
-        # The maximum number of times that the status code is returned.
+        # The response code count threshold.
         self.count = count
-        # The percentage of the occurrences of the status code to total status codes.
+        # The response code percentage.
         self.ratio = ratio
 
     def validate(self):
@@ -440,11 +439,11 @@ class WafRuleConfigManagedRulesets(DaraModel):
         number_total: int = None,
         protection_level: int = None,
     ):
-        # The action.
+        # The action to perform.
         self.action = action
         # The attack type.
         self.attack_type = attack_type
-        # The managed rules.
+        # The list of managed rules.
         self.managed_rules = managed_rules
         # The number of enabled rules.
         self.number_enabled = number_enabled
@@ -518,9 +517,9 @@ class WafRuleConfigManagedRulesetsManagedRules(DaraModel):
         id: int = None,
         status: str = None,
     ):
-        # The action performed on requests that match the managed rule.
+        # The action of the managed rule.
         self.action = action
-        # The ID of the managed rule.
+        # The managed rule ID.
         self.id = id
         # The status of the managed rule.
         self.status = status
@@ -566,9 +565,9 @@ class WafRuleConfigAppSdk(DaraModel):
     ):
         # The custom signature field.
         self.custom_sign = custom_sign
-        # Indicates whether to configure the custom signature field.
+        # The custom signature field switch.
         self.custom_sign_status = custom_sign_status
-        # The app anomalies.
+        # The app feature anomaly.
         self.feature_abnormal = feature_abnormal
 
     def validate(self):
@@ -647,7 +646,7 @@ class WafRuleConfigAppPackage(DaraModel):
         self,
         package_signs: List[main_models.WafRuleConfigAppPackagePackageSigns] = None,
     ):
-        # The package signatures.
+        # The repackaging detection.
         self.package_signs = package_signs
 
     def validate(self):
@@ -684,9 +683,9 @@ class WafRuleConfigAppPackagePackageSigns(DaraModel):
         name: str = None,
         sign: str = None,
     ):
-        # The valid package name.
+        # The specified valid package name.
         self.name = name
-        # The valid package signature.
+        # The package signature.
         self.sign = sign
 
     def validate(self):
@@ -721,9 +720,9 @@ class WafRuleConfigActions(DaraModel):
         bypass: main_models.WafRuleConfigActionsBypass = None,
         response: main_models.WafRuleConfigActionsResponse = None,
     ):
-        # The skip configuration specified by the whitelist rule.
+        # The modules bypassed by the whitelist rule.
         self.bypass = bypass
-        # The custom error page.
+        # The custom response page.
         self.response = response
 
     def validate(self):
@@ -765,7 +764,7 @@ class WafRuleConfigActionsResponse(DaraModel):
     ):
         # The custom response code.
         self.code = code
-        # The ID of the custom error page, which can be obtained by calling the [ListPages](https://help.aliyun.com/document_detail/2850223.html) operation.
+        # The ID of the custom response page. You can obtain the ID by calling the [ListPages](https://help.aliyun.com/document_detail/2850223.html) operation.
         self.id = id
 
     def validate(self):
@@ -803,15 +802,15 @@ class WafRuleConfigActionsBypass(DaraModel):
         skip: str = None,
         tags: List[str] = None,
     ):
-        # The IDs of custom rules.
+        # The list of custom rule IDs.
         self.custom_rules = custom_rules
-        # The IDs of managed rules.
+        # The list of managed rule IDs.
         self.regular_rules = regular_rules
-        # The types of managed rules.
+        # The list of managed rule types.
         self.regular_types = regular_types
-        # The skip scope applied when requests match conditions defined in the whitelist rule.
+        # The type of the bypassed module.
         self.skip = skip
-        # The skipped rule categories when requests match conditions defined in the whitelist rule.
+        # The list of bypassed module phases.
         self.tags = tags
 
     def validate(self):

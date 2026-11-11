@@ -18,7 +18,7 @@ class CreateSliderCaptchaPageRequest(DaraModel):
     ):
         # The predefined configurations for the custom slider page.
         self.configs = configs
-        # The custom slider configurations. The value is a JSON string.
+        # The custom slider configuration, in JSON string format.
         self.custom_content = custom_content
         # The forced language.
         self.force_language = force_language
@@ -133,7 +133,7 @@ class CreateSliderCaptchaPageRequestConfigsZh(DaraModel):
         # 
         # This parameter is required.
         self.show_request_id = show_request_id
-        # The color of the slider.
+        # The slider color.
         # 
         # This parameter is required.
         self.slider_color = slider_color
@@ -194,7 +194,7 @@ class CreateSliderCaptchaPageRequestConfigsEn(DaraModel):
         self.show_footer = show_footer
         # Specifies whether to show the request ID.
         self.show_request_id = show_request_id
-        # The color of the slider.
+        # The slider color.
         # 
         # This parameter is required.
         self.slider_color = slider_color

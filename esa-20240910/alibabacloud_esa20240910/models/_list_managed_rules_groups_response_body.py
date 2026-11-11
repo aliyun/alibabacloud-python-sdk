@@ -24,7 +24,7 @@ class ListManagedRulesGroupsResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of records after filtering.
+        # The total number of filtered records.
         self.total_count = total_count
 
     def validate(self):

@@ -12,7 +12,7 @@ class GetDcvDelegationResponseBody(DaraModel):
         site_id: int = None,
         site_name: str = None,
     ):
-        # The DCV managed domain name.
+        # The DCV delegation domain name.
         self.delegation_domain = delegation_domain
         # Id of the request
         self.request_id = request_id

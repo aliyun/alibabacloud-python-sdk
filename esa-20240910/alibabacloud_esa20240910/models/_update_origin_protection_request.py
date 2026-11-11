@@ -11,16 +11,16 @@ class UpdateOriginProtectionRequest(DaraModel):
         origin_converge: str = None,
         site_id: int = None,
     ):
+        # Specifies whether to automatically enable the latest list of back-to-origin IP addresses.
         self.auto_confirm_iplist = auto_confirm_iplist
-        # The origin fetch convergence switch.
+        # Specifies whether to enable back-to-origin convergence. Valid values:
         # 
-        # - on: Enable origin fetch convergence.
-        # 
-        # - off: Disable origin fetch convergence.
+        # - on: Enables back-to-origin convergence.
+        # - off: Disables back-to-origin convergence.
         # 
         # This parameter is required.
         self.origin_converge = origin_converge
-        # The site ID. Call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API to get it.
+        # The site ID. You can obtain the ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
         # This parameter is required.
         self.site_id = site_id

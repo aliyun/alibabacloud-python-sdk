@@ -17,23 +17,22 @@ class ListCacheRulesRequest(DaraModel):
     ):
         # The configuration ID.
         self.config_id = config_id
-        # The configuration type. You can use this parameter to query global or rule configurations. Valid values:
+        # The configuration type. You can use this parameter to query global configurations or rule configurations. Valid values:
         # - global: queries global configurations.
         # - rule: queries rule configurations.
-        # 
-        # This parameter is optional. If you do not specify this parameter, both global and rule configurations are returned.
+        # This parameter is optional. If you do not specify this parameter, both global and rule configurations are queried.
         self.config_type = config_type
-        # The page number for a paged query. The value must be greater than or equal to 1.
+        # The page number for paging. The value must be greater than or equal to 1.
         self.page_number = page_number
-        # The number of entries per page for a paged query. Valid values: 1 to 500.
+        # The number of entries per page for paging. Valid values: 1 to 500.
         self.page_size = page_size
-        # The rule name. You do not need to set this parameter when you add a global configuration.
+        # The rule name. You do not need to specify this parameter when adding a global configuration.
         self.rule_name = rule_name
-        # The site ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+        # The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
+        # The site version number. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
         self.site_version = site_version
 
     def validate(self):

@@ -20,15 +20,15 @@ class ListWafRulesRequest(DaraModel):
         self.page_number = page_number
         # The page size for pagination.
         self.page_size = page_size
-        # The WAF rule execution phase. Valid values:
-        # - http_whitelist: whitelist rule
-        # - http_custom: custom rule
-        # - http_managed: managed rule
-        # - http_anti_scan: scan protection rule
-        # - http_ratelimit: frequency control rule
-        # - ip_access_rule: IP access rule
-        # - http_bot: advanced mode bots
-        # - http_security_level_rule: security rule
+        # The execution phase of the WAF rule. Valid values:
+        # - http_whitelist: whitelist rules
+        # - http_custom: custom rules
+        # - http_managed: managed rules
+        # - http_anti_scan: scan protection rules
+        # - http_ratelimit: rate limiting rules
+        # - ip_access_rule: IP access rules
+        # - http_bot: advanced bot management
+        # - http_security_level_rule: security rules
         # 
         # This parameter is required.
         self.phase = phase
@@ -40,7 +40,7 @@ class ListWafRulesRequest(DaraModel):
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. The default value is 0.
+        # The version number of the site configuration. For sites with configuration version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
         self.site_version = site_version
 
     def validate(self):
@@ -112,19 +112,19 @@ class ListWafRulesRequestQueryArgs(DaraModel):
         order_by: str = None,
         status: str = None,
     ):
-        # The value in IP access control for fuzzy match.
+        # The fuzzy value to search for in IP access control.
         self.config_value_like = config_value_like
         # Specifies whether to reverse the sort order.
         self.desc = desc
-        # The WAF rule ID for exact match.
+        # The exact WAF rule ID to query.
         self.id = id
-        # The WAF rule ID or name for fuzzy match.
+        # The fuzzy WAF rule ID or name to query.
         self.id_name_like = id_name_like
-        # The WAF rule name for fuzzy match.
+        # The fuzzy WAF rule name to query.
         self.name_like = name_like
-        # Sorts the returned list by a specified column.
+        # The column by which to sort the returned list.
         self.order_by = order_by
-        # The WAF rule status for exact match.
+        # The exact WAF rule status to query.
         self.status = status
 
     def validate(self):

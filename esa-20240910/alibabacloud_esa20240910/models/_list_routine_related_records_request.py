@@ -12,15 +12,15 @@ class ListRoutineRelatedRecordsRequest(DaraModel):
         page_size: int = None,
         search_key_word: str = None,
     ):
-        # The name of the function.
+        # The name of the Edge Routine.
         # 
         # This parameter is required.
         self.name = name
-        # The page number of the returned page. Default value: 1
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Valid values: an integer from 1 to 20.
+        # The number of entries per page. Valid values: any integer from 1 to 20.
         self.page_size = page_size
-        # The keyword used for fuzzy search.
+        # The keyword for fuzzy search.
         self.search_key_word = search_key_word
 
     def validate(self):

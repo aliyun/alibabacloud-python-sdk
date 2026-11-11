@@ -15,8 +15,9 @@ class UpdateSiteInstanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.new_instance_id = new_instance_id
+        # The UID of the Alibaba Cloud account that owns the new plan instance.
         self.resource_owner = resource_owner
-        # The site ID. You can call [ListSites](https://help.aliyun.com/document_detail/2850189.html) to obtain the site ID.
+        # The ID of the site. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
         # 
         # This parameter is required.
         self.site_id = site_id

@@ -13,9 +13,9 @@ class UpdateUserDeliveryTaskStatusResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The status of the delivery task.
+        # The task status.
         self.status = status
-        # The name of the delivery task.
+        # The task name.
         self.task_name = task_name
 
     def validate(self):

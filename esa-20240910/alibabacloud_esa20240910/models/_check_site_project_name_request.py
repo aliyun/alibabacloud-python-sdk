@@ -10,13 +10,13 @@ class CheckSiteProjectNameRequest(DaraModel):
         project_name: str = None,
         site_id: int = None,
     ):
-        # The real-time log project name.
+        # The name of the real-time log project.
         # 
-        # > Allowed character set (hyphens only, no underscores), length range, and naming rule examples (such as \\"ali-dcdn-log-56\\")
+        # > Allowed character set (hyphens only, no underscores), length limits, and naming convention examples (such as \\"ali-dcdn-log-56\\").
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The site ID. You can call [ListSites](https://help.aliyun.com/document_detail/2850189.html) to obtain the site ID.
+        # The site ID. You can obtain the site ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
 
     def validate(self):

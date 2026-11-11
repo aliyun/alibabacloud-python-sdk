@@ -18,11 +18,11 @@ class GetSliderCaptchaPageResponseBody(DaraModel):
         request_id: str = None,
         site_ids: List[int] = None,
     ):
-        # The predefined configurations for the custom slider page.
+        # The predefined configurations of the custom slider page.
         self.configs = configs
         # The custom slider configurations.
         self.custom_content = custom_content
-        # The forced language.
+        # The forcibly specified language.
         self.force_language = force_language
         # The ID of the custom slider page.
         self.id = id
@@ -30,7 +30,7 @@ class GetSliderCaptchaPageResponseBody(DaraModel):
         self.name = name
         # The request ID.
         self.request_id = request_id
-        # The list of bound site IDs.
+        # The list of associated site IDs.
         self.site_ids = site_ids
 
     def validate(self):
@@ -141,11 +141,11 @@ class GetSliderCaptchaPageResponseBodyConfigsZh(DaraModel):
         slider_color: str = None,
         title: str = None,
     ):
-        # Specifies whether to display the footer.
+        # Specifies whether to show the footer.
         self.show_footer = show_footer
-        # Specifies whether to display the request ID.
+        # Specifies whether to show the request ID.
         self.show_request_id = show_request_id
-        # The slider color.
+        # The color of the slider.
         self.slider_color = slider_color
         # The title.
         self.title = title
@@ -196,11 +196,11 @@ class GetSliderCaptchaPageResponseBodyConfigsEn(DaraModel):
         slider_color: str = None,
         title: str = None,
     ):
-        # Specifies whether to display the footer.
+        # Specifies whether to show the footer.
         self.show_footer = show_footer
-        # Specifies whether to display the request ID.
+        # Specifies whether to show the request ID.
         self.show_request_id = show_request_id
-        # The slider color.
+        # The color of the slider.
         self.slider_color = slider_color
         # The title.
         self.title = title

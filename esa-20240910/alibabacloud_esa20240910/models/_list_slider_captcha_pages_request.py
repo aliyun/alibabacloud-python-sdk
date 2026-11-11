@@ -14,7 +14,7 @@ class ListSliderCaptchaPagesRequest(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         # The filter parameters.
         self.query_args = query_args
@@ -58,7 +58,7 @@ class ListSliderCaptchaPagesRequestQueryArgs(DaraModel):
         self,
         name_like: str = None,
     ):
-        # The fuzzy search keyword for the name.
+        # The fuzzy name search.
         self.name_like = name_like
 
     def validate(self):

@@ -13,7 +13,7 @@ class ListSliderCaptchaPagesShrinkRequest(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         # The filter parameters.
         self.query_args_shrink = query_args_shrink

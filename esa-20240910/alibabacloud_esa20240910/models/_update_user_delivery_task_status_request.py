@@ -10,11 +10,11 @@ class UpdateUserDeliveryTaskStatusRequest(DaraModel):
         method: str = None,
         task_name: str = None,
     ):
-        # Enables or disables the delivery task. Valid values: online and offline.
+        # The method. Valid values: online and offline.
         # 
         # This parameter is required.
         self.method = method
-        # The name of the delivery task.
+        # The task name.
         # 
         # This parameter is required.
         self.task_name = task_name

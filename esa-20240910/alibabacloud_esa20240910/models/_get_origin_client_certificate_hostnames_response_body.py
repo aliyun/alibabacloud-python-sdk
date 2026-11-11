@@ -15,7 +15,7 @@ class GetOriginClientCertificateHostnamesResponseBody(DaraModel):
         site_id: int = None,
         site_name: str = None,
     ):
-        # The associated hostnames.
+        # The list of bound domain names.
         self.hostnames = hostnames
         # The certificate ID.
         self.id = id

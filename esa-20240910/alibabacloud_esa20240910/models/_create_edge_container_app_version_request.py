@@ -16,11 +16,11 @@ class CreateEdgeContainerAppVersionRequest(DaraModel):
         remarks: str = None,
     ):
         # The application ID. You can call the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation to obtain the application ID.
-        # >Notice: 1) Your account must have an ESA plan with the Edge Container feature enabled. 2) Call CreateEdgeContainerApp first to create an application and obtain the AppId. 3) Complete call chain example: CreateEdgeContainerApp → ListEdgeContainerApps → CreateEdgeContainerAppVersion.</notice>
+        # >Notice: 1) Your account must be subscribed to an ESA plan that includes the Edge Container feature. 2) You must call CreateEdgeContainerApp to create an application and obtain the AppId. 3) A complete call chain example is provided (CreateEdgeContainerApp → ListEdgeContainerApps → CreateEdgeContainerAppVersion).</notice>
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The container group to be deployed for this version, including specific image information. The image information consists of the image address, startup command, parameters, environment variables, and probe rules. Multiple images are supported in a JSON array structure.
+        # The container group to be deployed for this version, which includes specific image information. The image information consists of the image address, startup command, arguments, environment variables, and probe rules. Multiple images are supported and structured as a JSON array.
         # 
         # This parameter is required.
         self.containers = containers
@@ -96,9 +96,9 @@ class CreateEdgeContainerAppVersionRequestContainers(DaraModel):
     ):
         # The ACR image information.
         self.acrimage_info = acrimage_info
-        # The startup parameters. Separate multiple parameters with spaces.
+        # The startup arguments. Separate multiple arguments with spaces.
         self.args = args
-        # The startup command. Separate multiple commands with spaces.
+        # The command to run. This indicates the startup command. Separate multiple commands with spaces.
         self.command = command
         # The environment variables. Format: key1=val1,key2=val2.
         self.env_variables = env_variables
@@ -106,7 +106,7 @@ class CreateEdgeContainerAppVersionRequestContainers(DaraModel):
         # 
         # This parameter is required.
         self.image = image
-        # Specifies whether the image is an Alibaba Cloud Container Registry (ACR) image.
+        # Specifies whether the image is an ACR image.
         # 
         # This parameter is required.
         self.is_acrimage = is_acrimage
@@ -114,26 +114,26 @@ class CreateEdgeContainerAppVersionRequestContainers(DaraModel):
         # 
         # This parameter is required.
         self.name = name
-        # The command to execute before the container starts. Separate multiple commands with spaces. This command is executed before the service starts and is typically used for initialization operations.
+        # The command to execute before the container starts. This indicates the command executed before the service starts. Separate multiple parts with spaces. It is generally used for initialization operations.
         self.post_start = post_start
-        # The command to execute before the container stops. Separate multiple commands with spaces. This command is executed before the service exits and is typically used for cleanup operations before exit.
+        # The command to execute before the container stops. This indicates the command executed after startup. Separate multiple parts with spaces. It is executed before the service exits and is generally used for cleanup operations before exit.
         self.pre_stop = pre_stop
-        # The container health probe content.
+        # The content of the container health probe.
         # 
         # This parameter is required.
         self.probe_content = probe_content
         # The probe type. Valid values:
         # - **exec**: Command-based.
-        # - **tcpSocket**: TCP detection-based.
-        # - **httpGet**: HTTP access-based.
+        # - **tcpSocket**: TCP socket-based.
+        # - **httpGet**: HTTP GET-based.
         # 
         # This parameter is required.
         self.probe_type = probe_type
-        # The container specifications. Specifies the computing specifications. Valid values: 1C2G, 2C4G, 2C8G, 4C8G, 4C16G, 8C16G, and 8C32G.
+        # The container specifications. This indicates the computing power specifications. Valid values: 1C2G, 2C4G, 2C8G, 4C8G, 4C16G, 8C16G, and 8C32G.
         # 
         # This parameter is required.
         self.spec = spec
-        # The storage capacity. Valid values: 0.5G, 10G, 20G, and 30G.
+        # The storage information. This indicates the storage space. Valid values: 0.5G, 10G, 20G, and 30G.
         # 
         # This parameter is required.
         self.storage = storage
@@ -250,27 +250,27 @@ class CreateEdgeContainerAppVersionRequestContainersProbeContent(DaraModel):
         success_threshold: int = None,
         timeout_seconds: int = None,
     ):
-        # The probe command for exec-type probes.
+        # The probe command for the exec type.
         self.command = command
-        # The number of consecutive failed health checks required.
+        # The number of consecutive failed container health checks.
         self.failure_threshold = failure_threshold
         # The domain name for the health check.
         self.host = host
         # The HTTP request headers.
         self.http_headers = http_headers
-        # The initial delay time for the container probe. Unit: seconds. For example, 5 indicates that the initial delay time is set to 5 seconds.
+        # The initial delay time for the container probe. Unit: seconds. For example, a value of 5 indicates that the initial delay time is set to 5 seconds.
         self.initial_delay_seconds = initial_delay_seconds
         # The path for the container health check.
         self.path = path
-        # The interval for the container health check. Unit: seconds. For example, 5 indicates that the health check interval is set to 5 seconds.
+        # The interval for the container health check. Unit: seconds. For example, a value of 5 indicates that the health check interval is set to 5 seconds.
         self.period_seconds = period_seconds
         # The port for the container health check.
         self.port = port
         # The request protocol for the health check.
         self.scheme = scheme
-        # The number of consecutive successful health checks required.
+        # The number of consecutive successful health checks.
         self.success_threshold = success_threshold
-        # The timeout period for the container health check. Unit: seconds. For example, 5 indicates that the timeout period is set to 5 seconds.
+        # The timeout period for the container health check. Unit: seconds. For example, a value of 5 indicates that the timeout period is set to 5 seconds.
         self.timeout_seconds = timeout_seconds
 
     def validate(self):
@@ -366,23 +366,23 @@ class CreateEdgeContainerAppVersionRequestContainersACRImageInfo(DaraModel):
         tag: str = None,
         tag_url: str = None,
     ):
-        # The ACR image domain name.
+        # The domain name of the ACR image.
         self.domain = domain
         # The ACR instance ID.
         self.instance_id = instance_id
-        # Specifies whether the image is an enterprise-level image.
+        # Specifies whether the image is an enterprise edition image.
         self.is_enterprise_registry = is_enterprise_registry
-        # The region list of the ACR instance.
+        # The list of regions for the ACR instance.
         self.region_id = region_id
         # The repository ID of the image.
         self.repo_id = repo_id
-        # The image repository name.
+        # The name of the image repository.
         self.repo_name = repo_name
-        # The namespace of the image repository.
+        # The namespace name of the image repository.
         self.repo_namespace = repo_namespace
-        # The ACR image tag.
+        # The tag of the ACR image.
         self.tag = tag
-        # The ACR image tag URL.
+        # The tag URL of the ACR image.
         self.tag_url = tag_url
 
     def validate(self):

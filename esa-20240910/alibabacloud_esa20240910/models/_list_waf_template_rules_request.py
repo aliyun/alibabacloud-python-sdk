@@ -17,11 +17,11 @@ class ListWafTemplateRulesRequest(DaraModel):
     ):
         # The instance ID.
         self.instance_id = instance_id
-        # The WAF running phase for filtering template rules.
+        # The WAF phase used to filter template rules for a specific phase.
         self.phase = phase
-        # The query parameters for filtering template rules by criteria such as the rule type.
+        # The query parameters used to filter template rules based on conditions such as the rule type.
         self.query_args = query_args
-        # The site ID. To obtain this ID, call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to query the site ID.
         self.site_id = site_id
 
     def validate(self):
@@ -70,7 +70,7 @@ class ListWafTemplateRulesRequestQueryArgs(DaraModel):
         kinds: List[str] = None,
         type: str = None,
     ):
-        # A list of template kinds.
+        # The list of template types.
         self.kinds = kinds
         # The rule type.
         self.type = type

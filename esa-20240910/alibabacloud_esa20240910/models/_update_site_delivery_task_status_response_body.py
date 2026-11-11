@@ -13,12 +13,13 @@ class UpdateSiteDeliveryTaskStatusResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The status of the delivery task. Valid values:
+        # The task status. Valid values:
         # 
-        # *   **online**
-        # *   **offline**
+        # - **online**: Delivering.
+        # 
+        # - **offline**: Disabled.
         self.status = status
-        # The name of the delivery task.
+        # The name of the task.
         self.task_name = task_name
 
     def validate(self):

@@ -11,16 +11,15 @@ class ListUserDeliveryTasksRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The log category. Valid values:
-        # 
-        # 1.  dcdn_log_access_l1 (default): access logs.
-        # 2.  dcdn_log_er: Edge Routine logs.
-        # 3.  dcdn_log_waf: firewall logs.
-        # 4.  dcdn_log_ipa: TCP/UDP proxy logs.
+        # The real-time log type. Valid values:
+        # - **dcdn_log_access_l1** (default): Access logs.
+        # - **dcdn_log_er**: Edge Routine logs.
+        # - **dcdn_log_waf**: Security protection logs.
+        # - **dcdn_log_ipa**: Layer 4 acceleration logs.
         self.business_type = business_type
-        # The page number. Default value: 1.
+        # The number of the page to return. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 20.
+        # The number of entries to return on each page. Default value: 20.
         self.page_size = page_size
 
     def validate(self):

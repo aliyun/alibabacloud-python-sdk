@@ -12,14 +12,14 @@ class CheckSiteProjectNameResponseBody(DaraModel):
         project_name: str = None,
         request_id: str = None,
     ):
-        # Valid values:
+        # Indicates whether the project name can be added. Valid values:
         # 
-        # - **true**: Can be added.
-        # - **false**: Cannot be added.
+        # - **true**: The name can be added.
+        # - **false**: The name cannot be added.
         self.check = check
-        # The result description.
+        # The description of the result.
         self.description = description
-        # The real-time log project name.
+        # The name of the real-time log project.
         self.project_name = project_name
         # The request ID.
         self.request_id = request_id

@@ -13,25 +13,21 @@ class UpdateManagedTransformRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # Specifies whether to add a header that contains visitor geolocation information. Valid values:
-        # 
-        # - `on`: Add the header.
-        # 
-        # - `off`: Do not add the header.
+        # Specifies whether to add the visitor geolocation header. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.add_client_geolocation_header = add_client_geolocation_header
-        # Specifies whether to add the `ali-real-client-ip` header, which contains the real client IP. Valid values:
-        # 
-        # - `on`: Add the header.
-        # 
-        # - `off`: Do not add the header.
+        # Specifies whether to add the ali-real-client-ip header that contains the real client IP address. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.add_real_client_ip_header = add_real_client_ip_header
-        # The name of the header that contains the real client IP. The name must start with a letter and can contain letters, digits (0-9), and hyphens (-).
+        # The name of the real client IP address header. The name must start with a letter and can contain digits and hyphens (-).
         self.real_client_ip_header_name = real_client_ip_header_name
-        # The ID of the site. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain this ID.
+        # The ID of the site. You can obtain the ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The version of the site. For sites with version management enabled, this parameter specifies the version to which the configuration applies. Default value: 0.
+        # The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version to which the configuration applies. Default value: 0.
         self.site_version = site_version
 
     def validate(self):

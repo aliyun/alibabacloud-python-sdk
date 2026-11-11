@@ -14,11 +14,11 @@ class UpdateEnvironmentRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # The environment name.
+        # The name of the environment.
         # 
         # This parameter is required.
         self.environment_name = environment_name
-        # The new environment name.
+        # The new name of the environment.
         self.new_name = new_name
         # Specifies whether the environment is read-only.
         # 
@@ -28,11 +28,11 @@ class UpdateEnvironmentRequest(DaraModel):
         # 
         # This parameter is required.
         self.rule = rule
-        # The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
+        # The ID of the site. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The new site version number. Only the environment with the highest priority can be modified.
+        # The new version number of the site. You can modify this parameter only for the environment with the highest priority.
         self.site_version = site_version
 
     def validate(self):

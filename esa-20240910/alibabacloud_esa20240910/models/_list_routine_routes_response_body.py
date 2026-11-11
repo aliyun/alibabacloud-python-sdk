@@ -25,7 +25,7 @@ class ListRoutineRoutesResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of records.
+        # The total number of entries.
         self.total_count = total_count
         # The total number of pages.
         self.total_page = total_page
@@ -107,27 +107,27 @@ class ListRoutineRoutesResponseBodyConfigs(DaraModel):
         timeout: str = None,
     ):
         # The bypass mode. Valid values:
-        # - on: enabled.
-        # - off: disabled.
+        # - on: Enabled.
+        # - off: Disabled.
         self.bypass = bypass
         # The configuration ID.
         self.config_id = config_id
         # The configuration type. You can use this parameter to query global configurations or rule configurations. Valid values:
         # 
-        # - global: queries global configurations.
-        # - rule: queries rule configurations.
+        # - global: Global configurations.
+        # - rule: Rule configurations.
         self.config_type = config_type
-        # The fallback-to-origin switch. After this switch is enabled, requests are sent to the origin server if the function encounters an exception such as CPU usage exceeding the limit. Valid values:
-        # - on: enabled.
-        # - off: disabled.
+        # The fallback to origin switch. When enabled, if a function exception occurs, such as CPU usage exceeding the limit, the request is routed back to the origin. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.fallback = fallback
         # The configuration mode. Valid values:
-        # - simple: simple mode.
-        # - custom: custom mode.
+        # - simple: Simple mode.
+        # - custom: Custom mode.
         self.mode = mode
         # The route switch. Valid values:
-        # - on: enabled.
-        # - off: disabled.
+        # - on: Enabled.
+        # - off: Disabled.
         self.route_enable = route_enable
         # The route name.
         self.route_name = route_name
@@ -135,7 +135,7 @@ class ListRoutineRoutesResponseBodyConfigs(DaraModel):
         self.routine_name = routine_name
         # The rule content.
         self.rule = rule
-        # The rule execution order.
+        # The execution sequence of the rule.
         self.sequence = sequence
         # The site ID.
         self.site_id = site_id
@@ -143,7 +143,7 @@ class ListRoutineRoutesResponseBodyConfigs(DaraModel):
         self.site_name = site_name
         # The version number of the site configuration.
         self.site_version = site_version
-        # The ER timeout period. Valid values: 5 to 60. Unit: seconds.
+        # The Edge Routine (ER) timeout period. Valid values: 5 to 60. Unit: seconds.
         self.timeout = timeout
 
     def validate(self):

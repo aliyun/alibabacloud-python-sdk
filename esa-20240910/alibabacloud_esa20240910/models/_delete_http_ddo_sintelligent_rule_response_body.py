@@ -18,7 +18,7 @@ class DeleteHttpDDoSIntelligentRuleResponseBody(DaraModel):
         self.request_id = request_id
         # The ID of the rule.
         self.rule_id = rule_id
-        # The ID of the site. Call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
+        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
         self.site_id = site_id
 
     def validate(self):

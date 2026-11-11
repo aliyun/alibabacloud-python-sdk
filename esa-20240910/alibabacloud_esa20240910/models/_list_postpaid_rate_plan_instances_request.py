@@ -19,36 +19,36 @@ class ListPostpaidRatePlanInstancesRequest(DaraModel):
     ):
         # Specifies whether to check for remaining site quotas. Valid values:
         # 
-        # - true: Queries instances that have remaining site quotas.
+        # - true: Queries instances with remaining site quotas.
         # 
         # - false: Does not filter by this condition.
         self.check_remaining_site_quota = check_remaining_site_quota
-        # The instance ID, which is used to query a specific instance.
+        # The instance ID, which is used to precisely query a single instance.
         self.instance_id = instance_id
-        # The page number Settings for paging in a paged query. The value must be greater than or equal to 1.
+        # The page number for paging. The value must be greater than or equal to 1.
         self.page_number = page_number
-        # The number of entries per page for paging in a paged query. Valid values: 1 to 500.
+        # The page size for paging. Valid values: 1 to 500.
         self.page_size = page_size
         self.resource_owner = resource_owner
-        # Specifies the field by which to sort the results. Valid values:
+        # The field by which to sort the results. Valid values:
         # 
-        # - CreateTime: sorts by creation time
+        # - CreateTime: Sorts by creation time.
         self.sort_by = sort_by
         # The sort order. Valid values:
         # 
-        #  * asc: ascending order
+        # - asc: Ascending order.
         # 
-        #  * desc: descending order
+        # - desc: Descending order.
         self.sort_order = sort_order
         # The instance status. Valid values:
         # 
-        #  * online: normal status
+        # - online: Normal.
         # 
-        #  * overdue: overdue payment
+        # - overdue: Overdue payment.
         # 
-        #  * disable: released
+        # - disable: Released.
         self.status = status
-        # Specifies whether bot or DDoS protection is added to the instance.
+        # Specifies whether the instance has the Bot Management or Anti-DDoS add-on.
         self.unrelated_type = unrelated_type
 
     def validate(self):

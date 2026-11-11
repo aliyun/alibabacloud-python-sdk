@@ -16,7 +16,7 @@ class CheckSiteFeaturesMatchPlanResponseBody(DaraModel):
     ):
         # Indicates whether the features of the current site are compatible with the target instance.
         self.is_passed = is_passed
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The information about site quotas that do not meet the requirements.
         self.un_passed_site_quotas = un_passed_site_quotas
@@ -68,11 +68,11 @@ class CheckSiteFeaturesMatchPlanResponseBodyUnPassedSiteQuotas(DaraModel):
         dest_quota_value: str = None,
         quota_name: str = None,
     ):
-        # The quota value of the current site.
+        # The current quota value of the site.
         self.current_quota_value = current_quota_value
         # The quota value of the target instance.
         self.dest_quota_value = dest_quota_value
-        # The quota name.
+        # The name of the quota.
         self.quota_name = quota_name
 
     def validate(self):

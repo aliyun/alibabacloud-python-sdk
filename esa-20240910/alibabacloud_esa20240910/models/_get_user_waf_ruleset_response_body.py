@@ -67,18 +67,18 @@ class GetUserWafRulesetResponseBodyRuleset(DaraModel):
         self.id = id
         # The name of the WAF ruleset.
         self.name = name
-        # The phase in which the WAF rule runs. Valid values:
-        # - http_whitelist: whitelist rule
-        # - http_custom: custom rule
-        # - http_managed: managed rule
-        # - http_anti_scan: scan protection rule
-        # - http_ratelimit: frequency control rule
+        # The execution phase of the WAF ruleset. Valid values:
+        # - http_whitelist: whitelist rules
+        # - http_custom: custom rules
+        # - http_managed: managed rules
+        # - http_anti_scan: scan protection rules
+        # - http_ratelimit: frequency control rules
         self.phase = phase
         # The position of the WAF ruleset.
         self.position = position
-        # The list of rule configurations in the WAF ruleset.
+        # The list of rule configurations under the WAF ruleset.
         self.rules = rules
-        # The shared configuration of the WAF ruleset.
+        # The sharing configuration of the WAF ruleset.
         self.shared = shared
         # The status of the WAF ruleset.
         self.status = status
@@ -180,13 +180,13 @@ class GetUserWafRulesetResponseBodyRulesetRules(DaraModel):
         type: str = None,
         update_time: str = None,
     ):
-        # The action of the rule. Valid values:
-        # - deny: Block.
-        # - monitor: Monitor.
-        # - js: JavaScript Challenge.
-        # - captcha: Slider challenge.
+        # The action corresponding to the rule. Valid values:
+        # - deny: block
+        # - monitor: monitor
+        # - js: JavaScript challenge
+        # - captcha: slider challenge
         self.action = action
-        # The list of statistics fields for the WAF rule.
+        # The list of statistical fields for the WAF rule.
         self.characteristics_fields = characteristics_fields
         # The configuration of the WAF rule.
         self.config = config
@@ -196,28 +196,28 @@ class GetUserWafRulesetResponseBodyRulesetRules(DaraModel):
         self.id = id
         # The name of the WAF rule.
         self.name = name
-        # The phase in which the WAF rule runs. Valid values:
-        # - http_whitelist: whitelist rule
-        # - http_custom: custom rule
-        # - http_managed: managed rule
-        # - http_anti_scan: scan protection rule
-        # - http_ratelimit: frequency control rule
+        # The execution phase of the WAF ruleset. Valid values:
+        # - http_whitelist: whitelist rules
+        # - http_custom: custom rules
+        # - http_managed: managed rules
+        # - http_anti_scan: scan protection rules
+        # - http_ratelimit: frequency control rules
         self.phase = phase
         # The position of the WAF rule.
         self.position = position
         # The WAF ruleset ID.
         self.ruleset_id = ruleset_id
-        # The skip mode of the WAF rule.
+        # The skip method for the WAF rule.
         self.skip = skip
         # The status of the WAF rule.
         self.status = status
-        # The list of phases to skip for the WAF rule.
+        # The list of skip phases for the WAF rule.
         self.tags = tags
         # The type of the WAF rule.
         self.type = type
-        # The time when the WAF rule was last updated.
+        # The update time of the WAF rule.
         # 
-        # Format: RFC 3339 / ISO 8601, UTC time zone (ending with Z).
+        # Format: RFC 3339 / ISO 8601, UTC standard time zone (ending with Z).
         # 
         # Example: 2025-07-07T15:00:00Z
         self.update_time = update_time

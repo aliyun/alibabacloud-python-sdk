@@ -18,7 +18,7 @@ class ListListsResponseBody(DaraModel):
         total_count: int = None,
         usage: int = None,
     ):
-        # The total item usage.
+        # The total usage of items.
         self.items_usage = items_usage
         # The array of list information, which contains the paginated list data.
         self.lists = lists
@@ -30,7 +30,7 @@ class ListListsResponseBody(DaraModel):
         self.request_id = request_id
         # The total number of records after filtering.
         self.total_count = total_count
-        # The amount of usage consumed by the user.
+        # The usage of the user.
         self.usage = usage
 
     def validate(self):
@@ -107,19 +107,19 @@ class ListListsResponseBodyLists(DaraModel):
         name: str = None,
         update_time: str = None,
     ):
-        # The list description.
+        # The description of the list.
         self.description = description
         # The ID of the custom list. You can obtain the ID by calling the [ListLists](https://help.aliyun.com/document_detail/2850217.html) operation.
         self.id = id
-        # The kind of the list.
+        # The type of the list.
         self.kind = kind
-        # The length of the list content array, which indicates the number of items in the list.
+        # The length of the list content array, which indicates the number of items contained in the list.
         self.length = length
-        # The list name.
+        # The name of the list.
         self.name = name
-        # The time when the list was last modified.
+        # The last update time of the list.
         # 
-        # Format: RFC 3339 / ISO 8601, UTC time zone (ending with Z).
+        # Format: RFC 3339 / ISO 8601, UTC standard time zone (ending with Z).
         # 
         # Example: 2026-06-10T14:23:45Z
         self.update_time = update_time

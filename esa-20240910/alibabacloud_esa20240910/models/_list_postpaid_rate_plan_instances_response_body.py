@@ -25,7 +25,7 @@ class ListPostpaidRatePlanInstancesResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of records.
+        # The total number of entries.
         self.total_count = total_count
         # The total number of pages.
         self.total_page = total_page
@@ -106,33 +106,33 @@ class ListPostpaidRatePlanInstancesResponseBodyInstanceInfo(DaraModel):
         sites: List[main_models.ListPostpaidRatePlanInstancesResponseBodyInstanceInfoSites] = None,
         status: str = None,
     ):
-        # The Billable methods. Valid values:
-        # - dps_month95: monthly 95th percentile billing.
+        # The billing method. Valid values:
+        # - dps_month95: Monthly 95th percentile billing.
         self.billing_method = billing_method
         # The billing mode. Valid values:
         # 
-        #  * POSTPAY: pay-as-you-go.
+        # - POSTPAY: Pay-as-you-go.
         self.billing_mode = billing_mode
         # The acceleration regions for sites that can be bound to the instance. Multiple values are separated by commas (,). Valid values:
         # 
-        # - domestic: the Chinese mainland.
-        # - overseas: global (excluding the Chinese mainland).
-        # - global: global (including the Chinese mainland).
+        # - domestic: The Chinese mainland.
+        # - overseas: Global (excluding the Chinese mainland).
+        # - global: Global (including the Chinese mainland).
         self.coverages = coverages
-        # The time when the instance was created. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+        # The time when the instance was created. The time is displayed in UTC and formatted as yyyy-MM-ddTHH:mm:ssZ in accordance with the ISO 8601 standard.
         self.create_time = create_time
-        # The scheduled time for upgrade or downgrade. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+        # The scheduled time for the specification change. The time is displayed in UTC and formatted as yyyy-MM-ddTHH:mm:ssZ in accordance with the ISO 8601 standard.
         self.expected_update_time = expected_update_time
         # The instance ID.
         self.instance_id = instance_id
         self.owner_id = owner_id
         # The English name of the plan.
         self.plan_name = plan_name
-        # The plan name in Chinese.
+        # The Chinese name of the plan.
         self.plan_name_cn = plan_name_cn
-        # The plan type corresponding to the plan instance. Valid values:
-        # - normal: fixed plan.
-        # - enterprise: enterprise plan.
+        # The plan type of the instance. Valid values:
+        # - normal: Standard plan.
+        # - enterprise: Enterprise plan.
         self.plan_type = plan_type
         self.share_type = share_type
         # The site quota.
@@ -264,7 +264,7 @@ class ListPostpaidRatePlanInstancesResponseBodyInstanceInfoSites(DaraModel):
         # - pending: The site is pending configuration.
         # - active: The site is activated.
         # - offline: The site is offline.
-        # - moved: The site has been replaced.
+        # - moved: The site is replaced.
         self.site_status = site_status
 
     def validate(self):

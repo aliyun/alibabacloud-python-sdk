@@ -10,11 +10,11 @@ class DeleteRedirectRuleRequest(DaraModel):
         config_id: int = None,
         site_id: int = None,
     ):
-        # The configuration ID, which can be obtained by calling the [ListRedirectRules](~~ListRedirectRules~~) operation.
+        # The ID of the configuration. You can call the [ListRedirectRules](~~ListRedirectRules~~) operation to obtain the ID.
         # 
         # This parameter is required.
         self.config_id = config_id
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The ID of the site. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
         # 
         # This parameter is required.
         self.site_id = site_id

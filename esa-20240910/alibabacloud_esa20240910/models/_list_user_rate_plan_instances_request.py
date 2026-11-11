@@ -29,9 +29,9 @@ class ListUserRatePlanInstancesRequest(DaraModel):
         # Instance ID of the plan instance. You can obtain instance ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.instance_id = instance_id
         self.is_shared = is_shared
-        # The page number Settings for a paging query. Default value: **1**. Valid values: **1** to **100000**.
+        # The page number Settings for paging in a paged query. Default value: **1**. Valid values: **1** to **100000**.
         self.page_number = page_number
-        # The number of entries per page for a paging query. Valid values: 1 to 500.
+        # The number of entries per page for paging in a paged query. Valid values: 1 to 500.
         self.page_size = page_size
         # The name of the plan in English.
         self.plan_name_en = plan_name_en
@@ -40,33 +40,33 @@ class ListUserRatePlanInstancesRequest(DaraModel):
         # - normal: Fixed plan.
         # - enterprise: Enterprise plan.
         self.plan_type = plan_type
-        # Queries plan instances whose remaining validity period is less than or equal to the specified number of days. The value must be a positive integer. Unit: days.
+        # Queries plan instances whose remaining validity period is within the specified number of days. The value must be a positive integer. Unit: days.
         self.remaining_expire_days = remaining_expire_days
         self.resource_owner = resource_owner
-        # The field by which to sort the results. By default, the results are sorted by creation time. Valid values:
+        # The sort field. By default, the instances are sorted by creation time. Valid values:
         # 
-        # - **CreateTime**: Sorts by creation time.
-        # - **ExpireTime**: Sorts by expiration time.
+        # - **CreateTime**: The creation time.
+        # - **ExpireTime**: The expiration time.
         self.sort_by = sort_by
-        # The sort order. By default, the results are sorted in descending order. Valid values:
+        # The sort order. By default, the instances are sorted in descending order. Valid values:
         # 
         # - **asc**: Ascending order.
         # - **desc**: Descending order.
         self.sort_order = sort_order
-        # The instance status. Valid values:
-        # - **online**: The instance is in normal service status.
-        # - **offline**: The instance has expired but is not overdue, and is in an inactive state.
-        # - **disable**: The instance is released.
-        # - **overdue**: The instance has an overdue payment.
+        # The instance status of the plan. Valid values:
+        # - **online**: The normal service status.
+        # - **offline**: The instance has expired but not overdue, and is in an inactive state.
+        # - **disable**: The released status.
+        # - **overdue**: The overdue payment status.
         self.status = status
         # The subscription type of the plan. Valid values:
         # 
-        # - entranceplan: Free Edition (Chinese mainland)
-        # - entranceplan_intl: Free Edition (International)
-        # - basicplan: Basic Edition
-        # - standardplan: Standard Edition
-        # - advancedplan: Advanced Edition
-        # - enterpriseplan: Enterprise Edition
+        # - entranceplan: Free Edition (Chinese mainland).
+        # - entranceplan_intl: Free Edition (International).
+        # - basicplan: Basic Edition.
+        # - standardplan: Standard Edition.
+        # - advancedplan: Advanced Edition.
+        # - enterpriseplan: Enterprise Edition.
         self.subscribe_type = subscribe_type
 
     def validate(self):

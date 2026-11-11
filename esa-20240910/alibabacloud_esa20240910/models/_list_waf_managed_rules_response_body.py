@@ -18,13 +18,13 @@ class ListWafManagedRulesResponseBody(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
         # The list of managed rules.
         self.rules = rules
-        # The total number of rules after filtering.
+        # The total number of filtered rules.
         self.total_count = total_count
 
     def validate(self):
@@ -90,9 +90,9 @@ class ListWafManagedRulesResponseBodyRules(DaraModel):
     ):
         # The protection action of the managed rule.
         self.action = action
-        # The managed rule ID.
+        # The ID of the managed rule.
         self.id = id
-        # The managed rule name.
+        # The name of the managed rule.
         self.name = name
         # The protection level of the managed rule.
         self.protection_level = protection_level

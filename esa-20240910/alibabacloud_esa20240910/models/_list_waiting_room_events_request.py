@@ -11,13 +11,13 @@ class ListWaitingRoomEventsRequest(DaraModel):
         waiting_room_event_id: int = None,
         waiting_room_id: str = None,
     ):
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The ID of the waiting room event. This parameter is optional. You can specify this parameter to query a specific waiting room event.
+        # The waiting room event ID. This parameter is optional and is used to query a specific waiting room event.
         self.waiting_room_event_id = waiting_room_event_id
-        # The unique ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) operation.
+        # The waiting room ID, which is used to identify a specific waiting room. You can call the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) operation to obtain the waiting room ID.
         # 
         # This parameter is required.
         self.waiting_room_id = waiting_room_id
