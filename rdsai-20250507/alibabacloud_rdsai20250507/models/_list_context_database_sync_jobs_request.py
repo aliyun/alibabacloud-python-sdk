@@ -12,9 +12,9 @@ class ListContextDatabaseSyncJobsRequest(DaraModel):
         page_size: int = None,
         workspace_id: str = None,
     ):
-        # The ID of the target knowledge base.
+        # The destination knowledge base ID.
         self.knowledge_base_id = knowledge_base_id
-        # The page number. The value starts from 1.
+        # The page number, starting from 1.
         self.page = page
         # The number of entries per page.
         self.page_size = page_size

@@ -23,11 +23,11 @@ class ListContextDatabaseSyncJobsResponseBody(DaraModel):
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The response message.
+        # The message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -90,9 +90,9 @@ class ListContextDatabaseSyncJobsResponseBodyData(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
-        # The list of import tasks.
+        # The list of import jobs.
         self.jobs = jobs
-        # The page number. The value starts from 1.
+        # The page number, starting from 1.
         self.page = page
         # The number of entries per page.
         self.page_size = page_size
@@ -161,29 +161,29 @@ class ListContextDatabaseSyncJobsResponseBodyDataJobs(DaraModel):
         source_id: str = None,
         target_id: str = None,
     ):
-        # The reason for automatic pause.
+        # The auto-pause reason.
         self.auto_pause_reason = auto_pause_reason
-        # Indicates whether the task is automatically paused.
+        # Indicates whether the job is automatically paused.
         self.auto_paused = auto_paused
         # The configuration version number.
         self.config_version = config_version
-        # Indicates whether the task is enabled.
+        # Indicates whether the job is enabled.
         self.enabled = enabled
         # The filter conditions.
         self.filters = filters
-        # The task ID, which is a system-generated UUID.
+        # The job ID, which is a system-generated UUID.
         self.id = id
-        # The ID of the target knowledge base.
+        # The destination knowledge base ID.
         self.knowledge_base_id = knowledge_base_id
         # The name.
         self.name = name
-        # The time of the next run.
+        # The next run time.
         self.next_run_at = next_run_at
-        # The scheduling type. Valid values: interval, daily-times.
+        # The schedule type. Valid values: interval and daily-times.
         self.schedule_type = schedule_type
         # The data source ID, which is a system-generated UUID.
         self.source_id = source_id
-        # The target ID, which is a system-generated UUID.
+        # The destination ID, which is a system-generated UUID.
         self.target_id = target_id
 
     def validate(self):

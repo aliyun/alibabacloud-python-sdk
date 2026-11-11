@@ -12,11 +12,11 @@ class ListContextDatabaseSyncConnectionsRequest(DaraModel):
         plugin_id: str = None,
         workspace_id: str = None,
     ):
-        # The page number. Pages start from 1.
+        # The page number, starting from 1.
         self.page = page
         # The number of entries per page.
         self.page_size = page_size
-        # The plug-in ID.
+        # The plugin ID.
         self.plugin_id = plugin_id
         # The workspace ID.
         # 

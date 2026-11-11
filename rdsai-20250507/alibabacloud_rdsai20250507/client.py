@@ -6,6 +6,7 @@ import json
 
 from typing import Dict, Generator, AsyncGenerator
 
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_rdsai20250507 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
@@ -22,6 +23,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'RdsAi'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-wulanchabu': 'rdsai.aliyuncs.com',
@@ -1277,8 +1281,14 @@ class Client(OpenApiClient):
     ) -> main_models.CreateContextDatabaseWorkspaceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.generate_initial_key):
+            query['GenerateInitialKey'] = request.generate_initial_key
         if not DaraCore.is_null(request.member_name):
             query['MemberName'] = request.member_name
+        if not DaraCore.is_null(request.permission_mode):
+            query['PermissionMode'] = request.permission_mode
         if not DaraCore.is_null(request.workspace_name):
             query['WorkspaceName'] = request.workspace_name
         req = open_api_util_models.OpenApiRequest(
@@ -1307,8 +1317,14 @@ class Client(OpenApiClient):
     ) -> main_models.CreateContextDatabaseWorkspaceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.generate_initial_key):
+            query['GenerateInitialKey'] = request.generate_initial_key
         if not DaraCore.is_null(request.member_name):
             query['MemberName'] = request.member_name
+        if not DaraCore.is_null(request.permission_mode):
+            query['PermissionMode'] = request.permission_mode
         if not DaraCore.is_null(request.workspace_name):
             query['WorkspaceName'] = request.workspace_name
         req = open_api_util_models.OpenApiRequest(
