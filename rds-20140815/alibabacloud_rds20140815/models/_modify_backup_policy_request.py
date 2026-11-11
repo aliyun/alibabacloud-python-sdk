@@ -78,7 +78,7 @@ class ModifyBackupPolicyRequest(DaraModel):
         # * **720**: 720 minutes.
         # 
         # > * This parameter and the **PreferredBackupPeriod** parameter determine the backup policy together.
-        # > * The ApsaraDB RDS for MySQL instance must be a cloud disk instance that runs MySQL 5.7 or 8.0 and belongs to the high-availability series or Cluster Edition.
+        # > * The ApsaraDB RDS for MySQL instance must be a cloud disk instance of MySQL 5.7 or 8.0 in the **high availability series or Cluster Edition**.
         # > * The ApsaraDB RDS for PostgreSQL instance must be a cloud disk instance.
         # > * [**Snapshot backup**](https://help.aliyun.com/document_detail/211143.html) must be **enabled** for the ApsaraDB RDS for SQL Server instance.
         # > * This parameter does not take effect when **Category** is set to **Flash**.
@@ -89,31 +89,31 @@ class ModifyBackupPolicyRequest(DaraModel):
         # * **Enable**: enables log backup.
         # * **Disabled**: disables log backup.
         # 
-        # **For an ApsaraDB RDS for SQL Server instance**, log backup is enabled by default and cannot be disabled. However, you can modify the log backup frequency as follows:
+        # **For ApsaraDB RDS for SQL Server instances**, log backup is enabled by default and cannot be disabled. However, you can modify the log backup frequency as follows:
         # 
-        # - **Every 5 minutes**: Set BackupLog to Enable and leave LogBackupFrequency empty. For more information, see [5-minute log backup](https://help.aliyun.com/document_detail/2861729.html). **This configuration is not supported when the secondary instance is preferred for backup (BackupPriority is set to 1). Otherwise, an error is reported.**
-        # - **Every 30 minutes**: Leave BackupLog empty and set LogBackupFrequency to LogInterval.
-        # - **Same as data backup frequency**: Leave both BackupLog and LogBackupFrequency empty.
+        # - To set the log backup frequency to **every 5 minutes**: Set BackupLog to Enable and leave LogBackupFrequency empty. For more information, see [5-minute log backup](https://help.aliyun.com/document_detail/2861729.html). **This configuration is not supported when the preferred secondary instance is configured for backup (BackupPriority is set to 1). Otherwise, an error is reported.**
+        # - To set the log backup frequency to **every 30 minutes**: Leave BackupLog empty and set LogBackupFrequency to LogInterval.
+        # - To set the log backup frequency to **the same as the data backup frequency**: Leave both BackupLog and LogBackupFrequency empty.
         # 
         # > This parameter takes effect only when **BackupPolicyMode** is set to **DataBackupPolicy**. It is used to enable or disable log backup.
         self.backup_log = backup_log
-        # The backup method for an **ApsaraDB RDS for SQL Server instance with cloud disks**. Valid values:
+        # The backup method for **ApsaraDB RDS for SQL Server instances with cloud disks**. Valid values:
         # * **Physical** (default): physical backup.
         # * **Snapshot**: snapshot backup.
         # 
         # > This parameter takes effect only when **BackupPolicyMode** is set to **DataBackupPolicy**.
         self.backup_method = backup_method
-        # The backup policy mode. Valid values:
+        # The backup type. Valid values:
         # 
         # * **DataBackupPolicy**: data backup.
         # * **LogBackupPolicy**: log backup.
         self.backup_policy_mode = backup_policy_mode
-        # The backup priority setting for [secondary instance backup](https://help.aliyun.com/document_detail/95717.html) of an **ApsaraDB RDS for SQL Server Cluster Edition** instance. Valid values:
+        # The setting for [secondary instance backup](https://help.aliyun.com/document_detail/95717.html) of **ApsaraDB RDS for SQL Server Cluster Edition** instances. Valid values:
         # - **1**: prefer the secondary instance.
         # - **2**: force the primary instance.
         #  
-        # > - This parameter takes effect only when **BackupMethod** is set to **Physical**. If **BackupMethod** is set to **Snapshot**, backups are forcibly performed on the primary instance for an ApsaraDB RDS for SQL Server Cluster Edition instance.
-        # > - After you set the backup priority to **prefer the secondary instance** (BackupPriority is set to 1), the **5-minute log backup** policy (BackupLog is set to Enable and LogBackupFrequency is left empty) is **not supported**. Otherwise, an error is reported. Set the log backup frequency to every 30 minutes or the same as the data backup frequency.
+        # > - This parameter takes effect only when **BackupMethod** is set to **Physical**. If **BackupMethod** is set to **Snapshot**, ApsaraDB RDS for SQL Server Cluster Edition instances are forced to back up data on the primary instance.
+        # > - After you set **BackupPriority** to **1** (prefer the secondary instance), the **5-minute log backup** policy (BackupLog is set to Enable and LogBackupFrequency is left empty) is **not supported**. Otherwise, an error is reported. Set the log backup frequency to every 30 minutes or the same as the data backup frequency.
         self.backup_priority = backup_priority
         # The number of days for which data backups are retained. Valid values: **7** to **730**.
         # 
@@ -128,49 +128,48 @@ class ModifyBackupPolicyRequest(DaraModel):
         self.category = category
         # The backup compression method. Valid values:
         # * **0**: no compression.
-        # * **1**: zlib compression. The backup file is in the tar.gz format.
+        # * **1**: zlib compression. The format is tar.gz.
         # * **2**: parallel zlib compression.
-        # * **4**: QuickLZ compression. The backup file is in the xb.gz format. This compression method is supported only for ApsaraDB RDS for MySQL 5.6 and 5.7 and ApsaraDB RDS for PostgreSQL. You can use this compression method to [restore individual databases and tables](https://help.aliyun.com/document_detail/103175.html).
-        # * **8**: QuickLZ compression. The backup file is in the xb.gz format. This compression method is supported only for ApsaraDB RDS for MySQL 8.0. Restoration of individual databases and tables is not supported.
+        # * **4**: quicklz compression. The format is xb.gz. This method is supported only for MySQL 5.6, MySQL 5.7, and PostgreSQL. You can use this compression method to [restore individual databases and tables](https://help.aliyun.com/document_detail/103175.html).
+        # * **8**: quicklz compression. The format is xb.gz. This method is supported only for MySQL 8.0. Restoration of individual databases and tables is not supported.
         # 
         # > This parameter takes effect only when **BackupPolicyMode** is set to **DataBackupPolicy**.
         self.compress_type = compress_type
-        # The instance ID. You can call the DescribeDBInstances operation to obtain the instance ID.
+        # Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # Specifies whether to enable the advanced backup policy. If you set this parameter to 1, both the advanced data backup policy and the advanced log backup policy are configured.
         self.enable_advanced_backup_policy = enable_advanced_backup_policy
-        # Specifies whether to enable instance log backup for an **ApsaraDB RDS for MySQL**, **ApsaraDB RDS for PostgreSQL**, or **ApsaraDB RDS for MariaDB** instance. Valid values:
-        # * **True** or **1**: enables instance log backup.
-        # * **False** or **0**: disables instance log backup.
+        # Specifies whether to enable log backup for **ApsaraDB RDS for MySQL**, **ApsaraDB RDS for PostgreSQL**, and **ApsaraDB RDS for MariaDB** instances. Valid values:
+        # * **True** or **1**: enables log backup.
+        # * **False** or **0**: disables log backup.
         # 
-        # > - Log backup is enabled by default and cannot be disabled for an **ApsaraDB RDS for SQL Server** instance. Therefore, you do not need to specify this parameter for an ApsaraDB RDS for SQL Server instance.
+        # > - Log backup is enabled by default and cannot be disabled for **ApsaraDB RDS for SQL Server** instances. Therefore, you do not need to configure this parameter for ApsaraDB RDS for SQL Server instances.
         # > - This parameter takes effect only when **BackupPolicyMode** is set to **LogBackupPolicy**. It is used to enable or disable log backup.
         self.enable_backup_log = enable_backup_log
-        # Specifies whether to enable the immutable backup feature. Valid values:
-        # 
-        # - true: enables the feature.
-        # - Limits: This feature is supported only for ApsaraDB RDS for PostgreSQL and takes effect only when EnableAdvancedBackupPolicy is set to 1.
-        # - **Note: This feature cannot be disabled after it is enabled. Evaluate the impact on your business before you enable this feature.**
+        # - **Specifies whether to enable the immutable backup feature.**
+        #   - **Valid values**: Only `true` is supported. If you pass other values, an error is reported. **If you do not pass this parameter, the feature remains disabled.**
+        #   - **Limits**: This parameter is supported only for ApsaraDB RDS for PostgreSQL and takes effect only when `EnableAdvancedBackupPolicy` is set to 1.
+        #   - **⚠️ Important**: After this feature is enabled, it **cannot be disabled**. Evaluate the impact on your business before you enable this feature.
         self.enable_immutable_backup = enable_immutable_backup
-        # Specifies whether to enable incremental backup for an **ApsaraDB RDS for SQL Server instance with cloud disks** or an **ApsaraDB RDS for MySQL instance with local SSDs**. Valid values:
+        # Specifies whether to enable incremental backup for **ApsaraDB RDS for SQL Server instances with cloud disks and ApsaraDB RDS for MySQL instances with local SSDs**. Valid values:
         # * **False** (default): disables incremental backup.
         # * **True**: enables incremental backup.
         # 
         # > This parameter takes effect only when **BackupPolicyMode** is set to **DataBackupPolicy**.
         self.enable_increment_data_backup = enable_increment_data_backup
-        # Specifies whether to enable point-in-time recovery (PITR) for an **ApsaraDB RDS for MySQL** instance. Valid values:
+        # Specifies whether to enable point-in-time recovery (PITR) for **ApsaraDB RDS for MySQL** instances. Valid values:
         # - **True**: enables PITR.
         # - **False**: disables PITR.
         # 
-        # > This parameter takes effect only when **BackupPolicyMode** is set to **DataBackupPolicy** and **BackupLog** is set to **Enable**. For feature details, see [Settings for point-in-time recovery policy](https://help.aliyun.com/document_detail/2666046.html).
+        # > This parameter takes effect only when **BackupPolicyMode** is set to **DataBackupPolicy** and **BackupLog** is set to **Enable**. For feature details, see [Settings for the point-in-time recovery policy](https://help.aliyun.com/document_detail/2666046.html).
         self.enable_pitr_protection = enable_pitr_protection
-        # Specifies whether to unconditionally delete binary log files when the storage usage of an **ApsaraDB RDS for MySQL** instance exceeds 80% or the remaining storage space is less than 5 GB. Valid values: **Enable** and **Disable**. The default value indicates that the parameter is not modified.
+        # Specifies whether to unconditionally delete binary log files when the storage usage of the **ApsaraDB RDS for MySQL** instance exceeds 80% or the remaining storage is less than 5 GB. Valid values: **Enable** and **Disable**. By default, this parameter is not modified.
         # 
         # > This parameter takes effect only when **BackupPolicyMode** is set to **LogBackupPolicy**. In this case, this parameter is required.
         self.high_space_usage_protection = high_space_usage_protection
-        # The high-frequency incremental backup frequency for an **ApsaraDB RDS for MySQL instance with local SSDs**. Valid values:
+        # The high-frequency incremental backup frequency for **ApsaraDB RDS for MySQL instances with local SSDs**. Valid values:
         # * **60**: 60 minutes.
         # * **120**: 120 minutes.
         # * **240**: 240 minutes.
@@ -179,15 +178,15 @@ class ModifyBackupPolicyRequest(DaraModel):
         # 
         # > This parameter takes effect only when **EnableIncrementDataBackup** is set to **True**.
         self.inc_backup_interval = inc_backup_interval
-        # The number of hours for which instance log backups are retained on an **ApsaraDB RDS for MySQL** instance. Valid values: **0** to **168** (7 × 24). A value of 0 indicates that instance log backups are not retained.
+        # The number of hours for which log backups are retained locally on the **ApsaraDB RDS for MySQL** instance. Valid values: **0** to **168** (7 × 24). A value of 0 indicates that log backups are not retained.
         # 
         # > This parameter takes effect only when **BackupPolicyMode** is set to **LogBackupPolicy**. In this case, this parameter is required.
         self.local_log_retention_hours = local_log_retention_hours
-        # The maximum usage of the local log storage space on an **ApsaraDB RDS for MySQL** instance. If the usage exceeds this value, the earliest binary log files are deleted until the usage drops below this value. Valid values: **0** to **50**. The default value indicates that the parameter is not modified.
+        # The maximum usage of the local log circular space for the **ApsaraDB RDS for MySQL** instance. If the usage exceeds this value, the earliest binary log files are deleted until the usage drops below this value. Valid values: **0** to **50**. By default, this parameter is not modified.
         # 
         # > This parameter takes effect only when **BackupPolicyMode** is set to **LogBackupPolicy**. In this case, this parameter is required.
         self.local_log_retention_space = local_log_retention_space
-        # The log backup frequency for an **ApsaraDB RDS for SQL Server** instance. Valid values:
+        # The log backup frequency for **ApsaraDB RDS for SQL Server** instances. Valid values:
         # * **LogInterval**: every 30 minutes.
         # * **Empty** (no value is required): every 5 minutes or the same as the data backup frequency.
         # 
@@ -200,7 +199,7 @@ class ModifyBackupPolicyRequest(DaraModel):
         self.log_backup_local_retention_number = log_backup_local_retention_number
         # The number of days for which log backups are retained. Valid values: **7** to **730**. The value cannot be greater than the number of days for which data backups are retained.
         # 
-        # > * When log backup is enabled, you can specify the number of days for which log backups are retained. This parameter is supported only for ApsaraDB RDS for MySQL and ApsaraDB RDS for PostgreSQL instances.
+        # > * When log backup is enabled, you can specify the number of days for which log backup files are retained. This parameter is supported only for ApsaraDB RDS for MySQL and ApsaraDB RDS for PostgreSQL instances.
         # > * This parameter takes effect when **BackupPolicyMode** is set to **DataBackupPolicy** or **LogBackupPolicy**.
         self.log_backup_retention_period = log_backup_retention_period
         self.owner_account = owner_account
@@ -214,22 +213,22 @@ class ModifyBackupPolicyRequest(DaraModel):
         # * **Saturday**: Saturday.
         # * **Sunday**: Sunday.
         # 
-        # > * This parameter and the **BackupInterval** parameter determine the backup policy together. For example, if this parameter is set to Saturday and Sunday, and the **BackupInterval** parameter is set to 30, a backup is performed every 30 minutes on Saturdays and Sundays.
+        # > * This parameter and the **BackupInterval** parameter determine the backup policy together. For example, if this parameter is set to Saturday and Sunday, and the **BackupInterval** parameter is set to 30 minutes, a backup is performed every 30 minutes on Saturdays and Sundays.
         # > * This parameter is required when **BackupPolicyMode** is set to **DataBackupPolicy**.
         # > * This parameter takes effect only when **BackupPolicyMode** is set to **DataBackupPolicy**.
         self.preferred_backup_period = preferred_backup_period
-        # The time period during which the backup task is executed. Format: <i>HH:mm</i>Z-<i>HH:mm</i>Z (UTC time).
+        # The time period during which the backup task is executed. Specify the time in the <i>HH:mm</i>Z-<i>HH:mm</i>Z format. The time must be in UTC.
         # 
         # > * This parameter is required when **BackupPolicyMode** is set to **DataBackupPolicy**.
         # > * This parameter takes effect only when **BackupPolicyMode** is set to **DataBackupPolicy**.
         self.preferred_backup_time = preferred_backup_time
-        # The data retention policy for archived backups of a deleted **ApsaraDB RDS for MySQL** instance. Valid values:
+        # The data retention policy for archived backups of deleted **ApsaraDB RDS for MySQL** instances. Valid values:
         # * **None**: no backups are retained.
         # * **Lastest**: the last backup is retained.
         # * **All**: all backups are retained.
         # 
         # > - This parameter takes effect only when **BackupPolicyMode** is set to **DataBackupPolicy**.
-        # > - For an ApsaraDB RDS for MySQL cloud disk instance purchased on or after February 1, 2024, the default value of ReleasedKeepPolicy is **Lastest**. For an instance with Premium Local SSDs, the default value is **None**. For feature details, see [Backups of deleted instances](https://help.aliyun.com/document_detail/2836955.html).
+        # > - For ApsaraDB RDS for MySQL cloud disk instances purchased on or after February 1, 2024, the default value of ReleasedKeepPolicy is **Lastest**. For an instance with Premium Local SSDs, the default value is **None**. For feature details, see [Backups of deleted instances](https://help.aliyun.com/document_detail/2836955.html).
         self.released_keep_policy = released_keep_policy
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -478,47 +477,40 @@ class ModifyBackupPolicyRequestAdvancedLogPolicies(DaraModel):
         src_type: str = None,
         strategy_id: str = None,
     ):
-        # The operation on the sub-policy. Valid values:
+        # The operation on this sub-policy. Valid values:
         # 
-        # - CREATE: creates a sub-policy.
-        # 
-        # - UPDATE: updates a sub-policy.
-        #  
-        # - DELETE: deletes a sub-policy.
+        # - CREATE: create.
+        # - UPDATE: update.
+        # - DELETE: delete.
         self.action_type = action_type
-        # The region code of the destination region for log backup.
+        # The region ID of the destination region for log backup.
         self.dest_region = dest_region
         # The type of the destination storage pool. Valid values:
         # 
         # - level1: level-1 storage.
-        # 
         # - level2Cross: cross-region backup.
-        # 
-        # - level2: same-region backup.
+        # - level2: intra-region backup.
         self.dest_type = dest_type
         # The flag that indicates whether log backup is enabled. Pass an integer.
         self.enable_log_backup = enable_log_backup
         # The filter option. Valid values:
         # 
         # - backupInterval: fixed interval.
-        # 
         # - dayOfWeek: fixed day of the week.
         self.filter_key = filter_key
         # The filter condition value for log backup. If the filter option is crontab, enter a cron expression.
         # 
-        # - When FilterKey is set to backupInterval, this value indicates that a backup is performed every x minutes.
-        # 
-        # - When FilterKey is set to dayOfWeek, this value indicates that a backup is performed on a fixed day of the week.
+        # - When FilterKey is set to backupInterval, this value indicates the backup interval in minutes.
+        # - When FilterKey is set to dayOfWeek, this value indicates the fixed day of the week for backup.
         self.filter_value = filter_value
         # The log retention type. Valid values:
         # 
         # - delay: fixed retention period.
-        # 
         # - never: long-term retention (LTR).
         self.log_retention_type = log_retention_type
         # The number of days for which logs are retained. This parameter takes effect only when LogRetentionType is set to delay.
         self.log_retention_value = log_retention_value
-        # The region code of the source region for log backup.
+        # The region ID of the source region for log backup.
         self.src_region = src_region
         # The type of the source storage pool.
         self.src_type = src_type
@@ -623,43 +615,36 @@ class ModifyBackupPolicyRequestAdvancedDataPolicies(DaraModel):
         src_type: str = None,
         strategy_id: str = None,
     ):
-        # The operation on the sub-policy. Valid values:
+        # The operation on this sub-policy. Valid values:
         # 
-        # - CREATE: creates a sub-policy.
-        # 
-        # - UPDATE: updates a sub-policy.
-        #  
-        # - DELETE: deletes a sub-policy.
+        # - CREATE: create.
+        # - UPDATE: update.
+        # - DELETE: delete.
         self.action_type = action_type
         # The backup type. Valid values:
         # 
         # - F: full backup.
-        # 
         # - L: log backup. This value takes effect only when Engine is set to SQL Server.
         self.bak_type = bak_type
-        # The region code of the destination region for data backup.
+        # The region ID of the destination region for data backup.
         self.dest_region = dest_region
         # The type of the destination storage pool. Valid values:
         # 
         # - level1: level-1 storage.
-        # 
         # - level2Cross: cross-region backup.
-        # 
-        # - level2: same-region backup.
+        # - level2: intra-region backup.
         self.dest_type = dest_type
         # The filter option. Valid values:
         # 
         # - backupInterval: fixed interval.
-        # 
         # - dayOfWeek: fixed day of the week.
         self.filter_key = filter_key
         # The filter type. Valid value: crontab, which indicates periodic backup.
         self.filter_type = filter_type
         # The filter condition value for data backup. If the filter option is crontab, enter a cron expression.
         # 
-        # - When FilterKey is set to backupInterval, this value indicates that a backup is performed every x minutes.
-        # 
-        # - When FilterKey is set to dayOfWeek, this value indicates that a backup is performed on a fixed day of the week.
+        # - When FilterKey is set to backupInterval, this value indicates the backup interval in minutes.
+        # - When FilterKey is set to dayOfWeek, this value indicates the fixed day of the week for backup.
         self.filter_value = filter_value
         # Specifies whether to retain only one data backup per day.
         self.only_preserve_one_each_day = only_preserve_one_each_day
@@ -668,12 +653,11 @@ class ModifyBackupPolicyRequestAdvancedDataPolicies(DaraModel):
         # The retention type. Valid values:
         # 
         # - delay: fixed retention period.
-        # 
         # - never: long-term retention (LTR).
         self.retention_type = retention_type
         # The number of days for which data backups are retained. This parameter takes effect only when RetentionType is set to delay.
         self.retention_value = retention_value
-        # The region code of the source region for data backup.
+        # The region ID of the source region for data backup.
         self.src_region = src_region
         # The type of the source storage pool.
         self.src_type = src_type

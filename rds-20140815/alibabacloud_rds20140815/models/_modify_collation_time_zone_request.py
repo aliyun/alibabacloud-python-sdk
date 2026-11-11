@@ -14,7 +14,7 @@ class ModifyCollationTimeZoneRequest(DaraModel):
         resource_owner_id: int = None,
         timezone: str = None,
     ):
-        # The system character set collation. By default, the value is not modified. Valid values:
+        # The system character set collation. By default, this parameter is not modified. Valid values:
         # * **Chinese_PRC_CI_AS**
         # * **Chinese_PRC_CS_AS**
         # * **Chinese_PRC_BIN**
@@ -28,7 +28,7 @@ class ModifyCollationTimeZoneRequest(DaraModel):
         # * **Chinese_Taiwan_Stroke_CS_AS**
         # 
         # > - The default character set collation of the instance is **Chinese_PRC_CI_AS**.
-        # > - You must specify at least one of **Collation** and **Timezone**.
+        # > - You must specify at least one of the **Collation** and **Timezone** parameters.
         self.collation = collation
         # The instance ID.
         # 
@@ -37,10 +37,10 @@ class ModifyCollationTimeZoneRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The system time zone. By default, the value is not modified.
+        # The system time zone. By default, this parameter is not modified.
         # 
         # > - The default time zone of the instance is **China Standard Time**.
-        # > - You must specify at least one of **Collation** and **Timezone**.
+        # > - You must specify at least one of the **Collation** and **Timezone** parameters.
         self.timezone = timezone
 
     def validate(self):

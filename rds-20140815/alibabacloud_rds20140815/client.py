@@ -34930,6 +34930,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifySecurityIpsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.batch_mode):
+            query['BatchMode'] = request.batch_mode
         if not DaraCore.is_null(request.dbinstance_iparray_attribute):
             query['DBInstanceIPArrayAttribute'] = request.dbinstance_iparray_attribute
         if not DaraCore.is_null(request.dbinstance_iparray_name):
@@ -34938,6 +34940,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not DaraCore.is_null(request.fresh_white_list_readins):
             query['FreshWhiteListReadins'] = request.fresh_white_list_readins
+        if not DaraCore.is_null(request.group_items):
+            query['GroupItems'] = request.group_items
         if not DaraCore.is_null(request.modify_mode):
             query['ModifyMode'] = request.modify_mode
         if not DaraCore.is_null(request.resource_owner_id):
@@ -34974,6 +34978,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifySecurityIpsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.batch_mode):
+            query['BatchMode'] = request.batch_mode
         if not DaraCore.is_null(request.dbinstance_iparray_attribute):
             query['DBInstanceIPArrayAttribute'] = request.dbinstance_iparray_attribute
         if not DaraCore.is_null(request.dbinstance_iparray_name):
@@ -34982,6 +34988,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not DaraCore.is_null(request.fresh_white_list_readins):
             query['FreshWhiteListReadins'] = request.fresh_white_list_readins
+        if not DaraCore.is_null(request.group_items):
+            query['GroupItems'] = request.group_items
         if not DaraCore.is_null(request.modify_mode):
             query['ModifyMode'] = request.modify_mode
         if not DaraCore.is_null(request.resource_owner_id):

@@ -117,7 +117,7 @@ class DescribeRCImageListResponseBodyImages(DaraModel):
         self.creation_time = creation_time
         # The description of the image.
         self.description = description
-        # The mappings between cloud disks and snapshots included in the image.
+        # The mapping between cloud disks and snapshots included in the image.
         self.disk_device_mappings = disk_device_mappings
         # The image ID.
         self.image_id = image_id
@@ -125,10 +125,10 @@ class DescribeRCImageListResponseBodyImages(DaraModel):
         self.image_name = image_name
         # The image version.
         self.image_version = image_version
-        # Indicates whether the image is public. Public images include public images provided by Alibaba Cloud and custom images that you have published as community images. Valid values:
+        # Indicates whether the image is a public image. Public images include public images provided by Alibaba Cloud and custom images that you have published as community images. Valid values:
         # 
-        # - **true**: The image is public.
-        # - **false**: The image is not public.
+        # - **true**: The image is a public image.
+        # - **false**: The image is not a public image.
         self.is_public = is_public
         # Indicates whether the image supports RDS Custom instances. Valid values:
         # 
@@ -290,7 +290,7 @@ class DescribeRCImageListResponseBodyImagesDiskDeviceMappings(DaraModel):
         self.device = device
         # The size of the cloud disk. Unit: GiB.
         self.size = size
-        # The attribute of the cloud disk. Valid values:
+        # The property of the cloud disk. Valid values:
         # 
         # - **system**: System cloud disk.
         # - **data**: Data cloud disk.
