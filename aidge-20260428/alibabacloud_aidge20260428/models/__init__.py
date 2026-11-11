@@ -141,6 +141,10 @@ from ._product_hotspot_detection_request import ProductHotspotDetectionRequest
 from ._product_hotspot_detection_shrink_request import ProductHotspotDetectionShrinkRequest
 from ._product_hotspot_detection_response_body import ProductHotspotDetectionResponseBody
 from ._product_hotspot_detection_response import ProductHotspotDetectionResponse
+from ._product_video_generation_request import ProductVideoGenerationRequest
+from ._product_video_generation_shrink_request import ProductVideoGenerationShrinkRequest
+from ._product_video_generation_response_body import ProductVideoGenerationResponseBody
+from ._product_video_generation_response import ProductVideoGenerationResponse
 from ._query_async_task_result_request import QueryAsyncTaskResultRequest
 from ._query_async_task_result_response_body import QueryAsyncTaskResultResponseBody
 from ._query_async_task_result_response import QueryAsyncTaskResultResponse
@@ -300,6 +304,7 @@ from ._prepaid_text_translate_response_body import PrepaidTextTranslateResponseB
 from ._product_hotspot_detection_response_body import ProductHotspotDetectionResponseBodyDataProductsBoxes
 from ._product_hotspot_detection_response_body import ProductHotspotDetectionResponseBodyDataProducts
 from ._product_hotspot_detection_response_body import ProductHotspotDetectionResponseBodyData
+from ._product_video_generation_response_body import ProductVideoGenerationResponseBodyData
 from ._query_async_task_result_response_body import QueryAsyncTaskResultResponseBodyData
 from ._query_display_knowledge_response_body import QueryDisplayKnowledgeResponseBodyDataRecords
 from ._query_display_knowledge_response_body import QueryDisplayKnowledgeResponseBodyData
@@ -468,6 +473,10 @@ __all__ = [
     ProductHotspotDetectionShrinkRequest,
     ProductHotspotDetectionResponseBody,
     ProductHotspotDetectionResponse,
+    ProductVideoGenerationRequest,
+    ProductVideoGenerationShrinkRequest,
+    ProductVideoGenerationResponseBody,
+    ProductVideoGenerationResponse,
     QueryAsyncTaskResultRequest,
     QueryAsyncTaskResultResponseBody,
     QueryAsyncTaskResultResponse,
@@ -627,6 +636,7 @@ __all__ = [
     ProductHotspotDetectionResponseBodyDataProductsBoxes,
     ProductHotspotDetectionResponseBodyDataProducts,
     ProductHotspotDetectionResponseBodyData,
+    ProductVideoGenerationResponseBodyData,
     QueryAsyncTaskResultResponseBodyData,
     QueryDisplayKnowledgeResponseBodyDataRecords,
     QueryDisplayKnowledgeResponseBodyData,

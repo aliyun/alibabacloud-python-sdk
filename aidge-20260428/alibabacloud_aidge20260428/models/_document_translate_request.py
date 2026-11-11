@@ -12,20 +12,23 @@ class DocumentTranslateRequest(DaraModel):
         target_language: str = None,
         url: str = None,
     ):
-        # The type of the document. Valid values: PDF and word. Size limits: 
-        # - Word: 200 MB or 100 pages. 
-        # - PDF: 200 MB or 100 pages. 
-        # - Maximum size of a single file: 200 MB.
+        # Supports PDF, WORD, and EXCEL formats. Use uppercase letters when specifying this parameter.
         # 
         # This parameter is required.
         self.file_type = file_type
-        # The ID of the intervention glossary. Specify this parameter when the intervention feature is required. This parameter supports custom translation results, including do-not-translate (ABC-ABC), specified translation (ABC-DEF), and no translation (ABC-null value). It is commonly used in scenarios such as brand word protection.
+        # ● Specify the intervention glossary ID when the intervention feature is required.   
+        # ● Supports custom translation results, including:   
+        # ○ Do-not-translate (ABC-ABC).   
+        # ○ Specified translation (ABC-DEF).   
+        # ○ Translation omission (ABC-null value).
+        # This is commonly used in scenarios such as brand word protection.   
+        # Example value: "glossary_1"
         self.glossary = glossary
-        # The target language. The language code uses the two-letter representation of the ISO 639-1 standard.
+        # The target language.
         # 
         # This parameter is required.
         self.target_language = target_language
-        # The OSS URL of the document to be translated.
+        # The OSS URL path of the document to be translated.
         # 
         # This parameter is required.
         self.url = url

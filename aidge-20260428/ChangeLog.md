@@ -1,3 +1,12 @@
+2026-11-11 Version: 5.14.0
+- Support API ProductVideoGeneration.
+- Update API AiTryOn: add request parameters Mode.
+- Update API AiTryOn: add request parameters ModelTemplateUrl.
+- Update API AiTryOn: add request parameters PoseTemplateUrl.
+- Update API AiTryOn: add request parameters Ratio.
+- Update API AiTryOn: add request parameters TryonType.
+
+
 2026-11-09 Version: 5.13.2
 - Generated python 2026-04-28 for Aidge.
 

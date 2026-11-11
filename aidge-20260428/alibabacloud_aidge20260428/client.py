@@ -137,10 +137,20 @@ class Client(OpenApiClient):
             query['ClothImageUrl'] = request.cloth_image_url
         if not DaraCore.is_null(request.cloth_type):
             query['ClothType'] = request.cloth_type
+        if not DaraCore.is_null(request.mode):
+            query['Mode'] = request.mode
         if not DaraCore.is_null(request.model_image_url):
             query['ModelImageUrl'] = request.model_image_url
+        if not DaraCore.is_null(request.model_template_url):
+            query['ModelTemplateUrl'] = request.model_template_url
+        if not DaraCore.is_null(request.pose_template_url):
+            query['PoseTemplateUrl'] = request.pose_template_url
+        if not DaraCore.is_null(request.ratio):
+            query['Ratio'] = request.ratio
         if not DaraCore.is_null(request.resolution):
             query['Resolution'] = request.resolution
+        if not DaraCore.is_null(request.tryon_type):
+            query['TryonType'] = request.tryon_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -171,10 +181,20 @@ class Client(OpenApiClient):
             query['ClothImageUrl'] = request.cloth_image_url
         if not DaraCore.is_null(request.cloth_type):
             query['ClothType'] = request.cloth_type
+        if not DaraCore.is_null(request.mode):
+            query['Mode'] = request.mode
         if not DaraCore.is_null(request.model_image_url):
             query['ModelImageUrl'] = request.model_image_url
+        if not DaraCore.is_null(request.model_template_url):
+            query['ModelTemplateUrl'] = request.model_template_url
+        if not DaraCore.is_null(request.pose_template_url):
+            query['PoseTemplateUrl'] = request.pose_template_url
+        if not DaraCore.is_null(request.ratio):
+            query['Ratio'] = request.ratio
         if not DaraCore.is_null(request.resolution):
             query['Resolution'] = request.resolution
+        if not DaraCore.is_null(request.tryon_type):
+            query['TryonType'] = request.tryon_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3763,6 +3783,104 @@ class Client(OpenApiClient):
     ) -> main_models.ProductHotspotDetectionResponse:
         runtime = RuntimeOptions()
         return await self.product_hotspot_detection_with_options_async(request, runtime)
+
+    def product_video_generation_with_options(
+        self,
+        tmp_req: main_models.ProductVideoGenerationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ProductVideoGenerationResponse:
+        tmp_req.validate()
+        request = main_models.ProductVideoGenerationShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.product_images):
+            request.product_images_shrink = Utils.array_to_string_with_specified_style(tmp_req.product_images, 'product_images', 'json')
+        query = {}
+        if not DaraCore.is_null(request.aspect_ratio):
+            query['aspect_ratio'] = request.aspect_ratio
+        if not DaraCore.is_null(request.duration):
+            query['duration'] = request.duration
+        if not DaraCore.is_null(request.product_images_shrink):
+            query['product_images'] = request.product_images_shrink
+        if not DaraCore.is_null(request.product_title):
+            query['product_title'] = request.product_title
+        if not DaraCore.is_null(request.resolution):
+            query['resolution'] = request.resolution
+        if not DaraCore.is_null(request.script):
+            query['script'] = request.script
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ProductVideoGeneration',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ProductVideoGenerationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def product_video_generation_with_options_async(
+        self,
+        tmp_req: main_models.ProductVideoGenerationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ProductVideoGenerationResponse:
+        tmp_req.validate()
+        request = main_models.ProductVideoGenerationShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.product_images):
+            request.product_images_shrink = Utils.array_to_string_with_specified_style(tmp_req.product_images, 'product_images', 'json')
+        query = {}
+        if not DaraCore.is_null(request.aspect_ratio):
+            query['aspect_ratio'] = request.aspect_ratio
+        if not DaraCore.is_null(request.duration):
+            query['duration'] = request.duration
+        if not DaraCore.is_null(request.product_images_shrink):
+            query['product_images'] = request.product_images_shrink
+        if not DaraCore.is_null(request.product_title):
+            query['product_title'] = request.product_title
+        if not DaraCore.is_null(request.resolution):
+            query['resolution'] = request.resolution
+        if not DaraCore.is_null(request.script):
+            query['script'] = request.script
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ProductVideoGeneration',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ProductVideoGenerationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def product_video_generation(
+        self,
+        request: main_models.ProductVideoGenerationRequest,
+    ) -> main_models.ProductVideoGenerationResponse:
+        runtime = RuntimeOptions()
+        return self.product_video_generation_with_options(request, runtime)
+
+    async def product_video_generation_async(
+        self,
+        request: main_models.ProductVideoGenerationRequest,
+    ) -> main_models.ProductVideoGenerationResponse:
+        runtime = RuntimeOptions()
+        return await self.product_video_generation_with_options_async(request, runtime)
 
     def query_async_task_result_with_options(
         self,
