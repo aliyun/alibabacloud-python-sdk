@@ -18,6 +18,8 @@ class InnerCreateSandboxInput(DaraModel):
         network: main_models.E2BNetwork = None,
         runtime: main_models.InnerSandboxRuntimeConfig = None,
         secure: bool = None,
+        snapshot_id: str = None,
+        snapshot_name: str = None,
         team_id: str = None,
         template_id: str = None,
         timeout: int = None,
@@ -25,9 +27,9 @@ class InnerCreateSandboxInput(DaraModel):
     ):
         # Specifies whether the sandbox is allowed to access external networks.
         self.allow_internet_access = allow_internet_access
-        # Specifies whether to automatically pause after timeout.
+        # Specifies whether to automatically pause the sandbox after a timeout.
         self.auto_pause = auto_pause
-        # Specifies whether to automatically resume.
+        # Specifies whether to automatically resume the sandbox.
         self.auto_resume = auto_resume
         # The environment variable configuration.
         self.env_vars = env_vars
@@ -39,11 +41,15 @@ class InnerCreateSandboxInput(DaraModel):
         self.runtime = runtime
         # Specifies whether authentication is required to access the sandbox envd.
         self.secure = secure
+        # The snapshot ID.
+        self.snapshot_id = snapshot_id
+        # The snapshot name.
+        self.snapshot_name = snapshot_name
         # The unique identifier of the team.
         self.team_id = team_id
         # The unique identifier of the template.
         self.template_id = template_id
-        # The timeout period. Unit: seconds.
+        # The timeout period, in seconds.
         self.timeout = timeout
         # The volume mount configuration.
         self.volume_mounts = volume_mounts
@@ -84,6 +90,12 @@ class InnerCreateSandboxInput(DaraModel):
 
         if self.secure is not None:
             result['secure'] = self.secure
+
+        if self.snapshot_id is not None:
+            result['snapshotID'] = self.snapshot_id
+
+        if self.snapshot_name is not None:
+            result['snapshotName'] = self.snapshot_name
 
         if self.team_id is not None:
             result['teamID'] = self.team_id
@@ -126,6 +138,12 @@ class InnerCreateSandboxInput(DaraModel):
 
         if m.get('secure') is not None:
             self.secure = m.get('secure')
+
+        if m.get('snapshotID') is not None:
+            self.snapshot_id = m.get('snapshotID')
+
+        if m.get('snapshotName') is not None:
+            self.snapshot_name = m.get('snapshotName')
 
         if m.get('teamID') is not None:
             self.team_id = m.get('teamID')

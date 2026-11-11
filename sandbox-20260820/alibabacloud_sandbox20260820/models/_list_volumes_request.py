@@ -18,19 +18,23 @@ class ListVolumesRequest(DaraModel):
     ):
         # The maximum number of entries to return per page.
         self.max_results = max_results
-        # The pagination token. Leave this parameter empty for the first request. To query the next page, set this parameter to the nextToken value returned in the previous response.
+        # The pagination token. Leave this parameter empty for the first request. To retrieve the next page, set this parameter to the nextToken value returned in the previous response.
         self.next_token = next_token
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # Filters by storage volume status. Valid values: CREATING (creating), AVAILABLE (available), ERROR (error), and DELETING (deleting).
+        # Filters by storage volume status. Valid values:
+        # - CREATING: The storage volume is being created.
+        # - AVAILABLE: The storage volume is available.
+        # - ERROR: The storage volume is in an error state.
+        # - DELETING: The storage volume is being deleted.
         self.status = status
-        # Filters by storage class. Valid values: OSS, AGENTIC_BUCKET, AGENTIC_FS, and JUICE_FS.
+        # Filters storage volumes by storage class. Valid values: OSS, AGENTIC_BUCKET, AGENTIC_FS, and JUICE_FS.
         self.storage_class = storage_class
         # The ID of the team to which the storage volume belongs.
         self.team_id = team_id
         # The user ID of the creator.
         self.user_id = user_id
-        # The name of the storage volume, which is unique within the team.
+        # The name of the storage volume. The name must be unique within the team.
         self.volume_name = volume_name
 
     def validate(self):

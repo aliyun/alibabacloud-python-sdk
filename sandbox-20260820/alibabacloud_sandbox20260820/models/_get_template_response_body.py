@@ -43,7 +43,7 @@ class GetTemplateResponseBody(DaraModel):
         self.status = status
         # The team ID.
         self.team_id = team_id
-        # The team name.
+        # The name of the team.
         self.team_name = team_name
         # The unique identifier of the template.
         self.template_id = template_id
@@ -154,9 +154,9 @@ class GetTemplateResponseBodyResourceTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key.
+        # The key of the tag.
         self.tag_key = tag_key
-        # The tag value.
+        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):

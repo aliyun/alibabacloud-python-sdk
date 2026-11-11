@@ -11,7 +11,7 @@ class DeleteTemplateCacheResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The error code. 200 indicates success.
+        # The error code. A value of 200 indicates success.
         self.code = code
         # The response message.
         self.message = message

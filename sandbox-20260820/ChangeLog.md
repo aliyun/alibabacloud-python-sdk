@@ -1,3 +1,6 @@
+2026-11-11 Version: 1.2.4
+- Generated python 2026-08-20 for Sandbox.
+
 2026-10-24 Version: 1.2.2
 - Update API GetTemplate: add response parameters Body.resourceTags.
 

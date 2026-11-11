@@ -12,7 +12,7 @@ class CreateTemplateResponseBody(DaraModel):
         request_id: str = None,
         template_id: str = None,
     ):
-        # The error code. The value is 200 if the request succeeds.
+        # The error code. The value is 200 if the request is successful.
         self.code = code
         # The response message.
         self.message = message

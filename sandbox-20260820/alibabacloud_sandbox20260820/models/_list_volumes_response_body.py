@@ -19,9 +19,9 @@ class ListVolumesResponseBody(DaraModel):
     ):
         # The response code. A value of 200 indicates success.
         self.code = code
-        # The maximum number of entries per page used in this query.
+        # The maximum number of entries per page for the current query.
         self.max_results = max_results
-        # The response message. A value of success indicates a successful request.
+        # The response message. A value of success indicates that the request was successful.
         self.message = message
         # The pagination token for the next page, which is used for subsequent queries.
         self.next_token = next_token

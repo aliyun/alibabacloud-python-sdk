@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
+from typing import Dict, List
 
 from alibabacloud_sandbox20260820 import models as main_models
 from darabonba.model import DaraModel
@@ -26,8 +26,10 @@ class E2BSandbox(DaraModel):
         metadata: Dict[str, str] = None,
         network: main_models.E2BNetwork = None,
         resource_group_id: str = None,
+        resource_tags: List[main_models.E2BSandboxResourceTags] = None,
         runtime: main_models.InnerSandboxRuntimeConfig = None,
         sandbox_id: str = None,
+        snapshot_id: str = None,
         started_at: str = None,
         state: str = None,
         team_id: str = None,
@@ -58,7 +60,7 @@ class E2BSandbox(DaraModel):
         self.fc_function_name = fc_function_name
         # The Function Compute instance ID.
         self.fc_instance_id = fc_instance_id
-        # The Function Compute session ID corresponding to the sandbox, in UUID format. This ID is used to locate the underlying session when pausing, resuming, or deleting the sandbox.
+        # The Function Compute session ID of the sandbox, in UUID format. This ID is used to locate the underlying session when pausing, resuming, or deleting the sandbox.
         self.fc_session_id = fc_session_id
         # The sandbox version.
         self.generation = generation
@@ -70,28 +72,32 @@ class E2BSandbox(DaraModel):
         self.network = network
         # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The resource tags.
+        self.resource_tags = resource_tags
         # The runtime configuration.
         self.runtime = runtime
         # The unique identifier of the sandbox.
         self.sandbox_id = sandbox_id
+        # The snapshot ID.
+        self.snapshot_id = snapshot_id
         # The start time.
         self.started_at = started_at
         # The sandbox state. Valid values:
-        # - running: The sandbox is running.
-        # - pausing: The sandbox is pausing.
-        # - paused: The sandbox is paused.
-        # - resuming: The sandbox is resuming.
-        # - pause_fail: The pause operation failed.
-        # - resume_fail: The resume operation failed.
-        # - snapshotting: A snapshot is being created.
-        # - snapshot_failed: Snapshot creation failed.
-        # - terminated: The sandbox is terminated.
+        # - running: Running.
+        # - pausing: Pausing.
+        # - paused: Paused.
+        # - resuming: Resuming.
+        # - pause_fail: Pause failed.
+        # - resume_fail: Resume failed.
+        # - snapshotting: Snapshotting.
+        # - snapshot_failed: Snapshot failed.
+        # - terminated: Terminated.
         self.state = state
         # The unique identifier of the team.
         self.team_id = team_id
         # The team name.
         self.team_name = team_name
-        # The QoS version.
+        # The QoS edition.
         self.team_plan = team_plan
         # The unique identifier of the template.
         self.template_id = template_id
@@ -105,6 +111,10 @@ class E2BSandbox(DaraModel):
     def validate(self):
         if self.network:
             self.network.validate()
+        if self.resource_tags:
+            for v1 in self.resource_tags:
+                 if v1:
+                    v1.validate()
         if self.runtime:
             self.runtime.validate()
         if self.volume_mounts:
@@ -163,11 +173,19 @@ class E2BSandbox(DaraModel):
         if self.resource_group_id is not None:
             result['resourceGroupID'] = self.resource_group_id
 
+        if self.resource_tags is not None:
+            result['resourceTags'] = []
+            for k1 in self.resource_tags:
+                result['resourceTags'].append(k1.to_map() if k1 else None)
+
         if self.runtime is not None:
             result['runtime'] = self.runtime.to_map()
 
         if self.sandbox_id is not None:
             result['sandboxID'] = self.sandbox_id
+
+        if self.snapshot_id is not None:
+            result['snapshotID'] = self.snapshot_id
 
         if self.started_at is not None:
             result['startedAt'] = self.started_at
@@ -249,12 +267,21 @@ class E2BSandbox(DaraModel):
         if m.get('resourceGroupID') is not None:
             self.resource_group_id = m.get('resourceGroupID')
 
+        if m.get('resourceTags') is not None:
+            self.resource_tags = []
+            for k1 in m.get('resourceTags'):
+                temp_model = main_models.E2BSandboxResourceTags()
+                self.resource_tags.append(temp_model.from_map(k1))
+
         if m.get('runtime') is not None:
             temp_model = main_models.InnerSandboxRuntimeConfig()
             self.runtime = temp_model.from_map(m.get('runtime'))
 
         if m.get('sandboxID') is not None:
             self.sandbox_id = m.get('sandboxID')
+
+        if m.get('snapshotID') is not None:
+            self.snapshot_id = m.get('snapshotID')
 
         if m.get('startedAt') is not None:
             self.started_at = m.get('startedAt')
@@ -283,6 +310,43 @@ class E2BSandbox(DaraModel):
         if m.get('volumeMounts') is not None:
             temp_model = main_models.InnerSandboxVolumeMount()
             self.volume_mounts = temp_model.from_map(m.get('volumeMounts'))
+
+        return self
+
+class E2BSandboxResourceTags(DaraModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        # The tag key.
+        self.tag_key = tag_key
+        # The tag value.
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.tag_key is not None:
+            result['tagKey'] = self.tag_key
+
+        if self.tag_value is not None:
+            result['tagValue'] = self.tag_value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tagKey') is not None:
+            self.tag_key = m.get('tagKey')
+
+        if m.get('tagValue') is not None:
+            self.tag_value = m.get('tagValue')
 
         return self
 

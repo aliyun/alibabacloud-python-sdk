@@ -13,7 +13,7 @@ class CreateTemplateCacheResponseBody(DaraModel):
         request_id: str = None,
         template_cache: main_models.PublicTemplateCache = None,
     ):
-        # The error code. The value is 200 if the request is successful.
+        # The error code. A value of 200 indicates success.
         self.code = code
         # The response message.
         self.message = message

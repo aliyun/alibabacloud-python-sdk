@@ -15,7 +15,7 @@ class GetTeamResponseBody(DaraModel):
     ):
         # The response code. A value of 200 indicates success.
         self.code = code
-        # The response message. A value of success indicates a successful request.
+        # The response message. The value is success for a successful request.
         self.message = message
         # The request ID.
         self.request_id = request_id

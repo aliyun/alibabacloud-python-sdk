@@ -9,10 +9,13 @@ class PublicUpdateTemplateInput(DaraModel):
     def __init__(
         self,
         build_config: main_models.PublicUpdateTemplateBuildConfig = None,
+        plan: str = None,
         runtime_config: main_models.PublicUpdateTemplateRuntimeConfig = None,
     ):
         # The build configuration.
         self.build_config = build_config
+        # The subscription plan for the team. Valid values: eco, std, and pro.
+        self.plan = plan
         # The runtime configuration.
         self.runtime_config = runtime_config
 
@@ -30,6 +33,9 @@ class PublicUpdateTemplateInput(DaraModel):
         if self.build_config is not None:
             result['buildConfig'] = self.build_config.to_map()
 
+        if self.plan is not None:
+            result['plan'] = self.plan
+
         if self.runtime_config is not None:
             result['runtimeConfig'] = self.runtime_config.to_map()
 
@@ -40,6 +46,9 @@ class PublicUpdateTemplateInput(DaraModel):
         if m.get('buildConfig') is not None:
             temp_model = main_models.PublicUpdateTemplateBuildConfig()
             self.build_config = temp_model.from_map(m.get('buildConfig'))
+
+        if m.get('plan') is not None:
+            self.plan = m.get('plan')
 
         if m.get('runtimeConfig') is not None:
             temp_model = main_models.PublicUpdateTemplateRuntimeConfig()

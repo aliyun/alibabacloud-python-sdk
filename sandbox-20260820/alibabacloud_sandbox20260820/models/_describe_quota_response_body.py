@@ -12,19 +12,24 @@ class DescribeQuotaResponseBody(DaraModel):
         message: str = None,
         quota: main_models.Quota = None,
         request_id: str = None,
+        usage: main_models.QuotaUsage = None,
     ):
         # The response code. A value of 200 indicates success.
         self.code = code
-        # The response message. The value is success if the request succeeds.
+        # The response message. The value is success for a successful request.
         self.message = message
         # The quota configuration information.
         self.quota = quota
         # The request ID.
         self.request_id = request_id
+        # Team 当前配额用量。用量不可用时省略；成功查询且无占用时返回三项零值。
+        self.usage = usage
 
     def validate(self):
         if self.quota:
             self.quota.validate()
+        if self.usage:
+            self.usage.validate()
 
     def to_map(self):
         result = dict()
@@ -43,6 +48,9 @@ class DescribeQuotaResponseBody(DaraModel):
         if self.request_id is not None:
             result['requestId'] = self.request_id
 
+        if self.usage is not None:
+            result['usage'] = self.usage.to_map()
+
         return result
 
     def from_map(self, m: dict = None):
@@ -59,6 +67,10 @@ class DescribeQuotaResponseBody(DaraModel):
 
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
+
+        if m.get('usage') is not None:
+            temp_model = main_models.QuotaUsage()
+            self.usage = temp_model.from_map(m.get('usage'))
 
         return self
 

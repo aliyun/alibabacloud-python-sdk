@@ -25,7 +25,7 @@ class DescribeApiKeyResponseBody(DaraModel):
         self.ip_blacklist = ip_blacklist
         # The list of IP address whitelist rules.
         self.ip_whitelist = ip_whitelist
-        # The response message. The value is success if the request is successful.
+        # The response message. The value is success for a successful request.
         self.message = message
         # The request ID.
         self.request_id = request_id

@@ -17,17 +17,17 @@ class ListQuotaResponseBody(DaraModel):
         quotas: List[main_models.Quota] = None,
         request_id: str = None,
     ):
-        # The response code. The value is 200 for a successful request.
+        # The response code. A value of 200 indicates success.
         self.code = code
-        # The value of maxResults specified in the request. This field is returned only if a positive integer is specified for maxResults in the request.
+        # The maximum number of entries returned per page. This field is returned only if a positive integer is specified for maxResults in the request.
         self.max_results = max_results
-        # The response message. The value is success for a successful request.
+        # The response message. The value is success if the request is successful.
         self.message = message
-        # The pagination token for the next page, which can be used for subsequent queries.
+        # The pagination token for the next page, which can be used in subsequent queries.
         self.next_token = next_token
         # The list of quota configurations.
         self.quotas = quotas
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

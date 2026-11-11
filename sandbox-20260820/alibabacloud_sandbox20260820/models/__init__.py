@@ -9,6 +9,7 @@ from ._cert_config import CertConfig
 from ._container_configuration import ContainerConfiguration
 from ._create_api_key_input import CreateApiKeyInput
 from ._create_custom_domain_input import CreateCustomDomainInput
+from ._create_snapshot_input import CreateSnapshotInput
 from ._create_team_input import CreateTeamInput
 from ._create_template_build_config import CreateTemplateBuildConfig
 from ._create_template_cache_input import CreateTemplateCacheInput
@@ -31,6 +32,7 @@ from ._e2blisted_sandbox import E2BListedSandbox
 from ._e2blisted_template import E2BListedTemplate
 from ._e2bnetwork import E2BNetwork
 from ._e2bsandbox import E2BSandbox
+from ._e2bsnapshot import E2BSnapshot
 from ._e2bteam import E2BTeam
 from ._e2btemplate import E2BTemplate
 from ._e2btemplate_build import E2BTemplateBuild
@@ -47,6 +49,7 @@ from ._juice_fsvolume_config import JuiceFSVolumeConfig
 from ._log_configuration import LogConfiguration
 from ._network_configuration import NetworkConfiguration
 from ._ossvolume_config import OSSVolumeConfig
+from ._public_listed_sandbox import PublicListedSandbox
 from ._public_template import PublicTemplate
 from ._public_template_cache import PublicTemplateCache
 from ._public_template_log_config import PublicTemplateLogConfig
@@ -72,6 +75,7 @@ from ._public_update_template_sandbox_config import PublicUpdateTemplateSandboxC
 from ._public_update_template_step import PublicUpdateTemplateStep
 from ._public_update_template_vpcconfig import PublicUpdateTemplateVPCConfig
 from ._quota import Quota
+from ._quota_usage import QuotaUsage
 from ._sandbox_lifecycle_event import SandboxLifecycleEvent
 from ._tlsconfig import TLSConfig
 from ._update_api_key_input import UpdateApiKeyInput
@@ -171,6 +175,8 @@ from ._container_configuration import ContainerConfigurationRegistryCredential
 from ._create_volume_input import CreateVolumeInputAgenticFSVolumeConfig
 from ._create_volume_input import CreateVolumeInputMountConfigVpcConfig
 from ._create_volume_input import CreateVolumeInputMountConfig
+from ._e2blisted_sandbox import E2BListedSandboxResourceTags
+from ._e2bsandbox import E2BSandboxResourceTags
 from ._inner_create_sandbox_volume_mounts import InnerCreateSandboxVolumeMountsAgenticFsMountPoints
 from ._inner_create_sandbox_volume_mounts import InnerCreateSandboxVolumeMountsAgenticFs
 from ._inner_create_sandbox_volume_mounts import InnerCreateSandboxVolumeMountsNamedMountPoints
@@ -184,6 +190,7 @@ from ._inner_sandbox_volume_mount import InnerSandboxVolumeMountNamedMountPoints
 from ._inner_sandbox_volume_mount import InnerSandboxVolumeMountNamed
 from ._inner_sandbox_volume_mount import InnerSandboxVolumeMountOssMountPoints
 from ._inner_sandbox_volume_mount import InnerSandboxVolumeMountOss
+from ._public_listed_sandbox import PublicListedSandboxResourceTags
 from ._public_template import PublicTemplateResourceTags
 from ._update_volume_input import UpdateVolumeInputAgenticFSVolumeConfig
 from ._update_volume_input import UpdateVolumeInputMountConfigVpcConfig
@@ -199,6 +206,7 @@ __all__ = [
     ContainerConfiguration,
     CreateApiKeyInput,
     CreateCustomDomainInput,
+    CreateSnapshotInput,
     CreateTeamInput,
     CreateTemplateBuildConfig,
     CreateTemplateCacheInput,
@@ -221,6 +229,7 @@ __all__ = [
     E2BListedTemplate,
     E2BNetwork,
     E2BSandbox,
+    E2BSnapshot,
     E2BTeam,
     E2BTemplate,
     E2BTemplateBuild,
@@ -237,6 +246,7 @@ __all__ = [
     LogConfiguration,
     NetworkConfiguration,
     OSSVolumeConfig,
+    PublicListedSandbox,
     PublicTemplate,
     PublicTemplateCache,
     PublicTemplateLogConfig,
@@ -262,6 +272,7 @@ __all__ = [
     PublicUpdateTemplateStep,
     PublicUpdateTemplateVPCConfig,
     Quota,
+    QuotaUsage,
     SandboxLifecycleEvent,
     TLSConfig,
     UpdateApiKeyInput,
@@ -361,6 +372,8 @@ __all__ = [
     CreateVolumeInputAgenticFSVolumeConfig,
     CreateVolumeInputMountConfigVpcConfig,
     CreateVolumeInputMountConfig,
+    E2BListedSandboxResourceTags,
+    E2BSandboxResourceTags,
     InnerCreateSandboxVolumeMountsAgenticFsMountPoints,
     InnerCreateSandboxVolumeMountsAgenticFs,
     InnerCreateSandboxVolumeMountsNamedMountPoints,
@@ -374,6 +387,7 @@ __all__ = [
     InnerSandboxVolumeMountNamed,
     InnerSandboxVolumeMountOssMountPoints,
     InnerSandboxVolumeMountOss,
+    PublicListedSandboxResourceTags,
     PublicTemplateResourceTags,
     UpdateVolumeInputAgenticFSVolumeConfig,
     UpdateVolumeInputMountConfigVpcConfig,

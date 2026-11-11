@@ -19,7 +19,7 @@ class ResetApiKeyResponseBody(DaraModel):
     ):
         # The API key information.
         self.api_key = api_key
-        # The response code. A value of 200 indicates success.
+        # The response code. The value is 200 if the request is successful.
         self.code = code
         # The list of IP blacklist rules.
         self.ip_blacklist = ip_blacklist

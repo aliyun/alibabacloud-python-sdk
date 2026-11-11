@@ -2,8 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
+from typing import Dict, List
 
+from alibabacloud_sandbox20260820 import models as main_models
 from darabonba.model import DaraModel
 
 class E2BListedSandbox(DaraModel):
@@ -16,7 +17,9 @@ class E2BListedSandbox(DaraModel):
         memory_mb: int = None,
         metadata: Dict[str, str] = None,
         resource_group_id: str = None,
+        resource_tags: List[main_models.E2BListedSandboxResourceTags] = None,
         sandbox_id: str = None,
+        snapshot_id: str = None,
         started_at: str = None,
         state: str = None,
         team_id: str = None,
@@ -28,31 +31,35 @@ class E2BListedSandbox(DaraModel):
     ):
         # The number of vCPUs.
         self.cpu_count = cpu_count
-        # The temporary disk specification.
+        # The ephemeral disk size.
         self.disk_size_mb = disk_size_mb
         # The end time.
         self.end_at = end_at
         # The sandbox version.
         self.generation = generation
-        # The memory specification.
+        # The memory size.
         self.memory_mb = memory_mb
         # The metadata.
         self.metadata = metadata
         # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The resource tags.
+        self.resource_tags = resource_tags
         # The sandbox ID.
         self.sandbox_id = sandbox_id
+        # The snapshot ID.
+        self.snapshot_id = snapshot_id
         # The start time.
         self.started_at = started_at
-        # The sandbox status. Valid values:
+        # The sandbox state. Valid values:
         # - running: Running.
-        # - pausing: Being paused.
+        # - pausing: Pausing.
         # - paused: Paused.
-        # - resuming: Being resumed.
-        # - pause_fail: Failed to pause.
-        # - resume_fail: Failed to resume.
+        # - resuming: Resuming.
+        # - pause_fail: Pause failed.
+        # - resume_fail: Resume failed.
         # - snapshotting: Creating a snapshot.
-        # - snapshot_failed: Failed to create a snapshot.
+        # - snapshot_failed: Snapshot creation failed.
         # - terminated: Terminated.
         self.state = state
         # The unique identifier of the team.
@@ -69,7 +76,10 @@ class E2BListedSandbox(DaraModel):
         self.user_id = user_id
 
     def validate(self):
-        pass
+        if self.resource_tags:
+            for v1 in self.resource_tags:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -97,8 +107,16 @@ class E2BListedSandbox(DaraModel):
         if self.resource_group_id is not None:
             result['resourceGroupID'] = self.resource_group_id
 
+        if self.resource_tags is not None:
+            result['resourceTags'] = []
+            for k1 in self.resource_tags:
+                result['resourceTags'].append(k1.to_map() if k1 else None)
+
         if self.sandbox_id is not None:
             result['sandboxID'] = self.sandbox_id
+
+        if self.snapshot_id is not None:
+            result['snapshotID'] = self.snapshot_id
 
         if self.started_at is not None:
             result['startedAt'] = self.started_at
@@ -149,8 +167,17 @@ class E2BListedSandbox(DaraModel):
         if m.get('resourceGroupID') is not None:
             self.resource_group_id = m.get('resourceGroupID')
 
+        if m.get('resourceTags') is not None:
+            self.resource_tags = []
+            for k1 in m.get('resourceTags'):
+                temp_model = main_models.E2BListedSandboxResourceTags()
+                self.resource_tags.append(temp_model.from_map(k1))
+
         if m.get('sandboxID') is not None:
             self.sandbox_id = m.get('sandboxID')
+
+        if m.get('snapshotID') is not None:
+            self.snapshot_id = m.get('snapshotID')
 
         if m.get('startedAt') is not None:
             self.started_at = m.get('startedAt')
@@ -175,6 +202,43 @@ class E2BListedSandbox(DaraModel):
 
         if m.get('userID') is not None:
             self.user_id = m.get('userID')
+
+        return self
+
+class E2BListedSandboxResourceTags(DaraModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        # The tag key.
+        self.tag_key = tag_key
+        # The tag value.
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.tag_key is not None:
+            result['tagKey'] = self.tag_key
+
+        if self.tag_value is not None:
+            result['tagValue'] = self.tag_value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tagKey') is not None:
+            self.tag_key = m.get('tagKey')
+
+        if m.get('tagValue') is not None:
+            self.tag_value = m.get('tagValue')
 
         return self
 
