@@ -14,34 +14,36 @@ class CreateStackRequest(DaraModel):
         name: str = None,
         parameter_set_ids: List[str] = None,
         ram_role: str = None,
+        skip_property_validation: bool = None,
         source: str = None,
         source_path: str = None,
         working_directory: str = None,
     ):
-        # The idempotency token. Format: [0-9a-zA-Z-]{1,64}. We recommend that you use a UUID.
+        # The idempotency token. Format: [0-9a-zA-Z-]{1,64}. A UUID is recommended.
         # 
         # This parameter is required.
         self.client_token = client_token
-        # The description of the resource stack. The value cannot exceed 256 characters.
+        # The description of the stack. The description can be up to 256 characters in length.
         self.description = description
-        # The resource stack name. The name must be 2 to 128 characters in length and can contain letters, digits, Chinese characters, hyphens (-), underscores (_), and periods (.). The name cannot start or end with a hyphen, underscore, or period.
+        # The name of the stack. The name must be 2 to 128 characters in length and can contain letters, digits, Chinese characters, hyphens (-), underscores (_), and periods (.). It cannot start or end with a hyphen, underscore, or period.
         self.name = name
+        # The associated parameter sets.
         self.parameter_set_ids = parameter_set_ids
-        # The RAM role to be assigned to the task. This role is used to automatically continue the execution of scheduled tasks during automatic triggers or offline scenarios.
+        # The RAM role authorized for the task. This role is used to automatically resume the execution of scheduled tasks in auto-triggered or offline scenarios.
         self.ram_role = ram_role
-        # The creation source. Valid values:
-        # 
-        # - OSS: a template from OSS.
+        # Specifies whether to skip resource property validation for the provider. Default value: false.
+        self.skip_property_validation = skip_property_validation
+        # The source of the stack. Valid values:
+        # - OSS: a template stored in Object Storage Service (OSS).
         # - IAC_SERVICE_MODULE: a template created in the automation service console.
         # 
         # This parameter is required.
         self.source = source
-        # The path of the configuration source. The value cannot exceed 1000 characters.
-        # 
-        # - If the source is OSS, the value is in the format oss::<file link> and must be a zip file. Example: oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip
-        # - If the source is IAC_SERVICE_MODULE, the value is a template ID. Example: mod-xxxxx
+        # The path of the source. The value can be up to 1,000 characters in length.
+        # - If the source is OSS, the value must be in the oss::<file URL> format and the file must be a ZIP file. Example: oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip.
+        # - If the source is IAC_SERVICE_MODULE, the value must be the template ID. Example: mod-xxxxx.
         self.source_path = source_path
-        # The working directory where the configuration file is located. Enter / if it is in the root directory. Example: config/ or /
+        # The working directory where the configuration file is located. If the file is in the root directory, enter /. Examples: config/ or /.
         self.working_directory = working_directory
 
     def validate(self):
@@ -66,6 +68,9 @@ class CreateStackRequest(DaraModel):
 
         if self.ram_role is not None:
             result['ramRole'] = self.ram_role
+
+        if self.skip_property_validation is not None:
+            result['skipPropertyValidation'] = self.skip_property_validation
 
         if self.source is not None:
             result['source'] = self.source
@@ -94,6 +99,9 @@ class CreateStackRequest(DaraModel):
 
         if m.get('ramRole') is not None:
             self.ram_role = m.get('ramRole')
+
+        if m.get('skipPropertyValidation') is not None:
+            self.skip_property_validation = m.get('skipPropertyValidation')
 
         if m.get('source') is not None:
             self.source = m.get('source')

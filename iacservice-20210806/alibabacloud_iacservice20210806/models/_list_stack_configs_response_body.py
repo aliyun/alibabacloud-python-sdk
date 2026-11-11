@@ -18,15 +18,15 @@ class ListStackConfigsResponseBody(DaraModel):
     ):
         # The list of stack configurations.
         self.configs = configs
-        # The maximum number of records returned in this request.
+        # The maximum number of records returned for the current request.
         self.max_results = max_results
-        # The position from which the current call starts reading. An empty value indicates that all data has been read.
+        # The token that indicates the position up to which the current call has read. An empty value indicates that all data has been read.
         # 
         # This parameter is required.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of records that match the request conditions. This parameter is optional and may not be returned by default.
+        # The total number of records that meet the request conditions. This parameter is optional and is not returned by default.
         self.total_count = total_count
 
     def validate(self):
@@ -103,22 +103,23 @@ class ListStackConfigsResponseBodyConfigs(DaraModel):
         self.deployment_config = deployment_config
         # The content of the deployment configuration.
         self.deployment_content = deployment_content
+        # The error message indicating that the configuration processing failed.
         self.failed_reason = failed_reason
-        # The status of the stack configuration.
+        # The status of the stack configuration. Valid values:
         # | Name | Description |
-        # |------|------|
-        # | Creating | Being created. |
-        # | Created | Created. |
-        # | Waiting | Waiting for deployment. |
-        # | Deploying | Being deployed. |
-        # | Deployed | Deployed. |
-        # | Errored | Deployment failed. |
-        # | Deleting | Being deleted. |
-        # | Deleted | Deleted. |
-        # | DeleteFailed | Deletion failed. |
-        # | DetectTriggered | Drift detection triggered. |.
+        # |------|-------------|
+        # | Creating | Creating |
+        # | Created | Created |
+        # | Waiting | Waiting for deployment |
+        # | Deploying | Deploying |
+        # | Deployed | Deployed |
+        # | Errored | Deployment failed |
+        # | Deleting | Deleting |
+        # | Deleted | Deleted |
+        # | DeleteFailed | Deletion failed |
+        # | DetectTriggered | Drift detection triggered successfully |
         self.status = status
-        # The configuration version number, such as v1. The initial value is v1. The version number increments each time the stack is updated or refreshed and the configuration changes.
+        # The version number of the configuration, such as v1. The initial value is v1. The version number increments each time the stack is updated or refreshed and the configuration is changed.
         self.version = version
 
     def validate(self):
@@ -266,9 +267,9 @@ class ListStackConfigsResponseBodyConfigsDeploymentConfigUpstreamInput(DaraModel
         name: str = None,
         source: str = None,
     ):
-        # The input name.
+        # The name of the input.
         self.name = name
-        # The input source. Currently, only an upstream stack can be specified. The format is {iacEndpoint}/{accountId}/{upstreamStackName}.
+        # The source of the input. Currently, only upstream stacks are supported. The format is {iacEndpoint}/{accountId}/{upstreamStackName}.
         self.source = source
 
     def validate(self):
@@ -306,15 +307,15 @@ class ListStackConfigsResponseBodyConfigsDeploymentConfigPublishOutput(DaraModel
         type: str = None,
         value: str = None,
     ):
-        # The output description.
+        # The description of the output.
         self.description = description
-        # The output name.
+        # The name of the output.
         self.name = name
-        # The actual output value after the stack deployment is complete.
+        # The actual output value after the stack is deployed.
         self.result = result
-        # The output type, such as string or list(string).
+        # The type of the output, such as string or list(string).
         self.type = type
-        # The original definition of the output value. Currently, string or list(string) is supported. You can reference a deployment output in the format: deployment.{deploymentName}.{deploymentOutputName}.
+        # The original definition of the output value. Currently, string or list(string) is supported. You can reference deployment outputs in the format of deployment.{DeploymentName}.{DeploymentOutputName}.
         self.value = value
 
     def validate(self):
@@ -366,7 +367,7 @@ class ListStackConfigsResponseBodyConfigsDeploymentConfigDeployment(DaraModel):
         self,
         name: str = None,
     ):
-        # The deployment name.
+        # The name of the deployment.
         self.name = name
 
     def validate(self):
@@ -474,13 +475,16 @@ class ListStackConfigsResponseBodyConfigsComponentConfigVariable(DaraModel):
         self.default = default
         # The description.
         self.description = description
-        # The variable name.
+        # The name of the variable.
         self.name = name
+        # Specifies whether the parameter is sensitive. The values of sensitive parameters are invisible in both the console and API. Valid values:
+        # - true: The parameter is sensitive.
+        # - false: The parameter is not sensitive.
         self.sensitive = sensitive
-        # The variable type, such as:
+        # The type of the variable. Valid values:
         # - string
         # - list(string)
-        # - map(string).
+        # - map(string)
         self.type = type
 
     def validate(self):
@@ -535,13 +539,13 @@ class ListStackConfigsResponseBodyConfigsComponentConfigOutput(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The output description.
+        # The description of the output.
         self.description = description
-        # The output name.
+        # The name of the output.
         self.name = name
-        # The output type.
+        # The type of the output.
         self.type = type
-        # The output value.
+        # The value of the output.
         self.value = value
 
     def validate(self):
@@ -587,7 +591,7 @@ class ListStackConfigsResponseBodyConfigsComponentConfigComponent(DaraModel):
         self,
         name: str = None,
     ):
-        # The component name.
+        # The name of the component.
         self.name = name
 
     def validate(self):

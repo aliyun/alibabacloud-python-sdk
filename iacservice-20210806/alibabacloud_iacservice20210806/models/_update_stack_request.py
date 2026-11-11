@@ -11,22 +11,25 @@ class UpdateStackRequest(DaraModel):
         description: str = None,
         name: str = None,
         ram_role: str = None,
+        skip_property_validation: bool = None,
         source_path: str = None,
         working_directory: str = None,
     ):
-        # The idempotency token. Format: [0-9a-zA-Z-]{1,64}. We recommend that you use a UUID.
+        # The idempotency token. The format is [0-9a-zA-Z-]{1,64}. A UUID is recommended.
         self.client_token = client_token
         # The description of the stack.
         self.description = description
-        # The name of the stack. The name must be 2 to 128 characters in length and can contain letters, digits, Chinese characters, hyphens (-), underscores (_), and periods (.). The name cannot start or end with a hyphen, underscore, or period.
+        # The name of the stack. The name must be 2 to 128 characters in length, and can contain letters, digits, Chinese characters, hyphens (-), underscores (_), and periods (.). The name cannot start or end with a hyphen, underscore, or period.
         self.name = name
-        # The RAM role granted to the task. This role is used to automatically continue the execution of scheduled tasks during automatic triggering or offline scenarios.
+        # The Resource Access Management (RAM) role authorized for the task. This role is used to automatically resume the execution of scheduled tasks in auto-triggered or offline scenarios.
         self.ram_role = ram_role
-        # The path of the configuration source. The value can be up to 1,000 characters in length.
-        # - If the source is OSS, set this parameter to oss::<file URL>. The file must be a ZIP file. Example: oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip.
-        # - If the source is IAC_SERVICE_MODULE, set this parameter to a template ID. Example: mod-xxxxx.
+        # Specifies whether to skip the property validation of the provider. Default value: false.
+        self.skip_property_validation = skip_property_validation
+        # The path value of the configuration source. The value cannot exceed 1,000 characters.
+        # - If the source is OSS, the value is in the oss::<file URL> format. The file must be a ZIP file. Example: oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip.
+        # - If the source is IAC_SERVICE_MODULE, the value is the template ID. Example: mod-xxxxx.
         self.source_path = source_path
-        # The working directory where the configuration files are located. Enter / if the files are in the root directory. Example: config/ or /.
+        # The working directory where the configuration file is located. If the file is in the root directory, enter /. Examples: config/ or /.
         self.working_directory = working_directory
 
     def validate(self):
@@ -49,6 +52,9 @@ class UpdateStackRequest(DaraModel):
         if self.ram_role is not None:
             result['ramRole'] = self.ram_role
 
+        if self.skip_property_validation is not None:
+            result['skipPropertyValidation'] = self.skip_property_validation
+
         if self.source_path is not None:
             result['sourcePath'] = self.source_path
 
@@ -70,6 +76,9 @@ class UpdateStackRequest(DaraModel):
 
         if m.get('ramRole') is not None:
             self.ram_role = m.get('ramRole')
+
+        if m.get('skipPropertyValidation') is not None:
+            self.skip_property_validation = m.get('skipPropertyValidation')
 
         if m.get('sourcePath') is not None:
             self.source_path = m.get('sourcePath')

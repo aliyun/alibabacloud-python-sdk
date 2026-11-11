@@ -17,14 +17,14 @@ class AddSharedAccountsRequest(DaraModel):
         self.account_ids = account_ids
         # The ID of the shared resource.
         # 
-        #  - If the type is Namespace, set this parameter to the workspace name. 
+        # - If the type is Namespace, the value is the workspace name. 
         # 
-        # - If the type is RegistryModule, set this parameter to \\<namespaceName>/\\<ModuleName>.
+        # - If the type is RegistryModule, the value is <namespaceName>/<ModuleName>.
         self.resource_id = resource_id
         # The resource type. Valid values:
         # 
-        # - RegistryModule: Registry template.
-        # - Namespace: workspace.
+        # - RegistryModule: Registry template
+        # - Namespace: workspace
         self.resource_type = resource_type
 
     def validate(self):

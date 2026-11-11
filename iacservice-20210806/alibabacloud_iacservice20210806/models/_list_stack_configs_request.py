@@ -12,25 +12,25 @@ class ListStackConfigsRequest(DaraModel):
         status: str = None,
         version: str = None,
     ):
-        # The maximum number of records to read in this request. Default value: 20. Maximum value: 200.
+        # The maximum number of records to return for the current query. Default value: 20. Maximum value: 200.
         self.max_results = max_results
-        # The pagination token that marks the position from which to start reading. Leave empty to start from the beginning.
+        # The token that specifies the starting position for the query. If this parameter is left empty, the query starts from the beginning.
         self.next_token = next_token
-        # The status of the stack configuration.
+        # The status of the stack configuration. Valid values:
         # | Name | Description |
-        # |------|------|
-        # | Creating | Being created. |
-        # | Created | Created. |
-        # | Waiting | Waiting for deployment. |
-        # | Deploying | Being deployed. |
-        # | Deployed | Deployed. |
-        # | Errored | Deployment failed. |
-        # | Deleting | Being deleted. |
-        # | Deleted | Deleted. |
-        # | DeleteFailed | Deletion failed. |
-        # | DetectTriggered | Drift detection triggered. |.
+        # |------|-------------|
+        # | Creating | Creating |
+        # | Created | Created |
+        # | Waiting | Waiting for deployment |
+        # | Deploying | Deploying |
+        # | Deployed | Deployed |
+        # | Errored | Deployment failed |
+        # | Deleting | Deleting |
+        # | Deleted | Deleted |
+        # | DeleteFailed | Deletion failed |
+        # | DetectTriggered | Drift detection triggered successfully |
         self.status = status
-        # The version number of the stack configuration, such as v1. The initial value is v1. The version number increments each time the stack is updated or refreshed and the configuration changes.
+        # The version number of the stack configuration, such as v1. The initial value is v1. The version number increments each time the stack is updated or refreshed and the configuration is changed.
         self.version = version
 
     def validate(self):

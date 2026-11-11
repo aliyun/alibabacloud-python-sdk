@@ -20,7 +20,7 @@ class ListProjectResponseBody(DaraModel):
         self.count = count
         # The current page number.
         self.page_number = page_number
-        # The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 100.
+        # The number of results returned per page. Default value: 20. Minimum value: 1. Maximum value: 100.
         self.page_size = page_size
         # The list of projects.
         self.projects = projects
@@ -89,7 +89,7 @@ class ListProjectResponseBodyProjects(DaraModel):
         tags: List[main_models.ListProjectResponseBodyProjectsTags] = None,
         task_cnt: int = None,
     ):
-        # The creation time.
+        # The creation time. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.create_time = create_time
         # The project description.
         self.description = description

@@ -12,12 +12,20 @@ class CreateTaskFromResourceImportRequest(DaraModel):
         export_version: str = None,
         task_name: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. The token must be 1 to 64 characters in length and can contain only letters, digits, and hyphens (-). A UUID is recommended.
+        # 
         # This parameter is required.
         self.client_token = client_token
+        # The ID of the resource export task.
+        # 
         # This parameter is required.
         self.export_task_id = export_task_id
+        # The resource export version.
+        # 
         # This parameter is required.
         self.export_version = export_version
+        # The name of the task.
+        # 
         # This parameter is required.
         self.task_name = task_name
 

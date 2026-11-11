@@ -24,9 +24,9 @@ class ListExplorerRegistryModuleExamplesResponseBody(DaraModel):
         # 
         # Default value: 100.
         self.max_results = max_results
-        # The pagination token for the next page of results.
+        # The token used to query the next page of results.
         # 
-        # If the total number of entries exceeds the maxResults limit, the data is truncated. You can use nextToken to query the next page of data.
+        # If the total number of entries exceeds the maxResults limit, the data is truncated. You can use nextToken to query the next page.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -96,17 +96,17 @@ class ListExplorerRegistryModuleExamplesResponseBodyExplorerRegistryModuleExampl
         namespace_name: str = None,
         status: str = None,
     ):
-        # The example name.
+        # The name of the example.
         self.example_name = example_name
-        # The example path.
+        # The path of the example.
         self.example_path = example_path
         # The example schema.
         self.example_schema = example_schema
-        # The module name.
+        # The name of the module.
         self.module_name = module_name
-        # The module version.
+        # The version of the module.
         self.module_version = module_version
-        # The workspace name.
+        # The name of the workspace.
         self.namespace_name = namespace_name
         # The status.
         self.status = status

@@ -15,15 +15,15 @@ class ListResourcesRequest(DaraModel):
     ):
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 200.
+        # The number of results to return per page. Default value: 20. Minimum value: 1. Maximum value: 200.
         self.page_size = page_size
         # The type of the resource source. Valid values:
         # 
-        # - ExportTaskId: resource export ID
+        # - ExportTaskId: The resource export ID.
         # 
-        # - TaskId: Module execution task ID
+        # - TaskId: The ID of the module execution task.
         # 
-        # - StatePath: the OSS path where the resource state is stored.
+        # - StatePath: The OSS address where the resource state is stored.
         # 
         # This parameter is required.
         self.source_type = source_type
@@ -33,11 +33,11 @@ class ListResourcesRequest(DaraModel):
         # 
         # - If sourceType is set to TaskId, the format is TaskId.
         # 
-        # - If sourceType is set to StatePath, the format is the download URL of the State file.
+        # - If sourceType is set to StatePath, the format is the download URL of the state file.
         # 
         # This parameter is required.
         self.source_value = source_value
-        # The specification that resource properties follow in the response. Valid values: CloudSpec, Terraform.
+        # The specification that resource properties follow in the response. Valid values: CloudSpec and Terraform.
         # Default value: CloudSpec.
         # 
         # This parameter is required.

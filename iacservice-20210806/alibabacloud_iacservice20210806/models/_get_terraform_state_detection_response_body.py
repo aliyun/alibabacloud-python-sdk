@@ -62,18 +62,17 @@ class GetTerraformStateDetectionResponseBodyJob(DaraModel):
         self.drifted_resources = drifted_resources
         # The error message.
         self.error_message = error_message
-        # The task identifier. For a Stack task, the value is in the format of <$stackId>:<$deploymentName>. For a Task task, the value is <$TaskId>.
+        # The job identifier. The format is <$stackId>:<$deploymentName> for stack tasks and <$TaskId> for tasks.
         self.identifier = identifier
         # The job status. Valid values:
-        # 
-        # - Pending: the initial status after the job is created.
-        # - PlanQueued: the job is queued because no containers are available after the job is created.
-        # - Planning: the resource job is in the Plan execution phase.
-        # - Planned: the resource job has completed the Plan execution.
-        # - PlannedAndFinished: no differences are found after the Plan execution is complete. The job is in a final status.
-        # - Errored: the job execution encountered an error and entered a final status.
+        # - Pending: The initial state after the job is created.
+        # - PlanQueued: The job is queued and waiting because no containers are available after creation.
+        # - Planning: The resource job is in the plan execution phase.
+        # - Planned: The resource job has completed plan execution.
+        # - PlannedAndFinished: The job is in the final state because no differences are found after plan execution.
+        # - Errored: The job has entered the final state due to an execution error.
         self.status = status
-        # The task type.
+        # The job type.
         self.type = type
 
     def validate(self):
@@ -157,7 +156,7 @@ class GetTerraformStateDetectionResponseBodyJobDriftedResources(DaraModel):
         self.drifted_type = drifted_type
         # The Terraform resource ID.
         self.resource_id = resource_id
-        # The identifier of the resource in the Terraform template. For a Stack task, the value is in the format of <$componetName>:<$resourceName>. For a Task task, the value is <$resourceName>.
+        # The identifier of the resource in the Terraform template. The format is <$componetName>:<$resourceName> for stack tasks and <$resourceName> for tasks.
         self.resource_identifier = resource_identifier
 
     def validate(self):
@@ -269,7 +268,7 @@ class GetTerraformStateDetectionResponseBodyJobChangedResources(DaraModel):
         self.has_drift = has_drift
         # The Terraform resource ID.
         self.resource_id = resource_id
-        # The identifier of the resource in the Terraform template. For a Stack task, the value is in the format of <$componetName>:<$resourceName>. For a Task task, the value is <$resourceName>.
+        # The identifier of the resource in the Terraform template. The format is <$componetName>:<$resourceName> for stack tasks and <$resourceName> for tasks.
         self.resource_identifier = resource_identifier
 
     def validate(self):
@@ -335,7 +334,7 @@ class GetTerraformStateDetectionResponseBodyJobChangedResourcesAttributeChanges(
         self.attribute_path = attribute_path
         # The server-side state value.
         self.remote_value = remote_value
-        # The template-declared value.
+        # The value declared in the template.
         self.template_value = template_value
 
     def validate(self):

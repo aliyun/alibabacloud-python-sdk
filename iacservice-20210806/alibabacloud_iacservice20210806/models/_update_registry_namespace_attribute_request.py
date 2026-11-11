@@ -11,11 +11,9 @@ class UpdateRegistryNamespaceAttributeRequest(DaraModel):
         client_token: str = None,
         description: str = None,
     ):
-        # The access permission. Valid values:
-        # 
-        # - private: private access.
+        # The permissions. Valid values: private: Private.
         self.acl = acl
-        # The idempotence token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
+        # The idempotency token. Format: [0-9a-zA-Z-]{1,64}. A UUID is recommended.
         # 
         # This parameter is required.
         self.client_token = client_token

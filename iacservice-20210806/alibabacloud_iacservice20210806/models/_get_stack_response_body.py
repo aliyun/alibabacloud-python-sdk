@@ -53,6 +53,7 @@ class GetStackResponseBodyStack(DaraModel):
         description: str = None,
         name: str = None,
         ram_role: str = None,
+        skip_property_validation: bool = None,
         source: str = None,
         source_path: str = None,
         stack_id: str = None,
@@ -62,44 +63,46 @@ class GetStackResponseBodyStack(DaraModel):
     ):
         # The stack configuration.
         self.config = config
-        # The creation time.
+        # The creation time. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.create_time = create_time
-        # The current configuration version number, such as v1. The initial value is v1. The version number increments each time the stack is updated or refreshed and the configuration changes.
+        # The current configuration version number, such as v1. The initial value is v1. The version number is incremented each time the stack is updated or refreshed and the configuration is changed.
         self.current_config_version = current_config_version
         # The description of the stack.
         self.description = description
-        # The stack name.
+        # The name of the stack.
         self.name = name
         # The RAM role assumed by the system to perform resource change operations during stack deployment.
         self.ram_role = ram_role
+        # Indicates whether to skip property constraint validation. Default value: false.
+        self.skip_property_validation = skip_property_validation
         # The configuration source of the stack. Valid values:
-        # - OSS: a template stored in Object Storage Service (OSS).
-        # - IAC_SERVICE_MODULE: a template created in the automation service console.
+        # - OSS: templates from OSS.
+        # - IAC_SERVICE_MODULE: templates created in the IaC service module.
         self.source = source
-        # The path value of the configuration source. The value cannot exceed 1000 characters.
-        # - If the source is OSS, the value is in the format of oss::<file link>. The file must be a ZIP file. Example: oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip.
-        # - If the source is IAC_SERVICE_MODULE, the value is a template ID. Example: mod-xxxxx.
+        # The path value of the configuration source, which can be up to 1,000 characters in length.
+        # - If the source is OSS, the value is in the oss::<file URL> format and must be a ZIP file. Example: oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip.
+        # - If the source is IAC_SERVICE_MODULE, the value is the template ID. Example: mod-xxxxx.
         self.source_path = source_path
-        # The unique identifier of the stack, which is generated after the stack is created.
+        # The unique identifier of the stack after creation.
         self.stack_id = stack_id
-        # The stack status.
+        # The status of the stack.
         # | Name | Description |
-        # |------|------|
-        # | Creating | The stack is being created. |
-        # | Created | The stack is created. |
-        # | Waiting | The stack is waiting for deployment. |
-        # | Deploying | The stack is being deployed. |
-        # | Deployed | The stack is deployed. |
-        # | Errored | The deployment failed. |
-        # | Deleting | The stack is being deleted. |
-        # | Deleted | The stack is deleted. |
-        # | DeleteFailed | The deletion failed. |
-        # | DetectTriggered | Drift detection is triggered. |.
+        # |---|---|
+        # | Creating | Creating |
+        # | Created | Created |
+        # | Waiting | Waiting for deployment |
+        # | Deploying | Deploying |
+        # | Deployed | Deployed |
+        # | Errored | Deployment failed |
+        # | Deleting | Deleting |
+        # | Deleted | Deleted |
+        # | DeleteFailed | Deletion failed |
+        # | DetectTriggered | Drift detection triggered successfully |
         self.status = status
-        # The deployment trigger method of the stack. This field is not publicly available.
+        # The trigger method for stack deployment. This field is not available to the public. Valid values:
         # - SetUpdated: triggered by file changes.
         self.trigger_strategy = trigger_strategy
-        # The directory where the deployment and component configuration files of the stack are located. Set this parameter to / for the root directory.
+        # The directory where the deployment and component configuration files of the stack are located. The value is / for the root directory.
         self.working_directory = working_directory
 
     def validate(self):
@@ -128,6 +131,9 @@ class GetStackResponseBodyStack(DaraModel):
 
         if self.ram_role is not None:
             result['ramRole'] = self.ram_role
+
+        if self.skip_property_validation is not None:
+            result['skipPropertyValidation'] = self.skip_property_validation
 
         if self.source is not None:
             result['source'] = self.source
@@ -169,6 +175,9 @@ class GetStackResponseBodyStack(DaraModel):
 
         if m.get('ramRole') is not None:
             self.ram_role = m.get('ramRole')
+
+        if m.get('skipPropertyValidation') is not None:
+            self.skip_property_validation = m.get('skipPropertyValidation')
 
         if m.get('source') is not None:
             self.source = m.get('source')

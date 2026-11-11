@@ -12,7 +12,7 @@ class ExecuteTerraformDestroyResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
-        # The state file ID.
+        # The ID of the state file.
         self.state_id = state_id
 
     def validate(self):

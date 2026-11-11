@@ -28,17 +28,15 @@ class CreateGroupRequest(DaraModel):
     ):
         # Specifies whether to delete the group after creation.
         self.auto_destroy = auto_destroy
-        # Specifies whether to enable the automatic trigger policy. Valid values:
-        # - **true**: enabled.
-        # - **false**: disabled.
+        # Specifies whether to enable the automatic trigger policy. Valid values: **true**: Enabled. **false**: Disabled.
         self.auto_trigger = auto_trigger
-        # The idempotence token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
+        # The idempotency token. Format: [0-9a-zA-Z-]{1,64}. A UUID is recommended.
         # 
         # This parameter is required.
         self.client_token = client_token
         # The description of the group.
         self.description = description
-        # Specifies whether to forcibly use the group configuration.
+        # Specifies whether to force the use of the group configuration.
         self.forced_setting = forced_setting
         # The name of the group.
         # 
@@ -52,25 +50,19 @@ class CreateGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The RAM role (1-128 characters).
-        # The system assumes this role to execute the template when a new job is triggered.
-        # This parameter is required when the job trigger method is not manual.
+        # The RAM role. Length: 1 to 128 characters. The system assumes this role to execute the template when a new job is triggered. This parameter is required when the job trigger method is not manual.
         self.ram_role = ram_role
         # The list of export fields for the report.
         self.report_export_field = report_export_field
-        # The export address for the execution report. OSS addresses are supported.
-        # https://<OSS bucket address>/<path>.
+        # The export address for the execution report. OSS addresses are supported. Format: https://<OSS bucket endpoint>/<path>.
         self.report_export_path = report_export_path
-        # The Terraform Provider version.
-        # Select a Terraform Provider version. The version configured on the task takes higher priority.
+        # The Terraform provider version. Select a Terraform provider version. The version configured on the task takes precedence.
         self.terraform_provider_version = terraform_provider_version
-        # The trigger policy.
-        # This parameter cannot be empty when autoTrigger is set to true.
+        # The trigger policy. This parameter is required when autoTrigger is set to true.
         self.trigger_config = trigger_config
         # The resource type for triggered execution. Valid values:
-        # 
-        # - Task: regular task.
-        # - SceneTestingTask: scenario-based testing task.
+        # - Task: Regular task.
+        # - SceneTestingTask: Scenario-based testing task.
         self.trigger_resource_type = trigger_resource_type
 
     def validate(self):
@@ -201,11 +193,10 @@ class CreateGroupRequestTriggerConfig(DaraModel):
         trigger_value: str = None,
     ):
         # The trigger policy. Valid values:
-        # 
-        # - ProviderNewVersion: triggered when a new Provider version is released.
-        # - Cron: triggered on a schedule.
+        # - ProviderNewVersion: Triggered when a new provider version is released.
+        # - Cron: Triggered on a schedule.
         self.trigger_strategy = trigger_strategy
-        # The policy value to maintain for scheduled triggering. This is a cron expression.
+        # The policy value for scheduled triggers. Specify a cron expression.
         self.trigger_value = trigger_value
 
     def validate(self):
@@ -242,8 +233,7 @@ class CreateGroupRequestNotifyConfig(DaraModel):
     ):
         # The path configuration for notifications.
         self.notify_path = notify_path
-        # The notification type:
-        # DingDing.
+        # The notification type. Valid values: DingDing.
         self.notify_type = notify_type
 
     def validate(self):

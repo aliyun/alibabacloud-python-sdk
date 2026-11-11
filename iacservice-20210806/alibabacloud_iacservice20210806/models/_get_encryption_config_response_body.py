@@ -61,11 +61,7 @@ class GetEncryptionConfigResponseBodyConfig(DaraModel):
         self.key_arn = key_arn
         # The key ID.
         self.key_id = key_id
-        # The key status. Valid values:
-        # - Enabled
-        # - Disabled
-        # - PendingDeletion
-        # - PendingImport
+        # The key status. Valid values: Enabled, Disabled, PendingDeletion, and PendingImport.
         self.status = status
 
     def validate(self):

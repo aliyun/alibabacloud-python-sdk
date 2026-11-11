@@ -1,3 +1,6 @@
+2026-11-11 Version: 2.11.2
+- Generated python 2021-08-06 for IaCService.
+
 2026-08-25 Version: 2.11.0
 - Support API CreateTaskFromResourceImport.
 - Update API DeleteTask: add request parameters resourceRetentionPolicy.

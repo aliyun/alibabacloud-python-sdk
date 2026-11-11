@@ -10,7 +10,10 @@ class GetProviderDocumentRequest(DaraModel):
         provider_version: str = None,
         terraform_resource_type: str = None,
     ):
+        # The Terraform provider version.
         self.provider_version = provider_version
+        # The Terraform resource type.
+        # 
         # This parameter is required.
         self.terraform_resource_type = terraform_resource_type
 

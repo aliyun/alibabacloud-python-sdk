@@ -11,7 +11,7 @@ class UpdateProjectRequest(DaraModel):
         description: str = None,
         name: str = None,
     ):
-        # The idempotence token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
+        # The idempotence token. Format: [0-9a-zA-Z-]{1,64}. A UUID is recommended.
         # 
         # This parameter is required.
         self.client_token = client_token

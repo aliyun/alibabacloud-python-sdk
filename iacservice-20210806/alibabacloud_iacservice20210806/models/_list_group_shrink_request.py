@@ -17,7 +17,7 @@ class ListGroupShrinkRequest(DaraModel):
         self.keyword = keyword
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of results to return per page. Default value: 20. Minimum value: 1. Maximum value: 100.
+        # The number of results returned per page. Default value: 20. Minimum value: 1. Maximum value: 100.
         self.page_size = page_size
         # The project ID.
         self.project_id = project_id

@@ -11,9 +11,7 @@ class UpdateRegistryModuleAttributeRequest(DaraModel):
         client_token: str = None,
         description: str = None,
     ):
-        # The access permission. Valid values:
-        # 
-        # - private: private.
+        # The permissions. Valid values: private: Private.
         self.acl = acl
         # The idempotence token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
         # 

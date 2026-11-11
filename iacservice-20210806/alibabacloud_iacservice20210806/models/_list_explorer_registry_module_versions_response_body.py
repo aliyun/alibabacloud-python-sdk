@@ -18,15 +18,15 @@ class ListExplorerRegistryModuleVersionsResponseBody(DaraModel):
     ):
         # The list of Explorer community module versions.
         self.explorer_registry_module_versions = explorer_registry_module_versions
-        # The maximum number of entries per page.
+        # The maximum number of entries to return per page.
         # 
         # Valid values: 0 to 200.
         # 
         # Default value: 100.
         self.max_results = max_results
-        # The pagination token for the next page of results.
+        # The token used to return the next page of query results.
         # 
-        # If the total number of entries exceeds the maxResults limit, the data is truncated. You can use nextToken to query the next page of data.
+        # If the total number of entries exceeds the value of maxResults, the returned results are truncated. You can use nextToken to query the next page.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -100,9 +100,9 @@ class ListExplorerRegistryModuleVersionsResponseBodyExplorerRegistryModuleVersio
         self.module_detail = module_detail
         # The module file.
         self.module_file = module_file
-        # The module name.
+        # The name of the module.
         self.module_name = module_name
-        # The workspace name.
+        # The name of the workspace.
         self.namespace_name = namespace_name
         # The resource properties.
         self.properties = properties

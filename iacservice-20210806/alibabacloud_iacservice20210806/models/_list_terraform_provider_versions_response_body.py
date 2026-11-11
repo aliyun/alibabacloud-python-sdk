@@ -16,9 +16,9 @@ class ListTerraformProviderVersionsResponseBody(DaraModel):
         total_count: int = None,
         versions: List[main_models.ListTerraformProviderVersionsResponseBodyVersions] = None,
     ):
-        # The maximum number of records retrieved in a single request.
+        # The maximum number of records returned per request.
         self.max_results = max_results
-        # The pagination token for the next page. An empty value indicates that no more pages are available.
+        # The pagination token for the next page. An empty value indicates that there are no more pages.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -86,7 +86,7 @@ class ListTerraformProviderVersionsResponseBodyVersions(DaraModel):
         status: str = None,
         version: str = None,
     ):
-        # The publish time.
+        # The release time in UTC. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.published_time = published_time
         # The status.
         self.status = status

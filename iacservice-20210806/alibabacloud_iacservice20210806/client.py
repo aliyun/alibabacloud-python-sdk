@@ -6,6 +6,7 @@ import json
 
 from typing import Dict, Generator, AsyncGenerator
 
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_iacservice20210806 import models as main_models
 from alibabacloud_tea_openapi import exceptions as open_api_exceptions
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
@@ -32,6 +33,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'IaCService'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-zhangjiakou': 'iac.cn-zhangjiakou.aliyuncs.com'
@@ -1649,6 +1653,8 @@ class Client(OpenApiClient):
             body['parameterSetIds'] = request.parameter_set_ids
         if not DaraCore.is_null(request.ram_role):
             body['ramRole'] = request.ram_role
+        if not DaraCore.is_null(request.skip_property_validation):
+            body['skipPropertyValidation'] = request.skip_property_validation
         if not DaraCore.is_null(request.source):
             body['source'] = request.source
         if not DaraCore.is_null(request.source_path):
@@ -1693,6 +1699,8 @@ class Client(OpenApiClient):
             body['parameterSetIds'] = request.parameter_set_ids
         if not DaraCore.is_null(request.ram_role):
             body['ramRole'] = request.ram_role
+        if not DaraCore.is_null(request.skip_property_validation):
+            body['skipPropertyValidation'] = request.skip_property_validation
         if not DaraCore.is_null(request.source):
             body['source'] = request.source
         if not DaraCore.is_null(request.source_path):
@@ -8928,6 +8936,8 @@ class Client(OpenApiClient):
             body['name'] = request.name
         if not DaraCore.is_null(request.ram_role):
             body['ramRole'] = request.ram_role
+        if not DaraCore.is_null(request.skip_property_validation):
+            body['skipPropertyValidation'] = request.skip_property_validation
         if not DaraCore.is_null(request.source_path):
             body['sourcePath'] = request.source_path
         if not DaraCore.is_null(request.working_directory):
@@ -8969,6 +8979,8 @@ class Client(OpenApiClient):
             body['name'] = request.name
         if not DaraCore.is_null(request.ram_role):
             body['ramRole'] = request.ram_role
+        if not DaraCore.is_null(request.skip_property_validation):
+            body['skipPropertyValidation'] = request.skip_property_validation
         if not DaraCore.is_null(request.source_path):
             body['sourcePath'] = request.source_path
         if not DaraCore.is_null(request.working_directory):

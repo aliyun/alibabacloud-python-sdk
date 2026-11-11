@@ -12,10 +12,13 @@ class GetProviderDocumentResponseBody(DaraModel):
         request_id: str = None,
         terraform_resource_type: str = None,
     ):
+        # The Terraform provider resource document.
         self.document = document
+        # The Terraform provider version.
         self.provider_version = provider_version
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The Terraform resource type.
         self.terraform_resource_type = terraform_resource_type
 
     def validate(self):

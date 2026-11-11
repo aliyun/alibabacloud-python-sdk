@@ -21,37 +21,38 @@ class CreateResourceExportTaskRequest(DaraModel):
         trigger_strategy: str = None,
         variables: List[main_models.CreateResourceExportTaskRequestVariables] = None,
     ):
-        # The idempotency token. Format: [0-9a-zA-Z-]{1,64}. We recommend that you use a UUID.
+        # The idempotency token. Format: [0-9a-zA-Z-]{1,64}. A UUID is recommended.
         # 
         # This parameter is required.
         self.client_token = client_token
         # The description of the resource export task.
         self.description = description
-        # Saves the exported template as a module. If this parameter is not specified, the template is automatically saved in the Registry.
+        # The configuration for saving the exported template as a module. If this parameter is not specified, the template is automatically saved in the registry.
         self.export_to_module = export_to_module
         # The list of inclusion rules used when exporting resources.
         self.include_rules = include_rules
         # The name of the resource export task. The name must meet the following requirements:
         # 
         # - The name must be 3 to 63 characters in length.
-        # - The name can contain letters, digits, Chinese characters, hyphens (-), underscores (_), and periods (.). The name cannot start or end with a hyphen, underscore, or period.
-        # - The name must be unique among resource export tasks within the current account.
+        # - The name can contain letters, digits, Chinese characters, hyphens (-), underscores (_), and periods (.). It cannot start or end with a hyphen, underscore, or period.
+        # - The name must be unique among the resource export tasks within the current account.
         # 
         # This parameter is required.
         self.name = name
-        # The RAM role (1 to 128 characters). The system assumes this role to execute the template when a new job is triggered. This parameter is required when the job trigger method is not manual.
+        # The Resource Access Management (RAM) role. The role name must be 1 to 128 characters in length. The system assumes this role to execute the template when a new job is triggered. This parameter is required when the job is not triggered manually.
         self.ram_role = ram_role
-        # The Terraform provider version. Call **ListTerraformProviderVersions** to view the list of supported versions. Default value: the latest version.
+        # The Terraform provider version. You can call the **ListTerraformProviderVersions** operation to query the supported versions. Default value: the latest version.
         self.terraform_provider_version = terraform_provider_version
-        # The Terraform version. Call **ListAvailableTerraformVersions** to view the list of supported versions. Default value: 1.5.7.
+        # The Terraform version. You can call the **ListAvailableTerraformVersions** operation to query the supported versions. Default value: 1.5.7.
         self.terraform_version = terraform_version
         # The trigger strategy. Valid values:
-        # - Auto: triggered when rules are modified or the trigger strategy is changed to Auto.
-        # - Manual: manually triggered.
+        # 
+        # - Auto: automatically triggers the task when a rule is modified or the trigger strategy is changed to Auto.
+        # - Manual: manually triggers the task.
         # 
         # Default value: Manual.
         self.trigger_strategy = trigger_strategy
-        # The list of variables. Exported resource parameters are set as variables.
+        # The list of variables. The parameters of the exported resources are set as variables.
         self.variables = variables
 
     def validate(self):
@@ -154,9 +155,9 @@ class CreateResourceExportTaskRequestVariables(DaraModel):
         properties: List[str] = None,
         resource_type: str = None,
     ):
-        # The list of properties of the Terraform resource that corresponds to the resource type.
+        # The list of properties for the Terraform resource that corresponds to the resource type.
         self.properties = properties
-        # The resource type. Call **ListResourceTypes** to view the list of supported resources.
+        # The resource type. You can call the **ListResourceTypes** operation to query the supported resources.
         self.resource_type = resource_type
 
     def validate(self):
@@ -193,15 +194,15 @@ class CreateResourceExportTaskRequestIncludeRules(DaraModel):
     ):
         # The name of the inclusion rule used when exporting resources. Valid values:
         # 
-        # - ResourceType: required. The resource type. Call **ListResourceTypes** to view the list of supported resources. Example: ALIYUN::VPC::VPC.
+        # - ResourceType: required. The resource type. You can call the **ListResourceTypes** operation to query the supported resources. Example: ALIYUN::VPC::VPC.
         # - RegionId: required. The region to which the resource belongs. Only one region is supported. Example: cn-chengdu.
         # - \\<ResourceType>:Id: the resource ID. Example: ALIYUN::VPC::VPC:Id.
         # - ResourceGroupId: the resource group ID. Example: rg-1234.
         # - ZoneId: the zone to which the resource belongs. Only one zone is supported. Example: cn-hangzhou-h.
         # 
-        # By default, multiple filter conditions are evaluated using the AND operator. A resource is considered a match only when all filter conditions are met.
+        # By default, multiple filter conditions are connected by the AND operator. A resource matches the filter conditions only when it meets all the conditions.
         self.key = key
-        # The list of values for the inclusion rule used when exporting resources.
+        # The list of values for an inclusion rule used when exporting a group of resources.
         self.values = values
 
     def validate(self):
@@ -237,14 +238,14 @@ class CreateResourceExportTaskRequestExportToModule(DaraModel):
         source_path: str = None,
         state_path: str = None,
     ):
-        # The module type in which the exported template is saved. Valid values:
+        # The module type for saving the exported template. Valid values:
         # 
         # - OSS: OSS.
         # - Registry: Terraform Registry.
         self.source = source
-        # The path for saving the template content. Set this parameter when source is set to OSS.
+        # The path for saving the template content. This parameter is required when source is set to OSS.
         self.source_path = source_path
-        # The path for saving the template state file. Set this parameter when source is set to OSS.
+        # The path for saving the state file of the template. This parameter is required when source is set to OSS.
         self.state_path = state_path
 
     def validate(self):

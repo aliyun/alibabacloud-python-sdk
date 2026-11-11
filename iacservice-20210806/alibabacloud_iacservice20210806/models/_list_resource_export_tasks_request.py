@@ -14,11 +14,11 @@ class ListResourceExportTasksRequest(DaraModel):
     ):
         # The ID of the resource export task.
         self.export_task_id = export_task_id
-        # The search keyword. Fuzzy search by task name is supported.
+        # The search keyword. Fuzzy matching is supported for task names.
         self.keyword = keyword
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 100.
+        # The number of results to return per page. Default value: 20. Minimum value: 1. Maximum value: 100.
         self.page_size = page_size
 
     def validate(self):

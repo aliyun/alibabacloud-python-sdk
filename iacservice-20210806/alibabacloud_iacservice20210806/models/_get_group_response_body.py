@@ -71,11 +71,11 @@ class GetGroupResponseBodyGroup(DaraModel):
         self.auto_destroy = auto_destroy
         # Indicates whether automatic triggering is enabled.
         self.auto_trigger = auto_trigger
-        # The creation time.
+        # The creation time. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.create_time = create_time
         # The group description.
         self.description = description
-        # Indicates whether the group configuration is forcibly used.
+        # Indicates whether the group configuration is forcibly applied.
         self.forced_setting = forced_setting
         # The group ID.
         self.group_id = group_id
@@ -87,22 +87,21 @@ class GetGroupResponseBodyGroup(DaraModel):
         self.notify_operation_types = notify_operation_types
         # The project ID.
         self.project_id = project_id
-        # The RAM role (1 to 128 characters). The system assumes this role to execute the template when a new job is triggered. This parameter is required when the job trigger mode is not manual.
+        # The Resource Access Management (RAM) role. Length: 1 to 128 characters. The system assumes this role to execute the template when a new job is triggered. This parameter is required when the job is not triggered manually.
         self.ram_role = ram_role
-        # The list of report export field options.
+        # The list of report export fields.
         self.report_export_field = report_export_field
-        # The export address for the execution report. OSS addresses are supported. Format: https://<OSS bucket address>/<path>.
+        # The export path for execution reports. OSS paths are supported, such as https://<OSS bucket endpoint>/<path>.
         self.report_export_path = report_export_path
         # The number of tasks.
         self.task_cnt = task_cnt
-        # The Terraform provider version. Select a Terraform provider version. Tasks in the group are executed based on the specified Terraform provider version. The version configured on a task takes higher priority. This version may conflict with the Terraform provider version specified in the module.
+        # The Terraform provider version. Select a Terraform provider version. Tasks in the group execute plans based on the specified Terraform provider version. The version configured on the task takes precedence. This setting may conflict with the Terraform provider version specified in the module.
         self.terraform_provider_version = terraform_provider_version
         # The trigger policy. This parameter cannot be empty when autoTrigger is set to true.
         self.trigger_config = trigger_config
-        # The resource type that triggers execution. Valid values:
-        # 
-        # - Task: regular task
-        # - SceneTestingTask: scenario-based testing task.
+        # The resource type for triggered execution. Valid values:
+        # - Task: Regular task.
+        # - SceneTestingTask: Scenario-based testing task.
         self.trigger_resource_type = trigger_resource_type
 
     def validate(self):
@@ -245,11 +244,10 @@ class GetGroupResponseBodyGroupTriggerConfig(DaraModel):
         trigger_value: str = None,
     ):
         # The trigger strategy. Valid values:
-        # 
-        # - ProviderNewVersion: triggered when a new provider version is released
-        # - Cron: triggered on a schedule.
+        # - ProviderNewVersion: Triggered when a new provider version is released.
+        # - Cron: Triggered on a schedule.
         self.trigger_strategy = trigger_strategy
-        # The policy value that must be maintained for scheduled triggering. This value is a cron expression.
+        # The policy value for scheduled triggers. Specify a cron expression.
         self.trigger_value = trigger_value
 
     def validate(self):
@@ -287,7 +285,7 @@ class GetGroupResponseBodyGroupNotifyConfig(DaraModel):
         # The path configuration for notifications.
         self.notify_path = notify_path
         # The notification type. Valid values:
-        # DingDing.
+        # - DingDing
         self.notify_type = notify_type
 
     def validate(self):

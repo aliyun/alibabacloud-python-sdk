@@ -18,9 +18,9 @@ class ListProductsResponseBody(DaraModel):
     ):
         # The pagination token.
         self.max_results = max_results
-        # The maximum number of results per page. Valid values: 0 to 200. Default value: 100.
+        # The maximum number of entries to return on each page. Valid values: 0 to 200. Default value: 100.
         self.next_token = next_token
-        # The product list.
+        # The list of products.
         self.products = products
         # The request ID.
         self.request_id = request_id
@@ -94,19 +94,19 @@ class ListProductsResponseBodyProducts(DaraModel):
         support_terraformer: bool = None,
         terraform_provider_version: str = None,
     ):
-        # The first-level category name.
+        # The name of the level-1 category.
         self.first_category_name = first_category_name
-        # The first-level category name in English.
+        # The English name of the level-1 category.
         self.first_category_name_en = first_category_name_en
         # The product name.
         self.product = product
         # The product name.
         self.product_name = product_name
-        # The product name in English.
+        # The English name of the product.
         self.product_name_en = product_name_en
-        # The second-level category name.
+        # The name of the level-2 category.
         self.second_category_name = second_category_name
-        # The second-level category name in English.
+        # The English name of the level-2 category.
         self.second_category_name_en = second_category_name_en
         # The status.
         self.status = status
@@ -114,7 +114,7 @@ class ListProductsResponseBodyProducts(DaraModel):
         self.subcategory = subcategory
         # Specifies whether Terraformer is supported.
         self.support_terraformer = support_terraformer
-        # The Terraform Provider version.
+        # The Terraform provider version.
         self.terraform_provider_version = terraform_provider_version
 
     def validate(self):

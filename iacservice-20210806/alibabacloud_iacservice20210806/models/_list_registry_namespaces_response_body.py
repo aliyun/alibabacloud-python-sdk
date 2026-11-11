@@ -18,7 +18,7 @@ class ListRegistryNamespacesResponseBody(DaraModel):
     ):
         # The total number of records.
         self.count = count
-        # The maximum number of records returned at a time.
+        # The maximum number of records returned in a single call.
         self.max_results = max_results
         # The list of workspaces.
         self.namespaces = namespaces
@@ -93,13 +93,13 @@ class ListRegistryNamespacesResponseBodyNamespaces(DaraModel):
     ):
         # The permissions.
         self.acl = acl
-        # The creation time.
+        # The creation time. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.create_time = create_time
         # The workspace description.
         self.description = description
         # The administrator name.
         self.maintainer = maintainer
-        # The number of Registry templates in the workspace.
+        # The number of registry templates in the workspace.
         self.modules = modules
         # The workspace name.
         self.namespace_name = namespace_name

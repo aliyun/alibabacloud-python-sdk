@@ -18,11 +18,11 @@ class ListRegistryModuleVersionsResponseBody(DaraModel):
     ):
         # The total number of records.
         self.count = count
-        # The number of entries per page in a paged query. Maximum value: 100. Default value: 20.
+        # The number of entries to return per page for paging in a paged query. Maximum value: 100. Default value: 20.
         self.max_results = max_results
         # The list of template versions.
         self.module_versions = module_versions
-        # The pagination token. Set this parameter to the NextToken value returned in the previous API call.
+        # The pagination token. Set the value to the NextToken value returned from the previous API call.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -90,16 +90,15 @@ class ListRegistryModuleVersionsResponseBodyModuleVersions(DaraModel):
         source_url: str = None,
         version: str = None,
     ):
-        # The creation time.
+        # The creation time. The format is YYYY-MM-DD HH:mm:ss. The returned value does not include a time zone identifier.
         self.create_time = create_time
-        # The template name.
+        # The name of the template.
         self.module_name = module_name
-        # The workspace name.
+        # The name of the workspace.
         self.namespace_name = namespace_name
-        # The provider type. Valid values:
-        # - alicloud: Alibaba Cloud.
+        # The provider type. Valid value: alicloud: Alibaba Cloud.
         self.provider = provider
-        # The template source, in the format of namespaceName/ModuleName.
+        # The template source. Format: namespaceName/ModuleName.
         self.source = source
         # The source URL of the template.
         self.source_url = source_url

@@ -15,11 +15,9 @@ class CreateRegistryModuleRequest(DaraModel):
         provider: str = None,
         type: str = None,
     ):
-        # The access permission. Valid values:
-        # 
-        # - private: private.
+        # The permissions. Valid values: private: Private.
         self.acl = acl
-        # The idempotence token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
+        # The client token used to ensure idempotence. Format: [0-9a-zA-Z-]{1,64}. We recommend that you use a UUID.
         # 
         # This parameter is required.
         self.client_token = client_token
@@ -29,21 +27,17 @@ class CreateRegistryModuleRequest(DaraModel):
         # 
         # - The name must be 3 to 63 characters in length.
         # - The name can contain uppercase and lowercase letters, digits, hyphens (-), and underscores (_), and cannot start or end with a hyphen.
-        # - The name must be unique within the workspace.
+        # - The name must be unique among the resources in the workspace.
         # 
         # This parameter is required.
         self.module_name = module_name
-        # The workspace name.
+        # The name of the workspace.
         # 
         # This parameter is required.
         self.namespace_name = namespace_name
-        # The provider type. Valid values:
-        # 
-        # - alicloud: Alibaba Cloud.
+        # The provider type. Valid values: alicloud: Alibaba Cloud.
         self.provider = provider
-        # The template type. Valid values:
-        # 
-        # - self: custom template.
+        # The template type. Valid values: self: Custom template.
         self.type = type
 
     def validate(self):

@@ -27,36 +27,36 @@ class UpdateGroupRequest(DaraModel):
     ):
         # Specifies whether to automatically delete the group.
         self.auto_destroy = auto_destroy
-        # Specifies whether to enable the automatic trigger policy. Valid values: - **true**: enabled. - **false**: disabled.
+        # Specifies whether to enable the automatic trigger policy. Valid values: - **true**: Enabled. - **false**: Disabled.
         self.auto_trigger = auto_trigger
-        # The idempotency token. Format: [0-9a-zA-Z-]{1,64}. We recommend that you use a UUID.
+        # The idempotency token. Format: [0-9a-zA-Z-]{1,64}. A UUID is recommended.
         # 
         # This parameter is required.
         self.client_token = client_token
-        # The group description.
+        # The description of the group.
         self.description = description
-        # Specifies whether to forcibly use the group configuration.
+        # Specifies whether to force the use of the group configuration.
         self.forced_setting = forced_setting
-        # The group name.
+        # The name of the group.
         self.name = name
         # The notification configuration.
         self.notify_config = notify_config
         # The list of notification operation types.
         self.notify_operation_types = notify_operation_types
-        # The RAM role (1-128 characters). The system assumes this role to execute the template when a new job is triggered. This parameter is required when the job trigger method is not manual.
+        # The RAM role. Length: 1 to 128 characters. The system assumes this role to execute the template when a new job is triggered. This parameter is required when the job trigger method is not manual.
         self.ram_role = ram_role
         # The list of export fields for the report.
         self.report_export_field = report_export_field
         # The export path for the execution report. OSS paths are supported.
         self.report_export_path = report_export_path
-        # The Terraform Provider version. Select a Terraform Provider version. Nodes in the group execute plans based on the specified Terraform Provider version. The version configured on a node takes higher priority.
+        # The Terraform provider version. Select a Terraform provider version. Tasks in the group will execute plans based on this version. The version configured on the task takes precedence.
         self.terraform_provider_version = terraform_provider_version
-        # The trigger policy. This parameter cannot be empty when autoTrigger is set to true.
+        # The trigger policy. This parameter is required when autoTrigger is set to true.
         self.trigger_config = trigger_config
-        # The resource type that triggers execution. Valid values:
+        # The resource type for trigger execution. Valid values:
         # 
-        # - Task: regular node.
-        # - SceneTestingTask: scenario-based testing node.
+        # - Task: Regular task.
+        # - SceneTestingTask: Scenario-based testing task.
         self.trigger_resource_type = trigger_resource_type
 
     def validate(self):
@@ -182,10 +182,10 @@ class UpdateGroupRequestTriggerConfig(DaraModel):
     ):
         # The trigger strategy. Valid values:
         # 
-        # - ProviderNewVersion: triggered when a new Provider version is released.
-        # - Cron: triggered on a schedule.
+        # - ProviderNewVersion: Triggered when a new provider version is released.
+        # - Cron: Triggered on a schedule.
         self.trigger_strategy = trigger_strategy
-        # The policy value that must be maintained for scheduled triggers. This value is a cron expression.
+        # The policy value for scheduled triggers. Specify a cron expression.
         self.trigger_value = trigger_value
 
     def validate(self):

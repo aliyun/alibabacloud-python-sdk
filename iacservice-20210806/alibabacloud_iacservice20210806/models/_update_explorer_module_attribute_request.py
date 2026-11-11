@@ -13,9 +13,9 @@ class UpdateExplorerModuleAttributeRequest(DaraModel):
     ):
         # The idempotence token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
         self.client_token = client_token
-        # The template description. Length: 0 to 255 characters.
+        # The description of the template. The length is 0 to 255 characters.
         self.description = description
-        # The template name. Length: 1 to 128 characters. The name must be unique.
+        # The name of the template. The length is 1 to 128 characters. The name must be unique.
         self.name = name
 
     def validate(self):

@@ -17,14 +17,11 @@ class GetStackExecutionResultResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
-        # The execution results of the triggered Stacks.
+        # The execution results of the triggered stack.
         self.stack_results = stack_results
         # The unique ID of the trigger.
         self.trigger_id = trigger_id
-        # The overall execution status of this trigger task. Valid values:
-        # - Waiting: Processing.
-        # - Success: Processing succeeded.
-        # - Errored: Processing failed.
+        # The overall execution status of the current trigger task. Valid values: Waiting (Processing), Success (Succeeded), and Errored (Failed).
         self.triggered_status = triggered_status
 
     def validate(self):
@@ -83,17 +80,17 @@ class GetStackExecutionResultResponseBodyStackResults(DaraModel):
         stack_name: str = None,
         stack_status: str = None,
     ):
-        # The deployment results of the Stack.
+        # The deployment results of the stack.
         self.deployments = deployments
-        # Error code of the stack execution
+        # The error code for the stack execution.
         self.error_code = error_code
         # The error message.
         self.message = message
-        # The unique identifier of the Stack.
+        # The unique ID of the stack.
         self.stack_id = stack_id
-        # The Stack name.
+        # The name of the stack.
         self.stack_name = stack_name
-        # The execution status of the Stack.
+        # The execution status of the stack.
         self.stack_status = stack_status
 
     def validate(self):
@@ -162,13 +159,13 @@ class GetStackExecutionResultResponseBodyStackResultsDeployments(DaraModel):
         status: str = None,
         url: str = None,
     ):
-        # The deployment name.
+        # The name of the deployment.
         self.deployment_name = deployment_name
         # The result of the deployment task.
         self.job_result = job_result
-        # The deployment status.
+        # The status of the deployment.
         self.status = status
-        # The URL for viewing deployment details.
+        # The URL to view the deployment details.
         self.url = url
 
     def validate(self):

@@ -15,12 +15,12 @@ class CreateModuleVersionRequest(DaraModel):
         # 
         # This parameter is required.
         self.client_token = client_token
-        # The version description. The description can be up to 256 characters in length.
+        # The version description. The length cannot exceed 256 characters.
         self.description = description
-        # The template version name. The name must meet the following requirements:
+        # The template version name. It must meet the following requirements:
         # 
-        # - The name must be 2 to 128 characters in length.
-        # - The name can contain letters, digits, Chinese characters, hyphens (-), underscores (_), and periods (.). The name cannot start or end with a hyphen, underscore, or period.
+        # - The length is 2 to 128 characters.
+        # - It can contain uppercase and lowercase letters, digits, Chinese characters, hyphens (-), underscores (_), and periods (.). It cannot start or end with a hyphen, underscore, or period.
         # 
         # This parameter is required.
         self.name = name

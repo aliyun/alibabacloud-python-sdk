@@ -53,9 +53,9 @@ class GetProjectResponseBodyProject(DaraModel):
         project_id: str = None,
         task_cnt: int = None,
     ):
-        # The creation time.
+        # The creation time. The time is in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.create_time = create_time
-        # The project description. Length: 0 to 1024 characters.
+        # The project description. The length ranges from 0 to 1,024 characters.
         self.description = description
         # The project name.
         self.name = name

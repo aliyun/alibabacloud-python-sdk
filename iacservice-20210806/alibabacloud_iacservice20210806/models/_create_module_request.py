@@ -20,7 +20,7 @@ class CreateModuleRequest(DaraModel):
         tags: List[main_models.CreateModuleRequestTags] = None,
         version_strategy: str = None,
     ):
-        # The idempotency parameter. We recommend that you use a UUID.
+        # The idempotency token. Use a UUID.
         # 
         # This parameter is required.
         self.client_token = client_token
@@ -30,35 +30,34 @@ class CreateModuleRequest(DaraModel):
         self.group_info = group_info
         # The name of the template. The name must meet the following requirements:
         # - The name must be 2 to 128 characters in length.
-        # - The name can contain letters, digits, Chinese characters, hyphens (-), underscores (_), and periods (.). The name cannot start or end with a hyphen, underscore, or period.
-        # - The name must be unique among all templates under the current account.
+        # - The name can contain letters, digits, Chinese characters, hyphens (-), underscores (_), and periods (.). It cannot start or end with a hyphen, underscore, or period.
+        # - The name must be unique among the template resources within the current account.
         # 
         # This parameter is required.
         self.name = name
-        # The source from which the template is created. Valid values:
-        # - OSS: imports from a ZIP file stored in OSS.
-        # - Registry: creates from a module in the template registry.
-        # - ExportTask: references a template exported by a resource export task.
-        # - Editor: creates a blank template that supports online editing.
-        # - Upload: uploads a local template file to generate the template.
+        # The source of the template. Valid values:
+        # - OSS: Imports a template from a ZIP file stored in OSS.
+        # - Registry: Creates a template by using a module from the template center.
+        # - ExportTask: References a template exported by a resource export task.
+        # - Editor: Creates a blank template that supports online editing.
+        # - Upload: Generates a template by uploading a local template file.
         # 
         # This parameter is required.
         self.source = source
-        # The path of the template source. This parameter takes effect when source is set to Registry, OSS, or ExportTask.
-        # - If source is set to Registry, the value is in the format of \\<workspace name>/\\<module name>:\\<module version>. Example: terraform-alicloud-modules/rds:1.0.0.
-        # - If source is set to OSS, the value is in the format of oss::<file URL>. The file must be a ZIP file. Example: oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip.
-        # - If source is set to ExportTask, the value is in the format of \\<export task ID>:\\<exported version>. Example: ex-3b6cb9fa4751afff298da723c24ac:v1.
+        # The path of the template source. This parameter is valid only when source is set to Registry, OSS, or ExportTask.
+        # - If source is set to Registry, the value is in the <workspace name>/<module name>:<module version> format, such as terraform-alicloud-modules/rds:1.0.0.
+        # - If source is set to OSS, the value is in the oss::<file URL> format. The file must be a ZIP file, such as oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip.
+        # - If source is set to ExportTask, the value is in the <export task ID>:<exported version> format, such as ex-3b6cb9fa4751afff298da723c24ac:v1.
         # - If source is set to Editor or Upload, leave this parameter empty.
         self.source_path = source_path
-        # The path of the State file that corresponds to the template. This parameter is valid only when source is set to OSS.
-        # The value is in the format of oss::\\<OSS file path>/terraform.tfstate.
+        # The path of the state file corresponding to the template. This parameter is valid only when source is set to OSS.
+        # The value is in the oss::<OSS path of the file>/terraform.tfstate format.
         self.state_path = state_path
         # The list of tags for the template.
         self.tags = tags
         # The version generation strategy. Valid values:
-        # 
-        # - Manual: manually generates a version. This is the default value.
-        # - SourcePathUpdated: generates a new version when sourcePath is modified.
+        # - Manual: Manually generates a version. This is the default value.
+        # - SourcePathUpdated: Generates a new version when sourcePath is modified.
         self.version_strategy = version_strategy
 
     def validate(self):

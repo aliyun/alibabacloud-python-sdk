@@ -60,13 +60,13 @@ class GetRegistryNamespaceResponseBodyNamespace(DaraModel):
     ):
         # The permissions.
         self.acl = acl
-        # The creation time.
+        # The creation time. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.create_time = create_time
         # The description of the workspace.
         self.description = description
         # The name of the administrator.
         self.maintainer = maintainer
-        # The number of Registry templates in the workspace.
+        # The number of registry templates in the workspace.
         self.modules = modules
         # The name of the workspace.
         self.namespace_name = namespace_name

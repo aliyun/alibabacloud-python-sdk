@@ -81,64 +81,62 @@ class GetStackDeploymentsResponseBodyDeployments(DaraModel):
         status: str = None,
         task_id: str = None,
     ):
-        # The configuration item.
+        # The configuration items.
         self.config = config
         # The configuration version, such as v1. The initial value is v1. The version number increments each time the stack is updated or refreshed and the configuration changes.
         self.config_version = config_version
-        # The creation time in UTC, in the format of YYYY-MM-DDTHH:mm:ssZ (ISO 8601).
+        # The creation time. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.create_time = create_time
-        # The deployment name.
+        # The name of the deployment.
         self.deployment_name = deployment_name
-        # The deployment number. The deployment number for each stack starts from 1 and increments each time a deployment is successfully triggered.
+        # The deployment number. The deployment number of each stack starts from 1 and increments each time a deployment is successfully triggered.
         self.deployment_no = deployment_no
-        # Deprecated field.
+        # **[Deprecated]** This field is deprecated.
         self.deployment_version = deployment_version
-        # The execution duration, in milliseconds.
+        # The execution duration. Unit: milliseconds.
         self.elapsed_time = elapsed_time
-        # The execution type.
-        # 
-        # Manual: Manual execution (default).
-        # 
-        # Auto: Automatic execution.
+        # The execution type. Valid values:
+        # - Manual: manual execution. This is the default value.
+        # - Auto: automatic execution.
         self.execute_type = execute_type
-        # The failure reason.
+        # The cause of the failure.
         self.failed_reason = failed_reason
         # The job ID.
         self.job_id = job_id
-        # OSS object key prefix for deployment logs
+        # The object key prefix of the deployment logs in OSS.
         self.log_output_path = log_output_path
         # The outputs.
         self.outputs = outputs
-        # The parameter set content.
+        # The content of the parameter set.
         self.parameters = parameters
-        # The state file output results.
+        # The output results of the state file.
         self.plan_outputs = plan_outputs
-        # The deployment status.
+        # The deployment status. Valid values:
         # | Name | Description |
         # |------|------|
         # | Pending | The initial status after the deployment is created. |
-        # | PriorityQueued | Priority queuing in progress. |
-        # | PlanQueued | The deployment is queuing because no workflow is available after creation. |
-        # | ApplyQueued | The deployment is queuing because no workflow is available during execution. |
-        # | Planning | The resource deployment is in the Plan phase. |
-        # | Planned | The resource deployment has completed the Plan phase. |
-        # | ConfigProactiveInProgress | Compliance pre-check in progress. |
-        # | ConfigProactiveSuccess | Compliance pre-check succeeded. |
-        # | DetectInProgress | Drift detection in progress. |
-        # | ImportQueued | The deployment is queuing because no workflow is available during Import execution. |
-        # | Importing | The resource deployment is in the Import phase. |
-        # | Imported | The resource deployment has completed the Import phase. |
-        # | StateQueued | The deployment is queuing because no workflow is available during state command execution. |
-        # | Stating | The resource deployment is executing the state command. |
-        # | Stated | The resource deployment has completed the state command execution. |
-        # | Confirmed | The resource deployment has been confirmed after the Plan phase. |
-        # | PlannedAndFinished | No diff was found after the Plan phase. The deployment is in a final status. |
-        # | Applying | The resource deployment is in the Apply phase. |
-        # | Applied | The resource deployment has completed the Apply phase. |
-        # | Discarded | The resource deployment has been discarded and is in a final status. |
-        # | Errored | The deployment execution encountered an error and is in a final status. |
-        # | ConfigProactiveFailure | Compliance pre-check failed. |
-        # | Canceled | The deployment execution has been canceled and is in a final status. |
+        # | PriorityQueued | The deployment is queued with priority. |
+        # | PlanQueued | The deployment is queued and waiting for an available workflow after it is created. |
+        # | ApplyQueued | The deployment is queued and waiting for an available workflow during execution. |
+        # | Planning | The deployment is in the plan phase. |
+        # | Planned | The deployment has completed the plan phase. |
+        # | ConfigProactiveInProgress | The compliance precheck is in progress. |
+        # | ConfigProactiveSuccess | The compliance precheck is successful. |
+        # | DetectInProgress | Drift detection is in progress. |
+        # | ImportQueued | The deployment is queued and waiting for an available workflow during the import phase. |
+        # | Importing | The deployment is in the import phase. |
+        # | Imported | The deployment has completed the import phase. |
+        # | StateQueued | The deployment is queued and waiting for an available workflow during the state command execution. |
+        # | Stating | The deployment is executing the state command. |
+        # | Stated | The deployment has completed the execution of the state command. |
+        # | Confirmed | The deployment is confirmed after the plan phase. |
+        # | PlannedAndFinished | The deployment is in the final state because no differences are found after the plan phase. |
+        # | Applying | The deployment is in the apply phase. |
+        # | Applied | The deployment has completed the apply phase. |
+        # | Discarded | The deployment is discarded and enters the final state. |
+        # | Errored | An error occurred during the deployment execution, and the deployment enters the final state. |
+        # | ConfigProactiveFailure | The compliance precheck failed. |
+        # | Canceled | The deployment execution is canceled, and the deployment enters the final state. |
         self.status = status
         # The task ID.
         self.task_id = task_id
@@ -294,7 +292,7 @@ class GetStackDeploymentsResponseBodyDeploymentsPlanOutputs(DaraModel):
         # - create: All resource changes in the component are creations.
         # - delete: All resource changes in the component are deletions.
         # - read: All resource changes in the component are reads.
-        # - update: Resource changes in the component include two or more types among creation, deletion, and read.
+        # - update: The resource changes in the component include two or more change types, such as creations, deletions, or reads.
         self.module_action = module_action
         # The number of resources to be created, updated, and destroyed in this deployment.
         self.module_action_detail = module_action_detail
@@ -359,9 +357,9 @@ class GetStackDeploymentsResponseBodyDeploymentsPlanOutputsResourceChanges(DaraM
         resource_actions: List[str] = None,
         resource_identifier: str = None,
     ):
-        # The diff information of the resource change.
+        # The difference information of the resource change.
         self.change = change
-        # The types of resource change actions included in this resource change.
+        # The types of specific resource change actions included in this resource change.
         self.resource_actions = resource_actions
         # The unique identifier of the resource.
         self.resource_identifier = resource_identifier
@@ -405,11 +403,11 @@ class GetStackDeploymentsResponseBodyDeploymentsPlanOutputsModuleActionDetail(Da
         change: int = None,
         destroy: int = None,
     ):
-        # The number of resources to be created.
+        # The number of newly created resources.
         self.add = add
-        # The number of resources to be changed.
+        # The number of changed resources.
         self.change = change
-        # The number of resources to be destroyed.
+        # The number of destroyed resources.
         self.destroy = destroy
 
     def validate(self):
@@ -460,9 +458,9 @@ class GetStackDeploymentsResponseBodyDeploymentsParameters(DaraModel):
         self.description = description
         # The parameter name.
         self.name = name
-        # Specifies whether the parameter is sensitive. Sensitive parameter values are not visible in the console or API. Valid values:
-        # - true: Sensitive.
-        # - false: Not sensitive.
+        # Specifies whether the parameter is a sensitive parameter. The values of sensitive parameters are invisible in both the console and API responses. Valid values:
+        # - true: The parameter is a sensitive parameter.
+        # - false: The parameter is not a sensitive parameter.
         self.sensitive = sensitive
         # The parameter type.
         self.type = type
@@ -530,7 +528,7 @@ class GetStackDeploymentsResponseBodyDeploymentsOutputs(DaraModel):
     ):
         # The description.
         self.description = description
-        # The expression that can reference component outputs, in the format: component.{component name}.{component output name}.
+        # The expression. You can reference component outputs in the format of component.{Component name}.{Component output name}.
         self.expression = expression
         # The name.
         self.name = name
@@ -589,11 +587,9 @@ class GetStackDeploymentsResponseBodyDeploymentsConfig(DaraModel):
         auto_apply: bool = None,
         is_destroy: bool = None,
     ):
-        # Specifies whether to automatically execute the task. Default value: false. Valid values:
-        # - **false**: No.
-        # - **true**: Yes.
+        # Specifies whether to automatically execute the task. Default value: **false**. Valid values: **false**: no. **true**: yes.
         self.auto_apply = auto_apply
-        # Indicates whether this is a destroy job.
+        # Specifies whether the job is a destroy job.
         self.is_destroy = is_destroy
 
     def validate(self):

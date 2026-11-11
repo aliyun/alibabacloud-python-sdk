@@ -20,7 +20,7 @@ class ListResourcesResponseBody(DaraModel):
         self.resources = resources
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 200.
+        # The number of results to return per page. Default value: 20. Minimum value: 1. Maximum value: 200.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -101,11 +101,11 @@ class ListResourcesResponseBodyResources(DaraModel):
         terraform_code: str = None,
         zone_id: str = None,
     ):
-        # The Alibaba Cloud account ID.
+        # The Alibaba Cloud user ID.
         self.account_id = account_id
-        # The creation time.
+        # The creation time. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.create_time = create_time
-        # The dependent resources.
+        # The list of dependent resources.
         self.depends_on_resource_ids = depends_on_resource_ids
         # The product code.
         self.product_code = product_code
@@ -115,7 +115,7 @@ class ListResourcesResponseBodyResources(DaraModel):
         self.property_variables = property_variables
         # The region ID.
         self.region_id = region_id
-        # The resource ARN.
+        # The ARN of the resource.
         self.resource_arn = resource_arn
         # The resource group ID.
         self.resource_group_id = resource_group_id

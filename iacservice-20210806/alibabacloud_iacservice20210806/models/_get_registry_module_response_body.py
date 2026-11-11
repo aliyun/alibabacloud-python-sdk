@@ -13,7 +13,7 @@ class GetRegistryModuleResponseBody(DaraModel):
         registry_module: main_models.GetRegistryModuleResponseBodyRegistryModule = None,
         request_id: str = None,
     ):
-        # The Registry module.
+        # The Registry template.
         self.registry_module = registry_module
         # The request ID.
         self.request_id = request_id
@@ -62,36 +62,37 @@ class GetRegistryModuleResponseBodyRegistryModule(DaraModel):
         type: str = None,
         version: str = None,
     ):
-        # The permission. Valid values:
-        # 
-        # - private: private.
+        # The permissions. Valid values:
+        # - private: Private.
         self.acl = acl
-        # The creation time.
+        # The creation time in the YYYY-MM-DD HH:mm:ss format. The returned value does not include a time zone identifier.
         self.create_time = create_time
-        # The module description.
+        # The template description.
         self.description = description
         # The number of downloads.
         self.downloads = downloads
-        # The module name.
+        # The name of the template.
         self.module_name = module_name
-        # The workspace name.
+        # The name of the workspace.
         self.namespace_name = namespace_name
         # The provider type. Valid values:
-        # 
         # - alicloud: Alibaba Cloud.
         self.provider = provider
-        # The list of accounts with which the Registry module is shared.
+        # The list of accounts that share the Registry template.
         self.shared_accounts = shared_accounts
-        # The module source, which is a concatenation of <NamespaceName>/<ModuleName>.
+        # The template source, which is concatenated in the <NamespaceName>/<ModuleName> format.
         self.source = source
-        # The module source URL.
+        # The URL of the template source.
         self.source_url = source_url
         # The workspace type. Valid values:
         # 
-        # - system: public module
-        # - self: custom module
-        # - shared: shared module
-        # - community: community module.
+        # - system: Public module.
+        # 
+        # - self: Custom module.
+        # 
+        # - shared: Shared module.
+        # 
+        # - community: Community module.
         self.type = type
         # The latest version.
         self.version = version

@@ -12,7 +12,7 @@ class CreateStackResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The stack ID. This is the unique identifier of the stack after it is created.
+        # The stack ID, which is the unique identifier of the stack after it is created.
         self.stack_id = stack_id
 
     def validate(self):

@@ -15,23 +15,21 @@ class ListProductsRequest(DaraModel):
         support_terraformer: bool = None,
         terraform_provider_version: str = None,
     ):
-        # The keyword for searching products. Fuzzy match is supported.
+        # The keyword used to search for products. Fuzzy matching is supported.
         self.keyword = keyword
-        # The maximum number of results per page. Valid values: 0 to 200. Default value: 100.
+        # The maximum number of entries to return on each page. Valid values: 0 to 200. Default value: 100.
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token
-        # The sort order. Valid values:
-        # - Normal: default sorting (default value)
-        # - Top: sorted by popularity.
+        # The sorting method. Valid values:
+        # - Normal: Default sorting. This is the default value.
+        # - Top: Sorting by popularity.
         self.sort = sort
-        # The status. Valid values:
-        # - Available
-        # - Deprecated.
+        # The status. Valid values: Available and Deprecated.
         self.status = status
         # Specifies whether Terraformer is supported.
         self.support_terraformer = support_terraformer
-        # The Terraform Provider version. If this parameter is left empty, the latest version is used by default.
+        # The Terraform provider version. If this parameter is left empty, the latest version is used by default.
         self.terraform_provider_version = terraform_provider_version
 
     def validate(self):

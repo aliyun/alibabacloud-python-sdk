@@ -57,23 +57,22 @@ class GetRegistryModuleVersionResponseBodyModuleVersion(DaraModel):
         source_url: str = None,
         version: str = None,
     ):
-        # The creation time.
+        # The creation time. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.create_time = create_time
-        # The product page URL.
+        # The URL of the details page.
         self.detail_url = detail_url
         # The number of downloads.
         self.downloads = downloads
-        # The template name.
+        # The name of the template.
         self.module_name = module_name
-        # The workspace name.
+        # The name of the workspace.
         self.namespace_name = namespace_name
         # The provider type. Valid values:
-        # 
         # - alicloud: Alibaba Cloud.
         self.provider = provider
         # The template source.
         self.source = source
-        # The template source URL.
+        # The URL of the template source.
         self.source_url = source_url
         # The version number.
         self.version = version

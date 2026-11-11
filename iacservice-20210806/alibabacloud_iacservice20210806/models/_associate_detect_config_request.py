@@ -15,13 +15,13 @@ class AssociateDetectConfigRequest(DaraModel):
         # 
         # This parameter is required.
         self.detect_config_id = detect_config_id
-        # The ID of the association target. The value is a StackId or TaskId.
+        # The ID of the association target. The value is a stack ID or a task ID.
         # 
         # This parameter is required.
         self.target_id = target_id
         # The type of the association target. Valid values:
-        # - Task: orchestration task.
-        # - Stack: resource stack.
+        # - Task: orchestration task
+        # - Stack: stack
         # 
         # This parameter is required.
         self.target_type = target_type

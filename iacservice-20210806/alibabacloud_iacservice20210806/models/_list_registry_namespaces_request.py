@@ -12,24 +12,18 @@ class ListRegistryNamespacesRequest(DaraModel):
         next_token: str = None,
         type: str = None,
     ):
-        # The search keyword. Fuzzy search by workspace name is supported.
+        # The search keyword. Fuzzy match is supported for workspace names.
         self.keyword = keyword
-        # The number of entries per page in a paged query. Maximum value: 100.
-        # Default value: 20.
+        # The number of entries per page for a paging query. Maximum value: 100. Default value: 20.
         self.max_results = max_results
-        # The query token. Set this parameter to the NextToken value returned in the previous API call.
+        # The query token. Set the value to the NextToken value returned from the previous API call.
         self.next_token = next_token
         # The workspace type. Valid values:
-        # 
         # - system: public workspace
-        # 
         # - self: custom workspace
-        # 
         # - shared: shared workspace
-        # 
         # - community: community workspace
-        # 
-        # By default, all workspaces are returned.
+        # By default, all types are returned.
         self.type = type
 
     def validate(self):

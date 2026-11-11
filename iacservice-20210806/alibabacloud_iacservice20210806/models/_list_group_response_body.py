@@ -22,7 +22,7 @@ class ListGroupResponseBody(DaraModel):
         self.groups = groups
         # The current page number.
         self.page_number = page_number
-        # The page size, which indicates the maximum number of results returned per page.
+        # The page size, which specifies the maximum number of results returned per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -93,7 +93,7 @@ class ListGroupResponseBodyGroups(DaraModel):
         tags: List[main_models.ListGroupResponseBodyGroupsTags] = None,
         task_cnt: int = None,
     ):
-        # The creation time.
+        # The creation time. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.create_time = create_time
         # The group description.
         self.description = description

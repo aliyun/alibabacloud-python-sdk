@@ -11,11 +11,11 @@ class SetEncryptionConfigRequest(DaraModel):
         kms_key_id: str = None,
         kms_region_id: str = None,
     ):
-        # The idempotence token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
+        # The idempotency token. Format: [0-9a-zA-Z-]{1,64}. A UUID is recommended.
         self.client_token = client_token
         # The ID of the KMS key used for encryption.
         self.kms_key_id = kms_key_id
-        # The region ID of the KMS key.
+        # The ID of the region to which the KMS key belongs.
         self.kms_region_id = kms_region_id
 
     def validate(self):
