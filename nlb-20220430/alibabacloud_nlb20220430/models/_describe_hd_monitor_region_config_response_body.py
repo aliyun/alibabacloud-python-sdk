@@ -12,15 +12,13 @@ class DescribeHdMonitorRegionConfigResponseBody(DaraModel):
         region_id: str = None,
         request_id: str = None,
     ):
-        # The name of the Log Service project.
+        # The name of the LogProject in Simple Log Service.
         self.log_project = log_project
-        # The name of the Metricstore in Simple Log Service.
+        # The name of the MetricStore in Simple Log Service.
         self.metric_store = metric_store
-        # The region ID of the NLB instance.
-        # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to obtain the region ID.
+        # The ID of the region where the resource resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to obtain the region ID.
         self.region_id = region_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

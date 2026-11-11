@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class UpdateServerGroupAttributeRequest(DaraModel):
     def __init__(
         self,
+        address_ipversion: str = None,
         client_token: str = None,
         connection_drain_enabled: bool = None,
         connection_drain_timeout: int = None,
@@ -22,56 +23,69 @@ class UpdateServerGroupAttributeRequest(DaraModel):
         server_group_id: str = None,
         server_group_name: str = None,
     ):
-        # The client token used to ensure the idempotence of the request.
+        # The IP version. Valid values: **ipv4** and **dualStack**.
+        self.address_ipversion = address_ipversion
+        # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token. Ensure that the token is unique among different requests. Only ASCII characters are allowed.
+        # You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the value of **RequestId** is used.**** The value of **RequestId** is different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is unique.
         self.client_token = client_token
         # Specifies whether to enable connection draining. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Enables connection draining.
+        # 
+        # - **false**: Disables connection draining.
         self.connection_drain_enabled = connection_drain_enabled
-        # Specify a timeout period for connection draining. Unit: seconds. Valid values: **0** to **900**.
+        # The timeout period for connection draining. Unit: seconds. Valid values: **0** to **900**.
         self.connection_drain_timeout = connection_drain_timeout
         # Specifies whether to perform a dry run. Valid values:
-        # 
-        # *   **true**: validates the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the validation, the corresponding error message is returned. If the request passes the validation, the `DryRunOperation` error code is returned.
-        # *   **false** (default): validates the request and performs the operation. If the request passes the validation, a 2xx HTTP status code is returned and the operation is performed.
+        # - **true**: performs a dry run without updating the server group. The system checks whether required parameters are specified, the request format is valid, and the service limits are met. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        # - **false** (default): performs a dry run and sends the actual request. If the request passes the dry run, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # Health check configurations.
+        # The health check configuration.
         self.health_check_config = health_check_config
+        # The traffic scheduling policy in dual-stack mode. Valid values:
+        # 
+        # - **NonAffinity**: non-affinity mode. Requests are forwarded to healthy backend servers based on the scheduling algorithm regardless of the IP version of the source address. This is the default value.
+        # - **Affinity**: affinity mode. Requests are forwarded to backend servers based on the IP version of the source address. IPv4 requests are forwarded only to IPv4 backend servers, and IPv6 requests are forwarded only to IPv6 backend servers.
+        # > This parameter takes effect only when **AddressIPVersion** is set to **DualStack**.
         self.ip_version_affinity_mode = ip_version_affinity_mode
         # Specifies whether to enable client IP preservation. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Enables client IP preservation.
         # 
-        # >  You cannot set this parameter to **true** if **PreserveClientIpEnabled** is set to **false** and the server group is associated with a listener that uses **SSL over TCP**.
+        # - **false**: Disables client IP preservation.
+        # 
+        # > If **PreserveClientIpEnabled** is set to **false** and the server group is associated with a **TCPSSL** listener, you cannot change the value of this parameter to **true**.
         self.preserve_client_ip_enabled = preserve_client_ip_enabled
-        # The ID of the region where the NLB instance is deployed.
+        # The region ID of the network load balancing instance.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to obtain the region ID.
         self.region_id = region_id
         # The scheduling algorithm. Valid values:
         # 
-        # *   **Wrr**: weighted round-robin. Backend servers with higher weights receive more requests.
-        # *   **Wlc**: weighted least connections. Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections on a backend server. If multiple backend servers have the same weight, requests are forwarded to the backend server with the least connections.
-        # *   **rr**: Requests are forwarded to backend servers in sequence.
-        # *   **sch**: source IP hash. Requests from the same source IP address are forwarded to the same backend server.
-        # *   **tch**: consistent hashing based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same four factors are forwarded to the same backend server.
-        # *   **qch**: QUIC ID hash. Requests that contain the same QUIC ID are forwarded to the same backend server.
+        # - **Wrr**: weighted round-robin. Backend servers with higher weights receive more requests.
         # 
-        # >  QUIC ID hash is supported only when the backend protocol is set to UDP.
+        # - **Wlc**: weighted least connections. Requests are distributed based on the weights and actual loads (number of connections) of backend servers. If weights are the same, backend servers with fewer connections receive more requests.
+        # 
+        # - **rr**: round-robin. Requests are distributed to backend servers in sequence.
+        # 
+        # - **sch**: source IP hash. Requests from the same source IP address are distributed to the same backend server.
+        # 
+        # - **tch**: 4-tuple hash. Consistent hashing based on the 4-tuple (source IP address, destination IP address, source port, and destination port). Requests from the same flow are distributed to the same backend server.
+        # 
+        # - **qch**: QUIC ID hash. Requests with the same QUIC ID are distributed to the same backend server.
+        # 
+        # > QUIC ID hash is supported only when the backend protocol is UDP.
         self.scheduler = scheduler
-        # The server group ID.
+        # The ID of the server group.
         # 
         # This parameter is required.
         self.server_group_id = server_group_id
         # The new name of the server group.
         # 
-        # The name must be 2 to 128 characters in length, can contain digits, periods (.), underscores (_), and hyphens (-), and must start with a letter.
+        # The name must be 2 to 128 characters in length, and must start with a letter or Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-).
         self.server_group_name = server_group_name
 
     def validate(self):
@@ -83,6 +97,9 @@ class UpdateServerGroupAttributeRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.address_ipversion is not None:
+            result['AddressIPVersion'] = self.address_ipversion
+
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
 
@@ -120,6 +137,9 @@ class UpdateServerGroupAttributeRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddressIPVersion') is not None:
+            self.address_ipversion = m.get('AddressIPVersion')
+
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
 
@@ -174,58 +194,56 @@ class UpdateServerGroupAttributeRequestHealthCheckConfig(DaraModel):
         http_check_method: str = None,
         unhealthy_threshold: int = None,
     ):
-        # The backend port that is used for health checks. Valid values: **0** to **65535**. If you set this parameter to **0**, the port that the backend server uses to provide services is also used for health checks.
+        # The port used for health checks on backend servers. Valid values: **0** to **65535**. A value of **0** indicates that the port of the backend server is used for health checks.
         self.health_check_connect_port = health_check_connect_port
-        # The timeout period for a health check response. Unit: seconds. Valid values: **1 to 300**. Default value: **5**.
+        # The maximum timeout period for a health check response. Unit: seconds. Valid values: **1** to **300**. Default value: **5**.
         self.health_check_connect_timeout = health_check_connect_timeout
         # The domain name used for health checks. Valid values:
+        # - **$SERVER_IP**: the internal IP address of the backend server.
+        # - **domain**: a custom domain name. The domain name must be 1 to 80 characters in length, and can contain only lowercase letters, digits, hyphens (-), and periods (.).
         # 
-        # *   **$SERVER_IP**: the internal IP address of a backend server.
-        # *   **domain**: the specified domain name. The domain name must be 1 to 80 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.).
-        # 
-        # >  This parameter takes effect only if you set **HealthCheckType** to **HTTP**.
+        # > This parameter takes effect only when **HealthCheckType** is set to **HTTP**.
         self.health_check_domain = health_check_domain
         # Specifies whether to enable health checks. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Enables health checks.
+        # 
+        # - **false**: Disables health checks.
         self.health_check_enabled = health_check_enabled
-        # The response string of UDP health checks. The string must be 1 to 512 characters in length, and can contain letters and digits.
+        # The response string used for UDP health checks. The string can contain only letters and digits, and can be up to 512 characters in length.
         self.health_check_exp = health_check_exp
-        # The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: **http_2xx** (default), **http_3xx**, **http_4xx**, and **http_5xx**.
-        # 
-        # >  This parameter takes effect only if you set **HealthCheckType** to **HTTP**.
+        # The HTTP status codes that indicate a successful health check. Separate multiple HTTP status codes with commas (,). Valid values: **http_2xx** (default), **http_3xx**, **http_4xx**, and **http_5xx**.
+        # > This parameter takes effect only when **HealthCheckType** is set to **HTTP**.
         self.health_check_http_code = health_check_http_code
-        # The version of the HTTP protocol. Valid values: **HTTP1.0** and **HTTP1.1**.
+        # The HTTP version used for health checks. Valid values: **HTTP1.0** and **HTTP1.1**.
         # 
-        # >  This parameter takes effect only if you set **HealthCheckType** to **HTTP**.
+        # > This parameter takes effect only when **HealthCheckType** is set to **HTTP**.
         self.health_check_http_version = health_check_http_version
-        # The interval at which health checks are performed. Unit: seconds. Default value: **5**.
+        # The interval between two consecutive health checks. Unit: seconds. Default value: **5**.
         # 
-        # *   If you set **HealthCheckType** to **TCP** or **HTTP**, valid values are **1 to 50**.
-        # *   If you set **HealthCheckType** to **UDP**, valid values are **1 to 300**. Set the health check interval equal to or larger than the response timeout period to ensure that UDP response timeouts are not determined as no responses.
+        # - If **HealthCheckType** is set to **TCP** or **HTTP**, valid values are **1** to **50**.
+        # 
+        # - If **HealthCheckType** is set to **UDP**, valid values are **1** to **300**. You must set the interval to a value greater than or equal to the response timeout period to ensure that UDP probe responses are not mistakenly identified as timeouts.
         self.health_check_interval = health_check_interval
-        # The request string of UDP health checks. The string must be 1 to 512 characters in length, and can contain letters and digits.
+        # The request string used for UDP health checks. The string can contain only letters and digits, and can be up to 512 characters in length.
         self.health_check_req = health_check_req
-        # The protocol that is used for health checks. Valid values:
+        # The health check protocol. Valid values:
         # 
-        # *   **TCP**
-        # *   **HTTP**
-        # *   **UDP**
+        # - **TCP**
+        # - **HTTP**
+        # - **UDP**
         self.health_check_type = health_check_type
-        # The path to which health check probes are sent.
+        # The health check path.
         # 
-        # The path must be 1 to 80 characters in length and can contain only letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : \\" , +`. It must start with a forward slash (/).
-        # 
-        # >  This parameter takes effect only if you set **HealthCheckType** to **HTTP**.
+        # The path must be 1 to 80 characters in length. It can contain only letters, digits, the characters `-/.%?#&=`, and extension characters `_;~!()*[]@$^:\\",+`. It must start with a forward slash (/).
+        # > This parameter takes effect only when **HealthCheckType** is set to **HTTP**.
         self.health_check_url = health_check_url
-        # The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from **fail** to **success**. Valid values: **2** to **10**.
+        # The number of consecutive successful health checks required to change the health status of a backend server from **Failed** to **Success**. Valid values: **2** to **10**.
         self.healthy_threshold = healthy_threshold
         # The HTTP method used for health checks. Valid values: **GET** and **HEAD**.
-        # 
-        # >  This parameter takes effect only if you set **HealthCheckType** to **HTTP**.
+        # > This parameter takes effect only when **HealthCheckType** is set to **HTTP**.
         self.http_check_method = http_check_method
-        # The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from **success** to **fail**. Valid values: **2** to **10**.
+        # The number of consecutive failed health checks required to change the health status of a backend server from **Success** to **Failed**. Valid values: **2** to **10**.
         self.unhealthy_threshold = unhealthy_threshold
 
     def validate(self):

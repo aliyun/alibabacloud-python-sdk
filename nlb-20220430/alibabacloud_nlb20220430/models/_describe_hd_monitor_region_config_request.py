@@ -9,7 +9,7 @@ class DescribeHdMonitorRegionConfigRequest(DaraModel):
         self,
         region_id: str = None,
     ):
-        # The ID of the region where the resources are deployed.
+        # The ID of the region where the resource resides.
         self.region_id = region_id
 
     def validate(self):

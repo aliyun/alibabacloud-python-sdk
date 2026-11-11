@@ -27,61 +27,55 @@ class ListLoadBalancersRequest(DaraModel):
         vpc_ids: List[str] = None,
         zone_id: str = None,
     ):
-        # The IP version of the NLB instance. Valid values:
-        # 
-        # *   **ipv4**: IPv4
-        # *   **DualStack**: dual-stack
+        # The protocol version. Valid values:
+        # - **ipv4**: IPv4.
+        # - **DualStack**: dual-stack.
         self.address_ip_version = address_ip_version
-        # The type of IPv4 address used by the NLB instance. Valid values:
-        # 
-        # *   **Internet**: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. The NLB instance can be accessed over the Internet.
-        # *   **Intranet**: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. The NLB instance can be accessed over the VPC where the NLB instance is deployed.
+        # The IPv4 address type of the NLB instance. Valid values:
+        # - **Internet**: The load balancing instance has a public IP address. The DNS domain name is resolved to the public IP address. Therefore, the instance is accessible over the Internet.
+        # - **Intranet**: The load balancing instance has only a private IP address. The DNS domain name is resolved to the private IP address. Therefore, the instance is accessible only within the internal network environment of the VPC where the load balancing instance is deployed.
         self.address_type = address_type
-        # The domain name of the NLB instance.
+        # The DNS domain name.
         self.dnsname = dnsname
-        # The type of IPv6 address used by the NLB instance. Valid values:
-        # 
-        # *   **Internet**: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. The NLB instance can be accessed over the Internet.
-        # *   **Intranet**: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. The NLB instance can be accessed over the VPC where the NLB instance is deployed.
+        # The IPv6 address type of the NLB instance. Valid values:
+        # - **Internet**: The load balancing instance has a public IP address. The DNS domain name is resolved to the public IP address. Therefore, the instance is accessible over the Internet.
+        # - **Intranet**: The load balancing instance has only a private IP address. The DNS domain name is resolved to the private IP address. Therefore, the instance is accessible only within the internal network environment of the VPC where the load balancing instance is deployed.
         self.ipv_6address_type = ipv_6address_type
         # The business status of the NLB instance. Valid values:
-        # 
-        # *   **Abnormal**: The NLB instance is not working as expected.
-        # *   **Normal**: The NLB instance is working as expected.
+        # - **Abnormal**: The instance is in an abnormal state.
+        # - **Normal**: The instance is in a normal state.
         self.load_balancer_business_status = load_balancer_business_status
-        # The NLB instance IDs. You can specify up to 20 IDs in each call.
+        # The IDs of the NLB instances. You can query up to 20 instances at a time.
         self.load_balancer_ids = load_balancer_ids
-        # The names of the NLB instances. You can specify up to 20 names in each call.
+        # The names of the NLB instances. You can query up to 20 instance names at a time.
         self.load_balancer_names = load_balancer_names
         # The status of the NLB instance. Valid values:
-        # 
-        # *   **Inactive**: The NLB instance is disabled. Listeners of an NLB instance in the Inactive state do not forward traffic.
-        # *   **Active**: The NLB instance is running.
-        # *   **Provisioning**: The NLB instance is being created.
-        # *   **Configuring**: The NLB instance is being modified.
-        # *   **Deleting**: The NLB instance is being deleted.
-        # *   **Deleted**: The NLB instance is deleted.
+        # - **Inactive**: The instance is stopped. Listeners of the instance no longer forward traffic.
+        # - **Active**: The instance is running.
+        # - **Provisioning**: The instance is being created.
+        # - **Configuring**: Upgrade/Downgrade in progress.
+        # - **Deleting**: The instance is being deleted.
+        # - **Deleted**: The instance is deleted.
         self.load_balancer_status = load_balancer_status
-        # The type of the Server Load Balancer (SLB) instances. Set the value to **network**, which specifies NLB.
+        # The type of load balancing. Only **network** is returned, which indicates Network Load Balancer (NLB).
         self.load_balancer_type = load_balancer_type
-        # The number of entries to return in each call. Valid values: **1** to **100**. Default value: **20**.
+        # The number of entries per page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
-        # The pagination token used to specify a particular page of results. Valid values:
-        # 
-        # *   Leave this parameter empty for the first query or the only query.
-        # *   Set this parameter to the value of NextToken obtained from the previous query.
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # - If this is the first request or no next request exists, you do not need to specify this parameter.
+        # - If a next request exists, set the value to the NextToken value returned in the previous API call.
         self.next_token = next_token
-        # The ID of the region where the NLB instance is deployed.
+        # The region ID of the NLB instance. 
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
-        # The ID of the resource group to which the instance belongs.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The tags of the NLB instance.
+        # The labels of the NLB instance.
         self.tag = tag
-        # The IDs of the virtual private clouds (VPCs) where the NLB instances are deployed. You can specify up to 10 VPC IDs in each call.
+        # The VPC ID of the NLB instance. You can query up to 10 VPC IDs at a time.
         self.vpc_ids = vpc_ids
-        # The ID of the zone. You can call the [DescribeZones](https://help.aliyun.com/document_detail/443890.html) operation to query the most recent zone list.
+        # The zone name. You can call the [DescribeZones](https://help.aliyun.com/document_detail/443890.html) operation to query zones.
         self.zone_id = zone_id
 
     def validate(self):
@@ -208,13 +202,13 @@ class ListLoadBalancersRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. You can specify up to 20 tags. The tag key cannot be an empty string.
+        # The tag key of the instance. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # It must be 1 to 64 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
-        # The value of the tag. You can specify up to 20 tags. The tag value can be an empty string.
+        # The tag value of the instance. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

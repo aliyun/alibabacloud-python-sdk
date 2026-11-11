@@ -37,78 +37,71 @@ class GetLoadBalancerAttributeResponseBody(DaraModel):
     ):
         # The protocol version. Valid values:
         # 
-        # *   **ipv4**: IPv4
-        # *   **DualStack**: dual stack
+        # - **ipv4**: IPv4.
+        # - **DualStack**: dual stack.
         self.address_ip_version = address_ip_version
-        # The IPv4 network type of the NLB instance. Valid values:
-        # 
-        # *   **Internet** The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
-        # *   **Intranet** The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the VPC in which the NLB instance is deployed.
+        # The IPv4 network address type of the NLB instance. Valid values:
+        # - **Internet**: The load balancing instance has a public IP address. The DNS domain name is resolved to the public IP address. Therefore, the instance can be accessed over the Internet.
+        # - **Intranet**: The load balancing instance has only a private IP address. The DNS domain name is resolved to the private IP address. Therefore, the instance can be accessed only within the internal network of the VPC where the load balancing instance is deployed.
         self.address_type = address_type
-        # The ID of the EIP bandwidth plan.
+        # The ID of the Internet Shared Bandwidth instance associated with the Internet-facing NLB instance.
         self.bandwidth_package_id = bandwidth_package_id
-        # The maximum number of new connections per second supported by the NLB instance in each zone (virtual IP address). Valid values: **0** to **1000000**.
+        # The maximum number of new connections per second that the NLB instance can process per zone (VIP). Valid values: **0** to **1000000**.
         # 
-        # **0** indicates that the number of connections is unlimited.
+        # **0** indicates that no limit is imposed.
         self.cps = cps
-        # The time when the NLB instance was created. This value is a UNIX timestamp.
-        # 
-        # Unit: milliseconds.
+        # The time when the resource was created. The time is displayed in UTC in the `yyyy-MM-ddTHH:mm:ssZ` format.
         self.create_time = create_time
-        # Indicates whether the NLB instance is accessible across zones. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether cross-zone is enabled for the NLB instance. Valid values:
+        # - **true**: enabled.
+        # - **false**: disabled.
         self.cross_zone_enabled = cross_zone_enabled
         # The domain name of the NLB instance.
         self.dnsname = dnsname
-        # The configuration of the deletion protection feature.
+        # The deletion protection configuration.
         self.deletion_protection_config = deletion_protection_config
-        # The IPv6 network type of the NLB instance. Valid values:
-        # 
-        # *   **Internet**: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
-        # *   **Intranet**: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. In this case, the NLB instance can be accessed over the VPC where the NLB instance is deployed.
+        # The IPv6 address type of the NLB instance. Valid values:
+        # - **Internet**: The load balancing instance has a public IP address. The DNS domain name is resolved to the public IP address. Therefore, the instance can be accessed over the Internet.
+        # - **Intranet**: The load balancing instance has only a private IP address. The DNS domain name is resolved to the private IP address. Therefore, the instance can be accessed only within the internal network of the VPC where the load balancing instance is deployed.
         self.ipv_6address_type = ipv_6address_type
-        # The billing information of the NLB instance.
+        # The billing configuration of the load balancing instance.
         self.load_balancer_billing_config = load_balancer_billing_config
-        # The status of workloads on the NLB instance. Valid values:
-        # 
-        # *   **Abnormal**
-        # *   **Normal**
+        # The business status of the NLB instance. Valid values:
+        # - **Abnormal**: The NLB instance is in an abnormal state.
+        # - **Normal**: The NLB instance is in a normal state.
         self.load_balancer_business_status = load_balancer_business_status
         # The NLB instance ID.
         self.load_balancer_id = load_balancer_id
-        # The NLB instance name.
+        # The name of the NLB instance.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter or a Chinese character.
         self.load_balancer_name = load_balancer_name
         # The NLB instance status. Valid values:
-        # 
-        # *   **Inactive**: The NLB instance is disabled. The listeners of NLB instances in the Inactive state do not forward traffic.
-        # *   **Active**: The NLB instance is running.
-        # *   **Provisioning**: The NLB instance is being created.
-        # *   **Configuring**: The NLB instance is being modified.
-        # *   **CreateFailed**: The system failed to create the NLB instance. In this case, you are not charged for the NLB instance. You can only delete the NLB instance.
+        # - **Inactive**: The NLB instance is stopped. The listeners of the instance no longer forward traffic.
+        # - **Active**: The NLB instance is running.
+        # - **Provisioning**: The NLB instance is being created.
+        # - **Configuring**: The NLB instance is being reconfigured (Upgrade/Downgrade).
+        # - **CreateFailed**: The NLB instance failed to be created. In this case, no fees are incurred, and the instance can only be deleted.
         self.load_balancer_status = load_balancer_status
-        # The type of the Server Load Balancer (SLB) instance. Set the value to **network**, which specifies NLB.
+        # The load balancing type. Only **network** is returned, which indicates Network Load Balancer (NLB).
         self.load_balancer_type = load_balancer_type
-        # The configuration of the configuration read-only mode.
+        # The modification protection configuration.
         self.modification_protection_config = modification_protection_config
-        # The information about the locked NLB instance. This parameter is returned only when `LoadBalancerBussinessStatus` is **Abnormal**.
+        # The lock state list of the NLB instance. This parameter is returned only when `LoadBalancerBussinessStatus` is **Abnormal**.
         self.operation_locks = operation_locks
         # The region ID of the NLB instance.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The ID of the security group associated with the NLB instance.
+        # The security group IDs associated with the NLB instance.
         self.security_group_ids = security_group_ids
-        # The tags.
+        # The tag list.
         self.tags = tags
         # The VPC ID of the NLB instance.
         self.vpc_id = vpc_id
-        # The list of zones and vSwitches in the zones. You must specify 2 to 10 zones.
+        # The mappings between zones and vSwitches. A maximum of 10 zones are returned. If the current region supports two or more zones, at least two zones are returned.
         self.zone_mappings = zone_mappings
 
     def validate(self):
@@ -312,19 +305,20 @@ class GetLoadBalancerAttributeResponseBodyZoneMappings(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # The information about the IP addresses used by the NLB instance.
+        # The Network Load Balancing (NLB) instance address information.
         self.load_balancer_addresses = load_balancer_addresses
         # The zone status. Valid values:
         # 
-        # *   **Active**: The zone is available.
-        # *   **Stopped**: The zone is disabled. You can set the zone to this status only by using Cloud Architect Design Tools (CADT).
-        # *   **Shifted**: The DNS record is removed.
-        # *   **Starting**: The zone is being enabled. You can set the zone to this status only by using CADT.
-        # *   **Stopping** You can set the zone to this status only by using CADT.
+        # - **Active**: enabled.
+        # - **Stopped**: stopped. This status can be set only through the CADT disaster recovery management service invocation.
+        # - **Shifted**: DNS manually removed. You can call the [CancelShiftLoadBalancerZones](https://help.aliyun.com/document_detail/2412000.html) operation to restore the DNS of the zone.
+        # - **AutoShifted**: DNS automatically removed. When a zone encounters an exception, the system automatically removes the IP address of the abnormal zone to ensure that you can access services normally through the NLB domain name. The IP address is automatically restored when the zone recovers. No manual operation is required.
+        # - **Starting**: starting. This status can be set only through the CADT disaster recovery management service invocation.
+        # - **Stopping**: stopping. This status can be set only through the CADT disaster recovery management service invocation.
         self.status = status
-        # The ID of the vSwitch in the zone. By default, each zone contains one vSwitch and one subnet.
+        # The vSwitch in the zone. Each zone uses one vSwitch and one subnet by default.
         self.v_switch_id = v_switch_id
-        # The ID of the zone. You can call the [DescribeZones](https://help.aliyun.com/document_detail/443890.html) operation to query the most recent zone list.
+        # The zone ID. You can call the [DescribeZones](https://help.aliyun.com/document_detail/443890.html) operation to query the most recent zone list.
         self.zone_id = zone_id
 
     def validate(self):
@@ -386,31 +380,31 @@ class GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses(Dara
         private_ipv_6hc_status: str = None,
         public_ipv_4address: str = None,
     ):
-        # The ID of the elastic IP address (EIP).
+        # The Elastic IP Address (EIP) instance ID.
         self.allocation_id = allocation_id
-        # The ID of the elastic network interface (ENI).
+        # The ID of the ENI.
         self.eni_id = eni_id
-        # The IPv4 link-local addresses. The IP addresses that the NLB instance uses to communicate with the backend servers.
+        # The list of IPv4 local addresses. These are the addresses used for communication between the NLB instance and backend servers.
         self.ipv_4local_addresses = ipv_4local_addresses
-        # The IPv6 address of the NLB instance.
+        # The IPv6 VIP address. The IPv6 address that the NLB instance uses to provide services.
         self.ipv_6address = ipv_6address
-        # The IPv6 link-local addresses. The IP addresses that the NLB instance uses to communicate with the backend servers.
+        # The list of IPv6 local addresses. These are the addresses used for communication between the NLB instance and backend servers.
         self.ipv_6local_addresses = ipv_6local_addresses
-        # The private IPv4 address of the NLB instance.
+        # The private IPv4 VIP address. The private IPv4 address that the NLB instance uses to provide services.
         self.private_ipv_4address = private_ipv_4address
-        # The health status of the private IPv4 address of the NLB instance. Valid values:
+        # The health check status of the private IPv4 address of the NLB instance. Valid values:
         # 
-        # *   **Healthy**
-        # *   **Unhealthy**
+        # - **Healthy**: healthy.
+        # - **Unhealthy**: unhealthy.
         # 
-        # > This parameter is returned only when the **Status** of the zone is **Active**.
+        # > This parameter is returned only when the zone status (**Status**) is Active.
         self.private_ipv_4hc_status = private_ipv_4hc_status
-        # The health status of the IPv6 address of the NLB instance. Valid values:
+        # The health check status of the IPv6 address of the NLB instance. Valid values:
         # 
-        # *   **Healthy**
-        # *   **Unhealthy**
+        # - **Healthy**: healthy.
+        # - **Unhealthy**: unhealthy.
         # 
-        # > This parameter is returned only when the **Status** of the zone is **Active**.
+        # > This parameter is returned only when the zone status (**Status**) is Active.
         self.private_ipv_6hc_status = private_ipv_6hc_status
         # The public IPv4 address of the NLB instance.
         self.public_ipv_4address = public_ipv_4address
@@ -489,9 +483,9 @@ class GetLoadBalancerAttributeResponseBodyTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key.
+        # The tag key of the instance.
         self.tag_key = tag_key
-        # The tag value.
+        # The tag value of the instance.
         self.tag_value = tag_value
 
     def validate(self):
@@ -526,14 +520,13 @@ class GetLoadBalancerAttributeResponseBodyOperationLocks(DaraModel):
         lock_reason: str = None,
         lock_type: str = None,
     ):
-        # The reason why the NLB instance is locked.
+        # The reason for the lock.
         self.lock_reason = lock_reason
         # The type of the lock. Valid values:
-        # 
-        # *   **SecurityLocked**: The NLB instance is locked due to security reasons.
-        # *   **RelatedResourceLocked**: The NLB instance is locked due to other resources associated with the NLB instance.
-        # *   **FinancialLocked**: The NLB instance is locked due to overdue payments.
-        # *   **ResidualLocked**: The NLB instance is locked because the associated resources have overdue payments and the resources are released.
+        # - **SecurityLocked**: The instance is locked due to security reasons.
+        # - **RelatedResourceLocked**: The instance is locked due to associate lock.
+        # - **FinancialLocked**: The instance is locked due to overdue payment.
+        # - **ResidualLocked**: The instance is locked due to residual resources.
         self.lock_type = lock_type
 
     def validate(self):
@@ -569,18 +562,18 @@ class GetLoadBalancerAttributeResponseBodyModificationProtectionConfig(DaraModel
         reason: str = None,
         status: str = None,
     ):
-        # The time when the modification protection feature was enabled. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time when modification protection was enabled. The time is displayed in UTC in the `yyyy-MM-ddTHH:mm:ssZ` format.
         self.enabled_time = enabled_time
-        # The reason why the configuration read-only mode is enabled. The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The value must start with a letter.
+        # The reason for enabling modification protection. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The reason must start with a letter or a Chinese character.
         # 
-        # >  This parameter takes effect only if the **Status** parameter is set to **ConsoleProtection**.
+        # This parameter is valid and required only when **Status** is set to **ConsoleProtection**.
         self.reason = reason
-        # Specifies whether to enable the configuration read-only mode. Valid values:
+        # The modification protection status of the Network Load Balancer (NLB) instance. Valid values:
         # 
-        # *   **NonProtection**: does not enable the configuration read-only mode. You cannot set the **Reason** parameter. If the **Reason** parameter is set, the value is cleared.
-        # *   **ConsoleProtection**: enables the configuration read-only mode. You can set the **Reason** parameter.
+        # - **NonProtection**: Modification protection is disabled. You cannot specify the **Reason** parameter. If the **Reason** parameter is specified, the value is cleared.
+        # - **ConsoleProtection**: Console modification protection is enabled. You can specify the **Reason** parameter.
         # 
-        # >  If you set this parameter to **ConsoleProtection**, you cannot use the NLB console to modify instance configurations. However, you can call API operations to modify instance configurations.
+        # > If the value is **ConsoleProtection**, you cannot modify the instance configuration in the load balancing console, but you can modify the instance configuration by invoking API operations.
         self.status = status
 
     def validate(self):
@@ -620,7 +613,8 @@ class GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig(DaraModel):
         self,
         pay_type: str = None,
     ):
-        # The billing method of the NLB instance. Set the value to **PostPay**, which specifies the pay-as-you-go billing method.
+        # The billing type of the NLB instance.
+        # Only **PostPay** is returned, which indicates the pay-as-you-go billing method.
         self.pay_type = pay_type
 
     def validate(self):
@@ -650,14 +644,14 @@ class GetLoadBalancerAttributeResponseBodyDeletionProtectionConfig(DaraModel):
         enabled_time: str = None,
         reason: str = None,
     ):
-        # Specifies whether to enable deletion protection. Valid values:
+        # The deletion protection status. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false** (default): no
+        # - **true**: enabled.
+        # - **false**: disabled.
         self.enabled = enabled
-        # The time when the deletion protection feature was enabled. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+        # The time when deletion protection was enabled. The time is displayed in UTC in the `yyyy-MM-ddTHH:mm:ssZ` format.
         self.enabled_time = enabled_time
-        # The reason why the deletion protection feature is enabled or disabled. The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The value must start with a letter.
+        # The reason for changing the deletion protection status. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The reason must start with a letter or a Chinese character.
         self.reason = reason
 
     def validate(self):

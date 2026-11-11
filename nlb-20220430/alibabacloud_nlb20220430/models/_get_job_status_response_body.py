@@ -10,12 +10,12 @@ class GetJobStatusResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The state of the task. Valid values:
+        # The task status. Valid values:
         # 
-        # *   **Succeeded**: The task is successful.
-        # *   **processing**: The ticket is being executed.
+        # - **Succeeded**: The task succeeded.
+        # - **Processing**: The task is in progress.
         self.status = status
 
     def validate(self):

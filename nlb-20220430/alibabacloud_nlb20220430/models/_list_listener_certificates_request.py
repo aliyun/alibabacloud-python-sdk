@@ -16,29 +16,28 @@ class ListListenerCertificatesRequest(DaraModel):
         next_token: str = None,
         region_id: str = None,
     ):
-        # The type of the certificate. Valid values:
+        # The certificate type. Valid values:
         # 
-        # *   **Ca**: CA certificate.
-        # *   **Server**: server certificate
+        # - **Ca**: CA certificate.
+        # - **Server**: Server certificate.
         self.cert_type = cert_type
-        # The server certificate. Only one server certificate is supported.
+        # The server certificates. You can add only one server certificate.
         # 
-        # >  This parameter takes effect only for TCP/SSL listeners.
+        # > This parameter takes effect only for TCPSSL listeners.
         self.certificate_ids = certificate_ids
-        # The ID of the listener. Specify the ID of a listener that uses SSL over TCP.
+        # The listener ID. This parameter is valid only for TCPSSL listeners.
         # 
         # This parameter is required.
         self.listener_id = listener_id
-        # The number of entries to return on each page. Valid values: **1** to **50**. Default value: **20**.
+        # The number of entries to return per page. Valid values: **1** to **50**. Default value: **20**.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
-        # 
-        # *   You do not need to specify this parameter for the first request.
-        # *   You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The pagination token for the next query.
+        # - Leave this parameter empty for the first query or when no subsequent query is required.
+        # - For subsequent queries, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
-        # The ID of the region where the Network Load Balancer (NLB) instance is deployed.
+        # The region ID of the Network Load Balancer (NLB) instance.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query region IDs.
         self.region_id = region_id
 
     def validate(self):

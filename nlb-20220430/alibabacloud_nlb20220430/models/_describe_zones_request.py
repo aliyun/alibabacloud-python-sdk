@@ -12,21 +12,21 @@ class DescribeZonesRequest(DaraModel):
         region_id: str = None,
         service_code: str = None,
     ):
-        # The supported natural language. Valid values:
+        # The supported language. Valid values:
         # 
-        # *   **zh-CN**: Chinese
-        # *   **en-US** (default): English
-        # *   **ja**: Japanese
+        # - **zh-CN**: Chinese.
+        # - **en-US**: English. This is the default value.
+        # - **ja**: Japanese.
         self.accept_language = accept_language
-        # The client token used to ensure the idempotence of the request.
+        # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate this value. Ensure that the value is unique among all requests. Only ASCII characters are allowed.
+        # You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the value of **RequestId** is used.**** **RequestId** of each request is different.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
-        # The ID of the region to which the zone belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
+        # The region ID of the zone. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
-        # The service code. Set the value to **nlb**.
+        # The service code of the cloud service. Valid value: **nlb**.
         self.service_code = service_code
 
     def validate(self):

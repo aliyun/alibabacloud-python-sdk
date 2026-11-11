@@ -15,7 +15,7 @@ class UpdateServerGroupAttributeResponseBody(DaraModel):
         self.job_id = job_id
         # The request ID.
         self.request_id = request_id
-        # The server group ID.
+        # The ID of the server group.
         self.server_group_id = server_group_id
 
     def validate(self):

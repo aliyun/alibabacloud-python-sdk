@@ -21,16 +21,15 @@ class ListListenerCertificatesResponseBody(DaraModel):
         self.certificate_ids = certificate_ids
         # The certificates.
         self.certificates = certificates
-        # The number of entries returned per page. Valid values: **1** to **50**. Default value: **20**.
+        # The number of entries to return per page. Valid values: **1** to **50**. Default value: **20**.
         self.max_results = max_results
-        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
-        # 
-        # *   You do not need to specify this parameter for the first request.
-        # *   You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The pagination token for the next query.
+        # - Leave this parameter empty for the first query or when no subsequent query is required.
+        # - For subsequent queries, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -99,20 +98,23 @@ class ListListenerCertificatesResponseBodyCertificates(DaraModel):
         is_default: bool = None,
         status: str = None,
     ):
-        # The ID of the certificate. Only one server certificate is supported.
+        # The certificate ID. Only server certificates are supported.
         self.certificate_id = certificate_id
-        # The type of the certificate.
+        # The certificate type.
         self.certificate_type = certificate_type
-        # Indicates whether the certificate is the default certificate of the listener. Valid values:
+        # Specifies whether the certificate is the default certificate for the listener. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The certificate is the default certificate.
+        # 
+        # - **false**: The certificate is an additional certificate.
         self.is_default = is_default
-        # Indicates whether the certificate is associated with the listener. Valid values:
+        # The association status between the certificate and the listener. Valid values:
         # 
-        # *   **Associating**
-        # *   **Associated**
-        # *   **Diassociating**
+        # - **Associating**: The certificate is being associated.
+        # 
+        # - **Associated**: The certificate is associated.
+        # 
+        # - **Diassociating**: The certificate is being dissociated.
         self.status = status
 
     def validate(self):

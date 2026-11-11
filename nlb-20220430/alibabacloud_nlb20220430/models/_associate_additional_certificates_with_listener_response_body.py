@@ -12,7 +12,7 @@ class AssociateAdditionalCertificatesWithListenerResponseBody(DaraModel):
     ):
         # The ID of the asynchronous task.
         self.job_id = job_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

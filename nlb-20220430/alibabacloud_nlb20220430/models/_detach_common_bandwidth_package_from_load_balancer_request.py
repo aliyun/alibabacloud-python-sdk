@@ -13,28 +13,27 @@ class DetachCommonBandwidthPackageFromLoadBalancerRequest(DaraModel):
         load_balancer_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the Internet Shared Bandwidth instance.
+        # The ID of the Internet Shared Bandwidth plan to remove.
         # 
         # This parameter is required.
         self.bandwidth_package_id = bandwidth_package_id
-        # The client token used to ensure the idempotence of the request.
+        # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate this value. Ensure that the value is unique among all requests. Only ASCII characters are allowed.
+        # You can generate a value for this parameter on your client to ensure that the value is unique across different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the value of **RequestId** is used.**** **RequestId** of each request is different.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is different.
         self.client_token = client_token
-        # Specifies whether to perform a dry run, without sending the actual request. Valid values:
-        # 
-        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and sends the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # Specifies whether to only precheck the request. Valid values:
+        # - **true**: sends a check request and does not disassociate the bandwidth plan. The system checks whether the required parameters are specified, the request format is valid, and the service limits are met. If the request fails the check, an error is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+        # - **false** (default): sends a regular request. If the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The ID of the NLB instance.
+        # The ID of the Network Load Balancer (NLB) instance.
         # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id
-        # The region ID of the NLB instance.
+        # The region ID of the Network Load Balancer (NLB) instance. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query region IDs.
         self.region_id = region_id
 
     def validate(self):

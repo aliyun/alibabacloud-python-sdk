@@ -11,11 +11,11 @@ class CreateLoadBalancerResponseBody(DaraModel):
         order_id: int = None,
         request_id: str = None,
     ):
-        # The ID of the NLB instance.
+        # The instance ID.
         self.loadbalancer_id = loadbalancer_id
-        # The ID of the order for the NLB instance.
+        # The order ID of the Network Load Balancing (NLB) instance.
         self.order_id = order_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

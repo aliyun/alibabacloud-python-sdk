@@ -16,44 +16,14 @@ class UpdateLoadBalancerProtectionRequest(DaraModel):
         modification_protection_status: str = None,
         region_id: str = None,
     ):
-        # The client token used to ensure the idempotence of the request.
-        # 
-        # You can use the client to generate this value. Ensure that the value is unique among all requests. Only ASCII characters are allowed.
-        # 
-        # >  If you do not specify this parameter, the value of **RequestId** is used.**** **RequestId** of each request is different.
         self.client_token = client_token
-        # Specifies whether to enable deletion protection. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.deletion_protection_enabled = deletion_protection_enabled
-        # The reason why deletion protection is enabled. The reason must be 2 to 128 characters in length, can contain letters, digits, periods (.), underscores (_), and hyphens (-), and must start with a letter.
-        # 
-        # >  This parameter takes effect only when **DeletionProtectionEnabled** is set to **true**.
         self.deletion_protection_reason = deletion_protection_reason
-        # Specifies whether to perform a dry run, without sending the actual request. Valid values:
-        # 
-        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends a request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The ID of the NLB instance.
-        # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id
-        # The reason why the configuration read-only mode is enabled. The reason must be 2 to 128 characters in length, can contain letters, digits, periods (.), underscores (_), and hyphens (-), and must start with a letter.
-        # 
-        # >  This parameter takes effect only when **Status** is set to **ConsoleProtection**.
         self.modification_protection_reason = modification_protection_reason
-        # Specifies whether to enable the configuration read-only mode. Valid values:
-        # 
-        # *   **NonProtection**: disables the configuration read-only mode. In this case, you cannot set the **ModificationProtectionReason** parameter. If you specify **ModificationProtectionReason**, the value is cleared.
-        # *   **ConsoleProtection**: enables the configuration read-only mode. In this case, you can specify **ModificationProtectionReason**.
-        # 
-        # >  If you set this parameter to **ConsoleProtection**, you cannot use the NLB console to modify configurations of the NLB instance. However, you can call API operations to modify the instance configurations.
         self.modification_protection_status = modification_protection_status
-        # The region ID of the NLB instance.
-        # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):

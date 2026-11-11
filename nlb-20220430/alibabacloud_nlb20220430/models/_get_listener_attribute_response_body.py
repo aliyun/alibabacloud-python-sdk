@@ -35,97 +35,104 @@ class GetListenerAttributeResponseBody(DaraModel):
         start_port: str = None,
         tags: List[main_models.GetListenerAttributeResponseBodyTags] = None,
     ):
-        # Indicates whether Application-Layer Protocol Negotiation (ALPN) is enabled. Valid values:
+        # Specifies whether Application-Layer Protocol Negotiation (ALPN) is enabled. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: enabled.
+        # 
+        # - **false**: disabled.
         self.alpn_enabled = alpn_enabled
         # The ALPN policy. Valid values:
         # 
-        # *   **HTTP1Only**
-        # *   **HTTP2Only**
-        # *   **HTTP2Preferred**
-        # *   **HTTP2Optional**
+        # - **HTTP1Only**
+        # - **HTTP2Only**
+        # - **HTTP2Preferred**
+        # - **HTTP2Optional**
         self.alpn_policy = alpn_policy
-        # The CA certificates. Only one CA certificate is supported.
-        # 
-        # >  This parameter takes effect only for listeners that use SSL over TCP.
+        # The CA certificate list. Currently, you can add only one CA certificate.
+        # > This parameter takes effect only for TCPSSL listeners.
         self.ca_certificate_ids = ca_certificate_ids
-        # Indicates whether mutual authentication is enabled. Valid values:
+        # Specifies whether mutual authentication is enabled. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: enabled.
+        # 
+        # - **false**: disabled.
         self.ca_enabled = ca_enabled
-        # The server certificates. Only one server certificate is supported.
+        # The server certificate list. Currently, you can add only one server certificate.
         # 
-        # >  This parameter takes effect only for listeners that use SSL over TCP.
+        # > This parameter takes effect only for TCPSSL listeners.
         self.certificate_ids = certificate_ids
-        # The maximum number of new connections per second supported by the listener in each zone (virtual IP address). Valid values: **0** to **1000000**. **0** indicates that the number of connections is unlimited.
+        # The maximum number of new connections per second that the listener can process in each zone (VIP). Valid values: **0** to **1000000**. **0** indicates that no limit is applied.
         self.cps = cps
-        # The last port in the listening port range. Valid values: **0** to **65535**. The number of the last port must be smaller than that of the first port.
+        # The end port of the all-port listener. Valid values: **0** to **65535**. The end port must be less than the start port.
         self.end_port = end_port
-        # The timeout period of an idle connection. Unit: seconds. Valid values: **1** to **900**.
+        # The idle timeout period for connections. Unit: seconds.
         self.idle_timeout = idle_timeout
-        # The name of the listener.
+        # The custom listener name.
         # 
-        # The name must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+        # The name must be 2 to 256 characters in length, and can contain Chinese characters and English letters. It can also contain digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
         self.listener_description = listener_description
-        # The ID of the listener.
+        # The listener ID.
         self.listener_id = listener_id
-        # The listening port. Valid values: **0** to **65535**. A value of **0** specifies all ports. If you set the value to **0**, you must also set the **StartPort** and **EndPort** parameters.
+        # The listener port. Valid values: **0** to **65535**. **0** indicates that all-port listening is used. If you set this parameter to **0**, you must configure **StartPort** and **EndPort**.
         self.listener_port = listener_port
-        # The listening protocol. Valid values: **TCP**, **UDP**, and **TCPSSL**.
+        # The listener protocol. Valid values: **TCP**, **UDP**, and **TCPSSL**.
         self.listener_protocol = listener_protocol
-        # The status of the listener. Valid values:
+        # The current status of the listener. Valid values:
         # 
-        # *   **Provisioning**: The listener is being created.
-        # *   **Running**: The listener is running.
-        # *   **Configuring**: The listener is being configured.
-        # *   **Stopping**: The listener is being stopped.
-        # *   **Stopped**: The listener is stopped.
-        # *   **Starting**: The listener is being started.
-        # *   **Deleting**: The listener is being deleted.
-        # *   **Deleted**: The listener is deleted.
+        # - **Provisioning**: The listener is being created.
+        # 
+        # - **Running**: The listener is running.
+        # 
+        # - **Configuring**: The listener is being configured.
+        # 
+        # - **Stopping**: The listener is being stopped.
+        # 
+        # - **Stopped**: The listener is stopped.
+        # 
+        # - **Starting**: The listener is being started.
+        # 
+        # - **Deleting**: The listener is being deleted.
+        # 
+        # - **Deleted**: The listener is deleted.
         self.listener_status = listener_status
-        # The ID of the NLB instance.
+        # The Network Load Balancer (NLB) instance ID.
         self.load_balancer_id = load_balancer_id
-        # The size of the largest TCP segment. Unit: bytes. Valid values: **0** to **1500**. **0** specifies that the maximum segment size remains unchanged.
+        # The maximum segment size (MSS) of a TCP packet. Unit: bytes. Valid values: **0** to **1500**. **0** indicates that the MSS value of user TCP packets is not modified.
         # 
-        # >  This parameter is supported only by listeners that use SSL over TCP.
+        # > This field is supported only by TCP and TCPSSL listeners.
         self.mss = mss
-        # Indicates whether the Proxy protocol is used to pass client IP addresses to backend servers. Valid values:
+        # Specifies whether to use the Proxy Protocol to pass the client source IP address to backend servers. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: enabled.
+        # 
+        # - **false**: disabled.
         self.proxy_protocol_enabled = proxy_protocol_enabled
-        # Indicates whether the Proxy protocol passes the VpcId, PrivateLinkEpId, and PrivateLinkEpsId parameters to backend servers.
+        # The configuration for passing the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to backend servers by using the Proxy Protocol.
         self.proxy_protocol_v2config = proxy_protocol_v2config
-        # The ID of the region where the NLB instance is deployed.
+        # The region ID of the Network Load Balancer (NLB) instance.
         self.region_id = region_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether fine-grained monitoring is enabled. Valid values:
+        # Specifies whether to enable the second-level monitoring feature. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: enabled.
+        # 
+        # - **false**: disabled.
         self.sec_sensor_enabled = sec_sensor_enabled
-        # The ID of the security policy. System security policies and custom security policies are supported.
+        # The security policy ID. System security policies and custom security policies are supported.
         # 
-        # - Valid values: **tls_cipher_policy_1_0**, **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, and **tls_cipher_policy_1_2_strict_with_1_3**.
+        # - System policies: **tls_cipher_policy_1_0** (default), **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, and **tls_cipher_policy_1_2_strict_with_1_3**.
+        # - Custom security policies: Enter the ID of the custom security policy.
+        #     - To create a custom policy, see [CreateSecurityPolicy](https://help.aliyun.com/document_detail/445901.html).
+        #     - To query security policies, see [ListSecurityPolicy](https://help.aliyun.com/document_detail/445900.html).
         # 
-        # - Custom security policy: the ID of the custom security policy.
-        #     - For more information about how to create a custom security policy, see [CreateSecurityPolicy](https://help.aliyun.com/document_detail/2399231.html) .
-        # 
-        #     - For more information about how to query security policies, see [ListSecurityPolicy](https://help.aliyun.com/document_detail/2399234.html) .
-        # 
-        # 
-        # >  This parameter takes effect only for listeners that use SSL over TCP.
+        # > This parameter takes effect only for TCPSSL listeners.
         self.security_policy_id = security_policy_id
-        # The ID of the server group.
+        # The server group ID.
         self.server_group_id = server_group_id
-        # The first port in the listening port range. Valid values: **0** to **65535**.
+        # The start port of the all-port listener. Valid values: **0** to **65535**.
         self.start_port = start_port
-        # The tags.
+        # The tag list.
         self.tags = tags
 
     def validate(self):
@@ -337,24 +344,34 @@ class GetListenerAttributeResponseBodyTags(DaraModel):
 class GetListenerAttributeResponseBodyProxyProtocolV2Config(DaraModel):
     def __init__(
         self,
+        ppv_2cn_id_enabled: bool = None,
         ppv_2private_link_ep_id_enabled: bool = None,
         ppv_2private_link_eps_id_enabled: bool = None,
         ppv_2vpc_id_enabled: bool = None,
     ):
-        # Indicates whether the Proxy protocol passes the PrivateLinkEpId parameter to backend servers. Valid values:
+        # Specifies whether to use the Proxy Protocol to pass the CN-ID to backend servers. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: enabled.
+        # 
+        # - **false**: disabled.
+        self.ppv_2cn_id_enabled = ppv_2cn_id_enabled
+        # Specifies whether to use the Proxy Protocol to pass the PrivateLinkEpId to backend servers. Valid values:
+        # 
+        # - **true**: enabled.
+        # 
+        # - **false**: disabled.
         self.ppv_2private_link_ep_id_enabled = ppv_2private_link_ep_id_enabled
-        # Indicates whether the Proxy protocol passes the PrivateLinkEpsId parameter to backend servers. Valid values:
+        # Specifies whether to use the Proxy Protocol to pass the PrivateLinkEpsId to backend servers. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: enabled.
+        # 
+        # - **false**: disabled.
         self.ppv_2private_link_eps_id_enabled = ppv_2private_link_eps_id_enabled
-        # Indicates whether the Proxy protocol passes the VpcId parameter to backend servers. Valid values:
+        # Specifies whether to use the Proxy Protocol to pass the VpcId to backend servers. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: enabled.
+        # 
+        # - **false**: disabled.
         self.ppv_2vpc_id_enabled = ppv_2vpc_id_enabled
 
     def validate(self):
@@ -365,6 +382,9 @@ class GetListenerAttributeResponseBodyProxyProtocolV2Config(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.ppv_2cn_id_enabled is not None:
+            result['Ppv2CnIdEnabled'] = self.ppv_2cn_id_enabled
+
         if self.ppv_2private_link_ep_id_enabled is not None:
             result['Ppv2PrivateLinkEpIdEnabled'] = self.ppv_2private_link_ep_id_enabled
 
@@ -378,6 +398,9 @@ class GetListenerAttributeResponseBodyProxyProtocolV2Config(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Ppv2CnIdEnabled') is not None:
+            self.ppv_2cn_id_enabled = m.get('Ppv2CnIdEnabled')
+
         if m.get('Ppv2PrivateLinkEpIdEnabled') is not None:
             self.ppv_2private_link_ep_id_enabled = m.get('Ppv2PrivateLinkEpIdEnabled')
 

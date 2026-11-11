@@ -11,11 +11,11 @@ class CreateListenerResponseBody(DaraModel):
         listener_id: str = None,
         request_id: str = None,
     ):
-        # The asynchronous task ID.
+        # The ID of the asynchronous task.
         self.job_id = job_id
-        # The listener ID.
+        # The ID of the listener.
         self.listener_id = listener_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

@@ -19,74 +19,72 @@ class CreateSecurityPolicyRequest(DaraModel):
         tag: List[main_models.CreateSecurityPolicyRequestTag] = None,
         tls_versions: List[str] = None,
     ):
-        # The cipher suites supported by the security policy. Valid values of this parameter vary based on the value of TlsVersions. You can specify up to 32 cipher suites.
+        # The supported cipher suites, which depend on the TLSVersion value. You can add up to 32 cipher suites.
         # 
-        # TLSv1.0 and TLSv1.1 support the following cipher suites:
+        # Supported by TLSv1.0 and TLSv1.1:
+        # - **ECDHE-ECDSA-AES128-SHA**
+        # - **ECDHE-ECDSA-AES256-SHA**
+        # - **ECDHE-RSA-AES128-SHA**
+        # - **ECDHE-RSA-AES256-SHA**
+        # - **AES128-SHA**
+        # - **AES256-SHA**
+        # - **DES-CBC3-SHA**
         # 
-        # *   **ECDHE-ECDSA-AES128-SHA**
-        # *   **ECDHE-ECDSA-AES256-SHA**
-        # *   **ECDHE-RSA-AES128-SHA**
-        # *   **ECDHE-RSA-AES256-SHA**
-        # *   **AES128-SHA**
-        # *   **AES256-SHA**
-        # *   **DES-CBC3-SHA**
+        # Supported by TLSv1.2:
+        # -   **ECDHE-ECDSA-AES128-SHA**
+        # -   **ECDHE-ECDSA-AES256-SHA**
+        # -   **ECDHE-RSA-AES128-SHA**
+        # -   **ECDHE-RSA-AES256-SHA**
+        # -   **AES128-SHA**
+        # -   **AES256-SHA**
+        # -   **DES-CBC3-SHA**
+        # -   **ECDHE-ECDSA-AES128-GCM-SHA256**
+        # -   **ECDHE-ECDSA-AES256-GCM-SHA384**
+        # -   **ECDHE-ECDSA-AES128-SHA256**
+        # -   **ECDHE-ECDSA-AES256-SHA384**
+        # -   **ECDHE-RSA-AES128-GCM-SHA256**
+        # -   **ECDHE-RSA-AES256-GCM-SHA384**
+        # -   **ECDHE-RSA-AES128-SHA256**
+        # -   **ECDHE-RSA-AES256-SHA384**
+        # -   **AES128-GCM-SHA256**
+        # -   **AES256-GCM-SHA384**
+        # -   **AES128-SHA256**
+        # -   **AES256-SHA256**
+        # -   **ECDHE-ECDSA-CHACHA20-POLY1305**
+        # -   **ECDHE-RSA-CHACHA20-POLY1305**
         # 
-        # TLSv1.2 supports the following cipher suites:
-        # 
-        # *   **ECDHE-ECDSA-AES128-SHA**
-        # *   **ECDHE-ECDSA-AES256-SHA**
-        # *   **ECDHE-RSA-AES128-SHA**
-        # *   **ECDHE-RSA-AES256-SHA**
-        # *   **AES128-SHA**
-        # *   **AES256-SHA**
-        # *   **DES-CBC3-SHA**
-        # *   **ECDHE-ECDSA-AES128-GCM-SHA256**
-        # *   **ECDHE-ECDSA-AES256-GCM-SHA384**
-        # *   **ECDHE-ECDSA-AES128-SHA256**
-        # *   **ECDHE-ECDSA-AES256-SHA384**
-        # *   **ECDHE-RSA-AES128-GCM-SHA256**
-        # *   **ECDHE-RSA-AES256-GCM-SHA384**
-        # *   **ECDHE-RSA-AES128-SHA256**
-        # *   **ECDHE-RSA-AES256-SHA384**
-        # *   **AES128-GCM-SHA256**
-        # *   **AES256-GCM-SHA384**
-        # *   **AES128-SHA256**
-        # *   **AES256-SHA256**
-        # 
-        # TLSv1.3 supports the following cipher suites:
-        # 
-        # *   **TLS_AES_128_GCM_SHA256**
-        # *   **TLS_AES_256_GCM_SHA384**
-        # *   **TLS_CHACHA20_POLY1305_SHA256**
-        # *   **TLS_AES_128_CCM_SHA256**
-        # *   **TLS_AES_128_CCM_8_SHA256**
+        # Supported by TLSv1.3:
+        # - **TLS_AES_128_GCM_SHA256**
+        # - **TLS_AES_256_GCM_SHA384**
+        # - **TLS_CHACHA20_POLY1305_SHA256**
+        # - **TLS_AES_128_CCM_SHA256**
+        # - **TLS_AES_128_CCM_8_SHA256**
         # 
         # This parameter is required.
         self.ciphers = ciphers
-        # The client token used to ensure the idempotence of the request.
+        # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token. Ensure that the token is unique among different requests. Only ASCII characters are allowed.
+        # You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the value of **RequestId** is used.**** The value of **RequestId** is different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is unique.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. Valid values:
-        # 
-        # *   **true**: validates the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the validation, the corresponding error message is returned. If the request passes the validation, the `DryRunOperation` error code is returned.
-        # *   **false** (default): validates the request and performs the operation. If the request passes the validation, a 2xx HTTP status code is returned and the operation is performed.
+        # Specifies whether to only precheck the request. Valid values:
+        # - **true**: prechecks the request without creating the custom security policy. The system checks whether required parameters are specified, the request format is valid, and service limits are met. If the request fails the precheck, an error is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+        # - **false** (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The ID of the region where the NLB instance is deployed.
+        # The region ID of the Network Load Balancer (NLB) instance. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
+        # You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query region IDs.
         self.region_id = region_id
-        # The ID of the resource group to which the security policy belongs.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The name of the security policy.
+        # Policy Name of the security policy.
         # 
-        # It must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+        # Policy Name must be 1 to 200 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), and hyphens (-).
         self.security_policy_name = security_policy_name
-        # The tags.
+        # The list of tags.
         self.tag = tag
-        # The Transport Layer Security (TLS) versions supported by the security policy. Valid values: **TLSv1.0**, **TLSv1.1**, **TLSv1.2**, and **TLSv1.3**.
+        # The supported TLS versions. Valid values: **TLSv1.0**, **TLSv1.1**, **TLSv1.2**, and **TLSv1.3**.
         # 
         # This parameter is required.
         self.tls_versions = tls_versions
@@ -167,13 +165,13 @@ class CreateSecurityPolicyRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. It must be 1 to 64 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`. It can contain letters, digits, underscores (_), periods (.), colons (:), forward slashes (/), equal signs (=), plus signs (+), minus signs (-), and at signs (@).
+        # The tag key. The key can be up to 64 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`. Supported characters include letters, digits, underscores (_), periods (.), colons (:), forward slashes (/), equal signs (=), plus signs (+), hyphens (-), and at signs (@).
         # 
-        # You can add up to 20 tags for the security policy in each call.
+        # You can add up to 20 tags in a single call.
         self.key = key
-        # The value of the tag. It must be 1 to 128 characters in length, cannot start with `acs:` or `aliyun`, and cannot contain `http://` or `https://`. It can contain letters, digits, underscores (_), periods (.), colons (:), forward slashes (/), equal signs (=), plus signs (+), minus signs (-), and at signs (@).
+        # The tag value. The value can be up to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`. Supported characters include letters, digits, underscores (_), periods (.), colons (:), forward slashes (/), equal signs (=), plus signs (+), hyphens (-), and at signs (@).
         # 
-        # You can add up to 20 tags for the security policy in each call.
+        # You can add up to 20 tags in a single call.
         self.value = value
 
     def validate(self):
