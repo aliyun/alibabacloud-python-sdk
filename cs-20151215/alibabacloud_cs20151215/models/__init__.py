@@ -227,6 +227,9 @@ from ._get_upgrade_status_response_body import GetUpgradeStatusResponseBody
 from ._get_upgrade_status_response import GetUpgradeStatusResponse
 from ._grant_permissions_request import GrantPermissionsRequest
 from ._grant_permissions_response import GrantPermissionsResponse
+from ._hibernate_cluster_request import HibernateClusterRequest
+from ._hibernate_cluster_response_body import HibernateClusterResponseBody
+from ._hibernate_cluster_response import HibernateClusterResponse
 from ._install_cluster_addons_request import InstallClusterAddonsRequest
 from ._install_cluster_addons_response_body import InstallClusterAddonsResponseBody
 from ._install_cluster_addons_response import InstallClusterAddonsResponse
@@ -393,6 +396,9 @@ from ._upgrade_cluster_addons_response import UpgradeClusterAddonsResponse
 from ._upgrade_cluster_nodepool_request import UpgradeClusterNodepoolRequest
 from ._upgrade_cluster_nodepool_response_body import UpgradeClusterNodepoolResponseBody
 from ._upgrade_cluster_nodepool_response import UpgradeClusterNodepoolResponse
+from ._wake_up_cluster_request import WakeUpClusterRequest
+from ._wake_up_cluster_response_body import WakeUpClusterResponseBody
+from ._wake_up_cluster_response import WakeUpClusterResponse
 from ._kubelet_config import KubeletConfigReservedMemory
 from ._kubelet_config import KubeletConfigTracing
 from ._maintenance_window import MaintenanceWindowExclusions
@@ -912,6 +918,9 @@ __all__ = [
     GetUpgradeStatusResponse,
     GrantPermissionsRequest,
     GrantPermissionsResponse,
+    HibernateClusterRequest,
+    HibernateClusterResponseBody,
+    HibernateClusterResponse,
     InstallClusterAddonsRequest,
     InstallClusterAddonsResponseBody,
     InstallClusterAddonsResponse,
@@ -1078,6 +1087,9 @@ __all__ = [
     UpgradeClusterNodepoolRequest,
     UpgradeClusterNodepoolResponseBody,
     UpgradeClusterNodepoolResponse,
+    WakeUpClusterRequest,
+    WakeUpClusterResponseBody,
+    WakeUpClusterResponse,
     KubeletConfigReservedMemory,
     KubeletConfigTracing,
     MaintenanceWindowExclusions,

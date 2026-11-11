@@ -7751,6 +7751,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.grant_permissions_with_options_async(uid, request, headers, runtime)
 
+    def hibernate_cluster_with_options(
+        self,
+        cluster_id: str,
+        request: main_models.HibernateClusterRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.HibernateClusterResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'HibernateCluster',
+            version = '2015-12-15',
+            protocol = 'HTTPS',
+            pathname = f'/clusters/{DaraURL.percent_encode(cluster_id)}/hibernate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.HibernateClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def hibernate_cluster_with_options_async(
+        self,
+        cluster_id: str,
+        request: main_models.HibernateClusterRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.HibernateClusterResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'HibernateCluster',
+            version = '2015-12-15',
+            protocol = 'HTTPS',
+            pathname = f'/clusters/{DaraURL.percent_encode(cluster_id)}/hibernate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.HibernateClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def hibernate_cluster(
+        self,
+        cluster_id: str,
+        request: main_models.HibernateClusterRequest,
+    ) -> main_models.HibernateClusterResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.hibernate_cluster_with_options(cluster_id, request, headers, runtime)
+
+    async def hibernate_cluster_async(
+        self,
+        cluster_id: str,
+        request: main_models.HibernateClusterRequest,
+    ) -> main_models.HibernateClusterResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.hibernate_cluster_with_options_async(cluster_id, request, headers, runtime)
+
     def install_cluster_addons_with_options(
         self,
         cluster_id: str,
@@ -13358,3 +13438,83 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.upgrade_cluster_nodepool_with_options_async(cluster_id, nodepool_id, request, headers, runtime)
+
+    def wake_up_cluster_with_options(
+        self,
+        cluster_id: str,
+        request: main_models.WakeUpClusterRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.WakeUpClusterResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'WakeUpCluster',
+            version = '2015-12-15',
+            protocol = 'HTTPS',
+            pathname = f'/clusters/{DaraURL.percent_encode(cluster_id)}/wakeUp',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.WakeUpClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def wake_up_cluster_with_options_async(
+        self,
+        cluster_id: str,
+        request: main_models.WakeUpClusterRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.WakeUpClusterResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'WakeUpCluster',
+            version = '2015-12-15',
+            protocol = 'HTTPS',
+            pathname = f'/clusters/{DaraURL.percent_encode(cluster_id)}/wakeUp',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.WakeUpClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def wake_up_cluster(
+        self,
+        cluster_id: str,
+        request: main_models.WakeUpClusterRequest,
+    ) -> main_models.WakeUpClusterResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.wake_up_cluster_with_options(cluster_id, request, headers, runtime)
+
+    async def wake_up_cluster_async(
+        self,
+        cluster_id: str,
+        request: main_models.WakeUpClusterRequest,
+    ) -> main_models.WakeUpClusterResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.wake_up_cluster_with_options_async(cluster_id, request, headers, runtime)

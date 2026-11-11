@@ -27,22 +27,39 @@ class InvokeAgentResponseBody(DaraModel):
         type: str = None,
         value: Any = None,
     ):
+        # The error code for the RUN_ERROR event.
         self.code = code
+        # The tool output text for the TOOL_CALL_RESULT event. The text may be truncated.
         self.content = content
+        # The incremental fragment of text, reasoning, or tool parameters. Fragments with the same ID are concatenated in order.
         self.delta = delta
+        # The error description for the RUN_ERROR event.
         self.message = message
+        # The ID of the message to which the text, reasoning, or tool result belongs.
         self.message_id = message_id
+        # The name of the CUSTOM extension event, such as analysis_result.
         self.name = name
+        # The completion reason for the RUN_FINISHED event. A value of success indicates normal completion, and interrupt indicates waiting for a response.
         self.outcome = outcome
+        # The optional parent message ID for the TOOL_CALL_START event.
         self.parent_message_id = parent_message_id
+        # The role of the message. The role is assistant for text messages and tool for tool results.
         self.role = role
+        # The run ID of the current run for RUN_STARTED and RUN_FINISHED events.
         self.run_id = run_id
+        # The thread snapshot for the STATE_SNAPSHOT event, including sessionId and requestId.
         self.snapshot = snapshot
+        # The thread ID for RUN_STARTED and RUN_FINISHED events. It is consistent with the request and the thread snapshot.
         self.thread_id = thread_id
+        # The tool invoke ID. It associates TOOL_CALL_START/ARGS/END/RESULT events with approval interrupts.
         self.tool_call_id = tool_call_id
+        # The name of the tool for the TOOL_CALL_START event.
         self.tool_call_name = tool_call_name
+        # The event type of the SSE data object. For the required fields of each event type, see the response description.
+        # 
         # This parameter is required.
         self.type = type
+        # The extension value of the CUSTOM event. It can be any JSON object or null.
         self.value = value
 
     def validate(self):
@@ -163,7 +180,10 @@ class InvokeAgentResponseBodyOutcome(DaraModel):
         interrupts: List[main_models.InvokeAgentResponseBodyOutcomeInterrupts] = None,
         type: str = None,
     ):
+        # The list of interrupts waiting for a response. This field appears only when outcome.type is interrupt and contains at least one item.
         self.interrupts = interrupts
+        # The outcome type. A value of success indicates normal completion. A value of interrupt indicates waiting for a response, in which case the interrupts array contains at least one item.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -212,14 +232,23 @@ class InvokeAgentResponseBodyOutcomeInterrupts(DaraModel):
         response_schema: Dict[str, Any] = None,
         tool_call_id: str = None,
     ):
+        # The optional expiration time string of the interrupt. This field is not output for current tool approvals.
         self.expires_at = expires_at
+        # The ID of the interrupt. It is used as resume[].interruptId when resuming the run.
+        # 
         # This parameter is required.
         self.id = id
+        # The approval description or follow-up question text displayed to the user.
         self.message = message
+        # The optional extension information of the interrupt. It cannot replace tool events.
         self.metadata = metadata
+        # The reason for the interrupt. The value is tool_call_approve for tool approval and ask_human for follow-up questions.
+        # 
         # This parameter is required.
         self.reason = reason
+        # The JSON Schema for the response. Tool approval requires decision=yes/no, and follow-up questions use strings.
         self.response_schema = response_schema
+        # The optional associated tool invoke ID. It is the same as the toolCallId of the preceding TOOL_CALL_START event.
         self.tool_call_id = tool_call_id
 
     def validate(self):
