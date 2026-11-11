@@ -18,11 +18,11 @@ class ListColumnsResponseBody(DaraModel):
     ):
         # The page number of the returned data.
         self.current_page = current_page
-        # The list of records returned by the current query.
+        # The list of records returned in the current query.
         self.items = items
         # The number of entries returned per page in the current query.
         self.page_size = page_size
-        # The request ID, which can be used to locate the current API call.
+        # The request ID. You can use the ID to locate this API call.
         self.request_id = request_id
         # The total number of entries that meet the current statistics or query scope.
         self.total_count = total_count
@@ -102,9 +102,9 @@ class ListColumnsResponseBodyItems(DaraModel):
         sensitive: bool = None,
         table_name: str = None,
     ):
-        # The creation time of the data object. The value is a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC.
+        # The creation time of the data object. The value is a UNIX timestamp that represents the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.creation_time = creation_time
-        # The cloud instance identity.
+        # The instance identity of the cloud instance.
         self.data_asset_source_id = data_asset_source_id
         # The name of the database.
         self.data_source_name = data_source_name
@@ -114,7 +114,7 @@ class ListColumnsResponseBodyItems(DaraModel):
         self.engine_type = engine_type
         # The instance identity of the cloud instance to which the column belongs. This is a compatible field.
         self.instance_name = instance_name
-        # The compatibility field for the column encryption status. To query column encryption results, call ListDataMaskingColumns.
+        # The compatibility field for the column encryption status. To query the column encryption results, call ListDataMaskingColumns.
         self.masking_status = masking_status
         # The name of the data column.
         self.name = name

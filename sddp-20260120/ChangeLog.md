@@ -1,3 +1,6 @@
+2026-11-11 Version: 1.0.6
+- Generated python 2026-01-20 for Sddp.
+
 2026-10-26 Version: 1.0.5
 - Update API CreateDataMaskingRule: add request parameters UserList.$.AuthDb.
 - Update API ListDataAssetAccounts: add request parameters AuthDb.

@@ -14,6 +14,7 @@ class ListColumnsRequest(DaraModel):
         instance_name: str = None,
         lang: str = None,
         name: str = None,
+        only_column_name: int = None,
         page_size: int = None,
         product_code: str = None,
         risk_level_id: int = None,
@@ -23,29 +24,31 @@ class ListColumnsRequest(DaraModel):
     ):
         # The page number of the current query. Pages start from 1.
         self.current_page = current_page
-        # The cloud database instance identity. Set this parameter to the InstanceId in the instance list.
+        # The instance identity of the cloud database. Set this parameter to the InstanceId in the instance list.
         self.data_asset_source_id = data_asset_source_id
         # The name of the database. Set this parameter to the DbName returned by ListDataSources.
         self.data_source_name = data_source_name
         # The type of the database engine. This parameter must be consistent with the EngineType of the target instance, such as MySQL or PostgreSQL.
         self.engine_type = engine_type
-        # The compatible parameter for the instance identity. DataAssetSourceId takes precedence. If both are specified, DataAssetSourceId is used.
+        # The compatible parameter for the instance identity. DataAssetSourceId takes precedence. If both parameters are specified, DataAssetSourceId is used.
         self.instance_name = instance_name
-        # The language of the response description. Valid values: zh: Chinese; en: English.
+        # The language of the response description. Valid values: zh: Chinese. en: English.
         self.lang = lang
         # The filter condition for the column name.
         self.name = name
+        # Specifies whether the API operation returns only column names.
+        self.only_column_name = only_column_name
         # The number of entries to return on each page. Keep other filter conditions consistent when querying the next page.
         self.page_size = page_size
         # The code of the cloud service. Column encryption supports RDS, POLARDB, and PolarDBX2. If ProductId is also specified, the two parameters must match.
         self.product_code = product_code
-        # The identifier of the sensitivity level. You can obtain this value from the return list of ListRiskLevels.
+        # The identifier of the sensitivity level. You can obtain the value from the return list of ListRiskLevels.
         self.risk_level_id = risk_level_id
         # The identifier of the detection rule or model. Set this parameter to the ID of the corresponding detection rule in the target template.
         self.rule_id = rule_id
         # The name of the data table. In PostgreSQL or Oracle scenarios, retain the schema.table format obtained from the table list.
         self.table_name = table_name
-        # The identifier of the data classification and grading template. You can obtain this value from Items[].Id returned by ListTemplates. Keep this parameter consistent with the selected sensitivity level and detection model.
+        # The identifier of the data classification template. You can obtain the value from Items[].Id returned by ListTemplates. Keep this parameter consistent with the selected sensitivity level and detection model.
         self.template_id = template_id
 
     def validate(self):
@@ -76,6 +79,9 @@ class ListColumnsRequest(DaraModel):
 
         if self.name is not None:
             result['Name'] = self.name
+
+        if self.only_column_name is not None:
+            result['OnlyColumnName'] = self.only_column_name
 
         if self.page_size is not None:
             result['PageSize'] = self.page_size
@@ -119,6 +125,9 @@ class ListColumnsRequest(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('OnlyColumnName') is not None:
+            self.only_column_name = m.get('OnlyColumnName')
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
