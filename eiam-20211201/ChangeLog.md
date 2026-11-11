@@ -1,3 +1,12 @@
+2026-11-11 Version: 3.2.0
+- Support API GetCloudAccountResource.
+- Support API GetInventorySynchronizationJob.
+- Support API ListCloudAccountResources.
+- Support API ListCloudAccountResourcesForCloudPermissionTemplate.
+- Support API ListInventorySynchronizationJobs.
+- Support API RunInventorySynchronizationJob.
+
+
 2026-11-06 Version: 3.1.0
 - Support API ActivateCloudAccountPrivilege.
 - Support API CreateCloudPermissionTemplate.

@@ -15,7 +15,7 @@ class GetCloudPermissionTemplateResponseBody(DaraModel):
     ):
         # The permission template.
         self.cloud_permission_template = cloud_permission_template
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -69,29 +69,36 @@ class GetCloudPermissionTemplateResponseBodyCloudPermissionTemplate(DaraModel):
         status: str = None,
         update_time: int = None,
     ):
-        # Specifies whether users are allowed to request the permission.
+        # Specifies whether users are allowed to apply for the permission template.
         self.allow_request = allow_request
-        # The applicable scope of the permission template.
+        # The applicable scope for applying for the permission template.
         self.applicable_scope = applicable_scope
-        # The ID of the cloud account to which the template belongs.
+        # The ID of the cloud account to which the permission template belongs.
         self.cloud_account_id = cloud_account_id
-        # The creator information of the permission template.
+        # The information about the creator of the permission template.
         self.cloud_permission_template_creator = cloud_permission_template_creator
         # The unique identifier of the permission template.
         self.cloud_permission_template_id = cloud_permission_template_id
-        # The initialization result. This parameter is returned only when the status is init_failed.
+        # The initialization result. This field is returned only when the status is init_failed.
         self.cloud_permission_template_init_result = cloud_permission_template_init_result
         # The name of the permission template.
         self.cloud_permission_template_name = cloud_permission_template_name
-        # The ID of the application to which the exclusive template belongs. This parameter is empty for shared templates.
+        # The ID of the application that owns the exclusive template. This field is empty for shared templates.
         self.cloud_permission_template_owner_id = cloud_permission_template_owner_id
-        # The owner type of the exclusive template. Valid values: application (M2M applications) and user (human users). This parameter is empty for shared templates.
+        # The owner type of the exclusive template. Valid values:
+        # - application: M2M application.
+        # - user: Human user.
+        # This field is empty for shared templates.
         self.cloud_permission_template_owner_type = cloud_permission_template_owner_type
-        # The sharing mode of the permission template. Valid values: shared and exclusive.
+        # The sharing mode of the permission template. Valid values:
+        # - shared: Shared.
+        # - exclusive: Exclusive.
         self.cloud_permission_template_sharing_mode = cloud_permission_template_sharing_mode
-        # The usage type of the permission template. Valid values: user (privilege escalation for human users) and application (privilege escalation for M2M applications).
+        # The usage type of the permission template. Valid values:
+        # - user: Privilege escalation for human users.
+        # - application: Privilege escalation for machine-to-machine (M2M) applications.
         self.cloud_permission_template_usage_type = cloud_permission_template_usage_type
-        # The creation time. The value is a UNIX timestamp in milliseconds.
+        # The time when the permission template was created. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The description of the permission template.
         self.description = description
@@ -101,11 +108,15 @@ class GetCloudPermissionTemplateResponseBodyCloudPermissionTemplate(DaraModel):
         self.permission_entity_external_id = permission_entity_external_id
         # The ID of the associated CloudAccountRole.
         self.permission_entity_id = permission_entity_id
-        # The permission entity type. Fixed value: cloud_account_role.
+        # The type of the permission entity. Fixed value: cloud_account_role.
         self.permission_entity_type = permission_entity_type
-        # The status of the permission template. Valid values: initializing, init_failed, enabled, and disabled.
+        # The status of the permission template. Valid values:
+        # - initializing: The template is being initialized.
+        # - init_failed: The template initialization failed.
+        # - enabled: The template is enabled.
+        # - disabled: The template is disabled.
         self.status = status
-        # The last update time. The value is a UNIX timestamp in milliseconds.
+        # The time when the permission template was last updated. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -251,11 +262,13 @@ class GetCloudPermissionTemplateResponseBodyCloudPermissionTemplateCloudPermissi
         error_message: str = None,
         result: str = None,
     ):
-        # The error code returned when initialization fails.
+        # The error code returned when the initialization fails.
         self.error_code = error_code
-        # The error message returned when initialization fails.
+        # The error message returned when the initialization fails.
         self.error_message = error_message
-        # The initialization result. Valid values: success and failed.
+        # The initialization result. Valid values:
+        # - success: The initialization succeeded.
+        # - failed: The initialization failed.
         self.result = result
 
     def validate(self):
@@ -301,7 +314,9 @@ class GetCloudPermissionTemplateResponseBodyCloudPermissionTemplateCloudPermissi
         self.creator_id = creator_id
         # The name of the creator.
         self.creator_name = creator_name
-        # The type of the creator. Valid values: idaas_admin and idaas_user.
+        # The type of the creator. Valid values:
+        # - idaas_admin: IDaaS administrator.
+        # - idaas_user: IDaaS user.
         self.creator_type = creator_type
 
     def validate(self):
@@ -344,13 +359,15 @@ class GetCloudPermissionTemplateResponseBodyCloudPermissionTemplateApplicableSco
         scope_type: str = None,
         user_ids: List[str] = None,
     ):
-        # The list of specified group IDs. This parameter has a value only when ScopeType is set to custom.
+        # The list of specified group IDs. This field is returned only when ScopeType is set to custom.
         self.group_ids = group_ids
-        # The list of specified organizational unit IDs. This parameter has a value only when ScopeType is set to custom.
+        # The list of specified organizational unit IDs. This field is returned only when ScopeType is set to custom.
         self.organizational_unit_ids = organizational_unit_ids
-        # The type of the applicable scope. Valid values: global and custom.
+        # The type of the applicable scope. Valid values:
+        # - global: Global.
+        # - custom: Custom.
         self.scope_type = scope_type
-        # The list of specified user IDs. This parameter has a value only when ScopeType is set to custom.
+        # The list of specified user IDs. This field is returned only when ScopeType is set to custom.
         self.user_ids = user_ids
 
     def validate(self):

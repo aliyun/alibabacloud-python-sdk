@@ -14,13 +14,13 @@ class ListIdentityProvidersRequest(DaraModel):
     ):
         # The direction of the identity provider.
         self.direction = direction
-        # Instance ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Page number.
+        # The page number.
         self.page_number = page_number
-        # Page size.
+        # The page size.
         self.page_size = page_size
 
     def validate(self):

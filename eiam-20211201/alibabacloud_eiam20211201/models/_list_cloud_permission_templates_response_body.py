@@ -18,13 +18,13 @@ class ListCloudPermissionTemplatesResponseBody(DaraModel):
     ):
         # The list of cloud permission templates.
         self.cloud_permission_templates = cloud_permission_templates
-        # The maximum number of items per page for a paged query.
+        # The maximum number of entries per page in a paging query.
         self.max_results = max_results
-        # The pagination token returned by the current call for the next query.
+        # The pagination token returned by the current call for subsequent queries.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of items.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -106,7 +106,7 @@ class ListCloudPermissionTemplatesResponseBodyCloudPermissionTemplates(DaraModel
         self.allow_request = allow_request
         # The applicable scope of the permission template.
         self.applicable_scope = applicable_scope
-        # The ID of the cloud account to which the template belongs.
+        # The ID of the cloud account to which the resource belongs.
         self.cloud_account_id = cloud_account_id
         # The creator information of the permission template.
         self.cloud_permission_template_creator = cloud_permission_template_creator

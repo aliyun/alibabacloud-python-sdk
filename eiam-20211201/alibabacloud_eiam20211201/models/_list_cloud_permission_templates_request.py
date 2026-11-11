@@ -16,15 +16,15 @@ class ListCloudPermissionTemplatesRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # The ID of the cloud account.
+        # The cloud account ID.
         # 
         # This parameter is required.
         self.cloud_account_id = cloud_account_id
-        # Filters the results by the prefix of the template name.
+        # Filters the results by template name prefix.
         self.cloud_permission_template_name_prefix = cloud_permission_template_name_prefix
-        # Filters the results by permission template sharing mode. Valid values: shared and exclusive. If you do not specify this parameter, no filtering is applied.
+        # Filters the results by permission template sharing mode. Valid values: shared and exclusive. If this parameter is not specified, no filtering is applied.
         self.cloud_permission_template_sharing_mode = cloud_permission_template_sharing_mode
-        # Filters the results by permission template usage type. Valid values: user (privilege escalation for human users) and application (privilege escalation for machine-to-machine applications).
+        # Filters the results by permission template usage type. Valid values: user (privilege escalation for human users) and application (privilege escalation for M2M applications).
         self.cloud_permission_template_usage_type = cloud_permission_template_usage_type
         # Filters the results by creator type. Valid values: idaas_admin and idaas_user.
         self.creator_type = creator_type
@@ -32,9 +32,9 @@ class ListCloudPermissionTemplatesRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The maximum number of entries to return per page in a paging query. Default value: 20. Maximum value: 100.
+        # The number of entries per page for paging. Default value: 20. Maximum value: 100.
         self.max_results = max_results
-        # The pagination token. Set the value to the NextToken value returned from the previous call.
+        # The pagination token. Set this parameter to the NextToken value returned from the previous API call.
         self.next_token = next_token
 
     def validate(self):

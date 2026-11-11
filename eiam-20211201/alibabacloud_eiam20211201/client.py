@@ -13402,6 +13402,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_cloud_account_with_options_async(request, runtime)
 
+    def get_cloud_account_resource_with_options(
+        self,
+        request: main_models.GetCloudAccountResourceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCloudAccountResourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cloud_account_id):
+            query['CloudAccountId'] = request.cloud_account_id
+        if not DaraCore.is_null(request.cloud_account_resource_id):
+            query['CloudAccountResourceId'] = request.cloud_account_resource_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCloudAccountResource',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCloudAccountResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_cloud_account_resource_with_options_async(
+        self,
+        request: main_models.GetCloudAccountResourceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCloudAccountResourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cloud_account_id):
+            query['CloudAccountId'] = request.cloud_account_id
+        if not DaraCore.is_null(request.cloud_account_resource_id):
+            query['CloudAccountResourceId'] = request.cloud_account_resource_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCloudAccountResource',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCloudAccountResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_cloud_account_resource(
+        self,
+        request: main_models.GetCloudAccountResourceRequest,
+    ) -> main_models.GetCloudAccountResourceResponse:
+        runtime = RuntimeOptions()
+        return self.get_cloud_account_resource_with_options(request, runtime)
+
+    async def get_cloud_account_resource_async(
+        self,
+        request: main_models.GetCloudAccountResourceRequest,
+    ) -> main_models.GetCloudAccountResourceResponse:
+        runtime = RuntimeOptions()
+        return await self.get_cloud_account_resource_with_options_async(request, runtime)
+
     def get_cloud_account_role_with_options(
         self,
         request: main_models.GetCloudAccountRoleRequest,
@@ -15229,6 +15307,80 @@ class Client(OpenApiClient):
     ) -> main_models.GetInstanceTrialStatusResponse:
         runtime = RuntimeOptions()
         return await self.get_instance_trial_status_with_options_async(request, runtime)
+
+    def get_inventory_synchronization_job_with_options(
+        self,
+        request: main_models.GetInventorySynchronizationJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInventorySynchronizationJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.inventory_synchronization_job_id):
+            query['InventorySynchronizationJobId'] = request.inventory_synchronization_job_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetInventorySynchronizationJob',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetInventorySynchronizationJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_inventory_synchronization_job_with_options_async(
+        self,
+        request: main_models.GetInventorySynchronizationJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInventorySynchronizationJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.inventory_synchronization_job_id):
+            query['InventorySynchronizationJobId'] = request.inventory_synchronization_job_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetInventorySynchronizationJob',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetInventorySynchronizationJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_inventory_synchronization_job(
+        self,
+        request: main_models.GetInventorySynchronizationJobRequest,
+    ) -> main_models.GetInventorySynchronizationJobResponse:
+        runtime = RuntimeOptions()
+        return self.get_inventory_synchronization_job_with_options(request, runtime)
+
+    async def get_inventory_synchronization_job_async(
+        self,
+        request: main_models.GetInventorySynchronizationJobRequest,
+    ) -> main_models.GetInventorySynchronizationJobResponse:
+        runtime = RuntimeOptions()
+        return await self.get_inventory_synchronization_job_with_options_async(request, runtime)
 
     def get_login_redirect_application_for_brand_with_options(
         self,
@@ -18278,6 +18430,190 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_client_public_keys_with_options_async(request, runtime)
 
+    def list_cloud_account_resources_with_options(
+        self,
+        request: main_models.ListCloudAccountResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCloudAccountResourcesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cloud_account_id):
+            query['CloudAccountId'] = request.cloud_account_id
+        if not DaraCore.is_null(request.cloud_account_resource_entity_type):
+            query['CloudAccountResourceEntityType'] = request.cloud_account_resource_entity_type
+        if not DaraCore.is_null(request.cloud_account_resource_name_contains):
+            query['CloudAccountResourceNameContains'] = request.cloud_account_resource_name_contains
+        if not DaraCore.is_null(request.cloud_account_resource_name_prefix):
+            query['CloudAccountResourceNamePrefix'] = request.cloud_account_resource_name_prefix
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCloudAccountResources',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCloudAccountResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cloud_account_resources_with_options_async(
+        self,
+        request: main_models.ListCloudAccountResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCloudAccountResourcesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cloud_account_id):
+            query['CloudAccountId'] = request.cloud_account_id
+        if not DaraCore.is_null(request.cloud_account_resource_entity_type):
+            query['CloudAccountResourceEntityType'] = request.cloud_account_resource_entity_type
+        if not DaraCore.is_null(request.cloud_account_resource_name_contains):
+            query['CloudAccountResourceNameContains'] = request.cloud_account_resource_name_contains
+        if not DaraCore.is_null(request.cloud_account_resource_name_prefix):
+            query['CloudAccountResourceNamePrefix'] = request.cloud_account_resource_name_prefix
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCloudAccountResources',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCloudAccountResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cloud_account_resources(
+        self,
+        request: main_models.ListCloudAccountResourcesRequest,
+    ) -> main_models.ListCloudAccountResourcesResponse:
+        runtime = RuntimeOptions()
+        return self.list_cloud_account_resources_with_options(request, runtime)
+
+    async def list_cloud_account_resources_async(
+        self,
+        request: main_models.ListCloudAccountResourcesRequest,
+    ) -> main_models.ListCloudAccountResourcesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_cloud_account_resources_with_options_async(request, runtime)
+
+    def list_cloud_account_resources_for_cloud_permission_template_with_options(
+        self,
+        request: main_models.ListCloudAccountResourcesForCloudPermissionTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCloudAccountResourcesForCloudPermissionTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cloud_account_id):
+            query['CloudAccountId'] = request.cloud_account_id
+        if not DaraCore.is_null(request.cloud_account_resource_entity_type):
+            query['CloudAccountResourceEntityType'] = request.cloud_account_resource_entity_type
+        if not DaraCore.is_null(request.cloud_permission_template_id):
+            query['CloudPermissionTemplateId'] = request.cloud_permission_template_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCloudAccountResourcesForCloudPermissionTemplate',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCloudAccountResourcesForCloudPermissionTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cloud_account_resources_for_cloud_permission_template_with_options_async(
+        self,
+        request: main_models.ListCloudAccountResourcesForCloudPermissionTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCloudAccountResourcesForCloudPermissionTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cloud_account_id):
+            query['CloudAccountId'] = request.cloud_account_id
+        if not DaraCore.is_null(request.cloud_account_resource_entity_type):
+            query['CloudAccountResourceEntityType'] = request.cloud_account_resource_entity_type
+        if not DaraCore.is_null(request.cloud_permission_template_id):
+            query['CloudPermissionTemplateId'] = request.cloud_permission_template_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCloudAccountResourcesForCloudPermissionTemplate',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCloudAccountResourcesForCloudPermissionTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cloud_account_resources_for_cloud_permission_template(
+        self,
+        request: main_models.ListCloudAccountResourcesForCloudPermissionTemplateRequest,
+    ) -> main_models.ListCloudAccountResourcesForCloudPermissionTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.list_cloud_account_resources_for_cloud_permission_template_with_options(request, runtime)
+
+    async def list_cloud_account_resources_for_cloud_permission_template_async(
+        self,
+        request: main_models.ListCloudAccountResourcesForCloudPermissionTemplateRequest,
+    ) -> main_models.ListCloudAccountResourcesForCloudPermissionTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.list_cloud_account_resources_for_cloud_permission_template_with_options_async(request, runtime)
+
     def list_cloud_account_roles_with_options(
         self,
         request: main_models.ListCloudAccountRolesRequest,
@@ -20355,6 +20691,100 @@ class Client(OpenApiClient):
     ) -> main_models.ListInstancesResponse:
         runtime = RuntimeOptions()
         return await self.list_instances_with_options_async(request, runtime)
+
+    def list_inventory_synchronization_jobs_with_options(
+        self,
+        request: main_models.ListInventorySynchronizationJobsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInventorySynchronizationJobsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.inventory_source_ids):
+            query['InventorySourceIds'] = request.inventory_source_ids
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInventorySynchronizationJobs',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInventorySynchronizationJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_inventory_synchronization_jobs_with_options_async(
+        self,
+        request: main_models.ListInventorySynchronizationJobsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInventorySynchronizationJobsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.inventory_source_ids):
+            query['InventorySourceIds'] = request.inventory_source_ids
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInventorySynchronizationJobs',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInventorySynchronizationJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_inventory_synchronization_jobs(
+        self,
+        request: main_models.ListInventorySynchronizationJobsRequest,
+    ) -> main_models.ListInventorySynchronizationJobsResponse:
+        runtime = RuntimeOptions()
+        return self.list_inventory_synchronization_jobs_with_options(request, runtime)
+
+    async def list_inventory_synchronization_jobs_async(
+        self,
+        request: main_models.ListInventorySynchronizationJobsRequest,
+    ) -> main_models.ListInventorySynchronizationJobsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_inventory_synchronization_jobs_with_options_async(request, runtime)
 
     def list_network_access_endpoint_available_regions_with_options(
         self,
@@ -23683,6 +24113,84 @@ class Client(OpenApiClient):
     ) -> main_models.RevokeResourceServerScopesFromUserResponse:
         runtime = RuntimeOptions()
         return await self.revoke_resource_server_scopes_from_user_with_options_async(request, runtime)
+
+    def run_inventory_synchronization_job_with_options(
+        self,
+        request: main_models.RunInventorySynchronizationJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RunInventorySynchronizationJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.inventory_source_id):
+            query['InventorySourceId'] = request.inventory_source_id
+        if not DaraCore.is_null(request.inventory_types):
+            query['InventoryTypes'] = request.inventory_types
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RunInventorySynchronizationJob',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RunInventorySynchronizationJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_inventory_synchronization_job_with_options_async(
+        self,
+        request: main_models.RunInventorySynchronizationJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RunInventorySynchronizationJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.inventory_source_id):
+            query['InventorySourceId'] = request.inventory_source_id
+        if not DaraCore.is_null(request.inventory_types):
+            query['InventoryTypes'] = request.inventory_types
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RunInventorySynchronizationJob',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RunInventorySynchronizationJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_inventory_synchronization_job(
+        self,
+        request: main_models.RunInventorySynchronizationJobRequest,
+    ) -> main_models.RunInventorySynchronizationJobResponse:
+        runtime = RuntimeOptions()
+        return self.run_inventory_synchronization_job_with_options(request, runtime)
+
+    async def run_inventory_synchronization_job_async(
+        self,
+        request: main_models.RunInventorySynchronizationJobRequest,
+    ) -> main_models.RunInventorySynchronizationJobResponse:
+        runtime = RuntimeOptions()
+        return await self.run_inventory_synchronization_job_with_options_async(request, runtime)
 
     def run_synchronization_job_with_options(
         self,

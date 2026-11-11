@@ -12,7 +12,7 @@ class UnbindUserAuthnSourceMappingRequest(DaraModel):
         user_external_id: str = None,
         user_id: str = None,
     ):
-        # The source IdP ID.
+        # The identity provider ID.
         # 
         # This parameter is required.
         self.identity_provider_id = identity_provider_id

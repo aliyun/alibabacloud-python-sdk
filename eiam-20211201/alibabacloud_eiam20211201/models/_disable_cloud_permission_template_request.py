@@ -11,11 +11,11 @@ class DisableCloudPermissionTemplateRequest(DaraModel):
         cloud_permission_template_id: str = None,
         instance_id: str = None,
     ):
-        # The cloud account ID.
+        # The ID of the cloud account.
         # 
         # This parameter is required.
         self.cloud_account_id = cloud_account_id
-        # The permission template ID.
+        # The ID of the permission template.
         # 
         # This parameter is required.
         self.cloud_permission_template_id = cloud_permission_template_id

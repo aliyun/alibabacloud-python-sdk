@@ -10,9 +10,11 @@ class GetGlobalCloudAccountSystemRolePolicyResponseBody(DaraModel):
         policy_document: str = None,
         request_id: str = None,
     ):
+        # The access policy document for the global cloud account system role (JSON character string).
+        # 
         # This parameter is required.
         self.policy_document = policy_document
-        # 本次请求的唯一标识。
+        # The unique identifier of the request.
         # 
         # This parameter is required.
         self.request_id = request_id
