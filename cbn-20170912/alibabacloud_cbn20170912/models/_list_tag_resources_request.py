@@ -21,21 +21,21 @@ class ListTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
-        # Specifies whether a next query token exists. Valid values:
+        # The token for the next query. Valid values:
         # 
-        # - If this is the first query or no next query exists, you do not need to specify this parameter.
+        # - If this is the first query or no next query is required, leave this parameter empty.
         # 
-        # - If a next query exists, set the value to the NextToken value returned by the previous API call.
+        # - If a next query is required, set the value to the NextToken value returned from the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of entries per page for a paged query. Valid values: **1** to **50**. Default value: **10**.
+        # The number of entries to return per page. Valid values: **1** to **50**. Default value: **10**.
         self.page_size = page_size
         # The region ID of the resource instance.
         # 
-        # This parameter is not required when the resource type is Cen or BandwidthPackage. This parameter is required for all other resource types.
+        # This parameter is not required when the resource type is Cen or BandwidthPackage. It is required for other resource types.
         self.region_id = region_id
-        # The CEN instance ID.
+        # The ID of the CEN instance.
         # 
         # You can specify up to 20 CEN instance IDs at a time.
         self.resource_id = resource_id
@@ -43,25 +43,25 @@ class ListTagResourcesRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The resource type. Valid values:
         # 
-        # **Cen**: CEN instance.
+        # **Cen**: CEN instance
         # 
-        # **BandwidthPackage**: bandwidth package instance.
+        # **BandwidthPackage**: bandwidth plan instance
         # 
-        # **TransitRouter**: transit router instance.
+        # **TransitRouter**: transit router instance
         # 
-        # **TransitRouterVpcAttachment**: VPC connection instance.
+        # **TransitRouterVpcAttachment**: VPC connection instance
         # 
-        # **TransitRouterVbrAttachment**: VBR connection instance.
+        # **TransitRouterVbrAttachment**: VBR connection instance
         # 
-        # **TransitRouterPeerAttachment**: inter-region connection instance.
+        # **TransitRouterPeerAttachment**: inter-region connection instance
         # 
-        # **TransitRouterVpnAttachment**: VPN connection instance.
+        # **TransitRouterVpnAttachment**: VPN connection instance
         # 
-        # **TransitRouterRouteTable**: route table instance.
+        # **TransitRouterRouteTable**: route table instance
         # 
-        # **Flowlog**: flow log instance.
+        # **Flowlog**: flow log instance
         # 
-        # **TransitRouterMulticastDomain**: multicast domain instance.
+        # **TransitRouterMulticastDomain**: multicast domain instance
         # 
         # This parameter is required.
         self.resource_type = resource_type
@@ -160,13 +160,13 @@ class ListTagResourcesRequestTag(DaraModel):
     ):
         # The tag key.
         # 
-        # A tag key can contain up to 64 characters and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # A tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         # 
         # You can specify up to 20 tag keys at a time.
         self.key = key
         # The tag value.
         # 
-        # A tag value can contain up to 128 characters and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # A tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         # 
         # You can specify up to 20 tag values at a time.
         self.value = value

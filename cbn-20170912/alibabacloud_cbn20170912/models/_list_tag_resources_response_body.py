@@ -14,11 +14,11 @@ class ListTagResourcesResponseBody(DaraModel):
         request_id: str = None,
         tag_resources: main_models.ListTagResourcesResponseBodyTagResources = None,
     ):
-        # Indicates whether a next query token exists. Valid values:
+        # The token for the next query. Valid values:
         # 
-        # - If **NextToken** is empty, no next query exists.
+        # - If **NextToken** is empty, no next query is required.
         # 
-        # - If **NextToken** is returned, the value indicates the token for the next query.
+        # - If **NextToken** has a return value, the value indicates the token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id

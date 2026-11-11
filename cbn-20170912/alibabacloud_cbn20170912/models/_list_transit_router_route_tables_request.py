@@ -24,11 +24,11 @@ class ListTransitRouterRouteTablesRequest(DaraModel):
         transit_router_route_table_status: str = None,
         transit_router_route_table_type: str = None,
     ):
-        # The number of entries per page when entries are returned by page. Valid values: **1** to **100**. Default value: **20**.
+        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
-        # - You do not need to specify this parameter for the first request or if no subsequent query exists.
-        # - If a next query exists, set this parameter to the value of **NextToken** returned in the previous API call.
+        # The token for the next query. Valid values:
+        # - If this is your first query or no next query is to be sent, ignore this parameter.
+        # - If a next query is to be sent, set the value to the **NextToken** value returned from the last API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -40,23 +40,23 @@ class ListTransitRouterRouteTablesRequest(DaraModel):
         # 
         # You can specify up to 20 tags at a time.
         self.tag = tag
-        # The instance ID of the Enterprise Edition transit router.
+        # The instance ID of the Enterprise Edition transit router, which is used to forward routing information.
         self.transit_router_id = transit_router_id
-        # The ID of the route table.
+        # The IDs of the route tables.
         # 
         # You can query multiple route tables at a time. Maximum value of **N**: **20**.
         self.transit_router_route_table_ids = transit_router_route_table_ids
-        # The name of the route table.
+        # The names of the route tables.
         # 
         # You can query multiple route tables at a time. Maximum value of **N**: **20**.
         # 
-        # > If you specify both **TransitRouterRouteTableNames.N** and **TransitRouterRouteTableIds.N**, the route table names and route table IDs must correspond to each other.
+        # > If you specify both **TransitRouterRouteTableNames.N** and **TransitRouterRouteTableIds.N**, the names and IDs of the route tables must match.
         self.transit_router_route_table_names = transit_router_route_table_names
         # The status of the route table. Valid values:
         # 
-        # - **Creating**: being created.
-        # - **Deleting**: being deleted.
-        # - **Active**: active.
+        # - **Creating**: The route table is being created.
+        # - **Deleting**: The route table is being deleted.
+        # - **Active**: The route table is available.
         self.transit_router_route_table_status = transit_router_route_table_status
         # The type of the route table. Valid values:
         # 
@@ -175,15 +175,15 @@ class ListTransitRouterRouteTablesRequestTag(DaraModel):
     ):
         # The tag key of the resource.
         # 
-        # Once specified, the tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag key cannot be an empty string. It can be up to 64 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         # 
         # You can specify up to 20 tag keys at a time.
         self.key = key
         # The tag value of the resource.
         # 
-        # The tag value can be an empty string or up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # The tag value can be an empty string or a string up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         # 
-        # Each tag key corresponds to one tag value. You can specify up to 20 tag values at a time.
+        # Each tag key corresponds to a tag value. You can specify up to 20 tag values at a time.
         self.value = value
 
     def validate(self):
@@ -217,9 +217,9 @@ class ListTransitRouterRouteTablesRequestRouteTableOptions(DaraModel):
         self,
         multi_region_ecmp: str = None,
     ):
-        # Multi-region equal-cost multi-path (ECMP) routing. Valid values:
-        # - **disable**: Disables multi-region ECMP routing. After multi-region ECMP routing is disabled, routes with the same prefix learned from different regions select the transit router (TR) with the smallest Region ID (sorted alphabetically) as the next hop when other route attributes are the same. This changes the traffic latency and bandwidth consumed between different regions. Make sure that you fully evaluate the impact before disabling this feature.
-        # - **enable**: Enables multi-region ECMP routing. After multi-region ECMP routing is enabled, routes with the same prefix learned from different regions form ECMP routes when other route attributes are the same. This changes the traffic latency and bandwidth consumed between different regions. Make sure that you fully evaluate the impact before enabling this feature.
+        # The multi-region equal-cost multi-path (ECMP) routing feature. Valid values:
+        # - **disable**: disables multi-region ECMP routing. After you disable this feature, if routes with the same prefix are learned from different regions and have the same route attributes, the transit router with the smallest region ID (in alphabetical order) is preferred as the next hop. This changes the traffic latency and the bandwidth consumed between regions. Make sure that you fully evaluate the impact before you disable this feature.
+        # - **enable**: enables multi-region ECMP routing. After you enable this feature, if routes with the same prefix are learned from different regions and have the same route attributes, ECMP routing is formed. This changes the traffic latency and the bandwidth consumed between regions. Make sure that you fully evaluate the impact before you enable this feature.
         self.multi_region_ecmp = multi_region_ecmp
 
     def validate(self):

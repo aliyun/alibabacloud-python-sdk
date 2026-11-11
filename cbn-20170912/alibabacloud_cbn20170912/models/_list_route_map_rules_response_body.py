@@ -16,12 +16,12 @@ class ListRouteMapRulesResponseBody(DaraModel):
         route_map_rules: List[main_models.ListRouteMapRulesResponseBodyRouteMapRules] = None,
         total_count: int = None,
     ):
-        # The number of entries returned on each page in a paginated query.
+        # The number of entries returned on each page.
         self.max_results = max_results
-        # The token for the next query. Valid values:
+        # The token that is used to retrieve the next page of results. Valid values:
         # 
-        # - If **NextToken** is empty, no next query is available.
-        # - If **NextToken** has a return value, the value indicates the token for the next query.
+        # - If **NextToken** is empty, no next page exists.
+        # - If **NextToken** has a return value, the value indicates the token used to start the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -96,7 +96,7 @@ class ListRouteMapRulesResponseBodyRouteMapRules(DaraModel):
     ):
         # The description of the rule.
         self.description = description
-        # The match conditions of the route map rule. The system executes the actions defined in **SetActions** only when a route meets all the match conditions defined in this parameter.
+        # The match conditions of the route map rule. The system performs the actions defined in **SetActions** only if a route meets all the match conditions defined in this parameter.
         self.match_conditions = match_conditions
         # The name of the rule.
         self.name = name
@@ -106,7 +106,7 @@ class ListRouteMapRulesResponseBodyRouteMapRules(DaraModel):
         self.route_map_id = route_map_id
         # The ID of the route map rule.
         self.route_map_rule_id = route_map_rule_id
-        # The actions to execute for the route map rule. After a route meets all the match conditions defined in **MatchConditions**, the system processes the route based on the actions defined in this parameter.
+        # The actions to perform for the route map rule. After a route meets all the match conditions defined in **MatchConditions**, the system processes the route based on the actions defined in this parameter.
         self.set_actions = set_actions
         # The status of the route map rule. Valid values:
         # 
@@ -194,13 +194,13 @@ class ListRouteMapRulesResponseBodyRouteMapRulesSetActions(DaraModel):
         next_priority: int = None,
         route_action: str = None,
     ):
-        # The AS path to prepend when the regional gateway receives or advertises routes.
+        # The AS path to prepend when the regional gateway accepts or publishes routing entries.
         # 
         # This parameter and **AsPathReplace** are mutually exclusive and cannot be specified at the same time.
         # 
         # This parameter specifies the action to execute after a route meets the match conditions.
         self.as_path_prepend = as_path_prepend
-        # The AS path to replace when the regional gateway receives or advertises routes. The original AS path of the route is replaced with the list of AS numbers specified in this parameter.
+        # The AS path to replace when the regional gateway accepts or publishes routing entries. The original AS path of the route is replaced with the list of AS numbers specified in this parameter.
         # 
         # This parameter and **AsPathPrepend** are mutually exclusive and cannot be specified at the same time.
         # 
@@ -208,21 +208,21 @@ class ListRouteMapRulesResponseBodyRouteMapRulesSetActions(DaraModel):
         self.as_path_replace = as_path_replace
         # The community set to add to the route.
         # 
-        # Each community is in the format of n:m, where n and m range from **1** to **65535**. The community must comply with RFC 1997. Large communities (RFC 8092) are not supported.
+        # Each community is in the n:m format, where n and m range from **1** to **65535**. The community must comply with RFC 1997. Large communities (RFC 8092) are not supported.
         # 
         # This parameter and **CommunityReplace** are mutually exclusive and cannot be specified at the same time.
         # 
-        # This parameter specifies the action to execute after a route meets the match conditions.
+        # This parameter specifies the action to perform after a route meets the match conditions.
         # 
         # > Incorrect community configurations may prevent routes from being advertised to the on-premises data center.
         self.community_add = community_add
         # The community set to replace the original community of the route.
         # 
-        # Each community is in the format of n:m, where n and m range from **1** to **65535**. The community must comply with RFC 1997. Large communities (RFC 8092) are not supported.
+        # Each community is in the n:m format, where n and m range from **1** to **65535**. The community must comply with RFC 1997. Large communities (RFC 8092) are not supported.
         # 
         # This parameter and **CommunityAdd** are mutually exclusive and cannot be specified at the same time.
         # 
-        # This parameter specifies the action to execute after a route meets the match conditions.
+        # This parameter specifies the action to perform after a route meets the match conditions.
         # 
         # > Incorrect community configurations may prevent routes from being advertised to the on-premises data center.
         self.community_replace = community_replace
@@ -231,7 +231,7 @@ class ListRouteMapRulesResponseBodyRouteMapRulesSetActions(DaraModel):
         # - You can set policy priority of the associated route map rule only when **RouteAction** is set to **Permit**. Only the permitted routes continue to match the associated next route map rule.
         # - Policy priority of the associated next route map rule must be lower than policy priority of the current route map rule.
         self.next_priority = next_priority
-        # The policy action after all conditions are met. Valid values:
+        # The policy action to perform after all conditions are met. Valid values:
         # 
         # - **Permit**: permits the matched routes.
         # - **Deny**: denies the matched routes.
@@ -309,57 +309,57 @@ class ListRouteMapRulesResponseBodyRouteMapRulesMatchConditions(DaraModel):
         source_region_ids: List[str] = None,
         source_route_table_ids: List[str] = None,
     ):
-        # The route prefix list for fuzzy matching.
+        # The list of routing prefixes for fuzzy match.
         # 
-        # A match succeeds if the route prefix in the match condition contains the route prefix of the matched route.
+        # A match is successful if the route prefix in the match condition contains the route prefix of the matched route.
         # 
         # For example, a policy defined with 10.0.0.0/8 can fuzzy match a route with 10.10.10.0/24.
         # 
-        # IP address ranges use the CIDR format. Both IPv4 and IPv6 are supported.
+        # The IP CIDR blocks are in CIDR format and support IPv4 and IPv6.
         # 
         # This parameter and **AddressPrefixesMatch** are mutually exclusive and cannot be specified at the same time.
         self.address_prefixes_include = address_prefixes_include
-        # The route prefix list for exact matching.
+        # The list of routing prefixes for exact match.
         # 
-        # A match succeeds only when the route prefix in the match condition is exactly the same as the route prefix of the matched route.
+        # A match is successful only if the route prefix in the match condition is exactly the same as the route prefix of the matched route.
         # 
-        # For example, a policy defined with 10.0.0.0/8 can only exactly match a route with 10.0.0.0/8.
+        # For example, a policy defined with 10.0.0.0/8 can only exact match a route with 10.0.0.0/8.
         # 
-        # IP address ranges use the CIDR format. Both IPv4 and IPv6 are supported.
+        # The IP CIDR blocks are in CIDR format and support IPv4 and IPv6.
         # 
         # This parameter and **AddressPrefixesInclude** are mutually exclusive and cannot be specified at the same time.
         self.address_prefixes_match = address_prefixes_match
-        # The list of AS paths for fuzzy matching.
+        # The list of AS paths for fuzzy match.
         # 
-        # A match succeeds if the AS path in the match condition overlaps with the AS path of the matched route.
+        # A match is successful if the AS path in the match condition overlaps with the AS path of the matched route.
         # 
         # This parameter and **AsPathsMatch** are mutually exclusive and cannot be specified at the same time.
         # 
-        # > Only AS SEQUENCE is supported. AS SET, AS CONFED SEQUENCE, and AS CONFED SET are not supported. This means only a list of AS numbers is supported, and sets and sub-lists are not supported.
+        # > Only AS SEQUENCE is supported. AS SET, AS CONFED SEQUENCE, and AS CONFED SET are not supported. This means that only a list of AS numbers is supported, and sets and sublists are not supported.
         self.as_paths_include = as_paths_include
-        # The list of AS paths for exact matching.
+        # The list of AS paths for exact match.
         # 
-        # A match succeeds only when the AS path in the match condition is exactly the same as the AS path of the matched route.
+        # A match is successful only if the AS path in the match condition is exactly the same as the AS path of the matched route.
         # 
         # This parameter and **AsPathsInclude** are mutually exclusive and cannot be specified at the same time.
         # 
-        # > Only AS SEQUENCE is supported. AS SET, AS CONFED SEQUENCE, and AS CONFED SET are not supported. This means only a list of AS numbers is supported, and sets and sub-lists are not supported.
+        # > Only AS SEQUENCE is supported. AS SET, AS CONFED SEQUENCE, and AS CONFED SET are not supported. This means that only a list of AS numbers is supported, and sets and sublists are not supported.
         self.as_paths_match = as_paths_match
-        # The community set for fuzzy matching.
+        # The community set for fuzzy match.
         # 
-        # A match succeeds if the community in the match condition overlaps with the community of the matched route.
+        # A match is successful if the community in the match condition overlaps with the community of the matched route.
         # 
-        # Each community is in the format of n:m, where n and m range from **1** to **65535**. The community must comply with RFC 1997. Large communities (RFC 8092) are not supported.
+        # Each community is in the n:m format, where n and m range from **1** to **65535**. The community must comply with RFC 1997. Large communities (RFC 8092) are not supported.
         # 
         # This parameter and **CommunitySetMatch** are mutually exclusive and cannot be specified at the same time.
         # 
         # > Incorrect community configurations may prevent routes from being advertised to the on-premises data center.
         self.community_set_include = community_set_include
-        # The community set for exact matching.
+        # The community set for exact match.
         # 
-        # A match succeeds only when the community in the match condition is exactly the same as the community of the matched route.
+        # A match is successful only if the community in the match condition is exactly the same as the community of the matched route.
         # 
-        # Each community is in the format of n:m, where n and m range from **1** to **65535**. The community must comply with RFC 1997. Large communities (RFC 8092) are not supported.
+        # Each community is in the n:m format, where n and m range from **1** to **65535**. The community must comply with RFC 1997. Large communities (RFC 8092) are not supported.
         # 
         # This parameter and **CommunitySetInclude** are mutually exclusive and cannot be specified at the same time.
         # 
@@ -367,15 +367,15 @@ class ListRouteMapRulesResponseBodyRouteMapRulesMatchConditions(DaraModel):
         self.community_set_match = community_set_match
         # The list of destination instance IDs to match. The following instance types are supported:
         # 
-        # - Virtual private cloud (VPC) instance IDs
-        # - Virtual border router (VBR) instance IDs
+        # - Virtual Private Cloud (VPC) instance IDs
+        # - Virtual Border Router (VBR) instance IDs
         # 
         # > The list of destination instance IDs takes effect only when the direction of the route map is outbound.
         self.destination_instance_ids = destination_instance_ids
-        # Specifies whether to use the exclude matching mode for the list of destination instance IDs. Valid values:
+        # Specifies whether to use the reverse match mode for the list of destination instance IDs. Valid values:
         # 
-        # - **false** (default): no. A match succeeds when the destination instance ID of the route is in **DestinationInstanceIds.N**.
-        # - **true**: yes. A match succeeds when the destination instance ID of the route is not in **DestinationInstanceIds.N**.
+        # - **false** (default): no. A match is successful if the destination instance ID of the route is in **DestinationInstanceIds.N**.
+        # - **true**: yes. A match is successful if the destination instance ID of the route is not in **DestinationInstanceIds.N**.
         self.destination_instance_ids_reverse_match = destination_instance_ids_reverse_match
         # The list of destination instance types to match. The following instance types are supported:
         # 
@@ -395,25 +395,27 @@ class ListRouteMapRulesResponseBodyRouteMapRulesMatchConditions(DaraModel):
         # - **IPv4**: matches only IPv4 routes.
         # - **IPv6**: matches only IPv6 routes.
         # 
-        # You can leave this parameter empty to match routes of all types.
+        # If this parameter is left empty, all types of routes are matched.
         self.match_address_type = match_address_type
-        # The list of route types to match. The following route types are supported:
+        # The list of routing types to match. The following route types are supported:
         # 
         # - **System**: system route, which is automatically generated by the system.
-        # - **Custom**: custom route, which is manually added by a user.
+        # 
+        # - **Custom**: custom route, which is manually added by the user.
+        # 
         # - **BGP**: BGP route, which is propagated through the BGP routable protocol.
         # 
         # You can specify multiple route types.
         self.route_types = route_types
         # The list of source instance IDs to match. The following instance types are supported:
         # 
-        # - Virtual private cloud (VPC) instance IDs
-        # - Virtual border router (VBR) instance IDs
+        # - Virtual Private Cloud (VPC) instance IDs
+        # - Virtual Border Router (VBR) instance IDs
         self.source_instance_ids = source_instance_ids
-        # Specifies whether to use the exclude matching mode for the list of source instance IDs. Valid values:
+        # Specifies whether to use the reverse match mode for the list of source instance IDs. Valid values:
         # 
-        # - **false** (default): no. A match succeeds when the source instance ID of the route is in **SourceInstanceIds.N**.
-        # - **true**: yes. A match succeeds when the source instance ID of the route is not in **SourceInstanceIds.N**.
+        # - **false** (default): no. A match is successful if the source instance ID of the route is in **SourceInstanceIds.N**.
+        # - **true**: yes. A match is successful if the source instance ID of the route is not in **SourceInstanceIds.N**.
         self.source_instance_ids_reverse_match = source_instance_ids_reverse_match
         # The list of source instance types to match. The following instance types are supported:
         # 

@@ -17,9 +17,9 @@ class DescribeCensResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.cens = cens
-        # The page number.
+        # The page number of the returned page.
         self.page_number = page_number
-        # The number of entries per page in a paging query.
+        # The number of entries returned per page during paging in a paged query.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id

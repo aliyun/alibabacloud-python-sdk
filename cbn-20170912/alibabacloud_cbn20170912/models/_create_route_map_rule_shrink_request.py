@@ -18,18 +18,18 @@ class CreateRouteMapRuleShrinkRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can generate the parameter value on your client. Make sure that the token is unique across different requests. The client token supports only ASCII characters.
+        # You can generate the value from your client and ensure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters.
         # 
         # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
         # The detailed description of the rule. The description can be empty or 1 to 256 characters in length, and cannot start with http:// or https://.
         self.description = description
-        # Specifies whether to only precheck the request. Valid values:
+        # Specifies whether to perform a dry run of the request. Valid values:
         # 
-        # - **true**: Prechecks the request without creating the route map rule. The system checks whether required parameters are specified, the request format, and service limits. If the request fails the precheck, the corresponding error is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # - **false** (default): Sends the request. After the request passes the precheck, the route map rule is created.
+        # - **true**: performs a dry run without creating the route map rule. The system checks whether required parameters are specified, the request format, and service limits. If the request fails the dry run, an error is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        # - **false** (default): performs a normal request. If the request passes the dry run, the route map rule is created.
         self.dry_run = dry_run
-        # The match conditions of the route map rule. The system executes the actions defined in **SetActions** only when a route meets all the match conditions defined in this parameter.
+        # The match conditions of the route map rule. The system performs the actions defined in **SetActions** only when a route meets all the match conditions defined in this parameter.
         self.match_conditions_shrink = match_conditions_shrink
         # The name of the rule for easy identification. The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
         self.name = name
@@ -41,7 +41,7 @@ class CreateRouteMapRuleShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.route_map_id = route_map_id
-        # The actions to execute for the route map rule. After a route meets all the match conditions defined in **MatchConditions**, the system processes the route based on the actions defined in this parameter.
+        # The actions to be performed for the route map rule. After a route meets all the match conditions defined in **MatchConditions**, the system processes the route based on the actions defined in this parameter.
         self.set_actions_shrink = set_actions_shrink
 
     def validate(self):

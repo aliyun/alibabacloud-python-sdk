@@ -18,10 +18,10 @@ class ListRouteMapsResponseBody(DaraModel):
     ):
         # The number of entries returned on each page. Default value: **20**.
         self.max_results = max_results
-        # The token for the next query. Valid values:
+        # The token that is used to retrieve the next page of results. Valid values:
         # 
-        # - If **NextToken** is empty, no next query is available.
-        # - If **NextToken** returns a value, the value is the token for the next query.
+        # - If NextToken is empty, no subsequent query is to be sent.
+        # - If NextToken is returned, the value indicates the token used to start the next query.
         self.next_token = next_token
         # The ID of the request.
         self.request_id = request_id
@@ -105,8 +105,8 @@ class ListRouteMapsResponseBodyRouteMaps(DaraModel):
         # The description of the route map.
         self.description = description
         # The direction of the route map. Valid values: 
-        # - Inbound: inbound.
-        # - Outbound: outbound.
+        # - **Inbound**: inbound.
+        # - **Outbound**: outbound.
         self.direction = direction
         # The name of the route map.
         self.name = name
@@ -118,10 +118,10 @@ class ListRouteMapsResponseBodyRouteMaps(DaraModel):
         self.route_map_id = route_map_id
         # The status of the route map. Valid values:
         # 
-        # - **Creating**: The route map is being created.
-        # - **Updating**: The route map is being updated.
-        # - **Active**: The route map is available.
-        # - **Deleting**: The route map is being deleted.
+        # - **Creating**: creating.
+        # - **Updating**: updating.
+        # - **Active**: active.
+        # - **Deleting**: deleting.
         self.status = status
         # The list of tags.
         self.tag = tag

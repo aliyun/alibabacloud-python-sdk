@@ -16,7 +16,7 @@ class UpdateRouteMapRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters.
+        # You can generate the parameter value on your client to ensure that it is unique among different requests. The client token can contain only ASCII characters.
         # 
         # > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the client token. The RequestId of each API request may be different.
         self.client_token = client_token
@@ -24,9 +24,9 @@ class UpdateRouteMapRequest(DaraModel):
         # 
         # The description can be empty or 1 to 256 characters in length. It cannot start with http:// or https://.
         self.description = description
-        # Specifies whether to only precheck the request. Valid values:
-        # - **true**: prechecks the request without updating the route map. The system checks whether required parameters are specified, the request format is valid, and the service limits are met. If the request fails the precheck, the corresponding error is returned. If the request passes the precheck, the DryRunOperation error code is returned.
-        # - **false** (default): sends the request. If the request passes the precheck, the route map is updated.
+        # Specifies whether to perform a dry run on the request. Valid values:
+        # - **true**: performs a dry run and does not update the route map. The system checks whether required parameters are specified, the request format, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # - **false** (default): performs a dry run and updates the route map if the request passes the dry run.
         self.dry_run = dry_run
         # The name of the route map.
         # 
@@ -34,7 +34,7 @@ class UpdateRouteMapRequest(DaraModel):
         self.name = name
         # Policy priority of the route map. Valid values: **1** to **100**. A smaller value indicates a higher priority.
         # 
-        # > Policy priority of each route map within an Alibaba Cloud account must be unique. When a route map is applied, the system starts to match routes against the rules of the route map that has the highest priority (the smallest priority value) and then proceeds to route maps with lower priorities based on the rule priorities. Therefore, when you specify policy priority of a route map, make sure that policy priority meets your expected matching order.
+        # > Policy priority of each route map within an Alibaba Cloud account must be unique. When a route map is executed, the system starts to match route map rules from the route map with the smallest priority value based on policy priority of the route map rules. Therefore, when you specify policy priority of a route map, make sure that policy priority meets the expected matching order.
         self.priority = priority
         # The ID of the route map.
         # 

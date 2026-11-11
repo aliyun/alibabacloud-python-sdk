@@ -21,18 +21,18 @@ class CreateRouteMapRuleRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can generate the parameter value on your client. Make sure that the token is unique across different requests. The client token supports only ASCII characters.
+        # You can generate the value from your client and ensure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters.
         # 
         # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
         # The detailed description of the rule. The description can be empty or 1 to 256 characters in length, and cannot start with http:// or https://.
         self.description = description
-        # Specifies whether to only precheck the request. Valid values:
+        # Specifies whether to perform a dry run of the request. Valid values:
         # 
-        # - **true**: Prechecks the request without creating the route map rule. The system checks whether required parameters are specified, the request format, and service limits. If the request fails the precheck, the corresponding error is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # - **false** (default): Sends the request. After the request passes the precheck, the route map rule is created.
+        # - **true**: performs a dry run without creating the route map rule. The system checks whether required parameters are specified, the request format, and service limits. If the request fails the dry run, an error is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        # - **false** (default): performs a normal request. If the request passes the dry run, the route map rule is created.
         self.dry_run = dry_run
-        # The match conditions of the route map rule. The system executes the actions defined in **SetActions** only when a route meets all the match conditions defined in this parameter.
+        # The match conditions of the route map rule. The system performs the actions defined in **SetActions** only when a route meets all the match conditions defined in this parameter.
         self.match_conditions = match_conditions
         # The name of the rule for easy identification. The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
         self.name = name
@@ -44,7 +44,7 @@ class CreateRouteMapRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.route_map_id = route_map_id
-        # The actions to execute for the route map rule. After a route meets all the match conditions defined in **MatchConditions**, the system processes the route based on the actions defined in this parameter.
+        # The actions to be performed for the route map rule. After a route meets all the match conditions defined in **MatchConditions**, the system processes the route based on the actions defined in this parameter.
         self.set_actions = set_actions
 
     def validate(self):
@@ -124,48 +124,48 @@ class CreateRouteMapRuleRequestSetActions(DaraModel):
         next_priority: int = None,
         route_action: str = None,
     ):
-        # The AS path to prepend when the regional gateway receives a route or executes a publish route entry. You can specify up to 64 AS numbers.
+        # The AS path to be prepended when the regional gateway receives a route or performs a publish route entry operation. You can enter up to 64 AS numbers.
         # 
-        # This parameter is mutually exclusive with **AsPathReplace**. You cannot specify both parameters at the same time.
+        # This parameter is mutually exclusive with **AsPathReplace** and cannot be specified at the same time.
         # 
-        # This parameter specifies the action to execute after a route meets the match conditions.
+        # This parameter specifies the operation to execute after a route meets the match conditions.
         self.as_path_prepend = as_path_prepend
-        # The AS path to replace when the regional gateway receives a route or executes a publish route entry. The original AS path of the route is replaced with the list of AS numbers specified in this parameter. You can specify up to 64 AS numbers.
+        # The AS path to be replaced when the regional gateway receives a route or performs a publish route entry operation. The original AS path of the route is replaced with the list of AS numbers specified in this parameter. You can enter up to 64 AS numbers.
         # 
-        # This parameter is mutually exclusive with **AsPathPrepend**. You cannot specify both parameters at the same time.
+        # This parameter is mutually exclusive with **AsPathPrepend** and cannot be specified at the same time.
         # 
-        # This parameter specifies the action to execute after a route meets the match conditions.
+        # This parameter specifies the operation to execute after a route meets the match conditions.
         self.as_path_replace = as_path_replace
-        # The community set to add to the route. You can specify up to 64 communities.
+        # The community set to be added to the route. You can enter up to 64 communities.
         # 
-        # Each community is in the format of n:m, where n and m range from **1** to **65535**. The community must comply with RFC 1997. Large communities (RFC 8092) are not supported.
+        # Each community is in the format of n:m, where n and m range from **1** to **65535**. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
         # 
-        # This parameter is mutually exclusive with **CommunityReplace**. You cannot specify both parameters at the same time.
+        # This parameter is mutually exclusive with **CommunityReplace** and cannot be specified at the same time.
         # 
-        # This parameter specifies the action to execute after a route meets the match conditions.
+        # This parameter specifies the action to be performed after a route meets the match conditions.
         # 
         # > Incorrect community configurations may prevent routes from being advertised to the on-premises data center.
         self.community_add = community_add
-        # The community set to replace the original community of the route. You can specify up to 64 communities.
+        # The community set used to replace the original community of the route. You can enter up to 64 communities.
         # 
-        # Each community is in the format of n:m, where n and m range from **1** to **65535**. The community must comply with RFC 1997. Large communities (RFC 8092) are not supported.
+        # Each community is in the format of n:m, where n and m range from **1** to **65535**. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
         # 
-        # This parameter is mutually exclusive with **CommunityAdd**. You cannot specify both parameters at the same time.
+        # This parameter is mutually exclusive with **CommunityAdd** and cannot be specified at the same time.
         # 
-        # This parameter specifies the action to execute after a route meets the match conditions.
+        # This parameter specifies the action to be performed after a route meets the match conditions.
         # 
         # > Incorrect community configurations may prevent routes from being advertised to the on-premises data center.
         self.community_replace = community_replace
         # Policy priority of the associated next route map rule.
         # 
-        # - You can set policy priority of the associated route map rule only when **RouteAction** is set to **Permit**. Only the routes that are permitted continue to match the associated next route map rule.
+        # - You can set policy priority of the associated route map rule only when **RouteAction** is set to **Permit**. Only the permitted routes continue to match the associated next route map rule.
         # - Policy priority of the associated next route map rule must be lower than policy priority of the current route map rule.
         self.next_priority = next_priority
-        # The policy action after all conditions are met. Valid values:
+        # The policy action to be performed after all conditions are matched. Valid values:
         # 
-        # - **Permit**: Permits the matched routes.
+        # - **Permit**: permits the matched routes.
         # 
-        # - **Deny**: Denies the matched routes.
+        # - **Deny**: denies the matched routes.
         self.route_action = route_action
 
     def validate(self):
@@ -240,7 +240,7 @@ class CreateRouteMapRuleRequestMatchConditions(DaraModel):
         source_region_ids: List[str] = None,
         source_route_table_ids: List[str] = None,
     ):
-        # The route prefix list for fuzzy match. You can specify up to 64 IP address blocks.
+        # The route prefix list for fuzzy match. You can enter up to 64 IP address blocks.
         # 
         # A match is successful if the route prefix in the match condition contains the route prefix of the matched route.
         # 
@@ -248,129 +248,129 @@ class CreateRouteMapRuleRequestMatchConditions(DaraModel):
         # 
         # IP address blocks use the CIDR format and support IPv4 and IPv6.
         # 
-        # This parameter is mutually exclusive with **AddressPrefixesMatch**. You cannot specify both parameters at the same time.
+        # This parameter is mutually exclusive with **AddressPrefixesMatch** and cannot be specified at the same time.
         self.address_prefixes_include = address_prefixes_include
-        # The route prefix list for exact match. You can specify up to 64 IP address blocks.
+        # The route prefix list for exact match. You can enter up to 64 IP address blocks.
         # 
-        # A match is successful only if the route prefix in the match condition is exactly the same as the route prefix of the matched route.
+        # A match is successful only when the route prefix in the match condition is exactly the same as the route prefix of the matched route.
         # 
         # For example, a policy defined with 10.0.0.0/8 can only exactly match a route with 10.0.0.0/8.
         # 
         # IP address blocks use the CIDR format and support IPv4 and IPv6.
         # 
-        # This parameter is mutually exclusive with **AddressPrefixesInclude**. You cannot specify both parameters at the same time.
+        # This parameter is mutually exclusive with **AddressPrefixesInclude** and cannot be specified at the same time.
         self.address_prefixes_match = address_prefixes_match
-        # The list of AS paths for fuzzy match. You can specify up to 64 AS numbers.
+        # The list of AS paths for fuzzy match. You can enter up to 64 AS numbers.
         # 
-        # A match is successful if the AS path in the match condition overlaps with the AS path of the matched route.
+        # A route is considered matched if the AS path in the match condition overlaps with the AS path of the matched route.
         # 
-        # This parameter is mutually exclusive with **AsPathsMatch**. You cannot specify both parameters at the same time.
+        # This parameter is mutually exclusive with **AsPathsMatch** and cannot be specified at the same time.
         # 
         # > Only AS SEQUENCE is supported. AS SET, AS CONFED SEQUENCE, and AS CONFED SET are not supported. This means only a list of AS numbers is supported, and sets and sublists are not supported.
         self.as_paths_include = as_paths_include
-        # The list of AS paths for exact match. You can specify up to 64 AS numbers.
+        # The list of AS paths for exact match. You can enter up to 64 AS numbers.
         # 
-        # A match is successful only if the AS path in the match condition is exactly the same as the AS path of the matched route.
+        # A route is considered matched only when the AS path in the match condition is exactly the same as the AS path of the matched route.
         # 
-        # This parameter is mutually exclusive with **AsPathsInclude**. You cannot specify both parameters at the same time.
+        # This parameter is mutually exclusive with **AsPathsInclude** and cannot be specified at the same time.
         # 
         # > Only AS SEQUENCE is supported. AS SET, AS CONFED SEQUENCE, and AS CONFED SET are not supported. This means only a list of AS numbers is supported, and sets and sublists are not supported.
         self.as_paths_match = as_paths_match
-        # The community set for fuzzy match. You can specify up to 64 communities.
+        # The community set for fuzzy match. You can enter up to 64 communities.
         # 
-        # A match is successful if the community in the match condition overlaps with the community of the matched route.
+        # A route is considered matched if the community in the match condition overlaps with the community of the matched route.
         # 
-        # Each community is in the format of n:m, where n and m range from **1** to **65535**. The community must comply with RFC 1997. Large communities (RFC 8092) are not supported.
+        # Each community is in the format of n:m, where n and m range from **1** to **65535**. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
         # 
-        # This parameter is mutually exclusive with **CommunitySetMatch**. You cannot specify both parameters at the same time.
+        # This parameter is mutually exclusive with **CommunitySetMatch** and cannot be specified at the same time.
         # 
         # > Incorrect community configurations may prevent routes from being advertised to the on-premises data center.
         self.community_set_include = community_set_include
-        # The community set for exact match. You can specify up to 64 communities.
+        # The community set for exact match. You can enter up to 64 communities.
         # 
-        # A match is successful only if the community in the match condition is exactly the same as the community of the matched route.
+        # A route is considered matched only when the community in the match condition is exactly the same as the community of the matched route.
         # 
-        # Each community is in the format of n:m, where n and m range from **1** to **65535**. The community must comply with RFC 1997. Large communities (RFC 8092) are not supported.
+        # Each community is in the format of n:m, where n and m range from **1** to **65535**. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
         # 
-        # This parameter is mutually exclusive with **CommunitySetInclude**. You cannot specify both parameters at the same time.
+        # This parameter is mutually exclusive with **CommunitySetInclude** and cannot be specified at the same time.
         # 
         # > Incorrect community configurations may prevent routes from being advertised to the on-premises data center.
         self.community_set_match = community_set_match
-        # The list of destination instance IDs to match. You can specify the following types of instance IDs:
+        # The list of destination instance IDs to be matched. You can enter the following types of instance IDs:
         # 
-        # - Virtual Private Cloud (VPC) instance IDs
-        # - Virtual Border Router (VBR) instance IDs
+        # - Virtual private cloud (VPC) instance IDs
+        # - Virtual border router (VBR) instance IDs
         # 
-        # You can specify up to 64 instance IDs.
+        # You can enter up to 64 instance IDs.
         # 
         # > The list of destination instance IDs takes effect only when the direction of the route map is outbound.
         self.destination_instance_ids = destination_instance_ids
-        # Specifies whether to use the exclusion match mode for the list of destination instance IDs. Valid values:
+        # Specifies whether to use the reverse match mode for the list of destination instance IDs. Valid values:
         # 
-        # - **false** (default): No. A match is successful if the destination instance ID of the route is in **DestinationInstanceIds.N**.
+        # - **false** (default): no. A route is matched if its destination instance ID is included in **DestinationInstanceIds.N**.
         # 
-        # - **true**: Yes. A match is successful if the destination instance ID of the route is not in **DestinationInstanceIds.N**.
+        # - **true**: yes. A route is matched if its destination instance ID is not included in **DestinationInstanceIds.N**.
         self.destination_instance_ids_reverse_match = destination_instance_ids_reverse_match
-        # The list of destination instance types to match. The following instance types are supported:
+        # The list of destination instance types to be matched. The following instance types are supported:
         # 
         # - **VPC**: VPC instance.
         # 
         # - **VBR**: VBR instance.
         # 
         # 
-        # You can specify multiple instance types.
+        # You can enter multiple instance types.
         # 
         # > The list of destination instance types takes effect only when the direction of the route map is outbound.
         self.destination_instance_types = destination_instance_types
-        # The list of destination region IDs to match. You can specify up to 64 region IDs.
+        # The list of destination region IDs to be matched. You can enter up to 64 region IDs.
         self.destination_region_ids = destination_region_ids
-        # The list of destination route table IDs to match. You can specify up to 64 route table IDs.
+        # The list of destination route table IDs to be matched. You can enter up to 64 route table IDs.
         # 
         # > The list of destination route table IDs takes effect only when the direction of the route map is outbound.
         self.destination_route_table_ids = destination_route_table_ids
-        # The IP address type of the routes to match. Valid values:
+        # The IP address type of the routes to be matched. Valid values:
         # 
-        # - **IPv4**: Matches only IPv4 routes.
-        # - **IPv6**: Matches only IPv6 routes.
+        # - **IPv4**: matches only IPv4 routes.
+        # - **IPv6**: matches only IPv6 routes.
         # 
-        # You can leave this parameter empty to match routes of all types.
+        # If this parameter is left empty, all types of routes are matched.
         self.match_address_type = match_address_type
-        # The list of route types to match. The following route types are supported:
+        # The list of route types to be matched. The following route types are supported:
         # 
         # - **System**: system route, which is automatically generated by the system.
         # 
         # - **Custom**: custom route, which is manually added by the user.
         # 
-        # - **BGP**: BGP route, which is propagated through the BGP routable protocol.
+        # - **BGP**: BGP route, which is propagated through the BGP routing protocol.
         # 
-        # You can specify multiple route types.
+        # You can enter multiple route types.
         self.route_types = route_types
-        # The list of source instance IDs to match. You can specify the following types of instance IDs:
+        # The list of source instance IDs to be matched. You can enter the following types of instance IDs:
         # 
-        # - Virtual Private Cloud (VPC) instance IDs
-        # - Virtual Border Router (VBR) instance IDs
+        # - Virtual private cloud (VPC) instance IDs
+        # - Virtual border router (VBR) instance IDs
         # 
         # 
-        # You can specify up to 64 instance IDs.
+        # You can enter up to 64 instance IDs.
         self.source_instance_ids = source_instance_ids
-        # Specifies whether to use the exclusion match mode for the list of source instance IDs. Valid values:
+        # Specifies whether to use the reverse match mode for the list of source instance IDs. Valid values:
         # 
-        # - **false** (default): No. A match is successful if the source instance ID of the route is in **SourceInstanceIds.N**.
+        # - **false** (default): no. A route is matched if its source instance ID is included in **SourceInstanceIds.N**.
         # 
-        # - **true**: Yes. A match is successful if the source instance ID of the route is not in **SourceInstanceIds.N**.
+        # - **true**: yes. A route is matched if its source instance ID is not included in **SourceInstanceIds.N**.
         self.source_instance_ids_reverse_match = source_instance_ids_reverse_match
-        # The list of source instance types to match. The following instance types are supported:
+        # The list of source instance types to be matched. The following instance types are supported:
         # 
         # - **VPC**: VPC instance.
         # 
         # - **VBR**: VBR instance.
         # 
         # 
-        # You can specify multiple instance types.
+        # You can enter multiple instance types.
         self.source_instance_types = source_instance_types
-        # The list of source region IDs to match. You can specify up to 64 region IDs.
+        # The list of source region IDs to be matched. You can enter up to 64 region IDs.
         self.source_region_ids = source_region_ids
-        # The list of source route table IDs to match. You can specify up to 64 route table IDs.
+        # The list of source route table IDs to be matched. You can enter up to 64 route table IDs.
         self.source_route_table_ids = source_route_table_ids
 
     def validate(self):

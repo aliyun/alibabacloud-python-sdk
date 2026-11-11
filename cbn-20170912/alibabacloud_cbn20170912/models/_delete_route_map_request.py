@@ -13,13 +13,13 @@ class DeleteRouteMapRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can generate the value from your client and make sure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters.
+        # You can generate a parameter value from your client to ensure that the value is unique among different requests. The client token only supports ASCII characters.
         # 
         # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
         # Specifies whether to only precheck the request. Valid values:
-        # - **true**: The system prechecks the request without deleting the route map. The system checks whether the required parameters are specified, the request format is valid, and the service limits are met. If the request fails the precheck, the system returns an error. If the request passes the precheck, the system returns the DryRunOperation error code.
-        # - **false** (default): The system sends a normal request and deletes the route map after the request passes the precheck.
+        # - **true**: sends a check request and does not delete the route map. The system checks whether required parameters are specified, the request format, and service limits. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
+        # - **false** (default): sends a normal request and directly deletes the route map after the check succeeds.
         self.dry_run = dry_run
         # The ID of the route map.
         # 

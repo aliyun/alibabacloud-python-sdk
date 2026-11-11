@@ -16,15 +16,15 @@ class ListTransitRouterRouteTablesResponseBody(DaraModel):
         total_count: int = None,
         transit_router_route_tables: List[main_models.ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTables] = None,
     ):
-        # The number of entries per page when entries are returned by page.
+        # The number of entries returned per page.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
-        # - If **NextToken** is empty, no next query exists.
-        # - If **NextToken** is returned, the value indicates the token for the next query.
+        # The token for the next query. Valid values:
+        # - If **NextToken** is empty, no next query is to be sent.
+        # - If **NextToken** returns a value, the value is the token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
         # The list of route tables.
         self.transit_router_route_tables = transit_router_route_tables
@@ -97,15 +97,15 @@ class ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTables(DaraModel
     ):
         # The time when the route table was created.
         # 
-        # The time is displayed in UTC in the YYYY-MM-DDThh:mmZ format.
+        # The time is displayed in ISO 8601 standard format in UTC. Format: YYYY-MM-DDThh:mmZ.
         self.create_time = create_time
-        # The region ID of the Enterprise Edition transit router instance.
+        # The region ID of the Enterprise Edition transit router.
         self.region_id = region_id
         # The route table feature options.
         self.route_table_options = route_table_options
         # The list of tags.
         self.tags = tags
-        # The transit router instance ID.
+        # The instance ID of the transit router, which is used to forward routing information.
         self.transit_router_id = transit_router_id
         # The description of the route table.
         self.transit_router_route_table_description = transit_router_route_table_description
@@ -115,9 +115,9 @@ class ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTables(DaraModel
         self.transit_router_route_table_name = transit_router_route_table_name
         # The status of the route table.
         # 
-        # - **Creating**: being created.
-        # - **Deleting**: being deleted.
-        # - **Active**: active.
+        # - **Creating**: The route table is being created.
+        # - **Deleting**: The route table is being deleted.
+        # - **Active**: The route table is available.
         self.transit_router_route_table_status = transit_router_route_table_status
         # The type of the route table.
         # 
@@ -252,9 +252,9 @@ class ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTablesRouteTable
         self,
         multi_region_ecmp: str = None,
     ):
-        # Multi-region equal-cost multi-path (ECMP) routing. Valid values:
-        # - **disable**: Disables multi-region ECMP routing. After multi-region ECMP routing is disabled, routes with the same prefix learned from different regions select the transit router (TR) with the smallest Region ID (sorted alphabetically) as the next hop when other route attributes are the same. This changes the traffic latency and bandwidth consumed between different regions. Make sure that you fully evaluate the impact before disabling this feature.
-        # - **enable**: Enables multi-region ECMP routing. After multi-region ECMP routing is enabled, routes with the same prefix learned from different regions form ECMP routes when other route attributes are the same. This changes the traffic latency and bandwidth consumed between different regions. Make sure that you fully evaluate the impact before enabling this feature.
+        # The multi-region equal-cost multi-path (ECMP) routing feature. Valid values:
+        # - **disable**: disables multi-region ECMP routing. After you disable this feature, if routes with the same prefix are learned from different regions and have the same route attributes, the transit router with the smallest region ID (in alphabetical order) is preferred as the next hop. This changes the traffic latency and the bandwidth consumed between regions. Make sure that you fully evaluate the impact before you disable this feature.
+        # - **enable**: enables multi-region ECMP routing. After you enable this feature, if routes with the same prefix are learned from different regions and have the same route attributes, ECMP routing is formed. This changes the traffic latency and the bandwidth consumed between regions. Make sure that you fully evaluate the impact before you enable this feature.
         self.multi_region_ecmp = multi_region_ecmp
 
     def validate(self):

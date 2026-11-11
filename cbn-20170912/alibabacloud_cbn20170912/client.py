@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Dict
 
 from alibabacloud_cbn20170912 import models as main_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -20,6 +21,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'Cbn'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'central'
         self.check_config(config)
         self._endpoint = self.get_endpoint('cbn', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -623,6 +627,88 @@ class Client(OpenApiClient):
     ) -> main_models.AssociateTransitRouterMulticastDomainResponse:
         runtime = RuntimeOptions()
         return await self.associate_transit_router_multicast_domain_with_options_async(request, runtime)
+
+    def associate_transit_router_policy_table_with_options(
+        self,
+        request: main_models.AssociateTransitRouterPolicyTableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AssociateTransitRouterPolicyTableResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.attachment_id):
+            query['AttachmentId'] = request.attachment_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.policy_table_id):
+            query['PolicyTableId'] = request.policy_table_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AssociateTransitRouterPolicyTable',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AssociateTransitRouterPolicyTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def associate_transit_router_policy_table_with_options_async(
+        self,
+        request: main_models.AssociateTransitRouterPolicyTableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AssociateTransitRouterPolicyTableResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.attachment_id):
+            query['AttachmentId'] = request.attachment_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.policy_table_id):
+            query['PolicyTableId'] = request.policy_table_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AssociateTransitRouterPolicyTable',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AssociateTransitRouterPolicyTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def associate_transit_router_policy_table(
+        self,
+        request: main_models.AssociateTransitRouterPolicyTableRequest,
+    ) -> main_models.AssociateTransitRouterPolicyTableResponse:
+        runtime = RuntimeOptions()
+        return self.associate_transit_router_policy_table_with_options(request, runtime)
+
+    async def associate_transit_router_policy_table_async(
+        self,
+        request: main_models.AssociateTransitRouterPolicyTableRequest,
+    ) -> main_models.AssociateTransitRouterPolicyTableResponse:
+        runtime = RuntimeOptions()
+        return await self.associate_transit_router_policy_table_with_options_async(request, runtime)
 
     def attach_cen_child_instance_with_options(
         self,
@@ -2893,6 +2979,218 @@ class Client(OpenApiClient):
     ) -> main_models.CreateTransitRouterPeerAttachmentResponse:
         runtime = RuntimeOptions()
         return await self.create_transit_router_peer_attachment_with_options_async(request, runtime)
+
+    def create_transit_router_policy_based_route_with_options(
+        self,
+        request: main_models.CreateTransitRouterPolicyBasedRouteRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTransitRouterPolicyBasedRouteResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.address_family):
+            query['AddressFamily'] = request.address_family
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.dest_port_range):
+            query['DestPortRange'] = request.dest_port_range
+        if not DaraCore.is_null(request.destination_cidr):
+            query['DestinationCidr'] = request.destination_cidr
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.dscp):
+            query['Dscp'] = request.dscp
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.policy_table_id):
+            query['PolicyTableId'] = request.policy_table_id
+        if not DaraCore.is_null(request.priority):
+            query['Priority'] = request.priority
+        if not DaraCore.is_null(request.protocol):
+            query['Protocol'] = request.protocol
+        if not DaraCore.is_null(request.source_cidr):
+            query['SourceCidr'] = request.source_cidr
+        if not DaraCore.is_null(request.source_port_range):
+            query['SourcePortRange'] = request.source_port_range
+        if not DaraCore.is_null(request.target_route_table_id):
+            query['TargetRouteTableId'] = request.target_route_table_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTransitRouterPolicyBasedRoute',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTransitRouterPolicyBasedRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_transit_router_policy_based_route_with_options_async(
+        self,
+        request: main_models.CreateTransitRouterPolicyBasedRouteRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTransitRouterPolicyBasedRouteResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.address_family):
+            query['AddressFamily'] = request.address_family
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.dest_port_range):
+            query['DestPortRange'] = request.dest_port_range
+        if not DaraCore.is_null(request.destination_cidr):
+            query['DestinationCidr'] = request.destination_cidr
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.dscp):
+            query['Dscp'] = request.dscp
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.policy_table_id):
+            query['PolicyTableId'] = request.policy_table_id
+        if not DaraCore.is_null(request.priority):
+            query['Priority'] = request.priority
+        if not DaraCore.is_null(request.protocol):
+            query['Protocol'] = request.protocol
+        if not DaraCore.is_null(request.source_cidr):
+            query['SourceCidr'] = request.source_cidr
+        if not DaraCore.is_null(request.source_port_range):
+            query['SourcePortRange'] = request.source_port_range
+        if not DaraCore.is_null(request.target_route_table_id):
+            query['TargetRouteTableId'] = request.target_route_table_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTransitRouterPolicyBasedRoute',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTransitRouterPolicyBasedRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_transit_router_policy_based_route(
+        self,
+        request: main_models.CreateTransitRouterPolicyBasedRouteRequest,
+    ) -> main_models.CreateTransitRouterPolicyBasedRouteResponse:
+        runtime = RuntimeOptions()
+        return self.create_transit_router_policy_based_route_with_options(request, runtime)
+
+    async def create_transit_router_policy_based_route_async(
+        self,
+        request: main_models.CreateTransitRouterPolicyBasedRouteRequest,
+    ) -> main_models.CreateTransitRouterPolicyBasedRouteResponse:
+        runtime = RuntimeOptions()
+        return await self.create_transit_router_policy_based_route_with_options_async(request, runtime)
+
+    def create_transit_router_policy_table_with_options(
+        self,
+        request: main_models.CreateTransitRouterPolicyTableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTransitRouterPolicyTableResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        if not DaraCore.is_null(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTransitRouterPolicyTable',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTransitRouterPolicyTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_transit_router_policy_table_with_options_async(
+        self,
+        request: main_models.CreateTransitRouterPolicyTableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTransitRouterPolicyTableResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        if not DaraCore.is_null(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTransitRouterPolicyTable',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTransitRouterPolicyTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_transit_router_policy_table(
+        self,
+        request: main_models.CreateTransitRouterPolicyTableRequest,
+    ) -> main_models.CreateTransitRouterPolicyTableResponse:
+        runtime = RuntimeOptions()
+        return self.create_transit_router_policy_table_with_options(request, runtime)
+
+    async def create_transit_router_policy_table_async(
+        self,
+        request: main_models.CreateTransitRouterPolicyTableRequest,
+    ) -> main_models.CreateTransitRouterPolicyTableResponse:
+        runtime = RuntimeOptions()
+        return await self.create_transit_router_policy_table_with_options_async(request, runtime)
 
     def create_transit_router_prefix_list_association_with_options(
         self,
@@ -5455,6 +5753,162 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteTransitRouterPeerAttachmentResponse:
         runtime = RuntimeOptions()
         return await self.delete_transit_router_peer_attachment_with_options_async(request, runtime)
+
+    def delete_transit_router_policy_based_route_with_options(
+        self,
+        request: main_models.DeleteTransitRouterPolicyBasedRouteRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteTransitRouterPolicyBasedRouteResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.policy_based_route_id):
+            query['PolicyBasedRouteId'] = request.policy_based_route_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteTransitRouterPolicyBasedRoute',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteTransitRouterPolicyBasedRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_transit_router_policy_based_route_with_options_async(
+        self,
+        request: main_models.DeleteTransitRouterPolicyBasedRouteRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteTransitRouterPolicyBasedRouteResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.policy_based_route_id):
+            query['PolicyBasedRouteId'] = request.policy_based_route_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteTransitRouterPolicyBasedRoute',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteTransitRouterPolicyBasedRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_transit_router_policy_based_route(
+        self,
+        request: main_models.DeleteTransitRouterPolicyBasedRouteRequest,
+    ) -> main_models.DeleteTransitRouterPolicyBasedRouteResponse:
+        runtime = RuntimeOptions()
+        return self.delete_transit_router_policy_based_route_with_options(request, runtime)
+
+    async def delete_transit_router_policy_based_route_async(
+        self,
+        request: main_models.DeleteTransitRouterPolicyBasedRouteRequest,
+    ) -> main_models.DeleteTransitRouterPolicyBasedRouteResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_transit_router_policy_based_route_with_options_async(request, runtime)
+
+    def delete_transit_router_policy_table_with_options(
+        self,
+        request: main_models.DeleteTransitRouterPolicyTableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteTransitRouterPolicyTableResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.policy_table_id):
+            query['PolicyTableId'] = request.policy_table_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteTransitRouterPolicyTable',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteTransitRouterPolicyTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_transit_router_policy_table_with_options_async(
+        self,
+        request: main_models.DeleteTransitRouterPolicyTableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteTransitRouterPolicyTableResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.policy_table_id):
+            query['PolicyTableId'] = request.policy_table_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteTransitRouterPolicyTable',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteTransitRouterPolicyTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_transit_router_policy_table(
+        self,
+        request: main_models.DeleteTransitRouterPolicyTableRequest,
+    ) -> main_models.DeleteTransitRouterPolicyTableResponse:
+        runtime = RuntimeOptions()
+        return self.delete_transit_router_policy_table_with_options(request, runtime)
+
+    async def delete_transit_router_policy_table_async(
+        self,
+        request: main_models.DeleteTransitRouterPolicyTableRequest,
+    ) -> main_models.DeleteTransitRouterPolicyTableResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_transit_router_policy_table_with_options_async(request, runtime)
 
     def delete_transit_router_prefix_list_association_with_options(
         self,
@@ -8650,6 +9104,248 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_transit_router_capacity_reservations_with_options_async(request, runtime)
 
+    def describe_transit_router_policy_based_routes_with_options(
+        self,
+        request: main_models.DescribeTransitRouterPolicyBasedRoutesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeTransitRouterPolicyBasedRoutesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.filter):
+            query['Filter'] = request.filter
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.policy_table_id):
+            query['PolicyTableId'] = request.policy_table_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeTransitRouterPolicyBasedRoutes',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeTransitRouterPolicyBasedRoutesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_transit_router_policy_based_routes_with_options_async(
+        self,
+        request: main_models.DescribeTransitRouterPolicyBasedRoutesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeTransitRouterPolicyBasedRoutesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.filter):
+            query['Filter'] = request.filter
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.policy_table_id):
+            query['PolicyTableId'] = request.policy_table_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeTransitRouterPolicyBasedRoutes',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeTransitRouterPolicyBasedRoutesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_transit_router_policy_based_routes(
+        self,
+        request: main_models.DescribeTransitRouterPolicyBasedRoutesRequest,
+    ) -> main_models.DescribeTransitRouterPolicyBasedRoutesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_transit_router_policy_based_routes_with_options(request, runtime)
+
+    async def describe_transit_router_policy_based_routes_async(
+        self,
+        request: main_models.DescribeTransitRouterPolicyBasedRoutesRequest,
+    ) -> main_models.DescribeTransitRouterPolicyBasedRoutesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_transit_router_policy_based_routes_with_options_async(request, runtime)
+
+    def describe_transit_router_policy_table_associations_with_options(
+        self,
+        request: main_models.DescribeTransitRouterPolicyTableAssociationsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeTransitRouterPolicyTableAssociationsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.filter):
+            query['Filter'] = request.filter
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeTransitRouterPolicyTableAssociations',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeTransitRouterPolicyTableAssociationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_transit_router_policy_table_associations_with_options_async(
+        self,
+        request: main_models.DescribeTransitRouterPolicyTableAssociationsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeTransitRouterPolicyTableAssociationsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.filter):
+            query['Filter'] = request.filter
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeTransitRouterPolicyTableAssociations',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeTransitRouterPolicyTableAssociationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_transit_router_policy_table_associations(
+        self,
+        request: main_models.DescribeTransitRouterPolicyTableAssociationsRequest,
+    ) -> main_models.DescribeTransitRouterPolicyTableAssociationsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_transit_router_policy_table_associations_with_options(request, runtime)
+
+    async def describe_transit_router_policy_table_associations_async(
+        self,
+        request: main_models.DescribeTransitRouterPolicyTableAssociationsRequest,
+    ) -> main_models.DescribeTransitRouterPolicyTableAssociationsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_transit_router_policy_table_associations_with_options_async(request, runtime)
+
+    def describe_transit_router_policy_tables_with_options(
+        self,
+        request: main_models.DescribeTransitRouterPolicyTablesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeTransitRouterPolicyTablesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.filter):
+            query['Filter'] = request.filter
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeTransitRouterPolicyTables',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeTransitRouterPolicyTablesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_transit_router_policy_tables_with_options_async(
+        self,
+        request: main_models.DescribeTransitRouterPolicyTablesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeTransitRouterPolicyTablesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.filter):
+            query['Filter'] = request.filter
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeTransitRouterPolicyTables',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeTransitRouterPolicyTablesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_transit_router_policy_tables(
+        self,
+        request: main_models.DescribeTransitRouterPolicyTablesRequest,
+    ) -> main_models.DescribeTransitRouterPolicyTablesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_transit_router_policy_tables_with_options(request, runtime)
+
+    async def describe_transit_router_policy_tables_async(
+        self,
+        request: main_models.DescribeTransitRouterPolicyTablesRequest,
+    ) -> main_models.DescribeTransitRouterPolicyTablesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_transit_router_policy_tables_with_options_async(request, runtime)
+
     def detach_cen_child_instance_with_options(
         self,
         request: main_models.DetachCenChildInstanceRequest,
@@ -9053,6 +9749,84 @@ class Client(OpenApiClient):
     ) -> main_models.DisassociateTransitRouterMulticastDomainResponse:
         runtime = RuntimeOptions()
         return await self.disassociate_transit_router_multicast_domain_with_options_async(request, runtime)
+
+    def disassociate_transit_router_policy_table_with_options(
+        self,
+        request: main_models.DisassociateTransitRouterPolicyTableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisassociateTransitRouterPolicyTableResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.association_id):
+            query['AssociationId'] = request.association_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisassociateTransitRouterPolicyTable',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisassociateTransitRouterPolicyTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disassociate_transit_router_policy_table_with_options_async(
+        self,
+        request: main_models.DisassociateTransitRouterPolicyTableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisassociateTransitRouterPolicyTableResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.association_id):
+            query['AssociationId'] = request.association_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisassociateTransitRouterPolicyTable',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisassociateTransitRouterPolicyTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disassociate_transit_router_policy_table(
+        self,
+        request: main_models.DisassociateTransitRouterPolicyTableRequest,
+    ) -> main_models.DisassociateTransitRouterPolicyTableResponse:
+        runtime = RuntimeOptions()
+        return self.disassociate_transit_router_policy_table_with_options(request, runtime)
+
+    async def disassociate_transit_router_policy_table_async(
+        self,
+        request: main_models.DisassociateTransitRouterPolicyTableRequest,
+    ) -> main_models.DisassociateTransitRouterPolicyTableResponse:
+        runtime = RuntimeOptions()
+        return await self.disassociate_transit_router_policy_table_with_options_async(request, runtime)
 
     def dissociate_transit_router_attachment_from_route_table_with_options(
         self,
@@ -16405,6 +17179,178 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateTransitRouterPeerAttachmentAttributeResponse:
         runtime = RuntimeOptions()
         return await self.update_transit_router_peer_attachment_attribute_with_options_async(request, runtime)
+
+    def update_transit_router_policy_based_route_with_options(
+        self,
+        request: main_models.UpdateTransitRouterPolicyBasedRouteRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateTransitRouterPolicyBasedRouteResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.policy_based_route_id):
+            query['PolicyBasedRouteId'] = request.policy_based_route_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateTransitRouterPolicyBasedRoute',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateTransitRouterPolicyBasedRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_transit_router_policy_based_route_with_options_async(
+        self,
+        request: main_models.UpdateTransitRouterPolicyBasedRouteRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateTransitRouterPolicyBasedRouteResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.policy_based_route_id):
+            query['PolicyBasedRouteId'] = request.policy_based_route_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateTransitRouterPolicyBasedRoute',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateTransitRouterPolicyBasedRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_transit_router_policy_based_route(
+        self,
+        request: main_models.UpdateTransitRouterPolicyBasedRouteRequest,
+    ) -> main_models.UpdateTransitRouterPolicyBasedRouteResponse:
+        runtime = RuntimeOptions()
+        return self.update_transit_router_policy_based_route_with_options(request, runtime)
+
+    async def update_transit_router_policy_based_route_async(
+        self,
+        request: main_models.UpdateTransitRouterPolicyBasedRouteRequest,
+    ) -> main_models.UpdateTransitRouterPolicyBasedRouteResponse:
+        runtime = RuntimeOptions()
+        return await self.update_transit_router_policy_based_route_with_options_async(request, runtime)
+
+    def update_transit_router_policy_table_with_options(
+        self,
+        request: main_models.UpdateTransitRouterPolicyTableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateTransitRouterPolicyTableResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.policy_table_id):
+            query['PolicyTableId'] = request.policy_table_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateTransitRouterPolicyTable',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateTransitRouterPolicyTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_transit_router_policy_table_with_options_async(
+        self,
+        request: main_models.UpdateTransitRouterPolicyTableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateTransitRouterPolicyTableResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.policy_table_id):
+            query['PolicyTableId'] = request.policy_table_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateTransitRouterPolicyTable',
+            version = '2017-09-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateTransitRouterPolicyTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_transit_router_policy_table(
+        self,
+        request: main_models.UpdateTransitRouterPolicyTableRequest,
+    ) -> main_models.UpdateTransitRouterPolicyTableResponse:
+        runtime = RuntimeOptions()
+        return self.update_transit_router_policy_table_with_options(request, runtime)
+
+    async def update_transit_router_policy_table_async(
+        self,
+        request: main_models.UpdateTransitRouterPolicyTableRequest,
+    ) -> main_models.UpdateTransitRouterPolicyTableResponse:
+        runtime = RuntimeOptions()
+        return await self.update_transit_router_policy_table_with_options_async(request, runtime)
 
     def update_transit_router_route_entry_with_options(
         self,
