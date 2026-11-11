@@ -11,14 +11,14 @@ class DeleteTransitRouterPolicyBasedRouteRequest(DaraModel):
         dry_run: bool = None,
         policy_based_route_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, and you must ensure that the value is unique among different requests. The client token can contain only ASCII characters.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, and you must ensure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
         # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
-        # Specifies whether to perform a dry run on the deletion request. The dry run includes permission and instance status checks. Valid values:
+        # Specifies whether to perform a dry run on the deletion request. The system checks items such as permissions and instance status. Valid values:
         # 
-        # - **false** (default): sends a normal request. After the request passes the dry run, the policy-based route is deleted.
-        # - **true**: sends a dry run request. The system only performs the dry run and does not delete the policy-based route. The system checks whether required parameters are specified and whether the request format is valid. If the request fails the dry run, the system returns an error. If the request passes the dry run, the system returns the `DryRunOperation` error code.
+        # - **false** (default): sends a normal request. If the request passes the dry run, the policy-based routing rule is deleted.
+        # - **true**: performs a dry run only and does not delete the policy-based routing rule. The system checks whether required parameters are specified and whether the request format is valid. If the request fails the dry run, an error is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         self.dry_run = dry_run
         # The instance ID of the policy-based routing rule.
         # 

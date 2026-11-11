@@ -15,19 +15,19 @@ class UpdateTransitRouterPolicyBasedRouteRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can generate the value of this parameter on the client side. Make sure that the value is unique among different requests. The client token can contain only ASCII characters.
+        # You can generate the value from your client. Make sure that the value is unique among different requests. The ClientToken parameter supports only ASCII characters.
         # 
         # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
-        # The description of the policy-based routing rule.
+        # The description of the policy-based route rule.
         # 
         # The description can be empty or 1 to 256 characters in length. It cannot start with http:// or https://.
         self.description = description
         # Specifies whether to perform only a dry run on the request. Valid values:
-        # - **true**: Performs only a dry run and does not update the policy-based routing rule. The system checks whether the required parameters are specified, the request format is valid, and the service limits are met. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # - **false** (default): Performs a dry run and updates the policy-based routing rule if the request passes the dry run.
+        # - **true**: sends a check request and does not update the policy-based route rule. The system checks whether required parameters are specified, the request format is valid, and service limits are met. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+        # - **false** (default): sends a normal request and directly updates the policy-based route rule after the check succeeds.
         self.dry_run = dry_run
-        # The name of the policy-based routing rule.
+        # The name of the policy-based route rule.
         # 
         # The name can be empty or 1 to 128 characters in length. It cannot start with http:// or https://.
         self.name = name

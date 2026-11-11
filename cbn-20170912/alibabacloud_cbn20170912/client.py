@@ -9277,6 +9277,8 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
         if not DaraCore.is_null(request.transit_router_id):
             query['TransitRouterId'] = request.transit_router_id
         req = open_api_util_models.OpenApiRequest(
@@ -9311,6 +9313,8 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
         if not DaraCore.is_null(request.transit_router_id):
             query['TransitRouterId'] = request.transit_router_id
         req = open_api_util_models.OpenApiRequest(

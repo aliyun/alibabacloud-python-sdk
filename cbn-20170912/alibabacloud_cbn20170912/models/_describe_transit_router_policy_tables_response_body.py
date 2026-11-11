@@ -18,10 +18,10 @@ class DescribeTransitRouterPolicyTablesResponseBody(DaraModel):
     ):
         # The number of entries returned on each page.
         self.max_results = max_results
-        # The token for the next query. Valid values:
+        # The token that is used to retrieve the next page of results. Valid values:
         # 
-        # - If NextToken is empty, no subsequent query is required.
-        # - If NextToken is returned, the value indicates the token for the next query.
+        # If NextToken is empty, no next query is to be sent.
+        # If NextToken is returned, the value indicates the token that is used to start the next query.
         self.next_token = next_token
         # The policy route tables.
         self.policy_tables = policy_tables
@@ -95,11 +95,9 @@ class DescribeTransitRouterPolicyTablesResponseBodyPolicyTables(DaraModel):
         tags: List[main_models.DescribeTransitRouterPolicyTablesResponseBodyPolicyTablesTags] = None,
         transit_router_id: str = None,
     ):
-        # The network instance attachments associated with the policy route table.
+        # The attachments associated with the policy route table.
         self.attachments = attachments
-        # The time when the policy route table was created.
-        # 
-        # The time is displayed in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. The time is displayed in UTC.
+        # The time when the policy route table was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.creation_time = creation_time
@@ -107,7 +105,7 @@ class DescribeTransitRouterPolicyTablesResponseBodyPolicyTables(DaraModel):
         self.description = description
         # The name of the policy route table.
         self.name = name
-        # The policy routing table instance ID.
+        # The ID of the policy route table instance.
         self.policy_table_id = policy_table_id
         # The region ID.
         self.region_id = region_id
@@ -119,7 +117,7 @@ class DescribeTransitRouterPolicyTablesResponseBodyPolicyTables(DaraModel):
         # 
         # - Deleting: The policy route table is being deleted.
         self.status = status
-        # The tags added to the policy route table.
+        # The tags that are added to the policy route table.
         self.tags = tags
         # The ID of the Enterprise Edition transit router.
         self.transit_router_id = transit_router_id

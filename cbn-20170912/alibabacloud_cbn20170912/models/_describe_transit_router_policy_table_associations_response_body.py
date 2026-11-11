@@ -18,9 +18,9 @@ class DescribeTransitRouterPolicyTableAssociationsResponseBody(DaraModel):
     ):
         # The associate relationships between the policy routing table and network connectivity instances.
         self.associations = associations
-        # The number of entries returned per page in a paginated query.
+        # The number of entries returned per page.
         self.max_results = max_results
-        # The token for the next query in a paginated query.
+        # The token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -91,13 +91,13 @@ class DescribeTransitRouterPolicyTableAssociationsResponseBodyAssociations(DaraM
         self.association_id = association_id
         # The ID of the network instance connection.
         self.attachment_id = attachment_id
-        # The instance ID of the policy routing table.
+        # The policy routing table instance ID.
         self.policy_table_id = policy_table_id
         # The status of the association. Valid values:
         # 
-        # - **Active**: Active.
-        # - **Associating**: Associating.
-        # - **Dissociating**: Dissociating.
+        # - **Active**: active.
+        # - **Associating**: associating.
+        # - **Dissociating**: dissociating.
         self.status = status
 
     def validate(self):

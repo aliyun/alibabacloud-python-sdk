@@ -1,3 +1,9 @@
+2026-11-11 Version: 1.6.1
+- Update API CreateTransitRouterPolicyTable: add request parameters Tag.$.Key.
+- Update API CreateTransitRouterPolicyTable: add request parameters Tag.$.Value.
+- Update API DescribeTransitRouterPolicyTables: add request parameters Tag.
+
+
 2026-11-11 Version: 1.6.0
 - Generated python 2017-09-12 for Cbn.
 

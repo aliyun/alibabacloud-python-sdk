@@ -11,8 +11,19 @@ class DeleteTransitRouterPolicyTableRequest(DaraModel):
         dry_run: bool = None,
         policy_table_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
+        # Specifies whether to perform a dry run on the request. Checks include permissions and instance status. Valid values:
+        # 
+        # - **false** (default): sends a normal request. If the request passes the check, the policy route table is deleted.
+        # - **true**: performs a dry run. The policy route table is not deleted. The system checks whether required parameters are specified and whether the request format is valid. If the request fails the dry run, an error is returned. If the request passes the dry run, the request ID is returned.
         self.dry_run = dry_run
+        # The instance ID of the policy routing table.
+        # 
         # This parameter is required.
         self.policy_table_id = policy_table_id
 

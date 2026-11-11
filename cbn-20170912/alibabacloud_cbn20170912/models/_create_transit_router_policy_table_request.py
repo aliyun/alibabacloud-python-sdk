@@ -17,11 +17,25 @@ class CreateTransitRouterPolicyTableRequest(DaraModel):
         tag: List[main_models.CreateTransitRouterPolicyTableRequestTag] = None,
         transit_router_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can generate the parameter value on your client to ensure that the value is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is unique.
         self.client_token = client_token
+        # The description of the policy route table.
         self.description = description
+        # Specifies whether to perform a dry run on the creation request, including permission and instance status checks. Valid values:
+        # 
+        # - **false** (default): sends a normal request. The system performs a check and creates the policy route table if the check passes.
+        # - **true**: sends a dry run request. The system only performs a check and does not create the policy route table. Check items include whether required parameters are specified and whether the request format is valid. If the check fails, the corresponding error is returned. If the check passes, the corresponding request ID is returned.
         self.dry_run = dry_run
+        # The name of the policy route table.
         self.name = name
+        # The list of tags bound to the policy route table.
         self.tag = tag
+        # The ID of the Enterprise Edition transit router.
+        # 
         # This parameter is required.
         self.transit_router_id = transit_router_id
 
@@ -84,8 +98,14 @@ class CreateTransitRouterPolicyTableRequest(DaraModel):
         return self
 
 class CreateTransitRouterPolicyTableRequestTag(DaraModel):
-    def __init__(self):
-        pass
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
     def validate(self):
         pass
 
@@ -94,9 +114,21 @@ class CreateTransitRouterPolicyTableRequestTag(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.key is not None:
+            result['Key'] = self.key
+
+        if self.value is not None:
+            result['Value'] = self.value
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+
         return self
 

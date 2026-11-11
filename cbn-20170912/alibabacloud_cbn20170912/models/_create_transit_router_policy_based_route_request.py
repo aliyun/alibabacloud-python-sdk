@@ -29,47 +29,47 @@ class CreateTransitRouterPolicyBasedRouteRequest(DaraModel):
         self.address_family = address_family
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
         # 
         # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
-        # The description of the policy-based route.
+        # The description of the policy-based routing rule.
         self.description = description
         # The destination port. Valid values: **-1** or **1** to **65535**.
         # 
-        # This parameter matches traffic whose port numbers fall within the destination port range. If you do not specify this parameter, traffic to any destination port is matched.
+        # Matches traffic whose port number falls within the destination port range. If this parameter is not specified, traffic to any destination port is matched.
         # 
         # The port range is specified in the following formats:
         # 
-        # - 80: port 80.
-        # - 80/80: port 80.
-        # - 1/200: ports 1 to 200.
-        # - -1/-1: all ports.
+        # - 80: specifies port 80.
+        # - 80/80: specifies port 80.
+        # - 1/200: specifies ports 1 to 200.
+        # - -1/-1: specifies all ports.
         self.dest_port_range = dest_port_range
         # The destination CIDR block of the route entry. Both IPv4 and IPv6 addresses are supported.
         self.destination_cidr = destination_cidr
-        # Specifies whether to only precheck the request. Valid values:
+        # Specifies whether to perform a dry run on the request. Valid values:
         # 
-        # - **true**: prechecks the request without creating the routing rule entry in the policy route table. The system checks whether required parameters are specified, the request format, and service limits. If the request fails the precheck, the corresponding error is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # - **false** (default): sends the request. After the request passes the precheck, the routing rule entry is created in the policy route table.
+        # - **true**: performs a dry run and does not create the routing rule entry in the policy route table. The system checks whether the required parameters are specified, the request format is valid, and the service limits are met. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # - **false** (default): performs a dry run and creates the routing rule entry in the policy route table if the request passes the dry run.
         self.dry_run = dry_run
         # The Differentiated Services Code Point (DSCP) value of the traffic packet to be matched. Valid values: **0** to **63**.
         # 
-        # The DSCP range is specified in the following formats:
+        # The DSCP value range is specified in the following formats:
         # 
-        # - 1: traffic with a DSCP value of 1.
-        # - 1/10: traffic with a DSCP value from 1 to 10.
-        # - -1/-1: traffic with any DSCP value.
+        # - 1: matches traffic with a DSCP value of 1.
+        # - 1/10: matches traffic with a DSCP value from 1 to 10.
+        # - -1/-1: matches traffic with any DSCP value.
         self.dscp = dscp
-        # The name of the policy-based route.
+        # The name of the policy-based routing rule.
         self.name = name
-        # The instance ID of the policy routing table.
+        # The instance ID of the policy-based routing table.
         # 
         # This parameter is required.
         self.policy_table_id = policy_table_id
-        # The priority of the policy-based route. Valid values: **1** to **100**.
+        # The priority of the policy-based routing rule. Valid values: **1** to **100**.
         # 
-        # The priority of each policy-based route in a policy route table of a transit router must be unique. A smaller value indicates a higher priority.
+        # The priority of each policy-based routing rule in a policy route table of a transit router must be unique. A smaller value indicates a higher priority.
         # 
         # This parameter is required.
         self.priority = priority
@@ -81,14 +81,14 @@ class CreateTransitRouterPolicyBasedRouteRequest(DaraModel):
         self.source_cidr = source_cidr
         # The source port. Valid values: **-1** or **1** to **65535**.
         # 
-        # This parameter matches traffic whose port numbers fall within the source port range. If you do not specify this parameter, traffic from any source port is matched.
+        # Matches traffic whose port number falls within the source port range. If this parameter is not specified, traffic from any source port is matched.
         # 
         # The port range is specified in the following formats:
         # 
-        # - 80: port 80.
-        # - 80/80: port 80.
-        # - 1/200: ports 1 to 200.
-        # - -1/-1: all ports.
+        # - 80: specifies port 80.
+        # - 80/80: specifies port 80.
+        # - 1/200: specifies ports 1 to 200.
+        # - -1/-1: specifies all ports.
         self.source_port_range = source_port_range
         # The destination route table.
         # 

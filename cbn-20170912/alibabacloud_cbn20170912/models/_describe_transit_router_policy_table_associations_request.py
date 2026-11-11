@@ -14,16 +14,14 @@ class DescribeTransitRouterPolicyTableAssociationsRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # The information about filter conditions. 
-        # 
-        # You can specify up to five filter conditions at a time.
+        # The filter conditions. You can specify up to five filter conditions at a time.
         self.filter = filter
-        # The number of entries to return per page in a paginated query. Valid values: 1 to 100.
+        # The number of entries to return per page. Valid values: 1 to 100.
         self.max_results = max_results
         # The token for the next query. Valid values:
         # 
-        # - If **NextToken** is empty, it indicates that no next query is available.
-        # - If **NextToken** returns a value, the value is the token for the next query.
+        # - If **NextToken** is empty, no subsequent query is available.
+        # - If a value is returned for **NextToken**, the value is the token for the next query.
         self.next_token = next_token
 
     def validate(self):
@@ -74,17 +72,17 @@ class DescribeTransitRouterPolicyTableAssociationsRequestFilter(DaraModel):
     ):
         # The filter condition. Valid values:
         # 
-        # - **PolicyTableId**: The instance ID of the policy routing table.
-        # - **AttachmentId**: The instance ID of the network connectivity instance.
-        # - **AssociationId**: The instance ID of the policy routing table associate relationship.
+        # - **PolicyTableId**: the policy routing table ID.
+        # - **AttachmentId**: the network connectivity instance ID.
+        # - **AssociationId**: the policy routing table associate relationship instance ID.
         # 
-        # By default, multiple filter conditions are connected by the **AND** operator. A match is found only when all filter conditions are met.
+        # By default, multiple filter conditions are connected by the **AND** logical operator. A result is returned only when all filter conditions are met.
         # 
         # You can specify up to five filter conditions at a time.
         self.key = key
         # The value of the filter condition.
         # 
-        # Specify the filter value based on **Key**. You can specify multiple filter values for a single **Key**. Multiple filter values are connected by the **OR** operator. A match is found when any of the filter values is met.
+        # Specify the filter value based on the **Key** parameter. You can specify multiple filter values for a single **Key**. Multiple filter values are connected by the **OR** logical operator. A result is returned when any of the filter values is met.
         # 
         # You can specify up to five filter values for a single filter condition.
         self.value = value

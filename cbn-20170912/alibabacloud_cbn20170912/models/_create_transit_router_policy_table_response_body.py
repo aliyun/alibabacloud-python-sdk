@@ -10,7 +10,9 @@ class CreateTransitRouterPolicyTableResponseBody(DaraModel):
         policy_table_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the policy route table.
         self.policy_table_id = policy_table_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
