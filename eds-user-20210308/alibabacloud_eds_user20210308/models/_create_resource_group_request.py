@@ -16,15 +16,17 @@ class CreateResourceGroupRequest(DaraModel):
         resource_group_description: str = None,
         resource_group_name: str = None,
     ):
+        # The agent subtype of the DesktopAgent resource group. Valid values: JVSClaw and HermesAgent.
         self.agent_type = agent_type
         # The channel.
         self.business_channel = business_channel
+        # Specifies whether to create an Alibaba Cloud resource group at the same time. This is supported only for resource groups in the Default category.
         self.enable_aliyun_resource_group = enable_aliyun_resource_group
         # > This parameter is not publicly available.
         self.is_resource_group_with_office_site = is_resource_group_with_office_site
-        # For Elastic Desktop Service (EDS) Enterprise Edition, set the value to `AliyunConsole`. Other platforms are not supported.
+        # For Elastic Desktop Service Enterprise Edition, set the value to `AliyunConsole`. Other platforms are not supported.
         self.platform = platform
-        # The resource category.
+        # The category of the resource.
         self.resource_classification = resource_classification
         # The description of the resource group. This parameter is optional. The description can be up to 500 characters in length and is saved as-is.
         self.resource_group_description = resource_group_description

@@ -60,6 +60,9 @@ from ._describe_resource_groups_response import DescribeResourceGroupsResponse
 from ._describe_user_request import DescribeUserRequest
 from ._describe_user_response_body import DescribeUserResponseBody
 from ._describe_user_response import DescribeUserResponse
+from ._describe_user_login_policies_request import DescribeUserLoginPoliciesRequest
+from ._describe_user_login_policies_response_body import DescribeUserLoginPoliciesResponseBody
+from ._describe_user_login_policies_response import DescribeUserLoginPoliciesResponse
 from ._describe_users_request import DescribeUsersRequest
 from ._describe_users_shrink_request import DescribeUsersShrinkRequest
 from ._describe_users_response_body import DescribeUsersResponseBody
@@ -101,6 +104,9 @@ from ._modify_org_response import ModifyOrgResponse
 from ._modify_user_request import ModifyUserRequest
 from ._modify_user_response_body import ModifyUserResponseBody
 from ._modify_user_response import ModifyUserResponse
+from ._modify_user_policy_basic_info_request import ModifyUserPolicyBasicInfoRequest
+from ._modify_user_policy_basic_info_response_body import ModifyUserPolicyBasicInfoResponseBody
+from ._modify_user_policy_basic_info_response import ModifyUserPolicyBasicInfoResponse
 from ._move_org_request import MoveOrgRequest
 from ._move_org_response_body import MoveOrgResponseBody
 from ._move_org_response import MoveOrgResponse
@@ -122,6 +128,9 @@ from ._remove_org_response import RemoveOrgResponse
 from ._remove_property_request import RemovePropertyRequest
 from ._remove_property_response_body import RemovePropertyResponseBody
 from ._remove_property_response import RemovePropertyResponse
+from ._remove_user_login_policies_request import RemoveUserLoginPoliciesRequest
+from ._remove_user_login_policies_response_body import RemoveUserLoginPoliciesResponseBody
+from ._remove_user_login_policies_response import RemoveUserLoginPoliciesResponse
 from ._remove_users_request import RemoveUsersRequest
 from ._remove_users_response_body import RemoveUsersResponseBody
 from ._remove_users_response import RemoveUsersResponse
@@ -181,6 +190,8 @@ from ._describe_resource_groups_response_body import DescribeResourceGroupsRespo
 from ._describe_user_response_body import DescribeUserResponseBodyUserExternalInfo
 from ._describe_user_response_body import DescribeUserResponseBodyUserProperties
 from ._describe_user_response_body import DescribeUserResponseBodyUser
+from ._describe_user_login_policies_response_body import DescribeUserLoginPoliciesResponseBodyPoliciesUserGroups
+from ._describe_user_login_policies_response_body import DescribeUserLoginPoliciesResponseBodyPolicies
 from ._describe_users_response_body import DescribeUsersResponseBodyUsersExtrasResourcePolicyList
 from ._describe_users_response_body import DescribeUsersResponseBodyUsersExtras
 from ._describe_users_response_body import DescribeUsersResponseBodyUsersGroups
@@ -280,6 +291,9 @@ __all__ = [
     DescribeUserRequest,
     DescribeUserResponseBody,
     DescribeUserResponse,
+    DescribeUserLoginPoliciesRequest,
+    DescribeUserLoginPoliciesResponseBody,
+    DescribeUserLoginPoliciesResponse,
     DescribeUsersRequest,
     DescribeUsersShrinkRequest,
     DescribeUsersResponseBody,
@@ -321,6 +335,9 @@ __all__ = [
     ModifyUserRequest,
     ModifyUserResponseBody,
     ModifyUserResponse,
+    ModifyUserPolicyBasicInfoRequest,
+    ModifyUserPolicyBasicInfoResponseBody,
+    ModifyUserPolicyBasicInfoResponse,
     MoveOrgRequest,
     MoveOrgResponseBody,
     MoveOrgResponse,
@@ -342,6 +359,9 @@ __all__ = [
     RemovePropertyRequest,
     RemovePropertyResponseBody,
     RemovePropertyResponse,
+    RemoveUserLoginPoliciesRequest,
+    RemoveUserLoginPoliciesResponseBody,
+    RemoveUserLoginPoliciesResponse,
     RemoveUsersRequest,
     RemoveUsersResponseBody,
     RemoveUsersResponse,
@@ -401,6 +421,8 @@ __all__ = [
     DescribeUserResponseBodyUserExternalInfo,
     DescribeUserResponseBodyUserProperties,
     DescribeUserResponseBodyUser,
+    DescribeUserLoginPoliciesResponseBodyPoliciesUserGroups,
+    DescribeUserLoginPoliciesResponseBodyPolicies,
     DescribeUsersResponseBodyUsersExtrasResourcePolicyList,
     DescribeUsersResponseBodyUsersExtras,
     DescribeUsersResponseBodyUsersGroups,

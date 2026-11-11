@@ -95,6 +95,7 @@ class DescribeUsersResponseBodyUsers(DaraModel):
         real_nick_name: str = None,
         remark: str = None,
         status: int = None,
+        user_source: str = None,
         wy_id: str = None,
     ):
         # The work address of the user.
@@ -148,6 +149,8 @@ class DescribeUsersResponseBodyUsers(DaraModel):
         self.remark = remark
         # The status.
         self.status = status
+        # 用户来源的企业身份源类型，由后端根据企业身份源自定义列的显隐配置决定是否查询。取值：DINGDING（钉钉）、FEISHU（飞书）、WECHAT（企业微信）、ENTRA_ID（Microsoft Entra ID）。列隐藏、未配置或无企业身份源关联时为空。
+        self.user_source = user_source
         # The globally unique ID of the convenience user.
         self.wy_id = wy_id
 
@@ -244,6 +247,9 @@ class DescribeUsersResponseBodyUsers(DaraModel):
         if self.status is not None:
             result['Status'] = self.status
 
+        if self.user_source is not None:
+            result['UserSource'] = self.user_source
+
         if self.wy_id is not None:
             result['WyId'] = self.wy_id
 
@@ -326,6 +332,9 @@ class DescribeUsersResponseBodyUsers(DaraModel):
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
+
+        if m.get('UserSource') is not None:
+            self.user_source = m.get('UserSource')
 
         if m.get('WyId') is not None:
             self.wy_id = m.get('WyId')

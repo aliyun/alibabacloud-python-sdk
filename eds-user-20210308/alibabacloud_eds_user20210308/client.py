@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Dict
 
 from alibabacloud_eds_user20210308 import models as main_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -20,6 +21,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'eds-user'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('eds-user', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -1612,6 +1616,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_user_with_options_async(request, runtime)
 
+    def describe_user_login_policies_with_options(
+        self,
+        request: main_models.DescribeUserLoginPoliciesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeUserLoginPoliciesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.policy_ids):
+            query['PolicyIds'] = request.policy_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeUserLoginPolicies',
+            version = '2021-03-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeUserLoginPoliciesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_user_login_policies_with_options_async(
+        self,
+        request: main_models.DescribeUserLoginPoliciesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeUserLoginPoliciesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.policy_ids):
+            query['PolicyIds'] = request.policy_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeUserLoginPolicies',
+            version = '2021-03-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeUserLoginPoliciesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_user_login_policies(
+        self,
+        request: main_models.DescribeUserLoginPoliciesRequest,
+    ) -> main_models.DescribeUserLoginPoliciesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_user_login_policies_with_options(request, runtime)
+
+    async def describe_user_login_policies_async(
+        self,
+        request: main_models.DescribeUserLoginPoliciesRequest,
+    ) -> main_models.DescribeUserLoginPoliciesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_user_login_policies_with_options_async(request, runtime)
+
     def describe_users_with_options(
         self,
         tmp_req: main_models.DescribeUsersRequest,
@@ -2774,6 +2856,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_user_with_options_async(request, runtime)
 
+    def modify_user_policy_basic_info_with_options(
+        self,
+        request: main_models.ModifyUserPolicyBasicInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyUserPolicyBasicInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyUserPolicyBasicInfo',
+            version = '2021-03-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyUserPolicyBasicInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_user_policy_basic_info_with_options_async(
+        self,
+        request: main_models.ModifyUserPolicyBasicInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyUserPolicyBasicInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyUserPolicyBasicInfo',
+            version = '2021-03-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyUserPolicyBasicInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_user_policy_basic_info(
+        self,
+        request: main_models.ModifyUserPolicyBasicInfoRequest,
+    ) -> main_models.ModifyUserPolicyBasicInfoResponse:
+        runtime = RuntimeOptions()
+        return self.modify_user_policy_basic_info_with_options(request, runtime)
+
+    async def modify_user_policy_basic_info_async(
+        self,
+        request: main_models.ModifyUserPolicyBasicInfoRequest,
+    ) -> main_models.ModifyUserPolicyBasicInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_user_policy_basic_info_with_options_async(request, runtime)
+
     def move_org_with_options(
         self,
         request: main_models.MoveOrgRequest,
@@ -3307,6 +3467,80 @@ class Client(OpenApiClient):
     ) -> main_models.RemovePropertyResponse:
         runtime = RuntimeOptions()
         return await self.remove_property_with_options_async(request, runtime)
+
+    def remove_user_login_policies_with_options(
+        self,
+        request: main_models.RemoveUserLoginPoliciesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveUserLoginPoliciesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
+        if not DaraCore.is_null(request.policy_ids):
+            query['PolicyIds'] = request.policy_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveUserLoginPolicies',
+            version = '2021-03-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveUserLoginPoliciesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_user_login_policies_with_options_async(
+        self,
+        request: main_models.RemoveUserLoginPoliciesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveUserLoginPoliciesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
+        if not DaraCore.is_null(request.policy_ids):
+            query['PolicyIds'] = request.policy_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveUserLoginPolicies',
+            version = '2021-03-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveUserLoginPoliciesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_user_login_policies(
+        self,
+        request: main_models.RemoveUserLoginPoliciesRequest,
+    ) -> main_models.RemoveUserLoginPoliciesResponse:
+        runtime = RuntimeOptions()
+        return self.remove_user_login_policies_with_options(request, runtime)
+
+    async def remove_user_login_policies_async(
+        self,
+        request: main_models.RemoveUserLoginPoliciesRequest,
+    ) -> main_models.RemoveUserLoginPoliciesResponse:
+        runtime = RuntimeOptions()
+        return await self.remove_user_login_policies_with_options_async(request, runtime)
 
     def remove_users_with_options(
         self,

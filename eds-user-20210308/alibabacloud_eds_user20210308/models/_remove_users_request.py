@@ -15,8 +15,14 @@ class RemoveUsersRequest(DaraModel):
     ):
         # The business channel.
         self.business_channel = business_channel
+        # Specifies whether to automatically revoke cloud desktop authorization before deleting convenience users. Valid values:
+        # 
+        # - true: Asynchronously revokes cloud desktop authorization and deletes convenience users. The API returns the task acceptance result.
+        # - false (default): Synchronously deletes convenience users without automatically revoking cloud desktop authorization. If associated resources prevent deletion, a deletion failure is returned.
+        # 
+        # When this parameter is set to true, the caller must also have the ecd:ModifyUserEntitlement permission. Task acceptance does not mean that the convenience users have been deleted.
         self.unbind_desktops = unbind_desktops
-        # The usernames of the convenience users to delete.
+        # The list of usernames of the convenience users to be deleted.
         # 
         # This parameter is required.
         self.users = users

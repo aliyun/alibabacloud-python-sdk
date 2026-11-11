@@ -85,6 +85,7 @@ class FilterUsersResponseBodyUsers(DaraModel):
         status: int = None,
         support_login_idps: List[main_models.FilterUsersResponseBodyUsersSupportLoginIdps] = None,
         user_set_properties_models: List[main_models.FilterUsersResponseBodyUsersUserSetPropertiesModels] = None,
+        user_source: str = None,
     ):
         # The date when the account is automatically locked, in the YYYY-MM-DD format.
         self.auto_lock_time = auto_lock_time
@@ -130,6 +131,8 @@ class FilterUsersResponseBodyUsers(DaraModel):
         self.support_login_idps = support_login_idps
         # The collection of user properties.
         self.user_set_properties_models = user_set_properties_models
+        # 用户来源的企业身份源类型，由后端根据企业身份源自定义列的显隐配置决定是否查询。取值：DINGDING（钉钉）、FEISHU（飞书）、WECHAT（企业微信）、ENTRA_ID（Microsoft Entra ID）。列隐藏、未配置或无企业身份源关联时为空。
+        self.user_source = user_source
 
     def validate(self):
         if self.external_info:
@@ -233,6 +236,9 @@ class FilterUsersResponseBodyUsers(DaraModel):
             for k1 in self.user_set_properties_models:
                 result['UserSetPropertiesModels'].append(k1.to_map() if k1 else None)
 
+        if self.user_source is not None:
+            result['UserSource'] = self.user_source
+
         return result
 
     def from_map(self, m: dict = None):
@@ -315,6 +321,9 @@ class FilterUsersResponseBodyUsers(DaraModel):
             for k1 in m.get('UserSetPropertiesModels'):
                 temp_model = main_models.FilterUsersResponseBodyUsersUserSetPropertiesModels()
                 self.user_set_properties_models.append(temp_model.from_map(k1))
+
+        if m.get('UserSource') is not None:
+            self.user_source = m.get('UserSource')
 
         return self
 

@@ -13,7 +13,7 @@ class RemoveUsersResponseBody(DaraModel):
         remove_users_result: main_models.RemoveUsersResponseBodyRemoveUsersResult = None,
         request_id: str = None,
     ):
-        # The result of deleting the convenience users.
+        # The result of the convenience user deletion operation.
         self.remove_users_result = remove_users_result
         # The request ID.
         self.request_id = request_id
@@ -54,11 +54,13 @@ class RemoveUsersResponseBodyRemoveUsersResult(DaraModel):
         removed_users: List[str] = None,
         submitted_users: List[str] = None,
     ):
-        # The information about the users that failed to be deleted.
+        # The collection of information about users that failed to be deleted.
         self.failed_users = failed_users
+        # The list of usernames of convenience users for which asynchronous deletion tasks already exist and have not finished. This request does not create duplicate deletion tasks for these users. The return of this field does not indicate that the users have been deleted.
         self.processing_users = processing_users
-        # The convenience users that are successfully deleted.
+        # The convenience users that were successfully deleted.
         self.removed_users = removed_users
+        # The list of usernames of convenience users for which asynchronous deletion tasks have been successfully accepted and created in this request. Asynchronous deletion is used when UnbindDesktops is set to true. Task acceptance does not mean that the convenience users have been deleted.
         self.submitted_users = submitted_users
 
     def validate(self):
