@@ -23,13 +23,13 @@ class ModifyBackupSourceEndpointResponseBody(DaraModel):
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # Indicates whether this change triggers a precheck. If this value is true, call StartBackupPlan to restart the backup plan.
+        # Indicates whether the modification triggers a precheck. If this parameter is set to true, you must call the StartBackupPlan operation to start the backup plan.
         self.need_precheck = need_precheck
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request succeeded. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # - **true**: The request succeeded.
+        # - **true**: The request was successful.
         # 
         # - **false**: The request failed.
         self.success = success

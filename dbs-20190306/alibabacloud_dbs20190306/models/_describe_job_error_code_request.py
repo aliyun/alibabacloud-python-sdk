@@ -12,7 +12,7 @@ class DescribeJobErrorCodeRequest(DaraModel):
         owner_id: str = None,
         task_id: str = None,
     ):
-        # A client token. It is used to ensure the idempotence of the request.
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
         # The language of the error message. Valid values:
         # 

@@ -15,7 +15,7 @@ class ModifyBackupStrategyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The ID of the backup schedule.
+        # The ID of the backup plan.
         self.backup_plan_id = backup_plan_id
         # The error code.
         self.err_code = err_code
@@ -23,7 +23,7 @@ class ModifyBackupStrategyResponseBody(DaraModel):
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # Indicates whether a precheck is triggered. If the value of this parameter is true, you must start the backup schedule by calling the StartBackupPlan operation.
+        # Indicates whether this modification triggers a precheck. If the value is true, a precheck is required, and you must call the StartBackupPlan operation to start the backup plan.
         self.need_precheck = need_precheck
         # The ID of the request.
         self.request_id = request_id

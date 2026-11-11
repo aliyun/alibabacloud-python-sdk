@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Dict
 
 from alibabacloud_dbs20190306 import models as main_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -20,6 +21,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'Dbs'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-qingdao': 'dbs-api.cn-hangzhou.aliyuncs.com',
@@ -44,7 +48,9 @@ class Client(OpenApiClient):
             'cn-shenzhen-finance-1': 'dbs-api.cn-hangzhou.aliyuncs.com',
             'ap-south-1': 'dbs-api.ap-south-1.aliyuncs.com',
             'eu-west-1': 'dbs-api.eu-west-1.aliyuncs.com',
-            'me-east-1': 'dbs-api.me-east-1.aliyuncs.com'
+            'me-east-1': 'dbs-api.me-east-1.aliyuncs.com',
+            'cn-wulanchabu': 'dbs-api.cn-wulanchabu.aliyuncs.com',
+            'cn-guangzhou': 'dbs-api.cn-guangzhou.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('dbs', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -726,6 +732,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.backup_gateway_id):
             query['BackupGatewayId'] = request.backup_gateway_id
+        if not DaraCore.is_null(request.backup_gateway_identifier):
+            query['BackupGatewayIdentifier'] = request.backup_gateway_identifier
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.database_type):
@@ -766,6 +774,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.backup_gateway_id):
             query['BackupGatewayId'] = request.backup_gateway_id
+        if not DaraCore.is_null(request.backup_gateway_identifier):
+            query['BackupGatewayIdentifier'] = request.backup_gateway_identifier
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.database_type):
@@ -2442,6 +2452,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.backup_gateway_id):
             query['BackupGatewayId'] = request.backup_gateway_id
+        if not DaraCore.is_null(request.backup_gateway_identifier):
+            query['BackupGatewayIdentifier'] = request.backup_gateway_identifier
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.owner_id):
@@ -2478,6 +2490,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.backup_gateway_id):
             query['BackupGatewayId'] = request.backup_gateway_id
+        if not DaraCore.is_null(request.backup_gateway_identifier):
+            query['BackupGatewayIdentifier'] = request.backup_gateway_identifier
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.owner_id):

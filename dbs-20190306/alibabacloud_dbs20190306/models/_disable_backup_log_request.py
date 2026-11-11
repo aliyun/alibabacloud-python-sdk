@@ -12,12 +12,13 @@ class DisableBackupLogRequest(DaraModel):
         disable_mysql_physical_backup_binlog_only: str = None,
         owner_id: str = None,
     ):
-        # The ID of the backup plan. Call [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) to query it.
+        # The ID of the backup plan. To get this ID, call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation.
         # 
         # This parameter is required.
         self.backup_plan_id = backup_plan_id
-        # Ensures idempotence and prevents duplicate requests.
+        # A client token to ensure the idempotence of the request.
         self.client_token = client_token
+        # Specifies whether to disable only the log backup feature for a physical backup of a MySQL database.
         self.disable_mysql_physical_backup_binlog_only = disable_mysql_physical_backup_binlog_only
         self.owner_id = owner_id
 

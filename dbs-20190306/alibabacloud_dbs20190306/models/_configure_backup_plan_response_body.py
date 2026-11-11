@@ -14,7 +14,7 @@ class ConfigureBackupPlanResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The backup plan ID.
+        # The ID of the backup plan.
         self.backup_plan_id = backup_plan_id
         # The error code.
         self.err_code = err_code
@@ -24,11 +24,9 @@ class ConfigureBackupPlanResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # - **true**: The request was successful.
-        # 
-        # - **false**: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - **true**: The request is successful.
+        # - **false**: The request fails.
         self.success = success
 
     def validate(self):

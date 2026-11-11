@@ -14,22 +14,22 @@ class DescribeRestoreRangeInfoRequest(DaraModel):
         owner_id: str = None,
         recently_restore: bool = None,
     ):
-        # The ID of the backup plan. Call [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) to get this value.
+        # The ID of the backup plan. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the value of this parameter.
         # 
         # This parameter is required.
         self.backup_plan_id = backup_plan_id
-        # The start timestamp of the restorable time range. Call [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) to get this value.
+        # The start time of the recoverable time range to query. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the value of this parameter.
         # 
         # This parameter is required.
         self.begin_timestamp_for_restore = begin_timestamp_for_restore
-        # A client token that ensures the idempotence of requests and prevents duplicate submissions.
+        # The client token that is used to ensure the idempotence of the request and prevent duplicate submissions.
         self.client_token = client_token
-        # The end timestamp of the restorable time range. Call [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) to get this value.
+        # The end time of the recoverable time range to query. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the value of this parameter.
         # 
         # This parameter is required.
         self.end_timestamp_for_restore = end_timestamp_for_restore
         self.owner_id = owner_id
-        # Whether to enable recent restore.
+        # Specifies whether to enable recent restoration.
         self.recently_restore = recently_restore
 
     def validate(self):

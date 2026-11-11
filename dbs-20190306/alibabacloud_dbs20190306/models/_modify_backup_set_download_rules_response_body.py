@@ -14,7 +14,7 @@ class ModifyBackupSetDownloadRulesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The ID of the backup schedule.
+        # The ID of the backup plan.
         self.backup_plan_id = backup_plan_id
         # The error code.
         self.err_code = err_code
@@ -22,7 +22,7 @@ class ModifyBackupSetDownloadRulesResponseBody(DaraModel):
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success

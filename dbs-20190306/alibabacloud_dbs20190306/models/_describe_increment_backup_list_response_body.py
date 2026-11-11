@@ -30,17 +30,17 @@ class DescribeIncrementBackupListResponseBody(DaraModel):
         self.items = items
         # The page number.
         self.page_num = page_num
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request succeeded. Valid values:
         # 
-        # - **true**: The request was successful.
+        # - **true**: The request succeeded.
         # 
         # - **false**: The request failed.
         self.success = success
-        # The total number of incremental backup tasks.
+        # The total number of incremental backups.
         self.total_elements = total_elements
         # The total number of pages.
         self.total_pages = total_pages

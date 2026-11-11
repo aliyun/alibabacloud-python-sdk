@@ -1,3 +1,6 @@
+2026-11-11 Version: 1.0.4
+- Generated python 2019-03-06 for Dbs.
+
 2026-03-19 Version: 1.0.3
 - Update API ConfigureBackupPlan: add request parameters BackupStorageEncryptMethod.
 - Update API ConfigureBackupPlan: add request parameters EnableMysqlPhysicalBackupBinlog.

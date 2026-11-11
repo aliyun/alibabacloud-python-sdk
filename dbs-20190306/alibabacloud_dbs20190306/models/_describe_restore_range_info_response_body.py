@@ -26,10 +26,8 @@ class DescribeRestoreRangeInfoResponseBody(DaraModel):
         self.items = items
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request succeeded. Valid values:
-        # 
-        # - **true**: The request succeeded.
-        # 
+        # Indicates whether the request was successful. Valid values:
+        # - **true**: The request was successful.
         # - **false**: The request failed.
         self.success = success
 

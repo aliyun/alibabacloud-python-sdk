@@ -18,7 +18,7 @@ class GetDBListFromAgentResponseBody(DaraModel):
         success: bool = None,
     ):
         self.db_list = db_list
-        # The error code.
+        # The error code string.
         self.err_code = err_code
         # The error message.
         self.err_message = err_message

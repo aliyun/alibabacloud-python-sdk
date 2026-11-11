@@ -11,11 +11,11 @@ class DescribeDLAServiceRequest(DaraModel):
         client_token: str = None,
         owner_id: str = None,
     ):
-        # The ID of the backup schedule. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the ID of the backup schedule.
+        # The ID of the backup plan. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to query the ID.
         # 
         # This parameter is required.
         self.backup_plan_id = backup_plan_id
-        # The client token that is used to ensure the idempotence of the request.
+        # A custom string.
         self.client_token = client_token
         self.owner_id = owner_id
 

@@ -18,24 +18,24 @@ class DescribeRestoreTaskListRequest(DaraModel):
     ):
         # The ID of the backup plan.
         # 
-        # > Specify either BackupPlanId or RestoreTaskId.
+        # > You must specify either this parameter or `RestoreTaskId`.
         self.backup_plan_id = backup_plan_id
-        # A client token that is used to ensure the idempotence of the request. This prevents duplicate requests.
+        # A client-generated token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         self.client_token = client_token
-        # The end time of the backup.
+        # The end of the time range to query restore tasks. Specify the time in the UNIX timestamp format. The timestamp is a millisecond-level timestamp.
         self.end_timestamp = end_timestamp
         self.owner_id = owner_id
-        # The page number. The value must be greater than or equal to 0 and not exceed the maximum value of the integer data type. Default value: 0.
+        # The page number. The value must be an integer that is greater than or equal to 0. Default value: 0.
         self.page_num = page_num
         # The number of entries to return on each page. Valid values: 1 to 100.
         # 
-        # > Default value: 30.
+        # > The default value is 30.
         self.page_size = page_size
-        # The ID of the restore job. You can specify multiple IDs. Separate them with commas (,). Call the [CreateRestoreTask](https://help.aliyun.com/document_detail/2869836.html) operation to obtain this parameter.
+        # The ID of the restore task. You can specify multiple IDs, separated by commas. You can call the [CreateRestoreTask](https://help.aliyun.com/document_detail/2869836.html) operation to obtain the restore task ID.
         # 
-        # > Specify either RestoreTaskId or BackupPlanId. An error occurs if you specify both parameters.
+        # > You must specify either this parameter or `BackupPlanId`. Specifying both parameters returns an error.
         self.restore_task_id = restore_task_id
-        # The start time of the backup.
+        # The beginning of the time range to query restore tasks. Specify the time in the UNIX timestamp format. The timestamp is a millisecond-level timestamp.
         self.start_timestamp = start_timestamp
 
     def validate(self):

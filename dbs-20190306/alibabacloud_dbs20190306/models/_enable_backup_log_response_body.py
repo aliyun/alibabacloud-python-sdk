@@ -15,7 +15,7 @@ class EnableBackupLogResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The ID of the backup plan.
+        # The backup plan ID.
         self.backup_plan_id = backup_plan_id
         # The error code.
         self.err_code = err_code
@@ -23,19 +23,19 @@ class EnableBackupLogResponseBody(DaraModel):
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # Indicates whether the modification triggers a precheck. Valid values:
+        # Indicates whether this change triggers a precheck. Valid values:
         # 
-        # - true: A precheck is triggered. Call the [StartBackupPlan](https://help.aliyun.com/document_detail/2869816.html) operation to start the backup plan.
+        # - `true`: A precheck is triggered. You must call the [StartBackupPlan](https://help.aliyun.com/document_detail/2869816.html) operation to start the backup plan.
         # 
-        # - false: A precheck is not triggered.
+        # - `false`: No precheck is triggered.
         self.need_precheck = need_precheck
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful. Valid values:
+        # Indicates whether the operation succeeded. Valid values:
         # 
-        # - true: The operation was successful.
+        # - `true`: The operation succeeded.
         # 
-        # - false: The operation failed.
+        # - `false`: The operation failed.
         self.success = success
 
     def validate(self):

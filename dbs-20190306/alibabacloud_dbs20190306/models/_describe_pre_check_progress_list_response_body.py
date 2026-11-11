@@ -26,22 +26,18 @@ class DescribePreCheckProgressListResponseBody(DaraModel):
         # The HTTP status code.
         self.http_status_code = http_status_code
         self.items = items
-        # The precheck progress. The value ranges from 0 to 100.
+        # The precheck progress. Valid values: 0 to 100.
         self.progress = progress
         # The request ID.
         self.request_id = request_id
         # The precheck status. Valid values:
-        # 
-        # - **running**: The precheck is in progress.
-        # 
-        # - **failed**: The precheck failed.
-        # 
-        # - **finish**: The precheck is complete.
+        # - **running**: running
+        # - **failed**: failed
+        # - **finish**: completed
         self.status = status
         # Indicates whether the request was successful. Valid values:
         # 
         # - **true**: The request was successful.
-        # 
         # - **false**: The request failed.
         self.success = success
 

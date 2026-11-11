@@ -38,7 +38,7 @@ class DescribeRestoreTaskListResponseBody(DaraModel):
         self.success = success
         # The total number of restore jobs.
         self.total_elements = total_elements
-        # The total number of pages.
+        # The total number of pages returned.
         self.total_pages = total_pages
 
     def validate(self):

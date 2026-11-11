@@ -8,6 +8,7 @@ class CreateGetDBListFromAgentTaskRequest(DaraModel):
     def __init__(
         self,
         backup_gateway_id: int = None,
+        backup_gateway_identifier: str = None,
         client_token: str = None,
         database_type: str = None,
         owner_id: str = None,
@@ -19,32 +20,27 @@ class CreateGetDBListFromAgentTaskRequest(DaraModel):
         # 
         # > This parameter is required.
         self.backup_gateway_id = backup_gateway_id
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The unique identifier of the backup gateway.
+        self.backup_gateway_identifier = backup_gateway_identifier
+        # The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The type of the database. Valid values:
         # 
         # - **MySQL**
-        # 
         # - **MSSQL**
-        # 
         # - **Oracle**
-        # 
         # - **MariaDB**
-        # 
         # - **PostgreSQL**
-        # 
         # - **DRDS**
-        # 
         # - **MongoDB**
-        # 
         # - **Redis**
         self.database_type = database_type
         self.owner_id = owner_id
-        # The URL that is used to access the database.
+        # The database connection address.
         self.source_endpoint_ip = source_endpoint_ip
-        # The port that is used to connect to the database.
+        # The database connection port.
         self.source_endpoint_port = source_endpoint_port
-        # The region in which the backup gateway resides.
+        # The region ID of the backup gateway.
         self.source_endpoint_region = source_endpoint_region
 
     def validate(self):
@@ -57,6 +53,9 @@ class CreateGetDBListFromAgentTaskRequest(DaraModel):
             result = _map
         if self.backup_gateway_id is not None:
             result['BackupGatewayId'] = self.backup_gateway_id
+
+        if self.backup_gateway_identifier is not None:
+            result['BackupGatewayIdentifier'] = self.backup_gateway_identifier
 
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
@@ -82,6 +81,9 @@ class CreateGetDBListFromAgentTaskRequest(DaraModel):
         m = m or dict()
         if m.get('BackupGatewayId') is not None:
             self.backup_gateway_id = m.get('BackupGatewayId')
+
+        if m.get('BackupGatewayIdentifier') is not None:
+            self.backup_gateway_identifier = m.get('BackupGatewayIdentifier')
 
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')

@@ -30,17 +30,15 @@ class DescribeBackupSetDownloadTaskListResponseBody(DaraModel):
         self.items = items
         # The page number.
         self.page_num = page_num
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # - **true**: The request was successful.
-        # 
-        # - **false**: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - **true**: The request is successful.
+        # - **false**: The request fails.
         self.success = success
-        # The total number of download records for backup sets.
+        # The total number of backup set download records.
         self.total_elements = total_elements
         # The total number of pages.
         self.total_pages = total_pages

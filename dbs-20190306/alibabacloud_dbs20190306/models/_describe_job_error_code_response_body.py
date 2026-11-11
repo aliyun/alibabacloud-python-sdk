@@ -23,7 +23,7 @@ class DescribeJobErrorCodeResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The details of the error code.
         self.item = item
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success

@@ -16,30 +16,30 @@ class DescribeIncrementBackupListRequest(DaraModel):
         show_storage_type: bool = None,
         start_timestamp: int = None,
     ):
-        # The backup plan ID. Call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) interface to get this parameter\\"s value.
+        # The ID of the backup plan. Call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain this ID.
         # 
         # This parameter is required.
         self.backup_plan_id = backup_plan_id
-        # A unique string that ensures the idempotence of the request and prevents duplicate requests.
+        # A client-generated token that ensures the idempotence of the request.
         self.client_token = client_token
-        # The end backup UNIX timestamp.
+        # The end timestamp of the backup query time range, in milliseconds.
         self.end_timestamp = end_timestamp
         self.owner_id = owner_id
-        # The page number. The value must be greater than or equal to 0 and less than or equal to the maximum integer value. The default value is 0.
+        # The page number. The value starts from 0, and the default is 0.
         self.page_num = page_num
-        # The number of entries per page. Valid values are 30, 50, and 100.
+        # The number of entries per page. Valid values: 30, 50, and 100.
         # 
-        # > The default number of entries per page is 30.
+        # > Default value: 30.
         self.page_size = page_size
-        # Indicates whether to display the storage class. Valid values:
+        # Specifies whether to return the storage class. Valid values:
         # 
         # - true
         # 
         # - false
         # 
-        # > The default value is true.
+        # > Default value: true.
         self.show_storage_type = show_storage_type
-        # The start backup UNIX timestamp.
+        # The start timestamp of the backup query time range, in milliseconds.
         self.start_timestamp = start_timestamp
 
     def validate(self):

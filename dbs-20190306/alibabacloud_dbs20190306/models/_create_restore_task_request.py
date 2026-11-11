@@ -42,106 +42,111 @@ class CreateRestoreTaskRequest(DaraModel):
         restore_time: int = None,
         ssl_ca_pem: str = None,
     ):
+        # Specifies whether to automatically start the instance after an Oracle physical backup is restored.
         self.auto_open_database = auto_open_database
+        # Specifies whether to automatically shut down the instance after an Oracle physical backup is restored.
         self.auto_shutdown_database = auto_shutdown_database
-        # backup gateway ID.
+        # The ID of the backup gateway.
         # 
-        # > This parameter is required when **DestinationEndpointInstanceType** is agent.
+        # > This parameter is required if **DestinationEndpointInstanceType** is set to Agent.
         self.backup_gateway_id = backup_gateway_id
-        # backup plan ID.
+        # The ID of the backup plan.
         # 
         # This parameter is required.
         self.backup_plan_id = backup_plan_id
-        # The ID of the full backup set used for restoration. Mutually exclusive with RestoreTime.
+        # The ID of the full backup set used for restoration. This parameter and RestoreTime are mutually exclusive.
         self.backup_set_id = backup_set_id
-        # Ensures request idempotence and prevents duplicate submissions.
+        # The client token that is used to ensure the idempotence of the request and prevent duplicate submissions.
         self.client_token = client_token
-        # UID for cross-Alibaba Cloud account backup.
+        # The UID of the Alibaba Cloud account used for cross-account backup.
         self.cross_aliyun_id = cross_aliyun_id
-        # RAM role name for cross-Alibaba Cloud account backup.
+        # The name of the RAM role used for cross-account backup.
         self.cross_role_name = cross_role_name
+        # The instance specifications of the new database instance to which data is restored.
         self.dest_database_instance_class = dest_database_instance_class
+        # The database engine version of the new database instance to which data is restored.
         self.dest_database_instance_database_version = dest_database_instance_database_version
+        # The region of the new database instance to which data is restored.
         self.dest_database_instance_region = dest_database_instance_region
+        # The instance storage size of the new database to recover.
         self.dest_database_instance_storage_size = dest_database_instance_storage_size
+        # The instance type of the new database to which data is restored.
         self.dest_database_instance_type = dest_database_instance_type
+        # The vSwitch of the new database instance to which data is restored.
         self.dest_database_instance_vswitch = dest_database_instance_vswitch
+        # The VPC of the new database instance to which data is restored.
         self.dest_database_instance_vpc = dest_database_instance_vpc
-        # database name.
+        # The name of the database.
         # 
-        # > This parameter is required when the database type is PostgreSQL or MongoDB.
+        # > This parameter is required if the database engine is PostgreSQL or MongoDB.
         self.destination_endpoint_database_name = destination_endpoint_database_name
-        # database endpoint.
+        # The database connection address.
         # 
-        # > This parameter is required when **DestinationEndpointInstanceType** is express, agent, or other.
+        # > This parameter is required if **DestinationEndpointInstanceType** is set to Express, Agent, or Other.
         self.destination_endpoint_ip = destination_endpoint_ip
-        # database instance ID.
+        # The instance ID of the database.
         # 
-        # > This parameter is required when **DestinationEndpointInstanceType** is RDS, ECS, DDS, or Express.
+        # > This parameter is required if **DestinationEndpointInstanceType** is set to RDS, ECS, DDS, or Express.
         self.destination_endpoint_instance_id = destination_endpoint_instance_id
-        # database location. Valid values:
-        # 
+        # The location of the database. Valid values:
         # - **RDS**
-        # 
         # - **ECS**
-        # 
-        # - **Express**: databases accessed via leased line/VPN Gateway/Smart Gateway
-        # 
-        # - **Agent**: databases accessed via backup gateway
-        # 
-        # - **DDS**: Cloud MongoDB
-        # 
-        # - **Other**: databases directly connected via IP:Port
-        # 
-        # - **dg**: self-managed databases without public IP:Port (accessed via Database Gateway DG)
+        # - **Express**: databases connected over Express Connect circuits, VPN gateways, or Smart Access Gateway (SAG)
+        # - **Agent**: databases connected over backup gateways
+        # - **DDS**: ApsaraDB for MongoDB
+        # - **Other**: databases connected by using IP addresses and port numbers
+        # - **dg**: self-managed databases that have no public IP addresses or port numbers and are connected over Database Gateway
         # 
         # This parameter is required.
         self.destination_endpoint_instance_type = destination_endpoint_instance_type
-        # Oracle SID name.
+        # The Oracle SID.
         # 
-        # > This parameter is required when the database type is Oracle.
+        # > This parameter is required if the database engine is Oracle.
         self.destination_endpoint_oracle_sid = destination_endpoint_oracle_sid
-        # password.
+        # The password of the database account.
         # 
-        # > This parameter is optional when the database type is Redis, or when the database location is agent and the database type is MSSQL. It is required in all other scenarios.
+        # > This parameter is not required if the database engine is Redis, or if the database is connected over a backup gateway and the database engine is SQL Server. In other scenarios, this parameter is required.
         self.destination_endpoint_password = destination_endpoint_password
-        # database port.
+        # The port number of the database.
         # 
-        # > This parameter is required when **DestinationEndpointInstanceType** is express, agent, other, or ECS.
+        # > This parameter is required if **DestinationEndpointInstanceType** is set to Express, Agent, Other, or ECS.
         self.destination_endpoint_port = destination_endpoint_port
-        # region of the database instance.
-        # 
-        # > This parameter is required when **DestinationEndpointInstanceType** is RDS, ECS, DDS, Express, or Agent.
+        # The region of the database instance.
+        # >This parameter is required if **DestinationEndpointInstanceType** is set to RDS, ECS, DDS, Express, or Agent.
         self.destination_endpoint_region = destination_endpoint_region
-        # database account.
+        # The username of the database account.
         # 
-        # > This parameter is optional when the database type is Redis, or when the database location is agent and the database type is MSSQL. It is required in all other scenarios.
+        # > This parameter is not required if the database engine is Redis, or if the database is connected over a backup gateway and the database engine is SQL Server. In other scenarios, this parameter is required.
         self.destination_endpoint_user_name = destination_endpoint_user_name
-        # Conflict handling for objects with the same name. Currently supports:
+        # The method used to handle conflicts between objects with the same name. Valid values:
         # 
-        # **renamenew**: Rename objects if names conflict.
+        # - **renamenew**: renames the object if an object with the same name exists.
         self.duplicate_conflict = duplicate_conflict
+        # Specifies whether to connect to the destination by using an SSL-encrypted connection.
         self.enable_destination_endpoint_ssl = enable_destination_endpoint_ssl
         self.owner_id = owner_id
+        # The method used to restore data to the destination. Valid values:
+        # - **EXIST_INSTANCE**: restores data to an existing instance.
+        # - **NEW_INSTANCE**: restores data to a new instance.
         self.restore_destination_mode = restore_destination_mode
-        # Required when **DestinationEndpointInstanceType** is agent and the backup plan is MySQL.
+        # This parameter is required if **DestinationEndpointInstanceType** is set to Agent and the backup plan is for MySQL.
         self.restore_dir = restore_dir
-        # database program directory.
+        # The directory of the database program.
         self.restore_home = restore_home
-        # restore objects.
+        # The objects to be restored.
         # 
-        # - For details, see the **RestoreObjects** parameter definition below. This parameter is optional when the database location is agent, and required in all other scenarios.
+        # - For more information, see the definition of the **RestoreObjects** parameter below. This parameter is not required if the database is connected over a backup gateway. In other scenarios, this parameter is required.
+        # - Template: `[{ "DBName": "Name of the database to be restored", "NewDBName": "Name of the destination database" }]`
         # 
-        # - Input template: `[{ "DBName": "database name to be restored", "NewDBName": "target database name to be restored" }]`
-        # 
-        # > This API only supports restoring objects at the database level. To configure table-level restoration, use the console. For details, see [Recover databases](https://help.aliyun.com/document_detail/85543.html).
+        # > Restoring objects by calling this API operation only supports restoration at the database level. To restore specific tables, go to the console. For more information, see [Restore a database](https://help.aliyun.com/document_detail/85543.html).
         self.restore_objects = restore_objects
-        # restore job name.
+        # The name of the restore task.
         # 
         # This parameter is required.
         self.restore_task_name = restore_task_name
-        # restore time. Value: 1554560477000.
+        # The point in time to which you want to restore the database. The value is a UNIX timestamp in milliseconds.
         self.restore_time = restore_time
+        # The credential for the SSL-encrypted connection to the destination.
         self.ssl_ca_pem = ssl_ca_pem
 
     def validate(self):

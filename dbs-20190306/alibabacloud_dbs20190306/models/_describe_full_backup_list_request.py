@@ -25,26 +25,25 @@ class DescribeFullBackupListRequest(DaraModel):
         self.backup_plan_id = backup_plan_id
         # The ID of the backup set.
         self.backup_set_id = backup_set_id
+        # The status of the backup set.
         self.backup_set_status = backup_set_status
-        # A token that ensures idempotence and prevents duplicate requests.
+        # The client token that is used to ensure request idempotence and prevent duplicate submissions.
         self.client_token = client_token
-        # The end time of the backup, in UNIX timestamp format.
+        # The end time of the backup.
         self.end_timestamp = end_timestamp
         self.owner_id = owner_id
-        # The page number. Valid values: integers from 0 to the maximum integer value. Default value: 0.
+        # The page number. The value must be greater than or equal to 0 and less than or equal to the maximum value of the Integer data type. Default value: 0.
         self.page_num = page_num
         # The number of entries per page. Valid values:
-        # 
         # - 30
-        # 
         # - 50
-        # 
         # - 100
         # 
         # Default value: 30.
         self.page_size = page_size
+        # Specifies whether to display the backup progress.
         self.show_progress = show_progress
-        # Specifies whether to return the storage class.
+        # Specifies whether to display the storage type.
         self.show_storage_type = show_storage_type
         # The start time of the backup.
         self.start_timestamp = start_timestamp

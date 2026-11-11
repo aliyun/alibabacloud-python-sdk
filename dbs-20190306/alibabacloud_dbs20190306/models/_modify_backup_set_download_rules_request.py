@@ -18,57 +18,44 @@ class ModifyBackupSetDownloadRulesRequest(DaraModel):
         open_auto_download: bool = None,
         owner_id: str = None,
     ):
-        # The ID of the backup gateway that is used to download the backup set.
+        # The ID of the backup gateway used to download the backup set.
         self.backup_gateway_id = backup_gateway_id
-        # The ID of the backup schedule.
+        # The ID of the backup plan. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to query the ID.
         # 
         # This parameter is required.
         self.backup_plan_id = backup_plan_id
         # The server directory to which the backup set is downloaded.
         self.backup_set_download_dir = backup_set_download_dir
-        # The type of the destination server to which the backup set is downloaded.
-        # 
-        # > Set the value to agent, which indicates a server on which a backup gateway is installed.
+        # The target type for downloading the backup set.
+        # > Default value: agent. A backup gateway is installed. This is the only supported value.
         self.backup_set_download_target_type = backup_set_download_target_type
-        # The type of the destination directory to which the backup set is downloaded. This parameter is required if the automatic download feature is enabled. Valid values:
-        # 
+        # The target directory type for downloading the backup set. This parameter is required if automatic download is enabled. Valid values:
         # - local
-        # 
         # - nas
-        # 
         # - ftp
-        # 
         # - minio
         # 
         # > Default value: local.
         self.backup_set_download_target_type_location = backup_set_download_target_type_location
-        # The client token that is used to ensure the idempotence of the request.
+        # The client token used to ensure the idempotence of the request and prevent duplicate request submissions.
         self.client_token = client_token
-        # The format in which the full backup set is downloaded. Valid values:
-        # 
+        # The format of the full data downloaded from the backup set. Valid values:
         # - Native
-        # 
         # - SQL
-        # 
         # - CSV
-        # 
         # - JSON
         # 
         # > Default value: CSV.
         self.full_data_format = full_data_format
-        # The format in which the incremental backup set is downloaded. Valid values:
-        # 
+        # The format of the incremental data downloaded from the backup set. Valid values:
         # - Native
-        # 
         # - SQL
-        # 
         # - CSV
-        # 
         # - JSON
         # 
         # > Default value: Native.
         self.increment_data_format = increment_data_format
-        # Specifies whether to enable the automatic download feature. Default value: false.
+        # Specifies whether to enable automatic download. Default value: false.
         self.open_auto_download = open_auto_download
         self.owner_id = owner_id
 

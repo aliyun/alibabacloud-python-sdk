@@ -18,7 +18,7 @@ class CreateGetDBListFromAgentTaskResponseBody(DaraModel):
         self.err_code = err_code
         # The error message.
         self.err_message = err_message
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id

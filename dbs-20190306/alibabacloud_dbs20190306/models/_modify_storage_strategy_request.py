@@ -21,36 +21,41 @@ class ModifyStorageStrategyRequest(DaraModel):
         log_duplication_infrequent_access_period: str = None,
         owner_id: str = None,
     ):
-        # Backup plan ID. Obtain this parameter\\"s value by calling the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) API.
+        # The ID of the backup plan. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to query the value of this parameter.
         # 
         # This parameter is required.
         self.backup_plan_id = backup_plan_id
-        # Backup data retention period, in days. Valid values: 0 to 1825.
+        # The retention period of backup data. Unit: days. Valid values: 0 to 1825.
         # 
-        # > Default value: 730 days.
+        # > Default value: 730.
         # 
         # This parameter is required.
         self.backup_retention_period = backup_retention_period
+        # The encryption method for backup data storage.
         self.backup_storage_encrypt_method = backup_storage_encrypt_method
-        # An arbitrary string used to ensure the idempotence of the request and prevent duplicate submissions.
+        # The client token that is used to ensure the idempotence of the request and prevent duplicate submissions.
         self.client_token = client_token
-        # Time to convert to Archive Storage. This value must be less than the backup data retention period (BackupRetentionPeriod parameter). For more information about Archive Storage, see [Storage Type Overview](https://help.aliyun.com/document_detail/51374.html).
-        # 
-        # > Default value: 365 days.
+        # The period after which backup data is transitioned to Archive storage. The value must be less than the retention period of backup data (specified by the BackupRetentionPeriod parameter). For more information about Archive storage, see [Storage types](https://help.aliyun.com/document_detail/51374.html).
+        # > Default value: 365.
         # 
         # This parameter is required.
         self.duplication_archive_period = duplication_archive_period
-        # Time to convert to Infrequent Access storage. This value must be less than the Archive Storage period (DuplicationArchivePeriod parameter). For more information about Infrequent Access storage, see [Storage Type Overview](https://help.aliyun.com/document_detail/51374.html).
-        # 
-        # > Default value: 180 days.
+        # The period after which backup data is transitioned to Infrequent Access storage. The value must be less than the period after which backup data is transitioned to Archive storage (specified by the DuplicationArchivePeriod parameter). For more information about Infrequent Access storage, see [Storage types](https://help.aliyun.com/document_detail/51374.html).
+        # > Default value: 180.
         # 
         # This parameter is required.
         self.duplication_infrequent_access_period = duplication_infrequent_access_period
+        # The retention period of incremental backup data.
         self.increment_backup_retention_period = increment_backup_retention_period
+        # The period after which incremental backup data is transitioned to Archive storage.
         self.increment_duplication_archive_period = increment_duplication_archive_period
+        # The period after which incremental backup data is transitioned to Infrequent Access storage.
         self.increment_duplication_infrequent_access_period = increment_duplication_infrequent_access_period
+        # The retention period of log backup data.
         self.log_backup_retention_period = log_backup_retention_period
+        # The period after which log backup data is transitioned to Infrequent Access storage.
         self.log_duplication_archive_period = log_duplication_archive_period
+        # The period after which log backup data is transitioned to Infrequent Access storage.
         self.log_duplication_infrequent_access_period = log_duplication_infrequent_access_period
         self.owner_id = owner_id
 

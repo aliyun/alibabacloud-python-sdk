@@ -32,15 +32,13 @@ class DescribeFullBackupListResponseBody(DaraModel):
         self.page_num = page_num
         # The number of entries per page.
         self.page_size = page_size
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the operation succeeded. Valid values:
-        # 
-        # - **true**: The operation succeeded.
-        # 
-        # - **false**: The operation failed.
+        # Indicates whether the request was successful. Valid values:
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
-        # The total number of full backup jobs.
+        # The total number of full backup tasks.
         self.total_elements = total_elements
         # The total number of pages.
         self.total_pages = total_pages

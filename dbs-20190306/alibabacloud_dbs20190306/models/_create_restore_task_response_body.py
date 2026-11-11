@@ -14,17 +14,17 @@ class CreateRestoreTaskResponseBody(DaraModel):
         restore_task_id: str = None,
         success: bool = None,
     ):
-        # error code.
+        # The error code.
         self.err_code = err_code
-        # error message.
+        # The error message.
         self.err_message = err_message
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # restore job ID.
+        # The ID of the restore task.
         self.restore_task_id = restore_task_id
-        # success.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

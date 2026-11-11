@@ -14,12 +14,12 @@ class DescribePreCheckProgressListRequest(DaraModel):
     ):
         # The ID of the backup plan.
         # 
-        # > Specify either BackupPlanId or RestoreTaskId.
+        # > Specify BackupPlanId or RestoreTaskId.
         self.backup_plan_id = backup_plan_id
-        # The client token that is used to ensure the idempotence of the request.
+        # The client token that is used to ensure the idempotence of the request and prevent duplicate submissions.
         self.client_token = client_token
         self.owner_id = owner_id
-        # The ID of the restore job.
+        # The ID of the restore task.
         self.restore_task_id = restore_task_id
 
     def validate(self):

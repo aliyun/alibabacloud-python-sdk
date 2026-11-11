@@ -15,27 +15,24 @@ class ModifyStorageStrategyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Backup plan ID.
+        # The ID of the backup plan.
         self.backup_plan_id = backup_plan_id
-        # Error code.
+        # The error code.
         self.err_code = err_code
-        # Error message.
+        # The error message.
         self.err_message = err_message
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Indicates whether this modification triggers a precheck. Return values:
+        # Indicates whether the modification triggers a precheck. Valid values:
         # 
-        # - **true**: A precheck is triggered. Manually call the [StartBackupPlan](https://help.aliyun.com/document_detail/2869818.html) API to start the backup plan.
-        # 
+        # - **true**: A precheck is triggered. You must manually call the [StartBackupPlan](https://help.aliyun.com/document_detail/2869818.html) operation to start the backup plan.
         # - **false**: No precheck is triggered.
         self.need_precheck = need_precheck
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Return values:
-        # 
-        # - **true**: The request was successful.
-        # 
-        # - **false**: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - **true**: The request is successful.
+        # - **false**: The request fails.
         self.success = success
 
     def validate(self):

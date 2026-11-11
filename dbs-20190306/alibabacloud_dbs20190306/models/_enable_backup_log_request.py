@@ -12,12 +12,13 @@ class EnableBackupLogRequest(DaraModel):
         enable_mysql_physical_backup_binlog: str = None,
         owner_id: str = None,
     ):
-        # The ID of the backup plan. Call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to query the ID.
+        # The backup plan ID. Call [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) to obtain this ID.
         # 
         # This parameter is required.
         self.backup_plan_id = backup_plan_id
-        # Any string value.
+        # A client-generated token that ensures the idempotency of the request.
         self.client_token = client_token
+        # Specifies whether to enable log backup for MySQL physical backups. Set the value to `true` to enable this feature.
         self.enable_mysql_physical_backup_binlog = enable_mysql_physical_backup_binlog
         self.owner_id = owner_id
 

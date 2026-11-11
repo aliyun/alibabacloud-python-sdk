@@ -25,11 +25,11 @@ class DisableBackupLogResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # Indicates whether this change triggers a precheck. Valid values:
         # 
-        # - true: A precheck is triggered. You must manually call the [StartBackupPlan](https://help.aliyun.com/document_detail/2869816.html) operation to start the backup plan.
+        # - true: A precheck is triggered. You must then call [StartBackupPlan](https://help.aliyun.com/document_detail/2869816.html) to start the backup plan.
         # 
         # - false: No precheck is triggered.
         self.need_precheck = need_precheck
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the operation succeeded. Valid values:
         # 
