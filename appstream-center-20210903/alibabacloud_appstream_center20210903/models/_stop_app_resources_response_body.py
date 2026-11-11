@@ -12,9 +12,13 @@ class StopAppResourcesResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code.
         self.code = code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful. A value of true indicates success, and a value of false indicates failure.
         self.success = success
 
     def validate(self):

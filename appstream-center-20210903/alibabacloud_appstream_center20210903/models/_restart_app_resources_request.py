@@ -23,24 +23,43 @@ class RestartAppResourcesRequest(DaraModel):
         session_id: str = None,
         uuid: str = None,
     ):
+        # The resource group ID.
+        # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # The business region ID.
         self.biz_region_id = biz_region_id
+        # The client ID.
+        # 
         # This parameter is required.
         self.client_id = client_id
+        # The client IP address.
         self.client_ip = client_ip
+        # The client operating system.
         self.client_os = client_os
+        # The client version.
         self.client_version = client_version
+        # The username.
         self.end_user_id = end_user_id
+        # The region ID at office network logon.
         self.login_region_id = login_region_id
+        # The logon token.
+        # 
         # This parameter is required.
         self.login_token = login_token
+        # The product type.
+        # 
         # This parameter is required.
         self.product_type = product_type
+        # The list of resource IDs.
+        # 
         # This parameter is required.
         self.resource_ids = resource_ids
+        # The session ID.
+        # 
         # This parameter is required.
         self.session_id = session_id
+        # The client UUID.
         self.uuid = uuid
 
     def validate(self):

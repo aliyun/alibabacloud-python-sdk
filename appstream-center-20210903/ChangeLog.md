@@ -1,3 +1,6 @@
+2026-11-11 Version: 2.0.7
+- Generated python 2021-09-03 for appstream-center.
+
 2026-05-01 Version: 2.0.6
 - Update API GetConnectionTicket: add request parameters RequireUuidValidation.
 

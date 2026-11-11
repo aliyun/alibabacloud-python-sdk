@@ -27,24 +27,43 @@ class GetConnectionTicketResponseBody(DaraModel):
         tenant_id: int = None,
         ticket: str = None,
     ):
+        # The delivery group ID.
         self.app_instance_group_id = app_instance_group_id
+        # The application instance ID.
         self.app_instance_id = app_instance_id
+        # The persistent session ID.
         self.app_instance_persistent_id = app_instance_persistent_id
+        # The user avatar ID.
         self.avatar_id = avatar_id
+        # The queue information.
+        # 
+        # > This parameter is not available.
         self.bind_queue_info = bind_queue_info
+        # The error code.
         self.code = code
+        # The logon token.
         self.login_token = login_token
+        # The error message.
         self.message = message
+        # The next polling interval, in milliseconds. If this parameter is empty, the value is 1000 ms.
         self.next_poll_interval_ms = next_poll_interval_ms
+        # The operating system type.
         self.os_type = os_type
+        # The session policy.
         self.policy = policy
+        # The ID of the region to which the delivery group belongs.
         self.region_id = region_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The number of retries.
         self.retry_times = retry_times
+        # The task ID.
         self.task_id = task_id
+        # The task status.
         self.task_status = task_status
+        # The tenant ID, which is the Alibaba Cloud account UID.
         self.tenant_id = tenant_id
+        # The connection ticket.
         self.ticket = ticket
 
     def validate(self):
@@ -181,8 +200,15 @@ class GetConnectionTicketResponseBodyPolicy(DaraModel):
         resolution_height: int = None,
         resolution_width: int = None,
     ):
+        # Specifies whether to use adaptive resolution.
+        # 
+        # > 
+        # > - `true`: The session resolution changes with the terminal display area. In this case, `SessionResolutionWidth` and `SessionResolutionHeight` are the maximum values of the resolution change.
+        # > - `false`: The session resolution does not change with the terminal display area. In this case, the resolution is fixed to the values of `SessionResolutionWidth` and `SessionResolutionHeight`.
         self.resolution_adaptive = resolution_adaptive
+        # The resolution height, in pixels.
         self.resolution_height = resolution_height
+        # The resolution width, in pixels.
         self.resolution_width = resolution_width
 
     def validate(self):
@@ -230,12 +256,19 @@ class GetConnectionTicketResponseBodyBindQueueInfo(DaraModel):
         target_id: str = None,
         wait_time: int = None,
     ):
+        # The queue task status.
         self.queue_status = queue_status
+        # The ranking information.
         self.rank = rank
+        # The timeout period for manual connection after the turn is reached.
         self.ready_timeout = ready_timeout
+        # The remaining wait time. Unit: seconds.
         self.remaining_time = remaining_time
+        # The queue request key.
         self.request_key = request_key
+        # The queue ID.
         self.target_id = target_id
+        # The time already waited in the queue. Unit: seconds.
         self.wait_time = wait_time
 
     def validate(self):

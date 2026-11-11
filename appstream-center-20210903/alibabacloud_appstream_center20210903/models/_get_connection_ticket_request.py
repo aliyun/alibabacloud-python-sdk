@@ -34,32 +34,92 @@ class GetConnectionTicketRequest(DaraModel):
         tenant_id: str = None,
         uuid: str = None,
     ):
+        # The access type. If this parameter is not passed, both types are displayed. Valid values: INTERNET (Internet) and VPC (Express Connect circuit).
         self.access_type = access_type
+        # The application ID.
+        # 
+        # > Required for the first call, and optional for subsequent calls.
         self.app_id = app_id
+        # The delivery group ID.
+        # > 
+        # > - When this parameter is passed, an application instance is assigned only from the specified and authorized delivery groups.
+        # > - When the AppInstanceId parameter is passed, this parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # The application instance ID.
+        # 
+        # > 
+        # > - When this parameter is passed, the system only attempts to assign the specified application instance.
+        # > - When this parameter is passed, the AppInstanceGroupId parameter must also be passed.
         self.app_instance_id = app_instance_id
+        # The policy ID.
         self.app_policy_id = app_policy_id
+        # The application version number.
         self.app_version = app_version
+        # Specifies whether to automatically connect when the turn is reached.
+        # 
+        # > This parameter is not available.
         self.auto_connect_in_queue = auto_connect_in_queue
+        # The region ID.
+        # 
+        # > When this parameter is passed, an application instance is assigned only from the delivery groups in the specified region.
         self.biz_region_id = biz_region_id
+        # The client ID.
         self.client_id = client_id
+        # The client IP address.
         self.client_ip = client_ip
+        # The client operating system.
         self.client_os = client_os
+        # The client type.
         self.client_type = client_type
+        # The client version.
         self.client_version = client_version
+        # The connection properties in JSON format.
+        # The following parameters are supported:
+        # 
+        # - authMode: the authorization mode, which is determined based on the authorization mode of the delivery group. Valid values: App (application authorization), AppInstanceGroup (delivery group authorization), and Session (persistent session authorization).
+        # - appInstanceGroupScheduleTags: the delivery group scheduling tags. Multiple tag key-value pairs are supported for filtering. Multiple tag pairs have an AND relationship. The key must have a value, and the value can be empty. Format example: [{"key":"Resolution","value":"720p"},{"key":"Name"}].
+        # - appInstanceGroupIds: the list of specified delivery group IDs.
+        # - appInstancePersistentId: the specified persistent session ID.
+        # - avatarId: the user avatar ID. Default value: default. This parameter is used to support assigning multiple session instances to a single user.
+        # 
+        # > Used when connecting to a cloud phone. Pass the fixed value `{"authMode":"Session"}`.
         self.connection_properties = connection_properties
+        # The username of the convenience account.
         self.end_user_id = end_user_id
+        # The environment configuration.
         self.environment_config = environment_config
+        # The logon region ID. When a user logs on to a workspace, this parameter specifies the ID of the region to which the workspace belongs.
         self.login_region_id = login_region_id
+        # The logon token.
+        # Obtained by calling the GetLoginToken or GetStsToken API operation.
+        # The GetLoginToken and GetStsToken API operations belong to the client logon authentication APIs of the 2021-02-20 version of WUYING Cloud App (product code: appstream-center). These two API operations are not provided in the 2021-09-03 version. OpenAPI Explorer links: https://api.aliyun.com/api/appstream-center/2021-02-20/GetLoginToken and https://api.aliyun.com/api/appstream-center/2021-02-20/GetStsToken.
+        # Note: This parameter is required. If it is not provided, the API returns InvalidParameter.loginToken(400).
         self.login_token = login_token
+        # The application startup parameters.
         self.param = param
+        # The product type.
+        # 
         # This parameter is required.
         self.product_type = product_type
+        # Specifies whether UUID validation is required.
         self.require_uuid_validation = require_uuid_validation
+        # The resource ID.
+        # 
+        # > Used when connecting to a cloud phone. Pass the persistent session ID that corresponds to the cloud phone instance.
+        # > When connecting to a cloud browser, pass the cloud browser ID.
+        # > When connecting to a cloud application, pass the application ID for the application authorization scenario, the delivery group ID for the delivery group authorization scenario, or the persistent session ID for the persistent session authorization scenario.
         self.resource_id = resource_id
+        # The logon session ID. Obtained by calling the GetLoginToken or GetStsToken API operation. This parameter is used together with LoginToken.
+        # The GetLoginToken and GetStsToken API operations belong to the client logon authentication APIs of the 2021-02-20 version of WUYING Cloud App (product code: appstream-center). These two API operations are not provided in the 2021-09-03 version. OpenAPI Explorer links: https://api.aliyun.com/api/appstream-center/2021-02-20/GetLoginToken and https://api.aliyun.com/api/appstream-center/2021-02-20/GetStsToken.
+        # Note: This parameter is required. If it is not provided, the API returns InvalidParameter.sessionId(400). This parameter must be used together with LoginToken.
         self.session_id = session_id
+        # The node ID.
+        # 
+        # > Required when you invoke the API not for the first time. Use this parameter query to check the node status and connection credentials.
         self.task_id = task_id
+        # The tenant ID, which is the Alibaba Cloud account UID.
         self.tenant_id = tenant_id
+        # The unique identifier of the logon device.
         self.uuid = uuid
 
     def validate(self):

@@ -14,10 +14,11 @@ class ListPublishedAppInfoResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # appModels
+        # The list of published applications.
         self.app_models = app_models
+        # The starting token for the next query.
         self.next_token = next_token
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,17 +77,44 @@ class ListPublishedAppInfoResponseBodyAppModels(DaraModel):
         is_auth: bool = None,
         used_in_session: bool = None,
     ):
+        # The application image ID. You can obtain the ID from the Image Management page in the WUYING Cloud App console.
         self.app_center_image_id = app_center_image_id
+        # The application ID.
         self.app_id = app_id
+        # The application name.
         self.app_name = app_name
+        # The theme color of the application.
         self.app_theme_color = app_theme_color
+        # The application version number.
         self.app_version = app_version
+        # The application version name.
         self.app_version_name = app_version_name
+        # The authorization time of the application.
+        # The return value is a serialized datetime string from the server in the format of `EEE MMM dd HH:mm:ss zzz yyyy`, which represents the day of the week, month, day, hour:minute:second, time zone abbreviation, and year in sequence. For example, `Wed Jan 14 20:47:02 CST 2026`, where `CST` is the time zone abbreviation of the server\\"s time zone (China Standard Time, UTC+08:00).
         self.auth_time = auth_time
+        # The specific category information of the application, which is the secondary category.
+        # Valid values:
+        # 
+        # - 1: All applications
+        # - 2: Design software
+        # - 3: Programming and development
+        # - 4: Office essentials
+        # - 5: Input methods
+        # - 6: Image and video
+        # - 7: System tools
+        # - 8: Browsers
         self.category_id = category_id
+        # The primary category of the application. Valid values:
+        # 
+        # - 0: Cloud application
+        # - 1: Cloud game
         self.category_type = category_type
+        # The URL of the application icon.
         self.icon_url = icon_url
+        # Indicates whether the user has permissions.
+        # The value is True.
         self.is_auth = is_auth
+        # Indicates whether the application is in use.
         self.used_in_session = used_in_session
 
     def validate(self):

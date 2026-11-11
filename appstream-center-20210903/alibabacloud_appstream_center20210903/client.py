@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Dict
 
 from alibabacloud_appstream_center20210903 import models as main_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -20,7 +21,10 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._product_id = 'appstream-center'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
+        self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('appstream-center', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -1105,6 +1109,8 @@ class Client(OpenApiClient):
             body['ProductType'] = request.product_type
         if not DaraCore.is_null(request.session_id):
             body['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.session_token):
+            body['SessionToken'] = request.session_token
         if not DaraCore.is_null(request.tenant_id):
             body['TenantId'] = request.tenant_id
         req = open_api_util_models.OpenApiRequest(
@@ -1159,6 +1165,8 @@ class Client(OpenApiClient):
             body['ProductType'] = request.product_type
         if not DaraCore.is_null(request.session_id):
             body['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.session_token):
+            body['SessionToken'] = request.session_token
         if not DaraCore.is_null(request.tenant_id):
             body['TenantId'] = request.tenant_id
         req = open_api_util_models.OpenApiRequest(

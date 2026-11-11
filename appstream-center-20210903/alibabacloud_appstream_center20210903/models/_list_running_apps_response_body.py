@@ -13,8 +13,9 @@ class ListRunningAppsResponseBody(DaraModel):
         request_id: str = None,
         running_cloud_apps: List[main_models.ListRunningAppsResponseBodyRunningCloudApps] = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The list of running cloud applications.
         self.running_cloud_apps = running_cloud_apps
 
     def validate(self):
@@ -66,16 +67,27 @@ class ListRunningAppsResponseBodyRunningCloudApps(DaraModel):
         region_id: str = None,
         start_time: str = None,
     ):
+        # The application ID.
         self.app_id = app_id
+        # The app instance group ID.
         self.app_instance_group_id = app_instance_group_id
+        # The application instance ID.
         self.app_instance_id = app_instance_id
+        # The application name.
         self.app_name = app_name
+        # The application version.
         self.app_version = app_version
+        # The application version name.
         self.app_version_name = app_version_name
+        # The running duration of the cloud application instance. Unit: seconds.
         self.duration = duration
+        # The URL of the application icon.
         self.icon_url = icon_url
+        # The operating system type of the instance platform.
         self.os_type = os_type
+        # The region ID of the cloud application.
         self.region_id = region_id
+        # The start time. The value is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
 
     def validate(self):

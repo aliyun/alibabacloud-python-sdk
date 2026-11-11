@@ -12,9 +12,13 @@ class ResetAppResourcesResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code.
         self.code = code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values: true: The call was successful. false: The call failed.
         self.success = success
 
     def validate(self):
