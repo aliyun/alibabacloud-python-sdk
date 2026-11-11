@@ -16,21 +16,21 @@ class ListExperimentRunsRequest(DaraModel):
         plan_name: str = None,
         status: str = None,
     ):
-        # Filters results by exact dataset ID.
+        # Filters the results by exact dataset ID.
         self.dataset_id = dataset_id
-        # Filters results by fuzzy match on the experiment configuration name.
+        # Filters the results by using a fuzzy match on the name in the experiment configuration.
         self.experiment_name = experiment_name
-        # Optional. Use `page` and `pageSize` for pagination instead.
+        # Optional. For pagination, use page and pageSize.
         self.max_results = max_results
-        # Optional. Use `page` and `pageSize` for pagination instead.
+        # Optional. For pagination, use page and pageSize.
         self.next_token = next_token
         # The page number, starting from 0. Default value: 0.
         self.page = page
         # The number of entries per page. Default value: 20.
         self.page_size = page_size
-        # Filters results by fuzzy match on the experiment plan name.
+        # Filters the results by using a fuzzy match on the experiment plan name.
         self.plan_name = plan_name
-        # Filters results by status.
+        # Filters the results by status.
         self.status = status
 
     def validate(self):

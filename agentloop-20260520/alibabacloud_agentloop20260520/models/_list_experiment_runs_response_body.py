@@ -18,7 +18,7 @@ class ListExperimentRunsResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The maximum number of entries returned.
+        # The maximum number of returned entries.
         self.max_results = max_results
         # Optional.
         self.next_token = next_token
@@ -26,7 +26,7 @@ class ListExperimentRunsResponseBody(DaraModel):
         self.page = page
         # The number of entries per page.
         self.page_size = page_size
-        # The list of experiment run records.
+        # The list of experiment runs.
         self.records = records
         # The request ID.
         self.request_id = request_id

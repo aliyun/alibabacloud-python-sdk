@@ -12,9 +12,9 @@ class ListAgentSpacesRequest(DaraModel):
         next_token: str = None,
         region_id: str = None,
     ):
-        # The AgentSpace name.
+        # The name of the AgentSpace.
         self.agent_space = agent_space
-        # The maximum number of results to return.
+        # The maximum number of results.
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token

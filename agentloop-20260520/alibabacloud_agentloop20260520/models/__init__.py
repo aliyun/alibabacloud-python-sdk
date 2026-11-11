@@ -248,6 +248,8 @@ from ._update_pipeline_request import UpdatePipelineRequest
 from ._update_pipeline_response_body import UpdatePipelineResponseBody
 from ._update_pipeline_response import UpdatePipelineResponse
 from ._audit_task_state import AuditTaskStateRuntimeError
+from ._model_parameters import ModelParametersResponseFormatJsonSchema
+from ._model_parameters import ModelParametersResponseFormat
 from ._create_context_store_request import CreateContextStoreRequestConfigAudit
 from ._create_context_store_request import CreateContextStoreRequestConfigExtractionPoliciesModel
 from ._create_context_store_request import CreateContextStoreRequestConfigExtractionPoliciesStoragePolicy
@@ -673,6 +675,8 @@ __all__ = [
     UpdatePipelineResponseBody,
     UpdatePipelineResponse,
     AuditTaskStateRuntimeError,
+    ModelParametersResponseFormatJsonSchema,
+    ModelParametersResponseFormat,
     CreateContextStoreRequestConfigAudit,
     CreateContextStoreRequestConfigExtractionPoliciesModel,
     CreateContextStoreRequestConfigExtractionPoliciesStoragePolicy,

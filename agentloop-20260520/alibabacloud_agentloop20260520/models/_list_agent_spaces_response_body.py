@@ -16,15 +16,15 @@ class ListAgentSpacesResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The AgentSpaces information.
+        # The information about the AgentSpaces.
         self.agent_spaces = agent_spaces
-        # The maximum number of results returned.
+        # The maximum number of returned results.
         self.max_results = max_results
-        # The pagination token. This parameter is empty if no more pages are available.
+        # The pagination token. This parameter is empty if no next page is available.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total count.
         self.total = total
 
     def validate(self):
@@ -91,7 +91,7 @@ class ListAgentSpacesResponseBodyAgentSpaces(DaraModel):
         sls_project: str = None,
         update_time: str = None,
     ):
-        # The AgentSpace name.
+        # The name of the AgentSpace.
         self.agent_space = agent_space
         # The CMS workspace.
         self.cms_workspace = cms_workspace
@@ -105,7 +105,7 @@ class ListAgentSpacesResponseBodyAgentSpaces(DaraModel):
         self.mse_namespace = mse_namespace
         # The region ID.
         self.region_id = region_id
-        # The Simple Log Service project name.
+        # The name of the Simple Log Service project.
         self.sls_project = sls_project
         # The update time.
         # 
@@ -183,10 +183,11 @@ class ListAgentSpacesResponseBodyAgentSpacesMseNamespace(DaraModel):
         namespace_id: str = None,
         namespace_name: str = None,
     ):
+        # The attach method of the MSE namespace. AutoCreated indicates automatic creation by AgentLoop. UserSelected indicates that an existing namespace is selected and attached when the AgentSpace is created.
         self.bind_type = bind_type
-        # The MSE namespace ID.
+        # The ID of the MSE namespace.
         self.namespace_id = namespace_id
-        # The MSE namespace name.
+        # The name of the MSE namespace.
         self.namespace_name = namespace_name
 
     def validate(self):

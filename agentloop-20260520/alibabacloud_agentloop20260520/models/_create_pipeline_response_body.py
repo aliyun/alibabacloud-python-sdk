@@ -9,7 +9,7 @@ class CreatePipelineResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The request ID used to locate the request during troubleshooting.
+        # The request ID, used to locate the request during troubleshooting.
         self.request_id = request_id
 
     def validate(self):

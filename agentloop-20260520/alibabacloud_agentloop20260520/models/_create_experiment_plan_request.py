@@ -21,31 +21,31 @@ class CreateExperimentPlanRequest(DaraModel):
         query_sql: str = None,
         selected_item_ids: List[str] = None,
     ):
-        # The ID of the associated dataset. If not specified, the execution phase processes in simple mode.
+        # The ID of the associated dataset. If you do not specify this parameter, the execution phase is processed in simple mode.
         self.dataset_id = dataset_id
         # The description of the experiment plan.
         self.description = description
-        # The list of evaluators. When configured, evaluation can be automatically triggered upon experiment completion.
+        # The list of evaluators. After you configure this parameter, an evaluation is automatically triggered when the experiment is completed.
         self.evaluators = evaluators
-        # The experiment type. Set this parameter to `OFFLINE` or `ONLINE`.
+        # The type of the experiment. Valid values: OFFLINE and ONLINE.
         # 
         # This parameter is required.
         self.experiment_type = experiment_type
-        # The list of experiment configurations. A maximum of 5 entries are supported. For offline experiments, this parameter can be omitted or set to an empty array. For online experiments, at least one entry is required.
+        # The list of experiment configurations. You can specify up to 5 configurations. This parameter is optional or can be left empty for offline experiments. For online experiments, you must specify at least one configuration.
         # 
         # This parameter is required.
         self.experiments = experiments
         # Optional.
         self.input = input
-        # The name of the associated data processing pipeline (optional). After association, when experiment runs under this plan finish writing results to the experiment result Logstore, the system filters by the traceId of the experiment trace, calls PreviewPipeline, and writes the pipeline-processed results together.
+        # The name of the associated data processing pipeline. This parameter is optional. After you associate a pipeline, when the experiment execution under this plan is completed and the experiment results are written to the Logstore, the system filters the data by the traceId of the current experiment trace and calls PreviewPipeline to write the results processed by the pipeline.
         self.pipeline_name = pipeline_name
-        # The name of the experiment plan. The name must be unique within the same AgentSpace and account.
+        # The name of the experiment plan. The name must be unique within the same account in an AgentSpace.
         # 
         # This parameter is required.
         self.plan_name = plan_name
-        # The custom query SQL clause for partial dataset mode. This parameter can be used when `selectedItemIds` is empty.
+        # The custom query SQL clause in partial dataset mode. You can use this parameter when selectedItemIds is empty.
         self.query_sql = query_sql
-        # The list of selected data item IDs for partial dataset mode. This parameter must be used together with `datasetId`.
+        # The list of selected data item IDs in partial dataset mode. This parameter must be used together with the datasetId parameter.
         self.selected_item_ids = selected_item_ids
 
     def validate(self):

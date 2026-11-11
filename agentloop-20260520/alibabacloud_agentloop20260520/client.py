@@ -236,6 +236,8 @@ class Client(OpenApiClient):
             body['description'] = request.description
         if not DaraCore.is_null(request.mse_namespace_id):
             body['mseNamespaceId'] = request.mse_namespace_id
+        if not DaraCore.is_null(request.trajectory_embedding_enabled):
+            body['trajectoryEmbeddingEnabled'] = request.trajectory_embedding_enabled
         if not DaraCore.is_null(request.trajectory_store_enabled):
             body['trajectoryStoreEnabled'] = request.trajectory_store_enabled
         req = open_api_util_models.OpenApiRequest(
@@ -278,6 +280,8 @@ class Client(OpenApiClient):
             body['description'] = request.description
         if not DaraCore.is_null(request.mse_namespace_id):
             body['mseNamespaceId'] = request.mse_namespace_id
+        if not DaraCore.is_null(request.trajectory_embedding_enabled):
+            body['trajectoryEmbeddingEnabled'] = request.trajectory_embedding_enabled
         if not DaraCore.is_null(request.trajectory_store_enabled):
             body['trajectoryStoreEnabled'] = request.trajectory_store_enabled
         req = open_api_util_models.OpenApiRequest(

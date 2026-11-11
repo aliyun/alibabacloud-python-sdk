@@ -12,9 +12,9 @@ class UpdateContextStoreResponseBody(DaraModel):
         request_id: str = None,
         strategy_version: int = None,
     ):
-        # The configuration properties after the runtime recall switch is updated. This block is not returned for other library update operations.
+        # The configuration properties after updating the runtime recall switch. This block is not returned for other library update operations.
         self.config = config
-        # The request ID, which is used to locate this request during troubleshooting.
+        # The request ID. You can use this ID to locate the request when troubleshooting issues.
         self.request_id = request_id
         # The strategy version number that takes effect after the update for the memory type. If the strategy remains unchanged, the version number is the same as before the update.
         self.strategy_version = strategy_version

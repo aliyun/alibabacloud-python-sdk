@@ -12,7 +12,7 @@ class GetExperimentRunResponseBody(DaraModel):
         region_id: str = None,
         request_id: str = None,
     ):
-        # The experiment run record details. Fields with null values are not returned.
+        # The details of the experiment run. Fields with null values are not returned.
         self.record = record
         # The region ID.
         self.region_id = region_id
