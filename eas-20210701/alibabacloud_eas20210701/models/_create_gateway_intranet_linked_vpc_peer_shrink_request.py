@@ -10,9 +10,9 @@ class CreateGatewayIntranetLinkedVpcPeerShrinkRequest(DaraModel):
         peer_vpcs_shrink: str = None,
         vpc_id: str = None,
     ):
-        # The list of VPC peers.
+        # The list of peered VPCs.
         self.peer_vpcs_shrink = peer_vpcs_shrink
-        # The VPC ID. To obtain the VPC ID, see [ListGatewayIntranetLinkedVpc](https://help.aliyun.com/document_detail/2621223.html).
+        # The ID of the VPC. For information about how to obtain the VPC ID, see [ListGatewayIntranetLinkedVpc](https://help.aliyun.com/document_detail/2621223.html).
         self.vpc_id = vpc_id
 
     def validate(self):

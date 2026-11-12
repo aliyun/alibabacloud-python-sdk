@@ -11,9 +11,9 @@ class DescribeServiceRolloutResponseBody(DaraModel):
         request_id: str = None,
         rollout: main_models.DescribeServiceRolloutResponseBodyRollout = None,
     ):
-        # The request ID. This ID is unique to each request and is used for troubleshooting.
+        # The request ID. A unique identifier returned with each request, used for troubleshooting and tracing.
         self.request_id = request_id
-        # Details of the service rollout, including the rollout strategy (`Strategy`) and execution status (`Status`).
+        # The rollout strategy information. Contains the strategy configuration (Strategy) and execution status (Status).
         self.rollout = rollout
 
     def validate(self):
@@ -50,9 +50,9 @@ class DescribeServiceRolloutResponseBodyRollout(DaraModel):
         status: main_models.DescribeServiceRolloutResponseBodyRolloutStatus = None,
         strategy: main_models.DescribeServiceRolloutResponseBodyRolloutStrategy = None,
     ):
-        # The current progress and phase of the rollout.
+        # The rollout execution status. Contains the current rollout progress and phase information.
         self.status = status
-        # The rollout strategy configuration. This object contains the parameters for a canary release or batch release.
+        # The rollout strategy configuration. Contains the specific configuration parameters for partition-based or batch-based rollout.
         self.strategy = strategy
 
     def validate(self):
@@ -92,9 +92,9 @@ class DescribeServiceRolloutResponseBodyRolloutStrategy(DaraModel):
         batch: main_models.DescribeServiceRolloutResponseBodyRolloutStrategyBatch = None,
         partition: main_models.DescribeServiceRolloutResponseBodyRolloutStrategyPartition = None,
     ):
-        # The configuration for a batch release. This object is returned only when the batch release strategy is used.
+        # The batch rollout configuration. This field is returned only if a batch-based rollout strategy is used.
         self.batch = batch
-        # The configuration for a canary release. This object is returned only when the canary release strategy is used.
+        # The partition rollout configuration. This field is returned only if a partition-based rollout strategy is used.
         self.partition = partition
 
     def validate(self):
@@ -133,7 +133,7 @@ class DescribeServiceRolloutResponseBodyRolloutStrategyPartition(DaraModel):
         self,
         partition: str = None,
     ):
-        # Specifies the number or percentage of old replicas to keep. For example, a value of `50%` indicates that 50% of the old replicas are retained.
+        # The partition value. Specifies the number or percentage of old replicas to retain. For example, \\"50%\\" indicates that 50% of the old replicas are retained.
         self.partition = partition
 
     def validate(self):
@@ -162,9 +162,9 @@ class DescribeServiceRolloutResponseBodyRolloutStrategyBatch(DaraModel):
         batch_size: str = None,
         interval: str = None,
     ):
-        # The number or percentage of replicas to update in each batch.
+        # The batch size. The number or percentage of replicas to update in each batch.
         self.batch_size = batch_size
-        # The time to wait between batches.
+        # The batch interval. The wait time between two consecutive rollout batches.
         self.interval = interval
 
     def validate(self):
@@ -203,27 +203,22 @@ class DescribeServiceRolloutResponseBodyRolloutStatus(DaraModel):
         update_revision: str = None,
         updated_replicas: int = None,
     ):
-        # The identifier for the currently running revision.
+        # The current revision. The identifier of the version that is currently running.
         self.current_revision = current_revision
-        # The scheduled start time for the next batch.
+        # The time when the next batch starts updating, in the format of YYYY/MM/DD HH:mm:ss.
         self.next_batch_start_time = next_batch_start_time
-        # The current release phase. Valid values:
-        # 
-        # - `Pending`: The rollout is waiting to start.
-        # 
-        # - `Running`: The rollout is in progress.
-        # 
-        # - `Paused`: The rollout is paused.
-        # 
-        # - `Completed`: The rollout is complete.
-        # 
-        # - `Failed`: The rollout has failed.
+        # The rollout phase. Valid values:
+        # - Pending: Waiting to start the rollout.
+        # - Running: The rollout is in progress.
+        # - Paused: The rollout is paused.
+        # - Completed: The rollout is completed.
+        # - Failed: The rollout failed.
         self.phase = phase
-        # The total number of desired replicas for the service.
+        # The total number of replicas for the service.
         self.total_replicas = total_replicas
-        # The identifier for the target revision.
+        # The update revision. The identifier of the target version to which the service is being updated.
         self.update_revision = update_revision
-        # The number of replicas updated to the new revision.
+        # The number of replicas that have been updated to the new version.
         self.updated_replicas = updated_replicas
 
     def validate(self):

@@ -22,25 +22,25 @@ class ListGatewayShrinkRequest(DaraModel):
     ):
         # The billing method.
         self.charge_type = charge_type
-        # The ID of the private gateway. You can obtain the ID from the private_gateway_id field in the response of the ListResources operation.
+        # The ID of the private gateway. For information about how to obtain the ID of a private gateway, see the private_gateway_id field in the response of the ListResources operation.
         self.gateway_id = gateway_id
         # The alias of the private gateway.
         self.gateway_name = gateway_name
         # The type of the gateway.
         self.gateway_type = gateway_type
-        # Specifies whether to enable access over the public network.
+        # Specifies whether Internet access is enabled.
         self.internet_enabled = internet_enabled
-        # Filter by tag.
+        # The label used to filter gateways.
         self.label_shrink = label_shrink
         # The sort order.
         self.order = order
-        # The page number of the gateway list to return. The default value is 1.
+        # The page number of the gateway list. Default value: 1.
         self.page_number = page_number
-        # The number of gateways to return on each page. The default value is 100.
+        # The paging Settings for the number of entries to return per page in a paged query. Default value: 100.
         self.page_size = page_size
-        # The ID of the resource group. You can obtain the ID from the ResourceId field in the response of the [ListResources](https://help.aliyun.com/document_detail/412133.html) operation.
+        # The ID of the resource group. For information about how to obtain the ID of a resource group, see the ResourceId field in the response of the [ListResources](https://help.aliyun.com/document_detail/412133.html) operation.
         self.resource_name = resource_name
-        # The field to sort by.
+        # The field used for sorting.
         self.sort = sort
         # The status of the gateway.
         self.status = status

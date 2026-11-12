@@ -377,6 +377,9 @@ from ._update_service_safety_lock_response import UpdateServiceSafetyLockRespons
 from ._update_service_version_request import UpdateServiceVersionRequest
 from ._update_service_version_response_body import UpdateServiceVersionResponseBody
 from ._update_service_version_response import UpdateServiceVersionResponse
+from ._update_service_version_remark_request import UpdateServiceVersionRemarkRequest
+from ._update_service_version_remark_response_body import UpdateServiceVersionRemarkResponseBody
+from ._update_service_version_remark_response import UpdateServiceVersionRemarkResponse
 from ._update_virtual_resource_request import UpdateVirtualResourceRequest
 from ._update_virtual_resource_response_body import UpdateVirtualResourceResponseBody
 from ._update_virtual_resource_response import UpdateVirtualResourceResponse
@@ -829,6 +832,9 @@ __all__ = [
     UpdateServiceVersionRequest,
     UpdateServiceVersionResponseBody,
     UpdateServiceVersionResponse,
+    UpdateServiceVersionRemarkRequest,
+    UpdateServiceVersionRemarkResponseBody,
+    UpdateServiceVersionRemarkResponse,
     UpdateVirtualResourceRequest,
     UpdateVirtualResourceResponseBody,
     UpdateVirtualResourceResponse,

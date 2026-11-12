@@ -10,9 +10,9 @@ class ListResourceServicesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number of the service list. Pages start from 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 100.
+        # The number of services to return on each page during paging. Default value: 100.
         self.page_size = page_size
 
     def validate(self):

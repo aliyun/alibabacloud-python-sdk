@@ -17,18 +17,28 @@ class ListBenchmarkTaskRequest(DaraModel):
         sort: str = None,
         status: str = None,
     ):
-        # The filter used to query tasks. If you specify this parameter, the system returns tasks whose names or associated service names match the filter value.
+        # The filter parameter. If specified, the system searches for records that match the specified value in the EAS service name and stress testing task name.
         self.filter = filter
+        # The model ID.
         self.model_id = model_id
+        # The sort order. Valid values:
+        # - desc: Descending order. This is the default value.
+        # - asc: Ascending order.
         self.order = order
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number of the stress testing task list. Pages start from 1. Default value: 1.
         self.page_number = page_number
-        # The name of the Elastic Algorithm Service (EAS) service that corresponds to the stress testing task. For more information about how to query the service name, see [ListServices](https://help.aliyun.com/document_detail/412109.html).
+        # The number of stress testing tasks to return on each page. Default value: 100.
         self.page_size = page_size
+        # The request method for stress testing. Valid values:
+        # - concurrency: Fixed concurrency mode.
+        # - requestRate: Fixed request rate mode.
+        # - peakThroughput: Peak throughput mode.
         self.request_method = request_method
         # The name of the EAS service that corresponds to the stress testing task. For more information about how to query the service name, see [ListServices](https://help.aliyun.com/document_detail/412109.html).
         self.service_name = service_name
+        # The sort field.
         self.sort = sort
+        # The execution status used to filter stress testing tasks.
         self.status = status
 
     def validate(self):

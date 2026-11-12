@@ -18,9 +18,9 @@ class ListResourceInstancesResponseBody(DaraModel):
     ):
         # The list of instances.
         self.instances = instances
-        # The page number of the returned list of instances.
+        # The page number of the returned machine instance list in the resource group.
         self.page_number = page_number
-        # The number of instances returned on each page.
+        # The number of machines returned on each page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id

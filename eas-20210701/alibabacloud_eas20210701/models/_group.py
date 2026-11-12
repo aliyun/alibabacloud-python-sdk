@@ -24,27 +24,31 @@ class Group(DaraModel):
         traffic_mode: str = None,
         update_time: str = None,
     ):
-        # The access token for the traffic entry of the service group.
+        # The access token for the traffic ingress of the service group.
         self.access_token = access_token
+        # The UID of the account that created the service group.
         self.caller_uid = caller_uid
-        # The region in which the service group resides.
+        # The ID of the cluster where the service group is located.
         self.cluster_id = cluster_id
-        # The time when the service group was created. The time is in UTC.
+        # The time when the service group was created. The time is displayed in UTC.
         self.create_time = create_time
         # The public endpoint of the service group.
         self.internet_endpoint = internet_endpoint
         # The internal endpoint of the service group.
         self.intranet_endpoint = intranet_endpoint
+        # The list of labels for the service group.
         self.labels = labels
         # The name of the service group.
         self.name = name
+        # The virtual private cloud (VPC) configuration of the service group.
         self.network = network
+        # The UID of the parent account that created the service group.
         self.parent_uid = parent_uid
-        # The queue services contained in the service group.
+        # The queue services included in the service group.
         self.queue_service = queue_service
         # The traffic mode.
         self.traffic_mode = traffic_mode
-        # The time when the service group was last updated. The time is in UTC.
+        # The time when the service group was updated. The time is displayed in UTC.
         self.update_time = update_time
 
     def validate(self):
@@ -158,9 +162,13 @@ class GroupNetwork(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The dedicated gateway ID.
         self.gateway_id = gateway_id
+        # The security group ID.
         self.security_group_id = security_group_id
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -207,7 +215,9 @@ class GroupLabels(DaraModel):
         label_key: str = None,
         label_value: str = None,
     ):
+        # The label key.
         self.label_key = label_key
+        # The label value.
         self.label_value = label_value
 
     def validate(self):

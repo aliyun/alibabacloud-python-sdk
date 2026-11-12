@@ -10,9 +10,9 @@ class DeleteConfigResponseBody(DaraModel):
         deleted: int = None,
         message: str = None,
     ):
-        # The number of configurations deleted.
+        # The number of deleted configurations.
         self.deleted = deleted
-        # A message indicating the operation result.
+        # The operation result message.
         self.message = message
 
     def validate(self):

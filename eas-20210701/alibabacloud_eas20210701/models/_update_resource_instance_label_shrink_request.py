@@ -13,11 +13,11 @@ class UpdateResourceInstanceLabelShrinkRequest(DaraModel):
         instance_ids_shrink: str = None,
         labels: Dict[str, str] = None,
     ):
-        # Specifies whether the modification takes effect on all instances in the resource group. If you set this parameter to true, the InstanceIds parameter does not take effect.
+        # Specifies whether the operation applies to all instances in the resource group. If this parameter is set to true, the InstanceIds parameter does not take effect.
         self.all_instances = all_instances
         # The instance IDs.
         self.instance_ids_shrink = instance_ids_shrink
-        # The custom tag.
+        # The user-defined tags.
         self.labels = labels
 
     def validate(self):

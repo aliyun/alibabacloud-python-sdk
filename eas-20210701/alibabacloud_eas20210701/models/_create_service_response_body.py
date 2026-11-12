@@ -15,19 +15,19 @@ class CreateServiceResponseBody(DaraModel):
         service_name: str = None,
         status: str = None,
     ):
-        # The public endpoint of the created service.
+        # The public endpoint of the newly created service.
         self.internet_endpoint = internet_endpoint
-        # The internal endpoint of the created service.
+        # The internal endpoint of the newly created service.
         self.intranet_endpoint = intranet_endpoint
-        # The region ID of the created service.
+        # The region ID of the newly created service.
         self.region = region
         # The request ID.
         self.request_id = request_id
-        # The ID of the created service.
+        # The ID of the newly created service.
         self.service_id = service_id
-        # The name of the created service.
+        # The name of the newly created service.
         self.service_name = service_name
-        # The service state.
+        # The current status of the new service.
         self.status = status
 
     def validate(self):

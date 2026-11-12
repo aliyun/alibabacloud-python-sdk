@@ -12,11 +12,11 @@ class DeleteResourceInstanceLabelShrinkRequest(DaraModel):
         keys_shrink: str = None,
         label_keys_shrink: str = None,
     ):
-        # Specifies whether the operation takes effect on all instances in the resource group. If this parameter is set to true, the InstanceIds parameter does not take effect.
+        # Specifies whether the operation applies to all instances in the resource group. If this parameter is set to true, the InstanceIds parameter does not take effect.
         self.all_instances = all_instances
-        # The machine instance IDs.
+        # The instance IDs.
         self.instance_ids_shrink = instance_ids_shrink
-        # The tags to delete. (Deprecated. Use LabelKeys instead.).
+        # **[Deprecated]** The tags to delete. Use LabelKeys instead.
         self.keys_shrink = keys_shrink
         # The tags to delete.
         self.label_keys_shrink = label_keys_shrink

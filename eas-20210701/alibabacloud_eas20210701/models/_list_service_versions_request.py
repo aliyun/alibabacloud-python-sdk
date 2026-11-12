@@ -12,7 +12,7 @@ class ListServiceVersionsRequest(DaraModel):
     ):
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 100.
+        # The number of versions to return on each page in the paging Settings for a paged query. Default value: 100.
         self.page_size = page_size
 
     def validate(self):

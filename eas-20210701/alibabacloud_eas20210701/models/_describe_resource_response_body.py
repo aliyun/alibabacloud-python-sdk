@@ -36,59 +36,58 @@ class DescribeResourceResponseBody(DaraModel):
         update_time: str = None,
         usage_mode: str = None,
     ):
-        # The ID of the cluster that contains the resource group.
+        # The ID of the cluster where the resource group resides.
         self.cluster_id = cluster_id
         # The total number of CPU cores.
         self.cpu_count = cpu_count
         # The number of CPU cores in use.
         self.cpu_used = cpu_used
-        # The time the resource group was created.
+        # The time when the resource group was created, in UTC and RFC 3339 format.
         self.create_time = create_time
-        # Additional information, such as the VPC connection status and the SLS log status.
+        # The additional information, such as the VPC connectivity status and Simple Log Service status.
         self.extra_data = extra_data
-        # The features that the resource group supports.
+        # The set of features supported by the resource group.
         self.features = features
         # The total number of GPUs.
         self.gpu_count = gpu_count
         # The number of GPUs in use.
         self.gpu_used = gpu_used
-        # The total number of instances in the resource group.
+        # The total number of machine instances in the resource group.
         self.instance_count = instance_count
-        # The maximum number of CPU cores that can be allocated to a single instance in the resource group.
+        # The maximum number of allocatable CPU cores per node in the resource group.
         self.instance_max_allocatable_cpu = instance_max_allocatable_cpu
-        # The maximum number of GPUs that can be allocated to a single instance in the resource group.
+        # The maximum number of allocatable GPUs per node in the resource group.
         self.instance_max_allocatable_gpu = instance_max_allocatable_gpu
-        # The maximum amount of memory that can be allocated to a single instance in the resource group, in MB.
+        # The maximum allocatable memory size per node in the resource group.
         self.instance_max_allocatable_memory = instance_max_allocatable_memory
-        # The total memory size, in MB.
+        # The total memory, in MB.
         self.memory = memory
         # The amount of memory in use, in MB.
         self.memory_used = memory_used
-        # A message that provides details about the status of the resource group.
+        # The returned message.
         self.message = message
         # The ID of the resource group owner.
         self.owner_uid = owner_uid
-        # The total number of pay-as-you-go instances in the resource group.
+        # The total number of pay-as-you-go machine instances in the resource group.
         self.post_paid_instance_count = post_paid_instance_count
-        # The total number of subscription instances in the resource group.
+        # The total number of subscription machine instances in the resource group.
         self.pre_paid_instance_count = pre_paid_instance_count
         # The request ID.
         self.request_id = request_id
-        # The ID of the resource group.
+        # The Elastic Algorithm Service resource ID.
         self.resource_id = resource_id
-        # The name of the resource group.
+        # The Elastic Algorithm Service resource name.
         self.resource_name = resource_name
-        # The type of the resource group. Valid values:
+        # The resource group type. Valid values:
         # 
-        # - `Dedicated`: a dedicated resource group.
-        # 
-        # - `SelfManaged`: a self-managed resource group.
+        # - Dedicated: dedicated resource group
+        # - SelfManaged: self-managed resource group
         self.resource_type = resource_type
         # The number of services deployed in the resource group.
         self.service_count = service_count
         # The status of the resource group.
         self.status = status
-        # The time the resource group was last updated.
+        # The time when the resource group was last updated, in UTC and RFC 3339 format.
         self.update_time = update_time
         # The usage mode of the resource group.
         self.usage_mode = usage_mode

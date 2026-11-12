@@ -13,11 +13,11 @@ class UpdateResourceInstanceLabelRequest(DaraModel):
         instance_ids: List[str] = None,
         labels: Dict[str, str] = None,
     ):
-        # Specifies whether the modification takes effect on all instances in the resource group. If you set this parameter to true, the InstanceIds parameter does not take effect.
+        # Specifies whether the operation applies to all instances in the resource group. If this parameter is set to true, the InstanceIds parameter does not take effect.
         self.all_instances = all_instances
         # The instance IDs.
         self.instance_ids = instance_ids
-        # The custom tag.
+        # The user-defined tags.
         self.labels = labels
 
     def validate(self):

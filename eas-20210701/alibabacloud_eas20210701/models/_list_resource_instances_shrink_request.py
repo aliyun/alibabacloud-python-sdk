@@ -20,33 +20,31 @@ class ListResourceInstancesShrinkRequest(DaraModel):
         sort: str = None,
         zone: str = None,
     ):
-        # Filters instances by billing method. Valid values:
-        # 
-        # - PrePaid: subscription.
-        # 
-        # - PostPaid: pay-as-you-go.
+        # The billing method of the machines to filter. Valid values:
+        # - PrePaid: Subscription.
+        # - PostPaid: Pay-as-you-go.
         self.charge_type = charge_type
-        # A keyword for the search. You can search by instance ID or IP address.
+        # The search keyword. You can search by machine ID or IP address.
         self.filter = filter
-        # The IP address of the instance.
+        # The IP address of the machine.
         self.instance_ip = instance_ip
-        # Filter by instance ID. For more information, see [ListResourceInstances](https://help.aliyun.com/document_detail/412129.html).
+        # Filters the results by instance ID. For information about how to obtain the instance ID, see [ListResourceInstances](https://help.aliyun.com/document_detail/412129.html).
         self.instance_id = instance_id
-        # Filter by instance name.
+        # Filters the results by instance name.
         self.instance_name = instance_name
-        # The status of the instance.
+        # The status of the machine.
         self.instance_status = instance_status
-        # Filter by label.
+        # Filters the results by label.
         self.label_shrink = label_shrink
         # The sort order.
         self.order = order
-        # The page number. The value starts from 1. The default value is 1.
+        # The page number of the machine instance list in the dedicated resource group. Pages start from 1. Default value: 1.
         self.page_number = page_number
-        # The number of instances to return on each page. Default value: 100.
+        # The paging Settings for the number of machines to return on each page in a paged query. Default value: 100.
         self.page_size = page_size
-        # The sort field.
+        # The field used for sorting.
         self.sort = sort
-        # The zone of the instance.
+        # The zone of the machine.
         self.zone = zone
 
     def validate(self):

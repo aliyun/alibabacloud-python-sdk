@@ -10,9 +10,9 @@ class CreateServiceRolloutResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # A message that indicates the result of the operation.
+        # The response message that describes the result of the request.
         self.message = message
-        # The unique request ID. Use this ID for troubleshooting and traceability.
+        # The request ID. It is a unique identifier returned for each request and is used for troubleshooting and tracking.
         self.request_id = request_id
 
     def validate(self):

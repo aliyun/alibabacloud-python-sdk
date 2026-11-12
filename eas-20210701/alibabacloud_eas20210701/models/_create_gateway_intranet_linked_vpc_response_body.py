@@ -13,9 +13,9 @@ class CreateGatewayIntranetLinkedVpcResponseBody(DaraModel):
     ):
         # The ID of the private gateway.
         self.gateway_id = gateway_id
-        # The message returned for the request.
+        # The message returned in the response.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

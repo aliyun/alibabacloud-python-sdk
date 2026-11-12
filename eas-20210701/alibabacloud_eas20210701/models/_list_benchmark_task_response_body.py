@@ -16,15 +16,15 @@ class ListBenchmarkTaskResponseBody(DaraModel):
         tasks: List[main_models.ListBenchmarkTaskResponseBodyTasks] = None,
         total_count: int = None,
     ):
-        # The page number of the returned list of tasks.
+        # The page number of the returned stress testing task list.
         self.page_number = page_number
-        # The number of tasks to return on each page.
+        # The number of stress testing tasks returned on each page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
         # The list of tasks.
         self.tasks = tasks
-        # The total number of tasks.
+        # The total number of tasks queried.
         self.total_count = total_count
 
     def validate(self):
@@ -94,9 +94,9 @@ class ListBenchmarkTaskResponseBodyTasks(DaraModel):
     ):
         # The number of available stress testing instances.
         self.available_agent = available_agent
-        # The time when the stress testing task was created.
+        # The time when the stress testing task was created. The time is in UTC and follows the RFC3339 format.
         self.create_time = create_time
-        # A summary of the task.
+        # The summary information of the service.
         self.message = message
         # The region where the stress testing task is located.
         self.region = region
@@ -108,7 +108,7 @@ class ListBenchmarkTaskResponseBodyTasks(DaraModel):
         self.task_id = task_id
         # The name of the stress testing task.
         self.task_name = task_name
-        # The time when the stress testing task was last updated.
+        # The time when the stress testing task was updated. The time is in UTC and follows the RFC3339 format.
         self.update_time = update_time
 
     def validate(self):

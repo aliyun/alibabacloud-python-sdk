@@ -13,7 +13,7 @@ class ListTenantAddonsResponseBody(DaraModel):
         addons: List[main_models.ListTenantAddonsResponseBodyAddons] = None,
         request_id: str = None,
     ):
-        # The information about the plug-in.
+        # The plugin information.
         self.addons = addons
         # The request ID.
         self.request_id = request_id
@@ -58,9 +58,9 @@ class ListTenantAddonsResponseBodyAddons(DaraModel):
         attributes: Dict[str, str] = None,
         name: str = None,
     ):
-        # The attributes of the plug-in.
+        # The plugin attributes.
         self.attributes = attributes
-        # The name of the plug-in.
+        # The plugin name.
         self.name = name
 
     def validate(self):

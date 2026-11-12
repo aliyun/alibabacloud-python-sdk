@@ -12,9 +12,9 @@ class CreateServiceMirrorRequest(DaraModel):
         ratio: int = None,
         target: List[str] = None,
     ):
-        # The percentage of the traffic that is mirrored to the destination service. Valid values: 0 to 100.
+        # The ratio. Valid values: 0 to 100.
         self.ratio = ratio
-        # The instances.
+        # The list of service instances.
         self.target = target
 
     def validate(self):

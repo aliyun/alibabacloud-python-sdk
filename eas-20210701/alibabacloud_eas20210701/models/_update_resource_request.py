@@ -13,9 +13,9 @@ class UpdateResourceRequest(DaraModel):
         resource_name: str = None,
         self_managed_resource_options: main_models.UpdateResourceRequestSelfManagedResourceOptions = None,
     ):
-        # The new name of the resource group after the update. The name can be up to 27 characters in length.
+        # The new name of the resource group. The name cannot exceed 27 characters in length.
         self.resource_name = resource_name
-        # The configuration items of the self-managed resource group.
+        # The configuration options for the self-managed resource group.
         self.self_managed_resource_options = self_managed_resource_options
 
     def validate(self):
@@ -52,9 +52,9 @@ class UpdateResourceRequestSelfManagedResourceOptions(DaraModel):
         node_match_labels: Dict[str, str] = None,
         node_tolerations: List[main_models.UpdateResourceRequestSelfManagedResourceOptionsNodeTolerations] = None,
     ):
-        # Tag tag key-value pairs for nodes.
+        # The set of label key-value pairs for nodes.
         self.node_match_labels = node_match_labels
-        # Tolerations for nodes.
+        # The list of tolerations for node taints.
         self.node_tolerations = node_tolerations
 
     def validate(self):
@@ -100,17 +100,10 @@ class UpdateResourceRequestSelfManagedResourceOptionsNodeTolerations(DaraModel):
         value: str = None,
     ):
         # The effect.
-        # Valid values:
-        # - PreferNoSchedule
-        # - NoSchedule
-        # - NoExecute
         self.effect = effect
         # The key name.
         self.key = key
-        # Relationship between key names and key values.
-        # Valid values:
-        # - Equal
-        # - Exists
+        # The relationship between the key name and the key value.
         self.operator = operator
         # The key value.
         self.value = value

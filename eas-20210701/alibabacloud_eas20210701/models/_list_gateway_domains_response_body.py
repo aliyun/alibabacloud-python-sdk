@@ -16,7 +16,7 @@ class ListGatewayDomainsResponseBody(DaraModel):
     ):
         # The list of custom domain names.
         self.custom_domains = custom_domains
-        # The message returned for the request.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -74,23 +74,23 @@ class ListGatewayDomainsResponseBodyCustomDomains(DaraModel):
         type: str = None,
         update_time: str = None,
     ):
-        # The expiration date of the certificate.
+        # The certificate expiration date in the YYYY-MM-DD format.
         self.certificate_end_date = certificate_end_date
-        # The ID of the SSL certificate attached to the domain name. To obtain the certificate ID, upload or purchase a certificate in the [Digital Certificate Management Service](https://yundunnext.console.aliyun.com/?spm=5176.2020520163.console-base_help.2.4b3baJixaJixOc\\&p=cas) console.
+        # The ID of the SSL certificate bound to the domain name. Obtain the certificate ID after uploading or purchasing a certificate in [Certificate Management Service](https://yundunnext.console.aliyun.com/?spm=5176.2020520163.console-base_help.2.4b3baJixaJixOc&p=cas).
         self.certificate_id = certificate_id
-        # The name of the SSL certificate.
+        # The SSL certificate name.
         self.certificate_name = certificate_name
-        # The issuance date of the certificate.
+        # The certificate issuance date in the YYYY-MM-DD format.
         self.certificate_start_date = certificate_start_date
-        # The status of the domain name.
+        # The domain name status.
         self.certificate_status = certificate_status
-        # The time when the domain name was created.
+        # The time when the domain name was created, in UTC and RFC 3339 format.
         self.create_time = create_time
         # The custom domain name.
         self.domain = domain
-        # The type of the domain name.
+        # The domain name type.
         self.type = type
-        # The time when the domain name was last updated.
+        # The time when the domain name was last updated, in UTC and RFC 3339 format.
         self.update_time = update_time
 
     def validate(self):

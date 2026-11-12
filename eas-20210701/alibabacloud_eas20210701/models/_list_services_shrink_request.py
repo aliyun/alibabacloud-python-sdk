@@ -35,92 +35,75 @@ class ListServicesShrinkRequest(DaraModel):
         traffic_state: str = None,
         workspace_id: str = None,
     ):
+        # Filters services by visibility. PUBLIC indicates a public service, and PRIVATE indicates a private service.
         self.accessibility = accessibility
-        # Specifies whether to enable Auto Scaling for the service.
+        # Specifies whether elastic scaling is enabled for the service.
         self.autoscaler_enabled = autoscaler_enabled
         # The UID of the account that created the service.
         self.caller_uid = caller_uid
-        # Specifies whether to enable scheduled auto scaling for the service.
+        # Specifies whether scheduled scaling is enabled for the service.
         self.cronscaler_enabled = cronscaler_enabled
-        # The keyword for a fuzzy search. This parameter supports fuzzy searches by service name only.
+        # The fuzzy match field. Only fuzzy matching by service name is supported.
         self.filter = filter
-        # The private gateway ID.
+        # The ID of the private gateway.
         self.gateway = gateway
-        # The name of the service group. To learn how to obtain this name, see [ListServices](https://help.aliyun.com/document_detail/412109.html).
+        # The name of the service group. For information about how to obtain the service group name, see [ListServices](https://help.aliyun.com/document_detail/412109.html).
         self.group_name = group_name
-        # Specifies whether to include services that do not belong to any workspace. The default value is true.
+        # Specifies whether to include services that do not belong to any workspace. Default value: true.
         self.include_no_workspace = include_no_workspace
-        # Filters services by label.
+        # The label used to filter services.
         self.label_shrink = label_shrink
         # The sort order. Valid values:
-        # 
-        # - `desc` (default): descending.
-        # 
-        # - `asc`: ascending.
+        # - desc: Descending order. This is the default value.
+        # - asc: Ascending order.
         self.order = order
-        # The page number of the results to return. The default value is 1.
+        # The page number of the service list to return. Default value: 1.
         self.page_number = page_number
-        # The number of services to return per page. The default value is 100.
+        # The number of services to return on each page during a paged query. Default value: 100.
         self.page_size = page_size
-        # The UID of the primary service. This parameter applies to member services in a service group.
+        # The ID of the primary service that corresponds to the band member service.
         self.parent_service_uid = parent_service_uid
         # The quota ID.
         self.quota_id = quota_id
         # The custom name of the resource group.
         self.resource_alias_name = resource_alias_name
-        # Specifies whether to enable a burstable resource pool for the service.
+        # Specifies whether the burstable resource pool is enabled for the service.
         self.resource_burstable = resource_burstable
-        # The ID of the resource group. To learn how to query for this ID, see [ListResources](https://help.aliyun.com/document_detail/412133.html).
+        # The ID of the resource group. For information about how to query the resource group ID, see [ListResources](https://help.aliyun.com/document_detail/412133.html).
         self.resource_id = resource_id
-        # The name or ID of the service\\"s resource group.
+        # The name or ID of the resource group to which the service belongs.
         self.resource_name = resource_name
-        # The type of resource the service uses. Valid values:
-        # 
+        # The type of resource used by the service. Valid values:
         # - PublicResource
-        # 
         # - DedicatedResource
-        # 
         # - Lingjun
-        # 
         # - SelfManagedLingjun
         self.resource_type = resource_type
         # The service role.
         self.role = role
-        # The service name.
+        # The name of the service.
         self.service_name = service_name
-        # The status of the service.
+        # The running status of the service.
         self.service_status = service_status
         # The service type. Valid values:
-        # 
         # - Async
-        # 
         # - Standard
-        # 
         # - Queue
-        # 
         # - LLM
-        # 
         # - RAG
-        # 
         # - Serverless
-        # 
         # - LLMGatewayService
-        # 
-        # - OfflineTask
-        # 
+        # - Offline Task
         # - SDCluster
-        # 
         # - ScalableJob
-        # 
         # - ScalableJobService
-        # 
         # - AssistantJob
         self.service_type = service_type
-        # The service UID.
+        # The UID of the service.
         self.service_uid = service_uid
-        # The sort field. By default, results are sorted by timestamp in descending order.
+        # The sort field. By default, timestamp fields are sorted in descending order.
         self.sort = sort
-        # Specifies whether the service accepts group traffic. This parameter applies only to services within a service group.
+        # Specifies whether to receive group traffic. This parameter is valid only for group services.
         self.traffic_state = traffic_state
         # The workspace ID.
         self.workspace_id = workspace_id

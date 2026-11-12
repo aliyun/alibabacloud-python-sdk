@@ -13,9 +13,9 @@ class CreateServiceCronScalerRequest(DaraModel):
         exclude_dates: List[str] = None,
         scale_jobs: List[main_models.CreateServiceCronScalerRequestScaleJobs] = None,
     ):
-        # A list of cron expressions for dates to exclude.
+        # The list of cron expressions for the dates to be excluded.
         self.exclude_dates = exclude_dates
-        # The scheduled scaling tasks.
+        # The scheduled scaling jobs.
         # 
         # This parameter is required.
         self.scale_jobs = scale_jobs
@@ -62,17 +62,17 @@ class CreateServiceCronScalerRequestScaleJobs(DaraModel):
         target_size: int = None,
         time_zone: str = None,
     ):
-        # The name of the scheduled auto-scaling task.
+        # The name of the scheduled scaling job.
         self.name = name
-        # The cron expression that specifies when to run the scaling task. For more information about how to configure a cron expression, see the **Cron expressions** section.
+        # The cron expression for the scaling job. For information about how to configure a cron expression, see the **Supplementary request parameter descriptions** section.
         # 
         # This parameter is required.
         self.schedule = schedule
-        # The target number of instances for the scaling task.
+        # The target number of instances for the scaling job.
         # 
         # This parameter is required.
         self.target_size = target_size
-        # The time zone for the scheduled scaling task.
+        # The time zone configuration used to parse the execution time of the scheduled scaling job.
         self.time_zone = time_zone
 
     def validate(self):

@@ -12,11 +12,11 @@ class UpdateConfigResponseBody(DaraModel):
         updated_at: str = None,
         value: str = None,
     ):
-        # The time the configuration was created.
+        # The time when the dynamic parameter was created, in UTC in RFC 3339 format.
         self.created_at = created_at
         # The dynamic parameter name.
         self.key = key
-        # The time the configuration was last updated.
+        # The time when the dynamic parameter was last updated, in UTC in RFC 3339 format.
         self.updated_at = updated_at
         # The dynamic parameter value.
         self.value = value

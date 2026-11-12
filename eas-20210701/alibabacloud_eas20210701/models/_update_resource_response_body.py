@@ -11,7 +11,7 @@ class UpdateResourceResponseBody(DaraModel):
         resource_id: str = None,
         resource_name: str = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The ID of the resource group.
         self.resource_id = resource_id

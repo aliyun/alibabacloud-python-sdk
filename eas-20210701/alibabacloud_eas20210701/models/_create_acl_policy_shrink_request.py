@@ -10,7 +10,7 @@ class CreateAclPolicyShrinkRequest(DaraModel):
         acl_policy_list_shrink: str = None,
         vpc_id: str = None,
     ):
-        # The whitelisted IP CIDR blocks in the VPC that can access the private gateway.
+        # The whitelist of IP address segments that are allowed to access the VPC.
         # 
         # This parameter is required.
         self.acl_policy_list_shrink = acl_policy_list_shrink

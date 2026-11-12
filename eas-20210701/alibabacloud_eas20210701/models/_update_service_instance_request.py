@@ -12,19 +12,16 @@ class UpdateServiceInstanceRequest(DaraModel):
         hibernate: bool = None,
         isolate: bool = None,
     ):
-        # Specifies whether the instance is a replica.
+        # Specifies whether the current instance is an instance unit.
         self.is_replica = is_replica
-        # Specifies whether to fence the service instance. After an instance is fenced, it is no longer managed by the VPC controller and a new instance is created. The fenced instance is reserved for troubleshooting or debugging. Note: You cannot unfence an instance. Valid values:
-        # 
-        # - true: Fences the instance.
+        # Specifies whether to isolate the service instance. After an instance is isolated, it is no longer managed by the controller, and a new instance is created. The isolated instance is used to preserve the state or for debugging. Note: An isolated instance cannot be unisolated. Valid values:
+        # - true: The instance is isolated.
         self.detach = detach
-        # > This parameter is for an invitational preview. It is not generally available.
+        # >This parameter is in invitational preview and is not supported.
         self.hibernate = hibernate
-        # Specifies whether to isolate the instance. Valid values:
-        # 
-        # - true: The instance is isolated and does not receive traffic.
-        # 
-        # - false: The instance is not isolated and receives traffic.
+        # Specifies whether the instance receives traffic. Valid values:
+        # - true: The instance receives traffic.
+        # - false: The instance does not receive traffic.
         self.isolate = isolate
 
     def validate(self):

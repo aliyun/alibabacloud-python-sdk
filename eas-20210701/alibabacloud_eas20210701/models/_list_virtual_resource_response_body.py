@@ -16,9 +16,9 @@ class ListVirtualResourceResponseBody(DaraModel):
         total_count: int = None,
         virtual_resources: List[main_models.ListVirtualResourceResponseBodyVirtualResources] = None,
     ):
-        # The page number of the returned list of virtual resource groups.
+        # The page number of the returned virtual resource group list.
         self.page_number = page_number
-        # The number of virtual resource groups returned on each page.
+        # The number of virtual resource groups displayed per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -88,15 +88,15 @@ class ListVirtualResourceResponseBodyVirtualResources(DaraModel):
         virtual_resource_id: str = None,
         virtual_resource_name: str = None,
     ):
-        # The time when the virtual resource group was created.
+        # The time when the virtual resource group was created, in UTC in RFC 3339 format.
         self.create_time = create_time
         # The number of deployed services.
         self.service_count = service_count
-        # The time when the virtual resource group was last updated.
+        # The time when the virtual resource group was last updated, in UTC in RFC 3339 format.
         self.update_time = update_time
-        # The ID of the virtual resource group.
+        # The virtual resource group ID.
         self.virtual_resource_id = virtual_resource_id
-        # The name of the virtual resource group.
+        # The virtual resource group name.
         self.virtual_resource_name = virtual_resource_name
 
     def validate(self):

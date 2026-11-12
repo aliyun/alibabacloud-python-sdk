@@ -10,7 +10,7 @@ class StopBenchmarkTaskResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The returned message.
+        # The operation result message.
         self.message = message
         # The request ID.
         self.request_id = request_id

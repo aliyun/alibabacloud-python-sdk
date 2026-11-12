@@ -10,7 +10,7 @@ class StopServiceResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The returned message.
+        # The message returned in the response.
         self.message = message
         # The request ID.
         self.request_id = request_id

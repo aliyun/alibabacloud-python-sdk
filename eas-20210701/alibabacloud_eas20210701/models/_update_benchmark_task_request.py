@@ -9,7 +9,7 @@ class UpdateBenchmarkTaskRequest(DaraModel):
         self,
         body: str = None,
     ):
-        # The request body. The body includes the parameters that are set to create a stress testing task. For more information, see **Table 1. Fields in the base parameter**.
+        # The configuration parameters of the stress testing task. For more information, see **Table 1. base description table**. The target stress testing task must be in the Running state. You can call the DescribeBenchmarkTask operation to query the task status. If the task is in the Stopped state, you must first call the StartBenchmarkTask operation and wait until the task enters the Running state.
         self.body = body
 
     def validate(self):

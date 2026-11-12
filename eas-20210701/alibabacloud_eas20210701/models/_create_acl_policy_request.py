@@ -13,7 +13,7 @@ class CreateAclPolicyRequest(DaraModel):
         acl_policy_list: List[main_models.CreateAclPolicyRequestAclPolicyList] = None,
         vpc_id: str = None,
     ):
-        # The whitelisted IP CIDR blocks in the VPC that can access the private gateway.
+        # The whitelist of IP address segments that are allowed to access the VPC.
         # 
         # This parameter is required.
         self.acl_policy_list = acl_policy_list
@@ -60,9 +60,9 @@ class CreateAclPolicyRequestAclPolicyList(DaraModel):
         comment: str = None,
         entry: str = None,
     ):
-        # The comment on the IP CIDR block in the VPC that can access the private gateway.
+        # The description of the IP address segment that is allowed to access the VPC.
         self.comment = comment
-        # The IP CIDR block in the VPC that can access the private gateway.
+        # The IP address segment that is allowed to access the VPC.
         # 
         # This parameter is required.
         self.entry = entry

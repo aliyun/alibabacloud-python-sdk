@@ -12,9 +12,9 @@ class CloneServiceRequest(DaraModel):
         labels: Dict[str, str] = None,
         body: str = None,
     ):
-        # The label of the service to be cloned.
+        # The labels for the copied service.
         self.labels = labels
-        # The request body. For more information, see [CreateService](https://help.aliyun.com/document_detail/412086.html).
+        # The request body. For more information about parameter settings, see [CreateService](https://help.aliyun.com/document_detail/412086.html).
         self.body = body
 
     def validate(self):

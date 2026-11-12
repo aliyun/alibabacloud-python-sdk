@@ -10,9 +10,9 @@ class UpdateVirtualResourceResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The returned message.
+        # The operation result message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

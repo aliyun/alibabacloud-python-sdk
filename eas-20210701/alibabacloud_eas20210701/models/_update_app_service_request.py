@@ -22,35 +22,24 @@ class UpdateAppServiceRequest(DaraModel):
         # The workspace ID.
         self.workspace_id = workspace_id
         # The application type.
-        # 
-        # Valid values:
-        # 
-        # *   LLM: the large language model (LLM) application
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.app_type = app_type
         # The application version.
         self.app_version = app_version
-        # The additional configurations that are required for service deployment.
+        # The additional configuration information required for deployment.
         self.config = config
-        # The number of instances. This value must be greater than 0.
+        # The number of instances. The value must be greater than 0.
         self.replicas = replicas
-        # The service specifications. Valid values:
-        # 
-        # *   llama_7b_fp16
-        # *   llama_7b_int8
-        # *   llama_13b_fp16
-        # *   llama_7b_int8
-        # *   chatglm_6b_fp16
-        # *   chatglm_6b_int8
-        # *   chatglm2_6b_fp16
-        # *   baichuan_7b_int8
-        # *   baichuan_13b_fp16
-        # *   baichuan_7b_fp16
+        # The service specification. Valid values:
+        # - llama_7b_fp16
+        # - llama_7b_int8
+        # - llama_13b_fp16
+        # - llama_7b_int8
+        # - chatglm_6b_fp16
+        # - chatglm_6b_int8
+        # - chatglm2_6b_fp16
+        # - baichuan_7b_int8
+        # - baichuan_13b_fp16
+        # - baichuan_7b_fp16
         self.service_spec = service_spec
 
     def validate(self):

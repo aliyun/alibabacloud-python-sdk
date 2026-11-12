@@ -10,9 +10,9 @@ class UpdateServiceResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The returned message.
+        # The operation result message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

@@ -5,8 +5,19 @@ from __future__ import annotations
 from darabonba.model import DaraModel
 
 class StopServiceRequest(DaraModel):
-    def __init__(self):
-        pass
+    def __init__(
+        self,
+        client_token: str = None,
+        dry_run: bool = None,
+    ):
+        # The client token that is used to ensure the idempotence of the request.
+        self.client_token = client_token
+        # Specifies whether to perform a dry run on the request. Valid values:
+        # - true: A dry run is performed and the operation is not executed. If the request fails the dry run, an error is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        # - false: A normal request is sent.
+        # Default value: false.
+        self.dry_run = dry_run
+
     def validate(self):
         pass
 
@@ -15,9 +26,21 @@ class StopServiceRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+
         return self
 

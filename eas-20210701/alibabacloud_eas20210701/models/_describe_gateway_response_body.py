@@ -29,7 +29,7 @@ class DescribeGatewayResponseBody(DaraModel):
         status: str = None,
         update_time: str = None,
     ):
-        # The billing method.
+        # The billing method. Valid values:
         self.charge_type = charge_type
         # The time when the dedicated gateway was created. The time is in UTC.
         self.create_time = create_time
@@ -45,13 +45,15 @@ class DescribeGatewayResponseBody(DaraModel):
         self.internet_domain = internet_domain
         # Indicates whether public network access is enabled.
         self.internet_enabled = internet_enabled
-        # The status of public network access enablement or disablement.
+        # The status of public network access. Valid values:
         self.internet_status = internet_status
         # The internal access domain name.
         self.intranet_domain = intranet_domain
+        # Indicates whether internal network access is enabled. A value of true indicates that internal network access is enabled. A value of false indicates that internal network access is not enabled.
         self.intranet_enabled = intranet_enabled
-        # Indicates whether the dedicated gateway is the default one.
+        # Indicates whether the dedicated gateway is the default gateway.
         self.is_default = is_default
+        # The list of gateway labels.
         self.labels = labels
         # The number of nodes in the dedicated gateway.
         self.replicas = replicas
@@ -59,7 +61,7 @@ class DescribeGatewayResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether HTTP-to-HTTPS redirection is enabled.
         self.sslredirection_enabled = sslredirection_enabled
-        # The status of the dedicated gateway.
+        # The status of the dedicated gateway. Valid values:
         self.status = status
         # The time when the dedicated gateway was last updated. The time is in UTC.
         self.update_time = update_time
@@ -200,7 +202,9 @@ class DescribeGatewayResponseBodyLabels(DaraModel):
         label_key: str = None,
         label_value: str = None,
     ):
+        # The gateway label key.
         self.label_key = label_key
+        # The gateway label value.
         self.label_value = label_value
 
     def validate(self):

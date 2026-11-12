@@ -16,15 +16,15 @@ class ListResourceServicesResponseBody(DaraModel):
         services: List[main_models.Service] = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The page number of the returned service list.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of services returned on each page.
         self.page_size = page_size
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The services.
+        # The list of services.
         self.services = services
-        # The total number of entries returned.
+        # The total number of services.
         self.total_count = total_count
 
     def validate(self):

@@ -20,15 +20,15 @@ class ListConfigsResponseBody(DaraModel):
     ):
         # The list of dynamic parameters.
         self.configs = configs
-        # Indicates if more entries are available. `true` if more entries exist; otherwise, `false`.
+        # Indicates whether more data exists.
         self.has_more = has_more
         # The service name.
         self.name = name
         # The current page number.
         self.page = page
-        # The number of entries on the current page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries found.
+        # The total number of entries.
         self.total = total
         # The configuration type.
         self.type = type
@@ -105,11 +105,11 @@ class ListConfigsResponseBodyConfigs(DaraModel):
         updated_at: str = None,
         value: str = None,
     ):
-        # The time when the dynamic parameter was created, in UTC and ISO 8601 format.
+        # The time when the dynamic parameter was created, in UTC in RFC 3339 format.
         self.created_at = created_at
         # The name of the dynamic parameter.
         self.key = key
-        # The time when the dynamic parameter was last updated, in UTC and ISO 8601 format.
+        # The time when the dynamic parameter was last updated, in UTC in RFC 3339 format.
         self.updated_at = updated_at
         # The value of the dynamic parameter.
         self.value = value

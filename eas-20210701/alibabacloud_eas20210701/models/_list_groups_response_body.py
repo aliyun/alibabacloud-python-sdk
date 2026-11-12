@@ -18,13 +18,13 @@ class ListGroupsResponseBody(DaraModel):
     ):
         # The list of service groups.
         self.groups = groups
-        # The current page number of the returned group list.
+        # The current page number of the group list.
         self.page_number = page_number
-        # The number of groups displayed per page.
+        # The number of groups returned on each page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of service groups.
+        # The total count.
         self.total_count = total_count
 
     def validate(self):

@@ -13,9 +13,9 @@ class CreateGatewayIntranetLinkedVpcPeerRequest(DaraModel):
         peer_vpcs: List[main_models.CreateGatewayIntranetLinkedVpcPeerRequestPeerVpcs] = None,
         vpc_id: str = None,
     ):
-        # The list of VPC peers.
+        # The list of peered VPCs.
         self.peer_vpcs = peer_vpcs
-        # The VPC ID. To obtain the VPC ID, see [ListGatewayIntranetLinkedVpc](https://help.aliyun.com/document_detail/2621223.html).
+        # The ID of the VPC. For information about how to obtain the VPC ID, see [ListGatewayIntranetLinkedVpc](https://help.aliyun.com/document_detail/2621223.html).
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -58,9 +58,9 @@ class CreateGatewayIntranetLinkedVpcPeerRequestPeerVpcs(DaraModel):
         region: str = None,
         vpc_id: str = None,
     ):
-        # The region where the VPC peer resides.
+        # The region where the peered VPC resides.
         self.region = region
-        # The ID of the VPC peer. To obtain the VPC ID, see [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html).
+        # The ID of the peered VPC. For information about how to obtain the VPC ID, see [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html).
         self.vpc_id = vpc_id
 
     def validate(self):

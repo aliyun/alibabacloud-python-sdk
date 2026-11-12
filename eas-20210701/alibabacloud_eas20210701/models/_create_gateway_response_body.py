@@ -16,7 +16,7 @@ class CreateGatewayResponseBody(DaraModel):
         self.cluster_id = cluster_id
         # The ID of the private gateway.
         self.gateway_id = gateway_id
-        # The message returned for the request.
+        # The message returned in the response.
         self.message = message
         # The request ID.
         self.request_id = request_id

@@ -1,3 +1,22 @@
+2026-11-12 Version: 6.18.0
+- Support API UpdateServiceVersionRemark.
+- Update API CreateAppService: add request parameters ClientToken.
+- Update API CreateAppService: add request parameters DryRun.
+- Update API CreateService: add request parameters ClientToken.
+- Update API CreateService: add request parameters DryRun.
+- Update API DeleteService: add request parameters ClientToken.
+- Update API DeleteService: add request parameters DryRun.
+- Update API ListServiceVersions: add response parameters Body.Versions.$.Remark.
+- Update API RestartService: add request parameters ClientToken.
+- Update API RestartService: add request parameters DryRun.
+- Update API StartService: add request parameters ClientToken.
+- Update API StartService: add request parameters DryRun.
+- Update API StopService: add request parameters ClientToken.
+- Update API StopService: add request parameters DryRun.
+- Update API UpdateService: add request parameters ClientToken.
+- Update API UpdateService: add request parameters DryRun.
+
+
 2026-07-31 Version: 6.17.0
 - Support API DescribeArtifact.
 

@@ -16,15 +16,15 @@ class CreateResourceResponseBody(DaraModel):
         resource_id: str = None,
         resource_name: str = None,
     ):
-        # The ID of the cluster that contains the resource group.
+        # The ID of the cluster to which the resource group belongs.
         self.cluster_id = cluster_id
-        # The instance IDs.
+        # The list of instance IDs.
         self.instance_ids = instance_ids
         # The UID of the resource group owner.
         self.owner_uid = owner_uid
         # The request ID.
         self.request_id = request_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_id = resource_id
         # The name of the resource group.
         self.resource_name = resource_name

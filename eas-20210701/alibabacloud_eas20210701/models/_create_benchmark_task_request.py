@@ -9,7 +9,7 @@ class CreateBenchmarkTaskRequest(DaraModel):
         self,
         body: str = None,
     ):
-        # The request body. The body includes the parameters that are set to create a stress testing task.
+        # The configuration parameters of the stress testing task.
         self.body = body
 
     def validate(self):

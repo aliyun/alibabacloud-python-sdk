@@ -14,11 +14,17 @@ class ArtifactRelease(DaraModel):
         type: str = None,
         version: str = None,
     ):
+        # The artifact reference name.
         self.artifact_ref = artifact_ref
+        # The creation time of the artifact release record.
         self.created_at = created_at
+        # The artifact description.
         self.description = description
+        # The container image address used by the artifact.
         self.image = image
+        # The artifact type.
         self.type = type
+        # The artifact version.
         self.version = version
 
     def validate(self):

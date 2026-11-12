@@ -16,9 +16,9 @@ class ListServicesResponseBody(DaraModel):
         services: List[main_models.Service] = None,
         total_count: int = None,
     ):
-        # The current page number.
+        # The current page number of the returned service list.
         self.page_number = page_number
-        # The number of services per page.
+        # The number of services returned on each page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id

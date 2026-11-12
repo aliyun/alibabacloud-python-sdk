@@ -14,17 +14,17 @@ class CloneServiceResponseBody(DaraModel):
         service_name: str = None,
         status: str = None,
     ):
-        # The public endpoint of the service.
+        # The public network access endpoint.
         self.internet_endpoint = internet_endpoint
-        # The private endpoint of the service.
+        # The internal endpoint.
         self.intranet_endpoint = intranet_endpoint
         # Id of the request
         self.request_id = request_id
-        # The service ID.
+        # The ID of the service.
         self.service_id = service_id
-        # The service name.
+        # The name of the service.
         self.service_name = service_name
-        # The service status.
+        # The status of the service.
         self.status = status
 
     def validate(self):

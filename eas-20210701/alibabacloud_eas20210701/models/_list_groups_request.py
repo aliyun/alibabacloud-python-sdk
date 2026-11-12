@@ -18,19 +18,19 @@ class ListGroupsRequest(DaraModel):
         traffic_mode: str = None,
         workspace_id: str = None,
     ):
-        # The filter name. Fuzzy match is supported.
+        # The name filter. Fuzzy match is supported.
         self.filter = filter
-        # The user-defined labels.
+        # The custom labels.
         self.labels = labels
-        # The sort order of the results.
+        # The sort order.
         self.order = order
         # The current page number of the service group list. Default value: 1.
         self.page_number = page_number
-        # The number of service groups to display on each page in a paged query. Settings for paging default to 100.
+        # The Settings for the number of service groups to return on each page during paging in a paged query. Default value: 100.
         self.page_size = page_size
-        # The field by which to sort the results.
+        # The sort field.
         self.sort = sort
-        # The traffic allocation method used to filter service groups.
+        # The traffic distribution mode filter.
         self.traffic_mode = traffic_mode
         # The workspace ID.
         self.workspace_id = workspace_id

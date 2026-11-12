@@ -20,21 +20,21 @@ class DescribeVirtualResourceResponseBody(DaraModel):
         virtual_resource_id: str = None,
         virtual_resource_name: str = None,
     ):
-        # The time when the virtual resource group was created.
+        # The time when the virtual resource group was created, in UTC in RFC 3339 format.
         self.create_time = create_time
         # Indicates whether the protection period for spot instances is disabled.
         self.disable_spot_protection_period = disable_spot_protection_period
-        # The collection of features for the virtual resource group. This identifies the attributes that the resource group supports.
+        # The set of features of the virtual resource group, which identifies the capabilities supported by the resource group.
         self.features = features
         # The request ID.
         self.request_id = request_id
-        # The list of resources in the virtual resource group.
+        # The list of resources contained in the virtual resource group.
         self.resources = resources
         # The number of deployed services.
         self.service_count = service_count
-        # The time when the virtual resource group was last updated.
+        # The time when the virtual resource group was last updated, in UTC in RFC 3339 format.
         self.update_time = update_time
-        # The ID of the virtual resource group.
+        # The virtual resource group ID.
         self.virtual_resource_id = virtual_resource_id
         # The name of the virtual resource group.
         self.virtual_resource_name = virtual_resource_name
@@ -127,15 +127,15 @@ class DescribeVirtualResourceResponseBodyResources(DaraModel):
     ):
         # The instance type of the public resource group.
         self.instance_type = instance_type
-        # The scheduling priority of the resource. A larger value indicates a higher priority.
+        # The scheduling priority of the resource. A larger value indicates a higher scheduling priority.
         self.priority = priority
-        # The ID of the Lingjun resource quota.
+        # The Lingjun resource quota ID.
         self.quota_id = quota_id
-        # The region where the resource is located.
+        # The region where the resource resides.
         self.region = region
-        # The ID of the dedicated resource group.
+        # The dedicated resource group ID.
         self.resource_id = resource_id
-        # The maximum price for a spot instance in the public resource group.
+        # The maximum price for spot instances in the public resource group.
         self.spot_price_limit = spot_price_limit
 
     def validate(self):

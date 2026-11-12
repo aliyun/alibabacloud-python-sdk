@@ -17,9 +17,9 @@ class CreateGroupRequest(DaraModel):
     ):
         # The user-defined labels.
         self.labels = labels
-        # The name of the group.
+        # The name of the service group. Only lowercase letters, digits, and underscores are allowed. The format is [a-z0-9_]+.
         self.name = name
-        # The virtual private cloud (VPC) configuration.
+        # The VPC configuration.
         self.network = network
         # The workspace ID.
         self.work_space_id = work_space_id
@@ -72,13 +72,13 @@ class CreateGroupRequestNetwork(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The dedicated gateway ID.
+        # The dedicated gateway ID. This parameter is required. If this parameter is not specified, the request fails.
         self.gateway_id = gateway_id
         # The security group ID.
         self.security_group_id = security_group_id
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The VPC ID.
+        # The VPC ID. This parameter is required when GatewayId is set to an ALB gateway, and you must specify the VPC ID associated with the gateway. You can call the ListGatewayIntranetLinkedVpc operation to query the association.
         self.vpc_id = vpc_id
 
     def validate(self):

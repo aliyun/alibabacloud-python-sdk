@@ -16,15 +16,15 @@ class ListServiceVersionsResponseBody(DaraModel):
         total_count: int = None,
         versions: List[main_models.ListServiceVersionsResponseBodyVersions] = None,
     ):
-        # The page number.
+        # The current page number of the returned historical versions.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of historical versions returned on each page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of versions.
         self.total_count = total_count
-        # The historical versions of the service.
+        # The list of versions.
         self.versions = versions
 
     def validate(self):
@@ -86,32 +86,29 @@ class ListServiceVersionsResponseBodyVersions(DaraModel):
         image_available: str = None,
         image_id: int = None,
         message: str = None,
+        remark: str = None,
         service_config: str = None,
         service_runnable: str = None,
     ):
-        # The time when the service version was created. The time is displayed in UTC.
+        # The UTC time when the version was created.
         self.build_time = build_time
-        # Indicates whether the image is available. Valid values:
-        # 
-        # - true: The image is available.
-        # 
-        # - false: The image is unavailable.
-        # 
-        # - unknown: The availability of the image is unknown.
+        # The availability of the image. Valid values:
+        # - true: Available.
+        # - false: Unavailable.
+        # - unknown: Unknown.
         self.image_available = image_available
         # The image ID.
         self.image_id = image_id
-        # The returned message.
+        # The summary of the service.
         self.message = message
-        # The service deployment configurations. This parameter is returned only if the service is deployed by using a custom image.
+        # The remarks.
+        self.remark = remark
+        # The deployment configuration of the service. This field is returned only for custom image deployments.
         self.service_config = service_config
-        # Indicates whether Elastic Algorithm service (EAS) is activated. Valid values:
-        # 
-        # - true: EAS is activated.
-        # 
-        # - false: EAS is not activated.
-        # 
-        # - unknown: The activation of EAS is unknown.
+        # Indicates whether the EAS service is enabled. Valid values:
+        # - true: Enabled.
+        # - false: Disabled.
+        # - unknown: Unknown.
         self.service_runnable = service_runnable
 
     def validate(self):
@@ -134,6 +131,9 @@ class ListServiceVersionsResponseBodyVersions(DaraModel):
         if self.message is not None:
             result['Message'] = self.message
 
+        if self.remark is not None:
+            result['Remark'] = self.remark
+
         if self.service_config is not None:
             result['ServiceConfig'] = self.service_config
 
@@ -155,6 +155,9 @@ class ListServiceVersionsResponseBodyVersions(DaraModel):
 
         if m.get('Message') is not None:
             self.message = m.get('Message')
+
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
 
         if m.get('ServiceConfig') is not None:
             self.service_config = m.get('ServiceConfig')

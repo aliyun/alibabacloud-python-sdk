@@ -11,11 +11,11 @@ class CreateAclPolicyResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The private gateway ID.
+        # The ID of the private gateway.
         self.gateway_id = gateway_id
-        # The returned message.
+        # The message returned in the response.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

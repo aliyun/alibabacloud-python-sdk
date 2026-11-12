@@ -12,9 +12,9 @@ class CreateBenchmarkTaskResponseBody(DaraModel):
         request_id: str = None,
         task_name: str = None,
     ):
-        # The returned message.
+        # The message returned for the request.
         self.message = message
-        # The ID of the region where the stress testing task is performed.
+        # The region where the stress testing task resides.
         self.region = region
         # The request ID.
         self.request_id = request_id

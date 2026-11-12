@@ -19,34 +19,30 @@ class CreateResourceInstancesRequest(DaraModel):
         zone: str = None,
     ):
         # Specifies whether to enable auto-renewal. Valid values:
-        # 
-        # - false (default): Auto-renewal is disabled.
-        # 
-        # - true: Auto-renewal is enabled.
+        # - false (default): disables auto-renewal.
+        # - true: enables auto-renewal.
         self.auto_renewal = auto_renewal
         # The billing method. Valid values:
-        # 
         # - PrePaid: subscription.
-        # 
         # - PostPaid: pay-as-you-go.
         # 
         # This parameter is required.
         self.charge_type = charge_type
-        # The number of new instances to create. The value must be between 1 and 100.
+        # The number of instances to create. Valid values: 1 to 100.
         # 
         # This parameter is required.
         self.ecs_instance_count = ecs_instance_count
-        # The instance type. This corresponds to an ECS instance type.
+        # The instance type, which corresponds to an ECS instance type.
         # 
         # This parameter is required.
         self.ecs_instance_type = ecs_instance_type
-        # The user-defined tags.
+        # The user-defined labels.
         self.labels = labels
-        # The size of the system disk, in GiB. The value must be between 200 and 2,000. If you do not configure this parameter, the default value is 200 GiB.
+        # The size of the system cloud disk. Unit: GiB. Valid values: 200 to 2000. Default value: 200.
         self.system_disk_size = system_disk_size
-        # The custom user data. This parameter is not currently used.
+        # The custom user data. This parameter is not used.
         self.user_data = user_data
-        # The zone where the instance belongs.
+        # The zone to which the instance belongs.
         self.zone = zone
 
     def validate(self):

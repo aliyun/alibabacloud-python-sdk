@@ -14,7 +14,7 @@ class ListGatewayIntranetSupportedZoneResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The zones that are supported by the region.
+        # The list of zones supported in the current region.
         self.zones = zones
 
     def validate(self):

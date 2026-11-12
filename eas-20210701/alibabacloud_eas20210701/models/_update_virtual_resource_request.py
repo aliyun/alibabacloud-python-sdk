@@ -14,11 +14,10 @@ class UpdateVirtualResourceRequest(DaraModel):
         resources: List[main_models.UpdateVirtualResourceRequestResources] = None,
         virtual_resource_name: str = None,
     ):
-        # Specifies whether to disable the retention period of preemptible instances.
+        # Specifies whether to disable the protection period for spot instances.
         self.disable_spot_protection_period = disable_spot_protection_period
-        # The resources in the virtual resource group.
-        # 
-        # >  If you specify this parameter, previous data is overwritten.
+        # The list of resources contained in the virtual resource group.
+        # >Notice: If specified, the previous data is overwritten.
         self.resources = resources
         # The new name of the virtual resource group.
         self.virtual_resource_name = virtual_resource_name
@@ -74,24 +73,20 @@ class UpdateVirtualResourceRequestResources(DaraModel):
         spot_price_limit: float = None,
     ):
         # The instance type of the public resource group.
-        # 
-        # >  You must specify one and only one of the InstanceType, ResourceId, and QuotaId parameters.
+        # >Notice: You must specify exactly one of the following fields: InstanceType, ResourceId, and QuotaId.
         self.instance_type = instance_type
-        # The priority of resource scheduling. A greater number indicates a higher priority.
+        # The scheduling priority of the resource. A larger value indicates a higher scheduling priority.
         self.priority = priority
-        # The ID of the Lingjun resource quota.
-        # 
-        # >  You must specify one and only one of the InstanceType, ResourceId, and QuotaId parameters.
+        # The Lingjun resource quota ID.
+        # >Notice: You must specify exactly one of the following fields: InstanceType, ResourceId, and QuotaId.
         self.quota_id = quota_id
-        # The region in which the resource resides.
+        # The region where the resource resides.
         self.region = region
-        # The ID of the dedicated resource group. For information about how to obtain the ID of a dedicated resource group, see [ListResources](https://help.aliyun.com/document_detail/412133.html).
-        # 
-        # >  You must specify one and only one of the InstanceType, ResourceId, and QuotaId parameters.
+        # The ID of the dedicated resource group. For more information about how to query the ID of a dedicated resource group, see [ListResources](https://help.aliyun.com/document_detail/412133.html).
+        # >Notice: You must specify exactly one of the following fields: InstanceType, ResourceId, and QuotaId.
         self.resource_id = resource_id
-        # The maximum price of preemptible instances in a public resource group.
-        # 
-        # >  If you leave this parameter empty, preemptible instances are not used.
+        # The maximum price for spot instances in the public resource group.
+        # <notice>If not specified, spot instances are not used.
         self.spot_price_limit = spot_price_limit
 
     def validate(self):

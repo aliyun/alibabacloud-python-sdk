@@ -13,9 +13,9 @@ class DeleteAclPolicyRequest(DaraModel):
         acl_policy_list: List[main_models.DeleteAclPolicyRequestAclPolicyList] = None,
         vpc_id: str = None,
     ):
-        # The whitelisted IP CIDR blocks in the VPC that can access the private gateway.
+        # The whitelist of IP address ranges that are allowed to access the VPC. This parameter is required. If this parameter is not specified, an InvalidParameter error is returned, indicating that AclPolicyList must be set.
         self.acl_policy_list = acl_policy_list
-        # The ID of the virtual private cloud (VPC). For more information about how to obtain the VPC ID, see DescribeVpcs.
+        # The ID of the VPC. For information about how to obtain the VPC ID, see DescribeVpcs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -58,9 +58,9 @@ class DeleteAclPolicyRequestAclPolicyList(DaraModel):
         comment: str = None,
         entry: str = None,
     ):
-        # The comment on the IP CIDR block in the VPC that can access the private gateway.
+        # The comment for the IP address range that is allowed to access the VPC.
         self.comment = comment
-        # The IP CIDR block in the VPC that can access the private gateway.
+        # The IP address range that is allowed to access the VPC.
         self.entry = entry
 
     def validate(self):

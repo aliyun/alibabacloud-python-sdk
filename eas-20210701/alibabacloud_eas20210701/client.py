@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Dict
 
 from alibabacloud_eas20210701 import models as main_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -21,6 +22,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'eas'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-beijing': 'pai-eas.cn-beijing.aliyuncs.com',
@@ -38,19 +42,19 @@ class Client(OpenApiClient):
             'cn-shanghai-finance-1': 'pai-eas.cn-shanghai-finance-1.aliyuncs.com',
             'cn-north-2-gov-1': 'pai-eas.cn-north-2-gov-1.aliyuncs.com',
             'cn-chengdu': 'pai-eas.cn-chengdu.aliyuncs.com',
-            'us-southeast-1': 'pai-eas.us-southeast-1.aliyuncs.com',
-            'na-south-1': 'pai-eas.na-south-1.aliyuncs.com',
-            'me-east-1': 'pai-eas.me-east-1.aliyuncs.com',
-            'me-central-1': 'pai-eas.me-central-1.aliyuncs.com',
             'cn-zhongwei': 'pai-eas.cn-zhongwei.aliyuncs.com',
             'cn-wulanchabu': 'pai-eas.cn-wulanchabu.aliyuncs.com',
             'cn-heyuan': 'pai-eas.cn-heyuan.aliyuncs.com',
-            'cn-guangzhou': 'pai-eas.cn-guangzhou.aliyuncs.com',
-            'ap-southeast-8': 'pai-eas.ap-southeast-8.aliyuncs.com',
-            'ap-southeast-7': 'pai-eas.ap-southeast-7.aliyuncs.com',
-            'ap-southeast-3': 'pai-eas.ap-southeast-3.aliyuncs.com',
             'ap-northeast-2': 'pai-eas.ap-northeast-2.aliyuncs.com',
-            'ap-northeast-1': 'pai-eas.ap-northeast-1.aliyuncs.com'
+            'ap-northeast-1': 'pai-eas.ap-northeast-1.aliyuncs.com',
+            'cn-guangzhou': 'pai-eas.cn-guangzhou.aliyuncs.com',
+            'ap-southeast-3': 'pai-eas.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-7': 'pai-eas.ap-southeast-7.aliyuncs.com',
+            'ap-southeast-8': 'pai-eas.ap-southeast-8.aliyuncs.com',
+            'us-southeast-1': 'pai-eas.us-southeast-1.aliyuncs.com',
+            'na-south-1': 'pai-eas.na-south-1.aliyuncs.com',
+            'me-east-1': 'pai-eas.me-east-1.aliyuncs.com',
+            'me-central-1': 'pai-eas.me-central-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('eas', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -437,6 +441,10 @@ class Client(OpenApiClient):
     ) -> main_models.CreateAppServiceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.quota_id):
             query['QuotaId'] = request.quota_id
         if not DaraCore.is_null(request.workspace_id):
@@ -483,6 +491,10 @@ class Client(OpenApiClient):
     ) -> main_models.CreateAppServiceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.quota_id):
             query['QuotaId'] = request.quota_id
         if not DaraCore.is_null(request.workspace_id):
@@ -1511,8 +1523,12 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.labels):
             request.labels_shrink = Utils.array_to_string_with_specified_style(tmp_req.labels, 'Labels', 'json')
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.develop):
             query['Develop'] = request.develop
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.labels_shrink):
             query['Labels'] = request.labels_shrink
         if not DaraCore.is_null(request.workspace_id):
@@ -1550,8 +1566,12 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.labels):
             request.labels_shrink = Utils.array_to_string_with_specified_style(tmp_req.labels, 'Labels', 'json')
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.develop):
             query['Develop'] = request.develop
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.labels_shrink):
             query['Labels'] = request.labels_shrink
         if not DaraCore.is_null(request.workspace_id):
@@ -3346,8 +3366,14 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.DeleteServiceResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         req = open_api_util_models.OpenApiRequest(
-            headers = headers
+            headers = headers,
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'DeleteService',
@@ -3374,8 +3400,14 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.DeleteServiceResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         req = open_api_util_models.OpenApiRequest(
-            headers = headers
+            headers = headers,
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'DeleteService',
@@ -8378,8 +8410,14 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.RestartServiceResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         req = open_api_util_models.OpenApiRequest(
-            headers = headers
+            headers = headers,
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'RestartService',
@@ -8406,8 +8444,14 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.RestartServiceResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         req = open_api_util_models.OpenApiRequest(
-            headers = headers
+            headers = headers,
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'RestartService',
@@ -8618,8 +8662,14 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.StartServiceResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         req = open_api_util_models.OpenApiRequest(
-            headers = headers
+            headers = headers,
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'StartService',
@@ -8646,8 +8696,14 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.StartServiceResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         req = open_api_util_models.OpenApiRequest(
-            headers = headers
+            headers = headers,
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'StartService',
@@ -8770,8 +8826,14 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.StopServiceResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         req = open_api_util_models.OpenApiRequest(
-            headers = headers
+            headers = headers,
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'StopService',
@@ -8798,8 +8860,14 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.StopServiceResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         req = open_api_util_models.OpenApiRequest(
-            headers = headers
+            headers = headers,
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'StopService',
@@ -9805,6 +9873,10 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateServiceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.member_to_update):
             query['MemberToUpdate'] = request.member_to_update
         if not DaraCore.is_null(request.update_type):
@@ -9840,6 +9912,10 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateServiceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.member_to_update):
             query['MemberToUpdate'] = request.member_to_update
         if not DaraCore.is_null(request.update_type):
@@ -10604,6 +10680,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_service_version_with_options_async(cluster_id, service_name, request, headers, runtime)
+
+    def update_service_version_remark_with_options(
+        self,
+        cluster_id: str,
+        service_name: str,
+        version: str,
+        request: main_models.UpdateServiceVersionRemarkRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateServiceVersionRemarkResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.remark):
+            body['Remark'] = request.remark
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateServiceVersionRemark',
+            version = '2021-07-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/services/{DaraURL.percent_encode(cluster_id)}/{DaraURL.percent_encode(service_name)}/version/{DaraURL.percent_encode(version)}/remark',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateServiceVersionRemarkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_service_version_remark_with_options_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        version: str,
+        request: main_models.UpdateServiceVersionRemarkRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateServiceVersionRemarkResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.remark):
+            body['Remark'] = request.remark
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateServiceVersionRemark',
+            version = '2021-07-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/services/{DaraURL.percent_encode(cluster_id)}/{DaraURL.percent_encode(service_name)}/version/{DaraURL.percent_encode(version)}/remark',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateServiceVersionRemarkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_service_version_remark(
+        self,
+        cluster_id: str,
+        service_name: str,
+        version: str,
+        request: main_models.UpdateServiceVersionRemarkRequest,
+    ) -> main_models.UpdateServiceVersionRemarkResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_service_version_remark_with_options(cluster_id, service_name, version, request, headers, runtime)
+
+    async def update_service_version_remark_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        version: str,
+        request: main_models.UpdateServiceVersionRemarkRequest,
+    ) -> main_models.UpdateServiceVersionRemarkResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_service_version_remark_with_options_async(cluster_id, service_name, version, request, headers, runtime)
 
     def update_virtual_resource_with_options(
         self,

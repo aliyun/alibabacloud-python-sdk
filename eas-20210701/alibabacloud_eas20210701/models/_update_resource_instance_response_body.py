@@ -11,11 +11,11 @@ class UpdateResourceInstanceResponseBody(DaraModel):
         request_id: str = None,
         resource_id: str = None,
     ):
-        # The instance ID.
+        # The instance name.
         self.instance_id = instance_id
         # The request ID.
         self.request_id = request_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_id = resource_id
 
     def validate(self):

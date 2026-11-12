@@ -9,6 +9,8 @@ from darabonba.model import DaraModel
 class CreateAppServiceRequest(DaraModel):
     def __init__(
         self,
+        client_token: str = None,
+        dry_run: bool = None,
         quota_id: str = None,
         workspace_id: str = None,
         app_type: str = None,
@@ -18,48 +20,43 @@ class CreateAppServiceRequest(DaraModel):
         service_name: str = None,
         service_spec: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        self.client_token = client_token
+        # Specifies whether to perform a dry run on the request. Valid values:
+        # - true: performs a dry run and does not create the instance. The system checks whether the required parameters are specified, the request format is valid, the service limits are met, and the ECS inventory is sufficient. If the request fails the check, an error is returned. If the request passes the check, the DryRunOperation error code is returned.
+        # - false (default): performs a normal request and creates the instance if the request passes the check.
+        self.dry_run = dry_run
         # The quota ID.
         self.quota_id = quota_id
         # The workspace ID.
         self.workspace_id = workspace_id
-        # The application service type.
-        # 
-        # Valid values:
-        # 
-        # *   LLM
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The type of the application service.
         # 
         # This parameter is required.
         self.app_type = app_type
         # The application version.
         self.app_version = app_version
-        # The additional configurations that are required for service deployment.
+        # The additional configuration information required for deployment.
         self.config = config
         # The number of instances.
         # 
         # This parameter is required.
         self.replicas = replicas
-        # The service name.
+        # The name of the service.
         # 
         # This parameter is required.
         self.service_name = service_name
         # The service specifications. Valid values:
-        # 
-        # *   llama_7b_fp16
-        # *   llama_7b_int8
-        # *   llama_13b_fp16
-        # *   llama_7b_int8
-        # *   chatglm_6b_fp16
-        # *   chatglm_6b_int8
-        # *   chatglm2_6b_fp16
-        # *   baichuan_7b_int8
-        # *   baichuan_13b_fp16
-        # *   baichuan_7b_fp16
+        # - llama_7b_fp16
+        # - llama_7b_int8
+        # - llama_13b_fp16
+        # - llama_7b_int8
+        # - chatglm_6b_fp16
+        # - chatglm_6b_int8
+        # - chatglm2_6b_fp16
+        # - baichuan_7b_int8
+        # - baichuan_13b_fp16
+        # - baichuan_7b_fp16
         # 
         # This parameter is required.
         self.service_spec = service_spec
@@ -72,6 +69,12 @@ class CreateAppServiceRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
         if self.quota_id is not None:
             result['QuotaId'] = self.quota_id
 
@@ -100,6 +103,12 @@ class CreateAppServiceRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+
         if m.get('QuotaId') is not None:
             self.quota_id = m.get('QuotaId')
 

@@ -14,11 +14,11 @@ class ListGatewayIntranetLinkedVpcPeerResponseBody(DaraModel):
         peer_vpc_list: List[main_models.ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcList] = None,
         request_id: str = None,
     ):
-        # The private gateway ID.
+        # The ID of the private gateway.
         self.gateway_id = gateway_id
-        # A list of peer VPCs.
+        # The list of peered VPCs.
         self.peer_vpc_list = peer_vpc_list
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -67,9 +67,9 @@ class ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcList(DaraModel):
         peer_vpcs: List[main_models.ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcListPeerVpcs] = None,
         vpc_id: str = None,
     ):
-        # A list of peer VPC IDs.
+        # The list of peered VPC IDs.
         self.peer_vpcs = peer_vpcs
-        # The VPC ID.
+        # The ID of the VPC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -113,10 +113,11 @@ class ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcListPeerVpcs(DaraModel)
         status: str = None,
         vpc_id: str = None,
     ):
-        # The region where the peer VPC is located.
+        # The region where the peered VPC is located.
         self.region = region
+        # The network connectivity status of the peered VPC.
         self.status = status
-        # The ID of the peer VPC.
+        # The ID of the peered VPC.
         self.vpc_id = vpc_id
 
     def validate(self):

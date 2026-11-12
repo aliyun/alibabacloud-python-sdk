@@ -19,15 +19,15 @@ class CreateAppServiceResponseBody(DaraModel):
         self.internet_endpoint = internet_endpoint
         # The internal endpoint of the service.
         self.intranet_endpoint = intranet_endpoint
-        # The region ID of the service.
+        # The region where the service is located.
         self.region = region
         # The request ID.
         self.request_id = request_id
         # The service ID.
         self.service_id = service_id
-        # The service name.
+        # The name of the service.
         self.service_name = service_name
-        # The service state.
+        # The status of the service.
         self.status = status
 
     def validate(self):
