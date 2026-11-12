@@ -22,21 +22,21 @@ class UpdateErrorPagesRedirectRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.config_id = config_id
-        # The error code redirect configuration.
+        # The error code redirect.
         self.error_pages_redirect = error_pages_redirect
-        # The content of the rule, which uses a conditional expression to match user requests. You do not need to specify this parameter when you add a global configuration. This parameter applies to the following scenarios:
+        # The rule content, which uses conditional expressions to match user requests. You do not need to specify this parameter when adding a global configuration. This parameter applies to the following scenarios:
         # - Match all incoming requests: Set the value to true.
         # - Match specific requests: Set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
         self.rule = rule
-        # Specifies whether to enable the rule. You do not need to specify this parameter when you add a global configuration. Valid values:
+        # Specifies whether to enable the rule. You do not need to specify this parameter when adding a global configuration. Valid values:
         # - on: Enabled.
         # - off: Disabled.
         self.rule_enable = rule_enable
-        # The name of the rule. You do not need to specify this parameter when you add a global configuration.
+        # The rule name. You do not need to specify this parameter when adding a global configuration.
         self.rule_name = rule_name
         # The execution sequence of the rule. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # The ID of the site. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
+        # The site ID. You can obtain the site ID by calling the [ListSites](~~ListSites~~) operation.
         # 
         # This parameter is required.
         self.site_id = site_id
@@ -111,7 +111,7 @@ class UpdateErrorPagesRedirectRuleRequestErrorPagesRedirect(DaraModel):
         status_code: str = None,
         target_url: str = None,
     ):
-        # The HTTP status code used by the node when responding to the client with a redirect address. Valid values:
+        # The response status code used by the node when responding to the client with a redirect address. Valid values:
         # 
         # - 400
         # - 403
@@ -127,7 +127,7 @@ class UpdateErrorPagesRedirectRuleRequestErrorPagesRedirect(DaraModel):
         # 
         # This parameter is required.
         self.status_code = status_code
-        # The destination URL after the redirect.
+        # The target URL after the redirect.
         # 
         # This parameter is required.
         self.target_url = target_url

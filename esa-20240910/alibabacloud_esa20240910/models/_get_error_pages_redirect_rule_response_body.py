@@ -20,29 +20,29 @@ class GetErrorPagesRedirectRuleResponseBody(DaraModel):
         sequence: int = None,
         site_version: int = None,
     ):
-        # The ID of the configuration. You can call the [ListCompressionRules](https://help.aliyun.com/document_detail/2867498.html) operation to obtain the configuration ID.
+        # The configuration ID. You can obtain the configuration ID by calling the [ListCompressionRules](https://help.aliyun.com/document_detail/2867498.html) operation.
         self.config_id = config_id
         # The configuration type. You can use this parameter to query global configurations or rule configurations. Valid values:
-        # - global: queries global configurations
-        # - rule: queries rule configurations
+        # - global: Queries global configurations.
+        # - rule: Queries rule configurations.
         # 
         # This parameter is optional. If you do not specify this parameter, global and rule configurations are not distinguished. This parameter takes effect only when the functionName parameter is specified.
         self.config_type = config_type
         # The error code redirect.
         self.error_pages_redirect = error_pages_redirect
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The rule content, which uses conditional expressions to match user requests. You do not need to set this parameter when adding a global configuration. Two scenarios are supported:
+        # The rule content, which uses a conditional expression to match user requests. You do not need to set this parameter when adding a global configuration. Two scenarios are supported:
         # - Match all incoming requests: Set the value to true.
-        # - Match specific requests: Set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
+        # - Match specified requests: Set the value to a custom expression, such as (http.host eq "video.example.com").
         self.rule = rule
         # The rule switch. You do not need to set this parameter when adding a global configuration. Valid values:
-        # - on: enables the rule
-        # - off: disables the rule
+        # - on: Enabled.
+        # - off: Disabled.
         self.rule_enable = rule_enable
-        # The name of the rule. You do not need to set this parameter when adding a global configuration.
+        # The rule name. You do not need to set this parameter when adding a global configuration.
         self.rule_name = rule_name
-        # The execution sequence of the rule. A smaller value indicates a higher priority.
+        # The execution order of the rule. A smaller value indicates a higher priority.
         self.sequence = sequence
         # The version number of the site configuration. For sites with configuration version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
         self.site_version = site_version
@@ -129,7 +129,7 @@ class GetErrorPagesRedirectRuleResponseBodyErrorPagesRedirect(DaraModel):
         status_code: str = None,
         target_url: str = None,
     ):
-        # The response status code used by the node when responding to the client with a redirect address. Valid values:
+        # The response status code used when the node responds to the client with a redirect address. Valid values:
         # - 400
         # - 403
         # - 404
@@ -142,7 +142,7 @@ class GetErrorPagesRedirectRuleResponseBodyErrorPagesRedirect(DaraModel):
         # - 503
         # - 504
         self.status_code = status_code
-        # The target URL after the redirect.
+        # The target URL after redirection.
         self.target_url = target_url
 
     def validate(self):

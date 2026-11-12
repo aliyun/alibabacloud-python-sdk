@@ -13,9 +13,9 @@ class FieldContentValue(DaraModel):
         sort_order: int = None,
         field_list: List[main_models.FieldContentValueFieldList] = None,
     ):
-        # The sequence number of the fields.
+        # The sort order of the fields.
         self.sort_order = sort_order
-        # The fields.
+        # The list of fields.
         self.field_list = field_list
 
     def validate(self):
@@ -62,21 +62,24 @@ class FieldContentValueFieldList(DaraModel):
         data_type: str = None,
         sort_order: int = None,
         is_default: bool = None,
+        is_supported: bool = None,
     ):
         # The field name.
         self.field_name = field_name
-        # The description of the field in English.
+        # The English description of the field.
         self.description = description
-        # The description of the field in Chinese.
+        # The Chinese description of the field.
         self.description_cn = description_cn
-        # The category of the field.
+        # The category to which the field belongs.
         self.category = category
         # The data type of the field.
         self.data_type = data_type
-        # The sequence number of the field.
+        # The sort order of the field in the response.
         self.sort_order = sort_order
-        # Indicates whether the field is available by default.
+        # Specifies whether the field is provided by default.
         self.is_default = is_default
+        # Specifies whether the user plan supports the field.
+        self.is_supported = is_supported
 
     def validate(self):
         pass
@@ -107,6 +110,9 @@ class FieldContentValueFieldList(DaraModel):
         if self.is_default is not None:
             result['IsDefault'] = self.is_default
 
+        if self.is_supported is not None:
+            result['IsSupported'] = self.is_supported
+
         return result
 
     def from_map(self, m: dict = None):
@@ -131,6 +137,9 @@ class FieldContentValueFieldList(DaraModel):
 
         if m.get('IsDefault') is not None:
             self.is_default = m.get('IsDefault')
+
+        if m.get('IsSupported') is not None:
+            self.is_supported = m.get('IsSupported')
 
         return self
 

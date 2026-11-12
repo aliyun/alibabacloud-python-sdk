@@ -103,22 +103,22 @@ class ListErrorPagesRedirectRulesResponseBodyConfigs(DaraModel):
         # The configuration ID.
         self.config_id = config_id
         # The configuration type. Valid values:
-        # - global: global configuration.
-        # - rule: rule configuration.
+        # - global: Global configuration.
+        # - rule: Rule configuration.
         self.config_type = config_type
         # The error code redirection.
         self.error_pages_redirect = error_pages_redirect
-        # The rule content. A conditional expression is used to match user requests. You do not need to set this parameter when adding a global configuration. Two scenarios are supported:
+        # The rule content. Uses a conditional expression to match user requests. You do not need to set this parameter when adding a global configuration. Two scenarios are supported:
         # - Match all incoming requests: Set the value to true.
         # - Match specific requests: Set the value to a custom expression, such as (http.host eq "video.example.com").
         self.rule = rule
         # The rule switch. You do not need to set this parameter when adding a global configuration. Valid values:
-        # - on: enables the rule.
-        # - off: disables the rule.
+        # - on: Enabled.
+        # - off: Disabled.
         self.rule_enable = rule_enable
         # The rule name. You do not need to set this parameter when adding a global configuration.
         self.rule_name = rule_name
-        # The execution sequence of the rule. A smaller value indicates a higher priority.
+        # The execution order of the rule. A smaller value indicates a higher priority.
         self.sequence = sequence
         # The version number of the site configuration. For sites with configuration version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
         self.site_version = site_version

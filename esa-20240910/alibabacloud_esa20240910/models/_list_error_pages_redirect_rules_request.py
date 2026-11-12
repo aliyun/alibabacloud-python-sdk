@@ -17,10 +17,10 @@ class ListErrorPagesRedirectRulesRequest(DaraModel):
     ):
         # The configuration ID.
         self.config_id = config_id
-        # The configuration type. You can use this parameter to query global configurations or rule configurations. Valid values:
+        # The configuration type. You can use this parameter to query global or rule configurations. Valid values:
         # 
-        # - global: queries global configurations.
-        # - rule: queries rule configurations.
+        # - global: Global configurations.
+        # - rule: Rule configurations.
         self.config_type = config_type
         # The page number. Default value: 1.
         self.page_number = page_number
