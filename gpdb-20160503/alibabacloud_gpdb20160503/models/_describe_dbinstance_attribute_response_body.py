@@ -105,6 +105,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(DaraModel)
         dbinstance_status: str = None,
         dbinstance_storage: int = None,
         deploy_mode: str = None,
+        disk_notify_threshold: str = None,
         encryption_key: str = None,
         encryption_type: str = None,
         engine: str = None,
@@ -115,12 +116,14 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(DaraModel)
         idle_time: int = None,
         instance_network_type: str = None,
         instance_spec: str = None,
+        instance_type: str = None,
         lock_mode: str = None,
         lock_reason: str = None,
         maintain_end_time: str = None,
         maintain_start_time: str = None,
         master_aispec: str = None,
         master_cu: int = None,
+        master_disk_lock_threshold: str = None,
         master_node_num: int = None,
         max_connections: int = None,
         memory_per_node: int = None,
@@ -129,6 +132,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(DaraModel)
         minor_version: str = None,
         pay_type: str = None,
         port: str = None,
+        primary_dbinstance_id: str = None,
         prod_type: str = None,
         read_delay_time: str = None,
         region_id: str = None,
@@ -139,6 +143,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(DaraModel)
         seg_node_num: int = None,
         segment_aispec: str = None,
         segment_counts: int = None,
+        segment_disk_lock_threshold: str = None,
         serverless_mode: str = None,
         serverless_resource: int = None,
         standby_zone_id: str = None,
@@ -176,6 +181,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(DaraModel)
         self.dbinstance_status = dbinstance_status
         self.dbinstance_storage = dbinstance_storage
         self.deploy_mode = deploy_mode
+        # 实例磁盘告警阈值，百分比字符串；未配置时为空。
+        self.disk_notify_threshold = disk_notify_threshold
         self.encryption_key = encryption_key
         self.encryption_type = encryption_type
         self.engine = engine
@@ -186,12 +193,16 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(DaraModel)
         self.idle_time = idle_time
         self.instance_network_type = instance_network_type
         self.instance_spec = instance_spec
+        # 实例类型：main表示主实例，readonly表示只读实例
+        self.instance_type = instance_type
         self.lock_mode = lock_mode
         self.lock_reason = lock_reason
         self.maintain_end_time = maintain_end_time
         self.maintain_start_time = maintain_start_time
         self.master_aispec = master_aispec
         self.master_cu = master_cu
+        # master磁盘锁定阈值，百分比字符串；未配置时为空。
+        self.master_disk_lock_threshold = master_disk_lock_threshold
         self.master_node_num = master_node_num
         self.max_connections = max_connections
         self.memory_per_node = memory_per_node
@@ -200,6 +211,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(DaraModel)
         self.minor_version = minor_version
         self.pay_type = pay_type
         self.port = port
+        # 主实例ID；当前实例为主实例时为空
+        self.primary_dbinstance_id = primary_dbinstance_id
         self.prod_type = prod_type
         self.read_delay_time = read_delay_time
         self.region_id = region_id
@@ -210,6 +223,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(DaraModel)
         self.seg_node_num = seg_node_num
         self.segment_aispec = segment_aispec
         self.segment_counts = segment_counts
+        # segment磁盘锁定阈值，百分比字符串；未配置时为空。
+        self.segment_disk_lock_threshold = segment_disk_lock_threshold
         self.serverless_mode = serverless_mode
         self.serverless_resource = serverless_resource
         self.standby_zone_id = standby_zone_id
@@ -300,6 +315,9 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(DaraModel)
         if self.deploy_mode is not None:
             result['DeployMode'] = self.deploy_mode
 
+        if self.disk_notify_threshold is not None:
+            result['DiskNotifyThreshold'] = self.disk_notify_threshold
+
         if self.encryption_key is not None:
             result['EncryptionKey'] = self.encryption_key
 
@@ -330,6 +348,9 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(DaraModel)
         if self.instance_spec is not None:
             result['InstanceSpec'] = self.instance_spec
 
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+
         if self.lock_mode is not None:
             result['LockMode'] = self.lock_mode
 
@@ -347,6 +368,9 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(DaraModel)
 
         if self.master_cu is not None:
             result['MasterCU'] = self.master_cu
+
+        if self.master_disk_lock_threshold is not None:
+            result['MasterDiskLockThreshold'] = self.master_disk_lock_threshold
 
         if self.master_node_num is not None:
             result['MasterNodeNum'] = self.master_node_num
@@ -371,6 +395,9 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(DaraModel)
 
         if self.port is not None:
             result['Port'] = self.port
+
+        if self.primary_dbinstance_id is not None:
+            result['PrimaryDBInstanceId'] = self.primary_dbinstance_id
 
         if self.prod_type is not None:
             result['ProdType'] = self.prod_type
@@ -401,6 +428,9 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(DaraModel)
 
         if self.segment_counts is not None:
             result['SegmentCounts'] = self.segment_counts
+
+        if self.segment_disk_lock_threshold is not None:
+            result['SegmentDiskLockThreshold'] = self.segment_disk_lock_threshold
 
         if self.serverless_mode is not None:
             result['ServerlessMode'] = self.serverless_mode
@@ -514,6 +544,9 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(DaraModel)
         if m.get('DeployMode') is not None:
             self.deploy_mode = m.get('DeployMode')
 
+        if m.get('DiskNotifyThreshold') is not None:
+            self.disk_notify_threshold = m.get('DiskNotifyThreshold')
+
         if m.get('EncryptionKey') is not None:
             self.encryption_key = m.get('EncryptionKey')
 
@@ -544,6 +577,9 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(DaraModel)
         if m.get('InstanceSpec') is not None:
             self.instance_spec = m.get('InstanceSpec')
 
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+
         if m.get('LockMode') is not None:
             self.lock_mode = m.get('LockMode')
 
@@ -561,6 +597,9 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(DaraModel)
 
         if m.get('MasterCU') is not None:
             self.master_cu = m.get('MasterCU')
+
+        if m.get('MasterDiskLockThreshold') is not None:
+            self.master_disk_lock_threshold = m.get('MasterDiskLockThreshold')
 
         if m.get('MasterNodeNum') is not None:
             self.master_node_num = m.get('MasterNodeNum')
@@ -585,6 +624,9 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(DaraModel)
 
         if m.get('Port') is not None:
             self.port = m.get('Port')
+
+        if m.get('PrimaryDBInstanceId') is not None:
+            self.primary_dbinstance_id = m.get('PrimaryDBInstanceId')
 
         if m.get('ProdType') is not None:
             self.prod_type = m.get('ProdType')
@@ -615,6 +657,9 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(DaraModel)
 
         if m.get('SegmentCounts') is not None:
             self.segment_counts = m.get('SegmentCounts')
+
+        if m.get('SegmentDiskLockThreshold') is not None:
+            self.segment_disk_lock_threshold = m.get('SegmentDiskLockThreshold')
 
         if m.get('ServerlessMode') is not None:
             self.serverless_mode = m.get('ServerlessMode')

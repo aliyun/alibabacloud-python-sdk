@@ -10,9 +10,9 @@ class ListModelOperatorApiKeysRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The page number. The value must be greater than 0 and cannot exceed the maximum value of Integer. Default value: 1.
+        # The page number. The value must be greater than 0 and cannot exceed the maximum value of an integer. Default value: 1.
         self.page_number = page_number
-        # The number of records per page. Valid values:
+        # The number of entries per page. Valid values:
         # 
         # - **20**
         # - **50**

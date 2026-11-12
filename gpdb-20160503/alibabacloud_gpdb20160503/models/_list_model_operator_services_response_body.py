@@ -16,7 +16,7 @@ class ListModelOperatorServicesResponseBody(DaraModel):
         services: List[main_models.ListModelOperatorServicesResponseBodyServices] = None,
         total_record_count: int = None,
     ):
-        # The current page number.
+        # The page number.
         self.page_number = page_number
         # The number of entries on the current page.
         self.page_record_count = page_record_count
@@ -83,9 +83,19 @@ class ListModelOperatorServicesResponseBodyServices(DaraModel):
     def __init__(
         self,
         service_id: str = None,
+        status: str = None,
     ):
         # The service ID.
         self.service_id = service_id
+        # The status of the model operator service. Valid values:
+        # - active: Normal.
+        # - locking: Locking.
+        # - locked: Locked.
+        # - unlocking: Unlocking.
+        # - deleting: Releasing.
+        # 
+        # This status indicates the processing status of the control plane and does not mean that data plane propagation of the MO gateway is complete.
+        self.status = status
 
     def validate(self):
         pass
@@ -98,12 +108,18 @@ class ListModelOperatorServicesResponseBodyServices(DaraModel):
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
 
+        if self.status is not None:
+            result['Status'] = self.status
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
 
         return self
 

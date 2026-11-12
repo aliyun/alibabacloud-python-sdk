@@ -16,7 +16,7 @@ class AddAINodeRequest(DaraModel):
     ):
         # The ID of the resource pool to which the AI node belongs.
         self.ainode_pool_id = ainode_pool_id
-        # The node specifications of the AI node.
+        # The node specifications of the AI nodes.
         # 
         # This parameter is required.
         self.ainode_spec_infos = ainode_spec_infos

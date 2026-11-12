@@ -20,11 +20,11 @@ class ListModelOperatorApiKeysResponseBody(DaraModel):
         self.api_keys = api_keys
         # The current page number.
         self.page_number = page_number
-        # The number of records on the current page.
+        # The number of entries on the current page.
         self.page_record_count = page_record_count
         # The request ID.
         self.request_id = request_id
-        # The total number of records.
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -86,8 +86,9 @@ class ListModelOperatorApiKeysResponseBodyApiKeys(DaraModel):
         create_time: str = None,
         description: str = None,
         endpoint: str = None,
+        status: str = None,
     ):
-        # API KEY ID。
+        # The API key ID.
         self.api_key_id = api_key_id
         # The creation time.
         self.create_time = create_time
@@ -95,6 +96,8 @@ class ListModelOperatorApiKeysResponseBodyApiKeys(DaraModel):
         self.description = description
         # The endpoint.
         self.endpoint = endpoint
+        # The status of the key. Valid values: Creating, Running, Locked, and Deleting.
+        self.status = status
 
     def validate(self):
         pass
@@ -116,6 +119,9 @@ class ListModelOperatorApiKeysResponseBodyApiKeys(DaraModel):
         if self.endpoint is not None:
             result['Endpoint'] = self.endpoint
 
+        if self.status is not None:
+            result['Status'] = self.status
+
         return result
 
     def from_map(self, m: dict = None):
@@ -131,6 +137,9 @@ class ListModelOperatorApiKeysResponseBodyApiKeys(DaraModel):
 
         if m.get('Endpoint') is not None:
             self.endpoint = m.get('Endpoint')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
 
         return self
 

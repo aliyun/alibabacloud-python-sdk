@@ -13,10 +13,11 @@ class DescribeModelOperatorApiKeyResponseBody(DaraModel):
         description: str = None,
         endpoint: str = None,
         request_id: str = None,
+        status: str = None,
     ):
-        # The API key content.
+        # The content of the API key.
         self.api_key = api_key
-        # API KEY ID。
+        # The API key ID.
         self.api_key_id = api_key_id
         # The creation time.
         self.create_time = create_time
@@ -26,6 +27,8 @@ class DescribeModelOperatorApiKeyResponseBody(DaraModel):
         self.endpoint = endpoint
         # The request ID.
         self.request_id = request_id
+        # The status of the API key. Valid values: Creating, Running, Locked, and Deleting.
+        self.status = status
 
     def validate(self):
         pass
@@ -53,6 +56,9 @@ class DescribeModelOperatorApiKeyResponseBody(DaraModel):
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
+        if self.status is not None:
+            result['Status'] = self.status
+
         return result
 
     def from_map(self, m: dict = None):
@@ -74,6 +80,9 @@ class DescribeModelOperatorApiKeyResponseBody(DaraModel):
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
 
         return self
 

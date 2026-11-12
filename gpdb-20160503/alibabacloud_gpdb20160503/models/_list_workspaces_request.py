@@ -13,7 +13,7 @@ class ListWorkspacesRequest(DaraModel):
         page_size: int = None,
         region_id: str = None,
     ):
-        # The maximum number of entries to return in this request. Default value: 10.
+        # The maximum number of entries to return for this request. Default value: 10.
         self.max_results = max_results
         # The token used to start the next query.
         self.next_token = next_token

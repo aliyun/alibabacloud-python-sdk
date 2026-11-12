@@ -1,3 +1,15 @@
+2026-11-12 Version: 5.13.1
+- Update API CreateModelOperatorApiKey: add response parameters Body.Status.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.Items.$.DiskNotifyThreshold.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.Items.$.InstanceType.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.Items.$.MasterDiskLockThreshold.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.Items.$.PrimaryDBInstanceId.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.Items.$.SegmentDiskLockThreshold.
+- Update API DescribeModelOperatorApiKey: add response parameters Body.Status.
+- Update API ListModelOperatorApiKeys: add response parameters Body.ApiKeys.$.Status.
+- Update API ListModelOperatorServices: add response parameters Body.Services.$.Status.
+
+
 2026-11-12 Version: 5.13.0
 - Generated python 2016-05-03 for gpdb.
 

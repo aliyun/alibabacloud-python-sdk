@@ -10,7 +10,7 @@ class ListModelOperatorServicesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The current page number.
+        # The page number.
         self.page_number = page_number
         # The number of entries per page. Valid values:
         # - **20**

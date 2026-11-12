@@ -9,11 +9,14 @@ class CreateModelOperatorApiKeyResponseBody(DaraModel):
         self,
         api_key_id: int = None,
         request_id: str = None,
+        status: str = None,
     ):
         # The API key ID.
         self.api_key_id = api_key_id
         # The request ID.
         self.request_id = request_id
+        # Returns Creating after the creation request is accepted. The plaintext and endpoint are not returned.
+        self.status = status
 
     def validate(self):
         pass
@@ -29,6 +32,9 @@ class CreateModelOperatorApiKeyResponseBody(DaraModel):
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
+        if self.status is not None:
+            result['Status'] = self.status
+
         return result
 
     def from_map(self, m: dict = None):
@@ -38,6 +44,9 @@ class CreateModelOperatorApiKeyResponseBody(DaraModel):
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
 
         return self
 

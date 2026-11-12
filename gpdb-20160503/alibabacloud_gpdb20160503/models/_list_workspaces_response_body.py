@@ -20,7 +20,7 @@ class ListWorkspacesResponseBody(DaraModel):
     ):
         # The list of workspace details.
         self.items = items
-        # The maximum number of entries to return in this request. Default value: 10.
+        # The maximum number of entries to return for this request. Default value: 10.
         self.max_results = max_results
         # The token used to start the next query.
         self.next_token = next_token
@@ -28,7 +28,7 @@ class ListWorkspacesResponseBody(DaraModel):
         self.page_number = page_number
         # The number of entries on the current page.
         self.page_record_count = page_record_count
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries.
         self.total_record_count = total_record_count
@@ -108,15 +108,15 @@ class ListWorkspacesResponseBodyItems(DaraModel):
     ):
         # The list of API keys in the workspace.
         self.apikeys = apikeys
-        # The time when the workspace was created.
+        # The creation time.
         self.create_time = create_time
         # The services in the workspace.
         self.services = services
-        # The ID of the workspace.
+        # The workspace ID.
         self.workspace_id = workspace_id
-        # The name of the workspace.
-        # - The maximum length is 50 characters.
-        # - The name must be unique.
+        # The workspace name.
+        # - Maximum length: 50 characters.
+        # - Must be unique.
         # - Special characters are not allowed.
         self.workspace_name = workspace_name
 
@@ -196,34 +196,36 @@ class ListWorkspacesResponseBodyItemsServices(DaraModel):
         service_type: str = None,
         status: str = None,
     ):
+        # The list of service components.
         self.components = components
-        # The time when the workspace was created.
+        # The creation time.
         self.create_time = create_time
         # The compute resources.
         self.cu = cu
+        # Specifies whether release protection is enabled.
         self.deletion_protection = deletion_protection
         # The expiration time.
         self.expire_time = expire_time
         # The billing method. Valid values:
         # 
-        # - **POSTPAY**: pay-as-you-go.
-        # - **PREPAY**: subscription.
+        # - **POSTPAY**: pay-as-you-go
+        # - **PREPAY**: subscription
         # 
-        # > - If this parameter is not specified, the default value is POSTPAY.
-        # > - In subscription mode, a discount is provided if you purchase a subscription for one year or longer. Select a billing method based on your business requirements.
+        # > - If this parameter is not specified, the pay-as-you-go billing method is used by default.
+        # > - In subscription mode, a discount is provided when you purchase a subscription for one year or longer. Select a billing method based on your business requirements.
         self.pay_type = pay_type
         # **[Deprecated]**
         self.plan = plan
-        # The ID of the service.
+        # The service ID.
         self.service_id = service_id
-        # The name of the service.
+        # The service name.
         self.service_name = service_name
-        # The type of the service. Valid values:
+        # The service type. Valid values:
         # 
         # - memory
         # - drama
         self.service_type = service_type
-        # The status of the service. Valid values:
+        # The service status. Valid values:
         # 
         # - creating: The service is being created.
         # - active: The service is running.
@@ -327,11 +329,22 @@ class ListWorkspacesResponseBodyItemsServicesComponents(DaraModel):
         component_id: str = None,
         component_type: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The compute resources.
         self.cu = cu
+        # Specifies whether release protection is enabled.
         self.deletion_protection = deletion_protection
+        # The service component status. Valid values:
+        # 
+        # - creating: The component is being created.
+        # - active: The component is running.
         self.status = status
+        # The component ID.
         self.component_id = component_id
+        # The component type. Valid values:
+        # 
+        # - game
         self.component_type = component_type
 
     def validate(self):
@@ -396,7 +409,7 @@ class ListWorkspacesResponseBodyItemsApikeys(DaraModel):
     ):
         # The services authorized for the API key.
         self.auth_services = auth_services
-        # The time when the API key was created.
+        # The creation time of the API key.
         self.create_time = create_time
         # The description.
         self.description = description
@@ -471,9 +484,9 @@ class ListWorkspacesResponseBodyItemsApikeysAuthServices(DaraModel):
         service_id: str = None,
         service_type: str = None,
     ):
-        # The ID of the service.
+        # The service ID.
         self.service_id = service_id
-        # The type of the service. Valid values:
+        # The service type. Valid values:
         # 
         # - memory
         # - drama
