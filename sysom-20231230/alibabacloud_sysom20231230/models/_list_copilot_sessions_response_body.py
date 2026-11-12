@@ -82,7 +82,7 @@ class ListCopilotSessionsResponseBodyData(DaraModel):
     ):
         # The page size used for the current request.
         self.max_results = max_results
-        # The pagination token for the next page. Pass this value back as is in the next request. An empty value indicates that there are no more pages.
+        # The pagination token for the next page. Pass this value back as is in the next request. An empty value indicates that no more pages are available.
         self.next_token = next_token
         # The session list.
         self.sessions = sessions
@@ -145,9 +145,9 @@ class ListCopilotSessionsResponseBodyDataSessions(DaraModel):
     ):
         # The information about the execution that currently occupies the session.
         self.active_turn = active_turn
-        # The ID of the execution that currently occupies the session. This field is empty when there is no active execution.
+        # The ID of the execution that currently occupies the session. This field is empty when no active execution exists.
         self.active_turn_id = active_turn_id
-        # The agent identifier of the session. The current executor is subject to activeTurn.agentId.
+        # The Agent tag of the session. The current executor is subject to activeTurn.agentId.
         self.agent_id = agent_id
         # The time when the session was created, in ISO 8601 format.
         self.created_at = created_at
@@ -157,10 +157,10 @@ class ListCopilotSessionsResponseBodyDataSessions(DaraModel):
         self.name = name
         # The snapshot information when the scheduled task is triggered. This field is returned only for scheduled task sessions and is empty for sessions from other sources.
         self.scheduled_task = scheduled_task
-        # The session ID. Use this value when sending questions, querying history, and deleting sessions later.
+        # The session ID. Use this value when you send questions, query history, and delete sessions later.
         self.session_id = session_id
         # The source from which the session was created. Valid values:
-        # - openapi: Proactive call.
+        # - openapi: API call.
         # - cron: Scheduled task.
         # - im_dingtalk: DingTalk.
         # - im_feishu: Lark.
@@ -280,7 +280,7 @@ class ListCopilotSessionsResponseBodyDataSessionsScheduledTask(DaraModel):
     ):
         # The ID of the current scheduled execution. Different runIds are used for multiple triggers of the same scheduled task.
         self.run_id = run_id
-        # The scheduled trigger time, in ISO 8601 format with time zone. This field is empty when there is no record.
+        # The scheduled trigger time, in ISO 8601 format with time zone. This field is empty when no record exists.
         self.scheduled_at = scheduled_at
         # The time when Copilot started processing the current schedule, in ISO 8601 format with time zone. This is not the time when the model outputs the first token.
         self.started_at = started_at
@@ -354,17 +354,17 @@ class ListCopilotSessionsResponseBodyDataSessionsActiveTurn(DaraModel):
         turn_id: str = None,
         updated_at: str = None,
     ):
-        # The agent ID bound to the current execution round.
+        # The Agent ID bound to the current execution round.
         self.agent_id = agent_id
         # The time when the current execution round was created, in ISO 8601 format.
         self.created_at = created_at
         # The time when the execution ended, in ISO 8601 format. This field is empty if the execution has not ended.
         self.finished_at = finished_at
-        # The cumulative number of input tokens for the current round, which is not the incremental usage of the current event.
+        # The cumulative number of input tokens in the current round, which is not the incremental usage of the current event.
         self.input_tokens = input_tokens
-        # The cumulative number of output tokens for the current round.
+        # The cumulative number of output tokens in the current round.
         self.output_tokens = output_tokens
-        # The ID of the form that is currently waiting for user input. This value is used when submitting user input. This field is empty when there is no form to be filled.
+        # The ID of the form that is currently waiting for the user to fill out. This field is used when user input is submitted. This field is empty when no form needs to be filled out.
         self.pending_input_id = pending_input_id
         # The execution status. Valid values:
         # - running: The execution is in progress.
@@ -373,7 +373,7 @@ class ListCopilotSessionsResponseBodyDataSessionsActiveTurn(DaraModel):
         # - completed: The execution is completed.
         # - failed: The execution failed.
         # - cancelled: The execution is canceled.
-        # - outcome_unknown: The outcome is unknown. The session may still be occupied and should not be automatically rerun.
+        # - outcome_unknown: The result is unknown, and the session may still be occupied. The execution should not be automatically rerun.
         self.status = status
         # The ID of the current execution round, which is used to submit user input, reconnect, or stop the execution.
         self.turn_id = turn_id

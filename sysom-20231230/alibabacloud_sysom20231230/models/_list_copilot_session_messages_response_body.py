@@ -16,13 +16,13 @@ class ListCopilotSessionMessagesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The returned status code. Success indicates that the request is successful. Other values indicate that the request fails.
+        # The returned status code. Success indicates that the request is successful. Other values indicate that the request failed.
         self.code = code
         # The returned data.
         self.data = data
-        # The historical compatibility field, which may be omitted. Use data.maxResults instead.
+        # A field retained for historical compatibility, which may be omitted. Use data.maxResults instead.
         self.max_results = max_results
-        # The error message. If the code is Success, this field is empty. Otherwise, this field contains the request error message.
+        # The error message. If the code is Success, this field is empty. Otherwise, this field contains the error message of the request.
         self.message = message
         # The request ID, which can be used for end-to-end diagnostics.
         self.request_id = request_id
@@ -89,11 +89,11 @@ class ListCopilotSessionMessagesResponseBodyData(DaraModel):
         # - true: Yes.
         # - false: No.
         self.has_more = has_more
-        # The page size used in the current request.
+        # The page size used for the current request.
         self.max_results = max_results
-        # The historical event records on the current page, sorted in ascending order by eventId. A record does not necessarily represent a complete chat message and may be a chunk of text or a tool invoke.
+        # The history event records on the current page, sorted in ascending order by eventId. A record does not necessarily represent a complete chat message and may be a chunk of text or a tool calling (invoke) event.
         self.messages = messages
-        # The token for the next page. Pass this token back as is in the next request. An empty value indicates that there is no next page.
+        # The token for the next page. Pass this value back as is in the next request. An empty value indicates that there is no next page.
         self.next_token = next_token
         # The session summary of the current user. This object does not contain the active execution summary. To query the execution status, call GetCopilotSession.
         self.session = session
@@ -174,25 +174,25 @@ class ListCopilotSessionMessagesResponseBodyDataSession(DaraModel):
     ):
         # The agent identifier in the session summary, which does not represent the current executor. The current executor is subject to activeTurn.agentId.
         self.agent_id = agent_id
-        # The session creation time, in ISO 8601 format.
+        # The time when the session was created, in ISO 8601 format.
         self.created_at = created_at
-        # The session ID, which is the same as sessionId. Use sessionId to initiate subsequent requests.
+        # The session ID, which is the same as sessionId. We recommend using sessionId to initiate subsequent requests.
         self.id = id
         # The session title.
         self.name = name
         # The snapshot information when the scheduled task is triggered. This field is returned only for scheduled task sessions and is empty for sessions from other sources. Subsequent renaming or deletion of the task does not change the historical snapshot.
         self.scheduled_task = scheduled_task
-        # The session ID. Use this value when sending subsequent questions, querying history, and deleting sessions.
+        # The session ID. Use this value when you send follow-up questions, query history, or delete the session.
         self.session_id = session_id
-        # The source of session creation. Valid values:
-        # - openapi: active call
-        # - cron: scheduled task
-        # - im_dingtalk: DingTalk
-        # - im_feishu: Lark
-        # - alert: alert
-        # This value is determined by the server and is not changed by subsequent follow-up questions.
+        # The source from which the session was created. Valid values:
+        # - openapi: Active call.
+        # - cron: Scheduled task.
+        # - im_dingtalk: DingTalk.
+        # - im_feishu: Lark.
+        # - alert: Alert.
+        # This value is determined by the server and is not changed by follow-up questions.
         self.session_type = session_type
-        # The last update time of the session, in ISO 8601 format.
+        # The time when the session was last updated, in ISO 8601 format.
         self.updated_at = updated_at
         # The ID of the user to whom the session belongs. This value is determined by the server based on the caller identity and is not used as a parameter for the client to specify the identity.
         self.user_id = user_id
@@ -277,11 +277,11 @@ class ListCopilotSessionMessagesResponseBodyDataSessionScheduledTask(DaraModel):
         task_name: str = None,
         timezone: str = None,
     ):
-        # The ID of the current scheduled execution. Multiple triggers of the same scheduled task use different runIds.
+        # The ID of this scheduled execution. Different runIds are used for multiple triggers of the same scheduled task.
         self.run_id = run_id
-        # The scheduled trigger time, in ISO 8601 format with time zone. This field is empty when there is no record.
+        # The scheduled trigger time, in ISO 8601 format with time zone. This field is empty if there is no record.
         self.scheduled_at = scheduled_at
-        # The time when Copilot starts processing the current schedule, in ISO 8601 format with time zone. This is not the time when the model outputs the first token.
+        # The time when Copilot started processing this schedule, in ISO 8601 format with time zone. This is not the time when the model outputs the first token.
         self.started_at = started_at
         # The ID of the associated scheduled task.
         self.task_id = task_id
@@ -356,23 +356,23 @@ class ListCopilotSessionMessagesResponseBodyDataMessages(DaraModel):
     ):
         # The human-readable content summary of the event. To restore the complete interactive interface, use the original event in metadata.
         self.content = content
-        # The creation time of the historical event record, in ISO 8601 format.
+        # The time when the historical event record was created, in ISO 8601 format.
         self.created_at = created_at
-        # The event position within the session, used for sorting and deduplication.
+        # The position of the event within the session, used for sorting and deduplication.
         self.event_id = event_id
-        # Currently returns an empty string. Do not use this field to determine whether the execution has finished.
+        # Currently, an empty string is returned. This field is not used to determine whether the execution has finished.
         self.finished_at = finished_at
         # The ID of the historical event record.
         self.id = id
         # The complete original event object. The internal fields retain their original protocol names, without recursive naming conversion or the need for further JSON string parsing.
         self.metadata = metadata
-        # Currently returns an empty string. Do not use this field to identify the event type.
+        # Currently, an empty string is returned. This field is not used to identify the event type.
         self.name = name
-        # The role in the original event. Returns an empty string when the event does not contain a role.
+        # The role in the original event. An empty string is returned if the event does not contain a role.
         self.role = role
-        # The ID of the associated execution. This field is empty when there is no associated execution.
+        # The ID of the associated execution. This field is empty if there is no associated execution.
         self.turn_id = turn_id
-        # The per-event token usage. This data is not currently returned. To query the cumulative usage of an execution, call GetCopilotSession.
+        # The token usage per event. This data is not currently returned. To query the cumulative usage of an execution, call GetCopilotSession.
         self.usage = usage
 
     def validate(self):
@@ -463,7 +463,7 @@ class ListCopilotSessionMessagesResponseBodyDataMessagesContent(DaraModel):
         text: str = None,
         type: str = None,
     ):
-        # The readable text content in the event. This field is empty when no readable string is available.
+        # The readable text content in the event. This field is empty if no readable string is available.
         self.text = text
         # The event type, such as USER_MESSAGE, TEXT_MESSAGE_CONTENT, or TOOL_CALL_ARGS. This is not fixed to text.
         self.type = type

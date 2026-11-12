@@ -13,9 +13,9 @@ class ListCopilotSessionsRequest(DaraModel):
         scheduled_task_id: int = None,
         session_type: str = None,
     ):
-        # The agent ID. If this parameter is not specified, all agent sessions of the current user are queried.
+        # The Agent ID. If this parameter is not specified, all Agent sessions of the current user are queried.
         self.agent_id = agent_id
-        # The maximum number of records per page. Default value: 50. Valid values: 1 to 1000.
+        # The maximum number of entries per page. Default value: 50. Valid values: 1 to 1000.
         self.max_results = max_results
         # The pagination token for the next page. Do not specify this parameter for the first query.
         self.next_token = next_token

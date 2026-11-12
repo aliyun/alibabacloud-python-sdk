@@ -15,9 +15,9 @@ class ListAlertStrategiesRequest(DaraModel):
     ):
         # The current page number, starting from 1.
         self.current = current
-        # The maximum number of records to retrieve per request.
+        # The maximum number of records to return in a single request.
         self.max_results = max_results
-        # The Policy Name of the alerting policy.
+        # The alert policy name.
         self.name = name
         # The pagination token for the next request.
         self.next_token = next_token

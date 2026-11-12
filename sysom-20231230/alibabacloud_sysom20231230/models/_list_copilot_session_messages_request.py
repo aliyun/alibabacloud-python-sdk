@@ -16,13 +16,13 @@ class ListCopilotSessionMessagesRequest(DaraModel):
     ):
         # The agent ID retained for compatibility with historical calls. This parameter can be omitted. Currently, the entire session is queried by sessionId, and this parameter does not change the query scope of historical events.
         self.agent_id = agent_id
-        # The page size retained for compatibility with historical calls. Default value: 50. Valid values: 1 to 200. For new integrations, use maxResults. If both parameters are passed, maxResults takes precedence.
+        # The page size retained for compatibility with historical calls. Default value: 50. Valid values: 1 to 200. For new integrations, we recommend using maxResults. If both parameters are specified, maxResults takes precedence.
         self.limit = limit
         # The page size. Default value: 50. Valid values: 1 to 1000.
         self.max_results = max_results
-        # The token for the next page. Do not pass this parameter in the first request. For subsequent requests, use the nextToken from the previous response. Clear this value when switching filter conditions.
+        # The token for the next page. Do not specify this parameter for the first request. For subsequent requests, use the nextToken value from the previous response. Clear this value when you change the filter conditions.
         self.next_token = next_token
-        # The pagination offset retained for compatibility with historical calls. Default value: 0. For new integrations, use nextToken. Do not pass this parameter and nextToken at the same time.
+        # The pagination offset retained for compatibility with historical calls. Default value: 0. For new integrations, we recommend using nextToken. Do not specify this parameter and nextToken at the same time.
         self.offset = offset
         # The session ID.
         # 

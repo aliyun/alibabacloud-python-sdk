@@ -17,7 +17,7 @@ class GetAlertStrategyResponseBody(DaraModel):
     ):
         # The status code.
         # - If `code == Success`, the authorization is successful.
-        # - Other status codes indicate that the authorization failed. If the authorization fails, check the `message` field for the detailed fault message.
+        # - Other status codes indicate that the authorization failed. If the authorization failed, check the `message` field to obtain the detailed fault information.
         self.code = code
         # The returned data.
         self.data = data
@@ -86,7 +86,7 @@ class GetAlertStrategyResponseBodyData(DaraModel):
         self.enabled = enabled
         # The alert policy ID.
         self.id = id
-        # The Kubernetes label.
+        # The K8s labels.
         self.k_8s_label = k_8s_label
         # The policy name.
         self.name = name
@@ -167,13 +167,16 @@ class GetAlertStrategyResponseBodyDataStrategy(DaraModel):
         clusters: List[str] = None,
         destinations: Any = None,
         items: Any = None,
+        levels: List[str] = None,
     ):
-        # The clusters that receive alerts.
+        # The collection of clusters that receive alerts.
         self.clusters = clusters
         # The alert contacts.
         self.destinations = destinations
-        # The list of anomaly items that trigger alerts.
+        # The list of anomaly items that receive alerts.
         self.items = items
+        # The collection of alert levels.
+        self.levels = levels
 
     def validate(self):
         pass
@@ -192,6 +195,9 @@ class GetAlertStrategyResponseBodyDataStrategy(DaraModel):
         if self.items is not None:
             result['items'] = self.items
 
+        if self.levels is not None:
+            result['levels'] = self.levels
+
         return result
 
     def from_map(self, m: dict = None):
@@ -204,6 +210,9 @@ class GetAlertStrategyResponseBodyDataStrategy(DaraModel):
 
         if m.get('items') is not None:
             self.items = m.get('items')
+
+        if m.get('levels') is not None:
+            self.levels = m.get('levels')
 
         return self
 

@@ -20,15 +20,15 @@ class ListAlertStrategiesResponseBody(DaraModel):
     ):
         # The status code.
         # - If `code == Success`, the authorization is successful.
-        # - Other status codes indicate that the authorization failed. If the authorization failed, check the `message` field for the detailed error message.
+        # - Other status codes indicate that the authorization failed. If the authorization failed, check the `message` field to obtain the detailed fault message.
         self.code = code
-        # The returned results.
+        # The returned data.
         self.data = data
-        # The maximum number of returned results.
+        # The maximum number of returned records.
         self.max_results = max_results
         # The error message.
-        # - If `code == Success`, this field is empty.
-        # - Otherwise, this field contains the request error message.
+        # - If the value of `code` is `Success`, this field is empty.
+        # - Otherwise, this field contains the error message of the request.
         self.message = message
         # The pagination token for the next request.
         self.next_token = next_token
@@ -119,7 +119,7 @@ class ListAlertStrategiesResponseBodyData(DaraModel):
         self.enabled = enabled
         # The policy ID.
         self.id = id
-        # Indicates whether K8s labels are required.
+        # Specifies whether Kubernetes labels are required.
         self.k_8s_label = k_8s_label
         # The policy name.
         self.name = name
@@ -200,13 +200,16 @@ class ListAlertStrategiesResponseBodyDataStrategy(DaraModel):
         clusters: List[str] = None,
         destinations: List[int] = None,
         items: List[str] = None,
+        levels: List[str] = None,
     ):
-        # The collection of clusters that receive alerts.
+        # The list of clusters that receive alerts.
         self.clusters = clusters
-        # The list of alert contacts and policy destinations.
+        # The alert contacts and the list of policy destinations.
         self.destinations = destinations
-        # The list of exception items that receive alerts.
+        # The list of anomaly items that trigger alerts.
         self.items = items
+        # The list of alert levels.
+        self.levels = levels
 
     def validate(self):
         pass
@@ -225,6 +228,9 @@ class ListAlertStrategiesResponseBodyDataStrategy(DaraModel):
         if self.items is not None:
             result['items'] = self.items
 
+        if self.levels is not None:
+            result['levels'] = self.levels
+
         return result
 
     def from_map(self, m: dict = None):
@@ -237,6 +243,9 @@ class ListAlertStrategiesResponseBodyDataStrategy(DaraModel):
 
         if m.get('items') is not None:
             self.items = m.get('items')
+
+        if m.get('levels') is not None:
+            self.levels = m.get('levels')
 
         return self
 

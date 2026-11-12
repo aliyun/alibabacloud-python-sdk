@@ -16,7 +16,7 @@ class CreateAlertStrategyResponseBody(DaraModel):
     ):
         # The status code.
         # - If `code == Success`, the authorization is successful.
-        # - Other status codes indicate that the authorization failed. If the authorization fails, check the `message` field for the detailed fault message.
+        # - Other status codes indicate that the authorization failed. If the authorization failed, check the `message` field for the detailed fault message.
         self.code = code
         # The returned data.
         self.data = data

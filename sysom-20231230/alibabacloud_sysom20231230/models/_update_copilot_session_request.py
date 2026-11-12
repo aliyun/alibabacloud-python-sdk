@@ -10,7 +10,7 @@ class UpdateCopilotSessionRequest(DaraModel):
         name: str = None,
         status: str = None,
     ):
-        # The session title. The title must be 1 to 255 characters in length.
+        # The session title. The length is 1 to 255 characters.
         self.name = name
         # The session status.
         self.status = status

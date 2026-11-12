@@ -19,7 +19,7 @@ class CreateAlertStrategyRequest(DaraModel):
         # 
         # This parameter is required.
         self.enabled = enabled
-        # The Kubernetes label.
+        # The Kubernetes labels.
         self.k_8s_label = k_8s_label
         # The alert policy name.
         # 
@@ -76,13 +76,16 @@ class CreateAlertStrategyRequestStrategy(DaraModel):
         clusters: List[str] = None,
         destinations: List[int] = None,
         items: List[str] = None,
+        levels: List[str] = None,
     ):
-        # The collection of clusters that receive alerts.
+        # The list of clusters that receive alerts.
         self.clusters = clusters
         # The alert contacts.
         self.destinations = destinations
-        # The collection of anomaly items that trigger alerts.
+        # The list of exception items that receive alerts.
         self.items = items
+        # The list of alert levels.
+        self.levels = levels
 
     def validate(self):
         pass
@@ -101,6 +104,9 @@ class CreateAlertStrategyRequestStrategy(DaraModel):
         if self.items is not None:
             result['items'] = self.items
 
+        if self.levels is not None:
+            result['levels'] = self.levels
+
         return result
 
     def from_map(self, m: dict = None):
@@ -113,6 +119,9 @@ class CreateAlertStrategyRequestStrategy(DaraModel):
 
         if m.get('items') is not None:
             self.items = m.get('items')
+
+        if m.get('levels') is not None:
+            self.levels = m.get('levels')
 
         return self
 
