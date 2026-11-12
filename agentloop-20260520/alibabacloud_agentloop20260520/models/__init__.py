@@ -39,6 +39,9 @@ from ._create_context_store_apikey_response import CreateContextStoreAPIKeyRespo
 from ._create_dataset_request import CreateDatasetRequest
 from ._create_dataset_response_body import CreateDatasetResponseBody
 from ._create_dataset_response import CreateDatasetResponse
+from ._create_dataset_version_request import CreateDatasetVersionRequest
+from ._create_dataset_version_response_body import CreateDatasetVersionResponseBody
+from ._create_dataset_version_response import CreateDatasetVersionResponse
 from ._create_evaluation_task_request import CreateEvaluationTaskRequest
 from ._create_evaluation_task_response_body import CreateEvaluationTaskResponseBody
 from ._create_evaluation_task_response import CreateEvaluationTaskResponse
@@ -75,6 +78,9 @@ from ._delete_context_store_apikey_response import DeleteContextStoreAPIKeyRespo
 from ._delete_dataset_request import DeleteDatasetRequest
 from ._delete_dataset_response_body import DeleteDatasetResponseBody
 from ._delete_dataset_response import DeleteDatasetResponse
+from ._delete_dataset_version_request import DeleteDatasetVersionRequest
+from ._delete_dataset_version_response_body import DeleteDatasetVersionResponseBody
+from ._delete_dataset_version_response import DeleteDatasetVersionResponse
 from ._delete_evaluation_run_request import DeleteEvaluationRunRequest
 from ._delete_evaluation_run_response_body import DeleteEvaluationRunResponseBody
 from ._delete_evaluation_run_response import DeleteEvaluationRunResponse
@@ -151,6 +157,7 @@ from ._get_pipeline_stats_request import GetPipelineStatsRequest
 from ._get_pipeline_stats_response_body import GetPipelineStatsResponseBody
 from ._get_pipeline_stats_response import GetPipelineStatsResponse
 from ._list_agent_spaces_request import ListAgentSpacesRequest
+from ._list_agent_spaces_shrink_request import ListAgentSpacesShrinkRequest
 from ._list_agent_spaces_response_body import ListAgentSpacesResponseBody
 from ._list_agent_spaces_response import ListAgentSpacesResponse
 from ._list_context_store_apikeys_request import ListContextStoreAPIKeysRequest
@@ -159,6 +166,9 @@ from ._list_context_store_apikeys_response import ListContextStoreAPIKeysRespons
 from ._list_context_stores_request import ListContextStoresRequest
 from ._list_context_stores_response_body import ListContextStoresResponseBody
 from ._list_context_stores_response import ListContextStoresResponse
+from ._list_dataset_versions_request import ListDatasetVersionsRequest
+from ._list_dataset_versions_response_body import ListDatasetVersionsResponseBody
+from ._list_dataset_versions_response import ListDatasetVersionsResponse
 from ._list_datasets_request import ListDatasetsRequest
 from ._list_datasets_shrink_request import ListDatasetsShrinkRequest
 from ._list_datasets_response_body import ListDatasetsResponseBody
@@ -295,6 +305,7 @@ from ._execute_query_request import ExecuteQueryRequestAnnotationFilter
 from ._execute_query_response_body import ExecuteQueryResponseBodyMetaTruncation
 from ._execute_query_response_body import ExecuteQueryResponseBodyMeta
 from ._get_agent_space_response_body import GetAgentSpaceResponseBodyMseNamespace
+from ._get_agent_space_response_body import GetAgentSpaceResponseBodyTags
 from ._get_context_store_response_body import GetContextStoreResponseBodyConfigAudit
 from ._get_context_store_response_body import GetContextStoreResponseBodyConfigAuditLogStore
 from ._get_context_store_response_body import GetContextStoreResponseBodyConfigExtractionPoliciesModel
@@ -346,10 +357,13 @@ from ._get_pipeline_response_body import GetPipelineResponseBodySourceTrajectory
 from ._get_pipeline_response_body import GetPipelineResponseBodySource
 from ._get_pipeline_stats_response_body import GetPipelineStatsResponseBodySummary
 from ._get_pipeline_stats_response_body import GetPipelineStatsResponseBodyTimeSeries
+from ._list_agent_spaces_request import ListAgentSpacesRequestTag
 from ._list_agent_spaces_response_body import ListAgentSpacesResponseBodyAgentSpacesMseNamespace
+from ._list_agent_spaces_response_body import ListAgentSpacesResponseBodyAgentSpacesTags
 from ._list_agent_spaces_response_body import ListAgentSpacesResponseBodyAgentSpaces
 from ._list_context_store_apikeys_response_body import ListContextStoreAPIKeysResponseBodyResults
 from ._list_context_stores_response_body import ListContextStoresResponseBodyResults
+from ._list_dataset_versions_response_body import ListDatasetVersionsResponseBodyVersions
 from ._list_datasets_response_body import ListDatasetsResponseBodyDatasets
 from ._list_evaluation_runs_response_body import ListEvaluationRunsResponseBodyEvaluationRuns
 from ._list_evaluation_tasks_response_body import ListEvaluationTasksResponseBodyEvaluationTasks
@@ -466,6 +480,9 @@ __all__ = [
     CreateDatasetRequest,
     CreateDatasetResponseBody,
     CreateDatasetResponse,
+    CreateDatasetVersionRequest,
+    CreateDatasetVersionResponseBody,
+    CreateDatasetVersionResponse,
     CreateEvaluationTaskRequest,
     CreateEvaluationTaskResponseBody,
     CreateEvaluationTaskResponse,
@@ -502,6 +519,9 @@ __all__ = [
     DeleteDatasetRequest,
     DeleteDatasetResponseBody,
     DeleteDatasetResponse,
+    DeleteDatasetVersionRequest,
+    DeleteDatasetVersionResponseBody,
+    DeleteDatasetVersionResponse,
     DeleteEvaluationRunRequest,
     DeleteEvaluationRunResponseBody,
     DeleteEvaluationRunResponse,
@@ -578,6 +598,7 @@ __all__ = [
     GetPipelineStatsResponseBody,
     GetPipelineStatsResponse,
     ListAgentSpacesRequest,
+    ListAgentSpacesShrinkRequest,
     ListAgentSpacesResponseBody,
     ListAgentSpacesResponse,
     ListContextStoreAPIKeysRequest,
@@ -586,6 +607,9 @@ __all__ = [
     ListContextStoresRequest,
     ListContextStoresResponseBody,
     ListContextStoresResponse,
+    ListDatasetVersionsRequest,
+    ListDatasetVersionsResponseBody,
+    ListDatasetVersionsResponse,
     ListDatasetsRequest,
     ListDatasetsShrinkRequest,
     ListDatasetsResponseBody,
@@ -722,6 +746,7 @@ __all__ = [
     ExecuteQueryResponseBodyMetaTruncation,
     ExecuteQueryResponseBodyMeta,
     GetAgentSpaceResponseBodyMseNamespace,
+    GetAgentSpaceResponseBodyTags,
     GetContextStoreResponseBodyConfigAudit,
     GetContextStoreResponseBodyConfigAuditLogStore,
     GetContextStoreResponseBodyConfigExtractionPoliciesModel,
@@ -773,10 +798,13 @@ __all__ = [
     GetPipelineResponseBodySource,
     GetPipelineStatsResponseBodySummary,
     GetPipelineStatsResponseBodyTimeSeries,
+    ListAgentSpacesRequestTag,
     ListAgentSpacesResponseBodyAgentSpacesMseNamespace,
+    ListAgentSpacesResponseBodyAgentSpacesTags,
     ListAgentSpacesResponseBodyAgentSpaces,
     ListContextStoreAPIKeysResponseBodyResults,
     ListContextStoresResponseBodyResults,
+    ListDatasetVersionsResponseBodyVersions,
     ListDatasetsResponseBodyDatasets,
     ListEvaluationRunsResponseBodyEvaluationRuns,
     ListEvaluationTasksResponseBodyEvaluationTasks,

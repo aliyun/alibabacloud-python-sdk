@@ -609,6 +609,102 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_dataset_with_options_async(agent_space, request, headers, runtime)
 
+    def create_dataset_version_with_options(
+        self,
+        agent_space: str,
+        dataset_name: str,
+        request: main_models.CreateDatasetVersionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDatasetVersionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.version):
+            body['version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDatasetVersion',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/dataset/{DaraURL.percent_encode(dataset_name)}/version',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDatasetVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_dataset_version_with_options_async(
+        self,
+        agent_space: str,
+        dataset_name: str,
+        request: main_models.CreateDatasetVersionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDatasetVersionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.version):
+            body['version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDatasetVersion',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/dataset/{DaraURL.percent_encode(dataset_name)}/version',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDatasetVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_dataset_version(
+        self,
+        agent_space: str,
+        dataset_name: str,
+        request: main_models.CreateDatasetVersionRequest,
+    ) -> main_models.CreateDatasetVersionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_dataset_version_with_options(agent_space, dataset_name, request, headers, runtime)
+
+    async def create_dataset_version_async(
+        self,
+        agent_space: str,
+        dataset_name: str,
+        request: main_models.CreateDatasetVersionRequest,
+    ) -> main_models.CreateDatasetVersionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_dataset_version_with_options_async(agent_space, dataset_name, request, headers, runtime)
+
     def create_evaluation_task_with_options(
         self,
         agent_space: str,
@@ -1832,6 +1928,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_dataset_with_options_async(agent_space, dataset_name, request, headers, runtime)
+
+    def delete_dataset_version_with_options(
+        self,
+        agent_space: str,
+        dataset_name: str,
+        version: str,
+        request: main_models.DeleteDatasetVersionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDatasetVersionResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDatasetVersion',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/dataset/{DaraURL.percent_encode(dataset_name)}/version/{DaraURL.percent_encode(version)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDatasetVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_dataset_version_with_options_async(
+        self,
+        agent_space: str,
+        dataset_name: str,
+        version: str,
+        request: main_models.DeleteDatasetVersionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDatasetVersionResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDatasetVersion',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/dataset/{DaraURL.percent_encode(dataset_name)}/version/{DaraURL.percent_encode(version)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDatasetVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_dataset_version(
+        self,
+        agent_space: str,
+        dataset_name: str,
+        version: str,
+        request: main_models.DeleteDatasetVersionRequest,
+    ) -> main_models.DeleteDatasetVersionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_dataset_version_with_options(agent_space, dataset_name, version, request, headers, runtime)
+
+    async def delete_dataset_version_async(
+        self,
+        agent_space: str,
+        dataset_name: str,
+        version: str,
+        request: main_models.DeleteDatasetVersionRequest,
+    ) -> main_models.DeleteDatasetVersionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_dataset_version_with_options_async(agent_space, dataset_name, version, request, headers, runtime)
 
     def delete_evaluation_run_with_options(
         self,
@@ -3867,11 +4043,15 @@ class Client(OpenApiClient):
 
     def list_agent_spaces_with_options(
         self,
-        request: main_models.ListAgentSpacesRequest,
+        tmp_req: main_models.ListAgentSpacesRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListAgentSpacesResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ListAgentSpacesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.tag):
+            request.tag_shrink = Utils.array_to_string_with_specified_style(tmp_req.tag, 'tag', 'json')
         query = {}
         if not DaraCore.is_null(request.agent_space):
             query['agentSpace'] = request.agent_space
@@ -3881,6 +4061,8 @@ class Client(OpenApiClient):
             query['nextToken'] = request.next_token
         if not DaraCore.is_null(request.region_id):
             query['regionId'] = request.region_id
+        if not DaraCore.is_null(request.tag_shrink):
+            query['tag'] = request.tag_shrink
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -3903,11 +4085,15 @@ class Client(OpenApiClient):
 
     async def list_agent_spaces_with_options_async(
         self,
-        request: main_models.ListAgentSpacesRequest,
+        tmp_req: main_models.ListAgentSpacesRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListAgentSpacesResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ListAgentSpacesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.tag):
+            request.tag_shrink = Utils.array_to_string_with_specified_style(tmp_req.tag, 'tag', 'json')
         query = {}
         if not DaraCore.is_null(request.agent_space):
             query['agentSpace'] = request.agent_space
@@ -3917,6 +4103,8 @@ class Client(OpenApiClient):
             query['nextToken'] = request.next_token
         if not DaraCore.is_null(request.region_id):
             query['regionId'] = request.region_id
+        if not DaraCore.is_null(request.tag_shrink):
+            query['tag'] = request.tag_shrink
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -4136,6 +4324,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_context_stores_with_options_async(agent_space, request, headers, runtime)
+
+    def list_dataset_versions_with_options(
+        self,
+        agent_space: str,
+        dataset_name: str,
+        request: main_models.ListDatasetVersionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDatasetVersionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDatasetVersions',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/dataset/{DaraURL.percent_encode(dataset_name)}/version',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDatasetVersionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_dataset_versions_with_options_async(
+        self,
+        agent_space: str,
+        dataset_name: str,
+        request: main_models.ListDatasetVersionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDatasetVersionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDatasetVersions',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/dataset/{DaraURL.percent_encode(dataset_name)}/version',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDatasetVersionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_dataset_versions(
+        self,
+        agent_space: str,
+        dataset_name: str,
+        request: main_models.ListDatasetVersionsRequest,
+    ) -> main_models.ListDatasetVersionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_dataset_versions_with_options(agent_space, dataset_name, request, headers, runtime)
+
+    async def list_dataset_versions_async(
+        self,
+        agent_space: str,
+        dataset_name: str,
+        request: main_models.ListDatasetVersionsRequest,
+    ) -> main_models.ListDatasetVersionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_dataset_versions_with_options_async(agent_space, dataset_name, request, headers, runtime)
 
     def list_datasets_with_options(
         self,

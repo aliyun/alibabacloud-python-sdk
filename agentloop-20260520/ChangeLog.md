@@ -1,3 +1,12 @@
+2026-11-12 Version: 2.5.0
+- Support API CreateDatasetVersion.
+- Support API DeleteDatasetVersion.
+- Support API ListDatasetVersions.
+- Update API GetAgentSpace: add response parameters Body.tags.
+- Update API ListAgentSpaces: add request parameters tag.
+- Update API ListAgentSpaces: add response parameters Body.agentSpaces.$.tags.
+
+
 2026-11-11 Version: 2.4.6
 - Generated python 2026-05-20 for AgentLoop.
 

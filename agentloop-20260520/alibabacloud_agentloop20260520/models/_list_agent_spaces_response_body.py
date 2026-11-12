@@ -20,11 +20,11 @@ class ListAgentSpacesResponseBody(DaraModel):
         self.agent_spaces = agent_spaces
         # The maximum number of returned results.
         self.max_results = max_results
-        # The pagination token. This parameter is empty if no next page is available.
+        # The pagination token. This parameter is empty if there are no more pages.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total count.
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -89,6 +89,7 @@ class ListAgentSpacesResponseBodyAgentSpaces(DaraModel):
         mse_namespace: main_models.ListAgentSpacesResponseBodyAgentSpacesMseNamespace = None,
         region_id: str = None,
         sls_project: str = None,
+        tags: List[main_models.ListAgentSpacesResponseBodyAgentSpacesTags] = None,
         update_time: str = None,
     ):
         # The name of the AgentSpace.
@@ -107,6 +108,8 @@ class ListAgentSpacesResponseBodyAgentSpaces(DaraModel):
         self.region_id = region_id
         # The name of the Simple Log Service project.
         self.sls_project = sls_project
+        # Returns only the tags of AgentSpaces that are active in the current region and match the local instance. An empty array is returned when it is confirmed that there are no tags. This field is omitted for entries in other regions, inactive entries, or entries that do not match the local instance. Omission of this field does not indicate the absence of tags.
+        self.tags = tags
         # The update time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
@@ -115,6 +118,10 @@ class ListAgentSpacesResponseBodyAgentSpaces(DaraModel):
     def validate(self):
         if self.mse_namespace:
             self.mse_namespace.validate()
+        if self.tags:
+            for v1 in self.tags:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -141,6 +148,11 @@ class ListAgentSpacesResponseBodyAgentSpaces(DaraModel):
 
         if self.sls_project is not None:
             result['slsProject'] = self.sls_project
+
+        result['tags'] = []
+        if self.tags is not None:
+            for k1 in self.tags:
+                result['tags'].append(k1.to_map() if k1 else None)
 
         if self.update_time is not None:
             result['updateTime'] = self.update_time
@@ -171,8 +183,51 @@ class ListAgentSpacesResponseBodyAgentSpaces(DaraModel):
         if m.get('slsProject') is not None:
             self.sls_project = m.get('slsProject')
 
+        self.tags = []
+        if m.get('tags') is not None:
+            for k1 in m.get('tags'):
+                temp_model = main_models.ListAgentSpacesResponseBodyAgentSpacesTags()
+                self.tags.append(temp_model.from_map(k1))
+
         if m.get('updateTime') is not None:
             self.update_time = m.get('updateTime')
+
+        return self
+
+class ListAgentSpacesResponseBodyAgentSpacesTags(DaraModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key.
+        self.key = key
+        # The tag value, which can be an empty string.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key is not None:
+            result['key'] = self.key
+
+        if self.value is not None:
+            result['value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+
+        if m.get('value') is not None:
+            self.value = m.get('value')
 
         return self
 
@@ -183,7 +238,7 @@ class ListAgentSpacesResponseBodyAgentSpacesMseNamespace(DaraModel):
         namespace_id: str = None,
         namespace_name: str = None,
     ):
-        # The attach method of the MSE namespace. AutoCreated indicates automatic creation by AgentLoop. UserSelected indicates that an existing namespace is selected and attached when the AgentSpace is created.
+        # The method used to attach the MSE namespace. AutoCreated indicates automatic creation by AgentLoop. UserSelected indicates that an existing namespace is selected and attached when the AgentSpace is created.
         self.bind_type = bind_type
         # The ID of the MSE namespace.
         self.namespace_id = namespace_id

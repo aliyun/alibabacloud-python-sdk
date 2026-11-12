@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_agentloop20260520 import models as main_models
 from darabonba.model import DaraModel
 
@@ -17,6 +19,7 @@ class GetAgentSpaceResponseBody(DaraModel):
         region_id: str = None,
         request_id: str = None,
         sls_project: str = None,
+        tags: List[main_models.GetAgentSpaceResponseBodyTags] = None,
         update_time: str = None,
     ):
         # The name of the AgentSpace.
@@ -39,6 +42,7 @@ class GetAgentSpaceResponseBody(DaraModel):
         self.request_id = request_id
         # The name of the Simple Log Service project.
         self.sls_project = sls_project
+        self.tags = tags
         # The update time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
@@ -47,6 +51,10 @@ class GetAgentSpaceResponseBody(DaraModel):
     def validate(self):
         if self.mse_namespace:
             self.mse_namespace.validate()
+        if self.tags:
+            for v1 in self.tags:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -79,6 +87,11 @@ class GetAgentSpaceResponseBody(DaraModel):
 
         if self.sls_project is not None:
             result['slsProject'] = self.sls_project
+
+        result['tags'] = []
+        if self.tags is not None:
+            for k1 in self.tags:
+                result['tags'].append(k1.to_map() if k1 else None)
 
         if self.update_time is not None:
             result['updateTime'] = self.update_time
@@ -115,8 +128,49 @@ class GetAgentSpaceResponseBody(DaraModel):
         if m.get('slsProject') is not None:
             self.sls_project = m.get('slsProject')
 
+        self.tags = []
+        if m.get('tags') is not None:
+            for k1 in m.get('tags'):
+                temp_model = main_models.GetAgentSpaceResponseBodyTags()
+                self.tags.append(temp_model.from_map(k1))
+
         if m.get('updateTime') is not None:
             self.update_time = m.get('updateTime')
+
+        return self
+
+class GetAgentSpaceResponseBodyTags(DaraModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key is not None:
+            result['key'] = self.key
+
+        if self.value is not None:
+            result['value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+
+        if m.get('value') is not None:
+            self.value = m.get('value')
 
         return self
 
