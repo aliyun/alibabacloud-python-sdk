@@ -1,3 +1,6 @@
+2026-11-12 Version: 4.6.0
+- Generated python 2025-04-14 for Dms.
+
 2026-11-10 Version: 4.5.1
 - Update API SendChatMessage: add request parameters SessionConfig.WorkMode.
 

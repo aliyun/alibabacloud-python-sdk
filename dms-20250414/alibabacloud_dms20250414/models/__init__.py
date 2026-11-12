@@ -68,6 +68,10 @@ from ._add_data_agent_memory_response import AddDataAgentMemoryResponse
 from ._add_user_to_data_agent_workspace_request import AddUserToDataAgentWorkspaceRequest
 from ._add_user_to_data_agent_workspace_response_body import AddUserToDataAgentWorkspaceResponseBody
 from ._add_user_to_data_agent_workspace_response import AddUserToDataAgentWorkspaceResponse
+from ._batch_create_data_lake_partitions_request import BatchCreateDataLakePartitionsRequest
+from ._batch_create_data_lake_partitions_shrink_request import BatchCreateDataLakePartitionsShrinkRequest
+from ._batch_create_data_lake_partitions_response_body import BatchCreateDataLakePartitionsResponseBody
+from ._batch_create_data_lake_partitions_response import BatchCreateDataLakePartitionsResponse
 from ._check_data_agent_memory_config_request import CheckDataAgentMemoryConfigRequest
 from ._check_data_agent_memory_config_response_body import CheckDataAgentMemoryConfigResponseBody
 from ._check_data_agent_memory_config_response import CheckDataAgentMemoryConfigResponse
@@ -256,6 +260,9 @@ from ._get_data_agent_workspace_info_response import GetDataAgentWorkspaceInfoRe
 from ._get_list_mcp_server_tools_result_request import GetListMcpServerToolsResultRequest
 from ._get_list_mcp_server_tools_result_response_body import GetListMcpServerToolsResultResponseBody
 from ._get_list_mcp_server_tools_result_response import GetListMcpServerToolsResultResponse
+from ._get_my_agentic_notification_channel_authorize_url_request import GetMyAgenticNotificationChannelAuthorizeUrlRequest
+from ._get_my_agentic_notification_channel_authorize_url_response_body import GetMyAgenticNotificationChannelAuthorizeUrlResponseBody
+from ._get_my_agentic_notification_channel_authorize_url_response import GetMyAgenticNotificationChannelAuthorizeUrlResponse
 from ._get_notebook_and_submit_task_request import GetNotebookAndSubmitTaskRequest
 from ._get_notebook_and_submit_task_response_body import GetNotebookAndSubmitTaskResponseBody
 from ._get_notebook_and_submit_task_response import GetNotebookAndSubmitTaskResponse
@@ -367,6 +374,9 @@ from ._list_file_upload_response import ListFileUploadResponse
 from ._list_knowledge_bases_request import ListKnowledgeBasesRequest
 from ._list_knowledge_bases_response_body import ListKnowledgeBasesResponseBody
 from ._list_knowledge_bases_response import ListKnowledgeBasesResponse
+from ._list_my_agentic_notification_channel_configs_request import ListMyAgenticNotificationChannelConfigsRequest
+from ._list_my_agentic_notification_channel_configs_response_body import ListMyAgenticNotificationChannelConfigsResponseBody
+from ._list_my_agentic_notification_channel_configs_response import ListMyAgenticNotificationChannelConfigsResponse
 from ._list_one_meta_ossie_models_request import ListOneMetaOssieModelsRequest
 from ._list_one_meta_ossie_models_response_body import ListOneMetaOssieModelsResponseBody
 from ._list_one_meta_ossie_models_response import ListOneMetaOssieModelsResponse
@@ -457,6 +467,9 @@ from ._update_document_response import UpdateDocumentResponse
 from ._update_knowledge_base_request import UpdateKnowledgeBaseRequest
 from ._update_knowledge_base_response_body import UpdateKnowledgeBaseResponseBody
 from ._update_knowledge_base_response import UpdateKnowledgeBaseResponse
+from ._update_my_agentic_notification_channel_config_request import UpdateMyAgenticNotificationChannelConfigRequest
+from ._update_my_agentic_notification_channel_config_response_body import UpdateMyAgenticNotificationChannelConfigResponseBody
+from ._update_my_agentic_notification_channel_config_response import UpdateMyAgenticNotificationChannelConfigResponse
 from ._update_one_meta_ossie_model_request import UpdateOneMetaOssieModelRequest
 from ._update_one_meta_ossie_model_response_body import UpdateOneMetaOssieModelResponseBody
 from ._update_one_meta_ossie_model_response import UpdateOneMetaOssieModelResponse
@@ -565,6 +578,7 @@ from ._get_data_agent_theme_upload_signature_response_body import GetDataAgentTh
 from ._get_data_agent_workspace_info_response_body import GetDataAgentWorkspaceInfoResponseBodyData
 from ._get_list_mcp_server_tools_result_response_body import GetListMcpServerToolsResultResponseBodyDataTools
 from ._get_list_mcp_server_tools_result_response_body import GetListMcpServerToolsResultResponseBodyData
+from ._get_my_agentic_notification_channel_authorize_url_response_body import GetMyAgenticNotificationChannelAuthorizeUrlResponseBodyData
 from ._get_notebook_task_status_response_body import GetNotebookTaskStatusResponseBodyData
 from ._get_sql_console_operation_log_response_body import GetSqlConsoleOperationLogResponseBodyData
 from ._get_workspace_code_publish_setting_response_body import GetWorkspaceCodePublishSettingResponseBodyDataRepos
@@ -605,6 +619,7 @@ from ._list_data_center_database_response_body import ListDataCenterDatabaseResp
 from ._list_data_center_table_response_body import ListDataCenterTableResponseBodyDataContent
 from ._list_data_center_table_response_body import ListDataCenterTableResponseBodyData
 from ._list_file_upload_response_body import ListFileUploadResponseBodyData
+from ._list_my_agentic_notification_channel_configs_response_body import ListMyAgenticNotificationChannelConfigsResponseBodyData
 from ._list_workspace_code_response_body import ListWorkspaceCodeResponseBodyDataList
 from ._list_workspace_code_response_body import ListWorkspaceCodeResponseBodyData
 from ._modify_custom_agent_request import ModifyCustomAgentRequestCallbackConfig
@@ -644,6 +659,7 @@ from ._update_data_agent_accuracy_test_response_body import UpdateDataAgentAccur
 from ._update_data_agent_memory_response_body import UpdateDataAgentMemoryResponseBodyData
 from ._update_data_agent_space_info_response_body import UpdateDataAgentSpaceInfoResponseBodyData
 from ._update_data_agent_workspace_member_role_response_body import UpdateDataAgentWorkspaceMemberRoleResponseBodyData
+from ._update_my_agentic_notification_channel_config_response_body import UpdateMyAgenticNotificationChannelConfigResponseBodyData
 from ._workspace_action_status_response_body import WorkspaceActionStatusResponseBodyData
 from ._workspace_code_publish_response_body import WorkspaceCodePublishResponseBodyData
 
@@ -714,6 +730,10 @@ __all__ = [
     AddUserToDataAgentWorkspaceRequest,
     AddUserToDataAgentWorkspaceResponseBody,
     AddUserToDataAgentWorkspaceResponse,
+    BatchCreateDataLakePartitionsRequest,
+    BatchCreateDataLakePartitionsShrinkRequest,
+    BatchCreateDataLakePartitionsResponseBody,
+    BatchCreateDataLakePartitionsResponse,
     CheckDataAgentMemoryConfigRequest,
     CheckDataAgentMemoryConfigResponseBody,
     CheckDataAgentMemoryConfigResponse,
@@ -902,6 +922,9 @@ __all__ = [
     GetListMcpServerToolsResultRequest,
     GetListMcpServerToolsResultResponseBody,
     GetListMcpServerToolsResultResponse,
+    GetMyAgenticNotificationChannelAuthorizeUrlRequest,
+    GetMyAgenticNotificationChannelAuthorizeUrlResponseBody,
+    GetMyAgenticNotificationChannelAuthorizeUrlResponse,
     GetNotebookAndSubmitTaskRequest,
     GetNotebookAndSubmitTaskResponseBody,
     GetNotebookAndSubmitTaskResponse,
@@ -1013,6 +1036,9 @@ __all__ = [
     ListKnowledgeBasesRequest,
     ListKnowledgeBasesResponseBody,
     ListKnowledgeBasesResponse,
+    ListMyAgenticNotificationChannelConfigsRequest,
+    ListMyAgenticNotificationChannelConfigsResponseBody,
+    ListMyAgenticNotificationChannelConfigsResponse,
     ListOneMetaOssieModelsRequest,
     ListOneMetaOssieModelsResponseBody,
     ListOneMetaOssieModelsResponse,
@@ -1103,6 +1129,9 @@ __all__ = [
     UpdateKnowledgeBaseRequest,
     UpdateKnowledgeBaseResponseBody,
     UpdateKnowledgeBaseResponse,
+    UpdateMyAgenticNotificationChannelConfigRequest,
+    UpdateMyAgenticNotificationChannelConfigResponseBody,
+    UpdateMyAgenticNotificationChannelConfigResponse,
     UpdateOneMetaOssieModelRequest,
     UpdateOneMetaOssieModelResponseBody,
     UpdateOneMetaOssieModelResponse,
@@ -1211,6 +1240,7 @@ __all__ = [
     GetDataAgentWorkspaceInfoResponseBodyData,
     GetListMcpServerToolsResultResponseBodyDataTools,
     GetListMcpServerToolsResultResponseBodyData,
+    GetMyAgenticNotificationChannelAuthorizeUrlResponseBodyData,
     GetNotebookTaskStatusResponseBodyData,
     GetSqlConsoleOperationLogResponseBodyData,
     GetWorkspaceCodePublishSettingResponseBodyDataRepos,
@@ -1251,6 +1281,7 @@ __all__ = [
     ListDataCenterTableResponseBodyDataContent,
     ListDataCenterTableResponseBodyData,
     ListFileUploadResponseBodyData,
+    ListMyAgenticNotificationChannelConfigsResponseBodyData,
     ListWorkspaceCodeResponseBodyDataList,
     ListWorkspaceCodeResponseBodyData,
     ModifyCustomAgentRequestCallbackConfig,
@@ -1290,6 +1321,7 @@ __all__ = [
     UpdateDataAgentMemoryResponseBodyData,
     UpdateDataAgentSpaceInfoResponseBodyData,
     UpdateDataAgentWorkspaceMemberRoleResponseBodyData,
+    UpdateMyAgenticNotificationChannelConfigResponseBodyData,
     WorkspaceActionStatusResponseBodyData,
     WorkspaceCodePublishResponseBodyData
 ]

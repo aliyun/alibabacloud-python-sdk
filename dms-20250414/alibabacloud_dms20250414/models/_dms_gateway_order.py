@@ -19,6 +19,7 @@ class DmsGatewayOrder(DaraModel):
         pay_num: int = None,
         region: str = None,
         state: str = None,
+        tags: str = None,
     ):
         self.biz_type = biz_type
         self.charge_type = charge_type
@@ -32,6 +33,7 @@ class DmsGatewayOrder(DaraModel):
         self.pay_num = pay_num
         self.region = region
         self.state = state
+        self.tags = tags
 
     def validate(self):
         pass
@@ -77,6 +79,9 @@ class DmsGatewayOrder(DaraModel):
         if self.state is not None:
             result['State'] = self.state
 
+        if self.tags is not None:
+            result['Tags'] = self.tags
+
         return result
 
     def from_map(self, m: dict = None):
@@ -116,6 +121,9 @@ class DmsGatewayOrder(DaraModel):
 
         if m.get('State') is not None:
             self.state = m.get('State')
+
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
 
         return self
 

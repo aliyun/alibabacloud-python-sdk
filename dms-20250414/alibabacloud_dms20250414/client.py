@@ -380,6 +380,116 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.add_user_to_data_agent_workspace_with_options_async(request, runtime)
 
+    def batch_create_data_lake_partitions_with_options(
+        self,
+        tmp_req: main_models.BatchCreateDataLakePartitionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchCreateDataLakePartitionsResponse:
+        tmp_req.validate()
+        request = main_models.BatchCreateDataLakePartitionsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.partition_inputs):
+            request.partition_inputs_shrink = Utils.array_to_string_with_specified_style(tmp_req.partition_inputs, 'PartitionInputs', 'json')
+        query = {}
+        if not DaraCore.is_null(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
+        if not DaraCore.is_null(request.db_name):
+            query['DbName'] = request.db_name
+        if not DaraCore.is_null(request.if_not_exists):
+            query['IfNotExists'] = request.if_not_exists
+        if not DaraCore.is_null(request.need_result):
+            query['NeedResult'] = request.need_result
+        if not DaraCore.is_null(request.table_name):
+            query['TableName'] = request.table_name
+        if not DaraCore.is_null(request.tid):
+            query['Tid'] = request.tid
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.partition_inputs_shrink):
+            body['PartitionInputs'] = request.partition_inputs_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchCreateDataLakePartitions',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchCreateDataLakePartitionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_create_data_lake_partitions_with_options_async(
+        self,
+        tmp_req: main_models.BatchCreateDataLakePartitionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchCreateDataLakePartitionsResponse:
+        tmp_req.validate()
+        request = main_models.BatchCreateDataLakePartitionsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.partition_inputs):
+            request.partition_inputs_shrink = Utils.array_to_string_with_specified_style(tmp_req.partition_inputs, 'PartitionInputs', 'json')
+        query = {}
+        if not DaraCore.is_null(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
+        if not DaraCore.is_null(request.db_name):
+            query['DbName'] = request.db_name
+        if not DaraCore.is_null(request.if_not_exists):
+            query['IfNotExists'] = request.if_not_exists
+        if not DaraCore.is_null(request.need_result):
+            query['NeedResult'] = request.need_result
+        if not DaraCore.is_null(request.table_name):
+            query['TableName'] = request.table_name
+        if not DaraCore.is_null(request.tid):
+            query['Tid'] = request.tid
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.partition_inputs_shrink):
+            body['PartitionInputs'] = request.partition_inputs_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchCreateDataLakePartitions',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchCreateDataLakePartitionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_create_data_lake_partitions(
+        self,
+        request: main_models.BatchCreateDataLakePartitionsRequest,
+    ) -> main_models.BatchCreateDataLakePartitionsResponse:
+        runtime = RuntimeOptions()
+        return self.batch_create_data_lake_partitions_with_options(request, runtime)
+
+    async def batch_create_data_lake_partitions_async(
+        self,
+        request: main_models.BatchCreateDataLakePartitionsRequest,
+    ) -> main_models.BatchCreateDataLakePartitionsResponse:
+        runtime = RuntimeOptions()
+        return await self.batch_create_data_lake_partitions_with_options_async(request, runtime)
+
     def check_data_agent_memory_config_with_options(
         self,
         request: main_models.CheckDataAgentMemoryConfigRequest,
@@ -5390,6 +5500,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_list_mcp_server_tools_result_with_options_async(request, runtime)
 
+    def get_my_agentic_notification_channel_authorize_url_with_options(
+        self,
+        request: main_models.GetMyAgenticNotificationChannelAuthorizeUrlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMyAgenticNotificationChannelAuthorizeUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.channel):
+            query['Channel'] = request.channel
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMyAgenticNotificationChannelAuthorizeUrl',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMyAgenticNotificationChannelAuthorizeUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_my_agentic_notification_channel_authorize_url_with_options_async(
+        self,
+        request: main_models.GetMyAgenticNotificationChannelAuthorizeUrlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMyAgenticNotificationChannelAuthorizeUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.channel):
+            query['Channel'] = request.channel
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMyAgenticNotificationChannelAuthorizeUrl',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMyAgenticNotificationChannelAuthorizeUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_my_agentic_notification_channel_authorize_url(
+        self,
+        request: main_models.GetMyAgenticNotificationChannelAuthorizeUrlRequest,
+    ) -> main_models.GetMyAgenticNotificationChannelAuthorizeUrlResponse:
+        runtime = RuntimeOptions()
+        return self.get_my_agentic_notification_channel_authorize_url_with_options(request, runtime)
+
+    async def get_my_agentic_notification_channel_authorize_url_async(
+        self,
+        request: main_models.GetMyAgenticNotificationChannelAuthorizeUrlRequest,
+    ) -> main_models.GetMyAgenticNotificationChannelAuthorizeUrlResponse:
+        runtime = RuntimeOptions()
+        return await self.get_my_agentic_notification_channel_authorize_url_with_options_async(request, runtime)
+
     def get_notebook_and_submit_task_with_options(
         self,
         request: main_models.GetNotebookAndSubmitTaskRequest,
@@ -8832,6 +9012,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_knowledge_bases_with_options_async(request, runtime)
 
+    def list_my_agentic_notification_channel_configs_with_options(
+        self,
+        request: main_models.ListMyAgenticNotificationChannelConfigsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMyAgenticNotificationChannelConfigsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.channel):
+            query['Channel'] = request.channel
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMyAgenticNotificationChannelConfigs',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMyAgenticNotificationChannelConfigsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_my_agentic_notification_channel_configs_with_options_async(
+        self,
+        request: main_models.ListMyAgenticNotificationChannelConfigsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMyAgenticNotificationChannelConfigsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.channel):
+            query['Channel'] = request.channel
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMyAgenticNotificationChannelConfigs',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMyAgenticNotificationChannelConfigsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_my_agentic_notification_channel_configs(
+        self,
+        request: main_models.ListMyAgenticNotificationChannelConfigsRequest,
+    ) -> main_models.ListMyAgenticNotificationChannelConfigsResponse:
+        runtime = RuntimeOptions()
+        return self.list_my_agentic_notification_channel_configs_with_options(request, runtime)
+
+    async def list_my_agentic_notification_channel_configs_async(
+        self,
+        request: main_models.ListMyAgenticNotificationChannelConfigsRequest,
+    ) -> main_models.ListMyAgenticNotificationChannelConfigsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_my_agentic_notification_channel_configs_with_options_async(request, runtime)
+
     def list_one_meta_ossie_models_with_options(
         self,
         request: main_models.ListOneMetaOssieModelsRequest,
@@ -11689,6 +11947,84 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateKnowledgeBaseResponse:
         runtime = RuntimeOptions()
         return await self.update_knowledge_base_with_options_async(request, runtime)
+
+    def update_my_agentic_notification_channel_config_with_options(
+        self,
+        request: main_models.UpdateMyAgenticNotificationChannelConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMyAgenticNotificationChannelConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.channel):
+            body['Channel'] = request.channel
+        if not DaraCore.is_null(request.config):
+            body['Config'] = request.config
+        if not DaraCore.is_null(request.enabled):
+            body['Enabled'] = request.enabled
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMyAgenticNotificationChannelConfig',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMyAgenticNotificationChannelConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_my_agentic_notification_channel_config_with_options_async(
+        self,
+        request: main_models.UpdateMyAgenticNotificationChannelConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMyAgenticNotificationChannelConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.channel):
+            body['Channel'] = request.channel
+        if not DaraCore.is_null(request.config):
+            body['Config'] = request.config
+        if not DaraCore.is_null(request.enabled):
+            body['Enabled'] = request.enabled
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMyAgenticNotificationChannelConfig',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMyAgenticNotificationChannelConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_my_agentic_notification_channel_config(
+        self,
+        request: main_models.UpdateMyAgenticNotificationChannelConfigRequest,
+    ) -> main_models.UpdateMyAgenticNotificationChannelConfigResponse:
+        runtime = RuntimeOptions()
+        return self.update_my_agentic_notification_channel_config_with_options(request, runtime)
+
+    async def update_my_agentic_notification_channel_config_async(
+        self,
+        request: main_models.UpdateMyAgenticNotificationChannelConfigRequest,
+    ) -> main_models.UpdateMyAgenticNotificationChannelConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.update_my_agentic_notification_channel_config_with_options_async(request, runtime)
 
     def update_one_meta_ossie_model_with_options(
         self,
