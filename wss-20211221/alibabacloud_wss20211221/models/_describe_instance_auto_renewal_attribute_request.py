@@ -19,9 +19,7 @@ class DescribeInstanceAutoRenewalAttributeRequest(DaraModel):
         resource_type_list: List[str] = None,
         search_region_id: str = None,
     ):
-        # The auto-renewal status. Valid values:
-        # - true: Auto-renewal is enabled.
-        # - false: Auto-renewal is disabled.
+        # The auto-renewal status. Valid values: true (auto-renewal enabled) and false (auto-renewal disabled).
         self.auto_renewal = auto_renewal
         # The list of instance IDs for which to query the auto-renewal status.
         self.instance_id_list = instance_id_list
@@ -33,7 +31,7 @@ class DescribeInstanceAutoRenewalAttributeRequest(DaraModel):
         self.page_no = page_no
         # The maximum number of entries per page. Maximum value: 500. Default value: 20.
         self.page_size = page_size
-        # The resource type. Example: CorePackage indicates a core-hour package.
+        # The resource type. Valid value: CorePackage (core-hour package).
         self.resource_type = resource_type
         # The list of resource types.
         self.resource_type_list = resource_type_list

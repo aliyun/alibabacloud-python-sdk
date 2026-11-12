@@ -26,11 +26,11 @@ class DescribeInstanceAutoRenewalAttributeResponseBody(DaraModel):
         self.max_results = max_results
         # The mark for paging. Leave this parameter empty for the first query. For subsequent paging, pass the NextToken value returned in the previous response as is. Do not construct or decode the value.
         self.next_token = next_token
-        # The page number of the paging query, starting from 1.
+        # The page number for paging, starting from 1.
         self.page_no = page_no
         # The maximum number of entries returned per page.
         self.page_size = page_size
-        # The unique identifier of the request. You can use this ID to troubleshoot issues.
+        # The unique identifier of the request, which can be used to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -106,11 +106,9 @@ class DescribeInstanceAutoRenewalAttributeResponseBodyInstanceAttribute(DaraMode
     ):
         # The ID of the Alibaba Cloud account to which the resource belongs.
         self.ali_uid = ali_uid
-        # The auto-renewal status. Valid values:
-        # - true: Auto-renewal is enabled.
-        # - false: Auto-renewal is disabled.
+        # The auto-renewal status. Valid values: true (auto-renewal enabled) and false (auto-renewal disabled).
         self.auto_renewal = auto_renewal
-        # The instance ID, which identifies the purchased instance.
+        # The instance ID, which is used to identify the purchased instance.
         self.instance_id = instance_id
 
     def validate(self):

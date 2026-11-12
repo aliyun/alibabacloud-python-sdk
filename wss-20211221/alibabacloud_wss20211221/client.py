@@ -752,6 +752,104 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_instance_auto_renewal_attribute_with_options_async(request, runtime)
 
+    def describe_instances_with_options(
+        self,
+        request: main_models.DescribeInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInstancesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.no_resource_id):
+            query['NoResourceId'] = request.no_resource_id
+        if not DaraCore.is_null(request.property_key_list):
+            query['PropertyKeyList'] = request.property_key_list
+        if not DaraCore.is_null(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.state_list):
+            query['StateList'] = request.state_list
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInstances',
+            version = '2021-12-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_instances_with_options_async(
+        self,
+        request: main_models.DescribeInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInstancesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.no_resource_id):
+            query['NoResourceId'] = request.no_resource_id
+        if not DaraCore.is_null(request.property_key_list):
+            query['PropertyKeyList'] = request.property_key_list
+        if not DaraCore.is_null(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.state_list):
+            query['StateList'] = request.state_list
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInstances',
+            version = '2021-12-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_instances(
+        self,
+        request: main_models.DescribeInstancesRequest,
+    ) -> main_models.DescribeInstancesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_instances_with_options(request, runtime)
+
+    async def describe_instances_async(
+        self,
+        request: main_models.DescribeInstancesRequest,
+    ) -> main_models.DescribeInstancesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_instances_with_options_async(request, runtime)
+
     def describe_multi_price_with_options(
         self,
         request: main_models.DescribeMultiPriceRequest,

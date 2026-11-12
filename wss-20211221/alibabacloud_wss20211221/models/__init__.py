@@ -26,6 +26,9 @@ from ._describe_groups_response import DescribeGroupsResponse
 from ._describe_instance_auto_renewal_attribute_request import DescribeInstanceAutoRenewalAttributeRequest
 from ._describe_instance_auto_renewal_attribute_response_body import DescribeInstanceAutoRenewalAttributeResponseBody
 from ._describe_instance_auto_renewal_attribute_response import DescribeInstanceAutoRenewalAttributeResponse
+from ._describe_instances_request import DescribeInstancesRequest
+from ._describe_instances_response_body import DescribeInstancesResponseBody
+from ._describe_instances_response import DescribeInstancesResponse
 from ._describe_multi_price_request import DescribeMultiPriceRequest
 from ._describe_multi_price_response_body import DescribeMultiPriceResponseBody
 from ._describe_multi_price_response import DescribeMultiPriceResponse
@@ -66,6 +69,8 @@ from ._describe_groups_response_body import DescribeGroupsResponseBodyGroupsInst
 from ._describe_groups_response_body import DescribeGroupsResponseBodyGroupsInstances
 from ._describe_groups_response_body import DescribeGroupsResponseBodyGroups
 from ._describe_instance_auto_renewal_attribute_response_body import DescribeInstanceAutoRenewalAttributeResponseBodyInstanceAttribute
+from ._describe_instances_response_body import DescribeInstancesResponseBodyInstancesPropertyList
+from ._describe_instances_response_body import DescribeInstancesResponseBodyInstances
 from ._describe_multi_price_request import DescribeMultiPriceRequestOrderItemsComponents
 from ._describe_multi_price_request import DescribeMultiPriceRequestOrderItems
 from ._describe_multi_price_response_body import DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails
@@ -104,6 +109,9 @@ __all__ = [
     DescribeInstanceAutoRenewalAttributeRequest,
     DescribeInstanceAutoRenewalAttributeResponseBody,
     DescribeInstanceAutoRenewalAttributeResponse,
+    DescribeInstancesRequest,
+    DescribeInstancesResponseBody,
+    DescribeInstancesResponse,
     DescribeMultiPriceRequest,
     DescribeMultiPriceResponseBody,
     DescribeMultiPriceResponse,
@@ -144,6 +152,8 @@ __all__ = [
     DescribeGroupsResponseBodyGroupsInstances,
     DescribeGroupsResponseBodyGroups,
     DescribeInstanceAutoRenewalAttributeResponseBodyInstanceAttribute,
+    DescribeInstancesResponseBodyInstancesPropertyList,
+    DescribeInstancesResponseBodyInstances,
     DescribeMultiPriceRequestOrderItemsComponents,
     DescribeMultiPriceRequestOrderItems,
     DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails,

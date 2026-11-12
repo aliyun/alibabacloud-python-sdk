@@ -1,3 +1,6 @@
+2026-11-12 Version: 1.9.0
+- Generated python 2021-12-21 for wss.
+
 2026-11-10 Version: 1.8.0
 - Support API DescribeAICallDetails.
 
