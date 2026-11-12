@@ -9,7 +9,7 @@ class RestartAIDBClusterRequest(DaraModel):
         self,
         dbcluster_id: str = None,
     ):
-        # The instance ID.
+        # The instance ID. Usage notes: Add a description of the supported cluster types to the DBClusterId parameter description and clarify the meaning of the example value prefix.
         self.dbcluster_id = dbcluster_id
 
     def validate(self):

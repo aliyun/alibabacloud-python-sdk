@@ -23,17 +23,17 @@ class DescribeAgenticDBBranchLineageResponseBody(DaraModel):
         self.anchor_branch_id = anchor_branch_id
         # The list of lineage nodes.
         self.items = items
-        # The total number of nodes returned.
+        # The total number of returned nodes.
         self.node_count = node_count
-        # The project ID.
+        # The ID of the project.
         self.project_id = project_id
-        # The project name.
+        # The name of the project.
         self.project_name = project_name
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The ID of the primary branch.
+        # The ID of the root branch.
         self.root_branch_id = root_branch_id
-        # The tenant ID.
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -125,39 +125,37 @@ class DescribeAgenticDBBranchLineageResponseBodyItems(DaraModel):
         parent_branch_name: str = None,
         status: str = None,
     ):
-        # The ID of the compute cluster associated with the branch.
+        # The ID of the compute cluster for the branch.
         self.branch_compute_cluster_id = branch_compute_cluster_id
-        # The branch description.
+        # The description of the branch.
         self.branch_description = branch_description
-        # The branch ID.
+        # The ID of the branch.
         self.branch_id = branch_id
-        # The branch name.
+        # The name of the branch.
         self.branch_name = branch_name
         # The time when the branch was created.
         # 
-        # The time is in the ISO 8601 standard in the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
+        # The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
-        # The depth relative to the anchor branch. The anchor branch has a depth of 0. Ancestor branches have negative values, and descendant branches have positive values.
+        # The depth relative to the anchor branch. The depth of the anchor branch is 0. Ancestors have negative values, and descendants have positive values.
         self.depth = depth
         # The total number of direct child branches.
         self.direct_child_count = direct_child_count
-        # Indicates whether more ancestor nodes exist but are not returned.
+        # Indicates whether there are more ancestor nodes that are not returned.
         self.has_more_ancestors = has_more_ancestors
-        # Indicates whether more child nodes exist but are not returned.
+        # Indicates whether there are more child nodes that are not returned.
         self.has_more_children = has_more_children
         # Indicates whether the branch is the anchor branch.
         self.is_anchor = is_anchor
         # Indicates whether the branch is the default branch.
         self.is_default_branch = is_default_branch
-        # Indicates whether the branch is the primary branch.
+        # Indicates whether the branch is the root branch.
         self.is_root = is_root
         # The ID of the parent branch.
         self.parent_branch_id = parent_branch_id
         # The name of the parent branch.
         self.parent_branch_name = parent_branch_name
-        # The branch status. Valid values:
-        # - Active
-        # - Destroying
+        # The status of the branch. Valid values: Active and Destroying.
         self.status = status
 
     def validate(self):

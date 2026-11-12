@@ -20,7 +20,7 @@ class DescribePolarFsAttributeRequest(DaraModel):
         self.polar_fs_instance_id = polar_fs_instance_id
         # Specifies whether to query FUSE mount information. Valid values:
         # - **true**: Yes.
-        # - **false**: No. Default value: false.
+        # - **false**: No. This is the default value.
         self.query_fuse_mount_info = query_fuse_mount_info
 
     def validate(self):

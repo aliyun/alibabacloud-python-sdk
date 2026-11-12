@@ -4014,6 +4014,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.tenant_id):
             query['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -4054,6 +4056,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.tenant_id):
             query['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -39679,6 +39683,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_application_prompt_with_options_async(request, runtime)
 
+    def modify_application_sslwith_options(
+        self,
+        request: main_models.ModifyApplicationSSLRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyApplicationSSLResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.ca_pem):
+            query['CaPem'] = request.ca_pem
+        if not DaraCore.is_null(request.cert_pem):
+            query['CertPem'] = request.cert_pem
+        if not DaraCore.is_null(request.key_pem):
+            query['KeyPem'] = request.key_pem
+        if not DaraCore.is_null(request.ssl_enabled):
+            query['SslEnabled'] = request.ssl_enabled
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyApplicationSSL',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyApplicationSSLResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_application_sslwith_options_async(
+        self,
+        request: main_models.ModifyApplicationSSLRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyApplicationSSLResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.ca_pem):
+            query['CaPem'] = request.ca_pem
+        if not DaraCore.is_null(request.cert_pem):
+            query['CertPem'] = request.cert_pem
+        if not DaraCore.is_null(request.key_pem):
+            query['KeyPem'] = request.key_pem
+        if not DaraCore.is_null(request.ssl_enabled):
+            query['SslEnabled'] = request.ssl_enabled
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyApplicationSSL',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyApplicationSSLResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_application_ssl(
+        self,
+        request: main_models.ModifyApplicationSSLRequest,
+    ) -> main_models.ModifyApplicationSSLResponse:
+        runtime = RuntimeOptions()
+        return self.modify_application_sslwith_options(request, runtime)
+
+    async def modify_application_ssl_async(
+        self,
+        request: main_models.ModifyApplicationSSLRequest,
+    ) -> main_models.ModifyApplicationSSLResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_application_sslwith_options_async(request, runtime)
+
     def modify_application_serverless_conf_with_options(
         self,
         request: main_models.ModifyApplicationServerlessConfRequest,
@@ -40792,6 +40882,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not DaraCore.is_null(request.pfs_instance_id):
             query['PfsInstanceId'] = request.pfs_instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
@@ -40842,6 +40934,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not DaraCore.is_null(request.pfs_instance_id):
             query['PfsInstanceId'] = request.pfs_instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
@@ -49856,6 +49950,8 @@ class Client(OpenApiClient):
             query['CreateTimeEnd'] = request.create_time_end
         if not DaraCore.is_null(request.memory_agent_id):
             query['MemoryAgentId'] = request.memory_agent_id
+        if not DaraCore.is_null(request.memory_id):
+            query['MemoryId'] = request.memory_id
         if not DaraCore.is_null(request.memory_user_id):
             query['MemoryUserId'] = request.memory_user_id
         if not DaraCore.is_null(request.page):
@@ -49900,6 +49996,8 @@ class Client(OpenApiClient):
             query['CreateTimeEnd'] = request.create_time_end
         if not DaraCore.is_null(request.memory_agent_id):
             query['MemoryAgentId'] = request.memory_agent_id
+        if not DaraCore.is_null(request.memory_id):
+            query['MemoryId'] = request.memory_id
         if not DaraCore.is_null(request.memory_user_id):
             query['MemoryUserId'] = request.memory_user_id
         if not DaraCore.is_null(request.page):

@@ -26,11 +26,11 @@ class DescribePolarClawSkillDetailResponseBody(DaraModel):
         self.latest_version = latest_version
         # The response message.
         self.message = message
-        # The Skill author information.
+        # The skill author information.
         self.owner = owner
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
-        # The core information of the Skill.
+        # The core skill information.
         self.skill = skill
 
     def validate(self):
@@ -108,19 +108,19 @@ class DescribePolarClawSkillDetailResponseBodySkill(DaraModel):
         tags: Dict[str, Any] = None,
         updated_at: int = None,
     ):
-        # The first publish timestamp in Unix milliseconds.
+        # The initial release timestamp in Unix milliseconds.
         self.created_at = created_at
         # The display name.
         self.display_name = display_name
-        # The Skill identifier.
+        # The skill identifier.
         self.slug = slug
         # The statistics information.
         self.stats = stats
-        # The brief description.
+        # The short description.
         self.summary = summary
         # The tag key-value pairs.
         self.tags = tags
-        # The last update timestamp in Unix milliseconds.
+        # The last updated timestamp in Unix milliseconds.
         self.updated_at = updated_at
 
     def validate(self):
@@ -195,9 +195,9 @@ class DescribePolarClawSkillDetailResponseBodySkillStats(DaraModel):
         self.comments = comments
         # The number of downloads.
         self.downloads = downloads
-        # The total number of installations of all time.
+        # The total number of historical installations.
         self.installs_all_time = installs_all_time
-        # The current number of installations.
+        # The number of current installations.
         self.installs_current = installs_current
         # The number of stars.
         self.stars = stars
@@ -266,7 +266,7 @@ class DescribePolarClawSkillDetailResponseBodyOwner(DaraModel):
         self.display_name = display_name
         # The account identifier of the author.
         self.handle = handle
-        # The profile picture URL.
+        # The avatar URL.
         self.image = image
         # The user ID of the author.
         self.user_id = user_id
@@ -318,7 +318,7 @@ class DescribePolarClawSkillDetailResponseBodyLatestVersion(DaraModel):
     ):
         # The version changelog.
         self.changelog = changelog
-        # The version publish timestamp in Unix milliseconds.
+        # The version release timestamp in Unix milliseconds.
         self.created_at = created_at
         # The version number.
         self.version = version

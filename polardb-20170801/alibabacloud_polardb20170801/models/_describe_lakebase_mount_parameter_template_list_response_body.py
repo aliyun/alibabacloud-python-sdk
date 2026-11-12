@@ -67,15 +67,11 @@ class DescribeLakebaseMountParameterTemplateListResponseBodyParameters(DaraModel
         self.comment = comment
         # The default value.
         self.default_value = default_value
-        # Indicates whether the parameter takes effect dynamically. Valid values:
-        # - 1: Yes.
-        # - 0: No.
+        # Indicates whether the parameter takes effect dynamically. Valid values: 1 and 0.
         self.is_dynamic = is_dynamic
-        # Indicates whether users are allowed to modify the parameter. Valid values:
-        # - 1: Yes.
-        # - 0: No.
+        # Indicates whether the parameter can be modified by users. Valid values: 1 and 0.
         self.is_user_changeable = is_user_changeable
-        # The value range or enumerated values, such as [0-3600].
+        # The value range or valid values. Example: [0-3600].
         self.optional = optional
         # The parameter name.
         self.parameter_name = parameter_name

@@ -11,7 +11,7 @@ class DeleteAgenticDBTenantRequest(DaraModel):
         region_id: str = None,
         tenant_id: str = None,
     ):
-        # The AgenticDB cluster ID.
+        # The AgenticDB cluster ID, which must start with pagc-. You must first call CreateDBCluster and set AgenticDbType to dedicated to create a cluster, and then use the returned DBClusterId. Regular PolarDB cluster IDs are not supported.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id

@@ -58,7 +58,7 @@ class CreateApplicationRequest(DaraModel):
     ):
         # The ID of the associated existing model operator instance. This parameter takes effect only when ApplicationType is set to polarclaw.
         self.aidbcluster_id = aidbcluster_id
-        # The AgenticDB branch specifications.
+        # The specifications of the AgenticDB branch.
         self.agentic_dbbranch_spec = agentic_dbbranch_spec
         # The ID of the AgenticDB cluster.
         self.agentic_dbcluster_id = agentic_dbcluster_id
@@ -66,6 +66,7 @@ class CreateApplicationRequest(DaraModel):
         # - supabase: Specify this value to create a managed Supabase application.
         # - raycluster: Specify this value to create a managed Ray Cluster application.
         # - polarclaw: Specify this value to create a managed PolarClaw application.
+        # - mem0: Specify this value to create a memory service application. The ApplicationId of this application type can be used in CreateApplicationPrompt. When you create this type of application, you must also configure the VPC, security group, and model or instance parameters as required.
         # 
         # This parameter is required.
         self.application_type = application_type
@@ -78,46 +79,46 @@ class CreateApplicationRequest(DaraModel):
         self.auth_provider = auth_provider
         # The authentication provider configuration.
         self.auth_provider_config = auth_provider_config
-        # Specifies whether an elastic IP address is automatically created and attached.
+        # Specifies whether automatic creation is enabled and whether to attach and associate with an EIP.
         self.auto_allocate_public_eip = auto_allocate_public_eip
-        # Specifies whether to enable automatic creation of a Polarlakebase cold storage instance. Valid values:
-        # * false (default): disables automatic creation.
-        # * true: enables automatic creation.
+        # Specifies whether to automatically create a Polarlakebase cold storage instance. Valid values:
+        # * false: Does not automatically create the instance. This is the default value.
+        # * true: Automatically creates the instance.
         self.auto_create_polar_fs = auto_create_polar_fs
         # Specifies whether to enable auto-renewal.
         self.auto_renew = auto_renew
-        # Specifies whether to automatically use coupons. Valid values:
-        # - true: uses coupons. This is the default value.
-        # - false: does not use coupons.
+        # Specifies whether to automatically use a coupon. Valid values:
+        # - true: Uses the coupon. This is the default value.
+        # - false: Does not use the coupon.
         self.auto_use_coupon = auto_use_coupon
         # The list of custom application subcomponents.
         self.components = components
-        # The PolarDB instance ID on which the application depends.
+        # The ID of the PolarDB instance on which the application depends.
         self.dbcluster_id = dbcluster_id
         # The description or remark of the application.
         self.description = description
-        # The list of expected DNAT entries for NAT mapping. This parameter must be specified together with VpcNatGatewayId. You can leave this parameter empty to indicate that no DNAT entries are created.
+        # The expected list of DNAT entries. This parameter must be specified together with VpcNatGatewayId. You can leave this parameter empty to indicate that no DNAT entries are created.
         self.dnat_entries = dnat_entries
-        # The dedicated NAT IP address allocated for DNAT, which is separate from the SNAT IP address. The IP address must belong to the gateway, be in the available state, and the vSwitch where the gateway resides must belong to the primary CIDR block reachable from the office network. This parameter must be specified together with VpcNatGatewayId. Prerequisite: An SNAT entry is bound to the vSwitch where the application resides.
+        # The dedicated NAT IP address allocated for DNAT, which is separate from the SNAT IP address. The IP address must belong to the NAT gateway, be in the available state, and the vSwitch where the gateway resides must belong to a primary CIDR block reachable from the office network. This parameter must be specified together with VpcNatGatewayId. Prerequisite: An SNAT entry is associated with the vSwitch where the application resides.
         self.dnat_ip_address = dnat_ip_address
-        # Specifies whether to perform a dry run. Default value: `false`. If you set this parameter to `true`, only parameter and resource validation is performed, and no resources are actually created.
+        # Specifies whether to perform a dry run. Default value: false. If you set this parameter to true, only parameter and resource validations are performed, and no resources are actually created.
         self.dry_run = dry_run
         # The list of custom service endpoints. By default, a VPC endpoint is created.
         self.endpoints = endpoints
-        # The required specification for knowledge applications.
+        # The required parameters for knowledge applications.
         self.knowledge_application_spec = knowledge_application_spec
-        # The required specification for mem0 applications.
+        # The required parameters for mem0 applications.
         self.mem_application_spec = mem_application_spec
         # The API of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
         self.model_api = model_api
         # The API key of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
         self.model_api_key = model_api_key
-        # The base URL of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
+        # The endpoint of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
         self.model_base_url = model_base_url
-        # The source of the model. Valid values:
-        # - bailian: Model Studio model.
-        # - custom: Custom model.
-        # - maas: PolarDB model operator.
+        # The model source. Valid values:
+        # * bailian: Model Studio model.
+        # * custom: Custom model.
+        # * maas: PolarDB model operator.
         self.model_from = model_from
         # The name of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
         self.model_name = model_name
@@ -127,9 +128,7 @@ class CreateApplicationRequest(DaraModel):
         self.pay_type = pay_type
         # The subscription period unit.
         self.period = period
-        # The Polarlakebase cold storage or high-performance instance ID. Default value: empty. If you specify this parameter, the corresponding storage is mounted to the application.
-        # 
-        # Currently, only the following applications are supported:
+        # The ID of the Polarlakebase cold storage or high-performance instance. By default, this parameter is empty. If you specify this parameter, the corresponding storage is mounted to the application. This parameter is supported only for the following applications:
         # - supabase
         # - raycluster
         self.polar_fsinstance_id = polar_fsinstance_id
@@ -141,27 +140,27 @@ class CreateApplicationRequest(DaraModel):
         self.resource_group_id = resource_group_id
         # The ID of the security group.
         self.security_group_id = security_group_id
-        # The name of the IP address whitelist group. Default value: `default`.
+        # The name of the IP address whitelist group. Default value: default.
         self.security_iparray_name = security_iparray_name
-        # The IP address whitelist. If you do not specify this parameter, the default value `127.0.0.1` is used.
+        # The IP address whitelist. If you do not specify this parameter, the default value 127.0.0.1 is used.
         self.security_iplist = security_iplist
         # The type of the IP address.
         self.security_iptype = security_iptype
         # The ID of the skill template.
         self.skill_template_id = skill_template_id
-        # The list of application storages.
+        # The list of storage resources for the application.
         self.storages = storages
         # The tags.
         self.tag = tag
         # The target version.
         self.target_version = target_version
-        # The subscription period.
+        # The subscription duration.
         self.used_time = used_time
         # The vSwitch ID. Default value: the current vSwitch in the primary zone of the instance.
         self.v_switch_id = v_switch_id
         # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
-        # NAT mapping: the NAT gateway ID of the self-managed VPC NAT gateway. If you specify this parameter, NAT mapping is enabled when the instance is created. The gateway must be in the same VPC as the application, be of the private network type (intranet), and be in the active state.
+        # The VPC NAT gateway ID of the self-managed VPC NAT gateway for NAT mapping. If you specify this parameter, NAT mapping is enabled when the instance is created. The NAT gateway must be in the same VPC as the application, be of the private network (intranet) type, and be in the active state.
         self.vpc_nat_gateway_id = vpc_nat_gateway_id
         # The zone ID. Default value: the primary zone of the instance.
         self.zone_id = zone_id
@@ -561,7 +560,7 @@ class CreateApplicationRequestStorages(DaraModel):
         storage_performance_level: str = None,
         storage_type: str = None,
     ):
-        # The mount path in the container.
+        # The mount path inside the container.
         self.container_mount_path = container_mount_path
         # The ID of the storage endpoint.
         self.endpoint_id = endpoint_id
@@ -569,9 +568,9 @@ class CreateApplicationRequestStorages(DaraModel):
         self.mount_path = mount_path
         # The storage capacity.
         self.storage_capacity = storage_capacity
-        # The access address of the storage.
+        # The access endpoint of the storage.
         self.storage_endpoint = storage_endpoint
-        # The storage instance ID.
+        # The ID of the storage instance.
         self.storage_instance_id = storage_instance_id
         # The storage performance level.
         self.storage_performance_level = storage_performance_level
@@ -706,13 +705,13 @@ class CreateApplicationRequestMemApplicationSpec(DaraModel):
         self.db_password = db_password
         # The username.
         self.db_user = db_user
-        # The name of the embedder model, such as text-embedding-v4. This parameter is required for mem0 applications.
+        # Required for mem0 applications. The name of the embedder model, such as text-embedding-v4.
         self.embedder_model = embedder_model
         # The vector dimensions.
         self.embedder_model_dimension = embedder_model_dimension
         # The graph LLM model.
         self.graph_llm_model = graph_llm_model
-        # The name of the LLM model, such as qwen3-max. This parameter is required for mem0 applications.
+        # Required for mem0 applications. The name of the LLM model, such as qwen3-max.
         self.llm_model = llm_model
         # The memory type, such as multimodal.
         self.memory_type = memory_type
@@ -726,7 +725,7 @@ class CreateApplicationRequestMemApplicationSpec(DaraModel):
         self.polar_aireranker_instance_id = polar_aireranker_instance_id
         # The project name, which corresponds to the schema in the database where project data is stored.
         self.project_name = project_name
-        # The name of the reranker model, such as qwen3-rerank. This parameter is required for mem0 applications.
+        # Required for mem0 applications. The name of the reranker model, such as qwen3-rerank.
         self.reranker_model = reranker_model
         # The number of shards.
         self.shard = shard
@@ -882,7 +881,7 @@ class CreateApplicationRequestKnowledgeApplicationSpec(DaraModel):
         self.dashboard_password = dashboard_password
         # The password.
         self.db_password = db_password
-        # The name of the LLM model, such as qwen3-max. This parameter is required for knowledge applications.
+        # Required for knowledge applications. The name of the LLM model, such as qwen3-max.
         self.llm_model = llm_model
         # The instance ID of the PolarAI embedding model.
         self.polar_aiembedder_instance_id = polar_aiembedder_instance_id
@@ -992,9 +991,9 @@ class CreateApplicationRequestDnatEntries(DaraModel):
         front_port: int = None,
         port_name: str = None,
     ):
-        # The frontend port. This parameter is optional. By default, the system automatically assigns a port that is not occupied by the gateway. You can call the DescribeApplicationAttribute operation to query the assigned port.
+        # The frontend port. This parameter is optional. By default, the system automatically assigns a port, avoiding ports already occupied by the gateway. You can call the DescribeApplicationAttribute operation to query the assigned port.
         self.front_port = front_port
-        # The name of the port. Valid values: webui, hermesagent, dashboard, and ssh.
+        # The port name. Valid values: webui, hermesagent, dashboard, and ssh.
         self.port_name = port_name
 
     def validate(self):
@@ -1039,23 +1038,22 @@ class CreateApplicationRequestComponents(DaraModel):
     ):
         # The specifications of the application subcomponent.
         self.component_class = component_class
-        # The maximum number of application subcomponents of the same specifications. Default value: the value of ComponentReplica.
-        # - This parameter is supported only for raycluster.
+        # The maximum number of application subcomponents of the same specifications. Default value: the value of ComponentReplica. This parameter is supported only for raycluster.
         self.component_max_replica = component_max_replica
         # The number of replicas for the application subcomponent. Default value: 1.
         self.component_replica = component_replica
         # The type of the application subcomponent.
-        # For supabase, valid values:
+        # Valid values for supabase:
         # - gateway
         # - backend
-        # For raycluster, valid values:
+        # Valid values for raycluster:
         # - head
         # - worker
         # - gpuworker
         self.component_type = component_type
-        # The upper limit for component scaling.
+        # The upper limit for scaling the component.
         self.scale_max = scale_max
-        # The lower limit for component scaling.
+        # The lower limit for scaling the component.
         self.scale_min = scale_min
         # The list of security groups for the application subcomponent. Separate multiple security group IDs with commas (,).
         self.security_groups = security_groups

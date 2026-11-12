@@ -21,13 +21,13 @@ class LoginPolarClawChannelResponseBody(DaraModel):
         self.code = code
         # The response message.
         self.message = message
-        # The name of the operation.
+        # The operation name.
         self.operation = operation
         # The request ID.
         self.request_id = request_id
-        # The state of the asynchronous task.
+        # The task status.
         self.state = state
-        # The ID of the asynchronous task.
+        # The asynchronous task ID.
         self.task_id = task_id
 
     def validate(self):

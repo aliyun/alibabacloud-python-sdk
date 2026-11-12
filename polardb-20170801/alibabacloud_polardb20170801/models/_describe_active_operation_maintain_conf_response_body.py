@@ -14,7 +14,9 @@ class DescribeActiveOperationMaintainConfResponseBody(DaraModel):
     ):
         # The configuration information.
         self.config = config
-        # Indicates whether the configuration has been set. Valid values: 1 (yes) and 0 (no). On the first visit, HasConfig is 0.
+        # Indicates whether the configuration has been created. Valid values:
+        # - 1: Yes.
+        # - 0: No. If this is your first access, the value is 0.
         self.has_config = has_config
         # The request ID.
         self.request_id = request_id
@@ -64,33 +66,25 @@ class DescribeActiveOperationMaintainConfResponseBodyConfig(DaraModel):
         modified_time: str = None,
         status: int = None,
     ):
-        # The creation time.
-        # 
-        # The time is in the YYYY-MM-DDTHH:mm:ss format.
+        # The time when the configuration was created. Format: YYYY-MM-DDTHH:mm:ss.
         self.created_time = created_time
         # The cycle time.
-        # 
-        # - If CycleType is set to Month, a number from 1 to 28 is returned, indicating the day of the month. Multiple values are separated by commas (,).
-        # - If CycleType is set to Week, a number from 1 to 7 is returned, indicating the day of the week. Multiple values are separated by commas (,).
+        # - If CycleType is set to Month, the return value is a number from 1 to 28, which indicates the day of the month. Multiple values are separated by commas (,).
+        # - If CycleType is set to Week, the return value is a number from 1 to 7, which indicates the day of the week. Multiple values are separated by commas (,).
         self.cycle_time = cycle_time
         # The cycle type. Valid values:
-        # 
-        # - Month: monthly
-        # - Week: weekly
+        # - Month: Monthly.
+        # - Week: Weekly.
         self.cycle_type = cycle_type
-        # The end time of the maintenance window.
-        # 
-        # The time is in UTC in the HH:mmZ format.
+        # The end time of the maintenance window. The time is in UTC and in the HH:mmZ format.
         self.maintain_end_time = maintain_end_time
-        # The start time of the maintenance window.
-        # 
-        # The time is in UTC. Example: 8:00Z.
+        # The start time of the maintenance window. The time is in UTC, for example, 8:00Z.
         self.maintain_start_time = maintain_start_time
-        # The modification time.
-        # 
-        # The time is in the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time when the configuration was modified. The time follows the ISO 8601 standard and is in UTC. Format: YYYY-MM-DDTHH:mm:ssZ.
         self.modified_time = modified_time
-        # Indicates whether the configuration is effective. Valid values: 1 (yes) and 2 (no).
+        # Indicates whether the configuration is effective. Valid values:
+        # - 1: Yes.
+        # - 2: No.
         self.status = status
 
     def validate(self):

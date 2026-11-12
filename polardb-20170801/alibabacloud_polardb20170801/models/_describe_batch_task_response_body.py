@@ -26,9 +26,9 @@ class DescribeBatchTaskResponseBody(DaraModel):
         self.application_type = application_type
         # The batch ID of the scheduled task execution.
         self.batch_id = batch_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
-        # The status of the task.
+        # The task status.
         self.status = status
         # The list of subtasks.
         self.sub_tasks = sub_tasks
@@ -40,9 +40,9 @@ class DescribeBatchTaskResponseBody(DaraModel):
         self.task_end = task_end
         # The description of the model service.
         self.task_name = task_name
-        # The type of the task.
+        # The task type.
         self.task_type = task_type
-        # The number of entries in the list.
+        # The total number of entries in the list.
         self.total_count = total_count
 
     def validate(self):

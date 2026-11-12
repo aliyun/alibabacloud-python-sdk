@@ -14,13 +14,15 @@ class DescribeDBLinksRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the cluster for which you want to query the database links.
+        # The ID of the cluster for which you want to query DBLink information.
         # 
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/173433.html) operation to query PolarDB clusters.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/173433.html) operation to query the list of PolarDB clusters.
+        # 
+        # > Use only the ID of a supported PolarDB for PostgreSQL (Compatible with Oracle) cluster. Unsupported engines or versions return InvalidEngine.Unsupported.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The name of the database link. If you leave this parameter empty, the system returns all the database links.
+        # The name of the DBLink. If you do not specify this parameter, all DBLinks are returned.
         self.dblink_name = dblink_name
         self.owner_account = owner_account
         self.owner_id = owner_id

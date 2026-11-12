@@ -17,17 +17,17 @@ class DescribeConsumerGroupsResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # A list of consumer groups.
+        # The list of consumer groups.
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The number of records on the current page.
+        # The number of entries on the current page.
         self.page_record_count = page_record_count
-        # The number of records returned per page. Valid values: 30, 50, and 100. Default value: 30.
+        # The number of entries per page. Valid values: 30, 50, and 100. Default value: 30.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of records.
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -111,9 +111,9 @@ class DescribeConsumerGroupsResponseBodyItems(DaraModel):
         self.gmt_modified = gmt_modified
         # Indicates whether the consumer group is the default group. Valid values:
         # 
-        # - **0**: No
         # 
-        # - **1**: Yes
+        # - **0**: No.
+        # - **1**: Yes.
         self.is_default = is_default
         # The nickname of the consumer group.
         self.nick_name = nick_name

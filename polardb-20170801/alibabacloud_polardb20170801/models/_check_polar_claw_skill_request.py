@@ -19,7 +19,7 @@ class CheckPolarClawSkillRequest(DaraModel):
     ):
         # The region ID of the OSS bucket that stores the skill files.
         self.bucket_region_id = bucket_region_id
-        # The type of the bucket used for skill files. UserOwned indicates a user-owned bucket. Hosted indicates a hosted bucket. You must have the required permissions to use a hosted bucket.
+        # The type of the bucket used for skill files. UserOwned indicates a user-owned bucket. Hosted indicates a hosted bucket, which requires corresponding permissions. Usage notes: The parameter dependencies for each value specify that OSSBucket is required for UserOwned, and whitelist permissions are required for Hosted.
         self.bucket_type = bucket_type
         # The name of the OSS bucket to be disassociated.
         self.ossbucket = ossbucket
@@ -33,11 +33,11 @@ class CheckPolarClawSkillRequest(DaraModel):
         # 
         # This parameter is required.
         self.skill_version = skill_version
-        # The brief description of the skill.
+        # The brief description of the skill. This parameter is actually required. If it is not provided, the service returns InvalidParam (404).
         self.summary = summary
         # The tag details.
         self.tags = tags
-        # The title.
+        # The title. This parameter is actually required. If it is not provided, the service returns InvalidParam (404).
         self.title = title
 
     def validate(self):

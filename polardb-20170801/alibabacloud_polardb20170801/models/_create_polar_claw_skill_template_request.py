@@ -14,7 +14,7 @@ class CreatePolarClawSkillTemplateRequest(DaraModel):
         skill_template_name: str = None,
         skill_template_param: str = None,
     ):
-        # The application ID.
+        # The application ID. This parameter is required. If this parameter is not provided, an InvalidApplicationId.Malformed (HTTP 400) error is returned.
         self.application_id = application_id
         # The application type.
         # 
@@ -22,7 +22,7 @@ class CreatePolarClawSkillTemplateRequest(DaraModel):
         self.application_type = application_type
         # The region ID.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query all available regions for the current account, including region IDs.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to view all available regions for the current account, including region IDs.
         self.region_id = region_id
         # The description of the skill template.
         self.skill_template_desc = skill_template_desc
@@ -30,7 +30,7 @@ class CreatePolarClawSkillTemplateRequest(DaraModel):
         # 
         # This parameter is required.
         self.skill_template_name = skill_template_name
-        # The skill template parameters.
+        # The skill template parameters. Specify a standard JSON object string with the skill identifier as the key, such as {"skill1":{"skillName":"polarclawhub","version":"0.0.0"}}. JSON arrays or single-quote formats are not accepted.
         # 
         # This parameter is required.
         self.skill_template_param = skill_template_param

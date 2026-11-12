@@ -20,15 +20,14 @@ class DescribeEncryptionDBSecretResponseBody(DaraModel):
         self.encryption_dbregion = encryption_dbregion
         # Indicates whether encryption is enabled. Valid values:
         # 
-        # Enabled: Encryption is enabled. Disabled: Encryption is disabled.
+        # - Enabled: Encryption is enabled.
+        # - Disabled: Encryption is disabled.
         self.encryption_dbstatus = encryption_dbstatus
-        # The custom key ID.
+        # The ID of the custom key.
         self.encryption_key = encryption_key
         # The status of the key. Valid values:
-        # 
-        # - **Enabled**
-        # 
-        # - **Disabled**
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
         self.encryption_key_status = encryption_key_status
         # The request ID.
         self.request_id = request_id

@@ -23,7 +23,7 @@ class DescribeHistoryEventsRequest(DaraModel):
         task_id: str = None,
         to_start_time: str = None,
     ):
-        # The event archive status. Valid values:
+        # The archive status of the event. Valid values:
         # 
         # - Archived: The event is archived.
         # 
@@ -31,20 +31,20 @@ class DescribeHistoryEventsRequest(DaraModel):
         # 
         # - All: All events.
         self.archive_status = archive_status
-        # The system event category. Valid values:
+        # The category of the system event. Valid values:
         # - **Exception**: Exception events.
         # - **Optimize**: Optimization events.
         # - **Notification**: Notification events.
         # - **Maintenance**: Scheduled O&M events.
         self.event_category = event_category
-        # The event ID.
+        # The ID of the event.
         self.event_id = event_id
         # The event level. Valid values:
         # - **INFO**: Notification.
         # - **WARN**: Warning.
-        # - **CRITICAL**: Critical.
+        # - **CRITICAL**: Alerting.
         self.event_level = event_level
-        # The event status. Valid values:
+        # The status of the event. Valid values:
         # - **Inquiring**: Inquiring.
         # - **Scheduled**: Scheduled.
         # - **Running**: Running.
@@ -55,22 +55,22 @@ class DescribeHistoryEventsRequest(DaraModel):
         self.event_status = event_status
         # The system event type. This parameter is valid only when InstanceEventType.N is not specified. Valid values: 
         # - **SystemMaintenance.Reboot**: The instance is restarted due to system maintenance.
-        # - **SystemMaintenance.Redeploy**: The instance is redeployed due to system maintenance.
-        # - **SystemFailure.Reboot**: The instance is restarted due to a system failure.
-        # - **SystemFailure.Redeploy**: The instance is redeployed due to a system failure.
-        # - **SystemFailure.Delete**: The instance is released due to a creation failure.
-        # - **InstanceFailure.Reboot**: The instance is restarted due to an instance failure.
+        # - **SystemMaintenance.Redeploy**: Redeployment of the instance due to system maintenance.
+        # - **SystemFailure.Reboot**: The instance is restarted due to a system fault.
+        # - **SystemFailure.Redeploy**: Redeployment of the instance due to a system fault.
+        # - **SystemFailure.Delete**: The instance is released because instance creation failed.
+        # - **InstanceFailure.Reboot**: The instance is restarted due to an instance fault.
         # - **InstanceExpiration.Stop**: The subscription instance is stopped due to expiration.
         # - **InstanceExpiration.Delete**: The subscription instance is released due to expiration.
         # - **AccountUnbalanced.Stop**: The pay-as-you-go instance is stopped due to an overdue payment.
         # - **AccountUnbalanced.Delete**: The pay-as-you-go instance is released due to an overdue payment.
         # > The value of this parameter must be an instance system event, not a disk system event.
         self.event_type = event_type
-        # The start time of the task start time range. This parameter specifies that only tasks whose start time is later than this value are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The earliest supported time is 30 days ago. If the specified time is more than 30 days before the current time, it is automatically changed to 30 days ago.
+        # The start time of the task start time range. This parameter specifies that the start time of the queried tasks must be later than this time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The earliest supported time is 30 days ago. If the specified time is more than 30 days before the current time, it is automatically converted to 30 days ago. This parameter is actually required. If it is not provided, the API returns Param.Invalid (HTTP 400). Note: This parameter is required. If it is not provided, the API returns Param.Invalid (HTTP 400).
         self.from_start_time = from_start_time
-        # The resource ID. This parameter is used to query tasks of the corresponding resources. Separate multiple IDs with commas (,). You can specify up to 30 IDs. By default, this parameter is left empty, which indicates that no limit is applied.
+        # The ID of the resource. This parameter is used to query tasks for the corresponding resource. You can specify up to 30 IDs and separate them with commas (,). Default value: empty, which indicates no limit.
         # 
-        # > Only cluster IDs are supported.
+        # > Currently, only cluster IDs are supported.
         self.instance_id = instance_id
         # The page number. Default value: 1.
         self.page_number = page_number
@@ -84,18 +84,18 @@ class DescribeHistoryEventsRequest(DaraModel):
         self.page_size = page_size
         # The region ID.
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The resource type. Valid values:
+        # The type of the resource. Valid values:
         # - **Instance**: Instance resources.
         # - **Instance**: Host: Host resources.
         # - **Instance**: User: User resources.
         self.resource_type = resource_type
         # The ID of the scheduled task to be canceled.
-        # > * You can call the [DescribeScheduleTasks](https://help.aliyun.com/document_detail/199648.html) operation to query the information about all scheduled tasks under the current account, including the task IDs.
-        # * Only tasks in the pending state (the return value of the `Status` parameter is `pending`) can be canceled.
+        # > * You can call the [DescribeScheduleTasks](https://help.aliyun.com/document_detail/199648.html) operation to query the information of all scheduled tasks under the current account, including the task IDs.
+        # * Only tasks in the pending state (where the return value of the `Status` parameter is `pending`) can be canceled.
         self.task_id = task_id
-        # The end time of the task start time range. This parameter specifies that only tasks whose start time is earlier than this value are queried. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+        # The end time of the task start time range. This parameter specifies that the start time of the queried tasks must be earlier than this time. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
         self.to_start_time = to_start_time
 
     def validate(self):

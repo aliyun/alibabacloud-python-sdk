@@ -70,7 +70,7 @@ class DescribeApplicationAvailableVersionResponseBodyVersions(DaraModel):
         version: str = None,
         version_description: str = None,
     ):
-        # The release date.
+        # The release date in RFC 3339 UTC format.
         self.release_date = release_date
         # The release notes.
         self.release_note = release_note

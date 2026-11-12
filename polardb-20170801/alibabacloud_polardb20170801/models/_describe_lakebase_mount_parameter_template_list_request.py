@@ -12,15 +12,13 @@ class DescribeLakebaseMountParameterTemplateListRequest(DaraModel):
         polar_fs_instance_id: str = None,
         region_id: str = None,
     ):
-        # The database engine. Set the value to polar_3fs.
+        # The engine. Set the value to polar_3fs.
         # 
         # This parameter is required.
         self.engine = engine
-        # The instance category. Valid values:
-        # - basic: Basic Edition.
-        # - high_performance: High-performance Edition.
+        # The instance category. Valid values: basic (Basic Edition) and high_performance (High-performance Edition).
         self.param_group_category = param_group_category
-        # The PolarFS instance ID.
+        # The PolarFS instance ID. You can call DescribePolarFs to query available PolarFS instances and use the returned PolarFsInstanceId.
         # 
         # This parameter is required.
         self.polar_fs_instance_id = polar_fs_instance_id

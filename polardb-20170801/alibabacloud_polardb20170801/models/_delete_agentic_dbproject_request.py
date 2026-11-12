@@ -12,11 +12,11 @@ class DeleteAgenticDBProjectRequest(DaraModel):
         region_id: str = None,
         tenant_id: str = None,
     ):
-        # The AgenticDB cluster ID.
+        # The ID of the AgenticDB cluster. The ID must start with pagc-. You can obtain the ID by calling the CreateDBCluster operation and setting AgenticDbType to dedicated. Regular cluster IDs that start with pc- are not supported. Usage notes: Append the following format note to the end of the description for the DBClusterId parameter: The ID must be prefixed with pagc-, and regular PolarDB cluster IDs (prefixed with pc-) are not supported by this API operation.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The target project ID.
+        # The ID of the target project. You can obtain the ID after creating a project by calling CreateAgenticDBProject.
         # 
         # This parameter is required.
         self.project_id = project_id
@@ -24,7 +24,7 @@ class DeleteAgenticDBProjectRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The tenant ID.
+        # The ID of the tenant. You can obtain the ID after creating a tenant by calling CreateAgenticDBTenant.
         # 
         # This parameter is required.
         self.tenant_id = tenant_id

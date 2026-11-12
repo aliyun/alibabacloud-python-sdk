@@ -18,11 +18,11 @@ class RegisterAIDBClusterCustomModelResponseBody(DaraModel):
     ):
         # Indicates whether a new registration is created. A value of false indicates that an existing registration is updated.
         self.created = created
-        # The display name and the initial invocation name for clients.
+        # The display name and the initial client invocation name.
         self.display_model_name = display_model_name
         # The import status of the image. The initial value is Importing after the image is registered.
         self.image_import_status = image_import_status
-        # The registration ID of the model.
+        # The ID of the model registration.
         self.model_id = model_id
         # The registration key of the custom model.
         self.model_name = model_name
@@ -30,7 +30,7 @@ class RegisterAIDBClusterCustomModelResponseBody(DaraModel):
         self.model_type = model_type
         # The normalized OSS path.
         self.oss_path = oss_path
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

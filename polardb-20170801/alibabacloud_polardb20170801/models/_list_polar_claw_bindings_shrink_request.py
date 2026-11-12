@@ -10,7 +10,7 @@ class ListPolarClawBindingsShrinkRequest(DaraModel):
         agent_list_shrink: str = None,
         application_id: str = None,
     ):
-        # A list of agent IDs to filter the bindings.
+        # Filters by a list of agent IDs.
         self.agent_list_shrink = agent_list_shrink
         # The application ID.
         # 

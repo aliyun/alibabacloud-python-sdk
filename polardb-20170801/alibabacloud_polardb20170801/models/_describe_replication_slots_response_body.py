@@ -78,13 +78,13 @@ class DescribeReplicationSlotsResponseBodySlots(DaraModel):
         self.slot_status = slot_status
         # The type of the replication slot.
         self.slot_type = slot_type
-        # The child node name of the distributed instance.
+        # The name of the child node of the distributed instance.
         self.sub_group_name = sub_group_name
-        # The replay lag value of the subscription.
+        # The replay lag of the subscription.
         self.sub_replay_lag = sub_replay_lag
-        # Indicates whether the replication slot is temporary. The value is returned as a string: true or false.
+        # Indicates whether the replication slot is temporary. The value is a string: true or false.
         self.temporary = temporary
-        # The WAL latency value.
+        # The WAL latency.
         self.wal_delay = wal_delay
 
     def validate(self):

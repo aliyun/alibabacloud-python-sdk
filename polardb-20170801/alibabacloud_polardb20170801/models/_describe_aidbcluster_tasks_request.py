@@ -17,17 +17,17 @@ class DescribeAIDBClusterTasksRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The type of the model operator.
+        # The model operator type.
         self.kube_type = kube_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of items to display on each page.
         self.page_size = page_size
         # The region ID.
         self.region_id = region_id
-        # The instance ID of the associated PolarDB instance.
+        # The ID of the associated PolarDB cluster. This parameter is required. If you do not specify this parameter, the service returns the InvalidDBClusterId.NotFound (404) error.
         self.relative_dbcluster_id = relative_dbcluster_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

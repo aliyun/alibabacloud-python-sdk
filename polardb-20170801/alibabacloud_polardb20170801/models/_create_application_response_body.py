@@ -18,17 +18,17 @@ class CreateApplicationResponseBody(DaraModel):
         resource_available: bool = None,
         resource_group_id: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.application_id = application_id
         # The list of subcomponents.
         self.components = components
-        # The description of the application.
+        # The application description.
         self.description = description
         # The ID of the generated order.
         self.order_id = order_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the resources are sufficient. This parameter is returned only when DryRun is set to true.
+        # Indicates whether the resources are sufficient. This parameter is returned only when `DryRun` is set to `true`.
         self.resource_available = resource_available
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -102,7 +102,7 @@ class CreateApplicationResponseBodyComponents(DaraModel):
         self,
         component_id: str = None,
     ):
-        # The ID of the subcomponent.
+        # The subcomponent ID.
         self.component_id = component_id
 
     def validate(self):

@@ -22,7 +22,7 @@ class DescribeDBInstancesRequest(DaraModel):
         self.dbcluster_id = dbcluster_id
         # The network type of the instance. Valid values:
         # - **VPC**: VPC.
-        # - **Classic**: Classic network.
+        # - **Classic**: classic network.
         # 
         # > If you do not specify this parameter, instances of all network types are returned.
         self.instance_network_type = instance_network_type

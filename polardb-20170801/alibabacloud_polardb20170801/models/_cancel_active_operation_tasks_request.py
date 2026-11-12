@@ -17,20 +17,14 @@ class CancelActiveOperationTasksRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID.
-        # 
-        # > 
-        # 
-        # *   You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the region information about all clusters within a specified account.
-        # 
-        # *   If you do not specify this parameter, scheduled tasks on your clusters that are deployed in all regions are queried.
+        # The region ID. This parameter is required. You can call the DescribeRegions operation to query the region ID. If you leave this parameter empty, the system queries scheduled tasks in all regions under the current account by default.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The IDs of O\\&M events that are canceled at a time. Separate multiple IDs with commas (,).
+        # The IDs of the O&M events to cancel in batches. Separate multiple IDs with commas (,).
         # 
         # This parameter is required.
         self.task_ids = task_ids

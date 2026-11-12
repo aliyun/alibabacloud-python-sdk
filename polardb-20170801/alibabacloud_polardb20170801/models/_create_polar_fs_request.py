@@ -36,7 +36,7 @@ class CreatePolarFsRequest(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # The size of the acceleration space. Unit: GB. The value must be no less than 5000 and must be a multiple of 1000. This parameter is required when acceleration is enabled for the Basic Edition.
+        # The acceleration space size. Unit: GB. The value must be no less than 5000 and must be a multiple of 1000. This parameter is required when acceleration is enabled for the basic edition.
         self.accelerate_storage_size = accelerate_storage_size
         # The acceleration startup mode. Valid values:
         # 
@@ -48,7 +48,7 @@ class CreatePolarFsRequest(DaraModel):
         # - **juice**: file system acceleration.
         # - **alluxio**: transparent acceleration.
         self.accelerate_type = accelerate_type
-        # The list of authorized accounts for the Cold Storage Edition instance, separated by commas (`,`).
+        # The list of authorized accounts for the cold storage edition instance. Separate multiple accounts with commas (`,`).
         self.authorized_user_ids = authorized_user_ids
         # Specifies whether to enable auto-renewal. Valid values:
         # 
@@ -60,10 +60,10 @@ class CreatePolarFsRequest(DaraModel):
         # > This parameter takes effect only when the **PayType** parameter is set to **Prepaid**.
         self.auto_renew = auto_renew
         # Specifies whether to automatically use coupons. Valid values:
-        # - **true**: uses coupons. This is the default value.
+        # - **true**: uses coupons (default).
         # - **false**: does not use coupons.
         self.auto_use_coupon = auto_use_coupon
-        # The edition. Valid values: basic (Basic Edition, default), high_performance (High-performance Edition), and cold (Cold Storage Edition). For the basic edition, you must specify AccelerateSwitch and AccelerateStorageSize. For the high_performance edition, you must specify StorageType (essdpl0 or essdpl1). For the cold edition, StorageType (local_redundancy or city_redundancy) is optional.
+        # The edition. Valid values: basic (Basic Edition, default), high_performance (High-performance Edition), and cold (Cold Storage Edition). For the basic edition, you must specify the AccelerateSwitch and AccelerateStorageSize parameters. For the high_performance edition, you must specify the StorageType parameter (essdpl0 or essdpl1). For the cold edition, the StorageType parameter (local_redundancy or city_redundancy) is optional.
         self.creation_category = creation_category
         # The number of buckets.
         # 
@@ -75,7 +75,7 @@ class CreatePolarFsRequest(DaraModel):
         self.custom_bucket_path = custom_bucket_path
         # The bucket and corresponding path information.
         # 
-        # > This parameter is required for transparent acceleration.
+        # > This parameter is required for transparent acceleration scenarios.
         self.custom_bucket_path_list = custom_bucket_path_list
         # The custom AccessKey ID.
         self.custom_oss_ak = custom_oss_ak
@@ -83,24 +83,22 @@ class CreatePolarFsRequest(DaraModel):
         self.custom_oss_sk = custom_oss_sk
         # The PolarDB cluster ID. This parameter is required when you call this operation. If this parameter is not specified, the InvalidDBClusterId.Malformed error is returned.
         self.dbcluster_id = dbcluster_id
-        # The database ecosystem. Valid values:
-        # - **MySQL**
-        # - **PostgreSQL**
+        # The database ecosystem. Valid values: polardb_mysql (PolarDB for MySQL), polardb_pg (PolarDB for PostgreSQL), and polar_agentic_db (AgenticDB). The gateway maps these values to the mysql, postgresql, and agentic_db backends respectively. Pass the request value instead of the display name such as MySQL or PostgreSQL. If an ActionUnauthorized (HTTP 403) error is returned, check the call permissions.
         self.dbtype = dbtype
         # The billing method. Valid values: 
         # 
-        # - **Postpaid**: pay-as-you-go
-        # - **Prepaid**: subscription
+        # - **Postpaid**: pay-as-you-go.
+        # - **Prepaid**: subscription.
         self.pay_type = pay_type
-        # If the **PayType** parameter is set to **Prepaid**, this parameter is required. Specifies the billing cycle of the upfront cluster. Valid values: 
+        # If the billing method is **Prepaid**, this is a required pass parameter. Specifies whether the subscription cluster is billed by year or by month. 
         # 
-        # - **Year**: year.
-        # - **Month**: month.
+        # - **Year**: year. If you select subscription, the unit is year.
+        # - **Month**: month. If you select subscription, the unit is month.
         self.period = period
         # The coupon code. If this parameter is not specified, the default coupon is used.
         self.promotion_code = promotion_code
         # The region ID.
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query region IDs.
+        # >You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -110,7 +108,7 @@ class CreatePolarFsRequest(DaraModel):
         self.storage_space = storage_space
         # The storage type. For the high_performance edition, use lowercase essdpl0 or essdpl1. For the cold edition, use local_redundancy or city_redundancy. Select the value based on the edition. The value is case-sensitive.
         self.storage_type = storage_type
-        # This parameter is required when the **PayType** parameter is set to **Prepaid**.
+        # The subscription duration. This parameter is required when the **PayType** parameter is set to **Prepaid**.
         # - If the **Period** parameter is set to **Month**, the value of **UsedTime** must be an integer in the range of `[1-9]`.
         # - If the **Period** parameter is set to **Year**, the value of **UsedTime** must be an integer in the range of `[1-3]`.
         self.used_time = used_time

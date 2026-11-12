@@ -15,13 +15,13 @@ class DeleteAIDBClusterTaskRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The task ID.
+        # The task ID. Note: This parameter specifies the ID of the model operator task instance created by calling CreateAIDBClusterTask, which is prefixed with pm-*. It does not refer to the PolarDB cluster ID, which is prefixed with pc-*. You can obtain the task ID by calling DescribeAIDBClusterTasks.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
         self.region_id = region_id
-        # The ID of the PolarDB database instance for the AI model service.
+        # The PolarDB database instance ID for AI model services. Note: When you invoke this operation, this parameter is practically required. If it is not provided, a valid DBClusterId will result in an InvalidDBClusterId.Malformed (400) error. This parameter specifies the parent PolarDB AI cluster (prefixed with pc-*) to which the task belongs.
         self.relative_dbcluster_id = relative_dbcluster_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

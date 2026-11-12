@@ -15,11 +15,11 @@ class DescribeAccountsResponseBody(DaraModel):
         page_record_count: int = None,
         request_id: str = None,
     ):
-        # The details of the account.
+        # The details of the account information.
         self.accounts = accounts
-        # The page number. Pages start from page 1.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries on the current page.
         self.page_record_count = page_record_count
         # The request ID.
         self.request_id = request_id
@@ -81,35 +81,30 @@ class DescribeAccountsResponseBodyAccounts(DaraModel):
         account_type: str = None,
         database_privileges: List[main_models.DescribeAccountsResponseBodyAccountsDatabasePrivileges] = None,
     ):
-        # The description of the database account.
+        # The description of the account.
         self.account_description = account_description
         # The lock status of the account. Valid values:
         # 
         # - **UnLock**: The account is not locked.
-        # 
         # - **Lock**: The account is locked.
         self.account_lock_state = account_lock_state
-        # The name of the database account.
+        # The name of the account.
         self.account_name = account_name
-        # The validity period of the password.
+        # The validity period of the account password. A value of `undefined` indicates that no validity period is set. A value of `infinity` indicates that the password never expires. A value of `-infinity` indicates that the password has expired. If an expiration time is specified, a UTC time string in the ISO 8601 format (`YYYY-MM-DDThh:mm:ssZ`) is returned instead of a timestamp.
         self.account_password_valid_time = account_password_valid_time
-        # The status of the database account. Valid values:
+        # The status of the account. Valid values:
         # 
         # - **Creating**: The account is being created.
-        # 
         # - **Available**: The account is available.
-        # 
         # - **Deleting**: The account is being deleted.
         self.account_status = account_status
         # The type of the account. Valid values:
         # 
-        # - **Normal**: standard account.
-        # 
-        # - **Super**: privileged account.
-        # 
-        # - **ReadOnly**: global read-only account.
+        # - **Normal**: standard account
+        # - **Super**: privileged account
+        # - **ReadOnly**: global read-only account
         self.account_type = account_type
-        # The list of database permissions that are granted to the account.
+        # The details of the database permissions owned by the account.
         self.database_privileges = database_privileges
 
     def validate(self):
@@ -184,7 +179,7 @@ class DescribeAccountsResponseBodyAccountsDatabasePrivileges(DaraModel):
     ):
         # The permissions of the account.
         self.account_privilege = account_privilege
-        # The database name.
+        # The name of the database.
         self.dbname = dbname
 
     def validate(self):

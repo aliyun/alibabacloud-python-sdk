@@ -11,9 +11,9 @@ class DisableDBClusterOrcaResponseBody(DaraModel):
         request_id: str = None,
     ):
         # The cluster ID.
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters under your account, including the cluster ID.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters under your account, including their cluster IDs.
         self.dbcluster_id = dbcluster_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

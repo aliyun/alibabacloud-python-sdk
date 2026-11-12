@@ -16,7 +16,7 @@ class DescribePolarClawMCPServersRequest(DaraModel):
         # 
         # This parameter is required.
         self.application_id = application_id
-        # A list of MCP server names. If this parameter is empty, the configurations of all MCP servers are returned.
+        # The list of MCP server names to query. If this parameter is left empty, all MCP servers are returned.
         self.server_list = server_list
 
     def validate(self):

@@ -26,17 +26,17 @@ class CreateRateLimitPolicyRequest(DaraModel):
         # 
         # This parameter is required.
         self.rate_limit_tpm = rate_limit_tpm
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
-        # The ID of the consumer group or consumer.
+        # The ID of the throttling dimension (ConsumerGroup ID or Consumer ID).
         # 
         # This parameter is required.
         self.scope_ref_id = scope_ref_id
-        # The rate limiting dimension. Valid values:
+        # The throttling dimension. Valid values:
         # 
-        # - **ConsumerGroup**: Consumer group
+        # - **ConsumerGroup**: user group
         # 
-        # - **Consumer**: Consumer
+        # - **Consumer**: user
         # 
         # This parameter is required.
         self.scope_type = scope_type

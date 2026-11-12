@@ -12,13 +12,13 @@ class DescribeBudgetUsageRequest(DaraModel):
         gw_cluster_id: str = None,
         region_id: str = None,
     ):
-        # The budget dimension reference ID.
+        # The reference ID of the budget dimension. If BudgetDimensionType is set to Global, set this parameter to Global. If BudgetDimensionType is set to Consumer, set this parameter to the consumer ID returned by DescribeBudgetPolicies, such as consumer-xxx. If BudgetDimensionType is set to ConsumerGroup, set this parameter to the consumer group ID, such as cg-xxx.
         self.budget_dimension_ref_id = budget_dimension_ref_id
-        # The budget dimension type.
+        # The budget dimension type. Valid values: Global (global budget), Consumer (consumer budget), and ConsumerGroup (consumer group budget).
         self.budget_dimension_type = budget_dimension_type
-        # The ID of the gateway instance.
+        # The ID of the gateway instance to query. This parameter is required. If this parameter is not specified, the API returns InvalidPolarGatewayInstanceId.NotFound (404).
         self.gw_cluster_id = gw_cluster_id
-        # The region ID of the gateway instance.
+        # The ID of the region where the gateway instance resides.
         self.region_id = region_id
 
     def validate(self):

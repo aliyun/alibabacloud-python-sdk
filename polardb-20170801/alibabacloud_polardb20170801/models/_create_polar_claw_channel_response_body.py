@@ -36,7 +36,7 @@ class CreatePolarClawChannelResponseBody(DaraModel):
         self.plugin_installed = plugin_installed
         # **The request ID.**
         self.request_id = request_id
-        # Indicates whether the gateway is restarted.
+        # Indicates whether the gateway has been restarted.
         self.restarted = restarted
 
     def validate(self):

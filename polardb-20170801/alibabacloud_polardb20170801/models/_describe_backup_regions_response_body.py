@@ -12,7 +12,7 @@ class DescribeBackupRegionsResponseBody(DaraModel):
         regions: List[str] = None,
         request_id: str = None,
     ):
-        # The list of regions where the backup sets are stored.
+        # The list of regions where backup sets are located.
         self.regions = regions
         # The request ID.
         self.request_id = request_id

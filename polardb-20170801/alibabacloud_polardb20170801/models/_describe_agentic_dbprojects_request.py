@@ -15,17 +15,17 @@ class DescribeAgenticDBProjectsRequest(DaraModel):
         region_id: str = None,
         tenant_id: str = None,
     ):
-        # The ID of the AgenticDB cluster.
+        # The ID of the AgenticDB cluster. The ID starts with pagc-. You can create the cluster by calling CreateDBCluster and setting AgenticDbType to dedicated.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 30. Maximum value: 100.
+        # The number of entries to return on each page. Default value: 30. Maximum value: 100.
         self.page_size = page_size
-        # The project ID for exact match.
+        # The project ID for exact matching.
         self.project_id = project_id
-        # The project name for fuzzy match.
+        # The project name for fuzzy matching.
         self.project_name = project_name
         # The region ID.
         # 

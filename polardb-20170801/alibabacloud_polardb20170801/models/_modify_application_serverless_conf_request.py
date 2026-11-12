@@ -17,7 +17,7 @@ class ModifyApplicationServerlessConfRequest(DaraModel):
         # 
         # This parameter is required.
         self.application_id = application_id
-        # The list of Serverless configurations.
+        # The serverless configuration list.
         # 
         # This parameter is required.
         self.serverless_conf_list = serverless_conf_list
@@ -63,17 +63,14 @@ class ModifyApplicationServerlessConfRequestServerlessConfList(DaraModel):
         scale_max: str = None,
         scale_min: str = None,
     ):
-        # The type of the application sub-component.
-        # 
-        # For Supabase, valid values are:
+        # The type of the application subcomponent. For supabase, valid values:
         # 
         # - gateway
-        # 
         # - backend
         self.component_type = component_type
-        # The maximum number of PCUs for a single node. Valid values: 0 to 16.
+        # The upper limit of scaling per node. Valid values: 0 to 16 PCUs.
         self.scale_max = scale_max
-        # The minimum number of PolarDB Capacity Units (PCUs) for a single node. Valid values: 0 to 16.
+        # The lower limit of scaling per node. Valid values: 0 to 16 PCUs.
         self.scale_min = scale_min
 
     def validate(self):

@@ -22,9 +22,9 @@ class DescribePolarFsQuotaResponseBody(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The number of records on the current page.
+        # The number of entries on the current page.
         self.page_record_count = page_record_count
-        # The number of records per page. Valid values: 5 to 50. Default value: 10.
+        # The number of entries per page. Valid values: 5 to 50. Default value: 10.
         self.page_size = page_size
         # The directory path.
         self.path = path
@@ -34,9 +34,9 @@ class DescribePolarFsQuotaResponseBody(DaraModel):
         self.policy_items = policy_items
         # The quota information.
         self.quota_items = quota_items
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
-        # The total number of records.
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -135,7 +135,7 @@ class DescribePolarFsQuotaResponseBodyQuotaItems(DaraModel):
     ):
         # The capacity. Unit: bytes.
         self.capacity = capacity
-        # Inodes
+        # The inode quota of the file system.
         self.inodes = inodes
         # The directory path.
         self.path = path
@@ -203,32 +203,31 @@ class DescribePolarFsQuotaResponseBodyPolicyItems(DaraModel):
         priority: int = None,
         size_limit: int = None,
     ):
-        # The TTL for access time. Unit: seconds.
+        # The time-to-live (TTL) for the access time. Unit: seconds.
         self.access_ttl = access_ttl
-        # The TTL for change time. Unit: seconds.
+        # The time-to-live (TTL) for the change time. Unit: seconds.
         self.change_ttl = change_ttl
         # The rule description.
         self.description = description
         # Specifies whether the rule is enabled. Valid values:
-        # 
-        # - **true**: The new event takes effect immediately for new transactions. This is the default value.
-        # - **false**: The new event does not take effect for new transactions.
+        # - **true**: New events take effect immediately on new transactions. This is the default value.
+        # - **false**: New events do not take effect on new transactions.
         self.enabled = enabled
         # The matching rule for excluding specific paths.
-        # - A path pattern that starts with `/` (supports `*`, `?`, and `**` glob syntax).
+        # - Path patterns starting with `/` (supports glob syntax such as `*`, `?`, and `**`).
         self.exclude = exclude
-        # The file count limit for users in the directory.
+        # The limit on the number of files for users in the directory.
         self.file_count_limit = file_count_limit
         # The rule ID.
         self.id = id
-        # The glob pattern for matching paths.
-        # - A path pattern that starts with `/` (supports `*`, `?`, and `**` glob syntax).
+        # The wildcard pattern for matching paths.
+        # - Path patterns starting with `/` (supports glob syntax such as `*`, `?`, and `**`).
         self.include = include
         # The rule name.
         self.name = name
         # The priority of the quota rule.
         self.priority = priority
-        # The total file capacity limit for the directory. Unit: GB.
+        # The total capacity limit for files in the directory. Unit: GB.
         # - Note: The value must be at least 1 GB.
         self.size_limit = size_limit
 

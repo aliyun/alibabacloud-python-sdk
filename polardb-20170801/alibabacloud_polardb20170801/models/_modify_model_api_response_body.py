@@ -10,9 +10,9 @@ class ModifyModelApiResponseBody(DaraModel):
         model_api_id: str = None,
         request_id: str = None,
     ):
-        # The model API ID.
+        # The ID of the model API.
         self.model_api_id = model_api_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

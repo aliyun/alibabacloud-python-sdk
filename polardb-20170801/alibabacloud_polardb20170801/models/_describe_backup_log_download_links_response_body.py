@@ -13,7 +13,7 @@ class DescribeBackupLogDownloadLinksResponseBody(DaraModel):
         backup_log_download_link_item: List[main_models.DescribeBackupLogDownloadLinksResponseBodyBackupLogDownloadLinkItem] = None,
         request_id: str = None,
     ):
-        # The details of the redo log backups.
+        # The redo log backup details.
         self.backup_log_download_link_item = backup_log_download_link_item
         # The request ID.
         self.request_id = request_id
@@ -62,17 +62,17 @@ class DescribeBackupLogDownloadLinksResponseBodyBackupLogDownloadLinkItem(DaraMo
         link_expired_time: str = None,
         message: str = None,
     ):
-        # The ID of the physical backup log.
+        # The redo log backup ID.
         self.backup_log_id = backup_log_id
-        # The public download URL of the physical backup log.
+        # The public download link of the redo log backup.
         self.download_link = download_link
-        # The error code for a single item. This parameter is empty if the request is successful.
+        # The error code for the single entry. Empty if the operation is successful.
         self.error_code = error_code
-        # The internal network download URL of the physical backup log.
+        # The internal network download link of the redo log backup.
         self.intranet_download_link = intranet_download_link
-        # The expiration time of the download URL. The time is displayed in UTC.
+        # The expiration time of the download links, in UTC.
         self.link_expired_time = link_expired_time
-        # The error message for a single item. This parameter is empty if the request is successful.
+        # The error message for the single entry. Empty if the operation is successful.
         self.message = message
 
     def validate(self):

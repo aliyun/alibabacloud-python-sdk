@@ -19,13 +19,15 @@ class CreateAgenticDBProjectResponseBody(DaraModel):
     ):
         # The ID of the compute instance bound to the default branch.
         self.branch_compute_cluster_id = branch_compute_cluster_id
-        # The time when the project was created. The time is displayed in ISO 8601 format in UTC (YYYY-MM-DDTHH:mm:ssZ).
+        # The time when the project was created.
+        # 
+        # The time follows the ISO 8601 standard in the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
         self.create_time = create_time
         # The ID of the default branch.
         self.default_branch_id = default_branch_id
         # The name of the default branch.
         self.default_branch_name = default_branch_name
-        # The retention period for recent records of the project. This parameter may be empty for older projects. To query the current effective value, call DescribeAgenticDBProjectHistoryRetention.
+        # The retention period of historical data, in seconds.
         self.history_retention_seconds = history_retention_seconds
         # The ID of the new project.
         self.project_id = project_id

@@ -12,7 +12,7 @@ class DescribePolarClawSkillAssessmentResponseBody(DaraModel):
     ):
         # The assessment result.
         self.assessment_result = assessment_result
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

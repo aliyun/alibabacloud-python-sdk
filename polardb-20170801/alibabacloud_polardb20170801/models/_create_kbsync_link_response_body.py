@@ -18,17 +18,13 @@ class CreateKBSyncLinkResponseBody(DaraModel):
         sync_interval_minutes: int = None,
         sync_status: str = None,
     ):
-        # The client ID.
+        # The client identifier.
         self.client_id = client_id
-        # The creation time.
-        # 
-        # The time is displayed in ISO 8601 format in the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
+        # The creation time. The time is displayed in ISO 8601 format in the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
         self.creation_time = creation_time
         # The description of the synchronization link.
         self.description = description
-        # The source channel of the synchronization link. Valid values:
-        # - FEISHU 
-        # - SHAREPOINT
+        # The source channel of the synchronization link. Valid values: OSS, DINGTALK, FEISHU, and SHAREPOINT.
         self.im_platform = im_platform
         # The ID of the synchronization link.
         self.link_id = link_id

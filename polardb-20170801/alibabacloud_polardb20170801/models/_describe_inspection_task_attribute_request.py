@@ -10,9 +10,9 @@ class DescribeInspectionTaskAttributeRequest(DaraModel):
         region_id: str = None,
         task_id: str = None,
     ):
-        # The ID of the region where the task resides.
+        # The region ID of the task.
         self.region_id = region_id
-        # The ID of the inspection task to query. This parameter is required.
+        # The ID of the inspection task to query. This parameter is required. If this parameter is not specified, the service returns the InvalidTaskId.Malformed error.
         self.task_id = task_id
 
     def validate(self):

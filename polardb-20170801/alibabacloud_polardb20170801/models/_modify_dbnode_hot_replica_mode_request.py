@@ -15,20 +15,19 @@ class ModifyDBNodeHotReplicaModeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the cluster.
-        # 
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+        # The cluster ID.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters under your account, including the cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The ID of the node in the cluster.
+        # The ID of the database cluster node.
         # 
         # This parameter is required.
         self.dbnode_id = dbnode_id
-        # Specifies whether to enable the hot standby feature. Valid values:
-        # 
-        # *   **ON**
-        # *   **OFF**
+        # Specifies whether to enable hot standby. Valid values:
+        # - **ON**: Enabled.
+        # - **OFF**: Disabled.
+        # Limits: This operation is supported only for non-serverless MySQL clusters. The target node must be a read-only node. Each cluster allows only one node to have HotReplicaMode (ON). Usage notes: Append the following limits to the end of the HotReplicaMode parameter description: this operation is supported only for non-serverless MySQL clusters. The target node must be a read-only node. Each cluster allows only one node to have HotReplicaMode (ON).
         # 
         # This parameter is required.
         self.hot_replica_mode = hot_replica_mode

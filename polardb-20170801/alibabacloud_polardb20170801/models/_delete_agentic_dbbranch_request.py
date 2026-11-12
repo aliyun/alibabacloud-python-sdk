@@ -13,15 +13,15 @@ class DeleteAgenticDBBranchRequest(DaraModel):
         region_id: str = None,
         tenant_id: str = None,
     ):
-        # The branch ID.
+        # The branch ID. You can obtain this ID by calling CreateAgenticDBBranch.
         # 
         # This parameter is required.
         self.branch_id = branch_id
-        # The AgenticDB cluster ID.
+        # The AgenticDB cluster ID. You can obtain this ID by calling CreateDBCluster and setting AgenticDbType to dedicated. The ID starts with pagc-.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The project ID.
+        # The project ID. You can obtain this ID by calling CreateAgenticDBProject.
         # 
         # This parameter is required.
         self.project_id = project_id
@@ -29,7 +29,7 @@ class DeleteAgenticDBBranchRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The tenant ID.
+        # The tenant ID. You can obtain this ID by calling CreateAgenticDBTenant or CreateAgenticDBProject.
         # 
         # This parameter is required.
         self.tenant_id = tenant_id

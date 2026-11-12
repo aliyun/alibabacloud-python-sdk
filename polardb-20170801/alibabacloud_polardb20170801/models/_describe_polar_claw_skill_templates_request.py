@@ -16,25 +16,25 @@ class DescribePolarClawSkillTemplatesRequest(DaraModel):
         skill_template_id: str = None,
         start_time: str = None,
     ):
-        # The application ID.
+        # The application ID. You can call the DescribeApplications operation to obtain a valid ApplicationId value. This parameter is conditionally required. If SkillTemplateId is not specified, you must provide a valid ApplicationId.
         self.application_id = application_id
         # The application type.
         # 
-        # > If you are calling this operation for the first time, you do not need to specify this parameter.
+        # > If you call this operation for the first time, you do not need to specify this parameter.
         self.application_type = application_type
-        # The end time of the query in UTC.
+        # The end time of the query. The time is in UTC.
         self.end_time = end_time
-        # The current page number.
+        # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
         # The region ID.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query all available regions for the current account, including region IDs.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query all available regions under the current account, including region IDs.
         self.region_id = region_id
         # The skill template ID.
         self.skill_template_id = skill_template_id
-        # The start time of the query in UTC.
+        # The start time of the query. The time is in UTC.
         self.start_time = start_time
 
     def validate(self):

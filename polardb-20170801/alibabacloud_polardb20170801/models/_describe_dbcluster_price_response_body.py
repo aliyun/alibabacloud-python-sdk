@@ -20,9 +20,9 @@ class DescribeDBClusterPriceResponseBody(DaraModel):
         # * BUY: new purchase.
         # * UPGRADE: specification change.
         # * RENEW: renewal.
-        # * CONVERT: billing method conversion.
+        # * CONVERT: billing method change.
         self.order_type = order_type
-        # The price details.
+        # The pricing details.
         self.price_info = price_info
         # The request ID.
         self.request_id = request_id

@@ -20,11 +20,11 @@ class DescribeAgenticDBProjectsResponseBody(DaraModel):
         self.items = items
         # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries returned per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of projects.
         self.total_count = total_count
 
     def validate(self):
@@ -94,11 +94,11 @@ class DescribeAgenticDBProjectsResponseBodyItems(DaraModel):
         status: str = None,
         tenant_id: str = None,
     ):
-        # The number of all undeleted branches in the project, including hibernated branches and branches not bound to compute nodes. This parameter is empty if not provided by earlier backend versions, which does not indicate zero branches.
+        # The number of undeleted branches.
         self.branch_count = branch_count
-        # The creation time.
+        # The time when the project was created.
         # 
-        # The time follows the ISO 8601 standard in the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
+        # The time is in ISO 8601 format in the UTC time zone (YYYY-MM-DDTHH:mm:ssZ).
         self.create_time = create_time
         # The ID of the associated AgenticDB cluster.
         self.dbcluster_id = dbcluster_id
@@ -106,11 +106,11 @@ class DescribeAgenticDBProjectsResponseBodyItems(DaraModel):
         self.default_branch_id = default_branch_id
         # The name of the default branch.
         self.default_branch_name = default_branch_name
-        # The description.
+        # The description of the project.
         self.description = description
-        # The retention period of recent records for the project. This parameter may be empty for earlier projects. To query the current effective value, call DescribeAgenticDBProjectHistoryRetention.
+        # The retention period of historical data, in seconds.
         self.history_retention_seconds = history_retention_seconds
-        # Project ID
+        # The project ID.
         self.project_id = project_id
         # The name of the project.
         self.project_name = project_name

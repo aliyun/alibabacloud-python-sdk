@@ -18,7 +18,7 @@ class DescribePolarFsMappingResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: str = None,
     ):
-        # The instance-level default AccessKey ID.
+        # The default AccessKey ID for the instance.
         self.default_access_key_id = default_access_key_id
         # The page number.
         self.page_number = page_number
@@ -112,7 +112,7 @@ class DescribePolarFsMappingResponseBodyPathMappingItems(DaraModel):
     ):
         # The storage bucket.
         self.bucket = bucket
-        # The AccessKey ID of the storage bucket.
+        # The AccessKey ID for the storage bucket.
         self.bucket_access_key_id = bucket_access_key_id
         # The mapped path.
         self.path = path

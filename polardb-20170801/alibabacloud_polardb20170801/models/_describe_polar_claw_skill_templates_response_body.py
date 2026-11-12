@@ -28,9 +28,9 @@ class DescribePolarClawSkillTemplatesResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The skill template group.
+        # The skill templates.
         self.skill_templates = skill_templates
-        # The total number of entries. This parameter is returned only when you query a list.
+        # The total number of entries. This parameter is returned only for list queries.
         self.total_count = total_count
 
     def validate(self):
@@ -98,11 +98,11 @@ class DescribePolarClawSkillTemplatesResponseBodySkillTemplates(DaraModel):
         skill_template_type: str = None,
         src_application_id: str = None,
     ):
-        # The time when the skill template was created in UTC.
+        # The time when the skill template was created. The time is in UTC.
         self.created = created
         # The rule ID.
         self.id = id
-        # The time when the skill template was last modified in UTC.
+        # The time when the skill template was last modified. The time is in UTC.
         self.modified = modified
         # The number of skills.
         self.skill_counts = skill_counts
@@ -112,7 +112,9 @@ class DescribePolarClawSkillTemplatesResponseBodySkillTemplates(DaraModel):
         self.skill_template_id = skill_template_id
         # The skill template name.
         self.skill_template_name = skill_template_name
-        # The skill templatetype. Valid values: 0: system template. 1: user template.
+        # The skill templatetype. Valid values:
+        # - 0: System template.
+        # - 1: User template.
         self.skill_template_type = skill_template_type
         # The source application ID.
         self.src_application_id = src_application_id

@@ -17,11 +17,11 @@ class DescribeHistoryEventsStatRequest(DaraModel):
         # - UnArchived: The events are not archived.
         # - All: All events.
         self.archive_status = archive_status
-        # The start time of the time range for task start times to query, in the YYYY-MM-DDThh:mm:ssZ format (UTC).
+        # The start time of the query time range for the task start time. Specify the time in the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time must be in UTC. This parameter is required. If you do not specify this parameter, the service returns a Param.Invalid (400) error.
         self.from_start_time = from_start_time
         # The ID of the region where the events are located.
         self.region_id = region_id
-        # The end time of the time range for task start times to query, in the YYYY-MM-DDThh:mm:ssZ format (UTC).
+        # The end time of the query time range for the task start time. Specify the time in the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time must be in UTC. This parameter is required. If you do not specify this parameter, the service returns a Param.Invalid (400) error.
         self.to_start_time = to_start_time
 
     def validate(self):

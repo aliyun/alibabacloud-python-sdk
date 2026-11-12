@@ -10,9 +10,9 @@ class CheckDBNameZonalResponseBody(DaraModel):
         dbname: str = None,
         request_id: str = None,
     ):
-        # The database name.
+        # The name of the database.
         self.dbname = dbname
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

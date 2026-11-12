@@ -11,13 +11,12 @@ class ModifyDBNodeHotReplicaModeResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the cluster.
-        # 
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+        # The cluster ID.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information of all clusters in the target region, including the cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The ID of the order.
+        # The ID of the generated order.
         self.order_id = order_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

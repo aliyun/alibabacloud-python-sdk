@@ -18,34 +18,31 @@ class RestartDBNodeRequest(DaraModel):
         resource_owner_id: int = None,
     ):
         # The ID of the cluster node.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/185342.html) operation to view the details of all clusters under your account, including the node ID.
         # 
-        # > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/185342.html) operation to query the details of all clusters under your account, including node IDs.
+        # > Nodes in Serverless (AgileServerless) clusters are not supported. Operation description: This operation does not support nodes in Serverless (AgileServerless) clusters. You can check the ServerlessType field in the DescribeDBClusters response to determine the cluster type. For Serverless clusters, use the alternative management operations.
         # 
         # This parameter is required.
         self.dbnode_id = dbnode_id
-        # Specifies whether to restart the node immediately or at a scheduled time. Valid values:
+        # Specifies whether to execute the node restart task immediately or at a scheduled time. Valid values:
         # 
-        # - **false** (default): The node is restarted at a scheduled time.
+        # - **false** (default): Executes the task at a scheduled time.
         # 
-        # - **true**: The node is restarted immediately.
+        # - **true**: Executes the task immediately.
         self.from_time_service = from_time_service
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The latest time to start the scheduled task. The time must be in the `YYYY-MM-DDThh:mm:ssZ` format and in UTC.
-        # 
-        # > - The latest time must be at least 30 minutes later than the earliest time.
-        # >
-        # > - If PlannedStartTime is specified but this parameter is not, the latest start time of the task is PlannedStartTime plus 30 minutes by default. For example, if PlannedStartTime is set to `2021-01-14T09:00:00Z` and this parameter is empty, the task starts no later than `2021-01-14T09:30:00Z`.
+        # The latest time to start the scheduled task. The time must be in the `YYYY-MM-DDThh:mm:ssZ` format (UTC).
+        # > * The end time must be at least 30 minutes later than the start time.
+        # > * If `PlannedStartTime` is specified but this parameter is not, the latest time to start the task defaults to the start time plus 30 minutes. For example, if `PlannedStartTime` is set to `2021-01-14T09:00:00Z` and this parameter is left empty, the task will start no later than `2021-01-14T09:30:00Z`.
         self.planned_end_time = planned_end_time
-        # The earliest time to start the scheduled node restart. The task is executed within a specified time window. The time must be in the `YYYY-MM-DDThh:mm:ssZ` format and in UTC.
-        # 
-        # > - The start time can be set to any point in time within the next 72 hours. For example, if the current time is `2021-01-14T09:00:00Z`, the start time can be set to a value in the range from `2021-01-14T09:00:00Z` to `2021-01-17T09:00:00Z`.
-        # >
-        # > - If this parameter is empty, the node is restarted immediately.
+        # The earliest time to start the scheduled node restart task. The time must be in the `YYYY-MM-DDThh:mm:ssZ` format (UTC).
+        # > * The start time must be within the next 72 hours. For example, if the current time is `2021-01-14T09:00:00Z`, the allowed start time ranges from `2021-01-14T09:00:00Z` to `2021-01-17T09:00:00Z`.
+        # > * If this parameter is left empty, the node restart task is executed immediately by default.
         self.planned_start_time = planned_start_time
         # The region ID.
         # 
-        # > Call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the available regions.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to view the available regions.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

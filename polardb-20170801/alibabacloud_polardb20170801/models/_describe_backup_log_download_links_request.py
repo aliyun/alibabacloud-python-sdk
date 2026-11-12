@@ -11,11 +11,15 @@ class DescribeBackupLogDownloadLinksRequest(DaraModel):
         dbcluster_id: str = None,
         expire_hours: int = None,
     ):
-        # The IDs of the redo log backups.
+        # The redo log backup IDs.
+        # 
+        # > First, invoke DescribeBackupLogs to obtain valid IDs. This parameter is required when you invoke the operation. If omitted, an InvalidArchiveLogIds.Malformed error (HTTP 400) is returned.
         self.backup_log_ids = backup_log_ids
         # The cluster ID.
+        # 
+        # > This parameter is required for the call. If omitted, an InvalidDBClusterId.Malformed error (HTTP 400) is returned.
         self.dbcluster_id = dbcluster_id
-        # The validity period of the download URL in hours. Valid values: 1 to 596523.
+        # The validity period of the download links, in hours. Valid values: 1 to 596523.
         self.expire_hours = expire_hours
 
     def validate(self):

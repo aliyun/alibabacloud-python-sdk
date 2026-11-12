@@ -15,11 +15,11 @@ class DescribeSearchModifyParameterLogResponseBody(DaraModel):
         items: List[main_models.DescribeSearchModifyParameterLogResponseBodyItems] = None,
         request_id: str = None,
     ):
-        # The type of the Search engine.
+        # The type of the search engine.
         self.engine = engine
-        # The database engine version of the Search DPI engine. This is not the MySQL version of the primary cluster.
+        # The database engine version of the Search DPI engine, which is not the MySQL version of the primary cluster.
         self.engine_version = engine_version
-        # The parameter modification history. The records are returned in descending order of record IDs.
+        # The parameter modification history, returned in descending order of record ID.
         self.items = items
         # The ID of the request.
         self.request_id = request_id
@@ -79,17 +79,15 @@ class DescribeSearchModifyParameterLogResponseBodyItems(DaraModel):
         parameter_name: str = None,
         status: str = None,
     ):
-        # The time when the parameter was modified. The time is displayed in the yyyy-MM-ddTHH:mm:ssZ format in UTC.
+        # The time when the parameter was modified. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.modify_time = modify_time
-        # The new value of the parameter.
+        # The parameter value after the modification.
         self.new_parameter_value = new_parameter_value
-        # The original value of the parameter.
+        # The parameter value before the modification.
         self.old_parameter_value = old_parameter_value
         # The name of the parameter.
         self.parameter_name = parameter_name
-        # The modification status. Valid values:
-        # - Syncing: The modification has not taken effect.
-        # - Applied: The modification has taken effect.
+        # The modification status. A value of Syncing indicates that the modification is not in effect. A value of Applied indicates that the modification is in effect.
         self.status = status
 
     def validate(self):

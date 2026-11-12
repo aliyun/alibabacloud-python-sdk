@@ -16,15 +16,15 @@ class DescribeAIDBClusterTaskLogFilesRequest(DaraModel):
         reverse: bool = None,
         start_time: str = None,
     ):
-        # The ID of the model operator instance.
+        # The instance ID of the model operator.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The end of the time range to query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
+        # The end time of the query. Specify the time in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The log type. Set the value to:
+        # The log type. Valid values:
         # 
         # - **sls**
         # 
@@ -32,15 +32,13 @@ class DescribeAIDBClusterTaskLogFilesRequest(DaraModel):
         self.log_type = log_type
         # The page number.
         self.page_number = page_number
-        # The number of records to return on each page. Valid values: **30**, **50**, and **100**.
-        # 
-        # The default value is **100**.
+        # The number of entries per page. Valid values: **30**, **50**, and **100**. Default value: **100**.
         self.page_size = page_size
-        # The ID of the PolarDB cluster.
+        # The instance ID of the associated PolarDB instance.
         self.relative_dbcluster_id = relative_dbcluster_id
-        # Specifies whether to return the results in reverse order. The default value is *false*.
+        # Specifies whether to sort the results in descending order. Default value: *false*.
         self.reverse = reverse
-        # The start of the time range to query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
+        # The start time of the query. Specify the time in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
         # 
         # This parameter is required.
         self.start_time = start_time

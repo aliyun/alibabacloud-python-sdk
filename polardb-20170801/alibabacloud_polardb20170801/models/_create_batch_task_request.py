@@ -23,11 +23,11 @@ class CreateBatchTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_ids = instance_ids
-        # The per-instance parameter overrides (JSON object: instanceId -> param). This parameter is used in scenarios where multiple instances have different targets, such as different agent workspaces.
+        # The per-instance task parameters in JSON object format (instanceId -> param). This parameter is used in scenarios where multiple instances have different targets, such as different agent workspaces.
         self.instance_params = instance_params
-        # The archive parameters.
+        # The task parameters.
         self.param = param
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to view the regions of all clusters under the target account.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to view the region information of all clusters under the account.
         # 
         # This parameter is required.
         self.region_id = region_id

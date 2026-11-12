@@ -16,41 +16,35 @@ class DescribeAIDBClusterTaskMetricsRequest(DaraModel):
         reverse: bool = None,
         start_time: str = None,
     ):
-        # The cluster ID.
+        # The cluster ID. Usage note: This parameter accepts only the ID of a training AIDB cluster created by calling CreateAIDBClusterTask. MaaS clusters with RunType set to maas are not supported.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The end time of the query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format in UTC.
+        # The end time of the query. Format: `yyyy-MM-ddTHH:mm:ssZ` (UTC time).
         # 
         # This parameter is required.
         self.end_time = end_time
         # The metric type. Valid values:
-        # 
         # - `all`
-        # 
         # - `train`
-        # 
         # - `eval`
         # 
-        # > The default value is *all*.
+        # > Default value: *all*.
         self.metric_type = metric_type
-        # The page number of the query result.
+        # The page number of the query results.
         self.page_number = page_number
-        # The number of records to return on each page. Valid values:
+        # The number of entries per page. Valid values:
+        # * **30**
+        # * **50**
+        # * **100**
         # 
-        # - **30**
-        # 
-        # - **50**
-        # 
-        # - **100**
-        # 
-        # The default value is 100.
+        # Default value: 100.
         self.page_size = page_size
-        # The ID of the associated PolarDB instance.
+        # The instance ID of the associated PolarDB.
         self.relative_dbcluster_id = relative_dbcluster_id
-        # Specifies whether to sort the results in reverse order. The default value is *false*.
+        # Specifies whether to sort the results in descending order. Default value: *false*.
         self.reverse = reverse
-        # The start time of the query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format in UTC.
+        # The start time of the query. Format: `yyyy-MM-ddTHH:mm:ssZ` (UTC time).
         # 
         # This parameter is required.
         self.start_time = start_time

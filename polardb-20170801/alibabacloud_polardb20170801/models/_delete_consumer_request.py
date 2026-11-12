@@ -11,7 +11,7 @@ class DeleteConsumerRequest(DaraModel):
         gw_cluster_id: str = None,
         region_id: str = None,
     ):
-        # The consumer ID.
+        # The ID of the consumer.
         # 
         # This parameter is required.
         self.consumer_id = consumer_id

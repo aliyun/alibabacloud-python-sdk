@@ -9,7 +9,7 @@ class DeleteApplicationResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The unique identifier for the API request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

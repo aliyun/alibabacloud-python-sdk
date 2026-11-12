@@ -23,7 +23,7 @@ class RegisterAIDBClusterCustomModelRequest(DaraModel):
         registry_password: str = None,
         registry_username: str = None,
     ):
-        # The startup environment variables of the container. The variable name cannot be empty or contain whitespace, and the variable value can be an empty string.
+        # The startup environment variables of the container. Variable names cannot be empty or contain whitespace. Variable values can be empty strings.
         self.container_env = container_env
         # The name of the OSS bucket.
         # 
@@ -37,9 +37,9 @@ class RegisterAIDBClusterCustomModelRequest(DaraModel):
         self.dbinstance_class = dbinstance_class
         # The direct startup command for the model container.
         self.direct_command = direct_command
-        # The display name in the candidate list and the initial invocation name for clients.
+        # The display name in the candidate list and the initial client invocation name.
         self.display_model_name = display_model_name
-        # The full reference of the customer-owned inference image, in the format of registry/repository:tag.
+        # The full reference of the custom inference image, in the format of registry/repository:tag.
         self.image_name = image_name
         # The inference engine. This parameter is required when configuring deployment parameters. Valid values: vllm and sglang.
         self.inference_engine = inference_engine
@@ -47,15 +47,15 @@ class RegisterAIDBClusterCustomModelRequest(DaraModel):
         # 
         # This parameter is required.
         self.model_name = model_name
-        # The startup parameters of the model. The parameter key must start with --.
+        # The startup parameters of the model. Parameter keys must start with --.
         self.model_params = model_params
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The password or temporary token for the customer\\"s image repository. This parameter is required when ImageName is specified.
+        # The password or temporary token for the image repository. This parameter is required when ImageName is specified.
         self.registry_password = registry_password
-        # The username for the customer\\"s image repository. This parameter is required when ImageName is specified.
+        # The username for the image repository. This parameter is required when ImageName is specified.
         self.registry_username = registry_username
 
     def validate(self):

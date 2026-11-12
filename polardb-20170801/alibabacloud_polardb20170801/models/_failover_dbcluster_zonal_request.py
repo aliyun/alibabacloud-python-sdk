@@ -17,9 +17,9 @@ class FailoverDBClusterZonalRequest(DaraModel):
         target_dbnode_id: str = None,
         target_zone_type: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value. Make sure that the value is unique among different requests. The token is case-sensitive and can contain a maximum of 64 ASCII characters.
+        # The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can generate the value of this parameter on the client side. The value must be unique across different requests and is case-sensitive. It can be up to 64 ASCII characters in length.
         self.client_token = client_token
-        # The cluster ID.
+        # The ID of the edge cloud cluster. Only edge cluster IDs returned by DescribeDBClustersZonal are accepted. Standard PolarDB cluster IDs are not supported. Call description: Only edge cluster IDs are accepted. Call DescribeDBClustersZonal to obtain available edge cluster IDs.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -29,17 +29,15 @@ class FailoverDBClusterZonalRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # Specifies whether to switch back to the original primary zone after a failover. Valid values:
         # 
-        # - true: Switch back to the original primary zone.
-        # - false: Do not switch back to the original primary zone.
+        # - true: Yes.
+        # - false: No.
         self.roll_back_for_disaster = roll_back_for_disaster
-        # The ID of the node to be switched to the primary node. If you leave this parameter empty, the system automatically elects a node. You can call the DescribeDBClusters operation to query the node ID.
+        # The ID of the edge cluster node to be switched to the primary node. If you do not specify this parameter, the system automatically elects a primary node. You can call DescribeDbClusterAttributeZonal to query the node ID. Call description: DescribeDbClusterAttributeZonal.
         self.target_dbnode_id = target_dbnode_id
-        # Specifies whether the switchover is a primary/secondary switchover within the primary zone. Valid values:
+        # Specifies whether to perform a primary/secondary switchover within the primary zone. Valid values:
         # 
-        # - Primary: primary/secondary switchover within the primary zone.
-        # - Standby: switchover to the hot standby storage cluster.
-        # 
-        # Default value: Primary. This value indicates that the switchover is performed within the active zone.
+        # - Primary: Performs a primary/secondary switchover within the primary zone.
+        # - Standby: Switches to the hot standby storage cluster.
         self.target_zone_type = target_zone_type
 
     def validate(self):

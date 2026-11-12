@@ -16,7 +16,7 @@ class DescribePolarClawAgentFileResponseBody(DaraModel):
         request_id: str = None,
         workspace: str = None,
     ):
-        # Agent ID
+        # The PolarClaw agent ID.
         self.agent_id = agent_id
         # The application ID.
         self.application_id = application_id
@@ -26,7 +26,7 @@ class DescribePolarClawAgentFileResponseBody(DaraModel):
         self.file = file
         # The response message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
         # The working directory path.
         self.workspace = workspace
@@ -107,9 +107,9 @@ class DescribePolarClawAgentFileResponseBodyFile(DaraModel):
         self.name = name
         # The file path.
         self.path = path
-        # The file size, in bytes.
+        # The file size in bytes.
         self.size = size
-        # The last updated UNIX timestamp, in milliseconds.
+        # The last updated timestamp in milliseconds.
         self.updated_at_ms = updated_at_ms
 
     def validate(self):

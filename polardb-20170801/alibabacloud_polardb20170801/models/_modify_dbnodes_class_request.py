@@ -26,23 +26,23 @@ class ModifyDBNodesClassRequest(DaraModel):
         resource_owner_id: int = None,
         sub_category: str = None,
     ):
-        # Specifies whether to automatically use coupons. Valid values:
-        # * true (default): Uses coupons.
-        # * false: Does not use coupons.
+        # Specifies whether to automatically use a coupon. Valid values:
+        # * true (default): Uses the coupon.
+        # * false: Does not use the coupon.
         self.auto_use_coupon = auto_use_coupon
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value. Make sure that the value is unique among different requests. The token is case-sensitive and cannot exceed 64 ASCII characters in length.
+        # The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can generate the value of this parameter on the client side. The value must be unique across different requests and is case-sensitive. It can be up to 64 ASCII characters in length.
         self.client_token = client_token
-        # The cloud service provider to which the instance belongs.
+        # The cloud provider of the instance.
         self.cloud_provider = cloud_provider
         # The cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The list of cluster nodes.
+        # The list of cluster nodes. If the cluster contains a node with HotReplicaMode set to ON, you must include all DBNodes (writer and reader nodes) in the same request, and the TargetClass of each node must be identical. Usage notes: HotReplicaMode scenario constraints: If the cluster contains a node with HotReplicaMode set to ON, you must include all DBNodes (writer and reader nodes) in the same request, and their TargetClass values must be identical.
         # 
         # This parameter is required.
         self.dbnode = dbnode
-        # The type of the specification change. Valid values:
+        # The modification type. Valid values:
         # 
         # - **Upgrade**: Upgrades the specifications.
         # 
@@ -52,24 +52,24 @@ class ModifyDBNodesClassRequest(DaraModel):
         self.modify_type = modify_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The latest time to start the scheduled task. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format (UTC).
+        # The latest time to start the scheduled task. The format is `YYYY-MM-DDThh:mm:ssZ` (UTC).
         # > * The latest time must be at least 30 minutes later than the start time.
-        # > * If `PlannedStartTime` is set but this parameter is not specified, the latest time to execute the task defaults to `start time + 30 minutes`. For example, if `PlannedStartTime` is set to `2021-01-14T09:00:00Z` and this parameter is left empty, the task starts no later than `2021-01-14T09:30:00Z`.
+        # > * If `PlannedStartTime` is specified but this parameter is not, the latest time to start the task defaults to the start time plus 30 minutes. For example, if `PlannedStartTime` is set to `2021-01-14T09:00:00Z` and this parameter is left empty, the task will start at `2021-01-14T09:30:00Z` at the latest.
         self.planned_end_time = planned_end_time
         # The planned transient disconnection time.
         # 
-        # The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+        # The time follows the ISO 8601 standard in the UTC time zone. The format is YYYY-MM-DDTHH:mm:ssZ.
         self.planned_flashing_off_time = planned_flashing_off_time
-        # The earliest time to start the scheduled (executed within the target time period) specification upgrade task. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format (UTC).
+        # The earliest time to start the scheduled configuration upgrade task. The format is `YYYY-MM-DDThh:mm:ssZ` (UTC).
         # > * This parameter takes effect only when `ModifyType` is set to `Upgrade`.
-        # > * The start time can be any time point within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, the start time can range from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
-        # > * If this parameter is left empty, the specification upgrade task is immediately executed by default.
+        # > * The start time can be any time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, the allowed start time ranges from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
+        # > * If this parameter is left empty, the configuration upgrade task is executed immediately by default.
         self.planned_start_time = planned_start_time
-        # The coupon code. If this parameter is not specified, the default coupon is used.
+        # The coupon code. If this parameter is left empty, the default coupon is used.
         self.promotion_code = promotion_code
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The cluster sub-series. Valid values:
+        # The sub-edition of the cluster. Valid values:
         # 
         # - **normal_exclusive**: Dedicated
         # 
@@ -194,12 +194,12 @@ class ModifyDBNodesClassRequestDBNode(DaraModel):
         dbnode_id: str = None,
         target_class: str = None,
     ):
-        # The cluster node ID.
-        # >If this parameter is specified, DBNode.N.TargetClass is required. N is an integer that starts from 1. Maximum value: 16 minus the current number of nodes.
+        # The ID of the cluster node.
+        # > If this parameter is specified, DBNode.N.TargetClass is required. N is an integer starting from 1, and the maximum value is 16 minus the current number of nodes.
         self.dbnode_id = dbnode_id
-        # The specifications of the node to be changed. For more information about node specifications, see [Compute node specifications](https://help.aliyun.com/document_detail/102542.html). 
+        # The specifications of the node to be modified. For more information about node specifications, see [Compute node specifications](https://help.aliyun.com/document_detail/102542.html). 
         # 
-        # >If this parameter is specified, DBNode.N.DBNodeId is required. N is an integer that starts from 1. Maximum value: 16 minus the current number of nodes.
+        # > If this parameter is specified, DBNode.N.DBNodeId is required. N is an integer starting from 1, and the maximum value is 16 minus the current number of nodes.
         self.target_class = target_class
 
     def validate(self):

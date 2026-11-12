@@ -18,39 +18,33 @@ class CreateGlobalDataNetworkRequest(DaraModel):
         source_region: str = None,
         source_type: str = None,
     ):
-        # The description or remarks for the GDN.
+        # The description or remark of the GDN.
         self.description = description
-        # Destination path
+        # The destination path.
         self.destination_file_system_path = destination_file_system_path
-        # Target PolarFileSystem (PolarFS) instance
+        # The destination Polarlakebase instance. Note: This parameter is required.
         self.destination_id = destination_id
-        # The region of the destination PolarFS instance.
+        # The region of the destination Polarlakebase instance.
         self.destination_region = destination_region
-        # The type of the destination instance. Valid values:
-        # 
-        # - **pfs**: PolarFS High-Performance Edition.
-        # 
-        # - **pcs**: PolarFS Cold Storage Edition.
+        # The destination type. Valid values:
+        #   - **pfs**: Polarlakebase High-performance Edition.
+        #   - **pcs**: Polarlakebase Cold Storage Edition.
         self.destination_type = destination_type
-        # Whether to freeze the source path during transmission. Valid values:
+        # Specifies whether to freeze the source path during data transmission. Valid values:
+        #   - **true**: Freezes the source path.
+        #   - **false**: Does not freeze the source path.
         # 
-        # - **true**: Freeze.
-        # 
-        # - **false**: Do not freeze.
-        # 
-        # > Currently only supports oss source.
+        # > Currently, only OSS sources are supported.
         self.freeze_source_during_sync = freeze_source_during_sync
         # The source path.
         self.source_file_system_path = source_file_system_path
-        # Source PolarFileSystem (PolarFS) instance.
+        # The source Polarlakebase instance. Note: This parameter is required.
         self.source_id = source_id
-        # The region of the source PolarFS instance.
+        # The region of the source Polarlakebase instance.
         self.source_region = source_region
-        # The type of the source instance. Valid values:
-        # 
-        # - **pfs**: PolarFS High-Performance Edition.
-        # 
-        # - **pcs**: PolarFS Cold Storage Edition.
+        # The source type. Valid values:
+        #   - **pfs**: Polarlakebase High-performance Edition.
+        #   - **pcs**: Polarlakebase Cold Storage Edition.
         self.source_type = source_type
 
     def validate(self):

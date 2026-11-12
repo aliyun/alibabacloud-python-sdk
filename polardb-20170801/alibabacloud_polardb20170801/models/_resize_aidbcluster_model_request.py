@@ -16,7 +16,7 @@ class ResizeAIDBClusterModelRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # Specifies whether to perform a read-only capacity dry run.
+        # Specifies whether to perform only a read-only capacity dry run.
         self.dry_run = dry_run
         # The region ID. Requests are routed to the region where the instance resides.
         # 

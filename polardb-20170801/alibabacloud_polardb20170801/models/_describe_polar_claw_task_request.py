@@ -14,7 +14,7 @@ class DescribePolarClawTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.application_id = application_id
-        # The asynchronous task ID.
+        # The ID of the asynchronous task.
         # 
         # This parameter is required.
         self.task_id = task_id

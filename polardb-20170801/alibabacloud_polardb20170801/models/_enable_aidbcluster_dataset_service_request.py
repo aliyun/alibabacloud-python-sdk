@@ -15,13 +15,13 @@ class EnableAIDBClusterDatasetServiceRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The instance ID of the PolarFS cold storage instance attached to the dataset management service.
+        # The instance ID of the PolarFS cold storage instance that you attach to the dataset management service. Instructions to invoke: Note: This parameter is actually required. If it is not provided, the API returns InvalidDBClusterId.Malformed (400). Instructions to invoke: Valid ID format description: specifies the accepted prefix families (such as pcs-xxx), separator conventions (hyphen character vs. underscore character), and the corresponding resource types.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
         self.region_id = region_id
-        # The instance ID of the database instance attached to the dataset management service.
+        # The instance ID of the database instance that you attach to the dataset management service.
         self.relative_dbcluster_id = relative_dbcluster_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

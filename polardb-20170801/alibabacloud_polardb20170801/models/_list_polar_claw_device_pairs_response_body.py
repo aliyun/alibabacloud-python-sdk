@@ -27,7 +27,7 @@ class ListPolarClawDevicePairsResponseBody(DaraModel):
         self.paired = paired
         # The list of pending pairing requests.
         self.pending = pending
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -116,7 +116,7 @@ class ListPolarClawDevicePairsResponseBodyPending(DaraModel):
         silent: bool = None,
         ts: int = None,
     ):
-        # The client identifier.
+        # The client ID.
         self.client_id = client_id
         # The client mode.
         self.client_mode = client_mode
@@ -265,7 +265,7 @@ class ListPolarClawDevicePairsResponseBodyPaired(DaraModel):
         role: str = None,
         scopes: List[str] = None,
     ):
-        # The client identifier.
+        # The client ID.
         self.client_id = client_id
         # The client mode.
         self.client_mode = client_mode

@@ -13,17 +13,17 @@ class DescribePolarClawSkillAssessmentRequest(DaraModel):
         skill_version: str = None,
         source: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.application_id = application_id
         # The region ID.
         # 
         # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query all available regions for the current account, including region IDs.
         self.region_id = region_id
-        # The name of the skill.
+        # The name of the skill. This parameter is required. If it is not provided, the API returns an InvalidParameter.SkillName error (HTTP 400).
         self.skill_name = skill_name
-        # The version of the skill.
+        # The version of the skill. This parameter is required. If it is not provided, the API returns an InvalidParameter.SkillVersion error (HTTP 400).
         self.skill_version = skill_version
-        # The source of the skill. Valid values: PUBLIC, SELF, and OTHER.
+        # The source of the skill. Valid values: PUBLIC, SELF, and OTHER. This parameter is required. If it is not provided, the API returns an InvalidParameter.Source error (HTTP 400).
         self.source = source
 
     def validate(self):

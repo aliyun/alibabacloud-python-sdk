@@ -17,15 +17,15 @@ class CreateInspectionTaskRequest(DaraModel):
         space_id: str = None,
         task_description: str = None,
     ):
-        # The cron expression for the inspection task, which specifies the periodic execution schedule.
+        # The cron expression of the inspection task, which specifies the periodic execution schedule.
         self.cron_expression = cron_expression
         # The list of clusters associated with the inspection task.
         self.dbcluster_list = dbcluster_list
-        # The ID of the region where the task is located.
+        # The region ID of the task.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The ID of the inspection workspace.
+        # The ID of the inspection space. This parameter is required. If it is not provided, the API returns InvalidSpaceId.Malformed (HTTP 400).
         self.space_id = space_id
         # The description of the inspection task.
         self.task_description = task_description
@@ -96,7 +96,7 @@ class CreateInspectionTaskRequestDBClusterList(DaraModel):
     ):
         # The ID of the PolarDB cluster to be inspected.
         self.dbcluster_id = dbcluster_id
-        # The ID of the region where the cluster to be inspected is located.
+        # The region ID of the cluster to be inspected.
         self.region_id = region_id
 
     def validate(self):

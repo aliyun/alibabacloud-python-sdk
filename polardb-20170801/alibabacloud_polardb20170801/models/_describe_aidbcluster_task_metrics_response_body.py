@@ -23,23 +23,23 @@ class DescribeAIDBClusterTaskMetricsResponseBody(DaraModel):
     ):
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The end time of the query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format in UTC.
+        # The end time of the query. Format: `yyyy-MM-ddTHH:mm:ssZ` (UTC time).
         self.end_time = end_time
         # The list.
         self.items = items
         # The metric type.
         self.metric_type = metric_type
-        # The page number of the returned page. The default value is 1.
+        # The page number of the returned page. Default value: 1.
         self.page_number = page_number
-        # The total number of entries that match the query conditions. This parameter is optional and is not returned by default.
+        # The total number of entries that meet the query conditions. This parameter is optional and is not returned by default.
         self.page_record_count = page_record_count
         # The maximum number of entries returned for the current request.
         self.page_size = page_size
         # The ID of the associated PolarDB cluster.
         self.relative_db_cluster_id = relative_db_cluster_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
-        # The start time of the query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format in UTC.
+        # The start time of the query. Format: `yyyy-MM-ddTHH:mm:ssZ` (UTC time).
         self.start_time = start_time
 
     def validate(self):
@@ -169,15 +169,17 @@ class DescribeAIDBClusterTaskMetricsResponseBodyItemsSlsMetricsItems(DaraModel):
         self.current_step = current_step
         # The epoch.
         self.epoch = epoch
-        # The total number of steps.
+        # The global step.
         self.global_step = global_step
         # The log time.
+        # 
+        # The time is in the ISO 8601 format and the UTC time zone. The seconds part can include a fractional component.
         self.log_time = log_time
         # The metric details.
         self.metric = metric
         # The metric type.
         self.metric_type = metric_type
-        # The specific point in time when the monitoring metric was collected. The value is a UNIX timestamp. Unit: seconds.
+        # The specific time point of the monitoring metrics. The format is a UNIX timestamp in seconds.
         self.timestamp = timestamp
 
     def validate(self):

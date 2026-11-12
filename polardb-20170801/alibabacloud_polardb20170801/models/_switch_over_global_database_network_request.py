@@ -18,22 +18,22 @@ class SwitchOverGlobalDatabaseNetworkRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The ID of the cluster that will become the primary cluster in the GDN.
-        # 
-        # You can call the [DescribeGlobalDatabaseNetwork](https://help.aliyun.com/document_detail/264580.html) operation to query the ID of the cluster in the GDN.
+        # The ID of the cluster to be switched to the primary cluster in the GDN.
+        # You can call the [DescribeGlobalDatabaseNetwork](https://help.aliyun.com/document_detail/264580.html) operation to view the cluster IDs in the GDN.
         self.dbcluster_id = dbcluster_id
-        # Specifies whether to forcibly switch over the primary and secondary clusters in the GDN. Valid values:
+        # Specifies whether to forcibly switch the primary and secondary clusters in the GDN. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Forcibly switches the primary and secondary clusters in the GDN.
+        # 
+        # - **false**: Does not forcibly switch the primary and secondary clusters in the GDN.
         self.forced = forced
-        # The ID of the GDN.
+        # The ID of the global database network (GDN).
         # 
         # This parameter is required.
         self.gdnid = gdnid
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the cluster.
+        # The region ID.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id

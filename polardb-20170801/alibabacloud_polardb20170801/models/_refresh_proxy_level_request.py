@@ -18,23 +18,23 @@ class RefreshProxyLevelRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the PolarDB cluster.
+        # The PolarDB cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # Specifies whether the execution is initiated by the scheduled task service. Default value: false. If this parameter is set to false and PlannedStartTime is specified, a scheduled task is created. If this parameter is set to true, the task is executed immediately.
+        # Specifies whether the execution is initiated by the scheduled task service. Default value: false. If this parameter is set to false and PlannedStartTime is specified, a scheduled task is created. If this parameter is set to true, the task is executed immediately. Usage notes: If the DBClusterStatus of the cluster is not Running, you must specify the PlannedStartTime and PlannedEndTime parameters to create a scheduled task. The description of this parameter specifies that the task can be executed immediately only when the cluster is in the Running state and this parameter is set to true.
         self.from_time_service = from_time_service
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The latest time to execute the proxy specification upgrade. Specify the time in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
+        # The latest time to start the proxy upgrade, in the YYYY-MM-DDThh:mm:ssZ format (UTC). Usage notes: If the DBClusterStatus of the cluster is not Running, you must specify both the PlannedStartTime and PlannedEndTime parameters to create a scheduled task. The description of the FromTimeService parameter specifies that the task can be executed immediately only when the cluster is in the Running state and FromTimeService is set to true.
         self.planned_end_time = planned_end_time
-        # The earliest time to execute the proxy specification upgrade. Specify the time in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
+        # The earliest time to start the proxy upgrade, in the YYYY-MM-DDThh:mm:ssZ format (UTC). Usage notes: If the DBClusterStatus of the cluster is not Running, you must specify both the PlannedStartTime and PlannedEndTime parameters to create a scheduled task. The description of the FromTimeService parameter specifies that the task can be executed immediately only when the cluster is in the Running state and FromTimeService is set to true.
         self.planned_start_time = planned_start_time
         # The target proxy performance level. Valid values: ProxyStandard, ProxyStandardx2, and ProxyStandardx4.
         # 
         # This parameter is required.
         self.proxy_target_class = proxy_target_class
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

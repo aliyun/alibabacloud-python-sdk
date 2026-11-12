@@ -14,11 +14,11 @@ class DeleteDBClusterEndpointZonalRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The cluster ID.
+        # The ID of the edge cluster. This operation supports only edge clusters. You can create an edge cluster by invoking the CreateDBCluster operation and setting CloudProvider to ENS, and invoke the DescribeEdgeCloudRegion operation to query active edge areas. Invocation notes: Constraints on edge clusters include that only edge clusters are supported, the cluster must be created by invoking CreateDBCluster with CloudProvider set to ENS, and active edge areas can be queried by invoking DescribeEdgeCloudRegion.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The custom cluster endpoint ID.
+        # The ID of the custom cluster endpoint.
         # 
         # This parameter is required.
         self.dbendpoint_id = dbendpoint_id

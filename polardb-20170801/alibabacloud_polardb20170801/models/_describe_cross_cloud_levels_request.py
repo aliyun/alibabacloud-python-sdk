@@ -31,7 +31,7 @@ class DescribeCrossCloudLevelsRequest(DaraModel):
         # - 14
         # - 15
         self.dbversion = dbversion
-        # The resource pool ID.
+        # The ID of the cross-cloud resource pool. First, call DescribeCrossCloudRegion to query the cross-cloud region information based on the target cloud provider, database type, and region. Obtain a valid value (which usually starts with pj-) from CrossCloudRegionList[].ProjectId in the response, and then pass it to this operation. If CrossCloudRegionList is empty or does not contain a ProjectId, no resource pool is available under the current query conditions. Verify the cloud provider, database type, and region, and apply for a resource pool through the cross-cloud product activation process or contact product support. Do not guess the ID.
         # 
         # This parameter is required.
         self.project_id = project_id

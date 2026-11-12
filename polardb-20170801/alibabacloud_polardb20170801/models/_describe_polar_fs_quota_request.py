@@ -14,7 +14,7 @@ class DescribePolarFsQuotaRequest(DaraModel):
         region_id: str = None,
     ):
         # The cluster ID.
-        # > Enterprise Edition, Basic Edition, and Data Lakehouse Edition: You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/2319131.html) operation to query the cluster ID.
+        # > For Enterprise Edition, Basic Edition, and Data Lakehouse Edition: You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/2319131.html) operation to query the cluster ID.
         self.dbcluster_id = dbcluster_id
         # The target path.
         self.path = path
@@ -22,11 +22,11 @@ class DescribePolarFsQuotaRequest(DaraModel):
         # 
         # This parameter is required.
         self.polar_fs_instance_id = polar_fs_instance_id
-        # The quota type to query.
+        # The type of the quota to query.
         self.quota_type = quota_type
         # The region ID.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query all available regions for the current account, including region IDs.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to view all available regions under the current account, including the region IDs.
         self.region_id = region_id
 
     def validate(self):

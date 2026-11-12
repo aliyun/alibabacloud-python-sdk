@@ -27,7 +27,7 @@ class DescribeActiveOperationTaskRequest(DaraModel):
         self.is_history = is_history
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. The value must be greater than 0 and cannot exceed the maximum value of the Integer data type. Default value: **1**.
+        # The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: **1**.
         self.page_number = page_number
         # The number of entries per page. Valid values: **30**, **50**, and **100**.
         # 
@@ -45,7 +45,7 @@ class DescribeActiveOperationTaskRequest(DaraModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The task type. You can call the [DescribeActiveOperationTaskType](ID not yet generated) operation to query the task types of pending tasks.
+        # The task type. You can call the [DescribeActiveOperationTaskType](还未生成ID) operation to query the task types of pending tasks.
         # 
         # > * You can also enter **all** to view all pending tasks under your account.
         # * When `TaskType` is set to **all**, `Region` must also be set to **all**.

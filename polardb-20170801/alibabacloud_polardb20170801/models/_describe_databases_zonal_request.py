@@ -18,29 +18,27 @@ class DescribeDatabasesZonalRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The cluster ID.
+        # The ID of the edge cluster. Only edge clusters are supported. You can call the DescribeDBClustersZonal operation to obtain a list of valid edge clusters and call the DescribeEdgeCloudRegion operation to query the regions that support edge clusters.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The database name.
+        # The name of the database.
         self.dbname = dbname
-        # The maximum number of entries to return for the current request.
+        # The maximum number of entries to return in this call.
         self.max_results = max_results
-        # The query token. This is the NextToken value from the previous API call. If there are no more results, do not specify this parameter.
+        # The query token. Set the value to the NextToken value returned from the previous API call. If no subsequent query is required, do not specify this parameter.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. The value must be an integer that is greater than 0 and does not exceed the maximum value of the Integer data type. The default value is 1.
+        # The page number. Valid values: integers greater than 0 and less than or equal to the maximum value of the Integer data type. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values:
+        # The number of entries per page. Valid values:
         # 
         # - 30
-        # 
         # - 50
-        # 
         # - 100
         # 
-        # The default value is 30.
+        # Default value: 30.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

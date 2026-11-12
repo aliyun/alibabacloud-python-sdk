@@ -80,7 +80,7 @@ class DescribeApplicationAvailableVersionRequestComponents(DaraModel):
     ):
         # The specifications of the application subcomponent.
         self.component_class = component_class
-        # The maximum number of application subcomponents of the same specifications. Default value: the value of ComponentReplica. This parameter is supported only for raycluster applications.
+        # The maximum number of application subcomponents of the same specifications. Default value: the value of ComponentReplica. This parameter is supported only by raycluster applications.
         self.component_max_replica = component_max_replica
         # The number of replicas for the application subcomponent. Default value: 1.
         self.component_replica = component_replica

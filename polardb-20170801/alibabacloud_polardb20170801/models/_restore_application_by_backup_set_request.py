@@ -18,7 +18,7 @@ class RestoreApplicationByBackupSetRequest(DaraModel):
         self.application_id = application_id
         # The application type.
         self.application_type = application_type
-        # The ID of the backup set used to restore the application.
+        # The ID of the backup set used to restore the application. This parameter is required. If it is not provided, the API returns InvalidBackupSetID.NotFound (404).
         self.backup_set_id = backup_set_id
         # The region ID of the application.
         self.region_id = region_id

@@ -13,7 +13,7 @@ class CreateAgenticDBTenantResponseBody(DaraModel):
         tenant_id: str = None,
         tenant_name: str = None,
     ):
-        # The creation time.
+        # The creation time. The time is displayed in the ISO 8601 standard in the UTC time zone. The format is YYYY-MM-DDTHH:mm:ssZ, such as 2026-10-15T08:00:00Z.
         self.create_time = create_time
         # The AgenticDB cluster ID.
         self.dbcluster_id = dbcluster_id

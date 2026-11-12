@@ -16,7 +16,7 @@ class InstallPolarClawSkillRequest(DaraModel):
         source: str = None,
         url: str = None,
     ):
-        # The target agent in the workspace. If not specified, the default agent is used.
+        # The target agent in the workspace. If this parameter is not specified, the default agent is used.
         self.agent_id = agent_id
         # The application ID.
         # 
@@ -30,9 +30,9 @@ class InstallPolarClawSkillRequest(DaraModel):
         self.skill_version = skill_version
         # The skill identifier.
         self.slug = slug
-        # The source. Default value: polarhub.
+        # The source.
         self.source = source
-        # URL
+        # The URL for installing the skill. This parameter is not supported. If a value is provided, a 400 InvalidParameters error is returned.
         self.url = url
 
     def validate(self):

@@ -18,13 +18,12 @@ class DescribeSQLRateLimitingRulesResponseBody(DaraModel):
     ):
         # The result set.
         self.data = data
-        # The maximum number of entries returned for the current request. Default value: 10.
+        # The maximum number of entries returned in this request. Default value: 10.
         self.max_results = max_results
-        # The response message.
-        # 
-        # > If the request is successful, \\`Successful\\` is returned. If the request fails, an error message is returned.
+        # The message returned for the request.
+        # > If the request is successful, Successful is returned. If the request fails, an exception message such as an error code is returned.
         self.message = message
-        # The token for the next page of results.
+        # The pagination token for the next page.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -80,7 +79,7 @@ class DescribeSQLRateLimitingRulesResponseBodyData(DaraModel):
         self,
         rule_list: List[str] = None,
     ):
-        # The list of rules.
+        # The rule list.
         self.rule_list = rule_list
 
     def validate(self):

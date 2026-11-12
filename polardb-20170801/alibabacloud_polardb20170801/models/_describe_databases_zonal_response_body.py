@@ -19,15 +19,15 @@ class DescribeDatabasesZonalResponseBody(DaraModel):
     ):
         # The details of the databases.
         self.databases = databases
-        # The maximum number of entries returned for the current request.
+        # The maximum number of entries to return in this call.
         self.max_results = max_results
-        # The query token. This is the NextToken value from the previous API call. If there are no more results, do not specify this parameter.
+        # The query token. Set the value to the NextToken value returned from the previous API call. If no subsequent query is required, do not specify this parameter.
         self.next_token = next_token
         # The page number.
         self.page_number = page_number
         # The number of entries returned on the current page.
         self.page_record_count = page_record_count
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -103,29 +103,24 @@ class DescribeDatabasesZonalResponseBodyDatabases(DaraModel):
         # 
         # > If the cluster is a PolarDB for MySQL cluster, privileged accounts are not included.
         self.accounts = accounts
-        # The character set.
+        # The name of the character set.
         self.character_set_name = character_set_name
         # The description of the database.
         self.dbdescription = dbdescription
         # The name of the database.
         self.dbname = dbname
-        # The status of the database. Valid values:
+        # The status of the database. Valid values: 
         # 
-        # - **Creating**
-        # 
-        # - **Running**
-        # 
-        # - **Deleting**
+        # - **Creating**: The database is being created.
+        # - **Running**: The database is running.
+        # - **Deleting**: The database is being deleted.
         self.dbstatus = dbstatus
-        # The database engine type. Valid values:
-        # 
-        # - **MySQL**
-        # 
-        # - **Oracle**
-        # 
-        # - **PostgreSQL**
+        # The type of the database engine. Valid values:
+        # * **MySQL**
+        # * **Oracle**
+        # * **PostgreSQL**
         self.engine = engine
-        # The ID of the primary node that corresponds to the database in a Multi-master Cluster (Database/Table) edition cluster.
+        # The ID of the primary node that corresponds to the database in a Multi-master Cluster (Database/Table) Edition cluster.
         self.master_id = master_id
 
     def validate(self):
@@ -200,37 +195,29 @@ class DescribeDatabasesZonalResponseBodyDatabasesAccounts(DaraModel):
         account_status: str = None,
         privilege_status: str = None,
     ):
-        # The account name.
+        # The name of the account.
         # 
         # > If the cluster is a PolarDB for MySQL cluster, privileged accounts are not included.
         self.account_name = account_name
         # The permissions of the account. Valid values:
         # 
-        # - **ReadWrite**
-        # 
-        # - **ReadOnly**
-        # 
-        # - **DMLOnly**
-        # 
-        # - **DDLOnly**
-        # 
-        # - **ReadIndex**
+        # * **ReadWrite**: read and write
+        # * **ReadOnly**: read-only 
+        # * **DMLOnly**: DML only
+        # * **DDLOnly**: DDL only
+        # * **ReadIndex**: read and index
         self.account_privilege = account_privilege
-        # The status of the account. Valid values:
+        # The status of the account. Valid values: 
         # 
-        # - **Creating**
-        # 
-        # - **Available**
-        # 
-        # - **Deleting**
+        # - **Creating**: The account is being created.
+        # - **Available**: The account is available.
+        # - **Deleting**: The account is being deleted.
         self.account_status = account_status
-        # The authorization status. Valid values:
+        # The authorization status. Valid values: 
         # 
-        # - **Empowering**: Permissions are being granted.
-        # 
-        # - **Empowered**: Permissions are granted.
-        # 
-        # - **Removing**: Permissions are being revoked.
+        # - **Empowering**: The account is being authorized.
+        # - **Empowered**: The account is authorized.
+        # - **Removing**: The permissions are being revoked.
         self.privilege_status = privilege_status
 
     def validate(self):

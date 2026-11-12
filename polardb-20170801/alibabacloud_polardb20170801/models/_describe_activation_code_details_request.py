@@ -14,7 +14,7 @@ class DescribeActivationCodeDetailsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the activation code.
+        # The activation code ID. This parameter is required. If it is not provided, the API returns a 400 error.
         self.activation_code_id = activation_code_id
         # The Alibaba Cloud order ID, including virtual orders.
         # 

@@ -16,15 +16,15 @@ class DescribeActivationCodesResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # List of activation codes
+        # The list of activation codes.
         self.items = items
-        # Current page number
+        # The current page number.
         self.page_number = page_number
-        # Number of records on the current page
+        # The number of entries on the current page.
         self.page_record_count = page_record_count
-        # The unique ID generated for this request.
+        # The request ID.
         self.request_id = request_id
-        # Total number of records
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -92,23 +92,23 @@ class DescribeActivationCodesResponseBodyItems(DaraModel):
         name: str = None,
         system_identifier: str = None,
     ):
-        # Effective period
+        # The effective period.
         self.activate_at = activate_at
-        # Activation code description
+        # The description of the activation code.
         self.description = description
-        # Expiration time
+        # The expiration time.
         self.expire_at = expire_at
-        # Creation time
+        # The creation time.
         self.gmt_created = gmt_created
-        # Update time
+        # The update time.
         self.gmt_modified = gmt_modified
-        # Activation code ID
+        # The ID of the activation code.
         self.id = id
-        # MAC address
+        # The MAC address.
         self.mac_address = mac_address
-        # Activation code name
+        # The name of the activation code.
         self.name = name
-        # Unique identifier in the database
+        # The unique identifier of the database.
         self.system_identifier = system_identifier
 
     def validate(self):

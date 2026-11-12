@@ -23,7 +23,7 @@ class DescribeApplicationComponentPerformanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.component_id = component_id
-        # The end time of the query. The end time must be later than or equal to the start time. Specify the time in the ISO 8601 standard in the YYYY-MM-DDTHH:mmZ format. The time must be in UTC.
+        # The end time of the query. The end time must not be earlier than the start time. Specify the time in the ISO 8601 standard in the YYYY-MM-DDTHH:mmZ format. The time must be in UTC.
         # 
         # This parameter is required.
         self.end_time = end_time
@@ -37,7 +37,7 @@ class DescribeApplicationComponentPerformanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The type of the performance data.
+        # The type of performance data. Note: Add the valid values, the meaning of each value, and the correspondence with ApplicationType to the description of the Type parameter, and explicitly specify that this parameter should be omitted in most scenarios.
         self.type = type
 
     def validate(self):

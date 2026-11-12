@@ -23,23 +23,23 @@ class DescribeAIDBClusterTasksResponseBody(DaraModel):
     ):
         # The cluster engine.
         self.engine = engine
-        # The database engine version.
+        # The DPI engine version.
         self.engine_version = engine_version
         # The cluster endpoint details.
         self.items = items
         # The current page number.
         self.page_number = page_number
-        # The total number of entries on the current page.
+        # The total number of records on the current page.
         self.page_record_count = page_record_count
-        # The number of entries per page.
+        # The number of records to display on each page.
         self.page_size = page_size
-        # The ID of the associated PolarDB cluster.
+        # The ID of the PolarDB cluster to which the resource belongs.
         self.relative_dbcluster_id = relative_dbcluster_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
         # The task type.
         self.task_type = task_type
-        # The total number of entries.
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -147,11 +147,11 @@ class DescribeAIDBClusterTasksResponseBodyItems(DaraModel):
     ):
         # The task completion time.
         # 
-        # The time follows the ISO 8601 standard and is displayed in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+        # The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
         self.completed_time = completed_time
         # The creation time.
         # 
-        # The time follows the ISO 8601 standard and is displayed in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+        # The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
         # The node description.
         self.dbnode_description = dbnode_description
@@ -165,7 +165,7 @@ class DescribeAIDBClusterTasksResponseBodyItems(DaraModel):
         self.data_zone_id = data_zone_id
         # The cluster engine.
         self.engine = engine
-        # The database engine version.
+        # The DPI engine version.
         self.engine_version = engine_version
         # The model name.
         self.model_name = model_name
@@ -173,11 +173,11 @@ class DescribeAIDBClusterTasksResponseBodyItems(DaraModel):
         self.model_path = model_path
         # The model source.
         self.model_source = model_source
-        # The runtime parameters.
+        # The number of task executions.
         self.running_times = running_times
         # The task start time.
         # 
-        # The time follows the ISO 8601 standard and is displayed in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+        # The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
         self.start_time = start_time
         # The mode.
         self.train_mode = train_mode

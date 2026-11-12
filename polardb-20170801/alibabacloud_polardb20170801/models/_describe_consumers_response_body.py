@@ -17,7 +17,7 @@ class DescribeConsumersResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The list of consumers.
+        # The consumer list.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -25,7 +25,7 @@ class DescribeConsumersResponseBody(DaraModel):
         self.page_record_count = page_record_count
         # The number of entries per page. Valid values: 30, 50, and 100. Default value: 30.
         self.page_size = page_size
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
         # The total number of entries.
         self.total_record_count = total_record_count
@@ -109,11 +109,11 @@ class DescribeConsumersResponseBodyItems(DaraModel):
         self.allowed_models = allowed_models
         # The complete API key. This value is returned only in the current response.
         self.api_key = api_key
-        # The ID of the consumer group.
+        # The consumer group ID.
         self.consumer_group_id = consumer_group_id
-        # The name of the consumer group.
+        # The consumer group name.
         self.consumer_group_name = consumer_group_name
-        # The ID of the consumer.
+        # The consumer ID.
         self.consumer_id = consumer_id
         # The creation time.
         self.gmt_created = gmt_created
@@ -125,9 +125,9 @@ class DescribeConsumersResponseBodyItems(DaraModel):
         self.lifetime_token_count = lifetime_token_count
         # The usage for the current month.
         self.mtd_cost_count = mtd_cost_count
-        # The cumulative total cost.
+        # The cumulative cost.
         self.mtd_token_count = mtd_token_count
-        # The name of the consumer.
+        # The consumer name.
         self.name = name
         # The nickname of the consumer.
         self.nick_name = nick_name

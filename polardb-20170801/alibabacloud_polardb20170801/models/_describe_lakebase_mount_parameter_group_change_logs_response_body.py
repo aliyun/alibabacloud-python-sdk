@@ -13,7 +13,7 @@ class DescribeLakebaseMountParameterGroupChangeLogsResponseBody(DaraModel):
         change_logs: List[main_models.DescribeLakebaseMountParameterGroupChangeLogsResponseBodyChangeLogs] = None,
         request_id: str = None,
     ):
-        # The change records, sorted in descending order by CreateTime. An empty array is returned if no data is found.
+        # The change logs, sorted in descending order by CreateTime. An empty array is returned if no data is found.
         self.change_logs = change_logs
         # The request ID.
         self.request_id = request_id
@@ -70,13 +70,13 @@ class DescribeLakebaseMountParameterGroupChangeLogsResponseBodyChangeLogs(DaraMo
         self.create_time = create_time
         # The ID of the user who performed the operation.
         self.creator = creator
-        # Indicates whether the change has been applied. Valid values: 0 (no) and 1 (yes).
+        # Indicates whether the change is applied. Valid values: 0: No. 1: Yes.
         self.is_apply = is_apply
         # The modification time (UTC).
         self.modify_time = modify_time
-        # The new value after the change. This parameter is empty for delete operations.
+        # The new value after the change. This value is empty if the change type is delete.
         self.new_value = new_value
-        # The old value before the change. This parameter is empty for create operations.
+        # The old value before the change. This value is empty if the change type is create.
         self.old_value = old_value
         # The parameter name.
         self.parameter_name = parameter_name

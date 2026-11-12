@@ -18,29 +18,25 @@ class OpenAITaskRequest(DaraModel):
         resource_owner_id: int = None,
         username: str = None,
     ):
-        # The cluster ID.
+        # The ID of the cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The node type. Valid values:
-        # 
-        # - **DLNode**: AI node.
-        # 
-        # - **SearchNode**: search AI node.
+        # The node type. DLNode indicates an AI node. SearchNode is available only if search AI nodes are already created in the target cluster. Otherwise, the InvalidParameter.NodeType error (HTTP 400) may be returned. You can call DescribeAIDBClusters to check the node types of the cluster before the call. SearchNode is available only if search AI nodes are already created in the cluster. Otherwise, the InvalidParameter.NodeType error is returned.
         self.node_type = node_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The password of the database account.
+        # The password of the database account for which you want to enable the PolarDB for AI feature.
         self.password = password
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The database account on which to enable the PolarDB for AI feature.
+        # The database account for which you want to enable the PolarDB for AI feature.
         self.username = username
 
     def validate(self):

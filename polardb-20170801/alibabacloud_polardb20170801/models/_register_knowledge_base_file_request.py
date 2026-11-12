@@ -13,9 +13,11 @@ class RegisterKnowledgeBaseFileRequest(DaraModel):
     ):
         # The OSS object key of the uploaded file, excluding the oss://BucketName/ prefix.
         # 
+        # > Before calling this operation, upload the target file to OSS.
+        # 
         # This parameter is required.
         self.file_path = file_path
-        # The knowledge base ID.
+        # The ID of the knowledge base. Create a knowledge space first, then create a knowledge base, and obtain this ID from the creation result.
         # 
         # This parameter is required.
         self.knowledge_base_id = knowledge_base_id

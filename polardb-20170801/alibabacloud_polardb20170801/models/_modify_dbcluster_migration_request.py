@@ -18,19 +18,16 @@ class ModifyDBClusterMigrationRequest(DaraModel):
         source_rdsdbinstance_id: str = None,
         swap_connection_string: str = None,
     ):
-        # The specific endpoints to be switched. The value is a JSON string that specifies the endpoints to be swapped.
-        # 
-        # > This parameter is valid only when SwapConnectionString is set to true.
+        # The specific endpoints to be switched. The value is a JSON string that contains the endpoints to be swapped in pairs.
+        # > This parameter takes effect only when SwapConnectionString is set to true.
         self.connection_strings = connection_strings
         # The ID of the PolarDB cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The ID of the new instance or cluster. Valid values:
-        # 
-        # - Before the switch, enter the PolarDB cluster ID to perform a switch.
-        # 
-        # - After the switch, enter the RDS instance ID to perform a rollback.
+        # * Before the switchover, enter the PolarDB cluster ID to perform the switchover.
+        # * After the switchover, enter the ApsaraDB RDS instance ID to perform a rollback.
         # 
         # This parameter is required.
         self.new_master_instance_id = new_master_instance_id
@@ -39,15 +36,14 @@ class ModifyDBClusterMigrationRequest(DaraModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The ID of the source RDS instance.
+        # The instance ID of the source ApsaraDB RDS instance.
         # 
         # This parameter is required.
         self.source_rdsdbinstance_id = source_rdsdbinstance_id
-        # Specifies whether to switch the endpoint. Valid values:
+        # Specifies whether to switch the endpoints. Valid values:
         # 
-        # - **true**: Switches the endpoint. The application can connect to the database without changing its connection configuration.
-        # 
-        # - **false**: Does not switch the endpoint. The application must be changed to use the new PolarDB endpoint.
+        # - **true**: Switches the endpoints. You do not need to modify the connection configurations of your application.
+        # - **false**: Does not switch the endpoints. You must modify the connection configurations of your application to use the new PolarDB endpoints.
         # 
         # Default value: **false**.
         self.swap_connection_string = swap_connection_string

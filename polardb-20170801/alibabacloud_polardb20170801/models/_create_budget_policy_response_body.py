@@ -15,7 +15,7 @@ class CreateBudgetPolicyResponseBody(DaraModel):
         self.budget_policy_id = budget_policy_id
         # The gateway instance ID.
         self.gw_cluster_id = gw_cluster_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

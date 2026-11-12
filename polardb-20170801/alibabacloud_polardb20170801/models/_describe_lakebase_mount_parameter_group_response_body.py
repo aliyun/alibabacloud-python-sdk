@@ -20,13 +20,13 @@ class DescribeLakebaseMountParameterGroupResponseBody(DaraModel):
         parameter_group_type: int = None,
         request_id: str = None,
     ):
-        # The creation time (UTC).
+        # The creation time in UTC.
         self.create_time = create_time
         # Indicates whether the parameter template is applied. Valid values: 0: No. 1: Yes.
         self.is_apply = is_apply
-        # The modification time (UTC).
+        # The modification time in UTC.
         self.modify_time = modify_time
-        # The parameter details of the template. An empty array is returned if no data is available.
+        # The details of the parameters in the template. An empty array is returned if no data is available.
         self.parameter_detail = parameter_detail
         # The description of the parameter template.
         self.parameter_group_desc = parameter_group_desc

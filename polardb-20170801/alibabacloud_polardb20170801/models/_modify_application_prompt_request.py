@@ -12,17 +12,17 @@ class ModifyApplicationPromptRequest(DaraModel):
         prompt_name: str = None,
         prompt_value: str = None,
     ):
-        # The ID of the application.
+        # The application ID. Usage note: Only applications of the mem0 type support prompt operations. You can verify this by checking the ApplicationType field by calling DescribeApplicationAttribute.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # The ID of the prompt.
+        # The prompt ID. The value is an identifier that starts with papt-.
         # 
         # This parameter is required.
         self.prompt_id = prompt_id
-        # The name of the prompt.
+        # The prompt name.
         self.prompt_name = prompt_name
-        # The content of the prompt.
+        # The prompt content.
         self.prompt_value = prompt_value
 
     def validate(self):

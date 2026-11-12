@@ -18,13 +18,13 @@ class DescribeSearchParametersResponseBody(DaraModel):
     ):
         # The ID of the PolarDB primary cluster.
         self.dbcluster_id = dbcluster_id
-        # The Search engine version, which is not the MySQL version of the primary cluster.
+        # The Search engine version. This is not the MySQL version of the primary cluster.
         self.dbversion = dbversion
         # The type of the Search engine.
         self.engine = engine
         # The request ID.
         self.request_id = request_id
-        # The visible parameters and their modification statuses.
+        # The visible parameters and their modification status.
         self.running_parameters = running_parameters
 
     def validate(self):
@@ -123,17 +123,17 @@ class DescribeSearchParametersResponseBodyRunningParametersParameter(DaraModel):
         parameter_status: str = None,
         parameter_value: str = None,
     ):
-        # The value rule of the template, which can be a numeric range, an enumeration, or a regular expression. This rule must be interpreted in combination with the DataType field.
+        # The value validation rule of the template. The rule can be a numeric range, an enumeration, or a regular expression, and must be interpreted in combination with the data type.
         self.checking_code = checking_code
         # The data type of the parameter value. Valid values: INT, DOUBLE, B/BYTE, MEMORY, PERCENT, TIME, BOOLEAN, and STRING. The MEMORY type supports percentages or capacities with units.
         self.data_type = data_type
-        # The default value of the current active template, which is independent of the value modified by the user.
+        # The default value of the current active template. This value is independent of the value modified by the user.
         self.default_parameter_value = default_parameter_value
-        # The divisibility factor. If the value is not zero, the numeric value parsed based on the templatetype must be a multiple of this factor.
+        # The divisibility factor. If the value is not zero, the numeric value parsed based on the template type must be a multiple of this factor.
         self.factor = factor
-        # Specifies whether a restart is required for the modification to take effect. The value is true for static parameters and false for dynamic parameters.
+        # Specifies whether a restart is required for the parameter to take effect. The value is true for static parameters and false for dynamic parameters.
         self.force_restart = force_restart
-        # Specifies whether the user is allowed to modify the parameter.
+        # Specifies whether the parameter is modifiable.
         self.is_modifiable = is_modifiable
         # The parameter description.
         self.parameter_description = parameter_description

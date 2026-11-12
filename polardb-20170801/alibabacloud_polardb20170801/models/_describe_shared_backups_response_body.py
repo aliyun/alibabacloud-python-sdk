@@ -16,7 +16,7 @@ class DescribeSharedBackupsResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: str = None,
     ):
-        # A list of shared backup sets.
+        # The list of shared backup sets.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -24,7 +24,7 @@ class DescribeSharedBackupsResponseBody(DaraModel):
         self.page_record_count = page_record_count
         # The request ID.
         self.request_id = request_id
-        # The total record count.
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -101,37 +101,31 @@ class DescribeSharedBackupsResponseBodyItems(DaraModel):
         share_type: str = None,
         sharer_uid: str = None,
     ):
-        # The end time of the backup, in UTC.
+        # The end time of the backup. The time is displayed in UTC.
         self.backup_end_time = backup_end_time
         # The backup set ID.
         self.backup_id = backup_id
-        # The backup method. Only snapshot backup is supported. The value is fixed to **Snapshot**.
+        # The data backup method. Only snapshot backups are supported. The value is fixed as **Snapshot**.
         self.backup_method = backup_method
-        # The backup mode. Valid values:
-        # 
-        # - **Automated**: automated backup
-        # 
-        # - **Manual**: manual backup
+        # The backup mode. Valid values: 
+        # * **Automated**: automatic backup
+        # * **Manual**: manual backup
         self.backup_mode = backup_mode
-        # The size of the backup set, in bytes.
+        # The size of the backup file. Unit: bytes.
         self.backup_set_size = backup_set_size
-        # The start time of the backup, in UTC.
+        # The start time of the backup. The time is displayed in UTC.
         self.backup_start_time = backup_start_time
         # The backup status. Valid values:
-        # 
-        # - **Success**: The backup is complete.
-        # 
-        # - **Failed**: The backup failed.
+        # * **Success**: The backup is completed.
+        # * **Failed**: The backup failed.
         self.backup_status = backup_status
-        # The backup type. Only full backups are supported. The value is fixed to **FullBackup**.
+        # The backup type. Only full backups are supported. The value is fixed as **FullBackup**.
         self.backup_type = backup_type
-        # The backup level. Valid values:
-        # 
-        # - **Level-1**: Level-1 backup.
-        # 
-        # - **Level-2**: Level-2 backup.
+        # The backup set level. Valid values:
+        # * **Level-1**: level-1 backup
+        # * **Level-2**: level-2 backup
         self.backups_level = backups_level
-        # The UNIX timestamp of the consistent snapshot, in seconds.
+        # The point in time of the consistent snapshot. The value is a UNIX timestamp. Unit: seconds.
         self.consistent_time = consistent_time
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
@@ -140,18 +134,16 @@ class DescribeSharedBackupsResponseBodyItems(DaraModel):
         # The database engine version.
         self.dbversion = dbversion
         # The billing method. Valid values:
-        # 
-        # - **Postpaid**: pay-as-you-go.
-        # 
-        # - **Prepaid**: prepaid (subscription)
+        # * **Postpaid**: pay-as-you-go
+        # * **Prepaid**: subscription
         self.pay_type = pay_type
         # The region ID.
         self.region_id = region_id
-        # The Serverless type. A value of **AgileServerless** indicates a Serverless cluster, while an empty value indicates a standard cluster.
+        # The Serverless type. A value of **AgileServerless** indicates that the current cluster is a Serverless cluster. An empty value indicates that the current cluster is one of the common clusters.
         self.serverless_type = serverless_type
         # The share type.
         self.share_type = share_type
-        # The UID of the account that shared the backup set.
+        # The UID of the sharer.
         self.sharer_uid = sharer_uid
 
     def validate(self):

@@ -102,44 +102,45 @@ class DescribeAgenticDBComputeClustersResponseBodyItems(DaraModel):
         tenant_id: str = None,
         tenant_name: str = None,
     ):
-        # The associated branch ID.
+        # The ID of the associated branch.
         self.branch_id = branch_id
-        # The associated branch name.
+        # The name of the associated branch.
         self.branch_name = branch_name
-        # The compute instance ID.
+        # The ID of the compute instance.
         self.compute_cluster_id = compute_cluster_id
-        # The number of compute nodes (fixed to 1 in the first phase).
+        # The number of compute nodes. The value is fixed to 1 in the first phase.
         self.compute_node_count = compute_node_count
-        # The creation time. The time is in ISO 8601 format and uses the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
+        # The creation time.
+        # 
+        # The time is displayed in ISO 8601 format in UTC (YYYY-MM-DDTHH:mm:ssZ).
         self.create_time = create_time
         # The description.
         self.description = description
-        # Indicates whether it is the default branch.
+        # Specifies whether the branch is the default branch.
         self.is_default_branch = is_default_branch
         # The last activation time.
-        # The time is in ISO 8601 format and uses the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
         self.last_activated_at = last_activated_at
-        # The maximum compute unit.
+        # The maximum number of compute units.
         self.max_cu = max_cu
-        # The minimum compute unit.
+        # The minimum number of compute units.
         self.min_cu = min_cu
         # The operator type.
         self.operator_type = operator_type
-        # The parent branch ID. An empty string indicates the root branch.
+        # The ID of the parent branch. An empty string indicates the root branch.
         self.parent_branch_id = parent_branch_id
-        # The parent branch name. An empty string indicates the root branch.
+        # The name of the parent branch. An empty string indicates the root branch.
         self.parent_branch_name = parent_branch_name
-        # The associated project ID.
+        # The ID of the associated project.
         self.project_id = project_id
-        # The associated project name.
+        # The name of the associated project.
         self.project_name = project_name
         # The status.
         self.status = status
-        # The used data volume (in bytes).
+        # The used storage space in bytes.
         self.storage_size = storage_size
-        # The associated tenant ID.
+        # The ID of the associated tenant.
         self.tenant_id = tenant_id
-        # The associated tenant name.
+        # The name of the associated tenant.
         self.tenant_name = tenant_name
 
     def validate(self):

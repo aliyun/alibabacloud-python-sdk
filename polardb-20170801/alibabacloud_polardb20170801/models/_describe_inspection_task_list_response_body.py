@@ -62,13 +62,13 @@ class DescribeInspectionTaskListResponseBodyTaskLists(DaraModel):
         task_description: str = None,
         task_id: str = None,
     ):
-        # The last modification date of the task.
+        # The last modification date of the task, in the YYYY-MM-DD format.
         self.create_time = create_time
-        # The cron expression for periodically executing the inspection.
+        # The cron expression for scheduled inspections.
         self.cron_expression = cron_expression
         # The IDs of the PolarDB clusters to be inspected. Multiple IDs are separated by commas.
         self.dbcluster_ids = dbcluster_ids
-        # The expiration date of the inspection task.
+        # The expiration date of the inspection task, in the YYYY-MM-DD format.
         self.expire_time = expire_time
         # The description of the inspection task.
         self.task_description = task_description

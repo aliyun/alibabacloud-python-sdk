@@ -24,7 +24,7 @@ class DescribeSlowLogsResponseBody(DaraModel):
         self.dbcluster_id = dbcluster_id
         # The end date of the query.
         # 
-        # The date is in UTC. Format: YYYY-MM-DDZ.
+        # The date is in UTC and formatted as YYYY-MM-DDZ.
         self.end_time = end_time
         # The database engine.
         self.engine = engine
@@ -37,9 +37,9 @@ class DescribeSlowLogsResponseBody(DaraModel):
         self.request_id = request_id
         # The start date of the query.
         # 
-        # The date is in UTC. Format: YYYY-MM-DDZ.
+        # The date is in UTC and formatted as YYYY-MM-DDZ.
         self.start_time = start_time
-        # The total number of records.
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):

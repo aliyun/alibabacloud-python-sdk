@@ -9,7 +9,7 @@ class DescribeEncryptionDBSecretRequest(DaraModel):
         self,
         dbcluster_id: str = None,
     ):
-        # The cluster ID.
+        # The cluster ID. Usage notes: This parameter is required. If it is not provided, the InvalidDBClusterId.Malformed (400) error is returned. This API supports only PolarDB for MySQL clusters.
         self.dbcluster_id = dbcluster_id
 
     def validate(self):

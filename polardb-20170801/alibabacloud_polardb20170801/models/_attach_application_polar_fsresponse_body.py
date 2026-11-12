@@ -11,11 +11,11 @@ class AttachApplicationPolarFSResponseBody(DaraModel):
         polar_fsinstance_id: str = None,
         request_id: str = None,
     ):
-        # Application ID
+        # The application ID.
         self.application_id = application_id
-        # PolarLakeBase instance ID
+        # The Polarlakebase instance ID.
         self.polar_fsinstance_id = polar_fsinstance_id
-        # Request ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

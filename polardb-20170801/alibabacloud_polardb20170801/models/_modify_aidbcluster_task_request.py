@@ -16,10 +16,10 @@ class ModifyAIDBClusterTaskRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The task ID.
+        # The task ID. Note: This parameter refers to the training task ID, not the cluster ID. You can obtain a valid value by calling CreateAIDBClusterTask.
         self.dbcluster_id = dbcluster_id
         # The operation to perform. Valid values:
-        # * **stop**: Stops training. This value takes effect only for tasks that are currently in the training state.
+        # * **stop**: Stops the training. This value takes effect only for tasks that are in the training state.
         self.modify_mode = modify_mode
         self.owner_account = owner_account
         self.owner_id = owner_id

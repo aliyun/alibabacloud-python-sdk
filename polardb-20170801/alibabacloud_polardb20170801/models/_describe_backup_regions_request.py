@@ -13,7 +13,7 @@ class DescribeBackupRegionsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The cluster ID.
+        # The cluster ID. This parameter is required. If you do not specify this parameter, the API returns the InvalidDBClusterId.NotFound error with an HTTP 400 status code. You can call the DescribeDBClusters operation to obtain a valid cluster ID.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id

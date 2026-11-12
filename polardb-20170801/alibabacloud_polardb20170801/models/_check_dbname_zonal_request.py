@@ -14,13 +14,11 @@ class CheckDBNameZonalRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The cluster ID.
-        # 
-        # > Note: This parameter accepts only edge cluster IDs obtained by calling DescribeDBClustersZonal. Regular PolarDB cluster IDs obtained by calling DescribeDBClusters are not supported.
+        # The ID of the edge cluster. You must first create an edge cluster in the MyBase console, call DescribeDBClustersZonal to obtain the cluster ID, and then call CheckDBNameZonal. Standard PolarDB cluster IDs are not supported.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The database name.
+        # The name of the database.
         # 
         # This parameter is required.
         self.dbname = dbname

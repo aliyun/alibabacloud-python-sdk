@@ -11,13 +11,14 @@ class SearchMemoriesRequest(DaraModel):
         create_time_begin: str = None,
         create_time_end: str = None,
         memory_agent_id: str = None,
+        memory_id: str = None,
         memory_user_id: str = None,
         page: int = None,
         page_size: int = None,
         query: str = None,
         top_k: str = None,
     ):
-        # The application ID. Example: pa-**************. The application must be of the mem0 type. When creating the application by using CreateApplication, set ApplicationType to mem0. Calling this operation on a non-mem0 application returns the IncorrectDBInstanceEngine (403) error.
+        # The application ID. Example: pa-**************. The application must be of the mem0 type. When you create the application by calling CreateApplication, set ApplicationType to mem0. If you call this operation on a non-mem0 application, the IncorrectDBInstanceEngine (403) error is returned.
         # 
         # This parameter is required.
         self.application_id = application_id
@@ -27,13 +28,13 @@ class SearchMemoriesRequest(DaraModel):
         self.create_time_end = create_time_end
         # The ID of the memory agent.
         self.memory_agent_id = memory_agent_id
+        # The memory ID. If you specify this parameter, the complete change history of the memory is queried.
+        self.memory_id = memory_id
         # The ID of the memory user.
-        # 
-        # This parameter is required.
         self.memory_user_id = memory_user_id
         # The page number.
         self.page = page
-        # The number of entries per page.
+        # The number of records to display on each page.
         self.page_size = page_size
         # The search query.
         self.query = query
@@ -59,6 +60,9 @@ class SearchMemoriesRequest(DaraModel):
 
         if self.memory_agent_id is not None:
             result['MemoryAgentId'] = self.memory_agent_id
+
+        if self.memory_id is not None:
+            result['MemoryId'] = self.memory_id
 
         if self.memory_user_id is not None:
             result['MemoryUserId'] = self.memory_user_id
@@ -90,6 +94,9 @@ class SearchMemoriesRequest(DaraModel):
 
         if m.get('MemoryAgentId') is not None:
             self.memory_agent_id = m.get('MemoryAgentId')
+
+        if m.get('MemoryId') is not None:
+            self.memory_id = m.get('MemoryId')
 
         if m.get('MemoryUserId') is not None:
             self.memory_user_id = m.get('MemoryUserId')

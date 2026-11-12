@@ -18,19 +18,19 @@ class DescribeAIDBClusterTaskLogFilesResponseBody(DaraModel):
         request_id: str = None,
         start_time: str = None,
     ):
-        # The end of the time range to query.
+        # The end time of the query. The time is displayed in the ISO 8601 standard in the `YYYY-MM-DDTHH:mm:ssZ` format. The time is in UTC.
         self.end_time = end_time
         # The list of logs.
         self.items = items
-        # The page number of the returned page. The default value is 1.
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # The total number of entries that meet the query conditions. This parameter is optional and may not be returned.
+        # The total number of entries that meet the query conditions. This parameter is optional and may not be returned by default.
         self.page_record_count = page_record_count
-        # The maximum number of records returned for the current request.
+        # The maximum number of entries returned for the current request.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The start of the time range to query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
+        # The start time of the query. Specify the time in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -134,11 +134,11 @@ class DescribeAIDBClusterTaskLogFilesResponseBodyItemsSlsLogItems(DaraModel):
         message: str = None,
         timestamp: str = None,
     ):
-        # The time when the log was recorded.
+        # The log time. The time is displayed in the ISO 8601 standard in UTC. The seconds can contain a fractional part.
         self.log_time = log_time
         # The log message.
         self.message = message
-        # The specific point in time when the metric was recorded. The value is a UNIX timestamp. Unit: seconds.
+        # The specific time point of the monitoring metrics. The format is a UNIX timestamp in seconds.
         self.timestamp = timestamp
 
     def validate(self):

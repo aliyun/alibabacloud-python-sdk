@@ -21,43 +21,39 @@ class ModifyDBClusterAndNodesParametersRequest(DaraModel):
         resource_owner_id: int = None,
         standby_cluster_id_list_need_to_sync: str = None,
     ):
-        # Specifies whether to clear binlog. This parameter is valid only when binlog is disabled.
+        # Specifies whether to clear binlogs. This parameter takes effect only when binlogs are disabled.
         self.clear_binlog = clear_binlog
-        # The cluster ID.
+        # The cluster ID. The DBClusterStatus of the target cluster must be Running. You can call the DescribeDBClusters operation to check the current status. Usage notes: The DBClusterStatus of the cluster must be Running. You can call the DescribeDBClusters operation to verify the status.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The IDs of the nodes. By setting this parameter, you can modify the parameters of the cluster and specified nodes. Separate multiple node IDs with commas (,).
+        # The node IDs. You can set this parameter to modify the parameters of the cluster and the specified nodes. Separate multiple node IDs with commas (,).
         # 
-        # > If this parameter is not specified, only the cluster parameters are modified.
+        # > If this parameter is left empty, only the cluster parameters are modified.
         self.dbnode_ids = dbnode_ids
-        # Specifies whether to immediately or scheduledly modify parameters and restart the cluster. Valid values:
+        # Specifies whether to execute the parameter modification and cluster restart immediately or at a scheduled time. Valid values:
         # 
-        # - **false** (default): scheduled execution
+        # - **false**: The task is executed at a scheduled time. This is the default value.
         # 
-        # - **true**: immediate execution
+        # - **true**: The task is executed immediately.
         self.from_time_service = from_time_service
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the parameter template.
+        # The parameter template ID.
         self.parameter_group_id = parameter_group_id
-        # The JSON string that consists of parameters and their values.
+        # The JSON string of parameters and their values.
         self.parameters = parameters
-        # The latest time to start the scheduled task. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
-        # 
-        # > - The latest start time must be 30 minutes or more later than the earliest start time.
-        # >
-        # > - If you specify `PlannedStartTime` but not this parameter, the latest start time of the task is `the earliest start time + 30 minutes` by default. For example, if you set `PlannedStartTime` to `2021-01-14T09:00:00Z` and leave this parameter empty, the task will start no later than `2021-01-14T09:30:00Z`.
+        # The latest time to start the scheduled task. The time must be in the `YYYY-MM-DDThh:mm:ssZ` format and in UTC.
+        # > * The latest time must be at least 30 minutes later than the start time.
+        # > * If `PlannedStartTime` is specified but this parameter is not, the latest start time defaults to 30 minutes after the start time. For example, if `PlannedStartTime` is set to `2021-01-14T09:00:00Z` and this parameter is left empty, the task will start no later than `2021-01-14T09:30:00Z`.
         self.planned_end_time = planned_end_time
-        # The earliest time to start the scheduled task. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
-        # 
-        # > - The start time can be any time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a time that ranges from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
-        # >
-        # > - If you leave this parameter empty, the task is immediately executed.
+        # The earliest time to start the scheduled task. The time must be in the `YYYY-MM-DDThh:mm:ssZ` format and in UTC.
+        # > * The start time must be within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, the allowed start time ranges from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
+        # > * If this parameter is left empty, the task is executed immediately by default.
         self.planned_start_time = planned_start_time
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The list of GDN standby clusters to which you want to synchronize the parameter settings.
+        # The list of secondary clusters in the Global Database Network (GDN) that require parameter settings synchronization.
         self.standby_cluster_id_list_need_to_sync = standby_cluster_id_list_need_to_sync
 
     def validate(self):

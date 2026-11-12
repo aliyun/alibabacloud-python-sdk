@@ -11,7 +11,7 @@ class DescribePolarClawAgentFileRequest(DaraModel):
         application_id: str = None,
         file_name: str = None,
     ):
-        # Agent ID
+        # The PolarClaw agent ID.
         # 
         # This parameter is required.
         self.agent_id = agent_id

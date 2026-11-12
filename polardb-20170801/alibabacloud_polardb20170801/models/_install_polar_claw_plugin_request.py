@@ -18,7 +18,7 @@ class InstallPolarClawPluginRequest(DaraModel):
         self.application_id = application_id
         # The npm package name, including the version number.
         self.npm_package = npm_package
-        # The plug-in ID.
+        # The plugin identifier.
         # 
         # This parameter is required.
         self.plugin_id = plugin_id

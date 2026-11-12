@@ -23,7 +23,7 @@ class CheckPolarClawSkillResponseBody(DaraModel):
         self.ossregion_id = ossregion_id
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
+        # The request result. Valid values:
         # 
         # - **true**: The request is successful.
         # 

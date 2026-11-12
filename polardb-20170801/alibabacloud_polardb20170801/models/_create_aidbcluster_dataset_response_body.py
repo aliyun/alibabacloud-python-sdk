@@ -14,15 +14,15 @@ class CreateAIDBClusterDatasetResponseBody(DaraModel):
         path: str = None,
         request_id: str = None,
     ):
-        # The ID of the PolarDB database cluster.
+        # The instance ID of the PolarDB database for the AI model service.
         self.dbcluster_id = dbcluster_id
-        # The dataset management service ID.
+        # The instance ID of the dataset management service.
         self.data_service_id = data_service_id
         # The dataset ID.
         self.dataset_id = dataset_id
-        # The dataset name.
+        # The name of the dataset.
         self.dataset_name = dataset_name
-        # The path to the dataset.
+        # The path of the dataset.
         self.path = path
         # The request ID.
         self.request_id = request_id

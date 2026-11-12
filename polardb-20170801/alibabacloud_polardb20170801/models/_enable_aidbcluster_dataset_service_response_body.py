@@ -12,7 +12,7 @@ class EnableAIDBClusterDatasetServiceResponseBody(DaraModel):
     ):
         # The instance ID of the dataset management service.
         self.dbcluster_id = dbcluster_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

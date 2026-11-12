@@ -21,7 +21,7 @@ class ListLakebaseS3AccountsRequest(DaraModel):
         # This parameter is required.
         self.pfs_instance_id = pfs_instance_id
         # The region ID.
-        # >You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query region IDs.
+        # >You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to view region IDs.
         self.region_id = region_id
 
     def validate(self):

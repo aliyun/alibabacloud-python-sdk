@@ -12,7 +12,7 @@ class DescribeInstanceReportAttributeRequest(DaraModel):
     ):
         # The region ID of the instance.
         self.region_id = region_id
-        # The ID of the instance inspection report to query.
+        # The ID of the instance inspection report.
         self.report_id = report_id
 
     def validate(self):

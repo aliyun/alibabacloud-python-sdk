@@ -20,7 +20,7 @@ class DescribeInstanceReportAttributeResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # Indicates whether the report is the latest one.
+        # Indicates whether the report is the latest report.
         self.latest = latest
         # The detailed description of the inspection report.
         self.report_description = report_description
@@ -127,7 +127,7 @@ class DescribeInstanceReportAttributeResponseBodyReportSubItems(DaraModel):
         self.risk_level = risk_level
         # The score of the inspection item.
         self.score = score
-        # The name of the inspection skill that generated the result.
+        # The name of the inspection skill that generated the inspection result.
         self.skill_name = skill_name
         # The result summary of the inspection item.
         self.summary = summary

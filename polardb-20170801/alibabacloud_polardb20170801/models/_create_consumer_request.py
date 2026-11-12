@@ -14,19 +14,19 @@ class CreateConsumerRequest(DaraModel):
         nick_name: str = None,
         region_id: str = None,
     ):
-        # The consumer group ID. You can obtain the ID from the ConsumerGroupId parameter returned by the CreateConsumerGroup operation.
+        # The ID of the user group. You can obtain the ID from the ConsumerGroupId parameter returned by CreateConsumerGroup. This parameter is actually required. If it is not provided, the API returns an InvalidParameters.Format (400) error. Although the parameter is named ConsumerGroupName, you must pass the ConsumerGroupId in the cg-xxxx format. You can obtain the ID from the ConsumerGroupId field returned by CreateConsumerGroup or DescribeConsumerGroups.
         self.consumer_group_name = consumer_group_name
-        # The gateway instance ID. You can obtain the ID from the GwClusterId parameter returned by the CreateGateway operation.
+        # The ID of the gateway instance. You can obtain the ID from the GwClusterId parameter returned by CreateGateway.
         # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
-        # The key type. Default value: ApiKey. Valid values: ApiKey.
+        # The key type. Default value: ApiKey. Currently, only ApiKey is supported.
         self.key_type = key_type
         # The username.
         # 
         # This parameter is required.
         self.name = name
-        # The nickname.
+        # The nickname of the user.
         self.nick_name = nick_name
         # The region ID.
         self.region_id = region_id

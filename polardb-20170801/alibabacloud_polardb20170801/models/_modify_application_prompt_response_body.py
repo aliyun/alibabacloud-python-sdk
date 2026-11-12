@@ -10,9 +10,9 @@ class ModifyApplicationPromptResponseBody(DaraModel):
         prompt_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the modified prompt.
+        # The prompt ID.
         self.prompt_id = prompt_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

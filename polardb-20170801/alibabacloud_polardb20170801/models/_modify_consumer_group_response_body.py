@@ -12,7 +12,7 @@ class ModifyConsumerGroupResponseBody(DaraModel):
     ):
         # The ID of the consumer group.
         self.consumer_group_id = consumer_group_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

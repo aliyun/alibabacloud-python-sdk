@@ -14,7 +14,7 @@ class DescribePolarClawSkillDetailRequest(DaraModel):
         # 
         # This parameter is required.
         self.application_id = application_id
-        # The Skill identifier.
+        # The skill identifier.
         # 
         # This parameter is required.
         self.slug = slug

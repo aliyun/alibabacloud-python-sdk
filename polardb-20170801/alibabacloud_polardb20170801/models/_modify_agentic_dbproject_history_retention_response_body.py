@@ -13,15 +13,15 @@ class ModifyAgenticDBProjectHistoryRetentionResponseBody(DaraModel):
         request_id: str = None,
         tenant_id: str = None,
     ):
-        # DBClusterId
+        # The database cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The current effective history retention period for the project. For the actual recoverable range, query the branch recovery window.
+        # The effective retention period for historical data, in seconds.
         self.history_retention_seconds = history_retention_seconds
-        # ProjectId
+        # The project ID.
         self.project_id = project_id
         # The request ID.
         self.request_id = request_id
-        # TenantId
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

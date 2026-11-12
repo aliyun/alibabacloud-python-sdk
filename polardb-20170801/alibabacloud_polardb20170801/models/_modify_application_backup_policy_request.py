@@ -14,17 +14,17 @@ class ModifyApplicationBackupPolicyRequest(DaraModel):
         preferred_backup_time: str = None,
         region_id: str = None,
     ):
-        # The application ID.
+        # The ID of the application.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # The application type, such as polarclaw.
+        # The application type, such as polarclaw. This parameter is required. If it is not provided, the service returns InvalidApplicationType.Malformed. Valid values: polarclaw, supabase, and polarclawsaas. Note: The ApplicationType field in the DescribeApplications response contains the polardb_ prefix (such as polardb_polarclaw). When you call this operation, remove the prefix and use the short format.
         self.application_type = application_type
         # The days of the week when automatic backups are performed. Separate multiple values with commas. Valid values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, and Sunday.
         self.preferred_backup_period = preferred_backup_period
-        # The retention period of level-1 backups, in days.
+        # The retention period of level-1 backups. Unit: days.
         self.preferred_backup_retention_period = preferred_backup_retention_period
-        # The time window when automatic backups are performed. The format is HH:mmZ-HH:mmZ in UTC. The start time and end time must be on the hour and exactly one hour apart.
+        # The time window when automatic backups are performed. Specify the time in the HH:mmZ-HH:mmZ format in UTC. The start time and end time must be on the hour and exactly one hour apart.
         self.preferred_backup_time = preferred_backup_time
         # The region ID of the application.
         self.region_id = region_id

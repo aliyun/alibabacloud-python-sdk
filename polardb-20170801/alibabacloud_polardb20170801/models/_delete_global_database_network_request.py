@@ -15,7 +15,7 @@ class DeleteGlobalDatabaseNetworkRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The ID of the GDN.
+        # The ID of the global database network (GDN).
         # 
         # This parameter is required.
         self.gdnid = gdnid

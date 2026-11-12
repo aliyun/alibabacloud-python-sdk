@@ -12,10 +12,12 @@ class DescribeDBClusterAccessWhitelistResponseBody(DaraModel):
         self,
         dbcluster_security_groups: main_models.DescribeDBClusterAccessWhitelistResponseBodyDBClusterSecurityGroups = None,
         items: main_models.DescribeDBClusterAccessWhitelistResponseBodyItems = None,
+        project_items: main_models.DescribeDBClusterAccessWhitelistResponseBodyProjectItems = None,
         request_id: str = None,
     ):
         self.dbcluster_security_groups = dbcluster_security_groups
         self.items = items
+        self.project_items = project_items
         # The request ID.
         self.request_id = request_id
 
@@ -24,6 +26,8 @@ class DescribeDBClusterAccessWhitelistResponseBody(DaraModel):
             self.dbcluster_security_groups.validate()
         if self.items:
             self.items.validate()
+        if self.project_items:
+            self.project_items.validate()
 
     def to_map(self):
         result = dict()
@@ -35,6 +39,9 @@ class DescribeDBClusterAccessWhitelistResponseBody(DaraModel):
 
         if self.items is not None:
             result['Items'] = self.items.to_map()
+
+        if self.project_items is not None:
+            result['ProjectItems'] = self.project_items.to_map()
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -51,8 +58,98 @@ class DescribeDBClusterAccessWhitelistResponseBody(DaraModel):
             temp_model = main_models.DescribeDBClusterAccessWhitelistResponseBodyItems()
             self.items = temp_model.from_map(m.get('Items'))
 
+        if m.get('ProjectItems') is not None:
+            temp_model = main_models.DescribeDBClusterAccessWhitelistResponseBodyProjectItems()
+            self.project_items = temp_model.from_map(m.get('ProjectItems'))
+
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+
+        return self
+
+class DescribeDBClusterAccessWhitelistResponseBodyProjectItems(DaraModel):
+    def __init__(
+        self,
+        dbcluster_project_iparray: List[main_models.DescribeDBClusterAccessWhitelistResponseBodyProjectItemsDBClusterProjectIPArray] = None,
+    ):
+        self.dbcluster_project_iparray = dbcluster_project_iparray
+
+    def validate(self):
+        if self.dbcluster_project_iparray:
+            for v1 in self.dbcluster_project_iparray:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['DBClusterProjectIPArray'] = []
+        if self.dbcluster_project_iparray is not None:
+            for k1 in self.dbcluster_project_iparray:
+                result['DBClusterProjectIPArray'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dbcluster_project_iparray = []
+        if m.get('DBClusterProjectIPArray') is not None:
+            for k1 in m.get('DBClusterProjectIPArray'):
+                temp_model = main_models.DescribeDBClusterAccessWhitelistResponseBodyProjectItemsDBClusterProjectIPArray()
+                self.dbcluster_project_iparray.append(temp_model.from_map(k1))
+
+        return self
+
+class DescribeDBClusterAccessWhitelistResponseBodyProjectItemsDBClusterProjectIPArray(DaraModel):
+    def __init__(
+        self,
+        default_open: bool = None,
+        project_id: str = None,
+        revision: int = None,
+        security_ips: str = None,
+    ):
+        self.default_open = default_open
+        self.project_id = project_id
+        self.revision = revision
+        self.security_ips = security_ips
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.default_open is not None:
+            result['DefaultOpen'] = self.default_open
+
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
+        if self.revision is not None:
+            result['Revision'] = self.revision
+
+        if self.security_ips is not None:
+            result['SecurityIps'] = self.security_ips
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DefaultOpen') is not None:
+            self.default_open = m.get('DefaultOpen')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+
+        if m.get('Revision') is not None:
+            self.revision = m.get('Revision')
+
+        if m.get('SecurityIps') is not None:
+            self.security_ips = m.get('SecurityIps')
 
         return self
 

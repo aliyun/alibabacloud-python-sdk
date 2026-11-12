@@ -10,9 +10,9 @@ class DeleteApplicationPromptResponseBody(DaraModel):
         prompt_id: str = None,
         request_id: str = None,
     ):
-        # The Prompt ID.
+        # The prompt ID.
         self.prompt_id = prompt_id
-        # The Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

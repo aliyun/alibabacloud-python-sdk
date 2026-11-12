@@ -25,13 +25,13 @@ class DescribeSlowLogsRequest(DaraModel):
         self.dbcluster_id = dbcluster_id
         # The name of the database.
         self.dbname = dbname
-        # The end date of the query. The end date must be later than or equal to the start date. The interval between the start date and the end date cannot exceed 31 days. Format: yyyy-MM-ddZ (UTC).
+        # The end date of the query. The end date cannot be earlier than the start date, and the interval between the start date and the end date cannot exceed 31 days. Specify the time in the yyyy-MM-ddZ format. The time must be in UTC.
         # 
         # This parameter is required.
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type.
+        # The page number. Valid values: any positive integer up to the maximum value of the Integer type.
         # 
         # Default value: 1.
         self.page_number = page_number
@@ -43,7 +43,7 @@ class DescribeSlowLogsRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The start date of the query. The interval between the start date and the current date cannot exceed 31 days. Format: yyyy-MM-ddZ (UTC).
+        # The start date of the query. The interval between the start date and the current date cannot exceed 31 days. Specify the time in the yyyy-MM-ddZ format. The time must be in UTC.
         # 
         # This parameter is required.
         self.start_time = start_time

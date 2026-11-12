@@ -21,13 +21,13 @@ class GetPolarClawConfigResponseBody(DaraModel):
         self.application_id = application_id
         # The response status code.
         self.code = code
-        # The configuration object.
+        # The configuration.
         self.config = config
-        # The configuration hash.
+        # The configuration hash, which is used as an optimistic lock for subsequent patch operations.
         self.hash = hash
         # The response message.
         self.message = message
-        # The version of OpenClaw.
+        # The OpenClaw version.
         self.openclaw_version = openclaw_version
         # The request ID.
         self.request_id = request_id

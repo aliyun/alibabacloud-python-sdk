@@ -22,7 +22,7 @@ class ListLakebaseS3AccountsResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The list of S3 accounts.
+        # The S3 accounts.
         self.s_3accounts = s_3accounts
         # The total number of accounts.
         self.total_count = total_count
@@ -90,9 +90,9 @@ class ListLakebaseS3AccountsResponseBodyS3Accounts(DaraModel):
         # - default: the built-in default account.
         # - user: a user-created account.
         self.account_type = account_type
-        # The access key of the S3 account.
+        # The AccessKey ID of the S3 account.
         self.user_acc_ak = user_acc_ak
-        # The secret key of the S3 account (displayed in masked format).
+        # The AccessKey secret of the S3 account (masked).
         self.user_acc_sk = user_acc_sk
 
     def validate(self):

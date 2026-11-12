@@ -27,11 +27,11 @@ class DescribePolarClawAgentsResponseBody(DaraModel):
         self.code = code
         # The default agent ID.
         self.default_id = default_id
-        # The primary agent key name.
+        # The main agent key name.
         self.main_key = main_key
         # The response message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
         # The routing scope.
         self.scope = scope
@@ -118,11 +118,11 @@ class DescribePolarClawAgentsResponseBodyAgents(DaraModel):
         skills: List[str] = None,
         workspace: str = None,
     ):
-        # Indicates whether this is the default agent.
+        # Indicates whether the agent is the default agent.
         self.default = default
-        # The agent file list.
+        # The list of agent files.
         self.files = files
-        # Agent ID
+        # The PolarClaw agent ID.
         self.id = id
         # The identity information.
         self.identity = identity
@@ -217,7 +217,7 @@ class DescribePolarClawAgentsResponseBodyAgentsModel(DaraModel):
         fallbacks: List[str] = None,
         primary: str = None,
     ):
-        # The fallback model list.
+        # The list of fallback models.
         self.fallbacks = fallbacks
         # The primary model.
         self.primary = primary
@@ -261,7 +261,7 @@ class DescribePolarClawAgentsResponseBodyAgentsIdentity(DaraModel):
         self.avatar = avatar
         # The avatar URL.
         self.avatar_url = avatar_url
-        # The emoji identifier in Unicode format such as U+1F99E, or a direct emoji character.
+        # The emoji identifier, in Unicode format such as U+1F99E or as a direct emoji character.
         self.emoji = emoji
         # The identity name.
         self.name = name
@@ -327,9 +327,9 @@ class DescribePolarClawAgentsResponseBodyAgentsFiles(DaraModel):
         self.name = name
         # The file path.
         self.path = path
-        # The file size, in bytes.
+        # The file size in bytes.
         self.size = size
-        # The last updated timestamp, in milliseconds.
+        # The timestamp of the last update in milliseconds.
         self.updated_at_ms = updated_at_ms
 
     def validate(self):

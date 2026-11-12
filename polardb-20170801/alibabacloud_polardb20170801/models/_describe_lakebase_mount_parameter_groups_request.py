@@ -11,9 +11,7 @@ class DescribeLakebaseMountParameterGroupsRequest(DaraModel):
         polar_fs_instance_id: str = None,
         region_id: str = None,
     ):
-        # The instance category. Valid values:
-        # - basic: Basic Edition.
-        # - high_performance: High-performance Edition.
+        # The instance category. Valid values: basic (Basic Edition) and high_performance (High-performance Edition).
         self.param_group_category = param_group_category
         # The PolarFS instance ID.
         # 

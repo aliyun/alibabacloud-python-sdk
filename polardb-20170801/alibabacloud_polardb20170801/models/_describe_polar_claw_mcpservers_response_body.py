@@ -19,11 +19,11 @@ class DescribePolarClawMCPServersResponseBody(DaraModel):
         self.application_id = application_id
         # The status code.
         self.code = code
-        # The message returned for the request.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The configurations of the MCP servers.
+        # The MCP server configurations.
         self.servers = servers
 
     def validate(self):

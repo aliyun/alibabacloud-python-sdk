@@ -66,9 +66,7 @@ class DescribeLakebaseMountParameterGroupsResponseBodyParameterGroups(DaraModel)
     ):
         # The creation time in UTC.
         self.create_time = create_time
-        # Indicates whether the parameter template is applied. Valid values:
-        # - 0: No.
-        # - 1: Yes.
+        # Indicates whether the parameter template is applied. Valid values: 0 (no) and 1 (yes).
         self.is_apply = is_apply
         # The modification time in UTC.
         self.modify_time = modify_time
@@ -76,13 +74,11 @@ class DescribeLakebaseMountParameterGroupsResponseBodyParameterGroups(DaraModel)
         self.parameter_counts = parameter_counts
         # The description of the parameter template.
         self.parameter_group_desc = parameter_group_desc
-        # The ID of the parameter template.
+        # The parameter template ID.
         self.parameter_group_id = parameter_group_id
         # The name of the parameter template.
         self.parameter_group_name = parameter_group_name
-        # The templatetype. Valid values:
-        # - 0: System.
-        # - 1: User.
+        # The templatetype. Valid values: 0 (system) and 1 (user).
         self.parameter_group_type = parameter_group_type
 
     def validate(self):

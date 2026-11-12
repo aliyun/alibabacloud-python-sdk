@@ -15,17 +15,19 @@ class DeleteDBEndpointAddressRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the cluster.
-        # 
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters that belong to your account, such as the cluster ID.
+        # The cluster ID.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters under your account, including the cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The ID of the endpoint.
+        # The endpoint ID.
         # 
-        # > You can call the [DescribeDBClusterEndpoints](https://help.aliyun.com/document_detail/98205.html) operation to query the endpoints of a specified PolarDB cluster.
+        # > You can call the [DescribeDBClusterEndpoints](https://help.aliyun.com/document_detail/98205.html) operation to query the endpoint ID.
         self.dbendpoint_id = dbendpoint_id
-        # The network type of the endpoint. Set the value to **Public** (public network).
+        # <props="intl">The network type of the endpoint. Only **Public** (Internet) is supported.
+        # <props="china">The network type of the endpoint. Valid values:
+        # <props="china">- **Public**: Internet.
+        # <props="china">- **Inner**: classic network.
         # 
         # This parameter is required.
         self.net_type = net_type

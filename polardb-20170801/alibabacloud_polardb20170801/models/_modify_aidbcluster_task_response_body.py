@@ -15,7 +15,7 @@ class ModifyAIDBClusterTaskResponseBody(DaraModel):
         self.dbcluster_id = dbcluster_id
         # The instance ID of the PolarDB database for the AI model service.
         self.relative_dbcluster_id = relative_dbcluster_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

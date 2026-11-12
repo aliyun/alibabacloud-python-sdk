@@ -14,21 +14,21 @@ class ModifyBudgetPolicyRequest(DaraModel):
         region_id: str = None,
         reset_day_of_month: str = None,
     ):
-        # The budget usage percentage that triggers an alert. Valid values: 0 to 100.
+        # The alert threshold percentage. Valid values: 0 to 100.
         self.alert_threshold_pct = alert_threshold_pct
-        # The budget amount in points.
+        # The budget points.
         self.budget_points = budget_points
         # The ID of the budget policy.
         # 
         # This parameter is required.
         self.budget_policy_id = budget_policy_id
-        # The ID of the gateway instance.
+        # The instance ID of the gateway instance. Usage note: In the full API reference, the description of the GwClusterId parameter must specify the resource type (gateway instance), how to obtain the instance ID (which Describe or List API to invoke), and the difference between GwClusterId and DBClusterId.
         # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
-        # The day of the month when the budget is reset. Valid values: 1 to 28.
+        # The day of the month when the reset occurs. Valid values: 1 to 28.
         self.reset_day_of_month = reset_day_of_month
 
     def validate(self):

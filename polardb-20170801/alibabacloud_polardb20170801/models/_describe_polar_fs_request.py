@@ -21,9 +21,9 @@ class DescribePolarFsRequest(DaraModel):
         resource_group_id: str = None,
         tag: List[main_models.DescribePolarFsRequestTag] = None,
     ):
-        # The PolarDB instance ID that the application depends on.
+        # The PolarDB instance ID on which the application depends.
         self.dbcluster_id = dbcluster_id
-        # The page number. The value must be an integer greater than 0 and less than or equal to the maximum value of the Integer data type.
+        # The page number. The value must be an integer greater than 0 and no greater than the maximum value of the Integer data type.
         self.page_number = page_number
         # The number of entries per page. Valid values:
         # 

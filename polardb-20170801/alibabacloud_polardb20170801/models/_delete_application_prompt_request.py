@@ -10,11 +10,11 @@ class DeleteApplicationPromptRequest(DaraModel):
         application_id: str = None,
         prompt_id: str = None,
     ):
-        # The Application ID.
+        # The application ID. The ID must point to an application with mem0 capabilities enabled. You can determine this by checking whether the MemApplicationAttribute returned by DescribeApplicationAttribute is not empty. Applications such as polarclaw, supabase, and polarclawsaas that do not have mem0 enabled do not support prompt operations.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # The Prompt ID.
+        # The prompt ID.
         # 
         # This parameter is required.
         self.prompt_id = prompt_id

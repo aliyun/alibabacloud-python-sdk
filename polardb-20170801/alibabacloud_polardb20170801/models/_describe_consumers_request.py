@@ -16,9 +16,9 @@ class DescribeConsumersRequest(DaraModel):
         page_size: int = None,
         region_id: str = None,
     ):
-        # The ID of the consumer group.
+        # The consumer group ID.
         self.consumer_group_id = consumer_group_id
-        # The ID of the consumer.
+        # The consumer ID.
         self.consumer_id = consumer_id
         # The name used to filter consumers.
         self.consumer_name = consumer_name

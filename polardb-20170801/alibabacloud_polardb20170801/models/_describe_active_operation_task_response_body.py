@@ -16,7 +16,7 @@ class DescribeActiveOperationTaskResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The task list.
+        # The list of tasks.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -98,41 +98,41 @@ class DescribeActiveOperationTaskResponseBodyItems(DaraModel):
         task_params: str = None,
         task_type: str = None,
     ):
-        # The time when the task was created. The time is in the `yyyy-MM-ddTHH:mmZ` format (UTC).
+        # The time when the task was created. The time is displayed in the `yyyy-MM-ddTHH:mmZ` format (UTC).
         self.created_time = created_time
         # The database engine type.
         self.db_type = db_type
         # The database engine version.
         self.db_version = db_version
-        # The latest deadline for adjusting the task execution time. The time is in the `yyyy-MM-ddTHH:mmZ` format (UTC).
+        # The latest deadline within the adjustable range for task execution time. The time is displayed in the `yyyy-MM-ddTHH:mmZ` format (UTC).
         self.deadline = deadline
         # The task ID.
         self.id = id
         # The cluster name.
         self.ins_name = ins_name
-        # The modification time. The time is in the `yyyy-MM-ddTHH:mmZ` format (UTC).
+        # The time when the task was modified. The time is displayed in the `yyyy-MM-ddTHH:mmZ` format (UTC).
         self.modified_time = modified_time
-        # The preparation time before the transient disconnection. The time is in the `HH:mm:ss` format.
+        # The preparation time before the transient disconnection. The time is displayed in the `HH:mm:ss` format.
         self.prepare_interval = prepare_interval
         # The region where the task is located.
         self.region = region
         # The task execution result.
         self.result_info = result_info
-        # The time when the task is executed in the background. The time is in the `yyyy-MM-ddTHH:mmZ` format (UTC).
+        # The time when the task is executed in the background. The time is displayed in the `yyyy-MM-ddTHH:mmZ` format (UTC).
         self.start_time = start_time
         # The task status.
         # * If you set `IsHistory` to **0**, the details of the pending task status are returned. Valid values:
         # 
-        #     * **2**: waiting for the user to set the task start time
-        #     * **3**: waiting to be processed
-        #     * **4**: being processed
+        #     * **2**: Waiting for the user to set the task start time.
+        #     * **3**: Waiting to be processed.
+        #     * **4**: The task is being processed.
         # 
         # * If you set `IsHistory` to **1**, the details of the historical task status are returned. Valid values:
-        #      * **5**: task completed and executed successfully
-        #      * **6**: task completed but execution failed
-        #      * **7**: task canceled
+        #      * **5**: The task is completed and executed successfully.
+        #      * **6**: The task is completed but failed.
+        #      * **7**: The task is canceled.
         self.status = status
-        # The time of the transient disconnection. The time is in the `yyyy-MM-ddTHH:mmZ` format (UTC).
+        # The time when the transient disconnection occurs. The time is displayed in the `yyyy-MM-ddTHH:mmZ` format (UTC).
         self.switch_time = switch_time
         # The task parameters.
         self.task_params = task_params

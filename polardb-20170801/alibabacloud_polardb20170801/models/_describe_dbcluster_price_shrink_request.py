@@ -31,12 +31,7 @@ class DescribeDBClusterPriceShrinkRequest(DaraModel):
         used_time: str = None,
         zone_id: str = None,
     ):
-        # The cluster edition. Valid values:
-        # - Normal: Cluster Edition.
-        # - Basic: Single Node Edition.
-        # - ArchiveNormal: Archive Database.
-        # - SENormal: Standard Edition.
-        # - NormalMultimaster: Multi-master Cluster.
+        # The cluster edition. Valid values: Normal (Cluster Edition), Basic (Single Node Edition), ArchiveNormal (Archive Database Cluster Edition), SENormal (Standard Edition), and NormalMultimaster (Multi-master Cluster).
         self.creation_category = creation_category
         # The cluster ID. Required for non-BUY scenarios.
         self.dbcluster_id = dbcluster_id
@@ -44,45 +39,25 @@ class DescribeDBClusterPriceShrinkRequest(DaraModel):
         self.dbnode_class = dbnode_class
         # The list of node IDs to delete. Used when ModifyType is set to DELETE.
         self.dbnode_ids = dbnode_ids
-        # The number of nodes. Valid for the BUY scenario. This value includes the read/write node. Minimum value: 1. Default value: 1.
+        # The number of nodes. Valid for the BUY scenario. This number includes read/write nodes. Minimum value: 1. Default value: 1.
         self.dbnode_num = dbnode_num
-        # The list of heterogeneous specification change nodes. Used for specification change scenarios to specify the target specifications for each node.
+        # The list of nodes for heterogeneous specification changes. Used in specification change scenarios to specify the target specifications for each node.
         self.dbnodes_shrink = dbnodes_shrink
         # The database engine type. Required for the BUY scenario. Valid values: MySQL, PostgreSQL, and Oracle.
         self.dbtype = dbtype
         # The database engine version. Required for the BUY scenario. Valid values for MySQL: 5.6, 5.7, and 8.0. Valid values for PostgreSQL: 11 and 14. Valid values for Oracle: 11 and 14.
         self.dbversion = dbversion
-        # Specifies whether to enable the hot standby cluster. Valid values:
-        # - ON: Enable.
-        # - OFF: Disable.
-        # 
-        # Valid for the BUY and specification change scenarios.
+        # Specifies whether to enable the hot standby cluster. Valid values: ON and OFF. Valid for the BUY and specification change scenarios.
         self.hot_standby_cluster = hot_standby_cluster
-        # The specification change direction. Valid values:
-        # - ADD: add nodes.
-        # - DELETE: remove nodes.
-        # - UPGRADE: upgrade specifications.
-        # - DOWNGRADE: downgrade specifications.
-        # - HOT_STANDBY: hot standby change.
-        # - STORAGE: storage space change.
-        # - STORAGE_TYPE: storage type change.
+        # The modification type. Valid values: ADD (add nodes), DELETE (remove nodes), UPGRADE (upgrade), DOWNGRADE (downgrade), HOT_STANDBY (hot standby change), STORAGE (storage space change), and STORAGE_TYPE (storage type change).
         self.modify_type = modify_type
-        # The order type. Valid values:
-        # - BUY: new purchase.
-        # - CONVERT: billing method conversion.
-        # - RENEW: renewal.
-        # - UPGRADE: upgrade specifications or add nodes.
-        # - DOWNGRADE: downgrade specifications or remove nodes.
+        # The order type. Valid values: BUY (new purchase), CONVERT (billing method change), RENEW (renewal), UPGRADE (upgrade or add nodes), and DOWNGRADE (downgrade or remove nodes).
         # 
         # This parameter is required.
         self.order_type = order_type
-        # The billing method. Required for the BUY and CONVERT scenarios. Valid values:
-        # - Prepaid: subscription.
-        # - Postpaid: pay-as-you-go.
+        # The billing method. Required for the BUY and CONVERT scenarios. Valid values: Prepaid (subscription) and Postpaid (pay-as-you-go).
         self.pay_type = pay_type
-        # The subscription cycle. Valid values:
-        # - Month: monthly.
-        # - Year: yearly.
+        # The subscription period. Valid values: Month and Year.
         self.period = period
         # The provisioned IOPS. Used for the Standard Edition (SENormal) scenario.
         self.provisioned_iops = provisioned_iops
@@ -90,26 +65,17 @@ class DescribeDBClusterPriceShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The serverless type. Valid values: AgileServerless.
+        # The Serverless type. Valid value: AgileServerless.
         self.serverless_type = serverless_type
-        # The storage billing type. Valid values:
-        # - Prepaid: subscription.
-        # - Postpaid: pay-as-you-go.
+        # The storage billing method. Valid values: Prepaid (subscription) and Postpaid (pay-as-you-go).
         self.storage_charge_type = storage_charge_type
-        # The storage space, in GB. Used for prepaid storage or storage specification change scenarios.
+        # The storage space. Unit: GB. Used for prepaid storage or storage specification change scenarios.
         self.storage_space = storage_space
-        # The storage type. Valid values:
-        # - PSL5: high performance.
-        # - PSL4: standard.
-        # - ESSDPL0
-        # - ESSDPL1
-        # - ESSDPL2
-        # - ESSDPL3
-        # - ESSDAUTOPL
+        # The storage type. Valid values: PSL5 (premium performance), PSL4 (standard performance), ESSDPL0, ESSDPL1, ESSDPL2, ESSDPL3, and ESSDAUTOPL.
         self.storage_type = storage_type
-        # The subscription duration. Used together with Period. Valid for the BUY, CONVERT, and RENEW scenarios when the billing method is Prepaid.
+        # The purchase duration. Used in combination with Period. Valid for the BUY, CONVERT, and RENEW scenarios when the billing method is Prepaid.
         self.used_time = used_time
-        # The zone ID. We recommend that you specify this parameter for the BUY scenario.
+        # The zone ID. Recommended for the BUY scenario.
         self.zone_id = zone_id
 
     def validate(self):

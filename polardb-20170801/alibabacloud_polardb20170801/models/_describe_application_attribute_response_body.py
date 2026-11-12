@@ -65,11 +65,11 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         # 
         # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The PolarDB instance ID on which the application depends.
+        # The instance ID of the PolarDB instance that the application depends on.
         self.dbcluster_id = dbcluster_id
         # The description of the application.
         self.description = description
-        # The NAT mapping: the list of DNAT mapping entries.
+        # The list of DNAT mapping entries for NAT mapping.
         self.dnat_mappings = dnat_mappings
         # The list of endpoints for the application.
         self.endpoints = endpoints
@@ -87,8 +87,8 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         self.latest_version = latest_version
         # The lock mode. Valid values:
         # 
-        # - Unlock: unlocked.
-        # - Lock: locked.
+        # - Unlock: Unlocked.
+        # - Lock: Locked.
         self.lock_mode = lock_mode
         # The end time of the maintenance window.
         # 
@@ -102,9 +102,9 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         self.mem_application_attribute = mem_application_attribute
         # The minor version number.
         self.minor_version = minor_version
-        # The NAT gateway ID.
+        # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
-        # The NAT mapping: the SNAT IP address bound to the vSwitch where the application resides. This refers to a customer-managed SNAT entry that is discovered and returned in real time by the control plane, and is unrelated to the SNAT of the Internet NAT gateway.
+        # The SNAT IP address bound to the vSwitch where the application resides. This address is from a customer-managed SNAT entry, which is discovered and returned in real time by the control plane. It is independent of the SNAT configuration of the Internet NAT gateway.
         self.nat_mapping_snat_ip_address = nat_mapping_snat_ip_address
         # The billing method.
         self.pay_type = pay_type
@@ -112,7 +112,7 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         self.polar_claw_application_attribute = polar_claw_application_attribute
         # The PolarClaw SaaS application attributes.
         self.polar_claw_saa_sapplication_attribute = polar_claw_saa_sapplication_attribute
-        # The instance ID of the PolarFS Cold Storage Edition or High-performance Edition.
+        # The instance ID of the PolarFS Archive or High-performance Edition.
         self.polar_fsinstance_id = polar_fsinstance_id
         # The region ID.
         self.region_id = region_id
@@ -123,16 +123,16 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         # The list of application-level whitelists.
         self.security_iparrays = security_iparrays
         # The Serverless type. Valid values:
-        # - 2: Agile.
+        # - 2: Dynamic.
         # - 3: Stable.
         self.serverless_type = serverless_type
-        # The SNAT status. Valid values: on, off.
+        # The SNAT status. Valid values: on and off.
         self.snat_status = snat_status
         # The application status. Valid values:
         # - Creating: The application is being created.
         # - Activated: The application is running.
         # - Maintaining: The application is under maintenance.
-        # - ClassChanging: The application configuration is being changed.
+        # - ClassChanging: The configurations of the application are being changed.
         # - Transing: The application is being migrated.
         # - MinorVersionUpgrading: The minor version of the application is being upgraded.
         # - NetCreating: The endpoint of the application is being created.
@@ -144,19 +144,19 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         # - Unlocking: The application is being unlocked.
         # - Deleting: The application is being deleted.
         self.status = status
-        # The storage resource description.
+        # The storage resources.
         self.storages = storages
         # Indicates whether an upgrade is available.
         self.upgrade_available = upgrade_available
-        # VPC ID
+        # The VPC ID.
         self.vpcid = vpcid
-        # VSwitch ID
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
         # The application version.
         self.version = version
-        # The NAT mapping: the customer-managed VPC NAT gateway ID.
+        # The customer-managed VPC NAT gateway ID for NAT mapping.
         self.vpc_nat_gateway_id = vpc_nat_gateway_id
-        # The zone ID.
+        # The zone.
         self.zone_id = zone_id
 
     def validate(self):
@@ -656,7 +656,7 @@ class DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute(
         self.auth_callback_url = auth_callback_url
         # The list of authentication providers for the application.
         self.auth_providers = auth_providers
-        # The Supabase cluster identifier.
+        # The identifier of the Supabase cluster.
         self.supabase_cluster_id = supabase_cluster_id
 
     def validate(self):
@@ -731,17 +731,17 @@ class DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangf
         phase: str = None,
         project_id: str = None,
     ):
-        # The effective period of the attachment. The value is a UNIX timestamp.
+        # The attachment effective period (UNIX timestamp).
         self.activated_at = activated_at
-        # Langfuse API Key ID
+        # The Langfuse API key ID.
         self.api_key_id = api_key_id
         # The ID of the binding task.
         self.binding_task_id = binding_task_id
-        # The Langfuse application ID.
+        # The ID of the Langfuse application.
         self.langfuse_application_id = langfuse_application_id
-        # The binding phase.
+        # The phase of the binding.
         self.phase = phase
-        # The Langfuse project ID.
+        # The ID of the Langfuse project.
         self.project_id = project_id
 
     def validate(self):
@@ -820,19 +820,19 @@ class DescribeApplicationAttributeResponseBodyMemApplicationAttribute(DaraModel)
         self.graph_llm_model_name = graph_llm_model_name
         # The LLM model name.
         self.llm_model_name = llm_model_name
-        # The currently active memory type.
+        # The active memory type.
         self.memory_type = memory_type
-        # Indicates whether multimodal capabilities are currently enabled.
+        # Indicates whether multimodal capabilities are enabled.
         self.multimodal_enabled = multimodal_enabled
         # The project name, which corresponds to the schema where project data is stored in the database.
         self.project_name = project_name
-        # The name of the Reranker model.
+        # The name of the reranker model.
         self.reranker_model_name = reranker_model_name
         # The Mem0 full session information storage configuration.
         self.session_store = session_store
         # The username.
         self.user_name = user_name
-        # The current VisualEmbedder dimensions.
+        # The current dimensions of the VisualEmbedder.
         self.visual_embedder_dimensions = visual_embedder_dimensions
         # The current VisualEmbedder model.
         self.visual_embedder_model_name = visual_embedder_model_name
@@ -949,13 +949,13 @@ class DescribeApplicationAttributeResponseBodyMemApplicationAttributeSessionStor
         dbname: str = None,
         status: str = None,
     ):
-        # The account source. Valid values: reuse_vector, existing. This parameter is returned only when the status is ENABLED.
+        # The account source. Valid values: reuse_vector and existing. This parameter is returned only when the status is ENABLED.
         self.account_mode = account_mode
         # The ID of the PolarDB cluster used for session storage. This parameter is returned only when the status is ENABLED.
         self.dbcluster_id = dbcluster_id
         # The name of the session database. This parameter is returned only when the status is ENABLED.
         self.dbname = dbname
-        # The session storage status. Valid values: DISABLED, ENABLING, ENABLED, DISABLING.
+        # The status of the session store. Valid values: DISABLED, ENABLING, ENABLED, and DISABLING.
         self.status = status
 
     def validate(self):
@@ -1090,7 +1090,7 @@ class DescribeApplicationAttributeResponseBodyDnatMappings(DaraModel):
         port_name: str = None,
         status: str = None,
     ):
-        # The access address in the NatIp:FrontPort format, which can be directly used on the office network.
+        # The access address in the NatIp:FrontPort format, which can be directly used in the office network.
         self.access_address = access_address
         # The backend service port.
         self.backend_port = backend_port
@@ -1170,7 +1170,7 @@ class DescribeApplicationAttributeResponseBodyComponents(DaraModel):
     ):
         # The specifications of the application subcomponent.
         self.component_class = component_class
-        # The description of the application subcomponent specifications.
+        # The description of the specifications for the application subcomponent.
         self.component_class_description = component_class_description
         # The subcomponent ID.
         self.component_id = component_id

@@ -17,17 +17,17 @@ class DescribeRateLimitPolicyResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: str = None,
     ):
-        # An array of rate limit policy objects.
+        # The list of throttling policies.
         self.items = items
-        # The returned page number.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned on the current page.
+        # The number of entries on the current page.
         self.page_record_count = page_record_count
-        # The number of entries returned per page.
+        # The number of entries per page. Valid values: 30, 50, and 100. Default value: 30.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of matching entries.
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -104,31 +104,31 @@ class DescribeRateLimitPolicyResponseBodyItems(DaraModel):
     ):
         # The creation time.
         self.gmt_created = gmt_created
-        # The modification time.
+        # The update time.
         self.gmt_modified = gmt_modified
-        # The ID of the gateway instance.
+        # The gateway instance ID.
         self.gw_cluster_id = gw_cluster_id
-        # The ID of the rate limit policy.
+        # The ID of the throttling policy.
         self.policy_id = policy_id
         # The policy type.
         self.policy_type = policy_type
-        # The maximum requests per minute (RPM).
+        # The limit on the number of requests per minute.
         self.rate_limit_rpm = rate_limit_rpm
-        # The maximum tokens per minute (TPM).
+        # The limit on the number of tokens per minute.
         self.rate_limit_tpm = rate_limit_tpm
-        # The ID of the object within the policy\\"s scope, such as a consumer group or a consumer.
+        # The ID of the throttling dimension, which is the consumer group ID or consumer ID.
         self.scope_ref_id = scope_ref_id
-        # The scope of the policy. Valid values:
+        # The throttling dimension. Valid values:
         # 
-        # - **ConsumerGroup**: The policy applies to a consumer group.
+        # - **ConsumerGroup**: consumer group
         # 
-        # - **Consumer**: The policy applies to a specific consumer.
+        # - **Consumer**: consumer
         self.scope_type = scope_type
-        # The status of the policy. Valid values:
+        # The status of the throttling policy. Valid values:
         # 
-        # - **Enabled**: The policy is enabled.
         # 
-        # - **Disabled**: The policy is disabled.
+        # - **Enabled**: enabled
+        # - **Disabled**: disabled
         self.status = status
 
     def validate(self):

@@ -14,11 +14,11 @@ class DescribeDBLinksResponseBody(DaraModel):
         dblink_infos: List[main_models.DescribeDBLinksResponseBodyDBLinkInfos] = None,
         request_id: str = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         self.dbinstance_name = dbinstance_name
-        # Details about the database links.
+        # The DBLink information set.
         self.dblink_infos = dblink_infos
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -71,19 +71,19 @@ class DescribeDBLinksResponseBodyDBLinkInfos(DaraModel):
         target_dbinstance_name: str = None,
         target_dbname: str = None,
     ):
-        # The ID of the source cluster that the database link connects.
+        # The ID of the source cluster for the DBLink.
         self.dbinstance_name = dbinstance_name
-        # The name of the database link.
+        # The name of the DBLink.
         self.dblink_name = dblink_name
-        # The name of the source database of the database link.
+        # The name of the source database for the DBLink.
         self.source_dbname = source_dbname
-        # The account of the destination database of the database link.
+        # The target database account for the DBLink.
         self.target_account = target_account
-        # The ID of the destination cluster that the database link connects.
+        # The ID of the target cluster for the DBLink.
         # 
-        # > If the destination cluster is not a PolarDB for Oracle cluster, the returned value is empty.
+        # > If the target is not a PolarDB for PostgreSQL (Compatible with Oracle) cluster, this parameter is empty.
         self.target_dbinstance_name = target_dbinstance_name
-        # The name of the destination database of the database link.
+        # The name of the target database for the DBLink.
         self.target_dbname = target_dbname
 
     def validate(self):

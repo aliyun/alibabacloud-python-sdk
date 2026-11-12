@@ -16,15 +16,13 @@ class ModifyDBClusterVpcRequest(DaraModel):
         vpcid: str = None,
         v_switch_id: str = None,
     ):
-        # The cluster ID.
+        # The cluster ID. This operation is supported only for clusters of specific categories. MySQL Normal and Exclusive clusters are not supported. You can call the DescribeDBClusters operation to query the cluster category before you call this operation. Note: This operation is supported only for clusters of specific categories. MySQL Normal and Exclusive clusters are not supported. Before calling this operation, call DescribeDBClusters to confirm the cluster category.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # Specifies whether to switch existing endpoints. Valid values:
-        # 
         # - **NONE**: Does not switch existing endpoints.
-        # 
-        # - **ALL**: Switches all existing endpoints.
+        # - **ALL**: Switches existing endpoints.
         # 
         # This parameter is required.
         self.existed_endpoint_switch_type = existed_endpoint_switch_type
@@ -32,9 +30,9 @@ class ModifyDBClusterVpcRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the virtual private cloud (VPC).
+        # The specified VPC ID.
         self.vpcid = vpcid
-        # The ID of the virtual switch.
+        # The specified vSwitch ID.
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id

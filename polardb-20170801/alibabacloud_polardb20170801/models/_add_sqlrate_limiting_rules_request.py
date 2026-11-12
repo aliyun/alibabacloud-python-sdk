@@ -15,7 +15,7 @@ class AddSQLRateLimitingRulesRequest(DaraModel):
         rule_config: str = None,
         rule_name: str = None,
     ):
-        # The cluster ID.
+        # The cluster ID. Usage notes: SQL throttling is supported only for PostgreSQL and Oracle engines, and is not supported for MySQL engines.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -23,21 +23,16 @@ class AddSQLRateLimitingRulesRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The configuration of the SQL throttling rule to add or modify, specified as a JSON string. The values of the parameters must be strings. Example: `{"id":"test","enabled":"true","match_mode":"0","template":"dXBkYXRlIHQgc2V0IGEgPSAxIHdoZXJlIGlkID0gMQ==","user":"","database":"","waiting":1024,"endpoint":"[{"EndpointName":"pe-***********","EndpointType":"Cluster","DBEndpointDescription":"Cluster Address"}]","throttle_mode":0,"concurrency":1}`. The JSON string contains the following parameters:
-        # 
-        # - `"id"`: Required. The name of the throttling rule. The name must meet the following requirements:
-        # 
-        #   - It cannot exceed 30 characters in length.
-        # 
-        #   - It must consist of uppercase letters, lowercase letters, and digits.
+        # The JSON string of the configuration parameters and their values for the SQL throttling rule to be modified. All parameter values are of the string type. Example: `{"id":"test","enabled":"true","match_mode":"0","template":"dXBkYXRlIHQgc2V0IGEgPSAxIHdoZXJlIGlkID0gMQ==","user":"","database":"","waiting":1024,"endpoint":"[{"EndpointName":"pe-***********","EndpointType":"Cluster","DBEndpointDescription":"Cluster Address"}]","throttle_mode":0,"concurrency":1}`. Parameters:
+        # * `"id"`: Required. The name of the throttling rule. The name must meet the following requirements:
+        #   - The name cannot exceed 30 characters in length.
+        #   - The name must consist of uppercase and lowercase letters and digits.
         # 
         # This parameter is required.
         self.rule_config = rule_config
         # The name of the SQL throttling rule. You can specify only one rule name at a time.
-        # 
-        # > - Call the [DescribeSQLRateLimitingRules](https://help.aliyun.com/document_detail/212573.html) operation to view the details of all SQL throttling rules for the target cluster, including the rule names.
-        # >
-        # > - If the specified rule name does not exist in the current cluster, the system automatically creates a new SQL throttling rule based on the rule name and the value of the `RuleConfig` parameter.
+        # > * You can call the [DescribeSQLRateLimitingRules](https://help.aliyun.com/document_detail/212573.html) operation to query the details of all SQL throttling rules in the specified cluster, including the rule names.
+        # > * If the specified rule name does not exist in the current cluster, the system automatically creates an SQL throttling rule based on the name and the `RuleConfig` value.
         # 
         # This parameter is required.
         self.rule_name = rule_name

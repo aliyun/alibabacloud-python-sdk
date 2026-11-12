@@ -24,7 +24,7 @@ class ModifyModelApiRequest(DaraModel):
         # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
-        # The model API ID.
+        # The ID of the model API.
         # 
         # This parameter is required.
         self.model_api_id = model_api_id
@@ -40,6 +40,7 @@ class ModifyModelApiRequest(DaraModel):
         # This parameter is required.
         self.path_prefix = path_prefix
         # The protocol. Valid values:
+        # 
         # * **openai**
         # * **anthropic**
         # * **bailian**
@@ -53,7 +54,7 @@ class ModifyModelApiRequest(DaraModel):
         self.record_output = record_output
         # The region ID.
         self.region_id = region_id
-        # The list of routing rules. The value is a JSON array string.
+        # The list of routing rules, formatted as a JSON array string. Usage notes: Correct the value of FallbackMode in the RouteRules parameter example by replacing it with a valid value or removing the field, and add the list of valid values and their meanings for the FallbackMode subfield to the description of RouteRules.
         # 
         # This parameter is required.
         self.route_rules = route_rules

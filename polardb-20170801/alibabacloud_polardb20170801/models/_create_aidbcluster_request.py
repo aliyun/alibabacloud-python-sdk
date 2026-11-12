@@ -50,17 +50,14 @@ class CreateAIDBClusterRequest(DaraModel):
         # Specifies whether the cluster is managed by an ACK cluster.
         self.ack_admin = ack_admin
         # Specifies whether to enable auto-renewal. Valid values:
-        # 
-        # - **true**: enables auto-renewal.
-        # - **false**: disables auto-renewal.
-        # 
+        # - **true**: enables auto-renewal
+        # - **false**: disables auto-renewal
         # Default value: **false**.
-        # 
         # > This parameter takes effect only when the **PayType** parameter is set to **Prepaid**.
         self.auto_renew = auto_renew
-        # Specifies whether to automatically use coupons. Valid values:
-        # * true (default): uses coupons.
-        # * false: does not use coupons.
+        # Specifies whether to automatically apply coupons. Valid values:
+        # * **true** (default): applies coupons
+        # * **false**: does not apply coupons
         self.auto_use_coupon = auto_use_coupon
         # The initial model capacity of the instance. The value must be a positive integer. A capacity unit of 1000 is equivalent to one L20N card.
         self.capacity = capacity
@@ -68,29 +65,29 @@ class CreateAIDBClusterRequest(DaraModel):
         self.client_token = client_token
         # Specifies whether to create a public endpoint.
         self.create_public_endpoint = create_public_endpoint
-        # The description of the cluster. Fuzzy match is supported.
+        # The cluster description. Fuzzy match is supported.
         self.dbcluster_description = dbcluster_description
         # The PolarDB instance ID on which the application depends.
         self.dbcluster_id = dbcluster_id
-        # The node specifications.
+        # The node specifications. Call DescribeAvailableModels to query the specifications supported by the target ModelName, and select a DBNodeClass that is compatible with the model, such as polar.pg.g4.6xlarge.gu4.
         self.dbnode_class = dbnode_class
         # The extension.
         self.extension = extension
         # The inference engine.
         self.inference_engine = inference_engine
-        # The ID of the ACK cluster.
+        # The ACK cluster ID.
         self.kube_cluster_id = kube_cluster_id
         # The Kubernetes configuration.
         self.kube_config = kube_config
-        # The management mode of the Kubernetes cluster.
+        # The Kubernetes cluster management mode.
         self.kube_management = kube_management
-        # aideploy
+        # The deployment type.
         self.kube_type = kube_type
         # The Kubernetes configuration.
         self.kubernetes_config = kubernetes_config
         # The management mode.
         self.management_mode = management_mode
-        # The name of the model.
+        # The model name.
         self.model_name = model_name
         # The model operator space.
         self.model_space = model_space
@@ -98,17 +95,15 @@ class CreateAIDBClusterRequest(DaraModel):
         self.owner_id = owner_id
         # The password.
         self.password = password
-        # The billing method. Valid values: 
-        # 
-        # - **Postpaid**: pay-as-you-go.
-        # - **Prepaid**: subscription.
+        # The billing method. Valid values:
+        # - **Postpaid**: pay-as-you-go
+        # - **Prepaid**: subscription
         # 
         # This parameter is required.
         self.pay_type = pay_type
-        # This parameter is required when the **PayType** parameter is set to **Prepaid**. Specifies the billing cycle of the subscription cluster. Valid values: 
-        # 
-        # - **Year**: yearly subscription.
-        # - **Month**: monthly subscription.
+        # If the billing method is **Prepaid**, this parameter is required. Specifies the billing cycle of the subscription cluster. Valid values:
+        # - **Year**: yearly. The unit is year when you select the subscription billing method.
+        # - **Month**: monthly. The unit is month when you select the subscription billing method.
         self.period = period
         # The coupon code. If you do not specify this parameter, the default coupon is used.
         self.promotion_code = promotion_code
@@ -118,7 +113,7 @@ class CreateAIDBClusterRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the security group.
+        # The security group ID. This parameter is actually required. If it is not provided, the service returns MethodArgumentNotValidException (400). You can call the ECS DescribeSecurityGroups operation to obtain the security group ID.
         self.security_group_id = security_group_id
         # The storage space.
         self.storage_space = storage_space
@@ -126,15 +121,15 @@ class CreateAIDBClusterRequest(DaraModel):
         self.storage_type = storage_type
         # The pay-as-you-go time ranges.
         self.time_slices = time_slices
-        # The subscription duration. This parameter is required when the **PayType** parameter is set to **Prepaid**.
-        # - If the **Period** parameter is set to **Month**, the value of **UsedTime** must be an integer in the range of `[1-9]`.
-        # - If the **Period** parameter is set to **Year**, the value of **UsedTime** must be an integer in the range of `[1-3]`.
+        # The subscription duration. This parameter is required when the billing method is **Prepaid**.
+        # - If **Period** is set to **Month**, the value of **UsedTime** is an integer ranging from `1` to `9`.
+        # - If **Period** is set to **Year**, the value of **UsedTime** is an integer ranging from `1` to `3`.
         self.used_time = used_time
-        # The ID of the VPC.
+        # The VPC ID.
         # 
         # This parameter is required.
         self.vpcid = vpcid
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
@@ -387,7 +382,7 @@ class CreateAIDBClusterRequestTimeSlices(DaraModel):
     ):
         # The start time of the task. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
         self.begin_time = begin_time
-        # The end time of the query. The end time must be later than the start time. Specify the time in the `YYYY-MM-DDThh:mmZ` format. The time must be in UTC.
+        # The end time. The end time must be later than the start time. Specify the time in the `YYYY-MM-DDThh:mmZ` format. The time must be in UTC.
         self.end_time = end_time
 
     def validate(self):

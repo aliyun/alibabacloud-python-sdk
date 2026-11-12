@@ -14,8 +14,9 @@ class CreateAgenticDBProjectRequest(DaraModel):
         project_name: str = None,
         region_id: str = None,
         tenant_id: str = None,
+        zone_id: str = None,
     ):
-        # The ID of the AgenticDB cluster.
+        # The ID of the AgenticDB cluster. The ID must have the pagc- prefix. You can obtain the ID after calling CreateDBCluster and specifying AgenticDbType=dedicated and ServerlessType=AgileServerless. A regular cluster ID with the pc- prefix is not supported. If an invalid ID is provided, the InvalidDBClusterId.NotFound error may be returned.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -23,9 +24,9 @@ class CreateAgenticDBProjectRequest(DaraModel):
         self.default_branch_name = default_branch_name
         # The description of the project.
         self.description = description
-        # The retention period for historical data to support creating branches at specific points in time. Default value: 604800 seconds (7 days). Valid values: 3600 to 2592000 seconds (1 hour to 30 days), inclusive. The actual range is subject to the service configuration.
+        # The retention period of historical data, in seconds.
         self.history_retention_seconds = history_retention_seconds
-        # The name of the project. The name must be unique within the tenant.
+        # The name of the project. The name must be unique within the same tenant.
         # 
         # This parameter is required.
         self.project_name = project_name
@@ -33,10 +34,12 @@ class CreateAgenticDBProjectRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the tenant.
+        # The ID of the tenant. You can obtain the ID from the response after calling CreateAgenticDBTenant to create a tenant.
         # 
         # This parameter is required.
         self.tenant_id = tenant_id
+        # The ID of the zone where the project storage resides. The zone must be the same as the zone where the cluster compute resides. If this parameter is not specified, the zone where the cluster compute resides is used by default.
+        self.zone_id = zone_id
 
     def validate(self):
         pass
@@ -67,6 +70,9 @@ class CreateAgenticDBProjectRequest(DaraModel):
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
 
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -91,6 +97,9 @@ class CreateAgenticDBProjectRequest(DaraModel):
 
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
+
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
 
         return self
 

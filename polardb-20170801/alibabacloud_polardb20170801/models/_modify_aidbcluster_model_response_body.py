@@ -19,23 +19,23 @@ class ModifyAIDBClusterModelResponseBody(DaraModel):
         total_msds: int = None,
         warnings: List[str] = None,
     ):
-        # Indicates whether the request is a dry run.
+        # Indicates whether the request is a preview request.
         self.dry_run = dry_run
-        # The model type of the instance.
+        # The instance model type.
         self.model_type = model_type
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
-        # The parsed target model name.
+        # The resolved target model name.
         self.target_model_name = target_model_name
-        # The parsed target OSS path.
+        # The resolved target OSS path.
         self.target_oss_path = target_oss_path
-        # The ID of the asynchronous task. This parameter is empty when DryRun is set to true.
+        # The asynchronous task ID. This parameter is empty when DryRun is set to true.
         self.task_id = task_id
-        # The total number of modification batches.
+        # The total number of change batches.
         self.total_batches = total_batches
         # The number of affected model service instances.
         self.total_msds = total_msds
-        # The modification warnings returned by the upstream service. The caller must display these warnings.
+        # The change warnings returned by the upstream service. Callers must display these warnings.
         self.warnings = warnings
 
     def validate(self):

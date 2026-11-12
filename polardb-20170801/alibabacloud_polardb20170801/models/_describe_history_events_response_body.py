@@ -16,7 +16,7 @@ class DescribeHistoryEventsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The event list.
+        # The list of events.
         self.items = items
         # The page number. Default value: 1.
         self.page_number = page_number
@@ -28,7 +28,7 @@ class DescribeHistoryEventsResponseBody(DaraModel):
         # 
         # - **100**
         self.page_size = page_size
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The total number of entries.
         self.total_count = total_count
@@ -99,17 +99,17 @@ class DescribeHistoryEventsResponseBodyItems(DaraModel):
     ):
         # The data overview.
         self.data = data
-        # The task ID.
+        # The ID of the task.
         self.id = id
-        # The region ID of the region where the task resides.
+        # The region ID of the region where the task is located.
         self.region = region
-        # The event source.
+        # The source of the event.
         self.source = source
         # The database version.
         self.specversion = specversion
-        # The name of the pending event.
+        # The name of the event to be processed.
         self.subject = subject
-        # The running time of the query task. Unit: seconds.
+        # The running time of the queried task. Unit: seconds.
         self.time = time
         # The event type.
         self.type = type
@@ -210,18 +210,18 @@ class DescribeHistoryEventsResponseBodyItemsData(DaraModel):
         uid: str = None,
     ):
         # The cloud service type of the application group. Valid values:
-        # - **web**: Web application.
-        # - **native**: Native application.
+        # - **web**: Web applications.
+        # - **native**: Native applications.
         self.cms_product = cms_product
-        # The database type.
+        # The type of the database.
         self.db_type = db_type
         # The pagination parameter.
         self.detail_impact = detail_impact
-        # The instance operation details.
+        # The details of the instance operation.
         self.detail_reason = detail_reason
         # The end time of the query. The end time must be later than the start time, and the interval between the start time and the end time must be within 24 hours. Specify the time in the `YYYY-MM-DDThh:mmZ` format (UTC time).
         self.end_time = end_time
-        # The system event category. Valid values:
+        # The category of the system event. Valid values:
         # - **Exception**: Exception events.
         # - **Optimize**: Optimization events.
         # - **Notification**: Notification events.
@@ -231,9 +231,9 @@ class DescribeHistoryEventsResponseBodyItemsData(DaraModel):
         self.event_code = event_code
         # The event details.
         self.event_detail = event_detail
-        # The event ID.
+        # The ID of the event.
         self.event_id = event_id
-        # The event impact overview.
+        # The impact overview of the event.
         self.event_impact = event_impact
         # The event level. Valid values:
         # - **INFO**: Notification.
@@ -242,7 +242,7 @@ class DescribeHistoryEventsResponseBodyItemsData(DaraModel):
         self.event_level = event_level
         # The source of the event operation.
         self.event_reason = event_reason
-        # The event status. Valid values:
+        # The status of the event. Valid values:
         # - **Inquiring**: Inquiring.
         # - **Scheduled**: Scheduled.
         # - **Running**: Running.
@@ -252,11 +252,11 @@ class DescribeHistoryEventsResponseBodyItemsData(DaraModel):
         self.event_status = event_status
         # The system event type. Valid values: 
         # - **SystemMaintenance.Reboot**: The instance is restarted due to system maintenance.
-        # - **SystemMaintenance.Redeploy**: The instance is redeployed due to system maintenance.
-        # - **SystemFailure.Reboot**: The instance is restarted due to a system failure.
-        # - **SystemFailure.Redeploy**: The instance is redeployed due to a system failure.
-        # - **SystemFailure.Delete**: The instance is released due to a creation failure.
-        # - **InstanceFailure.Reboot**: The instance is restarted due to an instance failure.
+        # - **SystemMaintenance.Redeploy**: Redeployment of the instance due to system maintenance.
+        # - **SystemFailure.Reboot**: The instance is restarted due to a system fault.
+        # - **SystemFailure.Redeploy**: Redeployment of the instance due to a system fault.
+        # - **SystemFailure.Delete**: The instance is released because instance creation failed.
+        # - **InstanceFailure.Reboot**: The instance is restarted due to an instance fault.
         # - **InstanceExpiration.Stop**: The subscription instance is stopped due to expiration.
         # - **InstanceExpiration.Delete**: The subscription instance is released due to expiration.
         # - **AccountUnbalanced.Stop**: The pay-as-you-go instance is stopped due to an overdue payment.
@@ -272,24 +272,24 @@ class DescribeHistoryEventsResponseBodyItemsData(DaraModel):
         self.has_life_cycle = has_life_cycle
         # The instance ID.
         self.instance_id = instance_id
-        # The instance name.
+        # The name of the instance.
         self.instance_name = instance_name
-        # Indicates whether the event is closed. Valid values:
+        # Indicates whether the item is closed. Valid values:
         # - **0**: Closed.
         # - **1**: Open.
         self.is_closed = is_closed
-        # The product name.
+        # The name of the product.
         self.product = product
         # The region ID.
         self.region_id = region_id
-        # The resource type. Valid values:
+        # The type of the resource. Valid values:
         # - **Instance**: Instance resources.
         # - **Host**: Host resources.
         # - **User**: User resources.
         self.resource_type = resource_type
-        # The source data type.
+        # The type of the source data.
         self.source_type = source_type
-        # The start time of the query. Specify the time in the `yyyy-MM-ddTHH:mm:ssZ` format (UTC time).
+        # The start time of the query. Format: `yyyy-MM-ddTHH:mm:ssZ` (UTC time).
         self.start_time = start_time
         # The ID of the user to which the resource belongs.
         self.uid = uid

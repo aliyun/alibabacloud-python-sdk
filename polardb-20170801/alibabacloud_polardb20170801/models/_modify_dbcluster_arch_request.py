@@ -21,20 +21,21 @@ class ModifyDBClusterArchRequest(DaraModel):
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
         # Specifies whether to enable the hot standby cluster. Valid values:
-        # 
-        # - **on**: Enables the hot standby cluster.
-        # - **equal**: Enables the peer cluster.
+        # - on: Enables the hot standby cluster.
+        # The equal (peer cluster) feature has been retired and is unavailable. Clusters with HotStandbyCluster set to StandbyClusterON do not support switching the high-availability mode by using this operation.
         self.hot_standby_cluster = hot_standby_cluster
-        # The coupon code. If this parameter is not specified, the default coupon is used.
+        # The coupon code. If you do not specify this parameter, the default coupon is used.
         self.promotion_code = promotion_code
         # The region ID.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query region information.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to view region details.
         self.region_id = region_id
         # The zone of the hot standby storage cluster. Valid values:
         # 
-        # - **auto** (default): Automatically selected.
-        # > When the HotStandbyCluster parameter is set to on, you can use the default value. When the HotStandbyCluster parameter is set to equal, you must specify a specific zone. You can call the [DescribeZones](https://help.aliyun.com/document_detail/98041.html) operation to query zone details.
+        # - **auto** (default): Automatically selects the zone.
+        # > You can use the default value when the HotStandbyCluster parameter is set to on. When the HotStandbyCluster parameter is set to equal, you must specify a zone. You can call the [DescribeZones](https://help.aliyun.com/document_detail/98041.html) operation to view zone details.
+        # 
+        # > When you specify a zone, you must not allocate a zone that is already in use by the cluster. You can query the currently active zones through the ZoneIds parameter of DescribeDBClusterAttribute.
         self.standby_az = standby_az
 
     def validate(self):

@@ -27,9 +27,9 @@ class InstallPolarClawSkillResponseBody(DaraModel):
         self.message = message
         # Indicates whether the operation is successful. This parameter is returned when Async is set to false.
         self.ok = ok
-        # The operation name. This parameter is returned when Async is set to true.
+        # The name of the operation. This parameter is returned when Async is set to true.
         self.operation = operation
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
         # The identifier of the installed skill. This parameter is returned during synchronous execution.
         self.slug = slug

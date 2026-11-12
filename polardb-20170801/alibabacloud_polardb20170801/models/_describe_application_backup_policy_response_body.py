@@ -20,9 +20,9 @@ class DescribeApplicationBackupPolicyResponseBody(DaraModel):
         self.application_type = application_type
         # The days of the week when automatic backups are performed. Separate multiple values with commas. Valid values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, and Sunday.
         self.preferred_backup_period = preferred_backup_period
-        # The retention period of level-1 backups, in days.
+        # The retention period of level-1 backups. Unit: days.
         self.preferred_backup_retention_period = preferred_backup_retention_period
-        # The time period when automatic backups are performed. The time is in the HH:mmZ-HH:mmZ format and in UTC.
+        # The time window when automatic backups are performed. The format is HH:mmZ-HH:mmZ in UTC.
         self.preferred_backup_time = preferred_backup_time
         # The request ID.
         self.request_id = request_id

@@ -15,15 +15,15 @@ class ModifyAIDBClusterModelRequest(DaraModel):
         restart_mode: str = None,
         worker_batch_size: int = None,
     ):
-        # The ID of the PolarDB AI 3.0 logical instance.
+        # The PolarDB AI 3.0 logical instance ID. Note: This operation is only supported for clusters with RayCluster-pod-based workers. MaaS clusters in the Bailian resource pool do not support this operation. Use DescribeAIDBClusterAttribute to verify cluster compatibility before calling this API.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The new customer-facing invocation name. If you do not specify this parameter, the existing invocation name is retained.
         self.display_model_name = display_model_name
-        # Specifies whether to only preview the modification.
+        # Specifies whether to only preview the change.
         self.dry_run = dry_run
-        # The target model name. Select a value from the ModelName values returned by DescribeAvailableModels.
+        # The target model name. Select a value from the ModelName parameter returned by DescribeAvailableModels.
         # 
         # This parameter is required.
         self.model_name = model_name

@@ -13,19 +13,19 @@ class DescribeAgenticDBTenantApiKeysRequest(DaraModel):
         region_id: str = None,
         tenant_name: str = None,
     ):
-        # The AgenticDB cluster ID.
+        # The cluster ID. Both pagc- and pc- prefixes are supported. The pagc- prefix indicates an AgenticDB dedicated cluster. The pc- prefix indicates a standard PolarDB cluster that supports AgenticDB tenant capabilities.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 30. Maximum value: 100.
+        # The number of entries to return on each page. Default value: 30. Maximum value: 100.
         self.page_size = page_size
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # Filters results by tenant name.
+        # Filters the results by tenant name.
         self.tenant_name = tenant_name
 
     def validate(self):

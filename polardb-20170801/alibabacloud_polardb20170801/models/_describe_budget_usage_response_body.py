@@ -31,11 +31,11 @@ class DescribeBudgetUsageResponseBody(DaraModel):
         self.dimension_type = dimension_type
         # Indicates whether the budget is exceeded.
         self.exceeded = exceeded
-        # The creation time of the budget usage record in RFC 3339 UTC format.
+        # The creation time of the budget usage record, in RFC 3339 UTC format.
         self.gmt_created = gmt_created
-        # The last modification time of the budget usage record in RFC 3339 UTC format.
+        # The time when the budget usage record was last modified, in RFC 3339 UTC format.
         self.gmt_modified = gmt_modified
-        # The gateway instance ID.
+        # The ID of the gateway instance.
         self.gw_cluster_id = gw_cluster_id
         # The list of associated budget policies.
         self.policies = policies
@@ -43,9 +43,9 @@ class DescribeBudgetUsageResponseBody(DaraModel):
         self.request_id = request_id
         # The number of budget points used in the current statistical window.
         self.used_points = used_points
-        # The end time of the budget statistical window in RFC 3339 UTC format.
+        # The end time of the budget statistical window, in RFC 3339 UTC format.
         self.window_end_time = window_end_time
-        # The start time of the budget statistical window in RFC 3339 UTC format.
+        # The start time of the budget statistical window, in RFC 3339 UTC format.
         self.window_start_time = window_start_time
 
     def validate(self):
@@ -156,19 +156,19 @@ class DescribeBudgetUsageResponseBodyPolicies(DaraModel):
     ):
         # The usage percentage that triggers a budget alert.
         self.alert_threshold_pct = alert_threshold_pct
-        # The budget dimension reference ID to which the policy applies.
+        # The reference ID of the budget dimension to which the policy applies.
         self.budget_dimension_ref_id = budget_dimension_ref_id
         # The budget dimension type to which the policy applies.
         self.budget_dimension_type = budget_dimension_type
-        # The number of budget points set by the policy.
+        # The number of budget points configured in the policy.
         self.budget_points = budget_points
-        # The budget policy ID.
+        # The ID of the budget policy.
         self.budget_policy_id = budget_policy_id
         # The budget type.
         self.budget_type = budget_type
-        # The day of the month when the budget is reset. For example, 1 indicates the first day of each month.
+        # The day of the month on which the budget is reset. For example, 1 indicates the first day of each month.
         self.reset_day_of_month = reset_day_of_month
-        # The budget policy status.
+        # The status of the budget policy.
         self.status = status
 
     def validate(self):

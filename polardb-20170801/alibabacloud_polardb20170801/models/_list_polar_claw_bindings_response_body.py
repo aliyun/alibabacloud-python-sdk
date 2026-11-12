@@ -20,11 +20,11 @@ class ListPolarClawBindingsResponseBody(DaraModel):
         self.application_id = application_id
         # The list of bindings.
         self.bindings = bindings
-        # The status code.
+        # The response status code.
         self.code = code
         # The response message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -86,11 +86,11 @@ class ListPolarClawBindingsResponseBodyBindings(DaraModel):
         channel: str = None,
         channel_account_id: str = None,
     ):
-        # The agent ID.
+        # The PolarClaw agent ID.
         self.agent_id = agent_id
         # The channel ID.
         self.channel = channel
-        # The account ID.
+        # The channel account ID.
         self.channel_account_id = channel_account_id
 
     def validate(self):

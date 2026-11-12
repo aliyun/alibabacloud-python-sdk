@@ -17,21 +17,21 @@ class DescribeActivationCodesRequest(DaraModel):
         resource_owner_id: int = None,
         system_identifier: str = None,
     ):
-        # The ID of the Alibaba Cloud order (including virtual orders) used to purchase the activation codes.
+        # The Alibaba Cloud order ID, including virtual orders. Usage note: Append the following to the end of the AliyunOrderId description: If an empty string is passed, all activation codes are returned. This parameter is actually optional.
         # 
         # This parameter is required.
         self.aliyun_order_id = aliyun_order_id
-        # Filters the list to return only the activation code matching the specified MAC address.
+        # The MAC address used to filter the activation codes.
         self.mac_address = mac_address
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # Page number
+        # The page number.
         self.page_number = page_number
-        # Number of records to return per page
+        # The number of entries per page.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Filters the list to return only the activation code matching the specified system identifier.
+        # The system identifier used to filter the activation codes.
         self.system_identifier = system_identifier
 
     def validate(self):

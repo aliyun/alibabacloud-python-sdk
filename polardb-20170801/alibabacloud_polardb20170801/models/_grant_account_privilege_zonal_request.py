@@ -17,31 +17,26 @@ class GrantAccountPrivilegeZonalRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The account name.
+        # The name of the account.
         # 
         # This parameter is required.
         self.account_name = account_name
-        # The account permissions. Valid values:
-        # 
-        # - ReadWrite: Read and write permissions.
-        # 
-        # - ReadOnly: Read-only permissions.
-        # 
-        # - DMLOnly: DML-only permissions.
-        # 
-        # - DDLOnly: DDL-only permissions.
-        # 
-        # - ReadIndex: Read-only and index permissions.
+        # The privileges of the account. Valid values:
+        # - ReadWrite: read and write
+        # - ReadOnly: read-only
+        # - DMLOnly: DML only
+        # - DDLOnly: DDL only
+        # - ReadIndex: read-only and index
         # 
         # This parameter is required.
         self.account_privilege = account_privilege
-        # A client-generated token that ensures the idempotence of the request. Make sure that the token is unique among different requests. The token is case-sensitive and can be up to 64 ASCII characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must ensure that the token is unique among different requests. The token is case-sensitive and up to 64 ASCII characters in length.
         self.client_token = client_token
-        # The cluster ID.
+        # The ID of the PolarDB on ENS cluster. This operation applies only to edge clusters. For standard PolarDB clusters, use GrantAccountPrivilege. You can create an edge cluster by calling CreateDBCluster and setting CloudProvider to ENS and specifying EnsRegionId.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The name of the database for which to grant permissions. To grant permissions for multiple databases, separate the database names with a comma (,).
+        # The name of the database to which privileges are granted. You can grant privileges to one or more databases at a time. Separate multiple database names with commas (,).
         # 
         # This parameter is required.
         self.dbname = dbname

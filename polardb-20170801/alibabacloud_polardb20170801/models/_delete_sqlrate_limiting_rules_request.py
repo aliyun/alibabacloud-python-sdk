@@ -14,7 +14,7 @@ class DeleteSQLRateLimitingRulesRequest(DaraModel):
         resource_owner_id: int = None,
         rule_name_list: str = None,
     ):
-        # The cluster ID.
+        # The cluster ID. Invocation instructions: append DPI engine type restrictions to the DBClusterId parameter description, specifying that the SQL throttling feature is supported only for PostgreSQL and Oracle DPI engine clusters, and MySQL clusters do not support this feature. Invocation instructions: append cluster status prerequisites to the DBClusterId parameter description, specifying that the cluster must be in the Running state when you invoke this API, and that you can invoke the DescribeDBClusters API and perform a Field-specific search on the DBClusterStatus field to query the current state.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -22,9 +22,8 @@ class DeleteSQLRateLimitingRulesRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The names of the SQL throttling rules to delete. To delete multiple rules in a batch, separate the rule names with commas (,).
-        # 
-        # > Call the [DescribeSQLRateLimitingRules](https://help.aliyun.com/document_detail/212573.html) operation to view the details of all SQL throttling rules for the target cluster, including their names.
+        # The names of the SQL throttling rules to delete. You can specify multiple rule names to delete rules in batches. Separate multiple names with commas (,).
+        # > You can call the [DescribeSQLRateLimitingRules](https://help.aliyun.com/document_detail/212573.html) operation to view the details of all SQL throttling rules in the specified cluster, including the rule names.
         # 
         # This parameter is required.
         self.rule_name_list = rule_name_list

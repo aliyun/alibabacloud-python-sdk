@@ -16,9 +16,9 @@ class CreateAINodesResponseBody(DaraModel):
     ):
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The IDs of the created DB nodes.
+        # The list of created DBNode IDs.
         self.dbnode_ids = dbnode_ids
-        # The ID of the order.
+        # The ID of the generated order.
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id
