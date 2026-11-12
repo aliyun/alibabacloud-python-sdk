@@ -15,9 +15,9 @@ class ListAddonReleasesResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The next page token.
+        # The token for the next page.
         self.next_token = next_token
-        # The collection of onboarded component information.
+        # The collection of integrated component information.
         self.releases = releases
         # The request ID.
         self.request_id = request_id
@@ -102,71 +102,59 @@ class ListAddonReleasesResponseBodyReleases(DaraModel):
         version: str = None,
         workspace: str = None,
     ):
-        # The addon name.
+        # The name of the add-on.
         self.addon_name = addon_name
         # The number of alert rules.
         self.alert_rule_count = alert_rule_count
         # The version number.
         self.api_version = api_version
-        # The summary of installation phase conditions.
-        # 
-        # Type includes four values: Loaded (loads configurations), Installed (executes installation), Ready (performs a readiness check after installation), and UnInstalled (executes uninstallation). These four conditions theoretically occur in sequence.
-        # 
-        # Status. Valid values:
-        # - Unknown: The current phase is being executed.
-        # - True: The execution is ready.
-        # - False: The execution failed.
-        # 
-        # Complete status determination rules:
-        # If the Status of Loaded, Installed, or Ready is False, the installation fails. If the Status of Ready is True, the installation succeeds. In other cases, the installation is in progress.
-        # 
-        # If UnInstalled exists, an uninstallation is in progress. If Status is True, the uninstallation succeeds. If Status is Unknown, the uninstallation is in progress. If Status is False, the uninstallation fails.
+        # The installation phase information.
         self.conditions = conditions
-        # The component configuration information.
+        # The configuration information of the component.
         self.config = config
-        # The onboarding time.
+        # The integration time.
         self.create_time = create_time
         # The number of dashboards.
         self.dashboard_count = dashboard_count
         # The entity details.
         self.entity_rules = entity_rules
-        # The environment type.
+        # The type of the environment.
         self.env_type = env_type
-        # The environment ID.
+        # The ID of the environment.
         self.environment_id = environment_id
-        # The number of exporters.
+        # The number of plugins.
         self.exporter_count = exporter_count
-        # Indicates whether a configuration is available.
+        # Indicates whether configurations exist.
         self.have_config = have_config
-        # The ID of the onboarding user.
+        # The ID of the integration user.
         self.install_user_id = install_user_id
         # The language.
         self.language = language
-        # Indicates whether the component is managed.
+        # Indicates whether the component is a managed component.
         self.managed = managed
-        # The starting version number for the remaining list.
+        # The starting version number of the remaining list.
         self.next_version = next_version
         # The parent add-on release ID.
         self.parent_addon_release_id = parent_addon_release_id
-        # The policy ID.
+        # The ID of the policy.
         self.policy_id = policy_id
         # The region ID.
         self.region_id = region_id
         # The release ID.
         self.release_id = release_id
-        # The release name.
+        # The name of the release.
         self.release_name = release_name
-        # The component scenario.
+        # The scenario of the component.
         self.scene = scene
         # The status.
         self.status = status
-        # The statistics information of sub-addon releases.
+        # The statistics information of the sub-add-on release.
         self.sub_addon_release = sub_addon_release
         # The update time.
         self.update_time = update_time
         # The ID of the owner user.
         self.user_id = user_id
-        # The component version.
+        # The version of the component.
         self.version = version
         # The workspace.
         self.workspace = workspace
@@ -413,15 +401,15 @@ class ListAddonReleasesResponseBodyReleasesConditions(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The first transition time.
+        # The time of the first transition.
         self.first_transition_time = first_transition_time
-        # The last transition time.
+        # The time of the last transition.
         self.last_transition_time = last_transition_time
-        # The details.
+        # The detailed information.
         self.message = message
-        # The phase status.
+        # The status of the phase.
         self.status = status
-        # The phase type.
+        # The type of the phase.
         self.type = type
 
     def validate(self):

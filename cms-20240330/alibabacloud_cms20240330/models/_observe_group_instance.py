@@ -12,6 +12,8 @@ class ObserveGroupInstance(DaraModel):
         category: str = None,
         dimension: Dict[str, str] = None,
         entity_domain: str = None,
+        entity_id: str = None,
+        entity_role: str = None,
         entity_type: str = None,
         group_id: str = None,
         instance_id: str = None,
@@ -27,6 +29,10 @@ class ObserveGroupInstance(DaraModel):
         self.dimension = dimension
         # 实体域（如 acs）。
         self.entity_domain = entity_domain
+        # UModel 实体 ID，与实体域和类型共同标识成员。
+        self.entity_id = entity_id
+        # 实体角色，main 为主实体、related 为关联子实体。
+        self.entity_role = entity_role
         # 实体类型（如 acs.ecs.instance）。
         self.entity_type = entity_type
         # 所属观测分组 ID。
@@ -60,6 +66,12 @@ class ObserveGroupInstance(DaraModel):
 
         if self.entity_domain is not None:
             result['entityDomain'] = self.entity_domain
+
+        if self.entity_id is not None:
+            result['entityId'] = self.entity_id
+
+        if self.entity_role is not None:
+            result['entityRole'] = self.entity_role
 
         if self.entity_type is not None:
             result['entityType'] = self.entity_type
@@ -97,6 +109,12 @@ class ObserveGroupInstance(DaraModel):
 
         if m.get('entityDomain') is not None:
             self.entity_domain = m.get('entityDomain')
+
+        if m.get('entityId') is not None:
+            self.entity_id = m.get('entityId')
+
+        if m.get('entityRole') is not None:
+            self.entity_role = m.get('entityRole')
 
         if m.get('entityType') is not None:
             self.entity_type = m.get('entityType')

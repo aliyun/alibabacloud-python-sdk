@@ -34,13 +34,13 @@ class AlertEventIntegrationPolicyForView(DaraModel):
         self.create_time = create_time
         # The description.
         self.description = description
-        # Specifies whether it is enabled.
+        # Indicates whether it is enabled.
         self.enable = enable
         # The filter configuration.
         self.filter_setting = filter_setting
         # The subscription settings.
         self.integration_setting = integration_setting
-        # The reporting entry key for the integration.
+        # The key for the integrated reporting endpoint.
         self.token = token
         # The transform settings.
         self.transformer_setting = transformer_setting

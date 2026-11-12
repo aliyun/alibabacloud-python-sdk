@@ -14,17 +14,20 @@ class UpdateContactRequest(DaraModel):
         lang: str = None,
         name: str = None,
         phone: str = None,
+        phone_code: str = None,
     ):
         # The email address of the contact.
         self.email = email
-        # The IM user ID mappings. Multiple instant messaging tools are supported.
+        # The instant messaging (IM) user ID mappings. Multiple IM tools are supported.
         self.im_user_ids = im_user_ids
         # The language.
         self.lang = lang
         # The name of the contact.
         self.name = name
-        # The mobile phone number of the contact. Only mobile phone numbers in the Chinese mainland are supported.
+        # The mobile phone number of the contact. Only Chinese mobile phone numbers are supported.
         self.phone = phone
+        # The country code for the mobile phone number, typically +86 for China.
+        self.phone_code = phone_code
 
     def validate(self):
         pass
@@ -49,6 +52,9 @@ class UpdateContactRequest(DaraModel):
         if self.phone is not None:
             result['phone'] = self.phone
 
+        if self.phone_code is not None:
+            result['phoneCode'] = self.phone_code
+
         return result
 
     def from_map(self, m: dict = None):
@@ -67,6 +73,9 @@ class UpdateContactRequest(DaraModel):
 
         if m.get('phone') is not None:
             self.phone = m.get('phone')
+
+        if m.get('phoneCode') is not None:
+            self.phone_code = m.get('phoneCode')
 
         return self
 

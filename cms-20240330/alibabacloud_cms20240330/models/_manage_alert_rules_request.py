@@ -8,12 +8,15 @@ from darabonba.model import DaraModel
 class ManageAlertRulesRequest(DaraModel):
     def __init__(
         self,
+        dry_run: bool = None,
         body: main_models.ManageAlertRulesUnifiedActionInput = None,
         call_source: str = None,
     ):
-        # The request body for managing alert rules. This body is shared by the CREATE, UPDATE, PATCH, and BATCH_DELETE operations. Specify fields based on the action.
+        # Specifies whether to perform a dry run. A dry run only validates the request and returns the validation result in dryRunResult without writing to the database, triggering template synchronization, or causing other side effects. Default value: false.
+        self.dry_run = dry_run
+        # The aggregated request body for managing alert rules. This body is shared by the CREATE, UPDATE, PATCH, and BATCH_DELETE operations. Specify the fields based on the action.
         self.body = body
-        # The call source identifier that specifies the internal integration channel of the caller, such as bailian, integrationCenter, or managed_service_for_prometheus. This parameter isolates traffic from different sources. You do not need to specify this parameter for regular OpenAPI calls.
+        # The call source identifier. It identifies the internal integration channel to which the caller belongs, such as bailian, integrationCenter, or managed_service_for_prometheus, and is used to isolate traffic from different sources. Leave this parameter empty for regular OpenAPI calls.
         self.call_source = call_source
 
     def validate(self):
@@ -25,6 +28,9 @@ class ManageAlertRulesRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
         if self.body is not None:
             result['body'] = self.body.to_map()
 
@@ -35,6 +41,9 @@ class ManageAlertRulesRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+
         if m.get('body') is not None:
             temp_model = main_models.ManageAlertRulesUnifiedActionInput()
             self.body = temp_model.from_map(m.get('body'))

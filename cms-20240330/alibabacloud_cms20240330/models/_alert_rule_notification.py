@@ -26,29 +26,29 @@ class AlertRuleNotification(DaraModel):
     ):
         # The list of contact IDs.
         self.contacts = contacts
-        # The list of custom webhook Notification Recipient IDs.
+        # The list of custom webhook notification recipient IDs.
         self.custom_webhooks = custom_webhooks
-        # The list of DingTalk Cool App webhook Notification Recipient IDs.
+        # The list of DingTalk cool app webhook notification recipient IDs.
         self.ding_cool_app_webhooks = ding_cool_app_webhooks
-        # The list of DingTalk webhook Notification Recipient IDs.
+        # The list of DingTalk webhook notification recipient IDs.
         self.ding_webhooks = ding_webhooks
-        # The list of Lark webhook Notification Recipient IDs.
+        # The list of Lark webhook notification recipient IDs.
         self.fs_webhooks = fs_webhooks
         # The list of contact group IDs.
         self.groups = groups
-        # The notification time window. Notifications are sent only within this time window.
+        # The notification time period during which notifications are sent.
         self.notify_time = notify_time
-        # The Qwen (Qwencloud) Notification Recipient configuration. Both the outer key and inner key are custom identity values. The inner Boolean value specifies whether the Notification Recipient is enabled.
+        # The Qwen notification recipient configuration. The outer and inner keys are custom identifiers, and the inner Boolean value specifies whether to enable the notification recipient.
         self.qwencloud_contacts = qwencloud_contacts
-        # Specifies whether to send recovery notifications. Each severity level in severityNotifications can independently override this setting.
+        # Specifies whether to send a recovery notification. This setting can be independently overridden for each severity level in severityNotifications.
         self.send_ok = send_ok
-        # The Notification Recipients and channels configured by severity level. This parameter is mutually exclusive with the top-level contacts, groups, and similar parameters. The key is the severity level: CRITICAL, ERROR, WARNING, or INFO.
+        # The notification recipients and channels configured by severity level, which are mutually exclusive with top-level contacts and groups. The key is the severity level: CRITICAL, ERROR, WARNING, or INFO.
         self.severity_notifications = severity_notifications
-        # The notification mute duration. Unit: seconds.
+        # The notification mute period, in seconds.
         self.silence_time = silence_time
-        # The list of Slack webhook Notification Recipient IDs.
+        # The list of Slack webhook notification recipient IDs.
         self.slack_webhooks = slack_webhooks
-        # The list of WeChat webhook Notification Recipient IDs.
+        # The list of WeChat webhook notification recipient IDs.
         self.wx_webhooks = wx_webhooks
 
     def validate(self):

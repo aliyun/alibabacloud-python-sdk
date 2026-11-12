@@ -36,7 +36,7 @@ class ManageAlertRulesUnifiedActionInput(DaraModel):
         uuid_list: List[str] = None,
         workspace: str = None,
     ):
-        # The action type.
+        # The operation type.
         # 
         # This parameter is required.
         self.action = action
@@ -46,7 +46,7 @@ class ManageAlertRulesUnifiedActionInput(DaraModel):
         self.annotations = annotations
         # The ARMS integration configuration.
         self.arms_integration_config = arms_integration_config
-        # The business source. Valid values include managed_service_for_prometheus, umodel, application_insights, cloud_monitoring, and sls. Pass this field as needed for CREATE, UPDATE, and PATCH actions.
+        # The business source (optional). Examples include managed_service_for_prometheus, umodel, application_insights, cloud_monitoring, and sls. Pass as needed for CREATE, UPDATE, and PATCH.
         self.biz_source = biz_source
         # The condition aggregation configuration.
         self.condition_config = condition_config
@@ -56,11 +56,11 @@ class ManageAlertRulesUnifiedActionInput(DaraModel):
         self.datasource_config = datasource_config
         # The display name.
         self.display_name = display_name
-        # The alert drill evaluation time in Unix milliseconds. This field is required by the backend when drillMode is ONE_SHOT. The time cannot be later than the current time or earlier than 90 days ago.
+        # The alert drill time, in Unix milliseconds. Required by the backend when drillMode is ONE_SHOT. It cannot be later than the current time or earlier than 90 days ago.
         self.drill_eval_time = drill_eval_time
-        # The alert drill mode. This field is required by the backend when the action is DRILL_ALERT. Valid values: ONE_SHOT specifies a single point in time to simulate a complete lifecycle consisting of three events: OCCURRED, PERSISTENT, and RECOVERED. TIME_TRAVEL specifies a time range to simulate the lifecycle in multiple rounds based on the rule scheduling interval.
+        # The alert drill mode. Required by the backend when action is DRILL_ALERT. ONE_SHOT specifies a single time point to simulate a complete lifecycle (three events: OCCURRED, PERSISTENT, and RECOVERED). TIME_TRAVEL specifies a time period to simulate round by round according to the rule scheduling interval (OCCURRED, PERSISTENT, ..., RECOVERED).
         self.drill_mode = drill_mode
-        # The alert drill time range in Unix milliseconds. This field is required by the backend when drillMode is TIME_TRAVEL. The endTime must be later than the startTime and cannot be later than the current time. The lifecycle is simulated in multiple rounds based on the rule scheduling interval. The maximum number of rounds is 500. If the limit is exceeded, the backend returns a 400 error.
+        # The alert drill time range, in Unix milliseconds. Required by the backend when drillMode is TIME_TRAVEL. The endTime must be later than the startTime and cannot be later than the current time. The span between endTime and startTime cannot exceed 1 hour (the backend returns 400 if exceeded). Simulates round by round according to the rule scheduling interval, with a maximum of 500 rounds (the backend returns 400 if exceeded).
         self.drill_time_range = drill_time_range
         # Specifies whether the rule is enabled.
         self.enabled = enabled
@@ -70,23 +70,23 @@ class ManageAlertRulesUnifiedActionInput(DaraModel):
         self.notify_config = notify_config
         # The observable resource configuration.
         self.observe_resource_config = observe_resource_config
-        # **[Deprecated]** The ID of the monitored object instance. For new integrations, use observeResourceConfig.resources instead. This field is retained only for compatibility with legacy SDKs.
+        # **[Deprecated]** The monitored object instance ID. Use observeResourceConfig.resources for new integrations. Retained only for compatibility with legacy SDKs.
         self.observe_resource_instance_id = observe_resource_instance_id
-        # **[Deprecated]** The resource type of the monitored object. For new integrations, use observeResourceConfig.entityType instead. This field is retained only for compatibility with legacy SDKs.
+        # **[Deprecated]** The monitored object resource type. Use observeResourceConfig.entityType for new integrations. Retained only for compatibility with legacy SDKs.
         self.observe_resource_type = observe_resource_type
         # The query aggregation configuration.
         self.query_config = query_config
-        # The root cause analysis (RCA) configuration. Pass this field as needed for CREATE, UPDATE, and PATCH actions.
+        # The root cause analysis (RCA) configuration (optional). Pass as needed for CREATE, UPDATE, and PATCH.
         self.rca_config = rca_config
-        # The region ID. This aligns with V1 AlertRule.regionId. If not provided, the gateway callerRegionId is used.
+        # The region ID. Aligned with V1 AlertRule.regionId. The gateway callerRegionId is used if not provided.
         self.region_id = region_id
-        # The schedule aggregation configuration.
+        # The scheduling aggregation configuration.
         self.schedule_config = schedule_config
-        # The UUID of the rule. This field is required for UPDATE and PATCH actions.
+        # The rule UUID. Required for UPDATE and PATCH.
         self.uuid = uuid
-        # The list of UUIDs for the rules to be deleted. This is used for the BATCH_DELETE action.
+        # The list of rule UUIDs to be deleted (BATCH_DELETE).
         self.uuid_list = uuid_list
-        # The workspace ID. This field is required for CREATE, UPDATE, PATCH, DELETE, ENABLE, DISABLE, BATCH_DELETE, BATCH_ENABLE, and BATCH_DISABLE actions. It identifies the CloudMonitor workspace to which the rule belongs.
+        # The workspace (for CREATE, UPDATE, and other actions).
         self.workspace = workspace
 
     def validate(self):
@@ -288,9 +288,9 @@ class ManageAlertRulesUnifiedActionInputDrillTimeRange(DaraModel):
         end_time: int = None,
         start_time: int = None,
     ):
-        # The drill end time in Unix milliseconds. The end time must be later than the start time.
+        # The drill end time, in Unix milliseconds. Must be later than the start time, and the span from the start time cannot exceed 1 hour.
         self.end_time = end_time
-        # The drill start time in Unix milliseconds.
+        # The drill start time, in Unix milliseconds.
         self.start_time = start_time
 
     def validate(self):

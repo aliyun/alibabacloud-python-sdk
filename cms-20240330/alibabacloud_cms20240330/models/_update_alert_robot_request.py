@@ -18,13 +18,13 @@ class UpdateAlertRobotRequest(DaraModel):
         self.digital_employee_name = digital_employee_name
         # The language.
         self.lang = lang
-        # The name of the robot.
+        # The name of the chatbot.
         self.name = name
-        # The signature key of the robot.
+        # The signing key of the chatbot.
         self.robot_sign_key = robot_sign_key
-        # The type of the robot.
+        # The type of the chatbot.
         self.type = type
-        # The webhook URL of the robot.
+        # The webhook URL of the chatbot.
         self.url = url
 
     def validate(self):

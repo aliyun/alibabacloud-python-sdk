@@ -13,9 +13,9 @@ class GetPrometheusInstanceResponseBody(DaraModel):
         prometheus_instance: main_models.GetPrometheusInstanceResponseBodyPrometheusInstance = None,
         request_id: str = None,
     ):
-        # The details of the Prometheus instance.
+        # The Prometheus instance details.
         self.prometheus_instance = prometheus_instance
-        # The request ID.
+        # The unique identifier of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -92,78 +92,75 @@ class GetPrometheusInstanceResponseBodyPrometheusInstance(DaraModel):
         version: str = None,
         workspace: str = None,
     ):
-        # The permission type. Valid values:
-        # - readWrite
-        # - readOnly
-        # - httpReadOnly
+        # The access type. Valid values: readWrite, readOnly, and httpReadOnly.
         self.access_type = access_type
-        # The number of days for automatic archiving after storage expires. A value of 0 indicates no archiving, and a value of 3650 indicates permanent retention.
+        # The number of days to automatically archive data after the storage expires. A value of 0 indicates that data is not archived. A value of 3650 indicates permanent retention.
         self.archive_duration = archive_duration
-        # The authentication-free read policy. IP CIDR blocks and VPC IDs are supported.
+        # The auth-free read policy. IP CIDR blocks and VPC IDs are supported.
         self.auth_free_read_policy = auth_free_read_policy
-        # The authentication-free write policy. IP CIDR blocks and VPC IDs are supported.
+        # The auth-free write policy. IP CIDR blocks and VPC IDs are supported.
         self.auth_free_write_policy = auth_free_write_policy
-        # The authentication token string.
+        # The auth token.
         self.auth_token = auth_token
-        # The instance creation time in UTC+0, in the format of yyyy-MM-ddTHH:mmZ.
+        # The time when the instance was created. The time is displayed in UTC+0 in the yyyy-MM-ddTHH:mmZ format.
         self.create_time = create_time
-        # Indicates whether authentication-free read is enabled.
+        # Specifies whether auth-free read is enabled.
         self.enable_auth_free_read = enable_auth_free_read
-        # Indicates whether authentication-free write is enabled.
+        # Specifies whether auth-free write is enabled.
         self.enable_auth_free_write = enable_auth_free_write
-        # Indicates whether the authentication token is enabled.
+        # Specifies whether the authentication token is enabled.
         self.enable_auth_token = enable_auth_token
         # The extended information.
         self.extra_info = extra_info
-        # The dashboard directory URL.
+        # The URL of the dashboard folder.
         self.folder_url = folder_url
         # The instance ID of the attached managed Grafana instance.
         self.grafana_instance_id = grafana_instance_id
-        # The name of the associated managed Grafana instance.
+        # The name of the bound managed Grafana instance.
         self.grafana_instance_name = grafana_instance_name
-        # The HTTP public endpoint.
+        # The public HTTP endpoint.
         self.http_api_inter_url = http_api_inter_url
-        # The HTTP internal endpoint.
+        # The internal HTTP endpoint.
         self.http_api_internal_url = http_api_internal_url
-        # The HTTP private endpoint.
+        # The HTTP private network endpoint.
         self.http_api_intra_url = http_api_intra_url
         # The Prometheus instance type.
         self.instance_type = instance_type
         # The billing method. Valid values:
-        # - POSTPAY: pay-as-you-go by metric reporting volume.
-        # - POSTPAY_GB: pay-as-you-go by metric write volume.
+        # - POSTPAY: Pay-as-you-go based on the volume of reported metrics.
+        # - POSTPAY_GB: Pay-as-you-go based on the volume of written metrics.
         self.payment_type = payment_type
-        # The time when the instance billing method was modified, in UTC format.
+        # The time when the billing method of the instance was updated (UTC format).
         self.payment_type_update_time = payment_type_update_time
-        # The product to which the Prometheus instance belongs (arms or cms).
+        # The product to which the Prometheus instance belongs, such as ARMS or CMS.
         self.product = product
         # The instance ID.
         self.prometheus_instance_id = prometheus_instance_id
         # The instance name.
         self.prometheus_instance_name = prometheus_instance_name
-        # The PushGateway public endpoint.
+        # The public PushGateway endpoint.
         self.push_gateway_inter_url = push_gateway_inter_url
-        # The PushGateway internal endpoint.
+        # The internal PushGateway endpoint.
         self.push_gateway_internal_url = push_gateway_internal_url
-        # The PushGateway private endpoint.
+        # The PushGateway private network endpoint.
         self.push_gateway_intra_url = push_gateway_intra_url
         # The region ID.
         self.region_id = region_id
         # The public read endpoint.
         self.remote_read_inter_url = remote_read_inter_url
-        # The RemoteRead internal endpoint.
+        # The internal RemoteRead endpoint.
         self.remote_read_internal_url = remote_read_internal_url
         # The private read endpoint.
         self.remote_read_intra_url = remote_read_intra_url
         # The public write endpoint.
         self.remote_write_inter_url = remote_write_inter_url
-        # The RemoteWrite internal endpoint.
+        # The internal RemoteWrite endpoint.
         self.remote_write_internal_url = remote_write_internal_url
         # The private write endpoint.
         self.remote_write_intra_url = remote_write_intra_url
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The fixed value: PrometheusInstance.
+        # The resource type. Fixed value: PrometheusInstance.
         self.resource_type = resource_type
         # The instance status.
         self.status = status

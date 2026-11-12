@@ -26,7 +26,7 @@ class GetOncallScheduleResponseBody(DaraModel):
         self.request_id = request_id
         # The list of rotations.
         self.rotations = rotations
-        # The ID of the shift reminder chatbot.
+        # The ID of the robot for shift change reminders.
         self.shift_robot_id = shift_robot_id
         # The list of substitution rules.
         self.substitudes = substitudes
@@ -174,9 +174,9 @@ class GetOncallScheduleResponseBodyRotations(DaraModel):
         start_date: str = None,
         time_zone: str = None,
     ):
-        # The days of the week when the rotation is active.
+        # The days of the week when the rotation takes effect.
         self.active_days = active_days
-        # The contact ID.
+        # The IDs of the contacts.
         self.contacts = contacts
         # The end time of the rotation. Format: HH:mm.
         self.rotation_end_time = rotation_end_time
@@ -184,13 +184,13 @@ class GetOncallScheduleResponseBodyRotations(DaraModel):
         self.rotation_name = rotation_name
         # The start time of the rotation. Format: HH:mm.
         self.rotation_start_time = rotation_start_time
-        # The length of the shift rotation cycle. Used in combination with shiftRecurrenceFrequency. For example, set this parameter to 3 to rotate to the next on-call contact every 3 days.
+        # The length of the shift recurrence period. Used in conjunction with shiftRecurrenceFrequency. For example, rotate to the next on-call person every 3 days.
         self.shift_length = shift_length
-        # The unit of the shift rotation cycle. Used in combination with shiftRecurrenceFrequency. For example, set this parameter to Week to rotate to the next on-call contact every week.
+        # The unit of the shift recurrence frequency. Used in conjunction with shiftRecurrenceFrequency. For example, rotate to the next on-call person every 1 week.
         self.shift_recurrence_frequency = shift_recurrence_frequency
         # The start date of the rotation. Format: yyyy-MM-dd.
         self.start_date = start_date
-        # The time zone name based on the IANA Time Zone Database standard. Example: Asia/Shanghai.
+        # The name of the time zone. Uses the IANA Time Zone Database standard, such as Asia/Shanghai.
         self.time_zone = time_zone
 
     def validate(self):

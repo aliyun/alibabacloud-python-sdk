@@ -30,6 +30,7 @@ from ._apm_filter_config import ApmFilterConfig
 from ._apm_measure_config import ApmMeasureConfig
 from ._apm_threshold_config import ApmThresholdConfig
 from ._arms_integration_config import ArmsIntegrationConfig
+from ._auto_pass_policy import AutoPassPolicy
 from ._biz_source_filter import BizSourceFilter
 from ._biz_trace_config import BizTraceConfig
 from ._cloud_monitoring_composite_escalation import CloudMonitoringCompositeEscalation
@@ -39,6 +40,11 @@ from ._cloud_monitoring_prometheus_escalation import CloudMonitoringPrometheusEs
 from ._cloud_monitoring_simple_escalation import CloudMonitoringSimpleEscalation
 from ._cloud_monitoring_simple_escalation_entry import CloudMonitoringSimpleEscalationEntry
 from ._cms_event_for_view import CmsEventForView
+from ._cms_v1migration_admission import CmsV1MigrationAdmission
+from ._cms_v1migration_candidate import CmsV1MigrationCandidate
+from ._cms_v1migration_check import CmsV1MigrationCheck
+from ._cms_v1migration_preview import CmsV1MigrationPreview
+from ._cms_v1migration_task_view import CmsV1MigrationTaskView
 from ._compare_list import CompareList
 from ._condition_config_unified import ConditionConfigUnified
 from ._contact_for_incident_view import ContactForIncidentView
@@ -49,6 +55,8 @@ from ._datasource_type_filter import DatasourceTypeFilter
 from ._direct_notify_channel import DirectNotifyChannel
 from ._direct_notify_receiver import DirectNotifyReceiver
 from ._display_name_filter import DisplayNameFilter
+from ._dry_run_result import DryRunResult
+from ._dry_run_violation import DryRunViolation
 from ._effect_time_range import EffectTimeRange
 from ._enabled_filter import EnabledFilter
 from ._entity_discover_rule import EntityDiscoverRule
@@ -65,6 +73,7 @@ from ._filter import Filter
 from ._filter_condition import FilterCondition
 from ._filter_list import FilterList
 from ._filter_setting import FilterSetting
+from ._hook import Hook
 from ._incident_contact_struct import IncidentContactStruct
 from ._incident_escalation_policy_for_modify import IncidentEscalationPolicyForModify
 from ._incident_escalation_policy_for_view import IncidentEscalationPolicyForView
@@ -129,8 +138,12 @@ from ._notify_strategy_id_filter import NotifyStrategyIdFilter
 from ._observe_group import ObserveGroup
 from ._observe_group_detail import ObserveGroupDetail
 from ._observe_group_discover_rule import ObserveGroupDiscoverRule
+from ._observe_group_discover_rules_preview import ObserveGroupDiscoverRulesPreview
+from ._observe_group_entity_summary import ObserveGroupEntitySummary
 from ._observe_group_instance import ObserveGroupInstance
 from ._observe_group_prom_instance import ObserveGroupPromInstance
+from ._observe_group_related_entity_type import ObserveGroupRelatedEntityType
+from ._observe_group_rule_count import ObserveGroupRuleCount
 from ._observe_resource_config import ObserveResourceConfig
 from ._observe_resource_config_filter import ObserveResourceConfigFilter
 from ._observe_resource_global_scope_filter import ObserveResourceGlobalScopeFilter
@@ -447,6 +460,9 @@ from ._enable_notify_policy_response import EnableNotifyPolicyResponse
 from ._enable_subscription_request import EnableSubscriptionRequest
 from ._enable_subscription_response_body import EnableSubscriptionResponseBody
 from ._enable_subscription_response import EnableSubscriptionResponse
+from ._ensure_shared_prometheus_instance_request import EnsureSharedPrometheusInstanceRequest
+from ._ensure_shared_prometheus_instance_response_body import EnsureSharedPrometheusInstanceResponseBody
+from ._ensure_shared_prometheus_instance_response import EnsureSharedPrometheusInstanceResponse
 from ._execute_query_request import ExecuteQueryRequest
 from ._execute_query_response_body import ExecuteQueryResponseBody
 from ._execute_query_response import ExecuteQueryResponse
@@ -877,6 +893,7 @@ from ._entity_discover_rule import EntityDiscoverRuleTags
 from ._entity_group_base import EntityGroupBaseEntityQueries
 from ._event_resource_for_event_view import EventResourceForEventViewEntity
 from ._filter_setting import FilterSettingConditions
+from ._hook import HookExecution
 from ._incident_member_struct import IncidentMemberStructAcknowledge
 from ._incident_member_struct import IncidentMemberStructContacts
 from ._incident_member_struct import IncidentMemberStructEscalation
@@ -1046,6 +1063,8 @@ from ._describe_metric_meta_list_request import DescribeMetricMetaListRequestLab
 from ._describe_metric_meta_list_response_body import DescribeMetricMetaListResponseBodyResourcesDimensionDescription
 from ._describe_metric_meta_list_response_body import DescribeMetricMetaListResponseBodyResources
 from ._describe_regions_response_body import DescribeRegionsResponseBodyRegions
+from ._ensure_shared_prometheus_instance_response_body import EnsureSharedPrometheusInstanceResponseBodyPrometheusInstanceTags
+from ._ensure_shared_prometheus_instance_response_body import EnsureSharedPrometheusInstanceResponseBodyPrometheusInstance
 from ._execute_query_response_body import ExecuteQueryResponseBodyMeta
 from ._get_addon_response_body import GetAddonResponseBodyDataDashboards
 from ._get_addon_response_body import GetAddonResponseBodyDataEnvironmentsCommonSchemaRefs
@@ -1427,6 +1446,7 @@ __all__ = [
     ApmMeasureConfig,
     ApmThresholdConfig,
     ArmsIntegrationConfig,
+    AutoPassPolicy,
     BizSourceFilter,
     BizTraceConfig,
     CloudMonitoringCompositeEscalation,
@@ -1436,6 +1456,11 @@ __all__ = [
     CloudMonitoringSimpleEscalation,
     CloudMonitoringSimpleEscalationEntry,
     CmsEventForView,
+    CmsV1MigrationAdmission,
+    CmsV1MigrationCandidate,
+    CmsV1MigrationCheck,
+    CmsV1MigrationPreview,
+    CmsV1MigrationTaskView,
     CompareList,
     ConditionConfigUnified,
     ContactForIncidentView,
@@ -1446,6 +1471,8 @@ __all__ = [
     DirectNotifyChannel,
     DirectNotifyReceiver,
     DisplayNameFilter,
+    DryRunResult,
+    DryRunViolation,
     EffectTimeRange,
     EnabledFilter,
     EntityDiscoverRule,
@@ -1462,6 +1489,7 @@ __all__ = [
     FilterCondition,
     FilterList,
     FilterSetting,
+    Hook,
     IncidentContactStruct,
     IncidentEscalationPolicyForModify,
     IncidentEscalationPolicyForView,
@@ -1526,8 +1554,12 @@ __all__ = [
     ObserveGroup,
     ObserveGroupDetail,
     ObserveGroupDiscoverRule,
+    ObserveGroupDiscoverRulesPreview,
+    ObserveGroupEntitySummary,
     ObserveGroupInstance,
     ObserveGroupPromInstance,
+    ObserveGroupRelatedEntityType,
+    ObserveGroupRuleCount,
     ObserveResourceConfig,
     ObserveResourceConfigFilter,
     ObserveResourceGlobalScopeFilter,
@@ -1844,6 +1876,9 @@ __all__ = [
     EnableSubscriptionRequest,
     EnableSubscriptionResponseBody,
     EnableSubscriptionResponse,
+    EnsureSharedPrometheusInstanceRequest,
+    EnsureSharedPrometheusInstanceResponseBody,
+    EnsureSharedPrometheusInstanceResponse,
     ExecuteQueryRequest,
     ExecuteQueryResponseBody,
     ExecuteQueryResponse,
@@ -2274,6 +2309,7 @@ __all__ = [
     EntityGroupBaseEntityQueries,
     EventResourceForEventViewEntity,
     FilterSettingConditions,
+    HookExecution,
     IncidentMemberStructAcknowledge,
     IncidentMemberStructContacts,
     IncidentMemberStructEscalation,
@@ -2443,6 +2479,8 @@ __all__ = [
     DescribeMetricMetaListResponseBodyResourcesDimensionDescription,
     DescribeMetricMetaListResponseBodyResources,
     DescribeRegionsResponseBodyRegions,
+    EnsureSharedPrometheusInstanceResponseBodyPrometheusInstanceTags,
+    EnsureSharedPrometheusInstanceResponseBodyPrometheusInstance,
     ExecuteQueryResponseBodyMeta,
     GetAddonResponseBodyDataDashboards,
     GetAddonResponseBodyDataEnvironmentsCommonSchemaRefs,

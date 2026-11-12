@@ -47,79 +47,79 @@ class QueryConfigUnified(DaraModel):
         type: str = None,
         window_secs: int = None,
     ):
-        # The aggregate functions. Used when type is set to UMODEL_METRICSET_QUERY or UMODEL_LOGSET_QUERY.
+        # The aggregation function used when the type is UMODEL_METRICSET_QUERY or UMODEL_LOGSET_QUERY.
         self.aggregate = aggregate
-        # **[Deprecated]** Specifies whether to perform alert detection only after data is complete (originally used when type is set to PROMETHEUS_MULTI_QUERY). This field overlaps with enableDataCompleteCheck. Using this field on write paths returns 400.
+        # **[Deprecated]** Specifies whether to perform alert detection after data completion. This parameter was originally used when the type was PROMETHEUS_MULTI_QUERY. It duplicates enableDataCompleteCheck and returns a 400 error in the write path.
         self.check_after_data_complete = check_after_data_complete
-        # The dimension list. This parameter is used when type is set to CLOUD_MONITORING_QUERY. Each dimension is a key/value string mapping.
+        # The list of dimensions used when the type is CLOUD_MONITORING_QUERY. Each dimension is a key-value string map.
         self.dimensions = dimensions
-        # The duration in seconds. Used when type is set to PROMETHEUS_MULTI_QUERY.
+        # The duration in seconds used when the type is PROMETHEUS_MULTI_QUERY.
         self.duration_secs = duration_secs
-        # Indicates whether data integrity check is enabled.
+        # Specifies whether the data integrity check is enabled.
         self.enable_data_complete_check = enable_data_complete_check
-        # The entity domain.
+        # The domain to which the entity belongs.
         self.entity_domain = entity_domain
-        # The entity fields to include in the response.
+        # The entity fields to be returned in the response.
         self.entity_fields = entity_fields
-        # The entity filter list.
+        # The list of entity filters.
         self.entity_filters = entity_filters
-        # The entity type.
+        # The type of the entity.
         self.entity_type = entity_type
-        # The query expression or SPL statement. Recommended when type is set to PROMETHEUS_SINGLE_QUERY. Optional when type is set to UMODEL_METRICSET_QUERY for custom SPL. Required when type is set to UMODEL_LOGSET_QUERY, where an SPL query statement must be provided (the business layer enforces this requirement).
+        # The query expression or Search Processing Language (SPL) statement. Recommended when the type is PROMETHEUS_SINGLE_QUERY. Optional when the type is UMODEL_METRICSET_QUERY for custom SPL. Required when the type is UMODEL_LOGSET_QUERY, where an SPL query statement must be provided and validated by the business layer.
         self.expr = expr
-        # The APM filter condition list.
+        # The list of Application Performance Monitoring (APM) filter conditions.
         self.filter_list = filter_list
-        # The predefined metric filter value list (type=PROMETHEUS_PREDEFINED_METRIC_QUERY / PROMETHEUS_METRIC_GROUP_QUERY [deprecated]).
+        # The list of filter values for predefined metrics when the type is PROMETHEUS_PREDEFINED_METRIC_QUERY or PROMETHEUS_METRIC_GROUP_QUERY [Deprecated].
         self.filter_values = filter_values
-        # The group field list. This parameter is used when type is set to SLS_MULTI_QUERY and groupType is set to custom.
+        # The list of grouping fields used when the type is SLS_MULTI_QUERY and the groupType is custom.
         self.group_field_list = group_field_list
-        # The group ID (type=CLOUD_MONITORING_QUERY). Dual semantics: an og- prefix indicates an observation group (GROUP_V2, the prefix itself conveys the semantics, no relationType is needed, and the backend resolves members through the entity store). A numeric-only value indicates an application group (GROUP_V1 legacy resource group, requires relationType=GROUP).
+        # The group ID used when the type is CLOUD_MONITORING_QUERY. This parameter has dual semantics: an og- prefix indicates an observation group (GROUP_V2, where the prefix defines the semantics and relationType is not required, and the backend resolves members through the entity library); a pure number indicates an application group (GROUP_V1 legacy resource group, which requires relationType=GROUP).
         self.group_id = group_id
-        # The grouping policy (used when type is set to SLS_MULTI_QUERY): none / label / custom.
+        # The grouping strategy used when the type is SLS_MULTI_QUERY. Valid values: none, label, and custom.
         self.group_type = group_type
-        # The join list (used when type is set to SLS_MULTI_QUERY, with a maximum of 2 entries: joinings[0] corresponds to the set operation between query 0 and query 1, and joinings[1] corresponds to the set operation between query 1 and query 2).
+        # The list of joins used when the type is SLS_MULTI_QUERY. A maximum of two joins are supported. joinings[0] corresponds to the set operation between query 0 and query 1, and joinings[1] corresponds to the set operation between query 1 and query 2.
         self.joinings = joinings
         # The label filter conditions.
         self.label_filters = label_filters
-        # The raw V1 query JSON string returned as a fallback when type is set to UNKNOWN_QUERY and the read path fails to parse (contains the field values that triggered the failure, such as filter.operator=ABC). When the frontend detects that this field is not empty, display it as read-only.
+        # The raw V1 query JSON string returned as a fallback when the type is UNKNOWN_QUERY and parsing fails in the read path. This string includes the field values that triggered the failure, such as filter.operator=ABC. The frontend displays this field in read-only mode when it is not empty.
         self.legacy_raw = legacy_raw
-        # Returned when type is set to UNKNOWN_QUERY, indicating that this rule cannot be edited through the new API. Submit a ticket to contact the CloudMonitor product team.
+        # The legacy type returned when the type is UNKNOWN_QUERY. This parameter indicates that the rule cannot be edited by using the new API. Submit a ticket to contact the CloudMonitor product team.
         self.legacy_type = legacy_type
-        # The log set name (type=UMODEL_LOGSET_QUERY).
+        # The name of the logset when the type is UMODEL_LOGSET_QUERY.
         self.log_set = log_set
-        # The metric group key. This parameter is optional when type is set to APM_MULTI_QUERY. It corresponds to alertMetricInput.groupKey in V1.
+        # The measure group key. This parameter is optional when the type is APM_MULTI_QUERY and corresponds to alertMetricInput.groupKey in V1.
         self.measure_group_key = measure_group_key
-        # The APM metric configuration list.
+        # The list of APM measure configurations.
         self.measure_list = measure_list
-        # The metric name (type=UMODEL_METRICSET_QUERY).
+        # The name of the metric when the type is UMODEL_METRICSET_QUERY.
         self.metric = metric
-        # The metric group ID (type=PROMETHEUS_PREDEFINED_METRIC_QUERY / PROMETHEUS_METRIC_GROUP_QUERY [deprecated]).
+        # The metric group ID when the type is PROMETHEUS_PREDEFINED_METRIC_QUERY or PROMETHEUS_METRIC_GROUP_QUERY [Deprecated].
         self.metric_group_id = metric_group_id
-        # The predefined metric ID (type=PROMETHEUS_PREDEFINED_METRIC_QUERY).
+        # The predefined metric ID when the type is PROMETHEUS_PREDEFINED_METRIC_QUERY.
         self.metric_id = metric_id
-        # **[Deprecated]** The predefined metric ID list (originally used with type=PROMETHEUS_METRIC_GROUP_QUERY). This query type is deprecated. Write path returns 400.
+        # **[Deprecated]** The list of predefined metric IDs originally used when the type was PROMETHEUS_METRIC_GROUP_QUERY. This query type is deprecated, and the write path returns a 400 error.
         self.metric_ids = metric_ids
-        # The metric set name (type=UMODEL_METRICSET_QUERY).
+        # The name of the metricset when the type is UMODEL_METRICSET_QUERY.
         self.metric_set = metric_set
-        # The CloudMonitor namespace (Alibaba Cloud service name, type=CLOUD_MONITORING_QUERY).
+        # The CloudMonitor namespace, which is the cloud service name, when the type is CLOUD_MONITORING_QUERY.
         self.namespace = namespace
-        # The query time offset in seconds. Used when type is set to UMODEL_METRICSET_QUERY or UMODEL_LOGSET_QUERY. Works with windowSecs to implement an offset query over the range [T - windowSecs - offsetSecs, T - offsetSecs]. Valid range: [0, 86400].
+        # The query time offset in seconds used when the type is UMODEL_METRICSET_QUERY or UMODEL_LOGSET_QUERY. This parameter is used together with windowSecs to implement offset queries in the range of [T - windowSecs - offsetSecs, T - offsetSecs]. Valid values: 0 to 86400.
         self.offset_secs = offset_secs
-        # The predefined metric parameter value list (type=PROMETHEUS_PREDEFINED_METRIC_QUERY / PROMETHEUS_METRIC_GROUP_QUERY [deprecated]).
+        # The list of parameter values for predefined metrics when the type is PROMETHEUS_PREDEFINED_METRIC_QUERY or PROMETHEUS_METRIC_GROUP_QUERY [Deprecated].
         self.param_values = param_values
-        # The Prometheus query statement (type=PROMETHEUS_SINGLE_QUERY).
+        # The Prometheus query statement when the type is PROMETHEUS_SINGLE_QUERY.
         self.prom_ql = prom_ql
-        # The subquery list (polymorphic by type): when type is set to SLS_MULTI_QUERY, each entry is a SlsNamedQueryEntry (timeUnit/start/end/window/expr). When type is set to PROMETHEUS_MULTI_QUERY, each entry is a PrometheusNamedQueryEntry (name/expr). When type is set to UMODEL_METRICSET_MULTI_QUERY, each entry is a MetricSetNamedQueryEntry.
+        # The list of subqueries, which is polymorphic based on the type. When the type is SLS_MULTI_QUERY, each entry is an SlsNamedQueryEntry object containing timeUnit, start, end, window, and expr. When the type is PROMETHEUS_MULTI_QUERY, each entry is a PrometheusNamedQueryEntry object containing name and expr. When the type is UMODEL_METRICSET_MULTI_QUERY, each entry is a MetricSetNamedQueryEntry object.
         self.queries = queries
-        # The resource association type (type=CLOUD_MONITORING_QUERY).
+        # The resource association type when the type is CLOUD_MONITORING_QUERY.
         self.relation_type = relation_type
-        # The service ID list (type=APM_MULTI_QUERY).
+        # The list of service IDs (type=APM_MULTI_QUERY).
         self.service_id_list = service_id_list
         # The query type.
         # 
         # This parameter is required.
         self.type = type
-        # The aggregation time window in seconds. Used when type is set to UMODEL_METRICSET_QUERY or UMODEL_LOGSET_QUERY. Valid range: [60, 86400].
+        # The aggregation time window in seconds. Used when type=UMODEL_METRICSET_QUERY or UMODEL_LOGSET_QUERY. Valid range: [60, 86400].
         self.window_secs = window_secs
 
     def validate(self):

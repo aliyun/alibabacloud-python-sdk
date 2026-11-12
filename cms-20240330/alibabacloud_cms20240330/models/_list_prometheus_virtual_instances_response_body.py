@@ -20,7 +20,7 @@ class ListPrometheusVirtualInstancesResponseBody(DaraModel):
         self.instances = instances
         # The maximum number of instances to return per page.
         self.max_results = max_results
-        # The next token for the next page. This parameter is empty when all results are returned.
+        # The next token for pagination. It is empty when all results are returned.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
@@ -91,13 +91,13 @@ class ListPrometheusVirtualInstancesResponseBodyInstances(DaraModel):
     ):
         # The creation time.
         self.created_at = created_at
-        # The HTTP API endpoint.
+        # The HTTP API URL.
         self.http_api_url = http_api_url
-        # The applicable data source type: PROMETHEUS_DS.
+        # Applicable data source type: PROMETHEUS_DS.
         # 
         # The Prometheus instance ID.
         self.instance_id = instance_id
-        # The applicable query type: CMS_BASIC_QUERY.
+        # Applicable query type: CMS_BASIC_QUERY.
         # 
         # The namespace of the metric.
         self.namespace = namespace

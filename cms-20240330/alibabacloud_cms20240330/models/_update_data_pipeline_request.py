@@ -28,7 +28,7 @@ class UpdateDataPipelineRequest(DaraModel):
         self.outputs = outputs
         # The common processors.
         self.processors = processors
-        # The output destinations.
+        # The output destination.
         self.sinks = sinks
         # The data source.
         self.source = source
@@ -126,7 +126,7 @@ class UpdateDataPipelineRequestSource(DaraModel):
     ):
         # The datasource config.
         self.config = config
-        # The data source type.
+        # The type of the data source.
         self.type = type
 
     def validate(self):
@@ -166,9 +166,9 @@ class UpdateDataPipelineRequestSourceConfig(DaraModel):
     ):
         # The run mode.
         self.run_mode = run_mode
-        # The start position.
+        # The start point for reading.
         self.start_from = start_from
-        # The backfill time range.
+        # The time range for backfilling.
         self.time_range = time_range
 
     def validate(self):
@@ -251,15 +251,15 @@ class UpdateDataPipelineRequestSinks(DaraModel):
         project: str = None,
         type: str = None,
     ):
-        # The dataset list.
+        # The list of datasets.
         self.datasets = datasets
         # SLS Logstore
         self.logstore = logstore
-        # The output destination name.
+        # The name of the output destination.
         self.name = name
         # SLS Project
         self.project = project
-        # The output destination type.
+        # The type of the output destination.
         self.type = type
 
     def validate(self):
@@ -313,11 +313,11 @@ class UpdateDataPipelineRequestProcessors(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # The processor configuration.
+        # The configuration of the processor.
         self.config = config
-        # The processor name.
+        # The name of the processor.
         self.name = name
-        # The processor type.
+        # The type of the processor.
         self.type = type
 
     def validate(self):
@@ -540,7 +540,7 @@ class UpdateDataPipelineRequestProcessorsConfigSelector(DaraModel):
         self,
         service_names: List[str] = None,
     ):
-        # The service name list.
+        # The list of service names.
         self.service_names = service_names
 
     def validate(self):
@@ -572,9 +572,9 @@ class UpdateDataPipelineRequestProcessorsConfigScope(DaraModel):
     ):
         # The additional field conditions.
         self.conditions = conditions
-        # The metric name scope.
+        # The scope of metric names.
         self.metric_name = metric_name
-        # The service name scope.
+        # The scope of service names.
         self.service_name = service_name
 
     def validate(self):
@@ -757,7 +757,7 @@ class UpdateDataPipelineRequestProcessorsConfigScopeConditionsField(DaraModel):
         self.container = container
         # The reference data type.
         self.kind = kind
-        # The name of the field or dimension.
+        # The field or dimension name.
         self.name = name
         # The JSON literal key path.
         self.path = path
@@ -810,9 +810,9 @@ class UpdateDataPipelineRequestProcessorsConfigRules(DaraModel):
         mode: str = None,
         types: List[str] = None,
     ):
-        # The length of the retained prefix.
+        # The length of the prefix to retain.
         self.keep_prefix = keep_prefix
-        # The length of the retained suffix.
+        # The length of the suffix to retain.
         self.keep_suffix = keep_suffix
         # The sensitive keywords.
         self.keys = keys
@@ -953,7 +953,7 @@ class UpdateDataPipelineRequestOutputs(DaraModel):
         name: str = None,
         processors: List[main_models.UpdateDataPipelineRequestOutputsProcessors] = None,
     ):
-        # The name of the output.
+        # The output name.
         self.name = name
         # The branch processors.
         self.processors = processors
@@ -999,11 +999,11 @@ class UpdateDataPipelineRequestOutputsProcessors(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # The processor configuration.
+        # The configuration of the processor.
         self.config = config
-        # The processor name.
+        # The name of the processor.
         self.name = name
-        # The processor type.
+        # The type of the processor.
         self.type = type
 
     def validate(self):
@@ -1226,7 +1226,7 @@ class UpdateDataPipelineRequestOutputsProcessorsConfigSelector(DaraModel):
         self,
         service_names: List[str] = None,
     ):
-        # The service name list.
+        # The list of service names.
         self.service_names = service_names
 
     def validate(self):
@@ -1258,9 +1258,9 @@ class UpdateDataPipelineRequestOutputsProcessorsConfigScope(DaraModel):
     ):
         # The additional field conditions.
         self.conditions = conditions
-        # The metric name scope.
+        # The scope of metric names.
         self.metric_name = metric_name
-        # The service name scope.
+        # The scope of service names.
         self.service_name = service_name
 
     def validate(self):
@@ -1443,7 +1443,7 @@ class UpdateDataPipelineRequestOutputsProcessorsConfigScopeConditionsField(DaraM
         self.container = container
         # The reference data type.
         self.kind = kind
-        # The name of the field or dimension.
+        # The field or dimension name.
         self.name = name
         # The JSON literal key path.
         self.path = path
@@ -1496,9 +1496,9 @@ class UpdateDataPipelineRequestOutputsProcessorsConfigRules(DaraModel):
         mode: str = None,
         types: List[str] = None,
     ):
-        # The length of the retained prefix.
+        # The length of the prefix to retain.
         self.keep_prefix = keep_prefix
-        # The length of the retained suffix.
+        # The length of the suffix to retain.
         self.keep_suffix = keep_suffix
         # The sensitive keywords.
         self.keys = keys

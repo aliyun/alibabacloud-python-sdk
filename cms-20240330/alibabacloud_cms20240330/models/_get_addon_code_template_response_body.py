@@ -15,7 +15,7 @@ class GetAddonCodeTemplateResponseBody(DaraModel):
     ):
         # The list of code templates.
         self.codes = codes
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

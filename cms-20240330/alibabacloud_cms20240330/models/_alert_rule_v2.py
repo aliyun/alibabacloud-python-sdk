@@ -46,55 +46,55 @@ class AlertRuleV2(DaraModel):
         self.annotations = annotations
         # The ARMS integration configuration.
         self.arms_integration_config = arms_integration_config
-        # The business source (read-only, such as managed_service_for_prometheus / umodel / application_insights / cloud_monitoring / sls).
+        # The business source. This parameter is read-only. Examples include managed_service_for_prometheus, umodel, application_insights, cloud_monitoring, and sls.
         self.biz_source = biz_source
-        # The detection condition configuration aggregate (Prometheus simple / UModel / APM simple / APM composite).
+        # The detection condition configuration aggregation, including simple Prometheus, UModel, simple APM, and composite APM.
         self.condition_config = condition_config
         # The content template.
         self.content_template = content_template
-        # The creation time (read-only), in ISO 8601 format.
+        # The creation time in ISO 8601 format. This parameter is read-only.
         self.created_at = created_at
-        # The datasource configuration aggregate (shared by PROMETHEUS / UMODEL / APM in a single object; fields are selected based on the type).
+        # The datasource config aggregation. The PROMETHEUS, UMODEL, and APM data sources share the same object, and fields are selected based on the type.
         self.datasource_config = datasource_config
-        # The datasource type (read-only, derived).
+        # The data source type. This parameter is read-only and derived.
         self.datasource_type = datasource_type
         # The display name.
         self.display_name = display_name
-        # Specifies whether the alert rule is enabled.
+        # Specifies whether the rule is enabled.
         self.enabled = enabled
         # The labels.
         self.labels = labels
-        # The rule manager (read-only). An empty value indicates a user-created rule. A non-empty value indicates that the rule was created and managed by the corresponding cloud service.
+        # The manager of the rule. This parameter is read-only. An empty value indicates a user-created rule. A non-empty value indicates that the rule is created and managed by the corresponding cloud service logic.
         self.managed_by = managed_by
-        # The notification configuration aggregate (currently only DIRECT_NOTIFY, corresponding to DirectNotifyConfig).
+        # The notification configuration aggregation. Currently, only DIRECT_NOTIFY is supported, which corresponds to DirectNotifyConfig.
         self.notify_config = notify_config
-        # The notification policy ID (read-only, derived from the first entry in the notification policy list).
+        # The notification strategy ID. This parameter is read-only and derived from the first item in the notification strategy list.
         self.notify_strategy_id = notify_strategy_id
         # The observable resource configuration.
         self.observe_resource_config = observe_resource_config
-        # **[Deprecated]** Specifies whether the rule applies to all resources of the resource type (read-only, derived). For new integrations, use observeResourceConfig.relationType to check whether the value is ALL for equivalent semantics.
+        # **[Deprecated]** Specifies whether the rule takes effect on all resources of this type. This parameter is read-only and derived. For new integrations, check whether observeResourceConfig.relationType is set to ALL to determine the equivalent semantics.
         self.observe_resource_global_scope = observe_resource_global_scope
-        # The observable resource ID list (read-only, derived).
+        # The list of observable resource IDs. This parameter is read-only and derived.
         self.observe_resource_list = observe_resource_list
-        # **[Deprecated]** The observable resource type (read-only, derived). For new integrations, use observeResourceConfig.entityType instead.
+        # **[Deprecated]** The observable resource type. This parameter is read-only and derived. For new integrations, use observeResourceConfig.entityType instead.
         self.observe_resource_type = observe_resource_type
-        # The partition key (read-only, maintained by the system for rule routing and sharding).
+        # The partition key. This parameter is read-only and maintained by the system for rule routing and sharding.
         self.partition_key = partition_key
-        # The query configuration aggregate (PROMETHEUS_SINGLE_QUERY / UMODEL_METRICSET_QUERY / APM_MULTI_QUERY).
+        # The query configuration aggregation, including PROMETHEUS_SINGLE_QUERY, UMODEL_METRICSET_QUERY, and APM_MULTI_QUERY.
         self.query_config = query_config
-        # The RCA (root cause analysis) configuration.
+        # The root cause analysis (RCA) configuration.
         self.rca_config = rca_config
-        # The region ID (aligned with V1 AlertRule.regionId; priority: request body regionId > gateway callerRegionId).
+        # The region ID. This parameter is aligned with V1 AlertRule.regionId. Priority: regionId in the request body > callerRegionId in the gateway.
         self.region_id = region_id
-        # The scheduling configuration aggregate (currently only FIXED is supported).
+        # The schedule configuration aggregation. Currently, only FIXED is supported.
         self.schedule_config = schedule_config
-        # The severity levels covered by this rule, comma-separated (read-only, derived; consistent with the filter.severityLevels query parameter format).
+        # The severity levels covered by this rule, separated by commas. This parameter is read-only and derived. The format is consistent with the filter.severityLevels query parameter.
         self.severity_levels = severity_levels
-        # The alert status (read-only).
+        # The alert status. This parameter is read-only.
         self.status = status
-        # The update time (read-only), in ISO 8601 format.
+        # The update time in ISO 8601 format. This parameter is read-only.
         self.updated_at = updated_at
-        # The rule UUID (system-generated, read-only).
+        # The UUID of the rule. This parameter is generated by the system and is read-only.
         self.uuid = uuid
         # The workspace.
         self.workspace = workspace

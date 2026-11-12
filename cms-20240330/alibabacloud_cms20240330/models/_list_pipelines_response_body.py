@@ -86,7 +86,7 @@ class ListPipelinesResponseBodyPipelines(DaraModel):
         self.create_time = create_time
         # The description.
         self.description = description
-        # The name of the pipeline.
+        # The pipeline name.
         self.pipeline_name = pipeline_name
         # The region ID.
         self.region_id = region_id

@@ -85,13 +85,13 @@ class ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRules(
         namespace: str = None,
         scrape_configs: List[main_models.ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRulesScrapeConfigs] = None,
     ):
-        # The addon name.
+        # The add-on name.
         self.addon_name = addon_name
-        # The addon release name.
+        # The add-on release name.
         self.addon_release_name = addon_release_name
-        # The addon version.
+        # The add-on version.
         self.addon_version = addon_version
-        # The configuration YAML.
+        # The YAML configuration.
         self.config_yaml = config_yaml
         # The enabling status.
         self.enable_status = enable_status
@@ -213,7 +213,7 @@ class ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRulesS
         self.message = message
         # The metrics path.
         self.metrics_path = metrics_path
-        # The invocation method.
+        # The scheme.
         self.scheme = scheme
         # The scrape interval.
         self.scrape_interval = scrape_interval

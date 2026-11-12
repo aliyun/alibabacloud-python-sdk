@@ -35,13 +35,13 @@ class IncidentForView(DaraModel):
         user_id: str = None,
         workspace: str = None,
     ):
-        # The expiration time of the notification block.
+        # The expiration time for suppressing notifications.
         self.blocking_expire_timestamp = blocking_expire_timestamp
         # The detailed content of the incident.
         self.content = content
         # The list of escalation policies.
         self.escalations = escalations
-        # The group identifier.
+        # The identifier of the group.
         self.group_uuid = group_uuid
         # The grouping key-value pairs.
         self.grouping_keys = grouping_keys
@@ -51,7 +51,7 @@ class IncidentForView(DaraModel):
         self.notify_strategy_name = notify_strategy_name
         # The UUID of the associated notification policy used to trigger notifications.
         self.notify_strategy_uuid = notify_strategy_uuid
-        # The operator information.
+        # The information about the operator.
         self.operator = operator
         # The list of owners.
         self.owners = owners
@@ -73,9 +73,9 @@ class IncidentForView(DaraModel):
         self.subscription_name = subscription_name
         # The UUID of the subscription policy.
         self.subscription_uuid = subscription_uuid
-        # The array of tags.
+        # The tag array.
         self.tags = tags
-        # The timestamp when the incident was created.
+        # The creation timestamp of the incident.
         self.time = time
         # The title of the incident.
         self.title = title

@@ -10,12 +10,11 @@ class CreateServiceRecordRequest(DaraModel):
         record_content: str = None,
         record_type: str = None,
     ):
-        # The entry content in JSON string format. The format may vary depending on the value of recordType.
+        # The content of the entry in JSON string format. The format may vary based on the recordType.
         # 
         # This parameter is required.
         self.record_content = record_content
-        # The type of the linked entry. Valid values:
-        # - logCorrelation: application log association.
+        # The type of the association entry. Valid values: logCorrelation, which indicates application log association.
         # 
         # This parameter is required.
         self.record_type = record_type

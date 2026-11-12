@@ -22,9 +22,9 @@ class TagResourcesRequest(DaraModel):
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The labels.
+        # The tags.
         # 
-        # You can attach up to 20 labels.
+        # You can attach up to 20 tags.
         self.tag = tag
 
     def validate(self):

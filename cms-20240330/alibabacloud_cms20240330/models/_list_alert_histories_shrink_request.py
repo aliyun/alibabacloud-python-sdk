@@ -36,33 +36,33 @@ class ListAlertHistoriesShrinkRequest(DaraModel):
     ):
         # The unique identifier (transId) of an alert history record.
         self.alert_history_id = alert_history_id
-        # Filters the history records by a specific alert rule. Specify the unique identifier (ruleUuid) of the alert rule.
+        # Filters the history records of a specified alert rule. Specify the unique identifier (ruleUuid) of the alert rule.
         self.alert_rule_id = alert_rule_id
-        # The business source of the alert history. For example, `managed_service_for_prometheus` indicates the managed type of the Prometheus integration center. The default value is empty. Leave this parameter empty if you are unsure about the value.
+        # Specifies the business source of the alert history. For example, managed_service_for_prometheus indicates the managed type of the Prometheus integration center. Default value: empty. Leave this parameter empty if you are unsure how to specify it.
         self.biz_source = biz_source
-        # The namespace of CloudMonitor. Examples: acs_rds_dashboard and acs_ecs_dashboard.
+        # The namespace of CloudMonitor, such as acs_rds_dashboard and acs_ecs_dashboard.
         self.cms_namespace = cms_namespace
         # The product category of CloudMonitor.
         self.cms_product_category = cms_product_category
-        # The keyword used for fuzzy matching and filtering based on the display name of the alert rule.
+        # Filters the records by performing fuzzy matching on the keywords in the display name of the alert rule.
         self.display_name_key_word = display_name_key_word
-        # The unique key (instanceKey) used to identify the alert object instance.
+        # The unique key value (instanceKey) that identifies the alert object instance.
         self.instance_key = instance_key
         # The filter condition for rule labels. The value is a JSON-formatted string that supports filtering by label key-value pairs.
         self.label_filter_shrink = label_filter_shrink
-        # The level of the most recent alert during the alert duration. Valid values: CRITICAL, WARN, and INFO.
+        # The level of the most recent alert during the alert duration. Valid values: CRITICAL (critical), WARN (warning), and INFO (info).
         self.latest_level = latest_level
-        # The highest alert level reached during the alert duration. Valid values: CRITICAL, WARN, and INFO.
+        # The highest alert level reached during the alert duration. Valid values: CRITICAL (critical), WARN (warning), and INFO (info).
         self.max_level = max_level
-        # The maximum number of results to return on each page. This parameter is not supported. Use pageSize and pageNumber for pagination.
+        # The maximum number of results returned per page in a paged query. This parameter is not supported. Use pageSize and pageNumber for paged queries.
         self.max_results = max_results
-        # The migration status of the alert history.
+        # The migration status value of the alert history.
         self.migration_status = migration_status
-        # The pagination token used for the next query. This parameter is not supported. Use pageSize and pageNumber for pagination.
+        # The paging token for querying the next page. This parameter is not supported. Use pageSize and pageNumber for a paging query.
         self.next_token = next_token
-        # Filters alert rules that contain specific notification recipients. Only rules that contain at least one of the notification recipients specified in notifyTargets are returned in the result list.
+        # Filters alert rules that contain specified notification recipients. Only rules that contain any notification recipient specified in notifyTargets are returned in the result list.
         self.notification_filter_shrink = notification_filter_shrink
-        # The relation type of the observed object. Examples: GROUP, INSTANCE, and TAG.
+        # The relation type of the observed object, such as GROUP, INSTANCE, and TAG.
         self.observe_relation_type = observe_relation_type
         # The dimension column (domain) of the observed object.
         self.observe_resource_domain = observe_resource_domain
@@ -70,19 +70,19 @@ class ListAlertHistoriesShrinkRequest(DaraModel):
         self.observe_resource_global_scope = observe_resource_global_scope
         # Filters the alert history by resource instance ID.
         self.observe_resource_instance_id = observe_resource_instance_id
-        # The type of the observed object. Examples: PROMETHEUS, APM, RUM, and cms_basic.
+        # The type of the observed object, such as PROMETHEUS, APM, RUM, and cms_basic.
         self.observe_resource_type = observe_resource_type
-        # The page number. Default value: 1.
+        # The page number for a paged query. Default value: 1.
         self.page_number = page_number
-        # The number of alert history records to return on each page. Default value: 10.
+        # The number of alert history records returned per page in a paged query. Default value: 10.
         self.page_size = page_size
-        # The key used for data partitioning. Typically, you do not need to specify this parameter.
+        # The key value used for data partitioning. Typically, you do not need to specify this parameter.
         self.partition_key = partition_key
-        # The start timestamp of the time range for the alert start time. The value is a UNIX timestamp in milliseconds. If not specified, the default value is the time 30 days ago.
+        # The start timestamp of the time range for the alert start time. The value is a UNIX timestamp in milliseconds. If not specified, the default value is 30 days ago.
         self.start_time_from = start_time_from
         # The end timestamp of the time range for the alert start time. The value is a UNIX timestamp in milliseconds. If not specified, the default value is the current time.
         self.start_time_to = start_time_to
-        # The current status of the alert history. Valid values: OK and ALARM.
+        # The current status of the alert history. Valid values: OK (recovered) and ALARM (alerting).
         self.status = status
         # The identifier of the workspace to which the alert history belongs. If not specified, the default workspace is used.
         self.workspace = workspace

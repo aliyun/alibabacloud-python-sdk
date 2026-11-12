@@ -25,37 +25,35 @@ class AddonMeta(DaraModel):
         version: str = None,
         weight: int = None,
     ):
-        # The alias of the component. This is the display name.
+        # The component alias and display name.
         self.alias = alias
-        # The categorization information of the component.
+        # The component category information.
         self.categories = categories
-        # A list of component diagrams.
+        # The list of component diagrams.
         self.dashboards = dashboards
         # The description.
         self.description = description
         # The list of supported environment types.
         self.environments = environments
-        # The icon of the component.
+        # The component icon.
         self.icon = icon
         # The list of keywords.
         self.keywords = keywords
         # The language. Valid values:
-        # 
-        # - zh: Chinese (default)
-        # 
-        # - en: English
+        # - zh: Chinese (default).
+        # - en: English.
         self.language = language
-        # The last time the component was integrated.
+        # The last integration time of the component.
         self.latest_release_create_time = latest_release_create_time
-        # The name of the component.
+        # The component name.
         self.name = name
-        # Indicates whether the component can be installed only once under a policy.
+        # Specifies whether the component can be installed only once under the policy.
         self.once = once
         # The scenario.
         self.scene = scene
         # The version number.
         self.version = version
-        # The sorting weight of the component.
+        # The component sorting weight.
         self.weight = weight
 
     def validate(self):
@@ -185,19 +183,19 @@ class AddonMetaEnvironments(DaraModel):
         policies: main_models.AddonMetaEnvironmentsPolicies = None,
         policy_type: str = None,
     ):
-        # The list of attached CommonSchemas.
+        # The list of associated CommonSchemas.
         self.common_schema_refs = common_schema_refs
         # The dependency description.
         self.dependencies = dependencies
         # The description of the environment type.
         self.description = description
-        # Indicates whether the environment type is enabled.
+        # Specifies whether it is enabled.
         self.enable = enable
         # The display name of the environment type.
         self.label = label
-        # The name of the environment type.
+        # The environment type name.
         self.name = name
-        # Information about the control policy group for the component.
+        # The control policy combination information of the component.
         self.policies = policies
         # The policy type.
         self.policy_type = policy_type
@@ -291,23 +289,23 @@ class AddonMetaEnvironmentsPolicies(DaraModel):
         protocols: List[main_models.AddonMetaEnvironmentsPoliciesProtocols] = None,
         target_addon_name: str = None,
     ):
-        # Indicates whether the alert rule is enabled by default after installation.
+        # Specifies whether alert rules are enabled after default installation.
         self.alert_default_status = alert_default_status
-        # The default mode. This integration mode does not require attaching an entity.
+        # The default mode, which is an integration mode that does not require binding entities.
         self.bind_default_policy = bind_default_policy
-        # Information about the attached target entity.
+        # The bound target entity information.
         self.bind_entity = bind_entity
-        # Indicates whether the component is installed by default.
+        # Specifies whether to install by default.
         self.default_install = default_install
-        # Indicates whether to enable internal authorization token allocation.
+        # Specifies whether to enable internal authorization token allocation.
         self.enable_service_account = enable_service_account
         # The data check rule after the component is integrated.
         self.metric_check_rule = metric_check_rule
-        # Indicates whether to prompt for a workload restart after integration.
+        # Specifies whether to prompt to restart the workload after integration.
         self.need_restart_after_integration = need_restart_after_integration
-        # The list of supported client protocols.
+        # The list of supported client protocol information.
         self.protocols = protocols
-        # The name of the target component for redirection.
+        # The name of the target component to navigate to.
         self.target_addon_name = target_addon_name
 
     def validate(self):
@@ -400,13 +398,13 @@ class AddonMetaEnvironmentsPoliciesProtocols(DaraModel):
         label: str = None,
         name: str = None,
     ):
-        # The description of the protocol.
+        # The protocol description.
         self.description = description
-        # The display icon for the protocol.
+        # The protocol display icon.
         self.icon = icon
-        # The display name of the protocol.
+        # The protocol display name.
         self.label = label
-        # The name of the protocol.
+        # The protocol name.
         self.name = name
 
     def validate(self):
@@ -452,7 +450,7 @@ class AddonMetaEnvironmentsPoliciesMetricCheckRule(DaraModel):
         self,
         prom_ql: List[str] = None,
     ):
-        # The Prometheus Query Language (PromQL) for the check rule.
+        # The PromQL for the check rule.
         self.prom_ql = prom_ql
 
     def validate(self):
@@ -483,13 +481,13 @@ class AddonMetaEnvironmentsPoliciesBindEntity(DaraModel):
         single_entity_mode: bool = None,
         vpc_id_field_key: str = None,
     ):
-        # Indicates whether group mode is used.
+        # Specifies whether it is in group mode.
         self.entity_group_mode = entity_group_mode
         # The entity type.
         self.entity_type = entity_type
-        # Indicates whether single-entity mode is used.
+        # Specifies whether it is in single-entity mode.
         self.single_entity_mode = single_entity_mode
-        # The field in the entity from which to fetch the VPC ID.
+        # The field used to extract the VPC ID information from the entity.
         self.vpc_id_field_key = vpc_id_field_key
 
     def validate(self):
@@ -539,7 +537,7 @@ class AddonMetaEnvironmentsDependencies(DaraModel):
     ):
         # The supported cluster types.
         self.cluster_types = cluster_types
-        # The probe dependency description. This is the component name. In later versions, this field is replaced by the collectors field.
+        # The probe dependency description and component name. This field is replaced by the collectors field in the new version.
         self.features = features
         # The list of dependent services.
         self.services = services
@@ -624,9 +622,9 @@ class AddonMetaDashboards(DaraModel):
     ):
         # The description.
         self.description = description
-        # The name of the diagram.
+        # The diagram name.
         self.name = name
-        # The URL of the diagram.
+        # The diagram URL.
         self.url = url
 
     def validate(self):

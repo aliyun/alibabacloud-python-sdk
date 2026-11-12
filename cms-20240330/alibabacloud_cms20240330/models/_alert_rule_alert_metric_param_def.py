@@ -19,24 +19,23 @@ class AlertRuleAlertMetricParamDef(DaraModel):
         value: str = None,
         values: List[main_models.AlertRuleAlertMetricParamDefValues] = None,
     ):
-        # The maximum width of the input box, which applies only to SELECT_PARAM and INPUT_PARAM.
+        # The maximum width of the input box. This parameter takes effect only for SELECT_PARAM and INPUT_PARAM.
         self.max_width = max_width
-        # The minimum width of the input box, which applies only to SELECT_PARAM and INPUT_PARAM.
+        # The minimum width of the input box. This parameter takes effect only for SELECT_PARAM and INPUT_PARAM.
         self.min_width = min_width
         # The name.
         self.name = name
-        # The Chinese placeholder for frontend display, which applies only to INPUT_PARAM.
+        # The Chinese placeholder for frontend display. This parameter takes effect only for INPUT_PARAM.
         self.placeholder_cn = placeholder_cn
-        # The English placeholder for frontend display, which applies only to INPUT_PARAM.
+        # The English placeholder for frontend display. This parameter takes effect only for INPUT_PARAM.
         self.placeholder_en = placeholder_en
-        # The parameter type. Valid values:
         # - TEXT_PARAM: Read-only text parameter defined by the backend. No user input control is displayed on the frontend.
         # - INPUT_PARAM: Input box parameter.
-        # - SELECT_PARAM: Selection box parameter.
+        # - SELECT_PARAM: Select box parameter.
         self.type = type
         # The value.
         self.value = value
-        # The list of selectable values for the drop-down list, which applies only to SELECT_PARAM.
+        # The list of selectable values for the drop-down list. This parameter takes effect only for SELECT_PARAM.
         self.values = values
 
     def validate(self):

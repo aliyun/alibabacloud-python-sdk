@@ -16,9 +16,9 @@ class ListPrometheusViewsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The maximum number of records to return.
+        # The maximum number of entries to return.
         self.max_results = max_results
-        # The token for the next query.
+        # The pagination token for the next query.
         self.next_token = next_token
         # The list of Prometheus view instances.
         self.prometheus_views = prometheus_views
@@ -100,10 +100,10 @@ class ListPrometheusViewsResponseBodyPrometheusViews(DaraModel):
         # The time when the instance was created. The time is displayed in UTC+0 in the yyyy-MM-ddTHH:mmZ format.
         self.create_time = create_time
         # The instance type. Valid values:
-        # - prom-view: new version of the aggregate view
-        # - global-view: legacy version of the aggregate view
+        # - prom-view: New version aggregate view.
+        # - global-view: Legacy version aggregate view.
         self.instance_type = instance_type
-        # The billing method. The value is fixed to FREE.
+        # The billing method. Currently, the value is fixed to FREE.
         self.payment_type = payment_type
         # The product to which the Prometheus instance belongs, such as ARMS or CMS.
         self.product = product
@@ -121,7 +121,7 @@ class ListPrometheusViewsResponseBodyPrometheusViews(DaraModel):
         self.resource_type = resource_type
         # The status of the backend data storage.
         self.status = status
-        # The ID of the user.
+        # The user ID.
         self.user_id = user_id
         # The version.
         self.version = version

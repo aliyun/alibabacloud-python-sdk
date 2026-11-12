@@ -20,7 +20,7 @@ class NotifyStrategyConfig(DaraModel):
         self.custom_template_entries = custom_template_entries
         # The description of the notification policy.
         self.description = description
-        # The noise reduction settings.
+        # The grouping and merging settings.
         # 
         # This parameter is required.
         self.grouping_setting = grouping_setting
@@ -106,13 +106,13 @@ class NotifyStrategyConfigRoutes(DaraModel):
     ):
         # The list of notification channels.
         self.channels = channels
-        # The digital employee name. Required when enableRca is set to true.
+        # The name of the digital employee. This parameter is required when enableRca is set to true.
         self.digital_employee_name = digital_employee_name
         # The effective time range.
         self.effect_time_range = effect_time_range
         # Specifies whether to enable Root Cause Analysis (RCA).
         self.enable_rca = enable_rca
-        # The route-level event filter conditions.
+        # The route-level event filtering conditions.
         self.filter_setting = filter_setting
 
     def validate(self):
@@ -181,7 +181,7 @@ class NotifyStrategyConfigRoutesEffectTimeRange(DaraModel):
         start_time_in_minute: int = None,
         time_zone: str = None,
     ):
-        # The effective days. Valid values: 0 to 6 (0 = Sunday, 6 = Saturday). The value 7 is not supported.
+        # The effective days of the week. Valid values: 0 to 6. A value of 0 indicates Sunday, and 6 indicates Saturday. The value 7 is not supported.
         self.day_in_week = day_in_week
         # The end time of the day in minutes. Valid values: 0 to 1439.
         self.end_time_in_minute = end_time_in_minute
@@ -235,13 +235,13 @@ class NotifyStrategyConfigRoutesChannels(DaraModel):
         enabled_sub_channels: List[str] = None,
         receivers: List[str] = None,
     ):
-        # The channel type. Valid values: DING, WEIXIN, FEISHU, SLACK, TEAMS, WEBHOOK, CONTACT, GROUP, DUTY, and DING_COOL_APP. Lowercase values are not supported. For email, text message, or phone call notifications, use CONTACT with enabledSubChannels.
+        # The type of the channel. Valid values: DING, WEIXIN, FEISHU, SLACK, TEAMS, WEBHOOK, CONTACT, GROUP, DUTY, and DING_COOL_APP. The values must be in uppercase. Lowercase values are not supported. For email, text messages, and voice calls, use CONTACT with enabledSubChannels.
         # 
         # This parameter is required.
         self.channel_type = channel_type
-        # Required only for CONTACT, GROUP, or DUTY. The sub-channel types in uppercase. Valid values: EMAIL, SMS, VOICE, DING, WEIXIN, FEISHU, and WEBHOOK.
+        # Required only for CONTACT, GROUP, and DUTY. Valid values for sub-channels: EMAIL, SMS, VOICE, DING, WEIXIN, FEISHU, and WEBHOOK. The values must be in uppercase.
         self.enabled_sub_channels = enabled_sub_channels
-        # The list of receiver identifiers. At least one receiver is required. Specify a webhook UUID for WEBHOOK, a robot UUID for chatbots, or a contact ID for CONTACT.
+        # The list of receiver identifiers. At least one receiver is required. For WEBHOOK, specify the webhook UUID. For a chatbot, specify the chatbot UUID. For CONTACT, specify the contact ID.
         # 
         # This parameter is required.
         self.receivers = receivers
@@ -286,13 +286,13 @@ class NotifyStrategyConfigGroupingSetting(DaraModel):
         silence_sec: int = None,
         times: int = None,
     ):
-        # The event fields by which events are grouped. Events in the same group are merged into a single notification. An empty array indicates no grouping.
+        # The event fields used for grouping and merging. Events in the same group are merged into a single notification. An empty array indicates no grouping.
         self.grouping_keys = grouping_keys
-        # This parameter does not take effect for this operation. You do not need to set this parameter.
+        # This parameter does not take effect for this API operation and does not need to be set.
         self.period_min = period_min
-        # This parameter does not take effect for this operation. You do not need to set this parameter.
+        # This parameter does not take effect for this API operation and does not need to be set.
         self.silence_sec = silence_sec
-        # This parameter does not take effect for this operation. You do not need to set this parameter.
+        # This parameter does not take effect for this API operation and does not need to be set.
         self.times = times
 
     def validate(self):

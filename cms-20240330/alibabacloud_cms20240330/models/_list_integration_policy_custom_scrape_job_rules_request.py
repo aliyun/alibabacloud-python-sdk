@@ -12,9 +12,9 @@ class ListIntegrationPolicyCustomScrapeJobRulesRequest(DaraModel):
         encrypt_yaml: bool = None,
         namespace: str = None,
     ):
-        # The name of the addon release.
+        # The name of the add-on release.
         self.addon_release_name = addon_release_name
-        # The probe identifier. If a release exists, pass the release name. If no release exists, pass the component name.
+        # The collector identifier. If a release exists, pass the release name. Otherwise, pass the component name.
         self.collector_release_name = collector_release_name
         # Specifies whether to encrypt the YAML content.
         self.encrypt_yaml = encrypt_yaml

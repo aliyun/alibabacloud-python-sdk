@@ -18,7 +18,7 @@ class ListAlertHistoriesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of alert histories that match the query conditions.
+        # The list of alert history records that match the query conditions.
         self.data = data
         # The maximum number of entries to return.
         self.max_results = max_results
@@ -124,27 +124,27 @@ class ListAlertHistoriesResponseBodyData(DaraModel):
         status: str = None,
         workspace: str = None,
     ):
-        # The unique identifier of the alert history.
+        # The unique identifier of the alert history record.
         self.alert_history_id = alert_history_id
-        # The unique identifier of the alert rule that generated the alert history.
+        # The unique identifier of the alert rule that generated the alert history record.
         self.alert_rule_id = alert_rule_id
-        # The snapshot of the annotations of the alert rule. The annotations are stored as key-value pairs and copied from the rule when the alert is triggered.
+        # The snapshot of the annotations of the alert rule, stored as key-value pairs and copied from the rule when the alert is triggered.
         self.annotations = annotations
         # The business source.
         self.biz_source = biz_source
-        # The cumulative number of alerts (alert events) during the alert duration.
+        # The cumulative number of alert events during the alert duration.
         self.count = count
-        # The end time (recovery time) of the alert. This field has a value only when the alert history enters the OK state. The value is a UNIX timestamp in milliseconds.
+        # The end time of the alert, which is the recovery time. This field has a value only when the alert history enters the OK state. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
         # The creation time of the alert history record. The value is a UNIX timestamp in milliseconds.
         self.gmt_create = gmt_create
         # The last modification time of the alert history record. The value is a UNIX timestamp in milliseconds.
         self.gmt_modified = gmt_modified
-        # The detailed information of the alert object. The information is stored as key-value pairs.
+        # The detailed information of the alert object, stored as key-value pairs.
         self.instance_detail = instance_detail
-        # The unique key (instanceKey) used to identify the alert object instance.
+        # The unique key value (instanceKey) that identifies the alert object instance.
         self.instance_key = instance_key
-        # The snapshot of the labels of the alert rule. The labels are stored as key-value pairs and copied from the rule when the alert is triggered.
+        # The snapshot of the labels of the alert rule, stored as key-value pairs and copied from the rule when the alert is triggered.
         self.labels = labels
         # The level of the most recent alert during the alert duration, such as CRITICAL, WARN, or INFO.
         self.latest_level = latest_level
@@ -152,23 +152,23 @@ class ListAlertHistoriesResponseBodyData(DaraModel):
         self.max_level = max_level
         # The content of the latest alert message.
         self.message = message
-        # Indicates whether the observed object is in the global scope. The value is copied from the rule when the alert history is created.
+        # Indicates whether the observed object is in the global scope. This value is copied from the rule when the alert history record is created.
         self.observe_resource_global_scope = observe_resource_global_scope
-        # The serialized string of the observed object list. The value is copied from the rule when the alert history is created.
+        # The serialized string of the observed object list. This value is copied from the rule when the alert history record is created.
         self.observe_resource_list = observe_resource_list
-        # The type of the observed object, such as PROMETHEUS, APM, RUM, or cms_basic. The value is copied from the rule when the alert history is created.
+        # The type of the observed object, such as PROMETHEUS, APM, RUM, or cms_basic. This value is copied from the rule when the alert history record is created.
         self.observe_resource_type = observe_resource_type
-        # The ID of the region to which the alert history belongs.
+        # The ID of the region to which the alert history record belongs.
         self.region_id = region_id
         # The display name of the corresponding rule.
         self.rule_display_name = rule_display_name
-        # The notification sending configuration information corresponding to the alert history.
+        # The notification sending configuration information corresponding to the alert history record.
         self.send = send
-        # The start time of the alert history. The value is a UNIX timestamp in milliseconds.
+        # The start time of the alert history record. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
         # The current alert status of the rule. Valid values: OK (recovered) and ALARM (alerting).
         self.status = status
-        # The identifier of the workspace to which the alert history belongs.
+        # The identifier of the workspace to which the alert history record belongs.
         self.workspace = workspace
 
     def validate(self):

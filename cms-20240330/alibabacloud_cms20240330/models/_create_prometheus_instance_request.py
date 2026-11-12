@@ -13,6 +13,7 @@ class CreatePrometheusInstanceRequest(DaraModel):
         archive_duration: int = None,
         auth_free_read_policy: str = None,
         auth_free_write_policy: str = None,
+        dryrun: bool = None,
         enable_auth_free_read: bool = None,
         enable_auth_free_write: bool = None,
         enable_auth_token: bool = None,
@@ -24,36 +25,40 @@ class CreatePrometheusInstanceRequest(DaraModel):
         tags: List[main_models.CreatePrometheusInstanceRequestTags] = None,
         workspace: str = None,
     ):
-        # The number of days that data is automatically archived after the storage period expires. A value of 0 indicates that data is not archived. Valid values for the archive duration:
+        # The number of days to automatically archive data after the storage period expires. A value of 0 indicates that data is not archived. Valid values for the archive duration:
         # * V1: 60 to 365 days.
-        # * V2: 60 to 3650 days (3650 indicates permanent retention).
+        # * V2: 60 to 3650 days. A value of 3650 indicates permanent retention.
         self.archive_duration = archive_duration
-        # The authentication-free read policy. IP CIDR blocks and VPC IDs are supported.
+        # The authentication-free read policy. IP address ranges and VPC IDs are supported.
         self.auth_free_read_policy = auth_free_read_policy
         # The authentication-free write policy.
         self.auth_free_write_policy = auth_free_write_policy
-        # Specifies whether to enable authentication-free read. This parameter is supported only for V2 instances.
+        # Specifies whether to perform a dry run only. Valid values:
+        # * true: performs a dry run without creating the instance. The system checks whether required parameters are specified, the request format is valid, and service limits are met. If the request fails the check, an error is returned. If the request passes the check, the DryRunOperation error code is returned.
+        # * false: sends a normal request and creates the instance directly after the request passes the check. This is the default value.
+        self.dryrun = dryrun
+        # Specifies whether to enable authentication-free read access. This feature is supported only in V2.
         self.enable_auth_free_read = enable_auth_free_read
-        # Specifies whether to enable authentication-free write. This parameter is supported only for V2 instances.
+        # Specifies whether to enable authentication-free write access. This feature is supported only in V2.
         self.enable_auth_free_write = enable_auth_free_write
-        # Specifies whether to enable the authorization token. This parameter is supported only for V1 instances.
+        # Specifies whether to enable the authorization token. This feature is supported only in V1.
         self.enable_auth_token = enable_auth_token
-        # The billable methods. Valid values:
-        # * POSTPAY: pay-as-you-go by metric reporting volume.
-        # * POSTPAY_GB: pay-as-you-go by metric write volume.
-        # If this parameter is left empty, the default billing method configured by the user is used. If the user has not configured a default billing method, the system uses pay-as-you-go by metric reporting volume.
+        # Billable methods. Valid values:
+        # * POSTPAY: pay-as-you-go based on the volume of reported metrics.
+        # * POSTPAY_GB: pay-as-you-go based on the volume of written metrics.
+        # Note: If this parameter is left empty, the default billing method configured for the user is used. If no default billing method is configured, the system uses the pay-as-you-go billing method based on the volume of reported metrics by default.
         self.payment_type = payment_type
-        # The instance name.
+        # The name of the instance.
         # 
         # This parameter is required.
         self.prometheus_instance_name = prometheus_instance_name
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The instance status.
         self.status = status
-        # The storage duration (in days):
-        # * By write volume: 90 or 180.
-        # * By metric reporting volume: 15, 30, 60, 90, or 180.
+        # The storage duration in days.
+        # * By written data volume: 90 and 180.
+        # * By reported metric volume: 15, 30, 60, 90, and 180.
         self.storage_duration = storage_duration
         # The tags.
         self.tags = tags
@@ -79,6 +84,9 @@ class CreatePrometheusInstanceRequest(DaraModel):
 
         if self.auth_free_write_policy is not None:
             result['authFreeWritePolicy'] = self.auth_free_write_policy
+
+        if self.dryrun is not None:
+            result['dryrun'] = self.dryrun
 
         if self.enable_auth_free_read is not None:
             result['enableAuthFreeRead'] = self.enable_auth_free_read
@@ -124,6 +132,9 @@ class CreatePrometheusInstanceRequest(DaraModel):
 
         if m.get('authFreeWritePolicy') is not None:
             self.auth_free_write_policy = m.get('authFreeWritePolicy')
+
+        if m.get('dryrun') is not None:
+            self.dryrun = m.get('dryrun')
 
         if m.get('enableAuthFreeRead') is not None:
             self.enable_auth_free_read = m.get('enableAuthFreeRead')

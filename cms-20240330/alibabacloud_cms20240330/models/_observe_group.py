@@ -28,6 +28,7 @@ class ObserveGroup(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
         source_origin: str = None,
+        source_read_only: bool = None,
         tags: List[main_models.ObserveGroupTags] = None,
         workspace_id: str = None,
     ):
@@ -67,6 +68,8 @@ class ObserveGroup(DaraModel):
         self.resource_group_id = resource_group_id
         # 数据来源：native_2_0（2.0 原生）/ synced_from_1_0（从 1.0 应用分组同步）。
         self.source_origin = source_origin
+        # 源云监控 1.0 分组是否已持久只读，true 时目标 2.0 分组可独立维护。
+        self.source_read_only = source_read_only
         # 资源标签（阿里云标准标签），键值对数组。
         self.tags = tags
         # 分组归属的 workspace ID（workspace 级归属，创建后不可变）。
@@ -149,6 +152,9 @@ class ObserveGroup(DaraModel):
         if self.source_origin is not None:
             result['sourceOrigin'] = self.source_origin
 
+        if self.source_read_only is not None:
+            result['sourceReadOnly'] = self.source_read_only
+
         result['tags'] = []
         if self.tags is not None:
             for k1 in self.tags:
@@ -220,6 +226,9 @@ class ObserveGroup(DaraModel):
 
         if m.get('sourceOrigin') is not None:
             self.source_origin = m.get('sourceOrigin')
+
+        if m.get('sourceReadOnly') is not None:
+            self.source_read_only = m.get('sourceReadOnly')
 
         self.tags = []
         if m.get('tags') is not None:

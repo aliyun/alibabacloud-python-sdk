@@ -18,11 +18,11 @@ class MergeRobot(DaraModel):
         type: str = None,
         webhook: str = None,
     ):
-        # The time when the bot was created.
+        # The creation time.
         self.create_time = create_time
         # The extension fields.
         self.extend = extend
-        # The time when the bot was last modified.
+        # The last modification time.
         self.gmt_modified = gmt_modified
         # The unique identifier of the bot.
         self.identifier = identifier
@@ -119,13 +119,13 @@ class MergeRobotExtend(DaraModel):
     ):
         # The card template.
         self.card_template = card_template
-        # Specifies whether to enable the daily on-duty report.
+        # Specifies whether the daily on-call report is enabled.
         self.daily_noc = daily_noc
-        # The time for the daily on-duty report.
+        # The time for the daily on-call report.
         self.daily_noc_time = daily_noc_time
-        # The signature key for DingTalk.
+        # The DingTalk signing key.
         self.ding_sign_key = ding_sign_key
-        # Specifies whether to enable outbound requests.
+        # Specifies whether outgoing requests are enabled.
         self.enable_outgoing = enable_outgoing
         # The authentication token.
         self.token = token

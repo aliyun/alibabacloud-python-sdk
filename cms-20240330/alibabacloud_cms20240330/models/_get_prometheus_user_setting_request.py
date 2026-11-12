@@ -9,7 +9,7 @@ class GetPrometheusUserSettingRequest(DaraModel):
         self,
         aliyun_lang: str = None,
     ):
-        # The language of the response. Valid values: zh and en. Default value: zh.
+        # The locale. Default value: zh. Valid values: zh, en.
         self.aliyun_lang = aliyun_lang
 
     def validate(self):

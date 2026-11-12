@@ -18,13 +18,13 @@ class CreateIntegrationPolicyRequest(DaraModel):
         tags: List[main_models.CreateIntegrationPolicyRequestTags] = None,
         workspace: str = None,
     ):
-        # The policy creation version. Valid values: v1 and v2. If this parameter is not specified or is left empty, v2 is used. If v1 is specified, a v1-compatible environment is created for ECS and Cloud.
+        # The policy creation version. Valid values: v1 and v2. If you do not specify this parameter or leave it empty, v2 is used. If you specify v1, a v1-compatible environment is created for ECS and Cloud.
         self.api_version = api_version
-        # The entity group used to create the policy. You can use the entity group for quick creation. The clusterId and vpcId parameters are independent of each other.
+        # The entity group used to create the policy. You can quickly create the policy by using the entity group. The clusterId and vpcId parameters are independent of each other.
         self.entity_group = entity_group
         # The policy name.
         self.policy_name = policy_name
-        # The policy type. Valid values: CS, ECS, and Cloud.
+        # The policy type, such as CS, ECS, or Cloud.
         # 
         # This parameter is required.
         self.policy_type = policy_type
@@ -32,7 +32,7 @@ class CreateIntegrationPolicyRequest(DaraModel):
         self.resource_group_id = resource_group_id
         # The resource tags.
         self.tags = tags
-        # The workspace.
+        # The workspace. If you do not specify this parameter, a default workspace is created or used.
         self.workspace = workspace
 
     def validate(self):
@@ -156,7 +156,7 @@ class CreateIntegrationPolicyRequestEntityGroup(DaraModel):
         self.cluster_id = cluster_id
         # The namespace where the probe is deployed.
         self.cluster_namespace = cluster_namespace
-        # Specifies whether to disable the unique binding of the policy. If this parameter is set to true, you can create multiple policies for a single container cluster.
+        # Specifies whether to disable unique policy binding. If this feature is enabled, you can create multiple policies for a single container cluster.
         self.disable_policy_share = disable_policy_share
         # The entity group ID.
         self.entity_group_id = entity_group_id

@@ -12,7 +12,7 @@ class CreateContactGroupResponseBody(DaraModel):
     ):
         # The ID of the contact group.
         self.contact_group_id = contact_group_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

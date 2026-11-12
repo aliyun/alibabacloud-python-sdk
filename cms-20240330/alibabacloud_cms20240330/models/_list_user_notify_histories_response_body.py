@@ -18,7 +18,7 @@ class ListUserNotifyHistoriesResponseBody(DaraModel):
     ):
         # The notification history list.
         self.history_list = history_list
-        # The maximum number of entries returned by this request.
+        # The maximum number of entries returned for the current request.
         self.max_results = max_results
         # The pagination token for the next page. It is an opaque string generated and encrypted by the server. An empty value indicates that no more data is available.
         self.next_token = next_token
@@ -103,7 +103,7 @@ class ListUserNotifyHistoriesResponseBodyHistoryList(DaraModel):
         timestamp: int = None,
         user_id: str = None,
     ):
-        # The notification channel. The valid values are the same as those of the `channel` request parameter.
+        # The notification channel. The valid values are the same as those of the channel request parameter.
         self.channel = channel
         # The list of contacts. Multiple contacts are separated by commas.
         self.contacts = contacts
@@ -114,16 +114,16 @@ class ListUserNotifyHistoriesResponseBodyHistoryList(DaraModel):
         # The notification job ID.
         self.job_id = job_id
         # Indicates whether the notification record has no actual delivery channel. Valid values:
-        # - true: The notification record has no actual delivery channel, and the notifyResult is NO_CHANNEL.
-        # - false: The notification record has an actual delivery channel.
+        # - true: the record has no channel, which means the notifyResult is NO_CHANNEL.
+        # - false: the record has an actual delivery channel.
         self.no_channel = no_channel
         # The notification policy ID.
         self.notify_strategy_id = notify_strategy_id
         # The notification policy name.
         self.notify_strategy_name = notify_strategy_name
-        # The recipient address, such as a phone number, email address, or webhook URL, depending on the notification channel.
+        # The recipient address, such as a phone number, email address, or webhook address, depending on the notification channel.
         self.receiver = receiver
-        # The notification delivery result details. This is the raw response content returned by the channel, such as the API response from a DingTalk or Lark bot.
+        # The details of the notification delivery result. This is the raw response content returned by the channel, such as the API response from a DingTalk or Lark bot.
         self.result = result
         # The alert rule ID.
         self.rule_id = rule_id
@@ -138,7 +138,7 @@ class ListUserNotifyHistoriesResponseBodyHistoryList(DaraModel):
         # - CRITICAL: critical
         # - ERROR: error
         # - WARNING: warning
-        # - INFO: information
+        # - INFO: info
         self.severity = severity
         # The incident status. Valid values:
         # - TRIGGERED: triggered
@@ -156,10 +156,10 @@ class ListUserNotifyHistoriesResponseBodyHistoryList(DaraModel):
         # The subscription name.
         self.subscription_name = subscription_name
         # Indicates whether the notification was delivered successfully. Valid values:
-        # - true: The notification was delivered successfully.
-        # - false: The notification delivery failed.
+        # - true: the delivery was successful.
+        # - false: the delivery failed.
         self.success = success
-        # The time when the notification record was generated. The value is a UNIX timestamp in seconds.
+        # The time when the notification was recorded. The value is a UNIX timestamp in seconds.
         self.timestamp = timestamp
         # The Alibaba Cloud account ID to which the notification record belongs.
         self.user_id = user_id

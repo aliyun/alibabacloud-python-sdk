@@ -82,9 +82,9 @@ class PreviewDataPipelineResponseBodyDatasets(DaraModel):
         self.data = data
         # The field metadata.
         self.meta = meta
-        # The name of the dataset.
+        # The dataset name.
         self.name = name
-        # The number of samples.
+        # The sample count.
         self.sample_count = sample_count
 
     def validate(self):
@@ -139,9 +139,9 @@ class PreviewDataPipelineResponseBodyDatasetsMeta(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # The name of the field.
+        # The field name.
         self.name = name
-        # The type of the field.
+        # The field type.
         self.type = type
 
     def validate(self):

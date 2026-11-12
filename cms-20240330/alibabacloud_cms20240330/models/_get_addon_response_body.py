@@ -13,7 +13,7 @@ class GetAddonResponseBody(DaraModel):
         data: main_models.GetAddonResponseBodyData = None,
         request_id: str = None,
     ):
-        # The list of data corresponding to the request header.
+        # The data list corresponding to the request header.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -66,7 +66,7 @@ class GetAddonResponseBodyData(DaraModel):
     ):
         # The alias of the integrated component.
         self.alias = alias
-        # The list of categories for the integrated component.
+        # The list of category directories for the integrated component.
         self.categories = categories
         # The list of dashboards.
         self.dashboards = dashboards
@@ -80,15 +80,15 @@ class GetAddonResponseBodyData(DaraModel):
         self.keywords = keywords
         # The language.
         self.language = language
-        # The latest creation time.
+        # The latest release creation time.
         self.latest_release_create_time = latest_release_create_time
         # The name of the add-on.
         self.name = name
-        # Indicates whether the add-on can be installed only once.
+        # Specifies whether the add-on can be installed only once.
         self.once = once
-        # The scenario of the component.
+        # The component scenario.
         self.scene = scene
-        # The version of the component.
+        # The component version.
         self.version = version
         # The weight value.
         self.weight = weight
@@ -222,11 +222,11 @@ class GetAddonResponseBodyDataEnvironments(DaraModel):
     ):
         # The list of associated common schemas.
         self.common_schema_refs = common_schema_refs
-        # The additional dependencies.
+        # The additional dependency files.
         self.dependencies = dependencies
         # The description.
         self.description = description
-        # Indicates whether the environment is enabled.
+        # Specifies whether the environment is enabled.
         self.enable = enable
         # The display name of the environment.
         self.label = label
@@ -324,19 +324,19 @@ class GetAddonResponseBodyDataEnvironmentsPolicies(DaraModel):
         protocols: List[main_models.GetAddonResponseBodyDataEnvironmentsPoliciesProtocols] = None,
         target_addon_name: str = None,
     ):
-        # The enabled status of the default alert rule policy.
+        # The enabling status of the default policy for alert rules.
         self.alert_default_status = alert_default_status
-        # Indicates whether the add-on is installed by default.
+        # Specifies whether the add-on is installed by default.
         self.default_install = default_install
-        # Indicates whether a service account is assigned to communicate with the Console API.
+        # Specifies whether a service account is assigned for communication with the console API.
         self.enable_service_account = enable_service_account
         # The metric check rule.
         self.metric_check_rule = metric_check_rule
-        # Indicates whether a pod restart is triggered immediately after the add-on is installed during integration.
+        # Specifies whether the pod restart guide is triggered immediately after the add-on is installed during integration.
         self.need_restart_after_integration = need_restart_after_integration
         # The protocols.
         self.protocols = protocols
-        # The name of the target add-on for redirection.
+        # The name of the target add-on to redirect to.
         self.target_addon_name = target_addon_name
 
     def validate(self):

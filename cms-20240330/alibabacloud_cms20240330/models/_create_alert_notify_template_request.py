@@ -16,8 +16,6 @@ class CreateAlertNotifyTemplateRequest(DaraModel):
         type: str = None,
     ):
         # The ID of the notification template.
-        # 
-        # This parameter is required.
         self.alert_notify_template_id = alert_notify_template_id
         # The name of the notification template.
         self.alert_notify_template_name = alert_notify_template_name

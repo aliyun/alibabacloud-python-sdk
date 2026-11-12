@@ -11,11 +11,11 @@ class GetAddonCodeTemplateRequest(DaraModel):
         environment_type: str = None,
         version: str = None,
     ):
-        # The language. Valid values: zh (Chinese) and en (English). Default value: zh.
+        # The locale. Default value: zh. Valid values: zh, en.
         self.aliyun_lang = aliyun_lang
-        # The type of environment. Valid values: CS (Container Service) and ECS.
+        # The environment type. Valid values: CS (container) and ECS.
         self.environment_type = environment_type
-        # The version of the component.
+        # The component version.
         self.version = version
 
     def validate(self):

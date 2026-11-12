@@ -7,8 +7,11 @@ from darabonba.model import DaraModel
 class DeleteAlertActionsResponseBody(DaraModel):
     def __init__(
         self,
+        deleted_count: int = None,
         request_id: str = None,
     ):
+        # The actual number of deleted records.
+        self.deleted_count = deleted_count
         # The request ID.
         self.request_id = request_id
 
@@ -20,6 +23,9 @@ class DeleteAlertActionsResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.deleted_count is not None:
+            result['deletedCount'] = self.deleted_count
+
         if self.request_id is not None:
             result['requestId'] = self.request_id
 
@@ -27,6 +33,9 @@ class DeleteAlertActionsResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('deletedCount') is not None:
+            self.deleted_count = m.get('deletedCount')
+
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
 

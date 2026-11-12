@@ -14,11 +14,11 @@ class SearchMemoriesResponseBody(DaraModel):
         request_id: str = None,
         results: List[main_models.SearchMemoriesResponseBodyResults] = None,
     ):
-        # The relations.
+        # The relationships.
         self.relations = relations
         # The request ID.
         self.request_id = request_id
-        # The returned results.
+        # The return values.
         self.results = results
 
     def validate(self):
@@ -92,11 +92,11 @@ class SearchMemoriesResponseBodyResults(DaraModel):
         self.agent_id = agent_id
         # The creation time.
         self.created_at = created_at
-        # The memory hash value.
+        # The hash value of the memory.
         self.hash = hash
         # The memory ID.
         self.id = id
-        # The memory content.
+        # The memory.
         self.memory = memory
         # The metadata.
         self.metadata = metadata
@@ -206,7 +206,7 @@ class SearchMemoriesResponseBodyRelations(DaraModel):
     ):
         # The destination.
         self.destination = destination
-        # The relations.
+        # The relationships.
         self.relationship = relationship
         # The source.
         self.source = source

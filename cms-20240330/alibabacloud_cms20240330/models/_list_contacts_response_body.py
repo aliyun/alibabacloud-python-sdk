@@ -16,7 +16,7 @@ class ListContactsResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The list of contacts.
+        # The list of alert contacts.
         self.contacts = contacts
         # The page number. Default value: 1.
         self.page_number = page_number
@@ -94,23 +94,23 @@ class ListContactsResponseBodyContacts(DaraModel):
         update_time: str = None,
         workspace: str = None,
     ):
-        # The ID of the on-duty contact.
+        # The ID of the alert contact.
         self.contact_id = contact_id
-        # The email address of the contact.
+        # The email address of the alert contact.
         self.email = email
-        # Indicates whether the email address is activated.
+        # Indicates whether the email address is verified.
         self.email_verify = email_verify
-        # The contact groups to which the contact belongs.
+        # The alert contact groups to which the alert contact belongs.
         self.group_list = group_list
-        # The IM user ID mapping. Multiple instant messaging tools are supported.
+        # The mapping of IM user IDs. Multiple instant messaging tools are supported.
         self.im_user_ids = im_user_ids
         # The language.
         self.lang = lang
-        # The name of the contact.
+        # The name of the alert contact.
         self.name = name
-        # The mobile phone number of the contact.
+        # The phone number of the alert contact.
         self.phone = phone
-        # Indicates whether the mobile phone number of the contact is activated.
+        # Indicates whether the phone number is verified.
         self.phone_verify = phone_verify
         # The update time. Format: yyyy-MM-dd HH:mm:ss.
         self.update_time = update_time

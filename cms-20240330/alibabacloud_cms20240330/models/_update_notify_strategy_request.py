@@ -13,7 +13,7 @@ class UpdateNotifyStrategyRequest(DaraModel):
     ):
         # The request body parameters.
         self.body = body
-        # The workspace name.
+        # The name of the workspace.
         self.workspace = workspace
 
     def validate(self):

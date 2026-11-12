@@ -103,13 +103,13 @@ class ListPrometheusInstancesResponseBodyPrometheusInstances(DaraModel):
         # - readOnly
         # - httpReadOnly
         self.access_type = access_type
-        # The instance creation time in UTC+0, in the format of yyyy-MM-ddTHH:mmZ.
+        # The time when the instance was created. The time is displayed in UTC+0 and formatted as yyyy-MM-ddTHH:mmZ.
         self.create_time = create_time
         # The instance type.
         self.instance_type = instance_type
-        # The payment type. Valid values:
-        # - POSTPAY: Pay-as-you-go by metric volume.
-        # - POSTPAY_GB: Pay-as-you-go by write volume.
+        # The billing method. Valid values:
+        # - POSTPAY: Pay-as-you-go based on the number of metrics.
+        # - POSTPAY_GB: Pay-as-you-go based on the amount of written data.
         # - PREPAY: Subscription.
         # - FREE: Free.
         self.payment_type = payment_type
@@ -125,7 +125,7 @@ class ListPrometheusInstancesResponseBodyPrometheusInstances(DaraModel):
         self.resource_group_id = resource_group_id
         # The resource type.
         self.resource_type = resource_type
-        # The backend data storage status.
+        # The status of the backend data storage.
         self.status = status
         # The supported authentication types.
         self.support_auth_types = support_auth_types

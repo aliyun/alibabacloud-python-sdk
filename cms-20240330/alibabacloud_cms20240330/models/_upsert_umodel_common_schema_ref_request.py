@@ -10,7 +10,7 @@ class UpsertUmodelCommonSchemaRefRequest(DaraModel):
         group: str = None,
         version: str = None,
     ):
-        # The group of the common Umodel schema.
+        # The public Umodel schema group.
         # 
         # This parameter is required.
         self.group = group

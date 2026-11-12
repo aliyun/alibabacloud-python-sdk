@@ -22,7 +22,7 @@ class DescribeMetricMetaListResponseBody(DaraModel):
         self.page_size = page_size
         # Id of the request
         self.request_id = request_id
-        # The metric configuration information of the resources.
+        # The configuration information of the metrics in the resource.
         self.resources = resources
         # The total number of entries.
         self.total_count = total_count
@@ -96,19 +96,19 @@ class DescribeMetricMetaListResponseBodyResources(DaraModel):
     ):
         # The description.
         self.description = description
-        # The dimension information description.
+        # The description of the dimension information.
         self.dimension_description = dimension_description
         # The resource filtering dimensions of CloudMonitor Basic.
         self.dimensions = dimensions
         # The CloudMonitor labels. This parameter is returned only when metaFormat is set to CMS.
         self.labels = labels
-        # The metadata source. CMS indicates CloudMonitor Basic monitoring metrics. PROM_BASIC indicates Prometheus CloudMonitor Basic monitoring metrics.
+        # The metadata source. CMS indicates CloudMonitor Basic monitoring metrics, and PROM_BASIC indicates Prometheus CloudMonitor basic monitoring metrics.
         # 
         # Example value:
         # CMS
         # Valid values:
         # CMS
-        # PROM_BASIC.
+        # PROM_BASIC
         self.meta_format = meta_format
         # The metric name.
         self.metric_name = metric_name

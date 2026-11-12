@@ -62,17 +62,17 @@ class ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirements(Da
         spec: main_models.ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsSpec = None,
         status: main_models.ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsStatus = None,
     ):
-        # A collection of AddonRelease names.
+        # The collection of add-on releases.
         self.addon_release_names = addon_release_names
-        # The version number.
+        # The API version.
         self.api_version = api_version
-        # The kind of the resource.
+        # The resource kind.
         self.kind = kind
         # The metadata.
         self.metadata = metadata
-        # The spec of the resource.
+        # The resource specification.
         self.spec = spec
-        # The status of the storage requirement.
+        # The storage requirement status.
         self.status = status
 
     def validate(self):
@@ -150,17 +150,17 @@ class ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsSta
         self.instance_id = instance_id
         # The internal URL.
         self.inter_url = inter_url
-        # The internal URL.
+        # The external URL.
         self.intra_url = intra_url
-        # The name of the storage requirement.
+        # The storage requirement name.
         self.name = name
-        # The project for the storage requirement.
+        # The storage requirement project.
         self.project = project
-        # The metric store of Prometheus.
+        # The Prometheus metric center.
         self.prom_metric_store = prom_metric_store
         # The region.
         self.region = region
-        # The storage type of the instance.
+        # The instance storage type.
         self.storage_type = storage_type
         # The workspace.
         self.workspace = workspace
@@ -248,23 +248,23 @@ class ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsSpe
         user_id: str = None,
         workspace: str = None,
     ):
-        # The instance ID. Specify this parameter to query data at the instance level. This parameter depends on data in EntityStore.
+        # The instance ID. Specify this parameter to narrow down the scope to the instance level. This depends on the data in EntityStore.
         self.entity_id = entity_id
-        # The ID of the Prometheus instance.
+        # The Prometheus instance ID.
         self.instance = instance
-        # The name of the Prometheus instance.
+        # The Prometheus instance name.
         self.instance_name = instance_name
-        # Optional. The project is determined based on the current environment type.
+        # The project. This optional parameter is determined based on the current environment type.
         self.project = project
         # The region.
         self.region = region
-        # The scope of storage sharing. Valid values: Environment, Region, Workspace, and Custom.
+        # The storage sharing scope. Valid values: Environment, Region, Workspace, and Custom.
         self.share_scope = share_scope
-        # The storage type of the instance.
+        # The instance storage type.
         self.storage_type = storage_type
-        # The tags that need to be added to the destination storage. The tags are injected as system tags.
+        # The tags to be added to the destination storage. These tags are injected as system tags.
         self.system_tags = system_tags
-        # The tags that need to be added to the destination storage. The tags are injected as common tags.
+        # The tags to be added to the destination storage. These tags are injected as regular tags.
         self.tags = tags
         # The user ID.
         self.user_id = user_id

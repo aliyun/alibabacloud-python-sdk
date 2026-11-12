@@ -15,7 +15,7 @@ class ListPipelinesRequest(DaraModel):
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token
-        # The name of the pipeline.
+        # The pipeline name.
         self.pipeline_name = pipeline_name
 
     def validate(self):

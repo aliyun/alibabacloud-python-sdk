@@ -18,13 +18,13 @@ class ListAlertNotifyTemplatesRequest(DaraModel):
     ):
         # The list of notification template IDs.
         self.alert_notify_template_ids = alert_notify_template_ids
-        # The notification template name.
+        # The name of the notification template.
         self.alert_notify_template_name = alert_notify_template_name
         # The page number.
         self.page_number = page_number
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # The template locale.
+        # The template language.
         self.program_lang = program_lang
         # The type.
         self.type = type

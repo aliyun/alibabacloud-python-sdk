@@ -65,7 +65,7 @@ class GetAlertActionResponseBodyAlertActions(DaraModel):
         self.alert_action_id = alert_action_id
         # The name of the alert action integration.
         self.alert_action_name = alert_action_name
-        # The event bus parameters.
+        # The EventBridge parameters.
         self.eb_param = eb_param
         # The elastic scaling parameters.
         self.ess_param = ess_param
@@ -79,7 +79,7 @@ class GetAlertActionResponseBodyAlertActions(DaraModel):
         self.pager_duty_param = pager_duty_param
         # The Simple Log Service parameters.
         self.sls_param = sls_param
-        # The type of the alert action integration.
+        # The alert action integration type.
         self.type = type
         # The webhook parameters.
         self.webhook_param = webhook_param
@@ -294,9 +294,9 @@ class GetAlertActionResponseBodyAlertActionsPagerDutyParam(DaraModel):
         key: str = None,
         url: str = None,
     ):
-        # The integration key of PagerDuty.
+        # The integration key for PagerDuty.
         self.key = key
-        # The integration webhook URL for PagerDuty. V1 and V2 are supported.
+        # The PagerDuty integration webhook. Versions 1 and 2 are supported.
         self.url = url
 
     def validate(self):
@@ -332,12 +332,12 @@ class GetAlertActionResponseBodyAlertActionsMnsParam(DaraModel):
         name: str = None,
         region_id: str = None,
     ):
-        # The resource type of Simple Message Queue (formerly MNS).
+        # The Simple Message Queue (formerly MNS) resource type.
         self.mns_type = mns_type
-        # The name of the resource.
+        # The resource name.
         # 
-        # - If the resource type is queue, the resource name is the name of the queue.
-        # - If the resource type is topic, the resource name is the name of the topic.
+        # - If the resource type is queue, the resource name is the queue name.
+        # - If the resource type is topic, the resource name is the topic name.
         self.name = name
         # The region ID.
         self.region_id = region_id
@@ -385,7 +385,7 @@ class GetAlertActionResponseBodyAlertActionsFcParam(DaraModel):
         self.function = function
         # The region ID.
         self.region_id = region_id
-        # The service name in Function Compute.
+        # The service name of Function Compute.
         self.service = service
 
     def validate(self):
@@ -427,7 +427,7 @@ class GetAlertActionResponseBodyAlertActionsFc3Param(DaraModel):
         qualifier: str = None,
         region_id: str = None,
     ):
-        # The name of the function.
+        # The function name.
         self.function = function
         # The version or alias of the function.
         self.qualifier = qualifier

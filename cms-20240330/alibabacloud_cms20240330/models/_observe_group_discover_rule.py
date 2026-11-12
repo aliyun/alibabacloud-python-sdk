@@ -14,6 +14,7 @@ class ObserveGroupDiscoverRule(DaraModel):
         entity_type: str = None,
         entity_types: List[str] = None,
         gmt_create: int = None,
+        include_related_entities: bool = None,
         instance_ids: List[str] = None,
         name_rules: main_models.ObserveGroupDiscoverRuleNameRules = None,
         region_ids: List[str] = None,
@@ -33,6 +34,8 @@ class ObserveGroupDiscoverRule(DaraModel):
         self.entity_types = entity_types
         # 规则创建时间（Unix 毫秒时间戳），控制台展示用。
         self.gmt_create = gmt_create
+        # 是否自动纳管同 domain、同实体 group 且由指定关系直接出边关联的子实体，历史缺省为 false。
+        self.include_related_entities = include_related_entities
         # 手动指定的实例 ID 列表（枚举型，含 1.0 手动实例同步）。
         self.instance_ids = instance_ids
         # 名称匹配规则。
@@ -76,6 +79,9 @@ class ObserveGroupDiscoverRule(DaraModel):
 
         if self.gmt_create is not None:
             result['gmtCreate'] = self.gmt_create
+
+        if self.include_related_entities is not None:
+            result['includeRelatedEntities'] = self.include_related_entities
 
         if self.instance_ids is not None:
             result['instanceIds'] = self.instance_ids
@@ -122,6 +128,9 @@ class ObserveGroupDiscoverRule(DaraModel):
 
         if m.get('gmtCreate') is not None:
             self.gmt_create = m.get('gmtCreate')
+
+        if m.get('includeRelatedEntities') is not None:
+            self.include_related_entities = m.get('includeRelatedEntities')
 
         if m.get('instanceIds') is not None:
             self.instance_ids = m.get('instanceIds')

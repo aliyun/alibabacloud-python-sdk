@@ -13,9 +13,9 @@ class PreviewNotifyTemplateRequest(DaraModel):
         data: Any = None,
         templates: List[main_models.PreviewNotifyTemplateRequestTemplates] = None,
     ):
-        # The rendering context data in key-value pair format. This data source is used to populate Go template placeholders in the templates, such as {{.incident.title}}.
+        # The rendering context data in a key-value pair structure. It serves as the data source to populate Go template placeholders in the template, such as {{.incident.title}}.
         self.data = data
-        # The list of templates to be rendered. Each item includes a template identifier and the template content.
+        # The list of templates to be rendered. Each item contains a template identifier and the template content.
         # 
         # This parameter is required.
         self.templates = templates
@@ -60,7 +60,7 @@ class PreviewNotifyTemplateRequestTemplates(DaraModel):
         key: str = None,
         template: str = None,
     ):
-        # The template identifier. This identifier is defined by the frontend and returned as-is. Use semantic names such as title or content.
+        # The template identifier. It is custom-defined by the frontend and returned as-is. Use semantic names such as title or content.
         # 
         # This parameter is required.
         self.key = key

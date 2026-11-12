@@ -16,7 +16,7 @@ class ListAlertActionsResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The list of alert action integration configurations.
+        # The list of action integration configurations.
         self.alert_actions = alert_actions
         # The page number.
         self.page_number = page_number
@@ -94,13 +94,13 @@ class ListAlertActionsResponseBodyAlertActions(DaraModel):
         type: str = None,
         webhook_param: main_models.ListAlertActionsResponseBodyAlertActionsWebhookParam = None,
     ):
-        # The unique identifiers of the alert action integrations.
+        # The unique identifiers of the action integrations.
         self.alert_action_id = alert_action_id
-        # The name of the alert action integration.
+        # The name of the action integration.
         self.alert_action_name = alert_action_name
         # The EventBridge parameters.
         self.eb_param = eb_param
-        # The elastic scaling parameters.
+        # The Auto Scaling parameters.
         self.ess_param = ess_param
         # The Function Compute 3.0 parameters.
         self.fc_3param = fc_3param
@@ -112,7 +112,7 @@ class ListAlertActionsResponseBodyAlertActions(DaraModel):
         self.pager_duty_param = pager_duty_param
         # The Simple Log Service parameters.
         self.sls_param = sls_param
-        # The type of the alert action integration.
+        # The type of the action integration.
         self.type = type
         # The webhook parameters.
         self.webhook_param = webhook_param
@@ -234,7 +234,7 @@ class ListAlertActionsResponseBodyAlertActionsWebhookParam(DaraModel):
         self.headers = headers
         # The webhook request method.
         self.method = method
-        # The alert callback URL.
+        # The URL of the alert callback.
         self.url = url
 
     def validate(self):
@@ -329,7 +329,7 @@ class ListAlertActionsResponseBodyAlertActionsPagerDutyParam(DaraModel):
     ):
         # The integration key for PagerDuty.
         self.key = key
-        # The integration webhook URL for PagerDuty. Both V1 and V2 are supported.
+        # The integration webhook for PagerDuty. Both V1 and V2 are supported.
         self.url = url
 
     def validate(self):
@@ -365,7 +365,7 @@ class ListAlertActionsResponseBodyAlertActionsMnsParam(DaraModel):
         name: str = None,
         region_id: str = None,
     ):
-        # The resource type in Simple Message Queue (formerly MNS).
+        # The resource type of Simple Message Queue (formerly MNS).
         self.mns_type = mns_type
         # The name of the resource.
         # 
@@ -506,9 +506,9 @@ class ListAlertActionsResponseBodyAlertActionsEssParam(DaraModel):
         ess_rule_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the elastic scaling group.
+        # The ID of the Auto Scaling group.
         self.ess_group_id = ess_group_id
-        # The ID of the elastic scaling rule.
+        # The ID of the Auto Scaling rule.
         self.ess_rule_id = ess_rule_id
         # The region ID.
         self.region_id = region_id

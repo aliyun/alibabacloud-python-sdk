@@ -14,7 +14,7 @@ class GetServiceTaskResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The task details object. Common fields include taskId, serviceId, workspace, regionId, ip, taskType, extraInfo (taskConfig JSON for LiveDebug), createTime, and updateTime.
+        # The task details object. Common fields include taskId, serviceId, workspace, regionId, ip, taskType, extraInfo (the taskConfig JSON for LiveDebug), createTime, and updateTime.
         self.service_task = service_task
 
     def validate(self):

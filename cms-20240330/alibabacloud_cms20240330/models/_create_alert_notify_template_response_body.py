@@ -12,7 +12,7 @@ class CreateAlertNotifyTemplateResponseBody(DaraModel):
     ):
         # The ID of the notification template.
         self.alert_notify_template_id = alert_notify_template_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

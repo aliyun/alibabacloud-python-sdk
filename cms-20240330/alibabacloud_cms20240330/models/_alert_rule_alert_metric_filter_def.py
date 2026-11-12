@@ -21,15 +21,15 @@ class AlertRuleAlertMetricFilterDef(DaraModel):
     ):
         # The dimension in APM metrics.
         self.dim = dim
-        # Specifies whether to disable the dimension. If set to true, the filter item does not appear in the group by clause of PromQL.
+        # Specifies whether the filter item is excluded from the group by clause in PromQL. If set to true, the filter item does not appear in the group by clause.
         self.dim_disabled = dim_disabled
         # The Chinese display name.
         self.display_name_cn = display_name_cn
         # The English display name.
         self.display_name_en = display_name_en
-        # Specifies whether to hide the filter. If hidden, the filter is not displayed in frontend interactions, but its value can be passed when rendering PromQL. A typical example is the pid filter in APM scenarios, which is typically not displayed through configuration but shown as a separate application search list in the frontend.
+        # Specifies whether the filter is hidden. If the filter is hidden, it is not displayed in the frontend, but its value can be passed when rendering PromQL. A typical example is the pid filter in APM scenarios, which is generally not displayed through configuration but shown as an independent application search list on the frontend.
         self.hidden = hidden
-        # Specifies whether to disable the label. If set to true, the filter item does not appear in the label filter of PromQL.
+        # Specifies whether the filter item is excluded from the label filter in PromQL. If set to true, the filter item does not appear in the label filter.
         self.label_disabled = label_disabled
         # The filter condition operator.
         self.opt = opt

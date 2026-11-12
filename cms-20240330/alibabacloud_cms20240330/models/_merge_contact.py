@@ -24,13 +24,13 @@ class MergeContact(DaraModel):
     ):
         # The email address.
         self.email = email
-        # Specifies whether the email address is authenticated.
+        # Indicates whether the email address is verified.
         self.email_verify = email_verify
-        # An extension field used to store additional information.
+        # The extension field used to store additional information.
         self.extend = extend
-        # The time when the contact was created.
+        # The creation time.
         self.gmt_create = gmt_create
-        # The time when the contact was last modified.
+        # The last modification time.
         self.gmt_modified = gmt_modified
         # The unique identifier of the contact.
         self.identifier = identifier
@@ -40,9 +40,9 @@ class MergeContact(DaraModel):
         self.name = name
         # The mobile phone number.
         self.phone = phone
-        # The country code for the mobile phone number.
+        # The country code of the mobile phone number.
         self.phone_code = phone_code
-        # Specifies whether the mobile phone number is authenticated.
+        # Indicates whether the mobile phone number is verified.
         self.phone_verify = phone_verify
         # The source system of the contact.
         self.source = source

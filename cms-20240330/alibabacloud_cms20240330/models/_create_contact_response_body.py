@@ -12,7 +12,7 @@ class CreateContactResponseBody(DaraModel):
     ):
         # The ID of the contact.
         self.contact_id = contact_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

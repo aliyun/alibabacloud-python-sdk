@@ -34,7 +34,7 @@ class TransformAction(DaraModel):
         self.target = target
         # The transform type.
         self.type = type
-        # The value to set.
+        # The set value.
         self.value = value
         # The variable name.
         self.variable = variable

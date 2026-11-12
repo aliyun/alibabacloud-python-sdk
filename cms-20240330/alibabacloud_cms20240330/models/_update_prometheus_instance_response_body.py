@@ -10,7 +10,7 @@ class UpdatePrometheusInstanceResponseBody(DaraModel):
         prometheus_instance_id: str = None,
         request_id: str = None,
     ):
-        # The instance ID.
+        # The ID of the instance.
         self.prometheus_instance_id = prometheus_instance_id
         # Id of the request
         self.request_id = request_id

@@ -22,9 +22,9 @@ class CreateAlertActionRequest(DaraModel):
         type: str = None,
         webhook_param: main_models.CreateAlertActionRequestWebhookParam = None,
     ):
-        # The unique identifier of the alert action integration.
+        # The unique identifier of the action integration.
         self.alert_action_id = alert_action_id
-        # The name of the alert action integration.
+        # The name of the action integration.
         # 
         # This parameter is required.
         self.alert_action_name = alert_action_name
@@ -36,13 +36,13 @@ class CreateAlertActionRequest(DaraModel):
         self.fc_3param = fc_3param
         # The Function Compute parameters.
         self.fc_param = fc_param
-        # The Simple Message Queue (formerly MNS) (MSMQ) parameters.
+        # The Simple Message Queue (formerly MNS) parameters.
         self.mns_param = mns_param
         # The PagerDuty parameters.
         self.pager_duty_param = pager_duty_param
         # The Simple Log Service parameters.
         self.sls_param = sls_param
-        # The type of the alert action integration.
+        # The action integration type.
         # 
         # This parameter is required.
         self.type = type
@@ -164,7 +164,7 @@ class CreateAlertActionRequestWebhookParam(DaraModel):
         self.content_type = content_type
         # The request header information.
         self.headers = headers
-        # The webhook request method.
+        # The HTTP method for the webhook request.
         self.method = method
         # The alert callback URL.
         self.url = url
@@ -214,9 +214,9 @@ class CreateAlertActionRequestSlsParam(DaraModel):
         project: str = None,
         region_id: str = None,
     ):
-        # The name of the Logstore in Simple Log Service.
+        # The name of the Simple Log Service Logstore.
         self.logstore = logstore
-        # The name of the project in Simple Log Service.
+        # The name of the Simple Log Service project.
         self.project = project
         # The region ID.
         self.region_id = region_id
@@ -259,9 +259,9 @@ class CreateAlertActionRequestPagerDutyParam(DaraModel):
         key: str = None,
         url: str = None,
     ):
-        # The integration key of PagerDuty.
+        # The integration key for PagerDuty.
         self.key = key
-        # The integration webhook URL of PagerDuty. Both V1 and V2 are supported.
+        # The integration webhook URL for PagerDuty. Both V1 and V2 are supported.
         self.url = url
 
     def validate(self):
@@ -297,9 +297,9 @@ class CreateAlertActionRequestMnsParam(DaraModel):
         name: str = None,
         region_id: str = None,
     ):
-        # The resource type of Simple Message Queue (formerly MNS) (MSMQ).
+        # The Simple Message Queue (formerly MNS) resource type.
         self.mns_type = mns_type
-        # The name of the resource.
+        # The resource name.
         # 
         # - If the resource type is queue, the resource name is the queue name.
         # - If the resource type is topic, the resource name is the topic name.

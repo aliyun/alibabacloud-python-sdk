@@ -24,11 +24,11 @@ class CreateDataPipelineRequest(DaraModel):
         self.kind = kind
         # The named outputs.
         self.outputs = outputs
-        # The pipeline name.
+        # The name of the pipeline.
         self.pipeline_name = pipeline_name
         # The common processors.
         self.processors = processors
-        # The sinks.
+        # The output destinations.
         self.sinks = sinks
         # The data source.
         self.source = source
@@ -126,7 +126,7 @@ class CreateDataPipelineRequestSource(DaraModel):
     ):
         # The datasource config.
         self.config = config
-        # The data source type.
+        # The type of the data source.
         self.type = type
 
     def validate(self):
@@ -166,7 +166,7 @@ class CreateDataPipelineRequestSourceConfig(DaraModel):
     ):
         # The run mode.
         self.run_mode = run_mode
-        # The start position.
+        # The read start point.
         self.start_from = start_from
         # The backfill time range.
         self.time_range = time_range
@@ -251,15 +251,15 @@ class CreateDataPipelineRequestSinks(DaraModel):
         project: str = None,
         type: str = None,
     ):
-        # The dataset list.
+        # The list of datasets.
         self.datasets = datasets
         # SLS Logstore
         self.logstore = logstore
-        # The sink name.
+        # The name of the output destination.
         self.name = name
         # SLS Project
         self.project = project
-        # The sink type.
+        # The type of the output destination.
         self.type = type
 
     def validate(self):
@@ -313,11 +313,11 @@ class CreateDataPipelineRequestProcessors(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # The processor configuration.
+        # The configuration of the processor.
         self.config = config
-        # The processor name.
+        # The name of the processor.
         self.name = name
-        # The processor type.
+        # The type of the processor.
         self.type = type
 
     def validate(self):
@@ -377,7 +377,7 @@ class CreateDataPipelineRequestProcessorsConfig(DaraModel):
         self.expression = expression
         # The list of fields.
         self.fields = fields
-        # The additional parameters.
+        # The extension parameters.
         self.parameters = parameters
         # The list of field projections.
         self.projections = projections
@@ -540,7 +540,7 @@ class CreateDataPipelineRequestProcessorsConfigSelector(DaraModel):
         self,
         service_names: List[str] = None,
     ):
-        # The service name list.
+        # The list of service names.
         self.service_names = service_names
 
     def validate(self):
@@ -757,7 +757,7 @@ class CreateDataPipelineRequestProcessorsConfigScopeConditionsField(DaraModel):
         self.container = container
         # The reference data type.
         self.kind = kind
-        # The name of the field or dimension.
+        # The field or dimension name.
         self.name = name
         # The JSON literal key path.
         self.path = path
@@ -818,9 +818,9 @@ class CreateDataPipelineRequestProcessorsConfigRules(DaraModel):
         self.keys = keys
         # The mask character.
         self.mask_char = mask_char
-        # The data masking mode.
+        # The masking mode.
         self.mode = mode
-        # The built-in sensitive types.
+        # The built-in sensitive data types.
         self.types = types
 
     def validate(self):
@@ -953,7 +953,7 @@ class CreateDataPipelineRequestOutputs(DaraModel):
         name: str = None,
         processors: List[main_models.CreateDataPipelineRequestOutputsProcessors] = None,
     ):
-        # The name of the output.
+        # The output name.
         self.name = name
         # The branch processors.
         self.processors = processors
@@ -999,11 +999,11 @@ class CreateDataPipelineRequestOutputsProcessors(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # The processor configuration.
+        # The configuration of the processor.
         self.config = config
-        # The processor name.
+        # The name of the processor.
         self.name = name
-        # The processor type.
+        # The type of the processor.
         self.type = type
 
     def validate(self):
@@ -1063,7 +1063,7 @@ class CreateDataPipelineRequestOutputsProcessorsConfig(DaraModel):
         self.expression = expression
         # The list of fields.
         self.fields = fields
-        # The additional parameters.
+        # The extension parameters.
         self.parameters = parameters
         # The list of field projections.
         self.projections = projections
@@ -1226,7 +1226,7 @@ class CreateDataPipelineRequestOutputsProcessorsConfigSelector(DaraModel):
         self,
         service_names: List[str] = None,
     ):
-        # The service name list.
+        # The list of service names.
         self.service_names = service_names
 
     def validate(self):
@@ -1443,7 +1443,7 @@ class CreateDataPipelineRequestOutputsProcessorsConfigScopeConditionsField(DaraM
         self.container = container
         # The reference data type.
         self.kind = kind
-        # The name of the field or dimension.
+        # The field or dimension name.
         self.name = name
         # The JSON literal key path.
         self.path = path
@@ -1504,9 +1504,9 @@ class CreateDataPipelineRequestOutputsProcessorsConfigRules(DaraModel):
         self.keys = keys
         # The mask character.
         self.mask_char = mask_char
-        # The data masking mode.
+        # The masking mode.
         self.mode = mode
-        # The built-in sensitive types.
+        # The built-in sensitive data types.
         self.types = types
 
     def validate(self):

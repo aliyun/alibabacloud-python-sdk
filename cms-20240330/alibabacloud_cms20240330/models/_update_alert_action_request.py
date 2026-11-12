@@ -21,9 +21,9 @@ class UpdateAlertActionRequest(DaraModel):
         type: str = None,
         webhook_param: main_models.UpdateAlertActionRequestWebhookParam = None,
     ):
-        # The name of the alert action integration.
+        # The name of the action integration.
         self.alert_action_name = alert_action_name
-        # The event bus.
+        # The event bus parameters.
         self.eb_param = eb_param
         # The elastic scaling parameters.
         self.ess_param = ess_param
@@ -37,7 +37,7 @@ class UpdateAlertActionRequest(DaraModel):
         self.pager_duty_param = pager_duty_param
         # The Simple Log Service parameters.
         self.sls_param = sls_param
-        # The type of the alert action integration.
+        # The action integration type.
         self.type = type
         # The webhook parameters.
         self.webhook_param = webhook_param
@@ -153,7 +153,7 @@ class UpdateAlertActionRequestWebhookParam(DaraModel):
         self.headers = headers
         # The webhook request method.
         self.method = method
-        # The alert callback URL.
+        # The URL for the alert callback.
         self.url = url
 
     def validate(self):
@@ -246,9 +246,9 @@ class UpdateAlertActionRequestPagerDutyParam(DaraModel):
         key: str = None,
         url: str = None,
     ):
-        # The integration key of PagerDuty.
+        # The integration key for PagerDuty.
         self.key = key
-        # The integration webhook of PagerDuty. V1 and V2 are supported.
+        # The integration webhook URL for PagerDuty. Both V1 and V2 are supported.
         self.url = url
 
     def validate(self):
@@ -284,9 +284,9 @@ class UpdateAlertActionRequestMnsParam(DaraModel):
         name: str = None,
         region_id: str = None,
     ):
-        # The resource type of Simple Message Queue (formerly MNS).
+        # The Simple Message Queue (formerly MNS) resource type.
         self.mns_type = mns_type
-        # The name of the resource.
+        # The resource name.
         # 
         # - If the resource type is queue, the resource name is the queue name.
         # - If the resource type is topic, the resource name is the topic name.
@@ -337,7 +337,7 @@ class UpdateAlertActionRequestFcParam(DaraModel):
         self.function = function
         # The region ID.
         self.region_id = region_id
-        # The service name in Function Compute.
+        # The service name of Function Compute.
         self.service = service
 
     def validate(self):

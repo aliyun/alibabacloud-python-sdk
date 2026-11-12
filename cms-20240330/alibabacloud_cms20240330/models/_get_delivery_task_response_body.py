@@ -13,7 +13,7 @@ class GetDeliveryTaskResponseBody(DaraModel):
         delivery_task: main_models.GetDeliveryTaskResponseBodyDeliveryTask = None,
         request_id: str = None,
     ):
-        # The delivery task details.
+        # The details of the delivery task.
         self.delivery_task = delivery_task
         # The request ID.
         self.request_id = request_id
@@ -66,33 +66,37 @@ class GetDeliveryTaskResponseBodyDeliveryTask(DaraModel):
     ):
         # The creation time.
         # 
+        # The time is in the ISO 8601 standard format (YYYY-MM-DDThh:mm:ssZ) in UTC.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
-        # The data source ID (Managed Service for Prometheus instance ID).
+        # The data source ID (Prometheus instance ID).
         self.data_source_id = data_source_id
-        # The additional labels attached to all delivered metrics. The key is the label name, and the value is the label value.
+        # The additional labels attached to all delivered metrics. The key is the label name and the value is the label value.
         self.external_labels = external_labels
         # The extended information.
         self.extra_info = extra_info
-        # The metric filter conditions. Used together with labelFiltersType. The key is the metric label name, and the value is the match value.
+        # The metric filter conditions used in conjunction with labelFiltersType. The key is the metric label name and the value is the match value.
         self.label_filters = label_filters
-        # The metric filtering mode.
+        # The metric filter mode.
         self.label_filters_type = label_filters_type
         # The region ID.
         self.region_id = region_id
-        # The list of delivery targets.
+        # The list of delivery destinations.
         self.sink_list = sink_list
         # The current status of the task.
         self.status = status
-        # The resource group tags.
+        # The keys of the resource group tags.
         self.tags = tags
-        # The task description.
+        # The description of the task.
         self.task_description = task_description
-        # The delivery task ID.
+        # The ID of the delivery task.
         self.task_id = task_id
-        # The task name.
+        # The name of the task.
         self.task_name = task_name
         # The update time.
+        # 
+        # The time is in the ISO 8601 standard format (YYYY-MM-DDThh:mm:ssZ) in UTC.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
@@ -221,9 +225,9 @@ class GetDeliveryTaskResponseBodyDeliveryTaskTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the resource group.
+        # The key of the resource group tag.
         self.key = key
-        # The tag value of the resource group.
+        # The value of the resource group tag.
         self.value = value
 
     def validate(self):
@@ -258,9 +262,9 @@ class GetDeliveryTaskResponseBodyDeliveryTaskSinkList(DaraModel):
         sink_configs: Dict[str, str] = None,
         sink_type: str = None,
     ):
-        # The detailed configuration of the delivery target. The meanings of key/value pairs vary depending on the sinkType. For more information, see CreateDeliveryTask.
+        # The detailed configuration of the delivery destination. The meanings of the key and value vary based on the sinkType. For more information, see the CreateDeliveryTask description.
         self.sink_configs = sink_configs
-        # The delivery target type.
+        # The type of the delivery destination.
         self.sink_type = sink_type
 
     def validate(self):
@@ -294,7 +298,7 @@ class GetDeliveryTaskResponseBodyDeliveryTaskExtraInfo(DaraModel):
         self,
         task_name_list: List[str] = None,
     ):
-        # The EventBridge task list.
+        # The list of EventBridge tasks.
         self.task_name_list = task_name_list
 
     def validate(self):

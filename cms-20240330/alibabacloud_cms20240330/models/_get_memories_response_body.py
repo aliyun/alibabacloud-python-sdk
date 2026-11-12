@@ -14,11 +14,11 @@ class GetMemoriesResponseBody(DaraModel):
         request_id: str = None,
         results: List[main_models.GetMemoriesResponseBodyResults] = None,
     ):
-        # A list of relations.
+        # The relationships.
         self.relations = relations
         # The request ID.
         self.request_id = request_id
-        # A list of results.
+        # The results.
         self.results = results
 
     def validate(self):
@@ -89,21 +89,21 @@ class GetMemoriesResponseBodyResults(DaraModel):
     ):
         # The actor ID.
         self.actor_id = actor_id
-        # The agent ID.
+        # The agent ID of the application.
         self.agent_id = agent_id
         # The application ID.
         self.app_id = app_id
         # The creation time.
         self.created_at = created_at
-        # The memory hash.
+        # The memory hash value.
         self.hash = hash
         # The memory ID.
         self.id = id
-        # The memory content.
+        # The memory.
         self.memory = memory
         # The metadata.
         self.metadata = metadata
-        # The role that sent the message.
+        # The role of the message initiator.
         self.role = role
         # The run ID.
         self.run_id = run_id
@@ -213,11 +213,11 @@ class GetMemoriesResponseBodyRelations(DaraModel):
         relationship: str = None,
         source: str = None,
     ):
-        # The destination of the relation.
+        # The destination.
         self.destination = destination
-        # The type of the relation.
+        # The relationships.
         self.relationship = relationship
-        # The source of the relation.
+        # The source.
         self.source = source
 
     def validate(self):

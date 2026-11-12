@@ -15,6 +15,7 @@ class CreateContactRequest(DaraModel):
         lang: str = None,
         name: str = None,
         phone: str = None,
+        phone_code: str = None,
         workspace: str = None,
     ):
         # The ID of the contact.
@@ -27,8 +28,10 @@ class CreateContactRequest(DaraModel):
         self.lang = lang
         # The name of the contact.
         self.name = name
-        # The mobile phone number. Currently, only mobile phone numbers in the Chinese mainland are supported.
+        # The mobile phone number. Currently, only mobile phone numbers in China are supported.
         self.phone = phone
+        # The country code.
+        self.phone_code = phone_code
         # The name of the workspace.
         self.workspace = workspace
 
@@ -58,6 +61,9 @@ class CreateContactRequest(DaraModel):
         if self.phone is not None:
             result['phone'] = self.phone
 
+        if self.phone_code is not None:
+            result['phoneCode'] = self.phone_code
+
         if self.workspace is not None:
             result['workspace'] = self.workspace
 
@@ -82,6 +88,9 @@ class CreateContactRequest(DaraModel):
 
         if m.get('phone') is not None:
             self.phone = m.get('phone')
+
+        if m.get('phoneCode') is not None:
+            self.phone_code = m.get('phoneCode')
 
         if m.get('workspace') is not None:
             self.workspace = m.get('workspace')

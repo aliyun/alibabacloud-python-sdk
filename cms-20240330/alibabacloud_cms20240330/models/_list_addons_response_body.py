@@ -72,7 +72,7 @@ class ListAddonsResponseBodyAddons(DaraModel):
     ):
         # The alias of the integration component.
         self.alias = alias
-        # The list of tags for the integration component.
+        # The list of categories for the integration component.
         self.categories = categories
         # The list of dashboards.
         self.dashboards = dashboards
@@ -80,21 +80,21 @@ class ListAddonsResponseBodyAddons(DaraModel):
         self.description = description
         # The list of supported integration policy types.
         self.environments = environments
-        # The icon URL.
+        # The URL of the icon.
         self.icon = icon
         # The list of keywords.
         self.keywords = keywords
         # The language.
         self.language = language
-        # The time of the latest release. The time is in ISO 8601 format and includes the UTC identifier or time zone offset.
+        # The time when the latest version was created. The time follows the ISO 8601 standard and includes a UTC identifier or time zone offset.
         self.latest_release_create_time = latest_release_create_time
         # The name of the integration component.
         self.name = name
         # Specifies whether the component can be installed only once.
         self.once = once
-        # The component scenario.
+        # The scenario of the component.
         self.scene = scene
-        # The component version.
+        # The version of the component.
         self.version = version
         # The display weight of the integration component.
         self.weight = weight
@@ -232,7 +232,7 @@ class ListAddonsResponseBodyAddonsEnvironments(DaraModel):
         self.dependencies = dependencies
         # The description of the integration policy type.
         self.description = description
-        # Specifies whether it is enabled.
+        # Specifies whether the integration policy type is enabled.
         self.enable = enable
         # The label of the integration policy type.
         self.label = label
@@ -240,7 +240,7 @@ class ListAddonsResponseBodyAddonsEnvironments(DaraModel):
         self.name = name
         # The integration policy configurations.
         self.policies = policies
-        # The integration center policy type.
+        # The policy type of the integration center.
         self.policy_type = policy_type
 
     def validate(self):
@@ -332,15 +332,15 @@ class ListAddonsResponseBodyAddonsEnvironmentsPolicies(DaraModel):
     ):
         # The enabling status of the default policy for alert rules.
         self.alert_default_status = alert_default_status
-        # Specifies whether to install by default.
+        # Specifies whether to install the component by default.
         self.default_install = default_install
         # Specifies whether to assign a service account for communication with the console API.
         self.enable_service_account = enable_service_account
         # The metric check rule.
         self.metric_check_rule = metric_check_rule
-        # Specifies whether to initiate a pod restart guide immediately after the plug-in installation is completed during integration.
+        # Specifies whether to trigger a pod restart guide immediately after the plug-in installation is completed during integration.
         self.need_restart_after_integration = need_restart_after_integration
-        # The supported protocol types for configuration.
+        # The supported protocol types in the configuration.
         self.protocols = protocols
         # The name of the target add-on.
         self.target_addon_name = target_addon_name
@@ -420,13 +420,13 @@ class ListAddonsResponseBodyAddonsEnvironmentsPoliciesProtocols(DaraModel):
         label: str = None,
         name: str = None,
     ):
-        # The protocol description.
+        # The description of the protocol.
         self.description = description
-        # The icon URL.
+        # The URL of the icon.
         self.icon = icon
         # The display name of the protocol.
         self.label = label
-        # The protocol name.
+        # The name of the protocol.
         self.name = name
 
     def validate(self):

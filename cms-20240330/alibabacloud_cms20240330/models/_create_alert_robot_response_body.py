@@ -10,7 +10,7 @@ class CreateAlertRobotResponseBody(DaraModel):
         alert_robot_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the robot.
+        # The ID of the alert robot.
         self.alert_robot_id = alert_robot_id
         # The request ID.
         self.request_id = request_id

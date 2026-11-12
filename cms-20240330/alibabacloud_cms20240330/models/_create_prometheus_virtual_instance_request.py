@@ -10,7 +10,7 @@ class CreatePrometheusVirtualInstanceRequest(DaraModel):
         namespace: str = None,
         tenant_id: str = None,
     ):
-        # Each cloud service can create only one virtual instance in each region.
+        # Each cloud service can have only one virtual instance in each region.
         # 
         # This parameter is required.
         self.namespace = namespace

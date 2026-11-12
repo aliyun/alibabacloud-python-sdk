@@ -36,7 +36,7 @@ class PreviewDataPipelineRequest(DaraModel):
         self.sinks = sinks
         # The data source.
         self.source = source
-        # The end time for the preview. The value is a UNIX timestamp in seconds.
+        # The end time for the preview, specified as a UNIX timestamp in seconds.
         self.to_time = to_time
 
     def validate(self):
@@ -144,7 +144,7 @@ class PreviewDataPipelineRequestSource(DaraModel):
     ):
         # The datasource config.
         self.config = config
-        # The type of the data source.
+        # The data source type.
         self.type = type
 
     def validate(self):
@@ -269,15 +269,15 @@ class PreviewDataPipelineRequestSinks(DaraModel):
         project: str = None,
         type: str = None,
     ):
-        # The list of datasets.
+        # The dataset list.
         self.datasets = datasets
         # SLS Logstore
         self.logstore = logstore
-        # The name of the output destination.
+        # The output destination name.
         self.name = name
         # SLS Project
         self.project = project
-        # The type of the output destination.
+        # The output destination type.
         self.type = type
 
     def validate(self):
@@ -838,7 +838,7 @@ class PreviewDataPipelineRequestProcessorsConfigRules(DaraModel):
         self.mask_char = mask_char
         # The data masking mode.
         self.mode = mode
-        # The built-in sensitive data types.
+        # The built-in sensitive types.
         self.types = types
 
     def validate(self):
@@ -1524,7 +1524,7 @@ class PreviewDataPipelineRequestOutputsProcessorsConfigRules(DaraModel):
         self.mask_char = mask_char
         # The data masking mode.
         self.mode = mode
-        # The built-in sensitive data types.
+        # The built-in sensitive types.
         self.types = types
 
     def validate(self):

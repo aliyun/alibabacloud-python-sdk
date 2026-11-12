@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Dict
 
 from alibabacloud_cms20240330 import models as main_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -21,6 +22,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'Cms'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-beijing': 'metrics.cn-beijing.aliyuncs.com',
@@ -1313,6 +1317,8 @@ class Client(OpenApiClient):
             body['name'] = request.name
         if not DaraCore.is_null(request.phone):
             body['phone'] = request.phone
+        if not DaraCore.is_null(request.phone_code):
+            body['phoneCode'] = request.phone_code
         if not DaraCore.is_null(request.workspace):
             body['workspace'] = request.workspace
         req = open_api_util_models.OpenApiRequest(
@@ -1355,6 +1361,8 @@ class Client(OpenApiClient):
             body['name'] = request.name
         if not DaraCore.is_null(request.phone):
             body['phone'] = request.phone
+        if not DaraCore.is_null(request.phone_code):
+            body['phoneCode'] = request.phone_code
         if not DaraCore.is_null(request.workspace):
             body['workspace'] = request.workspace
         req = open_api_util_models.OpenApiRequest(
@@ -2607,6 +2615,8 @@ class Client(OpenApiClient):
             body['authFreeReadPolicy'] = request.auth_free_read_policy
         if not DaraCore.is_null(request.auth_free_write_policy):
             body['authFreeWritePolicy'] = request.auth_free_write_policy
+        if not DaraCore.is_null(request.dryrun):
+            body['dryrun'] = request.dryrun
         if not DaraCore.is_null(request.enable_auth_free_read):
             body['enableAuthFreeRead'] = request.enable_auth_free_read
         if not DaraCore.is_null(request.enable_auth_free_write):
@@ -2661,6 +2671,8 @@ class Client(OpenApiClient):
             body['authFreeReadPolicy'] = request.auth_free_read_policy
         if not DaraCore.is_null(request.auth_free_write_policy):
             body['authFreeWritePolicy'] = request.auth_free_write_policy
+        if not DaraCore.is_null(request.dryrun):
+            body['dryrun'] = request.dryrun
         if not DaraCore.is_null(request.enable_auth_free_read):
             body['enableAuthFreeRead'] = request.enable_auth_free_read
         if not DaraCore.is_null(request.enable_auth_free_write):
@@ -7116,6 +7128,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.enable_subscription_with_options_async(subscription_id, request, headers, runtime)
+
+    def ensure_shared_prometheus_instance_with_options(
+        self,
+        request: main_models.EnsureSharedPrometheusInstanceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.EnsureSharedPrometheusInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.aliyun_lang):
+            query['aliyunLang'] = request.aliyun_lang
+        body = {}
+        if not DaraCore.is_null(request.share_scope):
+            body['shareScope'] = request.share_scope
+        if not DaraCore.is_null(request.workspace):
+            body['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnsureSharedPrometheusInstance',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/shared-prometheus-instances',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnsureSharedPrometheusInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def ensure_shared_prometheus_instance_with_options_async(
+        self,
+        request: main_models.EnsureSharedPrometheusInstanceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.EnsureSharedPrometheusInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.aliyun_lang):
+            query['aliyunLang'] = request.aliyun_lang
+        body = {}
+        if not DaraCore.is_null(request.share_scope):
+            body['shareScope'] = request.share_scope
+        if not DaraCore.is_null(request.workspace):
+            body['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnsureSharedPrometheusInstance',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/shared-prometheus-instances',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnsureSharedPrometheusInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def ensure_shared_prometheus_instance(
+        self,
+        request: main_models.EnsureSharedPrometheusInstanceRequest,
+    ) -> main_models.EnsureSharedPrometheusInstanceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.ensure_shared_prometheus_instance_with_options(request, headers, runtime)
+
+    async def ensure_shared_prometheus_instance_async(
+        self,
+        request: main_models.EnsureSharedPrometheusInstanceRequest,
+    ) -> main_models.EnsureSharedPrometheusInstanceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.ensure_shared_prometheus_instance_with_options_async(request, headers, runtime)
 
     def execute_query_with_options(
         self,
@@ -14481,6 +14581,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.body):
             request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
         query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.call_source):
             query['callSource'] = request.call_source
         body = {}
@@ -14519,6 +14621,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.body):
             request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
         query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.call_source):
             query['callSource'] = request.call_source
         body = {}
@@ -16348,6 +16452,8 @@ class Client(OpenApiClient):
             body['name'] = request.name
         if not DaraCore.is_null(request.phone):
             body['phone'] = request.phone
+        if not DaraCore.is_null(request.phone_code):
+            body['phoneCode'] = request.phone_code
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -16387,6 +16493,8 @@ class Client(OpenApiClient):
             body['name'] = request.name
         if not DaraCore.is_null(request.phone):
             body['phone'] = request.phone
+        if not DaraCore.is_null(request.phone_code):
+            body['phoneCode'] = request.phone_code
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -17742,6 +17850,8 @@ class Client(OpenApiClient):
             body['authFreeReadPolicy'] = request.auth_free_read_policy
         if not DaraCore.is_null(request.auth_free_write_policy):
             body['authFreeWritePolicy'] = request.auth_free_write_policy
+        if not DaraCore.is_null(request.dryrun):
+            body['dryrun'] = request.dryrun
         if not DaraCore.is_null(request.enable_auth_free_read):
             body['enableAuthFreeRead'] = request.enable_auth_free_read
         if not DaraCore.is_null(request.enable_auth_free_write):
@@ -17795,6 +17905,8 @@ class Client(OpenApiClient):
             body['authFreeReadPolicy'] = request.auth_free_read_policy
         if not DaraCore.is_null(request.auth_free_write_policy):
             body['authFreeWritePolicy'] = request.auth_free_write_policy
+        if not DaraCore.is_null(request.dryrun):
+            body['dryrun'] = request.dryrun
         if not DaraCore.is_null(request.enable_auth_free_read):
             body['enableAuthFreeRead'] = request.enable_auth_free_read
         if not DaraCore.is_null(request.enable_auth_free_write):

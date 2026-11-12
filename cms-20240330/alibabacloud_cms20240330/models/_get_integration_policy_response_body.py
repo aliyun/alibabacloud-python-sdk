@@ -68,7 +68,7 @@ class GetIntegrationPolicyResponseBodyPolicy(DaraModel):
         self.addon_names = addon_names
         # The policy version.
         self.api_version = api_version
-        # The information about the bound resources.
+        # The bound resource information.
         self.bind_resource = bind_resource
         # The installation status of umodel in the container environment.
         self.cs_umodel_status = cs_umodel_status
@@ -78,7 +78,7 @@ class GetIntegrationPolicyResponseBodyPolicy(DaraModel):
         self.managed_info = managed_info
         # The policy ID.
         self.policy_id = policy_id
-        # The rule name.
+        # The policy name.
         self.policy_name = policy_name
         # The access policy type.
         self.policy_type = policy_type
@@ -396,9 +396,9 @@ class GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRules(DaraModel):
         self.field_rules = field_rules
         # The instance IDs.
         self.instance_ids = instance_ids
-        # The IP matching rule.
+        # The IP address matching rule.
         self.ip_match_rule = ip_match_rule
-        # The tags.
+        # The labels.
         self.labels = labels
         # The list of region IDs.
         self.region_ids = region_ids
@@ -520,7 +520,7 @@ class GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesTags(DaraModel
         tag_key: str = None,
         tag_values: List[str] = None,
     ):
-        # The operation to be performed.
+        # The operation performed.
         self.op = op
         # The tag key of the instance.
         self.tag_key = tag_key
@@ -566,7 +566,7 @@ class GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesLabels(DaraMod
         tag_key: str = None,
         tag_values: List[str] = None,
     ):
-        # The operation to be performed.
+        # The operation performed.
         self.op = op
         # The tag key of the instance.
         self.tag_key = tag_key
@@ -613,7 +613,7 @@ class GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesIpMatchRule(Da
     ):
         # The IP CIDR block.
         self.ip_cidr = ip_cidr
-        # The key of the IP field.
+        # The key of the IP address field.
         self.ip_field_key = ip_field_key
 
     def validate(self):
@@ -653,7 +653,7 @@ class GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesFieldRules(Dar
         self.field_key = field_key
         # The field content.
         self.field_values = field_values
-        # The operation to be performed.
+        # The operation performed.
         self.op = op
 
     def validate(self):
@@ -695,7 +695,7 @@ class GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesAnnotations(Da
         tag_key: str = None,
         tag_values: List[str] = None,
     ):
-        # The operation to be performed.
+        # The operation performed.
         self.op = op
         # The tag key.
         self.tag_key = tag_key

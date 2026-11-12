@@ -18,23 +18,23 @@ class ListPrometheusInstancesShrinkRequest(DaraModel):
         version: str = None,
         workspace: str = None,
     ):
-        # The region IDs for filtering, separated by commas. Currently, only a single region ID is supported.
+        # The list of region IDs used for filtering, separated by commas.
         self.filter_region_ids = filter_region_ids
         # The maximum number of records to return.
         self.max_results = max_results
-        # The query token.
+        # The next token.
         self.next_token = next_token
-        # The instance IDs, separated by commas.
+        # The list of instance IDs, separated by commas.
         self.prometheus_instance_ids = prometheus_instance_ids
-        # The instance name. Fuzzy match is supported.
+        # The instance name. Partial match is supported.
         self.prometheus_instance_name = prometheus_instance_name
         # The resource group ID.
         self.resource_group_id = resource_group_id
         # The resource type of the instance.
         self.resource_type = resource_type
-        # The tags.
+        # The list of tags.
         self.tag_shrink = tag_shrink
-        # The instance version. Valid values: V1 and V2.
+        # The instance version.
         self.version = version
         # The workspace to which the instance belongs.
         self.workspace = workspace

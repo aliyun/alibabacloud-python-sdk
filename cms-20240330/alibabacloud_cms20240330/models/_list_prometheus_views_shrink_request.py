@@ -18,11 +18,11 @@ class ListPrometheusViewsShrinkRequest(DaraModel):
         version: str = None,
         workspace: str = None,
     ):
-        # Filters the results by region ID. Currently, only a single region ID is supported.
+        # The region IDs used for filtering. Currently, only a single region ID is supported.
         self.filter_region_ids = filter_region_ids
-        # The maximum number of records to return.
+        # The maximum number of entries to return.
         self.max_results = max_results
-        # The query token.
+        # The pagination token.
         self.next_token = next_token
         # The list of Prometheus view instance IDs.
         self.prometheus_view_ids = prometheus_view_ids
@@ -34,7 +34,7 @@ class ListPrometheusViewsShrinkRequest(DaraModel):
         self.resource_type = resource_type
         # The list of tags.
         self.tag_shrink = tag_shrink
-        # The instance version.
+        # The instance version. Valid values: V1 and V2.
         self.version = version
         # The name of the workspace.
         self.workspace = workspace

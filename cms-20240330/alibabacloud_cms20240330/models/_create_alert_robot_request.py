@@ -24,7 +24,7 @@ class CreateAlertRobotRequest(DaraModel):
         self.name = name
         # The unique ID of the robot.
         self.robot_id = robot_id
-        # The signature key of the robot.
+        # The signing key of the robot.
         self.robot_sign_key = robot_sign_key
         # The type of the robot.
         # 

@@ -24,25 +24,25 @@ class IncidentEventStruct(DaraModel):
         title: str = None,
         user_id: str = None,
     ):
-        # The time of automatic recovery.
+        # The automatic recovery time.
         self.auto_recover_time = auto_recover_time
         # The content.
         self.content = content
-        # The total count.
+        # The statistical count.
         self.count = count
         # The dimension.
         self.dimension = dimension
-        # The dimension for grouping.
+        # The dimension used for grouping.
         self.group_by = group_by
         # The incident event ID.
         self.incident_event_id = incident_event_id
         # The incident ID.
         self.incident_id = incident_id
-        # The time of the last occurrence.
+        # The last time.
         self.last_time = last_time
-        # The time of manual recovery.
+        # The manual recovery time.
         self.recover_time = recover_time
-        # The resource associated with the event.
+        # The information about the resources associated with the event.
         self.resource = resource
         # The status.
         self.status = status

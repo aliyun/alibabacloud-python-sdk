@@ -11,11 +11,11 @@ class DeleteContextResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The unique identifier of the deleted context.
+        # The ID of the generated record or event.
         self.context_id = context_id
         # The request ID.
         self.request_id = request_id
-        # The deletion status. For example, deleted.
+        # The deletion status, such as deleted.
         self.status = status
 
     def validate(self):

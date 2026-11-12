@@ -10,7 +10,7 @@ class CreateAlertActionResponseBody(DaraModel):
         alert_action_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the alert action integration.
+        # The ID of the action integration.
         self.alert_action_id = alert_action_id
         # The request ID.
         self.request_id = request_id

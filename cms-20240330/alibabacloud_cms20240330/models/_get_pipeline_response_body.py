@@ -38,7 +38,7 @@ class GetPipelineResponseBody(DaraModel):
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # The output destination.
+        # The data sink.
         self.sink = sink
         # The data source.
         self.source = source
@@ -233,7 +233,7 @@ class GetPipelineResponseBodySink(DaraModel):
     ):
         # The dataset information.
         self.dataset = dataset
-        # The output destination type.
+        # The data sink type.
         self.type = type
 
     def validate(self):

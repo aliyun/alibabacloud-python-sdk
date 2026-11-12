@@ -12,7 +12,7 @@ class UpdateContactGroupRequest(DaraModel):
         contacts: List[str] = None,
         name: str = None,
     ):
-        # The ID of the contact.
+        # The IDs of the contacts.
         self.contacts = contacts
         # The name of the contact.
         self.name = name

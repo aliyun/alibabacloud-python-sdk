@@ -40,7 +40,7 @@ class CreateServiceRequest(DaraModel):
         # 
         # This parameter is required.
         self.service_type = service_type
-        # The tags.
+        # The tag array.
         self.tags = tags
 
     def validate(self):

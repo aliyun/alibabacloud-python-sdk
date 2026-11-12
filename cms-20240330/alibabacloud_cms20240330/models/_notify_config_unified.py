@@ -21,21 +21,21 @@ class NotifyConfigUnified(DaraModel):
         type: str = None,
         utc_offset: str = None,
     ):
-        # The days of the week on which notifications are sent, 1-7.
+        # The days of the week when notifications are sent, ranging from 1 to 7.
         self.active_days = active_days
-        # The daily notification effective end time.
+        # The daily end time for the notification effective period.
         self.active_end_time = active_end_time
-        # The daily notification effective start time.
+        # The daily start time for the notification effective period.
         self.active_start_time = active_start_time
         # The list of notification channels.
         self.channels = channels
-        # The list of notification policy IDs (type=NOTIFY_POLICY, currently a maximum of 1 per service. Mutually exclusive with channels/silenceTimeSecs/activeDays/activeStartTime/activeEndTime/utcOffset of DIRECT_NOTIFY).
+        # The list of notification policy IDs.
         self.notify_strategies = notify_strategies
-        # Specifies whether to send recovery notifications (type=DIRECT_NOTIFY). Default value: true. Each severity level in severityChannels can independently override this setting.
+        # Specifies whether to send a recovery notification. Default value: true. This setting can be independently overridden for each severity level in severityChannels.
         self.send_recover_notification = send_recover_notification
-        # The Notification Recipients and channels configured by severity level (type=DIRECT_NOTIFY, new mode, mutually exclusive with channels). The key is the severity level: CRITICAL/ERROR/WARNING/INFO.
+        # The notification recipients and channels configured for each severity level. The key is the severity level: CRITICAL, ERROR, WARNING, or INFO.
         self.severity_channels = severity_channels
-        # The mute for epoch in seconds.
+        # The mute epoch in seconds.
         self.silence_time_secs = silence_time_secs
         # The notification configuration type.
         # 

@@ -63,7 +63,7 @@ class UpdateDataPipelineResponseBodyPipeline(DaraModel):
         update_time: str = None,
         version: int = None,
     ):
-        # The creation time in UTC format based on the ISO 8601 standard, such as 2026-08-10T05:00:00Z.
+        # The creation time in UTC and ISO 8601 format, for example, 2026-08-10T05:00:00Z.
         # 
         # This parameter is required.
         # 
@@ -91,7 +91,7 @@ class UpdateDataPipelineResponseBodyPipeline(DaraModel):
         # 
         # This parameter is required.
         self.signal_type = signal_type
-        # The output destinations.
+        # The output destination.
         # 
         # This parameter is required.
         self.sinks = sinks
@@ -105,7 +105,7 @@ class UpdateDataPipelineResponseBodyPipeline(DaraModel):
         self.status = status
         # The status message.
         self.status_message = status_message
-        # The update time in ISO 8601 format in UTC, such as 2026-08-10T05:10:00Z.
+        # The update time in UTC and ISO 8601 format, for example, 2026-08-10T05:10:00Z.
         # 
         # This parameter is required.
         # 
@@ -245,7 +245,7 @@ class UpdateDataPipelineResponseBodyPipelineSource(DaraModel):
     ):
         # The datasource config.
         self.config = config
-        # The data source type.
+        # The type of the data source.
         self.type = type
 
     def validate(self):
@@ -285,9 +285,9 @@ class UpdateDataPipelineResponseBodyPipelineSourceConfig(DaraModel):
     ):
         # The run mode.
         self.run_mode = run_mode
-        # The start position.
+        # The start point for reading.
         self.start_from = start_from
-        # The backfill time range.
+        # The time range for backfilling.
         self.time_range = time_range
 
     def validate(self):
@@ -370,15 +370,15 @@ class UpdateDataPipelineResponseBodyPipelineSinks(DaraModel):
         project: str = None,
         type: str = None,
     ):
-        # The dataset list.
+        # The list of datasets.
         self.datasets = datasets
         # SLS Logstore
         self.logstore = logstore
-        # The output destination name.
+        # The name of the output destination.
         self.name = name
         # SLS Project
         self.project = project
-        # The output destination type.
+        # The type of the output destination.
         self.type = type
 
     def validate(self):
@@ -432,11 +432,11 @@ class UpdateDataPipelineResponseBodyPipelineProcessors(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # The processor configuration.
+        # The configuration of the processor.
         self.config = config
-        # The processor name.
+        # The name of the processor.
         self.name = name
-        # The processor type.
+        # The type of the processor.
         self.type = type
 
     def validate(self):
@@ -502,7 +502,7 @@ class UpdateDataPipelineResponseBodyPipelineProcessorsConfig(DaraModel):
         self.projections = projections
         # The list of data masking rules.
         self.rules = rules
-        # The effective scope of the pipeline processing.
+        # The effective scope of pipeline processing.
         self.scope = scope
         # The SPL script.
         self.script = script
@@ -659,7 +659,7 @@ class UpdateDataPipelineResponseBodyPipelineProcessorsConfigSelector(DaraModel):
         self,
         service_names: List[str] = None,
     ):
-        # The service name list.
+        # The list of service names.
         self.service_names = service_names
 
     def validate(self):
@@ -691,9 +691,9 @@ class UpdateDataPipelineResponseBodyPipelineProcessorsConfigScope(DaraModel):
     ):
         # The additional field conditions.
         self.conditions = conditions
-        # The metric name scope.
+        # The scope of metric names.
         self.metric_name = metric_name
-        # The service name scope.
+        # The scope of service names.
         self.service_name = service_name
 
     def validate(self):
@@ -876,7 +876,7 @@ class UpdateDataPipelineResponseBodyPipelineProcessorsConfigScopeConditionsField
         self.container = container
         # The reference data type.
         self.kind = kind
-        # The name of the field or dimension.
+        # The field or dimension name.
         self.name = name
         # The JSON literal key path.
         self.path = path
@@ -929,9 +929,9 @@ class UpdateDataPipelineResponseBodyPipelineProcessorsConfigRules(DaraModel):
         mode: str = None,
         types: List[str] = None,
     ):
-        # The length of the retained prefix.
+        # The length of the prefix to retain.
         self.keep_prefix = keep_prefix
-        # The length of the retained suffix.
+        # The length of the suffix to retain.
         self.keep_suffix = keep_suffix
         # The sensitive keywords.
         self.keys = keys
@@ -1072,7 +1072,7 @@ class UpdateDataPipelineResponseBodyPipelineOutputs(DaraModel):
         name: str = None,
         processors: List[main_models.UpdateDataPipelineResponseBodyPipelineOutputsProcessors] = None,
     ):
-        # The name of the output.
+        # The output name.
         self.name = name
         # The branch processors.
         self.processors = processors
@@ -1118,11 +1118,11 @@ class UpdateDataPipelineResponseBodyPipelineOutputsProcessors(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # The processor configuration.
+        # The configuration of the processor.
         self.config = config
-        # The processor name.
+        # The name of the processor.
         self.name = name
-        # The processor type.
+        # The type of the processor.
         self.type = type
 
     def validate(self):
@@ -1188,7 +1188,7 @@ class UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfig(DaraModel):
         self.projections = projections
         # The list of data masking rules.
         self.rules = rules
-        # The effective scope of pipeline processing.
+        # The effective scope of the pipeline processing.
         self.scope = scope
         # The SPL script.
         self.script = script
@@ -1345,7 +1345,7 @@ class UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigSelector(Dara
         self,
         service_names: List[str] = None,
     ):
-        # The service name list.
+        # The list of service names.
         self.service_names = service_names
 
     def validate(self):
@@ -1377,9 +1377,9 @@ class UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigScope(DaraMod
     ):
         # The additional field conditions.
         self.conditions = conditions
-        # The metric name scope.
+        # The scope of metric names.
         self.metric_name = metric_name
-        # The service name scope.
+        # The scope of service names.
         self.service_name = service_name
 
     def validate(self):
@@ -1562,7 +1562,7 @@ class UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditio
         self.container = container
         # The reference data type.
         self.kind = kind
-        # The name of the field or dimension.
+        # The field or dimension name.
         self.name = name
         # The JSON literal key path.
         self.path = path
@@ -1615,9 +1615,9 @@ class UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigRules(DaraMod
         mode: str = None,
         types: List[str] = None,
     ):
-        # The length of the retained prefix.
+        # The length of the prefix to retain.
         self.keep_prefix = keep_prefix
-        # The length of the retained suffix.
+        # The length of the suffix to retain.
         self.keep_suffix = keep_suffix
         # The sensitive keywords.
         self.keys = keys

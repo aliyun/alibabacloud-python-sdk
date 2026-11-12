@@ -13,20 +13,15 @@ class PrometheusInstanceStoreConfig(DaraModel):
         query_cache_enable: bool = None,
         total_parallel_count: int = None,
     ):
-        # The concurrency per host. If this parameter is not specified, the default value is 2. Valid values: 1 to 8.
+        # The concurrency per host. Valid values: 1 to 8. Default value: 2.
         self.parallel_count_per_host = parallel_count_per_host
-        # Specifies whether to enable parallel query. If this parameter is not specified, the value is considered as false.
+        # Specifies whether to enable parallel query. If not returned, the value is considered false.
         self.parallel_enable = parallel_enable
-        # The parallel query mode. Valid values:
-        # 
-        # - auto
-        # - static
-        # 
-        # If this parameter is not specified, the default value is auto.
+        # The parallel query mode. Valid values: auto, static. Default value: auto.
         self.parallel_mode = parallel_mode
-        # Specifies whether to enable query cache. If this parameter is not specified, the value is considered as false.
+        # Specifies whether to enable the query cache. If not returned, the value is considered false.
         self.query_cache_enable = query_cache_enable
-        # The global concurrency. If this parameter is not specified, the default value is 8. Valid values: 2 to 64.
+        # The global concurrency. Valid values: 2 to 64. Default value: 8.
         self.total_parallel_count = total_parallel_count
 
     def validate(self):

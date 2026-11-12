@@ -20,27 +20,29 @@ class UpdateDeliveryTaskRequest(DaraModel):
         task_description: str = None,
         task_name: str = None,
     ):
-        # The data source ID (Prometheus instance ID).
+        # The data source ID, which is the Prometheus instance ID.
         self.data_source_id = data_source_id
-        # The additional labels attached to all delivered metrics. The key is the label name and the value is the label value.
+        # The additional labels appended to all shipped metrics. The key is the label name, and the value is the label value.
         self.external_labels = external_labels
-        # The metric filter conditions. The entire value is replaced and incremental merging is not performed.
+        # The metric filtering conditions. The existing conditions are entirely replaced rather than incrementally merged.
         self.label_filters = label_filters
         # The metric filtering mode.
         self.label_filters_type = label_filters_type
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The list of delivery targets.
+        # The list of shipping destinations.
         self.sink_list = sink_list
-        # The task status. This parameter is used to start or stop a task. Valid values:
+        # The task status, which is used to start or stop the task. Valid values:
         # 
-        # - Enable: enables the task.
-        # - Disable: disables the task.
-        # - Running: the task is running.
+        # Enable: Starts the task.
+        # 
+        # Disable: Stops the task.
+        # 
+        # Running: The task is running.
         self.status = status
         # The task description.
         self.task_description = task_description
-        # The task name. The name can contain letters, digits, underscores (_), and hyphens (-), and can be in Chinese.
+        # The task name. Chinese characters, English letters, underscores (_), and hyphens (-) are supported.
         self.task_name = task_name
 
     def validate(self):
@@ -125,9 +127,9 @@ class UpdateDeliveryTaskRequestSinkList(DaraModel):
         sink_configs: Dict[str, str] = None,
         sink_type: str = None,
     ):
-        # The detailed configuration of the delivery target. The meanings of key/value pairs vary depending on the sinkType.
+        # The detailed configuration of the shipping destination. The meanings of keys and values vary based on the sink type.
         self.sink_configs = sink_configs
-        # The delivery target type.
+        # The type of the shipping destination.
         self.sink_type = sink_type
 
     def validate(self):

@@ -14,7 +14,7 @@ class CreateIntegrationPolicyResponseBody(DaraModel):
     ):
         # Indicates whether the policy is created.
         self.created = created
-        # The uploaded policy.
+        # The policy.
         self.policy = policy
         # The request ID.
         self.request_id = request_id

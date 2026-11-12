@@ -32,17 +32,17 @@ class ListUserNotifyHistoriesRequest(DaraModel):
         to: int = None,
         workspace: str = None,
     ):
-        # The notification batch ID. Used to filter the notification history for notifications delivered in the same batch.
+        # The notification batch ID. Used to filter the notification history for notifications sent in the same batch.
         self.batch_id = batch_id
-        # **[Deprecated]** This is an internal reserved parameter used only for business source filtering in internal platform scenarios. Do not pass this parameter in external calls.
+        # **[Deprecated]** This is an internal reserved parameter used only for business source filtering in internal platform scenarios. Do not specify this parameter in external calls.
         self.biz_source = biz_source
         # The notification channel. Valid values:
         # - ALI_YUNGE_SMS: text message
-        # - ALI_YUNGE_CALL: voice call
+        # - ALI_YUNGE_CALL: phone call
         # - ALI_YUNGE_MAIL: email
         # - ALI_YUNGE_ALIUID: internal message
         # - DING: DingTalk
-        # - DING_COOL_APP: DingTalk Cool App
+        # - DING_COOL_APP: DingTalk cool app
         # - FEISHU: Lark
         # - WEIXIN: WeCom
         # - SLACK: Slack
@@ -59,23 +59,23 @@ class ListUserNotifyHistoriesRequest(DaraModel):
         # - ALIYUN_OPENAPI: OpenAPI
         self.channel = channel
         # The channel category. Valid values:
-        # - WEBHOOK: webhook-based channels, such as DingTalk, Lark, WeCom, Slack, Teams, and custom webhooks
-        # - YUNGE: Yunge communication channels, such as text messages, voice calls, and emails
+        # - WEBHOOK: webhook channels, such as DingTalk, Lark, WeCom, Slack, Teams, and custom webhooks.
+        # - YUNGE: communication channels, such as text messages, phone calls, and emails.
         self.channel_category = channel_category
-        # The start time of the query. The value is a UNIX timestamp in seconds. Default value: 6 hours before the `to` parameter value.
+        # The start time of the query. The value is a UNIX timestamp in seconds. Default value: 6 hours before the to parameter.
         self.from_ = from_
         # The contact group. Used to filter the notification history by contact group name.
         self.group = group
         # The incident ID. Used to filter the notification history associated with a specified incident.
         self.incident_id = incident_id
         # Specifies whether to include notification records that have no actual delivery channel. Valid values:
-        # - true: The records are included.
-        # - false: The records are not included. Only records that were actually delivered through a channel are returned.
+        # - true: includes the records.
+        # - false: excludes the records and returns only records that were actually sent through a channel.
         # Default value: true.
         self.include_no_channel = include_no_channel
         # Specifies whether to sort the results in descending order of time. Valid values:
-        # - true: The results are sorted in descending order, with the latest records appearing first.
-        # - false: The results are sorted in ascending order.
+        # - true: descending order, with the latest records first.
+        # - false: ascending order.
         # Default value: true.
         self.is_desc = is_desc
         # The maximum number of entries to return per page. Default value: 20.
@@ -86,11 +86,11 @@ class ListUserNotifyHistoriesRequest(DaraModel):
         self.notify_strategy_id = notify_strategy_id
         # The notification policy name. Used to filter the notification history by notification policy name.
         self.notify_strategy_name = notify_strategy_name
-        # **[Deprecated]** This is an internal reserved parameter used only for dedicated notification history query paths in internal platform scenarios. Do not pass this parameter in external calls.
+        # **[Deprecated]** This is an internal reserved parameter used only for dedicated notification history query paths in internal platform scenarios. Do not specify this parameter in external calls.
         self.partition_key = partition_key
-        # The recipient. Used to filter the notification history by recipient address, such as a phone number, email address, or webhook URL.
+        # The recipient. Used to filter the notification history by recipient address, such as a phone number, email address, or webhook address.
         self.receiver = receiver
-        # The alert rule ID. Used to filter the notification history triggered by a specified alert rule. Exact match is applied.
+        # The alert rule ID. Used to filter the notification history triggered by a specified alert rule. Exact match is used.
         self.rule_id = rule_id
         # The alert rule name. Used to filter the notification history by rule name.
         self.rule_name = rule_name
@@ -103,20 +103,20 @@ class ListUserNotifyHistoriesRequest(DaraModel):
         # - CRITICAL: critical
         # - ERROR: error
         # - WARNING: warning
-        # - INFO: information
+        # - INFO: info
         self.severity = severity
         # The subscription ID. Used to filter the notification history for a specified subscription. It is a 32-character string.
         self.subscription_id = subscription_id
         # The subscription name. Used to filter the notification history by subscription name.
         self.subscription_name = subscription_name
         # Specifies whether to filter by delivery result. Valid values:
-        # - true: Only successfully delivered records are returned.
-        # - false: Only failed delivery records are returned.
+        # - true: returns only successfully delivered records.
+        # - false: returns only failed delivery records.
         # If you do not specify this parameter, the results are not filtered by delivery result.
         self.success = success
         # The end time of the query. The value is a UNIX timestamp in seconds. Default value: the current time.
         self.to = to
-        # The workspace ID.
+        # The workspace identifier.
         # 
         # This parameter is required.
         self.workspace = workspace

@@ -16,7 +16,7 @@ class ListServicesResponseBody(DaraModel):
         services: List[main_models.ListServicesResponseBodyServices] = None,
         total_count: int = None,
     ):
-        # The maximum number of entries returned. Maximum value: 200.
+        # The maximum number of results to return. Maximum value: 200.
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token
@@ -96,23 +96,23 @@ class ListServicesResponseBodyServices(DaraModel):
     ):
         # The extended information.
         self.attributes = attributes
-        # The creation time.
+        # The time when the service was created.
         self.create_time = create_time
-        # The service description. This parameter is valid only when serviceType is set to RUM.
+        # The description of the service. This parameter is valid only when serviceType is set to RUM.
         self.description = description
         # The display name. This parameter is valid only when serviceType is set to RUM.
         self.display_name = display_name
-        # The ARMS application ID for backward compatibility.
+        # The legacy ARMS application ID for backward compatibility.
         self.pid = pid
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The service ID.
+        # The ID of the service.
         self.service_id = service_id
         # The service name.
         self.service_name = service_name
-        # The service status. This parameter is valid only when serviceType is set to RUM.
+        # The status of the service. This parameter is valid only when serviceType is set to RUM.
         self.service_status = service_status
-        # The service type.
+        # The type of the service.
         self.service_type = service_type
         # The workspace.
         self.workspace = workspace

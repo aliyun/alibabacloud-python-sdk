@@ -30,7 +30,7 @@ class MaintainWindowForView(DaraModel):
         self.description = description
         # The effective period range.
         self.effect_time_range = effect_time_range
-        # The crontab expression.
+        # The Crontab expression.
         self.effective = effective
         # Indicates whether the mute policy is enabled.
         self.enable = enable

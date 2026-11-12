@@ -17,19 +17,19 @@ class GetMemoriesRequest(DaraModel):
         run_id: str = None,
         user_id: str = None,
     ):
-        # The application\\"s agent ID.
+        # The agent ID of the application.
         self.agent_id = agent_id
-        # The Application ID.
+        # The application ID.
         self.app_id = app_id
-        # The filter criteria.
+        # The filter conditions.
         self.filters = filters
         # The page number.
         self.page = page
         # The page size.
         self.page_size = page_size
-        # The Run ID.
+        # The run ID.
         self.run_id = run_id
-        # The User ID.
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
