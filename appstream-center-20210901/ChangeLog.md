@@ -1,3 +1,6 @@
+2026-11-12 Version: 5.16.0
+- Generated python 2021-09-01 for appstream-center.
+
 2026-11-09 Version: 5.15.0
 - Support API GetMqttTicket.
 

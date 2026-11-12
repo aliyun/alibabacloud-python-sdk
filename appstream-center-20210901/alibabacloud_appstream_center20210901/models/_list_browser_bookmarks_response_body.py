@@ -16,7 +16,7 @@ class ListBrowserBookmarksResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of bookmarks on the current page.
+        # The bookmarks on the current page.
         self.data = data
         # The current page number.
         self.page_number = page_number

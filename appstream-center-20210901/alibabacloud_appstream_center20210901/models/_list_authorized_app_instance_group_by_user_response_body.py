@@ -20,7 +20,7 @@ class ListAuthorizedAppInstanceGroupByUserResponseBody(DaraModel):
         self.app_instance_group_models = app_instance_group_models
         # The current page number. The value is the same as the PageNumber request parameter.
         self.page_number = page_number
-        # The number of delivery groups returned per page. The value is the same as the PageSize request parameter.
+        # The number of delivery groups returned on each page. The value is the same as the PageSize request parameter.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -94,7 +94,7 @@ class ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModels(Dar
         support_user_group_mixed_auth: bool = None,
         user_group_auth_mode: str = None,
     ):
-        # The ID of the application image used by the delivery group.
+        # The ID of the app image used by the delivery group.
         self.app_center_image_id = app_center_image_id
         # The delivery group ID. When you call the [GetConnectionTicket](~~GetConnectionTicket~~) operation, you can specify this value to indicate the delivery group to connect to.
         self.app_instance_group_id = app_instance_group_id
@@ -102,21 +102,21 @@ class ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModels(Dar
         self.app_instance_group_name = app_instance_group_name
         # The specification type of the delivery group.
         self.app_instance_type = app_instance_type
-        # The list of applications deployed in the delivery group. This list includes all applications deployed in the delivery group image and is not affected by the AppId and AppName request parameters.
+        # The list of apps deployed in the delivery group. This list includes all apps deployed in the delivery group image and is not affected by the AppId and AppName request parameters.
         self.apps = apps
-        # The expiration time of the delivery group. The time is in ISO 8601 format with milliseconds and a time zone offset of +00:00. Format: yyyy-MM-ddTHH:mm:ss.SSS+HH:mm.
+        # The expiration time of the delivery group. The time is displayed in ISO 8601 format, including milliseconds and time zone offset. The returned time zone offset is +00:00. Format: yyyy-MM-ddTHH:mm:ss.SSS+HH:mm.
         self.expired_time = expired_time
-        # The creation time of the delivery group. The time is in ISO 8601 format with milliseconds and a time zone offset of +00:00. Format: yyyy-MM-ddTHH:mm:ss.SSS+HH:mm.
+        # The creation time of the delivery group. The time is displayed in ISO 8601 format, including milliseconds and time zone offset. The returned time zone offset is +00:00. Format: yyyy-MM-ddTHH:mm:ss.SSS+HH:mm.
         self.gmt_create = gmt_create
         # The region ID of the delivery group. For more information about supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
         self.region_id = region_id
         # The status of the delivery group. Valid values:
         # 
-        # - DEPLOYING: Deploying. The delivery group is creating or starting resources and cannot be connected to.
+        # - DEPLOYING: Deploying. The delivery group is creating or starting resources and cannot be connected.
         # - DEPLOYED: Deployed. Resources are ready but the delivery group is not published for external services.
-        # - PUBLISHED: Published. The delivery group is published and users can connect to it.
-        # - STOPPING: Unpublishing. The delivery group is stopping services.
-        # - STOPPED: Unpublished. The delivery group has stopped services and users cannot connect to it.
+        # - PUBLISHED: Published. The delivery group is published and users can connect to and use it.
+        # - STOPPING: Delisting. The delivery group is stopping services.
+        # - STOPPED: Delisted. The delivery group has stopped services and users cannot connect to it.
         # - MAINTAINING: Updating. The delivery group is undergoing maintenance or changes.
         # - FAILED: Publishing failed. Resource initialization failed.
         # - MAINTAIN_FAILED: Update failed. Maintenance or changes were not successful.
@@ -124,7 +124,7 @@ class ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModels(Dar
         # 
         # > Deleted delivery groups are not returned.
         self.status = status
-        # Specifies whether mixed authorization of users and user groups is supported.
+        # Specifies whether mixed authorization for users and user groups is supported.
         self.support_user_group_mixed_auth = support_user_group_mixed_auth
         # The authorization mode for users and user groups.
         self.user_group_auth_mode = user_group_auth_mode
@@ -226,15 +226,15 @@ class ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModelsApps
         app_version: str = None,
         app_version_name: str = None,
     ):
-        # The URL of the application icon.
+        # The URL of the app icon.
         self.app_icon = app_icon
-        # The application ID. When you call the [GetConnectionTicket](~~GetConnectionTicket~~) operation to obtain the connection ticket for the application, specify this value.
+        # The app ID. When you call the [GetConnectionTicket](~~GetConnectionTicket~~) operation to obtain the connection ticket for the app, specify this value.
         self.app_id = app_id
-        # The application name.
+        # The app name.
         self.app_name = app_name
-        # The application version number.
+        # The app version number.
         self.app_version = app_version
-        # The application version name.
+        # The app version name.
         self.app_version_name = app_version_name
 
     def validate(self):

@@ -15,13 +15,13 @@ class QuerySessionDataResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The return code. This parameter is empty if the request is successful and data is found. If the query result is empty, NO_DATA is returned. If the request fails, the corresponding error code is returned. For example, if the format of the statistical parameter is invalid, InvalidParameter.DateFormat is returned.
+        # The return code. It is empty when the request is successful and data is found. NO_DATA is returned when the query result is empty. A corresponding error code is returned when the request fails. For example, InvalidParameter.DateFormat is returned when the format of the statistical parameter is invalid.
         self.code = code
-        # The list of session trend data, sorted in ascending order by hour and minute. If there is no session data on the specified date, an empty array is returned, and the return code is NO_DATA.
+        # The list of session trend data, sorted in ascending order by hour and minute. An empty array is returned when there is no session data on the specified date, and the return code is NO_DATA.
         self.index_data = index_data
-        # The return message. This parameter is empty if the request is successful. If the request fails, the corresponding error description is returned.
+        # The return message. It is empty when the request is successful. A corresponding error description is returned when the request fails.
         self.message = message
-        # The ID of the request, used to locate call records and troubleshoot issues. The example value is partially desensitized.
+        # The ID of the request, used to locate call records and troubleshoot issues. The example is a partially desensitized value.
         self.request_id = request_id
 
     def validate(self):
@@ -78,13 +78,13 @@ class QuerySessionDataResponseBodyIndexData(DaraModel):
         session_cnt_mi: int = None,
         stat_date: str = None,
     ):
-        # The hour to which the session data belongs. Valid values: 00 to 23 (full hours).
+        # The hour to which the session data belongs, with a value range of 00 to 23 (full hours).
         self.hh = hh
-        # The minute to which the session data belongs, aggregated in 10-minute intervals. Valid values: 00 to 50 (specifically 00, 10, 20, 30, 40, and 50).
+        # The minute to which the session data belongs, aggregated in 10-minute intervals, with a value range of 00 to 50 (namely 00, 10, 20, 30, 40, and 50).
         self.mi = mi
         # The total number of sessions within the hour and minute interval (10-minute granularity).
         self.session_cnt_mi = session_cnt_mi
-        # The statistical date to which the session data belongs, in the yyyyMMdd format, which is the same as the StatDate request parameter.
+        # The statistical date to which the session data belongs, in the yyyyMMdd format, consistent with the request parameter StatDate.
         self.stat_date = stat_date
 
     def validate(self):

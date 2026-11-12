@@ -97,12 +97,18 @@ from ._describe_events_response import DescribeEventsResponse
 from ._describe_export_tasks_request import DescribeExportTasksRequest
 from ._describe_export_tasks_response_body import DescribeExportTasksResponseBody
 from ._describe_export_tasks_response import DescribeExportTasksResponse
+from ._describe_share_image_request import DescribeShareImageRequest
+from ._describe_share_image_response_body import DescribeShareImageResponseBody
+from ._describe_share_image_response import DescribeShareImageResponse
 from ._describe_wuying_server_request import DescribeWuyingServerRequest
 from ._describe_wuying_server_response_body import DescribeWuyingServerResponseBody
 from ._describe_wuying_server_response import DescribeWuyingServerResponse
 from ._describe_wuying_server_eip_info_request import DescribeWuyingServerEipInfoRequest
 from ._describe_wuying_server_eip_info_response_body import DescribeWuyingServerEipInfoResponseBody
 from ._describe_wuying_server_eip_info_response import DescribeWuyingServerEipInfoResponse
+from ._finish_validate_request import FinishValidateRequest
+from ._finish_validate_response_body import FinishValidateResponseBody
+from ._finish_validate_response import FinishValidateResponse
 from ._get_agent_runtime_statistic_request import GetAgentRuntimeStatisticRequest
 from ._get_agent_runtime_statistic_response_body import GetAgentRuntimeStatisticResponseBody
 from ._get_agent_runtime_statistic_response import GetAgentRuntimeStatisticResponse
@@ -121,9 +127,18 @@ from ._get_connection_ticket_response import GetConnectionTicketResponse
 from ._get_debug_app_instance_request import GetDebugAppInstanceRequest
 from ._get_debug_app_instance_response_body import GetDebugAppInstanceResponseBody
 from ._get_debug_app_instance_response import GetDebugAppInstanceResponse
+from ._get_effective_image_by_id_request import GetEffectiveImageByIdRequest
+from ._get_effective_image_by_id_response_body import GetEffectiveImageByIdResponseBody
+from ._get_effective_image_by_id_response import GetEffectiveImageByIdResponse
 from ._get_file_upload_info_request import GetFileUploadInfoRequest
 from ._get_file_upload_info_response_body import GetFileUploadInfoResponseBody
 from ._get_file_upload_info_response import GetFileUploadInfoResponse
+from ._get_image_by_id_request import GetImageByIdRequest
+from ._get_image_by_id_response_body import GetImageByIdResponseBody
+from ._get_image_by_id_response import GetImageByIdResponse
+from ._get_image_distribute_info_request import GetImageDistributeInfoRequest
+from ._get_image_distribute_info_response_body import GetImageDistributeInfoResponseBody
+from ._get_image_distribute_info_response import GetImageDistributeInfoResponse
 from ._get_model_provider_template_request import GetModelProviderTemplateRequest
 from ._get_model_provider_template_response_body import GetModelProviderTemplateResponseBody
 from ._get_model_provider_template_response import GetModelProviderTemplateResponse
@@ -158,6 +173,12 @@ from ._get_runtime_model_config_response import GetRuntimeModelConfigResponse
 from ._get_task_request import GetTaskRequest
 from ._get_task_response_body import GetTaskResponseBody
 from ._get_task_response import GetTaskResponse
+from ._get_upload_info_request import GetUploadInfoRequest
+from ._get_upload_info_response_body import GetUploadInfoResponseBody
+from ._get_upload_info_response import GetUploadInfoResponse
+from ._import_image_request import ImportImageRequest
+from ._import_image_response_body import ImportImageResponseBody
+from ._import_image_response import ImportImageResponse
 from ._list_agent_instance_versions_request import ListAgentInstanceVersionsRequest
 from ._list_agent_instance_versions_response_body import ListAgentInstanceVersionsResponseBody
 from ._list_agent_instance_versions_response import ListAgentInstanceVersionsResponse
@@ -207,6 +228,12 @@ from ._list_desktop_agent_runtime_response import ListDesktopAgentRuntimeRespons
 from ._list_image_request import ListImageRequest
 from ._list_image_response_body import ListImageResponseBody
 from ._list_image_response import ListImageResponse
+from ._list_image_base_info_request import ListImageBaseInfoRequest
+from ._list_image_base_info_response_body import ListImageBaseInfoResponseBody
+from ._list_image_base_info_response import ListImageBaseInfoResponse
+from ._list_image_tags_request import ListImageTagsRequest
+from ._list_image_tags_response_body import ListImageTagsResponseBody
+from ._list_image_tags_response import ListImageTagsResponse
 from ._list_llm_templates_request import ListLlmTemplatesRequest
 from ._list_llm_templates_shrink_request import ListLlmTemplatesShrinkRequest
 from ._list_llm_templates_response_body import ListLlmTemplatesResponseBody
@@ -252,6 +279,9 @@ from ._list_region_id_response import ListRegionIdResponse
 from ._list_regions_request import ListRegionsRequest
 from ._list_regions_response_body import ListRegionsResponseBody
 from ._list_regions_response import ListRegionsResponse
+from ._list_related_resource_request import ListRelatedResourceRequest
+from ._list_related_resource_response_body import ListRelatedResourceResponseBody
+from ._list_related_resource_response import ListRelatedResourceResponse
 from ._list_tag_cloud_resources_request import ListTagCloudResourcesRequest
 from ._list_tag_cloud_resources_response_body import ListTagCloudResourcesResponseBody
 from ._list_tag_cloud_resources_response import ListTagCloudResourcesResponse
@@ -363,6 +393,9 @@ from ._renew_wuying_server_response import RenewWuyingServerResponse
 from ._restart_wuying_server_request import RestartWuyingServerRequest
 from ._restart_wuying_server_response_body import RestartWuyingServerResponseBody
 from ._restart_wuying_server_response import RestartWuyingServerResponse
+from ._start_task_for_create_image_request import StartTaskForCreateImageRequest
+from ._start_task_for_create_image_response_body import StartTaskForCreateImageResponseBody
+from ._start_task_for_create_image_response import StartTaskForCreateImageResponse
 from ._start_task_for_distribute_image_request import StartTaskForDistributeImageRequest
 from ._start_task_for_distribute_image_response_body import StartTaskForDistributeImageResponseBody
 from ._start_task_for_distribute_image_response import StartTaskForDistributeImageResponse
@@ -372,6 +405,9 @@ from ._start_wuying_server_response import StartWuyingServerResponse
 from ._stop_wuying_server_request import StopWuyingServerRequest
 from ._stop_wuying_server_response_body import StopWuyingServerResponseBody
 from ._stop_wuying_server_response import StopWuyingServerResponse
+from ._submit_image_request import SubmitImageRequest
+from ._submit_image_response_body import SubmitImageResponseBody
+from ._submit_image_response import SubmitImageResponse
 from ._tag_cloud_resources_request import TagCloudResourcesRequest
 from ._tag_cloud_resources_response_body import TagCloudResourcesResponseBody
 from ._tag_cloud_resources_response import TagCloudResourcesResponse
@@ -473,6 +509,7 @@ from ._delete_app_instances_response_body import DeleteAppInstancesResponseBodyD
 from ._deliver_to_user_sls_request import DeliverToUserSlsRequestDeliveryScopes
 from ._describe_events_response_body import DescribeEventsResponseBodyEventList
 from ._describe_export_tasks_response_body import DescribeExportTasksResponseBodyExportTaskModel
+from ._describe_share_image_response_body import DescribeShareImageResponseBodyData
 from ._describe_wuying_server_response_body import DescribeWuyingServerResponseBodyDataPrivateIpSets
 from ._describe_wuying_server_response_body import DescribeWuyingServerResponseBodyData
 from ._describe_wuying_server_eip_info_response_body import DescribeWuyingServerEipInfoResponseBodyEipInfoModel
@@ -502,7 +539,20 @@ from ._get_browser_instance_group_response_body import GetBrowserInstanceGroupRe
 from ._get_browser_instance_group_response_body import GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelTimers
 from ._get_browser_instance_group_response_body import GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelUserLimit
 from ._get_browser_instance_group_response_body import GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModel
+from ._get_effective_image_by_id_response_body import GetEffectiveImageByIdResponseBodyDataImageInfoRegionModelListAdaptorInfoBOList
+from ._get_effective_image_by_id_response_body import GetEffectiveImageByIdResponseBodyDataImageInfoRegionModelListAppList
+from ._get_effective_image_by_id_response_body import GetEffectiveImageByIdResponseBodyDataImageInfoRegionModelListImageExtendInfoModel
+from ._get_effective_image_by_id_response_body import GetEffectiveImageByIdResponseBodyDataImageInfoRegionModelListImageRegionDistribute
+from ._get_effective_image_by_id_response_body import GetEffectiveImageByIdResponseBodyDataImageInfoRegionModelList
+from ._get_effective_image_by_id_response_body import GetEffectiveImageByIdResponseBodyDataTagList
+from ._get_effective_image_by_id_response_body import GetEffectiveImageByIdResponseBodyData
 from ._get_file_upload_info_response_body import GetFileUploadInfoResponseBodyData
+from ._get_image_by_id_response_body import GetImageByIdResponseBodyDataAdaptorInfoBOList
+from ._get_image_by_id_response_body import GetImageByIdResponseBodyDataImageExtendInfoModel
+from ._get_image_by_id_response_body import GetImageByIdResponseBodyDataImageRegionDistributeList
+from ._get_image_by_id_response_body import GetImageByIdResponseBodyData
+from ._get_image_distribute_info_response_body import GetImageDistributeInfoResponseBodyDataImageRegionDistributeList
+from ._get_image_distribute_info_response_body import GetImageDistributeInfoResponseBodyData
 from ._get_model_provider_template_response_body import GetModelProviderTemplateResponseBodyData
 from ._get_resource_group_agent_model_settings_response_body import GetResourceGroupAgentModelSettingsResponseBodyData
 from ._get_resource_modify_price_response_body import GetResourceModifyPriceResponseBodyDataPricePromotions
@@ -530,6 +580,8 @@ from ._get_runtime_model_config_response_body import GetRuntimeModelConfigRespon
 from ._get_task_response_body import GetTaskResponseBodyDataResourceList
 from ._get_task_response_body import GetTaskResponseBodyDataTaskStepList
 from ._get_task_response_body import GetTaskResponseBodyData
+from ._get_upload_info_response_body import GetUploadInfoResponseBodyData
+from ._import_image_response_body import ImportImageResponseBodyData
 from ._list_app_response_body import ListAppResponseBodyData
 from ._list_app_instance_group_request import ListAppInstanceGroupRequestTag
 from ._list_app_instance_group_response_body import ListAppInstanceGroupResponseBodyAppInstanceGroupModelsApps
@@ -580,6 +632,8 @@ from ._list_image_response_body import ListImageResponseBodyDataImageRegionDistr
 from ._list_image_response_body import ListImageResponseBodyDataSnapshotList
 from ._list_image_response_body import ListImageResponseBodyDataTagList
 from ._list_image_response_body import ListImageResponseBodyData
+from ._list_image_base_info_response_body import ListImageBaseInfoResponseBodyData
+from ._list_image_tags_response_body import ListImageTagsResponseBodyData
 from ._list_llm_templates_response_body import ListLlmTemplatesResponseBodyDataCreditMultiplier
 from ._list_llm_templates_response_body import ListLlmTemplatesResponseBodyDataInferenceMetadata
 from ._list_llm_templates_response_body import ListLlmTemplatesResponseBodyDataPricesPrices
@@ -604,6 +658,7 @@ from ._list_published_app_instance_group_response_body import ListPublishedAppIn
 from ._list_published_app_instance_group_response_body import ListPublishedAppInstanceGroupResponseBodyAppInstanceGroupModels
 from ._list_published_apps_response_body import ListPublishedAppsResponseBodyApps
 from ._list_regions_response_body import ListRegionsResponseBodyRegionModels
+from ._list_related_resource_response_body import ListRelatedResourceResponseBodyData
 from ._list_tag_cloud_resources_response_body import ListTagCloudResourcesResponseBodyResourceTagsTags
 from ._list_tag_cloud_resources_response_body import ListTagCloudResourcesResponseBodyResourceTags
 from ._list_tag_resources_request import ListTagResourcesRequestTag
@@ -659,6 +714,7 @@ from ._query_user_app_usage_time_rank_response_body import QueryUserAppUsageTime
 from ._query_user_usage_report_response_body import QueryUserUsageReportResponseBodyUserUsageReportDataModel
 from ._remove_resource_group_model_template_response_body import RemoveResourceGroupModelTemplateResponseBodyData
 from ._remove_runtime_model_template_response_body import RemoveRuntimeModelTemplateResponseBodyData
+from ._start_task_for_create_image_request import StartTaskForCreateImageRequestResourceList
 from ._tag_cloud_resources_request import TagCloudResourcesRequestTags
 from ._tag_cloud_resources_response_body import TagCloudResourcesResponseBodyFailedResourcesTags
 from ._tag_cloud_resources_response_body import TagCloudResourcesResponseBodyFailedResources
@@ -766,12 +822,18 @@ __all__ = [
     DescribeExportTasksRequest,
     DescribeExportTasksResponseBody,
     DescribeExportTasksResponse,
+    DescribeShareImageRequest,
+    DescribeShareImageResponseBody,
+    DescribeShareImageResponse,
     DescribeWuyingServerRequest,
     DescribeWuyingServerResponseBody,
     DescribeWuyingServerResponse,
     DescribeWuyingServerEipInfoRequest,
     DescribeWuyingServerEipInfoResponseBody,
     DescribeWuyingServerEipInfoResponse,
+    FinishValidateRequest,
+    FinishValidateResponseBody,
+    FinishValidateResponse,
     GetAgentRuntimeStatisticRequest,
     GetAgentRuntimeStatisticResponseBody,
     GetAgentRuntimeStatisticResponse,
@@ -790,9 +852,18 @@ __all__ = [
     GetDebugAppInstanceRequest,
     GetDebugAppInstanceResponseBody,
     GetDebugAppInstanceResponse,
+    GetEffectiveImageByIdRequest,
+    GetEffectiveImageByIdResponseBody,
+    GetEffectiveImageByIdResponse,
     GetFileUploadInfoRequest,
     GetFileUploadInfoResponseBody,
     GetFileUploadInfoResponse,
+    GetImageByIdRequest,
+    GetImageByIdResponseBody,
+    GetImageByIdResponse,
+    GetImageDistributeInfoRequest,
+    GetImageDistributeInfoResponseBody,
+    GetImageDistributeInfoResponse,
     GetModelProviderTemplateRequest,
     GetModelProviderTemplateResponseBody,
     GetModelProviderTemplateResponse,
@@ -827,6 +898,12 @@ __all__ = [
     GetTaskRequest,
     GetTaskResponseBody,
     GetTaskResponse,
+    GetUploadInfoRequest,
+    GetUploadInfoResponseBody,
+    GetUploadInfoResponse,
+    ImportImageRequest,
+    ImportImageResponseBody,
+    ImportImageResponse,
     ListAgentInstanceVersionsRequest,
     ListAgentInstanceVersionsResponseBody,
     ListAgentInstanceVersionsResponse,
@@ -876,6 +953,12 @@ __all__ = [
     ListImageRequest,
     ListImageResponseBody,
     ListImageResponse,
+    ListImageBaseInfoRequest,
+    ListImageBaseInfoResponseBody,
+    ListImageBaseInfoResponse,
+    ListImageTagsRequest,
+    ListImageTagsResponseBody,
+    ListImageTagsResponse,
     ListLlmTemplatesRequest,
     ListLlmTemplatesShrinkRequest,
     ListLlmTemplatesResponseBody,
@@ -921,6 +1004,9 @@ __all__ = [
     ListRegionsRequest,
     ListRegionsResponseBody,
     ListRegionsResponse,
+    ListRelatedResourceRequest,
+    ListRelatedResourceResponseBody,
+    ListRelatedResourceResponse,
     ListTagCloudResourcesRequest,
     ListTagCloudResourcesResponseBody,
     ListTagCloudResourcesResponse,
@@ -1032,6 +1118,9 @@ __all__ = [
     RestartWuyingServerRequest,
     RestartWuyingServerResponseBody,
     RestartWuyingServerResponse,
+    StartTaskForCreateImageRequest,
+    StartTaskForCreateImageResponseBody,
+    StartTaskForCreateImageResponse,
     StartTaskForDistributeImageRequest,
     StartTaskForDistributeImageResponseBody,
     StartTaskForDistributeImageResponse,
@@ -1041,6 +1130,9 @@ __all__ = [
     StopWuyingServerRequest,
     StopWuyingServerResponseBody,
     StopWuyingServerResponse,
+    SubmitImageRequest,
+    SubmitImageResponseBody,
+    SubmitImageResponse,
     TagCloudResourcesRequest,
     TagCloudResourcesResponseBody,
     TagCloudResourcesResponse,
@@ -1142,6 +1234,7 @@ __all__ = [
     DeliverToUserSlsRequestDeliveryScopes,
     DescribeEventsResponseBodyEventList,
     DescribeExportTasksResponseBodyExportTaskModel,
+    DescribeShareImageResponseBodyData,
     DescribeWuyingServerResponseBodyDataPrivateIpSets,
     DescribeWuyingServerResponseBodyData,
     DescribeWuyingServerEipInfoResponseBodyEipInfoModel,
@@ -1171,7 +1264,20 @@ __all__ = [
     GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelTimers,
     GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelUserLimit,
     GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModel,
+    GetEffectiveImageByIdResponseBodyDataImageInfoRegionModelListAdaptorInfoBOList,
+    GetEffectiveImageByIdResponseBodyDataImageInfoRegionModelListAppList,
+    GetEffectiveImageByIdResponseBodyDataImageInfoRegionModelListImageExtendInfoModel,
+    GetEffectiveImageByIdResponseBodyDataImageInfoRegionModelListImageRegionDistribute,
+    GetEffectiveImageByIdResponseBodyDataImageInfoRegionModelList,
+    GetEffectiveImageByIdResponseBodyDataTagList,
+    GetEffectiveImageByIdResponseBodyData,
     GetFileUploadInfoResponseBodyData,
+    GetImageByIdResponseBodyDataAdaptorInfoBOList,
+    GetImageByIdResponseBodyDataImageExtendInfoModel,
+    GetImageByIdResponseBodyDataImageRegionDistributeList,
+    GetImageByIdResponseBodyData,
+    GetImageDistributeInfoResponseBodyDataImageRegionDistributeList,
+    GetImageDistributeInfoResponseBodyData,
     GetModelProviderTemplateResponseBodyData,
     GetResourceGroupAgentModelSettingsResponseBodyData,
     GetResourceModifyPriceResponseBodyDataPricePromotions,
@@ -1199,6 +1305,8 @@ __all__ = [
     GetTaskResponseBodyDataResourceList,
     GetTaskResponseBodyDataTaskStepList,
     GetTaskResponseBodyData,
+    GetUploadInfoResponseBodyData,
+    ImportImageResponseBodyData,
     ListAppResponseBodyData,
     ListAppInstanceGroupRequestTag,
     ListAppInstanceGroupResponseBodyAppInstanceGroupModelsApps,
@@ -1249,6 +1357,8 @@ __all__ = [
     ListImageResponseBodyDataSnapshotList,
     ListImageResponseBodyDataTagList,
     ListImageResponseBodyData,
+    ListImageBaseInfoResponseBodyData,
+    ListImageTagsResponseBodyData,
     ListLlmTemplatesResponseBodyDataCreditMultiplier,
     ListLlmTemplatesResponseBodyDataInferenceMetadata,
     ListLlmTemplatesResponseBodyDataPricesPrices,
@@ -1273,6 +1383,7 @@ __all__ = [
     ListPublishedAppInstanceGroupResponseBodyAppInstanceGroupModels,
     ListPublishedAppsResponseBodyApps,
     ListRegionsResponseBodyRegionModels,
+    ListRelatedResourceResponseBodyData,
     ListTagCloudResourcesResponseBodyResourceTagsTags,
     ListTagCloudResourcesResponseBodyResourceTags,
     ListTagResourcesRequestTag,
@@ -1328,6 +1439,7 @@ __all__ = [
     QueryUserUsageReportResponseBodyUserUsageReportDataModel,
     RemoveResourceGroupModelTemplateResponseBodyData,
     RemoveRuntimeModelTemplateResponseBodyData,
+    StartTaskForCreateImageRequestResourceList,
     TagCloudResourcesRequestTags,
     TagCloudResourcesResponseBodyFailedResourcesTags,
     TagCloudResourcesResponseBodyFailedResources,

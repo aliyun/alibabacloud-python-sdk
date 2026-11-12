@@ -15,9 +15,13 @@ class RemoveRuntimeChannelRequest(DaraModel):
         runtime_ids: List[str] = None,
         runtime_type: str = None,
     ):
-        # The Agent platform.
+        # The agent platform.
         self.agent_platform = agent_platform
-        # The Agent provider.
+        # The agent provider. The mappings with the agent runtime type are as follows:
+        # 
+        # - JVS Computer: Set this parameter to OpenClaw.
+        # - OpenClaw: Set this parameter to OpenClaw.
+        # - Hermes Agent: Set this parameter to HermesAgent, and you must also set AgentPlatform to ENTERPRISE_JVS. If AgentPlatform is not specified, the default value is ENTERPRISE, and only OpenClaw is supported in this case.
         # 
         # This parameter is required.
         self.agent_provider = agent_provider
@@ -25,7 +29,7 @@ class RemoveRuntimeChannelRequest(DaraModel):
         # 
         # This parameter is required.
         self.code = code
-        # The list of Agent runtime IDs.
+        # The list of agent runtime IDs.
         # 
         # This parameter is required.
         self.runtime_ids = runtime_ids

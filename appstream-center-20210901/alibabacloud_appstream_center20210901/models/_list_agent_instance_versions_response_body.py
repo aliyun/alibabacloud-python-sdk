@@ -13,7 +13,7 @@ class ListAgentInstanceVersionsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of agent instance version numbers, deduplicated and sorted in ascending order by version number.
+        # The list of agent instance version numbers, which are deduplicated and sorted in ascending order.
         self.data = data
         # The request ID.
         self.request_id = request_id

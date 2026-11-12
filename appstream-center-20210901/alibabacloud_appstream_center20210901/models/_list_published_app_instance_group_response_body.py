@@ -16,15 +16,15 @@ class ListPublishedAppInstanceGroupResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of published delivery groups on the current page, sorted in descending order of creation time. An empty list is returned if no results match or if the requested page exceeds the result range.
+        # The list of published delivery groups on the current page, sorted in descending order of creation time. If no results match or the requested page exceeds the result range, an empty list is returned.
         self.app_instance_group_models = app_instance_group_models
         # The page number specified in the current request.
         self.page_number = page_number
-        # The number of delivery groups per page specified in the request. This value does not represent the actual number of entries returned on the current page. The actual number on the current page may be less than this value.
+        # The number of delivery groups per page specified in the request. Unit: delivery groups. This value does not represent the actual number of entries returned on the current page. The actual number on the current page may be less than this value.
         self.page_size = page_size
-        # The unique identifier of the request, which can be used to troubleshoot request issues.
+        # The unique identifier of the current request, which can be used to troubleshoot request issues.
         self.request_id = request_id
-        # The total number of delivery groups that meet all filter conditions. This value is not the number of entries returned on the current page. Each delivery group is counted only once. If no results match, the value is `0`.
+        # The total number of delivery groups that meet all filter conditions. Unit: delivery groups. This value is not the number of entries returned on the current page. Each delivery group is counted only once. If no results match, the value is 0.
         self.total_count = total_count
 
     def validate(self):
@@ -102,19 +102,19 @@ class ListPublishedAppInstanceGroupResponseBodyAppInstanceGroupModels(DaraModel)
         self.app_instance_group_name = app_instance_group_name
         # The specification type of the delivery group.
         self.app_instance_type = app_instance_type
-        # The list of deployed applications in the image of the delivery group. The `AppId` and `AppName` parameters in the request only determine whether the delivery group is selected, and do not restrict this list to the matched applications.
+        # The list of deployed applications in the image of the delivery group. The AppId and AppName parameters in the request only determine whether the delivery group is selected, and do not trim this list to the matched applications.
         self.apps = apps
-        # The expiration time of the delivery group. For delivery groups purchased as resources, the expiration time of their resources is returned. For other delivery groups, the expiration time of the delivery group itself is returned. The time is in ISO 8601 date and time format, including milliseconds and time zone offset. The returned time zone offset is +00:00. Format: yyyy-MM-ddTHH:mm:ss.SSS+HH:mm.
+        # The expiration time of the delivery group. For delivery groups sold as resources, the expiration time of their resources is returned. For other delivery groups, the expiration time of the delivery group itself is returned. The time is in the ISO 8601 date and time format, including milliseconds and time zone offset. The returned time zone offset is +00:00. Format: yyyy-MM-ddTHH:mm:ss.SSS+HH:mm.
         self.expired_time = expired_time
-        # The creation time of the delivery group. The time is in ISO 8601 date and time format, including milliseconds and time zone offset. The returned time zone offset is +00:00. Format: yyyy-MM-ddTHH:mm:ss.SSS+HH:mm.
+        # The creation time of the delivery group. The time is in the ISO 8601 date and time format, including milliseconds and time zone offset. The returned time zone offset is +00:00. Format: yyyy-MM-ddTHH:mm:ss.SSS+HH:mm.
         self.gmt_create = gmt_create
         # The ID of the region to which the delivery group belongs.
         self.region_id = region_id
-        # The status of the delivery group. This operation only returns delivery groups in the following states:
+        # The status of the delivery group. This operation only returns delivery groups in the following status:
         # 
-        # - `PUBLISHED`: The delivery group is published and listed, and can be included in the query results of this operation. This status does not indicate that a specified user has obtained access permissions.
+        # - PUBLISHED: Published and listed. Delivery groups in this status can be included in the query results of this operation. This status does not indicate that a specified user has obtained access permissions.
         self.status = status
-        # Indicates whether mixed authorization for users and user groups is supported.
+        # Specifies whether mixed authorization for users and user groups is supported.
         self.support_user_group_mixed_auth = support_user_group_mixed_auth
         # The authorization mode for users and user groups.
         self.user_group_auth_mode = user_group_auth_mode

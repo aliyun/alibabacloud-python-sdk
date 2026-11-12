@@ -17,7 +17,7 @@ class ListBrowserBookmarksRequest(DaraModel):
         self.browser_instance_group_id = browser_instance_group_id
         # The ID of the browser delivery group set. You must specify either this parameter or BrowserInstanceGroupId, but not both.
         self.browser_instance_group_set_id = browser_instance_group_set_id
-        # The keyword used for substring matching in bookmark names or URLs. The matching is case-insensitive for English characters. The keyword can be up to 1,024 characters in length after leading and trailing spaces are removed. If this parameter is not specified or contains only spaces, no filtering is applied. Special characters are matched literally.
+        # The keyword used for partial matching of the bookmark name or URL. The matching is case-insensitive for English characters. The keyword can be up to 1,024 characters in length after leading and trailing spaces are removed. If this parameter is not specified or contains only spaces, no filtering is performed. Special characters are matched literally.
         self.keyword = keyword
         # The page number of the page to return. Pages start from page 1.
         self.page_number = page_number
