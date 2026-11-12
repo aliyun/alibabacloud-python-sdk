@@ -16,11 +16,11 @@ class DescribeCloudSiemEventDetailRequest(DaraModel):
         # 
         # This parameter is required.
         self.incident_uuid = incident_uuid
-        # The region of the data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
-        # - cn-hangzhou: the assets reside in the Chinese mainland or Hong Kong (China).
-        # - ap-southeast-1: the assets reside in regions outside China.
+        # The region where the data management center of Threat Analysis is located. Select the region of the management center based on the region where your assets are located. Valid values:
+        # - cn-hangzhou: Assets are located in the Chinese mainland and Hong Kong (China).
+        # - ap-southeast-1: Assets are located outside China.
         self.region_id = region_id
-        # The ID of the member to which the administrator switches the view.
+        # The ID of the user whose view the administrator switches to.
         self.role_for = role_for
         # The view type. Valid values:
         # 

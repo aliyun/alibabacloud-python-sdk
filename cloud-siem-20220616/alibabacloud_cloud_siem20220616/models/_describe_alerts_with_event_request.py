@@ -39,7 +39,7 @@ class DescribeAlertsWithEventRequest(DaraModel):
         self.asset_id = asset_id
         # The asset name.
         self.asset_name = asset_name
-        # The current page number. The value must be greater than or equal to 1.
+        # The page number of the current page. The value must be greater than or equal to 1.
         # 
         # This parameter is required.
         self.current_page = current_page
@@ -51,12 +51,12 @@ class DescribeAlertsWithEventRequest(DaraModel):
         self.entity_name = entity_name
         # The incident ID.
         self.incident_uuid = incident_uuid
-        # Specifies whether the alert has been defended. Valid values:
+        # Specifies whether the threat is blocked. Valid values:
         # 
-        # - 0: detected
-        # - 1: blocked
+        # - 0: Detected.
+        # - 1: Blocked.
         self.is_defend = is_defend
-        # The threat level in JSON array format. Valid values:
+        # The threat level. The value is a JSON array. Valid values:
         # - serious: High.
         # - suspicious: Medium.
         # - remind: Low.
@@ -65,18 +65,18 @@ class DescribeAlertsWithEventRequest(DaraModel):
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The region where the threat analysis data management center resides. Specify the management center based on the region of your assets. Valid values:
-        # - cn-hangzhou: Your assets reside in Chinese mainland or China (Hong Kong).
-        # - ap-southeast-1: Your assets reside in regions outside China.
+        # The region where the data management center of Threat Analysis is located. You must select the region of the management center based on the region where your assets are located. Valid values:
+        # - cn-hangzhou: Assets are located in the Chinese mainland and Hong Kong (China).
+        # - ap-southeast-1: Assets are located outside China.
         self.region_id = region_id
-        # The member account ID of the resource directory.
+        # The ID of the member account in the resource directory.
         self.role_for = role_for
         # The view type. Valid values:
         # 
-        # - 0: the view of the current Alibaba Cloud account.
-        # - 1: the view of all accounts in the enterprise.
+        # - 0: The view of the current Alibaba Cloud account.
+        # - 1: The view of all accounts in the enterprise.
         self.role_type = role_type
-        # The alert data source.
+        # The data source of the alert.
         self.source = source
         # The start time of the query. Unit: milliseconds.
         self.start_time = start_time

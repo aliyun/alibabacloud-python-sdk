@@ -11,9 +11,9 @@ class DeleteBindAccountResponseBody(DaraModel):
         data: main_models.DeleteBindAccountResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The response data.
         self.data = data
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -49,7 +49,7 @@ class DeleteBindAccountResponseBodyData(DaraModel):
         self,
         count: int = None,
     ):
-        # The number of account bindings that are deleted. A value of 1 indicates that the operation was successful. A value of 0 or less indicates that the operation failed.
+        # The number of deleted account bindings. A value of 1 indicates success, and a value of 0 or less indicates failure.
         self.count = count
 
     def validate(self):

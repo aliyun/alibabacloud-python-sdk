@@ -15,17 +15,15 @@ class PostAutomateResponseConfigResponseBody(DaraModel):
     ):
         # The status code of the request.
         self.code = code
-        # The return value of the request.
+        # The response data.
         self.data = data
-        # The message returned for the request.
+        # The message returned in the response.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # - **true**: The request was successful.
-        # 
-        # - **false**: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - **true**: The request is successful.
+        # - **false**: The request fails.
         self.success = success
 
     def validate(self):

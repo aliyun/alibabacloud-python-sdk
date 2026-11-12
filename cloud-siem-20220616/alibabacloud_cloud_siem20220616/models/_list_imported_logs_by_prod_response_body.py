@@ -13,7 +13,7 @@ class ListImportedLogsByProdResponseBody(DaraModel):
         data: List[main_models.ListImportedLogsByProdResponseBodyData] = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The response data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -67,45 +67,37 @@ class ListImportedLogsByProdResponseBodyData(DaraModel):
         total_user_count: int = None,
         un_imported_user_count: int = None,
     ):
-        # Indicates whether logs are automatically ingested for new accounts. Valid values:
-        # 
-        # - 1: Logs are automatically ingested.
-        # 
-        # - 0: Logs are not automatically ingested.
+        # Indicates whether new accounts are automatically onboarded. Valid values:
+        # - 1: Automatically onboarded. 
+        # - 0: Not automatically onboarded.
         self.auto_imported = auto_imported
-        # The multicloud code. Valid values:
-        # 
-        # - qcloud: Tencent Cloud.
-        # 
-        # - aliyun: Alibaba Cloud.
-        # 
+        # The multi-cloud code. Valid values:
         # - hcloud: Huawei Cloud.
+        # - qcloud: Tencent Cloud.
+        # - aliyun: Alibaba Cloud.
         self.cloud_code = cloud_code
-        # Indicates whether the log is ingested. Valid values:
-        # 
-        # - 1: The log is ingested.
-        # 
-        # - 0: The log is not ingested.
+        # Indicates whether the log is onboarded. Valid values:
+        # - 1: Onboarded. 
+        # - 0: Not onboarded.
         self.imported = imported
-        # The number of users who have ingested the log.
+        # The number of users that have onboarded the log.
         self.imported_user_count = imported_user_count
-        # The code of the log.
+        # The log code.
         self.log_code = log_code
-        # The display code of the log.
+        # The log display code.
         self.log_mds_code = log_mds_code
         # The log type. Valid values:
-        # 
-        # - 1: Ingested on the threat analysis side.
-        # 
-        # - 2: Predefined Simple Log Service log. -3: Custom Simple Log Service log.
+        # - 1: Centralized onboarding. 
+        # - 2: Predefined Log Service. 
+        # - 3: Custom Log Service.
         self.log_type = log_type
-        # The time when the log was last ingested.
+        # The last onboarding time of the log. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.modify_time = modify_time
-        # The code of the product to which the log belongs.
+        # The product code corresponding to the log.
         self.prod_code = prod_code
         # The total number of users for the log.
         self.total_user_count = total_user_count
-        # The number of users who have not ingested the log.
+        # The number of users that have not onboarded the log.
         self.un_imported_user_count = un_imported_user_count
 
     def validate(self):

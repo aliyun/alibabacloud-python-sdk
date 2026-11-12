@@ -11,15 +11,15 @@ class DescribeUserSiemOrderStatusRequest(DaraModel):
         role_for: int = None,
         role_type: int = None,
     ):
-        # The region of the data management center for threat detection and response. Select the data management center based on the region where your assets reside. Valid values:
-        # - cn-hangzhou: assets in the Chinese mainland or Hong Kong (China).
-        # - ap-southeast-1: assets in regions outside China.
+        # The region of the Threat Analysis data management center. Select the management center region based on the region where your assets are located. Valid values:
+        # - cn-hangzhou: Your assets are located in the Chinese mainland and Hong Kong (China).
+        # - ap-southeast-1: Your assets are located in regions outside China.
         self.region_id = region_id
-        # The user ID that the administrator uses to switch to another member\\"s perspective.
+        # The ID of the user whose perspective the administrator switches to.
         self.role_for = role_for
         # The view type. Valid values:
-        # - 0: the current Alibaba Cloud account view.
-        # - 1: the view of all accounts in the enterprise.
+        # - 0: The view of the current Alibaba Cloud account.
+        # - 1: The view of all accounts in the enterprise.
         self.role_type = role_type
 
     def validate(self):

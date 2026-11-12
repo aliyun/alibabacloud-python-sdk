@@ -13,7 +13,7 @@ class ListRdUsersResponseBody(DaraModel):
         data: List[main_models.ListRdUsersResponseBodyData] = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The response data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -62,21 +62,19 @@ class ListRdUsersResponseBodyData(DaraModel):
         sub_user_id: int = None,
         sub_user_name: str = None,
     ):
-        # Indicates whether the account is delegated to view its own resources.
+        # Specifies whether the account is delegated to view its own resources.
         self.delegated_or_not = delegated_or_not
-        # Indicates whether the account is managed by the multi-account control feature of Threat Analysis. Valid values:
-        # 
+        # Specifies whether the account is managed by the multi-account management feature of Threat Analysis. Valid values:
         # - true: The account is managed.
-        # 
         # - false: The account is not managed.
         self.joined = joined
-        # The time when the account was added.
+        # The time when the account was added to management.
         self.joined_time = joined_time
-        # The ID of the Alibaba Cloud account that purchased Threat Analysis.
+        # The Alibaba Cloud account ID that purchased Threat Analysis.
         self.main_user_id = main_user_id
-        # The ID of the member Alibaba Cloud account.
+        # The Alibaba Cloud account ID for Threat Analysis.
         self.sub_user_id = sub_user_id
-        # The name of the member Alibaba Cloud account.
+        # The name of the Alibaba Cloud account managed by Threat Analysis.
         self.sub_user_name = sub_user_name
 
     def validate(self):

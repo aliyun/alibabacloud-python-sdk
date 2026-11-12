@@ -35,66 +35,87 @@ class ListDisposeStrategyShrinkRequest(DaraModel):
         status: int = None,
         strategy_id: str = None,
     ):
+        # The UUID of the alert.
         self.alert_uuid = alert_uuid
-        # The current page number, which must be greater than or equal to 1.
+        # The number of the current page. The value must be greater than or equal to 1.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The policy status. Valid values:
+        # The status of the policy. Valid values:
+        # - 0: invalid
+        # - 1: valid
         self.effective_status = effective_status
-        # The query end time, in milliseconds.
+        # The end time of the query. Unit: milliseconds.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The entity characteristic value, which can be used for fuzzy match on response entities.
+        # The identity value of the entity. You can use this parameter to perform a fuzzy search for response entities.
         self.entity_identity = entity_identity
-        # The entity type. Valid values:
+        # The type of the entity. Valid values:
+        # - ip: IP address
+        # - process: process
+        # - file: file
         self.entity_type = entity_type
+        # The list of entity UUIDs.
         self.entity_uuid_list_shrink = entity_uuid_list_shrink
+        # The grouping dimension.
         self.group_by = group_by
+        # The grouping key value.
         self.group_key = group_key
-        # The event ID.
+        # The ID of the incident.
         self.incident_uuid = incident_uuid
+        # The maximum number of records to return in a single query.
         self.max_results = max_results
+        # The token used to query the next page.
         self.next_token = next_token
-        # The sort direction. Valid values:
+        # The sort order. Valid values:
+        # - desc: descending order
+        # - asc: ascending order
         self.order = order
-        # The field used to sort results. Valid values:
-        # - GmtModified: sorts results by update time.
-        # - GmtCreate: sorts results by creation time.
-        # - FinishTime: sorts results by policy end time.
+        # The field used for sorting. Valid values:
+        # - GmtModified: sort by update time
+        # - GmtCreate: sort by creation time
+        # - FinishTime: sort by policy end time
         self.order_field = order_field
-        # The number of entries per page, with a maximum of 100.
+        # The number of entries per page. Maximum value: 100.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The unique identifier name of the playbook.
+        # The unique name of the playbook.
         self.playbook_name = playbook_name
-        # The playbook type. Valid values:
-        # - system: manual handling
+        # The type of the playbook. Valid values:
+        # - system: manual response
         # - custom: event-triggered playbook
         # - custom_alert: alert-triggered playbook
         # - soar-manual: manually run playbook
         # - soar-mdr: MDR-run playbook
         self.playbook_types = playbook_types
-        # The playbook UUID.
+        # The UUID of the playbook.
         self.playbook_uuid = playbook_uuid
+        # The query mode.
         self.query_mode = query_mode
-        # The region where the data management center of Cloud Threat Detection and Response (CTDR) is located. Specify the management center based on the region of your assets. Valid values:
+        # The region where the data management center of Cloud Threat Detection and Response (CTDR) is located. You must select the region of the management center based on the region where your assets reside. Valid values:
+        # - cn-hangzhou: assets reside in the Chinese mainland and Hong Kong (China)
+        # - ap-southeast-1: assets reside in regions outside China
         self.region_id = region_id
+        # The ID of the response rule.
         self.response_rule_id = response_rule_id
-        # The Alibaba Cloud account ID of the member to which the administrator switches the view.
+        # The Alibaba Cloud account ID of the member whose perspective the administrator switches to.
         self.role_for = role_for
-        # The view type.
+        # The type of the view. Valid values:
+        # 
+        # - 0: view of the current Alibaba Cloud account
+        # - 1: view of all accounts in the enterprise
         self.role_type = role_type
-        # The SOAR response policy ID.
+        # The ID of the Security Orchestration, Automation, and Response (SOAR) response policy.
         self.sophon_task_id = sophon_task_id
-        # The query start time, in milliseconds.
+        # The start time of the query. Unit: milliseconds.
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The response policy status.
+        # The status of the response policy.
         self.status = status
+        # The ID of the response policy.
         self.strategy_id = strategy_id
 
     def validate(self):

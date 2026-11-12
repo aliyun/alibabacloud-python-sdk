@@ -21,43 +21,41 @@ class GetEntitiyStatRequest(DaraModel):
         role_type: int = None,
         tags: str = None,
     ):
-        # The asset ID associated with the incident.
+        # The ID of the asset associated with the incident.
         self.asset_name = asset_name
-        # The asset ID associated with the incident.
+        # The ID of the asset associated with the incident.
         self.asset_uuid = asset_uuid
-        # The asset ID associated with the incident.
+        # The ID of the asset associated with the incident.
         self.entity_name = entity_name
-        # The asset ID associated with the incident.
+        # The ID of the asset associated with the incident.
         self.entity_type = entity_type
-        # The asset ID associated with the incident.
+        # The ID of the asset associated with the incident.
         self.entity_uuid = entity_uuid
+        # The list of entity UUIDs. Separate multiple UUIDs with commas.
         self.entity_uuids = entity_uuids
         # The incident ID.
         # 
         # This parameter is required.
         self.incident_uuid = incident_uuid
-        # The asset ID associated with the incident.
+        # The ID of the asset associated with the incident.
         self.is_asset = is_asset
         # The sort order of the incident list. Valid values:
-        # 
-        # - desc: descending order.
-        # - asc: ascending order.
+        # - desc: descending order
+        # - asc: ascending order
         self.is_malware_entity = is_malware_entity
-        # The region where the threat detection and response data management center resides. Select the management center based on the region of your assets. Valid values:
-        # 
-        # - cn-hangzhou: The assets belong to the Chinese mainland or Hong Kong (China).
-        # - ap-southeast-1: The assets belong to regions outside China.
+        # The region where the data management center of Threat Analysis is located. Select the region of the management center based on the region where your assets reside. Valid values:
+        # - cn-hangzhou: Assets reside in the Chinese mainland and Hong Kong (China).
+        # - ap-southeast-1: Assets reside in regions outside China.
         self.region_id = region_id
-        # The user ID of the member to which the administrator switches the view.
+        # The ID of the user whose view the administrator switches to.
         self.role_for = role_for
-        # The view type. Valid values:
-        # 
-        # - 0: single-account logon.
-        # - 1: global view.
-        # - 2: switched view.
-        # - 3: partial view.
+        # The role type. Valid values:
+        # - 0: single-account logon
+        # - 1: global view
+        # - 2: switched view
+        # - 3: local view
         self.role_type = role_type
-        # The entity tags. The value is a JSON array string in the following format: \\"[{\\"tagKey1\\":\\"tagValue1\\"},{\\"tagKey2\\":\\"tagValue2\\"}]\\"
+        # The entity tags. The value is a JSON array string in the following format: "[{"tagKey1":"tagValue1"},{"tagKey2":"tagValue2"}]".
         self.tags = tags
 
     def validate(self):

@@ -17,23 +17,19 @@ class DescribeEntityInfoRequest(DaraModel):
     ):
         # The logical ID of the entity.
         self.entity_id = entity_id
-        # The feature value of the entity. You can perform a fuzzy search for the entity.
+        # The feature value of the entity. You can use this parameter to perform a fuzzy search for handled entities.
         self.entity_identity = entity_identity
-        # The globally unique UUID of the event.
+        # The globally unique UUID of the incident.
         self.incident_uuid = incident_uuid
-        # The region of the Data Management center. Select a region based on the region where your assets are located. Valid values:
-        # 
-        # - cn-hangzhou: Your assets are in the Chinese mainland or China (Hong Kong).
-        # 
-        # - ap-southeast-1: Your assets are in a region outside China.
+        # The region where the data management center of Threat Analysis is located. You must select the region of the management center based on the region where your assets are located. Valid values:
+        # - cn-hangzhou: Assets are located in the Chinese mainland and Hong Kong (China).
+        # - ap-southeast-1: Assets are located outside China.
         self.region_id = region_id
-        # The user ID of the member. The administrator can use this ID to switch to the view of this member.
+        # The ID of the user whose perspective the administrator switches to.
         self.role_for = role_for
-        # The view type.
-        # 
-        # - 0: the view of the current Alibaba Cloud account.
-        # 
-        # - 1: the view of all accounts that belong to the enterprise.
+        # The view type. Valid values:
+        # - 0: the view of the current Alibaba Cloud account
+        # - 1: the view of all accounts in the enterprise
         self.role_type = role_type
         # The ID of the SOAR response policy.
         self.sophon_task_id = sophon_task_id

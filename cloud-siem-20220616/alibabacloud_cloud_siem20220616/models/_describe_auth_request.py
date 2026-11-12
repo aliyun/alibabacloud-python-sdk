@@ -9,11 +9,9 @@ class DescribeAuthRequest(DaraModel):
         self,
         region_id: str = None,
     ):
-        # The region of the threat analysis center. Select a region based on where your assets are located. Valid values:
-        # 
-        # - cn-hangzhou: Select this value if your assets are deployed in the Chinese mainland or the China (Hong Kong) region.
-        # 
-        # - ap-southeast-1: Select this value if your assets are deployed in regions outside the Chinese mainland.
+        # The region of the data management center for Threat Analysis. Select the management center region based on the region where your assets are located. Valid values:
+        # - cn-hangzhou: Select this value if your assets are located in the Chinese mainland and Hong Kong (China).
+        # - ap-southeast-1: Select this value if your assets are located outside China.
         self.region_id = region_id
 
     def validate(self):

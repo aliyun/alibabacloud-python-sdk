@@ -25,69 +25,55 @@ class DescribeCloudSiemEventsRequest(DaraModel):
         status: int = None,
         thread_level: List[str] = None,
     ):
-        # The ID of the asset that is associated with the event.
+        # The ID of the asset associated with the event.
         self.asset_id = asset_id
-        # The page number. The value must be greater than or equal to 1.
+        # The current page number. The value must be greater than or equal to 1.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The end time of the query. This value is a UNIX timestamp. Unit: milliseconds.
+        # The end time for querying events, in milliseconds.
         self.end_time = end_time
-        # The UUID of the entity that is associated with the event.
+        # The UUID of the entity associated with the event.
         self.entity_uuid = entity_uuid
         # The name of the event.
         self.event_name = event_name
-        # The event ID.
+        # The ID of the event.
         self.incident_uuid = incident_uuid
-        # The sort order. Valid values:
-        # 
-        # - desc: descending
-        # 
-        # - asc: ascending
+        # The sort order of the event list. Valid values:
+        # - desc: Descending order.
+        # - asc: Ascending order.
         self.order = order
-        # The field to sort the event list by. Valid values:
-        # 
-        # - GmtModified: Sorts by modification time. This is the default value.
-        # 
-        # - ThreatScore: Sorts by threat score.
+        # The field used to sort the event list. Valid values:
+        # - GmtModified: Sorts by event generation time (default).
+        # - ThreatScore: Sorts by event threat score.
         self.order_field = order_field
-        # The number of entries per page. The maximum value is 100.
+        # The number of entries per page. Maximum value: 100.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The region where the Data Management center of Threat Analysis & Response is located. Select the region based on the region where your assets are located. Valid values:
-        # 
-        # - cn-hangzhou: Your assets are in the Chinese mainland or China (Hong Kong).
-        # 
-        # - ap-southeast-1: Your assets are in regions outside China.
+        # The region where the data management center of Cloud Threat Detection and Response (CTDR) is located. Select the region of the management center based on the region where your assets are located. Valid values:
+        # - cn-hangzhou: Assets are in the Chinese mainland and Hong Kong (China).
+        # - ap-southeast-1: Assets are in regions outside China.
         self.region_id = region_id
-        # The ID of the member. The administrator can use this ID to view the data of the member.
+        # The ID of the user whose view the administrator switches to.
         self.role_for = role_for
-        # The view type.
+        # The view type. Valid values:
         # 
-        # - 0: The view of the current Alibaba Cloud account.
-        # 
-        # - 1: The view of all accounts that are managed by the administrator account.
+        # - 0: Current Alibaba Cloud account view.
+        # - 1: View of all accounts in the enterprise.
         self.role_type = role_type
-        # The start time of the query. This value is a UNIX timestamp. Unit: milliseconds.
+        # The start time for querying events, in milliseconds.
         self.start_time = start_time
         # The status of the event. Valid values:
-        # 
-        # - 0: unhandled
-        # 
-        # - 1: in progress
-        # 
-        # - 5: failed
-        # 
-        # - 10: handled
+        # - 0: Unhandled.
+        # - 1: Processing.
+        # - 5: Failed.
+        # - 10: Handled.
         self.status = status
-        # The threat level of the event. The value is a JSON array. Valid values:
-        # 
-        # - serious: high
-        # 
-        # - suspicious: medium
-        # 
-        # - remind: low
+        # The threat level of the event, in JSON array format. Valid values:
+        # - serious: High.
+        # - suspicious: Medium.
+        # - remind: Low.
         self.thread_level = thread_level
 
     def validate(self):

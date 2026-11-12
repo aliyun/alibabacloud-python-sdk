@@ -15,29 +15,25 @@ class AddUserSourceLogConfigRequest(DaraModel):
         source_prod_code: str = None,
         sub_user_id: int = None,
     ):
-        # Specifies whether to add or delete the log collection task. Valid values:
-        # 
-        # - -1: Deletes the task.
-        # 
-        # - 0: Adds the task.
+        # Specifies the ingestion action. Valid values:
+        # - -1: Deletes the ingestion.
+        # - 0: Adds the ingestion.
         self.deleted = deleted
-        # The detailed information about the SLS log to be collected.
+        # The detailed Simple Log Service (SLS) information for log ingestion.
         self.dis_play_line = dis_play_line
-        # The region where the Data Management center of Threat Analysis is located. Select a region based on the region where your assets reside. Valid values:
-        # 
-        # - cn-hangzhou: Your assets are in the Chinese mainland or Hong Kong (China).
-        # 
-        # - ap-southeast-1: Your assets are in regions outside China.
+        # The region where the data management center of Threat Analysis is located. Select the region of the management center based on the region of your assets. Valid values:
+        # - cn-hangzhou: The assets are located in the Chinese mainland and Hong Kong (China).
+        # - ap-southeast-1: The assets are located outside China.
         self.region_id = region_id
-        # The code of the log.
+        # The log code.
         self.source_log_code = source_log_code
-        # The detailed information about the Simple Log Service (SLS) log to be collected. The value is a JSON string.
+        # The detailed Simple Log Service (SLS) information for log ingestion in JSON format.
         # 
         # This parameter is required.
         self.source_log_info = source_log_info
-        # The code of the product.
+        # The product code.
         self.source_prod_code = source_prod_code
-        # The ID of the Alibaba Cloud account for which you want to collect logs.
+        # The Alibaba Cloud account ID for log ingestion.
         # 
         # This parameter is required.
         self.sub_user_id = sub_user_id

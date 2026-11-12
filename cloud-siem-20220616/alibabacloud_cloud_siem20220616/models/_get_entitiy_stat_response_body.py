@@ -16,7 +16,7 @@ class GetEntitiyStatResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code.
         self.code = code
         # The response data.
         self.data = data
@@ -24,10 +24,9 @@ class GetEntitiyStatResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # - true: The request was successful.
-        # - false: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):
@@ -91,6 +90,7 @@ class GetEntitiyStatResponseBodyData(DaraModel):
         entity_uuid: str = None,
         incident_num: int = None,
     ):
+        # The number of alerts associated with the entity.
         self.alert_num = alert_num
         # The number of entities.
         self.entity_num = entity_num
@@ -98,6 +98,7 @@ class GetEntitiyStatResponseBodyData(DaraModel):
         self.entity_type = entity_type
         # The entity UUID.
         self.entity_uuid = entity_uuid
+        # The number of incidents associated with the entity.
         self.incident_num = incident_num
 
     def validate(self):

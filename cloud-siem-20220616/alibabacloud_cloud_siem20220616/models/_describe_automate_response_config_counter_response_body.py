@@ -14,19 +14,17 @@ class DescribeAutomateResponseConfigCounterResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The request status code.
+        # The status code of the request.
         self.code = code
-        # The data returned.
+        # The response data.
         self.data = data
-        # The message returned.
+        # The message returned by the request.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # - true: The request was successful.
-        # 
-        # - false: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):

@@ -16,31 +16,25 @@ class DescribeAlertSourceRequest(DaraModel):
         role_type: int = None,
         start_time: int = None,
     ):
-        # The end of the query time range. The value is a UNIX timestamp in milliseconds.
+        # The end time of the query. Unit: milliseconds.
         self.end_time = end_time
-        # The threat levels. Valid values:
-        # 
-        # - `serious`: High
-        # 
-        # - `suspicious`: Medium
-        # 
-        # - `remind`: Low
+        # The threat level. The value is a JSON array. Valid values:
+        # - serious: High.
+        # - suspicious: Medium.
+        # - remind: Low.
         self.level = level
-        # The region of the data management center for threat analysis. Select the data management center that corresponds to the region where your assets are located. Valid values:
-        # 
-        # - `cn-hangzhou`: for assets in the Chinese mainland and Hong Kong (China).
-        # 
-        # - `ap-southeast-1`: for assets in regions outside the Chinese mainland.
+        # The region where the data management center of Threat Analysis is located. You must select the region of the management center based on the region where your assets are located. Valid values:
+        # - cn-hangzhou: Assets are located in the Chinese mainland and Hong Kong (China).
+        # - ap-southeast-1: Assets are located in regions outside China.
         self.region_id = region_id
-        # The user ID of the member whose data you want to view. An administrator uses this parameter to view data from the perspective of a specific member.
+        # The ID of the user whose perspective the administrator switches to.
         self.role_for = role_for
-        # The type of view. Valid values:
+        # The view type. Valid values:
         # 
-        # - `0`: View data for the current Alibaba Cloud account.
-        # 
-        # - `1`: View data for all accounts in the enterprise.
+        # - 0: The view of the current Alibaba Cloud account.
+        # - 1: The view of all accounts in the enterprise.
         self.role_type = role_type
-        # The start of the query time range. The value is a UNIX timestamp in milliseconds.
+        # The start time of the query. Unit: milliseconds.
         self.start_time = start_time
 
     def validate(self):

@@ -18,25 +18,32 @@ class DescribeDisposeAndPlaybookRequest(DaraModel):
         role_for: int = None,
         role_type: int = None,
     ):
+        # Specifies whether to return only available playbooks.
         self.available_only = available_only
         # The current page number. The value must be greater than or equal to 1.
         self.current_page = current_page
         # The entity type. Valid values:
+        # - ip: IP address.
+        # - process: Process.
+        # - file: File.
         self.entity_type = entity_type
-        # The entity UUID.
+        # The UUID of the entity.
         self.entity_uuid = entity_uuid
+        # The list of entity UUIDs. Separate multiple UUIDs with commas (,).
         self.entity_uuid_list = entity_uuid_list
-        # The incident UUID.
+        # The UUID of the incident.
         self.incident_uuid = incident_uuid
         # The number of entries per page. Maximum value: 100.
         self.page_size = page_size
-        # The region where the threat analysis data management center is located. Specify the management center region based on the region of your assets. Valid values:
-        # - cn-hangzhou: Your assets are located in the Chinese mainland or Hong Kong (China).
-        # - ap-southeast-1: Your assets are located outside China.
+        # The region where the data management center of Threat Analysis is located. You must select the region of the management center based on the region where your assets are located. Valid values:
+        # - cn-hangzhou: Assets are located in the Chinese mainland and Hong Kong (China).
+        # - ap-southeast-1: Assets are located outside China.
         self.region_id = region_id
-        # The user ID of the member to which the administrator switches the view.
+        # The ID of the user whose view the administrator switches to.
         self.role_for = role_for
-        # The view type.
+        # The view type. Valid values:
+        # - 0: Current Alibaba Cloud account view.
+        # - 1: View of all accounts in the enterprise.
         self.role_type = role_type
 
     def validate(self):

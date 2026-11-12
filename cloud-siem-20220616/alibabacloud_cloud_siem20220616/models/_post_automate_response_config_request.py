@@ -18,39 +18,30 @@ class PostAutomateResponseConfigRequest(DaraModel):
         rule_name: str = None,
         sub_user_id: int = None,
     ):
-        # The configuration of the action that is specified in the automated response rule. The value is a JSON array.
+        # The action configuration of the automated response rule, in JSON array format.
         self.action_config = action_config
         # The type of the action. Separate multiple values with commas. Valid values:
-        # 
-        # - **doPlaybook**: runs a playbook
-        # 
-        # - **changeEventStatus**: changes the status of the event
-        # 
-        # - **changeThreatLevel**: changes the threat level of the event
+        # - **doPlaybook**: execute playbook
+        # - **changeEventStatus**: change event status
+        # - **changeThreatLevel**: change event threat level
         self.action_type = action_type
         # The type of the automated response. Valid values:
-        # 
         # - **event**: event
-        # 
         # - **alert**: alert
         self.auto_response_type = auto_response_type
-        # The trigger condition of the automated response rule. The value is in the JSON format.
+        # The trigger condition of the automated response rule, in JSON format.
         self.execution_condition = execution_condition
         # The ID of the automated response rule.
         self.id = id
-        # The region where the Data Management center of Threat Analysis is located. Select a region based on the location of your assets. Valid values:
-        # 
-        # - **cn-hangzhou**: your assets are in the Chinese mainland or China (Hong Kong).
-        # 
-        # - **ap-southeast-1**: your assets are outside China.
+        # The region where the data management center of Threat Analysis is located. Select the region of the management center based on the region where your assets are located. Valid values:
+        # - **cn-hangzhou**: Assets are located in the Chinese mainland and Hong Kong (China).
+        # - **ap-southeast-1**: Assets are located outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the user that the administrator uses to switch the view. This parameter is used when an administrator switches to the perspective of a member.
+        # The ID of the user whose perspective the administrator switches to.
         self.role_for = role_for
-        # The view type.
-        # 
-        # - 0: the view of the current Alibaba Cloud account.
-        # 
-        # - 1: the view of all accounts that are managed by the administrator.
+        # The view type. Valid values:
+        # - 0: The view of the current Alibaba Cloud account.
+        # - 1: The view of all accounts in the enterprise.
         self.role_type = role_type
         # The name of the automated response rule.
         self.rule_name = rule_name

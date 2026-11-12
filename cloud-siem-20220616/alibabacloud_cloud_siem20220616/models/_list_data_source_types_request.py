@@ -10,15 +10,13 @@ class ListDataSourceTypesRequest(DaraModel):
         cloud_code: str = None,
         region_id: str = None,
     ):
-        # The code of the multicloud service.
+        # The code of the multi-cloud provider.
         # 
         # This parameter is required.
         self.cloud_code = cloud_code
-        # The region where the Data Management center of Threat Analysis is located. Select the region of the management center based on the region where your assets are located. Valid values:
-        # 
-        # - cn-hangzhou: Your assets are in the Chinese mainland or China (Hong Kong).
-        # 
-        # - ap-southeast-1: Your assets are in a region outside China.
+        # The region where the threat analysis data management center resides. Specify the management center based on the region of your assets. Valid values:
+        # - cn-hangzhou: The assets belong to the Chinese mainland or Hong Kong (China).
+        # - ap-southeast-1: The assets belong to regions outside China.
         self.region_id = region_id
 
     def validate(self):

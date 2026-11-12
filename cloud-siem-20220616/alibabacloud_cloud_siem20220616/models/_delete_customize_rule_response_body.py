@@ -17,15 +17,13 @@ class DeleteCustomizeRuleResponseBody(DaraModel):
         self.code = code
         # The return value of the request.
         self.data = data
-        # The returned message.
+        # The response message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # - true: The request was successful.
-        # 
-        # - false: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - true: successful
+        # - false: failed
         self.success = success
 
     def validate(self):

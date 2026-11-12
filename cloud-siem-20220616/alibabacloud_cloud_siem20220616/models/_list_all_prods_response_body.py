@@ -13,7 +13,7 @@ class ListAllProdsResponseBody(DaraModel):
         data: main_models.ListAllProdsResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The response data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -118,19 +118,16 @@ class ListAllProdsResponseBodyDataProdList(DaraModel):
         prod_code: str = None,
         total_log_count: int = None,
     ):
-        # The multicloud code. Valid values:
-        # 
+        # The code of the cloud service provider. Valid values:
         # - qcloud: Tencent Cloud.
-        # 
         # - aliyun: Alibaba Cloud.
-        # 
         # - hcloud: Huawei Cloud.
         self.cloud_code = cloud_code
-        # The number of ingested logs for the product.
+        # The number of logs that have been ingested for the product.
         self.imported_log_count = imported_log_count
-        # The time when logs were last ingested for the product.
+        # The most recent time when logs were ingested for the product. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.modify_time = modify_time
-        # The code of the cloud product.
+        # The product code.
         self.prod_code = prod_code
         # The total number of logs for the product.
         self.total_log_count = total_log_count

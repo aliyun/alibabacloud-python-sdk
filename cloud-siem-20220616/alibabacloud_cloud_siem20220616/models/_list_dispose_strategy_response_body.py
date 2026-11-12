@@ -18,13 +18,15 @@ class ListDisposeStrategyResponseBody(DaraModel):
     ):
         # The request status code.
         self.code = code
-        # The request return value.
+        # The response data.
         self.data = data
-        # The request return message.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful. Valid values:
+        # - true: successful
+        # - false: failed
         self.success = success
 
     def validate(self):
@@ -80,6 +82,7 @@ class ListDisposeStrategyResponseBodyData(DaraModel):
         page_info: main_models.ListDisposeStrategyResponseBodyDataPageInfo = None,
         response_data: List[main_models.ListDisposeStrategyResponseBodyDataResponseData] = None,
     ):
+        # The list of response record groups.
         self.groups = groups
         # The pagination information.
         self.page_info = page_info
@@ -166,27 +169,34 @@ class ListDisposeStrategyResponseBodyDataResponseData(DaraModel):
         task_param: str = None,
         task_url: str = None,
     ):
+        # The name of the associated alert.
         self.alert_name = alert_name
         # The alert UUID.
         self.alert_uuid = alert_uuid
-        # The SIEM primary account ID associated with the policy.
+        # The ID of the SIEM primary account associated with the policy.
         self.aliuid = aliuid
-        # The policy status. Valid values:
+        # The status of the policy. Valid values:
+        # - 0: invalid
+        # - 1: valid
         self.effective_status = effective_status
         # The entity details in JSON array format.
         self.entity = entity
         # The entity ID.
         self.entity_id = entity_id
-        # The entity type. Valid values:
+        # The type of the entity. Valid values:
+        # - ip: IP address
+        # - process: process
+        # - file: file
         self.entity_type = entity_type
+        # The error code of the response task.
         self.error_code = error_code
         # The failure summary of the task.
         self.error_message = error_message
-        # The finish time of the task.
+        # The end time of the task. Format: YYYY-MM-DD HH:mm:ss.
         self.finish_time = finish_time
         # The creation time.
         self.gmt_create = gmt_create
-        # The modification time.
+        # The update time.
         self.gmt_modified = gmt_modified
         # The policy ID.
         self.id = id
@@ -194,24 +204,28 @@ class ListDisposeStrategyResponseBodyDataResponseData(DaraModel):
         self.incident_name = incident_name
         # The globally unique UUID of the incident.
         self.incident_uuid = incident_uuid
-        # The unique identifier name of the playbook.
+        # The unique name of the playbook.
         self.playbook_name = playbook_name
-        # The playbook type. Valid values:
-        # - system: manual handling
+        # The type of the playbook. Valid values:
+        # - system: manual response
         # - custom: event-triggered playbook
         # - custom_alert: alert-triggered playbook
         # - soar-manual: manually run playbook
         # - soar-mdr: MDR-run playbook
         self.playbook_type = playbook_type
-        # The playbook UUID.
+        # The UUID of the playbook.
         self.playbook_uuid = playbook_uuid
-        # The disposition scope.
+        # The response scope.
         self.scope = scope
-        # The SOAR response policy ID.
+        # The ID of the Security Orchestration, Automation, and Response (SOAR) response policy.
         self.sophon_task_id = sophon_task_id
         # The playbook invocation status. Valid values:
+        # - 200: successful
+        # - 10: deleted
+        # - 5: failed
+        # - 0: initial status
         self.status = status
-        # The Alibaba Cloud account ID that configured the policy.
+        # The ID of the Alibaba Cloud account that configured the policy.
         self.sub_aliuid = sub_aliuid
         # The playbook trigger parameters in JSON format.
         self.task_param = task_param
@@ -383,9 +397,9 @@ class ListDisposeStrategyResponseBodyDataPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The current page number of the list.
+        # The current page number.
         self.current_page = current_page
-        # The number of records returned per page.
+        # The number of records per page.
         self.page_size = page_size
         # The total number of records.
         self.total_count = total_count
@@ -438,17 +452,29 @@ class ListDisposeStrategyResponseBodyDataGroups(DaraModel):
         success_count: int = None,
         total_count: int = None,
     ):
+        # The number of failed response records in the group.
         self.failed_count = failed_count
+        # The first occurrence time of the response records in the group.
         self.first_occurrence_time = first_occurrence_time
+        # The grouping dimension.
         self.group_by = group_by
+        # The grouping key value.
         self.group_key = group_key
+        # The group metadata.
         self.group_meta = group_meta
+        # The name of the response record group.
         self.group_name = group_name
+        # The group title.
         self.group_title = group_title
+        # The last occurrence time of handling records in the group.
         self.last_occurrence_time = last_occurrence_time
+        # The latest modification time of handling records in the group.
         self.latest_modified_time = latest_modified_time
+        # The number of in-progress response records in the group.
         self.running_count = running_count
+        # The number of successful response records in the group.
         self.success_count = success_count
+        # The total number of response records in the group.
         self.total_count = total_count
 
     def validate(self):
@@ -544,6 +570,7 @@ class ListDisposeStrategyResponseBodyDataGroupsGroupMeta(DaraModel):
         self,
         group_info: Any = None,
     ):
+        # The group information.
         self.group_info = group_info
 
     def validate(self):

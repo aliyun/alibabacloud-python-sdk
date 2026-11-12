@@ -18,17 +18,15 @@ class ListCustomizeRuleTestResultResponseBody(DaraModel):
     ):
         # The status code of the request.
         self.code = code
-        # The data returned.
+        # The data returned in the response.
         self.data = data
         # The message returned for the request.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # - true: The request was successful.
-        # 
-        # - false: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):
@@ -147,49 +145,42 @@ class ListCustomizeRuleTestResultResponseBodyDataResponseData(DaraModel):
     ):
         # The description of the alert.
         self.alert_desc = alert_desc
-        # The details of the alert, in JSON format.
+        # The details of the alert in JSON format.
         self.alert_detail = alert_detail
-        # The source product of the alert that is associated with the event.
+        # The product from which the alert associated with the event originates.
         self.alert_src_prod = alert_src_prod
-        # The sub-module of the source product of the alert that is associated with the event.
+        # The submodule of the product from which the alert associated with the event originates.
         self.alert_src_prod_module = alert_src_prod_module
-        # The ATT\\&CK attack technique tag.
+        # The ATT&CK technique tag.
         self.att_ck = att_ck
-        # The name of the alert. This value corresponds to the name of the custom rule.
+        # The name of the alert, which corresponds to the name of the custom rule.
         self.event_name = event_name
-        # The threat type. This parameter is equivalent to the alert type.
+        # The threat type, which is the alerting type.
         self.event_type = event_type
         # The threat level. Valid values:
-        # 
         # - serious: high
-        # 
         # - suspicious: medium
-        # 
         # - remind: low
         self.level = level
-        # The log source that corresponds to the rule.
+        # The log source corresponding to the rule.
         self.log_source = log_source
-        # The time when the alert was recorded.
+        # The time when the alert is recorded. The format is YYYY-MM-DD HH:mm:ss.
         self.log_time = log_time
-        # The log type that corresponds to the rule.
+        # The log type corresponding to the rule.
         self.log_type = log_type
-        # The ID of the main Alibaba Cloud account for Security Information and Event Management (SIEM) that is associated with the alert.
+        # The ID of the primary account associated with the alert in SIEM.
         self.main_user_id = main_user_id
         # The status of the alert data. Valid values:
-        # 
-        # - test: business test
-        # 
-        # - online: published
+        # - test: business testing
+        # - online: online
         self.online_status = online_status
-        # The ID of the member account that is associated with the alert.
+        # The ID of the Alibaba Cloud account associated with the alert.
         self.sub_user_id = sub_user_id
         # The UUID of the alert.
         self.uuid = uuid
-        # The result of verifying the alert based on the alert template.
-        # 
-        # - true: The verification is passed.
-        # 
-        # - false: The verification failed.
+        # The verification result of the alert based on the alert template. Valid values:
+        # - true: passed
+        # - false: failed
         self.verify_type = verify_type
 
     def validate(self):

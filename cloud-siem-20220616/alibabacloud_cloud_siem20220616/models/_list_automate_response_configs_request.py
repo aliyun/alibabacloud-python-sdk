@@ -21,59 +21,46 @@ class ListAutomateResponseConfigsRequest(DaraModel):
         status: int = None,
         sub_user_id: int = None,
     ):
-        # The type of the handling action. Valid values:
-        # 
-        # - **doPlaybook**: executes a playbook.
-        # 
-        # - **changeEventStatus**: changes the status of an event.
-        # 
-        # - **changeThreatLevel**: changes the threat level of an event.
+        # The type of the action. Valid values:
+        # - **doPlaybook**: Execute a playbook.
+        # - **changeEventStatus**: Change the event status.
+        # - **changeThreatLevel**: Change the event threat level.
         self.action_type = action_type
         # The type of the automated response. Valid values:
-        # 
-        # - **event**
-        # 
-        # - **alert**
+        # - **event**: Event.
+        # - **alert**: Alert.
         self.auto_response_type = auto_response_type
-        # The page number. The value must be 1 or greater.
+        # The current page number. The value must be greater than or equal to 1.
         # 
         # This parameter is required.
         self.current_page = current_page
         # The ID of the automated response rule.
         self.id = id
-        # The number of entries per page. The maximum value is 100.
+        # The number of entries per page. Maximum value: 100.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The unique identifier of the playbook.
+        # The UUID of the playbook.
         self.playbook_uuid = playbook_uuid
-        # The region of the Data Management center. Select a region based on the region where your assets are located. Valid values:
-        # 
-        # - **cn-hangzhou**: your assets are in the Chinese mainland or China (Hong Kong).
-        # 
-        # - **ap-southeast-1**: your assets are in a region outside China.
+        # The region where the data management center of Threat Analysis is located. Select the region based on the region where your assets are located. Valid values:
+        # - **cn-hangzhou**: Assets are located in the Chinese mainland and Hong Kong (China).
+        # - **ap-southeast-1**: Assets are located outside the Chinese mainland.
         self.region_id = region_id
-        # The type of the response rule.
-        # 
-        # - preset: predefined
-        # 
-        # - custom: custom
+        # The type of the response rule. Valid values:
+        # - preset: Predefined.
+        # - custom: Custom.
         self.response_rule_type = response_rule_type
-        # The ID of the member to which the administrator switches.
+        # The ID of the user whose perspective the administrator switches to.
         self.role_for = role_for
-        # The view type.
-        # 
-        # - 0: the view of the current Alibaba Cloud account.
-        # 
-        # - 1: the view of all accounts that belong to the enterprise.
+        # The view type. Valid values:
+        # - 0: Current Alibaba Cloud account view.
+        # - 1: View of all accounts in the enterprise.
         self.role_type = role_type
         # The name of the automated response rule.
         self.rule_name = rule_name
         # The status of the rule. Valid values:
-        # 
-        # - **0**: disabled
-        # 
-        # - **100**: enabled
+        # - **0**: Disabled.
+        # - **100**: Enabled.
         self.status = status
         # The ID of the user who created the rule.
         self.sub_user_id = sub_user_id

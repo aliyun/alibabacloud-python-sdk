@@ -11,7 +11,7 @@ class SubmitImportLogTasksResponseBody(DaraModel):
         data: main_models.SubmitImportLogTasksResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The response data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -49,7 +49,7 @@ class SubmitImportLogTasksResponseBodyData(DaraModel):
         self,
         count: int = None,
     ):
-        # The number of log ingestion tasks that are successfully submitted.
+        # The number of log onboarding tasks that are successfully submitted.
         self.count = count
 
     def validate(self):

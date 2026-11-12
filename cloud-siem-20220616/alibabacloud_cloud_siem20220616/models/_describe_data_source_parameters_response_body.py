@@ -13,9 +13,9 @@ class DescribeDataSourceParametersResponseBody(DaraModel):
         data: List[main_models.DescribeDataSourceParametersResponseBodyData] = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The response data.
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -71,60 +71,46 @@ class DescribeDataSourceParametersResponseBodyData(DaraModel):
         title: str = None,
     ):
         # Indicates whether the parameter is editable. Valid values:
-        # 
-        # - **0**: The parameter cannot be modified.
-        # 
-        # - **1**: The parameter can be modified.
+        #  - **0**: Modification is disabled. 
+        #  - **1**: Modification is allowed.
         self.can_editted = can_editted
-        # The code for the multicloud environment. Valid values:
-        # 
+        # The multi-cloud code. Valid values:
         # - **qcloud**: Tencent Cloud.
-        # 
         # - **aliyun**: Alibaba Cloud.
-        # 
         # - **hcloud**: Huawei Cloud.
         self.cloud_code = cloud_code
-        # The type of the data source. Valid values:
-        # 
-        # - **obs**: Huawei Cloud OBS.
-        # 
-        # - **wafApi**: Tencent Cloud WAF download API.
-        # 
-        # - **ckafka**: Tencent Cloud CKafka.
+        # The data source type. Valid values:
+        #  - **obs**: Huawei Cloud OBS.
+        #  - **wafApi**: Tencent Cloud WAF download API. 
+        #  - **ckafka**: Tencent Cloud CKafka.
         self.data_source_type = data_source_type
-        # The default value of the parameter.
+        # The default parameter value.
         self.default_value = default_value
-        # Indicates whether the parameter can be modified. Valid values:
-        # 
-        # - **true**: The parameter cannot be modified.
-        # 
-        # - **false**: The parameter can be modified.
+        # Indicates whether modification is disabled. Valid values:
+        #  - **true**: Modification is disabled. 
+        #  - **false**: Modification is allowed.
         self.disabled = disabled
-        # The format check method.
+        # The format validation method.
         self.format_check = format_check
-        # Additional information.
+        # The additional description.
         self.hit = hit
-        # The code of the parameter.
+        # The parameter code.
         self.para_code = para_code
-        # The level of the parameter. Valid values:
-        # 
-        # - **1**: data source parameter.
-        # 
-        # - **2**: log parameter.
+        # The parameter level. Valid values:
+        #  - **1**: Data source parameter.
+        # - **2**: Log parameter.
         self.para_level = para_level
-        # The name of the parameter.
+        # The parameter name.
         self.para_name = para_name
-        # The type of the parameter.
+        # The parameter type.
         self.para_type = para_type
-        # The list of parameters.
+        # The specific parameter list.
         self.param_value = param_value
         # Indicates whether the parameter is required. Valid values:
-        # 
-        # - **1**: The parameter is required.
-        # 
-        # - **0**: The parameter is optional.
+        #  - **1**: Required.
+        #  - **0**: Optional.
         self.required = required
-        # The prompt for the parameter value.
+        # The parameter value hint.
         self.title = title
 
     def validate(self):
@@ -239,9 +225,9 @@ class DescribeDataSourceParametersResponseBodyDataParamValue(DaraModel):
         label: str = None,
         value: str = None,
     ):
-        # The displayed content.
+        # The display content.
         self.label = label
-        # The actual value of the parameter.
+        # The actual parameter content.
         self.value = value
 
     def validate(self):

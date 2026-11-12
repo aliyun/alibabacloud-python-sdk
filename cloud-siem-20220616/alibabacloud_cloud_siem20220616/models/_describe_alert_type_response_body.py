@@ -16,17 +16,17 @@ class DescribeAlertTypeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The request status code.
+        # The status code.
         self.code = code
         # The response data.
         self.data = data
-        # The response message.
+        # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
-        # - true: successful.
-        # - false: failed.
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -96,15 +96,15 @@ class DescribeAlertTypeResponseBodyData(DaraModel):
         self.alert_type = alert_type
         # The threat type category identifier.
         self.alert_type_category = alert_type_category
-        # The threat type category name in the language of the current request. Empty if no translation is available.
+        # The name of the threat type category in the requested language. This parameter is empty if the translation is missing.
         self.alert_type_category_mds = alert_type_category_mds
         # The display order of the threat type category.
         self.alert_type_category_order = alert_type_category_order
         # The Medusa code of the threat type.
         self.alert_type_mds = alert_type_mds
-        # The English name of the threat type. Empty if no translation is available.
+        # The English name of the threat type. This parameter is empty if the translation is missing.
         self.alert_type_name_en = alert_type_name_en
-        # The Chinese name of the threat type. Empty if no translation is available.
+        # The Chinese name of the threat type. This parameter is empty if the translation is missing.
         self.alert_type_name_zh = alert_type_name_zh
 
     def validate(self):

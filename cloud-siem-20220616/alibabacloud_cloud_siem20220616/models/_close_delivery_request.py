@@ -13,71 +13,44 @@ class CloseDeliveryRequest(DaraModel):
         role_for: int = None,
         role_type: int = None,
     ):
-        # The code of the log within the cloud service. For example, the process log of Security Center. For valid values, see the return value of the ListDelivery operation.
+        # The log code of the cloud service, such as the process log in Security Center. For valid values, refer to the response of the ListDelivery operation.
         self.log_code = log_code
         # The code of the cloud service. Valid values:
-        # 
         # - qcloud_waf
-        # 
         # - qlcoud_cfw
-        # 
         # - hcloud_waf
-        # 
         # - hcloud_cfw
-        # 
         # - ddos
-        # 
         # - sas
-        # 
         # - cfw
-        # 
         # - config
-        # 
         # - csk
-        # 
         # - fc
-        # 
         # - rds
-        # 
         # - nas
-        # 
         # - apigateway
-        # 
         # - cdn
-        # 
         # - mongodb
-        # 
         # - eip
-        # 
         # - slb
-        # 
         # - vpc
-        # 
         # - actiontrail
-        # 
         # - waf
-        # 
         # - bastionhost
-        # 
         # - oss
-        # 
         # - polardb
         # 
         # This parameter is required.
         self.product_code = product_code
-        # The region where the data management center of threat analysis is located. Select a region based on the region where your assets are located. Valid values:
-        # 
-        # - cn-hangzhou: Select this region if your assets are in the Chinese mainland or Hong Kong (China).
-        # 
-        # - ap-southeast-1: Select this region if your assets are outside China.
+        # The region where the data management center of Threat Analysis is located. Select the region of the management center based on the region where your assets are located. Valid values:
+        # - cn-hangzhou: Select this value if your assets are located in the Chinese mainland and Hong Kong (China).
+        # - ap-southeast-1: Select this value if your assets are located outside the Chinese mainland.
         self.region_id = region_id
-        # The user ID of a member. An administrator can use this parameter to switch to the perspective of the member.
+        # The ID of the user whose view the administrator switches to.
         self.role_for = role_for
-        # The view type.
-        # 
-        # - 0: The view of the current Alibaba Cloud account.
-        # 
-        # - 1: The view of all accounts in your enterprise.
+        # The view type. Valid values:
+        # - 0: the view of the current Alibaba Cloud account.
+        # - 1: the view of all accounts in the enterprise.
         self.role_type = role_type
 
     def validate(self):

@@ -16,19 +16,17 @@ class ListAutomateResponseConfigsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The request status code.
+        # The status code of the request.
         self.code = code
-        # The data returned.
+        # The data returned in the response.
         self.data = data
-        # The returned message.
+        # The message returned for the request.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # - **true**: The request was successful.
-        # 
-        # - **false**: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - **true**: Successful.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -142,27 +140,22 @@ class ListAutomateResponseConfigsResponseBodyDataResponseData(DaraModel):
         status: int = None,
         sub_user_id: int = None,
     ):
-        # The action configuration of the automated response rule. The value is a JSON array.
+        # The action configuration of the automated response rule, in JSON array format.
         self.action_config = action_config
-        # The handling action. Multiple values are separated by commas. Valid values:
-        # 
-        # - **doPlaybook**: executes a playbook.
-        # 
-        # - **changeEventStatus**: changes the status of an event.
-        # 
-        # - **changeThreatLevel**: changes the threat level of an event.
+        # The types of the actions. Multiple values are separated by commas. Valid values:
+        # - **doPlaybook**: Execute a playbook.
+        # - **changeEventStatus**: Change the event status.
+        # - **changeThreatLevel**: Change the event threat level.
         self.action_type = action_type
-        # The ID of the Alibaba Cloud account that is associated with the rule.
+        # The ID of the primary Alibaba Cloud account associated with the SIEM rule.
         self.aliuid = aliuid
         # The type of the automated response. Valid values:
-        # 
-        # - **event**
-        # 
-        # - **alert**
+        # - **event**: Event.
+        # - **alert**: Alert.
         self.auto_response_type = auto_response_type
         # The data type of the condition field in the automated response rule.
         self.data_type = data_type
-        # The trigger condition of the automated response rule. The value is in the JSON format.
+        # The cause of the automated response rule, in JSON format.
         self.execution_condition = execution_condition
         # The time when the rule was created.
         self.gmt_create = gmt_create
@@ -170,19 +163,15 @@ class ListAutomateResponseConfigsResponseBodyDataResponseData(DaraModel):
         self.gmt_modified = gmt_modified
         # The ID of the automated response rule.
         self.id = id
-        # The type of the response rule.
-        # 
-        # - preset: predefined
-        # 
-        # - custom: custom
+        # The type of the response rule. Valid values:
+        # - preset: Predefined.
+        # - custom: Custom.
         self.response_rule_type = response_rule_type
         # The name of the automated response rule.
         self.rule_name = rule_name
         # The status of the rule. Valid values:
-        # 
-        # - **0**: disabled
-        # 
-        # - **100**: enabled
+        # - **0**: Disabled.
+        # - **100**: Enabled.
         self.status = status
         # The ID of the user who created the rule.
         self.sub_user_id = sub_user_id
@@ -286,7 +275,7 @@ class ListAutomateResponseConfigsResponseBodyDataPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The current page number.
         self.current_page = current_page
         # The number of entries returned per page.
         self.page_size = page_size

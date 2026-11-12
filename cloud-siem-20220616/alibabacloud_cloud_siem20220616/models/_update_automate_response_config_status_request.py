@@ -13,27 +13,21 @@ class UpdateAutomateResponseConfigStatusRequest(DaraModel):
         role_for: int = None,
         role_type: int = None,
     ):
-        # A JSON array of automated response rule IDs.
+        # The IDs of the automated response rules, formatted as a JSON array.
         self.ids = ids
         # The enabling status of the rule. Valid values:
-        # 
-        # - true: enabled
-        # 
-        # - false: disabled
+        # - true: Enabled.
+        # - false: Disabled.
         self.in_use = in_use
-        # The region where the Data Management center for threat analysis is deployed. You must select a region based on the region where your assets are located. Valid values:
-        # 
-        # - cn-hangzhou: Your assets are in the Chinese mainland or China (Hong Kong).
-        # 
-        # - ap-southeast-1: Your assets are in a region outside China.
+        # The region where the data management center of Threat Analysis is located. Select the region of the management center based on the region where your assets are located. Valid values:
+        # - cn-hangzhou: Assets are located in the Chinese mainland and Hong Kong (China).
+        # - ap-southeast-1: Assets are located outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the member account that the administrator wants to access.
+        # The ID of the user whose perspective the administrator switches to.
         self.role_for = role_for
-        # The view type.
-        # 
-        # - 0: The view of the current Alibaba Cloud account.
-        # 
-        # - 1: The view of all accounts that belong to the enterprise.
+        # The view type. Valid values:
+        # - 0: the view of the current Alibaba Cloud account.
+        # - 1: the view of all accounts in the enterprise.
         self.role_type = role_type
 
     def validate(self):

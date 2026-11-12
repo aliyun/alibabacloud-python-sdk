@@ -12,20 +12,19 @@ class DescribeAlertTypeRequest(DaraModel):
         role_type: int = None,
         rule_type: str = None,
     ):
-        # The region of the data management center for threat analysis. Specify the management center region based on the region where your assets reside. Valid values:
-        # - cn-hangzhou: assets in the Chinese mainland and Hong Kong (China).
-        # - ap-southeast-1: assets outside China.
+        # The region where the data management center of Threat Analysis is located. Select the region of the management center based on the region where your assets are deployed. Valid values:
+        # - cn-hangzhou: Assets are deployed in the Chinese mainland and Hong Kong (China).
+        # - ap-southeast-1: Assets are deployed in regions outside China.
         self.region_id = region_id
-        # The user ID that the administrator switches to for viewing as another member.
+        # The ID of the user whose perspective the administrator switches to.
         self.role_for = role_for
-        # The view type.
-        # 
-        # - 0: the view of the current Alibaba Cloud account.
-        # - 1: the view of all accounts in the enterprise.
+        # The view type. Valid values:
+        # - 0: The view of the current Alibaba Cloud account.
+        # - 1: The view of all accounts in the enterprise.
         self.role_type = role_type
         # The rule type. Valid values:
-        # - predefine: predefined.
-        # - customize: custom.
+        # - predefine: Predefined.
+        # - customize: Custom.
         self.rule_type = rule_type
 
     def validate(self):

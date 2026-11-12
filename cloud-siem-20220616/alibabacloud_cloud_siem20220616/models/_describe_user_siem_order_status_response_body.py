@@ -13,7 +13,7 @@ class DescribeUserSiemOrderStatusResponseBody(DaraModel):
     ):
         # The response data.
         self.data = data
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -53,6 +53,7 @@ class DescribeUserSiemOrderStatusResponseBodyData(DaraModel):
         can_buy: bool = None,
         capacity: int = None,
         capacity_order_from: str = None,
+        credits_postpaid_info: main_models.DescribeUserSiemOrderStatusResponseBodyDataCreditsPostpaidInfo = None,
         delivery_capacity: int = None,
         duration_days: int = None,
         end_time: int = None,
@@ -67,61 +68,62 @@ class DescribeUserSiemOrderStatusResponseBodyData(DaraModel):
         sub_user_id: int = None,
         user_type: str = None,
     ):
-        # The Agentic SOC Credits instance ID. If SiemOrderFrom is CREDITS_PRE_PAY, this field returns the Credits subscription instance ID for prepaid orders. If SiemOrderFrom is CREDITS_POST_PAY, this field returns the Credits pay-as-you-go instance ID. This field is empty if no Credits instance is found. For legacy orders, the Security Center instance ID is returned by SasInstanceId.
+        # The ID of the Agentic SOC Credits instance. If SiemOrderFrom is CREDITS_PRE_PAY, the ID of the subscription Credits instance is returned. If SiemOrderFrom is CREDITS_POST_PAY, the ID of the pay-as-you-go Credits instance is returned. This field is empty if no Credits instance is found. The ID of the Security Center instance for legacy orders is returned by SasInstanceId.
         self.asoc_instance_id = asoc_instance_id
-        # The end time of the Agentic SOC Credits prepaid subscription, expressed as a 13-digit Unix timestamp in milliseconds. This field is returned only when SiemOrderFrom is CREDITS_PRE_PAY. In other cases, this field is empty.
+        # The end time of the Agentic SOC Credits subscription. The value is a 13-digit UNIX timestamp in milliseconds. This field is returned only when SiemOrderFrom is CREDITS_PRE_PAY. Otherwise, this field is empty.
         self.asoc_subscription_instance_end_time = asoc_subscription_instance_end_time
-        # The start time of the Agentic SOC Credits prepaid subscription, expressed as a 13-digit Unix timestamp in milliseconds. This field is returned only when SiemOrderFrom is CREDITS_PRE_PAY. In other cases, this field is empty.
+        # The start time of the Agentic SOC Credits subscription. The value is a 13-digit UNIX timestamp in milliseconds. This field is returned only when SiemOrderFrom is CREDITS_PRE_PAY. Otherwise, this field is empty.
         self.asoc_subscription_instance_start_time = asoc_subscription_instance_start_time
-        # Indicates whether the current account can perform order operations for threat detection and response. Valid values:
-        # - true: The account can purchase, upgrade, or change specifications.
-        # - false: The account cannot perform order operations for threat detection and response.
+        # Specifies whether the current account can manage Threat Analysis orders. Valid values:
+        # - true: The account can purchase, upgrade, or modify Threat Analysis.
+        # - false: The account cannot manage Threat Analysis orders.
         self.can_buy = can_buy
-        # The SLS log storage capacity purchased for threat detection and response, in GB.
+        # The purchased Simple Log Service (SLS) capacity for Threat Analysis. Unit: GB.
         self.capacity = capacity
         # The source of the log storage capacity order. Valid values:
-        # - PRE_PAY_CAPACITY: a prepaid capacity order.
-        # - POST_PAY_CAPACITY: a pay-as-you-go capacity order.
-        # 
-        # The capacity order source is independent of the traffic order source indicated by SiemOrderFrom.
+        # - PRE_PAY_CAPACITY: The subscription capacity order.
+        # - POST_PAY_CAPACITY: The pay-as-you-go capacity order.
+        # The source of the capacity order is independent of the source of the traffic order represented by SiemOrderFrom.
         self.capacity_order_from = capacity_order_from
-        # The SLS log storage capacity purchased for threat detection and response 1.0, in GB.
+        # The information about the pay-as-you-go Credits instance. This field is returned when a pay-as-you-go Credits instance is found. It can be returned together with a valid legacy traffic order.
+        self.credits_postpaid_info = credits_postpaid_info
+        # The purchased SLS capacity for Threat Analysis 1.0. Unit: GB.
         self.delivery_capacity = delivery_capacity
-        # The number of days until the threat detection and response service expires.
+        # The number of days until Threat Analysis expires.
         self.duration_days = duration_days
-        # The expiration time of threat detection and response, expressed as a millisecond-level timestamp.
+        # The expiration time of Threat Analysis. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The traffic capacity purchased for threat detection and response, in GB.
+        # The purchased traffic for Threat Analysis. Unit: GB.
         self.flow_capacity = flow_capacity
-        # The Alibaba Cloud account ID that purchased threat detection and response.
+        # The Alibaba Cloud account ID used to purchase Threat Analysis.
         self.main_user_id = main_user_id
-        # The master account ID of the resource directory.
+        # The ID of the master account in the resource directory.
         self.master_user_id = master_user_id
-        # The resource directory ID.
+        # The ID of the resource directory.
         self.rd_id = rd_id
-        # Indicates whether the order is a SIEM public preview order.
+        # Specifies whether the order is for the public preview version of SIEM.
         self.rd_order = rd_order
         # The Security Center instance ID.
         self.sas_instance_id = sas_instance_id
         # The source of the traffic order. Valid values:
-        # - PRE_PAY_FLOW: a prepaid traffic order for threat detection and response.
-        # - POST_PAY_FLOW: a pay-as-you-go traffic order for threat detection and response.
-        # - CREDITS_PRE_PAY: an Agentic SOC Credits prepaid subscription.
-        # - CREDITS_POST_PAY: an Agentic SOC Credits pay-as-you-go instance.
-        # 
-        # This field describes the traffic order source. The log storage capacity order source is independently indicated by CapacityOrderFrom.
+        # - PRE_PAY_FLOW: The subscription traffic order for Threat Analysis.
+        # - POST_PAY_FLOW: The pay-as-you-go traffic order for Threat Analysis.
+        # - CREDITS_PRE_PAY: The subscription of Agentic SOC Credits.
+        # - CREDITS_POST_PAY: The pay-as-you-go instance of Agentic SOC Credits.
+        # This field describes the source of the traffic order. The source of the log storage capacity order is independently represented by CapacityOrderFrom.
         self.siem_order_from = siem_order_from
         # Indicates whether a valid SIEM order exists. Valid values:
         # - 1: The SIEM order is valid.
         # - 0: The SIEM order is invalid.
         self.siem_order_status = siem_order_status
-        # The Alibaba Cloud account ID of the current logon.
+        # The current logon Alibaba Cloud account ID.
         self.sub_user_id = sub_user_id
         # The user type.
         self.user_type = user_type
 
     def validate(self):
-        pass
+        if self.credits_postpaid_info:
+            self.credits_postpaid_info.validate()
 
     def to_map(self):
         result = dict()
@@ -145,6 +147,9 @@ class DescribeUserSiemOrderStatusResponseBodyData(DaraModel):
 
         if self.capacity_order_from is not None:
             result['CapacityOrderFrom'] = self.capacity_order_from
+
+        if self.credits_postpaid_info is not None:
+            result['CreditsPostpaidInfo'] = self.credits_postpaid_info.to_map()
 
         if self.delivery_capacity is not None:
             result['DeliveryCapacity'] = self.delivery_capacity
@@ -207,6 +212,10 @@ class DescribeUserSiemOrderStatusResponseBodyData(DaraModel):
         if m.get('CapacityOrderFrom') is not None:
             self.capacity_order_from = m.get('CapacityOrderFrom')
 
+        if m.get('CreditsPostpaidInfo') is not None:
+            temp_model = main_models.DescribeUserSiemOrderStatusResponseBodyDataCreditsPostpaidInfo()
+            self.credits_postpaid_info = temp_model.from_map(m.get('CreditsPostpaidInfo'))
+
         if m.get('DeliveryCapacity') is not None:
             self.delivery_capacity = m.get('DeliveryCapacity')
 
@@ -245,6 +254,58 @@ class DescribeUserSiemOrderStatusResponseBodyData(DaraModel):
 
         if m.get('UserType') is not None:
             self.user_type = m.get('UserType')
+
+        return self
+
+class DescribeUserSiemOrderStatusResponseBodyDataCreditsPostpaidInfo(DaraModel):
+    def __init__(
+        self,
+        billing_status: int = None,
+        instance_source: str = None,
+        user_switch_status: int = None,
+    ):
+        # The billing status of the instance. Valid values:
+        # - 1: Normal.
+        # - 2: Suspended due to overdue payment.
+        self.billing_status = billing_status
+        # The source of the instance. Valid values:
+        # - POSTPAID: The independent pay-as-you-go instance.
+        # - SUBSCRIPTION_DEFAULT_PAYG: The default pay-as-you-go instance for the subscription.
+        self.instance_source = instance_source
+        # The user switch status. Valid values:
+        # - 1: Enabled.
+        # - 0: Disabled.
+        self.user_switch_status = user_switch_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.billing_status is not None:
+            result['BillingStatus'] = self.billing_status
+
+        if self.instance_source is not None:
+            result['InstanceSource'] = self.instance_source
+
+        if self.user_switch_status is not None:
+            result['UserSwitchStatus'] = self.user_switch_status
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BillingStatus') is not None:
+            self.billing_status = m.get('BillingStatus')
+
+        if m.get('InstanceSource') is not None:
+            self.instance_source = m.get('InstanceSource')
+
+        if m.get('UserSwitchStatus') is not None:
+            self.user_switch_status = m.get('UserSwitchStatus')
 
         return self
 

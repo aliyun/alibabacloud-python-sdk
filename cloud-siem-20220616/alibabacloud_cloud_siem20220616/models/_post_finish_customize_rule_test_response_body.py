@@ -17,17 +17,15 @@ class PostFinishCustomizeRuleTestResponseBody(DaraModel):
     ):
         # The status code of the request.
         self.code = code
-        # The data returned.
+        # The return value of the request.
         self.data = data
-        # The message returned.
+        # The message returned in the response.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # Indicates whether the request is successful. Valid values:
-        # 
         # - true: The request is successful.
-        # 
-        # - false: The request failed.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):

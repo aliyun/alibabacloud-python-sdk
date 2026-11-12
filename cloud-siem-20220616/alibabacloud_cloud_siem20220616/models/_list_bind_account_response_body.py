@@ -64,27 +64,24 @@ class ListBindAccountResponseBodyData(DaraModel):
         data_source_count: int = None,
         modify_time: str = None,
     ):
-        # The AccessKey ID of the account.
+        # The AccessId of the account.
         self.access_id = access_id
-        # The ID of the cloud account.
+        # The cloud account ID.
         self.account_id = account_id
-        # The name of the account.
+        # The account name.
         self.account_name = account_name
         # The binding ID.
         self.bind_id = bind_id
-        # The code of the cloud service provider. Valid values:
-        # 
+        # The code of the multi-cloud provider. Valid values:
         # - qcloud: Tencent Cloud.
-        # 
         # - aliyun: Alibaba Cloud.
-        # 
         # - hcloud: Huawei Cloud.
         self.cloud_code = cloud_code
         # The user who bound the account.
         self.create_user = create_user
-        # The number of data sources that are bound to the account.
+        # The number of data sources bound to the account.
         self.data_source_count = data_source_count
-        # The time when the binding was modified.
+        # The modification time. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.modify_time = modify_time
 
     def validate(self):

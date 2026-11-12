@@ -17,17 +17,15 @@ class PostRuleStatusChangeResponseBody(DaraModel):
     ):
         # The status code of the request.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The message returned.
+        # The message returned for the request.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request is successful. Valid values:
-        # 
-        # - true: The request is successful.
-        # 
-        # - false: The request failed.
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):

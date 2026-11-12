@@ -16,19 +16,17 @@ class DescribeAlertSourceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code of the response. A value of 200 indicates success.
+        # The status code of the request.
         self.code = code
-        # The list of alert sources.
+        # The response data.
         self.data = data
-        # The response message.
+        # The message returned in the response.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
-        # 
-        # - `true`: The request was successful.
-        # 
-        # - `false`: The request failed.
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -92,9 +90,9 @@ class DescribeAlertSourceResponseBodyData(DaraModel):
     ):
         # The list of modules.
         self.modules = modules
-        # The internal code for the alert source.
+        # The Medusa code of the alert data source name.
         self.source = source
-        # The name of the alert source.
+        # The name of the alert data source.
         self.source_name = source_name
 
     def validate(self):

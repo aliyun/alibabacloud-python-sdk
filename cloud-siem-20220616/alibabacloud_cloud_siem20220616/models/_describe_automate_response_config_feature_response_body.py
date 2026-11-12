@@ -18,17 +18,15 @@ class DescribeAutomateResponseConfigFeatureResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The returned data.
+        # The response data.
         self.data = data
-        # The returned message.
+        # The message returned for the request.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request is successful. Valid values:
-        # 
-        # - true: The request is successful.
-        # 
-        # - false: The request failed.
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -95,9 +93,9 @@ class DescribeAutomateResponseConfigFeatureResponseBodyData(DaraModel):
         self.data_type = data_type
         # The name of the condition field for the automated response rule.
         self.feature = feature
-        # The enumeration of the right operand that corresponds to the field.
+        # The enumeration values of the right value corresponding to the field.
         self.right_value_enums = right_value_enums
-        # The operators that the field supports.
+        # The list of operators supported by the field.
         self.support_operators = support_operators
 
     def validate(self):
@@ -167,13 +165,11 @@ class DescribeAutomateResponseConfigFeatureResponseBodyDataSupportOperators(Dara
         support_data_type: str = None,
         support_tag: List[str] = None,
     ):
-        # Indicates whether a right operand is required. Valid values:
-        # 
-        # - true: A right operand is required.
-        # 
-        # - false: A right operand is not required.
+        # Specifies whether a right value is required. Valid values:
+        # - true: Required.
+        # - false: Not required.
         self.has_right_value = has_right_value
-        # The position of the operator in the list of operators.
+        # The position of the operator in the operator list.
         self.index = index
         # The operator.
         self.operator = operator
@@ -183,9 +179,9 @@ class DescribeAutomateResponseConfigFeatureResponseBodyDataSupportOperators(Dara
         self.operator_desc_en = operator_desc_en
         # The display name of the operator.
         self.operator_name = operator_name
-        # The data types that the operator supports. Multiple data types are separated by commas.
+        # The data types supported by the current operator, separated by commas.
         self.support_data_type = support_data_type
-        # The scenarios that the operator supports. Multiple scenarios are separated by commas, such as aggregation. By default, this parameter is empty.
+        # The scenarios supported by the operator. Multiple scenarios are separated by commas, such as aggregation. Default value: empty.
         self.support_tag = support_tag
 
     def validate(self):
@@ -256,9 +252,9 @@ class DescribeAutomateResponseConfigFeatureResponseBodyDataRightValueEnums(DaraM
         value: str = None,
         value_mds: str = None,
     ):
-        # The enumeration value of the right operand.
+        # The enumeration value of the right value.
         self.value = value
-        # The Medusa code for the enumeration value of the right operand.
+        # The Medusa code of the right value enumeration.
         self.value_mds = value_mds
 
     def validate(self):

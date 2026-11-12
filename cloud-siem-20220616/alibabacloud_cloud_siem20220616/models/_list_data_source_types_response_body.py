@@ -13,9 +13,9 @@ class ListDataSourceTypesResponseBody(DaraModel):
         data: List[main_models.ListDataSourceTypesResponseBodyData] = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The response data.
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -58,15 +58,12 @@ class ListDataSourceTypesResponseBodyData(DaraModel):
         cloud_code: str = None,
         data_source_type: str = None,
     ):
-        # The code of the multicloud service.
+        # The code of the multi-cloud provider.
         self.cloud_code = cloud_code
-        # The type of the data source. Valid values:
-        # 
-        # - obs: Huawei Cloud OBS.
-        # 
-        # - wafApi: Tencent Cloud WAF download API.
-        # 
-        # - ckafka: Tencent Cloud CKafka.
+        # The data source type. Valid values:
+        #  - obs: Huawei Cloud OBS.
+        #  - wafApi: Tencent Cloud WAF download API. 
+        #  - ckafka: Tencent Cloud CKafka.
         self.data_source_type = data_source_type
 
     def validate(self):

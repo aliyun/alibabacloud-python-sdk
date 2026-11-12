@@ -14,25 +14,22 @@ class DescribeAlertsCountRequest(DaraModel):
         role_type: int = None,
         start_time: int = None,
     ):
-        # The end time of the query. The value is a UNIX timestamp. Unit: milliseconds.
+        # The end time of the query. Unit: milliseconds.
         self.end_time = end_time
         # The query type.
         self.query_type = query_type
-        # The region of the data management center. Select the region where your assets are located. Valid values:
-        # 
-        # - cn-hangzhou: Your assets are in the Chinese mainland or China (Hong Kong).
-        # 
-        # - ap-southeast-1: Your assets are outside China.
+        # The region of the data management center for Threat Analysis. You must select the region of the management center based on the region where your assets are located. Valid values:
+        # - cn-hangzhou: Assets are located in the Chinese mainland and Hong Kong (China).
+        # - ap-southeast-1: Assets are located outside China.
         self.region_id = region_id
-        # The user ID of a member. An administrator can specify this parameter to query alerts from the perspective of the member.
+        # The ID of the user whose perspective the administrator switches to.
         self.role_for = role_for
-        # The view type.
+        # The view type. Valid values:
         # 
         # - 0: The view of the current Alibaba Cloud account.
-        # 
         # - 1: The view of all accounts in the enterprise.
         self.role_type = role_type
-        # The start time of the query. The value is a UNIX timestamp. Unit: milliseconds.
+        # The start time of the query. Unit: milliseconds.
         self.start_time = start_time
 
     def validate(self):

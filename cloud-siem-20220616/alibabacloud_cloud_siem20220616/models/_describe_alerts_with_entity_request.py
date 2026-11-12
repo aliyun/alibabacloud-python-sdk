@@ -19,39 +19,35 @@ class DescribeAlertsWithEntityRequest(DaraModel):
         sophon_task_id: str = None,
         start_time: int = None,
     ):
-        # The number of the page to return. The value must be greater than or equal to 1.
+        # The page number of the current page. The value must be greater than or equal to 1.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The end time of the query. The unit is milliseconds.
+        # The end time of the query. Unit: milliseconds.
         self.end_time = end_time
         # The ID of the entity.
         self.entity_id = entity_id
         # The ID of the entity.
         self.entity_uuid = entity_uuid
-        # The globally unique ID of the event.
+        # The globally unique ID of the incident.
         self.incident_uuid = incident_uuid
-        # The number of entries to return on each page. The maximum value is 100.
+        # The number of entries per page. Maximum value: 100.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The region of the data management center for threat analysis. Select a region based on the location of your assets. Valid values:
-        # 
-        # - cn-hangzhou: your assets are in the Chinese mainland and China (Hong Kong).
-        # 
-        # - ap-southeast-1: your assets are outside China.
+        # The region where the data management center of Threat Analysis is located. You must select the region of the management center based on the region where your assets are located. Valid values:
+        # - cn-hangzhou: Assets are located in the Chinese mainland and Hong Kong (China).
+        # - ap-southeast-1: Assets are located outside China.
         self.region_id = region_id
-        # The user ID of the member to which the administrator switches.
+        # The ID of the user whose view the administrator switches to.
         self.role_for = role_for
-        # The type of the view. Valid values:
-        # 
-        # - 0: the view of the current Alibaba Cloud account.
-        # 
-        # - 1: the view of all accounts that are managed by your enterprise.
+        # The view type. Valid values:
+        # - 0: the view of the current Alibaba Cloud account
+        # - 1: the view of all accounts in the enterprise
         self.role_type = role_type
-        # The ID of the Security Orchestration, Automation, and Response (SOAR) handling policy.
+        # The ID of the SOAR playbook.
         self.sophon_task_id = sophon_task_id
-        # The start time of the query. The unit is milliseconds.
+        # The start time of the query. Unit: milliseconds.
         self.start_time = start_time
 
     def validate(self):

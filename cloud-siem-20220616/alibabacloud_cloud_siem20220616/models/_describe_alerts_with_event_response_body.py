@@ -18,13 +18,13 @@ class DescribeAlertsWithEventResponseBody(DaraModel):
     ):
         # The request status code.
         self.code = code
-        # The request return value.
+        # The response data.
         self.data = data
-        # The request return message.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful. Valid values:
         # - true: Successful.
         # - false: Failed.
         self.success = success
@@ -171,7 +171,7 @@ class DescribeAlertsWithEventResponseBodyDataResponseData(DaraModel):
         self.alert_desc = alert_desc
         # The Medusa code of the alert description.
         self.alert_desc_code = alert_desc_code
-        # The English description of the alert.
+        # The alert description in English.
         self.alert_desc_en = alert_desc_en
         # The alert details.
         self.alert_detail = alert_detail
@@ -190,19 +190,19 @@ class DescribeAlertsWithEventResponseBodyDataResponseData(DaraModel):
         self.alert_name_en = alert_name_en
         # The source product of the alert associated with the incident.
         self.alert_src_prod = alert_src_prod
-        # The submodule of the source product of the alert associated with the incident.
+        # The source product submodule of the alert associated with the incident.
         self.alert_src_prod_module = alert_src_prod_module
-        # The alert status. Valid values: 0: Pending. 1: Handled. 2: Being handled. 3: Whitelisted, false positive, or rejected. 999: Unknown.
+        # The alert status. Valid values: 0: Pending; 1: Processed; 2: Processing; 3: Whitelisted, false positive, or rejected; 999: Unknown.
         self.alert_status = alert_status
         # The alert title.
         self.alert_title = alert_title
-        # The English title of the alert.
+        # The alert title in English.
         self.alert_title_en = alert_title_en
         # The alert type.
         self.alert_type = alert_type
         # The Medusa code of the alert type.
         self.alert_type_code = alert_type_code
-        # The English alert type.
+        # The alert type in English.
         self.alert_type_en = alert_type_en
         # The UUID of the alert.
         self.alert_uuid = alert_uuid
@@ -217,13 +217,13 @@ class DescribeAlertsWithEventResponseBodyDataResponseData(DaraModel):
         self.cloud_code = cloud_code
         # The detection rule ID.
         self.detection_rule_id = detection_rule_id
-        # The time when the alert ended.
+        # The time when the alert ended. The format is YYYY-MM-DD HH:mm:ss.
         self.end_time = end_time
         # The entity details.
         self.entity_list = entity_list
-        # The extended information of the alert.
+        # The extended alert information.
         self.extend_content = extend_content
-        # The time when the alert was stored.
+        # The time when the alert was created.
         self.gmt_create = gmt_create
         # The time when the alert was last updated.
         self.gmt_modified = gmt_modified
@@ -233,26 +233,26 @@ class DescribeAlertsWithEventResponseBodyDataResponseData(DaraModel):
         self.incident_uuid = incident_uuid
         # The alert investigation report.
         self.investigation_report = investigation_report
-        # Indicates whether the threat has been defended against. Valid values:
+        # Indicates whether the threat is blocked. Valid values:
         # 
         # - 0: Detected.
         # - 1: Blocked.
         self.is_defend = is_defend
-        # The time when the alert was logged.
+        # The time when the alert was recorded. The format is YYYY-MM-DD HH:mm:ss.
         self.log_time = log_time
         # The UUID of the alert log.
         self.log_uuid = log_uuid
         # The ID of the SIEM primary account associated with the alert.
         self.main_user_id = main_user_id
-        # The time when the alert occurred.
+        # The time when the alert occurred. The format is YYYY-MM-DD HH:mm:ss.
         self.occur_time = occur_time
         # The product ID.
         self.product_id = product_id
-        # The time when the alert first occurred.
+        # The time when the alert first occurred. The format is YYYY-MM-DD HH:mm:ss.
         self.start_time = start_time
-        # The Alibaba Cloud account ID that generated the alert.
+        # The ID of the Alibaba Cloud account that triggered the alert.
         self.sub_user_id = sub_user_id
-        # The Alibaba Cloud account ID that generated the alert.
+        # The ID of the Alibaba Cloud account that triggered the alert.
         self.sub_user_name = sub_user_name
         # The cloud code. Valid values:
         # - aliyun: Alibaba Cloud.
@@ -529,11 +529,11 @@ class DescribeAlertsWithEventResponseBodyDataResponseDataAlertInfoList(DaraModel
         key_name: str = None,
         values: str = None,
     ):
-        # The key of the alert detail attribute.
+        # The key of the alert detail property.
         self.key = key
-        # The name of the alert detail.
+        # The name of the alert detail data.
         self.key_name = key_name
-        # The value of the alert detail.
+        # The value of the alert detail data.
         self.values = values
 
     def validate(self):
@@ -575,9 +575,9 @@ class DescribeAlertsWithEventResponseBodyDataPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The current page number of the list.
+        # The current page number.
         self.current_page = current_page
-        # The number of records returned per page.
+        # The number of records per page.
         self.page_size = page_size
         # The total number of records.
         self.total_count = total_count

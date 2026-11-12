@@ -19,27 +19,25 @@ class DataProductListLogMapValue(DaraModel):
         topic: str = None,
         extra_parameters: List[main_models.DataProductListLogMapValueExtraParameters] = None,
     ):
-        # The code of the log.
+        # The log code.
         self.log_code = log_code
-        # This parameter is deprecated.
+        # **[Deprecated]** This parameter is deprecated and can be ignored.
         self.log_name = log_name
-        # This parameter is deprecated.
+        # **[Deprecated]** This parameter is deprecated and can be ignored.
         self.log_name_en = log_name_en
-        # The language code of the log that is used to indicate the language in which the log is displayed.
+        # The language code of the log, which is used to display multilingual names.
         self.log_name_key = log_name_key
-        # The status of the log delivery. Valid values:
-        # 
-        # *   true: The logs are being delivered.
-        # *   false: The log delivery feature is disabled.
+        # The log delivery status. Valid values:
+        # - true: Delivery is in progress.  
+        # - false: Delivery is disabled.
         self.status = status
-        # Indicates whether the log delivery feature can be enabled or disabled. The feature can be enabled or disabled only by the administrator of the threat analysis feature. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Specifies whether the log delivery switch can be operated. Only the delegated administrator of Threat Analysis can operate the log delivery switch. Valid values:
+        # - true: The switch can be operated.  
+        # - false: The switch cannot be operated.
         self.can_operate_or_not = can_operate_or_not
-        # The topic of the log in the Logstore. The value is an index field in the Logstore that can be used to distinguish different logs.
+        # The topic of the log in the Logstore. It is an index field of the Logstore and can be used to distinguish different logs.
         self.topic = topic
-        # The extended parameter.
+        # The extended parameters.
         self.extra_parameters = extra_parameters
 
     def validate(self):
@@ -120,7 +118,7 @@ class DataProductListLogMapValueExtraParameters(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The ID of the extended parameter.
+        # The identifier of the extended parameter.
         self.key = key
         # The value of the extended parameter.
         self.value = value

@@ -11,9 +11,9 @@ class BindAccountResponseBody(DaraModel):
         data: main_models.BindAccountResponseBodyData = None,
         request_id: str = None,
     ):
-        # The detailed information returned by the Threat Analysis service.
+        # The specific content returned by the Threat Analysis service.
         self.data = data
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -49,7 +49,7 @@ class BindAccountResponseBodyData(DaraModel):
         self,
         count: int = None,
     ):
-        # The number of account bindings that are added.
+        # The number of added account bindings.
         self.count = count
 
     def validate(self):

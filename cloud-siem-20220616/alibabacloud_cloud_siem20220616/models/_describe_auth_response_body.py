@@ -10,13 +10,11 @@ class DescribeAuthResponseBody(DaraModel):
         data: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether the permissions are granted.
-        # 
-        # - true: The permissions are granted.
-        # 
-        # - false: The permissions are not granted.
+        # The return value of the request. Valid values:
+        # - true: Permissions are enabled.
+        # - false: Permissions are not enabled.
         self.data = data
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

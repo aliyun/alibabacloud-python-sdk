@@ -343,6 +343,7 @@ from ._describe_operators_response_body import DescribeOperatorsResponseBodyData
 from ._describe_prod_count_response_body import DescribeProdCountResponseBodyData
 from ._describe_scope_users_response_body import DescribeScopeUsersResponseBodyData
 from ._describe_user_buy_status_response_body import DescribeUserBuyStatusResponseBodyData
+from ._describe_user_siem_order_status_response_body import DescribeUserSiemOrderStatusResponseBodyDataCreditsPostpaidInfo
 from ._describe_user_siem_order_status_response_body import DescribeUserSiemOrderStatusResponseBodyData
 from ._describe_waf_scope_response_body import DescribeWafScopeResponseBodyData
 from ._describe_white_rule_list_response_body import DescribeWhiteRuleListResponseBodyDataPageInfo
@@ -745,6 +746,7 @@ __all__ = [
     DescribeProdCountResponseBodyData,
     DescribeScopeUsersResponseBodyData,
     DescribeUserBuyStatusResponseBodyData,
+    DescribeUserSiemOrderStatusResponseBodyDataCreditsPostpaidInfo,
     DescribeUserSiemOrderStatusResponseBodyData,
     DescribeWafScopeResponseBodyData,
     DescribeWhiteRuleListResponseBodyDataPageInfo,

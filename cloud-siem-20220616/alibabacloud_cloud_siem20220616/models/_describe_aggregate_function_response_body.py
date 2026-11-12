@@ -16,19 +16,17 @@ class DescribeAggregateFunctionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code of the request.
+        # The status code.
         self.code = code
-        # The returned data.
+        # The response data.
         self.data = data
-        # The returned message.
+        # The response message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # - true: The request was successful.
-        # 
-        # - false: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):
@@ -89,9 +87,9 @@ class DescribeAggregateFunctionResponseBodyData(DaraModel):
         function: str = None,
         function_name: str = None,
     ):
-        # The aggregate function.
+        # The aggregation function.
         self.function = function
-        # The display name of the aggregate function.
+        # The display name of the aggregation function.
         self.function_name = function_name
 
     def validate(self):

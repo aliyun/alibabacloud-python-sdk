@@ -23,31 +23,24 @@ class DeleteBindAccountRequest(DaraModel):
         # 
         # This parameter is required.
         self.account_id = account_id
-        # The binding ID. Call the [ListBindAccount](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\\&activeTabKey=api%7CListBindAccount) operation to obtain the binding ID.
+        # The binding ID. You can call the [ListBindAccount](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854&activeTabKey=api|ListBindAccount) operation to obtain the binding ID.
         self.bind_id = bind_id
-        # The code for the cloud service provider. Valid values:
-        # 
-        # - qcloud: Tencent Cloud
-        # 
-        # - aliyun: Alibaba Cloud
-        # 
-        # - hcloud: Huawei Cloud
+        # The code of the multi-cloud provider. Valid values:
+        # - qcloud: Tencent Cloud.
+        # - aliyun: Alibaba Cloud.
+        # - hcloud: Huawei Cloud.
         # 
         # This parameter is required.
         self.cloud_code = cloud_code
-        # The region where the threat analysis data center is located. Select a region based on the location of your assets. Valid values:
-        # 
-        # - cn-hangzhou: Your assets are in mainland China or the China (Hong Kong) region.
-        # 
-        # - ap-southeast-1: Your assets are in regions outside China.
+        # The region where the data management center for threat analysis is located. You must select the region of the management center based on the region of your assets. Valid values:
+        # - cn-hangzhou: Assets are located in the Chinese mainland and Hong Kong (China).
+        # - ap-southeast-1: Assets are located outside China.
         self.region_id = region_id
-        # The user ID of the member. An administrator can specify this parameter to perform the operation from the perspective of a member.
+        # The ID of the user whose view the administrator switches to.
         self.role_for = role_for
-        # The type of the view. Valid values:
-        # 
+        # The view type. Valid values:
         # - 0: The view of the current Alibaba Cloud account.
-        # 
-        # - 1: The view of all accounts that are managed by your enterprise.
+        # - 1: The view of all accounts in the enterprise.
         self.role_type = role_type
 
     def validate(self):

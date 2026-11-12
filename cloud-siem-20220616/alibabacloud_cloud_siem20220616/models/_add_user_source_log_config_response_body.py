@@ -11,9 +11,9 @@ class AddUserSourceLogConfigResponseBody(DaraModel):
         data: main_models.AddUserSourceLogConfigResponseBodyData = None,
         request_id: str = None,
     ):
-        # The return value of the request.
+        # The response data.
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -56,21 +56,25 @@ class AddUserSourceLogConfigResponseBodyData(DaraModel):
         sub_user_id: int = None,
         sub_user_name: str = None,
     ):
-        # The detailed information about the SLS log.
+        # The detailed Simple Log Service (SLS) information for log ingestion.
         self.diplay_line = diplay_line
-        # Indicates whether the details of the log collection task are returned. Valid values:
+        # Indicates whether the ingestion details are returned. Valid values:
+        # - true: The ingestion details are returned.
+        # - false: The ingestion details are not returned.
         self.displayed = displayed
-        # Indicates whether the log is collected. Valid values:
+        # Indicates whether the logs are ingested. Valid values:
+        # - true: The logs are ingested.
+        # - false: The logs are not ingested.
         self.imported = imported
-        # The ID of the Alibaba Cloud account that is used to purchase Threat Analysis.
+        # The Alibaba Cloud account ID that purchased Threat Analysis.
         self.main_user_id = main_user_id
-        # The code of the log.
+        # The log code.
         self.source_log_code = source_log_code
-        # The code of the product.
+        # The product code.
         self.source_prod_code = source_prod_code
-        # The ID of the Alibaba Cloud account for which the logs are collected.
+        # The Alibaba Cloud account ID for Threat Analysis.
         self.sub_user_id = sub_user_id
-        # The name of the Alibaba Cloud account for which the logs are collected.
+        # The name of the Alibaba Cloud account for Threat Analysis.
         self.sub_user_name = sub_user_name
 
     def validate(self):

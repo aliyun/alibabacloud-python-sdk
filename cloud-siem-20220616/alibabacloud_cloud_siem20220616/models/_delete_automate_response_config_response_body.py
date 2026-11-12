@@ -13,18 +13,16 @@ class DeleteAutomateResponseConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code of the request.
+        # The status code.
         self.code = code
-        # The return value of the request.
+        # The response data.
         self.data = data
-        # The message returned for the request.
+        # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # - true: The request was successful.
-        # 
+        # Indicates whether the request is successful. Valid values:
+        # - true: The request is successful.
         # - false: The request failed.
         self.success = success
 

@@ -12,15 +12,13 @@ class DeleteCustomizeRuleRequest(DaraModel):
         role_type: int = None,
         rule_id: int = None,
     ):
-        # The region where the product is deployed.
+        # The region where the product is located.
         self.region_id = region_id
-        # The user ID of the member. This parameter is used when an administrator switches to the perspective of a member.
+        # The user ID of the member whose view the administrator switches to. This parameter allows the administrator to switch to the view of a specified member, bypassing the order validity check but still requiring permission verification. The target account must have activated Cloud SIEM, and the caller must have the required RAM permissions.
         self.role_for = role_for
-        # The type of the view.
-        # 
-        # - 0: The view of the current Alibaba Cloud account.
-        # 
-        # - 1: The view of all accounts in your enterprise.
+        # The view type. Valid values:
+        # - 0: the view of the current Alibaba Cloud account
+        # - 1: the view of all accounts in the enterprise
         self.role_type = role_type
         # The ID of the custom rule.
         self.rule_id = rule_id

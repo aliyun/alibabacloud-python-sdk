@@ -13,7 +13,7 @@ class ListDeliveryResponseBody(DaraModel):
         data: main_models.ListDeliveryResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned data.
+        # The detailed response data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -56,21 +56,19 @@ class ListDeliveryResponseBodyData(DaraModel):
         project_name: str = None,
         search_url: str = None,
     ):
-        # The URL of the dashboard on the log analysis page.
+        # The URL for dashboard display on the log analysis page.
         self.dashboard_url = dashboard_url
-        # Indicates whether to display the delivery switch. The default value is true. Valid values:
-        # 
-        # - true: The delivery switch is displayed.
-        # 
-        # - false: The delivery switch is hidden.
+        # Specifies whether to display the delivery switch. Default value: true. Valid values:
+        # - true: Display the delivery switch.
+        # - false: Hide the delivery switch.
         self.display_switch_or_not = display_switch_or_not
-        # The name of your LogStore for threat analysis. The format is \\`cloud_siem\\`.
+        # The name of the Logstore on the user side of Threat Analysis. Format: cloud_siem.
         self.log_store_name = log_store_name
-        # A list of products.
+        # The list of products.
         self.product_list = product_list
-        # The name of your Simple Log Service (SLS) project for threat analysis. The format is \\`aliyun-cloudsiem-data-${aliUid}-${region}\\`.
+        # The name of the Log Service project on the user side of Threat Analysis. Format: aliyun-cloudsiem-data-${aliUid}-${region}.
         self.project_name = project_name
-        # The URL of the Search & Analysis page in the SLS console.
+        # The URL for query and analysis on the log analysis page.
         self.search_url = search_url
 
     def validate(self):
@@ -139,59 +137,36 @@ class ListDeliveryResponseBodyDataProductList(DaraModel):
         product_code: str = None,
         product_name: str = None,
     ):
-        # A list of logs for cloud products that do not have subcategories.
+        # The cloud services that do not have finer categories.
         self.log_list = log_list
-        # A list of logs that are categorized. For example, Security Center logs are categorized into groups such as Host and Network. The group is the key, and the logs in the group are the value.
+        # The list of logs that have categories. For example, Security Center has groups such as host and network. The group information is the key, and the logs included in the group are the value.
         self.log_map = log_map
-        # The code of the cloud product. Valid values:
-        # 
+        # The code of the cloud service. Valid values:
         # - qcloud_waf
-        # 
-        # - qcloud_cfw
-        # 
+        # - qlcoud_cfw
         # - hcloud_waf
-        # 
         # - hcloud_cfw
-        # 
         # - ddos
-        # 
         # - sas
-        # 
         # - cfw
-        # 
         # - config
-        # 
         # - csk
-        # 
         # - fc
-        # 
         # - rds
-        # 
         # - nas
-        # 
         # - apigateway
-        # 
         # - cdn
-        # 
         # - mongodb
-        # 
         # - eip
-        # 
         # - slb
-        # 
         # - vpc
-        # 
         # - actiontrail
-        # 
         # - waf
-        # 
         # - bastionhost
-        # 
         # - oss
-        # 
         # - polardb
         self.product_code = product_code
-        # This parameter is deprecated. You can ignore it.
+        # **[Deprecated]** This parameter is deprecated and can be ignored.
         self.product_name = product_name
 
     def validate(self):
@@ -268,29 +243,25 @@ class ListDeliveryResponseBodyDataProductListLogList(DaraModel):
         status: bool = None,
         topic: str = None,
     ):
-        # Indicates whether the log delivery switch can be operated. Only the delegated administrator for threat analysis can operate the switch. Valid values:
-        # 
+        # Specifies whether the log delivery switch can be operated. Only the delegated administrator of Threat Analysis can operate the log delivery switch. Valid values:
         # - true: The switch can be operated.
-        # 
         # - false: The switch cannot be operated.
         self.can_operate_or_not = can_operate_or_not
-        # Additional parameters.
+        # The extended parameters.
         self.extra_parameters = extra_parameters
         # The log code.
         self.log_code = log_code
-        # This parameter is deprecated. You can ignore it.
+        # **[Deprecated]** This parameter is deprecated and can be ignored.
         self.log_name = log_name
-        # This parameter is deprecated. You can ignore it.
+        # **[Deprecated]** This parameter is deprecated and can be ignored.
         self.log_name_en = log_name_en
-        # The language key of the log name. This key is used to display the log name in different languages.
+        # The language code of the log, which is used to display multilingual names.
         self.log_name_key = log_name_key
         # The log delivery status. Valid values:
-        # 
-        # - true: Delivery is in progress.
-        # 
+        # - true: Delivery is in progress.  
         # - false: Delivery is disabled.
         self.status = status
-        # The topic of the log in the LogStore. This parameter is an index field in the LogStore and is used to differentiate logs.
+        # The topic of the log in the Logstore. It is an index field of the Logstore and can be used to distinguish different logs.
         self.topic = topic
 
     def validate(self):
@@ -369,9 +340,9 @@ class ListDeliveryResponseBodyDataProductListLogListExtraParameters(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the additional parameter.
+        # The identifier of the extended parameter.
         self.key = key
-        # The value of the additional parameter.
+        # The value of the extended parameter.
         self.value = value
 
     def validate(self):

@@ -10,13 +10,11 @@ class CloseDeliveryResponseBody(DaraModel):
         data: bool = None,
         request_id: str = None,
     ):
-        # The result of the request. Valid values:
-        # 
-        # - true: The request was successful.
-        # 
-        # - false: The request failed.
+        # The result of disabling the service in Threat Analysis. Valid values:
+        # - true: The service is disabled.
+        # - false: The service fails to be disabled.
         self.data = data
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
