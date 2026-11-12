@@ -14,6 +14,7 @@ class ModifyAppInstanceResponseBody(DaraModel):
         components: List[main_models.ModifyAppInstanceResponseBodyComponents] = None,
         instance_name: str = None,
         request_id: str = None,
+        target_instance_name: str = None,
     ):
         # The reserved parameter.
         self.branch_name = branch_name
@@ -23,6 +24,8 @@ class ModifyAppInstanceResponseBody(DaraModel):
         self.instance_name = instance_name
         # Id of the request
         self.request_id = request_id
+        # The reserved parameter.
+        self.target_instance_name = target_instance_name
 
     def validate(self):
         if self.components:
@@ -49,6 +52,9 @@ class ModifyAppInstanceResponseBody(DaraModel):
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
+        if self.target_instance_name is not None:
+            result['TargetInstanceName'] = self.target_instance_name
+
         return result
 
     def from_map(self, m: dict = None):
@@ -67,6 +73,9 @@ class ModifyAppInstanceResponseBody(DaraModel):
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+
+        if m.get('TargetInstanceName') is not None:
+            self.target_instance_name = m.get('TargetInstanceName')
 
         return self
 

@@ -16,19 +16,25 @@ class ModifyAppInstanceRequest(DaraModel):
         dbinstance_name: str = None,
         instance_class: str = None,
         instance_name: str = None,
+        migration_mode: str = None,
         region_id: str = None,
     ):
         # The reserved parameter.
         self.branch_name = branch_name
-        # The client token that is used to ensure idempotence.
+        # The idempotency parameter.
         self.client_token = client_token
         # The list of modules.
         self.components = components
+        # The instance ID of the ApsaraDB RDS for PostgreSQL database connected to the AI application.
+        # 
+        # <notice>Only **newly purchased empty ApsaraDB RDS for PostgreSQL instances** are supported. The major engine version must be **17**, and the minor engine version must be **20250630 or later**.</notice>
         self.dbinstance_name = dbinstance_name
-        # The instance type. Currently, only **rdsai.supabase.basic** is supported.
+        # The instance type. Only **rdsai.supabase.basic** is supported.
         self.instance_class = instance_class
         # The instance ID of the AI application.
         self.instance_name = instance_name
+        # The reserved parameter.
+        self.migration_mode = migration_mode
         # The region ID.
         self.region_id = region_id
 
@@ -63,6 +69,9 @@ class ModifyAppInstanceRequest(DaraModel):
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
 
+        if self.migration_mode is not None:
+            result['MigrationMode'] = self.migration_mode
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -90,6 +99,9 @@ class ModifyAppInstanceRequest(DaraModel):
 
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
+
+        if m.get('MigrationMode') is not None:
+            self.migration_mode = m.get('MigrationMode')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
