@@ -1,3 +1,16 @@
+2026-11-12 Version: 4.1.0
+- Support API CreateOrder.
+- Support API DescribePrice.
+- Update API ListFirewallRules: add response parameters Body.FirewallRules.$.InstanceId.
+- Update API ListInstances: add response parameters Body.Instances.$.CommodityCode.
+- Update API ListPlans: add response parameters Body.Plans.$.Credits.
+- Update API ListPlans: add response parameters Body.Plans.$.Tokens.
+- Update API LoginInstance: add response parameters Body.Protocol.
+- Update API LoginInstance: add response parameters Body.SecurityToken.
+- Update API LoginInstance: add response parameters Body.SessionId.
+- Update API StartTerminalSession: add request parameters CommandLine.
+
+
 2025-03-25 Version: 4.0.0
 - Update API ListPlans: update response param.
 
