@@ -17,11 +17,11 @@ class CreateImageCacheRequest(DaraModel):
         # 
         # This parameter is required.
         self.body = body
-        # The non-empty request token passed as a query parameter. The current implementation does not guarantee deduplication by this token or recovery of the original acceptance result.
+        # The non-empty request identifier passed as a query parameter. The current implementation does not guarantee deduplication based on this identifier or recovery of the original acceptance result.
         # 
         # This parameter is required.
         self.client_token = client_token
-        # The product entry region, passed as a query parameter. It must match the selected region endpoint and the workspace region.
+        # The product entry region. This parameter is passed as a query parameter and must match the selected region endpoint and the workspace region.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -80,11 +80,11 @@ class CreateImageCacheRequestBody(DaraModel):
         repository: str = None,
         tag: str = None,
     ):
-        # Specifies whether to allow public network access for the current source reading and transfer. At least one of this parameter and `accessVpc` must be set to true. The server validates the access conditions of the current workspace.
+        # Specifies whether to allow the use of the public network for the current source reading and transfer. At least one of this parameter and accessVpc must be set to true. The server validates the access conditions of the current workspace.
         # 
         # This parameter is required.
         self.access_internet = access_internet
-        # Specifies whether to allow the use of a VPC for the current source reading and transfer. At least one of this parameter and `accessInternet` must be set to true. The server resolves the trusted network of the current workspace and does not modify the runtime network of the agent.
+        # Specifies whether to allow the use of a VPC for the current source reading and transfer. At least one of this parameter and accessInternet must be set to true. The server resolves the trusted network of the current workspace and does not modify the runtime network of the agent.
         # 
         # This parameter is required.
         self.access_vpc = access_vpc
@@ -96,7 +96,7 @@ class CreateImageCacheRequestBody(DaraModel):
         # 
         # This parameter is required.
         self.namespace = namespace
-        # The name of the repository under the namespace. Do not include the namespace in the repository name.
+        # The name of the repository under the namespace. Do not repeat the namespace in this field.
         # 
         # This parameter is required.
         self.repository = repository

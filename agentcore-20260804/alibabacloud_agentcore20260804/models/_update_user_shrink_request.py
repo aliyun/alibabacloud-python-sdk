@@ -10,7 +10,7 @@ class UpdateUserShrinkRequest(DaraModel):
         body_shrink: str = None,
         client_token: str = None,
     ):
-        # The request body for updating the user.
+        # The request body for updating a user.
         self.body_shrink = body_shrink
         # Not supported.
         self.client_token = client_token

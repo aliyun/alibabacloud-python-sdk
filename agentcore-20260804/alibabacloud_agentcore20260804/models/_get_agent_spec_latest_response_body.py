@@ -201,7 +201,7 @@ class GetAgentSpecLatestResponseBodyDataSkills(DaraModel):
         self.name = name
         # The source type of the skill.
         self.source_type = source_type
-        # The referenced version selector. If omitted, the default is LABEL/latest.
+        # The referenced version selector. If omitted, the default value is LABEL/latest.
         self.version_selector = version_selector
 
     def validate(self):
@@ -246,7 +246,7 @@ class GetAgentSpecLatestResponseBodyDataSkillsVersionSelector(DaraModel):
     ):
         # The type of the version selector.
         self.type = type
-        # The value of the selector. If the type is LABEL, the value is the label name, such as latest. If the type is VERSION, the value is the specific version number.
+        # The value of the selector. When the type is LABEL, this is the label name, such as latest. When the type is VERSION, this is the specific version number.
         self.value = value
 
     def validate(self):

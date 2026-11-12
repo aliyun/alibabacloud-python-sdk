@@ -23,7 +23,7 @@ class GetWorkspacePluginResponseBody(DaraModel):
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The response message. An error description is returned when the request fails.
+        # The response message. An error description is returned if the request fails.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -239,11 +239,11 @@ class GetWorkspacePluginResponseBodyDataConfigNetworkVpc(DaraModel):
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
     ):
-        # Indicates whether VPC network access is currently enabled for the collaboration component.
+        # Indicates whether the VPC network is currently enabled for the collaboration component.
         self.enabled = enabled
         # The list of vSwitch IDs used for component deployment.
         self.v_switch_ids = v_switch_ids
-        # The VPC ID used for component deployment.
+        # The ID of the VPC used for component deployment.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -283,7 +283,7 @@ class GetWorkspacePluginResponseBodyDataConfigNetworkInternet(DaraModel):
         self,
         enabled: bool = None,
     ):
-        # Specifies whether public network access is enabled.
+        # Indicates whether public network access is enabled.
         self.enabled = enabled
 
     def validate(self):
@@ -315,9 +315,9 @@ class GetWorkspacePluginResponseBodyDataConfigAgentLoop(DaraModel):
     ):
         # The name of the AgentSpace associated with the AgentLoop component.
         self.agent_space_name = agent_space_name
-        # The creation time of the AgentSpace, in UTC format compliant with RFC 3339.
+        # The creation time of the AgentSpace, in UTC time formatted according to RFC 3339.
         self.created_at = created_at
-        # The region ID where the AgentSpace resides.
+        # The ID of the region where the AgentSpace is located.
         self.region_id = region_id
 
     def validate(self):

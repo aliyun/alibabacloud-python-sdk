@@ -24,9 +24,9 @@ class ListWorkspacesResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The workspace list.
+        # The list of workspaces.
         self.items = items
-        # The maximum number of records per page used in the current request.
+        # The maximum number of records per page used in this request.
         self.max_results = max_results
         # The response message.
         self.message = message
@@ -36,7 +36,7 @@ class ListWorkspacesResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
-        # The total number of workspaces that match the query conditions.
+        # The total number of workspaces that meet the query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -126,7 +126,7 @@ class ListWorkspacesResponseBodyItems(DaraModel):
         tenant_id: str = None,
         workspace_id: str = None,
     ):
-        # The creation time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
+        # The creation time. The time follows the RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
         self.create_time = create_time
         # The workspace name.
         self.name = name
@@ -206,11 +206,11 @@ class ListWorkspacesResponseBodyItemsNetworkConfiguration(DaraModel):
         public_ingress_enabled: bool = None,
         vpc: main_models.ListWorkspacesResponseBodyItemsNetworkConfigurationVpc = None,
     ):
-        # Indicates whether public egress access from the platform is allowed. The value returned is the target configuration value. Updating indicates that the change is in progress, and UpdateFailed indicates that the change failed. This setting only controls whether the latest versions of managed and custom agents use the public egress of the platform. It does not control fixed historical versions, model or MCP proxy egress, or the public egress of the user VPC.
+        # Returns the target configuration value. Updating indicates that the change is still being executed, and UpdateFailed indicates that the current change failed. This parameter only controls whether the latest versions of managed and custom agents use the public network egress of the platform. It does not control fixed historical versions, model or MCP proxy egresses, or the public network egress of the user VPC.
         self.public_egress_enabled = public_egress_enabled
-        # Indicates whether public ingress access is allowed. The value returned is the target configuration value. Updating indicates that the change is in progress, and UpdateFailed indicates that the change failed. If disabled, the public ingress for all agent endpoints in the workspace is closed. If re-enabled, the original public ingress is restored. INNER_DIRECT and user VPC ingress are not affected. Collaboration and Element Web ingress are not controlled by this setting.
+        # Returns the target configuration value. Updating indicates that the change is in progress, and UpdateFailed indicates that the change failed. After this feature is disabled, the public network ingress of all agent endpoints in the workspace is closed. After it is re-enabled, the original public network ingress is restored. INNER_DIRECT and user VPC ingresses are not affected. Collaboration and Element Web ingresses are not controlled by this parameter.
         self.public_ingress_enabled = public_ingress_enabled
-        # The network configuration of the user VPC.
+        # The VPC network configuration of the user.
         self.vpc = vpc
 
     def validate(self):

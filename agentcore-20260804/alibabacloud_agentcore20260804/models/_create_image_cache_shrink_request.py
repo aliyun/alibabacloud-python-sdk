@@ -16,11 +16,11 @@ class CreateImageCacheShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.body_shrink = body_shrink
-        # The non-empty request token passed as a query parameter. The current implementation does not guarantee deduplication by this token or recovery of the original acceptance result.
+        # The non-empty request identifier passed as a query parameter. The current implementation does not guarantee deduplication based on this identifier or recovery of the original acceptance result.
         # 
         # This parameter is required.
         self.client_token = client_token
-        # The product entry region, passed as a query parameter. It must match the selected region endpoint and the workspace region.
+        # The product entry region. This parameter is passed as a query parameter and must match the selected region endpoint and the workspace region.
         # 
         # This parameter is required.
         self.region_id = region_id

@@ -23,7 +23,7 @@ class BatchDeleteModelsResponseBody(DaraModel):
         self.data = data
         # The HTTP status code. The value is 200 if the request is successful.
         self.http_status_code = http_status_code
-        # The request processing result message.
+        # The message about the request processing result.
         self.message = message
         # The request ID.
         self.request_id = request_id

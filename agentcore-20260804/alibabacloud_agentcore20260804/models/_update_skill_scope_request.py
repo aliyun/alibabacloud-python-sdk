@@ -40,7 +40,7 @@ class UpdateSkillScopeRequestBody(DaraModel):
         self,
         scope: str = None,
     ):
-        # The visibility scope.
+        # The visibility.
         # 
         # This parameter is required.
         self.scope = scope

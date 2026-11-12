@@ -15,13 +15,13 @@ class CreateExternalAgentBootstrapTokenResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business status code. The value is SUCCESS if the request is successful.
+        # The business status code. A value of SUCCESS indicates success.
         self.code = code
         # The bootstrap token and CMS configuration required for the managed agent onboarding.
         self.data = data
-        # The HTTP status code. The value is 200 if the request is successful.
+        # The HTTP status code. A value of 200 indicates success.
         self.http_status_code = http_status_code
-        # The request processing result message.
+        # The message about the request processing result.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -90,13 +90,13 @@ class CreateExternalAgentBootstrapTokenResponseBodyData(DaraModel):
         token_fingerprint: str = None,
         workspace_id: str = None,
     ):
-        # The ID of the managed agent.
+        # The managed agent ID.
         self.agent_id = agent_id
         # The bootstrap token used for the managed agent onboarding.
         self.bootstrap_token = bootstrap_token
         # The CMS configuration used for the managed agent onboarding.
         self.cms = cms
-        # The access network type. Valid values: INTRANET (internal network) and INTERNET (Internet).
+        # The network type for access. Valid values: INTRANET (internal network) and INTERNET (Internet).
         self.network_type = network_type
         # The fingerprint of the bootstrap token.
         self.token_fingerprint = token_fingerprint
@@ -166,7 +166,7 @@ class CreateExternalAgentBootstrapTokenResponseBodyDataCms(DaraModel):
         self.endpoint = endpoint
         # The license key used for CMS access.
         self.license_key = license_key
-        # The name of the CMS workspace.
+        # The CMS workspace name.
         self.workspace = workspace
 
     def validate(self):

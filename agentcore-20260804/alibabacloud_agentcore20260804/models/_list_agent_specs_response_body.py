@@ -135,13 +135,13 @@ class ListAgentSpecsResponseBodyDataPageItems(DaraModel):
         self.download_count = download_count
         # The version currently being edited.
         self.editing_version = editing_version
-        # Indicates whether it is enabled.
+        # Specifies whether it is enabled.
         self.enable = enable
         # The source.
         self.from_ = from_
-        # The version labels.
+        # The version tags.
         self.labels = labels
-        # The list of referenced MCP servers.
+        # The list of MCP service references.
         self.mcp_servers = mcp_servers
         # The name.
         self.name = name
@@ -151,9 +151,9 @@ class ListAgentSpecsResponseBodyDataPageItems(DaraModel):
         self.reviewing_version = reviewing_version
         # The visibility scope.
         self.scope = scope
-        # The list of referenced skills.
+        # The list of skill references.
         self.skills = skills
-        # The update time. The value is a UNIX timestamp in milliseconds.
+        # The update time. It is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -280,9 +280,9 @@ class ListAgentSpecsResponseBodyDataPageItemsSkills(DaraModel):
     ):
         # The name.
         self.name = name
-        # The source type of the skill. Valid values: REFERENCE (references the AI Registry) and STATIC (statically provided with the package).
+        # The skill source type. Valid values: REFERENCE (references AI Registry) and STATIC (statically provided with the package).
         self.source_type = source_type
-        # The referenced version selector. If omitted, the default value is LABEL/latest.
+        # The referenced version selector. If omitted, the default is LABEL/latest.
         self.version_selector = version_selector
 
     def validate(self):
@@ -325,9 +325,9 @@ class ListAgentSpecsResponseBodyDataPageItemsSkillsVersionSelector(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The type of the version selector. Valid values: LABEL (by label) and VERSION (by specific version).
+        # The version selector type. Valid values: LABEL (by tag) and VERSION (by specific version).
         self.type = type
-        # The value of the selector. If the type is LABEL, the value is the label name, such as latest. If the type is VERSION, the value is the specific version number.
+        # The selector value. For LABEL, it is the tag name (such as latest). For VERSION, it is the specific version number.
         self.value = value
 
     def validate(self):

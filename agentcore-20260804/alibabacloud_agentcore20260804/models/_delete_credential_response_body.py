@@ -17,11 +17,11 @@ class DeleteCredentialResponseBody(DaraModel):
     ):
         # The business status code.
         self.code = code
-        # The information about the deleted credential.
+        # The deleted credential information.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The response message. An error description is returned if the request fails.
+        # The response message. Returns an error description when the request fails.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -89,7 +89,7 @@ class DeleteCredentialResponseBodyData(DaraModel):
     ):
         # The credential ID.
         self.credential_id = credential_id
-        # The credential name. The name must be unique within the workspace, contain only letters, digits, periods, underscores, and hyphens, and be 3 to 99 characters in length. You cannot use runtime reserved names.
+        # The credential name. It must be unique within the workspace, contain only letters, digits, periods, underscores, and hyphens, and be 3 to 99 characters in length. You cannot use runtime reserved names.
         self.name = name
         # The workspace ID.
         self.workspace_id = workspace_id

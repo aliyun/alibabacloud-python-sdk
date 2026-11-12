@@ -17,7 +17,7 @@ class ListPermissionRulesRequest(DaraModel):
         source: str = None,
         target: str = None,
     ):
-        # The maximum number of entries to return per page.
+        # The maximum number of results to return per page.
         self.max_results = max_results
         # The token used to retrieve the next page.
         self.next_token = next_token
@@ -37,7 +37,7 @@ class ListPermissionRulesRequest(DaraModel):
         self.resource_type = resource_type
         # The rule source.
         self.source = source
-        # The target of the rule.
+        # The rule target.
         self.target = target
 
     def validate(self):

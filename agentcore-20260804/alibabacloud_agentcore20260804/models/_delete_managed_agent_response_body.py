@@ -15,11 +15,11 @@ class DeleteManagedAgentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business status code. The value is SUCCESS if the request is successful.
+        # The business status code. The value is SUCCESS for a successful request.
         self.code = code
         # The summary information of the managed Harness agent after deletion.
         self.data = data
-        # The HTTP status code. The value is 200 if the request is successful.
+        # The HTTP status code. The value is 200 for a successful request.
         self.http_status_code = http_status_code
         # The message about the request processing result.
         self.message = message
@@ -97,11 +97,11 @@ class DeleteManagedAgentResponseBodyData(DaraModel):
         updated_at: str = None,
         workspace_id: str = None,
     ):
-        # The inbound access mode.
+        # The inbound access method.
         self.access_mode = access_mode
         # The user access scope.
         self.access_scope = access_scope
-        # The ID of the managed Harness agent.
+        # The managed Harness agent ID.
         self.agent_id = agent_id
         # The creation mode.
         self.create_mode = create_mode

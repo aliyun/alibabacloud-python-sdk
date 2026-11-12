@@ -10,7 +10,7 @@ class ListConnectorsRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # The page size. This parameter is not supported in the current version.
+        # The maximum number of results to return. This parameter is not supported in the current version.
         self.max_results = max_results
         # The next token. This parameter is not supported in the current version.
         self.next_token = next_token

@@ -26,7 +26,7 @@ class ListExternalAgentsResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The list of managed agents.
         self.items = items
-        # The maximum number of entries returned per page for this request.
+        # The maximum number of entries returned per page for the current request.
         self.max_results = max_results
         # The message about the request processing result.
         self.message = message
@@ -130,7 +130,7 @@ class ListExternalAgentsResponseBodyItems(DaraModel):
         updated_at: str = None,
         workspace_id: str = None,
     ):
-        # The ID of the managed agent.
+        # The managed agent ID.
         self.agent_id = agent_id
         # The creation mode.
         self.create_mode = create_mode

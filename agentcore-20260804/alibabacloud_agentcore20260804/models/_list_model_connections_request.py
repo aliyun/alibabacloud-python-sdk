@@ -17,11 +17,11 @@ class ListModelConnectionsRequest(DaraModel):
     ):
         # Specifies whether to return the summary of associated models in each model connection. Default value: false.
         self.include_models = include_models
-        # The maximum number of entries to return on each page. Valid values: 0 to 100. Default value: 10. If this parameter is not specified or is set to 0, the default value is used.
+        # The maximum number of entries to return per page. Valid values: 0 to 100. Default value: 10. If this parameter is not specified or is set to 0, the default value is used.
         self.max_results = max_results
-        # The name of the model connection. The name must be 1 to 128 characters in length and cannot contain whitespace characters.
+        # The name of the model connection. The name must be 1 to 128 non-whitespace characters in length.
         self.name = name
-        # The pagination token. Pass the token returned in the previous query for the current request. An empty response indicates that no more pages are available.
+        # The pagination token. Pass the token returned in the previous response to query the next page. If the response is empty, no more pages are available.
         self.next_token = next_token
         # The invocation protocol used to filter model connections.
         self.protocol = protocol

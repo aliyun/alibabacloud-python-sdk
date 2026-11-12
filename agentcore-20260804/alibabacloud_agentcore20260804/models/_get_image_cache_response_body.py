@@ -19,7 +19,7 @@ class GetImageCacheResponseBody(DaraModel):
         # 
         # This parameter is required.
         self.code = code
-        # The query result for the image cache details.
+        # The image cache details.
         # 
         # This parameter is required.
         self.data = data
@@ -31,11 +31,11 @@ class GetImageCacheResponseBody(DaraModel):
         # 
         # This parameter is required.
         self.message = message
-        # The request ID, which is used for troubleshooting.
+        # The request ID, used for troubleshooting.
         # 
         # This parameter is required.
         self.request_id = request_id
-        # Indicates whether the request is successful. This does not mean that the cache creation is completed.
+        # Indicates whether the request is successful. This does not mean that the cache creation is complete.
         # 
         # This parameter is required.
         self.success = success
@@ -126,11 +126,11 @@ class GetImageCacheResponseBodyData(DaraModel):
         # 
         # This parameter is required.
         self.can_delete = can_delete
-        # The resource creation time. It uses the RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
+        # The resource creation time. The format is RFC 3339. The Z at the end of the example indicates the UTC time zone.
         # 
         # This parameter is required.
         self.created_at = created_at
-        # The reason why deletion is blocked.
+        # The reason for blocking deletion.
         # 
         # This parameter is required.
         self.delete_block_reason = delete_block_reason
@@ -138,7 +138,7 @@ class GetImageCacheResponseBodyData(DaraModel):
         # 
         # This parameter is required.
         self.digest = digest
-        # The reason for the cache failure.
+        # The cache failure reason.
         # 
         # This parameter is required.
         self.error = error
@@ -273,7 +273,7 @@ class GetImageCacheResponseBodyDataError(DaraModel):
         code: str = None,
         message: str = None,
     ):
-        # The error code for the creation failure.
+        # The error code for creation failure.
         # 
         # This parameter is required.
         self.code = code

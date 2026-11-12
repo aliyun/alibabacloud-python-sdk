@@ -21,7 +21,7 @@ class GetUserResponseBody(DaraModel):
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The response message. An error description is returned if the request fails.
+        # The response message. Returns an error description if the request fails.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -99,21 +99,21 @@ class GetUserResponseBodyData(DaraModel):
         self.agent_core_user_id = agent_core_user_id
         # The authentication method of the user. A value of password indicates that local password authentication in the workspace is used. A value of dingtalk or feishu indicates that the user is synchronized and authenticated by the corresponding external identity provider.
         self.auth_method = auth_method
-        # The creation time in UTC format compliant with RFC 3339.
+        # The creation time in UTC format based on RFC 3339.
         self.created_at = created_at
-        # The display name of the user. The name must be 1 to 32 characters in length.
+        # The display name of the user. It must be 1 to 32 characters in length.
         self.display_name = display_name
-        # The email address of the user. The address can be up to 256 characters in length.
+        # The email address of the user. It can be up to 256 characters in length.
         self.email = email
-        # The username. The name must be unique within the workspace, contain only lowercase letters, digits, and hyphens, start and end with a lowercase letter or a digit, and be 1 to 32 characters in length.
+        # The username. It must be unique within the workspace, contain only lowercase letters, digits, and hyphens, start and end with a lowercase letter or digit, and be 1 to 32 characters in length.
         self.name = name
-        # The note for the user. The note can be up to 1,024 characters in length.
+        # The note for the user. It can be up to 1,024 characters in length.
         self.note = note
         # The region ID of the resource.
         self.region_id = region_id
-        # The status of the user. Valid values: Creating, Active, Updating, Deleting, Failed, and DeleteFailed.
+        # The user status. Valid values: Creating, Active, Updating, Deleting, Failed, and DeleteFailed.
         self.status = status
-        # The time of the last modification in UTC format compliant with RFC 3339.
+        # The last update time in UTC format based on RFC 3339.
         self.updated_at = updated_at
         # The workspace ID.
         self.workspace_id = workspace_id

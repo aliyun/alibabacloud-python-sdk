@@ -10,7 +10,7 @@ class VerifyConnectorRequest(DaraModel):
         self,
         body: main_models.VerifyConnectorRequestBody = None,
     ):
-        # The verification request body.
+        # The validation request body.
         # 
         # This parameter is required.
         self.body = body
@@ -42,7 +42,7 @@ class VerifyConnectorRequestBody(DaraModel):
         self,
         metadata: str = None,
     ):
-        # The JSON string of the connector configuration to be verified. The site value can be global or cn, and serviceAccountKeys must contain at least one item with a serviceAccountKey.
+        # The JSON string of the connector configuration to be validated. Set site to global or cn. The serviceAccountKeys field must contain at least one item with a serviceAccountKey.
         # 
         # This parameter is required.
         self.metadata = metadata

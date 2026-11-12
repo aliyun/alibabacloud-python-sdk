@@ -17,13 +17,13 @@ class GetModelConnectionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business status code. The value is SUCCESS when the operation is successful.
+        # The business status code. The value is SUCCESS if the request is successful.
         self.code = code
         # The detailed information about the model connection.
         self.data = data
-        # The HTTP status code. The value is 200 if the request is successful.
+        # The HTTP status code. A value of 200 indicates success.
         self.http_status_code = http_status_code
-        # The message about the request processing result.
+        # The request processing result message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -103,7 +103,7 @@ class GetModelConnectionResponseBodyData(DaraModel):
     ):
         # The number of API keys configured in the model connection.
         self.api_key_count = api_key_count
-        # The list of API keys used to access the upstream model service. The list contains at least one non-empty value.
+        # The list of API keys used to access the upstream model service. The list must contain at least one non-empty value.
         self.api_keys = api_keys
         # The model connection ID.
         self.connection_id = connection_id
@@ -115,17 +115,17 @@ class GetModelConnectionResponseBodyData(DaraModel):
         self.description = description
         # The absolute HTTP or HTTPS URL of the upstream model service. The URL can be up to 1,024 characters in length.
         self.endpoint = endpoint
-        # The name of the model connection. The name is 1 to 128 non-whitespace characters in length.
+        # The name of the model connection. The name must be 1 to 128 non-whitespace characters in length.
         self.name = name
-        # The protocol to invoke the model. Currently, only OpenAI/v1 is supported. If the Settings are not specified during model creation, this default value is used.
+        # The model invocation protocol. Currently, only OpenAI/v1 is supported. If this parameter is not specified when the model connection is created, this default value is used.
         self.protocol = protocol
         # The type of the model provider.
         self.provider_type = provider_type
-        # The ID of the region to which the resource belongs.
+        # The region ID of the resource.
         self.region_id = region_id
         # The status of the resource.
         self.status = status
-        # The failure summary returned when the model connection fails to be published, or when deletion fails but the connection remains in the deleting state. This field is empty in other states.
+        # The failure summary returned when the model connection fails to be published, or when deletion fails but the status remains Deleting. Empty for other statuses.
         self.status_reason = status_reason
         # The time when the resource was last updated. The time is in RFC 3339 UTC format.
         self.updated_at = updated_at

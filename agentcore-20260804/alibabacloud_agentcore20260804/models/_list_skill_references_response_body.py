@@ -13,9 +13,9 @@ class ListSkillReferencesResponseBody(DaraModel):
         data: main_models.ListSkillReferencesResponseBodyData = None,
         request_id: str = None,
     ):
-        # The skill reference data returned in the paging query.
+        # The skill reference relationships returned in the paging query.
         self.data = data
-        # The request ID used for troubleshooting.
+        # The request ID, which is used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -56,11 +56,11 @@ class ListSkillReferencesResponseBodyData(DaraModel):
     ):
         # The list of skill reference relationships on the current page.
         self.page_items = page_items
-        # The current page number. Pages start from 1.
+        # The current page number, starting from 1.
         self.page_number = page_number
         # The total number of pages.
         self.pages_available = pages_available
-        # The total number of reference relationships that meet the specified conditions.
+        # The total number of reference relationships that meet the filter conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -120,7 +120,7 @@ class ListSkillReferencesResponseBodyDataPageItems(DaraModel):
         skill_name: str = None,
         workspace_id: str = None,
     ):
-        # The ID of the referencing entity, which is the identifier of the agent or AgentSpec.
+        # The ID of the referencing entity, which identifies the agent or AgentSpec.
         self.owner_id = owner_id
         # The type of the referencing entity. Valid values: AGENT and AGENTSPEC.
         self.owner_type = owner_type

@@ -15,13 +15,13 @@ class DeleteExternalAgentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business status code. The value is SUCCESS when the request is successful.
+        # The business status code. A value of SUCCESS indicates success.
         self.code = code
         # The summary information of the deleted managed agent.
         self.data = data
-        # The HTTP status code. The value is 200 when the request is successful.
+        # The HTTP status code. A value of 200 indicates success.
         self.http_status_code = http_status_code
-        # The message about the request processing result.
+        # The request result message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -97,11 +97,11 @@ class DeleteExternalAgentResponseBodyData(DaraModel):
         updated_at: str = None,
         workspace_id: str = None,
     ):
-        # The inbound access mode.
+        # The inbound access method.
         self.access_mode = access_mode
         # The user access scope.
         self.access_scope = access_scope
-        # The managed agent ID.
+        # The ID of the managed agent.
         self.agent_id = agent_id
         # The creation mode.
         self.create_mode = create_mode
@@ -111,7 +111,7 @@ class DeleteExternalAgentResponseBodyData(DaraModel):
         self.deploy_type = deploy_type
         # The description of the managed agent.
         self.description = description
-        # The latest specification version number.
+        # The latest specification version.
         self.latest_spec_version = latest_spec_version
         # The name of the managed agent.
         self.name = name

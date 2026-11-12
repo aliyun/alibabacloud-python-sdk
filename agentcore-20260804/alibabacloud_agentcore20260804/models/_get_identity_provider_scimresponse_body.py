@@ -15,17 +15,17 @@ class GetIdentityProviderSCIMResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business result code. If the request fails, handle the issue based on the HTTP status code and the message.
+        # If the request fails, handle the error based on the HTTP status code and the message.
         self.code = code
-        # The result structure. For details, see the response fields of this operation. The response of an asynchronous write operation indicates that the request is accepted, but does not guarantee that the background task is completed.
+        # For the result structure, see the response fields of this operation. The response of an asynchronous write operation indicates that the request is accepted, but does not guarantee that the background task is completed.
         self.data = data
-        # The processing status of the current request, which is not equivalent to the final result of the background task.
+        # The processing status of this request, which is not equivalent to the final result of the background task.
         self.http_status_code = http_status_code
-        # The request acceptance or error message. For asynchronous tasks, check the task result by using the corresponding query operation.
+        # The request acceptance or error message. For asynchronous tasks, verify the task result by using the corresponding query operation.
         self.message = message
-        # The request ID. Used to associate this call with troubleshooting. Keep the ID if the request fails.
+        # Used to associate this call with troubleshooting. Retain this ID if the call fails.
         self.request_id = request_id
-        # Indicates whether the current request is successful. A value of true indicates that the request is processed successfully. For asynchronous writes, you must continue to query the task results.
+        # A value of true indicates that the current request is processed successfully. For asynchronous writes, you must continue to query the task results.
         self.success = success
 
     def validate(self):
@@ -94,7 +94,7 @@ class GetIdentityProviderSCIMResponseBodyData(DaraModel):
         self.operation_status = operation_status
         # The SCIM independent configuration status.
         self.status = status
-        # Do not pass true during CustomSSO initialization. It can only be updated later through UpdateIdentityProviderSCIM. Determine the result in combination with operationStatus.
+        # Do not pass true during CustomSSO initialization. Subsequently, it can only be updated through UpdateIdentityProviderSCIM, and the result is determined in combination with operationStatus.
         self.sync_enabled = sync_enabled
 
     def validate(self):
@@ -145,7 +145,7 @@ class GetIdentityProviderSCIMResponseBodyDataConfiguration(DaraModel):
     ):
         # The URL configured for the external provisioning system. The presence of a URL does not mean that the external configuration is completed or AgentCore synchronization is enabled.
         self.base_url = base_url
-        # A value of Enabled indicates that SCIM receiving is enabled, and Disabled indicates that it is disabled. This is not equivalent to the expected value of syncEnabled in AgentCore.
+        # Enabled indicates that SCIM receiving is enabled, and Disabled indicates that it is disabled. This is not equivalent to the expected value of syncEnabled in AgentCore.
         self.status = status
 
     def validate(self):

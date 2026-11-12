@@ -53,13 +53,13 @@ class CreateIdentityProviderRequestBody(DaraModel):
         self.identity_provider_type = identity_provider_type
         # Specifies whether to allow workspace users to log on through the external identity provider.
         self.login_enabled = login_enabled
-        # The application configuration of the external identity provider. When you bind DingTalk, you must provide appKey, appSecret, and corpId. When you bind Lark, you must provide appId and appSecret.
+        # The application configuration of the external identity provider. When binding DingTalk, you must provide appKey, appSecret, and corpId. When binding Lark, you must provide appId and appSecret.
         self.metadata = metadata
         # Specifies whether to enable organization member synchronization. When enabled, organization members are synchronized as workspace users by the external identity provider.
         self.sync_enabled = sync_enabled
-        # Controls the initial synchronization when DingTalk or Feishu is bound. If this parameter is omitted or set to null, the default value is true. If this parameter is set to false, only the configuration is saved, and synchronization must be explicitly triggered later. CustomSSO does not use the provider pull channel.
+        # Controls the initial synchronization when DingTalk or Lark is bound. If this parameter is omitted or is null, the default value is true. If this parameter is set to false, only the configuration is saved, and synchronization is explicitly triggered later. CustomSSO does not use the vendor pull pipeline.
         self.sync_on_bind = sync_on_bind
-        # Uses the department-based synchronization scope definition. If this parameter is omitted during creation, the default value is AllAuthorized. The initial provider synchronization is determined by syncOnBind. If this parameter is omitted or set to null during an update, the original value is retained. Updating and saving the scope does not automatically trigger full synchronization.
+        # Follows the department-based synchronization scope definition. If omitted during creation, the default value is AllAuthorized, and the initial vendor synchronization is determined by syncOnBind. If omitted or null during an update, the original value is retained. Updating and saving the scope does not automatically trigger full synchronization.
         self.sync_scope = sync_scope
 
     def validate(self):
@@ -125,7 +125,7 @@ class CreateIdentityProviderRequestBodySyncScope(DaraModel):
     ):
         # When the mode is SelectedDepartments, this parameter must contain at least one non-empty department ID, which should be obtained from ListIdentityProviderDepartments. When the mode is AllAuthorized, pass an empty array or omit this parameter.
         self.department_ids = department_ids
-        # AllAuthorized: the entire authorized scope, which is limited by the application address book authorization. SelectedDepartments: the selected departments and all their sub-departments. When you explicitly submit syncScope, you must provide a valid mode, which is verified by the backend.
+        # AllAuthorized: the full authorization scope, which is limited by the application address book authorization. SelectedDepartments: the selected departments and all their sub-departments. When explicitly submitting syncScope, you must provide a valid mode, which is verified by the backend.
         self.mode = mode
 
     def validate(self):
@@ -164,17 +164,17 @@ class CreateIdentityProviderRequestBodyMetadata(DaraModel):
         encrypt_key: str = None,
         verification_token: str = None,
     ):
-        # The app ID of the Lark application. This parameter is required when the binding type is Feishu.
+        # The App ID of the Lark application. This parameter is required when the binding type is Lark.
         self.app_id = app_id
         # The AppKey of the DingTalk application. This parameter is required when the binding type is DingTalk.
         self.app_key = app_key
-        # Required. The secret of the external identity provider application. This parameter is used only for write operations and is not returned by query operations.
+        # Required. The secret of the external identity provider application. This parameter is used only for writing and is not returned by query APIs.
         self.app_secret = app_secret
         # The CorpId of the DingTalk enterprise. This parameter is required when the binding type is DingTalk.
         self.corp_id = corp_id
-        # The data encryption key for event subscription. The value must be the same as the one configured in the external identity provider application. This parameter is used only for write operations and is not returned by query operations.
+        # The data encryption key for event subscription. The value must be the same as the one configured in the external identity provider application. This parameter is used only for writing and is not returned by query APIs.
         self.encrypt_key = encrypt_key
-        # The verification token for event subscription. The value must be the same as the one configured in the external identity provider application. This parameter is used only for write operations and is not returned by query operations.
+        # The verification token for event subscription. The value must be the same as the one configured in the external identity provider application. This parameter is used only for writing and is not returned by query APIs.
         self.verification_token = verification_token
 
     def validate(self):

@@ -21,7 +21,7 @@ class GetModelResponseBody(DaraModel):
         self.data = data
         # The HTTP status code. A value of 200 indicates success.
         self.http_status_code = http_status_code
-        # The message indicating the request processing result.
+        # The message about the request processing result.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -101,9 +101,9 @@ class GetModelResponseBodyData(DaraModel):
         self.connection_id = connection_id
         # The context window size of the model, in tokens. The value must be a positive integer.
         self.context_size = context_size
-        # The creation time of the resource, in RFC 3339 UTC format.
+        # The time when the resource was created, in RFC 3339 UTC format.
         self.created_at = created_at
-        # The model description. The maximum length is 255 characters.
+        # The model description, which can be up to 255 characters in length.
         self.description = description
         # The maximum number of output tokens supported by the model in a single generation.
         self.max_tokens = max_tokens
@@ -113,7 +113,7 @@ class GetModelResponseBodyData(DaraModel):
         self.model_name = model_name
         # The ID of the region to which the resource belongs.
         self.region_id = region_id
-        # The last update time of the resource, in RFC 3339 UTC format.
+        # The time when the resource was last updated, in RFC 3339 UTC format.
         self.updated_at = updated_at
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -216,7 +216,7 @@ class GetModelResponseBodyDataCapabilities(DaraModel):
         self.audio = audio
         # Indicates whether the model supports document input.
         self.document = document
-        # Indicates whether the model is able to invoke multiple tool calling operations in a single response.
+        # Specifies whether the model is able to invoke multiple tool calling operations in a single response.
         self.multi_tool_call = multi_tool_call
         # Indicates whether the model supports reasoning capabilities.
         self.reasoning = reasoning

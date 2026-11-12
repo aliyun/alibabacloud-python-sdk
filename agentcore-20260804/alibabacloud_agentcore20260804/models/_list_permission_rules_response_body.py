@@ -26,9 +26,9 @@ class ListPermissionRulesResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The list of permission rules.
         self.items = items
-        # The maximum number of entries returned in the current request.
+        # The maximum number of results returned in this response.
         self.max_results = max_results
-        # The message about the request processing result.
+        # The request processing result message.
         self.message = message
         # The token for the next page.
         self.next_token = next_token
@@ -36,7 +36,7 @@ class ListPermissionRulesResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
-        # The total number of rules that meet the conditions.
+        # The total number of rules that match the criteria.
         self.total_count = total_count
 
     def validate(self):
@@ -157,7 +157,7 @@ class ListPermissionRulesResponseBodyItems(DaraModel):
         self.source_detail = source_detail
         # The target scope.
         self.target_scope = target_scope
-        # The list of targets to which the rule applies.
+        # The list of rule targets.
         self.targets = targets
         # The update time in RFC 3339 format.
         self.updated_at = updated_at

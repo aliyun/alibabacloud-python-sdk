@@ -19,7 +19,7 @@ class SearchMemoriesResponseBody(DaraModel):
     ):
         # The business status code.
         self.code = code
-        # The retrieval results.
+        # The search results.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -87,7 +87,7 @@ class SearchMemoriesResponseBodyData(DaraModel):
         self,
         memories: List[main_models.SearchMemoriesResponseBodyDataMemories] = None,
     ):
-        # The list of retrieval results.
+        # The list of search results.
         self.memories = memories
 
     def validate(self):
@@ -251,11 +251,11 @@ class SearchMemoriesResponseBodyDataMemoriesMemoryScope(DaraModel):
         session_id: str = None,
         user_id: str = None,
     ):
-        # The agent ID. The ID must be 1 to 128 bytes in length and encoded in UTF-8. The ID cannot contain forward slashes (/) or asterisks (*). If the memory is not associated with an agent ID, this field is not returned.
+        # The agent ID. The length is limited to 1 to 128 UTF-8 bytes. The value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with an agent ID.
         self.agent_id = agent_id
-        # The session ID. The ID must be 1 to 128 bytes in length and encoded in UTF-8. The ID cannot contain forward slashes (/) or asterisks (*). If the memory is not associated with a session ID, this field is not returned.
+        # The session ID. The length is limited to 1 to 128 UTF-8 bytes. The value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with a session ID.
         self.session_id = session_id
-        # The user ID. The ID must be 1 to 128 bytes in length and encoded in UTF-8. The ID cannot contain forward slashes (/) or asterisks (*). If the memory is not associated with a user ID, this field is not returned.
+        # The user ID. The length is limited to 1 to 128 UTF-8 bytes. The value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with a user ID.
         self.user_id = user_id
 
     def validate(self):

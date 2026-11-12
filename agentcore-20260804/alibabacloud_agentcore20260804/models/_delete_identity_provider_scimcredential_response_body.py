@@ -13,15 +13,15 @@ class DeleteIdentityProviderSCIMCredentialResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business result code. If the call fails, use this code in combination with the HTTP status code and message for troubleshooting.
+        # The business result code. If the request fails, use this code together with the HTTP status code and message for troubleshooting.
         self.code = code
-        # The processing status of this request. This does not indicate the final result of the background task.
+        # The HTTP status code of the request. This does not indicate the final result of the background task.
         self.http_status_code = http_status_code
-        # The request acceptance or error message. Check the asynchronous task result by calling the corresponding query operation.
+        # The message indicating whether the request is accepted or an error message. For asynchronous tasks, check the task result by calling the corresponding query operation.
         self.message = message
-        # The request ID. Used to associate this call with troubleshooting. Retain this ID if the call fails.
+        # The request ID. Retain this ID for troubleshooting if the request fails.
         self.request_id = request_id
-        # Indicates whether the request was successful. A value of true indicates that the request was processed successfully. For asynchronous writes, you must continue to query the task result.
+        # Indicates whether the request is successful. A value of true indicates that the request is successful. For asynchronous write operations, you must continue to query the task result.
         self.success = success
 
     def validate(self):

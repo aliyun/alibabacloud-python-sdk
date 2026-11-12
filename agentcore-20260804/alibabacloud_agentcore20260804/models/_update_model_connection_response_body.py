@@ -101,25 +101,25 @@ class UpdateModelConnectionResponseBodyData(DaraModel):
         self.api_key_count = api_key_count
         # The model connection ID.
         self.connection_id = connection_id
-        # The time when the resource was created, in RFC 3339 UTC format.
+        # The time when the resource was created. The time is in RFC 3339 UTC format.
         self.created_at = created_at
         # Indicates whether access credentials are configured for the model connection.
         self.credential_configured = credential_configured
-        # The description of the model connection, which can be up to 255 characters in length.
+        # The description of the model connection. The description can be up to 255 characters in length.
         self.description = description
-        # The absolute HTTP or HTTPS URL of the upstream model service, which can be up to 1,024 characters in length.
+        # The absolute HTTP or HTTPS URL of the upstream model service. The URL can be up to 1,024 characters in length.
         self.endpoint = endpoint
-        # The name of the model connection, which must be 1 to 128 non-whitespace characters in length.
+        # The name of the model connection. The name must be 1 to 128 non-whitespace characters in length.
         self.name = name
-        # The model invoke protocol. Currently, only OpenAI/v1 is supported. If the Settings are not specified during model creation, this default value is used.
+        # The model invoke protocol. Currently, only OpenAI/v1 is supported. If the Settings are not specified during model creation of the connection, this default value is used.
         self.protocol = protocol
         # The model provider type.
         self.provider_type = provider_type
         # The resource status.
         self.status = status
-        # The failure summary returned when the model connection fails to be published, or when deletion fails but the connection remains in the deleting state. This field is empty in other states.
+        # The failure summary returned when the model connection fails to be published, or when deletion fails but the resource remains in the deleting state. This field is empty in other states.
         self.status_reason = status_reason
-        # The time when the resource was last updated, in RFC 3339 UTC format.
+        # The time when the resource was last updated. The time is in RFC 3339 UTC format.
         self.updated_at = updated_at
         # The workspace ID.
         self.workspace_id = workspace_id

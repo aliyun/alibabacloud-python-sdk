@@ -11,7 +11,7 @@ class CreateMemoryStoreRequest(DaraModel):
         body: main_models.CreateMemoryStoreRequestBody = None,
         client_token: str = None,
     ):
-        # The MemoryStore creation request.
+        # The request to create a memory store.
         # 
         # This parameter is required.
         self.body = body
@@ -53,11 +53,11 @@ class CreateMemoryStoreRequestBody(DaraModel):
         extract_instructions: str = None,
         memory_store_name: str = None,
     ):
-        # The description of the MemoryStore, up to 1,024 characters.
+        # The description of the memory store. The description can be up to 1,024 characters in length.
         self.description = description
-        # The custom extraction instructions, up to 4,096 characters.
+        # The custom extraction instructions. The instructions can be up to 4,096 characters in length.
         self.extract_instructions = extract_instructions
-        # The name of the MemoryStore. The name must be 1 to 64 characters in length and can contain only lowercase letters, digits, and hyphens (-). The name cannot be modified after creation.
+        # The name of the memory store. The name must be 1 to 64 characters in length and can contain only lowercase letters, digits, and hyphens (-). The name cannot be modified after creation.
         # 
         # This parameter is required.
         self.memory_store_name = memory_store_name

@@ -15,11 +15,11 @@ class CreateModelResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business status code. The value is SUCCESS if the request is successful.
+        # The business status code. SUCCESS indicates success.
         self.code = code
         # The model information after creation.
         self.data = data
-        # The HTTP status code. The value is 200 if the request is successful.
+        # The HTTP status code. 200 indicates success.
         self.http_status_code = http_status_code
         # The message about the request processing result.
         self.message = message
@@ -98,19 +98,19 @@ class CreateModelResponseBodyData(DaraModel):
         self.capabilities = capabilities
         # The model connection ID.
         self.connection_id = connection_id
-        # The context window size of the model, in tokens. The value must be a positive integer.
+        # The context window size of the model, in tokens. Must be a positive integer.
         self.context_size = context_size
-        # The time when the resource was created. The time is in RFC 3339 UTC format.
+        # The time when the resource was created, in RFC 3339 UTC format.
         self.created_at = created_at
-        # The model description, up to 255 characters in length.
+        # The model description. Maximum length: 255 characters.
         self.description = description
-        # The maximum number of output tokens supported by the model per generation.
+        # The maximum number of output tokens supported by the model in a single generation.
         self.max_tokens = max_tokens
         # The model ID.
         self.model_id = model_id
         # The upstream model name.
         self.model_name = model_name
-        # The time when the resource was last updated. The time is in RFC 3339 UTC format.
+        # The time when the resource was last updated, in RFC 3339 UTC format.
         self.updated_at = updated_at
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -207,11 +207,11 @@ class CreateModelResponseBodyDataCapabilities(DaraModel):
         self.audio = audio
         # Specifies whether the model supports document input.
         self.document = document
-        # Specifies whether the model is able to invoke multiple tool calling operations in a single response.
+        # Specifies whether the model is able to invoke tool calling multiple times in a single response.
         self.multi_tool_call = multi_tool_call
         # Specifies whether the model supports reasoning capabilities.
         self.reasoning = reasoning
-        # Specifies whether the model is able to invoke streaming tool calling.
+        # Specifies whether the model is able to invoke tool calling in a streaming manner.
         self.stream_tool_call = stream_tool_call
         # Specifies whether the model supports tool calling.
         self.tool_call = tool_call

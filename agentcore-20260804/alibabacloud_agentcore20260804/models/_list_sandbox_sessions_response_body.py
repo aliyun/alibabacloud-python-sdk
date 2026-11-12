@@ -26,7 +26,7 @@ class ListSandboxSessionsResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The list of active sessions for the sandbox.
         self.items = items
-        # The maximum number of records per page for the current query.
+        # The maximum number of records per page for this query.
         self.max_results = max_results
         # The response message. The value is success if the request is successful.
         self.message = message
@@ -34,7 +34,7 @@ class ListSandboxSessionsResponseBody(DaraModel):
         self.next_token = next_token
         # The request ID, which is used to locate and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request is successful. A value of true indicates that the request is successful. A value of false indicates that the request fails.
+        # Indicates whether the request is successful. A value of true indicates success, and a value of false indicates failure.
         self.success = success
         # The total number of records that meet the query conditions.
         self.total_count = total_count

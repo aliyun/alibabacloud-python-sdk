@@ -9,7 +9,7 @@ class RebuildSandboxRequest(DaraModel):
         self,
         service_endpoint_id: str = None,
     ):
-        # The ID of the service registration endpoint. This parameter is optional. If you specify this parameter, the operation targets the runtime instance that corresponds to the service registration endpoint under the agent. If you omit this parameter, the default latest runtime identity is used. Pass the service registration endpoint ID instead of the service registration endpoint name. You must keep this parameter consistent when you query instances, commit rebuilds, and query nodes.
+        # The service registration endpoint ID. This parameter is optional. If specified, the operation targets the runtime instance corresponding to the service registration endpoint under the agent. If omitted, the default latest runtime identity is used. Pass the service registration endpoint ID, not the service registration endpoint name. Keep this parameter consistent when querying instances, committing the rebuild, and querying nodes.
         self.service_endpoint_id = service_endpoint_id
 
     def validate(self):

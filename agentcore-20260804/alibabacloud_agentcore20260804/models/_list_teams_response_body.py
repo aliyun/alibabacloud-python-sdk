@@ -24,13 +24,13 @@ class ListTeamsResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The list of teams.
+        # The team list.
         self.items = items
         # The maximum number of records per page that takes effect for this query.
         self.max_results = max_results
-        # The response message. An error description is returned when the request fails.
+        # The response message. An error description is returned if the request fails.
         self.message = message
-        # The cursor for the next page. This parameter is empty if there is no next page.
+        # The cursor for the next page. This parameter is empty if no next page exists.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -130,17 +130,17 @@ class ListTeamsResponseBodyItems(DaraModel):
     ):
         # The list of agent members in the team.
         self.agents = agents
-        # The creation time in UTC format compliant with RFC 3339.
+        # The creation time in RFC 3339 UTC format.
         self.created_at = created_at
         # The team description.
         self.description = description
-        # The team name. It can contain only lowercase letters, digits, and hyphens, must start and end with a lowercase letter or a digit, and must be 1 to 128 characters in length.
+        # The team name. The name can contain only lowercase letters, digits, and hyphens. It must start and end with a lowercase letter or a digit, and must be 1 to 128 characters in length.
         self.name = name
-        # The team status. Valid values: Creating, Active, Updating, Deleting, Failed, and Deleted.
+        # The team status. Valid values: Creating, Active, Updating, Deleting, Failed, Deleted.
         self.status = status
         # The team ID.
         self.team_id = team_id
-        # The time of the last modification in UTC format compliant with RFC 3339.
+        # The last modification time in RFC 3339 UTC format.
         self.updated_at = updated_at
         # The list of user members in the team.
         self.users = users
@@ -239,7 +239,7 @@ class ListTeamsResponseBodyItemsUsers(DaraModel):
         user_id: str = None,
         user_name: str = None,
     ):
-        # The role of the user in the team. Valid values: ADMIN and MEMBER. Each team must have exactly one ADMIN.
+        # The role of the user in the team. Valid values: ADMIN, MEMBER. Each team must have exactly one ADMIN.
         self.team_role = team_role
         # The user ID.
         self.user_id = user_id
@@ -289,7 +289,7 @@ class ListTeamsResponseBodyItemsAgents(DaraModel):
         self.agent_id = agent_id
         # The agent name.
         self.agent_name = agent_name
-        # The role of the agent in the team. Valid values: LEADER and WORKER.
+        # The role of the agent in the team. Valid values: LEADER, WORKER.
         self.team_role = team_role
 
     def validate(self):

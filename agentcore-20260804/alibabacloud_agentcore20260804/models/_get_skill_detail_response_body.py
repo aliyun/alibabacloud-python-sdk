@@ -13,7 +13,7 @@ class GetSkillDetailResponseBody(DaraModel):
         data: main_models.GetSkillDetailResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned data.
+        # The response data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -74,17 +74,17 @@ class GetSkillDetailResponseBodyData(DaraModel):
         self.description = description
         # The total number of downloads.
         self.download_count = download_count
-        # The draft pattern. A value of HEAD indicates that the skill has a persistent draft, and a value of VERSIONED indicates that a draft with a version number is created for each edit. This is determined by the server, and the client uses this value to invoke routing for What to do next.
+        # The draft pattern. A value of HEAD indicates that the skill has a persistent draft. A value of VERSIONED indicates that each edit creates a draft with a version number. This pattern is determined by the server, and the client uses it for routing What to do next when they invoke the API.
         self.draft_mode = draft_mode
-        # Specifies whether the root data is editable.
+        # Indicates whether the root data is editable.
         self.editable = editable
         # The version being edited.
         self.editing_version = editing_version
-        # Specifies whether the skill is enabled.
+        # Indicates whether the skill is enabled.
         self.enable = enable
         # The source tag.
         self.from_ = from_
-        # The label mapping.
+        # The tag mapping.
         self.labels = labels
         # The name.
         self.name = name
@@ -96,13 +96,13 @@ class GetSkillDetailResponseBodyData(DaraModel):
         self.reviewing_version = reviewing_version
         # The visibility scope.
         self.scope = scope
-        # The update time. It is a UNIX timestamp in milliseconds.
+        # The update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
         # The list of all version summaries.
         self.versions = versions
         # The workspace ID.
         self.workspace_id = workspace_id
-        # Specifies whether the current user has write permissions.
+        # Indicates whether the current user has write permissions.
         self.writeable = writeable
 
     def validate(self):
@@ -249,23 +249,23 @@ class GetSkillDetailResponseBodyDataVersions(DaraModel):
         update_time: int = None,
         version: str = None,
     ):
-        # The version author.
+        # The author of the version.
         self.author = author
         # The commit message.
         self.commit_msg = commit_msg
-        # The MD5 checksum of the skill content package for this version, which is used to verify content consistency.
+        # The MD5 checksum of the skill content package for this version, used to verify content consistency.
         self.content_md_5 = content_md_5
-        # The creation time. It is a UNIX timestamp in milliseconds.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The description.
         self.description = description
         # The number of downloads.
         self.download_count = download_count
-        # The publish pipeline information.
+        # The release pipeline information.
         self.publish_pipeline_info = publish_pipeline_info
         # The status.
         self.status = status
-        # The update time. It is a UNIX timestamp in milliseconds.
+        # The update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
         # The version number.
         self.version = version

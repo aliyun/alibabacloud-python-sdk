@@ -56,7 +56,7 @@ class CreateCredentialRequestBody(DaraModel):
         resource_refs: List[main_models.CreateCredentialRequestBodyResourceRefs] = None,
         resource_scope: str = None,
     ):
-        # The credential content, submitted as a JSON string. For the apiKey type, it contains only a non-empty apiKey. For the mcpHeader type, it contains a non-empty headers array, where each item includes a name and a value.
+        # The credential content, submitted as a JSON string. For the apiKey type, it contains only a non-empty apiKey. For the mcpHeader type, it contains a non-empty headers array, where each item contains a name and a value.
         # 
         # This parameter is required.
         self.credential_metadata = credential_metadata
@@ -64,15 +64,15 @@ class CreateCredentialRequestBody(DaraModel):
         # 
         # This parameter is required.
         self.credential_type = credential_type
-        # The description of the credential. The description can be up to 256 characters in length.
+        # The credential description. It can be up to 256 characters in length.
         self.description = description
-        # The name of the credential. The name must be unique within the workspace, contain only letters, digits, periods, underscores, and hyphens, and be 3 to 99 characters in length. Runtime reserved names cannot be used.
+        # The credential name. It must be unique within the workspace, contain only letters, digits, periods, underscores, and hyphens, and be 3 to 99 characters in length. Runtime reserved names cannot be used.
         # 
         # This parameter is required.
         self.name = name
-        # The list of applicable resources for an mcpHeader credential. This parameter must be non-empty when resourceScope is set to SPECIFIED, and must be omitted when resourceScope is set to ALL.
+        # The list of applicable resources for the MCP header credential. This field must be non-empty when resourceScope is set to SPECIFIED, and must be omitted when resourceScope is set to ALL.
         self.resource_refs = resource_refs
-        # The application scope of an mcpHeader credential. This parameter is supported only for the mcpHeader type. ALL indicates all MCP services, and SPECIFIED indicates the MCP services specified in resourceRefs. Do not submit this field for the apiKey type.
+        # The applicable scope of the MCP header credential. This field is supported only for the mcpHeader type. ALL indicates all MCP services, and SPECIFIED indicates the MCP services specified in resourceRefs. Do not submit this field for the apiKey type.
         self.resource_scope = resource_scope
 
     def validate(self):
@@ -142,9 +142,9 @@ class CreateCredentialRequestBodyResourceRefs(DaraModel):
     ):
         # The ID of the applicable MCP service.
         self.resource_id = resource_id
-        # The name of the resource. This parameter is empty if the resource is deleted.
+        # The resource name. This field is empty if the resource is deleted.
         self.resource_name = resource_name
-        # The type of the resource. Set the value to mcpServer, which indicates an MCP service.
+        # The resource type. Currently, only mcpServer is supported, which indicates an MCP service.
         self.resource_type = resource_type
 
     def validate(self):

@@ -19,7 +19,7 @@ class DeleteAgentVersionResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The response message. The value is success if the request is successful, or an error message if the request fails.
         self.message = message
-        # The request ID, which is used to locate and troubleshoot requests.
+        # The request ID, which is used to locate and troubleshoot the request.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success

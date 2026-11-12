@@ -15,7 +15,7 @@ class UpdateExternalAgentRequest(DaraModel):
     ):
         # The request body.
         self.body = body
-        # The reserved query parameter. The backend does not currently provide idempotence guarantees for deduplication or restoring the original acceptance result based on this identifier.
+        # The reserved query parameter. The backend does not provide idempotence guarantees for deduplication or recovery of original acceptance results based on this identifier at this time.
         self.client_token = client_token
 
     def validate(self):
@@ -60,11 +60,13 @@ class UpdateExternalAgentRequestBody(DaraModel):
     ):
         # The description of the managed agent.
         self.description = description
-        # The agent instructions used to guide the behavior of the agent.
+        # The agent instruction, which is used to guide the behavior of the agent.
         self.instruction = instruction
         # The model configuration. This parameter is available only when modelSource is set to PLATFORM.
         self.model = model
-        # The model configuration source. PLATFORM indicates that the platform parses and delivers the model configuration. RUNTIME indicates that the external runtime manages the model itself, and the model parameter cannot be passed at the same time. Valid values: PLATFORM (platform model) and RUNTIME (runtime model).
+        # The source of the model configuration. PLATFORM indicates that the platform parses and delivers the model configuration. RUNTIME indicates that the external runtime manages the model independently, and the model parameter cannot be passed at the same time. Valid values:
+        # - PLATFORM: Platform model.
+        # - RUNTIME: Runtime model.
         self.model_source = model_source
         # The name of the managed agent.
         self.name = name
@@ -170,7 +172,8 @@ class UpdateExternalAgentRequestBodyTools(DaraModel):
         # 
         # This parameter is required.
         self.name = name
-        # The tool type. Valid values: MCP (MCP tool).
+        # The tool type. Valid values:
+        # - MCP: MCP tool.
         # 
         # This parameter is required.
         self.type = type
@@ -284,11 +287,13 @@ class UpdateExternalAgentRequestBodySkills(DaraModel):
         # 
         # This parameter is required.
         self.name = name
-        # The skill source type. Valid values: REFERENCE (references AI Registry) and STATIC (statically provided with the package).
+        # The skill source type. Valid values:
+        # - REFERENCE: References AI Registry assets.
+        # - STATIC: Statically provided with deployment artifacts.
         self.source_type = source_type
-        # The skill version field compatible with legacy requests. New requests use sourceType and versionSelector, and this parameter is not submitted in combination with sourceType.
+        # The skill version field for compatibility with legacy requests. For new requests, use sourceType and versionSelector. Do not submit this parameter in combination with sourceType.
         self.version = version
-        # The skill reference version selector, which supports LABEL tags and specific VERSION numbers. If this parameter is omitted, LABEL/latest is used. Selectors are not provided for STATIC sources.
+        # The skill reference version selector, which supports LABEL tags and VERSION specific versions. If this parameter is omitted, LABEL/latest is used. Selectors are not provided for STATIC sources.
         self.version_selector = version_selector
 
     def validate(self):
@@ -337,7 +342,9 @@ class UpdateExternalAgentRequestBodySkillsVersionSelector(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The version selector type. Valid values: LABEL (by tag) and VERSION (by specific version).
+        # The version selector type. Valid values:
+        # - LABEL: Selects by tag.
+        # - VERSION: Selects by specific version.
         self.type = type
         # The selector value. When the type is LABEL, the value is the tag name, such as latest. When the type is VERSION, the value is the specific version number.
         self.value = value
@@ -432,9 +439,11 @@ class UpdateExternalAgentRequestBodyModelQuota(DaraModel):
         self.enabled = enabled
         # The quota limit type. This parameter is required and verified by the backend when the quota is enabled. Fixed value: token.
         self.limit_type = limit_type
-        # The quota statistical period. This parameter is required and verified by the backend when the quota is enabled. Valid values: day (daily) and month (monthly).
+        # The statistical period of the quota. This parameter is required and verified by the backend when the quota is enabled. Valid values:
+        # - day: Daily.
+        # - month: Monthly.
         self.period_type = period_type
-        # The maximum number of tokens allowed to be consumed in a single period. This parameter is required and verified by the backend when the quota is enabled, and must be greater than 0.
+        # The maximum number of tokens allowed to be consumed in a single period. This parameter is required and verified by the backend when the quota is enabled. The value must be greater than 0.
         self.usage_limit = usage_limit
 
     def validate(self):

@@ -23,7 +23,7 @@ class GetServiceEndpointResponseBody(DaraModel):
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The response message. An error description is returned if the request fails.
+        # The response message. Returns an error description if the request fails.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -88,6 +88,8 @@ class GetServiceEndpointResponseBodyData(DaraModel):
         access_urls: List[main_models.GetServiceEndpointResponseBodyDataAccessUrls] = None,
         authentication: main_models.GetServiceEndpointResponseBodyDataAuthentication = None,
         created_at: str = None,
+        current_instances: int = None,
+        effective_capacity: main_models.GetServiceEndpointResponseBodyDataEffectiveCapacity = None,
         effective_public_access_enabled: bool = None,
         elasticity_policy: main_models.GetServiceEndpointResponseBodyDataElasticityPolicy = None,
         endpoint_type: str = None,
@@ -105,29 +107,33 @@ class GetServiceEndpointResponseBodyData(DaraModel):
         self.access_urls = access_urls
         # The authentication configuration of the service endpoint.
         self.authentication = authentication
-        # The creation time in UTC format compliant with RFC 3339.
+        # The creation time in UTC format based on RFC 3339.
         self.created_at = created_at
-        # The result of combining publicAccessEnabled with the public inbound access upper limit of the workspace. The value is true only when both allow public inbound access. This field only indicates the policy target and does not mean that the public endpoint has been published. The actual status is subject to accessUrls and status.
+        # Read-only. For Get operations, it queries RM sandboxPhaseCounts.RUNNING based on the Endpoint runtimeKey. For Create and Update operations, it returns null. The value is a non-negative integer. If the statistics are unavailable, it returns null. It is not replaced by the baseline upper and lower limits, target quantity, or READY status. Unavailable statistics do not block submission.
+        self.current_instances = current_instances
+        # Read-only and returned only in detail queries. The console reads this from autoScalingStatus.effectiveLimits in the same RM detail request that queries the current instance count. It represents the upper and lower limits currently applied by the resource manager (RM), rather than the saved base configuration or the actual instance count. This value is null if it is not applicable, the running object does not exist, the identity does not match, the query fails, or the RM does not return a valid range. Configuration values are not used as a fallback, and this field is not used for edit backfill or submission.
+        self.effective_capacity = effective_capacity
+        # The result of combining publicAccessEnabled with the public network inbound access limit of the workspace. The value is true only when both allow public access. This only indicates the policy target and does not mean that the public network entry has been published. The actual status is subject to accessUrls and status.
         self.effective_public_access_enabled = effective_public_access_enabled
-        # This object is returned only when elastic override values are configured for the service endpoint. You can configure override values for Router-type service endpoints and DEFAULT service endpoints of the GATEWAY_API_WITH_VPC_INGRESS type. If no override values are configured, this object is not returned, which indicates that the source configuration of the agent is inherited. Do not treat the absence of this object as an empty object or a default policy. When this object is returned, all three fields are included.
+        # Used for edit backfill. This is not the currently effective upper and lower limits or the actual instance count. The Get operation preferentially returns the saved configuration. If no configuration is saved, an endpoint that supports elasticity backfills the base values from the frozen configuration of the expected runtime or the bound version configuration when the runtime is not yet established. Successful publication is not required. This value is null when the source is temporarily unavailable or no applicable configuration exists, but the status and statusReason are still returned. The Create and Update operations return only the saved configuration, and return null if no configuration is saved. The historical base capacity can exceed 100, and the read value is not truncated.
         self.elasticity_policy = elasticity_policy
-        # The service endpoint type. DEFAULT indicates the default endpoint created and maintained by the platform. NAMED indicates the named endpoint explicitly created by the user.
+        # The type of the service endpoint. DEFAULT indicates a default endpoint created and maintained by the platform. NAMED indicates a named endpoint explicitly created by a user.
         self.endpoint_type = endpoint_type
-        # The service endpoint name. The name must be unique within the workspace and be 1 to 128 characters in length.
+        # The name of the service endpoint. The name must be unique within the workspace and be 1 to 128 characters in length.
         self.name = name
-        # The expected public inbound access configured by the user on the service endpoint. For historical service endpoints where this value is not configured, true is returned. This field only indicates the configuration expectation. The actual availability of the public URL is subject to accessUrls and status.
+        # The expected public network inbound access configured by the user on the service endpoint. For historical service endpoints where this has not been configured, true is returned. This only indicates the configuration expectation. The actual availability of the public IP address is subject to accessUrls and status.
         self.public_access_enabled = public_access_enabled
-        # The region ID of the service endpoint.
+        # The ID of the region where the service endpoint resides.
         self.region_id = region_id
         # The service endpoint ID.
         self.service_endpoint_id = service_endpoint_id
-        # The service endpoint status. Valid values: CREATING, READY, UPDATING, DEGRADED, DISABLED, and DELETING.
+        # The status of the service endpoint. Valid values: CREATING, READY, UPDATING, DEGRADED, DISABLED, and DELETING.
         self.status = status
-        # The reason for the service endpoint status. The specific reason is returned when the status is abnormal.
+        # The reason for the service endpoint status. Returns the specific reason when the status is abnormal.
         self.status_reason = status_reason
-        # The target route configuration of the service endpoint.
+        # The target routing configuration of the service endpoint.
         self.target = target
-        # The time of the last modification in UTC format compliant with RFC 3339.
+        # The time of the last modification in UTC format based on RFC 3339.
         self.updated_at = updated_at
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -139,6 +145,8 @@ class GetServiceEndpointResponseBodyData(DaraModel):
                     v1.validate()
         if self.authentication:
             self.authentication.validate()
+        if self.effective_capacity:
+            self.effective_capacity.validate()
         if self.elasticity_policy:
             self.elasticity_policy.validate()
         if self.target:
@@ -159,6 +167,12 @@ class GetServiceEndpointResponseBodyData(DaraModel):
 
         if self.created_at is not None:
             result['createdAt'] = self.created_at
+
+        if self.current_instances is not None:
+            result['currentInstances'] = self.current_instances
+
+        if self.effective_capacity is not None:
+            result['effectiveCapacity'] = self.effective_capacity.to_map()
 
         if self.effective_public_access_enabled is not None:
             result['effectivePublicAccessEnabled'] = self.effective_public_access_enabled
@@ -213,6 +227,13 @@ class GetServiceEndpointResponseBodyData(DaraModel):
         if m.get('createdAt') is not None:
             self.created_at = m.get('createdAt')
 
+        if m.get('currentInstances') is not None:
+            self.current_instances = m.get('currentInstances')
+
+        if m.get('effectiveCapacity') is not None:
+            temp_model = main_models.GetServiceEndpointResponseBodyDataEffectiveCapacity()
+            self.effective_capacity = temp_model.from_map(m.get('effectiveCapacity'))
+
         if m.get('effectivePublicAccessEnabled') is not None:
             self.effective_public_access_enabled = m.get('effectivePublicAccessEnabled')
 
@@ -262,13 +283,13 @@ class GetServiceEndpointResponseBodyDataTarget(DaraModel):
         resource_binding_id: str = None,
         target_type: str = None,
     ):
-        # The target agent ID. This parameter is returned when the target type is AGENT_VERSION.
+        # The ID of the target agent. Returned when the target type is AGENT_VERSION.
         self.agent_id = agent_id
-        # The target agent version number. This parameter is returned when the target type is AGENT_VERSION.
+        # The version number of the target agent. Returned when the target type is AGENT_VERSION.
         self.agent_version = agent_version
-        # The collaboration component type. This parameter is returned when the target type is TEAM_COLLABORATION.
+        # The type of the collaboration component. Returned when the target type is TEAM_COLLABORATION.
         self.collaboration_component = collaboration_component
-        # The workspace resource binding ID associated with the target collaboration component. This parameter is returned when the target type is TEAM_COLLABORATION.
+        # The ID of the workspace resource binding associated with the target collaboration component. Returned when the target type is TEAM_COLLABORATION.
         self.resource_binding_id = resource_binding_id
         # The target type. Valid values: AGENT_VERSION and TEAM_COLLABORATION.
         self.target_type = target_type
@@ -320,25 +341,32 @@ class GetServiceEndpointResponseBodyDataTarget(DaraModel):
 class GetServiceEndpointResponseBodyDataElasticityPolicy(DaraModel):
     def __init__(
         self,
+        dynamic_policy: main_models.GetServiceEndpointResponseBodyDataElasticityPolicyDynamicPolicy = None,
         enabled: bool = None,
         max_sandbox_count: int = None,
         min_sandbox_count: int = None,
     ):
-        # Specifies whether elasticity is enabled.
+        # Returns the saved dynamic configuration. If the base configuration before the requirement goes online lacks dynamicPolicy, it is supplemented with enabled=false and policies=[].
+        self.dynamic_policy = dynamic_policy
+        # Independent of dynamicPolicy.enabled. If omitted during an update, the original value is retained.
         self.enabled = enabled
-        # The maximum number of instances. The value must be greater than or equal to 1.
+        # The saved or backfilled base maximum instance count. The value must be no less than minSandboxCount. Historical values can exceed 100, and the read value is not truncated. The base value is used when dynamic scaling is disabled or no candidates are available.
         self.max_sandbox_count = max_sandbox_count
-        # The minimum number of instances. The value must be greater than or equal to 0 and less than or equal to the value of maxSandboxCount.
+        # The saved or backfilled base minimum instance count. The value must be non-negative and no greater than maxSandboxCount. Historical values can exceed 100, and the read value is not truncated. A newly written complete configuration must still meet the 0 to 100 range.
         self.min_sandbox_count = min_sandbox_count
 
     def validate(self):
-        pass
+        if self.dynamic_policy:
+            self.dynamic_policy.validate()
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.dynamic_policy is not None:
+            result['dynamicPolicy'] = self.dynamic_policy.to_map()
+
         if self.enabled is not None:
             result['enabled'] = self.enabled
 
@@ -352,9 +380,258 @@ class GetServiceEndpointResponseBodyDataElasticityPolicy(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('dynamicPolicy') is not None:
+            temp_model = main_models.GetServiceEndpointResponseBodyDataElasticityPolicyDynamicPolicy()
+            self.dynamic_policy = temp_model.from_map(m.get('dynamicPolicy'))
+
         if m.get('enabled') is not None:
             self.enabled = m.get('enabled')
 
+        if m.get('maxSandboxCount') is not None:
+            self.max_sandbox_count = m.get('maxSandboxCount')
+
+        if m.get('minSandboxCount') is not None:
+            self.min_sandbox_count = m.get('minSandboxCount')
+
+        return self
+
+class GetServiceEndpointResponseBodyDataElasticityPolicyDynamicPolicy(DaraModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        policies: List[main_models.GetServiceEndpointResponseBodyDataElasticityPolicyDynamicPolicyPolicies] = None,
+    ):
+        # Required during creation. If omitted during an update, the original value is retained. Disabling this feature retains existing policies and restores the base upper and lower limits. Re-enabling it triggers immediate calculation. When finally enabled, policies must not be empty.
+        self.enabled = enabled
+        # Required during creation. If omitted during an update, the original list is retained. If passed, the entire list is replaced rather than merged by ID. To clear the list, you must also ensure that the final enabled value is false. Each item must be complete. Conditional requirements and cross-field constraints are validated by the server. The display order does not indicate priority.
+        self.policies = policies
+
+    def validate(self):
+        if self.policies:
+            for v1 in self.policies:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+
+        result['policies'] = []
+        if self.policies is not None:
+            for k1 in self.policies:
+                result['policies'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+
+        self.policies = []
+        if m.get('policies') is not None:
+            for k1 in m.get('policies'):
+                temp_model = main_models.GetServiceEndpointResponseBodyDataElasticityPolicyDynamicPolicyPolicies()
+                self.policies.append(temp_model.from_map(k1))
+
+        return self
+
+class GetServiceEndpointResponseBodyDataElasticityPolicyDynamicPolicyPolicies(DaraModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        id: str = None,
+        priority: int = None,
+        repeat: str = None,
+        start_time: str = None,
+        time_points: List[main_models.GetServiceEndpointResponseBodyDataElasticityPolicyDynamicPolicyPoliciesTimePoints] = None,
+        time_zone: str = None,
+        validity: str = None,
+    ):
+        # Required only when validity is set to range. The format is the same as startTime, with seconds fixed at 00. The end time must be later than the startTime. The interval does not include the end time. If validity is set to forever, the start and end times must be omitted. Valid dates and cross-field constraints are validated by the console.
+        self.end_time = end_time
+        # Required. Must be unique and stable within the endpoint. Generated by the frontend when added, and retained during editing and retries.
+        self.id = id
+        # Required. 5 indicates regular priority, and 10 indicates high priority. New policies default to regular priority. Must be explicitly provided during submission, as the API does not set a default value. When the final dynamicPolicy.enabled is true, the validity periods of high-priority policies must not overlap, except that end-to-end connection is allowed, and long-term high-priority policies can overlap with other high-priority policies. Overlapping drafts can be saved when disabled, but the final configuration is validated when re-enabled. The validity of other fields and trigger conflicts within the policy are always validated. The priority must be explicitly provided.
+        self.priority = priority
+        # Required. daily means every day, weekly means every week, and monthly means every month. Only submit fields corresponding to the specified cycle.
+        self.repeat = repeat
+        # Required only when validity is set to range. The format is YYYY-MM-DDTHH:mm:ss in the policy time zone, without a time zone offset. The seconds are fixed at 00. The interval includes the start time. When editing, existing past start times are retained, and updates or retries are not rejected even if the start time is earlier than the current time.
+        self.start_time = start_time
+        # Required and cannot be empty. Each item must be complete. The day of the week or day of the month is configured independently for each item. Within the same policy, daily policies conflict if they have the same time. Weekly and monthly policies conflict only if they have the same time and their date sets intersect. This is validated by the console.
+        self.time_points = time_points
+        # Required. Must be a valid IANA time zone. All dates and times in this policy are interpreted in this time zone.
+        self.time_zone = time_zone
+        # Required. Valid values: forever for long-term validity, and range for short-term validity. After expiration, the policy and its trigger results are excluded from the current calculation, and the remaining policies are recalculated. If no candidate policy is available, the baseline value is restored. Saved configurations are not automatically deleted.
+        self.validity = validity
+
+    def validate(self):
+        if self.time_points:
+            for v1 in self.time_points:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+
+        if self.id is not None:
+            result['id'] = self.id
+
+        if self.priority is not None:
+            result['priority'] = self.priority
+
+        if self.repeat is not None:
+            result['repeat'] = self.repeat
+
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+
+        result['timePoints'] = []
+        if self.time_points is not None:
+            for k1 in self.time_points:
+                result['timePoints'].append(k1.to_map() if k1 else None)
+
+        if self.time_zone is not None:
+            result['timeZone'] = self.time_zone
+
+        if self.validity is not None:
+            result['validity'] = self.validity
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+
+        if m.get('id') is not None:
+            self.id = m.get('id')
+
+        if m.get('priority') is not None:
+            self.priority = m.get('priority')
+
+        if m.get('repeat') is not None:
+            self.repeat = m.get('repeat')
+
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+
+        self.time_points = []
+        if m.get('timePoints') is not None:
+            for k1 in m.get('timePoints'):
+                temp_model = main_models.GetServiceEndpointResponseBodyDataElasticityPolicyDynamicPolicyPoliciesTimePoints()
+                self.time_points.append(temp_model.from_map(k1))
+
+        if m.get('timeZone') is not None:
+            self.time_zone = m.get('timeZone')
+
+        if m.get('validity') is not None:
+            self.validity = m.get('validity')
+
+        return self
+
+class GetServiceEndpointResponseBodyDataElasticityPolicyDynamicPolicyPoliciesTimePoints(DaraModel):
+    def __init__(
+        self,
+        max_instances: int = None,
+        min_instances: int = None,
+        month_days: List[int] = None,
+        time: str = None,
+        weekdays: List[int] = None,
+    ):
+        # Required. Valid values: 1 to 100.
+        self.max_instances = max_instances
+        # Required. Valid values: 0 to 100. The value cannot be greater than the maxInstances value in the same item.
+        self.min_instances = min_instances
+        # Required only for each trigger point of the monthly cycle. The list must be non-empty and contain unique integers from 1 to 31. Each row is selected independently. If a selected day does not exist in a specific month, the trigger does not fire and is not postponed to the end of the month. This field must be omitted for other cycles.
+        self.month_days = month_days
+        # Required. The format is HH:mm:ss, interpreted in the time zone of the associated policy. The precision is down to the minute, and the seconds are fixed at 00.
+        self.time = time
+        # Required only for each trigger point of weekly policies. Cannot be empty and must be deduplicated. Valid values are integers from 1 to 7, where 1 represents Monday and 7 represents Sunday. Each row is selected independently. Must be omitted for other cycles.
+        self.weekdays = weekdays
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.max_instances is not None:
+            result['maxInstances'] = self.max_instances
+
+        if self.min_instances is not None:
+            result['minInstances'] = self.min_instances
+
+        if self.month_days is not None:
+            result['monthDays'] = self.month_days
+
+        if self.time is not None:
+            result['time'] = self.time
+
+        if self.weekdays is not None:
+            result['weekdays'] = self.weekdays
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxInstances') is not None:
+            self.max_instances = m.get('maxInstances')
+
+        if m.get('minInstances') is not None:
+            self.min_instances = m.get('minInstances')
+
+        if m.get('monthDays') is not None:
+            self.month_days = m.get('monthDays')
+
+        if m.get('time') is not None:
+            self.time = m.get('time')
+
+        if m.get('weekdays') is not None:
+            self.weekdays = m.get('weekdays')
+
+        return self
+
+class GetServiceEndpointResponseBodyDataEffectiveCapacity(DaraModel):
+    def __init__(
+        self,
+        max_sandbox_count: int = None,
+        min_sandbox_count: int = None,
+    ):
+        # Read-only. Maps to autoScalingStatus.effectiveLimits.maxSandboxes in the RM. When effectiveCapacity is not null, this value must be returned in pairs with the minimum value. The value must be non-negative and no less than the minimum value. Zero is a valid value. The read value is not truncated at the upper limit of 100 configured for writing.
+        self.max_sandbox_count = max_sandbox_count
+        # Read-only. Maps to autoScalingStatus.effectiveLimits.minSandboxes in the RM. When effectiveCapacity is not null, this value must be returned in pairs with the maximum value. The value must be non-negative and no greater than the maximum value. The read value is not truncated at the upper limit of 100 configured for writing.
+        self.min_sandbox_count = min_sandbox_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.max_sandbox_count is not None:
+            result['maxSandboxCount'] = self.max_sandbox_count
+
+        if self.min_sandbox_count is not None:
+            result['minSandboxCount'] = self.min_sandbox_count
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
         if m.get('maxSandboxCount') is not None:
             self.max_sandbox_count = m.get('maxSandboxCount')
 
@@ -399,11 +676,11 @@ class GetServiceEndpointResponseBodyDataAccessUrls(DaraModel):
         status_reason: str = None,
         url: str = None,
     ):
-        # The access URL type. Valid values: INTERNET and VPC.
+        # The type of the access URL. Valid values: INTERNET and VPC.
         self.access_type = access_type
-        # The access URL status. Valid values: CREATING, READY, and DEGRADED.
+        # The status of the access URL. Valid values: CREATING, READY, and DEGRADED.
         self.status = status
-        # The reason for the access URL status. The specific reason is returned when the status is abnormal.
+        # The reason for the access URL status. Returns the specific reason when the status is abnormal.
         self.status_reason = status_reason
         # The access URL.
         self.url = url

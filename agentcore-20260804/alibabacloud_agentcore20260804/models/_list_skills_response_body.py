@@ -148,19 +148,19 @@ class ListSkillsResponseBodyDataPageItems(DaraModel):
         workspace_id: str = None,
         writeable: bool = None,
     ):
-        # The business tags in a JSON array string.
+        # The JSON array string of business tags.
         self.biz_tags = biz_tags
         # The description.
         self.description = description
         # The total number of downloads.
         self.download_count = download_count
-        # The draft mode. Valid values: HEAD (the skill has a persistent draft) and VERSIONED (each edit creates a versioned draft). This is determined by the server and used by the caller to render the status column.
+        # The draft mode. Valid values: HEAD (the skill has a persistent draft) and VERSIONED (a versioned draft is created for each edit). This value is determined by the server and used by the caller to render the status column.
         self.draft_mode = draft_mode
-        # Indicates whether the page item is editable.
+        # Specifies whether the page item is editable.
         self.editable = editable
         # The version being edited. The value is HEAD in HEAD draft mode.
         self.editing_version = editing_version
-        # Indicates whether the skill is enabled.
+        # Specifies whether the skill is enabled.
         self.enable = enable
         # The source tag.
         self.from_ = from_
@@ -176,11 +176,11 @@ class ListSkillsResponseBodyDataPageItems(DaraModel):
         self.reviewing_version = reviewing_version
         # The visibility scope.
         self.scope = scope
-        # The update time. It is a UNIX timestamp in milliseconds.
+        # The update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
         # The workspace ID.
         self.workspace_id = workspace_id
-        # Indicates whether the current user has write permissions.
+        # Specifies whether the current user has write permissions.
         self.writeable = writeable
 
     def validate(self):

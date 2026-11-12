@@ -14,11 +14,11 @@ class ListModelsRequest(DaraModel):
     ):
         # The model connection ID used to filter models.
         self.connection_id = connection_id
-        # The number of entries to return on each page. Valid values: 0 to 100. If this parameter is not specified or is set to 0, the default value is 10.
+        # The maximum number of entries to return per page. Valid values: 0 to 100. If this parameter is not specified or is set to 0, the default value is 10.
         self.max_results = max_results
         # The upstream model name.
         self.model_name = model_name
-        # The pagination token. Specify the token returned from the previous request to retrieve the next page. An empty response indicates that no more pages are available.
+        # The pagination token. Specify the token returned from the previous query. An empty response indicates that no more pages are available.
         self.next_token = next_token
 
     def validate(self):

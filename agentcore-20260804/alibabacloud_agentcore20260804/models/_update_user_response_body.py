@@ -97,9 +97,9 @@ class UpdateUserResponseBodyData(DaraModel):
     ):
         # The user ID.
         self.agent_core_user_id = agent_core_user_id
-        # The authentication method of the user. A value of password indicates that the user is authenticated by using the local password of the workspace. A value of dingtalk or feishu indicates that the user is synchronized and authenticated by the corresponding external identity provider.
+        # The authentication method of the user. A value of password indicates that local password authentication in the workspace is used. A value of dingtalk or feishu indicates that the user is synchronized and authenticated by the corresponding external identity provider.
         self.auth_method = auth_method
-        # The creation time. The time is displayed in UTC and follows the RFC 3339 format.
+        # The creation time in UTC format based on RFC 3339.
         self.created_at = created_at
         # The display name of the user. The name must be 1 to 32 characters in length.
         self.display_name = display_name
@@ -113,7 +113,7 @@ class UpdateUserResponseBodyData(DaraModel):
         self.region_id = region_id
         # The user status. Valid values: Creating, Active, Updating, Deleting, Failed, and DeleteFailed.
         self.status = status
-        # The time when the user was last modified. The time is displayed in UTC and follows the RFC 3339 format.
+        # The last modification time in UTC format based on RFC 3339.
         self.updated_at = updated_at
         # The workspace ID.
         self.workspace_id = workspace_id

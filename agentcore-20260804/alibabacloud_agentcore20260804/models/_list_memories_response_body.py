@@ -23,7 +23,7 @@ class ListMemoriesResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The list of memory records.
+        # The memory list.
         self.items = items
         # The maximum number of records per page.
         self.max_results = max_results
@@ -191,11 +191,11 @@ class ListMemoriesResponseBodyItemsScope(DaraModel):
         session_id: str = None,
         user_id: str = None,
     ):
-        # The agent ID. The value must be 1 to 128 UTF-8 bytes in length and cannot contain slashes (/) or asterisks (*). This field is not returned if the memory is not associated with an agent ID.
+        # The agent ID. The length is limited to 1 to 128 UTF-8 bytes, and the value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with an agent ID.
         self.agent_id = agent_id
-        # The session ID. The value must be 1 to 128 UTF-8 bytes in length and cannot contain slashes (/) or asterisks (*). This field is not returned if the memory is not associated with a session ID.
+        # The session ID. The length is limited to 1 to 128 UTF-8 bytes, and the value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with a session ID.
         self.session_id = session_id
-        # The user ID. The value must be 1 to 128 UTF-8 bytes in length and cannot contain slashes (/) or asterisks (*). This field is not returned if the memory is not associated with a user ID.
+        # The user ID. The length is limited to 1 to 128 UTF-8 bytes, and the value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with a user ID.
         self.user_id = user_id
 
     def validate(self):

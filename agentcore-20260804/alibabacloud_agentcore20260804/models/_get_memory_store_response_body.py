@@ -98,11 +98,11 @@ class GetMemoryStoreResponseBodyData(DaraModel):
         self.description = description
         # The custom extraction instructions.
         self.extract_instructions = extract_instructions
-        # The MemoryStore identifier.
+        # The MemoryStore ID.
         self.memory_store_id = memory_store_id
         # The MemoryStore name. It cannot be modified after creation.
         self.memory_store_name = memory_store_name
-        # The lifecycle state of the MemoryStore.
+        # The lifecycle status of the MemoryStore.
         self.status = status
         # The last update time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
         self.updated_at = updated_at

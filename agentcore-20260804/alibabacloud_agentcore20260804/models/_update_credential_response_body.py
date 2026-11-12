@@ -107,7 +107,7 @@ class UpdateCredentialResponseBodyData(DaraModel):
         self.credential_type = credential_type
         # The credential description. The description can be up to 256 characters in length.
         self.description = description
-        # The credential name. The name must be unique within the workspace, contain only letters, digits, periods, underscores, and hyphens, and be 3 to 99 characters in length. Runtime reserved names cannot be used.
+        # The credential name. It must be unique within the workspace, contain only letters, digits, periods, underscores, and hyphens, and be 3 to 99 characters in length. Runtime reserved names cannot be used.
         self.name = name
         # The region ID of the resource.
         self.region_id = region_id
@@ -217,9 +217,9 @@ class UpdateCredentialResponseBodyDataResourceRefs(DaraModel):
     ):
         # The ID of the applicable MCP service.
         self.resource_id = resource_id
-        # The resource name. This field is empty if the resource has been deleted.
+        # The resource name. This field is empty if the resource is deleted.
         self.resource_name = resource_name
-        # The resource type. Currently, the value is mcpServer, which indicates an MCP service.
+        # The resource type. The current value is mcpServer, which indicates an MCP service.
         self.resource_type = resource_type
 
     def validate(self):

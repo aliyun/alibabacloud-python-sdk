@@ -20,21 +20,21 @@ class ListCustomAgentsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The request result code. The value is SUCCESS if the request is successful.
+        # The result code of the request. The value is SUCCESS when the request succeeds.
         self.code = code
-        # The HTTP status code of the request. The value is 200 if the request is successful.
+        # The HTTP status code of the request. The value is 200 when the request succeeds.
         self.http_status_code = http_status_code
-        # The list of summaries for custom code or image agents on the current page. To query the complete configuration and the execution results of the latest version, call the GetCustomAgent operation.
+        # The list of summaries for custom code or image agents on the current page. To query the complete configuration and the latest version execution results, call GetCustomAgent.
         self.items = items
-        # The maximum number of results to return per page for the current query.
+        # The maximum number of entries returned per page for this query.
         self.max_results = max_results
-        # The message that describes the processing result of the request. The value is success if the request is successful.
+        # The description of the processing result for the request. The value is success when the request succeeds.
         self.message = message
-        # The opaque token used to retrieve the next page of results. An empty value indicates that there are no more pages. Pass this token as-is in subsequent requests.
+        # The opaque token used to query the next page. An empty value indicates that no more pages exist. Pass this value as-is in subsequent requests.
         self.next_token = next_token
-        # The unique identifier of the request, which is used to locate and troubleshoot issues.
+        # The unique identifier of the request, used to locate and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was processed successfully. true indicates that the request was successful. A successful creation, update, or deletion response does not mean that the background operation is complete.
+        # Indicates whether the request was processed successfully. A value of true indicates success. A successful creation, update, or deletion does not mean that the background operation is complete.
         self.success = success
         # The total number of custom code or image agents that match the query conditions in the specified workspace.
         self.total_count = total_count
@@ -139,19 +139,19 @@ class ListCustomAgentsResponseBodyItems(DaraModel):
         self.access_mode = access_mode
         # The user access scope.
         self.access_scope = access_scope
-        # The unique identifier of the custom code or image agent. You can obtain this ID from the response of the CreateCustomAgent or ListCustomAgents operation.
+        # The unique identifier of the custom code or image agent. You can obtain this ID from the response of CreateCustomAgent or ListCustomAgents.
         self.agent_id = agent_id
         # The agent artifact.
         self.artifact = artifact
-        # The currently saved code package information.
+        # The current saved code package information.
         self.code_package_info = code_package_info
-        # The creation method of the agent. The value is CUSTOM for custom code or image agents.
+        # The creation method of the agent. CUSTOM is returned for custom code or image agents.
         self.create_mode = create_mode
-        # The time when the agent was created. The time is in ISO 8601 format. The trailing Z indicates the UTC time zone. Fractional seconds may be included.
+        # The time when the agent was created. The time follows the ISO 8601 standard. The trailing Z indicates the UTC time zone, and fractional seconds may be included.
         self.created_at = created_at
-        # The deployment method of the agent. Custom code or image agents are deployed and managed by the platform. The value is MANAGED.
+        # The deployment method of the agent. MANAGED is returned for custom code or image agents that are deployed and managed by the platform.
         self.deploy_type = deploy_type
-        # The description of the agent\\"s purpose.
+        # The description of the agent purpose.
         self.description = description
         # The latest configuration version number. Updates with the same configuration may retain the original version number. This field does not indicate that the configuration has taken effect.
         self.latest_spec_version = latest_spec_version
@@ -159,13 +159,20 @@ class ListCustomAgentsResponseBodyItems(DaraModel):
         self.name = name
         # The list of invocation protocol configurations for the agent.
         self.protocol = protocol
-        # The compute specifications of the agent. Valid values: INTERACTIVE, STANDARD, and HEAVY.
+        # The compute specification of the agent. Valid values: INTERACTIVE, STANDARD, and HEAVY.
         self.runtime = runtime
-        # The overall status of the agent. Valid values: Creating, Running, Failed, Updating, Deleting, and Deleted. To query the latest configuration execution progress, call GetCustomAgent.
+        # The overall status of the agent. Valid values:
+        # - Creating: The agent is being created.
+        # - Running: The agent is running.
+        # - Failed: The agent failed.
+        # - Updating: The agent is being updated.
+        # - Deleting: The agent is being deleted.
+        # - Deleted: The agent is deleted.
+        # To query the execution progress of the latest configuration, call GetCustomAgent.
         self.status = status
-        # The time when the agent was last updated. The time is in the ISO 8601 format, with a trailing Z indicating the UTC time zone. Fractional seconds are supported.
+        # The time when the agent was last updated. The time follows the ISO 8601 standard. The trailing Z indicates the UTC time zone, and fractional seconds may be included.
         self.updated_at = updated_at
-        # The ID of the workspace to which the custom code or image agents belong.
+        # The ID of the workspace to which the custom code or image agent belongs.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -303,7 +310,10 @@ class ListCustomAgentsResponseBodyItemsProtocol(DaraModel):
         self.headers = headers
         # The list of API paths corresponding to the current protocol.
         self.paths = paths
-        # The invocation protocol type. agui indicates the AG-UI protocol. openai-chat-completion indicates the OpenAI Chat Completions compatible protocol. custom indicates a custom protocol.
+        # The invocation protocol type. Valid values:
+        # - agui: The AG-UI protocol.
+        # - openai-chat-completion: The OpenAI Chat Completions compatible protocol.
+        # - custom: A custom protocol.
         # 
         # This parameter is required.
         self.type = type
@@ -400,7 +410,7 @@ class ListCustomAgentsResponseBodyItemsCodePackageInfo(DaraModel):
         self.crc_64 = crc_64
         # The ETag of the code package object.
         self.etag = etag
-        # The original file name of the code package.
+        # The original code package file name.
         self.file_name = file_name
         # The compressed size of the code package.
         self.file_size = file_size
@@ -514,17 +524,20 @@ class ListCustomAgentsResponseBodyItemsArtifactContainer(DaraModel):
         tag: str = None,
         type: str = None,
     ):
-        # The custom container startup command and parameters. If this parameter is not configured, the default startup method of the image is used.
+        # The custom container startup command and parameters. If not specified, the default startup method of the image is used.
         self.entrypoint = entrypoint
-        # The ID of the ACR Enterprise Edition instance.
+        # The ID of the ACR Enterprise instance.
         self.instance_id = instance_id
-        # The Container Registry namespace.
+        # The ACR namespace.
         self.namespace = namespace
-        # The name of the Container Registry image repository.
+        # The name of the ACR image repository.
         self.repo = repo
         # The image tag.
         self.tag = tag
-        # The image source type. A value of acr indicates a Container Registry image. A value of custom indicates a custom image source. For the corresponding source configurations, refer to the descriptions of artifact.container and customImage.
+        # The image source type. Valid values:
+        # - acr: An ACR image.
+        # - custom: A custom image source.
+        # For the corresponding source configurations, refer to the descriptions of artifact.container and customImage.
         # 
         # This parameter is required.
         self.type = type
@@ -586,15 +599,15 @@ class ListCustomAgentsResponseBodyItemsArtifactCode(DaraModel):
         language_runtime: str = None,
         source_uri: str = None,
     ):
-        # The startup command for the code package. This parameter is required in code package mode. The working directory is the root directory of the extracted code, which is /code. Example: python main.py. Quotes and escapes are supported. Environment variables, pipes, and logical operations are not automatically expanded. For complex commands, use a script within the package.
+        # The startup command for the code package. This parameter is required in code package mode. The working directory is the extracted code root directory /code, such as python main.py. Quotes and escapes are supported. Environment variables, pipes, and logical operations are not automatically expanded. For complex commands, use a script within the package.
         # 
         # This parameter is required.
         self.entrypoint = entrypoint
-        # The identifier of the code runtime environment in the currently saved configuration. The runtime image uses the saved snapshot. Adding a new version to the catalog does not automatically change the existing configuration.
+        # The identifier of the code runtime environment for the current saved configuration. The runtime image uses a saved snapshot. Adding a new version to the catalog does not automatically change the existing configuration.
         # 
         # This parameter is required.
         self.language_runtime = language_runtime
-        # The fixed oss:// address of the platform code package referenced by the currently saved configuration. This address does not include the signature parameters of the source HTTPS link. You can use this address to reuse an existing code package. To download the content, call the GetAgentCodePackageDownloadUrl operation.
+        # The fixed oss:// address of the platform code package referenced by the current saved configuration. This address does not include the signature parameters of the source HTTPS link. You can use this address to reuse an existing code package. To download the content, call GetAgentCodePackageDownloadUrl.
         # 
         # This parameter is required.
         self.source_uri = source_uri

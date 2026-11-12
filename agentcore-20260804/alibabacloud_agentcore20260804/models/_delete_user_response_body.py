@@ -17,7 +17,7 @@ class DeleteUserResponseBody(DaraModel):
     ):
         # The business status code.
         self.code = code
-        # The information about the deleted user.
+        # The deleted user information.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code

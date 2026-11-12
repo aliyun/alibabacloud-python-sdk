@@ -13,7 +13,7 @@ class UpdateTeamRequest(DaraModel):
         body: main_models.UpdateTeamRequestBody = None,
         client_token: str = None,
     ):
-        # The request body for updating the team.
+        # The request body for updating a team.
         self.body = body
         # Not supported.
         self.client_token = client_token
@@ -53,11 +53,11 @@ class UpdateTeamRequestBody(DaraModel):
         description: str = None,
         users: List[main_models.UpdateTeamRequestBodyUsers] = None,
     ):
-        # The new list of agent members. This list replaces the existing agent members based on full overwrite semantics. If not specified, the existing list remains unchanged.
+        # The new list of agent members, which replaces the existing agent members by using full overwrite semantics. If not specified, the agent member list remains unchanged.
         self.agents = agents
-        # The new team description. If not specified, the existing description remains unchanged.
+        # The new description of the team. If not specified, the description remains unchanged.
         self.description = description
-        # The new list of user members. This list replaces the existing user members based on full overwrite semantics. If this parameter is specified, it must contain exactly one member with the ADMIN role. If not specified, the existing list remains unchanged.
+        # The new list of user members, which replaces the existing user members by using full overwrite semantics. If this parameter is specified, it must contain exactly one member whose role is ADMIN. If not specified, the user member list remains unchanged.
         self.users = users
 
     def validate(self):
@@ -115,7 +115,7 @@ class UpdateTeamRequestBodyUsers(DaraModel):
         team_role: str = None,
         user_id: str = None,
     ):
-        # The role of the user in the team. Valid values: ADMIN, MEMBER. Each team must have exactly one ADMIN.
+        # The role of the user in the team. Valid values: ADMIN and MEMBER. Each team must have exactly one ADMIN.
         self.team_role = team_role
         # The user ID.
         self.user_id = user_id
@@ -154,7 +154,7 @@ class UpdateTeamRequestBodyAgents(DaraModel):
     ):
         # The agent ID.
         self.agent_id = agent_id
-        # The role of the agent in the team. Valid values: LEADER, WORKER.
+        # The role of the agent in the team. Valid values: LEADER and WORKER.
         self.team_role = team_role
 
     def validate(self):

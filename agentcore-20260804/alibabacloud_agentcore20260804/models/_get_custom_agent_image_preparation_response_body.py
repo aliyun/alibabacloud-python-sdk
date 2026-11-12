@@ -25,7 +25,7 @@ class GetCustomAgentImagePreparationResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the API call is successful.
+        # Indicates whether the current API call is successful.
         self.success = success
 
     def validate(self):
@@ -91,13 +91,13 @@ class GetCustomAgentImagePreparationResponseBodyData(DaraModel):
     ):
         # The target agent ID.
         self.agent_id = agent_id
-        # The error. This parameter is returned only when the task fails. Otherwise, the value is null.
+        # The error details. This parameter is returned only when the task fails. Otherwise, the value is null.
         self.error = error
         # The phase where the failure occurred. This parameter is returned only when the phase is FAILED. Otherwise, the value is null.
         self.failed_phase = failed_phase
         # The current phase. Only SUCCEEDED indicates that the target version is deployed successfully.
         self.phase = phase
-        # The Console task ID for the current submission.
+        # The console task ID for the current submission.
         self.preparation_id = preparation_id
 
     def validate(self):

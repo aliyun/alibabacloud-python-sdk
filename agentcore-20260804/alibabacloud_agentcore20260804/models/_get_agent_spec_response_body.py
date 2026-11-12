@@ -85,7 +85,7 @@ class GetAgentSpecResponseBodyData(DaraModel):
         self.reviewing_version = reviewing_version
         # The visibility scope.
         self.scope = scope
-        # The update time. It is a UNIX timestamp in milliseconds.
+        # The update time, which is a UNIX timestamp in milliseconds.
         self.update_time = update_time
         # The list of version summaries.
         self.versions = versions
@@ -202,9 +202,9 @@ class GetAgentSpecResponseBodyDataVersions(DaraModel):
         update_time: int = None,
         version: str = None,
     ):
-        # The author of the version.
+        # The version author.
         self.author = author
-        # The creation time. It is a UNIX timestamp in milliseconds.
+        # The creation time, which is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The description.
         self.description = description
@@ -214,7 +214,7 @@ class GetAgentSpecResponseBodyDataVersions(DaraModel):
         self.publish_pipeline_info = publish_pipeline_info
         # The status.
         self.status = status
-        # The update time. It is a UNIX timestamp in milliseconds.
+        # The update time, which is a UNIX timestamp in milliseconds.
         self.update_time = update_time
         # The version number.
         self.version = version

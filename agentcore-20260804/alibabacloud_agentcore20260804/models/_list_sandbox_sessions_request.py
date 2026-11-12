@@ -13,9 +13,9 @@ class ListSandboxSessionsRequest(DaraModel):
     ):
         # The maximum number of entries to return per page. Default value: 20. Valid values: 1 to 100.
         self.max_results = max_results
-        # The token for the next page. Omit this parameter in the first request. For subsequent requests, use the returned token as is, and keep the workspace, agent, instance, and maxResults unchanged. An empty value indicates that no more pages are available.
+        # The token for the next page. Omit this parameter in the first request. For subsequent requests, use the returned token as is and keep the workspace, agent, instance, and maxResults unchanged. An empty value indicates that no more pages are available.
         self.next_token = next_token
-        # The value must be consistent with the request parameters used in the ListSandboxes operation to obtain the sandboxId. If this parameter is omitted or left blank, the latest running unit of the agent is queried. If this parameter is specified, the service endpoint must belong to the agent and the target type must be AGENT_VERSION. Otherwise, Resource.NotFound is returned. If the target is not DEFAULT and is not running independently, ServiceEndpointTargetNotReady is returned. If the sandboxId does not belong to the specified running unit, Sandbox.NotFound is returned instead of an empty list.
+        # Must be consistent with the ListSandboxes input parameters used to retrieve the sandboxId. If omitted or left blank, the latest running unit of the agent is queried. If specified, the service endpoint must belong to the agent and the target type must be AGENT_VERSION. Otherwise, Resource.NotFound is returned. If it is not DEFAULT and is not running independently, ServiceEndpointTargetNotReady is returned. If the sandboxId does not belong to the specified running unit, Sandbox.NotFound is returned instead of an empty list.
         self.service_endpoint_id = service_endpoint_id
 
     def validate(self):

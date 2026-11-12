@@ -15,17 +15,17 @@ class PrepareIdentityProviderSCIMResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business result code. If the call fails, handle the error based on the HTTP status code and the message.
+        # The business code. If the request fails, troubleshoot the issue based on the HTTP status code and the message.
         self.code = code
-        # The operation result. For the result structure, see the response fields of this operation. The response of an asynchronous write operation indicates that the request is accepted, but does not guarantee that the background task is completed.
+        # The operation result. For the result structure, see the response parameters of this operation. For asynchronous write operations, the response indicates that the request is accepted and does not guarantee that the background task is completed.
         self.data = data
-        # The processing status of the current request. This status does not indicate the final result of the background task.
+        # The HTTP status code of the request. This code indicates the processing status of the current request and does not represent the final result of the background task.
         self.http_status_code = http_status_code
-        # The request acceptance or error message. For asynchronous tasks, you must check the task result by calling the corresponding query operation.
+        # The message returned when the request is accepted or a fault occurs. Verify the asynchronous node result by calling the corresponding query operation.
         self.message = message
-        # The request ID. You can use this ID to associate the current call with troubleshooting. Keep the ID if the call fails.
+        # The request ID. Retain this ID for troubleshooting if the request fails.
         self.request_id = request_id
-        # Indicates whether the current request is successful. A value of true indicates that the request is processed successfully. For asynchronous write operations, you must continue to query the task result.
+        # Indicates whether the request was successful. A value of true indicates that the request was successful. For asynchronous write operations, you must continue to query the task results.
         self.success = success
 
     def validate(self):
@@ -87,11 +87,11 @@ class PrepareIdentityProviderSCIMResponseBodyData(DaraModel):
         credential: main_models.PrepareIdentityProviderSCIMResponseBodyDataCredential = None,
         token: str = None,
     ):
-        # The actual SAML configuration is read on demand only by calling GetIdentityProvider. SCIM query and preparation operations return the actual receiving status and URL.
+        # The AgentIdentity receiving configuration. The actual SAML configuration is read on demand only by calling GetIdentityProvider. SCIM query and preparation operations return the actual receiving status and URL.
         self.configuration = configuration
-        # The current credential summary, including credentialId, status, createTime, and expireTime. The token is not included because it cannot be repeatedly obtained.
+        # The summary of the current credential, including credentialId, status, createTime, and expireTime. It does not include the token.
         self.credential = credential
-        # The plaintext of the newly issued SCIM token. The plaintext is returned only in the current response. If an existing valid credential is reused, an empty string ("") is returned. In this case, use the saved token.
+        # The plaintext of the newly issued SCIM token, which is returned only in the current response. If an existing valid credential is reused, an empty string ("") is returned. In this case, use the saved token.
         self.token = token
 
     def validate(self):
@@ -141,7 +141,7 @@ class PrepareIdentityProviderSCIMResponseBodyDataCredential(DaraModel):
     ):
         # The creation time returned by AgentIdentity.
         self.create_time = create_time
-        # The credential ID. This parameter is required when you delete a credential. Use the ID returned in the credential list, not the plaintext of the token.
+        # The credential ID. This parameter is required and cannot be empty when you delete a credential. Use the ID returned in the credential list, not the plaintext of the token.
         self.credential_id = credential_id
         # The expiration time returned by AgentIdentity. Only credentials with the status of Enabled that have not expired are considered available.
         self.expire_time = expire_time
@@ -192,9 +192,9 @@ class PrepareIdentityProviderSCIMResponseBodyDataConfiguration(DaraModel):
         base_url: str = None,
         status: str = None,
     ):
-        # The URL configured for the external provisioning system. The presence of a URL does not indicate that the external configuration is completed or AgentCore synchronization is enabled.
+        # The URL configured for the external provisioning system. The presence of a URL does not indicate that the external configuration is completed or that AgentCore synchronization is enabled.
         self.base_url = base_url
-        # The receiving status of AgentIdentity. A value of Enabled indicates that SCIM receiving is enabled. A value of Disabled indicates that SCIM receiving is disabled. This status is not equivalent to the expected value of syncEnabled in AgentCore.
+        # The receiving status of AgentIdentity. A value of Enabled indicates that SCIM receiving is enabled. A value of Disabled indicates that SCIM receiving is disabled. This value is not equivalent to the expected value of syncEnabled in AgentCore.
         self.status = status
 
     def validate(self):

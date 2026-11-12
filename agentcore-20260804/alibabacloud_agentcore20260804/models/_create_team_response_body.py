@@ -23,7 +23,7 @@ class CreateTeamResponseBody(DaraModel):
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The response message. An error description is returned if the request fails.
+        # The response message. An error description is returned when the request fails.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -103,7 +103,7 @@ class CreateTeamResponseBodyData(DaraModel):
         self.description = description
         # The team name. It can only contain lowercase letters, digits, and hyphens, must start and end with a lowercase letter or a digit, and must be 1 to 128 characters in length.
         self.name = name
-        # The team status. Valid values: Creating, Active, Updating, Deleting, Failed, and Deleted.
+        # The team status. Valid values: Creating, Active, Updating, Deleting, Failed, Deleted.
         self.status = status
         # The team ID.
         self.team_id = team_id
@@ -205,7 +205,7 @@ class CreateTeamResponseBodyDataUsers(DaraModel):
         team_role: str = None,
         user_id: str = None,
     ):
-        # The role of the user in the team. Valid values: ADMIN and MEMBER. Each team must have exactly one ADMIN.
+        # The role of the user in the team. Valid values: ADMIN, MEMBER. Each team must have exactly one ADMIN.
         self.team_role = team_role
         # The user ID.
         self.user_id = user_id
@@ -244,7 +244,7 @@ class CreateTeamResponseBodyDataAgents(DaraModel):
     ):
         # The agent ID.
         self.agent_id = agent_id
-        # The role of the agent in the team. Valid values: LEADER and WORKER. Each team must have exactly one LEADER.
+        # The role of the agent in the team. Valid values: LEADER, WORKER. Each team must have exactly one LEADER.
         self.team_role = team_role
 
     def validate(self):

@@ -11,7 +11,7 @@ class UpdateUserRequest(DaraModel):
         body: main_models.UpdateUserRequestBody = None,
         client_token: str = None,
     ):
-        # The request body for updating the user.
+        # The request body for updating a user.
         self.body = body
         # Not supported.
         self.client_token = client_token
@@ -51,7 +51,7 @@ class UpdateUserRequestBody(DaraModel):
         email: str = None,
         note: str = None,
     ):
-        # The display name of the user. The name must be 1 to 32 characters in length. At least one of displayName, email, and note must be specified.
+        # The display name of the user. The name must be 1 to 32 characters in length. You must specify at least one of the displayName, email, and note parameters.
         self.display_name = display_name
         # The email address of the user. The email address can be up to 256 characters in length.
         self.email = email

@@ -21,7 +21,7 @@ class ListUsersRequest(DaraModel):
         self.name = name
         # The filter condition for fuzzy match on the username. The value can be up to 128 characters in length.
         self.name_like = name_like
-        # The cursor for querying the next page. Do not specify this parameter in the first call. Specify the nextToken value returned in the previous call for subsequent calls.
+        # The cursor for querying the next page. Do not specify this parameter for the first call. For subsequent calls, specify the nextToken value returned from the previous call.
         self.next_token = next_token
 
     def validate(self):

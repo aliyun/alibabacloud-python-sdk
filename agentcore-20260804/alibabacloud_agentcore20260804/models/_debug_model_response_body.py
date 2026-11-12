@@ -17,11 +17,11 @@ class DebugModelResponseBody(DaraModel):
     ):
         # The business status code. The value is SUCCESS if the request is successful.
         self.code = code
-        # The model debugging result.
+        # The model test result.
         self.data = data
         # The HTTP status code. The value is 200 if the request is successful.
         self.http_status_code = http_status_code
-        # The message about the request processing result.
+        # The request processing result message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -96,23 +96,23 @@ class DebugModelResponseBodyData(DaraModel):
     ):
         # The model connection ID.
         self.connection_id = connection_id
-        # Indicates whether the model debugging is successful.
+        # Indicates whether the model test is successful.
         self.debug_success = debug_success
-        # The error code returned when debugging fails.
+        # The error code for a test failure.
         self.error_code = error_code
-        # The error description returned when debugging fails.
+        # The error description for a test failure.
         self.error_message = error_message
-        # The number of input tokens consumed by this model debugging request.
+        # The number of input tokens consumed by the model test request.
         self.input_tokens = input_tokens
-        # The duration of this model debugging invocation, in milliseconds.
+        # The duration of the model test call, in milliseconds.
         self.latency_ms = latency_ms
         # The model ID.
         self.model_id = model_id
-        # The number of output tokens consumed by this model debugging response.
+        # The number of output tokens consumed by the model test response.
         self.output_tokens = output_tokens
-        # The text response returned by the model when model debugging succeeds. This field is empty if debugging fails.
+        # The text response returned by the model when the model test succeeds. This field is empty if the test fails.
         self.response = response
-        # The debugging result status.
+        # The test result status.
         self.status = status
 
     def validate(self):

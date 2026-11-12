@@ -15,15 +15,15 @@ class CreateIdentityProviderSCIMCredentialResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business result code. If the call fails, handle the error based on the HTTP status code and the message.
+        # The business result code. If a failure occurs, handle the error based on the HTTP status code and the message.
         self.code = code
-        # The operation result. For the result structure, see the response parameters of this operation. The response of an asynchronous write operation indicates that the request is accepted, but does not guarantee that the background task is complete.
+        # The operation result. For the result structure, see the response fields of this operation. The response of an asynchronous write operation indicates that the request is accepted, which does not ensure that the background task is complete.
         self.data = data
         # The processing status of the current request. This status does not indicate the final result of the background task.
         self.http_status_code = http_status_code
-        # The request acceptance or error message. For asynchronous node results, you must verify them by calling the corresponding query operation.
+        # The request acceptance or error message. You must verify the result of the asynchronous task by calling the corresponding query operation.
         self.message = message
-        # The request ID. You can use this ID to associate the current call with troubleshooting. Keep the ID if the call fails.
+        # The request ID. You can use this ID to associate the current call with troubleshooting. Keep the ID if a failure occurs.
         self.request_id = request_id
         # Indicates whether the current request is successful. A value of true indicates that the request is processed successfully. For asynchronous write operations, you must continue to query the task result.
         self.success = success
@@ -87,11 +87,11 @@ class CreateIdentityProviderSCIMCredentialResponseBodyData(DaraModel):
         credential: main_models.CreateIdentityProviderSCIMCredentialResponseBodyDataCredential = None,
         token: str = None,
     ):
-        # The actual SAML configuration is read on demand only by calling GetIdentityProvider. SCIM query and preparation operations return the actual receiving status and URL.
+        # The actual SAML configuration is read on demand only by calling GetIdentityProvider. SCIM query and preparation return the actual receiving status and URL.
         self.configuration = configuration
-        # The current credential summary, including credentialId, status, createTime, and expireTime. The plaintext token is not included and cannot be repeatedly obtained.
+        # The current credential summary, including credentialId, status, createTime, and expireTime. The token is not included and cannot be retrieved again.
         self.credential = credential
-        # The plaintext token is returned only when a new credential is created. If the prepare operation reuses a valid credential, this value is null. The token cannot be retrieved from the list. If the response is lost, query the list first. The token is not automatically reissued and is not written to logs or persistent frontend caches.
+        # The plaintext token. The plaintext is returned only when a new credential is created. If the prepare operation reuses a valid credential, this value is null. The token cannot be retrieved from the list. If the response is lost, query the list first. The token is not automatically reissued and is not written to logs or frontend persistent cache.
         self.token = token
 
     def validate(self):
@@ -194,7 +194,7 @@ class CreateIdentityProviderSCIMCredentialResponseBodyDataConfiguration(DaraMode
     ):
         # The URL configured for the external provisioning system. The presence of a URL does not indicate that the external configuration is complete or that AgentCore synchronization is enabled.
         self.base_url = base_url
-        # The receiving status of AgentIdentity. A value of Enabled indicates that SCIM receiving is enabled. A value of Disabled indicates that SCIM receiving is disabled. This value is not equivalent to the expected value of syncEnabled in AgentCore.
+        # The receiving status of AgentIdentity. Enabled indicates that SCIM receiving is enabled, and Disabled indicates that SCIM receiving is disabled. This status is not equivalent to the expected value of syncEnabled in AgentCore.
         self.status = status
 
     def validate(self):

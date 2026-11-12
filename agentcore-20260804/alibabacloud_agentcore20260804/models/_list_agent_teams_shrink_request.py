@@ -9,7 +9,7 @@ class ListAgentTeamsShrinkRequest(DaraModel):
         self,
         body_shrink: str = None,
     ):
-        # The request parameters for querying the list of agent teams.
+        # The request parameters for querying agent teams.
         self.body_shrink = body_shrink
 
     def validate(self):

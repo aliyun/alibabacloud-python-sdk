@@ -19,13 +19,13 @@ class GetMcpMarketItemResponseBody(DaraModel):
     ):
         # The business status code.
         self.code = code
-        # The response data.
+        # The returned result.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
         # The response message.
         self.message = message
-        # The request ID used to locate and troubleshoot the request.
+        # The request ID, which is used to locate and troubleshoot the request.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
@@ -101,35 +101,35 @@ class GetMcpMarketItemResponseBodyData(DaraModel):
         template_input_schema: str = None,
         template_version: str = None,
     ):
-        # The MCP marketplace template category.
+        # The category of the MCP marketplace template.
         self.category = category
-        # The MCP service description.
+        # The description of the MCP service.
         self.description = description
-        # The template display metadata.
+        # The display metadata of the template.
         self.display_metadata = display_metadata
-        # The multilingual display content organized by BCP-47 language tags. If a language is not matched, the default fields are used.
+        # The multilingual display content, organized by BCP-47 language tags. If a language is not matched, the system falls back to the default fields.
         self.i_18n = i_18n
         # The icon URL of the MCP marketplace template.
         self.icon_url = icon_url
-        # The template installation count.
+        # The number of times the template has been installed.
         self.install_count = install_count
         # The MCP marketplace template ID.
         self.market_item_id = market_item_id
         # The MCP type.
         self.mcp_type = mcp_type
-        # The MCP marketplace template name.
+        # The name of the MCP marketplace template.
         self.name = name
         # The official usage tag.
         self.official_tag = official_tag
         # The MCP protocol.
         self.protocol = protocol
-        # The MCP marketplace template instructions.
+        # The instructions for the MCP marketplace template.
         self.readme = readme
-        # The template schema version.
+        # The schema version of the template.
         self.schema_version = schema_version
-        # The template input schema, represented as a JSON Schema string.
+        # The input schema of the template, represented as a JSON Schema string.
         self.template_input_schema = template_input_schema
-        # The MCP marketplace template version.
+        # The version of the MCP marketplace template.
         self.template_version = template_version
 
     def validate(self):

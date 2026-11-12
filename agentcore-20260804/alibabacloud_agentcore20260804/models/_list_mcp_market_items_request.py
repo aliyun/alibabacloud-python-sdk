@@ -19,7 +19,7 @@ class ListMcpMarketItemsRequest(DaraModel):
         self.max_results = max_results
         # The MCP type.
         self.mcp_type = mcp_type
-        # The pagination token used to query the next page.
+        # The pagination token for querying the next page.
         self.next_token = next_token
         # The official usage tag.
         self.official_tag = official_tag

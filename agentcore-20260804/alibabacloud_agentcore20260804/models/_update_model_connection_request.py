@@ -15,7 +15,7 @@ class UpdateModelConnectionRequest(DaraModel):
     ):
         # The request body.
         self.body = body
-        # The client token used for idempotence. This parameter is not supported.
+        # The client token used to ensure idempotence. This parameter is currently not supported.
         self.client_token = client_token
 
     def validate(self):
@@ -58,13 +58,13 @@ class UpdateModelConnectionRequestBody(DaraModel):
     ):
         # The list of API keys used to access the upstream model service. The list must contain at least one non-empty value.
         self.api_keys = api_keys
-        # The description of the model connection, which can be up to 255 characters in length.
+        # The description of the model connection. The description can be up to 255 characters in length.
         self.description = description
-        # The absolute HTTP or HTTPS URL of the upstream model service, which can be up to 1,024 characters in length.
+        # The absolute HTTP or HTTPS URL of the upstream model service. The URL can be up to 1,024 characters in length.
         self.endpoint = endpoint
-        # The name of the model connection, which must be 1 to 128 non-whitespace characters in length.
+        # The name of the model connection. The name must be 1 to 128 non-whitespace characters in length.
         self.name = name
-        # The model invoke protocol. Currently, only OpenAI/v1 is supported. If the Settings are not specified during model creation, this default value is used.
+        # The model invoke protocol. Currently, only OpenAI/v1 is supported. If the Settings are not specified during model creation of the connection, this default value is used.
         self.protocol = protocol
         # The model provider type.
         self.provider_type = provider_type

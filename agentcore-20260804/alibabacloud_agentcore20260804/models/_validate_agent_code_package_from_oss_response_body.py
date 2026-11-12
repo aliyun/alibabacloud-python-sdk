@@ -17,7 +17,7 @@ class ValidateAgentCodePackageFromOssResponseBody(DaraModel):
     ):
         # The business status code.
         self.code = code
-        # The returned result.
+        # The returned data.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code

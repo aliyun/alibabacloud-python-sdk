@@ -13,7 +13,7 @@ class CreateModelRequest(DaraModel):
     ):
         # The request body.
         self.body = body
-        # The client token used for idempotence. This parameter is currently not supported.
+        # The client token used for idempotence. Not supported.
         self.client_token = client_token
 
     def validate(self):
@@ -60,11 +60,11 @@ class CreateModelRequestBody(DaraModel):
         # 
         # This parameter is required.
         self.connection_id = connection_id
-        # The context window size of the model, in tokens. The value must be a positive integer.
+        # The context window size of the model, in tokens. Must be a positive integer.
         self.context_size = context_size
-        # The model description, up to 255 characters in length.
+        # The model description. Maximum length: 255 characters.
         self.description = description
-        # The maximum number of output tokens supported by the model per generation.
+        # The maximum number of output tokens supported by the model in a single generation.
         self.max_tokens = max_tokens
         # The upstream model name.
         # 
@@ -139,11 +139,11 @@ class CreateModelRequestBodyCapabilities(DaraModel):
         self.audio = audio
         # Specifies whether the model supports document input.
         self.document = document
-        # Specifies whether the model is able to invoke multiple tool calling operations in a single response.
+        # Specifies whether the model is able to invoke tool calling multiple times in a single response.
         self.multi_tool_call = multi_tool_call
         # Specifies whether the model supports reasoning capabilities.
         self.reasoning = reasoning
-        # Specifies whether the model is able to invoke streaming tool calling.
+        # Specifies whether the model is able to invoke tool calling in a streaming manner.
         self.stream_tool_call = stream_tool_call
         # Specifies whether the model supports tool calling.
         self.tool_call = tool_call

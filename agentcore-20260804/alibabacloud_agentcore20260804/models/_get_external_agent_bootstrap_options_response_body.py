@@ -17,11 +17,11 @@ class GetExternalAgentBootstrapOptionsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business status code. The value is SUCCESS if the request is successful.
+        # The business status code. The value is SUCCESS for a successful request.
         self.code = code
         # The available access network information for the managed agent.
         self.data = data
-        # The HTTP status code. The value is 200 if the request is successful.
+        # The HTTP status code. The value is 200 for a successful request.
         self.http_status_code = http_status_code
         # The request processing result message.
         self.message = message

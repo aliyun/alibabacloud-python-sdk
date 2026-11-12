@@ -35,7 +35,7 @@ class DeleteImageCacheResponseBody(DaraModel):
         # 
         # This parameter is required.
         self.request_id = request_id
-        # Indicates whether the request is successful. A successful request does not mean that the cache creation is complete.
+        # Indicates whether the request is successful. This does not mean that the cache creation is complete.
         # 
         # This parameter is required.
         self.success = success
@@ -98,7 +98,7 @@ class DeleteImageCacheResponseBodyData(DaraModel):
         deletion_pending: bool = None,
         image_id: str = None,
     ):
-        # Indicates whether the deletion is in progress. The current implementation always returns false. To confirm the visibility of the cache, call GetImageCache or ListImageCaches.
+        # The flag indicating whether deletion is in progress. The current implementation always returns false. To confirm cache visibility, call GetImageCache or ListImageCaches.
         # 
         # This parameter is required.
         self.deletion_pending = deletion_pending

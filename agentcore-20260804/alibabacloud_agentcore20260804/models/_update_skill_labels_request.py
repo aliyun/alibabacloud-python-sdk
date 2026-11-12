@@ -40,7 +40,7 @@ class UpdateSkillLabelsRequestBody(DaraModel):
         self,
         labels: str = None,
     ):
-        # The JSON string for version label mapping.
+        # The version label mapping JSON string.
         # 
         # This parameter is required.
         self.labels = labels

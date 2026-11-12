@@ -10,7 +10,7 @@ class DeleteImageCacheRequest(DaraModel):
         region_id: str = None,
         workspace_id: str = None,
     ):
-        # The region ID. It is passed as a query parameter and must match the selected region endpoint and the workspace region.
+        # The product entry region. This parameter is passed as a query parameter and must match the selected region endpoint and the workspace region.
         # 
         # This parameter is required.
         self.region_id = region_id

@@ -94,11 +94,11 @@ class GetAgentCodePackageUploadUrlResponseBodyData(DaraModel):
     ):
         # The expiration time of the upload URL.
         self.expires_at = expires_at
-        # The required HTTP request headers for direct upload.
+        # The HTTP request headers that must be included for direct upload.
         self.headers = headers
         # The maximum compressed size of the code package.
         self.max_size = max_size
-        # The OSS URI of the temporary code package.
+        # The temporary Object Storage Service (OSS) URI of the code package.
         self.source_uri = source_uri
         # The HTTP method for direct upload.
         self.upload_method = upload_method

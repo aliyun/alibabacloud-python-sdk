@@ -12,7 +12,7 @@ class ListCustomAgentsRequest(DaraModel):
     ):
         # The maximum number of entries to return per page. Valid values: 0 to 100. If this parameter is omitted or set to 0, the default value is 20.
         self.max_results = max_results
-        # The opaque token used to query the next page. Omit this parameter in the first request. For subsequent requests, use the `nextToken` value returned in the previous response as is, and keep the same workspace. Do not construct this token manually.
+        # The opaque token for querying the next page. Omit this parameter in the first request. For subsequent requests, use the `nextToken` value from the previous response as is and keep the same workspace. Do not construct the token manually.
         self.next_token = next_token
 
     def validate(self):

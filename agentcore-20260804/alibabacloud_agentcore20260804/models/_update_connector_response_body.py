@@ -93,11 +93,11 @@ class UpdateConnectorResponseBodyData(DaraModel):
         self.bound_agent_count = bound_agent_count
         # The time when the connector was enabled.
         self.enabled_at = enabled_at
-        # The updated JSON string for the connector configuration. This is sensitive information.
+        # The updated JSON string of the connector configuration. This is sensitive information.
         self.metadata = metadata
-        # The name of the connector. Currently, the value is qodercli.
+        # The connector name. Currently, the value is qodercli.
         self.name = name
-        # The status of the connector.
+        # The connector status.
         self.status = status
 
     def validate(self):

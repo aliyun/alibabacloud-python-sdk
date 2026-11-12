@@ -10,7 +10,7 @@ class ListMcpToolsRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # The maximum number of results to return per request. Default value: 10. Maximum value: 100.
+        # The maximum number of results to return in a single request. Default value: 10. Maximum value: 100.
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token

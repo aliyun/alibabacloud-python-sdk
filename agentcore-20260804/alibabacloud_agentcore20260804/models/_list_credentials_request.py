@@ -19,9 +19,9 @@ class ListCredentialsRequest(DaraModel):
         self.max_results = max_results
         # The credential name used for filtering.
         self.name = name
-        # The filter condition for fuzzy matching by credential name.
+        # The keyword used to perform fuzzy matching on credential names.
         self.name_like = name_like
-        # The cursor for querying the next page. Do not specify this parameter for the first call. For subsequent calls, specify the nextToken value returned in the previous response.
+        # The cursor used to query the next page. Leave this parameter empty in the first call. In subsequent calls, specify the nextToken value returned in the previous response.
         self.next_token = next_token
 
     def validate(self):

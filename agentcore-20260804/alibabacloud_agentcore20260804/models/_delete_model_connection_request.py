@@ -9,7 +9,7 @@ class DeleteModelConnectionRequest(DaraModel):
         self,
         client_token: str = None,
     ):
-        # The client token used for idempotence. This parameter is not currently supported.
+        # The client token used for idempotence. This parameter is currently not supported.
         self.client_token = client_token
 
     def validate(self):

@@ -13,9 +13,9 @@ class ListTeamsRequest(DaraModel):
     ):
         # The maximum number of records to return per page. Valid values: 1 to 100. If this parameter is not specified, 10 records are returned by default.
         self.max_results = max_results
-        # The filter condition for fuzzy matching the team name.
+        # The filter condition for fuzzy matching by team name.
         self.name_like = name_like
-        # The cursor for querying the next page. Do not specify this parameter for the first call. For subsequent calls, specify the nextToken value returned in the previous response.
+        # The cursor for querying the next page. Do not specify this parameter for the first call. For subsequent calls, specify the nextToken value returned in the previous call.
         self.next_token = next_token
 
     def validate(self):

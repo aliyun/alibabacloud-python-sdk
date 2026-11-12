@@ -10,7 +10,7 @@ class UpdateTeamShrinkRequest(DaraModel):
         body_shrink: str = None,
         client_token: str = None,
     ):
-        # The request body for updating the team.
+        # The request body for updating a team.
         self.body_shrink = body_shrink
         # Not supported.
         self.client_token = client_token

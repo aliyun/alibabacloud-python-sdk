@@ -103,7 +103,7 @@ class GetAgentIMChannelResponseBodyData(DaraModel):
         self.agent_id = agent_id
         # The channel behavior configuration.
         self.channel_config = channel_config
-        # The IM channel type. Valid values: DINGTALK (DingTalk), FEISHU (Lark), and WECOM (WeCom).
+        # The IM channel type. Valid values: DINGTALK (DingTalk), FEISHU (Lark), WECOM (WeCom).
         self.channel_type = channel_type
         # The creation time in RFC 3339 format.
         self.create_time = create_time
@@ -115,9 +115,9 @@ class GetAgentIMChannelResponseBodyData(DaraModel):
         self.endpoint_url = endpoint_url
         # The IM channel ID.
         self.im_channel_id = im_channel_id
-        # The ID of the bound service endpoint. The endpoint must belong to the specified agent and its current version, be in the ready state, and have a public address.
+        # The ID of the bound service endpoint. The endpoint must belong to the specified agent and its current version, be ready, and have a public network address.
         self.service_endpoint_id = service_endpoint_id
-        # The IM channel status. Valid values: CREATING (creating), READY (ready), UPDATING (updating), FAILED (failed), DELETING (deleting), and DELETE_FAILED (deletion failed).
+        # The IM channel status. Valid values: CREATING (creating), READY (ready), UPDATING (updating), FAILED (failed), DELETING (deleting), DELETE_FAILED (delete failed).
         self.status = status
         # The reason for the current status of the IM channel.
         self.status_reason = status_reason
@@ -266,9 +266,9 @@ class GetAgentIMChannelResponseBodyDataChannelConfig(DaraModel):
         show_thinking: bool = None,
         show_tool_calls: bool = None,
     ):
-        # Specifies whether to display the thinking process in IM messages. Default value: false.
+        # Indicates whether to display the thinking process in IM messages. Default value: false.
         self.show_thinking = show_thinking
-        # Specifies whether to display the tool calling process in IM messages. Default value: false.
+        # Indicates whether to display the tool calling process in IM messages. Default value: false.
         self.show_tool_calls = show_tool_calls
 
     def validate(self):

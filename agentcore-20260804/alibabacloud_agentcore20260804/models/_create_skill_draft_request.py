@@ -44,7 +44,7 @@ class CreateSkillDraftRequestBody(DaraModel):
         skill_name: str = None,
         target_version: str = None,
     ):
-        # The version to fork from. If you do not specify this parameter, a new skill is created.
+        # The version from which the draft is derived. If you leave this parameter empty, a new skill is created.
         self.based_on_version = based_on_version
         # The commit message.
         self.commit_msg = commit_msg
@@ -54,7 +54,7 @@ class CreateSkillDraftRequestBody(DaraModel):
         # 
         # This parameter is required.
         self.skill_name = skill_name
-        # Specifies the draft version number. If not specified, the version number automatically increments.
+        # The target version number of the draft. If you do not specify this parameter, the version number automatically increments.
         self.target_version = target_version
 
     def validate(self):

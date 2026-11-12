@@ -92,7 +92,7 @@ class UpdateWorkspaceRequestBodyNetworkConfiguration(DaraModel):
         public_ingress_enabled: bool = None,
         vpc: main_models.UpdateWorkspaceRequestBodyNetworkConfigurationVpc = None,
     ):
-        # Specifies whether to allow public outbound access from the platform. If this parameter is not specified, the original value is retained. Disabling this feature asynchronously cascades to disable the public network switch for agents. Re-enabling it does not automatically restore the agent switch. This parameter only controls whether the latest versions of managed and custom agents use the public outbound endpoint of the platform. It does not control fixed historical versions, model or MCP proxy endpoints, or the public outbound endpoint of the user VPC.
+        # Specifies whether to allow public outbound access from the platform. If this parameter is not specified, the original value is retained. Disabling this feature asynchronously cascades to disable the public network switch for agents. Re-enabling it does not automatically restore the agent switch. This parameter only controls whether the latest versions of managed and custom agents use the public outbound gateway of the platform. It does not control fixed historical versions, model or MCP proxy gateways, or the public outbound gateway of the user VPC.
         self.public_egress_enabled = public_egress_enabled
         # Specifies whether to allow public inbound access. If this parameter is not specified, the original value is retained. This parameter can be modified together with PublicEgressEnabled and takes effect asynchronously through a unified task. Disabling this feature closes the public inbound endpoints for all agent endpoints in the workspace. Re-enabling it restores the original public inbound endpoints. INNER_DIRECT and user VPC endpoints are not affected. Collaboration and Element Web endpoints are not controlled by this parameter.
         self.public_ingress_enabled = public_ingress_enabled
@@ -142,7 +142,7 @@ class UpdateWorkspaceRequestBodyNetworkConfigurationVpc(DaraModel):
     ):
         # Specifies whether to enable VPC networking.
         self.enabled = enabled
-        # The list of vSwitch IDs. When VPC networking is enabled, the list must contain at least one vSwitch, and all vSwitches must belong to the VPC specified by VpcId.
+        # The list of vSwitch IDs. When VPC networking is enabled, at least one vSwitch must be included, and all vSwitches must belong to the VPC specified by VpcId.
         self.v_switch_ids = v_switch_ids
         # The ID of the user VPC.
         self.vpc_id = vpc_id

@@ -9,7 +9,7 @@ class CreateExternalAgentBootstrapTokenRequest(DaraModel):
         self,
         network_type: str = None,
     ):
-        # The access network type. Valid values: INTRANET (internal network) and INTERNET (Internet).
+        # The network type for access. Valid values: INTRANET (internal network) and INTERNET (Internet).
         # 
         # This parameter is required.
         self.network_type = network_type

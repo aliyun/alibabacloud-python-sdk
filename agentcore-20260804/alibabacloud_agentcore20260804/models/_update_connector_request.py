@@ -42,7 +42,7 @@ class UpdateConnectorRequestBody(DaraModel):
         self,
         metadata: str = None,
     ):
-        # The JSON string for the connector configuration. The site must be the same as when the connector was enabled. If organizationId is provided, it must be the same as when the connector was enabled. If apiKey is omitted, the original value is retained. If serviceAccountKeys is provided, it represents the complete updated key collection.
+        # The JSON string of the connector configuration. The site must be the same as when it was enabled. If organizationId is provided, it must be the same as when it was enabled. If apiKey is omitted, the original value is retained. If serviceAccountKeys is provided, it represents the updated complete key collection.
         # 
         # This parameter is required.
         self.metadata = metadata

@@ -26,7 +26,7 @@ class ListConnectorsResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The connector list.
         self.items = items
-        # The number of connectors returned in this request.
+        # The number of connectors returned in the current response.
         self.max_results = max_results
         # The response message.
         self.message = message
@@ -126,9 +126,9 @@ class ListConnectorsResponseBodyItems(DaraModel):
     ):
         # The number of bound agents.
         self.bound_agent_count = bound_agent_count
-        # The activation time.
+        # The time when the connector was enabled.
         self.enabled_at = enabled_at
-        # The JSON string of the connector configuration. It may contain sensitive credentials after being enabled.
+        # The JSON string of the connector configuration, which may contain sensitive credentials after the connector is enabled.
         self.metadata = metadata
         # The connector name. The current value is qodercli.
         self.name = name

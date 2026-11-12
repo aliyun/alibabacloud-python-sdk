@@ -62,7 +62,7 @@ class CreateTeamRequestBody(DaraModel):
         # 
         # This parameter is required.
         self.name = name
-        # The list of user members in the team. The list must contain exactly one member with the ADMIN role.
+        # The list of user members in the team. The list must include exactly one member with the ADMIN role.
         self.users = users
 
     def validate(self):
@@ -126,7 +126,7 @@ class CreateTeamRequestBodyUsers(DaraModel):
         team_role: str = None,
         user_id: str = None,
     ):
-        # The role of the user in the team. Valid values: ADMIN and MEMBER. Each team must have exactly one ADMIN.
+        # The role of the user in the team. Valid values: ADMIN, MEMBER. Each team must have exactly one ADMIN.
         self.team_role = team_role
         # The user ID.
         self.user_id = user_id
@@ -165,7 +165,7 @@ class CreateTeamRequestBodyAgents(DaraModel):
     ):
         # The agent ID.
         self.agent_id = agent_id
-        # The role of the agent in the team. Valid values: LEADER and WORKER.
+        # The role of the agent in the team. Valid values: LEADER, WORKER.
         self.team_role = team_role
 
     def validate(self):

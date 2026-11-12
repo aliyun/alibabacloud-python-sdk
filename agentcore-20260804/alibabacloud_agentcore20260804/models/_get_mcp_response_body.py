@@ -19,7 +19,7 @@ class GetMcpResponseBody(DaraModel):
     ):
         # The business status code.
         self.code = code
-        # The returned data.
+        # The response data.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -27,7 +27,7 @@ class GetMcpResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -111,23 +111,23 @@ class GetMcpResponseBodyData(DaraModel):
     ):
         # The list of MCP service addresses.
         self.addresses = addresses
-        # The backend authentication configuration. enabled specifies whether it is enabled; directProxy is the custom authentication header for direct proxy; httpToMcp is the list of OpenAPI credentials for HTTP_TO_MCP.
+        # The backend authentication configuration. The enabled field indicates whether it is enabled. The directProxy field specifies the custom authentication header for the direct proxy. The httpToMcp field specifies the list of OpenAPI credentials for HTTP_TO_MCP.
         self.auth = auth
-        # The creation time of the MCP, in ISO 8601 UTC format.
+        # The time when the MCP was created, in ISO 8601 UTC format.
         self.created_at = created_at
         # The custom tags. Multiple tags are supported.
         self.custom_tags = custom_tags
-        # The deployment configuration for code-deployed MCP.
+        # The deployment configuration for the code-deployed MCP.
         self.deployment_config = deployment_config
         # The description.
         self.description = description
-        # The MCP endpoint that can be called by users or agents. This field is empty before the deployment is complete.
+        # The MCP endpoint available for users or agents to call. This field is empty before the deployment is completed.
         self.endpoint = endpoint
-        # The name of the Function Compute function corresponding to the CODE_PACKAGE MCP. This field is empty before the deployment is complete, and is also empty for other types.
+        # The name of the Function Compute function corresponding to the CODE_PACKAGE MCP. This field is empty before deployment is complete and is empty for other types.
         self.function_name = function_name
-        # The marketplace source template of the MCP.
+        # The MCP source marketplace template.
         self.market_source = market_source
-        # The server-side configuration of the MCP.
+        # The MCP server configuration.
         self.mcp_server_config = mcp_server_config
         # The MCP service ID.
         self.mcp_server_id = mcp_server_id
@@ -135,7 +135,7 @@ class GetMcpResponseBodyData(DaraModel):
         self.name = name
         # The official usage tag, which is managed by the server.
         self.official_tag = official_tag
-        # The access permission mode. PUBLIC indicates public access. CONTROLLED indicates that access is controlled based on permission rules.
+        # The access permission mode. PUBLIC indicates public access, and CONTROLLED indicates access controlled by permission rules.
         self.permission_mode = permission_mode
         # The MCP protocol.
         self.protocol = protocol
@@ -145,15 +145,15 @@ class GetMcpResponseBodyData(DaraModel):
         self.status_reason = status_reason
         # The Swagger configuration.
         self.swagger_config = swagger_config
-        # The schema of the template version bound to the usage MCP. This field is not returned for standard MCPs.
+        # The template schema for the version bound to the usage MCP. This is not returned for standard MCPs.
         self.template = template
         # The type.
         self.type = type
         # The time when the MCP was last updated, in ISO 8601 UTC format.
         self.updated_at = updated_at
-        # The access URL of the MCP service.
+        # The access address of the MCP service.
         self.url = url
-        # Indicates whether the MCP is still subject to the usage constraints of the official template.
+        # Specifies whether the MCP is still subject to the usage constraints of the official template.
         self.usage_active = usage_active
 
     def validate(self):
@@ -332,11 +332,11 @@ class GetMcpResponseBodyDataTemplate(DaraModel):
         self.applied_template_version = applied_template_version
         # The latest template version.
         self.latest_template_version = latest_template_version
-        # The schema version of the template.
+        # The template schema version.
         self.schema_version = schema_version
-        # The input schema of the template, represented as a JSON Schema string.
+        # The template input schema, represented as a JSON Schema string.
         self.template_input_schema = template_input_schema
-        # Indicates whether an updated template version is available.
+        # Specifies whether an updated template version is available.
         self.update_available = update_available
 
     def validate(self):
@@ -388,7 +388,7 @@ class GetMcpResponseBodyDataMarketSource(DaraModel):
         self,
         market_item_id: str = None,
     ):
-        # The ID of the marketplace template.
+        # The MCP marketplace template ID.
         self.market_item_id = market_item_id
 
     def validate(self):
@@ -429,11 +429,11 @@ class GetMcpResponseBodyDataDeploymentConfig(DaraModel):
         proxy_configuration: main_models.GetMcpResponseBodyDataDeploymentConfigProxyConfiguration = None,
         runtime_configuration: main_models.GetMcpResponseBodyDataDeploymentConfigRuntimeConfiguration = None,
     ):
-        # The MCP entry access control.
+        # The MCP entry access control configuration.
         self.access_control = access_control
-        # The Agent Identity configuration.
+        # The agent identity configuration.
         self.agent_identity_configuration = agent_identity_configuration
-        # Code indicates a ZIP code package, and Container indicates a custom container.
+        # The artifact type. Code indicates a ZIP code package, and Container indicates a custom container.
         self.artifact_type = artifact_type
         # The code package configuration.
         self.code_configuration = code_configuration
@@ -606,21 +606,21 @@ class GetMcpResponseBodyDataDeploymentConfigRuntimeConfiguration(DaraModel):
         port: int = None,
         timeout: int = None,
     ):
-        # The unit is cores. Default value: 0.25.
+        # The CPU specifications in cores. Default value: 0.25.
         self.cpu = cpu
-        # The unit is MB. Valid values: 512 and 10240.
+        # The temporary disk size in MB. Valid values: 512 and 10240.
         self.disk_size = disk_size
         # The environment variables.
         self.environment_variables = environment_variables
         # The ARN of the RAM role used when user code accesses downstream Alibaba Cloud resources.
         self.execution_role_arn = execution_role_arn
-        # Default value: 200.
+        # The request concurrency per instance. Default value: 200.
         self.instance_concurrency = instance_concurrency
-        # The unit is MB. Default value: 512.
+        # The memory specifications in MB. Default value: 512.
         self.memory = memory
-        # Default value: 9000.
+        # The service port. Default value: 9000.
         self.port = port
-        # The unit is seconds. Default value: 300.
+        # The function timeout period in seconds. Default value: 300.
         self.timeout = timeout
 
     def validate(self):
@@ -720,7 +720,7 @@ class GetMcpResponseBodyDataDeploymentConfigParameterTransformConfiguration(Dara
         rule_set_id: str = None,
         version: str = None,
     ):
-        # Specifies whether to enable parameter transformation and result enhancement.
+        # Specifies whether parameter transformation and result enhancement are enabled.
         self.enabled = enabled
         # The reserved reference to the parameter transformation and result enhancement rule set.
         self.rule_set_id = rule_set_id
@@ -764,7 +764,7 @@ class GetMcpResponseBodyDataDeploymentConfigOssMountConfiguration(DaraModel):
         self,
         mount_points: List[main_models.GetMcpResponseBodyDataDeploymentConfigOssMountConfigurationMountPoints] = None,
     ):
-        # The list of OSS mount points.
+        # The list of OSS mount targets.
         self.mount_points = mount_points
 
     def validate(self):
@@ -804,15 +804,15 @@ class GetMcpResponseBodyDataDeploymentConfigOssMountConfigurationMountPoints(Dar
         mount_dir: str = None,
         read_only: bool = None,
     ):
-        # The OSS bucket name.
+        # The name of the OSS bucket.
         self.bucket_name = bucket_name
-        # The OSS bucket path.
+        # The path in the OSS bucket.
         self.bucket_path = bucket_path
-        # The OSS service endpoint.
+        # The OSS endpoint.
         self.endpoint = endpoint
         # The local mount directory.
         self.mount_dir = mount_dir
-        # Specifies whether the mount point is read-only.
+        # Specifies whether the mount target is read-only.
         self.read_only = read_only
 
     def validate(self):
@@ -921,11 +921,11 @@ class GetMcpResponseBodyDataDeploymentConfigNasConfiguration(DaraModel):
         mount_points: List[main_models.GetMcpResponseBodyDataDeploymentConfigNasConfigurationMountPoints] = None,
         user_id: int = None,
     ):
-        # The user group ID for execution.
+        # The group ID.
         self.group_id = group_id
-        # The list of NAS mount points.
+        # The list of NAS mount targets.
         self.mount_points = mount_points
-        # The user ID for execution.
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -979,7 +979,7 @@ class GetMcpResponseBodyDataDeploymentConfigNasConfigurationMountPoints(DaraMode
         self.enable_tls = enable_tls
         # The local mount directory.
         self.mount_dir = mount_dir
-        # The NAS service address.
+        # The NAS server address.
         self.server_addr = server_addr
 
     def validate(self):
@@ -1022,11 +1022,11 @@ class GetMcpResponseBodyDataDeploymentConfigMcpConfiguration(DaraModel):
         session_idle_timeout_seconds: int = None,
         session_max_lifetime_seconds: int = None,
     ):
-        # The path of the MCP endpoint, such as /mcp or /sse.
+        # The MCP endpoint path, such as /mcp or /sse.
         self.endpoint_path = endpoint_path
-        # The number of concurrent sessions per instance. Currently fixed to 1.
+        # The session concurrency per instance. Currently, this value is fixed as 1.
         self.session_concurrency_per_instance = session_concurrency_per_instance
-        # The unit is seconds. Default value: 1800.
+        # The session idle timeout period in seconds. Default value: 1800.
         self.session_idle_timeout_seconds = session_idle_timeout_seconds
         # The unit is seconds. Default value: 21600.
         self.session_max_lifetime_seconds = session_max_lifetime_seconds
@@ -1082,7 +1082,7 @@ class GetMcpResponseBodyDataDeploymentConfigLogConfiguration(DaraModel):
         self.enable_instance_metrics = enable_instance_metrics
         # Specifies whether to collect request metrics.
         self.enable_request_metrics = enable_request_metrics
-        # The start rule for Function Compute log splitting.
+        # The start rule for log splitting.
         self.log_begin_rule = log_begin_rule
         # The name of the Logstore.
         self.logstore = logstore
@@ -1180,19 +1180,19 @@ class GetMcpResponseBodyDataDeploymentConfigHookConfigurationHooks(DaraModel):
         timeout: int = None,
         url: str = None,
     ):
-        # The API version of the hook.
+        # The hook API version.
         self.api_version = api_version
         # The description of the hook.
         self.description = description
         # Specifies whether the hook is enabled.
         self.enabled = enabled
-        # The event that triggers the hook.
+        # The hook event.
         self.event = event
-        # The request headers for the hook.
+        # The hook request headers.
         self.headers = headers
-        # The timeout period for the hook, in milliseconds.
+        # The timeout period in milliseconds.
         self.timeout = timeout
-        # The callback URL for the hook.
+        # The callback URL of the hook.
         self.url = url
 
     def validate(self):
@@ -1262,19 +1262,19 @@ class GetMcpResponseBodyDataDeploymentConfigContainerConfiguration(DaraModel):
         mcp_runtime_mode: str = None,
         source_type: str = None,
     ):
-        # The ID of the ACR instance.
+        # The ACR instance ID.
         self.acr_instance_id = acr_instance_id
         # The startup command.
         self.command = command
-        # The entrypoint parameters of the container.
+        # The container entrypoint parameters.
         self.entrypoint = entrypoint
-        # The address of the container image.
+        # The container image address.
         self.image = image
-        # The type of the image registry.
+        # The image repository type.
         self.image_registry_type = image_registry_type
-        # The MCP runtime mode. Custom containers must expose the standard MCP themselves. Valid value: SELF_HOSTED.
+        # The MCP runtime mode. Custom containers currently need to expose the standard MCP themselves. The value is SELF_HOSTED.
         self.mcp_runtime_mode = mcp_runtime_mode
-        # The source type of the container. Currently fixed to CONTAINER_IMAGE.
+        # The container source type. Currently, this value is fixed as CONTAINER_IMAGE.
         self.source_type = source_type
 
     def validate(self):
@@ -1340,11 +1340,11 @@ class GetMcpResponseBodyDataDeploymentConfigCodeConfiguration(DaraModel):
         command: List[str] = None,
         language: str = None,
     ):
-        # The temporary code package token returned by GetMcpCodePackageUploadUrl. It is used to create or update a code deployment after a presigned upload is completed.
+        # The temporary code package token returned by GetMcpCodePackageUploadUrl. It is used to create or update a code deployment after the presigned upload is completed.
         self.code_package_token = code_package_token
         # The complete startup command, passed sequentially by parameter boundaries. For example, when using supergateway to start a stdio MCP, pass supergateway, --stdio, the complete subcommand, and the remaining parameters.
         self.command = command
-        # The runtime environment of the code package. Valid values: python3.13, nodejs22, and java17.
+        # The code package runtime, such as python3.13, nodejs22, or java17.
         self.language = language
 
     def validate(self):
@@ -1389,11 +1389,11 @@ class GetMcpResponseBodyDataDeploymentConfigAgentIdentityConfiguration(DaraModel
     ):
         # Specifies whether authorization is enabled.
         self.authorization_enabled = authorization_enabled
-        # The ARN of the credential provider.
+        # The credential provider ARN.
         self.credential_provider_arn = credential_provider_arn
-        # The type of the credential provider.
+        # The credential provider type.
         self.credential_provider_type = credential_provider_type
-        # Specifies whether Agent Identity is enabled.
+        # Specifies whether agent identity is enabled.
         self.enabled = enabled
 
     def validate(self):
@@ -1441,11 +1441,11 @@ class GetMcpResponseBodyDataDeploymentConfigAccessControl(DaraModel):
         enabled: bool = None,
         mode: str = None,
     ):
-        # The AgentCore credential referenced when the mode is CREDENTIAL.
+        # The ID of the AgentCore credential referenced when the mode is set to CREDENTIAL.
         self.credential_id = credential_id
-        # Specifies whether entry access control is enabled.
+        # Specifies whether to enable entry access control.
         self.enabled = enabled
-        # ANONYMOUS indicates anonymous access, and CREDENTIAL indicates the use of AgentCore access credentials.
+        # The access control mode. ANONYMOUS indicates anonymous access. CREDENTIAL indicates access by using AgentCore credentials.
         self.mode = mode
 
     def validate(self):
@@ -1488,13 +1488,13 @@ class GetMcpResponseBodyDataAuth(DaraModel):
         enabled: bool = None,
         http_to_mcp: List[main_models.GetMcpResponseBodyDataAuthHttpToMcp] = None,
     ):
-        # The caller API key authentication configuration for code-deployed MCP.
+        # The caller API key authentication configuration for the code deployment MCP.
         self.code_package = code_package
-        # The direct proxy authentication configuration.
+        # The authentication configuration for the direct proxy.
         self.direct_proxy = direct_proxy
-        # Specifies whether the configuration is enabled.
+        # Indicates whether the configuration is enabled.
         self.enabled = enabled
-        # The list of HTTP_TO_MCP authentication configurations.
+        # The list of authentication configurations for HTTP_TO_MCP.
         self.http_to_mcp = http_to_mcp
 
     def validate(self):
@@ -1656,7 +1656,7 @@ class GetMcpResponseBodyDataAuthCodePackage(DaraModel):
         api_key: str = None,
         header_name: str = None,
     ):
-        # The API key used to verify MCP callers.
+        # The API key used to verify the MCP caller.
         self.api_key = api_key
         # The name of the request header that carries the API key.
         self.header_name = header_name

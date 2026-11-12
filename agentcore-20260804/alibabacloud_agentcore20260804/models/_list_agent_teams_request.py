@@ -12,7 +12,7 @@ class ListAgentTeamsRequest(DaraModel):
         self,
         body: main_models.ListAgentTeamsRequestBody = None,
     ):
-        # The request parameters for querying the list of agent teams.
+        # The request parameters for querying agent teams.
         self.body = body
 
     def validate(self):

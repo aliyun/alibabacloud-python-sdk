@@ -12,7 +12,7 @@ class SearchMemoriesRequest(DaraModel):
         self,
         body: main_models.SearchMemoriesRequestBody = None,
     ):
-        # The semantic retrieval request.
+        # The semantic search request.
         # 
         # This parameter is required.
         self.body = body
@@ -52,19 +52,19 @@ class SearchMemoriesRequestBody(DaraModel):
     ):
         # Specifies whether to enable reranking. Default value: true.
         self.enable_rerank = enable_rerank
-        # The string key-value metadata for exact match. A maximum of 16 keys are supported. Each key can be up to 64 characters in length, and each value can be up to 1,024 characters in length.
+        # The string key-value metadata for exact matching. You can specify up to 16 keys. The maximum length of a key is 64 characters, and the maximum length of a value is 1,024 characters.
         self.metadata = metadata
         # The minimum relevance score. Valid values: 0 to 1. Default value: 0.2. If both minScore and minSimilarity are specified, the AND logic is applied for filtering.
         self.min_score = min_score
-        # The minimum similarity. Valid values: 0 to 1. Default value: 0.3. If both minScore and minSimilarity are specified, the AND logic is applied for filtering.
+        # The minimum similarity. Valid values: 0 to 1. Default value: 0.3. If both minSimilarity and minScore are specified, the AND logic is applied for filtering.
         self.min_similarity = min_similarity
-        # The query text. The text can be up to 8,192 characters in length.
+        # The query text. The maximum length is 8,192 characters.
         # 
         # This parameter is required.
         self.query = query
-        # The retrieval scope. UserId, AgentId, and SessionId are all optional.
+        # The search scope. UserId, AgentId, and SessionId are all optional.
         self.scope = scope
-        # The number of returned results.
+        # The number of results to return.
         self.top_k = top_k
 
     def validate(self):
@@ -132,11 +132,11 @@ class SearchMemoriesRequestBodyScope(DaraModel):
         session_id: str = None,
         user_id: str = None,
     ):
-        # The agent ID. The ID must be 1 to 128 bytes in length and encoded in UTF-8. The ID cannot contain forward slashes (/) or asterisks (*). If the memory is not associated with an agent ID, this field is not returned.
+        # The agent ID. The length is limited to 1 to 128 UTF-8 bytes. The value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with an agent ID.
         self.agent_id = agent_id
-        # The session ID. The ID must be 1 to 128 bytes in length and encoded in UTF-8. The ID cannot contain forward slashes (/) or asterisks (*). If the memory is not associated with a session ID, this field is not returned.
+        # The session ID. The length is limited to 1 to 128 UTF-8 bytes. The value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with a session ID.
         self.session_id = session_id
-        # The user ID. The ID must be 1 to 128 bytes in length and encoded in UTF-8. The ID cannot contain forward slashes (/) or asterisks (*). If the memory is not associated with a user ID, this field is not returned.
+        # The user ID. The length is limited to 1 to 128 UTF-8 bytes. The value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with a user ID.
         self.user_id = user_id
 
     def validate(self):

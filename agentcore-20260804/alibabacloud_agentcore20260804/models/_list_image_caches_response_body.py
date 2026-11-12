@@ -28,11 +28,11 @@ class ListImageCachesResponseBody(DaraModel):
         # 
         # This parameter is required.
         self.http_status_code = http_status_code
-        # The records on the current page. If no matching items are found, an empty array is returned.
+        # The records on the current page. An empty array is returned if no matching items are found.
         # 
         # This parameter is required.
         self.items = items
-        # The actual page size used for this request. This is not the number of items on the current page.
+        # The actual page size used for this request, which is not the number of items on the current page.
         # 
         # This parameter is required.
         self.max_results = max_results
@@ -40,19 +40,19 @@ class ListImageCachesResponseBody(DaraModel):
         # 
         # This parameter is required.
         self.message = message
-        # The opaque cursor for the next page. An empty string indicates that there are no more pages.
+        # The opaque cursor for the next page. An empty string indicates the end of the list.
         # 
         # This parameter is required.
         self.next_token = next_token
-        # The request ID used for troubleshooting.
+        # The request ID, which is used for troubleshooting.
         # 
         # This parameter is required.
         self.request_id = request_id
-        # Indicates whether the request is successful. A successful request does not indicate that the cache creation is complete.
+        # Indicates whether the request is successful. This does not indicate that the cache creation is complete.
         # 
         # This parameter is required.
         self.success = success
-        # The total number of records that match the current filter conditions. Do not use this value to determine whether the traversal is complete.
+        # The total number of records under the current filter conditions. Do not use this value to determine whether the traversal is complete.
         # 
         # This parameter is required.
         self.total_count = total_count
@@ -151,15 +151,15 @@ class ListImageCachesResponseBodyItems(DaraModel):
         tag: str = None,
         workspace_id: str = None,
     ):
-        # The ID of the source ACR instance.
+        # The source ACR instance ID.
         # 
         # This parameter is required.
         self.acr_instance_id = acr_instance_id
-        # The number of agents that use the cache.
+        # The number of agents using the cache.
         # 
         # This parameter is required.
         self.agent_count = agent_count
-        # The size of the cache in bytes.
+        # The cache size in bytes.
         # 
         # This parameter is required.
         self.cache_size_bytes = cache_size_bytes
@@ -167,7 +167,7 @@ class ListImageCachesResponseBodyItems(DaraModel):
         # 
         # This parameter is required.
         self.can_delete = can_delete
-        # The time when the resource was created. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
+        # The resource creation time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
         # 
         # This parameter is required.
         self.created_at = created_at
@@ -183,23 +183,23 @@ class ListImageCachesResponseBodyItems(DaraModel):
         # 
         # This parameter is required.
         self.error = error
-        # The ID of the image cache.
+        # The image cache ID.
         # 
         # This parameter is required.
         self.image_id = image_id
-        # The domain name of the source image.
+        # The source image domain name.
         # 
         # This parameter is required.
         self.registry = registry
-        # The repository path of the source image.
+        # The source image repository path.
         # 
         # This parameter is required.
         self.repository = repository
-        # The cache status.
+        # The image cache status.
         # 
         # This parameter is required.
         self.status = status
-        # The tag of the source image.
+        # The source image tag.
         # 
         # This parameter is required.
         self.tag = tag

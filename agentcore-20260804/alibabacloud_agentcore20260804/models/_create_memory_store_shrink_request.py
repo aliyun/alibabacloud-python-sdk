@@ -10,7 +10,7 @@ class CreateMemoryStoreShrinkRequest(DaraModel):
         body_shrink: str = None,
         client_token: str = None,
     ):
-        # The MemoryStore creation request.
+        # The request to create a memory store.
         # 
         # This parameter is required.
         self.body_shrink = body_shrink

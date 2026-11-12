@@ -24,9 +24,9 @@ class ListCredentialsResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The credential list.
+        # The list of credentials.
         self.items = items
-        # The maximum number of records per page that takes effect in the current query.
+        # The actual maximum number of records returned per page in the current query.
         self.max_results = max_results
         # The response message. An error description is returned if the request fails.
         self.message = message
@@ -133,25 +133,25 @@ class ListCredentialsResponseBodyItems(DaraModel):
     ):
         # The number of agents bound to the credential.
         self.bound_agents_counts = bound_agents_counts
-        # The creation time in UTC format compliant with RFC 3339.
+        # The creation time in UTC, formatted according to RFC 3339.
         self.created_at = created_at
         # The credential ID.
         self.credential_id = credential_id
-        # The desensitized credential content. For the apiKey type, a key mask is returned. For the mcpHeader type, only the header name is returned, and the value is not returned.
+        # The masked credential content. For the apiKey type, a key mask is returned. For the mcpHeader type, only the header name is returned, and the header value is not returned.
         self.credential_metadata = credential_metadata
         # The credential type. Valid values: apiKey (API key) and mcpHeader (MCP request header).
         self.credential_type = credential_type
         # The credential description. The description can be up to 256 characters in length.
         self.description = description
-        # The credential name. The name must be unique within the workspace, can contain only letters, digits, periods, underscores, and hyphens, and must be 3 to 99 characters in length. Runtime reserved names cannot be used.
+        # The credential name. The name must be unique within the workspace, contain only letters, digits, periods, underscores, and hyphens, and be 3 to 99 characters in length. You cannot use runtime reserved names.
         self.name = name
         # The region ID of the resource.
         self.region_id = region_id
         # The list of MCP services to which the credential applies.
         self.resource_refs = resource_refs
-        # The application scope of the credential. ALL indicates all scopes. SPECIFIED indicates specified MCP services.
+        # The applicable scope of the credential. A value of ALL indicates all scopes. A value of SPECIFIED indicates specified MCP services.
         self.resource_scope = resource_scope
-        # The time of the last modification in UTC format compliant with RFC 3339.
+        # The time of the last modification in UTC, formatted according to RFC 3339.
         self.updated_at = updated_at
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -261,7 +261,7 @@ class ListCredentialsResponseBodyItemsResourceRefs(DaraModel):
         self.resource_id = resource_id
         # The resource name. This parameter is empty if the resource is deleted.
         self.resource_name = resource_name
-        # The resource type. Currently, the value is mcpServer, which indicates an MCP service.
+        # The resource type. The current value is mcpServer, which indicates an MCP service.
         self.resource_type = resource_type
 
     def validate(self):

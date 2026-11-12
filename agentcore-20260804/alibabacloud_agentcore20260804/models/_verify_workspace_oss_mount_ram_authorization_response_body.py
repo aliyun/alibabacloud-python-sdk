@@ -85,7 +85,7 @@ class VerifyWorkspaceOssMountRamAuthorizationResponseBodyData(DaraModel):
         self,
         authorization_status: str = None,
     ):
-        # The authorization status of the OSS storage.
+        # The OSS storage authorization status.
         self.authorization_status = authorization_status
 
     def validate(self):

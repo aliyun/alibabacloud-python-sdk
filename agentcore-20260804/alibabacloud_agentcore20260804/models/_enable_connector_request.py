@@ -10,7 +10,7 @@ class EnableConnectorRequest(DaraModel):
         self,
         body: main_models.EnableConnectorRequestBody = None,
     ):
-        # The request body for enabling the connector.
+        # The request body for the enable operation.
         # 
         # This parameter is required.
         self.body = body

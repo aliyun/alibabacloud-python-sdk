@@ -9,7 +9,7 @@ class SearchMemoriesShrinkRequest(DaraModel):
         self,
         body_shrink: str = None,
     ):
-        # The semantic retrieval request.
+        # The semantic search request.
         # 
         # This parameter is required.
         self.body_shrink = body_shrink

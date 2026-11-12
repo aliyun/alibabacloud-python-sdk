@@ -10,11 +10,11 @@ class UpdateMemoryStoreShrinkRequest(DaraModel):
         body_shrink: str = None,
         client_token: str = None,
     ):
-        # The update MemoryStore request.
+        # The update memory store request.
         # 
         # This parameter is required.
         self.body_shrink = body_shrink
-        # The client request token.
+        # The client token.
         self.client_token = client_token
 
     def validate(self):

@@ -42,9 +42,9 @@ class UpdateAgentSpecRequestBody(DaraModel):
         labels: str = None,
         scope: str = None,
     ):
-        # The business tags as a JSON-formatted string.
+        # The business tags in JSON format.
         self.biz_tags = biz_tags
-        # The label mapping as a JSON-formatted string.
+        # The label mapping in JSON format.
         self.labels = labels
         # The visibility scope. Valid values: PUBLIC and PRIVATE.
         self.scope = scope

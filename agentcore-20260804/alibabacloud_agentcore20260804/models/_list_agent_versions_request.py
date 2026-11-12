@@ -10,9 +10,9 @@ class ListAgentVersionsRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # The maximum number of entries per page. Valid values: 1 to 100. Default value: 20.
+        # The maximum number of records per page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
-        # The token used to query the next page. Pass the nextToken returned in the previous ListAgentVersions response. Do not pass this parameter for the first query.
+        # The pagination token returned in the previous ListAgentVersions response when you query the next page. Do not specify this parameter for the first query.
         self.next_token = next_token
 
     def validate(self):

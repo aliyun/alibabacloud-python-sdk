@@ -10,7 +10,7 @@ class UpdateModelShrinkRequest(DaraModel):
         body_shrink: str = None,
         client_token: str = None,
     ):
-        # The model update request body. At least one of the description, contextSize, maxTokens, and capabilities parameters must be non-null.
+        # The model update request body. At least one non-null parameter among description, contextSize, maxTokens, and capabilities must be provided.
         self.body_shrink = body_shrink
         # The client token used for idempotence. This parameter is not supported.
         self.client_token = client_token

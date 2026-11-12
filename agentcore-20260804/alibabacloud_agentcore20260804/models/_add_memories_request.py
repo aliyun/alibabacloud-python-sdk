@@ -12,7 +12,7 @@ class AddMemoriesRequest(DaraModel):
         self,
         body: main_models.AddMemoriesRequestBody = None,
     ):
-        # The write memory request.
+        # The memory write request.
         # 
         # This parameter is required.
         self.body = body
@@ -49,17 +49,17 @@ class AddMemoriesRequestBody(DaraModel):
         sync: bool = None,
         text: str = None,
     ):
-        # The message list. You must provide either this parameter or Text, but not both. You can specify 1 to 20 messages, and the total size of the content cannot exceed 32,000 UTF-8 bytes.
+        # The message list. You must provide either this parameter or Text, but not both. The list can contain 1 to 20 messages, and the total size of Content cannot exceed 32,000 UTF-8 bytes.
         self.messages = messages
         # The string key-value metadata. You can specify up to 16 keys. The maximum length of a key is 64 characters, and the maximum length of a value is 1,024 characters.
         self.metadata = metadata
-        # The time reference point for the batch of messages or text. The value must be in RFC 3339 format with a time zone and support fractional seconds.
+        # The time reference point for this batch of messages or text. The time must be in RFC 3339 format with a time zone and support fractional seconds.
         self.reference_time = reference_time
         # The write scope. UserId, AgentId, and SessionId are all optional.
         self.scope = scope
-        # Specifies whether to synchronously wait for the memory extraction to complete. Default value: true.
+        # Specifies whether to synchronously wait for memory extraction to complete. Default value: true.
         self.sync = sync
-        # The text to be written directly. You must provide either this parameter or Messages, but not both. The size cannot exceed 32,000 UTF-8 bytes.
+        # The text to write directly. You must provide either this parameter or Messages, but not both. The size cannot exceed 32,000 UTF-8 bytes.
         self.text = text
 
     def validate(self):
@@ -130,11 +130,11 @@ class AddMemoriesRequestBodyScope(DaraModel):
         session_id: str = None,
         user_id: str = None,
     ):
-        # The agent ID. The length is limited to 1 to 128 UTF-8 bytes. The value cannot contain a forward slash (/) or an asterisk (*).
+        # The agent ID. The length is limited to 1 to 128 UTF-8 bytes. The ID cannot contain a forward slash (/) or an asterisk (*).
         self.agent_id = agent_id
-        # The session ID. The length is limited to 1 to 128 UTF-8 bytes. The value cannot contain a forward slash (/) or an asterisk (*).
+        # The session ID. The length is limited to 1 to 128 UTF-8 bytes. The ID cannot contain a forward slash (/) or an asterisk (*).
         self.session_id = session_id
-        # The user ID. The length is limited to 1 to 128 UTF-8 bytes. The value cannot contain a forward slash (/) or an asterisk (*).
+        # The user ID. The length is limited to 1 to 128 UTF-8 bytes. The ID cannot contain a forward slash (/) or an asterisk (*).
         self.user_id = user_id
 
     def validate(self):

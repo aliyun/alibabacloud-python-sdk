@@ -10,7 +10,7 @@ class GetImageCacheRequest(DaraModel):
         region_id: str = None,
         workspace_id: str = None,
     ):
-        # The product entry region. It is passed as a query parameter and must match the selected region endpoint and the workspace region.
+        # The product entry region, passed as a query parameter. It must match the selected region endpoint and the workspace region.
         # 
         # This parameter is required.
         self.region_id = region_id

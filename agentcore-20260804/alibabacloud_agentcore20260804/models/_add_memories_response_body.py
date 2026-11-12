@@ -88,9 +88,9 @@ class AddMemoriesResponseBodyData(DaraModel):
         memories: List[main_models.AddMemoriesResponseBodyDataMemories] = None,
         task_id: str = None,
     ):
-        # The memory references. This parameter is returned only when sync is set to true. An empty array is allowed. This parameter is not returned together with taskId.
+        # The memory references. This parameter is returned only when sync is set to true, and an empty array is allowed. It is not returned together with taskId.
         self.memories = memories
-        # The task ID. This parameter is returned only when sync is set to false. This parameter is not returned together with memories.
+        # The task ID. This parameter is returned only when sync is set to false. It is not returned together with memories.
         self.task_id = task_id
 
     def validate(self):

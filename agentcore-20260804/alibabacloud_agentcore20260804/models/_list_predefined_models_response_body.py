@@ -23,7 +23,7 @@ class ListPredefinedModelsResponseBody(DaraModel):
         self.data = data
         # The HTTP status code. The value is 200 if the request succeeds.
         self.http_status_code = http_status_code
-        # The message about the request processing result.
+        # The request processing result message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -97,7 +97,7 @@ class ListPredefinedModelsResponseBodyData(DaraModel):
         model_name: str = None,
         release_date: str = None,
     ):
-        # The model capability configurations.
+        # The model capability configuration.
         self.capabilities = capabilities
         # The context window size of the model, in tokens. The value must be a positive integer.
         self.context_size = context_size
@@ -170,11 +170,11 @@ class ListPredefinedModelsResponseBodyDataCapabilities(DaraModel):
         self.audio = audio
         # Indicates whether the model supports document input.
         self.document = document
-        # Specifies whether the model is able to invoke multiple tool calling operations in a single response.
+        # Specifies whether the model is able to invoke multiple tools in a single response through tool calling.
         self.multi_tool_call = multi_tool_call
         # Indicates whether the model supports reasoning capabilities.
         self.reasoning = reasoning
-        # Specifies whether the model is able to invoke streaming tool calling.
+        # Specifies whether the model is able to invoke tools through streaming tool calling.
         self.stream_tool_call = stream_tool_call
         # Indicates whether the model supports tool calling.
         self.tool_call = tool_call

@@ -132,23 +132,23 @@ class ListSandboxesResponseBodyItems(DaraModel):
     ):
         # The number of active sessions in the sandbox.
         self.active_session_count = active_session_count
-        # The time when the sandbox was created, in RFC 3339 UTC format.
+        # The time when the sandbox was created. The time is in RFC 3339 UTC format.
         self.created_at = created_at
         # The tag of the actual observed image of the currently returned instance. This parameter is empty if the tag cannot be parsed.
         self.harness_version = harness_version
-        # The time of the last activity of the sandbox, in RFC 3339 UTC format.
+        # The time of the last activity of the sandbox. The time is in RFC 3339 UTC format.
         self.last_active_at = last_active_at
-        # The time of the last heartbeat of the sandbox, in RFC 3339 UTC format.
+        # The time of the last heartbeat of the sandbox. The time is in RFC 3339 UTC format.
         self.last_heartbeat_at = last_heartbeat_at
-        # Used to continue calling GetSandboxRebuildOperation to query the overall result after a page refresh. This parameter is empty if there is no historical rebuild. Do not use the ID of a subsequently created task instead.
+        # Used to continue calling GetSandboxRebuildOperation to query the overall result after the page is refreshed. This parameter is empty if there is no historical rebuild. Do not use the ID of a subsequently created task instead.
         self.last_rebuild_operation_id = last_rebuild_operation_id
         # The maximum number of concurrent sessions allowed for the sandbox, which is obtained from the effective auto-scaling configuration at runtime. This parameter is empty if auto-scaling is disabled or the configuration is unavailable.
         self.max_concurrent_sessions = max_concurrent_sessions
         # The current running phase of the sandbox.
         self.phase = phase
-        # The sandbox ID, which can be queried by calling ListSandboxes.
+        # The sandbox ID. You can query it by calling ListSandboxes.
         self.sandbox_id = sandbox_id
-        # The server compares the actual image tag of the instance with the pool target image tag. The value is true if the tags are different during the RUNNING, HIBERNATED, or FAILED phase. The value is false if the tags are the same or during other known phases. This parameter is empty if the tag or phase cannot be confirmed, and it cannot be treated as false. The version sequence is not determined by the tag size.
+        # The server compares the actual image tag of the instance with the target image tag of the pool. The value is true if the tags are different during the RUNNING, HIBERNATED, or FAILED phase. The value is false if the tags are the same or during other known phases. This parameter is empty if the tag or phase cannot be confirmed, and it cannot be treated as false. The version sequence is not determined by the tag size.
         self.update_available = update_available
         # A value of true indicates that the most recent rebuild corresponding to the current instance generation failed as a whole. A value of false indicates that there is no historical rebuild or the rebuild succeeded as a whole. This parameter is empty if the rebuild is in progress, canceled, replaced, the generation does not match, or the result cannot be confirmed.
         self.update_failed = update_failed
