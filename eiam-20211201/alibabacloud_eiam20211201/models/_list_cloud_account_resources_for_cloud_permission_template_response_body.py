@@ -18,9 +18,9 @@ class ListCloudAccountResourcesForCloudPermissionTemplateResponseBody(DaraModel)
     ):
         # The list of cloud account resources.
         self.cloud_account_resources = cloud_account_resources
-        # The number of entries returned on each page in a paging query.
+        # The number of entries per page in a paging query.
         self.max_results = max_results
-        # The query token returned by the current call, which is used for the next paginated query.
+        # The query token returned by the current call. Use this token for the next paginated query.
         self.next_token = next_token
         # The ID of the request.
         self.request_id = request_id
@@ -94,21 +94,21 @@ class ListCloudAccountResourcesForCloudPermissionTemplateResponseBodyCloudAccoun
     ):
         # The ID of the cloud account to which the resource belongs.
         self.cloud_account_id = cloud_account_id
-        # The resource entity identifier, which is a unique identifier on the remote end.
+        # The resource entity identifier, which is a unique remote identifier.
         self.cloud_account_resource_entity_id = cloud_account_resource_entity_id
-        # The resource entity type. Valid value: ram_role.
+        # The resource entity type. Valid values: ram_role.
         self.cloud_account_resource_entity_type = cloud_account_resource_entity_type
         # The identifier of the cloud account resource.
         self.cloud_account_resource_id = cloud_account_resource_id
-        # The metadata of the resource.
+        # The resource metadata.
         self.cloud_account_resource_meta = cloud_account_resource_meta
         # The name of the resource.
         self.cloud_account_resource_name = cloud_account_resource_name
-        # The time when the resource was created. The value is a UNIX timestamp in milliseconds.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The description.
         self.description = description
-        # The time when the resource was last updated. The value is a UNIX timestamp in milliseconds.
+        # The last update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -191,17 +191,17 @@ class ListCloudAccountResourcesForCloudPermissionTemplateResponseBodyCloudAccoun
         ram_policy_document: str = None,
         ram_policy_type: str = None,
     ):
-        # The JSON document of the Tencent Cloud CAM policy. This field is returned only for Tencent Cloud accounts.
+        # The JSON string of the Tencent Cloud CAM policy document. This parameter is returned only for Tencent Cloud accounts.
         self.cam_policy_document = cam_policy_document
-        # The type of the Tencent Cloud CAM policy. Valid values: qcs, local. This field is returned only for Tencent Cloud accounts.
+        # The Tencent Cloud CAM policy type. Valid values: qcs and local. This parameter is returned only for Tencent Cloud accounts.
         self.cam_policy_type = cam_policy_type
-        # The JSON document of the AWS IAM policy. This field is returned only for AWS cloud accounts.
+        # The JSON string of the AWS IAM policy document. This parameter is returned only for AWS cloud accounts.
         self.iam_policy_document = iam_policy_document
-        # The type of the AWS IAM policy. Valid values: aws, local. This field is returned only for AWS cloud accounts.
+        # The AWS IAM policy type. Valid values: aws and local. This parameter is returned only for AWS cloud accounts.
         self.iam_policy_type = iam_policy_type
-        # The JSON document of the RAM policy. This field is returned only by the get operation.
+        # The JSON string of the RAM policy document. This parameter is returned only by the get operation.
         self.ram_policy_document = ram_policy_document
-        # The type of the RAM policy. Valid values: system, custom.
+        # The RAM policy type. Valid values: system and custom.
         self.ram_policy_type = ram_policy_type
 
     def validate(self):

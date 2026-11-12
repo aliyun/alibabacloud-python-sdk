@@ -1,3 +1,7 @@
+2026-11-12 Version: 3.2.1
+- Update API CreateAuthorizationRule: add request parameters SubjectType.
+
+
 2026-11-11 Version: 3.2.0
 - Support API GetCloudAccountResource.
 - Support API GetInventorySynchronizationJob.

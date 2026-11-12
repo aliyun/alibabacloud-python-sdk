@@ -2279,6 +2279,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.subject_type):
+            query['SubjectType'] = request.subject_type
         body = {}
         if not DaraCore.is_null(request.client_token):
             body['ClientToken'] = request.client_token
@@ -2321,6 +2323,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.subject_type):
+            query['SubjectType'] = request.subject_type
         body = {}
         if not DaraCore.is_null(request.client_token):
             body['ClientToken'] = request.client_token

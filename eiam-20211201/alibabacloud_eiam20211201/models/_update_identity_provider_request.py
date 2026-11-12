@@ -45,7 +45,7 @@ class UpdateIdentityProviderRequest(DaraModel):
         self.logo_url = logo_url
         # The network access endpoint ID.
         self.network_access_endpoint_id = network_access_endpoint_id
-        # The OIDC-related configuration.
+        # The OIDC configuration.
         self.oidc_config = oidc_config
         # The SAML IdP configuration.
         self.saml_config = saml_config
@@ -164,13 +164,13 @@ class UpdateIdentityProviderRequestWeComConfig(DaraModel):
         corp_secret: str = None,
         trustable_domain: str = None,
     ):
-        # The AgentId of the WeCom custom application.
+        # The AgentId of the WeCom self-built application.
         self.agent_id = agent_id
         # The authorization callback domain.
         self.authorize_callback_domain = authorize_callback_domain
         # The WeCom contacts secret.
         self.contact_secret = contact_secret
-        # The CorpSecret of the WeCom custom application.
+        # The CorpSecret of the WeCom self-built application.
         self.corp_secret = corp_secret
         # The trusted domain.
         self.trustable_domain = trustable_domain
@@ -241,7 +241,7 @@ class UpdateIdentityProviderRequestSamlConfig(DaraModel):
         self.id_psso_url = id_psso_url
         # The maximum clock skew.
         self.max_clock_skew = max_clock_skew
-        # Specifies whether to require the request to be signed.
+        # Specifies whether to require requests to be signed.
         self.require_request_signed = require_request_signed
         # Specifies whether to require the external IdP to sign the assertion.
         self.want_assertions_signed = want_assertions_signed
@@ -642,9 +642,9 @@ class UpdateIdentityProviderRequestLarkConfig(DaraModel):
         self.app_id = app_id
         # The AppSecret of the Lark application.
         self.app_secret = app_secret
-        # The EncryptKey of the custom Lark application.
+        # The encryptKey of the custom Lark application.
         self.encrypt_key = encrypt_key
-        # The VerificationToken of the custom Lark application.
+        # The verificationToken of the custom Lark application.
         self.verification_token = verification_token
 
     def validate(self):

@@ -20,7 +20,7 @@ class ListInventorySynchronizationJobsResponseBody(DaraModel):
         self.inventory_synchronization_jobs = inventory_synchronization_jobs
         # The maximum number of returned results.
         self.max_results = max_results
-        # The pagination token returned by the current call, which is used to retrieve the next page.
+        # The pagination token returned by the current call for subsequent paged queries.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -180,9 +180,9 @@ class ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsRe
         error_code: str = None,
         error_message: str = None,
     ):
-        # The statistics of the agent synchronization results.
+        # The statistics of the agent synchronization result.
         self.agent_statistics = agent_statistics
-        # The statistics of the asset synchronization results.
+        # The statistics of the asset synchronization result.
         self.asset_statistics = asset_statistics
         # The error code of the synchronization result.
         self.error_code = error_code
@@ -240,13 +240,13 @@ class ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsRe
         same: main_models.ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAssetStatisticsSame = None,
         updated: main_models.ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAssetStatisticsUpdated = None,
     ):
-        # The statistics of the creation results.
+        # The statistics of the creation result.
         self.created = created
-        # The statistics of the deletion results.
+        # The statistics of the deletion result.
         self.deleted = deleted
-        # The statistics of the unchanged results.
+        # The statistics of unchanged items.
         self.same = same
-        # The statistics of the update results.
+        # The statistics of the update result.
         self.updated = updated
 
     def validate(self):
@@ -306,13 +306,13 @@ class ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsRe
         success: int = None,
         total: int = None,
     ):
-        # The number of failed creations.
+        # The number of failed items.
         self.failed = failed
-        # The number of skipped creations.
+        # The number of skipped items.
         self.skipped = skipped
-        # The number of successful creations.
+        # The number of successful items.
         self.success = success
-        # The total number.
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -361,13 +361,13 @@ class ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsRe
         success: int = None,
         total: int = None,
     ):
-        # The number of failed creations.
+        # The number of failed items.
         self.failed = failed
-        # The number of skipped creations.
+        # The number of skipped items.
         self.skipped = skipped
-        # The number of successful creations.
+        # The number of successful items.
         self.success = success
-        # The total number.
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -416,13 +416,13 @@ class ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsRe
         success: int = None,
         total: int = None,
     ):
-        # The number of failed creations.
+        # The number of failed items.
         self.failed = failed
-        # The number of skipped creations.
+        # The number of skipped items.
         self.skipped = skipped
-        # The number of successful creations.
+        # The number of successful items.
         self.success = success
-        # The total number.
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -471,13 +471,13 @@ class ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsRe
         success: int = None,
         total: int = None,
     ):
-        # The number of failed creations.
+        # The number of failed items.
         self.failed = failed
-        # The number of skipped creations.
+        # The number of skipped items.
         self.skipped = skipped
-        # The number of successful creations.
+        # The number of successful items.
         self.success = success
-        # The total number.
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -526,13 +526,13 @@ class ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsRe
         same: main_models.ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAgentStatisticsSame = None,
         updated: main_models.ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAgentStatisticsUpdated = None,
     ):
-        # The statistics of the creation results.
+        # The statistics of the creation result.
         self.created = created
-        # The statistics of the deletion results.
+        # The statistics of the deletion result.
         self.deleted = deleted
-        # The statistics of the unchanged results.
+        # The statistics of unchanged items.
         self.same = same
-        # The statistics of the update results.
+        # The statistics of the update result.
         self.updated = updated
 
     def validate(self):
@@ -592,13 +592,13 @@ class ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsRe
         success: int = None,
         total: int = None,
     ):
-        # The number of failed creations.
+        # The number of failed items.
         self.failed = failed
-        # The number of skipped creations.
+        # The number of skipped items.
         self.skipped = skipped
-        # The number of successful creations.
+        # The number of successful items.
         self.success = success
-        # The total number.
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -647,13 +647,13 @@ class ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsRe
         success: int = None,
         total: int = None,
     ):
-        # The number of failed creations.
+        # The number of failed items.
         self.failed = failed
-        # The number of skipped creations.
+        # The number of skipped items.
         self.skipped = skipped
-        # The number of successful creations.
+        # The number of successful items.
         self.success = success
-        # The total number.
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -702,13 +702,13 @@ class ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsRe
         success: int = None,
         total: int = None,
     ):
-        # The number of failed creations.
+        # The number of failed items.
         self.failed = failed
-        # The number of skipped creations.
+        # The number of skipped items.
         self.skipped = skipped
-        # The number of successful creations.
+        # The number of successful items.
         self.success = success
-        # The total number.
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -757,13 +757,13 @@ class ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsRe
         success: int = None,
         total: int = None,
     ):
-        # The number of failed creations.
+        # The number of failed items.
         self.failed = failed
-        # The number of skipped creations.
+        # The number of skipped items.
         self.skipped = skipped
-        # The number of successful creations.
+        # The number of successful items.
         self.success = success
-        # The total number.
+        # The total number of items.
         self.total = total
 
     def validate(self):

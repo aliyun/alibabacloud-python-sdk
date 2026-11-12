@@ -25,9 +25,9 @@ class ListInventorySynchronizationJobsRequest(DaraModel):
         self.instance_id = instance_id
         # The IDs of the synchronization targets.
         self.inventory_source_ids = inventory_source_ids
-        # The maximum number of entries to return per page in a paging query. Default value: 20. Maximum value: 100.
+        # The number of entries to return per page in paging. Default value: 20. Maximum value: 100.
         self.max_results = max_results
-        # The query token. The value is the NextToken parameter value returned from the previous API call.
+        # The query token. Set the value to the NextToken value returned in the previous API call.
         self.next_token = next_token
         # The start time.
         self.start_time = start_time

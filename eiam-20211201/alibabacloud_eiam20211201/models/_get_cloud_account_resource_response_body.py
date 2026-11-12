@@ -13,7 +13,7 @@ class GetCloudAccountResourceResponseBody(DaraModel):
     ):
         # The cloud account resource information.
         self.cloud_account_resource = cloud_account_resource
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -57,23 +57,23 @@ class GetCloudAccountResourceResponseBodyCloudAccountResource(DaraModel):
         description: str = None,
         update_time: int = None,
     ):
-        # The ID of the cloud account.
+        # The cloud account ID.
         self.cloud_account_id = cloud_account_id
-        # The identifier of the resource entity, which is a unique remote identifier.
+        # The unique remote identifier of the resource entity.
         self.cloud_account_resource_entity_id = cloud_account_resource_entity_id
-        # The type of the resource entity. Valid values: ram_policy.
+        # The resource entity type. Valid values: ram_policy.
         self.cloud_account_resource_entity_type = cloud_account_resource_entity_type
-        # The ID of the cloud account resource.
+        # The cloud account resource ID.
         self.cloud_account_resource_id = cloud_account_resource_id
-        # The metadata information of the resource.
+        # The resource metadata information.
         self.cloud_account_resource_meta = cloud_account_resource_meta
-        # The name of the resource.
+        # The resource name.
         self.cloud_account_resource_name = cloud_account_resource_name
-        # The time when the resource was created. The value is a UNIX timestamp in milliseconds.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The description.
         self.description = description
-        # The time when the resource was updated.
+        # The update time.
         self.update_time = update_time
 
     def validate(self):
@@ -156,17 +156,17 @@ class GetCloudAccountResourceResponseBodyCloudAccountResourceCloudAccountResourc
         ram_policy_document: str = None,
         ram_policy_type: str = None,
     ):
-        # The JSON string of the Tencent Cloud CAM policy document. This parameter is returned only for Tencent Cloud accounts.
+        # The Tencent Cloud CAM policy document in JSON format. This parameter is returned only for Tencent Cloud accounts.
         self.cam_policy_document = cam_policy_document
-        # The type of the Tencent Cloud CAM policy. Valid values: qcs and local. This parameter is returned only for Tencent Cloud accounts.
+        # The Tencent Cloud CAM policy type. Valid values: qcs and local. This parameter is returned only for Tencent Cloud accounts.
         self.cam_policy_type = cam_policy_type
-        # The JSON string of the AWS IAM policy document. This parameter is returned only for AWS cloud accounts.
+        # The AWS IAM policy document in JSON format. This parameter is returned only for AWS cloud accounts.
         self.iam_policy_document = iam_policy_document
-        # The type of the AWS IAM policy. Valid values: aws and local. This parameter is returned only for AWS cloud accounts.
+        # The AWS IAM policy type. Valid values: aws and local. This parameter is returned only for AWS cloud accounts.
         self.iam_policy_type = iam_policy_type
-        # The JSON string of the RAM policy document. This parameter is returned only by the Get operation.
+        # The RAM policy document in JSON format. This parameter is returned only by the Get operation.
         self.ram_policy_document = ram_policy_document
-        # The type of the RAM policy. Valid values: system and custom.
+        # The RAM policy type. Valid values: system and custom.
         self.ram_policy_type = ram_policy_type
 
     def validate(self):

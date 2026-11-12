@@ -164,7 +164,7 @@ class UpdateCloudPermissionTemplateRequestApplicableScope(DaraModel):
         self.group_ids = group_ids
         # The list of organizational unit IDs.
         self.organizational_unit_ids = organizational_unit_ids
-        # The application scope type. Valid values: global and custom.
+        # The application scope type. Valid values: global, custom.
         self.scope_type = scope_type
         # The list of account IDs.
         self.user_ids = user_ids

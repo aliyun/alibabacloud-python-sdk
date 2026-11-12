@@ -11,11 +11,11 @@ class GetCloudAccountResourceRequest(DaraModel):
         cloud_account_resource_id: str = None,
         instance_id: str = None,
     ):
-        # The ID of the cloud account.
+        # The cloud account ID.
         # 
         # This parameter is required.
         self.cloud_account_id = cloud_account_id
-        # The ID of the cloud account resource.
+        # The cloud account resource ID.
         # 
         # This parameter is required.
         self.cloud_account_resource_id = cloud_account_resource_id

@@ -21,17 +21,17 @@ class ListCloudAccountResourcesRequest(DaraModel):
         self.cloud_account_id = cloud_account_id
         # Filters resources by entity type. Valid values: ram_policy.
         self.cloud_account_resource_entity_type = cloud_account_resource_entity_type
-        # Performs a fuzzy match on the resource name, which is equivalent to LIKE \\"%value%\\".
+        # The keyword used for fuzzy matching of the resource name. This is equivalent to LIKE \\"%value%\\".
         self.cloud_account_resource_name_contains = cloud_account_resource_name_contains
-        # Matches resources by resource name prefix.
+        # The prefix of the resource name used for matching.
         self.cloud_account_resource_name_prefix = cloud_account_resource_name_prefix
         # The ID of the IDaaS EIAM instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The maximum number of entries to return per page for paging in a paged query. Default value: 20. Maximum value: 100.
+        # The maximum number of entries to return per page during paging in a paged query. Default value: 20. Maximum value: 100.
         self.max_results = max_results
-        # The query token. The value is the NextToken parameter value returned by the previous API call.
+        # The query token. Set the value to the NextToken value returned by the previous API call.
         self.next_token = next_token
 
     def validate(self):

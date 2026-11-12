@@ -18,7 +18,7 @@ class ListCloudAccountResourcesForCloudPermissionTemplateRequest(DaraModel):
         # 
         # This parameter is required.
         self.cloud_account_id = cloud_account_id
-        # Filters by resource entity type. Valid value: ram_policy.
+        # The resource entity type used for filtering. Valid values: ram_policy.
         self.cloud_account_resource_entity_type = cloud_account_resource_entity_type
         # The ID of the permission template.
         # 
@@ -28,7 +28,7 @@ class ListCloudAccountResourcesForCloudPermissionTemplateRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of entries to return on each page in a paging query. Default value: 20. Maximum value: 100.
+        # The number of entries per page in a paging query. Default value: 20. Maximum value: 100.
         self.max_results = max_results
         # The query token. Set the value to the NextToken value returned from the previous API call.
         self.next_token = next_token

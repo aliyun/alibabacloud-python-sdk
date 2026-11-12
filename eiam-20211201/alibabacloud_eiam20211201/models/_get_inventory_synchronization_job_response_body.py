@@ -56,21 +56,21 @@ class GetInventorySynchronizationJobResponseBodyInventorySynchronizationJob(Dara
         status: str = None,
         trigger_type: str = None,
     ):
-        # The synchronization job description.
+        # The description.
         self.description = description
-        # The synchronization end time.
+        # The end time.
         self.end_time = end_time
-        # The synchronization target ID.
+        # The inventory source ID.
         self.inventory_source_id = inventory_source_id
         # The ID of the synchronization task.
         self.inventory_synchronization_job_id = inventory_synchronization_job_id
         # The synchronization node task result.
         self.result = result
-        # The synchronization start time.
+        # The start time.
         self.start_time = start_time
-        # The synchronization job status.
+        # The status.
         self.status = status
-        # The synchronization trigger type.
+        # The trigger type.
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -145,13 +145,13 @@ class GetInventorySynchronizationJobResponseBodyInventorySynchronizationJobResul
         error_code: str = None,
         error_message: str = None,
     ):
-        # The agent synchronization result statistics.
+        # The agent synchronization statistics.
         self.agent_statistics = agent_statistics
-        # The asset synchronization result statistics.
+        # The asset synchronization statistics.
         self.asset_statistics = asset_statistics
         # The error code of the synchronization result.
         self.error_code = error_code
-        # The error message description of the synchronization result.
+        # The error message of the synchronization result.
         self.error_message = error_message
 
     def validate(self):
@@ -205,13 +205,13 @@ class GetInventorySynchronizationJobResponseBodyInventorySynchronizationJobResul
         same: main_models.GetInventorySynchronizationJobResponseBodyInventorySynchronizationJobResultAssetStatisticsSame = None,
         updated: main_models.GetInventorySynchronizationJobResponseBodyInventorySynchronizationJobResultAssetStatisticsUpdated = None,
     ):
-        # The creation result statistics.
+        # The creation statistics.
         self.created = created
-        # The deletion result statistics.
+        # The deletion statistics.
         self.deleted = deleted
-        # The unchanged result statistics.
+        # The statistics of unchanged assets.
         self.same = same
-        # The update result statistics.
+        # The update statistics.
         self.updated = updated
 
     def validate(self):
@@ -491,13 +491,13 @@ class GetInventorySynchronizationJobResponseBodyInventorySynchronizationJobResul
         same: main_models.GetInventorySynchronizationJobResponseBodyInventorySynchronizationJobResultAgentStatisticsSame = None,
         updated: main_models.GetInventorySynchronizationJobResponseBodyInventorySynchronizationJobResultAgentStatisticsUpdated = None,
     ):
-        # The creation result statistics.
+        # The creation statistics.
         self.created = created
-        # The deletion result statistics.
+        # The deletion statistics.
         self.deleted = deleted
-        # The unchanged result statistics.
+        # The statistics of unchanged assets.
         self.same = same
-        # The update result statistics.
+        # The update statistics.
         self.updated = updated
 
     def validate(self):

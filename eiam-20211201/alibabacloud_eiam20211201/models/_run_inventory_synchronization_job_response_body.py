@@ -10,9 +10,9 @@ class RunInventorySynchronizationJobResponseBody(DaraModel):
         inventory_synchronization_job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the synchronization task.
+        # The ID of the synchronization job.
         self.inventory_synchronization_job_id = inventory_synchronization_job_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
