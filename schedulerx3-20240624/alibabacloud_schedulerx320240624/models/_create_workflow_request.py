@@ -23,9 +23,9 @@ class CreateWorkflowRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_name = app_name
-        # The custom calendar. This parameter applies only when `TimeType` is `cron`.
+        # The custom calendar. This parameter is optional when the time type is cron.
         self.calendar = calendar
-        # A unique client token to ensure request idempotence. The token must contain only ASCII characters. If you omit this parameter, the system uses the RequestId as the ClientToken. The RequestId is unique to each request.
+        # The client token that is used to ensure the idempotence of the request. You can generate the value from your client and ensure that the value is unique across different requests. The client token can contain only ASCII characters. Note: If you do not specify this parameter, the system automatically uses the RequestId of the API request as the client token. The RequestId may be different for each API request.
         self.client_token = client_token
         # The cluster ID.
         # 
@@ -33,35 +33,27 @@ class CreateWorkflowRequest(DaraModel):
         self.cluster_id = cluster_id
         # The workflow description.
         self.description = description
-        # The maximum concurrency for the workflow.
+        # The maximum concurrency of the workflow.
         self.max_concurrency = max_concurrency
         # The workflow name.
         # 
         # This parameter is required.
         self.name = name
-        # The status of the workflow. By default, the workflow is disabled. Valid values:
-        # 
-        # - 0: Disabled
-        # 
-        # - 1: Enabled
+        # The workflow status. Default value: 0. Valid values:
+        # - 0: Disabled.
+        # - 1: Enabled.
         self.status = status
-        # The time expression, which depends on the `TimeType` parameter.
-        # 
-        # - **none**: This parameter is not required.
-        # 
+        # The time expression. Set the time expression based on the selected time type.
+        # - **none**: Not required.
         # - **cron**: Enter a standard cron expression. Online validation is supported.
-        # 
-        # - **api**: This parameter is not required.
+        # - **api**: Not required.
         self.time_expression = time_expression
-        # The schedule type. Valid values:
-        # 
-        # - -1: none<br>
-        # 
-        # - 1: cron<br>
-        # 
+        # The time type. Valid values:
+        # - -1: none<br/>
+        # - 1: cron<br/>
         # - 100: api
         self.time_type = time_type
-        # The time zone for the schedule.
+        # The time zone.
         self.timezone = timezone
 
     def validate(self):

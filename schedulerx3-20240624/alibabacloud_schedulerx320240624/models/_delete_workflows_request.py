@@ -22,9 +22,9 @@ class DeleteWorkflowsRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # If set to `true`, all jobs within the specified workflows are also deleted.
+        # Specifies whether to delete all jobs in the workflow.
         self.delete_jobs = delete_jobs
-        # A list of workflow IDs to delete.
+        # The list of workflow IDs.
         # 
         # This parameter is required.
         self.workflow_ids = workflow_ids

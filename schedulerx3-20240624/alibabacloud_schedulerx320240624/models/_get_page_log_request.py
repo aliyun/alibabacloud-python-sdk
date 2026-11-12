@@ -19,17 +19,31 @@ class GetPageLogRequest(DaraModel):
         start_time: int = None,
         worker_addr: str = None,
     ):
+        # The application name.
         self.app_name = app_name
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The end timestamp in milliseconds.
         self.end_time = end_time
+        # The job execution ID.
         self.job_execution_id = job_execution_id
+        # The job name.
         self.job_name = job_name
+        # The search keyword.
         self.keyword = keyword
+        # The page number.
         self.page_num = page_num
+        # The number of entries per page.
         self.page_size = page_size
+        # Specifies whether to sort the results in descending order. Valid values:
+        # - **true**: Sorts the results in descending order.
+        # - **false**: Sorts the results in ascending order.
         self.reverse = reverse
+        # The start timestamp in milliseconds.
         self.start_time = start_time
+        # The executor address.
         self.worker_addr = worker_addr
 
     def validate(self):

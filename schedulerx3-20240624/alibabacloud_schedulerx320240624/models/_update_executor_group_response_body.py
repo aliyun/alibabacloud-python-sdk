@@ -14,10 +14,17 @@ class UpdateExecutorGroupResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The updated executor group information.
         self.data = data
+        # The error message.
         self.message = message
+        # Id of the request
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # - true: The call was successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):
@@ -79,14 +86,26 @@ class UpdateExecutorGroupResponseBodyData(DaraModel):
         worker_type: str = None,
         workers: str = None,
     ):
+        # The authentication type. Valid values:
+        # - **Anonymous**: No authentication is required.
+        # - **Application**: Authentication is required.
+        # > The default value is **Anonymous**.
         self.auth_type = auth_type
+        # The workflow description.
         self.description = description
+        # The Kubernetes services that failed to be imported.
         self.failed_service = failed_service
+        # The workflow name.
         self.name = name
+        # The network data.
         self.network = network
+        # The protocol types supported by the domain name. HTTP: Only the HTTP protocol is supported. HTTPS: Only the HTTPS protocol is supported. HTTP,HTTPS: Both HTTP and HTTPS protocols are supported.
         self.protocol = protocol
+        # The worker ID of the deployment task. You can obtain this ID by calling the [ListWorkerResource](https://help.aliyun.com/document_detail/2712224.html) operation.
         self.worker_id = worker_id
+        # The executor type.
         self.worker_type = worker_type
+        # The list of specified machines in JSON format.
         self.workers = workers
 
     def validate(self):

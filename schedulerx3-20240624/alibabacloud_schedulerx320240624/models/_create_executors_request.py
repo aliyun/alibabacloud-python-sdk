@@ -12,19 +12,19 @@ class CreateExecutorsRequest(DaraModel):
         worker_type: str = None,
         workers: str = None,
     ):
-        # The name of the application.
+        # The application name.
         # 
         # This parameter is required.
         self.app_name = app_name
-        # The ID of the cluster.
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The worker type. The only valid value is `k8s_service`.
+        # The executor type.
         # 
         # This parameter is required.
         self.worker_type = worker_type
-        # A JSON string that contains an array of workers.
+        # The list of specified machines in JSON format.
         # 
         # This parameter is required.
         self.workers = workers

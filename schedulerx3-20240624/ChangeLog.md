@@ -1,3 +1,8 @@
+2026-11-12 Version: 1.9.4
+- Update API ListExecutorGroup: add request parameters TimeType.
+- Update API ListJobs: add request parameters TimeType.
+
+
 2026-08-19 Version: 1.9.2
 - Update API DeleteExecutorGroup: add request parameters DeleteJobs.
 

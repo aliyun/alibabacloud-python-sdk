@@ -12,6 +12,7 @@ class GetJobExecutionProgressRequest(DaraModel):
         cluster_id: str = None,
         job_execution_id: str = None,
     ):
+        # The application ID.
         self.app_group_id = app_group_id
         # The application name.
         # 
@@ -21,7 +22,7 @@ class GetJobExecutionProgressRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The task execution ID.
+        # The job execution ID.
         # 
         # This parameter is required.
         self.job_execution_id = job_execution_id

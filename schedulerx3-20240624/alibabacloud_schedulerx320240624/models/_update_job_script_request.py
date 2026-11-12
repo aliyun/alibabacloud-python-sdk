@@ -21,13 +21,13 @@ class UpdateJobScriptRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The job ID.
+        # The task ID.
         # 
         # This parameter is required.
         self.job_id = job_id
         # The script content.
         self.script_content = script_content
-        # The description of the script version.
+        # The script version description.
         # 
         # This parameter is required.
         self.version_description = version_description

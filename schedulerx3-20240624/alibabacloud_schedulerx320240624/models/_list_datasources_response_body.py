@@ -16,17 +16,17 @@ class ListDatasourcesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Response code.
+        # The response code.
         self.code = code
-        # Returned data.
+        # The returned data.
         self.data = data
-        # Error message.
+        # The error message.
         self.message = message
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the invocation succeeded.
-        # - **true**: The invocation succeeded.
-        # - **false**: Failed to invoke.
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -85,17 +85,17 @@ class ListDatasourcesResponseBodyData(DaraModel):
         records: List[main_models.ListDatasourcesResponseBodyDataRecords] = None,
         total: int = None,
     ):
-        # Maximum Data Volume to read in this request. Default Value is 10.
+        # The maximum number of entries to return for this request. Default value: 10.
         self.max_results = max_results
-        # When the data matching the query conditions has not been fully read, the server returns a nextToken. You can use this nextToken to continue reading subsequent data. This parameter is not required for the first query.
+        # The token used to retrieve the next page of results. If the data that meets the query conditions is not completely read, the server returns this token. You can use this token to continue reading the subsequent data. You do not need to specify this parameter for the first query.
         self.next_token = next_token
-        # Page number.
+        # The page number.
         self.page_number = page_number
-        # Page size.
+        # The page size.
         self.page_size = page_size
-        # -
+        # The list of data source records on the current page.
         self.records = records
-        # Total number of records.
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -166,19 +166,18 @@ class ListDatasourcesResponseBodyDataRecords(DaraModel):
         type: int = None,
         updater: str = None,
     ):
-        # Data source connection parameters.
+        # The connection parameters of the data source.
         self.connection_params = connection_params
-        # DataSource ID.
+        # The data source ID.
         self.datasource_id = datasource_id
-        # Job description.
+        # The task description.
         self.description = description
-        # Job name.
+        # The task name.
         self.name = name
-        # Specific pronunciation rule Type. Options:
-        # 
-        # - replacement: A rule that directly replaces Word with Pronunciation.
+        # The specific pronunciation rule type. Valid values:
+        # - replacement: A rule that directly replaces a word with its pronunciation.
         self.type = type
-        # Updater.
+        # The updater.
         self.updater = updater
 
     def validate(self):

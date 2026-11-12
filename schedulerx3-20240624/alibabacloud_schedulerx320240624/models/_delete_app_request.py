@@ -10,7 +10,7 @@ class DeleteAppRequest(DaraModel):
         app_name: str = None,
         cluster_id: str = None,
     ):
-        # The name of the App Group.
+        # The application name.
         # 
         # This parameter is required.
         self.app_name = app_name

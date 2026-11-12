@@ -12,15 +12,15 @@ class OperateConnectDatasourceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Response code
+        # The response code.
         self.code = code
-        # Error message.
+        # The error message.
         self.message = message
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the invocation succeeded.  
-        # - true: The invocation succeeded.  
-        # - false: The invocation failed.
+        # Indicates whether the call was successful. Valid values:
+        # - true: The call was successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):

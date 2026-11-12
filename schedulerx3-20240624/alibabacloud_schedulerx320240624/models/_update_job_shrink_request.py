@@ -42,11 +42,11 @@ class UpdateJobShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_name = app_name
-        # The retry interval upon node failure.
+        # The retry interval for a failed job.
         self.attempt_interval = attempt_interval
         # The custom calendar.
         self.calendar = calendar
-        # The child node IDs, separated by commas.
+        # The IDs of child jobs. Separate multiple IDs with commas.
         self.child_job_id = child_job_id
         # The cluster ID.
         # 
@@ -54,35 +54,35 @@ class UpdateJobShrinkRequest(DaraModel):
         self.cluster_id = cluster_id
         # The dependency strategy.
         self.dependent_strategy = dependent_strategy
-        # The node description.
+        # The job description.
         self.description = description
         # The client blocking strategy. Valid values:
-        # - 1: serial execution on a single machine
+        # - 1: single-machine serial execution
         # - 2: ignore subsequent scheduling
         # - 3: override previous scheduling
         self.executor_block_strategy = executor_block_strategy
-        # The jobhandler name.
+        # The name of the job handler.
         self.job_handler = job_handler
-        # The node ID.
+        # The job ID.
         # 
         # This parameter is required.
         self.job_id = job_id
-        # The node label information.
+        # The tag information of the job.
         self.label = label
-        # The maximum number of retry attempts upon node failure.
+        # The maximum number of retries for a failed job.
         self.max_attempt = max_attempt
-        # The maximum concurrency of the node.
-        # >The maximum number of instances that can run simultaneously for the same node. A value of 1 indicates that repeated execution is not allowed. If the concurrency limit is exceeded, the current scheduling is skipped.
+        # The maximum number of concurrent instances for a job.
+        # > The maximum number of instances that can run concurrently for the same job. A value of 1 indicates that repeated execution is not allowed. If the concurrency limit is exceeded, the current scheduling is skipped.
         self.max_concurrency = max_concurrency
-        # The node name.
+        # The job name.
         self.name = name
         # The notification configuration.
         self.notice_config_shrink = notice_config_shrink
         # The notification contact configuration.
         self.notice_contacts_shrink = notice_contacts_shrink
-        # The node parameters.
+        # The job parameters.
         self.parameters = parameters
-        # The execution priority of the node. Valid values:
+        # The execution priority of the job. Valid values:
         # 
         # - 1: low
         # - 5: medium
@@ -98,21 +98,21 @@ class UpdateJobShrinkRequest(DaraModel):
         # - 5: least frequently used
         # - 6: least recently used
         # - 7: consistent hashing
-        # - 8: shard broadcast
+        # - 8: sharding broadcast
         self.route_strategy = route_strategy
-        # The script configured for non-BEAN nodes.
+        # The script configuration for non-BEAN jobs.
         self.script = script
-        # The scheduling start time.
+        # The start time of the scheduling.
         self.start_time = start_time
         # The start time type.
         self.start_time_type = start_time_type
-        # The time expression. Set the time expression based on the selected time type.
+        # The time expression. Configure the time expression based on the selected time type.
         # 
-        # - none: No value is required.
+        # - none: not required
         # - cron: Enter a standard cron expression. Online verification is supported.
-        # - api: No value is required.
-        # - fixed_rate: Enter a fixed frequency value in seconds. For example, 30 indicates that the node is triggered every 30 seconds.
-        # - one_time: Enter a scheduling time in the format of yyyy-MM-dd HH:mm:ss or a timestamp in milliseconds. For example, "2022-10-10 10:10:00".
+        # - api: not required
+        # - fixed_rate: Enter a fixed frequency value in seconds. For example, 30 indicates that the job is triggered every 30 seconds.
+        # - one_time: Enter the scheduling time in the yyyy-MM-dd HH:mm:ss format or a timestamp in milliseconds, such as "2022-10-10 10:10:00".
         self.time_expression = time_expression
         # The time type. Valid values:
         # 
@@ -123,11 +123,11 @@ class UpdateJobShrinkRequest(DaraModel):
         # - 100: api
         self.time_type = time_type
         # The time zone.
-        # > Default value: the time zone of the SchedulerX server.
+        # > By default, the time zone of the SchedulerX server is used.
         self.timezone = timezone
-        # The node weight.
+        # The weight of the job.
         self.weight = weight
-        # The extended properties of the node.
+        # The extended properties of the job.
         self.xattrs = xattrs
 
     def validate(self):

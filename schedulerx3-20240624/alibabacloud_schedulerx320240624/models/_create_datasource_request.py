@@ -14,26 +14,26 @@ class CreateDatasourceRequest(DaraModel):
         password: str = None,
         type: int = None,
     ):
-        # Cluster ID.
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # Connection parameters of the data source, in JSON format
+        # The connection parameters of the data source in JSON format.
         # 
         # This parameter is required.
         self.connection_params = connection_params
-        # Datasource Name
+        # The name of the data source.
         self.description = description
-        # Datasource Name
+        # The name of the data source.
         # 
         # This parameter is required.
         self.name = name
-        # Database password
+        # The database password.
         # 
         # This parameter is required.
         self.password = password
-        # Data Source Type  
-        # - 0: MySQL  
+        # The type of the data source.
+        # - 0: MySQL
         # - 1: PostgreSQL
         # 
         # This parameter is required.

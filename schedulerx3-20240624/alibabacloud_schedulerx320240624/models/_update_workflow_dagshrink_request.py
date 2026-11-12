@@ -21,11 +21,11 @@ class UpdateWorkflowDAGShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The directed acyclic graph (DAG) of the workflow.
+        # The workflow DAG information.
         # 
         # This parameter is required.
         self.dag_shrink = dag_shrink
-        # The version of the DAG. To obtain this value, call the [ListDAGVersions](https://help.aliyun.com/document_detail/465989.html) operation.
+        # The workflow version number. You can call the [ListDAGVersions](https://help.aliyun.com/document_detail/465989.html) operation to obtain the value of this parameter.
         self.dag_version = dag_version
         # The workflow ID.
         # 

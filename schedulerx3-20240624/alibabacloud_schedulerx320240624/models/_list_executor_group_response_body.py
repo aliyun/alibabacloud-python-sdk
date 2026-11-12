@@ -18,13 +18,21 @@ class ListExecutorGroupResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The total count of data under the current request conditions. This parameter is optional and is not returned by default.
         self.code = code
+        # The query results.
         self.data = data
+        # The maximum number of entries to return for this request. Default value: 10.
         self.max_results = max_results
+        # The position from which the current call returns data. An empty value indicates that all data has been read.
+        # 
         # This parameter is required.
         self.message = message
+        # The token that specifies the position from which the current call returns data. An empty value indicates that all data has been read. You do not need to specify this parameter for the first query.
         self.next_token = next_token
+        # Id of the request
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -93,9 +101,13 @@ class ListExecutorGroupResponseBodyData(DaraModel):
         records: List[main_models.ListExecutorGroupResponseBodyDataRecords] = None,
         total: int = None,
     ):
+        # The current page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # -
         self.records = records
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -166,23 +178,45 @@ class ListExecutorGroupResponseBodyDataRecords(DaraModel):
         workers: str = None,
         xattrs: str = None,
     ):
+        # The client key.
         self.api_key = api_key
+        # The authentication type.
         self.auth_type = auth_type
+        # Specifies whether to enable **automatic start and stop**. Valid values:
+        # - true: Enabled. If no tasks are scheduled for a period of time, the agent automatically hibernates. If tasks are scheduled for a period of time, the agent wakes up in advance.
+        # - false: Disabled.
         self.auto_scale = auto_scale
+        # The list of referenced applications.
         self.cite_list = cite_list
+        # The CloudMonitor workspace.
         self.cms_workspace_id = cms_workspace_id
+        # The current number of tasks.
         self.current_jobs = current_jobs
+        # The description of the executor group.
         self.description = description
         self.enable_jobs = enable_jobs
+        # The integration method. Valid values:
+        # - manual
+        # - acs_sandbox
+        # - k8s_service
         self.integration_type = integration_type
+        # The maximum number of tasks.
         self.max_jobs = max_jobs
+        # The name of the executor group.
         self.name = name
+        # The network configuration.
         self.network = network
+        # The protocol.
         self.protocol = protocol
+        # The list of resolved workers.
         self.resolved_workers = resolved_workers
+        # The ID of the executor group.
         self.worker_id = worker_id
+        # The executor type.
         self.worker_type = worker_type
+        # The list of specified machines in JSON format.
         self.workers = workers
+        # The extended parameters.
         self.xattrs = xattrs
 
     def validate(self):
@@ -321,7 +355,9 @@ class ListExecutorGroupResponseBodyDataRecordsCiteList(DaraModel):
         app_name: str = None,
         description: str = None,
     ):
+        # The name of the application.
         self.app_name = app_name
+        # The description of the application.
         self.description = description
 
     def validate(self):

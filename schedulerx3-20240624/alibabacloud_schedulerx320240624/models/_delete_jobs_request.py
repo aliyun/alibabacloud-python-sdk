@@ -14,6 +14,7 @@ class DeleteJobsRequest(DaraModel):
         cluster_id: str = None,
         job_ids: List[int] = None,
     ):
+        # The application ID.
         self.app_group_id = app_group_id
         # The application name.
         # 
@@ -23,6 +24,7 @@ class DeleteJobsRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The list of task IDs.
         self.job_ids = job_ids
 
     def validate(self):

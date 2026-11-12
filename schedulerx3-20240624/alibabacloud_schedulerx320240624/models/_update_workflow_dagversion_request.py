@@ -20,11 +20,11 @@ class UpdateWorkflowDAGVersionRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The Workflow DAG version.
+        # The workflow DAG version number.
         # 
         # This parameter is required.
         self.dag_version = dag_version
-        # The Workflow ID.
+        # The workflow ID.
         # 
         # This parameter is required.
         self.workflow_id = workflow_id

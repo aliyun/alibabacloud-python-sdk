@@ -12,19 +12,17 @@ class ImportJobsRequest(DaraModel):
         content: str = None,
         overwrite: bool = None,
     ):
-        # Determines whether to automatically create the Application if it does not exist.
+        # Specifies whether to enable automatic creation of applications.
         self.auto_create_app = auto_create_app
         # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The jobs to import, formatted as a JSON string.
+        # The content to import.
         self.content = content
-        # Determines whether to overwrite jobs if they already exist. The default is **true**.
-        # 
-        # - **true**: Overwrites existing jobs.
-        # 
-        # - **false**: Does not overwrite existing jobs.
+        # Specifies whether to overwrite the task if it already exists. Default value: true.
+        # - true: Overwrite.
+        # - false: Do not overwrite.
         self.overwrite = overwrite
 
     def validate(self):

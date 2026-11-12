@@ -18,7 +18,7 @@ class GetJobExecutionThreadDumpRequest(DaraModel):
         self.cluster_id = cluster_id
         # The executor address.
         self.executor_addr = executor_addr
-        # The job execution ID.
+        # The task execution ID.
         self.job_execution_id = job_execution_id
 
     def validate(self):

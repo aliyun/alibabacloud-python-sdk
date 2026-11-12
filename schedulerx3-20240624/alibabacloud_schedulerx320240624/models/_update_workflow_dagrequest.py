@@ -24,11 +24,11 @@ class UpdateWorkflowDAGRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The directed acyclic graph (DAG) of the workflow.
+        # The workflow DAG information.
         # 
         # This parameter is required.
         self.dag = dag
-        # The version of the DAG. To obtain this value, call the [ListDAGVersions](https://help.aliyun.com/document_detail/465989.html) operation.
+        # The workflow version number. You can call the [ListDAGVersions](https://help.aliyun.com/document_detail/465989.html) operation to obtain the value of this parameter.
         self.dag_version = dag_version
         # The workflow ID.
         # 
@@ -87,9 +87,9 @@ class UpdateWorkflowDAGRequestDag(DaraModel):
         edges: List[main_models.UpdateWorkflowDAGRequestDagEdges] = None,
         nodes: List[main_models.UpdateWorkflowDAGRequestDagNodes] = None,
     ):
-        # A list of edges in the workflow.
+        # The list of workflow edges.
         self.edges = edges
-        # A list of nodes in the workflow.
+        # The list of workflow nodes.
         self.nodes = nodes
 
     def validate(self):
@@ -142,11 +142,11 @@ class UpdateWorkflowDAGRequestDagNodes(DaraModel):
         coordinate: main_models.UpdateWorkflowDAGRequestDagNodesCoordinate = None,
         id: int = None,
     ):
-        # The logical expression of the node.
+        # The logical node expression.
         self.content = content
-        # The coordinates of the node.
+        # The node coordinates.
         self.coordinate = coordinate
-        # The job ID.
+        # The node ID.
         self.id = id
 
     def validate(self):
@@ -191,13 +191,13 @@ class UpdateWorkflowDAGRequestDagNodesCoordinate(DaraModel):
         x: float = None,
         y: float = None,
     ):
-        # Optional. The height of the node.
+        # The node height. This parameter is optional.
         self.height = height
-        # Optional. The width of the node.
+        # The node width. This parameter is optional.
         self.width = width
-        # The x-coordinate.
+        # The X coordinate.
         self.x = x
-        # The y-coordinate.
+        # The Y coordinate.
         self.y = y
 
     def validate(self):
@@ -244,9 +244,9 @@ class UpdateWorkflowDAGRequestDagEdges(DaraModel):
         source: int = None,
         target: int = None,
     ):
-        # The job ID of the source node.
+        # The ID of the source node for the edge.
         self.source = source
-        # The job ID of the target node.
+        # The ID of the target node for the edge.
         self.target = target
 
     def validate(self):

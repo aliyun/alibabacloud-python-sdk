@@ -15,6 +15,7 @@ class OperateRerunJobRequest(DaraModel):
         job_id: int = None,
         start_date: int = None,
     ):
+        # The application ID.
         self.app_id = app_id
         # The application name.
         # 
@@ -24,19 +25,19 @@ class OperateRerunJobRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The data timestamp.
+        # The data timestamp, in the HH:mm:ss format.
         # 
         # This parameter is required.
         self.data_time = data_time
-        # The end time.
+        # The end time, specified as a UNIX timestamp in milliseconds.
         # 
         # This parameter is required.
         self.end_date = end_date
-        # The node ID.
+        # The job ID.
         # 
         # This parameter is required.
         self.job_id = job_id
-        # The start time.
+        # The start time, specified as a UNIX timestamp in milliseconds.
         # 
         # This parameter is required.
         self.start_date = start_date

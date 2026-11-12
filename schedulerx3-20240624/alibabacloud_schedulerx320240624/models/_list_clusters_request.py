@@ -21,11 +21,13 @@ class ListClustersRequest(DaraModel):
         self.cluster_id = cluster_id
         # The cluster name.
         self.cluster_name = cluster_name
+        # The cluster type.
         self.cluster_type = cluster_type
         # The page number.
         self.page_num = page_num
-        # The number of entries per page in a paged query.
+        # The number of entries per page in a paging query.
         self.page_size = page_size
+        # The list of tags used to filter clusters.
         self.tag = tag
 
     def validate(self):
@@ -92,7 +94,9 @@ class ListClustersRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

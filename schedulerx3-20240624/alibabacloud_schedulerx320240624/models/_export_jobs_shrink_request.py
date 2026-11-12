@@ -20,9 +20,9 @@ class ExportJobsShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The type of jobs to export. The default value is 1.
+        # The export task type. Default value: 1.
         self.export_job_type = export_job_type
-        # A list of job IDs.
+        # The list of task IDs.
         self.job_ids_shrink = job_ids_shrink
 
     def validate(self):

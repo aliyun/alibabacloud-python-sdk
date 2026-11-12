@@ -16,12 +16,10 @@ class OperateRetryWorkflowExecutionResponseBody(DaraModel):
         self.code = code
         # The error message.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the call succeeded.
-        # 
-        # - true: The call succeeded.
-        # 
+        # Indicates whether the call was successful. Valid values:
+        # - true: The call was successful.
         # - false: The call failed.
         self.success = success
 

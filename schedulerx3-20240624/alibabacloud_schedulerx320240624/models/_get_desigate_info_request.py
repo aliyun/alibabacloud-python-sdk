@@ -12,6 +12,7 @@ class GetDesigateInfoRequest(DaraModel):
         cluster_id: str = None,
         job_id: int = None,
     ):
+        # The application ID.
         self.app_group_id = app_group_id
         # The application name.
         # 
@@ -21,7 +22,7 @@ class GetDesigateInfoRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The task ID.
+        # The job ID.
         # 
         # This parameter is required.
         self.job_id = job_id

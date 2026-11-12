@@ -16,17 +16,15 @@ class GetCalendarResponseBody(DaraModel):
     ):
         # The response code.
         self.code = code
-        # - The data returned.
+        # The calendar information for the specified year.
         self.data = data
         # The error message.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
-        # 
-        # - **true**
-        # 
-        # - **false**
+        # Indicates whether the call was successful.
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -82,9 +80,9 @@ class GetCalendarResponseBodyData(DaraModel):
         months: str = None,
         year: int = None,
     ):
-        # The name of the calendar.
+        # The calendar name.
         self.calendar_name = calendar_name
-        # A JSON string that represents an array of objects. Each object specifies the days for a particular month.
+        # The months.
         self.months = months
         # The year.
         self.year = year

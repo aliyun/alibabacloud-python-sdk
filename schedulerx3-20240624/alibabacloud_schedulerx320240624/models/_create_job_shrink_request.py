@@ -41,40 +41,40 @@ class CreateJobShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_name = app_name
-        # The retry interval upon failure. Unit: seconds. Default value: 30.
+        # The retry interval for errors. Unit: seconds. Default value: 30.
         self.attempt_interval = attempt_interval
-        # The custom calendar. This parameter is optional for the cron time type.
+        # The custom calendar. You can specify a custom calendar for the cron type.
         self.calendar = calendar
-        # The child node IDs. Separate multiple IDs with commas.
+        # The IDs of child jobs. Separate multiple IDs with commas.
         self.child_job_id = child_job_id
         # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The node coordinate in the workflow.
+        # The coordinates of the node in the workflow.
         self.coordinate_shrink = coordinate_shrink
         # The dependency strategy.
         self.dependent_strategy = dependent_strategy
-        # The node description.
+        # The job description.
         self.description = description
         # The client blocking strategy. Valid values:
         # - 1: serial execution on a single machine
         # - 2: ignore subsequent scheduling
-        # - 3: override previous scheduling
+        # - 3: overwrite previous scheduling
         self.executor_block_strategy = executor_block_strategy
-        # The jobhandler name.
+        # The name of the job handler.
         self.job_handler = job_handler
-        # The node type.
+        # The job type.
         # 
         # This parameter is required.
         self.job_type = job_type
-        # The node label information.
+        # The job label information.
         self.label = label
-        # The maximum number of retry attempts upon failure. Set this parameter based on your business requirements.
+        # The maximum number of retries for errors. Set this parameter based on your business requirements.
         self.max_attempt = max_attempt
-        # The maximum number of concurrent instances.
+        # The maximum concurrency.
         self.max_concurrency = max_concurrency
-        # The node name.
+        # The job name.
         # 
         # This parameter is required.
         self.name = name
@@ -82,7 +82,7 @@ class CreateJobShrinkRequest(DaraModel):
         self.notice_config_shrink = notice_config_shrink
         # The notification contact configuration.
         self.notice_contacts_shrink = notice_contacts_shrink
-        # The node parameters.
+        # The job parameters.
         self.parameters = parameters
         # The priority. Valid values:
         # - 1: low
@@ -91,31 +91,31 @@ class CreateJobShrinkRequest(DaraModel):
         # - 15: very high
         self.priority = priority
         # The routing strategy. Valid values:
-        # - 1: round robin
+        # - 1: round-robin
         # - 2: random
         # - 3: first
         # - 4: last
         # - 5: least frequently used
         # - 6: least recently used
         # - 7: consistent hashing
-        # - 8: shard broadcast
+        # - 8: sharding broadcast
         self.route_strategy = route_strategy
-        # The script content for non-BEAN node types. Use this field to pass the script content.
+        # The script content for non-BEAN job types.
         self.script = script
-        # The start time.
+        # The start time. Use a UNIX timestamp in milliseconds.
         self.start_time = start_time
         # The start time type.
         self.start_time_type = start_time_type
-        # The node status. Default value: enabled. Valid values:
+        # The job status. Default value: enabled. Valid values:
         # - 0: disabled
         # - 1: enabled
         self.status = status
-        # The time expression. Set this parameter based on the selected time type.
-        # - **none**: No value is required.
-        # - **cron**: Specify a standard cron expression. Online verification is supported.
-        # - **api**: No value is required.
-        # - **fixed_rate**: Specify a fixed frequency value in seconds. For example, 200 indicates that the node is triggered every 200 seconds.
-        # - **one_time**: Specify a scheduling time in the format of yyyy-MM-dd HH:mm:ss or a timestamp in milliseconds. For example, "2022-10-10 10:10:00".
+        # The time expression. Set the time expression based on the selected time type.
+        # - **none**: Leave this parameter empty.
+        # - **cron**: Enter a standard cron expression. Online verification is supported.
+        # - **api**: Leave this parameter empty.
+        # - **fixed_rate**: Enter a specific fixed frequency value. Unit: seconds. For example, 200 indicates that the job is triggered once every 200 seconds.
+        # - **one_time**: Enter the scheduling time in the yyyy-MM-dd HH:mm:ss format or a timestamp in milliseconds. Example: "2022-10-10 10:10:00".
         self.time_expression = time_expression
         # The time type. Valid values:
         # - -1: none<br/>
@@ -128,11 +128,11 @@ class CreateJobShrinkRequest(DaraModel):
         self.time_type = time_type
         # The time zone.
         self.timezone = timezone
-        # The node weight.
+        # The job weight.
         self.weight = weight
-        # The configuration for K8s node types. This parameter is required for K8s node types.
-        # Job node: {"resource":"job"}
-        # Shell node: {"image":"busybox","resource":"shell"}
+        # The extended attributes. This parameter is required for Kubernetes job types.
+        # Job: {"resource":"job"}
+        # Shell: {"image":"busybox","resource":"shell"}
         self.xattrs = xattrs
 
     def validate(self):

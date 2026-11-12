@@ -18,16 +18,14 @@ class ListScheduleEventResponseBody(DaraModel):
     ):
         # The response code.
         self.code = code
-        # The returned data.
+        # The paginated results of scheduling events.
         self.data = data
-        # The returned error message.
+        # The error message.
         self.message = message
-        # The unique identifier for the request, which is used to troubleshoot issues.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the call was successful.
-        # 
-        # - **true**: The call succeeded.
-        # 
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
         # - **false**: The call failed.
         self.success = success
 
@@ -89,9 +87,9 @@ class ListScheduleEventResponseBodyData(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The array of event records.
+        # The result set.
         self.records = records
-        # The total number of entries.
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -156,9 +154,9 @@ class ListScheduleEventResponseBodyDataRecords(DaraModel):
     ):
         # The application name.
         self.app_name = app_name
-        # The event content.
+        # The content.
         self.content = content
-        # The event status.
+        # The event ID.
         self.event = event
         # The event type.
         self.event_type = event_type
@@ -166,11 +164,11 @@ class ListScheduleEventResponseBodyDataRecords(DaraModel):
         self.job_execution_id = job_execution_id
         # The job name.
         self.job_name = job_name
-        # The timestamp of the event. The time is in the `yyyy-MM-dd HH:mm:ss` format.
+        # The log printing time, in the `yyyy-MM-dd HH:mm:ss` format.
         self.time = time
         # The worker address.
         self.worker_addr = worker_addr
-        # The workflow execution ID.
+        # The workflow execution record ID.
         self.workflow_execution_id = workflow_execution_id
         # The workflow name.
         self.workflow_name = workflow_name

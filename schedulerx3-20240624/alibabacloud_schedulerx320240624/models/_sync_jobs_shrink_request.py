@@ -13,23 +13,23 @@ class SyncJobsShrinkRequest(DaraModel):
         target_app_name: str = None,
         target_cluster_id: str = None,
     ):
-        # A list of job IDs.
+        # The list of node IDs.
         # 
         # This parameter is required.
         self.job_ids_shrink = job_ids_shrink
-        # The name of the source application that contains the jobs.
+        # The name of the original application where the nodes are located.
         # 
         # This parameter is required.
         self.original_app_name = original_app_name
-        # The ID of the source cluster that contains the jobs.
+        # The ID of the original cluster where the nodes are located.
         # 
         # This parameter is required.
         self.original_cluster_id = original_cluster_id
-        # The name of the destination application.
+        # The name of the target application to which the nodes are synchronized.
         # 
         # This parameter is required.
         self.target_app_name = target_app_name
-        # The ID of the destination cluster.
+        # The ID of the target cluster to which the nodes are synchronized.
         # 
         # This parameter is required.
         self.target_cluster_id = target_cluster_id

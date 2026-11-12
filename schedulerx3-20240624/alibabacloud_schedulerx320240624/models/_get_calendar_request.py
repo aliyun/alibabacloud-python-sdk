@@ -11,11 +11,11 @@ class GetCalendarRequest(DaraModel):
         cluster_id: str = None,
         year: int = None,
     ):
-        # The name of the calendar.
+        # The calendar name.
         # 
         # This parameter is required.
         self.calendar_name = calendar_name
-        # The ID of the cluster.
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id

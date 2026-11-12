@@ -13,6 +13,7 @@ class ListExecutorsRequest(DaraModel):
         job_id: int = None,
         label: str = None,
     ):
+        # The application group ID.
         self.app_group_id = app_group_id
         # The application name.
         # 

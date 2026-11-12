@@ -16,15 +16,15 @@ class GetWorkflowDAGResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The Response Code.
+        # The response code.
         self.code = code
-        # The returned data.
+        # The query result.
         self.data = data
-        # The Error Message.
+        # The error message.
         self.message = message
-        # The Request ID.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the request succeeded.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -79,9 +79,9 @@ class GetWorkflowDAGResponseBodyData(DaraModel):
         edges: List[main_models.GetWorkflowDAGResponseBodyDataEdges] = None,
         nodes: List[main_models.GetWorkflowDAGResponseBodyDataNodes] = None,
     ):
-        # A list of Edges in the Workflow DAG.
+        # The list of workflow edges.
         self.edges = edges
-        # A list of Nodes in the Workflow DAG.
+        # The returned data type.
         self.nodes = nodes
 
     def validate(self):
@@ -138,23 +138,21 @@ class GetWorkflowDAGResponseBodyDataNodes(DaraModel):
         name: str = None,
         status: int = None,
     ):
-        # The Application Name.
+        # The application name.
         self.app_name = app_name
-        # The coordinates of the Node.
+        # The coordinate information of the node.
         self.coordinate = coordinate
-        # The Dependency Strategy.
+        # The dependency policy.
         self.dependent_strategy = dependent_strategy
-        # The Job ID.
+        # The task ID.
         self.id = id
-        # The Job type.
+        # The task type.
         self.job_type = job_type
-        # The Job name.
+        # The task name.
         self.name = name
-        # The Job Status.
-        # 
-        # - 0: Disabled
-        # 
-        # - 1: Enabled
+        # The task status. Valid values:
+        # - 0: Disabled.
+        # - 1: Enabled.
         self.status = status
 
     def validate(self):
@@ -223,13 +221,13 @@ class GetWorkflowDAGResponseBodyDataNodesCoordinate(DaraModel):
         x: float = None,
         y: float = None,
     ):
-        # Optional. The height of the Node.
+        # The height of the node. This field is optional.
         self.height = height
-        # Optional. The width of the Node.
+        # The width of the node. This field is optional.
         self.width = width
-        # The x-coordinate of the Node.
+        # The X-axis coordinate of the node.
         self.x = x
-        # The y-coordinate of the Node.
+        # The Y-axis coordinate of the node.
         self.y = y
 
     def validate(self):
@@ -276,9 +274,9 @@ class GetWorkflowDAGResponseBodyDataEdges(DaraModel):
         source: int = None,
         target: int = None,
     ):
-        # The Job ID of the source Node.
+        # The task ID of the source node of the edge.
         self.source = source
-        # The Job ID of the target Node.
+        # The task ID of the target node of the edge.
         self.target = target
 
     def validate(self):

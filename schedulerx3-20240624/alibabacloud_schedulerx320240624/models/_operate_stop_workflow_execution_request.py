@@ -19,7 +19,7 @@ class OperateStopWorkflowExecutionRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The workflow execution ID.
+        # The workflow instance ID.
         # 
         # This parameter is required.
         self.workflow_execution_id = workflow_execution_id

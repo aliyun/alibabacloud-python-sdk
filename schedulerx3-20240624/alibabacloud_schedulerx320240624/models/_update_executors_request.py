@@ -16,13 +16,13 @@ class UpdateExecutorsRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_name = app_name
-        # The Cluster ID.
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The Worker type.
+        # The executor type.
         self.worker_type = worker_type
-        # A JSON-formatted string that contains a list of Workers.
+        # The list of specified machines in JSON format.
         self.workers = workers
 
     def validate(self):

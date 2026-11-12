@@ -6,6 +6,7 @@ import json
 
 from typing import Dict, Generator, AsyncGenerator
 
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_schedulerx320240624 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
@@ -22,21 +23,10 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'SchedulerX3'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'cn-shenzhen': 'schedulerx3.cn-shenzhen.aliyuncs.com',
-            'cn-beijing': 'schedulerx3.cn-beijing.aliyuncs.com',
-            'ap-northeast-1': 'schedulerx3.ap-northeast-1.aliyuncs.com',
-            'cn-chengdu': 'schedulerx3.cn-chengdu.aliyuncs.com',
-            'cn-shanghai': 'schedulerx3.cn-shanghai.aliyuncs.com',
-            'cn-guangzhou': 'schedulerx3.cn-guangzhou.aliyuncs.com',
-            'cn-hongkong': 'schedulerx3.cn-hongkong.aliyuncs.com',
-            'ap-southeast-1': 'schedulerx3.ap-southeast-1.aliyuncs.com',
-            'cn-zhangjiakou': 'schedulerx3.cn-zhangjiakou.aliyuncs.com',
-            'cn-hangzhou': 'schedulerx3.cn-hangzhou.aliyuncs.com',
-            'eu-central-1': 'schedulerx3.eu-central-1.aliyuncs.com',
-            'cn-shanghai-finance-1': 'schedulerx3.cn-shanghai-finance-1.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('schedulerx3', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -4071,6 +4061,8 @@ class Client(OpenApiClient):
             query['PageNum'] = request.page_num
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.time_type):
+            query['TimeType'] = request.time_type
         if not DaraCore.is_null(request.worker_type):
             query['WorkerType'] = request.worker_type
         req = open_api_util_models.OpenApiRequest(
@@ -4111,6 +4103,8 @@ class Client(OpenApiClient):
             query['PageNum'] = request.page_num
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.time_type):
+            query['TimeType'] = request.time_type
         if not DaraCore.is_null(request.worker_type):
             query['WorkerType'] = request.worker_type
         req = open_api_util_models.OpenApiRequest(
@@ -4435,6 +4429,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
+        if not DaraCore.is_null(request.time_type):
+            query['TimeType'] = request.time_type
         if not DaraCore.is_null(request.workflow_id):
             query['WorkflowId'] = request.workflow_id
         req = open_api_util_models.OpenApiRequest(
@@ -4483,6 +4479,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
+        if not DaraCore.is_null(request.time_type):
+            query['TimeType'] = request.time_type
         if not DaraCore.is_null(request.workflow_id):
             query['WorkflowId'] = request.workflow_id
         req = open_api_util_models.OpenApiRequest(

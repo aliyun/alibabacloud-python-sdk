@@ -12,7 +12,7 @@ class OperateRetryWorkflowExecutionRequest(DaraModel):
         only_failed: bool = None,
         workflow_execution_id: int = None,
     ):
-        # The name of the application.
+        # The application name.
         # 
         # This parameter is required.
         self.app_name = app_name
@@ -20,9 +20,9 @@ class OperateRetryWorkflowExecutionRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # Set to `true` to rerun only failed nodes.
+        # Specifies whether to rerun only the failed nodes.
         self.only_failed = only_failed
-        # The workflow execution ID.
+        # The workflow instance ID.
         # 
         # This parameter is required.
         self.workflow_execution_id = workflow_execution_id

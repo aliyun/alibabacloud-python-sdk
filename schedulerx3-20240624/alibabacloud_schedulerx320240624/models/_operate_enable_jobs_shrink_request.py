@@ -12,6 +12,7 @@ class OperateEnableJobsShrinkRequest(DaraModel):
         cluster_id: str = None,
         job_ids_shrink: str = None,
     ):
+        # The application ID.
         self.app_group_id = app_group_id
         # The application name.
         # 
@@ -21,6 +22,7 @@ class OperateEnableJobsShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The list of task IDs to operate on.
         self.job_ids_shrink = job_ids_shrink
 
     def validate(self):

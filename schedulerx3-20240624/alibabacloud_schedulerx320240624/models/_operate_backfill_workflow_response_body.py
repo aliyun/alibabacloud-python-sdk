@@ -12,17 +12,15 @@ class OperateBackfillWorkflowResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code. A value of `200` indicates that the request was successful.
+        # The response code.
         self.code = code
-        # The error message returned if the request fails.
+        # The error message.
         self.message = message
-        # The unique ID generated for the request.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
-        # 
-        # - `true`: The request was successful.
-        # 
-        # - `false`: The request failed.
+        # Indicates whether the call is successful. Valid values:
+        # - true: The call is successful.
+        # - false: The call fails.
         self.success = success
 
     def validate(self):

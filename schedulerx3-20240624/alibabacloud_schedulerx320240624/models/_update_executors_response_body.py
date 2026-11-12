@@ -16,16 +16,14 @@ class UpdateExecutorsResponseBody(DaraModel):
     ):
         # The response code.
         self.code = code
-        # - The returned data.
+        # -
         self.data = data
-        # The returned error message.
+        # The error message.
         self.message = message
-        # The Request ID.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the API call was successful.
-        # 
+        # Indicates whether the call was successful.
         # - **true**: The call was successful.
-        # 
         # - **false**: The call failed.
         self.success = success
 
@@ -85,17 +83,17 @@ class UpdateExecutorsResponseBodyData(DaraModel):
         worker_type: str = None,
         workers: str = None,
     ):
-        # The Application Group ID.
+        # The application group ID.
         self.app_group_id = app_group_id
-        # The Application type.
+        # The application type.
         self.app_type = app_type
-        # The Kubernetes services that failed to import.
+        # The Kubernetes services that failed to be imported.
         self.failed_service = failed_service
-        # The Worker ID.
+        # The executor ID.
         self.work_id = work_id
-        # The Worker type.
+        # The executor type.
         self.worker_type = worker_type
-        # A JSON-formatted string that contains a list of Workers.
+        # The list of specified machines in JSON format.
         self.workers = workers
 
     def validate(self):

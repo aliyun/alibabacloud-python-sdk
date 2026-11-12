@@ -12,18 +12,19 @@ class GetJobExecutionRequest(DaraModel):
         job_execution_id: str = None,
         mse_session_id: str = None,
     ):
-        # The name of the application.
+        # The application name.
         # 
         # This parameter is required.
         self.app_name = app_name
-        # The ID of the cluster.
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The ID of the job execution.
+        # The job execution ID.
         # 
         # This parameter is required.
         self.job_execution_id = job_execution_id
+        # The MSE session ID.
         self.mse_session_id = mse_session_id
 
     def validate(self):

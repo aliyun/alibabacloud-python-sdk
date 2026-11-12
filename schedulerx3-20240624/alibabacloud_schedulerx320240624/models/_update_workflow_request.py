@@ -23,9 +23,9 @@ class UpdateWorkflowRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_name = app_name
-        # The name of a custom calendar to exclude specific dates from the schedule.
+        # The custom calendar.
         self.calendar = calendar
-        # A unique token that you provide to ensure the request is idempotent. The token can be up to 64 ASCII characters long.
+        # The client token that is used to ensure the idempotence of the request. You can generate the value on the client side. Ensure that the value is unique across different requests and contains a maximum of 64 ASCII characters.
         self.client_token = client_token
         # The cluster ID.
         # 
@@ -33,31 +33,23 @@ class UpdateWorkflowRequest(DaraModel):
         self.cluster_id = cluster_id
         # The workflow description.
         self.description = description
-        # The maximum concurrency for the workflow.
-        # 
-        # > The maximum number of concurrent instances that can run for the same workflow. A value of `1` prevents overlapping runs. If the number of running instances reaches this limit, subsequent scheduled runs are skipped.
+        # The maximum concurrency.
+        # > The maximum number of instances that can run concurrently for the same workflow. A value of 1 indicates that concurrent execution is not allowed. If the concurrency limit is exceeded, the current scheduling task is skipped.
         self.max_concurrency = max_concurrency
         # The workflow name.
         self.name = name
-        # The cron expression for the schedule. This parameter is required only when `TimeType` is set to `1` (cron).
-        # 
-        # - If `TimeType` is `-1` (none), this parameter is not required.
-        # 
-        # - If `TimeType` is `1` (cron), specify a standard cron expression.
-        # 
-        # - If `TimeType` is `100` (api), this parameter is not required.
+        # The time expression. Configure the time expression based on the selected time type.
+        # - none: Leave this parameter empty.
+        # - cron: Enter a standard cron expression. Online verification is supported.
+        # - api: Leave this parameter empty.
         self.time_expression = time_expression
         # The scheduling type. Valid values:
-        # 
-        # - `-1` (none): The workflow is not scheduled and must be triggered on demand.
-        # 
-        # - `1` (cron): The workflow runs based on the cron expression in the `TimeExpression` parameter.
-        # 
-        # - `100` (api): The workflow is triggered by an API call.
+        # - -1: none
+        # - 1: cron
+        # - 100: api
         self.time_type = time_type
-        # The time zone for the schedule.
-        # 
-        # > Defaults to the time zone of the SchedulerX server.
+        # The time zone.
+        # > By default, the time zone of the SchedulerX server is used.
         self.timezone = timezone
         # The workflow ID.
         # 

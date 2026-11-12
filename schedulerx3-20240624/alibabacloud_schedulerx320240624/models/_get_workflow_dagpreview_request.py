@@ -12,19 +12,19 @@ class GetWorkflowDAGPreviewRequest(DaraModel):
         dag_version: str = None,
         workflow_id: int = None,
     ):
-        # The name of the application.
+        # The application name.
         # 
         # This parameter is required.
         self.app_name = app_name
-        # The unique identifier for the cluster.
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The version of the workflow DAG.
+        # The version number of the workflow DAG.
         # 
         # This parameter is required.
         self.dag_version = dag_version
-        # The unique identifier for the workflow.
+        # The workflow ID.
         self.workflow_id = workflow_id
 
     def validate(self):

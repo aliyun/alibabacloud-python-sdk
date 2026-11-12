@@ -21,20 +21,35 @@ class UpdateExecutorGroupRequest(DaraModel):
         workers: str = None,
         xattrs: str = None,
     ):
+        # The client secret.
         self.api_key = api_key
+        # The authentication type.
         self.auth_type = auth_type
+        # Specifies whether to enable auto scaling.
         self.auto_scale = auto_scale
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The CMS workspace ID.
         self.cms_workspace_id = cms_workspace_id
+        # The description of the executor group.
         self.description = description
+        # The ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The name of the executor group.
         self.name = name
+        # The network configuration.
         self.network = network
+        # The protocol.
         self.protocol = protocol
+        # The executor type.
         self.worker_type = worker_type
+        # The list of specified machines in JSON format.
         self.workers = workers
+        # The extended configuration of the executor group.
         self.xattrs = xattrs
 
     def validate(self):

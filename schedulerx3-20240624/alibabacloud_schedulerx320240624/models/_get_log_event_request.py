@@ -22,39 +22,37 @@ class GetLogEventRequest(DaraModel):
         workflow_execution_id: int = None,
         workflow_name: str = None,
     ):
-        # The name of the application.
+        # The application name.
         self.app_name = app_name
-        # The unique identifier for the cluster.
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The end of the query\\"s time range, specified as a Unix timestamp in milliseconds.
+        # The end time.
         self.end_time = end_time
-        # The severity level for filtering events.
+        # The event.
         self.event = event
-        # The type of event to retrieve.
+        # The event type.
         self.event_type = event_type
-        # The unique identifier for the job execution.
+        # The job execution ID.
         self.job_execution_id = job_execution_id
-        # The name of the job.
+        # The job name.
         self.job_name = job_name
-        # A keyword to search for in log events.
+        # The keyword.
         self.keyword = keyword
-        # The page number to retrieve.
+        # The page number.
         self.page_num = page_num
-        # The maximum number of results to return per page.
+        # The page size.
         self.page_size = page_size
-        # Specifies the sort order of events.
-        # 
-        # - **true**: Sorts events in descending order.
-        # 
-        # - **false**: Sorts events in ascending order.
+        # Specifies whether to sort the results in descending order. Valid values:
+        # - **true**: Sorts the results in descending order.
+        # - **false**: Sorts the results in ascending order.
         self.reverse = reverse
-        # The start of the query\\"s time range, specified as a Unix timestamp in milliseconds.
+        # The start time. Specify a UNIX timestamp in milliseconds.
         self.start_time = start_time
-        # The unique identifier for the workflow execution.
+        # The workflow execution ID.
         self.workflow_execution_id = workflow_execution_id
-        # The name of the workflow.
+        # The workflow name.
         self.workflow_name = workflow_name
 
     def validate(self):

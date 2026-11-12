@@ -13,13 +13,13 @@ class ExportWorkflowsRequest(DaraModel):
         cluster_id: str = None,
         workflow_id: List[int] = None,
     ):
-        # The name of the application.
+        # The application name.
         self.app_name = app_name
-        # The ID of the cluster where the Workflow is located.
+        # A short description of struct
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # An array of Workflow IDs to export.
+        # The workflow ID.
         self.workflow_id = workflow_id
 
     def validate(self):

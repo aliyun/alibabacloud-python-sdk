@@ -16,13 +16,11 @@ class UpdateCalendarResponseBody(DaraModel):
         self.code = code
         # The error message.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
-        # 
-        # - **true**: The request was successful.
-        # 
-        # - **false**: The request failed.
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

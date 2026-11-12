@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from darabonba.model import DaraModel
 
 class ListJobsRequest(DaraModel):
@@ -17,23 +19,24 @@ class ListJobsRequest(DaraModel):
         page_num: int = None,
         page_size: int = None,
         status: str = None,
+        time_type: List[int] = None,
         workflow_id: int = None,
     ):
         # The application name.
         self.app_name = app_name
-        # The cluster ID.
+        # The cluster.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
         # The description.
         self.description = description
-        # The `jobhandler` name.
+        # The jobhandler name.
         self.job_handler = job_handler
         # The job ID.
         self.job_id = job_id
         # The job name.
         self.job_name = job_name
-        # The job label filter condition.
+        # The job label condition.
         self.label = label
         # The page number.
         self.page_num = page_num
@@ -41,6 +44,8 @@ class ListJobsRequest(DaraModel):
         self.page_size = page_size
         # The status.
         self.status = status
+        # The list of time types.
+        self.time_type = time_type
         # The workflow ID.
         self.workflow_id = workflow_id
 
@@ -82,6 +87,9 @@ class ListJobsRequest(DaraModel):
         if self.status is not None:
             result['Status'] = self.status
 
+        if self.time_type is not None:
+            result['TimeType'] = self.time_type
+
         if self.workflow_id is not None:
             result['WorkflowId'] = self.workflow_id
 
@@ -118,6 +126,9 @@ class ListJobsRequest(DaraModel):
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
+
+        if m.get('TimeType') is not None:
+            self.time_type = m.get('TimeType')
 
         if m.get('WorkflowId') is not None:
             self.workflow_id = m.get('WorkflowId')

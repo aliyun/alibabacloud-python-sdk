@@ -17,17 +17,15 @@ class ListCalendarNamesResponseBody(DaraModel):
     ):
         # The response code.
         self.code = code
-        # -
+        # The list of calendar names.
         self.data = data
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
-        # 
-        # - **true**: The request succeeded.
-        # 
-        # - **false**: The request failed.
+        # Indicates whether the call was successful.
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

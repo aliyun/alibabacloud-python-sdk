@@ -25,7 +25,7 @@ class ListJobExecutionsRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The end time.
+        # The end time in the YYYY-MM-DD HH:mm:ss format.
         self.end_time = end_time
         # The job execution ID.
         self.job_execution_id = job_execution_id
@@ -37,7 +37,7 @@ class ListJobExecutionsRequest(DaraModel):
         self.page_num = page_num
         # The number of entries per page.
         self.page_size = page_size
-        # The start time.
+        # The start time. Format: YYYY-MM-DD HH:mm:ss.
         self.start_time = start_time
         # The job execution status. Valid values:
         # - 0: **UNKNOWN**.

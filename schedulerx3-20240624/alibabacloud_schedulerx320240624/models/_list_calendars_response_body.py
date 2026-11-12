@@ -18,17 +18,15 @@ class ListCalendarsResponseBody(DaraModel):
     ):
         # The response code.
         self.code = code
-        # - The returned data.
+        # The calendar list and pagination information.
         self.data = data
         # The error message.
         self.message = message
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
-        # 
-        # - **true**: The request succeeded.
-        # 
-        # - **false**: The request failed.
+        # Indicates whether the call is successful.
+        # - **true**: The call is successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -85,11 +83,11 @@ class ListCalendarsResponseBodyData(DaraModel):
         records: List[main_models.ListCalendarsResponseBodyDataRecords] = None,
         total: int = None,
     ):
-        # The maximum number of entries returned per page.
+        # The maximum number of entries to return for the current request. Default value: 10.
         self.max_results = max_results
-        # The token for the next page of results. If this parameter is not returned, all results have been retrieved.
+        # The token that is returned by the server when the data that meets the query conditions is not completely read. You can use this token to continue reading the remaining data. You do not need to specify this parameter for the first query.
         self.next_token = next_token
-        # A list of calendars.
+        # The list of records.
         self.records = records
         # The total number of entries.
         self.total = total
@@ -147,9 +145,9 @@ class ListCalendarsResponseBodyDataRecords(DaraModel):
         months: str = None,
         year: int = None,
     ):
-        # The name of the calendar.
+        # The calendar name.
         self.calendar_name = calendar_name
-        # A JSON string that represents an array of months and their corresponding days.
+        # The calendar for each month in JSON array format.
         self.months = months
         # The year.
         self.year = year

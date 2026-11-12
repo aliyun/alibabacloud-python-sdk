@@ -21,11 +21,11 @@ class OperateBackfillWorkflowRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The end date of the backfill, in YYYY-MM-DD format.
+        # The end date for backfilling data. The format is YYYY-MM-DD.
         # 
         # This parameter is required.
         self.end_date = end_date
-        # The start date of the backfill, in YYYY-MM-DD format.
+        # The start date for backfilling data. The format is YYYY-MM-DD.
         # 
         # This parameter is required.
         self.start_date = start_date

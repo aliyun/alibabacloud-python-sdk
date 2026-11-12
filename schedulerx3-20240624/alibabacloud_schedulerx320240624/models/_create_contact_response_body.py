@@ -14,10 +14,17 @@ class CreateContactResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The returned result.
         self.data = data
+        # The error message.
         self.message = message
+        # Id of the request
         self.request_id = request_id
+        # Indicates whether the call is successful. Valid values:
+        # - true: The call is successful.
+        # - false: The call fails.
         self.success = success
 
     def validate(self):
@@ -71,7 +78,7 @@ class CreateContactResponseBodyData(DaraModel):
         self,
         contact_id: int = None,
     ):
-        # 新建联系人的 id，后续 Update/Delete 时使用
+        # The contact ID.
         self.contact_id = contact_id
 
     def validate(self):

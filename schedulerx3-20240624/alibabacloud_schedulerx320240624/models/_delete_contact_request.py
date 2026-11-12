@@ -9,6 +9,8 @@ class DeleteContactRequest(DaraModel):
         self,
         contact_name: str = None,
     ):
+        # The name of the alert contact.
+        # 
         # This parameter is required.
         self.contact_name = contact_name
 

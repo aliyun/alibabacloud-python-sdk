@@ -19,53 +19,43 @@ class ListAlarmEventRequest(DaraModel):
         reverse: bool = None,
         start_time: int = None,
     ):
-        # The channel for sending alarm notifications. Valid values:
-        # 
-        # - `sms`: SMS
-        # 
-        # - `mail`: Email
-        # 
-        # - `phone`: Phone call
-        # 
-        # - `webhook`: Webhook
+        # The alert channel. Valid values:
+        # - `sms`: SMS.
+        # - `mail`: Email.
+        # - `phone`: Phone call.
+        # - `webhook`: Webhook.
         self.alarm_channel = alarm_channel
-        # The delivery status of the alarm notification. Valid values:
+        # The alert status. Valid values:
         # 
-        # - `true`: The notification delivery succeeded.
+        # - `true`: The alert message is sent successfully.
         # 
-        # - `false`: The notification delivery failed.
+        # - `false`: The alert message fails to be sent.
         self.alarm_status = alarm_status
-        # The type of the alarm. Valid values:
-        # 
-        # - **`schedulerx3_no_designate_machine_alarm`**: The Designated Machine is unavailable.
-        # 
-        # - **`schedulerx3_all_busy_alarm`**: All available machines are busy.
-        # 
-        # - **`schedulerx3_no_machine_alarm`**: No machines are available to run the job.
-        # 
-        # - **`schedulerx3_timeout_alarm`**: The job timed out.
-        # 
-        # - **`schedulerx3_fail_alarm`**: The job failed to run.
-        # 
-        # - **`schedulerx3_job_success_notice`**: The job ran successfully.
+        # The alert type. Valid values:
+        # - **`schedulerx3_no_designate_machine_alarm`**: Unavailable designated machine alert.
+        # - **`schedulerx3_all_busy_alarm`**: All machines busy alert.
+        # - **`schedulerx3_no_machine_alarm`**: No available machine alert.
+        # - **`schedulerx3_timeout_alarm`**: Job timeout alert.
+        # - **`schedulerx3_fail_alarm`**: Job execution failure alert.
+        # - **`schedulerx3_job_success_notice`**: Job execution success notice.
         self.alarm_type = alarm_type
-        # The name of the application.
+        # The application name.
         self.app_name = app_name
-        # The ID of the cluster.
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The end of the time range for querying events. This value is a Unix timestamp in milliseconds.
+        # The end time of the retrieved events. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The name of the job.
+        # The job name.
         self.job_name = job_name
         # The page number.
         self.page_num = page_num
         # The number of entries per page.
         self.page_size = page_size
-        # Set to true to return results in descending order.
+        # Specifies whether to sort the results in descending order.
         self.reverse = reverse
-        # The start of the time range for querying events. This value is a Unix timestamp in milliseconds.
+        # The start time of the retrieved events. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
 
     def validate(self):

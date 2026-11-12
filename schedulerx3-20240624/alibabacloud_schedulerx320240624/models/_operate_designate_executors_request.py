@@ -21,6 +21,7 @@ class OperateDesignateExecutorsRequest(DaraModel):
         # 
         # This parameter is required.
         self.address_list = address_list
+        # The application ID.
         self.app_group_id = app_group_id
         # The application name.
         # 
@@ -30,17 +31,17 @@ class OperateDesignateExecutorsRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The type of the designated machine. Valid values:
-        # - **1**: designated worker.
-        # - **2**: designated label.
+        # The type of machine to designate. Valid values:
+        # - **1**: Designates a worker.
+        # - **2**: Designates a label.
         # 
         # This parameter is required.
         self.designate_type = designate_type
-        # The task ID.
+        # The job ID.
         # 
         # This parameter is required.
         self.job_id = job_id
-        # Specifies whether to enable failover.
+        # Specifies whether failover is enabled.
         self.transferable = transferable
 
     def validate(self):

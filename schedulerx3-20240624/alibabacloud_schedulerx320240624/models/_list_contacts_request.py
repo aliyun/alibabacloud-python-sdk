@@ -11,10 +11,11 @@ class ListContactsRequest(DaraModel):
         page_num: int = None,
         page_size: int = None,
     ):
+        # The name of the alert contact.
         self.contact_name = contact_name
-        # 页码，从 1 开始，默认 1
+        # The page number.
         self.page_num = page_num
-        # 每页条数，默认 20，最大 100
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):

@@ -11,10 +11,17 @@ class ImportAgentJobsRequest(DaraModel):
         cluster_id: str = None,
         migrate_strategy: int = None,
     ):
+        # agentname
+        # 
         # This parameter is required.
         self.agent_name = agent_name
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The strategy for synchronizing scheduled tasks. Valid values:  
+        # - 1: Migrates both the content and the scheduling time of local scheduled tasks from the agent to the cloud.  
+        # - 2: Migrates only the scheduling time to the cloud. When the scheduled time arrives, the platform notifies the agent, and the agent executes the task based on the local task content. The task content is always retained locally.
         self.migrate_strategy = migrate_strategy
 
     def validate(self):

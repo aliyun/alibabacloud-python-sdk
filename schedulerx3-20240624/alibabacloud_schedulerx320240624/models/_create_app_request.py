@@ -16,27 +16,26 @@ class CreateAppRequest(DaraModel):
         max_concurrency: int = None,
         title: str = None,
     ):
-        # The access token.
+        # The access token of the application.
         self.access_token = access_token
-        # The app name.
+        # The application name.
         # 
         # This parameter is required.
         self.app_name = app_name
-        # The app type.
+        # The application type.
         self.app_type = app_type
         # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # Indicates whether to enable logging.
+        # Specifies whether to enable logging.
         self.enable_log = enable_log
         # The label routing strategy.
         self.label_route_strategy = label_route_strategy
-        # The maximum concurrency.
-        # 
-        # > This parameter specifies the maximum number of task instances that can run concurrently for the app. Task instances that exceed this limit are not discarded. They are queued for execution.
+        # The size of the task execution queue.
+        # > The maximum number of task instances that can run concurrently for an application. Task instances that exceed the concurrency limit are not discarded but are placed in a queue for execution.
         self.max_concurrency = max_concurrency
-        # The title of the app.
+        # The title.
         # 
         # This parameter is required.
         self.title = title

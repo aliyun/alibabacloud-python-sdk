@@ -14,15 +14,13 @@ class DeleteCalendarResponseBody(DaraModel):
     ):
         # The response code.
         self.code = code
-        # The response message.
+        # The error message.
         self.message = message
-        # The unique identifier for the request.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the operation was successful.
-        # 
-        # - **true**: The request was successful.
-        # 
-        # - **false**: The request failed.
+        # Indicates whether the call is successful.
+        # - **true**: The call is successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

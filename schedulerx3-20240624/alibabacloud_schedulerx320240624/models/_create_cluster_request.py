@@ -22,7 +22,7 @@ class CreateClusterRequest(DaraModel):
         v_switches: List[main_models.CreateClusterRequestVSwitches] = None,
         vpc_id: str = None,
     ):
-        # The billing type.
+        # The billing method.
         self.charge_type = charge_type
         # The name of the cluster.
         # 
@@ -33,7 +33,7 @@ class CreateClusterRequest(DaraModel):
         # - scx.small.x1
         # - scx.small.x2
         # - scx.medium.x1
-        # - scx.medium.x2.
+        # - scx.medium.x2
         self.cluster_spec = cluster_spec
         # The cluster type.
         self.cluster_type = cluster_type
@@ -45,11 +45,11 @@ class CreateClusterRequest(DaraModel):
         self.pricing_cycle = pricing_cycle
         # The source.
         self.source = source
-        # The list of tags. A maximum of 20 tags are supported.
+        # The list of tags. You can add up to 20 tags.
         self.tag = tag
-        # The information about the vSwitches.
+        # The vSwitch information.
         self.v_switches = v_switches
-        # The ID of the VPC.
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -155,7 +155,7 @@ class CreateClusterRequestVSwitches(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
         # The zone ID of the vSwitch.
         self.zone_id = zone_id

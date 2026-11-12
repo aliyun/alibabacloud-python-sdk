@@ -16,10 +16,17 @@ class GetPageLogResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The paginated log results.
         self.data = data
+        # The error message.
         self.message = message
+        # Id of the request
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -76,9 +83,13 @@ class GetPageLogResponseBodyData(DaraModel):
         records: List[main_models.GetPageLogResponseBodyDataRecords] = None,
         total: int = None,
     ):
+        # The current page number.
         self.page_num = page_num
+        # The number of entries per page.
         self.page_size = page_size
+        # The list of log records on the current page.
         self.records = records
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -138,12 +149,19 @@ class GetPageLogResponseBodyDataRecords(DaraModel):
         user_id: str = None,
         worker_addr: str = None,
     ):
+        # The application name.
         self.app_name = app_name
+        # The job execution ID.
         self.job_execution_id = job_execution_id
+        # The job name.
         self.job_name = job_name
+        # The content output by the current command in the current output stream.
         self.log = log
+        # The print time in the yyyy-MM-dd HH:mm:ss format.
         self.time = time
+        # The user ID.
         self.user_id = user_id
+        # The worker address.
         self.worker_addr = worker_addr
 
     def validate(self):

@@ -10,11 +10,11 @@ class DeleteDatasourceRequest(DaraModel):
         cluster_id: str = None,
         datasource_id: int = None,
     ):
-        # Cluster ID.
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # DataSource ID, which can be obtained by invoking the ListDatasources API.
+        # The data source ID. You can obtain the ID by calling the ListDatasources operation.
         # 
         # This parameter is required.
         self.datasource_id = datasource_id

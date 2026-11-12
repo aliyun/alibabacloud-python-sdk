@@ -16,6 +16,7 @@ class OperateRetryJobExecutionRequest(DaraModel):
         task_list: List[str] = None,
         trigger_child: bool = None,
     ):
+        # The application ID.
         self.app_group_id = app_group_id
         # The application name.
         # 
@@ -29,8 +30,8 @@ class OperateRetryJobExecutionRequest(DaraModel):
         # 
         # This parameter is required.
         self.job_execution_id = job_execution_id
-        # The list of subtask execution IDs (for broadcast jobs).
-        # >To rerun a subtask of a broadcast job, set this field to the execution ID of the corresponding subtask.
+        # The list of subtask execution IDs for sharded broadcast tasks.
+        # > To rerun a subtask of a sharded broadcast task, set this field to the execution ID of the corresponding subtask.
         self.task_list = task_list
         # Specifies whether to trigger downstream nodes.
         self.trigger_child = trigger_child

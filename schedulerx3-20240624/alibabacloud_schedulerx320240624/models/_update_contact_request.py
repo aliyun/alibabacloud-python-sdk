@@ -12,13 +12,15 @@ class UpdateContactRequest(DaraModel):
         enabled: bool = None,
         type: str = None,
     ):
-        # 渠道参数配置 JSON 字符串（可选，传入则更新）
+        # The JSON character string for channel parameter settings. This parameter is optional. If specified, the settings are updated.
         self.config = config
+        # The name of the contact to update.
+        # 
         # This parameter is required.
         self.contact_name = contact_name
-        # 是否启用（true/false，可选）
+        # Specifies whether to enable or disable the notification channel for the contact.
         self.enabled = enabled
-        # 渠道大类（可选，传入则更新）
+        # The type of the contact.
         self.type = type
 
     def validate(self):

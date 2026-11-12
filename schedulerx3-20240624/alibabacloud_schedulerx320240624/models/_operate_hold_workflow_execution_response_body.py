@@ -12,16 +12,14 @@ class OperateHoldWorkflowExecutionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The Response Code.
+        # The response code.
         self.code = code
-        # The Error Message returned if the request fails.
+        # The error message.
         self.message = message
-        # The unique ID generated for this request.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # - **true**: The call was successful.
-        # 
+        # Indicates whether the call is successful. Valid values:
+        # - **true**: The call is successful.
         # - **false**: The call failed.
         self.success = success
 

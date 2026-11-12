@@ -13,21 +13,21 @@ class ListJobScriptHistoryRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # The name of the application.
+        # The application name.
         # 
         # This parameter is required.
         self.app_name = app_name
-        # The ID of the cluster.
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The ID of the job.
+        # The job ID.
         # 
         # This parameter is required.
         self.job_id = job_id
-        # The maximum number of entries to return per page. Default value: 10.
+        # The maximum number of entries to return for this request. Default value: 10.
         self.max_results = max_results
-        # The token to retrieve the next page of results. You do not need to set this parameter for the first request.
+        # The token that indicates the position from which the current call returns data. An empty value indicates that all data has been read. You do not need to specify this parameter for the first query.
         self.next_token = next_token
 
     def validate(self):

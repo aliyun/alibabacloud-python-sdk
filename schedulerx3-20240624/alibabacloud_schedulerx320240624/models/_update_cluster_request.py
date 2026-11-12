@@ -17,6 +17,7 @@ class UpdateClusterRequest(DaraModel):
         self.cluster_id = cluster_id
         # The cluster name.
         self.cluster_name = cluster_name
+        # The instance-level IP whitelist.
         self.ip_whitelist = ip_whitelist
 
     def validate(self):

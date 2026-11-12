@@ -21,22 +21,47 @@ class CreateExecutorGroupRequest(DaraModel):
         workers: str = None,
         xattrs: str = None,
     ):
+        # The client secret.
         self.api_key = api_key
+        # The authentication type.
         self.auth_type = auth_type
+        # The auto scaling configuration.
         self.auto_scale = auto_scale
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The CloudMonitor Service (CMS) workspace ID.
         self.cms_workspace_id = cms_workspace_id
+        # The description of the worker group.
         self.description = description
+        # The integration method of the executor. Valid values: manual (indicates manual entry) and acs (indicates ACS integration).
         self.integration_type = integration_type
+        # The name of the worker group.
+        # 
         # This parameter is required.
         self.name = name
+        # The network type. Valid values: public and private.
         self.network = network
+        # The backend protocol. Valid values:
+        # 
+        # - **HTTP** (default): Supports association with HTTPS, HTTP, and QUIC listeners.
+        # 
+        # - **HTTPS**: Supports association with HTTPS listeners.
+        # 
+        # - **gRPC**: Supports association with HTTPS and QUIC listeners.
+        # 
+        # > If **ServerGroupType** is set to **Fc**, you do not need to configure the backend protocol.
         self.protocol = protocol
+        # The worker type.
+        # 
         # This parameter is required.
         self.worker_type = worker_type
+        # The list of workers in JSON format.
+        # 
         # This parameter is required.
         self.workers = workers
+        # The extended configuration of the executor group.
         self.xattrs = xattrs
 
     def validate(self):

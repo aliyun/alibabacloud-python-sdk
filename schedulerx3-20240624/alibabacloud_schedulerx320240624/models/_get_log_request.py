@@ -27,29 +27,28 @@ class GetLogRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The end time. This value is a UNIX timestamp.
+        # The end time.
         self.end_time = end_time
         # The job execution ID.
         self.job_execution_id = job_execution_id
-        # The keyword to search for.
+        # The search keyword.
         self.keyword = keyword
         # The log level.
         self.level = level
-        # The number of log entries to return.
+        # The LineNum.
         self.line_num = line_num
         # The log ID.
         self.log_id = log_id
         # The offset.
         self.offset = offset
-        # Specifies whether to sort the results in descending order.
+        # Specifies whether to sort the results in descending order. Valid values:
         # 
-        # - **true**: sorts the results in descending order.
-        # 
-        # - **false**: sorts the results in ascending order.
+        # - **true**: Sorts the results in descending order.
+        # - **false**: Sorts the results in ascending order.
         self.reverse = reverse
-        # The time when the job was scheduled. This value is a UNIX timestamp.
+        # The scheduling time.
         self.schedule_time = schedule_time
-        # The start time. This value is a UNIX timestamp.
+        # The start time.
         self.start_time = start_time
         # The worker address.
         self.worker_addr = worker_addr

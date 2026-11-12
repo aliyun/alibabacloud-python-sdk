@@ -12,11 +12,17 @@ class DeleteExecutorGroupRequest(DaraModel):
         id: int = None,
         name: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # Specifies whether to synchronously delete tasks.
         self.delete_jobs = delete_jobs
+        # The ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The name of the executor group.
         self.name = name
 
     def validate(self):

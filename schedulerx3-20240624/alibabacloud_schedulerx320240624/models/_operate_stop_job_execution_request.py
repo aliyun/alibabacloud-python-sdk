@@ -15,6 +15,7 @@ class OperateStopJobExecutionRequest(DaraModel):
         job_execution_id: str = None,
         task_list: List[str] = None,
     ):
+        # The application ID.
         self.app_group_id = app_group_id
         # The application name.
         # 
@@ -28,7 +29,7 @@ class OperateStopJobExecutionRequest(DaraModel):
         # 
         # This parameter is required.
         self.job_execution_id = job_execution_id
-        # The subtask IDs.
+        # The subtask ID.
         self.task_list = task_list
 
     def validate(self):
