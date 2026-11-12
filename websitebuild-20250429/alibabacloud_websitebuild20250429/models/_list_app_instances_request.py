@@ -9,6 +9,7 @@ from darabonba.model import DaraModel
 class ListAppInstancesRequest(DaraModel):
     def __init__(
         self,
+        application_type: str = None,
         biz_id: str = None,
         biz_ids: List[str] = None,
         end_time_begin: str = None,
@@ -24,6 +25,11 @@ class ListAppInstancesRequest(DaraModel):
         query_mode: str = None,
         status_list: List[str] = None,
     ):
+        # The application type. Valid values: 
+        # - PC_WebSite: web application. 
+        # - Mini_Program: mini program. 
+        # If this parameter is not specified or left empty, applications are not filtered by type. For compatibility, historical missing, NULL, or empty types are treated as PC_WebSite.
+        self.application_type = application_type
         # The business ID.
         self.biz_id = biz_id
         # The list of business IDs for the application instances.
@@ -34,9 +40,7 @@ class ListAppInstancesRequest(DaraModel):
         self.end_time_end = end_time_end
         # The extended information.
         self.extend = extend
-        # The maximum number of results returned per query.
-        # 
-        # Valid values: 10 to 100. Default value: 20.
+        # The maximum number of results returned per query. Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
         # The token used to start the next query. This parameter is empty if no next query exists.
         self.next_token = next_token
@@ -48,9 +52,10 @@ class ListAppInstancesRequest(DaraModel):
         self.page_num = page_num
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # The query parameters.
+        # The query parameter.
         self.query = query
-        # The query mode. A value of CONTENT_CREATION indicates a lightweight query for the content creation site selector, which queries only published sites and does not load aggregated information such as profiles, services, and AI staff.
+        # The query mode. Valid values: 
+        # - CONTENT_CREATION: specifies a lightweight query for the content creation site selector. It queries only published sites and does not load aggregated information such as profiles, services, and AI staff.
         self.query_mode = query_mode
         # The status range.
         self.status_list = status_list
@@ -63,6 +68,9 @@ class ListAppInstancesRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.application_type is not None:
+            result['ApplicationType'] = self.application_type
+
         if self.biz_id is not None:
             result['BizId'] = self.biz_id
 
@@ -109,6 +117,9 @@ class ListAppInstancesRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ApplicationType') is not None:
+            self.application_type = m.get('ApplicationType')
+
         if m.get('BizId') is not None:
             self.biz_id = m.get('BizId')
 

@@ -47,9 +47,7 @@ class ListAppInstancesResponseBody(DaraModel):
         self.dynamic_message = dynamic_message
         # The returned error arguments.
         self.error_args = error_args
-        # The maximum number of results returned per query.
-        # 
-        # Valid values: 10 to 100. Default value: 20.
+        # The maximum number of results returned per query. Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
         # Indicates whether a next page exists.
         self.next_page = next_page
@@ -61,7 +59,7 @@ class ListAppInstancesResponseBody(DaraModel):
         self.pre_page = pre_page
         # Id of the request
         self.request_id = request_id
-        # In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit** is set to **true**. Narrow the time range and search again. Otherwise, **ResultLimit** is set to **false**.
+        # In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit** is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
         # The root error code.
         self.root_error_code = root_error_code

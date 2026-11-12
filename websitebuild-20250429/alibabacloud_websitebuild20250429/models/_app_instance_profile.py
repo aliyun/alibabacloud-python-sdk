@@ -53,15 +53,15 @@ class AppInstanceProfile(DaraModel):
         self.commodity_code = commodity_code
         # The contact information or instructions for customer service.
         self.customer_service = customer_service
-        # The code of the region where the application is deployed.
+        # The code of the application deployment area.
         self.deploy_area = deploy_area
         # The ICP filing number of the bound custom domain name. Separate multiple ICP filing numbers with commas (,).
         self.icpba_no = icpba_no
         # The independent server information. This information is computed in real time by DescribeAppInstance and is not populated in list operations.
         self.independent_deployment = independent_deployment
-        # The ID of the associated Lingxiao instance.
+        # The associated Lingxiao instance ID.
         self.instance_id = instance_id
-        # Specifies whether the current user is included in the grayscale whitelist for the ChatBI feature.
+        # Specifies whether the current user is included in the canary release whitelist for the ChatBI feature.
         self.open_chat_bi = open_chat_bi
         # The time when the order was placed. The format is yyyy-MM-dd HH:mm:ss.
         self.ord_time = ord_time
@@ -73,11 +73,11 @@ class AppInstanceProfile(DaraModel):
         self.preview_url = preview_url
         # The configuration identifier of the SEO site.
         self.seo_site = seo_site
-        # Specifies whether to enable the watermark for shared rendering. A value of 1 indicates that the feature is enabled, and a value of 0 indicates that the feature is disabled. If this parameter is not configured, it is left empty.
+        # Specifies whether to enable the share rendering watermark. Valid values: 1 (enabled) and 0 (disabled). If not configured, this parameter is empty.
         self.share_render_watermark = share_render_watermark
         # The site version code.
         self.site_version = site_version
-        # The display name of the site version, which includes the deployment region.
+        # The display name of the site version, which includes the deployment area.
         self.site_version_text = site_version_text
         # The identifier of the creation or synchronization source.
         self.source = source
@@ -85,7 +85,7 @@ class AppInstanceProfile(DaraModel):
         self.template_etag = template_etag
         # The ID of the template used by the current application.
         self.template_id = template_id
-        # The upgrade status of the instance. DOING indicates that the upgrade is in progress, SUCC indicates that the upgrade is successful, and FAIL indicates that the upgrade failed.
+        # The upgrade status of the instance. Valid values: DOING (upgrading), SUCC (upgraded successfully), and FAIL (upgrade failed).
         self.upgrade_status = upgrade_status
 
     def validate(self):
@@ -272,15 +272,15 @@ class AppInstanceProfileIndependentDeployment(DaraModel):
         server_spec: str = None,
         task_id: int = None,
     ):
-        # Specifies whether retries are allowed after the independent server fails to be enabled.
+        # Specifies whether retries are allowed after the independent server fails to start.
         self.can_retry = can_retry
-        # The code of the region where the independent server is deployed.
+        # The code of the deployment area for the independent server.
         self.deploy_area = deploy_area
-        # The type of the DNS record used when an independent IP address is bound to a domain name.
+        # The DNS record type used when binding a domain name to an independent IP address.
         self.dns_record_type = dns_record_type
-        # The eligibility status of the independent server. UPGRADE_REQUIRED indicates that an upgrade is required, AVAILABLE indicates that the feature can be enabled, and UNAVAILABLE indicates that the feature is currently unavailable.
+        # The eligibility status of the independent server. Valid values: UPGRADE_REQUIRED (an upgrade is required), AVAILABLE (the feature can be enabled), and UNAVAILABLE (the feature is currently unavailable).
         self.eligibility = eligibility
-        # The status of the independent server. NOT_ENABLED indicates that the feature is not enabled, ENABLING indicates that the feature is being enabled, ACTIVE indicates that the feature is enabled, and FAILED indicates that the feature failed to be enabled.
+        # The status of the independent server. Valid values: NOT_ENABLED (not enabled), ENABLING (enabling), ACTIVE (enabled), and FAILED (failed to enable).
         self.enable_status = enable_status
         # The independent IP address assigned after the independent server is enabled.
         self.independent_ip = independent_ip

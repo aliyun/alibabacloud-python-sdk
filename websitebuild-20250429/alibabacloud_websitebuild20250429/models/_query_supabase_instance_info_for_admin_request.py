@@ -23,9 +23,9 @@ class QuerySupabaseInstanceInfoForAdminRequest(DaraModel):
         # 
         # This parameter is required.
         self.env = env
-        # The sort field.
+        # The field used for sorting.
         self.order_column = order_column
-        # The sort order. Valid values: ASC, DESC.
+        # The sort order. Valid values: ASC and DESC.
         self.order_type = order_type
         # The page number. Default value: 1.
         self.page_num = page_num

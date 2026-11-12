@@ -22,18 +22,18 @@ class GetAppSupabaseInstanceResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The detailed reason why access is denied.
+        # The detailed reason for access denial.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether a retry is allowed.
+        # Indicates whether retries are allowed.
         self.allow_retry = allow_retry
         # The application name.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage** return parameter.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the value of the request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace `%s` in the error message of the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
-        # The error parameters returned.
+        # The returned error parameters.
         self.error_args = error_args
         # The task object.
         self.module = module
@@ -43,7 +43,7 @@ class GetAppSupabaseInstanceResponseBody(DaraModel):
         self.root_error_code = root_error_code
         # The exception message.
         self.root_error_msg = root_error_msg
-        # A reserved parameter.
+        # The backup parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -153,6 +153,7 @@ class GetAppSupabaseInstanceResponseBodyModule(DaraModel):
         self.db_public_url = db_public_url
         # The instance creation status.
         self.instance_create_status = instance_create_status
+        # The read-only business schema name resolved by Builder trusted binding, which cannot be used as input for tenant switching.
         self.schema_name = schema_name
         # The service key.
         self.service_key = service_key
@@ -160,8 +161,9 @@ class GetAppSupabaseInstanceResponseBodyModule(DaraModel):
         self.status = status
         # The Supabase instance ID.
         self.supabase_instance_id = supabase_instance_id
-        # The public URL of the Supabase instance.
+        # The public URL of Supabase.
         self.supabase_public_url = supabase_public_url
+        # The read-only tenant mode. The schema is the legacy Builder pool, and db/agenticdb is the new platform. History records can be empty.
         self.tenant_mode = tenant_mode
 
     def validate(self):

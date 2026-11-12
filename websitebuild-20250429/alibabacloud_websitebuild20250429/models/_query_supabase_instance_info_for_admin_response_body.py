@@ -22,16 +22,16 @@ class QuerySupabaseInstanceInfoForAdminResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The details about the access denial.
+        # The detailed reason for access denial.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retries are allowed.
+        # Specifies whether retries are allowed.
         self.allow_retry = allow_retry
         # The application name.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
         # The dynamic error message, which is used to replace `%s` in the **ErrMessage** response parameter.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the specified **DtsJobId** request parameter is invalid.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
         # The returned error parameters.
         self.error_args = error_args
@@ -41,7 +41,7 @@ class QuerySupabaseInstanceInfoForAdminResponseBody(DaraModel):
         self.request_id = request_id
         # The error code.
         self.root_error_code = root_error_code
-        # The exception message.
+        # The error message.
         self.root_error_msg = root_error_msg
         # The reserved parameter.
         self.synchro = synchro
@@ -161,40 +161,41 @@ class QuerySupabaseInstanceInfoForAdminResponseBodyModule(DaraModel):
         self.anon_key = anon_key
         # The business ID.
         self.biz_id = biz_id
-        # The creation time of the database instance.
+        # The time when the database instance was created.
         self.db_instance_create_time = db_instance_create_time
         # The database instance ID.
         self.db_instance_id = db_instance_id
         # The public URL of the database.
         self.db_public_url = db_public_url
-        # The database type. Valid values: rds, polardb.
+        # The database type. Valid values: rds and polardb.
         self.db_type = db_type
-        # The additional information.
+        # The extra information.
         self.extra = extra
-        # The completion time of the instance creation.
+        # The time when the instance creation was completed.
         self.instance_create_finished_time = instance_create_finished_time
-        # The creation status of the instance.
+        # The instance creation status.
         self.instance_create_status = instance_create_status
         # The deletion flag.
         self.is_deleted = is_deleted
         # The access password for the RDS database.
         self.rds_database_password = rds_database_password
+        # The read-only business schema name parsed by the Builder trusted binding. This name cannot be used as input for tenant switching.
         self.schema_name = schema_name
         # The service key.
         self.service_key = service_key
-        # The status. Valid values: 0: Paused. 1: Running.
+        # The status. Valid values: 0 (Paused) and 1 (Running).
         self.status = status
-        # The password for the Supabase Dashboard.
+        # The Supabase Dashboard password.
         self.supabase_dashboard_password = supabase_dashboard_password
-        # The username for the Supabase Dashboard.
+        # The Supabase Dashboard username.
         self.supabase_dashboard_user_name = supabase_dashboard_user_name
-        # The creation time of the Supabase instance.
+        # The time when the Supabase instance was created.
         self.supabase_instance_create_time = supabase_instance_create_time
         # The Supabase instance ID.
         self.supabase_instance_id = supabase_instance_id
         # Supabase Kong URL
         self.supabase_kong_url = supabase_kong_url
-        # The private endpoint of the Supabase instance.
+        # The private network endpoint of the Supabase instance.
         self.supabase_private_ip = supabase_private_ip
         # The public network connection endpoint of the Supabase instance.
         self.supabase_public_ip = supabase_public_ip
@@ -202,6 +203,7 @@ class QuerySupabaseInstanceInfoForAdminResponseBodyModule(DaraModel):
         self.supabase_public_url = supabase_public_url
         # The tenant ID.
         self.tenant_id = tenant_id
+        # The read-only tenant mode. A value of schema indicates the legacy Builder pool, and a value of db or agenticdb indicates the new platform. The history record can be empty.
         self.tenant_mode = tenant_mode
         # The user ID.
         self.user_id = user_id

@@ -212,6 +212,9 @@ from ._get_app_plugin_response import GetAppPluginResponse
 from ._get_app_plugin_config_request import GetAppPluginConfigRequest
 from ._get_app_plugin_config_response_body import GetAppPluginConfigResponseBody
 from ._get_app_plugin_config_response import GetAppPluginConfigResponse
+from ._get_app_plugin_config_for_admin_request import GetAppPluginConfigForAdminRequest
+from ._get_app_plugin_config_for_admin_response_body import GetAppPluginConfigForAdminResponseBody
+from ._get_app_plugin_config_for_admin_response import GetAppPluginConfigForAdminResponse
 from ._get_app_publish_status_request import GetAppPublishStatusRequest
 from ._get_app_publish_status_response_body import GetAppPublishStatusResponseBody
 from ._get_app_publish_status_response import GetAppPublishStatusResponse
@@ -680,6 +683,7 @@ from ._get_app_instance_for_partner_response_body import GetAppInstanceForPartne
 from ._get_app_instance_temp_short_url_response_body import GetAppInstanceTempShortUrlResponseBodyModule
 from ._get_app_plugin_response_body import GetAppPluginResponseBodyModule
 from ._get_app_plugin_config_response_body import GetAppPluginConfigResponseBodyModule
+from ._get_app_plugin_config_for_admin_response_body import GetAppPluginConfigForAdminResponseBodyModule
 from ._get_app_publish_status_response_body import GetAppPublishStatusResponseBodyModule
 from ._get_app_recommended_commodities_response_body import GetAppRecommendedCommoditiesResponseBodyModuleCommodities
 from ._get_app_recommended_commodities_response_body import GetAppRecommendedCommoditiesResponseBodyModule
@@ -1056,6 +1060,9 @@ __all__ = [
     GetAppPluginConfigRequest,
     GetAppPluginConfigResponseBody,
     GetAppPluginConfigResponse,
+    GetAppPluginConfigForAdminRequest,
+    GetAppPluginConfigForAdminResponseBody,
+    GetAppPluginConfigForAdminResponse,
     GetAppPublishStatusRequest,
     GetAppPublishStatusResponseBody,
     GetAppPublishStatusResponse,
@@ -1524,6 +1531,7 @@ __all__ = [
     GetAppInstanceTempShortUrlResponseBodyModule,
     GetAppPluginResponseBodyModule,
     GetAppPluginConfigResponseBodyModule,
+    GetAppPluginConfigForAdminResponseBodyModule,
     GetAppPublishStatusResponseBodyModule,
     GetAppRecommendedCommoditiesResponseBodyModuleCommodities,
     GetAppRecommendedCommoditiesResponseBodyModule,

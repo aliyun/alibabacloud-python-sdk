@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Dict, Generator, AsyncGenerator
 
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -21,6 +22,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'WebsiteBuild'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-zhangjiakou': 'websitebuild.aliyuncs.com',
@@ -4889,6 +4893,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_app_plugin_config_with_options_async(request, runtime)
 
+    def get_app_plugin_config_for_admin_with_options(
+        self,
+        request: main_models.GetAppPluginConfigForAdminRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAppPluginConfigForAdminResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.biz_id):
+            body['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.plugin_id):
+            body['PluginId'] = request.plugin_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAppPluginConfigForAdmin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAppPluginConfigForAdminResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_app_plugin_config_for_admin_with_options_async(
+        self,
+        request: main_models.GetAppPluginConfigForAdminRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAppPluginConfigForAdminResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.biz_id):
+            body['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.plugin_id):
+            body['PluginId'] = request.plugin_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAppPluginConfigForAdmin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAppPluginConfigForAdminResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_app_plugin_config_for_admin(
+        self,
+        request: main_models.GetAppPluginConfigForAdminRequest,
+    ) -> main_models.GetAppPluginConfigForAdminResponse:
+        runtime = RuntimeOptions()
+        return self.get_app_plugin_config_for_admin_with_options(request, runtime)
+
+    async def get_app_plugin_config_for_admin_async(
+        self,
+        request: main_models.GetAppPluginConfigForAdminRequest,
+    ) -> main_models.GetAppPluginConfigForAdminResponse:
+        runtime = RuntimeOptions()
+        return await self.get_app_plugin_config_for_admin_with_options_async(request, runtime)
+
     def get_app_publish_status_with_options(
         self,
         request: main_models.GetAppPublishStatusRequest,
@@ -6457,10 +6535,14 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GetTempDownloadUrlResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
         body = {}
         if not DaraCore.is_null(request.oss_key):
             body['OssKey'] = request.oss_key
         req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -6485,10 +6567,14 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GetTempDownloadUrlResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
         body = {}
         if not DaraCore.is_null(request.oss_key):
             body['OssKey'] = request.oss_key
         req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -7760,6 +7846,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.status_list):
             request.status_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.status_list, 'StatusList', 'json')
         query = {}
+        if not DaraCore.is_null(request.application_type):
+            query['ApplicationType'] = request.application_type
         if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
         if not DaraCore.is_null(request.biz_ids_shrink):
@@ -7820,6 +7908,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.status_list):
             request.status_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.status_list, 'StatusList', 'json')
         query = {}
+        if not DaraCore.is_null(request.application_type):
+            query['ApplicationType'] = request.application_type
         if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
         if not DaraCore.is_null(request.biz_ids_shrink):

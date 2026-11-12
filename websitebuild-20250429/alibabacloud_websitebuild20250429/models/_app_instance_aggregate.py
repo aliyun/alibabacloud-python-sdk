@@ -31,6 +31,7 @@ class AppInstanceAggregate(DaraModel):
         gmt_publish: str = None,
         icon_url: str = None,
         name: str = None,
+        offline: bool = None,
         partner_detail: main_models.AppInstanceAggregatePartnerDetail = None,
         profile: main_models.AppInstanceProfile = None,
         resource_group_id: str = None,
@@ -48,7 +49,7 @@ class AppInstanceAggregate(DaraModel):
     ):
         # The list of AI staff associated with the application.
         self.ai_staff_list = ai_staff_list
-        # The operation address of the application.
+        # The application operation address.
         self.app_operation_address = app_operation_address
         # The list of service instances associated with the application.
         self.app_service_list = app_service_list
@@ -60,7 +61,7 @@ class AppInstanceAggregate(DaraModel):
         self.biz_id = biz_id
         # The build type.
         self.build_type = build_type
-        # The associated conversation information. The value is null if no conversation is associated.
+        # The associated conversation information. This field is null if no associated conversation exists.
         self.conversation_info = conversation_info
         # The creation time.
         self.create_time = create_time
@@ -70,7 +71,7 @@ class AppInstanceAggregate(DaraModel):
         self.description = description
         # The business ID of the design specification.
         self.design_spec_biz_id = design_spec_biz_id
-        # The ID of the design configuration.
+        # The ID of the design configuration sheet.
         self.design_spec_id = design_spec_id
         # The primary domain name.
         self.domain = domain
@@ -82,13 +83,15 @@ class AppInstanceAggregate(DaraModel):
         self.gmt_delete = gmt_delete
         # The modification time.
         self.gmt_modified = gmt_modified
-        # The publish time.
+        # The publication time.
         self.gmt_publish = gmt_publish
         # The URL of the application icon.
         self.icon_url = icon_url
         # The application name.
         self.name = name
-        # The partner details.
+        # The current offline status. A value of true explicitly indicates that the website is currently offline. A value of false indicates that the website is not offline, and historical offline reasons do not determine the current status. If the current status cannot be determined or the legacy response does not contain this field, the caller must not default the unknown status to online.
+        self.offline = offline
+        # The details.
         self.partner_detail = partner_detail
         # The configuration and runtime information of the application instance.
         self.profile = profile
@@ -213,6 +216,9 @@ class AppInstanceAggregate(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.offline is not None:
+            result['Offline'] = self.offline
+
         if self.partner_detail is not None:
             result['PartnerDetail'] = self.partner_detail.to_map()
 
@@ -332,6 +338,9 @@ class AppInstanceAggregate(DaraModel):
         if m.get('Name') is not None:
             self.name = m.get('Name')
 
+        if m.get('Offline') is not None:
+            self.offline = m.get('Offline')
+
         if m.get('PartnerDetail') is not None:
             temp_model = main_models.AppInstanceAggregatePartnerDetail()
             self.partner_detail = temp_model.from_map(m.get('PartnerDetail'))
@@ -388,9 +397,13 @@ class AppInstanceAggregateTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key of the instance. Valid values of N: **1** to **20**. The value cannot be an empty string. The value can be up to 64 characters in length, and cannot start with `aliyun` or `acs:`. The value cannot contain `http://` or `https://`.
+        # The tag key of the instance. Valid values of N: **1** to **20**. If you specify this parameter, it cannot be an empty string.
+        # 
+        # The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.tag_key = tag_key
-        # The tag value of the instance. Valid values of N: **1** to **20**. The value can be an empty string. The value can be up to 128 characters in length, and cannot start with `aliyun` or `acs:`. The value cannot contain `http://` or `https://`.
+        # The tag value of the instance. Valid values of N: **1** to **20**. If you specify this parameter, it can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.tag_value = tag_value
 
     def validate(self):
@@ -430,7 +443,7 @@ class AppInstanceAggregatePartnerDetail(DaraModel):
         self.bind_data = bind_data
         # The partner ID.
         self.partner_id = partner_id
-        # The partner binding status. Valid values: BOUND (bound) and UNBOUND (unbound).
+        # The partner binding status. Valid values: BOUND (bound) and UNBOUND (to be bound).
         self.status = status
 
     def validate(self):
@@ -565,7 +578,7 @@ class AppInstanceAggregateConversationInfo(DaraModel):
         self,
         chat_num: int = None,
     ):
-        # The number of conversation turns. A value of 0 indicates an empty conversation.
+        # The number of user conversation turns. A value of 0 indicates an empty conversation.
         self.chat_num = chat_num
 
     def validate(self):

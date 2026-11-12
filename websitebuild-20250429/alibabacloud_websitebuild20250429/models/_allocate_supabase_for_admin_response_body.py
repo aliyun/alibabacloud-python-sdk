@@ -22,11 +22,11 @@ class AllocateSupabaseForAdminResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The details of the access denial.
+        # The details of the permission check failure.
         self.access_denied_detail = access_denied_detail
         # Specifies whether retries are allowed.
         self.allow_retry = allow_retry
-        # The name of the app.
+        # The name of the application.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
@@ -40,7 +40,7 @@ class AllocateSupabaseForAdminResponseBody(DaraModel):
         self.request_id = request_id
         # The error code.
         self.root_error_code = root_error_code
-        # The exception message.
+        # The error message.
         self.root_error_msg = root_error_msg
         # Specifies whether the request is processed synchronously.
         self.synchro = synchro
@@ -168,7 +168,7 @@ class AllocateSupabaseForAdminResponseBodyModule(DaraModel):
         self.db_public_url = db_public_url
         # The type of the database.
         self.db_type = db_type
-        # The additional information.
+        # The extra information.
         self.extra = extra
         # The time when the instance creation was completed.
         self.instance_create_finished_time = instance_create_finished_time
@@ -176,14 +176,13 @@ class AllocateSupabaseForAdminResponseBodyModule(DaraModel):
         self.instance_create_status = instance_create_status
         # The deletion flag.
         self.is_deleted = is_deleted
-        # The access password of the RDS database.
+        # The access password for the RDS database.
         self.rds_database_password = rds_database_password
+        # The read-only business schema name parsed by the Builder trusted binding. This name cannot be used as input for tenant switching.
         self.schema_name = schema_name
         # The service key.
         self.service_key = service_key
-        # The status of the instance. Valid values:
-        # - 0: Paused.
-        # - 1: Running.
+        # The status. Valid values: 0 (Paused) and 1 (Running).
         self.status = status
         # The password for the Supabase Dashboard.
         self.supabase_dashboard_password = supabase_dashboard_password
@@ -195,14 +194,15 @@ class AllocateSupabaseForAdminResponseBodyModule(DaraModel):
         self.supabase_instance_id = supabase_instance_id
         # Supabase Kong URL
         self.supabase_kong_url = supabase_kong_url
-        # The private endpoint of the Supabase instance.
+        # The private network endpoint of the Supabase instance.
         self.supabase_private_ip = supabase_private_ip
-        # The public endpoint of the Supabase instance.
+        # The public network connection endpoint of the Supabase instance.
         self.supabase_public_ip = supabase_public_ip
-        # The public URL of the Supabase instance.
+        # The public URL of Supabase.
         self.supabase_public_url = supabase_public_url
         # The ID of the tenant.
         self.tenant_id = tenant_id
+        # The read-only tenant mode: schema indicates the legacy Builder pool, and db or agenticdb indicates the new platform. The history record can be empty.
         self.tenant_mode = tenant_mode
         # The user ID.
         self.user_id = user_id
