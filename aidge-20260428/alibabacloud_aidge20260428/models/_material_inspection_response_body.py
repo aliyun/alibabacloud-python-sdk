@@ -16,17 +16,17 @@ class MaterialInspectionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. This parameter is not returned if the call is successful.
+        # The error code. This parameter is not returned when the call is successful.
         self.code = code
         # The material display detection result.
         self.data = data
-        # The error message. This parameter is not returned if the call is successful.
+        # The error message. This parameter is not returned when the call is successful.
         self.message = message
         # Id of the request
         self.request_id = request_id
         # Indicates whether the call is successful. Valid values:
         # - true: The call is successful.
-        # - false: The call failed.
+        # - false: The call fails.
         self.success = success
 
     def validate(self):
@@ -83,7 +83,7 @@ class MaterialInspectionResponseBodyData(DaraModel):
     ):
         # The inspection result.
         self.result = result
-        # The usage information. The key is the usage metric name and the value is the count.
+        # The usage information. The key is the usage name and the value is the count.
         self.usage_map = usage_map
 
     def validate(self):
@@ -123,11 +123,11 @@ class MaterialInspectionResponseBodyDataResult(DaraModel):
         steps: List[main_models.MaterialInspectionResponseBodyDataResultSteps] = None,
         type: str = None,
     ):
-        # The natural language summary, such as "1 rule: 1 PASS, all inspection items are compliant."
+        # The natural language summary, such as \\"1 rule: 1 PASS, all detection items are compliant\\".
         self.evidence = evidence
-        # The overall determination result. Valid values: PASS and FAIL.
+        # The overall judgment. Valid values: PASS and FAIL.
         self.overall_result = overall_result
-        # The request ID returned as-is from the request.
+        # The request ID returned as-is.
         self.req_id = req_id
         # The list of detection steps.
         self.steps = steps
@@ -192,7 +192,7 @@ class MaterialInspectionResponseBodyDataResultSteps(DaraModel):
         result: str = None,
         step_id: str = None,
     ):
-        # The determination result of the step. Valid values: PASS, FAIL, and UNABLE_TO_JUDGE.
+        # The judgment result. Valid values: PASS, FAIL, and UNABLE_TO_JUDGE.
         self.result = result
         # The step ID.
         self.step_id = step_id

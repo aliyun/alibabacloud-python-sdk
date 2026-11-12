@@ -16,23 +16,28 @@ class ImageRemoveAsyncShrinkRequest(DaraModel):
         user_image_shrink: str = None,
         user_text_shrink: str = None,
     ):
-        # The business order ID of the caller. It is recorded upon acceptance and returned as is when querying the asynchronous task result.
+        # The business order ID of the caller. This ID is recorded when the request is accepted and returned as-is when you query the result of the asynchronous task.
         self.biz_id = biz_id
-        # The URL of the original image. The image must be in JPG, JPEG, PNG, BMP, or WEBP format. The resolution must be between 256 × 256 and 3000 × 3000 pixels, and the file size must not exceed 10 MB.
+        # The URL of the original image. The image must be in JPG, JPEG, PNG, BMP, or WEBP format. The resolution must be between 256×256 and 3000×3000 pixels, and the file size cannot exceed 10 MB.
         # 
         # This parameter is required.
         self.image_url = image_url
-        # The specific area to remove. This parameter must be used in conjunction with the editor. The input format is RLE. If this parameter is specified, it takes precedence and the remove_non_product_area_elements and remove_product_area_elements parameters are ignored. This parameter is not required, but you must specify at least one of the following parameters: ObjectRemoveElements, NonObjectRemoveElements, Mask, Position, UserText, and UserImage. If multiple parameters are specified, the priority takes effect as follows: UserImage > UserText > Position > Mask > ObjectRemoveElements = NonObjectRemoveElements.
+        # The specific area to remove. This parameter must be used in combination with the editor, and the input format is RLE. If this parameter is specified, it takes precedence and the remove_non_product_area_elements and remove_product_area_elements parameters are ignored. This parameter is optional, but you must specify at least one of the following parameters: ObjectRemoveElements, NonObjectRemoveElements, Mask, Position, UserText, and UserImage. If multiple parameters are specified, the priority is as follows: UserImage > UserText > Position > Mask > ObjectRemoveElements = NonObjectRemoveElements.
         self.mask = mask
-        # The list of element types to remove from the image background.
+        # The types of elements to remove from the image background.
         self.non_object_remove_elements_shrink = non_object_remove_elements_shrink
-        # The types of elements to remove from the image subject. Valid values: 1: transparent text blocks. 2: specific names. 3: text. 4: watermarks. You can select multiple element types. This parameter is not required, but you must specify at least one of the following parameters: ObjectRemoveElements, NonObjectRemoveElements, Mask, Position, UserText, and UserImage. If multiple parameters are specified, the priority takes effect as follows: UserImage > UserText > Position > Mask > ObjectRemoveElements = NonObjectRemoveElements. For more information about each type, see the product documentation. Image subject: the core product area in the image.
+        # The types of elements to remove from the image subject. Valid values:
+        # - 1: Transparent text blocks.
+        # - 2: Specific names.
+        # - 3: Text.
+        # - 4: Watermarks.
+        # You can select multiple element types. This parameter is optional, but you must specify at least one of the following parameters: ObjectRemoveElements, NonObjectRemoveElements, Mask, Position, UserText, and UserImage. If multiple parameters are specified, the priority is as follows: UserImage > UserText > Position > Mask > ObjectRemoveElements = NonObjectRemoveElements. For more information about each type, see the product documentation. Image subject: the core product area in the image.
         self.object_remove_elements_shrink = object_remove_elements_shrink
-        # The specific area to remove. This parameter must be used in conjunction with the editor. The input format is four-point coordinates [xx,yy,zz,dd]. This parameter is not required, but you must specify at least one of the following parameters: ObjectRemoveElements, NonObjectRemoveElements, Mask, Position, UserText, and UserImage. If multiple parameters are specified, the priority takes effect as follows: UserImage > UserText > Position > Mask > ObjectRemoveElements = NonObjectRemoveElements.
+        # The specific area to remove. This parameter must be used in combination with the editor, and the input format is four-point coordinates [xx,yy,zz,dd]. This parameter is optional, but you must specify at least one of the following parameters: ObjectRemoveElements, NonObjectRemoveElements, Mask, Position, UserText, and UserImage. If multiple parameters are specified, the priority is as follows: UserImage > UserText > Position > Mask > ObjectRemoveElements = NonObjectRemoveElements.
         self.position = position
-        # The list of URLs of image elements to remove specified by the user.
+        # The URLs of user-specified image elements to remove.
         self.user_image_shrink = user_image_shrink
-        # The list of text strings to remove specified by the user.
+        # The user-specified text strings to remove.
         self.user_text_shrink = user_text_shrink
 
     def validate(self):

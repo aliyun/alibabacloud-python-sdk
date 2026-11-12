@@ -18,13 +18,13 @@ class MerchandisePriceTagDetectionResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The scenario recognition result.
+        # The recognition result.
         self.data = data
-        # The return message or failure description.
+        # The returned message or failure description.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -79,7 +79,7 @@ class MerchandisePriceTagDetectionResponseBodyData(DaraModel):
         result: main_models.MerchandisePriceTagDetectionResponseBodyDataResult = None,
         usage_map: Dict[str, int] = None,
     ):
-        # The detection and recognition result details.
+        # The details of the detection and recognition result.
         self.result = result
         # The usage information.
         self.usage_map = usage_map
@@ -119,11 +119,11 @@ class MerchandisePriceTagDetectionResponseBodyDataResult(DaraModel):
         price_tags: List[main_models.MerchandisePriceTagDetectionResponseBodyDataResultPriceTags] = None,
         type: str = None,
     ):
-        # The localization information.
+        # The grounding information.
         self.grounding = grounding
-        # The price tag list. This can be an empty array if no price tags are recognized under normal conditions.
+        # The list of price tags. This can be an empty array if no price tags are recognized.
         self.price_tags = price_tags
-        # The value is fixed to priceTag.
+        # Fixed to priceTag.
         self.type = type
 
     def validate(self):
@@ -182,11 +182,11 @@ class MerchandisePriceTagDetectionResponseBodyDataResultPriceTags(DaraModel):
         self.location = location
         # The original price.
         self.original_price = original_price
-        # The selling price, retained as a string to avoid being parsed as a reserved word or reserved character.
+        # The selling price, retained as a string.
         self.price = price
-        # The associated product code.
+        # The code of the associated product.
         self.sku_code = sku_code
-        # The associated product name.
+        # The name of the associated product.
         self.sku_name = sku_name
 
     def validate(self):
@@ -298,7 +298,7 @@ class MerchandisePriceTagDetectionResponseBodyDataResultGrounding(DaraModel):
     ):
         # The coverage.
         self.coverage = coverage
-        # The region list.
+        # The list of regions.
         self.regions = regions
 
     def validate(self):

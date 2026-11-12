@@ -10,7 +10,7 @@ class ImageUpscaleRequest(DaraModel):
         image_url: str = None,
         upscale_factor: int = None,
     ):
-        # The URL of the original image. It must be a publicly accessible image URL. You cannot use private network addresses such as localhost. The width and height of the input image must be greater than 100 pixels and less than 3000 pixels. The width and height of the upscaled image must not exceed 3000 pixels.
+        # The URL of the original image. It must be a publicly accessible image URL. Private network addresses such as localhost are not supported. The width and height of the input image must be greater than 100 pixels and less than 3,000 pixels. The width and height of the upscaled image must not exceed 3,000 pixels.
         # 
         # This parameter is required.
         self.image_url = image_url

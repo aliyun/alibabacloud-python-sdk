@@ -13,11 +13,11 @@ class EcomVideoRecreationRequest(DaraModel):
         input: main_models.EcomVideoRecreationRequestInput = None,
         output: main_models.EcomVideoRecreationRequestOutput = None,
     ):
-        # The input parameters for video replication.
+        # The video variation input parameters.
         # 
         # This parameter is required.
         self.input = input
-        # The output specifications for the final video.
+        # The final video output specifications.
         self.output = output
 
     def validate(self):
@@ -58,7 +58,7 @@ class EcomVideoRecreationRequestOutput(DaraModel):
         quality: str = None,
         ratio: str = None,
     ):
-        # The target duration in seconds. In reference mode, the input value is ignored and forced to -1, following the duration of the original video. In rebuild mode, you can pass an integer from 5 to 60, or pass -1 to indicate an automatic duration.
+        # The target duration in seconds. In reference mode, the input value is ignored and forced to -1, following the original video duration. In rebuild mode, you can pass an integer from 5 to 60 seconds, or pass -1 for automatic duration.
         self.duration = duration
         # The output resolution. Default value: `720p`.
         self.quality = quality
@@ -108,22 +108,19 @@ class EcomVideoRecreationRequestInput(DaraModel):
         recreate_mode: str = None,
         source_video_url: str = None,
     ):
-        # The description or supplementary constraints for the target person during person replacement. The length ranges from 1 to 500 characters. This parameter is required if PersonReferenceImageUrls is not provided.   
-        # Example value: The target person is an adult male. Keep the original clothing and actions.
+        # The description or supplementary constraints for the target person in person replacement. The length is 1 to 500 characters. This parameter is required when PersonReferenceImageUrls is not provided. Example: The target person is an adult male, retaining the original clothing and actions.
         self.change_description = change_description
         # The replacement mode. Valid values: `product_replacement` (default) and `person_replacement`.
         self.mode = mode
-        # The URLs of the reference images for the target person during person replacement. You can provide 1 to 5 images, which must be of the same person. We recommend arranging them in the order of facial close-up, front, 45-degree angle, side, and back.  
-        # Example value: ["https://example.com/person.jpg"]
+        # The URLs of the target person reference images for person replacement. You can provide 1 to 5 images, which must be of the same person. We recommend arranging them in the order of facial close-up, front, 45-degree angle, side, and back. Example: `["https://example.com/person.jpg"]`.
         self.person_reference_image_urls = person_reference_image_urls
-        # Required for product replacement. The URLs of the target product images. You can upload 1 to 8 images for the same SKU. We recommend that the subject be clear, unoccluded, and have a clean background.   
-        # Example value: ["https://example.com/product.png"]
+        # Required for product replacement. The URLs of the target product images. You can upload 1 to 8 images for the same SKU. We recommend that the main subject be clear, unoccluded, and have a clean background. Example: `["https://example.com/product.png"]`.
         self.product_image_urls = product_image_urls
-        # The information about the target product. We recommend that you specify this parameter to improve the accuracy of the voiceover.
+        # The target product information. We recommend filling in this information to improve voiceover accuracy.
         self.product_info = product_info
         # The generation method. Default value: reference. Valid values: reference (directly references the original video) and rebuild (breaks down the original video before regenerating).
         self.recreate_mode = recreate_mode
-        # The HTTP or HTTPS URL of the reference video. The duration ranges from 2 to 360 seconds. The URL must remain accessible during task execution. We recommend that the validity period be no less than 24 hours.
+        # The HTTP(S) URL of the reference video. The duration ranges from 2 to 360 seconds. The URL must remain accessible during task execution. We recommend that the validity period be no less than 24 hours.
         # 
         # This parameter is required.
         self.source_video_url = source_video_url
@@ -193,14 +190,11 @@ class EcomVideoRecreationRequestInputProductInfo(DaraModel):
         detail: str = None,
         title: str = None,
     ):
-        # The category of the product.  
-        # Example value: Women\\"s clothing/Sun protection clothing.
+        # The product category. Example: Women\\"s clothing/Sun-protective clothing.
         self.category = category
-        # The actual information about the product, such as SKU, brand, color, material, size, specifications, logo, and usage instructions. This information is used to constrain the facts in the voiceover.  
-        # Example value: Pale yellow, cooling fabric, sun protection down to the back of the hand, UPF50+
+        # The actual product information, such as SKU, brand, color, material, size, specifications, logo, and usage instructions. This is used to constrain voiceover facts. Example: Light yellow, cooling fabric, sun protection down to the back of the hand, UPF50+.
         self.detail = detail
-        # Required for product replacement. The name of the target product to be replaced. Maximum length: 200 characters.  
-        # Example value: Pale yellow cooling sun protection clothing.
+        # Required for product replacement. The name of the target product to be replaced. The maximum length is 200 characters. Example: Light yellow cooling sun-protective clothing.
         self.title = title
 
     def validate(self):

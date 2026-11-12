@@ -9,7 +9,7 @@ class MerchandisePriceTagDetectionRequest(DaraModel):
         self,
         image_url: str = None,
     ):
-        # The HTTP(S) URL of the image to be detected.
+        # The HTTP or HTTPS URL of the image to be detected.
         # 
         # This parameter is required.
         self.image_url = image_url

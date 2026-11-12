@@ -184,6 +184,9 @@ from ._update_display_knowledge_request import UpdateDisplayKnowledgeRequest
 from ._update_display_knowledge_shrink_request import UpdateDisplayKnowledgeShrinkRequest
 from ._update_display_knowledge_response_body import UpdateDisplayKnowledgeResponseBody
 from ._update_display_knowledge_response import UpdateDisplayKnowledgeResponse
+from ._vacancy_detection_request import VacancyDetectionRequest
+from ._vacancy_detection_response_body import VacancyDetectionResponseBody
+from ._vacancy_detection_response import VacancyDetectionResponse
 from ._video_generation_request import VideoGenerationRequest
 from ._video_generation_shrink_request import VideoGenerationShrinkRequest
 from ._video_generation_response_body import VideoGenerationResponseBody
@@ -324,6 +327,7 @@ from ._text_translate_async_response_body import TextTranslateAsyncResponseBodyD
 from ._update_display_knowledge_request import UpdateDisplayKnowledgeRequestRecords
 from ._update_display_knowledge_response_body import UpdateDisplayKnowledgeResponseBodyDataResults
 from ._update_display_knowledge_response_body import UpdateDisplayKnowledgeResponseBodyData
+from ._vacancy_detection_response_body import VacancyDetectionResponseBodyData
 from ._video_generation_request import VideoGenerationRequestInputAssetBindings
 from ._video_generation_request import VideoGenerationRequestInput
 from ._video_generation_request import VideoGenerationRequestIntent
@@ -516,6 +520,9 @@ __all__ = [
     UpdateDisplayKnowledgeShrinkRequest,
     UpdateDisplayKnowledgeResponseBody,
     UpdateDisplayKnowledgeResponse,
+    VacancyDetectionRequest,
+    VacancyDetectionResponseBody,
+    VacancyDetectionResponse,
     VideoGenerationRequest,
     VideoGenerationShrinkRequest,
     VideoGenerationResponseBody,
@@ -656,6 +663,7 @@ __all__ = [
     UpdateDisplayKnowledgeRequestRecords,
     UpdateDisplayKnowledgeResponseBodyDataResults,
     UpdateDisplayKnowledgeResponseBodyData,
+    VacancyDetectionResponseBodyData,
     VideoGenerationRequestInputAssetBindings,
     VideoGenerationRequestInput,
     VideoGenerationRequestIntent,

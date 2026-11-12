@@ -22,7 +22,7 @@ class ImageTranslationProAsyncResponseBody(DaraModel):
         self.message = message
         # The ID of the submission request, which is used for troubleshooting.
         self.request_id = request_id
-        # Indicates whether the submission call is successful. This does not mean that the translation is completed.
+        # Indicates whether the submission call is successful. This does not indicate that the translation is complete.
         self.success = success
 
     def validate(self):

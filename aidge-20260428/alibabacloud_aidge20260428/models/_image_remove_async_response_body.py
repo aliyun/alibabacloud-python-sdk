@@ -14,15 +14,17 @@ class ImageRemoveAsyncResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code, such as success.
+        # The status code, such as "success". This parameter is not returned for successful calls.
         self.code = code
-        # The returned result struct information.
+        # The returned result struct.
         self.data = data
-        # The error message, such as \\"The parameter contains sensitive information. Please try another input.\\"
+        # The error message, such as "The parameters contain sensitive information. Try another input."
         self.message = message
-        # The request ID, which is used to identify a unique request call.
+        # The request ID, which is used to identify a unique request.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values: true: The call is successful. false: The call failed.
+        # Indicates whether the call is successful. Valid values:
+        # - true: The call is successful.
+        # - false: The call fails.
         self.success = success
 
     def validate(self):
@@ -76,7 +78,7 @@ class ImageRemoveAsyncResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The task ID used to query the asynchronous task result.
+        # The task ID, which is used to query the result of the asynchronous task.
         self.task_id = task_id
 
     def validate(self):

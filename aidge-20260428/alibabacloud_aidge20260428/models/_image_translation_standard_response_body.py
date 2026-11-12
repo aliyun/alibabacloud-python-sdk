@@ -18,13 +18,13 @@ class ImageTranslationStandardResponseBody(DaraModel):
     ):
         # The response code. A value of 200 indicates a successful call. For other response codes, refer to the error code information.
         self.code = code
-        # The translation result data, including the URL of the translated image and usage information.
+        # The translation result data, which includes the URL of the translated image and usage information.
         self.data = data
-        # The error message. This parameter returns Success for successful calls and specific error messages for exceptions.
+        # The error message. "Success" is returned for a successful call, and specific error details are returned when an exception occurs.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. A value of true indicates success, and a value of false indicates failure.
+        # Indicates whether the call is successful. A value of true indicates success, and a value of false indicates failure.
         self.success = success
 
     def validate(self):
@@ -82,7 +82,7 @@ class ImageTranslationStandardResponseBodyData(DaraModel):
     ):
         # The edit information.
         self.edit_info = edit_info
-        # The URL of the image generated after the image translation.
+        # The URL of the generated translated image.
         self.image_url = image_url
         # The usage information, such as the number of processed images.
         self.usage_map = usage_map
@@ -137,15 +137,15 @@ class ImageTranslationStandardResponseBodyDataEditInfo(DaraModel):
     ):
         # The list of fonts used.
         self.font = font
-        # The product area rectangles.
+        # The product area rectangle.
         self.goods_rects = goods_rects
         # The product image URL.
         self.goods_url = goods_url
         # The list of target languages.
         self.languages = languages
-        # The original image URL.
+        # The URL of the original image.
         self.pict_url = pict_url
-        # The repaired image URL.
+        # The URL of the repaired image.
         self.repaired_url = repaired_url
         # The list of repaired image URLs.
         self.repaired_urls = repaired_urls
@@ -260,7 +260,7 @@ class ImageTranslationStandardResponseBodyDataEditInfoTextAreas(DaraModel):
         self.fontsize = fontsize
         # The horizontal layout.
         self.horizontal_layout = horizontal_layout
-        # The number of lines.
+        # The line count.
         self.line_count = line_count
         # The list of texts.
         self.texts = texts
@@ -355,7 +355,7 @@ class ImageTranslationStandardResponseBodyDataEditInfoTextAreasTexts(DaraModel):
         self.image_rect = image_rect
         # The language.
         self.language = language
-        # The number of lines.
+        # The line count.
         self.line_count = line_count
         # The text area.
         self.text_rect = text_rect

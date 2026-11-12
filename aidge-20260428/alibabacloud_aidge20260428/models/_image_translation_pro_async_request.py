@@ -16,14 +16,14 @@ class ImageTranslationProAsyncRequest(DaraModel):
         translating_brand_in_the_product: bool = None,
         use_image_editor: bool = None,
     ):
-        # The business order ID of the caller. This ID is recorded when the request is accepted and returned as-is when you query the asynchronous task result.
+        # The business order number of the caller. This number is recorded upon acceptance and returned as-is when you query the asynchronous task result.
         self.biz_id = biz_id
         # The ID of the intervention glossary. You must create the glossary in the console and provide its ID. If this parameter is left empty, the translation results are not modified.
         self.glossary = glossary
-        # * Image URL: Must be accessible over the Internet.   
-        # * Format: PNG, JPEG, JPG, BMP, and WebP.   
-        # * Pixels: The width and height must not exceed 4,000.  
-        # * File size: The original file must be less than or equal to 10 MB.
+        # • Image URL: Must be accessible over the Internet.   
+        # • Format: PNG, JPEG, JPG, BMP, or WEBP.   
+        # • Pixels: Both width and height must not exceed 4,000.  
+        # • File size: The original file size must be less than or equal to 10 MB.
         # 
         # This parameter is required.
         self.image_url = image_url

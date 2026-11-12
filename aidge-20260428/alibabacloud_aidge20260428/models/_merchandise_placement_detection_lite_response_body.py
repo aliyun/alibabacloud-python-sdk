@@ -20,7 +20,7 @@ class MerchandisePlacementDetectionLiteResponseBody(DaraModel):
         self.code = code
         # The returned result.
         self.data = data
-        # The response message or failure description.
+        # The return message or failure description.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -81,7 +81,7 @@ class MerchandisePlacementDetectionLiteResponseBodyData(DaraModel):
     ):
         # The result.
         self.result = result
-        # The usage map. The value is {"ProcessingCount":1} for a successful call, and an empty object for a failed call.
+        # The usage map. The value is {"ProcessingCount":1} if the call is successful, or an empty object if the call fails.
         self.usage_map = usage_map
 
     def validate(self):
@@ -120,13 +120,13 @@ class MerchandisePlacementDetectionLiteResponseBodyDataResult(DaraModel):
         sku_ids: List[str] = None,
         type: str = None,
     ):
-        # The supplementary element grounding results.
+        # The supplementary element grounding result.
         self.grounding = grounding
         # The product items.
         self.products = products
-        # The deduplicated list of SkuIds.
+        # The deduplicated list of SkuId values.
         self.sku_ids = sku_ids
-        # The result type, which is fixed to sku.
+        # The result type. The value is fixed as sku.
         self.type = type
 
     def validate(self):
@@ -186,7 +186,7 @@ class MerchandisePlacementDetectionLiteResponseBodyDataResultProducts(DaraModel)
     ):
         # The bounding boxes corresponding to the SKU.
         self.boxes = boxes
-        # The recognition code, which is obtained by removing the trailing _ce from the recognition name.
+        # The recognition code, which is obtained by removing the _ce suffix from the recognition name.
         self.sku_id = sku_id
 
     def validate(self):
@@ -284,12 +284,12 @@ class MerchandisePlacementDetectionLiteResponseBodyDataResultGrounding(DaraModel
         coverage: str = None,
         regions: List[main_models.MerchandisePlacementDetectionLiteResponseBodyDataResultGroundingRegions] = None,
     ):
-        # The coverage status. Valid values:
-        # - complete: The relevant visible targets are complete.
+        # The coverage status of the grounding. Valid values:
+        # - complete: All relevant visible targets are complete.
         # - partial: Only some targets are valid or recognizable.
-        # - Empty string: No valid supplementary grounding results are obtained.
+        # - Empty string: No valid supplementary grounding result is obtained.
         self.coverage = coverage
-        # The target array, which contains up to 12 items. This array can be empty when no relevant targets are found.
+        # The array of targets, containing up to 12 items. This array can be empty if no relevant targets are found.
         self.regions = regions
 
     def validate(self):
@@ -337,7 +337,7 @@ class MerchandisePlacementDetectionLiteResponseBodyDataResultGroundingRegions(Da
         self.bbox_2d = bbox_2d
         # The target category.
         self.label = label
-        # The confirmable short name or text of up to 24 characters. This field is an empty string when the text is unclear.
+        # The confirmable short name or text of up to 24 characters. This field is an empty string if the text is unclear.
         self.text = text
 
     def validate(self):

@@ -18,9 +18,9 @@ class MerchandisePlacementDetectionProResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The detection result of product display detection Pro.
+        # The detection result of the retail display detection Pro edition.
         self.data = data
-        # The response message or failure description.
+        # The returned message or failure description.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -82,7 +82,7 @@ class MerchandisePlacementDetectionProResponseBodyData(DaraModel):
     ):
         # The number of valid bounding boxes.
         self.box_count = box_count
-        # The list of per-box detection details.
+        # The list of detection details for each bounding box.
         self.data = data
         # The usage information.
         self.usage_map = usage_map
@@ -134,11 +134,11 @@ class MerchandisePlacementDetectionProResponseBodyDataData(DaraModel):
         detected_sku_name: str = None,
         idx: int = None,
     ):
-        # The normalized bounding box coordinates [x1,y1,x2,y2], with values in the range 0–1000.
+        # The normalized bounding box coordinates in the [x1,y1,x2,y2] format. Valid values: 0 to 1000.
         self.bbox_2d = bbox_2d
-        # The detected product name. The value is unknown if the name cannot be determined.
+        # The name of the detected product. If the name cannot be determined, the value is unknown.
         self.detected_sku_name = detected_sku_name
-        # The bounding box index, starting from 1.
+        # The index of the bounding box, starting from 1.
         self.idx = idx
 
     def validate(self):

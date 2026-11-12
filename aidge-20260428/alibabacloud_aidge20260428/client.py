@@ -4828,6 +4828,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.update_display_knowledge_with_options_async(request, runtime)
 
+    def vacancy_detection_with_options(
+        self,
+        request: main_models.VacancyDetectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VacancyDetectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.system_prompt):
+            query['SystemPrompt'] = request.system_prompt
+        if not DaraCore.is_null(request.user_prompt):
+            query['UserPrompt'] = request.user_prompt
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'VacancyDetection',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.VacancyDetectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def vacancy_detection_with_options_async(
+        self,
+        request: main_models.VacancyDetectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VacancyDetectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.system_prompt):
+            query['SystemPrompt'] = request.system_prompt
+        if not DaraCore.is_null(request.user_prompt):
+            query['UserPrompt'] = request.user_prompt
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'VacancyDetection',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.VacancyDetectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def vacancy_detection(
+        self,
+        request: main_models.VacancyDetectionRequest,
+    ) -> main_models.VacancyDetectionResponse:
+        runtime = RuntimeOptions()
+        return self.vacancy_detection_with_options(request, runtime)
+
+    async def vacancy_detection_async(
+        self,
+        request: main_models.VacancyDetectionRequest,
+    ) -> main_models.VacancyDetectionResponse:
+        runtime = RuntimeOptions()
+        return await self.vacancy_detection_with_options_async(request, runtime)
+
     def video_generation_with_options(
         self,
         tmp_req: main_models.VideoGenerationRequest,

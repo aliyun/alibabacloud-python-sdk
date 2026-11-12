@@ -14,17 +14,15 @@ class AiTryOnResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. This parameter is not returned when the call is successful.
+        # The error code. This parameter is not returned if the call is successful.
         self.code = code
         # The returned result struct.
         self.data = data
-        # The error message. This parameter is not returned when the call is successful.
+        # The error message. This parameter is not returned if the call is successful.
         self.message = message
-        # The ID of the request.
+        # The ID of the request, which is used to identify a unique API call.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
-        # - true: The call was successful.
-        # - false: The call failed.
+        # Indicates whether the call is successful. A value of true indicates success, and a value of false indicates failure.
         self.success = success
 
     def validate(self):
@@ -81,13 +79,13 @@ class AiTryOnResponseBodyData(DaraModel):
         image_width: str = None,
         usage_map: main_models.AiTryOnResponseBodyDataUsageMap = None,
     ):
-        # The height of the result image in pixels.
+        # The actual height of the generated image.
         self.image_height = image_height
-        # The URL of the virtual try-on result image.
+        # The URL of the generated image.
         self.image_url = image_url
-        # The width of the result image in pixels.
+        # The actual width of the generated image.
         self.image_width = image_width
-        # The usage details.
+        # The usage fields.
         self.usage_map = usage_map
 
     def validate(self):
@@ -138,7 +136,7 @@ class AiTryOnResponseBodyDataUsageMap(DaraModel):
     ):
         # The number of processed images.
         self.processed_image_count = processed_image_count
-        # The resolution of the processed images.
+        # The resolution of the image.
         self.resolution = resolution
 
     def validate(self):

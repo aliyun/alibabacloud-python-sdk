@@ -15,11 +15,11 @@ class SubmitProductMatchRequest(DaraModel):
         shop_name: str = None,
         title: str = None,
     ):
-        # The product brand. If this value is not specified, the system attempts to extract the brand from the shop name.
+        # The product brand. If missing, the service attempts to extract it from the shop name.
         self.brand_name = brand_name
-        # The Miaojie product category. Currently used for extension and auditing purposes.
+        # The Miaojie product category, which is currently used for extension and auditing.
         self.category = category
-        # The HTTP or HTTPS URL of the product main image.
+        # The HTTP/HTTPS URL of the product main image.
         # 
         # This parameter is required.
         self.image_url = image_url
@@ -27,9 +27,9 @@ class SubmitProductMatchRequest(DaraModel):
         # 
         # This parameter is required.
         self.item_id = item_id
-        # The HTTP or HTTPS URL of the product detail page.
+        # The HTTP/HTTPS URL of the product detail page.
         self.product_url = product_url
-        # The shop name. This value is also used as the extraction source when the brand name is missing.
+        # The shop name, which is also used as the extraction source when the brand is missing.
         # 
         # This parameter is required.
         self.shop_name = shop_name

@@ -79,7 +79,7 @@ class StorefrontSceneRecognitionResponseBodyData(DaraModel):
         result: main_models.StorefrontSceneRecognitionResponseBodyDataResult = None,
         usage_map: Dict[str, int] = None,
     ):
-        # The scene recognition result details.
+        # The details of the scene recognition result.
         self.result = result
         # The usage information.
         self.usage_map = usage_map
@@ -119,11 +119,11 @@ class StorefrontSceneRecognitionResponseBodyDataResult(DaraModel):
         grounding: main_models.StorefrontSceneRecognitionResponseBodyDataResultGrounding = None,
         scenes: List[str] = None,
     ):
-        # The classification details. This can be an empty array.
+        # The classification details, which can be an empty array.
         self.details = details
         # The localization information.
         self.grounding = grounding
-        # The non-empty scene classification array.
+        # The non-empty array of scene classifications.
         self.scenes = scenes
 
     def validate(self):
@@ -177,7 +177,7 @@ class StorefrontSceneRecognitionResponseBodyDataResultGrounding(DaraModel):
     ):
         # The coverage.
         self.coverage = coverage
-        # The region list.
+        # The list of regions.
         self.regions = regions
 
     def validate(self):
@@ -268,7 +268,7 @@ class StorefrontSceneRecognitionResponseBodyDataResultDetails(DaraModel):
     ):
         # The non-empty category name.
         self.clazz = clazz
-        # A finite numerical value. The source document does not specify a value range.
+        # A finite numerical value. The source document does not specify the value range.
         self.confidence = confidence
 
     def validate(self):

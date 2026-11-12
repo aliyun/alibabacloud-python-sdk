@@ -16,32 +16,23 @@ class VideoTranslationShrinkRequest(DaraModel):
         target_language: str = None,
         video_url: str = None,
     ):
-        # The list of translation features. Valid values: speech and visual. You can select both. At least one feature must be specified. Duplicate values are not allowed.
+        # The list of translation capabilities. Valid values: `speech` and `visual`. You can select both. At least one capability must be specified. Duplicate values are not allowed.
         # 
         # This parameter is required.
         self.capabilities_shrink = capabilities_shrink
-        # Specifies whether to enable the quality check for on-screen text processing. This parameter takes effect only when visual is included and explicitly set to true. If only speech is selected, this parameter is ignored. No quality check is performed, no quality check fields are returned, and no error is reported for this parameter. Enabling the quality check may increase the waiting time. Do not enable it unless necessary. Default value: false.
+        # Specifies whether to enable the quality check for on-screen text processing. This parameter takes effect only when `visual` is included and explicitly set to `true`. If only `speech` is selected, this parameter is ignored, no quality check is performed, no quality check fields are returned, and no error is reported for this parameter. Enabling the quality check may increase the processing time. Do not enable it unless necessary. Default value: `false`.
         self.enable_quality_check = enable_quality_check
-        # Valid only when visual is included. Specifies whether to only erase the on-screen text without translation. Valid values:
-        # - true: Erases the on-screen text without translation.
-        # - false: Translates the on-screen text.
-        # Default value: false.
+        # Specifies whether to only erase on-screen text without translation. This parameter is valid only when `visual` is included. Valid values: `true`: erases the on-screen text without translation. `false`: translates the on-screen text. Default value: `false`.
         self.erase_only = erase_only
-        # Valid only when visual is included. Specifies whether to erase brand logos. Valid values:
-        # - true: Erases brand logos.
-        # - false: Retains brand logos.
-        # Default value: false. This parameter is independent of EraseOnly.
+        # Specifies whether to erase brand logos. This parameter is valid only when `visual` is included. Valid values: `true`: erases brand logos. `false`: retains brand logos. Default value: `false`. This parameter is independent of `EraseOnly`.
         self.remove_logo = remove_logo
-        # The original language of the video. For supported languages, see Language support.
+        # The original language of the video (source language). For supported languages, see Language support.
         self.source_language = source_language
-        # Valid only when speech is included. Valid values:
-        # - erase: Erases only the original subtitles.
-        # - replace: Replaces the original subtitles with translated subtitles. This erases the original subtitles and adds subtitles synchronized with the translated speech.
-        # - If not specified, the original subtitles are not processed. This means the original subtitles are neither erased nor replaced with new subtitles.
+        # The subtitle processing mode. This parameter is valid only when `speech` is included. Valid values: `erase`: erases the original subtitles only. `replace`: replaces the original subtitles with translated subtitles, which means erasing the original subtitles and adding subtitles synchronized with the translated speech. If this parameter is not specified, the original subtitles are not processed, which means neither erasing the original subtitles nor adding new subtitles.
         self.subtitle_mode = subtitle_mode
-        # Required when speech is included. Optional when only visual is selected and EraseOnly is set to true. If provided in this case, it is ignored. Required in all other cases.
+        # The target language. This parameter is required when `speech` is included. If only `visual` is included and `EraseOnly` is set to true, this parameter is optional and ignored if provided. In other cases, this parameter is required.
         self.target_language = target_language
-        # The URL of the video. Supported formats: MP4 and MOV. Maximum size: 200 MB.
+        # The video URL. Supported formats: MP4 and MOV. Maximum file size: 200 MB.
         # 
         # This parameter is required.
         self.video_url = video_url

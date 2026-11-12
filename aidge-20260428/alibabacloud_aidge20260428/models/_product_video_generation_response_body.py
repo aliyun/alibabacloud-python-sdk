@@ -80,9 +80,9 @@ class ProductVideoGenerationResponseBodyData(DaraModel):
     ):
         # The planning route written upon acceptance. Valid values: DIRECT (with script) and AUTO_PLAN (automatic planning).
         self.route = route
-        # The current status.
+        # The current status of the task.
         self.status = status
-        # The task ID of this service.
+        # The task ID of the service.
         self.task_id = task_id
 
     def validate(self):

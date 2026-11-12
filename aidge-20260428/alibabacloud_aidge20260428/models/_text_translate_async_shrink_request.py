@@ -16,9 +16,9 @@ class TextTranslateAsyncShrinkRequest(DaraModel):
         target_language: str = None,
         translate_scene: str = None,
     ):
-        # The caller business ID. It can be up to 128 characters in length. This ID is passed through in the translation results. It is used only for asynchronous text translation and is returned as-is in the task results.
+        # The caller business ID. The ID can be up to 128 characters in length and is passed through in the translation results. This parameter is used only for asynchronous text translation and is returned as is in the task results.
         self.biz_id = biz_id
-        # This field represents your identity and facilitates communication for various issues. If you are an internal Alibaba organization, we recommend that you specify this parameter based on the actual scenario, such as BU name-product or BU name-chat. If you are an external partner, we recommend that you specify the full name of your company. The company name must be the same as the one you used when registering your Alibaba Cloud account.
+        # This field represents your identity and facilitates communication for various issues. If you are an internal Alibaba organization, we recommend that you specify this field based on the actual scenario, such as BU name-product or BU name-chat. If you are an external Alibaba partner, we recommend that you specify the full name of your company. The company name must be the same as the one you used when registering your Alibaba Cloud account.
         self.biz_name = biz_name
         # The format type of the source text. Valid values: text and html.
         self.format_type = format_type
@@ -34,13 +34,13 @@ class TextTranslateAsyncShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.target_language = target_language
-        # The business scenario identifier. You can specify only one of the following values. After you specify a value, the translation engine uses the terminology library and style policy of the corresponding industry to output industry-specific translations. If this field is not specified or an invalid value is specified, the general translation policy is used. Valid values:
-        # - e-commerce-title: cross-border e-commerce product title translation
-        # - e-commerce-description: cross-border e-commerce product description translation
-        # - e-commerce-chat: cross-border e-commerce conversation translation
-        # - e-commerce-cpv: cross-border e-commerce product CPV attribute translation
-        # - novel: novel translation
-        # - game: game translation
+        # The business scenario identifier. You can specify only one of the following values. After you specify a value, the translation engine uses the terminology library and style policy of the corresponding industry to output industry-specific translations. If this field is not specified or is invalid, the general translation policy is used. Valid values:
+        # - e-commerce-title: Cross-border e-commerce product title translation.
+        # - e-commerce-description: Cross-border e-commerce product description translation.
+        # - e-commerce-chat: Cross-border e-commerce conversation translation.
+        # - e-commerce-cpv: Cross-border e-commerce product CPV attribute translation.
+        # - novel: Novel translation.
+        # - game: Game translation.
         self.translate_scene = translate_scene
 
     def validate(self):

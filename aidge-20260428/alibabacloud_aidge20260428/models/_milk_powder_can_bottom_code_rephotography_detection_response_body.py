@@ -20,11 +20,11 @@ class MilkPowderCanBottomCodeRephotographyDetectionResponseBody(DaraModel):
         self.code = code
         # The recapture detection result.
         self.data = data
-        # The response message or failure description.
+        # The return message or failure description.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Specifies whether the call is successful. A valid business conclusion does not mean that the review is passed.
+        # Indicates whether the call is successful. A valid business conclusion does not mean the review is passed.
         self.success = success
 
     def validate(self):
@@ -81,7 +81,7 @@ class MilkPowderCanBottomCodeRephotographyDetectionResponseBodyData(DaraModel):
     ):
         # The details of the recapture detection result.
         self.result = result
-        # The usage information. If the call is successful, the value is `{"ProcessingCount":1}`. If the call fails, an empty object is returned.
+        # The usage information. If the call is successful, the value is `{"ProcessingCount":1}`. If the call fails, the value is an empty object.
         self.usage_map = usage_map
 
     def validate(self):
@@ -121,9 +121,9 @@ class MilkPowderCanBottomCodeRephotographyDetectionResponseBodyDataResult(DaraMo
     ):
         # The localization information.
         self.grounding = grounding
-        # Specifies whether the image is recaptured.
+        # Indicates whether the image is recaptured.
         self.is_fake = is_fake
-        # The detection type. The value is fixed to canBottom.
+        # The detection type, which is fixed to canBottom.
         self.type = type
 
     def validate(self):
@@ -214,9 +214,9 @@ class MilkPowderCanBottomCodeRephotographyDetectionResponseBodyDataResultGroundi
         label: str = None,
         text: str = None,
     ):
-        # The bounding box coordinates in the format of `[top-left x, top-left y, bottom-right x, bottom-right y]`. Valid values: 0 to 1000. The left value must be less than the right value, and the top value must be less than the bottom value.
+        # The bounding box coordinates in the format of `[top-left x, top-left y, bottom-right x, bottom-right y]`. The value range is 0 to 1000. The left coordinate is less than the right coordinate, and the top coordinate is less than the bottom coordinate.
         self.bbox_2d = bbox_2d
-        # The target category. For valid values, see the following table.
+        # The target category. For enumerations, see the following table.
         self.label = label
         # The confirmed short name or text of up to 24 characters. If the text is unclear, an empty string is returned.
         self.text = text

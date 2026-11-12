@@ -20,7 +20,7 @@ class MerchandiseSceneDetectionResponseBody(DaraModel):
         self.code = code
         # The display scene detection result.
         self.data = data
-        # The response message or failure description.
+        # The return message or failure description.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -123,7 +123,7 @@ class MerchandiseSceneDetectionResponseBodyDataResult(DaraModel):
         self.grounding = grounding
         # The list of recognized scenes.
         self.scenes = scenes
-        # Fixed value: scene.
+        # The type. Fixed value: scene.
         self.type = type
 
     def validate(self):
@@ -183,19 +183,19 @@ class MerchandiseSceneDetectionResponseBodyDataResultScenes(DaraModel):
     ):
         # Optional. The area proportion.
         self.area_rate = area_rate
-        # Optional. The purity metric for proprietary products. The specific business criteria are subject to the recognition service.
+        # Optional. The purity metric for proprietary products. The specific business definition is subject to the recognition service.
         self.own_purity = own_purity
-        # Optional. The display plumpness metric.
+        # Optional. The display fullness metric.
         self.plumpness = plumpness
         # The display name of the scene. If omitted, the value is an empty string.
         self.scene_actual_name = scene_actual_name
         # The center point of the scene, which retains the original normalized coordinates. If omitted, the value is an empty array.
         self.scene_center = scene_center
-        # The list of region points. Each item is in the {x,y} format and retains the original normalized coordinates. If omitted, the value is an empty array.
+        # The list of area points. Each item is in the format of {x,y} and retains the original normalized coordinates. If omitted, the value is an empty array.
         self.scene_location = scene_location
         # The scene identifier. This parameter is required and cannot be empty.
         self.scene_name = scene_name
-        # Optional. The shelf distribution proportion metric. The specific business criteria are subject to the recognition service.
+        # Optional. The shelf distribution proportion metric. The specific business definition is subject to the recognition service.
         self.shelf_distribution_rate = shelf_distribution_rate
 
     def validate(self):
@@ -274,9 +274,9 @@ class MerchandiseSceneDetectionResponseBodyDataResultScenesSceneLocation(DaraMod
         x: float = None,
         y: float = None,
     ):
-        # The x-coordinate of the region point.
+        # The x-coordinate of the area point.
         self.x = x
-        # The y-coordinate of the region point.
+        # The y-coordinate of the area point.
         self.y = y
 
     def validate(self):

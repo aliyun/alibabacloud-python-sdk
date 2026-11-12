@@ -16,9 +16,9 @@ class ProductVideoGenerationRequest(DaraModel):
         resolution: str = None,
         script: str = None,
     ):
-        # The aspect ratio. Default value: 9:16. Valid values: 16:9, 1:1, 3:4, and 9:16.
+        # The aspect ratio of the video. Default value: 9:16. Valid values: 16:9, 1:1, 3:4, and 9:16.
         self.aspect_ratio = aspect_ratio
-        # The video duration in seconds. Default value: 15. If no script is provided, the value must be an integer from 5 to 15. If a script is provided, the value must be an integer from 5 to 30. A value of 15.0 is treated as 15.
+        # The duration of the video in seconds. Default value: 15. If no script is provided, the value must be an integer from 5 to 15. If a script is provided, the value must be an integer from 5 to 30. A value of 15.0 is treated as 15.
         self.duration = duration
         # The public image URLs. At least one image URL is required. Each URL must start with http:// or https:// after leading and trailing whitespaces are removed.
         # 
@@ -28,7 +28,7 @@ class ProductVideoGenerationRequest(DaraModel):
         # 
         # This parameter is required.
         self.product_title = product_title
-        # The resolution. Default value: 720P. Valid values: 720P and 1080P. The value is case-insensitive and is automatically converted to uppercase by the service.
+        # The resolution of the video. Default value: 720P. Valid values: 720P and 1080P. The value is case-insensitive and is automatically converted to uppercase by the service.
         self.resolution = resolution
         # The existing storyboard script. If this parameter is not provided or is left blank, automatic planning is used.
         self.script = script
