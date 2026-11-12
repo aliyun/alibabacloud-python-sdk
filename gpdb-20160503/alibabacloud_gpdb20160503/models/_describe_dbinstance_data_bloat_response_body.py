@@ -15,13 +15,13 @@ class DescribeDBInstanceDataBloatResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The queried data bloat.
+        # The list of data bloat details.
         self.items = items
-        # The page number of the returned page.
+        # The current page number.
         self.page_number = page_number
         # The ID of the request.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of tables. The total number of pages is calculated by dividing this value by the page size.
         self.total_count = total_count
 
     def validate(self):
@@ -86,19 +86,19 @@ class DescribeDBInstanceDataBloatResponseBodyItems(DaraModel):
         time_last_updated: str = None,
         time_last_vacuumed: str = None,
     ):
-        # The coefficient of data bloat. It is calculated by using the following formula:
+        # The data bloat coefficient. The bloat coefficient is calculated by using the following formula:
         # 
-        # Bloat coefficient = Number of dead rows/Number of active rows.
+        # Number of dead rows counted by the system / Number of live rows counted by the system.
         self.bloat_ceoff = bloat_ceoff
-        # The bloat size of the table. It indicates the amount of space that can be released.
+        # The size of the bloated data, which indicates the amount of space that can be reclaimed.
         self.bloat_size = bloat_size
         # The name of the database.
         self.database_name = database_name
-        # The expected size of the table.
+        # The expected table size.
         # 
-        # It indicates the size of the table that has no data bloat.
+        # The expected table size is the estimated size of the table when no data bloat occurs.
         self.expect_table_size = expect_table_size
-        # The actual size of the table.
+        # The actual table size.
         self.real_table_size = real_table_size
         # The name of the schema.
         self.schema_name = schema_name
@@ -106,15 +106,15 @@ class DescribeDBInstanceDataBloatResponseBodyItems(DaraModel):
         self.sequence = sequence
         # The storage type of the table. Valid values:
         # 
-        # *   **Heap Table**
-        # *   **Append-Only Heap Table**
-        # *   **Append-Only Columnar Table**
+        # - **Heap Table**: heap table
+        # - **Append-Only Heap Table**: append-only heap table
+        # - **Append-Only Columnar Table**: column-oriented table
         self.storage_type = storage_type
         # This parameter is not returned.
         self.suggested_action = suggested_action
         # The name of the table.
         self.table_name = table_name
-        # The time when the table was last deleted, inserted, or updated.
+        # The time when the table was last updated by a DELETE, INSERT, or UPDATE operation.
         self.time_last_updated = time_last_updated
         # The time when the table was last vacuumed. The time is displayed in UTC.
         self.time_last_vacuumed = time_last_vacuumed

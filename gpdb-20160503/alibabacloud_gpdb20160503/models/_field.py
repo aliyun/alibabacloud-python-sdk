@@ -14,11 +14,17 @@ class Field(DaraModel):
         long_value: int = None,
         string_value: str = None,
     ):
+        # The Base64-encoded binary.
         self.blob_value = blob_value
+        # The Boolean value.
         self.boolean_value = boolean_value
+        # The Double value.
         self.double_value = double_value
+        # Indicates whether the value is null.
         self.is_null = is_null
+        # The Long value.
         self.long_value = long_value
+        # The string.
         self.string_value = string_value
 
     def validate(self):

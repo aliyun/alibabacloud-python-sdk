@@ -16,7 +16,7 @@ class GetSupabaseProjectApiKeysRequest(DaraModel):
         self.project_id = project_id
         # The region ID.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to view the available region IDs.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available region IDs.
         self.region_id = region_id
 
     def validate(self):

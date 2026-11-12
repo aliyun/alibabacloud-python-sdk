@@ -18,9 +18,9 @@ class ModifySupabaseBackupPolicyRequest(DaraModel):
         # The data backup retention period. Unit: days. Valid values: 1 to 7.
         self.backup_retention_period = backup_retention_period
         # Specifies whether to enable automatic recovery points. Valid values:
-        # - true: Enabled.
-        # - false: Disabled.
-        # If this parameter is not specified, false is used.
+        # - true: enables automatic recovery points.
+        # - false: disables automatic recovery points.
+        # Default value: false.
         self.enable_recovery_point = enable_recovery_point
         # The data backup cycle. Separate multiple values with commas (,). Valid values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, and Sunday.
         # 
@@ -34,7 +34,7 @@ class ModifySupabaseBackupPolicyRequest(DaraModel):
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The interval for the automatic creation of recovery points. Unit: hours. Valid values: 1/6 (10 minutes), 1/2 (30 minutes), 1, 2, 4, and 8. This parameter takes effect only when EnableRecoveryPoint is set to true. If this parameter is not specified, the default value 1 is used. If EnableRecoveryPoint is set to false, this parameter is ignored.
+        # The interval for the automatic creation of recovery points. Unit: hours. Valid values: 1/6 (10 minutes), 1/2 (30 minutes), 1, 2, 4, and 8. This parameter takes effect only when EnableRecoveryPoint is set to true. If EnableRecoveryPoint is set to true and this parameter is not specified, the default value 1 is used. If EnableRecoveryPoint is set to false, this parameter is ignored.
         self.recovery_point_period = recovery_point_period
         # The region ID.
         # 

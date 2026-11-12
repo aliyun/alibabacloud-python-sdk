@@ -14,24 +14,24 @@ class GetSecretValueRequest(DaraModel):
         secret_name: str = None,
         workspace_id: str = None,
     ):
-        # The instance ID.
+        # The ID of the instance.
         # 
-        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in the specified region, including instance IDs.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         # The region ID of the instance.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The Alibaba Cloud Resource Name (ARN) of the access credential for the created Data API account. Format: `acs:gpdb:{{region}}:{{accountId}}:secret/{{secretName}}-{{32 digits random string}`.
+        # The Alibaba Cloud Resource Name (ARN) that uniquely specifies the logon credentials and permissions of the Data API account created by the user. Format: ```acs:gpdb:{{region}}:{{accountId}}:secret/{{secretName}}-{{32 digits random string}```
         # 
-        # >  You must specify one of the SecretArn and SecretName parameters.
+        # > Specify either this parameter or the SecretName parameter.
         self.secret_arn = secret_arn
-        # The name of the access credential.
+        # The name of the user credential.
         # 
-        # >  You must specify one of the SecretArn and SecretName parameters.
+        # > Specify either this parameter or the SecretArn parameter.
         self.secret_name = secret_name
-        # The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes effect.
+        # The ID of the workspace that consists of multiple database instances. This parameter and the DBInstanceId parameter cannot be empty at the same time. If both parameters are specified, this parameter takes precedence.
         self.workspace_id = workspace_id
 
     def validate(self):

@@ -17,13 +17,13 @@ class GetUploadDocumentJobResponseBody(DaraModel):
     ):
         # The chunking result.
         self.chunk_result = chunk_result
-        # The details of the document upload task.
+        # The detailed information of the document upload task.
         self.job = job
         # The detailed information returned by the operation.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The status of this operation. Valid values:
+        # The status of the operation. Valid values:
         # - **success**: The operation is successful.
         # - **fail**: The operation failed.
         self.status = status
@@ -94,9 +94,9 @@ class GetUploadDocumentJobResponseBodyUsage(DaraModel):
         embedding_entries: int = None,
         embedding_tokens: int = None,
     ):
-        # The number of entries used during embedding.
+        # The number of entries used for vectorization.
         self.embedding_entries = embedding_entries
-        # The number of tokens used during embedding.
+        # The number of tokens used for vectorization.
         # 
         # > A token is the smallest unit into which the input text is split. A token can be a word, a phrase, a punctuation mark, or a character.
         self.embedding_tokens = embedding_tokens
@@ -139,28 +139,28 @@ class GetUploadDocumentJobResponseBodyJob(DaraModel):
         status: str = None,
         update_time: str = None,
     ):
-        # Indicates whether the operation is complete.
+        # Indicates whether the operation is completed.
         self.completed = completed
         # The time when the task was created.
         self.create_time = create_time
-        # The error message returned when the operation encounters an exception or fails.
+        # The error message returned when the current operation is abnormal or fails.
         self.error = error
         # The error code.
         self.error_code = error_code
-        # Job ID。
+        # The job ID.
         self.id = id
-        # The upload progress. This value is a percentage. A value of 100 indicates that the upload is complete.
+        # The upload progress. The value is a percentage. A value of 100 indicates that the upload is completed.
         self.progress = progress
         # The task status. Valid values:
         # - Success: The task is successful.
-        # - Failed: The task failed. You can view the Error field for the failure reason.
-        # - Cancelling: The task is being canceled.
-        # - Cancelled: The task is canceled.
-        # - Start: The task has started.
+        # - Failed: The task failed. You can view the Error field for the cause of the failure.
+        # - Cancelling: The task is being cancelled.
+        # - Cancelled: The task is cancelled.
+        # - Start: The task is started.
         # - Running: The task is running.
         # - Pending: The task is pending.
         self.status = status
-        # The time when the task was last updated.
+        # The time when the task was updated.
         self.update_time = update_time
 
     def validate(self):
@@ -232,11 +232,11 @@ class GetUploadDocumentJobResponseBodyChunkResult(DaraModel):
         document_loader_result_file_url: str = None,
         plain_chunk_file_url: str = None,
     ):
-        # The URL of the chunked file. The URL is valid for 2 hours. The file is in JSONL format, and each line is in the format `{"page_content":"*****", "metadata": {"**":"***","**":"***"}`.
+        # The URL of the chunked file. The URL is valid for 2 hours. The file format is JSONL, and each line is in the following format: `{"page_content":"*****", "metadata": {"**":"***","**":"***"}`.
         self.chunk_file_url = chunk_file_url
-        # The markdown result file parsed by ADBPGLoader. The URL is valid for 2 hours.
+        # The URL of the Markdown result file parsed by ADBPGLoader. The URL is valid for 2 hours.
         self.document_loader_result_file_url = document_loader_result_file_url
-        # The URL of the chunked file without metadata. The URL is valid for 2 hours. The file is in plain text format, and each line represents a chunk. This file can be conveniently used for embedding.
+        # The URL of the chunked file without metadata. The URL is valid for 2 hours. The file format is plain text, and each line represents a chunk. This file can be conveniently used for embedding.
         self.plain_chunk_file_url = plain_chunk_file_url
 
     def validate(self):

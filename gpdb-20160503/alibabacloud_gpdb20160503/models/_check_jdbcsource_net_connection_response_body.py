@@ -11,15 +11,15 @@ class CheckJDBCSourceNetConnectionResponseBody(DaraModel):
         connection_status: str = None,
         request_id: str = None,
     ):
-        # Return message: Error message returned when the connection fails, otherwise returns an empty string ("").
+        # The response message. If the connection fails, an error message is returned. Otherwise, an empty string is returned.
         self.connection_message = connection_message
-        # Service status:
+        # The connection status. Valid values:
         # 
-        # - Network connected: Success
+        # - Success: The network is connected.
         # 
-        # - Network not connected: Failed
+        # - Failed: The network is disconnected.
         self.connection_status = connection_status
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -36,73 +36,73 @@ class DescribeStreamingJobResponseBody(DaraModel):
         update_columns: List[str] = None,
         write_mode: str = None,
     ):
-        # Target database account.
+        # The destination database account.
         self.account = account
-        # Delivery guarantee.
+        # The delivery guarantee.
         self.consistency = consistency
-        # Creation time.
+        # The creation time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
-        # Data source ID.
+        # The data source ID.
         self.data_source_id = data_source_id
-        # Data source name.
+        # The data source name.
         self.data_source_name = data_source_name
-        # Target data table mapping field list.
+        # The list of mapped columns in the destination table.
         self.dest_columns = dest_columns
-        # Target database name.
+        # The destination database name.
         self.dest_database = dest_database
-        # Target namespace.
+        # The destination namespace.
         self.dest_schema = dest_schema
-        # Target table name.
+        # The destination table name.
         self.dest_table = dest_table
-        # When data in Kafka does not match the ADBPG target table, it can cause write failures. This value represents the number of error rows allowed; if exceeded, the task will fail.
+        # The maximum number of allowed error rows. If data in Kafka does not match the destination AnalyticDB for PostgreSQL table, a write failure occurs. If the number of error rows exceeds this value, the job fails.
         self.error_limit_count = error_limit_count
-        # Service status information, such as the reason for an exception. It is empty in the normal Running state.
+        # The service status message. For example, if an exception occurs, the cause of the exception is displayed. This parameter is empty when the service is in the Running state.
         self.error_message = error_message
-        # Fallback offset, which is the fallback position
+        # The fallback offset.
         # 
-        # - The FallbackOffset parameter defines the behavior when the consumer has not requested a specific offset to consume or the requested offset exceeds the current record\\"s offset information in the Kafka cluster. You can choose to start consuming from the earliest (newest) or latest (oldest) offset.
+        # - The FallbackOffset parameter defines the behavior when a consumer does not request a specific offset to consume, or when the requested offset exceeds the offset range recorded in the current Kafka cluster. You can choose to start consuming from the earliest or latest offset.
         self.fallback_offset = fallback_offset
-        # Kafka group name
+        # The Kafka group name.
         self.group_name = group_name
-        # Job configuration file.
+        # The job configuration file.
         self.job_config = job_config
-        # Job description.
+        # The job description.
         self.job_description = job_description
-        # Job ID.
+        # The job ID.
         self.job_id = job_id
-        # Job name.
+        # The job name.
         self.job_name = job_name
-        # Match columns, usually all primary key columns of the target table. If all column values in this configuration are the same, the two rows of data are considered duplicates.
+        # The match columns. Typically, these are all primary key columns of the destination table. If the values of all columns in this configuration are the same, the two rows of data are considered duplicate.
         self.match_columns = match_columns
-        # Configuration mode
-        # 1. Basic mode requires specifying some configuration fields
-        # 1. Professional mode supports submitting YAML files
+        # The configuration mode.
+        # 1. basic: requires specific configuration fields.
+        # 2. professional: supports submitting YAML files.
         self.mode = mode
-        # Last modified time.
+        # The last modification time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.modify_time = modify_time
-        # Target database password.
+        # The destination database password.
         self.password = password
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Source field list.
+        # The list of source columns.
         self.src_columns = src_columns
-        # Service status, with possible values:
+        # The service status. Valid values:
         # 
-        # - Init: Initializing
+        # - Init: initializing.
         # 
-        # - Running: Running
+        # - Running: running.
         # 
-        # - Exception: Exception
+        # - Exception: an exception occurred.
         # 
-        # - Paused: Paused
+        # - Paused: paused.
         self.status = status
-        # Update columns, usually all non-primary key columns of the target table. When data duplication is determined through MatchColumns, updating the UpdateColumns column values will result in new data overwriting old data.
+        # The update columns. Typically, these are all non-primary key columns of the destination table. When duplicate data is identified based on the match columns, the values of the update columns are updated so that the new data overwrites the old data.
         self.update_columns = update_columns
-        # Write mode.
+        # The write mode.
         self.write_mode = write_mode
 
     def validate(self):

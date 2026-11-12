@@ -10,7 +10,7 @@ class GetSupabaseUpdateVersionRequest(DaraModel):
         project_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the Supabase project.
+        # The Supabase project ID.
         # 
         # This parameter is required.
         self.project_id = project_id

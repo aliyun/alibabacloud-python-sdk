@@ -14,18 +14,17 @@ class DescribeAvailableResourcesRequest(DaraModel):
         # The billing method. Valid values:
         # 
         # - **Postpaid**: pay-as-you-go.
-        # 
         # - **Prepaid**: subscription.
         self.charge_type = charge_type
         # The region ID.
         # 
-        # > Call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) API to query available region IDs.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available region IDs.
         # 
         # This parameter is required.
         self.region = region
-        # The availability zone ID.
+        # The zone ID.
         # 
-        # > Call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) API to query available zone IDs.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available zone IDs.
         # 
         # This parameter is required.
         self.zone_id = zone_id

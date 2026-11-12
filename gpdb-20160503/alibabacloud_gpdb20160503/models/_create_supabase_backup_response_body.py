@@ -10,7 +10,7 @@ class CreateSupabaseBackupResponseBody(DaraModel):
         backup_job_id: int = None,
         request_id: str = None,
     ):
-        # The ID of the backup job. You can call ListSupabaseBackupJobs to query the status and progress of the corresponding job.
+        # The ID of the backup job. You can call ListSupabaseBackupJobs to query the status and progress of the job.
         self.backup_job_id = backup_job_id
         # The request ID.
         self.request_id = request_id

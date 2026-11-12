@@ -15,13 +15,13 @@ class DescribeDBInstanceErrorLogResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The content of the error log.
+        # The list of error logs.
         self.items = items
-        # The page number.
+        # The current page number.
         self.page_number = page_number
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -80,17 +80,17 @@ class DescribeDBInstanceErrorLogResponseBodyItems(DaraModel):
         time: int = None,
         user: str = None,
     ):
-        # The name of the database.
+        # The database name.
         self.database = database
         # This parameter is not supported.
         self.host = host
         # The content of the error log.
         self.log_context = log_context
-        # The level of the queried log.
+        # The level of the collected log.
         self.log_level = log_level
-        # The time when the log was generated. The time is displayed in UTC.
+        # The time when the log was generated. The time is in UTC.
         self.time = time
-        # The name of the database account.
+        # The username.
         self.user = user
 
     def validate(self):

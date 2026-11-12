@@ -10,9 +10,9 @@ class CreateStreamingJobResponseBody(DaraModel):
         job_id: int = None,
         request_id: str = None,
     ):
-        # Job ID.
+        # The task ID.
         self.job_id = job_id
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

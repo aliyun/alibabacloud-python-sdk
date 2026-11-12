@@ -18,13 +18,13 @@ class DescribeDBClusterPerformanceResponseBody(DaraModel):
     ):
         # The instance ID.
         self.dbcluster_id = dbcluster_id
-        # The end time of the query. The time follows the ISO 8601 standard in the `YYYY-MM-DDTHH:mmZ` format. The time is displayed in UTC.
+        # The end time of the query in UTC. Specify the time in the `YYYY-MM-DDTHH:mmZ` format.
         self.end_time = end_time
-        # The name of the performance metric. For more information, see [Performance parameters](https://help.aliyun.com/document_detail/86943.html).
+        # The list of performance metric values for the instance.
         self.performance_keys = performance_keys
         # The request ID.
         self.request_id = request_id
-        # The start time of the query. The time follows the ISO 8601 standard in the `YYYY-MM-DDTHH:mmZ` format. The time is displayed in UTC.
+        # The start time of the query in UTC. Specify the time in the `YYYY-MM-DDTHH:mmZ` format.
         self.start_time = start_time
 
     def validate(self):
@@ -86,11 +86,11 @@ class DescribeDBClusterPerformanceResponseBodyPerformanceKeys(DaraModel):
         series: List[main_models.DescribeDBClusterPerformanceResponseBodyPerformanceKeysSeries] = None,
         unit: str = None,
     ):
-        # The name of the performance metric. For more information, see [Performance parameters](https://help.aliyun.com/document_detail/86943.html).
+        # The name of the performance metric. For more information, see [Performance metric table](https://help.aliyun.com/document_detail/86943.html).
         self.name = name
-        # Details of the performance metric of a node.
+        # The collection of performance metrics.
         self.series = series
-        # The unit of the performance metric.
+        # The unit of the monitoring metrics.
         self.unit = unit
 
     def validate(self):
@@ -144,11 +144,11 @@ class DescribeDBClusterPerformanceResponseBodyPerformanceKeysSeries(DaraModel):
         self.name = name
         # The role of the node. Valid values:
         # 
-        # *   **master**: primary coordinator node
-        # *   **standby**: standby coordinator node
-        # *   **segment**: compute node
+        # - **master**: Master node.
+        # - **standby**: Standby node.
+        # - **segment**: Compute node.
         self.role = role
-        # The value of the performance metric collected at a point in time.
+        # The performance metric values. Each value corresponds to a collection time point.
         self.values = values
 
     def validate(self):
@@ -196,7 +196,7 @@ class DescribeDBClusterPerformanceResponseBodyPerformanceKeysSeriesValues(DaraMo
         self,
         point: List[str] = None,
     ):
-        # The value of the performance metric and the time when the metric value was collected.
+        # The performance metric value.
         self.point = point
 
     def validate(self):

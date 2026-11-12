@@ -21,7 +21,7 @@ class QueryKnowledgeBasesContentResponseBody(DaraModel):
     ):
         # The number of tokens used during vectorization.
         # 
-        # > A token is the smallest unit into which the input text is split. A token can be a word, a phrase, a punctuation mark, or a character.
+        # > A token is the smallest unit into which the input text is divided. A token can be a word, a phrase, a punctuation mark, or a character.
         self.embedding_tokens = embedding_tokens
         self.entities = entities
         self.matches = matches
@@ -30,9 +30,9 @@ class QueryKnowledgeBasesContentResponseBody(DaraModel):
         self.relations = relations
         # The request ID.
         self.request_id = request_id
-        # The API execution status. Valid values:
-        # - **success**: The execution is successful.
-        # - **fail**: The execution failed.
+        # The execution status of the API operation. Valid values:
+        # - **success**: The operation is successful.
+        # - **fail**: The operation fails.
         self.status = status
         # The resource usage of this query.
         self.usage = usage
@@ -118,11 +118,11 @@ class QueryKnowledgeBasesContentResponseBodyUsage(DaraModel):
     ):
         # The number of entries used during vectorization.
         # 
-        # > An entry refers to the number of items processed during vectorization of text or images. For example, processing text once counts as 1 entry, and processing an image once counts as 2 entries.
+        # > An entry refers to the number of items processed when vectorizing text or images. For example, processing text once counts as 1 entry, and processing an image once counts as 2 entries.
         self.embedding_entries = embedding_entries
         # The number of tokens used during vectorization.
         # 
-        # > A token is the smallest unit into which the input text is split. A token can be a word, a phrase, a punctuation mark, or a character.
+        # > A token is the smallest unit into which the input text is divided. A token can be a word, a phrase, a punctuation mark, or a character.
         self.embedding_tokens = embedding_tokens
 
     def validate(self):

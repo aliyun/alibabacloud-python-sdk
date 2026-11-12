@@ -16,20 +16,20 @@ class ChatWithKnowledgeBaseShrinkRequest(DaraModel):
         region_id: str = None,
     ):
         # The instance ID.
-        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of all instances in the target region, including the instance ID.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of all instances in the target region, including the instance IDs.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # Specifies whether to return the recall results. Default value: false.
         self.include_knowledge_base_results = include_knowledge_base_results
-        # The knowledge retrieval parameter object. If not specified, only chat is performed.
+        # The knowledge retrieval parameter object. If this parameter is not specified, only chat is performed.
         self.knowledge_params_shrink = knowledge_params_shrink
-        # The large language model (LLM) invocation parameter object.
+        # The large language model (LLM) call parameter object.
         # 
         # This parameter is required.
         self.model_params_shrink = model_params_shrink
         self.owner_id = owner_id
-        # The system prompt template, which must include {{ text_chunks }}, {{ user_system_prompt }}, {{ graph_entities }}, and {{ graph_relations }}. If not specified, this part does not take effect.
+        # The system prompt template. It must include {{ text_chunks }}, {{ user_system_prompt }}, {{ graph_entities }}, and {{ graph_relations }}. If this parameter is not specified, this part does not take effect.
         self.prompt_params = prompt_params
         # The region ID of the instance.
         # 

@@ -10,7 +10,7 @@ class DescribeSupabaseBackupPolicyRequest(DaraModel):
         project_id: str = None,
         region_id: str = None,
     ):
-        # Instance ID of the Supabase instance. You can obtain instance ID from the Supabase page in the console.
+        # Instance ID of the Supabase instance. You can obtain instance ID on the Supabase page in the console.
         # 
         # This parameter is required.
         self.project_id = project_id

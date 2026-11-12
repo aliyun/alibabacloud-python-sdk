@@ -18,14 +18,13 @@ class ListTablesResponseBody(DaraModel):
     ):
         # The returned message.
         self.message = message
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The token that is used to start the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The status of the operation. Valid values:
-        # 
-        # *   **success**
-        # *   **fail**
+        # The status. Valid values:
+        # - **success**: Successful.
+        # - **fail**: Failed.
         self.status = status
         self.tables = tables
 

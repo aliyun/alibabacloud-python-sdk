@@ -11,14 +11,13 @@ class CreateNamespaceResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The returned message.
+        # The detailed information returned by the operation.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **success**
-        # *   **fail**
+        # The execution status of the API operation. Valid values:
+        # - **success**: The execution succeeded.
+        # - **fail**: The execution failed.
         self.status = status
 
     def validate(self):

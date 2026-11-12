@@ -15,7 +15,7 @@ class ListApiKeysRequest(DaraModel):
     ):
         # The name of the API key.
         self.key_name = key_name
-        # The maximum number of records to return in this query.
+        # The maximum number of records to return in this request.
         self.max_results = max_results
         # The token for the next query.
         self.next_token = next_token

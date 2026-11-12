@@ -10,9 +10,9 @@ class CreateHadoopDataSourceResponseBody(DaraModel):
         data_source_id: int = None,
         request_id: str = None,
     ):
-        # Data source ID.
+        # The data source ID.
         self.data_source_id = data_source_id
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

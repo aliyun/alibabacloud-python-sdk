@@ -1,3 +1,6 @@
+2026-11-12 Version: 5.13.0
+- Generated python 2016-05-03 for gpdb.
+
 2026-10-09 Version: 5.12.0
 - Support API CreateSupabaseBackup.
 - Support API DescribeSupabaseBackupPolicy.

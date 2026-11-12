@@ -22,24 +22,24 @@ class GetSecretValueResponseBody(DaraModel):
         self.code = code
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The description of the access credential.
+        # The description.
         self.description = description
         # The returned message.
         self.message = message
-        # The password of the database account.
+        # The password of the target database.
         self.password = password
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The ARN of the access credential for the created Data API account. Format: `acs:gpdb:{{region}}:{{accountId}}:secret/{{secretName}}-{{32 digits random string}`.
+        # The ARN that uniquely specifies the logon credentials and permissions of the Data API account created by the user. Format: ```acs:gpdb:{{region}}:{{accountId}}:secret/{{secretName}}-{{32 digits random string}```
         self.secret_arn = secret_arn
-        # The name of the access credential.
+        # The name of the credential.
         self.secret_name = secret_name
-        # The status of the operation. Valid values:
+        # The status. Valid values:
         # 
-        # *   **success**
-        # *   **fail**
+        # - **success**: Successful.
+        # - **fail**: Failed.
         self.status = status
-        # The name of the database account.
+        # The username.
         self.username = username
 
     def validate(self):

@@ -14,13 +14,13 @@ class RevokeApiKeyRequest(DaraModel):
         service_ids: List[str] = None,
         workspace_id: str = None,
     ):
-        # API KEY ID。
+        # The API key ID.
         # 
         # This parameter is required.
         self.key_id = key_id
         # The region ID.
         self.region_id = region_id
-        # The list of service IDs to be authorized.
+        # The list of service IDs to authorize.
         # 
         # This parameter is required.
         self.service_ids = service_ids

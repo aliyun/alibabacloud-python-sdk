@@ -25,36 +25,32 @@ class DescribeCollectionResponseBody(DaraModel):
     ):
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The number of vector dimensions.
+        # The vector dimensions.
         self.dimension = dimension
-        # The fields that are used for full-text search. Multiple fields are separated by commas (,).
+        # The full-text index fields. Separate multiple fields with commas (,).
         self.full_text_retrieval_fields = full_text_retrieval_fields
-        # The returned message.
+        # The detailed information returned by the API operation.
         self.message = message
-        # The metadata of vector data, which is a JSON string in the MAP format. The key specifies the field name, and the value specifies the data type.
-        # 
-        # **
-        # 
-        # **Warning** Reserved fields such as id, vector, and to_tsvector cannot be used.
+        # The metadata of the vector data, which is a JSON string in MAP format. The key represents the field name, and the value represents the data type.
+        # >Warning: The id, vector, and to_tsvector fields are reserved and cannot be used.</warning>
         self.metadata = metadata
         # The distance metrics.
         self.metrics = metrics
-        # The name of the namespace.
+        # The namespace.
         self.namespace = namespace
-        # The analyzer that is used for full-text search.
+        # The tokenizer used for full-text index.
         self.parser = parser
-        # The region ID of the instance.
+        # The region ID.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # The method that is used to create sparse vector indexes.
+        # The method used to build indexes for sparse vectors.
         self.sparse_vector_metrics = sparse_vector_metrics
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **success**
-        # *   **fail**
+        # The execution status of the API operation. Valid values:
+        # - **success**: The execution is successful.
+        # - **fail**: The execution fails.
         self.status = status
-        # Indicates whether sparse vectors are supported.
+        # Specifies whether sparse vectors are supported.
         self.support_sparse = support_sparse
 
     def validate(self):

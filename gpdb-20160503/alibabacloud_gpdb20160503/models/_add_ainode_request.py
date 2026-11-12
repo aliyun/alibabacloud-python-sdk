@@ -16,11 +16,11 @@ class AddAINodeRequest(DaraModel):
     ):
         # The ID of the resource pool to which the AI node belongs.
         self.ainode_pool_id = ainode_pool_id
-        # The AI node specifications.
+        # The node specifications of the AI node.
         # 
         # This parameter is required.
         self.ainode_spec_infos = ainode_spec_infos
-        # The cluster ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
@@ -73,40 +73,42 @@ class AddAINodeRequestAINodeSpecInfos(DaraModel):
         node_num: str = None,
         node_spec: str = None,
     ):
-        # The number of AI nodes.
+        # The number of nodes.
         # 
         # This parameter is required.
         self.node_num = node_num
-        # The AI node specifications.
+        # The node specifications.
         # 
-        #     ADB.AIStandard.1
-        #     ADB.AIMedium.1
-        #     ADB.AILarge.1
-        #     ADB.AIStandard.2
-        #     ADB.AIMedium.2
-        #     ADB.AILarge.2
-        #     ADB.AIXLarge.2
-        #     ADB.AIStandard.6
-        #     ADB.AIMedium.6
-        #     ADB.AILarge.6
-        #     ADB.AIXLarge.6
-        #     ADB.AIStandard.3
-        #     ADB.AIMedium.3
-        #     ADB.AILarge.3
-        #     ADB.AIXLarge.3
-        #     ADB.AIStandard.4
-        #     ADB.AIMedium.4
-        #     ADB.AILarge.4
-        #     ADB.AIXLarge.4
-        #     ADB.AIStandard.5
-        #     ADB.AIMedium.5
-        #     ADB.AILarge.5
-        #     ADB.AIXLarge.5
-        #     ADB.AIStandard.8
-        #     ADB.AIMedium.8
-        #     ADB.AILarge.8
-        #     ADB.AIXLarge.8
-        #     ADB.AI2XLarge.8
+        # ```
+        # ADB.AIStandard.1
+        # ADB.AIMedium.1
+        # ADB.AILarge.1
+        # ADB.AIStandard.2
+        # ADB.AIMedium.2
+        # ADB.AILarge.2
+        # ADB.AIXLarge.2
+        # ADB.AIStandard.6
+        # ADB.AIMedium.6
+        # ADB.AILarge.6
+        # ADB.AIXLarge.6
+        # ADB.AIStandard.3
+        # ADB.AIMedium.3
+        # ADB.AILarge.3
+        # ADB.AIXLarge.3
+        # ADB.AIStandard.4
+        # ADB.AIMedium.4
+        # ADB.AILarge.4
+        # ADB.AIXLarge.4
+        # ADB.AIStandard.5
+        # ADB.AIMedium.5
+        # ADB.AILarge.5
+        # ADB.AIXLarge.5
+        # ADB.AIStandard.8
+        # ADB.AIMedium.8
+        # ADB.AILarge.8
+        # ADB.AIXLarge.8
+        # ADB.AI2XLarge.8
+        # ```
         # 
         # This parameter is required.
         self.node_spec = node_spec

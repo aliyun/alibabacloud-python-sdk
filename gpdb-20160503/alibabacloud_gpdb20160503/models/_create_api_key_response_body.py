@@ -11,9 +11,9 @@ class CreateApiKeyResponseBody(DaraModel):
         key_id: str = None,
         request_id: str = None,
     ):
-        # The API key content.
+        # The API key.
         self.api_key = api_key
-        # API KEY ID。
+        # The API key ID.
         self.key_id = key_id
         # The request ID.
         self.request_id = request_id

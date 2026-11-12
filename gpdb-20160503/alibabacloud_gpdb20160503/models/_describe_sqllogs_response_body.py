@@ -15,11 +15,11 @@ class DescribeSQLLogsResponseBody(DaraModel):
         page_record_count: int = None,
         request_id: str = None,
     ):
-        # The queried SQL execution logs.
+        # The list of results.
         self.items = items
-        # The page number.
+        # The page number of the returned query result.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries returned per page.
         self.page_record_count = page_record_count
         # The request ID.
         self.request_id = request_id
@@ -88,36 +88,36 @@ class DescribeSQLLogsResponseBodyItems(DaraModel):
         source_ip: str = None,
         source_port: int = None,
     ):
-        # The database account that executes the SQL statement.
+        # The database account that executed the SQL statement.
         self.account_name = account_name
         # The name of the database.
         self.dbname = dbname
-        # The role of the database.
+        # The database role.
         self.dbrole = dbrole
-        # The execution duration of the SQL statement.
+        # The execution duration.
         self.execute_cost = execute_cost
-        # The execution status of the SQL statement. Valid values:
+        # The execution state. Valid values:
         # 
-        # *   **success**
-        # *   **fail**
+        # - **success**: Successful.
+        # - **fail**: Failed.
         self.execute_state = execute_state
-        # The type of the query language.
+        # The operation class.
         self.operation_class = operation_class
-        # The time when the SQL statement was executed.
+        # The execution time.
         self.operation_execute_time = operation_execute_time
-        # The type of the SQL statement.
+        # The type of the executed SQL statement.
         self.operation_type = operation_type
-        # The total number of entries returned.
+        # The number of rows returned in the execution result.
         self.return_row_counts = return_row_counts
         # The SQL execution plan.
         self.sqlplan = sqlplan
-        # The SQL statement.
+        # The content of the SQL statement.
         self.sqltext = sqltext
-        # The number of entries scanned.
+        # The number of scanned rows.
         self.scan_row_counts = scan_row_counts
         # The source IP address.
         self.source_ip = source_ip
-        # The number of the source port.
+        # The source port.
         self.source_port = source_port
 
     def validate(self):

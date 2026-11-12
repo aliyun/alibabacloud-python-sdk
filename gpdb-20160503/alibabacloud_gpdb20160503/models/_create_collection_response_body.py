@@ -11,15 +11,13 @@ class CreateCollectionResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The response message.
+        # The detailed information returned by the operation.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The status of the operation. Valid values:
-        # 
-        # - **success**: The operation succeeded.
-        # 
-        # - **fail**: The operation failed.
+        # The creation status. Valid values:
+        # - **success**: Succeeded.
+        # - **fail**: Failed.
         self.status = status
 
     def validate(self):

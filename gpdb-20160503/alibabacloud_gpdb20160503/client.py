@@ -6,6 +6,7 @@ import json
 
 from typing import Dict, Generator, AsyncGenerator
 
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_gpdb20160503 import models as main_models
 from alibabacloud_tea_openapi import exceptions as open_api_exceptions
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
@@ -31,6 +32,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'gpdb'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-hangzhou': 'gpdb.aliyuncs.com',
@@ -15668,6 +15672,92 @@ class Client(OpenApiClient):
     ) -> main_models.GetGraphRAGJobResponse:
         runtime = RuntimeOptions()
         return await self.get_graph_ragjob_with_options_async(request, runtime)
+
+    def get_saas_data_unit_usage_with_options(
+        self,
+        request: main_models.GetSaasDataUnitUsageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSaasDataUnitUsageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.time_unit):
+            query['TimeUnit'] = request.time_unit
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSaasDataUnitUsage',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSaasDataUnitUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_saas_data_unit_usage_with_options_async(
+        self,
+        request: main_models.GetSaasDataUnitUsageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSaasDataUnitUsageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.time_unit):
+            query['TimeUnit'] = request.time_unit
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSaasDataUnitUsage',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSaasDataUnitUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_saas_data_unit_usage(
+        self,
+        request: main_models.GetSaasDataUnitUsageRequest,
+    ) -> main_models.GetSaasDataUnitUsageResponse:
+        runtime = RuntimeOptions()
+        return self.get_saas_data_unit_usage_with_options(request, runtime)
+
+    async def get_saas_data_unit_usage_async(
+        self,
+        request: main_models.GetSaasDataUnitUsageRequest,
+    ) -> main_models.GetSaasDataUnitUsageResponse:
+        runtime = RuntimeOptions()
+        return await self.get_saas_data_unit_usage_with_options_async(request, runtime)
 
     def get_saas_service_with_options(
         self,

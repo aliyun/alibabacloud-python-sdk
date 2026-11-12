@@ -19,7 +19,7 @@ class ListSupabaseBackupJobsResponseBody(DaraModel):
         self.items = items
         # The maximum number of entries to return for this request.
         self.max_results = max_results
-        # The pagination token for the next page, which can be used as the NextToken parameter in the next request.
+        # The pagination token for the next page. You can use this value as the NextToken parameter in the next request.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -82,14 +82,14 @@ class ListSupabaseBackupJobsResponseBodyItems(DaraModel):
         # The ID of the backup task.
         self.backup_job_id = backup_job_id
         # The backup mode. Valid values:
-        # * **Automated**: automatic backup
-        # * **Manual**: manual backup
+        # * **Automated**: automatic backup.
+        # * **Manual**: manual backup.
         self.backup_mode = backup_mode
-        # The status of the backup task. Valid statuses include: schedule (waiting to be scheduled) and backup (in progress).
+        # The status of the backup task. Known statuses include: schedule (waiting for scheduling) and backup (in progress).
         self.backup_status = backup_status
-        # The progress percentage of the backup task, such as 0%. This value may be an empty string when the task is in the schedule (waiting to be scheduled) state.
+        # The progress of the backup task in percentage, such as 0%. This value may be an empty string when the task is in the schedule state.
         self.process = process
-        # The start time of the backup task. The time is displayed in UTC in the yyyy-MM-ddTHH:mm:ssZ format. This value may be an empty string when the task is in the schedule (waiting to be scheduled) state.
+        # The start time of the backup task. The time is displayed in UTC in the yyyy-MM-ddTHH:mm:ssZ format. This value may be an empty string when the task is in the schedule state.
         self.start_time = start_time
 
     def validate(self):

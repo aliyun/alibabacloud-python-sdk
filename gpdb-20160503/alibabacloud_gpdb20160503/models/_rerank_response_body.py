@@ -16,16 +16,16 @@ class RerankResponseBody(DaraModel):
         status: str = None,
         tokens: int = None,
     ):
-        # Detailed information returned by the interface.
+        # The detailed information returned in the response.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
         self.results = results
-        # API execution status, value description:
-        # - **success**: Execution succeeded.
-        # - **fail**: Execution failed.
+        # The execution status of the API operation. Valid values:
+        # - **success**: The operation is successful.
+        # - **fail**: The operation fails.
         self.status = status
-        # Number of consumed tokens.
+        # The number of tokens consumed.
         self.tokens = tokens
 
     def validate(self):

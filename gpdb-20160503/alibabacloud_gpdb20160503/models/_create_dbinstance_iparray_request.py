@@ -14,19 +14,19 @@ class CreateDBInstanceIPArrayRequest(DaraModel):
         iparray_name: str = None,
         security_iplist: List[str] = None,
     ):
-        # The cluster ID.
+        # The ID of the instance.
         # 
-        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in the target region, including instance IDs.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The attribute of the IP whitelist group.
+        # The attribute value of the IP address whitelist group.
         self.iparray_attribute = iparray_attribute
-        # The name of the IP whitelist group.
+        # The name of the IP address whitelist group.
         # 
         # This parameter is required.
         self.iparray_name = iparray_name
-        # The IP addresses in the IP whitelist group. A maximum of 1,000 IP addresses or CIDR blocks are allowed.
+        # The IP addresses in the IP address whitelist group. A maximum of 1,000 IP addresses are supported.
         # 
         # This parameter is required.
         self.security_iplist = security_iplist

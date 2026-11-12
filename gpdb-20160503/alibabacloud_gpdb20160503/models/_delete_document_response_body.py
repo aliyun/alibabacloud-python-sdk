@@ -11,11 +11,13 @@ class DeleteDocumentResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # Detailed information returned by the API.
+        # The detailed information returned by the API operation.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Creation status, value description: - **success**: Success - **fail**: Fail
+        # The creation status. Valid values:
+        # - **success**: Successful.
+        # - **fail**: Failed.
         self.status = status
 
     def validate(self):

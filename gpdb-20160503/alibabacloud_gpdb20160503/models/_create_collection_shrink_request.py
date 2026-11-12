@@ -33,125 +33,101 @@ class CreateCollectionShrinkRequest(DaraModel):
         # The vector index algorithm.
         # 
         # Valid values:
-        # 
-        # - `hnswflat`: (Default) An HNSW index without quantization compression.
-        # 
-        # - `novam`: A graph index without quantization compression. This algorithm is suitable for high-performance scenarios, such as real-time recommendations.
-        # 
-        # - `novad`: A partitioned index with `rabitq` quantization. This algorithm is suitable for large-scale, low-cost retrieval scenarios.
+        # - hnswflat: HNSW index without quantization compression (default).
+        # - novam: Graph index without quantization compression, suitable for high-performance scenarios such as real-time recommendation.
+        # - novad: Partitioned index with rabitq quantization, suitable for large-scale, low-cost retrieval scenarios.
         self.algorithm = algorithm
-        # The name of the collection to create.
+        # The name of the collection to be created.
         # 
-        # > The name must comply with PostgreSQL object naming conventions.
+        # > The name must comply with the PostgreSQL object naming conventions.
         # 
         # This parameter is required.
         self.collection = collection
-        # The instance ID.
+        # Instance ID of the instance.
         # 
-        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query instance IDs of all AnalyticDB for PostgreSQL instances in the target region.
         self.dbinstance_id = dbinstance_id
-        # The vector dimension.
+        # The vector dimensions.
         # 
-        # > If you specify this parameter, a vector index is created. In subsequent calls to the [UpsertCollectionData](https://help.aliyun.com/document_detail/2401493.html) operation, the length of `Rows.Vector` must match this dimension. If you do not specify this parameter, you must call the [CreateVectorIndex](https://help.aliyun.com/document_detail/2401499.html) operation to create an index later.
+        # > If you specify this value, an index is built, and the length of Rows.Vector in the subsequent [UpsertCollectionData](https://help.aliyun.com/document_detail/2401493.html) operation for uploading vector data must be consistent with this value. If you do not specify this value, you can call the [CreateVectorIndex](https://help.aliyun.com/document_detail/2401499.html) operation later to build an index.
         self.dimension = dimension
-        # Specifies whether to use `mmap` to build the HNSW index. The default value is 0. We recommend setting this to 1 if your data does not require deletion and you need high-performance data ingestion.
+        # Specifies whether to use mmap to build the HNSW index. Default value: 0. If the data does not need to be deleted and you have high requirements for the data upload speed, set this parameter to 1.
         # 
         # Valid values:
+        # - 0: Build the index by using segment-page storage. This is the default value. In this mode, shared_buffers in PostgreSQL can be used for caching, and operations such as deletion and update are supported.
+        # - 1: Build the index by using mmap. This mode does not support operations such as deletion and update.
         # 
-        # - `0`: (Default) Builds the index by using segmented page storage. This mode can use the `shared_buffer` in PostgreSQL for caching and supports `DELETE` and `UPDATE` operations.
-        # 
-        # - `1`: Builds the index by using `mmap`. This mode does not support `DELETE` or `UPDATE` operations.
-        # 
-        # >Notice: 
-        # 
-        # The `ExternalStorage` parameter is available only for AnalyticDB for PostgreSQL v6.0 instances and is not supported in v7.0.
+        # >Notice: The ExternalStorage parameter is supported only in V6.0. It is not supported in V7.0.</notice>
         self.external_storage = external_storage
-        # The fields to use for full-text search. Use commas (`,`) to separate multiple field names. These fields must be keys defined in the `Metadata` parameter.
+        # The fields used to retrieve data via full-text index. Separate multiple fields with commas (,). The fields must be keys defined in Metadata.
         self.full_text_retrieval_fields = full_text_retrieval_fields
-        # The size of the candidate set for HNSW index construction. The value must be greater than or equal to `2 * HnswM`.
+        # The size of the candidate set when building the index by using the HNSW algorithm. The value must be greater than or equal to 2 × HNSW_M.
         # 
-        # > Value range:
-        # >
-        # > - For AnalyticDB for PostgreSQL V6.0 instances: 40 to 4000.
-        # >
-        # > - For AnalyticDB for PostgreSQL V7.0 instances: 4 to 1000. The default value is 64.
+        # > Valid values:
+        # >- AnalyticDB for PostgreSQL V6.0 instances: 40 to 4000.
+        # >- AnalyticDB for PostgreSQL V7.0 instances: 4 to 1000. Default value: 64.
         self.hnsw_ef_construction = hnsw_ef_construction
-        # The maximum number of neighbors for the HNSW algorithm. You do not typically need to set this parameter, as the system automatically determines a value based on the vector dimension.
+        # The maximum number of neighbors in the HNSW algorithm. The operation automatically sets this value based on the vector dimensions. Typically, you do not need to manually set this value.
         # 
-        # > Value range:
-        # >
-        # > - For AnalyticDB for PostgreSQL V6.0 instances: 1 to 1000.
-        # >
-        # > - For AnalyticDB for PostgreSQL V7.0 instances: 2 to 100. The default value is 16.
+        # > Valid values:
+        # >- AnalyticDB for PostgreSQL V6.0 instances: 1 to 1000.
+        # >- AnalyticDB for PostgreSQL V7.0 instances: 2 to 100. Default value: 16.
         # 
-        # > We recommend that you set this parameter based on the vector dimension:
-        # >
-        # > - 16 for dimensions less than or equal to 384.
-        # >
-        # > - 32 for dimensions greater than 384 and less than or equal to 768.
-        # >
-        # > - 64 for dimensions greater than 768 and less than or equal to 1024.
-        # >
-        # > - 128 for dimensions greater than 1024.
+        # > Recommended settings based on vector dimensions:
+        # >- Less than or equal to 384: 16.
+        # >- Greater than 384 and less than or equal to 768: 32.
+        # >- Greater than 768 and less than or equal to 1024: 64.
+        # >- Greater than 1024: 128.
         self.hnsw_m = hnsw_m
-        # The name of the management account that has the `rds_superuser` privilege.
+        # The name of the administrator account that has the rds_superuser permission.
         # 
         # > You can call the [CreateAccount](https://help.aliyun.com/document_detail/2361789.html) operation to create an account.
         # 
         # This parameter is required.
         self.manager_account = manager_account
-        # The password of the management account.
+        # The password of the administrator account.
         # 
         # This parameter is required.
         self.manager_account_password = manager_account_password
-        # A JSON string that defines the metadata schema as a map. The keys are field names, and the values are their corresponding data types.
+        # The metadata of the vector data, which is a JSON string in MAP format. The key represents the field name, and the value represents the data type.
         # 
-        # > Supported data types
-        # >
-        # > - For a list of supported data types, see [Data types](https://help.aliyun.com/document_detail/424383.html).
-        # >
-        # > - The `money` data type is not supported.
+        # > Supported data types:
+        # > - For the list of data types, see [Data types](https://help.aliyun.com/document_detail/424383.html).
+        # > - The money data type is not supported.
         # 
-        # >Warning: 
-        # 
-        # The field names `id`, `vector`, `to_tsvector`, and `source` are reserved and cannot be used.
+        # >Warning: The id, vector, to_tsvector, and source fields are reserved fields and cannot be used.</warning>
         # 
         # This parameter is required.
         self.metadata = metadata
-        # The scalar index fields. Separate multiple fields with commas (`,`). The fields must be keys that are defined in `Metadata`.
+        # The scalar index fields. Separate multiple fields with commas (,). The fields must be keys defined in Metadata.
         self.metadata_indices = metadata_indices
         # The distance metric used to build the vector index. Valid values:
-        # 
-        # - `l2`: Euclidean distance.
-        # 
-        # - `ip`: dot product.
-        # 
-        # - `cosine`: cosine similarity.
+        # - l2: Euclidean distance.
+        # - ip: Inner product.
+        # - cosine: Cosine similarity.
         self.metrics = metrics
         # The namespace.
         # 
-        # > You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace or the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to list existing namespaces.
+        # > You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace, and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to view the namespace list.
         self.namespace = namespace
         self.owner_id = owner_id
-        # The parser for full-text search. The default is `zh_cn`.
+        # The tokenizer used to retrieve data via full-text index. Default value: zh_cn.
         self.parser = parser
-        # Specifies whether to enable Product Quantization (PQ) for index acceleration. This is recommended for datasets with more than 500,000 entries. Valid values:
-        # 
-        # - `0`: Disabled.
-        # 
-        # - `1`: (Default) Enabled.
+        # Specifies whether to enable the Product Quantization (PQ) algorithm to accelerate the index. Enable this feature when the data volume exceeds 500,000. Valid values:
+        # - 0: Disable.
+        # - 1: Enable (default).
         self.pq_enable = pq_enable
-        # The ID of the region where the instance is located.
+        # The region ID of the instance.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The configuration for the sparse vector index. If specified, a sparse vector index is created.
+        # The sparse vector index configuration. If this parameter is passed, a sparse vector index is created.
         self.sparse_vector_index_config_shrink = sparse_vector_index_config_shrink
-        # Specifies whether to enable support for sparse vectors. The default value is `false`.
+        # Specifies whether to support sparse vectors. Default value: false.
         self.support_sparse = support_sparse
-        # The configuration for the dense vector index.
+        # The dense vector index configuration.
         self.vector_index_config_shrink = vector_index_config_shrink
-        # The ID of the workspace, which contains multiple database instances. You must specify either `WorkspaceId` or `DBInstanceId`. If both are specified, `WorkspaceId` takes precedence.
+        # The ID of the workspace that consists of multiple database instances. This parameter and the DBInstanceId parameter cannot be empty at the same time. If both parameters are specified, this parameter takes precedence.
         self.workspace_id = workspace_id
 
     def validate(self):

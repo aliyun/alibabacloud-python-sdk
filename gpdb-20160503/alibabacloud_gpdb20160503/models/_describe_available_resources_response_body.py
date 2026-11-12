@@ -18,7 +18,7 @@ class DescribeAvailableResourcesResponseBody(DaraModel):
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # The available resources.
+        # The information about available resources.
         self.resources = resources
 
     def validate(self):
@@ -67,7 +67,7 @@ class DescribeAvailableResourcesResponseBodyResources(DaraModel):
         supported_engines: List[main_models.DescribeAvailableResourcesResponseBodyResourcesSupportedEngines] = None,
         zone_id: str = None,
     ):
-        # Details of the supported engines and instance types.
+        # The supported engines and instance specifications.
         self.supported_engines = supported_engines
         # The zone ID.
         self.zone_id = zone_id
@@ -115,13 +115,12 @@ class DescribeAvailableResourcesResponseBodyResourcesSupportedEngines(DaraModel)
     ):
         # The instance resource type. Valid values:
         # 
-        # - **ecs**: Elastic storage mode.
-        # 
+        # - **ecs**: elastic storage mode.
         # - **serverless**: Serverless mode.
         self.mode = mode
-        # The supported engine version.
+        # The supported DPI engine version.
         self.supported_engine_version = supported_engine_version
-        # The supported instance types.
+        # The supported instance classes.
         self.supported_instance_classes = supported_instance_classes
 
     def validate(self):
@@ -175,29 +174,26 @@ class DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedIn
         storage_size: main_models.DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClassesStorageSize = None,
         storage_type: str = None,
     ):
-        # The instance series. Valid values:
+        # The instance edition. Valid values:
         # 
-        # - **HighAvailability**: High-availability edition.
-        # 
-        # - **Basic**: Basic edition
+        # - **HighAvailability**: High-availability Edition.
+        # - **Basic**: Basic Edition.
         self.category = category
-        # The description of the segment node instance type.
+        # The description of the segment node specifications.
         self.description = description
-        # The display name of the segment node instance type.
+        # The display class of the segment specifications.
         self.display_class = display_class
-        # The instance type of the segment node.
+        # The display class of the segment specifications.
         self.instance_class = instance_class
-        # Details of the segment nodes.
+        # The information about the segment nodes.
         self.node_count = node_count
-        # The Segment storage capacity.
+        # The storage capacity of the segment node.
         self.storage_size = storage_size
         # The storage type. Valid values:
         # 
-        # - **cloud_essd**: ESSD cloud disk.
-        # 
-        # - **cloud_efficiency**: Standard cloud disk.
-        # 
-        # - **oss**:OSS.
+        # - **cloud_essd**: ESSD.
+        # - **cloud_efficiency**: ultra cloud disk.
+        # - **oss**: OSS.
         self.storage_type = storage_type
 
     def validate(self):
@@ -268,11 +264,11 @@ class DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedIn
         min_count: str = None,
         step: str = None,
     ):
-        # The maximum Segment storage capacity.
+        # The maximum storage capacity of the segment node.
         self.max_count = max_count
-        # The minimum Segment storage capacity.
+        # The minimum storage capacity of the segment node.
         self.min_count = min_count
-        # The Segment storage expansion step size.
+        # The step size for storage expansion of the segment node.
         self.step = step
 
     def validate(self):
@@ -314,13 +310,13 @@ class DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedIn
         min_count: str = None,
         step: str = None,
     ):
-        # The maximum number of Segment nodes.
+        # The maximum number of segment nodes.
         self.max_count = max_count
-        # The minimum number of Segment nodes.
+        # The minimum number of segment nodes.
         self.min_count = min_count
         # The step size for adding nodes.
         # 
-        # For example, if this parameter is set to 4, the number of nodes added must be a multiple of 4 when adding Segment nodes.
+        # For example, if this parameter is set to 4, the number of segment nodes to be added must be a multiple of 4.
         self.step = step
 
     def validate(self):

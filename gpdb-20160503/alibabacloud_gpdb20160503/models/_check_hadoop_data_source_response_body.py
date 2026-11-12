@@ -11,14 +11,15 @@ class CheckHadoopDataSourceResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The returned message. If the service failed, an error message is returned. Otherwise, a pair of double quotation marks ("") is returned.
+        # The message returned by the service. If the service is unavailable, an error message is returned. If the service is available, an empty string is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The status of the service. Valid values:
+        # The service status. Valid values:
         # 
-        # *   Running
-        # *   Failed
+        # - Running: The service is available.
+        # 
+        # - Failed: The service is unavailable.
         self.status = status
 
     def validate(self):

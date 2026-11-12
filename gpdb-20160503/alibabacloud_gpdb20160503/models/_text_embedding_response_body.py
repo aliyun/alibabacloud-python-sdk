@@ -22,10 +22,10 @@ class TextEmbeddingResponseBody(DaraModel):
         self.request_id = request_id
         self.results = results
         # The API execution status. Valid values:
-        # - **success**: The execution is successful.
-        # - **fail**: The execution failed.
+        # - **success**: Execution succeeded.
+        # - **fail**: Execution failed.
         self.status = status
-        # The total number of tokens consumed.
+        # The total number of consumed tokens.
         self.text_tokens = text_tokens
 
     def validate(self):

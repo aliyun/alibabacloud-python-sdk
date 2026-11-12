@@ -17,16 +17,15 @@ class ListDatabasesResponseBody(DaraModel):
         status: str = None,
     ):
         self.databases = databases
-        # The returned message.
+        # The response message.
         self.message = message
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The token used to start the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The status of the operation. Valid values:
-        # 
-        # *   **success**
-        # *   **fail**
+        # The execution status of the API operation. Valid values:
+        # - **success**: The execution was successful.
+        # - **fail**: The execution failed.
         self.status = status
 
     def validate(self):

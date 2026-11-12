@@ -18,44 +18,38 @@ class DescribeCreateIndexJobRequest(DaraModel):
     ):
         # The name of the collection.
         # 
-        # > You can call the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) operation to query a list of collections.
+        # > You can call the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) operation to query the list.
         # 
         # This parameter is required.
         self.collection = collection
-        # The cluster ID.
+        # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in the specified region, including instance IDs.
         self.dbinstance_id = dbinstance_id
-        # The ID of the index creation job, which is returned from the `CreateIndex` operation.
+        # The ID of the index creation task, which is obtained from the CreateIndex operation.
         # 
         # This parameter is required.
         self.job_id = job_id
-        # The namespace name.
+        # The namespace.
         # 
-        # > You can call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
+        # > You can call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query the list.
         # 
         # This parameter is required.
         self.namespace = namespace
         # The password for the namespace.
         # 
-        # > The value of this parameter is specified by the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation.
+        # > This value is specified in the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation.
         # 
         # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
-        # The region ID of the cluster.
+        # The region ID.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the available region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes precedence.
-        # 
-        # Valid values:
-        # 
-        # *   ip
-        # *   l2
-        # *   cosine
+        # The ID of the workspace that consists of multiple database instances. This parameter and the DBInstanceId parameter cannot be both left empty. If both are specified, this parameter takes precedence.
         self.workspace_id = workspace_id
 
     def validate(self):

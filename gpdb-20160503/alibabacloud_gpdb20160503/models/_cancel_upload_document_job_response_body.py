@@ -15,10 +15,9 @@ class CancelUploadDocumentJobResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The status of the operation. Valid values:
-        # 
-        # *   **success**
-        # *   **fail**
+        # The execution status of the operation. Valid values:
+        # - **success**: The operation is successful.
+        # - **fail**: The operation fails.
         self.status = status
 
     def validate(self):

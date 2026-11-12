@@ -16,31 +16,31 @@ class DeleteVectorIndexRequest(DaraModel):
         region_id: str = None,
         type: str = None,
     ):
-        # The name of the collection.
+        # The collection name.
         # 
-        # >  You can call the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) operation to query a list of collections.
+        # > You can call the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) operation to view the list.
         # 
         # This parameter is required.
         self.collection = collection
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to view the details of all AnalyticDB for PostgreSQL instances in the specified region, including instance IDs.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The name of the manager account that has the rds_superuser permission.
+        # The name of the management account that has the rds_superuser permission.
         # 
-        # >  You can create an account on the **Account Management** page of the AnalyticDB for PostgreSQL console or by calling the [CreateAccount](https://help.aliyun.com/document_detail/2361789.html) operation.
+        # > You can create an account on the **Accounts** page in the console or by calling the [CreateAccount](https://help.aliyun.com/document_detail/2361789.html) operation.
         # 
         # This parameter is required.
         self.manager_account = manager_account
-        # The password of the manager account.
+        # The password of the management account.
         # 
         # This parameter is required.
         self.manager_account_password = manager_account_password
-        # The name of the namespace. Default value: public.
+        # The namespace. Default value: public.
         # 
-        # >  You can call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
+        # > You can call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to view the list.
         self.namespace = namespace
         self.owner_id = owner_id
         # The region ID of the instance.
@@ -48,9 +48,8 @@ class DeleteVectorIndexRequest(DaraModel):
         # This parameter is required.
         self.region_id = region_id
         # The vector type. Valid values:
-        # 
-        # *   Dense (default)
-        # *   Sparse
+        # - Dense: dense vector. This is the default value.
+        # - Sparse: sparse vector.
         self.type = type
 
     def validate(self):

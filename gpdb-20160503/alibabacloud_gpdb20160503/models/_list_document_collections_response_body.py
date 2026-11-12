@@ -16,18 +16,16 @@ class ListDocumentCollectionsResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The total number of items.
+        # The total number of entries.
         self.count = count
         self.items = items
-        # The response message.
+        # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The creation status. Valid values:
-        # 
-        # - **success**: The operation succeeded.
-        # 
-        # - **fail**: The operation failed.
+        # - **success**: Succeeded.
+        # - **fail**: Failed.
         self.status = status
 
     def validate(self):

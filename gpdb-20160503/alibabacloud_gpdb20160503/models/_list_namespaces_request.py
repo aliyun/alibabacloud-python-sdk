@@ -16,15 +16,15 @@ class ListNamespacesRequest(DaraModel):
     ):
         # The instance ID.
         # 
-        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including the instance IDs.
         self.dbinstance_id = dbinstance_id
-        # The name of the manager account that has the rds_superuser permission.
+        # The name of the administrator account that has the rds_superuser permission.
         # 
-        # >  You can create an account on the Account Management page of the AnalyticDB for PostgreSQL console or by calling the [CreateAccount](https://help.aliyun.com/document_detail/2361789.html) operation.
+        # > You can create an account by navigating to Account Management in the console, or call the [CreateAccount](https://help.aliyun.com/document_detail/2361789.html) operation.
         # 
         # This parameter is required.
         self.manager_account = manager_account
-        # The password of the manager account.
+        # The password of the administrator account.
         # 
         # This parameter is required.
         self.manager_account_password = manager_account_password
@@ -33,7 +33,7 @@ class ListNamespacesRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes effect.
+        # The ID of the workspace that consists of multiple database instances. This parameter and the DBInstanceId parameter cannot be both empty. If both parameters are specified, this parameter takes precedence.
         self.workspace_id = workspace_id
 
     def validate(self):

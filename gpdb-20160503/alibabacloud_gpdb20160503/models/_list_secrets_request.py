@@ -14,14 +14,14 @@ class ListSecretsRequest(DaraModel):
     ):
         # The instance ID.
         # 
-        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in the specified region.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
-        # The region ID of the instance.
+        # The ID of the region where the instance resides.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the workspace composed of multiple database instances. This parameter and the DBInstanceId parameter cannot both be empty. If both are specified, this parameter takes precedence.
+        # The ID of the workspace that consists of multiple database instances. This parameter and the DBInstanceId parameter cannot both be left empty. If both parameters are specified, this parameter takes precedence.
         self.workspace_id = workspace_id
 
     def validate(self):

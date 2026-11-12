@@ -13,18 +13,19 @@ class CreateSecretResponseBody(DaraModel):
         secret_name: str = None,
         status: str = None,
     ):
-        # The returned message.
+        # The detailed information returned by the operation.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The Alibaba Cloud Resource Name (ARN) of the access credential for the created Data API account. Format: `acs:gpdb:{{region}}:{{accountId}}:secret/{{secretName}}-{{32 digits random string}`.
+        # The ARN that uniquely identifies the logon credential and permissions of the Data API account created by the user.
+        # Format: ```acs:gpdb:{{region}}:{{accountId}}:secret/{{secretName}}-{{32 digits random string}}```
         self.secret_arn = secret_arn
-        # The name of the access credential.
+        # The name of the credential.
         self.secret_name = secret_name
-        # The status of the operation. Valid values:
+        # The status. Valid values:
         # 
-        # *   **success**
-        # *   **fail**
+        # - **success**: The operation is successful.
+        # - **fail**: The operation failed.
         self.status = status
 
     def validate(self):

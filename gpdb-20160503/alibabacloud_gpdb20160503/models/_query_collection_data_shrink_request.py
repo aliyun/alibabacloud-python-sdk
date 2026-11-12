@@ -29,38 +29,34 @@ class QueryCollectionDataShrinkRequest(DaraModel):
         vector_shrink: str = None,
         workspace_id: str = None,
     ):
-        # The name of the collection.
+        # The collection name.
         # 
-        # > You can call the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) operation to list available collections.
+        # > You can call the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) operation to view the list.
         # 
         # This parameter is required.
         self.collection = collection
-        # The content for full-text search. If this parameter is omitted, only vector search is performed. If this parameter is specified, the system performs a hybrid search of vector search and full-text search.
+        # The content used for full-text retrieval. If this parameter is left empty, only vector retrieval is used. If this parameter is specified, both vector and full-text retrieval are used.
         # 
-        # > You must specify one of the Content and Vector parameters.
+        # > This parameter and the Vector parameter cannot be left empty at the same time.
         self.content = content
-        # The ID of the instance.
+        # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query details for all AnalyticDB for PostgreSQL instances in a region, including their instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including the instance IDs.
         self.dbinstance_id = dbinstance_id
-        # The filter conditions for data retrieval. It is in the format of a WHERE clause in SQL. This expression returns a boolean value, which can be a simple comparison operator, such as `=`, `<>`, `!=`, `>`, `<`, `>=`, and `<=`, or a more complex expression combined with logical operators, such as `AND`, `OR`, and `NOT`, and keywords such as `IN`, `BETWEEN`, and `LIKE`.
+        # The filter condition for the data to query, in the SQL WHERE clause format. It is an expression that returns a Boolean value (true or false). The condition can be a simple comparison operator, such as equal to (=), not equal to (<> or !=), greater than (>), less than (<), greater than or equal to (>=), or less than or equal to (<=). It can also be a more complex expression combined with logical operators (AND, OR, NOT), or a condition that uses keywords such as IN, BETWEEN, and LIKE.
         # 
-        # > - For more information about the syntax, see [PostgreSQL WHERE](https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-where/).
+        # > 
+        # > - For detailed syntax, refer to https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-where/
         self.filter = filter
-        # The hybrid search algorithm. If this parameter is empty, the system ranks results by directly comparing the scores from the vector search and the full-text search.
+        # The dual-channel recall algorithm. Default value: empty (which means the vector and full-text scores are directly compared and sorting is applied). Valid values:
         # 
-        # Valid values:
-        # 
-        # - `RRF`: Reciprocal Rank Fusion. This algorithm has a parameter k to control the fusion effect. For more information, see the description of the `HybridSearchArgs` parameter.
-        # 
-        # - `Weight`: weighted sort. This algorithm uses a parameter alpha to control the score ratio of vector search and full-text search, and then sorts the results. For more information about the parameter, see the `HybridSearchArgs` parameter.
-        # 
-        # - `Cascaded`: performs a full-text search, and then performs a vector search on the search results.
+        # - RRF: reciprocal rank fusion. A parameter k is used to control the fusion effect. For more information, see the HybridSearchArgs configuration.
+        # - Weight: weighted sorting. A parameter alpha is used to control the weight of the vector and full-text scores before sorting. For more information, see the HybridSearchArgs configuration.
+        # - Cascaded: full-text retrieval is performed first, and then vector retrieval is performed based on the results.
         self.hybrid_search = hybrid_search
-        # The parameters for the hybrid search algorithm. The following algorithms are supported: RRF and Weight.
+        # The algorithm parameters for hybrid search. RRF and Weight are supported:
         # 
-        # - For RRF, specify the constant k in the scoring algorithm `1/(k+rank_i)`. The value must be a positive integer greater than 1. The format is as follows:
-        # 
+        # - RRF: specifies the constant k in the score calculation formula `1/(k+rank_i)`. The value must be a positive integer greater than 1. Format:
         # ```
         # { 
         #    "RRF": {
@@ -69,8 +65,7 @@ class QueryCollectionDataShrinkRequest(DaraModel):
         # }
         # ```
         # 
-        # - For Weight, in the formula `alpha * vector_score + (1-alpha) * text_score`, the alpha parameter indicates the score ratio of the vector search to the full-text search. The value ranges from 0 to 1. 0 indicates that only the full-text search is used, and 1 indicates that only the vector search is used.
-        # 
+        # - Weight: The calculation formula is `alpha * vector_score + (1-alpha) * text_score`. The parameter alpha represents the weight of the vector and full-text search scores. The value ranges from 0 to 1, where 0 indicates full-text search only and 1 indicates vector search only. Format:
         # ```
         # { 
         #    "Weight": {
@@ -79,80 +74,66 @@ class QueryCollectionDataShrinkRequest(DaraModel):
         # }
         # ```
         self.hybrid_search_args_shrink = hybrid_search_args_shrink
-        # This parameter is left empty by default. It specifies the metadata fields to be returned. You can specify multiple fields and separate them with commas (,).
+        # The metadata fields to return. Default value: empty. Separate multiple fields with commas.
         self.include_metadata_fields = include_metadata_fields
         # Specifies whether to return sparse vector data. Valid values:
-        # 
         # - **true**: returns sparse vector data.
-        # 
         # - **false**: does not return sparse vector data.
         self.include_sparse_values = include_sparse_values
         # Specifies whether to return dense vector data. Valid values:
-        # 
         # - **true**: returns dense vector data.
-        # 
         # - **false**: does not return dense vector data.
         self.include_values = include_values
-        # The similarity algorithm for search. Valid values:
+        # The similarity algorithm used during search. Valid values:
+        # - **l2**: Euclidean distance.
+        # - **ip**: Dot product (inner product) distance.
+        # - **cosine**: Cosine similarity.
         # 
-        # - **l2**: the Euclidean distance.
-        # 
-        # - **ip**: the dot product distance.
-        # 
-        # - **cosine**: the cosine similarity.
-        # 
-        # > If this parameter is not specified, the algorithm specified when the index is created is used.
+        # > If this parameter is left empty, the algorithm specified when the index is built is used.
         self.metrics = metrics
-        # The name of the namespace.
+        # The namespace.
         # 
-        # > You can call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to list available namespaces.
+        # > You can call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to view the list.
         self.namespace = namespace
         # The password for the namespace.
         # 
         # This parameter is required.
         self.namespace_password = namespace_password
-        # This parameter is left empty by default. It specifies the start position of a paged query. This parameter is not supported in hybrid search.
+        # The retrieval starting point during paged queries. Default value: empty. This parameter is not supported in dual-channel recall scenarios.
         # 
-        # The value must be greater than or equal to 0. When this parameter is not empty, Total in the response indicates the total number of hits. This parameter is used with TopK. For example, if you want to retrieve chunks 0 to 44 with a page size of 20, you must send three requests:
-        # 
-        # - `Offset=0, TopK=20` returns chunks 0 to 19.
-        # 
-        # - `Offset=20, TopK=20` returns chunks 20 to 39.
-        # 
-        # - `Offset=40, TopK=20` returns chunks 40 to 44.
+        # The value must be greater than or equal to 0. If this parameter is specified, the Total parameter is returned to indicate the total number of hits. This parameter is used together with TopK. For example, to retrieve chunks with chunk_id ranging from 0 to 44 with a paging size of 20, you must make three requests:
+        # - Offset=0, TopK=20 returns chunks with chunk_id ranging from 0 to 19.
+        # - Offset=20, TopK=20 returns chunks with chunk_id ranging from 20 to 39.
+        # - Offset=30, TopK=20 returns chunks with chunk_id ranging from 40 to 44.
         self.offset = offset
-        # This parameter is left empty by default. It specifies the field based on which to sort the results. This parameter is not supported in hybrid search.
+        # The field based on which the results are sorted. Default value: empty. This parameter is not supported in hybrid search scenarios.
         # 
-        # The field must be a metadata field or a default field in the table, such as `id`. The following formats are supported:
-        # 
-        # - A single field, such as `chunk_id`.
-        # 
-        # - Multiple fields separated by commas (,), such as `block_id, chunk_id`.
-        # 
-        # - Descending order, such as `block_id DESC, chunk_id DESC`.
+        # The field must belong to the metadata or be a default field in the table, such as id. Supported formats:
+        # - A single field, such as chunk_id.
+        # - Multiple fields separated by commas, such as block_id, chunk_id.
+        # - Descending order, such as block_id DESC, chunk_id DESC.
         self.order_by = order_by
         self.owner_id = owner_id
         # The region ID of the instance.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # Uses another relational table to filter vector data, which is similar to the JOIN operation.
+        # Uses another relational table to filter vector data, similar to the JOIN operation.
         # 
-        # > The data of the relational table can be returned by setting the IncludeMetadataFields parameter. For example, `rds_table_name.id` indicates that the id field of the relational table is returned.
+        # > You can set the IncludeMetadataFields parameter to return data from the relational table. For example, rds_table_name.id indicates that the id field of the relational table is returned.
         self.relational_table_filter_shrink = relational_table_filter_shrink
-        # The sparse vector data.
+        # The list of sparse vector data.
         self.sparse_vector_shrink = sparse_vector_shrink
-        # Specifies the number of top results to return.
+        # The number of top results to return.
         # 
         # This parameter is required.
         self.top_k = top_k
-        # The vector data. The length of the vector data must be the same as that specified in the [CreateCollection](https://help.aliyun.com/document_detail/2401497.html) operation.
-        # 
-        # > - If `SparseVector` is empty, only the dense vector search results are returned.
-        # >
-        # > - If both `Vector` and `SparseVector` are empty, only the full-text search results are returned.
+        # The vector data. The length must be consistent with the dimension specified in the [CreateCollection](https://help.aliyun.com/document_detail/2401497.html) operation.
+        # > 
+        # > - If SparseVector is left empty, the system uses it to retrieve only dense vector results.
+        # > - If both Vector and SparseVector are left empty, the system uses it to retrieve only full-text results.
         self.vector_shrink = vector_shrink
-        # The ID of the workspace that consists of multiple database instances. You must specify this parameter or the DBInstanceId parameter. If both this parameter and DBInstanceId are specified, this parameter is used.
+        # The ID of the workspace that consists of multiple database instances. This parameter and the DBInstanceId parameter cannot be left empty at the same time. If both parameters are specified, this parameter takes precedence.
         self.workspace_id = workspace_id
 
     def validate(self):

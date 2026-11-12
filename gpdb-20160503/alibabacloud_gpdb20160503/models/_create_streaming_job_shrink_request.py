@@ -30,57 +30,57 @@ class CreateStreamingJobShrinkRequest(DaraModel):
         update_columns_shrink: str = None,
         write_mode: str = None,
     ):
-        # Target database account.
+        # The account for the destination database.
         self.account = account
-        # Delivery guarantee.
+        # The delivery guarantee.
         self.consistency = consistency
-        # Instance ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # Data source ID.
+        # The data source ID.
         # 
         # This parameter is required.
         self.data_source_id = data_source_id
-        # Target data table mapping field list.
+        # The list of mapped fields in the destination table.
         self.dest_columns_shrink = dest_columns_shrink
-        # Target database name.
+        # The name of the destination database.
         self.dest_database = dest_database
-        # Target namespace.
+        # The destination namespace.
         self.dest_schema = dest_schema
-        # Target table name.
+        # The name of the destination table.
         self.dest_table = dest_table
-        # When data in Kafka does not match the ADBPG target table, it will cause a write failure. This value is the number of error rows allowed; exceeding this will cause the task to fail.
+        # The maximum number of allowed error rows. When data in Kafka does not match the destination AnalyticDB for PostgreSQL table, a write failure occurs. If the number of error rows exceeds this value, the task fails.
         self.error_limit_count = error_limit_count
-        # FallbackOffset, fallback offset
+        # The fallback offset.
         # 
-        # - The FallbackOffset parameter defines the behavior when the consumer does not request a specific offset or the requested offset exceeds the current Kafka cluster\\"s recorded offset information. You can choose to start consuming from the earliest (newest) or latest (oldest) offset.
+        # - The FallbackOffset parameter defines the behavior when a consumer does not request a specific offset to consume, or when the requested offset exceeds the offset range recorded in the current Kafka cluster. You can choose to start consuming from the earliest or latest offset.
         self.fallback_offset = fallback_offset
-        # Kafka group name
+        # The name of the Kafka group.
         self.group_name = group_name
-        # Job configuration file, required for professional mode.
+        # The task configuration file. This parameter is required in professional mode.
         self.job_config = job_config
-        # Job description.
+        # The task description.
         self.job_description = job_description
-        # Job name.
+        # The task name.
         # 
         # This parameter is required.
         self.job_name = job_name
-        # Match columns, usually all primary key columns of the target table. If all column values in this configuration are the same, the two rows of data are considered duplicates.
+        # The match columns. Typically, these are all the primary key columns of the destination table. If the values of all columns in this configuration are the same, the two rows of data are considered duplicate.
         self.match_columns_shrink = match_columns_shrink
-        # Configuration mode
-        # 1. Basic mode requires specifying some configuration fields
-        # 1. Professional mode supports submitting a YAML file
+        # The configuration mode.
+        # 1. The basic mode requires you to specify certain configuration fields.
+        # 2. The professional mode supports submitting a YAML file.
         self.mode = mode
-        # Target database password.
+        # The password for the destination database.
         self.password = password
-        # Region ID.
+        # The region ID.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) API to view available region IDs.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available region IDs.
         self.region_id = region_id
-        # Source data field list.
+        # The list of source data fields.
         self.src_columns_shrink = src_columns_shrink
-        # Whether to test the real-time task, values:
+        # Specifies whether to test the real-time task. Valid values:
         # 
         # - true
         # 
@@ -88,9 +88,9 @@ class CreateStreamingJobShrinkRequest(DaraModel):
         # 
         # Default value: false.
         self.try_run = try_run
-        # Update columns, usually all non-primary key columns of the target table. When data is determined to be duplicate through MatchColumns, updating the UpdateColumns column values will result in new data overwriting old data.
+        # The update columns. Typically, these are all the non-primary key columns of the destination table. When duplicate data is identified based on MatchColumns, updating the values of the UpdateColumns overwrites the old data with the new data.
         self.update_columns_shrink = update_columns_shrink
-        # Write mode.
+        # The write mode.
         self.write_mode = write_mode
 
     def validate(self):

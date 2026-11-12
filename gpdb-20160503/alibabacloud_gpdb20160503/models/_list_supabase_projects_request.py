@@ -17,21 +17,31 @@ class ListSupabaseProjectsRequest(DaraModel):
         sort_field: str = None,
         sort_order: str = None,
     ):
-        # The maximum number of entries to return. The default value is 10.
+        # The maximum number of results to return for the current request. Default value: 10.
         self.max_results = max_results
-        # The pagination token to retrieve the next page of results.
+        # The next token.
         self.next_token = next_token
-        # The page number.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries to return on each page.
         self.page_size = page_size
-        # The ID of the region.
-        # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the available regions.
+        # The region ID.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available region IDs.
         self.region_id = region_id
+        # The field used for searching. Valid values: ProjectID and ProjectName.
         self.search_field = search_field
+        # The search keyword. You can filter instances by instance ID or description.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in the specified region, including the instance IDs and descriptions.
         self.search_value = search_value
+        # The field used for sorting. Valid values: `gmtCreate` and `gmtModified`. Default value: `gmtCreate`.
         self.sort_field = sort_field
+        # The sort order. Default value: DESC.
+        # 
+        # Valid values:
+        # 
+        # - ASC: ascending order.
+        # 
+        # - DESC: descending order.
         self.sort_order = sort_order
 
     def validate(self):

@@ -16,21 +16,29 @@ class DescribeExternalDataServiceResponseBody(DaraModel):
         service_spec: str = None,
         status: str = None,
     ):
-        # The time when the service was created.
+        # The creation time.
         self.create_time = create_time
-        # The time when the service was last modified.
+        # The last modification time.
         self.modify_time = modify_time
         # The request ID.
         self.request_id = request_id
-        # The description of the service.
+        # The service description.
         self.service_description = service_description
         # The service ID.
         self.service_id = service_id
-        # The name of the service.
+        # The service name.
         self.service_name = service_name
-        # The specifications of the service. Unit: compute units (CUs).
+        # The service specification (unit: CU).
         self.service_spec = service_spec
-        # The status of the operation.
+        # The service status. Valid values:
+        # 
+        # - Init: The service is being initialized.
+        # 
+        # - Running: The service is running.
+        # 
+        # - Exception: An exception occurred.
+        # 
+        # - Paused: The service is paused.
         self.status = status
 
     def validate(self):

@@ -19,12 +19,12 @@ class CreateSecretRequest(DaraModel):
     ):
         # The instance ID.
         # 
-        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including the instance IDs.
         self.dbinstance_id = dbinstance_id
-        # The description of the access credential.
+        # The description of the credential. The description can be up to 255 characters in length.
         self.description = description
         self.owner_id = owner_id
-        # The password of the database account that is used to access the instance.
+        # The password for database access.
         # 
         # This parameter is required.
         self.password = password
@@ -32,15 +32,19 @@ class CreateSecretRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The name of the access credential. The name must be 1 to 16 characters in length and can contain letters, digits, and underscores (_). If you leave this parameter empty, the value of the Username parameter is used.
+        # The name of the credential. The name can contain letters, digits, and underscores (_), and must be 1 to 16 characters in length. If this parameter is left empty, the value of the Username parameter is used as the secret name.
         self.secret_name = secret_name
-        # Specifies whether to check the connectivity to the instance by using the name and password of the database account.
+        # Specifies whether to test the instance connection by using the username and password.
         self.test_connection = test_connection
-        # The name of the database account that is used to access the instance.
+        # The username for database access.
+        # 
+        # > Limits:
+        # > - The username can contain lowercase letters, digits, and underscores (_), and must start with a lowercase letter.
+        # > - The username can be up to 64 characters in length.
         # 
         # This parameter is required.
         self.username = username
-        # The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes precedence.
+        # The ID of the workspace that consists of multiple database instances. This parameter and the DBInstanceId parameter cannot be left empty at the same time. If both parameters are specified, this parameter takes precedence.
         self.workspace_id = workspace_id
 
     def validate(self):

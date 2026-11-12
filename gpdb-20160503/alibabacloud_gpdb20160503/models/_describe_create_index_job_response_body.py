@@ -13,16 +13,15 @@ class DescribeCreateIndexJobResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The details of the index creation job.
+        # The details of the index creation task.
         self.job = job
-        # The returned message.
+        # The detailed information returned by the API operation.
         self.message = message
-        # The unique ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The status of the operation. Valid values:
-        # 
-        # *   **success**.
-        # *   **fail**.
+        # The execution status of the API operation. Valid values:
+        # - **success**: Successful.
+        # - **fail**: Failed.
         self.status = status
 
     def validate(self):
@@ -76,28 +75,25 @@ class DescribeCreateIndexJobResponseBodyJob(DaraModel):
         status: str = None,
         update_time: str = None,
     ):
-        # Indicates whether the operation is complete.
+        # Indicates whether the operation is completed.
         self.completed = completed
-        # The job creation time.
+        # The time when the task was created.
         self.create_time = create_time
-        # The error message that is returned when the current operation is abnormal or fails.
+        # The error message returned when the current operation encounters an exception or fails.
         self.error = error
         # The job ID.
         self.id = id
-        # The progress of the index creation job. Unit: %. A value of 100 indicates that the job is complete.
+        # The creation progress. This value is a percentage, and a value of 100 indicates that the task is completed.
         # 
-        # > 
-        # 
-        # *   Only AnalyticDB for PostgreSQL V7.0 supports the Progress parameter.
+        # >- Only AnalyticDB for PostgreSQL 7.0 instances support progress updates.
         self.progress = progress
-        # The status of the job. Valid values:
-        # 
-        # *   **Success.**
-        # *   **Failed** (See the Error parameter for failure reasons).
-        # *   **Cancelled.**
-        # *   **Running.
+        # The task status. Valid values:
+        # - **Success**: Successful.
+        # - **Failed**: Failed. You can check the Error field for the cause of the failure.
+        # - **Cancelled**: Canceled.
+        # - **Running**: Running.
         self.status = status
-        # The job last updated time.
+        # The time when the task was updated.
         self.update_time = update_time
 
     def validate(self):

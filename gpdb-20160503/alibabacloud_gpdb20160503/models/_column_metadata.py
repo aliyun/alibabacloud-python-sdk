@@ -23,20 +23,35 @@ class ColumnMetadata(DaraModel):
         table_name: str = None,
         udt_name: str = None,
     ):
+        # The default value.
         self.column_default = column_default
+        # The column description.
         self.comment = comment
+        # The data type.
         self.data_type = data_type
+        # The case sensitivity.
         self.is_case_sensitive = is_case_sensitive
+        # The currency value indicator.
         self.is_currency = is_currency
+        # The primary key indicator.
         self.is_primary_key = is_primary_key
+        # The signed indicator.
         self.is_signed = is_signed
+        # The maximum character length.
         self.max_length = max_length
+        # The column name.
         self.name = name
+        # The nullability.
         self.nullable = nullable
+        # The precision of the column, which indicates the total number of digits in the integer and fractional parts of a decimal number.
         self.precision = precision
+        # The scale of the column, which indicates the number of digits in the fractional part of a decimal number.
         self.scale = scale
+        # The schema name.
         self.schema_name = schema_name
+        # The table name.
         self.table_name = table_name
+        # The name of the base data type used by the column.
         self.udt_name = udt_name
 
     def validate(self):

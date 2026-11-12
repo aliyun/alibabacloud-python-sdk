@@ -18,32 +18,32 @@ class DescribeTableRequest(DaraModel):
     ):
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in the specified region, including the instance IDs.
         self.dbinstance_id = dbinstance_id
-        # The database name.
+        # The name of the database.
         # 
         # This parameter is required.
         self.database = database
         self.owner_id = owner_id
-        # The region ID of the instance.
+        # The ID of the region where the instance resides.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The name of the schema that contains the table.
+        # The name of the schema where the table resides.
         # 
         # This parameter is required.
         self.schema = schema
-        # The access credential. Created by calling the CreateSecret operation.
+        # The access credential created by calling the CreateSecret operation.
         # 
-        # > When you access this operation by using a RAM user, you must have the UseSecret or GetSecretValue permission on this SecretArn.
+        # > When you call this operation as a RAM user, the RAM user must have the UseSecret or GetSecretValue permission on the SecretArn.
         # 
         # This parameter is required.
         self.secret_arn = secret_arn
-        # The table name.
+        # The name of the table.
         # 
         # This parameter is required.
         self.table = table
-        # The ID of the workspace that consists of multiple database instances. This parameter and DBInstanceId cannot both be empty. If both this parameter and DBInstanceId are specified, this parameter takes precedence.
+        # The ID of the workspace that consists of multiple database instances. This parameter and the DBInstanceId parameter cannot be both empty. If both parameters are specified, this parameter takes precedence.
         self.workspace_id = workspace_id
 
     def validate(self):

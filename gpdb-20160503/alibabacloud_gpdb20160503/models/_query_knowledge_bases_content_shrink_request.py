@@ -24,7 +24,7 @@ class QueryKnowledgeBasesContentShrinkRequest(DaraModel):
         self.content = content
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including the instance IDs.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
@@ -39,17 +39,17 @@ class QueryKnowledgeBasesContentShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The reranking factor. If this parameter is not empty, the vector retrieval results are reranked. Valid values: 1 < RerankFactor <= 5.
+        # The reranking factor. If this value is not empty, the vector retrieve results are reranked. Valid values: 1 < RerankFactor <= 5.
         # > - Reranking is slow when document chunks are sparse.
-        # > - The recommended reranking count (TopK × Factor, rounded up) should not exceed 50.
+        # > - We recommend that the number of reranked items (TopK × Factor, rounded up) does not exceed 50.
         self.rerank_factor = rerank_factor
-        # The reranking model parameters for performing an additional reranking on the overall results after multi-channel merging.
+        # The parameters of the reranking model used to rerank the merged multi-channel results.
         self.rerank_model_shrink = rerank_model_shrink
-        # The information about the multiple collections to retrieve.
+        # The information about multiple collections to be retrieved.
         # 
         # This parameter is required.
         self.source_collection_shrink = source_collection_shrink
-        # The number of top results to return after multi-channel recall merging.
+        # The number of top results to return after multi-channel recall results are merged.
         self.top_k = top_k
 
     def validate(self):

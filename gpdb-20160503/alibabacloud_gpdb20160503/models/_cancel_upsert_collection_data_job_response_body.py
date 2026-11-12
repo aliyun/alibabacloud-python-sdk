@@ -15,10 +15,9 @@ class CancelUpsertCollectionDataJobResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The status of the operation. Valid values:
-        # 
-        # *   **success**
-        # *   **fail**
+        # The status of the cancellation. Valid values:
+        # - **success**: The cancellation succeeded.
+        # - **fail**: The cancellation failed.
         self.status = status
 
     def validate(self):

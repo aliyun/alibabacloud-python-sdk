@@ -15,7 +15,7 @@ class DescribeDBVersionInfosResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The queried minor versions.
+        # The data structure.
         self.version_details = version_details
 
     def validate(self):
@@ -52,9 +52,9 @@ class DescribeDBVersionInfosResponseBodyVersionDetails(DaraModel):
         serverless: Any = None,
         storage_elastic: Any = None,
     ):
-        # The queried minor version information about the instance in Serverless mode.
+        # The kernel version information for the cloud-native mode.
         self.serverless = serverless
-        # The queried minor version information about the instance in elastic storage mode.
+        # The kernel version information for the storage elastic mode.
         self.storage_elastic = storage_elastic
 
     def validate(self):

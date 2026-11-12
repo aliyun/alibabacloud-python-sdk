@@ -13,16 +13,15 @@ class GetUpsertCollectionDataJobResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The information about the vector data upload job.
+        # The details of the task for uploading vector data.
         self.job = job
         # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # The status of the operation. Valid values:
-        # 
-        # *   **success**
-        # *   **fail**
+        # - **success**: The operation is successful.
+        # - **fail**: The operation fails.
         self.status = status
 
     def validate(self):
@@ -76,33 +75,25 @@ class GetUpsertCollectionDataJobResponseBodyJob(DaraModel):
         status: str = None,
         update_time: str = None,
     ):
-        # Indicates whether the operation is complete.
+        # Indicates whether the operation is completed.
         self.completed = completed
-        # The time when the job was created.
+        # The time when the task was created.
         self.create_time = create_time
-        # The error message.
+        # The error message returned when the current operation is abnormal or fails.
         self.error = error
         # The job ID.
         self.id = id
-        # The progress of the vector data upload job. The value of this parameter indicates the number of data entries that have been uploaded.
+        # The upload progress. The value indicates the number of data records that have been uploaded.
         self.progress = progress
-        # The status of the job.
-        # 
-        # >  Valid values:
-        # 
-        # *   Success
-        # 
-        # *   Failed (See the Error parameter for failure reasons.)
-        # 
-        # *   Cancelling
-        # 
-        # *   Cancelled
-        # 
-        # *   Start
-        # 
-        # *   Running
+        # The task status. Valid values:
+        # > - Success: The task is successful.
+        # > - Failed: The task fails. You can view the Error field for the cause of the failure.
+        # > - Cancelling: The task is being canceled.
+        # > - Cancelled: The task is canceled.
+        # > - Start: The task is started.
+        # > - Running: The task is running.
         self.status = status
-        # The time when the job was updated.
+        # The time when the task was updated.
         self.update_time = update_time
 
     def validate(self):

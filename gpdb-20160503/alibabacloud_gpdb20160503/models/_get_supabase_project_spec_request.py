@@ -9,7 +9,7 @@ class GetSupabaseProjectSpecRequest(DaraModel):
         self,
         region_id: str = None,
     ):
-        # The region ID.
+        # The region ID. Specifies the region for the query or operation.
         self.region_id = region_id
 
     def validate(self):

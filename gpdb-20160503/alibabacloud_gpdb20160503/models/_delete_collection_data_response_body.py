@@ -12,16 +12,15 @@ class DeleteCollectionDataResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The number of rows that are affected by the request.
+        # The applied rows.
         self.applied_rows = applied_rows
         # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **success**
-        # *   **fail**
+        # The execution status of the API operation. Valid values:
+        # - **success**: Execution succeeded.
+        # - **fail**: Execution failed.
         self.status = status
 
     def validate(self):

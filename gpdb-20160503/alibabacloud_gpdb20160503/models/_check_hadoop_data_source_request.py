@@ -12,7 +12,7 @@ class CheckHadoopDataSourceRequest(DaraModel):
         data_source_id: str = None,
         region_id: str = None,
     ):
-        # The Hadoop path that you want to check.
+        # The Hadoop path to be checked.
         # 
         # This parameter is required.
         self.check_dir = check_dir
@@ -26,7 +26,7 @@ class CheckHadoopDataSourceRequest(DaraModel):
         self.data_source_id = data_source_id
         # The region ID.
         # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available region IDs.
         self.region_id = region_id
 
     def validate(self):

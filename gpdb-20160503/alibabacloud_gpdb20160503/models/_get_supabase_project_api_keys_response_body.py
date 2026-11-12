@@ -13,7 +13,7 @@ class GetSupabaseProjectApiKeysResponseBody(DaraModel):
         api_keys: List[main_models.GetSupabaseProjectApiKeysResponseBodyApiKeys] = None,
         request_id: str = None,
     ):
-        # A list of API keys.
+        # The list of API keys.
         self.api_keys = api_keys
         # The request ID.
         self.request_id = request_id
@@ -58,9 +58,9 @@ class GetSupabaseProjectApiKeysResponseBodyApiKeys(DaraModel):
         api_key: str = None,
         name: str = None,
     ):
-        # The value of the API key.
+        # The content of the API key.
         self.api_key = api_key
-        # The name of the API key, such as anon key, service role key, or JWT secret.
+        # The name of the API key, including the anon key, service role key, and JWT secrets.
         self.name = name
 
     def validate(self):

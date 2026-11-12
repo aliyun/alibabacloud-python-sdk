@@ -20,22 +20,21 @@ class ListCollectionsResponseBody(DaraModel):
         status: str = None,
     ):
         self.collections = collections
-        # The total number of entries returned.
+        # The total number of entries.
         self.count = count
         # The instance ID.
         self.dbinstance_id = dbinstance_id
         # The returned message.
         self.message = message
-        # The name of the namespace.
+        # The namespace.
         self.namespace = namespace
-        # The region ID of the instance.
+        # The region ID.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **success**
-        # *   **fail**
+        # The execution status of the API operation. Valid values:
+        # - **success**: The operation succeeded.
+        # - **fail**: The operation failed.
         self.status = status
 
     def validate(self):

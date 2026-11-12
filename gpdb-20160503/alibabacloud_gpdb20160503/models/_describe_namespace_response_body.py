@@ -21,18 +21,17 @@ class DescribeNamespaceResponseBody(DaraModel):
         self.dbinstance_id = dbinstance_id
         # The returned message.
         self.message = message
-        # The name of the namespace.
+        # The namespace.
         self.namespace = namespace
-        # The queried namespace.
+        # The namespace information.
         self.namespace_info = namespace_info
-        # The region ID of the instance.
+        # The region ID.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **success**
-        # *   **fail**
+        # The execution status of the API operation. Valid values:
+        # - **success**: The execution is successful.
+        # - **fail**: The execution fails.
         self.status = status
 
     def validate(self):

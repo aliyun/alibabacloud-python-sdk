@@ -11,14 +11,13 @@ class InitVectorDatabaseResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The error message returned if the request fails.
+        # The details of the error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **Success**
-        # *   **fail**
+        # The execution status of the API operation. Valid values:
+        # - **success**: The execution succeeded.
+        # - **fail**: The execution failed.
         self.status = status
 
     def validate(self):

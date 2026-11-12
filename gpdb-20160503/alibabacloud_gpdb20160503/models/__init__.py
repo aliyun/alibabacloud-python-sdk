@@ -532,6 +532,9 @@ from ._get_branch_schema_response import GetBranchSchemaResponse
 from ._get_graph_ragjob_request import GetGraphRAGJobRequest
 from ._get_graph_ragjob_response_body import GetGraphRAGJobResponseBody
 from ._get_graph_ragjob_response import GetGraphRAGJobResponse
+from ._get_saas_data_unit_usage_request import GetSaasDataUnitUsageRequest
+from ._get_saas_data_unit_usage_response_body import GetSaasDataUnitUsageResponseBody
+from ._get_saas_data_unit_usage_response import GetSaasDataUnitUsageResponse
 from ._get_saas_service_request import GetSaasServiceRequest
 from ._get_saas_service_response_body import GetSaasServiceResponseBody
 from ._get_saas_service_response import GetSaasServiceResponse
@@ -1103,6 +1106,11 @@ from ._get_api_endpoints_response_body import GetApiEndpointsResponseBodyItems
 from ._get_api_key_response_body import GetApiKeyResponseBodyAuthServices
 from ._get_graph_ragjob_response_body import GetGraphRAGJobResponseBodyJob
 from ._get_graph_ragjob_response_body import GetGraphRAGJobResponseBodyUsage
+from ._get_saas_data_unit_usage_response_body import GetSaasDataUnitUsageResponseBodyDistribution
+from ._get_saas_data_unit_usage_response_body import GetSaasDataUnitUsageResponseBodySummary
+from ._get_saas_data_unit_usage_response_body import GetSaasDataUnitUsageResponseBodyTimeSeriesScenes
+from ._get_saas_data_unit_usage_response_body import GetSaasDataUnitUsageResponseBodyTimeSeries
+from ._get_saas_data_unit_usage_response_body import GetSaasDataUnitUsageResponseBodyWarnings
 from ._get_statement_result_response_body import GetStatementResultResponseBodyDataColumnMetadata
 from ._get_statement_result_response_body import GetStatementResultResponseBodyDataRecordsRecords
 from ._get_statement_result_response_body import GetStatementResultResponseBodyDataRecords
@@ -1758,6 +1766,9 @@ __all__ = [
     GetGraphRAGJobRequest,
     GetGraphRAGJobResponseBody,
     GetGraphRAGJobResponse,
+    GetSaasDataUnitUsageRequest,
+    GetSaasDataUnitUsageResponseBody,
+    GetSaasDataUnitUsageResponse,
     GetSaasServiceRequest,
     GetSaasServiceResponseBody,
     GetSaasServiceResponse,
@@ -2329,6 +2340,11 @@ __all__ = [
     GetApiKeyResponseBodyAuthServices,
     GetGraphRAGJobResponseBodyJob,
     GetGraphRAGJobResponseBodyUsage,
+    GetSaasDataUnitUsageResponseBodyDistribution,
+    GetSaasDataUnitUsageResponseBodySummary,
+    GetSaasDataUnitUsageResponseBodyTimeSeriesScenes,
+    GetSaasDataUnitUsageResponseBodyTimeSeries,
+    GetSaasDataUnitUsageResponseBodyWarnings,
     GetStatementResultResponseBodyDataColumnMetadata,
     GetStatementResultResponseBodyDataRecordsRecords,
     GetStatementResultResponseBodyDataRecords,

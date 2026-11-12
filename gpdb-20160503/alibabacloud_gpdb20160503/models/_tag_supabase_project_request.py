@@ -76,9 +76,9 @@ class TagSupabaseProjectRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. This parameter cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag key. The value cannot be an empty string. The key can be up to 64 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value. This parameter can be an empty string. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
+        # The tag value. The value can be an empty string. The value can be up to 128 characters in length and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

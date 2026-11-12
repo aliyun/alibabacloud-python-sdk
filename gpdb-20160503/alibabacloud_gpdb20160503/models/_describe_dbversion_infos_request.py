@@ -15,19 +15,19 @@ class DescribeDBVersionInfosRequest(DaraModel):
     ):
         # The resource type of the instance. Valid values:
         # 
-        # *   **StorageElastic**: elastic storage mode.
-        # *   **Serverless**: Serverless mode.
+        # - **StorageElastic**: storage elastic mode
+        # - **Serverless**: Serverless mode
         self.dbinstance_mode = dbinstance_mode
-        # The minor version number that does not include the prefix.
+        # The kernel version number without a prefix.
         self.dbversion = dbversion
         self.owner_id = owner_id
-        # The region ID of the instance.
+        # The region ID.
         # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+        # The ID of the resource group to which the instance belongs. For more information about how to obtain a resource group ID, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
 
     def validate(self):

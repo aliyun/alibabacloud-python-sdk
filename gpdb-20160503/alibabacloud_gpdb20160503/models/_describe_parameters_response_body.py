@@ -13,9 +13,9 @@ class DescribeParametersResponseBody(DaraModel):
         parameters: List[main_models.DescribeParametersResponseBodyParameters] = None,
         request_id: str = None,
     ):
-        # The queried configuration parameters.
+        # The list of configuration parameters.
         self.parameters = parameters
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -65,17 +65,17 @@ class DescribeParametersResponseBodyParameters(DaraModel):
     ):
         # The current value of the configuration parameter.
         self.current_value = current_value
-        # Indicates whether a restart is required for parameter modifications to take effect. Valid values:
+        # Indicates whether the instance must be restarted. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The instance must be restarted.
+        # - **false**: The instance does not need to be restarted.
         self.force_restart_instance = force_restart_instance
         # Indicates whether the configuration parameter can be modified. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The parameter can be modified.
+        # - **false**: The parameter cannot be modified.
         self.is_changeable_config = is_changeable_config
-        # The valid values of the configuration parameter.
+        # The value range of the configuration parameter.
         self.optional_range = optional_range
         # The description of the configuration parameter.
         self.parameter_description = parameter_description

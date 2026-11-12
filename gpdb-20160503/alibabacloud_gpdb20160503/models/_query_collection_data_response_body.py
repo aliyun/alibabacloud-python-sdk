@@ -16,19 +16,16 @@ class QueryCollectionDataResponseBody(DaraModel):
         status: str = None,
         total: int = None,
     ):
-        # The matched results.
         self.matches = matches
-        # Details about the error, returned if the request fails.
+        # The detailed information returned when the request fails.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The status of the request. Valid values:
-        # 
-        # - **success**: The request was successful.
-        # 
-        # - **fail**: The request failed.
+        # The status. Valid values:
+        # - **success**: The request is successful.
+        # - **fail**: The request fails.
         self.status = status
-        # The total number of hits for the search. This parameter is returned only when the Offset parameter in the request is not 0.
+        # The total number of hits for the search condition. This parameter is returned only when the Offset parameter in the request is not 0.
         self.total = total
 
     def validate(self):

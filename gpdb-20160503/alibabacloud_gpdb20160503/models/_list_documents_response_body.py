@@ -17,19 +17,18 @@ class ListDocumentsResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The total number of entries returned.
+        # The total number of entries.
         self.count = count
         self.items = items
-        # The returned message.
+        # The detailed information returned by the API operation.
         self.message = message
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The paging token used to start the next paged query. If this parameter is empty, the current page is the last page.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **success**
-        # *   **fail**
+        # The execution status of the API operation. Valid values:
+        # - **success**: The operation is successful.
+        # - **fail**: The operation fails.
         self.status = status
 
     def validate(self):

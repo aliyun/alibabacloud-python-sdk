@@ -15,22 +15,20 @@ class ListSupabaseBackupJobsRequest(DaraModel):
     ):
         # The backup mode. Valid values:
         # 
-        # - Automated: automatic backup
-        # - Manual: manual backup
+        # - Automated: automatic backup.
+        # - Manual: manual backup.
         # 
-        # If this parameter is not specified, all backup tasks are returned.
+        # If you do not specify this parameter, all backup tasks are returned.
         self.backup_mode = backup_mode
         # The maximum number of entries to return for this request.
         self.max_results = max_results
-        # The paging token. Do not specify this parameter for the first query. For subsequent queries, specify the NextToken value returned in the previous response.
+        # The paging token for a paged query. Do not specify this parameter for the first request. For subsequent requests, specify the NextToken value returned in the previous response.
         self.next_token = next_token
-        # Instance ID of the Supabase instance. You can obtain instance ID from the Supabase page in the console.
+        # Instance ID of the Supabase instance. You can obtain instance ID on the Supabase page in the console.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The region ID.
-        # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available region IDs.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available region IDs.
         self.region_id = region_id
 
     def validate(self):

@@ -12,15 +12,15 @@ class CheckJDBCSourceNetConnectionRequest(DaraModel):
         jdbc_connection_string: str = None,
         region_id: str = None,
     ):
-        # Instance ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # Either DataSourceId or JdbcConnectionString must be specified as input, otherwise an error will occur. If both parameters are specified, JdbcConnectionString will be used preferentially.
+        # You must specify either DataSourceId or JdbcConnectionString. Otherwise, an error occurs. If both parameters are specified, JdbcConnectionString takes precedence.
         self.data_source_id = data_source_id
-        # JDBC connection string.
+        # The JDBC connection string.
         self.jdbc_connection_string = jdbc_connection_string
-        # The ID of the region where the instance is located.
+        # The region ID of the instance.
         self.region_id = region_id
 
     def validate(self):

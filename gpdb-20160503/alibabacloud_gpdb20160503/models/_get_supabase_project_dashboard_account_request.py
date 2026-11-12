@@ -10,7 +10,7 @@ class GetSupabaseProjectDashboardAccountRequest(DaraModel):
         project_id: str = None,
         region_id: str = None,
     ):
-        # The Supabase project ID.
+        # The Supabase instance ID.
         # 
         # This parameter is required.
         self.project_id = project_id

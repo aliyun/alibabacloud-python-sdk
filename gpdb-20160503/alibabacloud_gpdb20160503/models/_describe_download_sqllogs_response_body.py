@@ -13,9 +13,9 @@ class DescribeDownloadSQLLogsResponseBody(DaraModel):
         records: List[main_models.DescribeDownloadSQLLogsResponseBodyRecords] = None,
         request_id: str = None,
     ):
-        # List of download records.
+        # The list of download records.
         self.records = records
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -61,15 +61,15 @@ class DescribeDownloadSQLLogsResponseBodyRecords(DaraModel):
         file_name: str = None,
         status: str = None,
     ):
-        # Download record ID.
+        # The ID of the download record.
         self.download_id = download_id
-        # Download link.
+        # The download URL.
         self.download_url = download_url
-        # Error message.
+        # The error message.
         self.exception_msg = exception_msg
-        # File name.
+        # The file name.
         self.file_name = file_name
-        # Task status, with possible values being:
+        # The task status. Valid values:
         # - **running**: Downloading.
         # - **finished**: Completed.
         # - **failed**: Download failed.

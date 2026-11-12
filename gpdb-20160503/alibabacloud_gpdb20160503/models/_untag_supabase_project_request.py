@@ -15,7 +15,7 @@ class UntagSupabaseProjectRequest(DaraModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
-        # Specifies whether to unbind all tags from the instance. This parameter takes effect only when TagKey.N is not specified in the request. Valid values:
+        # Specifies whether to remove all tags from the instance. This parameter is valid only when TagKey.N is not specified in the request. Valid values:
         # 
         # - true
         # - false
@@ -27,8 +27,8 @@ class UntagSupabaseProjectRequest(DaraModel):
         # The instance ID. Valid values of N: 1 to 50.
         self.resource_id = resource_id
         # The resource type. Valid values:
-        # - `instance`: reserved mode instance.
-        # - `ALIYUN::GPDB::INSTANCE`: elastic mode instance.
+        # - `instance`: reserved mode instance
+        # - `ALIYUN::GPDB::INSTANCE`: elastic mode instance
         self.resource_type = resource_type
         # The tag key of the resource. Valid values of N: 1 to 20.
         self.tag_key = tag_key

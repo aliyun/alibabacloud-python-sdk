@@ -14,13 +14,13 @@ class UpgradeExtensionsRequest(DaraModel):
     ):
         # The instance ID.
         # 
-        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # >You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specified region, including instance IDs.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # Database name.
+        # The name of the database.
         self.database_name = database_name
-        # The extensions that you want to update. Separate multiple extensions with commas (,).
+        # The plug-ins to be upgraded. Separate multiple plug-ins with commas (,).
         # 
         # This parameter is required.
         self.extensions = extensions

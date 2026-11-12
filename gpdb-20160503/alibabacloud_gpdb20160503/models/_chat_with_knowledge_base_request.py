@@ -19,20 +19,20 @@ class ChatWithKnowledgeBaseRequest(DaraModel):
         region_id: str = None,
     ):
         # The instance ID.
-        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of all instances in the target region, including the instance ID.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of all instances in the target region, including the instance IDs.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # Specifies whether to return the recall results. Default value: false.
         self.include_knowledge_base_results = include_knowledge_base_results
-        # The knowledge retrieval parameter object. If not specified, only chat is performed.
+        # The knowledge retrieval parameter object. If this parameter is not specified, only chat is performed.
         self.knowledge_params = knowledge_params
-        # The large language model (LLM) invocation parameter object.
+        # The large language model (LLM) call parameter object.
         # 
         # This parameter is required.
         self.model_params = model_params
         self.owner_id = owner_id
-        # The system prompt template, which must include {{ text_chunks }}, {{ user_system_prompt }}, {{ graph_entities }}, and {{ graph_relations }}. If not specified, this part does not take effect.
+        # The system prompt template. It must include {{ text_chunks }}, {{ user_system_prompt }}, {{ graph_entities }}, and {{ graph_relations }}. If this parameter is not specified, this part does not take effect.
         self.prompt_params = prompt_params
         # The region ID of the instance.
         # 
@@ -120,23 +120,23 @@ class ChatWithKnowledgeBaseRequestModelParams(DaraModel):
         # 
         # This parameter is required.
         self.messages = messages
-        # The name of the large model to use. For valid values, see: [Bailian Help Documentation](https://help.aliyun.com/zh/model-studio/compatibility-of-openai-with-dashscope?spm=a2c4g.11186623.help-menu-2400256.d_2_10_0.45b5516eZIciC8&scm=20140722.H_2833609._.OR_help-T_cn~zh-V_1#eadfc13038jd5)
+        # The name of the large language model to use. For valid values, see [Model Studio documentation](https://www.alibabacloud.com/help/en/model-studio/compatibility-of-openai-with-dashscope#eadfc13038jd5).
         # 
         # This parameter is required.
         self.model = model
         # The number of candidate replies to generate.
         self.n = n
-        # The presence penalty coefficient (-2.0 to 2.0).
+        # The presence penalty coefficient. Valid values: -2.0 to 2.0.
         self.presence_penalty = presence_penalty
         # The random seed.
         self.seed = seed
         # The stop word list.
         self.stop = stop
-        # The sampling temperature (0 to 2).
+        # The sampling temperature. Valid values: 0 to 2.
         self.temperature = temperature
         # The tool list.
         self.tools = tools
-        # The nucleus sampling probability threshold (0 to 1).
+        # The probability threshold for nucleus sampling. Valid values: 0 to 1.
         self.top_p = top_p
 
     def validate(self):
@@ -267,11 +267,11 @@ class ChatWithKnowledgeBaseRequestModelParamsToolsFunction(DaraModel):
         name: str = None,
         parameters: Any = None,
     ):
-        # The function tool description.
+        # The description of the function tool.
         self.description = description
-        # The function tool name.
+        # The name of the function tool.
         self.name = name
-        # The function parameters in JSON Schema format.
+        # The JSON Schema of the function parameters.
         self.parameters = parameters
 
     def validate(self):
@@ -360,22 +360,23 @@ class ChatWithKnowledgeBaseRequestKnowledgeParams(DaraModel):
         source_collection: List[main_models.ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollection] = None,
         top_k: int = None,
     ):
-        # The method for merging multiple knowledge bases. Default is RRF. Valid values:
+        # The method used to merge multiple knowledge bases. Default value: RRF. Valid values:
         # - RRF
         # - Weight
         self.merge_method = merge_method
-        # The parameters for multi-knowledge base fusion.
+        # The parameters for merging multiple knowledge bases.
         self.merge_method_args = merge_method_args
-        # The reranking factor. When this value is not empty, the vector retrieval results are reranked. Value range: 1 < RerankFactor <= 5.
-        # > - Reranking is slow when document segmentation is sparse.
-        # > - It is recommended that the number of items to rerank (TopK * Factor, rounded up) does not exceed 50.
+        # The reranking factor. If this value is not empty, the vector retrieve results are reranked. Valid values: 1 < RerankFactor <= 5.
+        # > - When documents are sparsely chunked, the reranking efficiency is low.
+        # > - We recommend that the number of reranked items (TopK × Factor, rounded up) does not exceed 50.
         self.rerank_factor = rerank_factor
+        # The reranking model parameters.
         self.rerank_model = rerank_model
         # The list of knowledge bases.
         # 
         # This parameter is required.
         self.source_collection = source_collection
-        # The number of top results to return after merging the recall results from multiple vector collections.
+        # The number of top results to return after the multi-vector collection recall results are merged.
         self.top_k = top_k
 
     def validate(self):
@@ -450,21 +451,21 @@ class ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollection(DaraModel):
         namespace_password: str = None,
         query_params: main_models.ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParams = None,
     ):
-        # The name of the collection to recall.
+        # The name of the collection to be recalled.
         # 
         # This parameter is required.
         self.collection = collection
         # The namespace. Default value: public.
         # 
-        # > You can create a namespace by calling the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation, and view the list by calling the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation.
+        # > You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to view the namespace list.
         self.namespace = namespace
         # The password corresponding to the namespace.
         # 
-        # > This value is specified in the CreateNamespace operation.
+        # > This value is specified when you call the CreateNamespace operation.
         # 
         # This parameter is required.
         self.namespace_password = namespace_password
-        # The parameters related to knowledge base retrieval.
+        # The parameters related to the retrieval of this knowledge base.
         self.query_params = query_params
 
     def validate(self):
@@ -522,23 +523,21 @@ class ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParams(Dar
         top_k: int = None,
         use_full_text_retrieval: bool = None,
     ):
-        # The filter condition for the data to be updated, in SQL WHERE clause format.
+        # The filter condition for the data to be updated, in the SQL WHERE format.
         self.filter = filter
         # Specifies whether to enable knowledge graph enhancement. Default value: false.
         self.graph_enhance = graph_enhance
-        # The number of top entities and relationship edges to return. Default value: 60.
+        # The top number of entities and relationship edges to return. Default value: 60.
         self.graph_search_args = graph_search_args
-        # The multi-path recall algorithm. Default is empty (i.e., directly compares and sorts the dense vector and full-text scores).
+        # The multi-channel recall algorithm. Default value: empty (which means directly comparing and sorting the scores of dense vectors and full text). Valid values:
         # 
-        # Valid values:
-        # 
-        # - RRF: Reciprocal Rank Fusion. Has a parameter k to control the fusion effect. See HybridSearchArgs configuration for details.
-        # - Weight: Weight-based sorting. Uses parameters to control the score weights of vector and full-text retrieval, then sorts. See HybridSearchArgs configuration for details.
-        # - Cascaded: First performs full-text retrieval, then performs vector retrieval on top of it.
+        # - RRF: Reciprocal rank fusion. A parameter k is used to control the fusion effect. For details, see HybridSearchArgs.
+        # - Weight: Weighted sorting. Parameters are used to control the score weights of vectors and full text before sorting. For details, see HybridSearchArgs.
+        # - Cascaded: Full-text retrieve is performed first, followed by vector retrieve based on the results.
         self.hybrid_search = hybrid_search
-        # The algorithm parameters for multi-path recall. Currently supports RRF and Weight. HybridPathsSetting can specify recall of dense vectors (dense), sparse vectors (sparse), and full-text retrieval (fulltext). If the value is empty, dense vectors (dense) and full-text retrieval (fulltext) are recalled by default.
+        # The algorithm parameters for multi-channel recall. RRF and Weight are supported. HybridPathsSetting can be used to specify the recall of dense vectors (dense), sparse vectors (sparse), and full-text retrieve (fulltext). If this value is empty, dense vectors (dense) and full-text retrieve (fulltext) are recalled by default.
         # 
-        # - RRF: Specifies the k constant in the scoring algorithm `1/(k+rank_i)`. The value must be a positive integer greater than 1. Format:
+        # - RRF: The constant k in the score calculation formula 1/(k+rank_i). The value must be a positive integer greater than 1. Format:
         # ```
         # {
         #   "HybridPathsSetting": {
@@ -551,8 +550,8 @@ class ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParams(Dar
         # ```
         # 
         # - Weight: 
-        #    - Dual-path recall (without specifying HybridPathsSetting, only specifying alpha):
-        #       - Formula: alpha * dense_score + (1-alpha) * fulltext_score. The parameter alpha represents the score weight between dense vector and full-text retrieval, ranging from 0 to 1, where 0 means full-text only and 1 means dense vector only:
+        #    - Dual-channel recall (HybridPathsSetting is not specified, only alpha is specified):
+        #       - Calculation formula: alpha * dense_score + (1-alpha) * fulltext_score. The alpha parameter represents the score weight of dense vectors and full-text retrieve. The value ranges from 0 to 1, where 0 indicates full-text retrieve only and 1 indicates dense vectors only:
         # ```
         # { 
         #    "Weight": {
@@ -560,8 +559,8 @@ class ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParams(Dar
         #    }
         # }
         # ```
-        #   - Three-path recall mode:
-        #      - Formula: normalized_dense * dense_score + normalized_sparse * sparse_score + normalized_fulltext * fulltext_score. Where dense, sparse, and fulltext represent the weights for dense vector, sparse vector, and full-text retrieval respectively, with values greater than or equal to 0. The system automatically normalizes the weights to the range 0-1 (i.e., normalized_x = x / (dense + sparse + fulltext)).
+        #   - Triple-channel recall pattern:
+        #      - Calculation formula: normalized_dense * dense_score + normalized_sparse * sparse_score + normalized_fulltext * fulltext_score. dense, sparse, and fulltext represent the weights of dense vectors, sparse vectors, and full-text retrieve, respectively. The value must be greater than or equal to 0. The system automatically performs normalization on the weights to 0 to 1 (that is, normalized_x = x / (dense + sparse + fulltext)).
         # ```
         # {
         #   "HybridPathsSetting": {
@@ -575,23 +574,24 @@ class ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParams(Dar
         # }
         # ```
         self.hybrid_search_args = hybrid_search_args
-        # The method used when building the vector index. Valid values:
+        # The method used to build the vector index. Valid values:
         # - l2: Euclidean distance.
         # - ip: Inner product distance.
         # - cosine: Cosine similarity.
         self.metrics = metrics
-        # The recall window. When this value is not empty, additional context of the retrieval results is returned. The format is a 2-element array: List<A, B>, where -10 <= A <= 0 and 0 <= B <= 10.
-        # > - It is recommended to use this parameter when document segmentation is too granular and retrieval may lose contextual information.
-        # > - Reranking takes priority over windowing, meaning reranking is performed first, then windowing is applied.
+        # The recall window. If this value is not empty, the context of the retrieval results is additionally returned. The format is an array of two elements: List<A, B>, where -10 <= A <= 0 and 0 <= B <= 10.
+        # > - We recommend that you use this parameter when documents are chunked into excessively small pieces and retrieval may lose context information.
+        # > - Reranking takes precedence over windowing. That is, reranking is performed before windowing.
         self.recall_window = recall_window
-        # The reranking factor. When this value is not empty, the vector retrieval results are reranked. Value range: 1 < RerankFactor <= 5.
-        # > - Reranking is slow when document segmentation is sparse.
-        # > - It is recommended that the number of items to rerank (TopK * Factor, rounded up) does not exceed 50.
+        # The reranking factor. If this value is not empty, the vector retrieve results are reranked. Valid values: 1 < RerankFactor <= 5.
+        # > - When documents are sparsely chunked, the reranking efficiency is low.
+        # > - We recommend that the number of reranked items (TopK × Factor, rounded up) does not exceed 50.
         self.rerank_factor = rerank_factor
+        # The reranking model parameters.
         self.rerank_model = rerank_model
         # The number of top results to return.
         self.top_k = top_k
-        # Specifies whether to use full-text retrieval (dual-path recall). Default value: false, which means only vector retrieval is used.
+        # Specifies whether to use full-text retrieve (dual-channel recall). Default value: false, which indicates that only vector retrieve is used.
         self.use_full_text_retrieval = use_full_text_retrieval
 
     def validate(self):
@@ -686,8 +686,11 @@ class ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsRera
         name: str = None,
         rerank_metadata_fields: str = None,
     ):
+        # Configurable when RerankModel.Name is set to qwen3-rerank. Adds a custom sorting task type description. You can use this parameter to guide the model to adopt different sorting strategies.
         self.instruct = instruct
+        # The name of the reranking model. Valid values: qwen3-rerank and gte-rerank-v2.
         self.name = name
+        # The metadata fields that participate in reranking. Separate multiple fields with commas (,). By default, only the document content (content) is used for reranking. The field names must be metadata defined in the collection.
         self.rerank_metadata_fields = rerank_metadata_fields
 
     def validate(self):
@@ -727,7 +730,7 @@ class ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsGrap
         self,
         graph_top_k: int = None,
     ):
-        # The number of top entities and relationship edges to return. Default value: 60.
+        # The top number of entities and relationship edges to return. Default value: 60.
         self.graph_top_k = graph_top_k
 
     def validate(self):
@@ -756,7 +759,9 @@ class ChatWithKnowledgeBaseRequestKnowledgeParamsRerankModel(DaraModel):
         instruct: str = None,
         name: str = None,
     ):
+        # Configurable when RerankModel.Name is set to qwen3-rerank. Adds a custom sorting task type description. You can use this parameter to guide the model to adopt different sorting strategies.
         self.instruct = instruct
+        # The name of the reranking model. Valid values: qwen3-rerank and gte-rerank-v2.
         self.name = name
 
     def validate(self):
@@ -860,7 +865,7 @@ class ChatWithKnowledgeBaseRequestKnowledgeParamsMergeMethodArgsRrf(DaraModel):
         self,
         k: int = None,
     ):
-        # The k constant in the scoring algorithm 1/(k+rank_i). The value must be a positive integer greater than 1.
+        # The constant k in the score calculation formula 1/(k+rank_i). The value must be a positive integer greater than 1.
         self.k = k
 
     def validate(self):

@@ -17,41 +17,40 @@ class DescribeDBClusterPerformanceRequest(DaraModel):
     ):
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specified region, including the instance IDs.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The end of the time range to query. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDTHH:mmZ` format.
+        # The end time of the query. Specify the time in the `YYYY-MM-DDTHH:mmZ` format.
         # 
-        # > The end time must be later than the start time. The maximum time range that can be specified is seven days.
+        # > The end time must be later than the start time, and the time interval between the start time and the end time cannot exceed 7 days.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The performance metric that you want to query. Separate multiple values with commas (,). For more information, see [Performance parameters](https://help.aliyun.com/document_detail/86943.html).
+        # The names of the performance metrics. Separate multiple metrics with commas (,). For more information, see [Performance metric table](https://help.aliyun.com/document_detail/86943.html).
         # 
         # This parameter is required.
         self.key = key
         # The node type. Valid values:
         # 
-        # *   **master**: coordinator node.
-        # *   **segment**: compute node.
+        # - **master**: Master node.
+        # - **segment**: Segment node.
         # 
-        # > If you do not specify this parameter, the performance metrics of all nodes are returned.
+        # > If you do not specify this parameter, the monitoring metrics of all nodes are returned.
         self.node_type = node_type
-        # The nodes for which you want to query performance metrics. Separate multiple values with commas (,). Example: `master-10******1,master-10******2`. You can call the [DescribeDBClusterNode](https://help.aliyun.com/document_detail/390136.html) operation to query the names of nodes.
+        # The names of the nodes for which you want to query monitoring metrics. Separate multiple node names with commas (,), such as `master-10******1,master-10******2`. You can call the [DescribeDBClusterNode](https://help.aliyun.com/document_detail/390136.html) operation to obtain the node names.
         # 
-        # You can also filter the nodes based on their metric values. Valid values:
-        # 
-        # *   **top10**: the 10 nodes that have the highest metric values.
-        # *   **top20**: the 20 nodes that have the highest metric values.
-        # *   **bottom10**: the 10 nodes that have the lowest metric values.
-        # *   **bottom20**: the 20 nodes that have the lowest metric values.
+        # You can also filter nodes based on the values of monitoring metrics. Valid values:
+        # - **top10**: The top 10 nodes with the highest monitoring metric values.
+        # - **top20**: The top 20 nodes with the highest monitoring metric values.
+        # - **bottom10**: The bottom 10 nodes with the lowest monitoring metric values.
+        # - **bottom20**: The bottom 20 nodes with the lowest monitoring metric values.
         self.nodes = nodes
         # The name of the resource group.
         self.resource_group_name = resource_group_name
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDTHH:mmZ` format.
+        # The start time of the query. Specify the time in the `YYYY-MM-DDTHH:mmZ` format.
         # 
-        # > You can query monitoring information only within the last 30 days.
+        # > You can query monitoring information only for the last 30 days.
         # 
         # This parameter is required.
         self.start_time = start_time

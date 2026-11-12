@@ -16,30 +16,30 @@ class CreateAIServiceRequest(DaraModel):
     ):
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including the instance IDs.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The description.
         self.description = description
-        # The list of IP addresses in IP address whitelist group. You can specify up to 1,000 IP addresses, separated by commas (,). The value 127.0.0.1 indicates that no external IP addresses are allowed to access the instance. The following formats are supported:
+        # The IP addresses in IP address whitelist. You can add up to 1,000 IP addresses, separated by commas (,). A value of 127.0.0.1 specifies that access from all external IP addresses is denied. Valid formats:
         # - 10.23.12.24 (IP address)
-        # - 10.23.12.24/24 (CIDR block. The value /24 indicates the length of the prefix in the address, which ranges from 1 to 32.)
+        # - 10.23.12.24/24 (CIDR block. /24 specifies the length of the prefix in the IP address. The prefix length ranges from 1 to 32.)
         # 
         # > After the service is created, you can call the ModifyAIServiceSecurityIps operation to modify IP address whitelist.
         self.security_iplist = security_iplist
-        # The service account. The following limits apply:
-        # - The account name can contain lowercase letters, digits, and underscores (_).
-        # - The account name must start with a lowercase letter and end with a lowercase letter or digit.
-        # - The account name cannot start with gp.
-        # - The account name must be 2 to 16 characters in length.
+        # The service account. The account must meet the following requirements:
+        # - It can contain lowercase letters, digits, and underscores (_).
+        # - It must start with a lowercase letter and end with a lowercase letter or a digit.
+        # - It cannot start with gp.
+        # - It must be 2 to 16 characters in length.
         # 
         # This parameter is required.
         self.service_account = service_account
-        # The password of the service account. The following limits apply:
-        # - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        # The password of the service account. The password must meet the following requirements:
+        # - It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
         # - Supported special characters: !@#$%^&*()_+-=
-        # - The password must be 8 to 32 characters in length.
+        # - It must be 8 to 32 characters in length.
         # 
         # This parameter is required.
         self.service_account_password = service_account_password

@@ -20,7 +20,7 @@ class DescribeSQLLogCountResponseBody(DaraModel):
         self.dbcluster_id = dbcluster_id
         # The end time of the query.
         self.end_time = end_time
-        # The name of the instance.
+        # The list of returned items.
         self.items = items
         # The request ID.
         self.request_id = request_id
@@ -85,9 +85,9 @@ class DescribeSQLLogCountResponseBodyItems(DaraModel):
         name: str = None,
         series: List[main_models.DescribeSQLLogCountResponseBodyItemsSeries] = None,
     ):
-        # The name of the table.
+        # The instance name.
         self.name = name
-        # Details of the audit logs.
+        # The set of returned values.
         self.series = series
 
     def validate(self):
@@ -129,7 +129,7 @@ class DescribeSQLLogCountResponseBodyItemsSeries(DaraModel):
         self,
         values: List[main_models.DescribeSQLLogCountResponseBodyItemsSeriesValues] = None,
     ):
-        # Details of the audit logs.
+        # The returned values.
         self.values = values
 
     def validate(self):
@@ -165,7 +165,7 @@ class DescribeSQLLogCountResponseBodyItemsSeriesValues(DaraModel):
         self,
         point: List[str] = None,
     ):
-        # The time when the audit logs were generated and the number of the audit logs.
+        # None.
         self.point = point
 
     def validate(self):

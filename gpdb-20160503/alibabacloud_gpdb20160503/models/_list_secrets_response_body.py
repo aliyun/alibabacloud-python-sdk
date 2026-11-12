@@ -16,17 +16,16 @@ class ListSecretsResponseBody(DaraModel):
         secrets: main_models.ListSecretsResponseBodySecrets = None,
         status: str = None,
     ):
-        # The number of access credentials.
+        # The total number of entries.
         self.count = count
-        # The returned message.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id
         self.secrets = secrets
-        # The status of the operation. Valid values:
-        # 
-        # *   **success**
-        # *   **fail**
+        # The API execution status. Valid values:
+        # - **success**: The execution succeeded.
+        # - **fail**: The execution failed.
         self.status = status
 
     def validate(self):

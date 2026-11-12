@@ -10,7 +10,7 @@ class GetServiceAccessInfoRequest(DaraModel):
         region_id: str = None,
         service_id: str = None,
     ):
-        # The region ID where the SaaS service resides.
+        # The region ID of the SaaS service.
         self.region_id = region_id
         # The service ID.
         # 

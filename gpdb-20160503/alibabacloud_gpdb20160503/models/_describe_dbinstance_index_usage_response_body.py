@@ -15,13 +15,13 @@ class DescribeDBInstanceIndexUsageResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The queried index usage.
+        # The list of index usage details.
         self.items = items
-        # The page number.
+        # The current page number.
         self.page_number = page_number
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -96,8 +96,8 @@ class DescribeDBInstanceIndexUsageResponseBodyItems(DaraModel):
         self.index_size = index_size
         # Indicates whether the table is a partitioned table. Valid values:
         # 
-        # *   **true**: The table is a partitioned table.
-        # *   **false**: The table is not a partitioned table.
+        # - **true**: The table is a partitioned table.
+        # - **false**: The table is not a partitioned table.
         self.is_partition_table = is_partition_table
         # The name of the parent table.
         self.parent_table_name = parent_table_name
@@ -105,7 +105,7 @@ class DescribeDBInstanceIndexUsageResponseBodyItems(DaraModel):
         self.schema_name = schema_name
         # The name of the table.
         self.table_name = table_name
-        # The time when the table was last deleted, inserted, or updated.
+        # The time when the table was last updated by a DELETE, INSERT, or UPDATE operation.
         self.time_last_updated = time_last_updated
 
     def validate(self):

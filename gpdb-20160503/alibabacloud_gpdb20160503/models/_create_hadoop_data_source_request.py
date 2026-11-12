@@ -21,43 +21,39 @@ class CreateHadoopDataSourceRequest(DaraModel):
         region_id: str = None,
         yarn_conf: str = None,
     ):
-        # Instance ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # Service description.
+        # The service description.
         self.data_source_description = data_source_description
-        # Service name.
+        # The service name.
         self.data_source_name = data_source_name
-        # Type of Hadoop external table to be enabled, with values:
-        # 
-        # - HDFS 
-        # 
+        # The type of the Hadoop external table to enable. Valid values:
+        # - HDFS
         # - Hive
         self.data_source_type = data_source_type
-        # When HadoopCreateType=Emr, this field should contain the EMR instance ID.
+        # The ID of the EMR instance. This parameter is required when HadoopCreateType is set to Emr.
         self.emr_instance_id = emr_instance_id
-        # Content string of the Hadoop hdfs-site.xml file. This field is required when enabling an HDFS external table.
+        # The content string of the Hadoop hdfs-site.xml file. This parameter is required when you enable HDFS external tables.
         self.hdfsconf = hdfsconf
-        # Content string of the Hadoop core-site.xml file.
+        # The content string of the Hadoop core-site.xml file.
         self.hadoop_core_conf = hadoop_core_conf
-        # External service type:
-        # 
+        # The external service type. Valid values:
         # - emr
-        # 
-        # - hadoop: Self-built Hadoop
+        # - hadoop: self-managed Hadoop.
         self.hadoop_create_type = hadoop_create_type
-        # Address and hostname of the Hadoop cluster\\"s source node in the /etc/hosts file.
+        # The addresses and hostnames of the source nodes in the Hadoop cluster in the /etc/hosts file.
         self.hadoop_hosts_address = hadoop_hosts_address
-        # Content string of the Hadoop hive-site.xml file. This field is required when enabling a HIVE external table.
+        # The content string of the Hadoop hive-site.xml file. This parameter is required when you enable Hive external tables.
         self.hive_conf = hive_conf
-        # Content string of the Hadoop mapred-site.xml file. This field is required when enabling an HDFS external table.
+        # The content string of the Hadoop mapred-site.xml file. This parameter is required when you enable HDFS external tables.
         self.map_reduce_conf = map_reduce_conf
-        # Region ID.
+        # The region ID.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) interface to view available region IDs.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available region IDs.
         self.region_id = region_id
-        # Content string of the Hadoop yarn-site.xml file. This field is required when enabling an HDFS external table.
+        # The content string of the Hadoop yarn-site.xml file. This parameter is required when you enable HDFS external tables.
         self.yarn_conf = yarn_conf
 
     def validate(self):

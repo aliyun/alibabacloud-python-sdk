@@ -16,11 +16,11 @@ class ListApiKeysResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The list of API keys.
+        # The list of items.
         self.items = items
-        # The maximum number of records to return in this query.
+        # The maximum number of records to return in this request.
         self.max_results = max_results
-        # The token for the next page in a paged query.
+        # The token for the next paging query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -93,7 +93,7 @@ class ListApiKeysResponseBodyItems(DaraModel):
         self.auth_services = auth_services
         # The creation time.
         self.create_time = create_time
-        # The description of the API key.
+        # The plugin description.
         self.description = description
         # The ID of the API key.
         self.key_id = key_id
