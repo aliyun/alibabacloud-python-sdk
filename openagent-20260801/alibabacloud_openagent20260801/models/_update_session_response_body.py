@@ -14,7 +14,7 @@ class UpdateSessionResponseBody(DaraModel):
     ):
         # The session information.
         self.data = data
-        # The request ID, which is used to locate and troubleshoot issues.
+        # The ID of the request. You can use the ID to locate and troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request is successful. A value of true indicates success.
         self.success = success
@@ -65,34 +65,34 @@ class UpdateSessionResponseBodyData(DaraModel):
         title: str = None,
         updated_at: str = None,
     ):
-        # The time when the session was created, in RFC 3339 format.
+        # The time when the session was created. The time is in RFC 3339 format.
         self.created_at = created_at
         # The ID of the last run.
         self.last_run_id = last_run_id
         # The status of the last run. Valid values:
-        # - `PENDING`: Pending.
-        # - `RUNNING`: Running.
-        # - `WAITING_USER`: Waiting for interrupt handling.
-        # - `COMPLETED`: Completed.
-        # - `FAILED`: Failed.
-        # - `CANCELLED`: Cancelled.
-        # - `REJECTED`: Rejected.
+        # - `PENDING`: pending
+        # - `RUNNING`: running
+        # - `WAITING_USER`: waiting for interrupt handling
+        # - `COMPLETED`: completed
+        # - `FAILED`: failed
+        # - `CANCELLED`: cancelled
+        # - `REJECTED`: rejected
         self.last_run_status = last_run_status
         # Indicates whether the session is pinned.
         self.pinned = pinned
-        # The session ID.
+        # The ID of the session.
         self.session_id = session_id
-        # The session status. Valid values:
-        # - `IDLE`: Idle.
-        # - `ACTIVE`: Active.
-        # - `WAITING_USER_INPUT`: Waiting for user input.
-        # - `WAITING_APPROVAL`: Waiting for user confirmation.
-        # - `WAITING_OUT_OF_BAND_APPROVAL`: Waiting for out-of-band approval.
-        # - `CLOSED`: Closed.
+        # The status of the session. Valid values:
+        # - `IDLE`: idle
+        # - `ACTIVE`: running
+        # - `WAITING_USER_INPUT`: waiting for user input
+        # - `WAITING_APPROVAL`: waiting for user confirmation
+        # - `WAITING_OUT_OF_BAND_APPROVAL`: waiting for out-of-band approval
+        # - `CLOSED`: closed
         self.status = status
-        # The session title.
+        # The title of the session.
         self.title = title
-        # The time when the session was last updated, in RFC 3339 format.
+        # The time when the session was last updated. The time is in RFC 3339 format.
         self.updated_at = updated_at
 
     def validate(self):

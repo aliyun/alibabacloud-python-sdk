@@ -10,9 +10,9 @@ class ListSessionsRequest(DaraModel):
         max_results: str = None,
         next_token: str = None,
     ):
-        # The maximum number of sessions to return per page. The value must be a positive integer.
+        # The maximum number of sessions to return per page. Set this parameter to a positive integer.
         self.max_results = max_results
-        # The pagination token. Do not specify this parameter for the first request. For subsequent requests, pass the nextToken value returned in the previous response. Do not parse or construct this value.
+        # The pagination token. Do not pass this parameter in the first request. For subsequent requests, pass the nextToken returned in the previous response. Do not parse or construct the token.
         self.next_token = next_token
 
     def validate(self):

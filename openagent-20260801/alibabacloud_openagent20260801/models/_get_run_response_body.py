@@ -18,7 +18,7 @@ class GetRunResponseBody(DaraModel):
         self.data = data
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -65,7 +65,7 @@ class GetRunResponseBodyData(DaraModel):
         status: str = None,
         updated_at: str = None,
     ):
-        # The time when the run was created, in ISO 8601 format.
+        # The run creation time in ISO 8601 format.
         self.created_at = created_at
         # The run outcome.
         self.outcome = outcome
@@ -73,9 +73,16 @@ class GetRunResponseBodyData(DaraModel):
         self.run_id = run_id
         # The session ID.
         self.session_id = session_id
-        # The run status: `PENDING` (pending execution), `RUNNING` (running), `WAITING_USER` (waiting for interrupt processing), `COMPLETED` (completed), `FAILED` (failed), `CANCELLED` (canceled), or `REJECTED` (rejected).
+        # The run status. Valid values:
+        # - `PENDING`: pending execution
+        # - `RUNNING`: running
+        # - `WAITING_USER`: waiting for interrupt handling
+        # - `COMPLETED`: completed
+        # - `FAILED`: failed
+        # - `CANCELLED`: canceled
+        # - `REJECTED`: rejected
         self.status = status
-        # The time when the run was last updated, in ISO 8601 format.
+        # The last update time of the run in ISO 8601 format.
         self.updated_at = updated_at
 
     def validate(self):
@@ -136,9 +143,11 @@ class GetRunResponseBodyDataOutcome(DaraModel):
         interrupts: List[main_models.GetRunResponseBodyDataOutcomeInterrupts] = None,
         type: str = None,
     ):
-        # The list of interrupts.
+        # The interrupt list.
         self.interrupts = interrupts
-        # The outcome type: `success` (completed successfully) or `interrupt` (waiting for interrupt processing).
+        # The result type. Valid values:
+        # - `success`: successfully completed
+        # - `interrupt`: waiting for interrupt handling
         self.type = type
 
     def validate(self):
@@ -189,19 +198,23 @@ class GetRunResponseBodyDataOutcomeInterrupts(DaraModel):
     ):
         # The interrupt data.
         self.data = data
-        # The expiration time of the interrupt, in ISO 8601 format.
+        # The interrupt expiration time in ISO 8601 format.
         self.expires_at = expires_at
         # The interrupt ID.
         self.id = id
-        # The interrupt prompt.
+        # The interrupt message.
         self.message = message
         # The extended information.
         self.metadata = metadata
-        # The reason for the interrupt: `tool_call` (tool calling requires processing), `input_required` (user input is required), `confirmation` (confirmation is required), or `out_of_band_approval` (waiting for out-of-band approval).
+        # The interrupt reason. Valid values:
+        # - `tool_call`: tool invocation requires handling
+        # - `input_required`: user input is required
+        # - `confirmation`: confirmation is required
+        # - `out_of_band_approval`: waiting for out-of-band approval
         self.reason = reason
-        # The JSON Schema that the payload must conform to when resuming the interrupt.
+        # The JSON schema that the payload must comply with when resuming this interrupt.
         self.response_schema = response_schema
-        # The ID used to invoke the tool calling.
+        # The tool invocation ID.
         self.tool_call_id = tool_call_id
 
     def validate(self):
@@ -284,9 +297,9 @@ class GetRunResponseBodyDataOutcomeInterruptsData(DaraModel):
         self.approval_id = approval_id
         # The approval URL.
         self.approval_url = approval_url
-        # Specifies whether the interrupt can be canceled.
+        # Indicates whether it can be canceled.
         self.cancellable = cancellable
-        # The change digest.
+        # The change summary.
         self.change_digest = change_digest
         # The approval title.
         self.title = title

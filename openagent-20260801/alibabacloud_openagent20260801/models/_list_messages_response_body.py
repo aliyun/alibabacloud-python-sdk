@@ -18,7 +18,7 @@ class ListMessagesResponseBody(DaraModel):
         self.data = data
         # The request ID, which is used to locate and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request is successful. A value of true indicates success.
+        # Indicates whether the request was successful. A value of true indicates success.
         self.success = success
 
     def validate(self):
@@ -67,9 +67,9 @@ class ListMessagesResponseBodyData(DaraModel):
         self.next_token = next_token
         # The ID of the session to which the messages belong.
         self.session_id = session_id
-        # The message records returned in a timeline.
+        # The message records returned in chronological order.
         self.timeline = timeline
-        # The number of timeline records on the current page, which is equal to the length of the timeline array.
+        # The number of timeline records on the current page. The value is equal to the length of the timeline array.
         self.total = total
 
     def validate(self):
@@ -124,7 +124,7 @@ class ListMessagesResponseBodyDataTimeline(DaraModel):
         message: main_models.ListMessagesResponseBodyDataTimelineMessage = None,
         run_id: str = None,
     ):
-        # The message object. Different message types are distinguished by role, and each type uses the corresponding fields.
+        # The message object. Message types are distinguished by role, and each type uses its corresponding fields.
         self.message = message
         # The ID of the run to which the message belongs.
         self.run_id = run_id
@@ -177,13 +177,13 @@ class ListMessagesResponseBodyDataTimelineMessage(DaraModel):
         self.activity_type = activity_type
         # The message content. The structure is determined by the message type.
         self.content = content
-        # The encrypted content. The example is an invalid placeholder value and does not contain real ciphertext.
+        # The encrypted content. The example is an invalid placeholder value and does not contain actual ciphertext.
         self.encrypted_value = encrypted_value
-        # The error description when tool execution fails.
+        # The error description when the tool execution fails.
         self.error = error
         # The message ID.
         self.id = id
-        # The result information of historical interrupts.
+        # The result information of the historical interrupt.
         self.interrupt_outcome = interrupt_outcome
         # The extended metadata of the message.
         self.metadata = metadata
@@ -193,7 +193,7 @@ class ListMessagesResponseBodyDataTimelineMessage(DaraModel):
         self.resume_input = resume_input
         # The role of the message. Valid values: `user` (user message), `assistant` (assistant message), `tool` (tool result), `activity` (activity message), `reasoning` (reasoning message), and `interrupt` (interrupt record).
         self.role = role
-        # The ID of the tool invocation associated with the tool result.
+        # The tool invocation ID associated with the tool result.
         self.tool_call_id = tool_call_id
         # The list of tool invocations initiated by the agent.
         self.tool_calls = tool_calls
@@ -307,15 +307,15 @@ class ListMessagesResponseBodyDataTimelineMessageToolCalls(DaraModel):
         metadata: Dict[str, Any] = None,
         type: str = None,
     ):
-        # The encrypted content of the tool invocation. The example is only a placeholder value.
+        # The encrypted content of the tool invocation. The example is a placeholder value only.
         self.encrypted_value = encrypted_value
-        # The information about the function to be executed.
+        # The information about the function to execute.
         self.function = function
         # The tool invocation ID.
         self.id = id
         # The extended metadata of the tool invocation.
         self.metadata = metadata
-        # The type of the tool invocation. The value is fixed to `function`.
+        # The tool invocation type. The value is fixed to `function`.
         self.type = type
 
     def validate(self):
@@ -370,7 +370,7 @@ class ListMessagesResponseBodyDataTimelineMessageToolCallsFunction(DaraModel):
         arguments: str = None,
         name: str = None,
     ):
-        # The tool parameters in the form of a JSON string.
+        # The tool parameters as a JSON string.
         self.arguments = arguments
         # The name of the function or tool.
         self.name = name
@@ -413,7 +413,7 @@ class ListMessagesResponseBodyDataTimelineMessageResumeInput(DaraModel):
         self.resolved_at = resolved_at
         # The submitted processing results for each interrupt.
         self.resume = resume
-        # The ID of the original run that was resumed.
+        # The ID of the original run that is resumed.
         self.run_id = run_id
         # The source of the resume request. Valid values: `USER` (submitted by a user) and `INTERNAL` (submitted by an internal process).
         self.source = source
@@ -473,9 +473,9 @@ class ListMessagesResponseBodyDataTimelineMessageResumeInputResume(DaraModel):
     ):
         # The ID of the processed interrupt.
         self.interrupt_id = interrupt_id
-        # The processing result for the corresponding interrupt, which must comply with the responseSchema of the interrupt.
+        # The processing result for the corresponding interrupt. The result must comply with the responseSchema of the interrupt.
         self.payload = payload
-        # The response method for the current interrupt. Valid values: `resolved` (the answer, confirmation, or tool result required by the interrupt has been submitted, including the `payload`) and `cancelled` (the interrupt has been canceled, excluding the `payload`).
+        # The response method for this interrupt. Valid values: `resolved` (the answer, confirmation, or tool result required by the interrupt has been submitted, which includes the `payload`) and `cancelled` (the interrupt has been canceled, which does not include the `payload`).
         self.status = status
 
     def validate(self):
@@ -518,7 +518,7 @@ class ListMessagesResponseBodyDataTimelineMessageInterruptOutcome(DaraModel):
     ):
         # The list of historical interrupts.
         self.interrupts = interrupts
-        # The type of the interrupt result. The value is fixed to `interrupt`.
+        # The interrupt result type. The value is fixed to `interrupt`.
         self.type = type
 
     def validate(self):
@@ -581,7 +581,7 @@ class ListMessagesResponseBodyDataTimelineMessageInterruptOutcomeInterrupts(Dara
         self.reason = reason
         # The JSON schema that the resume result payload must follow.
         self.response_schema = response_schema
-        # The ID of the tool invocation associated with the interrupt.
+        # The tool invocation ID associated with the interrupt.
         self.tool_call_id = tool_call_id
 
     def validate(self):
@@ -660,15 +660,15 @@ class ListMessagesResponseBodyDataTimelineMessageInterruptOutcomeInterruptsData(
     ):
         # The list of API operations that require approval.
         self.api_calls = api_calls
-        # The associated approval ID.
+        # The ID of the associated approval request.
         self.approval_id = approval_id
-        # The URL of the approval page. The example URL cannot be used for actual approval.
+        # The URL of the approval page. The example URL cannot be used for actual approvals.
         self.approval_url = approval_url
         # Specifies whether the approval can be canceled.
         self.cancellable = cancellable
-        # The digest identifier of the change pending approval.
+        # The summary identifier of the change pending approval.
         self.change_digest = change_digest
-        # The title of the approval item.
+        # The title of the approval request.
         self.title = title
 
     def validate(self):

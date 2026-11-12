@@ -12,9 +12,9 @@ class UpdateReadonlyModeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The currently active configuration information.
+        # The current effective configuration information.
         self.data = data
-        # The request ID, which is used to locate and troubleshoot issues.
+        # The request ID used to locate and troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request is successful. A value of true indicates success.
         self.success = success
@@ -62,15 +62,15 @@ class UpdateReadonlyModeResponseBodyData(DaraModel):
         value: str = None,
         value_type: str = None,
     ):
-        # The name of the configuration. The value is fixed to readonly.
+        # The configuration name. The value is fixed to readonly.
         self.config_name = config_name
         # Indicates whether a configuration record already exists.
         self.exists = exists
         # The last update time in ISO 8601 format.
         self.gmt_update = gmt_update
-        # The currently active configuration value, returned as the string true or false.
+        # The current effective configuration value. The value is returned as a string, either true or false.
         self.value = value
-        # The type of the configuration value. The value is BOOL for this API operation.
+        # The type of the configuration value. The value is BOOL for this operation.
         self.value_type = value_type
 
     def validate(self):

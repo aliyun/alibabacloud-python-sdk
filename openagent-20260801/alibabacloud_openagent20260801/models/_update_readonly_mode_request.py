@@ -9,7 +9,7 @@ class UpdateReadonlyModeRequest(DaraModel):
         self,
         value: str = None,
     ):
-        # Required. Pass the string true to enable read-only mode, or false to disable it. The value is case-insensitive.
+        # Required. Pass the string true to enable read-only mode or false to disable it. The value is case-insensitive.
         self.value = value
 
     def validate(self):

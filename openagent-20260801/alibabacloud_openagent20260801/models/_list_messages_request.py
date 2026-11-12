@@ -13,9 +13,9 @@ class ListMessagesRequest(DaraModel):
     ):
         # The maximum number of timeline entries to return per page. The value must be a positive integer.
         self.max_results = max_results
-        # The pagination token. Do not specify this parameter for the first request. For subsequent requests, use the value returned from the previous page.
+        # The pagination token. Do not specify this parameter in the first request. For subsequent requests, use the value returned from the previous response.
         self.next_token = next_token
-        # Filters messages by the specified run ID.
+        # Filters messages by a specified run ID.
         self.run_id = run_id
 
     def validate(self):

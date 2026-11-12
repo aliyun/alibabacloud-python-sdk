@@ -13,7 +13,7 @@ class UpdateSessionHeaders(DaraModel):
         x_open_agent_idempotency_key: str = None,
     ):
         self.common_headers = common_headers
-        # The idempotency key for the request. Use the same value when you retry the same update request.
+        # The idempotency key for the request. Use the same value when retrying the same update request.
         self.x_open_agent_idempotency_key = x_open_agent_idempotency_key
 
     def validate(self):

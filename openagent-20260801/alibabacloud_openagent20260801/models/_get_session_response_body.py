@@ -67,15 +67,15 @@ class GetSessionResponseBodyData(DaraModel):
     ):
         # The time when the session was created, in ISO 8601 format.
         self.created_at = created_at
-        # The ID of the most recent run.
+        # The ID of the last run.
         self.last_run_id = last_run_id
-        # The status of the most recent run. Valid values: `PENDING` (pending execution), `RUNNING` (running), `WAITING_USER` (waiting for interrupt handling), `COMPLETED` (completed), `FAILED` (failed), `CANCELLED` (cancelled), and `REJECTED` (rejected).
+        # The status of the last run. Valid values: `PENDING` (pending), `RUNNING` (running), `WAITING_USER` (waiting for interrupt handling), `COMPLETED` (completed), `FAILED` (failed), `CANCELLED` (cancelled), `REJECTED` (rejected).
         self.last_run_status = last_run_status
         # Indicates whether the session is pinned.
         self.pinned = pinned
         # The session ID.
         self.session_id = session_id
-        # The session status. Valid values: `IDLE` (idle), `ACTIVE` (active), `WAITING_USER_INPUT` (waiting for user input), `WAITING_APPROVAL` (waiting for user confirmation), `WAITING_OUT_OF_BAND_APPROVAL` (waiting for out-of-band approval), and `CLOSED` (closed).
+        # The session status. Valid values: `IDLE` (idle), `ACTIVE` (running), `WAITING_USER_INPUT` (waiting for user input), `WAITING_APPROVAL` (waiting for user confirmation), `WAITING_OUT_OF_BAND_APPROVAL` (waiting for out-of-band approval), `CLOSED` (closed).
         self.status = status
         # The session title.
         self.title = title

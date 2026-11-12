@@ -18,7 +18,7 @@ class ListSessionsResponseBody(DaraModel):
         self.data = data
         # The request ID, which is used to locate and troubleshoot issues.
         self.request_id = request_id
-        # Specifies whether the request is successful. A value of true indicates success.
+        # Indicates whether the request is successful. A value of true indicates success.
         self.success = success
 
     def validate(self):
@@ -125,26 +125,13 @@ class ListSessionsResponseBodyDataSessions(DaraModel):
         self.created_at = created_at
         # The ID of the most recent run.
         self.last_run_id = last_run_id
-        # The status of the most recent run. Valid values:
-        # - `PENDING`: Pending.
-        # - `RUNNING`: Running.
-        # - `WAITING_USER`: Waiting for interrupt handling.
-        # - `COMPLETED`: Completed.
-        # - `FAILED`: Failed.
-        # - `CANCELLED`: Cancelled.
-        # - `REJECTED`: Rejected.
+        # The status of the most recent run. Valid values: `PENDING` (pending), `RUNNING` (running), `WAITING_USER` (waiting for interruption handling), `COMPLETED` (completed), `FAILED` (failed), `CANCELLED` (cancelled), and `REJECTED` (rejected).
         self.last_run_status = last_run_status
-        # Specifies whether the session is pinned.
+        # Indicates whether the session is pinned.
         self.pinned = pinned
         # The session ID.
         self.session_id = session_id
-        # The session status. Valid values:
-        # - `IDLE`: Idle.
-        # - `ACTIVE`: Active.
-        # - `WAITING_USER_INPUT`: Waiting for user input.
-        # - `WAITING_APPROVAL`: Waiting for user confirmation.
-        # - `WAITING_OUT_OF_BAND_APPROVAL`: Waiting for out-of-band approval.
-        # - `CLOSED`: Closed.
+        # The session status. Valid values: `IDLE` (idle), `ACTIVE` (running), `WAITING_USER_INPUT` (waiting for user input), `WAITING_APPROVAL` (waiting for user confirmation), `WAITING_OUT_OF_BAND_APPROVAL` (waiting for out-of-band approval), and `CLOSED` (closed).
         self.status = status
         # The session title.
         self.title = title

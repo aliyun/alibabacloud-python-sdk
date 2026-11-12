@@ -13,7 +13,7 @@ class CancelRunHeaders(DaraModel):
         x_open_agent_idempotency_key: str = None,
     ):
         self.common_headers = common_headers
-        # The idempotency key of the request. Use the same value and the same business parameters when retrying the same cancellation request.
+        # The idempotency key for the request. Use the same value and the same business parameters when you retry the same cancellation request.
         self.x_open_agent_idempotency_key = x_open_agent_idempotency_key
 
     def validate(self):

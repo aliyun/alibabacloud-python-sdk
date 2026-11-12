@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Dict, Generator, AsyncGenerator
 
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_openagent20260801 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
@@ -21,6 +22,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'OpenAgent'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('openagent', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -696,6 +700,8 @@ class Client(OpenApiClient):
     ) -> Generator[main_models.SendMessageResponse, None, None]:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.attachments):
+            body['attachments'] = request.attachments
         if not DaraCore.is_null(request.content):
             body['content'] = request.content
         if not DaraCore.is_null(request.resume):
@@ -747,6 +753,8 @@ class Client(OpenApiClient):
     ) -> AsyncGenerator[main_models.SendMessageResponse, None, None]:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.attachments):
+            body['attachments'] = request.attachments
         if not DaraCore.is_null(request.content):
             body['content'] = request.content
         if not DaraCore.is_null(request.resume):
@@ -798,6 +806,8 @@ class Client(OpenApiClient):
     ) -> main_models.SendMessageResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.attachments):
+            body['attachments'] = request.attachments
         if not DaraCore.is_null(request.content):
             body['content'] = request.content
         if not DaraCore.is_null(request.resume):
@@ -840,6 +850,8 @@ class Client(OpenApiClient):
     ) -> main_models.SendMessageResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.attachments):
+            body['attachments'] = request.attachments
         if not DaraCore.is_null(request.content):
             body['content'] = request.content
         if not DaraCore.is_null(request.resume):
