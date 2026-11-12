@@ -1,3 +1,6 @@
+2026-11-12 Version: 2.1.0
+- Generated python iap_1.0 for AliGenie.
+
 2025-08-20 Version: 2.0.0
 - Support API ThirdImmediateMsgPush.
 - Update API CallBackThirdRightSendPlan: update request parameters ExtendInfo' parseType has changed.
