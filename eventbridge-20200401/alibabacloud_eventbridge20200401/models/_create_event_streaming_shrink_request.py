@@ -14,6 +14,7 @@ class CreateEventStreamingShrinkRequest(DaraModel):
         event_streaming_name: str = None,
         filter_pattern: str = None,
         metadata: str = None,
+        resource_group_id: str = None,
         run_options_shrink: str = None,
         sink_shrink: str = None,
         source_shrink: str = None,
@@ -26,19 +27,21 @@ class CreateEventStreamingShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.event_streaming_name = event_streaming_name
-        # The event filtering rule. If this parameter is not specified, all events are matched.
+        # The event filtering rule. If you do not specify this parameter, all events are matched.
         self.filter_pattern = filter_pattern
-        # The common JSON configurations for the event provider. This parameter is mutually exclusive with the Source parameter.
+        # The common JSON configurations for the event provider. This parameter is mutually exclusive with Source.
         self.metadata = metadata
+        # The resource group ID. If you do not specify this parameter, the created event stream belongs to the default resource group of the account.
+        self.resource_group_id = resource_group_id
         # The runtime environment parameters.
         self.run_options_shrink = run_options_shrink
-        # The event target. You must select one and only one sink.
+        # The event target. You must select exactly one type of sink to configure.
         self.sink_shrink = sink_shrink
-        # The event provider. You must specify exactly one source.
+        # The event provider. You must select exactly one source type and configure its parameters.
         self.source_shrink = source_shrink
         # The list of tags. You can specify up to 20 tags.
         self.tags = tags
-        # The transform configurations.
+        # The configuration for transforms.
         self.transforms_shrink = transforms_shrink
 
     def validate(self):
@@ -63,6 +66,9 @@ class CreateEventStreamingShrinkRequest(DaraModel):
 
         if self.metadata is not None:
             result['Metadata'] = self.metadata
+
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
 
         if self.run_options_shrink is not None:
             result['RunOptions'] = self.run_options_shrink
@@ -96,6 +102,9 @@ class CreateEventStreamingShrinkRequest(DaraModel):
 
         if m.get('Metadata') is not None:
             self.metadata = m.get('Metadata')
+
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
 
         if m.get('RunOptions') is not None:
             self.run_options_shrink = m.get('RunOptions')

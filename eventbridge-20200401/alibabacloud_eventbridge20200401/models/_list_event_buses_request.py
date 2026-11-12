@@ -10,15 +10,18 @@ class ListEventBusesRequest(DaraModel):
         limit: int = None,
         name_prefix: str = None,
         next_token: str = None,
+        resource_group_id: str = None,
     ):
-        # The maximum number of entries to return in a request. You can use this parameter and NextToken to implement paging.
+        # The maximum number of entries to return per page. You can use this parameter together with NextToken to implement pagination.
         # 
-        # >  A maximum of 100 entries can be returned in a request.
+        # >Notice: The maximum number of entries returned per request is 100.</notice>
         self.limit = limit
-        # The prefix of the names of the event buses that you want to query.
+        # The name prefix of the event buses to retrieve.
         self.name_prefix = name_prefix
-        # If you configure Limit and excess return values exist, this parameter is returned. You can use this parameter and Limit to implement paging.
+        # The pagination token. If the specified Limit is reached and more results are available, this token is returned. You can use this token together with Limit to implement pagination.
         self.next_token = next_token
+        # The ID of the resource group, used to filter event buses in the specified resource group.
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -37,6 +40,9 @@ class ListEventBusesRequest(DaraModel):
         if self.next_token is not None:
             result['NextToken'] = self.next_token
 
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -49,6 +55,9 @@ class ListEventBusesRequest(DaraModel):
 
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
 
         return self
 

@@ -1,3 +1,6 @@
+2026-11-12 Version: 8.7.2
+- Generated python 2020-04-01 for eventbridge.
+
 2026-10-30 Version: 8.7.1
 - Generated python 2020-04-01 for eventbridge.
 

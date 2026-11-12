@@ -25,27 +25,27 @@ class SourceMySQLParameters(DaraModel):
         self.database_name = database_name
         # The hostname or IP address of the database server.
         self.host_name = host_name
-        # Indicates whether to include schema changes.
+        # Specifies whether database structure schema evolution is included.
         self.include_schema_changes = include_schema_changes
         # The network type.
         self.network_type = network_type
-        # The password for the user.
+        # The password of the database user.
         self.password = password
-        # The database server port.
+        # The port of the database server.
         self.port = port
-        # The ID of the region that contains the data source.
+        # The ID of the region where the data source is located.
         self.region_id = region_id
         # The ID of the security group.
         self.security_group_id = security_group_id
         # The snapshot mode.
         self.snapshot_mode = snapshot_mode
-        # The names of tables to synchronize. Separate multiple table names with a comma.
+        # The names of the tables to synchronize. Separate multiple table names with commas.
         self.table_names = table_names
         # The database username.
         self.user = user
-        # The VSwitch IDs. Separate multiple IDs with a comma.
+        # The vSwitch IDs. Separate multiple IDs with commas.
         self.v_switch_ids = v_switch_ids
-        # The ID of the VPC.
+        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
 
     def validate(self):

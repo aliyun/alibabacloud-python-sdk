@@ -16,18 +16,17 @@ class ListEventBusesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. Valid values:
-        # 
-        # *   Success: The request was successful.
-        # *   Other codes: The request failed. For information about error codes, see Error codes.
+        # The response code:
+        # - Success: indicates that the request is successful.                                 
+        # - Other values: indicate error codes. For more information, see Error codes.
         self.code = code
         # The returned data.
         self.data = data
-        # The returned error message.
+        # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful. If the operation was successful, the value true is returned.
+        # Indicates whether the operation is successful. A value of true indicates that the operation is successful.
         self.success = success
 
     def validate(self):
@@ -83,9 +82,9 @@ class ListEventBusesResponseBodyData(DaraModel):
         next_token: str = None,
         total: int = None,
     ):
-        # The event buses.
+        # The list of queried event buses.
         self.event_buses = event_buses
-        # If excess return values exist, this parameter is returned.
+        # The pagination token. This token is returned if more results are available.
         self.next_token = next_token
         # The total number of entries.
         self.total = total
@@ -137,8 +136,10 @@ class ListEventBusesResponseBodyDataEventBuses(DaraModel):
         description: str = None,
         event_bus_arn: str = None,
         event_bus_name: str = None,
+        resource_group_id: str = None,
+        tags: List[main_models.ListEventBusesResponseBodyDataEventBusesTags] = None,
     ):
-        # The timestamp that indicates when the event bus was created.
+        # The creation timestamp.
         self.create_timestamp = create_timestamp
         # The description.
         self.description = description
@@ -146,9 +147,16 @@ class ListEventBusesResponseBodyDataEventBuses(DaraModel):
         self.event_bus_arn = event_bus_arn
         # The name of the event bus.
         self.event_bus_name = event_bus_name
+        # The ID of the resource group to which the event bus belongs.
+        self.resource_group_id = resource_group_id
+        # The tag information of the event bus.
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for v1 in self.tags:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -167,6 +175,14 @@ class ListEventBusesResponseBodyDataEventBuses(DaraModel):
         if self.event_bus_name is not None:
             result['EventBusName'] = self.event_bus_name
 
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+
+        result['Tags'] = []
+        if self.tags is not None:
+            for k1 in self.tags:
+                result['Tags'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
@@ -182,6 +198,52 @@ class ListEventBusesResponseBodyDataEventBuses(DaraModel):
 
         if m.get('EventBusName') is not None:
             self.event_bus_name = m.get('EventBusName')
+
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k1 in m.get('Tags'):
+                temp_model = main_models.ListEventBusesResponseBodyDataEventBusesTags()
+                self.tags.append(temp_model.from_map(k1))
+
+        return self
+
+class ListEventBusesResponseBodyDataEventBusesTags(DaraModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The key of the event bus tag.
+        self.key = key
+        # The value of the event bus tag.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key is not None:
+            result['Key'] = self.key
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
 
         return self
 

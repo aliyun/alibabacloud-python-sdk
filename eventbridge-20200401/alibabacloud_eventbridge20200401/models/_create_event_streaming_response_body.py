@@ -14,7 +14,7 @@ class CreateEventStreamingResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The API return code. Valid values:
+        # The return code of the API operation. Valid values:
         # - Success: The operation is successful.                                
         # - Other values: An error code. For more information, see Error codes.
         self.code = code
@@ -24,7 +24,7 @@ class CreateEventStreamingResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation is successful. A value of true indicates that the operation is successful.
+        # Indicates whether the operation is successful.
         self.success = success
 
     def validate(self):

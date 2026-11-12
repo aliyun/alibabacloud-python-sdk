@@ -136,6 +136,7 @@ class ListEventStreamingsResponseBodyDataEventStreamings(DaraModel):
         event_streaming_name: str = None,
         filter_pattern: str = None,
         metadata: str = None,
+        resource_group_id: str = None,
         run_options: main_models.ListEventStreamingsResponseBodyDataEventStreamingsRunOptions = None,
         sink: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSink = None,
         source: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSource = None,
@@ -150,6 +151,8 @@ class ListEventStreamingsResponseBodyDataEventStreamings(DaraModel):
         self.filter_pattern = filter_pattern
         # The common JSON Configurations of the event provider. This parameter and Source are mutually exclusive.
         self.metadata = metadata
+        # 该事件流所属的资源组ID。
+        self.resource_group_id = resource_group_id
         # The runtime environment parameters.
         self.run_options = run_options
         # The event target.
@@ -190,6 +193,9 @@ class ListEventStreamingsResponseBodyDataEventStreamings(DaraModel):
         if self.metadata is not None:
             result['Metadata'] = self.metadata
 
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+
         if self.run_options is not None:
             result['RunOptions'] = self.run_options.to_map()
 
@@ -222,6 +228,9 @@ class ListEventStreamingsResponseBodyDataEventStreamings(DaraModel):
 
         if m.get('Metadata') is not None:
             self.metadata = m.get('Metadata')
+
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
 
         if m.get('RunOptions') is not None:
             temp_model = main_models.ListEventStreamingsResponseBodyDataEventStreamingsRunOptions()

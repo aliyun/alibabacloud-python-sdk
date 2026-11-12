@@ -464,6 +464,7 @@ from ._create_connection_request import CreateConnectionRequestAuthParametersOAu
 from ._create_connection_request import CreateConnectionRequestAuthParameters
 from ._create_connection_request import CreateConnectionRequestNetworkParameters
 from ._create_connection_response_body import CreateConnectionResponseBodyData
+from ._create_event_bus_request import CreateEventBusRequestTags
 from ._create_event_bus_response_body import CreateEventBusResponseBodyData
 from ._create_event_source_request import CreateEventSourceRequestSourceHttpEventParameters
 from ._create_event_source_request import CreateEventSourceRequestSourceKafkaParameters
@@ -684,6 +685,7 @@ from ._get_connection_response_body import GetConnectionResponseBodyDataConnecti
 from ._get_connection_response_body import GetConnectionResponseBodyDataConnections
 from ._get_connection_response_body import GetConnectionResponseBodyData
 from ._get_document_download_url_response_body import GetDocumentDownloadUrlResponseBodyData
+from ._get_event_bus_response_body import GetEventBusResponseBodyDataTags
 from ._get_event_bus_response_body import GetEventBusResponseBodyData
 from ._get_event_streaming_response_body import GetEventStreamingResponseBodyDataDetailedStatus
 from ._get_event_streaming_response_body import GetEventStreamingResponseBodyDataRunOptionsBatchWindow
@@ -856,6 +858,7 @@ from ._list_connections_response_body import ListConnectionsResponseBodyDataConn
 from ._list_connections_response_body import ListConnectionsResponseBodyDataConnections
 from ._list_connections_response_body import ListConnectionsResponseBodyData
 from ._list_documents_response_body import ListDocumentsResponseBodyData
+from ._list_event_buses_response_body import ListEventBusesResponseBodyDataEventBusesTags
 from ._list_event_buses_response_body import ListEventBusesResponseBodyDataEventBuses
 from ._list_event_buses_response_body import ListEventBusesResponseBodyData
 from ._list_event_house_runtimes_response_body import ListEventHouseRuntimesResponseBodyData
@@ -1054,6 +1057,7 @@ from ._update_connection_request import UpdateConnectionRequestAuthParametersOAu
 from ._update_connection_request import UpdateConnectionRequestAuthParametersOAuthParameters
 from ._update_connection_request import UpdateConnectionRequestAuthParameters
 from ._update_connection_request import UpdateConnectionRequestNetworkParameters
+from ._update_event_bus_request import UpdateEventBusRequestTags
 from ._update_event_source_request import UpdateEventSourceRequestSourceHttpEventParameters
 from ._update_event_source_request import UpdateEventSourceRequestSourceKafkaParameters
 from ._update_event_source_request import UpdateEventSourceRequestSourceMNSParameters
@@ -1698,6 +1702,7 @@ __all__ = [
     CreateConnectionRequestAuthParameters,
     CreateConnectionRequestNetworkParameters,
     CreateConnectionResponseBodyData,
+    CreateEventBusRequestTags,
     CreateEventBusResponseBodyData,
     CreateEventSourceRequestSourceHttpEventParameters,
     CreateEventSourceRequestSourceKafkaParameters,
@@ -1918,6 +1923,7 @@ __all__ = [
     GetConnectionResponseBodyDataConnections,
     GetConnectionResponseBodyData,
     GetDocumentDownloadUrlResponseBodyData,
+    GetEventBusResponseBodyDataTags,
     GetEventBusResponseBodyData,
     GetEventStreamingResponseBodyDataDetailedStatus,
     GetEventStreamingResponseBodyDataRunOptionsBatchWindow,
@@ -2090,6 +2096,7 @@ __all__ = [
     ListConnectionsResponseBodyDataConnections,
     ListConnectionsResponseBodyData,
     ListDocumentsResponseBodyData,
+    ListEventBusesResponseBodyDataEventBusesTags,
     ListEventBusesResponseBodyDataEventBuses,
     ListEventBusesResponseBodyData,
     ListEventHouseRuntimesResponseBodyData,
@@ -2288,6 +2295,7 @@ __all__ = [
     UpdateConnectionRequestAuthParametersOAuthParameters,
     UpdateConnectionRequestAuthParameters,
     UpdateConnectionRequestNetworkParameters,
+    UpdateEventBusRequestTags,
     UpdateEventSourceRequestSourceHttpEventParameters,
     UpdateEventSourceRequestSourceKafkaParameters,
     UpdateEventSourceRequestSourceMNSParameters,
