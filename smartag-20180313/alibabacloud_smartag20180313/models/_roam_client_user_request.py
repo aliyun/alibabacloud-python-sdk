@@ -17,7 +17,7 @@ class RoamClientUserRequest(DaraModel):
         target_smart_agid: str = None,
         user_name: str = None,
     ):
-        # The region ID of the SAG app instance.
+        # The region ID of the source SAG app instance.
         # 
         # This parameter is required.
         self.origin_region_id = origin_region_id
@@ -27,7 +27,7 @@ class RoamClientUserRequest(DaraModel):
         self.origin_smart_agid = origin_smart_agid
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the SAG app instance.
+        # The region ID of the destination SAG app instance.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -37,7 +37,7 @@ class RoamClientUserRequest(DaraModel):
         # 
         # This parameter is required.
         self.target_smart_agid = target_smart_agid
-        # The usernames of the client for which you want to enable roaming.
+        # The username of the client account to roam.
         # 
         # This parameter is required.
         self.user_name = user_name

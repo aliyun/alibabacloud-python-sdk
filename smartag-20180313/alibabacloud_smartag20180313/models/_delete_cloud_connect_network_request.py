@@ -14,13 +14,13 @@ class DeleteCloudConnectNetworkRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the CCN instance.
+        # The ID of the Cloud Connect Network (CCN).
         # 
         # This parameter is required.
         self.ccn_id = ccn_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the CCN instance is deployed.
+        # The ID of the region to which the Cloud Connect Network (CCN) belongs.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

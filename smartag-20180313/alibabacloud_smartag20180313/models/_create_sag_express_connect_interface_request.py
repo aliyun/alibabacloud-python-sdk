@@ -23,38 +23,37 @@ class CreateSagExpressConnectInterfaceRequest(DaraModel):
         # 
         # This parameter is required.
         self.ip = ip
-        # The subnet mask of the IP address.
+        # The IP address mask.
         # 
         # This parameter is required.
         self.mask = mask
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The name of the Express Connect port.
+        # The name of the dedicated connection port.
         # 
         # This parameter is required.
         self.port_name = port_name
-        # The ID of the region where the Smart Access Gateway (SAG) instance is deployed.
+        # The region ID of the Smart Access Gateway instance.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the SAG instance.
+        # The instance ID of the Smart Access Gateway.
         # 
         # This parameter is required.
         self.smart_agid = smart_agid
-        # The serial number of the SAG device associated with the SAG instance.
+        # The serial number of the bound Smart Access Gateway device.
         # 
         # This parameter is required.
         self.smart_agsn = smart_agsn
-        # The VLAN ID of the subinterface.
+        # The VLAN ID of the dedicated connection sub-interface.
         # 
-        # Value: **0 to 4094**.
+        # Valid values: **0 to 4094**.
         # 
-        # > 
-        # *   If the VLAN ID is 0, this port is a physical port and does not support VLAN subinterfaces.
-        # *   If the VLAN ID is 1 to 4094, this port supports VLAN subinterfaces based on the Layer 3 protocols.
-        # *   You can create a maximum of 5 VLAN subinterfaces.
+        # > - If the VLAN ID is 0, the port is a physical port and the VLAN sub-interface mode is not used.
+        # - If the VLAN ID is 1 to 4094, the port uses a VLAN-based Layer 3 sub-interface.
+        # - You can create up to 5 VLANs.
         self.vlan = vlan
 
     def validate(self):

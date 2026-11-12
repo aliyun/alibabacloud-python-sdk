@@ -18,13 +18,13 @@ class DescribeSagOnlineClientStatisticsRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the SAG app instance.
+        # The region ID of the Smart Access Gateway app instance.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The IDs of the SAG app instances. The list can contain up to 50 instance IDs.
+        # The instance IDs of the Smart Access Gateway app instances. Maximum value of N: 50.
         self.smart_agids = smart_agids
 
     def validate(self):

@@ -12,13 +12,13 @@ class CreateSmartAccessGatewaySoftwareResponseBody(DaraModel):
         resource_group_id: str = None,
         smart_agid: str = None,
     ):
-        # The ID of the order that you placed to purchase the SAG app instance.
+        # The order ID for purchasing the Smart Access Gateway app instance.
         self.order_id = order_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the resource group to which the SAG app instance belongs.
+        # The ID of the resource group to which the Smart Access Gateway app instance belongs.
         self.resource_group_id = resource_group_id
-        # The ID of the SAG app instance.
+        # The instance ID of the Smart Access Gateway app.
         self.smart_agid = smart_agid
 
     def validate(self):

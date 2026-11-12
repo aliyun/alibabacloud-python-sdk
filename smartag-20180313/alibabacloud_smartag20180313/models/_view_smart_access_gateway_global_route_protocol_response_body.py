@@ -14,15 +14,15 @@ class ViewSmartAccessGatewayGlobalRouteProtocolResponseBody(DaraModel):
         route_protocol: str = None,
         task_states: List[main_models.ViewSmartAccessGatewayGlobalRouteProtocolResponseBodyTaskStates] = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The routing protocol. Valid values:
         # 
-        # *   **STATIC**
-        # *   **OSPF**
-        # *   **BGP**
+        # - **STATIC**: Static routing protocol.
+        # - **OSPF**: OSPF dynamic routing protocol.
+        # - **BGP**: BGP dynamic routing protocol.
         self.route_protocol = route_protocol
-        # The status of the task.
+        # The status of the query task.
         self.task_states = task_states
 
     def validate(self):
@@ -73,25 +73,25 @@ class ViewSmartAccessGatewayGlobalRouteProtocolResponseBodyTaskStates(DaraModel)
         error_message: str = None,
         state: str = None,
     ):
-        # The timestamp when the task was created. Unit: milliseconds.
+        # The timestamp when the query task was created. Unit: milliseconds.
         # 
-        # The value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # The timestamp is in the UNIX format, which represents the total time elapsed from 00:00:00 on January 1, 1970 (UTC) to the time when the query task was created.
         self.create_time = create_time
-        # The error code. A value of 200 indicates that the task is successful.
+        # The error code. A value of 200 indicates that the query task succeeded.
         self.error_code = error_code
-        # The error message. A value of Successful indicates that the task is successful.
+        # The error message. A value of Successful indicates that the query task succeeded.
         self.error_message = error_message
         # The status of the asynchronous task. Valid values:
         # 
-        # *   **Initialized**: The query task is initialized.
-        # *   **Offline**: The SAG device is disconnected from Alibaba Cloud and Alibaba Cloud has not assigned the query task to the SAG device. After the SAG device is connected to Alibaba Cloud, Alibaba Cloud assigns the query task to the SAG device.
-        # *   **Succeed**: Alibaba Cloud has assigned the query task to the SAG device.
-        # *   **Processing**: Alibaba Cloud is assigning the query task to the SAG device.
-        # *   **VersionNotSupport**: The query task is not supported by the current version of the SAG device.
-        # *   **BuildRequestError**: The query task is not supported by the controller of the SAG device.
-        # *   **HardwareError**: Alibaba Cloud failed to assign the query task to the SAG device because the SAG device is faulty.
-        # *   **TaskNotExist**: The query task does not exist.
-        # *   **OfflineNotConfiged**: The SAG device is disconnected from Alibaba Cloud and Alibaba Cloud has not assigned the query task to the SAG device. Alibaba Cloud does not assign the query task to the SAG device even after the SAG device is connected to Alibaba Cloud.
+        # - **Initialized**: The query task is initialized.
+        # - **Offline**: The SAG device is offline and the query task is not delivered. The task will be delivered Smart Access Gateway device goes online.
+        # - **Succeed**: The query task is delivered.
+        # - **Processing**: The query task is being delivered.
+        # - **VersionNotSupport**: The current version of the SAG device does not support this operation.
+        # - **BuildRequestError**: The management and control system does not support this operation.
+        # - **HardwareError**: The query task failed to be delivered due to a device error.
+        # - **TaskNotExist**: The query task does not exist.
+        # - **OfflineNotConfiged**: The SAG device is offline and the query task is not delivered. The task will not be delivered Smart Access Gateway device goes online.
         self.state = state
 
     def validate(self):

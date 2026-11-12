@@ -15,13 +15,13 @@ class AddSmartAccessGatewayDnsForwardResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. A value of 200 indicates that the call is successful.
+        # The error code. A value of 200 indicates that the task was queried successfully.
         self.code = code
-        # The information returned for the request.
+        # The business data.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The response message.
+        # The returned message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -94,17 +94,17 @@ class AddSmartAccessGatewayDnsForwardResponseBodyData(DaraModel):
     ):
         # The domain name.
         self.domain = domain
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
         # The primary DNS server.
         self.master_ip = master_ip
         # The forwarding mode.
         self.mode = mode
-        # The number of the egress port.
+        # The outbound port index.
         self.outbound_port_index = outbound_port_index
-        # The egress port.
+        # The outbound port.
         self.outbound_port_name = outbound_port_name
-        # The type of the egress port.
+        # The outbound port type.
         self.outbound_port_type = outbound_port_type
         # The secondary DNS server.
         self.slave_ip = slave_ip

@@ -13,9 +13,9 @@ class DescribeSagVbrRelationsResponseBody(DaraModel):
         request_id: str = None,
         sag_vbr_relations: List[main_models.DescribeSagVbrRelationsResponseBodySagVbrRelations] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the specified VBR is associated with an SAG instance.
+        # The association information.
         self.sag_vbr_relations = sag_vbr_relations
 
     def validate(self):
@@ -59,11 +59,11 @@ class DescribeSagVbrRelationsResponseBodySagVbrRelations(DaraModel):
         sag_uid: str = None,
         vbr_instance_id: str = None,
     ):
-        # The ID of the SAG instance.
+        # The instance ID of the Smart Access Gateway.
         self.sag_instance_id = sag_instance_id
-        # The ID of the Alibaba Cloud account to which the SAG instance belongs.
+        # The ID of the Alibaba Cloud account to which the Smart Access Gateway instance belongs.
         self.sag_uid = sag_uid
-        # The ID of the VBR.
+        # The instance ID of the virtual border router (VBR) used for routing.
         self.vbr_instance_id = vbr_instance_id
 
     def validate(self):

@@ -16,14 +16,14 @@ class DescribeSmartAccessGatewaysResponseBody(DaraModel):
         smart_access_gateways: main_models.DescribeSmartAccessGatewaysResponseBodySmartAccessGateways = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries returned per page in a paging query.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         self.smart_access_gateways = smart_access_gateways
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

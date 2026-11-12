@@ -11,11 +11,11 @@ class DeleteSmartAccessGatewayRequest(DaraModel):
         region_id: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the SAG instance that you want to delete.
+        # The instance ID of the Smart Access Gateway instance that you want to delete.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the region where the SAG instance is deployed.
+        # The region ID of the Smart Access Gateway instance.
         self.region_id = region_id
         self.resource_owner_id = resource_owner_id
 

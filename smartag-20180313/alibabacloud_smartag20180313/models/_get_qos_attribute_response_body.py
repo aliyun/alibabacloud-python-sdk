@@ -17,17 +17,17 @@ class GetQosAttributeResponseBody(DaraModel):
         qos_policies: List[main_models.GetQosAttributeResponseBodyQosPolicies] = None,
         request_id: str = None,
     ):
-        # The number of Smart Access Gateway (SAG) instances that have exceptional configurations.
+        # The number of Smart Access Gateway instances with configuration errors.
         self.error_config_smart_agcount = error_config_smart_agcount
-        # The traffic throttling rule applied to the QoS policies that have exceptional configurations.
+        # The rate limiting rules with configuration errors in the QoS policy.
         self.qos_cars = qos_cars
-        # The description of the QoS policy.
+        # The description of the QoS policy instance.
         self.qos_description = qos_description
-        # The name of the QoS policy.
+        # The name of the QoS policy instance.
         self.qos_name = qos_name
-        # List of QoS policies based on 5-tuple.
+        # The list of 5-tuple rules for the QoS policy instance.
         self.qos_policies = qos_policies
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -111,45 +111,37 @@ class GetQosAttributeResponseBodyQosPolicies(DaraModel):
         source_port_range: str = None,
         start_time: int = None,
     ):
-        # The range of the destination CIDR block.
+        # The destination CIDR block.
         self.dest_cidr = dest_cidr
-        # The range of destination ports.
+        # The destination port range. Valid values: **-1** or **1** to **65535**.
         # 
-        # Valid values: **1** to **65535** and **-1**.
+        # Examples of the destination port range format:
         # 
-        # Examples of the format of the destination port range:
-        # 
-        # *   **1/200**: a port range from 1 to 200.
-        # *   **80/80**: port 80.
-        # *   **-1/-1**: all ports.
+        # - **1/200**: indicates ports 1 to 200.
+        # - **80/80**: indicates port 80.
+        # - **-1/-1**: indicates that ports are not restricted.
         self.dest_port_range = dest_port_range
-        # The end time of the valid time of the 5-tuple.
-        # 
-        # The time must be in UTC+8.
+        # The expiration time of the 5-tuple rules. The time is displayed in Beijing time. Format: UTC+8.
         self.end_time = end_time
-        # The type of the protocol that is applied to the 5-tuple rule.
+        # The protocol type applied to the 5-tuple rules.
         self.ip_protocol = ip_protocol
-        # The priority of the traffic throttling rule that is applied to the 5-tuple.rule.
-        # 
-        # A smaller value indicates a higher priority.
+        # The priority of the rate limiting rule to which the 5-tuple rules belong. A smaller value indicates a higher priority.
         self.priority = priority
-        # The description of the 5-tuple.
+        # The description of the 5-tuple rules.
         self.qos_policie_description = qos_policie_description
-        # The name of the 5-tuple.
+        # The name of the 5-tuple rules.
         self.qos_policie_name = qos_policie_name
-        # The range of the source CIDR block.
+        # The source CIDR block.
         self.source_cidr = source_cidr
-        # The range of source ports.
+        # The source port range. Valid values: **-1** or **1** to **65535**.
         # 
-        # Valid values: **1** to **65535** and **-1**.
+        # Examples of the source port range format:
         # 
-        # Examples of the format of the source port range:
-        # 
-        # *   **1/200**: a port range from 1 to 200.
-        # *   **80/80**: port 80.
-        # *   **-1/-1**: all ports.
+        # - **1/200**: indicates ports 1 to 200.
+        # - **80/80**: indicates port 80.
+        # - **-1/-1**: indicates that ports are not restricted.
         self.source_port_range = source_port_range
-        # The start time of the valid time of the 5-tuple.
+        # The start of the effective period for the 5-tuple rules. The time is displayed in Beijing time. Format: UTC+8.
         self.start_time = start_time
 
     def validate(self):
@@ -240,33 +232,31 @@ class GetQosAttributeResponseBodyQosCars(DaraModel):
         qos_car_id: str = None,
         qos_car_name: str = None,
     ):
-        # The type of traffic throttling. Valid values:
+        # The rate limiting type. Valid values:
         # 
-        # *   **Absolute**: throttles traffic based on a specific range of bandwidth.
-        # *   **Percent**: throttles traffic based on a specific range of bandwidth percentage.
+        # - **Absolute**: by bandwidth value.
+        # - **Percent**: by percentage.
         self.limit_type = limit_type
         # The maximum bandwidth. Unit: Mbit/s.
         self.max_bandwidth_abs = max_bandwidth_abs
-        # The maximum bandwidth percentage that the traffic is throttled to.
+        # The maximum bandwidth percentage.
         self.max_bandwidth_percent = max_bandwidth_percent
         # The minimum bandwidth. Unit: Mbit/s.
         self.min_bandwidth_abs = min_bandwidth_abs
         # The minimum bandwidth percentage.
         self.min_bandwidth_percent = min_bandwidth_percent
-        # Bandwidth type when traffic is throttled to a percentage of the total bandwidth of the network.
+        # The bandwidth type when rate limiting is based on percentage. Valid values:
         # 
-        # *   **CcnBandwidth**: Cloud Connect Network (CCN) bandwidth.
-        # *   **InternetUpBandwidth**: Internet upstream bandwidth.
+        # - **CcnBandwidth**: Cloud Connect Network (CCN) bandwidth.
+        # - **InternetUpBandwidth**: Internet upstream bandwidth.
         self.percent_source_type = percent_source_type
-        # The priority of the traffic throttling rule.
-        # 
-        # Valid values are from **1** to **3**. A smaller value indicates a higher priority.
+        # The priority of the rate limiting rule. Valid values: **1** to **3**. A smaller value indicates a higher priority.
         self.priority = priority
-        # The description of the traffic throttling rule.
+        # The description of the rate limiting rule.
         self.qos_car_description = qos_car_description
-        # The ID of the traffic throttling rule.
+        # The ID of the rate limiting rule.
         self.qos_car_id = qos_car_id
-        # The name of the traffic throttling rule.
+        # The name of the rate limiting rule.
         self.qos_car_name = qos_car_name
 
     def validate(self):

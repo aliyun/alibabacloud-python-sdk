@@ -19,11 +19,9 @@ class AddSmartAccessGatewayDnsForwardRequest(DaraModel):
         slave_ip: str = None,
     ):
         # The domain name.
-        # 
         # > 
-        # *   Wildcard domain names are supported. You can use the wildcard character asterisk (\\*) to specify a wildcard domain name.
-        # 
-        # For example, you can enter \\*.baidu.com to specify the domain name baidu.com.
+        # >- Wildcard domain names and full match are supported. You can enter an asterisk (*) for the domain name to match all. Examples:
+        # *.baidu.com. The allowed input format is baidu.com.
         # 
         # This parameter is required.
         self.domain = domain
@@ -33,35 +31,28 @@ class AddSmartAccessGatewayDnsForwardRequest(DaraModel):
         self.master_ip = master_ip
         # The forwarding mode.
         # 
-        # > 
-        # *   This parameter is not in use. Ignore this parameter.
+        # >- This field is invalid. You can ignore it.
         self.mode = mode
-        # The number of the egress port.
-        # 
-        # > 
-        # *   This parameter is optional if OutboundPortType is set to PhysicalPort. Ignore this parameter if OutboundPortType is set to Tunnel.
-        # *   The value of OutboundPortIndex is the unique index of the port name specified by poOutboundPortName. For example, 0 is the index for the port named eth0, and 2 is the index for the port named lte.
+        # The outbound port index.
+        # >- This parameter is optional when OutboundPortType is set to PhysicalPort, and is not required when OutboundPortType is set to Tunnel.
+        # >- OutboundPortIndex and OutboundPortName have a one-to-one mapping: 0 - eth0; 2 - lte.
         self.outbound_port_index = outbound_port_index
-        # The egress port.
-        # 
-        # > 
-        # *   This parameter is optional if OutboundPortType is set to PhysicalPort. Ignore this parameter if OutboundPortType is set to Tunnel.
-        # *   The value of OutboundPortIndex is the unique index of the port name specified by poOutboundPortName. For example, 0 is the index for the port named eth0, and 2 is the index for the port named lte.
+        # The outbound port.
+        # >- This parameter is optional when OutboundPortType is set to PhysicalPort, and is not required when OutboundPortType is set to Tunnel.
+        # >- OutboundPortIndex and OutboundPortName have a one-to-one mapping: 0 - eth0; 2 - lte.
         self.outbound_port_name = outbound_port_name
-        # The type of the egress port.
-        # 
-        # > 
-        # *   A value of Tunnel specifies a tunnel, and a value of PhysicalPort specifies a physical port.
+        # The outbound port type.
+        # >- A value of Tunnel indicates a tunnel port, and a value of PhysicalPort indicates a physical port.
         self.outbound_port_type = outbound_port_type
-        # The ID of the region where the instance is deployed.
+        # The region ID of the Smart Access Gateway instance.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the instance.
+        # The ID of the Smart Access Gateway instance.
         # 
         # This parameter is required.
         self.sag_ins_id = sag_ins_id
-        # The serial number (SN) of the device.
+        # The serial number of the device.
         # 
         # This parameter is required.
         self.sag_sn = sag_sn

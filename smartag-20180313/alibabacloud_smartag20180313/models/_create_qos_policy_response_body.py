@@ -26,7 +26,7 @@ class CreateQosPolicyResponseBody(DaraModel):
         source_port_range: str = None,
         start_time: str = None,
     ):
-        # The description of the traffic classification rule for the QoS policy.
+        # The description of the traffic classification rule.
         self.description = description
         # The destination CIDR block.
         self.dest_cidr = dest_cidr
@@ -34,13 +34,13 @@ class CreateQosPolicyResponseBody(DaraModel):
         self.dest_port_range = dest_port_range
         self.dpi_group_ids = dpi_group_ids
         self.dpi_signature_ids = dpi_signature_ids
-        # The time when the traffic classification rule expires.
+        # The end time when the traffic classification rule of the quality of service (QoS) policy takes effect. The time follows the ISO 8601 standard and uses the UTC+8 time zone, in the YYYY-MM-DDThh:mm:ss+0800 format.
         self.end_time = end_time
-        # The protocol type to which the traffic classification rule applies.
+        # The protocol type applied to the traffic classification rule.
         self.ip_protocol = ip_protocol
-        # The name of the traffic classification rule for the QoS policy.
+        # The name of the traffic classification rule.
         self.name = name
-        # The priority of the rate limiting rule to which the traffic classification rule belongs.
+        # The priority of the bandwidth throttling rule to which the traffic classification rule belongs.
         self.priority = priority
         # The instance ID of the QoS policy.
         self.qos_id = qos_id
@@ -52,7 +52,7 @@ class CreateQosPolicyResponseBody(DaraModel):
         self.source_cidr = source_cidr
         # The source port range.
         self.source_port_range = source_port_range
-        # The time when the traffic classification rule takes effect.
+        # The effective start time of the traffic classification rule for the QoS policy. The time is expressed in the ISO 8601 standard and uses the UTC+8 time zone in the YYYY-MM-DDThh:mm:ss+0800 format.
         self.start_time = start_time
 
     def validate(self):

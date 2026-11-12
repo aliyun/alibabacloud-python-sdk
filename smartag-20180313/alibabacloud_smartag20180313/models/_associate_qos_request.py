@@ -21,13 +21,13 @@ class AssociateQosRequest(DaraModel):
         # 
         # This parameter is required.
         self.qos_id = qos_id
-        # The ID of the region to which the QoS policy belongs.
+        # The region ID of the QoS policy.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the SAG instance to which the QoS policy is to be applied.
+        # The Smart Access Gateway instance ID to which the QoS policy is applied.
         # 
         # This parameter is required.
         self.smart_agid = smart_agid

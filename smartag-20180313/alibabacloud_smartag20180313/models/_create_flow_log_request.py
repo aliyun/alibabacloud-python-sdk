@@ -24,53 +24,55 @@ class CreateFlowLogRequest(DaraModel):
         resource_owner_id: int = None,
         sls_region_id: str = None,
     ):
-        # The output interval under active connections. Valid values: **60 to 6000**. Unit: seconds. Default value: **300**.
+        # The output interval for active flows. Valid values: **60** to **6000**. Unit: seconds. Default value: **300**.
         self.active_aging = active_aging
-        # The description of the flow log.
+        # The description of the flow log instance.
         self.description = description
-        # The output interval under inactive connections. Valid values: **10 to 600**. Unit: seconds. Default value: **15**.
+        # The output interval for inactive flows. Valid values: **10** to **600**. Unit: seconds. Default value: **15**.
         self.inactive_aging = inactive_aging
-        # The Logstore in Log Service.
+        # The name of the Simple Log Service Logstore.
         # 
-        # If OutputType is set to **sls** or **all**, this parameter is required.
+        # This parameter is required when the output type of the flow log is **sls** or **all**.
         self.logstore_name = logstore_name
-        # The name of the flow log.
+        # The name of the flow log instance.
         self.name = name
-        # The IP address of the NetFlow collector where the flow log is stored.
+        # The IP address of the NetFlow server that stores the flow log.
         # 
-        # If OutputType is set to **netflow** or **all**, this parameter is required.
+        # This parameter is required when the output type of the flow log is **netflow** or **all**.
         self.netflow_server_ip = netflow_server_ip
-        # The port number of the NetFlow collector where the flow log is stored. Default value: **9995**.
+        # The server port of the NetFlow server that stores the flow log. Default value: **9995**.
         # 
-        # If OutputType is set to **netflow** or **all**, this parameter is required.
+        # This parameter is required when the output type of the flow log is **netflow** or **all**.
         self.netflow_server_port = netflow_server_port
-        # The version of the NetFlow collector where the flow log is stored. Valid values: **V5**, **V9**, and **V10**. Default value: **V9**.
+        # The version of the NetFlow protocol used to store the flow log. Valid values: **V5**, **V9**, and **V10**. Default value: **V9**.
         # 
-        # If OutputType is set to **netflow** or **all**, this parameter is required.
+        # This parameter is required when the output type of the flow log is **netflow** or **all**.
         self.netflow_version = netflow_version
-        # The type of the flow log. Valid values:
+        # The output type of the flow log. Valid values:
         # 
-        # *   **sls**: The flow log is stored in Log Service.
-        # *   **netflow**: The flow log is stored on a NetFlow collector.
-        # *   **all**: The flow log is stored both in Log Service and on a NetFlow collector.
+        # - **sls**: The flow log is stored in Simple Log Service.
+        # 
+        # - **netflow**: The flow log is stored on the NetFlow server that you configure.
+        # 
+        # - **all**: The flow log is stored in both Simple Log Service and the NetFlow server that you configure.
         self.output_type = output_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The project in Log Service.
+        # The name of the Simple Log Service project.
         # 
-        # If OutputType is set to **sls** or **all**, this parameter is required.
+        # This parameter is required when the output type of the flow log is **sls** or **all**.
         self.project_name = project_name
-        # The ID of the region to which the flow log belongs.
+        # The region ID of the flow log instance.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the region where Log Service is deployed.
+        # The region ID of Simple Log Service.
         # 
-        # If OutputType is set to **sls** or **all**, this parameter is required.
+        # This parameter is required when the output type of the flow log is **sls** or **all**.
         self.sls_region_id = sls_region_id
 
     def validate(self):

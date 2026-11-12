@@ -20,13 +20,11 @@ class AddDnatEntryRequest(DaraModel):
         sag_id: str = None,
         type: str = None,
     ):
-        # The public IP address.
-        # 
-        # >  If the DNAT entry is used to forward packets transmitted over the Internet, the DNAT entry automatically recognizes the current public IP address.
+        # The external public IP address.
+        # > If the DNAT type is Internet, the system automatically identifies the current public IP address. You do not need to specify this parameter.
         self.external_ip = external_ip
         # The public port.
-        # 
-        # Valid values: **1 to 65535**.
+        # Valid values: **1-65535**.
         # 
         # This parameter is required.
         self.external_port = external_port
@@ -34,38 +32,35 @@ class AddDnatEntryRequest(DaraModel):
         # 
         # This parameter is required.
         self.internal_ip = internal_ip
-        # The destination private port.
-        # 
-        # Valid values: **1 to 65535**.
+        # The destination private port number.
+        # Valid values: **1-65535**.
         # 
         # This parameter is required.
         self.internal_port = internal_port
-        # The protocol used in DNAT. Valid values:
-        # 
-        # *   **TCP**: forwards TCP packets.
-        # *   **UDP**: The NAT gateway forwards UDP packets.
-        # *   **Any**: forwards packets of all protocols.
+        # The protocol type. Valid values:
+        # - **TCP**: forwards TCP packets.
+        # - **UDP**: forwards UDP packets.
+        # - **Any**: forwards packets of all protocols.
         # 
         # This parameter is required.
         self.ip_protocol = ip_protocol
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the SAG instance is deployed.
+        # The region ID of the Smart Access Gateway instance.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the SAG instance.
+        # The ID of the Smart Access Gateway instance.
         # 
-        # >  Only SAG instances used to manage SAG devices support DNAT.
+        # > Currently, only hardware instances are supported.
         # 
         # This parameter is required.
         self.sag_id = sag_id
-        # The type of the DNAT entry. Valid values:
-        # 
-        # *   **Intranet**: translates the destination IP address to a specific internal IP address. This is the default value.
-        # *   **Internet**: translates the destination IP address to a specific public IP address.
+        # The DNAT type. Valid values:
+        # - **Intranet**: private network DNAT. This is the default value.
+        # - **Internet**: public network DNAT.
         self.type = type
 
     def validate(self):

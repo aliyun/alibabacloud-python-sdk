@@ -18,25 +18,25 @@ class DescribeSmartAccessGatewayHaResponseBody(DaraModel):
         request_id: str = None,
         smart_agid: str = None,
     ):
-        # The serial number of the standby SAG device.
+        # The serial number of the standby device.
         self.backup_device_id = backup_device_id
-        # Indicates whether device-based HA is enabled. Valid values:
+        # The device-level backup state. Valid values:
         # 
-        # *   **ON**: enabled
-        # *   **OFF**: disabled
+        # - **ON**: Enabled.
+        # - **OFF**: Disabled.
         self.device_level_backup_state = device_level_backup_state
-        # The deployment mode of the SAG devices that have HA enabled. Valid values:
+        # The device-level high-availability type. Valid values:
         # 
-        # *   **warm_backup**: active-active mode.
-        # *   **cold_backup**: active-standby mode.
-        # *   **no_backup**: HA is disabled.
+        # - **warm_backup**: Active-active mode.
+        # - **cold_backup**: Active-standby mode.
+        # - **no_backup**: No backup.
         self.device_level_backup_type = device_level_backup_type
         self.link_backup_info_list = link_backup_info_list
-        # The serial number of the active SAG device.
+        # The serial number of the active device.
         self.main_device_id = main_device_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the SAG instance.
+        # The instance ID of the Smart Access Gateway.
         self.smart_agid = smart_agid
 
     def validate(self):

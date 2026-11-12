@@ -12,16 +12,17 @@ class UpdateSmartAccessGatewayAdminPasswordResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. A value of 200 indicates that the task is successful.
+        # The response code. A value of 200 indicates that the query task is successful.
         self.code = code
-        # The response message. A value of Successful indicates that the task is successful.
+        # The response message. A value of Successful indicates that the query task is successful.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the modification is successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: yes.
+        # 
+        # - **false**: no.
         self.success = success
 
     def validate(self):

@@ -13,7 +13,7 @@ class DescribeSagDropTopNResponseBody(DaraModel):
         drop_top_n: List[main_models.DescribeSagDropTopNResponseBodyDropTopN] = None,
         request_id: str = None,
     ):
-        # The list of packet loss information about Smart Access Gateway instances.
+        # The list of packet loss information for the Smart Access Gateway instances.
         self.drop_top_n = drop_top_n
         # The request ID.
         self.request_id = request_id
@@ -62,7 +62,7 @@ class DescribeSagDropTopNResponseBodyDropTopN(DaraModel):
     ):
         # The packet loss rate of the Smart Access Gateway instance. Unit: pps.
         self.drop_rate = drop_rate
-        # The ID of the Smart Access Gateway instance.
+        # The instance ID of the Smart Access Gateway instance.
         self.instance_id = instance_id
         # The name of the Smart Access Gateway instance.
         self.name = name

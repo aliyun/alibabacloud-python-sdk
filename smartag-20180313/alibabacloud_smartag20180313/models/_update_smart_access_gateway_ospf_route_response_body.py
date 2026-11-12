@@ -12,7 +12,7 @@ class UpdateSmartAccessGatewayOspfRouteResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. A value of 200 indicates that the request was successful.
+        # The status code. 200 indicates that the request is successful.
         self.code = code
         # The response message.
         self.message = message
@@ -20,8 +20,9 @@ class UpdateSmartAccessGatewayOspfRouteResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # - **true**: The request was successful.
-        # - **false**: The request failed.
+        # - **true**: yes.
+        # 
+        # - **false**: no.
         self.success = success
 
     def validate(self):

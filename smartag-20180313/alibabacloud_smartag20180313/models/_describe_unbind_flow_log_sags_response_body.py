@@ -14,9 +14,9 @@ class DescribeUnbindFlowLogSagsResponseBody(DaraModel):
         request_id: str = None,
         sags: main_models.DescribeUnbindFlowLogSagsResponseBodySags = None,
     ):
-        # The total number of the SAG instances.
+        # The total number of entries.
         self.count = count
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         self.sags = sags
 

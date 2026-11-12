@@ -13,9 +13,9 @@ class DescribeSagTrafficTopNResponseBody(DaraModel):
         request_id: str = None,
         traffic_top_n: List[main_models.DescribeSagTrafficTopNResponseBodyTrafficTopN] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information about the data transfer rate of the SAG instance.
+        # The list of traffic rate information for Smart Access Gateway instances.
         self.traffic_top_n = traffic_top_n
 
     def validate(self):
@@ -60,13 +60,13 @@ class DescribeSagTrafficTopNResponseBodyTrafficTopN(DaraModel):
         region_id: str = None,
         traffic_rate: str = None,
     ):
-        # The ID of the SAG instance.
+        # The instance ID of the Smart Access Gateway instance.
         self.instance_id = instance_id
-        # The name of the SAG instance.
+        # The name of the Smart Access Gateway instance.
         self.name = name
-        # The ID of the region where the SAG instance is deployed.
+        # The region ID of the Smart Access Gateway instance.
         self.region_id = region_id
-        # The data transfer rate of the SAG instance. Unit: bit/s
+        # The traffic rate of the Smart Access Gateway instance. Unit: bps.
         self.traffic_rate = traffic_rate
 
     def validate(self):

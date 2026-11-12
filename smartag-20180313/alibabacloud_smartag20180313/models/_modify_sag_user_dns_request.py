@@ -19,11 +19,11 @@ class ModifySagUserDnsRequest(DaraModel):
     ):
         # The IP address of the primary DNS server.
         # 
-        # >  If you do not set this parameter, the IP address of the existing DNS server will be cleared.
+        # > If you do not specify this parameter, the DNS configuration is cleared.
         self.master_dns = master_dns
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the SAG instance is deployed.
+        # The region ID of the Smart Access Gateway instance.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -31,13 +31,13 @@ class ModifySagUserDnsRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The IP address of the secondary DNS server.
         # 
-        # >  If you do not set this parameter, the IP address of the existing DNS server will be cleared.
+        # > If you do not specify this parameter, the secondary DNS configuration is cleared.
         self.slave_dns = slave_dns
-        # The ID of the SAG instance.
+        # The instance ID of the Smart Access Gateway.
         # 
         # This parameter is required.
         self.smart_agid = smart_agid
-        # The serial number of the SAG device associated with the SAG instance.
+        # The serial number of the bound Smart Access Gateway device.
         # 
         # This parameter is required.
         self.smart_agsn = smart_agsn

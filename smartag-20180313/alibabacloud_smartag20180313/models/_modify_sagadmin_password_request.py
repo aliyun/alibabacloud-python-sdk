@@ -18,25 +18,25 @@ class ModifySAGAdminPasswordRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The new logon password for the SAG device.
+        # The new logon password for the Smart Access Gateway device.
         # 
-        # The password must be 8 to 30 characters in length and can contain letters, digits, and underscores (_).
+        # Password format requirements: The password must be 8 to 30 characters in length and can contain uppercase letters, lowercase letters, digits, and underscores (_).
         # 
-        # >  In the example, asterisks (\\*) are used to conceal the real password. This does not mean that the password supports asterisks (\\*). The actual format requirement prevails.
+        # > The example shows a partially masked synthetic format for demonstration purposes and does not correspond to a real device password. An asterisk (\\*) indicates a masked character and does not mean that asterisks (\\*) are supported in passwords. When entering a password, refer to the password format requirements.
         # 
         # This parameter is required.
         self.password = password
-        # The ID of the region where the SAG instance is deployed.
+        # The region ID of the Smart Access Gateway instance.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the SAG instance.
+        # The instance ID of the Smart Access Gateway instance.
         # 
         # This parameter is required.
         self.smart_agid = smart_agid
-        # The serial number (SN) of the SAG device.
+        # The serial number of the Smart Access Gateway device.
         # 
         # This parameter is required.
         self.smart_agsn = smart_agsn

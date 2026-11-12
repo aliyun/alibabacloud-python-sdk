@@ -12,19 +12,19 @@ class DeleteSmartAccessGatewayDnsForwardRequest(DaraModel):
         sag_ins_id: str = None,
         sag_sn: str = None,
     ):
-        # The ID of the DNS forwarding rule.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the region where the SAG instance is deployed.
+        # The ID of the region where the Smart Access Gateway instance resides.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the SAG instance.
+        # The ID of the gateway instance.
         # 
         # This parameter is required.
         self.sag_ins_id = sag_ins_id
-        # The serial number (SN) of the device.
+        # The SN of the device.
         # 
         # This parameter is required.
         self.sag_sn = sag_sn

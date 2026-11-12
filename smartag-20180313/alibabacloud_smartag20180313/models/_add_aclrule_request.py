@@ -29,71 +29,72 @@ class AddACLRuleRequest(DaraModel):
         source_port_range: str = None,
         type: str = None,
     ):
-        # The ID of the ACL.
+        # The instance ID of the access control instance.
         # 
         # This parameter is required.
         self.acl_id = acl_id
-        # The description of the ACL rule.
+        # The description of the access control rule.
         # 
-        # The description must be 1 to **512** characters in length.
+        # The description must be **1** to **512** characters in length.
         self.description = description
         # The destination CIDR block.
         # 
-        # For example: 192.168.10.0/24.
+        # The destination CIDR block must be in CIDR format. Example: 192.168.10.0/24.
         # 
         # This parameter is required.
         self.dest_cidr = dest_cidr
         # The destination port range.
         # 
-        # Valid values: **-1** and **1** to **65535**.
+        # Valid values: **-1** or **1** to **65535**.
         # 
-        # Use the format 1/200 or 80/80. A value of -1/-1 means all ports.
+        # Examples of the destination port range format: 1/200 and 80/80. A value of -1/-1 indicates that all ports are allowed.
         # 
         # This parameter is required.
         self.dest_port_range = dest_port_range
-        # The direction of traffic to which the ACL rule applies. Valid values:
+        # The direction in which the access control rule is applied. Valid values:
         # 
-        # - **in**: inbound. Traffic from an external network to the local branch where the SAG instance is deployed.
-        # - **out**: outbound. Traffic from the local branch where the SAG instance is deployed to an external network.
+        # - **in**: inbound. Traffic from external networks to the local branch where the Smart Access Gateway instance is deployed.
+        # - **out**: outbound. Traffic from the local branch where the Smart Access Gateway instance is deployed to external networks.
         # 
         # This parameter is required.
         self.direction = direction
-        # A list of application group IDs. The ACL rule matches traffic of the specified application groups.
+        # The IDs of the application groups that match the current access control rule.
         # 
-        # For more information, see [ListDpiGroups](https://help.aliyun.com/document_detail/196754.html). You can specify up to **10** application group IDs.
+        # You can call the [ListDpiGroups](https://help.aliyun.com/document_detail/196754.html) operation to query application group IDs and the applications they contain. The maximum value of N is **10**.
         self.dpi_group_ids = dpi_group_ids
-        # A list of application IDs. The ACL rule matches traffic of the specified applications.
+        # The IDs of the applications that match the current access control rule.
         # 
-        # For more information, see [ListDpiSignatures](https://help.aliyun.com/document_detail/196630.html). You can specify up to **10** application IDs.
+        # You can call the [ListDpiSignatures](https://help.aliyun.com/document_detail/196630.html) operation to query application IDs and their corresponding application information. The maximum value of N is **10**.
         self.dpi_signature_ids = dpi_signature_ids
-        # The protocol to which the ACL rule applies.
+        # The protocol to which the access control rule is applied.
         # 
-        # For a list of supported protocols, see the console. The protocol is not case-sensitive.
+        # For the protocol types supported by the access control feature, refer to the console. The protocol format is case-insensitive.
         # 
         # This parameter is required.
         self.ip_protocol = ip_protocol
-        # The name of the ACL rule.
+        # The name of the access control rule.
         # 
-        # The name must be 2 to 100 characters in length, start with a letter, and can contain digits, periods (.), underscores (_), and hyphens (-).
+        # The name must be 2 to 100 characters in length, and must start with a letter or Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-).
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The authorization policy of the ACL rule. Valid values:
+        # The authorization policy of the access control rule. Valid values:
         # 
-        # - **accept**: allows access.
-        # - **drop**: denies access.
+        # - **accept**: Allows the traffic.
+        # 
+        # - **drop**: Denies the traffic.
         # 
         # This parameter is required.
         self.policy = policy
-        # The priority of the ACL rule.
+        # The priority of the access control rule.
         # 
-        # A smaller value indicates a higher priority. If multiple rules have the same priority, the rule that is first delivered to the Smart Access Gateway device takes precedence.
+        # A smaller value indicates a higher priority. If multiple rules have the same priority, the rule that is first delivered to the Smart Access Gateway device takes effect first.
         # 
-        # Valid values: 1 to **100**. Default value: **1**.
+        # Valid values: **1** to **100**. Default value: **1**.
         self.priority = priority
-        # The ID of the region where the access control list (ACL) is located.
+        # The region ID of the access control instance.
         # 
-        # For more information, see [DescribeRegions](https://help.aliyun.com/document_detail/69813.html).
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -101,22 +102,23 @@ class AddACLRuleRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The source CIDR block.
         # 
-        # For example: 192.168.1.0/24.
+        # The source CIDR block must be in CIDR format. Example: 192.168.1.0/24.
         # 
         # This parameter is required.
         self.source_cidr = source_cidr
         # The source port range.
         # 
-        # Valid values: **-1** and **1** to **65535**.
+        # Valid values: **-1** or **1** to **65535**.
         # 
-        # Use the format 1/200 or 80/80. A value of -1/-1 means all ports.
+        # Examples of the source port range format: 1/200 and 80/80. A value of -1/-1 indicates that all ports are allowed.
         # 
         # This parameter is required.
         self.source_port_range = source_port_range
-        # The type of the ACL rule. Valid values:
+        # The type of the access control rule. Valid values:
         # 
-        # - **LAN**: (Default) private network. The ACL rule controls traffic on private networks.
-        # - **WAN**: public network. The ACL rule controls traffic on public networks.
+        # - **LAN**: (default) private network, indicating the Settings of access control rules for traffic with a private endpoint.
+        # 
+        # - **WAN**: public network, indicating the Settings of access control rules for traffic with public IP addresses.
         self.type = type
 
     def validate(self):

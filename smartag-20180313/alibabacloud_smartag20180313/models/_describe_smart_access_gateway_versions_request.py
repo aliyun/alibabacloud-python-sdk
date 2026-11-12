@@ -18,22 +18,22 @@ class DescribeSmartAccessGatewayVersionsRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the SAG instance is deployed.
+        # The region ID of the Smart Access Gateway instance.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the SAG instance.
+        # The Smart Access Gateway instance ID.
         # 
         # This parameter is required.
         self.smart_agid = smart_agid
-        # The serial number of the SAG device.
+        # The serial number of the Smart Access Gateway device.
         self.smart_agsn = smart_agsn
-        # The type of software run by the SAG device. Valid values:
+        # The software type of the Smart Access Gateway device. Valid values:
         # 
-        # *   **Device**: The operating system run by the SAG device. This is the default value.
-        # *   **Dpi**: The signature database used by the SAG device.
+        # - **Device**: the operating system software that runs on the Smart Access Gateway device. Default value.
+        # - **Dpi**: the application signature library software that runs on the Smart Access Gateway device.
         self.version_type = version_type
 
     def validate(self):

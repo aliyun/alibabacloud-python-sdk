@@ -10,13 +10,11 @@ class GetQosAttributeRequest(DaraModel):
         qos_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the QoS policy.
+        # The instance ID of the QoS policy.
         # 
         # This parameter is required.
         self.qos_id = qos_id
-        # The ID of the region where the QoS policy is deployed.
-        # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # The region ID of the QoS policy instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

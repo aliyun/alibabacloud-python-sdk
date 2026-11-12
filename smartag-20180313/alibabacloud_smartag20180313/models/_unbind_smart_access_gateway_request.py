@@ -16,23 +16,23 @@ class UnbindSmartAccessGatewayRequest(DaraModel):
         smart_agid: str = None,
         smart_aguid: int = None,
     ):
-        # The ID of the CCN instance.
+        # The ID of the Cloud Connect Network (CCN).
         # 
         # This parameter is required.
         self.ccn_id = ccn_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the SAG instance is deployed.
+        # The region ID of the Smart Access Gateway instance.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the SAG instance.
+        # The ID of the Smart Access Gateway instance.
         # 
         # This parameter is required.
         self.smart_agid = smart_agid
-        # The ID of the Alibaba Cloud account to which the SAG instance belongs.
+        # The user ID of the Smart Access Gateway instance.
         self.smart_aguid = smart_aguid
 
     def validate(self):

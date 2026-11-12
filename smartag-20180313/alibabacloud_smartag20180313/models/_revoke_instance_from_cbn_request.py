@@ -15,17 +15,17 @@ class RevokeInstanceFromCbnRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the CCN instance.
+        # The Cloud Connect Network (CCN) instance ID.
         # 
         # This parameter is required.
         self.ccn_instance_id = ccn_instance_id
-        # The ID of the CEN instance.
+        # The Cloud Enterprise Network (CEN) instance ID.
         # 
         # This parameter is required.
         self.cen_instance_id = cen_instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the CCN instance is deployed.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

@@ -33,79 +33,75 @@ class DescribeSmartAccessGatewaysRequest(DaraModel):
         unbound_acl_ids: str = None,
         version_comparator: str = None,
     ):
-        # The ID of the ACL with which the SAG instance is associated.
+        # The instance ID of the access control instance attached to the Smart Access Gateway instance.
         self.acl_ids = acl_ids
-        # The ID of the CCN instance with which the SAG instance is associated.
+        # The instance ID of the Cloud Connect Network (CCN) attached to the Smart Access Gateway instance.
         self.associated_ccn_id = associated_ccn_id
-        # The name of the associated CCN instance.
-        # 
-        # The name must be 2 to 100 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+        # The name of the associated Cloud Connect Network (CCN) instance. The name must be 2 to 100 characters in length. It must start with a letter or a Chinese character, and can contain digits, underscores (_), periods (.), and hyphens (-).
         self.associated_ccn_name = associated_ccn_name
-        # The business status of the SAG instance. Valid values:
+        # The service status of the Smart Access Gateway instance. Valid values:
         # 
-        # *   **Normal**: running as expected.
-        # *   **Arrearage**: locked due to overdue payments.
+        # - **Normal**: Normal.
+        # - **Arrearage**: Locked due to overdue payment.
         self.business_state = business_state
-        # Specifies whether the SAG instance can be associated with a quality of service (QoS) policy. Valid values:
+        # Specifies whether the Smart Access Gateway instance can be associated with a quality of service (QoS) policy instance. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: Yes.
+        # - **false**: No.
         # 
-        # Specifies whether to query SAG instances that cannot be associated with QoS policies.
+        # This parameter is used to query Smart Access Gateway instances based on whether they can be associated with a QoS policy instance.
         self.can_associate_qos = can_associate_qos
-        # The model of SAG device. Valid values:
+        # The device specification of the Smart Access Gateway device. Valid values:
         # 
-        # *   **sag-1000**
-        # *   **sag-100wm**
+        # - **sag-1000**.
+        # - **sag-100wm**.
         self.hardware_type = hardware_type
-        # The type of the SAG instance. Valid values:
+        # The type of the Smart Access Gateway instance. Valid values:
         # 
-        # *   **software**: an SAG app instance
-        # *   **hardware**: an SAG CPE instance
+        # - **software**: SAG app instance.
+        # - **hardware**: Smart Access Gateway hardware instance.
         self.instance_type = instance_type
-        # The name of the SAG instance.
+        # The name of the Smart Access Gateway instance.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+        # The name must be 2 to 128 characters in length, and can contain digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: **10**. Valid values: **1** to **50**.
+        # The number of entries to return on each page in a paging query. Default value: **10**. Valid values: **1** to **50**.
         self.page_size = page_size
-        # The ID of the region where the SAG instance is deployed.
+        # The ID of the region to which the Smart Access Gateway instance belongs.
         self.region_id = region_id
-        # The ID of the resource group to which the SAG instance belongs.
+        # The ID of the resource group to which the Smart Access Gateway instance belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The serial number of the SAG device.
+        # The serial number of the Smart Access Gateway device.
         self.serial_number = serial_number
-        # The ID of the SAG instance.
+        # The instance ID of the Smart Access Gateway.
         self.smart_agid = smart_agid
-        # The IDs of the SAG instances.
+        # The list of Smart Access Gateway instance IDs.
         self.smart_agids = smart_agids
-        # The software version of the SAG device.
+        # The software version running on the Smart Access Gateway device.
         self.software_version = software_version
-        # The status of the SAG instance. Valid values:
+        # The status of the Smart Access Gateway instance. Valid values:
         # 
-        # *   **Ordered**: Your order has been placed.
-        # *   **Delivered**: Your order has been shipped.
-        # *   **Received**: You have received the SAG device.
-        # *   **Returning**: The order is being returned.
-        # *   **Active**: The SAG device is active.
-        # *   **init**: The SAG device is being initialized.
-        # *   **Offline**: The SAG device is disconnected.
+        # - **Ordered**: Ordered.
+        # - **Delivered**: Delivered.
+        # - **Received**: Received.
+        # - **Returning**: Returning.
+        # - **Active**: Active.
+        # - **Init**: Initializing.
+        # - **Offline**: Offline.
         self.status = status
-        # The ID of the ACL rule.
-        # 
-        # Specifies that the SAG instance which is not associated with the ACL is queried. Separate ACL IDs with commas (,).
+        # The ID of the access control instance. This parameter is used to query Smart Access Gateway instances that are not associated with the specified access control instance. Separate multiple access control instance IDs with commas (,).
         self.unbound_acl_ids = unbound_acl_ids
         # The version filter. Valid values:
         # 
-        # *   **greater**: later than the current version
-        # *   **less**: earlier than the current version
-        # *   **equals**: equal to the current version
+        # - **greater**: Greater than the current version.
+        # - **less**: Less than the current version.
+        # - **equals**: Equal to the current version.
         self.version_comparator = version_comparator
 
     def validate(self):

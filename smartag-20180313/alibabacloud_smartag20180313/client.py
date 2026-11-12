@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Dict
 
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_smartag20180313 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
@@ -20,19 +21,10 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'Smartag'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'eu-central-1': 'smartag.eu-central-1.aliyuncs.com',
-            'cn-shanghai-finance-1': 'smartag.cn-shanghai-finance-1.aliyuncs.com',
-            'cn-shanghai': 'smartag.cn-shanghai.aliyuncs.com',
-            'cn-hongkong': 'smartag.cn-hongkong.aliyuncs.com',
-            'cn-hangzhou': 'smartag.cn-hangzhou.aliyuncs.com',
-            'ap-southeast-5': 'smartag.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-3': 'smartag.ap-southeast-3.aliyuncs.com',
-            'ap-southeast-2': 'smartag.ap-southeast-2.aliyuncs.com',
-            'ap-southeast-1': 'smartag.ap-southeast-1.aliyuncs.com',
-            'ap-northeast-1': 'smartag.ap-northeast-1.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('smartag', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -1062,15 +1054,23 @@ class Client(OpenApiClient):
 
     def attach_ccn_instance_to_cen_with_options(
         self,
-        request: main_models.AttachCcnInstanceToCenRequest,
+        tmp_req: main_models.AttachCcnInstanceToCenRequest,
         runtime: RuntimeOptions,
     ) -> main_models.AttachCcnInstanceToCenResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.AttachCcnInstanceToCenShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.region_binding_list):
+            request.region_binding_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.region_binding_list, 'RegionBindingList', 'json')
         query = {}
         if not DaraCore.is_null(request.ccn_id):
             query['CcnId'] = request.ccn_id
         if not DaraCore.is_null(request.cen_id):
             query['CenId'] = request.cen_id
+        if not DaraCore.is_null(request.cidr_allocation_mode):
+            query['CidrAllocationMode'] = request.cidr_allocation_mode
+        if not DaraCore.is_null(request.region_binding_list_shrink):
+            query['RegionBindingList'] = request.region_binding_list_shrink
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.subnet):
@@ -1096,15 +1096,23 @@ class Client(OpenApiClient):
 
     async def attach_ccn_instance_to_cen_with_options_async(
         self,
-        request: main_models.AttachCcnInstanceToCenRequest,
+        tmp_req: main_models.AttachCcnInstanceToCenRequest,
         runtime: RuntimeOptions,
     ) -> main_models.AttachCcnInstanceToCenResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.AttachCcnInstanceToCenShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.region_binding_list):
+            request.region_binding_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.region_binding_list, 'RegionBindingList', 'json')
         query = {}
         if not DaraCore.is_null(request.ccn_id):
             query['CcnId'] = request.ccn_id
         if not DaraCore.is_null(request.cen_id):
             query['CenId'] = request.cen_id
+        if not DaraCore.is_null(request.cidr_allocation_mode):
+            query['CidrAllocationMode'] = request.cidr_allocation_mode
+        if not DaraCore.is_null(request.region_binding_list_shrink):
+            query['RegionBindingList'] = request.region_binding_list_shrink
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.subnet):
@@ -10260,15 +10268,21 @@ class Client(OpenApiClient):
 
     def detach_ccn_instance_from_cen_with_options(
         self,
-        request: main_models.DetachCcnInstanceFromCenRequest,
+        tmp_req: main_models.DetachCcnInstanceFromCenRequest,
         runtime: RuntimeOptions,
     ) -> main_models.DetachCcnInstanceFromCenResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.DetachCcnInstanceFromCenShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.region_binding_list):
+            request.region_binding_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.region_binding_list, 'RegionBindingList', 'json')
         query = {}
         if not DaraCore.is_null(request.ccn_id):
             query['CcnId'] = request.ccn_id
         if not DaraCore.is_null(request.cen_id):
             query['CenId'] = request.cen_id
+        if not DaraCore.is_null(request.region_binding_list_shrink):
+            query['RegionBindingList'] = request.region_binding_list_shrink
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -10292,15 +10306,21 @@ class Client(OpenApiClient):
 
     async def detach_ccn_instance_from_cen_with_options_async(
         self,
-        request: main_models.DetachCcnInstanceFromCenRequest,
+        tmp_req: main_models.DetachCcnInstanceFromCenRequest,
         runtime: RuntimeOptions,
     ) -> main_models.DetachCcnInstanceFromCenResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.DetachCcnInstanceFromCenShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.region_binding_list):
+            request.region_binding_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.region_binding_list, 'RegionBindingList', 'json')
         query = {}
         if not DaraCore.is_null(request.ccn_id):
             query['CcnId'] = request.ccn_id
         if not DaraCore.is_null(request.cen_id):
             query['CenId'] = request.cen_id
+        if not DaraCore.is_null(request.region_binding_list_shrink):
+            query['RegionBindingList'] = request.region_binding_list_shrink
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -19555,6 +19575,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.restore_time):
+            query['RestoreTime'] = request.restore_time
         if not DaraCore.is_null(request.smart_agid):
             query['SmartAGId'] = request.smart_agid
         req = open_api_util_models.OpenApiRequest(
@@ -19597,6 +19619,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.restore_time):
+            query['RestoreTime'] = request.restore_time
         if not DaraCore.is_null(request.smart_agid):
             query['SmartAGId'] = request.smart_agid
         req = open_api_util_models.OpenApiRequest(

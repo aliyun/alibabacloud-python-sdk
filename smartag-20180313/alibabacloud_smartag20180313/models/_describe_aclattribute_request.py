@@ -19,33 +19,33 @@ class DescribeACLAttributeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the access control list (ACL) instance.
+        # The ID of the access control instance.
         # 
         # This parameter is required.
         self.acl_id = acl_id
-        # The direction of the access control rule. Valid values:
+        # The direction in which the access control rule is applied. Valid values:
         # 
-        # - **in**: inbound. Refers to traffic from external sources accessing the local branch where the Smart Access Gateway (SAG) instance is deployed.
-        # - **out**: outbound. Refers to traffic from the local branch where the SAG instance is deployed accessing external destinations.
+        # - **in**: inbound, which indicates traffic from external networks to the local branch where the Smart Access Gateway instance is deployed.
+        # - **out**: outbound, which indicates traffic from the local branch where the Smart Access Gateway instance is deployed to external networks.
         self.direction = direction
-        # The name of the ACL instance.
+        # The name of the access control instance.
         # 
-        # The name must be 2 to 100 characters in length and must start with an uppercase letter, a lowercase letter, or a Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-).
-        # > This parameter supports fuzzy search.
+        # The name must be 2 to 100 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter or Chinese character.
+        # > Fuzzy search is supported for this parameter.
         self.name = name
         # The order ID.
         self.order = order
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number in a paginated query. Default value: **1**.
+        # The page number for a paging query. Default value: **1**.
         self.page_number = page_number
-        # The number of access control rule entries to display per page in a paginated query.
+        # The number of access control rule entries to return on each page in a paging query.
         # 
         # Valid values: **1** to **50**.
         # 
         # Default value: **10**.
         self.page_size = page_size
-        # The region ID of the access control list (ACL) instance.
+        # The region ID of the access control instance.
         # 
         # This parameter is required.
         self.region_id = region_id

@@ -15,22 +15,18 @@ class CreateACLRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The type of the Smart Access Gateway instance to be associated with the access control instance. Valid values:
+        # The type of the Smart Access Gateway (SAG) instance to be associated with the access control instance. Valid values:
         # 
-        # - **acl-hardware** (default): Smart Access Gateway device instance.
+        # - **acl-hardware** (default): Smart Access Gateway hardware instance.
         # - **acl-software**: SAG app instance.
         self.acl_type = acl_type
-        # The name of the access control instance.
-        # 
-        # The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It can contain digits, underscores (_), and hyphens (-).
+        # The name of the access control instance. The name must be 2 to 128 characters in length, and must start with a letter or a Chinese character. It can contain digits, underscores (_), and hyphens (-).
         # 
         # This parameter is required.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the access control instance.
-        # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) operation to query region IDs.
+        # The region ID of the access control instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

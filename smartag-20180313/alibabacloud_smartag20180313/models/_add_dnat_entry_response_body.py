@@ -10,9 +10,9 @@ class AddDnatEntryResponseBody(DaraModel):
         dnat_entry_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the DNAT entry.
+        # The DNAT entry ID.
         self.dnat_entry_id = dnat_entry_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

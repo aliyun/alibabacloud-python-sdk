@@ -15,21 +15,19 @@ class AssociateACLRequest(DaraModel):
         resource_owner_id: int = None,
         smart_agid: str = None,
     ):
-        # The ID of ACL.
+        # The ID of the access control list.
         # 
         # This parameter is required.
         self.acl_id = acl_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the ACL is created.
-        # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) operation to query the most recent region list.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the SAG instance to be associated with the ACL.
+        # The ID of the Smart Access Gateway instance to which you want to attach the access control list.
         # 
         # This parameter is required.
         self.smart_agid = smart_agid

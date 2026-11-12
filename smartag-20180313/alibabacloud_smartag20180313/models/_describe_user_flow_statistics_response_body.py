@@ -13,7 +13,7 @@ class DescribeUserFlowStatisticsResponseBody(DaraModel):
         request_id: str = None,
         sag_statistics: main_models.DescribeUserFlowStatisticsResponseBodySagStatistics = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         self.sag_statistics = sag_statistics
 

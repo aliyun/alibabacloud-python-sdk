@@ -21,25 +21,25 @@ class DescribeCloudConnectNetworksRequest(DaraModel):
         resource_owner_id: int = None,
         tag: List[main_models.DescribeCloudConnectNetworksRequestTag] = None,
     ):
-        # The ID of the CCN.
+        # The instance ID of the Cloud Connect Network (CCN).
         self.ccn_id = ccn_id
-        # The name of the CCN.
+        # The name of the Cloud Connect Network (CCN) instance.
         # 
-        # The name must be 2 to 100 characters long, start with a letter or a Chinese character, and can contain digits, underscores (_), periods (.), and hyphens (-).
+        # The name must be 2 to 100 characters in length, and can contain digits, underscores (_), periods (.), and hyphens (-). It must start with a letter or a Chinese character.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: **10**. Maximum value: **50**.
+        # The number of entries to return on each page for paging in a paged query. Default value: **10**. Maximum value: **50**.
         self.page_size = page_size
-        # The ID of the region where the CCN is located.
+        # The ID of the region to which the Cloud Connect Network (CCN) instance belongs.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tags to filter CCN instances.
+        # The labels used to query Cloud Connect Network (CCN) instances.
         self.tag = tag
 
     def validate(self):

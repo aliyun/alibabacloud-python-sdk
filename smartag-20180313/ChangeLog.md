@@ -1,3 +1,6 @@
+2026-11-12 Version: 2.1.4
+- Generated python 2018-03-13 for Smartag.
+
 2026-07-31 Version: 2.1.1
 - Generated python 2018-03-13 for Smartag.
 

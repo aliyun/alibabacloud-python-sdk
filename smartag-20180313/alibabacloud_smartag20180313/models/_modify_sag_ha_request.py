@@ -18,11 +18,11 @@ class ModifySagHaRequest(DaraModel):
         smart_agsn: str = None,
         virtual_ip: str = None,
     ):
-        # The HA mode. Valid values:
+        # The HA pattern. Valid values:
         # 
-        # *   **NONE**: disables HA.
-        # *   **STATIC**: enables static HA.
-        # *   **DYNAMIC**: enables dynamic HA.
+        # - **NONE**: The HA feature is disabled.
+        # - **STATIC**: static pattern
+        # - **DYNAMIC**: dynamic schema
         # 
         # This parameter is required.
         self.mode = mode
@@ -30,25 +30,25 @@ class ModifySagHaRequest(DaraModel):
         self.owner_id = owner_id
         # The port name.
         # 
-        # >  If Mode is set to STATIC, you must specify a port name.
+        # > If the HA mode is set to STATIC, you must specify a port name.
         self.port_name = port_name
-        # The region ID of the SAG instance.
+        # The region ID of the Smart Access Gateway instance.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The SAG instance ID.
+        # The instance ID of the Smart Access Gateway.
         # 
         # This parameter is required.
         self.smart_agid = smart_agid
-        # The serial number of the SAG device associated with the SAG instance.
+        # The serial number of the associated Smart Access Gateway device.
         # 
         # This parameter is required.
         self.smart_agsn = smart_agsn
         # The virtual IP address.
         # 
-        # >  If Mode is set to STATIC, you must specify a virtual IP address.
+        # > If the HA mode is set to STATIC, you must specify a virtual IP address.
         self.virtual_ip = virtual_ip
 
     def validate(self):

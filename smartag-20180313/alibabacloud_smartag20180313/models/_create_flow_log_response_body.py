@@ -11,11 +11,11 @@ class CreateFlowLogResponseBody(DaraModel):
         request_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the flow log.
+        # The ID of the flow log instance.
         self.flow_log_id = flow_log_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the resource group to which the flow log belongs.
+        # The ID of the resource group to which the flow log instance belongs.
         self.resource_group_id = resource_group_id
 
     def validate(self):

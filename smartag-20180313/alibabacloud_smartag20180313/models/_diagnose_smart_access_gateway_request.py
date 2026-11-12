@@ -17,15 +17,15 @@ class DiagnoseSmartAccessGatewayRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the SAG instance is deployed.
+        # The region ID of the Smart Access Gateway instance.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the SAG instance.
+        # The Smart Access Gateway instance ID.
         # 
         # This parameter is required.
         self.smart_agid = smart_agid
-        # The serial number (SN) of the SAG device.
+        # The serial number of the Smart Access Gateway device.
         # 
         # This parameter is required.
         self.smart_agsn = smart_agsn

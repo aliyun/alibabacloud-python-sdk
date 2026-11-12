@@ -20,13 +20,13 @@ class ViewSmartAccessGatewayDnsForwardsResponseBody(DaraModel):
     ):
         # The response code.
         self.code = code
-        # The total number of entries returned.
+        # The total number of entries.
         self.count = count
-        # A DNS forwarding list.
+        # The list of DNS forwarding instances.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The response message.
+        # The returned message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -111,20 +111,18 @@ class ViewSmartAccessGatewayDnsForwardsResponseBodyData(DaraModel):
     ):
         # The domain name.
         self.domain = domain
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
         # The primary DNS server.
         self.master_ip = master_ip
         # The forwarding mode.
-        # 
-        # > 
-        # *   This parameter is not in use. Ignore this parameter.
+        # > - Invalid field. Ignore this field.
         self.mode = mode
-        # The number of the egress port.
+        # The outbound interface index.
         self.outbound_port_index = outbound_port_index
-        # The egress port.
+        # The outbound interface.
         self.outbound_port_name = outbound_port_name
-        # The type of the egress port.
+        # The outbound interface type.
         self.outbound_port_type = outbound_port_type
         # The secondary DNS server.
         self.slave_ip = slave_ip

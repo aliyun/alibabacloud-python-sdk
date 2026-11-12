@@ -17,13 +17,13 @@ class DescribeFlowLogsResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.flow_logs = flow_logs
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries returned per page in a paging query.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of flow logs.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

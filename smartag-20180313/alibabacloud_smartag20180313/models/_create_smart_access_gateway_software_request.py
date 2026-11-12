@@ -18,40 +18,38 @@ class CreateSmartAccessGatewaySoftwareRequest(DaraModel):
         resource_owner_id: int = None,
         user_count: int = None,
     ):
-        # Specifies whether to automatically complete the payment of the order. Valid values:
+        # Specifies whether to enable automatic payment for the bills of the Smart Access Gateway app instance. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false** (default): no
+        # - **true**: yes.
+        # - **false** (default): no.
         # 
-        # If you set the parameter to false, go to Billing Management to complete the payment after you call this operation. The instance is created only after you complete the payment.
+        # If you set this parameter to false, you must go to the Orders page in the console to complete the payment after you invoke this operation. Otherwise, the instance cannot be created.
         # 
         # This parameter is required.
         self.auto_pay = auto_pay
-        # The billing method of the SAG app instance. Set the value to **PREPAY**. This value indicates that the SAG app instance is a subscription resource.
+        # The billing method of the Smart Access Gateway app instance. Valid value: **PREPAY** (upfront). This value serves as an identity indicating that the Smart Access Gateway app instance is a resource that requires upfront payment before use.
         # 
         # This parameter is required.
         self.charge_type = charge_type
-        # The size of the free data plan that is allocated to each client account per month. Unit: GB. Valid value: **5**.
+        # The monthly data plan provided for each client account. Unit: GB. Valid value: **5**.
         # 
-        # >  This value specifies that a free data plan of 5 GB is allocated to each client account per month.
+        # > Currently, only a free monthly data plan of 5 GB is supported for each client account.
         # 
         # This parameter is required.
         self.data_plan = data_plan
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The subscription duration of the SAG app instance. Unit: months.
-        # 
-        # Valid values: **1** to **9**, **12**, **24**, and **36**.
+        # The purchase duration of the Smart Access Gateway app instance. Unit: months. Valid values: **1** to **9**, **12**, **24**, and **36**.
         # 
         # This parameter is required.
         self.period = period
-        # The ID of the region where you want to create the SAG app instance.
+        # The region ID of the Smart Access Gateway app instance.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The maximum number of client accounts that can be created on the SAG app instance.
+        # The number of client accounts for the Smart Access Gateway app instance.
         # 
         # This parameter is required.
         self.user_count = user_count

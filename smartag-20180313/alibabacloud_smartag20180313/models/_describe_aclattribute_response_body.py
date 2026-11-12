@@ -17,13 +17,13 @@ class DescribeACLAttributeResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.acrs = acrs
-        # The page number in a paginated query.
+        # The page number for a paging query.
         self.page_number = page_number
-        # The number of access control rule entries displayed per page in a paginated query.
+        # The number of access control rule entries returned on each page in a paging query.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of access control rule entries in the current ACL instance.
+        # The total number of access control rule entries in the access control instance.
         self.total_count = total_count
 
     def validate(self):

@@ -15,31 +15,28 @@ class DescribeSagWan4GResponseBody(DaraModel):
         strength: str = None,
         traffic_state: str = None,
     ):
-        # The IP address of the 4G SIM card.
+        # The IP address of the 4G NIC.
         self.ip = ip
-        # The MAC address of the 4G SIM card.
+        # The MAC address of the 4G NIC.
         self.mac = mac
-        # The priority of the 4G SIM card. The default value is **99**, which indicates the lowest priority and cannot be modified.
+        # The priority of the 4G NIC. The default value is **99**, which indicates the lowest priority. The priority cannot be modified.
         self.priority = priority
         # The request ID.
         self.request_id = request_id
-        # The status of the 4G SIM card. Valid value:
-        # 
-        # *   **Normal**: The 4G SIM card is available.
-        # *   **Abnormal**: The 4G SIM card encountered an error.
-        # *   **Unavailable**: No 4G SIM card is inserted.
+        # The status of the 4G NIC. Valid values:
+        # - **Normal**: The status is normal.
+        # - **Abnormal**: The status is abnormal.
+        # - **Unavailable**: No 4G NIC is available.
         self.status = status
-        # The signal strength of the 4G network. Valid values:
-        # 
-        # *   **High**: strong signals.
-        # *   **Middle**: medium-strength signals.
-        # *   **Low**: weak signals.
-        # *   **Unavailable**: no signal.
+        # The 4G signal strength. Valid values:
+        # - **High**: Strong.
+        # - **Middle**: Medium.
+        # - **Low**: Weak.
+        # - **Unavailable**: No signal.
         self.strength = strength
-        # The network status of the 4G SIM card. Valid values:
-        # 
-        # *   **active**: The 4G SIM card is used to establish the active connection. Network traffic is transmitted over the 4G SIM card first.
-        # *   **standby**: The 4G SIM card is used to establish a standby connection. Network traffic is not transmitted over the 4G SIM card unless the active connection fails.
+        # The traffic status of the 4G NIC. Valid values:
+        # - **active**: The 4G NIC acts as the active link, and current traffic is transmitted through this 4G NIC.
+        # - **standby**: The 4G NIC acts as the standby link and does not forward traffic. If the active link fails, traffic is transmitted through this 4G NIC.
         self.traffic_state = traffic_state
 
     def validate(self):

@@ -17,19 +17,19 @@ class DescribeSagRemoteAccessResponseBody(DaraModel):
         smart_agid: str = None,
         success: bool = None,
     ):
-        # The error code. The 200 error code indicates that the query task is successful.
+        # The error code. 200 indicates that the query task succeeded.
         self.code = code
-        # The error message. The Successful error message indicates that the query task is successful.
+        # The error message. Successful indicates that the query task succeeded.
         self.message = message
         self.remote_accesses = remote_accesses
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the SAG instance.
+        # The Smart Access Gateway instance ID.
         self.smart_agid = smart_agid
-        # Indicates whether the query task is successful. Valid values:
+        # Indicates whether the query task succeeded.
         # 
-        # *   **true**: The query task is successful.
-        # *   **false**: The query task failed.
+        # - **true**: The query task succeeded.
+        # - **false**: The query task failed.
         self.success = success
 
     def validate(self):

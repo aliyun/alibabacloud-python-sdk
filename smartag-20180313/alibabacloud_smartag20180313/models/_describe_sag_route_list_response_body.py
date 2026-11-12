@@ -13,9 +13,9 @@ class DescribeSagRouteListResponseBody(DaraModel):
         request_id: str = None,
         routes: List[main_models.DescribeSagRouteListResponseBodyRoutes] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The routes.
+        # The list of routes.
         self.routes = routes
 
     def validate(self):
@@ -62,25 +62,20 @@ class DescribeSagRouteListResponseBodyRoutes(DaraModel):
         port_name: str = None,
         route_protocol: str = None,
     ):
-        # The list of CIDR blocks that overlap with each other.
+        # The list of conflicting CIDR blocks.
         self.conflict_cidrs = conflict_cidrs
-        # The cost of the route.
-        # 
-        # The number on the left side of the forward slash (/) indicates the administrative distance (AD) of the routing protocol.
-        # 
-        # The number on the right side of the forward slash (/) indicates the metric value.
+        # The routing cost value. The number to the left of the forward slash (/) indicates the administrative distance (AD) of the routing protocol. The number to the right of the forward slash (/) indicates the metric.
         self.cost = cost
         # The destination CIDR block.
         self.destination_cidr = destination_cidr
         # The next hop.
         self.next_hop = next_hop
-        # The name of the port. If the port name is -1, data is transferred through a VPN tunnel to Alibaba Cloud.
+        # The port name. A value of -1 indicates that data traffic enters Alibaba Cloud through a VPN connection.
         self.port_name = port_name
-        # The routing protocol. Valid values:
-        # 
-        # *   **STATIC**: a static routing protocol.
-        # *   **OSPF**: the Open Shortest Path First (OSPF) dynamic routing protocol.
-        # *   **BGP**: the Border Gateway Protocol (BGP) dynamic routing protocol.
+        # The routing protocol type. Valid values:
+        # - **STATIC**: Static routing protocol.
+        # - **OSPF**: OSPF dynamic routing protocol.
+        # - **BGP**: BGP dynamic routing protocol.
         self.route_protocol = route_protocol
 
     def validate(self):

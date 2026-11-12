@@ -19,7 +19,7 @@ class DeleteSmartAccessGatewayDnsForwardResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The returned message.
         self.message = message
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success

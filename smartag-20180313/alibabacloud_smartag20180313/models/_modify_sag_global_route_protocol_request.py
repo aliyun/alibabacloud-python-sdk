@@ -18,7 +18,7 @@ class ModifySagGlobalRouteProtocolRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the SAG instance.
+        # The region ID of the Smart Access Gateway instance.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -26,17 +26,17 @@ class ModifySagGlobalRouteProtocolRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The routing protocol. Valid values:
         # 
-        # *   **STATIC**: static routing protocol
-        # *   **OSPF**: Open Shortest Path First protocol (OSPF)
-        # *   **BGP**: Border Gateway Protocol (BGP)
+        # - **STATIC**: static routing protocol
+        # - **OSPF**: OSPF dynamic routing protocol
+        # - **BGP**: BGP dynamic routing protocol
         # 
         # This parameter is required.
         self.route_protocol = route_protocol
-        # The ID of the SAG instance.
+        # The ID of the Smart Access Gateway instance.
         # 
         # This parameter is required.
         self.smart_agid = smart_agid
-        # The serial number of the SAG device that is associated with the SAG instance.
+        # The serial number of the associated Smart Access Gateway device.
         # 
         # This parameter is required.
         self.smart_agsn = smart_agsn

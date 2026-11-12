@@ -20,21 +20,21 @@ class DescribeUserFlowStatisticsRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region where the SAG APP instance is deployed.
+        # The region ID of the Smart Access Gateway app instance.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the SAG APP instance.
+        # The instance ID of the Smart Access Gateway app instance.
         # 
         # This parameter is required.
         self.smart_agid = smart_agid
-        # The month during which the data transfer statistics are collected.
+        # The statistical date in the YYYYMM format.
         # 
-        # If you do not specify a month, the current month is queried.
+        # > If this parameter is not specified, the current month is used by default.
         self.statistics_date = statistics_date
-        # The list of usernames of client accounts. Maximum value of N: 50.
+        # The list of usernames. The list can contain up to 50 usernames.
         # 
         # This parameter is required.
         self.user_names = user_names

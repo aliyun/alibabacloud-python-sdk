@@ -17,15 +17,15 @@ class DescribeSagRemoteAccessRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the SAG instance is deployed.
+        # The region ID of the Smart Access Gateway instance.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The serial number of the SAG device.
+        # The serial number of the Smart Access Gateway device.
         self.serial_number = serial_number
-        # The ID of the SAG instance.
+        # The Smart Access Gateway instance ID.
         # 
         # This parameter is required.
         self.smart_agid = smart_agid

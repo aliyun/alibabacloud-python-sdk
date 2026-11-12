@@ -13,11 +13,11 @@ class DescribeClientUserDNSResponseBody(DaraModel):
         recovered_dns: List[str] = None,
         request_id: str = None,
     ):
-        # The active and standby DNS servers that the SAG app instance uses when it connects to private networks.
+        # The primary and secondary DNS configurations used when the client of the Smart Access Gateway app instance connects to a private network.
         self.app_dns = app_dns
-        # The active and standby DNS servers that the SAG app instance uses when it disconnects from private networks.
+        # The primary and secondary DNS configurations used when the client of the Smart Access Gateway app instance disconnects from a private network.
         self.recovered_dns = recovered_dns
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

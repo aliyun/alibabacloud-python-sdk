@@ -16,30 +16,30 @@ class DissociateSmartAGFromApplicationBandwidthPackageRequest(DaraModel):
         smart_agid: str = None,
         smart_agid_list: List[str] = None,
     ):
-        # The ID of the bandwidth plan for application acceleration.
+        # The instance ID of the bandwidth plan for application acceleration.
         # 
         # This parameter is required.
         self.application_bandwidth_package_id = application_bandwidth_package_id
-        # The client token that is used to ensure the idempotence of the request.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, and you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters.
-        # 
-        # >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId for each API request may be different.
+        # > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the client token. The RequestId of each API request may be different.
         self.client_token = client_token
-        # Specifies whether to precheck the request. Check items include permissions and the status of the specified cloud resources. Valid values:
+        # Specifies whether to perform a dry run on the disassociation request. The dry run includes checks on permissions and instance status. Valid values:
         # 
-        # *   **false** (default): sends the request. After the request passes the check, the SAG instance is disassociated from the bandwidth plan for application acceleration.
-        # *   **true**: prechecks the request but does not disassociate the SAG instance from the bandwidth plan for application acceleration. If you use this value, the system checks the required parameters and the request syntax. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+        # - **false** (default): Sends a normal request. If the request passes the check, the bandwidth plan for application acceleration is disassociated from the Smart Access Gateway instance.
+        # - **true**: Sends a dry run request. Only the check is performed, and the bandwidth plan for application acceleration is not disassociated from the Smart Access Gateway instance. Check items include whether required parameters are specified and the request format. If the check fails, the corresponding error is returned. If the check passes, the `DryRunOperation` error code is returned.
         self.dry_run = dry_run
         # The region ID of the bandwidth plan for application acceleration.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the SAG instance.
+        # The instance ID of the Smart Access Gateway.
         self.smart_agid = smart_agid
-        # The list of the SAG instance id.
+        # The list of Smart Access Gateway instance IDs.
+        # 
+        # You can enter up to 100 Smart Access Gateway instance IDs at a time.
         self.smart_agid_list = smart_agid_list
 
     def validate(self):

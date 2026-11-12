@@ -16,15 +16,15 @@ class ListDpiConfigErrorResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # A list of DPI configuration errors.
+        # The list of DPI configuration exceptions.
         self.dpi_config_error = dpi_config_error
-        # The maximum number of configuration errors to return on each page.
+        # The maximum number of entries allowed per page in a paged query.
         self.max_results = max_results
-        # The token for the next page of results.
+        # The token used to start the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of DPI configuration errors.
+        # The total number of DPI configuration exception entries.
         self.total = total
 
     def validate(self):
@@ -87,17 +87,17 @@ class ListDpiConfigErrorResponseBodyDpiConfigError(DaraModel):
         sn: str = None,
         smart_agid: str = None,
     ):
-        # The type of the configuration error.
+        # The type of the configuration exception. Valid values:
         # 
-        # - DeviceNotSupported: The Smart Access Gateway device does not support the DPI feature.
-        # - VersionNotSupported: The DPI version of the Smart Access Gateway device is too old.
-        # - **NotEnable**: The DPI feature is disabled for the Smart Access Gateway device.
+        # - **DeviceNotSupported**: The SAG device does not support the DPI feature.
+        # - **VersionNotSupported**: The DPI version running Smart Access Gateway device is too low.
+        # - **NotEnable**: The DPI feature is not enabled Smart Access Gateway device.
         self.error_type = error_type
-        # A list of rule configuration errors.
+        # The list of DPI configuration exceptions.
         self.rule_config_error_list = rule_config_error_list
         # The serial number of the Smart Access Gateway device.
         self.sn = sn
-        # The ID of the Smart Access Gateway instance.
+        # The instance ID of the Smart Access Gateway.
         self.smart_agid = smart_agid
 
     def validate(self):
@@ -153,14 +153,14 @@ class ListDpiConfigErrorResponseBodyDpiConfigErrorRuleConfigErrorList(DaraModel)
         dpi_signature_ids: List[str] = None,
         rule_id: str = None,
     ):
-        # A list of IDs of application groups that have configuration errors.
+        # The IDs of the application groups that have configuration exceptions.
         self.dpi_group_ids = dpi_group_ids
-        # A list of IDs of applications that have configuration errors.
+        # The IDs of the applications that have configuration exceptions.
         self.dpi_signature_ids = dpi_signature_ids
-        # The ID of the rule that is associated with the application that has a configuration error.
+        # The instance IDs of the rules associated with the applications that have configuration exceptions.
         # 
-        # - If you query DPI configuration errors for Resource Access Management, this parameter indicates the ID of the Resource Access Management rule instance that has a configuration error.
-        # - If you query DPI configuration errors for a QoS policy, this parameter indicates the ID of the quintuple rule instance that has a configuration error.
+        # - If you are querying the access control DPI configuration exception information, the instance ID of the access control rule instance that has a configuration exception is displayed.
+        # - If you are querying the QoS policy DPI configuration exception information, the instance ID of the 5-tuple-based quintuple rules instance that has a configuration exception is displayed.
         self.rule_id = rule_id
 
     def validate(self):

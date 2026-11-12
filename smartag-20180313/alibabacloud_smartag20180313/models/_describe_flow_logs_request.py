@@ -20,34 +20,37 @@ class DescribeFlowLogsRequest(DaraModel):
         resource_owner_id: int = None,
         status: str = None,
     ):
-        # The description of the flow log.
+        # The description of the flow log instance.
         self.description = description
-        # The ID of a flow log.
+        # The ID of the flow log instance.
         self.flow_log_id = flow_log_id
-        # The name of the flow log.
+        # The name of the flow log instance.
         self.flow_log_name = flow_log_name
-        # The location where the flow log is stored. Valid values:
+        # The output type of the flow log. Valid values:
         # 
-        # *   **sls**: The flow log is stored in Log Service.
-        # *   **netflow**: The flow log is stored on a NetFlow collector.
-        # *   **all**: The flow log is stored both in Log Service and on a NetFlow collector.
+        # - **sls**: Flow logs are stored in Simple Log Service.
+        # 
+        # - **netflow**: Flow logs are stored on the NetFlow server that you configured.
+        # 
+        # - **all**: Flow logs are stored in both Simple Log Service and the NetFlow server that you configured.
         self.output_type = output_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: **10**.
+        # The number of entries to return on each page in a paging query. Default value: **10**.
         self.page_size = page_size
-        # The ID of the region that the flow logs are stored.
+        # The region ID of the flow log instance.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The status of the flow log. Valid values:
+        # The status of the flow log instance. Valid values:
         # 
-        # *   **Active**: The flow log is enabled.
-        # *   **Inactive**: The flow log is disabled.
+        # - **Active**: Started.
+        # 
+        # - **Inactive**: Not started.
         self.status = status
 
     def validate(self):

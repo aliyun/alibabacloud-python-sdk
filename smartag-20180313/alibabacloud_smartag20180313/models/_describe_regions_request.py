@@ -13,13 +13,13 @@ class DescribeRegionsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The language of the response. Valid values:
+        # The language of the response. Valid values: 
         # 
-        # - **zh-CN** (default): Chinese
+        # - **zh-CN** (default): Chinese.
+        #   
+        # - **en-US**: English.
         # 
-        # - **en-US**: English
-        # 
-        # - **ja**: Japanese
+        # - **ja**: Japanese.
         self.accept_language = accept_language
         self.owner_account = owner_account
         self.owner_id = owner_id

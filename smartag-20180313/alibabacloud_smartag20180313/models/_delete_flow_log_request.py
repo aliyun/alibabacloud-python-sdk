@@ -14,13 +14,13 @@ class DeleteFlowLogRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The instance ID of the flow log.
+        # The flow log instance ID.
         # 
         # This parameter is required.
         self.flow_log_id = flow_log_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region to which the flow log belongs.
+        # The region ID of the flow log.
         # 
         # This parameter is required.
         self.region_id = region_id

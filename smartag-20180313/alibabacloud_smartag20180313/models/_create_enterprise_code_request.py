@@ -13,18 +13,18 @@ class CreateEnterpriseCodeRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
+        # You can generate a parameter value from your client and ensure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
         # The enterprise code.
         # 
-        # The enterprise code must be 5 characters in length and contain both letters and digits. The letters can be uppercase or lowercase. The enterprise code must be globally unique and cannot be the same as that of another enterprise.
+        # The enterprise code must be 5 characters in length and contain both letters and digits. Letters can be uppercase or lowercase. The enterprise code must be globally unique and cannot be the same as other enterprise codes.
         # 
         # This parameter is required.
         self.enterprise_code = enterprise_code
         # The region ID.
         # 
-        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) to query the regions supported by Smart Access Gateway and the corresponding region IDs.
+        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) to query the regions supported by Smart Access Gateway and their corresponding region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
