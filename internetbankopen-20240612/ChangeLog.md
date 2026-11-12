@@ -1,3 +1,6 @@
+2026-11-12 Version: 1.1.1
+- Generated python 2024-06-12 for InternetBankOpen.
+
 2026-11-12 Version: 1.1.0
 - Support API GetAiReport.
 - Support API ListProductReports.

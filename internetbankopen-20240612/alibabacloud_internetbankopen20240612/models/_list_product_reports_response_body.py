@@ -13,7 +13,9 @@ class ListProductReportsResponseBody(DaraModel):
         data: main_models.ListProductReportsResponseBodyData = None,
         request_id: str = None,
     ):
+        # The query result of the periodic report list, which contains the Reports array. The array is empty if no available reports exist.
         self.data = data
+        # The unique identity of the request, which is used for Tracing Analysis and troubleshooting. Provide this ID when troubleshooting exceptions.
         self.request_id = request_id
 
     def validate(self):
@@ -49,6 +51,7 @@ class ListProductReportsResponseBodyData(DaraModel):
         self,
         reports: List[main_models.ListProductReportsResponseBodyDataReports] = None,
     ):
+        # The available report records sorted by period from newest to oldest. By default, up to ten records are returned. If LatestOnly is set to true, at most one record is returned. The array is empty if no reports exist. A single natural week may have multiple report records. Use ReportId to distinguish them. The list does not contain download URLs. The actual download status is subject to the result of GetAiReport.
         self.reports = reports
 
     def validate(self):
@@ -87,9 +90,13 @@ class ListProductReportsResponseBodyDataReports(DaraModel):
         product_code: str = None,
         report_id: str = None,
     ):
+        # The end time of the natural week to which the report belongs, exclusive. The natural week ends at 00:00:00 on the following Monday in UTC+8 (Asia/Shanghai). This field is transformed to UTC RFC 3339 format and ends with Z. The example corresponds to 00:00:00 on Monday, November 9, 2026, UTC+8.
         self.period_end = period_end
+        # The start time of the natural week to which the report belongs, inclusive. The natural week is calculated based on UTC+8 (Asia/Shanghai) and starts at 00:00:00 on Monday. This field is transformed to UTC RFC 3339 format and ends with Z. The example corresponds to 00:00:00 on Monday, November 2, 2026, UTC+8.
         self.period_start = period_start
+        # The product code of the data product to which the report belongs. This is consistent with the ProductCode of the current request.
         self.product_code = product_code
+        # The unique ID of the periodic report. Pass this value as the reportId parameter to GetAiReport to query the current status of the report and obtain the download URL when it is available.
         self.report_id = report_id
 
     def validate(self):
