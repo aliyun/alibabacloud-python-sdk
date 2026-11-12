@@ -2,6 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
+from alibabacloud_sandbox20260820 import models as main_models
 from darabonba.model import DaraModel
 
 class E2BSnapshot(DaraModel):
@@ -13,6 +16,7 @@ class E2BSnapshot(DaraModel):
         memory_mb: int = None,
         name: str = None,
         resource_group_id: str = None,
+        resource_tags: List[main_models.E2BSnapshotResourceTags] = None,
         snapshot_id: str = None,
         source_sandbox_id: str = None,
         status: str = None,
@@ -33,6 +37,8 @@ class E2BSnapshot(DaraModel):
         self.name = name
         # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The resource tags.
+        self.resource_tags = resource_tags
         # The snapshot ID.
         self.snapshot_id = snapshot_id
         # The source sandbox ID.
@@ -49,7 +55,10 @@ class E2BSnapshot(DaraModel):
         self.user_id = user_id
 
     def validate(self):
-        pass
+        if self.resource_tags:
+            for v1 in self.resource_tags:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -73,6 +82,11 @@ class E2BSnapshot(DaraModel):
 
         if self.resource_group_id is not None:
             result['resourceGroupID'] = self.resource_group_id
+
+        if self.resource_tags is not None:
+            result['resourceTags'] = []
+            for k1 in self.resource_tags:
+                result['resourceTags'].append(k1.to_map() if k1 else None)
 
         if self.snapshot_id is not None:
             result['snapshotID'] = self.snapshot_id
@@ -117,6 +131,12 @@ class E2BSnapshot(DaraModel):
         if m.get('resourceGroupID') is not None:
             self.resource_group_id = m.get('resourceGroupID')
 
+        if m.get('resourceTags') is not None:
+            self.resource_tags = []
+            for k1 in m.get('resourceTags'):
+                temp_model = main_models.E2BSnapshotResourceTags()
+                self.resource_tags.append(temp_model.from_map(k1))
+
         if m.get('snapshotID') is not None:
             self.snapshot_id = m.get('snapshotID')
 
@@ -137,6 +157,43 @@ class E2BSnapshot(DaraModel):
 
         if m.get('userID') is not None:
             self.user_id = m.get('userID')
+
+        return self
+
+class E2BSnapshotResourceTags(DaraModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        # The tag key.
+        self.tag_key = tag_key
+        # The tag value.
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.tag_key is not None:
+            result['tagKey'] = self.tag_key
+
+        if self.tag_value is not None:
+            result['tagValue'] = self.tag_value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tagKey') is not None:
+            self.tag_key = m.get('tagKey')
+
+        if m.get('tagValue') is not None:
+            self.tag_value = m.get('tagValue')
 
         return self
 

@@ -1681,16 +1681,22 @@ class Client(OpenApiClient):
 
     def list_templates_with_options(
         self,
-        request: main_models.ListTemplatesRequest,
+        tmp_req: main_models.ListTemplatesRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListTemplatesResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ListTemplatesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.resource_tags):
+            request.resource_tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.resource_tags, 'resourceTags', 'json')
         query = {}
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.resource_tags_shrink):
+            query['resourceTags'] = request.resource_tags_shrink
         if not DaraCore.is_null(request.team_id):
             query['teamID'] = request.team_id
         req = open_api_util_models.OpenApiRequest(
@@ -1715,16 +1721,22 @@ class Client(OpenApiClient):
 
     async def list_templates_with_options_async(
         self,
-        request: main_models.ListTemplatesRequest,
+        tmp_req: main_models.ListTemplatesRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListTemplatesResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ListTemplatesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.resource_tags):
+            request.resource_tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.resource_tags, 'resourceTags', 'json')
         query = {}
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.resource_tags_shrink):
+            query['resourceTags'] = request.resource_tags_shrink
         if not DaraCore.is_null(request.team_id):
             query['teamID'] = request.team_id
         req = open_api_util_models.OpenApiRequest(

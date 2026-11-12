@@ -17,9 +17,9 @@ class ListTemplatesResponseBody(DaraModel):
         request_id: str = None,
         templates: List[main_models.PublicTemplate] = None,
     ):
-        # The error code. The value 200 indicates success.
+        # The error code. The value is 200 if the request is successful.
         self.code = code
-        # The maximum number of entries returned per page in the current response.
+        # The maximum number of entries per page used in this response.
         self.max_results = max_results
         # The response message.
         self.message = message

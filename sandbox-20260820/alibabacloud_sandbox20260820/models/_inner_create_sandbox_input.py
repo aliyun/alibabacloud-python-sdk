@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
+from typing import Dict, List
 
 from alibabacloud_sandbox20260820 import models as main_models
 from darabonba.model import DaraModel
@@ -16,6 +16,7 @@ class InnerCreateSandboxInput(DaraModel):
         env_vars: Dict[str, str] = None,
         metadata: Dict[str, str] = None,
         network: main_models.E2BNetwork = None,
+        resource_tags: List[main_models.InnerCreateSandboxInputResourceTags] = None,
         runtime: main_models.InnerSandboxRuntimeConfig = None,
         secure: bool = None,
         snapshot_id: str = None,
@@ -37,6 +38,8 @@ class InnerCreateSandboxInput(DaraModel):
         self.metadata = metadata
         # The network configuration.
         self.network = network
+        # The resource tags.
+        self.resource_tags = resource_tags
         # The runtime configuration.
         self.runtime = runtime
         # Specifies whether authentication is required to access the sandbox envd.
@@ -49,7 +52,7 @@ class InnerCreateSandboxInput(DaraModel):
         self.team_id = team_id
         # The unique identifier of the template.
         self.template_id = template_id
-        # The timeout period, in seconds.
+        # The timeout period in seconds.
         self.timeout = timeout
         # The volume mount configuration.
         self.volume_mounts = volume_mounts
@@ -57,6 +60,10 @@ class InnerCreateSandboxInput(DaraModel):
     def validate(self):
         if self.network:
             self.network.validate()
+        if self.resource_tags:
+            for v1 in self.resource_tags:
+                 if v1:
+                    v1.validate()
         if self.runtime:
             self.runtime.validate()
         if self.volume_mounts:
@@ -84,6 +91,11 @@ class InnerCreateSandboxInput(DaraModel):
 
         if self.network is not None:
             result['network'] = self.network.to_map()
+
+        if self.resource_tags is not None:
+            result['resourceTags'] = []
+            for k1 in self.resource_tags:
+                result['resourceTags'].append(k1.to_map() if k1 else None)
 
         if self.runtime is not None:
             result['runtime'] = self.runtime.to_map()
@@ -132,6 +144,12 @@ class InnerCreateSandboxInput(DaraModel):
             temp_model = main_models.E2BNetwork()
             self.network = temp_model.from_map(m.get('network'))
 
+        if m.get('resourceTags') is not None:
+            self.resource_tags = []
+            for k1 in m.get('resourceTags'):
+                temp_model = main_models.InnerCreateSandboxInputResourceTags()
+                self.resource_tags.append(temp_model.from_map(k1))
+
         if m.get('runtime') is not None:
             temp_model = main_models.InnerSandboxRuntimeConfig()
             self.runtime = temp_model.from_map(m.get('runtime'))
@@ -157,6 +175,43 @@ class InnerCreateSandboxInput(DaraModel):
         if m.get('volumeMounts') is not None:
             temp_model = main_models.InnerCreateSandboxVolumeMounts()
             self.volume_mounts = temp_model.from_map(m.get('volumeMounts'))
+
+        return self
+
+class InnerCreateSandboxInputResourceTags(DaraModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key.
+        self.key = key
+        # The tag value.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key is not None:
+            result['key'] = self.key
+
+        if self.value is not None:
+            result['value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+
+        if m.get('value') is not None:
+            self.value = m.get('value')
 
         return self
 

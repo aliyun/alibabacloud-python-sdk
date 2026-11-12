@@ -16,13 +16,13 @@ class DescribeQuotaResponseBody(DaraModel):
     ):
         # The response code. A value of 200 indicates success.
         self.code = code
-        # The response message. The value is success for a successful request.
+        # The response message. A value of success indicates success.
         self.message = message
         # The quota configuration information.
         self.quota = quota
         # The request ID.
         self.request_id = request_id
-        # Team 当前配额用量。用量不可用时省略；成功查询且无占用时返回三项零值。
+        # The current quota usage of the team.
         self.usage = usage
 
     def validate(self):

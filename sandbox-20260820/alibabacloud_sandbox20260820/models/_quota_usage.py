@@ -11,11 +11,11 @@ class QuotaUsage(DaraModel):
         instance_count: int = None,
         memory_gb: float = None,
     ):
-        # 已占用的 CPU 配额，单位为 vCPU，不是 CPU 使用率。
+        # The consumed CPU quota in vCPUs, not the CPU utilization.
         self.cpu_cores = cpu_cores
-        # 尚未释放的实例授权数量。
+        # The number of unreleased instance authorizations.
         self.instance_count = instance_count
-        # 已占用的内存配额，单位为 GB，不是进程实际内存。
+        # The consumed memory quota in GB, not the actual memory used by processes.
         self.memory_gb = memory_gb
 
     def validate(self):

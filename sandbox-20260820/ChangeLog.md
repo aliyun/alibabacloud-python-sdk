@@ -1,3 +1,7 @@
+2026-11-12 Version: 1.2.5
+- Update API ListTemplates: add request parameters resourceTags.
+
+
 2026-11-11 Version: 1.2.4
 - Generated python 2026-08-20 for Sandbox.
 

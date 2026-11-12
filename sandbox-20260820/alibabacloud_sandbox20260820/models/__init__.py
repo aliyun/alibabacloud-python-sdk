@@ -148,6 +148,7 @@ from ._list_template_cache_request import ListTemplateCacheRequest
 from ._list_template_cache_response_body import ListTemplateCacheResponseBody
 from ._list_template_cache_response import ListTemplateCacheResponse
 from ._list_templates_request import ListTemplatesRequest
+from ._list_templates_shrink_request import ListTemplatesShrinkRequest
 from ._list_templates_response_body import ListTemplatesResponseBody
 from ._list_templates_response import ListTemplatesResponse
 from ._list_volumes_request import ListVolumesRequest
@@ -172,11 +173,15 @@ from ._update_volume_request import UpdateVolumeRequest
 from ._update_volume_response_body import UpdateVolumeResponseBody
 from ._update_volume_response import UpdateVolumeResponse
 from ._container_configuration import ContainerConfigurationRegistryCredential
+from ._create_snapshot_input import CreateSnapshotInputResourceTags
+from ._create_template_input import CreateTemplateInputResourceTags
 from ._create_volume_input import CreateVolumeInputAgenticFSVolumeConfig
 from ._create_volume_input import CreateVolumeInputMountConfigVpcConfig
 from ._create_volume_input import CreateVolumeInputMountConfig
 from ._e2blisted_sandbox import E2BListedSandboxResourceTags
 from ._e2bsandbox import E2BSandboxResourceTags
+from ._e2bsnapshot import E2BSnapshotResourceTags
+from ._inner_create_sandbox_input import InnerCreateSandboxInputResourceTags
 from ._inner_create_sandbox_volume_mounts import InnerCreateSandboxVolumeMountsAgenticFsMountPoints
 from ._inner_create_sandbox_volume_mounts import InnerCreateSandboxVolumeMountsAgenticFs
 from ._inner_create_sandbox_volume_mounts import InnerCreateSandboxVolumeMountsNamedMountPoints
@@ -197,6 +202,7 @@ from ._update_volume_input import UpdateVolumeInputMountConfigVpcConfig
 from ._update_volume_input import UpdateVolumeInputMountConfig
 from ._volume_mount_config import VolumeMountConfigVpcConfig
 from ._get_template_response_body import GetTemplateResponseBodyResourceTags
+from ._list_templates_request import ListTemplatesRequestResourceTags
 
 __all__ = [
     AgenticBucketVolumeConfig,
@@ -345,6 +351,7 @@ __all__ = [
     ListTemplateCacheResponseBody,
     ListTemplateCacheResponse,
     ListTemplatesRequest,
+    ListTemplatesShrinkRequest,
     ListTemplatesResponseBody,
     ListTemplatesResponse,
     ListVolumesRequest,
@@ -369,11 +376,15 @@ __all__ = [
     UpdateVolumeResponseBody,
     UpdateVolumeResponse,
     ContainerConfigurationRegistryCredential,
+    CreateSnapshotInputResourceTags,
+    CreateTemplateInputResourceTags,
     CreateVolumeInputAgenticFSVolumeConfig,
     CreateVolumeInputMountConfigVpcConfig,
     CreateVolumeInputMountConfig,
     E2BListedSandboxResourceTags,
     E2BSandboxResourceTags,
+    E2BSnapshotResourceTags,
+    InnerCreateSandboxInputResourceTags,
     InnerCreateSandboxVolumeMountsAgenticFsMountPoints,
     InnerCreateSandboxVolumeMountsAgenticFs,
     InnerCreateSandboxVolumeMountsNamedMountPoints,
@@ -393,5 +404,6 @@ __all__ = [
     UpdateVolumeInputMountConfigVpcConfig,
     UpdateVolumeInputMountConfig,
     VolumeMountConfigVpcConfig,
-    GetTemplateResponseBodyResourceTags
+    GetTemplateResponseBodyResourceTags,
+    ListTemplatesRequestResourceTags
 ]
