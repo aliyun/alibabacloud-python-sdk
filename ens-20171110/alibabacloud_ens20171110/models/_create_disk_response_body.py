@@ -16,6 +16,8 @@ class CreateDiskResponseBody(DaraModel):
         # The collection of instance IDs.
         self.instance_ids = instance_ids
         # The order ID. Multiple IDs are separated by commas (,).
+        # 
+        # > Order IDs are returned only for subscription resources. No order ID is returned for pay-as-you-go resources.
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id

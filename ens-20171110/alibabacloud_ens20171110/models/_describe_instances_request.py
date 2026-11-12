@@ -34,23 +34,28 @@ class DescribeInstancesRequest(DaraModel):
         vpd_id: str = None,
         vpd_vswitch_id: str = None,
     ):
-        # The list of EIP addresses used to filter instances.
+        # The list of elastic IP addresses used to filter instances.
         self.eip_addresses = eip_addresses
         # The region ID.
         self.ens_region_id = ens_region_id
-        # The list of edge zone IDs. This parameter is a formatted JSON array that contains up to 100 IDs separated by commas (,).
+        # The list of edge zone IDs. The parameter is a JSON array that contains up to 100 IDs separated by commas (,).
         self.ens_region_ids = ens_region_ids
-        # The Edge Node Service ID. You can use this ID to query the instances created under the edge service.
+        # The edge service ID. You can use this ID to query instances created under the edge service.
         self.ens_service_id = ens_service_id
         # The image ID.
         self.image_id = image_id
         # The instance ID.
         self.instance_id = instance_id
-        # The list of instance IDs. This parameter is a formatted JSON array that contains up to 100 IDs separated by commas (,).
+        # The list of instance IDs. The parameter is a JSON array that contains up to 100 IDs separated by commas (,).
         self.instance_ids = instance_ids
         # The instance name.
         self.instance_name = instance_name
-        # The filter type. Valid values:
+        # The resource type used for filtering. Valid values:
+        # 
+        # - EnsInstance: Independently purchased instance.
+        # - EnsService: Edge service instance.
+        # - BuildMachine: Image builder.
+        # - EnsPostPaidInstance: Independently purchased pay-as-you-go instance.
         self.instance_resource_type = instance_resource_type
         # The instance type.
         self.instance_type = instance_type
@@ -58,25 +63,31 @@ class DescribeInstancesRequest(DaraModel):
         self.intranet_ip = intranet_ip
         # The network ID.
         self.network_id = network_id
-        # The sorting parameter in JSON format.
+        # The sorting parameters in JSON format.
+        # 
+        # You can sort instances by name, expiration time, edge zone ID, or creation time. Multiple parameters can be combined.
         self.order_by_params = order_by_params
-        # The page number of the instance status list. The value starts from **1**.
+        # The page number of the instance status list. The starting value is **1**.
+        # 
+        # Default value: **1**.
         self.page_number = page_number
         # The number of entries per page for a paged query. Maximum value: **100**.
+        # 
+        # Default value: **10**.
         self.page_size = page_size
-        # The search keyword. Supports parameters such as **ip**, **InstanceName**, and **InstanceId**.
+        # The search keyword. Supported parameters include **ip**, **InstanceName**, and **InstanceId**.
         self.search_key = search_key
         # The security group ID.
         self.security_group_id = security_group_id
-        # The business status of the instance, which does not represent the actual running status of the instance.
+        # The service status of the instance, which does not represent the actual running status of the instance.
         self.service_status = service_status
         # The instance status. Valid values:
         # 
-        # - Running: Running.
-        # - Stopped: Stopped.
-        # - Expired: Expired.
+        # - Running: The instance is running.
+        # - Stopped: The instance is stopped.
+        # - Expired: The instance has expired.
         self.status = status
-        # The resource tags. This operation does not return tag information. Use this parameter in combination with the APIs in the tag category.
+        # The resource tags. This operation does not support returning tag information. You can use it in combination with tag-related operations.
         self.tags = tags
         # The vSwitch ID.
         self.v_switch_id = v_switch_id

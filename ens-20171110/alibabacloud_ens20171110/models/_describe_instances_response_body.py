@@ -17,12 +17,12 @@ class DescribeInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The business code returned. A value of 0 indicates success.
+        # The returned business code. A value of 0 indicates success.
         self.code = code
         self.instances = instances
         # The page number of the instance list.
         self.page_number = page_number
-        # The number of entries per page that was specified in the request.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id

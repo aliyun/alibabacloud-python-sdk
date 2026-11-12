@@ -13,7 +13,7 @@ class UnloadRegionSDGResponseBody(DaraModel):
         data: main_models.UnloadRegionSDGResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned Data object.
+        # The Data object.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -53,13 +53,13 @@ class UnloadRegionSDGResponseBodyData(DaraModel):
         result: main_models.UnloadRegionSDGResponseBodyDataResult = None,
         success: bool = None,
     ):
-        # The response message. A value of success indicates a successful request.
+        # The response message. The value is success if the request is successful.
         self.message = message
         # The execution result of the synchronous request.
         self.result = result
-        # Indicates whether all requests were successful. Valid values:
+        # Indicates whether all requests are successful. Valid values:
         # 
-        # - true: All requests were successful.
+        # - true: All requests are successful.
         # - false: Some requests failed.
         self.success = success
 
@@ -108,7 +108,7 @@ class UnloadRegionSDGResponseBodyDataResult(DaraModel):
         self.failed_count = failed_count
         # The list of failure details.
         self.failed_items = failed_items
-        # The number of successes.
+        # The number of successful requests.
         self.success_count = success_count
 
     def validate(self):
@@ -157,7 +157,7 @@ class UnloadRegionSDGResponseBodyDataResultFailedItems(DaraModel):
         destination_region_id: str = None,
         error_message: str = None,
     ):
-        # The ID of the destination edge zone.
+        # The ID of the destination node.
         self.destination_region_id = destination_region_id
         # The error message.
         self.error_message = error_message

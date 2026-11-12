@@ -23,64 +23,64 @@ class DescribeDisksRequest(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The disk category.
+        # The category of the cloud disk. Valid values:
         # 
-        # - cloud_efficiency: ultra cloud disk
-        # - cloud_ssd: all-flash cloud disk
-        # - local_hdd: local HDD
-        # - local_ssd: local SSD
+        # - cloud_efficiency: Ultra cloud disk.
+        # - cloud_ssd: All-flash cloud disk.
+        # - local_hdd: Local HDD.
+        # - local_ssd: Local SSD.
         self.category = category
-        # The billing type.
+        # The billing method. Valid values:
         # 
-        # - prepay: subscription
-        # - postpay: pay-as-you-go
+        # - prepay: Subscription.
+        # - postpay: Pay-as-you-go.
         self.disk_charge_type = disk_charge_type
-        # The ID of the cloud disk.
+        # The cloud disk ID.
         self.disk_id = disk_id
-        # The disk IDs.
+        # The IDs of the cloud disks.
         self.disk_ids = disk_ids
-        # The name of the disk.
+        # The name of the cloud disk.
         self.disk_name = disk_name
-        # The disk purchase method.
+        # The purchase method of the cloud disk. Valid values:
         # 
-        # - ServiceDisk: disk created by an edge service
-        # - ResoureDisk: purchased with an instance
-        # - PostPayDisk: purchased separately
+        # - ServiceDisk: Created by Edge Node Service.
+        # - ResoureDisk: Purchased with an instance.
+        # - PostPayDisk: Purchased separately.
         self.disk_type = disk_type
         # The ID of the ENS edge zone.
         self.ens_region_id = ens_region_id
-        # The list of edge zones.
+        # The list of edge zone IDs.
         self.ens_region_ids = ens_region_ids
-        # The instance to which the cloud disk is mounted.
+        # The ID of the instance to which the cloud disk is attached.
         self.instance_id = instance_id
-        # The sorting parameter. Format example: {"EnsRegionId":"desc"}. By default, results are sorted by edge zone ID in descending order.
+        # The sorting parameter. Format example: {"EnsRegionId":"desc"}. By default, the results are sorted in descending order of edge zone ID.
         self.order_by_params = order_by_params
-        # The page number of the query list. Minimum value: **1**.
+        # The page number of the query list. The minimum value is **1**.
         # 
         # Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page for a paged query. Maximum value: **50**.
+        # The number of entries per page. Maximum value: **50**.
         # 
         # Default value: **10**.
         self.page_size = page_size
         # The snapshot ID.
         self.snapshot_id = snapshot_id
-        # The disk status.
+        # The status of the cloud disk. Valid values:
         # 
-        # - In-use: in use
-        # - Available: to be mounted
-        # - Attaching: being mounted
-        # - Detaching: being unmounted
-        # - Creating: being created
-        # - ReIniting: being reset
-        # - Deleting: being released
-        # - Deleted: released
-        # - Expiring: about to expire
+        # - In-use: In use.
+        # - Available: Unattached.
+        # - Attaching: Attaching.
+        # - Detaching: Detaching.
+        # - Creating: Creating.
+        # - ReIniting: Reinitializing.
+        # - Deleting: Releasing.
+        # - Deleted: Released.
+        # - Expiring: Expiring.
         self.status = status
-        # The disk property.
+        # The type of the cloud disk. Valid values:
         # 
-        # - system: system cloud disk
-        # - data: data cloud disk
+        # - system: System cloud disk.
+        # - data: Data cloud disk.
         self.type = type
 
     def validate(self):

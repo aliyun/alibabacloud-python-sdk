@@ -10,11 +10,11 @@ class UnmountInstanceSDGShrinkRequest(DaraModel):
         instance_ids_shrink: str = None,
         sdgid: str = None,
     ):
-        # The IDs of the instances.
+        # The list of instance IDs.
         # 
         # This parameter is required.
         self.instance_ids_shrink = instance_ids_shrink
-        # The ID of the SDG.
+        # The SDG ID.
         # 
         # This parameter is required.
         self.sdgid = sdgid

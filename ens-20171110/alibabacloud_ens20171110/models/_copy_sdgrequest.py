@@ -16,7 +16,7 @@ class CopySDGRequest(DaraModel):
         # 
         # This parameter is required.
         self.destination_region_ids = destination_region_ids
-        # The ID of the SDG to copy.
+        # The ID of the SDG to be copied.
         # 
         # This parameter is required.
         self.sdgid = sdgid

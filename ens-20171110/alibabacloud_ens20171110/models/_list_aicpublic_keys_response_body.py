@@ -16,15 +16,15 @@ class ListAICPublicKeysResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The current page number in the paginated query.
+        # The current page number.
         self.page_number = page_number
-        # The number of records to display per page.
+        # The number of entries to return on each page.
         self.page_size = page_size
         # The list of public keys.
         self.public_keys = public_keys
         # The unique identifier of the request.
         self.request_id = request_id
-        # The total number of records.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

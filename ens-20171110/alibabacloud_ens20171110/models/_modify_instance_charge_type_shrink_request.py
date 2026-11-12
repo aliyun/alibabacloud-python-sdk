@@ -16,22 +16,31 @@ class ModifyInstanceChargeTypeShrinkRequest(DaraModel):
         period: str = None,
         period_unit: str = None,
     ):
-        # Specifies whether to automatically complete the payment when you switch the billing method of the instance from pay-as-you-go to subscription. Valid values:
+        # Specifies whether to enable automatic payment when the billing method of the instance is changed from pay-as-you-go to subscription. Valid values:
         # 
-        # true: The payment is automatically completed. Make sure that your account balance is sufficient.
+        # - true: enables automatic payment. Make sure that your account balance is sufficient.
         # 
-        # false: Only an order is generated but no payment is made. This is the default value.
+        # - false: only generates the order without deducting the fee. This is the default value.
         self.auto_pay = auto_pay
-        # Specifies whether to enable auto-renewal when converting the instance from pay-as-you-go to subscription. Valid values:
+        # Specifies whether to enable auto-renewal when the billing method of the instance is changed from pay-as-you-go to subscription. Valid values:
         # 
-        # - true: Auto-renewal is enabled.
-        # - false: Auto-renewal is not enabled (default).
+        # - true: enables auto-renewal.
+        # 
+        # - false: disables auto-renewal. This is the default value.
         self.auto_renew = auto_renew
         # The billing cycle. Valid values: Month, Day, and Hour.
         self.billing_cycle = billing_cycle
-        # Specifies whether to convert all pay-as-you-go data cloud disks created with the instance to subscription data cloud disks when converting an instance-level pay-as-you-go instance to a subscription instance. Valid values:
+        # Specifies whether to convert all pay-as-you-go data cloud disks created along with the instance into subscription data cloud disks when the billing method of the instance is changed from pay-as-you-go to subscription. Valid values:
+        # 
+        # - true: yes.
+        # 
+        # - false: no. This is the default value.
         self.include_data_disks = include_data_disks
         # The target billing method of the instance. Valid values:
+        # 
+        # - PrePaid: converts the instance-level pay-as-you-go instance to a subscription instance.
+        # 
+        # - PostPaid: converts the subscription instance to an instance-level pay-as-you-go instance. This is the default value.
         # 
         # This parameter is required.
         self.instance_charge_type = instance_charge_type
@@ -39,13 +48,17 @@ class ModifyInstanceChargeTypeShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_ids_shrink = instance_ids_shrink
-        # The subscription duration when converting a pay-as-you-go instance to subscription. This parameter is required in this scenario. Valid values:
+        # The subscription duration when the billing method of the instance is changed from pay-as-you-go to subscription. This parameter is required in this scenario. Valid values:
         # 
-        # If PeriodUnit is set to Day, Period can only be set to 3.
+        # - If PeriodUnit is set to Day, Period can only be set to 3.
         # 
-        # If PeriodUnit is set to Month, Period can be set to 1-9 or 12.
+        # - If PeriodUnit is set to Month, Period can be set to 1, 2, 3, 4, 5, 6, 7, 8, 9, or 12.
         self.period = period
-        # The unit of the subscription duration when converting an instance-level pay-as-you-go instance to a subscription instance. This parameter is required in this scenario. Valid values:
+        # The unit of the subscription duration when the billing method of the instance is changed from pay-as-you-go to subscription. This parameter is required in this scenario. Valid values:
+        # 
+        # - Month: month.
+        # 
+        # - Day: day.
         self.period_unit = period_unit
 
     def validate(self):

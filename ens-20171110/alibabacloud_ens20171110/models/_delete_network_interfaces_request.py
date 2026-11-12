@@ -11,7 +11,7 @@ class DeleteNetworkInterfacesRequest(DaraModel):
         self,
         network_interface_ids: List[str] = None,
     ):
-        # The IDs of the elastic network interfaces (ENIs).
+        # The list of IDs of elastic network interface controllers (NICs).
         # 
         # This parameter is required.
         self.network_interface_ids = network_interface_ids

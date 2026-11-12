@@ -22,11 +22,11 @@ class DescribeDisksResponseBody(DaraModel):
         self.disks = disks
         # The current page number.
         self.page_number = page_number
-        # The number of entries per page for a paged query. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of pages for a paged query.
+        # The total number of pages.
         self.total_count = total_count
 
     def validate(self):

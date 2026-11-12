@@ -9,7 +9,7 @@ class DescribeEnsRegionIdIpv6InfoRequest(DaraModel):
         self,
         ens_region_id: str = None,
     ):
-        # The ID of the node. You can specify only one node ID in a call.
+        # The ID of the edge zone. Only a single ID is supported.
         # 
         # This parameter is required.
         self.ens_region_id = ens_region_id

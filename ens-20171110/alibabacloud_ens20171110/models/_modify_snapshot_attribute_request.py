@@ -17,7 +17,7 @@ class ModifySnapshotAttributeRequest(DaraModel):
         # 
         # This parameter is required.
         self.snapshot_id = snapshot_id
-        # The display name of the snapshot. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain digits, half-width colons (:), underscores (_), and hyphens (-). To prevent name conflicts with automatic snapshots, the name cannot start with **auto**.
+        # The display name of the snapshot. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), and hyphens (-). To prevent name conflicts with automatic snapshots, the name cannot start with **auto**.
         self.snapshot_name = snapshot_name
 
     def validate(self):

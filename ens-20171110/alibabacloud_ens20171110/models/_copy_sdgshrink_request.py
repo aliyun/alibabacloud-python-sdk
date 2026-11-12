@@ -14,7 +14,7 @@ class CopySDGShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.destination_region_ids_shrink = destination_region_ids_shrink
-        # The ID of the SDG to copy.
+        # The ID of the SDG to be copied.
         # 
         # This parameter is required.
         self.sdgid = sdgid

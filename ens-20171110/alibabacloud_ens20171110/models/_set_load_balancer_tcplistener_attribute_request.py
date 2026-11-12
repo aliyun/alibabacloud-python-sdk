@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class SetLoadBalancerTCPListenerAttributeRequest(DaraModel):
     def __init__(
         self,
+        backend_server_port: int = None,
         description: str = None,
         eip_transmit: str = None,
         established_timeout: int = None,
@@ -24,46 +25,48 @@ class SetLoadBalancerTCPListenerAttributeRequest(DaraModel):
         scheduler: str = None,
         unhealthy_threshold: int = None,
     ):
+        # The port used by the backend server of the load balancing instance. Valid values: 1 to 65535.
+        self.backend_server_port = backend_server_port
         # The description of the listener. The description must be **1** to **80** characters in length.
         # > The description cannot start with `http://` or `https://`.
         self.description = description
         # Specifies whether to enable EIP pass-through. Valid values:
         # 
-        # - **on**: Enabled.
-        # - **off** (default): Disabled.
+        # - **on**: enables EIP pass-through.
+        # - **off** (default): disables EIP pass-through.
         self.eip_transmit = eip_transmit
         # The connection timeout period. Valid values: **10** to **900**. Unit: seconds.
         self.established_timeout = established_timeout
-        # The port used for health checks. Valid values: **1** to **65535**. If this parameter is not set, the backend service port (BackendServerPort) is used.
+        # The port used for health checks. Valid values: **1** to **65535**. If you do not configure the Settings for this parameter, the backend service port (BackendServerPort) is used.
         self.health_check_connect_port = health_check_connect_port
-        # The maximum amount of time to wait for a response from a health check. If the backend ENS does not respond within the specified time, the health check fails.
-        # - Default value: 5 seconds.
+        # The maximum timeout period for a health check response. If a backend ENS instance does not respond within the specified period, the health check fails.
+        # - Default value: 5.
         # - Valid values: **1** to **300**.
         # - Unit: seconds.
         # 
-        # > If the value of HealthCheckConnectTimeout is less than the value of HealthCheckInterval, HealthCheckConnectTimeout becomes invalid and the timeout period is set to the value of HealthCheckInterval.
+        # > If the value of HealthCheckConnectTimeout is less than the value of HealthCheckInterval, HealthCheckConnectTimeout is ignored and the timeout period is the value of HealthCheckInterval.
         self.health_check_connect_timeout = health_check_connect_timeout
         # The domain name used for health checks.
         self.health_check_domain = health_check_domain
-        # The HTTP status code for a Normal health check. Valid values:
+        # The HTTP status codes that indicate a successful health check. Valid values:
         # 
-        # - **http_2xx** (default).
-        # - **http_3xx**.
-        # - **http_4xx**.
-        # - **http_5xx**.
+        # - **http_2xx** (default)
+        # - **http_3xx**
+        # - **http_4xx**
+        # - **http_5xx**
         self.health_check_http_code = health_check_http_code
         # The interval between two consecutive health checks. Valid values: **1** to **50**. Unit: seconds.
         self.health_check_interval = health_check_interval
         # The health check type. Valid values:
-        # - **tcp** (default).
-        # - **http**.
+        # - **tcp** (default)
+        # - **http**
         self.health_check_type = health_check_type
         # The URI used for health checks. The URI must be **1** to **80** characters in length.
-        # > The URI cannot be only `/` but must start with `/`.
+        # > The URI cannot be only `/`, but must start with `/`.
         self.health_check_uri = health_check_uri
-        # The number of consecutive successful health checks required before the health check status of a backend server changes from fail (unreachable) to success (reachable). Valid values: **2** to **10**.
+        # The number of consecutive successful health checks that must occur before the health check status of a backend server changes from fail (unreachable) to success (reachable). Valid values: **2** to **10**.
         self.healthy_threshold = healthy_threshold
-        # The listener port whose attributes you want to modify. Valid values: **1** to **65535**.
+        # The frontend port of the listener whose attributes you want to modify. Valid values: **1** to **65535**.
         # 
         # This parameter is required.
         self.listener_port = listener_port
@@ -71,20 +74,20 @@ class SetLoadBalancerTCPListenerAttributeRequest(DaraModel):
         # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id
-        # The timeout period of session persistence.
+        # The timeout period for session persistence.
         # 
-        # - Default value: 0, which indicates that session persistence is disabled.
+        # - Default value: 0. This value indicates that session persistence is disabled.
         # - Valid values: **0** to **3600**.
         # - Unit: seconds.
         self.persistence_timeout = persistence_timeout
         # The scheduling algorithm. Valid values:
         # - **wrr**: Backend servers with higher weights receive more requests.
-        # - **wlc**: Requests are distributed based on the weight and actual load (number of connections) of each backend server. When the weights are the same, backend servers with fewer connections receive more requests.
-        # - **rr**: Requests are distributed to backend servers in sequence.
+        # - **wlc**: Requests are distributed based on the weights and actual loads (number of connections) of backend servers. If two backend servers have the same weight, the backend server with fewer connections receives more requests.
+        # - **rr**: Requests are evenly and sequentially distributed to backend servers.
         # - **sch**: Consistent hashing based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
-        # - **tch**: Consistent hashing based on four factors: source IP address, destination IP address, source port, and destination port. Requests from the same flow are distributed to the same backend server.
+        # - **tch**: Consistent hashing based on four tuples (source IP address, destination IP address, source port, and destination port). Requests from the same stream are distributed to the same backend server.
         self.scheduler = scheduler
-        # The number of consecutive failed health checks required before the health check status of a backend server changes from success (reachable) to fail (unreachable). Valid values: **2** to **10**.
+        # The number of consecutive failed health checks that must occur before the health check status of a backend server changes from success (reachable) to fail (unreachable). Valid values: **2** to **10**.
         self.unhealthy_threshold = unhealthy_threshold
 
     def validate(self):
@@ -95,6 +98,9 @@ class SetLoadBalancerTCPListenerAttributeRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.backend_server_port is not None:
+            result['BackendServerPort'] = self.backend_server_port
+
         if self.description is not None:
             result['Description'] = self.description
 
@@ -147,6 +153,9 @@ class SetLoadBalancerTCPListenerAttributeRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BackendServerPort') is not None:
+            self.backend_server_port = m.get('BackendServerPort')
+
         if m.get('Description') is not None:
             self.description = m.get('Description')
 

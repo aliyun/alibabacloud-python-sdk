@@ -13,7 +13,7 @@ class DescribeLoadBalancerListenMonitorResponseBody(DaraModel):
         load_balancer_monitor_listen_data: List[main_models.DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData] = None,
         request_id: str = None,
     ):
-        # The TCP/UDP monitoring data of the ELB instance.
+        # The array of Layer 4 monitoring data for the load balancer.
         self.load_balancer_monitor_listen_data = load_balancer_monitor_listen_data
         # Id of the request.
         self.request_id = request_id
@@ -85,7 +85,7 @@ class DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData
         self.conns = conns
         # The number of dropped connections.
         self.drop_conns = drop_conns
-        # The ID of the node to which the ELB instance belongs.
+        # The ID of the edge zone.
         self.ens_region_id = ens_region_id
         # The number of inactive connections.
         self.in_act_conns = in_act_conns
@@ -97,9 +97,9 @@ class DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData
         self.in_drop_pkts = in_drop_pkts
         # The number of inbound packets.
         self.in_pkts = in_pkts
-        # The number of unavailable servers that are attached to the monitored ELB instance.
+        # The number of unavailable backend servers associated with the listener.
         self.in_valid_rs_num = in_valid_rs_num
-        # The ID of the ELB instance.
+        # The load balancing instance.
         self.load_balancer_id = load_balancer_id
         # The outbound traffic.
         self.out_bytes = out_bytes
@@ -111,13 +111,13 @@ class DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData
         self.out_pkts = out_pkts
         # The network protocol.
         self.proto = proto
-        # The VIP port of the ELB instance.
+        # The VIP port of the instance.
         self.vport = vport
-        # The number of available servers that are attached to the monitored ELB instance.
+        # The number of available backend servers associated with the listener.
         self.valid_rs_num = valid_rs_num
-        # The virtual IP address (VIP) of the instance.
+        # The VIP of the instance.
         self.vip = vip
-        # The ID of the tunnel.
+        # The tunnel ID.
         self.vni = vni
 
     def validate(self):

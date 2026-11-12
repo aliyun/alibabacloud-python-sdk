@@ -14,6 +14,7 @@ class AssociateNetworkCidrBlockResponseBody(DaraModel):
         # The allocated secondary CIDR block.
         self.cidr_block = cidr_block
         # The IP address type of the secondary CIDR block. Valid values:
+        # 
         # - IPV4: IPv4 address.
         # - IPV6: IPv6 address.
         self.ip_version = ip_version

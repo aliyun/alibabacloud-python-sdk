@@ -13,21 +13,21 @@ class DescribeLoadBalancerListenMonitorRequest(DaraModel):
         start_time: str = None,
         vport: str = None,
     ):
-        # The end of the time range to query.
+        # The end time.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The ID of the ELB instance.
+        # The load balancer instance ID.
         # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id
-        # The network protocol, such as tcp or udp.
+        # The network protocol, such as TCP or UDP.
         self.proto = proto
-        # The beginning of the time range to query.
+        # The start time.
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The virtual IP address (VIP) port of the ELB instance.
+        # The VIP port of the load balancer instance.
         # 
         # This parameter is required.
         self.vport = vport

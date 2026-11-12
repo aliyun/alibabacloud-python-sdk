@@ -1,3 +1,8 @@
+2026-11-12 Version: 12.2.1
+- Update API SetLoadBalancerTCPListenerAttribute: add request parameters BackendServerPort.
+- Update API SetLoadBalancerUDPListenerAttribute: add request parameters BackendServerPort.
+
+
 2026-10-30 Version: 12.1.1
 - Generated python 2017-11-10 for Ens.
 

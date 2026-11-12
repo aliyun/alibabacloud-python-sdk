@@ -13,7 +13,7 @@ class DescribeEnsRegionIdIpv6InfoResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # IPv6 support information.
+        # The IPv6 support information.
         self.support_ipv_6info = support_ipv_6info
 
     def validate(self):
@@ -50,13 +50,12 @@ class DescribeEnsRegionIdIpv6InfoResponseBodySupportIpv6Info(DaraModel):
         ens_region_id: str = None,
         support_ipv_6: bool = None,
     ):
-        # The ID of the node.
+        # The ID of the edge zone.
         self.ens_region_id = ens_region_id
-        # Specifies whether IPv6 is supported. Valid values:
+        # Indicates whether IPv6 is supported. Valid values:
         # 
-        # - true
-        # 
-        # - false
+        # - true: Supported.
+        # - false: Not supported.
         self.support_ipv_6 = support_ipv_6
 
     def validate(self):

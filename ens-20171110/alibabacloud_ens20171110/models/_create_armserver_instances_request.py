@@ -35,28 +35,33 @@ class CreateARMServerInstancesRequest(DaraModel):
         # This parameter is required.
         self.amount = amount
         # Specifies whether to enable auto-renewal.
+        # 
+        # - true
+        # - false (default)
         self.auto_renew = auto_renew
-        # Specifies whether to use coupons. Valid values:
+        # Specifies whether to use vouchers. Valid values:
+        # 
+        # - true: Uses vouchers.
+        # 
+        # - false (default): Does not use vouchers.
         self.auto_use_coupon = auto_use_coupon
-        # The IPv4 CIDR block used by the instance, in CIDR notation.
+        # The IPv4 CIDR block used by the instance.
         self.cidr = cidr
         # The ENS edge zone ID.
         # 
         # This parameter is required.
         self.ens_region_id = ens_region_id
-        # One or more environment variables to set during EAIS instance initialization.
+        # Sets one or more environment variables when the EAIS instance is initialized.
         self.environment_var = environment_var
-        # The refresh rate, in Hz. Valid values: 30 and 60.
+        # The refresh rate. Unit: Hz. Valid values: 30 and 60.
         self.frequency = frequency
         # The image ID.
         # 
         # This parameter is required.
         self.image_id = image_id
-        # The instance billing cycle. Valid values:
-        # - Hour
-        # - Day
+        # The billing cycle of the instance. Valid values: Hour and Day.
         self.instance_billing_cycle = instance_billing_cycle
-        # The instance type of the AIC container instance. Valid values:
+        # The AIC container instance specifications. Valid values:
         # 
         # - aic.cf52r.c1.np
         # 
@@ -102,21 +107,27 @@ class CreateARMServerInstancesRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_type = instance_type
-        # The key pair name.
+        # The name of the key pair.
         self.key_pair_name = key_pair_name
         # The namespace.
         self.name_space = name_space
-        # The billing type. Valid values: **PrePaid** (subscription).
+        # The billing method. Valid values: **PrePaid** (subscription).
+        # 
+        # > Only subscription is currently supported.
         # 
         # This parameter is required.
         self.pay_type = pay_type
-        # The duration for which you want to purchase the resource.
+        # The subscription duration of the resource.
         # 
-        # - If you do not specify PeriodUnit, the resource is purchased on a monthly basis by default. Currently, only Days and Month are supported.
+        # - If you do not specify PeriodUnit, the default billing cycle is month. Only Day and Month are supported.
         # - If PeriodUnit is set to Day, Period can only be set to 3.
         # - If PeriodUnit is set to Month, Period can be set to 1 to 9 or 12.
         self.period = period
-        # The unit of the purchase duration.
+        # The unit of the subscription duration.
+        # 
+        # - If you do not specify PeriodUnit, the default billing cycle is month. Only Day and Month are supported.
+        # - If PeriodUnit is set to Day, Period can only be set to 3.
+        # - If PeriodUnit is set to Month, Period can be set to 1 to 9 or 12.
         self.period_unit = period_unit
         # The resolution. Valid values:
         # 
@@ -140,7 +151,7 @@ class CreateARMServerInstancesRequest(DaraModel):
         self.resolution = resolution
         # The service name.
         self.server_name = server_name
-        # The ARM board specification. Valid values:
+        # The ARM board specifications. Valid values:
         # 
         # - cas.cf53r
         # - cas.cf52r

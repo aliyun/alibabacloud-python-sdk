@@ -12,17 +12,15 @@ class GetOssUsageDataRequest(DaraModel):
         period: str = None,
         start_time: str = None,
     ):
-        # The name of the logical Object Storage Service (OSS) bucket.
+        # The name of the OSS logical bucket.
         self.bucket = bucket
-        # The end of the time range to query. The time must be in UTC. Format: 2010-01-21T09:50:23Z.
+        # The end time in UTC. Format: 2010-01-21T09:50:23Z.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The aggregation granularity. Unit: minutes.
-        # 
-        # Default value: 5. Valid values: 5 to 1440.
+        # The time aggregation granularity. Unit: minutes. Default value: 5. Valid values: 5 to 1440.
         self.period = period
-        # The beginning of the time range to query. The time must be in UTC. Format: 2010-01-21T09:50:23Z.
+        # The start time in UTC. Format: 2010-01-21T09:50:23Z.
         # 
         # This parameter is required.
         self.start_time = start_time

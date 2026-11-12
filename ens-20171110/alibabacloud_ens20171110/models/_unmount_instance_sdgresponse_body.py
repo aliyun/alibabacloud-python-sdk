@@ -13,7 +13,7 @@ class UnmountInstanceSDGResponseBody(DaraModel):
         data: main_models.UnmountInstanceSDGResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned data object.
+        # The returned Data object.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -53,15 +53,14 @@ class UnmountInstanceSDGResponseBodyData(DaraModel):
         result: main_models.UnmountInstanceSDGResponseBodyDataResult = None,
         success: bool = None,
     ):
-        # The response message. Success is returned for a successful request.
+        # The response message. The value is success if the request is successful.
         self.message = message
-        # The execution result of the synchronization request.
+        # The execution result of the synchronous request.
         self.result = result
         # Indicates whether all tasks are successful. Valid values:
         # 
         # - true: All tasks are successful.
-        # 
-        # - false: Failed tasks exist.
+        # - false: One or more tasks failed.
         self.success = success
 
     def validate(self):
@@ -107,7 +106,7 @@ class UnmountInstanceSDGResponseBodyDataResult(DaraModel):
     ):
         # The number of failed tasks.
         self.failed_count = failed_count
-        # Details about failed tasks.
+        # The list of failure details.
         self.failed_items = failed_items
         # The number of successful tasks.
         self.success_count = success_count
@@ -160,7 +159,7 @@ class UnmountInstanceSDGResponseBodyDataResultFailedItems(DaraModel):
     ):
         # The error message.
         self.err_message = err_message
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):

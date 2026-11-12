@@ -13,7 +13,7 @@ class CopySDGResponseBody(DaraModel):
         data: main_models.CopySDGResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned Data object.
+        # The Data object.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -53,14 +53,14 @@ class CopySDGResponseBodyData(DaraModel):
         result: main_models.CopySDGResponseBodyDataResult = None,
         success: bool = None,
     ):
-        # The response message. The value success indicates a successful request.
+        # The response message. The value is success if the request is successful.
         self.message = message
-        # The execution result of the synchronous request.
+        # The execution result of the synchronization request.
         self.result = result
-        # Indicates whether all requests were successful. Valid values:
+        # Indicates whether all requests are successful. Valid values:
         # 
-        # - **true**: All requests were successful.
-        # - **false**: Some tasks failed.
+        # - **true**: All requests are successful.
+        # - **false**: One or more tasks failed.
         self.success = success
 
     def validate(self):
@@ -106,9 +106,9 @@ class CopySDGResponseBodyDataResult(DaraModel):
     ):
         # The number of failed edge zones.
         self.failed_count = failed_count
-        # The list of failed edge zone details.
+        # The list of details about failed edge zones.
         self.failed_items = failed_items
-        # The number of successful operations.
+        # The number of successful edge zones.
         self.success_count = success_count
 
     def validate(self):

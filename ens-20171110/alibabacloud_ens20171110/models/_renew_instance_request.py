@@ -10,13 +10,13 @@ class RenewInstanceRequest(DaraModel):
         instance_id: str = None,
         period: int = None,
     ):
-        # The ID of the instance that you want to renew.
+        # The instance ID for renewal.
         # 
-        # Only subscription instances whose InstanceResourceType is EnsInstance are supported. Pay-as-you-go instances cannot be renewed.
+        # Only upfront instances whose InstanceResourceType is set to EnsInstance are supported. Pay-as-you-go instances cannot be renewed.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The subscription renewal duration.
+        # The renewal period of the subscription instance.
         # 
         # This parameter is required.
         self.period = period

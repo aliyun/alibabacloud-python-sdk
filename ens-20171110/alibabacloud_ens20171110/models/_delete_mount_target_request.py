@@ -11,7 +11,7 @@ class DeleteMountTargetRequest(DaraModel):
         file_system_id: str = None,
         mount_target_name: str = None,
     ):
-        # The ID of the edge node.
+        # The ID of the edge zone.
         # 
         # This parameter is required.
         self.ens_region_id = ens_region_id

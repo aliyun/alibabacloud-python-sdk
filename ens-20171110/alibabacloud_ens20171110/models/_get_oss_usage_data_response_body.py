@@ -15,7 +15,7 @@ class GetOssUsageDataResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The array of usage data.
+        # The usage array.
         self.usage_list = usage_list
 
     def validate(self):
@@ -63,19 +63,19 @@ class GetOssUsageDataResponseBodyUsageList(DaraModel):
         wan_rx_bw: int = None,
         wan_tx_bw: int = None,
     ):
-        # The inbound bandwidth over the internal network. Unit: bit/s.
+        # The inbound bandwidth over the internal network. Unit: Bps.
         self.lan_rx_bw = lan_rx_bw
-        # The outbound bandwidth over the internal network. Unit: bit/s.
+        # The outbound bandwidth over the internal network. Unit: Bps.
         self.lan_tx_bw = lan_tx_bw
-        # The number of time points within a day.
+        # The sequence number of the time point within a day.
         self.point = point
-        # The point in time, in UTC. Format: 2010-01-21T09:50:23Z.
+        # The time point in UTC. Format: 2010-01-21T09:50:23Z.
         self.point_ts = point_ts
         # The storage usage. Unit: bytes.
         self.storage_usage_byte = storage_usage_byte
-        # The outbound bandwidth over the Internet. Unit: bit/s.
+        # The inbound bandwidth over the Internet. Unit: Bps.
         self.wan_rx_bw = wan_rx_bw
-        # The outbound bandwidth over the Internet. Unit: bit/s.
+        # The outbound bandwidth over the Internet. Unit: Bps.
         self.wan_tx_bw = wan_tx_bw
 
     def validate(self):

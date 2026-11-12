@@ -53,14 +53,14 @@ class MountInstanceSDGResponseBodyData(DaraModel):
         result: main_models.MountInstanceSDGResponseBodyDataResult = None,
         success: bool = None,
     ):
-        # The response message. The value success is returned if the request is successful.
+        # The response message. The value is success if the request is successful.
         self.message = message
         # The execution result of the synchronous request.
         self.result = result
-        # Indicates whether all requests are successful. Valid values:
+        # Indicates whether all requests were successful. Valid values:
         # 
-        # - **true**: All successful.
-        # - **false**: Some tasks failed.
+        # - **true**: All requests were successful.
+        # - **false**: One or more tasks failed.
         self.success = success
 
     def validate(self):

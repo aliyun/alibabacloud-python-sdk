@@ -16,10 +16,10 @@ class DistApplicationDataResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.dist_instance_ids = dist_instance_ids
-        # The total number of ENS instance IDs.
+        # The total number of target edge resource instance IDs.
         self.dist_instance_total_count = dist_instance_total_count
         self.dist_results = dist_results
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

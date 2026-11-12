@@ -65,21 +65,21 @@ class DescribeDiskIopsListResponseBodyDiskIopsList(DaraModel):
         write_latency: int = None,
         write_ops: int = None,
     ):
-        # The business time in the format of yyyy-MM-dd HH:mm:ss.
+        # The business time. Format: yyyy-MM-dd HH:mm:ss.
         self.biz_time = biz_time
         # The disk ID.
         self.disk_id = disk_id
-        # The read throughput (in bytes).
+        # The read throughput. Unit: bytes.
         self.read_bytes = read_bytes
-        # The read latency (in microseconds).
+        # The read latency. Unit: microseconds.
         self.read_latency = read_latency
         # The read IOPS.
         self.read_ops = read_ops
-        # The edge zone ID.
+        # The region ID.
         self.region_id = region_id
-        # The write throughput (in bytes).
+        # The write throughput. Unit: bytes.
         self.write_bytes = write_bytes
-        # The write latency (in microseconds).
+        # The write latency. Unit: microseconds.
         self.write_latency = write_latency
         # The write IOPS.
         self.write_ops = write_ops

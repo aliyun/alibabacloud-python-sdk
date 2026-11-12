@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class SetLoadBalancerUDPListenerAttributeRequest(DaraModel):
     def __init__(
         self,
+        backend_server_port: int = None,
         description: str = None,
         eip_transmit: str = None,
         established_timeout: int = None,
@@ -21,6 +22,8 @@ class SetLoadBalancerUDPListenerAttributeRequest(DaraModel):
         scheduler: str = None,
         unhealthy_threshold: int = None,
     ):
+        # The port used by the backend server of the load balancing instance. Valid values: 1 to 65535.
+        self.backend_server_port = backend_server_port
         # The name of the listener. The name must be **1** to **80** characters in length.
         # > The name cannot start with `http://` or `https://`.
         self.description = description
@@ -31,14 +34,14 @@ class SetLoadBalancerUDPListenerAttributeRequest(DaraModel):
         self.eip_transmit = eip_transmit
         # The connection timeout period. Valid values: **10** to **900**. Default value: **900**. Unit: seconds.
         self.established_timeout = established_timeout
-        # The port used for health checks. Valid values: **1** to **65535**. If no Settings are specified for this parameter, the backend service port (BackendServerPort) is used.
+        # The port used for health checks. Valid values: **1** to **65535**. If you do not specify this parameter in the Settings, the backend service port (BackendServerPort) is used.
         self.health_check_connect_port = health_check_connect_port
         # The timeout period for a health check response. If a backend ENS instance does not respond within the specified timeout period, the health check fails.
         # - Default value: 5.
         # - Valid values: **1** to **300**.
         # - Unit: seconds.
         # 
-        # > If the value of HealthCheckConnectTimeout is less than the value of HealthCheckInterval, HealthCheckConnectTimeout is invalid and the timeout period is the value of HealthCheckInterval.
+        # > If the value of HealthCheckConnectTimeout is less than the value of HealthCheckInterval, HealthCheckConnectTimeout is ignored and the value of HealthCheckInterval is used as the timeout period.
         self.health_check_connect_timeout = health_check_connect_timeout
         # The response string for UDP health checks. The string can contain only letters and digits and can be up to 64 characters in length.
         self.health_check_exp = health_check_exp
@@ -62,8 +65,8 @@ class SetLoadBalancerUDPListenerAttributeRequest(DaraModel):
         # - **rr**: Requests are evenly and sequentially distributed to backend servers.
         # - **sch**: Consistent hashing based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
         # - **tch**: Consistent hashing based on quadruples (source IP address, destination IP address, source port, and destination port). Requests from the same stream are distributed to the same backend server.
-        # - **qch**: Consistent hashing based on QUIC connection IDs. Requests with the same QUIC connection ID are distributed to the same backend server.
-        # - **iqch**: Consistent hashing based on specific three bytes of the iQUIC CID. Requests with the same second to fourth bytes are distributed to the same backend server.
+        # - **qch**: Consistent hashing based on QUIC Connection IDs. Requests with the same QUIC Connection ID are distributed to the same backend server.
+        # - **iqch**: Consistent hashing based on specific three bytes of the iQUIC CID. Requests with the same 2nd to 4th bytes are distributed to the same backend server.
         self.scheduler = scheduler
         # The number of consecutive failed health checks that must occur before a backend server is declared unhealthy (from success to fail). Valid values: **2** to **10**.
         self.unhealthy_threshold = unhealthy_threshold
@@ -76,6 +79,9 @@ class SetLoadBalancerUDPListenerAttributeRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.backend_server_port is not None:
+            result['BackendServerPort'] = self.backend_server_port
+
         if self.description is not None:
             result['Description'] = self.description
 
@@ -119,6 +125,9 @@ class SetLoadBalancerUDPListenerAttributeRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BackendServerPort') is not None:
+            self.backend_server_port = m.get('BackendServerPort')
+
         if m.get('Description') is not None:
             self.description = m.get('Description')
 

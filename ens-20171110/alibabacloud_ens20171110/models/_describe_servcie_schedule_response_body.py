@@ -21,7 +21,7 @@ class DescribeServcieScheduleResponseBody(DaraModel):
     ):
         # The index number of the scheduled target virtual device (container pod).
         self.index = index
-        # The target instance ID for scheduling.
+        # The ID of the target instance.
         self.instance_id = instance_id
         # The IP address of the scheduled target instance.
         self.instance_ip = instance_ip
@@ -31,9 +31,9 @@ class DescribeServcieScheduleResponseBody(DaraModel):
         self.pod_abstract_info = pod_abstract_info
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the resource has been created.
+        # Indicates whether it has been created.
         self.request_repeated = request_repeated
-        # The TCP service port range of the scheduled target virtual machine instance or container. Valid values are in the ${from}-${to} format, such as 80-88.
+        # The TCP service port range of the scheduled target virtual machine instance or container. Format: ${from}-${to}. Example: 80-88.
         self.tcp_ports = tcp_ports
 
     def validate(self):

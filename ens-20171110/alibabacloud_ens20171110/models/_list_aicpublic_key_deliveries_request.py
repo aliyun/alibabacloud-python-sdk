@@ -14,7 +14,7 @@ class ListAICPublicKeyDeliveriesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The instance ID.
+        # The ID of the instance.
         self.instance_id = instance_id
         # The group of the public key.
         self.key_group = key_group
@@ -24,7 +24,7 @@ class ListAICPublicKeyDeliveriesRequest(DaraModel):
         self.key_type = key_type
         # The current page number.
         self.page_number = page_number
-        # The number of records to display per page.
+        # The number of entries to return on each page.
         self.page_size = page_size
 
     def validate(self):

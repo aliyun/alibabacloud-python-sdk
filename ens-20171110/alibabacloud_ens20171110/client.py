@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Dict
 
 from alibabacloud_ens20171110 import models as main_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -20,6 +21,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'Ens'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-beijing': 'ens.aliyuncs.com',
@@ -16371,6 +16375,124 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_server_load_balancer_monitor_with_options_async(request, runtime)
 
+    def describe_shared_disk_records_with_options(
+        self,
+        tmp_req: main_models.DescribeSharedDiskRecordsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSharedDiskRecordsResponse:
+        tmp_req.validate()
+        request = main_models.DescribeSharedDiskRecordsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.disk_ids):
+            request.disk_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.disk_ids, 'DiskIds', 'json')
+        if not DaraCore.is_null(tmp_req.namespaces):
+            request.namespaces_shrink = Utils.array_to_string_with_specified_style(tmp_req.namespaces, 'Namespaces', 'json')
+        if not DaraCore.is_null(tmp_req.region_ids):
+            request.region_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
+        if not DaraCore.is_null(tmp_req.sdg_ids):
+            request.sdg_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.sdg_ids, 'SdgIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.disk_ids_shrink):
+            query['DiskIds'] = request.disk_ids_shrink
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.namespaces_shrink):
+            query['Namespaces'] = request.namespaces_shrink
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_ids_shrink):
+            query['RegionIds'] = request.region_ids_shrink
+        if not DaraCore.is_null(request.sdg_ids_shrink):
+            query['SdgIds'] = request.sdg_ids_shrink
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSharedDiskRecords',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSharedDiskRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_shared_disk_records_with_options_async(
+        self,
+        tmp_req: main_models.DescribeSharedDiskRecordsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSharedDiskRecordsResponse:
+        tmp_req.validate()
+        request = main_models.DescribeSharedDiskRecordsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.disk_ids):
+            request.disk_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.disk_ids, 'DiskIds', 'json')
+        if not DaraCore.is_null(tmp_req.namespaces):
+            request.namespaces_shrink = Utils.array_to_string_with_specified_style(tmp_req.namespaces, 'Namespaces', 'json')
+        if not DaraCore.is_null(tmp_req.region_ids):
+            request.region_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
+        if not DaraCore.is_null(tmp_req.sdg_ids):
+            request.sdg_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.sdg_ids, 'SdgIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.disk_ids_shrink):
+            query['DiskIds'] = request.disk_ids_shrink
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.namespaces_shrink):
+            query['Namespaces'] = request.namespaces_shrink
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_ids_shrink):
+            query['RegionIds'] = request.region_ids_shrink
+        if not DaraCore.is_null(request.sdg_ids_shrink):
+            query['SdgIds'] = request.sdg_ids_shrink
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSharedDiskRecords',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSharedDiskRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_shared_disk_records(
+        self,
+        request: main_models.DescribeSharedDiskRecordsRequest,
+    ) -> main_models.DescribeSharedDiskRecordsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_shared_disk_records_with_options(request, runtime)
+
+    async def describe_shared_disk_records_async(
+        self,
+        request: main_models.DescribeSharedDiskRecordsRequest,
+    ) -> main_models.DescribeSharedDiskRecordsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_shared_disk_records_with_options_async(request, runtime)
+
     def describe_snapshots_with_options(
         self,
         request: main_models.DescribeSnapshotsRequest,
@@ -25548,6 +25670,8 @@ class Client(OpenApiClient):
     ) -> main_models.SetLoadBalancerTCPListenerAttributeResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.backend_server_port):
+            query['BackendServerPort'] = request.backend_server_port
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
         if not DaraCore.is_null(request.eip_transmit):
@@ -25606,6 +25730,8 @@ class Client(OpenApiClient):
     ) -> main_models.SetLoadBalancerTCPListenerAttributeResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.backend_server_port):
+            query['BackendServerPort'] = request.backend_server_port
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
         if not DaraCore.is_null(request.eip_transmit):
@@ -25678,6 +25804,8 @@ class Client(OpenApiClient):
     ) -> main_models.SetLoadBalancerUDPListenerAttributeResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.backend_server_port):
+            query['BackendServerPort'] = request.backend_server_port
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
         if not DaraCore.is_null(request.eip_transmit):
@@ -25730,6 +25858,8 @@ class Client(OpenApiClient):
     ) -> main_models.SetLoadBalancerUDPListenerAttributeResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.backend_server_port):
+            query['BackendServerPort'] = request.backend_server_port
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
         if not DaraCore.is_null(request.eip_transmit):

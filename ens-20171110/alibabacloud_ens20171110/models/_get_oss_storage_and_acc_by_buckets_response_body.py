@@ -59,9 +59,9 @@ class GetOssStorageAndAccByBucketsResponseBodyBucketList(DaraModel):
         bucket: str = None,
         storage_usage_byte: int = None,
     ):
-        # The number of access requests.
+        # The number of accesses.
         self.acc = acc
-        # The OSS bucket name.
+        # The name of the bucket.
         self.bucket = bucket
         # The storage usage, in bytes.
         self.storage_usage_byte = storage_usage_byte

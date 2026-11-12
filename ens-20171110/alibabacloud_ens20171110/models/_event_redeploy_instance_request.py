@@ -13,22 +13,21 @@ class EventRedeployInstanceRequest(DaraModel):
         plan_utc_time: str = None,
         resource_id: str = None,
     ):
-        # The system event ID.
+        # The ID of the system event.
         # 
         # This parameter is required.
         self.event_id = event_id
-        # The O\\&M task type. Valid values:
+        # The type of the O&M task. Valid values:
         # 
-        # - immediate: Immediate execution.
-        # 
-        # - scheduled: Scheduled execution.
+        # - immediate: Executes the task immediately.
+        # - scheduled: Executes the task at a scheduled time.
         # 
         # This parameter is required.
         self.ops_type = ops_type
-        # The scheduled execution time, specified as a timestamp in milliseconds. This parameter is required if \\"OpsType\\" is set to \\"scheduled\\".
+        # The scheduled execution time. The value is a timestamp in milliseconds. This parameter is required when OpsType is set to scheduled.
         self.plan_time = plan_time
         self.plan_utc_time = plan_utc_time
-        # The resource ID.
+        # The ID of the resource.
         # 
         # This parameter is required.
         self.resource_id = resource_id

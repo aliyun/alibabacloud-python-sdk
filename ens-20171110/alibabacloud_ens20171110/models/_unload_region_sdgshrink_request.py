@@ -11,13 +11,13 @@ class UnloadRegionSDGShrinkRequest(DaraModel):
         namespaces_shrink: str = None,
         sdgid: str = None,
     ):
-        # The list of destination edge zones.
+        # The list of destination nodes.
         # 
         # This parameter is required.
         self.destination_region_ids_shrink = destination_region_ids_shrink
         # The list of namespaces.
         self.namespaces_shrink = namespaces_shrink
-        # The ID of the SDG from which to delete preloaded data.
+        # The ID of the SDG for which preloaded data is deleted.
         # 
         # This parameter is required.
         self.sdgid = sdgid

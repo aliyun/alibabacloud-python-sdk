@@ -639,6 +639,10 @@ from ._describe_server_load_balancer_listen_monitor_response import DescribeServ
 from ._describe_server_load_balancer_monitor_request import DescribeServerLoadBalancerMonitorRequest
 from ._describe_server_load_balancer_monitor_response_body import DescribeServerLoadBalancerMonitorResponseBody
 from ._describe_server_load_balancer_monitor_response import DescribeServerLoadBalancerMonitorResponse
+from ._describe_shared_disk_records_request import DescribeSharedDiskRecordsRequest
+from ._describe_shared_disk_records_shrink_request import DescribeSharedDiskRecordsShrinkRequest
+from ._describe_shared_disk_records_response_body import DescribeSharedDiskRecordsResponseBody
+from ._describe_shared_disk_records_response import DescribeSharedDiskRecordsResponse
 from ._describe_snapshots_request import DescribeSnapshotsRequest
 from ._describe_snapshots_response_body import DescribeSnapshotsResponseBody
 from ._describe_snapshots_response import DescribeSnapshotsResponse
@@ -1462,6 +1466,7 @@ from ._describe_servcie_schedule_response_body import DescribeServcieScheduleRes
 from ._describe_servcie_schedule_response_body import DescribeServcieScheduleResponseBodyPodAbstractInfo
 from ._describe_server_load_balancer_listen_monitor_response_body import DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData
 from ._describe_server_load_balancer_monitor_response_body import DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData
+from ._describe_shared_disk_records_response_body import DescribeSharedDiskRecordsResponseBodySharedDisks
 from ._describe_snapshots_response_body import DescribeSnapshotsResponseBodySnapshots
 from ._describe_snat_attribute_response_body import DescribeSnatAttributeResponseBodySnatIps
 from ._describe_snat_table_entries_response_body import DescribeSnatTableEntriesResponseBodySnatTableEntries
@@ -2195,6 +2200,10 @@ __all__ = [
     DescribeServerLoadBalancerMonitorRequest,
     DescribeServerLoadBalancerMonitorResponseBody,
     DescribeServerLoadBalancerMonitorResponse,
+    DescribeSharedDiskRecordsRequest,
+    DescribeSharedDiskRecordsShrinkRequest,
+    DescribeSharedDiskRecordsResponseBody,
+    DescribeSharedDiskRecordsResponse,
     DescribeSnapshotsRequest,
     DescribeSnapshotsResponseBody,
     DescribeSnapshotsResponse,
@@ -3018,6 +3027,7 @@ __all__ = [
     DescribeServcieScheduleResponseBodyPodAbstractInfo,
     DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData,
     DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData,
+    DescribeSharedDiskRecordsResponseBodySharedDisks,
     DescribeSnapshotsResponseBodySnapshots,
     DescribeSnatAttributeResponseBodySnatIps,
     DescribeSnatTableEntriesResponseBodySnatTableEntries,

@@ -16,15 +16,15 @@ class ListAICPublicKeyDeliveriesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The current page number in the paginated query.
+        # The current page number.
         self.page_number = page_number
-        # The number of records to display per page.
+        # The number of entries to return on each page.
         self.page_size = page_size
         # The list of public keys.
         self.public_key_deliver_info = public_key_deliver_info
-        # The unique identifier of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of records.
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -90,7 +90,7 @@ class ListAICPublicKeyDeliveriesResponseBodyPublicKeyDeliverInfo(DaraModel):
     ):
         # The creation time.
         self.creation_time = creation_time
-        # The instance ID.
+        # The ID of the instance.
         self.instance_id = instance_id
         # The group of the public key.
         self.key_group = key_group

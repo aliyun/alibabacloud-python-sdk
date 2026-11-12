@@ -13,7 +13,7 @@ class DeleteSDGResponseBody(DaraModel):
         data: main_models.DeleteSDGResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned Data object.
+        # The Data object.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -53,13 +53,13 @@ class DeleteSDGResponseBodyData(DaraModel):
         result: main_models.DeleteSDGResponseBodyDataResult = None,
         success: bool = None,
     ):
-        # The response message. A value of success indicates a successful request.
+        # The response message. The value is success if the request is successful.
         self.message = message
         # The execution result of the synchronous request.
         self.result = result
-        # Indicates whether all requests succeeded. Valid values:
+        # Indicates whether all requests are successful. Valid values:
         # 
-        # - true: All succeeded.
+        # - true: All requests are successful.
         # - false: Some tasks failed.
         self.success = success
 
@@ -104,11 +104,11 @@ class DeleteSDGResponseBodyDataResult(DaraModel):
         failed_items: List[main_models.DeleteSDGResponseBodyDataResultFailedItems] = None,
         success_count: int = None,
     ):
-        # The number of failures.
+        # The number of failed tasks.
         self.failed_count = failed_count
-        # The details of failed tasks.
+        # The details of the failed tasks.
         self.failed_items = failed_items
-        # The number of successes.
+        # The number of successful tasks.
         self.success_count = success_count
 
     def validate(self):
@@ -159,7 +159,7 @@ class DeleteSDGResponseBodyDataResultFailedItems(DaraModel):
     ):
         # The error message.
         self.err_message = err_message
-        # The specific information.
+        # The detailed information.
         self.item = item
 
     def validate(self):
@@ -195,7 +195,7 @@ class DeleteSDGResponseBodyDataResultFailedItemsItem(DaraModel):
         self,
         sdg_id: str = None,
     ):
-        # The specific ID.
+        # The SDG ID.
         self.sdg_id = sdg_id
 
     def validate(self):

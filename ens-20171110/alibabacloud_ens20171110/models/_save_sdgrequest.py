@@ -11,7 +11,7 @@ class SaveSDGRequest(DaraModel):
     ):
         # The ID of the SDG to save.
         # 
-        # This parameter is required. If this parameter is not specified, the service returns a Parameter.Invalid error.
+        # This parameter is required. If it is not provided, the service returns Parameter.Invalid.
         self.sdgid = sdgid
 
     def validate(self):
